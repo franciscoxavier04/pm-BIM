@@ -30,6 +30,7 @@ import { DisplayField } from 'core-app/shared/components/fields/display/display-
 import { ApplicationRef } from '@angular/core';
 import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decorator';
 import { ExpressionService } from 'core-app/core/expression/expression.service';
+import mermaid from 'mermaid';
 
 export class FormattableDisplayField extends DisplayField {
   @InjectField() readonly appRef:ApplicationRef;
@@ -52,6 +53,15 @@ export class FormattableDisplayField extends DisplayField {
 
     element.innerHTML = '';
     element.appendChild(div);
+
+    const mermaids = element.querySelectorAll('pre[lang="mermaid"]') as NodeListOf<HTMLElement>;
+    if (mermaids.length > 0) {
+      mermaid.initialize({
+        securityLevel: 'strict',
+        startOnLoad: false
+      });
+      mermaid.run({ nodes: mermaids }).catch(console.error);
+    }
   }
 
   get placeholder():string {
