@@ -8,13 +8,10 @@ module OpenProject::OpenIDConnect
       raise e
     end
 
-    def self.handle_login(oidc_session, session)
-      if oidc_session.blank?
-        Rails.logger.info { "No OIDC session returned from provider. Cannot map session for later logouts." }
-        return
-      end
-
-      link = ::OpenIDConnect::UserSessionLink.new(oidc_session:)
+    def self.handle_login(session)
+      link = ::OpenIDConnect::UserSessionLink.new(oidc_session: session["omniauth.oidc_sid"],
+                                                  access_token: session["omniauth.oidc_access_token"],
+                                                  refresh_token: session["omniauth.oidc_refresh_token"])
       new(link).link_to_internal!(session)
     rescue StandardError => e
       Rails.logger.error { "Failed to map OIDC session to internal: #{e.message}" }

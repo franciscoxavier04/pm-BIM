@@ -28,23 +28,32 @@
 require "spec_helper"
 
 RSpec.describe OpenProject::OpenIDConnect::SessionMapper do
-  let(:mock_session) do
-    Class.new(Rack::Session::Abstract::SessionHash) do
-      def initialize(id)
-        super(nil, nil)
-        @id = Rack::Session::SessionId.new(id)
-        @data = {}
-        @loaded = true
-      end
-    end
+  let(:session) do
+    instance_double(ActionDispatch::Request::Session,
+                    id: instance_double(Rack::Session::SessionId, private_id: 42))
+  end
+
+  let(:session_data) do
+    {
+      "omniauth.oidc_sid" => oidc_session_id,
+      "omniauth.oidc_access_token" => access_token,
+      "omniauth.oidc_refresh_token" => refresh_token
+    }
+  end
+
+  let(:oidc_session_id) { "oidc_sid_foo" }
+  let(:access_token) { "access_token_bar" }
+  let(:refresh_token) { "refresh_token_baz" }
+
+  before do
+    allow(session).to receive(:[]) { |k| session_data[k] }
   end
 
   describe "handle_login" do
-    let(:session) { mock_session.new("foo") }
     let!(:plain_session) { create(:user_session, session_id: session.id.private_id) }
     let!(:user_session) { Sessions::UserSession.find_by(session_id: plain_session.session_id) }
 
-    subject { described_class.handle_login "oidc_sid_foo", session }
+    subject { described_class.handle_login session }
 
     it "creates a user link object" do
       expect { subject }.to change(OpenIDConnect::UserSessionLink, :count).by(1)
@@ -52,7 +61,25 @@ RSpec.describe OpenProject::OpenIDConnect::SessionMapper do
 
       expect(link).to be_present
       expect(link.session).to eq user_session
-      expect(link.oidc_session).to eq "oidc_sid_foo"
+      expect(link.access_token).to eq access_token
+      expect(link.oidc_session).to eq oidc_session_id
+      expect(link.refresh_token).to eq refresh_token
+    end
+
+    context "when there is only an access token" do
+      let(:oidc_session_id) { nil }
+      let(:refresh_token) { nil }
+
+      it "creates a user link object" do
+        expect { subject }.to change(OpenIDConnect::UserSessionLink, :count).by(1)
+        link = OpenIDConnect::UserSessionLink.find_by(session_id: user_session.id)
+
+        expect(link).to be_present
+        expect(link.session).to eq user_session
+        expect(link.access_token).to eq access_token
+        expect(link.oidc_session).to be_nil
+        expect(link.refresh_token).to be_nil
+      end
     end
   end
 

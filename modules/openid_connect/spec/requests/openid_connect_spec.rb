@@ -46,23 +46,26 @@ RSpec.describe "OpenID Connect", :skip_2fa_stage, # Prevent redirects to 2FA sta
       family_name: "Wurst"
     }
   end
+  let(:access_token) { "foo-bar-baz" }
+  let(:refresh_token) { "refreshing-foo-bar-baz" }
+  let(:oidc_sid) { "oidc-session-id-42" }
 
   before do
     # The redirect will include an authorisation code.
     # Since we don't actually get a valid code in the test we will stub the resulting AccessToken.
     allow_any_instance_of(OpenIDConnect::Client).to receive(:access_token!) do
-      OpenIDConnect::AccessToken.new client: self, access_token: "foo bar baz"
+      instance_double(OpenIDConnect::AccessToken,
+                      access_token:,
+                      refresh_token:,
+                      userinfo!: OpenIDConnect::ResponseObject::UserInfo.new(user_info),
+                      id_token: "not-nil").as_null_object
     end
 
-    # Using the granted AccessToken the client then performs another request to the OpenID Connect
-    # provider to retrieve user information such as name and email address.
-    # Since the test is not supposed to make an actual call it is be stubbed too.
-    allow_any_instance_of(OpenIDConnect::AccessToken).to receive(:userinfo!).and_return(
-      OpenIDConnect::ResponseObject::UserInfo.new(user_info)
+    # We are also stubbing the way that an ID token would be decoded, so that the omniauth-openid-connect
+    # strategy can fill the session id as well
+    allow(OpenIDConnect::ResponseObject::IdToken).to receive(:decode).and_return(
+      instance_double(OpenIDConnect::ResponseObject::IdToken, sid: oidc_sid).as_null_object
     )
-
-    # Enable storing the access token in a cookie is not necessary since it is currently hard wired to always
-    # be true.
   end
 
   describe "sign-up and login" do
@@ -94,6 +97,14 @@ RSpec.describe "OpenID Connect", :skip_2fa_stage, # Prevent redirects to 2FA sta
 
       expect(user).not_to be_nil
       expect(user.active?).to be true
+
+      session = Sessions::UserSession.for_user(user).first
+      session_link = session.oidc_session_link
+
+      expect(session_link).not_to be_nil
+      expect(session_link.oidc_session).to eq oidc_sid
+      expect(session_link.access_token).to eq access_token
+      expect(session_link.refresh_token).to eq refresh_token
 
       ##
       # it should redirect to the provider again upon clicking on sign-in when the user has been activated
