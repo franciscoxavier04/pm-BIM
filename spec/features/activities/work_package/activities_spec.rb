@@ -370,7 +370,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
                                                     version: 2)
 
       # the comment is shown without browser reload
-      activity_tab.expect_journal_notes(text: "First comment by member")
+      wait_for { page }.to have_test_selector("op-journal-notes-body", text: "First comment by member")
 
       # simulate comments made within the polling interval
       create(:work_package_journal, user: member, notes: "Second comment by member", journable: work_package, version: 3)
@@ -387,10 +387,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
 
       first_journal.update!(notes: "First comment by member updated")
 
-      sleep 1 # avoid flaky test
-
       # properly updates the comment when the comment is updated
-      activity_tab.expect_journal_notes(text: "First comment by member updated")
+      wait_for { page }.to have_test_selector("op-journal-notes-body", text: "First comment by member updated")
     end
   end
 
@@ -585,21 +583,21 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
       # creating a new comment
       activity_tab.add_comment(text: "Third comment by admin")
 
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "First comment by admin",
-                                                              "Second comment by admin",
-                                                              "Third comment by admin"
-                                                            ])
+      wait_for { activity_tab.get_all_comments_as_arrary }.to eq([
+                                                                   "First comment by admin",
+                                                                   "Second comment by admin",
+                                                                   "Third comment by admin"
+                                                                 ])
 
       activity_tab.set_journal_sorting(:desc)
       activity_tab.add_comment(text: "Fourth comment by admin")
 
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "Fourth comment by admin",
-                                                              "Third comment by admin",
-                                                              "Second comment by admin",
-                                                              "First comment by admin"
-                                                            ])
+      wait_for { activity_tab.get_all_comments_as_arrary }.to eq([
+                                                                   "Fourth comment by admin",
+                                                                   "Third comment by admin",
+                                                                   "Second comment by admin",
+                                                                   "First comment by admin"
+                                                                 ])
     end
   end
 
