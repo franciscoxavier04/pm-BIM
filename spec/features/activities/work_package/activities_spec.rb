@@ -378,12 +378,12 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
 
       activity_tab.add_comment(text: "First comment by admin")
 
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "First comment by member",
-                                                              "Second comment by member",
-                                                              "Third comment by member",
-                                                              "First comment by admin"
-                                                            ])
+      wait_for { activity_tab.get_all_comments_as_arrary }.to eq([
+                                                                   "First comment by member",
+                                                                   "Second comment by member",
+                                                                   "Third comment by member",
+                                                                   "First comment by admin"
+                                                                 ])
 
       first_journal.update!(notes: "First comment by member updated")
 
