@@ -8,7 +8,7 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
   let(:work_package) { create(:work_package, project:) }
   let(:tabs) { Components::WorkPackages::Tabs.new(work_package) }
   let(:role) { create(:project_role, permissions:) }
-  let(:user) { create(:user, member_with_roles: { project => role }) }
+  let!(:user) { create(:user, member_with_roles: { project => role }) }
   let(:permissions) do
     %i(view_work_packages
        view_work_package_watchers
