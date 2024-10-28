@@ -120,7 +120,8 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
         autocomplete = find(".wp-watcher--autocomplete ng-select")
         target_dropdown = search_autocomplete autocomplete,
                                               query: "",
-                                              results_selector: "body"
+                                              results_selector: "body",
+                                              wait_for_fetched_options: true
 
         # Your own mail address is visible
         expect(target_dropdown).to have_css(".ng-option", text: user.name)
@@ -138,7 +139,8 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
           autocomplete = find(".wp-watcher--autocomplete ng-select")
           target_dropdown = search_autocomplete autocomplete,
                                                 query: "",
-                                                results_selector: "body"
+                                                results_selector: "body",
+                                                wait_for_fetched_options: true
 
           # Your own mail address is visible
           expect(target_dropdown).to have_css(".ng-option", text: user.name)
