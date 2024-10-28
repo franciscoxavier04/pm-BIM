@@ -32,6 +32,7 @@ module Components
       include Capybara::DSL
       include Capybara::RSpecMatchers
       include RSpec::Matchers
+      include RSpec::Wait
 
       attr_reader :work_package
 
@@ -199,7 +200,7 @@ module Components
         page.all(".work-packages-activities-tab-journals-item-component--journal-notes-body").map(&:text)
       end
 
-      def filter_journals(filter)
+      def filter_journals(filter, default_sorting: User.current.preference&.comments_sorting || "desc")
         page.find_test_selector("op-wp-journals-filter-menu").click
 
         case filter
@@ -211,10 +212,11 @@ module Components
           page.find_test_selector("op-wp-journals-filter-show-only-changes").click
         end
 
-        sleep 1 # wait for the journals to be reloaded, TODO: get rid of static sleep
+        # Ensure the journals are reloaded
+        wait_for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
       end
 
-      def set_journal_sorting(sorting)
+      def set_journal_sorting(sorting, default_filter: :all)
         page.find_test_selector("op-wp-journals-sorting-menu").click
 
         case sorting
@@ -224,7 +226,7 @@ module Components
           page.find_test_selector("op-wp-journals-sorting-desc").click
         end
 
-        sleep 1 # wait for the journals to be reloaded, TODO: get rid of static sleep
+        wait_for { page }.to have_test_selector("op-wp-journals-#{default_filter}-#{sorting}")
       end
     end
   end

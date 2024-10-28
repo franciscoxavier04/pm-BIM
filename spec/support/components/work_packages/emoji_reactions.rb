@@ -29,8 +29,6 @@
 module Components
   module WorkPackages
     class EmojiReactions < Activities
-      include RSpec::Wait
-
       def add_first_emoji_reaction_for_journal(journal, emoji)
         within_journal_entry(journal) do
           click_on "Add reaction"
