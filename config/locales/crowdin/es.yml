@@ -218,10 +218,10 @@ es:
           heading: Para todos los proyectos
           description: Este campo personalizado está activado en todos los proyectos, ya que la opción «Para todos los proyectos» está marcada. No puede desactivarse para proyectos individuales.
       items:
+        actions: "Item actions"
         blankslate:
           title: "Su lista de artículos está vacía"
           description: "Comience añadiendo elementos al campo personalizado de tipo jerarquía. Cada elemento puede utilizarse para crear una jerarquía debajo de él. Para navegar y crear subelementos dentro de una jerarquía, haga clic en el elemento creado."
-        actions: "Item actions"
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -492,6 +492,15 @@ es:
       priority_color_text: |
         Haga clic para asignar o cambiar el color de esta prioridad.
         Puede usarse para resaltar paquetes de trabajo en la tabla.
+  reactions:
+    action_title: "React"
+    add_reaction: "Add reaction"
+    react_with: "React with %{reaction}"
+    and_user: "and %{user}"
+    and_others:
+      one: and 1 other
+      other: and %{count} others
+    reaction_by: "%{reaction} by"
   reportings:
     index:
       no_results_title_text: Actualmente no hay informes de estado.
@@ -876,6 +885,7 @@ es:
         not_available: "no está disponible debido a una configuración del sistema."
         not_deletable: "no se puede eliminar."
         not_current_user: "no es el usuario actual."
+        not_found: "not found."
         not_a_date: "no es una fecha válida."
         not_a_datetime: "no es una fecha/hora válida."
         not_a_number: "No es un número."

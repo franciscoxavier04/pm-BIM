@@ -218,10 +218,10 @@ ca:
           heading: For all projects
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
+        actions: "Item actions"
         blankslate:
           title: "Your list of items is empty"
           description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
-        actions: "Item actions"
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -492,6 +492,15 @@ ca:
       priority_color_text: |
         Cliqueu per assignar o canviar el color d'aquesta prioritat.
         Pot fer-se servir per a destacar paquets de treball en la taula.
+  reactions:
+    action_title: "React"
+    add_reaction: "Add reaction"
+    react_with: "React with %{reaction}"
+    and_user: "and %{user}"
+    and_others:
+      one: and 1 other
+      other: and %{count} others
+    reaction_by: "%{reaction} by"
   reportings:
     index:
       no_results_title_text: Actualment no hi ha cap informe d'estat.
@@ -875,6 +884,7 @@ ca:
         not_available: "no és disponible degut a la configuració del sistema."
         not_deletable: "no es pot eliminar."
         not_current_user: "no és l'usuari actual."
+        not_found: "not found."
         not_a_date: "no és una data vàlida."
         not_a_datetime: "no és una data-i-hora vàlida."
         not_a_number: "no és un número."

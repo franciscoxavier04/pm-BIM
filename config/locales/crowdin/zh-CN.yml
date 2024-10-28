@@ -218,10 +218,10 @@ zh-CN:
           heading: 适用于所有项目
           description: 由于选中了 "适用于所有项目 "选项，因此所有项目都启用了该自定义字段。单个项目无法停用。
       items:
+        actions: "项目操作"
         blankslate:
           title: "您的条目列表为空"
           description: "首先，将条目添加到类型层次结构的自定义字段中。每个条目都可以用于在其下方创建一个层次结构。要导航并在层次结构中创建子条目，请点击已创建的条目。"
-        actions: "项目操作"
         placeholder:
           label: "项目标签"
           short: "短名"
@@ -486,6 +486,14 @@ zh-CN:
       priority_color_text: |
         单击可以分配或更改此优先级的颜色。
         颜色可用于突出显示表中的工作包。
+  reactions:
+    action_title: "React"
+    add_reaction: "Add reaction"
+    react_with: "React with %{reaction}"
+    and_user: "and %{user}"
+    and_others:
+      other: and %{count} others
+    reaction_by: "%{reaction} by"
   reportings:
     index:
       no_results_title_text: 目前没有状态报告。
@@ -517,7 +525,7 @@ zh-CN:
         is_readonly: "只读"
         excluded_from_totals: "不包括在总计中"
   themes:
-    dark: "Dark"
+    dark: "暗黑"
     light: "浅色模式"
     light_high_contrast: "高对比度模式"
   types:
@@ -867,6 +875,7 @@ zh-CN:
         not_available: "因系统配置而不可用。"
         not_deletable: "无法删除。"
         not_current_user: "不是当前用户。"
+        not_found: "not found."
         not_a_date: "不是有效的日期。"
         not_a_datetime: "不是有效的日期时间。"
         not_a_number: "不是一个数字。"

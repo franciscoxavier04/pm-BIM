@@ -220,10 +220,10 @@ pt-BR:
           heading: Em todos os projetos
           description: Este campo personalizado é habilitado em todos os projetos, uma vez que a opção "para todos os projetos" está marcada. Ele não pode ser desativado para projetos individuais.
       items:
+        actions: "Item actions"
         blankslate:
           title: "Sua lista de itens está vazia"
           description: "Comece adicionando itens ao campo personalizado do tipo hierarquia. Cada item pode ser utilizado para construir uma hierarquia abaixo dele. Para navegar e criar subitens dentro dessa hierarquia, clique no item que você criou."
-        actions: "Item actions"
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -494,6 +494,15 @@ pt-BR:
       priority_color_text: |
         Clique para atribuir ou alterar a cor desta prioridade.
         Pode ser usado para destacar pacotes de trabalho na tabela.
+  reactions:
+    action_title: "React"
+    add_reaction: "Add reaction"
+    react_with: "React with %{reaction}"
+    and_user: "and %{user}"
+    and_others:
+      one: and 1 other
+      other: and %{count} others
+    reaction_by: "%{reaction} by"
   reportings:
     index:
       no_results_title_text: Atualmente, não há nenhum relatório de situação.
@@ -877,6 +886,7 @@ pt-BR:
         not_available: "não está disponível devido a uma configuração do sistema."
         not_deletable: "não pode ser excluído."
         not_current_user: "não é o usuário atual."
+        not_found: "not found."
         not_a_date: "não é uma data válida."
         not_a_datetime: "não é uma data/hora válida."
         not_a_number: "não é um número."

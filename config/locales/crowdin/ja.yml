@@ -219,10 +219,10 @@ ja:
           heading: For all projects
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
+        actions: "Item actions"
         blankslate:
           title: "Your list of items is empty"
           description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
-        actions: "Item actions"
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -487,6 +487,14 @@ ja:
       priority_color_text: |
         この優先順位の色を割り当てたり変更する場合にクリックします。
         テーブル内のワークパッケージを強調表示するために使用できます。
+  reactions:
+    action_title: "React"
+    add_reaction: "Add reaction"
+    react_with: "React with %{reaction}"
+    and_user: "and %{user}"
+    and_others:
+      other: and %{count} others
+    reaction_by: "%{reaction} by"
   reportings:
     index:
       no_results_title_text: 現在、ステータス報告はありません。
@@ -868,6 +876,7 @@ ja:
         not_available: "is not available due to a system configuration."
         not_deletable: "削除できません。"
         not_current_user: "現在のユーザーではありません。"
+        not_found: "not found."
         not_a_date: "は有効な日付ではありません。"
         not_a_datetime: "は有効な日時ではありません。"
         not_a_number: "は数値にしてください。"
