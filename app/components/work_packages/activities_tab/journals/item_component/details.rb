@@ -225,11 +225,12 @@ module WorkPackages
 
         def render_journal_details(details_container_inner)
           journal.details.each do |detail|
-            render_single_detail(details_container_inner, detail)
+            rendered_detail = journal.render_detail(detail)
+            render_single_detail(details_container_inner, rendered_detail) if rendered_detail.present?
           end
         end
 
-        def render_single_detail(container, detail)
+        def render_single_detail(container, rendered_detail)
           container.with_row(
             flex_layout: true,
             my: 1,
@@ -238,7 +239,7 @@ module WorkPackages
             data: { turbo: false }
           ) do |detail_container|
             render_stem_line(detail_container)
-            render_detail_description(detail_container, detail)
+            render_detail_description(detail_container, rendered_detail)
           end
         end
 
@@ -246,7 +247,7 @@ module WorkPackages
           container.with_column(classes: "work-packages-activities-tab-journals-item-component-details--journal-detail-stem-line")
         end
 
-        def render_detail_description(container, detail)
+        def render_detail_description(container, rendered_detail)
           container.with_column(
             pl: 1,
             font_size: :small,
@@ -256,7 +257,7 @@ module WorkPackages
                      classes: "work-packages-activities-tab-journals-item-component-details--journal-detail-description",
                      data: { "test-selector": "op-journal-detail-description" }
                    )) do
-              journal.render_detail(detail)
+              rendered_detail
             end
           end
         end
