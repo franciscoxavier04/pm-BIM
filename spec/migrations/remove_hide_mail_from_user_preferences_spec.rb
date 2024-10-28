@@ -1,4 +1,4 @@
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,25 +24,38 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module Admin
-  module CustomFields
-    module Hierarchy
-      class NewItemFormComponent < ApplicationComponent
-        include OpTurbo::Streamable
+require "spec_helper"
+require Rails.root.join("db/migrate/20241002151949_remove_hide_mail_from_user_preferences.rb")
 
-        def initialize(custom_field:, label: nil, short: nil)
-          super
-          @custom_field = custom_field
-          @label = label
-          @short = short
-        end
+RSpec.describe RemoveHideMailFromUserPreferences, type: :model do
+  # Silencing migration logs, since we are not interested in that during testing
+  subject(:run_migration) do
+    perform_enqueued_jobs do
+      ActiveRecord::Migration.suppress_messages { described_class.new.up }
+    end
+  end
 
-        def items_path
-          custom_field_items_path(@custom_field)
-        end
-      end
+  context "when hide_mail user preference exists" do
+    before do
+      create(:user_preference, settings: { hide_mail: true, other: "setting" })
+    end
+
+    it "removes the flag" do
+      run_migration
+      expect(UserPreference.first.settings).to eq({ "other" => "setting" })
+    end
+  end
+
+  context "when hide_mail user preference does not exists" do
+    before do
+      create(:user_preference, settings: { other: "setting" })
+    end
+
+    it "does nothing" do
+      run_migration
+      expect(UserPreference.first.settings).to eq({ "other" => "setting" })
     end
   end
 end
