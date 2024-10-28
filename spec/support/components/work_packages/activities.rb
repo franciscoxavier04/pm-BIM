@@ -145,7 +145,6 @@ module Components
       end
 
       def add_comment(text: nil, save: true)
-        # TODO: get rid of static sleep
         sleep 1 # otherwise the stimulus component is not mounted yet and the click does not work
 
         if page.find_test_selector("op-open-work-package-journal-form-trigger")
@@ -161,7 +160,8 @@ module Components
 
         if save
           page.within_test_selector("op-wp-journals-container") do
-            expect(page).to have_text(text)
+            # wait for the comment to be loaded
+            wait_for { page }.to have_test_selector("op-journal-notes-body", text:)
           end
         end
       end
@@ -176,12 +176,12 @@ module Components
             page.find_test_selector("op-submit-work-package-journal-form").click
           end
 
-          expect(page).to have_text(text)
+          # wait for the comment to be loaded
+          wait_for { page }.to have_test_selector("op-journal-notes-body", text:)
         end
       end
 
       def quote_comment(journal)
-        # TODO: get rid of static sleep
         sleep 1 # otherwise the stimulus component is not mounted yet and the click does not work
 
         within_journal_entry(journal) do

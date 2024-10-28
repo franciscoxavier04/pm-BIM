@@ -378,12 +378,12 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
 
       activity_tab.add_comment(text: "First comment by admin")
 
-      wait_for { activity_tab.get_all_comments_as_arrary }.to eq([
-                                                                   "First comment by member",
-                                                                   "Second comment by member",
-                                                                   "Third comment by member",
-                                                                   "First comment by admin"
-                                                                 ])
+      expect(activity_tab.get_all_comments_as_arrary).to eq([
+                                                              "First comment by member",
+                                                              "Second comment by member",
+                                                              "Third comment by member",
+                                                              "First comment by admin"
+                                                            ])
 
       first_journal.update!(notes: "First comment by member updated")
 
@@ -524,7 +524,6 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
 
       it "resets an only_changes filter if a comment is added by the user", :aggregate_failures do
         activity_tab.filter_journals(:only_changes)
-        sleep 0.5 # avoid flaky test
 
         # expect only the changes
         activity_tab.expect_no_journal_notes(text: "First comment by admin")
@@ -532,7 +531,6 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
 
         # add a comment
         activity_tab.add_comment(text: "Third comment by admin")
-        sleep 0.5 # avoid flaky test
 
         # the only_changes filter should be reset
         activity_tab.expect_journal_notes(text: "Third comment by admin")
@@ -583,21 +581,21 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
       # creating a new comment
       activity_tab.add_comment(text: "Third comment by admin")
 
-      wait_for { activity_tab.get_all_comments_as_arrary }.to eq([
-                                                                   "First comment by admin",
-                                                                   "Second comment by admin",
-                                                                   "Third comment by admin"
-                                                                 ])
+      expect(activity_tab.get_all_comments_as_arrary).to eq([
+                                                              "First comment by admin",
+                                                              "Second comment by admin",
+                                                              "Third comment by admin"
+                                                            ])
 
       activity_tab.set_journal_sorting(:desc)
       activity_tab.add_comment(text: "Fourth comment by admin")
 
-      wait_for { activity_tab.get_all_comments_as_arrary }.to eq([
-                                                                   "Fourth comment by admin",
-                                                                   "Third comment by admin",
-                                                                   "Second comment by admin",
-                                                                   "First comment by admin"
-                                                                 ])
+      expect(activity_tab.get_all_comments_as_arrary).to eq([
+                                                              "Fourth comment by admin",
+                                                              "Third comment by admin",
+                                                              "Second comment by admin",
+                                                              "First comment by admin"
+                                                            ])
     end
   end
 
@@ -870,7 +868,6 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
         # auto-scrolls to the bottom when a new comment is added by the user
         # add a comment
         activity_tab.add_comment(text: "New comment by admin")
-        activity_tab.expect_journal_notes(text: "New comment by admin") # wait for the comment to be added
         activity_tab.expect_journal_container_at_bottom
 
         # auto-scrolls to the bottom when a new comment is added by another user
@@ -878,7 +875,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
         latest_journal_version = work_package.journals.last.version
         create(:work_package_journal, user: member, notes: "New comment by member", journable: work_package,
                                       version: latest_journal_version + 1)
-        activity_tab.expect_journal_notes(text: "New comment by member") # wait for the comment to be added
+        # wait for the comment to be added
+        wait_for { page }.to have_test_selector("op-journal-notes-body", text: "New comment by member")
         sleep 1 # wait for auto scrolling to finish
         activity_tab.expect_journal_container_at_bottom
       end
