@@ -797,7 +797,6 @@ sv:
         consented_at: "Samtyckte den"
       user_preference:
         comments_sorting: "Visa kommentarer"
-        hide_mail: "Dölj min E-postadress"
         impaired: "Tillgänglighetsläge"
         time_zone: "Tidszon"
         auto_hide_popups: "Dölj automatiskt meddelanden om åtgärder som lyckats"
@@ -2837,9 +2836,6 @@ sv:
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Successful update. The active custom fields are automatically activated for
-    the associated projects of this type.
   notice_to_many_principals_to_display: "Det finns för många resultat. \nBegränsa sökningen genom att skriva namnet på den nya medlemmen (eller gruppen)."
   notice_user_missing_authentication_method: Användaren har ännu inte valt ett lösenord eller annat sätt logga in.
   notice_user_invitation_resent: En inbjudan har skickats till %{email}.
@@ -3251,7 +3247,6 @@ sv:
   setting_registration_footer: "Sidfot för registrering"
   setting_repositories_automatic_managed_vendor: "Automatisk leverantörstyp för databas"
   setting_repositories_encodings: "Teckenkodningar i versionsarkiv"
-  setting_repository_authentication_caching_enabled: "Aktivera cachelagring för autentiseringsbegäran av versionsarkivsystemet"
   setting_repository_storage_cache_minutes: "Cachning av databasens hårddiskstorlek"
   setting_repository_checkout_display: "Visa instruktioner för utcheckning"
   setting_repository_checkout_base_url: "Bas-URL för utcheckning"

@@ -813,7 +813,6 @@ ru:
         consented_at: "Согласен с"
       user_preference:
         comments_sorting: "Показывать комментарии"
-        hide_mail: "Скрывать мой адрес электронной почты"
         impaired: "Режим отображения для людей с ограниченными возможностями"
         time_zone: "Часовой пояс"
         auto_hide_popups: "Автоматически скрывать успешные уведомления"
@@ -2910,9 +2909,6 @@ ru:
   notice_successful_update_custom_fields_added_to_project: |
     Успешное обновление. Пользовательские поля активированных типов автоматически активируются
     в форме пакета работ. <a href="%{url}" target="_blank">Подробнее</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Успешное обновление. Активные настраиваемые поля автоматически активируются для
-    связанных проектов этого типа.
   notice_to_many_principals_to_display: "Слишком много результатов. Сузьте поиск, введя имя нового участника (или группы)."
   notice_user_missing_authentication_method: Пользователь еще не выбрал пароль или другой способ авторизации.
   notice_user_invitation_resent: Приглашение было отправлено на %{email}.
@@ -3326,7 +3322,6 @@ ru:
   setting_registration_footer: "Нижний колонтитул регистрации"
   setting_repositories_automatic_managed_vendor: "Автоматический тип поставщика репозитория"
   setting_repositories_encodings: "Кодировка репозиториев"
-  setting_repository_authentication_caching_enabled: "Разрешить кэширование при аутентификации в программе управления версиями ПО"
   setting_repository_storage_cache_minutes: "Размер кеша на диске репозитория"
   setting_repository_checkout_display: "Показать инструкции проверки"
   setting_repository_checkout_base_url: "Проверить основной URL"

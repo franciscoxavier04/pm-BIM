@@ -794,7 +794,6 @@ ca:
         consented_at: "Consentit a"
       user_preference:
         comments_sorting: "Mostra els comentaris"
-        hide_mail: "Oculta la meva adreça de correu electrònic"
         impaired: "Mode d'accessibilitat"
         time_zone: "Zona horària"
         auto_hide_popups: "Oculta automàticament les notificacions de succés"
@@ -2830,8 +2829,6 @@ ca:
   notice_successful_update: "S'ha modificat correctament."
   notice_successful_update_custom_fields_added_to_project: |
     Actualitzat correctament. Els camps personalitzats dels estils activats s'activen automàticament en el formulari del paquet de treball. <a href="%{url}" target="_blank">Veure més</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Actualitzat correctament. Els camps personalitzats s'activen automàticament pels projectes associats amb aquesta classe.
   notice_to_many_principals_to_display: "Hi ha massa resultats.\nAfini la cerca escrivint el nom del nou membre (o grup)."
   notice_user_missing_authentication_method: L'usuari encara ha de triar una contrassenya o una altra manera d'iniciar la sessió.
   notice_user_invitation_resent: Una invitació s'ha enviat a %{email}.
@@ -3243,7 +3240,6 @@ ca:
   setting_registration_footer: "Peu de pàgina del registre"
   setting_repositories_automatic_managed_vendor: "Tipus de proveïdor de repositori automàtic"
   setting_repositories_encodings: "Codificacions dels repositoris"
-  setting_repository_authentication_caching_enabled: "Habilitar la memòria cau per les peticions d'autenticació del programari de control de versions"
   setting_repository_storage_cache_minutes: "Mida de la caché de disc del repositori"
   setting_repository_checkout_display: "Mostra les instruccions de checkout"
   setting_repository_checkout_base_url: "URL base de checkout"

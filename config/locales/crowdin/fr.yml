@@ -797,7 +797,6 @@ fr:
         consented_at: "Consenti à"
       user_preference:
         comments_sorting: "Afficher les commentaires"
-        hide_mail: "Masquer mon adresse courriel"
         impaired: "Mode d'accessibilité"
         time_zone: "Fuseau horaire"
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
@@ -2837,9 +2836,6 @@ fr:
   notice_successful_update_custom_fields_added_to_project: |
     Mise à jour réussie. Les champs personnalisés des types activés sont automatiquement activés
     sur le formulaire du lot de travaux. <a href="%{url}" target="_blank">Voir plus</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Mise à jour réussie. Les champs personnalisés actifs sont automatiquement activés pour
-    les projets associés de ce type.
   notice_to_many_principals_to_display: "Il y a trop de résultats.\nLimitez la recherche en tapant le nom du nouveau membre (ou groupe)."
   notice_user_missing_authentication_method: L'utilisateur n'a pas encore choisi de mot de passe ou un autre moyen de s'authentifier.
   notice_user_invitation_resent: Une invitation a été envoyée à %{email}.
@@ -3253,7 +3249,6 @@ fr:
   setting_registration_footer: "Pied de page d’inscription"
   setting_repositories_automatic_managed_vendor: "Type de fournisseur de dépôt automatique"
   setting_repositories_encodings: "Encodages de référentiels"
-  setting_repository_authentication_caching_enabled: "Activer la mise en cache pour la requête d'authentification du logiciel de contrôle de version"
   setting_repository_storage_cache_minutes: "Cache de l'espace disque du dépôt"
   setting_repository_checkout_display: "Afficher les instructions de « checkout »"
   setting_repository_checkout_base_url: "URL de base de « checkout »"

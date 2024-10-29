@@ -806,7 +806,6 @@ ro:
         consented_at: "Consimţit la"
       user_preference:
         comments_sorting: "Afişare Comentarii"
-        hide_mail: "Nu se afișează adresa de email"
         impaired: "Mod accesibilitate"
         time_zone: "Fus orar"
         auto_hide_popups: "Ascunde automat notificările de succes"
@@ -2874,9 +2873,6 @@ ro:
   notice_successful_update_custom_fields_added_to_project: |
     Actualizare reușită. Câmpurile personalizate ale tipurilor activate sunt activate automat
     pe formularul pachetului de lucru. <a href="%{url}" target="_blank">Vezi mai multe</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Actualizare reușită. Câmpurile personalizate active sunt activate automat pentru
-    proiectele asociate de acest tip.
   notice_to_many_principals_to_display: "Există prea multe rezultate. Restrânge căutarea prin tastarea numelui noului membru (sau grup)."
   notice_user_missing_authentication_method: Utilizatorul nu a ales încă o parolă sau un alt mod de autentificare.
   notice_user_invitation_resent: A fost trimisă o invitație către %{email}.
@@ -3291,7 +3287,6 @@ ro:
   setting_registration_footer: "Footer de înregistrare"
   setting_repositories_automatic_managed_vendor: "Tipul de furnizor pentru repo-urile automate"
   setting_repositories_encodings: "Codificări repo-uri"
-  setting_repository_authentication_caching_enabled: "Permite memorarea în cache pentru cererea de autentificare a programului de control a versiunilor"
   setting_repository_storage_cache_minutes: "Spațiul de disc rezervat pentru tampon (cache)"
   setting_repository_checkout_display: "Afișare instrucțiuni de descărcare (checkout)"
   setting_repository_checkout_base_url: "URL de bază pentru descărcare (checkout)"

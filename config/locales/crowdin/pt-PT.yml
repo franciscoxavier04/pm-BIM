@@ -796,7 +796,6 @@ pt-PT:
         consented_at: "Consentiu em"
       user_preference:
         comments_sorting: "Exibir comentários"
-        hide_mail: "Ocultar meu endereço de e-mail"
         impaired: "Modo de acessibilidade"
         time_zone: "Fuso horário"
         auto_hide_popups: "Ocultar automaticamente notificações de sucesso"
@@ -2835,9 +2834,6 @@ pt-PT:
   notice_successful_update_custom_fields_added_to_project: |
     Atualização bem-sucedida. Os campos personalizados dos tipos ativados são ativados automaticamente
     no formulário de pacote de trabalho. <a href="%{url}" target="_blank">Veja mais</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Atualização bem-sucedida. Os campos personalizados ativos são ativados automaticamente para
-    os projetos associados deste tipo.
   notice_to_many_principals_to_display: "Existem demasiados resultados. Reduza a busca digitando o nome do novo membro (ou grupo)."
   notice_user_missing_authentication_method: O utilizador ainda tem que escolher uma senha ou outro modo de iniciar a sessão.
   notice_user_invitation_resent: Foi enviado um convite para %{email}.
@@ -3249,7 +3245,6 @@ pt-PT:
   setting_registration_footer: "Rodapé de registo"
   setting_repositories_automatic_managed_vendor: "Tipo de fornecedor de repositório automático"
   setting_repositories_encodings: "Codificações de repositórios"
-  setting_repository_authentication_caching_enabled: "Habilitar o cache para uma solicitação de autenticação do software de controle de versão"
   setting_repository_storage_cache_minutes: "Tamanho de cache do disco de repositório"
   setting_repository_checkout_display: "Exibir instruções de checkout"
   setting_repository_checkout_base_url: "Checkout base URL"

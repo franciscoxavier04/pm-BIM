@@ -795,7 +795,6 @@ nl:
         consented_at: "Ingestemd op"
       user_preference:
         comments_sorting: "Toon reacties"
-        hide_mail: "Verberg mijn e-mailadres"
         impaired: "Toegankelijkheidsmodus"
         time_zone: "Tijdzone"
         auto_hide_popups: "Automatisch verbergen geslaagd-meldingen"
@@ -2834,9 +2833,6 @@ nl:
   notice_successful_update_custom_fields_added_to_project: |
     Succesvolle update. Aangepaste velden van de geactiveerde types worden automatisch geactiveerd
     op het werkpakket formulier. <a href="%{url}" target="_blank">Meer</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Update geslaagd. De actieve aangepaste velden worden automatisch geactiveerd voor
-    de bijbehorende projecten van dit type.
   notice_to_many_principals_to_display: "Er zijn te veel resultaten. Beperk het zoekbereik door een naam in te geven van een nieuw lid (of groep)."
   notice_user_missing_authentication_method: Gebruiker dient nog een wachtwoord te kiezen of een andere manier om in te loggen te bepalen.
   notice_user_invitation_resent: Een nieuwe uitnodiging is verstuurd naar %{email}.
@@ -3250,7 +3246,6 @@ nl:
   setting_registration_footer: "Registratie voettekst"
   setting_repositories_automatic_managed_vendor: "Automatisch repostiroy leveranciers type"
   setting_repositories_encodings: "Repositories coderingen"
-  setting_repository_authentication_caching_enabled: "Voor de verificatieaanvraag van versiebeheersoftware caching inschakelen"
   setting_repository_storage_cache_minutes: "De schijfcache grootte van de repository"
   setting_repository_checkout_display: "Geef checkout instructies weer"
   setting_repository_checkout_base_url: "Checkout URL"

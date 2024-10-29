@@ -795,7 +795,6 @@ it:
         consented_at: "Consenso a"
       user_preference:
         comments_sorting: "Mostra commenti"
-        hide_mail: "Nascondi il mio indirizzo email"
         impaired: "Modalità di accesso facilitato"
         time_zone: "Fuso orario"
         auto_hide_popups: "Nascondi automaticamente le notifiche di successo"
@@ -2835,9 +2834,6 @@ it:
   notice_successful_update_custom_fields_added_to_project: |
     Aggiornamento riuscito. I campi personalizzati dei tipi attivati ​​vengono attivati ​​automaticamente
     sul modulo della macro-attività. <a href="%{url}" target="_blank">Maggiori dettagli</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Aggiornamento riuscito. I campi personalizzati attivi vengono automaticamente attivati ​​per
-    i progetti associati di questo tipo.
   notice_to_many_principals_to_display: "Ci sono troppi risultati.\nAffina la ricerca digitando il nome del nuovo membro (o gruppo)."
   notice_user_missing_authentication_method: L'utente deve ancora scegliere una password o un altro sistema di autenticazione.
   notice_user_invitation_resent: Un invito è stato inviato a %{email}.
@@ -3251,7 +3247,6 @@ it:
   setting_registration_footer: "Piè di pagina registrazione"
   setting_repositories_automatic_managed_vendor: "Tipo automatico di gestore dell'archivio di progetto"
   setting_repositories_encodings: "Codifiche degli archivi di progetto (repository)"
-  setting_repository_authentication_caching_enabled: "Abilitare la cache per la richiesta di autenticazione del software di controllo versione"
   setting_repository_storage_cache_minutes: "Dimensione della cache dello spazio di archiviazione su disco"
   setting_repository_checkout_display: "Visualizza le istruzioni di check-out"
   setting_repository_checkout_base_url: "URL di base per il checkout"

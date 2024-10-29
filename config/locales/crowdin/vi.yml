@@ -792,7 +792,6 @@ vi:
         consented_at: "Đồng ý tại"
       user_preference:
         comments_sorting: "Hiện bình luận"
-        hide_mail: "Ẩn địa chỉ email của tôi"
         impaired: "Viet nam"
         time_zone: "Múi giờ"
         auto_hide_popups: "Tự động ẩn thông báo thành công"
@@ -2803,9 +2802,6 @@ vi:
   notice_successful_update_custom_fields_added_to_project: |
     Cập nhật thành công. Các trường tùy chỉnh của các loại đã kích hoạt sẽ tự động được kích hoạt
     trên biểu mẫu gói công việc. <a href="%{url}" target="_blank">Xem thêm</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Cập nhật thành công. Các trường tùy chỉnh đang hoạt động sẽ tự động được kích hoạt cho
-    các dự án liên kết với loại này.
   notice_to_many_principals_to_display: "Có quá nhiều kết quả.\nThu hẹp tìm kiếm bằng cách gõ tên của thành viên (hoặc nhóm) mới."
   notice_user_missing_authentication_method: Người dùng chưa chọn mật khẩu hoặc phương thức đăng nhập khác.
   notice_user_invitation_resent: Một lời mời đã được gửi đến %{email}.
@@ -3218,7 +3214,6 @@ vi:
   setting_registration_footer: "Chân trang đăng ký"
   setting_repositories_automatic_managed_vendor: "Loại nhà cung cấp kho tự động"
   setting_repositories_encodings: "Mã hóa kho"
-  setting_repository_authentication_caching_enabled: "Kích hoạt bộ nhớ cache cho yêu cầu xác thực của phần mềm kiểm soát phiên bản"
   setting_repository_storage_cache_minutes: "Bộ nhớ cache kích thước đĩa kho"
   setting_repository_checkout_display: "Hiển thị hướng dẫn kiểm tra"
   setting_repository_checkout_base_url: "URL cơ sở kiểm tra"

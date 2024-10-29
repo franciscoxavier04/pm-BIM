@@ -795,7 +795,6 @@ hu:
         consented_at: "Ehhez hozzájárult a"
       user_preference:
         comments_sorting: "Hozzászólások megjelenítése"
-        hide_mail: "E-mail címem elrejtése"
         impaired: "Kisegítő mód"
         time_zone: "Idő zóna"
         auto_hide_popups: "Siker értesítések automatikus elrejtése"
@@ -2834,9 +2833,6 @@ hu:
   notice_successful_update_custom_fields_added_to_project: |
     Sikeres frissítés. Az aktivált típusok egyéni mezői automatikusan aktiválódnak
     a munkacsomag űrlapon. <a href="%{url}" target="_blank">További információ</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Sikeres frissítés. Az aktív egyéni mezők automatikusan aktiválódnak
-    az ilyen típusú kapcsolódó projektek.
   notice_to_many_principals_to_display: "Túl sok a találat. Szűkítse le a keresést  az új tagok (vagy csoport) nevének beírásával."
   notice_user_missing_authentication_method: A felhasználónak még jelszót kell választani, vagy más módon kell bejelentkeznie.
   notice_user_invitation_resent: Meghívó elküldve a %{email} címre.
@@ -3250,7 +3246,6 @@ hu:
   setting_registration_footer: "Regisztráció lábléc"
   setting_repositories_automatic_managed_vendor: "Automatikus tároló típus"
   setting_repositories_encodings: "Tárolók kódolásai"
-  setting_repository_authentication_caching_enabled: "A hitelesítési kérelem gyorsítótárazásának engedélyezése a vezérlő szoftver verzióban"
   setting_repository_storage_cache_minutes: "Tároló lemezgyorsítótár méret"
   setting_repository_checkout_display: "Checkout utasítások megjelenítése"
   setting_repository_checkout_base_url: "Checkout alap URL-címe"

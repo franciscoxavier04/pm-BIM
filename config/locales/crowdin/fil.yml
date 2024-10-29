@@ -798,7 +798,6 @@ fil:
         consented_at: "Consented at"
       user_preference:
         comments_sorting: "Ipakita ang mga komento"
-        hide_mail: "Itago ang aking email adress"
         impaired: "Aksezibilidad mode"
         time_zone: "Time zone"
         auto_hide_popups: "Auto-hide success ang mga abiso"
@@ -2838,9 +2837,6 @@ fil:
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Successful update. The active custom fields are automatically activated for
-    the associated projects of this type.
   notice_to_many_principals_to_display: "Mayroong maraming resulta.\nI-narrow down ang paghahanap sa pamamagitan ng pagtype ng pangalan ng bagong miyembro (o grupo)."
   notice_user_missing_authentication_method: Ang user ay pipili pa ng password o iba pang paraan para maka pag-sign in.
   notice_user_invitation_resent: Isang imbitasyon ay ipinadala sa %{email}.
@@ -3252,7 +3248,6 @@ fil:
   setting_registration_footer: "Footer ng pagrerehistro"
   setting_repositories_automatic_managed_vendor: "Awtomatiko na uri ng repository vendor"
   setting_repositories_encodings: "Pag-eencode ng repositoryo"
-  setting_repository_authentication_caching_enabled: "Paganahin ang pag-cache pra sa hiling ng pagpapatunay ng bersyong control software"
   setting_repository_storage_cache_minutes: "Ang laki ng repository disk cache"
   setting_repository_checkout_display: "Ipakita ang mga tagubilin ng pag-checkout"
   setting_repository_checkout_base_url: "Checkout base URL"

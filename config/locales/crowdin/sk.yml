@@ -814,7 +814,6 @@ sk:
         consented_at: "Povolené na"
       user_preference:
         comments_sorting: "Zobraziť komentáre"
-        hide_mail: "Skryť svoju emailovú adresu"
         impaired: "Režim zjednodušeného ovládania"
         time_zone: "Časové pásmo"
         auto_hide_popups: "Automaticky skryť upozornenia o úspešných akciách"
@@ -2911,9 +2910,6 @@ sk:
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.
-  notice_successful_update_custom_fields_added_to_type: |
-    Successful update. The active custom fields are automatically activated for
-    the associated projects of this type.
   notice_to_many_principals_to_display: "Existuje príliš veľa výsledkov.\nUpresnite vyhľadávanie zadaním názvu nového člena (alebo skupiny)."
   notice_user_missing_authentication_method: Užívateľ si ešte nevybral heslo alebo iný spôsob, ako sa prihlásiť.
   notice_user_invitation_resent: Pozvánka bola odoslaná na %{email}.
@@ -3329,7 +3325,6 @@ sk:
   setting_registration_footer: "Registrácia zápätia"
   setting_repositories_automatic_managed_vendor: "Automatický typ poskytovateľa úložiska"
   setting_repositories_encodings: "Kódovania znakov vrámci repozitárov"
-  setting_repository_authentication_caching_enabled: "Aktivujte vyrovnávaciu pamäť pre autentifikáciu pomocou softvéru na riadenie verzií"
   setting_repository_storage_cache_minutes: "Odkladací priestor disku veľkosť vyrovnávacej pamäte"
   setting_repository_checkout_display: "Zobraziť overovacie inštrukcie"
   setting_repository_checkout_base_url: "Overiť základnú URL"
