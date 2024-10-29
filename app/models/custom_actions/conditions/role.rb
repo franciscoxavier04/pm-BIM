@@ -39,8 +39,11 @@ class CustomActions::Conditions::Role < CustomActions::Conditions::Base
 
     def roles_in_project(work_packages, user)
       with_request_store(projects_of(work_packages)) do |projects|
-        projects.map do |project|
-          user.roles_for_project(project)
+        projects.filter_map do |project|
+          # In some cases and most probably due to side-effects, #roles_for_project returns a falsy value sometimes.
+          # We filter these out here and can thus return a proper Array of roles.
+          roles = user.roles_for_project(project) || []
+          roles unless roles.empty?
         end.flatten
       end
     end
