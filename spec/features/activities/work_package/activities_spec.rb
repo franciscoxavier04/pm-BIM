@@ -388,7 +388,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite, with_flag: { primeri
       first_journal.update!(notes: "First comment by member updated")
 
       # properly updates the comment when the comment is updated
-      wait_for { page }.to have_test_selector("op-journal-notes-body", text: "First comment by member updated")
+      wait(delay: 0.5).for { page }.to have_test_selector("op-journal-notes-body", text: "First comment by member updated")
     end
   end
 
