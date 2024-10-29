@@ -117,6 +117,8 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
       let!(:other_user) { create(:user, firstname: "Other", member_with_roles: { project => role }) }
 
       it "shows only the email address of the current user by default" do
+        expect(User.find_by_id(other_user.id)).to be_present
+
         autocomplete = find(".wp-watcher--autocomplete ng-select")
         target_dropdown = search_autocomplete autocomplete,
                                               query: "",
@@ -136,6 +138,8 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
         let!(:standard_global_role) { create(:standard_global_role) }
 
         it "shows the email address of all users" do
+          expect(User.find_by_id(other_user.id)).to be_present
+
           autocomplete = find(".wp-watcher--autocomplete ng-select")
           target_dropdown = search_autocomplete autocomplete,
                                                 query: "",
