@@ -116,6 +116,12 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
     context "when auto completing users" do
       let!(:other_user) { create(:user, firstname: "Other", member_with_roles: { project => role }) }
 
+      before do
+        project
+        role
+        user
+      end
+
       it "shows only the email address of the current user by default" do
         expect(User.find_by_id(other_user.id)).to be_present
 
