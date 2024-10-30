@@ -14,7 +14,7 @@
         test_selector: "add-reactions-button"
       )
 
-      overlay.with_body(pt: 2) do
+      overlay.with_body(pt: 2, test_selector: "emoji-reactions-overlay") do
         flex_layout do |add_reactions_container|
           EmojiReaction.available_emoji_reactions.each do |emoji, reaction|
             add_reactions_container.with_column(mr: 2) do
