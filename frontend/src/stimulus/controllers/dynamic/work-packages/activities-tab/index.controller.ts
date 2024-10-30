@@ -5,6 +5,8 @@ import {
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { IanCenterService } from 'core-app/features/in-app-notifications/center/state/ian-center.service';
+import { ToastService } from 'core-app/shared/components/toaster/toast.service';
+import { I18nService } from 'core-app/core/i18n/i18n.service';
 
 interface CustomEventWithIdParam extends Event {
   params:{
@@ -57,12 +59,16 @@ export default class IndexController extends Controller {
 
   private apiV3Service:ApiV3Service;
   private ianCenterService:IanCenterService;
+  private toastService:ToastService;
+  private i18n:I18nService;
 
   async connect() {
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
     this.ianCenterService = context.services.ianCenter;
+    this.toastService = context.services.notifications;
+    this.i18n = context.services.i18n;
 
     this.setLocalStorageKey();
     this.setLastUpdateTimestamp();
@@ -82,7 +88,7 @@ export default class IndexController extends Controller {
     // without any further checks, this update is currently triggered even after the very first rendering of the activity tab
     //
     // this is not ideal but I don't want to introduce another hacky "ui-state-check" for now
-    this.updateDisplayedWorkPackageAttributes();
+    this.safeUpdateDisplayedWorkPackageAttributes();
 
     // something like below could be used to check for the ui state in the disconnect method
     // in order to identify if the activity tab was connected at least once
@@ -208,6 +214,21 @@ export default class IndexController extends Controller {
 
   private checkForAndHandleWorkPackageUpdate(html:string) {
     if (html.includes('work-packages-activities-tab-journals-item-component-details--journal-detail-container')) {
+      this.safeUpdateDisplayedWorkPackageAttributes();
+    }
+  }
+
+  private safeUpdateDisplayedWorkPackageAttributes() {
+    if (this.anyInlineEditActiveInWpSingleView()) {
+      this.toastService.addWarning({
+        message: this.i18n.t('js.hal.warning.potential_update_conflict'),
+        type: 'warning',
+        link: {
+          text: this.i18n.t('js.hal.error.update_conflict_refresh'),
+          target: () => this.updateDisplayedWorkPackageAttributes(),
+        },
+      });
+    } else {
       this.updateDisplayedWorkPackageAttributes();
     }
   }
@@ -216,6 +237,14 @@ export default class IndexController extends Controller {
     if (html.includes('data-op-ian-center-update-immediate')) {
       this.updateNotificationCenter();
     }
+  }
+
+  private anyInlineEditActiveInWpSingleView():boolean {
+    const wpSingleViewElement = document.querySelector('wp-single-view');
+    if (wpSingleViewElement) {
+      return wpSingleViewElement.querySelector('.inline-edit--active-field') !== null;
+    }
+    return false;
   }
 
   private updateDisplayedWorkPackageAttributes() {
