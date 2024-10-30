@@ -120,6 +120,8 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
         project
         role
         user
+
+        login_as(user)
       end
 
       it "shows only the email address of the current user by default" do
