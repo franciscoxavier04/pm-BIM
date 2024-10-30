@@ -116,16 +116,13 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
     context "when auto completing users" do
       let(:other_user) { create(:user, firstname: "Other", member_with_roles: { project => role }) }
 
-      before(:all) do # rubocop:disable RSpec/BeforeAfterAll
-        # Fully reset database for this test group
-        ActiveRecord::Base.connection.truncate_tables(*ActiveRecord::Base.connection.tables)
-      end
-
       before do
         project
         role
-        user
-        other_user
+
+        # We must reload the users so that all permission checks are reset and the specs work as expected
+        user.reload
+        other_user.reload
 
         login_as(user)
       end
