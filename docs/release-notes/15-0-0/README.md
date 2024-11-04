@@ -8,16 +8,53 @@ release_date: 2024-10-31
 
 # OpenProject 15.0.0
 
-Release date: 2024-10-31
+Release date: 2024-11-13
 
-We released OpenProject [OpenProject 15.0.0](https://community.openproject.org/versions/2076).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released OpenProject [OpenProject 15.0.0](https://community.openproject.org/versions/2076). The major release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
-## Important feature changes
+### Important feature changes
 
-<!-- Inform about the major features in this section -->
+### Boost your communication with real-time loading messages and notifications, emoji reactions, and more.
+
+Text
+
+Screenshot
+
+### Benefit from easy Single Sign-On authentication settings with SAML and OICD in your administration.
+
+Text
+
+Screenshot
+
+### Use the new 'Standard global role' and enable permissions to view email addresses.
+
+Text
+
+Screenshot
+
+### Enjoy easier navigation in project lists with quick action table headers.
+
+Text
+
+Screenshot
+
+### Experience simplified design settings with fewer sidebar design variables needed.
+
+Text
+
+Screenshot
+
+### Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects.
+
+Text
+
+Screenshot
+
+### Improved navigation clarity – 'My account' is renamed to 'Account settings'.
+
+Text
+
+Screenshot
 
 ## Important updates and breaking changes
 
@@ -116,12 +153,13 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Bill Bai, Sam Yelman, Ivan Kuchin, Knight Chang, Gábor Alexovics, Gregor Buergisser, Andrey Dermeyko, Various Interactive, Clayton Belcher, Александр Татаринцев, Keno Krewer.
+A very special thank you goes to the City of Cologne for sponsoring parts of this release. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Bill Bai, Sam Yelman, Ivan Kuchin, Knight Chang, Gábor Alexovics, Gregor Buergisser, Andrey Dermeyko, Various Interactive, Clayton Belcher, Александр Татаринцев, and Keno Krewer.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
+- [Alexander Aleschenko](https://crowdin.com/profile/top4ek), for a great number of translations into Russian.
+- [حمید ملک محمدی](https://crowdin.com/profile/hmmftg), for a great number of translations into Persian.
+- [william](https://crowdin.com/profile/WilliamFromTW), for a great number of translations into Chinese Simplified and Chinese Traditional.
+- [Alin Marcu](https://crowdin.com/profile/deconfcom), for a great number of translations into Romanian.
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../development/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
 
