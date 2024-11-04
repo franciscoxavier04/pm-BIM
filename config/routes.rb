@@ -175,9 +175,12 @@ Rails.application.routes.draw do
         resources :projects, controller: "/admin/custom_fields/custom_field_projects", only: %i[index new create]
         resource :project, controller: "/admin/custom_fields/custom_field_projects", only: :destroy
         resources :items, controller: "/admin/custom_fields/hierarchy/items" do
-          get :deletion_dialog, on: :member
-          get :new_child, on: :member, action: :new
-          post :new_child, on: :member, action: :create
+          member do
+            get :deletion_dialog
+            get :new_child, action: :new
+            post :new_child, action: :create
+            post :move
+          end
         end
       end
     end

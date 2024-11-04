@@ -223,8 +223,12 @@ ro:
       items:
         actions: "Item actions"
         blankslate:
-          title: "Your list of items is empty"
-          description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
+          root:
+            title: "Your list of items is empty"
+            description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
+          item:
+            title: This item doesn't have any hierarchy level below
+            description: Add items to this list to create sub-items inside another one
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -256,7 +260,7 @@ ro:
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
     tab:
       no_results_title_text: În acest moment nu există câmpuri personalizate.
-      no_results_content_text: Creare câmp personalizat nou
+      no_results_content_text: Creează câmp personalizat nou
   concatenation:
     single: "sau"
   dry_validation:
@@ -275,7 +279,7 @@ ro:
   groups:
     index:
       no_results_title_text: În acest moment nu există grupuri.
-      no_results_content_text: Creare grup nou
+      no_results_content_text: Creează grup nou
     users:
       no_results_title_text: În acest moment nu există utilizatori care să facă parte din acest grup.
     memberships:
@@ -330,7 +334,7 @@ ro:
         no_results_content_text: Creați un nou forum
       categories:
         no_results_title_text: În acest moment nu există categorii de pachete de lucru.
-        no_results_content_text: Creare categorie de pachete de lucru nouă
+        no_results_content_text: Creează categorie de pachete de lucru nouă
       custom_fields:
         no_results_title_text: În acest moment nu există câmpuri personalizate disponibile.
       project_custom_fields:
@@ -354,7 +358,7 @@ ro:
           enable_type_in_project: 'Activare tip %{type}'
       versions:
         no_results_title_text: În acest moment nu există versiuni pentru acest proiect.
-        no_results_content_text: Creare versiune nouă
+        no_results_content_text: Creează versiune nouă
       storage:
         no_results_title_text: Acest proiect nu consumă spațiu suplimentar pe disc înregistrat.
   lists:
@@ -449,7 +453,7 @@ ro:
       new_access_token_dialog_show_button_text: "API token"
       new_access_token_dialog_text_field_placeholder_text: "My API token"
       new_access_token_dialog_text_field_label: "Nume"
-      new_access_token_dialog_submit_button_text: "Creare"
+      new_access_token_dialog_submit_button_text: "Creează"
       new_access_token_dialog_text: "This token will allow third-party applications to communicate with your instance. To differentiate the new API token, please give it a name."
       new_access_token_dialog_attention_text: "Treat API tokens like passwords. Anyone with this link will have access to information from this instance, share it only with trusted users."
       failed_to_reset_token: "Resetarea tokenului de acces nu a reușit: %{error}"
@@ -554,7 +558,7 @@ ro:
   types:
     index:
       no_results_title_text: În acest moment nu există tipuri.
-      no_results_content_text: Creare tip nou
+      no_results_content_text: Creează tip nou
     edit:
       settings: "Setări"
       form_configuration: "Configurare formular"
@@ -826,7 +830,7 @@ ro:
         parent_title: "Pagină părinte"
         redirect_existing_links: "Redirectare link-uri existente"
       work_package:
-        begin_insertion: "Început de inserare"
+        begin_insertion: "Începutul inserării"
         begin_deletion: "Început de ștergere"
         children: "Subelemente"
         derived_done_ratio: "Total % finalizat"
@@ -834,7 +838,7 @@ ro:
         derived_remaining_time: "Total remaining work"
         done_ratio: "% finalizat"
         duration: "Durată"
-        end_insertion: "Sfârșit de inserare"
+        end_insertion: "Sfârșitul inserării"
         end_deletion: "Sfârșit de ștergere"
         ignore_non_working_days: "Ignoră zilele nelucrătoare"
         include_non_working_days:
@@ -889,8 +893,8 @@ ro:
         format_nested: "nu se potrivește cu formatul preconizat '%{expected}' la calea '%{path}'."
         greater_than: "trebuie să fie mai mare de %{count}."
         greater_than_or_equal_to: "trebuie să fie mai mare sau egal cu %{count}."
-        greater_than_or_equal_to_start_date: "trebuie să fie după sau la fel cu data de începere."
-        greater_than_start_date: "trebuie să fie după data de începere."
+        greater_than_or_equal_to_start_date: "trebuie să fie mai mare sau egală cu dată început."
+        greater_than_start_date: "trebuie să fie mai mare decât dată început"
         inclusion: "nu este setată la una din valorile permise."
         inclusion_nested: "nu este setată la una dintre valorile permise la calea '%{path}'."
         invalid: "este invalid."
@@ -1217,7 +1221,7 @@ ro:
         header:
           one: "O eroare a împiedicat salvarea acestui %{model}"
           few: "%{count} erori au împiedicat salvarea acestui %{model}"
-          other: "%{count} erori au împiedicat salvarea acestui %{model}"
+          other: "%{count} de erori au împiedicat salvarea acestui %{model}"
     models:
       attachment: "Fișier"
       attribute_help_text: "Text de ajutor pentru atribute"
@@ -1326,7 +1330,7 @@ ro:
     date: "Data"
     default_columns: "Coloane implicite"
     description: "Descriere"
-    derived_due_date: "Data finală derivată"
+    derived_due_date: "Dată finală derivată"
     derived_estimated_hours: "Total work"
     derived_start_date: "Dată început derivată"
     display_sums: "Afişare totaluri"
@@ -1353,10 +1357,10 @@ ro:
     responsible: "Responsabil"
     role: "Rol"
     roles: "Roluri"
-    start_date: "Data de început"
+    start_date: "Dată început"
     status: "Stare"
     subject: "Subiect"
-    summary: "Descriere"
+    summary: "Rezumat"
     title: "Titlu"
     type: "Tip"
     updated_at: "Actualizat pe"
@@ -1397,10 +1401,13 @@ ro:
   button_actions: "Acțiuni"
   button_add: "Adăugare"
   button_add_comment: "Adăugă comentariu"
+  button_add_item_above: "Add item above"
+  button_add_item_below: "Add item below"
+  button_add_sub_item: "Add sub-item"
   button_add_member: Adăugare participant
   button_add_watcher: "Adăugare observator"
   button_annotate: "Adnotare"
-  button_apply: "Salvare"
+  button_apply: "Aplică"
   button_archive: "Arhivează"
   button_back: "Înapoi"
   button_cancel: "Anulare"
@@ -1418,8 +1425,8 @@ ro:
   button_copy_to_clipboard: "Copiază în clipboard"
   button_copy_link_to_clipboard: "Copy link to clipboard"
   button_copy_and_follow: "Copiere și continuare"
-  button_create: "Creare"
-  button_create_and_continue: "Creare și continuare"
+  button_create: "Creează"
+  button_create_and_continue: "Creează și continuă"
   button_delete: "Șterge"
   button_decline: "Refuză"
   button_delete_watcher: "Ștergere observator %{name}"
@@ -1446,10 +1453,10 @@ ro:
   button_reply: "Răspuns"
   button_reset: "Resetare"
   button_rollback: "Revenire la această versiune"
-  button_save: "Salvare"
+  button_save: "Salvează"
   button_save_as: "Salvează ca"
   button_apply_changes: "Aplică modificările"
-  button_save_back: "Salvare și înapoi"
+  button_save_back: "Salvează și înapoi"
   button_show: "Afişare"
   button_sort: "Sortare"
   button_submit: "Trimitere"
@@ -1649,7 +1656,7 @@ ro:
   description_compare_from: "Comparați de la"
   description_compare_to: "compară cu"
   description_current_position: "Sunteți aici: "
-  description_date_from: "Introduceţi data de început"
+  description_date_from: "Introdu dată început"
   description_date_to: "Introduceţi data de sfârşit"
   description_enter_number: "Introduceţi numărul"
   description_enter_text: "Introduceţi textul"
@@ -1994,7 +2001,7 @@ ro:
       all_title: "Afișare toate"
     menu:
       by_project: "Necitite după proiect"
-      by_reason: "Descriere"
+      by_reason: "Motiv"
       inbox: "Inbox"
     send_notifications: "Trimite notificări pentru această acțiune"
     work_packages:
@@ -2365,8 +2372,8 @@ ro:
   label_next_week: "Săptămâna viitoare"
   label_no_change_option: "(Fără modificări)"
   label_no_data: "Nu există date de afișat"
-  label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_due_date: "fără dată finalizare"
+  label_no_start_date: "fără dată început"
   label_no_parent_page: "Pagină părinte:"
   label_nothing_display: "Nimic de afișat"
   label_nobody: "nimeni"
@@ -2451,7 +2458,7 @@ ro:
   label_query_new: "Interogare nouă"
   label_query_plural: "Interogări personalizate"
   label_read: "Citeşte..."
-  label_register: "Creare cont nou"
+  label_register: "Creează cont nou"
   label_register_with_developer: "Înregistrare ca programator"
   label_registered_on: "Înregistrat pe"
   label_registration_activation_by_email: "activare cont prin email"
@@ -2527,7 +2534,7 @@ ro:
   label_subproject_new: "Subproiect nou"
   label_subproject_plural: "Subproiecte"
   label_subtask_plural: "Sub-activități"
-  label_summary: "Descriere"
+  label_summary: "Rezumat"
   label_system: "Sistem"
   label_system_storage: "Informații privind stocarea"
   label_table_of_contents: "Cuprins"
@@ -2599,7 +2606,7 @@ ro:
   label_wiki_page_plural: "Pagini wiki"
   label_wiki_show_index_page_link: "Afișare submeniu 'Cuprins'"
   label_wiki_show_menu_item: "Afișare ca meniu în navigarea proiectului"
-  label_wiki_show_new_page_link: "Afișare submeniu 'Creare pagină copil'"
+  label_wiki_show_new_page_link: "Afișează submeniu 'Creează pagină copil'"
   label_wiki_show_submenu_item: "Afișare ca submeniu pentru "
   label_wiki_start: "Pagina de start"
   label_work: "Muncă"
@@ -2620,7 +2627,7 @@ ro:
   label_workflow: "Flux de lucru"
   label_workflow_copy: "Copiază fluxul de lucru"
   label_workflow_plural: "Fluxuri de lucru"
-  label_workflow_summary: "Descriere"
+  label_workflow_summary: "Rezumat"
   label_working_days_and_hours: "Working days and hours"
   label_x_closed_work_packages_abbr:
     one: "unul închis"
@@ -2708,7 +2715,7 @@ ro:
         shared: "Partajat"
         subscribed: "toate"
         prefix: "Primită din cauza setării de notificare: %{reason}"
-        date_alert_start_date: "Alertă de dată"
+        date_alert_start_date: "Alertă dată"
         date_alert_due_date: "Alertă de dată"
       see_all: "Vezi tot"
       updated_at: "Actualizat la %{timestamp} de %{user}"
@@ -2924,7 +2931,7 @@ ro:
   permission_create_user: "Create users"
   permission_manage_user: "Editează utilizatori"
   permission_manage_placeholder_user: "Creați, editați și ștergeți utilizatori de tip placeholder"
-  permission_add_subprojects: "Creare subproiecte"
+  permission_add_subprojects: "Creează subproiecte"
   permission_add_work_package_watchers: "Adăugare observatori"
   permission_assign_versions: "Atribuiți versiuni"
   permission_browse_repository: "Acces doar citire la repo (vizualizare și descărcare)"
@@ -3129,10 +3136,10 @@ ro:
       path_encoding: "Codificare cale"
     go_to_revision: "Deplasare la revizia"
     managed_remote: "Repo-urile gestionate pentru acest furnizor sunt controlate de la distanță."
-    managed_remote_note: "Informații privind URL-ul și calea acestui repo nu sunt disponibile înainte de crearea sa."
+    managed_remote_note: "Informații privind URL-ul și calea acestui repo nu sunt disponibile înainte de crearea lui."
     managed_url: "URL gestionat"
     settings:
-      automatic_managed_repos_disabled: "Dezactivare creare automată"
+      automatic_managed_repos_disabled: "Dezactivează creare automată"
       automatic_managed_repos: "Crearea automată a repo-urilor gestionate"
       automatic_managed_repos_text: "Prin setarea unui furnizor aici, proiectele nou create vor primi automat un repo gestionat al acestui vendor."
     scm_vendor: "Sistem de management al controlului codului sursă"
@@ -3140,7 +3147,7 @@ ro:
     scm_types:
       local: "Link la repo local"
       existing: "Link la repo existent"
-      managed: "Creare repo nou în OpenProject"
+      managed: "Creează repo nou în OpenProject"
     storage:
       not_available: "Consumul de spațiu de stocare nu este disponibil pentru acest repo."
       update_timeout: "Păstraţi informaţia referitoare la spaţiul de stocare necesar pentru un repo timp de N minute. \nDeoarece măsurarea spațiului necesar pentru un repo poate fi costisitoare, creșteți această valoare pentru a reduce impactul în performanță."
@@ -3812,7 +3819,7 @@ ro:
         unsupported_context: "Resursa furnizată nu este suportată ca și context."
         context_object_not_found: "Resursa furnizată ca și contet nu poate fi identificată."
       validation:
-        due_date: "Data finalizare nu poate fi stabilită pentru pachetele de lucru părinte."
+        due_date: "Dată finalizare nu poate fi stabilită pentru pachetele de lucru părinte."
         invalid_user_assigned_to_work_package: "Utilizatorul selectat nu poate fi '%{property}' pentru acest pachet de lucru."
         start_date: "Nu se poate seta data start pe pachetele de lucru părinte."
       eprops:

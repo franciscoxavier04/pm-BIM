@@ -218,8 +218,12 @@ uk:
       items:
         actions: "Item actions"
         blankslate:
-          title: "Ваш список елементів порожній"
-          description: "Спочатку додайте елементи до користувацького поля ієрархії типів. Створити ієрархію можна для кожного елемента. Щоб переходити між піделементами ієрархії і додавати\nїх, натисніть створений елемент."
+          root:
+            title: "Your list of items is empty"
+            description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
+          item:
+            title: This item doesn't have any hierarchy level below
+            description: Add items to this list to create sub-items inside another one
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -1409,6 +1413,9 @@ uk:
   button_actions: "Дії"
   button_add: "Додати"
   button_add_comment: "Додати коментар"
+  button_add_item_above: "Add item above"
+  button_add_item_below: "Add item below"
+  button_add_sub_item: "Add sub-item"
   button_add_member: Додати учасника
   button_add_watcher: "Додати спостерігача"
   button_annotate: "Коментувати"

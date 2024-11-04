@@ -30,16 +30,29 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   component_wrapper(tag: "turbo-frame", refresh: :morph, data: { turbo_action: :advance }) do
     flex_layout do |container|
+      container.with_row do
+        render(Primer::OpenProject::SubHeader.new) do |subheader|
+          subheader.with_action_button(tag: :a, scheme: :primary, href: new_item_path) do |button|
+            button.with_leading_visual_icon(icon: :plus)
+            I18n.t(:label_item)
+          end
+        end
+      end
       container.with_row(mb: 3) do
         render(Primer::Beta::BorderBox.new) do |box|
           box.with_header { item_header }
 
-          if children.empty? && !show_new_item_form?
+          if children.empty?
             box.with_row do
               render(Primer::Beta::Blankslate.new(test_selector: "op-custom-fields--hierarchy-items-blankslate")) do |component|
-                component.with_visual_icon(icon: "list-ordered")
-                component.with_heading(tag: :h3).with_content(I18n.t("custom_fields.admin.items.blankslate.title"))
-                component.with_description { I18n.t("custom_fields.admin.items.blankslate.description") }
+                component.with_visual_icon(icon: blank_icon)
+
+                component.with_heading(tag: :h3).with_content(I18n.t(blank_header_text))
+                component.with_description { I18n.t(blank_description_text) }
+                component.with_primary_action(tag: :a, href: new_item_path) do |button|
+                  button.with_leading_visual_icon(icon: :plus)
+                  I18n.t(:label_item)
+                end
               end
             end
           else
@@ -48,26 +61,7 @@ See COPYRIGHT and LICENSE files for more details.
                 render Admin::CustomFields::Hierarchy::ItemComponent.new(item: item)
               end
             end
-
-            if show_new_item_form?
-              box.with_footer(test_selector: "op-custom-fields--new-item-form") do
-                render Admin::CustomFields::Hierarchy::ItemFormComponent.new(
-                  target_item: @new_item,
-                  url: new_child_custom_field_item_path(model.root.custom_field_id, model),
-                  method: :post
-                )
-              end
-            end
           end
-        end
-      end
-
-      container.with_row do
-        render Primer::Beta::Button.new(scheme: :primary,
-                                        tag: :a,
-                                        href: new_child_custom_field_item_path(model.root.custom_field_id, model)) do |button|
-          button.with_leading_visual_icon(icon: :plus)
-          I18n.t(:label_item)
         end
       end
     end

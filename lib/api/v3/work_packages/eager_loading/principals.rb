@@ -1,6 +1,6 @@
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,31 +26,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class EmojiReaction < ApplicationRecord
-  # See: https://unicode.org/Public/emoji/latest/emoji-test.txt
-  EMOJI_MAP = {
-    thumbs_up: "\u{1F44D}",
-    thumbs_down: "\u{1F44E}",
-    grinning_face_with_smiling_eyes: "\u{1F604}",
-    confused_face: "\u{1F615}",
-    heart: "\u{2764 FE0F}",
-    party_popper: "\u{1F389}",
-    rocket: "\u{1F680}",
-    eyes: "\u{1F440}"
-  }.freeze
+module API
+  module V3
+    module WorkPackages
+      module EagerLoading
+        class Principals < Base
+          def apply(work_package)
+            work_package.author = principal_for(work_package.author_id)
+            work_package.assigned_to = principal_for(work_package.assigned_to_id)
+            work_package.responsible = principal_for(work_package.responsible_id)
+          end
 
-  belongs_to :user
-  belongs_to :reactable, polymorphic: true
+          private
 
-  validates :user_id, uniqueness: { scope: %i[reactable_type reactable_id reaction] }
+          def principal_for(principal_id)
+            principals_by_id[principal_id]
+          end
 
-  enum :reaction, EMOJI_MAP.each_with_object({}) { |(k, _v), h| h[k] = k.to_s }
+          def principals_by_id
+            @principals_by_id ||= ::Principal
+                .where(id: principal_ids)
+                .to_a
+                .index_by(&:id)
+          end
 
-  def self.available_emoji_reactions
-    EMOJI_MAP.invert.sort
-  end
-
-  def self.emoji(reaction)
-    EMOJI_MAP[reaction.to_sym]
+          def principal_ids
+            work_packages
+              .pluck(:author_id, :assigned_to_id, :responsible_id)
+              .flatten
+              .uniq
+              .compact
+          end
+        end
+      end
+    end
   end
 end

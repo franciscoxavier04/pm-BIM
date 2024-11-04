@@ -30,6 +30,8 @@ module CustomFields
   module Hierarchy
     class ItemForm < ApplicationForm
       form do |item_form|
+        item_form.hidden name: :sort_order, value: @target_item.sort_order
+
         item_form.group(layout: :horizontal) do |input_group|
           input_group.text_field(
             name: :label,

@@ -222,8 +222,12 @@ ru:
       items:
         actions: "Действия с элементом"
         blankslate:
-          title: "Ваш список элементов пуст"
-          description: "Начните с добавления элементов в настраиваемое поле иерархии. Каждый элемент может быть использован для создания иерархии ниже его. Чтобы переместить и создать подпункты внутри иерархии, нажмите на созданный элемент."
+          root:
+            title: "Your list of items is empty"
+            description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
+          item:
+            title: This item doesn't have any hierarchy level below
+            description: Add items to this list to create sub-items inside another one
         placeholder:
           label: "Название элемента"
           short: "Краткое имя"
@@ -1414,6 +1418,9 @@ ru:
   button_actions: "Действия"
   button_add: "Добавить"
   button_add_comment: "Добавить комментарий"
+  button_add_item_above: "Add item above"
+  button_add_item_below: "Add item below"
+  button_add_sub_item: "Add sub-item"
   button_add_member: Добавить участника
   button_add_watcher: "Добавить наблюдателя"
   button_annotate: "Комментировать"
