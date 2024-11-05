@@ -72,9 +72,7 @@ With OpenProject 14.6, we released a feature that allows you to enable or disabl
 
 ### Improved navigation clarity – 'My account' is renamed to 'Account settings'
 
-Text
-
-Screenshot
+In the personal menu that can be accessed by clicking on your avatar, we renamed 'My account' to 'Account settings', in order to give you a clearer understanding that this menu item contains settings. It now also differs more clearly from 'My Page' and 'My Activities‘, which provide personal data instead of settings.
 
 ## Important updates and breaking changes
 
