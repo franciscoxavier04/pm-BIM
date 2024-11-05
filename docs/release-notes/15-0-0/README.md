@@ -18,7 +18,9 @@ We released [OpenProject 15.0.0](https://community.openproject.org/versions/2076
 
 A major change in version 15.0 is the overall look-and-feel of the activity tab of work packages. Users will notice that the activity tab has a new design and that emoji reactions are now enabled. Additionally, new comments will appear directly without having to reload. This also applies to the notification center, where new notifications will appear in real-time.
 
-This is a big bundle of new features that will greatly improve communication within OpenProject.
+This is a big bundle of new features that will greatly improve communication and interaction within OpenProject, making it more simple, more effective and more fun.
+
+![Screenshot showing the new activity tab with highlighted changes](openproject-15-0-activity-tab-highlighted-all.png)
 
 Related features in 15.0:
 - [Primerise the Activity panel](https://community.openproject.org/wp/54733)
@@ -31,7 +33,10 @@ Let's take a closer look at the three biggest changes concerning this feature bu
 
 #### A new timeline design for the activity tab of work packages
 
-Text
+Apart from some obvious design changes that all fit GitHub's Primer design system, users will benefit from some great new features, such as: 
+- The comment box being a fixed element anchored to the bottom of the split screen area.
+- Filtering the activity panel with options to either show everything, changes only or comments only.
+- Ordering to either newest on top or newest at the bottom
 
 Screenshot
 
@@ -198,6 +203,7 @@ In the personal menu that can be accessed by clicking on your avatar, we renamed
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
+
 A very special thank you goes to the City of Cologne for sponsoring parts of this release. Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Bill Bai, Sam Yelman, Ivan Kuchin, Knight Chang, Gábor Alexovics, Gregor Buergisser, Andrey Dermeyko, Various Interactive, Clayton Belcher, Александр Татаринцев, and Keno Krewer.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
@@ -207,4 +213,3 @@ Last but not least, we are very grateful for our very engaged translation contri
 - [Alin Marcu](https://crowdin.com/profile/deconfcom), for a great number of translations into Romanian.
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../development/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
-
