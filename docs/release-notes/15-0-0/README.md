@@ -14,43 +14,56 @@ We released OpenProject [OpenProject 15.0.0](https://community.openproject.org/v
 
 ### Important feature changes
 
-### Boost your communication with real-time loading messages and notifications, emoji reactions, and more.
+### Boost your communication with real-time loading messages and notifications, emoji reactions, and more
 
 Text
 
 Screenshot
 
-### Benefit from easy Single Sign-On authentication settings with SAML and OICD in your administration.
+### Benefit from easy Single Sign-On authentication settings with SAML and OICD in your administration
+
+With OpenProject 15.0, particularly SaaS customers will benefit from our new user interface for SAML and OIDC. This means they can now set up integrations between OpenProject and SAML or OpenID connect stacks independently and offer users options for Single Sign-On (SSO). Before 15.0, SaaS customers had to contact the OpenProject support if they wanted custom integrations with their SAML or OpenID connect stacks. Now, they cannot only set them up on their own, but also have tools for debugging them if needed.
+
+Related features in 15.0:
+
+- [User interface for OIDC (OpenID Connect) provider configuration](https://community.openproject.org/wp/57677)
+- [User interface for SAML configuration](https://community.openproject.org/wp/40279)
+- [Show danger zone when deleting SAML or OIDC provider](https://community.openproject.org/wp/58451)
+- [Allow setting omniauth_direct_login_provider through UI](https://community.openproject.org/wp/58437)
+
+Under administration/authentication, admins can now set up [OpenID](../../system-admin-guide/authentication/openid-providers/) or [SAML providers](../../system-admin-guide/authentication/saml/). Here is an example screenshot for adding an OpenID provider:
+
+![Example screenshot of the administration screen if you want to add an OpenIDprovider in OpenProject](openproject-15-0-sso-administration-dropdown.png)
+
+Once set up, users can log in with their existing account, for example like shown in this screenshot:
+
+![Example screenshot of the log in screen with options to single sign-on](OpenProject_SSO_SAML_OpenID-highlighted.png)
+
+### Use the new 'Standard global role' and enable permissions to view email addresses
 
 Text
 
 Screenshot
 
-### Use the new 'Standard global role' and enable permissions to view email addresses.
+### Enjoy easier navigation in project lists with quick action table headers
 
 Text
 
 Screenshot
 
-### Enjoy easier navigation in project lists with quick action table headers.
+### Experience simplified design settings with fewer sidebar design variables needed
 
 Text
 
 Screenshot
 
-### Experience simplified design settings with fewer sidebar design variables needed.
+### Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects
 
 Text
 
 Screenshot
 
-### Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects.
-
-Text
-
-Screenshot
-
-### Improved navigation clarity – 'My account' is renamed to 'Account settings'.
+### Improved navigation clarity – 'My account' is renamed to 'Account settings'
 
 Text
 
