@@ -31,7 +31,7 @@ Related features in 15.0:
 - [Show danger zone when deleting SAML or OIDC provider](https://community.openproject.org/wp/58451)
 - [Allow setting omniauth_direct_login_provider through UI](https://community.openproject.org/wp/58437)
 
-Under Administration/Authentication, admins can now set up [OpenID](../../system-admin-guide/authentication/openid-providers/) or [SAML providers](../../system-admin-guide/authentication/saml/). Here is an example screenshot for adding an OpenID provider:
+Under *Administration > Authentication*, admins can now set up [OpenID](../../system-admin-guide/authentication/openid-providers/) or [SAML providers](../../system-admin-guide/authentication/saml/). Here is an example screenshot for adding an OpenID provider:
 
 ![Example screenshot of the administration screen if you want to add an OpenIDprovider in OpenProject](openproject-15-0-sso-administration-dropdown.png)
 
@@ -41,7 +41,7 @@ Once set up, users can log in with their existing account, for example like show
 
 ### Use the new 'Standard global role' and enable permissions to view email addresses
 
-With OpenProject 15.0, you get a new default 'Standard global role' that is automatically and permanently given to all users. If you are an administrator responsible for roles, please check this under Administration/Users and permissions/Roles and permissions/Standard global role. This role has several permissions to choose from, one being 'View users' mail addresses'.  Enable this permission to allow any user to see everyone's email address in autocomplete situations, such as when they select a work package assignee from a drop-down list.
+With OpenProject 15.0, you get a new default 'Standard global role' that is automatically and permanently given to all users. If you are an administrator responsible for roles, please check this under *Administration > Users and permissions > Roles and permissions > Standard global role*. This role has several permissions to choose from, one being 'View users' mail addresses'.  Enable this permission to allow any user to see everyone's email address in autocomplete situations, such as when they select a work package assignee from a drop-down list.
 
 Before version 15.0, users could choose whether their email address was displayed. Now this is an administrative decision that applies to either everyone or no one.
 
@@ -68,9 +68,7 @@ All these colors will now be calculated depending on the brightness of the respe
 
 ### Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects
 
-Text
-
-Screenshot
+With OpenProject 14.6, we released a feature that allows you to enable or disable a custom field for multiple projects at once. This is why with OpenProject 15.0, we remove the automation to apply a new custom field to all projects where the respective type is activated. This reduces manual cleanup in case you did not want to activate the new custom field in all projects. If you do want that, you can use the feature we introduced last release and go to *Administration > Custom Fields* and click on the 'Add projects' button.
 
 ### Improved navigation clarity – 'My account' is renamed to 'Account settings'
 
