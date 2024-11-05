@@ -16,9 +16,34 @@ We released OpenProject [OpenProject 15.0.0](https://community.openproject.org/v
 
 ### Boost your communication with real-time loading messages and notifications, emoji reactions, and more
 
+A major change in version 15.0 is the overall look-and-feel of the activity tab of work packages. Users will notice that the activity tab has a new design and that emoji reactions are now enabled. Additionally, new comments will appear directly withouth having to reload. This also applies to the notification center, where new notifications will appear in real-time.
+
+This is a big bundle of new features that will greatly improve communication within OpenProject.
+
+Related features in 15.0:
+- [Primerise the Activity panel](https://community.openproject.org/wp/54733)
+- [Emoji reactions to work package comments](https://community.openproject.org/wp/40437)
+- [Continuously update the notification center. Don't ask for loading updates.](https://community.openproject.org/wp/58253)
+- [Remove "Latest activity" section from work package "Overview" tab](https://community.openproject.org/wp/58017)
+- [On "Newest at the bottom" have the line touch the input box](https://community.openproject.org/wp/57262)
+
+Let's take a closer look at the thre biggest changes concerning this feature bundle:
+
+#### A new timeline design for the activity tab of work packages
+
 Text
 
 Screenshot
+
+#### Emoji reactions to work package comments
+
+Text
+
+![Example screenshot showing emoji reactions in OpenProject's work package comments](openproject-15-0-emoji-reactions.png)
+
+#### Continuous update of the notification center
+
+Text
 
 ### Benefit from easy Single Sign-On authentication settings with SAML and OICD in your administration
 
@@ -52,6 +77,8 @@ Before version 15.0, users could choose whether their email address was displaye
 With OpenProject 15.0, we are pleased to release another great feature for our project lists: Clicking on the table headers in a project list now gives you a quick action menu that not only allows you to sort in descending or ascending order, but also to filter or change, remove or add a column. While these features are not new and you can still find them in the top-right menu button, these actions are now much quicker to access.
 
 ![Example screenshot of a project list with dropdown menu on a table header](openproject-15-0-project-lists.png)
+
+![Gif showing how quickly you can now change rows in project lists by clicking on the headers](quick_action_table_headers.gif)
 
 ### Experience simplified design settings with fewer sidebar design variables needed
 
