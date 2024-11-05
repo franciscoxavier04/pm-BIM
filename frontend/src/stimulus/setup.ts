@@ -11,6 +11,7 @@ import TableHighlightingController from './controllers/table-highlighting.contro
 import OpShowWhenCheckedController from './controllers/show-when-checked.controller';
 import OpShowWhenValueSelectedController from './controllers/show-when-value-selected.controller';
 import FlashController from './controllers/flash.controller';
+import OpProjectsZenModeController from './controllers/dynamic/projects/zen-mode.controller';
 
 declare global {
   interface Window {
@@ -38,3 +39,4 @@ instance.register('refresh-on-form-changes', RefreshOnFormChangesController);
 instance.register('async-dialog', AsyncDialogController);
 instance.register('poll-for-changes', PollForChangesController);
 instance.register('table-highlighting', TableHighlightingController);
+instance.register('projects-zen-mode', OpProjectsZenModeController);

@@ -221,8 +221,12 @@ pt-PT:
       items:
         actions: "Item actions"
         blankslate:
-          title: "A sua lista de itens está vazia"
-          description: "Comece por adicionar itens ao campo personalizado do tipo hierarquia. Cada item pode ser utilizado para criar uma hierarquia abaixo dele. Para navegar e criar subitens dentro de uma hierarquia, clique no item criado."
+          root:
+            title: "Your list of items is empty"
+            description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
+          item:
+            title: This item doesn't have any hierarchy level below
+            description: Add items to this list to create sub-items inside another one
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -1377,6 +1381,9 @@ pt-PT:
   button_actions: "Ações"
   button_add: "Adicionar"
   button_add_comment: "Adicionar comentário"
+  button_add_item_above: "Add item above"
+  button_add_item_below: "Add item below"
+  button_add_sub_item: "Add sub-item"
   button_add_member: Adicionar membro
   button_add_watcher: "Adicionar observadores"
   button_annotate: "Anotar"
