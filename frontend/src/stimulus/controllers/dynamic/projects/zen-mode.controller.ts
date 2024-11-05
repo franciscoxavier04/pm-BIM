@@ -16,7 +16,7 @@ export default class OpProjectsZenModeController extends ApplicationController {
   }
 
   fullscreenChangeEventHandler() {
-    this.changeButtonState(!this.inZenMode);
+    this.inZenMode = !this.inZenMode;
     this.dispatchZenModeStatus();
   }
 
@@ -41,11 +41,6 @@ export default class OpProjectsZenModeController extends ApplicationController {
     if (document.documentElement.requestFullscreen) {
       void document.documentElement.requestFullscreen();
     }
-  }
-
-  public changeButtonState(inZenMode:boolean) {
-    this.inZenMode = inZenMode;
-    this.buttonTarget.setAttribute('aria-pressed', inZenMode.toString());
   }
 
   public performAction() {
