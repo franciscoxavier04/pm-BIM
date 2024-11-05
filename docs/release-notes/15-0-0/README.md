@@ -10,13 +10,13 @@ release_date: 2024-10-31
 
 Release date: 2024-11-13
 
-We released OpenProject [OpenProject 15.0.0](https://community.openproject.org/versions/2076). The major release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.0.0](https://community.openproject.org/versions/2076). The major release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
-### Important feature changes
+## Important feature changes
 
 ### Boost your communication with real-time loading messages and notifications, emoji reactions, and more
 
-A major change in version 15.0 is the overall look-and-feel of the activity tab of work packages. Users will notice that the activity tab has a new design and that emoji reactions are now enabled. Additionally, new comments will appear directly withouth having to reload. This also applies to the notification center, where new notifications will appear in real-time.
+A major change in version 15.0 is the overall look-and-feel of the activity tab of work packages. Users will notice that the activity tab has a new design and that emoji reactions are now enabled. Additionally, new comments will appear directly without having to reload. This also applies to the notification center, where new notifications will appear in real-time.
 
 This is a big bundle of new features that will greatly improve communication within OpenProject.
 
@@ -27,7 +27,7 @@ Related features in 15.0:
 - [Remove "Latest activity" section from work package "Overview" tab](https://community.openproject.org/wp/58017)
 - [On "Newest at the bottom" have the line touch the input box](https://community.openproject.org/wp/57262)
 
-Let's take a closer look at the thre biggest changes concerning this feature bundle:
+Let's take a closer look at the three biggest changes concerning this feature bundle:
 
 #### A new timeline design for the activity tab of work packages
 
@@ -91,7 +91,7 @@ Before version 15.0, the design configuration in the administration was very com
 - Main menu font on hover
 - Main menu border
 
-All these colors will now be calculated depending on the brightness of the respective background to ensure a high-enough contrast. Font colors will either be black or white and border colors will be set only if there is a bright background.
+All these colors will now be calculated depending on the brightness of the respective background to ensure a high-enough contrast. Font colors will either be black or white, and border colors will be set only if there is a bright background.
 
 ### Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects
 
@@ -202,7 +202,7 @@ A very special thank you goes to the City of Cologne for sponsoring parts of thi
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
 - [Alexander Aleschenko](https://crowdin.com/profile/top4ek), for a great number of translations into Russian.
-- [حمید ملک محمدی](https://crowdin.com/profile/hmmftg), for a great number of translations into Persian.
+- [hmmftg](https://crowdin.com/profile/hmmftg), for a great number of translations into Persian.
 - [william](https://crowdin.com/profile/WilliamFromTW), for a great number of translations into Chinese Simplified and Chinese Traditional.
 - [Alin Marcu](https://crowdin.com/profile/deconfcom), for a great number of translations into Romanian.
 
