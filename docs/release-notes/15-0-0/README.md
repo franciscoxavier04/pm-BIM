@@ -31,7 +31,7 @@ Related features in 15.0:
 - [Show danger zone when deleting SAML or OIDC provider](https://community.openproject.org/wp/58451)
 - [Allow setting omniauth_direct_login_provider through UI](https://community.openproject.org/wp/58437)
 
-Under administration/authentication, admins can now set up [OpenID](../../system-admin-guide/authentication/openid-providers/) or [SAML providers](../../system-admin-guide/authentication/saml/). Here is an example screenshot for adding an OpenID provider:
+Under Administration/Authentication, admins can now set up [OpenID](../../system-admin-guide/authentication/openid-providers/) or [SAML providers](../../system-admin-guide/authentication/saml/). Here is an example screenshot for adding an OpenID provider:
 
 ![Example screenshot of the administration screen if you want to add an OpenIDprovider in OpenProject](openproject-15-0-sso-administration-dropdown.png)
 
@@ -41,15 +41,17 @@ Once set up, users can log in with their existing account, for example like show
 
 ### Use the new 'Standard global role' and enable permissions to view email addresses
 
-Text
+With OpenProject 15.0, you get a new default 'Standard global role' that is automatically and permanently given to all users. If you are an administrator responsible for roles, please check this under Administration/Users and permissions/Roles and permissions/Standard global role. This role has several permissions to choose from, one being 'View users' mail addresses'.  Enable this permission to allow any user to see everyone's email address in autocomplete situations, such as when they select a work package assignee from a drop-down list.
 
-Screenshot
+Before version 15.0, users could choose whether their email address was displayed. Now this is an administrative decision that applies to either everyone or no one.
+
+![Example screenshot of permissions view for the new Standard global role, with checkmark at 'View users' mail addresses](openproject-15-0-standard-global-role.png)
 
 ### Enjoy easier navigation in project lists with quick action table headers
 
-Text
+With OpenProject 15.0, we are pleased to release another great feature for our project lists: Clicking on the table headers in a project list now gives you a quick action menu that not only allows you to sort in descending or ascending order, but also to filter or change, remove or add a column. While these features are not new and you can still find them in the top-right menu button, these actions are now much quicker to access.
 
-Screenshot
+![Example screenshot of a project list with dropdown menu on a table header](openproject-15-0-project-lists.png)
 
 ### Experience simplified design settings with fewer sidebar design variables needed
 
