@@ -61,6 +61,7 @@ export default class IndexController extends Controller {
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
 
+    this.handleStemVisibility();
     this.setLocalStorageKey();
     this.setLastUpdateTimestamp();
     this.setupEventListeners();
@@ -197,10 +198,13 @@ export default class IndexController extends Controller {
   }
 
   private handleUpdateStreamsResponse(html:string, journalsContainerAtBottom:boolean) {
-    this.setLastUpdateTimestamp();
-    this.checkForAndHandleWorkPackageUpdate(html);
-    this.checkForNewNotifications(html);
-    this.performAutoScrolling(html, journalsContainerAtBottom);
+    setTimeout(() => {
+      this.handleStemVisibility();
+      this.setLastUpdateTimestamp();
+      this.checkForAndHandleWorkPackageUpdate(html);
+      this.checkForNewNotifications(html);
+      this.performAutoScrolling(html, journalsContainerAtBottom);
+    }, 100);
   }
 
   private checkForAndHandleWorkPackageUpdate(html:string) {
@@ -557,6 +561,7 @@ export default class IndexController extends Controller {
       if (this.isMobile()) {
         this.scrollInputContainerIntoView(300);
       }
+      this.handleStemVisibility();
     }, 10);
 
     this.saveInProgress = false;
@@ -577,7 +582,47 @@ export default class IndexController extends Controller {
     this.journalsContainerTarget.classList.add('work-packages-activities-tab-index-component--journals-container_with-input-compensation');
   }
 
-  setLastUpdateTimestamp() {
+  private setLastUpdateTimestamp() {
     this.lastUpdateTimestamp = new Date().toISOString();
+  }
+
+  // Towards the code below:
+  // Ideally the stem rendering would be correctly rendered for all UI states from the server
+  // but as we push single elements into the DOM via turbo-streams, the server-side rendered collection state gets stale quickly
+  // I've decided to go with a client-side rendering-correction approach for now
+  // as I don't want to introduce more complexity and queries (n+1 for position checks etc.) to the server-side rendering
+  private handleStemVisibility() {
+    this.handleStemVisibilityForMobile();
+    this.handleLastStemPartVisibility();
+  }
+
+  private handleStemVisibilityForMobile() {
+    if (this.isMobile()) {
+      if (this.sortingValue === 'asc') return;
+
+      const initialJournalContainer = this.element.querySelector('.work-packages-activities-tab-journals-item-component-details--journal-details-container[data-initial="true"]') as HTMLElement;
+
+      if (initialJournalContainer) {
+        initialJournalContainer.classList.add('work-packages-activities-tab-journals-item-component-details--journal-details-container--border-removed');
+      }
+    }
+  }
+
+  private handleLastStemPartVisibility() {
+    const emptyLines = this.element.querySelectorAll('.empty-line');
+
+    // make sure all are visible first
+    emptyLines.forEach((container) => {
+      container.classList.remove('work-packages-activities-tab-journals-item-component-details--journal-details-container--hidden');
+    });
+
+    if (this.sortingValue === 'asc' || this.filterValue === 'only_changes') return;
+
+    // then hide the last one again
+    if (emptyLines.length > 0) {
+      // take the parent container of the last empty line
+      const lastEmptyLineContainer = emptyLines[emptyLines.length - 1].parentElement as HTMLElement;
+      lastEmptyLineContainer.classList.add('work-packages-activities-tab-journals-item-component-details--journal-details-container--hidden');
+    }
   }
 }
