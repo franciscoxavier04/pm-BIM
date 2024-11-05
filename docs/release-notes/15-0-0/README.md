@@ -55,9 +55,16 @@ With OpenProject 15.0, we are pleased to release another great feature for our p
 
 ### Experience simplified design settings with fewer sidebar design variables needed
 
-Text
+Before version 15.0, the design configuration in the administration was very complex as there were many variables to be defined. This is why with OpenProject 15.0, the following design colors cannot be customized anymore:
+- Header font
+- Header font on hover
+- Header border
+- Main menu font
+- Main menu font when selected
+- Main menu font on hover
+- Main menu border
 
-Screenshot
+All these colors will now be calculated depending on the brightness of the respective background to ensure a high-enough contrast. Font colors will either be black or white and border colors will be set only if there is a bright background.
 
 ### Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects
 
