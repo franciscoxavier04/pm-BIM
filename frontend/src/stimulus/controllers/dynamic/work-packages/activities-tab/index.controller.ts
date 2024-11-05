@@ -4,7 +4,6 @@ import {
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
-import { IanCenterService } from 'core-app/features/in-app-notifications/center/state/ian-center.service';
 
 interface CustomEventWithIdParam extends Event {
   params:{
@@ -56,13 +55,11 @@ export default class IndexController extends Controller {
   private turboRequests:TurboRequestsService;
 
   private apiV3Service:ApiV3Service;
-  private ianCenterService:IanCenterService;
 
   async connect() {
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.apiV3Service = context.services.apiV3Service;
-    this.ianCenterService = context.services.ianCenter;
 
     this.setLocalStorageKey();
     this.setLastUpdateTimestamp();
@@ -224,7 +221,7 @@ export default class IndexController extends Controller {
   }
 
   private updateNotificationCenter() {
-    this.ianCenterService.updateImmediate();
+    document.dispatchEvent(new Event('ian-update-immediate'));
   }
 
   private performAutoScrolling(html:string, journalsContainerAtBottom:boolean) {
