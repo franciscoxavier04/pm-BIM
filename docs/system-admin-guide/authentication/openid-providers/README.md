@@ -9,39 +9,24 @@ keywords: OpenID providers
 
 | Topic                                                        | Content                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Google Workspace](#google-workspace)                        | How to use Google Workspace as an SSO provider for OpenProject? |
-| [Azure Active Directory](#azure-active-directory)            | How to use Microsoft Azure Active Directory as an SSO provider for OpenProject? |
+| Login with [Google Workspace](#google)                       | How to use Google Workspace as an SSO provider for OpenProject? |
+| [Microsoft Entra ID](#microsoft-entra) (previously Azure)    | How to use Microsoft Azure Active Directory as an SSO provider for OpenProject? |
 | [Custom OpenID Connect Providers](#custom-openid-connect-providers) | Configuration of additional OpenID Connect providers.        |
 | [Troubleshooting](#troubleshooting)                          | Common complications when using OpenID as SSO.               |
 
 To activate and configure OpenID providers in OpenProject, navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*.
 
-## Add a new authentication application for oauth
+## Add a new OpenID Connect provider
 
-To add a new OpenID provider, click the green **+ OpenID provider** button.
+To add a new OpenID provider, click the green **+ OpenID provider** dropdown. You can create different kinds of providers with a different set of properties:
 
-![OpenID providers in OpenProject administration](openproject_system-admin-guide_authentication_openid_provider.png)
+- [Google](#google)
+- [Microsoft Entra ID](#microsoft-entra) (previously Azure)
+- [Custom OpenID Connect Providers](#custom-openid-connect-providers)
 
-You can configure the following options.
 
-1. Choose **Google** or **Azure** to add as an OpenID provider to OpenProject.
 
-2. Optionally enter a **display name**.
-
-3. Enter the **Identifier**.
-
-4. Enter the **Secret**.
-
-5. Optionally, if you want to honor the system-wide self-registration setting, enable "Limit self registration".
-  When checked, users will be created according to the [self-registration setting](../authentication-settings).
-
-6. Set the **tenant** of your Azure endpoint. This will control who gets access to the OpenProject instance. For more information, please see [our user guide on Azure OpenID connect](#azure-active-directory)
-
-7. Press the **create** button.
-
-   ![Add a new OpenID provider in OpenProject administration](openproject_system-admin-guide_authentication_openid_provider_new.png)
-
-## Google Workspace
+## Google
 
 ### Step 1: Create the OAuth consent screen
 
@@ -91,21 +76,20 @@ After pressing **CREATE** you will get a pop-up window like the following
 ### Step 3: Add Google as an OpenID Provider to OpenProject
 
 1. Login as OpenProject Administrator
-2. Navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*.
-   1. **Name** Choose Google
-   2. **Display Name** (e.g. **EXAMPLE.COM SSO**)
-   3. **Identifier** (**Client ID** from step 2)
-   4. **Secret** (**Client Secret** from step 2)
-   5. Enable **Limit self registration** option
-3. Press **Create**
+2. Navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*. 
+   - **Click** the green *+ OpenID Connect provider* button
+   - **Choose** Choose the Option Google
+   - Set a **Display Name**, this is the name of the login button shown to users.
+   - On the next section, set **Client ID** and **Client Secret** (from step 2)
+   - Enable **Limit self registration** option if you want users that create accounts with this provider to bypass the configured limit for self-registration .
 
 ![Add a new OpenID Gogole provider in OpenProject administration](openproject_system-admin-guide_authentication_openid_provider_new_google.png)
 
-4. The following green notification **Successful creation** should appear
+Press **Finish setup** to save the client and complete. If you go back to the index page of OpenID connect providers, the new provider should be visible.
 
-![Successful OpenID creation message in OpenProject administration](openproject_system-admin-guide_authentication_openid_provider_new_google_successful_message.png)
+![Saved Google authentication provider](openproject_system-admin-guide_authentication_openid_provider_saved_google.png)
 
-## Azure Active Directory
+## Microsoft Entra
 
 ### Step 1: Register an App in Azure Active Directory
 
@@ -133,7 +117,11 @@ You are now asked for a few settings:
 
 * For "Name", enter "OpenProject".
 * For "Supported account types", select "Accounts in this organization directory only".
-* For "Redirect URI", select the "Web" type, and enter the URL to your OpenProject installation, followed by "/auth/azure/callback". For instance: "https://myserver.com/auth/azure/callback".
+* For "Redirect URI", select the "Web" type, and enter the URL to your OpenProject installation, followed by "/auth/oidc-microsoft-entra/callback". For instance: "https://myserver.com/auth/oidc-microsoft-entra/callback".
+
+> [!NOTE]
+>
+> The Redirect URI is dependent on the display name that you choose later on. You might need to change it to the correct value shown in the administration of OpenProject.
 
 When you are done, click on the "Register" button at the end of the page. You are redirected to your new App registration, be sure to save the "Application (client) ID" that is now displayed. You will need it later.
 
@@ -155,30 +143,132 @@ At the end of this step, you should have a copy of the Application client ID as 
 
 ### Step 2: Configure OpenProject
 
-Now, head over to OpenProject > Administration > OpenID providers. Click on "New OpenID provider", select the Azure type, enter the client ID and client Secret.
+Next, we have to create the OpenID Connect provider in OpenProject:
 
-By default, OpenProject will use the Microsoft Graph API endpoint to perform user info requests.
-For that, you will need to enter the correct tenant identifier for your Azure instance.
-To find the correct value for your instance, [please see this guide](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri).
+1. Login as OpenProject Administrator
+2. Navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*. 
+   - **Click** the green *+ OpenID Connect provider* button
+   - **Choose** Choose the option **Microsoft Entra**
+   - Set display name **Microsoft Entra**. Please note that if you change this value, the redirect URI in step 1) might change. The redirect URI is shown in (TODO)
+   - Set the **Tenant**: By default, OpenProject will use the Microsoft Graph API endpoint to perform user info requests.
+     For that, you will need to enter the correct tenant identifier for your Azure instance.
+     To find the correct value for your instance, [please see this guide](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri).
+   - On the next section, set **Client ID** and **Client Secret** (from step 1)
+   - Enable **Limit self registration** option if you want users that create accounts with this provider to bypass the configured limit for self-registration .
 
-Once you filled out the form, hit save and the Azure provider has been created.
+![Add a new OpenID Gogole provider in OpenProject administration](azure-display-name-tenant.png)
 
-You can now log out, and see that the login form displays a badge for authenticating with Azure. If you click on that badge, you will be redirected to Azure to enter your credentials and allow the App to access your Azure profile, and you should then be automatically logged in.
+Press **Finish setup** to save the client and complete. If you go back to the index page of OpenID connect providers, the new provider should be visible. In there, you can see the redirect URI (TODO) in case you set a custom display name.
 
-Congratulations, your users can now authenticate using your Azure Active Directory!
+![Saved Google authentication provider](azure-provider-index.png) Congratulations, your users can now authenticate using your Microsoft Entra ID provider using the button in the Login form.
 
-#### Tenant configuration
+## Custom OpenID Connect Provider
 
-Sometimes you may need to configure the `tenant` option for the AzureAD connection.
-Currently this is not possible through the user interface.
+Starting in OpenProject 15.0., you can also create custom OpenID Connect providers using the user interface.
 
-But you can do it via the console as described [here](../../../installation-and-operations/misc/custom-openid-connect-providers/#custom-openid-connect-providers) where you can add `tenant` next to the other options like `host`, `identifier` and `secret`.
+To start creating a custom provider, please follow these steps:
 
-## Custom OpenID Connect Providers
+1. Login as OpenProject Administrator
+2. Navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*. 
+   - **Click** the green *+ OpenID Connect provider* button
+   - **Choose** Choose the *Option* **Custom**
 
-You  can still use an arbitrary provider. But for the time being there is no user interface yet for this. That means you will have to do it directly using the console on the server or via environment variables.
+#### Step 1: Display name
 
-Please continue reading in the [Miscellaneous section of the Installation and Operations Guide](../../../installation-and-operations/misc/custom-openid-connect-providers/).
+- Set a **Display Name**, this is the name of the login button shown to users. Let's assume we're trying to connect *Keycloak* with OpenProject for this example. We will in Keycloak as that's the label of the button to be shown to users trying to authenticate.
+
+
+
+#### Step 2: Discovery endpoint
+
+- On the next section, you have the option to specify a discovery endpoint URL to pre-fill some public attributes
+  - For Keycloak, this URL is based on the configured realm name `http://keycloak.example.com:443/realms/{realm}/.well-known/openid-configuration`
+- If you have a discovery endpoint URL, choose **I have a discovery endpoint URL** and fill it in
+- Click **Continue**. With a discovery endpoint URL, OpenProject will try to fetch this information and take you to the next step. Observe the page for error responses in case it cannot connect to the endpoint or the returned information is invalid.
+
+![Discovery endpoint URL ](./custom-provider-metadata-discovery.png)
+
+#### Step 3: Advanced configuration
+
+- Unless the metadata endpoint provided these values, you will have to fill out some required endpoint URLs like **Authorization endpoint**, **User information endpoint**, and **Token endpoint**.
+- Fill out the **Issuer** field which depends on the provider. For Keycloak, this value would be the realm URL: `http://keycloak.example.com:443/realms/{realm}`
+- Optionally fill out:
+  -  **End session endpoint**, an URL where OpenProject should redirect to to terminate a user's session.
+  -  **JWKS URI**. This is the URL of the provider's  JSON Web Key Set document containing e.g., signing keys and certificates.
+  - A custom icon by using a publicly available URL to fetch the logo from
+- Click on **Continue** to validate this form and move to the next step. If there are any errors in this form, they will turn red and inform you about what you need to change.
+
+![Bildschirmfoto 2024-11-06 um 18.07.44](./custom-provider-advanced-config.png)
+
+#### Step 5: Client details
+
+In the next section, fill out the client credentials provided from your OpenID Connect provider:
+
+- Fill out **Client ID** and **Client secret**
+- If you want users to be redirected to a separate endpoint _after logging out_ at the identity provider, set **Post Logout Redirect URI**.
+- If you want this login mechanism to respect the global setting for self registration limits, check **Limit self registration**.
+- Click **Continue**.
+
+#### Step 6: Optional attribute mapping
+
+You can optionally provide a custom mapping for attributes in the `userinfo` endpoint response. In most cases, you can leave this empty, unless you are providing custom attributes for user properties through.
+
+If you need to set some of these values, enter the attribute key used/returned in the `userinfo` endpoint.
+
+For example: Keycloak allows you to map custom properties of the user. This allows you to specify a login with, e.g, `preferred_username` userinfo. In this case, you would fill out `Mapping for: Username` with 
+
+#### Step 7: Claims
+
+You can optionally request [claims](https://openid.net/specs/openid-connect-core-1_0-final.html#Claims) for both the id_token and userinfo endpoint. Mind though that currently only claims requested for the id_token returned with the authorize response are validated. That is authentication will fail if a requested essential claim is not returned.
+
+If you do not need Claims or are unaware of their use-cases, simply skip this step and click on **Finish setup** .
+
+**Requesting MFA authentication via the ACR claim**
+
+Say for example that you want to request that the user authenticate using MFA (multi-factor authentication). You can do this by using the ACR (Authentication Context Class Reference) claim.
+
+This may look different for each identity provider. But if they follow, for instance the [EAP (Extended Authentication Profile)](https://openid.net/specs/openid-connect-eap-acr-values-1_0.html) then the claims would be `phr` (phishing-resistant) and ‘phrh’ (phishing-resistant hardware-protected). Others may simply have an additional claim called `Multi_Factor`.
+
+You have to check with your identity provider how these values must be called, as they vary from provider.
+
+In the following example we request a list of ACR values. One of which must be satisfied (i.e. returned in the ID token by the identity provider, meaning that the requested authentication mechanism was used) for the login in OpenProject to succeed. If none of the requested claims are present, authentication will fail.
+
+To specify these, you can provide a JSON. Use the following template as a starting point:
+
+```
+{
+  "id_token": {
+    "acr": {
+      "essential": true,
+      "values": ["phr", "phrh", "Multi_Factor"]
+    }
+  }
+}
+```
+
+
+
+**Non-essential claims**
+
+You may also request non-essential claims. In the example above this indicates that users should preferably be authenticated using those mechanisms but it’s not strictly required. The login into OpenProject will then work even if none of the claims are returned by the identity provider.
+
+**The acr_values option**
+
+For non-essential ACR claims you can also use the shorthand form of the option like this:
+
+```
+options = { ... }
+
+options["acr_values"] = "phr phrh Multi_Factor"
+```
+
+The option takes a space-separated list of ACR values. This is functionally the same as using the more complicated `claims` option above but with `"essential": false`. For all other claims there is no such shorthand.
+
+After entering Claims information, click on **Finish setup** to complete the provider creation form.
+
+![Bildschirmfoto 2024-11-06 um 18.34.28](./custom-provider-claims.png)
+
+
 
 ## Troubleshooting
 
