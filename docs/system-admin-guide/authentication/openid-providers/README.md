@@ -11,7 +11,7 @@ keywords: OpenID providers
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Login with [Google Workspace](#google)                       | How to use Google Workspace as an SSO provider for OpenProject? |
 | [Microsoft Entra ID](#microsoft-entra) (previously Azure)    | How to use Microsoft Azure Active Directory as an SSO provider for OpenProject? |
-| [Custom OpenID Connect Providers](#custom-openid-connect-providers) | Configuration of additional OpenID Connect providers.        |
+| [Custom OpenID Connect Providers](#custom-openid-connect-provider) | Configuration of additional OpenID Connect providers.        |
 | [Troubleshooting](#troubleshooting)                          | Common complications when using OpenID as SSO.               |
 
 To activate and configure OpenID providers in OpenProject, navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*.
@@ -22,8 +22,7 @@ To add a new OpenID provider, click the green **+ OpenID provider** dropdown. Yo
 
 - [Google](#google)
 - [Microsoft Entra ID](#microsoft-entra) (previously Azure)
-- [Custom OpenID Connect Providers](#custom-openid-connect-providers)
-
+- [Custom OpenID Connect Providers](#custom-openid-connect-provider)
 
 
 ## Google
@@ -359,6 +358,3 @@ In OpenProject, create a custom provider as shown above using these parameters
 - **Token endpoint**: `/oauth2/v1/token`
 - **End session endpoint**: `https://mypersonal.okta.com/oauth2/{authorizationServerId}/v1/logout`
 - **OpenProject Redirect URI**: `https://openproject.example.com/auth/oidc-keycloak/callback` (Note that this URL depends on the display name above. See the UI for the actual Redirect URI)
-
-
-
