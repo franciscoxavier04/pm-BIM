@@ -48,9 +48,9 @@ Please note that emoji reactions don't trigger notifications. If you need your c
 
 #### Continuous update of the notification center
 
-Starting with version 15.0, the notification center will continuously update and new notifications will appear directly. This means no more blue flash message mentioning that there are updates and asking if you want to reload the page. The number shown next to the bell icon will also update immeadiately. This feature adds to our goal to enable smooth communication and information.
+Starting with version 15.0, the notification center will continuously update and new notifications will appear directly. This means no more blue flash message mentioning that there are updates and asking if you want to reload the page. The number shown next to the bell icon will also update immediately. This feature adds to our goal to enable smooth communication and information.
 
-### Benefit from easy Single Sign-On authentication settings with SAML and OICD in your administration
+### Benefit from easy Single Sign-On authentication settings with SAML and OIDC in your administration
 
 With OpenProject 15.0, particularly SaaS customers will benefit from our new user interface for SAML and OIDC. This means they can now set up integrations between OpenProject and SAML or OpenID connect stacks independently and offer users options for Single Sign-On (SSO). Before 15.0, SaaS customers had to contact the OpenProject support if they wanted custom integrations with their SAML or OpenID connect stacks. Now, they cannot only set them up on their own, but also have tools for debugging them if needed.
 
