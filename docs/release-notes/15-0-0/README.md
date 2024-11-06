@@ -21,7 +21,7 @@ A major change in version 15.0 is the overall look-and-feel of the activity tab 
 This is a big bundle of new features that will greatly improve communication and interaction within OpenProject, making it more simple, more effective and more fun.
 
 Related features in 15.0:
-- [Primerise the Activity panel](https://community.openproject.org/wp/54733)
+- [Change the design of the Activity panel to Primer](https://community.openproject.org/wp/54733)
 - [Emoji reactions to work package comments](https://community.openproject.org/wp/40437)
 - [Continuously update the notification center. Don't ask for loading updates.](https://community.openproject.org/wp/58253)
 - [Remove "Latest activity" section from work package "Overview" tab](https://community.openproject.org/wp/58017)
@@ -44,7 +44,7 @@ Many users have wished to be able to react to comments in work packages using em
 
 ![Example screenshot showing emoji reactions in OpenProject's work package comments](openproject-emoji-overview.png)
 
-Please note that emoji reactions don't trigger notifications. If you need your colleague to be notified about your reaction, please keep to the regular comment.
+Please note that emoji reactions don't trigger notifications. If you need your colleague to be notified about your reaction, leave a regular comment.
 
 #### Continuous update of the notification center
 
