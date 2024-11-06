@@ -295,3 +295,70 @@ exit
 Then, existing users should be able to log in using their Azure identity. Note that this works only if the user is using password-based authentication, and is not linked to any other authentication source (e.g. LDAP) or OpenID provider.
 
 Note that this setting is set to true by default for new installations already.
+
+
+
+### Configuration for Okta
+
+If you use Okta with OpenID Connect, use these configuration properties in the custom provider form:
+
+- **Display name:** Okta
+- **Client ID / Secret**: Values provided from Okta
+- **Authorization endpoint**: `/oauth2/v1/authorize`
+- **User information endpoint**: `/oauth2/v1/userinfo`
+- **Token endpoint**: `/oauth2/v1/token`
+- **End session endpoint**: `https://mypersonal.okta.com/oauth2/{authorizationServerId}/v1/logout`
+
+
+
+### Configuration for Keycloak
+
+In Keycloak, use the following steps to set up a OIDC integration for OpenProject:
+
+- Select or create a realm you want to authenticate OpenProject with. Remember that realm identifier. For the remainder of this section, we're using REALM as the placeholder you'll need to replace.
+- Under "Clients" menu, click on "Create" or "Create client"
+- **Add client**: Enter the following details
+  - **Client type / protocol**: OpenID Connect
+  - **Client ID**: `https://<Your OpenProject hostname>`
+  - **Name**:  Choose any name, used only within keycloak
+- For the **Capability config**, keep Standard flow checked. In our tested version of Keycloak, this was the default.
+- Click on Save
+
+You will be forwarded to the settings tab  of the new client. Change these settings:
+
+- Set **Valid redirect URIs** to `https://<Your OpenProject hostname>/auth/oidc-keycloak/*`
+- Enable **Sign Documents**
+- If you want to enable [Backchannel logout](https://openid.net/specs/openid-connect-backchannel-1_0.html), set **Backchannel logout URL** to `https://<Your OpenProject hostname>/auth/oidc-keycloak/backchannel-logout`
+
+Next, you will need to create or note down the client secret for that client.
+
+- Go to the **Credentials** tab
+- Click on the copy to clipboard button next to **Client secret** to copy that value
+
+**OPTIONAL:** By default, OpenProject will map the user's email to the login attribute in OpenProject. If you want to change that, you can do it by providing an alternate claim value in Keycloak:
+
+- Go to **Client scopes**
+- Click on the `https://<Your OpenProject hostname>-dedicated` scope
+- Click on **Add mapper** and **By configuration**
+- Select **User property**
+- Assuming you want to provide the username as `preferred_username` to OpenProject, set these values. This will depend on what attribute you want to map:
+  - Set name and to `username`
+  - Set Token claim name to `preferred_username`
+- Click on **Save**
+
+
+
+#### Form values for OpenProject
+
+In OpenProject, create a custom provider as shown above using these parameters
+
+- **Display name:** Keycloak
+- **Client ID / Secret**: Credentials shown above
+- **Authorization endpoint**: `/oauth2/v1/authorize`
+- **User information endpoint**: `/oauth2/v1/userinfo`
+- **Token endpoint**: `/oauth2/v1/token`
+- **End session endpoint**: `https://mypersonal.okta.com/oauth2/{authorizationServerId}/v1/logout`
+- **OpenProject Redirect URI**: `https://openproject.example.com/auth/oidc-keycloak/callback` (Note that this URL depends on the display name above. See the UI for the actual Redirect URI)
+
+
+
