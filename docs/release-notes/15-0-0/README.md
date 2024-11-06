@@ -20,8 +20,6 @@ A major change in version 15.0 is the overall look-and-feel of the activity tab 
 
 This is a big bundle of new features that will greatly improve communication and interaction within OpenProject, making it more simple, more effective and more fun.
 
-![Screenshot showing the new activity tab with highlighted changes](openproject-15-0-activity-tab-highlighted-all.png)
-
 Related features in 15.0:
 - [Primerise the Activity panel](https://community.openproject.org/wp/54733)
 - [Emoji reactions to work package comments](https://community.openproject.org/wp/40437)
@@ -38,17 +36,19 @@ Apart from some obvious design changes that all fit GitHub's Primer design syste
 - Filtering the activity panel with options to either show everything, changes only or comments only.
 - Ordering to either newest on top or newest at the bottom
 
-Screenshot
+![Screenshot showing the new activity tab with highlighted changes](openproject-15-0-activity-tab-highlighted-all.png)
 
 #### Emoji reactions to work package comments
 
-Text
+Many users have wished to be able to react to comments in work packages using emoji and with OpenProject 15.0 this is now possible. In order to still keep it clear and concise, we have limited the emojis to eight helpful reactions:
 
-![Example screenshot showing emoji reactions in OpenProject's work package comments](openproject-15-0-emoji-reactions.png)
+![Example screenshot showing emoji reactions in OpenProject's work package comments](openproject-emoji-overview.png)
+
+Please note that emoji reactions don't trigger notifications. If you need your colleague to be notified about your reaction, please keep to the regular comment.
 
 #### Continuous update of the notification center
 
-Text
+Starting with version 15.0, the notification center will continuously update and new notifications will appear directly. This means no more blue flash message mentioning that there are updates and asking if you want to reload the page. The number shown next to the bell icon will also update immeadiately. This feature adds to our goal to enable smooth communication and information.
 
 ### Benefit from easy Single Sign-On authentication settings with SAML and OICD in your administration
 
