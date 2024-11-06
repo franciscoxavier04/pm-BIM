@@ -61,7 +61,7 @@ Please note, the status may differ from work package type. They can be configure
 
 ### How to add comments to a work package
 
-To add a comment to a work package, open the [details view](../../work-packages/work-package-views/#full-screen-view) or the [split screen view](../../work-packages/work-package-views/#split-screen-view) of a work package. On the tab [Activity](../../../getting-started/work-packages-introduction/#activity-of-work-packages) tab you have a comment field at the bottom (or on top depending on your [My account settings](../../../user-guide/my-account/)).
+To add a comment to a work package, open the [details view](../../work-packages/work-package-views/#full-screen-view) or the [split screen view](../../work-packages/work-package-views/#split-screen-view) of a work package. On the tab [Activity](../../../getting-started/work-packages-introduction/#activity-of-work-packages) tab you have a comment field at the bottom (or on top depending on your [Account settings](../../../user-guide/account-settings/)).
 
 **Split screen view:**
 
@@ -69,7 +69,7 @@ To add a comment to a work package, open the [details view](../../work-packages/
 
 ### @ notification (mention)
 
-You can mention and notify team members via [@notification](../../notifications/). They will receive a notification in OpenProject about the updates (according to their [notification settings](../../../user-guide/notifications/) in the **My account** settings).
+You can mention and notify team members via [@notification](../../notifications/). They will receive a notification in OpenProject about the updates (according to their [notification settings](../../../user-guide/notifications/) in the **Account settings**).
 
 **Full-screen view**:
 
