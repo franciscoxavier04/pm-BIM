@@ -52,7 +52,7 @@ Starting with version 15.0, the notification center will continuously update and
 
 ### Admin interfaces for SAML and OIDC within the Enterprise Cloud version
 
-With OpenProject 15.0, particularly SaaS customers will benefit from our new user interface for SAML and OIDC. This means they can now set up integrations between OpenProject and SAML or OpenID connect stacks independently and offer users options for Single Sign-On (SSO). Before 15.0, SaaS customers had to contact the OpenProject support if they wanted custom integrations with their SAML or OpenID connect stacks. Now, they cannot only set them up on their own, but also have tools for debugging them if needed.
+With OpenProject 15.0, SaaS customers will benefit from our new user interface for SAML and OIDC. This means they can now set up integrations between OpenProject and SAML or OpenID connect stacks independently and offer users options for Single Sign-On (SSO). Before 15.0, SaaS customers had to contact the OpenProject support if they wanted custom integrations with their SAML or OpenID connect stacks. Now, they cannot only set them up on their own, but also have tools for debugging them if needed.
 
 Related features in 15.0:
 
@@ -112,8 +112,9 @@ If you hover over a linked work package, e.g. in a work package description or i
 
 ![Example screenshot showing a work package hovercard](openproject-15-0-hovercard.png)
 
-
 ### Improve display of work package and agenda titles in meetings
+
+There have been some design improvements regarding meetings again. The work package title will now always be fully displayed, so you won't have to click on it anymore and follow the link to read the whole title. This works in desktop as well as mobile view.
 
 <!--more-->
 
