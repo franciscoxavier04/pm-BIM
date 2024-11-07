@@ -18,7 +18,13 @@ To activate and configure OpenID providers in OpenProject, navigate to *Administ
 
 ## Add a new OpenID Connect provider
 
-To add a new OpenID provider, click the green **+ OpenID provider** dropdown. You can create different kinds of providers with a different set of properties:
+To add a new OpenID provider, click the green **+ OpenID provider** button.
+
+![OpenIDprovider selection in OpenProject administration](openproject_system-admin-guide_authentication_openid_provider_empty.png) 
+
+
+
+You can create different kinds of providers with a different set of properties. You can choose from:
 
 - [Google](#google)
 - [Microsoft Entra ID](#microsoft-entra) (previously Azure)
@@ -34,7 +40,7 @@ To add a new OpenID provider, click the green **+ OpenID provider** dropdown. Yo
 
 ![g1-apis-and-services-oauth-consent-screen](g1-apis-and-services-oauth-consent-screen.png)
 
-3. Create a new project and a new app or edit an existing project and an existing app, setting the following fields (shall be Internal):
+3. Create a new project and a new app or edit an existing project and an existing app, setting the following fields (should be internal):
    1. **App name** (e.g. EXAMPLE.COM SSO)
    2. **User support email** (e.g. user-support@example.com)
    3. **App domains** (at minimum, you must provide the Application home page - e.g. `https://example.openproject.com`)
@@ -80,7 +86,7 @@ After pressing **CREATE** you will get a pop-up window like the following
    - **Choose** Choose the Option Google
    - Set a **Display Name**, this is the name of the login button shown to users.
    - On the next section, set **Client ID** and **Client Secret** (from step 2)
-   - Enable **Limit self registration** option if you want users that create accounts with this provider to bypass the configured limit for self-registration .
+   - Enable **Limit self registration** option if you want users that create accounts with this provider to bypass the configured limit for self-registration.
 
 ![Add a new OpenID Gogole provider in OpenProject administration](openproject_system-admin-guide_authentication_openid_provider_new_google.png)
 
@@ -96,23 +102,23 @@ If your organization currently has an Azure Active Directory to manage users, an
 
 The steps are as follows:
 
-Log into your Microsoft account, and go to the Azure Active Directory administration page.
+1. Log into your Microsoft account, and go to the Azure Active Directory administration page.
 
 ![Azure Active Directory administration page](01-menu.png)
 
-In the sidebar, click on "All services".
+2. In the sidebar, click on "All services".
 
 ![Azure Active Directory All services](02-admin-dashboard.png)
 
-Click on the link named "App registrations".
+3. Click on the link named "App registrations".
 
 ![Azure Active Directory App registrations](03-app-registrations.png)
 
-Click on "New registration".
+4. Click on "New registration".
 
 ![Azure Active Directory New registration](04-register-app.png)
 
-You are now asked for a few settings:
+5. You will then be asked to specify the following settings:
 
 * For "Name", enter "OpenProject".
 * For "Supported account types", select "Accounts in this organization directory only".
@@ -122,19 +128,19 @@ You are now asked for a few settings:
 >
 > The Redirect URI is dependent on the display name that you choose later on. You might need to change it to the correct value shown in the administration of OpenProject.
 
-When you are done, click on the "Register" button at the end of the page. You are redirected to your new App registration, be sure to save the "Application (client) ID" that is now displayed. You will need it later.
+6. When you are done, click on the "Register" button at the end of the page. You are redirected to your new App registration, be sure to save the "Application (client) ID" that is now displayed. You will need it later.
 
 ![Azure Active Directory Admin Dashboard](02-admin-dashboard-1580821056307.png)
 
-You can now click on "Certificates & secret".
+7. You can now click on "Certificates & secret".
 
 ![Azure Active Directory Certificates](06-certificates.png)
 
-Then click on "New client secret", set the description to "client_secret", and the expiration to "730 days (24 months)". Then click on "Add".
+8. Then click on "New client secret", set the description to "client_secret", and the expiration to "730 days (24 months)". Then click on "Add".
 
 ![Azure Active Directory New Client Secret](07-client-secret.png)
 
-A secret should have been generated and is now displayed on the page. Be sure to save it somewhere because it will only be displayed once.
+9. A secret should have been generated and will be displayed on the page. Make sure to save it because it will only be displayed once.
 
 ![Azure Active Directory Add Secret](08-add-secret.png)
 
@@ -152,12 +158,12 @@ Next, we have to create the OpenID Connect provider in OpenProject:
    - Set the **Tenant**: By default, OpenProject will use the Microsoft Graph API endpoint to perform user info requests.
      For that, you will need to enter the correct tenant identifier for your Azure instance.
      To find the correct value for your instance, [please see this guide](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri).
-   - On the next section, set **Client ID** and **Client Secret** (from step 1)
-   - Enable **Limit self registration** option if you want users that create accounts with this provider to bypass the configured limit for self-registration .
+   - In the next section, set **Client ID** and **Client Secret** (from step 1)
+   - Enable **Limit self registration** option if you want users that create accounts with this provider to bypass the configured limit for self-registration.
 
 ![Add a new OpenID Gogole provider in OpenProject administration](azure-display-name-tenant.png)
 
-Press **Finish setup** to save the client and complete. If you go back to the index page of OpenID connect providers, the new provider should be visible. In there, you can see the redirect URI (TODO) in case you set a custom display name.
+Press **Finish setup** to save the client and complete. If you go back to the index page of OpenID connect providers, the new provider should be visible. There you can see the redirect URI (TODO) in case you set a custom display name.
 
 ![Saved Google authentication provider](azure-provider-index.png) Congratulations, your users can now authenticate using your Microsoft Entra ID provider using the button in the Login form.
 
@@ -194,7 +200,7 @@ To start creating a custom provider, please follow these steps:
 - Optionally fill out:
   -  **End session endpoint**, an URL where OpenProject should redirect to to terminate a user's session.
   -  **JWKS URI**. This is the URL of the provider's  JSON Web Key Set document containing e.g., signing keys and certificates.
-  - A custom icon by using a publicly available URL to fetch the logo from
+  - A custom icon by using a publicly available URL to fetch the logo from.
 - Click on **Continue** to validate this form and move to the next step. If there are any errors in this form, they will turn red and inform you about what you need to change.
 
 ![Bildschirmfoto 2024-11-06 um 18.07.44](./custom-provider-advanced-config.png)

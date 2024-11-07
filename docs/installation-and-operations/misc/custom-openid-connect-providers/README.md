@@ -1,19 +1,19 @@
 # Custom OpenID Connect providers
 
-_**Note**:  OpenID Connect providers is an Enterprise add-on. If you do not see the button you will have to activate the Enterprise edition first._
+> [!IMPORTANT]
+> OpenID Connect providers is an Enterprise add-on. If you do not see the button you will have to activate the Enterprise edition first.
 
-Starting in OpenProject 15.0., you can create custom OpenID Connect providers with the user interface [OpenID Providers Authentication Guide](../../../system-admin-guide/authentication/openid-providers/). Please consult this document first for references on all configuratin options. Any providers you have created in earlier versions have been migrated and should be available from the UI.
+Starting in OpenProject 15.0., you can create custom OpenID Connect providers with the user interface [OpenID Providers Authentication Guide](../../../system-admin-guide/authentication/openid-providers/). Please consult this document first for references on all configuration options. Any providers you have created in earlier versions will have been migrated and should be available from the user interface.
 
-For some deployment scenarios, it might be desirable to configure a provider through environment variables however.
+However, for some deployment scenarios, it might be desirable to configure a provider through environment variables.
 
-> **Warning**: Only do this if you know what you are doing. This may break your existing OpenID Connect authentication or cause other issues otherwise.
-
-
+> [!WARNING]
+> Only do this if you know what you are doing. Otherwise this may break your existing OpenID Connect authentication or cause other issues.
 
 ## Environment variables
 
 The provider entries are defined dynamically based on the environment keys. All variables will start with the prefix
-`OPENPROJECT_OPENID__CONNECT_` followed by the provider name. For instance the okta example from above would
+`OPENPROJECT_OPENID__CONNECT_` followed by the provider name. For instance an Okta example would
 be defined via environment variables like this:
 
 ```shell
@@ -23,8 +23,8 @@ OPENPROJECT_OPENID__CONNECT_OKTA_IDENTIFIER="<identifier or client id>"
 # etc.
 ```
 
-**Note**: Underscores in option names must be escaped by doubling them. So make sure to really do use two consecutive
-underscores in `DISPLAY__NAME`, `TOKEN__ENDPOINT` and so forth
+> [!NOTE]
+> Underscores in option names must be escaped by doubling them. So make sure to really do use two consecutive underscores in `DISPLAY__NAME`, `TOKEN__ENDPOINT` and so forth
 
 
 
@@ -146,5 +146,4 @@ The option takes a space-separated list of ACR values. This is functionally the 
 more complicated `claims` option above but with `"essential": false`.
 
 For all other claims there is no such shorthand.
-
 
