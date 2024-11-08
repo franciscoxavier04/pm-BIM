@@ -1,6 +1,6 @@
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2012-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,22 +26,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Queries::Versions::Orders::NameOrder < Queries::Orders::Base
-  self.model = Version
+module OpenIDConnect
+  module Providers
+    class SidePanelComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpTurbo::Streamable
+      include OpPrimer::ComponentHelpers
 
-  def self.key
-    :name
-  end
+      def initialize(provider)
+        super()
 
-  private
-
-  def order
-    ordered = Version.order(:name)
-
-    if direction == :desc
-      ordered = ordered.reverse_order
+        @provider = provider
+      end
     end
-
-    ordered
   end
 end
