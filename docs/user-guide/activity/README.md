@@ -12,11 +12,11 @@ OpenProject makes it easy to keep track of what's going on in [specific work pac
 
 ## Work package activity
 
-The Activity tab within a work package maintains a history of all updates and changes, along with all conversations concerning that work package. This tab is accessible both in full screen mode, when you're viewing a single work package, or in split screen mode, when you're viewing work package details in-context on the right side.
+The Activity tab within a work package maintains a history of all updates and changes, along with all conversations concerning that work package. This tab is accessible both in full work packages view and in split screen mode.
 
 ![The work package Activity tab split screen](Activity-tab.png)
 
-When you first access this tab, you will see the comments and list of changes in a timeline. This timeline can be sorted in either chronological (the newest comments at the bottom) or or ante-chronological order (the newest comments on top):
+When you first access this tab, you will see the comments and list of changes in a timeline. This timeline can be sorted in either chronological (the newest comments at the bottom) or antichronological order (the newest comments on top):
 
 ![You can order the activities to show newest on top or at the bottom](Activity-sortOrder.png)
 
@@ -44,7 +44,7 @@ To add a new comment to a work package, click on the comment box at the bottom o
 
 ![The comment box expands when you write your coment](Activity-commentBox.png)
 
-The more icon (...) next to a comment gives you a number of additional functions.
+The more icon (⋯) next to a comment gives you a number of additional functions.
 
 ![More menu on a comment](Activity-more.png)
 
