@@ -161,7 +161,7 @@ Next, you need to create the OpenID Connect provider in OpenProject:
 2. Navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*. 
    - **Click** the green *+ OpenID Connect provider* button
    - **Choose** Choose the option **Microsoft Entra**
-   - Set display name **Microsoft Entra**. Please note that if you change this value, the redirect URI in step 1) might change. The redirect URI is shown in (TODO)
+   - Set display name **Microsoft Entra**. Please note that if you change this value, the redirect URI in step 1) might change. The redirect URI is shown in the side panel on the right side once you saved the configuration.
    - Set the **Tenant**: By default, OpenProject will use the Microsoft Graph API endpoint to perform user info requests.
      For that, you will need to enter the correct tenant identifier for your Azure instance.
      To find the correct value for your instance, [please see this guide](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri).
@@ -170,7 +170,7 @@ Next, you need to create the OpenID Connect provider in OpenProject:
 
 ![Add a new OpenID Google provider in OpenProject administration](azure-display-name-tenant.png)
 
-Press **Finish setup** to save the client and complete. If you go back to the index page of OpenID connect providers, the new provider should be visible. There you will see the redirect URI (TODO) in case you set a custom display name.
+Press **Finish setup** to save the client and complete. If you go back to the index page of OpenID connect providers, the new provider should be visible. There you will see the redirect URI on the right side in case you set a custom display name.
 
 ![Saved Google authentication provider](azure-provider-index.png) Congratulations, your users can now authenticate using your Microsoft Entra ID provider using the button in the Login form.
 
@@ -227,7 +227,7 @@ You can optionally provide a custom mapping for attributes in the `userinfo` end
 
 If you need to set some of these values, enter the attribute key used/returned in the `userinfo` endpoint.
 
-For example: Keycloak allows you to map custom properties of the user. This allows you to specify a login with, e.g, `preferred_username` userinfo. In this case, you would fill out `Mapping for: Username` with TODO
+For example: Keycloak allows you to map custom properties of the user. This allows you to specify a login with, e.g, `preferred_username` userinfo. In this case, you would fill out `Mapping for: Username` with that attribute returned in the userinfo JSON response.
 
 #### Step 7: Claims
 
