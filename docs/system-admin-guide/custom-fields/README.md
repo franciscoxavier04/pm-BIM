@@ -58,7 +58,7 @@ You can [assign a custom field to a work package type](../manage-work-packages/w
 
 > [!IMPORTANT]
 >
-> Since OpenProject 15.0, when adding new custom fields to a type through the  form configuration, the added custom fields will not be enabled in all projects that have this work package type currently enabled.
+> Starting with OpenProject 15.0, when adding new custom fields to a type through the  form configuration, the added custom fields will not automatically be enabled in all projects that have this work package type currently enabled.
 
 ### Add a custom field to one or multiple projects
 
