@@ -14,19 +14,23 @@ OpenProject makes it easy to keep track of what's going on in [specific work pac
 
 The Activity tab within a work package maintains a history of all updates and changes, along with all conversations concerning that work package. This tab is accessible both in full screen mode, when you're viewing a single work package, or in split screen mode, when you're viewing work package details in-context on the right side.
 
-![The work package Activity tab split screen](Activity%20tab.png)
+![The work package Activity tab split screen](Activity-tab.png)
 
 When you first access this tab, you will see the comments and list of changes in a timeline. This timeline can be sorted in either chronological (the newest comments at the bottom) or or ante-chronological order (the newest comments on top):
 
-![You can order the activities to show newest on top or at the bottom](Activity%20-%20Sort%20order.png)
+![You can order the activities to show newest on top or at the bottom](Activity-sortOrder.png)
 
 You can scroll up and down to go forwards or backwards in time.
+
+By default, the activity tab shows both comments and changes, but you can filter this to only show one or the other:
+
+![Filter the activity tab](Activity-filter.png)
 
 ### Change sets
 
 When you or another user makes changes to the work package, the updates are listed below the name of the author of those changes. All changes made within the aggregation period (defined by the administrator) are grouped together under one change set.
 
-![Changes made at the same time are grouped together](Activity%20-%20changeset.png)
+![Changes made at the same time are grouped together](Activity-changeset.png)
 
 If a comment was also added, then the changes are listed below the associated comment.
 
@@ -34,15 +38,15 @@ If a comment was also added, then the changes are listed below the associated co
 
 Comments allow you to have a conversation about the present work package with other project members, or comment changes you have made.
 
-![A single comment](Activity%20-%20a%20comment.png)
+![A single comment](Activity-comment.png)
 
 To add a new comment to a work package, click on the comment box at the bottom of the Activity tab. This will expand it and give you formatting options. Click on the post icon or press Command + Enter on your keyboard to publish your comment.
 
-![The comment box expands when you write your coment](Activity%20-%20comment%20box.png)
+![The comment box expands when you write your coment](Activity-commentBox.png)
 
 The more icon (...) next to a comment gives you a number of additional functions.
 
-![More menu on a comment](Activity%20-%20more%20icon.png)
+![More menu on a comment](Activity-more.png)
 
 You can:
 
@@ -56,7 +60,7 @@ Starting with version 15.0, you can respond to comments with emoji reactions to 
 
 To do so, click on the emoji icon next to each comment and pick from one of eight possible emojis.
 
-![Click the emoji icon to see a list of available emojis](Activity%20-%20add%20emoji.png)
+![Click the emoji icon to see a list of available emojis](Activity-addEmoji.png)
 
 You can add multiple emojis, or simply click on an emoji that was already used by someone else to add to it.
 
@@ -64,7 +68,7 @@ You can add multiple emojis, or simply click on an emoji that was already used b
 
 If you would like to direct your comment to particular project members or get their attention, you can @mention them. To do this, type `@` and select the user whom you want to mention.
 
-![Write @ and a user name to mention other users](Activity%20-%20mention%20someone.png)
+![Write @ and a user name to mention other users](Activity-mention.png)
 
 The user will then receive a notification, which allows them to easily see the comment in which they have been mentioned.
 
