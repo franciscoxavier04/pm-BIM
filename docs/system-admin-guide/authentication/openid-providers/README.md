@@ -38,7 +38,7 @@ You can create different kinds of providers with a different set of properties. 
 1. Navigate to your GCP console.  (https://console.cloud.google.com/)
 2. Go to **APIs & Services** > OAuth consent screen.
 
-![g1-apis-and-services-oauth-consent-screen](g1-apis-and-services-oauth-consent-screen.png)
+![APIs and services OAuth consent screen](g1-apis-and-services-oauth-consent-screen.png)
 
 3. Create a new project and a new app or edit an existing project and an existing app, setting the following fields (should be internal):
    1. **App name** (e.g. EXAMPLE.COM SSO)
@@ -48,7 +48,7 @@ You can create different kinds of providers with a different set of properties. 
    5. **Developer Contact information** (e.g.  developer@example.com)
    6. Click **SAVE AND CONTINUE** to proceed.
 
-![g2-edit-app-registration](g2-edit-app-registration.png)
+![Edit app registration](g2-edit-app-registration.png)
 
 4. **Scopes** - Press **SAVE AND CONTINUE**
 5. **Summary** - Press **SAVE AND CONTINUE**
@@ -57,26 +57,27 @@ You can create different kinds of providers with a different set of properties. 
 
 1. Under **APIs & Services**, go to **Credentials**.
 
-![g3-apis-and-services-credentials](g3-apis-and-services-credentials.png)
+![APIs and services credentials](g3-apis-and-services-credentials.png)
 
 2. Click **Create Credentials** and select **OAuth Client ID**.
 
    1. When prompted for your **Application type**, choose **Web Application**.
 
-   2. Provide a **Name** for your application. (e.g. example-openproject-com)
+   2. Provide a **Name** for your application. (e.g. example-openproject.com)
 
    3. Under Authorized redirect URIs, click **Add URI**, and provide your URI (e.g. [example.openproject.com]/auth/google/callback).
 
    4. Click **CREATE** or **SAVE** .
 
-![g4-create-credentials-oauth-client-id](g4-create-credentials-oauth-client-id.png)
+![Create credentials for OAuth client id](g4-create-credentials-oauth-client-id.png)
 
-After pressing **CREATE** you will get a pop-up window like the following
+After pressing **CREATE** you will see a following pop-up window.
 
-- Note **Client ID**
-- Note **Client Secret**
+> [!TIP]
+>
+> Make sure to note your **Client ID** and **Client Secret**.
 
-![g5-oauth-client-created](g5-oauth-client-created.png)
+![OAuth client created](g5-oauth-client-created.png)
 
 ### Step 3: Add Google as an OpenID Provider to OpenProject
 
@@ -106,41 +107,47 @@ The steps are as follows:
 
 ![Azure Active Directory administration page](01-menu.png)
 
-2. In the sidebar, click on "All services".
+2. In the sidebar, click **All services**.
 
 ![Azure Active Directory All services](02-admin-dashboard.png)
 
-3. Click on the link named "App registrations".
+3. Click  the link named **App registrations**.
 
 ![Azure Active Directory App registrations](03-app-registrations.png)
 
-4. Click on "New registration".
+4. Click **New registration**.
 
 ![Azure Active Directory New registration](04-register-app.png)
 
 5. You will then be asked to specify the following settings:
 
-* For "Name", enter "OpenProject".
-* For "Supported account types", select "Accounts in this organization directory only".
-* For "Redirect URI", select the "Web" type, and enter the URL to your OpenProject installation, followed by "/auth/oidc-microsoft-entra/callback". For instance: "https://myserver.com/auth/oidc-microsoft-entra/callback".
+* For **Name**, enter *OpenProject*.
+* For **Supported account types**, select *Accounts in this organization directory only*.
+* For **Redirect URI**, select the *Web* type, and enter the URL to your OpenProject installation, followed by */auth/oidc-microsoft-entra/callback*. For instance: "https://myserver.com/auth/oidc-microsoft-entra/callback".
 
 > [!NOTE]
 >
 > The Redirect URI is dependent on the display name that you choose later on. You might need to change it to the correct value shown in the administration of OpenProject.
 
-6. When you are done, click on the "Register" button at the end of the page. You are redirected to your new App registration, be sure to save the "Application (client) ID" that is now displayed. You will need it later.
+6. When you are done, click the **Register** button at the end of the page. You will be redirected to your new App registration.
+
+> [!IMPORTANT]
+> Make sure to save the **Application (client) ID** that is now displayed. You will need it later.
 
 ![Azure Active Directory Admin Dashboard](02-admin-dashboard-1580821056307.png)
 
-7. You can now click on "Certificates & secret".
+7. You can then click **Certificates & secret**.
 
 ![Azure Active Directory Certificates](06-certificates.png)
 
-8. Then click on "New client secret", set the description to "client_secret", and the expiration to "730 days (24 months)". Then click on "Add".
+8. Then click **New client secret**, set the description to *client_secret*, and the expiration to *730 days (24 months)*. Then click **Add**.
 
 ![Azure Active Directory New Client Secret](07-client-secret.png)
 
-9. A secret should have been generated and will be displayed on the page. Make sure to save it because it will only be displayed once.
+9. A secret should have been generated and will be displayed on the page. 
+
+>  [!IMPORTANT]
+> Make sure to save it because it will only be displayed once.
 
 ![Azure Active Directory Add Secret](08-add-secret.png)
 
@@ -148,7 +155,7 @@ At the end of this step, you should have a copy of the Application client ID as 
 
 ### Step 2: Configure OpenProject
 
-Next, we have to create the OpenID Connect provider in OpenProject:
+Next, you need to create the OpenID Connect provider in OpenProject:
 
 1. Login as OpenProject Administrator
 2. Navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*. 
@@ -161,15 +168,15 @@ Next, we have to create the OpenID Connect provider in OpenProject:
    - In the next section, set **Client ID** and **Client Secret** (from step 1)
    - Enable **Limit self registration** option if you want users that create accounts with this provider to bypass the configured limit for self-registration.
 
-![Add a new OpenID Gogole provider in OpenProject administration](azure-display-name-tenant.png)
+![Add a new OpenID Google provider in OpenProject administration](azure-display-name-tenant.png)
 
-Press **Finish setup** to save the client and complete. If you go back to the index page of OpenID connect providers, the new provider should be visible. There you can see the redirect URI (TODO) in case you set a custom display name.
+Press **Finish setup** to save the client and complete. If you go back to the index page of OpenID connect providers, the new provider should be visible. There you will see the redirect URI (TODO) in case you set a custom display name.
 
 ![Saved Google authentication provider](azure-provider-index.png) Congratulations, your users can now authenticate using your Microsoft Entra ID provider using the button in the Login form.
 
 ## Custom OpenID Connect Provider
 
-Starting in OpenProject 15.0., you can also create custom OpenID Connect providers using the user interface.
+Starting with OpenProject 15.0., you can also create custom OpenID Connect providers using the user interface.
 
 To start creating a custom provider, please follow these steps:
 
@@ -180,30 +187,30 @@ To start creating a custom provider, please follow these steps:
 
 #### Step 1: Display name
 
-- Set a **Display Name**, this is the name of the login button shown to users. Let's assume we're trying to connect *Keycloak* with OpenProject for this example. We will in Keycloak as that's the label of the button to be shown to users trying to authenticate.
+- Set a **Display Name**, this is the name of the login button shown to users. Let's assume we're trying to connect *Keycloak* with OpenProject for this example. We will type in Keycloak as that's the label of the button to be shown to users trying to authenticate.
 
 
 
 #### Step 2: Discovery endpoint
 
-- On the next section, you have the option to specify a discovery endpoint URL to pre-fill some public attributes
+- In the next section, you have the option to specify a discovery endpoint URL to pre-fill some public attributes
   - For Keycloak, this URL is based on the configured realm name `http://keycloak.example.com:443/realms/{realm}/.well-known/openid-configuration`
 - If you have a discovery endpoint URL, choose **I have a discovery endpoint URL** and fill it in
 - Click **Continue**. With a discovery endpoint URL, OpenProject will try to fetch this information and take you to the next step. Observe the page for error responses in case it cannot connect to the endpoint or the returned information is invalid.
 
-![Discovery endpoint URL ](./custom-provider-metadata-discovery.png)
+![Discovery endpoint URL](./custom-provider-metadata-discovery.png)
 
 #### Step 3: Advanced configuration
 
-- Unless the metadata endpoint provided these values, you will have to fill out some required endpoint URLs like **Authorization endpoint**, **User information endpoint**, and **Token endpoint**.
+- Unless the metadata endpoint provided these values, you will have to fill out some required endpoint URLs, such as **Authorization endpoint**, **User information endpoint**, and **Token endpoint**.
 - Fill out the **Issuer** field which depends on the provider. For Keycloak, this value would be the realm URL: `http://keycloak.example.com:443/realms/{realm}`
 - Optionally fill out:
-  -  **End session endpoint**, an URL where OpenProject should redirect to to terminate a user's session.
+  -  **End session endpoint**, an URL where OpenProject should redirect to terminate a user's session.
   -  **JWKS URI**. This is the URL of the provider's  JSON Web Key Set document containing e.g., signing keys and certificates.
   - A custom icon by using a publicly available URL to fetch the logo from.
-- Click on **Continue** to validate this form and move to the next step. If there are any errors in this form, they will turn red and inform you about what you need to change.
+- Click **Continue** to validate this form and move to the next step. If there are any errors in this form, they will turn red and inform you about what you need to change.
 
-![Bildschirmfoto 2024-11-06 um 18.07.44](./custom-provider-advanced-config.png)
+![Custom OpenID provider advanced configuration in OpenProject](custom-provider-advanced-config.png)
 
 #### Step 5: Client details
 
@@ -216,17 +223,17 @@ In the next section, fill out the client credentials provided from your OpenID C
 
 #### Step 6: Optional attribute mapping
 
-You can optionally provide a custom mapping for attributes in the `userinfo` endpoint response. In most cases, you can leave this empty, unless you are providing custom attributes for user properties through.
+You can optionally provide a custom mapping for attributes in the `userinfo` endpoint response. In most cases, you can leave this empty, unless you are providing custom attributes for user properties.
 
 If you need to set some of these values, enter the attribute key used/returned in the `userinfo` endpoint.
 
-For example: Keycloak allows you to map custom properties of the user. This allows you to specify a login with, e.g, `preferred_username` userinfo. In this case, you would fill out `Mapping for: Username` with 
+For example: Keycloak allows you to map custom properties of the user. This allows you to specify a login with, e.g, `preferred_username` userinfo. In this case, you would fill out `Mapping for: Username` with TODO
 
 #### Step 7: Claims
 
-You can optionally request [claims](https://openid.net/specs/openid-connect-core-1_0-final.html#Claims) for both the id_token and userinfo endpoint. Mind though that currently only claims requested for the id_token returned with the authorize response are validated. That is authentication will fail if a requested essential claim is not returned.
+You can optionally request [claims](https://openid.net/specs/openid-connect-core-1_0-final.html#Claims) for both the id_token and userinfo endpoint. Keep in mind that currently only claims requested for the id_token returned with the authorize response are validated. That means that the authentication will fail if a requested essential claim is not returned.
 
-If you do not need Claims or are unaware of their use-cases, simply skip this step and click on **Finish setup** .
+If you do not need Claims or are unaware of their use-cases, simply skip this step and click **Finish setup** .
 
 **Requesting MFA authentication via the ACR claim**
 
@@ -269,7 +276,7 @@ options["acr_values"] = "phr phrh Multi_Factor"
 
 The option takes a space-separated list of ACR values. This is functionally the same as using the more complicated `claims` option above but with `"essential": false`. For all other claims there is no such shorthand.
 
-After entering Claims information, click on **Finish setup** to complete the provider creation form.
+After entering Claims information, click **Finish setup** to complete the provider creation form.
 
 ![Bildschirmfoto 2024-11-06 um 18.34.28](./custom-provider-claims.png)
 
@@ -318,16 +325,16 @@ If you use Okta with OpenID Connect, use these configuration properties in the c
 
 ### Configuration for Keycloak
 
-In Keycloak, use the following steps to set up a OIDC integration for OpenProject:
+In Keycloak, use the following steps to set up an OIDC integration for OpenProject:
 
 - Select or create a realm you want to authenticate OpenProject with. Remember that realm identifier. For the remainder of this section, we're using REALM as the placeholder you'll need to replace.
-- Under "Clients" menu, click on "Create" or "Create client"
+- Under **Clients** menu, click *Create* or *Create client*
 - **Add client**: Enter the following details
   - **Client type / protocol**: OpenID Connect
   - **Client ID**: `https://<Your OpenProject hostname>`
-  - **Name**:  Choose any name, used only within keycloak
+  - **Name**:  Choose any name, used only within Keycloak
 - For the **Capability config**, keep Standard flow checked. In our tested version of Keycloak, this was the default.
-- Click on Save
+- Click **Save**
 
 You will be forwarded to the settings tab  of the new client. Change these settings:
 
@@ -338,18 +345,18 @@ You will be forwarded to the settings tab  of the new client. Change these setti
 Next, you will need to create or note down the client secret for that client.
 
 - Go to the **Credentials** tab
-- Click on the copy to clipboard button next to **Client secret** to copy that value
+- Click the **copy to clipboard button** next to **Client secret** to copy that value
 
 **OPTIONAL:** By default, OpenProject will map the user's email to the login attribute in OpenProject. If you want to change that, you can do it by providing an alternate claim value in Keycloak:
 
 - Go to **Client scopes**
-- Click on the `https://<Your OpenProject hostname>-dedicated` scope
-- Click on **Add mapper** and **By configuration**
+- Click the `https://<Your OpenProject hostname>-dedicated` scope
+- Click **Add mapper** and **By configuration**
 - Select **User property**
 - Assuming you want to provide the username as `preferred_username` to OpenProject, set these values. This will depend on what attribute you want to map:
-  - Set name and to `username`
+  - Set name to `username`
   - Set Token claim name to `preferred_username`
-- Click on **Save**
+- Click **Save**
 
 
 
