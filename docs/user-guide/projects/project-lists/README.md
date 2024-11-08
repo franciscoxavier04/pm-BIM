@@ -71,7 +71,7 @@ You can choose from the following options:
 
 - Move column right: this action is only visible when the column is not the last (rightmost) one
 
-- Add column: this action opens the [configure view modal](/configure-view-modal)
+- Add column: this action opens the [configure view modal](#configure-view-modal)
 
 - Remove column
 
