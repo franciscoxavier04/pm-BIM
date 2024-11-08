@@ -197,11 +197,10 @@ export default class IndexController extends Controller {
     });
   }
 
-
-  private handleUpdateStreamsResponse(html:string, journalsContainerAtBottom:boolean) {
+  private handleUpdateStreamsResponse(html:string, headers:Headers, journalsContainerAtBottom:boolean) {
     setTimeout(() => {
       this.handleStemVisibility();
-      this.setLastServerTimestampViaHeaders(lastResponseHeaders);
+      this.setLastServerTimestampViaHeaders(headers);
       this.checkForAndHandleWorkPackageUpdate(html);
       this.checkForNewNotifications(html);
       this.performAutoScrolling(html, journalsContainerAtBottom);
