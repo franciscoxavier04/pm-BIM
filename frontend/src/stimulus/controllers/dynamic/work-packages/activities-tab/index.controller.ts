@@ -1,7 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import {
-  ICKEditorInstance,
-} from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
+import { ICKEditorInstance } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 
@@ -425,6 +423,8 @@ export default class IndexController extends Controller {
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
       this.scrollJournalContainer(true);
+      this.focusEditor();
+    } else {
       this.focusEditor();
     }
   }
