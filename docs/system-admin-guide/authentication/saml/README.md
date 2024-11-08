@@ -16,7 +16,7 @@ You can integrate your active directory or other SAML compliant identity provide
 
 ## Prerequisites
 
-In order to use integrate OpenProject as a service provider (SP) using SAML, your identity providers (idP):
+In order to integrate OpenProject as a service provider (SP) using SAML, your identity providers (idP):
 
 - needs to be able to handle SAML 2.0 redirect Single-Sign On (SSO) flows, in some implementations also referred to as WebSSO
 - has a known or configurable set of attributes that map to the following required OpenProject attributes. The way these attribute mappings will be defined is described later in this document.
@@ -48,10 +48,10 @@ Starting with OpenProject 15.0, you can define the SAML integration using an int
 
 SAML 2.0 allows the service provider and identity provider to exchange public information/configuration ([Specification of Metadata Interoperability](https://docs.oasis-open.org/security/saml/Post2.0/sstc-metadata-iop-os.html)). In the second step of the creation form, you can leverage the metadata exchange endpoint of your SAML identity provider to pre-fill most of the configuration.
 
-The second step allows you to provide metadata in two ways
+The second step allows you to provide metadata in two ways:
 
-1. With a metadata URL endpoint. OpenProject will try to connect to that endpoint and download the XML
-2. Providing the metadata XML manually as a text input
+1. With a metadata URL endpoint. OpenProject will try to connect to that endpoint and download the XML,
+2. Providing the metadata XML manually as a text input.
 
 With a metadata option, OpenProject will pre-fill the next sections with all the given information. In case there are any errors in the values provided, they will be marked in red for correction. If you do not have metadata for this provider, choose **I don't have metadata**. Click **Continue**. 
 
@@ -59,7 +59,7 @@ With a metadata option, OpenProject will pre-fill the next sections with all the
 
 ### Step 3: Primary configuration
 
-If you have used the metadata exchange, the next form will be pre-filled like below.
+If you have used the metadata exchange, the next form will be pre-filled like in the example below.
 
 ![SAML provider primary configuration](./saml-provider-primary-configuration.png)
 
@@ -83,11 +83,11 @@ Fill out the respective fields, or if you do not need these features, simply lea
 
 ### Step 5: Attribute Mapping
 
-OpenProject expects a set Use the key `attribute_statements` to provide mappings for attributes returned by the SAML identity provider's response to OpenProject internal attributes. We provide an extensive set of default values that should work for the majority of providers. Also, the metadata endpoint mind specify already some attributes that can be used.
+OpenProject expects a set Use the key `attribute_statements` to provide mappings for attributes returned by the SAML identity provider's response to OpenProject internal attributes. We provide an extensive set of default values that should work for the majority of providers. Also, the metadata endpoint might already specify some attributes that can be used.
 
 If you have a custom attribute that you want to use for e.g., email, you can replace or add this to the list of attributes. The attributes will be assigned in order from top to bottom, and the first attribute that is found in the SAML assertion will be used.
 
-Optionally, you can set a mapping for the internal user ID. By default, we take this information from the `name_id` attribute. In many SAML providers, the NameID is assigned to the email address of the user however, and this attribute might change over time. If you have an internal uid or other attribute that is stable, enter this instead.
+Optionally, you can set a mapping for the internal user ID. By default, we take this information from the `name_id` attribute. In many SAML providers, the NameID is assigned to the email address of the user. However, this attribute might change over time. If you have an internal UID or another attribute that is stable, enter this instead.
 
 If your users start logging in with this provider and see a registration form with missing attributes for their first or last name, email address, or login, then this mapping section is not filled correctly, or your provider is not sending an attribute back to OpenProject.
 
@@ -110,7 +110,7 @@ Complete the registration of the provider using the **Finish setup** button.
 
 In order for users to start logging in using the new SSO button that you just added, you need to tell your identity provider some details of the OpenProject provider. Once the provider is saved, you will see details on the right pane of the provider.
 
-In the sidebar, you will the OpenProject configuration:
+In the sidebar, you will  see the OpenProject configuration:
 
 1. **Metadata endpoint**: This is the metadata XML exchange endpoint for the OpenProject client. If your provider allows to import metadata from a service provider, you can use this metadata to inform it about the details of OpenProject.
 2. **Service entity ID**: This is the entity id of OpenProject, you might need to configure this in your identity provider to allow it to connect
@@ -118,7 +118,7 @@ In the sidebar, you will the OpenProject configuration:
 
 Use the copy to clipboard buttons on each of these entries to copy the information and enter it in your identity provider.
 
-![SAML configuration sidebar](./saml-show-view.png)
+![SAML configuration sidebar in OpenProject administration](./saml-show-view.png)
 
 
 
@@ -128,9 +128,10 @@ Use the copy to clipboard buttons on each of these entries to copy the informat
 
 ## SAML configuration as Environment Variables
 
-For some deployment scenarios, it might be desirable to configure a provider through environment variables however.
+For some deployment scenarios, it might be desirable to configure a provider through environment variables.
 
-> **Warning**: Only do this if you know what you are doing. This may break your existing SAML authentication providers or cause other issues otherwise.
+>[!WARNING]
+>Only do this if you know what you are doing. This may break your existing SAML authentication providers or cause other issues otherwise.
 
 As with [all the rest of the OpenProject configuration settings](../../../installation-and-operations/configuration/environment/), the SAML configuration can be provided via environment variables.
 
@@ -138,7 +139,7 @@ The provider entries are defined dynamically based on the environment keys. All 
 
 **Example**
 
-This set of environment keys will set up a provider entry in the UI called "saml". 
+This set of environment keys will set up a provider entry in the UI called **saml**. 
 
 ```shell
 # Name of the provider, leave this at saml unless you use multiple providers
