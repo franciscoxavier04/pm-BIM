@@ -57,7 +57,7 @@ Inactive attributes shown in the grey color on the right. Attributes which have 
 
 > [!IMPORTANT]
 >
-> Since OpenProject 15.0, when adding new custom fields to a type through the  form configuration, the added custom fields will not be enabled in all projects that have this work package type currently enabled.
+> Starting with OpenProject 15.0, when adding new custom fields to a type through the  form configuration, the added custom fields will not automatically be enabled in all projects that have this work package type currently enabled.
 
 To add additional group, click the **+ Group** button and select **Add attribute group**. Give the new group a name. You can then assign attributes (e.g. custom fields) via drag and drop. Note that adding attribute groups is only possible with the [OpenProject Enterprise on-premises](https://www.openproject.org/enterprise-edition/) and the [OpenProject Enterprise cloud](https://www.openproject.org/enterprise-edition/#hosting-options).
 
