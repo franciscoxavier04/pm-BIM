@@ -95,7 +95,7 @@ OpenProject allows to share project information with **anonymous** users which a
 
 ### Standard
 
-**Standard** is the default role of users of your OpenProject instance. It is configured an assigned by administrators on an instance level. <br>
+**Standard** is the default role of users of your OpenProject instance. It is configured and assigned by administrators on an instance level. <br>
 
 >[!NOTE]
 > The *Standard* role cannot be deleted.
