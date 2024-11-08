@@ -2,11 +2,11 @@
 sidebar_navigation:
   title: Activity
   priority: 890
-description: Find out about the Activity within a project
-keywords: activity
+description: Get an overview of changes and comments within a single work package or the latest activity within a project. The activity tab in work packages also lets you mention and notify other users.
+keywords: activity, comment, mention, emoji, reaction
 ---
 
-# Activity
+# Project and work activity activity
 
 OpenProject makes it easy to keep track of what's going on in [specific work packages](#work-package-activity) and in your [projects](#project-activity).
 
