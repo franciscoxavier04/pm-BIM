@@ -6,7 +6,7 @@ description: Get an overview of changes and comments within a single work packag
 keywords: activity, comment, mention, emoji, reaction
 ---
 
-# Project and work activity activity
+# Project and work package activity
 
 OpenProject makes it easy to keep track of what's going on in [specific work packages](#work-package-activity) and in your [projects](#project-activity).
 
@@ -42,7 +42,7 @@ Comments allow you to have a conversation about the present work package with ot
 
 To add a new comment to a work package, click on the comment box at the bottom of the Activity tab. This will expand it and give you formatting options. Click on the post icon or press Command + Enter on your keyboard to publish your comment.
 
-![The comment box expands when you write your coment](Activity-commentBox.png)
+![The comment box expands when you write your comment](Activity-commentBox.png)
 
 The more icon (⋯) next to a comment gives you a number of additional functions.
 
@@ -50,7 +50,7 @@ The more icon (⋯) next to a comment gives you a number of additional functions
 
 You can:
 
-- Copy a link to the comment on your clipboard if want to paste a link to it elsewhere  
+- Copy a link to the comment on your clipboard if you want to paste a link to it elsewhere  
 - You can edit the comment if you are the author  
 - You can quote someone else's comment in a new comment. This is useful if you want to respond to a certain part of a comment.
 
