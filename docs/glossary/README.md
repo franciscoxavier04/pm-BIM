@@ -279,7 +279,7 @@ OpenProject on-premises is a self-hosted version of OpenProject. As opposed to t
 - [Read how to activate the Enterprise on-premises edition](../enterprise-guide/enterprise-on-premises-guide/activate-enterprise-on-premises/)
 - [Read how to start a trial for Enterprise on-premises](../enterprise-guide/enterprise-on-premises-guide/enterprise-on-premises-trial/)
 
-### OpenID connect (OIDC)
+### OpenID Connect (OIDC)
 
 OpenID Connect (OIDC) is an authentication protocol built on OAuth 2.0 that enables secure, simple, and standardized user identity verification. OpenProject Enterprise offers user interfaces for OIDC as well as for [SAML](#saml), so that administrators can set Single Sign-On (SSO) options for their users. [Read more about OpenID providers for OpenProject in our system admin guide](../system-admin-guide/authentication/openid-providers/).
 
