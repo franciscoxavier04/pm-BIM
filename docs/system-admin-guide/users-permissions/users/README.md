@@ -174,6 +174,8 @@ Under **Notification settings** tab you can edit the [notification settings](../
 
 Under **Email reminders** tab you can edit the [email reminders settings](../../../user-guide/account-settings/#email-reminders). Each user can adjust these settings under [Account settings](../../../user-guide/account-settings) on their own.
 
+### Rate history
+
 The rate history tab shows the hourly rates that have been defined for the user. The **Default rate** is applied to projects with no rate defined. All projects that the user is a member of are listed with the user's rates.
 
 The **Valid from** date will effect the rate used when creating a [budget](../../../user-guide/budgets/) and when [logging time](../../../user-guide/time-and-costs/time-tracking/).
