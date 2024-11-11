@@ -3,7 +3,7 @@ title: OpenProject 15.0.0
 sidebar_navigation:
     title: 15.0.0
 release_version: 15.0.0
-release_date: 2024-10-31
+release_date: 2024-11-13
 ---
 
 # OpenProject 15.0.0
@@ -36,11 +36,13 @@ Apart from some obvious design changes that all fit GitHub's Primer design syste
 - Filtering the Activity panel with options to either show everything, changes only or comments only.
 - Ordering to either newest on top or newest at the bottom.
 
+Please note that you can still configure the order of your work package comments in the Account settings (formerly called My Account). Changing the order directly in the Activity tab automatically applies to all work packages, exactly like it does if you do the same in the Account settings.  
+
 ![Screenshot showing the new Activity tab with highlighted changes](openproject-15-0-activity-tab-highlighted-all.png)
 
 #### Emoji reactions to work package comments
 
-Many users have wished to be able to react to comments in work packages using emoji and with OpenProject 15.0 this is now possible. In order to still keep it clear and concise, we have limited the emojis to eight helpful reactions:
+Many users have wished to be able to react to comments in work packages using emojis, and with OpenProject 15.0 this is now possible. In order to still keep it clear and concise, we have limited the emojis to eight helpful reactions:
 
 ![Example screenshot showing emoji reactions in OpenProject's work package comments](openproject-emoji-overview.png)
 
@@ -69,7 +71,7 @@ Once set up, users can log in with their existing account, for example like show
 
 ![Example screenshot of the log in screen with options to single sign-on](OpenProject_SSO_SAML_OpenID-highlighted.png)
 
-See [more technical information about SAML and OIDC providers](#saml-and-openid-connect-providers) in the end of these release notes.
+See [more technical information about SAML and OIDC providers](#saml-and-openid-connect-providers) in the end of these Release Notes.
 
 ### A new 'Standard global role' with permissions to view email addresses
 
@@ -233,8 +235,8 @@ A very special thank you goes to the City of Cologne for sponsoring parts of thi
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
 - [Alexander Aleschenko](https://crowdin.com/profile/top4ek), for a great number of translations into Russian.
+- [Alin Marcu](https://crowdin.com/profile/deconfcom), for a great number of translations into Romanian.
 - [hmmftg](https://crowdin.com/profile/hmmftg), for a great number of translations into Persian.
 - [william](https://crowdin.com/profile/WilliamFromTW), for a great number of translations into Chinese Simplified and Chinese Traditional.
-- [Alin Marcu](https://crowdin.com/profile/deconfcom), for a great number of translations into Romanian.
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../development/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
