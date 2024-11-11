@@ -380,7 +380,7 @@ In product management, the RICE score indicates the level of prioritization of a
 
 ### SAML
 
-SAML (Security Assertion Markup Language) is an open standard for exchanging authentication and authorization data between parties, typically an identity provider (IdP) and a service provider (SP). OpenProject Enterprise offers user interfaces for SAML as well as for [OIDC](#openid-connect-oidc), so that administrators can set Single Sign-On (SSO) options for their users. [Read more about SAML providers for OpenProject in our system admin guide](../system-admin-guide/authentication/saml/).
+SAML (Security Assertion Markup Language) is an open standard for exchanging authentication and authorization data between parties, typically an identity provider (IdP) and a service provider (SP). OpenProject Enterprise offers user interfaces for SAML as well as for [OpenID Connect](#openid-connect-oidc), so that administrators can set Single Sign-On (SSO) options for their users. [Read more about SAML providers for OpenProject in our system admin guide](../system-admin-guide/authentication/saml/).
 
 ### Share work packages
 
