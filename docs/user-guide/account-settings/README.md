@@ -1,6 +1,6 @@
 ---
 sidebar_navigation:
-  title: My account
+  title: Account settings
   priority: 999
 description: Learn how to configure account settings.
 keywords: my account, account settings, change language
