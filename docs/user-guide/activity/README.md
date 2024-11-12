@@ -63,6 +63,8 @@ To do so, click on the emoji icon next to each comment and pick from one of eigh
 ![Click the emoji icon to see a list of available emojis](Activity-addEmoji.png)
 
 You can add multiple emojis, or simply click on an emoji that was already used by someone else to add to it.
+> [!TIP]
+> Please note that emoji reactions will not trigger notifications. If you need your colleague to be notified about your reaction, leave a regular comment.
 
 ### Mentions
 
