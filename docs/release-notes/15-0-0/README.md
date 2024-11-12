@@ -54,7 +54,7 @@ Starting with version 15.0, the notification center will continuously update and
 
 ### Admin interfaces for SAML and OpenID Connect (Enterprise only)
 
-OpenProject has for a long time supported SAML and OpenID Connect configured through settings or environment variables. With OpenProject 15.0, Enterprise customers will benefit from our new user interface for SAML and OIDC. This means they can now set up integrations between OpenProject and SAML or OpenID connect stacks independently and offer users options for Single Sign-On (SSO). Before 15.0, SaaS customers had to contact the OpenProject support if they wanted custom integrations with their SAML or OpenID connect providers. These new interfaces greatly improve the user experience of adding these providers, which had been a hurdle at the beginning of your work with OpenProject.
+OpenProject has for a long time supported SAML and OpenID Connect configured through settings or environment variables. With OpenProject 15.0, Enterprise customers will benefit from our new user interface for SAML and OIDC. This means they can now set up integrations between OpenProject and SAML or OpenID connect stacks independently and offer users options for Single Sign-On (SSO). Before 15.0, SaaS customers had to contact the OpenProject support if they wanted custom integrations with their SAML or OpenID connect providers. These new interfaces greatly improve the user experience of adding these providers, which may have been a hurdle at the beginning of your work with OpenProject.
 
 Related features in 15.0:
 
