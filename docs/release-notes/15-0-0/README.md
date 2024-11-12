@@ -85,7 +85,7 @@ As a default, this new role does not have any permissions selected, so there is 
 
 ### Quick action table headers in project lists for easier navigation 
 
-With OpenProject 15.0, we are pleased to release another great improvement for our project lists: Clicking on the table headers in a project list now gives you a quick action menu that not only allows you to sort in descending or ascending order, but also to filter or change, remove or add a column. You can still find the same actions in the top-right menu button, but now these actions are now much quicker to access. [Read more about the configuration for project lists in our user guide](../../user-guide/projects/project-lists/#configure-project-lists-view).
+With OpenProject 15.0, we are pleased to release another great improvement for our project lists: Clicking on the table headers in a project list now gives you a quick action menu that not only allows you to sort in descending or ascending order, but also to filter or change, remove or add a column. You can still find the same actions in the top-right menu button, but now these actions are much quicker to access. [Read more about the configuration for project lists in our user guide](../../user-guide/projects/project-lists/#configure-project-lists-view).
 
 ![Gif showing how quickly you can now change rows in project lists by clicking on the headers](quick_action_table_headers.gif)
 
