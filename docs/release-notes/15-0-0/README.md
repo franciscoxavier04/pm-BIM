@@ -36,7 +36,7 @@ Apart from some obvious design changes that all fit GitHub's Primer design syste
 - Filtering the Activity panel with options to either show everything, changes only or comments only.
 - Ordering to either newest on top or newest at the bottom.
 
-Please note that you can still configure the order of your work package comments in the Account settings (formerly called My Account). Changing the order directly in the Activity tab automatically applies to all work packages, exactly like it does if you do the same in the Account settings.  
+Please note that you can still configure the order of your work package comments in the Account settings (formerly called My Account). Changing the order directly in the Activity tab automatically applies to all work packages, exactly like it does if you do the same in the Account settings.
 
 ![Screenshot showing the new Activity tab with highlighted changes](openproject-15-0-activity-tab-highlighted-all.png)
 
@@ -75,11 +75,12 @@ See [more technical information about SAML and OIDC providers](#saml-and-openid-
 
 ### A new 'Standard global role' with permissions to view email addresses
 
-With OpenProject 15.0, [a new default 'Standard global role' is automatically and permanently given to all users](../../system-admin-guide/users-permissions/roles-permissions/#standard). If you are an administrator responsible for roles, please check this under *Administration > Users and permissions > Roles and permissions > Standard global role*. This role has several permissions to choose from, one being 'View users' mail addresses'.  Enable this permission to allow any user to see everyone's email address in autocomplete situations, such as when they select a work package assignee from a drop-down list.
+With OpenProject 15.0, [a new default 'Standard global role' is automatically and permanently given to all users](../../system-admin-guide/users-permissions/roles-permissions/#standard). If you are an administrator responsible for roles, please check this under *Administration > Users and permissions > Roles and permissions > Standard global role*. This role has several permissions to choose from, one being 'View users' mail addresses'. Enable this permission to allow any user to see everyone's email address in autocomplete situations, such as when they select a work package assignee from a drop-down list.
 
 Before version 15.0, users could choose whether their email address was displayed. Now this is an administrative decision that applies to either everyone or no one. The reason behind this is that this privacy control should be decided at the organizational level rather than individually.
 
-As a default, this new role does not have any permissions selected, so there is no change in the granted permissions due to the update.
+> [!NOTE]
+> Please note that with this update, there is no more checkbox 'Hide my email' that used to be in the user's account settings. As a default, the new Standard global role does not have any permissions selected, so that email addresses won't be visible with the update. If you are a system administrator, please navigate to the roles and permissions and decide weather you want the new permission to be checked (globally) or not. Instead of checking the new global permission in the Standard global role, you can also assign this new permission to a group of people, or individually.
 
 ![Example screenshot of permissions view for the new Standard global role, with checkmark at 'View users' mail addresses](openproject-15-0-standard-global-role.png)
 
