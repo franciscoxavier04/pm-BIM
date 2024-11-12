@@ -14,7 +14,7 @@ We released [OpenProject 15.0.0](https://community.openproject.org/versions/2076
 
 ## Important feature changes
 
-### A new look-and feel for the Activity tab, with better structure, real-time loading messages, emoji reactions, and more
+### A new look-and-feel for the Activity tab, with better structure, real-time loading messages, emoji reactions, and more
 
 A major change in version 15.0 is the overall look-and-feel of the [Activity tab of work packages](../../user-guide/activity/). Users will notice that the Activity tab has a new design with additional options, and that emoji reactions are now enabled. Additionally, new comments will appear directly without having to reload. This also applies to the notification center, where new notifications will appear in real-time.
 
