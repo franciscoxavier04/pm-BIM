@@ -82,6 +82,7 @@ attachments_path=$(${CLI} config:get OPENPROJECT_ATTACHMENTS__STORAGE__PATH || $
 mkdir -p "${attachments_path}"
 chown ${APP_USER}:${APP_GROUP} "${attachments_path}"
 ${CLI} config:set OPENPROJECT_ATTACHMENTS__STORAGE__PATH="${attachments_path}"
+${CLI} config:set OPENPROJECT_FEATURE_PRIMERIZED_WORK_PACKAGE_ACTIVITIES_ACTIVE="true"
 ${CLI} config:unset ATTACHMENTS_STORAGE_PATH
 
 # set web host
