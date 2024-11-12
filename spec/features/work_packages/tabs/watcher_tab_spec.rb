@@ -15,8 +15,8 @@ RSpec.describe "Watcher tab", :js, :selenium, :with_cuprite do
        add_work_package_watchers)
   end
 
-  # Ensure users are eagerly created (and at top level). #58737 was caused by `other_user` not being there in
-  # in some cases => flaky user auto completer specs
+  # Ensure users are eagerly created (and at top level). #58737 was caused by `other_user` not being there
+  # in time for some cases => flaky user auto completer specs
   let!(:user) { create(:user, member_with_roles: { project => role }) }
   let!(:other_user) { create(:user, firstname: "Other", member_with_roles: { project => role }) }
 
