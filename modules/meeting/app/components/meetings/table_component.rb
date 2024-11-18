@@ -32,7 +32,11 @@ module Meetings
   class TableComponent < ::OpPrimer::BorderBoxTableComponent
     options :current_project # used to determine if displaying the projects column
 
-    columns :title, :project_name, :start_time, :duration, :location
+    columns :title, :start_time, :project_name, :duration, :location
+
+    mobile_columns :title, :start_time, :project_name
+
+    mobile_labels project_name: :label_project
 
     def sortable?
       true

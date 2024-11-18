@@ -32,6 +32,37 @@ module OpPrimer
   class BorderBoxTableComponent < TableComponent
     include ComponentHelpers
 
+    class << self
+      # Declares columns to be shown in the mobile table
+      #
+      # Use it in subclasses like so:
+      #
+      #     columns :name, :description
+      #
+      #     mobile_columns :name
+      #
+      # This results in the description columns to be hidden on mobile
+      def mobile_columns(*names)
+        return Array(@mobile_columns) if names.empty?
+
+        @mobile_columns = names.map(&:to_sym)
+      end
+
+      # Declares which columns to be rendered with a label
+      #
+      #     mobile_labels :name
+      #
+      # This results in the description columns to be hidden on mobile
+      def mobile_labels(**hash)
+        return Hash(@mobile_labels) if hash.empty?
+
+        @mobile_labels = hash
+      end
+    end
+
+    delegate :mobile_columns, :mobile_labels,
+             to: :class
+
     def header_args(_column)
       {}
     end

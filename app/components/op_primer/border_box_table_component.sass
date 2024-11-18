@@ -15,14 +15,15 @@
     justify-content: flex-start
     align-items: center
 
-    &--mobile-heading
+    &--mobile-heading,
+    &--row-label
       display: none
 
 @media screen and (max-width: $breakpoint-md)
   .op-border-box-grid
     grid-template-columns: 1fr auto
     grid-auto-flow: row
-    row-gap: 1rem
+    row-gap: 0.25rem
 
     &--heading
       display: none
