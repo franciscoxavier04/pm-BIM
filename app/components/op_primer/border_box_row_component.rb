@@ -33,15 +33,9 @@ module OpPrimer
     include ComponentHelpers
 
     def mobile_label(column)
-      return unless table.mobile_labels.key?(column)
+      return unless table.mobile_labels.include?(column)
 
-      key = table.mobile_labels[column]
-      case key
-      when Proc
-        key.call
-      else
-        I18n.t(key)
-      end
+      table.column_title(column)
     end
 
     def visible_on_mobile?(column)

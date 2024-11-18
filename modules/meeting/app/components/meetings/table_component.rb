@@ -36,7 +36,7 @@ module Meetings
 
     mobile_columns :title, :start_time, :project_name
 
-    mobile_labels project_name: :label_project
+    mobile_labels :project_name
 
     def sortable?
       true

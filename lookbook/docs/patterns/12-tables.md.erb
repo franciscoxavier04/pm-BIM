@@ -50,8 +50,8 @@ columns :title, :users, :created_at
 # On mobile, only two columns are visible
 mobile_columns :title, :users
 
-# For users, show I18n.t(:label_user_plural)
-mobile_labels users: :label_user_plural
+# For users, show the label using the header caption
+mobile_labels :users
 ```
 
 
@@ -59,8 +59,6 @@ mobile_labels users: :label_user_plural
 #### Mobile headers
 
 On mobile, the usual table headers are replaced with a single `mobile_title` property that you have to set on the table.
-
-
 
 #### Wide columns
 

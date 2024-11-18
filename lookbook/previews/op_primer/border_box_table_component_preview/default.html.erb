@@ -2,7 +2,7 @@
   table = Class.new(OpPrimer::BorderBoxTableComponent) do
     columns :foo, :bar
 
-    mobile_labels bar: -> { "Bar label" }
+    mobile_labels :bar
 
     def self.name
       "MyTable"

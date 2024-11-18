@@ -5,7 +5,7 @@ module Saml
 
       mobile_columns :name, :users
 
-      mobile_labels users: :label_user_plural
+      mobile_labels :users
 
       wide_columns :name
 

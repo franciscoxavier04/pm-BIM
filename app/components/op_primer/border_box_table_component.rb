@@ -53,10 +53,10 @@ module OpPrimer
       #     mobile_labels :name
       #
       # This results in the description columns to be hidden on mobile
-      def mobile_labels(**hash)
-        return Hash(@mobile_labels) if hash.empty?
+      def mobile_labels(*names)
+        return @mobile_labels if names.empty?
 
-        @mobile_labels = hash
+        @mobile_labels = names.map(&:to_sym)
       end
 
       # Declare wide columns, that will result in a grid column span of 3
@@ -79,6 +79,11 @@ module OpPrimer
 
     def header_args(_column)
       {}
+    end
+
+    def column_title(name)
+      header = headers.find { |h| h[0] == name }
+      header ? header[1][:caption] : nil
     end
 
     def header_classes(column)

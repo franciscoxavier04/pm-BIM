@@ -7,7 +7,7 @@ module OpenIDConnect
 
       mobile_columns :name, :type, :users
 
-      mobile_labels users: :label_user_plural
+      mobile_labels :users
 
       def initial_sort
         %i[id asc]
