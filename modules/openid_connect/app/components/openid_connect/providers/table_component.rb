@@ -3,6 +3,10 @@ module OpenIDConnect
     class TableComponent < ::OpPrimer::BorderBoxTableComponent
       columns :name, :type, :users, :creator, :created_at
 
+      mobile_columns :name, :type, :users
+
+      mobile_labels users: :label_user_plural
+
       def initial_sort
         %i[id asc]
       end
@@ -25,6 +29,10 @@ module OpenIDConnect
 
       def empty_row_message
         I18n.t "openid_connect.providers.no_results_table"
+      end
+
+      def mobile_title
+        I18n.t("openid_connect.providers.plural")
       end
 
       def headers
