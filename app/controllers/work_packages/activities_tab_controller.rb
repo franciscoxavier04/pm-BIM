@@ -106,28 +106,33 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def create
-    call = create_journal_service_call
+    begin
+      call = create_journal_service_call
 
-    if call.success? && call.result
-      set_last_server_timestamp_to_headers
-      handle_successful_create_call(call)
-    else
-      handle_failed_create_call(call) # errors should be rendered in the form
-      @turbo_status = :bad_request
+      if call.success? && call.result
+        set_last_server_timestamp_to_headers
+        handle_successful_create_call(call)
+      else
+        handle_failed_create_or_update_call(call)
+      end
+    rescue StandardError => e
+      handle_internal_server_error(e)
     end
 
     respond_with_turbo_streams
   end
 
   def update
-    call = Journals::UpdateService.new(model: @journal, user: User.current).call(
-      notes: journal_params[:notes]
-    )
+    begin
+      call = update_journal_service_call
 
-    if call.success? && call.result
-      update_item_show_component(journal: call.result, grouped_emoji_reactions: grouped_emoji_reactions_for_journal)
-    else
-      handle_failed_update_call(call)
+      if call.success? && call.result
+        update_item_show_component(journal: call.result, grouped_emoji_reactions: grouped_emoji_reactions_for_journal)
+      else
+        handle_failed_create_or_update_call(call)
+      end
+    rescue StandardError => e
+      handle_internal_server_error(e)
     end
 
     respond_with_turbo_streams
@@ -182,17 +187,9 @@ class WorkPackages::ActivitiesTabController < ApplicationController
       # turbo_stream requests (tab is already rendered and an error occured in subsequent requests) are handled below
       format.turbo_stream do
         @turbo_status = :not_found
-        render_error_banner_via_turbo_stream(error_message)
+        render_error_flash_message_via_turbo_stream(message: error_message)
       end
     end
-  end
-
-  def render_error_banner_via_turbo_stream(error_message)
-    update_via_turbo_stream(
-      component: WorkPackages::ActivitiesTab::ErrorStreamComponent.new(
-        error_message:
-      )
-    )
   end
 
   def find_work_package
@@ -259,22 +256,22 @@ class WorkPackages::ActivitiesTabController < ApplicationController
     end
   end
 
-  def handle_failed_create_call(call)
-    update_via_turbo_stream(
-      component: WorkPackages::ActivitiesTab::Journals::NewComponent.new(
-        work_package: @work_package,
-        journal: call.result,
-        form_hidden_initially: false
-      )
-    )
-  end
-
-  def handle_failed_update_call(call)
+  def handle_failed_create_or_update_call(call)
     @turbo_status = if call.errors&.first&.type == :error_unauthorized
                       :forbidden
                     else
                       :bad_request
                     end
+    render_error_flash_message_via_turbo_stream(
+      message: call.errors&.full_messages&.join(", ")
+    )
+  end
+
+  def handle_internal_server_error(error)
+    @turbo_status = :internal_server_error
+    render_error_flash_message_via_turbo_stream(
+      message: error.message
+    )
   end
 
   def replace_whole_tab
@@ -304,6 +301,12 @@ class WorkPackages::ActivitiesTabController < ApplicationController
       .call(journal_params[:notes],
             send_notifications: !(params.has_key?(:notify) && params[:notify] == "false"))
     ###
+  end
+
+  def update_journal_service_call
+    Journals::UpdateService.new(model: @journal, user: User.current).call(
+      notes: journal_params[:notes]
+    )
   end
 
   def generate_time_based_update_streams(last_update_timestamp)
@@ -349,11 +352,34 @@ class WorkPackages::ActivitiesTabController < ApplicationController
 
   def rerender_journals_with_updated_notification(journals, last_update_timestamp, grouped_emoji_reactions)
     # Case: the user marked the journal as read somewhere else and expects the bubble to disappear
-    journals
-      .joins(:notifications)
+    #
+    # below code stopped working with the introduction of the sequence_version query
+    # I believe it is due to the fact that the notification join does not work well with the sequence_version query
+    # see below comments from my debugging session
+    # journals
+    #   .joins(:notifications)
+    #   .where("notifications.updated_at > ?", last_update_timestamp)
+    #   .find_each do |journal|
+    #   # DEBUGGING:
+    #   # the journal id is actually 85 but below data is logged:
+    #   # # journal id 14 (?!)
+    #   # # journal sequence_version 22 (correct!)
+    #   # the update stream has a wrong target then!
+    #   # target="work-packages-activities-tab-journals-item-component-14"
+    #   # instead of
+    #   # target="work-packages-activities-tab-journals-item-component-85"
+    #   update_item_show_component(journal:, grouped_emoji_reactions: grouped_emoji_reactions.fetch(journal.id, {}))
+    # end
+    #
+    # alternative approach in order to bypass the notification join issue in relation with the sequence_version query
+    Notification
+      .where(journal_id: journals.pluck(:id))
       .where("notifications.updated_at > ?", last_update_timestamp)
-      .find_each do |journal|
-      update_item_show_component(journal:, grouped_emoji_reactions: grouped_emoji_reactions.fetch(journal.id, {}))
+      .find_each do |notification|
+      update_item_show_component(
+        journal: journals.find(notification.journal_id), # take the journal from the journals querried with sequence_version!
+        grouped_emoji_reactions: grouped_emoji_reactions.fetch(notification.journal_id, {})
+      )
     end
   end
 

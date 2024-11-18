@@ -82,8 +82,7 @@ module WorkPackages
 
         def render_timeline_icon(container)
           container.with_column(mr: 2, classes: "work-packages-activities-tab-journals-item-component-details--timeline-icon") do
-            icon_name = journal.initial? ? "diff-added" : "diff-modified"
-            render Primer::Beta::Octicon.new(icon: icon_name, size: :small, "aria-label": icon_aria_label, color: :subtle)
+            render Primer::Beta::Octicon.new(icon: "diff-modified", size: :small, "aria-label": icon_aria_label, color: :subtle)
           end
         end
 
@@ -187,7 +186,7 @@ module WorkPackages
             classes: "work-packages-activities-tab-journals-item-component-details--activity-link-container"
           ) do
             render(Primer::Beta::Link.new(
-                     href: "#",
+                     href: activity_url(journal),
                      scheme: :secondary,
                      underline: false,
                      font_size: :small,

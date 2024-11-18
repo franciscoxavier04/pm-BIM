@@ -26,43 +26,38 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable } from "@angular/core";
+import { from, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
-@Injectable()
-export class CostSubformAugmentService {
+import { HalResource } from 'core-app/features/hal/resources/hal-resource';
+import { HalLink } from 'core-app/features/hal/hal-link/hal-link';
+import {
+  ResourceDisplayField,
+} from 'core-app/shared/components/fields/display/field-types/resource-display-field.module';
+import { renderHierarchyItem } from 'core-app/shared/components/fields/display/field-types/render-hierarchy-item';
 
-  constructor() {
-    jQuery('costs-subform').each((i, match) => {
-      const el = jQuery(match);
+export class HierarchyItemDisplayField extends ResourceDisplayField {
+  public render(element:HTMLElement, _displayText:string) {
+    const item = this.attribute as HalResource;
+    if (item === null || item.name === this.texts.placeholder) {
+      this.renderEmpty(element);
+      return;
+    }
 
-      const container = el.find('.subform-container');
+    element.innerHTML = '';
+    element.classList.add('hierarchy-items');
 
-      const templateEl = el.find('.subform-row-template');
-      templateEl.detach();
-      const template = templateEl[0].outerHTML;
-      let rowIndex = parseInt(el.attr('item-count')!);
-
-      el.on('click', '.delete-row-button,.delete-budget-item', (evt:any) => {
-        jQuery(evt.target).closest('.subform-row').remove();
-        return false;
-      });
-
-      // Add new row handler
-      el.find('.add-row-button,.wp-inline-create--add-link').click((evt:any) => {
-        evt.preventDefault();
-        const row = jQuery(template.replace(/INDEX/g, rowIndex.toString()));
-        row.show();
-        row.removeClass('subform-row-template');
-        row.find('input.costs-date-picker').prop('required', true);
-        row.find('input[id^="cost_type_new_rate_attributes"]').prop('required', true);
-
-        container.append(row);
-        rowIndex += 1;
-
-        setTimeout(() => container.find('.subform-row:last-child input:first').focus(), 10)
-
-        return false;
-      });
+    this.branch(item).subscribe((path) => {
+      element.appendChild(path);
     });
+  }
+
+  private branch(item:HalResource):Observable<HTMLDivElement> {
+    const itemLink = item.$link as HalLink;
+
+    return from(itemLink.$fetch())
+      .pipe(
+        switchMap((resource:HalResource) => renderHierarchyItem(resource)),
+      );
   }
 }

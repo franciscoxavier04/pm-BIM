@@ -1,29 +1,38 @@
-def first_login_step
-  visit signin_path
-  SeleniumHubWaiter.wait
-  within("#login-form") do
-    fill_in("username", with: user.login)
-    fill_in("password", with: user_password)
-    click_link_or_button I18n.t(:button_login)
+module SharedTwoFactorExamples
+  def first_login_step
+    visit signin_path
+    within("#login-form") do
+      fill_in("username", with: user.login)
+      fill_in("password", with: user_password)
+      click_link_or_button I18n.t(:button_login)
+    end
+    wait_for_network_idle
   end
-end
 
-def two_factor_step(token)
-  expect(page).to have_css("input#otp")
-  SeleniumHubWaiter.wait
-  fill_in "otp", with: token
-  click_button I18n.t(:button_login)
-end
+  def switch_two_factor_device(device)
+    within("#login-form") do
+      click_link_or_button I18n.t(:text_otp_not_receive)
+      click_link_or_button device.redacted_identifier
+    end
+  end
 
-def expect_logged_in
-  visit my_account_path
-  SeleniumHubWaiter.wait
-  expect(page).to have_css(".form--field-container", text: user.login)
-end
+  def two_factor_step(token)
+    expect(page).to have_css("input#otp")
+    fill_in "otp", with: token
+    click_button I18n.t(:button_login)
+    wait_for_network_idle
+  end
 
-def expect_not_logged_in
-  visit my_account_path
-  expect(page).to have_no_css(".form--field-container", text: user.login)
+  def expect_logged_in
+    visit my_account_path
+    wait_for_network_idle
+    expect(page).to have_css(".form--field-container", text: user.login)
+  end
+
+  def expect_not_logged_in
+    visit my_account_path
+    expect(page).to have_no_css(".form--field-container", text: user.login)
+  end
 end
 
 RSpec.shared_examples "login without 2FA" do
@@ -44,6 +53,7 @@ RSpec.shared_examples "create enforced sms device" do
     SeleniumHubWaiter.wait
     fill_in "device_phone_number", with: "invalid"
     click_on "Continue"
+    wait_for_network_idle
 
     # Expect error on invalid phone
     expect_flash(type: :error, message: "Phone number must be of format +XX XXXXXXXXX")
@@ -51,12 +61,12 @@ RSpec.shared_examples "create enforced sms device" do
     SeleniumHubWaiter.wait
     fill_in "device_phone_number", with: "+49 123456789"
     click_on "Continue"
+    wait_for_network_idle
 
     # Confirm page
     expect(page).to have_css("h2", text: I18n.t("two_factor_authentication.devices.confirm_device"))
     expect(page).to have_css("input#otp")
 
-    SeleniumHubWaiter.wait
     # Fill in wrong token
     fill_in "otp", with: "whatever"
 
