@@ -57,6 +57,10 @@ module OpPrimer
       end
     end
 
+    def mobile_title
+      raise ArgumentError, "Need to provide a mobile table title"
+    end
+
     def blank_title
       I18n.t(:label_nothing_display)
     end

@@ -1,7 +1,35 @@
+@import "helpers"
+
 .op-border-box-grid
   display: grid
   justify-content: flex-start
   align-items: center
-  // Distribute columns evenly by default
-  grid-auto-columns: minmax(0, 1fr)
-  grid-auto-flow: column
+
+  &--row-action
+    align-items: center
+    justify-content: flex-end
+
+@media screen and (min-width: $breakpoint-md)
+  .op-border-box-grid
+    // Distribute columns evenly by default
+    grid-auto-columns: minmax(0, 1fr)
+    grid-auto-flow: column
+
+    &--mobile-heading
+      display: none
+
+@media screen and (max-width: $breakpoint-md)
+  .op-border-box-grid
+    grid-template-columns: 5fr 1fr
+    grid-template-areas: "item action"
+
+    &--heading
+      display: none
+
+    &--row-item
+      grid-area: item
+
+    &--row-action
+      grid-area: action
+      align-items: center
+      justify-content: flex-end

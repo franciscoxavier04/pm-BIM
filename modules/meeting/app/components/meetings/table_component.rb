@@ -46,12 +46,8 @@ module Meetings
       true
     end
 
-    def header_args(column)
-      if column == :title
-        { style: "grid-column: span 2" }
-      else
-        super
-      end
+    def mobile_title
+      I18n.t(:label_meeting_plural)
     end
 
     def headers
