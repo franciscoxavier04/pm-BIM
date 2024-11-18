@@ -2,8 +2,6 @@
 
 .op-border-box-grid
   display: grid
-  justify-content: flex-start
-  align-items: center
 
   &--row-action
     align-items: center
@@ -11,25 +9,29 @@
 
 @media screen and (min-width: $breakpoint-md)
   .op-border-box-grid
-    // Distribute columns evenly by default
+    // Distribute columns evenly on desktop
     grid-auto-columns: minmax(0, 1fr)
     grid-auto-flow: column
+    justify-content: flex-start
+    align-items: center
 
     &--mobile-heading
       display: none
 
 @media screen and (max-width: $breakpoint-md)
   .op-border-box-grid
-    grid-template-columns: 5fr 1fr
-    grid-template-areas: "item action"
+    grid-template-columns: 1fr auto
+    grid-auto-flow: row
+    row-gap: 1rem
 
     &--heading
       display: none
 
     &--row-item
-      grid-area: item
+      grid-column: 1
 
     &--row-action
-      grid-area: action
+      grid-column: 2
+      grid-row: 1
       align-items: center
       justify-content: flex-end
