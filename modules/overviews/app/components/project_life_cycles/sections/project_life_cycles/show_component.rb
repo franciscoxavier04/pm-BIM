@@ -28,22 +28,35 @@
 
 module ProjectLifeCycles
   module Sections
-    class ShowComponent < ApplicationComponent
-      include ApplicationHelper
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
+    module ProjectLifeCycles
+      class ShowComponent < ApplicationComponent
+        include ApplicationHelper
+        include OpPrimer::ComponentHelpers
 
-      def initialize(project:)
-        super
+        def initialize(project_life_cycle:)
+          super
 
-        @project = project
-        @project_life_cycles = @project.project_life_cycles.includes(:life_cycle)
-      end
+          @project_life_cycle = project_life_cycle
+        end
 
-      private
+        private
 
-      def allowed_to_edit?
-        User.current.allowed_in_project?(:edit_project_attributes, @project)
+        def not_set?
+          @project_life_cycle.not_set?
+        end
+
+        def render_value
+          case @project_life_cycle
+          when Project::Gate
+            render(Primer::Beta::Text.new) do
+              concat @project_life_cycle.date
+            end
+          when Project::Stage
+            render(Primer::Beta::Text.new) do
+              concat [@project_life_cycle.start_date, " - ", @project_life_cycle.end_date].join
+            end
+          end
+        end
       end
     end
   end
