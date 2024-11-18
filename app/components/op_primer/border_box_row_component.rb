@@ -38,7 +38,7 @@ module OpPrimer
       key = table.mobile_labels[column]
       case key
       when Proc
-        key.call(column)
+        key.call
       else
         I18n.t(key)
       end

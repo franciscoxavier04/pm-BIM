@@ -43,7 +43,7 @@ module OpPrimer
       #
       # This results in the description columns to be hidden on mobile
       def mobile_columns(*names)
-        return Array(@mobile_columns) if names.empty?
+        return @mobile_columns || columns if names.empty?
 
         @mobile_columns = names.map(&:to_sym)
       end
