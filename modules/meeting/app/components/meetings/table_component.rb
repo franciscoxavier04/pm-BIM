@@ -57,8 +57,8 @@ module Meetings
     def headers
       @headers ||= [
         [:title, { caption: Meeting.human_attribute_name(:title) }],
-        current_project.blank? ? [:project_name, { caption: Meeting.human_attribute_name(:project) }] : nil,
         [:start_time, { caption: I18n.t(:label_meeting_date_and_time) }],
+        current_project.blank? ? [:project_name, { caption: Meeting.human_attribute_name(:project) }] : nil,
         [:duration, { caption: Meeting.human_attribute_name(:duration) }],
         [:location, { caption: Meeting.human_attribute_name(:location) }]
       ].compact
