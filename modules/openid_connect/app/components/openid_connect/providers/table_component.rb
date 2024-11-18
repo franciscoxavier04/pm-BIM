@@ -3,20 +3,14 @@ module OpenIDConnect
     class TableComponent < ::OpPrimer::BorderBoxTableComponent
       columns :name, :type, :users, :creator, :created_at
 
+      wide_columns :name
+
       mobile_columns :name, :type, :users
 
       mobile_labels users: :label_user_plural
 
       def initial_sort
         %i[id asc]
-      end
-
-      def header_args(column)
-        if column == :name
-          { style: "grid-column: span 3" }
-        else
-          super
-        end
       end
 
       def has_actions?

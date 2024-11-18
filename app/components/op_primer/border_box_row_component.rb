@@ -51,6 +51,7 @@ module OpPrimer
     def grid_column_classes(column)
       classes = ["op-border-box-grid--row-item"]
       classes << column_css_class(column)
+      classes << "op-border-box-grid--wide-column" if table.wide_column?(column)
       classes << "op-border-box-grid--no-mobile" unless visible_on_mobile?(column)
 
       classes.compact.join(" ")

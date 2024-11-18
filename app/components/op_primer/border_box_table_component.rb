@@ -58,13 +58,34 @@ module OpPrimer
 
         @mobile_labels = hash
       end
+
+      # Declare wide columns, that will result in a grid column span of 3
+      #
+      #     column_grid_span :title
+      #
+      def wide_columns(*names)
+        return Array(@wide_columns) if names.empty?
+
+        @wide_columns = names.map(&:to_sym)
+      end
     end
 
     delegate :mobile_columns, :mobile_labels,
              to: :class
 
+    def wide_column?(column)
+      self.class.wide_columns.include?(column)
+    end
+
     def header_args(_column)
       {}
+    end
+
+    def header_classes(column)
+      classes = ["op-border-box-grid--heading"]
+      classes << "op-border-box-grid--wide-column" if wide_column?(column)
+
+      classes.join(" ")
     end
 
     # Default grid class with equal weights
