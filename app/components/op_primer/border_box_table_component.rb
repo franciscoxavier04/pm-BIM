@@ -87,10 +87,14 @@ module OpPrimer
     end
 
     def header_classes(column)
-      classes = ["op-border-box-grid--heading"]
+      classes = [heading_class]
       classes << "op-border-box-grid--wide-column" if wide_column?(column)
 
       classes.join(" ")
+    end
+
+    def heading_class
+      "op-border-box-grid--heading"
     end
 
     # Default grid class with equal weights
