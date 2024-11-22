@@ -42,6 +42,7 @@ module RecurringMeetings
     attribute :end_after
     attribute :end_date
     attribute :iterations
+    attribute :interval
 
     # Virtual attributes for the form
     attribute :duration

@@ -58,6 +58,10 @@
               end
 
               modal_body.with_row(mt: 3) do
+                render(RecurringMeeting::Interval.new(f))
+              end
+
+              modal_body.with_row(mt: 3) do
                 render(RecurringMeeting::EndAfter.new(f))
               end
 

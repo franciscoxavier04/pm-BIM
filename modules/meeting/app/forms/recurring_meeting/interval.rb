@@ -26,16 +26,13 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class RecurringMeeting::Frequency < ApplicationForm
+class RecurringMeeting::Interval < ApplicationForm
   form do |meeting_form|
-    meeting_form.select_list(
-      name: "frequency",
-      label: I18n.t("activerecord.attributes.recurring_meeting.frequency"),
-    ) do |list|
-      RecurringMeeting.frequencies.keys.each do |value|
-        label = I18n.t(:"recurring_meeting.frequency.#{value}")
-        list.option(label:, value:)
-      end
-    end
+    meeting_form.text_field(
+      name: :interval,
+      type: :number,
+      label: I18n.t("activerecord.attributes.recurring_meeting.interval"),
+      caption: I18n.t("recurring_meeting.interval.instructions")
+    )
   end
 end

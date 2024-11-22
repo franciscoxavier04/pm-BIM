@@ -63,6 +63,7 @@ en:
         title: "Title"
       recurring_meeting:
         frequency: "Frequency"
+        interval: "Interval"
         end_after: "End after"
         iterations: "Occurrences"
     errors:
@@ -196,6 +197,9 @@ en:
     empty_text: "Drag items here or create a new one"
 
   recurring_meeting:
+    interval:
+      instructions: >
+        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
     template:
@@ -207,10 +211,8 @@ en:
     frequency:
       every_weekday: "Every %{day_of_the_week}"
       daily: "Daily"
+      work_days: "Work days"
       weekly: "Weekly"
-      biweekly: "Bi-weekly (Every 2 weeks)"
-      monthly: "Monthly"
-      yearly: "Yearly"
     end_after:
       specific_date: "A specific date"
       iterations: "A number of occurrences"
