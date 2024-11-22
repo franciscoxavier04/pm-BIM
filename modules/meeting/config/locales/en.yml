@@ -217,16 +217,18 @@ en:
     frequency:
       every_weekday: "Every %{day_of_the_week}"
       daily: "Daily"
-      working_days: "Working days"
+      working_days: "Working Days"
       weekly: "Weekly"
     end_after:
       specific_date: "A specific date"
       iterations: "A number of occurrences"
     starts: "Starts"
     in_words:
-      weekly: "%{frequency} on %{weekday}"
-      monthly: "%{frequency} on the %{date}"
-      yearly: "%{frequency} on the %{date} of %{month}"
+      daily_interval: "Every %{interval} day"
+      working_days: "Every working day"
+      working_days_interval: "Every %{interval} working day"
+      weekly: "Weekly on %{weekday}"
+      weekly_interval: "Every %{interval} week on %{weekday}"
       full: "%{base} at %{time}, ends on %{end_date}"
 
   notice_successful_notification: "Notification sent successfully"

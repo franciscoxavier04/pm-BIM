@@ -52,10 +52,6 @@ class RecurringMeeting < ApplicationRecord
     I18n.l(start_time, format: "%A")
   end
 
-  def month
-    I18n.l(start_time, format: "%B")
-  end
-
   def date
     start_time.day.ordinalize
   end
@@ -67,13 +63,23 @@ class RecurringMeeting < ApplicationRecord
     end
   end
 
-  def schedule_in_words
+  def schedule_in_words # rubocop:disable Metrics/AbcSize
     base = case frequency
-    when "daily"
-      human_frequency
-    else
-      I18n.t("recurring_meeting.in_words.weekly", frequency: human_frequency, weekday:)
-    end
+           when "daily"
+             interval == 1 ? human_frequency : I18n.t("recurring_meeting.in_words.daily_interval", interval: interval.ordinalize)
+           when "working_days"
+             if interval == 1
+               I18n.t("recurring_meeting.in_words.working_days")
+             else
+               I18n.t("recurring_meeting.in_words.working_days_interval", interval: interval.ordinalize)
+             end
+           when "weekly"
+             if interval == 1
+               I18n.t("recurring_meeting.in_words.weekly", weekday:)
+             else
+               I18n.t("recurring_meeting.in_words.weekly_interval", interval: interval.ordinalize, weekday:)
+             end
+           end
 
     I18n.t("recurring_meeting.in_words.full", base:, time: format_time(start_time, include_date: false), end_date:)
   end
