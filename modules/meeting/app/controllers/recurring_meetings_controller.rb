@@ -189,7 +189,7 @@ class RecurringMeetingsController < ApplicationController
     params
       .require(:meeting)
       .permit(:title, :location, :start_time_hour, :duration, :start_date,
-              :frequency, :end_after, :end_date, :iterations)
+              :interval, :frequency, :end_after, :end_date, :iterations)
   end
 
   def find_copy_from_meeting

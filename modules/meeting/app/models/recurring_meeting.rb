@@ -11,7 +11,7 @@ class RecurringMeeting < ApplicationRecord
 
   enum frequency: {
     daily: 0,
-    work_days: 1,
+    working_days: 1,
     weekly: 2
   }.freeze, _prefix: true
 
@@ -63,20 +63,17 @@ class RecurringMeeting < ApplicationRecord
   def schedule
     @schedule ||= IceCube::Schedule.new(start_time, end_time: end_date).tap do |s|
       s.add_recurrence_rule count_rule(frequency_rule)
+      exclude_non_working_days(s) if frequency_working_days?
     end
   end
 
   def schedule_in_words
     base = case frequency
-           when "daily"
-             human_frequency
-           when "weekly", "biweekly"
-             I18n.t("recurring_meeting.in_words.weekly", frequency: human_frequency, weekday:)
-           when "monthly"
-             I18n.t("recurring_meeting.in_words.monthly", frequency: human_frequency, date:)
-           when "yearly"
-             I18n.t("recurring_meeting.in_words.yearly", frequency: human_frequency, date:, month:)
-           end
+    when "daily"
+      human_frequency
+    else
+      I18n.t("recurring_meeting.in_words.weekly", frequency: human_frequency, weekday:)
+    end
 
     I18n.t("recurring_meeting.in_words.full", base:, time: format_time(start_time, include_date: false), end_date:)
   end
@@ -105,7 +102,18 @@ class RecurringMeeting < ApplicationRecord
   private
 
   def frequency_rule
-    IceCube::Rule.public_send(frequency)
+    case frequency
+    when "daily"
+      IceCube::Rule.daily(interval)
+    when "working_days"
+      IceCube::Rule
+        .weekly(interval)
+        .day(*Setting.working_day_names)
+    when "weekly"
+      IceCube::Rule.weekly(interval)
+    else
+      raise NotImplementedError
+    end
   end
 
   def count_rule(rule)

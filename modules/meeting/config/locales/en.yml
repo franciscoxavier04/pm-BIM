@@ -211,7 +211,7 @@ en:
     frequency:
       every_weekday: "Every %{day_of_the_week}"
       daily: "Daily"
-      work_days: "Work days"
+      working_days: "Working days"
       weekly: "Weekly"
     end_after:
       specific_date: "A specific date"
