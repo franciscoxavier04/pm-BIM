@@ -45,9 +45,18 @@ module Meetings
     def title
       if recurring?
         link_to model.title, recurring_meeting_path(model)
+      elsif recurring_meeting.present?
+        occurrence_title
       else
-        safe_join([(link_to model.title, project_meeting_path(model.project, model)), recurring_label], "  ")
+        link_to model.title, project_meeting_path(model.project, model)
       end
+    end
+
+    def occurrence_title
+      safe_join(
+        [(link_to model.title, project_meeting_path(model.project, model)),
+         (link_to recurring_label, recurring_meeting_path(recurring_meeting))], "  "
+      )
     end
 
     def start_time
@@ -89,30 +98,29 @@ module Meetings
                                 "test-selector": "more-button"
                               })
 
-        if recurring_instance?
-          show_series_action(menu)
-        end
-
-        if copy_allowed? && !recurring?
+        if recurring?
+          nil
+        elsif recurring_meeting.present?
+          view_meeting_series(menu)
+        else
           copy_action(menu)
         end
 
         ical_action(menu) unless recurring?
-
-        if delete_allowed?
-          delete_action(menu)
-        end
+        delete_action(menu)
       end
     end
 
-    def show_series_action(menu)
-      menu.with_item(label: I18n.t(:label_view_meeting_series),
-                     href: recurring_meeting_path(model.recurring_meeting_id)) do |item|
-        item.with_leading_visual_icon(icon: :eye)
+    def view_meeting_series(menu)
+      menu.with_item(label: I18n.t(:label_recurring_meeting_view),
+                     href: recurring_meeting_path(recurring_meeting)) do |item|
+        item.with_leading_visual_icon(icon: :iterations)
       end
     end
 
     def copy_action(menu)
+      return unless copy_allowed?
+
       menu.with_item(label: I18n.t(:label_meeting_copy),
                      href: copy_meeting_path(model),
                      content_arguments: {
@@ -136,21 +144,30 @@ module Meetings
     end
 
     def delete_action(menu)
-      menu.with_item(label: I18n.t(:label_meeting_delete),
+      return unless delete_allowed?
+
+      menu.with_item(label: recurring_meeting.present? ? I18n.t(:label_recurring_meeting_delete) : I18n.t(:label_meeting_delete),
                      scheme: :danger,
                      href: meeting_path(model),
                      form_arguments: {
-                       method: :delete, data: { confirm: I18n.t("text_are_you_sure"), turbo: false }
+                       method: :delete, data: { confirm: delete_confirm_message, turbo: false }
                      }) do |item|
         item.with_leading_visual_icon(icon: :trash)
       end
     end
 
+    def delete_confirm_message
+      if recurring_meeting.present?
+        I18n.t(:label_recurring_meeting_delete_confirmation, name: recurring_meeting.title)
+      else
+        I18n.t("text_are_you_sure")
+      end
+    end
+
     def recurring_label
-      if recurring?
-        render(Primer::Beta::Label.new) { model.human_frequency }
-      elsif model.recurring_meeting.present?
-        render(Primer::Beta::Label.new) { model.recurring_meeting.human_frequency }
+      render(Primer::BaseComponent.new(tag: :span, color: :muted)) do
+        concat render(Primer::Beta::Octicon.new(icon: :iterations, mr: 1, ml: 1))
+        concat render(Primer::Beta::Text.new(font_weight: :bold, font_size: :small)) { recurring_meeting.human_frequency }
       end
     end
 
@@ -162,12 +179,14 @@ module Meetings
       User.current.allowed_in_project?(:create_meetings, model.project)
     end
 
-    def recurring_instance?
-      model.recurring_meeting_id.present?
-    end
-
     def recurring?
       model.is_a?(RecurringMeeting)
+    end
+
+    def recurring_meeting
+      return if recurring?
+
+      model.recurring_meeting
     end
   end
 end
