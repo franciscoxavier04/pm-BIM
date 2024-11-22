@@ -101,6 +101,15 @@ class RecurringMeeting < ApplicationRecord
 
   private
 
+  def exclude_non_working_days(schedule)
+    NonWorkingDay
+      .where(date: start_date...)
+      .pluck(:date)
+      .each do |date|
+      schedule.add_exception_time(date)
+    end
+  end
+
   def frequency_rule
     case frequency
     when "daily"
