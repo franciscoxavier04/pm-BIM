@@ -74,8 +74,8 @@ module RecurringMeetings
 
     def status
       scheme = status_scheme(model.state)
-
-      render(Primer::Beta::Label.new(scheme:)) do
+      
+      render(Primer::Beta::Label.new(title:, scheme:)) do
         render(Primer::Beta::Text.new) { t("label_meeting_state_#{model.state}") }
       end
     end
@@ -86,6 +86,8 @@ module RecurringMeetings
         :success
       when "cancelled"
         :severe
+      when "skipped"
+        :attention
       else
         :secondary
       end

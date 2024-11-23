@@ -161,9 +161,8 @@ class RecurringMeetingsController < ApplicationController
 
   def skeleton_meeting(date)
     start_time = @recurring_meeting.start_time.change(year: date.year, month: date.month, day: date.day)
-    occurring = @recurring_meeting.schedule.occurring_at?(date)
     RecurringMeetings::Skeleton.new(start_time:,
-                                    state: occurring ? :scheduled : :skipped,
+                                    state: "scheduled",
                                     recurring_meeting: @recurring_meeting)
   end
 
