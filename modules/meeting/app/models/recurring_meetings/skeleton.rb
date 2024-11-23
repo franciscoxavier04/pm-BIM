@@ -27,5 +27,5 @@
 #++
 
 module RecurringMeetings
-  Skeleton = Data.define(:start_time, :recurring_meeting)
+  Skeleton = Data.define(:start_time, :recurring_meeting, :state)
 end

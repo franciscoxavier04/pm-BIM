@@ -34,6 +34,10 @@ module RecurringMeetings
       model
     end
 
+    def schedule
+      meeting.schedule
+    end
+
     def instantiated?
       meeting.is_a?(Meeting)
     end
@@ -69,11 +73,10 @@ module RecurringMeetings
     end
 
     def status
-      state = instantiated? ? model.state : :scheduled
-      scheme = status_scheme(state)
+      scheme = status_scheme(model.state)
 
       render(Primer::Beta::Label.new(scheme:)) do
-        render(Primer::Beta::Text.new) { t("label_meeting_state_#{state}") }
+        render(Primer::Beta::Text.new) { t("label_meeting_state_#{model.state}") }
       end
     end
 

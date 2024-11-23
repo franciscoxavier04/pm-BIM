@@ -161,7 +161,10 @@ class RecurringMeetingsController < ApplicationController
 
   def skeleton_meeting(date)
     start_time = @recurring_meeting.start_time.change(year: date.year, month: date.month, day: date.day)
-    RecurringMeetings::Skeleton.new(start_time:, recurring_meeting: @recurring_meeting)
+    occurring = @recurring_meeting.schedule.occurring_at?(date)
+    RecurringMeetings::Skeleton.new(start_time:,
+                                    state: occurring ? :scheduled : :skipped,
+                                    recurring_meeting: @recurring_meeting)
   end
 
   def find_optional_project
