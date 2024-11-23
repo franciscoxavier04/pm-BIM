@@ -28,6 +28,18 @@
 
 module RecurringMeetings
   class SetAttributesService < ::BaseServices::SetAttributes
+    private
+
+    def set_attributes(params)
+      super
+
+      model.change_by_system do
+        if model.frequency_working_days?
+          model.interval = 1
+        end
+      end
+    end
+
     def set_default_attributes(_params)
       model.change_by_system do
         model.author = user
