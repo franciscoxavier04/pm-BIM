@@ -74,7 +74,7 @@ module RecurringMeetings
 
     def status
       scheme = status_scheme(model.state)
-      
+
       render(Primer::Beta::Label.new(title:, scheme:)) do
         render(Primer::Beta::Text.new) { t("label_meeting_state_#{model.state}") }
       end

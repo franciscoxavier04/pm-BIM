@@ -32,6 +32,7 @@ class RecurringMeeting::EndAfter < ApplicationForm
       name: "end_after",
       label: I18n.t("activerecord.attributes.recurring_meeting.end_after"),
       data: {
+        target_name: "end_after",
         "show-when-value-selected-target": "cause"
       }
     ) do |list|

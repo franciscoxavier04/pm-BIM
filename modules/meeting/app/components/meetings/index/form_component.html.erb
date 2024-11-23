@@ -57,7 +57,14 @@
                 render(RecurringMeeting::Frequency.new(f))
               end
 
-              modal_body.with_row(mt: 3) do
+              modal_body.with_row(
+                mt: 3,
+                hidden: @meeting.frequency_working_days?,
+                data: {
+                  target_name: "frequency",
+                  not_value: "working_days",
+                  "show-when-value-selected-target": "effect"
+                }) do
                 render(RecurringMeeting::Interval.new(f))
               end
 
@@ -66,14 +73,21 @@
               end
 
               modal_body.with_row(mt: 3,
-                                  data: { value: "specific_date", "show-when-value-selected-target": "effect" }
+                                  data: {
+                                    value: "specific_date",
+                                    target_name: "end_after",
+                                    "show-when-value-selected-target": "effect" }
                                   ) do
                 render(RecurringMeeting::SpecificDate.new(f))
               end
 
               modal_body.with_row(mt: 3,
                                   hidden: true,
-                                  data: { value: "iterations", "show-when-value-selected-target": "effect" }) do
+                                  data: {
+                                    value: "iterations",
+                                    target_name: "end_after",
+                                    "show-when-value-selected-target": "effect"
+                                  }) do
                 render(RecurringMeeting::Iterations.new(f))
               end
             else
