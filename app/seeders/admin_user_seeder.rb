@@ -27,14 +27,10 @@
 #++
 class AdminUserSeeder < Seeder
   def seed_data!
-    user = new_admin
-    if user.save!(validate: false)
-      seed_data.store_reference(:openproject_admin, user)
+    if Setting.seed_admin_user_enabled?
+      seed_admin!
     else
-      print_error "Seeding admin failed:"
-      user.errors.full_messages.each do |msg|
-        print_error "  #{msg}"
-      end
+      Seeder.logger.debug { "   *** skipped as explicity disabled with OPENPROJECT_SEED_ADMIN_USER_ENABLED" }
     end
   end
 
@@ -48,6 +44,18 @@ class AdminUserSeeder < Seeder
 
   def not_applicable_message
     "No need to seed an admin as there already is one."
+  end
+
+  def seed_admin!
+    user = new_admin
+    if user.save!(validate: false)
+      seed_data.store_reference(:openproject_admin, user)
+    else
+      print_error "Seeding admin failed:"
+      user.errors.full_messages.each do |msg|
+        print_error "  #{msg}"
+      end
+    end
   end
 
   def new_admin # rubocop:disable Metrics/AbcSize
