@@ -58,6 +58,9 @@ class Meeting < ApplicationRecord
   scope :cancelled, -> { where(state: :cancelled) }
   scope :not_cancelled, -> { where.not(id: cancelled) }
 
+  scope :not_recurring, -> { where(recurring_meeting_id: nil) }
+  scope :recurring, -> { where.not(id: not_recurring) }
+
   scope :from_tomorrow, -> { where(["start_time >= ?", Date.tomorrow.beginning_of_day]) }
   scope :from_today, -> { where(["start_time >= ?", Time.zone.today.beginning_of_day]) }
 

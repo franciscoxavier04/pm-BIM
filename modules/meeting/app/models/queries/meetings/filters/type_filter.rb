@@ -27,32 +27,25 @@
 #++
 
 class Queries::Meetings::Filters::TypeFilter < Queries::Meetings::Filters::MeetingFilter
-  def allowed_values
-    allowed = [
-      [I18n.t("meeting.types.classic"), "Meeting"],
-      [I18n.t("meeting.types.structured"), "DynamicMeeting"]
-    ]
-
-    if OpenProject::FeatureDecisions.recurring_meetings_active?
-      allowed + [[I18n.t("meeting.types.recurring"), "RecurringMeeting"]]
-    else
-      allowed
-    end
-  end
-
-  def type
-    :list
-  end
+  include Queries::Filters::Shared::BooleanFilter
 
   def self.key
     :type
   end
 
+  def human_name
+    I18n.t("label_recurring_meeting_part_of")
+  end
+
+  def available?
+    OpenProject::FeatureDecisions.recurring_meetings_active?
+  end
+
   def apply_to(query_scope)
-    if operator == "="
-      query_scope.where(type: values)
+    if allowed_values.first.intersect?(values)
+      query_scope.recurring
     else
-      query_scope.where.not(type: values)
+      query_scope.not_recurring
     end
   end
 end

@@ -54,12 +54,10 @@ module Meetings
     def recurring_menu_item
       return unless OpenProject::FeatureDecisions.recurring_meetings_active?
 
-      href = polymorphic_path([@project, :recurring_meetings])
-      OpenProject::Menu::MenuItem.new(
-        title: I18n.t("label_recurring_meeting_plural"),
-        href:,
-        selected: params[:current_href] == href
-      )
+      recurring_filter = [{ type: { operator: "=", values: ["t"] } }].to_json
+
+      menu_item(title: I18n.t("label_recurring_meeting_plural"),
+                query_params: { filters: recurring_filter, sort: "start_time" })
     end
 
     def involvement_sidebar_menu_items
