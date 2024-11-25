@@ -52,13 +52,17 @@ module RecurringMeetings
       end
     end
 
+    def mobile_title
+      I18n.t(:label_recurring_meeting_plural)
+    end
+
     def headers
       @headers ||= [
         [:start_time, { caption: I18n.t(:label_meeting_date_and_time) }],
         [:relative_time, { caption: I18n.t("recurring_meeting.starts") }],
         [:last_edited, { caption: I18n.t(:label_meeting_last_updated) }],
         [:status, { caption: Meeting.human_attribute_name(:status) }],
-        [:create, ""]
+        [:create, { caption: "" }]
       ].compact
     end
 
