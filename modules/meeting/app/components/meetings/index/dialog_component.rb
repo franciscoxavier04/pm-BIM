@@ -59,7 +59,7 @@ module Meetings
       when RecurringMeeting
         I18n.t("label_meeting_new_recurring")
       else
-        I18n.t("label_meeting_new_one_time")
+        I18n.t("label_meeting_new_dynamic")
       end
     end
   end
