@@ -298,6 +298,9 @@ RSpec.describe RootSeeder,
           root_seeder.seed_data!
         end
       end
+    ensure
+      reset(:seed_admin_user_enabled)
+      RequestStore.clear! # resets `User.current` cached result
     end
 
     it "creates the system user" do
