@@ -80,7 +80,7 @@ class Seeder
 
   # The user being the author of all data created during seeding.
   def admin_user
-    @admin_user ||= User.not_builtin.admin.first
+    @admin_user ||= (User.not_builtin.admin.first || User.system)
   end
 
   protected
