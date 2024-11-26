@@ -26,7 +26,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Queries::Meetings::Filters::TypeFilter < Queries::Meetings::Filters::MeetingFilter
+class Queries::Meetings::Filters::RecurringFilter < Queries::Meetings::Filters::MeetingFilter
   include Queries::Filters::Shared::BooleanFilter
 
   def self.key
