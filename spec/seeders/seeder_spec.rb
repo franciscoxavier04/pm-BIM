@@ -37,16 +37,14 @@ RSpec.describe Seeder do
 
   describe "#admin_user" do
     it "returns the admin created from the seeding" do
-      expect(seeder.admin_user).to eq(User.system)
-      expect { AdminUserSeeder.new(seed_data).seed! }.to change { User.admin.count }.by(1)
-      expect(seeder.admin_user).to eq(User.system)
-
-      expect(described_class.new.admin_user).to eq(User.not_builtin.admin.first)
+      expect(seeder.admin_user).to be_nil
+      AdminUserSeeder.new(seed_data).seed!
+      expect(seeder.admin_user).to be_a(User)
     end
 
     it "does not return the system user" do
       expect { User.system }.to change { User.admin.count }.by(1)
-      expect(seeder.admin_user).to eq(User.system)
+      expect(seeder.admin_user).to be_nil
     end
   end
 end

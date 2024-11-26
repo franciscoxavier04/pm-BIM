@@ -39,18 +39,6 @@ RSpec.describe AdminUserSeeder do
     expect { seeder.seed! }.to change { User.admin.count }.by(1)
   end
 
-  context "when skipped with OPENPROJECT_SEED_ADMIN_USER_ENABLED=false",
-          :settings_reset,
-          with_env: {
-            OPENPROJECT_SEED_ADMIN_USER_ENABLED: "false"
-          } do
-    it "skips the creation" do
-      reset(:seed_admin_user_enabled)
-
-      expect { seeder.seed! }.not_to change { User.admin.count }
-    end
-  end
-
   context "when providing admin user seed variables",
           :settings_reset,
           with_env: {
@@ -68,6 +56,7 @@ RSpec.describe AdminUserSeeder do
       seeder.seed!
 
       admin = User.admin.last
+      expect(admin).to be_active
       expect(admin.firstname).to eq "foo"
       expect(admin.lastname).to eq "bar"
       expect(admin.mail).to eq "foobar@example.com"
