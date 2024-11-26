@@ -146,7 +146,7 @@ class MeetingsController < ApplicationController
   def new_dialog
     respond_with_dialog Meetings::Index::DialogComponent.new(
       meeting: @meeting,
-      project: @project,
+      project: @project
     )
   end
 

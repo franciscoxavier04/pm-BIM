@@ -26,23 +26,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Meeting::StartTime < ApplicationForm
+class Meeting::TimeGroup < ApplicationForm
   include Redmine::I18n
 
   form do |meeting_form|
-    meeting_form.text_field(
-      name: :start_time_hour,
-      type: "time",
-      value: @initial_value,
-      placeholder: Meeting.human_attribute_name(:start_time),
-      label: Meeting.human_attribute_name(:start_time),
-      leading_visual: { icon: :clock },
-      required: true,
-      caption: formatted_time_zone_offset
-    )
+    meeting_form.group(layout: :horizontal) do |group|
+      group.text_field(
+        name: :start_date,
+        type: "date",
+        value: @initial_date,
+        placeholder: Meeting.human_attribute_name(:start_date),
+        label: Meeting.human_attribute_name(:start_date),
+        leading_visual: { icon: :calendar },
+        required: true,
+        autofocus: false
+      )
+
+      group.text_field(
+        name: :start_time_hour,
+        type: "time",
+        value: @initial_time,
+        placeholder: Meeting.human_attribute_name(:start_time),
+        label: Meeting.human_attribute_name(:start_time),
+        leading_visual: { icon: :clock },
+        required: true,
+        caption: formatted_time_zone_offset
+      )
+    end
   end
 
-  def initialize(initial_value: DateTime.now.strftime("%H:%M"))
-    @initial_value = initial_value
+  def initialize(meeting:)
+    super()
+
+    @initial_time = meeting.start_time_hour.presence || format_time(meeting.start_time, include_date: false, format: "%H:%M")
+    @initial_date = meeting.start_date.presence || format_time_as_date(meeting.start_time, format: "%Y-%m-%d")
   end
 end

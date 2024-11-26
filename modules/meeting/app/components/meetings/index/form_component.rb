@@ -65,13 +65,5 @@ module Meetings
         :update
       end
     end
-
-    def start_date_initial_value
-      @meeting.start_date.presence || format_time_as_date(@meeting.start_time, format: "%Y-%m-%d")
-    end
-
-    def start_time_initial_value
-      @meeting.start_time_hour.presence || format_time(@meeting.start_time, include_date: false, format: "%H:%M")
-    end
   end
 end
