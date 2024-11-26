@@ -286,4 +286,31 @@ RSpec.describe RootSeeder,
 
     include_examples "no email deliveries"
   end
+
+  context "when admin user creation is disabled with OPENPROJECT_SEED_ADMIN_USER_ENABLED=false",
+          :settings_reset do
+    shared_let(:root_seeder) { described_class.new }
+
+    before_all do
+      with_env("OPENPROJECT_SEED_ADMIN_USER_ENABLED" => "false") do
+        with_edition("standard") do
+          reset(:seed_admin_user_enabled)
+          root_seeder.seed_data!
+        end
+      end
+    end
+
+    it "creates the system user" do
+      expect(SystemUser.where(admin: true).count).to eq 1
+    end
+
+    it "does not create an admin user" do
+      expect(User.not_builtin.where(admin: true).count).to eq 0
+    end
+
+    it "seeds without any errors" do
+      expect(Project.count).to eq 2
+      expect(WorkPackage.count).to eq 36
+    end
+  end
 end
