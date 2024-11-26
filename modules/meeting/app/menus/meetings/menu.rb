@@ -59,11 +59,12 @@ module Meetings
     end
 
     def involvement_sidebar_menu_items
+      invitation_filter = [{ invited_user_id: { operator: "=", values: [User.current.id.to_s] } }].to_json
+
       [
-        menu_item(title: I18n.t(:label_invitations)),
-        menu_item(title: I18n.t(:label_past_invitations),
-                  query_params: { filters: past_filter, sort: "start_time:desc" }),
-        menu_item(title: I18n.t(:label_attendee),
+        menu_item(title: I18n.t(:label_invitations),
+                  query_params: { filters: invitation_filter, sort: "start_time" }),
+        menu_item(title: I18n.t(:label_attended),
                   query_params: { filters: attendee_filter }),
         menu_item(title: I18n.t(:label_author),
                   query_params: { filters: author_filter })
