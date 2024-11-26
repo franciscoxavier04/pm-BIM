@@ -4,7 +4,7 @@
   "filter--filters-form-output-format-value": "json",
 })) do |subheader|
   subheader.with_filter_component do
-    render(Meetings::MeetingFilterButtonComponent.new(query: @query, project: @project))
+    render(Meetings::CombinedFilterComponent.new(query: @query, project: @project, params: @params))
   end
 
   if render_create_button?

@@ -39,15 +39,13 @@ module Meetings
     end
 
     def top_level_menu_items
-      upcoming_filter = [{ time: { operator: "=", values: ["future"] } }].to_json
-      past_filter = [{ time: { operator: "=", values: ["past"] } }].to_json
+      all_filter = [{ invited_user_id: { operator: "*", values: [] } }].to_json
 
       [
-        menu_item(title: I18n.t(:label_upcoming_meetings),
-                  query_params: { filters: upcoming_filter, sort: "start_time" }),
-        menu_item(title: I18n.t(:label_past_meetings),
-                  query_params: { filters: past_filter, sort: "start_time:desc" }),
-        recurring_menu_item
+        menu_item(title: I18n.t(:label_my_meetings)),
+        recurring_menu_item,
+        menu_item(title: I18n.t(:label_all_meetings),
+                  query_params: { filters: all_filter })
       ].compact
     end
 
@@ -62,7 +60,7 @@ module Meetings
 
     def involvement_sidebar_menu_items
       [
-        menu_item(title: I18n.t(:label_upcoming_invitations)),
+        menu_item(title: I18n.t(:label_invitations)),
         menu_item(title: I18n.t(:label_past_invitations),
                   query_params: { filters: past_filter, sort: "start_time:desc" }),
         menu_item(title: I18n.t(:label_attendee),

@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,43 +24,34 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
 module Meetings
-  # rubocop:disable OpenProject/AddPreviewForViewComponent
-  class IndexSubHeaderComponent < ApplicationComponent
-    # rubocop:enable OpenProject/AddPreviewForViewComponent
+  class CombinedFilterComponent < ApplicationComponent
     include ApplicationHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
+    include Redmine::I18n
 
     def initialize(query:, project: nil, params:)
-      super
+      super()
+
       @query = query
       @project = project
       @params = params
     end
 
-    def render_create_button?
-      if @project
-        User.current.allowed_in_project?(:create_meetings, @project)
-      else
-        User.current.allowed_in_any_project?(:create_meetings)
-      end
+    def dynamic_path(upcoming: true)
+      polymorphic_path([@project, :meetings], current_params.merge(upcoming:))
     end
 
-    def dynamic_path
-      polymorphic_path([:new, @project, :meeting])
+    def upcoming_query?
+      filter = @query.filters.find { |f| f.name == :time }
+      filter ? !filter.past? : true
     end
 
-    def id
-      "add-meeting-button"
-    end
-
-    def accessibility_label_text
-      I18n.t(:label_meeting_new)
-    end
-
-    def label_text
-      I18n.t(:label_meeting)
+    def current_params
+      @current_params ||= params.slice(:filters, :page, :per_page).permit!
     end
   end
 end

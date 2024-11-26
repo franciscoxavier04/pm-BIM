@@ -336,19 +336,24 @@ class MeetingsController < ApplicationController
       current_user
     ).call(params)
 
-    query = apply_default_filter_if_none_given(query)
-
-    if @project
-      query.where("project_id", "=", @project.id)
-    end
+    apply_default_filter_if_none_given(query)
+    apply_time_filter(query)
+    query.where("project_id", "=", @project.id) if @project
 
     query
   end
 
-  def apply_default_filter_if_none_given(query)
-    return query if query.filters.any?
+  def apply_time_filter(query)
+    if params[:upcoming] == "false"
+      query.where("time", "=", Queries::Meetings::Filters::TimeFilter::PAST_VALUE)
+    else
+      query.where("time", "=", Queries::Meetings::Filters::TimeFilter::FUTURE_VALUE)
+    end
+  end
 
-    query.where("time", "=", Queries::Meetings::Filters::TimeFilter::FUTURE_VALUE)
+  def apply_default_filter_if_none_given(query)
+    return if query.filters.any?
+
     query.where("invited_user_id", "=", [User.current.id.to_s])
   end
 
