@@ -60,6 +60,10 @@ module Pages::Meetings
       page.execute_script("arguments[0].value = arguments[1]", input.native, time)
     end
 
+    def set_end_date(date)
+      fill_in "End date", with: date, fill_options: { clear: :backspace }
+    end
+
     def set_project(project)
       select_autocomplete find("[data-test-selector='project_id']"),
                           query: project.name,

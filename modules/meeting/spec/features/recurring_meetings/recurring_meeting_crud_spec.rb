@@ -1,0 +1,143 @@
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
+require "spec_helper"
+
+require_relative "../../support/pages/structured_meeting/show"
+require_relative "../../support/pages/recurring_meeting/show"
+require_relative "../../support/pages/meetings/index"
+
+RSpec.describe "Recurring meetings CRUD",
+               :js,
+               :with_cuprite do
+  include Components::Autocompleter::NgSelectAutocompleteHelpers
+
+  shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
+  shared_let(:user) do
+    create(:user,
+           lastname: "First",
+           member_with_permissions: { project => %i[view_meetings create_meetings edit_meetings delete_meetings] }).tap do |u|
+      u.pref[:time_zone] = "Etc/UTC"
+
+      u.save!
+    end
+  end
+  shared_let(:other_user) do
+    create(:user,
+           lastname: "Second",
+           member_with_permissions: { project => %i[view_meetings] })
+  end
+  shared_let(:no_member_user) do
+    create(:user,
+           lastname: "Third")
+  end
+
+  let(:current_user) { user }
+  let(:meeting) { RecurringMeeting.order(id: :asc).last }
+  let(:show_page) { Pages::RecurringMeeting::Show.new(meeting) }
+  let(:meetings_page) { Pages::Meetings::Index.new(project:) }
+
+  before do
+    login_as current_user
+    meetings_page.visit!
+    expect(page).to have_current_path(meetings_page.path) # rubocop:disable RSpec/ExpectInHook
+    meetings_page.click_on "add-meeting-button"
+    meetings_page.click_on "Recurring"
+    meetings_page.set_title "Some title"
+
+    meetings_page.set_start_date "2024-12-31"
+    meetings_page.set_start_time "13:30"
+    meetings_page.set_duration "1.5"
+
+    meetings_page.set_end_date "2025-01-02"
+
+    click_on "Create meeting"
+
+    wait_for_network_idle
+
+    meeting = RecurringMeeting.last
+
+    Pages::RecurringMeeting::Show.new(meeting)
+  end
+
+  it "can create a recurring meeting", with_flag: { recurring_meetings: true } do
+    expect_flash(type: :success, message: "Successful creation.")
+
+    # Does not send invitation mails by default
+    perform_enqueued_jobs
+    expect(ActionMailer::Base.deliveries.size).to eq 0
+
+    expect(page).to have_css(".start_time", count: 3)
+
+    show_page.expect_open_meeting date: "2024-12-31 01:30 PM"
+    show_page.expect_scheduled_meeting date: "2024-01-01 01:30 PM"
+    show_page.expect_scheduled_meeting date: "2024-01-02 01:30 PM"
+  end
+
+  it "can delete a recurring meeting", with_flag: { recurring_meetings: true } do
+    click_on "action-menu"
+
+    accept_confirm(I18n.t("text_are_you_sure")) do
+      click_on "Delete meeting series"
+    end
+
+    expect(page).to have_current_path project_meetings_path(project)
+  end
+
+  it "can use the 'Create from template' button", with_flag: { recurring_meetings: true } do
+    show_page.create_from_template date: "2024-01-01 01:30 PM"
+
+    expect(page).to have_current_path meeting_path(Meeting.last)
+
+    show_page.visit!
+
+    show_page.expect_no_scheduled_meeting date: "2024-01-01 01:30 PM"
+    show_page.expect_open_meeting date: "2024-01-01 01:30 PM"
+  end
+
+  it "can cancel an occurrence", with_flag: { recurring_meetings: true } do
+    accept_confirm(I18n.t("text_are_you_sure")) do
+      show_page.cancel_occurrence date: "2024-12-31 01:30 PM"
+    end
+
+    expect_flash(type: :success, message: "Successful deletion.")
+
+    expect(page).to have_current_path recurring_meeting_path(meeting)
+
+    show_page.expect_no_open_meeting date: "2024-12-31 01:30 PM"
+    show_page.expect_cancelled_meeting date: "2024-12-31 01:30 PM"
+  end
+
+  # it "can edit the details of a recurring meeting", with_flag: { recurring_meetings: true } do
+  #
+  # end
+
+  # it "shows the correct actions based on status", with_flag: { recurring_meetings: true } do
+  #
+  # end
+end

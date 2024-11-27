@@ -80,6 +80,7 @@ class RecurringMeetingsController < ApplicationController
       .call(@converted_params)
 
     if call.success?
+      flash[:notice] = I18n.t(:notice_successful_create).html_safe
       redirect_to status: :see_other, action: :show, id: call.result
     else
       respond_to do |format|

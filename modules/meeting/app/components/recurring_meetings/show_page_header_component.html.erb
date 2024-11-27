@@ -18,7 +18,10 @@
     header.with_action_menu(menu_arguments: { anchor_align: :end },
                             button_arguments: { icon: "op-kebab-vertical",
                                                 classes: "hide-when-print",
-                                                "aria-label": "Menu" }) do |menu, _button|
+                                                "aria-label": "Menu",
+                                                data: {
+                                                  "test-selector": "action-menu"
+                                                }}) do |menu, _button|
       menu.with_item(label: I18n.t(:label_recurring_meeting_series_edit), href: edit_recurring_meeting_path(@meeting))
       menu.with_item(label: I18n.t(:label_recurring_meeting_series_delete),
                      href: recurring_meeting_path(@meeting),
