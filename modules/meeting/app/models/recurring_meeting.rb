@@ -8,6 +8,9 @@ class RecurringMeeting < ApplicationRecord
   validates_presence_of :start_time, :title, :frequency, :end_after
   validates_presence_of :end_date, if: -> { end_after_specific_date? }
   validates_numericality_of :iterations, if: -> { end_after_iterations? }
+  validates :end_date,
+            date: { after: :start_date },
+            if: -> { end_after_specific_date? }
 
   enum frequency: {
     daily: 0,
