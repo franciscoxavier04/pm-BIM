@@ -41,9 +41,10 @@ module Meetings
 
     def top_level_menu_items
       all_filter = [{ invited_user_id: { operator: "*", values: [] } }].to_json
+      my_meetings_href = polymorphic_path([project, :meetings])
 
       [
-        menu_item(title: I18n.t(:label_my_meetings)),
+        menu_item(title: I18n.t(:label_my_meetings), selected: params[:current_href] == my_meetings_href),
         recurring_menu_item,
         menu_item(title: I18n.t(:label_all_meetings),
                   query_params: { filters: all_filter })
