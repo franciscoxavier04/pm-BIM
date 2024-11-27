@@ -26,16 +26,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Queries::Meetings
-  ::Queries::Register.register(MeetingQuery) do
-    filter Filters::ProjectFilter
-    filter Filters::TimeFilter
-    filter Filters::AttendedUserFilter
-    filter Filters::InvitedUserFilter
-    filter Filters::AuthorFilter
-    filter Filters::DatesIntervalFilter
-    filter Filters::RecurringFilter
+class Queries::Meetings::Orders::DefaultOrder < Queries::Orders::Base
+  self.model = Meetings
 
-    order Orders::DefaultOrder
+  def self.key
+    /\A(id|start_time)\z/
   end
 end

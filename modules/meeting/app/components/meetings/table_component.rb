@@ -39,11 +39,7 @@ module Meetings
     mobile_labels :project_name
 
     def sortable?
-      true
-    end
-
-    def initial_sort
-      %i[start_time asc]
+      false
     end
 
     def has_actions?

@@ -337,17 +337,19 @@ class MeetingsController < ApplicationController
     ).call(params)
 
     apply_default_filter_if_none_given(query)
-    apply_time_filter(query)
+    apply_time_filter_and_sort(query)
     query.where("project_id", "=", @project.id) if @project
 
     query
   end
 
-  def apply_time_filter(query)
+  def apply_time_filter_and_sort(query)
     if params[:upcoming] == "false"
       query.where("time", "=", Queries::Meetings::Filters::TimeFilter::PAST_VALUE)
+      query.order(start_time: :desc)
     else
       query.where("time", "=", Queries::Meetings::Filters::TimeFilter::FUTURE_VALUE)
+      query.order(start_time: :asc)
     end
   end
 
