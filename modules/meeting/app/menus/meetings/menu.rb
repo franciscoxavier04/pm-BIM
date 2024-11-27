@@ -34,8 +34,9 @@ module Meetings
     def menu_items
       [
         OpenProject::Menu::MenuGroup.new(header: nil, children: top_level_menu_items),
+        meeting_series_menu_group,
         OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_involvement), children: involvement_sidebar_menu_items)
-      ]
+      ].compact
     end
 
     def top_level_menu_items
@@ -47,6 +48,28 @@ module Meetings
         menu_item(title: I18n.t(:label_all_meetings),
                   query_params: { filters: all_filter })
       ].compact
+    end
+
+    def meeting_series_menu_group
+      return unless OpenProject::FeatureDecisions.recurring_meetings_active?
+
+      OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_meeting_series), children: meeting_series_menu_items)
+    end
+
+    def meeting_series_menu_items
+      series = RecurringMeeting.visible
+
+      if project
+        series = series.where(project_id: project.id)
+      end
+
+      series.pluck(:id, :title)
+            .map do |id, title|
+        href = polymorphic_path([project, :recurring_meeting], { id: })
+        OpenProject::Menu::MenuItem.new(title:,
+                                        selected: params[:current_href] == href,
+                                        href:)
+      end
     end
 
     def recurring_menu_item
