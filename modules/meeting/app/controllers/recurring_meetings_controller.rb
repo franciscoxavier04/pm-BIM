@@ -129,10 +129,17 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def destroy
-    @recurring_meeting.destroy
-    flash[:notice] = I18n.t(:notice_successful_delete)
+    if @recurring_meeting.destroy
+      flash[:notice] = I18n.t(:notice_successful_delete)
+    else
+      flash[:error] = I18n.t(:error_failed_to_delete_entry)
+    end
 
-    redirect_to action: "index", project_id: @project
+    respond_to do |format|
+      format.html do
+        redirect_to polymorphic_path([@project, :meetings])
+      end
+    end
   end
 
   private
