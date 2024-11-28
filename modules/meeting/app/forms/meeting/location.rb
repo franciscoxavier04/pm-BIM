@@ -43,9 +43,9 @@ class Meeting::Location < ApplicationForm
 
     @value =
       if meeting.is_a?(RecurringMeeting) && meeting.template
-        meeting.template.duration
+        meeting.template.location
       else
-        meeting.duration
+        meeting.location
       end
   end
 end
