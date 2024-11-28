@@ -54,12 +54,6 @@ module Projects
         def toggle_aria_label
           I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
         end
-
-        private
-
-        def wrapper_uniq_by
-          definition.id
-        end
       end
     end
   end
