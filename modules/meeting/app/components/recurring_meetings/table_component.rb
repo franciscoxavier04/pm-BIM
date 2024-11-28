@@ -32,14 +32,6 @@ module RecurringMeetings
   class TableComponent < ::OpPrimer::BorderBoxTableComponent
     columns :start_time, :relative_time, :last_edited, :status, :create
 
-    # def sortable?
-    #   true
-    # end
-    #
-    # def initial_sort
-    #   %i[start_time asc]
-    # end
-
     def has_actions?
       true
     end
