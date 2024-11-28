@@ -1,5 +1,7 @@
 class RecurringMeeting < ApplicationRecord
   include ::Meeting::VirtualStartTime
+  include Redmine::I18n
+
   belongs_to :project
   belongs_to :author, class_name: "User"
 
@@ -8,20 +10,20 @@ class RecurringMeeting < ApplicationRecord
   validates_presence_of :start_time, :title, :frequency, :end_after
   validates_presence_of :end_date, if: -> { end_after_specific_date? }
   validates_numericality_of :iterations, if: -> { end_after_iterations? }
-  validates :end_date,
-            date: { after: :start_date },
-            if: -> { end_after_specific_date? }
+
+  validate :end_date_constraints,
+           if: -> { end_after_specific_date? }
 
   enum frequency: {
     daily: 0,
     working_days: 1,
     weekly: 2
-  }.freeze, _prefix: true
+  }.freeze, _prefix: true, _default: "weekly"
 
   enum end_after: {
     specific_date: 0,
     iterations: 1
-  }.freeze, _prefix: true
+  }.freeze, _prefix: true, _default: "specific_date"
 
   has_many :meetings, inverse_of: :recurring_meeting
 
@@ -68,21 +70,21 @@ class RecurringMeeting < ApplicationRecord
 
   def schedule_in_words # rubocop:disable Metrics/AbcSize
     base = case frequency
-           when "daily"
-             interval == 1 ? human_frequency : I18n.t("recurring_meeting.in_words.daily_interval", interval: interval.ordinalize)
-           when "working_days"
-             if interval == 1
-               I18n.t("recurring_meeting.in_words.working_days")
-             else
-               I18n.t("recurring_meeting.in_words.working_days_interval", interval: interval.ordinalize)
-             end
-           when "weekly"
-             if interval == 1
-               I18n.t("recurring_meeting.in_words.weekly", weekday:)
-             else
-               I18n.t("recurring_meeting.in_words.weekly_interval", interval: interval.ordinalize, weekday:)
-             end
-           end
+    when "daily"
+      interval == 1 ? human_frequency : I18n.t("recurring_meeting.in_words.daily_interval", interval: interval.ordinalize)
+    when "working_days"
+      if interval == 1
+        I18n.t("recurring_meeting.in_words.working_days")
+      else
+        I18n.t("recurring_meeting.in_words.working_days_interval", interval: interval.ordinalize)
+      end
+    when "weekly"
+      if interval == 1
+        I18n.t("recurring_meeting.in_words.weekly", weekday:)
+      else
+        I18n.t("recurring_meeting.in_words.weekly_interval", interval: interval.ordinalize, weekday:)
+      end
+    end
 
     I18n.t("recurring_meeting.in_words.full", base:, time: format_time(start_time, include_date: false), end_date:)
   end
@@ -109,6 +111,18 @@ class RecurringMeeting < ApplicationRecord
   end
 
   private
+
+  def end_date_constraints
+    return if end_date.nil?
+
+    if end_date < Date.current
+      errors.add(:end_date, :after_today)
+    end
+
+    if parsed_start_date.present? && end_date < parsed_start_date
+      errors.add(:end_date, :after, date: format_date(parsed_start_date))
+    end
+  end
 
   def exclude_non_working_days(schedule)
     NonWorkingDay
