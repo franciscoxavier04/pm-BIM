@@ -67,6 +67,7 @@
           end
 
           modal_body.with_row(mt: 3,
+                              hidden: @meeting.end_after_iterations?,
                               data: {
                                 value: "specific_date",
                                 target_name: "end_after",
@@ -76,7 +77,7 @@
           end
 
           modal_body.with_row(mt: 3,
-                              hidden: true,
+                              hidden: @meeting.end_after_specific_date?,
                               data: {
                                 value: "iterations",
                                 target_name: "end_after",
