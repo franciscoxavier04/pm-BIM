@@ -44,7 +44,7 @@
         end if @meeting.editable? && !@series
 
         unless @meeting.template?
-            menu.with_item(label: t(:button_copy),
+            menu.with_item(label: copy_label,
                            href: copy_meeting_path(@meeting),
                            content_arguments: {
                              data: { turbo_stream: true }

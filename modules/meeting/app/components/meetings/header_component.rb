@@ -93,10 +93,18 @@ module Meetings
     end
 
     def delete_label
-      if @meeting.recurring_meeting.present?
+      if @series.present?
         I18n.t("label_recurring_meeting_cancel")
       else
         I18n.t("label_meeting_delete")
+      end
+    end
+
+    def copy_label
+      if @series.present?
+        I18n.t("label_recurring_meeting_copy")
+      else
+        I18n.t("button_copy")
       end
     end
   end

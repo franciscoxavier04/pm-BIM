@@ -132,6 +132,7 @@ en:
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
   label_recurring_meeting_create: "Create from template"
+  label_recurring_meeting_copy: "Copy as one-off"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
   label_recurring_meeting_delete_confirmation: >
