@@ -27,6 +27,8 @@ class RecurringMeeting < ApplicationRecord
 
   has_many :meetings, inverse_of: :recurring_meeting
 
+  has_many :scheduled_meetings, inverse_of: :recurring_meeting
+
   has_one :template, -> { where(template: true) },
           class_name: "Meeting"
 
@@ -102,13 +104,14 @@ class RecurringMeeting < ApplicationRecord
     end
   end
 
-  def instances(upcoming: true)
-    direction = upcoming ? :upcoming : :past
+  def scheduled_instances(upcoming: true)
+    filter_scope = upcoming ? :upcoming : :past
+    direction = upcoming ? :asc : :desc
 
-    meetings
-      .not_templated
-      .public_send(direction)
-      .order(start_time: :asc)
+    scheduled_meetings
+      .includes(:meeting)
+      .public_send(filter_scope)
+      .order(date: direction)
   end
 
   private

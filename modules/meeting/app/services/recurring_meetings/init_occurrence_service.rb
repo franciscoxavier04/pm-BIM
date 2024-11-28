@@ -27,5 +27,56 @@
 #++
 
 module RecurringMeetings
-  Skeleton = Data.define(:start_time, :recurring_meeting, :state)
+  class InitOccurrenceService < ::BaseServices::BaseCallable
+    include ::Shared::ServiceContext
+
+    attr_reader :user, :recurring_meeting
+
+    def initialize(user:, recurring_meeting:)
+      super()
+      @user = user
+      @recurring_meeting = recurring_meeting
+    end
+
+    protected
+
+    def perform(date:)
+      in_context(recurring_meeting, send_notifications: false) do
+        call = instantiate(date)
+        create_schedule(call) if call.success?
+
+        call
+      end
+    end
+
+    def instantiate(date)
+      ::Meetings::CopyService
+        .new(user:, model: recurring_meeting.template)
+        .call(attributes: instantiate_params(date),
+              copy_agenda: true,
+              copy_attachments: true,
+              send_notifications: false)
+    end
+
+    def instantiate_params(start_date)
+      {
+        start_date:,
+        recurring_meeting:
+      }
+    end
+
+    def create_schedule(call)
+      meeting = call.result
+
+      schedule = ScheduledMeeting.new(
+        meeting: meeting,
+        recurring_meeting: recurring_meeting,
+        date: meeting.parsed_start_date
+      )
+
+      unless schedule.save
+        call.merge!(ServiceResult.failure(errors: schedule.errors))
+      end
+    end
+  end
 end

@@ -53,12 +53,10 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def init
-    call = ::Meetings::CopyService
-      .new(user: current_user, model: @recurring_meeting.template)
-      .call(attributes: init_params,
-            copy_agenda: true,
-            copy_attachments: true,
-            send_notifications: false)
+    call = ::RecurringMeetings::InitOccurrenceService
+      .new(user: current_user, recurring_meeting: @recurring_meeting)
+      .call(date: params[:date])
+
     if call.success?
       redirect_to project_meeting_path(call.result.project, call.result), status: :see_other
     else
@@ -144,34 +142,24 @@ class RecurringMeetingsController < ApplicationController
 
   private
 
-  def init_params
-    {
-      start_time: DateTime.parse(params[:start_time]),
-      recurring_meeting: @recurring_meeting
-    }
-  end
-
   def upcoming_meetings
     meetings = @recurring_meeting
-      .instances(upcoming: true)
-      .index_by(&:start_date)
+      .scheduled_instances(upcoming: true)
+      .index_by(&:date)
 
     merged = @recurring_meeting
       .scheduled_occurrences(limit: 5)
       .map do |occurrence|
       date = occurrence.to_date
-      meetings.delete(date.to_s) || skeleton_meeting(date)
+      meetings.delete(date) || skeleton_meeting(date)
     end
 
     # Ensure we keep any remaining future meetings that exceed the limit
-    merged + meetings.values.sort_by(&:start_date)
+    merged + meetings.values.sort_by(&:date)
   end
 
   def skeleton_meeting(date)
-    start_time = @recurring_meeting.start_time.change(year: date.year, month: date.month, day: date.day)
-    RecurringMeetings::Skeleton.new(start_time:,
-                                    state: "scheduled",
-                                    recurring_meeting: @recurring_meeting)
+    ScheduledMeeting.new(date:, recurring_meeting: @recurring_meeting)
   end
 
   def find_optional_project

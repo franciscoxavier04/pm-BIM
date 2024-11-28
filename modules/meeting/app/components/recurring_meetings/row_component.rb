@@ -30,16 +30,14 @@
 
 module RecurringMeetings
   class RowComponent < ::OpPrimer::BorderBoxRowComponent
-    def meeting
-      model
-    end
-
-    def schedule
-      meeting.schedule
-    end
+    delegate :meeting, to: :model
+    delegate :cancelled?, to: :model
+    delegate :recurring_meeting, to: :model
+    delegate :project, to: :recurring_meeting
+    delegate :schedule, to: :meeting
 
     def instantiated?
-      meeting.is_a?(Meeting)
+      meeting.present?
     end
 
     def column_args(column)
@@ -59,11 +57,22 @@ module RecurringMeetings
     end
 
     def start_time_title
-      helpers.format_time(meeting.start_time, include_date: true)
+      helpers.format_time(start_time_value, include_date: true)
     end
 
     def relative_time
-      render(OpPrimer::RelativeTimeComponent.new(datetime: meeting.start_time, prefix: I18n.t(:label_on)))
+      render(OpPrimer::RelativeTimeComponent.new(datetime: start_time_value, prefix: I18n.t(:label_on)))
+    end
+
+    def start_time_value
+      if instantiated?
+        meeting.start_time
+      else
+        recurring_meeting
+          .template
+          .start_time
+          .change(year: model.date.year, month: model.date.month, day: model.date.day)
+      end
     end
 
     def last_edited
@@ -72,11 +81,21 @@ module RecurringMeetings
       helpers.format_time(meeting.updated_at, include_date: true)
     end
 
+    def state
+      if model.cancelled?
+        :cancelled
+      elsif instantiated?
+        meeting.state
+      else
+        :scheduled
+      end
+    end
+
     def status
-      scheme = status_scheme(model.state)
+      scheme = status_scheme(state)
 
       render(Primer::Beta::Label.new(title:, scheme:)) do
-        render(Primer::Beta::Text.new) { t("label_meeting_state_#{model.state}") }
+        render(Primer::Beta::Text.new) { t("label_meeting_state_#{state}") }
       end
     end
 
@@ -86,8 +105,6 @@ module RecurringMeetings
         :success
       when "cancelled"
         :severe
-      when "skipped"
-        :attention
       else
         :secondary
       end
@@ -102,7 +119,7 @@ module RecurringMeetings
           size: :medium,
           tag: :a,
           data: { "turbo-method": "post"},
-          href: init_recurring_meeting_path(model.recurring_meeting.id, start_time: model.start_time)
+          href: init_recurring_meeting_path(model.recurring_meeting.id, date: model.date)
         )
       ) do |_c|
         I18n.t("label_recurring_meeting_create")
@@ -140,7 +157,7 @@ module RecurringMeetings
 
     def ical_action(menu)
       menu.with_item(label: I18n.t(:label_icalendar_download),
-                     href: download_ics_meeting_path(Meeting.find(model["id"])),
+                     href: download_ics_meeting_path(meeting),
                      content_arguments: {
                        data: { turbo: false }
                      }) do |item|
@@ -151,7 +168,7 @@ module RecurringMeetings
     def delete_action(menu)
       menu.with_item(label: I18n.t(:label_recurring_meeting_cancel),
                      scheme: :danger,
-                     href: meeting_path(Meeting.find(model["id"])),
+                     href: meeting_path(meeting),
                      form_arguments: {
                        method: :delete, data: { confirm: I18n.t("text_are_you_sure"), turbo: false }
                      }) do |item|
@@ -161,21 +178,17 @@ module RecurringMeetings
 
     def restore_action(menu)
       menu.with_item(label: I18n.t(:label_recurring_meeting_restore),
-                     href: restore_meeting_path(Meeting.find(model["id"]))) do |item|
+                     href: init_recurring_meeting_path(recurring_meeting, date: model.date)) do |item|
         item.with_leading_visual_icon(icon: :history)
       end
     end
 
     def delete_allowed?
-      User.current.allowed_in_project?(:delete_meetings, Project.find(model["project_id"]))
+      User.current.allowed_in_project?(:delete_meetings, project)
     end
 
     def copy_allowed?
-      User.current.allowed_in_project?(:create_meetings, Project.find(model["project_id"]))
-    end
-
-    def cancelled?
-      instantiated? && model.cancelled?
+      User.current.allowed_in_project?(:create_meetings, project)
     end
   end
 end
