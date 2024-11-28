@@ -5,14 +5,11 @@
 
   header.with_action_button(
     tag: :a,
-    mobile_label: I18n.t("recurring_meeting.template.label_edit_template"),
-    mobile_icon: :pencil,
+    mobile_label: I18n.t("recurring_meeting.template.label_view_template"),
+    mobile_icon: :eye,
     size: :medium,
     href: meeting_path(@meeting.template)
-  ) do |button|
-    button.with_leading_visual_icon(icon: :pencil)
-    I18n.t("recurring_meeting.template.label_edit_template")
-  end
+  ) { I18n.t("recurring_meeting.template.label_view_template") }
 
   if render_create_button?
     header.with_action_menu(menu_arguments: { anchor_align: :end },

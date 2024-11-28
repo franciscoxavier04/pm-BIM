@@ -213,6 +213,7 @@ en:
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
     template:
+      label_view_template: "View template"
       label_edit_template: "Edit template"
       banner_html: >
         You are currently editing a template of a meeting series: %{link}.
