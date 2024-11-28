@@ -174,6 +174,7 @@ RSpec.shared_examples "work package relations tab", :js, :with_cuprite do
 
           # Remove child
           relations.remove_child(child)
+
           # Should also check for successful update but no message is shown, yet.
           expect_and_dismiss_flash(message: "Successful update.")
           relations.expect_not_child(child)

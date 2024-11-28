@@ -224,16 +224,17 @@ module Components
 
       def add_parent(query, work_package)
         # Open the parent edit
-        SeleniumHubWaiter.wait
+        wait_for_network_idle
         find(".wp-relation--parent-change").click
 
         # Enter the query and select the child
-        SeleniumHubWaiter.wait
+        wait_for_network_idle
         autocomplete = page.find_test_selector("wp-relations-autocomplete")
         select_autocomplete autocomplete,
                             query:,
                             results_selector: ".ng-dropdown-panel-items",
                             select_text: work_package.id
+        wait_for_network_idle
       end
 
       def expect_parent(work_package)
@@ -247,21 +248,8 @@ module Components
       end
 
       def remove_parent
-        SeleniumHubWaiter.wait
+        wait_for_network_idle
         find(".wp-relation--parent-remove").click
-      end
-
-      def open_children_autocompleter
-        retry_block do
-          next if page.has_selector?(".wp-relations--children .ng-input input")
-
-          SeleniumHubWaiter.wait
-          page.find_test_selector("op-wp-inline-create-reference",
-                                  text: I18n.t("js.relation_buttons.add_existing_child")).click
-
-          # Security check to be sure that the autocompleter has finished loading
-          page.find ".wp-relations--children .ng-input input"
-        end
       end
 
       def children_table
@@ -269,15 +257,19 @@ module Components
       end
 
       def add_existing_child(work_package)
-        SeleniumHubWaiter.wait
+        wait_for_network_idle
 
         retry_block do
           page.find_test_selector("new-relation-action-menu").click
+
+          wait_for_network_idle
 
           within page.find_by_id("new-relation-action-menu-list") do # Primer appends "list" to the menu id automatically
             click_link_or_button "Child"
           end
         end
+
+        wait_for_network_idle
 
         within "##{WorkPackageRelationsTab::AddWorkPackageChildFormComponent::DIALOG_ID}" do
           autocomplete_field = page.find_test_selector("work-package-child-form-id")
@@ -287,6 +279,8 @@ module Components
 
           click_link_or_button "Save"
         end
+
+        wait_for_network_idle
       end
 
       def relations_group
@@ -312,6 +306,8 @@ module Components
           relatable_action_menu(work_package).click
           relatable_delete_button(work_package).click
         end
+
+        wait_for_network_idle
 
         expect_no_row(work_package)
       end
