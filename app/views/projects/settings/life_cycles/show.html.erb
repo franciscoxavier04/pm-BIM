@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<div data-turbo="true">
+<div>
   <%= render Projects::Settings::LifeCycles::ShowPageHeaderComponent.new(project: @project) %>
 
   <%= render(Projects::Settings::LifeCycles::IndexComponent.new( project: @project, life_cycle_definitions: @life_cycle_definitions)) %>

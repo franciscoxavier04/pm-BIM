@@ -39,7 +39,7 @@
                   font_weight: :bold,
                   color: :subtle,
                   'aria-label': t('projects.settings.actions.label_enable_all'),
-                  data: { 'turbo-method': :post, 'turbo': true, test_selector: "enable-all-life-cycle-steps" }
+                  data: { 'turbo-method': :post, test_selector: "enable-all-life-cycle-steps" }
                 )) do |button|
                   button.with_leading_visual_icon(icon: 'check-circle', color: :subtle)
                   t('projects.settings.actions.label_enable_all')
@@ -53,7 +53,7 @@
                   font_weight: :bold,
                   color: :subtle,
                   'aria-label': t('projects.settings.actions.label_disable_all'),
-                  data: { 'turbo-method': :post, 'turbo': true, test_selector: "disable-all-life-cycle-steps" }
+                  data: { 'turbo-method': :post, test_selector: "disable-all-life-cycle-steps" }
                 )) do |button|
                   button.with_leading_visual_icon(icon: 'x-circle', color: :subtle)
                   t('projects.settings.actions.label_disable_all')
