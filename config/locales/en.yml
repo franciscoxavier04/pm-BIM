@@ -3218,7 +3218,7 @@ en:
   permission_select_custom_fields: "Select custom fields"
   permission_select_project_custom_fields: "Select project attributes"
   permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project."
+  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Select project modules"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "Select types"
