@@ -150,14 +150,14 @@ class RecurringMeetingsController < ApplicationController
     merged = @recurring_meeting
       .scheduled_occurrences(limit: 5)
       .map do |start_time|
-      meetings.delete(start_time) || skeleton_meeting(start_time)
+      meetings.delete(start_time) || scheduled_meeting(start_time)
     end
 
     # Ensure we keep any remaining future meetings that exceed the limit
     merged + meetings.values.sort_by(&:start_time)
   end
 
-  def skeleton_meeting(start_time)
+  def scheduled_meeting(start_time)
     ScheduledMeeting.new(start_time:, recurring_meeting: @recurring_meeting)
   end
 
