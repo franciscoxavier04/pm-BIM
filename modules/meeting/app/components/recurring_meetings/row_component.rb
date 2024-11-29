@@ -56,16 +56,30 @@ module RecurringMeetings
       end
     end
 
-    def user_start_time_value
-      @user_start_time_value ||= helpers.in_current_user_zone(model.start_time)
+    def user_time_zone(time)
+      helpers.in_current_user_zone(time)
+    end
+
+    def formatted_time(time)
+      helpers.format_time(user_time_zone(time), include_date: true)
+    end
+
+    def old_time
+      render(Primer::Beta::Text.new(tag: :s)) { formatted_time(model.start_time) }
     end
 
     def start_time_title
-      helpers.format_time(user_start_time_value, include_date: true)
+      if start_time_changed?
+        "#{old_time}\n#{formatted_time(meeting.start_time)}".html_safe # rubocop:disable Rails/OutputSafety
+      else
+        formatted_time(model.start_time)
+      end
     end
 
     def relative_time
-      render(OpPrimer::RelativeTimeComponent.new(datetime: user_start_time_value, prefix: I18n.t(:label_on)))
+      time = start_time_changed? ? meeting.start_time : model.start_time
+
+      render(OpPrimer::RelativeTimeComponent.new(datetime: user_time_zone(time), prefix: I18n.t(:label_on)))
     end
 
     def last_edited
@@ -189,6 +203,10 @@ module RecurringMeetings
 
     def copy_allowed?
       User.current.allowed_in_project?(:create_meetings, project)
+    end
+
+    def start_time_changed?
+      meeting && meeting.start_time != model.start_time
     end
   end
 end
