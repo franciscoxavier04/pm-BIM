@@ -56,12 +56,16 @@ module RecurringMeetings
       end
     end
 
+    def user_start_time_value
+      @user_start_time_value ||= helpers.in_current_user_zone(model.start_time)
+    end
+
     def start_time_title
-      helpers.format_time(model.start_time, include_date: true)
+      helpers.format_time(user_start_time_value, include_date: true)
     end
 
     def relative_time
-      render(OpPrimer::RelativeTimeComponent.new(datetime: model.start_time, prefix: I18n.t(:label_on)))
+      render(OpPrimer::RelativeTimeComponent.new(datetime: user_start_time_value, prefix: I18n.t(:label_on)))
     end
 
     def last_edited
