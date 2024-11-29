@@ -179,13 +179,7 @@ class MeetingsController < ApplicationController
   end
 
   def destroy
-    type = @meeting.recurring_meeting_id
-
-    if type.nil?
-      @meeting.destroy
-    else
-      @meeting.update_attribute :state, :cancelled
-    end
+    @meeting.destroy
 
     flash[:notice] = I18n.t(:notice_successful_delete)
 
@@ -194,12 +188,6 @@ class MeetingsController < ApplicationController
     else
       redirect_to controller: "recurring_meetings", action: "show", id: type, status: :see_other
     end
-  end
-
-  def restore
-    @meeting.update_attribute :state, :open
-
-    redirect_to controller: "recurring_meetings", action: "show", id: @meeting.recurring_meeting_id, status: :see_other
   end
 
   def edit
