@@ -5,7 +5,7 @@ class RecurringMeeting < ApplicationRecord
   belongs_to :project
   belongs_to :author, class_name: "User"
 
-  before_save :update_start_time!
+
 
   validates_presence_of :start_time, :title, :frequency, :end_after
   validates_presence_of :end_date, if: -> { end_after_specific_date? }

@@ -43,6 +43,7 @@ module Meeting::VirtualStartTime
 
     validate :validate_date_and_time
     after_initialize :set_initial_values
+    before_save :update_start_time!
   end
 
   ##
