@@ -164,7 +164,7 @@ class RecurringMeeting < ApplicationRecord
     if end_after_iterations?
       rule.count(iterations)
     else
-      rule
+      rule.until(end_date)
     end
   end
 end
