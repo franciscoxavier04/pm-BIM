@@ -120,6 +120,8 @@ module Meeting::VirtualStartTime
   # Enforce ISO 8601 date parsing for the given input string
   # This avoids weird parsing of dates due to malformed input.
   def parsed_start_date
+    return @start_date if @start_date.is_a?(Date)
+
     Date.iso8601(@start_date)
   rescue ArgumentError
     nil
