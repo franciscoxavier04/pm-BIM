@@ -155,19 +155,26 @@ module RecurringMeetings
     end
 
     def delete_action(menu)
-      menu.with_item(label: I18n.t(:label_recurring_meeting_cancel),
-                     scheme: :danger,
-                     href: meeting_path(meeting),
-                     form_arguments: {
-                       method: :delete, data: { confirm: I18n.t("text_are_you_sure"), turbo: false }
-                     }) do |item|
+      menu.with_item(
+        label: I18n.t(:label_recurring_meeting_cancel),
+        scheme: :danger,
+        href: meeting_path(meeting),
+        form_arguments: {
+          method: :delete, data: { confirm: I18n.t("text_are_you_sure"), turbo: false }
+        }
+      ) do |item|
         item.with_leading_visual_icon(icon: :trash)
       end
     end
 
     def restore_action(menu)
-      menu.with_item(label: I18n.t(:label_recurring_meeting_restore),
-                     href: init_recurring_meeting_path(recurring_meeting, start_time: model.start_time.iso8601)) do |item|
+      menu.with_item(
+        label: I18n.t(:label_recurring_meeting_restore),
+        href: init_recurring_meeting_path(recurring_meeting, start_time: model.start_time.iso8601),
+        form_arguments: {
+          method: :post
+        }
+      ) do |item|
         item.with_leading_visual_icon(icon: :history)
       end
     end

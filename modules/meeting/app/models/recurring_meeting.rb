@@ -68,7 +68,7 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def schedule
-    @schedule ||= IceCube::Schedule.new(start_date.to_time(:utc), end_time: end_date).tap do |s|
+    @schedule ||= IceCube::Schedule.new(start_time, end_time: end_date).tap do |s|
       s.add_recurrence_rule count_rule(frequency_rule)
       exclude_non_working_days(s) if frequency_working_days?
     end
