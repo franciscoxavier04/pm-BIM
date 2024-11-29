@@ -26,13 +26,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class ScheduledMeeting < ApplicationRecord
-  belongs_to :meeting
-  belongs_to :recurring_meeting
+module MeetingSections
+  class DeleteService < ::BaseServices::Delete
+    delete_permission :delete_meetings
 
-  scope :upcoming, -> { where(date: Time.zone.today..) }
-  scope :past, -> { where(date: ...Time.zone.today) }
+    protected
 
-  validates_uniqueness_of :meeting
-  validates_presence_of :date
+    def after_validate(_, call)
+      if model.scheduled_meeting
+
+      end
+    end
+  end
 end

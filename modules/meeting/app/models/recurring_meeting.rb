@@ -25,9 +25,13 @@ class RecurringMeeting < ApplicationRecord
     iterations: 1
   }.freeze, _prefix: true, _default: "specific_date"
 
-  has_many :meetings, inverse_of: :recurring_meeting
+  has_many :meetings,
+           inverse_of: :recurring_meeting,
+           dependent: :destroy
 
-  has_many :scheduled_meetings, inverse_of: :recurring_meeting
+  has_many :scheduled_meetings,
+           inverse_of: :recurring_meeting,
+           dependent: :delete_all
 
   has_one :template, -> { where(template: true) },
           class_name: "Meeting"
@@ -72,24 +76,24 @@ class RecurringMeeting < ApplicationRecord
 
   def schedule_in_words # rubocop:disable Metrics/AbcSize
     base = case frequency
-           when "daily"
-             interval == 1 ? human_frequency : I18n.t("recurring_meeting.in_words.daily_interval", interval: interval.ordinalize)
-           when "working_days"
-             if interval == 1
-               I18n.t("recurring_meeting.in_words.working_days")
-             else
-               I18n.t("recurring_meeting.in_words.working_days_interval", interval: interval.ordinalize)
-             end
-           when "weekly"
-             if interval == 1
-               I18n.t("recurring_meeting.in_words.weekly", weekday:)
-             else
-               I18n.t("recurring_meeting.in_words.weekly_interval", interval: interval.ordinalize, weekday:)
-             end
-           end
+    when "daily"
+      interval == 1 ? human_frequency : I18n.t("recurring_meeting.in_words.daily_interval", interval: interval.ordinalize)
+    when "working_days"
+      if interval == 1
+        I18n.t("recurring_meeting.in_words.working_days")
+      else
+        I18n.t("recurring_meeting.in_words.working_days_interval", interval: interval.ordinalize)
+      end
+    when "weekly"
+      if interval == 1
+        I18n.t("recurring_meeting.in_words.weekly", weekday:)
+      else
+        I18n.t("recurring_meeting.in_words.weekly_interval", interval: interval.ordinalize, weekday:)
+      end
+    end
 
     I18n.t("recurring_meeting.in_words.full", base:, time: format_time(start_time, include_date: false),
-                                              end_date: format_date(end_date))
+           end_date: format_date(end_date))
   end
 
   def scheduled_occurrences(limit:)
