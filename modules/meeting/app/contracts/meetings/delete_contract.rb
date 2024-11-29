@@ -27,14 +27,7 @@
 #++
 
 module Meetings
-  class DeleteService < ::BaseServices::Delete
-    protected
-
-    def after_validate(_, call)
-      schedule = model.scheduled_meeting
-      schedule.update_column(:cancelled, true) if schedule.present?
-
-      call
-    end
+  class DeleteContract < ::DeleteContract
+    delete_permission :delete_meetings
   end
 end

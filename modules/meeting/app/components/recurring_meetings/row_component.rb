@@ -83,11 +83,11 @@ module RecurringMeetings
 
     def state
       if model.cancelled?
-        :cancelled
+        "cancelled"
       elsif instantiated?
         meeting.state
       else
-        :scheduled
+        "scheduled"
       end
     end
 
@@ -118,11 +118,11 @@ module RecurringMeetings
           scheme: :default,
           size: :medium,
           tag: :a,
-          data: { "turbo-method": "post"},
+          data: { "turbo-method": "post" },
           href: init_recurring_meeting_path(model.recurring_meeting.id, date: model.date)
         )
       ) do |_c|
-        I18n.t("label_recurring_meeting_create")
+        I18n.t(:label_recurring_meeting_create)
       end
     end
 

@@ -68,13 +68,12 @@ module RecurringMeetings
     def create_schedule(call)
       meeting = call.result
 
-      schedule = ScheduledMeeting.new(
-        meeting: meeting,
+      schedule = ScheduledMeeting.find_or_initialize_by(
         recurring_meeting: recurring_meeting,
         date: meeting.parsed_start_date
       )
 
-      unless schedule.save
+      unless schedule.update(meeting:, cancelled: false)
         call.merge!(ServiceResult.failure(errors: schedule.errors))
       end
     end

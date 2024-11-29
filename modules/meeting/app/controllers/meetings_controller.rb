@@ -179,14 +179,18 @@ class MeetingsController < ApplicationController
   end
 
   def destroy
-    @meeting.destroy
+    recurring = @meeting.recurring_meeting
 
-    flash[:notice] = I18n.t(:notice_successful_delete)
+    Meetings::DeleteService
+      .new(model: @meeting, user: User.current)
+      .call
+      .on_success { flash[:notice] = I18n.t(:notice_successful_delete) }
+      .on_failure { |call| flash[:error] = call.message }
 
-    if type.nil?
-      redirect_to action: "index", project_id: @project
+    if recurring
+      redirect_to polymorphic_path([@project, recurring], status: :see_other)
     else
-      redirect_to controller: "recurring_meetings", action: "show", id: type, status: :see_other
+      redirect_to polymorphic_path([@project, :meetings], status: :see_other)
     end
   end
 
