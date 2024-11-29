@@ -48,11 +48,14 @@ By contributing to the documentation, you help ensure it remains accurate, clear
 
 ### Report it via e-mail
 
-If you would like to report a typo or an inconsistency in our documentation, the quickest way to do it is to write an e-mail to [support@openproject.com](mailto:support@openproject.com) and describe it with as much detail an possible. 
+If you would like to report a typo or an inconsistency in our documentation, the quickest way to do it is to **write an e-mail** to [support@openproject.com](mailto:support@openproject.com) and describe it with as much detail an possible. 
 
 ### Let us know through the OpenProject Community installation
 
-You can also join us directly through the [OpenProject Community installation](https://community.openproject.org). Here you can leave a message on the [Forum](https://community.openproject.org/projects/openproject/forums), or create a work package with the type *Documentation* and describe or request a documentation change.
+You can also join us directly through the [OpenProject Community installation](https://community.openproject.org). Here you can **leave a message on the [Forum](https://community.openproject.org/projects/openproject/forums)**, or **create a work package with the type *Documentation* ** and describe or request a documentation change.
 
 To gain access to the community installation at, please send an email to [support@openproject.com](mailto:support@openproject.com) with the subject line **"Joining Community"**. Our team will review your request and send you an invitation as soon as possible.
 
+### Write your own pull request
+
+If you prefer, you can also go ahead and create a **draft pull request** with your suggestions and ask for the review from our team. Please take a look at the [documentation process](/documentation-process) for the exact steps to do that and consult the [documentation style guide](/documentation-style-guide) for instructions on documentation formatting in OpenProject.

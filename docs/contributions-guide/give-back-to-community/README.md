@@ -25,12 +25,12 @@ Your unique experience with OpenProject can inspire others and provide valuable 
   - Your overall experience: What works well for you? What could be improved?
   - Include screenshots showcasing your OpenProject setup (with permission to publish).
 
-  **Example**: A case study describing how OpenProject helped a small non-profit manage their volunteer efforts using the task management and timeline features.
+  **Example**: take a look one one our case studies with an [NGO](https://www.openproject.org/project-management-ngos-foundations/case-study-open-source-initiative-osi/) , a [university project](https://www.openproject.org/project-management-universities-research/case-study-rewrite/) or a [municipality](https://www.openproject.org/project-management-public-sector/case-study-city-ravensburg/).
 
 - **Blog Posts**
   Write a detailed blog post about your OpenProject journey. You can either:
 
-  - Submit your blog post for publication on the OpenProject website. Contact us for guidelines.
+  - Submit your blog post for publication on the OpenProject website. [Contact us](https://www.openproject.org/contact/) for guidelines.
   - Publish it on your own channels (website, blog, or LinkedIn) and link back to OpenProject.
 
 - **Video Contributions**
@@ -46,6 +46,16 @@ Help OpenProject reach more users by engaging with our content and sharing it wi
 - **Social Media Posts**
   - Share your experience with OpenProject on your social channels, including a link to our website. 
   - You can also re-share content from the [OpenProject blog](https://www.openproject.org/blog/) or our official social media accounts.
+  
+      [Follow us on LinkedIn](https://www.linkedin.com/company/openproject-gmbh)
+  
+      [Follow us on Reddit](https://www.reddit.com/r/openproject)
+  
+      [Follow us on Fosstodon](https://fosstodon.org/@openproject)
+  
+      [Follow us on Twitter/X](https://twitter.com/openproject)
+  
+      [Follow us on Bluesky](https://bsky.app/profile/openproject.bsky.social)
 - **Add a Backlink to Your Website**
   Include a link to OpenProject’s website on your blog, portfolio, or company website to help more people discover our tool.
 - **Write a Review**
@@ -57,4 +67,4 @@ Let your network know how OpenProject has made an impact for you. Whether it’s
 
 ## Join our community
 
-Be part of the conversation! **Join us in our weekly team call** and share how you use OpenProject in your team or organization. It’s a great opportunity to connect with others, exchange ideas, and contribute to the ongoing development of OpenProject. 
+Be part of the conversation! **Join us in our weekly team call** and share how you use OpenProject in your team or organization. 
