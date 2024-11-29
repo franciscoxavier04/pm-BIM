@@ -5,14 +5,14 @@ class RecurringMeeting < ApplicationRecord
   belongs_to :project
   belongs_to :author, class_name: "User"
 
-
-
   validates_presence_of :start_time, :title, :frequency, :end_after
   validates_presence_of :end_date, if: -> { end_after_specific_date? }
   validates_numericality_of :iterations, if: -> { end_after_iterations? }
 
   validate :end_date_constraints,
            if: -> { end_after_specific_date? }
+
+  after_save :unset_schedule
 
   enum frequency: {
     daily: 0,
@@ -119,6 +119,10 @@ class RecurringMeeting < ApplicationRecord
   end
 
   private
+
+  def unset_schedule
+    @schedule = nil
+  end
 
   def end_date_constraints
     return if end_date.nil?

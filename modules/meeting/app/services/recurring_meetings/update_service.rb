@@ -35,6 +35,7 @@ module RecurringMeetings
     def after_perform(call)
       return call unless call.success?
 
+      cleanup_cancelled_schedules(call.result)
       update_template(call)
     end
 
@@ -47,6 +48,16 @@ module RecurringMeetings
       end
 
       call
+    end
+
+    def cleanup_cancelled_schedules(recurring_meeting)
+      ScheduledMeeting
+        .where(recurring_meeting:)
+        .cancelled
+        .find_each do |scheduled|
+        occurring = recurring_meeting.schedule.occurs_at?(scheduled.start_time)
+        scheduled.delete unless occurring
+      end
     end
   end
 end
