@@ -9,14 +9,14 @@ class CreateScheduledMeetings < ActiveRecord::Migration[7.1]
                    null: true,
                    foreign_key: { index: true, unique: true, on_delete: :nullify }
 
-      t.date :date, null: false
+      t.datetime :start_time, null: false
       t.boolean :cancelled, default: false, null: false
 
       t.timestamps
     end
 
     add_index :scheduled_meetings,
-              %i[recurring_meeting_id date],
+              %i[recurring_meeting_id start_time],
               unique: true
   end
 end

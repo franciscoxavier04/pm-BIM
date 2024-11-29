@@ -115,7 +115,7 @@ class RecurringMeeting < ApplicationRecord
     scheduled_meetings
       .includes(:meeting)
       .public_send(filter_scope)
-      .order(date: direction)
+      .order(start_time: direction)
   end
 
   private

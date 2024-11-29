@@ -55,7 +55,7 @@ class RecurringMeetingsController < ApplicationController
   def init
     call = ::RecurringMeetings::InitOccurrenceService
       .new(user: current_user, recurring_meeting: @recurring_meeting)
-      .call(date: params[:date])
+      .call(start_time: DateTime.iso8601(params[:start_time]))
 
     if call.success?
       redirect_to project_meeting_path(call.result.project, call.result), status: :see_other
@@ -145,21 +145,20 @@ class RecurringMeetingsController < ApplicationController
   def upcoming_meetings
     meetings = @recurring_meeting
       .scheduled_instances(upcoming: true)
-      .index_by(&:date)
+      .index_by(&:start_time)
 
     merged = @recurring_meeting
       .scheduled_occurrences(limit: 5)
-      .map do |occurrence|
-      date = occurrence.to_date
-      meetings.delete(date) || skeleton_meeting(date)
+      .map do |start_time|
+      meetings.delete(start_time) || skeleton_meeting(start_time)
     end
 
     # Ensure we keep any remaining future meetings that exceed the limit
-    merged + meetings.values.sort_by(&:date)
+    merged + meetings.values.sort_by(&:start_time)
   end
 
-  def skeleton_meeting(date)
-    ScheduledMeeting.new(date:, recurring_meeting: @recurring_meeting)
+  def skeleton_meeting(start_time)
+    ScheduledMeeting.new(start_time:, recurring_meeting: @recurring_meeting)
   end
 
   def find_optional_project

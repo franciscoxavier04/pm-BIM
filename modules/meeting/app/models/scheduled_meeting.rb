@@ -30,9 +30,9 @@ class ScheduledMeeting < ApplicationRecord
   belongs_to :meeting
   belongs_to :recurring_meeting
 
-  scope :upcoming, -> { where(date: Time.zone.today..) }
-  scope :past, -> { where(date: ...Time.zone.today) }
+  scope :upcoming, -> { where(start_time: Time.current..) }
+  scope :past, -> { where(start_time: ...Time.current) }
 
   validates_uniqueness_of :meeting
-  validates_presence_of :date
+  validates_presence_of :start_time
 end

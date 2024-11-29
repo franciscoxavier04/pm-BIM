@@ -40,27 +40,27 @@ module RecurringMeetings
 
     protected
 
-    def perform(date:)
+    def perform(start_time:)
       in_context(recurring_meeting, send_notifications: false) do
-        call = instantiate(date)
+        call = instantiate(start_time)
         create_schedule(call) if call.success?
 
         call
       end
     end
 
-    def instantiate(date)
+    def instantiate(start_time)
       ::Meetings::CopyService
         .new(user:, model: recurring_meeting.template)
-        .call(attributes: instantiate_params(date),
+        .call(attributes: instantiate_params(start_time),
               copy_agenda: true,
               copy_attachments: true,
               send_notifications: false)
     end
 
-    def instantiate_params(start_date)
+    def instantiate_params(start_time)
       {
-        start_date:,
+        start_time:,
         recurring_meeting:
       }
     end
@@ -70,7 +70,7 @@ module RecurringMeetings
 
       schedule = ScheduledMeeting.find_or_initialize_by(
         recurring_meeting: recurring_meeting,
-        date: meeting.parsed_start_date
+        start_time: meeting.start_time
       )
 
       unless schedule.update(meeting:, cancelled: false)

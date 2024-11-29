@@ -57,22 +57,11 @@ module RecurringMeetings
     end
 
     def start_time_title
-      helpers.format_time(start_time_value, include_date: true)
+      helpers.format_time(model.start_time, include_date: true)
     end
 
     def relative_time
-      render(OpPrimer::RelativeTimeComponent.new(datetime: start_time_value, prefix: I18n.t(:label_on)))
-    end
-
-    def start_time_value
-      if instantiated?
-        meeting.start_time
-      else
-        recurring_meeting
-          .template
-          .start_time
-          .change(year: model.date.year, month: model.date.month, day: model.date.day)
-      end
+      render(OpPrimer::RelativeTimeComponent.new(datetime: model.start_time, prefix: I18n.t(:label_on)))
     end
 
     def last_edited
@@ -119,7 +108,7 @@ module RecurringMeetings
           size: :medium,
           tag: :a,
           data: { "turbo-method": "post" },
-          href: init_recurring_meeting_path(model.recurring_meeting.id, date: model.date)
+          href: init_recurring_meeting_path(model.recurring_meeting.id, start_time: model.start_time.iso8601)
         )
       ) do |_c|
         I18n.t(:label_recurring_meeting_create)
@@ -178,7 +167,7 @@ module RecurringMeetings
 
     def restore_action(menu)
       menu.with_item(label: I18n.t(:label_recurring_meeting_restore),
-                     href: init_recurring_meeting_path(recurring_meeting, date: model.date)) do |item|
+                     href: init_recurring_meeting_path(recurring_meeting, start_time: model.start_time.iso8601)) do |item|
         item.with_leading_visual_icon(icon: :history)
       end
     end
