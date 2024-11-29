@@ -43,12 +43,12 @@ FactoryBot.define do
 
     after(:create) do |recurring_meeting, evaluator|
       recurring_meeting.project = evaluator.project if evaluator.project
-      recurring_meeting.template = create(:meeting, recurring_meeting:)
+      recurring_meeting.template = create(:structured_meeting_template, recurring_meeting:)
     end
 
     after(:stub) do |recurring_meeting, evaluator|
       recurring_meeting.project = evaluator.project if evaluator.project
-      recurring_meeting.template = build_stubbed(:meeting, recurring_meeting:)
+      recurring_meeting.template = build_stubbed(:structured_meeting, recurring_meeting:)
     end
   end
 end

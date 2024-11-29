@@ -27,28 +27,20 @@
 #++
 
 FactoryBot.define do
-  factory :recurring_meeting, class: "RecurringMeeting" do |m|
-    author factory: :user
-    project
+  factory :scheduled_meeting, class: "ScheduledMeeting" do |m|
+    recurring_meeting
+    cancelled { false }
+    meeting { nil }
     start_time { Date.tomorrow + 10.hours }
-    end_date { 1.year.from_now }
-    duration { 1.0 }
-    frequency { "weekly" }
-    interval { 1 }
-    iterations { 10 }
-    end_after { "specific_date" }
 
-    location { "https://some-url.com" }
-    m.sequence(:title) { |n| "Meeting series #{n}" }
+    trait :scheduled
 
-    after(:create) do |recurring_meeting, evaluator|
-      recurring_meeting.project = evaluator.project if evaluator.project
-      recurring_meeting.template = create(:meeting, recurring_meeting:)
+    trait :cancelled do
+      cancelled { true }
     end
 
-    after(:stub) do |recurring_meeting, evaluator|
-      recurring_meeting.project = evaluator.project if evaluator.project
-      recurring_meeting.template = build_stubbed(:meeting, recurring_meeting:)
+    trait :persisted do
+      meeting factory: :structured_meeting
     end
   end
 end

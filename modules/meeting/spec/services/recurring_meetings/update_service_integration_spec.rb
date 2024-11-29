@@ -31,142 +31,55 @@ require "spec_helper"
 RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
   shared_let(:project) { create(:project, enabled_module_names: %i[meetings]) }
   shared_let(:user) do
-    create(:user, member_with_permissions: { project => %i(view_meetings create_meetings) })
+    create(:user, member_with_permissions: { project => %i(view_meetings edit_meetings) })
   end
-  shared_let(:meeting) do
+  shared_let(:series) do
     create(:recurring_meeting,
            project:,
            start_time: Time.zone.today + 10.hours,
-           interval: "daily",
+           frequency: "daily",
+           interval: 1,
            end_after: "specific_date",
-           end_date: 1.month.from_now,
-           )
+           end_date: 1.month.from_now)
   end
 
-  let(:instance) { described_class.new(model: meeting, user:) }
-  let(:attributes) { {} }
+  let(:instance) { described_class.new(model: series, user:) }
   let(:params) { {} }
 
-  let(:service_result) { instance.call(attributes:, **params) }
-  let(:copy) { service_result.result }
+  let(:service_result) { instance.call(**params) }
+  let(:updated_meeting) { service_result.result }
 
-  it "copies the meeting as is" do
-    expect(service_result).to be_success
-    expect(copy.author).to eq(user)
-    expect(copy.start_time).to eq(meeting.start_time + 1.day)
-  end
-
-  context "when the meeting is closed" do
-    it "reopens the meeting" do
-      meeting.update! state: "closed"
-      expect(service_result).to be_success
-      expect(copy.state).to eq("open")
-    end
-  end
-
-  describe "with participants" do
-    let(:invited_user) { create(:user, member_with_permissions: { project => %i(view_meetings) }) }
-    let(:attending_user) { create(:user, member_with_permissions: { project => %i(view_meetings) }) }
-    let(:invalid_user) { create(:user) }
-
-    it "copies applicable participants, resetting attended status" do
-      meeting.participants.create!(user: invited_user, invited: true, attended: false)
-      meeting.participants.create!(user: attending_user, invited: true, attended: true)
-      meeting.participants.create!(user: invalid_user, invited: true, attended: true)
-
-      expect(service_result).to be_success
-      expect(copy.participants.count).to eq(2)
-      invited = copy.participants.find_by(user: invited_user)
-      attending = copy.participants.find_by(user: attending_user)
-      expect(invited).to be_invited
-      expect(invited).not_to be_attended
-
-      expect(attending).to be_invited
-      expect(attending).not_to be_attended
-
-      invalid = copy.participants.find_by(user: invalid_user)
-      expect(invalid).to be_nil
-    end
-  end
-
-  describe "without participants" do
-    it "sets the author as invited" do
-      meeting.participants.destroy_all
-
-      expect(service_result).to be_success
-      expect(copy.participants.count).to eq(1)
-      invited = copy.participants.find_by(user:)
-      expect(invited).to be_invited
-    end
-  end
-
-  describe "when not saving" do
-    let(:params) { { save: false } }
-
-    it "builds the meeting" do
-      expect(service_result).to be_success
-      expect(copy.author).to eq(user)
-      expect(copy.start_time).to eq(meeting.start_time + 1.day)
-      expect(copy).to be_new_record
-    end
-  end
-
-  context "with agenda items" do
-    shared_let(:agenda_item) do
-      create(:meeting_agenda_item,
-             meeting:,
-             notes: "hello there")
+  context "with a cancelled meeting for tomorrow" do
+    let!(:scheduled_meeting) do
+      create(:scheduled_meeting,
+             :cancelled,
+             recurring_meeting: series,
+             start_time: Time.zone.today + 1.day + 10.hours)
     end
 
-    it "copies the agenda item" do
-      expect(copy.reload.agenda_items.length)
-        .to eq 1
-
-      expect(copy.agenda_items.first.notes)
-        .to eq agenda_item.notes
-    end
-
-    context "when asking not to copy agenda" do
-      let(:params) { { copy_agenda: false } }
-
-      it "does not copy agenda items" do
-        expect(copy.agenda_items).to be_empty
+    context "when updating the start_date to the same time" do
+      let(:params) do
+        { start_date: Time.zone.today + 1.days }
       end
-    end
-  end
 
-  context "with attachments" do
-    shared_let(:attachment) do
-      create(:attachment,
-             container: meeting)
-    end
-    shared_let(:agenda_item) do
-      create(:meeting_agenda_item,
-             meeting:,
-             notes: "![](/api/v3/attachments/#{attachment.id}/content")
-    end
+      it "keeps that cancelled occurrence" do
+        expect(service_result).to be_success
+        expect(updated_meeting.start_time).to eq(Time.zone.today + 1.days + 10.hours)
 
-    context "when asking to copy attachments" do
-      let(:params) { { copy_attachments: true } }
-
-      it "copies the attachment" do
-        expect(copy.attachments.length)
-          .to eq 1
-
-        expect(copy.attachments.first.id)
-          .not_to eq attachment.id
-
-        expect(copy.agenda_items.count).to eq(1)
-        expect(copy.agenda_items.first.notes).to include "attachments/#{copy.attachments.first.id}/content"
+        expect { scheduled_meeting.reload }.not_to raise_error
       end
     end
 
-    context "when asking not to copy attachments" do
-      let(:params) { { copy_attachments: false } }
+    context "when updating the start_date to further in the future" do
+      let(:params) do
+        { start_date: Time.zone.today + 2.days }
+      end
 
-      it "does not copy attachments" do
-        expect(copy.attachments).to be_empty
-        expect(copy.agenda_items.first.notes).to include "attachments/#{attachment.id}/content"
+      it "deletes that cancelled occurrence" do
+        expect(service_result).to be_success
+        expect(updated_meeting.start_time).to eq(Time.zone.today + 2.days + 10.hours)
+
+        expect { scheduled_meeting.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
   end

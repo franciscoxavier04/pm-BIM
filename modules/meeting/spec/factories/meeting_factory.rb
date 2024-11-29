@@ -42,5 +42,16 @@ FactoryBot.define do
     factory :structured_meeting, class: "StructuredMeeting" do |m|
       m.sequence(:title) { |n| "Structured meeting #{n}" }
     end
+
+    factory :structured_meeting_template, class: "StructuredMeeting" do |m|
+      m.sequence(:title) { |n| "Structured meeting template #{n}" }
+      template { true }
+      recurring_meeting
+
+      after(:build) do |template, evaluator|
+        template.author = evaluator.recurring_meeting.author
+        template.project = evaluator.recurring_meeting.project
+      end
+    end
   end
 end
