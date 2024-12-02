@@ -158,26 +158,38 @@ RSpec.shared_examples "work package relations tab", :js, :with_cuprite do
           wp_page.expect_and_dismiss_toaster(message: "Successful update.")
           relations.expect_parent(parent)
 
+          wait_for_network_idle
+
           ##
           # Add child
           relations.add_existing_child(child)
           expect_and_dismiss_flash(message: "Successful update.")
           relations.expect_child(child)
 
+          wait_for_network_idle
+
           # Expect counter to add up child to the existing relations
           tabs.expect_counter(relations_tab, 3)
+
+          wait_for_network_idle
 
           # Remove parent
           relations.remove_parent
           wp_page.expect_and_dismiss_toaster(message: "Successful update.")
           relations.expect_no_parent
 
+          wait_for_network_idle
+
           # Remove child
           relations.remove_child(child)
+
+          wait_for_network_idle
 
           # Should also check for successful update but no message is shown, yet.
           expect_and_dismiss_flash(message: "Successful update.")
           relations.expect_not_child(child)
+
+          wait_for_network_idle
 
           # Expect counter to count the two relations
           tabs.expect_counter(relations_tab, 2)
