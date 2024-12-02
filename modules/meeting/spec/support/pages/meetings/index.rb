@@ -141,6 +141,18 @@ module Pages::Meetings
       submenu.click_item(filter_name)
     end
 
+    def set_quick_filter(upcoming: true)
+      page.within("#content-body") do
+        if upcoming
+          click_link_or_button "Upcoming"
+        else
+          click_link_or_button "Past"
+        end
+      end
+
+      wait_for_network_idle
+    end
+
     def expect_no_meetings_listed
       within "#content-wrapper" do
         expect(page)
