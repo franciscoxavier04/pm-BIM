@@ -78,7 +78,7 @@ module RecurringMeetings
         Rails.logger.debug { "Initialized occurrence for series ##{recurring_meeting} at #{next_scheduled_time}" }
       end
 
-      call.on_failure do |call|
+      call.on_failure do
         Rails.logger.error do
           "Could not create next occurrence for series ##{recurring_meeting}: #{call.message}"
         end

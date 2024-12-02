@@ -72,7 +72,7 @@ class RecurringMeetingsController < ApplicationController
     )
   end
 
-  def create
+  def create # rubocop:disable Metrics/AbcSize
     call = ::RecurringMeetings::CreateService
       .new(user: current_user)
       .call(@converted_params)
