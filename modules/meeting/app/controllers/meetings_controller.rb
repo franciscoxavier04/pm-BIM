@@ -190,9 +190,9 @@ class MeetingsController < ApplicationController
     # rubocop:enable Rails/ActionControllerFlashBeforeRender
 
     if recurring
-      redirect_to polymorphic_path([@project, recurring], status: :see_other)
+      redirect_to polymorphic_path([@project, recurring]), status: :see_other
     else
-      redirect_to polymorphic_path([@project, :meetings], status: :see_other)
+      redirect_to polymorphic_path([@project, :meetings]), status: :see_other
     end
   end
 
