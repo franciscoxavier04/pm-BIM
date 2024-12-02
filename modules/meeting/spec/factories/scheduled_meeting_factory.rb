@@ -27,7 +27,7 @@
 #++
 
 FactoryBot.define do
-  factory :scheduled_meeting, class: "ScheduledMeeting" do |m|
+  factory :scheduled_meeting, class: "ScheduledMeeting" do
     recurring_meeting
     cancelled { false }
     meeting { nil }

@@ -59,12 +59,12 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
 
     context "when updating the start_date to the same time" do
       let(:params) do
-        { start_date: Time.zone.today + 1.days }
+        { start_date: Time.zone.today + 1.day }
       end
 
       it "keeps that cancelled occurrence" do
         expect(service_result).to be_success
-        expect(updated_meeting.start_time).to eq(Time.zone.today + 1.days + 10.hours)
+        expect(updated_meeting.start_time).to eq(Time.zone.today + 1.day + 10.hours)
 
         expect { scheduled_meeting.reload }.not_to raise_error
       end
