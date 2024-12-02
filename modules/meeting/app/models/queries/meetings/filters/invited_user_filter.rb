@@ -40,11 +40,10 @@ class Queries::Meetings::Filters::InvitedUserFilter < Queries::Meetings::Filters
   end
 
   def where
-    operator_strategy.sql_for_field(
-      values,
-      MeetingParticipant.table_name,
-      "user_id"
-    )
+    [
+      operator_strategy.sql_for_field(values, MeetingParticipant.table_name, "user_id"),
+      "#{MeetingParticipant.table_name}.invited"
+    ].join(" AND ")
   end
 
   def joins
