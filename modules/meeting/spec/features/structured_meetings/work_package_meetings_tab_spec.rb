@@ -30,7 +30,9 @@ require "spec_helper"
 require_relative "../../support/pages/work_package_meetings_tab"
 require_relative "../../support/pages/structured_meeting/show"
 
-RSpec.describe "Open the Meetings tab", :js do
+RSpec.describe "Open the Meetings tab",
+               :js,
+               :with_cuprite do
   shared_let(:project) { create(:project) }
   shared_let(:work_package) { create(:work_package, project:, subject: "A test work_package") }
 
@@ -406,11 +408,11 @@ RSpec.describe "Open the Meetings tab", :js do
 
           meetings_tab.open_add_to_meeting_dialog
 
-          retry_block do
-            click_on("Save")
+          click_on("Save")
 
-            expect(page).to have_content("Meeting can't be blank")
-          end
+          wait_for_network_idle
+
+          expect(page).to have_content("Meeting can't be blank")
         end
 
         it "adds presenter when the work package is added to a meeting" do
