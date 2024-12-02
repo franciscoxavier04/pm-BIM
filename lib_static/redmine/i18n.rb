@@ -125,7 +125,7 @@ module Redmine
     def format_time_as_date(time, format: nil)
       return nil unless time
 
-      local_date = in_current_user_zone(time).to_date
+      local_date = in_user_zone(time).to_date
 
       if format
         local_date.strftime(format)
@@ -147,35 +147,29 @@ module Redmine
     def format_time(time, include_date: true, format: Setting.time_format)
       return nil unless time
 
-      local = in_current_user_zone(time)
+      local = in_user_zone(time)
 
       (include_date ? "#{format_date(local)} " : "") +
         (format.blank? ? ::I18n.l(local, format: :time) : local.strftime(format))
     end
 
     ##
-    # Formats the given time as a time string according to the +User.current+ time zone
+    # Formats the given time as a time string according to the +user+'s time zone
     # @param time [Time] The time to format.
+    # @param user [User] The user to use for the time zone. Defaults to +User.current+.
     # @return [Time] The time with the user's time zone applied.
-    def in_current_user_zone(time)
-      time.in_time_zone(current_user_time_zone)
-    end
-
-    ##
-    # Returns the time zone of +User.current+, cached for the duration of the request
-    # @return [ActiveSupport::TimeZone] The time zone of the current user
-    def current_user_time_zone
-      RequestStore.fetch("current_user_time_zone") { User.current.time_zone }
+    def in_user_zone(time, user: User.current)
+      time.in_time_zone(user.time_zone)
     end
 
     # Returns the offset to UTC (with utc prepended) currently active
     # in the current users time zone. DST is factored in so the offset can
     # shift over the course of the year
-    def formatted_time_zone_offset
+    def formatted_time_zone_offset(user: User.current)
       # Doing User.current.time_zone and format that will not take heed of DST as it has no notion
       # of a current time.
       # https://github.com/rails/rails/issues/7297
-      "UTC#{current_user_time_zone.now.formatted_offset}"
+      "UTC#{user.time_zone.now.formatted_offset}"
     end
 
     def day_name(day)
