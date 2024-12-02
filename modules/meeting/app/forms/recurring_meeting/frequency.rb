@@ -36,7 +36,7 @@ class RecurringMeeting::Frequency < ApplicationForm
         "show-when-value-selected-target": "cause"
       }
     ) do |list|
-      RecurringMeeting.frequencies.keys.each do |value|
+      RecurringMeeting.frequencies.each_key do |value|
         label = I18n.t(:"recurring_meeting.frequency.#{value}")
         list.option(label:, value:)
       end

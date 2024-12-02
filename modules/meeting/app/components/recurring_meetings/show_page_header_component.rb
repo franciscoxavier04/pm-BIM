@@ -65,7 +65,7 @@ module RecurringMeetings
     end
 
     def page_title
-      @meeting.present? ? @meeting.title + " (Meeting series)" : I18n.t(:label_recurring_meeting_plural)
+      @meeting.present? ? "#{@meeting.title} (Meeting series)" : I18n.t(:label_recurring_meeting_plural)
     end
 
     def page_description

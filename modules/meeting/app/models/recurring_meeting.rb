@@ -93,7 +93,9 @@ class RecurringMeeting < ApplicationRecord
         end
       end
 
-    I18n.t("recurring_meeting.in_words.full", base:, time: format_time(start_time, include_date: false),
+    I18n.t("recurring_meeting.in_words.full",
+           base:,
+           time: format_time(start_time, include_date: false),
            end_date: format_date(end_date))
   end
 

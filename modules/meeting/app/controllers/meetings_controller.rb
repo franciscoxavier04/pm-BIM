@@ -69,7 +69,7 @@ class MeetingsController < ApplicationController
     :meetings
   end
 
-  def show
+  def show # rubocop:disable Metrics/AbcSize
     respond_to do |format|
       format.html do
         html_title "#{t(:label_meeting)}: #{@meeting.title}"
@@ -181,11 +181,13 @@ class MeetingsController < ApplicationController
   def destroy
     recurring = @meeting.recurring_meeting
 
+    # rubocop:disable Rails/ActionControllerFlashBeforeRender
     Meetings::DeleteService
       .new(model: @meeting, user: User.current)
       .call
       .on_success { flash[:notice] = I18n.t(:notice_successful_delete) }
       .on_failure { |call| flash[:error] = call.message }
+    # rubocop:enable Rails/ActionControllerFlashBeforeRender
 
     if recurring
       redirect_to polymorphic_path([@project, recurring], status: :see_other)
@@ -389,7 +391,7 @@ class MeetingsController < ApplicationController
     render_404
   end
 
-  def convert_params
+  def convert_params # rubocop:disable Metrics/AbcSize
     # We do some preprocessing of `meeting_params` that we will store in this
     # instance variable.
     @converted_params = meeting_params.to_h

@@ -32,7 +32,7 @@ class RecurringMeeting::Interval < ApplicationForm
       name: :interval,
       type: :number,
       label: I18n.t("activerecord.attributes.recurring_meeting.interval"),
-      caption: I18n.t("recurring_meeting.interval.instructions"),
+      caption: I18n.t("recurring_meeting.interval.instructions")
     )
   end
 end

@@ -33,7 +33,7 @@ module Meetings
     include OpPrimer::ComponentHelpers
     include Redmine::I18n
 
-    def initialize(query:, project: nil, params:)
+    def initialize(query:, params:, project: nil)
       super()
 
       @query = query

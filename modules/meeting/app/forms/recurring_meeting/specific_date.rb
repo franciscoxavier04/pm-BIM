@@ -41,6 +41,7 @@ class RecurringMeeting::SpecificDate < ApplicationForm
   end
 
   def initialize(initial_value: 1.year.from_now.strftime("%Y-%m-%d"))
+    super()
     @initial_value = initial_value
   end
 end

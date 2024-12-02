@@ -34,7 +34,7 @@ module Meetings
     # rubocop:enable OpenProject/AddPreviewForViewComponent
     include ApplicationHelper
 
-    def initialize(query:, project: nil, params:)
+    def initialize(query:, params:, project: nil)
       super
       @query = query
       @project = project
