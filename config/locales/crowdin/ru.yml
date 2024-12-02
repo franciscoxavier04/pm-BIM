@@ -239,7 +239,7 @@ ru:
           one: 1 подпункт
           other: "%{count} подпунктов"
     upsale:
-      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
+      custom_field_format_hierarchy: "Вам нужна иерархия в пользовательских полях для пакетов работ?"
     text_add_new_custom_field: >
       Прежде чем добавлять настраиваемые поля в проект, нужно создать их.
     is_enabled_globally: "Разрешено в глобальном масштабе"
@@ -537,7 +537,7 @@ ru:
     react_with: "Реакция %{reaction}"
     and_user: "и %{user}"
     and_others:
-      one: and 1 other
+      one: и еще 1
       few: and %{count} others
       many: and %{count} others
       other: и еще %{count}
@@ -649,6 +649,66 @@ ru:
           no_results_title_text: На данный момент доступных типов рабочих пакетов нет.
         version:
           no_results_title_text: На данный момент этапы отсутствуют.
+  work_package_relations_tab:
+    index:
+      action_bar_title: "Добавьте отношения к другим рабочим пакетам, чтобы создать связь между ними."
+      no_results_title_text: На данный момент связи отсутствуют.
+      blankslate_heading: "Нет связей"
+      blankslate_description: "У этого пакета работ пока нет никаких связей."
+    label_add_x: "Добавить %{x}"
+    label_edit_x: "Редактировать %{x}"
+    label_add_description: "Добавить описание"
+    relations:
+      label_relates_singular: "связан с"
+      label_relates_plural: "связаны с"
+      label_relates_to_singular: "связан с"
+      label_relates_to_plural: "связаны с"
+      relates_description: "Создает видимую связь между двумя рабочими пакетами без дополнительного эффекта"
+      relates_to_description: "Создает видимую связь между двумя рабочими пакетами без дополнительного эффекта"
+      label_precedes_singular: "наследник (после)"
+      label_precedes_plural: "наследники (после)\n"
+      precedes_description: "Связанный пакет работ обязательно должен начаться после завершения этого пакета"
+      label_follows_singular: "предшественник (до)"
+      label_follows_plural: "предшественники (до)"
+      follows_description: "Соответствующий пакет работ обязательно должен быть завершен до того, как начнется этот пакет"
+      label_child_singular: "дочерний пакет работ"
+      label_child_plural: "дочерние пакеты работ"
+      child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
+      label_blocks_singular: "блоки"
+      label_blocks_plural: "блоки"
+      blocks_description: "Связанный пакет работ не может быть закрыт до тех пор, пока не будет закрыт этот пакет"
+      label_blocked_singular: "заблокирован"
+      label_blocked_plural: "заблокированы"
+      label_blocked_by_singular: "заблокирован"
+      label_blocked__by_plural: "заблокированы"
+      blocked_description: "Связанный пакет работ не может быть закрыт до тех пор, пока не будет закрыт связанный пакет"
+      blocked_by_description: "Связанный пакет работ не может быть закрыт до тех пор, пока не будет закрыт связанный пакет"
+      label_duplicates_singular: "дублирует"
+      label_duplicates_plural: "дублируют"
+      duplicates_description: "Это копия связанного пакета работ"
+      label_duplicated_singular: "дублеруется"
+      label_duplicated_plural: "дублируются"
+      label_duplicated_by_singular: "дублируется"
+      label_duplicated_by_plural: "дублируются"
+      duplicated_by_description: "Связанный пакет работ является копией этого"
+      duplicated_description: "Связанный пакет работ является копией этого"
+      label_includes_singular: "включает"
+      label_includes_plural: "включают"
+      includes_description: "Отмечает связанный пакет работ как включающий этот пакет без дополнительного эффекта"
+      label_partof_singular: "часть"
+      label_partof_plural: "часть"
+      label_part_of_singular: "часть"
+      label_part_of_plural: "часть"
+      partof_description: "Отмечает связанный пакет работ как часть этого пакета без дополнительного эффекта"
+      part_of_description: "Помечает связанный пакет работ как часть этого пакета без дополнительного эффекта"
+      label_requires_singular: "требует"
+      label_requires_plural: "требуют"
+      requires_description: "Отмечает связанный с этим пакет работ как требование к нему"
+      label_required_singular: "требуется"
+      label_required_plural: "требуется"
+      required_description: "Отмечает этот пакет работ как требование к связанному"
+      label_parent_singular: "родитель"
+      label_parent_plural: "родители"
   label_invitation: Приглашение
   account:
     delete: "Удалить учётную запись"
@@ -1048,17 +1108,17 @@ ru:
         project/life_cycle_step_definition:
           attributes:
             type:
-              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
+              must_be_a_stage_or_gate: "должен быть либо Project::StageDefinition, либо Project::GateDefinition"
         project/life_cycle_step:
           attributes:
             type:
-              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
-              must_be_a_stage: "must be a Project::Stage"
-              must_be_a_gate: "must be a Project::Gate"
+              must_be_a_stage_or_gate: "должен быть либо Project::Stage, либо Project::Gate"
+              must_be_a_stage: "должен быть Project::Stage"
+              must_be_a_gate: "должен быть Project::Stage"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign `end_date` to a Project::Gate"
+              end_date_not_allowed: "Невозможно присвоить `end_date` проекту Project::Gate"
         query:
           attributes:
             project:
@@ -2285,6 +2345,7 @@ ru:
   label_environment: "Переменные среды"
   label_estimates_and_progress: "Оценки и прогресс"
   label_equals: "—"
+  label_equals_with_descendants: "любой с потомками"
   label_everywhere: "везде"
   label_example: "Пример"
   label_experimental: "Экспериментально"
@@ -2549,6 +2610,8 @@ ru:
   label_related_work_packages: "Связанные пакеты работ"
   label_relates: "Связан с"
   label_relates_to: "Связан с"
+  label_relation: "Связь"
+  label_relation_actions: "Действия со связями"
   label_relation_delete: "Удалить связь"
   label_relation_new: "Новая связь"
   label_release_notes: "Список изменений"

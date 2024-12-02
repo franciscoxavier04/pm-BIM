@@ -32,8 +32,14 @@ module Queries
   module Filters
     module Strategies
       class Hierarchy < BaseStrategy
-        self.supported_operators = %w[= !]
+        self.supported_operators = %w[= ! eq_with_descendants]
         self.default_operator = "="
+
+        def operator_map
+          super.dup.tap do |super_value|
+            super_value["eq_with_descendants"] = ::Queries::Operators::CustomFields::Hierarchies::EqualsWithDescendants
+          end
+        end
       end
     end
   end
