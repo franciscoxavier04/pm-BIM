@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         get "menu" => "meetings/menus#show"
       end
     end
-    resources :recurring_meetings, only: %i[index new create show]
+    resources :recurring_meetings, only: %i[index new create show destroy]
   end
 
   resources :work_packages, only: %i[] do
