@@ -34,10 +34,11 @@ RSpec.describe RecurringMeetings::CreateService, "integration", type: :model do
     create(:user, member_with_permissions: { project => %i(view_meetings create_meetings) })
   end
   let(:instance) { described_class.new(user:) }
+  let(:service_result) { subject }
+  let(:series) { service_result.result }
   let(:params) { {} }
 
-  let(:service_result) { instance.call(**params) }
-  let(:series) { service_result.result }
+  subject { instance.call(**params) }
 
   context "with a daily schedule" do
     let(:first_start) { Time.zone.tomorrow + 10.hours }
@@ -53,23 +54,19 @@ RSpec.describe RecurringMeetings::CreateService, "integration", type: :model do
       }
     end
 
-    it "creates the series, template, and first occurrence" do
+    it "creates the series, template, and schedule the init job" do
+      expect { subject }.to have_enqueued_job(RecurringMeetings::InitNextOccurrenceJob)
+      job = enqueued_jobs.detect { |h| h["job_class"] == "RecurringMeetings::InitNextOccurrenceJob" }
+      expect(DateTime.parse(job["scheduled_at"])).to eq(Time.zone.tomorrow + 10.hours)
+
       expect(service_result).to be_success
       expect(series).to be_persisted
 
       expect(series.template).to be_a(StructuredMeeting)
       expect(series.template).to be_template
 
-      expect(series.meetings.count).to eq(2) # template and occurrence
-      expect(series.first_occurrence).to eq(first_start)
-
-      first_instance = series.meetings.not_templated.first
-      first_scheduled = series.scheduled_meetings.first
-
-      expect(first_instance.start_time).to eq(first_start)
-      expect(first_scheduled.start_time).to eq(first_start)
-      expect(first_scheduled.recurring_meeting).to eq(series)
-      expect(first_scheduled.meeting).to eq(first_instance)
+      expect(series.meetings.count).to eq(1)
+      expect(series.meetings.first).to be_template
     end
 
     context "when the template cannot be saved" do
@@ -81,6 +78,7 @@ RSpec.describe RecurringMeetings::CreateService, "integration", type: :model do
       end
 
       it "does not create the series" do
+        expect { subject }.not_to have_enqueued_job(RecurringMeetings::InitNextOccurrenceJob)
         expect(service_result).not_to be_success
         expect(series).to be_new_record
       end

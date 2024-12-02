@@ -37,17 +37,22 @@ module RecurringMeetings
 
       recurring_meeting = call.result
       call.merge! create_meeting_template(recurring_meeting) if call.success?
-      call.merge! init_first_occurrence(recurring_meeting) if call.success?
+      schedule_init_job(recurring_meeting) if call.success?
 
       call
     end
 
-    def init_first_occurrence(recurring_meeting)
-      first_time = recurring_meeting.first_occurrence
+    ##
+    # We want to automatically schedule the next occurrence
+    # AFTER the first occurrence has passed.
+    # We do not create initially as you still need to update the template.
+    def schedule_init_job(recurring_meeting)
+      first_occurrence = recurring_meeting.first_occurrence
+      return if first_occurrence.nil?
 
-      ::RecurringMeetings::InitOccurrenceService
-        .new(user:, recurring_meeting:)
-        .call(start_time: first_time)
+      ::RecurringMeetings::InitNextOccurrenceJob
+        .set(wait_until: first_occurrence.to_time)
+        .perform_later(recurring_meeting)
     end
 
     def create_meeting_template(recurring_meeting)

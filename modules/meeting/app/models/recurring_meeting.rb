@@ -107,6 +107,14 @@ class RecurringMeeting < ApplicationRecord
     schedule.first
   end
 
+  def last_occurrence
+    schedule.last
+  end
+
+  def next_occurrence(from_time: Time.current)
+    schedule.next_occurrence(from_time)
+  end
+
   def remaining_occurrences
     if end_date.present?
       schedule.occurrences_between(Time.current, end_date)
