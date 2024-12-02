@@ -14,13 +14,13 @@ This platform thrives on the support of its community, and there are many ways y
 
 ## Overview
 
-| Topic                                                       | Content                                                   |
-| ----------------------------------------------------------- | :-------------------------------------------------------- |
-| [Contribute to documentation](contribution-documentation)   | Learn how you can contribute to OpenProject documentation |
-| [Translate OpenProject](translate-openproject)              | Help translate OpenProject                                |
-| [Give back to Community](give-back-to-community)            | Learn how you can support OpenProject community           |
-| [Report a bug](./development/report-a-bug/)                 | Learn how to report a bug in OpenProject                  |
-| [Submit a feature idea](./development/submit-feature-idea/) | See how you can submit an new feature idea                |
+| Topic                                                        | Content                                                   |
+| ------------------------------------------------------------ | :-------------------------------------------------------- |
+| [Contribute to documentation](contribution-documentation)    | Learn how you can contribute to OpenProject documentation |
+| [Translate OpenProject](translate-openproject)               | Help translate OpenProject                                |
+| [Give back to Community](give-back-to-community)             | Learn how you can support OpenProject community           |
+| [Report a bug](../development/report-a-bug/)                 | Learn how to report a bug in OpenProject                  |
+| [Submit a feature idea](../development/submit-feature-idea/) | See how you can submit an new feature idea                |
 
 
 ## How can you help?
