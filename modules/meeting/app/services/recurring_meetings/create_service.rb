@@ -35,21 +35,29 @@ module RecurringMeetings
     def after_perform(call)
       return call unless call.success?
 
-      template = create_meeting_template(call.result)
-      unless template.save
-        call.merge! ServiceResult.failure(result: template, errors: template.errors)
-      end
+      recurring_meeting = call.result
+      call.merge! create_meeting_template(recurring_meeting) if call.success?
+      call.merge! init_first_occurrence(recurring_meeting) if call.success?
 
       call
     end
 
+    def init_first_occurrence(recurring_meeting)
+      first_time = recurring_meeting.first_occurrence
+
+      ::RecurringMeetings::InitOccurrenceService
+        .new(user:, recurring_meeting:)
+        .call(start_time: first_time)
+    end
+
     def create_meeting_template(recurring_meeting)
-      StructuredMeeting.new(@template_params).tap do |template|
-        template.project = recurring_meeting.project
-        template.template = true
-        template.recurring_meeting = recurring_meeting
-        template.author = user
-      end
+      template = StructuredMeeting.new(@template_params)
+      template.project = recurring_meeting.project
+      template.template = true
+      template.recurring_meeting = recurring_meeting
+      template.author = user
+
+      ServiceResult.new(success: template.save, errors: template.errors)
     end
   end
 end
