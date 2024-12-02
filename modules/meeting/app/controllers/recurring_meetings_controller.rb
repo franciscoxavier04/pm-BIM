@@ -37,7 +37,7 @@ class RecurringMeetingsController < ApplicationController
     @direction = params[:direction]
     if params[:direction] == "past"
       @meetings = @recurring_meeting
-        .instances(upcoming: false)
+        .scheduled_instances(upcoming: false)
         .page(page_param)
         .per_page(per_page_param)
     else
