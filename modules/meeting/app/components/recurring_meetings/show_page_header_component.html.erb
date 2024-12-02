@@ -33,7 +33,7 @@
       )
       menu.with_item(
         label: I18n.t(:label_recurring_meeting_series_delete),
-        href: recurring_meeting_path(@meeting),
+        href: polymorphic_path([@project, @meeting]),
         scheme: :danger,
         form_arguments: {
           method: :delete, data: { confirm: t("text_are_you_sure"), turbo: 'false' }
