@@ -28,7 +28,8 @@ Whether it’s fixing typos, clarifying instructions, or adding missing sections
 
 With this guide for contributing to the OpenProject documentation we followed and took inspiration from the [Contribute to GitLab guide](https://about.gitlab.com/community/contribute/).
 
-> [!TIP] Documentation changes are **not** changes or additions to the code of the OpenProject application. For contributions to the code, see our [product development guide](../product-development-handbook/). Please also refer to the [development guide](../../development/code-review-guidelines/) for Code review guidelines
+> [!TIP] 
+> Documentation changes are **not** changes or additions to the code of the OpenProject application. For contributions to the code, see our [product development guide](../../development/product-development-handbook/). Please also refer to the [development guide](../../development/code-review-guidelines/) for Code review guidelines
 
 ## OpenProject documentation overview
 
@@ -58,4 +59,4 @@ To gain access to the community installation at, please send an email to [suppor
 
 ### Write your own pull request
 
-If you prefer, you can also go ahead and create a **draft pull request** with your suggestions and ask for the review from our team. Please take a look at the [documentation process](/documentation-process) for the exact steps to do that and consult the [documentation style guide](/documentation-style-guide) for instructions on documentation formatting in OpenProject.
+If you prefer, you can also go ahead and create a **draft pull request** with your suggestions and ask for the review from our team. Please take a look at the [documentation process](./documentation-process/) for the exact steps to do that and consult the [documentation style guide](./documentation-style-guide/) for instructions on documentation formatting in OpenProject.
