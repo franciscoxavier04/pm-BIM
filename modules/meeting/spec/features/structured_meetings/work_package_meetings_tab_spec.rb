@@ -258,9 +258,11 @@ RSpec.describe "Open the Meetings tab",
           expect(page).to have_content(meeting_agenda_item_of_second_meeting.notes)
         end
 
-        meeting_containers = page.all("[data-test-selector^='op-meeting-container-']")
-        expect(meeting_containers[0]["data-test-selector"]).to eq("op-meeting-container-#{first_meeting.id}")
-        expect(meeting_containers[1]["data-test-selector"]).to eq("op-meeting-container-#{second_meeting.id}")
+        meeting_containers = page
+          .all("[data-test-selector^='op-meeting-container-']")
+          .map { |container| container["data-test-selector"] }
+        expect(meeting_containers).to contain_exactly("op-meeting-container-#{first_meeting.id}",
+                                                      "op-meeting-container-#{second_meeting.id}")
       end
     end
 

@@ -99,12 +99,12 @@ module Pages
     end
 
     def fill_and_submit_meeting_dialog(meeting, notes, counter)
-      fill_in("meeting_agenda_item_meeting_id", with: meeting.title)
-      expect(page).to have_css(".ng-option-marked", text: meeting.title) # wait for selection
-      page.find(".ng-option-marked").click
-      page.find(".ck-editor__editable").set(notes)
-
       retry_block do
+        fill_in("meeting_agenda_item_meeting_id", with: meeting.title)
+        page.find(".ng-option-marked", text: meeting.title) # wait for selection
+        page.find(".ng-option-marked").click
+        page.find(".ck-editor__editable").set(notes)
+
         click_on("Save")
 
         page.within_test_selector("op-upcoming-meetings-counter") do
