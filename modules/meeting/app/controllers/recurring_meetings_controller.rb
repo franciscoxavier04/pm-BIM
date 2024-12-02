@@ -79,7 +79,8 @@ class RecurringMeetingsController < ApplicationController
 
     if call.success?
       flash[:notice] = I18n.t(:notice_successful_create).html_safe
-      redirect_to status: :see_other, action: :show, id: call.result
+      redirect_to polymorphic_path([@project, :meeting], { id: call.result.template.id }),
+                  status: :see_other
     else
       respond_to do |format|
         format.turbo_stream do
