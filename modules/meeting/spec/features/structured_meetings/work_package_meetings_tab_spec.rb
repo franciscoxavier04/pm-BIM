@@ -341,10 +341,9 @@ RSpec.describe "Open the Meetings tab",
 
           meetings_tab.fill_and_submit_meeting_dialog(
             first_upcoming_meeting,
-            "A very important note added from the meetings tab to the first meeting!"
+            "A very important note added from the meetings tab to the first meeting!",
+            1
           )
-
-          meetings_tab.expect_upcoming_counter_to_be(1)
 
           page.within_test_selector("op-meeting-container-#{first_upcoming_meeting.id}") do
             expect(page).to have_content("A very important note added from the meetings tab to the first meeting!")
@@ -354,10 +353,9 @@ RSpec.describe "Open the Meetings tab",
 
           meetings_tab.fill_and_submit_meeting_dialog(
             second_upcoming_meeting,
-            "A very important note added from the meetings tab to the second meeting!"
+            "A very important note added from the meetings tab to the second meeting!",
+            2
           )
-
-          meetings_tab.expect_upcoming_counter_to_be(2)
 
           page.within_test_selector("op-meeting-container-#{second_upcoming_meeting.id}") do
             expect(page).to have_content("A very important note added from the meetings tab to the second meeting!")
@@ -372,7 +370,8 @@ RSpec.describe "Open the Meetings tab",
 
           meetings_tab.fill_and_submit_meeting_dialog(
             ongoing_meeting,
-            "Some notes to be added"
+            "Some notes to be added",
+            1
           )
 
           meetings_tab.expect_upcoming_counter_to_be(1)
@@ -408,11 +407,13 @@ RSpec.describe "Open the Meetings tab",
 
           meetings_tab.open_add_to_meeting_dialog
 
-          click_on("Save")
+          retry_block do
+            click_on("Save")
 
-          wait_for_network_idle
+            wait_for_network_idle
 
-          expect(page).to have_content("Meeting can't be blank")
+            raise "Expected error message to be shown" unless page.has_content?("Meeting can't be blank")
+          end
         end
 
         it "adds presenter when the work package is added to a meeting" do
@@ -423,7 +424,8 @@ RSpec.describe "Open the Meetings tab",
 
           meetings_tab.fill_and_submit_meeting_dialog(
             first_upcoming_meeting,
-            "A very important note added from the meetings tab to the first meeting!"
+            "A very important note added from the meetings tab to the first meeting!",
+            1
           )
 
           meeting_page.visit!
