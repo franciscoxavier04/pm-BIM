@@ -5,8 +5,8 @@ class RecurringMeetingsController < ApplicationController
   include OpTurbo::FlashStreamHelper
   include OpTurbo::DialogStreamHelper
 
-  before_action :find_meeting, only: %i[show update details_dialog destroy edit init]
-  before_action :find_optional_project, only: %i[index show new create update details_dialog destroy edit]
+  before_action :find_meeting, only: %i[show update details_dialog destroy edit init delete_scheduled]
+  before_action :find_optional_project, only: %i[index show new create update details_dialog destroy edit delete_scheduled]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
 
@@ -138,6 +138,25 @@ class RecurringMeetingsController < ApplicationController
       format.html do
         redirect_to polymorphic_path([@project, :meetings])
       end
+    end
+  end
+
+  def delete_scheduled # rubocop:disable Metrics/AbcSize
+    call = ::RecurringMeetings::InitOccurrenceService
+             .new(user: current_user, recurring_meeting: @recurring_meeting)
+             .call(start_time: DateTime.iso8601(params[:start_time]))
+
+    if call.success?
+      ::Meetings::DeleteService
+        .new(model: call.result, user: current_user)
+        .call
+        .on_success { flash[:notice] = I18n.t(:notice_successful_cancel) }
+        .on_failure { |delete_call| flash[:error] = delete_call.message }
+
+      redirect_to polymorphic_path([@project, @recurring_meeting]), status: :see_other
+    else
+      flash[:error] = call.message
+      redirect_to action: :show, id: @recurring_meeting
     end
   end
 

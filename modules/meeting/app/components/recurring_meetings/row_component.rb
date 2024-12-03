@@ -118,7 +118,7 @@ module RecurringMeetings
     end
 
     def create
-      return if instantiated?
+      return if instantiated? || cancelled?
 
       render(
         Primer::Beta::Button.new(
@@ -147,6 +147,10 @@ module RecurringMeetings
                               data: {
                                 "test-selector": "more-button"
                               })
+
+        if delete_allowed? && !cancelled? && !instantiated?
+          delete_scheduled_action(menu)
+        end
 
         if instantiated? && !cancelled?
           ical_action(menu)
@@ -179,6 +183,19 @@ module RecurringMeetings
         href: meeting_path(meeting),
         form_arguments: {
           method: :delete, data: { confirm: I18n.t("text_are_you_sure"), turbo: false }
+        }
+      ) do |item|
+        item.with_leading_visual_icon(icon: :trash)
+      end
+    end
+
+    def delete_scheduled_action(menu)
+      menu.with_item(
+        label: I18n.t(:label_recurring_meeting_cancel),
+        scheme: :danger,
+        href: delete_scheduled_recurring_meeting_path(model.recurring_meeting.id, start_time: model.start_time.iso8601),
+        form_arguments: {
+          method: :post, data: { confirm: I18n.t("text_are_you_sure"), turbo: false }
         }
       ) do |item|
         item.with_leading_visual_icon(icon: :trash)
