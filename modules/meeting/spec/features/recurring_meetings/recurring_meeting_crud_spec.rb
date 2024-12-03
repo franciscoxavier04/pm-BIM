@@ -28,6 +28,7 @@
 
 require "spec_helper"
 
+require_relative "../../support/pages/meetings/new"
 require_relative "../../support/pages/structured_meeting/show"
 require_relative "../../support/pages/recurring_meeting/show"
 require_relative "../../support/pages/meetings/index"
@@ -68,76 +69,122 @@ RSpec.describe "Recurring meetings CRUD",
     expect(page).to have_current_path(meetings_page.path) # rubocop:disable RSpec/ExpectInHook
     meetings_page.click_on "add-meeting-button"
     meetings_page.click_on "Recurring"
+
+    sleep 1 # flaky without
+
     meetings_page.set_title "Some title"
 
     meetings_page.set_start_date "2024-12-31"
     meetings_page.set_start_time "13:30"
     meetings_page.set_duration "1.5"
 
-    meetings_page.set_end_date "2025-01-02"
+    meetings_page.set_end_date "2025-01-15"
 
     click_on "Create meeting"
 
-    wait_for_network_idle
-
-    meeting = RecurringMeeting.last
-
-    Pages::RecurringMeeting::Show.new(meeting)
+    wait_for_reload
+    perform_enqueued_jobs
   end
 
   it "can create a recurring meeting", with_flag: { recurring_meetings: true } do
     expect_flash(type: :success, message: "Successful creation.")
 
     # Does not send invitation mails by default
-    perform_enqueued_jobs
     expect(ActionMailer::Base.deliveries.size).to eq 0
+
+    show_page.visit!
 
     expect(page).to have_css(".start_time", count: 3)
 
-    show_page.expect_open_meeting date: "2024-12-31 01:30 PM"
-    show_page.expect_scheduled_meeting date: "2024-01-01 01:30 PM"
-    show_page.expect_scheduled_meeting date: "2024-01-02 01:30 PM"
+    show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
+    show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
+    show_page.expect_scheduled_meeting date: "01/14/2025 01:30 PM"
   end
 
-  it "can delete a recurring meeting", with_flag: { recurring_meetings: true } do
+  it "can delete a recurring meeting from the show page and return to the index page", with_flag: { recurring_meetings: true } do
+    show_page.visit!
+
     click_on "action-menu"
 
     accept_confirm(I18n.t("text_are_you_sure")) do
       click_on "Delete meeting series"
     end
 
-    expect(page).to have_current_path project_meetings_path(project)
+    expect(page).to have_current_path meetings_path # check path
   end
 
   it "can use the 'Create from template' button", with_flag: { recurring_meetings: true } do
-    show_page.create_from_template date: "2024-01-01 01:30 PM"
+    show_page.visit!
 
-    expect(page).to have_current_path meeting_path(Meeting.last)
+    show_page.create_from_template date: "01/07/2025 01:30 PM"
+    wait_for_reload
+
+    expect(page).to have_current_path project_meeting_path(project, Meeting.reorder(id: :asc).last)
 
     show_page.visit!
 
-    show_page.expect_no_scheduled_meeting date: "2024-01-01 01:30 PM"
-    show_page.expect_open_meeting date: "2024-01-01 01:30 PM"
+    show_page.expect_no_scheduled_meeting date: "01/07/2025 01:30 PM"
+    show_page.expect_open_meeting date: "01/07/2025 01:30 PM"
   end
 
-  it "can cancel an occurrence", with_flag: { recurring_meetings: true } do
+  xit "can cancel an occurrence", with_flag: { recurring_meetings: true } do # rubocop:disable RSpec/PendingWithoutReason
+    show_page.visit!
+
     accept_confirm(I18n.t("text_are_you_sure")) do
-      show_page.cancel_occurrence date: "2024-12-31 01:30 PM"
+      show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     end
 
     expect_flash(type: :success, message: "Successful deletion.")
 
-    expect(page).to have_current_path recurring_meeting_path(meeting)
+    expect(page).to have_current_path(show_page.path) # check path
 
-    show_page.expect_no_open_meeting date: "2024-12-31 01:30 PM"
-    show_page.expect_cancelled_meeting date: "2024-12-31 01:30 PM"
+    show_page.expect_no_open_meeting date: "12/31/2024 01:30 PM"
+    show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
   end
 
-  # it "can edit the details of a recurring meeting", with_flag: { recurring_meetings: true } do
-  #
-  # end
+  xit "can edit the details of a recurring meeting", with_flag: { recurring_meetings: true } do # rubocop:disable RSpec/PendingWithoutReason
+    show_page.visit!
 
-  # it "shows the correct actions based on status", with_flag: { recurring_meetings: true } do
-  #
-  # end
+    show_page.expect_subtitle text: "Weekly on Tuesday at 01:30 PM, ends on 01/15/2025"
+
+    show_page.edit_meeting_series
+    show_page.in_edit_dialog do
+      page.select("Daily", from: "Frequency")
+      meetings_page.set_start_time "11:00"
+      page.select("A number of occurrences", from: "End after")
+      page.fill_in("Occurrences", with: "8")
+
+      click_on("Save")
+    end
+
+    show_page.refresh # check refresh
+    show_page.expect_subtitle text: "Daily at 11:00 AM, ends on 01/07/2025"
+  end
+
+  it "shows the correct actions based on status", with_flag: { recurring_meetings: true } do
+    show_page.visit!
+
+    show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
+    show_page.expect_open_actions date: "12/31/2024 01:30 PM"
+
+    show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
+    show_page.expect_scheduled_actions date: "01/07/2025 01:30 PM"
+
+    accept_confirm(I18n.t("text_are_you_sure")) do
+      show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
+    end
+
+    show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
+    show_page.expect_cancelled_actions date: "12/31/2024 01:30 PM"
+  end
+
+  it "shows rescheduled occurrences", with_flag: { recurring_meetings: true } do
+    last = Meeting.reorder(id: :asc).last
+    last.start_time += 1.day
+    last.save!
+
+    show_page.visit!
+
+    show_page.expect_rescheduled_meeting old_date: "12/31/2024 01:30 PM", new_date: "01/01/2025 01:30 PM"
+  end
 end

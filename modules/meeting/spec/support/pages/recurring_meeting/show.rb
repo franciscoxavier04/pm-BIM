@@ -26,11 +26,21 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# require_relative "../meetings/show"
+require_relative "../meetings/base"
 
 module Pages::RecurringMeeting
-  class Show < ::Pages::Meetings::Show
-    include ::Components::Autocompleter::NgSelectAutocompleteHelpers
+  class Show < ::Pages::Meetings::Base
+    attr_accessor :meeting
+
+    def initialize(meeting)
+      super
+
+      self.meeting = meeting
+    end
+
+    def path
+      recurring_meeting_path(meeting)
+    end
 
     def expect_scheduled_meeting(date:)
       within("li", text: date) do
@@ -62,6 +72,13 @@ module Pages::RecurringMeeting
       end
     end
 
+    def expect_rescheduled_meeting(old_date:, new_date:)
+      within("li", text: old_date) do
+        expect(page).to have_css("s", text: old_date)
+        expect(page).to have_text("#{old_date}\n#{new_date}")
+      end
+    end
+
     def create_from_template(date:)
       within("li", text: date) do
         click_on "Create from template"
@@ -72,6 +89,49 @@ module Pages::RecurringMeeting
       within("li", text: date) do
         click_on "more-button"
         click_on "Cancel this occurrence"
+      end
+    end
+
+    def expect_subtitle(text:)
+      expect(page).to have_css(".PageHeader-description", text: text)
+    end
+
+    def edit_meeting_series
+      page.find_test_selector("action-menu").click
+      click_on "Edit meeting series"
+
+      expect(page).to have_css("#new-meeting-dialog")
+    end
+
+    def in_edit_dialog(&)
+      page.within("#new-meeting-dialog", &)
+    end
+
+    def expect_open_actions(date:)
+      within("li", text: date) do
+        click_on "more-button"
+
+        expect(page).to have_css(".ActionListItem-label", count: 2)
+        expect(page).to have_css(".ActionListItem-label", text: "Download iCalendar event")
+        expect(page).to have_css(".ActionListItem-label", text: "Cancel this occurrence")
+      end
+    end
+
+    def expect_scheduled_actions(date:)
+      within("li", text: date) do
+        click_on "more-button"
+
+        expect(page).to have_css(".ActionListItem-label", count: 1)
+        expect(page).to have_css(".ActionListItem-label", text: "Download iCalendar event")
+      end
+    end
+
+    def expect_cancelled_actions(date:)
+      within("li", text: date) do
+        click_on "more-button"
+
+        expect(page).to have_css(".ActionListItem-label", count: 1)
+        expect(page).to have_css(".ActionListItem-label", text: "Restore this occurrence")
       end
     end
 
