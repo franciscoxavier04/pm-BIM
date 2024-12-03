@@ -96,7 +96,7 @@ class RecurringMeeting < ApplicationRecord
     I18n.t("recurring_meeting.in_words.full",
            base:,
            time: format_time(start_time, include_date: false),
-           end_date: format_date(end_date))
+           end_date: format_date(last_occurrence))
   end
 
   def scheduled_occurrences(limit:)

@@ -57,7 +57,7 @@ module RecurringMeetings
     end
 
     def user_time_zone(time)
-      helpers.in_current_user_zone(time)
+      helpers.in_user_zone(time)
     end
 
     def formatted_time(time)
@@ -70,7 +70,7 @@ module RecurringMeetings
 
     def start_time_title
       if start_time_changed?
-        "#{old_time}\n#{formatted_time(meeting.start_time)}".html_safe # rubocop:disable Rails/OutputSafety
+        old_time + simple_format("\n#{formatted_time(meeting.start_time)}")
       else
         formatted_time(model.start_time)
       end
