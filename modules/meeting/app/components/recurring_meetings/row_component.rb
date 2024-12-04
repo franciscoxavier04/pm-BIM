@@ -35,6 +35,7 @@ module RecurringMeetings
     delegate :recurring_meeting, to: :model
     delegate :project, to: :recurring_meeting
     delegate :schedule, to: :meeting
+    delegate :current_project, to: :table
 
     def instantiated?
       meeting.present?
@@ -50,9 +51,17 @@ module RecurringMeetings
 
     def start_time
       if instantiated?
-        link_to start_time_title, meeting_path(meeting)
+        link_to start_time_title, current_project_meeting_path(meeting)
       else
         start_time_title
+      end
+    end
+
+    def current_project_meeting_path(meeting)
+      if current_project
+        project_meeting_path(current_project, meeting)
+      else
+        meeting_path(meeting)
       end
     end
 
@@ -181,7 +190,7 @@ module RecurringMeetings
       menu.with_item(
         label: I18n.t(:label_recurring_meeting_cancel),
         scheme: :danger,
-        href: meeting_path(meeting),
+        href: current_project_meeting_path(meeting),
         form_arguments: {
           method: :delete, data: { confirm: I18n.t("text_are_you_sure"), turbo: false }
         }

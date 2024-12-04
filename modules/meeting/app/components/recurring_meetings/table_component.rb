@@ -30,6 +30,8 @@
 
 module RecurringMeetings
   class TableComponent < ::OpPrimer::BorderBoxTableComponent
+    options :current_project
+
     columns :start_time, :relative_time, :last_edited, :status, :create
 
     def has_actions?
