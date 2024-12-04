@@ -82,6 +82,7 @@ RSpec.describe "Recurring meetings creation",
       meetings_page.set_end_date "2025-01-15"
 
       click_on "Create meeting"
+      wait_for_network_idle
       expect_and_dismiss_flash(type: :success, message: "Successful creation.")
 
       # Does not send invitation mails by default
@@ -105,7 +106,7 @@ RSpec.describe "Recurring meetings creation",
       login_as current_user
       meetings_page.visit!
       expect(page).to have_current_path(meetings_page.path)
-      expect(page).not_to have_test_selctor("add-meeting-button")
+      expect(page).not_to have_test_selector("add-meeting-button")
     end
   end
 end

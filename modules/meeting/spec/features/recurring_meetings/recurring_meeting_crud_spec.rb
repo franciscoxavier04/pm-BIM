@@ -106,7 +106,7 @@ RSpec.describe "Recurring meetings CRUD",
   it "can cancel an occurrence" do
     show_page.visit!
 
-    accept_confirm(I18n.t("text_are_you_sure")) do
+    accept_confirm(I18n.t(:label_recurring_occurrence_delete_confirmation)) do
       show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     end
 
@@ -130,7 +130,8 @@ RSpec.describe "Recurring meetings CRUD",
       page.select("A number of occurrences", from: "End after")
       page.fill_in("Occurrences", with: "8")
 
-      click_on("Save")
+      sleep 0.5
+      click_link_or_button("Save")
     end
     wait_for_network_idle
     show_page.expect_subtitle text: "Daily at 11:00 AM, ends on 01/07/2025"
@@ -145,10 +146,11 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
     show_page.expect_scheduled_actions date: "01/07/2025 01:30 PM"
 
-    accept_confirm(I18n.t("text_are_you_sure")) do
+    accept_confirm(I18n.t(:label_recurring_occurrence_delete_confirmation)) do
       show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     end
 
+    wait_for_network_idle
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
     show_page.expect_cancelled_actions date: "12/31/2024 01:30 PM"
   end
