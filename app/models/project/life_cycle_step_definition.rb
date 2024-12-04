@@ -43,6 +43,8 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
   acts_as_list
 
+  default_scope { order(:position) }
+
   def step_class
     raise NotImplementedError
   end
