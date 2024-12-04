@@ -42,13 +42,15 @@ FactoryBot.define do
     m.sequence(:title) { |n| "Meeting series #{n}" }
 
     after(:create) do |recurring_meeting, evaluator|
-      recurring_meeting.project = evaluator.project if evaluator.project
-      recurring_meeting.template = create(:structured_meeting_template, recurring_meeting:)
+      project = evaluator.project
+      recurring_meeting.project = project
+      recurring_meeting.template = create(:structured_meeting_template, recurring_meeting:, project:)
     end
 
     after(:stub) do |recurring_meeting, evaluator|
-      recurring_meeting.project = evaluator.project if evaluator.project
-      recurring_meeting.template = build_stubbed(:structured_meeting, recurring_meeting:)
+      project = evaluator.project
+      recurring_meeting.project = project
+      recurring_meeting.template = build_stubbed(:structured_meeting_template, recurring_meeting:, project:)
     end
   end
 end

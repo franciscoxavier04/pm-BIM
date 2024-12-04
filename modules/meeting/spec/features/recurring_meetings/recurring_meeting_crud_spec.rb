@@ -41,13 +41,10 @@ RSpec.describe "Recurring meetings CRUD",
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
   shared_let(:user) do
-    create(:user,
+    create :user,
            lastname: "First",
-           member_with_permissions: { project => %i[view_meetings create_meetings edit_meetings delete_meetings] }).tap do |u|
-      u.pref[:time_zone] = "Etc/UTC"
-
-      u.save!
-    end
+           preferences: { time_zone: "Etc/UTC" },
+           member_with_permissions: { project => %i[view_meetings create_meetings edit_meetings delete_meetings] }
   end
   shared_let(:other_user) do
     create(:user,
@@ -58,33 +55,23 @@ RSpec.describe "Recurring meetings CRUD",
     create(:user,
            lastname: "Third")
   end
+  shared_let(:meeting) do
+    create :recurring_meeting,
+           project:,
+           start_time: "2024-12-31T13:30:00Z",
+           duration: 1.5,
+           frequency: "weekly",
+           end_after: "specific_date",
+           end_date: "2025-01-15",
+           author: user
+  end
 
   let(:current_user) { user }
-  let(:meeting) { RecurringMeeting.order(id: :asc).last }
   let(:show_page) { Pages::RecurringMeeting::Show.new(meeting) }
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
   before do
     login_as current_user
-    meetings_page.visit!
-    expect(page).to have_current_path(meetings_page.path) # rubocop:disable RSpec/ExpectInHook
-    meetings_page.click_on "add-meeting-button"
-    meetings_page.click_on "Recurring"
-
-    sleep 1 # flaky without
-
-    meetings_page.set_title "Some title"
-
-    meetings_page.set_start_date "2024-12-31"
-    meetings_page.set_start_time "13:30"
-    meetings_page.set_duration "1.5"
-
-    meetings_page.set_end_date "2025-01-15"
-
-    click_on "Create meeting"
-
-    wait_for_reload
-    perform_enqueued_jobs
   end
 
   it "can create a recurring meeting" do
@@ -143,7 +130,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
   end
 
-  xit "can edit the details of a recurring meeting" do # rubocop:disable RSpec/PendingWithoutReason
+  it "can edit the details of a recurring meeting" do
     show_page.visit!
 
     show_page.expect_subtitle text: "Weekly on Tuesday at 01:30 PM, ends on 01/15/2025"
