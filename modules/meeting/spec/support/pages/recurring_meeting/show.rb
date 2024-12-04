@@ -76,6 +76,12 @@ module Pages::RecurringMeeting
       end
     end
 
+    def expect_no_cancelled_meeting(date:)
+      within("li", text: date) do
+        expect(page).to have_no_css(".status", text: "Cancelled")
+      end
+    end
+
     def expect_rescheduled_meeting(old_date:, new_date:)
       within("li", text: old_date) do
         expect(page).to have_css("s", text: old_date)
@@ -109,6 +115,10 @@ module Pages::RecurringMeeting
 
     def in_edit_dialog(&)
       page.within("#new-meeting-dialog", &)
+    end
+
+    def expect_no_meeting(date:)
+      expect(page).to have_no_css("li", text: date)
     end
 
     def expect_no_actions(date:)

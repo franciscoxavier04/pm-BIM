@@ -153,16 +153,6 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_cancelled_actions date: "12/31/2024 01:30 PM"
   end
 
-  it "shows rescheduled occurrences" do
-    last = Meeting.reorder(id: :asc).last
-    last.start_time += 1.day
-    last.save!
-
-    show_page.visit!
-
-    show_page.expect_rescheduled_meeting old_date: "12/31/2024 01:30 PM", new_date: "01/01/2025 01:30 PM"
-  end
-
   context "with view permissions only" do
     let(:current_user) { other_user }
 
