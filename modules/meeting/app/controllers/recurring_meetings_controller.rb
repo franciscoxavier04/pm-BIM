@@ -9,6 +9,7 @@ class RecurringMeetingsController < ApplicationController
   before_action :find_optional_project, only: %i[index show new create update details_dialog destroy edit delete_scheduled]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
+  before_action :get_scheduled_meeting, only: %i[delete_scheduled]
 
   before_action :convert_params, only: %i[create update]
 
@@ -142,22 +143,13 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def delete_scheduled # rubocop:disable Metrics/AbcSize
-    call = ::RecurringMeetings::InitOccurrenceService
-             .new(user: current_user, recurring_meeting: @recurring_meeting)
-             .call(start_time: DateTime.iso8601(params[:start_time]))
-
-    if call.success?
-      ::Meetings::DeleteService
-        .new(model: call.result, user: current_user)
-        .call
-        .on_success { flash[:notice] = I18n.t(:notice_successful_cancel) }
-        .on_failure { |delete_call| flash[:error] = delete_call.message }
-
-      redirect_to polymorphic_path([@project, @recurring_meeting]), status: :see_other
+    if @scheduled.update(cancelled: true)
+      flash[:notice] = I18n.t(:notice_successful_cancel)
     else
-      flash[:error] = call.message
-      redirect_to action: :show, id: @recurring_meeting
+      flash[:error] = I18n.t(:error_failed_to_delete_entry)
     end
+
+    redirect_to polymorphic_path([@project, @recurring_meeting]), status: :see_other
   end
 
   private
@@ -179,6 +171,12 @@ class RecurringMeetingsController < ApplicationController
 
   def scheduled_meeting(start_time)
     ScheduledMeeting.new(start_time:, recurring_meeting: @recurring_meeting)
+  end
+
+  def get_scheduled_meeting
+    @scheduled = @recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: params[:start_time])
+
+    render_400 unless @scheduled.meeting_id.nil?
   end
 
   def find_optional_project
