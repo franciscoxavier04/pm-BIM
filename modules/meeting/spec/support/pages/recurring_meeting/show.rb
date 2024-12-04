@@ -101,7 +101,7 @@ module Pages::RecurringMeeting
     end
 
     def edit_meeting_series
-      page.find_test_selector("action-menu").click
+      page.find_test_selector("recurring-meeting-action-menu").click
       click_on "Edit meeting series"
 
       expect(page).to have_css("#new-meeting-dialog")
@@ -109,6 +109,12 @@ module Pages::RecurringMeeting
 
     def in_edit_dialog(&)
       page.within("#new-meeting-dialog", &)
+    end
+
+    def expect_no_actions(date:)
+      within("li", text: date) do
+        expect(page).not_to have_test_selector("more-button")
+      end
     end
 
     def expect_open_actions(date:)

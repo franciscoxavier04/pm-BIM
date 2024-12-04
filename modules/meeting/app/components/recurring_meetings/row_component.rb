@@ -118,6 +118,7 @@ module RecurringMeetings
     end
 
     def create
+      return unless copy_allowed?
       return if instantiated? || cancelled?
 
       render(

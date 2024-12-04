@@ -80,7 +80,7 @@ RSpec.describe "Recurring meetings CRUD",
   it "can delete a recurring meeting from the show page and return to the index page" do
     show_page.visit!
 
-    click_on "action-menu"
+    click_on "recurring-meeting-action-menu"
 
     accept_confirm(I18n.t("text_are_you_sure")) do
       click_on "Delete meeting series"
@@ -161,5 +161,31 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.visit!
 
     show_page.expect_rescheduled_meeting old_date: "12/31/2024 01:30 PM", new_date: "01/01/2025 01:30 PM"
+  end
+
+  context "with view permissions only" do
+    let(:current_user) { other_user }
+
+    it "does not allow to act on the recurring meeting" do
+      show_page.visit!
+
+      expect(page).to have_no_content "Create from template"
+      show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
+
+      within("li", text: "12/31/2024 01:30 PM") do
+        click_on "more-button"
+
+        expect(page).to have_css(".ActionListItem-label", count: 1)
+        expect(page).to have_css(".ActionListItem-label", text: "Download iCalendar event")
+
+        # Close it again
+        click_on "more-button"
+      end
+
+      show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
+      show_page.expect_scheduled_meeting date: "01/14/2025 01:30 PM"
+
+      expect(page).not_to have_test_selector "recurring-meeting-action-menu"
+    end
   end
 end
