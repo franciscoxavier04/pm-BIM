@@ -178,7 +178,7 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy # rubocop:disable Metrics/AbcSize
     recurring = @meeting.recurring_meeting
 
     # rubocop:disable Rails/ActionControllerFlashBeforeRender

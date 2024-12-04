@@ -260,7 +260,7 @@ RSpec.describe "Open the Meetings tab",
 
         meeting_containers = page
           .all("[data-test-selector^='op-meeting-container-']")
-          .map { |container| container["data-test-selector"] }
+          .map { |container| container["data-test-selector"] } # rubocop:disable Rails/Pluck
         expect(meeting_containers).to contain_exactly("op-meeting-container-#{first_meeting.id}",
                                                       "op-meeting-container-#{second_meeting.id}")
       end

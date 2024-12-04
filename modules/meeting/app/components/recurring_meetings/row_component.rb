@@ -139,7 +139,7 @@ module RecurringMeetings
       ]
     end
 
-    def action_menu
+    def action_menu # rubocop:disable Metrics/AbcSize
       render(Primer::Alpha::ActionMenu.new) do |menu|
         menu.with_show_button(icon: "kebab-horizontal",
                               "aria-label": "More",
