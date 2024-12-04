@@ -882,6 +882,7 @@ en:
         attr_lastname: "Lastname attribute"
         attr_login: "Username attribute"
         attr_mail: "Email attribute"
+        filter_string: "Filter string"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Automatic user creation"
