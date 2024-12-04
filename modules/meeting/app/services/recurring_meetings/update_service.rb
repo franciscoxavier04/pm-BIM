@@ -36,6 +36,7 @@ module RecurringMeetings
       return call unless call.success?
 
       cleanup_cancelled_schedules(call.result)
+      reschedule_init_job(call.result)
       update_template(call)
     end
 
@@ -58,6 +59,28 @@ module RecurringMeetings
         occurring = recurring_meeting.schedule.occurs_at?(scheduled.start_time)
         scheduled.delete unless occurring
       end
+    end
+
+    def reschedule_init_job(recurring_meeting)
+      return unless should_reschedule?(recurring_meeting)
+
+      concurrency_key = InitNextOccurrenceJob.unique_key(recurring_meeting)
+
+      # Delete all scheduled jobs for this meeting
+      GoodJob::Job.where(finished_at: nil, concurrency_key:).delete_all
+
+      InitNextOccurrenceJob
+        .set(wait_until: recurring_meeting.next_occurrence.to_time)
+        .perform_later(recurring_meeting)
+    end
+
+    def should_reschedule?(recurring_meeting)
+      return false if recurring_meeting.next_occurrence.nil?
+
+      recurring_meeting
+        .previous_changes
+        .keys
+        .intersect?(%w[frequency start_date start_time start_time_hour iterations interval end_after end_date])
     end
   end
 end

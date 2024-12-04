@@ -33,7 +33,7 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
   shared_let(:user) do
     create(:user, member_with_permissions: { project => %i(view_meetings edit_meetings) })
   end
-  shared_let(:series) do
+  shared_let(:series, refind: true) do
     create(:recurring_meeting,
            project:,
            start_time: Time.zone.today + 10.hours,
@@ -80,6 +80,42 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
         expect(updated_meeting.start_time).to eq(Time.zone.today + 2.days + 10.hours)
 
         expect { scheduled_meeting.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
+  describe "rescheduling job" do
+    context "when updating the title" do
+      let(:params) do
+        { title: "New title" }
+      end
+
+      it "does not reschedule" do
+        expect { service_result }.not_to have_enqueued_job(RecurringMeetings::InitNextOccurrenceJob)
+        expect(service_result).to be_success
+      end
+    end
+
+    context "when updating the frequency and start_time" do
+      let(:params) do
+        { start_time: Time.zone.today + 2.days + 11.hours }
+      end
+
+      before do
+        ActiveJob::Base.disable_test_adapter
+        RecurringMeetings::InitNextOccurrenceJob
+          .set(wait_until: Time.zone.today + 1.day + 10.hours)
+          .perform_later(series)
+      end
+
+      it "reschedules" do
+        job = GoodJob::Job.find_by(job_class: "RecurringMeetings::InitNextOccurrenceJob")
+        expect(job.scheduled_at).to eq Time.zone.today + 1.day + 10.hours
+        expect(service_result).to be_success
+        expect { job.reload }.to raise_error(ActiveRecord::RecordNotFound)
+
+        new_job = GoodJob::Job.find_by(job_class: "RecurringMeetings::InitNextOccurrenceJob")
+        expect(new_job.scheduled_at).to eq Time.zone.today + 2.days + 11.hours
       end
     end
   end

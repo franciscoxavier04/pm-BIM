@@ -32,8 +32,12 @@ module RecurringMeetings
 
     good_job_control_concurrency_with(
       perform_limit: 1,
-      key: -> { "#{self.class.name}-#{queue_name}-#{arguments.first.id}" }
+      key: -> { self.class.unique_key(arguments.first) }
     )
+
+    def self.unique_key(recurring_meeting)
+      "RecurringMeetings::InitNextOccurrenceJob-#{recurring_meeting.id}"
+    end
 
     attr_accessor :recurring_meeting
 
