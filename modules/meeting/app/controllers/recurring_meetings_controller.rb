@@ -142,7 +142,7 @@ class RecurringMeetingsController < ApplicationController
     end
   end
 
-  def delete_scheduled # rubocop:disable Metrics/AbcSize
+  def delete_scheduled
     if @scheduled.update(cancelled: true)
       flash[:notice] = I18n.t(:notice_successful_cancel)
     else
