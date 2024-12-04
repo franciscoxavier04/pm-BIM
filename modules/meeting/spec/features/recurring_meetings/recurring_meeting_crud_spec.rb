@@ -35,7 +35,8 @@ require_relative "../../support/pages/meetings/index"
 
 RSpec.describe "Recurring meetings CRUD",
                :js,
-               :with_cuprite do
+               :with_cuprite,
+               with_flag: { recurring_meetings: true } do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
@@ -86,7 +87,7 @@ RSpec.describe "Recurring meetings CRUD",
     perform_enqueued_jobs
   end
 
-  it "can create a recurring meeting", with_flag: { recurring_meetings: true } do
+  it "can create a recurring meeting" do
     expect_flash(type: :success, message: "Successful creation.")
 
     # Does not send invitation mails by default
@@ -101,7 +102,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_scheduled_meeting date: "01/14/2025 01:30 PM"
   end
 
-  it "can delete a recurring meeting from the show page and return to the index page", with_flag: { recurring_meetings: true } do
+  it "can delete a recurring meeting from the show page and return to the index page" do
     show_page.visit!
 
     click_on "action-menu"
@@ -113,7 +114,7 @@ RSpec.describe "Recurring meetings CRUD",
     expect(page).to have_current_path meetings_path # check path
   end
 
-  it "can use the 'Create from template' button", with_flag: { recurring_meetings: true } do
+  it "can use the 'Create from template' button" do
     show_page.visit!
 
     show_page.create_from_template date: "01/07/2025 01:30 PM"
@@ -127,14 +128,14 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_open_meeting date: "01/07/2025 01:30 PM"
   end
 
-  xit "can cancel an occurrence", with_flag: { recurring_meetings: true } do # rubocop:disable RSpec/PendingWithoutReason
+  it "can cancel an occurrence" do
     show_page.visit!
 
     accept_confirm(I18n.t("text_are_you_sure")) do
       show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     end
 
-    expect_flash(type: :success, message: "Successful deletion.")
+    expect_flash(type: :success, message: "Successful cancellation.")
 
     expect(page).to have_current_path(show_page.path) # check path
 
@@ -142,7 +143,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
   end
 
-  xit "can edit the details of a recurring meeting", with_flag: { recurring_meetings: true } do # rubocop:disable RSpec/PendingWithoutReason
+  xit "can edit the details of a recurring meeting" do # rubocop:disable RSpec/PendingWithoutReason
     show_page.visit!
 
     show_page.expect_subtitle text: "Weekly on Tuesday at 01:30 PM, ends on 01/15/2025"
@@ -161,7 +162,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_subtitle text: "Daily at 11:00 AM, ends on 01/07/2025"
   end
 
-  it "shows the correct actions based on status", with_flag: { recurring_meetings: true } do
+  it "shows the correct actions based on status" do
     show_page.visit!
 
     show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
@@ -178,7 +179,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_cancelled_actions date: "12/31/2024 01:30 PM"
   end
 
-  it "shows rescheduled occurrences", with_flag: { recurring_meetings: true } do
+  it "shows rescheduled occurrences" do
     last = Meeting.reorder(id: :asc).last
     last.start_time += 1.day
     last.save!
