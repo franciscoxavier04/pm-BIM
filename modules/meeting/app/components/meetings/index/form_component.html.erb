@@ -73,7 +73,7 @@
                                 target_name: "end_after",
                                 "show-when-value-selected-target": "effect" }
           ) do
-            render(RecurringMeeting::SpecificDate.new(f))
+            render(RecurringMeeting::SpecificDate.new(f, meeting: @meeting))
           end
 
           modal_body.with_row(mt: 3,

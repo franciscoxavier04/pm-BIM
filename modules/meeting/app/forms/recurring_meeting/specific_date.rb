@@ -31,7 +31,7 @@ class RecurringMeeting::SpecificDate < ApplicationForm
     meeting_form.text_field(
       name: :end_date,
       type: "date",
-      value: @initial_value,
+      value: @value,
       placeholder: Meeting.human_attribute_name(:end_date),
       label: Meeting.human_attribute_name(:end_date),
       leading_visual: { icon: :calendar },
@@ -40,8 +40,10 @@ class RecurringMeeting::SpecificDate < ApplicationForm
     )
   end
 
-  def initialize(initial_value: 1.year.from_now.strftime("%Y-%m-%d"))
+  def initialize(meeting:)
     super()
-    @initial_value = initial_value
+
+    end_time = meeting.end_date || 1.year.from_now
+    @value = end_time.strftime("%Y-%m-%d")
   end
 end
