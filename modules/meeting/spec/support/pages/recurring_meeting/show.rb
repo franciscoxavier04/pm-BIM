@@ -42,6 +42,10 @@ module Pages::RecurringMeeting
       recurring_meeting_path(meeting)
     end
 
+    def project_path
+      project_recurring_meeting_path(meeting.project, meeting)
+    end
+
     def expect_scheduled_meeting(date:)
       within("li", text: date) do
         expect(page).to have_css(".status", text: "Scheduled")
@@ -114,6 +118,9 @@ module Pages::RecurringMeeting
         expect(page).to have_css(".ActionListItem-label", count: 2)
         expect(page).to have_css(".ActionListItem-label", text: "Download iCalendar event")
         expect(page).to have_css(".ActionListItem-label", text: "Cancel this occurrence")
+
+        # Close it again
+        click_on "more-button"
       end
     end
 
@@ -122,7 +129,10 @@ module Pages::RecurringMeeting
         click_on "more-button"
 
         expect(page).to have_css(".ActionListItem-label", count: 1)
-        expect(page).to have_css(".ActionListItem-label", text: "Download iCalendar event")
+        expect(page).to have_css(".ActionListItem-label", text: "Cancel this occurrence")
+
+        # Close it again
+        click_on "more-button"
       end
     end
 
@@ -132,6 +142,9 @@ module Pages::RecurringMeeting
 
         expect(page).to have_css(".ActionListItem-label", count: 1)
         expect(page).to have_css(".ActionListItem-label", text: "Restore this occurrence")
+
+        # Close it again
+        click_on "more-button"
       end
     end
 

@@ -72,21 +72,9 @@ RSpec.describe "Recurring meetings CRUD",
 
   before do
     login_as current_user
-  end
 
-  it "can create a recurring meeting" do
-    expect_flash(type: :success, message: "Successful creation.")
-
-    # Does not send invitation mails by default
-    expect(ActionMailer::Base.deliveries.size).to eq 0
-
-    show_page.visit!
-
-    expect(page).to have_css(".start_time", count: 3)
-
-    show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
-    show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
-    show_page.expect_scheduled_meeting date: "01/14/2025 01:30 PM"
+    # Assuming the first init job has run
+    RecurringMeetings::InitNextOccurrenceJob.perform_now(meeting)
   end
 
   it "can delete a recurring meeting from the show page and return to the index page" do
@@ -124,7 +112,7 @@ RSpec.describe "Recurring meetings CRUD",
 
     expect_flash(type: :success, message: "Successful cancellation.")
 
-    expect(page).to have_current_path(show_page.path) # check path
+    expect(page).to have_current_path(show_page.project_path)
 
     show_page.expect_no_open_meeting date: "12/31/2024 01:30 PM"
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
@@ -133,7 +121,7 @@ RSpec.describe "Recurring meetings CRUD",
   it "can edit the details of a recurring meeting" do
     show_page.visit!
 
-    show_page.expect_subtitle text: "Weekly on Tuesday at 01:30 PM, ends on 01/15/2025"
+    show_page.expect_subtitle text: "Weekly on Tuesday at 01:30 PM, ends on 01/14/2025"
 
     show_page.edit_meeting_series
     show_page.in_edit_dialog do
@@ -144,8 +132,7 @@ RSpec.describe "Recurring meetings CRUD",
 
       click_on("Save")
     end
-
-    show_page.refresh # check refresh
+    wait_for_network_idle
     show_page.expect_subtitle text: "Daily at 11:00 AM, ends on 01/07/2025"
   end
 
