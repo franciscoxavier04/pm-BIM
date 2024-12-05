@@ -2204,6 +2204,7 @@ en:
       responsible: "Accountable"
       shared: "Shared"
       watched: "Watcher"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
