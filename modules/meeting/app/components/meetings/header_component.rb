@@ -60,8 +60,8 @@ module Meetings
 
     def finish_setup_enabled?
       @meeting.template? &&
-        !@meeting.agenda_items.any? &&
-        User.current.allowed_in_project?(:create_meetings, @meeting.project)
+        User.current.allowed_in_project?(:create_meetings, @meeting.project) &&
+        @series.scheduled_meetings.none?
     end
 
     def breadcrumb_items

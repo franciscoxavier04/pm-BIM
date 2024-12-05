@@ -44,7 +44,12 @@ FactoryBot.define do
     after(:create) do |recurring_meeting, evaluator|
       project = evaluator.project
       recurring_meeting.project = project
-      recurring_meeting.template = create(:structured_meeting_template, recurring_meeting:, project:)
+
+      # create template
+      template = create(:structured_meeting_template, recurring_meeting:, project:)
+
+      # create agenda item
+      create(:meeting_agenda_item, meeting: template, title: "My template item")
     end
   end
 end

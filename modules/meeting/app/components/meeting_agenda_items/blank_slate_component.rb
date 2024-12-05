@@ -51,7 +51,9 @@ module MeetingAgendaItems
     end
 
     def can_finalize_template?
-      template? && User.current.allowed_in_project?(:create_meetings, meeting.project)
+      template? &&
+        User.current.allowed_in_project?(:create_meetings, @meeting.project) &&
+        @meeting.recurring_meeting.scheduled_meetings.none?
     end
   end
 end

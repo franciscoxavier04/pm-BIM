@@ -37,7 +37,8 @@
           mobile_label: I18n.t("recurring_meeting.template.button_finalize"),
           mobile_icon: :check,
           size: :medium,
-          href: meeting_path(@meeting.recurring_meeting),
+          data: { "turbo-method": :post },
+          href: template_completed_recurring_meeting_path(@meeting.recurring_meeting),
         ) do |button|
           button.with_leading_visual_icon(icon: :check)
           I18n.t("recurring_meeting.template.button_finalize")
