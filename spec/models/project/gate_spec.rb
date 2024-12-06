@@ -41,7 +41,7 @@ RSpec.describe Project::Gate do
 
       expect(subject).not_to be_valid
       expect(subject.errors[:base])
-        .to include("Cannot assign `end_date` to a Project::Gate")
+        .to include("Cannot assign end date to a Project::Gate")
     end
 
     it "is valid if `end_date` is not present" do

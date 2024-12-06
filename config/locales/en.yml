@@ -1195,7 +1195,11 @@ en:
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign `end_date` to a Project::Gate"
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "Start date must be before the end date"
         query:
           attributes:
             project:
