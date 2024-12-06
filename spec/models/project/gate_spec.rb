@@ -48,5 +48,11 @@ RSpec.describe Project::Gate do
       valid_gate = build(:project_gate, end_date: nil)
       expect(valid_gate).to be_valid
     end
+
+    it "is invalid if type and class name do not match" do
+      subject.type = "Project::Stage"
+      expect(subject).not_to be_valid
+      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
+    end
   end
 end

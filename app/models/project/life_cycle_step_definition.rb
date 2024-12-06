@@ -37,25 +37,11 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
   validates :name, presence: true
   validates :type, inclusion: { in: %w[Project::StageDefinition Project::GateDefinition], message: :must_be_a_stage_or_gate }
+  validate :validate_type_and_class_name_are_identical
 
   attr_readonly :type
 
   acts_as_list
-
-  # TODO: Enabling this causes an error in the acts_as_customizable gem
-  # /gems/acts_as_list-1.2.4/lib/acts_as_list/active_record/acts/position_column_method_definer.rb
-  # define_singleton_method :touch_record_sql do
-  #   new.touch_record_sql
-  # end
-  # Calling new will fail with the error below:
-  # def initialize(*args)
-  #   if instance_of? Project::LifeCycleStepDefinition
-  #     # Do not allow directly instantiating this class
-  #     raise NotImplementedError, "Cannot instantiate the base Project::LifeCycleStepDefinition class directly. " \
-  #                                "Use Project::StageDefinition or Project::GateDefinition instead."
-  #   end
-  #   super
-  # end
 
   def step_class
     raise NotImplementedError
@@ -63,5 +49,13 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
   def column_name
     "lcsd_#{id}"
+  end
+
+  private
+
+  def validate_type_and_class_name_are_identical
+    if type != self.class.name
+      errors.add(:type, :type_and_class_name_mismatch)
+    end
   end
 end

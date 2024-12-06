@@ -39,6 +39,14 @@ RSpec.describe Project::LifeCycleStepDefinition do
     it { is_expected.to have_readonly_attribute(:type) }
   end
 
+  describe "validations" do
+    it "is invalid if type and class name do not match" do
+      subject.type = "Project::GateDefinition"
+      expect(subject).not_to be_valid
+      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
+    end
+  end
+
   # For more specs see:
   # - spec/support/shared/project_life_cycle_helpers.rb
   # - spec/models/project/gate_definition_spec.rb
