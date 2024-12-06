@@ -14,7 +14,7 @@
                               inputs: @datepicker_options.merge(
                                 id: @datepicker_options.fetch(:id) { builder.field_id(@input.name) },
                                 name: @datepicker_options.fetch(:name) { builder.field_name(@input.name) },
-                                value: @datepicker_options.fetch(:value) { @input.input_arguments[:value] },
+                                value: @datepicker_options.fetch(:value) { @input.input_arguments[:value] || builder.object&.send(@input.name) },
                                 inputClassNames: @datepicker_options.fetch(:class) { @input.input_arguments[:class] }
                               )
       %>
