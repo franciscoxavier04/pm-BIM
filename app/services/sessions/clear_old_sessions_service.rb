@@ -32,10 +32,7 @@ module Sessions
       # Drop all sessions for the given user
       def call!(days_ago: 30)
         # sessions expire after 30 days of inactivity by default
-        expiration_time = Time.zone.today - days_ago.days
-
-        sessions_table = ActiveRecord::SessionStore::Session.table_name
-        ActiveRecord::Base.connection.execute "DELETE FROM #{sessions_table} WHERE updated_at < '#{expiration_time}'"
+        ActiveRecord::SessionStore::Session.where("updated_at < ?", days_ago.days.ago).delete_all
       end
     end
   end
