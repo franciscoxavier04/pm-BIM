@@ -104,15 +104,15 @@ module Projects
 
       return nil if ls.blank?
 
-      format_date(ls.start_date, ls.end_date)
+      fmt_date_or_range(ls.start_date, ls.end_date)
     end
 
     def created_at
-      format_date(project.created_at)
+      helpers.format_date(project.created_at)
     end
 
     def latest_activity_at
-      format_date(project.latest_activity_at)
+      helpers.format_date(project.latest_activity_at)
     end
 
     def required_disk_space
@@ -400,17 +400,16 @@ module Projects
     # If only the `start_date` is given, will return a formatted version of that date as string.
     # When `end_date` is given as well, will return a representation of the date range from start to end.
     # @example
-    #    format_date(Date.new(2024, 12, 4))
+    #    fmt_date_or_range(Date.new(2024, 12, 4))
     #      "04/12/2024"
     #
-    #    format_date(Date.new(2024, 12, 4), Date.new(2024, 12, 10))
+    #    fmt_date_or_range(Date.new(2024, 12, 4), Date.new(2024, 12, 10))
     #      "04/12/2024 - 10/12/2024"
-    def format_date(start_date, end_date = nil)
-      if end_date.present?
-        "#{helpers.format_date(start_date)} - #{helpers.format_date(end_date)}"
-      else
-        helpers.format_date(start_date)
-      end
+    def fmt_date_or_range(start_date, end_date = nil)
+      [start_date, end_date]
+        .compact
+        .map { |d| helpers.format_date(d) }
+        .join(" - ")
     end
   end
 end
