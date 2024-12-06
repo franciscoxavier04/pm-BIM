@@ -93,5 +93,11 @@ RSpec.describe Project::Stage do
       expect(subject).not_to be_valid
       expect(subject.errors[:date_range]).to be_empty
     end
+
+    it "is invalid if type and class name do not match" do
+      subject.type = "Project::Gate"
+      expect(subject).not_to be_valid
+      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
+    end
   end
 end

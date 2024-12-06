@@ -38,16 +38,13 @@ class Project::LifeCycleStep < ApplicationRecord
   attr_readonly :definition_id, :type
 
   validates :type, inclusion: { in: %w[Project::Stage Project::Gate], message: :must_be_a_stage_or_gate }
+  validate :validate_type_and_class_name_are_identical
 
   scope :active, -> { where(active: true) }
 
-  def initialize(*args)
-    if instance_of? Project::LifeCycleStep
-      # Do not allow directly instantiating this class
-      raise NotImplementedError, "Cannot instantiate the base Project::LifeCycleStep class directly. " \
-                                 "Use Project::Stage or Project::Gate instead."
+  def validate_type_and_class_name_are_identical
+    if type != self.class.name
+      errors.add(:type, :type_and_class_name_mismatch)
     end
-
-    super
   end
 end
