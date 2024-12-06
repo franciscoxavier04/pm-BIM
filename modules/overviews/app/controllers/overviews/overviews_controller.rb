@@ -92,10 +92,12 @@ module ::Overviews
                       .call(permitted_params.project_life_cycles)
 
       if service_call.success?
-        update_sidebar_component
+        update_via_turbo_stream(
+          component: ProjectLifeCycles::SidePanelComponent.new(project: @project)
+        )
       else
         update_via_turbo_stream(
-          component: ::ProjectLifeCycles::Sections::EditComponent.new(service_call.result)
+          component: ProjectLifeCycles::Sections::EditComponent.new(service_call.result)
         )
       end
 
