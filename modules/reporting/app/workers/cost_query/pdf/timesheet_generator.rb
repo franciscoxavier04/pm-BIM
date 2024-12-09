@@ -26,7 +26,7 @@ class CostQuery::PDF::TimesheetGenerator
     @query = query
     @project = project
     @total_page_nr = nil
-    @page_count = 0
+    @page_count = 1
     setup_page!
   end
 
@@ -78,7 +78,8 @@ class CostQuery::PDF::TimesheetGenerator
   def generate!
     render_doc
     if wants_total_page_nrs?
-      @total_page_nr = pdf.page_count
+      @total_page_nr = pdf.page_count + @page_count
+      @page_count = 1
       setup_page! # clear current pdf
       render_doc
     end
