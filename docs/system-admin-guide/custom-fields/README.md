@@ -48,11 +48,11 @@ There are multiple format options for custom fields in OpenProject. You can sele
 - **Long text custom field** - creates a custom field for cases where longer text needs to entered.
 - **Link (URL) custom field** - creates a custom field for URLs.
 -  **Integer custom field** - creates a custom field for integers.
--  **Float custom field** - UPDATE
+-  **Float custom field** - creates a custom field for rational numbers.
 -  **List custom field** - creates a custom field with flat list options. 
--  **Date custom field** - UPDATE. date format specified under *Calendars and dates*?
--  **Boolean custom field** - UPDATE
--  **User custom field** - creates a custom field, which allows selecting users (only project members?)
+-  **Date custom field** - creates a custom field, which allows selecting dates from a date picker.
+-  **Boolean custom field** - creates a custom field for an attribute, that is either true or false. It is represented by a checkbox that can be checked or unchecked.
+-  **User custom field** - creates a custom field, which allows selecting users that are allowed to access the entity containing the custom field.
 - **Version custom field** - creates a custom field, which allows selecting one or multiple versions. Versions are created on the project level in *Backlogs* module.
 - **Hierarchy custom field (Enterprise add-on)** - see more in the section below.
 
