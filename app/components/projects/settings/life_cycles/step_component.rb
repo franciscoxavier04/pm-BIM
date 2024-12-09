@@ -34,15 +34,8 @@ module Projects
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
 
-        attr_reader :definition,
-                    :project
-
-        def initialize(project:, definition:)
-          super
-
-          @definition = definition
-          @project = project
-        end
+        options :definition,
+                :project
 
         def active_in_project?
           project

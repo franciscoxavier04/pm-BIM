@@ -394,7 +394,7 @@ en:
       life_cycle:
         header:
           title: "Project lifecycle"
-          description: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
+          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
         non_defined: "Neither stages nor gates are currently defined."
         section_header: "Stages and gates"
         step:
@@ -404,7 +404,7 @@ en:
       project_custom_fields:
         header:
           title: "Project attributes"
-          description:
+          description_html:
             'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes.
             Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:

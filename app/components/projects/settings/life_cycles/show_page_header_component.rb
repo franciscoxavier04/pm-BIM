@@ -32,14 +32,11 @@ module Projects::Settings::LifeCycles
   class ShowPageHeaderComponent < ApplicationComponent
     include ApplicationHelper
 
-    def initialize(project: nil)
-      super
-      @project = project
-    end
+    options :project
 
     def breadcrumb_items
-      [{ href: project_overview_path(@project.id), text: @project.name },
-       { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+      [{ href: project_overview_path(project), text: project.name },
+       { href: project_settings_general_path(project), text: I18n.t("label_project_settings") },
        t("projects.settings.life_cycle.header.title")]
     end
   end
