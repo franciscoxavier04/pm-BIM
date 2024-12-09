@@ -62,7 +62,7 @@ class Projects::Settings::LifeCyclesController < Projects::SettingsController
   end
 
   def deny_access_on_feature_flag
-    deny_access unless OpenProject::FeatureDecisions.stages_and_gates_active?
+    deny_access(not_found: true) unless OpenProject::FeatureDecisions.stages_and_gates_active?
   end
 
   def upsert_steps(definitions, active:)
