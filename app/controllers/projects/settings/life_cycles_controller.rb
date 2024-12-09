@@ -38,24 +38,19 @@ class Projects::Settings::LifeCyclesController < Projects::SettingsController
   def show; end
 
   def toggle
-    step_params = params
-                    .require(:project_life_cycle)
-                    .permit(:definition_id, :type)
-                    .to_h
-                    .symbolize_keys
-                    .merge(active: params["value"] == "1")
+    definition = Project::LifeCycleStepDefinition.where(id: params[:definition_id])
 
-    upsert_one_step(**step_params)
+    upsert_steps(definition, active: params["value"])
   end
 
   def disable_all
-    upsert_all_steps(active: false)
+    upsert_steps(@life_cycle_definitions, active: false)
 
     redirect_to action: :show
   end
 
   def enable_all
-    upsert_all_steps(active: true)
+    upsert_steps(@life_cycle_definitions, active: true)
 
     redirect_to action: :show
   end
@@ -70,45 +65,17 @@ class Projects::Settings::LifeCyclesController < Projects::SettingsController
     deny_access unless OpenProject::FeatureDecisions.stages_and_gates_active?
   end
 
-  def upsert_one_step(definition_id:, type:, active: true)
-    upsert_all(
-      [{
-        project_id: @project.id,
-        definition_id:,
-        active:,
-        type: project_type_for_definition_type(type)
-      }]
-    )
-  end
-
-  def upsert_all_steps(active: true)
-    upsert_all(
-      @life_cycle_definitions.map do |definition|
+  def upsert_steps(definitions, active:)
+    Project::LifeCycleStep.upsert_all(
+      definitions.map do |definition|
         {
           project_id: @project.id,
           definition_id: definition.id,
           active:,
-          type: project_type_for_definition_type(definition.type)
+          type: definition.step_class
         }
-      end
-    )
-  end
-
-  def upsert_all(upserted_steps)
-    Project::LifeCycleStep.upsert_all(
-      upserted_steps,
+      end,
       unique_by: %i[project_id definition_id]
     )
-  end
-
-  def project_type_for_definition_type(definition_type)
-    case definition_type
-    when Project::StageDefinition.name
-      Project::Stage
-    when Project::GateDefinition.name
-      Project::Gate
-    else
-      raise NotImplementedError, "Unknown life cycle definition type"
-    end
   end
 end

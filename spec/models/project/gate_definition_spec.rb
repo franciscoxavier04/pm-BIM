@@ -40,4 +40,10 @@ RSpec.describe Project::GateDefinition do
                         .dependent(:destroy)
     end
   end
+
+  describe "#step_class" do
+    it "returns Project::Stage" do
+      expect(subject.step_class).to eq(Project::Gate)
+    end
+  end
 end
