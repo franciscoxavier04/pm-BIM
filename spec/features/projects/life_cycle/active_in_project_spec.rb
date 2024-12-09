@@ -73,11 +73,14 @@ RSpec.describe "Projects life cycle settings", :js, :with_cuprite, with_flag: { 
       project_life_cycle_page.toggle(ready_to_close_gate)
       project_life_cycle_page.toggle(closing_stage)
 
-      wait_for_network_idle
+      project_life_cycle_page.expect_listed(initiating_stage => true,
+                                            ready_to_execute_gate => false,
+                                            executing_stage => false,
+                                            ready_to_close_gate => true,
+                                            closing_stage => true)
 
       # Expect the activation state to be kept after a reload
-      visit home_path
-      project_life_cycle_page.visit!
+      project_life_cycle_page.reload_with_home_page_detour
 
       project_life_cycle_page.expect_listed(initiating_stage => true,
                                             ready_to_execute_gate => false,
@@ -88,11 +91,14 @@ RSpec.describe "Projects life cycle settings", :js, :with_cuprite, with_flag: { 
       # Disable all stages at once
       project_life_cycle_page.disable_all
 
-      wait_for_network_idle
+      project_life_cycle_page.expect_listed(initiating_stage => false,
+                                            ready_to_execute_gate => false,
+                                            executing_stage => false,
+                                            ready_to_close_gate => false,
+                                            closing_stage => false)
 
       # Expect the activation state to be kept after a reload
-      visit home_path
-      project_life_cycle_page.visit!
+      project_life_cycle_page.reload_with_home_page_detour
 
       project_life_cycle_page.expect_listed(initiating_stage => false,
                                             ready_to_execute_gate => false,
@@ -103,11 +109,14 @@ RSpec.describe "Projects life cycle settings", :js, :with_cuprite, with_flag: { 
       # Enable all stages at once
       project_life_cycle_page.enable_all
 
-      wait_for_network_idle
+      project_life_cycle_page.expect_listed(initiating_stage => true,
+                                            ready_to_execute_gate => true,
+                                            executing_stage => true,
+                                            ready_to_close_gate => true,
+                                            closing_stage => true)
 
       # Expect the activation state to be kept after a reload
-      visit home_path
-      project_life_cycle_page.visit!
+      project_life_cycle_page.reload_with_home_page_detour
 
       project_life_cycle_page.expect_listed(initiating_stage => true,
                                             ready_to_execute_gate => true,
@@ -116,10 +125,14 @@ RSpec.describe "Projects life cycle settings", :js, :with_cuprite, with_flag: { 
                                             closing_stage => true)
 
       # The user can filter the life cycle steps
-      project_life_cycle_page.filter_by("Clo")
+      project_life_cycle_page.filter_by("ing")
 
-      project_life_cycle_page.expect_listed(ready_to_close_gate => true,
+      project_life_cycle_page.expect_listed(initiating_stage => true,
+                                            executing_stage => true,
                                             closing_stage => true)
+
+      project_life_cycle_page.expect_not_listed(ready_to_execute_gate,
+                                                ready_to_close_gate)
     end
   end
 
