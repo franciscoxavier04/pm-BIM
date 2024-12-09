@@ -59,10 +59,19 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
   end
 
   def action_menu_header(button)
+    # Show the proper icon for the definition with the correct color.
     icon = life_cycle_step.is_a?(Project::StageDefinition) ? :"git-commit" : :diamond
-    button.with_leading_visual_icon(icon:)
+    button.with_leading_visual_icon(icon:, classes: helpers.hl_inline_class("life_cycle_step_definition", life_cycle_step))
+
+    # As all other action menu headers, we will show an action icon and the caption:
     button.with_trailing_action_icon(icon: :"triangle-down")
 
     caption.to_s
+  end
+
+  private
+
+  def helpers
+    @helpers ||= Object.new.extend(ColorsHelper)
   end
 end
