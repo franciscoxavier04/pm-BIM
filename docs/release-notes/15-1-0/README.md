@@ -17,7 +17,7 @@ In these Release Notes, we will give an overview of important feature changes an
 
 ### Custom fields of type hierarchy (Enterprise add-on)
 
-Enterprise customers can now use a new type of custom field that allows **multi-level selections**. This makes it easier for users to organize and navigate complex data in structured, multi-level formats within work packages. The new custom fields of the hierarchy type can be added to work packages and then structured into several lower-level values.
+Enterprise customers can now use a new type of custom field that allows **multi-level selections in a hierarchial way**. This makes it easier for users to organize and navigate complex data in structured, multi-level formats within work packages. The new custom fields of the hierarchy type can be added to work packages and then structured into several lower-level items.
 
 Each custom field of type hierarchy can be given a short name (e.g. B for Berlin). Here's an example of how custom fields of the hierarchy type look like, using the example of a detailed assignment of workspaces:
 
@@ -27,7 +27,7 @@ Each custom field of type hierarchy can be given a short name (e.g. B for Berlin
 
 ### Redesign of the Relations tab in work packages
 
-The Relations tab in work packages has been completely redesigned using Primer design system, including a **new dropdown menu that allows you to directly choose the type of relation**, e.g. if the related work package is a successor and necessarily needs to start after the selected one finishes. 
+The Relations tab in work packages has been completely redesigned using Primer design system, including a **new dropdown menu that allows you to directly choose the type of relation**, e.g. if the related work package is a successor (earlier called 'Follows') and necessarily needs to start after the selected one finishes. Scroll down to see more types of relations.
 
 Additionally, you can now add a description to add further information about the relation. Please note that the description will be displayed on both work packages, below the related other work package.
 
@@ -40,9 +40,9 @@ Additionally, you can now add a description to add further information about the
 
 ### Redesign of the Meetings index page
 
-The index page of the Meetings module has been redesigned with Primer as well, making it easier to read and have a more modern look. You see your list of meetings in some kind of table view, with the columns being: Title, Date and time, Duration, and Location.
+The index page of the Meetings module has been redesigned with Primer as well, making it easier to read and adding a more modern look. You see your list of meetings in column view, with the columns being: Title, Date and time, Duration, and Location.
 
-The + Meeting button in the top right corner now offers a dropdown menu where you can directly choose whether you want to add a dynamic or classic meeting.
+The + Meeting button in the top right corner now offers a dropdown menu where you can directly choose whether you want to add a dynamic or a classic meeting.
 
 Here's an example screenshot of the redesigned Meetings index page:
 
@@ -52,7 +52,7 @@ Here's an example screenshot of the redesigned Meetings index page:
 
 ### Manual page breaks in PDF work package exports
 
-With our work package export feature, people can generate good-looking PDFs. Sometimes, however, the page break comes at an inconvenient place. With version 15.1, users can now force a manual page break in the work package description. This ensures, for example, that a signature can always be inserted on the correct page.
+With our work package export feature, people can generate good-looking PDFs. Sometimes, however, the page break comes at an inconvenient place. With version 15.1, users can now force a manual page break in the work package description. This ensures, for example, that a signature can always be inserted on the correct page. Please note that logically, manual page breaks only work if the work package description is part of the PDF export – and not in the PDF export of a work package table if you choose the export type 'Table'.
 
 ![Example of a work package description with an employee contract and inserted page breaks](openproject-15-1-page-break-contract-highlighted.png)
 
@@ -60,7 +60,7 @@ With our work package export feature, people can generate good-looking PDFs. Som
 
 ### Zen mode for project lists
 
-Zen mode allows users to focus on a certain page, as all other menu items and elements are hidden, and the page is displayed in full screen. OpenProject already offers zen mode for other modules like Work packages, Boards, Gantt charts or Calendar – and with version 15.1 also for project lists.
+Zen mode allows users to focus on a certain page, as all other menu items and elements are hidden, and the page is displayed in full screen. OpenProject already offers zen mode for other modules like Work packages, Boards, Gantt charts or Calendars – and with version 15.1 also for project lists.
 
 Here is how zen mode for project lists looks like:
 
@@ -74,7 +74,7 @@ Here is how zen mode for project lists looks like:
 
 Administrators of automated deployments can now choose to skip the automatically integrated creation of an admin user. This is useful if you have set up an LDAP or SSO integration – such as those used for openDesk environments – and you want to prevent the admin user from logging in. Administrators no longer have to manually disable this automatically created admin user and thus run the risk of forgetting to do so, which would pose a security risk.
 
-Read more about [seeding through environment for OpenProject configuration in our Installation & operations guide](../../installation-and-operations/configuration/#seeding-through-environment)
+Read more about [seeding through environment for OpenProject configuration in our Installation & operations guide](../../installation-and-operations/configuration/#seeding-through-environment).
 
 <!--more-->
 
@@ -127,8 +127,8 @@ A very special thank you goes to our sponsors of this release: Deutsche Bahn for
 Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Bill Bai, Sam Yelman, Knight Chang, Gábor Alexovics, Gregor Buergisser, Andrey Dermeyko, Various Interactive, Clayton Belcher, Александр Татаринцев, and Keno Krewer.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
-- [José Helbert Pina](https://crowdin.com/profile/GZTranslations), for a great number of translations into Portuguese.
 - [Alexander Aleschenko](https://crowdin.com/profile/top4ek), for a great number of translations into Russian.
-- [Adam Siemienski](https://crowdin.com/profile/siemienas), for a great number of translations into Polish.
+- [José Helbert Pina](https://crowdin.com/profile/GZTranslations), for a great number of translations into Portuguese.
+- [BigSeung](https://crowdin.com/profile/BigSeung), for a great number of translations into Korean.
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
