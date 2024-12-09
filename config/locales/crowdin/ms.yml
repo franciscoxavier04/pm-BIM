@@ -490,8 +490,12 @@ ms:
     groups:
       member_in_these_groups: "Pengguna ini ialah ahli dalam kumpulan berikut buat masa ini:"
       no_results_title_text: Pengguna ini bukan ahli untuk mana-mana kumpulan buat masa ini.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: Pengguna ini bukan ahli projek buat masa ini.
+    open_profile: "Open profile"
   page:
     text: "Teks"
   placeholder_users:
@@ -929,6 +933,7 @@ ms:
       messages:
         accepted: "mesti diterima."
         after: "mesti selepas %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "mesti selepas atau sama dengan %{date}."
         before: "mesti sebelum %{date}."
         before_or_equal_to: "mesti sebelum atau sama dengan %{date}."
@@ -975,6 +980,7 @@ ms:
         not_an_integer: "bukan sebuah integer."
         not_an_iso_date: "bukan tarikh yang sah. Format yang diperlukan: TTTT-BB-HH."
         not_same_project: "tidak tergolong dalam projek yang sama."
+        datetime_must_be_in_future: "must be in the future."
         odd: "mesti ganjil."
         regex_match_failed: "tidak padan dengan ungkapan biasa %{expression}."
         regex_invalid: "tidak dapat disahkan dengan ungkapan biasa yang berkaitan."
@@ -2198,6 +2204,7 @@ ms:
   label_default: "Default"
   label_delete_user: "Padam pengguna"
   label_delete_project: "Padam projek"
+  label_delete: "Delete"
   label_deleted: "dipadam"
   label_deleted_custom_field: "(ruang tersuai yang telah dipadam)"
   label_deleted_custom_option: "(pilihan yang telah dipadam)"
@@ -2522,6 +2529,7 @@ ms:
   label_reporting: "Laporan"
   label_reporting_plural: "Laporan"
   label_repository: "Repositori"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Akar repositori"
   label_repository_plural: "Repositori"
   label_required: "diperlukan"
@@ -2619,6 +2627,7 @@ ms:
   label_user_settings: "Tetapan pengguna"
   label_users_settings: "Tetapan pengguna"
   label_version_new: "Versi baharu"
+  label_version_edit: "Edit version"
   label_version_plural: "Versi-versi"
   label_version_sharing_descendants: "Dengan subprojek"
   label_version_sharing_hierarchy: "Dengan hierarki projek"
@@ -2923,6 +2932,7 @@ ms:
   notice_successful_connection: "Sambungan berjaya."
   notice_successful_create: "Penciptaan berjaya."
   notice_successful_delete: "Pemadaman berjaya."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Kemas kini berjaya."
   notice_successful_update_custom_fields_added_to_project: |
     Naik taraf berjaya. Jenis ruang tersuai yang aktif telah diaktifkan di borang pakej kerja secara automatik. <a href="%{url}" target="_blank">Lihat lebih lagi</a>.
@@ -3030,6 +3040,7 @@ ms:
   permission_select_project_modules: "Pilih modul projek"
   permission_share_work_packages: "Kongsi pakej kerja"
   permission_manage_types: "Pilih jenis"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Lihat projek"
   permission_view_changesets: "Lihat semakan repositori dalam OpenProject"
   permission_view_commit_author_statistics: "Lihat statistik pengarang komit"

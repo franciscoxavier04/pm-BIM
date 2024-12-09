@@ -1028,6 +1028,7 @@ en:
       messages:
         accepted: "must be accepted."
         after: "must be after %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "must be after or equal to %{date}."
         before: "must be before %{date}."
         before_or_equal_to: "must be before or equal to %{date}."
@@ -2370,6 +2371,7 @@ en:
   label_default: "Default"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
+  label_delete: "Delete"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
   label_deleted_custom_option: "(deleted option)"
@@ -2694,6 +2696,7 @@ en:
   label_reporting: "Reporting"
   label_reporting_plural: "Reportings"
   label_repository: "Repository"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Repository root"
   label_repository_plural: "Repositories"
   label_required: "required"
@@ -2792,6 +2795,7 @@ en:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "New version"
+  label_version_edit: "Edit version"
   label_version_plural: "Versions"
   label_version_sharing_descendants: "With subprojects"
   label_version_sharing_hierarchy: "With project hierarchy"
@@ -3108,6 +3112,7 @@ en:
   notice_successful_connection: "Successful connection."
   notice_successful_create: "Successful creation."
   notice_successful_delete: "Successful deletion."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Successful update."
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
