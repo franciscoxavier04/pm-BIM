@@ -29,7 +29,7 @@
 # ++
 
 class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
-  KEY = /\Alife_cycle_step_(\d+)\z/
+  KEY = /\Alcsd_(\d+)\z/
 
   def self.key
     KEY
@@ -38,21 +38,19 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
   def self.all_available
     return [] unless available?
 
-    Project::LifeCycleStep
-      .where(active: true)
+    Project::LifeCycleStepDefinition
       .pluck(:id)
-      .map { |id| new(:"life_cycle_step_#{id}") }
+      .map { |id| new(:"lcsd_#{id}") }
   end
 
   def caption
-    life_cycle_step.definition.name
+    life_cycle_step.name
   end
 
   def life_cycle_step
     return @life_cycle_step if defined?(@life_cycle_step)
 
-    @life_cycle_step = Project::LifeCycleStep
-                         .where(active: true)
+    @life_cycle_step = Project::LifeCycleStepDefinition
                          .find_by(id: attribute[KEY, 1])
   end
 

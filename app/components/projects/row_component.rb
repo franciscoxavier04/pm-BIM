@@ -100,7 +100,9 @@ module Projects
       return nil unless user_can_view_project?
 
       # FIXME: make this efficient
-      ls = Project::LifeCycleStep.find_by(id: column.life_cycle_step.id, project:)
+      ls = Project::LifeCycleStep
+             .where(active: true)
+             .find_by(definition_id: column.life_cycle_step.id, project:)
 
       return nil if ls.blank?
 
