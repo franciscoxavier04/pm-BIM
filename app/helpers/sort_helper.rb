@@ -417,9 +417,14 @@ module SortHelper
   end
 
   def action_button(menu, column, caption, favorite: false)
+    additional_menu_classes = ["generic-table--action-menu-button",
+                               column.respond_to?(:action_menu_classes) ? column.action_menu_classes : nil]
+                                .compact
+                                .join(" ")
+
     menu.with_show_button(scheme: :link, color: :default, text_transform: :uppercase,
                           underline: false, display: :inline_flex,
-                          classes: "generic-table--action-menu-button") do |button|
+                          classes: additional_menu_classes) do |button|
       if favorite
         # This column only shows an icon, no text.
         render Primer::Beta::Octicon.new(icon: "star-fill", color: :subtle, "aria-label": I18n.t(:label_favorite))
