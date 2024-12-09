@@ -40,6 +40,7 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
   let(:generator) { described_class.new(query, project) }
   let(:export_time) { DateTime.new(2024, 12, 4, 23, 59) }
   let(:export_time_formatted) { format_time(export_time, include_date: true) }
+  let(:export_date_formatted) { format_date(export_time) }
   let(:user_time_entry) do
     create(:time_entry,
            project:,
@@ -114,7 +115,7 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
   end
 
   def expected_page_footer(page_number)
-    [page_number, export_time_formatted, query.name]
+    [page_number, export_date_formatted, query.name]
   end
 
   def expected_entry_row(t_entry, with_times_column)
@@ -149,7 +150,7 @@ RSpec.describe CostQuery::PDF::TimesheetGenerator do
       *expected_entry_row(time_entry_with_comment, with_times_column),
       *expected_entry_row(time_entry_without_time, with_times_column),
 
-      *expected_page_footer("1")
+      *expected_page_footer("2/2")
     ].join(" ")
   end
 
