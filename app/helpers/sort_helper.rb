@@ -381,6 +381,9 @@ module SortHelper
   def find_filter_for_column(column, filter_mapping)
     col = column.to_s
 
+    # Temporarily disabled filters for stages and gates columns for now. Remove this line for #59183
+    return nil if column.start_with?("lcsd_")
+
     filter_mapping.fetch(col, col)
   end
 
