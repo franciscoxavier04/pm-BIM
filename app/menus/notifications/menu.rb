@@ -129,7 +129,7 @@ module Notifications
         "watched" => :eye,
         "shared" => :"share-android",
         "dateAlert" => :"op-calendar-alert",
-        "reminder" => :bell
+        "reminder" => :clock
       }
     end
 
