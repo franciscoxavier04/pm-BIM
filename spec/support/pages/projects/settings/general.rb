@@ -32,12 +32,12 @@ module Pages
   module Projects
     module Settings
       class General < Pages::Page
-        attr_accessor :project
+        attr_reader :project
 
         def initialize(project)
           super()
 
-          self.project = project
+          @project = project
         end
 
         def path
