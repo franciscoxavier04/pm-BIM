@@ -51,7 +51,7 @@ RSpec.describe "Notification center reminder, mention and date alert",
       center.within_item(notification_reminder) do
         expect(page).to have_text("Date alert, Mentioned, Reminder")
         expect(page).to have_no_text("Actor user")
-        expect(page).to have_text("a few seconds ago\nNote: “This is an important reminder”")
+        expect(page).to have_text("a few seconds ago.\nNote: “This is an important reminder”")
       end
     end
   end

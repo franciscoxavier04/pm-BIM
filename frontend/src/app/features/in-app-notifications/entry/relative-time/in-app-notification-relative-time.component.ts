@@ -55,7 +55,7 @@ export class InAppNotificationRelativeTimeComponent implements OnInit {
             return this.text.updated_by_at(time);
           }
 
-          return time;
+          return `${time}.`;
         }),
         distinctUntilChanged(),
       );
