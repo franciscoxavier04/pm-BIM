@@ -44,15 +44,15 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
   default_scope { order(:position) }
 
-  def initialize(*args)
-    if instance_of? Project::LifeCycleStepDefinition
-      # Do not allow directly instantiating this class
-      raise NotImplementedError, "Cannot instantiate the base Project::LifeCycleStepDefinition class directly. " \
-                                 "Use Project::StageDefinition or Project::GateDefinition instead."
-    end
-
-    super
-  end
+  # def initialize(*args)
+  #   if instance_of? Project::LifeCycleStepDefinition
+  #     # Do not allow directly instantiating this class
+  #     raise NotImplementedError, "Cannot instantiate the base Project::LifeCycleStepDefinition class directly. " \
+  #                                "Use Project::StageDefinition or Project::GateDefinition instead."
+  #   end
+  #
+  #   super
+  # end
 
   def step_class
     raise NotImplementedError
