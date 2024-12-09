@@ -73,7 +73,7 @@ You can edit the name and initial settings under the *Details* tab.
 
 ![Detailed view of a custom field in OpenProject administration](openproject_system_guide_new_custom_hierarchy_details_tab.png)
 
-Under the *Items* tab you can specify which hierarchy items should be selectable for this specific custom field. Initially the list of items will be empty .To add items, click the **+Item** button. 
+Under the *Items* tab you can specify which hierarchy items should be selectable for this specific custom field. Initially the list of items will be empty.To add items, click the **+Item** button. 
 
 ![Items tab for a hierarchy custom field in OpenProject administration](openproject_system_guide_hierarchy_field_add_item_button.png)
 
@@ -81,7 +81,7 @@ You can then specify labels and short names for each of the items you want to ad
 
 ![Add an item to the hierarchy custom field in OpenProject administration](openproject_system_guide_hierarchy_field_add_item_form.png)
 
-All items you add here will constitute one hierarchical level. You can add further levels to each of the items. Here you can edit the items, change the position in the list or delete the items. To do that click the icon with the three dots on the far right and select the respective option. 
+All items you add here will constitute one hierarchical level. You can add further levels to each of the items. Here you can edit the items, change the position in the list or delete the items. To do that click the icon with the three dots on the far right and select the respective option. You can also re-arrange the items by dragging and dropping.
 
 ![Edit items for hierarchy custom fields in OpenProject administration](openproject_system_guide_hierarchy_field_edit_items.png)
 
