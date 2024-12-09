@@ -47,10 +47,8 @@ module Pages
         # Checks if the life cycle steps are listed in the order given and with the correct toggle state.
         # @param life_cycle_definitions [Hash{LifeCycleElement => Boolean}]
         def expect_listed(**life_cycle_definitions)
-          if life_cycle_definitions.size > 1
-            life_cycle_definitions.each_cons(2) do |(predecessor, _), (successor, _)|
-              expect(page).to have_css("#{life_cycle_test_selector(predecessor)} + #{life_cycle_test_selector(successor)}")
-            end
+          life_cycle_definitions.each_cons(2) do |(predecessor, _), (successor, _)|
+            expect(page).to have_css("#{life_cycle_test_selector(predecessor)} + #{life_cycle_test_selector(successor)}")
           end
 
           life_cycle_definitions.each do |definition, active|
