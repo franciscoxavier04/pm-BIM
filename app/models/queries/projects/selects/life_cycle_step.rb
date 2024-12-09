@@ -57,4 +57,12 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
   def available?
     life_cycle_step.present?
   end
+
+  def action_menu_header(button)
+    icon = life_cycle_step.is_a?(Project::StageDefinition) ? :"git-commit" : :diamond
+    button.with_leading_visual_icon(icon:)
+    button.with_trailing_action_icon(icon: :"triangle-down")
+
+    caption.to_s
+  end
 end
