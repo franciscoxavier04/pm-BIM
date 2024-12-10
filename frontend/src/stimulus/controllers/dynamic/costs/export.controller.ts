@@ -28,7 +28,6 @@
  * ++
  */
 
-
 import { Controller } from '@hotwired/stimulus';
 import * as Turbo from '@hotwired/turbo';
 import { HttpErrorResponse } from '@angular/common/http';
