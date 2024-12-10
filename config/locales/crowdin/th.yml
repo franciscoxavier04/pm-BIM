@@ -491,8 +491,12 @@ th:
     groups:
       member_in_these_groups: "This user is currently a member of the following groups:"
       no_results_title_text: This user is currently not a member in any group.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: This user is currently not a member of a project.
+    open_profile: "Open profile"
   page:
     text: "ข้อความ"
   placeholder_users:
@@ -654,7 +658,7 @@ th:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      child_description: "Makes the related a work package a sub-item of the current (parent) work package"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -931,6 +935,7 @@ th:
       messages:
         accepted: "must be accepted."
         after: "must be after %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "must be after or equal to %{date}."
         before: "must be before %{date}."
         before_or_equal_to: "must be before or equal to %{date}."
@@ -977,6 +982,7 @@ th:
         not_an_integer: "is not an integer."
         not_an_iso_date: "is not a valid date. Required format: YYYY-MM-DD."
         not_same_project: "doesn't belong to the same project."
+        datetime_must_be_in_future: "must be in the future."
         odd: "must be odd."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
@@ -2200,6 +2206,7 @@ th:
   label_default: "ค่าเริ่มต้น"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
+  label_delete: "Delete"
   label_deleted: "ถูกลบ"
   label_deleted_custom_field: "(ฟิลด์ที่กำหนดเองที่ถูกลบ)"
   label_deleted_custom_option: "(deleted option)"
@@ -2524,6 +2531,7 @@ th:
   label_reporting: "รายงาน"
   label_reporting_plural: "Reportings"
   label_repository: "ที่เก็บข้อมูล"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Repository root"
   label_repository_plural: "ที่เก็บ"
   label_required: "required"
@@ -2621,6 +2629,7 @@ th:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "เวอร์ชั่นใหม่"
+  label_version_edit: "Edit version"
   label_version_plural: "เวอร์ชั่น"
   label_version_sharing_descendants: "พร้อมด้วยโครงการย่อย"
   label_version_sharing_hierarchy: "พร้อมด้วยลำดับชั้นของโครงการ"
@@ -2925,6 +2934,7 @@ th:
   notice_successful_connection: "การเชื่อมต่อสำเร็จ"
   notice_successful_create: "สร้างเรียบร้อยแล้ว"
   notice_successful_delete: "ลบเรียบร้อยแล้ว"
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "ปรับปรุงข้อมูลเรียบร้อยแล้ว"
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
@@ -3033,6 +3043,7 @@ th:
   permission_select_project_modules: "เลือกโมดูลของโครงการ"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "เลือกชนิด"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "View repository revisions in OpenProject"
   permission_view_commit_author_statistics: "ดูการส่งมอบสถิติผู้เขียน"

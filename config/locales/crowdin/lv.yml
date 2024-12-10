@@ -503,8 +503,12 @@ lv:
     groups:
       member_in_these_groups: "This user is currently a member of the following groups:"
       no_results_title_text: This user is currently not a member in any group.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: Šis lietotājs pašlaik nav projektu dalībnieks.
+    open_profile: "Open profile"
   page:
     text: "Teksts"
   placeholder_users:
@@ -670,7 +674,7 @@ lv:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      child_description: "Makes the related a work package a sub-item of the current (parent) work package"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -947,6 +951,7 @@ lv:
       messages:
         accepted: "ir jāapstiprina."
         after: "jābūt pēc %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "jābūt pēc vai vienādam ar %{date}."
         before: "jābūt pirms %{date}."
         before_or_equal_to: "jābūt pirms vai vienādam ar %{date}."
@@ -993,6 +998,7 @@ lv:
         not_an_integer: "nav vesels skaitlis."
         not_an_iso_date: "is not a valid date. Required format: YYYY-MM-DD."
         not_same_project: "neietilpst vienā un tai pašā projektā."
+        datetime_must_be_in_future: "must be in the future."
         odd: "jābūt nepāra."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
@@ -2272,6 +2278,7 @@ lv:
   label_default: "Default"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
+  label_delete: "Delete"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
   label_deleted_custom_option: "(deleted option)"
@@ -2596,6 +2603,7 @@ lv:
   label_reporting: "Reporting"
   label_reporting_plural: "Reportings"
   label_repository: "Repository"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Krātuves sakne"
   label_repository_plural: "Repositories"
   label_required: "required"
@@ -2693,6 +2701,7 @@ lv:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "New version"
+  label_version_edit: "Edit version"
   label_version_plural: "Versijas"
   label_version_sharing_descendants: "Ar apakšprojektiem"
   label_version_sharing_hierarchy: "With project hierarchy"
@@ -2999,6 +3008,7 @@ lv:
   notice_successful_connection: "Successful connection."
   notice_successful_create: "Successful creation."
   notice_successful_delete: "Successful deletion."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Successful update."
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
@@ -3109,6 +3119,7 @@ lv:
   permission_select_project_modules: "Atlasiet projekta moduļus"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "Select types"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "View repository revisions in OpenProject"
   permission_view_commit_author_statistics: "View commit author statistics"

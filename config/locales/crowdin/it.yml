@@ -494,8 +494,12 @@ it:
     groups:
       member_in_these_groups: "Questo utente è attualmente membro dei seguenti gruppi:"
       no_results_title_text: Questo utente al momento non è un membro di alcun gruppo.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: Questo utente non è attualmente membro di alcun progetto.
+    open_profile: "Open profile"
   page:
     text: "Testo"
   placeholder_users:
@@ -658,7 +662,7 @@ it:
       follows_description: "La macro-attività correlata deve necessariamente terminare prima dell'inizio di questa"
       label_child_singular: "figlia"
       label_child_plural: "figlie"
-      child_description: "Rende la macro-attività correlata un sottoelemento della macro-attività corrente (genitore)"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocca"
       label_blocks_plural: "blocca"
       blocks_description: "La relativa macro-attività non può essere chiusa fino a quando questa non sarà chiusa prima"
@@ -935,6 +939,7 @@ it:
       messages:
         accepted: "deve essere accettato."
         after: "deve essere successivo al %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "deve essere successivo o uguale al %{date}."
         before: "deve essere precedente al %{date}."
         before_or_equal_to: "deve essere precedente o uguale al %{date}."
@@ -981,6 +986,7 @@ it:
         not_an_integer: "non è un numero intero."
         not_an_iso_date: "non è una data valida. Formato richiesto: AAAA-MM-GG."
         not_same_project: "non appartiene allo stesso progetto."
+        datetime_must_be_in_future: "must be in the future."
         odd: "deve essere dispari."
         regex_match_failed: "non corrisponde all'espressione regolare %{expression}."
         regex_invalid: "non può essere convalidato con l'espressione regolare associata."
@@ -2232,6 +2238,7 @@ it:
   label_default: "Predefinito"
   label_delete_user: "Elimina utente"
   label_delete_project: "Elimina progetto"
+  label_delete: "Delete"
   label_deleted: "cancellato"
   label_deleted_custom_field: "(campo personalizzato eliminato)"
   label_deleted_custom_option: "(opzione eliminata)"
@@ -2556,6 +2563,7 @@ it:
   label_reporting: "Prospetto"
   label_reporting_plural: "Prospetti"
   label_repository: "Archivio"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Cartella radice dell'archivio"
   label_repository_plural: "Archivi"
   label_required: "obbligatorio"
@@ -2653,6 +2661,7 @@ it:
   label_user_settings: "Impostazioni utente"
   label_users_settings: "Impostazioni utenti"
   label_version_new: "Nuova versione"
+  label_version_edit: "Edit version"
   label_version_plural: "Versioni"
   label_version_sharing_descendants: "Con i sotto-progetti"
   label_version_sharing_hierarchy: "Con la gerarchia del progetto"
@@ -2958,6 +2967,7 @@ it:
   notice_successful_connection: "Connesso con successo."
   notice_successful_create: "Creato con successo."
   notice_successful_delete: "Cancellato con successo."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Aggiornato con successo."
   notice_successful_update_custom_fields_added_to_project: |
     Aggiornamento riuscito. I campi personalizzati dei tipi attivati ​​vengono attivati ​​automaticamente
@@ -3067,6 +3077,7 @@ it:
   permission_select_project_modules: "Seleziona moduli del progetto"
   permission_share_work_packages: "Condividi macro-attività"
   permission_manage_types: "Seleziona i tipi"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Visualizza progetti"
   permission_view_changesets: "Visualizza l'archivio revisioni in OpenProject"
   permission_view_commit_author_statistics: "Visualizza le statistiche dell'autore delle modifiche confermate"

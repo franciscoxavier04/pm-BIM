@@ -506,8 +506,12 @@ lt:
     groups:
       member_in_these_groups: "Šis naudotojas šiuo metu yra šių grupių narys:"
       no_results_title_text: Šis naudotojas nėra jokios grupės narys.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: Šis naudotojas šiuo metu nėra projekto narys.
+    open_profile: "Open profile"
   page:
     text: "Tekstas"
   placeholder_users:
@@ -675,7 +679,7 @@ lt:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      child_description: "Makes the related a work package a sub-item of the current (parent) work package"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -952,6 +956,7 @@ lt:
       messages:
         accepted: "turi būti patvirtinta."
         after: "turi būti po %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "turi eiti po arba būti lygu %{date}."
         before: "turi eiti prieš %{date}."
         before_or_equal_to: "turi eiti prieš arba būti lygu %{date}."
@@ -998,6 +1003,7 @@ lt:
         not_an_integer: "nėra sveikasis skaičius."
         not_an_iso_date: "nėra tinkama data. Reikalingas formatas: YYYY-MM-DD."
         not_same_project: "nepriklauso tam pačiam projektui."
+        datetime_must_be_in_future: "must be in the future."
         odd: "turi būti nelyginis."
         regex_match_failed: "neatitinka reguliariosios išraiškos %{expression}."
         regex_invalid: "negalėjo būti patvirtintas su susieta reguliaria išraiška."
@@ -2305,6 +2311,7 @@ lt:
   label_default: "Numatytasis"
   label_delete_user: "Ištrinti vartotoją"
   label_delete_project: "Ištrinti projektą"
+  label_delete: "Delete"
   label_deleted: "panaikintas"
   label_deleted_custom_field: "(panaikintas vartotojo laukas)"
   label_deleted_custom_option: "(panaikintas nustatymas)"
@@ -2629,6 +2636,7 @@ lt:
   label_reporting: "Atsiskaitymas"
   label_reporting_plural: "Atsiskaitymai"
   label_repository: "Repozitorija"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Repozitorijos šaknis"
   label_repository_plural: "Repozitorijos"
   label_required: "reikalingas"
@@ -2726,6 +2734,7 @@ lt:
   label_user_settings: "Naudotojo nustatymai"
   label_users_settings: "Naudotojo nustatymai"
   label_version_new: "Nauja versija"
+  label_version_edit: "Edit version"
   label_version_plural: "Versijos"
   label_version_sharing_descendants: "Su sub-projektais"
   label_version_sharing_hierarchy: "Su projekto hierarchija"
@@ -3033,6 +3042,7 @@ lt:
   notice_successful_connection: "Sėkmingas susijungimas."
   notice_successful_create: "Sėkmingas sukūrimas."
   notice_successful_delete: "Sėkmingas panaikinimas."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Sėkmingai atnaujinta."
   notice_successful_update_custom_fields_added_to_project: |
     Sėkmingas atnaujinimas. Savi aktyvuotų tipų laukai automatiškai aktivuoti darbo paketų formose. <a href="%{url}" target="_blank">Skaitykite daugiau</a>.
@@ -3143,6 +3153,7 @@ lt:
   permission_select_project_modules: "Parinkti projekto modulius"
   permission_share_work_packages: "Bendrinti darbo paketus"
   permission_manage_types: "Pasirinkti tipus"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Peržiūrėti projektus"
   permission_view_changesets: "Rodyti repozitorijos pakeitimus OpenProject"
   permission_view_commit_author_statistics: "Peržiūrėti autorių pakeitimų pateikimo statistiką"
