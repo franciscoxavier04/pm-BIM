@@ -47,9 +47,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def cover_page_dates
-    dates_range = all_entries.group_by(&:spent_on).sort
-    start_date = dates_range.first&.first
-    end_date = dates_range.last&.first
+    start_date, end_date = all_entries.map(&:spent_on).minmax
     "#{format_date(start_date)} - #{format_date(end_date)}" if start_date && end_date
   end
 
