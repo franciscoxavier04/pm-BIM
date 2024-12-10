@@ -12,7 +12,7 @@ en:
         provider_type: Provider type
         tenant: Directory (tenant) ID
       storages/project_storage:
-        storage: Storage
+        storage: "Storage"
     errors:
       messages:
         invalid_host_url: is not a valid URL.
