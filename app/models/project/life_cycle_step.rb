@@ -27,7 +27,7 @@
 #++
 
 class Project::LifeCycleStep < ApplicationRecord
-  belongs_to :project, optional: false
+  belongs_to :project, optional: false, inverse_of: :available_life_cycle_steps
   belongs_to :definition,
              optional: false,
              class_name: "Project::LifeCycleStepDefinition"

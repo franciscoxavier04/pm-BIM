@@ -133,6 +133,13 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
           end
         end
       end
+
+      describe "triggering validations on the model" do
+        it "sets the :saving_life_cycle_steps validation context" do
+          contract.validate
+          expect(project).to have_receive(:valid?).with(:saving_life_cycle_steps)
+        end
+      end
     end
   end
 
