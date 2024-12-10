@@ -1,6 +1,6 @@
 require "active_storage/filename"
 
-class CostQuery::PDF::ExportJob < Exports::ExportJob
+class CostQuery::PDF::ExportTimesheetJob < Exports::ExportJob
   self.model = ::CostQuery
 
   def project

@@ -43,7 +43,7 @@ class CostQuery::ScheduleExportService
   private
 
   def schedule_export(format, export_storage, query_id, query_name, filter_params, project, cost_types)
-    job = format == :pdf ? ::CostQuery::PDF::ExportJob : ::CostQuery::XLS::ExportJob
+    job = format == :pdf ? ::CostQuery::PDF::ExportTimesheetJob : ::CostQuery::XLS::ExportJob
     job.perform_later(export: export_storage,
                       user:,
                       mime_type: format,

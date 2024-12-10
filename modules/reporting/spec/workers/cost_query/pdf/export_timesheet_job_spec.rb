@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe CostQuery::PDF::ExportJob do
+RSpec.describe CostQuery::PDF::ExportTimesheetJob do
   let(:user) { build_stubbed(:user) }
   let(:project) { build_stubbed(:project) }
 
