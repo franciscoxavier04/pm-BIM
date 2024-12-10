@@ -67,11 +67,9 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
                                   else
                                     item.id
                                   end
-
-        scroll_to = related_work_package_id.to_s == @scroll_to_id
         border_box.with_row(
           test_selector: row_test_selector(item),
-          data: { scroll_to: scroll_to }
+          data: { scroll_to: related_work_package_id.to_s == @scroll_to_id }
         ) do
           yield(item)
         end
