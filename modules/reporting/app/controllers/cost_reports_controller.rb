@@ -594,6 +594,6 @@ class CostReportsController < ApplicationController
   end
 
   def session_name
-    report_engine.name.underscore.to_sym
+    @session_name ||= report_engine.name.underscore.to_sym
   end
 end
