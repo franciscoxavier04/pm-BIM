@@ -4243,6 +4243,7 @@ en:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scope: "Scopes:"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"
