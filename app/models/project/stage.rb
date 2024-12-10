@@ -31,6 +31,12 @@ class Project::Stage < Project::LifeCycleStep
   validates :type, inclusion: { in: %w[Project::Stage], message: :must_be_a_stage }
   validate :validate_date_range
 
+  def working_days_count
+    return nil if not_set?
+
+    Day.working.from_range(from: start_date, to: end_date).count
+  end
+
   def date_range=(param)
     self.start_date, self.end_date = param.split(" - ")
     self.end_date ||= start_date # Allow single dates as range

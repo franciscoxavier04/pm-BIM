@@ -414,7 +414,10 @@ en:
         no_results_content_text: Create a new version
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
-
+  project_stage:
+    working_days_count:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"

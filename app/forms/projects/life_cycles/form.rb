@@ -61,23 +61,21 @@ module Projects::LifeCycles
     end
 
     def single_value_life_cycle_input(form)
-      input_attributes = base_input_attributes.merge(
-        name: :date,
-        value: model.date
-      )
+      input_attributes = { name: :date, value: model.date }
 
-      form.single_date_picker **input_attributes
+      form.single_date_picker **base_input_attributes, **input_attributes
     end
 
     def multi_value_life_cycle_input(form)
       value = [model.start_date, model.end_date].compact.join(" - ")
 
-      input_attributes = base_input_attributes.merge(
-        name: :date_range,
-        value:
-      )
+      input_attributes = { name: :date_range, value: }
+      if model.working_days_count
+        input_attributes[:caption] =
+          I18n.t("project_stage.working_days_count", count: model.working_days_count)
+      end
 
-      form.range_date_picker **input_attributes
+      form.range_date_picker **base_input_attributes, **input_attributes
     end
 
     def text
