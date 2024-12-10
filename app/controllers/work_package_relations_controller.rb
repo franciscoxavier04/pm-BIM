@@ -65,7 +65,7 @@ class WorkPackageRelationsController < ApplicationController
       component = WorkPackageRelationsTab::IndexComponent.new(work_package: @work_package,
                                                               relations: @work_package.relations,
                                                               children: @work_package.children,
-                                                              scroll_target_id: target_work_package_id)
+                                                              scroll_to_id: target_work_package_id)
       replace_via_turbo_stream(component:)
       respond_with_turbo_streams
     else

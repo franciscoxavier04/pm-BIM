@@ -9,16 +9,16 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   include Turbo::FramesHelper
   include OpTurbo::Streamable
 
-  attr_reader :work_package, :relations, :children, :directionally_aware_grouped_relations
+  attr_reader :work_package, :relations, :children, :directionally_aware_grouped_relations, :scroll_to_id
 
-  def initialize(work_package:, relations:, children:, scroll_target_id: nil)
+  def initialize(work_package:, relations:, children:, scroll_to_id: nil)
     super()
 
     @work_package = work_package
     @relations = relations
     @children = children
     @directionally_aware_grouped_relations = group_relations_by_directional_context
-    @scroll_target_id = scroll_target_id
+    @scroll_to_id = scroll_to_id
   end
 
   def self.wrapper_key
@@ -62,7 +62,17 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
       end
 
       items.each do |item|
-        border_box.with_row(test_selector: row_test_selector(item)) do
+        related_work_package_id = if item.is_a?(Relation)
+                                    item.from_id == work_package.id ? item.to_id : item.from_id
+                                  else
+                                    item.id
+                                  end
+
+        scroll_active = related_work_package_id.to_s == @scroll_to_id
+        border_box.with_row(
+          test_selector: row_test_selector(item),
+          data: { scroll_active: scroll_active }
+        ) do
           yield(item)
         end
       end

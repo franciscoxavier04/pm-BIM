@@ -59,7 +59,7 @@ class WorkPackageChildrenController < ApplicationController
         work_package: @work_package,
         relations: @relations,
         children: @children,
-        scroll_target_id: target_work_package_id
+        scroll_to_id: target_work_package_id
       )
       replace_via_turbo_stream(component:)
       update_flash_message_via_turbo_stream(
