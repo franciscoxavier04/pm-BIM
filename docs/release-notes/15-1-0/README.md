@@ -23,7 +23,7 @@ Each custom field of type hierarchy can be given a short name (e.g. B for Berlin
 
 ![Example screenshot of custom fields of type hierarchy, displaying different cities as main offices](openproject-15-1-custom-field-hierarchy.jpg)
 
-[Read all about custom fields in our system admin guide](../../system-admin-guide/custom-fields/).
+[Read all about this new type of custom field in our system admin guide](../../system-admin-guide/custom-fields/#hierarchy-custom-field-enterprise-add-on).
 
 ### Redesign of the Relations tab in work packages
 
@@ -32,7 +32,7 @@ The Relations tab in work packages has been completely redesigned using Primer d
 Additionally, you can now add a description to add further information about the relation. Please note that the description will be displayed on both work packages, below the related other work package.
 
 > [!NOTE]
-> Important information: With this redesign, **you will no longer be able to create new work packages directly on the Relations tab**. Please tell us if you were using this feature a lot. If it will be missed by many users, we will find a way to bring it back.
+> Important information: With this redesign, **you will no longer be able to create new work packages directly on the Relations tab**. We are already working on a solution and plan to release this feature early next year. Thank you for your understanding.
 
 ![Screenshot showing the new Relations tab in a work package](openproject-15-1-relations.png)
 
