@@ -494,8 +494,12 @@ es:
     groups:
       member_in_these_groups: "Este usuario es miembro actualmente de los grupos siguientes:"
       no_results_title_text: Este usuario no es miembro actualmente de ningún grupo.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: El usuario no es actualmente un miembro del proyecto.
+    open_profile: "Open profile"
   page:
     text: "Texto"
   placeholder_users:
@@ -659,7 +663,7 @@ es:
       follows_description: "El paquete de trabajo relacionado tiene que terminar necesariamente antes de que este pueda empezar"
       label_child_singular: "secundario"
       label_child_plural: "secundarios"
-      child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "bloques"
       label_blocks_plural: "bloques"
       blocks_description: "El paquete de trabajo relacionado no puede cerrarse hasta que este se cierre primero"
@@ -936,6 +940,7 @@ es:
       messages:
         accepted: "debe ser aceptado."
         after: "debe ser después de %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "debe ser después de o igual a %{date}."
         before: "debe ser antes de %{date}."
         before_or_equal_to: "debe ser antes o igual a %{date}."
@@ -982,6 +987,7 @@ es:
         not_an_integer: "No es un entero."
         not_an_iso_date: "no es una fecha válida. Requiere formato: AAAA-MM-DD."
         not_same_project: "no pertenecen a un mismo proyecto."
+        datetime_must_be_in_future: "must be in the future."
         odd: "debe ser impar."
         regex_match_failed: "no coincide con la expresión regular %{expression}."
         regex_invalid: "no se pudo validar con la expresión regular asociada."
@@ -2233,6 +2239,7 @@ es:
   label_default: "Por defecto"
   label_delete_user: "Eliminar usuario"
   label_delete_project: "Eliminar proyecto"
+  label_delete: "Delete"
   label_deleted: "borrado"
   label_deleted_custom_field: "(campo personalizado borrado)"
   label_deleted_custom_option: "(opción eliminada)"
@@ -2557,6 +2564,7 @@ es:
   label_reporting: "Presentación de informe"
   label_reporting_plural: "Presentacion de Informes"
   label_repository: "Repositorio"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Raiz del repositorio"
   label_repository_plural: "Repositorios"
   label_required: "requerido"
@@ -2654,6 +2662,7 @@ es:
   label_user_settings: "Configuración de usuario"
   label_users_settings: "Ajustes de usuario"
   label_version_new: "Nueva versión"
+  label_version_edit: "Edit version"
   label_version_plural: "Versiones"
   label_version_sharing_descendants: "Con subproyectos"
   label_version_sharing_hierarchy: "Con la jerarquía del proyecto"
@@ -2959,6 +2968,7 @@ es:
   notice_successful_connection: "Conexión exitosa."
   notice_successful_create: "Creación exitosa."
   notice_successful_delete: "Eliminado con éxito."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Actualización correcta."
   notice_successful_update_custom_fields_added_to_project: |
     Actualización correcta. Los campos personalizados de los tipos ya activados se activan automáticamente en el formulario de paquete de trabajo. <a href="%{url}" target="_blank">Ver más</a>.
@@ -3067,6 +3077,7 @@ es:
   permission_select_project_modules: "Seleccionar módulos de proyecto"
   permission_share_work_packages: "Compartir paquetes de trabajo"
   permission_manage_types: "Seleccionar Tipos"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Ver proyectos"
   permission_view_changesets: "Ver las revisiones del repositorio en OpenProject"
   permission_view_commit_author_statistics: "Ver estadísticas del commit del autor"

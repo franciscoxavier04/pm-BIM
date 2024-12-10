@@ -360,7 +360,7 @@ uk:
           "15_1":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Custom fields of type hierarchy (Enterprise add-on).</li> <li>Redesign of the Relations tab in work packages.</li> <li>Redesign of the Meetings index page.</li> <li>Manual page breaks in PDF work package exports.</li> <li>Zen mode for project lists.</li> </ul>
+                Цей випуск включає багато нових функцій і покращень. <br> <ul class="%{list_styling_class}"> <li>Користувацькі поля ієрархії типів (доповнення версії Enterprise).</li> <li>Оновлений дизайн вкладки «Зв'язки» в пакетах робіт.</li> <li>Оновлений дизайн сторінки індексу нарад.</li> <li>Ручне розривання сторінок у PDF-файлах експорту пакетів робіт.</li> <li>Дзен-режим для списків проєктів.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."
@@ -621,6 +621,7 @@ uk:
         prioritized: "Надано пріоритет"
         dateAlert: "Оповіщення про дату"
         shared: "Поширено"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Дата віхи"
         overdue: "Прострочено"
@@ -1354,5 +1355,3 @@ uk:
       waiting_subtitle:
         network_off: "Існує проблема з мережею."
         network_on: "З’єднання відновлено. Ми намагаємося."
-        timeout: >
-          Додатку OpenProject не вдалося надати вам доступ до папки проєкту протягом очікуваного періоду. Повторіть спробу.<br><br> Якщо ця проблема не зникне, зверніться до адміністратора OpenProject і попросіть його перевірити <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">стан справності конфігурації файлового сховища</a>.

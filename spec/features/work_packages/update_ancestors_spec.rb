@@ -86,7 +86,8 @@ RSpec.describe "Update ancestors", :js, :with_cuprite do
   shared_let(:query) do
     create(:query,
            show_hierarchies: true,
-           column_names: %i[id status estimated_hours remaining_hours done_ratio subject])
+           column_names: %i[id status estimated_hours remaining_hours done_ratio subject],
+           sort_criteria: [["id", "asc"]])
   end
 
   let(:wp_table) { Pages::WorkPackagesTable.new project }
@@ -174,14 +175,14 @@ RSpec.describe "Update ancestors", :js, :with_cuprite do
       context_menu = wp_table.open_context_menu_for(second_child)
       context_menu.choose(I18n.t("js.relation_buttons.hierarchy_outdent"))
       wp_table.expect_and_dismiss_toaster message: "Successful update"
+      wait_for_network_idle
 
       expect_totals(parent, [child])
 
       context_menu = wp_table.open_context_menu_for(second_child)
       context_menu.choose(I18n.t("js.relation_buttons.hierarchy_indent"))
-      wait_for_network_idle
-
       wp_table.expect_and_dismiss_toaster message: "Successful update"
+      wait_for_network_idle
 
       expect_totals(parent, [child, second_child])
     end
