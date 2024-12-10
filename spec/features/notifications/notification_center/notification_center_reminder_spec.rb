@@ -4,6 +4,7 @@ require "features/page_objects/notification"
 RSpec.describe "Notification center reminder, mention and date alert",
                :js,
                :with_cuprite,
+               with_ee: %i[date_alerts],
                with_settings: { journal_aggregation_time_minutes: 0 } do
   shared_let(:project) { create(:project) }
   shared_let(:actor) { create(:user, firstname: "Actor", lastname: "User") }
@@ -46,13 +47,18 @@ RSpec.describe "Notification center reminder, mention and date alert",
     wait_for_reload
   end
 
-  context "with reminders", with_ee: %i[date_alerts] do
-    it "shows only the reminder alert time and note" do
-      center.within_item(notification_reminder) do
-        expect(page).to have_text("Date alert, Mentioned, Reminder")
-        expect(page).to have_no_text("Actor user")
-        expect(page).to have_text("a few seconds ago.\nNote: “This is an important reminder”")
-      end
+  it "shows the reminder alert in own entry" do
+    center.within_item(notification_reminder) do
+      expect(page).to have_text("##{work_package.id}\n- #{project.name} -\nReminder")
+      expect(page).to have_no_text("Actor user")
+      expect(page).to have_text("a few seconds ago.\nNote: “This is an important reminder”")
+    end
+  end
+
+  it "shows other notification reasons aggregated" do
+    center.within_item(notification_date_alert) do
+      expect(page).to have_text("##{work_package.id}\n- #{project.name} -\nDate alert, Mentioned")
+      expect(page).to have_no_text("Actor user")
     end
   end
 end
