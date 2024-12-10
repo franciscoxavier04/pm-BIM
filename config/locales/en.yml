@@ -4244,6 +4244,7 @@ en:
       confidential: Confidential
       singular: "OAuth application"
       scope: "Scopes:"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"
