@@ -122,7 +122,7 @@ Read more about [seeding through environment for OpenProject configuration in ou
 
 ## Contributions
 
-A very special thank you goes to our sponsors of this release: Deutsche Bahn for sponsoring custom fields of type hierarchy, and City of Cologne for sponsoring custom fields of type hierarchy as well as zen mode for project lists.
+A very special thank you goes to Deutsche Bahn and City of Cologne for sponsoring parts of this release. Your support, alongside the efforts of our amazing Community, helps drive these innovations.
 
 Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Bill Bai, Sam Yelman, Knight Chang, Gábor Alexovics, Gregor Buergisser, Andrey Dermeyko, Various Interactive, Clayton Belcher, Александр Татаринцев, and Keno Krewer.
 
