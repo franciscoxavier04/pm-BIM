@@ -205,16 +205,11 @@ RSpec.describe "custom fields", :js do
     end
 
     before do
-      cf_page.visit!
-      wait_for_reload
-
-      click_on custom_field.name
-      wait_for_reload
+      visit edit_custom_field_path(custom_field)
     end
 
     it "adds new options" do
       page.find_test_selector("add-custom-option").click
-      wait_for_reload
 
       expect(page).to have_css(".custom-option-row", count: 5)
       within all(".custom-option-row").last do
