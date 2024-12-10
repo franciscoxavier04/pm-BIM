@@ -308,7 +308,7 @@ export class PathHelperService {
     return `${this.workPackagePath(workPackageId)}/split_view/get_relations_counter`;
   }
 
-  public workPackageDatepickerDialogContentPath(workPackageId:string|number) {
+  public workPackageDatepickerDialogContentPath(workPackageId:string|number):string {
     return `${this.workPackagePath(workPackageId)}/datepicker_dialog_content`;
   }
 
