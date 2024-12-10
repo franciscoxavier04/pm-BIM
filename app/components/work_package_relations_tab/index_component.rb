@@ -48,27 +48,36 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   def any_relations? = relations.any? || children.any?
 
   def render_relation_group(title:, relation_type:, items:, &_block)
-    render(border_box_container(padding: :condensed,
-                                data: { test_selector: "op-relation-group-#{relation_type}" })) do |border_box|
-      border_box.with_header(py: 3) do
-        flex_layout(align_items: :center) do |flex|
-          flex.with_column(mr: 2) do
-            render(Primer::Beta::Text.new(font_size: :normal, font_weight: :bold)) { title }
-          end
-          flex.with_column do
-            render(Primer::Beta::Counter.new(count: items.size, round: true, scheme: :primary))
-          end
+    render(border_box_container(
+             padding: :condensed,
+             data: { test_selector: "op-relation-group-#{relation_type}" }
+           )) do |border_box|
+      render_header(border_box, title, items)
+      render_items(border_box, items, &_block)
+    end
+  end
+
+  def render_header(border_box, title, items)
+    border_box.with_header(py: 3) do
+      flex_layout(align_items: :center) do |flex|
+        flex.with_column(mr: 2) do
+          render(Primer::Beta::Text.new(font_size: :normal, font_weight: :bold)) { title }
+        end
+        flex.with_column do
+          render(Primer::Beta::Counter.new(count: items.size, round: true, scheme: :primary))
         end
       end
+    end
+  end
 
-      items.each do |item|
-        related_work_package_id = find_related_work_package_id(item)
-        border_box.with_row(
-          test_selector: row_test_selector(item),
-          data: { scroll_to: related_work_package_id.to_s == @scroll_to_id }
-        ) do
-          yield(item)
-        end
+  def render_items(border_box, items)
+    items.each do |item|
+      related_work_package_id = find_related_work_package_id(item)
+      border_box.with_row(
+        test_selector: row_test_selector(item),
+        data: { scroll_to: related_work_package_id.to_s == @scroll_to_id }
+      ) do
+        yield(item)
       end
     end
   end
