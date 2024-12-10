@@ -281,11 +281,7 @@ RSpec.describe SortHelper do
   end
 
   describe "#sort_header_with_action_menu" do
-    subject(:output) do
-      helper.sort_header_with_action_menu("id",
-                                          %w[name id description], {}, **options)
-    end
-
+    let(:id_column) { Queries::Projects::Selects::Default.new "id" }
     let(:options) { { param: :json, sortable: true } }
     let(:sort_criteria) { SortHelper::SortCriteria.new }
 
@@ -293,6 +289,11 @@ RSpec.describe SortHelper do
       # The resulting HTML is too big to assert in detail. We will only check some key parts to ensure it is
       # an action menu with the expected content.
       Nokogiri::HTML(output).at_css("th .generic-table--sort-header action-menu")
+    end
+
+    subject(:output) do
+      helper.sort_header_with_action_menu(id_column,
+                                          %w[name id description], {}, **options)
     end
 
     before do
@@ -343,7 +344,7 @@ RSpec.describe SortHelper do
 
     context "with the current column being the leftmost one" do
       subject(:output) do
-        helper.sort_header_with_action_menu("id",
+        helper.sort_header_with_action_menu(id_column,
                                             %w[id name description], {}, **options)
       end
 
@@ -359,7 +360,7 @@ RSpec.describe SortHelper do
 
     context "with the current column being the rightmost one" do
       subject(:output) do
-        helper.sort_header_with_action_menu("id",
+        helper.sort_header_with_action_menu(id_column,
                                             %w[name description id], {}, **options)
       end
 
@@ -397,7 +398,7 @@ RSpec.describe SortHelper do
 
     context "with a filter mapping for the column" do
       subject(:output) do
-        helper.sort_header_with_action_menu("id",
+        helper.sort_header_with_action_menu(id_column,
                                             %w[name id description], { "id" => "id_code" }, **options)
       end
 
@@ -413,11 +414,28 @@ RSpec.describe SortHelper do
     context "with the filter mapping specifying there is no filter for the column" do
       subject(:output) do
         # With the filter name mapped to nil, we expect no filter action to be present.
-        helper.sort_header_with_action_menu("id",
+        helper.sort_header_with_action_menu(id_column,
                                             %w[name id description], { "id" => nil }, **options)
       end
 
       it "does not show a 'filter by' action" do
+        filter_by = action_menu.at_css("action-list .ActionListItem button[data-test-selector='id-filter-by']")
+        expect(filter_by).to be_nil
+      end
+    end
+
+    context "with a life cycle column" do
+      let(:life_cycle_step) { create(:project_gate_definition) }
+      let(:life_cycle_column) { Queries::Projects::Selects::LifeCycleStep.new("lcsd_#{life_cycle_step.id}") }
+
+      subject(:output) do
+        # Not setting any filter column mappings here, so for other column types, this should use the default filter
+        helper.sort_header_with_action_menu(life_cycle_column,
+                                            %W[name lcsd_#{life_cycle_step.id}], {}, **options)
+      end
+
+      it "never offers a filter by action" do
+        # But a life cycle column never offers a filter (until #59183 is implemented)
         filter_by = action_menu.at_css("action-list .ActionListItem button[data-test-selector='id-filter-by']")
         expect(filter_by).to be_nil
       end
