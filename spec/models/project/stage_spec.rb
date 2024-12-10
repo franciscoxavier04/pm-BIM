@@ -100,4 +100,40 @@ RSpec.describe Project::Stage do
       expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
     end
   end
+
+  describe "#working_days_count" do
+    it "returns nil if not_set? is true" do
+      allow(Day).to receive(:working)
+
+      subject.start_date = nil
+      subject.end_date = nil
+
+      expect(subject.working_days_count).to be_nil
+      expect(Day).not_to have_received(:working)
+    end
+
+    it "returns the correct number of days if start_date and end_date are the same" do
+      subject.start_date = Time.zone.today
+      subject.end_date = Time.zone.today
+      expect(subject.working_days_count).to eq(1)
+    end
+
+    it "returns the correct number of days for a valid date range" do
+      subject.start_date = Date.parse("2024-11-25")
+      subject.end_date = Date.parse("2024-11-27")
+      expect(subject.working_days_count).to eq(3)
+    end
+
+    it "calls the Day.working.from_range method with the right arguments" do
+      subject.start_date = Date.parse("2024-11-25")
+      subject.end_date = Date.parse("2024-11-27")
+
+      allow(Day).to receive(:working).and_return(Day)
+      allow(Day).to receive(:from_range)
+                .with(from: subject.start_date, to: subject.end_date)
+                .and_return([])
+
+      expect(subject.working_days_count).to eq(0)
+    end
+  end
 end
