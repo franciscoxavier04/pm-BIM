@@ -74,6 +74,7 @@ export class LocationPickerModalComponent extends FilePickerBaseModalComponent {
       submitEmptySelection: this.i18n.t('js.storages.file_links.selection_none'),
       cancel: this.i18n.t('js.button_cancel'),
       selectAll: this.i18n.t('js.storages.file_links.select_all'),
+      newFolder: this.i18n.t('js.storages.new_folder'),
     },
     tooltip: {
       directory_not_writeable: this.i18n.t('js.storages.files.directory_not_writeable'),
@@ -169,5 +170,21 @@ export class LocationPickerModalComponent extends FilePickerBaseModalComponent {
     }
 
     return this.text.tooltip.file_not_selectable;
+  }
+
+  public createAndNavigateToFolder() {
+    // eslint-disable-next-line
+    const value = window.prompt(this.text.buttons.newFolder);
+    if (!value) { return; }
+
+    this.storageFilesResourceService.createFolder(
+      `${this.storage._links.self.href}/folders`,
+      {
+        name: value,
+        parent_id: this.currentDirectory.id,
+      },
+    ).subscribe((newlyCreatedDirectory) => {
+      this.changeLevel(newlyCreatedDirectory);
+    });
   }
 }
