@@ -6,7 +6,7 @@ export default class ScrollController extends Controller {
   }
 
   waitForRenderAndAct() {
-    const element = document.querySelector('[data-scroll-active="true"]');
+    const element = document.querySelector('[data-scroll-to="true"]');
 
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'center' });

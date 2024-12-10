@@ -68,10 +68,10 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
                                     item.id
                                   end
 
-        scroll_active = related_work_package_id.to_s == @scroll_to_id
+        scroll_to = related_work_package_id.to_s == @scroll_to_id
         border_box.with_row(
           test_selector: row_test_selector(item),
-          data: { scroll_active: scroll_active }
+          data: { scroll_to: scroll_to }
         ) do
           yield(item)
         end
