@@ -114,8 +114,14 @@ export class IanCenterService extends UntilDestroyedMixin {
       map((items) => Object.values(items)),
       map((notificationGroups) => {
         return notificationGroups.reduce((acc, group) => {
-          const reminders = group.filter((notification) => notification.reason === 'reminder');
-          const others = group.filter((notification) => notification.reason !== 'reminder');
+          const { reminders, others } = group.reduce((result, notification) => {
+            if (notification.reason === 'reminder') {
+              result.reminders.push(notification);
+            } else {
+              result.others.push(notification);
+            }
+            return result;
+          }, { reminders: [] as INotification[], others: [] as INotification[] });
 
           // Extract reminders into standalone groups so they can be displayed individually
           if (reminders.length > 0) {
