@@ -62,11 +62,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
       end
 
       items.each do |item|
-        related_work_package_id = if item.is_a?(Relation)
-                                    item.from_id == work_package.id ? item.to_id : item.from_id
-                                  else
-                                    item.id
-                                  end
+        related_work_package_id = find_related_work_package_id(item)
         border_box.with_row(
           test_selector: row_test_selector(item),
           data: { scroll_to: related_work_package_id.to_s == @scroll_to_id }
@@ -92,11 +88,15 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   end
 
   def row_test_selector(item)
+    related_work_package_id = find_related_work_package_id(item)
+    "op-relation-row-#{related_work_package_id}"
+  end
+
+  def find_related_work_package_id(item)
     if item.is_a?(Relation)
-      target = item.to == work_package ? item.from : item.to
-      "op-relation-row-#{target.id}"
-    else # Work Package object
-      "op-relation-row-#{item.id}"
+      item.from_id == work_package.id ? item.to_id : item.from_id
+    else
+      item.id
     end
   end
 end
