@@ -2407,7 +2407,6 @@ en:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Environment"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "is"
