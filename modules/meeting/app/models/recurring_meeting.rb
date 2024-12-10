@@ -88,29 +88,36 @@ class RecurringMeeting < ApplicationRecord
     end
   end
 
-  def schedule_in_words # rubocop:disable Metrics/AbcSize
-    base =
-      case frequency
-      when "daily"
-        interval == 1 ? human_frequency : I18n.t("recurring_meeting.in_words.daily_interval", interval: interval.ordinalize)
-      when "working_days"
-        if interval == 1
-          I18n.t("recurring_meeting.in_words.working_days")
-        else
-          I18n.t("recurring_meeting.in_words.working_days_interval", interval: interval.ordinalize)
-        end
-      when "weekly"
-        if interval == 1
-          I18n.t("recurring_meeting.in_words.weekly", weekday:)
-        else
-          I18n.t("recurring_meeting.in_words.weekly_interval", interval: interval.ordinalize, weekday:)
-        end
+  def base_schedule
+    case frequency
+    when "daily"
+      if interval == 1
+        human_frequency
+      else
+        I18n.t("recurring_meeting.in_words.daily_interval", interval: interval.ordinalize)
       end
+    when "working_days"
+      I18n.t("recurring_meeting.in_words.working_days")
+    when "weekly"
+      if interval == 1
+        I18n.t("recurring_meeting.in_words.weekly", weekday:)
+      else
+        I18n.t("recurring_meeting.in_words.weekly_interval", interval: interval.ordinalize, weekday:)
+      end
+    end
+  end
 
+  def full_schedule_in_words
     I18n.t("recurring_meeting.in_words.full",
-           base:,
+           base: base_schedule,
            time: format_time(start_time, include_date: false),
            end_date: format_date(last_occurrence))
+  end
+
+  def human_frequency_schedule
+    I18n.t("recurring_meeting.in_words.frequency",
+           base: base_schedule,
+           time: format_time(start_time, include_date: false))
   end
 
   def scheduled_occurrences(limit:)
@@ -196,5 +203,9 @@ class RecurringMeeting < ApplicationRecord
     else
       rule.until(end_date.to_time(:utc))
     end
+  end
+
+  def set_defaults
+    self.end_date ||= 1.year.from_now
   end
 end

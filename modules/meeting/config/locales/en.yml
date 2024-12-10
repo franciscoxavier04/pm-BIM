@@ -216,9 +216,6 @@ en:
     empty_text: "Drag items here or create a new one"
 
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -254,8 +251,9 @@ en:
       daily_interval: "Every %{interval} day"
       working_days: "Every working day"
       working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
+      weekly: "Every week on %{weekday}"
       weekly_interval: "Every %{interval} week on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
 
   notice_successful_notification: "Notification sent successfully"
