@@ -26,21 +26,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class RecurringMeeting::Frequency < ApplicationForm
-  form do |meeting_form|
-    meeting_form.select_list(
-      name: "frequency",
-      label: I18n.t("activerecord.attributes.recurring_meeting.frequency"),
-      data: {
-        target_name: "frequency",
-        "recurring-meetings--form-target": "frequency",
-        "show-when-value-selected-target": "cause",
-        action: "input->recurring-meetings--form#updateFrequencyText"
-      }
-    ) do |list|
-      RecurringMeeting.frequencies.each_key do |value|
-        label = I18n.t(:"recurring_meeting.frequency.#{value}")
-        list.option(label:, value:)
+module RecurringMeetings
+  class FrequencyTextComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
+
+    def initialize(frequency:, interval:)
+      super
+
+      @frequency = frequency
+      @interval = interval
+      @current_count = count
+      @direction = direction
+      @max_count = max_count
+    end
+
+    def label
+      count = @max_count - @current_count
+      label_suffix = count == 1 ? "_singular" : ""
+
+      if @direction == "past"
+        I18n.t("label_recurring_meeting_more_past#{label_suffix}", count:)
+      else
+        I18n.t("label_recurring_meeting_more#{label_suffix}", count:, schedule: @meeting.schedule_in_words)
       end
     end
   end

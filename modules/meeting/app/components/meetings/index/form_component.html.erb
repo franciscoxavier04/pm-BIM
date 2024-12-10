@@ -6,7 +6,8 @@
       method: form_method,
       data: {
         turbo: true,
-        controller: "show-when-value-selected"
+        controller: "show-when-value-selected recurring-meetings--form",
+        "application-target": "dynamic"
       },
       html: {
         id: 'meeting-form'
@@ -65,6 +66,10 @@
                 render(RecurringMeeting::Interval.new(f))
               end
             end
+          end
+
+          modal_body.with_row(mt: 1) do
+            render(RecurringMeeting::EndAfter.new(f))
           end
 
           modal_body.with_row(mt: 3) do
