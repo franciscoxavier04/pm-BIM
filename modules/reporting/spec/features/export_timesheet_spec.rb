@@ -26,31 +26,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class CostQuery::ScheduleExportService
-  attr_accessor :user
+require_relative "../spec_helper"
+require_relative "support/pages/cost_report_page"
 
-  def initialize(user:)
-    self.user = user
+RSpec.describe "Timesheet PDF export", :js do
+  shared_let(:project) { create(:project) }
+  shared_let(:user) { create(:admin) }
+  shared_let(:cost_type) { create(:cost_type, name: "Post-war", unit: "cap", unit_plural: "caps") }
+  shared_let(:work_package) { create(:work_package, project:, subject: "Some task") }
+  shared_let(:cost_entry) { create(:cost_entry, user:, work_package:, project:, cost_type:) }
+  let(:report_page) { Pages::CostReportPage.new project }
+
+  subject { @download_list.refresh_from(page).latest_download.to_s } # rubocop:disable RSpec/InstanceVariable
+
+  before do
+    @download_list = DownloadList.new
+    login_as(user)
   end
 
-  def call(format:, query_id:, query_name:, filter_params:, project:, cost_types:)
-    export_storage = ::CostQuery::Export.create
-    job = schedule_export(format, export_storage, query_id, query_name, filter_params, project, cost_types)
-
-    ServiceResult.success result: job.job_id
+  after do
+    DownloadList.clear
   end
 
-  private
+  it "can download the PDF" do
+    report_page.visit!
+    click_on I18n.t("export.timesheet.button")
 
-  def schedule_export(format, export_storage, query_id, query_name, filter_params, project, cost_types)
-    job = format == :pdf ? ::CostQuery::PDF::ExportTimesheetJob : ::CostQuery::XLS::ExportJob
-    job.perform_later(export: export_storage,
-                      user:,
-                      mime_type: format,
-                      query_id:,
-                      query_name:,
-                      query: filter_params,
-                      project:,
-                      cost_types:)
+    expect(page).to have_content I18n.t("job_status_dialog.generic_messages.in_queue"),
+                                 wait: 10
+    perform_enqueued_jobs
+
+    expect(page).to have_text(I18n.t("export.succeeded"),
+                              wait: 10)
+
+    expect(subject).to have_text(".pdf")
   end
 end
