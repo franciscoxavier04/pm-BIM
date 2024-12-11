@@ -28,29 +28,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class API::V3::Storages::StoragesAPI < API::OpenProjectAPI
-  helpers Storages::Peripherals::Scopes
+module API
+  module V3
+    module StorageFiles
+      class StorageFoldersAPI < ::API::OpenProjectAPI
+        using ::Storages::Peripherals::ServiceResultRefinements
 
-  resources :storages do
-    post &API::V3::Utilities::Endpoints::Create.new(model: Storages::Storage).mount
+        helpers ::Storages::Peripherals::StorageErrorHelper
 
-    get &API::V3::Utilities::Endpoints::Index.new(model: Storages::Storage, scope: -> { visible_storages }).mount
+        resources :folders do
+          params do
+            requires :name, type: String, desc: "Folder name"
+            requires :parent_id, type: String, desc: "Id of the parent folder"
+          end
 
-    route_param :storage_id, type: Integer, desc: "Storage id" do
-      after_validation do
-        @storage = visible_storages.find(params[:storage_id])
+          post do
+            ::Storages::CreateFolderService.call(
+              storage: @storage,
+              user: current_user,
+              name: params["name"],
+              parent_id: params["parent_id"]
+            ).match(
+              on_success: lambda { |storage_folder|
+                API::V3::StorageFiles::StorageFileRepresenter.new(
+                  storage_folder,
+                  @storage,
+                  current_user:
+                )
+              },
+              on_failure: ->(error) { raise_error(error) }
+            )
+          end
+        end
       end
-
-      get &API::V3::Utilities::Endpoints::Show.new(model: Storages::Storage).mount
-
-      patch &API::V3::Utilities::Endpoints::Update.new(model: Storages::Storage).mount
-
-      delete &API::V3::Utilities::Endpoints::Delete.new(model: Storages::Storage).mount
-
-      mount API::V3::StorageFiles::StorageFilesAPI
-      mount API::V3::OAuthClient::OAuthClientCredentialsAPI
-      mount API::V3::Storages::StorageOpenAPI
-      mount API::V3::StorageFiles::StorageFoldersAPI
     end
   end
 end
