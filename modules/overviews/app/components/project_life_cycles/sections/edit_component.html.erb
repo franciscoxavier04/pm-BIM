@@ -5,7 +5,15 @@
       id: "project-life-cycles-edit-form",
       model:,
       method: :put,
-      data: { turbo: true, turbo_stream: true, "test-selector": "async-dialog-content" },
+      data: {
+        "controller": "overview--project-life-cycles-form",
+        "overview--project-life-cycles-form-target": "form",
+        "application-target": "dynamic",
+        turbo: true,
+        turbo_stream: true,
+        preview_url: project_life_cycles_form_path(project_id: model.id),
+        "test-selector": "async-dialog-content"
+      },
       url: update_project_life_cycles_path(project_id: model.id),
     ) do |f|
       render(Primer::Forms::SpacingWrapper.new) do

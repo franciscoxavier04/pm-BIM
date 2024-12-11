@@ -53,7 +53,10 @@ module Projects::LifeCycles
         label: "#{icon} #{text}".html_safe, # rubocop:disable Rails/OutputSafety
         leading_visual: { icon: :calendar },
         required: true,
-        datepicker_options: { inDialog: true },
+        datepicker_options: {
+          inDialog: true,
+          data: { action: "change->overview--project-life-cycles-form#handleChange" }
+        },
         wrapper_data_attributes: {
           "qa-field-name": qa_field_name
         }

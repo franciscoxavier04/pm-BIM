@@ -6,6 +6,7 @@
   data-test-selector="op-basic-range-date-picker"
   [ngClass]="inputClassNames"
   [attr.data-value]="value"
+  [attr.data-action]="dataAction"
   [id]="id"
   [name]="name"
   [attr.name]="name"
@@ -47,6 +48,8 @@
     [attr.data-value]="stringValue"
     [id]="id"
     [name]="name"
+    [attr.name]="name"
+    [attr.data-action]="dataAction"
     [ngModel]="stringValue"
   />
 </ng-container>

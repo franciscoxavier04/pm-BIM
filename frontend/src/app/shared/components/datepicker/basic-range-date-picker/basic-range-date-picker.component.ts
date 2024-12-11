@@ -117,6 +117,8 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
 
   @Input() inDialog = false;
 
+  @Input() dataAction = '';
+
   @ViewChild('input') input:ElementRef;
 
   stringValue = '';
