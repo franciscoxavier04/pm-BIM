@@ -1848,6 +1848,8 @@ en:
 
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
