@@ -1,6 +1,7 @@
 <button
-  class="button toolbar-icon"
+  class="button toolbar-icon d-flex flex-items-center"
   data-test-selector="op-wp-reminder-button"
+  [attr.title]="buttonTitle"
   (click)="openModal()"
 >
   <svg
@@ -8,11 +9,8 @@
     class="button--icon"
     size="small"
   ></svg>
-  <span class="button--text">
-    <span *ngIf="(reminderCount$ | async) as reminderCount"
-          class="badge -secondary"
-          [textContent]="reminderCount">
-    </span>
+  <span *ngIf="(reminderCount$ | async) as reminderCount"
+        class="button--text text-small badge -secondary"
+        [textContent]="reminderCount">
   </span>
-
 </button>

@@ -14,22 +14,6 @@
       <%= form_flex_container.with_row do %>
         <%= render(WorkPackages::Reminder::Note.new(f)) %>
       <% end %>
-      <% if errors.present? %>
-        <%= form_flex_container.with_row(flex_layout: true) do |errors_container| %>
-          <% errors.full_messages.each do |error_message| %>
-            <%= errors_container.with_row(flex_layout: true) do |errors_row| %>
-              <%= errors_row.with_column(mr: 2) do %>
-                <%= render(Primer::Beta::Octicon.new(icon: :'alert-fill', color: :danger)) %>
-              <% end %>
-              <%= errors_row.with_column do %>
-                <%= render(Primer::Beta::Text.new(color: :danger)) do %>
-                  <%= error_message %>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
       <% if reminder.persisted? %>
         <%= form_flex_container.with_row(flex_layout: true,
                                          justify_content: :space_between) do |actions_row| %>
@@ -39,19 +23,27 @@
                         type: :submit,
                         formaction: work_package_reminder_path(remindable, reminder),
                         formmethod: :delete
-                      )) { I18n.t(:button_delete_reminder) } %>
+                      )) { I18n.t(:button_remove_reminder) } %>
           <% end %>
-          <%= actions_row.with_column do %>
-            <%= render(Primer::Beta::Button.new(scheme: :primary,
-                                              type: :submit)) { I18n.t(:button_save) } %>
-          <% end %>
+          <%= actions_row.with_column(flex_layout: true) do |actions_sub_row| %>
+            <%= actions_sub_row.with_column(mr: 2) do %>
+              <%= render(Primer::Beta::Button.new(**cancel_button_props)) { I18n.t(:button_cancel) } %>
+            <% end %>
+            <%= actions_sub_row.with_column do %>
+              <%= render(Primer::Beta::Button.new(scheme: :primary,
+                                                type: :submit)) { I18n.t(:button_save) } %>
+            <% end %>
+          <% end%>
         <% end %>
       <% else%>
         <%= form_flex_container.with_row(flex_layout: true,
                                          justify_content: :flex_end) do |actions_row| %>
+          <%= actions_row.with_column(mr: 2) do %>
+            <%= render(Primer::Beta::Button.new(**cancel_button_props)) { I18n.t(:button_cancel) } %>
+          <% end %>
           <%= actions_row.with_column do %>
             <%= render(Primer::Beta::Button.new(scheme: :primary,
-                                              type: :submit)) { I18n.t(:button_set_reminder) } %>
+                                              type: :submit)) { I18n.t(:button_schedule) } %>
           <% end %>
         <% end %>
       <% end%>

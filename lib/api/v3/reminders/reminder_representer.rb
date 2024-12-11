@@ -31,10 +31,17 @@ module API
     module Reminders
       class ReminderRepresenter < ::API::Decorators::Single
         include API::Decorators::DateProperty
+        include API::Decorators::LinkedResource
 
         property :id
 
         date_time_property :remind_at
+
+        property :note
+
+        associated_resource :creator,
+                            v3_path: :user,
+                            representer: ::API::V3::Users::UserRepresenter
       end
     end
   end

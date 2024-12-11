@@ -1128,6 +1128,7 @@ en:
           duplicate_query_title: "Name of this view already exists. Change anyway?"
         text_no_results: "No matching views were found."
       reminders:
+        button_label: "Set reminder"
         title:
           new: "Set reminder"
           edit: "Edit reminder"

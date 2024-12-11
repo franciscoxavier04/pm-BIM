@@ -40,12 +40,9 @@ class Reminder < ApplicationRecord
   end
 
   def self.upcoming_and_visible_to(user)
-    visible_reminders = visible(user)
-    reminder_notifications_for_reminders = ReminderNotification.where(reminder: visible_reminders)
-
-    visible_reminders
+    visible(user)
       .where(completed_at: nil)
-      .where.not(id: reminder_notifications_for_reminders.select(:reminder_id))
+      .where.missing(:reminder_notifications)
   end
 
   def unread_notifications?

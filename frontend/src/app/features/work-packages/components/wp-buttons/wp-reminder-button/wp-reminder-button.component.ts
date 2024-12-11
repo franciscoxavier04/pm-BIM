@@ -34,14 +34,12 @@ import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import {
   WorkPackageReminderModalComponent,
 } from 'core-app/features/work-packages/components/wp-reminder-modal/wp-reminder.modal';
-import { ApiV3FilterBuilder } from 'core-app/shared/helpers/api-v3/api-v3-filter-builder';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { filter, map, startWith, switchMap } from 'rxjs/operators';
-import { merge, Observable, of } from 'rxjs';
+import { merge, Observable } from 'rxjs';
 import { ActionsService } from 'core-app/core/state/actions/actions.service';
 import { reminderModalUpdated } from 'core-app/features/work-packages/components/wp-reminder-modal/reminder.actions';
 import { CollectionResource } from 'core-app/features/hal/resources/collection-resource';
-import { notificationCountChanged } from 'core-app/core/state/in-app-notifications/in-app-notifications.actions';
 import { IanBellService } from 'core-app/features/in-app-notifications/bell/state/ian-bell.service';
 
 @Component({
@@ -54,6 +52,8 @@ export class WorkPackageReminderButtonComponent extends UntilDestroyedMixin impl
   @Input() public workPackage:WorkPackageResource;
 
   reminderCount$:Observable<number>;
+
+  public buttonTitle = this.I18n.t('js.work_packages.reminders.button_label');
 
   constructor(
     readonly I18n:I18nService,

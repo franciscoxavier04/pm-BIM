@@ -175,6 +175,13 @@ class WorkPackages::RemindersController < ApplicationController
     @reminder = @work_package.reminders
                              .upcoming_and_visible_to(User.current)
                              .find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    update_flash_message_via_turbo_stream(
+      message: I18n.t(:error_reminder_not_found),
+      scheme: :danger
+    )
+    respond_with_turbo_streams(status: :not_found)
+    false
   end
 
   def reminder_params

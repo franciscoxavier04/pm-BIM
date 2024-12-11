@@ -15,7 +15,7 @@ import { WorkPackageResource } from 'core-app/features/hal/resources/work-packag
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { ActionsService } from 'core-app/core/state/actions/actions.service';
 import { reminderModalUpdated } from 'core-app/features/work-packages/components/wp-reminder-modal/reminder.actions';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { CollectionResource } from 'core-app/features/hal/resources/collection-resource';
