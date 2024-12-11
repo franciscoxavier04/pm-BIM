@@ -26,39 +26,23 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::LifeCycleStepDefinition < ApplicationRecord
-  include ::Scopes::Scoped
+module Project::LifeCycleStepDefinitions::Scopes
+  module WithProjectCount
+    extend ActiveSupport::Concern
 
-  has_many :life_cycle_steps,
-           class_name: "Project::LifeCycleStep",
-           foreign_key: :definition_id,
-           inverse_of: :definition,
-           dependent: :destroy
-  has_many :projects, through: :life_cycle_steps
-  belongs_to :color, optional: false
+    class_methods do
+      def with_project_count
+        project_counts = Project::LifeCycleStep
+          .where(active: true)
+          .group(:definition_id)
+          .select(:definition_id, "COUNT(project_id) AS count")
 
-  validates :name, presence: true
-  validates :type, inclusion: { in: %w[Project::StageDefinition Project::GateDefinition], message: :must_be_a_stage_or_gate }
-
-  attr_readonly :type
-
-  acts_as_list
-
-  default_scope { order(:position) }
-
-  scopes :with_project_count
-
-  # def initialize(*args)
-  #   if instance_of? Project::LifeCycleStepDefinition
-  #     # Do not allow directly instantiating this class
-  #     raise NotImplementedError, "Cannot instantiate the base Project::LifeCycleStepDefinition class directly. " \
-  #                                "Use Project::StageDefinition or Project::GateDefinition instead."
-  #   end
-  #
-  #   super
-  # end
-
-  def step_class
-    raise NotImplementedError
+        Project::LifeCycleStepDefinition
+          .with(project_counts:)
+          .joins("LEFT OUTER JOIN project_counts ON #{quoted_table_name}.id = project_counts.definition_id")
+          .select("#{quoted_table_name}.*")
+          .select("COALESCE(project_counts.count, 0) AS project_count")
+      end
+    end
   end
 end
