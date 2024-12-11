@@ -52,7 +52,11 @@ module Pages::Meetings
     end
 
     def set_start_date(date)
-      fill_in "Date", with: date, fill_options: { clear: :backspace }
+      fill_in "Date", with: date
+    end
+
+    def set_starts_on(date)
+      fill_in "Starts on", with: date
     end
 
     def set_start_time(time)

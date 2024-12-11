@@ -64,7 +64,8 @@ en:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
@@ -244,8 +245,8 @@ en:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
       daily_interval: "Every %{interval} days"
