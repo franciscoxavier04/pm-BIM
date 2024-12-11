@@ -6,7 +6,10 @@
       method: form_method,
       data: {
         turbo: true,
-        controller: "show-when-value-selected recurring-meetings--form",
+        controller: [
+          "show-when-value-selected",
+          @meeting.is_a?(RecurringMeeting) ? "recurring-meetings--form" : nil,
+        ].compact.join(" "),
         "application-target": "dynamic"
       },
       html: {
