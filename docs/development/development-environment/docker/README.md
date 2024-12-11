@@ -45,7 +45,7 @@ docker compose up -d frontend
 Optional: In case you want to develop on the OpenProject *BIM Edition* you need
 to install all the required dependencies and command line tools to convert IFC
 files into XKT files, so that the BIM models can be viewed via the *Xeokit*
-BIM viewer. As the conversions are done by background jobs you need install 
+BIM viewer. As the conversions are done by background jobs you need install
 those tools within the `worker` service:
 
 ```shell
@@ -61,11 +61,14 @@ Once the containers are done booting you can access the application under `http:
 You can run tests inside the `backend-test` container. You can run specific tests, too.
 
 ```shell
+# Required once before running tests
+docker compose up -d backend-test
+
 # Run all tests (not recommended)
-docker compose run --rm backend-test bundle exec rspec
+docker compose exec backend-test bundle exec rspec
 
 # Run the specified test
-docker compose run --rm backend-test bundle exec rspec spec/features/work_package_show_spec.rb
+docker compose exec backend-test bundle exec rspec spec/features/work_package_show_spec.rb
 ```
 
 ***
@@ -474,7 +477,7 @@ Start up the docker compose service for Keycloak as follows:
 docker compose --project-directory docker/dev/keycloak up -d
 ```
 
-Once the keycloak service is started and running, you can access the keycloak instance on `https://keycloak.local` 
+Once the keycloak service is started and running, you can access the keycloak instance on `https://keycloak.local`
 and login with initial username and password as `admin`.
 
 Keycloak being an OpenID connect provider, we need to setup an OIDC integration for OpenProject.
