@@ -93,10 +93,12 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
   def find_item_value(value, _custom_field)
     ids = value.split(",").map(&:to_i)
 
-    CustomField::Hierarchy::Item.find(ids).map do |item|
-      next I18n.t(:label_deleted_custom_option) unless ids.include?(item.id)
+    items = CustomField::Hierarchy::Item.where(id: ids).index_by(&:id)
 
-      item.ancestry_path
+    ids.map do |id|
+      next I18n.t(:label_deleted_custom_option) unless items[id]
+
+      items[id].ancestry_path
     end.join(", ")
   end
 
