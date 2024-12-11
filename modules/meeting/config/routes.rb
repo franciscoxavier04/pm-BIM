@@ -64,6 +64,9 @@ Rails.application.routes.draw do
       post :delete_scheduled
       post :template_completed
     end
+    collection do
+      get :update_schedule, controller: "recurring_meetings/schedule", action: :update_text
+    end
   end
 
   resources :meetings do

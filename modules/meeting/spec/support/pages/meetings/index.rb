@@ -58,6 +58,7 @@ module Pages::Meetings
     def set_start_time(time)
       input = page.find_by_id("meeting_start_time_hour")
       page.execute_script("arguments[0].value = arguments[1]", input.native, time)
+      page.execute_script("arguments[0].dispatchEvent(new Event('input'))", input.native)
     end
 
     def set_end_date(date)

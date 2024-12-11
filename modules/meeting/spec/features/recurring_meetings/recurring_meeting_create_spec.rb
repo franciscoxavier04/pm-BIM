@@ -81,6 +81,8 @@ RSpec.describe "Recurring meetings creation",
       meetings_page.set_duration "1.5"
       meetings_page.set_end_date "2025-01-15"
 
+      expect(page).to have_text "Every week on Tuesday at 01:30 PM"
+
       click_on "Create meeting"
       wait_for_network_idle
       expect_and_dismiss_flash(type: :success, message: "Successful creation.")
