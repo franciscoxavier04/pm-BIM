@@ -43,6 +43,9 @@ See COPYRIGHT and LICENSE files for more details.
       title_container.with_column(pt: 1) do
         render(Projects::LifeCycleTypeComponent.new(definition))
       end
+      title_container.with_column(pt: 1, ml: 3) do
+        render(Primer::Beta::Text.new) { t("project.count_lowercase", count: definition.project_count) }
+      end
     end
   end
 %>

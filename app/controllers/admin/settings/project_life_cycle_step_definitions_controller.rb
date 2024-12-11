@@ -80,7 +80,7 @@ module Admin::Settings
     end
 
     def find_definitions
-      @definitions = Project::LifeCycleStepDefinition.all
+      @definitions = Project::LifeCycleStepDefinition.with_project_count
     end
 
     def find_definition

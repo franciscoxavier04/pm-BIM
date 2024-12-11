@@ -3283,6 +3283,10 @@ en:
       zero: "0 Projects"
       one: "1 Project"
       other: "%{count} Projects"
+    count_lowercase:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
 
   project_module_activity: "Activity"
   project_module_forums: "Forums"
