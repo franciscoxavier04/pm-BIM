@@ -3776,6 +3776,10 @@ en:
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
       new:
         description: "Changes to this project step will be reflected in all projects where it is enabled."
       new_stage:

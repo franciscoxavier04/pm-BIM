@@ -32,7 +32,10 @@ module Admin::Settings
 
     before_action :check_feature_flag
 
+    before_action :find_definitions, only: %i[index]
     before_action :find_definition, only: %i[edit update]
+
+    def index; end
 
     def new_stage
       @definition = Project::StageDefinition.new
@@ -74,6 +77,10 @@ module Admin::Settings
 
     def check_feature_flag
       render_404 unless OpenProject::FeatureDecisions.stages_and_gates_active?
+    end
+
+    def find_definitions
+      @definitions = Project::LifeCycleStepDefinition.all
     end
 
     def find_definition
