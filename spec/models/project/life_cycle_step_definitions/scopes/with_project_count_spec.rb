@@ -26,42 +26,32 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::LifeCycleStepDefinition < ApplicationRecord
-  include ::Scopes::Scoped
+require "spec_helper"
 
-  has_many :life_cycle_steps,
-           class_name: "Project::LifeCycleStep",
-           foreign_key: :definition_id,
-           inverse_of: :definition,
-           dependent: :destroy
-  has_many :projects, through: :life_cycle_steps
-  belongs_to :color, optional: false
+RSpec.describe Project::LifeCycleStepDefinitions::Scopes::WithProjectCount do
+  let!(:definition_a) { create(:project_stage_definition, name: "foo") }
+  let!(:definition_b) { create(:project_gate_definition, name: "bar") }
+  let!(:definition_c) { create(:project_stage_definition, name: "baz") }
 
-  validates :name, presence: true, uniqueness: true
-  validates :type, inclusion: { in: %w[Project::StageDefinition Project::GateDefinition], message: :must_be_a_stage_or_gate }
-  validate :validate_type_and_class_name_are_identical
+  before do
+    create(:project).tap do |project|
+      create(:project_stage, project:, definition: definition_a)
+      create(:project_stage, project:, definition: definition_b)
+    end
 
-  attr_readonly :type
-
-  acts_as_list
-
-  default_scope { order(:position) }
-
-  scopes :with_project_count
-
-  def step_class
-    raise NotImplementedError
+    create(:project).tap do |project|
+      create(:project_stage, project:, definition: definition_a)
+      create(:project_stage, project:, definition: definition_b, active: false)
+    end
   end
 
-  def column_name
-    "lcsd_#{id}"
-  end
-
-  private
-
-  def validate_type_and_class_name_are_identical
-    if type != self.class.name
-      errors.add(:type, :type_and_class_name_mismatch)
+  describe ".with_project_count" do
+    it "queries project counts alongside definitions" do
+      expect(Project::LifeCycleStepDefinition.with_project_count).to contain_exactly(
+        having_attributes(id: definition_a.id, name: "foo", project_count: 2),
+        having_attributes(id: definition_b.id, name: "bar", project_count: 1),
+        having_attributes(id: definition_c.id, name: "baz", project_count: 0)
+      )
     end
   end
 end
