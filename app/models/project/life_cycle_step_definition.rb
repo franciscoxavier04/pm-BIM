@@ -51,4 +51,8 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
     super
   end
+
+  def column_name
+    "lcsd_#{id}"
+  end
 end

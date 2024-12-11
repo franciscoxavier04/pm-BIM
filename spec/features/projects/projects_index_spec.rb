@@ -329,6 +329,77 @@ RSpec.describe "Projects index page", :js, :with_cuprite, with_settings: { login
     end
   end
 
+  context "with life cycle columns" do
+    shared_let(:life_cycle_gate) { create(:project_gate, date: Date.new(2024, 12, 13)) }
+    shared_let(:life_cycle_stage) do
+      create(:project_stage,
+             start_date: Date.new(2024, 12, 1),
+             end_date: Date.new(2024, 12, 13))
+    end
+    shared_let(:inactive_life_cycle_gate) { create(:project_gate, active: false) }
+    shared_let(:inactive_life_cycle_stage) { create(:project_stage, active: false) }
+
+    specify "life cycle columns do not show up by default" do
+      login_as(admin)
+      projects_page.visit!
+
+      expect(page).to have_no_text(life_cycle_gate.definition.name.upcase)
+      expect(page).to have_no_text(life_cycle_stage.definition.name.upcase)
+      expect(page).to have_no_text(inactive_life_cycle_gate.definition.name.upcase)
+      expect(page).to have_no_text(inactive_life_cycle_stage.definition.name.upcase)
+    end
+
+    specify "life cycle columns show up when configured to do so" do
+      login_as(admin)
+      projects_page.visit!
+
+      projects_page.expect_columns("Name")
+      projects_page.set_columns(life_cycle_gate.definition.name)
+
+      expect(page).to have_text(life_cycle_gate.definition.name.upcase)
+    end
+
+    specify "inactive life cycle columns have no cell content" do
+      login_as(admin)
+      projects_page.visit!
+
+      projects_page.expect_columns("Name")
+
+      col_names = [life_cycle_gate, life_cycle_stage,
+                   inactive_life_cycle_gate,
+                   inactive_life_cycle_stage].map { |l| l.definition.name }
+
+      projects_page.set_columns(*col_names)
+      # Inactive columns are still displayed in the header:
+      projects_page.expect_columns("Name", *col_names)
+
+      gate_project = life_cycle_gate.project
+      projects_page.within_row(gate_project) do
+        expect(page).to have_css(".name", text: gate_project.name)
+        expect(page).to have_css(".lcsd_#{life_cycle_gate.definition.id}", text: "12/13/2024")
+        # life cycle assigned to other project, no text here
+        expect(page).to have_css(".lcsd_#{life_cycle_stage.definition.id}", text: "")
+        # inactive life cycles, no text here
+        expect(page).to have_css(".lcsd_#{inactive_life_cycle_stage.definition.id}", text: "")
+        expect(page).to have_css(".lcsd_#{inactive_life_cycle_gate.definition.id}", text: "")
+      end
+
+      stage_project = life_cycle_stage.project
+      projects_page.within_row(stage_project) do
+        expect(page).to have_css(".name", text: stage_project.name)
+        expect(page).to have_css(".lcsd_#{life_cycle_stage.definition.id}", text: "12/01/2024 - 12/13/2024")
+        # life cycle assigned to other project, no text here
+        expect(page).to have_css(".lcsd_#{life_cycle_gate.definition.id}", text: "")
+      end
+
+      # Inactive life cycle steps never show their date values
+      other_proj = inactive_life_cycle_stage.project
+      projects_page.within_row(other_proj) do
+        expect(page).to have_css(".lcsd_#{inactive_life_cycle_stage.definition.id}", text: "")
+      end
+    end
+  end
+
   context "with valid Enterprise token" do
     shared_let(:long_text_custom_field) { create(:text_project_custom_field) }
     specify "CF columns and filters are not visible by default" do

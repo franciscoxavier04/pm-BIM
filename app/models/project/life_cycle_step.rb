@@ -46,4 +46,9 @@ class Project::LifeCycleStep < ApplicationRecord
 
     super
   end
+
+  def column_name
+    # The id of the associated definition is relevant for displaying the correct column headers
+    "lcsd_#{definition_id}"
+  end
 end

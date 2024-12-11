@@ -60,7 +60,15 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
 
   def action_menu_header(button)
     # Show the proper icon for the definition with the correct color.
-    icon = life_cycle_step.is_a?(Project::StageDefinition) ? :"git-commit" : :diamond
+    icon = case life_cycle_step
+           when Project::StageDefinition
+             :"git-commit"
+           when Project::GateDefinition
+             :diamond
+           else
+             raise "Unknown life cycle step: #{life_cycle_step}"
+           end
+
     classes = helpers.hl_inline_class("life_cycle_step_definition", life_cycle_step)
     button.with_leading_visual_icon(icon:, classes:)
 
