@@ -96,7 +96,7 @@ class OpenProject::JournalFormatter::CustomField::Plain < JournalFormatter::Base
     items = CustomField::Hierarchy::Item.where(id: ids).index_by(&:id)
 
     ids.map do |id|
-      next I18n.t(:label_deleted_custom_option) unless items[id]
+      next I18n.t(:label_deleted_custom_item) unless items[id]
 
       items[id].ancestry_path
     end.join(", ")

@@ -472,7 +472,7 @@ RSpec.describe OpenProject::JournalFormatter::CustomField do
 
       describe "with a deleted item" do
         let(:values) { [[luke.id, -100].join(","), luke.id.to_s] }
-        let(:original_value) { [luke.ancestry_path, I18n.t(:label_deleted_custom_option)].join(", ") }
+        let(:original_value) { [luke.ancestry_path, I18n.t(:label_deleted_custom_item)].join(", ") }
         let(:formatted_value) { luke.ancestry_path }
 
         let(:expected) do
