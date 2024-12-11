@@ -392,7 +392,6 @@ module SortHelper
   # Some of the method arguments are only needed for specific actions.
   def action_menu(column, table_columns, caption, default_order, filter_column_mapping = {},
                   allowed_params: nil, **html_options)
-
     attribute = column.attribute
     caption ||= attribute.to_s.humanize
 
