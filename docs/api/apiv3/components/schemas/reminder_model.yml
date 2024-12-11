@@ -14,15 +14,15 @@ properties:
     type: string
     format: date-time
     description: The date and time when the reminder is due
-_links:
-  required:
-    - creator
-  type: object
-  properties:
-    creator:
-      allOf:
-        - $ref: "./link.yml"
-        - description: |-
-            The person that created the reminder
+  _links:
+    required:
+      - creator
+    type: object
+    properties:
+      creator:
+        allOf:
+          - $ref: "./link.yml"
+          - description: |-
+              The person that created the reminder
 
-            **Resource**: User
+              **Resource**: User
