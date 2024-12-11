@@ -26,19 +26,22 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
-require File.expand_path("../support/permission_specs", __dir__)
+module ProjectLifeCycleSteps
+  class PreviewAttributesService < ::BaseServices::SetAttributes
+    def perform(*)
+      super.tap do |service_call|
+        clear_unchanged_fields(service_call)
+      end
+    end
 
-RSpec.describe Overviews::OverviewsController, "edit_project_life_cycles permission", # rubocop:disable RSpec/EmptyExampleGroup,RSpec/SpecFilePathFormat
-               type: :controller do
-  include PermissionSpecs
+    private
 
-  # render dialog with inputs for editing project attributes with edit_project permission
-  check_permission_required_for("overviews/overviews#project_life_cycles_dialog", :edit_project_stages_and_gates)
-
-  # render form with inputs for editing project attributes with edit_project permission
-  check_permission_required_for("overviews/overviews#project_life_cycles_form", :edit_project_stages_and_gates)
-
-  # update project attributes with edit_project permission, deeper permission check via contract in place
-  check_permission_required_for("overviews/overviews#update_project_life_cycles", :edit_project_stages_and_gates)
+    def clear_unchanged_fields(service_call)
+      service_call
+        .result
+        .available_life_cycle_steps
+        .reject(&:changed?)
+        .each { _1.errors.clear }
+    end
+  end
 end

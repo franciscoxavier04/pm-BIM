@@ -97,6 +97,8 @@ export class OpBasicSingleDatePickerComponent implements ControlValueAccessor, O
 
   @Input() inDialog = false;
 
+  @Input() dataAction = '';
+
   @ViewChild('input') input:ElementRef;
 
   mobile = false;

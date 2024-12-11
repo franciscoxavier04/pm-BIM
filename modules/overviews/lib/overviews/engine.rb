@@ -74,6 +74,7 @@ module Overviews
           .controller_actions
           .push(
             "overviews/overviews/project_life_cycles_dialog",
+            "overviews/overviews/project_life_cycles_form",
             "overviews/overviews/update_project_life_cycles"
           )
 
