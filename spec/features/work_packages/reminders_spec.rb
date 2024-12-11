@@ -83,7 +83,7 @@ RSpec.describe "Work package reminder modal",
         fill_in "Time", with: time
         fill_in "Note", with: "Never forget!"
 
-        click_link_or_button "Schedule"
+        click_link_or_button "Set reminder"
       end
 
       work_package_page.expect_and_dismiss_flash(type: :success,
@@ -215,7 +215,7 @@ RSpec.describe "Work package reminder modal",
           fill_in "Date", with: yesterday
           fill_in "Time", with: two_am
           fill_in "Note", with: "Never forget!"
-          click_link_or_button "Schedule"
+          click_link_or_button "Set reminder"
 
           wait_for_network_idle
           expect(page).to have_css(".FormControl-inlineValidation", text: "Date must be in the future.")
@@ -224,7 +224,7 @@ RSpec.describe "Work package reminder modal",
           # 30 minutes ago
           fill_in "Date", with: today
           fill_in "Time", with: thirty_minutes_ago
-          click_link_or_button "Schedule"
+          click_link_or_button "Set reminder"
 
           wait_for_network_idle
           expect(page).to have_css(".FormControl-inlineValidation", text: "Time must be in the future.")
@@ -233,7 +233,7 @@ RSpec.describe "Work package reminder modal",
           # 30 minutes from now
           fill_in "Date", with: today
           fill_in "Time", with: thirty_minutes_from_now
-          click_link_or_button "Schedule"
+          click_link_or_button "Set reminder"
 
           wait_for_network_idle
         end
@@ -256,7 +256,7 @@ RSpec.describe "Work package reminder modal",
                          text: "You will receive a notification for this work package at the chosen time.")
 
           # Click the Schedule button without filling in the date or time
-          click_link_or_button "Schedule"
+          click_link_or_button "Set reminder"
 
           wait_for_network_idle
           expect(page).to have_css(".FormControl-inlineValidation", text: "Date can't be blank")
@@ -264,7 +264,7 @@ RSpec.describe "Work package reminder modal",
 
           # Fill in the date but not the time
           fill_in "Date", with: 1.week.from_now.to_date
-          click_link_or_button "Schedule"
+          click_link_or_button "Set reminder"
 
           wait_for_network_idle
           # The error message is only on the time field
@@ -274,7 +274,7 @@ RSpec.describe "Work package reminder modal",
           # Fill in the time but not the date
           fill_in "Date", with: ""
           fill_in "Time", with: Time.zone.parse("05:00")
-          click_link_or_button "Schedule"
+          click_link_or_button "Set reminder"
 
           wait_for_network_idle
           expect(page).to have_css(".FormControl-inlineValidation", text: "Date can't be blank.")
@@ -355,7 +355,7 @@ RSpec.describe "Work package reminder modal",
           expect(page).to have_field("Date")
           expect(page).to have_field("Time")
           expect(page).to have_field("Note")
-          expect(page).to have_button("Schedule")
+          expect(page).to have_button("Set reminder")
         end
       end
     end
