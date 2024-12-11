@@ -1854,8 +1854,6 @@ en:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
 
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
