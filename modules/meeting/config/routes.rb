@@ -65,7 +65,7 @@ Rails.application.routes.draw do
       post :template_completed
     end
     collection do
-      get :update_schedule, controller: "recurring_meetings/schedule", action: :update_text
+      get :humanize_schedule, controller: "recurring_meetings/schedule", action: :humanize_schedule
     end
   end
 

@@ -3,12 +3,12 @@ module RecurringMeetings
     before_action do
       do_authorize :create_meetings, global: true
     end
-    authorization_checked! :update_text
+    authorization_checked! :humanize_schedule
 
     around_action :with_user_time_zone
     before_action :build_meeting
 
-    def update_text
+    def humanize_schedule
       text = @recurring_meeting.human_frequency_schedule
       respond_to do |format|
         format.html { render plain: text }

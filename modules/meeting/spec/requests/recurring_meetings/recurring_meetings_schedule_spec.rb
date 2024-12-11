@@ -52,7 +52,7 @@ RSpec.describe "Recurring meetings schedule text",
   let(:format) { :html }
 
   subject do
-    get update_schedule_recurring_meetings_path(params:, format:)
+    get humanize_schedule_recurring_meetings_path(params:, format:)
     response
   end
 

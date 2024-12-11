@@ -23,7 +23,7 @@ export default class OpRecurringMeetingsFormController extends ApplicationContro
     void this
       .turboRequests
       .request(
-        `${this.pathHelper.staticBase}/recurring_meetings/update_schedule?${urlSearchParams.toString()}`,
+        `${this.pathHelper.staticBase}/recurring_meetings/humanize_schedule?${urlSearchParams.toString()}`,
         {
           headers: { Accept: 'text/vnd.turbo-stream.html' },
         },
