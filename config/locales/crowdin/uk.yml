@@ -33,7 +33,7 @@ uk:
         label_activity_show_only_changes: "Показувати лише зміни"
         label_sort_asc: "Найновіші внизу"
         label_sort_desc: "Найновіші вгорі"
-        label_type_to_comment: "Місце для коментаря"
+        label_type_to_comment: "Додайте коментар. Введіть @, щоб сповістити людину."
         label_submit_comment: "Надіслати коментар"
         changed_on: "змінено"
         created_on: "створив(-ла)"
@@ -218,8 +218,12 @@ uk:
       items:
         actions: "Дії"
         blankslate:
-          title: "Ваш список елементів порожній"
-          description: "Спочатку додайте елементи до користувацького поля ієрархії типів. Створити ієрархію можна для кожного елемента. Щоб переходити між піделементами ієрархії і додавати\nїх, натисніть створений елемент."
+          root:
+            title: "Ваш список елементів порожній"
+            description: "Спочатку додайте елементи до користувацького поля ієрархії типів. Створити ієрархію можна для кожного елемента. Щоб переходити між піделементами ієрархії і додавати\nїх, натисніть створений елемент."
+          item:
+            title: Цей елемент не має нижчого рівня ієрархії
+            description: Додайте елементи до цього списку, щоб створити піделементи всередині іншого
         placeholder:
           label: "Мітка елемента"
           short: "Коротка назва"
@@ -230,6 +234,8 @@ uk:
           zero: немає піделементів
           one: 1 піделемент
           other: "Піделементів: %{count}"
+    upsale:
+      custom_field_format_hierarchy: "Потрібно створити ієрархію в користувацьких полях для пакетів робіт?"
     text_add_new_custom_field: >
       Щоб додати нові користувальницькі поля до проекту, спочатку потрібно створити їх, перш ніж ви зможете додати їх до цього проекту.
     is_enabled_globally: "Увімкнено у всьому світі"
@@ -256,12 +262,26 @@ uk:
     single: "або"
   dry_validation:
     errors:
+      int?: "має бути цілим числом."
+      filled?: "має бути заповнено."
+      greater_or_equal_zero: "має дорівнювати нулю або перевищувати його."
+      not_found: "не знайдено."
       rules:
+        item:
+          root_item: "не може бути кореневим елементом."
+          not_persisted: "має бути вже наявним елементом."
         label:
-          filled?: "має бути заповнено"
-          not_unique: "має бути унікальним у межах одного рівня ієрархії"
+          not_unique: "має бути унікальним у межах одного рівня ієрархії."
+        short:
+          not_unique: "має бути унікальним у межах одного рівня ієрархії."
+        parent:
+          not_descendant: "має бути нащадком кореня ієрархії."
     rules:
+      depth: "Глибина"
+      item: "Елемент"
       label: "Мітка"
+      short: "Коротка назва"
+      parent: "Батьківський елемент"
   global_search:
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:
@@ -623,6 +643,66 @@ uk:
           no_results_title_text: Наразі немає доступних типів.
         version:
           no_results_title_text: Наразі немає доступних версій.
+  work_package_relations_tab:
+    index:
+      action_bar_title: "Додавайте зв’язки з іншими пакетами робіт."
+      no_results_title_text: Зараз немає доступних зв’язків.
+      blankslate_heading: "Немає зв’язків"
+      blankslate_description: "Цей пакет робіт ще не має зв’язків."
+    label_add_x: "Додати %{x}"
+    label_edit_x: "Редагувати %{x}"
+    label_add_description: "Додати опис"
+    relations:
+      label_relates_singular: "зв’язано з"
+      label_relates_plural: "зв’язано з"
+      label_relates_to_singular: "зв’язано з"
+      label_relates_to_plural: "зв’язано з"
+      relates_description: "Створює видимий зв’язок між двома пакетами робіт без додаткових ефектів"
+      relates_to_description: "Створює видимий зв’язок між двома пакетами робіт без додаткових ефектів"
+      label_precedes_singular: "наступник (після)"
+      label_precedes_plural: "наступники (після)"
+      precedes_description: "Зв’язаний пакет робіт обов’язково має починатися після завершення цього"
+      label_follows_singular: "попередник (до)"
+      label_follows_plural: "попередники (до)"
+      follows_description: "Зв’язаний пакет робіт обов’язково має завершуватися перед початком цього"
+      label_child_singular: "дочірній елемент"
+      label_child_plural: "дочірні елементи"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_blocks_singular: "блоки"
+      label_blocks_plural: "блоки"
+      blocks_description: "Звʼязаний пакет робіт можна закрити лише після закриття цього"
+      label_blocked_singular: "заблоковано"
+      label_blocked_plural: "заблоковано"
+      label_blocked_by_singular: "заблоковано"
+      label_blocked__by_plural: "заблоковано"
+      blocked_description: "Цей пакет робіт можна закрити лише після закриття звʼязаного з ним"
+      blocked_by_description: "Цей пакет робіт можна закрити лише після закриття звʼязаного з ним"
+      label_duplicates_singular: "дублює"
+      label_duplicates_plural: "дублює"
+      duplicates_description: "Це копія звʼязаного пакета робіт"
+      label_duplicated_singular: "дублюється"
+      label_duplicated_plural: "дублюється"
+      label_duplicated_by_singular: "дублюється"
+      label_duplicated_by_plural: "дублюється"
+      duplicated_by_description: "Звʼязаний пакет робіт є копією цього"
+      duplicated_description: "Звʼязаний пакет робіт є копією цього"
+      label_includes_singular: "включає"
+      label_includes_plural: "включає"
+      includes_description: "Позначає звʼязаний пакет робіт як такий, що включає цей, без додаткового ефекту"
+      label_partof_singular: "належить до"
+      label_partof_plural: "належить до"
+      label_part_of_singular: "належить до"
+      label_part_of_plural: "належить до"
+      partof_description: "Позначає звʼязаний пакет робіт як такий, що належить до цього, без додаткового ефекту"
+      part_of_description: "Позначає звʼязаний пакет робіт як такий, що належить до цього, без додаткового ефекту"
+      label_requires_singular: "вимагає"
+      label_requires_plural: "вимагає"
+      requires_description: "Позначає звʼязаний пакет робіт як обовʼязковий для цього"
+      label_required_singular: "вимагається"
+      label_required_plural: "вимагається"
+      required_description: "Позначає цей робочий пакет як обовʼязковий для звʼязаного з ним"
+      label_parent_singular: "батьківський елемент"
+      label_parent_plural: "батьківський елемент"
   label_invitation: Запрошення
   account:
     delete: "Видалити обліковий запис"
@@ -1019,6 +1099,20 @@ uk:
           attributes:
             project_ids:
               blank: "Виберіть проєкт."
+        project/life_cycle_step_definition:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "має бути Project::StageDefinition або Project::GateDefinition"
+        project/life_cycle_step:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "має бути Project::Stage або Project::Gate"
+              must_be_a_stage: "має бути Project::Stage"
+              must_be_a_gate: "має бути Project::Gate"
+        project/gate:
+          attributes:
+            base:
+              end_date_not_allowed: "Неможливо призначити `end_date` для проєкту Project::Gate"
         query:
           attributes:
             project:
@@ -1408,6 +1502,9 @@ uk:
   button_actions: "Дії"
   button_add: "Додати"
   button_add_comment: "Додати коментар"
+  button_add_item_above: "Додати елемент вище"
+  button_add_item_below: "Додати елемент нижче"
+  button_add_sub_item: "Додати піделемент"
   button_add_member: Додати учасника
   button_add_watcher: "Додати спостерігача"
   button_annotate: "Коментувати"
@@ -1867,6 +1964,23 @@ uk:
     units:
       hours: г
       days: д
+  pdf_generator:
+    page_nr_footer: "Сторінка %{page} з %{total}"
+    dialog:
+      title: Згенерувати PDF
+      submit: Згенерувати
+      header_right:
+        label: Верхній колонтитул, справа
+        caption: Текст, що відображається праворуч від верхнього колонтитула
+      footer_center:
+        label: Нижній колонтитул, центр
+        caption: Текст, що відображається в центрі нижнього колонтитула
+      hyphenation:
+        label: Перенесення
+        caption: Переносьте слова між рядками, щоб вирівняти текст і покращити його читабельність.
+      paper_size:
+        label: Розмір паперу
+        caption: Розмір паперу для PDF-файлу.
   extraction:
     available:
       pdftotext: "Доступний текст PDF (необов'язково)"
@@ -2225,6 +2339,7 @@ uk:
   label_environment: "Навколишнє середовище"
   label_estimates_and_progress: "Оцінки й прогрес виконання"
   label_equals: "є"
+  label_equals_with_descendants: "– будь-який із нащадками"
   label_everywhere: "скрізь"
   label_example: "Приклад"
   label_experimental: "Експериментальне"
@@ -2489,6 +2604,8 @@ uk:
   label_related_work_packages: "Пов'язані робочі пакети"
   label_relates: "пов'язані з"
   label_relates_to: "пов'язані з"
+  label_relation: "Зв’язок"
+  label_relation_actions: "Дії зі зв’язками"
   label_relation_delete: "Видалити зв'язок"
   label_relation_new: "Новий зв'язок"
   label_release_notes: "Примітки до випуску"

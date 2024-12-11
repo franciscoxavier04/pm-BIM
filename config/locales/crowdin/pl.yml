@@ -33,7 +33,7 @@ pl:
         label_activity_show_only_changes: "Pokaż tylko zmiany"
         label_sort_asc: "Najnowsze na końcu"
         label_sort_desc: "Najnowsze na początku"
-        label_type_to_comment: "Wpisz tutaj, aby skomentować"
+        label_type_to_comment: "Dodaj komentarz. Wpisz @, aby powiadomić innych."
         label_submit_comment: "Prześlij komentarz"
         changed_on: "zmieniono"
         created_on: "utworzono to"
@@ -220,8 +220,12 @@ pl:
       items:
         actions: "Działania elementu"
         blankslate:
-          title: "Twoja lista elementów jest pusta"
-          description: "Zacznij od dodawania elementów do pola niestandardowego typu hierarchii. Każdy element może być użyty do tworzenia hierarchii poniżej niego. Aby nawigować i tworzyć podelementy wewnątrz hierarchii, kliknij utworzony element."
+          root:
+            title: "Twoja lista elementów jest pusta"
+            description: "Zacznij od dodawania elementów do pola niestandardowego typu hierarchii. Każdy element może być użyty do tworzenia hierarchii poniżej niego. Aby nawigować i tworzyć podelementy wewnątrz hierarchii, kliknij utworzony element."
+          item:
+            title: Ten element nie ma żadnego poziomu hierarchii poniżej
+            description: Dodaj elementy do tej listy, aby utworzyć elementy podrzędne wewnątrz innego
         placeholder:
           label: "Etykieta elementu"
           short: "Nazwa skrócona"
@@ -232,6 +236,8 @@ pl:
           zero: brak podelementów
           one: 1 podelement
           other: "Liczba podelementów: %{count}"
+    upsale:
+      custom_field_format_hierarchy: "Potrzebujesz hierarchii w polach niestandardowych pakietów roboczych?"
     text_add_new_custom_field: >
       Aby dodać do projektu nowe pola niestandardowe, najpierw należy je utworzyć.
     is_enabled_globally: "Jest włączony globalnie"
@@ -258,12 +264,26 @@ pl:
     single: "lub"
   dry_validation:
     errors:
+      int?: "musi być liczbą całkowitą."
+      filled?: "musi być wypełnione."
+      greater_or_equal_zero: "musi mieć wartość większą lub równą 0."
+      not_found: "nie znaleziono."
       rules:
+        item:
+          root_item: "nie może być elementem głównym."
+          not_persisted: "musi być już istniejącym elementem."
         label:
-          filled?: "musi być wypełnione"
-          not_unique: "muszą być unikalne na tym samym poziomie hierarchii"
+          not_unique: "muszą być unikalne na tym samym poziomie hierarchii."
+        short:
+          not_unique: "muszą być unikalne na tym samym poziomie hierarchii."
+        parent:
+          not_descendant: "musi być potomkiem katalogu głównego hierarchii."
     rules:
+      depth: "Głębokość"
+      item: "Element"
       label: "Etykieta"
+      short: "Nazwa skrócona"
+      parent: "Element nadrzędny"
   global_search:
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
@@ -627,6 +647,66 @@ pl:
           no_results_title_text: Nie ma dostępnych typów.
         version:
           no_results_title_text: Obecnie żadne wersje nie są dostępne.
+  work_package_relations_tab:
+    index:
+      action_bar_title: "Dodaj relacje do innych pakietów roboczych, aby utworzyć powiązanie między nimi."
+      no_results_title_text: Obecnie nie są dostępne żadne relacje.
+      blankslate_heading: "Brak relacji"
+      blankslate_description: "Ten pakiet roboczy nie ma jeszcze żadnych relacji."
+    label_add_x: "Dodaj %{x}"
+    label_edit_x: "Edytuj %{x}"
+    label_add_description: "Dodaj opis"
+    relations:
+      label_relates_singular: "ma relację z"
+      label_relates_plural: "ma relację z"
+      label_relates_to_singular: "ma relację z"
+      label_relates_to_plural: "ma relację z"
+      relates_description: "Tworzy widoczne powiązanie między dwoma pakietami roboczymi bez dodatkowego wpływu"
+      relates_to_description: "Tworzy widoczne powiązanie między dwoma pakietami roboczymi bez dodatkowego wpływu"
+      label_precedes_singular: "następca (po)"
+      label_precedes_plural: "następcy (po)"
+      precedes_description: "Powiązany pakiet roboczy musi koniecznie rozpocząć się po zakończeniu tego pakietu"
+      label_follows_singular: "poprzednik (przed)"
+      label_follows_plural: "poprzednicy (przed)"
+      follows_description: "Powiązany pakiet roboczy musi koniecznie zostać ukończony przed rozpoczęciem tego pakietu"
+      label_child_singular: "element podrzędny"
+      label_child_plural: "elementy podrzędne"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_blocks_singular: "blok"
+      label_blocks_plural: "bloki"
+      blocks_description: "Powiązany pakiet roboczy nie może zostać zamknięty, dopóki najpierw nie zostanie zamknięty ten pakiet roboczy"
+      label_blocked_singular: "blokowany przez"
+      label_blocked_plural: "blokowany przez"
+      label_blocked_by_singular: "blokowany przez"
+      label_blocked__by_plural: "blokowany przez"
+      blocked_description: "Ten pakiet roboczy nie może zostać zamknięty, dopóki najpierw nie zostanie zamknięty powiązany pakiet roboczy"
+      blocked_by_description: "Ten pakiet roboczy nie może zostać zamknięty, dopóki najpierw nie zostanie zamknięty powiązany pakiet roboczy"
+      label_duplicates_singular: "duplikat"
+      label_duplicates_plural: "duplikaty"
+      duplicates_description: "To jest kopia powiązanego pakietu roboczego"
+      label_duplicated_singular: "zduplikowany przez"
+      label_duplicated_plural: "zduplikowane przez"
+      label_duplicated_by_singular: "zduplikowany przez"
+      label_duplicated_by_plural: "zduplikowane przez"
+      duplicated_by_description: "Powiązany pakiet roboczy jest kopią tego"
+      duplicated_description: "Powiązany pakiet roboczy jest kopią tego"
+      label_includes_singular: "zawiera"
+      label_includes_plural: "zawierają"
+      includes_description: "Oznacza powiązany pakiet roboczy jako zawierający ten pakiet roboczy bez dodatkowego wpływu"
+      label_partof_singular: "część"
+      label_partof_plural: "część"
+      label_part_of_singular: "część"
+      label_part_of_plural: "część"
+      partof_description: "Zaznacza powiązany pakiet roboczy jako część tego pakietu roboczego bez dodatkowego wpływu"
+      part_of_description: "Oznacza powiązany pakiet roboczy jako będący częścią tego pakietu roboczego bez dodatkowego wpływu"
+      label_requires_singular: "wymaga"
+      label_requires_plural: "wymagają"
+      requires_description: "Oznacza powiązany pakiet roboczy jako wymaganie dla tego pakietu roboczego"
+      label_required_singular: "wymagany przez"
+      label_required_plural: "wymagany przez"
+      required_description: "Oznacza ten pakiet roboczy jako wymaganie powiązanego pakietu roboczego"
+      label_parent_singular: "nadrzędny"
+      label_parent_plural: "nadrzędne"
   label_invitation: Zaproszenie
   account:
     delete: "Usuń konto"
@@ -1023,6 +1103,20 @@ pl:
           attributes:
             project_ids:
               blank: "Wybierz projekt."
+        project/life_cycle_step_definition:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "musi mieć wartość Project::StageDefinition albo Project::GateDefinition"
+        project/life_cycle_step:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "musi mieć wartość Project::Stage albo Project::Gate"
+              must_be_a_stage: "musi mieć wartość Project::Stage"
+              must_be_a_gate: "musi mieć wartość Project::Gate"
+        project/gate:
+          attributes:
+            base:
+              end_date_not_allowed: "Nie można przypisać „end_date” do Project::Gate"
         query:
           attributes:
             project:
@@ -1412,6 +1506,9 @@ pl:
   button_actions: "Działania"
   button_add: "Dodaj"
   button_add_comment: "Dodaj komentarz"
+  button_add_item_above: "Dodaj element powyżej"
+  button_add_item_below: "Dodaj element poniżej"
+  button_add_sub_item: "Dodaj podelement"
   button_add_member: Dodaj członka projektu
   button_add_watcher: "Dodaj obserwatora"
   button_annotate: "Adnotacja"
@@ -1871,6 +1968,23 @@ pl:
     units:
       hours: h
       days: d
+  pdf_generator:
+    page_nr_footer: "Strona %{page} z %{total}"
+    dialog:
+      title: Wygeneruj PDF
+      submit: Wygeneruj
+      header_right:
+        label: Nagłówek z prawej
+        caption: Tekst wyświetlany po prawej stronie nagłówka
+      footer_center:
+        label: Środek stopki
+        caption: Tekst, który ma być wyświetlany na środku stopki
+      hyphenation:
+        label: Dzielenie wyrazów
+        caption: Dzielenie wyrazów między wierszami w celu poprawy justowania i czytelności tekstu.
+      paper_size:
+        label: Rozmiar papieru
+        caption: Rozmiar papieru, który ma zostać użyty w pliku PDF.
   extraction:
     available:
       pdftotext: "Dostępny konwerter Pdftotext (opcjonalny)"
@@ -2229,6 +2343,7 @@ pl:
   label_environment: "Środowisko"
   label_estimates_and_progress: "Szacunki i postęp"
   label_equals: "jest"
+  label_equals_with_descendants: "jest dowolny z potomkami"
   label_everywhere: "wszędzie"
   label_example: "Przykład"
   label_experimental: "Eksperymentalny"
@@ -2493,6 +2608,8 @@ pl:
   label_related_work_packages: "Powiązanie pakiety robocze"
   label_relates: "Powiązane z"
   label_relates_to: "Powiązane z"
+  label_relation: "Relacja"
+  label_relation_actions: "Działania relacji"
   label_relation_delete: "Usuń powiązanie"
   label_relation_new: "Nowe powiązanie"
   label_release_notes: "Dziennik zamian"
