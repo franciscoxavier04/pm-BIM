@@ -72,7 +72,7 @@ RSpec.describe "Recurring meetings schedule text",
 
       it "returns the update text" do
         expect(subject).to have_http_status(:ok)
-        expect(subject.body).to include("Every 2nd week on Thursday at 10:00 AM")
+        expect(subject.body).to include("Every 2 weeks on Thursday at 10:00 AM")
       end
     end
 
@@ -81,7 +81,7 @@ RSpec.describe "Recurring meetings schedule text",
 
       it "returns the update text" do
         expect(subject).to have_http_status(:ok)
-        expect(subject.body).to include("Every 2nd day at 10:00 AM")
+        expect(subject.body).to include("Every 2 days at 10:00 AM")
       end
     end
 

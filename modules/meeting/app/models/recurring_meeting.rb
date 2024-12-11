@@ -94,7 +94,7 @@ class RecurringMeeting < ApplicationRecord
       if interval == 1
         human_frequency
       else
-        I18n.t("recurring_meeting.in_words.daily_interval", interval: interval.ordinalize)
+        I18n.t("recurring_meeting.in_words.daily_interval", interval:)
       end
     when "working_days"
       I18n.t("recurring_meeting.in_words.working_days")
@@ -102,7 +102,7 @@ class RecurringMeeting < ApplicationRecord
       if interval == 1
         I18n.t("recurring_meeting.in_words.weekly", weekday:)
       else
-        I18n.t("recurring_meeting.in_words.weekly_interval", interval: interval.ordinalize, weekday:)
+        I18n.t("recurring_meeting.in_words.weekly_interval", interval:, weekday:)
       end
     end
   end
