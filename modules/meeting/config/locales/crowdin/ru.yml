@@ -126,11 +126,11 @@ ru:
   label_recurring_occurrence_delete_confirmation: >
     Любая информация о встрече, не включенная в шаблон, будет потеряна. Вы хотите продолжить?
   label_recurring_meeting_restore: "Восстановить это событие"
-  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
-  label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
-  label_recurring_meeting_more_past: "There are %{count} more past meetings."
-  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
-  label_recurring_meeting_show_more: "Show more"
+  label_recurring_meeting_more: "Есть еще %{count} запланированных встреч (%{schedule})."
+  label_recurring_meeting_more_singular: "Есть еще %{count} запланированная встреча (%{schedule})."
+  label_recurring_meeting_more_past: "Есть еще %{count} прошлых встреч."
+  label_recurring_meeting_more_past_singular: "Есть еще %{count} прошедшая встреча."
+  label_recurring_meeting_show_more: "Показать еще"
   label_recurring_meeting_series_edit: "Изменить серию встреч"
   label_recurring_meeting_series_delete: "Удалить серию встреч"
   label_my_meetings: "Мои встречи"
@@ -214,11 +214,11 @@ ru:
       label_view_template: "Посмотреть шаблон"
       label_edit_template: "Изменить шаблон"
       banner_html: >
-        You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
+        В настоящее время вы редактируете шаблон серии встреч: %{link}. Каждая новая встреча в этой серии будет использовать этот шаблон. Изменения не повлияют на прошлые или уже созданные встречи.
     frequency:
       every_weekday: "Каждый %{day_of_the_week}"
       daily: "Ежедневно"
-      working_days: "Every working day"
+      working_days: "Каждый рабочий день"
       weekly: "Еженедельно"
     end_after:
       specific_date: "Конкретная дата"
@@ -283,7 +283,7 @@ ru:
   text_deleted_agenda_item: 'Удаленный пункт повестки'
   label_initial_meeting_details: "Встреча"
   label_meeting_details: "Детали совещания"
-  label_meeting_series_details: "Meeting series details"
+  label_meeting_series_details: "Подробности серии встреч"
   label_meeting_details_edit: "Изменить сведения о встрече"
   label_meeting_state: "Статус встречи"
   label_meeting_state_open: "Открыть"
