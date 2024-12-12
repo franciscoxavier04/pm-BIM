@@ -29,13 +29,11 @@
                        content_arguments: { data: { controller: "async-dialog" }}
         )
 
-        if OpenProject::FeatureDecisions.recurring_meetings_active?
-          menu.with_item(label: I18n.t("meeting.types.recurring"),
-                         tag: :a,
-                         href: new_dialog_meetings_path(project_id: @project&.id, type: :recurring),
-                         content_arguments: { data: { controller: "async-dialog" }}
-          )
-        end
+        menu.with_item(label: I18n.t("meeting.types.recurring"),
+                       tag: :a,
+                       href: new_dialog_meetings_path(project_id: @project&.id, type: :recurring),
+                       content_arguments: { data: { controller: "async-dialog" }}
+        )
 
         menu.with_item(label: I18n.t("meeting.types.classic"),
                        tag: :a,
