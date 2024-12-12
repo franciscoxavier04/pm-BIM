@@ -218,7 +218,7 @@ de:
           heading: Für alle Projekte
           description: Dieses Projekt-Attribut ist in allen Projekten aktiviert, da die Option "Für alle Projekte" aktiviert ist. Es kann nicht für einzelne Projekte deaktiviert werden.
       items:
-        actions: "Element-Aktionen"
+        actions: "Aktionen"
         blankslate:
           root:
             title: "Ihre Liste der Elemente ist leer"
@@ -1822,7 +1822,7 @@ de:
             label: "XLS"
       columns:
         input_label_report: "Spalten zur Attributtabelle hinzufügen"
-        input_caption_report: "Standardmäßig sind alle Attribute, die als Spalten in der Arbeitspaketliste hinzugefügt wurden, ausgewählt. Textfelder sind in der Attribut-Tabelle nicht verfügbar, können aber unterhalb der Tabelle angezeigt werden."
+        input_caption_report: "Standardmäßig sind alle Attribute, die als Spalten in der Arbeitspaketliste hinzugefügt wurden, ausgewählt. Langtextfelder sind in der Attributtabelle nicht verfügbar, können aber unterhalb der Tabelle angezeigt werden."
         input_caption_table: "Standardmäßig sind alle Attribute, die als Spalten in der Arbeitspaketliste hinzugefügt wurden, ausgewählt. Textfelder sind in tabellenbasierten Exporten nicht verfügbar."
       pdf:
         export_type:
