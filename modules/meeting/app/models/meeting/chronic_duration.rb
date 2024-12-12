@@ -28,10 +28,10 @@
 
 module Meeting::ChronicDuration
   def duration=(value)
-    if value.is_a?(Numeric)
-      super
+    if value.is_a?(String)
+      write_attribute(:duration, value.to_hours)
     else
-      write_attribute(:duration, DurationConverter.parse(value))
+      super
     end
   end
 
