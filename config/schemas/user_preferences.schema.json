@@ -74,6 +74,9 @@
           "properties": {
             "mentioned": {
               "type": "boolean"
+            },
+            "personalReminder": {
+              "type": "boolean"
             }
           },
           "required": [
