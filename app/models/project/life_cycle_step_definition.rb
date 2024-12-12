@@ -27,6 +27,8 @@
 #++
 
 class Project::LifeCycleStepDefinition < ApplicationRecord
+  include ::Scopes::Scoped
+
   has_many :life_cycle_steps,
            class_name: "Project::LifeCycleStep",
            foreign_key: :definition_id,
@@ -43,13 +45,19 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
   acts_as_list
 
-  private
+  default_scope { order(:position) }
 
-  def validate_type_and_class_name_are_identical
-    if type != self.class.name
-      errors.add(:type, :type_and_class_name_mismatch)
-    end
-  end
+  scopes :with_project_count
+
+  # def initialize(*args)
+  #   if instance_of? Project::LifeCycleStepDefinition
+  #     # Do not allow directly instantiating this class
+  #     raise NotImplementedError, "Cannot instantiate the base Project::LifeCycleStepDefinition class directly. " \
+  #                                "Use Project::StageDefinition or Project::GateDefinition instead."
+  #   end
+  #
+  #   super
+  # end
 
   def step_class
     raise NotImplementedError
@@ -57,5 +65,13 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
   def column_name
     "lcsd_#{id}"
+  end
+
+  private
+
+  def validate_type_and_class_name_are_identical
+    if type != self.class.name
+      errors.add(:type, :type_and_class_name_mismatch)
+    end
   end
 end

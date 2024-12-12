@@ -939,6 +939,9 @@ en:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Columns"
         relations_to_type_column: "Relations to %{type}"
@@ -2697,6 +2700,7 @@ en:
   label_project_new: "New project"
   label_project_plural: "Projects"
   label_project_list_plural: "Project lists"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Project settings"
@@ -3329,6 +3333,10 @@ en:
       zero: "0 Projects"
       one: "1 Project"
       other: "%{count} Projects"
+    count_lowercase:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
 
   project_module_activity: "Activity"
   project_module_forums: "Forums"
@@ -3746,6 +3754,27 @@ en:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "Project lifecycle define the project stages and gates that can be used for your project planning and will appear in the overview page of each project. These attributes can be enabled or disabled but not re-ordered at a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
