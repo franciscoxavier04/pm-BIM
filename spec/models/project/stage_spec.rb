@@ -68,16 +68,21 @@ RSpec.describe Project::Stage do
   end
 
   describe "#validate_date_range" do
+    it "is valid when both dates are blank" do
+      stage = build(:project_stage, start_date: nil, end_date: nil)
+      expect(stage).to be_valid
+    end
+
     it "adds error if start_date is blank" do
       subject.end_date = Time.zone.today
       expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:date_range)).to include(:blank)
+      expect(subject.errors.symbols_for(:date_range)).to include(:incomplete)
     end
 
     it "adds error if end_date is blank" do
       subject.start_date = Time.zone.today
       expect(subject).not_to be_valid
-      expect(subject.errors.symbols_for(:date_range)).to include(:blank)
+      expect(subject.errors.symbols_for(:date_range)).to include(:incomplete)
     end
 
     it "adds error if start_date is after end_date" do

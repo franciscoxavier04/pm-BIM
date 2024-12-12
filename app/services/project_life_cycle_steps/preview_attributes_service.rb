@@ -40,7 +40,7 @@ module ProjectLifeCycleSteps
       service_call
         .result
         .available_life_cycle_steps
-        .reject(&:changed?)
+        .select(&:not_set?)
         .each { _1.errors.clear }
     end
   end

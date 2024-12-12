@@ -46,10 +46,18 @@ class Project::Stage < Project::LifeCycleStep
     start_date.blank? || end_date.blank?
   end
 
+  def range_set?
+    !not_set?
+  end
+
+  def range_incomplete?
+    start_date.blank? ^ end_date.blank?
+  end
+
   def validate_date_range
-    if not_set?
-      errors.add(:date_range, :blank)
-    elsif start_date > end_date
+    if range_incomplete?
+      errors.add(:date_range, :incomplete)
+    elsif range_set? && (start_date > end_date)
       errors.add(:date_range, :start_date_must_be_before_end_date)
     end
   end

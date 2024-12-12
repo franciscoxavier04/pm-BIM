@@ -31,7 +31,6 @@ class Project::Gate < Project::LifeCycleStep
 
   # This ensures the type cannot be changed after initialising the class.
   validates :type, inclusion: { in: %w[Project::Gate], message: :must_be_a_gate }
-  validates :date, presence: true
   validate :end_date_not_allowed
 
   def end_date_not_allowed
