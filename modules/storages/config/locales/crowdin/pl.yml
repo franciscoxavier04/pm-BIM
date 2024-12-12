@@ -124,7 +124,7 @@ pl:
               not_found: "Nie znaleziono lokalizacji %{current_path}."
             set_folders_permissions:
               permission_not_set: nie można ustawić uprawnień do lokalizacji %{path}.
-          error: Wystąpił nieoczekiwany błąd. Upewnij się, że wystąpienie Nextcloud jest osiągalne i sprawdź dzienniki pracowników OpenProject, aby uzyskać więcej informacji
+          error: An unexpected error occurred. Please ensure that your Nextcloud instance is reachable and check OpenProject worker logs for more information
           group_does_not_exist: "%{group} nie istnieje. Sprawdź konfigurację wystąpienia Nextcloud."
           insufficient_privileges: OpenProject nie ma wystarczających uprawnień, aby dodać użytkownika %{user} do grupy %{group}. Sprawdź ustawienia grupy w Nextcloud.
           not_allowed: Nextcloud blokuje żądanie.
@@ -145,7 +145,7 @@ pl:
               not_found: "Nie znaleziono lokalizacji %{current_path}."
             set_folders_permissions:
               permission_not_set: nie można ustawić uprawnień do lokalizacji %{path}.
-          error: Wystąpił nieoczekiwany błąd. Upewnij się, że wystąpienie Nextcloud jest osiągalne i sprawdź dzienniki pracowników OpenProject, aby uzyskać więcej informacji
+          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject nie mógł uzyskać dostępu do Twojego dysku w usłudze OneDrive. Sprawdź uprawnienia ustawione w aplikacji Azure.
           unauthorized: OpenProject nie może zsynchronizować się z OneDrive. Sprawdź konfigurację magazynu i aplikacji Azure.
           user_does_not_exist: "Użytkownik %{user} nie istnieje w Nextcloud."
@@ -289,7 +289,6 @@ pl:
     label_creation_time: Czas utworzenia
     label_creator: Twórca
     label_delete_storage: Usuń magazyn
-    label_edit_storage: Edytuj magazyn
     label_edit_storage_access_management: Edytuj zarządzania dostępem do magazynu
     label_edit_storage_automatically_managed_folders: Edytuj automatycznie zarządzane foldery magazynu
     label_edit_storage_host: Edytuj hosta magazynu
@@ -343,6 +342,9 @@ pl:
       success:
         subtitle: Następuje przekierowanie
         title: Ukończono konfigurację integracji
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
       waiting:
         subtitle: Chwileczkę, to może zająć trochę czasu...
         title: Konfigurujemy Twoje uprawnienia do folderu projektu.

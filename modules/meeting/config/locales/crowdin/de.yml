@@ -50,10 +50,17 @@ de:
         presenter: "Referent"
       meeting_section:
         title: "Titel"
+      recurring_meeting:
+        frequency: "Häufigkeit"
+        interval: "Intervall"
+        start_date: "Starts on"
+        end_after: "End series after"
+        iterations: "Ereignisse"
     errors:
       messages:
         invalid_time_format: "ist keine gültige Zeit. Erforderliches Format: HH:MM"
     models:
+      recurring_meeting: "Wiederkehrende Besprechung"
       structured_meeting: "Besprechung (dynamisch)"
       meeting_agenda_item: "Tagesordnungspunkt"
       meeting_agenda: "Agenda"
@@ -89,6 +96,7 @@ de:
   label_meeting_plural: "Besprechungen"
   label_meeting_new: "Neue Besprechung"
   label_meeting_new_dynamic: "Neue dynamische Besprechung"
+  label_meeting_new_recurring: "Neue wiederkehrende Besprechung"
   label_meeting_create: "Besprechung erstellen"
   label_meeting_copy: "Besprechung kopieren"
   label_meeting_edit: "Besprechung bearbeiten"
@@ -102,23 +110,52 @@ de:
   label_meeting_date_time: "Datum/Uhrzeit"
   label_meeting_date_and_time: "Datum und Zeit"
   label_meeting_diff: "Differenz"
+  label_recurring_meeting: "Wiederkehrende Besprechung"
+  label_recurring_meeting_part_of: "Teil einer Besprechungsreihe"
+  label_recurring_meeting_new: "Neue wiederkehrende Besprechung"
+  label_recurring_meeting_plural: "Wiederkehrende Besprechungen"
+  label_template: "Vorlage"
+  label_recurring_meeting_view: "Besprechungsreihe ansehen"
+  label_recurring_meeting_create: "Aus Vorlage erstellen"
+  label_recurring_meeting_copy: "Copy as one-off"
+  label_recurring_meeting_cancel: "Dieses Ereignis abbrechen"
+  label_recurring_meeting_delete: "Ereignis löschen"
+  label_recurring_meeting_delete_confirmation: >
+    Diese Besprechung ist Teil einer Serie namens %{name}. Dadurch wird nur dieses bestimmte Ereignis und nicht die gesamte Serie gelöscht. Möchten Sie fortfahren?
+  label_recurring_occurrence_delete_confirmation: >
+    Alle Besprechungsinformationen, die nicht in der Vorlage enthalten sind, gehen verloren. Möchten Sie fortfahren?
+  label_recurring_meeting_restore: "Dieses Ereignis wiederherstellen"
+  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
+  label_recurring_meeting_more_past: "There are %{count} more past meetings."
+  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
+  label_recurring_meeting_show_more: "Show more"
+  label_recurring_meeting_series_edit: "Besprechungsreihe bearbeiten"
+  label_recurring_meeting_series_delete: "Besprechungsreihe löschen"
+  label_my_meetings: "Meine Besprechungen"
+  label_all_meetings: "Alle Besprechungen"
   label_upcoming_meetings: "Zukünftige Meetings"
   label_past_meetings: "Vergangene Meetings"
   label_upcoming_meetings_short: "Anstehend"
   label_past_meetings_short: "Vergangen"
   label_involvement: "Beteiligt"
-  label_upcoming_invitations: "Zukünftige Einladungen"
+  label_invitations: "Einladungen"
   label_past_invitations: "Vergangene Einladungen"
-  label_attendee: "Teilnehmend"
-  label_author: "Erstellt"
+  label_attended: "Teilgenommen"
+  label_created_by_me: "Von mir erstellt"
   label_notify: "Zur Einsicht verschicken"
   label_icalendar: "iCalendar senden"
   label_icalendar_download: "iCalendar-Termin herunterladen"
+  label_view_meeting_series: "Besprechungsreihe ansehen"
+  label_meeting_series: "Besprechungsreihe"
   label_version: "Version"
   label_time_zone: "Zeitzone"
   label_start_date: "Beginn"
   meeting:
+    participants:
+      template: "Diese Teilnehmer werden automatisch zu allen zukünftigen Besprechungen eingeladen, sobald sie erstellt werden."
     attachments:
+      template: "Die angehängten Dateien werden in alle künftigen Besprechungen dieser Reihe einbezogen."
       text: "Angehängte Dateien sind für alle Teilnehmer der Besprechung verfügbar. Sie können diese auch per Drag-and-drop in die Notizen der Tagesordnungspunkte ziehen."
     copy:
       title: "Besprechung kopieren: %{title}"
@@ -147,6 +184,7 @@ de:
       classic: "Klassisch"
       classic_text: "Organisieren Sie Ihr Meeting in einer formatierbaren textbasierter Agenda und zugehöriges Protokoll."
       structured: "Dynamisch"
+      recurring: "Wiederkehrend"
       structured_text: "Organisieren Sie Ihr Meeting als strukturierte Liste von Einträgen und verknüpfen Sie diese optional mit einem Arbeitspaket."
       structured_text_copy: "Das Kopieren einer Besprechung kopiert derzeit nicht die zugehörigen Tagesordnungspunkte, sondern nur dessen Details"
     copied: "Kopiert von Meeting #%{id}"
@@ -155,6 +193,41 @@ de:
     delete_confirmation: "Wenn Sie den Abschnitt löschen, werden auch alle zugehörigen Tagesordnungspunkte gelöscht. Möchten Sie fortfahren?"
     placeholder_title: "Neuer Abschnitt"
     empty_text: "Neue Agendapunkte hierhin bewegen oder neu erstellen"
+  recurring_meeting:
+    occurrence:
+      infoline: "Diese Besprechung ist Teil einer wiederkehrenden Besprechungsreihe."
+      error_no_next: "There is no next occurrence for this meeting."
+      first_already_exists: "The first occurrence of this meeting series is already instantiated."
+      first_created: >
+        The first meeting has been successfuly created from template. All future meetings will be created automatically at the time of the previous occurrence.
+    template:
+      button_finalize: "Vorlage fertigstellen"
+      blank_title: "Your meeting series template is empty"
+      description: >
+        This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
+      blankslate_finalize: >
+        When you're done preparing this template, click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
+      label_view_template: "Vorlagen ansehen"
+      label_edit_template: "Vorlage bearbeiten"
+      banner_html: >
+        You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
+    frequency:
+      every_weekday: "Jeden %{day_of_the_week}"
+      daily: "Täglich"
+      working_days: "Every working day"
+      weekly: "Wöchentlich"
+    end_after:
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
+    starts: "Beginnt"
+    in_words:
+      daily_interval: "Every %{interval} days"
+      working_days: "Jeden Arbeitstag"
+      working_days_interval: "Every %{interval} working day"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
+      full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Benachrichtigung erfolgreich gesendet"
   notice_timezone_missing: Keine Zeitzone eingestellt und daher %{zone} angenommen. Um Ihre Zeitzone einzustellen, klicken Sie bitte hier.
   notice_meeting_updated: "Diese Seite wurde von einem anderen Benutzer verändert. Laden Sie neu, um die Änderungen zu sehen."
@@ -207,12 +280,17 @@ de:
   text_deleted_agenda_item: 'Gelöschter Tagesordnungspunkt'
   label_initial_meeting_details: "Besprechung"
   label_meeting_details: "Besprechungsdetails"
+  label_meeting_series_details: "Meeting series details"
   label_meeting_details_edit: "Besprechungsdetails bearbeiten"
   label_meeting_state: "Besprechungsstatus"
   label_meeting_state_open: "Offen"
   label_meeting_state_open_html: "<i>Offen</i>"
   label_meeting_state_closed: "Geschlossen"
   label_meeting_state_closed_html: "<i>Geschlossen</i>"
+  label_meeting_state_agenda_created: "Tagesordnung erstellt"
+  label_meeting_state_scheduled: "Geplant"
+  label_meeting_state_cancelled: "Abgebrochen"
+  label_meeting_state_skipped: "Übersprungen"
   label_meeting_reopen_action: "Besprechung wiedereröffnen"
   label_meeting_close_action: "Besprechung schließen"
   text_meeting_open_description: "Diese Besprechung ist offen. Sie können Tagesordnungspunkte hinzufügen/entfernen und sie nach Belieben bearbeiten. Schließen Sie die Besprechung nach deren Ende, um sie zu sperren."

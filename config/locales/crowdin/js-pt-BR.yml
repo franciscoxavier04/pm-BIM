@@ -105,7 +105,7 @@ pt-BR:
     button_update: "Atualizar"
     button_export-pdf: "Baixar PDF"
     button_export-atom: "Baixar Atom"
-    button_generate_pdf: "Generate PDF"
+    button_generate_pdf: "Gerar PDF"
     button_create: "Criar"
     card:
       add_new: "Adicionar novo cartão"
@@ -356,10 +356,10 @@ pt-BR:
           learn_about: "Saiba mais sobre os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_0":
+          "15_1":
             standard:
               new_features_html: >
-                A versão traz vários recursos e melhorias para você, por exemplo: <br> <ul class="%{list_styling_class}"><li>Impulsione sua comunicação com uma guia de Atividades melhor estruturada, mensagens de carregamento em tempo real e notificações, reações com emojis e muito mais.</li> <li>Beneficie-se de configurações fáceis de autenticação Single Sign-On com SAML e OIDC na administração da sua Enterprise Cloud.</li> <li>Use o novo ‘Papel global padrão’ e habilite permissões para visualizar endereços de e-mail.</li> <li>Desfrute de navegação mais fácil nas listas de projetos com cabeçalhos de tabela de ações rápidas.</li> <li>Experimente configurações de design simplificadas, com menos variáveis de design na barra lateral necessárias.</li> <li>Reduza a limpeza manual ao adicionar um campo personalizado a um tipo (sem mais aplicação automática a todos os projetos).</li> <li>Beneficie-se de uma navegação mais clara – "Minha conta" foi renomeado para "Configurações da conta".</li> </ul>
+                A nova versão traz diversas melhorias e recursos, como: <br> <ul class="%{list_styling_class}"> <li>Campos personalizados em hierarquia (complemento Enterprise).</li> <li>Redesign da aba de Relações nos pacotes de trabalho.</li> <li>Redesign da página de índice das Reuniões.</li> <li>Quebras de página manuais nas exportações de pacotes de trabalho em PDF.</li> <li>Modo Zen para listas de projetos.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -575,7 +575,7 @@ pt-BR:
         members: "Convide novos <b>membros</b> para participar de seu projeto."
         quick_add_button: "Clique no ícone mais (+) no menu de navegação para <b>criar um novo projeto</b> ou para <b>convidar colegas de trabalho</b>."
         sidebar_arrow: "Use a seta de retorno no canto superior esquerdo para retornar ao <b>menu principal</b> do projeto."
-        welcome: "Take a three-minute introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
+        welcome: "Faça um tour de introdução de três minutos para conhecer os <b>principais recursos</b>. <br> Recomendamos que você siga todas as etapas até o final. O tour pode ser reiniciado a qualquer momento."
         wiki: "Na <b>wiki</b>, você pode documentar e compartilhar conhecimento junto com sua equipe. "
         backlogs:
           overview: "Gerencie seu trabalho na visão de <b>backlogs</b>."
@@ -620,6 +620,7 @@ pt-BR:
         prioritized: "Priorizado"
         dateAlert: "Alerta de data"
         shared: "Compartilhado"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Data de marco"
         overdue: "Atrasado"
@@ -1345,5 +1346,3 @@ pt-BR:
       waiting_subtitle:
         network_off: "Ocorreu um problema de rede"
         network_on: "A rede voltou. Estamos tentando."
-        timeout: >
-          Não foi possível acessar a pasta do projeto no OpenProject dentro do prazo esperado. Tente novamente.<br><br> Se o problema persistir, entre em contato com seu administrador OpenProject para verificar o <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">status de integridade da configuração de armazenamento de arquivos</a>.

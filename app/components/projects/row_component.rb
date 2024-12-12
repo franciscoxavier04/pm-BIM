@@ -69,6 +69,8 @@ module Projects
     def column_value(column)
       if custom_field_column?(column)
         custom_field_column(column)
+      elsif life_cycle_step_column?(column)
+        life_cycle_step_column(column)
       else
         send(column.attribute)
       end
@@ -92,6 +94,18 @@ module Projects
       else
         custom_value
       end
+    end
+
+    def life_cycle_step_column(column)
+      return nil unless user_can_view_project?
+
+      ls = Project::LifeCycleStep
+             .where(active: true)
+             .find_by(definition_id: column.life_cycle.id, project:)
+
+      return nil if ls.blank?
+
+      fmt_date_or_range(ls.start_date, ls.end_date)
     end
 
     def created_at
@@ -374,8 +388,29 @@ module Projects
       column.is_a?(::Queries::Projects::Selects::CustomField)
     end
 
+    def life_cycle_step_column?(column)
+      column.is_a?(::Queries::Projects::Selects::LifeCycleStep)
+    end
+
     def current_page
       table.model.current_page.to_s
+    end
+
+    private
+
+    # If only the `start_date` is given, will return a formatted version of that date as string.
+    # When `end_date` is given as well, will return a representation of the date range from start to end.
+    # @example
+    #    fmt_date_or_range(Date.new(2024, 12, 4))
+    #      "04/12/2024"
+    #
+    #    fmt_date_or_range(Date.new(2024, 12, 4), Date.new(2024, 12, 10))
+    #      "04/12/2024 - 10/12/2024"
+    def fmt_date_or_range(start_date, end_date = nil)
+      [start_date, end_date]
+        .compact
+        .map { |d| helpers.format_date(d) }
+        .join(" - ")
     end
   end
 end

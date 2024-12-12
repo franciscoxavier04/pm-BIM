@@ -220,6 +220,14 @@ Rails.application.reloader.to_prepare do
                      {},
                      permissible_on: :project_query,
                      require: :loggedin
+
+      map.permission :manage_own_reminders,
+                     {
+                       "work_packages/reminders": %i[modal_body create update destroy]
+                     },
+                     permissible_on: :project,
+                     contract_actions: { work_package_reminders: %i[modal_body] },
+                     require: :member
     end
 
     map.project_module :work_package_tracking, order: 90 do |wpt|

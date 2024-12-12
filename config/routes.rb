@@ -622,6 +622,12 @@ Rails.application.routes.draw do
     resources :relations_tab, only: %i[index], controller: "work_package_relations_tab"
     resources :relations, only: %i[new create edit update destroy], controller: "work_package_relations"
 
+    resources :reminders,
+              controller: "work_packages/reminders",
+              only: %i[create update destroy] do
+      get :modal_body, on: :collection
+    end
+
     get "/export_dialog" => "work_packages#export_dialog", on: :collection, as: "export_dialog"
     get :show_conflict_flash_message, on: :collection # we don't need a specific work package for this
 
@@ -654,6 +660,7 @@ Rails.application.routes.draw do
     resources :memberships, controller: "users/memberships", only: %i[update create destroy]
 
     member do
+      get "/hover_card" => "users/hover_card#show"
       get "/edit(/:tab)" => "users#edit", as: "edit"
       get "/change_status/:change_action" => "users#change_status_info", as: "change_status_info"
       post :change_status
@@ -715,8 +722,8 @@ Rails.application.routes.draw do
 
   scope controller: "sys" do
     match "/sys/repo_auth", action: "repo_auth", via: %i[get post]
+    get "/sys/fetch_changesets", action: "fetch_changesets"
     match "/sys/projects", to: proc { [410, {}, [""]] }, via: :all
-    match "/sys/fetch_changesets", to: proc { [410, {}, [""]] }, via: :all
     match "/sys/projects/:id/repository/update_storage", to: proc { [410, {}, [""]] }, via: :all
   end
 
