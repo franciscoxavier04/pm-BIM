@@ -1,17 +1,16 @@
 @import "helpers"
 
-.op-ian-actors
+.op-ian-reminder-alert
   display: grid
   grid-template-columns: auto 1fr
   grid-column-gap: $spot-spacing-0_25
   align-items: center
   color: var(--fgColor-muted)
 
-  &--container
+  &--note
     @include text-shortener
-    display: flex
-    white-space: pre-wrap
     line-height: 1rem
+    color: var(--fgColor-default)
 
     > *
       flex-shrink: 0
