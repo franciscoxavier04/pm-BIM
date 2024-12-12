@@ -2317,6 +2317,7 @@ he:
   label_delete: "Delete"
   label_deleted: "נמחק"
   label_deleted_custom_field: "(למחוק שדה מותאם אישית)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(empty)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"

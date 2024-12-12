@@ -52,7 +52,8 @@ zh-CN:
       recurring_meeting:
         frequency: "频率"
         interval: "周期"
-        end_after: "结束于"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "事件"
     errors:
       messages:
@@ -192,9 +193,6 @@ zh-CN:
     placeholder_title: "新建章节"
     empty_text: "拖动项目到此处或创建一个新项目"
   recurring_meeting:
-    interval:
-      instructions: >
-        输入每次事件之间的天数或周数。
     occurrence:
       infoline: "本次会议是定期会议系列的一部分。"
       error_no_next: "此会议没有下一个发生时间。"
@@ -218,15 +216,16 @@ zh-CN:
       working_days: "每个工作日"
       weekly: "每周"
     end_after:
-      specific_date: "特定日期"
-      iterations: "一些事件"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "开始"
     in_words:
-      daily_interval: "每 %{interval} 天"
+      daily_interval: "Every %{interval} days"
       working_days: "每个工作日"
       working_days_interval: "每 %{interval} 个工作日"
-      weekly: "每周 %{weekday}"
-      weekly_interval: "每 %{interval} 周的星期 %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} 在 %{time}，在 %{end_date} 结束"
   notice_successful_notification: "通知发送成功"
   notice_timezone_missing: 没有设定时区，预设时区为 %{zone}。要选择您的时区，请单击此处。

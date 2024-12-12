@@ -2205,6 +2205,7 @@ ja:
   label_delete: "Delete"
   label_deleted: "削除された"
   label_deleted_custom_field: "（削除されたカスタムフィールド）"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(削除されたオプション)"
   label_empty_element: "（空）"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"

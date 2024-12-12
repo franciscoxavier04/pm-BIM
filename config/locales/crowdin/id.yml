@@ -2202,6 +2202,7 @@ id:
   label_delete: "Delete"
   label_deleted: "dihapus"
   label_deleted_custom_field: "(isian kustom dihapus)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opsi dihapus)"
   label_empty_element: "(kosong)"
   label_missing_or_hidden_custom_option: "(nilai hilang atau kurang izin untuk mengakses)"

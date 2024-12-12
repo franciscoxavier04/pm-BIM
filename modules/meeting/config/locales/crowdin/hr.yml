@@ -54,7 +54,8 @@ hr:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
@@ -194,9 +195,6 @@ hr:
     placeholder_title: "New section"
     empty_text: "Drag items here or create a new one"
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -220,15 +218,16 @@ hr:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Every working day"
       working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Notifikacija uspješno poslana"
   notice_timezone_missing: Vremenska zona nije postavljena na osnovu zamišljene %{zone} zone. Da bi ste odabrali vremensku zonu molim vas kliknite ovdje.

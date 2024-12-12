@@ -2314,6 +2314,7 @@ sl:
   label_delete: "Delete"
   label_deleted: "Izbrisano"
   label_deleted_custom_field: "(izbrisano polje po meri)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(izbrisana možnost)"
   label_empty_element: "(prazno)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"

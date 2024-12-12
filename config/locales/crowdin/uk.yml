@@ -2310,6 +2310,7 @@ uk:
   label_delete: "Delete"
   label_deleted: "вилучено "
   label_deleted_custom_field: "(видалено спеціальне поле)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(параметр видалення)"
   label_empty_element: "(пусто)"
   label_missing_or_hidden_custom_option: "(відсутнє значення або бракує дозволів для доступу)"

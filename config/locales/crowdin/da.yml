@@ -2243,6 +2243,7 @@ da:
   label_delete: "Delete"
   label_deleted: "slettet"
   label_deleted_custom_field: "(slettet selvvalgt felt)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(tom)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"

@@ -53,7 +53,8 @@ de:
       recurring_meeting:
         frequency: "Häufigkeit"
         interval: "Intervall"
-        end_after: "Ende nach"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Ereignisse"
     errors:
       messages:
@@ -193,9 +194,6 @@ de:
     placeholder_title: "Neuer Abschnitt"
     empty_text: "Neue Agendapunkte hierhin bewegen oder neu erstellen"
   recurring_meeting:
-    interval:
-      instructions: >
-        Geben Sie die Anzahl der Tage oder Wochen zwischen den einzelnen Ereignissen an.
     occurrence:
       infoline: "Diese Besprechung ist Teil einer wiederkehrenden Besprechungsreihe."
       error_no_next: "There is no next occurrence for this meeting."
@@ -219,15 +217,16 @@ de:
       working_days: "Every working day"
       weekly: "Wöchentlich"
     end_after:
-      specific_date: "Ein bestimmtes Datum"
-      iterations: "Eine Reihe von Ereignissen"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Beginnt"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Jeden Arbeitstag"
       working_days_interval: "Every %{interval} working day"
-      weekly: "Wöchentlich am %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Benachrichtigung erfolgreich gesendet"
   notice_timezone_missing: Keine Zeitzone eingestellt und daher %{zone} angenommen. Um Ihre Zeitzone einzustellen, klicken Sie bitte hier.

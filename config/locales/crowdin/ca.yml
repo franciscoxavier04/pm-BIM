@@ -2241,6 +2241,7 @@ ca:
   label_delete: "Delete"
   label_deleted: "suprimit"
   label_deleted_custom_field: "(camp personalitzat suprimit)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opció eliminada)"
   label_empty_element: "(buit)"
   label_missing_or_hidden_custom_option: "(valor absent o manca de permisos per accedir)"

@@ -2207,6 +2207,7 @@ ms:
   label_delete: "Delete"
   label_deleted: "dipadam"
   label_deleted_custom_field: "(ruang tersuai yang telah dipadam)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(pilihan yang telah dipadam)"
   label_empty_element: "(kosong)"
   label_missing_or_hidden_custom_option: "(nilai yang hilang atau kurang kebenaran untuk mengakses)"

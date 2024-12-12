@@ -2242,6 +2242,7 @@ nl:
   label_delete: "Delete"
   label_deleted: "verwijderd"
   label_deleted_custom_field: "(verwijderde aangepast veld)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(verwijderde optie)"
   label_empty_element: "(leeg)"
   label_missing_or_hidden_custom_option: "(ontbrekende waarde of ontbrekende machtigingen voor toegang)"

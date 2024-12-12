@@ -2242,6 +2242,7 @@ pt-PT:
   label_delete: "Delete"
   label_deleted: "eliminado"
   label_deleted_custom_field: "(campo personalizado apagado)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opção eliminada)"
   label_empty_element: "(vazio)"
   label_missing_or_hidden_custom_option: "(faltam valores ou permissões para acessar)"

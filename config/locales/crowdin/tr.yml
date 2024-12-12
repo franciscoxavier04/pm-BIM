@@ -2243,6 +2243,7 @@ tr:
   label_delete: "Delete"
   label_deleted: "silindi"
   label_deleted_custom_field: "(özel alan silindi)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(silinen seçenek)"
   label_empty_element: "(boş)"
   label_missing_or_hidden_custom_option: "(eksik değer veya erişim izinleri eksik)"

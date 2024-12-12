@@ -2241,6 +2241,7 @@ el:
   label_delete: "Delete"
   label_deleted: "διαγραμμένο"
   label_deleted_custom_field: "(διαγραμμένο προσαρμοσμένο πεδίο)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(διαγραμμένη επιλογή)"
   label_empty_element: "(άδειο)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"

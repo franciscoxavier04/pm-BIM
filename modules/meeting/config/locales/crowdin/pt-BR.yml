@@ -53,7 +53,8 @@ pt-BR:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
@@ -193,9 +194,6 @@ pt-BR:
     placeholder_title: "Nova seção"
     empty_text: "Arraste itens para cá ou crie um novo."
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -219,15 +217,16 @@ pt-BR:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Every working day"
       working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Notificação enviada com sucesso"
   notice_timezone_missing: Nenhum fuso horário está definido, portanto assumiu-se %{zone}. Para escolher o seu fuso horário, clique aqui.

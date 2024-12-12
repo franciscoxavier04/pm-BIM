@@ -2281,6 +2281,7 @@ hr:
   label_delete: "Delete"
   label_deleted: "izbrisano"
   label_deleted_custom_field: "(izbrisano prilagođeno polje)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(prazno)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"

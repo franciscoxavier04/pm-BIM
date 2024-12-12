@@ -53,7 +53,8 @@ fil:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
@@ -193,9 +194,6 @@ fil:
     placeholder_title: "New section"
     empty_text: "Drag items here or create a new one"
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -219,15 +217,16 @@ fil:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Every working day"
       working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Ang abiso ay naipadala ng matagumpay"
   notice_timezone_missing: Walang nakatakdang time zone at ang %{zone} ay ipinagpalagay na siyang time zone. Para piliin ang iyong time zone, mangyaring magclick dito.

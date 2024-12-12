@@ -2245,6 +2245,7 @@ si:
   label_delete: "Delete"
   label_deleted: "මකා දැමූ"
   label_deleted_custom_field: "(මකා දමන ලද අභිරුචි ක්ෂේත්රය)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(හිස්)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"

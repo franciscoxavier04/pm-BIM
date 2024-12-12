@@ -2208,6 +2208,7 @@ ko:
   label_delete: "Delete"
   label_deleted: "삭제됨"
   label_deleted_custom_field: "(삭제된 사용자 지정 필드)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(삭제된 옵션)"
   label_empty_element: "(비어 있음)"
   label_missing_or_hidden_custom_option: "(값이 없거나 액세스 권한이 없음)"
