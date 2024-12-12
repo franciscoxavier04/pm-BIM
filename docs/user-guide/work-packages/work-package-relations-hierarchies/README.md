@@ -93,7 +93,7 @@ Work packages can be structured hierarchically, e.g. in order to break down a la
 
 There are **three ways to add or create a child work package**:
 
-1. Adding or creating a child in the *Relations* tab in a work package's details view
+1. Adding a child in the *Relations* tab in a work package's details view
 2. Right-clicking on a work package in the work package table and select "Create new child"
 3. Right-clicking on a work package in the work package table and select "Indent hierarchy" to add it as the child of the work package above it.
 
