@@ -1,6 +1,6 @@
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,38 +26,23 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Reminder < ApplicationRecord
-  belongs_to :remindable, polymorphic: true
-  belongs_to :creator, class_name: "User"
+module API
+  module V3
+    module Reminders
+      class ReminderRepresenter < ::API::Decorators::Single
+        include API::Decorators::DateProperty
+        include API::Decorators::LinkedResource
 
-  has_many :reminder_notifications, dependent: :destroy
-  has_many :notifications, through: :reminder_notifications
+        property :id
 
-  # Currently, reminders are personal, meaning
-  # they are only visible to the user who created them.
-  def self.visible(user)
-    where(creator: user)
-  end
+        date_time_property :remind_at
 
-  def self.upcoming_and_visible_to(user)
-    visible(user)
-      .where(completed_at: nil)
-      .where.missing(:reminder_notifications)
-  end
+        property :note
 
-  def unread_notifications?
-    unread_notifications.exists?
-  end
-
-  def unread_notifications
-    notifications.where(read_ian: [false, nil])
-  end
-
-  def completed?
-    completed_at.present?
-  end
-
-  def scheduled?
-    job_id.present? && !completed?
+        associated_resource :creator,
+                            v3_path: :user,
+                            representer: ::API::V3::Users::UserRepresenter
+      end
+    end
   end
 end
