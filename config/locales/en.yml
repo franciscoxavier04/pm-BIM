@@ -3348,9 +3348,9 @@ en:
       are_you_sure: "Are you sure you want to archive the project '%{name}'?"
       archived: "Archived"
     count:
-      zero: "0 Projects"
-      one: "1 Project"
-      other: "%{count} Projects"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
 
   project_module_activity: "Activity"
   project_module_forums: "Forums"
