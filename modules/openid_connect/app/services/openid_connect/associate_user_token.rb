@@ -1,12 +1,12 @@
 #-- copyright
-# OpenProject is an open source project management software.
+# OpenProject is a project management system.
 # Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
 #
 # OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
-# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2006-2017 Jean-Philippe Lang
 # Copyright (C) 2010-2013 the ChiliProject Team
 #
 # This program is free software; you can redistribute it and/or
@@ -24,10 +24,38 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# +
 
-class MakeOidcSessionOptional < ActiveRecord::Migration[7.1]
-  def change
-    change_column_null :oidc_user_session_links, :oidc_session, true
+module OpenIDConnect
+  class AssociateUserToken
+    def initialize(session)
+      @session = session
+    end
+
+    def call(access_token:, refresh_token: nil, assume_idp: false)
+      if access_token.blank?
+        Rails.logger.error("Could not associate token to session: No access token")
+        return
+      end
+
+      user_session = find_user_session
+      if user_session.nil?
+        Rails.logger.error("Could not associate token to session: User session not found")
+        return
+      end
+
+      token = user_session.oidc_user_tokens.build(access_token:, refresh_token:)
+      # We should discover further audiences from the token in the future
+      token.audiences << UserToken::IDP_AUDIENCE if assume_idp
+
+      token.save! if token.audiences.any?
+    end
+
+    private
+
+    def find_user_session
+      private_session_id = @session.id.private_id
+      ::Sessions::UserSession.find_by(session_id: private_session_id)
+    end
   end
 end

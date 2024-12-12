@@ -35,6 +35,11 @@ module OpenProject::OpenIDConnect
       def user_logged_in(context)
         session = context.fetch(:session)
         ::OpenProject::OpenIDConnect::SessionMapper.handle_login(session)
+        OpenIDConnect::AssociateUserToken.new(session).call(
+          access_token: session["omniauth.oidc_access_token"],
+          refresh_token: session["omniauth.oidc_refresh_token"],
+          assume_idp: true
+        )
       end
 
       ##

@@ -1,6 +1,6 @@
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2012-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,20 +26,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module OpenProject::OpenIDConnect::Patches::Sessions::UserSessionPatch
-  def self.included(base) # :nodoc:
-    base.extend(ClassMethods)
-    base.include(InstanceMethods)
+module OpenIDConnect
+  class UserToken < ::ApplicationRecord
+    self.table_name = "oidc_user_tokens"
 
-    base.class_eval do
-      has_one :oidc_session_link, class_name: "OpenIDConnect::UserSessionLink", foreign_key: "session_id"
-      has_many :oidc_user_tokens, class_name: "OpenIDConnect::UserToken", foreign_key: "session_id"
-    end
-  end
+    IDP_AUDIENCE = "__op-idp__".freeze
 
-  module ClassMethods
-  end
+    belongs_to :session, class_name: "Sessions::UserSession", dependent: :delete
 
-  module InstanceMethods
+    scope :idp, -> { where(audience: IDP_AUDIENCE) }
   end
 end

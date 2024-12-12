@@ -72,7 +72,7 @@ RSpec.describe "OpenID Connect", :skip_2fa_stage, # Prevent redirects to 2FA sta
     let(:limit_self_registration) { false }
     let!(:provider) { create(:oidc_provider, slug: "keycloak", limit_self_registration:) }
 
-    it "logs in the user" do
+    it "signs up and logs in the user" do
       ##
       # it should redirect to the provider's openid connect authentication endpoint
       click_on_signin("keycloak")
@@ -99,30 +99,39 @@ RSpec.describe "OpenID Connect", :skip_2fa_stage, # Prevent redirects to 2FA sta
       expect(user.active?).to be true
 
       session = Sessions::UserSession.for_user(user).first
-      session_link = session.oidc_session_link
+      session_link = session&.oidc_session_link
 
       expect(session_link).not_to be_nil
       expect(session_link.oidc_session).to eq oidc_sid
-      expect(session_link.access_token).to eq access_token
-      expect(session_link.refresh_token).to eq refresh_token
 
-      ##
-      # it should redirect to the provider again upon clicking on sign-in when the user has been activated
-      user = User.find_by(mail: user_info[:email])
-      user.activate
-      user.save!
+      token = session&.oidc_user_tokens&.first
+      expect(token).not_to be_nil
+      expect(token.access_token).to eq access_token
+      expect(token.refresh_token).to eq refresh_token
+      expect(token.audiences).to eq ["__op-idp__"]
+    end
 
-      click_on_signin("keycloak")
+    context "when the user is already registered" do
+      before do
+        click_on_signin("keycloak")
+        redirect_from_provider("keycloak")
+      end
 
-      expect(response).to have_http_status :found
-      expect(response.location).to match /https:\/\/#{host}.*$/
+      it "logs in the user" do
+        ##
+        # it should redirect to the provider again upon clicking on sign-in when the user has been activated
+        click_on_signin("keycloak")
 
-      ##
-      # it should then login the user upon the redirect back from the provider
-      redirect_from_provider("keycloak")
+        expect(response).to have_http_status :found
+        expect(response.location).to match /https:\/\/#{host}.*$/
 
-      expect(response).to have_http_status :found
-      expect(response.location).to match /\/my\/page/
+        ##
+        # it should then login the user upon the redirect back from the provider
+        redirect_from_provider("keycloak")
+
+        expect(response).to have_http_status :found
+        expect(response.location).to match /\/my\/page/
+      end
     end
 
     context "with self-registration disabled and provider respecting that",
