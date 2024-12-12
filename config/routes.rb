@@ -529,7 +529,7 @@ Rails.application.routes.draw do
       end
       # TODO: This is for now only added to be able to create a link
       # There is no controller behind this.
-      resources :project_life_cycles, only: %i[index]
+      resources :project_life_cycle_step_definitions, path: "project_life_cycles", only: %i[index]
       resources :project_custom_field_sections, controller: "/admin/settings/project_custom_field_sections",
                                                 only: %i[create update destroy] do
         member do
