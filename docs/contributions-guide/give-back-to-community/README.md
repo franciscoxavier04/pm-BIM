@@ -31,7 +31,7 @@ Your unique experience with OpenProject can inspire others and provide valuable 
 - **Blog Posts**
   Write a detailed blog post about your OpenProject journey. You can either:
 
-  - Submit your blog post for publication on the OpenProject website. [Contact us](https://www.openproject.org/contact/) for guidelines.
+  - Submit your blog post for publication on the OpenProject website. 
   - Publish it on your own channels (website, blog, or LinkedIn) and link back to OpenProject.
 
 - **Video Contributions**
@@ -40,11 +40,14 @@ Your unique experience with OpenProject can inspire others and provide valuable 
 - **Testimonials and Quotes**
   Share a short testimonial or quote about your experience with OpenProject. If possible, **include a professional photo** of yourself or your team for publication.
 
+[Contact us](https://www.openproject.org/contact/) for guidelines.
+
 ## Support us online
 
 Help OpenProject reach more users by engaging with our content and sharing it with your network.
 
-- **Social Media Posts**
+- **Social media posts**
+  
   - Share your experience with OpenProject on your social channels, including a link to our website. 
   - You can also re-share content from the [OpenProject blog](https://www.openproject.org/blog/) or our official social media accounts.
   
@@ -57,7 +60,7 @@ Help OpenProject reach more users by engaging with our content and sharing it wi
       [Follow us on Twitter/X](https://twitter.com/openproject)
   
       [Follow us on Bluesky](https://bsky.app/profile/openproject.bsky.social)
-- **Add a Backlink to Your Website**
+- **Add a backlink to your website**
   Include a link to OpenProject’s website on your blog, portfolio, or company website to help more people discover our tool.
 - **Write a Review**
   Share your thoughts about OpenProject on one of our review platforms. [Leave a review ](https://www.openproject.org/reviews/).
