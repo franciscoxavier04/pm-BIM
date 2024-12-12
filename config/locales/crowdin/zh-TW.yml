@@ -647,11 +647,11 @@ zh-TW:
       label_relates_to_plural: "相關於"
       relates_description: "在兩個工作項目之間建立可見的連結，沒有額外影響"
       relates_to_description: "在兩個工作項目之間建立可見的連結，沒有額外影響"
-      label_precedes_singular: "繼承(後)"
-      label_precedes_plural: "繼承(後)"
+      label_precedes_singular: "後置任務(FS)"
+      label_precedes_plural: "後置任務(FS)"
       precedes_description: "相關的工作項目必須在完成後才開始執行"
-      label_follows_singular: "繼承(前)"
-      label_follows_plural: "繼承(前)"
+      label_follows_singular: "前置任務(SF)"
+      label_follows_plural: "前置任務(SF)"
       follows_description: "在這個工作項目開始之前，相關的工作必須先完成"
       label_child_singular: "子項目"
       label_child_plural: "子項目"
@@ -844,6 +844,9 @@ zh-TW:
         lag: "延遲"
         from: "工作項目"
         to: "相關的工作項目"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1412,6 +1415,7 @@ zh-TW:
     login: "使用者帳號"
     mail: "電子郵件"
     name: "名稱"
+    note: "Note"
     password: "密碼"
     priority: "優先等級"
     project: "專案"
@@ -1508,6 +1512,7 @@ zh-TW:
   button_print: "列印"
   button_quote: "引言"
   button_remove: 刪除
+  button_remove_reminder: "Remove reminder"
   button_rename: "重新命名"
   button_replace: "取代"
   button_revoke: "撤銷"
@@ -1518,6 +1523,7 @@ zh-TW:
   button_save_as: "另存為"
   button_apply_changes: "套用設定"
   button_save_back: "儲存並返回"
+  button_set_reminder: "Set reminder"
   button_show: "顯示"
   button_sort: "排序"
   button_submit: "提交"
@@ -1705,12 +1711,12 @@ zh-TW:
   direction: 由左至右
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "使用以下附加組件自定義表單配置："
         add_groups: "增加新的屬性群組"
         rename_groups: "重新命名屬性群组"
-      project_filters:
-        description_html: "自訂過濾條件和排序是企業版功能"
   enumeration_activities: "時間追蹤活動"
   enumeration_work_package_priorities: "工作項目優先等級"
   enumeration_reported_project_statuses: "報告的專案狀態"
@@ -1743,6 +1749,7 @@ zh-TW:
   error_pdf_export_too_many_columns: "為 PDF 匯出選擇的列太多。請減少列數。"
   error_pdf_failed_to_export: "無法另存 pdf 匯出: %{error}"
   error_token_authenticity: "無法驗證跨網域請求權杖(Token)。你是不是試圖在多個瀏覽器或者分頁上傳送資料？請關閉所有的分頁後再試一次。"
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "工作項目找不到或是不屬於這個專案"
   error_work_package_id_not_found: "無此工作項目"
   error_must_be_project_member: "必須是專案的成員"
@@ -2036,6 +2043,7 @@ zh-TW:
       responsible: "負責人"
       shared: "參與"
       watched: "監看者"
+      reminder: "Reminder"
     facets:
       unread: "未讀"
       unread_title: "顯示未讀"
@@ -2243,7 +2251,6 @@ zh-TW:
   label_enterprise_active_users: "%{current}/%{limit} 已預訂的活動使用者"
   label_enterprise_edition: "企業版"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "企業版附加插件"
   label_environment: "環境"
   label_estimates_and_progress: "預估和進度"
   label_equals: "是"
@@ -2592,6 +2599,7 @@ zh-TW:
   label_this_month: "本月"
   label_this_week: "本週"
   label_this_year: "今年"
+  label_time: "Time"
   label_time_entry_plural: "耗時"
   label_time_entry_activity_plural: "耗時活動"
   label_title: "標題"
@@ -3739,6 +3747,12 @@ zh-TW:
       edit_description: "可以查看，留言與編輯此工作項目"
       view: "檢視"
       view_description: "查看此工作項目"
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0個用戶"

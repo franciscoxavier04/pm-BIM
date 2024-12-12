@@ -651,6 +651,8 @@ zh-TW:
         new_notifications:
           message: "您有新的通知"
           link_text: "點擊此處加載。"
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: '您可以修改 <a target="_blank" href="%{url}">通知設定</a>，以確保您不會錯過重要更新。'
         title: "通知設定"
@@ -1041,6 +1043,12 @@ zh-TW:
           not_found: "無此查詢"
           duplicate_query_title: "此版面的名稱已存在。確定改變？"
         text_no_results: "找不到符合的版面。"
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "此工作包的日期會自動從其子項推導出。可啟用“手動計劃”來設置日期。"
         is_switched_from_manual_to_automatic: "由於與其他工作包的關係，在從手動計劃切換為自動計劃後，此工作包的日期可能需要重新計算。"

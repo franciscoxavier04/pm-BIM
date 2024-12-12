@@ -845,6 +845,9 @@ ms:
         lag: "Lag"
         from: "Pakej kerja"
         to: "Pakej kerja yang berkaitan"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1413,6 +1416,7 @@ ms:
     login: "Nama pengguna"
     mail: "E-mel"
     name: "Nama"
+    note: "Note"
     password: "Kata Laluan"
     priority: "Keutamaan"
     project: "Projek"
@@ -1509,6 +1513,7 @@ ms:
   button_print: "Cetak"
   button_quote: "Petikan"
   button_remove: Keluarkan
+  button_remove_reminder: "Remove reminder"
   button_rename: "Namakan semula"
   button_replace: "Ganti"
   button_revoke: "Batalkan"
@@ -1519,6 +1524,7 @@ ms:
   button_save_as: "Simpan sebagai"
   button_apply_changes: "Guna pakai perubahan"
   button_save_back: "Simpan dan kembali"
+  button_set_reminder: "Set reminder"
   button_show: "Paparkan"
   button_sort: "Susun"
   button_submit: "Hantar"
@@ -1706,12 +1712,12 @@ ms:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Menyuaikan borang konfigurasi dengan segala jenis tambahan ini:"
         add_groups: "Tambah kumpulan atribut baharu"
         rename_groups: "Nama semula kumpulan atribut"
-      project_filters:
-        description_html: "Menyaring dan menyusun ruang tersuai adalah tambahan edisi Enterprise."
   enumeration_activities: "Aktiviti penjejakan masa"
   enumeration_work_package_priorities: "Keutamaan pakej kerja"
   enumeration_reported_project_statuses: "Status projek yang dilaporkan"
@@ -1744,6 +1750,7 @@ ms:
   error_pdf_export_too_many_columns: "Terlalu banyak kolum dipilih untuk eksport PDF. Sila kurangkan bilangan kolum."
   error_pdf_failed_to_export: "Eksport PDF tidak dapat disimpan: %{error}"
   error_token_authenticity: "Tidak dapat mengesahkan token Cross-Site Request Forgery. Adakah anda sedang mencuba untuk menghantar data di pelbagai pelayar atau tab? Sila tutup semua tab dan cuba lagi."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Pakej kerja tidak ditemui atau tidak tergolong dalam projek ini"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "perlu menjadi ahli projek"
@@ -2037,6 +2044,7 @@ ms:
       responsible: "Bertanggungjawab"
       shared: "Telah dikongsi"
       watched: "Pemerhati"
+      reminder: "Reminder"
     facets:
       unread: "Belum dibaca"
       unread_title: "Paparkan yang belum dibaca"
@@ -2244,7 +2252,6 @@ ms:
   label_enterprise_active_users: "%{current}/%{limit} pengguna aktif yang ditempah"
   label_enterprise_edition: "Edisi Enterprise"
   label_enterprise_support: "sokongan Enterprise"
-  label_enterprise_addon: "Tambahan Enterprise"
   label_environment: "Persekitaran"
   label_estimates_and_progress: "Anggaran dan perkembangan"
   label_equals: "ialah"
@@ -2593,6 +2600,7 @@ ms:
   label_this_month: "bulan ini"
   label_this_week: "minggu ini"
   label_this_year: "tahun ini"
+  label_time: "Time"
   label_time_entry_plural: "Masa yang dihabiskan"
   label_time_entry_activity_plural: "Aktiviti masa yang diluangkan"
   label_title: "Tajuk"
@@ -3741,6 +3749,12 @@ ms:
       edit_description: "Boleh lihat, komen dan edit pakej kerja ini."
       view: "Lihat"
       view_description: "Boleh papar pakej kerja ini."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 pengguna"

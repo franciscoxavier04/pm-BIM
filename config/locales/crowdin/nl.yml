@@ -852,6 +852,9 @@ nl:
         lag: "Vertraging"
         from: "Werkpakket"
         to: "Verwante werkpakket"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1430,6 +1433,7 @@ nl:
     login: "Gebruikersnaam"
     mail: "E-mail"
     name: "Naam"
+    note: "Note"
     password: "Wachtwoord"
     priority: "Prioriteit"
     project: "Project"
@@ -1526,6 +1530,7 @@ nl:
   button_print: "Afdrukken"
   button_quote: "Citeer"
   button_remove: Verwijder
+  button_remove_reminder: "Remove reminder"
   button_rename: "Naam wijzigen"
   button_replace: "Vervang"
   button_revoke: "Intrekken"
@@ -1536,6 +1541,7 @@ nl:
   button_save_as: "Opslaan als"
   button_apply_changes: "Veranderingen doorvoeren"
   button_save_back: "Opslaan en terug"
+  button_set_reminder: "Set reminder"
   button_show: "Toon"
   button_sort: "Sorteren"
   button_submit: "Verzenden"
@@ -1741,12 +1747,12 @@ nl:
   direction: LTR
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Toevoegen van nieuwe attribuutgroepen"
         rename_groups: "Attribuutgroepen hernoemen"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Activiteiten voor het bijhouden van tijd"
   enumeration_work_package_priorities: "Werkpakket prioriteiten"
   enumeration_reported_project_statuses: "Gerapporteerde projectstatus"
@@ -1779,6 +1785,7 @@ nl:
   error_pdf_export_too_many_columns: "Te veel kolommen geselecteerd voor het exporteren naar PDF. Beperk het aantal kolommen."
   error_pdf_failed_to_export: "De pdf export kan niet worden opgeslagen:%{error}"
   error_token_authenticity: "Niet in staat om de Cross-Site Request Forgery token te valideren. Heeft u geprobeert gegevens op meerdere browsers of tabbladen wilt indienen? Sluit alle tabbladen en probeer het opnieuw."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Het werkpakket werd niet gevonden of maakt geen deel uit van dit project"
   error_work_package_id_not_found: "Het werkpakket is niet gevonden."
   error_must_be_project_member: "moet een project lid zijn"
@@ -2072,6 +2079,7 @@ nl:
       responsible: "Verantwoording afleggen"
       shared: "Gedeeld"
       watched: "Kijker"
+      reminder: "Reminder"
     facets:
       unread: "Ongelezen"
       unread_title: "Toon ongelezen"
@@ -2279,7 +2287,6 @@ nl:
   label_enterprise_active_users: "%{current}/%{limit} gereserveerd actieve gebruikers"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Ondernemingsondersteuning"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Omgeving"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "is"
@@ -2628,6 +2635,7 @@ nl:
   label_this_month: "Deze maand"
   label_this_week: "deze week"
   label_this_year: "Dit jaar"
+  label_time: "Time"
   label_time_entry_plural: "Bestede tijd"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Titel"
@@ -3778,6 +3786,12 @@ nl:
       edit_description: "Kan dit werkpakket bekijken, becommentariëren en bewerken."
       view: "Weergeven"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

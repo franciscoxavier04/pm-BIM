@@ -846,6 +846,9 @@ ko:
         lag: "지연"
         from: "작업 패키지"
         to: "관련 패키지"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "주소"
       role:
@@ -1414,6 +1417,7 @@ ko:
     login: "사용자 이름"
     mail: "이메일"
     name: "이름"
+    note: "Note"
     password: "암호"
     priority: "우선 순위"
     project: "프로젝트"
@@ -1510,6 +1514,7 @@ ko:
   button_print: "인쇄"
   button_quote: "인용"
   button_remove: 제거
+  button_remove_reminder: "Remove reminder"
   button_rename: "이름 바꾸기"
   button_replace: "교체하기"
   button_revoke: "취소"
@@ -1520,6 +1525,7 @@ ko:
   button_save_as: "다른 이름으로 저장"
   button_apply_changes: "변경 사항 적용"
   button_save_back: "저장하고 돌아가기"
+  button_set_reminder: "Set reminder"
   button_show: "표시"
   button_sort: "분류"
   button_submit: "제출"
@@ -1707,12 +1713,12 @@ ko:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "다음과 같은 기타 추가 기능으로 양식 구성을 사용자 지정하세요."
         add_groups: "새로운 특성 그룹 추가"
         rename_groups: "특성 그룹 이름 바꾸기"
-      project_filters:
-        description_html: "사용자 지정 필드의 필터링 및 정렬은 Enterprise Edition의 추가 기능입니다."
   enumeration_activities: "시간 추적 활동"
   enumeration_work_package_priorities: "작업 패키지 우선 순위"
   enumeration_reported_project_statuses: "보고된 프로젝트 상태"
@@ -1745,6 +1751,7 @@ ko:
   error_pdf_export_too_many_columns: "PDF 내보내기에 대해 너무 많은 열을 선택했습니다. 열 수를 줄이십시오."
   error_pdf_failed_to_export: "PDF 내보내기를 저장할 수 없습니다: %{error}"
   error_token_authenticity: "교차 사이트 요청 위조 토큰을 확인할 수 없습니다. 여러 브라우저나 탭에서 데이터 제출을 시도하셨습니까? 모든 탭을 닫고 다시 시도하세요."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "작업 패키지가 없거나 이 프로젝트에 속하지 않습니다."
   error_work_package_id_not_found: "작업 패키지를 찾을 수 없습니다."
   error_must_be_project_member: "은(는) 프로젝트 멤버여야 합니다."
@@ -2038,6 +2045,7 @@ ko:
       responsible: "담당"
       shared: "공유됨"
       watched: "주시자"
+      reminder: "Reminder"
     facets:
       unread: "읽지 않음"
       unread_title: "읽지 않은 항목 표시"
@@ -2245,7 +2253,6 @@ ko:
   label_enterprise_active_users: "예약 활성 사용자 %{current}/%{limit}명"
   label_enterprise_edition: "Enterprise Edition"
   label_enterprise_support: "엔터프라이즈 지원"
-  label_enterprise_addon: "Enterprise 추가 기능"
   label_environment: "환경"
   label_estimates_and_progress: "견적 및 진행률"
   label_equals: "일치함"
@@ -2594,6 +2601,7 @@ ko:
   label_this_month: "이번 달"
   label_this_week: "이번 주"
   label_this_year: "올해"
+  label_time: "Time"
   label_time_entry_plural: "소비한 시간"
   label_time_entry_activity_plural: "소요 시간 활동"
   label_title: "제목"
@@ -3740,6 +3748,12 @@ ko:
       edit_description: "이 작업 패키지 보기, 코멘트 작성 및 편집을 할 수 있습니다."
       view: "보기"
       view_description: "이 작업 패키지를 볼 수 있습니다."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "사용자 0명"

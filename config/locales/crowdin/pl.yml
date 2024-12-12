@@ -868,6 +868,9 @@ pl:
         lag: "Opóźnienie"
         from: "Zadanie"
         to: "Powiązanie zadania"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "ADRES URL"
       role:
@@ -1466,6 +1469,7 @@ pl:
     login: "Nazwa użytkownika"
     mail: "Adres e-mail"
     name: "Nazwa"
+    note: "Note"
     password: "Hasło"
     priority: "Priorytet"
     project: "Projekt"
@@ -1562,6 +1566,7 @@ pl:
   button_print: "Drukuj"
   button_quote: "Cytat"
   button_remove: Usuń
+  button_remove_reminder: "Remove reminder"
   button_rename: "Zmień nazwę"
   button_replace: "Zastąp"
   button_revoke: "Unieważnij"
@@ -1572,6 +1577,7 @@ pl:
   button_save_as: "Zapisz jako"
   button_apply_changes: "Zastosuj zmiany"
   button_save_back: "Zapisz i wróć"
+  button_set_reminder: "Set reminder"
   button_show: "Pokaż"
   button_sort: "Sortowanie"
   button_submit: "Prześlij"
@@ -1813,12 +1819,12 @@ pl:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Dostosuj konfigurację formularza za pomocą tych dodatków:"
         add_groups: "Dodaj nowe grupy atrybutów"
         rename_groups: "Zmień grupy atrybutów"
-      project_filters:
-        description_html: "Filtrowanie i sortowanie pól niestandardowych jest dodatkiem dla wersji Enterprise."
   enumeration_activities: "Działania śledzenia czasu"
   enumeration_work_package_priorities: "Priorytety pakietów roboczych"
   enumeration_reported_project_statuses: "Status zgłoszonego projektu"
@@ -1851,6 +1857,7 @@ pl:
   error_pdf_export_too_many_columns: "Wybrano zbyt dużo kolumn do eksportu PDF. Zmniejsz liczbę kolumn."
   error_pdf_failed_to_export: "Nie można było zapisać eksportu PDF: %{error}"
   error_token_authenticity: "Nie można zweryfikować tokenu Cross-Site Request Forgery. Czy podjęto próbę przesłania danych w wielu przeglądarkach lub z wielu kart? Zamknij wszystkie karty i spróbuj ponownie."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Pakiet roboczy nie został znaleziony lub nie należy do tego projektu"
   error_work_package_id_not_found: "Nie znaleziono pakietu roboczego."
   error_must_be_project_member: "musi być członkiem projektu"
@@ -2144,6 +2151,7 @@ pl:
       responsible: "Osoba odpowiedzialna"
       shared: "Udostępniono"
       watched: "Obserwator"
+      reminder: "Reminder"
     facets:
       unread: "Nieprzeczytane"
       unread_title: "Pokaż nieprzeczytane"
@@ -2351,7 +2359,6 @@ pl:
   label_enterprise_active_users: "%{current}/%{limit} zarejestrowanych aktywnych użytkowników"
   label_enterprise_edition: "Wersja Enterprise"
   label_enterprise_support: "Wsparcie Enterprise"
-  label_enterprise_addon: "Dodatek wersji Enterprise"
   label_environment: "Środowisko"
   label_estimates_and_progress: "Szacunki i postęp"
   label_equals: "jest"
@@ -2700,6 +2707,7 @@ pl:
   label_this_month: "ten miesiąc"
   label_this_week: "ten tydzień"
   label_this_year: "ten rok"
+  label_time: "Time"
   label_time_entry_plural: "Czas pracy"
   label_time_entry_activity_plural: "Czas spędzony na aktywności"
   label_title: "Tytuł"
@@ -3855,6 +3863,12 @@ pl:
       edit_description: "Może wyświetlać, komentować i edytować ten pakiet roboczy."
       view: "Wyświetlanie"
       view_description: "Może wyświetlić ten pakiet roboczy."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 użytkowników"

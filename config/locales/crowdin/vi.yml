@@ -849,6 +849,9 @@ vi:
         lag: "Kết quả chậm"
         from: "Gói công việc"
         to: "Work package liên quan"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "Đường dẫn (URL)"
       role:
@@ -1417,6 +1420,7 @@ vi:
     login: "Tên người dùng"
     mail: "Thư điện tử"
     name: "Tên"
+    note: "Note"
     password: "Mật khẩu"
     priority: "Ưu tiên"
     project: "Dự án"
@@ -1513,6 +1517,7 @@ vi:
   button_print: "In"
   button_quote: "Trích dẫn"
   button_remove: Xoá
+  button_remove_reminder: "Remove reminder"
   button_rename: "Đổi tên"
   button_replace: "Thay thế"
   button_revoke: "Thu hồi"
@@ -1523,6 +1528,7 @@ vi:
   button_save_as: "Lưu thành"
   button_apply_changes: "Áp dụng thay đổi"
   button_save_back: "Lưu và trở lại"
+  button_set_reminder: "Set reminder"
   button_show: "Hiện"
   button_sort: "Sắp xếp"
   button_submit: "Gửi"
@@ -1710,12 +1716,12 @@ vi:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Tùy chỉnh cấu hình mẫu với các tiện ích bổ sung sau:"
         add_groups: "Thêm 1 nhóm thuộc tính"
         rename_groups: "Đổi tên nhóm thuộc tính"
-      project_filters:
-        description_html: "Lọc và sắp xếp trên các trường tùy chỉnh là một tiện ích bổ sung của phiên bản Enterprise."
   enumeration_activities: "Theo dõi hoạt động"
   enumeration_work_package_priorities: "Độ ưu tiên của work package"
   enumeration_reported_project_statuses: "Tình trạng dự án đã báo cáo"
@@ -1748,6 +1754,7 @@ vi:
   error_pdf_export_too_many_columns: "Quá nhiều cột được chọn cho xuất PDF. Vui lòng giảm số lượng cột."
   error_pdf_failed_to_export: "Xuất PDF không thể được lưu: %{error}"
   error_token_authenticity: "Không thể xác minh token Cross-Site Request Forgery. Bạn có cố gắng gửi dữ liệu trên nhiều trình duyệt hoặc tab không? Vui lòng đóng tất cả các tab và thử lại."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Work package không được tìm thấy hoặc không thuộc về dự án này"
   error_work_package_id_not_found: "Không tìm thấy gói công việc."
   error_must_be_project_member: "phải là thành viên dự án"
@@ -2041,6 +2048,7 @@ vi:
       responsible: "Có trách nhiệm"
       shared: "Được chia sẻ"
       watched: "Quan sát viên"
+      reminder: "Reminder"
     facets:
       unread: "Chưa đọc"
       unread_title: "Hiện chưa đọc"
@@ -2248,7 +2256,6 @@ vi:
   label_enterprise_active_users: "%{current}/%{limit} người dùng đang hoạt động đã đặt chỗ"
   label_enterprise_edition: "Phiên bản doanh nghiệp"
   label_enterprise_support: "Hỗ trợ doanh nghiệp"
-  label_enterprise_addon: "Tiện ích mở rộng doanh nghiệp"
   label_environment: "Môi trường"
   label_estimates_and_progress: "Ước lượng và tiến độ"
   label_equals: "là"
@@ -2597,6 +2604,7 @@ vi:
   label_this_month: "tháng này"
   label_this_week: "tuần này"
   label_this_year: "năm này"
+  label_time: "Time"
   label_time_entry_plural: "Thời gian đã tiêu tốn"
   label_time_entry_activity_plural: "Hoạt động thời gian đã tiêu tốn"
   label_title: "Tiêu đề"
@@ -3745,6 +3753,12 @@ vi:
       edit_description: "Có thể xem, nhận xét và chỉnh sửa gói công việc này."
       view: "Xem"
       view_description: "Có thể xem gói công việc này."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 người dùng"

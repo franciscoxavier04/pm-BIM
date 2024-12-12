@@ -855,6 +855,9 @@ si:
         lag: "Lag"
         from: "වැඩ පැකේජය"
         to: "අදාළ වැඩ පැකේජය"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "සැ. නි."
       role:
@@ -1433,6 +1436,7 @@ si:
     login: "පරිශීලක නාමය"
     mail: "ඊ-තැපැල්"
     name: "නම"
+    note: "Note"
     password: "මුරපදය"
     priority: "ප්රමුඛතාව"
     project: "ව්යාපෘති"
@@ -1529,6 +1533,7 @@ si:
   button_print: "මුද්රණය"
   button_quote: "උපුටා"
   button_remove: ඉවත් කරන්න
+  button_remove_reminder: "Remove reminder"
   button_rename: "නැවත නම් කරන්න"
   button_replace: "ප්රතිස්ථාපනය කරන්න"
   button_revoke: "අවලංගු"
@@ -1539,6 +1544,7 @@ si:
   button_save_as: "ලෙස සුරකින්න"
   button_apply_changes: "Apply changes"
   button_save_back: "සුරකින්න සහ නැවත"
+  button_set_reminder: "Set reminder"
   button_show: "පෙන්වන්න"
   button_sort: "වර්ග"
   button_submit: "ඉදිරිපත් කරන්න"
@@ -1744,12 +1750,12 @@ si:
   direction: LTR
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "නව ගුණාංග කණ්ඩායම් එකතු කරන්න"
         rename_groups: "ගුණාංග කණ්ඩායම් නැවත නම් කරන්න"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "කාලය සොයා ගැනීමේ ක්රියාකාරකම්"
   enumeration_work_package_priorities: "වැඩ පැකේජ ප්රමුඛතා"
   enumeration_reported_project_statuses: "වාර්තා කරන ලද ව්යාපෘති තත්ත්වය"
@@ -1782,6 +1788,7 @@ si:
   error_pdf_export_too_many_columns: "PDF අපනයනය සඳහා තෝරාගෙන ඇති තීරු බොහොමයක්. කරුණාකර තීරු ගණන අඩු කරන්න."
   error_pdf_failed_to_export: "PDF අපනයනය සුරැකිය නොහැකි විය: %{error}"
   error_token_authenticity: "හරස් අඩවි ඉල්ලීම් ව්යාජ ටෝකනය සත්යාපනය කිරීමට නොහැකි විය. ඔබ බහු බ්රව්සර් හෝ ටැබ් මත දත්ත ඉදිරිපත් කිරීමට උත්සාහ කළාද? කරුණාකර සියලුම ටැබ් වසා නැවත උත්සාහ කරන්න."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "වැඩ පැකේජය සොයාගත නොහැකි හෝ මෙම ව්යාපෘතියට අයත් නොවේ"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "ව්යාපෘති සාමාජිකයෙකු විය යුතුය"
@@ -2075,6 +2082,7 @@ si:
       responsible: "වගවීම"
       shared: "Shared"
       watched: "මුරකරු"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2282,7 +2290,6 @@ si:
   label_enterprise_active_users: "%{current}/%{limit} වෙන් කර ඇති සක්රීය පරිශීලකයින්"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "පරිසරය"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "වේ"
@@ -2631,6 +2638,7 @@ si:
   label_this_month: "මෙම මාසය"
   label_this_week: "මේ සතියේ"
   label_this_year: "මේ වසරේ"
+  label_time: "Time"
   label_time_entry_plural: "වැය කළ කාලය"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "මාතෘකාව"
@@ -3783,6 +3791,12 @@ si:
       edit_description: "Can view, comment and edit this work package."
       view: "දැක්ම"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

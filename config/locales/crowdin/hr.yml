@@ -863,6 +863,9 @@ hr:
         lag: "Lag"
         from: "Radni paket"
         to: "Pripadajući radni paket"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1451,6 +1454,7 @@ hr:
     login: "Korisničko ime"
     mail: "Email"
     name: "Naziv"
+    note: "Note"
     password: "Lozinka"
     priority: "Prioritet"
     project: "Projekt"
@@ -1547,6 +1551,7 @@ hr:
   button_print: "Ispis"
   button_quote: "Citiraj"
   button_remove: Ukloni
+  button_remove_reminder: "Remove reminder"
   button_rename: "Preimenuj"
   button_replace: "Zamijeni"
   button_revoke: "Revoke"
@@ -1557,6 +1562,7 @@ hr:
   button_save_as: "Spremiti kao"
   button_apply_changes: "Apply changes"
   button_save_back: "Snimi i vratiti"
+  button_set_reminder: "Set reminder"
   button_show: "Prikaži"
   button_sort: "Sortiraj"
   button_submit: "Pošalji"
@@ -1780,12 +1786,12 @@ hr:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Prioriteti radnog paketa"
   enumeration_reported_project_statuses: "Priopćeni statusi projekta"
@@ -1818,6 +1824,7 @@ hr:
   error_pdf_export_too_many_columns: "Too many columns selected for the PDF export. Please reduce the number of columns."
   error_pdf_failed_to_export: "The PDF export could not be saved: %{error}"
   error_token_authenticity: "Unable to verify Cross-Site Request Forgery token. Did you try to submit data on multiple browsers or tabs? Please close all tabs and try again."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Radni paket nije pronađen ili ne pripada ovom projektu"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "mora biti član projekta"
@@ -2111,6 +2118,7 @@ hr:
       responsible: "Accountable"
       shared: "Shared"
       watched: "Nadglednik"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2318,7 +2326,6 @@ hr:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Okruženje"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "je"
@@ -2667,6 +2674,7 @@ hr:
   label_this_month: "ovaj mjesec"
   label_this_week: "ovog tjedna"
   label_this_year: "ove godine"
+  label_time: "Time"
   label_time_entry_plural: "Utrošeno vrijeme"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Naziv"
@@ -3822,6 +3830,12 @@ hr:
       edit_description: "Can view, comment and edit this work package."
       view: "Pregled"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

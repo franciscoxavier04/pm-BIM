@@ -854,6 +854,9 @@
         lag: "Forsinkelse"
         from: "Arbeidspakke"
         to: "Relatert arbeidspakke"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1432,6 +1435,7 @@
     login: "Brukernavn"
     mail: "E-post"
     name: "Navn"
+    note: "Note"
     password: "Passord"
     priority: "Prioritet"
     project: "Prosjekt"
@@ -1528,6 +1532,7 @@
   button_print: "Skriv ut"
   button_quote: "Sitèr"
   button_remove: Fjern
+  button_remove_reminder: "Remove reminder"
   button_rename: "Endre navn"
   button_replace: "Erstatt"
   button_revoke: "Tilbakekall"
@@ -1538,6 +1543,7 @@
   button_save_as: "Lagre som"
   button_apply_changes: "Bruk endringer"
   button_save_back: "Lagre og tilbake"
+  button_set_reminder: "Set reminder"
   button_show: "Vis"
   button_sort: "Sortèr"
   button_submit: "Lagre"
@@ -1743,12 +1749,12 @@
   direction: LTR
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Tilpass skjemakonfigurasjonen med disse ekstra utvidelsene:"
         add_groups: "Legg til nye attributtgrupper"
         rename_groups: "Endre attributtgrupper"
-      project_filters:
-        description_html: "Filtrering og sortering på egendefinerte felter er en utvidelse i Enterprise feltet."
   enumeration_activities: "Tidregistrering aktiviteter"
   enumeration_work_package_priorities: "Prioritering av arbeidspakker"
   enumeration_reported_project_statuses: "Rapportert prosjektstatus"
@@ -1781,6 +1787,7 @@
   error_pdf_export_too_many_columns: "For mange kolonner valgt for PDF eksport. Reduser antall kolonner."
   error_pdf_failed_to_export: "PDF-eksporten kunne ikke lagres: %{error}"
   error_token_authenticity: "Kan ikke bekrefte Cross-Site Request Forgery token. Har du prøvd å sende inn data i flere nettlesere eller faner? Vennligst lukk alle fanene og prøv igjen."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Arbeidspakken ble ikke funnet eller tilhører ikke dette prosjektet"
   error_work_package_id_not_found: "Arbeidspakken ble ikke funnet."
   error_must_be_project_member: "må være prosjektmedlem"
@@ -2074,6 +2081,7 @@
       responsible: "Ansvarlig"
       shared: "Delt"
       watched: "Overvåker"
+      reminder: "Reminder"
     facets:
       unread: "Ulest"
       unread_title: "Vis ulest"
@@ -2281,7 +2289,6 @@
   label_enterprise_active_users: "%{current}/%{limit} bookede brukere"
   label_enterprise_edition: "Enterprise Edition"
   label_enterprise_support: "Bedriftsstøtte"
-  label_enterprise_addon: "Enterprise utvidelse"
   label_environment: "Miljø"
   label_estimates_and_progress: "Estimater og fremdrift"
   label_equals: "er"
@@ -2630,6 +2637,7 @@
   label_this_month: "denne måneden"
   label_this_week: "denne uken"
   label_this_year: "dette året"
+  label_time: "Time"
   label_time_entry_plural: "Tid brukt"
   label_time_entry_activity_plural: "Brukt tid aktivitet"
   label_title: "Tittel"
@@ -3782,6 +3790,12 @@
       edit_description: "Kan vise, kommentere og redigere denne arbeidspakken."
       view: "Vis"
       view_description: "Kan se denne arbeidspakken."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 brukere"

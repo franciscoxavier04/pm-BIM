@@ -853,6 +853,9 @@ fr:
         lag: "Délai"
         from: "Lot de travaux"
         to: "Lot de travaux associé"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1431,6 +1434,7 @@ fr:
     login: "Nom d'utilisateur"
     mail: "E-mail"
     name: "Nom"
+    note: "Note"
     password: "Mot de passe"
     priority: "Priorité"
     project: "Projet"
@@ -1527,6 +1531,7 @@ fr:
   button_print: "Imprimer"
   button_quote: "Citer"
   button_remove: Supprimer
+  button_remove_reminder: "Remove reminder"
   button_rename: "Renommer"
   button_replace: "Remplacer"
   button_revoke: "Révoquer"
@@ -1537,6 +1542,7 @@ fr:
   button_save_as: "Enregistrer sous"
   button_apply_changes: "Appliquer les modifications"
   button_save_back: "Enregistrer et revenir"
+  button_set_reminder: "Set reminder"
   button_show: "Afficher"
   button_sort: "Trier"
   button_submit: "Envoyer"
@@ -1742,12 +1748,12 @@ fr:
   direction: de gauche à droite
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Personnaliser la configuration du formulaire avec ces add-ons supplémentaires :"
         add_groups: "Ajouter de nouveaux groupes d’attributs"
         rename_groups: "Renommer les groupes d’attributs"
-      project_filters:
-        description_html: "Le filtrage et le tri sur les champs personnalisés sont un add-on de l'édition Entreprise."
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"
@@ -1780,6 +1786,7 @@ fr:
   error_pdf_export_too_many_columns: "Trop de colonnes sélectionnées pour l’exportation PDF. Veuillez réduire le nombre de colonnes."
   error_pdf_failed_to_export: "L'export PDF n'a pas pu être enregistré: %{error}"
   error_token_authenticity: "Impossible de vérifier le jeton de Cross-Site Request Forgery. Avez-vous essayé d'envoyer des données sur plusieurs navigateurs ou onglets ? Veuillez fermer tous les onglets et réessayer."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Le Lot de Travaux n'a pas été trouvé ou n'appartient pas à ce projet"
   error_work_package_id_not_found: "Le lot de travaux n'a pas été trouvé."
   error_must_be_project_member: "doit être membre du projet"
@@ -2073,6 +2080,7 @@ fr:
       responsible: "Responsable"
       shared: "Partagé"
       watched: "Observateur"
+      reminder: "Reminder"
     facets:
       unread: "Non lu"
       unread_title: "Afficher les messages non lus"
@@ -2280,7 +2288,6 @@ fr:
   label_enterprise_active_users: "%{current}/%{limit} utilisateurs actifs inscrits"
   label_enterprise_edition: "Version Entreprise"
   label_enterprise_support: "Support Enterprise"
-  label_enterprise_addon: "add-on Enterprise"
   label_environment: "Environement"
   label_estimates_and_progress: "Estimations et progression"
   label_equals: "est"
@@ -2629,6 +2636,7 @@ fr:
   label_this_month: "ce mois"
   label_this_week: "cette semaine"
   label_this_year: "cette année"
+  label_time: "Time"
   label_time_entry_plural: "Temps passé"
   label_time_entry_activity_plural: "Activités du temps passé"
   label_title: "Titre"
@@ -3780,6 +3788,12 @@ fr:
       edit_description: "Peut consulter, commenter et modifier ce lot de travaux."
       view: "Voir"
       view_description: "Peut consulter ce lot de travaux."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 utilisateur"

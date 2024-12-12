@@ -52,7 +52,7 @@ zh-CN:
       recurring_meeting:
         frequency: "频率"
         interval: "周期"
-        start_date: "Starts on"
+        start_date: "开始日期："
         end_after: "End series after"
         iterations: "事件"
     errors:
@@ -222,7 +222,6 @@ zh-CN:
     in_words:
       daily_interval: "Every %{interval} days"
       working_days: "每个工作日"
-      working_days_interval: "每 %{interval} 个工作日"
       weekly: "Every week on %{weekday}"
       weekly_interval: "Every %{interval} weeks on %{weekday}"
       frequency: "%{base} at %{time}"

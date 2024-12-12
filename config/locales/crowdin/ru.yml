@@ -870,6 +870,9 @@ ru:
         lag: "Задержка"
         from: "Пакет работ"
         to: "Похожий пакет работ"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1468,6 +1471,7 @@ ru:
     login: "Имя пользователя"
     mail: "Электронная почта"
     name: "Имя"
+    note: "Note"
     password: "Пароль"
     priority: "Приоритет"
     project: "Проект"
@@ -1564,6 +1568,7 @@ ru:
   button_print: "Печать"
   button_quote: "Цитата"
   button_remove: Удалить
+  button_remove_reminder: "Remove reminder"
   button_rename: "Переименовать"
   button_replace: "Заменить"
   button_revoke: "Отозвать"
@@ -1574,6 +1579,7 @@ ru:
   button_save_as: "Сохранить как"
   button_apply_changes: "Применить изменения"
   button_save_back: "Сохранить и вернуться"
+  button_set_reminder: "Set reminder"
   button_show: "Показать"
   button_sort: "Сортировать"
   button_submit: "Отправить"
@@ -1815,12 +1821,12 @@ ru:
   direction: Слева направо
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Настройте конфигурацию формы с помощью этих дополнительных дополнений:"
         add_groups: "Добавить новую группу атрибутов"
         rename_groups: "Переименовать группу атрибутов"
-      project_filters:
-        description_html: "Фильтрация и сортировка по настраиваемым полям - это функция корпоративной версии."
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
@@ -1853,6 +1859,7 @@ ru:
   error_pdf_export_too_many_columns: "Для экспорта в PDF-файл выбрано слишком много столбцов. Пожалуйста, сократите количество столбцов."
   error_pdf_failed_to_export: "Не удалось сохранить экспорт в PDF: %{error}"
   error_token_authenticity: "Не удалось проверить CSRF-токен. Возможно, вы попытались отправить данные сразу из нескольких браузеров или вкладок. Закройте все вкладки и попробуйте снова."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Пакет работ не найден или не принадлежит к этому проекту"
   error_work_package_id_not_found: "Пакет работ не найден."
   error_must_be_project_member: "должен быть участник проекта"
@@ -2146,6 +2153,7 @@ ru:
       responsible: "Ответственный"
       shared: "Общий доступ"
       watched: "Наблюдатель"
+      reminder: "Reminder"
     facets:
       unread: "Непрочтено"
       unread_title: "Показать непрочитанные"
@@ -2316,7 +2324,7 @@ ru:
   label_delete: "Удалить"
   label_deleted: "﻿Удалено"
   label_deleted_custom_field: "(удалено настраиваемое поле)"
-  label_deleted_custom_item: "(deleted item)"
+  label_deleted_custom_item: "(удалено)"
   label_deleted_custom_option: "(удалённая опция)"
   label_empty_element: "(пусто)"
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
@@ -2353,7 +2361,6 @@ ru:
   label_enterprise_active_users: "%{current}/%{limit} забронировано активных пользователей"
   label_enterprise_edition: "Корпоративная версия"
   label_enterprise_support: "Поддержка корпоративной версии"
-  label_enterprise_addon: "Корпоративное дополнение"
   label_environment: "Переменные среды"
   label_estimates_and_progress: "Оценки и прогресс"
   label_equals: "—"
@@ -2702,6 +2709,7 @@ ru:
   label_this_month: "в этом месяце"
   label_this_week: "на этой неделе"
   label_this_year: "в этом году"
+  label_time: "Time"
   label_time_entry_plural: "Затраченное время"
   label_time_entry_activity_plural: "Потраченное время"
   label_title: "Заголовок"
@@ -3319,7 +3327,7 @@ ru:
       oauth_application_details_link_text: "Перейти на страницу настроек"
       setup_documentation_details: "Если вам нужна помощь в настройке нового хранилища файлов, пожалуйста, проверьте документацию: "
       setup_documentation_details_link_text: "Настройка файловых хранилищ"
-      show_warning_details: "Для использования этого хранилища файлов не забудьте активировать модуль и определенное хранилище в настройках проекта каждого желаемого проекта."
+      show_warning_details: "Для использования этого хранилища файлов не забудьте активировать модуль и конкретное хранилище в настройках проекта каждого желаемого проекта."
     subversion:
       existing_title: "Существующий репозиторий Subversion"
       existing_introduction: "Если у вас есть существующий репозиторий Subversion, вы можете связать его с OpenProject для доступа к нему из приложения."
@@ -3424,12 +3432,12 @@ ru:
   setting_work_package_done_ratio: "Режим расчета прогресса"
   setting_work_package_done_ratio_field: "На основе трудозатрат"
   setting_work_package_done_ratio_field_caption_html: >-
-    <i>% Завершения</i> может быть свободно установлен на любое значение. Если Вы опционально введете значение для параметра <i>Работа</i>, то автоматически будет выведено значение <i>Оставшаяся работа</i>.
+    <i>% Завершено</i> может быть свободно установлен на любое значение. Если Вы опционально введете значение для параметра <i>Предполагаемое время</i>, то автоматически будет выведено значение <i>Оставшиеся часы</i>.
   setting_work_package_done_ratio_status: "На основе статуса"
   setting_work_package_done_ratio_status_caption_html: >-
     С каждым статусом связано значение <i>% Завершения</i>. Изменение статуса приведет к изменению <i>% Завершения</i>.
   setting_work_package_done_ratio_explanation_html: >
-    В режиме <b>На основе трудозатрат</b> для параметра % Завершения можно свободно установить любое значение. Если вы дополнительно введете значение «Работа», «Оставшаяся работа» будет получена автоматически. В режиме <b>На основе статуса</b> с каждым статусом связано значение % Завершения. Изменение статуса приведет к изменению % Завершения.
+    В режиме <b>На основе трудозатрат</b> для параметра % Завершено можно свободно установить любое значение. Если вы дополнительно введете значение «Предполагаемое время», «Оставшиеся часы» будут получены автоматически. В режиме <b>На основе статуса</b> с каждым статусом связано значение % Завершено. Изменение статуса приведет к изменению % Завершено.
   setting_work_package_properties: "Свойства пакета работ"
   setting_work_package_startdate_is_adddate: "Использовать текущую дату как дату начала для новых пакетов работ"
   setting_work_packages_projects_export_limit: "Ограничение экспорта пакетов работ / проектов"
@@ -3448,10 +3456,10 @@ ru:
   setting_password_min_length: "Минимальная длина"
   setting_password_min_adhered_rules: "Минимальное количество необходимых классов"
   setting_per_page_options: "Количество объектов на страницу"
-  setting_percent_complete_on_status_closed: "% Завершения, когда статус закрыт"
+  setting_percent_complete_on_status_closed: "% Завершено, когда статус закрыт"
   setting_percent_complete_on_status_closed_no_change: "Без изменений"
   setting_percent_complete_on_status_closed_no_change_caption_html: >-
-    Значение <i>% Завершения</i> не изменится, даже если пакет работ будет закрыт.
+    Значение <i>% Завершено</i> не изменится, даже если пакет работ будет закрыт.
   setting_percent_complete_on_status_closed_set_100p: "Автоматически устанавливается на 100%"
   setting_percent_complete_on_status_closed_set_100p_caption: >-
     Закрытый пакет работ считается завершенным.
@@ -3478,13 +3486,13 @@ ru:
   setting_sys_api_enabled: "Разрешить веб-сервис управления репозиторием"
   setting_sys_api_description: "Веб-сервис управления репозиторием обеспечивает интеграцию и авторизацию пользователя для доступа к репозиторию."
   setting_time_format: "Время"
-  setting_total_percent_complete_mode: "Расчет общего % Завершения полной иерархии"
+  setting_total_percent_complete_mode: "Расчёт общего % Завершено по всей иерархии"
   setting_total_percent_complete_mode_work_weighted_average: "Взвешенное по работе"
   setting_total_percent_complete_mode_work_weighted_average_caption_html: >-
-    <i>Общий % Завершения</i> будет взвешен по  <i>Работе</i> каждого пакета работ в иерархии. Пакеты работ без <i>Работы</i> будут игнорироваться.
+    <i>Общий % Завершено</i> будет рассчитан как средневзвешенное значение по  <i>Предполагаемому времени</i> каждого пакета работ в иерархии. Пакеты работ без <i>Предполагаемого времени</i> будут игнорироваться.
   setting_total_percent_complete_mode_simple_average: "Среднее арифметическое"
   setting_total_percent_complete_mode_simple_average_caption_html: >-
-    <i>Работа</i> игнорируется, и <i>Общий % Завершения</i> будет средним арифметическим значением <i>% Завершения</i> пакетов работ в иерархии.
+    <i>Предполагаемое время</i> игнорируется, и <i>Общий % Завершено</i> будет средним арифметическим от значений <i>% Завершено</i> пакетов работ в иерархии.
   setting_accessibility_mode_for_anonymous: "Разрешить режим доступа людей с ограниченными возможностями для анонимных пользователей"
   setting_user_format: "Формат имени пользователя"
   setting_user_default_timezone: "Часовой пояс пользователя по умолчанию"
@@ -3856,6 +3864,12 @@ ru:
       edit_description: "Может просматривать, комментировать и редактировать этот пакет работ."
       view: "Просматривать"
       view_description: "Может просматривать этот пакет работ."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 пользователей"

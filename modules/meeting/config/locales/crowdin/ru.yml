@@ -55,8 +55,8 @@ ru:
       recurring_meeting:
         frequency: "Периодичность"
         interval: "Промежуток"
-        start_date: "Starts on"
-        end_after: "End series after"
+        start_date: "Начинается"
+        end_after: "Завершение серии после"
         iterations: "События"
     errors:
       messages:
@@ -219,16 +219,15 @@ ru:
       working_days: "Каждый рабочий день"
       weekly: "Еженедельно"
     end_after:
-      specific_date: "a specific date"
-      iterations: "a number of occurrences"
+      specific_date: "конкретная дата"
+      iterations: "количество событий"
     starts: "Начало"
     in_words:
-      daily_interval: "Every %{interval} days"
+      daily_interval: "Каждые %{interval} дней"
       working_days: "Каждый рабочий день"
-      working_days_interval: "Каждый %{interval} рабочий день"
-      weekly: "Every week on %{weekday}"
-      weekly_interval: "Every %{interval} weeks on %{weekday}"
-      frequency: "%{base} at %{time}"
+      weekly: "Каждую неделю в %{weekday}"
+      weekly_interval: "Каждые %{interval} недель в %{weekday}"
+      frequency: "%{base} в %{time}"
       full: "%{base} в %{time}, заканчивается %{end_date}"
   notice_successful_notification: "Уведомление успешно отправленно"
   notice_timezone_missing: Не установлен часовой пояс и применена %{zone}. Чтобы выбрать часовой пояс, пожалуйста, нажмите сюда.

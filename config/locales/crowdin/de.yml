@@ -848,6 +848,9 @@ de:
         lag: "Verzögerung"
         from: "Arbeitspaket"
         to: "Zugehöriges Arbeitspaket"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1426,6 +1429,7 @@ de:
     login: "Benutzername"
     mail: "E-Mail"
     name: "Name"
+    note: "Note"
     password: "Kennwort"
     priority: "Priorität"
     project: "Projekt"
@@ -1522,6 +1526,7 @@ de:
   button_print: "Drucken"
   button_quote: "Zitieren"
   button_remove: Entfernen
+  button_remove_reminder: "Remove reminder"
   button_rename: "Umbenennen"
   button_replace: "Ersetzen"
   button_revoke: "Widerrufen"
@@ -1532,6 +1537,7 @@ de:
   button_save_as: "Speichern unter"
   button_apply_changes: "Änderungen anwenden"
   button_save_back: "Speichern und zurück"
+  button_set_reminder: "Set reminder"
   button_show: "Anzeigen"
   button_sort: "Sortierung"
   button_submit: "OK"
@@ -1737,12 +1743,12 @@ de:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Anpassen der Form-Konfiguration mit diesen zusätzlichen Add-ons:"
         add_groups: "Neue Attributgruppen hinzufügen"
         rename_groups: "Attributgruppen umbenennen"
-      project_filters:
-        description_html: "Filtern und Sortieren auf benutzerdefinierten Feldern ist ein Add-on der Enterprise Edition."
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projekt-Status"
@@ -1775,6 +1781,7 @@ de:
   error_pdf_export_too_many_columns: "Zu viele Spalten für PDF-Export ausgewählt. Bitte reduzieren Sie die Anzahl der ausgewählten Spalten."
   error_pdf_failed_to_export: "Der PDF-Export konnte nicht gespeichert werden: %{error}"
   error_token_authenticity: "Das Cross-Site Request Forgery Token konnte nicht verfiziert werden. Wenn Sie versucht haben, Daten auf mehreren Tabs oder Browsern abzuspeichern, schließen sie diese und laden diese Seite erneut um den Vorgang zu wiederholen."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Das Arbeitspaket wurde nicht gefunden oder gehört nicht zu diesem Projekt."
   error_work_package_id_not_found: "Das Arbeitspaket wurde nicht gefunden."
   error_must_be_project_member: "muss Mitglied des Projekts sein"
@@ -2068,6 +2075,7 @@ de:
       responsible: "Verantwortlich"
       shared: "Geteilt"
       watched: "Beobachter"
+      reminder: "Reminder"
     facets:
       unread: "Ungelesen"
       unread_title: "Ungelesene anzeigen"
@@ -2238,7 +2246,7 @@ de:
   label_delete: "Löschen"
   label_deleted: "gelöscht"
   label_deleted_custom_field: "(gelöschtes benutzerdefiniertes Feld)"
-  label_deleted_custom_item: "(deleted item)"
+  label_deleted_custom_item: "(gelöschter Eintrag)"
   label_deleted_custom_option: "(gelöschte Option)"
   label_empty_element: "(leer)"
   label_missing_or_hidden_custom_option: "(Fehlender Wert oder fehlende Zugriffsberechtigungen)"
@@ -2275,7 +2283,6 @@ de:
   label_enterprise_active_users: "%{current}/%{limit} gebuchte aktive Nutzer"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise Support"
-  label_enterprise_addon: "Enterprise Add-on"
   label_environment: "Umgebung"
   label_estimates_and_progress: "Schätzungen und Fortschritt"
   label_equals: "ist"
@@ -2624,6 +2631,7 @@ de:
   label_this_month: "aktueller Monat"
   label_this_week: "aktuelle Woche"
   label_this_year: "aktuelles Jahr"
+  label_time: "Time"
   label_time_entry_plural: "Aufgewendete Zeit"
   label_time_entry_activity_plural: "Zeitbuchung-Aktivität"
   label_title: "Titel"
@@ -3775,6 +3783,12 @@ de:
       edit_description: "Kann dieses Arbeitspaket ansehen, kommentieren und editieren."
       view: "Ansicht"
       view_description: "Kann dieses Arbeitspaket ansehen."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 Benutzer"

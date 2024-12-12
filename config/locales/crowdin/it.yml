@@ -851,6 +851,9 @@ it:
         lag: "Ritardo"
         from: "Macro-attività"
         to: "Macro-attività correlata"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1429,6 +1432,7 @@ it:
     login: "Nome utente"
     mail: "Email"
     name: "Nome"
+    note: "Note"
     password: "Password"
     priority: "Priorità"
     project: "Progetto"
@@ -1525,6 +1529,7 @@ it:
   button_print: "Stampa"
   button_quote: "Cita"
   button_remove: Rimuovi
+  button_remove_reminder: "Remove reminder"
   button_rename: "Rinomina"
   button_replace: "Sostituisci"
   button_revoke: "Revoca"
@@ -1535,6 +1540,7 @@ it:
   button_save_as: "Salva come"
   button_apply_changes: "Applica modifiche"
   button_save_back: "Salva e ritorna"
+  button_set_reminder: "Set reminder"
   button_show: "Mostra"
   button_sort: "Ordina"
   button_submit: "Invia"
@@ -1740,12 +1746,12 @@ it:
   direction: da sinistra a destra
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Personalizza la configurazione del modulo con le seguenti aggiunte:"
         add_groups: "Aggiunta di gruppi di proprietà"
         rename_groups: "Rinominazione di gruppi di proprietà"
-      project_filters:
-        description_html: "Le opzioni di filtraggio e ordinamento dei campi personalizzati sono disponibili nella versione Enterprise."
   enumeration_activities: "Attività di monitoraggio dei tempi"
   enumeration_work_package_priorities: "Priorità della macro-attività"
   enumeration_reported_project_statuses: "Stato di progetto segnalato"
@@ -1778,6 +1784,7 @@ it:
   error_pdf_export_too_many_columns: "Troppe colonne selezionate per l'esportazione in PDF. Ridurre il numero di colonne."
   error_pdf_failed_to_export: "L'esportazione del PDF non può essere salvata: %{error}"
   error_token_authenticity: "Impossibile verificare il token di richiesta. Forse hai provato a inviare i dati da più browser o schede? Chiudi tutte le schede e riprova."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "La macro-attività non è stata trovata o non appartiene a questo progetto"
   error_work_package_id_not_found: "Impossibile trovare la macro-attività."
   error_must_be_project_member: "deve essere membro del progetto"
@@ -2071,6 +2078,7 @@ it:
       responsible: "Responsabile"
       shared: "Condiviso"
       watched: "Osservatore"
+      reminder: "Reminder"
     facets:
       unread: "Non letta"
       unread_title: "Mostra non lette"
@@ -2278,7 +2286,6 @@ it:
   label_enterprise_active_users: "%{current}/%{limit} utenti attivi riservati"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Supporto per Imprese"
-  label_enterprise_addon: "Componente aggiuntivo Enterprise"
   label_environment: "Ambiente"
   label_estimates_and_progress: "Stime e progressi"
   label_equals: "è"
@@ -2627,6 +2634,7 @@ it:
   label_this_month: "questo mese"
   label_this_week: "questa settimana"
   label_this_year: "questo anno"
+  label_time: "Time"
   label_time_entry_plural: "Tempo speso"
   label_time_entry_activity_plural: "Attività che richiedono tempo"
   label_title: "Titolo"
@@ -3779,6 +3787,12 @@ it:
       edit_description: "Può visu"
       view: "Visualizzare"
       view_description: "Può visualizzare questa macro-attività."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 utenti"

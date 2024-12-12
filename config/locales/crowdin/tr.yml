@@ -853,6 +853,9 @@ tr:
         lag: "Gecikme"
         from: "İş paketi"
         to: "İlgili iş paketi"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1431,6 +1434,7 @@ tr:
     login: "Kullanıcı adı"
     mail: "Eposta"
     name: "İsim"
+    note: "Note"
     password: "Parola"
     priority: "Öncelik"
     project: "Proje"
@@ -1527,6 +1531,7 @@ tr:
   button_print: "Yazdır"
   button_quote: "Alıntı"
   button_remove: Kaldır
+  button_remove_reminder: "Remove reminder"
   button_rename: "Yeniden adlandır"
   button_replace: "Değiştir"
   button_revoke: "İptal etmek"
@@ -1537,6 +1542,7 @@ tr:
   button_save_as: "Farklı Kaydet"
   button_apply_changes: "Değişiklikleri uygula"
   button_save_back: "Kaydet ve geri dön"
+  button_set_reminder: "Set reminder"
   button_show: "Göster"
   button_sort: "Sırala"
   button_submit: "Gönder"
@@ -1742,12 +1748,12 @@ tr:
   direction: soldan sağa
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Bu ek eklentilerle form yapılandırmasını özelleştirin:"
         add_groups: "Yeni öznitelik grubu ekleyin"
         rename_groups: "Öznitelik grubunun adını değiştirin"
-      project_filters:
-        description_html: "Özel alanlarda filtreleme ve sıralama, bir Enterprise sürümü eklentisidir."
   enumeration_activities: "Zaman izleme faaliyetleri"
   enumeration_work_package_priorities: "İş paketi öncelikleri"
   enumeration_reported_project_statuses: "Bildirilen proje durumları"
@@ -1780,6 +1786,7 @@ tr:
   error_pdf_export_too_many_columns: "PDF Dışa Aktarma için çok fazla sütun seçili. Sütun sayısını azaltın."
   error_pdf_failed_to_export: "PDF çıktısı kaydedilemedi: %{error}"
   error_token_authenticity: "Siteler Arası İstek Sahteciliği belirteci doğrulanamadı. Birden fazla tarayıcı veya sekme hakkında veri göndermeyi denediniz mi? Lütfen tüm sekmeleri kapatın ve tekrar deneyin"
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Iş paketi bulunamadı veya bu projeye ait değil"
   error_work_package_id_not_found: "İş paketi bulunamadı."
   error_must_be_project_member: "projesi üyesi olmalıdır"
@@ -2073,6 +2080,7 @@ tr:
       responsible: "Sorumlu"
       shared: "Shared"
       watched: "Takipçi"
+      reminder: "Reminder"
     facets:
       unread: "okunmamış"
       unread_title: "Okunmayanları göster"
@@ -2280,7 +2288,6 @@ tr:
   label_enterprise_active_users: "%{current}/%{limit} aktif kullanıcı rezervasyonu"
   label_enterprise_edition: "Enterprise sürüm"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Ortam"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "şuysa"
@@ -2629,6 +2636,7 @@ tr:
   label_this_month: "bu ay"
   label_this_week: "bu hafta"
   label_this_year: "bu yıl"
+  label_time: "Time"
   label_time_entry_plural: "Harcanan zaman"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Başlık"
@@ -3778,6 +3786,12 @@ tr:
       edit_description: "Can view, comment and edit this work package."
       view: "Göster"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"
