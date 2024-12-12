@@ -46,4 +46,12 @@ RSpec.describe Project::GateDefinition do
       expect(subject.step_class).to eq(Project::Gate)
     end
   end
+
+  describe "validations" do
+    it "is invalid if type and class name do not match" do
+      subject.type = "Project::StageDefinition"
+      expect(subject).not_to be_valid
+      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
+    end
+  end
 end
