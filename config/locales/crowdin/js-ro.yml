@@ -326,7 +326,7 @@ ro:
       filter:
         noneSelection: "(nimic)"
       selection_mode:
-        notification: "Faceți click pe oricare dintre pachetele de lucru pentru a crea o legătură. Apăsați Escape pentru a anula."
+        notification: "Dă clic pe oricare dintre pachetele de lucru pentru a crea o legătură. Apasă Escape pentru a anula."
       zoom:
         in: "Mărire"
         out: "Micșorare"
@@ -797,36 +797,36 @@ ro:
       typeahead_placeholder: Căutarea de posibili observatori
     relation_labels:
       parent: "Părinte"
-      children: "Fii"
+      children: "Copii"
       relates: "În relație cu"
       duplicates: "Dublează"
       duplicated: "Dublat de"
       blocks: "Blochează"
       blocked: "Blocat de"
       precedes: "Precede"
-      follows: "Urmează după"
+      follows: "Urmează"
       includes: "Include"
       partof: "Parte din"
       requires: "Necesită"
       required: "Cerut de"
-      relation_type: "tipul de relaţie"
+      relation_type: "tip relație"
     relations_hierarchy:
       parent_headline: "Părinte"
-      hierarchy_headline: "Arată ierarhia"
-      children_headline: "Fii"
+      hierarchy_headline: "Ierarhie"
+      children_headline: "Copii"
     relation_buttons:
       set_parent: "Setează părinte"
-      change_parent: "Modificare părinte"
-      remove_parent: "Elimina părinte"
-      hierarchy_indent: "Ierarhia de indentare"
-      hierarchy_outdent: "Ierarhie ieșită din comun"
+      change_parent: "Modifică părinte"
+      remove_parent: "Elimină părinte"
+      hierarchy_indent: "Indentare ierarhie"
+      hierarchy_outdent: "Elimină ierarhia"
       group_by_wp_type: "Grupează după tipul packetului de lucru"
       group_by_relation_type: "Grupează dupa tipul legăturii"
       add_parent: "Adaugă părinte existent"
-      add_new_child: "Crează un nou copil"
-      create_new: "Creați un nou"
-      add_existing: "Adăugați Existent"
-      add_existing_child: "Adaugă un copil existent"
+      add_new_child: "Creează copil nou"
+      create_new: "Creează nou"
+      add_existing: "Adaugă existent"
+      add_existing_child: "Adaugă copil existent"
       remove_child: "Elimină copil"
       add_new_relation: "Crează o nouă relație"
       add_existing_relation: "Adăugarea unei relații existente"
@@ -836,12 +836,12 @@ ro:
       add_follower: "Adaugă urmăritor"
       show_relations: "Arată relațiile"
       add_predecessor: "Adăugați predecesorul"
-      remove: "Eliminare relaţie"
+      remove: "Eliminare relație"
       save: "Salvează relația"
       abort: "Anulează"
     relations_autocomplete:
       placeholder: "Tastează pentru a căuta"
-      parent_placeholder: "Alegeți un nou părinte sau apăsați Escape pentru a anula."
+      parent_placeholder: "Alege un nou părinte sau apasă Escape pentru a anula."
     autocompleter:
       placeholder: "Tastează pentru a căuta"
       notFoundText: "Niciun articol găsit"
@@ -1150,7 +1150,7 @@ ro:
     notice_bad_request: "Cerere invalidă."
     relations:
       empty: Nu există relații
-      remove: Eliminare relaţie
+      remove: Elimină relație
     inplace:
       button_edit: "%{attribute}: Editare"
       button_save: "%{attribute}: Salvează"
