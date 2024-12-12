@@ -32,6 +32,22 @@ module Settings
       include OpPrimer::ComponentHelpers
 
       alias_method :definition, :model
+
+      options :first?, :last?
+
+      private
+
+      def move_action(menu:, move_to:, label:, icon:)
+        menu.with_item(
+          label:,
+          href: move_admin_settings_project_life_cycle_step_definition_path(definition, move_to:),
+          form_arguments: {
+            method: :patch
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon:)
+        end
+      end
     end
   end
 end

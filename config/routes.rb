@@ -515,10 +515,13 @@ Rails.application.routes.draw do
       resource :projects, controller: "/admin/settings/projects_settings", only: %i[show update]
       resource :new_project, controller: "/admin/settings/new_project_settings", only: %i[show update]
       resources :project_life_cycle_step_definitions, controller: "/admin/settings/project_life_cycle_step_definitions",
-                                                      only: %i[index create edit update] do
+                                                      only: %i[index create edit update destroy] do
         collection do
           get :new_stage
           get :new_gate
+        end
+        member do
+          patch :move
         end
       end
       resources :project_custom_fields, controller: "/admin/settings/project_custom_fields" do

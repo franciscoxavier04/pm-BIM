@@ -69,7 +69,11 @@ See COPYRIGHT and LICENSE files for more details.
         else
           definitions.each do |definition|
             component.with_row(data: { "projects--settings--border-box-filter-target": "searchItem" }) do
-              render(Settings::ProjectLifeCycleStepDefinitions::RowComponent.new(definition))
+              render(Settings::ProjectLifeCycleStepDefinitions::RowComponent.new(
+                definition,
+                first?: definition == definitions.first,
+                last?: definition == definitions.last,
+              ))
             end
           end
         end

@@ -33,7 +33,7 @@ module Admin::Settings
     before_action :check_feature_flag
 
     before_action :find_definitions, only: %i[index]
-    before_action :find_definition, only: %i[edit update]
+    before_action :find_definition, only: %i[edit update destroy move]
 
     def index; end
 
@@ -71,6 +71,28 @@ module Admin::Settings
       else
         render :form, status: :unprocessable_entity
       end
+    end
+
+    def destroy
+      if @definition.destroy
+        flash[:notice] = I18n.t(:notice_successful_delete)
+      else
+        # TODO: handle better
+        flash[:error] = I18n.t(:notice_bad_request)
+      end
+
+      redirect_to action: :index
+    end
+
+    def move
+      if @definition.update(params.permit(:move_to))
+        flash[:notice] = I18n.t(:notice_successful_update)
+      else
+        # TODO: handle better
+        flash[:error] = I18n.t(:notice_bad_request)
+      end
+
+      redirect_to action: :index
     end
 
     private
