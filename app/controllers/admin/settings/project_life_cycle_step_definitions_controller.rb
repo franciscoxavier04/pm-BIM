@@ -33,7 +33,7 @@ module Admin::Settings
     before_action :check_feature_flag
 
     before_action :find_definitions, only: %i[index]
-    before_action :find_definition, only: %i[edit update destroy move]
+    before_action :find_definition, only: %i[edit update destroy move drop]
 
     def index; end
 
@@ -58,7 +58,7 @@ module Admin::Settings
 
       if @definition.save
         flash[:notice] = I18n.t(:notice_successful_create)
-        redirect_to action: :index
+        redirect_to action: :index, status: :see_other
       else
         render :form, status: :unprocessable_entity
       end
@@ -67,7 +67,7 @@ module Admin::Settings
     def update
       if @definition.update(definition_params)
         flash[:notice] = I18n.t(:notice_successful_update)
-        redirect_to action: :index
+        redirect_to action: :index, status: :see_other
       else
         render :form, status: :unprocessable_entity
       end
@@ -81,7 +81,7 @@ module Admin::Settings
         flash[:error] = I18n.t(:notice_bad_request)
       end
 
-      redirect_to action: :index
+      redirect_to action: :index, status: :see_other
     end
 
     def move
@@ -92,7 +92,18 @@ module Admin::Settings
         flash[:error] = I18n.t(:notice_bad_request)
       end
 
-      redirect_to action: :index
+      redirect_to action: :index, status: :see_other
+    end
+
+    def drop
+      if @definition.update(params.permit(:position))
+        flash[:notice] = I18n.t(:notice_successful_update)
+      else
+        # TODO: handle better
+        flash[:error] = I18n.t(:notice_bad_request)
+      end
+
+      redirect_to action: :index, status: :see_other
     end
 
     private

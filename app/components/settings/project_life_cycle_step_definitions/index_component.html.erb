@@ -50,7 +50,7 @@ See COPYRIGHT and LICENSE files for more details.
     end
 
     flex.with_row do
-      render(border_box_container(mb: 3)) do |component|
+      render(border_box_container(mb: 3, data: drop_target_config)) do |component|
         component.with_header(font_weight: :bold, py: 2) do
           flex_layout(justify_content: :space_between, align_items: :center) do |header_container|
             header_container.with_column do
@@ -68,7 +68,12 @@ See COPYRIGHT and LICENSE files for more details.
           end
         else
           definitions.each do |definition|
-            component.with_row(data: { "projects--settings--border-box-filter-target": "searchItem" }) do
+            component.with_row(
+              data: {
+                "projects--settings--border-box-filter-target": "searchItem",
+                **draggable_item_config(definition)
+              }
+            ) do
               render(Settings::ProjectLifeCycleStepDefinitions::RowComponent.new(
                 definition,
                 first?: definition == definitions.first,

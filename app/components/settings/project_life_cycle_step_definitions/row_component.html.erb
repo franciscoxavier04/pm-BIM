@@ -31,6 +31,9 @@ See COPYRIGHT and LICENSE files for more details.
   flex_layout(align_items: :center, justify_content: :space_between) do |row_container|
     row_container.with_column(flex_layout: true, classes: "gap-2") do |title_container|
       title_container.with_column do
+        render(Primer::OpenProject::DragHandle.new)
+      end
+      title_container.with_column do
         render(Primer::Beta::Link.new(
           classes: 'filter-target-visible-text',
           href: edit_admin_settings_project_life_cycle_step_definition_path(definition),

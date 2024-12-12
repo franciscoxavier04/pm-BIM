@@ -522,6 +522,7 @@ Rails.application.routes.draw do
         end
         member do
           patch :move
+          put :drop # should be patch, but requires passing method to generic-drag-and-drop controller
         end
       end
       resources :project_custom_fields, controller: "/admin/settings/project_custom_fields" do
