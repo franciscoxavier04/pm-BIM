@@ -55,7 +55,7 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
   end
 
   def available?
-    life_cycle_step_definition.present?
+    OpenProject::FeatureDecisions.stages_and_gates_active? && life_cycle_step_definition.present?
   end
 
   def visual_icon
