@@ -868,6 +868,9 @@ lt:
         lag: "Vėlavimas"
         from: "Darbų paketas"
         to: "Susijusių darbų paketas"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1466,6 +1469,7 @@ lt:
     login: "Naudotojas"
     mail: "El. paštas"
     name: "Vardas"
+    note: "Note"
     password: "Slaptažodis"
     priority: "Pirmenybė"
     project: "Projektas"
@@ -1562,6 +1566,7 @@ lt:
   button_print: "Spausdinti"
   button_quote: "Cituoti"
   button_remove: Pašalinti
+  button_remove_reminder: "Remove reminder"
   button_rename: "Pervardinti"
   button_replace: "Pakeisti"
   button_revoke: "Atšaukti"
@@ -1572,6 +1577,7 @@ lt:
   button_save_as: "Įrašyti kaip"
   button_apply_changes: "Pritaikyti pakeitimus"
   button_save_back: "Įrašyti ir grįžti atgal"
+  button_set_reminder: "Set reminder"
   button_show: "Rodyti"
   button_sort: "Rūšiuoti"
   button_submit: "Siųsti"
@@ -1813,12 +1819,12 @@ lt:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Pritaikyti sau formos konfigūraciją su šiais naujais priedais:"
         add_groups: "Pridėti naujas atributų grupes"
         rename_groups: "Pervadinti atributų grupes"
-      project_filters:
-        description_html: "Filtravimas ir rikiavimas pagal pritaikytus laukus yra tik Enterprise versijos priedas."
   enumeration_activities: "Laiko sekimo veiklos"
   enumeration_work_package_priorities: "Darbų paketo prioritetai"
   enumeration_reported_project_statuses: "Pranešta projekto būsena"
@@ -1851,6 +1857,7 @@ lt:
   error_pdf_export_too_many_columns: "PDF eksportavimui pasirinkta per daug stulpelių. Prašome sumažinti stulpelių skaičių."
   error_pdf_failed_to_export: "PDF eksportas negali būti išsaugotas: %{error}"
   error_token_authenticity: "Neįmanoma patikrinti Cross-Site Request Forgery žetono. Gal bandėte nusiųsti duomenis iš kelių naršyklių ar kortelių? Prašome uždaryti visas korteles ir pabandyti dar kartą."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Darbų paketas nerastas arba nepriklauso šiam projektui"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "turi būti projekto narys"
@@ -2144,6 +2151,7 @@ lt:
       responsible: "Atsakingas"
       shared: "Bendrinta"
       watched: "Stebėtojas"
+      reminder: "Reminder"
     facets:
       unread: "Neskaitytas"
       unread_title: "Rodyti neperskaitytus"
@@ -2314,6 +2322,7 @@ lt:
   label_delete: "Delete"
   label_deleted: "panaikintas"
   label_deleted_custom_field: "(panaikintas vartotojo laukas)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(panaikintas nustatymas)"
   label_empty_element: "(tuščia)"
   label_missing_or_hidden_custom_option: "(trūksta reikšmės arba prieigos teisių)"
@@ -2350,7 +2359,6 @@ lt:
   label_enterprise_active_users: "%{current}/%{limit} aktyviai naudojami naudotojai"
   label_enterprise_edition: "Enterprise versija"
   label_enterprise_support: "„Enterprise“ palaikymas"
-  label_enterprise_addon: "Enterprise priedas"
   label_environment: "Aplinka"
   label_estimates_and_progress: "Įvertinimai ir eiga"
   label_equals: "yra"
@@ -2699,6 +2707,7 @@ lt:
   label_this_month: "šis mėnuo"
   label_this_week: "ši savaitė"
   label_this_year: "šiemet"
+  label_time: "Time"
   label_time_entry_plural: "Praleista laiko"
   label_time_entry_activity_plural: "Praleisto laiko veiklos"
   label_title: "Pavadinimas"
@@ -3853,6 +3862,12 @@ lt:
       edit_description: "Gali žiūrėti, komentuoti ir keisti šį darbo paketą."
       view: "Peržiūrėti"
       view_description: "Gali žiūrėti šį darbo paketą."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 naudotojų"

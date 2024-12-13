@@ -55,14 +55,15 @@ lt:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
         invalid_time_format: "netinkamas laikas. Reikalingas formatas: HH:MM (pvz.: 10:30)"
     models:
       recurring_meeting: "Recurring meeting"
-      structured_meeting: "Susitikimas (dinaminis)"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Darbotvarkės punktas"
       meeting_agenda: "Dienotvarkė"
       meeting_minutes: "Minutės"
@@ -96,7 +97,7 @@ lt:
   label_meeting: "Pasitarimas"
   label_meeting_plural: "Pasitarimai"
   label_meeting_new: "Naujas pasitarimas"
-  label_meeting_new_dynamic: "New dynamic meeting"
+  label_meeting_new_dynamic: "New one-time meeting"
   label_meeting_new_recurring: "New recurring meeting"
   label_meeting_create: "Create meeting"
   label_meeting_copy: "Copy meeting"
@@ -141,8 +142,10 @@ lt:
   label_past_meetings_short: "Buvę"
   label_involvement: "Įsitraukimas"
   label_invitations: "Invitations"
+  label_invited_user: "Invited user"
   label_past_invitations: "Ankstesni pakvietimai"
   label_attended: "Attended"
+  label_attended_user: "Attended user"
   label_created_by_me: "Created by me"
   label_notify: "Siųsti peržiūrai"
   label_icalendar: "Siųsti iCalendar formatu"
@@ -183,10 +186,11 @@ lt:
     label_mail_all_participants: "Siųsti e-laišką visiems dalyviams"
     types:
       classic: "Klasikinis"
-      classic_text: "Organizuokite jūsų susitikimą su formatuojamo teksto darbotvarke ir protokolu."
-      structured: "Dinaminis"
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "One-time"
       recurring: "Recurring"
-      structured_text: "Organizuokite jūsų susitikimą su darbotvarkės elementų sąrašu, pasirinktinai susiejant juos su darbo paketu."
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Šiuo metu nukopijavus susitikimą, susiję susitikimo elmentai nebus kopijuojami, tik detalės."
     copied: "Nukopijuota iš susitikimo #%{id}"
   meeting_section:
@@ -195,9 +199,6 @@ lt:
     placeholder_title: "Nauja skiltis"
     empty_text: "Tempkite elementus čia arba sukurtkite naują"
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -221,15 +222,15 @@ lt:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Every working day"
-      working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Pranešimas sėkmingai išsiųstas"
   notice_timezone_missing: Laiko zona nenustatyta ir %{zone} zona yra rekomenduojama. Kad pasirinktumėte laiko zoną, paspauskite čia.

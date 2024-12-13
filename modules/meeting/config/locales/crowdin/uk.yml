@@ -55,14 +55,15 @@ uk:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
         invalid_time_format: "не є допустимим часом. Необхідний формат: HH:MM"
     models:
       recurring_meeting: "Recurring meeting"
-      structured_meeting: "Нарада (динамічна)"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Порядок денний"
       meeting_agenda: "Порядок денний"
       meeting_minutes: "Хвилини"
@@ -96,7 +97,7 @@ uk:
   label_meeting: "Зустріч"
   label_meeting_plural: "Зустрічі"
   label_meeting_new: "Нова зустріч"
-  label_meeting_new_dynamic: "Нова динамічна нарада"
+  label_meeting_new_dynamic: "New one-time meeting"
   label_meeting_new_recurring: "New recurring meeting"
   label_meeting_create: "Створити нараду"
   label_meeting_copy: "Копіювати нараду"
@@ -141,8 +142,10 @@ uk:
   label_past_meetings_short: "Минулі"
   label_involvement: "Участь"
   label_invitations: "Invitations"
+  label_invited_user: "Invited user"
   label_past_invitations: "Минулі запрошення"
   label_attended: "Attended"
+  label_attended_user: "Attended user"
   label_created_by_me: "Created by me"
   label_notify: "Надіслати на розгляд"
   label_icalendar: "Надіслати iCalendar"
@@ -183,10 +186,11 @@ uk:
     label_mail_all_participants: "Надіслати лист усім учасникам"
     types:
       classic: "Класична"
-      classic_text: "Організуйте нараду у вигляді порядку денного й протоколу в текстовому форматі з підтримкою редагування."
-      structured: "Динамічна"
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "One-time"
       recurring: "Recurring"
-      structured_text: "Організуйте нараду у вигляді переліку пунктів порядку денного, за бажанням пов’язавши їх із пакетом робіт."
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Зараз копіювання наради стосується лише докладних даних про неї, але не пов’язаних пунктів її порядку денного"
     copied: "Скопійовано з наради #%{id} "
   meeting_section:
@@ -195,9 +199,6 @@ uk:
     placeholder_title: "Новий розділ"
     empty_text: "Перетягніть елементи сюди або створіть новий"
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -221,15 +222,15 @@ uk:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Every working day"
-      working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Повідомлення успішно надіслано"
   notice_timezone_missing: Часовий пояс не встановлено і %{zone} передбачається. Щоб вибрати часовий пояс, натисніть тут.

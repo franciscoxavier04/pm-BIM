@@ -871,6 +871,9 @@ cs:
         lag: "Lag"
         from: "Pracovní balíček"
         to: "Související pracovní balíček"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1469,6 +1472,7 @@ cs:
     login: "Uživatelské jméno"
     mail: "E-mail"
     name: "Název"
+    note: "Note"
     password: "Heslo"
     priority: "Priorita"
     project: "Projekt"
@@ -1565,6 +1569,7 @@ cs:
   button_print: "Tisk"
   button_quote: "Citovat"
   button_remove: Odstranit
+  button_remove_reminder: "Remove reminder"
   button_rename: "Přejmenovat"
   button_replace: "Nahradit"
   button_revoke: "Revoke"
@@ -1575,6 +1580,7 @@ cs:
   button_save_as: "Uložit jako"
   button_apply_changes: "Použít změny"
   button_save_back: "Uložit a odejít"
+  button_set_reminder: "Set reminder"
   button_show: "Zobrazit"
   button_sort: "Řadit"
   button_submit: "Potvrdit"
@@ -1816,12 +1822,12 @@ cs:
   direction: zleva doprava
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Přizpůsobte si konfiguraci formuláře s těmito doplňky:"
         add_groups: "Přidat nové skupiny atributů"
         rename_groups: "Přejmenovat skupiny atributů"
-      project_filters:
-        description_html: "Filtrování a třídění na vlastních polích je doplněk edice Enterprise."
   enumeration_activities: "Sledování času"
   enumeration_work_package_priorities: "Priority pracovního balíčku"
   enumeration_reported_project_statuses: "Nahlášený stav projektu"
@@ -1854,6 +1860,7 @@ cs:
   error_pdf_export_too_many_columns: "Příliš mnoho sloupců vybraných pro PDF export. Snižte počet sloupců."
   error_pdf_failed_to_export: "PDF export nelze uložit: %{error}"
   error_token_authenticity: "Nelze ověřit token Cross-Site Request Forgy. Pokusili jste se odeslat data na více prohlížečích nebo kartách? Prosím zavřete všechny panely a zkuste to znovu."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Pracovný balíček nebyl nalezen, nebo nepatří k tomuto projektu"
   error_work_package_id_not_found: "Pracovní balíček nebyl nalezen."
   error_must_be_project_member: "musí být členem projektu"
@@ -2147,6 +2154,7 @@ cs:
       responsible: "Odpovědný"
       shared: "Sdíleno"
       watched: "Sledující"
+      reminder: "Reminder"
     facets:
       unread: "Nepřečtené"
       unread_title: "Zobrazit nepřečtené"
@@ -2317,6 +2325,7 @@ cs:
   label_delete: "Delete"
   label_deleted: "Smazáno"
   label_deleted_custom_field: "(odstraněno vlastní pole)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(prázdný)"
   label_missing_or_hidden_custom_option: "(chybí hodnota nebo chybí oprávnění k přístupu)"
@@ -2353,7 +2362,6 @@ cs:
   label_enterprise_active_users: "%{current}/%{limit} rezervováno aktivních uživatelů"
   label_enterprise_edition: "Enterprise Edice"
   label_enterprise_support: "Podpora pro Enterprise edici"
-  label_enterprise_addon: "Doplňky Enterprise Edice"
   label_environment: "Prostředí"
   label_estimates_and_progress: "Odhady a posup"
   label_equals: "je"
@@ -2702,6 +2710,7 @@ cs:
   label_this_month: "tento měsíc"
   label_this_week: "tento týden"
   label_this_year: "tento rok"
+  label_time: "Time"
   label_time_entry_plural: "Strávený čas"
   label_time_entry_activity_plural: "Aktivity strávený čas"
   label_title: "Název"
@@ -3858,6 +3867,12 @@ cs:
       edit_description: "Může zobrazovat, komentovat a upravovat tento pracovní balíček."
       view: "Zobrazit"
       view_description: "Může zobrazit tento pracovní balíček."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 uživatelů"

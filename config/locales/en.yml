@@ -1522,6 +1522,7 @@ en:
     login: "Username"
     mail: "Email"
     name: "Name"
+    note: "Note"
     password: "Password"
     priority: "Priority"
     project: "Project"
@@ -1853,12 +1854,12 @@ en:
 
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
 
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
@@ -2204,6 +2205,7 @@ en:
       responsible: "Accountable"
       shared: "Shared"
       watched: "Watcher"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2375,6 +2377,7 @@ en:
   label_delete: "Delete"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(empty)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2411,7 +2414,6 @@ en:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Environment"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "is"

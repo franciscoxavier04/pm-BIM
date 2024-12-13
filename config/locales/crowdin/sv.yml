@@ -854,6 +854,9 @@ sv:
         lag: "Lag"
         from: "Arbetspaket"
         to: "Relaterat arbetspaketet"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1432,6 +1435,7 @@ sv:
     login: "Användarnamn"
     mail: "E-post"
     name: "Namn"
+    note: "Note"
     password: "Lösenord"
     priority: "Prioritet"
     project: "Projekt"
@@ -1528,6 +1532,7 @@ sv:
   button_print: "Skriv ut"
   button_quote: "Citat"
   button_remove: Ta bort
+  button_remove_reminder: "Remove reminder"
   button_rename: "Ändra namn"
   button_replace: "Ersätt"
   button_revoke: "Återkalla"
@@ -1538,6 +1543,7 @@ sv:
   button_save_as: "Spara som"
   button_apply_changes: "Apply changes"
   button_save_back: "Spara och återgå"
+  button_set_reminder: "Set reminder"
   button_show: "Visa"
   button_sort: "Sortera"
   button_submit: "Skicka"
@@ -1743,12 +1749,12 @@ sv:
   direction: Från vänster till höger
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Lägg till nya attributgrupper"
         rename_groups: "Byt namn på attributgrupper"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Arbetspaketsprioritering"
   enumeration_reported_project_statuses: "Rapporterad projektstatus"
@@ -1781,6 +1787,7 @@ sv:
   error_pdf_export_too_many_columns: "För många kolumner har markerats för PDF-export. Vänlogen minska antalet kolumner."
   error_pdf_failed_to_export: "PDF-exporten kunde inte sparas: %{error}"
   error_token_authenticity: "Det gick inte att verifiera Forgery token. Försökte du skicka data på flera webbläsare eller flikar? Stäng alla flikar och försök igen."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Arbetspaketet hittades inte eller hör inte till detta projekt"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "måste vara projektmedlem"
@@ -2074,6 +2081,7 @@ sv:
       responsible: "Huvudansvarig"
       shared: "Shared"
       watched: "Bevakare"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2244,6 +2252,7 @@ sv:
   label_delete: "Delete"
   label_deleted: "raderad"
   label_deleted_custom_field: "(raderat anpassat fält)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(tom)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2280,7 +2289,6 @@ sv:
   label_enterprise_active_users: "%{current}/%{limit} tilldelade aktiva användare"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Miljö"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "är"
@@ -2629,6 +2637,7 @@ sv:
   label_this_month: "denna månad"
   label_this_week: "denna vecka"
   label_this_year: "i år"
+  label_time: "Time"
   label_time_entry_plural: "Förbrukad tid"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Titel"
@@ -3778,6 +3787,12 @@ sv:
       edit_description: "Can view, comment and edit this work package."
       view: "Vy"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 användare"

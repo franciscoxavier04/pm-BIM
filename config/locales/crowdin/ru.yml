@@ -416,7 +416,7 @@ ru:
         one: "Однако, %{shared_work_packages_link} также был предоставлен этому пользователю."
         few: "Однако, %{shared_work_packages_link} так же были предоставлены этому пользователю."
         many: "Однако, %{shared_work_packages_link} так же были предоставлены этому пользователю."
-        other: "Однако, %{shared_work_packages_link} также был предоставлен этому пользователю."
+        other: "Однако, %{shared_work_packages_link} так же был предоставлен этому пользователю."
       however_work_packages_shared_with_group_html:
         one: "Однако, %{shared_work_packages_link} также был предоставлен этой группе."
         few: "Однако, %{shared_work_packages_link} так же были предоставлены этой группе."
@@ -568,7 +568,7 @@ ru:
         Установите этот флажок, чтобы пометить пакеты работ как доступные только для чтения.
         Никакие атрибуты не могут быть изменены за исключением статуса.
         <br/>
-        <strong>Примечание</ strong>: Будут применены унаследованные значения (например, элементов предков или потомков).
+        <strong>Примечание</strong>: Будут применены унаследованные значения (например, от дочерних или родительских пакетов работ).
     index:
       no_results_title_text: В данный момент статусы пакетов работ отсутствуют.
       no_results_content_text: Добавить новый статус
@@ -681,7 +681,7 @@ ru:
       follows_description: "Соответствующий пакет работ обязательно должен быть завершен до того, как начнется этот пакет"
       label_child_singular: "дочерний пакет работ"
       label_child_plural: "дочерние пакеты работ"
-      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
       blocks_description: "Связанный пакет работ не может быть закрыт до тех пор, пока не будет закрыт этот пакет"
@@ -870,6 +870,9 @@ ru:
         lag: "Задержка"
         from: "Пакет работ"
         to: "Похожий пакет работ"
+      reminder:
+        remind_at_date: "Дата"
+        remind_at_time: "Время"
       repository:
         url: "URL"
       role:
@@ -908,7 +911,7 @@ ru:
         comments_sorting: "Показывать комментарии"
         impaired: "Режим отображения для людей с ограниченными возможностями"
         time_zone: "Часовой пояс"
-        auto_hide_popups: "Автоматически скрывать успешные уведомления"
+        auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
         mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
@@ -1077,7 +1080,7 @@ ru:
               blank: "является обязательным. Пожалуйста, выберите имя."
               not_unique: "уже используется. Пожалуйста, выберите другое имя."
         meeting:
-          error_conflict: "Невозможно сохранить, потому что встреча была обновлена кем-то другим за это время. Пожалуйста, перезагрузите страницу."
+          error_conflict: "Невозможно сохранить, потому что совещание было обновлено кем-то другим за это время. Пожалуйста, перезагрузите страницу."
         notifications:
           at_least_one_channel: "Нужно указать хотя бы один канал для отправки уведомлений."
           attributes:
@@ -1297,8 +1300,8 @@ ru:
               reused:
                 one: "уже использовался ранее. Пожалуйста, укажите другое значение."
                 few: "уже использовался ранее. Пожалуйста, укажите отличающийся пароль от %{count} использованных ранее."
-                many: "уже использовались ранее. Пожалуйста, укажите значения отличающиеся от %{count}."
-                other: "уже использовалось ранее. Пожалуйста, укажите значения отличающиеся от ваших последних %{count}."
+                many: "уже использовался ранее. Пожалуйста, укажите отличающийся пароль от %{count} использованных ранее."
+                other: "уже использовался ранее. Пожалуйста, укажите пароль отличающийся от использованных ранее %{count}."
               match:
                 confirm: "Подтвердите новый пароль."
                 description: "«Подтвержденный пароль» должен совпадать с введенным «новым паролем»."
@@ -1468,6 +1471,7 @@ ru:
     login: "Имя пользователя"
     mail: "Электронная почта"
     name: "Имя"
+    note: "Заметка"
     password: "Пароль"
     priority: "Приоритет"
     project: "Проект"
@@ -1564,6 +1568,7 @@ ru:
   button_print: "Печать"
   button_quote: "Цитата"
   button_remove: Удалить
+  button_remove_reminder: "Удалить напоминание"
   button_rename: "Переименовать"
   button_replace: "Заменить"
   button_revoke: "Отозвать"
@@ -1574,6 +1579,7 @@ ru:
   button_save_as: "Сохранить как"
   button_apply_changes: "Применить изменения"
   button_save_back: "Сохранить и вернуться"
+  button_set_reminder: "Установить напоминание"
   button_show: "Показать"
   button_sort: "Сортировать"
   button_submit: "Отправить"
@@ -1815,12 +1821,12 @@ ru:
   direction: Слева направо
   ee:
     upsale:
+      title: "Корпоративное дополнение"
+      link_title: "Дополнительная информация"
       form_configuration:
         description: "Настройте конфигурацию формы с помощью этих дополнительных дополнений:"
         add_groups: "Добавить новую группу атрибутов"
         rename_groups: "Переименовать группу атрибутов"
-      project_filters:
-        description_html: "Фильтрация и сортировка по настраиваемым полям - это функция корпоративной версии."
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
@@ -1853,6 +1859,7 @@ ru:
   error_pdf_export_too_many_columns: "Для экспорта в PDF-файл выбрано слишком много столбцов. Пожалуйста, сократите количество столбцов."
   error_pdf_failed_to_export: "Не удалось сохранить экспорт в PDF: %{error}"
   error_token_authenticity: "Не удалось проверить CSRF-токен. Возможно, вы попытались отправить данные сразу из нескольких браузеров или вкладок. Закройте все вкладки и попробуйте снова."
+  error_reminder_not_found: "Напоминание не было найдено или о нем уже было сообщено."
   error_work_package_not_found_in_project: "Пакет работ не найден или не принадлежит к этому проекту"
   error_work_package_id_not_found: "Пакет работ не найден."
   error_must_be_project_member: "должен быть участник проекта"
@@ -1889,7 +1896,7 @@ ru:
     reply: Отвечено
     time_entry: "Время подключения отредактировано"
     wiki_page: "Wiki-страница отредактирована"
-    work_package_closed: "Комплекс работ закрыт"
+    work_package_closed: "Пакет работ закрыт"
     work_package_edit: "Пакет работ отредактирован"
     work_package_note: "Добавлено примечание к пакету работ"
     title:
@@ -2146,6 +2153,7 @@ ru:
       responsible: "Ответственный"
       shared: "Общий доступ"
       watched: "Наблюдатель"
+      reminder: "Напоминания"
     facets:
       unread: "Непрочтено"
       unread_title: "Показать непрочитанные"
@@ -2162,7 +2170,7 @@ ru:
         assigned: "Вы были назначены %{work_package}"
         subscribed: "Вы подписались на %{work_package}"
         mentioned: "Вы были назначены %{work_package}"
-        responsible: "Вы отвечаете за %{work_package}"
+        responsible: "Вы стали ответственным в %{work_package}"
         watched: "Вы просматриваете %{work_package}"
   label_accessibility: "Спец. возможности"
   label_account: "Учетная запись"
@@ -2232,8 +2240,8 @@ ru:
   label_backup_code: "Код резервного копирования"
   label_basic_details: "Основные сведения"
   label_between: "между"
-  label_blocked_by: "заблокировано"
-  label_blocks: "блоки"
+  label_blocked_by: "блокируется"
+  label_blocks: "блокирует"
   label_blog: "Блог"
   label_forums_locked: "Заблокирован"
   label_forum_new: "Новый форум"
@@ -2295,7 +2303,7 @@ ru:
   label_created_by: "Создано %{user}"
   label_current_status: "Текущий статус"
   label_current_version: "Текущий этап"
-  label_custom_field_add_no_type: "Добавьте это поле в тип комплекса работ"
+  label_custom_field_add_no_type: "Добавьте это поле в тип пакета работ"
   label_custom_field_new: "Новое настраиваемое поле"
   label_custom_field_plural: "Пользовательские поля"
   label_custom_field_default_type: "Пустой тип"
@@ -2316,6 +2324,7 @@ ru:
   label_delete: "Удалить"
   label_deleted: "﻿Удалено"
   label_deleted_custom_field: "(удалено настраиваемое поле)"
+  label_deleted_custom_item: "(удалено)"
   label_deleted_custom_option: "(удалённая опция)"
   label_empty_element: "(пусто)"
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
@@ -2336,7 +2345,7 @@ ru:
   label_downloads_abbr: "D/L"
   label_duplicated_by: "Дублируется"
   label_duplicate: "дублировать"
-  label_duplicates: "Дубликаты"
+  label_duplicates: "Дублирует"
   label_edit: "Правка"
   label_edit_x: "Правка: %{x}"
   label_enable_multi_select: "Разрешен множественный выбор"
@@ -2352,7 +2361,6 @@ ru:
   label_enterprise_active_users: "%{current}/%{limit} забронировано активных пользователей"
   label_enterprise_edition: "Корпоративная версия"
   label_enterprise_support: "Поддержка корпоративной версии"
-  label_enterprise_addon: "Корпоративное дополнение"
   label_environment: "Переменные среды"
   label_estimates_and_progress: "Оценки и прогресс"
   label_equals: "—"
@@ -2553,7 +2561,7 @@ ru:
   label_overall_activity: "Общая деятельность"
   label_overview: "Обзор"
   label_page_title: "Заголовок страницы"
-  label_part_of: "часть"
+  label_part_of: "является частью"
   label_password_lost: "Забыли пароль?"
   label_password_rule_lowercase: "Нижний регистр"
   label_password_rule_numeric: "Числовые символы"
@@ -2642,7 +2650,7 @@ ru:
   label_repository_root: "Корень хранилища"
   label_repository_plural: "Репозитории"
   label_required: "требуется"
-  label_requires: "требуется"
+  label_requires: "требует выполнения"
   label_result_plural: "Результаты"
   label_revision: "Редакция"
   label_revision_id: "Редакция %{value}"
@@ -2701,6 +2709,7 @@ ru:
   label_this_month: "в этом месяце"
   label_this_week: "на этой неделе"
   label_this_year: "в этом году"
+  label_time: "Время"
   label_time_entry_plural: "Затраченное время"
   label_time_entry_activity_plural: "Потраченное время"
   label_title: "Заголовок"
@@ -2726,7 +2735,7 @@ ru:
   label_user_anonymous: "Анонимно"
   label_user_mail_option_all: "Для любого события на моих проектах"
   label_user_mail_option_none: "Нет событий"
-  label_user_mail_option_only_assigned: "Только для тех, к которым я причастен"
+  label_user_mail_option_only_assigned: "Только для тех, которые мне поручены"
   label_user_mail_option_only_my_events: "Только для тех, в которых я наблюдатель или участник"
   label_user_mail_option_only_owner: "Только для тех, которыми я владею"
   label_user_mail_option_selected: "Для любого события, но только для выбранных проектов"
@@ -2738,7 +2747,7 @@ ru:
   label_version_new: "Новый этап"
   label_version_edit: "Изменить версию"
   label_version_plural: "Этапы"
-  label_version_sharing_descendants: "С подпроэктами"
+  label_version_sharing_descendants: "С подпроектами"
   label_version_sharing_hierarchy: "С иерархией проектов"
   label_version_sharing_none: "Не используется другими"
   label_version_sharing_system: "Во всех проектах"
@@ -2775,11 +2784,11 @@ ru:
   label_work_package_hierarchy: "Иерархия пакета работ"
   label_work_package_new: "Новый пакет работ"
   label_work_package_edit: "Редактирование пакета работ %{name}"
-  label_work_package_plural: "Комплекс работ"
+  label_work_package_plural: "Пакет работ"
   label_work_package_status: "Статус пакета работ"
   label_work_package_status_new: "Новый статус"
   label_work_package_status_plural: "Статусы пакета работ"
-  label_work_package_types: "Типы рабочих пакетов"
+  label_work_package_types: "Типы пакетов работ"
   label_work_package_tracking: "Отслеживание пакета работ"
   label_work_package_view_all: "Посмотреть все пакеты работ"
   label_workflow: "Рабочий поток"
@@ -3124,21 +3133,21 @@ ru:
   permission_edit_project: "Редактировать проект"
   permission_edit_project_attributes: "Редактирование атрибутов проекта"
   permission_edit_reportings: "Редактировать отчеты"
-  permission_edit_time_entries: "Редактировать журналы времени для других пользователей"
+  permission_edit_time_entries: "Править трудозатраты других пользователей"
   permission_edit_timelines: "Редактировать графики"
   permission_edit_wiki_pages: "Редактировать wiki-страницы"
   permission_export_work_packages: "Экспорт пакетов работ"
   permission_export_wiki_pages: "Экспорт wiki-страниц"
   permission_list_attachments: "Отобразить список прикреплённых файлов"
-  permission_log_own_time: "Регистрировать свое время"
-  permission_log_time: "Журнал времени для других пользователей"
+  permission_log_own_time: "Журналировать свои трудозатраты"
+  permission_log_time: "Журналировать трудозатраты других пользователей"
   permission_manage_forums: "Управление форумами"
   permission_manage_categories: "Управление категориями пакета работ"
   permission_manage_dashboards: "Управление панелями инструментов"
   permission_manage_work_package_relations: "Управление связями пакета работ"
   permission_manage_members: "Управление участниками"
   permission_manage_news: "Управление новостями"
-  permission_manage_project_activities: "Управление проектной деятельностью"
+  permission_manage_project_activities: "Активировать виды деятельности в проектах"
   permission_manage_public_queries: "Управление общими представлениями"
   permission_manage_repository: "Управление репозиторием"
   permission_manage_subtasks: "Управление иерархиями пакетов работ"
@@ -3318,7 +3327,7 @@ ru:
       oauth_application_details_link_text: "Перейти на страницу настроек"
       setup_documentation_details: "Если вам нужна помощь в настройке нового хранилища файлов, пожалуйста, проверьте документацию: "
       setup_documentation_details_link_text: "Настройка файловых хранилищ"
-      show_warning_details: "Для использования этого хранилища файлов не забудьте активировать модуль и определенное хранилище в настройках проекта каждого желаемого проекта."
+      show_warning_details: "Для использования этого хранилища файлов не забудьте активировать модуль и конкретное хранилище в настройках проекта каждого желаемого проекта."
     subversion:
       existing_title: "Существующий репозиторий Subversion"
       existing_introduction: "Если у вас есть существующий репозиторий Subversion, вы можете связать его с OpenProject для доступа к нему из приложения."
@@ -3423,12 +3432,12 @@ ru:
   setting_work_package_done_ratio: "Режим расчета прогресса"
   setting_work_package_done_ratio_field: "На основе трудозатрат"
   setting_work_package_done_ratio_field_caption_html: >-
-    <i>% Завершения</i> может быть свободно установлен на любое значение. Если Вы опционально введете значение для параметра <i>Работа</i>, то автоматически будет выведено значение <i>Оставшаяся работа</i>.
+    <i>% Завершено</i> может быть свободно установлен на любое значение. Если Вы опционально введете значение для параметра <i>Предполагаемое время</i>, то автоматически будет выведено значение <i>Оставшиеся часы</i>.
   setting_work_package_done_ratio_status: "На основе статуса"
   setting_work_package_done_ratio_status_caption_html: >-
     С каждым статусом связано значение <i>% Завершения</i>. Изменение статуса приведет к изменению <i>% Завершения</i>.
   setting_work_package_done_ratio_explanation_html: >
-    В режиме <b>На основе трудозатрат</b> для параметра % Завершения можно свободно установить любое значение. Если вы дополнительно введете значение «Работа», «Оставшаяся работа» будет получена автоматически. В режиме <b>На основе статуса</b> с каждым статусом связано значение % Завершения. Изменение статуса приведет к изменению % Завершения.
+    В режиме <b>На основе трудозатрат</b> для параметра % Завершено можно свободно установить любое значение. Если вы дополнительно введете значение «Предполагаемое время», «Оставшиеся часы» будут получены автоматически. В режиме <b>На основе статуса</b> с каждым статусом связано значение % Завершено. Изменение статуса приведет к изменению % Завершено.
   setting_work_package_properties: "Свойства пакета работ"
   setting_work_package_startdate_is_adddate: "Использовать текущую дату как дату начала для новых пакетов работ"
   setting_work_packages_projects_export_limit: "Ограничение экспорта пакетов работ / проектов"
@@ -3447,10 +3456,10 @@ ru:
   setting_password_min_length: "Минимальная длина"
   setting_password_min_adhered_rules: "Минимальное количество необходимых классов"
   setting_per_page_options: "Количество объектов на страницу"
-  setting_percent_complete_on_status_closed: "% Завершения, когда статус закрыт"
+  setting_percent_complete_on_status_closed: "% Завершено, когда статус закрыт"
   setting_percent_complete_on_status_closed_no_change: "Без изменений"
   setting_percent_complete_on_status_closed_no_change_caption_html: >-
-    Значение <i>% Завершения</i> не изменится, даже если пакет работ будет закрыт.
+    Значение <i>% Завершено</i> не изменится, даже если пакет работ будет закрыт.
   setting_percent_complete_on_status_closed_set_100p: "Автоматически устанавливается на 100%"
   setting_percent_complete_on_status_closed_set_100p_caption: >-
     Закрытый пакет работ считается завершенным.
@@ -3477,13 +3486,13 @@ ru:
   setting_sys_api_enabled: "Разрешить веб-сервис управления репозиторием"
   setting_sys_api_description: "Веб-сервис управления репозиторием обеспечивает интеграцию и авторизацию пользователя для доступа к репозиторию."
   setting_time_format: "Время"
-  setting_total_percent_complete_mode: "Расчет общего % Завершения полной иерархии"
+  setting_total_percent_complete_mode: "Расчёт общего % Завершено по всей иерархии"
   setting_total_percent_complete_mode_work_weighted_average: "Взвешенное по работе"
   setting_total_percent_complete_mode_work_weighted_average_caption_html: >-
-    <i>Общий % Завершения</i> будет взвешен по  <i>Работе</i> каждого пакета работ в иерархии. Пакеты работ без <i>Работы</i> будут игнорироваться.
+    <i>Общий % Завершено</i> будет рассчитан как средневзвешенное значение по  <i>Предполагаемому времени</i> каждого пакета работ в иерархии. Пакеты работ без <i>Предполагаемого времени</i> будут игнорироваться.
   setting_total_percent_complete_mode_simple_average: "Среднее арифметическое"
   setting_total_percent_complete_mode_simple_average_caption_html: >-
-    <i>Работа</i> игнорируется, и <i>Общий % Завершения</i> будет средним арифметическим значением <i>% Завершения</i> пакетов работ в иерархии.
+    <i>Предполагаемое время</i> игнорируется, и <i>Общий % Завершено</i> будет средним арифметическим от значений <i>% Завершено</i> пакетов работ в иерархии.
   setting_accessibility_mode_for_anonymous: "Разрешить режим доступа людей с ограниченными возможностями для анонимных пользователей"
   setting_user_format: "Формат имени пользователя"
   setting_user_default_timezone: "Часовой пояс пользователя по умолчанию"
@@ -3611,7 +3620,7 @@ ru:
   text_custom_field_hint_activate_per_project: >
     Помните, что настраиваемые поля тоже нужно включать в каждом проекте по отдельности.
   text_custom_field_hint_activate_per_project_and_type: >
-    Настраиваемые поля нужно включать для каждого типа комплекса работ и для каждого проекта в отдельности.
+    Настраиваемые поля нужно включать для каждого типа пакета работ и для каждого проекта в отдельности.
   text_wp_status_read_only_html: >
     Корпоративная версия добавит эти дополнительные дополнения для полей статусов пакетов работ: <br> <ul> <li><b>Разрешить помечать пакеты работ только для чтения в определенные статусы</b></li> </ul>
   text_project_custom_field_html: >
@@ -3855,6 +3864,12 @@ ru:
       edit_description: "Может просматривать, комментировать и редактировать этот пакет работ."
       view: "Просматривать"
       view_description: "Может просматривать этот пакет работ."
+    reminders:
+      label_remind_at: "Дата"
+      note_placeholder: "Причина установки напоминания"
+      success_creation_message: "Напоминание установлено. Вы получите уведомление о данном пакете работ в выбранное время."
+      success_update_message: "Напоминание успешно обновлено."
+      success_deletion_message: "Напоминание успешно удалено."
   sharing:
     count:
       zero: "0 пользователей"

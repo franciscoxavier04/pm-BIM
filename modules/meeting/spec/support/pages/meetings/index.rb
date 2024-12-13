@@ -52,12 +52,17 @@ module Pages::Meetings
     end
 
     def set_start_date(date)
-      fill_in "Date", with: date, fill_options: { clear: :backspace }
+      fill_in "Date", with: date
+    end
+
+    def set_starts_on(date)
+      fill_in "Starts on", with: date
     end
 
     def set_start_time(time)
       input = page.find_by_id("meeting_start_time_hour")
       page.execute_script("arguments[0].value = arguments[1]", input.native, time)
+      page.execute_script("arguments[0].dispatchEvent(new Event('input'))", input.native)
     end
 
     def set_end_date(date)
@@ -104,7 +109,7 @@ module Pages::Meetings
       click_on("add-meeting-button")
 
       expect(page).to have_link("Classic")
-      expect(page).to have_link("Dynamic")
+      expect(page).to have_link("One-time")
     end
 
     def expect_copy_action(meeting)

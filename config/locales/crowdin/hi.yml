@@ -853,6 +853,9 @@ hi:
         lag: "Lag"
         from: "कार्य पैकेज"
         to: "संबंधित कार्य पैकेज"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "यू आर एल"
       role:
@@ -1431,6 +1434,7 @@ hi:
     login: "Username"
     mail: "ईमेल"
     name: "नाम"
+    note: "Note"
     password: "पासवर्ड"
     priority: "वरीयता"
     project: "परियोजना"
@@ -1527,6 +1531,7 @@ hi:
   button_print: "Print"
   button_quote: "उद्धरण"
   button_remove: Remove
+  button_remove_reminder: "Remove reminder"
   button_rename: "नाम बदलें"
   button_replace: "Replace"
   button_revoke: "Revoke"
@@ -1537,6 +1542,7 @@ hi:
   button_save_as: "के रूप में सहेजें..."
   button_apply_changes: "Apply changes"
   button_save_back: "Save and back"
+  button_set_reminder: "Set reminder"
   button_show: "दिखाएँ"
   button_sort: "क्रम में लगायें"
   button_submit: "सबमिट करें"
@@ -1742,12 +1748,12 @@ hi:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "रिपोर्ट की गई प्रोजेक्ट स्थिति"
@@ -1780,6 +1786,7 @@ hi:
   error_pdf_export_too_many_columns: "Too many columns selected for the PDF export. Please reduce the number of columns."
   error_pdf_failed_to_export: "The PDF export could not be saved: %{error}"
   error_token_authenticity: "क्रॉस-साइट अनुरोध जालसाज़ी टोकन सत्यापित करने में असमर्थ । क्या आपने एकाधिक ब्राउज़र्स या टैब पर डेटा सबमिट करने का प्रयास किया है? कृपया सभी टैब बंद करें और पुन: प्रयास करे ।"
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "कार्य पैकेज नहीं मिला, या इस प्रोजेक्ट से संबंधित नहीं है"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "प्रोजेक्ट सदस्य होना जरूरी है"
@@ -2073,6 +2080,7 @@ hi:
       responsible: "जवाबदेह"
       shared: "Shared"
       watched: "वॉचर"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2243,6 +2251,7 @@ hi:
   label_delete: "Delete"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(empty)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2279,7 +2288,6 @@ hi:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Environment"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "is"
@@ -2628,6 +2636,7 @@ hi:
   label_this_month: "इस महीने"
   label_this_week: "इस सप्ताह"
   label_this_year: "इस वर्ष"
+  label_time: "Time"
   label_time_entry_plural: "समय बिताया"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "शीर्षक"
@@ -3780,6 +3789,12 @@ hi:
       edit_description: "Can view, comment and edit this work package."
       view: "दृश्य"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

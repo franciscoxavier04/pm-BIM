@@ -855,6 +855,9 @@ af:
         lag: "Lag"
         from: "Werkspakket"
         to: "Verwante werk pakket"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "Bronadres"
       role:
@@ -1433,6 +1436,7 @@ af:
     login: "Username"
     mail: "E-pos"
     name: "Naam"
+    note: "Note"
     password: "Wagwoord"
     priority: "Prioriteit"
     project: "Projek"
@@ -1529,6 +1533,7 @@ af:
   button_print: "Print"
   button_quote: "Haal aan"
   button_remove: Remove
+  button_remove_reminder: "Remove reminder"
   button_rename: "Hernoem"
   button_replace: "Replace"
   button_revoke: "Revoke"
@@ -1539,6 +1544,7 @@ af:
   button_save_as: "Save as"
   button_apply_changes: "Apply changes"
   button_save_back: "Save and back"
+  button_set_reminder: "Set reminder"
   button_show: "Wys"
   button_sort: "Rangskik"
   button_submit: "Dien in"
@@ -1744,12 +1750,12 @@ af:
   direction: lnr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Werkspakket prioriteite"
   enumeration_reported_project_statuses: "Gerapporteerde projekstatus"
@@ -1782,6 +1788,7 @@ af:
   error_pdf_export_too_many_columns: "Too many columns selected for the PDF export. Please reduce the number of columns."
   error_pdf_failed_to_export: "The PDF export could not be saved: %{error}"
   error_token_authenticity: "Unable to verify Cross-Site Request Forgery token. Did you try to submit data on multiple browsers or tabs? Please close all tabs and try again."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Die werkspakket is nie gekry nie of behoort nie aan hierdie projek nie"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "moet projeklid wees"
@@ -2075,6 +2082,7 @@ af:
       responsible: "Accountable"
       shared: "Shared"
       watched: "Dophouer"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2245,6 +2253,7 @@ af:
   label_delete: "Delete"
   label_deleted: "geskrap"
   label_deleted_custom_field: "(pasgemaakte veld geskrap)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(empty)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2281,7 +2290,6 @@ af:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Omgewing"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "is"
@@ -2630,6 +2638,7 @@ af:
   label_this_month: "vandeesmaand"
   label_this_week: "vandeesweek"
   label_this_year: "vandeesjaar"
+  label_time: "Time"
   label_time_entry_plural: "Tyd gespandeer"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Titel"
@@ -3782,6 +3791,12 @@ af:
       edit_description: "Can view, comment and edit this work package."
       view: "Bekyk"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

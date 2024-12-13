@@ -853,6 +853,9 @@ da:
         lag: "Lag"
         from: "Arbejdspakke"
         to: "Sammenhørende arbejdspakker"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "Webadresse"
       role:
@@ -1431,6 +1434,7 @@ da:
     login: "Username"
     mail: "E-mail"
     name: "Navn"
+    note: "Note"
     password: "Adgangskode"
     priority: "Prioritet"
     project: "Projekt"
@@ -1527,6 +1531,7 @@ da:
   button_print: "Print"
   button_quote: "Citer"
   button_remove: Fjern
+  button_remove_reminder: "Remove reminder"
   button_rename: "Omdøb"
   button_replace: "Replace"
   button_revoke: "Revoke"
@@ -1537,6 +1542,7 @@ da:
   button_save_as: "Gem som"
   button_apply_changes: "Apply changes"
   button_save_back: "Save and back"
+  button_set_reminder: "Set reminder"
   button_show: "Vis"
   button_sort: "Sorter"
   button_submit: "Indsend"
@@ -1742,12 +1748,12 @@ da:
   direction: Fra venstre mod højre
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Prioritering af arbejdspakker"
   enumeration_reported_project_statuses: "Rapporteret projektstatus"
@@ -1780,6 +1786,7 @@ da:
   error_pdf_export_too_many_columns: "Too many columns selected for the PDF export. Please reduce the number of columns."
   error_pdf_failed_to_export: "The PDF export could not be saved: %{error}"
   error_token_authenticity: "Unable to verify Cross-Site Request Forgery token. Did you try to submit data on multiple browsers or tabs? Please close all tabs and try again."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Arbejdspakken er ikke fundet, eller den hører ikke til dette projekt"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "skal være et medlem af projektet"
@@ -2073,6 +2080,7 @@ da:
       responsible: "Accountable"
       shared: "Shared"
       watched: "Tilsynsførende"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2243,6 +2251,7 @@ da:
   label_delete: "Delete"
   label_deleted: "slettet"
   label_deleted_custom_field: "(slettet selvvalgt felt)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(tom)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2279,7 +2288,6 @@ da:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Miljø"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "er"
@@ -2628,6 +2636,7 @@ da:
   label_this_month: "denne måned"
   label_this_week: "denne uge"
   label_this_year: "dette år"
+  label_time: "Time"
   label_time_entry_plural: "Anvendt tid"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Titel"
@@ -3778,6 +3787,12 @@ da:
       edit_description: "Can view, comment and edit this work package."
       view: "Se"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

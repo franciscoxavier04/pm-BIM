@@ -53,14 +53,15 @@ pt-PT:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
         invalid_time_format: "não é uma hora válida. Formato exigido: HH:MM"
     models:
       recurring_meeting: "Recurring meeting"
-      structured_meeting: "Reunião (dinâmica)"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Pontos da ordem de trabalhos"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minutos"
@@ -94,7 +95,7 @@ pt-PT:
   label_meeting: "Reunião"
   label_meeting_plural: "Reuniões"
   label_meeting_new: "Nova reunião"
-  label_meeting_new_dynamic: "Nova reunião dinâmica"
+  label_meeting_new_dynamic: "New one-time meeting"
   label_meeting_new_recurring: "New recurring meeting"
   label_meeting_create: "Criar reunião"
   label_meeting_copy: "Copiar reunião"
@@ -139,8 +140,10 @@ pt-PT:
   label_past_meetings_short: "Passado"
   label_involvement: "Envolvimento"
   label_invitations: "Invitations"
+  label_invited_user: "Invited user"
   label_past_invitations: "Convites anteriores"
   label_attended: "Attended"
+  label_attended_user: "Attended user"
   label_created_by_me: "Created by me"
   label_notify: "Enviar para revisão"
   label_icalendar: "Enviar iCalendar"
@@ -181,10 +184,11 @@ pt-PT:
     label_mail_all_participants: "Enviar e-mail a todos os participantes"
     types:
       classic: "Clássico"
-      classic_text: "Organize a sua reunião numa agenda e protocolo de texto formatáveis."
-      structured: "Dinâmico"
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "One-time"
       recurring: "Recurring"
-      structured_text: "Organize a sua reunião como uma lista de itens da agenda, associando-os opcionalmente a um pacote de trabalho."
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Atualmente, a cópia de uma reunião não copia os itens associados da agenda da reunião, apenas os detalhes"
     copied: "Copiado da reunião #%{id}"
   meeting_section:
@@ -193,9 +197,6 @@ pt-PT:
     placeholder_title: "Nova secção"
     empty_text: "Arraste itens para aqui ou crie um novo"
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -219,15 +220,15 @@ pt-PT:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Every working day"
-      working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Notificação enviada com sucesso"
   notice_timezone_missing: Sem fuso horário definido, presume-se %{zone}. Para escolher o seu fuso horário, por favor clique aqui.

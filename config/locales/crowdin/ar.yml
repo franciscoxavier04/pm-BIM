@@ -887,6 +887,9 @@ ar:
         lag: "Lag"
         from: "مجموعة العمل"
         to: "مجموعة عمل ذات صلة"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "الرابط"
       role:
@@ -1505,6 +1508,7 @@ ar:
     login: "Username"
     mail: "البريد الإكتروني"
     name: "الاسم"
+    note: "Note"
     password: "كلمة المرور"
     priority: "الأولوية"
     project: "مشروع"
@@ -1601,6 +1605,7 @@ ar:
   button_print: "طباعة"
   button_quote: "اقتباس"
   button_remove: إزالة
+  button_remove_reminder: "Remove reminder"
   button_rename: "اعادة التّسمية"
   button_replace: "Replace"
   button_revoke: "Revoke"
@@ -1611,6 +1616,7 @@ ar:
   button_save_as: "احفظ بشكل"
   button_apply_changes: "Apply changes"
   button_save_back: "حفظ والعودة"
+  button_set_reminder: "Set reminder"
   button_show: "إظهار"
   button_sort: "فرز"
   button_submit: "إرسال"
@@ -1888,12 +1894,12 @@ ar:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "أولويات مجموعة العمل"
   enumeration_reported_project_statuses: "حالة للمشروع المبلغ عنه"
@@ -1926,6 +1932,7 @@ ar:
   error_pdf_export_too_many_columns: "تم تحديد عدد كبير جداً من الأعمدة لتصدير PDF. الرجاء تقليل عدد الأعمدة."
   error_pdf_failed_to_export: "The PDF export could not be saved: %{error}"
   error_token_authenticity: "Unable to verify Cross-Site Request Forgery token. Did you try to submit data on multiple browsers or tabs? Please close all tabs and try again."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "مجموعة العمل غير موجودة, أو أنها لا تخص هذا المشروع"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "يجب أن تكون عضو في المشروع"
@@ -2219,6 +2226,7 @@ ar:
       responsible: "Accountable"
       shared: "Shared"
       watched: "المشاهد"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2389,6 +2397,7 @@ ar:
   label_delete: "Delete"
   label_deleted: "محذوف"
   label_deleted_custom_field: "(حذف حقل مخصص)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(فارغ)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2425,7 +2434,6 @@ ar:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "بيئة"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "يكون"
@@ -2774,6 +2782,7 @@ ar:
   label_this_month: "هذا الشهر"
   label_this_week: "هذا الأسبوع"
   label_this_year: "هذه السنة"
+  label_time: "Time"
   label_time_entry_plural: "الوقت المستهلك"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "العنوان"
@@ -3936,6 +3945,12 @@ ar:
       edit_description: "Can view, comment and edit this work package."
       view: "عرض"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"
