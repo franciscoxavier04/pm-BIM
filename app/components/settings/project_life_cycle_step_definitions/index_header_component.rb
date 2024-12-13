@@ -29,6 +29,7 @@
 module Settings
   module ProjectLifeCycleStepDefinitions
     class IndexHeaderComponent < ApplicationComponent
+      options :allowed_to_customize_life_cycle?
 
       def breadcrumbs_items
         [

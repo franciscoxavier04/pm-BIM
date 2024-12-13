@@ -1909,6 +1909,8 @@ en:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      customize_life_cycle:
+        description: "Create and organise different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
@@ -3167,6 +3169,7 @@ en:
   notice_bad_request: "Bad Request."
   notice_not_authorized: "You are not authorized to access this page."
   notice_not_authorized_archived_project: "The project you're trying to access has been archived."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Your password is not correct. Cannot continue."
   notice_principals_found_multiple: "There are %{number} results found. \n Tab to focus the first result."
   notice_principals_found_single: "There is one result. \n Tab to focus it."

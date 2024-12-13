@@ -30,7 +30,10 @@ module Admin::Settings
   class ProjectLifeCycleStepDefinitionsController < ::Admin::SettingsController
     menu_item :project_life_cycle_step_definitions_settings
 
+    helper_method :allowed_to_customize_life_cycle?
+
     before_action :check_feature_flag
+    before_action :require_enterprise_token, except: %i[index]
 
     before_action :find_definitions, only: %i[index]
     before_action :find_definition, only: %i[edit update destroy move drop]
@@ -108,8 +111,16 @@ module Admin::Settings
 
     private
 
+    def allowed_to_customize_life_cycle?
+      EnterpriseToken.allows_to?(:customize_life_cycle)
+    end
+
     def check_feature_flag
       render_404 unless OpenProject::FeatureDecisions.stages_and_gates_active?
+    end
+
+    def require_enterprise_token
+      render_402 unless allowed_to_customize_life_cycle?
     end
 
     def find_definitions

@@ -31,7 +31,8 @@ module Settings
     class IndexComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
 
-      options :definitions
+      options :definitions,
+              :allowed_to_customize_life_cycle?
 
       private
 
