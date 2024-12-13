@@ -44,32 +44,32 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
   end
 
   def caption
-    life_cycle.name
+    life_cycle_step_definition.name
   end
 
-  def life_cycle
-    return @life_cycle if defined?(@life_cycle)
+  def life_cycle_step_definition
+    return @life_cycle_step_definition if defined?(@life_cycle_step_definition)
 
-    @life_cycle = Project::LifeCycleStepDefinition
-                    .find_by(id: attribute[KEY, 1])
+    @life_cycle_step_definition = Project::LifeCycleStepDefinition
+                                    .find_by(id: attribute[KEY, 1])
   end
 
   def available?
-    life_cycle.present?
+    life_cycle_step_definition.present?
   end
 
   def action_menu_header(button)
     # Show the proper icon for the definition with the correct color.
-    icon = case life_cycle
+    icon = case life_cycle_step_definition
            when Project::StageDefinition
              :"git-commit"
            when Project::GateDefinition
              :diamond
            else
-             raise "Unknown life cycle definition for: #{life_cycle}"
+             raise "Unknown life cycle definition for: #{life_cycle_step_definition}"
            end
 
-    classes = helpers.hl_inline_class("life_cycle_step_definition", life_cycle)
+    classes = helpers.hl_inline_class("life_cycle_step_definition", life_cycle_step_definition)
     button.with_leading_visual_icon(icon:, classes:)
 
     # As all other action menu headers, we will show an action icon and the caption:

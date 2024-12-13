@@ -100,7 +100,7 @@ module Projects
     def life_cycle_step_column(column)
       return nil unless user_can_view_project?
 
-      life_cycle_step = project_life_cycle_step_by_definition(column.life_cycle, project)
+      life_cycle_step = project_life_cycle_step_by_definition(column.life_cycle_step_definition, project)
 
       return nil if life_cycle_step.blank?
 
