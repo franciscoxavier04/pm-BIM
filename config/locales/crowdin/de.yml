@@ -849,7 +849,7 @@ de:
         from: "Arbeitspaket"
         to: "Zugehöriges Arbeitspaket"
       reminder:
-        remind_at_date: "Date"
+        remind_at_date: "Datum"
         remind_at_time: "Time"
       repository:
         url: "URL"

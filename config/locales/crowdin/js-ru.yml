@@ -656,7 +656,7 @@ ru:
           message: "Есть новые уведомления."
           link_text: "Нажмите здесь, чтобы загрузить их."
       reminders:
-        note: "Note: “%{note}”"
+        note: "Примечание: \"%{note}\""
       settings:
         change_notification_settings: 'Измените <a target="_blank" href="%{url}">настройки уведомлений</a> , чтобы не пропустить важное обновление.'
         title: "Настройки уведомлений"
@@ -1048,11 +1048,11 @@ ru:
           duplicate_query_title: "Представление с таким именем уже существует. Менять в любом случае?"
         text_no_results: "Подходящие представления не найдены."
       reminders:
-        button_label: "Set reminder"
+        button_label: "Установить напоминание"
         title:
-          new: "Set reminder"
-          edit: "Edit reminder"
-        subtitle: "You will receive a notification for this work package at the chosen time."
+          new: "Установить напоминание"
+          edit: "Редактировать напоминание"
+        subtitle: "Вы получите уведомление о данном пакете работ в выбранное время."
       scheduling:
         is_parent: "Даты этого пакета работ выводятся автоматически из дочерних пакетов работ. Используйте «Ручной планировщик», чтобы установить даты."
         is_switched_from_manual_to_automatic: "Даты этого пакета работ могут быть пересчитаны после переключения с ручного на автоматическое планирование из-за связей с другими пакетами работ."

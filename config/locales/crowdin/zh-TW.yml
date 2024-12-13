@@ -639,7 +639,7 @@ zh-TW:
     lag:
       subject: "延遲"
       title: "延遲（天數）"
-      caption: "The gap in number of working days in between the two work packages"
+      caption: "兩個工作項目之間的工作天數差距"
     relations:
       label_relates_singular: "相關於"
       label_relates_plural: "相關於"
@@ -3749,7 +3749,7 @@ zh-TW:
       view_description: "查看此工作項目"
     reminders:
       label_remind_at: "日期"
-      note_placeholder: "Why are you setting this reminder?"
+      note_placeholder: "為什麼要設定這個提醒？"
       success_creation_message: "提醒設定成功。您會在選定的時間收到此工作項目的通知。"
       success_update_message: "提醒成功更新"
       success_deletion_message: "提醒已成功刪除。"

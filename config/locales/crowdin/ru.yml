@@ -871,8 +871,8 @@ ru:
         from: "Пакет работ"
         to: "Похожий пакет работ"
       reminder:
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Дата"
+        remind_at_time: "Время"
       repository:
         url: "URL"
       role:
@@ -1471,7 +1471,7 @@ ru:
     login: "Имя пользователя"
     mail: "Электронная почта"
     name: "Имя"
-    note: "Note"
+    note: "Заметка"
     password: "Пароль"
     priority: "Приоритет"
     project: "Проект"
@@ -1568,7 +1568,7 @@ ru:
   button_print: "Печать"
   button_quote: "Цитата"
   button_remove: Удалить
-  button_remove_reminder: "Remove reminder"
+  button_remove_reminder: "Удалить напоминание"
   button_rename: "Переименовать"
   button_replace: "Заменить"
   button_revoke: "Отозвать"
@@ -1579,7 +1579,7 @@ ru:
   button_save_as: "Сохранить как"
   button_apply_changes: "Применить изменения"
   button_save_back: "Сохранить и вернуться"
-  button_set_reminder: "Set reminder"
+  button_set_reminder: "Установить напоминание"
   button_show: "Показать"
   button_sort: "Сортировать"
   button_submit: "Отправить"
@@ -1821,8 +1821,8 @@ ru:
   direction: Слева направо
   ee:
     upsale:
-      title: "Enterprise add-on"
-      link_title: "More information"
+      title: "Корпоративное дополнение"
+      link_title: "Дополнительная информация"
       form_configuration:
         description: "Настройте конфигурацию формы с помощью этих дополнительных дополнений:"
         add_groups: "Добавить новую группу атрибутов"
@@ -1859,7 +1859,7 @@ ru:
   error_pdf_export_too_many_columns: "Для экспорта в PDF-файл выбрано слишком много столбцов. Пожалуйста, сократите количество столбцов."
   error_pdf_failed_to_export: "Не удалось сохранить экспорт в PDF: %{error}"
   error_token_authenticity: "Не удалось проверить CSRF-токен. Возможно, вы попытались отправить данные сразу из нескольких браузеров или вкладок. Закройте все вкладки и попробуйте снова."
-  error_reminder_not_found: "The reminder was not found or was already notified about."
+  error_reminder_not_found: "Напоминание не было найдено или о нем уже было сообщено."
   error_work_package_not_found_in_project: "Пакет работ не найден или не принадлежит к этому проекту"
   error_work_package_id_not_found: "Пакет работ не найден."
   error_must_be_project_member: "должен быть участник проекта"
@@ -2153,7 +2153,7 @@ ru:
       responsible: "Ответственный"
       shared: "Общий доступ"
       watched: "Наблюдатель"
-      reminder: "Reminder"
+      reminder: "Напоминания"
     facets:
       unread: "Непрочтено"
       unread_title: "Показать непрочитанные"
@@ -2709,7 +2709,7 @@ ru:
   label_this_month: "в этом месяце"
   label_this_week: "на этой неделе"
   label_this_year: "в этом году"
-  label_time: "Time"
+  label_time: "Время"
   label_time_entry_plural: "Затраченное время"
   label_time_entry_activity_plural: "Потраченное время"
   label_title: "Заголовок"
@@ -3865,11 +3865,11 @@ ru:
       view: "Просматривать"
       view_description: "Может просматривать этот пакет работ."
     reminders:
-      label_remind_at: "Date"
-      note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
-      success_update_message: "Reminder updated successfully."
-      success_deletion_message: "Reminder deleted successfully."
+      label_remind_at: "Дата"
+      note_placeholder: "Причина установки напоминания"
+      success_creation_message: "Напоминание установлено. Вы получите уведомление о данном пакете работ в выбранное время."
+      success_update_message: "Напоминание успешно обновлено."
+      success_deletion_message: "Напоминание успешно удалено."
   sharing:
     count:
       zero: "0 пользователей"
