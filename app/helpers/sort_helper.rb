@@ -427,9 +427,8 @@ module SortHelper
       if favorite
         # This column only shows an icon, no text.
         render Primer::Beta::Octicon.new(icon: "star-fill", color: :subtle, "aria-label": I18n.t(:label_favorite))
-      elsif column.respond_to?(:action_menu_header)
-        column.action_menu_header(button)
       else
+        button.with_leading_visual_icon(**column.visual_icon) if column.respond_to?(:visual_icon)
         button.with_trailing_action_icon(icon: :"triangle-down")
 
         h(caption).to_s

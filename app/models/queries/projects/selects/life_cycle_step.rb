@@ -58,7 +58,7 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
     life_cycle_step_definition.present?
   end
 
-  def action_menu_header(button)
+  def visual_icon
     # Show the proper icon for the definition with the correct color.
     icon = case life_cycle_step_definition
            when Project::StageDefinition
@@ -70,12 +70,8 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
            end
 
     classes = helpers.hl_inline_class("life_cycle_step_definition", life_cycle_step_definition)
-    button.with_leading_visual_icon(icon:, classes:)
 
-    # As all other action menu headers, we will show an action icon and the caption:
-    button.with_trailing_action_icon(icon: :"triangle-down")
-
-    caption.to_s
+    { icon:, classes: }
   end
 
   def action_menu_classes
