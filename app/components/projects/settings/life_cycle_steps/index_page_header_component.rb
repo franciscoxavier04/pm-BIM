@@ -29,7 +29,7 @@
 # ++
 
 module Projects::Settings::LifeCycleSteps
-  class ShowPageHeaderComponent < ApplicationComponent
+  class IndexPageHeaderComponent < ApplicationComponent
     include ApplicationHelper
 
     options :project

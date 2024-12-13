@@ -35,14 +35,7 @@ module Projects
         include OpTurbo::Streamable
 
         options :definition,
-                :project
-
-        def active_in_project?
-          project
-            .life_cycle_steps
-            .detect { |project_lc| project_lc.definition_id == definition.id }
-            &.active
-        end
+                :active?
 
         def toggle_aria_label
           I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)

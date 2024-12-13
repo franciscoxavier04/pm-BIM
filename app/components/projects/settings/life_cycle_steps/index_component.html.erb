@@ -67,10 +67,10 @@
             render(Primer::Beta::Text.new(color: :subtle)) { t("projects.settings.life_cycle.non_defined") }
           end
         else
-          life_cycle_definitions.each do |definition|
+          life_cycle_definitions_and_step_active.each do |definition, active|
             component.with_row(data: { 'projects--settings--border-box-filter-target': 'searchItem' },
                                        test_selector: "project-life-cycle-step-#{definition.id}") do
-              render(Projects::Settings::LifeCycleSteps::StepComponent.new(project:, definition:))
+              render(Projects::Settings::LifeCycleSteps::StepComponent.new(definition:, active?: active))
             end
           end
         end

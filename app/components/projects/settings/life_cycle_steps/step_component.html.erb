@@ -20,7 +20,7 @@
         csrf_token: form_authenticity_token,
         data: { test_selector: "toggle-project-life-cycle-#{definition.id}" },
         aria: { label: toggle_aria_label },
-        checked: active_in_project?,
+        checked: active?,
         size: :small,
         status_label_position: :start,
         classes: "op-primer-adjustments__toggle-switch--hidden-loading-indicator",
