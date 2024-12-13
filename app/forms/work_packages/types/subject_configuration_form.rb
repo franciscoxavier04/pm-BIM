@@ -37,23 +37,27 @@ module WorkPackages
             value: "manual",
             checked: !has_pattern?,
             label: I18n.t("types.edit.subject_configuration.manually_editable_subjects.label"),
-            caption: I18n.t("types.edit.subject_configuration.manually_editable_subjects.caption")
+            caption: I18n.t("types.edit.subject_configuration.manually_editable_subjects.caption"),
+            data: { action: "admin--subject-configuration#hidePatternInput" }
           )
           group.radio_button(
             value: "auto",
             checked: has_pattern?,
             label: I18n.t("types.edit.subject_configuration.automatically_generated_subjects.label"),
-            caption: I18n.t("types.edit.subject_configuration.automatically_generated_subjects.caption")
+            caption: I18n.t("types.edit.subject_configuration.automatically_generated_subjects.caption"),
+            data: { action: "admin--subject-configuration#showPatternInput" }
           )
         end
 
-        subject_form.text_field(
-          name: :pattern,
-          label: I18n.t("types.edit.subject_configuration.pattern.label"),
-          caption: I18n.t("types.edit.subject_configuration.pattern.caption"),
-          required: true,
-          input_width: :large
-        )
+        subject_form.group(data: { "admin--subject-configuration-target": "patternInput" }) do |toggleable_group|
+          toggleable_group.text_field(
+            name: :pattern,
+            label: I18n.t("types.edit.subject_configuration.pattern.label"),
+            caption: I18n.t("types.edit.subject_configuration.pattern.caption"),
+            required: true,
+            input_width: :large
+          )
+        end
 
         subject_form.submit(name: :submit, label: I18n.t(:button_save), scheme: :primary)
       end

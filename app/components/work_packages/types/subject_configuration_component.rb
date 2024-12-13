@@ -38,7 +38,12 @@ module WorkPackages
         {
           url: "https://example.com",
           method: :put,
-          model:
+          model:,
+          data: {
+            application_target: "dynamic",
+            controller: "admin--subject-configuration",
+            admin__subject_configuration_hide_pattern_input_value: true
+          }
         }
       end
     end
