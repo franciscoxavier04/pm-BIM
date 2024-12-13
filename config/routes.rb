@@ -244,7 +244,7 @@ Rails.application.routes.draw do
             put :disable_all_of_section
           end
         end
-        resource :life_cycle, only: %i[show] do
+        resources :life_cycle_steps, only: %i[index], path: "life_cycle" do
           member do
             post :toggle
           end

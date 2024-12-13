@@ -2592,7 +2592,7 @@ en:
   label_none_parentheses: "(none)"
   label_not_contains: "doesn't contain"
   label_not_equals: "is not"
-  label_life_cycle_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Project lifecycle"
   label_on: "on"
   label_operator_all: "is not empty"
   label_operator_none: "is empty"

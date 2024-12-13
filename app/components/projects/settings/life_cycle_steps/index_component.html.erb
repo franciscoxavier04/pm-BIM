@@ -34,7 +34,7 @@
               actions_container.with_column(data: { 'projects--settings--border-box-filter-target': 'bulkActionContainer' }) do
                 render(Primer::Beta::Button.new(
                   tag: :a,
-                  href: enable_all_project_settings_life_cycle_path(project_id: project),
+                  href: enable_all_project_settings_life_cycle_steps_path(project_id: project),
                   scheme: :invisible,
                   font_weight: :bold,
                   color: :subtle,
@@ -48,7 +48,7 @@
               actions_container.with_column(data: { 'projects--settings--border-box-filter-target': 'bulkActionContainer' }) do
                 render(Primer::Beta::Button.new(
                   tag: :a,
-                  href: disable_all_project_settings_life_cycle_path(project_id: project),
+                  href: disable_all_project_settings_life_cycle_steps_path(project_id: project),
                   scheme: :invisible,
                   font_weight: :bold,
                   color: :subtle,
@@ -70,7 +70,7 @@
           life_cycle_definitions.each do |definition|
             component.with_row(data: { 'projects--settings--border-box-filter-target': 'searchItem' },
                                        test_selector: "project-life-cycle-step-#{definition.id}") do
-              render(Projects::Settings::LifeCycles::StepComponent.new(project:, definition:))
+              render(Projects::Settings::LifeCycleSteps::StepComponent.new(project:, definition:))
             end
           end
         end

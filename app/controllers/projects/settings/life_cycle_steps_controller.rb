@@ -26,19 +26,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Projects::Settings::LifeCyclesController < Projects::SettingsController
+class Projects::Settings::LifeCycleStepsController < Projects::SettingsController
   include OpTurbo::ComponentStream
 
   before_action :deny_access_on_feature_flag
 
-  before_action :load_life_cycle_definitions, only: %i[show enable_all disable_all]
+  before_action :load_life_cycle_definitions, only: %i[index enable_all disable_all]
 
-  menu_item :settings_life_cycles
+  menu_item :settings_life_cycle_steps
 
-  def show; end
+  def index; end
 
   def toggle
-    definition = Project::LifeCycleStepDefinition.where(id: params[:definition_id])
+    definition = Project::LifeCycleStepDefinition.where(id: params[:id])
 
     upsert_steps(definition, active: params["value"])
   end
@@ -46,13 +46,13 @@ class Projects::Settings::LifeCyclesController < Projects::SettingsController
   def disable_all
     upsert_steps(@life_cycle_definitions, active: false)
 
-    redirect_to action: :show
+    redirect_to action: :index
   end
 
   def enable_all
     upsert_steps(@life_cycle_definitions, active: true)
 
-    redirect_to action: :show
+    redirect_to action: :index
   end
 
   private

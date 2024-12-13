@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2010-2024 the OpenProject GmbH
@@ -28,16 +26,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module Projects::Settings::LifeCycles
-  class ShowPageHeaderComponent < ApplicationComponent
-    include ApplicationHelper
+module Projects
+  module Settings
+    module LifeCycleSteps
+      class StepComponent < ApplicationComponent
+        include ApplicationHelper
+        include OpPrimer::ComponentHelpers
+        include OpTurbo::Streamable
 
-    options :project
+        options :definition,
+                :project
 
-    def breadcrumb_items
-      [{ href: project_overview_path(project), text: project.name },
-       { href: project_settings_general_path(project), text: I18n.t("label_project_settings") },
-       t("projects.settings.life_cycle.header.title")]
+        def active_in_project?
+          project
+            .life_cycle_steps
+            .detect { |project_lc| project_lc.definition_id == definition.id }
+            &.active
+        end
+
+        def toggle_aria_label
+          I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
+        end
+      end
     end
   end
 end

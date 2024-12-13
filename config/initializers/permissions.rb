@@ -135,7 +135,7 @@ Rails.application.reloader.to_prepare do
 
       map.permission :select_project_life_cycle,
                      {
-                       "projects/settings/life_cycles": %i[show toggle enable_all disable_all]
+                       "projects/settings/life_cycle_steps": %i[index toggle enable_all disable_all]
                      },
                      permissible_on: :project,
                      require: :member,

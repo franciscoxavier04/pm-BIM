@@ -625,7 +625,11 @@ Redmine::MenuManager.map :project_menu do |menu|
 
   project_menu_items = {
     general: { caption: :label_information_plural },
-    life_cycles: { caption: :label_life_cycle_plural, if: ->(*) { OpenProject::FeatureDecisions.stages_and_gates_active? } },
+    life_cycle_steps: {
+      caption: :label_life_cycle_step_plural,
+      action: :index,
+      if: ->(*) { OpenProject::FeatureDecisions.stages_and_gates_active? }
+    },
     project_custom_fields: { caption: :label_project_attributes_plural },
     modules: { caption: :label_module_plural },
     types: { caption: :label_work_package_types },
@@ -639,9 +643,9 @@ Redmine::MenuManager.map :project_menu do |menu|
 
   project_menu_items.each do |key, options|
     menu.push :"settings_#{key}",
-              { controller: "/projects/settings/#{key}", action: "show" },
+              { controller: "/projects/settings/#{key}", action: "show" }.merge(options.slice(:action)),
               parent: :settings,
-              **options
+              **options.except(:action)
   end
 end
 

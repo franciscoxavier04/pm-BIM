@@ -28,24 +28,27 @@
 
 module Projects
   module Settings
-    module LifeCycles
-      class StepComponent < ApplicationComponent
+    module LifeCycleSteps
+      class IndexComponent < ApplicationComponent
         include ApplicationHelper
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
 
-        options :definition,
-                :project
+        options :project,
+                :life_cycle_definitions
 
-        def active_in_project?
-          project
-            .life_cycle_steps
-            .detect { |project_lc| project_lc.definition_id == definition.id }
-            &.active
+        private
+
+        def wrapper_data_attributes
+          {
+            controller: "projects--settings--border-box-filter",
+            "application-target": "dynamic",
+            "projects--settings--border-box-filter-clear-button-id-value": clear_button_id
+          }
         end
 
-        def toggle_aria_label
-          I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
+        def clear_button_id
+          "border-box-filter-clear-button"
         end
       end
     end
