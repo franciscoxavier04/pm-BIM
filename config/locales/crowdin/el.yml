@@ -851,6 +851,9 @@ el:
         lag: "Lag"
         from: "Εργασία"
         to: "Σχετικές εργασίες"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1429,6 +1432,7 @@ el:
     login: "Όνομα χρήστη"
     mail: "Email"
     name: "Όνομα"
+    note: "Note"
     password: "Κωδικός"
     priority: "Προτεραιότητα"
     project: "Έργο"
@@ -1525,6 +1529,7 @@ el:
   button_print: "Εκτύπωση"
   button_quote: "Παράθεση"
   button_remove: Αφαίρεση
+  button_remove_reminder: "Remove reminder"
   button_rename: "Μετονομασία"
   button_replace: "Αντικατάσταση"
   button_revoke: "Ανάκληση"
@@ -1535,6 +1540,7 @@ el:
   button_save_as: "Αποθήκευση ως"
   button_apply_changes: "Apply changes"
   button_save_back: "Αποθήκευση και επιστροφή"
+  button_set_reminder: "Set reminder"
   button_show: "Εμφάνιση"
   button_sort: "Ταξινόμηση"
   button_submit: "Υποβολή"
@@ -1740,12 +1746,12 @@ el:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Προσθήκη καινούργιων ομάδων χαρακτηριστικών"
         rename_groups: "Μετονομασία ομάδων χαρακτηριστικών"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Δραστηριότητες καταγραφής χρόνου"
   enumeration_work_package_priorities: "Προτεραιότητες πακέτου εργασίας"
   enumeration_reported_project_statuses: "Αναφερόμενη κατάσταση έργου"
@@ -1778,6 +1784,7 @@ el:
   error_pdf_export_too_many_columns: "Επιλέχθηκαν πάρα πολλές στήλες για εξαγωγή σε PDF. Παρακαλούμε μειώστε τον αριθμό των στηλών."
   error_pdf_failed_to_export: "Η εξαγωγή σε PDF δεν ήταν δυνατό να αποθηκευτεί: %{error}"
   error_token_authenticity: "Δεν ήταν δυνατή η επαλήθευση του Cross-Site Request Forgery token. Προσπαθήσατε να υποβάλετε δεδομένα σε πολλαπλούς περιηγητές ή καρτέλες; Παρακαλούμε κλείστε όλες τις καρτέλες και δοκιμάστε ξανά."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Το πακέτο εργασίας δεν βρέθηκε ή δεν ανοίκει σε αυτό το έργο"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "πρέπει να είναι μέλος έργου"
@@ -2071,6 +2078,7 @@ el:
       responsible: "Υπόλογος"
       shared: "Shared"
       watched: "Παρατηρητής"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2241,6 +2249,7 @@ el:
   label_delete: "Delete"
   label_deleted: "διαγραμμένο"
   label_deleted_custom_field: "(διαγραμμένο προσαρμοσμένο πεδίο)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(διαγραμμένη επιλογή)"
   label_empty_element: "(άδειο)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2277,7 +2286,6 @@ el:
   label_enterprise_active_users: "%{current}/%{limit} κλεισμένοι ενεργοί χρήστες"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Περιβάλλον"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "είναι"
@@ -2626,6 +2634,7 @@ el:
   label_this_month: "αυτό το μήνα"
   label_this_week: "αυτή την εβδομάδα"
   label_this_year: "αυτό το έτος"
+  label_time: "Time"
   label_time_entry_plural: "Χρόνος που δαπανήθηκε"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Τίτλος"
@@ -3776,6 +3785,12 @@ el:
       edit_description: "Can view, comment and edit this work package."
       view: "Προβολή"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

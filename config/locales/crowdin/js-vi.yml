@@ -653,6 +653,8 @@ vi:
         new_notifications:
           message: "Có thông báo mới."
           link_text: "Nhấp vào đây để tải chúng."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Bạn có thể thay đổi <a target="_blank" href="%{url}">cài đặt thông báo</a> của mình để đảm bảo không bỏ lỡ cập nhật quan trọng nào.'
         title: "Cài đặt thông báo"
@@ -1043,6 +1045,12 @@ vi:
           not_found: "Không có chế độ xem như vậy"
           duplicate_query_title: "Tên của chế độ xem này đã tồn tại. Thay đổi bất chấp?"
         text_no_results: "Không tìm thấy chế độ xem phù hợp."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Ngày của gói công việc này được suy ra tự động từ các con của nó. Kích hoạt 'Lên lịch thủ công' để đặt ngày."
         is_switched_from_manual_to_automatic: "Ngày của gói công việc này có thể cần phải được tính toán lại sau khi chuyển từ lên lịch thủ công sang tự động do mối quan hệ với các gói công việc khác."

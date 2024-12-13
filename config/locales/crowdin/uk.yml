@@ -864,6 +864,9 @@ uk:
         lag: "Затримка"
         from: "Пакет робіт"
         to: "Пов'язаний робочий пакет"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "Посилання"
       role:
@@ -1462,6 +1465,7 @@ uk:
     login: "Ім'я користувача"
     mail: "Електронна пошта"
     name: "Ім’я"
+    note: "Note"
     password: "Пароль"
     priority: "Пріоритет"
     project: "Проект"
@@ -1558,6 +1562,7 @@ uk:
   button_print: "Друкувати"
   button_quote: "Цитата"
   button_remove: Видалити
+  button_remove_reminder: "Remove reminder"
   button_rename: "Перейменувати"
   button_replace: "Замінити"
   button_revoke: "Скасувати"
@@ -1568,6 +1573,7 @@ uk:
   button_save_as: "Зберегти як"
   button_apply_changes: "Застосувати зміни"
   button_save_back: "Зберегти та повернутися назад"
+  button_set_reminder: "Set reminder"
   button_show: "Показати"
   button_sort: "Сортувати"
   button_submit: "Підтвердити"
@@ -1809,12 +1815,12 @@ uk:
   direction: зліва направо
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Налаштуйте конфігурацію форми за допомогою цих додаткових доповнень:"
         add_groups: "Додати нові групи атрибутів"
         rename_groups: "Перейменувати групи атрибутів"
-      project_filters:
-        description_html: "Фільтрування і сортування за користувацькими полями доступне як доповнення версії Enterprise."
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
@@ -1847,6 +1853,7 @@ uk:
   error_pdf_export_too_many_columns: "Для експорту PDF-файлу вибрано занадто багато стовпців. Скоротіть кількість стовпців."
   error_pdf_failed_to_export: "Експорт PDF не вдалося зберегти: %{error}"
   error_token_authenticity: "Неможливо підтвердити маркер підробки для запиту між сайтами. Чи спробували ви надіслати дані для кількох веб-переглядачів або вкладок? Закрийте всі вкладки та повторіть спробу."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Робочий пакет не був знайдений або не належить до цього проекту"
   error_work_package_id_not_found: "Пакет робіт не знайдено."
   error_must_be_project_member: "повинен бути учасником проекту"
@@ -2140,6 +2147,7 @@ uk:
       responsible: "Відповідальний"
       shared: "У спільному доступі"
       watched: "Спостерігач"
+      reminder: "Reminder"
     facets:
       unread: "Непрочитані"
       unread_title: "Показати непрочитані"
@@ -2310,6 +2318,7 @@ uk:
   label_delete: "Delete"
   label_deleted: "вилучено "
   label_deleted_custom_field: "(видалено спеціальне поле)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(параметр видалення)"
   label_empty_element: "(пусто)"
   label_missing_or_hidden_custom_option: "(відсутнє значення або бракує дозволів для доступу)"
@@ -2346,7 +2355,6 @@ uk:
   label_enterprise_active_users: "%{current}/%{limit} зареєстровано активних користувачів"
   label_enterprise_edition: "Версія Enterprise"
   label_enterprise_support: "Корпоративна підтримка"
-  label_enterprise_addon: "Доповнення версії Enterprise"
   label_environment: "Навколишнє середовище"
   label_estimates_and_progress: "Оцінки й прогрес виконання"
   label_equals: "є"
@@ -2695,6 +2703,7 @@ uk:
   label_this_month: "цього місяця"
   label_this_week: "цього тижня"
   label_this_year: "цей рік"
+  label_time: "Time"
   label_time_entry_plural: "Трудовитрати"
   label_time_entry_activity_plural: "Завдання з обліком часу"
   label_title: "Назва"
@@ -3850,6 +3859,12 @@ uk:
       edit_description: "Може переглядати, коментувати й редагувати цей пакет робіт."
       view: "Перегляд"
       view_description: "Може переглядати цей пакет робіт."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 користувачів"

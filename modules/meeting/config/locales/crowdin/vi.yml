@@ -52,14 +52,15 @@ vi:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
         invalid_time_format: "không phải giờ hợp lệ. Yêu cầu định dạng: HH:MM"
     models:
       recurring_meeting: "Recurring meeting"
-      structured_meeting: "Cuộc họp (dạng động)"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Mục chương trình nghị sự"
       meeting_agenda: "Các ý chính"
       meeting_minutes: "Phút"
@@ -93,7 +94,7 @@ vi:
   label_meeting: "Cuộc họp"
   label_meeting_plural: "Những cuộc họp"
   label_meeting_new: "Cuộc họp mới"
-  label_meeting_new_dynamic: "New dynamic meeting"
+  label_meeting_new_dynamic: "New one-time meeting"
   label_meeting_new_recurring: "New recurring meeting"
   label_meeting_create: "Tạo cuộc họp"
   label_meeting_copy: "Copy meeting"
@@ -138,8 +139,10 @@ vi:
   label_past_meetings_short: "Đã qua"
   label_involvement: "Tham gia"
   label_invitations: "Invitations"
+  label_invited_user: "Invited user"
   label_past_invitations: "Lời mời đã qua"
   label_attended: "Attended"
+  label_attended_user: "Attended user"
   label_created_by_me: "Created by me"
   label_notify: "Gửi để xem xét"
   label_icalendar: "Gửi iCalendar"
@@ -180,10 +183,11 @@ vi:
     label_mail_all_participants: "Gửi email đến tất cả người tham gia"
     types:
       classic: "Cổ điển"
-      classic_text: "Tổ chức cuộc họp của bạn bằng một chương trình nghị sự và biên bản định dạng văn bản."
-      structured: "Dạng động"
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "One-time"
       recurring: "Recurring"
-      structured_text: "Tổ chức cuộc họp của bạn dưới dạng danh sách các mục chương trình nghị sự, có thể liên kết chúng với một gói công việc."
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Sao chép một cuộc họp hiện tại sẽ không sao chép các mục chương trình nghị sự liên quan, chỉ sao chép các chi tiết"
     copied: "Sao chép từ Cuộc họp #%{id}"
   meeting_section:
@@ -192,9 +196,6 @@ vi:
     placeholder_title: "Phần mới"
     empty_text: "Kéo các mục vào đây hoặc tạo một cái mới"
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -218,15 +219,15 @@ vi:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Every working day"
-      working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Đã gửi thông báo thành công"
   notice_timezone_missing: Chưa đặt múi giờ và %{zone} đã được chọn. Để chọn múi giowf của bạn, nhấn vào đây.

@@ -654,6 +654,8 @@ si:
         new_notifications:
           message: "There are new notifications."
           link_text: "Click here to load them."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'You can modify your <a target="_blank" href="%{url}">notification settings</a> to ensure you never miss an important update.'
         title: "Notification settings"
@@ -1044,6 +1046,12 @@ si:
           not_found: "එවැනි මතයක් නොමැත"
           duplicate_query_title: "මෙම දර්ශනයේ නම දැනටමත් පවතී. කෙසේ හෝ වෙනස් කරන්න?"
         text_no_results: "ගැලපෙන අදහස් කිසිවක් සොයාගත නොහැකි විය."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "The dates of this work package are automatically deduced from its children. Activate 'Manual scheduling' to set the dates."
         is_switched_from_manual_to_automatic: "The dates of this work package may need to be recalculated after switching from manual to automatic scheduling due to relationships with other work packages."

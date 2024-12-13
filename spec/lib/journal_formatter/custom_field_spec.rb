@@ -469,6 +469,22 @@ RSpec.describe OpenProject::JournalFormatter::CustomField do
 
         it { expect(rendered).to be_html_eql(expected) }
       end
+
+      describe "with a deleted item" do
+        let(:values) { [[luke.id, -100].join(","), luke.id.to_s] }
+        let(:original_value) { [luke.ancestry_path, I18n.t(:label_deleted_custom_item)].join(", ") }
+        let(:formatted_value) { luke.ancestry_path }
+
+        let(:expected) do
+          I18n.t(:text_journal_changed_plain,
+                 label: "<strong>#{custom_field.name}</strong>",
+                 linebreak: "",
+                 old: "<i>#{original_value}</i>",
+                 new: "<i>#{formatted_value}</i>")
+        end
+
+        it { expect(rendered).to be_html_eql(expected) }
+      end
     end
   end
 end

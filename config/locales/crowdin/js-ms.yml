@@ -653,6 +653,8 @@ ms:
         new_notifications:
           message: "Terdapat pemberitahuan baharu."
           link_text: "Klik sini untuk memuatkan mereka."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Anda boleh mengubah suai <a target="_blank" href="%{url}">tetapan pemberitahuan</a> anda untuk memastikan anda tidak terlepas tarikh yang penting.'
         title: "Tetapan pemberitahuan"
@@ -1043,6 +1045,12 @@ ms:
           not_found: "Tiada paparan seperti itu"
           duplicate_query_title: "Nama paparan ini sudah wujud. Tukar juga?"
         text_no_results: "Tiada paparan yang sepadan ditemui."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Tarikh pakej kerja ini disimpulkan secara automatik dari anaknya. Aktifkan 'Penjadualan Manual' untuk tetapkan tarikh."
         is_switched_from_manual_to_automatic: "Tarikh pakej kerja ini mungkin perlu dikira semula selepas menukar dari penjadualan manual ke automatik kerana hubungan dengan pakej kerja lain."

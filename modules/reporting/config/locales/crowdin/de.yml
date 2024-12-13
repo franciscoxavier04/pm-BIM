@@ -86,6 +86,11 @@ de:
   validation_failure_date: "ist kein gültiges Datum"
   validation_failure_integer: "ist keine ganze Zahl"
   export:
+    timesheet:
+      title: "Ihr PDF-Export des Stundenzettels"
+      button: "Stundenzettel als PDF exportieren"
+      timesheet: "Stundenzettel"
+      time: "Stunden"
     cost_reports:
       title: "Kostenbericht als XLS-Export"
   reporting:

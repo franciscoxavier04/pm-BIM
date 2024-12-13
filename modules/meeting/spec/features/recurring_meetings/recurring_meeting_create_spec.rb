@@ -35,8 +35,7 @@ require_relative "../../support/pages/meetings/index"
 
 RSpec.describe "Recurring meetings creation",
                :js,
-               :with_cuprite,
-               with_flag: { recurring_meetings: true } do
+               :with_cuprite do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
@@ -70,16 +69,21 @@ RSpec.describe "Recurring meetings creation",
       meetings_page.visit!
       expect(page).to have_current_path(meetings_page.path)
       meetings_page.click_on "add-meeting-button"
-      meetings_page.click_on "Recurring"
+
+      page.within("action-list") do
+        meetings_page.click_on "Recurring"
+      end
 
       wait_for_network_idle
 
       meetings_page.set_title "Some title"
 
-      meetings_page.set_start_date "2024-12-31"
+      meetings_page.set_starts_on "2024-12-31"
       meetings_page.set_start_time "13:30"
       meetings_page.set_duration "1.5"
       meetings_page.set_end_date "2025-01-15"
+
+      expect(page).to have_text "Every week on Tuesday at 01:30 PM"
 
       click_on "Create meeting"
       wait_for_network_idle
