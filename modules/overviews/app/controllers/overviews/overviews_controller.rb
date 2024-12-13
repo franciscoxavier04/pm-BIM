@@ -94,7 +94,8 @@ module ::Overviews
                 .call(permitted_params.project_life_cycles)
 
       update_via_turbo_stream(
-        component: ProjectLifeCycles::Sections::EditComponent.new(service_call.result)
+        component: ProjectLifeCycles::Sections::EditComponent.new(service_call.result),
+        method: "morph"
       )
       # TODO: :unprocessable_entity is not nice, change the dialog logic to accept :ok
       # without dismissing the dialog, alternatively use turbo frames instead of streams.

@@ -43,8 +43,6 @@ export default class ProjectLifeCyclesFormController extends Controller {
       return; // flatpickr is still open, do not submit yet.
     }
 
-    // TODO: If morphing is working correctly, we don't need to blur the input field.
-    target.blur();
     const form = this.formTarget;
     form.action = previewUrl;
 
