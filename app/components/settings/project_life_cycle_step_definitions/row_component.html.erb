@@ -31,7 +31,9 @@ See COPYRIGHT and LICENSE files for more details.
   flex_layout(align_items: :center, justify_content: :space_between) do |row_container|
     row_container.with_column(flex_layout: true, classes: "gap-2") do |title_container|
       title_container.with_column do
-        render(Primer::OpenProject::DragHandle.new)
+        render(Primer::OpenProject::DragHandle.new(
+          data: { "projects--settings--border-box-filter-target": "hideWhenFiltering" }
+        ))
       end
       title_container.with_column do
         render(Primer::Beta::Link.new(
