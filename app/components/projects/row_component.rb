@@ -29,8 +29,9 @@
 #++
 module Projects
   class RowComponent < ::RowComponent
-    delegate :favored_project_ids, to: :table
     delegate :identifier, to: :project
+    delegate :favored_project_ids, to: :table
+    delegate :project_life_cycle_step_by_definition, to: :table
 
     def project
       model.first
@@ -99,13 +100,11 @@ module Projects
     def life_cycle_step_column(column)
       return nil unless user_can_view_project?
 
-      ls = Project::LifeCycleStep
-             .where(active: true)
-             .find_by(definition_id: column.life_cycle.id, project:)
+      life_cycle_step = project_life_cycle_step_by_definition(column.life_cycle, project)
 
-      return nil if ls.blank?
+      return nil if life_cycle_step.blank?
 
-      fmt_date_or_range(ls.start_date, ls.end_date)
+      fmt_date_or_range(life_cycle_step.start_date, life_cycle_step.end_date)
     end
 
     def created_at
