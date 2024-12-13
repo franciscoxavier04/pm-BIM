@@ -68,7 +68,7 @@
             end
 
             menu.with_item(label: t(:label_icalendar_download),
-                           href: download_ics_meeting_path(@meeting)) do |item|
+                           href: ics_download_path) do |item|
               item.with_leading_visual_icon(icon: :download)
             end
 

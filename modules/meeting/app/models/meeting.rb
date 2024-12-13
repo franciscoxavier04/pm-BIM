@@ -117,6 +117,10 @@ class Meeting < ApplicationRecord
     closed: 5
   }
 
+  def recurring?
+    recurring_meeting_id.present?
+  end
+
   ##
   # Cache key for detecting changes to be shown to the user
   def changed_hash
