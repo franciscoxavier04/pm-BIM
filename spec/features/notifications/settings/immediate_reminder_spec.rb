@@ -14,7 +14,7 @@ RSpec.describe "Immediate reminder settings", :js, :with_cuprite do
       reminders_settings_page.expect_immediate_reminder :mentioned, true
 
       # By default the personal reminder is checked
-      expect(pref.immediate_reminders[:personalReminder]).to be(true)
+      expect(pref.immediate_reminders[:personal_reminder]).to be(true)
       reminders_settings_page.expect_immediate_reminder :personalReminder, true
 
       reminders_settings_page.set_immediate_reminder :mentioned, false
@@ -30,7 +30,7 @@ RSpec.describe "Immediate reminder settings", :js, :with_cuprite do
       reminders_settings_page.expect_immediate_reminder :personalReminder, false
 
       expect(pref.reload.immediate_reminders[:mentioned]).to be(false)
-      expect(pref.reload.immediate_reminders[:personalReminder]).to be(false)
+      expect(pref.reload.immediate_reminders[:personal_reminder]).to be(false)
     end
   end
 

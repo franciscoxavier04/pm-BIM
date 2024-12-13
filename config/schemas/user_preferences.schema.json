@@ -75,7 +75,7 @@
             "mentioned": {
               "type": "boolean"
             },
-            "personalReminder": {
+            "personal_reminder": {
               "type": "boolean"
             }
           },
