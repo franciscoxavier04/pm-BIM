@@ -335,7 +335,7 @@ mn:
       favored: "Favorite projects"
       archived: "Archived projects"
       shared: "Shared project lists"
-      my_lists: "My project lists"
+      my_lists: "Миний төслийн жагсаалт"
       new:
         placeholder: "New project list"
       delete_modal:
@@ -362,7 +362,7 @@ mn:
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
-          remove_from_project: "Remove from project"
+          remove_from_project: "Төслөөс устгах"
           label_enable_all: "Enable all"
           label_disable_all: "Disable all"
         is_required_blank_slate:
@@ -1321,8 +1321,8 @@ mn:
       placeholder_user: "Placeholder user"
       project: "Project"
       project_query:
-        one: "Project list"
-        other: "Project lists"
+        one: "Төслийн жагсаалт"
+        other: "Төслийн жагсаалтууд"
       query: "Custom query"
       role:
         one: "Role"
@@ -1403,7 +1403,7 @@ mn:
     default_columns: "Default columns"
     description: "Description"
     derived_due_date: "Derived finish date"
-    derived_estimated_hours: "Total work"
+    derived_estimated_hours: "Нийт ажил"
     derived_start_date: "Derived start date"
     display_sums: "Display Sums"
     due_date: "Finish date"
@@ -2220,7 +2220,7 @@ mn:
   label_custom_field_default_type: "Empty type"
   label_custom_style: "Design"
   label_custom_style_description: "Choose how OpenProject looks to you with themes, select your default colors to use in the app and how exports look like."
-  label_dashboard: " Хянах самбар"
+  label_dashboard: "Хянах самбар"
   label_database_version: "PostgreSQL version"
   label_date: "Date"
   label_date_and_time: "Date and time"
@@ -2336,7 +2336,7 @@ mn:
   label_index_by_title: "Index by title"
   label_information: "Information"
   label_information_plural: "Information"
-  label_installation_guides: "Installation guides"
+  label_installation_guides: "Суулгах зааварууд"
   label_integer: "Integer"
   label_internal: "Internal"
   label_introduction_video: "Introduction video"
@@ -2779,7 +2779,7 @@ mn:
       more_to_see:
         one: "There is 1 more work package with notifications."
         other: "There are %{count} more work packages with notifications."
-      open_in_browser: "Open in browser"
+      open_in_browser: "Хөтөч дээр нээх"
       reason:
         watched: "Watched"
         assigned: "Assigned"
@@ -3000,7 +3000,7 @@ mn:
   permission_add_work_package_notes: "Add notes"
   permission_add_work_packages: "Add work packages"
   permission_add_messages: "Post messages"
-  permission_add_project: "Create projects"
+  permission_add_project: "Төсөл үүсгэх"
   permission_add_work_package_attachments: "Add attachments"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
   permission_archive_project: "Archive project"
@@ -3018,7 +3018,7 @@ mn:
   permission_commit_access: "Read/write access to repository (commit)"
   permission_copy_projects: "Copy projects"
   permission_copy_work_packages: "Copy work packages"
-  permission_create_backup: "Create backups"
+  permission_create_backup: "Нөөцлөлт үүсгэх"
   permission_delete_work_package_watchers: "Delete watchers"
   permission_delete_work_packages: "Delete work packages"
   permission_delete_messages: "Delete messages"

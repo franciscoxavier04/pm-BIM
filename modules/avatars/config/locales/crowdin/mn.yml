@@ -4,23 +4,23 @@ mn:
     name: "Avatars"
     description: >-
       This plugin allows OpenProject users to upload a picture to be used as an avatar or use registered images from Gravatar.
-  label_avatar: "Avatar"
-  label_avatar_plural: "Avatars"
-  label_current_avatar: "Current Avatar"
-  label_choose_avatar: "Choose Avatar from file"
-  message_avatar_uploaded: "Avatar changed successfully."
-  error_image_upload: "Error saving the image."
-  error_image_size: "The image is too large."
+  label_avatar: "Аватар"
+  label_avatar_plural: "Аватар"
+  label_current_avatar: "Одоогийн Аватар"
+  label_choose_avatar: "Аватарыг файлаас сонгох"
+  message_avatar_uploaded: "Аватар амжилттай өөрчлөгдлөө."
+  error_image_upload: "Зураг хадгалахад алдаа гарлаа."
+  error_image_size: "Зураг хэтэрхий том байна."
   are_you_sure_delete_avatar: "Are you sure you want to delete your avatar?"
-  avatar_deleted: "Avatar deleted successfully."
+  avatar_deleted: "Аватар амжилттай устгалаа."
   unable_to_delete_avatar: "Avatar could not be deleted."
   wrong_file_format: "Allowed formats are jpg, png, gif"
   empty_file_error: "Please upload a valid image (jpg, png, gif)"
   avatars:
-    label_avatar: "Avatar"
+    label_avatar: "Аватар"
     label_gravatar: 'Gravatar'
-    label_current_avatar: 'Current avatar'
-    label_local_avatar: 'Custom avatar'
+    label_current_avatar: 'Одоогийн Аватар'
+    label_local_avatar: 'Дурын аватар'
     text_current_avatar: |
       The following image shows the current avatar.
     text_upload_instructions: |
