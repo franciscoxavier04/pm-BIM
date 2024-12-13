@@ -843,8 +843,8 @@ zh-CN:
         from: "工作包"
         to: "相关的工作包"
       reminder:
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "日期"
+        remind_at_time: "时间"
       repository:
         url: "URL"
       role:
@@ -1413,7 +1413,7 @@ zh-CN:
     login: "用户名"
     mail: "电子邮件"
     name: "名称"
-    note: "Note"
+    note: "备注"
     password: "密码"
     priority: "优先级"
     project: "项目"
@@ -1510,7 +1510,7 @@ zh-CN:
   button_print: "打印"
   button_quote: "引用"
   button_remove: 移除
-  button_remove_reminder: "Remove reminder"
+  button_remove_reminder: "删除提醒"
   button_rename: "重命名"
   button_replace: "替换"
   button_revoke: "撤消"
@@ -1521,7 +1521,7 @@ zh-CN:
   button_save_as: "另存为"
   button_apply_changes: "应用更改"
   button_save_back: "保存并返回"
-  button_set_reminder: "Set reminder"
+  button_set_reminder: "设置提醒"
   button_show: "显示"
   button_sort: "排序"
   button_submit: "提交"
@@ -1709,8 +1709,8 @@ zh-CN:
   direction: 从左向右
   ee:
     upsale:
-      title: "Enterprise add-on"
-      link_title: "More information"
+      title: "企业附加组件"
+      link_title: "更多信息"
       form_configuration:
         description: "使用以下附加组件自定义表单配置："
         add_groups: "添加新属性组"
@@ -1747,7 +1747,7 @@ zh-CN:
   error_pdf_export_too_many_columns: "选择 PDF 导出的列太多。请减少列数。"
   error_pdf_failed_to_export: "无法保存被导出的 PDF 文件：%{error}"
   error_token_authenticity: "无法验证跨站请求伪造令牌。您是否曾尝试在多个浏览器或选项卡上提交数据？请关闭所有选项卡并重试。"
-  error_reminder_not_found: "The reminder was not found or was already notified about."
+  error_reminder_not_found: "未找到提醒或已收到相关提醒的通知。"
   error_work_package_not_found_in_project: "工作包找不到或不属于此项目"
   error_work_package_id_not_found: "工作包未找到"
   error_must_be_project_member: "必须是项目成员"
@@ -2041,7 +2041,7 @@ zh-CN:
       responsible: "负责人"
       shared: "共享"
       watched: "关注人"
-      reminder: "Reminder"
+      reminder: "提醒"
     facets:
       unread: "未读"
       unread_title: "显示未读信息"
@@ -2212,7 +2212,7 @@ zh-CN:
   label_delete: "删除"
   label_deleted: "已删除"
   label_deleted_custom_field: "（删除自定义字段）"
-  label_deleted_custom_item: "(deleted item)"
+  label_deleted_custom_item: "(删除项目)"
   label_deleted_custom_option: "（删除的选项）"
   label_empty_element: "（空）"
   label_missing_or_hidden_custom_option: "（缺少值或缺少访问权限）"
@@ -2597,7 +2597,7 @@ zh-CN:
   label_this_month: "这个月"
   label_this_week: "这一周"
   label_this_year: "这一年"
-  label_time: "Time"
+  label_time: "时间"
   label_time_entry_plural: "已耗工时"
   label_time_entry_activity_plural: "花费时间的活动"
   label_title: "标题"
@@ -3742,11 +3742,11 @@ zh-CN:
       view: "查看"
       view_description: "可以查看此工作包。"
     reminders:
-      label_remind_at: "Date"
-      note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
-      success_update_message: "Reminder updated successfully."
-      success_deletion_message: "Reminder deleted successfully."
+      label_remind_at: "日期"
+      note_placeholder: "您为什么要设置此提醒？"
+      success_creation_message: "提醒设置成功。您将在所选时间收到此工作包的通知。"
+      success_update_message: "提醒更新成功。"
+      success_deletion_message: "提醒已成功删除。"
   sharing:
     count:
       zero: "0 个用户"

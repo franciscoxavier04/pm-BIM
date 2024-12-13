@@ -60,7 +60,7 @@ id:
         invalid_time_format: "bukanlah waktu yang valid. Format seharusnya; JJ:MM"
     models:
       recurring_meeting: "Recurring meeting"
-      structured_meeting: "Rapat (dinamis)"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Item agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Laporan"
@@ -94,7 +94,7 @@ id:
   label_meeting: "Rapat"
   label_meeting_plural: "Rapat"
   label_meeting_new: "Rapat Baru"
-  label_meeting_new_dynamic: "New dynamic meeting"
+  label_meeting_new_dynamic: "New one-time meeting"
   label_meeting_new_recurring: "New recurring meeting"
   label_meeting_create: "Create meeting"
   label_meeting_copy: "Copy meeting"
@@ -183,10 +183,11 @@ id:
     label_mail_all_participants: "Kirim email ke semua peserta"
     types:
       classic: "Klasik"
-      classic_text: "Atur rapat Anda dalam agenda dan protokol teks yang dapat diformat."
-      structured: "Dinamis"
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "One-time"
       recurring: "Recurring"
-      structured_text: "Organize your meeting as a list of agenda items, optionally linking them to a work package."
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Copying a meeting will currently not copy the associated meeting agenda items, just the details"
     copied: "Disalin dari Meeting #%{id}"
   meeting_section:

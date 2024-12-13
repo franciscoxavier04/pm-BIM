@@ -619,7 +619,7 @@ zh-TW:
         prioritized: "已優先"
         dateAlert: "日期提醒"
         shared: "參與"
-        reminder: "Reminder"
+        reminder: "提醒"
       date_alerts:
         milestone_date: "里程碑日期"
         overdue: "逾期"
@@ -652,7 +652,7 @@ zh-TW:
           message: "您有新的通知"
           link_text: "點擊此處加載。"
       reminders:
-        note: "Note: “%{note}”"
+        note: "備註： \"%{note}\""
       settings:
         change_notification_settings: '您可以修改 <a target="_blank" href="%{url}">通知設定</a>，以確保您不會錯過重要更新。'
         title: "通知設定"
@@ -1044,10 +1044,10 @@ zh-TW:
           duplicate_query_title: "此版面的名稱已存在。確定改變？"
         text_no_results: "找不到符合的版面。"
       reminders:
-        button_label: "Set reminder"
+        button_label: "設定提醒"
         title:
-          new: "Set reminder"
-          edit: "Edit reminder"
+          new: "設定提醒"
+          edit: "編輯提醒"
         subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "此工作包的日期會自動從其子項推導出。可啟用“手動計劃”來設置日期。"

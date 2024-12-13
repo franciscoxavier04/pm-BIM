@@ -61,7 +61,7 @@ nl:
         invalid_time_format: "is geen geldige tijd. Vereist formaat: UH:MM"
     models:
       recurring_meeting: "Terugkerende vergadering"
-      structured_meeting: "Vergadering (dynamisch)"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Agendapunt"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minuten"
@@ -95,7 +95,7 @@ nl:
   label_meeting: "Vergadering"
   label_meeting_plural: "Vergaderingen"
   label_meeting_new: "Nieuwe vergadering"
-  label_meeting_new_dynamic: "Nieuwe dynamische vergadering"
+  label_meeting_new_dynamic: "New one-time meeting"
   label_meeting_new_recurring: "Nieuwe terugkerende vergadering"
   label_meeting_create: "Creëer vergadering"
   label_meeting_copy: "Kopie vergadering"
@@ -184,10 +184,11 @@ nl:
     label_mail_all_participants: "E-mail verzenden naar alle deelnemers"
     types:
       classic: "Klassiek"
-      classic_text: "Organiseer uw vergadering met een opmaakbare tekstagenda en protocol."
-      structured: "Dynamisch"
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "One-time"
       recurring: "Recurring"
-      structured_text: "Organiseren van uw vergadering als een lijst met agendapunten, eventueel koppelen aan een werkpakket."
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Een vergadering kopiëren zal momenteel niet de bijbehorende agendapunten kopiëren, alleen de details"
     copied: "Gekopieerd van vergadering #%{id}"
   meeting_section:

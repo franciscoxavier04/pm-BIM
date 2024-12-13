@@ -61,7 +61,7 @@ hu:
         invalid_time_format: "nem egy érvényes időpont. Előírt formátum: óó:pp"
     models:
       recurring_meeting: "Ismétlődő megbeszélés"
-      structured_meeting: "Megbeszélés (dinamikus)"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Napirendi pont"
       meeting_agenda: "Napirend"
       meeting_minutes: "Jegyzőkönyv"
@@ -95,7 +95,7 @@ hu:
   label_meeting: "Megbeszélés"
   label_meeting_plural: "Megbeszélések"
   label_meeting_new: "Új megbeszélés"
-  label_meeting_new_dynamic: "New dynamic meeting"
+  label_meeting_new_dynamic: "New one-time meeting"
   label_meeting_new_recurring: "New recurring meeting"
   label_meeting_create: "Create meeting"
   label_meeting_copy: "Copy meeting"
@@ -184,10 +184,11 @@ hu:
     label_mail_all_participants: "Email küldése minden résztvevőnek"
     types:
       classic: "Szokásos"
-      classic_text: "Szervezd meg a találkozódat formázott szöveges napirendben és protokollban."
-      structured: "Dinamikus"
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "One-time"
       recurring: "Recurring"
-      structured_text: "Szervezd meg a találkozódat napirendi pontokkal, melyeket opcionálisan munkacsomagokhoz rendelhetsz."
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "A megbeszélés másolásával jelnleg nem fogja átmásolni a hozzákapcsolt napirendi pontokat, csak a megbeszélés részleteit."
     copied: "#%{id} megbeszélésből másolva"
   meeting_section:
