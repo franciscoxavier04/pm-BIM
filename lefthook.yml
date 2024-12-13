@@ -17,3 +17,7 @@ pre-commit:
       files: git diff --name-only --staged
       glob: "*.rb"
       run: bin/dirty-rubocop --uncommitted --force-exclusion {files}
+prepare-commit-msg:
+  scripts:
+    "commit-msg-prefix-from-branch.sh":
+      runner: bash
