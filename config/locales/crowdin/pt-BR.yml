@@ -852,6 +852,9 @@ pt-BR:
         lag: "Atraso"
         from: "Pacote de trabalho"
         to: "Pacote de trabalho relacionado"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1430,6 +1433,7 @@ pt-BR:
     login: "Nome de usuário"
     mail: "E-mail"
     name: "Nome"
+    note: "Note"
     password: "Senha"
     priority: "Prioridade"
     project: "Projeto"
@@ -1526,6 +1530,7 @@ pt-BR:
   button_print: "Imprimir"
   button_quote: "Citar"
   button_remove: Remover
+  button_remove_reminder: "Remove reminder"
   button_rename: "Renomear"
   button_replace: "Substituir"
   button_revoke: "Revogar"
@@ -1536,6 +1541,7 @@ pt-BR:
   button_save_as: "Salvar como"
   button_apply_changes: "Aplicar as alterações"
   button_save_back: "Salvar e voltar"
+  button_set_reminder: "Set reminder"
   button_show: "Mostrar"
   button_sort: "Ordenar"
   button_submit: "Enviar"
@@ -1741,12 +1747,12 @@ pt-BR:
   direction: da esquerda para a direita
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Personalize a configuração do formulário com estes complementos adicionais:"
         add_groups: "Adicionar novos grupos de atributos"
         rename_groups: "Renomear grupos de atributos"
-      project_filters:
-        description_html: "Filtrar e ordenar em campos personalizados é um complemento da edição Enterprise."
   enumeration_activities: "Atividades de controle de tempo"
   enumeration_work_package_priorities: "Prioridades do pacote de trabalho"
   enumeration_reported_project_statuses: "Situação de projeto comunicada"
@@ -1779,6 +1785,7 @@ pt-BR:
   error_pdf_export_too_many_columns: "Muitas colunas selecionadas para a exportação para PDF. Reduza o número de colunas."
   error_pdf_failed_to_export: "Não foi possível salvar a exportação do PDF: %{error}"
   error_token_authenticity: "Não foi possível verificar o token de Falsificação de Solicitação Entre Sites. Você tentou enviar dados em vários navegadores ou abas? Por favor, feche todas as abas e tente novamente."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "O pacote de trabalho não foi encontrado ou não pertence a este projeto"
   error_work_package_id_not_found: "O pacote de trabalho não foi encontrado."
   error_must_be_project_member: "deve ser membro do projeto"
@@ -2072,6 +2079,7 @@ pt-BR:
       responsible: "Responsável"
       shared: "Compartilhado"
       watched: "Observador"
+      reminder: "Reminder"
     facets:
       unread: "Não lido"
       unread_title: "Exibir não lidos"
@@ -2242,6 +2250,7 @@ pt-BR:
   label_delete: "Delete"
   label_deleted: "excluído"
   label_deleted_custom_field: "(campo personalizado excluído)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opção excluída)"
   label_empty_element: "(vazio)"
   label_missing_or_hidden_custom_option: "(algum valor faltando ou falta permissões para acessar)"
@@ -2278,7 +2287,6 @@ pt-BR:
   label_enterprise_active_users: "%{current}/%{limit} usuários ativos reservados"
   label_enterprise_edition: "Edição Enterprise"
   label_enterprise_support: "Suporte corporativo"
-  label_enterprise_addon: "Complemento empresarial"
   label_environment: "Ambiente"
   label_estimates_and_progress: "Estimativas e progresso"
   label_equals: "é"
@@ -2627,6 +2635,7 @@ pt-BR:
   label_this_month: "este mês"
   label_this_week: "esta semana"
   label_this_year: "este ano"
+  label_time: "Time"
   label_time_entry_plural: "Tempo gasto"
   label_time_entry_activity_plural: "Tempo investido em atividades"
   label_title: "Título"
@@ -3777,6 +3786,12 @@ pt-BR:
       edit_description: "Pode visualizar, comentar e editar este pacote de trabalho."
       view: "Ver"
       view_description: "Pode visualizar este pacote de trabalho."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 usuários"

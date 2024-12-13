@@ -840,6 +840,9 @@ id:
         lag: "Lag"
         from: "Paket-Penugasan"
         to: "Work package terkait"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1408,6 +1411,7 @@ id:
     login: "Nama pengguna"
     mail: "Email"
     name: "Nama"
+    note: "Note"
     password: "Password"
     priority: "Prioritas"
     project: "Project"
@@ -1504,6 +1508,7 @@ id:
   button_print: "Cetak"
   button_quote: "Kutipan"
   button_remove: Remove
+  button_remove_reminder: "Remove reminder"
   button_rename: "Ubah nama"
   button_replace: "Ganti"
   button_revoke: "Menarik kembali"
@@ -1514,6 +1519,7 @@ id:
   button_save_as: "Simpan sebagai"
   button_apply_changes: "Menerapkan perubahan"
   button_save_back: "Save and back"
+  button_set_reminder: "Set reminder"
   button_show: "Tampilkan"
   button_sort: "Urutkan"
   button_submit: "Kirim"
@@ -1701,12 +1707,12 @@ id:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Menambahkan atribut kelompok-kelompok baru"
         rename_groups: "Menamai ulang atribut kelompok-kelompok"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Kegiatan pelacakan waktu"
   enumeration_work_package_priorities: "Paket-Penugasan prioritas"
   enumeration_reported_project_statuses: "Status Project yang di-Report"
@@ -1739,6 +1745,7 @@ id:
   error_pdf_export_too_many_columns: "Kolom yang dipilih utnuk ekspor PDF terlalu banyak. Mohon kurangi jumlah kolom."
   error_pdf_failed_to_export: "Ekspor PDF tidak dapat disimpan: %{error}"
   error_token_authenticity: "Tidak dapat memverifikasi token Pemalsuan Permintaan Lintas Situs. Apakah Anda mencoba mengirimkan data di beberapa browser atau tab? Harap tutup semua tab dan coba lagi."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Paket-Penugasan tidak ditemukan atau tidak termasuk dalam Project ini"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "harus sbg Project Member"
@@ -2032,6 +2039,7 @@ id:
       responsible: "Akuntabel"
       shared: "Shared"
       watched: "Pemantau"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2202,6 +2210,7 @@ id:
   label_delete: "Delete"
   label_deleted: "dihapus"
   label_deleted_custom_field: "(isian kustom dihapus)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opsi dihapus)"
   label_empty_element: "(kosong)"
   label_missing_or_hidden_custom_option: "(nilai hilang atau kurang izin untuk mengakses)"
@@ -2238,7 +2247,6 @@ id:
   label_enterprise_active_users: "%{current}/%{limit} pengguna aktif yang dipesan"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Dukungan perusahaan"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Environment"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "adalah"
@@ -2587,6 +2595,7 @@ id:
   label_this_month: "bulan ini"
   label_this_week: "minggu ini"
   label_this_year: "tahun ini"
+  label_time: "Time"
   label_time_entry_plural: "Durasi"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Judul"
@@ -3733,6 +3742,12 @@ id:
       edit_description: "Can view, comment and edit this work package."
       view: "Lihat"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

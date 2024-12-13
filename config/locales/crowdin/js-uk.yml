@@ -656,6 +656,8 @@ uk:
         new_notifications:
           message: "Немає нових сповіщень."
           link_text: "Натисніть тут, щоб завантажити."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Ви можете змінити <a target="_blank" href="%{url}">налаштування сповіщень</a>, щоб ніколи не пропускати важливі оновлення.'
         title: "Налаштування сповіщень"
@@ -1046,6 +1048,12 @@ uk:
           not_found: "Такого погляду немає"
           duplicate_query_title: "Ім'я цього перегляду вже існує. Змінити все одно?"
         text_no_results: "Не знайдено відповідних переглядів."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Дати цього пакета робіт автоматично виводяться з його дочірніх елементів. Активуйте «Ручне планування», щоб установити ці дати."
         is_switched_from_manual_to_automatic: "Можливо, дати цього пакета робіт знадобиться перерахувати після переходу з ручного на автоматичне планування через зв’язок з іншими пакетами робіт."

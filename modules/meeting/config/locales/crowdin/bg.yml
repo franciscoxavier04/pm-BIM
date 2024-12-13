@@ -53,14 +53,15 @@ bg:
       recurring_meeting:
         frequency: "Frequency"
         interval: "Interval"
-        end_after: "End after"
+        start_date: "Starts on"
+        end_after: "End series after"
         iterations: "Occurrences"
     errors:
       messages:
         invalid_time_format: "не е валидно време. Задължителен формат: HH:MM"
     models:
       recurring_meeting: "Recurring meeting"
-      structured_meeting: "Среща (динамична)"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Точка от дневния ред"
       meeting_agenda: "Дневен ред"
       meeting_minutes: "Минути"
@@ -94,7 +95,7 @@ bg:
   label_meeting: "среща"
   label_meeting_plural: "Срещи"
   label_meeting_new: "Нова среща"
-  label_meeting_new_dynamic: "New dynamic meeting"
+  label_meeting_new_dynamic: "New one-time meeting"
   label_meeting_new_recurring: "New recurring meeting"
   label_meeting_create: "Create meeting"
   label_meeting_copy: "Copy meeting"
@@ -139,8 +140,10 @@ bg:
   label_past_meetings_short: "Предишен"
   label_involvement: "Участие"
   label_invitations: "Invitations"
+  label_invited_user: "Invited user"
   label_past_invitations: "Минали покани"
   label_attended: "Attended"
+  label_attended_user: "Attended user"
   label_created_by_me: "Created by me"
   label_notify: "Изпращане за преглед"
   label_icalendar: "Изпращане на iCalendar"
@@ -181,10 +184,11 @@ bg:
     label_mail_all_participants: "Изпрати имейл до всички участници"
     types:
       classic: "Класически"
-      classic_text: "Организирайте срещата си в текстова програма и протокол, които могат да се форматират."
-      structured: "Динамичен"
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "One-time"
       recurring: "Recurring"
-      structured_text: "Организирайте срещата си като списък с точки от дневния ред, като по желание ги свържете с работен пакет."
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Копирането на среща понастоящем не копира свързаните с нея точки от дневния ред, а само подробностите."
     copied: "Копирано от среща #%{id}"
   meeting_section:
@@ -193,9 +197,6 @@ bg:
     placeholder_title: "New section"
     empty_text: "Завлечете елементите тук, или създайте нов елемент"
   recurring_meeting:
-    interval:
-      instructions: >
-        Enter the number of days or weeks between each occurrence.
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -219,15 +220,15 @@ bg:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "A specific date"
-      iterations: "A number of occurrences"
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} day"
+      daily_interval: "Every %{interval} days"
       working_days: "Every working day"
-      working_days_interval: "Every %{interval} working day"
-      weekly: "Weekly on %{weekday}"
-      weekly_interval: "Every %{interval} week on %{weekday}"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Notification sent successfully"
   notice_timezone_missing: No time zone is set and %{zone} is assumed. To choose your time zone, please click here.

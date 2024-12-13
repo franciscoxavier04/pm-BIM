@@ -852,6 +852,9 @@ es:
         lag: "Retraso"
         from: "Paquete de trabajo"
         to: "Paquete de trabajo relacionado"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1430,6 +1433,7 @@ es:
     login: "Nombre usuario"
     mail: "Correo electrónico"
     name: "Nombre"
+    note: "Note"
     password: "Contraseña"
     priority: "Prioridad"
     project: "Proyecto"
@@ -1526,6 +1530,7 @@ es:
   button_print: "Imprimir"
   button_quote: "Comentario"
   button_remove: Eliminar
+  button_remove_reminder: "Remove reminder"
   button_rename: "Cambiar el nombre"
   button_replace: "Sustituir"
   button_revoke: "Revocar"
@@ -1536,6 +1541,7 @@ es:
   button_save_as: "Guardar como"
   button_apply_changes: "Aplicar cambios"
   button_save_back: "Guardar y volver"
+  button_set_reminder: "Set reminder"
   button_show: "Mostrar"
   button_sort: "Ordenar"
   button_submit: "Enviar"
@@ -1741,12 +1747,12 @@ es:
   direction: iad (ltr)
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Personalice la configuración del formulario con estas extensiones:"
         add_groups: "Añadir nuevos grupos de atributos"
         rename_groups: "Cambiar nombre de grupos de atributos"
-      project_filters:
-        description_html: "Filtrar y ordenar en campos personalizados es una extensión de Enterprise."
   enumeration_activities: "Actividades de seguimiento del tiempo"
   enumeration_work_package_priorities: "Prioridades del paquete de trabajo"
   enumeration_reported_project_statuses: "Estatus del proyecto reportado"
@@ -1779,6 +1785,7 @@ es:
   error_pdf_export_too_many_columns: "Demasiadas columnas seleccionadas para la exportación de PDF. Reduzca el número de columnas."
   error_pdf_failed_to_export: "No se ha podido guardar la exportación PDF: %{error}"
   error_token_authenticity: "No se puede verificar el token de falsificación de solicitud entre sitios. ¿Intentó enviar datos en varios navegadores o pestañas? Cierre de todas las pestañas y vuelva a intentarlo."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "El paquete de trabajo no se ha encontrado o no pertenece a este proyecto"
   error_work_package_id_not_found: "No se ha encontrado el paquete de trabajo."
   error_must_be_project_member: "debe ser miembro del proyecto"
@@ -2072,6 +2079,7 @@ es:
       responsible: "Responsable"
       shared: "Compartido"
       watched: "Observador"
+      reminder: "Reminder"
     facets:
       unread: "No leídas"
       unread_title: "Mostrar no leídos"
@@ -2242,6 +2250,7 @@ es:
   label_delete: "Delete"
   label_deleted: "borrado"
   label_deleted_custom_field: "(campo personalizado borrado)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opción eliminada)"
   label_empty_element: "(vacío)"
   label_missing_or_hidden_custom_option: "(faltan valores o permisos de acceso)"
@@ -2278,7 +2287,6 @@ es:
   label_enterprise_active_users: "%{current}/%{limit} usuarios activos que han reservado"
   label_enterprise_edition: "Enterprise"
   label_enterprise_support: "Soporte empresarial"
-  label_enterprise_addon: "Extensión Enterprise"
   label_environment: "Entorno"
   label_estimates_and_progress: "Estimaciones y progreso"
   label_equals: "es"
@@ -2627,6 +2635,7 @@ es:
   label_this_month: "este mes"
   label_this_week: "esta semana"
   label_this_year: "este año"
+  label_time: "Time"
   label_time_entry_plural: "Tiempo invertido"
   label_time_entry_activity_plural: "Actividades de tiempo invertido"
   label_title: "Título"
@@ -3777,6 +3786,12 @@ es:
       edit_description: "Puede ver, comentar y editar este paquete de trabajo."
       view: "Ver"
       view_description: "Puede ver este paquete de trabajo."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 usuarios"

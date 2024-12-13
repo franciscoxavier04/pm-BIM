@@ -49,7 +49,7 @@ module RecurringMeetings
       if @direction == "past"
         I18n.t("label_recurring_meeting_more_past#{label_suffix}", count:)
       else
-        I18n.t("label_recurring_meeting_more#{label_suffix}", count:, schedule: @meeting.schedule_in_words)
+        I18n.t("label_recurring_meeting_more#{label_suffix}", count:, schedule: @meeting.full_schedule_in_words)
       end
     end
   end

@@ -868,6 +868,9 @@ sl:
         lag: "Lag"
         from: "Zahtevek"
         to: "Soroden zahtevek"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1466,6 +1469,7 @@ sl:
     login: "Uporabniško ime"
     mail: "E-pošta"
     name: "Ime"
+    note: "Note"
     password: "Geslo"
     priority: "Prioriteta"
     project: "Projekt"
@@ -1562,6 +1566,7 @@ sl:
   button_print: "Natisni"
   button_quote: "Citiraj"
   button_remove: Odstrani
+  button_remove_reminder: "Remove reminder"
   button_rename: "Preimenuj"
   button_replace: "Zamenjaj"
   button_revoke: "Prekliči"
@@ -1572,6 +1577,7 @@ sl:
   button_save_as: "Shrani kot"
   button_apply_changes: "Apply changes"
   button_save_back: "Shrani in nazaj"
+  button_set_reminder: "Set reminder"
   button_show: "Pokaži"
   button_sort: "Razvrsti"
   button_submit: "Potrdi"
@@ -1813,12 +1819,12 @@ sl:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Dodajte nove skupine atributov"
         rename_groups: "Preimenujte skupine atributov"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Dejavnosti spremljanja časa"
   enumeration_work_package_priorities: "Prednostne naloge delovnega paketa"
   enumeration_reported_project_statuses: "Poročano stanje projekta"
@@ -1851,6 +1857,7 @@ sl:
   error_pdf_export_too_many_columns: "Za izvoz PDF je izbranih preveč stolpcev. Zmanjšajte število stolpcev."
   error_pdf_failed_to_export: "Izvoza PDF ni bilo mogoče shraniti: %{error}"
   error_token_authenticity: "Ni mogoče preveriti žetona ponarejanja zahteve na več mestih. Ste poskušali predložiti podatke v več brskalnikih ali zavihkih? Zaprite vse zavihke in poskusite znova.\n"
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Delovnega paketa/ zahtevka ni bilo mogoče najti ali ne spada v ta projekt"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "mora biti član projekta"
@@ -2144,6 +2151,7 @@ sl:
       responsible: "Odgovorni"
       shared: "Shared"
       watched: "Opazovalec"
+      reminder: "Reminder"
     facets:
       unread: "Neprebrano"
       unread_title: "Pokaži neprebrano"
@@ -2314,6 +2322,7 @@ sl:
   label_delete: "Delete"
   label_deleted: "Izbrisano"
   label_deleted_custom_field: "(izbrisano polje po meri)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(izbrisana možnost)"
   label_empty_element: "(prazno)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2350,7 +2359,6 @@ sl:
   label_enterprise_active_users: "%{current} /%{limit} rezervirani aktivni uporabniki"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Okolje"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "je"
@@ -2699,6 +2707,7 @@ sl:
   label_this_month: "Ta mesec"
   label_this_week: "ta teden"
   label_this_year: "to leto"
+  label_time: "Time"
   label_time_entry_plural: "Porabljen čas"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Naslov"
@@ -3856,6 +3865,12 @@ sl:
       edit_description: "Can view, comment and edit this work package."
       view: "Ogled"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

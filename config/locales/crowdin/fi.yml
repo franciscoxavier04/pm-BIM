@@ -855,6 +855,9 @@ fi:
         lag: "Lag"
         from: "Tehtävä"
         to: "Liittyy tehtävään"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1433,6 +1436,7 @@ fi:
     login: "Käyttäjätunnus"
     mail: "Sähköposti"
     name: "Nimi"
+    note: "Note"
     password: "Salasana"
     priority: "Prioriteetti"
     project: "Projekti"
@@ -1529,6 +1533,7 @@ fi:
   button_print: "Tulosta"
   button_quote: "Siteeraa"
   button_remove: Poista
+  button_remove_reminder: "Remove reminder"
   button_rename: "Nimeä uudelleen"
   button_replace: "Korvaa"
   button_revoke: "Revoke"
@@ -1539,6 +1544,7 @@ fi:
   button_save_as: "Tallenna nimellä"
   button_apply_changes: "Apply changes"
   button_save_back: "Tallenna ja palaa"
+  button_set_reminder: "Set reminder"
   button_show: "Näytä"
   button_sort: "Järjestä"
   button_submit: "Lähetä"
@@ -1744,12 +1750,12 @@ fi:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Ajanseurannan tapahtumat"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
@@ -1782,6 +1788,7 @@ fi:
   error_pdf_export_too_many_columns: "Liikaa sarakkeita valittuina PDF-vientiin. Pienennä sarakkeiden määrää."
   error_pdf_failed_to_export: "The PDF export could not be saved: %{error}"
   error_token_authenticity: "Unable to verify Cross-Site Request Forgery token. Did you try to submit data on multiple browsers or tabs? Please close all tabs and try again."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Toimia paketti ei löydy tai ei kuulu tähän projektiin"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "on oltava projekti jäsen"
@@ -2075,6 +2082,7 @@ fi:
       responsible: "Vastuuhenkilö"
       shared: "Shared"
       watched: "Seuraajat"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2245,6 +2253,7 @@ fi:
   label_delete: "Delete"
   label_deleted: "poistettu"
   label_deleted_custom_field: "(poistettu mukautettu kenttä)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(tyhjä)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2281,7 +2290,6 @@ fi:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Ympäristö"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "on"
@@ -2630,6 +2638,7 @@ fi:
   label_this_month: "tässä kuussa"
   label_this_week: "tällä viikolla"
   label_this_year: "tänä vuonna"
+  label_time: "Time"
   label_time_entry_plural: "Käytetty aika"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Otsikko"
@@ -3782,6 +3791,12 @@ fi:
       edit_description: "Can view, comment and edit this work package."
       view: "Näytä"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

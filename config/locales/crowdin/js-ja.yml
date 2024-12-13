@@ -654,6 +654,8 @@ ja:
         new_notifications:
           message: "There are new notifications."
           link_text: "Click here to load them."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'You can modify your <a target="_blank" href="%{url}">notification settings</a> to ensure you never miss an important update.'
         title: "Notification settings"
@@ -1044,6 +1046,12 @@ ja:
           not_found: "そのようなビューはありません"
           duplicate_query_title: "このビューの名前は既に存在します。 とにかく変更しますか？"
         text_no_results: "一致するビューは見つかりませんでした。"
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "このワークパッケージの日付は、その子から自動的に推定されます。日付を設定するには、「手動スケジューリング」を有効にします。"
         is_switched_from_manual_to_automatic: "他のワークパッケージとの関連により、手動スケジューリングから自動スケジューリングに切り替えた後に、このワークパッケージの日付を再計算する必要がある場合があります。"

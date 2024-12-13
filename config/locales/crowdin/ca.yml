@@ -851,6 +851,9 @@ ca:
         lag: "Retard"
         from: "Paquet de treball"
         to: "Paquet de treball relacionat"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -1429,6 +1432,7 @@ ca:
     login: "Nom d'usuari"
     mail: "Correu electrònic"
     name: "Nom"
+    note: "Note"
     password: "Contrasenya"
     priority: "Prioritat"
     project: "Projecte"
@@ -1525,6 +1529,7 @@ ca:
   button_print: "Imprimir"
   button_quote: "Citar"
   button_remove: Suprimir
+  button_remove_reminder: "Remove reminder"
   button_rename: "Renombrar"
   button_replace: "Substitueix"
   button_revoke: "Revoca"
@@ -1535,6 +1540,7 @@ ca:
   button_save_as: "Desa com a"
   button_apply_changes: "Aplicar canvis"
   button_save_back: "Desar i tornar"
+  button_set_reminder: "Set reminder"
   button_show: "Mostra"
   button_sort: "Ordena"
   button_submit: "Enviar"
@@ -1740,12 +1746,12 @@ ca:
   direction: dta. a esq.
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Personalitza la configuració del formulari amb aquestes extensions addicionals:"
         add_groups: "Afegir un nou atribut de grups"
         rename_groups: "Reanomena els atributs de grups"
-      project_filters:
-        description_html: "Filtrar i ordenar camps personalitzats és una extensió de l'edició Enterprise."
   enumeration_activities: "Activitats de rastrejament del temps"
   enumeration_work_package_priorities: "Prioritats dels paquets de treball"
   enumeration_reported_project_statuses: "Estats de projecte notificats"
@@ -1778,6 +1784,7 @@ ca:
   error_pdf_export_too_many_columns: "Masses columnes seleccionades per a l'exportació PDF. Si us plau, redueix el nombre de columnes."
   error_pdf_failed_to_export: "No s'ha pogut guardar l'exportació PDF: %{error}"
   error_token_authenticity: "No s'ha pogut verificar el token de \"Cross-Site Request Forgery\". Has provat de sotmetre les dades en múltiples navegadors o pestanyes? Si us plau, tanca totes les pestanyes i prova-ho de nou."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "El paquet de treball no s'ha trobat o no pertany a aquest projecte"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "ha de ser membre del projecte"
@@ -2071,6 +2078,7 @@ ca:
       responsible: "Responsable"
       shared: "Compartida"
       watched: "Observador"
+      reminder: "Reminder"
     facets:
       unread: "Sense llegir"
       unread_title: "Mostrar no llegits"
@@ -2241,6 +2249,7 @@ ca:
   label_delete: "Delete"
   label_deleted: "suprimit"
   label_deleted_custom_field: "(camp personalitzat suprimit)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opció eliminada)"
   label_empty_element: "(buit)"
   label_missing_or_hidden_custom_option: "(valor absent o manca de permisos per accedir)"
@@ -2277,7 +2286,6 @@ ca:
   label_enterprise_active_users: "%{current}/%{limit} usuaris actius registrats"
   label_enterprise_edition: "Edició Enterprise."
   label_enterprise_support: "Suport Enterprise"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Entorn"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "és"
@@ -2626,6 +2634,7 @@ ca:
   label_this_month: "aquest més"
   label_this_week: "aquesta setmana"
   label_this_year: "aquest any"
+  label_time: "Time"
   label_time_entry_plural: "Temps utilitzat"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Títol"
@@ -3772,6 +3781,12 @@ ca:
       edit_description: "Can view, comment and edit this work package."
       view: "Mostra"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

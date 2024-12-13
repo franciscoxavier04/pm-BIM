@@ -653,6 +653,8 @@ sv:
         new_notifications:
           message: "There are new notifications."
           link_text: "Click here to load them."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'You can modify your <a target="_blank" href="%{url}">notification settings</a> to ensure you never miss an important update.'
         title: "Notification settings"
@@ -1043,6 +1045,12 @@ sv:
           not_found: "Det finns ingen sådan vy"
           duplicate_query_title: "Namnet på denna vy finns redan. Ändra ändå?"
         text_no_results: "Inga matchande vyer hittades."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "The dates of this work package are automatically deduced from its children. Activate 'Manual scheduling' to set the dates."
         is_switched_from_manual_to_automatic: "The dates of this work package may need to be recalculated after switching from manual to automatic scheduling due to relationships with other work packages."

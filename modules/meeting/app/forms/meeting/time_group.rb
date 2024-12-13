@@ -35,11 +35,13 @@ class Meeting::TimeGroup < ApplicationForm
         name: :start_date,
         type: "date",
         value: @initial_date,
-        placeholder: Meeting.human_attribute_name(:start_date),
-        label: Meeting.human_attribute_name(:start_date),
-        leading_visual: { icon: :calendar },
+        placeholder: @meeting.class.human_attribute_name(:start_date),
+        label: @meeting.class.human_attribute_name(:start_date),
         required: true,
-        autofocus: false
+        autofocus: false,
+        data: {
+          action: "input->recurring-meetings--form#updateFrequencyText"
+        }
       )
 
       group.text_field(
@@ -48,9 +50,25 @@ class Meeting::TimeGroup < ApplicationForm
         value: @initial_time,
         placeholder: Meeting.human_attribute_name(:start_time),
         label: Meeting.human_attribute_name(:start_time),
-        leading_visual: { icon: :clock },
         required: true,
-        caption: formatted_time_zone_offset
+        caption: formatted_time_zone_offset,
+        data: {
+          action: "input->recurring-meetings--form#updateFrequencyText"
+        }
+      )
+      group.text_field(
+        name: :duration,
+        type: :text,
+        value: @duration,
+        placeholder: Meeting.human_attribute_name(:duration),
+        label: Meeting.human_attribute_name(:duration),
+        visually_hide_label: false,
+        required: true,
+        caption: I18n.t("text_in_hours"),
+        data: {
+          controller: "chronic-duration",
+          application_target: "dynamic"
+        }
       )
     end
   end
@@ -58,7 +76,21 @@ class Meeting::TimeGroup < ApplicationForm
   def initialize(meeting:)
     super()
 
+    @meeting = meeting
     @initial_time = meeting.start_time_hour.presence || format_time(meeting.start_time, include_date: false, format: "%H:%M")
     @initial_date = meeting.start_date.presence || format_time_as_date(meeting.start_time, format: "%Y-%m-%d")
+
+    duration = duration_value(meeting)
+    @duration = duration.nil? ? "" : ChronicDuration.output(duration * 3600, format: :hours_only)
+  end
+
+  private
+
+  def duration_value(meeting)
+    if meeting.is_a?(RecurringMeeting) && meeting.template
+      meeting.template.duration
+    else
+      meeting.duration
+    end
   end
 end
