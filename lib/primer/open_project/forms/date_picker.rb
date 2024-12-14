@@ -9,6 +9,8 @@ module Primer
 
         def initialize(input:, datepicker_options:)
           super(input:)
+
+          @field_wrap_arguments[:invalid] = true if @input.invalid?
           @datepicker_options = datepicker_options
         end
       end
