@@ -93,7 +93,7 @@ ro:
         name: Custom
       upsale:
         description: Connect OpenProject to an OpenID connect identity provider
-      label_add_new: Adăugare stare nouă
+      label_add_new: Adaugă stare nouă
       label_edit: Editați furnizorul OpenID %{name}
       label_empty_title: No OpenID providers configured yet.
       label_empty_description: Add a provider to see them here.

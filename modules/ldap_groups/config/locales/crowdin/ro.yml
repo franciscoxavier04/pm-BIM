@@ -47,7 +47,7 @@ ro:
         base_dn_text: >
           Introduceți DN-ul de bază de căutare care urmează să fie utilizat pentru acest filtru. Acesta trebuie să fie sub DN de bază al conexiunii LDAP selectate. Lăsați această opțiune goală pentru a reutiliza DN-ul de bază al conexiunii
     synchronized_groups:
-      add_new: 'Adăugarea de noi grupuri de atribute'
+      add_new: 'Adaugă grup LDAP sincronizat'
       destroy:
         title: 'Îndepărtați grupul sincronizat %{name}'
         confirmation: "Dacă continuați, grupul sincronizat %{name} și toți utilizatorii %{users_count} sincronizați prin intermediul acestuia vor fi eliminați."

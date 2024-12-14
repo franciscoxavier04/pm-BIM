@@ -60,7 +60,7 @@ zh-CN:
         invalid_time_format: "不是有效时间。所需格式：HH:MM"
     models:
       recurring_meeting: "定期会议"
-      structured_meeting: "One-time meeting"
+      structured_meeting: "一次性会议"
       meeting_agenda_item: "议程项目"
       meeting_agenda: "议程"
       meeting_minutes: "会议记录"
@@ -94,7 +94,7 @@ zh-CN:
   label_meeting: "会议"
   label_meeting_plural: "会议"
   label_meeting_new: "新增会议"
-  label_meeting_new_dynamic: "New one-time meeting"
+  label_meeting_new_dynamic: "新的一次性会议"
   label_meeting_new_recurring: "新的定期会议"
   label_meeting_create: "创建会议"
   label_meeting_copy: "复制会议"
@@ -183,11 +183,11 @@ zh-CN:
     label_mail_all_participants: "发送电子邮件给所有参与者"
     types:
       classic: "经典"
-      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
-      structured: "One-time"
+      classic_text: "将您的会议组织成一个单一格式的文本议程和协议。"
+      structured: "一次性"
       recurring: "定期"
-      recurring_text: "Create meeting series with dynamic template for each occurrence."
-      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
+      recurring_text: "为每次事件创建带有动态模板的会议系列。"
+      structured_text: "将您的会议组织成一个动态的议程项目列表，并可选地将它们链接到一个工作包。"
       structured_text_copy: "目前复制会议不会复制相关会议的议程项目，只会复制会议的详细信息。"
     copied: "从会议 #%{id} 复制"
   meeting_section:

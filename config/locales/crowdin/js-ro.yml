@@ -197,8 +197,8 @@ ro:
         custom_field: "Câmp personalizat"
         inactive: "Inactiv"
         drag_to_activate: "Mutați câmpuri de aici pentru a le activa"
-        add_group: "Adăugarea de noi grupuri de atribute"
-        add_table: "Adăugare pachet de lucru asociat"
+        add_group: "Adaugă grup atribut"
+        add_table: "Adaugă pachet de lucru asociat"
         edit_query: "Editare query"
         new_group: "Grupare nouă"
         reset_to_defaults: "Resetare AVATAR implicit"
@@ -376,7 +376,7 @@ ro:
     label_add_column_after: "Adaugă coloană după"
     label_add_column_before: "Adaugă coloană înainte"
     label_add_columns: "Adaugă coloane"
-    label_add_comment: "Adăugare comentariu"
+    label_add_comment: "Adaugă comentariu"
     label_add_comment_title: "Comentează și tastează @ pentru a notifica alte persoane"
     label_add_row_after: "Adauga un rand dupa"
     label_add_row_before: "Adauga un rand inainte"
@@ -715,7 +715,7 @@ ro:
       default: "-"
       subject: "Introduceţi subiectul aici"
       selection: "Te rog selectează"
-      description: "Descriere: Clic pentru a edita..."
+      description: "Descriere: Clic pentru editare ..."
       relation_description: "Clic pentru a adăuga o descriere pentru această relație"
     project:
       required_outside_context: >
@@ -753,7 +753,7 @@ ro:
           forum_messages: "Mesaje noi pe forum"
           wiki_page_added: "Pagină wiki adăugată"
           wiki_page_updated: "Pagină wiki actualizată"
-          membership_added: "Adăugarea de membri"
+          membership_added: "Adaugă membri"
           membership_updated: "Membrii actualizați"
         title: "E-mail memento-uri"
         pause:
@@ -795,7 +795,7 @@ ro:
       label_loading: se încarcă observatorii...
       label_error_loading: A apărut o eroare în timpul încărcării observatorilor
       label_search_watchers: Caută observator
-      label_add: Adăugare observatori
+      label_add: Adaugă observatori
       label_discard: Renunțare la selecţie
       typeahead_placeholder: Căutarea de posibili observatori
     relation_labels:
@@ -832,7 +832,7 @@ ro:
       add_existing_child: "Adaugă copil existent"
       remove_child: "Elimină copil"
       add_new_relation: "Crează o nouă relație"
-      add_existing_relation: "Adăugarea unei relații existente"
+      add_existing_relation: "Adaugă relație existentă"
       update_description: "Setează sau actualizează descrierea acestei relații"
       toggle_description: "Comută descrierea relației"
       update_relation: "Clic pentru a schimba tipul de legătură"
@@ -906,9 +906,9 @@ ro:
       confirm_edit_cancel: "Sunteți sigur că doriți să renunțați la editarea pachetului de lucru?"
       datepicker_modal:
         automatically_scheduled_parent: "Programat automat. Datele sunt derivate din relații."
-        manually_scheduled: "Programarea manuală activată, toate relațiile ignorate."
+        manually_scheduled: "Programare manuală activată, toate relațiile ignorate."
         start_date_limited_by_relations: "Datele de început disponibile și de încheiere sunt limitate de relații."
-        changing_dates_affects_follow_relations: "Modificarea acestor date va afecta datele pachetelor de lucru aferente."
+        changing_dates_affects_follow_relations: "Modificarea acestor dăți va afecta dățile pachetelor de lucru aferente."
         click_on_show_relations_to_open_gantt: 'Faceți clic pe "%{button_name}" pentru o prezentare generală a GANTT.'
         show_relations: "Arată relațiile"
         ignore_non_working_days:
@@ -921,7 +921,7 @@ ro:
       key_value: "%{key}: %{value}"
       label_enable_multi_select: "Activare selecție multiplă"
       label_disable_multi_select: "Dezactivare selecție multiplă"
-      label_filter_add: "Adăugare filtru"
+      label_filter_add: "Adaugă filtru"
       label_filter_by_text: "Filtreaza dupa text"
       label_options: "Opțiuni"
       label_column_multiselect: "Câmp desfășurat combinat: selectaţi cu săgețile, confirmați alegerea cu enter, ştergeţi cu backspace"
@@ -1315,7 +1315,7 @@ ro:
       apply: "Aplică"
       header_description: "Evidențiază modificările făcute la această listă de la orice punct din trecut."
       enterprise_header_description: "Highlight changes made to this list since any point in the past with Enterprise edition."
-      show_changes_since: "Arată modificările din"
+      show_changes_since: "Arată modificările"
       baseline_comparison: "Comparație referință"
       help_description: "Zona orară de referință"
       time_description: "În timpul tău local: %{datetime}"
@@ -1324,11 +1324,11 @@ ro:
       to: "La"
       drop_down:
         none: "-"
-        yesterday: "ieri"
-        last_working_day: "ultima zi lucrătoare"
-        last_week: "săptămâna trecută"
-        last_month: "luna trecută"
-        a_specific_date: "o anumită dată"
+        yesterday: "de ieri"
+        last_working_day: "de la ultima zi lucrătoare"
+        last_week: "de săptămâna trecută"
+        last_month: "de luna trecută"
+        a_specific_date: "de la o anumită dată"
         between_two_specific_dates: "între două dăți specifice"
       legends:
         changes_since: "Modificări de la"

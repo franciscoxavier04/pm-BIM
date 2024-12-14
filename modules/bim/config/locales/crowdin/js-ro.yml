@@ -25,5 +25,5 @@ ro:
         split: 'Vizualizator și tabel'
         split_cards: 'Vizualizator și carduri'
     revit:
-      revit_add_in: "Adăugare Revit"
+      revit_add_in: "Supliment Revit"
       revit_add_in_settings: "Setări Revit Add-In"

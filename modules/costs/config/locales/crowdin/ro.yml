@@ -64,7 +64,7 @@ ro:
     units: "Unități"
     valid_from: "Valabil de la"
     fixed_date: "Dată fixă"
-  button_add_rate: "Adăugare preţ"
+  button_add_rate: "Adaugă preț"
   button_log_costs: "Costurile unitare ale buștenilor"
   caption_booked_on_project: "Rezervat pe proiect"
   caption_default: "Implicit"
