@@ -218,7 +218,7 @@ ro:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Pentru toate proiectele
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -247,17 +247,17 @@ ro:
     enabled_in_project: "Activat/ă în proiect"
     contained_in_type: "Înclusă în tipul"
     confirm_destroy_option: "Ștergerea unei opțiuni va șterge toate aparițiile acesteia (de exemplu, în pachetele de lucru). Sunteți sigur că doriți să o ștergeți?"
-    reorder_alphabetical: "Reordonați valorile în ordine alfabetică"
+    reorder_alphabetical: "Reordonează valorile alfabetic"
     reorder_confirmation: "Avertisment: Ordinea curentă a valorilor disponibile se va pierde. Continuați?"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
-      is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
+      is_required_for_project: "Bifează pentru a activa acest atribut și a-l face obligatoriu în toate proiectele. Nu poate fi dezactivat pentru proiecte individuale."
       is_for_all: "Mark the custom field as available in all existing and new projects."
-      multi_select: "Allows the user to assign multiple values to this custom field."
+      multi_select: "Permite utilizatorului să atribuie valori multiple acestui câmp personalizat."
       searchable: "Include valorile câmpului atunci când utilizezi funcționalitatea globală de căutare."
       searchable_for_project: "Bifează pentru a face acest atribut disponibil sub formă de filtru în listele de proiecte."
       editable: "Allow the field to be editable by users themselves."
-      admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
+      admin_only: "Bifează pentru a face acest atribut vizibil doar administratorilor. Utilizatorii fără drepturi de administrator nu vor putea vedea sau edita acest atribut"
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
     tab:
@@ -362,12 +362,12 @@ ro:
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
-          remove_from_project: "Remove from project"
-          label_enable_all: "Enable all"
-          label_disable_all: "Disable all"
+          remove_from_project: "Elimină din proiect"
+          label_enable_all: "Activează tot"
+          label_disable_all: "Dezactivează tot"
         is_required_blank_slate:
-          heading: Required in all projects
-          description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
+          heading: Obligatoriu în toate proiectele
+          description: Acest atribut de proiect este activat în toate proiectele deoarece opțiunea "Obligatoriu în toate proiectele" este bifată. Acesta nu poate fi dezactivat pentru proiecte individuale.
       types:
         no_results_title_text: În acest moment nu există tipuri disponibile.
         form:
@@ -395,7 +395,7 @@ ro:
   members:
     index:
       no_results_title_text: În acest moment nu există niciun participant la acest proiect.
-      no_results_content_text: Adăugare participant la proiect
+      no_results_content_text: Adaugă participant la proiect
     invite_by_mail: "Trimite invitația la %{mail}"
     send_invite_to: "Send invite to"
     columns:
@@ -484,7 +484,7 @@ ro:
   news:
     index:
       no_results_title_text: În acest moment nu există știri de raportat.
-      no_results_content_text: Adăugare știre nouă
+      no_results_content_text: Adaugă știre nouă
   users:
     autologins:
       prompt: "Stay logged in for %{num_days}"
@@ -539,7 +539,7 @@ ro:
   reportings:
     index:
       no_results_title_text: În acest moment nu există rapoarte de stare.
-      no_results_content_text: Adăugare raport de stare
+      no_results_content_text: Adaugă raport de stare
   statuses:
     edit:
       status_color_text: |
@@ -561,7 +561,7 @@ ro:
         <strong>Notă</strong>: Valorile moștenite (de exemplu, de la copii sau relații) se vor aplica în continuare.
     index:
       no_results_title_text: În acest moment nu există stări pentru pachetele de lucru.
-      no_results_content_text: Adăugare stare nouă
+      no_results_content_text: Adaugă stare nouă
       headers:
         is_default: "Implicit"
         is_closed: "Închis"
@@ -579,7 +579,7 @@ ro:
       settings: "Setări"
       form_configuration: "Configurare formular"
       more_info_text_html: >
-        Ediția Enterprise vă permite să personalizați configurația formularului cu aceste suplimente suplimentare: <br> <ul class="%{list_styling_class}"> <li><b>Adăugarea de noi grupuri de atribute</b></li> <li><b>Redenumirea grupurilor de atribute</b></li> <li><b>Adăugați un tabel cu pachetele de lucru aferente</b></li> </ul>
+        Ediția Enterprise îți permite să personalizezi configurația formularului cu aceste suplimente: <br> <ul class="%{list_styling_class}"> <li><b>Adăugarea de noi grupuri de atribute</b></li> <li><b>Redenumirea grupurilor de atribute</b></li> <li><b>Adaugă un tabel cu pachetele de lucru aferente</b></li> </ul>
       projects: "Proiecte"
       enabled_projects: "Proiecte activate"
       edit_query: "Editează tabelul"
@@ -597,7 +597,7 @@ ro:
     no_results_title_text: În acest moment nu există pagini wiki.
     print_hint: Aceasta va afișa conținutul acestei pagini wiki fără bare de navigare.
     index:
-      no_results_content_text: Adăugare pagină wiki nouă
+      no_results_content_text: Adaugă pagină wiki nouă
   work_flows:
     index:
       no_results_title_text: În acest moment nu există fluxuri de lucru.
@@ -644,10 +644,10 @@ ro:
           no_results_title_text: În acest moment nu există versiuni disponibile.
   work_package_relations_tab:
     index:
-      action_bar_title: "Add relations to other work packages to create a link between them."
-      no_results_title_text: There are currently no relations available.
+      action_bar_title: "Adaugă relații la alte pachete de lucru pentru a crea o legătură între ele."
+      no_results_title_text: Momentan nu există relaţii disponibile.
       blankslate_heading: "Fără relații"
-      blankslate_description: "This work package does not have any relations yet."
+      blankslate_description: "Acest pachet de lucru nu are încă o relație."
     label_add_x: "Adaugă %{x}"
     label_edit_x: "Editează %{x}"
     label_add_description: "Add description"
@@ -666,7 +666,7 @@ ro:
       follows_description: "Pachetul de lucru asociat trebuie neapărat să înceapă după finalizarea acestuia"
       label_child_singular: "copil"
       label_child_plural: "copii"
-      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      child_description: "Face din pachetul de lucru asociat un subelement al pachetului de lucru actual (părinte)"
       label_blocks_singular: "blochează"
       label_blocks_plural: "blochează"
       blocks_description: "Pachetul de lucru asociat nu poate fi închis până când acesta nu este închis mai întâi"
@@ -693,13 +693,13 @@ ro:
       label_part_of_singular: "parte din"
       label_part_of_plural: "parte din"
       partof_description: "Marchează pachetul de lucru asociat ca incluzând acesta, fără niciun efect suplimentar"
-      part_of_description: "Marks the related work package as being part of this one with no additional effect"
+      part_of_description: "Marchează pachetul de lucru asociat ca făcând parte din acesta fără niciun efect suplimentar"
       label_requires_singular: "requires"
       label_requires_plural: "requires"
-      requires_description: "Marks the related work package as a requirement to this one"
+      requires_description: "Marchează pachetul de lucru asociat ca o cerință pentru acesta"
       label_required_singular: "required by"
       label_required_plural: "required by"
-      required_description: "Marks this work package as being a requirement to the related one"
+      required_description: "Marchează acest pachet de lucru ca fiind o cerință pentru cel asociat"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
   label_invitation: Invitație
@@ -762,15 +762,15 @@ ro:
         editable: "Editabil"
         field_format: "Format"
         is_filter: "Folosit ca filtru"
-        is_for_all: "For all projects"
+        is_for_all: "Pentru toate proiectele"
         is_required: "Obligatoriu"
         max_length: "Lungime maximă"
         min_length: "Lungime minimă"
-        multi_value: "Permiteți selecția multiplă"
+        multi_value: "Permite selecție multiplă"
         possible_values: "Valori posibile"
         regexp: "Expresie regulată"
         searchable: "Permite căutare"
-        admin_only: "Admin-only"
+        admin_only: "Doar administratorii"
       custom_value:
         value: "Valoare"
       doorkeeper/application:
@@ -842,7 +842,7 @@ ro:
         versions: "Versiuni"
         work_packages: "Pachete de lucru"
       project_custom_field:
-        is_required: "Required for all projects"
+        is_required: "Obligatoriu în toate proiectele"
         custom_field_section: Secțiune
       query:
         column_names: "Coloane"
@@ -1489,13 +1489,13 @@ ro:
       backup_pending: Deja există un backup în procesare.
       limit_reached: Puteţi face doar %{limit} copii de rezervă pe zi.
   button_actions: "Acțiuni"
-  button_add: "Adăugare"
+  button_add: "Adaugă"
   button_add_comment: "Adăugă comentariu"
   button_add_item_above: "Add item above"
   button_add_item_below: "Add item below"
   button_add_sub_item: "Add sub-item"
-  button_add_member: Adăugare participant
-  button_add_watcher: "Adăugare observator"
+  button_add_member: Adaugă participant
+  button_add_watcher: "Adaugă observator"
   button_annotate: "Adnotare"
   button_apply: "Aplică"
   button_archive: "Arhivează"
@@ -1562,7 +1562,7 @@ ro:
   button_view: "Vizualizare"
   button_watch: "Monitorizare"
   button_manage_menu_entry: "Configurare meniu"
-  button_add_menu_entry: "Adăugare meniu"
+  button_add_menu_entry: "Adaugă meniu"
   button_configure_menu_entry: "Configurare meniu"
   button_delete_menu_entry: "Șterge element meniu"
   button_view_shared_work_packages: "Vezi pachetele de lucru partajate"
@@ -1772,7 +1772,7 @@ ro:
     upsale:
       form_configuration:
         description: "Personalizați configurația formularului cu aceste add-on-uri suplimentare:"
-        add_groups: "Adăugarea de noi grupuri de atribute"
+        add_groups: "Adaugă noi grupuri de atribut"
         rename_groups: "Redenumirea grupurilor de atribute"
       project_filters:
         description_html: "Filtrarea și sortarea pe câmpuri personalizate este un supliment al ediției Enterprise."
@@ -2052,7 +2052,7 @@ ro:
       aggregation: "Agregare"
       api_and_webhooks: "API și webhook-uri"
     quick_add:
-      label: "Deschideți meniul de adăugare rapidă"
+      label: "Deschide meniul adăugare rapidă"
     breadcrumb:
       nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
@@ -2125,13 +2125,13 @@ ro:
   label_activate_user: "Activați utilizatorul"
   label_active_in_new_projects: "Activ în proiecte noi"
   label_activity: "Activitate"
-  label_add_edit_translations: "Adăugare și editare traduceri"
-  label_add_another_file: "Adăugare alt fișier"
+  label_add_edit_translations: "Adaugă și editează traduceri"
+  label_add_another_file: "Adaugă alt fișier"
   label_add_columns: "Adaugă coloanele selectate"
-  label_add_note: "Adăugare notă"
+  label_add_note: "Adaugă notă"
   label_add_projects: "Adaugă proiecte"
-  label_add_related_work_packages: "Adăugare pachet de lucru asociat"
-  label_add_subtask: "Adăugare sub-activitate"
+  label_add_related_work_packages: "Adaugă pachet de lucru asociat"
+  label_add_subtask: "Adaugă sub-sarcină"
   label_added: "adăugat"
   label_added_by: "Adăugat de %{author}"
   label_added_time_by: "Adăugat de %{author} acum %{age}"
@@ -2229,7 +2229,7 @@ ro:
   label_collapse: "Restrângere"
   label_collapsed_click_to_show: "S-a restrâns. Clic pentru a afișa"
   label_configuration: configurație
-  label_comment_add: "Adăugare comentariu"
+  label_comment_add: "Adaugă un comentariu"
   label_comment_added: "Comentariu adăugat"
   label_comment_delete: "Ştergere comentarii"
   label_comment_plural: "Comentarii"
@@ -2330,7 +2330,7 @@ ro:
   label_feeds_access_key_type: "RSS"
   label_file_plural: "Fișiere"
   label_filter: "Filtre"
-  label_filter_add: "Adăugare filtru"
+  label_filter_add: "Adaugă filtru"
   label_filter_by: "Filtrează după"
   label_filter_plural: "Filtre"
   label_filters_toggle: "Arată/ascunde filtre"
@@ -2472,7 +2472,7 @@ ro:
   label_news_added: "Noutăți adăugate"
   label_news_comment_added: "Comentariu adăugat la noutăți"
   label_news_latest: "Ultimele noutăți"
-  label_news_new: "Adăugare noutăți"
+  label_news_new: "Adaugă noutăți"
   label_news_edit: "Editare noutăți"
   label_news_plural: "Noutăți"
   label_news_view_all: "Afișează toate știrile"
@@ -2533,7 +2533,7 @@ ro:
   label_previous: "Înapoi"
   label_previous_week: "Săptămâna trecută"
   label_principal_invite_via_email: " sau invită utilizatori folosind email"
-  label_principal_search: "Adăugare utilizatori sau grupuri existenți"
+  label_principal_search: "Adaugă utilizatori sau grupuri existente"
   label_privacy_policy: "Politica privind confidențialitatea și securitatea datelor"
   label_product_version: "Versiune produs"
   label_profile: "Profil"
@@ -2548,7 +2548,7 @@ ro:
   label_project_latest: "Ultimele proiecte"
   label_project_default_type: "Tip gol permis"
   label_project_hierarchy: "Ierarhie de proiecte"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Proiecte"
   label_project_new: "Proiect nou"
   label_project_plural: "Proiecte"
   label_project_list_plural: "Listă proiecte"
@@ -3034,10 +3034,10 @@ ro:
     text_getting_started_description: "Obțineți o imagine de ansamblu rapidă a gestionării proiectelor și a colaborării în echipă cu OpenProject. Puteți reporni acest videoclip din meniul de ajutor."
     welcome: "Bun venit la %{app_title}"
     select_language: "Te rog selectează limba"
-  permission_add_work_package_notes: "Adăugare note"
-  permission_add_work_packages: "Adăugare pachete de lucru"
+  permission_add_work_package_notes: "Adaugă note"
+  permission_add_work_packages: "Adaugă pachete de lucru"
   permission_add_messages: "Publicare mesaje"
-  permission_add_project: "Create projects"
+  permission_add_project: "Creează proiecte"
   permission_add_work_package_attachments: "Adaugă fișiere"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
   permission_archive_project: "Arhivare proiect"
@@ -3045,7 +3045,7 @@ ro:
   permission_manage_user: "Editează utilizatori"
   permission_manage_placeholder_user: "Creați, editați și ștergeți utilizatori de tip placeholder"
   permission_add_subprojects: "Creează subproiecte"
-  permission_add_work_package_watchers: "Adăugare observatori"
+  permission_add_work_package_watchers: "Adaugă observatori"
   permission_assign_versions: "Atribuiți versiuni"
   permission_browse_repository: "Acces doar citire la repo (vizualizare și descărcare)"
   permission_change_wiki_parent_page: "Schimbare pagina wiki părinte"
@@ -3155,9 +3155,9 @@ ro:
       are_you_sure: "Sunteţi sigur că doriţi să arhivaţi proiectul '%{name}'?"
       archived: "Arhivat"
     count:
-      zero: "0 Projects"
+      zero: "0 proiecte"
       one: "1 Project"
-      other: "%{count} Projects"
+      other: "%{count} proiecte"
   project_module_activity: "Activitate"
   project_module_forums: "Forumuri"
   project_module_work_package_tracking: "Pachete de lucru"
@@ -3512,10 +3512,10 @@ ro:
       label_project_custom_field_actions: "Project attribute actions"
       label_no_project_custom_fields: "No project attributes defined in this section"
       edit:
-        description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+        description: "Modificările la acest atribut al proiectului se vor reflecta în toate proiectele în care este activată. Atributele necesare nu pot fi dezactivate pentru fiecare proiect."
       new:
         heading: "New attribute"
-        description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+        description: "Modificările la acest atribut al proiectului se vor reflecta în toate proiectele în care este activată. Atributele necesare nu pot fi dezactivate pentru fiecare proiect."
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Setări pentru proiecte noi"
