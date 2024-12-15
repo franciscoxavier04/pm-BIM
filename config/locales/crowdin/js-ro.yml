@@ -45,14 +45,14 @@ ro:
       remove: "Elimină ”%{name}”"
       active: "Activ %{label} %{name}"
     backup:
-      attachments_disabled: Atașamentele nu pot fi incluse deoarece depășesc dimensiunea maximă permisă. Puteți schimba acest lucru prin configurare (necesită o repornire a serverului).
+      attachments_disabled: Atașamentele nu pot fi incluse deoarece depășesc dimensiunea maximă permisă. Poți schimba acest lucru prin configurare (necesită o repornire a serverului).
       info: >
-        Poți declanșa un backup de aici. Procesul poate dura ceva timp în funcție mărimea datelor (mai ales atașamentele) pe care le ai. Vei primi un e-mail de îndată ce este gata.
+        Poți declanșa o copie de rezervă aici. Procesul poate dura ceva timp în funcție de mărimea datelor (mai ales atașamentele) pe care le ai. Vei primi un e-mail de îndată ce este gata.
       note: >
-        Un backup nou va înlocui orice backup anterior. Se poate solicita doar un număr limitat de backup-uri pe zi.
-      last_backup: Ultimul backup
-      last_backup_from: 'Ultimul backup: '
-      title: Backup OpenProject
+        O nouă copie de rezervă va înlocui orice copie de rezervă anterioară. Se poate solicita doar un număr limitat de copii de rezervă pe zi.
+      last_backup: Ultima copie de rezervă
+      last_backup_from: Ultima copie de rezervă
+      title: Copie de rezervă OpenProject
       options: Opțiuni
       include_attachments: Include atașamente
       download_backup: Descarcă backup
@@ -87,7 +87,7 @@ ro:
     button_advanced_filter: "Filtru avansat"
     button_list_view: "Vizualizare listă"
     button_show_view: "Vizualizare pe tot ecranul"
-    button_log_time: "Consum timp"
+    button_log_time: "Înregistrare timp"
     button_more: "Mai mult"
     button_open_details: "Deschidere vizualizare detaliată"
     button_close_details: "Închideţi fereastra cu detalii"
@@ -167,7 +167,7 @@ ro:
           button: "Inserați fragmentul de cod"
           title: "Inserați/Editați fragmentul de cod"
           language: "Limbaj de formatare"
-          language_hint: "Introduceți limbajul de formatare care va fi utilizat pentru evidențiere (dacă există suport pentru acesta)."
+          language_hint: "Introdu limbajul de formatare care va fi utilizat pentru evidențiere (dacă există suport pentru acesta)."
         dropdown:
           macros: "Macro"
           chose_macro: "Alegeți macro"
@@ -370,7 +370,7 @@ ro:
       token_name_description_text: 'If you subscribe to this calendar from multiple devices, this name will help you distinguish between them in your <a href="my/access_token", target="_blank">access tokens</a> list.'
       copy_url_label: "Copiază URL"
       ical_generation_error_text: "An error occured while generating the calendar URL."
-      success_message: 'The URL "%{name}" was successfully copied to your clipboard. Paste it in your calendar client to complete the subscription.'
+      success_message: 'URL-ul "%{name}" a fost copiat cu succes în clipboard-ul tău. Lipiți-l în clientul calendar pentru a finaliza abonamentul.'
     label_activate: "Activare"
     label_assignee: "Executant"
     label_add_column_after: "Adaugă coloană după"
@@ -593,7 +593,7 @@ ro:
           toggler: "Acum să ne uităm la secțiunea <b>Pachet de lucru</b>, care vă oferă o vizualizare mai detaliată a activității dumneavoastră."
           list: "Acest pachet <b>de lucru</b> oferă o listă a tuturor activităților din proiectul tău, cum ar fi sarcini, jaloane, faze și altele. <br> Pachetele de lucru pot fi create și editate direct din acest punct de vedere. Pentru a accesa detaliile unui anumit pachet de lucru, faceți dublu clic pe rând."
           full_view: "Vizualizarea <b>pentru detaliile pachetului de lucru</b> furnizează toate informațiile relevante referitoare la un anumit pachet de lucru, cum ar fi descrierea, starea, prioritatea, activitățile, dependențele si comentariile."
-          back_button: "Utilizați săgeata de întoarcere din colțul din stânga sus pentru a ieși și pentru a reveni la lista pachetelor de lucru."
+          back_button: "Utilizează săgeata de întoarcere din colțul din stânga sus pentru a ieși și pentru a reveni la lista pachetelor de lucru."
           create_button: "Butonul <b>Creează</b> va adăuga un nou pachet de lucru la proiectul tău."
           gantt_menu: "Create project schedules and timelines effortlessly using the Gantt chart module."
           timeline: "Aici puteţi <b>edita planul de proiect</b>, crea noi pachete de lucru, cum ar fi sarcini, repere de etapă, faze și multe altele, precum și <b>adaugă dependențe</b>. Toți membrii echipei pot vedea și actualiza cel mai recent plan în orice moment."
@@ -777,7 +777,7 @@ ro:
         settings: "Setări"
     time_entry:
       work_package_required: "Necesită să se selecteze mai întâi un pachet de lucru."
-      title: "Consum timp"
+      title: "Registru timp"
       tracking: "Monitorizare efort"
       stop: "Stop"
     timer:
@@ -896,7 +896,7 @@ ro:
         edit: "Editează mai multe elemente"
         copy: "Copiază mai multe elemente"
         delete: "Șterge mai multe element"
-      button_clear: "Inițializare"
+      button_clear: "Șterge"
       comment_added: "Comentariul a fost adăugat cu succes."
       comment_send_failed: "A apărut o eroare. Comentariul nu a putut fi salvat."
       comment_updated: "Comentariul a fost actualizat cu succes."
@@ -1302,7 +1302,7 @@ ro:
       no_results: "Niciun proiect nu corespunde criteriilor de căutare."
     baseline:
       toggle_title: "Referință"
-      clear: "Golire"
+      clear: "Șterge"
       apply: "Aplică"
       header_description: "Evidențiază modificările făcute la această listă de la orice punct din trecut."
       enterprise_header_description: "Highlight changes made to this list since any point in the past with Enterprise edition."

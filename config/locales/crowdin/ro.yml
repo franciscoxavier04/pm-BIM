@@ -90,11 +90,11 @@ ro:
         upgrade: "Actualizează acum"
         contact: "Contactați-ne pentru un demo"
       enterprise_info_html: "is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
-      upgrade_info: "Vă rugăm să treceți la un plan plătit pentru a-l activa și a începe să îl utilizați în echipa dumneavoastră."
+      upgrade_info: "Te rog să treci la un plan plătit pentru a-l activa și a începe să îl utilizezi în echipa ta."
     jemalloc_allocator: Jemalloc memory allocator
     journal_aggregation:
       explanation:
-        text: "Acțiunile individuale ale unui utilizator (de exemplu, actualizarea de două ori a unui pachet de lucru) sunt agregate într-o singură acțiune dacă diferența de vârstă dintre ele este mai mică decât intervalul de timp specificat. Acestea vor fi afișate ca o singură acțiune în cadrul aplicației. De asemenea, acest lucru va întârzia notificările cu aceeași perioadă de timp, reducând numărul de e-mailuri trimise și va afecta, de asemenea, întârzierea %{webhook_link}."
+        text: "Acțiunile individuale ale unui utilizator (de exemplu, actualizarea de două ori a unui pachet de lucru) sunt agregate într-o singură acțiune dacă diferența de vechime dintre ele este mai mică decât intervalul de timp specificat. Acestea vor fi afișate ca o singură acțiune în cadrul aplicației. De asemenea, acest lucru va întârzia notificările cu aceeași perioadă de timp, reducând numărul de e-mailuri trimise și va afecta, de asemenea, întârzierea %{webhook_link}."
         link: "webhook"
   announcements:
     show_until: Afişare până la
@@ -138,12 +138,12 @@ ro:
       generic_map: Cheia atributului din LDAP care este mapată pe atributul OpenProject `%{attribute}`
       admin_map_html: "Opțional: Cheia atributului în LDAP care, <strong>dacă este prezentă</strong>, marchează utilizatorul OpenProject ca fiind administrator. Lăsați gol dacă aveți îndoieli."
       system_user_dn_html: |
-        Introduceți DN-ul utilizatorului de sistem utilizat pentru accesul numai pentru citire.
+        Introdu DN-ul utilizatorului de sistem utilizat pentru accesul numai pentru citire.
         <br/>
         Exemplu: uid=openproject,ou=system,dc=example,dc=com
-      system_user_password: Introduceți parola de legătură a utilizatorului de sistem
+      system_user_password: Introdu parola de legătură a utilizatorului de sistem
       base_dn: |
-        Introduceți DN-ul de bază al subarborelui din LDAP în care doriți ca OpenProject să caute utilizatori și grupuri.
+        Introdu DN-ul de bază al subarborelui din LDAP în care vrei ca OpenProject să caute utilizatori și grupuri.
         OpenProject va filtra numai pentru numele de utilizator furnizate în acest subarbore.
         Exemplu: ou=users,dc=example,dc=com
       filter_string: |
@@ -161,7 +161,7 @@ ro:
     system_account: "Contul de sistem"
     system_account_legend: |
       OpenProject necesită acces doar pentru citire printr-un cont de sistem pentru a căuta utilizatori și grupuri în arborele LDAP.
-      Vă rugăm să specificați acreditările de conectare pentru acest utilizator de sistem în secțiunea următoare.
+      Te rog să specifici acreditările de conectare pentru acest utilizator de sistem în secțiunea următoare.
     ldap_details: "Detalii LDAP"
     user_settings: "Lista Mapare Atribute"
     user_settings_legend: |
@@ -172,7 +172,7 @@ ro:
       simple_tls: "LDAPS"
       start_tls: "STARTTLS"
       plain_description: "Deschide o conexiune necriptată la serverul LDAP. Nu se recomandă pentru producție."
-      simple_tls_description: "Utilizați LDAPS. Necesită un port separat pe serverul LDAP. Acest mod este adesea depreciat, recomandăm utilizarea STARTTLS ori de câte ori este posibil."
+      simple_tls_description: "Utilizează LDAPS. Necesită un port separat pe serverul LDAP. Acest mod este adesea depreciat, recomandăm utilizarea STARTTLS ori de câte ori este posibil."
       start_tls_description: "Trimite o comandă STARTTLS după conectarea la portul LDAP standard. Recomandată pentru conexiuni criptate."
       section_more_info_link_html: >
         Această secțiune se referă la securitatea conexiunii acestei surse de autentificare LDAP. Pentru mai multe informații, consultați <a href="%{link}">documentația Net::LDAP</a>.
@@ -180,7 +180,7 @@ ro:
       verify_peer: "Verificarea certificatului SSL"
       verify_peer_description_html: >
         Activează verificarea SSL strictă a lanțului de încredere al certificatului. <br/> <strong>Avertisment:</strong> Debifarea acestei opțiuni dezactivează verificarea SSL a certificatului serverului LDAP. Acest lucru expune conexiunea ta cu Omul în timpul atacurilor din Mijloc.
-      tls_certificate_description: "Dacă certificatul serverului LDAP nu se află în sursele de încredere ale acestui sistem, îl puteți adăuga manual aici. Introduceți un șir de certificate PEM X509."
+      tls_certificate_description: "Dacă certificatul serverului LDAP nu se află în sursele de încredere ale acestui sistem, îl poți adăuga manual aici. Introdu un șir de certificate PEM X509."
   forums:
     show:
       no_results_title_text: În prezent nu există mesaje pentru acest forum.
@@ -302,7 +302,7 @@ ro:
       no_results_title_text: În acest moment nu există proiecte care să facă parte din acest grup.
   incoming_mails:
     ignore_filenames: >
-      Specificați o listă de nume care trebuie ignorate la procesarea atașamentelor pentru mesajele primite (de exemplu, semnături sau pictograme). Introduceți un nume de fișier pe linie.
+      Specifică o listă de nume care trebuie ignorate la procesarea atașamentelor pentru mesajele primite (de exemplu, semnături sau pictograme). Introdu un nume de fișier pe linie.
   projects:
     copy:
       #Contains custom strings for options when copying a project that cannot be found elsewhere.
@@ -516,7 +516,7 @@ ro:
       data_consequences: >
         Toate prezențele utilizatorului de tip "placeholder" (de exemplu, ca destinatar, responsabil sau alte valori de utilizator) vor fi realocate unui cont numit "Utilizator eliminat". Deoarece datele fiecărui cont șters sunt realocate acestui cont, nu va fi posibilă deosebirea datelor create de utilizator de datele unui alt cont șters.
       irreversible: "Această acțiune este ireversibilă"
-      confirmation: "Introduceți numele de utilizator de tip placeholder %{name} pentru a confirma ștergerea."
+      confirmation: "Introdu numele de utilizator de tip placeholder %{name} pentru a confirma ștergerea."
     upsale:
       title: Utilizatori Placeholder
       description: >
@@ -719,8 +719,8 @@ ro:
         other: "Contul va fi şters din sistem. Prin urmare, utilizatorul nu va mai putea accesa aplicația cu credențialele curente. El poate să devină din nou utilizator al aplicației prin mijloacele permise de sistem."
         self: "Contul dumneavoatră va fi şters din sistem. Prin urmare, nu veți mai putea accesa aplicația cu credențialele curente. Puteți deveni din nou utilizator al aplicației prin mijloacele permise de sistem."
       login_verification:
-        other: "Introduceți numele de utilizator %{name} pentru a verifica ștergerea. Odată trimisă, vi se va cere să confirmați parola."
-        self: "Introduceți numele de utilizator %{name} pentru a verifica ștergerea. Odată trimisă, vi se va cere să vă confirmați parola."
+        other: "Introdu numele de utilizator %{name} pentru a verifica ștergerea. Odată trimisă, ți se va cere să confirmi parola."
+        self: "Introdu numele de utilizator %{name} pentru a verifica ștergerea. Odată trimisă, ți se va cere să confirmi parola."
     error_inactive_activation_by_mail: >
       Contul nu a fost încă activat. Pentru a activa contul dumneavoastră, dați click pe link-ul care v-a fost trimis prin e-mail.
     error_inactive_manual_activation: >
@@ -1097,7 +1097,7 @@ ro:
         project_custom_field_project_mapping:
           attributes:
             project_ids:
-              blank: "Selectează un proiect."
+              blank: "Te rog selectează un proiect."
         project/life_cycle_step_definition:
           attributes:
             type:
@@ -1462,22 +1462,22 @@ ro:
     work_package: "Pachet de lucru"
   backup:
     failed: "Copia de rezervă a eșuat"
-    label_backup_token: "Token backup"
-    label_create_token: "Creează token backup"
-    label_delete_token: "Șterge token backup"
-    label_reset_token: "Resetează token backup"
-    label_token_users: "Următorii utilizatori au tokeni de backup activi"
+    label_backup_token: "Token copie de rezervă"
+    label_create_token: "Creează token copie de rezervă"
+    label_delete_token: "Șterge token copie de rezervă"
+    label_reset_token: "Resetează token copie de rezervă"
+    label_token_users: "Următorii utilizatori au tokeni pentru copie de rezervă activi"
     reset_token:
       action_create: Creează
       action_reset: Resetează
-      heading_reset: "Resetează token backup"
-      heading_create: "Creează token backup"
+      heading_reset: "Resetează token copie de rezervă"
+      heading_create: "Creează token copie de rezervă"
       implications: >
-        Activarea backup-urilor va permite oricărui utilizator cu permisiunile necesare și acestui token de backup să descarce o copie de rezervă care conține toate datele acestei instalări OpenProject. Acestea includ datele tuturor celorlalți utilizatori.
+        Activarea copiilor de rezervă va permite oricărui utilizator cu permisiunile necesare și acestui token pentru copii de rezervă să descarce o copie de rezervă care conține toate datele acestei instalări OpenProject. Acestea includ datele tuturor celorlalți utilizatori.
       info: >
-        Va trebui să generezi un token de backup pentru a putea crea o copie de rezervă. De fiecare dată când doriţi să solicitaţi o copie de rezervă va trebui să furnizaţi acest token. Puteți șterge token-ul de backup pentru a dezactiva copiile de rezervă ale acestui utilizator.
+        Va trebui să generezi un token pentru copia de rezervă pentru a putea crea o copie de rezervă. De fiecare dată când vrei să soliciți o copie de rezervă va trebui să furnizezi acest token. Poți șterge token-ul pentru copia de rezervă pentru a dezactiva copiile de rezervă ale acestui utilizator.
       verification: >
-        Introdu %{word} pentru a confirma că vrei să %{action} token-ul de backup.
+        Introdu %{word} pentru a confirma că vrei să %{action} token-ul pentru copia de rezervă.
       verification_word_reset: resetezi
       verification_word_create: creezi
       warning: >
@@ -1505,7 +1505,7 @@ ro:
   button_change_parent_page: "Modificare pagina părinte"
   button_change_password: "Modificare parolă"
   button_check_all: "Selectează tot"
-  button_clear: "Inițializare"
+  button_clear: "Șterge"
   button_click_to_reveal: "Clic pentru a dezvălui"
   button_close: "Închide"
   button_collapse_all: "Restrângere totală"
@@ -2048,7 +2048,7 @@ ro:
   menus:
     admin:
       mail_notification: "Notificări prin e-mail"
-      mails_and_notifications: "Emails and notifications"
+      mails_and_notifications: "E-mailuri și notificări"
       aggregation: "Agregare"
       api_and_webhooks: "API și webhook-uri"
     quick_add:
@@ -2806,7 +2806,7 @@ ro:
       see_in_center: "Vezi comentariul în centrul de notificări"
       settings: "Modificare setări e-mail"
     salutation: "Salut %{user}"
-    salutation_full_name: "Full name"
+    salutation_full_name: "Numele complet"
     work_packages:
       created_at: "Creat la %{timestamp} de %{user} "
       login_to_see_all: "Autentifică-te pentru a vedea toate notificările."
@@ -2900,8 +2900,8 @@ ro:
   mail_body_wiki_page_added: "Pagina de wiki '%{id}' a fost adăugată de %{author}."
   mail_body_wiki_page_updated: "Pagina wiki '%{id}' a fost actualizată de %{author}."
   mail_subject_account_activation_request: "cererea de activare a contului %{value}"
-  mail_subject_backup_ready: "Backup-ul tău este gata"
-  mail_subject_backup_token_reset: "Resetarea token-ului de backup"
+  mail_subject_backup_ready: "Copia ta de rezervă este gata"
+  mail_subject_backup_token_reset: "Resetează token-ul pentru copia de rezervă"
   mail_subject_incoming_email_error: "Un e-mail pe care l-ai trimis la OpenProject nu a putut fi procesat"
   mail_subject_lost_password: "Parola dumneavoastră pentru %{value}"
   mail_subject_register: "Activarea contului dumneavoastră %{value}"
@@ -3055,7 +3055,7 @@ ro:
   permission_commit_access: "Acces de citire/scriere la repo (încărcare)"
   permission_copy_projects: "Copiază proiecte"
   permission_copy_work_packages: "Copierea pachetelor de lucru"
-  permission_create_backup: "Create backups"
+  permission_create_backup: "Creează copie de rezervă"
   permission_delete_work_package_watchers: "Eliminare observatori"
   permission_delete_work_packages: "Ștergere pachete de lucru"
   permission_delete_messages: "Ștergere mesaje"
@@ -3079,8 +3079,8 @@ ro:
   permission_export_work_packages: "Export pachete de lucru"
   permission_export_wiki_pages: "Export pagini wiki"
   permission_list_attachments: "Listare atașamente"
-  permission_log_own_time: "Înregistrarea timpului propriu"
-  permission_log_time: "Timp de înregistrare pentru alți utilizatori"
+  permission_log_own_time: "Înregistrare timp propriu"
+  permission_log_time: "Înregistrare timp pentru alți utilizatori"
   permission_manage_forums: "Gestionare forumuri"
   permission_manage_categories: "Gestionare categorii pachete de lucru"
   permission_manage_dashboards: "Manage dashboards"
@@ -3237,7 +3237,7 @@ ro:
       instructions:
         managed_url: "Aceasta este adresa URL a repo-ului Git gestionat (local)."
         path: >-
-          Specificați calea către depozitul Git local ( de exemplu, %{example_path} ). De asemenea, puteți utiliza depozite la distanță care sunt clonate într-o copie locală utilizând o valoare care începe cu http(s):// sau file://.
+          Specifică calea către depozitul Git local ( de exemplu, %{example_path} ). De asemenea, poți utiliza depozite la distanță care sunt clonate într-o copie locală utilizând o valoare care începe cu http(s):// sau file://.
         path_encoding: "Suprascriere codificare text Git (implicit: UTF-8)"
       local_title: "Legare la repo Git local existent"
       local_url: "URL local"
@@ -3307,10 +3307,10 @@ ro:
     Dacă pagina de documente este activată, puteți obține o vizualizare interactivă a documentației APIv3 la adresa <a href="%{link}" target="_blank">%{link}</a>.
   setting_attachment_whitelist: "Lista albă de încărcare a atașamentelor"
   setting_email_delivery_method: "Metoda de livrare e-mail"
-  setting_emails_salutation: "Address user in emails with"
+  setting_emails_salutation: "Adresează utilizator în e-mailuri cu"
   setting_sendmail_location: "Locația executabilului \"sendmail\""
   setting_smtp_enable_starttls_auto: "Utilizează automat STARTTLS dacă este disponibil"
-  setting_smtp_ssl: "Utilizați conexiunea SSL"
+  setting_smtp_ssl: "Utilizează conexiunea SSL"
   setting_smtp_address: "Server SMTP"
   setting_smtp_port: "Port SMTP"
   setting_smtp_authentication: "Autentificare SMTP"
@@ -3388,7 +3388,7 @@ ro:
   setting_mail_from: "Adresa de e-mail a expeditorului"
   setting_mail_handler_api_key: "Cheie API"
   setting_mail_handler_body_delimiters: "Trunchiere e-mail-uri după una dintre aceste linii"
-  setting_mail_handler_body_delimiter_regex: "Trunchiaţi email-uri care se potrivesc cu acest regex"
+  setting_mail_handler_body_delimiter_regex: "Trunchiază email-uri care se potrivesc cu acest regex"
   setting_mail_handler_ignore_filenames: "Atașamente de e-mail ignorate"
   setting_new_project_user_role_id: "Rol atribuit unui utilizator non-administrator care crează un proiect"
   setting_password_active_rules: "Clase de caractere active"
@@ -3559,7 +3559,7 @@ ro:
   text_comment_wiki_page: "Comentează la pagina wiki: %{page}"
   text_custom_field_possible_values_info: "O linie pentru fiecare valoare"
   text_custom_field_hint_activate_per_project: >
-    Când utilizați câmpuri personalizate: Rețineți că fiecare câmp personalizat trebuie activat individual în cadrul fiecărui proiect.
+    Când utilizezi câmpuri personalizate: Reține că fiecare câmp personalizat trebuie activat individual în cadrul fiecărui proiect.
   text_custom_field_hint_activate_per_project_and_type: >
     Câmpurile personalizate trebuie să fie activate pentru fiecare pachet de lucru și pentru fiecare proiect.
   text_wp_status_read_only_html: >
@@ -4000,7 +4000,7 @@ ro:
         enabled: "Enable this application, allowing users to perform authorization grants with it."
         name: "Numele aplicației dumneavoastră. Acesta va fi afișat celorlalți utilizatori în momentul autorizării."
         redirect_uri_html: >
-          URL-urile permise către care pot fi redirecționați utilizatorii autorizați. O intrare pe linie. <br/> Dacă înregistrați o aplicație desktop, utilizați următoarea adresă URL.
+          URL-urile permise către care pot fi redirecționați utilizatorii autorizați. O intrare pe linie. <br/> Dacă înregistrezi o aplicație desktop, utilizează următoarea adresă URL.
         confidential: "Verificați dacă aplicația va fi utilizată în cazul în care secretul clientului poate fi păstrat confidențial. Aplicațiile mobile native și aplicațiile cu o singură pagină sunt considerate neconfidențiale."
         scopes: "Bifați domeniile la care doriți ca aplicația să acorde acces. Dacă nu se bifează niciun domeniu de aplicare, se presupune api_v3."
         client_credential_user_id: "ID-ul de utilizator opțional pe care trebuie să se substituie atunci când clienții utilizează această aplicație. Lăsați gol pentru a permite doar accesul public"

@@ -25,7 +25,7 @@ ro:
           Unele date %{storageType} nu au putut fi preluate. Încercați să reîncărcați această pagină sau contactați administratorul %{storageType}.
         no_file_links: "Pentru a conecta fișierele la acest pachet de lucru, vă rugăm să le faceți prin intermediul %{storageType}."
         not_logged_in: >
-          Pentru a adăuga un link, vezi sau încarcă fișiere legate de acest pachet de lucru, te rugăm să te autentifici la %{storageType}.
+          Pentru a adăuga un link, vezi sau încarcă fișiere asociate cu acest pachet de lucru, te rog să te autentifici la %{storageType}.
       files:
         already_existing_header: "Acest fișier există deja"
         already_existing_body: >
