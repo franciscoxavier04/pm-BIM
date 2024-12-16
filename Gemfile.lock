@@ -441,7 +441,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    css_parser (1.19.1)
+    css_parser (1.21.0)
       addressable
     csv (3.3.1)
     cuprite (0.15.1)
@@ -760,7 +760,7 @@ GEM
     mime-types (3.6.0)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.1105)
+    mime-types-data (3.2024.1203)
     mini_magick (5.0.1)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
