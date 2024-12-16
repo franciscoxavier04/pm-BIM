@@ -33,11 +33,9 @@ module Pages
     class Show < ::Pages::Page
       attr_reader :project
 
-      # rubocop:disable Lint/MissingSuper
       def initialize(project)
         @project = project
       end
-      # rubocop:enable Lint/MissingSuper
 
       def path
         project_path(project)
@@ -85,6 +83,14 @@ module Pages
         end
 
         expect(page).to have_css("[data-test-selector='async-dialog-content']", wait: 5)
+      end
+
+      def open_edit_dialog_for_life_cycles
+        within_life_cycles_sidebar do
+          page.find("[data-test-selector='project-life-cycles-edit-button']").click
+        end
+
+        Components::Projects::ProjectLifeCycles::EditDialog.new.tap(&:expect_open)
       end
 
       def within_life_cycles_sidebar(&)

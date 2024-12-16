@@ -33,7 +33,7 @@ class Project::LifeCycleStep < ApplicationRecord
              class_name: "Project::LifeCycleStepDefinition"
   has_many :work_packages, inverse_of: :project_life_cycle_step, dependent: :nullify
 
-  delegate :name, to: :definition
+  delegate :name, :position, to: :definition
 
   attr_readonly :definition_id, :type
 
