@@ -53,39 +53,52 @@ RSpec.shared_context "with seeded projects and stages and gates" do
     create :project_stage_definition, name: "Closing"
   end
 
+  let(:start_date) { Time.zone.today.next_week }
+
   let(:life_cycle_initiating) do
     create :project_stage,
            definition: life_cycle_initiating_definition,
+           start_date:,
+           end_date: start_date + 1.day,
            project:
   end
   let(:life_cycle_ready_for_planning) do
     create :project_gate,
            definition: life_cycle_ready_for_planning_definition,
+           date: start_date + 2.days,
            project:
   end
   let(:life_cycle_planning) do
     create :project_stage,
            definition: life_cycle_planning_definition,
+           start_date: start_date + 3.days,
+           end_date: start_date + 4.days,
            project:
   end
   let(:life_cycle_ready_for_executing) do
     create :project_gate,
            definition: life_cycle_ready_for_executing_definition,
+           date: start_date + 7.days,
            project:
   end
   let(:life_cycle_executing) do
     create :project_stage,
            definition: life_cycle_executing_definition,
+           start_date: start_date + 8.days,
+           end_date: start_date + 9.days,
            project:
   end
   let(:life_cycle_ready_for_closing) do
     create :project_gate,
            definition: life_cycle_ready_for_closing_definition,
+           date: start_date + 10.days,
            project:
   end
   let(:life_cycle_closing) do
     create :project_stage,
            definition: life_cycle_closing_definition,
+           start_date: start_date + 11.days,
+           end_date: start_date + 14.days,
            project:
   end
 

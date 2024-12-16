@@ -49,6 +49,22 @@ module Components
           close if close_after_yield
         end
 
+        def set_date_for(step, value:)
+          datepicker = if value.is_a?(Array)
+                         Components::RangeDatepicker.new
+                       else
+                         Components::BasicDatepicker.new
+                       end
+
+          datepicker.open(
+            "input[id^='project_available_life_cycle_steps_attributes_#{step.position - 1}']"
+          )
+
+          Array(value).each do |date|
+            datepicker.set_date(date.strftime("%Y-%m-%d"))
+          end
+        end
+
         def close
           within_dialog do
             page.find(".close-button").click
@@ -82,11 +98,13 @@ module Components
 
         def expect_input(label, value:, type:, position:)
           field = type == :stage ? :date_range : :date
-          expect(page).to have_field(
-            label,
-            with: value,
-            name: "project[available_life_cycle_steps_attributes][#{position - 1}][#{field}]"
-          )
+          within_async_content do
+            expect(page).to have_field(
+              label,
+              with: value,
+              name: "project[available_life_cycle_steps_attributes][#{position - 1}][#{field}]"
+            )
+          end
         end
 
         def expect_input_for(step)
@@ -99,6 +117,40 @@ module Components
                     end
 
           expect_input(step.name, position: step.position, **options)
+        end
+
+        def expect_caption(step, text: nil, present: true)
+          selector = 'span[id^="caption"]'
+          expect_selector_for(step, selector:, text:, present:)
+        end
+
+        def expect_no_caption(step)
+          expect_caption(step, present: false)
+        end
+
+        def expect_validation_message(step, text: nil, present: true)
+          selector = 'div[id^="validation"]'
+          expect_selector_for(step, selector:, text:, present:)
+        end
+
+        def expect_no_validation_message(step)
+          expect_validation_message(step, present: false)
+        end
+
+        private
+
+        def expect_selector_for(step, selector:, text: nil, present: true)
+          within_async_content do
+            field = step.is_a?(Project::Stage) ? :date_range : :date
+            input_id = "#project_available_life_cycle_steps_attributes_#{step.position - 1}_#{field}"
+            parent = find(input_id).ancestor("primer-datepicker-field")
+
+            if present
+              expect(parent).to have_selector(selector, text:)
+            else
+              expect(parent).to have_no_selector(selector)
+            end
+          end
         end
       end
     end
