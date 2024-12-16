@@ -29,15 +29,7 @@
 module Settings
   module ProjectLifeCycleStepDefinitions
     class FormHeaderComponent < ApplicationComponent
-      include MetaTagsHelper
-
-      def heading_scope
-        action = model.persisted? ? :edit : :new
-
-        type = model.is_a?(Project::StageDefinition) ? :stage : :gate
-
-        "#{action}_#{type}"
-      end
+      options :heading_scope
 
       def breadcrumbs_items
         [

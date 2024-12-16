@@ -27,10 +27,6 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% html_title t(:label_administration),
-              t("settings.project_life_cycle_step_definitions.heading"),
-              t("settings.project_life_cycle_step_definitions.#{heading_scope}.heading") %>
-
 <%= render Primer::OpenProject::PageHeader.new do |header|
   header.with_title { t("settings.project_life_cycle_step_definitions.#{heading_scope}.heading") }
   header.with_description { t("settings.project_life_cycle_step_definitions.new.description") }

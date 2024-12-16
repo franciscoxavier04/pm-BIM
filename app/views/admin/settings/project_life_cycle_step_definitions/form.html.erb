@@ -27,7 +27,13 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= render Settings::ProjectLifeCycleStepDefinitions::FormHeaderComponent.new(@definition) %>
+<% heading_scope = "#{@definition.persisted? ? :edit : :new}_#{@definition.is_a?(Project::StageDefinition) ? :stage : :gate}" %>
+
+<% html_title t(:label_administration),
+              t("settings.project_life_cycle_step_definitions.heading"),
+              t("settings.project_life_cycle_step_definitions.#{heading_scope}.heading") %>
+
+<%= render Settings::ProjectLifeCycleStepDefinitions::FormHeaderComponent.new(@definition, heading_scope:) %>
 
 <%= error_messages_for @definition %>
 
