@@ -30,6 +30,7 @@ module Settings
   module ProjectLifeCycleStepDefinitions
     class IndexComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
       options :definitions,
               :allowed_to_customize_life_cycle?

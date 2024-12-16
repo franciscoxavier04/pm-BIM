@@ -28,6 +28,9 @@
 
 module Admin::Settings
   class ProjectLifeCycleStepDefinitionsController < ::Admin::SettingsController
+    include FlashMessagesOutputSafetyHelper
+    include OpTurbo::ComponentStream
+
     menu_item :project_life_cycle_step_definitions_settings
 
     helper_method :allowed_to_customize_life_cycle?
@@ -78,35 +81,34 @@ module Admin::Settings
 
     def destroy
       if @definition.destroy
-        flash[:notice] = I18n.t(:notice_successful_delete)
+        update_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_delete))
       else
-        # TODO: handle better
-        flash[:error] = I18n.t(:notice_bad_request)
+        render_error_flash_message_via_turbo_stream(message: join_flash_messages(@definition.errors.full_messages))
       end
 
-      redirect_to action: :index, status: :see_other
+      update_definitions_via_turbo_stream
+
+      respond_to_with_turbo_streams
     end
 
     def move
-      if @definition.update(params.permit(:move_to))
-        flash[:notice] = I18n.t(:notice_successful_update)
-      else
-        # TODO: handle better
-        flash[:error] = I18n.t(:notice_bad_request)
+      unless @definition.update(params.permit(:move_to))
+        render_error_flash_message_via_turbo_stream(message: join_flash_messages(@definition.errors.full_messages))
       end
 
-      redirect_to action: :index, status: :see_other
+      update_definitions_via_turbo_stream
+
+      respond_to_with_turbo_streams
     end
 
     def drop
-      if @definition.update(params.permit(:position))
-        flash[:notice] = I18n.t(:notice_successful_update)
-      else
-        # TODO: handle better
-        flash[:error] = I18n.t(:notice_bad_request)
+      unless @definition.update(params.permit(:position))
+        render_error_flash_message_via_turbo_stream(message: join_flash_messages(@definition.errors.full_messages))
       end
 
-      redirect_to action: :index, status: :see_other
+      update_definitions_via_turbo_stream
+
+      respond_to_with_turbo_streams
     end
 
     private
@@ -133,6 +135,15 @@ module Admin::Settings
 
     def definition_params
       params.require(:project_life_cycle_step_definition).permit(:type, :name, :color_id)
+    end
+
+    def update_definitions_via_turbo_stream
+      update_via_turbo_stream(
+        component: Settings::ProjectLifeCycleStepDefinitions::IndexComponent.new(
+          definitions: find_definitions,
+          allowed_to_customize_life_cycle?: allowed_to_customize_life_cycle?
+        )
+      )
     end
   end
 end
