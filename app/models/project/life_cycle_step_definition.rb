@@ -51,4 +51,8 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
     super
   end
+
+  def step_class
+    raise NotImplementedError
+  end
 end

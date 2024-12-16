@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,26 +26,35 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
+module Projects
+  class LifeCycleTypeComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
 
-require "rails_helper"
-require "support/shared/project_life_cycle_helpers"
-
-RSpec.describe Project::StageDefinition do
-  it_behaves_like "a Project::LifeCycleStepDefinition event"
-
-  describe "associations" do
-    it "has many stages" do
-      expect(subject).to have_many(:stages).class_name("Project::Stage")
-                        .with_foreign_key(:definition_id)
-                        .inverse_of(:definition)
-                        .dependent(:destroy)
+    def text
+      model.model_name.human
     end
-  end
 
-  describe "#step_class" do
-    it "returns Project::Stage" do
-      expect(subject.step_class).to eq(Project::Stage)
+    def icon
+      case model
+      when Project::StageDefinition
+        :"git-commit"
+      when Project::GateDefinition
+        :diamond
+      else
+        raise NotImplementedError, "Unknown model #{model.class} to render a LifeCycleTypeComponent with"
+      end
+    end
+
+    def icon_color_class
+      helpers.hl_inline_class("life_cycle_step_definition", model)
+    end
+
+    def text_options
+      # The tag: :div is is a hack to fix the line height difference
+      # caused by font_size: :small. That line height difference
+      # would otherwise lead to the text being not on the same height as the icon
+      { color: :muted, font_size: :small, tag: :div }.merge(options)
     end
   end
 end

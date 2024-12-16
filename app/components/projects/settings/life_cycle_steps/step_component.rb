@@ -1,6 +1,6 @@
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,26 +24,23 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "rails_helper"
-require "support/shared/project_life_cycle_helpers"
+module Projects
+  module Settings
+    module LifeCycleSteps
+      class StepComponent < ApplicationComponent
+        include ApplicationHelper
+        include OpPrimer::ComponentHelpers
+        include OpTurbo::Streamable
 
-RSpec.describe Project::StageDefinition do
-  it_behaves_like "a Project::LifeCycleStepDefinition event"
+        options :definition,
+                :active?
 
-  describe "associations" do
-    it "has many stages" do
-      expect(subject).to have_many(:stages).class_name("Project::Stage")
-                        .with_foreign_key(:definition_id)
-                        .inverse_of(:definition)
-                        .dependent(:destroy)
-    end
-  end
-
-  describe "#step_class" do
-    it "returns Project::Stage" do
-      expect(subject.step_class).to eq(Project::Stage)
+        def toggle_aria_label
+          I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
+        end
+      end
     end
   end
 end

@@ -1,6 +1,6 @@
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,26 +24,41 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "rails_helper"
-require "support/shared/project_life_cycle_helpers"
+module Projects
+  module Settings
+    module LifeCycleSteps
+      class IndexComponent < ApplicationComponent
+        include ApplicationHelper
+        include OpPrimer::ComponentHelpers
+        include OpTurbo::Streamable
 
-RSpec.describe Project::StageDefinition do
-  it_behaves_like "a Project::LifeCycleStepDefinition event"
+        options :project,
+                :life_cycle_definitions
 
-  describe "associations" do
-    it "has many stages" do
-      expect(subject).to have_many(:stages).class_name("Project::Stage")
-                        .with_foreign_key(:definition_id)
-                        .inverse_of(:definition)
-                        .dependent(:destroy)
-    end
-  end
+        private
 
-  describe "#step_class" do
-    it "returns Project::Stage" do
-      expect(subject.step_class).to eq(Project::Stage)
+        def life_cycle_definitions_and_step_active
+          active_ids = project.life_cycle_steps.where(active: true).pluck(:definition_id).to_set
+
+          life_cycle_definitions.all.map do |definition|
+            [definition, definition.id.in?(active_ids)]
+          end
+        end
+
+        def wrapper_data_attributes
+          {
+            controller: "projects--settings--border-box-filter",
+            "application-target": "dynamic",
+            "projects--settings--border-box-filter-clear-button-id-value": clear_button_id
+          }
+        end
+
+        def clear_button_id
+          "border-box-filter-clear-button"
+        end
+      end
     end
   end
 end

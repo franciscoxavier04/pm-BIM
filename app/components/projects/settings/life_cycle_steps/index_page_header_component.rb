@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,26 +26,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "rails_helper"
-require "support/shared/project_life_cycle_helpers"
+module Projects::Settings::LifeCycleSteps
+  class IndexPageHeaderComponent < ApplicationComponent
+    include ApplicationHelper
 
-RSpec.describe Project::StageDefinition do
-  it_behaves_like "a Project::LifeCycleStepDefinition event"
+    options :project
 
-  describe "associations" do
-    it "has many stages" do
-      expect(subject).to have_many(:stages).class_name("Project::Stage")
-                        .with_foreign_key(:definition_id)
-                        .inverse_of(:definition)
-                        .dependent(:destroy)
-    end
-  end
-
-  describe "#step_class" do
-    it "returns Project::Stage" do
-      expect(subject.step_class).to eq(Project::Stage)
+    def breadcrumb_items
+      [{ href: project_overview_path(project), text: project.name },
+       { href: project_settings_general_path(project), text: I18n.t("label_project_settings") },
+       t("projects.settings.life_cycle.header.title")]
     end
   end
 end
