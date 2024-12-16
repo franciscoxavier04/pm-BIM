@@ -628,8 +628,8 @@ en:
       no_results_title_text: There are currently no types.
       no_results_content_text: Create a new type
     edit:
-      settings: "Settings"
-      form_configuration: "Form configuration"
+      form_configuration:
+        tab: "Form configuration"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br>
         <ul class="%{list_styling_class}">
@@ -637,14 +637,23 @@ en:
           <li><b>Rename attribute groups</b></li>
           <li><b>Add a table of related work packages</b></li>
         </ul>
-      projects: "Projects"
-      enabled_projects: "Enabled projects"
-      edit_query: "Edit table"
-      query_group_placeholder: "Give the table a name"
-      reset: "Reset to defaults"
-      type_color_text: |
-        The selected color distinguishes different types
-        in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      projects:
+        tab: "Projects"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Settings"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        pattern:
+          label: "Subject pattern"
+          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
 
   versions:
     overview:
@@ -1699,7 +1708,7 @@ en:
   create_new_page: "Wiki page"
 
   date:
-    abbr_day_names: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    abbr_day_names: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
     abbr_month_names:
       [
         ~,
@@ -2029,20 +2038,20 @@ en:
   pdf_generator:
     page_nr_footer: "Page %{page} of %{total}"
     dialog:
-       title: Generate PDF
-       submit: Generate
-       header_right:
-         label: Header right
-         caption: Text to be displayed in the right of the header
-       footer_center:
-         label: Footer center
-         caption: Text to be displayed in the center of the footer
-       hyphenation:
-         label: Hyphenation
-         caption: Break words between lines to improve text justification and readability.
-       paper_size:
-         label: Paper size
-         caption: The size of the paper to use for the PDF.
+      title: Generate PDF
+      submit: Generate
+      header_right:
+        label: Header right
+        caption: Text to be displayed in the right of the header
+      footer_center:
+        label: Footer center
+        caption: Text to be displayed in the center of the footer
+      hyphenation:
+        label: Hyphenation
+        caption: Break words between lines to improve text justification and readability.
+      paper_size:
+        label: Paper size
+        caption: The size of the paper to use for the PDF.
 
   extraction:
     available:
