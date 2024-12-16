@@ -30,7 +30,7 @@
 require "spec_helper"
 
 RSpec.describe OpenIDConnect::AssociateUserToken do
-  subject { described_class.new(user).call(**args) }
+  subject { described_class.new(user, jwt_parser: parser).call(**args) }
 
   let(:user) { create(:user) }
 
@@ -38,6 +38,9 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
 
   let(:access_token) { "access-token-foo" }
   let(:refresh_token) { "refresh-token-bar" }
+
+  let(:parser) { instance_double(OpenIDConnect::JwtParser, parse: [parsed_jwt, nil]) }
+  let(:parsed_jwt) { { "aud" => ["aud1", "aud2"] } }
 
   before do
     allow(Rails.logger).to receive(:error)
@@ -50,12 +53,50 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
     expect(token.user_id).to eq user.id
     expect(token.access_token).to eq access_token
     expect(token.refresh_token).to eq refresh_token
-    expect(token.audiences).to eq ["io"]
+    expect(token.audiences).to contain_exactly("io", "aud1", "aud2")
   end
 
   it "logs no error" do
     subject
     expect(Rails.logger).not_to have_received(:error)
+  end
+
+  context "when the JWT encodes aud as a string" do
+    let(:parsed_jwt) { { "aud" => "aud1" } }
+
+    it "creates a correct user token", :aggregate_failures do
+      expect { subject }.to change(OpenIDConnect::UserToken, :count).by(1)
+
+      token = OpenIDConnect::UserToken.last
+      expect(token.access_token).to eq access_token
+      expect(token.refresh_token).to eq refresh_token
+      expect(token.audiences).to contain_exactly("io", "aud1")
+    end
+
+    it "logs no error" do
+      subject
+      expect(Rails.logger).not_to have_received(:error)
+    end
+  end
+
+  context "when the access token is not a valid JWT" do
+    before do
+      allow(parser).to receive(:parse).and_raise("Oops, not a JWT!")
+    end
+
+    it "creates a correct user token", :aggregate_failures do
+      expect { subject }.to change(OpenIDConnect::UserToken, :count).by(1)
+
+      token = OpenIDConnect::UserToken.last
+      expect(token.access_token).to eq access_token
+      expect(token.refresh_token).to eq refresh_token
+      expect(token.audiences).to contain_exactly("io")
+    end
+
+    it "logs no error" do
+      subject
+      expect(Rails.logger).not_to have_received(:error)
+    end
   end
 
   context "when there is no refresh token" do
@@ -68,7 +109,7 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
       expect(token.user_id).to eq user.id
       expect(token.access_token).to eq access_token
       expect(token.refresh_token).to be_nil
-      expect(token.audiences).to eq ["io"]
+      expect(token.audiences).to contain_exactly("io", "aud1", "aud2")
     end
 
     it "logs no error" do
@@ -106,13 +147,31 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
   context "when there is no audience" do
     let(:args) { { access_token:, refresh_token:, known_audiences: [] } }
 
-    it "does not create a user token" do
-      expect { subject }.not_to change(OpenIDConnect::UserToken, :count)
+    it "creates a correct user token", :aggregate_failures do
+      expect { subject }.to change(OpenIDConnect::UserToken, :count).by(1)
+
+      token = OpenIDConnect::UserToken.last
+      expect(token.access_token).to eq access_token
+      expect(token.refresh_token).to eq refresh_token
+      expect(token.audiences).to contain_exactly("aud1", "aud2")
     end
 
     it "logs no error" do
       subject
       expect(Rails.logger).not_to have_received(:error)
+    end
+
+    context "and the token has no audience defined" do
+      let(:parsed_jwt) { { "sub" => "ject" } }
+
+      it "does not create a user token" do
+        expect { subject }.not_to change(OpenIDConnect::UserToken, :count)
+      end
+
+      it "logs no error" do
+        subject
+        expect(Rails.logger).not_to have_received(:error)
+      end
     end
   end
 
@@ -131,7 +190,7 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
       expect(token.user_id).to eq user.id
       expect(token.access_token).to eq access_token
       expect(token.refresh_token).to eq refresh_token
-      expect(token.audiences).to eq ["io"]
+      expect(token.audiences).to contain_exactly("io", "aud1", "aud2")
     end
 
     context "and when previous tokens shall be cleared" do
@@ -149,13 +208,24 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
         expect(token.user_id).to eq user.id
         expect(token.access_token).to eq access_token
         expect(token.refresh_token).to eq refresh_token
-        expect(token.audiences).to eq ["io"]
+        expect(token.audiences).to contain_exactly("io", "aud1", "aud2")
       end
 
       it "logs no error" do
         subject
         expect(Rails.logger).not_to have_received(:error)
       end
+    end
+  end
+
+  context "when audiences from token and arguments overlap" do
+    let(:parsed_jwt) { { "aud" => ["io", "aud2"] } }
+
+    it "normalizes the audience array" do
+      subject
+
+      token = OpenIDConnect::UserToken.last
+      expect(token.audiences).to contain_exactly("io", "aud2")
     end
   end
 end
