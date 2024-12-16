@@ -344,11 +344,14 @@ RSpec.describe "Projects index page", :js, :with_cuprite, with_settings: { login
         login_as(admin)
         projects_page.visit!
 
-        # Trying to set the column via configure view
-        projects_page.set_columns(life_cycle_gate.definition.name)
-
-        # It didn't work
-        expect(page).to have_no_text(life_cycle_gate.definition.name.upcase)
+        element_selector = "#columns-select_autocompleter ng-select.op-draggable-autocomplete--input"
+        results_selector = "#columns-select_autocompleter ng-dropdown-panel .ng-dropdown-panel-items"
+        projects_page.expect_no_config_columns(life_cycle_gate.definition.name,
+                                               life_cycle_stage.definition.name,
+                                               inactive_life_cycle_gate.definition.name,
+                                               inactive_life_cycle_stage.definition.name,
+                                               element_selector:,
+                                               results_selector:)
       end
     end
 
