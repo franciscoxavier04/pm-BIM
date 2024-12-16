@@ -58,13 +58,18 @@ class OpenProject::Reporting::CostEntryXlsTable < OpenProject::XlsExport::XlsVie
   end
 
   def cost_main_times_columns(result)
-    start_timestamp = result.start_timestamp
-    end_timestamp = result.end_timestamp
-    days_between_suffix = days_between_representation(start_timestamp, end_timestamp)
     [
-      format_time(start_timestamp, include_date: false),
-      "#{format_time(end_timestamp, include_date: false)}#{days_between_suffix}"
+      format_time(result.start_timestamp, include_date: false),
+      cost_main_end_time_column(result.start_timestamp, result.end_timestamp)
     ]
+  end
+
+  def cost_main_end_time_column(start_timestamp, end_timestamp)
+    return "" if start_timestamp.nil? || end_timestamp.nil?
+
+    days_between = (end_timestamp.to_date - start_timestamp.to_date).to_i
+    day_prefix = days_between > 1 ? "#{end_timestamp.to_date.iso8601} " : ""
+    "#{day_prefix}#{format_time(end_timestamp, include_date: false)}"
   end
 
   def cost_main_columns(result)
