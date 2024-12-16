@@ -1012,7 +1012,7 @@ GEM
       rspec-support (~> 3.13)
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
-    rspec-support (3.13.1)
+    rspec-support (3.13.2)
     rspec-wait (1.0.1)
       rspec (>= 3.4)
     rubocop (1.69.2)
