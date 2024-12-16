@@ -198,9 +198,9 @@ module Projects
     def project_life_cycle_step_by_definition(definition, project)
       @project_life_cycle_steps_by_definition ||= Project::LifeCycleStep
                                                     .where(active: true)
-                                                    .group_by { |s| [s.definition_id, s.project_id] }
+                                                    .index_by { |s| [s.definition_id, s.project_id] }
 
-      @project_life_cycle_steps_by_definition[[definition.id, project.id]]&.first
+      @project_life_cycle_steps_by_definition[[definition.id, project.id]]
     end
 
     def sorted_by_lft?
