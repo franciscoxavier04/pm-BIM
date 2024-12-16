@@ -54,8 +54,12 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
                                     .find_by(id: attribute[KEY, 1])
   end
 
+  def self.available?
+    OpenProject::FeatureDecisions.stages_and_gates_active?
+  end
+
   def available?
-    OpenProject::FeatureDecisions.stages_and_gates_active? && life_cycle_step_definition.present?
+    life_cycle_step_definition.present?
   end
 
   def visual_icon
