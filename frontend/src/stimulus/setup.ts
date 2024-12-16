@@ -13,6 +13,7 @@ import OpShowWhenValueSelectedController from './controllers/show-when-value-sel
 import FlashController from './controllers/flash.controller';
 import OpProjectsZenModeController from './controllers/dynamic/projects/zen-mode.controller';
 import PasswordConfirmationDialogController from './controllers/password-confirmation-dialog.controller';
+import PatternAutocompleterController from './controllers/pattern-autocompleter.controller';
 
 declare global {
   interface Window {
@@ -41,3 +42,4 @@ instance.register('show-when-checked', OpShowWhenCheckedController);
 instance.register('show-when-value-selected', OpShowWhenValueSelectedController);
 instance.register('table-highlighting', TableHighlightingController);
 instance.register('projects-zen-mode', OpProjectsZenModeController);
+instance.register('pattern-autocompleter', PatternAutocompleterController);
