@@ -47,6 +47,34 @@ See COPYRIGHT and LICENSE files for more details.
               "projects--settings--border-box-filter-target": "filter"
             }
           )
+          subheader.with_action_component do
+            render(Primer::Alpha::ActionMenu.new(
+              anchor_align: :end)
+            ) do |menu|
+              menu.with_show_button(
+                scheme: :primary,
+                aria: { label: I18n.t("settings.project_life_cycle_step_definitions.label_add_description") },
+              ) do |button|
+                button.with_leading_visual_icon(icon: :plus)
+                button.with_trailing_action_icon(icon: :"triangle-down")
+                I18n.t("settings.project_life_cycle_step_definitions.label_add")
+              end
+
+              menu.with_item(
+                label: I18n.t("settings.project_life_cycle_step_definitions.label_add_stage"),
+                href: new_stage_admin_settings_project_life_cycle_step_definitions_path
+              ) do |item|
+                item.with_leading_visual_icon(icon: "git-commit")
+              end
+
+              menu.with_item(
+                label: I18n.t("settings.project_life_cycle_step_definitions.label_add_gate"),
+                href: new_gate_admin_settings_project_life_cycle_step_definitions_path
+              ) do |item|
+                item.with_leading_visual_icon(icon: "diamond")
+              end
+            end
+          end
         end
       else
         render EnterpriseEdition::BannerComponent.new(:customize_life_cycle, mb: 3)
