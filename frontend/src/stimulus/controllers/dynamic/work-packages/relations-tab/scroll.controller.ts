@@ -1,17 +1,16 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class ScrollController extends Controller {
-  connect() {
-    this.waitForRenderAndAct();
-  }
+  static targets = ['scrollToRow'];
 
-  waitForRenderAndAct() {
-    const element = document.querySelector('[data-scroll-to="true"]');
+  declare readonly scrollToRowTarget:HTMLElement;
+  declare readonly hasScrollToRowTarget:boolean;
 
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      requestAnimationFrame(this.waitForRenderAndAct.bind(this));
+  scrollToRowTargetConnected() {
+    if (this.hasScrollToRowTarget) {
+      setTimeout(() => {
+        this.scrollToRowTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     }
   }
 }

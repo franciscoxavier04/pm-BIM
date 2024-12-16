@@ -73,9 +73,17 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   def render_items(border_box, items)
     items.each do |item|
       related_work_package_id = find_related_work_package_id(item)
+      data_attribute = nil
+      if related_work_package_id.to_s == @scroll_to_id
+        data_attribute = {
+          controller: "work-packages--relations-tab--scroll",
+          application_target: "dynamic",
+          "work-packages--relations-tab--scroll-target": "scrollToRow"
+        }
+      end
       border_box.with_row(
         test_selector: row_test_selector(item),
-        data: { scroll_to: related_work_package_id.to_s == @scroll_to_id }
+        data: data_attribute
       ) do
         yield(item)
       end

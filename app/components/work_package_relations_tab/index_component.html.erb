@@ -53,10 +53,7 @@
   %>
 
   <%=
-    flex_layout(mb: 3, data: {
-      "application-target": "dynamic",
-      controller: "work-packages--relations-tab--scroll"
-    }) do |flex|
+    flex_layout(mb: 3) do |flex|
       if any_relations?
         key_namespace = "#{I18N_NAMESPACE}.relations"
 
