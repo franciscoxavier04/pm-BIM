@@ -35,8 +35,6 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= render Settings::ProjectLifeCycleStepDefinitions::FormHeaderComponent.new(@definition, heading_scope:) %>
 
-<%= error_messages_for @definition %>
-
 <%=
   primer_form_with(
     model: [:admin, :settings, @definition.becomes(Project::LifeCycleStepDefinition)]
