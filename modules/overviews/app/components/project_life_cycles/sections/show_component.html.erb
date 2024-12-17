@@ -4,7 +4,7 @@
       classes: 'op-project-life-cyle-section-container',
       test_selector: "project-life-cycle-section"
     )) do |section|
-      section.with_title { t("label_life_cycle_plural") }
+      section.with_title { t("label_life_cycle_step_plural") }
 
       if allowed_to_edit?
         section.with_action_icon(
