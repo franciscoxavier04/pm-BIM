@@ -109,7 +109,6 @@ See COPYRIGHT and LICENSE files for more details.
               ) do
                 render(Settings::ProjectLifeCycleStepDefinitions::RowComponent.new(
                   definition,
-                  allowed_to_customize_life_cycle?: allowed_to_customize_life_cycle?,
                   first?: definition == definitions.first,
                   last?: definition == definitions.last,
                 ))

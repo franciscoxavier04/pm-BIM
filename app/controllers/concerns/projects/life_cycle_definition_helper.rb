@@ -26,38 +26,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Settings
-  module ProjectLifeCycleStepDefinitions
-    class IndexComponent < ApplicationComponent
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
-      include Projects::LifeCycleDefinitionHelper
+module Projects::LifeCycleDefinitionHelper
+  private
 
-      options :definitions
-
-      private
-
-      def wrapper_data_attributes
-        {
-          controller: "projects--settings--border-box-filter generic-drag-and-drop",
-          "application-target": "dynamic"
-        }
-      end
-
-      def drop_target_config
-        {
-          "is-drag-and-drop-target": true,
-          "target-container-accessor": "& > ul",
-          "target-allowed-drag-type": "life-cycle-step-definition"
-        }
-      end
-
-      def draggable_item_config(definition)
-        {
-          "draggable-type": "life-cycle-step-definition",
-          "drop-url": drop_admin_settings_project_life_cycle_step_definition_path(definition)
-        }
-      end
-    end
+  def allowed_to_customize_life_cycle?
+    EnterpriseToken.allows_to?(:customize_life_cycle)
   end
 end

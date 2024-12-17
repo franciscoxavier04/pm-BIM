@@ -30,11 +30,11 @@ module Settings
   module ProjectLifeCycleStepDefinitions
     class RowComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
+      include Projects::LifeCycleDefinitionHelper
 
       alias_method :definition, :model
 
-      options :allowed_to_customize_life_cycle?,
-              :first?,
+      options :first?,
               :last?
 
       private

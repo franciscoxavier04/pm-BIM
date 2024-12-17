@@ -29,10 +29,5 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% html_title t(:label_administration), t("settings.project_life_cycle_step_definitions.heading") %>
 
-<%= render Settings::ProjectLifeCycleStepDefinitions::IndexHeaderComponent.new(
-  allowed_to_customize_life_cycle?: allowed_to_customize_life_cycle?
-) %>
-<%= render Settings::ProjectLifeCycleStepDefinitions::IndexComponent.new(
-  definitions: @definitions,
-  allowed_to_customize_life_cycle?: allowed_to_customize_life_cycle?
-) %>
+<%= render Settings::ProjectLifeCycleStepDefinitions::IndexHeaderComponent.new %>
+<%= render Settings::ProjectLifeCycleStepDefinitions::IndexComponent.new(definitions: @definitions) %>

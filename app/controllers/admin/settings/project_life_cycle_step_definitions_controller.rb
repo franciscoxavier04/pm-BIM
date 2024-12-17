@@ -30,10 +30,9 @@ module Admin::Settings
   class ProjectLifeCycleStepDefinitionsController < ::Admin::SettingsController
     include FlashMessagesOutputSafetyHelper
     include OpTurbo::ComponentStream
+    include Projects::LifeCycleDefinitionHelper
 
     menu_item :project_life_cycle_step_definitions_settings
-
-    helper_method :allowed_to_customize_life_cycle?
 
     before_action :check_feature_flag
     before_action :require_enterprise_token, except: %i[index]
@@ -113,10 +112,6 @@ module Admin::Settings
 
     private
 
-    def allowed_to_customize_life_cycle?
-      EnterpriseToken.allows_to?(:customize_life_cycle)
-    end
-
     def check_feature_flag
       render_404 unless OpenProject::FeatureDecisions.stages_and_gates_active?
     end
@@ -140,8 +135,7 @@ module Admin::Settings
     def update_definitions_via_turbo_stream
       update_via_turbo_stream(
         component: Settings::ProjectLifeCycleStepDefinitions::IndexComponent.new(
-          definitions: find_definitions,
-          allowed_to_customize_life_cycle?: allowed_to_customize_life_cycle?
+          definitions: find_definitions
         )
       )
     end
