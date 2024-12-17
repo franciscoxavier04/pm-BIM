@@ -49,6 +49,7 @@ module Queries::Projects
     filter Filters::UserActionFilter
     filter Filters::VisibleFilter
     filter Filters::FavoredFilter
+    filter Filters::AnyStageOrGateFilter
 
     order Orders::DefaultOrder
     order Orders::LatestActivityAtOrder
