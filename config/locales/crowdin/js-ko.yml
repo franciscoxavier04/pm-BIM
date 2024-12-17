@@ -773,10 +773,6 @@ ko:
         upgrade_to_ee_text: "와우! 만약 이 추가 기능이 필요하다면 여러분은 진짜 프로입니다! Enterprise Edition 고객이 되어서 OpenSource 개발자들을 지원할 생각이 있으신가요?"
         more_information: "더보기"
         nevermind: "신경쓰지 마세요"
-      edit:
-        form_configuration: "양식 구성"
-        projects: "프로젝트"
-        settings: "설정"
     time_entry:
       work_package_required: "먼저 작업 패키지를 선택해야 합니다."
       title: "작업시간 기록"

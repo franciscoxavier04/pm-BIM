@@ -51,4 +51,12 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
 
     super
   end
+
+  def step_class
+    raise NotImplementedError
+  end
+
+  def column_name
+    "lcsd_#{id}"
+  end
 end

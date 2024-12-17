@@ -774,10 +774,6 @@
         upgrade_to_ee_text: "Wow! Hvis du trenger dette tillegget er en superpro! Vil du støtte oss OpenSource-utviklere ved å bli en Enterpris-utgave-kunde?"
         more_information: "Mer informasjon"
         nevermind: "Glem det"
-      edit:
-        form_configuration: "Konfigurering av skjema"
-        projects: "Prosjekter"
-        settings: "Innstillinger"
     time_entry:
       work_package_required: "Valg av arbeidspakke er påkrevd"
       title: "Logg tid"

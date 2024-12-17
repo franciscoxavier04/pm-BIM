@@ -36,7 +36,7 @@ ruby File.read(File.expand_path(".ruby-version", __dir__)).strip
 
 gem "actionpack-xml_parser", "~> 2.0.0"
 gem "activemodel-serializers-xml", "~> 1.0.1"
-gem "activerecord-import", "~> 1.8.0"
+gem "activerecord-import", "~> 2.0.0"
 gem "activerecord-session_store", "~> 2.1.0"
 gem "ox"
 gem "rails", "~> 7.1.3"
@@ -140,7 +140,7 @@ gem "rack-attack", "~> 6.7.0"
 gem "secure_headers", "~> 7.0.0"
 
 # Browser detection for incompatibility checks
-gem "browser", "~> 6.1.0"
+gem "browser", "~> 6.2.0"
 
 # Providing health checks
 gem "okcomputer", "~> 1.18.1"
@@ -191,7 +191,7 @@ gem "puma", "~> 6.5"
 gem "puma-plugin-statsd", "~> 2.0"
 gem "rack-timeout", "~> 0.7.0", require: "rack/timeout/base"
 
-gem "nokogiri", "~> 1.16.0"
+gem "nokogiri", "~> 1.17.0"
 
 gem "carrierwave", "~> 1.3.4"
 gem "carrierwave_direct", "~> 2.1.0"
@@ -232,7 +232,7 @@ gem "factory_bot", "~> 6.5.0", require: false
 # require factory_bot_rails for convenience in core development
 gem "factory_bot_rails", "~> 6.4.4", require: false
 
-gem "turbo_power", "~> 0.6.2"
+gem "turbo_power", "~> 0.7.0"
 gem "turbo-rails", "~> 2.0.0"
 
 gem "httpx"
@@ -382,7 +382,7 @@ platforms :mri, :mingw, :x64_mingw do
   end
 
   # Support application loading when no database exists yet.
-  gem "activerecord-nulldb-adapter", "~> 1.0.0"
+  gem "activerecord-nulldb-adapter", "~> 1.1.0"
 
   # Have application level locks on the database to have a mutex shared between workers/hosts.
   # We e.g. employ this to safeguard the creation of journals.

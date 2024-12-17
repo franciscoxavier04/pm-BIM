@@ -773,10 +773,6 @@ ms:
         upgrade_to_ee_text: "Wah! Jika anda perlukan tambahan ini anda sungguh pro! Bolehkah anda menyokong kami, pembangun OpenProject, dengan menjadi pelanggan edisi Enterprise?"
         more_information: "Maklumat lanjut"
         nevermind: "Tidak mengapa"
-      edit:
-        form_configuration: "Konfigurasi Borang"
-        projects: "Projek"
-        settings: "Tetapan"
     time_entry:
       work_package_required: "Memerlukan pemilihan pakej kerja dahulu."
       title: "Masa log"

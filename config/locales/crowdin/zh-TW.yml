@@ -342,6 +342,9 @@ zh-TW:
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
       change_identifier: 變更識別碼
+      actions:
+        label_enable_all: "Enable all"
+        label_disable_all: "Disable all"
       activities:
         no_results_title_text: 目前沒有可用的活動
       forums:
@@ -352,18 +355,26 @@ zh-TW:
         no_results_content_text: 建立一個新工作項目類別
       custom_fields:
         no_results_title_text: 目前沒有客製欄位可用。
+      life_cycle:
+        header:
+          title: "Project lifecycle"
+          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
+        non_defined: "Neither stages nor gates are currently defined."
+        section_header: "Stages and gates"
+        step:
+          use_in_project: "Use %{step} in this project"
+        filter:
+          label: "Search project stage or gate"
       project_custom_fields:
         header:
           title: "專案屬性"
-          description: '這些專案屬性將顯示在您各自的<a href=%{overview_url} target="_blank">專案總覽頁面</a>中。您可以啟用或停用單一屬性。專案屬性由管理員在<a href=%{admin_settings_url} target="_blank">管理設定</a>中定義。'
+          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "搜尋專案屬性"
         actions:
           label_enable_single: "於此專案使用，請按一下停用"
           label_disable_single: "於此專案未使用，請按一下啟用"
           remove_from_project: "從專案移除"
-          label_enable_all: "全部啟用"
-          label_disable_all: "全部停用"
         is_required_blank_slate:
           heading: 所有專案都需要
           description: 由於已勾選「所有專案都需要」選項，因此所有專案都會啟用此專案屬性。個別專案無法停用。
@@ -564,17 +575,27 @@ zh-TW:
       no_results_title_text: 目前沒有類型
       no_results_content_text: 新增一個類型
     edit:
-      settings: "設定"
-      form_configuration: "表單設置"
+      form_configuration:
+        tab: "Form configuration"
       more_info_text_html: >
         企業版允許您使用以下附加組件自定義表單設定：<br> <ul class="%{list_styling_class}"> <li><b>添加新屬性組</b></li> <li><b>重命名屬性組</b></li> <li><b>添加相關工作項目表</b></li> </ul>
-      projects: "專案"
-      enabled_projects: "已啟用的專案"
-      edit_query: "編輯表格"
-      query_group_placeholder: "給表格命名"
-      reset: "重設為預設值"
-      type_color_text: |
-        所選顏色區分甘特圖或工作項目中的不同類型。因此建議使用濃烈的顏色。
+      projects:
+        tab: "Projects"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Settings"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        pattern:
+          label: "Subject pattern"
+          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
   versions:
     overview:
       work_packages_in_archived_projects: "該版本與歸檔項目共用，這些專案仍然有分配給此版本的工作項目。雖然這些工作項目被計算在內，但不會顯示在視圖中。"
@@ -905,7 +926,7 @@ zh-TW:
         derived_remaining_hours: "剩餘時數"
         derived_remaining_time: "剩餘時數"
         done_ratio: "完成度(%)"
-        duration: "天數"
+        duration: "時長"
         end_insertion: "結束插入"
         end_deletion: "結束刪除"
         ignore_non_working_days: "忽略非工作日"
@@ -1319,6 +1340,8 @@ zh-TW:
         other: "通知"
       placeholder_user: "虛擬群組"
       project: "專案"
+      project/gate_definition: "Gate"
+      project/stage_definition: "Stage"
       project_query:
         other: "專案列表"
       query: "自訂查詢"
@@ -2435,6 +2458,7 @@ zh-TW:
   label_none_parentheses: "（無）"
   label_not_contains: "不包含"
   label_not_equals: "不是"
+  label_life_cycle_step_plural: "Project lifecycle"
   label_on: "開啟"
   label_operator_all: "全部"
   label_operator_none: "無"
@@ -3044,6 +3068,8 @@ zh-TW:
   permission_search_project: "搜尋專案"
   permission_select_custom_fields: "選擇客製欄位"
   permission_select_project_custom_fields: "選擇專案屬性"
+  permission_select_project_life_cycle: "Select project stages and gates"
+  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "選擇專案的模組"
   permission_share_work_packages: "參與工作項目"
   permission_manage_types: "選擇類型"

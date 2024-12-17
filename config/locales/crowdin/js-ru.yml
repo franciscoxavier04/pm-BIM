@@ -775,10 +775,6 @@ ru:
         upgrade_to_ee_text: "Уууууууууу! Если вам нужен этот дополнение, то вы бы хотели поддержать нас разработчиков OpenSource, став клиентом корпоративной версии?"
         more_information: "Больше информации"
         nevermind: "Неважно"
-      edit:
-        form_configuration: "Конфигурация формы"
-        projects: "Проекты"
-        settings: "Параметры"
     time_entry:
       work_package_required: "Сначала необходимо выбрать пакет работ."
       title: "Журналировать время"

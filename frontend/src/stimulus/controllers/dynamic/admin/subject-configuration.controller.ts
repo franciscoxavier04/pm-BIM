@@ -30,23 +30,38 @@
 
 import { Controller } from '@hotwired/stimulus';
 
-export default class OverviewHeaderController extends Controller {
-  connect() {
-    window.addEventListener('angular:router:module-changed', this.toggleHeaderVisibility);
-  }
+export default class SubjectConfigurationController extends Controller {
+  static targets = [
+    'patternInput',
+  ];
 
-  disconnect() {
-    window.removeEventListener('angular:router:module-changed', this.toggleHeaderVisibility);
-  }
-
-  toggleHeaderVisibility = (event:CustomEvent) => {
-    const name = event.detail as string;
-    const element = this.element as HTMLElement;
-
-    if (name === 'overview') {
-      element.classList.remove('d-none');
-    } else {
-      element.classList.add('d-none');
-    }
+  static values = {
+    hidePatternInput: Boolean,
   };
+
+  declare readonly hidePatternInputValue:boolean;
+
+  declare readonly patternInputTarget:HTMLDivElement;
+
+  connect() {
+    if (this.hidePatternInputValue) {
+      this.hidePatternInput();
+    }
+  }
+
+  showPatternInput() {
+    this.togglePatternInput('show');
+  }
+
+  hidePatternInput() {
+    this.togglePatternInput('hide');
+  }
+
+  private togglePatternInput(toggle:'show'|'hide') {
+    if (toggle === 'show') {
+      this.patternInputTarget.classList.remove('d-none');
+    } else {
+      this.patternInputTarget.classList.add('d-none');
+    }
+  }
 }

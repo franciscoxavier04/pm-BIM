@@ -774,10 +774,6 @@ fa:
         upgrade_to_ee_text: "وااای! اگر به این افزونه نیاز دارید، شما یک حرفه‌ای هستید! آیا ممکن است ما توسعه‌دهندگان متن‌باز را با تبدیل شدن به مشتری نسخه انترپرایز حمایت کنید؟"
         more_information: "اطلاعات بیشتر"
         nevermind: "Nevermind"
-      edit:
-        form_configuration: "Form Configuration"
-        projects: "پروژه‌ها"
-        settings: "تنظیمات"
     time_entry:
       work_package_required: "Requires selecting a work package first."
       title: "پیگیری زمان"

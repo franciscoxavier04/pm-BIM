@@ -56,3 +56,8 @@ end
 
 OpenProject::FeatureDecisions.add :stages_and_gates,
                                   description: "Enables the under construction feature of stages and gates."
+
+OpenProject::FeatureDecisions.add :oidc_token_exchange,
+                                  description: "Enables the under construction OAuth2 token exchange, allowing " \
+                                               "users to interact with storage providers without consenting " \
+                                               "in OAuth screens before first use."

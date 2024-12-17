@@ -772,10 +772,6 @@ zh-CN:
         upgrade_to_ee_text: "哇！如果您需要此插件，那么您是位超级行家！您是否考虑成为我们的企业版客户，以支持我们这些开源开发者？"
         more_information: "更多信息"
         nevermind: "我愿意"
-      edit:
-        form_configuration: "表单配置"
-        projects: "项目"
-        settings: "设置"
     time_entry:
       work_package_required: "需要先选择一个工作包。"
       title: "记录时间"

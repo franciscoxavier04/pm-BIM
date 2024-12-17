@@ -345,6 +345,9 @@ vi:
         text: "Hành động này sẽ không xóa bất kỳ dự án nào có trong danh sách. Bạn có chắc chắn muốn xóa danh sách dự án này không?"
     settings:
       change_identifier: Thay đổi định danh
+      actions:
+        label_enable_all: "Enable all"
+        label_disable_all: "Disable all"
       activities:
         no_results_title_text: Không có hoạt động nào hiện tại.
       forums:
@@ -355,18 +358,26 @@ vi:
         no_results_content_text: Tạo ra một loại gói công việc mới
       custom_fields:
         no_results_title_text: Không không có trường tùy chỉnh.
+      life_cycle:
+        header:
+          title: "Project lifecycle"
+          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
+        non_defined: "Neither stages nor gates are currently defined."
+        section_header: "Stages and gates"
+        step:
+          use_in_project: "Use %{step} in this project"
+        filter:
+          label: "Search project stage or gate"
       project_custom_fields:
         header:
           title: "Thuộc tính dự án"
-          description: 'Các thuộc tính dự án này sẽ được hiển thị trên <a href=%{overview_url} target="_blank">trang tổng quan dự án</a> của bạn dưới các phần tương ứng của chúng. Bạn có thể bật hoặc tắt các thuộc tính cá nhân. Các thuộc tính và phần của dự án được xác định trong <a href=%{admin_settings_url} target="_blank">cài đặt quản trị</a> bởi quản trị viên của phiên bản.'
+          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "Tìm kiếm thuộc tính dự án"
         actions:
           label_enable_single: "Kích hoạt trong dự án này, nhấp để tắt"
           label_disable_single: "Không kích hoạt trong dự án này, nhấp để bật"
           remove_from_project: "Xóa khỏi dự án"
-          label_enable_all: "Bật tất cả"
-          label_disable_all: "Tắt tất cả"
         is_required_blank_slate:
           heading: Bắt buộc trong tất cả các dự án
           description: Thuộc tính dự án này được kích hoạt trong tất cả các dự án vì tùy chọn "Bắt buộc trong tất cả các dự án" đã được chọn. Nó không thể bị vô hiệu hóa cho các dự án cá nhân.
@@ -568,18 +579,27 @@ vi:
       no_results_title_text: Hiện tại không có loại nào.
       no_results_content_text: Tạo loại mới
     edit:
-      settings: "Cài đặt"
-      form_configuration: "Cấu hình biểu mẫu"
+      form_configuration:
+        tab: "Form configuration"
       more_info_text_html: >
         Phiên bản Doanh nghiệp cho phép bạn tùy chỉnh cấu hình biểu mẫu với các tiện ích bổ sung sau: <br> <ul class="%{list_styling_class}"> <li><b>Thêm nhóm thuộc tính mới</b></li> <li><b>Đổi tên nhóm thuộc tính</b></li> <li><b>Thêm bảng các gói công việc liên quan</b></li> </ul>
-      projects: "Dự án"
-      enabled_projects: "Các dự án đã bật"
-      edit_query: "Chỉnh sửa bảng"
-      query_group_placeholder: "Đặt tên cho bảng"
-      reset: "Đặt lại về mặc định"
-      type_color_text: |
-        Màu đã chọn phân biệt các loại khác nhau
-        trong biểu đồ Gantt hoặc bảng gói công việc. Do đó, nên sử dụng màu mạnh.
+      projects:
+        tab: "Projects"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Settings"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        pattern:
+          label: "Subject pattern"
+          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
   versions:
     overview:
       work_packages_in_archived_projects: "Phiên bản này được chia sẻ với các dự án đã lưu trữ vẫn có gói công việc được gán cho phiên bản này. Những gói công việc này được tính, nhưng sẽ không xuất hiện trong các chế độ xem liên kết."
@@ -1324,6 +1344,8 @@ vi:
         other: "Thông báo"
       placeholder_user: "Người dùng thay thế"
       project: "Dự án"
+      project/gate_definition: "Gate"
+      project/stage_definition: "Stage"
       project_query:
         other: "Danh sách dự án"
       query: "Truy vấn riêng"
@@ -2440,6 +2462,7 @@ vi:
   label_none_parentheses: "(trống)"
   label_not_contains: "không chứa"
   label_not_equals: "không là"
+  label_life_cycle_step_plural: "Project lifecycle"
   label_on: "bật"
   label_operator_all: "không rỗng"
   label_operator_none: "rỗng"
@@ -3051,6 +3074,8 @@ vi:
   permission_search_project: "Tìm kiếm dự án"
   permission_select_custom_fields: "Chọn trường tùy chỉnh"
   permission_select_project_custom_fields: "Chọn thuộc tính dự án"
+  permission_select_project_life_cycle: "Select project stages and gates"
+  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Chọn các mô-đun dự án"
   permission_share_work_packages: "Chia sẻ gói công việc"
   permission_manage_types: "Chọn loại"

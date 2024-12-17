@@ -776,10 +776,6 @@ pl:
         upgrade_to_ee_text: "Znakomicie! Jeśli potrzebujesz tego dodatku, jesteś superprofesjonalistą! Może wesprzesz nas jako deweloperów OpenSource, zostając nabywcą wersji Enterprise?"
         more_information: "Więcej informacji"
         nevermind: "Nieważne"
-      edit:
-        form_configuration: "Konfiguracja formularza"
-        projects: "Projekty"
-        settings: "Ustawienia"
     time_entry:
       work_package_required: "Wymaga wybrania najpierw pakietu roboczego."
       title: "Rejestruj czas pracy"
