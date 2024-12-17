@@ -161,8 +161,10 @@ RSpec.describe ModelContract do
 
     context "when a context is provided" do
       it "propagates the contex to the model as well" do
+        allow(model).to receive(:valid?)
+
         model_contract.valid?(:custom_context)
-        expect(model).to have_receive(:valid?).with(:custom_context)
+        expect(model).to have_received(:valid?).with(:custom_context)
       end
     end
   end
