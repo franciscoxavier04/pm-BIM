@@ -150,6 +150,8 @@ module Components
             else
               expect(parent).to have_no_selector(selector)
             end
+          rescue StandardError
+            raise "Expected to#{present ? '' : ' not'} have a visible selector '#{selector}'."
           end
         end
       end

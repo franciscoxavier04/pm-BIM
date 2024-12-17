@@ -32,12 +32,13 @@ require_relative "../shared_context"
 RSpec.describe "Edit project stages and gates on project overview page", :js, :with_cuprite,
                with_flag: { stages_and_gates: true } do
   include_context "with seeded projects and stages and gates"
-  let(:user) { create(:admin) }
+  shared_let(:overview) { create :overview, project: }
+
   let(:overview_page) { Pages::Projects::Show.new(project) }
 
   before do
     # TODO: Could this work for all feature specs?
-    allow(User).to receive(:current).and_return user
+    allow(User).to receive(:current).and_return admin
     overview_page.visit_page
   end
 
@@ -84,7 +85,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, :w
         initiating_dates = [start_date - 1.week, start_date]
 
         retry_block do
-          # Retrying because, the caption update does not always kick in.
+          # Retrying due to a race condition between filling the input vs submitting the form preview.
           original_dates = [life_cycle_initiating.start_date, life_cycle_initiating.end_date]
           dialog.set_date_for(life_cycle_initiating, value: original_dates)
           dialog.set_date_for(life_cycle_initiating, value: initiating_dates)
@@ -112,14 +113,21 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, :w
       end
 
       it "shows the validation errors" do
+        expect_angular_frontend_initialized
+        wait_for_network_idle
+
         dialog = overview_page.open_edit_dialog_for_life_cycles
 
         expected_text = "Date can’t be earlier than the previous Stage's end date."
 
-        # Retrying because, the validation does not always kick in.
+        # Cycling is required so we always select a different date on the datepicker,
+        # making sure the change event is triggered.
+        cycled_days = [0, 1].cycle
+
+        # Retrying due to a race condition between filling the input vs submitting the form preview.
         retry_block do
-          dialog.set_date_for(life_cycle_ready_for_planning, value: start_date)
-          dialog.set_date_for(life_cycle_ready_for_planning, value: start_date + 1.day)
+          value = start_date + cycled_days.next.days
+          dialog.set_date_for(life_cycle_ready_for_planning, value:)
 
           dialog.expect_validation_message(life_cycle_ready_for_planning, text: expected_text)
         end
@@ -131,9 +139,12 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, :w
         # The validation message is kept after the unsuccessful save attempt
         dialog.expect_validation_message(life_cycle_ready_for_planning, text: expected_text)
 
-        # The validation message is cleared when date is changed
-        dialog.set_date_for(life_cycle_ready_for_planning, value: start_date + 2.days)
-        dialog.expect_no_validation_message(life_cycle_ready_for_planning)
+        retry_block do
+          # The validation message is cleared when date is changed
+          value = start_date + 2.days + cycled_days.next.days
+          dialog.set_date_for(life_cycle_ready_for_planning, value:)
+          dialog.expect_no_validation_message(life_cycle_ready_for_planning)
+        end
 
         # Saving the dialog is successful
         dialog.submit
