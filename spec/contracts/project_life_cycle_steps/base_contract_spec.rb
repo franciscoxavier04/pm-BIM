@@ -116,8 +116,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
           context "and the other steps have increasing dates" do
             let(:steps) { [step1, step_missing_dates, step2] }
 
-            it_behaves_like "contract is invalid",
-                            "available_life_cycle_steps.date_range": :blank
+            it_behaves_like "contract is valid"
           end
 
           context "and the other steps have decreasing dates" do

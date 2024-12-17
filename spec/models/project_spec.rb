@@ -399,7 +399,7 @@ RSpec.describe Project do
     end
 
     describe ".validates_associated" do
-      let!(:project_stage) { create :project_stage, :skip_validate, project:, start_date: nil, end_date: nil }
+      let!(:project_stage) { create :project_stage, :skip_validate, project:, start_date: nil }
 
       it "is valid without a validation context" do
         expect(project).to be_valid
