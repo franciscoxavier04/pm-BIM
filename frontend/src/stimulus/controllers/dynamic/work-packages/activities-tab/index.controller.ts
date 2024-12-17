@@ -410,7 +410,6 @@ export default class IndexController extends Controller {
     observer.observe(scrollableContainer, {
       childList: true,
       subtree: true,
-      attributes: true,
     });
   }
 
