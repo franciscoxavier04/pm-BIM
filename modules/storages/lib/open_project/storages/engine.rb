@@ -50,6 +50,14 @@ module OpenProject::Storages
     # please see comments inside ActsAsOpEngine class
     include OpenProject::Plugins::ActsAsOpEngine
 
+    initializer "openproject_storages.replace_references" do
+      Rails.application.reloader.to_prepare do
+        Principals::ReplaceReferencesService.add_replacement("::Storages::Storage", :creator_id)
+        Principals::ReplaceReferencesService.add_replacement("::Storages::ProjectStorage", :creator_id)
+        Principals::ReplaceReferencesService.add_replacement("::Storages::FileLink", :creator_id)
+      end
+    end
+
     initializer "openproject_storages.feature_decisions" do
       OpenProject::FeatureDecisions.add :storage_file_picking_select_all
     end
@@ -239,8 +247,6 @@ module OpenProject::Storages
         end
       end
     end
-
-    patch_with_namespace :Principals, :ReplaceReferencesService
 
     # This hook is executed when the module is loaded.
     config.to_prepare do

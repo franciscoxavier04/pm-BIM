@@ -30,6 +30,19 @@
 # No data is to be removed.
 module Principals
   class ReplaceReferencesService
+    class << self
+      attr_reader :replacements, :foreign_keys
+
+      def add_replacement(class_name, attribute)
+        @replacements ||= {}
+        @replacements[class_name] ||= Set.new
+        @replacements[class_name] << attribute
+
+        @foreign_keys ||= Set.new
+        @foreign_keys << attribute.to_s
+      end
+    end
+
     def call(from:, to:)
       rewrite_active_models(from, to)
       rewrite_custom_value(from, to)
@@ -42,15 +55,10 @@ module Principals
     private
 
     def rewrite_active_models(from, to)
-      rewrite_author(from, to)
-      rewrite_creator(from, to)
-      rewrite_user(from, to)
-      rewrite_assigned_to(from, to)
-      rewrite_responsible(from, to)
-      rewrite_actor(from, to)
-      rewrite_owner(from, to)
-      rewrite_logged_by(from, to)
-      rewrite_presenter(from, to)
+      self.class.replacements.each do |class_name, attributes|
+        klass = class_name.constantize
+        attributes.each { |attribute| rewrite(klass, attribute, from, to) }
+      end
     end
 
     def rewrite_custom_value(from, to)
@@ -62,7 +70,7 @@ module Principals
 
     def rewrite_default_journals(from, to)
       journal_classes.each do |klass|
-        foreign_keys.each do |foreign_key|
+        self.class.foreign_keys.each do |foreign_key|
           if klass.column_names.include? foreign_key
             rewrite(klass, foreign_key, from, to)
           end
@@ -78,85 +86,8 @@ module Principals
         .update_all(value: to.id.to_s)
     end
 
-    def rewrite_author(from, to)
-      [WorkPackage,
-       Attachment,
-       WikiPage,
-       News,
-       Comment,
-       Message,
-       Budget,
-       MeetingAgenda,
-       MeetingMinutes,
-       MeetingAgendaItem].each do |klass|
-        rewrite(klass, :author_id, from, to)
-      end
-    end
-
-    def rewrite_creator(from, to)
-      [AuthProvider].each do |klass|
-        rewrite(klass, :creator_id, from, to)
-      end
-    end
-
-    def rewrite_user(from, to)
-      [TimeEntry,
-       CostEntry,
-       ::Query,
-       Changeset,
-       CostQuery,
-       MeetingParticipant].each do |klass|
-        rewrite(klass, :user_id, from, to)
-      end
-    end
-
-    def rewrite_actor(from, to)
-      [::Notification].each do |klass|
-        rewrite(klass, :actor_id, from, to)
-      end
-    end
-
-    def rewrite_owner(from, to)
-      [::Doorkeeper::Application].each do |klass|
-        rewrite(klass, :owner_id, from, to)
-      end
-    end
-
-    def rewrite_assigned_to(from, to)
-      [WorkPackage].each do |klass|
-        rewrite(klass, :assigned_to_id, from, to)
-      end
-    end
-
-    def rewrite_responsible(from, to)
-      [WorkPackage].each do |klass|
-        rewrite(klass, :responsible_id, from, to)
-      end
-    end
-
-    def rewrite_logged_by(from, to)
-      [
-        TimeEntry,
-        CostEntry
-      ].each do |klass|
-        rewrite(klass, :logged_by_id, from, to)
-      end
-    end
-
-    def rewrite_presenter(from, to)
-      [
-        MeetingAgendaItem
-      ].each do |klass|
-        rewrite(klass, :presenter_id, from, to)
-      end
-    end
-
     def journal_classes
       [Journal] + Journal::BaseJournal.subclasses
-    end
-
-    def foreign_keys
-      %w[author_id creator_id user_id assigned_to_id responsible_id logged_by_id presenter_id]
     end
 
     def rewrite(klass, attribute, from, to)
