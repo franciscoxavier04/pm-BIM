@@ -104,7 +104,7 @@ RSpec.describe "OpenID Connect", :skip_2fa_stage, # Prevent redirects to 2FA sta
       expect(session_link).not_to be_nil
       expect(session_link.oidc_session).to eq oidc_sid
 
-      token = session&.oidc_user_tokens&.first
+      token = user.oidc_user_tokens.first
       expect(token).not_to be_nil
       expect(token.access_token).to eq access_token
       expect(token.refresh_token).to eq refresh_token

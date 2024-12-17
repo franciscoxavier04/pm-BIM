@@ -33,7 +33,6 @@ module OpenProject::OpenIDConnect::Patches::Sessions::UserSessionPatch
 
     base.class_eval do
       has_one :oidc_session_link, class_name: "OpenIDConnect::UserSessionLink", foreign_key: "session_id"
-      has_many :oidc_user_tokens, class_name: "OpenIDConnect::UserToken", foreign_key: "session_id"
     end
   end
 

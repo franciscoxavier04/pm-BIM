@@ -28,34 +28,26 @@
 
 module OpenIDConnect
   class AssociateUserToken
-    def initialize(session)
-      @session = session
+    def initialize(user)
+      @user = user
     end
 
-    def call(access_token:, refresh_token: nil, assume_idp: false)
+    def call(access_token:, refresh_token: nil, known_audiences: [], clear_previous: false)
       if access_token.blank?
-        Rails.logger.error("Could not associate token to session: No access token")
+        Rails.logger.error("Could not associate token to user: No access token")
         return
       end
 
-      user_session = find_user_session
-      if user_session.nil?
-        Rails.logger.error("Could not associate token to session: User session not found")
+      if @user.nil?
+        Rails.logger.error("Could not associate token to user: Can't find user")
         return
       end
 
-      token = user_session.oidc_user_tokens.build(access_token:, refresh_token:)
+      @user.oidc_user_tokens.destroy_all if clear_previous
+
+      token = @user.oidc_user_tokens.build(access_token:, refresh_token:, audiences: Array(known_audiences))
       # We should discover further audiences from the token in the future
-      token.audiences << UserToken::IDP_AUDIENCE if assume_idp
-
       token.save! if token.audiences.any?
-    end
-
-    private
-
-    def find_user_session
-      private_session_id = @session.id.private_id
-      ::Sessions::UserSession.find_by(session_id: private_session_id)
     end
   end
 end

@@ -32,7 +32,7 @@ module OpenIDConnect
 
     IDP_AUDIENCE = "__op-idp__".freeze
 
-    belongs_to :session, class_name: "Sessions::UserSession", dependent: :delete
+    belongs_to :user
 
     scope :idp, -> { where(audience: IDP_AUDIENCE) }
   end

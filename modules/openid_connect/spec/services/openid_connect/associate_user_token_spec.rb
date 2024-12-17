@@ -28,19 +28,14 @@
 require "spec_helper"
 
 RSpec.describe OpenIDConnect::AssociateUserToken do
-  subject { described_class.new(session).call(**args) }
+  subject { described_class.new(user).call(**args) }
 
-  let(:session) do
-    instance_double(ActionDispatch::Request::Session,
-                    id: instance_double(Rack::Session::SessionId, private_id: 42))
-  end
+  let(:user) { create(:user) }
 
-  let(:args) { { access_token:, refresh_token:, assume_idp: true } }
+  let(:args) { { access_token:, refresh_token:, known_audiences: ["io"] } }
 
   let(:access_token) { "access-token-foo" }
   let(:refresh_token) { "refresh-token-bar" }
-
-  let!(:user_session) { create(:user_session, session_id: session.id.private_id) }
 
   before do
     allow(Rails.logger).to receive(:error)
@@ -50,9 +45,10 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
     expect { subject }.to change(OpenIDConnect::UserToken, :count).by(1)
 
     token = OpenIDConnect::UserToken.last
+    expect(token.user_id).to eq user.id
     expect(token.access_token).to eq access_token
     expect(token.refresh_token).to eq refresh_token
-    expect(token.audiences).to eq ["__op-idp__"]
+    expect(token.audiences).to eq ["io"]
   end
 
   it "logs no error" do
@@ -67,9 +63,10 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
       expect { subject }.to change(OpenIDConnect::UserToken, :count).by(1)
 
       token = OpenIDConnect::UserToken.last
+      expect(token.user_id).to eq user.id
       expect(token.access_token).to eq access_token
       expect(token.refresh_token).to be_nil
-      expect(token.audiences).to eq ["__op-idp__"]
+      expect(token.audiences).to eq ["io"]
     end
 
     it "logs no error" do
@@ -91,8 +88,8 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
     end
   end
 
-  context "when the user session can't be found" do
-    let!(:user_session) { create(:user_session, session_id: SecureRandom.uuid) }
+  context "when no user was passed" do
+    let(:user) { nil }
 
     it "does not create a user token" do
       expect { subject }.not_to change(OpenIDConnect::UserToken, :count)
@@ -104,8 +101,8 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
     end
   end
 
-  context "when we are not allowed to assume the token has the IDP audience" do
-    let(:args) { { access_token:, refresh_token: } }
+  context "when there is no audience" do
+    let(:args) { { access_token:, refresh_token:, known_audiences: [] } }
 
     it "does not create a user token" do
       expect { subject }.not_to change(OpenIDConnect::UserToken, :count)
@@ -114,6 +111,49 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
     it "logs no error" do
       subject
       expect(Rails.logger).not_to have_received(:error)
+    end
+  end
+
+  context "when another user token existed before" do
+    let!(:existing_token) { user.oidc_user_tokens.create!(access_token: "existing", audiences: ["blubb"]) }
+
+    it "keeps the existing token" do
+      subject
+      expect(OpenIDConnect::UserToken.find_by(id: existing_token.id)).to be_present
+    end
+
+    it "creates a correct user token", :aggregate_failures do
+      expect { subject }.to change(OpenIDConnect::UserToken, :count).by(1)
+
+      token = OpenIDConnect::UserToken.last
+      expect(token.user_id).to eq user.id
+      expect(token.access_token).to eq access_token
+      expect(token.refresh_token).to eq refresh_token
+      expect(token.audiences).to eq ["io"]
+    end
+
+    context "and when previous tokens shall be cleared" do
+      let(:args) { { access_token:, refresh_token:, known_audiences: ["io"], clear_previous: true } }
+
+      it "deletes the previous token" do
+        subject
+        expect(OpenIDConnect::UserToken.find_by(id: existing_token.id)).to be_nil
+      end
+
+      it "creates a correct user token", :aggregate_failures do
+        expect { subject }.not_to change(OpenIDConnect::UserToken, :count)
+
+        token = OpenIDConnect::UserToken.last
+        expect(token.user_id).to eq user.id
+        expect(token.access_token).to eq access_token
+        expect(token.refresh_token).to eq refresh_token
+        expect(token.audiences).to eq ["io"]
+      end
+
+      it "logs no error" do
+        subject
+        expect(Rails.logger).not_to have_received(:error)
+      end
     end
   end
 end

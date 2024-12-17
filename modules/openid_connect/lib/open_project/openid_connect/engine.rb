@@ -25,7 +25,7 @@ module OpenProject::OpenIDConnect
       openid_connect/auth_provider-custom.png
     )
 
-    patches %i[Sessions::UserSession]
+    patches %i[Sessions::UserSession User]
 
     class_inflection_override("openid_connect" => "OpenIDConnect")
 

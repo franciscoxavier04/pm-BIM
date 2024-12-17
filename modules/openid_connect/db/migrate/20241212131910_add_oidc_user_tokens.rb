@@ -28,21 +28,14 @@
 
 class AddOidcUserTokens < ActiveRecord::Migration[7.1]
   def change
-    create_unlogged_tables = ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.create_unlogged_tables
-    begin
-      ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.create_unlogged_tables = true
+    create_table :oidc_user_tokens do |t|
+      t.references :user, null: false, index: true, foreign_key: { on_delete: :cascade }
 
-      create_table :oidc_user_tokens do |t|
-        t.references :session, index: true, foreign_key: { to_table: "sessions", on_delete: :cascade }
+      t.string :access_token, null: false
+      t.string :refresh_token, null: true
+      t.jsonb :audiences, null: false, default: []
 
-        t.string :access_token, null: false
-        t.string :refresh_token, null: true
-        t.jsonb :audiences, null: false, default: []
-
-        t.timestamps
-      end
-    ensure
-      ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.create_unlogged_tables = create_unlogged_tables
+      t.timestamps
     end
   end
 end
