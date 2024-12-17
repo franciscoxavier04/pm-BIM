@@ -342,6 +342,9 @@ ru:
         text: "Это действие не приведет к удалению ни одного проекта, содержащегося в списке. Вы уверены, что хотите удалить этот список проектов?"
     settings:
       change_identifier: Идентификатор изменений
+      actions:
+        label_enable_all: "Enable all"
+        label_disable_all: "Disable all"
       activities:
         no_results_title_text: В настоящее время никакой активности.
       forums:
@@ -352,18 +355,26 @@ ru:
         no_results_content_text: Создать новую категорию пакета работ
       custom_fields:
         no_results_title_text: Нет доступных настраиваемых полей.
+      life_cycle:
+        header:
+          title: "Project lifecycle"
+          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
+        non_defined: "Neither stages nor gates are currently defined."
+        section_header: "Stages and gates"
+        step:
+          use_in_project: "Use %{step} in this project"
+        filter:
+          label: "Search project stage or gate"
       project_custom_fields:
         header:
           title: "Атрибуты проекта"
-          description: 'Эти атрибуты проекта будут отображаться на Вашей <a href=%{overview_url} target="_blank">странице обзора проекта</a> в соответствующих разделах. Вы можете включить или отключить отдельные атрибуты. Атрибуты проекта и разделы определяются в <a href=%{admin_settings_url} target="_blank">настройках администрирования</a> администратором экземпляра.'
+          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "Поиск атрибута проекта"
         actions:
           label_enable_single: "Активно в этом проекте, нажмите для отключения"
           label_disable_single: "Неактивно в этом проекте, нажмите для включения"
           remove_from_project: "Удалить из проекта"
-          label_enable_all: "Включить всё"
-          label_disable_all: "Выключить всё"
         is_required_blank_slate:
           heading: Требуется во всех проектах
           description: Этот атрибут проекта активирован во всех проектах, поскольку установлен флажок «Требуется во всех проектах». Его нельзя отключить для отдельных проектов.
@@ -586,18 +597,27 @@ ru:
       no_results_title_text: В данный момент типы отсутствуют.
       no_results_content_text: Создать новый тип
     edit:
-      settings: "Настройки"
-      form_configuration: "Настройка форм"
+      form_configuration:
+        tab: "Form configuration"
       more_info_text_html: >
         Корпоративная редакция позволяет настроить конфигурацию форм с этими дополнительными возможностями: <br> <ul class="%{list_styling_class}"> <li><b>Добавить новые группы атрибутов</b></li> <li><b>Переименовать группы атрибутов</b></li> </ul>
-      projects: "Проекты"
-      enabled_projects: "Доступные проекты"
-      edit_query: "Изменить таблицу"
-      query_group_placeholder: "Дайте таблице название"
-      reset: "Восстановить значения по умолчанию"
-      type_color_text: |
-        Выбранный цвет выделяет разные типы
-        в диаграммах Ганта или таблицах пакетов работ. Поэтому рекомендуется использовать насыщенный цвет.
+      projects:
+        tab: "Projects"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Settings"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        pattern:
+          label: "Subject pattern"
+          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
   versions:
     overview:
       work_packages_in_archived_projects: "Эта версия используется совместно с архивными проектами, в которых все еще есть рабочие пакеты, назначенные на эту версию. Они учитываются, но не отображаются в связанных представлениях."
@@ -1354,6 +1374,8 @@ ru:
         other: "Уведомлений"
       placeholder_user: "Пользователь-заполнитель"
       project: "Проект"
+      project/gate_definition: "Gate"
+      project/stage_definition: "Stage"
       project_query:
         one: "Список проектов"
         few: "Списки проектов"
@@ -2545,6 +2567,7 @@ ru:
   label_none_parentheses: "(нет)"
   label_not_contains: "не содержит"
   label_not_equals: "не"
+  label_life_cycle_step_plural: "Project lifecycle"
   label_on: "на"
   label_operator_all: "не пусто"
   label_operator_none: "пусто"
@@ -3161,6 +3184,8 @@ ru:
   permission_search_project: "Поиск проекта"
   permission_select_custom_fields: "Выберите настраиваемые поля"
   permission_select_project_custom_fields: "Выберите атрибуты проекта"
+  permission_select_project_life_cycle: "Select project stages and gates"
+  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Выбор модулей проекта"
   permission_share_work_packages: "Поделиться пакетами работ"
   permission_manage_types: "Выберите типы"

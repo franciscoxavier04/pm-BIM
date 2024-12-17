@@ -773,10 +773,6 @@ tr:
         upgrade_to_ee_text: "Vay! Bu eklentiye ihtiyacınız varsa, siz bir süper profesyonelsiniz! Enterprise sürümü müşterisi olarak biz OpenSource geliştiricilerini destekler misiniz?"
         more_information: "Daha fazla bilgi"
         nevermind: "Boşver"
-      edit:
-        form_configuration: "Form Yapılandırması"
-        projects: "Projeler"
-        settings: "Ayarlar"
     time_entry:
       work_package_required: "Önce bir iş paketi seçilmesini gerektirir."
       title: "Zaman kaydet"

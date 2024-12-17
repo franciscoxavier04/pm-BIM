@@ -774,10 +774,6 @@ es:
         upgrade_to_ee_text: "¡Vaya! Si necesita está extensión, entonces ¡es un usuario experto! ¿Le importaría apoyar a los desarrolladores de código abierto convirtiéndose en cliente de Enterprise?"
         more_information: "Más información"
         nevermind: "No importa"
-      edit:
-        form_configuration: "Configuración del formulario"
-        projects: "Proyectos"
-        settings: "Configuración"
     time_entry:
       work_package_required: "Es necesario seleccionar primero un paquete de trabajo."
       title: "Registro de tiempo"

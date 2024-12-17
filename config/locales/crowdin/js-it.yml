@@ -774,10 +774,6 @@ it:
         upgrade_to_ee_text: "Wow! Se hai bisogno di questa aggiunta sei un vero professionista! Ti andrebbe di aiutare noi sviluppatori OpenSource diventando un cliente dell'edizione Enterprise?"
         more_information: "Altre informazioni"
         nevermind: "Lascia stare"
-      edit:
-        form_configuration: "Configurazione del modulo"
-        projects: "Progetti"
-        settings: "Impostazioni"
     time_entry:
       work_package_required: "Richiede prima di selezionare una macro-attività."
       title: "Registra l'orario effettuato"

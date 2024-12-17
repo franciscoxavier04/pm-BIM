@@ -774,10 +774,6 @@ ro:
         upgrade_to_ee_text: "Wow! Dacă aveți nevoie de acest add-on sunteți un super profesionist! Vrei să ne sprijini pe noi, dezvoltatorii OpenSource, devenind client al ediției Enterprise?"
         more_information: "Mai multe informatii"
         nevermind: "Asta e..."
-      edit:
-        form_configuration: "Configurare formular"
-        projects: "Proiecte"
-        settings: "Setări"
     time_entry:
       work_package_required: "Necesită să se selecteze mai întâi un pachet de lucru."
       title: "Registru timp"

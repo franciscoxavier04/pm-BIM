@@ -773,10 +773,6 @@ pt-BR:
         upgrade_to_ee_text: "Uau! Se você precisa deste complemento, é porque é um super profissional! Gostaria de mostrar seu suporte aos desenvolvedores de código aberto tornando-se um cliente da edição Enterprise?"
         more_information: "Mais informações"
         nevermind: "Deixa pra lá"
-      edit:
-        form_configuration: "Configuração do formulário"
-        projects: "Projetos"
-        settings: "Configurações"
     time_entry:
       work_package_required: "É necessário selecionar primeiro um pacote de trabalho."
       title: "Registro de tempo"
