@@ -894,7 +894,7 @@ zh-TW:
         derived_remaining_hours: "剩餘時數"
         derived_remaining_time: "剩餘時數"
         done_ratio: "完成度(%)"
-        duration: "天數"
+        duration: "時長"
         end_insertion: "結束插入"
         end_deletion: "結束刪除"
         ignore_non_working_days: "忽略非工作日"
