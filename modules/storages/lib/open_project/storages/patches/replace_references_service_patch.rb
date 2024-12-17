@@ -6,12 +6,9 @@ module OpenProject::Storages::Patches::ReplaceReferencesServicePatch
   module InstanceMethods
     private
 
-    def rewrite_active_models(from, to)
-      super
-      rewrite_creator(from, to)
-    end
-
     def rewrite_creator(from, to)
+      super
+
       [::Storages::Storage,
        ::Storages::ProjectStorage,
        ::Storages::FileLink].each do |klass|
