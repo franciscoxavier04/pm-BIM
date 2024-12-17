@@ -118,7 +118,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, :w
 
         dialog = overview_page.open_edit_dialog_for_life_cycles
 
-        expected_text = "Date can’t be earlier than the previous Stage's end date."
+        expected_text = "Date can't be earlier than the previous Stage's end date."
 
         # Cycling is required so we always select a different date on the datepicker,
         # making sure the change event is triggered.
