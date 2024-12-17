@@ -61,6 +61,7 @@ RSpec.describe "Recurring meetings creation",
   let(:current_user) { user }
   let(:meeting) { RecurringMeeting.last }
   let(:show_page) { Pages::RecurringMeeting::Show.new(meeting) }
+  let(:template_page) { Pages::StructuredMeeting::Show.new(meeting.template) }
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
   before do
@@ -96,13 +97,36 @@ RSpec.describe "Recurring meetings creation",
       # Use is redirected to the template
       expect(page).to have_current_path(project_meeting_path(project, meeting.template))
       expect(page).to have_content(I18n.t("recurring_meeting.template.description"))
+
+      # Add participants
+      template_page.open_participant_form
+      template_page.in_participant_form do
+        template_page.expect_participant_invited(user, invited: true)
+        template_page.expect_participant_invited(other_user, invited: false)
+        template_page.expect_available_participants(count: 2)
+        expect(page).to have_button("Save")
+
+        template_page.invite_participant(other_user)
+
+        template_page.expect_participant_invited(user, invited: true)
+        template_page.expect_participant_invited(other_user, invited: true)
+
+        click_on("Save")
+      end
+      wait_for_network_idle
+
+      expect(page).to have_css("#meetings-side-panel-participants-component", text: 2)
+
       expect(page).to have_link("Finish template")
 
       click_link_or_button "Finish template"
+      wait_for_network_idle
 
-      # Does not send invitation mails by default
+      # Sends out an invitation to the series
       perform_enqueued_jobs
-      expect(ActionMailer::Base.deliveries.size).to eq 0
+      expect(ActionMailer::Base.deliveries.size).to eq 2
+      title = ActionMailer::Base.deliveries.map(&:subject).uniq.first
+      expect(title).to eq "[#{project.name}] Meeting series Some title"
 
       show_page.visit!
       expect(page).to have_css(".start_time", count: 3)

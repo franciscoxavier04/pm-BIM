@@ -8,8 +8,9 @@ class RecurringMeetingsController < ApplicationController
 
   before_action :find_meeting,
                 only: %i[show update details_dialog destroy edit init
-                         delete_scheduled template_completed download_ics]
-  before_action :find_optional_project, only: %i[index show new create update details_dialog destroy edit delete_scheduled]
+                         delete_scheduled template_completed download_ics notify]
+  before_action :find_optional_project,
+                only: %i[index show new create update details_dialog destroy edit delete_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
   before_action :get_scheduled_meeting, only: %i[delete_scheduled]
@@ -151,6 +152,7 @@ class RecurringMeetingsController < ApplicationController
       .call(start_time: @first_occurrence.to_time)
 
     if call.success?
+      deliver_invitation_mails
       flash[:success] = I18n.t("recurring_meeting.occurrence.first_created")
     else
       flash[:error] = call.message
@@ -186,7 +188,27 @@ class RecurringMeetingsController < ApplicationController
     end
   end
 
+  def notify
+    deliver_invitation_mails
+    flash[:notice] = I18n.t(:notice_successful_notification)
+    redirect_to action: :show
+  end
+
   private
+
+  def deliver_invitation_mails
+    @recurring_meeting
+      .template
+      .participants
+      .invited
+      .find_each do |participant|
+      MeetingSeriesMailer.template_completed(
+        @recurring_meeting,
+        participant.user,
+        User.current
+      ).deliver_later
+    end
+  end
 
   def upcoming_meetings(count:)
     meetings = @recurring_meeting
