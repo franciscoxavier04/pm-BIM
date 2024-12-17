@@ -1,7 +1,16 @@
-<button class="button toolbar-icon d-flex flex-items-center" data-test-selector="op-wp-reminder-button"
-  [attr.title]="buttonTitle" (click)="openModal()">
-  <svg clock-icon class="button--icon" size="small"></svg>
-  <span *ngIf="(reminderCount$ | async) as reminderCount" class="ml-1 text-small badge -secondary"
-    [textContent]="reminderCount">
+<button
+  class="button toolbar-icon d-flex flex-items-center"
+  data-test-selector="op-wp-reminder-button"
+  [attr.title]="buttonTitle"
+  (click)="openModal()"
+>
+  <svg
+    clock-icon
+    class="button--icon"
+    size="small"
+  ></svg>
+  <span *ngIf="(reminderCount$ | async) as reminderCount"
+        class="ml-1 text-small badge -secondary"
+        [textContent]="reminderCount">
   </span>
 </button>
