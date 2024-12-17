@@ -60,6 +60,7 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, :w
         expect(page).to have_text("Project lifecycle")
       end
     end
+  end
 
   describe "with Edit project permissions" do
     let(:permissions) { [:view_project, :view_project_stages_and_gates, :edit_project] }

@@ -139,6 +139,9 @@ RSpec.describe Project::Stage do
                 .and_return([])
 
       expect(subject.working_days_count).to eq(0)
+
+      expect(Day).to have_received(:working).with(no_args)
+      expect(Day).to have_received(:from_range).with(from: subject.start_date, to: subject.end_date)
     end
   end
 end

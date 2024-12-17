@@ -1235,12 +1235,12 @@ en:
             type:
               type_and_class_name_mismatch: "must be a Project::Gate"
             date:
-              non_continuous_dates: "can’t be earlier than the previous %{step}'s end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
         project/stage:
           attributes:
             date_range:
               start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can’t be earlier than the previous %{step}'s end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
               incomplete: "is incomplete."
             type:
               type_and_class_name_mismatch: "must be a Project::Stage"

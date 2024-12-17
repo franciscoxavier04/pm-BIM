@@ -37,7 +37,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
   let(:contract) { described_class.new(project, user) }
   let(:project) { build_stubbed(:project) }
 
-  context "with authorised user" do
+  context "with authorized user" do
     let(:user) { build_stubbed(:user) }
     let(:project) { build_stubbed(:project, available_life_cycle_steps: steps) }
     let(:steps) { [] }
@@ -145,7 +145,7 @@ RSpec.describe ProjectLifeCycleSteps::BaseContract do
     end
   end
 
-  context "with unauthorised user" do
+  context "with unauthorized user" do
     let(:user) { build_stubbed(:user) }
 
     it_behaves_like "contract user is unauthorized"

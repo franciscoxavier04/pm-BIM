@@ -32,10 +32,6 @@ module ProjectLifeCycles
       include ApplicationHelper
       include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
-
-      def life_cycle_steps
-        model.life_cycle_steps.active.eager_load(:definition).order(position: :asc)
-      end
     end
   end
 end

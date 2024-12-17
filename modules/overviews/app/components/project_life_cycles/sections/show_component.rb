@@ -37,8 +37,7 @@ module ProjectLifeCycles
         super
 
         @project = project
-        @life_cycle_steps =
-          @project.life_cycle_steps.active.eager_load(:definition).order(position: :asc)
+        @life_cycle_steps = @project.available_life_cycle_steps
       end
 
       private

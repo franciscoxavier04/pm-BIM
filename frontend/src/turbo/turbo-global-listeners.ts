@@ -69,7 +69,7 @@ export function addTurboGlobalListeners() {
     const element = event.target as HTMLElement;
 
     // In case the element is an OpenProject custom dom element, morphing is prevented.
-    if (element.tagName.startsWith('OPCE-')) {
+    if (element.tagName.toUpperCase().startsWith('OPCE-')) {
       event.preventDefault();
     }
   });

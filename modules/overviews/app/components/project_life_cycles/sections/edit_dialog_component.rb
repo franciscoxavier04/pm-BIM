@@ -32,6 +32,10 @@ module ProjectLifeCycles
       include ApplicationHelper
       include OpTurbo::Streamable
       include OpPrimer::ComponentHelpers
+
+      def dialog_id
+        "edit-project-life-cycles-dialog"
+      end
     end
   end
 end

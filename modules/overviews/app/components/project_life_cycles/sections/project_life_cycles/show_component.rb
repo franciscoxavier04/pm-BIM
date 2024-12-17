@@ -40,18 +40,14 @@ module ProjectLifeCycles
         end
 
         def render_value
-          case model
-          when Project::Gate
-            render(Primer::Beta::Text.new) do
-              concat helpers.format_date(model.date)
-            end
-          when Project::Stage
-            render(Primer::Beta::Text.new) do
-              concat [
-                helpers.format_date(model.start_date),
-                helpers.format_date(model.end_date)
-              ].join(" - ")
-            end
+          render(Primer::Beta::Text.new) do
+            concat [
+              model.start_date,
+              model.end_date
+            ]
+            .compact
+            .map { |d| helpers.format_date(d) }
+            .join(" - ")
           end
         end
 

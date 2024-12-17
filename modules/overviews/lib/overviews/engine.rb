@@ -47,8 +47,7 @@ module Overviews
         OpenProject::AccessControl.permission(:view_project)
           .controller_actions
           .push(
-            "overviews/overviews/show",
-            "overviews/overviews/project_life_cycles_sidebar"
+            "overviews/overviews/show"
           )
 
         OpenProject::AccessControl.permission(:view_project_attributes)
