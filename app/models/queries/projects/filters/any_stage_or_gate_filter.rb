@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 # -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -28,38 +26,56 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-# rubocop:disable OpenProject/AddPreviewForViewComponent
-class Projects::ProjectsFiltersComponent < Filter::FilterComponent
-  # rubocop:enable OpenProject/AddPreviewForViewComponent
-  def allowed_filters
-    super
-      .select { |f| allowed_filter?(f) }
-      .sort_by(&:human_name)
+class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filters::Base
+  def type
+    :date
   end
 
-  def turbo_requests?
-    true
+  def available_operators
+    [::Queries::Operators::OnDate]
   end
 
-  private
+  def default_operator
+    ::Queries::Operators::OnDate
+  end
 
-  def allowed_filter?(filter)
-    allowlist = [
-      Queries::Filters::Shared::CustomFields::Base,
-      Queries::Projects::Filters::ActiveFilter,
-      Queries::Projects::Filters::CreatedAtFilter,
-      Queries::Projects::Filters::FavoredFilter,
-      Queries::Projects::Filters::IdFilter,
-      Queries::Projects::Filters::LatestActivityAtFilter,
-      Queries::Projects::Filters::MemberOfFilter,
-      Queries::Projects::Filters::NameAndIdentifierFilter,
-      Queries::Projects::Filters::ProjectStatusFilter,
-      Queries::Projects::Filters::PublicFilter,
-      Queries::Projects::Filters::TemplatedFilter,
-      Queries::Projects::Filters::TypeFilter,
-      Queries::Projects::Filters::AnyStageOrGateFilter
-    ]
+  def available?
+    OpenProject::FeatureDecisions.stages_and_gates_active? &&
+      User.current.allowed_in_any_project?(:view_project_stages_and_gates)
+  end
 
-    allowlist.any? { |clazz| filter.is_a? clazz }
+  def human_name
+    I18n.t("project.filters.any_stage_or_gate")
+  end
+
+  def where
+    case operator
+    when "=d"
+      stage_where
+        .or(gate_where)
+        .arel
+        .exists
+    else
+      raise "Unknown operator #{operator}"
+    end
+  end
+
+  def stage_where
+    date = Date.parse(values.first)
+
+    Project::LifeCycleStep
+      .where("project_id = #{Project.table_name}.id")
+      .where(type: Project::Stage.name)
+      .where("start_date <= ? AND end_date >= ?", date, date)
+  end
+
+  def gate_where
+    # On gates, only the start_date is set.
+    date = Date.parse(values.first)
+
+    Project::LifeCycleStep
+      .where("project_id = #{Project.table_name}.id")
+      .where(type: Project::Gate.name)
+      .where(start_date: date)
   end
 end

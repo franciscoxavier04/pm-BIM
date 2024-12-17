@@ -616,4 +616,45 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
       projects_page.expect_columns("Name", "Created on", "Status")
     end
   end
+
+  describe "filtering for lifecycle" do
+    shared_let(:stage) do
+      create(:project_stage, project:, start_date: Time.zone.today + 5.days, end_date: Time.zone.today + 10.days)
+    end
+    shared_let(:gate) { create(:project_gate, project: public_project, date: Time.zone.today + 8.days) }
+
+    context "with the feature flag disabled", with_flag: { stages_and_gates: false } do
+      it "does not have any lifecycle filter" do
+        load_and_open_filters manager
+
+        projects_page.expect_filter_not_available("Any stage or gate")
+      end
+    end
+
+    context "with the feature flag enabled", with_flag: { stages_and_gates: true } do
+      context "with the necessary permissions" do
+        before do
+          project_role.add_permission!(:view_project_stages_and_gates)
+        end
+
+        it "allows filtering the projects by life cycle elements" do
+          load_and_open_filters manager
+
+          projects_page.expect_filter_available("Any stage or gate")
+
+          projects_page.set_filter("any_stage_or_gate", "Any stage or gate", "on", [Time.zone.today + 8.days])
+
+          projects_page.expect_projects_in_order(project, public_project)
+        end
+      end
+
+      context "without the necessary permissions" do
+        it "does not have any lifecycle filter" do
+          load_and_open_filters manager
+
+          projects_page.expect_filter_not_available("Any stage or gate")
+        end
+      end
+    end
+  end
 end
