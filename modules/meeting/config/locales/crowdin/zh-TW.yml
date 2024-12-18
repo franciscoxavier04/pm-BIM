@@ -184,7 +184,8 @@ zh-TW:
     types:
       classic: "經典"
       classic_text: "將會議組織為單一可格式化的文字議程和規程。"
-      structured: "一次性"
+      structured: "Structured"
+      one_time: "One-time"
       recurring: "重覆"
       recurring_text: "為每次發生的事件建立具有動態範本的會議系列。"
       structured_text: "將會議組織為動態的議程項目清單，可選擇將其連結到工作項目。"
