@@ -29,8 +29,8 @@
 require "rails_helper"
 
 RSpec.describe Project::LifeCycleStep do
-  it "cannot be instantiated" do
-    expect { described_class.new }.to raise_error(NotImplementedError)
+  it "can be instantiated" do
+    expect { described_class.new }.not_to raise_error(NotImplementedError)
   end
 
   describe "with an instantiated Gate" do
@@ -38,6 +38,14 @@ RSpec.describe Project::LifeCycleStep do
 
     it { is_expected.to have_readonly_attribute(:definition_id) }
     it { is_expected.to have_readonly_attribute(:type) }
+  end
+
+  describe "validations" do
+    it "is invalid if type and class name do not match" do
+      subject.type = "Project::Gate"
+      expect(subject).not_to be_valid
+      expect(subject.errors.symbols_for(:type)).to include(:type_and_class_name_mismatch)
+    end
   end
 
   # For more specs see:
