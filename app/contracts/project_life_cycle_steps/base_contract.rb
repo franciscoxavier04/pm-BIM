@@ -50,7 +50,7 @@ module ProjectLifeCycleSteps
 
       # Compare consecutive steps in pairs
       filtered_steps.each_cons(2) do |previous_step, current_step|
-        if start_date_for(current_step) <= end_date_for(previous_step)
+        if has_invalid_dates?(previous_step, current_step)
           step = previous_step.is_a?(Project::Stage) ? "Stage" : "Gate"
           field = current_step.is_a?(Project::Stage) ? :date_range : :date
           model.errors.import(
@@ -73,6 +73,14 @@ module ProjectLifeCycleSteps
         step.date
       when Project::Stage
         step.end_date || step.start_date # Use the start_date as fallback for single date stages
+      end
+    end
+
+    def has_invalid_dates?(previous_step, current_step)
+      if previous_step.instance_of?(current_step.class)
+        start_date_for(current_step) <= end_date_for(previous_step)
+      else
+        start_date_for(current_step) < end_date_for(previous_step)
       end
     end
   end
