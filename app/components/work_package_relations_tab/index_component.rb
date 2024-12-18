@@ -66,19 +66,58 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
              padding: :condensed,
              data: { test_selector: "op-relation-group-#{relation_type}" }
            )) do |border_box|
-      render_header(border_box, title, items)
+      if relation_type == :children && should_render_add_child?
+        render_children_header(border_box, title, items)
+      else
+        render_header(border_box, title, items)
+      end
+
       render_items(border_box, items, &_block)
     end
   end
 
   def render_header(border_box, title, items)
     border_box.with_header(py: 3) do
-      flex_layout(align_items: :center) do |flex|
-        flex.with_column(mr: 2) do
-          render(Primer::Beta::Text.new(font_size: :normal, font_weight: :bold)) { title }
+      concat render(Primer::Beta::Text.new(mr: 2, font_size: :normal, font_weight: :bold)) { title }
+      concat render(Primer::Beta::Counter.new(count: items.size, round: true, scheme: :primary))
+    end
+  end
+
+  def render_children_header(border_box, title, items)
+    border_box.with_header(py: 3) do
+      flex_layout(justify_content: :space_between) do |header|
+        header.with_column(mr: 2) do
+          concat render(Primer::Beta::Text.new(mr: 2, font_size: :normal, font_weight: :bold)) { title }
+          concat render(Primer::Beta::Counter.new(count: items.size, round: true, scheme: :primary))
         end
-        flex.with_column do
-          render(Primer::Beta::Counter.new(count: items.size, round: true, scheme: :primary))
+        header.with_column do
+          render(Primer::Alpha::ActionMenu.new(menu_id: "new-child-relation")) do |menu|
+            menu.with_show_button do |button|
+              button.with_leading_visual_icon(icon: :plus)
+              button.with_trailing_action_icon(icon: :"triangle-down")
+              t("work_package_relations_tab.label_add_child_button")
+            end
+
+            menu.with_item(
+              label: t("work_package_relations_tab.relations.new_child"),
+              href: "#",
+              content_arguments: {
+                data: { turbo_stream: true }
+              }
+            ) do |item|
+              item.with_description.with_content(t("work_package_relations_tab.relations.new_child_text"))
+            end
+
+            menu.with_item(
+              label: t("work_package_relations_tab.relations.existing_child"),
+              href: "#",
+              content_arguments: {
+                data: { turbo_stream: true }
+              }
+            ) do |item|
+              item.with_description.with_content(t("work_package_relations_tab.relations.child_description"))
+            end
+          end
         end
       end
     end
