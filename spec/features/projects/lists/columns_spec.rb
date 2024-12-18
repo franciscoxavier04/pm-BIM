@@ -277,6 +277,35 @@ RSpec.describe "Projects lists columns", :js, :with_cuprite, with_settings: { lo
     end
 
     context "with the feature flag enabled", with_flag: { stages_and_gates: true } do
+      specify "life cycle columns cannot be configured to show up for users without view_project_stages_and_gates permission" do
+        user = create(:user, member_with_permissions: { project => %i(view_project),
+                                                        development_project => %i(view_project) })
+
+        login_as(user)
+        projects_page.visit!
+
+        element_selector = "#columns-select_autocompleter ng-select.op-draggable-autocomplete--input"
+        results_selector = "#columns-select_autocompleter ng-dropdown-panel .ng-dropdown-panel-items"
+        projects_page.expect_no_config_columns(life_cycle_gate.definition.name,
+                                               life_cycle_stage.definition.name,
+                                               inactive_life_cycle_gate.definition.name,
+                                               inactive_life_cycle_stage.definition.name,
+                                               element_selector:,
+                                               results_selector:)
+      end
+
+      specify "life cycle columns show up when configured to do so for users with view_project_stages_and_gates permission" do
+        user = create(:user, member_with_permissions: { project => %i(view_project_stages_and_gates),
+                                                        development_project => %i(view_project_stages_and_gates) })
+        login_as(user)
+        projects_page.visit!
+
+        projects_page.expect_columns("Name")
+        projects_page.set_columns(life_cycle_gate.definition.name)
+
+        expect(page).to have_text(life_cycle_gate.definition.name.upcase)
+      end
+
       specify "life cycle columns do not show up by default" do
         login_as(admin)
         projects_page.visit!
