@@ -40,6 +40,15 @@ RSpec.describe Project::LifeCycleStepDefinition do
   end
 
   describe "validations" do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name) }
+
+    it {
+      expect(subject).to validate_inclusion_of(:type)
+        .in_array(%w[Project::StageDefinition Project::GateDefinition])
+        .with_message(:must_be_a_stage_or_gate)
+    }
+
     it "is invalid if type and class name do not match" do
       subject.type = "Project::GateDefinition"
       expect(subject).not_to be_valid
