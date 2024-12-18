@@ -2,18 +2,20 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   include ApplicationHelper
   include OpPrimer::ComponentHelpers
 
-  attr_reader :work_package, :relation, :child, :visibility
+  attr_reader :work_package, :relation, :visibility, :child, :editable
 
   def initialize(work_package:,
                  relation:,
                  visibility:,
-                 child: nil)
+                 child: nil,
+                 editable: true)
     super()
 
     @work_package = work_package
     @relation = relation
     @visibility = visibility
     @child = child
+    @editable = editable
   end
 
   def related_work_package
@@ -34,6 +36,8 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def should_render_action_menu?
+    return false unless editable
+
     if parent_child_relationship?
       allowed_to_manage_subtasks?
     else
