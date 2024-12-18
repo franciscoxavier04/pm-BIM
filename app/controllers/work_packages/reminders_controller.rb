@@ -98,10 +98,7 @@ class WorkPackages::RemindersController < ApplicationController
       render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_deletion_message"))
       respond_with_turbo_streams
     else
-      render_flash_message_via_turbo_stream(
-        message: service_result.errors.full_messages,
-        scheme: :danger
-      )
+      render_error_flash_message_via_turbo_stream(message: service_result.errors.full_messages)
       respond_with_turbo_streams(status: :unprocessable_entity)
     end
   end
@@ -167,10 +164,7 @@ class WorkPackages::RemindersController < ApplicationController
                              .upcoming_and_visible_to(User.current)
                              .find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    render_flash_message_via_turbo_stream(
-      message: I18n.t(:error_reminder_not_found),
-      scheme: :danger
-    )
+    render_error_flash_message_via_turbo_stream(message: I18n.t(:error_reminder_not_found))
     respond_with_turbo_streams(status: :not_found)
     false
   end
