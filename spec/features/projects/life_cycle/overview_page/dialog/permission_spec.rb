@@ -32,12 +32,13 @@ require_relative "../shared_context"
 RSpec.describe "Edit project stages and gates on project overview page", :js, :with_cuprite,
                with_flag: { stages_and_gates: true } do
   include_context "with seeded projects and stages and gates"
-  let(:user) { create(:user) }
+  shared_let(:user) { create(:user) }
   let(:overview_page) { Pages::Projects::Show.new(project) }
   let(:permissions) { [] }
 
+  current_user { user }
+
   before do
-    allow(User).to receive(:current).and_return user
     mock_permissions_for(user) do |mock|
       mock.allow_in_project(*permissions, project:) # any project
     end

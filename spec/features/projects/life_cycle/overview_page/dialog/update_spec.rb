@@ -36,9 +36,9 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, :w
 
   let(:overview_page) { Pages::Projects::Show.new(project) }
 
+  current_user { admin }
+
   before do
-    # TODO: Could this work for all feature specs?
-    allow(User).to receive(:current).and_return admin
     overview_page.visit_page
   end
 

@@ -34,9 +34,7 @@ RSpec.describe "Show project life cycles on project overview page", :js, :with_c
 
   let(:overview_page) { Pages::Projects::Show.new(project) }
 
-  before do
-    login_as admin
-  end
+  current_user { admin }
 
   it "does show the sidebar" do
     overview_page.visit_page
@@ -66,17 +64,17 @@ RSpec.describe "Show project life cycles on project overview page", :js, :with_c
       overview_page.visit_page
 
       overview_page.within_life_cycles_sidebar do
-        fields = page.all(".op-project-life-cycle-container")
-
-        expect(fields.size).to eq(7)
-
-        expect(fields[0].text).to include("Initiating")
-        expect(fields[1].text).to include("Ready for Planning")
-        expect(fields[2].text).to include("Planning")
-        expect(fields[3].text).to include("Ready for Executing")
-        expect(fields[4].text).to include("Executing")
-        expect(fields[5].text).to include("Ready for Closing")
-        expect(fields[6].text).to include("Closing")
+        expected_stages = [
+          "Initiating",
+          "Ready for Planning",
+          "Planning",
+          "Ready for Executing",
+          "Executing",
+          "Ready for Closing",
+          "Closing"
+        ]
+        fields = page.all(".op-project-life-cycle-container > div:first-child")
+        expect(fields.map(&:text)).to eq(expected_stages)
       end
 
       life_cycle_ready_for_executing_definition.move_to_bottom
@@ -84,17 +82,17 @@ RSpec.describe "Show project life cycles on project overview page", :js, :with_c
       overview_page.visit_page
 
       overview_page.within_life_cycles_sidebar do
-        fields = page.all(".op-project-life-cycle-container")
-
-        expect(fields.size).to eq(7)
-
-        expect(fields[0].text).to include("Initiating")
-        expect(fields[1].text).to include("Ready for Planning")
-        expect(fields[2].text).to include("Planning")
-        expect(fields[3].text).to include("Executing")
-        expect(fields[4].text).to include("Ready for Closing")
-        expect(fields[5].text).to include("Closing")
-        expect(fields[6].text).to include("Ready for Executing")
+        expected_stages = [
+          "Initiating",
+          "Ready for Planning",
+          "Planning",
+          "Executing",
+          "Ready for Closing",
+          "Closing",
+          "Ready for Executing"
+        ]
+        fields = page.all(".op-project-life-cycle-container > div:first-child")
+        expect(fields.map(&:text)).to eq(expected_stages)
       end
     end
 
