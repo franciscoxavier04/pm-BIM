@@ -80,7 +80,7 @@ module Admin::Settings
 
     def destroy
       if @definition.destroy
-        update_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_delete))
+        render_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_delete))
       else
         render_error_flash_message_via_turbo_stream(message: join_flash_messages(@definition.errors.full_messages))
       end

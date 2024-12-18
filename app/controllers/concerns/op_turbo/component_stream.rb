@@ -76,10 +76,10 @@ module OpTurbo
     end
 
     def render_error_flash_message_via_turbo_stream(**)
-      update_flash_message_via_turbo_stream(**, scheme: :danger, icon: :stop)
+      render_flash_message_via_turbo_stream(**, scheme: :danger, icon: :stop)
     end
 
-    def update_flash_message_via_turbo_stream(message:, component: OpPrimer::FlashComponent, **)
+    def render_flash_message_via_turbo_stream(message:, component: OpPrimer::FlashComponent, **)
       instance = component.new(**).with_content(message)
       turbo_streams << instance.render_as_turbo_stream(view_context:, action: :flash)
     end

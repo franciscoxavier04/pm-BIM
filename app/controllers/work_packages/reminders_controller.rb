@@ -49,7 +49,7 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call(reminder_params)
 
     if service_result.success?
-      update_flash_message_via_turbo_stream(
+      render_flash_message_via_turbo_stream(
         message: I18n.t("work_package.reminders.success_creation_message"),
         scheme: :success
       )
@@ -75,7 +75,7 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call(reminder_params)
 
     if service_result.success?
-      update_flash_message_via_turbo_stream(
+      render_flash_message_via_turbo_stream(
         message: I18n.t("work_package.reminders.success_update_message"),
         scheme: :success
       )
@@ -101,13 +101,13 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call
 
     if service_result.success?
-      update_flash_message_via_turbo_stream(
+      render_flash_message_via_turbo_stream(
         message: I18n.t("work_package.reminders.success_deletion_message"),
         scheme: :success
       )
       respond_with_turbo_streams
     else
-      update_flash_message_via_turbo_stream(
+      render_flash_message_via_turbo_stream(
         message: service_result.errors.full_messages,
         scheme: :danger
       )
@@ -176,7 +176,7 @@ class WorkPackages::RemindersController < ApplicationController
                              .upcoming_and_visible_to(User.current)
                              .find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    update_flash_message_via_turbo_stream(
+    render_flash_message_via_turbo_stream(
       message: I18n.t(:error_reminder_not_found),
       scheme: :danger
     )
