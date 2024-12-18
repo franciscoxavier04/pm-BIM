@@ -41,7 +41,8 @@ module Projects::LifeCycleStepDefinitions
       f.color_select_list(
         label: attribute_name(:color),
         name: :color,
-        required: true
+        required: true,
+        input_width: :medium
       )
 
       f.submit(
