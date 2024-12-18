@@ -71,9 +71,15 @@ Please create a code maintenance ticket if you need to append/prepend messages i
 
 ## Further Examples
 
+### Success:
+
+As this is a common use case, the `render_success_flash_message_via_turbo_stream()` helper method is provided, generating a flash with `scheme: :success` by default.
+
+<%= embed OpPrimer::FlashComponentPreview, :success, panels: %i[source] %>
+
 ### Danger:
 
-As this is a common use case, the method `render_error_flash_message_via_turbo_stream()` is provided, generating a flash with `scheme: :danger` and `icon: :stop` by default.
+Also, `render_error_flash_message_via_turbo_stream()` is provided, generating a flash with `scheme: :danger` and `icon: :stop` by default.
 
 <%= embed OpPrimer::FlashComponentPreview, :danger, panels: %i[source] %>
 

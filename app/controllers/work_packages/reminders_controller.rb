@@ -49,10 +49,7 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call(reminder_params)
 
     if service_result.success?
-      render_flash_message_via_turbo_stream(
-        message: I18n.t("work_package.reminders.success_creation_message"),
-        scheme: :success
-      )
+      render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_creation_message"))
       respond_with_turbo_streams
     else
       prepare_errors_from_result(service_result)
@@ -75,10 +72,7 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call(reminder_params)
 
     if service_result.success?
-      render_flash_message_via_turbo_stream(
-        message: I18n.t("work_package.reminders.success_update_message"),
-        scheme: :success
-      )
+      render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_update_message"))
       respond_with_turbo_streams
     else
       prepare_errors_from_result(service_result)
@@ -101,10 +95,7 @@ class WorkPackages::RemindersController < ApplicationController
                                              .call
 
     if service_result.success?
-      render_flash_message_via_turbo_stream(
-        message: I18n.t("work_package.reminders.success_deletion_message"),
-        scheme: :success
-      )
+      render_success_flash_message_via_turbo_stream(message: I18n.t("work_package.reminders.success_deletion_message"))
       respond_with_turbo_streams
     else
       render_flash_message_via_turbo_stream(
