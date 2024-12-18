@@ -467,9 +467,9 @@ GEM
       representable (>= 3.1.1, < 4)
     doorkeeper (5.8.1)
       railties (>= 5)
-    dotenv (3.1.6)
-    dotenv-rails (3.1.6)
-      dotenv (= 3.1.6)
+    dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
       railties (>= 6.1)
     drb (2.2.1)
     dry-auto_inject (1.0.1)
@@ -870,7 +870,7 @@ GEM
     pry-rescue (1.6.0)
       interception (>= 0.5)
       pry (>= 0.12.0)
-    psych (5.2.1)
+    psych (5.2.2)
       date
       stringio
     public_suffix (6.0.1)
@@ -972,7 +972,7 @@ GEM
     redis-client (0.23.0)
       connection_pool
     regexp_parser (2.9.3)
-    reline (0.5.12)
+    reline (0.6.0)
       io-console (~> 0.5)
     representable (3.2.0)
       declarative (< 0.1.0)
