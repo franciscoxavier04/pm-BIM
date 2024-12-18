@@ -144,7 +144,7 @@ RSpec.describe "OAuth authorization code flow", :js do
   end
 
   # Selenium can't return response headers
-  context "in browser that can log response headers", js: false do
+  context "in browser that can log response headers", :with_cookies, js: false do
     before do
       login_as user
     end

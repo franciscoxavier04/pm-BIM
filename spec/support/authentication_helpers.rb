@@ -34,7 +34,7 @@ module AuthenticationHelpers
   end
 
   def login_as(user)
-    if is_a?(RSpec::Rails::FeatureExampleGroup)
+    if using_browser_cookies? && is_a?(RSpec::Rails::FeatureExampleGroup)
       # If we want to mock having finished the login process
       # we must set the user_id in rack.session accordingly
       # Otherwise e.g. calls to Warden will behave unexpectantly
@@ -49,6 +49,7 @@ module AuthenticationHelpers
       end
     end
 
+    allow(User).to receive(:current).and_return user
     allow(RequestStore).to receive(:[]).and_call_original
     allow(RequestStore).to receive(:[]).with(:current_user).and_return(user)
   end
@@ -92,6 +93,10 @@ module AuthenticationHelpers
 
   def session_value_for(user)
     { user_id: user.id, updated_at: Time.current }
+  end
+
+  def using_browser_cookies?
+    RSpec.current_example.metadata[:with_cookies]
   end
 
   module ClassMethods
