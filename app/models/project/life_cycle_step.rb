@@ -42,6 +42,13 @@ class Project::LifeCycleStep < ApplicationRecord
 
   scope :active, -> { where(active: true) }
 
+  class << self
+    def visible(user = User.current)
+      allowed_projects = Project.allowed_to(user, :view_project_stages_and_gates)
+      active.where(project: allowed_projects)
+    end
+  end
+
   def validate_type_and_class_name_are_identical
     if type != self.class.name
       errors.add(:type, :type_and_class_name_mismatch)
