@@ -34,9 +34,9 @@ ro:
         notes: "Mențiuni"
         participants: "Participanţi"
         participant:
-          one: "1 Participant"
-          few: "%{count} Participants"
-          other: "%{count} Participants"
+          one: "1 participant"
+          few: "%{count} participanți"
+          other: "%{count} participanți"
         participants_attended: "Participanți"
         participants_invited: "Invitaţi"
         project: "Proiect"
@@ -59,7 +59,7 @@ ro:
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Agendă"
       meeting_minutes: "Minute"
-      meeting_section: "Section"
+      meeting_section: "Secțiune"
   activity:
     filter:
       meeting: "Întâlniri"
@@ -97,7 +97,7 @@ ro:
   label_meeting_minutes: "Minute"
   label_meeting_close: "Închide"
   label_meeting_open: "Deschis"
-  label_meeting_index_delete: "Delete"
+  label_meeting_index_delete: "Șterge"
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Închideți ordinea de zi pentru a începe procesul-verbal"
   label_meeting_date_time: "Dată/Timp"
