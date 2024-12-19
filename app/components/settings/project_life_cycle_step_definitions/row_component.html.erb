@@ -37,7 +37,7 @@ See COPYRIGHT and LICENSE files for more details.
           ))
         end
       end
-      title_container.with_column(classes: "ellipsis") do
+      title_container.with_column(classes: "ellipsis", test_selector: "project-life-cycle-step-definition-name") do
         render(
           if allowed_to_customize_life_cycle?
             Primer::Beta::Link.new(
