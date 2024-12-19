@@ -209,8 +209,8 @@ module CustomField::OrderStatements
   # the correct work packages for each group (see code).
   #
   # To overcome this problem the algorithms of closure_tree can be used. This method implements the same concept of
-  # `self_and_descendats_preorderd` from closure_tree. It uses the mathematical power operation to compute distinct
-  # position values from `sort_order`, the total number of descendants and the maximum dapth of the tree
+  # `self_and_descendants_preordered` from closure_tree. It uses the mathematical power operation to compute distinct
+  # position values from `sort_order`, the total number of descendants and the maximum depth of the tree
   # (see implementation).
   def hierarchy_position_sql(ancestor_id:, total_descendants:, max_depth:)
     <<-SQL.squish
@@ -223,15 +223,15 @@ module CustomField::OrderStatements
             hi.created_at,
             hi.updated_at,
             hi.custom_field_id
-     FROM hierarchical_items hi
-              INNER JOIN hierarchical_item_hierarchies hih
-                   ON hi.id = hih.descendant_id
-              JOIN hierarchical_item_hierarchies anc_h
-                   ON anc_h.descendant_id = hih.descendant_id
-              JOIN hierarchical_items anc
-                   ON anc.id = anc_h.ancestor_id
-              JOIN hierarchical_item_hierarchies depths
-                   ON depths.ancestor_id = #{ancestor_id} AND depths.descendant_id = anc.id
+      FROM hierarchical_items hi
+            INNER JOIN hierarchical_item_hierarchies hih
+                 ON hi.id = hih.descendant_id
+            JOIN hierarchical_item_hierarchies anc_h
+                 ON anc_h.descendant_id = hih.descendant_id
+            JOIN hierarchical_items anc
+                 ON anc.id = anc_h.ancestor_id
+            JOIN hierarchical_item_hierarchies depths
+                 ON depths.ancestor_id = #{ancestor_id} AND depths.descendant_id = anc.id
      WHERE hih.ancestor_id = #{ancestor_id}
      GROUP BY hi.id
     SQL
