@@ -387,6 +387,9 @@ ms:
         no_results_content_text: Cipta versi baharu
       storage:
         no_results_title_text: Tiada ruang cakera terekod tambahan yang digunakan untuk projek ini.
+  project_stage:
+    working_days_count:
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Senarai yang diubah suai telah disimpan sebagai senarai baharu."
@@ -1117,16 +1120,38 @@ ms:
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
               must_be_a_stage: "must be a Project::Stage"
               must_be_a_gate: "must be a Project::Gate"
+              type_and_class_name_mismatch: "must match the instantiated class name"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign `end_date` to a Project::Gate"
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+            type:
+              type_and_class_name_mismatch: "must be a Project::Gate"
+            date:
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "start date must be before the end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              incomplete: "is incomplete."
+            type:
+              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -3040,6 +3065,7 @@ ms:
   permission_edit_own_time_entries: "Edit log masa sendiri"
   permission_edit_project: "Edit projek"
   permission_edit_project_attributes: "Edit project attributes"
+  permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "Edit laporan"
   permission_edit_time_entries: "Edit log masa untuk pengguna lain"
   permission_edit_timelines: "Edit garis masa"
@@ -3095,6 +3121,7 @@ ms:
   permission_work_package_assigned_explanation: "Pakej kerja boleh ditugaskan kepada pengguna dan kumpulan yang memegang peranan ini dalam projek yang berkaitan"
   permission_view_project_activity: "Lihat aktiviti projek"
   permission_view_project_attributes: "View project attributes"
+  permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Simpan pertanyaan BCF"
   permission_manage_public_bcf_queries: "Urus pertanyaan BCF awam"
   permission_edit_attribute_help_texts: "Edit atribut teks bantuan"

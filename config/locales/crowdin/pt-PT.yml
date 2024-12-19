@@ -386,6 +386,10 @@ pt-PT:
         no_results_content_text: Crie uma nova versão
       storage:
         no_results_title_text: Não há espaço adicional gravado em disco que seja consumido por este projeto.
+  project_stage:
+    working_days_count:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "A lista modificada foi guardada como uma nova lista"
@@ -1124,16 +1128,38 @@ pt-PT:
           attributes:
             type:
               must_be_a_stage_or_gate: "tem de ser Project::StageDefinition ou Project::GateDefinition"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "tem de ser Project::Stage ou Project::Gate"
               must_be_a_stage: "tem de ser um Project::Stage"
               must_be_a_gate: "tem de ser um Project::Gate"
+              type_and_class_name_mismatch: "must match the instantiated class name"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Não é possível atribuir `end_date` a um Project::Gate"
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+            type:
+              type_and_class_name_mismatch: "must be a Project::Gate"
+            date:
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "start date must be before the end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              incomplete: "is incomplete."
+            type:
+              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -3077,6 +3103,7 @@ pt-PT:
   permission_edit_own_time_entries: "Editar registos pessoais de horas"
   permission_edit_project: "Editar projeto"
   permission_edit_project_attributes: "Editar atributos do projeto"
+  permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "Editar comunicações"
   permission_edit_time_entries: "Editar registos de tempo para outros utilizadores"
   permission_edit_timelines: "Editar cronogramas"
@@ -3132,6 +3159,7 @@ pt-PT:
   permission_work_package_assigned_explanation: "Os pacotes de trabalho podem ser atribuídos a utilizadores e grupos com deste papel nos respetivos projetos"
   permission_view_project_activity: "Ver atividade do projeto"
   permission_view_project_attributes: "Ver atributos do projeto"
+  permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Guardar consultas BCF"
   permission_manage_public_bcf_queries: "Gerir consultas BCF públicas"
   permission_edit_attribute_help_texts: "Editar textos de ajuda de atributos"

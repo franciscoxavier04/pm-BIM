@@ -390,6 +390,9 @@ vi:
         no_results_content_text: Tạo ra một phiên bản mới
       storage:
         no_results_title_text: Không có không gian đĩa bổ sung nào được ghi nhận bởi dự án này.
+  project_stage:
+    working_days_count:
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Danh sách đã sửa đổi đã được lưu thành danh sách mới"
@@ -1121,16 +1124,38 @@ vi:
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
               must_be_a_stage: "must be a Project::Stage"
               must_be_a_gate: "must be a Project::Gate"
+              type_and_class_name_mismatch: "must match the instantiated class name"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign `end_date` to a Project::Gate"
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+            type:
+              type_and_class_name_mismatch: "must be a Project::Gate"
+            date:
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "start date must be before the end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              incomplete: "is incomplete."
+            type:
+              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -3045,6 +3070,7 @@ vi:
   permission_edit_own_time_entries: "Chỉnh sửa nhật ký thời gian của riêng bạn"
   permission_edit_project: "Chỉnh sửa dự án"
   permission_edit_project_attributes: "Chỉnh sửa thuộc tính dự án"
+  permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "Chỉnh sửa báo cáo"
   permission_edit_time_entries: "Chỉnh sửa nhật ký thời gian của người khác"
   permission_edit_timelines: "Chỉnh sửa mốc thời gian"
@@ -3100,6 +3126,7 @@ vi:
   permission_work_package_assigned_explanation: "Gói công việc có thể được gán cho người dùng và nhóm sở hữu vai trò này trong dự án tương ứng"
   permission_view_project_activity: "Xem hoạt động dự án"
   permission_view_project_attributes: "Xem thuộc tính dự án"
+  permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Lưu các truy vấn BCF"
   permission_manage_public_bcf_queries: "Quản lý các truy vấn BCF công khai"
   permission_edit_attribute_help_texts: "Chỉnh sửa văn bản trợ giúp thuộc tính"

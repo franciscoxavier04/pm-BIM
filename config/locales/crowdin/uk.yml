@@ -383,6 +383,12 @@ uk:
         no_results_content_text: Створіть нову версію
       storage:
         no_results_title_text: Цей проєкт не потребує додаткового дискового простору.
+  project_stage:
+    working_days_count:
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      many: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Змінений список збережено як новий"
@@ -1136,16 +1142,38 @@ uk:
           attributes:
             type:
               must_be_a_stage_or_gate: "має бути Project::StageDefinition або Project::GateDefinition"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "має бути Project::Stage або Project::Gate"
               must_be_a_stage: "має бути Project::Stage"
               must_be_a_gate: "має бути Project::Gate"
+              type_and_class_name_mismatch: "must match the instantiated class name"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Неможливо призначити `end_date` для проєкту Project::Gate"
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+            type:
+              type_and_class_name_mismatch: "must be a Project::Gate"
+            date:
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "start date must be before the end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              incomplete: "is incomplete."
+            type:
+              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -3148,6 +3176,7 @@ uk:
   permission_edit_own_time_entries: "Редагування власного обліку часу"
   permission_edit_project: "Редагувати проект"
   permission_edit_project_attributes: " Редагувати атрибути проєкту"
+  permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "Редагування звітів"
   permission_edit_time_entries: "Редагувати журнали часу для інших користувачів"
   permission_edit_timelines: "Змінити часові рамки"
@@ -3203,6 +3232,7 @@ uk:
   permission_work_package_assigned_explanation: "Робочі пакети можуть бути призначені користувачам і групам, які володіють цією роллю у відповідному проекті"
   permission_view_project_activity: "Перегляд активності в проєкті"
   permission_view_project_attributes: "Переглянути атрибути проєкту"
+  permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Зберігання запитів BCF"
   permission_manage_public_bcf_queries: "Керування загальнодоступними запитами BCF"
   permission_edit_attribute_help_texts: "Редагування текстів довідки для атрибутів"

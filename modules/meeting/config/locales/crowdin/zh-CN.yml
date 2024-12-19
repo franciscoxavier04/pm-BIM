@@ -184,8 +184,8 @@ zh-CN:
     types:
       classic: "经典"
       classic_text: "将您的会议组织成一个单一格式的文本议程和协议。"
-      structured: "Structured"
-      one_time: "One-time"
+      structured: "结构化"
+      one_time: "动态"
       recurring: "定期"
       recurring_text: "为每次事件创建带有动态模板的会议系列。"
       structured_text: "将您的会议组织成一个动态的议程项目列表，并可选地将它们链接到一个工作包。"
