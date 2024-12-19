@@ -70,9 +70,7 @@ export class ModalWithTurboContentDirective implements AfterViewInit, OnDestroy 
   }
 
   ngAfterViewInit() {
-    this
-      .elementRef
-      .nativeElement
+    (this.elementRef.nativeElement as HTMLElement)
       .addEventListener('turbo:submit-end', this.contextBasedListenerBound);
 
     document
@@ -80,9 +78,7 @@ export class ModalWithTurboContentDirective implements AfterViewInit, OnDestroy 
   }
 
   ngOnDestroy() {
-    this
-      .elementRef
-      .nativeElement
+    (this.elementRef.nativeElement as HTMLElement)
       .removeEventListener('turbo:submit-end', this.contextBasedListenerBound);
 
     document
