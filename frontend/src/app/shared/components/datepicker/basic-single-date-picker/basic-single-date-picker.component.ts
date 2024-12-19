@@ -161,6 +161,7 @@ export class OpBasicSingleDatePickerComponent implements ControlValueAccessor, O
         allowInput: true,
         mode: 'single',
         showMonths: 1,
+        clickOpens: false,
         onReady: (_date:Date[], _datestr:string, instance:flatpickr.Instance) => {
           instance.calendarContainer.classList.add('op-datepicker-modal--flatpickr-instance');
         },
