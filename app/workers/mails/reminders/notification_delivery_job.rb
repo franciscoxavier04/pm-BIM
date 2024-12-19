@@ -27,7 +27,7 @@
 #++
 
 class Mails::Reminders::NotificationDeliveryJob < Mails::DeliverJob
-  include ::Notifications::WithMarkedNotifications
+  include Notifications::WithMarkedNotifications
 
   def perform(notification)
     @notification = notification
