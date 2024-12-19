@@ -136,6 +136,8 @@ export class DatePicker {
       },
       dateFormat: this.datepickerFormat,
       defaultDate: this.date,
+      position: 'auto',
+      appendTo: document.querySelector('#edit-project-life-cycles-dialog'),
       locale: {
         weekdays: {
           shorthand: this.I18n.t('date.abbr_day_names'),

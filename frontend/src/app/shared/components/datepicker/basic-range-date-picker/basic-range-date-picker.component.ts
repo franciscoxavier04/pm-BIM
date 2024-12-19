@@ -184,6 +184,7 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
         showMonths: 2,
         onReady: (_date:Date[], _datestr:string, instance:flatpickr.Instance) => {
           instance.calendarContainer.classList.add('op-datepicker-modal--flatpickr-instance');
+          instance.calendarContainer.setAttribute('popover', '');
         },
         onChange: (dates:Date[], dateStr:string) => {
           if (dates.length === 2) {
@@ -195,6 +196,12 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
 
           this.cdRef.detectChanges();
         },
+        onOpen: (_date:Date[], _datestr:string, instance:flatpickr.Instance) => {
+          setTimeout(() => {
+            instance.calendarContainer.showPopover();
+            instance.calendarContainer.style.marginTop = '0';
+          });
+        },
         onDayCreate: async (dObj:Date[], dStr:string, fp:flatpickr.Instance, dayElem:DayElement) => {
           onDayCreate(
             dayElem,
@@ -203,7 +210,7 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
             !!this.minimalDate && dayElem.dateObj <= this.minimalDate,
           );
         },
-        static: this.inDialog,
+        static: false, //this.inDialog,
       },
       this.input.nativeElement as HTMLInputElement,
     );

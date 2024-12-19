@@ -1,7 +1,8 @@
 <%=
   render(Primer::Alpha::Dialog.new(title: t("label_life_cycle_step_plural"),
-                                   size: :large,
-                                   id: dialog_id)) do |d|
+                                   size: :auto,
+                                   id: dialog_id,
+                                   style: "max-width: 650px")) do |d|
     d.with_header(variant: :large)
     d.with_body(classes: "Overlay-body_autocomplete_height") do
       render(::ProjectLifeCycles::Sections::EditComponent.new(model))
