@@ -33,24 +33,33 @@ class Reminders::NotificationMailer < ApplicationMailer
   helper :mail_notification
   helper_method :reminder_summary_text,
                 :reminder_timestamp_text,
-                :reminder_note_text
+                :reminder_note_text,
+                :work_package_subject_text_wrapper,
+                :text_email_wrapper
 
   def reminder_notification(notification)
     @notification = notification
     @user = notification.recipient
+    @work_package = notification.resource
+    @reminder = notification.reminder
 
     open_project_headers User: notification.recipient.name
     message_id "reminder", notification.recipient
 
     send_localized_mail(notification.recipient) do
-      "#{Setting.app_title} - #{reminder_summary_text}"
+      "#{Setting.app_title} - #{email_subject_suffix}"
     end
   end
 
   private
 
+  def email_subject_suffix
+    note = @reminder.note.presence || @work_package.subject
+    I18n.t(:"mail.reminder_notifications.subject", note:)
+  end
+
   def reminder_summary_text
-    I18n.t(:"mail.reminder_notifications.subject")
+    I18n.t(:"mail.reminder_notifications.heading")
   end
 
   def reminder_timestamp_text
@@ -58,8 +67,16 @@ class Reminders::NotificationMailer < ApplicationMailer
   end
 
   def reminder_note_text
-    return if @notification.reminder.note.blank?
+    return if @reminder.note.blank?
 
-    I18n.t(:"mail.reminder_notifications.note", note: @notification.reminder.note)
+    I18n.t(:"mail.reminder_notifications.note", note: @reminder.note)
+  end
+
+  def work_package_subject_text_wrapper
+    "=" * ("# #{@work_package.id}#{@work_package.subject}".length + 4)
+  end
+
+  def text_email_wrapper
+    "-" * 100
   end
 end

@@ -2990,7 +2990,8 @@ en:
       see_all: "See all"
       updated_at: "Updated at %{timestamp} by %{user}"
     reminder_notifications:
-      subject: "You have a new reminder"
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
       note: "Note: “%{note}”"
     sharing:
       work_packages:
