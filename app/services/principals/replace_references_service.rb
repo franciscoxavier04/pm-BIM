@@ -33,6 +33,12 @@ module Principals
     class << self
       attr_reader :replacements, :foreign_keys
 
+      def add_replacements(attributes_by_class_name)
+        attributes_by_class_name.each do |class_name, attributes|
+          Array(attributes).each { |attribute| add_replacement(class_name, attribute) }
+        end
+      end
+
       def add_replacement(class_name, attribute)
         @replacements ||= {}
         @replacements[class_name] ||= Set.new

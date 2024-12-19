@@ -27,28 +27,27 @@
 #++
 
 Rails.application.reloader.to_prepare do
-  Principals::ReplaceReferencesService.add_replacement("AuthProvider", :creator_id)
-  Principals::ReplaceReferencesService.add_replacement("Attachment", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("Budget", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("Changeset", :user_id)
-  Principals::ReplaceReferencesService.add_replacement("Comment", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("CostEntry", :logged_by_id)
-  Principals::ReplaceReferencesService.add_replacement("CostEntry", :user_id)
-  Principals::ReplaceReferencesService.add_replacement("CostQuery", :user_id)
-  Principals::ReplaceReferencesService.add_replacement("::Doorkeeper::Application", :owner_id)
-  Principals::ReplaceReferencesService.add_replacement("MeetingAgenda", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("MeetingAgendaItem", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("MeetingAgendaItem", :presenter_id)
-  Principals::ReplaceReferencesService.add_replacement("MeetingMinutes", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("MeetingParticipant", :user_id)
-  Principals::ReplaceReferencesService.add_replacement("Message", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("News", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("::Notification", :actor_id)
-  Principals::ReplaceReferencesService.add_replacement("::Query", :user_id)
-  Principals::ReplaceReferencesService.add_replacement("TimeEntry", :logged_by_id)
-  Principals::ReplaceReferencesService.add_replacement("TimeEntry", :user_id)
-  Principals::ReplaceReferencesService.add_replacement("WikiPage", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("WorkPackage", :author_id)
-  Principals::ReplaceReferencesService.add_replacement("WorkPackage", :assigned_to_id)
-  Principals::ReplaceReferencesService.add_replacement("WorkPackage", :responsible_id)
+  Principals::ReplaceReferencesService.add_replacements(
+    {
+      "AuthProvider" => :creator_id,
+      "Attachment" => :author_id,
+      "Budget" => :author_id,
+      "Changeset" => :user_id,
+      "Comment" => :author_id,
+      "CostEntry" => %i[logged_by_id user_id],
+      "CostQuery" => :user_id,
+      "::Doorkeeper::Application" => :owner_id,
+      "MeetingAgenda" => :author_id,
+      "MeetingAgendaItem" => %i[author_id presenter_id],
+      "MeetingMinutes" => :author_id,
+      "MeetingParticipant" => :user_id,
+      "Message" => :author_id,
+      "News" => :author_id,
+      "::Notification" => :actor_id,
+      "::Query" => :user_id,
+      "TimeEntry" => %i[logged_by_id user_id],
+      "WikiPage" => :author_id,
+      "WorkPackage" => %i[author_id assigned_to_id responsible_id]
+    }
+  )
 end
