@@ -4,13 +4,10 @@
   [attr.title]="buttonTitle"
   (click)="openModal()"
 >
-  <svg
-    clock-icon
-    class="button--icon"
-    size="small"
-  ></svg>
-  <span *ngIf="(reminderCount$ | async) as reminderCount"
-        class="ml-1 text-small badge -secondary"
-        [textContent]="reminderCount">
-  </span>
+  <ng-container *ngIf="(hasReminder$ | async) as reminder; else noReminder">
+    <svg op-alarm-set-icon class="button--icon" size="small"></svg>
+  </ng-container>
+  <ng-template #noReminder>
+    <svg op-alarm-icon class="button--icon" size="small"></svg>
+  </ng-template>
 </button>
