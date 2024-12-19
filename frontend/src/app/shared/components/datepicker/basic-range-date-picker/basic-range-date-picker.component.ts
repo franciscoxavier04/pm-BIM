@@ -170,7 +170,10 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
   }
 
   showDatePicker():void {
-    this.datePickerInstance?.show();
+    if (!this.datePickerInstance?.isOpen) {
+      this.datePickerInstance?.show();
+      this.sentCalendarToTopLayer();
+    }
   }
 
   private initializeDatePicker() {
@@ -184,7 +187,6 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
         showMonths: 2,
         onReady: (_date:Date[], _datestr:string, instance:flatpickr.Instance) => {
           instance.calendarContainer.classList.add('op-datepicker-modal--flatpickr-instance');
-          instance.calendarContainer.setAttribute('popover', '');
         },
         onChange: (dates:Date[], dateStr:string) => {
           if (dates.length === 2) {
@@ -195,12 +197,6 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
           }
 
           this.cdRef.detectChanges();
-        },
-        onOpen: (_date:Date[], _datestr:string, instance:flatpickr.Instance) => {
-          setTimeout(() => {
-            instance.calendarContainer.showPopover();
-            instance.calendarContainer.style.marginTop = '0';
-          });
         },
         onDayCreate: async (dObj:Date[], dStr:string, fp:flatpickr.Instance, dayElem:DayElement) => {
           onDayCreate(
@@ -240,5 +236,24 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
   // eslint-disable-next-line class-methods-use-this
   private resolveDateArrayToString(dates:string[]):string {
     return dates.join(` ${rangeSeparator} `);
+  }
+
+  // In case the date picker is opened in a dialog, it needs to be in the top layer
+  // since the dialog is also there. This method is called in two cases:
+  // 1. When the date picker is opened
+  // 2. When the date picker is already opened and the user clicks on the input
+  // The later is necessary as otherwise the date picker would be removed from the top layer
+  // when the user clicks on the input. That is because the input is not part of the date picker
+  // so clicking on it would be considered a click on the backdrop which removes an item from
+  // the top layer again.
+  public sentCalendarToTopLayer() {
+    if (!this.datePickerInstance.isOpen || !this.inDialog) {
+      return;
+    }
+
+    const calendarContainer = this.datePickerInstance.datepickerInstance.calendarContainer;
+    calendarContainer.setAttribute('popover', '');
+    calendarContainer.showPopover();
+    calendarContainer.style.marginTop = '0';
   }
 }
