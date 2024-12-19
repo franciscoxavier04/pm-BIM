@@ -98,28 +98,34 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
               t("work_package_relations_tab.label_add_child_button")
             end
 
-            menu.with_item(
-              label: t("work_package_relations_tab.relations.new_child"),
-              href: "#",
-              content_arguments: {
-                data: { turbo_stream: true }
-              }
-            ) do |item|
-              item.with_description.with_content(t("work_package_relations_tab.relations.new_child_text"))
-            end
-
-            menu.with_item(
-              label: t("work_package_relations_tab.relations.existing_child"),
-              href: "#",
-              content_arguments: {
-                data: { turbo_stream: true }
-              }
-            ) do |item|
-              item.with_description.with_content(t("work_package_relations_tab.relations.child_description"))
-            end
+            render_child_items(menu)
           end
         end
       end
+    end
+  end
+
+  def render_child_items(menu)
+    return unless should_render_add_child?
+
+    menu.with_item(
+      label: t("work_package_relations_tab.relations.new_child"),
+      href: "#",
+      content_arguments: {
+        data: { turbo_stream: true }
+      }
+    ) do |item|
+      item.with_description.with_content(t("work_package_relations_tab.relations.new_child_text"))
+    end
+
+    menu.with_item(
+      label: t("work_package_relations_tab.relations.existing_child"),
+      href: new_work_package_children_relation_path(work_package),
+      content_arguments: {
+        data: { turbo_stream: true }
+      }
+    ) do |item|
+      item.with_description.with_content(t("work_package_relations_tab.relations.child_description"))
     end
   end
 
