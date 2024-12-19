@@ -43,8 +43,22 @@ RSpec.describe Reminders::NotificationMailer do
 
     let(:mail_body) { mail.body.parts.detect { |part| part["Content-Type"].value == "text/html" }.body.to_s }
 
-    it "notes reminder in subject" do
-      expect(mail.subject).to eql("OpenProject - You have a new reminder")
+    describe "Email subject" do
+      context "when the reminder has a note" do
+        it "includes the note" do
+          expect(mail.subject).to eql("OpenProject - Reminder: This is an important reminder")
+        end
+      end
+
+      context "when the reminder does not have a note" do
+        before do
+          notification.reminder.note = ""
+        end
+
+        it "includes the work package subject" do
+          expect(mail.subject).to eql("OpenProject - Reminder: #{work_package.subject}")
+        end
+      end
     end
 
     it "sends to the recipient" do
