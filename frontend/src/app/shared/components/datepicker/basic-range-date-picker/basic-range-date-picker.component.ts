@@ -115,7 +115,7 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
 
   @Input() inputClassNames = '';
 
-  @Input() inDialog = false;
+  @Input() inDialog:string;
 
   @Input() dataAction = '';
 
@@ -207,7 +207,8 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
             !!this.minimalDate && dayElem.dateObj <= this.minimalDate,
           );
         },
-        static: false, //this.inDialog,
+        static: false,
+        appendTo: this.appendToBodyOrDialog(),
       },
       this.input.nativeElement as HTMLInputElement,
     );
@@ -256,5 +257,13 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
     calendarContainer.setAttribute('popover', '');
     calendarContainer.showPopover();
     calendarContainer.style.marginTop = '0';
+  }
+
+  private appendToBodyOrDialog():HTMLElement|undefined {
+    if (this.inDialog) {
+      return document.querySelector(`#${this.inDialog}`) as HTMLElement;
+    }
+
+    return undefined;
   }
 }
