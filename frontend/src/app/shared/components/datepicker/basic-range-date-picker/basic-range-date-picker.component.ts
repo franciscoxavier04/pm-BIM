@@ -185,6 +185,7 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
         allowInput: true,
         mode: 'range',
         showMonths: 2,
+        clickOpens: false,
         onReady: (_date:Date[], _datestr:string, instance:flatpickr.Instance) => {
           instance.calendarContainer.classList.add('op-datepicker-modal--flatpickr-instance');
         },
