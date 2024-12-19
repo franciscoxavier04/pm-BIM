@@ -85,7 +85,7 @@ module Accounts::Authorization
   # Action can be:
   # * a parameter-like Hash (eg. { controller: '/projects', action: 'edit' })
   # * a permission Symbol (eg. :edit_project)
-  def do_authorize(action, global: false)
+  def do_authorize(action, global: false) # rubocop:disable Metrics/PerceivedComplexity
     is_authorized = if global
                       User.current.allowed_based_on_permission_context?(action)
                     else

@@ -115,7 +115,7 @@ RSpec.describe ApplicationController, "enforcement of authorization" do # ruboco
 
       authorize_with_permission :view_project
 
-      def do_authorize(_permission, global: false)
+      def do_authorize(*)
         true
       end
     end
@@ -142,7 +142,7 @@ RSpec.describe ApplicationController, "enforcement of authorization" do # ruboco
         render plain: "OK"
       end
 
-      def do_authorize(_permission, global: true)
+      def do_authorize(*)
         true
       end
     end
@@ -172,7 +172,7 @@ RSpec.describe ApplicationController, "enforcement of authorization" do # ruboco
 
       load_and_authorize_with_permission_in_optional_project :view_project
 
-      def do_authorize(_permission, global: true)
+      def do_authorize(*)
         true
       end
     end
@@ -209,7 +209,7 @@ RSpec.describe ApplicationController, "enforcement of authorization" do # ruboco
         render plain: "OK"
       end
 
-      def do_authorize(_permission, global: true)
+      def do_authorize(*)
         true
       end
     end
