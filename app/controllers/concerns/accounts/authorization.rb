@@ -85,7 +85,7 @@ module Accounts::Authorization
   # Action can be:
   # * a parameter-like Hash (eg. { controller: '/projects', action: 'edit' })
   # * a permission Symbol (eg. :edit_project)
-  def do_authorize(action, global: false) # rubocop:disable Metrics/PerceivedComplexity
+  def do_authorize(action, global: false)
     is_authorized = if global
                       User.current.allowed_based_on_permission_context?(action)
                     else
@@ -195,6 +195,28 @@ module Accounts::Authorization
                                      except: authorization_ensured[:except].dup,
                                      generally_allowed: authorization_ensured[:generally_allowed],
                                      controller: self }
+    end
+
+    # Authorize on the given permission
+    def authorize_with_permission(permission, global: false, **args)
+      authorization_checked_by_default_action(**args.slice(:only, :except))
+
+      before_action(**args) do
+        do_authorize(permission, global:)
+      end
+    end
+
+    # Find a project based on params[:project_id]
+    # and authorize on a given permission
+    def load_and_authorize_with_permission_in_optional_project(permission, **args)
+      authorization_checked_by_default_action(**args.slice(:only, :except))
+
+      before_action(**args) do
+        @project = Project.find(params[:project_id]) if params[:project_id].present?
+        do_authorize(permission, global: params[:project_id].blank?)
+      rescue ActiveRecord::RecordNotFound
+        render_404
+      end
     end
   end
 end
