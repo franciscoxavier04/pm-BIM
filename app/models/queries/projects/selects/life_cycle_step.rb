@@ -55,7 +55,8 @@ class Queries::Projects::Selects::LifeCycleStep < Queries::Selects::Base
   end
 
   def self.available?
-    OpenProject::FeatureDecisions.stages_and_gates_active?
+    OpenProject::FeatureDecisions.stages_and_gates_active? &&
+    User.current.allowed_in_any_project?(:view_project_stages_and_gates)
   end
 
   def available?

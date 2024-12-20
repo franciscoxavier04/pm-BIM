@@ -88,7 +88,7 @@ class Project < ApplicationRecord
   has_many :storages, through: :project_storages
   has_many :life_cycle_steps, class_name: "Project::LifeCycleStep", dependent: :destroy
   has_many :available_life_cycle_steps,
-           -> { active.eager_load(:definition).order(position: :asc) },
+           -> { visible.eager_load(:definition).order(position: :asc) },
            class_name: "Project::LifeCycleStep",
            inverse_of: :project,
            dependent: :destroy

@@ -389,8 +389,18 @@ RSpec.describe Project do
                     .class_name("Project::LifeCycleStep")
                     .inverse_of(:project)
                     .dependent(:destroy)
-                    .conditions(active: true)
                     .order(position: :asc)
+    end
+
+    it "checks for active flag" do
+      expect(subject.available_life_cycle_steps.to_sql)
+        .to include("\"project_life_cycle_steps\".\"active\" = TRUE")
+    end
+
+    it "checks for :view_project_stages_and_gates permission" do
+      project_condition = described_class.allowed_to(User.current, :view_project_stages_and_gates).select(:id)
+
+      expect(subject.available_life_cycle_steps.to_sql).to include(project_condition.to_sql)
     end
 
     it "eager loads :definition" do
@@ -399,7 +409,12 @@ RSpec.describe Project do
     end
 
     describe ".validates_associated" do
+      let(:user) do
+        create(:user, member_with_permissions: { project => %i(view_project view_project_stages_and_gates) })
+      end
       let!(:project_stage) { create :project_stage, :skip_validate, project:, start_date: nil }
+
+      before { allow(User).to receive(:current).and_return user }
 
       it "is valid without a validation context" do
         expect(project).to be_valid

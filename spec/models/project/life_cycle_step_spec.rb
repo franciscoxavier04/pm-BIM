@@ -48,6 +48,28 @@ RSpec.describe Project::LifeCycleStep do
     end
   end
 
+  describe ".visible" do
+    let(:project) { create(:project) }
+    let(:development_project) { create(:project) }
+    let(:user) do
+      create(:user,
+             member_with_permissions:
+             { project => %i(view_project view_project_stages_and_gates),
+               development_project => %i(view_project) })
+    end
+
+    let!(:life_cycle_gate) { create(:project_gate, project:) }
+    let!(:life_cycle_stage) { create(:project_stage, project:) }
+    let!(:life_cycle_stage_dev) { create(:project_stage, project: development_project) }
+    let!(:inactive_life_cycle_gate) { create(:project_gate, project:, active: false) }
+    let!(:inactive_life_cycle_stage) { create(:project_stage, project: development_project, active: false) }
+
+    it "returns active steps where the user has a view_project_stages_and_gates permission" do
+      expected_steps = [life_cycle_gate, life_cycle_stage]
+      expect(described_class.visible(user)).to eq(expected_steps)
+    end
+  end
+
   # For more specs see:
   # - spec/support/shared/project_life_cycle_helpers.rb
   # - spec/models/project/gate_spec.rb

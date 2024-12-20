@@ -98,7 +98,7 @@ module Projects
     end
 
     def life_cycle_step_column(column)
-      return nil unless user_can_view_project?
+      return nil unless user_can_view_project_stages_and_gates?
 
       life_cycle_step = project_life_cycle_step_by_definition(column.life_cycle_step_definition, project)
 
@@ -381,6 +381,10 @@ module Projects
 
     def user_can_view_project?
       User.current.allowed_in_project?(:view_project_attributes, project)
+    end
+
+    def user_can_view_project_stages_and_gates?
+      User.current.allowed_in_project?(:view_project_stages_and_gates, project)
     end
 
     def custom_field_column?(column)
