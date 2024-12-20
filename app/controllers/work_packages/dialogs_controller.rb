@@ -53,8 +53,9 @@ class WorkPackages::DialogsController < ApplicationController
       .new(model: initial, user: current_user, contract_class: WorkPackages::CreateContract)
       .call(create_params)
 
-    # Ignore call errors here, as we only want to build the work package
+    # We ignore errors here, as we only want to build the work package
     @work_package = call.result
+    @work_package.errors.clear
   end
 
   def create_params
