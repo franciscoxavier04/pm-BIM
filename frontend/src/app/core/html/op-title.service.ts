@@ -6,28 +6,15 @@ const titlePartsSeparator = ' | ';
 @Injectable({ providedIn: 'root' })
 export class OpTitleService {
   constructor(private titleService:Title) {
-
   }
 
-  public get current():string {
-    return this.titleService.getTitle();
-  }
-
-  public get titleParts():string[] {
-    return this.current.split(titlePartsSeparator);
+  public get base():string {
+    const appTitle = document.querySelector('meta[name=app_title]') as HTMLMetaElement;
+    return appTitle.content;
   }
 
   public setFirstPart(value:string) {
-    const parts = this.titleParts;
-    parts[0] = value;
-
-    this.titleService.setTitle(parts.join(titlePartsSeparator));
-  }
-
-  public prependFirstPart(value:string):void {
-    const parts = this.titleParts;
-    parts.unshift(value);
-
-    this.titleService.setTitle(parts.join(titlePartsSeparator));
+    const newTitle = [value, this.base].join(titlePartsSeparator);
+    this.titleService.setTitle(newTitle);
   }
 }
