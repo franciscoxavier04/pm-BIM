@@ -1,16 +1,15 @@
 @import "helpers"
 
+.op-ian-item
+  &:has(.op-ian-reminder-alert--note)
+    height: unset
+
 .op-ian-reminder-alert
-  display: grid
-  grid-template-columns: auto 1fr
-  grid-column-gap: $spot-spacing-0_25
-  align-items: center
+  display: flex
+  gap: $spot-spacing-0_25
+  flex-wrap: wrap
   color: var(--fgColor-muted)
 
   &--note
-    @include text-shortener
     line-height: 1rem
     color: var(--fgColor-default)
-
-    > *
-      flex-shrink: 0
