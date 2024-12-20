@@ -64,6 +64,19 @@ module WorkPackages::Dialogs
         required: true,
         input_width: :large
       )
+
+      f.rich_text_area(
+        name: :description,
+        label: MeetingAgendaItem.human_attribute_name(:description),
+        rich_text_options: {
+          resource: work_package,
+          showAttachments: false
+        }
+      )
+
+      work_package.changes.each do |attribute, value|
+        f.hidden(name: attribute, value:)
+      end
     end
   end
 end
