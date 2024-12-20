@@ -847,7 +847,7 @@ en:
         is_required: "Required"
         max_length: "Maximum length"
         min_length: "Minimum length"
-        content_right_to_left: "Left-to-Right content"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "Possible values"
         regexp: "Regular expression"
@@ -4244,7 +4244,7 @@ en:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
-      scope: "Scopes:"
+      scopes: "Scopes"
       client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
