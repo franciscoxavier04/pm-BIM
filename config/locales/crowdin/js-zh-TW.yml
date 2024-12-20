@@ -740,6 +740,7 @@ zh-TW:
         immediate:
           title: "寄發提醒郵件給我"
           mentioned: "當有人使用「@帳號」提到我，系統立即發信通知我"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "其他非工作項目之提醒"
           explanation: >

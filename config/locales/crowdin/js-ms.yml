@@ -742,6 +742,7 @@ ms:
         immediate:
           title: "Hantar saya peringatan e-mel"
           mentioned: "Serta merta apabila sesiapa @menyebut saya"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Peringatan e-mel untuk item lain (yang bukan pakej kerja)"
           explanation: >

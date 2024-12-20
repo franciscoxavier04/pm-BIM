@@ -744,6 +744,7 @@ cs:
         immediate:
           title: "Pošlete mi připomenutí e-mailem"
           mentioned: "V momente  když mě někdo @zmiňuje"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "E-mailová upozornění pro ostatní položky (které nejsou pracovní balíčky)"
           explanation: >

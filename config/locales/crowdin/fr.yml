@@ -2859,8 +2859,13 @@ fr:
         prefix: "Reçu en raison du paramètre de notification : %{reason}"
         date_alert_start_date: "Alarmes"
         date_alert_due_date: "Alarmes"
+        reminder: "Reminder"
       see_all: "Voir tout"
       updated_at: "Mis à jour le %{timestamp} par %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Vous pouvez %{allowed_actions} ce lot de travaux. Cela peut changer en fonction de votre rôle dans le projet et de vos droits."

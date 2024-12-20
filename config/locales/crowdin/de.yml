@@ -2854,8 +2854,13 @@ de:
         prefix: "Erhalten aufgrund Benachrichtigungseinstellung: %{reason}"
         date_alert_start_date: "Datums-Erinnerung"
         date_alert_due_date: "Datums-Erinnerung"
+        reminder: "Reminder"
       see_all: "Alle anzeigen"
       updated_at: "Aktualisiert %{timestamp} von %{user} "
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Sie haben auf diesem Arbeitspakte folgende Berechtigungen: %{allowed_actions}. Dies kann sich je nach Ihrer Projektrolle und Berechtigungen ändern."

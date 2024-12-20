@@ -2858,8 +2858,13 @@ ca:
         prefix: "Rebut a causa de la configuració de notificacions: %{reason}"
         date_alert_start_date: "Alerta per dates"
         date_alert_due_date: "Alerta per dates"
+        reminder: "Reminder"
       see_all: "Veure tot"
       updated_at: "Actualitzat a les %{timestamp} per %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."

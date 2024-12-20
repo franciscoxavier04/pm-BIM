@@ -743,6 +743,7 @@
         immediate:
           title: "Send meg en påminnelse"
           mentioned: "Umiddelbart hvis noen @nevner meg"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Epost varsler for andre produkter (som ikke er arbeidspakker)"
           explanation: >

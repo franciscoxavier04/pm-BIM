@@ -2819,8 +2819,13 @@ zh-CN:
         prefix: "接收原因为以下通知设置：%{reason}"
         date_alert_start_date: "日期提醒"
         date_alert_due_date: "日期提醒"
+        reminder: "Reminder"
       see_all: "查看全部"
       updated_at: "由 %{user} 于 %{timestamp} 更新"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "你可以 %{allowed_actions} 这个工作包。这可以基于你的项目角色和权限而变化。"

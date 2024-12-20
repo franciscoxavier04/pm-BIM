@@ -2825,8 +2825,13 @@ vi:
         prefix: "Nhận được do cài đặt thông báo: %{reason}"
         date_alert_start_date: "Cảnh báo ngày"
         date_alert_due_date: "Cảnh báo ngày"
+        reminder: "Reminder"
       see_all: "Xem tất cả"
       updated_at: "Cập nhật vào %{timestamp} bởi %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Bạn có thể %{allowed_actions} gói công việc này. Điều này có thể thay đổi tùy thuộc vào vai trò và quyền hạn của bạn trong dự án."

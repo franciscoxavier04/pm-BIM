@@ -2936,8 +2936,13 @@ ru:
         prefix: "Получено из-за настройки уведомления: %{reason}"
         date_alert_start_date: "Дата оповещения"
         date_alert_due_date: "Дата оповещения"
+        reminder: "Reminder"
       see_all: "Показать все"
       updated_at: "Обновлено в %{timestamp} пользователем %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Вы можете %{allowed_actions} этот пакет работ. Это может измениться в зависимости от роли и разрешений вашего проекта."

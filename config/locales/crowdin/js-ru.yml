@@ -744,6 +744,7 @@ ru:
         immediate:
           title: "Отправить мне напоминание по электронной почте"
           mentioned: "Сразу же когда кто-то @упоминает меня"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Уведомления по электронной почте для других элементов (которые не являются пакетами работ)"
           explanation: >

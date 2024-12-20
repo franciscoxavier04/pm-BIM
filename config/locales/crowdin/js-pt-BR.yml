@@ -742,6 +742,7 @@ pt-BR:
         immediate:
           title: "Envie-me um lembrete por e-mail"
           mentioned: "Imediatamente quando alguém me @mencionar"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Alertas por e-mail para outros itens (qua não sejam pacotes de trabalho)"
           explanation: >

@@ -2821,8 +2821,13 @@ ms:
         prefix: "Diterima kerana tetapan pemberitahuan: %{reason}"
         date_alert_start_date: "Peringatan tarikh"
         date_alert_due_date: "Peringatan tarikh"
+        reminder: "Reminder"
       see_all: "Lihat semua"
       updated_at: "Dikemas kini pada %{timestamp} oleh %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Anda boleh %{allowed_actions} pakej kerja ini. Ini akan berubah bergantung kepada peranan projek dan kebenaran anda."

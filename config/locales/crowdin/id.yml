@@ -2817,8 +2817,13 @@ id:
         prefix: "Received because of the notification setting: %{reason}"
         date_alert_start_date: "Peringatan tanggal"
         date_alert_due_date: "Peringatan tanggal"
+        reminder: "Reminder"
       see_all: "Lihat semua"
       updated_at: "Diperbarui pada %{timestamp} oleh %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."

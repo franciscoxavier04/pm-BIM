@@ -2821,8 +2821,13 @@ zh-TW:
         prefix: "因為通知設定而收到：%{reason}"
         date_alert_start_date: "日期提醒"
         date_alert_due_date: "到期提醒"
+        reminder: "Reminder"
       see_all: "全部顯示"
       updated_at: "%{user} 在 %{timestamp} 更新"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "您擁有這個工作項目的 %{allowed_actions} 權限. 這些權限將隨著您的角色不同而更改."

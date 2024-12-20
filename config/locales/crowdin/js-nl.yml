@@ -743,6 +743,7 @@ nl:
         immediate:
           title: "Stuur me een e-mail herinnering"
           mentioned: "Onmiddellijk wanneer iemand @vermeldt"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "E-mail meldingen voor andere items (die geen werkpakketten zijn)"
           explanation: >

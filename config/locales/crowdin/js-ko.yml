@@ -742,6 +742,7 @@ ko:
         immediate:
           title: "내게 이메일 미리 알림 보내기"
           mentioned: "누군가 나를 @멘션할 때 즉시"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "기타 항목에 대한 이메일 알림(작업 패키지 외)"
           explanation: >

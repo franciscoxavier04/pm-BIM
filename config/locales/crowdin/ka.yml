@@ -2861,8 +2861,13 @@ ka:
         prefix: "Received because of the notification setting: %{reason}"
         date_alert_start_date: "გაფრთხილების თარიღი"
         date_alert_due_date: "გაფრთხილების თარიღი"
+        reminder: "Reminder"
       see_all: "ყველას ნახვა"
       updated_at: "Updated at %{timestamp} by %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."

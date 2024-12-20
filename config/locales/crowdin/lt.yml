@@ -2934,8 +2934,13 @@ lt:
         prefix: "Gauta dėl pranešimų nustatymo: %{reason}"
         date_alert_start_date: "Datos įspėjimas"
         date_alert_due_date: "Datos įspėjimas"
+        reminder: "Reminder"
       see_all: "Žiūrėti visus"
       updated_at: "Pakeitė %{user} %{timestamp}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Šiame darbo pakete jums leidžiama %{allowed_actions}. Tai gali keistis priklausomai nuo jūsų vaidmens projekte ir teisių."

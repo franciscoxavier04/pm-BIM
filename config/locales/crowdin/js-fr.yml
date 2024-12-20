@@ -743,6 +743,7 @@ fr:
         immediate:
           title: "Envoyez-moi un rappel par e-mail"
           mentioned: "Immédiatement quand quelqu'un me @mentionne"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Alertes par e-mail pour les autres éléments (qui ne sont pas des lots de travaux)"
           explanation: >

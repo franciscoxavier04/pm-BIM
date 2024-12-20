@@ -742,6 +742,7 @@ de:
         immediate:
           title: "Eine E-Mail Erinnerung an mich senden"
           mentioned: "Sofort, wenn mich jemand @erwähnt"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "E-Mail-Benachrichtigungen für andere Objekte (die keine Arbeitspakete sind)"
           explanation: >

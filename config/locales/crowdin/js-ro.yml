@@ -743,6 +743,7 @@ ro:
         immediate:
           title: "Trimiteți-mi un e-mail de reamintire"
           mentioned: "Imediat când cineva mă @menționează"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Alerte prin e-mail pentru alte elemente (care nu sunt pachete de lucru)"
           explanation: >

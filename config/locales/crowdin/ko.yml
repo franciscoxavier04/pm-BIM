@@ -2822,8 +2822,13 @@ ko:
         prefix: "수신 이유는 다음 알림 설정입니다: %{reason}"
         date_alert_start_date: "날짜 경보"
         date_alert_due_date: "날짜 경보"
+        reminder: "Reminder"
       see_all: "모두 보기"
       updated_at: "%{timestamp}, %{user} 님이 업데이트함"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "이 작업 패키지를 %{allowed_actions}할 수 있습니다. 이는 프로젝트 역할 및 권한에 따라 변경될 수 있습니다."

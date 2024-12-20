@@ -743,6 +743,7 @@ ca:
         immediate:
           title: "Envia'm un correu electrònic recordatori"
           mentioned: "Immediatament quan algú em @menciona"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Alertes en correu electrònic per altres elements (que no són paquets de treball)"
           explanation: >

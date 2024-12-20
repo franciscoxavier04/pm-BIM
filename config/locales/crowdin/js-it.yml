@@ -743,6 +743,7 @@ it:
         immediate:
           title: "Inviami un promemoria email"
           mentioned: "Subito quando qualcuno mi @menziona"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Avvisi email per altri elementi (che non sono macro-attività)"
           explanation: >

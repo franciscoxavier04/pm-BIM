@@ -2858,8 +2858,13 @@ es:
         prefix: "Recibido por la configuración de notificaciones: %{reason}"
         date_alert_start_date: "Alerta de fecha"
         date_alert_due_date: "Alerta de fecha"
+        reminder: "Reminder"
       see_all: "Ver todo"
       updated_at: "Actualizado a las %{timestamp} por %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Puede %{allowed_actions} este paquete de trabajo. Esto puede cambiar dependiendo del rol y los permisos de su proyecto."

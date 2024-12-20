@@ -325,9 +325,9 @@ nl:
       no_results_content_text: Maak een nieuw project
       search:
         label: Project name filter
-        placeholder: Search by project name
+        placeholder: Zoeken op projectnaam
     lists:
-      active: "Active projects"
+      active: "Actieve projecten"
       my: "Mijn projecten"
       favored: "Favoriete projecten"
       archived: "Gearchiveerde projecten"
@@ -336,13 +336,13 @@ nl:
       new:
         placeholder: "Nieuwe projectlijst"
       delete_modal:
-        title: "Delete project list"
-        text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
+        title: "Projectlijst verwijderen"
+        text: "Deze actie verwijdert geen enkel project dat de lijst bevat. Weet u zeker dat u deze projectlijst wilt verwijderen?"
     settings:
       change_identifier: Change identifier
       actions:
-        label_enable_all: "Enable all"
-        label_disable_all: "Disable all"
+        label_enable_all: "Alles inschakelen"
+        label_disable_all: "Alles uitschakelen"
       activities:
         no_results_title_text: Er zijn momenteel geen activiteiten beschikbaar.
       forums:
@@ -355,7 +355,7 @@ nl:
         no_results_title_text: Momenteel zijn er geen aangepaste velden beschikbaar.
       life_cycle:
         header:
-          title: "Project lifecycle"
+          title: "Project levenscyclus"
           description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
         non_defined: "Neither stages nor gates are currently defined."
         section_header: "Stages and gates"
@@ -2858,8 +2858,13 @@ nl:
         prefix: "Ontvangen vanwege de meldingsinstelling: %{reason}"
         date_alert_start_date: "Date alert"
         date_alert_due_date: "Date alert"
+        reminder: "Reminder"
       see_all: "Alles bekijken"
       updated_at: "Bijgewerkt op %{timestamp} door %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."

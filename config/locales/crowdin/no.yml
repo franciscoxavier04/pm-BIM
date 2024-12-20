@@ -2860,8 +2860,13 @@
         prefix: "Mottatt pga. varslingsinnstilling: %{reason}"
         date_alert_start_date: "Dato varsel"
         date_alert_due_date: "Dato varsel"
+        reminder: "Reminder"
       see_all: "Se alle"
       updated_at: "Oppdatert %{timestamp} av %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Du kan %{allowed_actions} denne arbeidspakken. Dette kan endre avhengig av din prosjektrolle og tillatelser."

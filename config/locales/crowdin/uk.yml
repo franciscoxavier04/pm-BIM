@@ -2930,8 +2930,13 @@ uk:
         prefix: "Отримано через налаштування сповіщень: %{reason}"
         date_alert_start_date: "Оповіщення про дату"
         date_alert_due_date: "Оповіщення про дату"
+        reminder: "Reminder"
       see_all: "Показати всі"
       updated_at: "Оновлено о %{timestamp} користувачем %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Ви можете %{allowed_actions} у цьому пакеті робіт, але це залежить від вашої ролі й дозволів у проєкті."

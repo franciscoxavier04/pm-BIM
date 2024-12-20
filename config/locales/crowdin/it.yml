@@ -2857,8 +2857,13 @@ it:
         prefix: "Ricevuto a causa dell'impostazione della notifica: %{reason}"
         date_alert_start_date: "Avviso data"
         date_alert_due_date: "Avviso data"
+        reminder: "Reminder"
       see_all: "Vedi tutti"
       updated_at: "Aggiornato il %{timestamp} da %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Puoi %{allowed_actions} questa macro-attività. Questa impostazione può cambiare a seconda del ruolo e delle autorizzazioni del progetto."

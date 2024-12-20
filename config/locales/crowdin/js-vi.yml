@@ -742,6 +742,7 @@ vi:
         immediate:
           title: "Gửi cho tôi nhắc nhở email"
           mentioned: "Ngay lập tức khi ai đó nhắc đến tôi"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Cảnh báo email cho các mục khác (không phải gói công việc)"
           explanation: >

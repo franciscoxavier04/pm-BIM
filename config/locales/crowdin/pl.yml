@@ -2934,8 +2934,13 @@ pl:
         prefix: "Otrzymano z powodu ustawienia powiadomienia: %{reason}"
         date_alert_start_date: "Alert dotyczący daty"
         date_alert_due_date: "Alert dotyczący daty"
+        reminder: "Reminder"
       see_all: "Zobacz wszystkie"
       updated_at: "Zaktualizowano %{timestamp}, autor %{user} "
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Możesz %{allowed_actions} ten pakiet roboczy. Może się to zmienić w zależności od Twojej roli w projekcie i uprawnień."
