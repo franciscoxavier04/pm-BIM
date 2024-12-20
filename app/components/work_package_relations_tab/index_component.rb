@@ -110,7 +110,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
 
     menu.with_item(
       label: t("work_package_relations_tab.relations.new_child"),
-      href: new_project_work_packages_dialog_path(work_package.project),
+      href: new_project_work_packages_dialog_path(work_package.project, parent_id: work_package.id),
       content_arguments: {
         data: { turbo_stream: true }
       }
