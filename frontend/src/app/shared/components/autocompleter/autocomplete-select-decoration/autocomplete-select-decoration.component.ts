@@ -29,9 +29,6 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgSelectComponent } from '@ng-select/ng-select';
 import {
-  IProjectAutocompleteItem,
-} from 'core-app/shared/components/autocompleter/project-autocompleter/project-autocomplete-item';
-import {
   IAutocompleteItem,
   OpAutocompleterComponent,
 } from 'core-app/shared/components/autocompleter/op-autocompleter/op-autocompleter.component';
@@ -43,18 +40,7 @@ export const autocompleteSelectDecorationSelector = 'autocomplete-select-decorat
 
 @Component({
   template: `
-    <op-project-autocompleter
-      *ngIf="isProjectField()"
-      [model]="currentProjectSelection"
-      [multiple]="multiple"
-      [labelForId]="labelForId"
-      (change)="updateProjectSelection($event)"
-      [appendTo]="appendTo"
-    >
-    </op-project-autocompleter>
-
     <ng-select
-      *ngIf="!isProjectField()"
       [items]="options"
       [labelForId]="labelForId"
       bindLabel="label"
@@ -79,9 +65,6 @@ export class AutocompleteSelectDecorationComponent extends OpAutocompleterCompon
   /** Get the selected options */
   public selected:SelectItem|SelectItem[];
 
-  /** Get the selected options especially for the project autocompleter  */
-  public currentProjectSelection:{ id:string, name:string }|{ id:string, name:string }[];
-
   /** The field key (e.g. status, type, or project)  */
   @Input() key:string;
 
@@ -104,9 +87,6 @@ export class AutocompleteSelectDecorationComponent extends OpAutocompleterCompon
 
     // Set initial selection
     this.setInitialSelection(data);
-    if (this.isProjectField()) {
-      this.setInitialProjectSelection();
-    }
 
     if (!this.multiple) {
       this.selected = (this.selected as SelectItem[])[0];
@@ -150,41 +130,5 @@ export class AutocompleteSelectDecorationComponent extends OpAutocompleterCompon
       .parent()
       .find(`input[name="${this.inputName}"]`)
       .remove();
-  }
-
-  updateProjectSelection(items:IProjectAutocompleteItem|IProjectAutocompleteItem[]):void {
-    items = _.castArray(items);
-    const mappedItems = items.map(item => {
-      const selectedItem:SelectItem = {
-        label: item.name,
-        value: item.id.toString(),
-        selected: true,
-      };
-
-      return selectedItem;
-    });
-
-    this.updateSelection(mappedItems);
-  }
-
-  setInitialProjectSelection():void {
-    const items = _.castArray(this.selected);
-    if (items.length === 0) return;
-
-    if (this.multiple) {
-      this.currentProjectSelection = items.map((item:SelectItem) => ({
-        id: item.value,
-        name: item.label,
-      }));
-    } else {
-      this.currentProjectSelection = {
-        id: items[0].value,
-        name: items[0].label,
-      };
-    }
-  }
-
-  isProjectField():boolean {
-    return this.key === 'project';
   }
 }
