@@ -146,7 +146,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
   @Input() public items?:IOPAutocompleterOption[]|HalResource[];
 
-  private items$ = new BehaviorSubject(null);
+  private items$ = new BehaviorSubject<IOPAutocompleterOption[]|null>(null);
 
   @Input() public clearSearchOnAdd?:boolean = true;
 
@@ -314,6 +314,10 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
       this.typeahead = new BehaviorSubject<string>('');
     }
 
+    if (this.items) {
+      this.items$.next(this.items as IOPAutocompleterOption[]);
+    }
+
     if (this.inputValue && !this.model) {
       this
         .opAutocompleterService
@@ -328,8 +332,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
   ngOnChanges(changes:SimpleChanges):void {
     if (changes.items) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      this.items$.next(changes.items.currentValue);
+      this.items$.next(changes.items.currentValue as IOPAutocompleterOption[]);
     }
   }
 

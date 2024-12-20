@@ -32,18 +32,17 @@
                                       }
             %>
           <% else %>
-            <% selected_values = condition.values
-               select_options = condition.allowed_values.map { |v| { label: v[:label], value: v[:value], selected: selected_values.include?(v[:value]) } } %>
-            <%= render partial: 'augmented/autocomplete_select_decoration',
-                       locals: {
-                         select_options:,
-                         inputs: {
-                           inputName: input_name,
-                           inputId: "custom_action_conditions_#{condition.key}",
-                           multiple: true,
-                           key: condition.key.to_s
-                         }
-                       } %>
+            <%= angular_component_tag 'opce-autocompleter',
+                                      inputs: {
+                                        multiple: true,
+                                        defaultData: false,
+                                        items: condition.allowed_values.map { |v| { id: v[:value], name: v[:label] } },
+                                        model: condition.value_objects.map { |v| { id: v[:value], name: v[:label] } },
+                                        inputName: input_name,
+                                        inputId: "custom_action_conditions_#{condition.key}",
+                                        appendTo: "body",
+                                      }
+            %>
           <% end %>
         </div>
       </div>
@@ -79,18 +78,17 @@
                                             }
                   %>
                 <% else %>
-                  <% selected_values = action.values
-                     select_options = action.allowed_values.map { |v| { label: v[:label], value: v[:value], selected: selected_values.include?(v[:value]) } } %>
-                  <%= render partial: 'augmented/autocomplete_select_decoration',
-                             locals: {
-                               select_options:,
-                               inputs: {
-                                 inputName: input_name,
-                                 inputId: "custom_action_actions_#{action.key}",
-                                 multiple: action.multi_value?,
-                                 key: action.key.to_s
-                               }
-                             } %>
+                  <%= angular_component_tag 'opce-autocompleter',
+                                            inputs: {
+                                              multiple: true,
+                                              defaultData: false,
+                                              items: action.allowed_values.map { |v| { id: v[:value], name: v[:label] } },
+                                              model: action.value_objects.map { |v| { id: v[:value], name: v[:label] } },
+                                              inputName: input_name,
+                                              inputId: "custom_action_conditions_#{action.key}",
+                                              appendTo: "body",
+                                            }
+                  %>
                 <% end %>
               </div>
             </div>

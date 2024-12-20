@@ -1,31 +1,9 @@
 <%= render(FormControl.new(input: @input, data: @wrapper_data_attributes)) do %>
   <%= content_tag(:div, **@field_wrap_arguments) do %>
-    <% if decorated_select? %>
-      <%= render partial: '/augmented/autocomplete_select_decoration',
-                 formats: %i[html],
-                 locals: {
-                   inputs: @autocomplete_options.merge(
-                     classes: "ng-select--primerized #{@input.invalid? ? '-error' : ''}",
-                     inputName: @autocomplete_options.fetch(:inputName) { builder.field_name(@input.name) },
-                     inputId: @autocomplete_options.fetch(:inputId) { builder.field_id(@input.name) },
-                     inputValue: @autocomplete_options.fetch(:inputValue) { builder.object.send(@input.name) },
-                     key: @autocomplete_options.fetch(:resource, ''),
-                     defaultData: @autocomplete_options.fetch(:defaultData) { true }
-                   ),
-                   select_options: select_options.map(&:to_h),
-                 } %>
-    <% else %>
-      <%= content_tag(:div, class: ("projects-autocomplete-with-search-icon" if @autocomplete_options.delete(:with_search_icon))) do %>
-        <%= angular_component_tag @autocomplete_options.fetch(:component),
-                                  data: @autocomplete_options.delete(:data) { {} },
-                                  inputs: @autocomplete_options.merge(
-                                    classes: "ng-select--primerized #{@input.invalid? ? '-error' : ''}",
-                                    inputName: @autocomplete_options.fetch(:inputName) { builder.field_name(@input.name) },
-                                    inputValue: @autocomplete_options.fetch(:inputValue) { builder.object.send(@input.name) },
-                                    defaultData: @autocomplete_options.fetch(:defaultData) { true }
-                                  )
-        %>
-      <% end %>
+    <%= content_tag(:div, class: ("projects-autocomplete-with-search-icon" if @with_search_icon)) do %>
+      <%= angular_component_tag(@autocomplete_component,
+                                data: @autocomplete_data,
+                                inputs: @autocomplete_inputs) %>
     <% end %>
   <% end %>
 <% end %>
