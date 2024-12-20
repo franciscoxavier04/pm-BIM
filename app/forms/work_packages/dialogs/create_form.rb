@@ -51,6 +51,7 @@ module WorkPackages::Dialogs
         autocomplete_options: {
           multiple: false,
           decorated: true,
+          hiddenFieldAction: "change->work-packages--create-dialog#submitForm",
           append_to: wrapper_id
         }
       ) do |select|
@@ -69,7 +70,7 @@ module WorkPackages::Dialogs
 
       f.rich_text_area(
         name: :description,
-        label: MeetingAgendaItem.human_attribute_name(:description),
+        label: WorkPackage.human_attribute_name(:description),
         rich_text_options: {
           resource: work_package,
           showAttachments: false

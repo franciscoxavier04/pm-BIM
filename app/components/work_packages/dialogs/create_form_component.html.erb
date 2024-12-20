@@ -19,7 +19,7 @@
 
         if @project.nil?
           modal_body.with_row(mt: 3) do
-            render(WorkPackages::Dialogs::CreateForm.new(f, work_package: work_package, wrapper_id: "create-work-package-dialog"))
+            render(WorkPackages::Dialogs::CreateForm.new(f, work_package: work_package, wrapper_id: "#create-work-package-dialog"))
           end
         end
       end

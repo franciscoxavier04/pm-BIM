@@ -29,8 +29,22 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
+import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
+import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 
-export default class CreateDialogController extends Controller {
-  connect() {
+export default class CreateDialogController extends Controller<HTMLFormElement> {
+  private turboRequests:TurboRequestsService;
+  private pathHelper:PathHelperService;
+
+  async connect() {
+    const context = await window.OpenProject.getPluginContext();
+    this.turboRequests = context.services.turboRequests;
+    this.pathHelper = context.services.pathHelperService;
+  }
+
+  updateForm() {
+    void this
+      .turboRequests
+      .submitForm(this.element);
   }
 }
