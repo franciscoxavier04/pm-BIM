@@ -26,18 +26,16 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgSelectComponent } from '@ng-select/ng-select';
-import { IProjectAutocompleteItem } from 'core-app/shared/components/autocompleter/project-autocompleter/project-autocomplete-item';
+import {
+  IProjectAutocompleteItem,
+} from 'core-app/shared/components/autocompleter/project-autocompleter/project-autocomplete-item';
 import {
   IAutocompleteItem,
   OpAutocompleterComponent,
 } from 'core-app/shared/components/autocompleter/op-autocompleter/op-autocompleter.component';
+import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
 
 type SelectItem = { label:string, value:string, selected?:boolean };
 
@@ -84,30 +82,20 @@ export class AutocompleteSelectDecorationComponent extends OpAutocompleterCompon
   /** Get the selected options especially for the project autocompleter  */
   public currentProjectSelection:{ id:string, name:string }|{ id:string, name:string }[];
 
-  /** The input name we're syncing selections to */
-  private syncInputFieldName:string;
-
   /** The field key (e.g. status, type, or project)  */
-  public key:string;
+  @Input() key:string;
 
   text = {
     placeholder: this.I18n.t('js.placeholders.selection'),
   };
 
   ngOnInit():void {
+    populateInputsFromDataset(this);
     const element = this.elementRef.nativeElement as HTMLElement;
 
-    // Set options
-    this.multiple = element.dataset.multiple === 'true';
-    this.labelForId = element.dataset.inputId;
-    this.key = element.dataset.key!;
-    this.appendTo = element.dataset.appendTo;
-
-    // Get the sync target
-    this.syncInputFieldName = element.dataset.inputName!;
     // Add Rails multiple identifier if multiple
     if (this.multiple) {
-      this.syncInputFieldName += '[]';
+      this.inputName += '[]';
     }
 
     // Prepare and build the options
@@ -153,14 +141,14 @@ export class AutocompleteSelectDecorationComponent extends OpAutocompleterCompon
     const element = jQuery(this.elementRef.nativeElement);
     element
       .parent()
-      .append(`<input type="hidden" name="${this.syncInputFieldName || ''}" value="${value}" />`);
+      .append(`<input type="hidden" name="${this.inputName || ''}" value="${value}" />`);
   }
 
   removeCurrentSyncedFields():void {
     const element = jQuery(this.elementRef.nativeElement);
     element
       .parent()
-      .find(`input[name="${this.syncInputFieldName}"]`)
+      .find(`input[name="${this.inputName}"]`)
       .remove();
   }
 
