@@ -29,25 +29,28 @@
 #++
 
 module Types
-  PatternCollection = Data.define(:patterns) do
-    private_class_method :new
+  module Patterns
+    class CollectionType < ActiveModel::Type::Value
+      def assert_valid_value(value)
+        cast(value)
+      end
 
-    def self.build(patterns:, contract: PatternCollectionContract.new)
-      contract.call(patterns).to_monad.fmap { |success| new(success.to_h) }
-    end
+      def cast(value)
+        Collection.build(patterns: value).value_or { nil }
+      end
 
-    def initialize(patterns:)
-      transformed = patterns.transform_values { Pattern.new(**_1) }.freeze
+      def serialize(pattern)
+        return super if pattern.nil?
 
-      super(patterns: transformed)
-    end
+        YAML.dump(pattern.to_h)
+      end
 
-    def [](value)
-      patterns.fetch(value)
-    end
+      def deserialize(value)
+        return if value.blank?
 
-    def to_h
-      patterns.stringify_keys.transform_values(&:to_h)
+        data = YAML.safe_load(value)
+        cast(data)
+      end
     end
   end
 end

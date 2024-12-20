@@ -29,11 +29,13 @@
 #++
 
 module Types
-  class PatternCollectionContract < Dry::Validation::Contract
-    params do
-      required(:subject).hash do
-        required(:blueprint).filled(:string)
-        required(:enabled).filled(:bool)
+  module Patterns
+    class CollectionContract < Dry::Validation::Contract
+      params do
+        required(:subject).hash do
+          required(:blueprint).filled(:string)
+          required(:enabled).filled(:bool)
+        end
       end
     end
   end
