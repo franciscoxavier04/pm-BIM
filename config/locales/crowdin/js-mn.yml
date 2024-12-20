@@ -102,7 +102,7 @@ mn:
     button_save: "Save"
     button_settings: "Settings"
     button_uncheck_all: "Uncheck all"
-    button_update: "Update"
+    button_update: "Шинэчлэх"
     button_export-pdf: "Download PDF"
     button_export-atom: "Download Atom"
     button_generate_pdf: "Generate PDF"

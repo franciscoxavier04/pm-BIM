@@ -325,9 +325,9 @@ nl:
       no_results_content_text: Maak een nieuw project
       search:
         label: Project name filter
-        placeholder: Search by project name
+        placeholder: Zoeken op projectnaam
     lists:
-      active: "Active projects"
+      active: "Actieve projecten"
       my: "Mijn projecten"
       favored: "Favoriete projecten"
       archived: "Gearchiveerde projecten"
@@ -336,8 +336,8 @@ nl:
       new:
         placeholder: "Nieuwe projectlijst"
       delete_modal:
-        title: "Delete project list"
-        text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
+        title: "Projectlijst verwijderen"
+        text: "Deze actie verwijdert geen enkel project dat de lijst bevat. Weet u zeker dat u deze projectlijst wilt verwijderen?"
     settings:
       change_identifier: Change identifier
       activities:
