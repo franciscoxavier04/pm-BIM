@@ -44,8 +44,7 @@ module API
           else
             [
               {
-                href: ::API::V3::Utilities::ResourceLinkGenerator.make_link(group_key),
-                title: group_key.to_s
+                href: ::API::V3::Utilities::ResourceLinkGenerator.make_link(group_key)
               }
             ]
           end
