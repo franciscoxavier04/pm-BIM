@@ -4,7 +4,10 @@
       scope: :work_package,
       model: @work_package,
       html: {
-        id: 'create-work-package-form'
+        id: 'create-work-package-form',
+        data: {
+          controller: "work-packages--create-dialog"
+        }
       }
     ) do |f|
       flex_layout(mb: 3) do |modal_body|

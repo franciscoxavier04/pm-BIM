@@ -28,6 +28,8 @@
 
 module WorkPackages::Dialogs
   class CreateForm < ApplicationForm
+    include CustomFields::CustomFieldRendering
+
     attr_reader :work_package, :wrapper_id, :contract
 
     def initialize(work_package:, wrapper_id:)
@@ -49,7 +51,7 @@ module WorkPackages::Dialogs
         autocomplete_options: {
           multiple: false,
           decorated: true,
-          append_to: "##{wrapper_id}"
+          append_to: wrapper_id
         }
       ) do |select|
         contract
@@ -74,9 +76,21 @@ module WorkPackages::Dialogs
         }
       )
 
+      render_custom_fields(form: f)
+
       work_package.changes.each do |attribute, value|
         f.hidden(name: attribute, value:)
       end
+    end
+
+    def additional_custom_field_input_arguments
+      { wrapper_id: }
+    end
+
+    private
+
+    def custom_fields
+      @custom_fields ||= work_package.available_custom_fields.required
     end
   end
 end
