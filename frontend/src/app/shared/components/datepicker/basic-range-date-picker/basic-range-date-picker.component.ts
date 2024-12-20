@@ -185,7 +185,6 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
         allowInput: true,
         mode: 'range',
         showMonths: 2,
-        clickOpens: false,
         onReady: (_date:Date[], _datestr:string, instance:flatpickr.Instance) => {
           instance.calendarContainer.classList.add('op-datepicker-modal--flatpickr-instance');
         },
@@ -198,6 +197,9 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
           }
 
           this.cdRef.detectChanges();
+        },
+        onOpen: () => {
+          this.sentCalendarToTopLayer();
         },
         onDayCreate: async (dObj:Date[], dStr:string, fp:flatpickr.Instance, dayElem:DayElement) => {
           onDayCreate(
