@@ -387,7 +387,7 @@ zh-CN:
         no_results_title_text: 此项目没有已记录的额外磁盘空间消耗。
   project_stage:
     working_days_count:
-      other: "Duration: %{count} working days"
+      other: "时长： %{count} 个工作日"
   lists:
     create:
       success: "已将修改后的列表保存为新列表"
@@ -1118,38 +1118,38 @@ zh-CN:
           attributes:
             type:
               must_be_a_stage_or_gate: "必须是 Project::StageDefinition 或 Project::GateDefinition"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "必须匹配实例化类型名称"
         project/gate_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+              type_and_class_name_mismatch: "必须是一个项目：:关口定义"
         project/stage_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
+              type_and_class_name_mismatch: "必须是一个项目：:阶段定义"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "必须是 Project::Stage 或 Project::Gate"
               must_be_a_stage: "必须是 Project::Stage"
               must_be_a_gate: "必须是 Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "必须匹配实例化类型名称"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+              end_date_not_allowed: "无法将结束日期分配给一个项目：:关口"
             type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
+              type_and_class_name_mismatch: "必须是一个项目：:关口"
             date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              non_continuous_dates: "不能早于前一个 %{step}的结束日期。"
         project/stage:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-              incomplete: "is incomplete."
+              start_date_must_be_before_end_date: "开始日期必须早于结束日期。"
+              non_continuous_dates: "不能早于前一个 %{step}的结束日期。"
+              incomplete: "不完整。"
             type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
+              type_and_class_name_mismatch: "必须是一个项目：:阶段"
         query:
           attributes:
             project:
@@ -2819,13 +2819,13 @@ zh-CN:
         prefix: "接收原因为以下通知设置：%{reason}"
         date_alert_start_date: "日期提醒"
         date_alert_due_date: "日期提醒"
-        reminder: "Reminder"
+        reminder: "提醒"
       see_all: "查看全部"
       updated_at: "由 %{user} 于 %{timestamp} 更新"
     reminder_notifications:
-      subject: "Reminder: %{note}"
-      heading: "You have a new reminder"
-      note: "Note: “%{note}”"
+      subject: "提醒： %{note}"
+      heading: "您有一个新的提醒"
+      note: "注：\"%{note}\""
     sharing:
       work_packages:
         allowed_actions: "你可以 %{allowed_actions} 这个工作包。这可以基于你的项目角色和权限而变化。"
@@ -3066,7 +3066,7 @@ zh-CN:
   permission_edit_own_time_entries: "编辑自己的时间记录"
   permission_edit_project: "编辑项目"
   permission_edit_project_attributes: "编辑项目属性"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_stages_and_gates: "编辑项目阶段和关口"
   permission_edit_reportings: "编辑报告"
   permission_edit_time_entries: "编辑其他用户的时间日志"
   permission_edit_timelines: "编辑时间线"
@@ -3122,7 +3122,7 @@ zh-CN:
   permission_work_package_assigned_explanation: "工作包可以分配给在各自项目中拥有此角色的用户和组"
   permission_view_project_activity: "查看项目活动"
   permission_view_project_attributes: "查看项目属性"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_stages_and_gates: "查看项目阶段和关口"
   permission_save_bcf_queries: "保存 BCF 查询"
   permission_manage_public_bcf_queries: "管理公开的 BCF 查询"
   permission_edit_attribute_help_texts: "编辑属性帮助文本"
