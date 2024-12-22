@@ -1149,7 +1149,7 @@ zh-CN:
               non_continuous_dates: "不能早于前一个 %{step}的结束日期。"
               incomplete: "不完整。"
             type:
-              type_and_class_name_mismatch: "必须是一个项目：:阶段"
+              type_and_class_name_mismatch: "必须是一个项目::阶段"
         query:
           attributes:
             project:
