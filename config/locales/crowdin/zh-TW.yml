@@ -343,8 +343,8 @@ zh-TW:
     settings:
       change_identifier: 變更識別碼
       actions:
-        label_enable_all: "Enable all"
-        label_disable_all: "Disable all"
+        label_enable_all: "全部啟用"
+        label_disable_all: "全部停用"
       activities:
         no_results_title_text: 目前沒有可用的活動
       forums:
@@ -357,18 +357,18 @@ zh-TW:
         no_results_title_text: 目前沒有客製欄位可用。
       life_cycle:
         header:
-          title: "Project lifecycle"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          title: "專案生命週期"
+          description_html: '專案生命週期中的這些專案階段和關卡將顯示在您的 <a href=%{overview_url} target="_blank「> 專案總覽頁面</a> 中，並由實例的管理員在 <a href=%{admin_settings_url} target=」_blank"> 管理設定</a> 中定義。您可以啟用或停用個別屬性。'
+        non_defined: "目前階段和閘門都未定義。"
+        section_header: "階段與關卡"
         step:
-          use_in_project: "Use %{step} in this project"
+          use_in_project: "在本專案中使用 %{step}"
         filter:
-          label: "Search project stage or gate"
+          label: "搜尋專案階段或關卡"
       project_custom_fields:
         header:
           title: "專案屬性"
-          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          description_html: '這些專案屬性會顯示在您的 <a href=%{overview_url} target="_blank"> 專案總覽頁面</a> 中各自的區段之下。您可以啟用或停用個別屬性。專案屬性和區段由實例的管理員在 <a href=%{admin_settings_url} target="_blank"> 管理設定</a> 中定義。 '
         filter:
           label: "搜尋專案屬性"
         actions:
@@ -389,7 +389,7 @@ zh-TW:
         no_results_title_text: 該專案沒有額外消耗磁碟空間。
   project_stage:
     working_days_count:
-      other: "Duration: %{count} working days"
+      other: "時間： %{count} 工作天"
   lists:
     create:
       success: "修改後的清單已儲存為新清單"
@@ -579,26 +579,26 @@ zh-TW:
       no_results_content_text: 新增一個類型
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "表單設置"
       more_info_text_html: >
         企業版允許您使用以下附加組件自定義表單設定：<br> <ul class="%{list_styling_class}"> <li><b>添加新屬性組</b></li> <li><b>重命名屬性組</b></li> <li><b>添加相關工作項目表</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "專案"
+        enabled_projects: "已啟用專案"
       settings:
-        tab: "Settings"
-        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+        tab: "設定"
+        type_color_text: 選取的顏色可區分甘特圖或工作包表格中的不同類型。因此建議使用強烈的顏色。
       subject_configuration:
-        tab: "Subject configuration"
+        tab: "主題設定"
         manually_editable_subjects:
-          label: "Manually editable subjects"
-          caption: "Users can manually enter and edit work package subjects without restrictions."
+          label: "可手動編輯的主題"
+          caption: "使用者可以不受限制地手動輸入和編輯工作項目主題。"
         automatically_generated_subjects:
-          label: "Automatically generated subjects"
-          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+          label: "自動產生的主題"
+          caption: "使用參考屬性和文字定義模式，以自動產生工作項目主題。使用者將無法手動編輯主題。"
         pattern:
-          label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          label: "主題模板"
+          caption: "搜尋屬性或新增文字。若要在元素之間建立空格，請將其建立為文字。"
   versions:
     overview:
       work_packages_in_archived_projects: "該版本與歸檔項目共用，這些專案仍然有分配給此版本的工作項目。雖然這些工作項目被計算在內，但不會顯示在視圖中。"
@@ -1120,38 +1120,38 @@ zh-TW:
           attributes:
             type:
               must_be_a_stage_or_gate: ""
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "必須與實體化的類別名稱相符"
         project/gate_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+              type_and_class_name_mismatch: "必須是 Project::GateDefinition"
         project/stage_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
+              type_and_class_name_mismatch: "必須是 Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: ""
               must_be_a_stage: ""
               must_be_a_gate: "必須是 Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "必須與實體化的類別名稱相符"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+              end_date_not_allowed: "無法為 Project::Gate 指定結束日期"
             type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
+              type_and_class_name_mismatch: "必須是 Project::Gate"
             date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              non_continuous_dates: "不能早於前一個 %{step}的結束日期。"
         project/stage:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-              incomplete: "is incomplete."
+              start_date_must_be_before_end_date: "開始日期必須在結束日期之前。"
+              non_continuous_dates: "不能早於前一個 %{step}的結束日期。"
+              incomplete: "未完成。"
             type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
+              type_and_class_name_mismatch: "必須是 Project::Stage"
         query:
           attributes:
             project:
@@ -1365,8 +1365,8 @@ zh-TW:
         other: "通知"
       placeholder_user: "虛擬群組"
       project: "專案"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
+      project/gate_definition: "關卡"
+      project/stage_definition: "階段"
       project_query:
         other: "專案列表"
       query: "自訂查詢"
@@ -2483,7 +2483,7 @@ zh-TW:
   label_none_parentheses: "（無）"
   label_not_contains: "不包含"
   label_not_equals: "不是"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "專案生命週期"
   label_on: "開啟"
   label_operator_all: "全部"
   label_operator_none: "無"
@@ -2821,13 +2821,13 @@ zh-TW:
         prefix: "因為通知設定而收到：%{reason}"
         date_alert_start_date: "日期提醒"
         date_alert_due_date: "到期提醒"
-        reminder: "Reminder"
+        reminder: "提醒"
       see_all: "全部顯示"
       updated_at: "%{user} 在 %{timestamp} 更新"
     reminder_notifications:
-      subject: "Reminder: %{note}"
-      heading: "You have a new reminder"
-      note: "Note: “%{note}”"
+      subject: "提醒： %{note}"
+      heading: "您有新的提醒"
+      note: "備註： \"%{note}\""
     sharing:
       work_packages:
         allowed_actions: "您擁有這個工作項目的 %{allowed_actions} 權限. 這些權限將隨著您的角色不同而更改."
@@ -3069,7 +3069,7 @@ zh-TW:
   permission_edit_own_time_entries: "編輯自己的時間日誌"
   permission_edit_project: "編輯專案"
   permission_edit_project_attributes: "編輯項目屬性"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_stages_and_gates: "檢視專案階段與關卡"
   permission_edit_reportings: "編輯報表"
   permission_edit_time_entries: "編輯他人耗時"
   permission_edit_timelines: "編輯時間軸"
@@ -3099,8 +3099,8 @@ zh-TW:
   permission_search_project: "搜尋專案"
   permission_select_custom_fields: "選擇客製欄位"
   permission_select_project_custom_fields: "選擇專案屬性"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_life_cycle: "選擇專案階段與關卡"
+  permission_select_project_life_cycle_explanation: "啟動/停用專案中的階段和關卡。使用者可以選擇適合專案的生命週期，因為非活躍階段和關卡不會在專案總覽頁面或專案清單中顯示。"
   permission_select_project_modules: "選擇專案的模組"
   permission_share_work_packages: "參與工作項目"
   permission_manage_types: "選擇類型"
@@ -3125,7 +3125,7 @@ zh-TW:
   permission_work_package_assigned_explanation: "可以將工作項目分配給在相應專案中擁有此角色的使用者和群組"
   permission_view_project_activity: "查看專案活動"
   permission_view_project_attributes: "查看專案屬性"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_stages_and_gates: "檢視專案階段與關卡"
   permission_save_bcf_queries: "保存 BCF 查詢"
   permission_manage_public_bcf_queries: "管理公開的 BCF 查詢"
   permission_edit_attribute_help_texts: "編輯屬性說明文字"
