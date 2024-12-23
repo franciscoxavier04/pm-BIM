@@ -620,6 +620,7 @@ cs:
         prioritized: "Prioritní"
         dateAlert: "Upozornění na datum"
         shared: "Sdíleno"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Datum milníku"
         overdue: "Po termínu"
@@ -654,6 +655,8 @@ cs:
         new_notifications:
           message: "Máte nová oznámení."
           link_text: "Klikněte zde pro jejich načtení."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Můžete změnit nastavení <a target="_blank" href="%{url}">oznámení</a> , abyste se ujistili, že nikdy nezmeškáte důležitou aktualizaci.'
         title: "Nastavení oznámení"
@@ -741,6 +744,7 @@ cs:
         immediate:
           title: "Pošlete mi připomenutí e-mailem"
           mentioned: "V momente  když mě někdo @zmiňuje"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "E-mailová upozornění pro ostatní položky (které nejsou pracovní balíčky)"
           explanation: >
@@ -772,10 +776,6 @@ cs:
         upgrade_to_ee_text: "Páni! Pokud potřebujete tuto funkci, jste super pro! Nevadili byste nám podpořit OpenSource vývojáře tím, že se stanete klientem Enterprise Edition?"
         more_information: "Více informací"
         nevermind: "Nevadí"
-      edit:
-        form_configuration: "Konfigurace formuláře"
-        projects: "Projekty"
-        settings: "Nastavení"
     time_entry:
       work_package_required: "Vyžaduje nejprve výběr pracovního balíčku."
       title: "Čas protokolu"
@@ -1044,6 +1044,12 @@ cs:
           not_found: "Neexistuje takové zobrazení"
           duplicate_query_title: "Název tohoto zobrazení již existuje. Chcete přesto změnit?"
         text_no_results: "Nebyly nalezeny žádné odpovídající zobrazení."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Data tohoto pracovního balíčku jsou automaticky odvozena od jeho dětí. Aktivujte 'Manuální plánování' pro ručné nastavení dat."
         is_switched_from_manual_to_automatic: "Data tohoto pracovního balíčku budou možná muset být přepočítána po přepnutí z manuálu na automatické plánování kvůli vztahům s ostatními pracovními balíčky."
@@ -1353,5 +1359,3 @@ cs:
       waiting_subtitle:
         network_off: "Je tu problém se sítí."
         network_on: "Síť je zpátky . Zkoušíme to."
-        timeout: >
-          OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">health status of the file storage setup</a>.

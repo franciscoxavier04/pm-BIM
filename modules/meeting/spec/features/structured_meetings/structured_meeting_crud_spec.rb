@@ -34,7 +34,8 @@ require_relative "../../support/pages/meetings/index"
 
 RSpec.describe "Structured meetings CRUD",
                :js,
-               :with_cuprite do
+               :with_cuprite,
+               with_flag: { recurring_meetings: true } do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking]) }
@@ -63,7 +64,7 @@ RSpec.describe "Structured meetings CRUD",
 
   let(:current_user) { user }
   let(:new_page) { Pages::Meetings::New.new(project) }
-  let(:meeting) { StructuredMeeting.order(id: :asc).last }
+  let(:meeting) { StructuredMeeting.last }
   let(:show_page) { Pages::StructuredMeeting::Show.new(meeting) }
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
@@ -72,7 +73,7 @@ RSpec.describe "Structured meetings CRUD",
     meetings_page.visit!
     expect(page).to have_current_path(meetings_page.path) # rubocop:disable RSpec/ExpectInHook
     meetings_page.click_on "add-meeting-button"
-    meetings_page.click_on "Dynamic"
+    meetings_page.click_on "One-time"
     meetings_page.set_title "Some title"
 
     meetings_page.set_start_date "2013-03-28"
@@ -290,6 +291,7 @@ RSpec.describe "Structured meetings CRUD",
       click_on("Save")
     end
 
+    wait_for_network_idle
     click_on("op-meetings-header-action-trigger")
 
     retry_block do
@@ -307,7 +309,7 @@ RSpec.describe "Structured meetings CRUD",
     fill_in "Title", with: "Some title"
     click_on "Create meeting"
 
-    new_meeting = StructuredMeeting.reorder(id: :asc).last
+    new_meeting = StructuredMeeting.last
     expect(page).to have_current_path "/projects/#{project.identifier}/meetings/#{new_meeting.id}"
 
     # check for copied agenda items

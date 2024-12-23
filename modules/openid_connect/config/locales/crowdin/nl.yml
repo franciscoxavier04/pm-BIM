@@ -14,6 +14,7 @@ nl:
         client_secret: Client secret
         secret: Geheim
         scope: Scope
+        grant_types_supported: Ondersteunde subsidietypen
         limit_self_registration: Beperk zelf-registratie
         authorization_endpoint: Autorisatie eindpunt
         userinfo_endpoint: Eindpunt gebruikersinformatie

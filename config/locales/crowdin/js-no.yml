@@ -102,7 +102,7 @@
     button_save: "Lagre"
     button_settings: "Innstillinger"
     button_uncheck_all: "Avmerk alle"
-    button_update: "Oppdater"
+    button_update: "Oppdatèr"
     button_export-pdf: "Last ned PDF"
     button_export-atom: "Last ned Atom"
     button_generate_pdf: "Generate PDF"
@@ -621,6 +621,7 @@
         prioritized: "Prioritized"
         dateAlert: "Dato varsel"
         shared: "Delt"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Milepæl dato"
         overdue: "Forfalt"
@@ -653,6 +654,8 @@
         new_notifications:
           message: "Det finnes nye varsler."
           link_text: "Klikk her for å laste dem"
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Du kan endre <a target="_blank" href="%{url}">varslingsinnstillinger</a> for å sikre at du aldri går glipp av en viktig oppdatering.'
         title: "Varslingsinnstillinger"
@@ -740,6 +743,7 @@
         immediate:
           title: "Send meg en påminnelse"
           mentioned: "Umiddelbart hvis noen @nevner meg"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Epost varsler for andre produkter (som ikke er arbeidspakker)"
           explanation: >
@@ -771,10 +775,6 @@
         upgrade_to_ee_text: "Wow! Hvis du trenger dette tillegget er en superpro! Vil du støtte oss OpenSource-utviklere ved å bli en Enterpris-utgave-kunde?"
         more_information: "Mer informasjon"
         nevermind: "Glem det"
-      edit:
-        form_configuration: "Konfigurering av skjema"
-        projects: "Prosjekter"
-        settings: "Innstillinger"
     time_entry:
       work_package_required: "Valg av arbeidspakke er påkrevd"
       title: "Logg tid"
@@ -1043,6 +1043,12 @@
           not_found: "Det finnes ingen slik visning."
           duplicate_query_title: "Navnet på denne visningen finnes allerede. Endre allikevel?"
         text_no_results: "Ingen samsvarende visninger ble funnet."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Datoene for denne arbeidspakken trekkes automatisk fra de underordnede. Aktiver 'Manuell planlegging' for å angi datoene."
         is_switched_from_manual_to_automatic: "Datoene for denne arbeidspakken må eventuelt beregnes på nytt etter å ha byttet fra manual til automatisk planlegging på grunn av relasjoner med andre arbeidspakker."
@@ -1346,5 +1352,3 @@
       waiting_subtitle:
         network_off: "Det er et nettverksproblem."
         network_on: "Nettverket er tilbake. Vi prøver igjen."
-        timeout: >
-          OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">health status of the file storage setup</a>.

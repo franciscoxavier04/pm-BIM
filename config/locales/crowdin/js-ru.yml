@@ -102,7 +102,7 @@ ru:
     button_save: "Сохранить"
     button_settings: "Настройки"
     button_uncheck_all: "Снять все отметки"
-    button_update: "Обновить"
+    button_update: "Обновление"
     button_export-pdf: "Скачать PDF"
     button_export-atom: "Скачать Atom"
     button_generate_pdf: "Создать PDF"
@@ -620,6 +620,7 @@ ru:
         prioritized: "Приоритетный"
         dateAlert: "Дата оповещения"
         shared: "Общий доступ"
+        reminder: "Напоминания"
       date_alerts:
         milestone_date: "Дата вехи"
         overdue: "Просрочено"
@@ -654,6 +655,8 @@ ru:
         new_notifications:
           message: "Есть новые уведомления."
           link_text: "Нажмите здесь, чтобы загрузить их."
+      reminders:
+        note: "Примечание: \"%{note}\""
       settings:
         change_notification_settings: 'Измените <a target="_blank" href="%{url}">настройки уведомлений</a> , чтобы не пропустить важное обновление.'
         title: "Настройки уведомлений"
@@ -741,6 +744,7 @@ ru:
         immediate:
           title: "Отправить мне напоминание по электронной почте"
           mentioned: "Сразу же когда кто-то @упоминает меня"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Уведомления по электронной почте для других элементов (которые не являются пакетами работ)"
           explanation: >
@@ -772,10 +776,6 @@ ru:
         upgrade_to_ee_text: "Уууууууууу! Если вам нужен этот дополнение, то вы бы хотели поддержать нас разработчиков OpenSource, став клиентом корпоративной версии?"
         more_information: "Больше информации"
         nevermind: "Неважно"
-      edit:
-        form_configuration: "Конфигурация формы"
-        projects: "Проекты"
-        settings: "Параметры"
     time_entry:
       work_package_required: "Сначала необходимо выбрать пакет работ."
       title: "Журналировать время"
@@ -1044,6 +1044,12 @@ ru:
           not_found: "Нет такого представления"
           duplicate_query_title: "Представление с таким именем уже существует. Менять в любом случае?"
         text_no_results: "Подходящие представления не найдены."
+      reminders:
+        button_label: "Установить напоминание"
+        title:
+          new: "Установить напоминание"
+          edit: "Редактировать напоминание"
+        subtitle: "Вы получите уведомление о данном пакете работ в выбранное время."
       scheduling:
         is_parent: "Даты этого пакета работ выводятся автоматически из дочерних пакетов работ. Используйте «Ручной планировщик», чтобы установить даты."
         is_switched_from_manual_to_automatic: "Даты этого пакета работ могут быть пересчитаны после переключения с ручного на автоматическое планирование из-за связей с другими пакетами работ."
@@ -1353,5 +1359,3 @@ ru:
       waiting_subtitle:
         network_off: "Проблема с сетью."
         network_on: "Проблема с сетью решена."
-        timeout: >
-          OpenProject не смог предоставить вам доступ к папке проекта в течение ожидаемого периода времени. Пожалуйста, попробуйте еще раз.<br><br> Если проблема не исчезнет, ​​обратитесь к администратору OpenProject, чтобы проверить <a href="https://www.openproject.org/docs/system-admin-guide/files/external -file-storages/file-storage-troubleshooting/">состояние файлового хранилища</a>.

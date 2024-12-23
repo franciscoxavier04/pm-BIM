@@ -68,7 +68,7 @@ ro:
   label_filter: "Filtrează"
   label_filter_add: "Adaugă filtru"
   label_filter_plural: "Filtre"
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_by_add: "Adaugă atributul Grupează-după"
   label_inactive: "Inactiv"
   label_no: "Nu"
@@ -86,6 +86,11 @@ ro:
   validation_failure_date: "nu e o dată validă"
   validation_failure_integer: "nu e un întreg valid"
   export:
+    timesheet:
+      title: "Your PDF timesheet export"
+      button: "Export PDF timesheet"
+      timesheet: "Timesheet"
+      time: "Timp"
     cost_reports:
       title: "Exportul dumneavoastră de rapoarte de costuri XLS"
   reporting:

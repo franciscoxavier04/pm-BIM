@@ -620,6 +620,7 @@ zh-CN:
         prioritized: "已优先"
         dateAlert: "日期提醒"
         shared: "已共享"
+        reminder: "提醒"
       date_alerts:
         milestone_date: "里程碑日期"
         overdue: "逾期"
@@ -651,6 +652,8 @@ zh-CN:
         new_notifications:
           message: "有新的通知。"
           link_text: "点击此处加载。"
+      reminders:
+        note: "注：\"%{note}\""
       settings:
         change_notification_settings: '您可以修改您的<a target="_blank" href="%{url}">通知设置</a>，以确保您不会错过重要的更新。'
         title: "通知设置"
@@ -738,6 +741,7 @@ zh-CN:
         immediate:
           title: "向我发送电子邮件提醒"
           mentioned: "当有人@提及我时立即提醒"
+          personal_reminder: "收到个人提醒后立即发送"
         alerts:
           title: "其他项目（非工作包）的电子邮件提醒"
           explanation: >
@@ -769,10 +773,6 @@ zh-CN:
         upgrade_to_ee_text: "哇！如果您需要此插件，那么您是位超级行家！您是否考虑成为我们的企业版客户，以支持我们这些开源开发者？"
         more_information: "更多信息"
         nevermind: "我愿意"
-      edit:
-        form_configuration: "表单配置"
-        projects: "项目"
-        settings: "设置"
     time_entry:
       work_package_required: "需要先选择一个工作包。"
       title: "记录时间"
@@ -1041,6 +1041,12 @@ zh-CN:
           not_found: "无此视图"
           duplicate_query_title: "此视图的名称已存在。仍要更改？"
         text_no_results: "未找到匹配的视图。"
+      reminders:
+        button_label: "设置提醒"
+        title:
+          new: "设置提醒"
+          edit: "编辑提醒"
+        subtitle: "您将在所选时间收到此工作包的通知。"
       scheduling:
         is_parent: "此工作包的日期会自动从其子项推导出。可激活“手动计划”来设置日期。"
         is_switched_from_manual_to_automatic: "由于与其他工作包的关系，在从手动计划切换为自动计划后，此工作包的日期可能需要重新计算。"
@@ -1341,5 +1347,3 @@ zh-CN:
       waiting_subtitle:
         network_off: "网络有问题。"
         network_on: "网络已恢复。我们正在努力。"
-        timeout: >
-          OpenProject 无法让您在预期时间内访问项目文件夹。请再试一次。<br><br> 如果问题仍然存在，请联系 OpenProject 管理员检查<a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">文件存储设置的健康状态</a>。

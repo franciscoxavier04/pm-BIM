@@ -86,6 +86,11 @@ ru:
   validation_failure_date: "не является допустимой датой"
   validation_failure_integer: "не является допустимым целым числом"
   export:
+    timesheet:
+      title: "Ваши табели учета рабочего времени, экспортированные в PDF"
+      button: "Экспорт табеля учета рабочего времени в PDF"
+      timesheet: "Табель учета рабочего времени"
+      time: "Время"
     cost_reports:
       title: "Экспорт ваших отчетов о затратах в XLS"
   reporting:
