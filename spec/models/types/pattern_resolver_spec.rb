@@ -28,16 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  Pattern = Data.define(:blueprint, :enabled) do
-    def enabled? = !!enabled
+require "spec_helper"
 
-    def resolve(work_package)
-      PatternResolver.new(blueprint).resolve(work_package)
+RSpec.describe Types::PatternResolver do
+  let(:subject_pattern) { "ID Please: {{id}}" }
+  let(:work_package) { create(:work_package) }
+
+  subject(:resolver) { described_class.new(subject_pattern) }
+
+  it "resolves a pattern" do
+    expect(subject.resolve(work_package)).to eq("ID Please: #{work_package.id}")
+  end
+
+  context "when the pattern has WorkPackage properties" do
+    let(:subject_pattern) { "{{id}} | {{done_ratio}} | {{creation_date}}" }
+
+    it "resolves the pattern" do
+      expect(subject.resolve(work_package))
+        .to eq("#{work_package.id} | N/A | #{work_package.created_at.to_date.iso8601}")
     end
+  end
 
-    def to_h
-      super.stringify_keys
+  context "when the pattern has WorkPackage association attributes" do
+    let(:subject_pattern) { "{{id}} | {{author}} | {{type}}" }
+
+    it "resolves the pattern" do
+      expect(subject.resolve(work_package))
+        .to eq("#{work_package.id} | #{work_package.author.name} | #{work_package.type.name}")
     end
   end
 end

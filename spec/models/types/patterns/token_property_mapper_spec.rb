@@ -30,31 +30,26 @@
 
 require "spec_helper"
 
-RSpec.describe Types::PatternMapper do
-  let(:subject_pattern) { "ID Please: {{id}}" }
-  let(:work_package) { create(:work_package) }
+RSpec.describe Types::Patterns::TokenPropertyMapper do
+  shared_let(:responsible) { create(:user, firstname: "Responsible") }
+  shared_let(:assignee) { create(:user, firstname: "Assignee") }
 
-  subject(:resolver) { described_class.new(subject_pattern) }
+  shared_let(:category) { create(:category) }
 
-  it "resolves a pattern" do
-    expect(subject.resolve(work_package)).to eq("ID Please: #{work_package.id}")
+  shared_let(:project) { create(:project, parent: create(:project), status_code: 1, status_explanation: "A Mess") }
+
+  shared_let(:work_package_parent) do
+    create(:work_package, project:, category:, start_date: Date.yesterday, estimated_hours: 120, due_date: 3.months.from_now)
+  end
+  shared_let(:work_package) do
+    create(:work_package, responsible:, project:, category:, due_date: 1.month.from_now,
+                          assigned_to: assignee, parent: work_package_parent, start_date: Time.zone.today, estimated_hours: 30)
   end
 
-  context "when the pattern has WorkPackage properties" do
-    let(:subject_pattern) { "{{id}} | {{done_ratio}} | {{created}}" }
-
-    it "resolves the pattern" do
-      expect(subject.resolve(work_package))
-        .to eq("#{work_package.id} | N/A | #{work_package.created_at.to_date.iso8601}")
-    end
-  end
-
-  context "when the pattern has WorkPackage association attributes" do
-    let(:subject_pattern) { "{{id}} | {{author}} | {{type}}" }
-
-    it "resolves the pattern" do
-      expect(subject.resolve(work_package))
-        .to eq("#{work_package.id} | #{work_package.author.name} | #{work_package.type.name}")
+  described_class::MAPPING.each_pair do |key, fn|
+    it "the token named #{key} resolves successfully" do
+      expect { fn.call(work_package) }.not_to raise_error
+      expect(fn.call(work_package)).not_to be_nil
     end
   end
 end

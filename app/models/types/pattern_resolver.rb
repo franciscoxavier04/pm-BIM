@@ -29,29 +29,14 @@
 #++
 
 module Types
-  class PatternMapper
+  class PatternResolver
     TOKEN_REGEX = /{{[0-9A-Za-z_]+}}/
-
-    MAPPING = {
-      type: ->(wp) { wp.type.name },
-      assignee: ->(wp) { wp.assigned_to&.name },
-      created: ->(wp) { wp.created_at },
-      author: ->(wp) { wp.author.name },
-      parent_id: ->(wp) { wp.parent&.id },
-      project_name: ->(wp) { wp.project.name }
-    }.freeze
-
-    private_constant :MAPPING
+    private_constant :TOKEN_REGEX
 
     def initialize(pattern)
+      @mapper = Patterns::TokenPropertyMapper.new
       @pattern = pattern
       @tokens = pattern.scan(TOKEN_REGEX).map { |token| Patterns::Token.build(token) }
-    end
-
-    def valid?(work_package)
-      @tokens.each { |token| get_value(work_package, token) }
-    rescue NoMethodError
-      false
     end
 
     def resolve(work_package)
@@ -63,17 +48,13 @@ module Types
     private
 
     def get_value(work_package, token)
-      raw_value = if token.custom_field? && token.context != work_package.context
-                    fn(key).call(work_package.public_send(token.context))
-                  else
-                    fn(token.key).call(work_package)
-                  end
+      context = if token.context == :work_package
+                  work_package
+                else
+                  work_package.public_send(token.context)
+                end
 
-      stringify(raw_value)
-    end
-
-    def fn(key)
-      MAPPING.fetch(key) { ->(wp) { wp.public_send(key.to_sym) } }
+      stringify(@mapper[token.key].call(context))
     end
 
     def stringify(value)

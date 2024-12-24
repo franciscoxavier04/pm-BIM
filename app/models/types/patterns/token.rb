@@ -39,13 +39,9 @@ module Types
 
       def custom_field? = key.to_s.include?("custom_field")
 
-      def custom_field_id
-        return nil unless custom_field?
+      def context
+        return :work_package unless custom_field?
 
-        Integer(key.to_s.gsub(/\D+/, ""))
-      end
-
-      def custom_field_context
         context = key.to_s.gsub(/_?custom_field_\d+/, "")
         return :work_package if context.blank?
 
