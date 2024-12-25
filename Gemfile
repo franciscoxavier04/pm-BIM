@@ -239,7 +239,7 @@ gem "httpx"
 
 group :test do
   gem "launchy", "~> 3.0.0"
-  gem "rack-test", "~> 2.1.0"
+  gem "rack-test", "~> 2.2.0"
   gem "shoulda-context", "~> 2.0"
 
   # Test prof provides factories from code
