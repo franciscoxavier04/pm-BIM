@@ -31,44 +31,87 @@
 module Types
   module Patterns
     class TokenPropertyMapper
-      MAPPING = {
-        accountable: ->(wp) { wp.responsible&.name },
-        assignee: ->(wp) { wp.assigned_to&.name },
-        author: ->(wp) { wp.author&.name },
-        category: ->(wp) { wp.category&.name },
-        creation_date: ->(wp) { wp.created_at },
-        estimated_time: ->(wp) { wp.estimated_hours },
-        finish_date: ->(wp) { wp.due_date },
-        parent: ->(wp) { wp.parent&.id },
-        parent_author: ->(wp) { wp.parent&.author&.name },
-        parent_category: ->(wp) { wp.parent&.category&.name },
-        parent_creation_date: ->(wp) { wp.parent&.created_at },
-        parent_estimated_time: ->(wp) { wp.parent&.estimated_hours },
-        parent_finish_date: ->(wp) { wp.parent&.due_date },
-        parent_priority: ->(wp) { wp.parent&.priority },
-        priority: ->(wp) { wp.priority },
-        project: ->(wp) { wp.project_id },
-        project_active: ->(wp) { wp.project&.active? },
-        project_name: ->(wp) { wp.project&.name },
-        project_status: ->(wp) { wp.project&.status_code },
-        project_parent: ->(wp) { wp.project&.parent_id },
-        project_public: ->(wp) { wp.project&.public? },
-        start_date: ->(wp) { wp.start_date },
-        status: ->(wp) { wp.status&.name },
-        type: ->(wp) { wp.type&.name }
-      }.freeze
+      DEFAULT_FUNCTION = ->(key, context) { context.public_send(key.to_sym) }.curry
+
+      TOKEN_PROPERTY_MAP = IceNine.deep_freeze(
+        {
+          accountable: { fn: ->(wp) { wp.responsible&.name }, label: -> { WorkPackage.human_attribute_name(:responsible) } },
+          assignee: { fn: ->(wp) { wp.assigned_to&.name }, label: -> { WorkPackage.human_attribute_name(:assigned_to) } },
+          author: { fn: ->(wp) { wp.author&.name }, label: -> { WorkPackage.human_attribute_name(:author) } },
+          category: { fn: ->(wp) { wp.category&.name }, label: -> { WorkPackage.human_attribute_name(:category) } },
+          creation_date: { fn: ->(wp) { wp.created_at }, label: -> { WorkPackage.human_attribute_name(:created_at) } },
+          estimated_time: { fn: ->(wp) { wp.estimated_hours }, label: -> { WorkPackage.human_attribute_name(:estimated_hours) } },
+          finish_date: { fn: ->(wp) { wp.due_date }, label: -> { WorkPackage.human_attribute_name(:due_date) } },
+          parent: { fn: ->(wp) { wp.parent&.id }, label: -> { WorkPackage.human_attribute_name(:parent) } },
+          parent_author: { fn: ->(wp) { wp.parent&.author&.name }, label: -> { WorkPackage.human_attribute_name(:author) } },
+          parent_category: { fn: ->(wp) { wp.parent&.category&.name },
+                             label: -> { WorkPackage.human_attribute_name(:category) } },
+          parent_creation_date: { fn: ->(wp) { wp.parent&.created_at },
+                                  label: -> { WorkPackage.human_attribute_name(:created_at) } },
+          parent_estimated_time: { fn: ->(wp) { wp.parent&.estimated_hours },
+                                   label: -> { WorkPackage.human_attribute_name(:estimated_hours) } },
+          parent_finish_date: { fn: ->(wp) { wp.parent&.due_date },
+                                label: -> { WorkPackage.human_attribute_name(:due_date) } },
+          parent_priority: { fn: ->(wp) { wp.parent&.priority }, label: -> { WorkPackage.human_attribute_name(:priority) } },
+          priority: { fn: ->(wp) { wp.priority }, label: -> { WorkPackage.human_attribute_name(:priority) } },
+          project: { fn: ->(wp) { wp.project_id }, label: -> { WorkPackage.human_attribute_name(:project) } },
+          project_active: { fn: ->(wp) { wp.project&.active? }, label: -> { Project.human_attribute_name(:active) } },
+          project_name: { fn: ->(wp) { wp.project&.name }, label: -> { Project.human_attribute_name(:name) } },
+          project_status: { fn: ->(wp) { wp.project&.status_code }, label: -> { Project.human_attribute_name(:status_code) } },
+          project_parent: { fn: ->(wp) { wp.project&.parent_id }, label: -> { Project.human_attribute_name(:parent) } },
+          project_public: { fn: ->(wp) { wp.project&.public? }, label: -> { Project.human_attribute_name(:public) } },
+          start_date: { fn: ->(wp) { wp.start_date }, label: -> { WorkPackage.human_attribute_name(:start_date) } },
+          status: { fn: ->(wp) { wp.status&.name }, label: -> { WorkPackage.human_attribute_name(:status) } },
+          type: { fn: ->(wp) { wp.type&.name }, label: -> { WorkPackage.human_attribute_name(:type) } }
+        }
+      )
 
       def fetch(key)
-        MAPPING.fetch(key) { ->(context) { context.public_send(key.to_sym) } }
+        TOKEN_PROPERTY_MAP.dig(key, :fn) || DEFAULT_FUNCTION.call(key)
       end
 
       alias :[] :fetch
 
-      def tokens_for_type(_type)
-        []
-        # Fetch all CustomFields for type
-        # Fetch all customFields prefixed as parent
-        # fetch all project attributes prefixed as project
+      def tokens_for_type(type)
+        base = default_tokens
+        base[:work_package].merge!(tokenize(work_package_cfs_for(type)))
+        base[:project].merge!(tokenize(project_attributes, "project_"))
+        base[:parent].merge!(tokenize(all_work_package_cfs, "parent_"))
+
+        base.transform_values { _1.sort_by(&:last).to_h }
+      end
+
+      private
+
+      def default_tokens
+        TOKEN_PROPERTY_MAP.keys.each_with_object({ project: {}, work_package: {}, parent: {} }) do |key, obj|
+          label = TOKEN_PROPERTY_MAP.dig(key, :label).call
+
+          case key.to_s
+          when /^project_/
+            obj[:project][key] = label
+          when /^parent_/
+            obj[:parent][key] = label
+          else
+            obj[:work_package][key] = label
+          end
+        end
+      end
+
+      def tokenize(custom_field_scope, prefix = nil)
+        custom_field_scope.pluck(:name, :id).to_h { |name, id| [:"#{prefix}custom_field_#{id}", name] }
+      end
+
+      def work_package_cfs_for(type)
+        all_work_package_cfs.where(type: type)
+      end
+
+      def all_work_package_cfs
+        WorkPackageCustomField.where(multi_value: false).order(:name)
+      end
+
+      def project_attributes
+        ProjectCustomField.where(admin_only: false, multi_value: false).order(:name)
       end
     end
   end

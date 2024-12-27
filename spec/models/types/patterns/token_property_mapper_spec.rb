@@ -46,10 +46,17 @@ RSpec.describe Types::Patterns::TokenPropertyMapper do
                           assigned_to: assignee, parent: work_package_parent, start_date: Time.zone.today, estimated_hours: 30)
   end
 
-  described_class::MAPPING.each_pair do |key, fn|
+  described_class::TOKEN_PROPERTY_MAP.each_pair do |key, details|
     it "the token named #{key} resolves successfully" do
-      expect { fn.call(work_package) }.not_to raise_error
-      expect(fn.call(work_package)).not_to be_nil
+      expect { details[:fn].call(work_package) }.not_to raise_error
+      expect(details[:fn].call(work_package)).not_to be_nil
     end
+  end
+
+  it "returns all possible tokens" do
+    tokens = described_class.new.tokens_for_type(work_package.type)
+
+    expect(tokens.keys).to match_array(%i[work_package project parent])
+    expect(tokens[:project][:project_status]).to eq(Project.human_attribute_name(:status_code))
   end
 end

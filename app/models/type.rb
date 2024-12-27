@@ -107,7 +107,7 @@ class Type < ApplicationRecord
   def replacement_patterns_defined?
     return false if patterns.blank?
 
-    patterns.all_enabled.any?
+    enabled_patterns.any?
   end
 
   def enabled_patterns

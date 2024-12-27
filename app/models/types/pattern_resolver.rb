@@ -48,13 +48,9 @@ module Types
     private
 
     def get_value(work_package, token)
-      context = if token.context == :work_package
-                  work_package
-                else
-                  work_package.public_send(token.context)
-                end
+      context = token.context == :work_package ? work_package : work_package.public_send(token.context)
 
-      stringify(@mapper[token.key].call(context))
+      stringify(@mapper[token.context_key].call(context))
     end
 
     def stringify(value)
@@ -62,7 +58,7 @@ module Types
       when Date, Time, DateTime
         value.strftime("%Y-%m-%d")
       when NilClass
-        "N/A"
+        "NA"
       else
         value.to_s
       end

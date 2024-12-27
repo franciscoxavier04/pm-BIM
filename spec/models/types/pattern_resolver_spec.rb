@@ -32,7 +32,8 @@ require "spec_helper"
 
 RSpec.describe Types::PatternResolver do
   let(:subject_pattern) { "ID Please: {{id}}" }
-  let(:work_package) { create(:work_package) }
+
+  shared_let(:work_package) { create(:work_package) }
 
   subject(:resolver) { described_class.new(subject_pattern) }
 
@@ -45,7 +46,7 @@ RSpec.describe Types::PatternResolver do
 
     it "resolves the pattern" do
       expect(subject.resolve(work_package))
-        .to eq("#{work_package.id} | N/A | #{work_package.created_at.to_date.iso8601}")
+        .to eq("#{work_package.id} | NA | #{work_package.created_at.to_date.iso8601}")
     end
   end
 
@@ -55,6 +56,32 @@ RSpec.describe Types::PatternResolver do
     it "resolves the pattern" do
       expect(subject.resolve(work_package))
         .to eq("#{work_package.id} | #{work_package.author.name} | #{work_package.type.name}")
+    end
+  end
+
+  context "when the pattern has custom fields" do
+    let(:custom_field) { create(:string_wp_custom_field) }
+    let(:type) { create(:type, custom_fields: [custom_field]) }
+    let(:project) { create(:project, types: [type], work_package_custom_fields: [custom_field]) }
+    let(:project_custom_field) { create(:project_custom_field, projects: [project], field_format: "string") }
+
+    let(:subject_pattern) do
+      "{{project_custom_field_#{project_custom_field.id}}} A custom field value: {{custom_field_#{custom_field.id}}}"
+    end
+
+    let(:work_package) do
+      create(:work_package, type:, project:, custom_values: { custom_field.id => "Important Information" })
+    end
+
+    before do
+      project.public_send :"custom_field_#{project_custom_field.id}=", "PROSPEC"
+      project.save
+    end
+
+    it "resolves the pattern" do
+      User.current = SystemUser.first
+
+      expect(subject.resolve(work_package)).to eq("PROSPEC A custom field value: Important Information")
     end
   end
 end

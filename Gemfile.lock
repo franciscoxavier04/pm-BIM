@@ -1273,6 +1273,7 @@ DEPENDENCIES
   i18n-js (~> 4.2.3)
   i18n-tasks (~> 1.0.13)
   ice_cube (~> 0.17.0)
+  ice_nine
   json_schemer (~> 2.3.0)
   json_spec (~> 1.1.4)
   ladle

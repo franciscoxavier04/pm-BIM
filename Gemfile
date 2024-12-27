@@ -237,6 +237,9 @@ gem "turbo-rails", "~> 2.0.0"
 
 gem "httpx"
 
+# Brings actual deep freezing to most ruby objects
+gem "ice_nine"
+
 group :test do
   gem "launchy", "~> 3.0.0"
   gem "rack-test", "~> 2.1.0"

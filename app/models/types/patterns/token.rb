@@ -39,6 +39,12 @@ module Types
 
       def custom_field? = key.to_s.include?("custom_field")
 
+      def context_key
+        return key unless custom_field?
+
+        key.to_s.gsub("#{context}_", "").to_sym
+      end
+
       def context
         return :work_package unless custom_field?
 
