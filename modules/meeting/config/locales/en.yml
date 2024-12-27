@@ -139,6 +139,9 @@ en:
     This meeting is part of a series called %{name}.
     This will only delete this particular occurrence and not the entire series.
     Do you want to continue?
+  label_recurring_occurrence_delete_confirmation: >
+    Any meeting information not in the template will be lost.
+    Do you want to continue?
   label_recurring_meeting_restore: "Restore this occurrence"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"

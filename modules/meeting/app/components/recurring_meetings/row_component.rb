@@ -158,25 +158,16 @@ module RecurringMeetings
                                 "test-selector": "more-button"
                               })
 
-        if delete_allowed? && !cancelled? && !instantiated?
-          delete_scheduled_action(menu)
-        end
-
-        if instantiated? && !cancelled?
-          ical_action(menu)
-
-          if delete_allowed?
-            delete_action(menu)
-          end
-        end
-
-        if cancelled?
-          restore_action(menu)
-        end
+        delete_scheduled_action(menu)
+        ical_action(menu)
+        delete_action(menu)
+        restore_action(menu)
       end
     end
 
     def ical_action(menu)
+      return unless instantiated? && !cancelled?
+
       menu.with_item(label: I18n.t(:label_icalendar_download),
                      href: download_ics_meeting_path(meeting),
                      content_arguments: {
@@ -187,12 +178,14 @@ module RecurringMeetings
     end
 
     def delete_action(menu)
+      return unless delete_allowed? && !cancelled? && instantiated?
+
       menu.with_item(
-        label: I18n.t(:label_recurring_meeting_cancel),
+        label: past? ? I18n.t(:label_recurring_meeting_delete) : I18n.t(:label_recurring_meeting_cancel),
         scheme: :danger,
         href: current_project_meeting_path(meeting),
         form_arguments: {
-          method: :delete, data: { confirm: I18n.t("text_are_you_sure"), turbo: false }
+          method: :delete, data: { confirm: I18n.t(:label_recurring_occurrence_delete_confirmation), turbo: false }
         }
       ) do |item|
         item.with_leading_visual_icon(icon: :trash)
@@ -200,6 +193,8 @@ module RecurringMeetings
     end
 
     def delete_scheduled_action(menu)
+      return unless delete_allowed? && !cancelled? && !instantiated?
+
       menu.with_item(
         label: I18n.t(:label_recurring_meeting_cancel),
         scheme: :danger,
@@ -213,6 +208,8 @@ module RecurringMeetings
     end
 
     def restore_action(menu)
+      return unless cancelled?
+
       menu.with_item(
         label: I18n.t(:label_recurring_meeting_restore),
         href: init_recurring_meeting_path(recurring_meeting, start_time: model.start_time.iso8601),
@@ -234,6 +231,10 @@ module RecurringMeetings
 
     def start_time_changed?
       meeting && meeting.start_time != model.start_time
+    end
+
+    def past?
+      model.start_time < Time.current
     end
   end
 end
