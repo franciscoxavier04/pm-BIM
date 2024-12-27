@@ -130,6 +130,7 @@ class RecurringMeeting < ApplicationRecord
     scheduled_meetings
       .includes(:meeting)
       .public_send(filter_scope)
+      .then { |o| filter_scope == :past ? o.not_cancelled : o }
       .order(start_time: direction)
   end
 

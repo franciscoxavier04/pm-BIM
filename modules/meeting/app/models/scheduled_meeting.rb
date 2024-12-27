@@ -34,6 +34,7 @@ class ScheduledMeeting < ApplicationRecord
   scope :past, -> { where(start_time: ...Time.current) }
 
   scope :cancelled, -> { where(cancelled: true) }
+  scope :not_cancelled, -> { where(cancelled: false) }
 
   validates_uniqueness_of :meeting, allow_nil: true
   validates_presence_of :start_time
