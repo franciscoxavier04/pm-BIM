@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Backup < Export
   class << self
     def permission

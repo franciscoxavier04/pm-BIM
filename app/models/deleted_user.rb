@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DeletedUser < User
   def self.first
     super || create(type: to_s, status: statuses[:locked])

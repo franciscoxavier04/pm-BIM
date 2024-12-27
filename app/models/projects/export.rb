@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Projects::Export < Export
   acts_as_attachable view_permission: :view_project,
                      add_permission: :view_project,
