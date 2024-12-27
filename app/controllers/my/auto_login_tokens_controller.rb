@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module My
   class AutoLoginTokensController < ::ApplicationController
     before_action :require_login
