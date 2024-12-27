@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -57,7 +59,7 @@ module Groups
 
     def remove_member_roles_sql(member_role_ids)
       if member_role_ids.present?
-        sql_query = <<~SQL
+        sql_query = <<~SQL.squish
           DELETE FROM #{MemberRole.table_name}
           WHERE id IN (:member_role_ids)
           RETURNING member_roles.member_id
@@ -67,7 +69,7 @@ module Groups
           .sanitize sql_query,
                     member_role_ids:
       else
-        <<~SQL
+        <<~SQL.squish
           DELETE FROM #{MemberRole.table_name}
           USING #{MemberRole.table_name} user_member_roles
           WHERE
