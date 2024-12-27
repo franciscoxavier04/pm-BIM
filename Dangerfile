@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 CORE_OR_MODULE_MIGRATIONS_REGEX = %r{(modules/.*)?db/migrate/.*\.rb}
 
 def added_or_modified_migrations?
