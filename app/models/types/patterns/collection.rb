@@ -29,15 +29,31 @@
 #++
 
 module Types
-  Pattern = Data.define(:blueprint, :enabled) do
-    def enabled? = !!enabled
+  module Patterns
+    Collection = Data.define(:patterns) do
+      private_class_method :new
 
-    def resolve(work_package)
-      PatternResolver.new(blueprint).resolve(work_package)
-    end
+      def self.build(patterns:, contract: CollectionContract.new)
+        contract.call(patterns).to_monad.fmap { |success| new(success.to_h) }
+      end
 
-    def to_h
-      super.stringify_keys
+      def initialize(patterns:)
+        transformed = patterns.transform_values { Pattern.new(**_1) }.freeze
+
+        super(patterns: transformed)
+      end
+
+      def all_enabled
+        patterns.select { |_, pattern| pattern.enabled? }
+      end
+
+      def [](value)
+        patterns.fetch(value)
+      end
+
+      def to_h
+        patterns.stringify_keys.transform_values(&:to_h)
+      end
     end
   end
 end

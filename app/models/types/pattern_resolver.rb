@@ -29,25 +29,39 @@
 #++
 
 module Types
-  PatternCollection = Data.define(:patterns) do
-    private_class_method :new
+  class PatternResolver
+    TOKEN_REGEX = /{{[0-9A-Za-z_]+}}/
+    private_constant :TOKEN_REGEX
 
-    def self.build(patterns:, contract: PatternCollectionContract.new)
-      contract.call(patterns).to_monad.fmap { |success| new(success.to_h) }
+    def initialize(pattern)
+      @mapper = Patterns::TokenPropertyMapper.new
+      @pattern = pattern
+      @tokens = pattern.scan(TOKEN_REGEX).map { |token| Patterns::Token.build(token) }
     end
 
-    def initialize(patterns:)
-      transformed = patterns.transform_values { Pattern.new(**_1) }.freeze
-
-      super(patterns: transformed)
+    def resolve(work_package)
+      @tokens.inject(@pattern) do |pattern, token|
+        pattern.gsub(token.pattern, get_value(work_package, token))
+      end
     end
 
-    def [](value)
-      patterns.fetch(value)
+    private
+
+    def get_value(work_package, token)
+      context = token.context == :work_package ? work_package : work_package.public_send(token.context)
+
+      stringify(@mapper[token.context_key].call(context))
     end
 
-    def to_h
-      patterns.stringify_keys.transform_values(&:to_h)
+    def stringify(value)
+      case value
+      when Date, Time, DateTime
+        value.strftime("%Y-%m-%d")
+      when NilClass
+        "NA"
+      else
+        value.to_s
+      end
     end
   end
 end

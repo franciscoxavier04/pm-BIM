@@ -29,26 +29,28 @@
 #++
 
 module Types
-  class PatternCollectionType < ActiveModel::Type::Value
-    def assert_valid_value(value)
-      cast(value)
-    end
+  module Patterns
+    class CollectionType < ActiveModel::Type::Value
+      def assert_valid_value(value)
+        cast(value)
+      end
 
-    def cast(value)
-      PatternCollection.build(patterns: value).value_or { nil }
-    end
+      def cast(value)
+        Collection.build(patterns: value).value_or { nil }
+      end
 
-    def serialize(pattern)
-      return super if pattern.nil?
+      def serialize(pattern)
+        return super if pattern.nil?
 
-      YAML.dump(pattern.to_h)
-    end
+        YAML.dump(pattern.to_h)
+      end
 
-    def deserialize(value)
-      return if value.blank?
+      def deserialize(value)
+        return if value.blank?
 
-      data = YAML.safe_load(value)
-      cast(data)
+        data = YAML.safe_load(value)
+        cast(data)
+      end
     end
   end
 end

@@ -29,15 +29,30 @@
 #++
 
 module Types
-  Pattern = Data.define(:blueprint, :enabled) do
-    def enabled? = !!enabled
+  module Patterns
+    Token = Data.define(:pattern, :key) do
+      private_class_method :new
 
-    def resolve(work_package)
-      PatternResolver.new(blueprint).resolve(work_package)
-    end
+      def self.build(pattern)
+        new(pattern, pattern.tr("{}", "").to_sym)
+      end
 
-    def to_h
-      super.stringify_keys
+      def custom_field? = key.to_s.include?("custom_field")
+
+      def context_key
+        return key unless custom_field?
+
+        key.to_s.gsub("#{context}_", "").to_sym
+      end
+
+      def context
+        return :work_package unless custom_field?
+
+        context = key.to_s.gsub(/_?custom_field_\d+/, "")
+        return :work_package if context.blank?
+
+        context.to_sym
+      end
     end
   end
 end
