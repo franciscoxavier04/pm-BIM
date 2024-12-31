@@ -650,7 +650,7 @@ cs:
           no_notification: "Vypadá to, že jste všechno dohnali..."
           no_notification_with_current_project_filter: "Vypadá to, že nemáte žadné nové oznámení pro vybraný projekt."
           no_notification_with_current_filter: "Vypadá to, že tady nic není %{filter} filtr."
-          no_notification_for_filter: "Vypadá to, že tady nic není %{filter} filtr."
+          no_notification_for_filter: "Vypadá to, že jste všichni zachytili tento filtr."
           no_selection: "Klikněte na oznámení pro zobrazení všech podrobností o aktivitě."
         new_notifications:
           message: "Máte nová oznámení."
