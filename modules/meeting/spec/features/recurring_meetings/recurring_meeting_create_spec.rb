@@ -35,7 +35,8 @@ require_relative "../../support/pages/meetings/index"
 
 RSpec.describe "Recurring meetings creation",
                :js,
-               :with_cuprite do
+               :with_cuprite,
+               with_flag: { recurring_meetings: true } do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
@@ -69,7 +70,10 @@ RSpec.describe "Recurring meetings creation",
       meetings_page.visit!
       expect(page).to have_current_path(meetings_page.path)
       meetings_page.click_on "add-meeting-button"
-      meetings_page.click_on "Recurring"
+
+      page.within("action-list") do
+        meetings_page.click_on "Recurring"
+      end
 
       wait_for_network_idle
 

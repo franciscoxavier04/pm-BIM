@@ -30,23 +30,29 @@
 
 import { Controller } from '@hotwired/stimulus';
 
-export default class OverviewHeaderController extends Controller {
-  connect() {
-    window.addEventListener('angular:router:module-changed', this.toggleHeaderVisibility);
-  }
+export default class ProjectLifeCyclesFormController extends Controller {
+  static targets = ['form'];
 
-  disconnect() {
-    window.removeEventListener('angular:router:module-changed', this.toggleHeaderVisibility);
-  }
+  declare readonly formTarget:HTMLFormElement;
 
-  toggleHeaderVisibility = (event:CustomEvent) => {
-    const name = event.detail as string;
-    const element = this.element as HTMLElement;
+  handleChange(event:Event) {
+    const target = event.target as HTMLElement;
+    const previewUrl = this.formTarget.dataset.previewUrl;
 
-    if (name === 'overview') {
-      element.classList.remove('d-none');
-    } else {
-      element.classList.add('d-none');
+    if (!previewUrl || this.datePickerVisible(target)) {
+      return; // flatpickr is still open, do not submit yet.
     }
-  };
+
+    const form = this.formTarget;
+    form.action = previewUrl;
+
+    form.requestSubmit();
+  }
+
+  datePickerVisible(element:HTMLElement) {
+    const nextElement = element.nextElementSibling;
+    return nextElement
+           && nextElement.classList.contains('flatpickr-calendar')
+           && nextElement.classList.contains('open');
+  }
 }
