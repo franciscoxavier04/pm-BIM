@@ -10,12 +10,12 @@ keywords: OpenID providers
 > [!IMPORTANT] 
 > OpenID Connect providers is an Enterprise add-on. If you do not see the button you will have to activate the Enterprise edition first.
 
-| Topic                                                        | Content                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Login with [Google Workspace](#google)                       | How to use Google Workspace as an SSO provider for OpenProject? |
-| [Microsoft Entra ID](#microsoft-entra) (previously Azure)    | How to use Microsoft Azure Active Directory as an SSO provider for OpenProject? |
-| [Custom OpenID Connect Providers](#custom-openid-connect-provider) | Configuration of additional OpenID Connect providers.        |
-| [Troubleshooting](#troubleshooting)                          | Common complications when using OpenID as SSO.               |
+| Topic                                                              | Content                                                                         |
+|--------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| Login with [Google Workspace](#google)                             | How to use Google Workspace as an SSO provider for OpenProject?                 |
+| [Microsoft Entra ID](#microsoft-entra) (previously Azure)          | How to use Microsoft Azure Active Directory as an SSO provider for OpenProject? |
+| [Custom OpenID Connect Providers](#custom-openid-connect-provider) | Configuration of additional OpenID Connect providers.                           |
+| [Troubleshooting](#troubleshooting)                                | Common complications when using OpenID as SSO.                                  |
 
 To activate and configure OpenID providers in OpenProject, navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*.
 
@@ -188,6 +188,8 @@ To start creating a custom provider, please follow these steps:
 2. Navigate to *Administration* -> *Authentication* and choose -> *OpenID providers*. 
    - **Click** the green *+ OpenID Connect provider* button
    - **Choose** the *Option* **Custom**
+
+### Step-by-step
 
 #### Step 1: Display name
 
