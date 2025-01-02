@@ -77,7 +77,6 @@ You can create different kinds of providers with a different set of properties. 
 After pressing **CREATE** you will see a following pop-up window.
 
 > [!TIP]
->
 > Make sure to note your **Client ID** and **Client Secret**.
 
 ![OAuth client created](g5-oauth-client-created.png)
@@ -100,7 +99,9 @@ Press **Finish setup** to save the client and complete. If you go back to the in
 
 ## Microsoft Entra
 
-### Step 1: Register an App in Azure Active Directory
+### Step-by-step
+
+#### Step 1: Register an App in Azure Active Directory
 
 If your organization currently has an Azure Active Directory to manage users, and you want to use that to log in to OpenProject, you will need to register a new *App*.
 
@@ -149,7 +150,7 @@ The steps are as follows:
 
 9. A secret should have been generated and will be displayed on the page. 
 
->  [!IMPORTANT]
+> [!IMPORTANT]
 > Make sure to save it because it will only be displayed once.
 
 ![Azure Active Directory Add Secret](08-add-secret.png)
