@@ -34,7 +34,6 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   validates :life_cycle_step_definition, presence: { message: I18n.t(:"activerecord.errors.messages.does_not_exist") }
 
   def self.key
-    # FIXME: use RequestStore?
     valid_ids = Project::LifeCycleStepDefinition.pluck(:id)
 
     /\Alcsd_(#{valid_ids.join('|')})\z/
@@ -57,14 +56,6 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   private
 
   def joins
-    # LEFT JOIN project_life_cycle_steps
-    # ON projects.id = project_life_cycle_steps.project_id
-    # LEFT JOIN project_life_cycle_step_definitions
-    # ON project_life_cycle_step_definitions.id = project_life_cycle_steps.definition_id
-    # AND project_life_cycle_step_definitions.id = #{life_cycle_step_definition.id}
-
-    # TODO: this breaks when sorting by multiple life cycle step columns as the subquery will be used
-    # more than once and duplicate names are not allowed.
     <<~SQL.squish
       LEFT JOIN (
         SELECT steps.*, def.name, def.id as def_id
@@ -80,8 +71,6 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   end
 
   def order(scope)
-    # -> scope coming in. need to enrich it with definitions and their active steps and then order by date?
-    # look into joins and other base class methods -> they will be needed here
     # Parent implementation:
     # scope.order(name => direction)
     with_raise_on_invalid do
