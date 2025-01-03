@@ -39,6 +39,14 @@ RSpec.describe "Recurring meetings CRUD",
                with_flag: { recurring_meetings: true } do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
+  before_all do
+    travel_to(Date.new(2024, 12, 1))
+  end
+
+  after(:all) do # rubocop:disable RSpec/BeforeAfterAll
+    travel_back
+  end
+
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
   shared_let(:user) do
     create :user,
@@ -71,6 +79,7 @@ RSpec.describe "Recurring meetings CRUD",
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
   before do
+    travel_to(Date.new(2024, 12, 1))
     login_as current_user
 
     # Assuming the first init job has run

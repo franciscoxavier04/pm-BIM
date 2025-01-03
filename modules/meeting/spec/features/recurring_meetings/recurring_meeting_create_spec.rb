@@ -64,6 +64,10 @@ RSpec.describe "Recurring meetings creation",
   let(:show_page) { Pages::RecurringMeeting::Show.new(meeting) }
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
+  before do
+    travel_to(Date.new(2024, 12, 1))
+  end
+
   context "with a user with permissions" do
     it "can create a recurring meeting" do
       login_as current_user
