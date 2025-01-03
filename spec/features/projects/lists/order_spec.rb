@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2010-2024 the OpenProject GmbH
@@ -272,5 +274,22 @@ RSpec.describe "Projects lists ordering", :js, :with_cuprite, with_settings: { l
     wait_for_reload
 
     projects_page.expect_project_at_place(project, 1)
+  end
+
+  context "when sorting by life cycle", with_flag: { stages_and_gates: true } do
+    let(:stage) { create(:project_stage, project:) }
+
+    before do
+      Setting.enabled_projects_columns += [stage.column_name]
+      visit projects_path
+    end
+
+    it "sorts projects by life cycle stage" do
+      projects_page.click_table_header_to_open_action_menu(stage.column_name)
+      projects_page.sort_via_action_menu(stage.column_name, direction: :asc)
+      wait_for_reload
+
+      projects_page.expect_project_at_place(project, 1)
+    end
   end
 end
