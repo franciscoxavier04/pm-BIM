@@ -277,19 +277,34 @@ RSpec.describe "Projects lists ordering", :js, :with_cuprite, with_settings: { l
   end
 
   context "when sorting by life cycle", with_flag: { stages_and_gates: true } do
-    let(:stage) { create(:project_stage, project:) }
+    let(:stage_def) { create(:project_stage_definition) }
+    let(:stage) do
+      create(:project_stage,
+             project:,
+             definition: stage_def,
+             start_date: Date.new(2025, 1, 1),
+             end_date: Date.new(2025, 1, 13))
+    end
+    let!(:other_stage) do
+      create(:project_stage,
+             project: public_project,
+             definition: stage_def,
+             start_date: Date.new(2025, 2, 12),
+             end_date: Date.new(2025, 2, 20))
+    end
 
     before do
       Setting.enabled_projects_columns += [stage.column_name]
       visit projects_path
     end
 
-    it "sorts projects by life cycle stage" do
+    it "sorts projects by life cycle stage asc" do
       projects_page.click_table_header_to_open_action_menu(stage.column_name)
       projects_page.sort_via_action_menu(stage.column_name, direction: :asc)
       wait_for_reload
 
       projects_page.expect_project_at_place(project, 1)
+      projects_page.expect_project_at_place(public_project, 2)
     end
   end
 end
