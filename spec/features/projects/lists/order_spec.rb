@@ -306,5 +306,14 @@ RSpec.describe "Projects lists ordering", :js, :with_cuprite, with_settings: { l
       projects_page.expect_project_at_place(project, 1)
       projects_page.expect_project_at_place(public_project, 2)
     end
+
+    it "sorts projects by life cycle stage desc" do
+      projects_page.click_table_header_to_open_action_menu(stage.column_name)
+      projects_page.sort_via_action_menu(stage.column_name, direction: :desc)
+      wait_for_reload
+
+      projects_page.expect_project_at_place(public_project, 5)
+      projects_page.expect_project_at_place(project, 6)
+    end
   end
 end
