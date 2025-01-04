@@ -6,8 +6,8 @@ cs:
         identifier: Identifikátor
         secret: Tajné
         scope: Rozsah
-        assertion_consumer_service_url: ACS (Assertion consumer service) URL
-        limit_self_registration: Limit self registration
+        assertion_consumer_service_url: Adresa URL služby ACS (Assertion consumer service)
+        limit_self_registration: Omezit vlastní registraci
         sp_entity_id: ID entity služby
         metadata_url: Identity provider metadata URL
         name_identifier_format: Formát identifikátoru názvu

@@ -1200,9 +1200,9 @@ cs:
         zero: "0 dní"
       word:
         one: "1 slovo"
-        few: "%{count} words"
-        many: "%{count} words"
-        other: "%{count} words"
+        few: "%{count} slov"
+        many: "%{count} slov"
+        other: "%{count} slov"
     zen_mode:
       button_activate: "Aktivovat zen režim"
       button_deactivate: "Deaktivovat zen režim"
