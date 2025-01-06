@@ -29,9 +29,10 @@
 module RecurringMeetings
   class InitNextOccurrenceJob < ApplicationJob
     include GoodJob::ActiveJobExtensions::Concurrency
+    discard_on ActiveJob::DeserializationError
 
     good_job_control_concurrency_with(
-      perform_limit: 1,
+      total_limit: 1,
       key: -> { self.class.unique_key(arguments.first) }
     )
 
@@ -51,10 +52,11 @@ module RecurringMeetings
 
       # Schedule the next occurrence, if not instantiated
       check_next_occurrence
+
+      # Schedule the next job
+      schedule_next_job
     rescue StandardError => e
       Rails.logger.error { "Error while initializing next occurrence for series ##{recurring_meeting}: #{e.message}" }
-    ensure
-      schedule_next_job
     end
 
     private
