@@ -46,7 +46,15 @@ See COPYRIGHT and LICENSE files for more details.
       end
 
       if @result.description.present?
-        prefix = @result.error_code? ? "#{@result.error_code.upcase}: " : ""
+        prefix = if @result.error_code?
+          link_to(
+            @result.error_code.upcase,
+            OpenProject::Static::Links.url_for(:storage_docs, :health_status, anchor: "connection-validation"),
+            target: "_blank"
+          ) + ": "
+        else
+          ""
+        end
 
         container.with_row(mt: 2) do
           render(Primer::Beta::Text.new(color: :muted, test_selector: "validation-result--description")) do

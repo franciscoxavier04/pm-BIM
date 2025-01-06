@@ -77,6 +77,13 @@ See COPYRIGHT and LICENSE files for more details.
                 formatted_health_reason
               end
             end
+
+            health_status_container.with_row(mt: 2) do
+              render(Primer::Beta::Link.new(href: OpenProject::Static::Links.url_for(:storage_docs, :health_status, anchor: "file-storage-errors-description"))) do |link|
+                link.with_trailing_visual_icon(icon: 'link-external')
+                I18n.t("storages.health.ampf_docs_link")
+              end
+            end
           end
         end
       end
