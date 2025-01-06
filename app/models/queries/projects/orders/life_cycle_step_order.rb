@@ -75,11 +75,29 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
 
   def order(scope)
     with_raise_on_invalid do
-      # Note that a gate does not define an end_date. This code still works.
-      direction_clause = Arel.sql("#{cte_name}.start_date #{direction}, #{cte_name}.end_date #{direction}")
-
-      scope.where("#{cte_name}.def_id = :def_id OR #{cte_name}.def_id IS NULL", def_id: life_cycle_step_definition.id)
-           .order(direction_clause)
+      scope.where(order_condition)
+           .order(*order_by_start_and_end_date)
     end
+  end
+
+  def order_condition
+    # To avoid SQL injection warnings, we use Arel to build the condition.
+    # Note that this SQL query uses the CTE defined in `cte_statement`.
+    steps_cte = Arel::Table.new(cte_name.to_s)
+
+    # WHERE cte_name.def_id = life_cycle_step_definition.id OR cte_name.def_id IS NULL
+    steps_cte[:def_id]
+      .eq(life_cycle_step_definition.id)
+      .or(steps_cte[:def_id].eq(nil))
+  end
+
+  def order_by_start_and_end_date
+    steps_table = Arel::Table.new(cte_name.to_s)
+
+    # Even though a gate does not define an end_date, this code still works.
+    [
+      steps_table[:start_date].send(direction),
+      steps_table[:end_date].send(direction)
+    ]
   end
 end
