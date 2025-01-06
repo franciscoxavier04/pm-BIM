@@ -105,6 +105,7 @@ pl:
     button_update: "Aktualizacja"
     button_export-pdf: "Pobierz plik PDF"
     button_export-atom: "Pobierz Atom"
+    button_generate_pdf: "Wygeneruj PDF"
     button_create: "Utwórz"
     card:
       add_new: "Dodaj nową kartę"
@@ -356,10 +357,10 @@ pl:
           learn_about: "Dowiedz się więcej o nowych funkcjach"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "14_6":
+          "15_1":
             standard:
               new_features_html: >
-                Ta wersja wprowadza różne funkcje i ulepszenia m.in. <br> <ul class="%{list_styling_class}"> <li>Korzystaj z bardziej elastycznej sprawozdawczości o postępach – dzięki opiniom użytkowników.</li> <li>Otrzymuj powiadomienia o aktualizacjach z opcją przeładowania spotkań.</li> <li>Włączaj pole niestandardowe dla wielu projektów jednocześnie.</li> <li>Używaj makr dla względnego atrybutu pakietu roboczego.</li> <li>Wyświetlaj puste linie w zapisanym formatowanym tekście.</li> <li>Oglądaj wcześniejsze spotkania znajdujące się na karcie Spotkania.</li> </ul>
+                Ta wersja wprowadza różne funkcje i ulepszenia, np. <br> <ul class="%{list_styling_class}"> <li>Niestandardowe pola hierarchii typów (dodatek wersji Enterprise).</li> <li>Przeprojektowanie karty Relacje w pakietach roboczych.</li> <li>Przeprojektowanie strony indeksu Spotkania.</li> <li>Ręczne podziały stron w eksporcie pakietów roboczych w formacie PDF.</li> <li>Tryb Zen dla list projektów.</li> </ul>
     ical_sharing_modal:
       title: "Subskrybuj kalendarz"
       inital_setup_error_message: "Podczas pobierania danych wystąpił błąd."
@@ -620,6 +621,7 @@ pl:
         prioritized: "Ma priorytet"
         dateAlert: "Alert dotyczący daty"
         shared: "Udostępniono"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Data  kamienia milowego"
         overdue: "Przekroczony termin"
@@ -654,6 +656,8 @@ pl:
         new_notifications:
           message: "Masz nowe powiadomienia."
           link_text: "Kliknij tutaj, aby je załadować."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Możesz zmodyfikować <a target="_blank" href="%{url}">ustawienia powiadomień</a>, aby upewnić się, że nigdy nie przegapisz ważnej aktualizacji.'
         title: "Ustawienia powiadomień"
@@ -741,6 +745,7 @@ pl:
         immediate:
           title: "Wyślij mi przypomnienie e-mail"
           mentioned: "Natychmiast, gdy pojawi się @wzmianka o mnie"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Powiadomienia e-mail dla innych elementów (które nie są pakietami roboczymi)"
           explanation: >
@@ -772,10 +777,6 @@ pl:
         upgrade_to_ee_text: "Znakomicie! Jeśli potrzebujesz tego dodatku, jesteś superprofesjonalistą! Może wesprzesz nas jako deweloperów OpenSource, zostając nabywcą wersji Enterprise?"
         more_information: "Więcej informacji"
         nevermind: "Nieważne"
-      edit:
-        form_configuration: "Konfiguracja formularza"
-        projects: "Projekty"
-        settings: "Ustawienia"
     time_entry:
       work_package_required: "Wymaga wybrania najpierw pakietu roboczego."
       title: "Rejestruj czas pracy"
@@ -1044,6 +1045,12 @@ pl:
           not_found: "Nie ma takiego widoku"
           duplicate_query_title: "Nazwa tego widoku już istnieje. Zmienić mimo to?"
         text_no_results: "Nie znaleziono żadnych pasujących widoków."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Daty tego pakietu roboczego są automatycznie odejmowane od jego elementów podrzędnych. Włącz funkcję Planowanie ręczne, aby ustawić daty."
         is_switched_from_manual_to_automatic: "Po przełączeniu planowania z ręcznego na automatyczne konieczne może być ponowne obliczenie dat tego pakietu roboczego ze względu na jego powiązania z innymi pakietami roboczymi."
@@ -1353,5 +1360,3 @@ pl:
       waiting_subtitle:
         network_off: "Występuje problem z siecią."
         network_on: "Sieć znów działa. Staramy się."
-        timeout: >
-          OpenProject nie mógł Ci zapewnić dostępu do folderu projektu w oczekiwanym czasie. Spróbuj ponownie.<br><br> Jeśli problem nie ustąpi, skontaktuj się z administratorem OpenProject w celu sprawdzenia <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">stanu konfiguracji magazynu plików</a>.

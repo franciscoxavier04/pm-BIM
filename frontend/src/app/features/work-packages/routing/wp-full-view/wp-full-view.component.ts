@@ -27,9 +27,12 @@
 //++
 
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
+import { ProjectResource } from 'core-app/features/hal/resources/project-resource';
 import { StateService } from '@uirouter/core';
 import {
+  ChangeDetectionStrategy,
   Component,
+  HostListener,
   Injector,
   OnInit,
 } from '@angular/core';
@@ -54,16 +57,19 @@ import { CurrentUserService } from 'core-app/core/current-user/current-user.serv
     CommentService,
     { provide: HalResourceNotificationService, useExisting: WorkPackageNotificationService },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkPackagesFullViewComponent extends WorkPackageSingleViewBase implements OnInit {
   // Watcher properties
   public isWatched:boolean;
 
-  public displayWatchButton = false;
+  public displayReminderButton$:false|Observable<boolean> = false;
+
+  public displayShareButton$:false|Observable<boolean> = false;
 
   public displayTimerButton = false;
 
-  public displayShareButton$:false|Observable<boolean> = false;
+  public displayWatchButton = false;
 
   public watchers:any;
 
@@ -84,6 +90,14 @@ export class WorkPackagesFullViewComponent extends WorkPackageSingleViewBase imp
     private readonly configurationService:ConfigurationService,
   ) {
     super(injector, $state.params.workPackageId);
+  }
+
+  // enable other parts of the application to trigger an immediate update
+  // e.g. a stimulus controller
+  // currently used by the new activities tab which does it's own polling
+  @HostListener('document:ian-update-immediate')
+  triggerImmediateUpdate() {
+    this.storeService.reload();
   }
 
   ngOnInit():void {
@@ -107,7 +121,8 @@ export class WorkPackagesFullViewComponent extends WorkPackageSingleViewBase imp
     this.isWatched = Object.prototype.hasOwnProperty.call(wp, 'unwatch');
     this.displayWatchButton = Object.prototype.hasOwnProperty.call(wp, 'unwatch') || Object.prototype.hasOwnProperty.call(wp, 'watch');
     this.displayTimerButton = Object.prototype.hasOwnProperty.call(wp, 'logTime');
-    this.displayShareButton$ = this.currentUserService.hasCapabilities$('work_package_shares/index', wp.project.id);
+    this.displayShareButton$ = this.currentUserService.hasCapabilities$('work_package_shares/index', (wp.project as ProjectResource).id);
+    this.displayReminderButton$ = this.currentUserService.hasCapabilities$('work_package_reminders/modal_body', (wp.project as ProjectResource).id);
 
     // watchers
     if (wp.watchers) {

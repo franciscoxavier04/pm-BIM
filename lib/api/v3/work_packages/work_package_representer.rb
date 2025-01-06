@@ -133,6 +133,19 @@ module API
           }
         end
 
+        link :generate_pdf,
+             cache_if: -> { export_work_packages_allowed? } do
+          next if represented.new_record?
+
+          next unless OpenProject::FeatureDecisions.generate_pdf_from_work_package_active?
+
+          {
+            href: generate_pdf_dialog_work_package_path(id: represented.id),
+            type: "application/pdf",
+            title: "Generate PDF"
+          }
+        end
+
         link :atom,
              cache_if: -> { export_work_packages_allowed? } do
           next if represented.new_record? || !Setting.feeds_enabled?
@@ -683,6 +696,7 @@ module API
 
         # Attachments need to be eager loaded for the description
         self.to_eager_load = %i[parent
+                                priority
                                 type
                                 watchers
                                 attachments

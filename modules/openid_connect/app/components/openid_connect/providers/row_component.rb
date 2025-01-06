@@ -5,28 +5,26 @@ module OpenIDConnect
         model
       end
 
-      def column_args(column)
-        if column == :name
-          { style: "grid-column: span 3" }
-        else
-          super
+      def name
+        concat(provider_name)
+
+        unless provider.configured?
+          incomplete_label
         end
       end
 
-      def name
-        link = render(
+      def provider_name
+        render(
           Primer::Beta::Link.new(
-            href: url_for(action: :edit, id: provider.id),
+            href: url_for(action: :show, id: provider.id),
             font_weight: :bold,
             mr: 1
           )
         ) { provider.display_name }
-        if !provider.configured?
-          link.concat(
-            render(Primer::Beta::Label.new(scheme: :attention)) { I18n.t(:label_incomplete) }
-          )
-        end
-        link
+      end
+
+      def incomplete_label
+        render(Primer::Beta::Label.new(scheme: :attention)) { I18n.t(:label_incomplete) }
       end
 
       def type

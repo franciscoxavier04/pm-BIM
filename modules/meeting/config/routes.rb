@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         get "menu" => "meetings/menus#show"
       end
     end
+    resources :recurring_meetings, only: %i[index new create show destroy]
   end
 
   resources :work_packages, only: %i[] do
@@ -55,7 +56,21 @@ Rails.application.routes.draw do
     resource :menu, only: %[show]
   end
 
+  resources :recurring_meetings do
+    member do
+      get :details_dialog
+      get :download_ics
+      post :init
+      post :delete_scheduled
+      post :template_completed
+    end
+    collection do
+      get :humanize_schedule, controller: "recurring_meetings/schedule", action: :humanize_schedule
+    end
+  end
+
   resources :meetings do
+    get :new_dialog, on: :collection
     member do
       get :check_for_updates
       get :cancel_edit

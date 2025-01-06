@@ -1,6 +1,5 @@
 @import '../../app/spot/styles/sass/variables'
 @import '../../global_styles/openproject/variables'
-
 .op-datepicker-modal
   display: flex
   flex-direction: column
@@ -28,6 +27,8 @@
     grid-template-columns: auto auto 1fr
     grid-column-gap: $spot-spacing-2
     margin: 0 $spot-spacing-1 0
+    .spot-form-field--input:has(spot-switch)
+      margin-bottom: 0px !important
 
   &--dates-container
     display: grid
@@ -52,7 +53,8 @@
     visibility: hidden
 
   &--flatpickr-instance.inline
-    margin: 0.5rem auto !important
+    margin: 0.5rem auto 0  auto !important
+    overflow: hidden
 
   &--stretch-content
     flex-grow: 1
@@ -85,3 +87,8 @@
     &--date-form
       &:only-child
         grid-column: 1 / 3
+
+.flatpickr-wrapper
+  // Make flatpickr behave correctly when it is instantiated
+  // inside a dialog using the static: true option.
+  width: 100%

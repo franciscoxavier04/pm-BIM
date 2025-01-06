@@ -32,14 +32,69 @@ module OpPrimer
   class BorderBoxTableComponent < TableComponent
     include ComponentHelpers
 
-    def before_render
-      raise ArgumentError, "BorderBoxTableComponent cannot be #sortable?" if sortable?
+    class << self
+      # Declares columns to be shown in the mobile table
+      #
+      # Use it in subclasses like so:
+      #
+      #     columns :name, :description
+      #
+      #     mobile_columns :name
+      #
+      # This results in the description columns to be hidden on mobile
+      def mobile_columns(*names)
+        return Array(@mobile_columns || columns) if names.empty?
 
-      super
+        @mobile_columns = names.map(&:to_sym)
+      end
+
+      # Declares which columns to be rendered with a label
+      #
+      #     mobile_labels :name
+      #
+      # This results in the description columns to be hidden on mobile
+      def mobile_labels(*names)
+        return Array(@mobile_labels) if names.empty?
+
+        @mobile_labels = names.map(&:to_sym)
+      end
+
+      # Declare main columns, that will result in a grid column span of 2 and not truncate text
+      #
+      #     column_grid_span :title
+      #
+      def main_column(*names)
+        return Array(@main_columns) if names.empty?
+
+        @main_columns = names.map(&:to_sym)
+      end
+    end
+
+    delegate :mobile_columns, :mobile_labels,
+             to: :class
+
+    def main_column?(column)
+      self.class.main_column.include?(column)
     end
 
     def header_args(_column)
       {}
+    end
+
+    def column_title(name)
+      header = headers.find { |h| h[0] == name }
+      header ? header[1][:caption] : nil
+    end
+
+    def header_classes(column)
+      classes = [heading_class]
+      classes << "op-border-box-grid--main-column" if main_column?(column)
+
+      classes.join(" ")
+    end
+
+    def heading_class
+      "op-border-box-grid--heading"
     end
 
     # Default grid class with equal weights
@@ -48,6 +103,10 @@ module OpPrimer
     end
 
     def has_actions?
+      false
+    end
+
+    def has_footer?
       false
     end
 
@@ -63,6 +122,10 @@ module OpPrimer
       end
     end
 
+    def mobile_title
+      raise ArgumentError, "Need to provide a mobile table title"
+    end
+
     def blank_title
       I18n.t(:label_nothing_display)
     end
@@ -73,6 +136,10 @@ module OpPrimer
 
     def blank_icon
       nil
+    end
+
+    def footer
+      raise ArgumentError, "Need to provide footer content"
     end
   end
 end

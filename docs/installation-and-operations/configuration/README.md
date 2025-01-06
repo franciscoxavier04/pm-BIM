@@ -59,7 +59,7 @@ volumes:
 x-op-restart-policy: &restart_policy
   restart: unless-stopped
 x-op-image: &image
-  image: openproject/openproject:${TAG:-14}
+  image: openproject/openproject:${TAG:-15}
 x-op-app: &app
   <<: [*image, *restart_policy]
   environment:
@@ -77,7 +77,7 @@ x-op-app: &app
     - "${OPDATA:-opdata}:/var/openproject/assets"
 
 # configuration cut off at this point.
-# Please use the file at https://github.com/opf/openproject-deploy/blob/stable/14/compose/docker-compose.yml
+# Please use the file at https://github.com/opf/openproject-deploy/blob/stable/15/compose/docker-compose.yml
 ```
 
 Alternatively, you can also use an env file for docker-compose like so:
@@ -104,7 +104,7 @@ volumes:
 x-op-restart-policy: &restart_policy
   restart: unless-stopped
 x-op-image: &image
-  image: openproject/openproject:${TAG:-14}
+  image: openproject/openproject:${TAG:-15}
 x-op-app: &app
   <<: [*image, *restart_policy]
   environment:
@@ -112,7 +112,7 @@ x-op-app: &app
     # ... more environment variables
 
 # configuration cut off at this point.
-# Please use the file at https://github.com/opf/openproject-deploy/blob/stable/14/compose/docker-compose.yml
+# Please use the file at https://github.com/opf/openproject-deploy/blob/stable/15/compose/docker-compose.yml
 ```
 
 Let's say you have a `.env.prod`  file with some production-specific configuration. Then, start the services with that special env file specified.
@@ -171,6 +171,16 @@ OPENPROJECT_SEED_ADMIN_USER_PASSWORD="admin" # Password to set for the admin use
 OPENPROJECT_SEED_ADMIN_USER_PASSWORD_RESET="true" # Whether to force a password reset on first login (true/false)
 OPENPROJECT_SEED_ADMIN_USER_NAME="OpenProject Admin" # Name to assign to that user (First and lastnames will be split on the space character)
 OPENPROJECT_SEED_ADMIN_USER_MAIL="admin@example.net" # Email attribute to assign to that user. Note that in packaged installations, a wizard step will assign this variable as well.
+```
+
+Optionally, you can also lock the admin user that gets created right away. This is useful when you have an LDAP or SSO integration set up and you want to prevent the admin user from logging in.
+
+> [!WARNING]
+> With the admin user seeding disabled, you need to have an LDAP or SSO integration set up through environment variables.
+> Otherwise, you will not be able to retain access to the system.
+
+```shell
+OPENPROJECT_SEED_ADMIN_USER_LOCKED="true"
 ```
 
 ### Seeding LDAP connections

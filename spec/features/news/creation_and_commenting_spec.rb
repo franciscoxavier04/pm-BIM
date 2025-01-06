@@ -37,16 +37,20 @@ RSpec.describe "News creation and commenting", :js, :with_cuprite do
              build(:notification_setting, news_added: true, news_commented: true)
            ])
   end
+  let(:global_html_title) { Components::HtmlTitle.new(project) }
 
   current_user do
     create(:user,
            member_with_permissions: { project => %i[manage_news comment_news] })
   end
 
+  include Flash::Expectations
+
   it "allows creating new and commenting it all of which will result in notifications and mails" do
     visit project_news_index_path(project)
+    global_html_title.expect_first_segment "News"
 
-    find('[data-test-selector="add-news-button"]', text: "News").click
+    page.find_test_selector("add-news-button").click
 
     # Create the news
     fill_in "Title", with: "My new news"
@@ -54,6 +58,7 @@ RSpec.describe "News creation and commenting", :js, :with_cuprite do
 
     perform_enqueued_jobs do
       click_button "Create"
+      wait_for_network_idle
     end
 
     # The new news is visible on the index page
@@ -80,7 +85,10 @@ RSpec.describe "News creation and commenting", :js, :with_cuprite do
 
     perform_enqueued_jobs do
       click_button "Add comment"
+      wait_for_network_idle
     end
+
+    expect_and_dismiss_flash message: "Comment added"
 
     # The new comment is visible on the show page
     expect(page)

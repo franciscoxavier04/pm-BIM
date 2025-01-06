@@ -56,7 +56,7 @@ module WorkPackages
           {
             controller: "work-packages--activities-tab--item",
             "application-target": "dynamic",
-            "work-packages--activities-tab--item-activity-url-value": activity_url
+            "work-packages--activities-tab--item-activity-url-value": activity_url(journal)
           }
         end
 
@@ -68,14 +68,6 @@ module WorkPackages
           journal.noop?
         end
 
-        def activity_url
-          "#{project_work_package_url(journal.journable.project, journal.journable)}/activity#{activity_anchor}"
-        end
-
-        def activity_anchor
-          "#activity-#{journal.version}"
-        end
-
         def updated?
           return false if journal.initial?
 
@@ -83,7 +75,7 @@ module WorkPackages
         end
 
         def has_unread_notifications?
-          journal.notifications.where(read_ian: false, recipient_id: User.current.id).any?
+          journal.has_unread_notifications_for_user?(User.current)
         end
 
         def notification_on_details?

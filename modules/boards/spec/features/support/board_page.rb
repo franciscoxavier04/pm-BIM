@@ -91,6 +91,7 @@ module Pages
       subject.send_keys :enter
 
       sleep 1
+      wait_for_network_idle
 
       expect_card(list_name, card_title)
     end
@@ -237,6 +238,10 @@ module Pages
 
     def expect_empty
       expect(page).to have_no_css(".boards-list--item", wait: 10)
+    end
+
+    def expect_not_any_card
+      expect(page).to have_no_css('[data-test-selector="op-wp-single-card"]')
     end
 
     def remove_list(name)

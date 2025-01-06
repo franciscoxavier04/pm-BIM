@@ -49,7 +49,7 @@ OpenProject offers Attribute help texts that provide additional information for 
 
 ### Authentication
 
-In OpenProject, authentication is an important element to guarantee a data protected usage. To adapt these authentication settings, you need to have [admin](#admin) rights. Navigate to your username and select -> Administration -> Authentication. At OpenProject, we use [OAuth 2.0](#oauth) as this is the definitive industry standard for online authorization.
+In OpenProject, authentication is an important element to guarantee a data protected usage. To adapt these authentication settings, you need to have [admin](#admin) rights. Navigate to your username and select --> Administration --> Authentication. At OpenProject, we use [OAuth 2.0](#oauth) as this is the definitive industry standard for online authorization.
 
 **More information on authentication in OpenProject**
 
@@ -122,9 +122,7 @@ A custom action in OpenProject is defined as customizable buttons which trigger 
 
 ### Custom field
 
-In OpenProject, a custom field is defined as an additional field which can be added to existing fields. Custom fields can be created for the following resources: [work packages](#work-package), [spent time](#time-and-costs), [versions](#versions), [users](#user), and [groups](#group).
-
-![Custom fields in OpenProject](glossary-openproject-custom-field.png)
+In OpenProject, a custom field is defined as an additional field which can be added to existing fields. Custom fields can be created for the following resources: [work packages](#work-package), [spent time](#time-and-costs), [versions](#versions), [users](#user), and [groups](#group). If you want to add a custom field that refers to a project (or several projects), navigate to Administration --> Projects and create a [project attribute](#project-attribute).
 
 **More information on custom fields in OpenProject**
 
@@ -139,7 +137,7 @@ A custom query in OpenProject consists of saved [filters](#filters), sort criter
 
 ### Dark mode
 
-The dark mode for OpenProject is a personal setting to display the application in a dark [theme](#theme). Other available modes are the regular light mode and the (light) [high contrast mode](#high-contrast-mode). [Read in our documentation how to enable dark mode](../user-guide/my-account/#select-the-dark-mode).
+The dark mode for OpenProject is a personal setting to display the application in a dark [theme](#theme). Other available modes are the regular light mode and the (light) [high contrast mode](#high-contrast-mode). [Read in our documentation how to enable dark mode](../user-guide/account-settings/#select-the-dark-mode).
 
 ### Dashboard
 
@@ -201,7 +199,7 @@ A Group in OpenProject is defined as a list of users which can be added as a mem
 
 ### High contrast mode
 
-OpenProject offers a high contrast mode to make it easier for visually impaired people to use the software. This mode can be selected in the personal [account settings](../user-guide/my-account/#my-account) and will only affect the individual user's experience.
+OpenProject offers a high contrast mode to make it easier for visually impaired people to use the software. This mode can be selected in the personal [account settings](../user-guide/account-settings/) and will only affect the individual user's experience.
 
 ### Home page
 
@@ -278,6 +276,10 @@ OpenProject on-premises is a self-hosted version of OpenProject. As opposed to t
 - [Read a blog article comparing on-premises and cloud](https://www.openproject.org/blog/why-self-hosting-software/)
 - [Read how to activate the Enterprise on-premises edition](../enterprise-guide/enterprise-on-premises-guide/activate-enterprise-on-premises/)
 - [Read how to start a trial for Enterprise on-premises](../enterprise-guide/enterprise-on-premises-guide/enterprise-on-premises-trial/)
+
+### OpenID Connect (OIDC)
+
+OpenID Connect (OIDC) is an authentication protocol built on OAuth 2.0 that enables secure, simple, and standardized user identity verification. OpenProject Enterprise offers user interfaces for OIDC as well as for [SAML](#saml), so that administrators can set Single Sign-On (SSO) options for their users. [Read more about OpenID providers for OpenProject in our system admin guide](../system-admin-guide/authentication/openid-providers/).
 
 ## P
 
@@ -356,6 +358,10 @@ The quick context menu in OpenProject opens when you open a [work package table]
 
 ## R
 
+## Relations
+
+In OpenProject, you can set work packages in relation to each other. Some relation types simply create a visible link between the two work packages. Others have an additional effect, e.g. force one work package to be finished before the other one starts (Predecessor). The simplest way to add a relation between two existing work packages is to click the +Relation button on the Relations tab of one of the work packages. [Read more about work package relations and hierarchies in our user guide](../user-guide/work-packages/work-package-relations-hierarchies/).
+
 ## Repository
 
 A repository is defined as a document or source code management system that allows users to manage files and folders via different version control systems (such as Subversion or Git). [Read more about Repository for source code control](../user-guide/repository/).
@@ -373,6 +379,10 @@ In OpenProject, a role is defined as a set of permissions defined by a unique na
 In product management, the RICE score indicates the level of prioritization of a single element, e.g. a feature. With the RICE scoring model, you evaluate and compare requirements with each other to decide which products or features to prioritize on the roadmap – in an as objective manner as possible. The formula for the RICE score is the following: **R**each x **I**mpact x **C**onfidence / **E**ffort
 
 ## S
+
+### SAML
+
+SAML (Security Assertion Markup Language) is an open standard for exchanging authentication and authorization data between parties, typically an identity provider (IdP) and a service provider (SP). OpenProject Enterprise offers user interfaces for SAML as well as for [OpenID Connect](#openid-connect-oidc), so that administrators can set Single Sign-On (SSO) options for their users. [Read more about SAML providers for OpenProject in our system admin guide](../system-admin-guide/authentication/saml/).
 
 ### Share work packages
 
@@ -477,3 +487,9 @@ A list of work packages is considered a view. The containing work packages in an
 ### WYSIWYG editor
 
 WYSIWYG stands for 'What you see is what you get'. A WYSIWYG editor is a content editing interface that allows users to create and edit content so that it visually resembles the final result. In OpenProject, you can use WYSIWYG editors in [wikis](#wiki), [forums](#forum) and [work package](#work-package) descriptions and comments.
+
+## Z
+
+### Zen mode
+
+In OpenProject, Zen mode allows users to focus on a certain page, as all other menu items and elements are hidden, and the page is displayed in full screen. OpenProject offers zen mode for other modules like work packages, boards, Gantt charts, calendars, and project lists.

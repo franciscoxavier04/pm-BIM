@@ -133,6 +133,26 @@ Rails.application.reloader.to_prepare do
                      permissible_on: :project,
                      require: :member
 
+      map.permission :view_project_stages_and_gates,
+                     {},
+                     permissible_on: :project,
+                     dependencies: :view_project
+
+      map.permission :edit_project_stages_and_gates,
+                     {},
+                     permissible_on: :project,
+                     require: :member,
+                     dependencies: :view_project_stages_and_gates,
+                     contract_actions: { projects: %i[update] }
+
+      map.permission :select_project_life_cycle,
+                     {
+                       "projects/settings/life_cycle_steps": %i[index toggle enable_all disable_all]
+                     },
+                     permissible_on: :project,
+                     require: :member,
+                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
+
       map.permission :manage_members,
                      {
                        members: %i[index new create update destroy destroy_by_principal autocomplete_for_member menu],
@@ -212,6 +232,14 @@ Rails.application.reloader.to_prepare do
                      {},
                      permissible_on: :project_query,
                      require: :loggedin
+
+      map.permission :manage_own_reminders,
+                     {
+                       "work_packages/reminders": %i[modal_body create update destroy]
+                     },
+                     permissible_on: :project,
+                     contract_actions: { work_package_reminders: %i[modal_body] },
+                     require: :member
     end
 
     map.project_module :work_package_tracking, order: 90 do |wpt|
@@ -219,18 +247,21 @@ Rails.application.reloader.to_prepare do
                      {
                        versions: %i[index show status_by],
                        journals: %i[index],
-                       work_packages: %i[show index],
+                       work_packages: %i[show index show_conflict_flash_message],
                        work_packages_api: [:get],
                        "work_packages/reports": %i[report report_details],
                        "work_packages/activities_tab": %i[index update_streams update_sorting update_filter],
                        "work_packages/menus": %i[show],
-                       "work_packages/hover_card": %i[show]
+                       "work_packages/hover_card": %i[show],
+                       work_package_relations_tab: %i[index]
                      },
                      permissible_on: %i[work_package project],
                      contract_actions: { work_packages: %i[read] }
 
       wpt.permission :add_work_packages,
-                     {},
+                     {
+                       work_package_relations: %i[new create]
+                     },
                      permissible_on: :project,
                      dependencies: :view_work_packages,
                      contract_actions: { work_packages: %i[create] }
@@ -316,13 +347,15 @@ Rails.application.reloader.to_prepare do
 
       wpt.permission :manage_work_package_relations,
                      {
-                       work_package_relations: %i[create destroy]
+                       work_package_relations: %i[edit update create destroy]
                      },
                      permissible_on: %i[work_package project],
                      dependencies: :view_work_packages
 
       wpt.permission :manage_subtasks,
-                     {},
+                     {
+                       work_package_children: %i[new create destroy]
+                     },
                      permissible_on: :project,
                      dependencies: :view_work_packages
       # Queries

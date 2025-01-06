@@ -44,7 +44,7 @@ ro:
   api_v3:
     errors:
       too_many_elements_created_at_once: Prea multe elemente create simultan. Se așteaptă cel mult %{max} , a luat %{actual}.
-  external_file_storages: External file storages
+  external_file_storages: Stocare fișiere externe
   permission_create_files: 'Automatically managed project folders: Create files'
   permission_create_files_explanation: This permission is only available for Nextcloud storages
   permission_delete_files: 'Automatically managed project folders: Delete files'
@@ -77,14 +77,14 @@ ro:
     attributes:
       nextcloud_sync_service:
         add_user_to_group: 'Add User to Group:'
-        create_folder: 'Managed Project Folder Creation:'
+        create_folder: 'Creare dosar proiect gestionat:'
         ensure_root_folder_permissions: 'Set Base Folder Permissions:'
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
         remove_user_from_group: 'Remove User from Group:'
         rename_project_folder: 'Rename managed project Folder:'
       one_drive_sync_service:
-        create_folder: 'Managed Project Folder Creation:'
+        create_folder: 'Creare dosar proiect gestionat:'
         ensure_root_folder_permissions: 'Set Base Folder Permissions:'
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
@@ -124,7 +124,7 @@ ro:
               not_found: "%{current_path} wasn't found."
             set_folders_permissions:
               permission_not_set: could not set permissions on %{path}.
-          error: An unexpected error occurred. Please ensure that you Nextcloud instance is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that your Nextcloud instance is reachable and check OpenProject worker logs for more information
           group_does_not_exist: "%{group} does not exist. Check your Nextcloud instance configuration."
           insufficient_privileges: OpenProject does not have enough privileges to add %{user} to %{group}. Check you group settings in Nextcloud.
           not_allowed: Nextcloud block the request.
@@ -145,7 +145,7 @@ ro:
               not_found: "%{current_path} wasn't found."
             set_folders_permissions:
               permission_not_set: could not set permissions on %{path}.
-          error: An unexpected error occurred. Please ensure that you Nextcloud instance is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject wasn't allowed to access your OneDrive drive. Please check the permissions set on the Azure Application.
           unauthorized: OpenProject could not sync with OneDrive. Please check your storage and Azure Application configuration.
           user_does_not_exist: "%{user} does not exist in Nextcloud."
@@ -289,7 +289,6 @@ ro:
     label_creation_time: Creation time
     label_creator: Creator
     label_delete_storage: Delete storage
-    label_edit_storage: Edit storage
     label_edit_storage_access_management: Edit storage access management
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
@@ -343,6 +342,9 @@ ro:
       success:
         subtitle: You are being redirected
         title: Integration setup completed
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
       waiting:
         subtitle: One moment please, this might take some time...
         title: We are setting up your permissions on the project folder.

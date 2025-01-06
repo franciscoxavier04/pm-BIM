@@ -7,12 +7,14 @@ module OpenIDConnect
 
     before_action :require_admin
     before_action :check_ee
-    before_action :find_provider, only: %i[edit update confirm_destroy destroy]
+    before_action :find_provider, only: %i[edit show update confirm_destroy destroy]
     before_action :set_edit_state, only: %i[create edit update]
 
     def index
       @providers = ::OpenIDConnect::Provider.all
     end
+
+    def show; end
 
     def new
       oidc_provider = case params[:oidc_provider]
@@ -44,7 +46,20 @@ module OpenIDConnect
       end
     end
 
-    def edit; end
+    def edit
+      respond_to do |format|
+        format.turbo_stream do
+          component = OpenIDConnect::Providers::ViewComponent.new(@provider,
+                                                                  view_mode: :edit,
+                                                                  edit_mode: @edit_mode,
+                                                                  edit_state: @edit_state)
+          update_via_turbo_stream(component:)
+          scroll_into_view_via_turbo_stream("openid-connect-providers-edit-form", behavior: :instant)
+          render turbo_stream: turbo_streams
+        end
+        format.html
+      end
+    end
 
     def update
       update_params = params
@@ -52,14 +67,14 @@ module OpenIDConnect
                         .permit(:display_name, :oidc_provider, :limit_self_registration,
                                 *OpenIDConnect::Provider.stored_attributes[:options])
       call = OpenIDConnect::Providers::UpdateService
-        .new(model: @provider, user: User.current)
+        .new(model: @provider, user: User.current, fetch_metadata: fetch_metadata?)
         .call(update_params)
 
       if call.success?
         successful_save_response
       else
         @provider = call.result
-        failed_save_response(edit)
+        failed_save_response(:edit)
       end
     end
 
@@ -137,7 +152,7 @@ module OpenIDConnect
           render turbo_stream: turbo_streams
         end
         format.html do
-          render action: action_to_render
+          render action: action_to_render, status: :unprocessable_entity
         end
       end
     end
@@ -146,6 +161,10 @@ module OpenIDConnect
       @edit_state = params[:edit_state].to_sym if params.key?(:edit_state)
       @edit_mode = ActiveRecord::Type::Boolean.new.cast(params[:edit_mode])
       @next_edit_state = params[:next_edit_state].to_sym if params.key?(:next_edit_state)
+    end
+
+    def fetch_metadata?
+      params[:fetch_metadata] == "true"
     end
   end
 end

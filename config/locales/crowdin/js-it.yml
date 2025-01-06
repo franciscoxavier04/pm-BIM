@@ -105,6 +105,7 @@ it:
     button_update: "Aggiorna"
     button_export-pdf: "Scarica PDF"
     button_export-atom: "Scarica Atom"
+    button_generate_pdf: "Genera PDF"
     button_create: "Crea"
     card:
       add_new: "Aggiungi una nuova carta"
@@ -356,10 +357,10 @@ it:
           learn_about: "Scopri di più sulle nuove funzionalità"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "14_6":
+          "15_1":
             standard:
               new_features_html: >
-                Questa versione offre diverse funzionalità e miglioramenti, come: <br> <ul class="%{list_styling_class}"> <li>Report di avanzamento più flessibili, grazie al feedback degli utenti.</li> <li>Notifiche di aggiornamento con opzione di ricarica per le riunioni.</li> <li>Campi personalizzati per più progetti contemporaneamente.</li> <li>Procedure automatizzate (macro) sugli attributi relativi alle macro-attività.</li> <li>Righe vuote visibili in testi formattati salvati.</li> <li>Visualizzare il numero di riunioni passate accanto alla scheda Riunioni.</li> </ul>
+                Questa versione offre varie funzionalità e miglioramenti, ad esempio <br> <ul class="%{list_styling_class}"> <li>Campi personalizzati di tipo gerarchia (componente aggiuntivo Enterprise).</li> <li>Riprogettazione della scheda Relazioni nelle macro-attività.</li> <li>Riprogettazione della pagina indice Riunioni.</li> <li>Interruzioni di pagina manuali nelle esportazioni dei PDF delle macro-attività.</li> <li>Modalità Zen per gli elenchi di progetti.</li> </ul>
     ical_sharing_modal:
       title: "Iscriviti al calendario"
       inital_setup_error_message: "Si è verificato un errore recuperando i dati."
@@ -620,6 +621,7 @@ it:
         prioritized: "Assegnata priorità"
         dateAlert: "Avviso data"
         shared: "Condiviso"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Data inizio"
         overdue: "In ritardo"
@@ -652,6 +654,8 @@ it:
         new_notifications:
           message: "Ci sono nuove notifiche."
           link_text: "Clicca qui per caricarli."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Puoi modificare le tue <a target="_blank" href="%{url}">impostazioni di notifica</a> per assicurarti di non perderti mai un aggiornamento importante.'
         title: "Impostazioni notifiche"
@@ -739,6 +743,7 @@ it:
         immediate:
           title: "Inviami un promemoria email"
           mentioned: "Subito quando qualcuno mi @menziona"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Avvisi email per altri elementi (che non sono macro-attività)"
           explanation: >
@@ -770,10 +775,6 @@ it:
         upgrade_to_ee_text: "Wow! Se hai bisogno di questa aggiunta sei un vero professionista! Ti andrebbe di aiutare noi sviluppatori OpenSource diventando un cliente dell'edizione Enterprise?"
         more_information: "Altre informazioni"
         nevermind: "Lascia stare"
-      edit:
-        form_configuration: "Configurazione del modulo"
-        projects: "Progetti"
-        settings: "Impostazioni"
     time_entry:
       work_package_required: "Richiede prima di selezionare una macro-attività."
       title: "Registra l'orario effettuato"
@@ -1042,6 +1043,12 @@ it:
           not_found: "La vista non esiste"
           duplicate_query_title: "Il nome di questa vista è già esistente. Cambiarlo comunque?"
         text_no_results: "Nessuna vista corrispondente trovata."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Le date di questa macro-attività vengono automaticamente dedotte dai suoi figli. Attiva 'Programmazione manuale' per impostare le date."
         is_switched_from_manual_to_automatic: "Potrebbe essere necessario ricalcolare le date di questa macro-attività dopo il passaggio dalla programmazione manuale alla programmazione automatica a causa delle relazioni con altre macro-attività."
@@ -1345,5 +1352,3 @@ it:
       waiting_subtitle:
         network_off: "C'è un problema di rete."
         network_on: "La rete è tornata. Stiamo provando."
-        timeout: >
-          OpenProject non è stato in grado di darti accesso alla cartella del progetto entro il tempo previsto. Prova di nuovo.<br><br> Se il problema persiste contatta il tuo amministratore OpenProject per controllare lo <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">stato della configurazione di archiviazione dei file</a>.

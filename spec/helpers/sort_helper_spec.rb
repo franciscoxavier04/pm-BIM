@@ -149,6 +149,7 @@ RSpec.describe SortHelper do
               <span>
                 <a href="/work_packages?sort=sort_criteria_params"
                    rel="nofollow"
+                   target="_top"
                    title="Sort by &quot;Id&quot;">Id</a>
               </span>
             </div>
@@ -168,6 +169,7 @@ RSpec.describe SortHelper do
                 <span class="sort asc">
                   <a href="/work_packages?sort=sort_criteria_params"
                      rel="nofollow"
+                     target="_top"
                      title="Ascending sorted by &quot;Id&quot;">Id</a>
                 </span>
               </div>
@@ -189,6 +191,7 @@ RSpec.describe SortHelper do
                 <span class="sort desc">
                   <a href="/work_packages?sort=sort_criteria_params"
                      rel="nofollow"
+                     target="_top"
                      title="Descending sorted by &quot;Id&quot;">Id</a>
                 </span>
               </div>
@@ -220,6 +223,7 @@ RSpec.describe SortHelper do
                   <span>
                     <a href="/work_packages?columns=a%2Cb%2Cc&amp;expand=nope&amp;filters=xyz&amp;per_page=42&amp;sort=sort_criteria_params"
                        rel="nofollow"
+                       target="_top"
                        title="Sort by &quot;Id&quot;">Id</a>
                   </span>
                 </div>
@@ -240,6 +244,7 @@ RSpec.describe SortHelper do
                   <span>
                     <a href="/work_packages?baz=foo&amp;foo=bar&amp;sort=sort_criteria_params"
                        rel="nofollow"
+                       target="_top"
                        title="Sort by &quot;Id&quot;">Id</a>
                   </span>
                 </div>
@@ -259,7 +264,11 @@ RSpec.describe SortHelper do
             <div class="generic-table--sort-header-outer">
               <div class="generic-table--sort-header">
                 <span>
-                  <a title="Sort by &quot;Id&quot;" data-turbo-stream="true" rel="nofollow" href="/work_packages?sort=sort_criteria_params">
+                  <a title="Sort by &quot;Id&quot;"
+                     data-turbo-stream="true"
+                     rel="nofollow"
+                     target="_top"
+                     href="/work_packages?sort=sort_criteria_params">
                     Id
                   </a>
                 </span>
@@ -272,11 +281,7 @@ RSpec.describe SortHelper do
   end
 
   describe "#sort_header_with_action_menu" do
-    subject(:output) do
-      helper.sort_header_with_action_menu("id",
-                                          %w[name id description], {}, **options)
-    end
-
+    let(:id_column) { Queries::Projects::Selects::Default.new "id" }
     let(:options) { { param: :json, sortable: true } }
     let(:sort_criteria) { SortHelper::SortCriteria.new }
 
@@ -284,6 +289,11 @@ RSpec.describe SortHelper do
       # The resulting HTML is too big to assert in detail. We will only check some key parts to ensure it is
       # an action menu with the expected content.
       Nokogiri::HTML(output).at_css("th .generic-table--sort-header action-menu")
+    end
+
+    subject(:output) do
+      helper.sort_header_with_action_menu(id_column,
+                                          %w[name id description], {}, **options)
     end
 
     before do
@@ -298,6 +308,10 @@ RSpec.describe SortHelper do
 
     it "renders an action-menu button as column header" do
       expect(action_menu.at_css("button#menu-id-button .Button-content .Button-label").text).to eq("Id")
+    end
+
+    it "does not render an icon by default" do
+      expect(action_menu.at_css(".generic-table--action-menu-button .Button-leadingVisual")).to be_blank
     end
 
     it "shows sorting actions in the action-menu" do
@@ -334,7 +348,7 @@ RSpec.describe SortHelper do
 
     context "with the current column being the leftmost one" do
       subject(:output) do
-        helper.sort_header_with_action_menu("id",
+        helper.sort_header_with_action_menu(id_column,
                                             %w[id name description], {}, **options)
       end
 
@@ -350,7 +364,7 @@ RSpec.describe SortHelper do
 
     context "with the current column being the rightmost one" do
       subject(:output) do
-        helper.sort_header_with_action_menu("id",
+        helper.sort_header_with_action_menu(id_column,
                                             %w[name description id], {}, **options)
       end
 
@@ -388,7 +402,7 @@ RSpec.describe SortHelper do
 
     context "with a filter mapping for the column" do
       subject(:output) do
-        helper.sort_header_with_action_menu("id",
+        helper.sort_header_with_action_menu(id_column,
                                             %w[name id description], { "id" => "id_code" }, **options)
       end
 
@@ -404,13 +418,52 @@ RSpec.describe SortHelper do
     context "with the filter mapping specifying there is no filter for the column" do
       subject(:output) do
         # With the filter name mapped to nil, we expect no filter action to be present.
-        helper.sort_header_with_action_menu("id",
+        helper.sort_header_with_action_menu(id_column,
                                             %w[name id description], { "id" => nil }, **options)
       end
 
       it "does not show a 'filter by' action" do
         filter_by = action_menu.at_css("action-list .ActionListItem button[data-test-selector='id-filter-by']")
         expect(filter_by).to be_nil
+      end
+    end
+
+    context "with a life cycle gate column" do
+      let(:life_cycle_step) { create(:project_gate_definition) }
+      let(:life_cycle_column) { Queries::Projects::Selects::LifeCycleStep.new("lcsd_#{life_cycle_step.id}") }
+
+      let(:options) { { caption: life_cycle_step.name } }
+
+      subject(:output) do
+        # Not setting any filter column mappings here, so for other column types, this should use the default filter
+        helper.sort_header_with_action_menu(life_cycle_column,
+                                            %W[name lcsd_#{life_cycle_step.id}], {}, **options)
+      end
+
+      it "never offers a filter by action" do
+        # But a life cycle column never offers a filter (until #59183 is implemented)
+        filter_by = action_menu.at_css("action-list .ActionListItem button[data-test-selector='id-filter-by']")
+        expect(filter_by).to be_nil
+      end
+
+      it "shows a diamond icon in the header for gates" do
+        icon = action_menu.at_css(".generic-table--action-menu-button .Button-leadingVisual .octicon-diamond")
+        expect(icon).to be_present
+
+        header_text = action_menu.at_css(".generic-table--action-menu-button .Button-label").text.strip
+        expect(header_text).to eq(life_cycle_column.caption)
+      end
+
+      context "with a life cycle stage column" do
+        let(:life_cycle_step) { create(:project_stage_definition) }
+
+        it "shows a commit icon in the header for gates" do
+          icon = action_menu.at_css(".generic-table--action-menu-button .Button-leadingVisual .octicon-git-commit")
+          expect(icon).to be_present
+
+          header_text = action_menu.at_css(".generic-table--action-menu-button .Button-label").text.strip
+          expect(header_text).to eq(life_cycle_column.caption)
+        end
       end
     end
   end

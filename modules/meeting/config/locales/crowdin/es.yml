@@ -50,11 +50,18 @@ es:
         presenter: "Responsable"
       meeting_section:
         title: "Título"
+      recurring_meeting:
+        frequency: "Frequency"
+        interval: "Interval"
+        start_date: "Starts on"
+        end_after: "End series after"
+        iterations: "Occurrences"
     errors:
       messages:
         invalid_time_format: "no es una hora válida. Formato requerido: HH:MM"
     models:
-      structured_meeting: "Reunión (dinámico)"
+      recurring_meeting: "Recurring meeting"
+      structured_meeting: "One-time meeting"
       meeting_agenda_item: "Puntos de Agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minutas"
@@ -88,42 +95,83 @@ es:
   label_meeting: "Reunión"
   label_meeting_plural: "Reuniones"
   label_meeting_new: "Nueva reunión"
+  label_meeting_new_dynamic: "New one-time meeting"
+  label_meeting_new_recurring: "New recurring meeting"
+  label_meeting_create: "Crear reunión"
+  label_meeting_copy: "Copiar reunión"
   label_meeting_edit: "Editar reunión"
   label_meeting_agenda: "Agenda"
   label_meeting_minutes: "Minutas"
   label_meeting_close: "Cerrar"
   label_meeting_open: "Abrir"
+  label_meeting_index_delete: "Eliminar"
+  label_meeting_open_this_meeting: "Abrir esta reunión"
   label_meeting_agenda_close: "Cerrar la agenda para comenzar la minuta"
   label_meeting_date_time: "Fecha/hora"
+  label_meeting_date_and_time: "Fecha y hora"
   label_meeting_diff: "Diferencia"
+  label_recurring_meeting: "Recurring meeting"
+  label_recurring_meeting_part_of: "Part of a meeting series"
+  label_recurring_meeting_new: "New recurring meeting"
+  label_recurring_meeting_plural: "Recurring meetings"
+  label_template: "Template"
+  label_recurring_meeting_view: "View meeting series"
+  label_recurring_meeting_create: "Create from template"
+  label_recurring_meeting_copy: "Copy as one-off"
+  label_recurring_meeting_cancel: "Cancel this occurrence"
+  label_recurring_meeting_delete: "Delete occurrence"
+  label_recurring_meeting_delete_confirmation: >
+    This meeting is part of a series called %{name}. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+  label_recurring_occurrence_delete_confirmation: >
+    Any meeting information not in the template will be lost. Do you want to continue?
+  label_recurring_meeting_restore: "Restore this occurrence"
+  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
+  label_recurring_meeting_more_past: "There are %{count} more past meetings."
+  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
+  label_recurring_meeting_show_more: "Show more"
+  label_recurring_meeting_series_edit: "Edit meeting series"
+  label_recurring_meeting_series_delete: "Delete meeting series"
+  label_my_meetings: "My meetings"
+  label_all_meetings: "All meetings"
   label_upcoming_meetings: "Próximas reuniones"
   label_past_meetings: "Reuniones anteriores"
   label_upcoming_meetings_short: "Próximamente"
   label_past_meetings_short: "Pasado"
   label_involvement: "Implicación"
-  label_upcoming_invitations: "Próximas invitaciones"
+  label_invitations: "Invitations"
+  label_invited_user: "Invited user"
   label_past_invitations: "Invitaciones pasadas"
-  label_attendee: "Asistente"
-  label_author: "Autor"
+  label_attended: "Attended"
+  label_attended_user: "Attended user"
+  label_created_by_me: "Created by me"
   label_notify: "Enviar para revisión"
   label_icalendar: "Enviar iCalendar"
   label_icalendar_download: "Descargar evento iCalendar"
+  label_view_meeting_series: "View meeting series"
+  label_meeting_series: "Meeting series"
   label_version: "Versión"
   label_time_zone: "Zona horaria"
   label_start_date: "Fecha de inicio"
   meeting:
+    participants:
+      template: "These participants will be invited automatically to all future meetings as they are created."
     attachments:
+      template: "These attached files will be included in all future meetings in the series."
       text: "Los archivos adjuntos están a disposición de todos los participantes en la reunión. También puede arrastrarlos y soltarlos en las notas de los puntos del orden del día."
     copy:
       title: "Copiar reunión %{title}"
       attachments: "Copiar adjuntos"
       attachments_text: "Copie todos los archivos adjuntos a la nueva reunión"
       agenda: "Copiar agenda"
+      agenda_items: "Copiar elementos de agenda"
       agenda_text: "Copiar la agenda de la reunión anterior"
+      participants: "Copie la lista de participantes"
     email:
       send_emails: "Envíe un correo electrónico a los participantes"
       send_invitation_emails: >
         Envíe inmediatamente una invitación por correo electrónico a los participantes seleccionados anteriormente. También puede hacerlo manualmente en cualquier momento posterior.
+      send_invitation_emails_structured: "Envíe inmediatamente una invitación por correo electrónico a todos los participantes. También puede hacerlo manualmente en cualquier momento posterior."
       open_meeting_link: "Abrir reunión"
       invited:
         summary: "%{actor} te ha enviado una invitación para la reunión %{title}"
@@ -136,9 +184,12 @@ es:
     label_mail_all_participants: "Enviar email a todos los participantes"
     types:
       classic: "Clásico"
-      classic_text: "Organice su reunión en un formato de agenda de texto y protocolos."
-      structured: "Dinámico"
-      structured_text: "Organice su reunión como una lista de temas del orden del día, enlazándolos opcionalmente a un paquete de trabajo."
+      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
+      structured: "Structured"
+      one_time: "One-time"
+      recurring: "Recurring"
+      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Copiar una reunión no copiará actualmente los elementos asociados de la agenda de la reunión, solo los detalles"
     copied: "Copiado de la reunión %{id}"
   meeting_section:
@@ -146,6 +197,40 @@ es:
     delete_confirmation: "Al eliminar esta sección también se eliminarán todos sus puntos de agenda. ¿Seguro que desea hacerlo?"
     placeholder_title: "Nueva sección"
     empty_text: "Arrastre los elementos aquí o cree uno nuevo"
+  recurring_meeting:
+    occurrence:
+      infoline: "This meeting is part of a recurring meeting series."
+      error_no_next: "There is no next occurrence for this meeting."
+      first_already_exists: "The first occurrence of this meeting series is already instantiated."
+      first_created: >
+        The first meeting has been successfuly created from template. All future meetings will be created automatically at the time of the previous occurrence.
+    template:
+      button_finalize: "Finish template"
+      blank_title: "Your meeting series template is empty"
+      description: >
+        This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
+      blankslate_finalize: >
+        When you're done preparing this template, click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
+      label_view_template: "View template"
+      label_edit_template: "Edit template"
+      banner_html: >
+        You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
+    frequency:
+      every_weekday: "Every %{day_of_the_week}"
+      daily: "Daily"
+      working_days: "Every working day"
+      weekly: "Weekly"
+    end_after:
+      specific_date: "a specific date"
+      iterations: "a number of occurrences"
+    starts: "Starts"
+    in_words:
+      daily_interval: "Every %{interval} days"
+      working_days: "Every working day"
+      weekly: "Every week on %{weekday}"
+      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      frequency: "%{base} at %{time}"
+      full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Notificación enviada correctamente"
   notice_timezone_missing: No se ha establecido zona horaria y se asume %{zone}. Para elegir su zona horaria, por favor, haga clic aquí.
   notice_meeting_updated: "Esta página ha sido actualizada por otra persona. Recárguela para ver los cambios."
@@ -198,12 +283,17 @@ es:
   text_deleted_agenda_item: 'Punto del orden del día eliminado'
   label_initial_meeting_details: "Reunión"
   label_meeting_details: "Detalles de la reunión"
+  label_meeting_series_details: "Meeting series details"
   label_meeting_details_edit: "Editar detalles de la reunión"
   label_meeting_state: "Estado de la reunión"
   label_meeting_state_open: "Abrir"
   label_meeting_state_open_html: "<i>Abierta</i>"
   label_meeting_state_closed: "Cerrado"
   label_meeting_state_closed_html: "<i>Cerrada</i>"
+  label_meeting_state_agenda_created: "Agenda created"
+  label_meeting_state_scheduled: "Scheduled"
+  label_meeting_state_cancelled: "Cancelled"
+  label_meeting_state_skipped: "Skipped"
   label_meeting_reopen_action: "Reabrir reunión"
   label_meeting_close_action: "Cerrar reunión"
   text_meeting_open_description: "Esta reunión está abierta. Puede añadir/eliminar elementos de la agenda y editarlos a su gusto. Una vez terminada la reunión, ciérrela para bloquearla."

@@ -33,7 +33,7 @@ zh-CN:
         label_activity_show_only_changes: "仅显示更改"
         label_sort_asc: "时间升序"
         label_sort_desc: "时间降序"
-        label_type_to_comment: "在此输入评论"
+        label_type_to_comment: "添加评论。输入 @ 以通知他人。"
         label_submit_comment: "提交评论"
         changed_on: "更改于"
         created_on: "创建于"
@@ -220,8 +220,12 @@ zh-CN:
       items:
         actions: "项目操作"
         blankslate:
-          title: "您的条目列表为空"
-          description: "首先，将条目添加到类型层次结构的自定义字段中。每个条目都可以用于在其下方创建一个层次结构。要导航并在层次结构中创建子条目，请点击已创建的条目。"
+          root:
+            title: "您的条目列表为空"
+            description: "首先，将条目添加到类型层次结构的自定义字段中。每个条目都可以用于在其下方创建一个层次结构。要在层次结构中创建子条目，请点击已创建的条目。"
+          item:
+            title: 该项目下面没有任何层级
+            description: 在此列表中添加条目，以便在另一个列表中创建子条目
         placeholder:
           label: "项目标签"
           short: "短名"
@@ -231,7 +235,9 @@ zh-CN:
         subitems:
           zero: 无子项目
           one: 1个子项目
-          other: "%{count} 子项目"
+          other: "%{count} 个子项目"
+    upsale:
+      custom_field_format_hierarchy: "工作包的自定义字段需要层级结构？"
     text_add_new_custom_field: >
       要向项目添加新的自定义字段，您需要先创建字段，然后才能将其添加到此项目中。
     is_enabled_globally: "已全局启用"
@@ -258,12 +264,26 @@ zh-CN:
     single: "或"
   dry_validation:
     errors:
+      int?: "必须为整数"
+      filled?: "必须填写"
+      greater_or_equal_zero: "必须大于或等于 0"
+      not_found: "未找到"
       rules:
+        item:
+          root_item: "不能为根项目"
+          not_persisted: "必须是已存在的项目"
         label:
-          filled?: "必须填写"
           not_unique: "在同一层级内必须是唯一的"
+        short:
+          not_unique: "在同一层级内必须是唯一的"
+        parent:
+          not_descendant: "必须是层次结构根的后代"
     rules:
+      depth: "深"
+      item: "条目"
       label: "标签"
+      short: "简称"
+      parent: "父级"
   global_search:
     placeholder: "在%{app_title}中搜索"
     overwritten_tabs:
@@ -320,6 +340,9 @@ zh-CN:
         text: "此操作不会删除列表中包含的任何项目。确定要删除此项目列表吗？"
     settings:
       change_identifier: 更改标识符
+      actions:
+        label_enable_all: "全部启用"
+        label_disable_all: "全部禁用"
       activities:
         no_results_title_text: 目前有可用的任何活动。
       forums:
@@ -330,18 +353,26 @@ zh-CN:
         no_results_content_text: 创建一个新的工作包类别
       custom_fields:
         no_results_title_text: 目前没有可用的自定义字段。
+      life_cycle:
+        header:
+          title: "项目生命周期"
+          description_html: '项目生命周期中的这些项目阶段和关口将显示在 <a href=%{overview_url} target="_blank"> 项目概览页面</a> 中，并由实例管理员在 <a href=%{admin_settings_url} target="_blank"> 管理设置</a> 中定义。您可以启用或禁用单个属性。'
+        non_defined: "目前既未定义阶段也未定关口。"
+        section_header: "阶段和关口"
+        step:
+          use_in_project: "在此项目中使用 %{step}"
+        filter:
+          label: "搜索项目阶段或关口"
       project_custom_fields:
         header:
           title: "项目属性"
-          description: '这些项目属性将显示在<a href=%{overview_url} target="_blank">项目概览页面</a> 的相应部分下。您可以启用或禁用单个属性。项目属性和部分由实例管理员在 <a href=%{admin_settings_url} target="_blank"> 管理设置</a> 中定义。 '
+          description_html: '这些项目属性将显示在<a href=%{overview_url} target="_blank">项目概览页面</a> 的相应分区下。您可以启用或禁用单个属性。项目属性和分区由实例管理员在 <a href=%{admin_settings_url} target="_blank"> 管理设置</a> 中定义。 '
         filter:
           label: "搜索项目属性"
         actions:
           label_enable_single: "在此项目中处于活动状态，点击禁用"
           label_disable_single: "在此项目中未启用，点击启用"
           remove_from_project: "从项目移除"
-          label_enable_all: "全部启用"
-          label_disable_all: "全部禁用"
         is_required_blank_slate:
           heading: 所有项目中需要
           description: 此项目属性已在所有项目中激活，因为选中了“所有项目中需要”的选项。它在单个项目中不能被停用。
@@ -354,6 +385,9 @@ zh-CN:
         no_results_content_text: 创建一个新的版本
       storage:
         no_results_title_text: 此项目没有已记录的额外磁盘空间消耗。
+  project_stage:
+    working_days_count:
+      other: "时长： %{count} 个工作日"
   lists:
     create:
       success: "已将修改后的列表保存为新列表"
@@ -468,8 +502,12 @@ zh-CN:
     groups:
       member_in_these_groups: "此用户当前是以下组的成员："
       no_results_title_text: 此用户当前不是任何组的成员。
+      summary_with_more: '%{names} 和 %{count_link} 成员。'
+      more: "还有 %{count} 个"
+      summary: '%{names} 的成员。'
     memberships:
       no_results_title_text: 该用户当前非项目成员。
+    open_profile: "人员详情"
   page:
     text: "文本"
   placeholder_users:
@@ -538,17 +576,27 @@ zh-CN:
       no_results_title_text: 目前没有类型。
       no_results_content_text: 创建新的类型
     edit:
-      settings: "设置"
-      form_configuration: "表格配置"
+      form_configuration:
+        tab: "表单配置"
       more_info_text_html: >
         企业版允许您使用以下附加组件自定义表单配置：<br> <ul class="%{list_styling_class}"> <li><b>添加新属性组</b></li> <li><b>重命名属性组</b></li> <li><b>添加相关工作包的表格</b></li> </ul>
-      projects: "项目"
-      enabled_projects: "已启用的项目"
-      edit_query: "编辑表"
-      query_group_placeholder: "为表命名"
-      reset: "重置为默认值"
-      type_color_text: |
-        所选颜色可用于在甘特图或工作包表中区分不同类型。因此，建议使用浓烈的颜色。
+      projects:
+        tab: "项目"
+        enabled_projects: "已启用的项目"
+      settings:
+        tab: "设置"
+        type_color_text: 所选颜色用于在甘特图或工作包表中区分不同类型。因此建议使用鲜艳的颜色。
+      subject_configuration:
+        tab: "主题配置"
+        manually_editable_subjects:
+          label: "可手动编辑的主题"
+          caption: "用户可以不受限制地手动输入和编辑工作包主题。"
+        automatically_generated_subjects:
+          label: "自动生成主题"
+          caption: "使用引用属性和文本定义模式，自动生成工作包主题。用户将无法手动编辑主题。"
+        pattern:
+          label: "主题模式"
+          caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
   versions:
     overview:
       work_packages_in_archived_projects: "该版本与归档项目共享，这些项目仍然有分配给此版本的工作包。虽然这些工作包被计算在内，但不会显示在链接视图中。"
@@ -601,6 +649,70 @@ zh-CN:
           no_results_title_text: 目前有可用的类型。
         version:
           no_results_title_text: 目前有可用的版本。
+  work_package_relations_tab:
+    index:
+      action_bar_title: "将关系添加到其他工作包以创建它们之间的链接。"
+      no_results_title_text: 目前没有任何关系。
+      blankslate_heading: "没有关系"
+      blankslate_description: "此工作包还没有任何关系。"
+    label_add_x: "添加 %{x}"
+    label_edit_x: "编辑 %{x}"
+    label_add_description: "添加说明"
+    lag:
+      subject: "间隔"
+      title: "间隔(天数)"
+      caption: "两个工作包之间相隔的工作日数"
+    relations:
+      label_relates_singular: "关联到"
+      label_relates_plural: "关联到"
+      label_relates_to_singular: "关联到"
+      label_relates_to_plural: "关联到"
+      relates_description: "在两个工作包之间建立一个可见的链接，不产生额外效果"
+      relates_to_description: "在两个工作包之间建立一个可见的链接，不产生额外效果"
+      label_precedes_singular: "继承者(以后)"
+      label_precedes_plural: "继承者(以后)"
+      precedes_description: "相关的工作包必然需要在这个完成后启动"
+      label_follows_singular: "前任(之前)"
+      label_follows_plural: "前任(之前)"
+      follows_description: "相关工作包必须在本工作包启动前完成"
+      label_child_singular: "子节点"
+      label_child_plural: "子节点"
+      child_description: "使相关工作包成为当前(父) 工作包的子项目"
+      label_blocks_singular: "阻止"
+      label_blocks_plural: "阻止"
+      blocks_description: "在本工作包结束之前，相关工作包不能关闭"
+      label_blocked_singular: "被阻止"
+      label_blocked_plural: "被阻止"
+      label_blocked_by_singular: "被阻止"
+      label_blocked__by_plural: "被阻止"
+      blocked_description: "相关工作包结束之前，本工作包不能关闭"
+      blocked_by_description: "在本工作包结束之前，相关工作包不能关闭"
+      label_duplicates_singular: "复制"
+      label_duplicates_plural: "复制"
+      duplicates_description: "这是相关工作包的副本"
+      label_duplicated_singular: "复制于"
+      label_duplicated_plural: "复制于"
+      label_duplicated_by_singular: "复制于"
+      label_duplicated_by_plural: "复制于"
+      duplicated_by_description: "相关工作包是它的副本"
+      duplicated_description: "相关工作包是它的副本"
+      label_includes_singular: "包括"
+      label_includes_plural: "包括"
+      includes_description: "将相关工作包标记为包括本工作包，不产生额外效果"
+      label_partof_singular: "隶属于"
+      label_partof_plural: "隶属于"
+      label_part_of_singular: "隶属于"
+      label_part_of_plural: "隶属于"
+      partof_description: "将相关工作包标记为隶属于本工作包，不产生额外效果"
+      part_of_description: "将相关工作包标记为本工作包的一部分，不产生额外效果"
+      label_requires_singular: "需求"
+      label_requires_plural: "需求"
+      requires_description: "将相关工作包标记为该工作包的需求"
+      label_required_singular: "需求于"
+      label_required_plural: "需求于"
+      required_description: "将此工作包标记为相关工作包的需求"
+      label_parent_singular: "父级"
+      label_parent_plural: "父级"
   label_invitation: 邀请
   account:
     delete: "删除帐户"
@@ -754,6 +866,9 @@ zh-CN:
         lag: "延迟"
         from: "工作包"
         to: "相关的工作包"
+      reminder:
+        remind_at_date: "日期"
+        remind_at_time: "时间"
       repository:
         url: "URL"
       role:
@@ -842,6 +957,7 @@ zh-CN:
       messages:
         accepted: "必须接受。"
         after: "必须在 %{date} 之后。"
+        after_today: "必须是将来的时间"
         after_or_equal_to: "必须后或等于 %{date}。"
         before: "必须在 %{date} 之前。"
         before_or_equal_to: "必须在早于或等于 %{date}"
@@ -888,6 +1004,7 @@ zh-CN:
         not_an_integer: "不是一个整数。"
         not_an_iso_date: "不是有效日期。所需格式：YYYY-MM-DD。"
         not_same_project: "不属于同一个项目。"
+        datetime_must_be_in_future: "必须是将来的时间"
         odd: "必须是奇数。"
         regex_match_failed: "与正则表达式 %{expression}不匹配。"
         regex_invalid: "无法与关联的正则表达式进行验证。"
@@ -997,6 +1114,42 @@ zh-CN:
           attributes:
             project_ids:
               blank: "请选择一个项目。"
+        project/life_cycle_step_definition:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "必须是 Project::StageDefinition 或 Project::GateDefinition"
+              type_and_class_name_mismatch: "必须匹配实例化类型名称"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "必须是一个项目：:关口定义"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "必须是一个项目：:阶段定义"
+        project/life_cycle_step:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "必须是 Project::Stage 或 Project::Gate"
+              must_be_a_stage: "必须是 Project::Stage"
+              must_be_a_gate: "必须是 Project::Gate"
+              type_and_class_name_mismatch: "必须匹配实例化类型名称"
+        project/gate:
+          attributes:
+            base:
+              end_date_not_allowed: "无法将结束日期分配给一个项目：:关口"
+            type:
+              type_and_class_name_mismatch: "必须是一个项目：:关口"
+            date:
+              non_continuous_dates: "不能早于前一个 %{step}的结束日期。"
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "开始日期必须早于结束日期。"
+              non_continuous_dates: "不能早于前一个 %{step}的结束日期。"
+              incomplete: "不完整。"
+            type:
+              type_and_class_name_mismatch: "必须是一个项目::阶段"
         query:
           attributes:
             project:
@@ -1210,6 +1363,8 @@ zh-CN:
         other: "通知"
       placeholder_user: "占位符用户"
       project: "项目"
+      project/gate_definition: "关口"
+      project/stage_definition: "阶段"
       project_query:
         other: "项目列表"
       query: "自定义查询"
@@ -1306,6 +1461,7 @@ zh-CN:
     login: "用户名"
     mail: "电子邮件"
     name: "名称"
+    note: "备注"
     password: "密码"
     priority: "优先级"
     project: "项目"
@@ -1356,6 +1512,9 @@ zh-CN:
   button_actions: "操作"
   button_add: "添加"
   button_add_comment: "添加评论"
+  button_add_item_above: "在上方添加条目"
+  button_add_item_below: "在下方添加条目"
+  button_add_sub_item: "添加子项目"
   button_add_member: 添加成员
   button_add_watcher: "添加关注者"
   button_annotate: "批注"
@@ -1399,6 +1558,7 @@ zh-CN:
   button_print: "打印"
   button_quote: "引用"
   button_remove: 移除
+  button_remove_reminder: "删除提醒"
   button_rename: "重命名"
   button_replace: "替换"
   button_revoke: "撤消"
@@ -1409,6 +1569,7 @@ zh-CN:
   button_save_as: "另存为"
   button_apply_changes: "应用更改"
   button_save_back: "保存并返回"
+  button_set_reminder: "设置提醒"
   button_show: "显示"
   button_sort: "排序"
   button_submit: "提交"
@@ -1596,12 +1757,12 @@ zh-CN:
   direction: 从左向右
   ee:
     upsale:
+      title: "企业附加组件"
+      link_title: "更多信息"
       form_configuration:
         description: "使用以下附加组件自定义表单配置："
         add_groups: "添加新属性组"
         rename_groups: "重命名属性组"
-      project_filters:
-        description_html: "自定义字段的过滤和排序是企业版附加组件。"
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
@@ -1634,6 +1795,7 @@ zh-CN:
   error_pdf_export_too_many_columns: "选择 PDF 导出的列太多。请减少列数。"
   error_pdf_failed_to_export: "无法保存被导出的 PDF 文件：%{error}"
   error_token_authenticity: "无法验证跨站请求伪造令牌。您是否曾尝试在多个浏览器或选项卡上提交数据？请关闭所有选项卡并重试。"
+  error_reminder_not_found: "未找到提醒或已收到相关提醒的通知。"
   error_work_package_not_found_in_project: "工作包找不到或不属于此项目"
   error_work_package_id_not_found: "工作包未找到"
   error_must_be_project_member: "必须是项目成员"
@@ -1761,6 +1923,23 @@ zh-CN:
     units:
       hours: 时
       days: 天
+  pdf_generator:
+    page_nr_footer: "第 %{page} 页，共%{total} 页"
+    dialog:
+      title: 生成 PDF
+      submit: 生成
+      header_right:
+        label: 页眉右侧
+        caption: 标题右侧显示的文本
+      footer_center:
+        label: 页脚中心
+        caption: 在页脚中心显示的文本
+      hyphenation:
+        label: 断字
+        caption: 在行之间打断单词，以改进文本解释和可读性。
+      paper_size:
+        label: 纸张大小
+        caption: 用于PDF的纸张大小。
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (可选)"
@@ -1910,6 +2089,7 @@ zh-CN:
       responsible: "负责人"
       shared: "共享"
       watched: "关注人"
+      reminder: "提醒"
     facets:
       unread: "未读"
       unread_title: "显示未读信息"
@@ -2077,8 +2257,10 @@ zh-CN:
   label_default: "默认"
   label_delete_user: "删除用户"
   label_delete_project: "删除项目"
+  label_delete: "删除"
   label_deleted: "已删除"
   label_deleted_custom_field: "（删除自定义字段）"
+  label_deleted_custom_item: "(删除项目)"
   label_deleted_custom_option: "（删除的选项）"
   label_empty_element: "（空）"
   label_missing_or_hidden_custom_option: "（缺少值或缺少访问权限）"
@@ -2115,10 +2297,10 @@ zh-CN:
   label_enterprise_active_users: "%{current}/%{limit} 已预订的活跃用户"
   label_enterprise_edition: "企业版"
   label_enterprise_support: "企业支持"
-  label_enterprise_addon: "企业版附加组件"
   label_environment: "环境"
   label_estimates_and_progress: "预估和进度"
   label_equals: "是"
+  label_equals_with_descendants: "是任何与子节点相关的"
   label_everywhere: "任何位置"
   label_example: "示例"
   label_experimental: "实验"
@@ -2299,6 +2481,7 @@ zh-CN:
   label_none_parentheses: "(无)"
   label_not_contains: "不包含"
   label_not_equals: "不是"
+  label_life_cycle_step_plural: "项目生命周期"
   label_on: "于"
   label_operator_all: "不为空"
   label_operator_none: "为空"
@@ -2383,6 +2566,8 @@ zh-CN:
   label_related_work_packages: "相关的工作包"
   label_relates: "关于"
   label_relates_to: "关于"
+  label_relation: "关系"
+  label_relation_actions: "关联操作"
   label_relation_delete: "删除关系"
   label_relation_new: "新的关系"
   label_release_notes: "更新日志"
@@ -2398,6 +2583,7 @@ zh-CN:
   label_reporting: "报告"
   label_reporting_plural: "报告"
   label_repository: "存储库"
+  label_repository_remove: "移除存储库"
   label_repository_root: "存储库根"
   label_repository_plural: "存储库"
   label_required: "必填"
@@ -2460,6 +2646,7 @@ zh-CN:
   label_this_month: "这个月"
   label_this_week: "这一周"
   label_this_year: "这一年"
+  label_time: "时间"
   label_time_entry_plural: "已耗工时"
   label_time_entry_activity_plural: "花费时间的活动"
   label_title: "标题"
@@ -2495,6 +2682,7 @@ zh-CN:
   label_user_settings: "用户设置"
   label_users_settings: "用户设置"
   label_version_new: "新版本"
+  label_version_edit: "编辑版本"
   label_version_plural: "版本"
   label_version_sharing_descendants: "与子项目"
   label_version_sharing_hierarchy: "与项目层次结构"
@@ -2631,8 +2819,13 @@ zh-CN:
         prefix: "接收原因为以下通知设置：%{reason}"
         date_alert_start_date: "日期提醒"
         date_alert_due_date: "日期提醒"
+        reminder: "提醒"
       see_all: "查看全部"
       updated_at: "由 %{user} 于 %{timestamp} 更新"
+    reminder_notifications:
+      subject: "提醒： %{note}"
+      heading: "您有一个新的提醒"
+      note: "注：\"%{note}\""
     sharing:
       work_packages:
         allowed_actions: "你可以 %{allowed_actions} 这个工作包。这可以基于你的项目角色和权限而变化。"
@@ -2778,6 +2971,9 @@ zh-CN:
   notice_locking_conflict: "信息已由至少一个其他用户同时更新。"
   notice_locking_conflict_additional_information: "更新来自 %{users}。"
   notice_locking_conflict_reload_page: "请重新加载该页面，查看所做的更改并重新应用您的更新。"
+  notice_locking_conflict_warning: "本页面已由他人更新。为了不丢失您的编辑内容，请将其复制到本地并重新加载，以查看更新后的版本。"
+  notice_locking_conflict_danger: "无法保存您的修改，因为修改冲突。为避免丢失您的编辑内容，请将其复制到本地，并重新加载以查看更新版本。"
+  notice_locking_conflict_action_button: "放弃更改并重新加载"
   notice_member_added: 向项目添加 %{name}。
   notice_members_added: 添加了 %{number} 个用户到该项目。
   notice_member_removed: "已从项目删除 %{user}。"
@@ -2794,6 +2990,7 @@ zh-CN:
   notice_successful_connection: "成功连接。"
   notice_successful_create: "成功创建。"
   notice_successful_delete: "成功删除。"
+  notice_successful_cancel: "取消成功"
   notice_successful_update: "成功更新。"
   notice_successful_update_custom_fields_added_to_project: |
     更新成功。已激活类型的自定义字段在工作包表单上自动激活。<a href="%{url}" target="_blank">了解详情</a>。
@@ -2869,6 +3066,7 @@ zh-CN:
   permission_edit_own_time_entries: "编辑自己的时间记录"
   permission_edit_project: "编辑项目"
   permission_edit_project_attributes: "编辑项目属性"
+  permission_edit_project_stages_and_gates: "编辑项目阶段和关口"
   permission_edit_reportings: "编辑报告"
   permission_edit_time_entries: "编辑其他用户的时间日志"
   permission_edit_timelines: "编辑时间线"
@@ -2898,9 +3096,12 @@ zh-CN:
   permission_search_project: "搜索项目"
   permission_select_custom_fields: "选择自定义字段"
   permission_select_project_custom_fields: "选择项目属性"
+  permission_select_project_life_cycle: "选择项目阶段和关口"
+  permission_select_project_life_cycle_explanation: "激活/停用项目中的阶段和关口。允许户选择适合项目的生命周期，因为非激活的阶段和关口在项目概览页或项目列表中都不可见。"
   permission_select_project_modules: "选择项目模块"
   permission_share_work_packages: "共享工作包"
   permission_manage_types: "选择类型"
+  permission_manage_own_reminders: "创建个人提醒事项"
   permission_view_project: "查看项目"
   permission_view_changesets: "查看 OpenProject 存储库修订"
   permission_view_commit_author_statistics: "查看提交作者统计信息"
@@ -2921,6 +3122,7 @@ zh-CN:
   permission_work_package_assigned_explanation: "工作包可以分配给在各自项目中拥有此角色的用户和组"
   permission_view_project_activity: "查看项目活动"
   permission_view_project_attributes: "查看项目属性"
+  permission_view_project_stages_and_gates: "查看项目阶段和关口"
   permission_save_bcf_queries: "保存 BCF 查询"
   permission_manage_public_bcf_queries: "管理公开的 BCF 查询"
   permission_edit_attribute_help_texts: "编辑属性帮助文本"
@@ -3597,6 +3799,12 @@ zh-CN:
       edit_description: "可以查看、评论和编辑此工作包。"
       view: "查看"
       view_description: "可以查看此工作包。"
+    reminders:
+      label_remind_at: "日期"
+      note_placeholder: "您为什么要设置此提醒？"
+      success_creation_message: "提醒设置成功。您将在所选时间收到此工作包的通知。"
+      success_update_message: "提醒更新成功。"
+      success_deletion_message: "提醒已成功删除。"
   sharing:
     count:
       zero: "0 个用户"

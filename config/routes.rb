@@ -175,9 +175,12 @@ Rails.application.routes.draw do
         resources :projects, controller: "/admin/custom_fields/custom_field_projects", only: %i[index new create]
         resource :project, controller: "/admin/custom_fields/custom_field_projects", only: :destroy
         resources :items, controller: "/admin/custom_fields/hierarchy/items" do
-          get :deletion_dialog, on: :member
-          get :new_child, on: :member, action: :new
-          post :new_child, on: :member, action: :create
+          member do
+            get :deletion_dialog
+            get :new_child, action: :new
+            post :new_child, action: :create
+            post :move
+          end
         end
       end
     end
@@ -239,6 +242,15 @@ Rails.application.routes.draw do
           collection do
             put :enable_all_of_section
             put :disable_all_of_section
+          end
+        end
+        resources :life_cycle_steps, only: %i[index], path: "life_cycle" do
+          member do
+            post :toggle
+          end
+          collection do
+            post :enable_all
+            post :disable_all
           end
         end
         resource :custom_fields, only: %i[show update]
@@ -515,6 +527,9 @@ Rails.application.routes.draw do
           delete :unlink
         end
       end
+      # TODO: This is for now only added to be able to create a link
+      # There is no controller behind this.
+      resources :project_life_cycle_step_definitions, path: "project_life_cycles", only: %i[index]
       resources :project_custom_field_sections, controller: "/admin/settings/project_custom_field_sections",
                                                 only: %i[create update destroy] do
         member do
@@ -571,6 +586,9 @@ Rails.application.routes.draw do
 
     get "hover_card" => "work_packages/hover_card#show", on: :member
 
+    get "generate_pdf_dialog" => "work_packages#generate_pdf_dialog", on: :member
+    post "generate_pdf" => "work_packages#generate_pdf", on: :member
+
     # move bulk of wps
     get "move/new" => "work_packages/moves#new", on: :collection, as: "new_move"
     post "move" => "work_packages/moves#create", on: :collection, as: "move"
@@ -592,6 +610,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :children, only: %i[new create destroy], controller: "work_package_children"
+
     resource :progress, only: %i[new edit update], controller: "work_packages/progress"
     collection do
       resource :progress,
@@ -599,7 +619,17 @@ Rails.application.routes.draw do
                controller: "work_packages/progress",
                as: :work_package_progress
     end
+    resources :relations_tab, only: %i[index], controller: "work_package_relations_tab"
+    resources :relations, only: %i[new create edit update destroy], controller: "work_package_relations"
+
+    resources :reminders,
+              controller: "work_packages/reminders",
+              only: %i[create update destroy] do
+      get :modal_body, on: :collection
+    end
+
     get "/export_dialog" => "work_packages#export_dialog", on: :collection, as: "export_dialog"
+    get :show_conflict_flash_message, on: :collection # we don't need a specific work package for this
 
     get "/split_view/update_counter" => "work_packages/split_view#update_counter",
         on: :member
@@ -630,6 +660,7 @@ Rails.application.routes.draw do
     resources :memberships, controller: "users/memberships", only: %i[update create destroy]
 
     member do
+      get "/hover_card" => "users/hover_card#show"
       get "/edit(/:tab)" => "users#edit", as: "edit"
       get "/change_status/:change_action" => "users#change_status_info", as: "change_status_info"
       post :change_status
@@ -691,8 +722,8 @@ Rails.application.routes.draw do
 
   scope controller: "sys" do
     match "/sys/repo_auth", action: "repo_auth", via: %i[get post]
+    get "/sys/fetch_changesets", action: "fetch_changesets"
     match "/sys/projects", to: proc { [410, {}, [""]] }, via: :all
-    match "/sys/fetch_changesets", to: proc { [410, {}, [""]] }, via: :all
     match "/sys/projects/:id/repository/update_storage", to: proc { [410, {}, [""]] }, via: :all
   end
 

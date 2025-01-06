@@ -151,10 +151,20 @@ module Projects
     end
 
     def projects(query)
-      query
-        .results
-        .with_required_storage
-        .with_latest_activity
+      scope = query.results
+
+      # The two columns associated with the
+      # * disk storage
+      # * latest activity
+      # information are only available to admins.
+      # For non admins, the performance penalty of fetching the information therefore needs never be paid.
+      if User.current.admin?
+        scope = scope
+                  .with_required_storage
+                  .with_latest_activity
+      end
+
+      scope
         .includes(:custom_values, :enabled_modules)
         .paginate(page: helpers.page_param(params), per_page: helpers.per_page_param(params))
     end
@@ -183,6 +193,14 @@ module Projects
 
     def favored_project_ids
       @favored_project_ids ||= Favorite.where(user: current_user, favored_type: "Project").pluck(:favored_id)
+    end
+
+    def project_life_cycle_step_by_definition(definition, project)
+      @project_life_cycle_steps_by_definition ||= Project::LifeCycleStep
+                                                    .visible
+                                                    .index_by { |s| [s.definition_id, s.project_id] }
+
+      @project_life_cycle_steps_by_definition[[definition.id, project.id]]
     end
 
     def sorted_by_lft?

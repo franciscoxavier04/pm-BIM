@@ -34,37 +34,38 @@ module WorkPackages
       include ApplicationHelper
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
+      include WorkPackages::ActivitiesTab::SharedHelpers
 
-      def initialize(work_package:, filter: :all)
+      def initialize(work_package:, last_server_timestamp:, filter: :all, deferred: false)
         super
 
         @work_package = work_package
         @filter = filter
+        @last_server_timestamp = last_server_timestamp
+        @deferred = deferred
       end
 
       private
 
-      attr_reader :work_package, :filter
+      attr_reader :work_package, :filter, :last_server_timestamp, :deferred
 
       def wrapper_data_attributes
+        stimulus_controller = "work-packages--activities-tab--index"
+
         {
           test_selector: "op-wp-activity-tab",
-          controller: "work-packages--activities-tab--index",
+          controller: stimulus_controller,
           "application-target": "dynamic",
-          "work-packages--activities-tab--index-update-streams-url-value": update_streams_work_package_activities_url(
-            work_package
-          ),
-          "work-packages--activities-tab--index-sorting-value": journal_sorting,
-          "work-packages--activities-tab--index-filter-value": filter,
-          "work-packages--activities-tab--index-user-id-value": User.current.id,
-          "work-packages--activities-tab--index-work-package-id-value": work_package.id,
-          "work-packages--activities-tab--index-polling-interval-in-ms-value": polling_interval,
-          "work-packages--activities-tab--index-notification-center-path-name-value": notifications_path
+          "#{stimulus_controller}-update-streams-url-value": update_streams_work_package_activities_url(work_package),
+          "#{stimulus_controller}-sorting-value": journal_sorting,
+          "#{stimulus_controller}-filter-value": filter,
+          "#{stimulus_controller}-user-id-value": User.current.id,
+          "#{stimulus_controller}-work-package-id-value": work_package.id,
+          "#{stimulus_controller}-polling-interval-in-ms-value": polling_interval,
+          "#{stimulus_controller}-notification-center-path-name-value": notifications_path,
+          "#{stimulus_controller}-show-conflict-flash-message-url-value": show_conflict_flash_message_work_packages_path,
+          "#{stimulus_controller}-last-server-timestamp-value": last_server_timestamp
         }
-      end
-
-      def journal_sorting
-        User.current.preference&.comments_sorting || "desc"
       end
 
       def polling_interval
@@ -77,7 +78,7 @@ module WorkPackages
       end
 
       def adding_comment_allowed?
-        User.current.allowed_in_project?(:add_work_package_notes, @work_package.project)
+        User.current.allowed_in_work_package?(:add_work_package_notes, @work_package)
       end
     end
   end

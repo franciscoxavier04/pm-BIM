@@ -102,6 +102,10 @@ class Journal < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
+  include ::Scopes::Scoped
+
+  scopes :with_sequence_version
+
   # Scopes to all journals excluding the initial journal - useful for change
   # logs like the history on issue#show
   scope :changing, -> { where(["version > 1"]) }
@@ -171,6 +175,16 @@ class Journal < ApplicationRecord
 
   def has_cause?
     cause_type.present?
+  end
+
+  def has_unread_notifications_for_user?(user)
+    # we optionally set the instance variable @unread_notifications in the ActivityEagerLoadingWrapper
+    # in order to avoid N+1 queries
+    if instance_variable_defined?(:@unread_notifications)
+      @unread_notifications&.any? { |notification| notification.recipient_id == user.id }
+    else
+      notifications.where(read_ian: false, recipient_id: user.id).any?
+    end
   end
 
   private

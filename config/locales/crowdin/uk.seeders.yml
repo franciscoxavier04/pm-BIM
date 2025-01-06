@@ -34,6 +34,17 @@ uk:
           name: Сірий (темний)
         item_13:
           name: Чорний
+      life_cycle_colors:
+        item_0:
+          name: Оранжевий PM2
+        item_1:
+          name: Фіолетовий PM2
+        item_2:
+          name: Червоний PM2
+        item_3:
+          name: Пурпуровий PM2
+        item_4:
+          name: Зелено-жовтий PM2
       document_categories:
         item_0:
           name: Документація
@@ -68,8 +79,23 @@ uk:
         item_0:
           name: Персонал і менеджер проєктів
         item_1:
-          name: Standard global role
+          name: Стандартна глобальна роль
     standard:
+      life_cycles:
+        item_0:
+          name: Ініціювання
+        item_1:
+          name: Готовий до планування
+        item_2:
+          name: Планування
+        item_3:
+          name: Готовий до виконання
+        item_4:
+          name: Виконання
+        item_5:
+          name: Готовий до закриття
+        item_6:
+          name: Закриття
       priorities:
         item_0:
           name: Низький

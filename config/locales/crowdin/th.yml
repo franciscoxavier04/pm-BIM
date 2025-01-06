@@ -33,7 +33,7 @@ th:
         label_activity_show_only_changes: "Show changes only"
         label_sort_asc: "Newest at the bottom"
         label_sort_desc: "Newest on top"
-        label_type_to_comment: "Type here to comment"
+        label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
         changed_on: "changed on"
         created_on: "created this on"
@@ -223,8 +223,12 @@ th:
       items:
         actions: "Item actions"
         blankslate:
-          title: "Your list of items is empty"
-          description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
+          root:
+            title: "Your list of items is empty"
+            description: "Start by adding items to the custom field of type hierarchy. Each item can be used to create a hierarchy bellow it. To navigate and create sub-items inside a hierarchy click on the created item."
+          item:
+            title: This item doesn't have any hierarchy level below
+            description: Add items to this list to create sub-items inside another one
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -235,6 +239,8 @@ th:
           zero: no sub-items
           one: 1 sub-item
           other: "%{count} sub-items"
+    upsale:
+      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
     text_add_new_custom_field: >
       To add new custom fields to a project you first need to create them before you can add them to this project.
     is_enabled_globally: "Is enabled globally"
@@ -261,12 +267,26 @@ th:
     single: "or"
   dry_validation:
     errors:
+      int?: "must be an integer."
+      filled?: "must be filled."
+      greater_or_equal_zero: "must be greater or equal to 0."
+      not_found: "not found."
       rules:
+        item:
+          root_item: "cannot be a root item."
+          not_persisted: "must be an already existing item."
         label:
-          filled?: "must be filled"
-          not_unique: "must be unique within the same hierarchy level"
+          not_unique: "must be unique within the same hierarchy level."
+        short:
+          not_unique: "must be unique within the same hierarchy level."
+        parent:
+          not_descendant: "must be a descendant of the hierarchy root."
     rules:
+      depth: "Depth"
+      item: "Item"
       label: "Label"
+      short: "Short name"
+      parent: "Parent"
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
@@ -323,6 +343,9 @@ th:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       change_identifier: เปลี่ยน ตัวระบุ
+      actions:
+        label_enable_all: "Enable all"
+        label_disable_all: "Disable all"
       activities:
         no_results_title_text: There are currently no activities available.
       forums:
@@ -333,18 +356,26 @@ th:
         no_results_content_text: Create a new work package category
       custom_fields:
         no_results_title_text: There are currently no custom fields available.
+      life_cycle:
+        header:
+          title: "Project lifecycle"
+          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
+        non_defined: "Neither stages nor gates are currently defined."
+        section_header: "Stages and gates"
+        step:
+          use_in_project: "Use %{step} in this project"
+        filter:
+          label: "Search project stage or gate"
       project_custom_fields:
         header:
           title: "Project attributes"
-          description: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "Search project attribute"
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
           remove_from_project: "Remove from project"
-          label_enable_all: "Enable all"
-          label_disable_all: "Disable all"
         is_required_blank_slate:
           heading: Required in all projects
           description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
@@ -357,6 +388,9 @@ th:
         no_results_content_text: สร้างรุ่นใหม่
       storage:
         no_results_title_text: ไม่มีการระบุ พื้นที่ดิสก์ ไว้ในโปรเจ็กต์นี้
+  project_stage:
+    working_days_count:
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -471,8 +505,12 @@ th:
     groups:
       member_in_these_groups: "This user is currently a member of the following groups:"
       no_results_title_text: This user is currently not a member in any group.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: This user is currently not a member of a project.
+    open_profile: "Open profile"
   page:
     text: "ข้อความ"
   placeholder_users:
@@ -542,18 +580,27 @@ th:
       no_results_title_text: There are currently no types.
       no_results_content_text: Create a new type
     edit:
-      settings: "การตั้งค่า"
-      form_configuration: "Form configuration"
+      form_configuration:
+        tab: "Form configuration"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
-      projects: "โครงการ"
-      enabled_projects: "Enabled projects"
-      edit_query: "แก้ไขตาราง"
-      query_group_placeholder: "Give the table a name"
-      reset: "Reset to defaults"
-      type_color_text: |
-        The selected color distinguishes different types
-        in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      projects:
+        tab: "Projects"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Settings"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        pattern:
+          label: "Subject pattern"
+          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -606,6 +653,70 @@ th:
           no_results_title_text: There are currently no types available.
         version:
           no_results_title_text: There are currently no versions available.
+  work_package_relations_tab:
+    index:
+      action_bar_title: "Add relations to other work packages to create a link between them."
+      no_results_title_text: There are currently no relations available.
+      blankslate_heading: "No relations"
+      blankslate_description: "This work package does not have any relations yet."
+    label_add_x: "Add %{x}"
+    label_edit_x: "Edit %{x}"
+    label_add_description: "Add description"
+    lag:
+      subject: "Lag"
+      title: "Lag (in days)"
+      caption: "The gap in number of working days in between the two work packages"
+    relations:
+      label_relates_singular: "related to"
+      label_relates_plural: "related to"
+      label_relates_to_singular: "related to"
+      label_relates_to_plural: "related to"
+      relates_description: "Creates a visible link between the two work packages with no additional effect"
+      relates_to_description: "Creates a visible link between the two work packages with no additional effect"
+      label_precedes_singular: "successor (after)"
+      label_precedes_plural: "successors (after)"
+      precedes_description: "The related work package necessarily needs to start after this one finishes"
+      label_follows_singular: "predecessor (before)"
+      label_follows_plural: "predecessors (before)"
+      follows_description: "The related work package necessarily needs to finish before this one can start"
+      label_child_singular: "child"
+      label_child_plural: "children"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_blocks_singular: "blocks"
+      label_blocks_plural: "blocks"
+      blocks_description: "The related work package cannot be closed until this one is closed first"
+      label_blocked_singular: "blocked by"
+      label_blocked_plural: "blocked by"
+      label_blocked_by_singular: "blocked by"
+      label_blocked__by_plural: "blocked by"
+      blocked_description: "This work package cannot be closed until the related one is closed first"
+      blocked_by_description: "This work package cannot be closed until the related one is closed first"
+      label_duplicates_singular: "duplicates"
+      label_duplicates_plural: "duplicates"
+      duplicates_description: "This is a copy of the related work package"
+      label_duplicated_singular: "duplicated by"
+      label_duplicated_plural: "duplicated by"
+      label_duplicated_by_singular: "duplicated by"
+      label_duplicated_by_plural: "duplicated by"
+      duplicated_by_description: "The related work package is a copy of this"
+      duplicated_description: "The related work package is a copy of this"
+      label_includes_singular: "includes"
+      label_includes_plural: "includes"
+      includes_description: "Marks the related work package as including this one with no additional effect"
+      label_partof_singular: "part of"
+      label_partof_plural: "part of"
+      label_part_of_singular: "part of"
+      label_part_of_plural: "part of"
+      partof_description: "Marks the related work package as being part of this one with no additional effect"
+      part_of_description: "Marks the related work package as being part of this one with no additional effect"
+      label_requires_singular: "requires"
+      label_requires_plural: "requires"
+      requires_description: "Marks the related work package as a requirement to this one"
+      label_required_singular: "required by"
+      label_required_plural: "required by"
+      required_description: "Marks this work package as being a requirement to the related one"
+      label_parent_singular: "parent"
+      label_parent_plural: "parent"
   label_invitation: Invitation
   account:
     delete: "ลบบัญชีผู้ใช้"
@@ -759,6 +870,9 @@ th:
         lag: "Lag"
         from: "ชุดภารกิจ"
         to: "ชุดภารกิจที่เกี่ยวข้อง"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -847,6 +961,7 @@ th:
       messages:
         accepted: "must be accepted."
         after: "must be after %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "must be after or equal to %{date}."
         before: "must be before %{date}."
         before_or_equal_to: "must be before or equal to %{date}."
@@ -893,6 +1008,7 @@ th:
         not_an_integer: "is not an integer."
         not_an_iso_date: "is not a valid date. Required format: YYYY-MM-DD."
         not_same_project: "doesn't belong to the same project."
+        datetime_must_be_in_future: "must be in the future."
         odd: "must be odd."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "could not be validated with the associated regular expression."
@@ -1002,6 +1118,42 @@ th:
           attributes:
             project_ids:
               blank: "Please select a project."
+        project/life_cycle_step_definition:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::StageDefinition"
+        project/life_cycle_step:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
+              must_be_a_stage: "must be a Project::Stage"
+              must_be_a_gate: "must be a Project::Gate"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate:
+          attributes:
+            base:
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+            type:
+              type_and_class_name_mismatch: "must be a Project::Gate"
+            date:
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "start date must be before the end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              incomplete: "is incomplete."
+            type:
+              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1215,6 +1367,8 @@ th:
         other: "Notifications"
       placeholder_user: "Placeholder user"
       project: "โครงการ"
+      project/gate_definition: "Gate"
+      project/stage_definition: "Stage"
       project_query:
         other: "Project lists"
       query: "การสอบถามที่กำหนดเอง"
@@ -1311,6 +1465,7 @@ th:
     login: "Username"
     mail: "อีเมล"
     name: "ชื่อ"
+    note: "Note"
     password: "รหัสผ่าน"
     priority: "ระดับความสำคัญ"
     project: "โครงการ"
@@ -1361,6 +1516,9 @@ th:
   button_actions: "Actions"
   button_add: "เพิ่ม"
   button_add_comment: "เพิ่มความคิดเห็น"
+  button_add_item_above: "Add item above"
+  button_add_item_below: "Add item below"
+  button_add_sub_item: "Add sub-item"
   button_add_member: Add member
   button_add_watcher: "เพิ่มผู้ดูข้อมูล"
   button_annotate: "ใส่คำอธิบายประกอบ"
@@ -1404,6 +1562,7 @@ th:
   button_print: "Print"
   button_quote: "อ้างถึง"
   button_remove: Remove
+  button_remove_reminder: "Remove reminder"
   button_rename: "เปลี่ยนชื่อ"
   button_replace: "Replace"
   button_revoke: "Revoke"
@@ -1414,6 +1573,7 @@ th:
   button_save_as: "บันทึกเป็น"
   button_apply_changes: "Apply changes"
   button_save_back: "Save and back"
+  button_set_reminder: "Set reminder"
   button_show: "แสดง"
   button_sort: "เรียงลำดับ"
   button_submit: "ส่งข้อมูล"
@@ -1601,12 +1761,12 @@ th:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "ระดับความสำคัญของชุดภารกิจ"
   enumeration_reported_project_statuses: "สถานะโครงการที่รายงานแล้ว"
@@ -1639,6 +1799,7 @@ th:
   error_pdf_export_too_many_columns: "Too many columns selected for the PDF export. Please reduce the number of columns."
   error_pdf_failed_to_export: "The PDF export could not be saved: %{error}"
   error_token_authenticity: "Unable to verify Cross-Site Request Forgery token. Did you try to submit data on multiple browsers or tabs? Please close all tabs and try again."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "ไม่พบชุดภารกิจ หรือชุดภารกิจไม่ได้เป็นของโครงการนี้"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "ต้องเป็นสมาชิกโครงการ"
@@ -1766,6 +1927,23 @@ th:
     units:
       hours: h
       days: d
+  pdf_generator:
+    page_nr_footer: "Page %{page} of %{total}"
+    dialog:
+      title: Generate PDF
+      submit: Generate
+      header_right:
+        label: Header right
+        caption: Text to be displayed in the right of the header
+      footer_center:
+        label: Footer center
+        caption: Text to be displayed in the center of the footer
+      hyphenation:
+        label: Hyphenation
+        caption: Break words between lines to improve text justification and readability.
+      paper_size:
+        label: Paper size
+        caption: The size of the paper to use for the PDF.
   extraction:
     available:
       pdftotext: "Pdftotext available (optional)"
@@ -1915,6 +2093,7 @@ th:
       responsible: "Accountable"
       shared: "Shared"
       watched: "ผู้ดูข้อมูล"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2082,8 +2261,10 @@ th:
   label_default: "ค่าเริ่มต้น"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
+  label_delete: "Delete"
   label_deleted: "ถูกลบ"
   label_deleted_custom_field: "(ฟิลด์ที่กำหนดเองที่ถูกลบ)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(ว่าง)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
@@ -2120,10 +2301,10 @@ th:
   label_enterprise_active_users: "%{current}/%{limit} booked active users"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "สภาพแวดล้อม"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "เป็น"
+  label_equals_with_descendants: "is any with descendants"
   label_everywhere: "everywhere"
   label_example: "ตัวอย่าง"
   label_experimental: "Experimental"
@@ -2304,6 +2485,7 @@ th:
   label_none_parentheses: "(ไม่มี)"
   label_not_contains: "ไม่ประกอบด้วยการ"
   label_not_equals: "ไม่"
+  label_life_cycle_step_plural: "Project lifecycle"
   label_on: "on"
   label_operator_all: "is not empty"
   label_operator_none: "is empty"
@@ -2388,6 +2570,8 @@ th:
   label_related_work_packages: "ชุดภารกิจที่เกี่ยวข้อง"
   label_relates: "ที่เกี่ยวข้องกับ"
   label_relates_to: "ที่เกี่ยวข้องกับ"
+  label_relation: "Relation"
+  label_relation_actions: "Relation actions"
   label_relation_delete: "ลบความสัมพันธ์"
   label_relation_new: "ความสัมพันธ์ใหม่"
   label_release_notes: "Release notes"
@@ -2403,6 +2587,7 @@ th:
   label_reporting: "รายงาน"
   label_reporting_plural: "Reportings"
   label_repository: "ที่เก็บข้อมูล"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Repository root"
   label_repository_plural: "ที่เก็บ"
   label_required: "required"
@@ -2465,6 +2650,7 @@ th:
   label_this_month: "เดือนนี้"
   label_this_week: "สัปดาห์นี้"
   label_this_year: "ปีนี้"
+  label_time: "Time"
   label_time_entry_plural: "เวลาที่ใช้"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "ชื่อเรื่อง"
@@ -2500,6 +2686,7 @@ th:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "เวอร์ชั่นใหม่"
+  label_version_edit: "Edit version"
   label_version_plural: "เวอร์ชั่น"
   label_version_sharing_descendants: "พร้อมด้วยโครงการย่อย"
   label_version_sharing_hierarchy: "พร้อมด้วยลำดับชั้นของโครงการ"
@@ -2636,8 +2823,13 @@ th:
         prefix: "Received because of the notification setting: %{reason}"
         date_alert_start_date: "Date alert"
         date_alert_due_date: "Date alert"
+        reminder: "Reminder"
       see_all: "See all"
       updated_at: "Updated at %{timestamp} by %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."
@@ -2785,6 +2977,9 @@ th:
   notice_locking_conflict: "มีการปรับปรุงข้อมูลจากผู้ใช้อย่างน้อยหนึ่งคนในเวลาเดียวกัน"
   notice_locking_conflict_additional_information: "การปรับปรุงข้อมูลมาจากผู้ใช้ %{users}"
   notice_locking_conflict_reload_page: "กรุณาโหลดหน้าเพจใหม่ เพื่อตรวจสอบว่ามีการเปลี่ยนแปลงและปรับปรุงแล้ว"
+  notice_locking_conflict_warning: "This page has been updated by someone else. To not lose your edits, copy them locally and reload to view the updated version."
+  notice_locking_conflict_danger: "Could not save your changes because of conflicting modifications. To not lose your edits, copy them locally and reload to view the updated version."
+  notice_locking_conflict_action_button: "Discard changes and reload"
   notice_member_added: เพิ่ม %{name} ไปยังโครงการ
   notice_members_added: เพิ่มผู้ใช้ %{number} คนในโครงการแล้ว
   notice_member_removed: "Removed %{user} from project."
@@ -2801,6 +2996,7 @@ th:
   notice_successful_connection: "การเชื่อมต่อสำเร็จ"
   notice_successful_create: "สร้างเรียบร้อยแล้ว"
   notice_successful_delete: "ลบเรียบร้อยแล้ว"
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "ปรับปรุงข้อมูลเรียบร้อยแล้ว"
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
@@ -2877,6 +3073,7 @@ th:
   permission_edit_own_time_entries: "แก้ไขบันทึกเวลาของตนเอง"
   permission_edit_project: "แก้ไขโครงการ"
   permission_edit_project_attributes: "Edit project attributes"
+  permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "แก้ไขรายงาน"
   permission_edit_time_entries: "Edit time logs for other users"
   permission_edit_timelines: "แก้ไขแผนภูมิเวลา"
@@ -2906,9 +3103,12 @@ th:
   permission_search_project: "Search project"
   permission_select_custom_fields: "Select custom fields"
   permission_select_project_custom_fields: "Select project attributes"
+  permission_select_project_life_cycle: "Select project stages and gates"
+  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "เลือกโมดูลของโครงการ"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "เลือกชนิด"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "View repository revisions in OpenProject"
   permission_view_commit_author_statistics: "ดูการส่งมอบสถิติผู้เขียน"
@@ -2929,6 +3129,7 @@ th:
   permission_work_package_assigned_explanation: "Work packages can be assigned to users and groups in possession of this role in the respective project"
   permission_view_project_activity: "View project activity"
   permission_view_project_attributes: "View project attributes"
+  permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
@@ -3608,6 +3809,12 @@ th:
       edit_description: "Can view, comment and edit this work package."
       view: "ดู"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

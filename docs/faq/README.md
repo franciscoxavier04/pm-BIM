@@ -150,8 +150,8 @@ Please find information on the features of OpenProject [here](https://www.openpr
 
 ### Is it possible to use multiple languages in OpenProject?
 
-Yes, it is possible to use OpenProject in multiple languages. We support English, German, French and a number of additional languages. Each user can select their own preferred language by signing into OpenProject, clicking on the user avatar on the upper right side and selecting "My account" from the dropdown menu.
-You can then select "Settings" from the side menu on the left side and [change the language](../user-guide/my-account/#change-your-language).
+Yes, it is possible to use OpenProject in multiple languages. We support English, German, French and a number of additional languages. Each user can select their own preferred language by signing into OpenProject, clicking on the user avatar on the upper right side and selecting "Account settings" from the dropdown menu.
+You can then select "Settings" from the side menu on the left side and [change the language](../user-guide/account-settings/#change-your-language).
 
 ### Is there an OpenProject app?
 
@@ -296,7 +296,7 @@ OpenProject changed the database from MySQL (rarely also MariaDB) in older Versi
 
 ### How can I contribute to OpenProject?
 
-We welcome everybody willing to help make OpenProject better. There are a lot of possibilities for helping, be it [improving the translations](../development/translate-openproject) via crowdin, answering questions in the [forums](https://community.openproject.org/projects/openproject/forums) or by fixing bugs and implementing features.
+We welcome everybody willing to help make OpenProject better. There are a lot of possibilities for helping, be it [improving the translations](../contributions-guide/translate-openproject) via crowdin, answering questions in the [forums](https://community.openproject.org/projects/openproject/forums) or by fixing bugs and implementing features.
 
 If you want to code, a good starting point would be to make yourself familiar with the [basic approaches for developing](../development/) in OpenProject and opening a pull request on GitHub referencing an existing bug report or feature request. Find our GitHub page [here](https://github.com/opf/openproject).
 

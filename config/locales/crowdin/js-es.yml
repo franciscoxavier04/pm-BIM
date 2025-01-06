@@ -105,6 +105,7 @@ es:
     button_update: "Actualizar"
     button_export-pdf: "Descargar PDF"
     button_export-atom: "Descargar Atom"
+    button_generate_pdf: "Generar PDF"
     button_create: "Crear"
     card:
       add_new: "Añadir nueva tarjeta"
@@ -356,10 +357,10 @@ es:
           learn_about: "Más información sobre las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "14_6":
+          "15_1":
             standard:
               new_features_html: >
-                La versión trae varias características y mejoras para usted, por ejemplo <br> <ul class=«%{list_styling_class}»> <li>Benefíciese de informes de progreso más flexibles, gracias a los comentarios de los usuarios.</li> <li>Reciba una notificación de actualización con opción de recarga para las reuniones. </li> <li>Habilite un campo personalizado para varios proyectos a la vez.</li> <li>Utilice macros de atributos relativos del paquete de trabajo.</li> <li>Muestre las líneas vacías en el texto enriquecido guardado.</li> <li>Vea las reuniones anteriores incluidas en el número junto a la pestaña Reuniones.</li> </ul>
+                La versión trae varias características y mejoras para usted, por ejemplo <br> <ul class="%{list_styling_class}"> <li>Campos personalizados de tipo jerarquía (extensión Enterprise).</li> <li>Rediseño de la pestaña Relaciones en los paquetes de trabajo.</li> <li>Rediseño de la página de índice de Reuniones.</li> <li>Saltos de página manuales en las exportaciones de paquetes de trabajo en PDF.</li> <li>Modo Zen para las listas de proyectos.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -575,7 +576,7 @@ es:
         members: "Invitar a nuevos <b>miembros</b> a unirse a tu proyecto."
         quick_add_button: "Haga clic en el icono del signo más (+) en el menú de navegación del encabezado para <b>crear un proyecto</b> o <b>invitar a compañeros</b>."
         sidebar_arrow: "Usa la flecha de retorno en la esquina superior izquierda para regresar al <b>menú principal</b> del proyecto."
-        welcome: "Realice un paseo de introducción de tres minutos para conocer las <b>funciones más importantes</b>. <br> Le recomendamos que complete todos los pasos. Puede volver a iniciar el paseo en cualquier momento."
+        welcome: "Realice un recorrido de introducción de tres minutos para conocer las <b>funciones más importantes</b>. <br> Le recomendamos que complete todos los pasos. Puede volver a iniciar el paseo en cualquier momento."
         wiki: "En la <b>wiki</b>, puede elaborar documentos y compartir conocimientos con su equipo."
         backlogs:
           overview: "Administre su trabajo en la vista de <b>trabajos pendientes</b>."
@@ -620,6 +621,7 @@ es:
         prioritized: "Priorizado"
         dateAlert: "Alerta de fecha"
         shared: "Compartido"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Fecha de hito"
         overdue: "Vencido"
@@ -652,6 +654,8 @@ es:
         new_notifications:
           message: "Hay nuevas notificaciones."
           link_text: "Haga clic aquí para cargarlas."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Puede modificar su <a target="_blank" href="%{url}">configuración de notificaciones</a> para asegurarse que nunca se pierda una actualización importante.'
         title: "Ajustes de notificación"
@@ -739,6 +743,7 @@ es:
         immediate:
           title: "Enviarme un recordatorio por correo electrónico"
           mentioned: "De inmediato cuando alguien me @mencione"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Alertas por correo electrónico de otros elementos (que no sean paquetes de trabajo)"
           explanation: >
@@ -770,10 +775,6 @@ es:
         upgrade_to_ee_text: "¡Vaya! Si necesita está extensión, entonces ¡es un usuario experto! ¿Le importaría apoyar a los desarrolladores de código abierto convirtiéndose en cliente de Enterprise?"
         more_information: "Más información"
         nevermind: "No importa"
-      edit:
-        form_configuration: "Configuración del formulario"
-        projects: "Proyectos"
-        settings: "Configuración"
     time_entry:
       work_package_required: "Es necesario seleccionar primero un paquete de trabajo."
       title: "Registro de tiempo"
@@ -1042,6 +1043,12 @@ es:
           not_found: "No existe la vista"
           duplicate_query_title: "El nombre de la vista ya existe. ¿Quiere cambiarlo de todos modos?"
         text_no_results: "No se encontraron vistas que coincidan."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Las fechas de este paquete de trabajo son deducidas automáticamente de sus sub-elementos. Active 'Programación manual' para establecer las fechas."
         is_switched_from_manual_to_automatic: "Las fechas de este paquete de trabajo pueden necesitar ser recalculadas después de pasar de programación manual a programación automática debido a las relaciones con otros paquetes de trabajo."
@@ -1345,5 +1352,3 @@ es:
       waiting_subtitle:
         network_off: "Hay un problema de red."
         network_on: "La red ha vuelto. Lo estamos intentando."
-        timeout: >
-          OpenProject no ha podido proporcionarle acceso a la carpeta del proyecto en el periodo de tiempo esperado. Inténtelo de nuevo.<br><br> Si el problema persiste, contacte con su administrador de OpenProject para comprobar el <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">estado de salud de la configuración de almacenamiento de archivos</a>.

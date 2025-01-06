@@ -34,6 +34,17 @@ pl:
           name: Szary (ciemny)
         item_13:
           name: Czarny
+      life_cycle_colors:
+        item_0:
+          name: PM2 pomarańczowy
+        item_1:
+          name: PM2 fioletowy
+        item_2:
+          name: PM2 czerwony
+        item_3:
+          name: PM2 amarantowy
+        item_4:
+          name: PM2 żółtozielony
       document_categories:
         item_0:
           name: Dokumentacja
@@ -68,8 +79,23 @@ pl:
         item_0:
           name: Kierownik personelu i projektów
         item_1:
-          name: Standard global role
+          name: Standardowa rola globalna
     standard:
+      life_cycles:
+        item_0:
+          name: Inicjowanie
+        item_1:
+          name: Gotowy do planowania
+        item_2:
+          name: Planowanie
+        item_3:
+          name: Gotowy do wykonania
+        item_4:
+          name: Wykonywanie
+        item_5:
+          name: Gotowy do zamknięcia
+        item_6:
+          name: Zamykanie
       priorities:
         item_0:
           name: Niski

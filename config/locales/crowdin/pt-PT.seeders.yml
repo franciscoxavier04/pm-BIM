@@ -34,6 +34,17 @@ pt-PT:
           name: Cinza (escuro)
         item_13:
           name: Preto
+      life_cycle_colors:
+        item_0:
+          name: PM2 Laranja
+        item_1:
+          name: PM2 Roxo
+        item_2:
+          name: PM2 Vermelho
+        item_3:
+          name: PM2 Magenta
+        item_4:
+          name: PM2 Verde amarelo
       document_categories:
         item_0:
           name: Documentação
@@ -68,8 +79,23 @@ pt-PT:
         item_0:
           name: Equipa e gestor de projetos
         item_1:
-          name: Standard global role
+          name: Função global padrão
     standard:
+      life_cycles:
+        item_0:
+          name: A iniciar
+        item_1:
+          name: Pronto para o planeamento
+        item_2:
+          name: Planeamento
+        item_3:
+          name: Pronto para a execução
+        item_4:
+          name: Execução
+        item_5:
+          name: Pronto para o encerramento
+        item_6:
+          name: Encerramento
       priorities:
         item_0:
           name: Baixo

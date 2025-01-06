@@ -105,6 +105,7 @@ hu:
     button_update: "Frissítés"
     button_export-pdf: "PDF-fájl letöltése"
     button_export-atom: "Atom letöltés"
+    button_generate_pdf: "Generate PDF"
     button_create: "Létrehoz"
     card:
       add_new: "Új kártya hozzáadása"
@@ -356,10 +357,10 @@ hu:
           learn_about: "Tudjon meg többet az új funkciókról"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "14_6":
+          "15_1":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Benefit from more flexible progress reporting – thanks to user feedback.</li> <li>Receive an update notification with reload option for meetings.</li> <li>Enable a custom field for multiple projects at once.</li> <li>Use relative work package attribute macros.</li> <li>Show empty lines in saved rich text.</li> <li>See past meetings included in the number next to the Meetings tab.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Custom fields of type hierarchy (Enterprise add-on).</li> <li>Redesign of the Relations tab in work packages.</li> <li>Redesign of the Meetings index page.</li> <li>Manual page breaks in PDF work package exports.</li> <li>Zen mode for project lists.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -575,7 +576,7 @@ hu:
         members: "Új <b>tagok</b> meghívása, hogy a projekthez csatlakozzanak."
         quick_add_button: "Kattintson a fejlécben található (+) ikonra hogy   <b>create a new project</b> vagy  <b>invite coworkers</b>."
         sidebar_arrow: "Használja a vissza nyilat bal felül hogy visszatérjen a projektekhez <b>main menu</b>.."
-        welcome: "Áldozzon három percet erre a bemutatóra, hogy megismerje a <b>legfontosabb szolgáltatásokat</b><br> Javasoljuk, hogy végezze el a lépéseket egészen a végéig. A túra bármikor újraindítható."
+        welcome: "Take a three-minute introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
         wiki: "A <b>Wiki</b> modulban tudását dokumentálhatja és megoszthatja a csapatával."
         backlogs:
           overview: "Munka kezelése a <b>backlogs</b>  nézetben"
@@ -620,6 +621,7 @@ hu:
         prioritized: "Prioritized"
         dateAlert: "Date alert"
         shared: "Megosztva"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "Overdue"
@@ -652,6 +654,8 @@ hu:
         new_notifications:
           message: "Új értesítések érkeztek."
           link_text: "Click here to load them."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'You can modify your <a target="_blank" href="%{url}">notification settings</a> to ensure you never miss an important update.'
         title: "Értesítési beállítások"
@@ -739,6 +743,7 @@ hu:
         immediate:
           title: "Kérek email emlékeztetőt!"
           mentioned: "Amint valaki @megemlít engem"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Email alerts for other items (that are not work packages)"
           explanation: >
@@ -770,10 +775,6 @@ hu:
         upgrade_to_ee_text: "Wow! If you need this add-on you are a super pro! Would you mind supporting us OpenSource developers by becoming an Enterprise edition client?"
         more_information: "További információ"
         nevermind: "Mindegy"
-      edit:
-        form_configuration: "Ürlap beállítása"
-        projects: "Projektek"
-        settings: "Beállítások"
     time_entry:
       work_package_required: "Először ki kell választania egy munkacsomagot."
       title: "Eltöltött idő rögzítése"
@@ -1042,6 +1043,12 @@ hu:
           not_found: "Nincs ilyen nézet"
           duplicate_query_title: "A nézet neve már létezik. Biztos megváltoztatod?"
         text_no_results: "Nem található egyező nézet"
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "A munkacsomag dátumait automatikusan levezetik a gyermekeiből. A dátumok beállításához aktiválja a „Kézi ütemezést”"
         is_switched_from_manual_to_automatic: "Ennek a munkacsomagnak a dátumait újra kell kalkulálni, miután a kézi üzemmódról az automatikus ütemezésre váltott, más munkacsomagokkal való kapcsolat miatt.\n"
@@ -1345,5 +1352,3 @@ hu:
       waiting_subtitle:
         network_off: "There is a network problem."
         network_on: "Network is back. We are trying."
-        timeout: >
-          OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">health status of the file storage setup</a>.

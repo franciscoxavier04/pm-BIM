@@ -220,6 +220,10 @@ export class PathHelperService {
     return `${this.usersPath()}/${id}`;
   }
 
+  public userHoverCardPath(id:string|number) {
+    return `${this.usersPath()}/${id}/hover_card`;
+  }
+
   public placeholderUserPath(id:string|number) {
     return `${this.placeholderUsersPath()}/${id}`;
   }
@@ -274,6 +278,10 @@ export class PathHelperService {
 
   public workPackageDetailsCopyPath(projectIdentifier:string, workPackageId:string|number) {
     return this.workPackageDetailsPath(projectIdentifier, workPackageId, 'copy');
+  }
+
+  public workPackageReminderModalBodyPath(workPackageId:string|number) {
+    return `${this.workPackagePath(workPackageId)}/reminders/modal_body`;
   }
 
   public workPackageSharePath(workPackageId:string|number) {
