@@ -32,16 +32,8 @@ require "spec_helper"
 
 RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
   describe ".key" do
-    before do
-      allow(Project::LifeCycleStepDefinition).to receive(:pluck).with(:id).and_return([42])
-    end
-
     it "matches key in correct format for life cycles" do
       expect(described_class.key).to match("lcsd_42")
-    end
-
-    it "doesn't match key in correct format for not found life cycles" do
-      expect(described_class.key).not_to match("lcsd_43")
     end
 
     it "doesn't match non numerical id" do
@@ -85,7 +77,6 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
     let(:id) { 42 }
 
     before do
-      allow(Project::LifeCycleStepDefinition).to receive(:pluck).with(:id).and_return([id])
       allow(Project::LifeCycleStepDefinition).to receive(:find_by).with(id: id.to_s).and_return(step_definition)
     end
 

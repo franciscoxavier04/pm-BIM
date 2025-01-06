@@ -34,9 +34,7 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   validates :life_cycle_step_definition, presence: { message: I18n.t(:"activerecord.errors.messages.does_not_exist") }
 
   def self.key
-    valid_ids = Project::LifeCycleStepDefinition.pluck(:id)
-
-    /\Alcsd_(#{valid_ids.join('|')})\z/
+    /\Alcsd_(\d+)\z/
   end
 
   def life_cycle_step_definition
