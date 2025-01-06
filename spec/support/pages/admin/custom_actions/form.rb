@@ -66,7 +66,7 @@ module Pages
         end
 
         def expect_action(name, value)
-          value = "null" if value.nil?
+          value = "" if value.nil?
 
           within "#custom-actions-form--actions" do
             if value.is_a?(Array)

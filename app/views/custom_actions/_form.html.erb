@@ -39,7 +39,7 @@
                                         items: condition.allowed_values.map { |v| { id: v[:value], name: v[:label] } },
                                         model: condition.value_objects.map { |v| { id: v[:value], name: v[:label] } },
                                         inputName: input_name,
-                                        inputId: "custom_action_conditions_#{condition.key}",
+                                        labelForId: "custom_action_conditions_#{condition.key}",
                                         appendTo: "body",
                                       }
             %>
@@ -69,23 +69,23 @@
                 <% if action.key == :project %>
                   <%= angular_component_tag 'opce-project-autocompleter',
                                             inputs: {
-                                              multiple: true,
+                                              multiple: false,
                                               filters: [{ name: 'active', operator: '=', values: ['t'] }],
                                               resource: "projects",
                                               inputName: input_name,
                                               appendTo: "body",
-                                              inputValue: action.values
+                                              inputValue: action.values.first
                                             }
                   %>
                 <% else %>
                   <%= angular_component_tag 'opce-autocompleter',
                                             inputs: {
-                                              multiple: true,
+                                              multiple: action.multi_value?,
                                               defaultData: false,
                                               items: action.allowed_values.map { |v| { id: v[:value], name: v[:label] } },
                                               model: action.value_objects.map { |v| { id: v[:value], name: v[:label] } },
                                               inputName: input_name,
-                                              inputId: "custom_action_conditions_#{action.key}",
+                                              labelForId: "custom_action_actions_#{action.key}",
                                               appendTo: "body",
                                             }
                   %>
