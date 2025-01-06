@@ -121,14 +121,20 @@ RSpec.describe "Projects life cycle settings", :js, :with_cuprite, with_flag: { 
       wait_for_network_idle
       definitions_page.expect_listed(["Imagining", "Ready to Initiate", "Initiating", "Ready to Process", "Processing"])
 
+      definitions_page.drag_and_drop_list(from: 0, to: 4,
+                                          elements: "[data-test-selector=project-life-cycle-step-definition]",
+                                          handler: ".DragHandle")
+      wait_for_network_idle
+      definitions_page.expect_listed(["Ready to Initiate", "Initiating", "Ready to Process", "Processing", "Imagining"])
+
       definitions_page.reload!
-      definitions_page.expect_listed(["Imagining", "Ready to Initiate", "Initiating", "Ready to Process", "Processing"])
+      definitions_page.expect_listed(["Ready to Initiate", "Initiating", "Ready to Process", "Processing", "Imagining"])
 
       # deleting
       accept_confirm I18n.t(:text_are_you_sure_with_project_life_cycle_step) do
         definitions_page.click_definition_action("Initiating", action: "Delete")
       end
-      definitions_page.expect_listed(["Imagining", "Ready to Initiate", "Ready to Process", "Processing"])
+      definitions_page.expect_listed(["Ready to Initiate", "Ready to Process", "Processing", "Imagining"])
     end
   end
 end

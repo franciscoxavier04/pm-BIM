@@ -58,6 +58,17 @@ GIT
       parallel_tests (>= 3.3.0, < 5)
       rspec (>= 3.10)
 
+GIT
+  remote: https://github.com/toy/ferrum.git
+  revision: 889b29926f017530a0e087b1db0bc02747e437b1
+  ref: mouse-events-buttons-property-0.15
+  specs:
+    ferrum (0.15)
+      addressable (~> 2.5)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (~> 0.7)
+
 PATH
   remote: modules/auth_plugins
   specs:
@@ -558,11 +569,6 @@ GEM
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
     fastimage (2.3.1)
-    ferrum (0.15)
-      addressable (~> 2.5)
-      concurrent-ruby (~> 1.1)
-      webrick (~> 1.7)
-      websocket-driver (~> 0.7)
     ffi (1.17.1)
     flamegraph (0.9.5)
     fog-aws (3.30.0)
@@ -1255,6 +1261,7 @@ DEPENDENCIES
   escape_utils (~> 1.3)
   factory_bot (~> 6.5.0)
   factory_bot_rails (~> 6.4.4)
+  ferrum!
   ffi (~> 1.15)
   flamegraph
   fog-aws
