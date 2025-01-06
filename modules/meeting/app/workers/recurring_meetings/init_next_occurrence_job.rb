@@ -36,6 +36,11 @@ module RecurringMeetings
       key: -> { self.class.unique_key(arguments.first) }
     )
 
+    def self.delete_jobs(recurring_meeting)
+      concurrency_key = unique_key(recurring_meeting)
+      GoodJob::Job.where(concurrency_key:).delete_all
+    end
+
     def self.unique_key(recurring_meeting)
       "RecurringMeetings::InitNextOccurrenceJob-#{recurring_meeting.id}"
     end
