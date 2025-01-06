@@ -218,7 +218,7 @@ gem "dry-monads"
 gem "dry-validation"
 
 # ActiveRecord extension which adds typecasting to store accessors
-gem "store_attribute", "~> 1.0"
+gem "store_attribute", "~> 2.0"
 
 # Appsignal integration
 gem "appsignal", "~> 3.10.0", require: false
