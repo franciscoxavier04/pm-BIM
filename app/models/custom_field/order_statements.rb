@@ -171,16 +171,10 @@ module CustomField::OrderStatements
   end
 
   def join_for_order_by_hierarchy_sql
-    ancestor_item = CustomField.find(id).hierarchy_root
-    self_and_descendants = ancestor_item.self_and_descendants
-    total_descendants = self_and_descendants.count
-    max_depth = self_and_descendants.max_by(&:depth).depth
-    items = hierarchy_position_sql(ancestor_id: ancestor_item.id, total_descendants:, max_depth:)
-
     join_for_order_sql(
-      value: multi_value? ? "ARRAY_AGG(item.position ORDER BY item.position)" : "item.position",
-      add_select: "#{multi_value? ? "ARRAY_TO_STRING(ARRAY_AGG(cv.value ORDER BY item.position), '.')" : 'cv.value'} ids",
-      join: "INNER JOIN (#{items}) item ON item.id = cv.value::bigint",
+      value: multi_value? ? "ARRAY_AGG(item.position_cache ORDER BY item.position_cache)" : "item.position_cache",
+      add_select: "#{multi_value? ? "ARRAY_TO_STRING(ARRAY_AGG(cv.value ORDER BY item.position_cache), '.')" : 'cv.value'} ids",
+      join: "INNER JOIN #{CustomField::Hierarchy::Item.quoted_table_name} item ON item.id = cv.value::bigint",
       multi_value:
     )
   end
