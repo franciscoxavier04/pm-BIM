@@ -292,6 +292,13 @@ RSpec.describe "Projects lists ordering", :js, :with_cuprite, with_settings: { l
              start_date: Date.new(2025, 2, 12),
              end_date: Date.new(2025, 2, 20))
     end
+    let!(:last_stage) do
+      create(:project_stage,
+             project: development_project,
+             definition: stage_def,
+             start_date: other_stage.start_date,
+             end_date: other_stage.end_date + 1.day)
+    end
 
     before do
       Setting.enabled_projects_columns += [stage.column_name]
@@ -304,7 +311,10 @@ RSpec.describe "Projects lists ordering", :js, :with_cuprite, with_settings: { l
       wait_for_reload
 
       projects_page.expect_project_at_place(project, 1)
+      # For the next two projects, the start date is the same, but the end date differs.
+      # Ensure the end date is used as a secondary sorting criterion:
       projects_page.expect_project_at_place(public_project, 2)
+      projects_page.expect_project_at_place(development_project, 3)
     end
 
     it "sorts projects by life cycle stage desc" do
@@ -312,6 +322,7 @@ RSpec.describe "Projects lists ordering", :js, :with_cuprite, with_settings: { l
       projects_page.sort_via_action_menu(stage.column_name, direction: :desc)
       wait_for_reload
 
+      projects_page.expect_project_at_place(development_project, 4)
       projects_page.expect_project_at_place(public_project, 5)
       projects_page.expect_project_at_place(project, 6)
     end

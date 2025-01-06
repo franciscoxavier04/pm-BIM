@@ -71,11 +71,10 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   end
 
   def order(scope)
-    # Parent implementation:
-    # scope.order(name => direction)
     with_raise_on_invalid do
       scope.where("steps.def_id = :def_id OR steps.def_id IS NULL", def_id: life_cycle_step_definition.id)
-           .order("steps.start_date #{direction}")
+           # TODO: do not attempt to order by end_date for gates
+           .order("steps.start_date #{direction}, steps.end_date #{direction}")
     end
   end
 end
