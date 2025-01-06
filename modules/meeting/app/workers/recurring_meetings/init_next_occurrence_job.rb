@@ -55,11 +55,11 @@ module RecurringMeetings
         return
       end
 
-      # Schedule the next occurrence, if not instantiated
-      check_next_occurrence
-
       # Schedule the next job
       schedule_next_job
+
+      # Schedule the next occurrence, if not instantiated
+      check_next_occurrence
     rescue StandardError => e
       Rails.logger.error { "Error while initializing next occurrence for series ##{recurring_meeting}: #{e.message}" }
     end
@@ -99,6 +99,9 @@ module RecurringMeetings
     ##
     # Schedule when this job should be run the next time
     def schedule_next_job
+      # Do not schedule if the series is ending
+      return if next_scheduled_time.nil?
+
       self
         .class
         .set(wait_until: next_scheduled_time)
