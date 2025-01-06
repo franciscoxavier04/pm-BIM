@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -53,6 +55,7 @@ module Queries
 
       def apply_to(query_scope)
         query_scope = order(query_scope)
+        query_scope = query_scope.with(cte_name => cte_statement) if cte_name && cte_statement
         query_scope = query_scope.joins(joins) if joins
         query_scope = query_scope.left_outer_joins(left_outer_joins) if left_outer_joins
         query_scope
@@ -77,6 +80,14 @@ module Queries
       end
 
       def left_outer_joins
+        nil
+      end
+
+      def cte_name
+        nil
+      end
+
+      def cte_statement
         nil
       end
 

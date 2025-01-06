@@ -57,24 +57,29 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
 
   def joins
     <<~SQL.squish
-      LEFT JOIN (
-        SELECT steps.*, def.name, def.id as def_id
-        FROM project_life_cycle_steps steps
-        LEFT JOIN project_life_cycle_step_definitions def
-          ON steps.definition_id = def.id
-        WHERE
-          1=1
-          AND steps.active = true
-          AND def.id = #{life_cycle_step_definition.id}
-      ) steps ON steps.project_id = projects.id
+      LEFT JOIN #{cte_name} ON #{cte_name}.project_id = projects.id
     SQL
+  end
+
+  def cte_name
+    definition_id = life_cycle_step_definition.id
+
+    :"life_cycle_steps_cte_#{definition_id}"
+  end
+
+  def cte_statement
+    Project::LifeCycleStep.select("*, def.name, def.id as def_id")
+                          .joins("LEFT JOIN project_life_cycle_step_definitions def ON definition_id = def.id")
+                          .where(active: true, definition_id: life_cycle_step_definition.id)
   end
 
   def order(scope)
     with_raise_on_invalid do
-      scope.where("steps.def_id = :def_id OR steps.def_id IS NULL", def_id: life_cycle_step_definition.id)
-           # Note that a gate does not define an end_date. This code still works.
-           .order("steps.start_date #{direction}, steps.end_date #{direction}")
+      # Note that a gate does not define an end_date. This code still works.
+      direction_clause = Arel.sql("#{cte_name}.start_date #{direction}, #{cte_name}.end_date #{direction}")
+
+      scope.where("#{cte_name}.def_id = :def_id OR #{cte_name}.def_id IS NULL", def_id: life_cycle_step_definition.id)
+           .order(direction_clause)
     end
   end
 end
