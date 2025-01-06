@@ -566,7 +566,7 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (~> 0.7)
-    ffi (1.17.0)
+    ffi (1.17.1)
     flamegraph (0.9.5)
     fog-aws (3.30.0)
       base64 (~> 0.2.0)
