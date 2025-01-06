@@ -62,13 +62,15 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   end
 
   def cte_name
+    # Since we can combine multiple queries with their respective ORDER BY clauses, we need to make sure
+    # that the name of our CTE is unique. To achieve this, we use the definition_id as part of the CTE name.
     definition_id = life_cycle_step_definition.id
 
     :"life_cycle_steps_cte_#{definition_id}"
   end
 
   def cte_statement
-    Project::LifeCycleStep.select("*, def.name, def.id as def_id")
+    Project::LifeCycleStep.select("*, def.id as def_id")
                           .joins("LEFT JOIN project_life_cycle_step_definitions def ON definition_id = def.id")
                           .where(active: true, definition_id: life_cycle_step_definition.id)
   end
