@@ -23,6 +23,7 @@ module Primer
         def extend_autocomplete_inputs(inputs) # rubocop:disable Metrics/AbcSize
           inputs[:classes] = "ng-select--primerized #{@input.invalid? ? '-error' : ''}"
           inputs[:inputName] ||= builder.field_name(@input.name)
+          inputs[:labelForId] ||= builder.field_id(@input.name)
           inputs[:defaultData] ||= true
 
           if inputs.delete(:decorated)
