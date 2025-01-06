@@ -560,9 +560,9 @@ cs:
     and_user: "a %{user}"
     and_others:
       one: a 1 další
-      few: and %{count} others
-      many: and %{count} others
-      other: and %{count} others
+      few: a %{count} dalšich
+      many: a %{count} dalšich
+      other: a %{count} dalšich
     reaction_by: "%{reaction} od"
   reportings:
     index:
@@ -682,7 +682,7 @@ cs:
           no_results_title_text: V současné době nejsou k dispozici žádné verze.
   work_package_relations_tab:
     index:
-      action_bar_title: "Add relations to other work packages to create a link between them."
+      action_bar_title: "Přidejte vztahy k jiným pracovním balíčkům a vytvořte mezi nimi vazbu."
       no_results_title_text: V současné době nejsou k dispozici žádné vztahy.
       blankslate_heading: "Žádné vztahy"
       blankslate_description: "Tento pracovní balíček ještě nemá žádné vztahy."
@@ -698,11 +698,11 @@ cs:
       label_relates_plural: "související s"
       label_relates_to_singular: "související s"
       label_relates_to_plural: "související s"
-      relates_description: "Creates a visible link between the two work packages with no additional effect"
-      relates_to_description: "Creates a visible link between the two work packages with no additional effect"
+      relates_description: "Vytvoří viditelný odkaz mezi oběma pracovními balíčky bez dodatečného efektu"
+      relates_to_description: "Vytvoří viditelný odkaz mezi oběma pracovními balíčky bez dodatečného efektu"
       label_precedes_singular: "následník (po)"
       label_precedes_plural: "následník (po)"
-      precedes_description: "The related work package necessarily needs to start after this one finishes"
+      precedes_description: "Související pracovní balíček musí být nutně zahájen po dokončení tohoto balíčku."
       label_follows_singular: "předchůdce (před)"
       label_follows_plural: ""
       follows_description: "The related work package necessarily needs to finish before this one can start"
@@ -1176,7 +1176,7 @@ cs:
         project/stage:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
+              start_date_must_be_before_end_date: "Datum zahájení musí být před datem ukončení."
               non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
               incomplete: "je neúplný."
             type:
@@ -1976,16 +1976,16 @@ cs:
           options:
             table:
               label: "Tabulka"
-              caption: "Export the work packages list in a table with the desired columns."
+              caption: "Export seznamu pracovních balíčků do tabulky s požadovanými sloupci."
             report:
               label: "Report"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
               label: "Ganttův diagram"
-              caption: "Export the work packages list in a Gantt diagram view."
+              caption: "Export seznamu pracovních balíčků v zobrazení Ganttova diagramu."
         include_images:
           label: "Včetně obrázků"
-          caption: "Exclude images to reduce the size of the PDF export."
+          caption: "Vyloučit obrázky pro zmenšení velikosti exportu PDF."
         gantt_zoom_levels:
           label: "Úrovně přiblížení"
           caption: "Select what is the zoom level for dates displayed in the chart."
@@ -2044,13 +2044,13 @@ cs:
       title: Generovat PDF
       submit: Generovat
       header_right:
-        label: Header right
+        label: Záhlaví vpravo
         caption: Text to be displayed in the right of the header
       footer_center:
         label: Střed zápatí
         caption: Text to be displayed in the center of the footer
       hyphenation:
-        label: Hyphenation
+        label: Dělení slov
         caption: Break words between lines to improve text justification and readability.
       paper_size:
         label: Velikost papíru
@@ -3914,7 +3914,7 @@ cs:
           derived: "Derived from Remaining work and % Complete."
           same_as_remaining_work: "Set to same value as Remaining work."
         remaining_hours:
-          cleared_because_work_is_empty: "Cleared because Work is empty."
+          cleared_because_work_is_empty: "Vymazáno, protože položka Práce je prázdná."
           cleared_because_percent_complete_is_empty: "Cleared because % Complete is empty."
           decreased_by_delta_like_work: "Decreased by %{delta}, matching the reduction in Work."
           derived: "Odvozeno od práce a % dokončení."
@@ -3989,7 +3989,7 @@ cs:
       blank_state:
         public:
           header: "Sdíleno se všemi"
-          description: "Everyone can view this project list. You can also add individual users with extra permissions."
+          description: "Každý může zobrazit tento seznam projektů. Můžete také přidat jednotlivé uživatele s extra oprávněním."
         private:
           header: "Není sdíleno: Soukromé"
           description: "Tento seznam projektů zatím nebyl sdílen s nikým. Pouze vy můžete přistupovat k tomuto seznamu."

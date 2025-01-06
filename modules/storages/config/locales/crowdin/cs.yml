@@ -66,7 +66,7 @@ cs:
       inactive: Žádná specifická složka
       manual: Ručně spravovaná stávající složka
     remove_project:
-      deletion_failure_flash: Failed to remove the project from the storage. %{error}
+      deletion_failure_flash: Nepodařilo se odstranit projekt z úložiště. %{error}
       dialog:
         automatically_managed_appendix: Also, in this case this storage has an automatically managed project folder, this and its files will be deleted forever.
         confirmation_text: Please, confirm you understand and want to remove this file storage from this project
@@ -92,7 +92,7 @@ cs:
     errors:
       messages:
         error: An unexpected error occurred. Please check OpenProject logs for more information or contact an administrator
-        unauthorized: OpenProject could not authenticate with the Storage Provider. Please ensure that you have access to it.
+        unauthorized: OpenProject se nemohl autentizovat s poskytovatelem úložiště. Ujistěte se, že k němu máte přístup.
       models:
         copy_project_folders_service:
           conflict: The folder %{destination_path} already exists. Interrupting process to avoid overwrites.
@@ -128,7 +128,7 @@ cs:
           group_does_not_exist: "%{group} does not exist. Check your Nextcloud instance configuration."
           insufficient_privileges: OpenProject does not have enough privileges to add %{user} to %{group}. Check you group settings in Nextcloud.
           not_allowed: Nextcloud blokuje požadavek.
-          unauthorized: OpenProject could not sync with Nextcloud. Please check your storage and Nextcloud configuration.
+          unauthorized: OpenProject nelze synchronizovat s Nextcloudem. Zkontrolujte prosím konfiguraci úložiště a Nextcloudu.
           user_does_not_exist: "%{user} does not exist in Nextcloud."
         one_drive_sync_service:
           attributes:
@@ -331,7 +331,7 @@ cs:
     oauth_grant_nudge_modal:
       cancel_button_label: Udělám to později
       heading: Login to %{provider_type} required
-      login_button_aria_label: Login to %{storage}
+      login_button_aria_label: Přihlásit se do %{storage}
       login_button_label: "%{provider_type} log in"
       project_settings:
         description: To get access to the project folder you need to login to %{storage}.
@@ -384,7 +384,7 @@ cs:
     storage_list_blank_slate:
       description: Přidejte úložiště, abyste je viděli zde.
       heading: Zatím nemáte žádné úložiště.
-    successful_storage_connection: Storage connected successfully! Remember to activate the storage in the Projects tab for each desired project to use it.
+    successful_storage_connection: Úložiště bylo úspěšně připojeno! Nezapomeňte aktivovat úložiště v záložce Projekty pro každý požadovaný projekt.
     upsale:
       description: |-
         Integrujte OneDrive/SharePoint jako úložiště souborů s OpenProject. Nahrávejte soubory a propojte je přímo s pracovními balíčky v projektu.

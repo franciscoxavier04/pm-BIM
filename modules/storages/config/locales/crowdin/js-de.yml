@@ -13,7 +13,7 @@ de:
       open_storage: "Öffne %{storageType}"
       select_location: "Speicherort auswählen"
       choose_location: "Speicherort wählen"
-      new_folder: "New folder"
+      new_folder: "Neuer Ordner"
       types:
         nextcloud: "Nextcloud"
         one_drive: "OneDrive/SharePoint"
