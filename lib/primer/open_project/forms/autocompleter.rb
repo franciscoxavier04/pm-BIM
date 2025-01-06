@@ -23,22 +23,18 @@ module Primer
         def extend_autocomplete_inputs(inputs) # rubocop:disable Metrics/AbcSize
           inputs[:classes] = "ng-select--primerized #{@input.invalid? ? '-error' : ''}"
           inputs[:inputName] ||= builder.field_name(@input.name)
-          inputs[:inputValue] ||= builder.object.send(@input.name)
           inputs[:defaultData] ||= true
 
           if inputs.delete(:decorated)
             inputs[:items] = @input.select_options.map(&:to_h)
-            inputs[:model] = selected_options
+            selected = @input.select_options.filter_map { |option| option.to_h if option.selected }
+            inputs[:model] = inputs[:multiple] ? selected : selected.first
             inputs[:defaultData] = false
+          elsif builder.object
+            inputs[:inputValue] ||= builder.object.send(@input.name)
           end
 
           inputs
-        end
-
-        def selected_options
-          @input.select_options.filter_map do |item|
-            item.value if item.selected
-          end
         end
       end
     end

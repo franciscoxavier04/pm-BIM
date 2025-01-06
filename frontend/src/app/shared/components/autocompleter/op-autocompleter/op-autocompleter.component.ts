@@ -318,7 +318,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
       this.items$.next(this.items as IOPAutocompleterOption[]);
     }
 
-    if (this.inputValue && !this.model) {
+    if (this.inputValue && this.resource && !this.model) {
       this
         .opAutocompleterService
         .loadValue(this.inputValue, this.resource, this.multiple)
