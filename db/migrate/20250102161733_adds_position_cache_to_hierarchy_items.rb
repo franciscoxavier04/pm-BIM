@@ -35,11 +35,34 @@ class AddsPositionCacheToHierarchyItems < ActiveRecord::Migration[7.1]
 
     reversible do |dir|
       dir.up do
-        root_node = Struct.new(:id)
-        service = CustomFields::Hierarchy::HierarchicalItemService.new
-        sql = "select id from hierarchical_items where custom_field_id is not NULL;"
-        ActiveRecord::Base.connection.execute(sql).each do |row|
-          service.send :update_position_cache, root_node.new(**row)
+        update_sql = ->(root_id) {
+          <<-SQL.squish
+          UPDATE hierarchical_items
+          SET position_cache = subquery.position
+          FROM (
+            SELECT hi.id
+                  , SUM((1 + COALESCE(anc.sort_order, 0)) *
+                      POWER(count_max.total_descendants, count_max.max_gens - depths.generations)) AS position
+            FROM hierarchical_items hi
+                 INNER JOIN hierarchical_item_hierarchies hih ON hi.id = hih.descendant_id
+                 JOIN hierarchical_item_hierarchies anc_h ON anc_h.descendant_id = hih.descendant_id
+                 JOIN hierarchical_items anc ON anc.id = anc_h.ancestor_id
+                 JOIN hierarchical_item_hierarchies depths ON depths.ancestor_id = #{root_id} AND depths.descendant_id = anc.id
+               , (
+                SELECT COUNT(1) AS total_descendants, MAX(generations) + 1 AS max_gens
+                FROM hierarchical_items hi
+                    INNER JOIN hierarchical_item_hierarchies hih ON hi.id = hih.ancestor_id
+                WHERE ancestor_id = #{root_id}
+                ) count_max
+            WHERE hih.ancestor_id = #{root_id}
+            GROUP BY hi.id) as subquery
+          WHERE hierarchical_items.id = subquery.id;
+          SQL
+        }
+
+        roots_sql = "select id from hierarchical_items where custom_field_id is not NULL;"
+        ActiveRecord::Base.connection.execute(roots_sql).each do |row|
+          ActiveRecord::Base.connection.execute(update_sql.call(row["id"]))
         end
       end
     end
