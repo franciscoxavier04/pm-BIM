@@ -788,6 +788,7 @@ hi:
         is_required: "अनिवार्य"
         max_length: "अधिकतम लंबाई"
         min_length: "न्यूनतम लम्बाई"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "संभावित मिलान"
         regexp: "नियमित अभिव्यक्ति"
@@ -823,6 +824,8 @@ hi:
         attr_lastname: "कुल-नाम गुण"
         attr_login: "Username attribute"
         attr_mail: "Email attribute"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "बेस डी.एन."
         host: "होस्ट"
         onthefly: "Automatic user creation"
@@ -3334,6 +3337,7 @@ hi:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Search ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4039,6 +4043,8 @@ hi:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

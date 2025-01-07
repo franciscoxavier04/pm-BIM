@@ -790,6 +790,7 @@ bg:
         is_required: "Задължително"
         max_length: "Максимална дължина"
         min_length: "Минимална дължина"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "Възможните стойности"
         regexp: "Регулярен израз"
@@ -825,6 +826,8 @@ bg:
         attr_lastname: "Фамилно име атрибут"
         attr_login: "Username attribute"
         attr_mail: "Имейл атрибут"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Базов DN"
         host: "Хост"
         onthefly: "Automatic user creation"
@@ -3336,6 +3339,7 @@ bg:
     activated: "активиран"
     deactivated: "деактивиран"
   search_input_placeholder: "Търсене ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Активирайте CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) позволява разрешения"
   setting_apiv3_cors_origins_text_html: >
@@ -4041,6 +4045,8 @@ bg:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

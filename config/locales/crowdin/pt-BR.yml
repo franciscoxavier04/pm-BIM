@@ -787,6 +787,7 @@ pt-BR:
         is_required: "Obrigatório"
         max_length: "Tamanho máximo"
         min_length: "Tamanho mínimo"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Permitir seleção múltipla"
         possible_values: "Valores possíveis"
         regexp: "Expressão regular"
@@ -822,6 +823,8 @@ pt-BR:
         attr_lastname: "Atributo de sobrenome"
         attr_login: "Atributo de nome de usuário"
         attr_mail: "Atributo de e-mail"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "DN base"
         host: "Host"
         onthefly: "Criação automática de usuário"
@@ -3332,6 +3335,7 @@ pt-BR:
     activated: "ativado"
     deactivated: "desativado"
   search_input_placeholder: "Pesquisar..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Habilitar CORS"
   setting_apiv3_cors_origins: "Cross-Origin Resource Sharing (CORS) permitidos pela API V3"
   setting_apiv3_cors_origins_text_html: >
@@ -4036,6 +4040,8 @@ pt-BR:
       builtin: Aplicativo de instância integrado
       confidential: Confidencial
       singular: "Aplicação OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Aplicações OAuth"
       named: "Aplicação OAuth '%{name}'"
       new: "Nova aplicação OAuth"

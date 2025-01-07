@@ -807,6 +807,7 @@ ru:
         is_required: "Обязательно"
         max_length: "Максимальная длина"
         min_length: "Минимальная длина"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Разрешить множественный выбор"
         possible_values: "Возможные значения"
         regexp: "Регулярное выражение"
@@ -842,6 +843,8 @@ ru:
         attr_lastname: "Атрибут Фамилия"
         attr_login: "Имя пользователя"
         attr_mail: "Атрибут Email"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Базовый DN"
         host: "Хост"
         onthefly: "Автоматическое создание пользователя"
@@ -3410,6 +3413,7 @@ ru:
     activated: "активирован"
     deactivated: "деактивирован"
   search_input_placeholder: "Поиск ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Включить CORS"
   setting_apiv3_cors_origins: "Разделение ресурсов (CORS) разрешено в API V3"
   setting_apiv3_cors_origins_text_html: >
@@ -4116,6 +4120,8 @@ ru:
       builtin: Встроенное приложение
       confidential: Конфиденциально
       singular: "Приложение OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth приложения"
       named: "OAuth приложение '%{name}'"
       new: "Новое приложение OAuth"

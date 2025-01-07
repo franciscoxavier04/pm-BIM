@@ -786,6 +786,7 @@ el:
         is_required: "Απαιτείται"
         max_length: "Μέγιστο μήκος"
         min_length: "Ελάχιστο μήκος"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Επιτρέψτε την πολλαπλή επιλογή"
         possible_values: "Πιθανές τιμές"
         regexp: "Κανονική έκφραση"
@@ -821,6 +822,8 @@ el:
         attr_lastname: "Χαρακτηριστικό επωνύμου"
         attr_login: "Χαρακτηριστικό ονόματος χρήστη"
         attr_mail: "Χαρακτηριστικό email"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Base DN"
         host: "Διακομιστής"
         onthefly: "Αυτόματη δημιουργία χρήστη"
@@ -3331,6 +3334,7 @@ el:
     activated: "ενεργοποιημένο"
     deactivated: "απενεργοποιημένο"
   search_input_placeholder: "Αναζήτηση ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Ενεργοποίηση CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) επιτρεπόμενες προελεύσεις"
   setting_apiv3_cors_origins_text_html: >
@@ -4035,6 +4039,8 @@ el:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth εφαρμογή"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth εφαρμογές"
       named: "OAuth εφαρμογή '%{name}'"
       new: "Νέα OAuth εφαρμογή"

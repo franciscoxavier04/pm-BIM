@@ -31,10 +31,13 @@
 module Types
   module Patterns
     Collection = Data.define(:patterns) do
+      extend Dry::Monads[:result]
       private_class_method :new
 
       def self.build(patterns:, contract: CollectionContract.new)
         contract.call(patterns).to_monad.fmap { |success| new(success.to_h) }
+      rescue ArgumentError => e
+        Failure(e)
       end
 
       def initialize(patterns:)
