@@ -24,7 +24,7 @@ module Primer
           inputs[:classes] = "ng-select--primerized #{@input.invalid? ? '-error' : ''}"
           inputs[:inputName] ||= builder.field_name(@input.name)
           inputs[:labelForId] ||= builder.field_id(@input.name)
-          inputs[:defaultData] ||= true
+          inputs[:defaultData] = true unless inputs.key?(:defaultData)
 
           if inputs.delete(:decorated)
             inputs[:items] = @input.select_options.map(&:to_h)
