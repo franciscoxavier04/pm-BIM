@@ -118,7 +118,7 @@ module Pages
               if has_selector?(".form--selected-value--container", wait: 0)
                 find(".form--selected-value--container").click
                 autocomplete = true
-              elsif has_selector?("op-autocompleter", wait: 0)
+              elsif has_selector?("opce-autocompleter", wait: 0) || has_selector?("opce-project-autocompleter", wait: 0)
                 autocomplete = true
               end
 
