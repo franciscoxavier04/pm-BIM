@@ -72,9 +72,9 @@ module BulkServices
         if (failures = set_attributes_results.select(&:failure?)).any?
           service_call.success = false
           service_call.errors = failures.map(&:errors)
-        else
-          service_call.result = set_attributes_results.map(&:result)
         end
+
+        service_call.result = set_attributes_results.map(&:result)
 
         service_call
       end
