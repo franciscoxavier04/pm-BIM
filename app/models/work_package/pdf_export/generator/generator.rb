@@ -29,7 +29,7 @@
 #++
 
 require "md_to_pdf/core"
-require 'md_to_pdf/hyphen'
+require "md_to_pdf/hyphen"
 
 module WorkPackage::PDFExport::Generator::Generator
   class MD2PDFGenerator
