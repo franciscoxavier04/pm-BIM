@@ -780,6 +780,7 @@ ko:
         is_required: "필수"
         max_length: "최대 길이"
         min_length: "최소 길이"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "다중 선택 허용"
         possible_values: "가능한 값"
         regexp: "정규 표현식"
@@ -815,6 +816,8 @@ ko:
         attr_lastname: "성 특성"
         attr_login: "사용자 이름 특성"
         attr_mail: "이메일 특성"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "기본 DN"
         host: "호스트"
         onthefly: "자동 사용자 생성"
@@ -3293,6 +3296,7 @@ ko:
     activated: "활성화됨"
     deactivated: "비활성화됨"
   search_input_placeholder: "검색..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORS 사용"
   setting_apiv3_cors_origins: "API V3 CORS(크로스-원본 리소스 공유) 허용 원본"
   setting_apiv3_cors_origins_text_html: >
@@ -3997,6 +4001,8 @@ ko:
       builtin: 기본 제공 인스턴스 애플리케이션
       confidential: 기밀
       singular: "OAuth 애플리케이션"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth 애플리케이션"
       named: "OAuth 애플리케이션 '%{name}'"
       new: "새로운 OAuth 애플리케이션"

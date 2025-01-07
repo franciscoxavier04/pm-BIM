@@ -777,6 +777,7 @@ ja:
         is_required: "必須"
         max_length: "最大値の長さ"
         min_length: "最短長"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "複数選択を許可"
         possible_values: "選択肢"
         regexp: "正規表現"
@@ -812,6 +813,8 @@ ja:
         attr_lastname: "苗字"
         attr_login: "ユーザー名属性"
         attr_mail: "メール"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "ベースDN"
         host: "ホスト"
         onthefly: "ユーザーの自動作成"
@@ -3293,6 +3296,7 @@ ja:
     activated: "有効化"
     deactivated: "無効化"
   search_input_placeholder: "検索…"
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORSを有効にする"
   setting_apiv3_cors_origins: "API V3のオリジン間リソース共有 (CORS) が許可されています"
   setting_apiv3_cors_origins_text_html: >
@@ -3996,6 +4000,8 @@ ja:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuthアプリケーション"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuthアプリケーション"
       named: "OAuthアプリケーション '%{name}'"
       new: "新しいOAuthアプリケーション"

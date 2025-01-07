@@ -806,6 +806,7 @@ sl:
         is_required: "Zahtevano"
         max_length: "Maksimalna dolžina"
         min_length: "Minimalna dolžina"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Dovoli izbiro z več izbirami"
         possible_values: "Možne vrednosti"
         regexp: "Vsakdanje izražanje"
@@ -841,6 +842,8 @@ sl:
         attr_lastname: "Oznaka za priimek"
         attr_login: "Lastnosti uporabnikov"
         attr_mail: "Atribut elektronskega naslova"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Bazni DN"
         host: "Gostitelj"
         onthefly: "Samodejno ustvarjanje uporabnika"
@@ -3411,6 +3414,7 @@ sl:
     activated: "aktivirano"
     deactivated: "deaktivirano"
   search_input_placeholder: "Iskanje..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Omogoči CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) dovoljen izvir"
   setting_apiv3_cors_origins_text_html: >
@@ -4118,6 +4122,8 @@ sl:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "Aplikacija OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Aplikacija OAuth"
       named: "OAuth aplikacija '%{name}'"
       new: "Nova OAuth aplikacija"

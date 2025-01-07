@@ -788,6 +788,7 @@ da:
         is_required: "Påkrævet"
         max_length: "Største længde"
         min_length: "Mindste længde"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "Mulige værdier"
         regexp: "Normalt udtryk"
@@ -823,6 +824,8 @@ da:
         attr_lastname: "Efternavn"
         attr_login: "Username attribute"
         attr_mail: "E-mail"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "DN base"
         host: "Vært"
         onthefly: "Automatic user creation"
@@ -3332,6 +3335,7 @@ da:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Søg ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4037,6 +4041,8 @@ da:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

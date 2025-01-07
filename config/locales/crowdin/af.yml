@@ -790,6 +790,7 @@ af:
         is_required: "Verpligtend"
         max_length: "Maksimum lengte"
         min_length: "Minimum lengte"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "Moontlike waardes"
         regexp: "Standaard uitdrukking"
@@ -825,6 +826,8 @@ af:
         attr_lastname: "Van kenmerk"
         attr_login: "Username attribute"
         attr_mail: "Epos kenmerk"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Basis (Onderskeidende Naam) ON"
         host: "Gasheer"
         onthefly: "Automatic user creation"
@@ -3336,6 +3339,7 @@ af:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Search ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4041,6 +4045,8 @@ af:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"
