@@ -118,7 +118,6 @@ headless-table:
   margin-top: 2mm
   margin-bottom: 4mm
   cell:
-    no-border: true
     padding: 1mm
     size: 9
 
