@@ -787,6 +787,7 @@ nl:
         is_required: "Vereist"
         max_length: "Maximale lengte"
         min_length: "Minimale lengte"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Meerdere selecties toegestaan"
         possible_values: "Mogelijke waarden"
         regexp: "Regular expression"
@@ -822,6 +823,8 @@ nl:
         attr_lastname: "Achternaam attribuut"
         attr_login: "Gebruikersnaam attribuut"
         attr_mail: "E-mail attribuut"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Automatische gebruiker aanmaken"
@@ -3332,6 +3335,7 @@ nl:
     activated: "geactiveerd"
     deactivated: "gedeactiveerd"
   search_input_placeholder: "Zoeken ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Inschakelen CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) toegestane oorsprong"
   setting_apiv3_cors_origins_text_html: >
@@ -4036,6 +4040,8 @@ nl:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth-authenticatie"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth toepassingen"
       named: "OAuth applicatie '%{name}'"
       new: "Nieuwe OAuth applicatie"

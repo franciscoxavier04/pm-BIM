@@ -33,6 +33,7 @@ ms:
       cost_type:
         unit: "Nama unit"
         unit_plural: "Nama majmuk unit"
+        default: "Cost type by default"
       work_package:
         costs_by_type: "Unit yang telah dibelanjakan"
         labor_costs: "Kos buruh"

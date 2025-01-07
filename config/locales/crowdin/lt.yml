@@ -805,6 +805,7 @@ lt:
         is_required: "Būtinas"
         max_length: "Maksimalus ilgis"
         min_length: "Minimalus ilgis"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Leisti daugybinio žymėjimo galimybę"
         possible_values: "Galimos reikšmės"
         regexp: "Reguliari išraiška"
@@ -840,6 +841,8 @@ lt:
         attr_lastname: "Pavardės atributas"
         attr_login: "Naudotojo atributas"
         attr_mail: "El. paštos atributas"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Bazinis DN"
         host: "Serveris"
         onthefly: "Automatinis naudotojų kūrimas"
@@ -3408,6 +3411,7 @@ lt:
     activated: "aktyvus"
     deactivated: "neaktyvus"
   search_input_placeholder: "Paieška..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Įgalinti CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) leidžiami kilmės domenai"
   setting_apiv3_cors_origins_text_html: >
@@ -4114,6 +4118,8 @@ lt:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth aplikacija"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth aplikacijos"
       named: "OAuth aplikacija „%{name}“"
       new: "Nauja OAuth aplikacija"

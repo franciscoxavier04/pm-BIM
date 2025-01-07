@@ -777,6 +777,7 @@ zh-CN:
         is_required: "必填"
         max_length: "最大长度"
         min_length: "最小长度"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "允许多选"
         possible_values: "可能的值"
         regexp: "正则表达式"
@@ -812,6 +813,8 @@ zh-CN:
         attr_lastname: "姓氏属性"
         attr_login: "用户名属性"
         attr_mail: "电子邮件属性"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "基本 DN"
         host: "主机"
         onthefly: "自动创建用户"
@@ -3288,6 +3291,7 @@ zh-CN:
     activated: "已激活"
     deactivated: "已取消激活"
   search_input_placeholder: "搜索"
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "启用 CORS"
   setting_apiv3_cors_origins: "API v3 跨域资源共享 (CORS) 允许的域"
   setting_apiv3_cors_origins_text_html: >
@@ -3991,6 +3995,8 @@ zh-CN:
       builtin: 内置实例应用程序
       confidential: 机密
       singular: "OAuth应用程序"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth应用程序"
       named: "OAuth 应用程序“%{name}”"
       new: "新的 OAuth 应用程序"

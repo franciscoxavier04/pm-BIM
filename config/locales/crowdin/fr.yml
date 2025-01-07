@@ -788,6 +788,7 @@ fr:
         is_required: "Obligatoire"
         max_length: "Longueur maximale"
         min_length: "Longueur minimale"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Autoriser la sélection multiple"
         possible_values: "Valeurs possibles"
         regexp: "Expression régulière"
@@ -823,6 +824,8 @@ fr:
         attr_lastname: "Attribut Nom"
         attr_login: "Attribut Nom d'utilisateur"
         attr_mail: "Attribut Adresse électronique"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "DN de base"
         host: "Hôte"
         onthefly: "Création automatique des utilisateurs"
@@ -3334,6 +3337,7 @@ fr:
     activated: "activé"
     deactivated: "désactivé"
   search_input_placeholder: "Rechercher…"
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Activer CORS"
   setting_apiv3_cors_origins: "Origines autorisées de l'API V3 Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_origins_text_html: >
@@ -4038,6 +4042,8 @@ fr:
       builtin: Application d'instance intégrée
       confidential: Confidentiel
       singular: "Application OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Applications OAuth"
       named: "Application OAuth '%{name}'"
       new: "Nouvelle application Oauth"

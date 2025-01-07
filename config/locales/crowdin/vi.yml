@@ -783,6 +783,7 @@ vi:
         is_required: "Bắt buộc"
         max_length: "Chiều dài tối đa"
         min_length: "Chiều dài tối thiểu"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Cho phép nhiều lựa chọn"
         possible_values: "Giá trị có thể"
         regexp: "Biểu thức chính quy"
@@ -818,6 +819,8 @@ vi:
         attr_lastname: "Thuộc tính họ"
         attr_login: "Thuộc tính tên người dùng"
         attr_mail: "Thuộc tính email"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "DN căn bản"
         host: "Máy chủ"
         onthefly: "Tạo người dùng tự động"
@@ -3299,6 +3302,7 @@ vi:
     activated: "đã kích hoạt"
     deactivated: "đã tắt"
   search_input_placeholder: "Tìm kiếm ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Kích hoạt CORS"
   setting_apiv3_cors_origins: "Các nguồn gốc được phép của API V3 Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_origins_text_html: >
@@ -4002,6 +4006,8 @@ vi:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "Ứng dụng OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Các ứng dụng OAuth"
       named: "Ứng dụng OAuth '%{name}'"
       new: "Ứng dụng OAuth mới"

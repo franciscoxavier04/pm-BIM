@@ -33,7 +33,7 @@ ms:
         label_activity_show_only_changes: "Show changes only"
         label_sort_asc: "Newest at the bottom"
         label_sort_desc: "Newest on top"
-        label_type_to_comment: "Add a comment. Type @ to notify people."
+        label_type_to_comment: "Tambah ulasan. Taip @ untuk memberitahu orang."
         label_submit_comment: "Submit comment"
         changed_on: "changed on"
         created_on: "created this on"
@@ -374,7 +374,7 @@ ms:
         actions:
           label_enable_single: "Aktif dalam projek ini, klik untuk nyahaktifkan"
           label_disable_single: "Tidak aktif dalam projek ini, klik untuk aktifkan"
-          remove_from_project: "Remove from project"
+          remove_from_project: "Alih keluar daripada projek"
         is_required_blank_slate:
           heading: Diperlukan dalam semua projek
           description: Atribut projek ini telah diaktifkan dalam semua projek sejak pilihan "Diperlukan dalam semua projek" telah ditandakan. Ia tidak boleh dinyahaktifkan untuk projek individu.
@@ -461,8 +461,8 @@ ms:
   my:
     access_token:
       create_dialog:
-        header: The %{type} token has been generated
-        warning: Note that this is the only time you will see this token, make sure to copy it now.
+        header: Token %{type} telah dihasilkan
+        warning: Ambil perhatian bahawa ini adalah satu-satunya masa anda akan melihat token ini, pastikan anda menyalinnya sekarang.
       errors:
         token_name_blank: "Please provide an API token name"
         token_name_in_use: "This API token name is already in use, please select a different one"
@@ -679,7 +679,7 @@ ms:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      child_description: "Menjadikan pakej kerja berkaitan sub-item pakej kerja semasa (ibu bapa)."
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -779,6 +779,7 @@ ms:
         is_required: "Diperlukan"
         max_length: "Panjang maksima"
         min_length: "Panjang minimum"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Benarkan pemilihan berganda"
         possible_values: "Nilai yang mungkin"
         regexp: "Ungkapan biasa"
@@ -814,6 +815,8 @@ ms:
         attr_lastname: "Atribut nama akhir"
         attr_login: "Atribut nama pengguna"
         attr_mail: "Atribut e-mel"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Pangkalan DN"
         host: "Hos"
         onthefly: "Penciptaan pengguna automatik"
@@ -1374,7 +1377,7 @@ ms:
         other: "Peranan\n"
       status: "Status pakej kerja"
       token/api:
-        other: Access tokens
+        other: Token akses
       type: "Jenis"
       user: "Pengguna"
       version: "Versi"
@@ -2975,9 +2978,9 @@ ms:
   notice_locking_conflict: "Sementara itu, maklumat telah dikemas kini oleh sekurang-kurangnya salah satu pengguna lain."
   notice_locking_conflict_additional_information: "Kemas kini tersebut ialah daripada %{users}."
   notice_locking_conflict_reload_page: "Sila muat semula halaman, semak semula perubahan dan terapkan semula kemas kini anda."
-  notice_locking_conflict_warning: "This page has been updated by someone else. To not lose your edits, copy them locally and reload to view the updated version."
-  notice_locking_conflict_danger: "Could not save your changes because of conflicting modifications. To not lose your edits, copy them locally and reload to view the updated version."
-  notice_locking_conflict_action_button: "Discard changes and reload"
+  notice_locking_conflict_warning: "Halaman ini telah dikemas kini oleh orang lain. Untuk tidak kehilangan pengeditan anda, salinnya secara setempat dan muat semula untuk melihat versi yang dikemas kini."
+  notice_locking_conflict_danger: "Tidak dapat menyimpan perubahan anda kerana pengubahsuaian yang bercanggah. Untuk tidak kehilangan pengeditan anda, salinnya secara setempat dan muat semula untuk melihat versi yang dikemas kini."
+  notice_locking_conflict_action_button: "Buang perubahan dan muat semula"
   notice_member_added: Tambah %{name} ke projek.
   notice_members_added: Tambah %{number} pengguna ke projek.
   notice_member_removed: "Keluarkan %{user} dari projek."
@@ -3294,6 +3297,7 @@ ms:
     activated: "diaktifkan"
     deactivated: "dinyahaktifkan"
   search_input_placeholder: "Cari ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Aktifkan CORS"
   setting_apiv3_cors_origins: "Asal yang dibenarkan Perkongsian Sumber Rentas Asal (CORS) API V3 "
   setting_apiv3_cors_origins_text_html: >
@@ -3860,8 +3864,8 @@ ms:
       access_warning: "Users will only see the projects they have access to. Sharing project lists does not impact individual project permissions."
       user_details:
         owner: "Pemilik senarai"
-        can_view_because_public: "Can already view because list is shared with everyone"
-        can_manage_public_lists: "Can edit due to global permissions"
+        can_view_because_public: "Sudah boleh lihat kerana senarai dikongsi dengan semua orang"
+        can_manage_public_lists: "Boleh mengedit kerana kebenaran global"
       public_flag:
         label: "Share with everyone at %{instance_name}"
         caption: "Everyone can view this project list. Those with global edit permissions can modify it."
@@ -3878,7 +3882,7 @@ ms:
         edit: "Edit"
         edit_description: "Can view, share and edit this project list."
       upsale:
-        message: "Sharing project lists with individual users is an enterprise add-on."
+        message: "Berkongsi senarai projek dengan pengguna individu ialah alat tambah perusahaan."
   working_days:
     info: >
       Hari yang tidak dipilih akan dilangkau semasa penjadualan pakej kerja (dan tidak termasuk dalam kiraan hari). Ini boleh digantikan di peringkat pakej-kerja.
@@ -3998,6 +4002,8 @@ ms:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "Aplikasi OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Aplikasi OAuth"
       named: "'%{name}' aplikasi OAuth"
       new: "Aplikasi OAuth baharu"

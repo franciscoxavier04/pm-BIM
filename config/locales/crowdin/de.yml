@@ -783,6 +783,7 @@ de:
         is_required: "Erforderlich"
         max_length: "Maximale Länge"
         min_length: "Minimale Länge"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Mehrfachauswahl zulassen"
         possible_values: "Mögliche Werte"
         regexp: "Regulärer Ausdruck"
@@ -818,6 +819,8 @@ de:
         attr_lastname: "Attribut für Nachname"
         attr_login: "Attribut für Benutzername"
         attr_mail: "Attribut für E-Mail"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Basis-DN"
         host: "Host"
         onthefly: "Benutzer automatisch erzeugen"
@@ -3329,6 +3332,7 @@ de:
     activated: "Aktiviert"
     deactivated: "Deaktiviert"
   search_input_placeholder: "Suchen ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORS aktivieren"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) erlaubte Origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4033,6 +4037,8 @@ de:
       builtin: Interne Anwendung für diese Instanz
       confidential: Vertraulich
       singular: "OAuth-Anwendung"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth-Anwendungen"
       named: "OAuth-Anwendung '%{name}'"
       new: "Neue OAuth-Anwendung"
