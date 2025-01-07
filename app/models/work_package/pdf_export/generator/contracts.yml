@@ -111,7 +111,6 @@ table:
     background-color: 'F0F0F0'
     size: 10
   cell:
-    no-border: true
     padding: 1mm
     size: 9
 
