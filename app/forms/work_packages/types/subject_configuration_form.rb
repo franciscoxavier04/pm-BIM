@@ -65,7 +65,7 @@ module WorkPackages
       private
 
       def has_pattern?
-        false
+        model.replacement_pattern_defined_for?(:subject)
       end
     end
   end
