@@ -28,6 +28,7 @@
                                         resource: "projects",
                                         inputName: input_name,
                                         appendTo: "body",
+                                        labelForId: "custom_action_actions_#{condition.key}",
                                         inputValue: condition.values
                                       }
             %>
@@ -39,6 +40,8 @@
                                         items: condition.allowed_values.map { |v| { id: v[:value], name: v[:label] } },
                                         model: condition.value_objects.map { |v| { id: v[:value], name: v[:label] } },
                                         inputName: input_name,
+                                        bindLabel: "name",
+                                        bindValue: "id",
                                         labelForId: "custom_action_conditions_#{condition.key}",
                                         appendTo: "body",
                                       }
@@ -74,6 +77,7 @@
                                               resource: "projects",
                                               inputName: input_name,
                                               appendTo: "body",
+                                              labelForId: "custom_action_actions_#{action.key}",
                                               inputValue: action.values.first
                                             }
                   %>
@@ -85,6 +89,8 @@
                                               items: action.allowed_values.map { |v| { id: v[:value], name: v[:label] } },
                                               model: action.value_objects.map { |v| { id: v[:value], name: v[:label] } },
                                               inputName: input_name,
+                                              bindLabel: "name",
+                                              bindValue: "id",
                                               labelForId: "custom_action_actions_#{action.key}",
                                               appendTo: "body",
                                             }
