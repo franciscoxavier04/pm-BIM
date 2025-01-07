@@ -790,6 +790,7 @@ eo:
         is_required: "Deviga"
         max_length: "Maksimuma longeco"
         min_length: "Minimuma longeco"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Permesi plurelekton"
         possible_values: "Eblaj valoroj"
         regexp: "Regula esprimo"
@@ -825,6 +826,8 @@ eo:
         attr_lastname: "Atribuo Familinomo"
         attr_login: "Atribuo uzantnomo"
         attr_mail: "Atribuo retpoŝto"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Bazo DN"
         host: "Gastiganto"
         onthefly: "Automatic user creation"
@@ -3336,6 +3339,7 @@ eo:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Serĉi ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4041,6 +4045,8 @@ eo:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth aplikaĵo"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

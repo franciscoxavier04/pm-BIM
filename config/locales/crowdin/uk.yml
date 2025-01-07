@@ -801,6 +801,7 @@ uk:
         is_required: "Обов'язкове поле"
         max_length: "Максимальна довжина"
         min_length: "Мінімальна довжина"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Дозволити вибір"
         possible_values: "Можливі значення"
         regexp: "Регулярний вираз"
@@ -836,6 +837,8 @@ uk:
         attr_lastname: "Атрибут «Прізвище»"
         attr_login: "Атрибут «Ім’я користувача»"
         attr_mail: "Атрибут «Електронна адреса»"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Базове ім’я DN"
         host: "Хост"
         onthefly: "Автоматичне створення користувачів"
@@ -3405,6 +3408,7 @@ uk:
     activated: "активовано"
     deactivated: "деактивовано"
   search_input_placeholder: "Пошук ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Увімкнути CORS"
   setting_apiv3_cors_origins: "Дозволені джерела CORS (Cross-Origin Resource Sharing) в API версії 3"
   setting_apiv3_cors_origins_text_html: >
@@ -4111,6 +4115,8 @@ uk:
       builtin: Вбудований екземпляр застосунку
       confidential: Конфіденційний
       singular: "Програма OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Програми OAuth"
       named: " Програми OAuth '%{name}'"
       new: "Нова програма OAuth"

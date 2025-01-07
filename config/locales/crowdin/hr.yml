@@ -799,6 +799,7 @@ hr:
         is_required: "Obavezno"
         max_length: "Maksimalna duljina"
         min_length: "Minimalna duljina"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Omogući odabir više stavki"
         possible_values: "Moguće vrijednosti"
         regexp: "Regularni izraz"
@@ -834,6 +835,8 @@ hr:
         attr_lastname: "Atribut Prezime"
         attr_login: "Username attribute"
         attr_mail: "Email atribut"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Temeljni DN"
         host: "Host"
         onthefly: "Automatic user creation"
@@ -3375,6 +3378,7 @@ hr:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Traži ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4081,6 +4085,8 @@ hr:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

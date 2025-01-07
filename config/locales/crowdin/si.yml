@@ -790,6 +790,7 @@ si:
         is_required: "අවශ්‍යයි"
         max_length: "උපරිම දිග"
         min_length: "අවම දිග"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "බහු-තේරීමට ඉඩ දෙන්න"
         possible_values: "හැකි අගයන්"
         regexp: "නිතිපතා ප්රකාශනය"
@@ -825,6 +826,8 @@ si:
         attr_lastname: "අවසාන නාමය ලක්ෂණය"
         attr_login: "පරිශීලක නාමය ගුණාංග"
         attr_mail: "ඊ-තැපැල් ගුණාංග"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "ඩී. එන් මූලික"
         host: "සත්කාරක"
         onthefly: "Automatic user creation"
@@ -3336,6 +3339,7 @@ si:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "සොයන්න..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4041,6 +4045,8 @@ si:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAUTH අයදුම්"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAUTH අයදුම්පත්"
       named: "OAUTH යෙදුම '%{name}'"
       new: "නව OAUTH අයදුම්"

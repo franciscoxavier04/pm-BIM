@@ -790,6 +790,7 @@ et:
         is_required: "Nõutav"
         max_length: "Maksimaalne pikkus"
         min_length: "Lühima lubatud parooli pikkus"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "Võimalikud väärtused"
         regexp: "Regulaaravaldis"
@@ -825,6 +826,8 @@ et:
         attr_lastname: "Perekonnanimi"
         attr_login: "Username attribute"
         attr_mail: "E-posti aadress"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Põhiline domeeninimi"
         host: "Host"
         onthefly: "Automatic user creation"
@@ -3336,6 +3339,7 @@ et:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Search ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4041,6 +4045,8 @@ et:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

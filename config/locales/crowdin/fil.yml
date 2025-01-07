@@ -790,6 +790,7 @@ fil:
         is_required: "Kinakailangan"
         max_length: "Ang pinaka mahaba"
         min_length: "Ang pinaka mababang sukat ng haba"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Pinahintulutan ang multi-select"
         possible_values: "Ang mga posibleng halaga"
         regexp: "Ang madalas na pagpapahayag"
@@ -825,6 +826,8 @@ fil:
         attr_lastname: "Ang huling katangian ng apelyido"
         attr_login: "Username attribute"
         attr_mail: "Ang katangian ng Email"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Ang Base DN"
         host: "Host"
         onthefly: "Automatic user creation"
@@ -3334,6 +3337,7 @@ fil:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Hanapin ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4039,6 +4043,8 @@ fil:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

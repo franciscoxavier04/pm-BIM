@@ -826,6 +826,7 @@ ar:
         is_required: "مطلوب"
         max_length: "الطول الأقصى"
         min_length: "الطول الأدنى"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "القيم المحتملة"
         regexp: "التعبير الاعتيادي"
@@ -861,6 +862,8 @@ ar:
         attr_lastname: "سمة الاسم الأخير"
         attr_login: "Username attribute"
         attr_mail: "سمة البريد الإلكتروني"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "قاعدة DN"
         host: "المضيف"
         onthefly: "Automatic user creation"
@@ -3490,6 +3493,7 @@ ar:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "بحث..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -4199,6 +4203,8 @@ ar:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"
