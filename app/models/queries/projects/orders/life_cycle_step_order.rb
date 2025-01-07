@@ -56,7 +56,7 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   def joins
     <<~SQL.squish
       LEFT JOIN (
-              SELECT steps.*, def.name, def.id as def_id
+              SELECT steps.*, def.id as def_id
               FROM project_life_cycle_steps steps
               LEFT JOIN project_life_cycle_step_definitions def
                 ON steps.definition_id = def.id
@@ -67,13 +67,13 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
     SQL
   end
 
+  # Since we can combine multiple queries with their respective ORDER BY clauses, we need to make sure
+  # that the names of our tables are unique. It suffices to include the definition id into the name as there can only
+  # ever be one order statement per definition.
   def subquery_table_name
-    # Since we can combine multiple queries with their respective ORDER BY clauses, we need to make sure
-    # that the name of our tables is unique. It suffices to include the definition id into the name as there can only
-    # ever be one order statement per definition.
     definition_id = life_cycle_step_definition.id
 
-    :"life_cycle_steps_cte_#{definition_id}"
+    :"life_cycle_steps_subqry_#{definition_id}"
   end
 
   def order(scope)
@@ -85,13 +85,13 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
 
   def order_condition
     # To avoid SQL injection warnings, we use Arel to build the condition.
-    # Note that this SQL query uses the CTE defined in `cte_statement`.
-    steps_cte = Arel::Table.new(subquery_table_name.to_s)
+    # Note that this SQL query uses the subquery defined in `joins`.
+    steps_table = Arel::Table.new(subquery_table_name.to_s)
 
-    # WHERE cte_name.def_id = life_cycle_step_definition.id OR cte_name.def_id IS NULL
-    steps_cte[:def_id]
+    # WHERE subquery_table_name.def_id = life_cycle_step_definition.id OR subquery_table_name.def_id IS NULL
+    steps_table[:def_id]
       .eq(life_cycle_step_definition.id)
-      .or(steps_cte[:def_id].eq(nil))
+      .or(steps_table[:def_id].eq(nil))
   end
 
   def order_by_start_and_end_date
