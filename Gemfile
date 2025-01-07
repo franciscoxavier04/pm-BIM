@@ -126,7 +126,7 @@ gem "multi_json", "~> 1.15.0"
 gem "oj", "~> 3.16.0"
 
 gem "daemons"
-gem "good_job", "= 3.26.2" # update should be done manually in sync with saas-openproject version.
+gem "good_job", "= 3.99.1" # update should be done manually in sync with saas-openproject version.
 
 gem "rack-protection", "~> 3.2.0"
 
@@ -333,8 +333,9 @@ group :development, :test do
   # Output a stack trace anytime, useful when a process is stuck
   gem "rbtrace"
 
-  # REPL with debug commands
-  gem "debug"
+  # REPL with debug commands, Debug changed to byebug due to the issue below
+  # https://github.com/puma/puma/issues/2835#issuecomment-2302133927
+  gem "byebug"
 
   gem "pry-byebug", "~> 3.10.0", platforms: [:mri]
   gem "pry-doc"
