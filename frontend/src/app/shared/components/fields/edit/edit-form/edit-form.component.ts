@@ -97,7 +97,7 @@ export class EditFormComponent extends EditForm<HalResource> implements OnInit, 
 
       // Show confirmation message when transitioning to a new state
       // that's not within the edit mode.
-      if (!this.editFormRouting || this.editFormRouting.blockedTransition(transition)) {
+      if (this.resource.id !== 'new' && (!this.editFormRouting || this.editFormRouting.blockedTransition(transition))) {
         if (requiresConfirmation && !window.confirm(confirmText)) {
           return false;
         }
