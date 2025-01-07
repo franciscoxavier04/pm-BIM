@@ -61,6 +61,21 @@ RSpec.describe "Projects life cycle settings", :js, :with_cuprite, with_flag: { 
     end
   end
 
+  context "as admin without feature flag", with_flag: { stages_and_gates: false } do
+    current_user { create(:admin) }
+
+    it "allows viewing definitions" do
+      definitions_page.visit!
+
+      definitions_page.expect_listed([])
+
+      definitions_page.expect_flash(
+        message: "[Error 404] The page you were trying to access doesn't exist or has been removed.",
+        type: :error
+      )
+    end
+  end
+
   context "as admin with activated enterprise token", with_ee: %i[customize_life_cycle] do
     current_user { create(:admin) }
 
