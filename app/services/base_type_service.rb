@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -106,12 +108,9 @@ class BaseTypeService
   end
 
   def set_subject_pattern(params)
-    type.patterns = {
-      subject: {
-        blueprint: params[:subject_pattern],
-        enabled: params[:subject_configuration] == "auto"
-      }
-    }
+    type.patterns = type.patterns.update_pattern(:subject,
+                                                 blueprint: params[:subject_pattern],
+                                                 enabled: params[:subject_configuration] == "auto").value!
   end
 
   def parse_attribute_groups_params(params)

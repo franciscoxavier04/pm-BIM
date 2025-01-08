@@ -77,9 +77,9 @@ module WorkPackages
       end
 
       def subject_pattern
-        return "" if model.patterns.nil? || model.patterns[:subject].nil?
+        return "" if model.patterns.subject.nil?
 
-        model.patterns[:subject].blueprint
+        model.patterns.subject.blueprint
       end
     end
   end

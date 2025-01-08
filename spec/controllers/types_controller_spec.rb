@@ -334,7 +334,7 @@ RSpec.describe TypesController do
         end
 
         it "stores the pattern" do
-          pattern = Type.find(type.id).patterns[:subject]
+          pattern = Type.find(type.id).patterns.subject
 
           expect(pattern).to be_present
           expect(pattern).to be_enabled
@@ -349,14 +349,14 @@ RSpec.describe TypesController do
           end
 
           it "disables the pattern" do
-            pattern = Type.find(type.id).patterns[:subject]
+            pattern = Type.find(type.id).patterns.subject
 
             expect(pattern).to be_present
             expect(pattern).not_to be_enabled
           end
 
           it "stores the previously used blueprint" do
-            pattern = Type.find(type.id).patterns[:subject]
+            pattern = Type.find(type.id).patterns.subject
 
             expect(pattern).to be_present
             expect(pattern.blueprint).to eq(blueprint)
