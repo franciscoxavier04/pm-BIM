@@ -220,7 +220,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
     images = page_xobjects.flat_map { |o| o.values.select { |v| v.hash[:Subtype] == :Image } }
     logos = page_xobjects.flat_map do |o|
       o.values.flat_map do |v|
-        form_object = (v.hash[:Subtype] == :Form) ? v.hash.dig(:Resources, :XObject, :I1) : nil
+        form_object = v.hash[:Subtype] == :Form ? v.hash.dig(:Resources, :XObject, :I1) : nil
         form_object if form_object&.hash && form_object.hash[:Subtype] == :Image
       end
     end
