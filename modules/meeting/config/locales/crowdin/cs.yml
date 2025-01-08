@@ -119,7 +119,7 @@ cs:
   label_template: "Šablona"
   label_recurring_meeting_view: "Zobrazit sérii schůzek"
   label_recurring_meeting_create: "Vytvořit ze šablony"
-  label_recurring_meeting_copy: "Copy as one-off"
+  label_recurring_meeting_copy: "Kopírovat jako jednorázový"
   label_recurring_meeting_cancel: "Zrušit toto opakování"
   label_recurring_meeting_delete: "Odstranit výskyt"
   label_recurring_meeting_delete_confirmation: >
@@ -201,7 +201,7 @@ cs:
     empty_text: "Přetáhněte položky sem nebo vytvořte nové"
   recurring_meeting:
     occurrence:
-      infoline: "This meeting is part of a recurring meeting series."
+      infoline: "Tato schůzka je součástí opakované série schůzek."
       error_no_next: "Na této schůzce není žádný další výskyt."
       first_already_exists: "The first occurrence of this meeting series is already instantiated."
       first_created: >
