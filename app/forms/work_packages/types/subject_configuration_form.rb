@@ -31,6 +31,12 @@
 module WorkPackages
   module Types
     class SubjectConfigurationForm < ApplicationForm
+      class << self
+        def has_pattern?(type)
+          type.replacement_pattern_defined_for?(:subject)
+        end
+      end
+
       form do |subject_form|
         subject_form.radio_button_group(name: :subject_configuration) do |group|
           group.radio_button(
@@ -66,7 +72,7 @@ module WorkPackages
       private
 
       def has_pattern?
-        model.replacement_pattern_defined_for?(:subject)
+        self.class.has_pattern?(model)
       end
     end
   end

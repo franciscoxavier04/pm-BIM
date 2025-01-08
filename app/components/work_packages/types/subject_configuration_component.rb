@@ -42,7 +42,8 @@ module WorkPackages
           data: {
             application_target: "dynamic",
             controller: "admin--subject-configuration",
-            admin__subject_configuration_hide_pattern_input_value: true
+            admin__subject_configuration_hide_pattern_input_value:
+              !WorkPackages::Types::SubjectConfigurationForm.has_pattern?(model)
           }
         }
       end
