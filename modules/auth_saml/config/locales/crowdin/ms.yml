@@ -37,7 +37,7 @@ ms:
     info:
       title: "SAML Protocol Configuration Parameters"
       description: >
-        Use these parameters to configure your identity provider connection to OpenProject.
+        Gunakan parameter ini untuk mengkonfigurasi sambungan pembekal identiti anda kepada OpenProject.
     metadata_parser:
       success: "Successfully updated the configuration using the identity provider metadata."
       invalid_url: "Provided metadata URL is invalid. Provide a HTTP(s) URL."
