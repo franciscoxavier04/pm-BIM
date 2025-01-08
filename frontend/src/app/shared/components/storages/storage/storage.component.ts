@@ -296,6 +296,7 @@ export class StorageComponent extends UntilDestroyedMixin implements OnInit, OnD
     document.body.removeEventListener('dragleave', this.onGlobalDragLeave);
     document.body.removeEventListener('dragend', this.onGlobalDragEnd);
     document.body.removeEventListener('drop', this.onGlobalDragEnd);
+    this.fileLinkResourceService.clear('new')
   }
 
   public removeFileLink(fileLink:IFileLink):void {
