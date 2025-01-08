@@ -51,7 +51,7 @@ module Types
       end
 
       def [](value)
-        patterns.fetch(value)
+        patterns[value]
       end
 
       def to_h

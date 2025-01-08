@@ -36,8 +36,8 @@ module WorkPackages
 
       def form_options
         {
-          url: "https://example.com",
-          method: :put,
+          url: update_type_tab_path(id: model.id, tab: "subject_configuration"),
+          method: :patch,
           model:,
           data: {
             application_target: "dynamic",

@@ -58,7 +58,8 @@ module WorkPackages
 
         subject_form.group(data: { "admin--subject-configuration-target": "patternInput" }) do |toggleable_group|
           toggleable_group.text_field(
-            name: :pattern,
+            name: :subject_pattern,
+            value: subject_pattern,
             label: I18n.t("types.edit.subject_configuration.pattern.label"),
             caption: I18n.t("types.edit.subject_configuration.pattern.caption"),
             required: true,
@@ -73,6 +74,12 @@ module WorkPackages
 
       def has_pattern?
         self.class.has_pattern?(model)
+      end
+
+      def subject_pattern
+        return "" if model.patterns.nil? || model.patterns[:subject].nil?
+
+        model.patterns[:subject].blueprint
       end
     end
   end
