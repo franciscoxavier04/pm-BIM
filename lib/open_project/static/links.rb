@@ -268,6 +268,9 @@ module OpenProject
               },
               status_read_only: {
                 href: "https://www.openproject.org/docs/system-admin-guide/manage-work-packages/work-package-status/#create-a-new-work-package-status"
+              },
+              customize_life_cycle: {
+                href: "https://www.openproject.org/enterprise-edition" # TODO: update
               }
             },
             sysadmin_docs: {

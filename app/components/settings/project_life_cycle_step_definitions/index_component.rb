@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,42 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::LifeCycleStepDefinition < ApplicationRecord
-  include ::Scopes::Scoped
+module Settings
+  module ProjectLifeCycleStepDefinitions
+    class IndexComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
+      include Projects::LifeCycleDefinitionHelper
 
-  has_many :life_cycle_steps,
-           class_name: "Project::LifeCycleStep",
-           foreign_key: :definition_id,
-           inverse_of: :definition,
-           dependent: :destroy
-  has_many :projects, through: :life_cycle_steps
-  belongs_to :color, optional: false
+      options :definitions
 
-  validates :name, presence: true, uniqueness: true
-  validates :type, inclusion: { in: %w[Project::StageDefinition Project::GateDefinition], message: :must_be_a_stage_or_gate }
-  validate :validate_type_and_class_name_are_identical
+      private
 
-  attr_readonly :type
+      def wrapper_data_attributes
+        {
+          controller: "projects--settings--border-box-filter generic-drag-and-drop",
+          "application-target": "dynamic"
+        }
+      end
 
-  acts_as_list
+      def drop_target_config
+        {
+          "is-drag-and-drop-target": true,
+          "target-container-accessor": "& > ul",
+          "target-allowed-drag-type": "life-cycle-step-definition"
+        }
+      end
 
-  default_scope { order(:position) }
-
-  scopes :with_project_count
-
-  def step_class
-    raise NotImplementedError
-  end
-
-  def column_name
-    "lcsd_#{id}"
-  end
-
-  private
-
-  def validate_type_and_class_name_are_identical
-    if type != self.class.name
-      errors.add(:type, :type_and_class_name_mismatch)
+      def draggable_item_config(definition)
+        {
+          "draggable-type": "life-cycle-step-definition",
+          "drop-url": drop_admin_settings_project_life_cycle_step_definition_path(definition)
+        }
+      end
     end
   end
 end

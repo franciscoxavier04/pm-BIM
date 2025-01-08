@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,42 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::LifeCycleStepDefinition < ApplicationRecord
-  include ::Scopes::Scoped
+module Projects::LifeCycleStepDefinitions
+  class Form < ApplicationForm
+    form do |f|
+      f.hidden(name: :type) unless model.persisted?
 
-  has_many :life_cycle_steps,
-           class_name: "Project::LifeCycleStep",
-           foreign_key: :definition_id,
-           inverse_of: :definition,
-           dependent: :destroy
-  has_many :projects, through: :life_cycle_steps
-  belongs_to :color, optional: false
+      f.text_field(
+        label: attribute_name(:name),
+        name: :name,
+        required: true,
+        input_width: :medium
+      )
 
-  validates :name, presence: true, uniqueness: true
-  validates :type, inclusion: { in: %w[Project::StageDefinition Project::GateDefinition], message: :must_be_a_stage_or_gate }
-  validate :validate_type_and_class_name_are_identical
+      f.color_select_list(
+        label: attribute_name(:color),
+        name: :color,
+        required: true,
+        input_width: :medium
+      )
 
-  attr_readonly :type
+      f.submit(
+        scheme: :primary,
+        name: :submit,
+        label: submit_label
+      )
+    end
 
-  acts_as_list
-
-  default_scope { order(:position) }
-
-  scopes :with_project_count
-
-  def step_class
-    raise NotImplementedError
-  end
-
-  def column_name
-    "lcsd_#{id}"
-  end
-
-  private
-
-  def validate_type_and_class_name_are_identical
-    if type != self.class.name
-      errors.add(:type, :type_and_class_name_mismatch)
+    def submit_label
+      I18n.t(model.persisted? ? :button_update : :button_create)
     end
   end
 end

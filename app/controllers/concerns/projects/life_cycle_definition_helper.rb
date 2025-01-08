@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,42 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Project::LifeCycleStepDefinition < ApplicationRecord
-  include ::Scopes::Scoped
-
-  has_many :life_cycle_steps,
-           class_name: "Project::LifeCycleStep",
-           foreign_key: :definition_id,
-           inverse_of: :definition,
-           dependent: :destroy
-  has_many :projects, through: :life_cycle_steps
-  belongs_to :color, optional: false
-
-  validates :name, presence: true, uniqueness: true
-  validates :type, inclusion: { in: %w[Project::StageDefinition Project::GateDefinition], message: :must_be_a_stage_or_gate }
-  validate :validate_type_and_class_name_are_identical
-
-  attr_readonly :type
-
-  acts_as_list
-
-  default_scope { order(:position) }
-
-  scopes :with_project_count
-
-  def step_class
-    raise NotImplementedError
-  end
-
-  def column_name
-    "lcsd_#{id}"
-  end
-
+module Projects::LifeCycleDefinitionHelper
   private
 
-  def validate_type_and_class_name_are_identical
-    if type != self.class.name
-      errors.add(:type, :type_and_class_name_mismatch)
-    end
+  def allowed_to_customize_life_cycle?
+    EnterpriseToken.allows_to?(:customize_life_cycle)
   end
 end
