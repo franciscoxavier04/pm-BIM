@@ -35,21 +35,35 @@ RSpec.describe RemoveIncorrectManageOwnRemindersPermission, type: :model do
   let(:anonymous) { create(:anonymous_role, permissions:) }
   let(:other_role) { create(:work_package_role, permissions:) }
 
-  before do
-    non_member
-    anonymous
-    other_role
+  let(:anonymous_user_reminder) do
+    create(:reminder, :with_unread_notifications, creator: AnonymousUser.first)
   end
+
+  let(:normal_user_reminder) { create(:reminder, :with_unread_notifications) }
 
   it "removes the `manage_own_reminders` permission from non member and anonymous roles" do
     expect(non_member.permissions).to include(:manage_own_reminders)
     expect(anonymous.permissions).to include(:manage_own_reminders)
     expect(other_role.permissions).to include(:manage_own_reminders)
 
-    ActiveRecord::Migration.suppress_messages { described_class.migrate(:up) }
+    expect(anonymous_user_reminder).to be_persisted
+    expect(normal_user_reminder.creator).to be_persisted
+
+    expect do
+      ActiveRecord::Migration.suppress_messages { described_class.migrate(:up) }
+    end.to(
+      change(RolePermission, :count).by(-2) &
+        change(Reminder, :count).by(-1) &
+        change(ReminderNotification, :count).by(-1) &
+        change(Notification, :count).by(-1)
+    )
 
     expect(non_member.reload.permissions).not_to include(:manage_own_reminders)
     expect(anonymous.reload.permissions).not_to include(:manage_own_reminders)
     expect(other_role.reload.permissions).to include(:manage_own_reminders)
+
+    reminder_creators = Reminder.pluck(:creator_id)
+    expect(reminder_creators).not_to include(AnonymousUser.first.id)
+    expect(reminder_creators).to include(normal_user_reminder.creator_id)
   end
 end
