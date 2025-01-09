@@ -52,7 +52,8 @@ module WorkPackages::Dialogs
           multiple: false,
           decorated: true,
           hiddenFieldAction: "change->work-packages--create-dialog#refreshForm",
-          append_to: wrapper_id
+          append_to: wrapper_id,
+          data: { test_selector: "work_package_create_dialog_type" }
         }
       ) do |select|
         contract
