@@ -79,24 +79,42 @@ RSpec.describe WorkPackageChildrenController do
   end
 
   describe "DELETE /work_packages/:work_package_id/children/:id" do
-    before do
-      allow(WorkPackageRelationsTab::IndexComponent).to receive(:new).and_call_original
-      allow(controller).to receive(:replace_via_turbo_stream).and_call_original
-    end
-
-    it "deletes the child relationship" do
+    def send_delete_request
       delete("destroy",
              params: { work_package_id: work_package.id,
                        id: child_work_package.id },
              as: :turbo_stream)
+    end
 
-      expect(response).to be_successful
+    it "deletes the child relationship" do
+      send_delete_request
+
+      expect(response).to have_http_status(:ok)
+      expect(child_work_package.reload.parent).to be_nil
+    end
+
+    it "renders the relations tab index component" do
+      allow(WorkPackageRelationsTab::IndexComponent).to receive(:new).and_call_original
+      allow(controller).to receive(:replace_via_turbo_stream).and_call_original
+
+      send_delete_request
 
       expect(WorkPackageRelationsTab::IndexComponent).to have_received(:new)
         .with(work_package:, relations: [], children: [])
       expect(controller).to have_received(:replace_via_turbo_stream)
         .with(component: an_instance_of(WorkPackageRelationsTab::IndexComponent))
-      expect(child_work_package.reload.parent).to be_nil
+    end
+
+    it "updates dependent work packages" do
+      allow(WorkPackages::UpdateAncestorsService).to receive(:new).and_call_original
+      allow(WorkPackages::SetScheduleService).to receive(:new).and_call_original
+
+      send_delete_request
+
+      expect(WorkPackages::UpdateAncestorsService).to have_received(:new)
+        .with(user: user, work_package: child_work_package)
+      expect(WorkPackages::SetScheduleService).to have_received(:new)
+        .with(a_hash_including(work_package: [child_work_package]))
     end
   end
 end
