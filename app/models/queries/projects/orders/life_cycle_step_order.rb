@@ -50,16 +50,20 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   private
 
   def joins
-    <<~SQL.squish
+    join = <<~SQL.squish
       LEFT JOIN (
               SELECT steps.*, steps.definition_id as def_id
               FROM project_life_cycle_steps steps
               WHERE
                 steps.active = true
-                AND steps.definition_id = #{life_cycle_step_definition.id}
+                AND steps.definition_id = :definition_id
             ) #{subquery_table_name} ON #{subquery_table_name}.project_id = projects.id
-              AND projects.id IN (#{viewable_project_ids.join(',')})
+              AND projects.id IN (
+                SELECT UNNEST(ARRAY[:viewable_project_ids])
+              )
     SQL
+
+    ActiveRecord::Base.sanitize_sql([join, { definition_id: life_cycle_step_definition.id, viewable_project_ids: }])
   end
 
   # Since we can combine multiple queries with their respective ORDER BY clauses, we need to make sure
@@ -78,6 +82,8 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
     end
   end
 
+  # Ensure that only life cycle columns viewable to the current user are considered
+  # for ordering the query result.
   def viewable_project_ids
     Project.allowed_to(User.current, :view_project_stages_and_gates).pluck(:id)
   end
