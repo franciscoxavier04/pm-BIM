@@ -3,7 +3,7 @@
     [context]="context"
     [content]="initialContent"
     (initializeDone)="setup($event)"
-    (contentChanged)="markEdited()"
+    (contentChanged)="syncToTextarea()"
     (saveRequested)="saveForm()"
     (editorKeyup)="editorKeyup.emit()"
     (editorBlur)="editorBlur.emit()"
