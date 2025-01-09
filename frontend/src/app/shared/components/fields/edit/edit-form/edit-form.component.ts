@@ -91,13 +91,17 @@ export class EditFormComponent extends EditForm<HalResource> implements OnInit, 
     const requiresConfirmation = ConfigurationService.warnOnLeavingUnsaved();
 
     this.unregisterListener = $transitions.onBefore({}, (transition:Transition) => {
+      // Hacky fix: Prevent if element is no longer in DOM
+      if (document.body.contains(this.elementRef.nativeElement as HTMLElement) === false) {
+        return;
+      }
       if (!this.editing) {
         return undefined;
       }
 
       // Show confirmation message when transitioning to a new state
       // that's not within the edit mode.
-      if (this.resource.id !== 'new' && (!this.editFormRouting || this.editFormRouting.blockedTransition(transition))) {
+      if (!this.editFormRouting || this.editFormRouting.blockedTransition(transition)) {
         if (requiresConfirmation && !window.confirm(confirmText)) {
           return false;
         }
