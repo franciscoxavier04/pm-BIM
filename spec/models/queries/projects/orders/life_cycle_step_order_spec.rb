@@ -52,7 +52,15 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
   describe "#available?" do
     let(:instance) { described_class.new("lcsd_#{life_cycle_def.id}") }
 
-    current_user { build_stubbed(:admin) }
+    let(:permissions) { %i(view_project_stages_and_gates) }
+    let(:project) { create(:project) }
+    let(:user) do
+      create(:user, member_with_permissions: {
+               project => permissions
+             })
+    end
+
+    current_user { user }
 
     context "for a stage definition" do
       let!(:life_cycle_def) { create(:project_stage_definition) }
@@ -67,6 +75,15 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
 
       it "allows to sort by it" do
         expect(instance).to be_available
+      end
+    end
+
+    context "without permission in any project" do
+      let!(:life_cycle_def) { create(:project_gate_definition) }
+      let(:permissions) { [] }
+
+      it "is not available" do
+        expect(instance).not_to be_available
       end
     end
   end

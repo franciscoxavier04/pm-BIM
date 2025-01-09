@@ -44,7 +44,8 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   end
 
   def available?
-    life_cycle_step_definition.present?
+    life_cycle_step_definition.present? &&
+      User.current.allowed_in_any_project?(:view_project_stages_and_gates)
   end
 
   private
