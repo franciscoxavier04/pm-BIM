@@ -40,15 +40,11 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   def life_cycle_step_definition
     return @life_cycle_step_definition if defined?(@life_cycle_step_definition)
 
-    @life_cycle_step_definition = self.class.scope.find_by(id: attribute[/\Alcsd_(\d+)\z/, 1])
+    @life_cycle_step_definition = Project::LifeCycleStepDefinition.find_by(id: attribute[/\Alcsd_(\d+)\z/, 1])
   end
 
   def available?
     life_cycle_step_definition.present?
-  end
-
-  def self.scope
-    Project::LifeCycleStepDefinition
   end
 
   private
