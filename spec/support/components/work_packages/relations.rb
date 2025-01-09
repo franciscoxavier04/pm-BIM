@@ -160,7 +160,7 @@ module Components
           fill_in "Description", with: description
         end
 
-        click_link_or_button "Save"
+        click_link_or_button "Add"
 
         wait_for_reload if using_cuprite?
 
