@@ -9,16 +9,16 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   include Turbo::FramesHelper
   include OpTurbo::Streamable
 
-  attr_reader :work_package, :relations, :children, :directionally_aware_grouped_relations, :scroll_to_id
+  attr_reader :work_package, :relations, :children, :directionally_aware_grouped_relations, :relation_to_scroll_to
 
-  def initialize(work_package:, relations:, children:, scroll_to_id: nil)
+  def initialize(work_package:, relations:, children:, relation_to_scroll_to: nil)
     super()
 
     @work_package = work_package
     @relations = relations
     @children = children
     @directionally_aware_grouped_relations = group_relations_by_directional_context
-    @scroll_to_id = scroll_to_id
+    @relation_to_scroll_to = relation_to_scroll_to
   end
 
   def self.wrapper_key
@@ -74,15 +74,14 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
 
   def render_items(border_box, items)
     items.each do |item|
-      related_work_package_id = find_related_work_package_id(item)
-      data_attribute = nil
-      if related_work_package_id.to_s == @scroll_to_id
-        data_attribute = {
-          controller: "work-packages--relations-tab--scroll",
-          application_target: "dynamic",
-          "work-packages--relations-tab--scroll-target": "scrollToRow"
-        }
-      end
+      data_attribute = if relation_to_scroll_to && item.id == relation_to_scroll_to.id
+                         {
+                           controller: "work-packages--relations-tab--scroll",
+                           application_target: "dynamic",
+                           "work-packages--relations-tab--scroll-target": "scrollToRow"
+                         }
+                       end
+
       border_box.with_row(
         test_selector: row_test_selector(item),
         data: data_attribute
