@@ -32,9 +32,11 @@ require "spec_helper"
 
 RSpec.describe WorkPackageChildrenController do
   shared_let(:user) { create(:admin) }
-  shared_let(:project) { create(:project) }
-  shared_let(:work_package) { create(:work_package, project:) }
-  shared_let(:child_work_package) { create(:work_package, parent: work_package, project:) }
+  shared_let(:task_type) { create(:type_task) }
+  shared_let(:milestone_type) { create(:type_milestone) }
+  shared_let(:project) { create(:project, types: [task_type, milestone_type]) }
+  shared_let(:work_package) { create(:work_package, project:, type: task_type) }
+  shared_let(:child_work_package) { create(:work_package, parent: work_package, project:, type: task_type) }
 
   current_user { user }
 
@@ -52,6 +54,27 @@ RSpec.describe WorkPackageChildrenController do
       expect(WorkPackageRelationsTab::AddWorkPackageChildDialogComponent)
         .to have_received(:new)
         .with(work_package:)
+    end
+  end
+
+  describe "POST /work_packages/:work_package_id/children" do
+    shared_let(:future_child_work_package) { create(:work_package, project:) }
+
+    it "creates a child relationship" do
+      post("create", params: { work_package_id: work_package.id,
+                               work_package: { id: future_child_work_package.id } },
+                     as: :turbo_stream)
+      expect(response).to have_http_status(:ok)
+      expect(future_child_work_package.reload.parent).to eq(work_package)
+    end
+
+    it "can't create a child relationship for a milestone work package" do
+      work_package.update(type: milestone_type)
+      post("create", params: { work_package_id: work_package.id,
+                               work_package: { id: future_child_work_package.id } },
+                     as: :turbo_stream)
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(future_child_work_package.reload.parent).to be_nil
     end
   end
 

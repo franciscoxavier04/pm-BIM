@@ -49,9 +49,9 @@ class WorkPackageChildrenController < ApplicationController
     target_work_package_id = params[:work_package][:id]
     target_child_work_package = WorkPackage.find(target_work_package_id)
 
-    target_child_work_package.parent = @work_package
-
-    if target_child_work_package.save
+    service_result = WorkPackages::UpdateService.new(user: current_user, model: target_child_work_package)
+                                                .call(parent: @work_package)
+    if service_result.success?
       @children = @work_package.children.visible
       @relations = @work_package.relations.visible
 
@@ -65,6 +65,8 @@ class WorkPackageChildrenController < ApplicationController
         message: I18n.t(:notice_successful_update), scheme: :success
       )
       respond_with_turbo_streams
+    else
+      respond_with_turbo_streams(status: :unprocessable_entity)
     end
   end
 

@@ -39,7 +39,7 @@ module Components
 
       attr_reader :work_package
 
-      def initialize(work_package)
+      def initialize(work_package = nil)
         @work_package = work_package
       end
 
@@ -81,11 +81,36 @@ module Components
       end
 
       def select_relation_type(relation_type)
-        page.find_test_selector("new-relation-action-menu").click
-
-        within page.find_by_id("new-relation-action-menu-list") do
+        within_new_relation_action_menu do
           click_link_or_button relation_type
         end
+      end
+
+      def expect_new_relation_type(relation_type)
+        within_new_relation_action_menu do
+          expect(page).to have_link(relation_type, wait: 1)
+        end
+      end
+
+      def expect_no_new_relation_type(relation_type)
+        within_new_relation_action_menu do
+          expect(page).to have_no_link(relation_type, wait: 1)
+        end
+      end
+
+      def open_new_relation_action_menu
+        return if new_relation_action_menu.visible?
+
+        new_relation_button.click
+      end
+
+      def new_relation_action_menu
+        action_menu_id = new_relation_button["aria-controls"]
+        page.find(id: action_menu_id, visible: :all)
+      end
+
+      def new_relation_button
+        page.find_test_selector("new-relation-action-menu").find_button
       end
 
       def remove_relation(relatable)
@@ -316,6 +341,13 @@ module Components
         end
 
         expect_no_row(work_package)
+      end
+
+      private
+
+      def within_new_relation_action_menu(&)
+        open_new_relation_action_menu
+        within(new_relation_action_menu, &)
       end
     end
   end
