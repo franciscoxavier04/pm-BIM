@@ -77,7 +77,9 @@ module Components
 
       def expect_no_row(relatable)
         actual_relatable = find_relatable(relatable)
-        expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}")
+        expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}"),
+                            "expected no relation row for work package " \
+                            "##{actual_relatable.id} #{actual_relatable.subject.inspect}"
       end
 
       def select_relation_type(relation_type)
