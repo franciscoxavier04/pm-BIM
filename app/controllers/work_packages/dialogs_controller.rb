@@ -51,7 +51,7 @@ class WorkPackages::DialogsController < ApplicationController
 
     call = WorkPackages::SetAttributesService
       .new(model: initial, user: current_user, contract_class: WorkPackages::CreateContract)
-      .call(create_params)
+      .call(create_params.reverse_merge(default_params(initial)))
 
     # We ignore errors here, as we only want to build the work package
     @work_package = call.result
@@ -60,5 +60,13 @@ class WorkPackages::DialogsController < ApplicationController
 
   def create_params
     params.permit(*PermittedParams.permitted_attributes[:new_work_package])
+  end
+
+  def default_params(work_package)
+    contract = WorkPackages::CreateContract.new(work_package, current_user)
+
+    {
+      type: contract.assignable_types.first
+    }
   end
 end

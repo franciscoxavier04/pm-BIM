@@ -58,7 +58,7 @@ module WorkPackages::Dialogs
         contract
           .assignable_types
           .pluck(:id, :name)
-          .map { |value, label| select.option(label:, value:) }
+          .map { |value, label| select.option(label:, value:, selected: work_package.type_id == value) }
       end
 
       f.text_field(
