@@ -1,7 +1,8 @@
 class CostQuery::PDF::TimesheetGenerator
   include WorkPackage::PDFExport::Common::Common
-  include WorkPackage::PDFExport::Export::Cover
+  include WorkPackage::PDFExport::Common::Attachments
   include WorkPackage::PDFExport::Common::Logo
+  include WorkPackage::PDFExport::Export::Cover
   include WorkPackage::PDFExport::Export::Page
   include WorkPackage::PDFExport::Export::Style
 
