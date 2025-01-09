@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe WorkPackageChildrenController do
+RSpec.describe WorkPackageChildrenRelationsController do
   shared_let(:user) { create(:admin) }
   shared_let(:task_type) { create(:type_task) }
   shared_let(:milestone_type) { create(:type_milestone) }

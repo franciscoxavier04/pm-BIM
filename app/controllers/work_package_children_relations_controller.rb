@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackageChildrenController < ApplicationController
+class WorkPackageChildrenRelationsController < ApplicationController
   include OpTurbo::ComponentStream
   include OpTurbo::DialogStreamHelper
 
