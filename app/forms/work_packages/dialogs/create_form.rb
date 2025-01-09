@@ -58,7 +58,12 @@ module WorkPackages::Dialogs
         contract
           .assignable_types
           .pluck(:id, :name)
-          .map { |value, label| select.option(label:, value:, selected: work_package.type_id == value) }
+          .map do |value, label|
+          select.option(label:,
+                        value:,
+                        classes: "__hl_inline_type_#{value}",
+                        selected: work_package.type_id == value)
+        end
       end
 
       f.text_field(

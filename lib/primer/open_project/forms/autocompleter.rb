@@ -31,6 +31,7 @@ module Primer
             selected = @input.select_options.filter_map { |option| option.to_h if option.selected }
             inputs[:model] = inputs[:multiple] ? selected : selected.first
             inputs[:defaultData] = false
+            inputs[:additionalClassProperty] = "classes"
             inputs[:bindLabel] = "name"
           elsif builder.object
             inputs[:inputValue] ||= builder.object.send(@input.name)
