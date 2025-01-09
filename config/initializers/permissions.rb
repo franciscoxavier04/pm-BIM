@@ -326,7 +326,7 @@ Rails.application.reloader.to_prepare do
 
       wpt.permission :manage_subtasks,
                      {
-                       work_package_children: %i[new create destroy]
+                       work_package_children_relations: %i[new create destroy]
                      },
                      permissible_on: :project,
                      dependencies: :view_work_packages
