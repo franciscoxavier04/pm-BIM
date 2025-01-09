@@ -52,13 +52,11 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   def joins
     <<~SQL.squish
       LEFT JOIN (
-              SELECT steps.*, def.id as def_id
+              SELECT steps.*, steps.definition_id as def_id
               FROM project_life_cycle_steps steps
-              LEFT JOIN project_life_cycle_step_definitions def
-                ON steps.definition_id = def.id
               WHERE
                 steps.active = true
-                AND def.id = #{life_cycle_step_definition.id}
+                AND steps.definition_id = #{life_cycle_step_definition.id}
             ) #{subquery_table_name} ON #{subquery_table_name}.project_id = projects.id
     SQL
   end
