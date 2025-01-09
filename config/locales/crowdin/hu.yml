@@ -869,6 +869,9 @@ hu:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Szekció
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Oszlopok"
         relations_to_type_column: "Kapcsolatok %{type}-hoz"
@@ -1801,6 +1804,8 @@ hu:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Testre szabhatja az űrlap konfigurációját ezekkel a további bővítményekkel:"
         add_groups: "Attribútum-csoport hozzáadása"
@@ -2585,6 +2590,7 @@ hu:
   label_project_new: "Új projekt"
   label_project_plural: "Projektek"
   label_project_list_plural: "Project lists"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Projekt attribútumok"
   label_project_custom_field_plural: "Projekt attribútumok"
   label_project_settings: "Projekt beállítások"
@@ -3026,6 +3032,7 @@ hu:
   notice_bad_request: "Rossz kérés."
   notice_not_authorized: "Ön nem jogosult a lap eléréséhez."
   notice_not_authorized_archived_project: "Az elérni kivánt projekt archiválva."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "A jelszó nem megfelelő. Nem lehet folytatni."
   notice_principals_found_multiple: "%{number} találat. \n Tab-al tudsz az első találatra fókuszálni."
   notice_principals_found_single: "Egyetlen találat van.\nA Tab billentyű megnyomásával ugrik rá a fókusz."
@@ -3200,9 +3207,9 @@ hu:
       are_you_sure: "Biztosan szeretnéd arhiválni a projektet '%{name}'?"
       archived: "Archiválva"
     count:
-      zero: "0 Projects"
-      one: "1 Project"
-      other: "%{count} Projects"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Tevékenység"
   project_module_forums: "Fórumok"
   project_module_work_package_tracking: "Munkacsomagok"
@@ -3562,6 +3569,27 @@ hu:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Új projekt beállításai"
@@ -3595,6 +3623,7 @@ hu:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Törli a feladatcsoportot és minden hozzá tartozó gyermek feladatcsoportot?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Hozzárendelés projekthez"
   text_form_configuration: >
     Testreszabhatja, hogy mely mezők jelenjenek meg a munkacsomag űrlapjánál. A mezőket szabadon csoportosíthatja, hogy kellően tükrözze a problémakör igényeit.

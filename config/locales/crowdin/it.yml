@@ -867,6 +867,9 @@ it:
       project_custom_field:
         is_required: "Richiesto per tutti i progetti"
         custom_field_section: Sezione
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Colonne"
         relations_to_type_column: "Relazioni con %{type}"
@@ -1799,6 +1802,8 @@ it:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Personalizza la configurazione del modulo con le seguenti aggiunte:"
         add_groups: "Aggiunta di gruppi di proprietà"
@@ -2583,6 +2588,7 @@ it:
   label_project_new: "Nuovo progetto"
   label_project_plural: "Progetti"
   label_project_list_plural: "Elenchi progetto"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Attributi del progetto"
   label_project_custom_field_plural: "Attributi del progetto"
   label_project_settings: "Impostazioni progetto"
@@ -3025,6 +3031,7 @@ it:
   notice_bad_request: "Richiesta non valida."
   notice_not_authorized: "Non sei autorizzato ad accedere a questa pagina."
   notice_not_authorized_archived_project: "Il progetto che stai tentando di accedere è stato archiviato."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "La password non è corretta. Impossibile continuare."
   notice_principals_found_multiple: "Trovati %{number} risultati. \n Premi Tab per evidenziare il primo."
   notice_principals_found_single: "Trovato un solo risultato. \n Premi Tab per evidenziarlo."
@@ -3199,9 +3206,9 @@ it:
       are_you_sure: "Sicuro di voler archiviare il progetto '%{name}'?"
       archived: "Archiviato"
     count:
-      zero: "0 Progetti"
-      one: "1 Progetto"
-      other: "%{count} Progetti"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Attività"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Macro-attività"
@@ -3561,6 +3568,27 @@ it:
       new:
         heading: "Nuovo attributo"
         description: "Le modifiche a questo attributo di progetto si rifletteranno in tutti i progetti in cui è abilitato. Gli attributi obbligatori non possono essere disabilitati per progetto."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "È stato controllato il modulo del progetto %{module} che dipende da %{dependencies}. È necessario controllare anche queste dipendenze."
       section_new_projects: "Impostazioni per i nuovi progetti"
@@ -3594,6 +3622,7 @@ it:
   text_are_you_sure_continue: "Vuoi davvero continuare?"
   text_are_you_sure_with_children: "Eliminare la macro-attività e tutte le sue sotto-attività?"
   text_are_you_sure_with_project_custom_fields: "L'eliminazione di questo attributo eliminerà anche i suoi valori in tutti i progetti. Continuare?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Assegna al progetto"
   text_form_configuration: >
     È possibile personalizzare quali campi verranno visualizzati nei moduli della macro-attività. È possibile raggruppare liberamente i campi per soddisfare le esigenze per il tuo dominio.

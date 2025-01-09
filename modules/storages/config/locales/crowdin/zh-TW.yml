@@ -4,7 +4,7 @@ zh-TW:
       storages/file_link:
         origin_id: 來源 ID
       storages/project_storage:
-        storage: Storage
+        storage: 儲存空間
       storages/storage:
         creator: 建立者
         drive: Drive ID

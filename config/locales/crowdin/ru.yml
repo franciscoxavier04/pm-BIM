@@ -888,6 +888,9 @@ ru:
       project_custom_field:
         is_required: "Требуется для всех проектов"
         custom_field_section: Раздел
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Столбцы"
         relations_to_type_column: "Отношения к %{type}"
@@ -1876,6 +1879,8 @@ ru:
     upsale:
       title: "Корпоративное дополнение"
       link_title: "Дополнительная информация"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Настройте конфигурацию формы с помощью этих дополнительных дополнений:"
         add_groups: "Добавить новую группу атрибутов"
@@ -2660,6 +2665,7 @@ ru:
   label_project_new: "Новый проект"
   label_project_plural: "Проекты"
   label_project_list_plural: "Списки проектов"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Атрибуты проекта"
   label_project_custom_field_plural: "Атрибуты проекта"
   label_project_settings: "Настройки проекта"
@@ -3103,6 +3109,7 @@ ru:
   notice_bad_request: "Неправильный запрос."
   notice_not_authorized: "Вы не авторизованы для доступа к этой странице."
   notice_not_authorized_archived_project: "Проект, к которому Вы пытаетесь получить доступ, заархивирован."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Пароль не правильный. Продолжить нельзя."
   notice_principals_found_multiple: "Найдено %{number} результатов. Нажмите <TAB> для перехода к первому."
   notice_principals_found_single: "Найден один результат. Нажмите <TAB> для перехода к нему."
@@ -3279,9 +3286,9 @@ ru:
       are_you_sure: "Уверены, что хотите архивизировать проект %{name}%?"
       archived: "Архивирован"
     count:
-      zero: "0 проектов"
-      one: "1 проект"
-      other: "%{count} проектов"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Деятельность"
   project_module_forums: "Форумы"
   project_module_work_package_tracking: "Комплекс работ"
@@ -3639,6 +3646,27 @@ ru:
       new:
         heading: "Новый атрибут"
         description: "Изменения этого атрибута проекта будут отражены во всех проектах, где он включен. Обязательные атрибуты не могут быть отключены для каждого проекта."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Был проверен модуль проекта %{module}, который зависит от %{dependencies}. Вам также необходимо проверить эти зависимости."
       section_new_projects: "Настройки для новых проектов"
@@ -3672,6 +3700,7 @@ ru:
   text_are_you_sure_continue: "Вы уверены, что хотите продолжить?"
   text_are_you_sure_with_children: "Удалить пакет работ и все дочерние пакеты работ?"
   text_are_you_sure_with_project_custom_fields: "Удаление этого атрибута также приведет к удалению его значений во всех проектах. Вы уверены, что хотите это сделать?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Назначить на проект"
   text_form_configuration: >
     Вы можете настроить, какие поля будут показываться в формах пакетов работ. Вы можете свободно сгруппировать поля с учетом потребностей вашего домена.

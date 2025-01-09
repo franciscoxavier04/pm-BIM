@@ -777,7 +777,7 @@ zh-CN:
         is_required: "必填"
         max_length: "最大长度"
         min_length: "最小长度"
-        content_right_to_left: "Right-to-Left content"
+        content_right_to_left: "内容从右到左"
         multi_value: "允许多选"
         possible_values: "可能的值"
         regexp: "正则表达式"
@@ -813,8 +813,8 @@ zh-CN:
         attr_lastname: "姓氏属性"
         attr_login: "用户名属性"
         attr_mail: "电子邮件属性"
-        filter_string: "Filter string"
-        admin: "Administrator"
+        filter_string: "筛选字符串"
+        admin: "管理员"
         base_dn: "基本 DN"
         host: "主机"
         onthefly: "自动创建用户"
@@ -858,6 +858,9 @@ zh-CN:
       project_custom_field:
         is_required: "在所有项目中应用"
         custom_field_section: 单元
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "列"
         relations_to_type_column: "与%{type} 的关系"
@@ -1762,6 +1765,8 @@ zh-CN:
     upsale:
       title: "企业附加组件"
       link_title: "更多信息"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "使用以下附加组件自定义表单配置："
         add_groups: "添加新属性组"
@@ -2546,6 +2551,7 @@ zh-CN:
   label_project_new: "新的项目"
   label_project_plural: "项目"
   label_project_list_plural: "项目列表"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "项目属性"
   label_project_custom_field_plural: "项目属性"
   label_project_settings: "项目设置"
@@ -2985,6 +2991,7 @@ zh-CN:
   notice_bad_request: "错误的请求。"
   notice_not_authorized: "您无权访问此页。"
   notice_not_authorized_archived_project: "您尝试访问的项目已存档。"
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "您的密码不正确。无法继续。"
   notice_principals_found_multiple: "找到 %{number} 条结果。\n 点击以关注第一条结果。"
   notice_principals_found_single: "这有一个结果。\n点击来关注它。"
@@ -3157,9 +3164,9 @@ zh-CN:
       are_you_sure: "是否确定想要归档项目 '%{name}'？"
       archived: "已存档"
     count:
-      zero: "0 个项目"
-      one: "1个项目"
-      other: "%{count} 个项目"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "活动"
   project_module_forums: "论坛"
   project_module_work_package_tracking: "工作包"
@@ -3291,7 +3298,7 @@ zh-CN:
     activated: "已激活"
     deactivated: "已取消激活"
   search_input_placeholder: "搜索"
-  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
+  setting_apiv3_cors_title: "跨源资源共享 (CORS)"
   setting_apiv3_cors_enabled: "启用 CORS"
   setting_apiv3_cors_origins: "API v3 跨域资源共享 (CORS) 允许的域"
   setting_apiv3_cors_origins_text_html: >
@@ -3517,6 +3524,27 @@ zh-CN:
       new:
         heading: "新建属性"
         description: "对该项目属性的更改将反映在启用该属性的所有项目中。不能按项目禁用必填属性。"
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "已检查依赖于 %{dependencies} 的项目模块 %{module}。您也需要检查这些依赖项。"
       section_new_projects: "新项目的设置"
@@ -3550,6 +3578,7 @@ zh-CN:
   text_are_you_sure_continue: "确定要继续吗？"
   text_are_you_sure_with_children: "删除工作包和所有子工作包吗？"
   text_are_you_sure_with_project_custom_fields: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "分配给项目"
   text_form_configuration: >
     您可以自定义哪些字段将显示在工作包窗体中。您可以自由地对字段进行分组, 以反映您的域的需求。
@@ -3995,8 +4024,8 @@ zh-CN:
       builtin: 内置实例应用程序
       confidential: 机密
       singular: "OAuth应用程序"
-      scopes: "Scopes"
-      client_credentials: "Client credentials"
+      scopes: "范围"
+      client_credentials: "客户端凭据"
       plural: "OAuth应用程序"
       named: "OAuth 应用程序“%{name}”"
       new: "新的 OAuth 应用程序"

@@ -889,6 +889,9 @@ cs:
       project_custom_field:
         is_required: "Vyžadováno pro všechny projekty"
         custom_field_section: Sekce
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Sloupce"
         relations_to_type_column: "Vztahy s %{type}"
@@ -1877,6 +1880,8 @@ cs:
     upsale:
       title: "Doplňky Enterprise Edice"
       link_title: "Více informací"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Přizpůsobte si konfiguraci formuláře s těmito doplňky:"
         add_groups: "Přidat nové skupiny atributů"
@@ -2661,6 +2666,7 @@ cs:
   label_project_new: "Nový projekt"
   label_project_plural: "Projekty"
   label_project_list_plural: "Seznamy projektů"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Atributy projektu"
   label_project_custom_field_plural: "Atributy projektu"
   label_project_settings: "Nastavení projektu"
@@ -3104,6 +3110,7 @@ cs:
   notice_bad_request: "Chybný požadavek."
   notice_not_authorized: "Nemáte oprávnění k přístupu na tuto stránku."
   notice_not_authorized_archived_project: "Projekt, na který se pokoušíte přistoupit byl archivován."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Heslo není správné. Nelze pokračovat."
   notice_principals_found_multiple: "Nalezeno %{number} výsledků. \nStiskněte Tab pro přechod na první výsledek."
   notice_principals_found_single: "Existuje jeden výsledek. \n Záložka pro zaměření."
@@ -3280,9 +3287,9 @@ cs:
       are_you_sure: "Opravdu chcete archivovat projekt '%{name}'?"
       archived: "Archivováno"
     count:
-      zero: "0 projektů"
-      one: "1 projekt"
-      other: "%{count} Projektů"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Aktivita"
   project_module_forums: "Fóra"
   project_module_work_package_tracking: "Pracovní balíčky"
@@ -3642,6 +3649,27 @@ cs:
       new:
         heading: "Nový atribut"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Projektový modul %{module} byl zkontrolován, který závisí na %{dependencies}. Tyto závislosti musíte také zkontrolovat."
       section_new_projects: "Nastavení pro nové projekty"
@@ -3675,6 +3703,7 @@ cs:
   text_are_you_sure_continue: "Jste si jisti, že chcete pokračovat?"
   text_are_you_sure_with_children: "Smazat pracovní balíček a všechny podřízené pracovní balíčky?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Přiřadit k projektu"
   text_form_configuration: >
     Můžete si upravit, která pole budou zobrazena ve formulářích pracovních balíčků. Pole můžete volně seskupit tak, aby odrážela potřeby vaší domény.

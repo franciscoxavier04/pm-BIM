@@ -871,6 +871,9 @@ fa:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "ستون‌ها"
         relations_to_type_column: "Relations to %{type}"
@@ -1803,6 +1806,8 @@ fa:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
@@ -2587,6 +2592,7 @@ fa:
   label_project_new: "New project"
   label_project_plural: "پروژه‌ها"
   label_project_list_plural: "Project lists"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Project settings"
@@ -3029,6 +3035,7 @@ fa:
   notice_bad_request: "Bad Request."
   notice_not_authorized: "You are not authorized to access this page."
   notice_not_authorized_archived_project: "The project you're trying to access has been archived."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "رمز عبور شما درست نیست. لذا ادامه ممکن نیست."
   notice_principals_found_multiple: "There are %{number} results found. \n Tab to focus the first result."
   notice_principals_found_single: "There is one result. \n Tab to focus it."
@@ -3203,9 +3210,9 @@ fa:
       are_you_sure: "Are you sure you want to archive the project '%{name}'?"
       archived: "بایگانی"
     count:
-      zero: "0 Projects"
-      one: "1 Project"
-      other: "%{count} Projects"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "فعالیت"
   project_module_forums: "Forums"
   project_module_work_package_tracking: "بسته های کاری"
@@ -3565,6 +3572,27 @@ fa:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -3598,6 +3626,7 @@ fa:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Delete work package and all child work packages?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Assign to the project"
   text_form_configuration: >
     You can customize which fields will be displayed in work package forms. You can freely group the fields to reflect the needs for your domain.

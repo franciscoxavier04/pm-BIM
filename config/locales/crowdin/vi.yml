@@ -864,6 +864,9 @@ vi:
       project_custom_field:
         is_required: "Yêu cầu cho tất cả các dự án"
         custom_field_section: Mục tùy chỉnh
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Cột"
         relations_to_type_column: "Quan hệ với %{type}"
@@ -1768,6 +1771,8 @@ vi:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Tùy chỉnh cấu hình mẫu với các tiện ích bổ sung sau:"
         add_groups: "Thêm 1 nhóm thuộc tính"
@@ -2552,6 +2557,7 @@ vi:
   label_project_new: "Dự án mới"
   label_project_plural: "Dự án"
   label_project_list_plural: "Danh sách dự án"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Các thuộc tính dự án"
   label_project_custom_field_plural: "Các thuộc tính dự án"
   label_project_settings: "Thiết lập dự án"
@@ -2993,6 +2999,7 @@ vi:
   notice_bad_request: "Yêu cầu không hợp lệ."
   notice_not_authorized: "Bạn không được phép truy cập trang này."
   notice_not_authorized_archived_project: "Dự án bạn đang cố gắng truy cập đã bị lưu trữ."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Mật khẩu của bạn không chính xác. Không thể tiếp tục."
   notice_principals_found_multiple: "Có %{number} kết quả được tìm thấy. \n Nhấn Tab để tập trung vào kết quả đầu tiên."
   notice_principals_found_single: "Có một kết quả. \n Nhấn Tab để tập trung vào nó."
@@ -3166,9 +3173,9 @@ vi:
       are_you_sure: "Bạn có chắc bạn muốn lưu trữ các dự án '%{name}'?"
       archived: "Đã lưu"
     count:
-      zero: "0 Dự án"
-      one: "1 Dự án"
-      other: "%{count} Dự án"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Hoạt động"
   project_module_forums: "Diễn đàn"
   project_module_work_package_tracking: "Gói công việc"
@@ -3528,6 +3535,27 @@ vi:
       new:
         heading: "Thuộc tính mới"
         description: "Những thay đổi đối với thuộc tính dự án này sẽ được phản ánh trong tất cả các dự án mà nó được bật. Các thuộc tính bắt buộc không thể bị tắt ở mức dự án."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Mô-đun dự án %{module} đã được kiểm tra và phụ thuộc vào %{dependencies}. Bạn cần kiểm tra các phụ thuộc này cũng vậy."
       section_new_projects: "Cài đặt cho các dự án mới"
@@ -3561,6 +3589,7 @@ vi:
   text_are_you_sure_continue: "Bạn có chắc chắn muốn tiếp tục không?"
   text_are_you_sure_with_children: "Xóa gói công việc và tất cả các gói công việc con?"
   text_are_you_sure_with_project_custom_fields: "Xóa thuộc tính này cũng sẽ xóa các giá trị của nó trong tất cả các dự án. Bạn có chắc chắn muốn làm điều này không?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Gán cho dự án"
   text_form_configuration: >
     Bạn có thể tùy chỉnh các trường sẽ được hiển thị trong các gói công việc. Bạn có thể tự do nhóm các trường để phản ánh nhu cầu cho tên miền của bạn.

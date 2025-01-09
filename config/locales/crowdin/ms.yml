@@ -860,6 +860,9 @@ ms:
       project_custom_field:
         is_required: "Diperlukan untuk semua projek"
         custom_field_section: Bahagian
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Kolum"
         relations_to_type_column: "Berhubung dengan %{type}"
@@ -1764,6 +1767,8 @@ ms:
     upsale:
       title: "Alat tambah perusahaan"
       link_title: "Maklumat lanjut"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Menyuaikan borang konfigurasi dengan segala jenis tambahan ini:"
         add_groups: "Tambah kumpulan atribut baharu"
@@ -2548,6 +2553,7 @@ ms:
   label_project_new: "Projek baharu"
   label_project_plural: "Projek"
   label_project_list_plural: "Senarai projek"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Atribut projek"
   label_project_custom_field_plural: "Atribut projek"
   label_project_settings: "Tetapan projek"
@@ -2989,6 +2995,7 @@ ms:
   notice_bad_request: "Ralat Permintaan."
   notice_not_authorized: "Anda tidak diberi kebenaran untuk mengakses halaman ini."
   notice_not_authorized_archived_project: "Projek yang anda cuba mengakses telah diarkibkan."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Kata laluan tidak betul. Tidak boleh teruskan."
   notice_principals_found_multiple: "Terdapat %{number} hasil ditemui. \n Tab untuk memfokuskan hasil pertama."
   notice_principals_found_single: "Terdapat satu hasil. \n Tab untuk fokuskan."
@@ -3161,9 +3168,9 @@ ms:
       are_you_sure: "Adakah anda pasti anda ingin mengarkib projek '%{name}'?"
       archived: "Telah diarkibkan"
     count:
-      zero: "0 Projek"
-      one: "1 Projek"
-      other: "%{count} Projek"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Aktiviti"
   project_module_forums: "Forum-forum"
   project_module_work_package_tracking: "Pakej kerja"
@@ -3523,6 +3530,27 @@ ms:
       new:
         heading: "Atribut baharu"
         description: "Perubahan pada atribut projek ini akan dipantulkan ke dalam semua projek di mana ia telah diaktifkan. Atribut yang diperlukan tidak boleh dinyahdayakan berdasarkan setiap projek."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Modul projek %{module} telah disemak yang bergantung pada %{dependencies}. Anda perlu menyemak kebergantungan ini juga."
       section_new_projects: "Tetapan untuk projek baharu"
@@ -3556,6 +3584,7 @@ ms:
   text_are_you_sure_continue: "Adakah anda pasti anda ingin teruskan?"
   text_are_you_sure_with_children: "Padam pakej kerja dan semua pakej kerja anak?"
   text_are_you_sure_with_project_custom_fields: "Memadam atribut ini akan memadam nilainya dalam semua projek. Adakah anda pasti anda ingin lakukan ini?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tugaskan ke projek"
   text_form_configuration: >
     Anda boleh mengubah suai ruangan yang akan dipaparkan dalam borang pakej kerja. Anda boleh mengumpulkan ruangan tersebut dengan bebas untuk memantulkan keperluan domain anda.

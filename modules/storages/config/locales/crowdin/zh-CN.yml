@@ -4,7 +4,7 @@ zh-CN:
       storages/file_link:
         origin_id: 来源 ID
       storages/project_storage:
-        storage: Storage
+        storage: 存储
       storages/storage:
         creator: 创建者
         drive: 驱动器 ID

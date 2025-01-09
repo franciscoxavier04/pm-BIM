@@ -779,7 +779,7 @@ zh-TW:
         is_required: "必填"
         max_length: "最大長度"
         min_length: "最小長度"
-        content_right_to_left: "Right-to-Left content"
+        content_right_to_left: "從右至左的內容"
         multi_value: "允許多選"
         possible_values: "可選擇內容"
         regexp: "正規表示式"
@@ -815,8 +815,8 @@ zh-TW:
         attr_lastname: "姓"
         attr_login: "使用者名稱屬性。"
         attr_mail: "Email"
-        filter_string: "Filter string"
-        admin: "Administrator"
+        filter_string: "過濾字串"
+        admin: "管理員"
         base_dn: "Base DN"
         host: "主機"
         onthefly: "自動新增用戶"
@@ -860,6 +860,9 @@ zh-TW:
       project_custom_field:
         is_required: "所有專案都需要"
         custom_field_section: 區段
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "欄"
         relations_to_type_column: "與 %{type} 的關連"
@@ -1764,6 +1767,8 @@ zh-TW:
     upsale:
       title: "企業版附加元件"
       link_title: "更多資訊"
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "使用以下附加組件自定義表單配置："
         add_groups: "增加新的屬性群組"
@@ -2548,6 +2553,7 @@ zh-TW:
   label_project_new: "新增專案"
   label_project_plural: "專案"
   label_project_list_plural: "專案列表"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "專案屬性"
   label_project_custom_field_plural: "專案屬性"
   label_project_settings: "專案設定"
@@ -2988,6 +2994,7 @@ zh-TW:
   notice_bad_request: "錯誤的請求"
   notice_not_authorized: "你沒有存取此頁面的權限"
   notice_not_authorized_archived_project: "你欲存取的專案已被封存"
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "您的密碼不正確。無法繼續。"
   notice_principals_found_multiple: "找到 %{number} 條結果。\n Tab鍵以轉到第一條結果。"
   notice_principals_found_single: "有一個結果。 \n Tab鍵轉到該結果。"
@@ -3160,9 +3167,9 @@ zh-TW:
       are_you_sure: "是否確定要封存專案 '%{name}'？"
       archived: "封存"
     count:
-      zero: "0 個專案"
-      one: "1 個專案"
-      other: "%{count} 專案"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "活動"
   project_module_forums: "討論區"
   project_module_work_package_tracking: "工作項目"
@@ -3296,7 +3303,7 @@ zh-TW:
     activated: "已啟用"
     deactivated: "已停用"
   search_input_placeholder: "搜尋 ..."
-  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
+  setting_apiv3_cors_title: "跨原始來源資源共用 (CORS, Cross-Origin Resource Sharing)"
   setting_apiv3_cors_enabled: "啟用 CORS"
   setting_apiv3_cors_origins: "CROSS-ORIGIN RESOURCE SHARING (CORS)"
   setting_apiv3_cors_origins_text_html: >
@@ -3522,6 +3529,27 @@ zh-TW:
       new:
         heading: "新屬性"
         description: "專案屬性的變更將套用在已啟用該屬性專案中。 若為必要屬性，無法個別專案停用。"
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "已檢查依賴於 %{dependencies} 的項目模塊 %{module}。您也需要檢查這些依賴項。"
       section_new_projects: "新專案的設置"
@@ -3555,6 +3583,7 @@ zh-TW:
   text_are_you_sure_continue: "你要繼續嗎?"
   text_are_you_sure_with_children: "刪除工作項目以及所有子工作項目?"
   text_are_you_sure_with_project_custom_fields: "刪除該屬性也會刪除其在所有項目中的值。您確定要這樣做嗎？"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "分配給專案"
   text_form_configuration: >
     您可以自訂哪些欄位將會顯示在工作項目表單中。您可以自由的群組化這些欄位來符合您的需求。
@@ -4001,8 +4030,8 @@ zh-TW:
       builtin: 內建範例
       confidential: 機密
       singular: "Oauth 應用程式"
-      scopes: "Scopes"
-      client_credentials: "Client credentials"
+      scopes: "範圍"
+      client_credentials: "客戶憑證"
       plural: "Oauth 應用程式"
       named: "OAuth 應用程式 '%{name}'"
       new: "新增 OAuth 應用程式"
