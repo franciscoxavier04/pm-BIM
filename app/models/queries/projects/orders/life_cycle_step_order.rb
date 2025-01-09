@@ -58,6 +58,7 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
                 steps.active = true
                 AND steps.definition_id = #{life_cycle_step_definition.id}
             ) #{subquery_table_name} ON #{subquery_table_name}.project_id = projects.id
+              AND projects.id IN (#{viewable_project_ids.join(',')})
     SQL
   end
 
@@ -67,7 +68,7 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   def subquery_table_name
     definition_id = life_cycle_step_definition.id
 
-    :"life_cycle_steps_subqry_#{definition_id}"
+    :"life_cycle_steps_subquery_#{definition_id}"
   end
 
   def order(scope)
@@ -75,6 +76,10 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
       scope.where(order_condition)
            .order(*order_by_start_and_end_date)
     end
+  end
+
+  def viewable_project_ids
+    Project.allowed_to(User.current, :view_project_stages_and_gates).pluck(:id)
   end
 
   def order_condition
