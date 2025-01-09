@@ -409,7 +409,7 @@ en:
                   <li>Create new folders directly from the location picker for file storage.</li>
                   <li>Specify a required lag between work packages successors and predecessors.</li>
                   <li>Enable ordering and grouping for work packages on values of custom fields type hierarchy.</li>
-                  <li>Export cost queries as PDF timesheets.</li>
+                  <li>Export time entries as PDF timesheets.</li>
                   <li>Add a popover displaying user information when hovering.</li>
                 </ul>
 
