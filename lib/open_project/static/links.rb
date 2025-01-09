@@ -251,6 +251,9 @@ module OpenProject
               href: "https://www.openproject.org/docs/user-guide/time-and-costs/progress-tracking/"
             },
             enterprise_docs: {
+              automatic_subject_generation: {
+                href: "https://www.openproject.org/docs/system-admin-guide/manage-work-packages/work-package-types/#work-package-subject-configuration-enterprise-add-on"
+              },
               form_configuration: {
                 href: "https://www.openproject.org/docs/system-admin-guide/manage-work-packages/work-package-types/#work-package-form-configuration-enterprise-add-on"
               },

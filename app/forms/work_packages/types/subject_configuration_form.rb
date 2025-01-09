@@ -45,6 +45,7 @@ module WorkPackages
             checked: has_pattern?,
             label: I18n.t("types.edit.subject_configuration.automatically_generated_subjects.label"),
             caption: I18n.t("types.edit.subject_configuration.automatically_generated_subjects.caption"),
+            disabled: !EnterpriseToken.active? && !has_pattern?,
             data: { action: "admin--subject-configuration#showPatternInput" }
           )
         end
