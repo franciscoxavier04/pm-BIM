@@ -10,7 +10,8 @@ keywords: time and cost reporting
 
 You can easily report spent time and costs in OpenProject and filter, group and save the reports according to your needs.
 
-> **Note**: To use the time tracking functionality, the **Time and costs module** needs to be activated in the [project settings](../../projects/project-settings/modules/).
+> [!NOTE]
+> To use the time tracking functionality, the **Time and costs module** needs to be activated in the [project settings](../../projects/project-settings/modules/).
 
 | Topic                                                                     | Content                                                                                           |
 |---------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
@@ -28,7 +29,7 @@ To open the time and costs reports in OpenProject, navigate to the **Time and co
 <div class="glossary">
 **Time and costs** is a plugin to filter cost reports on individual or multiple users across individual or multiple projects. The plugin has to be activated as a module in the project settings to be displayed in the side navigation.
 </div>
-![time-and-costs-report](image-20210305134828633.png)
+![Time and costs module in OpenProject](openproject_userguide_timeandcosts_module.png)
 
 ## Change time and costs reports
 
@@ -43,19 +44,19 @@ Depending on your rights in the project, multiple users can also be selected. Th
 
 The results will then be displayed in the time and cost report below.
 
-![filter-time-and-costs-report](image-20210305134143475.png)
+![Time and cost reports filters in OpenProject](openproject_userguide_timeandcosts_module_filter.png)
 
 ### Group by criteria for cost reports
 
 The time and cost reports can be grouped by selected criteria, such as dates, work packages, assignee, or any other field, incl. custom fields.
 
-To add grouping criteria to the columns or rows of the report, select the drop-down field on the right to **add grouping field**.
+To add grouping criteria to the columns or rows of the report, select the drop-down field on the right to **add a group-by attribute**.
 
-![Time-costs-group-by](Time-cots-group-by.png)
+![Group time and costs report by attributes in OpenProject](openproject_userguide_timeandcosts_groupby.png)
 
 The grouping criteria will then be added to the columns or rows of the report.
 
-Click the blue **Apply button** to display your changes.
+Click the **Apply** button to display your changes.
 
 ![Time-costs-reports-columns-rows](Time-costs-reports-columns-rows.png)
 
