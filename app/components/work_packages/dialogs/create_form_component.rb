@@ -32,12 +32,13 @@ module WorkPackages::Dialogs
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    attr_reader :work_package
+    attr_reader :work_package, :project
 
-    def initialize(work_package:)
+    def initialize(work_package:, project:)
       super
 
       @work_package = work_package
+      @project = project
     end
   end
 end

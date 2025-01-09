@@ -79,7 +79,8 @@ module WorkPackages::Dialogs
 
       render_custom_fields(form: f)
 
-      work_package.changes.each do |attribute, value|
+      # Keep hidden fields for relevant changes
+      work_package.changes.except(:description, :subject, :type_id).each do |attribute, value|
         f.hidden(name: attribute, value:)
       end
     end
@@ -91,7 +92,7 @@ module WorkPackages::Dialogs
     private
 
     def custom_fields
-      @custom_fields ||= work_package.available_custom_fields.required
+      @custom_fields ||= work_package.available_custom_fields.select(&:required?)
     end
   end
 end

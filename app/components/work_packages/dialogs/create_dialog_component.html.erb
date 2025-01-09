@@ -7,7 +7,7 @@
   )) do |dialog|
     dialog.with_header(variant: :large)
     dialog.with_body do
-      render(WorkPackages::Dialogs::CreateFormComponent.new(work_package:))
+      render(WorkPackages::Dialogs::CreateFormComponent.new(work_package:, project:))
     end
 
     dialog.with_footer do
