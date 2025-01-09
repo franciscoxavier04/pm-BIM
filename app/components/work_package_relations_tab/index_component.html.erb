@@ -37,7 +37,7 @@
             if should_render_add_child?
               menu.with_item(
                 label: t("#{I18N_NAMESPACE}.relations.label_child_singular").capitalize,
-                href: new_work_package_child_path(@work_package),
+                href: new_work_package_children_relation_path(@work_package),
                 test_selector: new_button_test_selector(relation_type: :child),
                 content_arguments: {
                   data: { turbo_stream: true }
