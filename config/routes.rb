@@ -349,7 +349,9 @@ Rails.application.routes.draw do
     end
 
     namespace :work_packages do
-      resource :dialog, only: %i[new create]
+      resource :dialog, only: %i[new create] do
+        post :refresh_form
+      end
     end
 
     resources :activity, :activities, only: :index, controller: "activities" do

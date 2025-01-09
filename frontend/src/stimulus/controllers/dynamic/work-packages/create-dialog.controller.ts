@@ -36,15 +36,23 @@ export default class CreateDialogController extends Controller<HTMLFormElement> 
   private turboRequests:TurboRequestsService;
   private pathHelper:PathHelperService;
 
+  static values = {
+    refreshUrl: String,
+  };
+
+  declare refreshUrlValue:string;
+
   async connect() {
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
     this.pathHelper = context.services.pathHelperService;
   }
 
-  updateForm() {
-    void this
-      .turboRequests
-      .submitForm(this.element);
+  refreshForm() {
+    void this.turboRequests.submitForm(
+      this.element,
+      null,
+      this.refreshUrlValue,
+    );
   }
 }

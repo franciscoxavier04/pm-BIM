@@ -51,7 +51,7 @@ module WorkPackages::Dialogs
         autocomplete_options: {
           multiple: false,
           decorated: true,
-          hiddenFieldAction: "change->work-packages--create-dialog#submitForm",
+          hiddenFieldAction: "change->work-packages--create-dialog#refreshForm",
           append_to: wrapper_id
         }
       ) do |select|

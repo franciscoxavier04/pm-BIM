@@ -35,17 +35,15 @@ class WorkPackages::DialogsController < ApplicationController
 
   before_action :find_project_by_project_id
   before_action :build_work_package, only: %i[new]
-  before_action do
-    do_authorize :add_work_packages
-  end
-  authorization_checked! :new, :create
+
+  authorize_with_permission :add_work_packages
 
   def new
     respond_with_dialog WorkPackages::Dialogs::CreateDialogComponent.new(work_package: @work_package, project: @project)
   end
 
   def create
-    call = WorkPackages::CreateService.new(user: current_user).call(create_params.merge(project: @project))
+    call = WorkPackages::CreateService.new(user: current_user).call(create_params)
 
     if call.success?
       redirect_back fallback_location: project_work_package_path(@project, call.result), status: :see_other
@@ -55,6 +53,19 @@ class WorkPackages::DialogsController < ApplicationController
 
       respond_with_turbo_streams
     end
+  end
+
+  def refresh_form
+    call = WorkPackages::SetAttributesService.new(
+      user: current_user,
+      model: WorkPackage.new,
+      contract_class: EmptyContract
+    ).call(create_params)
+
+    form_component = WorkPackages::Dialogs::CreateFormComponent.new(work_package: call.result, project: @project)
+    update_via_turbo_stream(component: form_component)
+
+    respond_with_turbo_streams
   end
 
   private
@@ -76,7 +87,7 @@ class WorkPackages::DialogsController < ApplicationController
   end
 
   def create_params
-    permitted_params.update_work_package
+    permitted_params.update_work_package.merge(project: @project)
   end
 
   def default_params(work_package)
