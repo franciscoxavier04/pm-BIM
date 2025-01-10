@@ -46,7 +46,7 @@ class WorkPackageChildrenRelationsController < ApplicationController
     child = WorkPackage.find(params[:work_package][:id])
     service_result = set_relation(child:, parent: @work_package)
 
-    respond_with_relations_tab_update(service_result, scroll_to_id: child.id)
+    respond_with_relations_tab_update(service_result, relation_to_scroll_to: service_result.result)
   end
 
   def destroy
