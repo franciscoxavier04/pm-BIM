@@ -1799,6 +1799,8 @@ de:
     upsale:
       title: "Enterprise Add-on"
       link_title: "Weitere Informationen"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
         description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:

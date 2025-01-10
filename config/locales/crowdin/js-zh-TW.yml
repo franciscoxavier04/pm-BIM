@@ -784,7 +784,7 @@ zh-TW:
       tracking_time: "跟蹤時間"
       button_stop: "停止當前計時器"
     two_factor_authentication:
-      label_two_factor_authentication: "兩階段驗證"
+      label_two_factor_authentication: "雙因素驗證"
     watchers:
       label_loading: 正在載入監看者...
       label_error_loading: 載入監看者時發生錯誤
