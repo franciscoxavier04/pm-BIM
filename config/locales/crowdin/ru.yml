@@ -691,7 +691,7 @@ ru:
     lag:
       subject: "Отставание"
       title: "Отставание (в днях)"
-      caption: "Разница в количестве рабочих дней между двумя пакетами работ"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_relates_singular: "связан с"
       label_relates_plural: "связаны с"

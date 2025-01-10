@@ -683,7 +683,7 @@ ro:
     lag:
       subject: "Lag"
       title: "Lag (in days)"
-      caption: "Diferența în numărul de zile lucrătoare dintre cele două pachete de lucru"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_relates_singular: "asociat cu"
       label_relates_plural: "asociat cu"

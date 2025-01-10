@@ -355,10 +355,10 @@ zh-TW:
           learn_about: "瞭解更多新功能的資訊"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_1":
+          "15_2":
             standard:
               new_features_html: >
-                該版本為您帶來了各種功能和改進，例如<br> <ul class="%{list_styling_class}"> <li>階層類型的自訂欄位 (企業附加元件)。</li> <li>重新設計工作套件中的「關係」標籤。</li> <li>重新設計會議索引頁。</li> <li>PDF 工作套件匯出中的手動分頁。</li> <li>專案清單的 Zen 模式。</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Set reminders for work packages to generate date alert notifications.</li> <li>Create new folders directly from the location picker for file storage.</li> <li>Specify a required lag between work packages successors and predecessors.</li> <li>Enable ordering and grouping for work packages on values of custom fields type hierarchy.</li> <li>Export time entries as PDF timesheets.</li> <li>Add a popover displaying user information when hovering.</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"

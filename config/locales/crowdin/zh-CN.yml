@@ -661,7 +661,7 @@ zh-CN:
     lag:
       subject: "间隔"
       title: "间隔(天数)"
-      caption: "两个工作包之间相隔的工作日数"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_relates_singular: "关联到"
       label_relates_plural: "关联到"
