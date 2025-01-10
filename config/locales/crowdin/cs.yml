@@ -692,7 +692,7 @@ cs:
     lag:
       subject: "Zpožďování"
       title: "Zpoždění (ve dnech)"
-      caption: "The gap in number of working days in between the two work packages"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_relates_singular: "související s"
       label_relates_plural: "související s"

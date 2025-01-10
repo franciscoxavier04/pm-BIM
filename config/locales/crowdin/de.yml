@@ -667,7 +667,7 @@ de:
     lag:
       subject: "Verzögerung"
       title: "Verzögerung (in Tagen)"
-      caption: "Die Anzahl der Arbeitstage, die zwischen den beiden Arbeitspaketen liegen"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_relates_singular: "Beziehung mit"
       label_relates_plural: "Beziehungen mit"
