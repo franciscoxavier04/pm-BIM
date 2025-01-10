@@ -62,28 +62,38 @@ RSpec.describe Queries::Projects::Orders::LifeCycleStepOrder do
 
     current_user { user }
 
-    context "for a stage definition" do
+    context "without feature flag set" do
       let!(:life_cycle_def) { create(:project_stage_definition) }
 
-      it "allows to sort by it" do
-        expect(instance).to be_available
-      end
-    end
-
-    context "for a gate definition" do
-      let!(:life_cycle_def) { create(:project_gate_definition) }
-
-      it "allows to sort by it" do
-        expect(instance).to be_available
-      end
-    end
-
-    context "without permission in any project" do
-      let!(:life_cycle_def) { create(:project_gate_definition) }
-      let(:permissions) { [] }
-
-      it "is not available" do
+      it "does not allow to sort by it" do
         expect(instance).not_to be_available
+      end
+    end
+
+    context "with feature flag set", with_flag: { stages_and_gates: true } do
+      context "for a stage definition" do
+        let!(:life_cycle_def) { create(:project_stage_definition) }
+
+        it "allows to sort by it" do
+          expect(instance).to be_available
+        end
+      end
+
+      context "for a gate definition" do
+        let!(:life_cycle_def) { create(:project_gate_definition) }
+
+        it "allows to sort by it" do
+          expect(instance).to be_available
+        end
+      end
+
+      context "without permission in any project" do
+        let!(:life_cycle_def) { create(:project_gate_definition) }
+        let(:permissions) { [] }
+
+        it "is not available" do
+          expect(instance).not_to be_available
+        end
       end
     end
   end

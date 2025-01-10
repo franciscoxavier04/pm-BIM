@@ -45,6 +45,7 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
 
   def available?
     life_cycle_step_definition.present? &&
+      OpenProject::FeatureDecisions.stages_and_gates_active? &&
       User.current.allowed_in_any_project?(:view_project_stages_and_gates)
   end
 
