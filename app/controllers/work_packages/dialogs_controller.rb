@@ -46,6 +46,7 @@ class WorkPackages::DialogsController < ApplicationController
     call = WorkPackages::CreateService.new(user: current_user).call(create_params)
 
     if call.success?
+      flash[:notice] = I18n.t("work_package_relations_tab.relations.label_new_child_created")
       redirect_back fallback_location: project_work_package_path(@project, call.result), status: :see_other
     else
       form_component = WorkPackages::Dialogs::CreateFormComponent.new(work_package: call.result, project: @project)

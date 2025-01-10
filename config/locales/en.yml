@@ -749,6 +749,7 @@ en:
       title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
       label_relates_plural: "related to"
       label_relates_to_singular: "related to"
