@@ -95,3 +95,23 @@ Click the grey **Export XLS** (Excel) button.
 You can then continue working in the Excel spreadsheet to filter, group, or import the data in different systems.
 
 ![Excel export time and cost reports](image-20200212131921959.png)
+
+## Export time sheets
+
+You can  **export reports for time entries** in PDF format under *Time and costs* module of your project. 
+
+>  [!TIP]
+>
+> Keep in mind that this report will only include time entries, but no the cost ones.
+
+To prepare the export, first filter and set up the report according to your preferences and click the **Export PDF timesheet** button.
+
+> [!NOTE]
+>
+> Please note that "Group by" settings won't be applied to the exported file.
+
+![Settings for timesheet PDF export in OpenProject](openproject_userguide_timeandcosts_timesheet_export_settings.png)
+
+A PDF file will be generated, containing the time entries specified by the report.
+
+![Timesheet PDF export in OpenProject](openproject_userguide_timesheet_pdf_export.png)
