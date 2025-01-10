@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+# Component for rendering the relations tab content of a work package
+#
+# This includes:
+# - Controls for adding new relations if the user has permission
+# - Related work packages grouped by relation type (follows, precedes, blocks, etc.)
+# - Child work packages
 class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   FRAME_ID = "work-package-relations-tab-content"
   NEW_RELATION_ACTION_MENU = "new-relation-action-menu"
@@ -11,6 +17,12 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
 
   attr_reader :work_package, :relations, :children, :directionally_aware_grouped_relations, :relation_to_scroll_to
 
+  # Initialize the component with required data
+  #
+  # @param work_package [WorkPackage] The work package whose relations are being displayed
+  # @param relations [Array<Relation>] The relations associated with this work package
+  # @param children [Array<WorkPackage>] Child work packages
+  # @param relation_to_scroll_to [Relation, WorkPackage, nil] Optional relation or child to scroll to when rendering
   def initialize(work_package:, relations:, children:, relation_to_scroll_to: nil)
     super()
 
@@ -74,21 +86,29 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
 
   def render_items(border_box, items)
     items.each do |item|
-      data_attribute = if relation_to_scroll_to && item.id == relation_to_scroll_to.id
-                         {
-                           controller: "work-packages--relations-tab--scroll",
-                           application_target: "dynamic",
-                           "work-packages--relations-tab--scroll-target": "scrollToRow"
-                         }
-                       end
-
       border_box.with_row(
         test_selector: row_test_selector(item),
-        data: data_attribute
+        data: data_attribute(item)
       ) do
         yield(item)
       end
     end
+  end
+
+  def data_attribute(item)
+    if scroll_to?(item)
+      {
+        controller: "work-packages--relations-tab--scroll",
+        application_target: "dynamic",
+        "work-packages--relations-tab--scroll-target": "scrollToRow"
+      }
+    end
+  end
+
+  def scroll_to?(item)
+    relation_to_scroll_to \
+      && item.id == relation_to_scroll_to.id \
+      && item.instance_of?(relation_to_scroll_to.class)
   end
 
   def new_relation_path(relation_type:)
