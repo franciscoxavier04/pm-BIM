@@ -85,7 +85,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
 
   def render_children_header(border_box, title, items)
     border_box.with_header(py: 3) do
-      flex_layout(justify_content: :space_between) do |header|
+      flex_layout(justify_content: :space_between, align_items: :center) do |header|
         header.with_column(mr: 2) do
           concat render(Primer::Beta::Text.new(mr: 2, font_size: :normal, font_weight: :bold)) { title }
           concat render(Primer::Beta::Counter.new(count: items.size, round: true, scheme: :primary))
