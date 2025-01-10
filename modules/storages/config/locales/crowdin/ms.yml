@@ -3,6 +3,8 @@ ms:
     attributes:
       storages/file_link:
         origin_id: ID Asal
+      storages/project_storage:
+        storage: Penyimpanan
       storages/storage:
         creator: Pencipta
         drive: ID Pemacu

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2025 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,29 +26,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module Types
-  class PatternCollectionType < ActiveModel::Type::Value
-    def assert_valid_value(value)
-      cast(value)
-    end
+# From v1.0 to v2.0 of store_attribute, the value for store_attribute_unset_values_fallback_to_default changed from
+# false to true. This initializer sets it back to false to keep the behavior consistent with the previous version.
 
-    def cast(value)
-      PatternCollection.build(patterns: value).value_or { nil }
-    end
-
-    def serialize(pattern)
-      return super if pattern.nil?
-
-      YAML.dump(pattern.to_h)
-    end
-
-    def deserialize(value)
-      return if value.blank?
-
-      data = YAML.safe_load(value)
-      cast(data)
-    end
-  end
-end
+StoreAttribute.store_attribute_unset_values_fallback_to_default = false

@@ -28,26 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  PatternCollection = Data.define(:patterns) do
-    private_class_method :new
+module Settings
+  module ProjectLifeCycleStepDefinitions
+    class RowComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
+      include Projects::LifeCycleDefinitionHelper
 
-    def self.build(patterns:, contract: PatternCollectionContract.new)
-      contract.call(patterns).to_monad.fmap { |success| new(success.to_h) }
-    end
+      alias_method :definition, :model
 
-    def initialize(patterns:)
-      transformed = patterns.transform_values { Pattern.new(**_1) }.freeze
+      options :first?,
+              :last?
 
-      super(patterns: transformed)
-    end
+      private
 
-    def [](value)
-      patterns.fetch(value)
-    end
-
-    def to_h
-      patterns.stringify_keys.transform_values(&:to_h)
+      def move_action(menu:, move_to:, label:, icon:)
+        menu.with_item(
+          label:,
+          href: move_admin_settings_project_life_cycle_step_definition_path(definition, move_to:),
+          form_arguments: {
+            method: :patch
+          },
+          data: {
+            "projects--settings--border-box-filter-target": "hideWhenFiltering"
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon:)
+        end
+      end
     end
   end
 end

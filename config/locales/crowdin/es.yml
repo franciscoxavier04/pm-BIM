@@ -787,6 +787,7 @@ es:
         is_required: "Obligatorio"
         max_length: "Longitud máxima"
         min_length: "Longitud mínima"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Permitir selección múltiple"
         possible_values: "Valores posibles"
         regexp: "Expresión regular"
@@ -822,6 +823,8 @@ es:
         attr_lastname: "Atributo Apellido"
         attr_login: "Atributo Nombre de usuario"
         attr_mail: "Atributo Correo electrónico"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Creación automática de usuarios"
@@ -865,6 +868,9 @@ es:
       project_custom_field:
         is_required: "Obligatorio para todos los proyectos"
         custom_field_section: Sección
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Columnas"
         relations_to_type_column: "Relaciones con %{type}"
@@ -1797,6 +1803,10 @@ es:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Personalice la configuración del formulario con estas extensiones:"
         add_groups: "Añadir nuevos grupos de atributos"
@@ -2581,6 +2591,7 @@ es:
   label_project_new: "Nuevo proyecto"
   label_project_plural: "Proyectos"
   label_project_list_plural: "Listas de proyectos"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Atributos del proyecto"
   label_project_custom_field_plural: "Atributos del proyecto"
   label_project_settings: "Configuración del proyecto"
@@ -3023,6 +3034,7 @@ es:
   notice_bad_request: "Petición incorrecta."
   notice_not_authorized: "No está autorizado a acceder a esta página."
   notice_not_authorized_archived_project: "El proyecto que usted esta tratando de acceder ha sido archivado."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "La contraseña es incorrecta. No se puede continuar."
   notice_principals_found_multiple: "Hemos encontrado %{number} resultados. \n Pulse TAB para ver el primer resultado."
   notice_principals_found_single: "Se ha encontrado solo un resultado. \n Pulse TAB para verlo."
@@ -3196,9 +3208,9 @@ es:
       are_you_sure: "¿Está seguro que desea archivar el proyecto '%{name}'?"
       archived: "Archivado"
     count:
-      zero: "0 proyectos"
-      one: "1 proyecto"
-      other: "%{count} proyectos"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Actividad"
   project_module_forums: "Foros"
   project_module_work_package_tracking: "Paquetes de trabajo"
@@ -3332,6 +3344,7 @@ es:
     activated: "Habilitado"
     deactivated: "deshabilitado"
   search_input_placeholder: "Buscar..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Habilitar CORS"
   setting_apiv3_cors_origins: "Orígenes permitidos de la API de CORS (uso compartido de recursos entre orígenes) V3"
   setting_apiv3_cors_origins_text_html: >
@@ -3557,6 +3570,27 @@ es:
       new:
         heading: "Nuevo atributo"
         description: "Los cambios en este atributo del proyecto se reflejarán en todos los proyectos en los que esté habilitado. Los atributos obligatorios no pueden desactivarse por proyecto."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Se ha comprobado el módulo de proyecto %{module} que depende de %{dependencies}. Necesitas comprobar estas dependencias también."
       section_new_projects: "Configuración para nuevos proyectos"
@@ -3590,6 +3624,7 @@ es:
   text_are_you_sure_continue: "¿Seguro que quiere continuar?"
   text_are_you_sure_with_children: "¿Eliminar el paquete de trabajo y todos sus paquetes dependientes?"
   text_are_you_sure_with_project_custom_fields: "Al eliminar este atributo también se eliminarán sus valores en todos los proyectos. ¿Seguro que desea hacerlo?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Asignar al proyecto"
   text_form_configuration: >
     Puede personalizar los campos que se mostrarán en forma de paquete de trabajo. Puede agrupar libremente los campos para adaptarlos a las necesidades de su dominio.
@@ -4036,6 +4071,8 @@ es:
       builtin: Aplicación de instancia incorporada
       confidential: Confidencial
       singular: "Aplicación OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Aplicaciones OAuth"
       named: "Aplicación OAuth '%{name}'"
       new: "Nueva aplicación OAuth"
