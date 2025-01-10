@@ -28,25 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackageRelationsTab::AddWorkPackageChildFormComponent < ApplicationComponent
-  include ApplicationHelper
-  include OpTurbo::Streamable
-  include OpPrimer::ComponentHelpers
+require "spec_helper"
+require Rails.root.join("db/migrate/20250102161733_adds_position_cache_to_hierarchy_items.rb")
 
-  DIALOG_ID = "add-work-package-child-dialog"
-  FORM_ID = "add-work-package-child-form"
-  ID_FIELD_TEST_SELECTOR = "work-package-child-form-id"
-  I18N_NAMESPACE = "work_package_relations_tab"
+RSpec.describe AddsPositionCacheToHierarchyItems, type: :model do
+  let(:custom_field) { create(:hierarchy_wp_custom_field) }
+  let(:service) { CustomFields::Hierarchy::HierarchicalItemService.new }
 
-  def initialize(work_package:, base_errors: nil)
-    super()
+  it "backfills the position_cache value on already existing hierarchy items" do
+    ActiveRecord::Migration.suppress_messages { described_class.new.down }
 
-    @work_package = work_package
-    @base_errors = base_errors
-  end
+    root = service.generate_root(custom_field).value!
+    anakin = service.insert_item(label: "luke", parent: root).value!
+    chewie = service.insert_item(label: "chewbacca", parent: root).value!
+    luke = service.insert_item(label: "luke", parent: anakin).value!
+    leia = service.insert_item(label: "leia", parent: anakin).value!
 
-  def submit_url_options
-    { method: :post,
-      url: work_package_children_relations_path(@work_package) }
+    expect(root.self_and_descendants_preordered).to eq([root, anakin, luke, leia, chewie])
+
+    ActiveRecord::Migration.suppress_messages { described_class.new.up }
+
+    expect(root.reload.position_cache).to eq(125)
+    expect(anakin.reload.position_cache).to eq(150)
+    expect(luke.reload.position_cache).to eq(155)
+    expect(leia.reload.position_cache).to eq(160)
+    expect(chewie.reload.position_cache).to eq(175)
   end
 end
