@@ -83,7 +83,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     end
   end
 
-  def render_children_header(border_box, title, items)
+  def render_children_header(border_box, title, items) # rubocop:disable Metrics/AbcSize
     border_box.with_header(py: 3) do
       flex_layout(justify_content: :space_between, align_items: :center) do |header|
         header.with_column(mr: 2) do
@@ -105,7 +105,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     end
   end
 
-  def render_child_items(menu)
+  def render_child_items(menu) # rubocop:disable Metrics/AbcSize
     return unless should_render_add_child?
 
     menu.with_item(
