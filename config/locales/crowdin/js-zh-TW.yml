@@ -358,7 +358,7 @@ zh-TW:
           "15_2":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Set reminders for work packages to generate date alert notifications.</li> <li>Create new folders directly from the location picker for file storage.</li> <li>Specify a required lag between work packages successors and predecessors.</li> <li>Enable ordering and grouping for work packages on values of custom fields type hierarchy.</li> <li>Export time entries as PDF timesheets.</li> <li>Add a popover displaying user information when hovering.</li> </ul>
+                該版本為您帶來了各種功能和改進，例如<br> <ul class="%{list_styling_class}"> <li>為工作項目設定提醒，產生日期提示通知。</li> <li>直接從選擇位置建立新資料夾，以儲存檔案。</li> <li>指定工作項目與前後項之間所需的間隔時間。</li> <li>根據自訂欄位類型層級的值，啟用工作項目的排序和群組。</li> <li>匯出時間項目為 PDF 工時表。</li> <li>新增在滑鼠懸停時會顯示使用者資訊的彈出視窗。</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"

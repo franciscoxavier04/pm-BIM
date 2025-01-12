@@ -663,7 +663,7 @@ zh-TW:
     lag:
       subject: "延遲"
       title: "延遲（天數）"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: "兩個工作項目之間最少要相隔多少個工作天。"
     relations:
       label_relates_singular: "相關於"
       label_relates_plural: "相關於"
@@ -1768,7 +1768,7 @@ zh-TW:
       title: "企業版附加元件"
       link_title: "更多資訊"
       automatic_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "使用參考的屬性和文字建立自動產生的主題。"
       customize_life_cycle:
         description: "建立和組織不同於 PM2 專案週期規劃所提供的專案階段和關卡。"
       form_configuration:

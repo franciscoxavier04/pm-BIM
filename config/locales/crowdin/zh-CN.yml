@@ -661,7 +661,7 @@ zh-CN:
     lag:
       subject: "间隔"
       title: "间隔(天数)"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: "两个工作包之间的最低工作日数。"
     relations:
       label_relates_singular: "关联到"
       label_relates_plural: "关联到"
@@ -1766,7 +1766,7 @@ zh-CN:
       title: "企业附加组件"
       link_title: "更多信息"
       automatic_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "使用引用的属性和文本自动生成主题。"
       customize_life_cycle:
         description: "创建和组织与 PM2 项目周期规划不同的项目阶段和关口。"
       form_configuration:

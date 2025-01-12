@@ -387,8 +387,8 @@ de:
         no_results_title_text: Durch dieses Projekt wird kein zusätzlicher erfasster Speicherplatz verbraucht.
   project_stage:
     working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Dauer: %{count} Arbeitstag"
+      other: "Dauer: %{count} Arbeitstage"
   lists:
     create:
       success: "Die geänderte Liste wurde als neue Liste gespeichert"
@@ -783,7 +783,7 @@ de:
         is_required: "Erforderlich"
         max_length: "Maximale Länge"
         min_length: "Minimale Länge"
-        content_right_to_left: "Right-to-Left content"
+        content_right_to_left: "Linksläufiger Inhalt"
         multi_value: "Mehrfachauswahl zulassen"
         possible_values: "Mögliche Werte"
         regexp: "Regulärer Ausdruck"
@@ -819,7 +819,7 @@ de:
         attr_lastname: "Attribut für Nachname"
         attr_login: "Attribut für Benutzername"
         attr_mail: "Attribut für E-Mail"
-        filter_string: "Filter string"
+        filter_string: "Zeichenketten filtern"
         admin: "Administrator"
         base_dn: "Basis-DN"
         host: "Host"
@@ -866,7 +866,7 @@ de:
         custom_field_section: Abschnitt
       project/life_cycle_step_definition:
         name: "Name"
-        color: "Color"
+        color: "Farbe"
       query:
         column_names: "Spalten"
         relations_to_type_column: "Beziehungen zu %{type}"
@@ -1130,38 +1130,38 @@ de:
           attributes:
             type:
               must_be_a_stage_or_gate: "muss entweder ein Project::StageDefinition oder Project::GateDefinition sein"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "muss mit dem instanziierten Klassennamen übereinstimmen"
         project/gate_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+              type_and_class_name_mismatch: "muss eine Project::GateDefinition sein"
         project/stage_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
+              type_and_class_name_mismatch: "muss eine Project::StageDefinition sein"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "muss entweder ein Project::Stage oder Project::Gate sein"
               must_be_a_stage: "muss ein Project::Stage sein"
               must_be_a_gate: "muss ein Project::Gate sein"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "muss mit dem instanziierten Klassennamen übereinstimmen"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+              end_date_not_allowed: "Kann einem Project::Gate kein Enddatum zuweisen"
             type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
+              type_and_class_name_mismatch: "muss ein Project::Gate sein"
             date:
               non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
         project/stage:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-              incomplete: "is incomplete."
+              start_date_must_be_before_end_date: "Startdatum muss vor dem Enddatum liegen."
+              non_continuous_dates: "kann nicht vor dem vorherigen Enddatum von %{step} liegen."
+              incomplete: "ist unvollständig."
             type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
+              type_and_class_name_mismatch: "muss ein Project::Stage sein"
         query:
           attributes:
             project:
@@ -2587,7 +2587,7 @@ de:
   label_project_new: "Neues Projekt"
   label_project_plural: "Projekte"
   label_project_list_plural: "Projektlisten"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_lifecycle: "Projektlebenszyklus"
   label_project_attributes_plural: "Projektattribute"
   label_project_custom_field_plural: "Projektattribute"
   label_project_settings: "Projektkonfiguration"
@@ -2870,7 +2870,7 @@ de:
       updated_at: "Aktualisiert %{timestamp} von %{user} "
     reminder_notifications:
       subject: "Erinnerung: %{note}"
-      heading: "You have a new reminder"
+      heading: "Sie haben eine neue Erinnerung"
       note: "Anmerkung: “%{note}”"
     sharing:
       work_packages:
@@ -3205,9 +3205,9 @@ de:
       are_you_sure: "Sind Sie sicher, dass Sie das Projekt '%{name}' archivieren wollen?"
       archived: "Archiviert"
     count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      zero: "0 Projekte"
+      one: "1 Projekt"
+      other: "%{count} Projekte"
   project_module_activity: "Aktivität"
   project_module_forums: "Foren"
   project_module_work_package_tracking: "Arbeitspakete"
@@ -3568,9 +3568,9 @@ de:
         heading: "Neues Attribut"
         description: "Änderungen an diesem Projektattribut werden in allen Projekten übernommen, in denen es aktiviert ist. Erforderliche Attribute können nicht projektweise deaktiviert werden."
     project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
+      heading: "Projektlebenszyklus"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Hinzufügen"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4068,8 +4068,8 @@ de:
       builtin: Interne Anwendung für diese Instanz
       confidential: Vertraulich
       singular: "OAuth-Anwendung"
-      scopes: "Scopes"
-      client_credentials: "Client credentials"
+      scopes: "Geltungsbereiche"
+      client_credentials: "Anmeldeinformationen des Clients"
       plural: "OAuth-Anwendungen"
       named: "OAuth-Anwendung '%{name}'"
       new: "Neue OAuth-Anwendung"
