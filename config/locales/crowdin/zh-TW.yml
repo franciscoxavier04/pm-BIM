@@ -663,7 +663,7 @@ zh-TW:
     lag:
       subject: "延遲"
       title: "延遲（天數）"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: "兩個工作項目之間最少要相隔多少個工作天。"
     relations:
       label_relates_singular: "相關於"
       label_relates_plural: "相關於"

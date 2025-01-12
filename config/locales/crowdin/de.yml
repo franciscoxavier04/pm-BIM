@@ -387,8 +387,8 @@ de:
         no_results_title_text: Durch dieses Projekt wird kein zusätzlicher erfasster Speicherplatz verbraucht.
   project_stage:
     working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Dauer: %{count} Arbeitstag"
+      other: "Dauer: %{count} Arbeitstage"
   lists:
     create:
       success: "Die geänderte Liste wurde als neue Liste gespeichert"
@@ -1124,38 +1124,38 @@ de:
           attributes:
             type:
               must_be_a_stage_or_gate: "muss entweder ein Project::StageDefinition oder Project::GateDefinition sein"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "muss mit dem instanziierten Klassennamen übereinstimmen"
         project/gate_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+              type_and_class_name_mismatch: "muss eine Project::GateDefinition sein"
         project/stage_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
+              type_and_class_name_mismatch: "muss eine Project::StageDefinition sein"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "muss entweder ein Project::Stage oder Project::Gate sein"
               must_be_a_stage: "muss ein Project::Stage sein"
               must_be_a_gate: "muss ein Project::Gate sein"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "muss mit dem instanziierten Klassennamen übereinstimmen"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+              end_date_not_allowed: "Kann einem Project::Gate kein Enddatum zuweisen"
             type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
+              type_and_class_name_mismatch: "muss ein Project::Gate sein"
             date:
               non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
         project/stage:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-              incomplete: "is incomplete."
+              start_date_must_be_before_end_date: "Startdatum muss vor dem Enddatum liegen."
+              non_continuous_dates: "kann nicht vor dem vorherigen Enddatum von %{step} liegen."
+              incomplete: "ist unvollständig."
             type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
+              type_and_class_name_mismatch: "muss ein Project::Stage sein"
         query:
           attributes:
             project:
@@ -2859,7 +2859,7 @@ de:
       updated_at: "Aktualisiert %{timestamp} von %{user} "
     reminder_notifications:
       subject: "Erinnerung: %{note}"
-      heading: "You have a new reminder"
+      heading: "Sie haben eine neue Erinnerung"
       note: "Anmerkung: “%{note}”"
     sharing:
       work_packages:
