@@ -13,6 +13,7 @@ keywords: edit work packages
 | [Update a work package](#update-a-work-package)              | How to make a change to an existing work package.            |
 | [Update a work package in a table view](#update-a-work-package-in-a-work-package-table-view) | How to use the quick context menu in the work package table view. |
 | [Attach files to work packages](#attach-files-to-work-packages) | How to manually attach files to work packages.               |
+| [Set work package reminders](#work-package-reminders)        | How to set a reminder for a work package.                    |
 | [Watchers](#watchers)                                        | How to add or remove watchers from a work package.           |
 | [Export work packages](#export-work-packages)                | How to export work packages.                                 |
 | [Bulk edit work packages](#bulk-edit-work-packages)          | How to edit several work packages as once.                   |
@@ -97,6 +98,28 @@ Under the **Files** tab you will see the list of the all previously uploaded att
 You can remove an attachment by hovering over it and clicking the **Delete** icon.
 
 ![Delete a work package attachment in OpenProject](openproject_user_guide_wp_file_delete.png)
+
+## Work package reminders
+
+If you want to be reminded about a work package at  later point in time, you can use the **Reminder** function. Click the **Reminder** (alarm clock) icon in the work package detailed view.
+
+![Work package reminder icon in OpenProject](openproject_user_guide_wp_reminder_icon.png)
+
+Specify the time and date, or set a note for the reminder to be set, then click the **Set reminder** button.
+
+![Set reminder in OpenProject work packages](openproject_user_guide_wp_set_reminder.png)
+
+Once you set a reminder, you will see a confirmation message. The reminder icon will now show the badge to indicate that a reminder was set. Clicking on the reminder icon again will allow editing it. 
+
+![A badge to indicate a set reminder in OpenProject work package](openproject_user_guide_wp_reminder_badge.png)
+
+You will receive the reminder through the [Notification center](../../notifications/#access-in-app-notifications). 
+
+![Work package reminder in OpenProject notificaiton center](openproject_user_guide_wp_set_reminder_notification.png)
+
+> [!TIP]
+>
+> You can set to receive immediate notifications via e-mail for personal reminders. To do that adjust your [account settings](../../user-guide/account-settings/#email-reminders) accordingly.
 
 ## Watchers
 

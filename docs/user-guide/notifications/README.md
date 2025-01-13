@@ -51,7 +51,7 @@ The Activity tab will auto-scroll to the last event that generated a notificatio
 
 You can filter or group notifications by using the two sets of predefined filters on the left-hand menu:
 
-(Area 1) You can filter by the **reason** you were notified: because you were mentioned (*@mention*), because you are either the assignee or accountable for that work package, because it concerns a work package you are watching or because you have an active date alert.
+(Area 1) You can filter by the **reason** you were notified: because you were mentioned (*@mention*), because you are either the assignee or accountable for that work package, because it concerns a work package you are watching or because you have an active reminder or a date alert.
 
 (Area 2) You can filter by **project** (area 2), for example to filter for notifications that originated from a specific project.
 
