@@ -35,6 +35,9 @@ RSpec.describe "Relations children tab", :js, :with_cuprite do
     it "can add a new child" do
       wp_page.visit_tab!("relations")
       relations_tab.expect_add_relation_button
+      relations_tab.expect_new_relation_type("New child")
+      relations_tab.expect_new_relation_type("Existing child")
+
       relations_tab.select_relation_type "New child"
 
       create_dialog.select_type "Task"
@@ -77,6 +80,19 @@ RSpec.describe "Relations children tab", :js, :with_cuprite do
     it "does not show the action" do
       wp_page.visit_tab!("relations")
       relations_tab.expect_no_add_relation_button
+    end
+  end
+
+  context "with permission to manage_subtasks, but not add_work_packages" do
+    let!(:user) do
+      create(:user, member_with_permissions: { project => %i[view_work_packages manage_subtasks] })
+    end
+
+    it "does not show the action" do
+      wp_page.visit_tab!("relations")
+      relations_tab.expect_add_relation_button
+      relations_tab.expect_new_relation_type("Existing child")
+      relations_tab.expect_no_new_relation_type("New child")
     end
   end
 end

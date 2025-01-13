@@ -108,14 +108,16 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   def render_child_items(menu) # rubocop:disable Metrics/AbcSize
     return unless should_render_add_child?
 
-    menu.with_item(
-      label: t("work_package_relations_tab.relations.new_child"),
-      href: new_project_work_packages_dialog_path(work_package.project, parent_id: work_package.id),
-      content_arguments: {
-        data: { turbo_stream: true }
-      }
-    ) do |item|
-      item.with_description.with_content(t("work_package_relations_tab.relations.new_child_text"))
+    if helpers.current_user.allowed_in_project?(:add_work_packages, @work_package.project)
+      menu.with_item(
+        label: t("work_package_relations_tab.relations.new_child"),
+        href: new_project_work_packages_dialog_path(work_package.project, parent_id: work_package.id),
+        content_arguments: {
+          data: { turbo_stream: true }
+        }
+      ) do |item|
+        item.with_description.with_content(t("work_package_relations_tab.relations.new_child_text"))
+      end
     end
 
     menu.with_item(
