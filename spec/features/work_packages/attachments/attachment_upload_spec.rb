@@ -29,7 +29,7 @@
 require "spec_helper"
 require "features/page_objects/notification"
 
-RSpec.describe "Upload attachment to work package", :js, :with_cuprite do
+RSpec.describe "Upload attachment to work package", :js do
   let(:role) do
     create(:project_role,
            permissions: %i[view_work_packages add_work_packages edit_work_packages add_work_package_notes])
@@ -143,7 +143,7 @@ RSpec.describe "Upload attachment to work package", :js, :with_cuprite do
         target = find(".ck-content")
         attachments.drag_and_drop_file(target, image_fixture.path)
 
-        sleep 2 unless example.metadata[:with_cuprite]
+        sleep 2 unless using_cuprite?
         editor.wait_until_upload_progress_toaster_cleared
 
         editor.in_editor do |_container, editable|
@@ -151,7 +151,7 @@ RSpec.describe "Upload attachment to work package", :js, :with_cuprite do
           expect(editable).to have_no_css(".ck-upload-placeholder-loader")
         end
 
-        sleep 2 unless example.metadata[:with_cuprite]
+        sleep 2 unless using_cuprite?
 
         scroll_to_and_click find_by_id("work-packages--edit-actions-save")
 
@@ -211,7 +211,7 @@ RSpec.describe "Upload attachment to work package", :js, :with_cuprite do
           target = find(".ck-content")
           attachments.drag_and_drop_file(target, image_fixture.path)
 
-          sleep 2 unless example.metadata[:with_cuprite]
+          sleep 2 unless using_cuprite?
           editor.wait_until_upload_progress_toaster_cleared
 
           editor.in_editor do |_container, editable|
@@ -219,7 +219,7 @@ RSpec.describe "Upload attachment to work package", :js, :with_cuprite do
             expect(editable).to have_no_css(".ck-upload-placeholder-loader")
           end
 
-          sleep 2 unless example.metadata[:with_cuprite]
+          sleep 2 unless using_cuprite?
 
           scroll_to_and_click find_by_id("work-packages--edit-actions-save")
 
@@ -247,7 +247,7 @@ RSpec.describe "Upload attachment to work package", :js, :with_cuprite do
       # everywhere so if this works it should work everywhere else too.
       # TODO: Add better_cuprite_billy. I'm not sure what needs to be set up so the request to AWS passes.
       # Need help
-      context "with direct uploads", :with_direct_uploads, with_cuprite: false do
+      context "with direct uploads", :with_direct_uploads, :js do
         before do
           allow_any_instance_of(Attachment).to receive(:diskfile).and_return Struct.new(:path).new(image_fixture.path.to_s)
         end

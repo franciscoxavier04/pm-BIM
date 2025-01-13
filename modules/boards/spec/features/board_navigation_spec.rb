@@ -32,7 +32,6 @@ require_relative "support/board_page"
 
 RSpec.describe "Work Package boards spec",
                :js,
-               :with_cuprite,
                with_ee: %i[board_view] do
   let(:user) do
     create(:user,

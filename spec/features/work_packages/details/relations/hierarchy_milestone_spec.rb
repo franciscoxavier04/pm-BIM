@@ -28,7 +28,7 @@
 
 require "spec_helper"
 
-RSpec.describe "work package hierarchies for milestones", :js, :with_cuprite do
+RSpec.describe "work package hierarchies for milestones", :js do
   let(:user) { create(:admin) }
   let(:task_type) { create(:type_task) }
   let(:milestone_type) { create(:type_milestone) }

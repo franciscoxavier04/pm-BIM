@@ -194,7 +194,7 @@ RSpec.describe "Work Package highlighting fields", :js,
     expect(page).to have_css(".__hl_inline_priority_#{priority1.id}")
   end
 
-  it "correctly parses custom selected inline attributes", :with_cuprite do
+  it "correctly parses custom selected inline attributes" do
     # Highlight only one attribute
     highlighting.switch_inline_attribute_highlight "Priority"
 

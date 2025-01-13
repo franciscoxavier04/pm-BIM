@@ -39,7 +39,7 @@ RSpec.describe "updating a budget", :js do
 
   current_user { user }
 
-  describe "with new cost items", :with_cuprite do
+  describe "with new cost items" do
     let(:cost_type) do
       create(:cost_type, name: "Post-war", unit: "cap", unit_plural: "caps")
     end
