@@ -58,6 +58,13 @@ export class HoverCardComponent extends OpModalComponent implements OnInit {
   @ViewChild('turboFrame')
   set turboFrame(frame:ElementRef<HTMLIFrameElement>|undefined) {
     if (frame !== undefined) {
+      if (this.turboFrameSrc.includes('/users/')) {
+        // User hover cards require additional space, this must be designated before loading the turbo frame so that
+        // the rough size of the hover card can be adjusted in advance. This makes the popup appear smoothly.
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
+        this.elementRef.nativeElement.querySelector('.op-hover-card')?.classList.add('user-sized');
+      }
+
       frame.nativeElement?.addEventListener('turbo:frame-load', () => {
         const modal = this.elementRef.nativeElement as HTMLElement;
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-explicit-any
