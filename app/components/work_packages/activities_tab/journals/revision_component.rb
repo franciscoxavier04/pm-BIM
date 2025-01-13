@@ -75,7 +75,7 @@ module WorkPackages
 
         def render_committer_name(committer)
           render(Primer::Beta::Text.new(font_weight: :bold, mr: 1)) do
-            committer.split("<").first.strip
+            committer.gsub(%r{<.+@.+>}, "").strip
           end
         end
       end
