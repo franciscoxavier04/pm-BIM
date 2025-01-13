@@ -59,13 +59,11 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
               WHERE
                 steps.active = true
                 AND steps.definition_id = :definition_id
+                AND steps.project_id IN (#{viewable_project_ids.to_sql})
             ) #{subquery_table_name} ON #{subquery_table_name}.project_id = projects.id
-              AND projects.id IN (
-                SELECT UNNEST(ARRAY[:viewable_project_ids])
-              )
     SQL
 
-    ActiveRecord::Base.sanitize_sql([join, { definition_id: life_cycle_step_definition.id, viewable_project_ids: }])
+    ActiveRecord::Base.sanitize_sql([join, { definition_id: life_cycle_step_definition.id }])
   end
 
   # Since we can combine multiple queries with their respective ORDER BY clauses, we need to make sure
@@ -87,7 +85,7 @@ class Queries::Projects::Orders::LifeCycleStepOrder < Queries::Orders::Base
   # Ensure that only life cycle columns viewable to the current user are considered
   # for ordering the query result.
   def viewable_project_ids
-    Project.allowed_to(User.current, :view_project_stages_and_gates).pluck(:id)
+    Project.allowed_to(User.current, :view_project_stages_and_gates).select(:id)
   end
 
   def order_condition
