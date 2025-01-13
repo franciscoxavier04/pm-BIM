@@ -28,38 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-##
-# An AR helper class to access sessions, but not create them.
-# You can still use AR methods to delete records however.
-module Sessions
-  class UserSession < ::ApplicationRecord
-    self.table_name = "sessions"
+module OpenProject::OpenIDConnect::Patches::UserPatch
+  def self.included(base) # :nodoc:
+    base.extend(ClassMethods)
+    base.include(InstanceMethods)
 
-    belongs_to :user
-
-    scope :for_user, ->(user) do
-      user_id = user.is_a?(User) ? user.id : user.to_i
-
-      where(user_id:)
+    base.class_eval do
+      has_many :oidc_user_tokens, class_name: "OpenIDConnect::UserToken", foreign_key: "user_id"
     end
+  end
 
-    scope :non_user, -> do
-      where(user_id: nil)
-    end
+  module ClassMethods
+  end
 
-    ##
-    # Mark all records as readonly so they cannot
-    # modify the database
-    def readonly?
-      true
-    end
-
-    def current?(session_object)
-      session_object.id.private_id == session_id
-    end
-
-    def data
-      SqlBypass.deserialize(super)
-    end
+  module InstanceMethods
   end
 end

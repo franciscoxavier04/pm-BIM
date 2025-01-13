@@ -28,38 +28,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-##
-# An AR helper class to access sessions, but not create them.
-# You can still use AR methods to delete records however.
-module Sessions
-  class UserSession < ::ApplicationRecord
-    self.table_name = "sessions"
+class AddOidcUserTokens < ActiveRecord::Migration[7.1]
+  def change
+    create_table :oidc_user_tokens do |t|
+      t.references :user, null: false, index: true, foreign_key: { on_delete: :cascade }
 
-    belongs_to :user
+      t.string :access_token, null: false
+      t.string :refresh_token, null: true
+      t.jsonb :audiences, null: false, default: []
 
-    scope :for_user, ->(user) do
-      user_id = user.is_a?(User) ? user.id : user.to_i
-
-      where(user_id:)
-    end
-
-    scope :non_user, -> do
-      where(user_id: nil)
-    end
-
-    ##
-    # Mark all records as readonly so they cannot
-    # modify the database
-    def readonly?
-      true
-    end
-
-    def current?(session_object)
-      session_object.id.private_id == session_id
-    end
-
-    def data
-      SqlBypass.deserialize(super)
+      t.timestamps
     end
   end
 end

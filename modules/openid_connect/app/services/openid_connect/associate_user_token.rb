@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 #-- copyright
-# OpenProject is an open source project management software.
+# OpenProject is a project management system.
 # Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
 #
 # OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
-# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2006-2017 Jean-Philippe Lang
 # Copyright (C) 2010-2013 the ChiliProject Team
 #
 # This program is free software; you can redistribute it and/or
@@ -26,40 +26,30 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# +
 
-##
-# An AR helper class to access sessions, but not create them.
-# You can still use AR methods to delete records however.
-module Sessions
-  class UserSession < ::ApplicationRecord
-    self.table_name = "sessions"
-
-    belongs_to :user
-
-    scope :for_user, ->(user) do
-      user_id = user.is_a?(User) ? user.id : user.to_i
-
-      where(user_id:)
+module OpenIDConnect
+  class AssociateUserToken
+    def initialize(user)
+      @user = user
     end
 
-    scope :non_user, -> do
-      where(user_id: nil)
-    end
+    def call(access_token:, refresh_token: nil, known_audiences: [], clear_previous: false)
+      if access_token.blank?
+        Rails.logger.error("Could not associate token to user: No access token")
+        return
+      end
 
-    ##
-    # Mark all records as readonly so they cannot
-    # modify the database
-    def readonly?
-      true
-    end
+      if @user.nil?
+        Rails.logger.error("Could not associate token to user: Can't find user")
+        return
+      end
 
-    def current?(session_object)
-      session_object.id.private_id == session_id
-    end
+      @user.oidc_user_tokens.destroy_all if clear_previous
 
-    def data
-      SqlBypass.deserialize(super)
+      token = @user.oidc_user_tokens.build(access_token:, refresh_token:, audiences: Array(known_audiences))
+      # We should discover further audiences from the token in the future
+      token.save! if token.audiences.any?
     end
   end
 end

@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2012-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -28,38 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-##
-# An AR helper class to access sessions, but not create them.
-# You can still use AR methods to delete records however.
-module Sessions
-  class UserSession < ::ApplicationRecord
-    self.table_name = "sessions"
+module OpenIDConnect
+  class UserToken < ::ApplicationRecord
+    self.table_name = "oidc_user_tokens"
+
+    IDP_AUDIENCE = "__op-idp__"
 
     belongs_to :user
 
-    scope :for_user, ->(user) do
-      user_id = user.is_a?(User) ? user.id : user.to_i
-
-      where(user_id:)
-    end
-
-    scope :non_user, -> do
-      where(user_id: nil)
-    end
-
-    ##
-    # Mark all records as readonly so they cannot
-    # modify the database
-    def readonly?
-      true
-    end
-
-    def current?(session_object)
-      session_object.id.private_id == session_id
-    end
-
-    def data
-      SqlBypass.deserialize(super)
-    end
+    scope :idp, -> { where(audience: IDP_AUDIENCE) }
   end
 end
