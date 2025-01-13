@@ -270,7 +270,7 @@ RSpec.describe "Invite user modal", :js do
                    roles: [role_no_permissions])
           end
 
-          it "disables projects for which you do not have rights", :js do
+          it "disables projects for which you do not have rights", :js, :selenium do
             ngselect = modal.open_select_in_step ".ng-select-container"
             expect(ngselect).to have_text "#{project_no_permissions.name}\nYou are not allowed to invite members to this project"
           end

@@ -132,6 +132,7 @@ RSpec.describe "Authentication Stages" do
 
   context "when enabled, and consent exists",
           :js,
+          :selenium,
           with_settings: {
             consent_info: { en: "# Consent header!" },
             consent_required: true

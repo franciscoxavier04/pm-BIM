@@ -44,7 +44,9 @@ RSpec.describe "Attribute help texts", :js do
     end
 
     # TODO: Migrate to cuprite when the `better_cuprite_billy` driver is added
-    context "with direct uploads (Regression #34285)", :with_direct_uploads, :selenium do
+    context "with direct uploads (Regression #34285)",
+            :selenium,
+            :with_direct_uploads do
       before do
         allow_any_instance_of(Attachment).to receive(:diskfile).and_return image_fixture
       end
