@@ -53,6 +53,7 @@ module WorkPackages::Dialogs
         autocomplete_options: {
           multiple: false,
           decorated: true,
+          clearable: false,
           hiddenFieldAction: "change->work-packages--create-dialog#refreshForm",
           append_to: wrapper_id,
           data: { test_selector: "work_package_create_dialog_type" }
