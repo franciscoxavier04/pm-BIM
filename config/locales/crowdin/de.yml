@@ -218,7 +218,7 @@ de:
           heading: Für alle Projekte
           description: Dieses Projekt-Attribut ist in allen Projekten aktiviert, da die Option "Für alle Projekte" aktiviert ist. Es kann nicht für einzelne Projekte deaktiviert werden.
       items:
-        actions: "Element-Aktionen"
+        actions: "Aktionen"
         blankslate:
           root:
             title: "Ihre Liste der Elemente ist leer"
@@ -651,7 +651,7 @@ de:
       follows_description: "Das verknüpfte Arbeitspaket muss beendet sein bevor dieses Arbeitspaket starten kann"
       label_child_singular: "Untergeordnetes Arbeitspaket"
       label_child_plural: "Untergeordnete Arbeitspakete"
-      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       label_blocks_singular: "Blockiert"
       label_blocks_plural: "Blockiert"
       blocks_description: "Das verknüpfte Arbeitspaket kann erst geschlossen werden, wenn dieses Arbeitspaket geschlossen ist"
@@ -1822,7 +1822,7 @@ de:
             label: "XLS"
       columns:
         input_label_report: "Spalten zur Attributtabelle hinzufügen"
-        input_caption_report: "Standardmäßig sind alle Attribute, die als Spalten in der Arbeitspaketliste hinzugefügt wurden, ausgewählt. Textfelder sind in der Attribut-Tabelle nicht verfügbar, können aber unterhalb der Tabelle angezeigt werden."
+        input_caption_report: "Standardmäßig sind alle Attribute, die als Spalten in der Arbeitspaketliste hinzugefügt wurden, ausgewählt. Langtextfelder sind in der Attributtabelle nicht verfügbar, können aber unterhalb der Tabelle angezeigt werden."
         input_caption_table: "Standardmäßig sind alle Attribute, die als Spalten in der Arbeitspaketliste hinzugefügt wurden, ausgewählt. Textfelder sind in tabellenbasierten Exporten nicht verfügbar."
       pdf:
         export_type:

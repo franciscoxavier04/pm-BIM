@@ -598,7 +598,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :children, only: %i[new create destroy], controller: "work_package_children"
+    resources :children_relations, only: %i[new create destroy], controller: "work_package_children_relations"
 
     resource :progress, only: %i[new edit update], controller: "work_packages/progress"
     collection do

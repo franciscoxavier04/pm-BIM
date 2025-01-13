@@ -43,6 +43,7 @@ module Principals
 
     def rewrite_active_models(from, to)
       rewrite_author(from, to)
+      rewrite_creator(from, to)
       rewrite_user(from, to)
       rewrite_assigned_to(from, to)
       rewrite_responsible(from, to)
@@ -89,6 +90,12 @@ module Principals
        MeetingMinutes,
        MeetingAgendaItem].each do |klass|
         rewrite(klass, :author_id, from, to)
+      end
+    end
+
+    def rewrite_creator(from, to)
+      [AuthProvider].each do |klass|
+        rewrite(klass, :creator_id, from, to)
       end
     end
 
@@ -149,7 +156,7 @@ module Principals
     end
 
     def foreign_keys
-      %w[author_id user_id assigned_to_id responsible_id logged_by_id presenter_id]
+      %w[author_id creator_id user_id assigned_to_id responsible_id logged_by_id presenter_id]
     end
 
     def rewrite(klass, attribute, from, to)

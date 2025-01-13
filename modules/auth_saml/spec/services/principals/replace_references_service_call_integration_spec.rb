@@ -28,25 +28,32 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackageRelationsTab::AddWorkPackageChildFormComponent < ApplicationComponent
-  include ApplicationHelper
-  include OpTurbo::Streamable
-  include OpPrimer::ComponentHelpers
+require "spec_helper"
+require_module_spec_helper
+require Rails.root.join("spec/services/principals/replace_references_context")
 
-  DIALOG_ID = "add-work-package-child-dialog"
-  FORM_ID = "add-work-package-child-form"
-  ID_FIELD_TEST_SELECTOR = "work-package-child-form-id"
-  I18N_NAMESPACE = "work_package_relations_tab"
+RSpec.describe Principals::ReplaceReferencesService, "#call", type: :model do
+  subject(:service_call) { instance.call(from: principal, to: to_principal) }
 
-  def initialize(work_package:, base_errors: nil)
-    super()
+  shared_let(:other_user) { create(:user, firstname: "other user") }
+  shared_let(:principal) { create(:user, firstname: "old principal") }
+  shared_let(:to_principal) { create(:user, firstname: "new principal") }
 
-    @work_package = work_package
-    @base_errors = base_errors
+  let(:instance) do
+    described_class.new
   end
 
-  def submit_url_options
-    { method: :post,
-      url: work_package_children_relations_path(@work_package) }
+  context "with Saml::Provider" do
+    it_behaves_like "rewritten record",
+                    :saml_provider,
+                    :creator_id do
+      let(:attributes) do
+        {
+          type: "'Saml::Provider'",
+          slug: "'saml-foo'",
+          display_name: "'foo'"
+        }
+      end
+    end
   end
 end

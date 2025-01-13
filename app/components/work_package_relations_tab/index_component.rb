@@ -27,6 +27,8 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   private
 
   def should_render_add_child?
+    return false if @work_package.milestone?
+
     helpers.current_user.allowed_in_project?(:manage_subtasks, @work_package.project)
   end
 
