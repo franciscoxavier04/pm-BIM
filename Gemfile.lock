@@ -831,7 +831,7 @@ GEM
     optimist (3.2.0)
     os (1.1.4)
     ostruct (0.6.1)
-    ox (2.14.19)
+    ox (2.14.20)
       bigdecimal (>= 3.0)
     paper_trail (15.2.0)
       activerecord (>= 6.1)
