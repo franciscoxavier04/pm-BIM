@@ -1,8 +1,13 @@
-The Danger Confirmation Dialog is used to get a second layer of confirmation before they execute a potentially breaking, non-reversible action such as deletion.
+The Danger Dialog is used to direct the user's attention towards a potentially destructive, non-reversible action such as deletion.
 
-The goal of the dialog is to inform the user that the action is not reversible and require one additional interaction before the user can confirm the deletion.
+There are two variants:
 
-The Danger Confirmation Dialog is a sub-component of Feedback Dialog.
+1. **Danger Confirmation** requires an addition interaction from the user (i.e, checking a checkbox) in addition to a visual and text warning before they are able to confirm the action
+2. **Danger Warning** simply presents the user with a visual and text warning before they confirm the action
+
+The dialog aims to reduce cases of accidental deletion that may result from the browser "Are you sure?" confirmation dialog not sufficiently conveying the potential risks of a particular user action.
+
+The Danger dialog is a sub-component of Feedback Dialog.
 
 ### Overview
 
@@ -15,10 +20,10 @@ The Feedback Dialog is a variation of Feedback Dialog. It consists of:
 - A red warning icon
 - A heading with a confirmation question such as "Permanently delete?"
 - A content slot. By default this will contain text: "This action is not reversible. Please proceed with caution."
-- A confirmation checkbox with text: "I understand that this deletion cannot be reversed"
-- Footer actions: "Cancel" and "Delete permanently" (danger red)
+- (For the Danger Confirmation) A confirmation checkbox with text: "I understand that this deletion cannot be reversed"
+- Footer actions: "Cancel" and "Delete" (danger red)
 
-The "Delete permanently" button is disabled until the user checks the confirmation checkbox
+For the Danger confirmation, the primary button text is "Delete permanently" and it is disabled until the user checks the confirmation checkbox
 
 The Content area can be replaced with other options, such as different text, a list of work packages or additional interaction.
 
@@ -36,7 +41,7 @@ If you need a variant with a different structure, please contact the UX and Fron
 
 #### Do:
 
-- Give the user relevant detail possible. For example, when bulk deleting, list the work packages that will be deleted.f 
+- Give the user relevant detail. For example, when bulk deleting, list the work packages that will be deleted. If the relevant details are too detailed (for example, there are over 10 work packages to be deleted), provide a summary instead of listing all individual items.
 - Use the simplest variant that will do the job, usually the default with customised text tailored to the specific context. Only choose variations or add additional elements if absolutely required.
 
 #### Don't:
@@ -60,16 +65,24 @@ The Danger Confirmation Dialog will replace the traditional Rails danger zone ar
 - ldap_groups/synchronized_filters: destroy
 - ldap_groups/synchronized_groups: destroy
 - saml/providers: destroy
+- Deleting a meeting series 
 
-The confirmation dialog should also be used where we are currently using browser dialogs or a non-Primer modal for high-risk operations, such as:
+The Danger Confirmation dialog should also be used where we are currently using browser dialogs or a non-Primer modal for high-risk operations, such as:
 
-- Bulk deleting wo- rk packages
+- Bulk deleting work packages
 - Deleting a custom field
+
+The Danger Warning dialog should replace the default browser native "Are you sure?" dialog if the action is destructive and non reversible, for example:
+
+- Deleting work packages
+- Deleting individual meetings (or individual occurrences of a meeting series)
+- Deleting a custom field
+- Deleting a custom action
+- Deleting a wiki
 
 ### Technical notes
 
 [Add technical notes here, if any]
-
 
 ### Examples
 
