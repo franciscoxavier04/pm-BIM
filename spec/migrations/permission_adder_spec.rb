@@ -45,7 +45,7 @@ RSpec.describe Migration::MigrationUtils::PermissionAdder, type: :model do # rub
       expect(anonymous_role.permissions).not_to include(:view_project_attributes)
 
       described_class.add(:view_project, :view_project_attributes)
-      roles.map(&:reload)
+      roles.each(&:reload)
 
       expect(role.permissions).to include(:view_project_attributes)
       expect(non_member_role.permissions).to include(:view_project_attributes)
@@ -67,7 +67,7 @@ RSpec.describe Migration::MigrationUtils::PermissionAdder, type: :model do # rub
   context "when adding a permission that has `required: :loggedin` attribute" do
     it "does not add the permission to the anonymous role" do
       described_class.add(:view_project, :move_work_packages)
-      roles.map(&:reload)
+      roles.each(&:reload)
 
       expect(role.permissions).to include(:move_work_packages)
       expect(non_member_role.permissions).to include(:move_work_packages)
@@ -78,7 +78,7 @@ RSpec.describe Migration::MigrationUtils::PermissionAdder, type: :model do # rub
   context "when adding a permission that has `required: :member` attribute" do
     it "does not add the permission to the non-member and anonymous roles" do
       described_class.add(:view_project, :archive_project)
-      roles.map(&:reload)
+      roles.each(&:reload)
 
       expect(role.permissions).to include(:archive_project)
       expect(non_member_role.permissions).not_to include(:archive_project)
