@@ -20,21 +20,14 @@ module OpenProject
           end
 
           def authenticate!
-            verified_payload, provider = ::OpenIDConnect::JwtParser.new(required_claims: ["sub"]).parse(@access_token)
-
-            user = User.find_by(identity_url: "#{provider.slug}:#{verified_payload['sub']}")
-            success!(user) if user
-          rescue JWT::ExpiredSignature
-            fail_with_header!(error: "invalid_token", error_description: "The access token expired")
-          rescue JWT::ImmatureSignature
-            # happens when nbf time is less than current
-            fail_with_header!(error: "invalid_token", error_description: "The access token is used too early")
-          rescue JWT::InvalidAudError
-            fail_with_header!(error: "invalid_token", error_description: "The access token audience claim is wrong")
-          rescue JSON::JWK::Set::KidNotFound
-            fail_with_header!(error: "invalid_token", error_description: "The access token signature kid is unknown")
-          rescue ::OpenIDConnect::JwtParser::Error => e
-            fail_with_header!(error: "invalid_token", error_description: e.message)
+            ::OpenIDConnect::JwtParser.new(required_claims: ["sub"]).parse(@access_token).either(
+              ->(payload_and_provider) do
+                payload, provider = payload_and_provider
+                user = User.find_by(identity_url: "#{provider.slug}:#{payload['sub']}")
+                success!(user) if user
+              end,
+              ->(error) { fail_with_header!(error: "invalid_token", error_description: error) }
+            )
           end
         end
       end

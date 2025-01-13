@@ -51,13 +51,15 @@ RSpec.describe OpenIDConnect::JwtParser do
     provider.save!
   end
 
+  it { is_expected.to be_success }
+
   it "parses the token" do
-    parsed, = parse
+    parsed, = parse.value!
     expect(parsed).to eq payload
   end
 
   it "returns the provider configuration for the associated provider" do
-    _, p = parse
+    _, p = parse.value!
     expect(p).to eq provider
   end
 
@@ -70,8 +72,10 @@ RSpec.describe OpenIDConnect::JwtParser do
   context "when the provider signing the token is not known" do
     let(:known_issuer) { "Lunar Gateway" }
 
-    it "raises an error" do
-      expect { parse }.to raise_error(OpenIDConnect::JwtParser::Error, /issuer is unknown/)
+    it { is_expected.to be_failure }
+
+    it "indicates the problem" do
+      expect(parse.failure).to match(/issuer is unknown/)
     end
   end
 
@@ -80,24 +84,26 @@ RSpec.describe OpenIDConnect::JwtParser do
       provider.update!(available: false)
     end
 
-    it "raises an error" do
-      expect { parse }.to raise_error(OpenIDConnect::JwtParser::Error, /issuer is unknown/)
+    it { is_expected.to be_failure }
+
+    it "indicates the problem" do
+      expect(parse.failure).to match(/issuer is unknown/)
     end
   end
 
   context "when the token is not a valid JWT" do
     let(:token) { Base64.encode64("banana").strip }
 
-    it "raises an error" do
-      expect { parse }.to raise_error(JWT::DecodeError)
-    end
+    it { is_expected.to be_failure }
   end
 
   context "when the token is signed using an unsupported signature" do
     let(:token) { JWT.encode(payload, "secret", "HS256", { kid: "key-identifier" }) }
 
-    it "raises an error" do
-      expect { parse }.to raise_error(OpenIDConnect::JwtParser::Error, /HS256 is not supported/)
+    it { is_expected.to be_failure }
+
+    it "indicates the problem" do
+      expect(parse.failure).to match(/HS256 is not supported/)
     end
   end
 
@@ -106,44 +112,36 @@ RSpec.describe OpenIDConnect::JwtParser do
       payload["aud"] = "Alice"
     end
 
-    it "raises an error" do
-      expect { parse }.to raise_error(JWT::InvalidAudError)
-    end
+    it { is_expected.to be_failure }
 
     context "and the audience shall not be verified" do
       subject(:parse) { described_class.new(verify_audience: false).parse(token) }
 
-      it "parses the token" do
-        parsed, = parse
-        expect(parsed).to eq payload
-      end
+      it { is_expected.to be_success }
     end
   end
 
   context "when the token does not indicate a Key Identifier" do
     let(:token) { JWT.encode(payload, private_key, "RS256") }
 
-    it "raises an error" do
-      expect { parse }.to raise_error(OpenIDConnect::JwtParser::Error, /Key Identifier .+ is missing/)
+    it { is_expected.to be_failure }
+
+    it "indicates the problem" do
+      expect(parse.failure).to match(/Key Identifier .+ is missing/)
     end
   end
 
   context "when requiring a specific claim" do
     subject(:parse) { described_class.new(required_claims: ["sub"]).parse(token) }
 
-    it "parses the token" do
-      parsed, = parse
-      expect(parsed).to eq payload
-    end
+    it { is_expected.to be_success }
 
     context "and when the required claim is missing" do
       before do
         payload.delete("sub")
       end
 
-      it "raises an error" do
-        expect { parse }.to raise_error(JWT::MissingRequiredClaim)
-      end
+      it { is_expected.to be_failure }
     end
   end
 end

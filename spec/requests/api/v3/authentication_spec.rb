@@ -467,13 +467,13 @@ RSpec.describe "API V3 Authentication" do
 
         context "when access token has not expired yet" do
           context "when aud does not contain client_id" do
-            let(:token_aud) { ["master-realm", "account"] }
+            let(:token_aud) { ["Lisa", "Bart"] }
 
             it do
               get resource
 
               expect(last_response).to have_http_status :unauthorized
-              error = "The access token audience claim is wrong"
+              error = 'Invalid audience. Expected https://openproject.local, received ["Lisa", "Bart"]'
               expect(last_response.header["WWW-Authenticate"])
                 .to eq(%{Bearer realm="OpenProject API", error="invalid_token", error_description="#{error}"})
               expect(JSON.parse(last_response.body)).to eq(error_response_body)
@@ -497,7 +497,7 @@ RSpec.describe "API V3 Authentication" do
 
             expect(last_response).to have_http_status :unauthorized
             expect(last_response.header["WWW-Authenticate"])
-              .to eq(%{Bearer realm="OpenProject API", error="invalid_token", error_description="The access token expired"})
+              .to eq(%{Bearer realm="OpenProject API", error="invalid_token", error_description="Signature has expired"})
             expect(JSON.parse(last_response.body)).to eq(error_response_body)
           end
 
@@ -531,7 +531,7 @@ RSpec.describe "API V3 Authentication" do
           get resource
           expect(last_response).to have_http_status :unauthorized
           expect(JSON.parse(last_response.body)).to eq(error_response_body)
-          error = "The access token signature kid is unknown"
+          error = "The signature key ID is unknown"
           expect(last_response.header["WWW-Authenticate"])
             .to eq(%{Bearer realm="OpenProject API", error="invalid_token", error_description="#{error}"})
         end

@@ -39,7 +39,7 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
   let(:access_token) { "access-token-foo" }
   let(:refresh_token) { "refresh-token-bar" }
 
-  let(:parser) { instance_double(OpenIDConnect::JwtParser, parse: [parsed_jwt, nil]) }
+  let(:parser) { instance_double(OpenIDConnect::JwtParser, parse: Success([parsed_jwt, nil])) }
   let(:parsed_jwt) { { "aud" => ["aud1", "aud2"] } }
 
   before do
@@ -80,9 +80,7 @@ RSpec.describe OpenIDConnect::AssociateUserToken do
   end
 
   context "when the access token is not a valid JWT" do
-    before do
-      allow(parser).to receive(:parse).and_raise("Oops, not a JWT!")
-    end
+    let(:parser) { instance_double(OpenIDConnect::JwtParser, parse: Failure("Oops, not a JWT!")) }
 
     it "creates a correct user token", :aggregate_failures do
       expect { subject }.to change(OpenIDConnect::UserToken, :count).by(1)

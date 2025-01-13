@@ -48,18 +48,20 @@ module OpenIDConnect
 
       @user.oidc_user_tokens.destroy_all if clear_previous
 
-      token = @user.oidc_user_tokens.build(access_token:, refresh_token:)
-      token.audiences = merge_audiences(known_audiences, discover_audiences(access_token))
+      token = prepare_token(access_token:, refresh_token:, known_audiences:)
       token.save! if token.audiences.any?
     end
 
     private
 
+    def prepare_token(access_token:, refresh_token:, known_audiences:)
+      @user.oidc_user_tokens.build(access_token:, refresh_token:).tap do |token|
+        token.audiences = merge_audiences(known_audiences, discover_audiences(access_token).value_or([]))
+      end
+    end
+
     def discover_audiences(access_token)
-      decoded, = @jwt_parser.parse(access_token)
-      Array(decoded["aud"])
-    rescue StandardError
-      []
+      @jwt_parser.parse(access_token).fmap { |decoded, _| Array(decoded["aud"]) }
     end
 
     def merge_audiences(*args)

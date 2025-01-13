@@ -30,7 +30,7 @@
 
 module OpenIDConnect
   class JwtParser
-    class Error < StandardError; end
+    include Dry::Monads[:result]
 
     SUPPORTED_JWT_ALGORITHMS = %w[
       RS256
@@ -44,47 +44,51 @@ module OpenIDConnect
     end
 
     def parse(token)
-      issuer, alg, kid = parse_unverified_iss_alg_kid(token)
-      raise Error, "Token signature algorithm #{alg} is not supported" if SUPPORTED_JWT_ALGORITHMS.exclude?(alg)
+      parse_unverified_iss_alg_kid(token).bind do |issuer, alg, kid|
+        return Failure("Token signature algorithm #{alg} is not supported") if SUPPORTED_JWT_ALGORITHMS.exclude?(alg)
 
-      provider = fetch_provider(issuer)
-      raise Error, "The access token issuer is unknown" if provider.blank?
+        provider = fetch_provider(issuer)
+        return Failure("The access token issuer is unknown") if provider.blank?
 
-      jwks_uri = provider.jwks_uri
-      key = JSON::JWK::Set::Fetcher.fetch(jwks_uri, kid:).to_key
+        verified_payload, = JWT.decode(
+          token,
+          fetch_key(provider:, kid:),
+          true,
+          {
+            algorithm: alg,
+            verify_aud: @verify_audience,
+            aud: provider.client_id,
+            required_claims: all_required_claims
+          }
+        )
 
-      verified_payload, = JWT.decode(
-        token,
-        key,
-        true,
-        {
-          algorithm: alg,
-          verify_aud: @verify_audience,
-          aud: provider.client_id,
-          required_claims: all_required_claims
-        }
-      )
-
-      [verified_payload, provider]
+        Success([verified_payload, provider])
+      rescue JWT::DecodeError => e
+        Failure(e.message)
+      rescue JSON::JWK::Set::KidNotFound
+        Failure("The signature key ID is unknown")
+      end
     end
 
     private
 
     def parse_unverified_iss_alg_kid(token)
       unverified_payload, unverified_header = JWT.decode(token, nil, false)
-      raise Error, "The token's Key Identifier (kid) is missing" unless unverified_header.key?("kid")
+      return Failure("The token's Key Identifier (kid) is missing") unless unverified_header.key?("kid")
 
-      [
-        unverified_payload["iss"],
-        unverified_header.fetch("alg"),
-        unverified_header.fetch("kid")
-      ]
+      Success([unverified_payload["iss"], unverified_header.fetch("alg"), unverified_header.fetch("kid")])
+    rescue JWT::DecodeError => e
+      Failure(e.message)
     end
 
     def fetch_provider(issuer)
       return nil if issuer.blank?
 
       OpenIDConnect::Provider.where(available: true).where("options->>'issuer' = ?", issuer).first
+    end
+
+    def fetch_key(provider:, kid:)
+      JSON::JWK::Set::Fetcher.fetch(provider.jwks_uri, kid:).to_key
     end
 
     def all_required_claims
