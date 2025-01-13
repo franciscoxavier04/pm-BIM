@@ -54,6 +54,7 @@ module WorkPackages::Dialogs
           multiple: false,
           decorated: true,
           clearable: false,
+          focusDirectly: false,
           hiddenFieldAction: "change->work-packages--create-dialog#refreshForm",
           append_to: wrapper_id,
           data: { test_selector: "work_package_create_dialog_type" }
@@ -74,6 +75,7 @@ module WorkPackages::Dialogs
         name: :subject,
         label: WorkPackage.human_attribute_name(:subject),
         required: true,
+        autofocus: true,
         input_width: :large
       )
 
