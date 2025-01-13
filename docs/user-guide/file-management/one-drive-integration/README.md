@@ -52,7 +52,8 @@ To link a SharePoint file to the current work package, you can either:
 
 ![Link existing files to OneDrive/SharePoint from an OpenProject work package](openproject_onedrive_link_existing_files_link.png)
 
-> **Info**: The default location that opens in the file picker is the file root of the configured OneDrive/SharePoint drive.
+> [!NOTE]
+> The default location that opens in the file picker is the file root of the configured OneDrive/SharePoint drive.
 
 ![Select a SharePoint file or folder to link to an OpenProject work package](openproject_onedrive_link_files.png)
 
@@ -60,17 +61,18 @@ To link a SharePoint file to the current work package, you can either:
 
 If the file you want to link has not yet been uploaded to SharePoint, you can do so by clicking on the **Upload files** link.
 
-![Upload file link in an OpenProject work package](openproject_onedrive_upload_file_link.png)
+![Upload file link in an OpenProject work package](Openproject_onedrive_upload_file_link.png)
 
 You will then be prompted to select a file (or multiple files) on your computer that you want to upload to OneDrive/SharePoint.
 
-![Choosing a file to upload to SharePoint in an OpenProject work package](openproject_onedrive_select_file.png)
+![Choosing a file to upload to SharePoint in an OpenProject work package](oPenproject_onedrive_select_file.png)
 
 Alternatively, you can also simply drag a file or folder from your computer to the drag zone that will appear under the name of your OneDrive/SharePoint file storage.
 
 Once you have selected or dropped the files you would like to upload, you will need to select the location on OneDrive/SharePoint to which they should be stored.
 
-> **Info**: The default location that opens in the file picker is the file root of the configured OneDrive/SharePoint drive.
+> [!NOTE]
+> The default location that opens in the file picker is the file root of the configured OneDrive/SharePoint drive.
 
 ![Selection a Sharepoint location to upload a file from OpenProject](openproject_onedrive_select_location.png)
 
@@ -78,7 +80,10 @@ You can click on folders you see to navigate to them. Helpful breadcrumbs show y
 
 To navigate one level up or to go back to the root, simply click on the relevant parent in the breadcrumbs.
 
-> **Info**: If you have navigated particularly deep (over 4 levels), intermediate levels might be collapsed to save space, but you’ll always be able to navigate back to the immediate parent or the root to go backwards.
+> [!TIP]
+> If you have navigated particularly deep (over 4 levels), intermediate levels might be collapsed to save space, but you’ll always be able to navigate back to the immediate parent or the root to go backwards.
+
+You can also directly create a new folder within your Sharepoint folder structure at this point by using the **New folder** button.
 
 To save the files you uploaded to the currently open folder, click on the **Choose location** button.
 
