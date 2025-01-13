@@ -81,6 +81,7 @@ class WorkPackages::DialogsController < ApplicationController
     # We ignore errors here, as we only want to build the work package
     @work_package = call.result
     @work_package.errors.clear
+    @work_package.custom_values.each { |cv| cv.errors.clear }
   end
 
   def new_params
