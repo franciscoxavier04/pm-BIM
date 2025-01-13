@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2012-2024 the OpenProject GmbH
@@ -30,7 +32,7 @@ module OpenIDConnect
   class UserToken < ::ApplicationRecord
     self.table_name = "oidc_user_tokens"
 
-    IDP_AUDIENCE = "__op-idp__".freeze
+    IDP_AUDIENCE = "__op-idp__"
 
     belongs_to :user
 
