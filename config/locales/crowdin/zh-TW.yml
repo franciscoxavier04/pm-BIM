@@ -779,6 +779,7 @@ zh-TW:
         is_required: "必填"
         max_length: "最大長度"
         min_length: "最小長度"
+        content_right_to_left: "從右至左的內容"
         multi_value: "允許多選"
         possible_values: "可選擇內容"
         regexp: "正規表示式"
@@ -814,6 +815,8 @@ zh-TW:
         attr_lastname: "姓"
         attr_login: "使用者名稱屬性。"
         attr_mail: "Email"
+        filter_string: "過濾字串"
+        admin: "管理員"
         base_dn: "Base DN"
         host: "主機"
         onthefly: "自動新增用戶"
@@ -857,6 +860,9 @@ zh-TW:
       project_custom_field:
         is_required: "所有專案都需要"
         custom_field_section: 區段
+      project/life_cycle_step_definition:
+        name: "名稱"
+        color: "顏色"
       query:
         column_names: "欄"
         relations_to_type_column: "與 %{type} 的關連"
@@ -1761,6 +1767,10 @@ zh-TW:
     upsale:
       title: "企業版附加元件"
       link_title: "更多資訊"
+      automatic_subject_generation:
+        description: "使用參考的屬性和文字建立自動產生的主題。"
+      customize_life_cycle:
+        description: "建立和組織不同於 PM2 專案週期規劃所提供的專案階段和關卡。"
       form_configuration:
         description: "使用以下附加組件自定義表單配置："
         add_groups: "增加新的屬性群組"
@@ -2324,7 +2334,7 @@ zh-TW:
   label_filter: "篩選條件"
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
-  label_filter_plural: "篩選條件"
+  label_filter_plural: "篩選器"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2337,7 +2347,7 @@ zh-TW:
   label_generate_key: "產生一個金鑰"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分類"
+  label_group_by: "分組依據"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2349,7 +2359,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "名稱或 id"
+  label_subject_or_id: "主旨或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2395,7 +2405,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "之後"
+  label_less_or_equal: "<="
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"
@@ -2545,6 +2555,7 @@ zh-TW:
   label_project_new: "新增專案"
   label_project_plural: "專案"
   label_project_list_plural: "專案列表"
+  label_project_lifecycle: "專案生命週期"
   label_project_attributes_plural: "專案屬性"
   label_project_custom_field_plural: "專案屬性"
   label_project_settings: "專案設定"
@@ -2985,6 +2996,7 @@ zh-TW:
   notice_bad_request: "錯誤的請求"
   notice_not_authorized: "你沒有存取此頁面的權限"
   notice_not_authorized_archived_project: "你欲存取的專案已被封存"
+  notice_requires_enterprise_token: "企業識別碼遺失或不允許存取此頁面。"
   notice_password_confirmation_failed: "您的密碼不正確。無法繼續。"
   notice_principals_found_multiple: "找到 %{number} 條結果。\n Tab鍵以轉到第一條結果。"
   notice_principals_found_single: "有一個結果。 \n Tab鍵轉到該結果。"
@@ -3159,7 +3171,7 @@ zh-TW:
     count:
       zero: "0 個專案"
       one: "1 個專案"
-      other: "%{count} 專案"
+      other: "%{count} 個專案"
   project_module_activity: "活動"
   project_module_forums: "討論區"
   project_module_work_package_tracking: "工作項目"
@@ -3293,6 +3305,7 @@ zh-TW:
     activated: "已啟用"
     deactivated: "已停用"
   search_input_placeholder: "搜尋 ..."
+  setting_apiv3_cors_title: "跨原始來源資源共用 (CORS, Cross-Origin Resource Sharing)"
   setting_apiv3_cors_enabled: "啟用 CORS"
   setting_apiv3_cors_origins: "CROSS-ORIGIN RESOURCE SHARING (CORS)"
   setting_apiv3_cors_origins_text_html: >
@@ -3518,6 +3531,27 @@ zh-TW:
       new:
         heading: "新屬性"
         description: "專案屬性的變更將套用在已啟用該屬性專案中。 若為必要屬性，無法個別專案停用。"
+    project_life_cycle_step_definitions:
+      heading: "專案生命週期"
+      heading_description: "專案生命週期由結構專案的階段和關卡組成。它們會出現在專案的總覽頁面中，並可在專案清單中找到。可以選擇個別階段和關卡來自訂專案，但無法在專案層級上重新排序。"
+      label_add: "增加"
+      label_add_description: "新增生命週期定義"
+      label_add_stage: "階段"
+      label_add_gate: "關卡"
+      filter:
+        label: "搜尋專案階段或關卡"
+      section_header: "階段與關卡"
+      non_defined: "目前階段和關卡都未定義。"
+      new:
+        description: "此專案步驟的變更會反映在啟用此步驟的所有專案中。"
+      new_stage:
+        heading: "新增階段"
+      new_gate:
+        heading: "增加關卡"
+      edit_stage:
+        heading: "編輯階段"
+      edit_gate:
+        heading: "編輯關卡"
     projects:
       missing_dependencies: "已檢查依賴於 %{dependencies} 的項目模塊 %{module}。您也需要檢查這些依賴項。"
       section_new_projects: "新專案的設置"
@@ -3551,6 +3585,7 @@ zh-TW:
   text_are_you_sure_continue: "你要繼續嗎?"
   text_are_you_sure_with_children: "刪除工作項目以及所有子工作項目?"
   text_are_you_sure_with_project_custom_fields: "刪除該屬性也會刪除其在所有項目中的值。您確定要這樣做嗎？"
+  text_are_you_sure_with_project_life_cycle_step: "刪除此步驟也會刪除其在所有專案中的使用。您確定要這麼做？"
   text_assign_to_project: "分配給專案"
   text_form_configuration: >
     您可以自訂哪些欄位將會顯示在工作項目表單中。您可以自由的群組化這些欄位來符合您的需求。
@@ -3997,6 +4032,8 @@ zh-TW:
       builtin: 內建範例
       confidential: 機密
       singular: "Oauth 應用程式"
+      scopes: "範圍"
+      client_credentials: "客戶憑證"
       plural: "Oauth 應用程式"
       named: "OAuth 應用程式 '%{name}'"
       new: "新增 OAuth 應用程式"

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2025 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,28 +26,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module Types
-  PatternCollection = Data.define(:patterns) do
-    private_class_method :new
+# From v1.0 to v2.0 of store_attribute, the value for store_attribute_unset_values_fallback_to_default changed from
+# false to true. This initializer sets it back to false to keep the behavior consistent with the previous version.
 
-    def self.build(patterns:, contract: PatternCollectionContract.new)
-      contract.call(patterns).to_monad.fmap { |success| new(success.to_h) }
-    end
-
-    def initialize(patterns:)
-      transformed = patterns.transform_values { Pattern.new(**_1) }.freeze
-
-      super(patterns: transformed)
-    end
-
-    def [](value)
-      patterns.fetch(value)
-    end
-
-    def to_h
-      patterns.stringify_keys.transform_values(&:to_h)
-    end
-  end
-end
+StoreAttribute.store_attribute_unset_values_fallback_to_default = false

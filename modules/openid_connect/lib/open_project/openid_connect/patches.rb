@@ -28,27 +28,5 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  class PatternCollectionType < ActiveModel::Type::Value
-    def assert_valid_value(value)
-      cast(value)
-    end
-
-    def cast(value)
-      PatternCollection.build(patterns: value).value_or { nil }
-    end
-
-    def serialize(pattern)
-      return super if pattern.nil?
-
-      YAML.dump(pattern.to_h)
-    end
-
-    def deserialize(value)
-      return if value.blank?
-
-      data = YAML.safe_load(value)
-      cast(data)
-    end
-  end
+module OpenProject::OpenIDConnect::Patches
 end

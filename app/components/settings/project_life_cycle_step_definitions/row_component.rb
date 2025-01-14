@@ -28,12 +28,32 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  class PatternCollectionContract < Dry::Validation::Contract
-    params do
-      required(:subject).hash do
-        required(:blueprint).filled(:string)
-        required(:enabled).filled(:bool)
+module Settings
+  module ProjectLifeCycleStepDefinitions
+    class RowComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
+      include Projects::LifeCycleDefinitionHelper
+
+      alias_method :definition, :model
+
+      options :first?,
+              :last?
+
+      private
+
+      def move_action(menu:, move_to:, label:, icon:)
+        menu.with_item(
+          label:,
+          href: move_admin_settings_project_life_cycle_step_definition_path(definition, move_to:),
+          form_arguments: {
+            method: :patch
+          },
+          data: {
+            "projects--settings--border-box-filter-target": "hideWhenFiltering"
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon:)
+        end
       end
     end
   end
