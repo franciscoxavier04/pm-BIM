@@ -101,11 +101,11 @@ You can then continue working in the Excel spreadsheet to filter, group, or impo
 
 ## Export time sheets
 
-You can  **export reports for time entries** in PDF format under *Time and costs* module of your project. 
+You can  **export reports for time entries** in PDF format in the *Time and costs* module of your project. 
 
 >  [!TIP]
 >
-> Keep in mind that this report will only include time entries, but no the cost ones.
+> Keep in mind that this report will only include time entries, but not the cost ones.
 
 To prepare the export, first filter and set up the report according to your preferences and click the **Export PDF timesheet** button.
 
