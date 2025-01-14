@@ -29,7 +29,7 @@
 require "spec_helper"
 
 RSpec.describe "Primerized work package relations tab",
-               :js, :with_cuprite do
+               :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project) }

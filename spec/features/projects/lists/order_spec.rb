@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Projects lists ordering", :js, :with_cuprite, with_settings: { login_required?: false } do
+RSpec.describe "Projects lists ordering", :js, with_settings: { login_required?: false } do
   shared_let(:admin) { create(:admin) }
 
   shared_let(:custom_field) { create(:text_project_custom_field) }
