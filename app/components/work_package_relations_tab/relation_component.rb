@@ -2,15 +2,17 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   include ApplicationHelper
   include OpPrimer::ComponentHelpers
 
-  attr_reader :work_package, :relation, :child
+  attr_reader :work_package, :relation, :child, :visibility
 
   def initialize(work_package:,
                  relation:,
+                 visibility:,
                  child: nil)
     super()
 
     @work_package = work_package
     @relation = relation
+    @visibility = visibility
     @child = child
   end
 
