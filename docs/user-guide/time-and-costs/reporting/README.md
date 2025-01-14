@@ -98,7 +98,7 @@ You can then continue working in the Excel spreadsheet to filter, group, or impo
 
 ## Export time sheets
 
-You can  **export reports for time entries** in PDF format under *Time and costs* module of your project. 
+You can  **export reports for time entries** in PDF format in the *Time and costs* module of your project. 
 
 >  [!TIP]
 >
