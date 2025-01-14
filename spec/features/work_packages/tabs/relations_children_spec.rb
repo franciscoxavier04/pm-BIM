@@ -62,12 +62,30 @@ RSpec.describe "Relations children tab", :js, :with_cuprite do
       end
     end
 
-    context "when work package is a milestone" do
-      let(:work_package) { create(:work_package, type: type_milestone, project:, subject: "Parent") }
+    context "when work package is a milestone and user does not have manage_work_package_relations permission" do
+      let(:work_package) { create(:work_package, type: type_milestone, project:, subject: "Milestone") }
 
       it "does not show the action" do
         wp_page.visit_tab!("relations")
         relations_tab.expect_no_add_relation_button
+      end
+    end
+
+    context "when work package is a milestone and user has manage_work_package_relations permission" do
+      let!(:user) do
+        create(:user,
+               member_with_permissions: {
+                 project => %i[view_work_packages manage_subtasks manage_work_package_relations]
+               })
+      end
+      let(:work_package) { create(:work_package, type: type_milestone, project:, subject: "Milestone") }
+
+      it "shows the menu, but not the child actions" do
+        wp_page.visit_tab!("relations")
+        relations_tab.expect_add_relation_button
+        relations_tab.expect_new_relation_type("Related to")
+        relations_tab.expect_no_new_relation_type("Existing child")
+        relations_tab.expect_no_new_relation_type("New child")
       end
     end
   end
@@ -88,7 +106,7 @@ RSpec.describe "Relations children tab", :js, :with_cuprite do
       create(:user, member_with_permissions: { project => %i[view_work_packages manage_subtasks] })
     end
 
-    it "does not show the action" do
+    it "shows an action to add 'Existing child', but not to add 'New child'" do
       wp_page.visit_tab!("relations")
       relations_tab.expect_add_relation_button
       relations_tab.expect_new_relation_type("Existing child")
