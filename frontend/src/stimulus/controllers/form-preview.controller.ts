@@ -28,27 +28,19 @@
  * ++
  */
 
-import { ApplicationController } from 'stimulus-use';
+import { Controller } from '@hotwired/stimulus';
 
-export default class FormPreviewController extends ApplicationController {
+export default class FormPreviewController extends Controller<HTMLFormElement> {
   static values = { url: String };
 
-  declare readonly formTarget:HTMLFormElement;
   declare urlValue:string;
-
-  connect() {
-    // Ensure this.element is a form element
-    if (!(this.element instanceof HTMLFormElement)) {
-      throw new Error('The controller must be bound to a <form> element');
-    }
-  }
 
   async submit():Promise<void> {
     if (!this.urlValue) {
       return;
     }
 
-    const form = this.element as HTMLFormElement;
+    const form = this.element;
     form.action = this.urlValue;
 
     form.requestSubmit();
