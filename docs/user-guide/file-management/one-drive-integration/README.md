@@ -10,14 +10,16 @@ keywords: integration, apps, OneDrive, SharePoint, user
 
 You can use **OneDrive/SharePoint** as an integrated file storage in OpenProject.
 
-> **Note**: OneDrive/SharePoint integration is an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easy and helps support OpenProject.
+> [!NOTE]
+> OneDrive/SharePoint integration is an Enterprise add-on and can only be used with [Enterprise cloud](../../../enterprise-guide/enterprise-cloud-guide/) or [Enterprise on-premises](../../../enterprise-guide/enterprise-on-premises-guide/). An upgrade from the free Community edition is easy and helps support OpenProject.
 
 This integration makes it possible for you to:
 
 - Link files and folders stored in OneDrive/SharePoint with work packages in OpenProject
 - View, open and download files and folders linked to a work package via the **Files** tab
 
-> **Important note**: To be able to use OneDrive/SharePoint as a file storage in your project, the administrator of your instance should first have completed the [OneDrive/SharePoint integration setup](../../../system-admin-guide/integrations/one-drive). Then a project administrator can activate the integrated storage in the [File storages](../../projects/project-settings/files/) for a project.
+> [!IMPORTANT]
+> To be able to use OneDrive/SharePoint as a file storage in your project, the administrator of your instance should first have completed the [OneDrive/SharePoint integration setup](../../../system-admin-guide/integrations/one-drive). Then a project administrator can activate the integrated storage in the [File storages](../../projects/project-settings/files/) for a project.
 
 | Topic                                                        | Description                                                  |
 | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -61,11 +63,11 @@ To link a SharePoint file to the current work package, you can either:
 
 If the file you want to link has not yet been uploaded to SharePoint, you can do so by clicking on the **Upload files** link.
 
-![Upload file link in an OpenProject work package](Openproject_onedrive_upload_file_link.png)
+![Upload file link in an OpenProject work package](openproject_onedrive_upload_file_link.png)
 
 You will then be prompted to select a file (or multiple files) on your computer that you want to upload to OneDrive/SharePoint.
 
-![Choosing a file to upload to SharePoint in an OpenProject work package](oPenproject_onedrive_select_file.png)
+![Choosing a file to upload to SharePoint in an OpenProject work package](openproject_onedrive_select_file.png)
 
 Alternatively, you can also simply drag a file or folder from your computer to the drag zone that will appear under the name of your OneDrive/SharePoint file storage.
 
