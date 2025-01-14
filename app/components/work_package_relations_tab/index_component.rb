@@ -9,6 +9,7 @@
 class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   FRAME_ID = "work-package-relations-tab-content"
   NEW_RELATION_ACTION_MENU = "new-relation-action-menu"
+  NEW_CHILD_ACTION_MENU = "new-child-action-menu"
   I18N_NAMESPACE = "work_package_relations_tab"
   include ApplicationHelper
   include OpPrimer::ComponentHelpers
@@ -91,7 +92,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
           concat render(Primer::Beta::Counter.new(count: items.size, round: true, scheme: :primary))
         end
         header.with_column do
-          render(Primer::Alpha::ActionMenu.new(menu_id: "new-child-relation")) do |menu|
+          render(Primer::Alpha::ActionMenu.new(menu_id: NEW_CHILD_ACTION_MENU)) do |menu|
             menu.with_show_button do |button|
               button.with_leading_visual_icon(icon: :plus)
               button.with_trailing_action_icon(icon: :"triangle-down")
