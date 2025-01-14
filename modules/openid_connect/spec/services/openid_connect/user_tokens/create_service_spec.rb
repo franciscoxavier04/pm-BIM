@@ -29,7 +29,7 @@
 #++
 require "spec_helper"
 
-RSpec.describe OpenIDConnect::AssociateUserToken do
+RSpec.describe OpenIDConnect::UserTokens::CreateService do
   subject { described_class.new(user, jwt_parser: parser).call(**args) }
 
   let(:user) { create(:user) }
