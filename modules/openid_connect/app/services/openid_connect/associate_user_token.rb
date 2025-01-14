@@ -30,8 +30,9 @@
 
 module OpenIDConnect
   class AssociateUserToken
-    def initialize(user)
+    def initialize(user, jwt_parser: JwtParser.new(verify_audience: false, required_claims: ["aud"]))
       @user = user
+      @jwt_parser = jwt_parser
     end
 
     def call(access_token:, refresh_token: nil, known_audiences: [], clear_previous: false)
@@ -47,9 +48,24 @@ module OpenIDConnect
 
       @user.oidc_user_tokens.destroy_all if clear_previous
 
-      token = @user.oidc_user_tokens.build(access_token:, refresh_token:, audiences: Array(known_audiences))
-      # We should discover further audiences from the token in the future
+      token = prepare_token(access_token:, refresh_token:, known_audiences:)
       token.save! if token.audiences.any?
+    end
+
+    private
+
+    def prepare_token(access_token:, refresh_token:, known_audiences:)
+      @user.oidc_user_tokens.build(access_token:, refresh_token:).tap do |token|
+        token.audiences = merge_audiences(known_audiences, discover_audiences(access_token).value_or([]))
+      end
+    end
+
+    def discover_audiences(access_token)
+      @jwt_parser.parse(access_token).fmap { |decoded, _| Array(decoded["aud"]) }
+    end
+
+    def merge_audiences(*args)
+      args.flatten.uniq
     end
   end
 end
