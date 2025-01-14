@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,37 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class CustomFields::Inputs::Base::Input < ApplicationForm
-  include CustomFields::Inputs::Base::Utils
+module WorkPackages::Dialogs
+  class CreateFormComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-  attr_reader :options
+    attr_reader :work_package, :project
 
-  def initialize(custom_field:, object:, **options)
-    super()
+    def initialize(work_package:, project:)
+      super
 
-    @custom_field = custom_field
-    @object = object
-    @options = options
-  end
-
-  def input_attributes
-    base_input_attributes.merge(
-      {
-        data: { "qa-field-name": qa_field_name },
-        value:
-      }
-    )
-  end
-
-  def custom_value
-    @custom_value ||= @object.custom_value_for(@custom_field.id)
-  end
-
-  def invalid?
-    custom_value.errors.any?
-  end
-
-  def validation_message
-    custom_value.errors.full_messages.join(", ") if invalid?
+      @work_package = work_package
+      @project = project
+    end
   end
 end
