@@ -31,14 +31,21 @@
 module WorkPackages
   module ActivitiesTab
     module SharedHelpers
-      def truncated_user_name(user)
-        render(Primer::Beta::Link.new(
-                 href: user_url(user),
-                 target: "_blank",
-                 scheme: :primary,
-                 underline: false,
-                 font_weight: :bold
-               )) do
+      def truncated_user_name(user, hover_card: false)
+        link_options = {
+          href: user_url(user),
+          target: "_blank",
+          scheme: :primary,
+          underline: false,
+          font_weight: :bold
+        }
+
+        if hover_card
+          link_options[:classes] = "op-hover-card--preview-trigger"
+          link_options[:data] = { hover_card_url: hover_card_user_path(user) }
+        end
+
+        render(Primer::Beta::Link.new(**link_options)) do
           user.name
         end
       end
