@@ -102,7 +102,7 @@ You can  **export reports for time entries** in PDF format in the *Time and cost
 
 >  [!TIP]
 >
-> Keep in mind that this report will only include time entries, but no the cost ones.
+> Keep in mind that this report will only include time entries, but not the cost ones.
 
 To prepare the export, first filter and set up the report according to your preferences and click the **Export PDF timesheet** button.
 
