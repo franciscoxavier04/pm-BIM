@@ -98,14 +98,14 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
               t("work_package_relations_tab.label_add_child_button")
             end
 
-            render_child_items(menu)
+            render_child_menu_items(menu)
           end
         end
       end
     end
   end
 
-  def render_child_items(menu) # rubocop:disable Metrics/AbcSize
+  def render_child_menu_items(menu) # rubocop:disable Metrics/AbcSize
     return unless should_render_add_child?
 
     if helpers.current_user.allowed_in_project?(:add_work_packages, @work_package.project)
