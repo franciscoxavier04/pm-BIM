@@ -52,6 +52,7 @@ export default class PatternAutocompleterController extends Controller {
 
   connect() {
     this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
+    this.ensureSpacesAround();
   }
 
   // Input field events
@@ -162,6 +163,11 @@ export default class PatternAutocompleterController extends Controller {
     this.formInputTarget.value = this.toBlueprint();
   }
 
+  /**
+    * If there is no editable text before or after an uneditable node (e.g. a node that has `contenteditable="false"`),
+    * it's impossible to move the cursor there. As a workaround we ensure that there is at least
+    * a whitespace character at the beginning and end of our input field.
+    */
   private ensureSpacesAround():void {
     if (this.contentTarget.innerHTML.startsWith('<')) {
       this.contentTarget.insertBefore(document.createTextNode(' '), this.contentTarget.children[0]);
@@ -186,8 +192,10 @@ export default class PatternAutocompleterController extends Controller {
       const targetNode = this.currentRange.startContainer;
       const targetOffset = this.currentRange.startOffset;
 
+      if (!targetNode.textContent) { return; }
+
       let pos = targetOffset - 1;
-      while (pos > -1 && targetNode.textContent?.charAt(pos) !== ' ') { pos-=1; }
+      while (pos > -1 && !this.isWhitespace(targetNode.textContent.charAt(pos))) { pos-=1; }
 
       const wordRange = document.createRange();
       wordRange.setStart(targetNode, pos + 1);
@@ -283,10 +291,7 @@ export default class PatternAutocompleterController extends Controller {
   }
 
   private toHtml(blueprint:string):string {
-    let htmlValue = blueprint.replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
-    if (htmlValue.startsWith('<')) { htmlValue = ` ${htmlValue}`; }
-    if (htmlValue.endsWith('>')) { htmlValue = `${htmlValue} `; }
-    return htmlValue;
+    return blueprint.replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
   }
 
   private toBlueprint():string {
@@ -304,5 +309,9 @@ export default class PatternAutocompleterController extends Controller {
       }
     });
     return result.trim();
+  }
+
+  private isWhitespace(value:string):boolean {
+    return /\s/.test(value);
   }
 }
