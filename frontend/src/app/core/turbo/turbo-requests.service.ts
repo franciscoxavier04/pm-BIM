@@ -51,9 +51,9 @@ export class TurboRequestsService {
     url = form.action,
   ):Promise<{ html:string, headers:Headers }> {
     const formData = new FormData(form);
-    const requestParmas = params ? `?${params.toString()}` : '';
+    const requestParams = params ? `?${params.toString()}` : '';
     return this.request(
-      `${url}${requestParmas}`,
+      `${url}${requestParams}`,
       {
         method: form.method,
         body: formData,
