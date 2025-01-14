@@ -30,6 +30,8 @@
 module Filter
   # rubocop:disable OpenProject/AddPreviewForViewComponent
   class FilterComponent < ApplicationComponent
+    OPERATORS_WITHOUT_VALUES = %w[* !* t w].freeze
+
     # rubocop:enable OpenProject/AddPreviewForViewComponent
     options :query
     options always_visible: false
@@ -52,6 +54,14 @@ module Filter
     def allowed_filters
       query
         .available_advanced_filters
+    end
+
+    def value_hidden_class(selected_operator)
+      operator_without_value?(selected_operator) ? "hidden" : ""
+    end
+
+    def operator_without_value?(operator)
+      OPERATORS_WITHOUT_VALUES.include?(operator)
     end
 
     protected
