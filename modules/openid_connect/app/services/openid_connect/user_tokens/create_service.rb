@@ -29,43 +29,45 @@
 # +
 
 module OpenIDConnect
-  class AssociateUserToken
-    def initialize(user, jwt_parser: JwtParser.new(verify_audience: false, required_claims: ["aud"]))
-      @user = user
-      @jwt_parser = jwt_parser
-    end
-
-    def call(access_token:, refresh_token: nil, known_audiences: [], clear_previous: false)
-      if access_token.blank?
-        Rails.logger.error("Could not associate token to user: No access token")
-        return
+  module UserTokens
+    class CreateService
+      def initialize(user, jwt_parser: JwtParser.new(verify_audience: false, required_claims: ["aud"]))
+        @user = user
+        @jwt_parser = jwt_parser
       end
 
-      if @user.nil?
-        Rails.logger.error("Could not associate token to user: Can't find user")
-        return
+      def call(access_token:, refresh_token: nil, known_audiences: [], clear_previous: false)
+        if access_token.blank?
+          Rails.logger.error("Could not associate token to user: No access token")
+          return
+        end
+
+        if @user.nil?
+          Rails.logger.error("Could not associate token to user: Can't find user")
+          return
+        end
+
+        @user.oidc_user_tokens.destroy_all if clear_previous
+
+        token = prepare_token(access_token:, refresh_token:, known_audiences:)
+        token.save! if token.audiences.any?
       end
 
-      @user.oidc_user_tokens.destroy_all if clear_previous
+      private
 
-      token = prepare_token(access_token:, refresh_token:, known_audiences:)
-      token.save! if token.audiences.any?
-    end
-
-    private
-
-    def prepare_token(access_token:, refresh_token:, known_audiences:)
-      @user.oidc_user_tokens.build(access_token:, refresh_token:).tap do |token|
-        token.audiences = merge_audiences(known_audiences, discover_audiences(access_token).value_or([]))
+      def prepare_token(access_token:, refresh_token:, known_audiences:)
+        @user.oidc_user_tokens.build(access_token:, refresh_token:).tap do |token|
+          token.audiences = merge_audiences(known_audiences, discover_audiences(access_token).value_or([]))
+        end
       end
-    end
 
-    def discover_audiences(access_token)
-      @jwt_parser.parse(access_token).fmap { |decoded, _| Array(decoded["aud"]) }
-    end
+      def discover_audiences(access_token)
+        @jwt_parser.parse(access_token).fmap { |decoded, _| Array(decoded["aud"]) }
+      end
 
-    def merge_audiences(*args)
-      args.flatten.uniq
+      def merge_audiences(*args)
+        args.flatten.uniq
+      end
     end
   end
 end
