@@ -105,7 +105,7 @@ module WorkPackages
             mr: 1,
             classes: "work-packages-activities-tab-journals-item-component-details--user-name ellipsis hidden-for-mobile"
           ) do
-            truncated_user_name(journal.user)
+            truncated_user_name(journal.user, hover_card: true)
           end
         end
 
