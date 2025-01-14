@@ -30,11 +30,9 @@
 
 import { Controller } from '@hotwired/stimulus';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
-import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 
 export default class CreateDialogController extends Controller<HTMLFormElement> {
   private turboRequests:TurboRequestsService;
-  private pathHelper:PathHelperService;
 
   static values = {
     refreshUrl: String,
@@ -45,7 +43,6 @@ export default class CreateDialogController extends Controller<HTMLFormElement> 
   async connect() {
     const context = await window.OpenProject.getPluginContext();
     this.turboRequests = context.services.turboRequests;
-    this.pathHelper = context.services.pathHelperService;
   }
 
   refreshForm() {
