@@ -105,13 +105,6 @@ end
 
 register_better_cuprite "en"
 
-MODULES_WITH_CUPRITE_ENABLED = %w[
-  avatars
-  backlogs
-  job_status
-  meeting
-].freeze
-
 RSpec.configure do |config|
   config.around(:each, :js, type: :feature) do |example|
     # Skip if driver is explicitly requested
