@@ -232,14 +232,6 @@ Rails.application.reloader.to_prepare do
                      {},
                      permissible_on: :project_query,
                      require: :loggedin
-
-      map.permission :manage_own_reminders,
-                     {
-                       "work_packages/reminders": %i[modal_body create update destroy]
-                     },
-                     permissible_on: :project,
-                     contract_actions: { work_package_reminders: %i[modal_body] },
-                     require: :member
     end
 
     map.project_module :work_package_tracking, order: 90 do |wpt|
@@ -253,10 +245,12 @@ Rails.application.reloader.to_prepare do
                        "work_packages/activities_tab": %i[index update_streams update_sorting update_filter],
                        "work_packages/menus": %i[show],
                        "work_packages/hover_card": %i[show],
-                       work_package_relations_tab: %i[index]
+                       work_package_relations_tab: %i[index],
+                       "work_packages/reminders": %i[modal_body create update destroy]
                      },
                      permissible_on: %i[work_package project],
-                     contract_actions: { work_packages: %i[read] }
+                     contract_actions: { work_packages: %i[read],
+                                         work_package_reminders: %i[modal_body] }
 
       wpt.permission :add_work_packages,
                      {
