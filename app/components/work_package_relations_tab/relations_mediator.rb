@@ -29,21 +29,55 @@
 #++
 
 class WorkPackageRelationsTab::RelationsMediator
+  RelationGroup = Data.define(:type, :visible_relations, :invisible_relations)
+
   attr_reader :work_package
 
   def initialize(work_package:)
     @work_package = work_package
   end
 
-  def relations
-    @relations ||= work_package.relations.includes(:to, :from).visible
+  def visible_relations
+    @visible_relations ||= work_package.relations.includes(:to, :from).visible
   end
 
   def children
     @children ||= work_package.children.visible
   end
 
+  def invisible_relations
+    @invisible_relations = work_package.relations.includes(:to, :from).where.not(id: @visible_relations.select(:id))
+  end
+
+  def directionally_aware_grouped_relations
+    # Collect all unique relation types
+    all_relation_types = collect_all_relation_types
+
+    # Group visible and invisible relations by type
+    all_relation_types.map do |type|
+      RelationGroup.new(
+        type: type,
+        visible_relations: filter_relations_by_type(visible_relations, type),
+        invisible_relations: filter_relations_by_type(invisible_relations, type)
+      )
+    end
+  end
+
   def any_relations?
-    relations.any? || children.any?
+    visible_relations.any? || invisible_relations.any? || children.any?
+  end
+
+  private
+
+  def collect_all_relation_types
+    (visible_relations + invisible_relations).map do |relation|
+      relation.relation_type_for(work_package)
+    end.uniq
+  end
+
+  def filter_relations_by_type(relations, type)
+    relations.select do |relation|
+      relation.relation_type_for(work_package) == type
+    end
   end
 end
