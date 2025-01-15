@@ -94,6 +94,14 @@ export default class TimeEntryController extends Controller {
     this.datesChanged(event.currentTarget as HTMLInputElement);
   }
 
+  parsedHourInput():number {
+    const normalizedValue = this.hoursInputTarget.value.replace(',', '.');
+    return parseChronicDuration(normalizedValue, {
+      defaultUnit: 'hours',
+      ignoreSecondsWhenColonSeperated: true,
+    }) || 0;
+  }
+
   datesChanged(initiatedBy:HTMLInputElement) {
     if (!this.hasStartTimeInputTarget || !this.hasEndTimeInputTarget) {
       return;
@@ -104,7 +112,7 @@ export default class TimeEntryController extends Controller {
 
     const startTimeInMinutes = parseInt(startTimeParts[0], 10) * 60 + parseInt(startTimeParts[1], 10);
     const endTimeInMinutes = parseInt(endTimeParts[0], 10) * 60 + parseInt(endTimeParts[1], 10);
-    let hoursInMinutes = Math.round((parseChronicDuration(this.hoursInputTarget.value) || 0) / 60);
+    let hoursInMinutes = Math.round(this.parsedHourInput() / 60);
 
     // We calculate the hours field if:
     //  - We have start & end time and no hours
@@ -141,10 +149,7 @@ export default class TimeEntryController extends Controller {
   hoursChanged() {
     // Parse input through our chronic duration parser and then reformat as hours that can be nicely parsed on the
     // backend
-    const hours = parseChronicDuration(this.hoursInputTarget.value, {
-      defaultUnit: 'hours',
-      ignoreSecondsWhenColonSeperated: true,
-    });
+    const hours = this.parsedHourInput();
     this.hoursInputTarget.value = outputChronicDuration(hours, { format: 'hours_only' }) || '';
 
     this.datesChanged(this.hoursInputTarget);

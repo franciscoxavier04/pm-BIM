@@ -77,8 +77,34 @@ module Components
 
     def expect_work_package(subject)
       within modal_container do
-        expect(page).to have_css(".ng-value", text: subject, wait: 10)
+        expect(page).to have_css("opce-user-autocompleter > .ng-value", text: subject, wait: 10)
       end
+    end
+
+    def expect_user(user)
+      within modal_container do
+        expect(page).to have_css(".ng-value", text: user.name, wait: 10)
+      end
+    end
+
+    def shows_caption(caption)
+      within modal_container do
+        expect(page).to have_css(".FormControl-caption", text: caption)
+      end
+    end
+
+    def requires_field(field, required: true)
+      within modal_container do
+        if required
+          expect(page).to have_css "#time_entry_#{field}[aria-required=true]"
+        else
+          expect(page).to have_no_css "#time_entry_#{field}[aria-required=true]"
+        end
+      end
+    end
+
+    def trigger_field_change_event(field)
+      modal_container.find("#time_entry_#{field}").trigger("change")
     end
 
     def shows_field(field, visible)
@@ -89,6 +115,11 @@ module Components
           expect(page).to have_no_field "time_entry_#{field}"
         end
       end
+    end
+
+    def update_time_field(field_name, hour:, minute:)
+      built_time = browser_timezone.local(2025, 1, 1, hour, minute, 0)
+      page.fill_in "time_entry_#{field_name}", with: built_time.iso8601
     end
 
     def update_field(field_name, value)
@@ -143,6 +174,13 @@ module Components
     end
 
     private
+
+    def browser_timezone
+      return @browser_timezone if defined?(@browser_timezone)
+
+      browser_tz_name = page.evaluate_script("Intl.DateTimeFormat().resolvedOptions().timeZone")
+      @browser_timezone = ActiveSupport::TimeZone[browser_tz_name]
+    end
 
     def modal_container
       page.find("dialog#time-entry-dialog", visible: :all)
