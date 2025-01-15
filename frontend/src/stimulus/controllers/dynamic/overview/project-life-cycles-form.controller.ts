@@ -31,7 +31,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class ProjectLifeCyclesFormController extends Controller {
-  handleChange(event:Event) {
+  previewForm(event:Event) {
     const target = event.target as HTMLElement;
     if (this.datePickerVisible(target)) {
       return; // flatpickr is still open, do not submit yet.
@@ -41,9 +41,6 @@ export default class ProjectLifeCyclesFormController extends Controller {
   }
 
   datePickerVisible(element:HTMLElement) {
-    const nextElement = element.nextElementSibling;
-    return nextElement
-           && nextElement.classList.contains('flatpickr-calendar')
-           && nextElement.classList.contains('open');
+    return element.classList.contains('active');
   }
 }
