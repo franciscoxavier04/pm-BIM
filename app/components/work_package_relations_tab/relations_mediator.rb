@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,32 +28,22 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackageRelationsTabController < ApplicationController
-  include OpTurbo::ComponentStream
+class WorkPackageRelationsTab::RelationsMediator
+  attr_reader :work_package
 
-  before_action :set_work_package
-  before_action :authorize_global
-
-  def index
-    component = WorkPackageRelationsTab::IndexComponent.new(work_package: @work_package)
-
-    respond_to do |format|
-      format.html do
-        render(component, layout: false)
-      end
-      format.turbo_stream do
-        replace_via_turbo_stream(component:)
-        render turbo_stream: turbo_streams
-      end
-    end
+  def initialize(work_package:)
+    @work_package = work_package
   end
 
-  private
+  def relations
+    @relations ||= work_package.relations.includes(:to, :from).visible
+  end
 
-  def set_work_package
-    @work_package = WorkPackage.find(params[:work_package_id])
-    @project = @work_package.project # required for authorization via before_action
-  rescue ActiveRecord::RecordNotFound
-    render_404
+  def children
+    @children ||= work_package.children.visible
+  end
+
+  def any_relations?
+    relations.any? || children.any?
   end
 end

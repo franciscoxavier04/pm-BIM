@@ -16,20 +16,18 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   include Turbo::FramesHelper
   include OpTurbo::Streamable
 
-  attr_reader :work_package, :relations, :children, :directionally_aware_grouped_relations, :relation_to_scroll_to
+  attr_reader :relations_mediator, :directionally_aware_grouped_relations, :relation_to_scroll_to
+
+  delegate :work_package, :relations, :children, :any_relations?, to: :relations_mediator
 
   # Initialize the component with required data
   #
   # @param work_package [WorkPackage] The work package whose relations are being displayed
-  # @param relations [Array<Relation>] The relations associated with this work package
-  # @param children [Array<WorkPackage>] Child work packages
   # @param relation_to_scroll_to [Relation, WorkPackage, nil] Optional relation or child to scroll to when rendering
-  def initialize(work_package:, relations:, children:, relation_to_scroll_to: nil)
+  def initialize(work_package: nil, relation_to_scroll_to: nil)
     super()
 
-    @work_package = work_package
-    @relations = relations
-    @children = children
+    @relations_mediator = WorkPackageRelationsTab::RelationsMediator.new(work_package:)
     @directionally_aware_grouped_relations = group_relations_by_directional_context
     @relation_to_scroll_to = relation_to_scroll_to
   end
@@ -41,13 +39,13 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   private
 
   def should_render_add_child?
-    return false if @work_package.milestone?
+    return false if work_package.milestone?
 
-    helpers.current_user.allowed_in_project?(:manage_subtasks, @work_package.project)
+    helpers.current_user.allowed_in_project?(:manage_subtasks, work_package.project)
   end
 
   def should_render_add_relations?
-    helpers.current_user.allowed_in_project?(:manage_work_package_relations, @work_package.project)
+    helpers.current_user.allowed_in_project?(:manage_work_package_relations, work_package.project)
   end
 
   def should_render_create_button?
@@ -59,8 +57,6 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
       relation.relation_type_for(work_package)
     end
   end
-
-  def any_relations? = relations.any? || children.any?
 
   def render_relation_group(title:, relation_type:, items:, &_block)
     render(border_box_container(
@@ -109,7 +105,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   def render_child_menu_items(menu) # rubocop:disable Metrics/AbcSize
     return unless should_render_add_child?
 
-    if helpers.current_user.allowed_in_project?(:add_work_packages, @work_package.project)
+    if helpers.current_user.allowed_in_project?(:add_work_packages, work_package.project)
       menu.with_item(
         label: t("work_package_relations_tab.relations.new_child"),
         href: new_project_work_packages_dialog_path(work_package.project, parent_id: work_package.id),
