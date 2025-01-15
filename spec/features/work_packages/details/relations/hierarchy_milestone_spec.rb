@@ -28,7 +28,7 @@
 
 require "spec_helper"
 
-RSpec.describe "work package hierarchies for milestones", :js, :with_cuprite do
+RSpec.describe "work package hierarchies for milestones", :js do
   let(:user) { create(:admin) }
   let(:task_type) { create(:type_task) }
   let(:milestone_type) { create(:type_milestone) }
@@ -50,12 +50,14 @@ RSpec.describe "work package hierarchies for milestones", :js, :with_cuprite do
   end
 
   it "does not provide links to add children or existing children (Regression #28745 and #60512)" do
-    # A work package has a menu entry to link a child
+    # A work package has a menu entry to link or create a child
     visit_relations_tab_for(task_work_package)
-    relations.expect_new_relation_type("Child")
+    relations.expect_new_relation_type("New child")
+    relations.expect_new_relation_type("Existing child")
 
-    # A milestone work package does NOT have a menu entry to link a child
+    # A milestone work package does NOT have a menu entry to link or create a child
     visit_relations_tab_for(milestone_work_package)
-    relations.expect_no_new_relation_type("Child")
+    relations.expect_no_new_relation_type("New child")
+    relations.expect_no_new_relation_type("Existing child")
   end
 end

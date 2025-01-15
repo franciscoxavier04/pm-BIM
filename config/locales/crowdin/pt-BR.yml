@@ -665,6 +665,7 @@ pt-BR:
       no_results_title_text: No momento, não há relações disponíveis.
       blankslate_heading: "Sem vínculos"
       blankslate_description: "Este pacote de trabalho ainda não está relacionado a nenhum outro."
+    label_add_child_button: "Child"
     label_add_x: "Adicionar %{x}"
     label_edit_x: "Editar %{x}"
     label_add_description: "Adicionar descrição"
@@ -673,6 +674,7 @@ pt-BR:
       title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "relacionado a"
       label_relates_plural: "relacionado a"
       label_relates_to_singular: "relacionado a"
@@ -687,6 +689,9 @@ pt-BR:
       follows_description: "O pacote de trabalho relacionado deve ser finalizado antes que este possa ser iniciado"
       label_child_singular: "filho"
       label_child_plural: "filhos"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocos"
       label_blocks_plural: "blocos"

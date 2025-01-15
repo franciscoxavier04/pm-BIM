@@ -713,7 +713,7 @@ GEM
     launchy (3.0.1)
       addressable (~> 2.8)
       childprocess (~> 5.0)
-    lefthook (1.10.3)
+    lefthook (1.10.4)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
     letter_opener_web (3.0.0)
@@ -818,7 +818,7 @@ GEM
       actionview
       openproject-octicons (= 19.20.0)
       railties
-    openproject-primer_view_components (0.51.0)
+    openproject-primer_view_components (0.52.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.20.0)
@@ -1020,7 +1020,7 @@ GEM
     rspec-support (3.13.2)
     rspec-wait (1.0.1)
       rspec (>= 3.4)
-    rubocop (1.69.2)
+    rubocop (1.70.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -1324,7 +1324,7 @@ DEPENDENCIES
   openproject-octicons (~> 19.20.0)
   openproject-octicons_helper (~> 19.20.0)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.51.0)
+  openproject-primer_view_components (~> 0.52.0)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!

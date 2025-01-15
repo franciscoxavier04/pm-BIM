@@ -87,5 +87,6 @@ class WorkPackageRelationsTab::RelationsMediator
     relations.select do |relation|
       relation.relation_type_for(work_package) == type
     end
+
   end
 end
