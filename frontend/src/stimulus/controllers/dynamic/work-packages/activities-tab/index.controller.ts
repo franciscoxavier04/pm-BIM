@@ -350,7 +350,7 @@ export default class IndexController extends Controller {
     if (window.location.hash.includes('#activity-')) {
       const activityId = window.location.hash.replace('#activity-', '');
       this.scrollToActivity(activityId);
-    } else if (this.sortingValue === 'asc' && !this.isMobile()) {
+    } else if (this.sortingValue === 'asc' && (!this.isMobile() || this.isWithinNotificationCenter())) {
       this.scrollToBottom();
     }
   }
