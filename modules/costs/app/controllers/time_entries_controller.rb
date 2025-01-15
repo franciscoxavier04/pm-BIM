@@ -168,10 +168,11 @@ class TimeEntriesController < ApplicationController
 
   def load_or_build_and_authorize_time_entry
     @time_entry = if params[:id]
-                    TimeEntry.visible.find_by(id: params[:id]).tap do |entry|
-                      if entry.blank? || !TimeEntries::UpdateContract.new(entry, current_user).user_allowed_to_update?
-                        deny_access(not_found: true)
-                      end
+                    entry = TimeEntry.find_by(id: params[:id])
+                    if entry.blank? || !TimeEntries::UpdateContract.new(entry, current_user).user_allowed_to_update?
+                      deny_access(not_found: true)
+                    else
+                      entry
                     end
                   else
                     TimeEntry.new(project: @project, work_package: @work_package, user: User.current)

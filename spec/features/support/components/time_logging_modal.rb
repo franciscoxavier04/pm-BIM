@@ -145,7 +145,7 @@ module Components
     private
 
     def modal_container
-      page.find("dialog#time-entry-dialog")
+      page.find("dialog#time-entry-dialog", visible: :all)
     end
   end
 end

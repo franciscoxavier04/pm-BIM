@@ -30,7 +30,8 @@ require "spec_helper"
 
 require_relative "../../support/pages/my/page"
 
-RSpec.describe "My page time entries current user widget spec", :js do
+# Test is flaky when using cuprite, but steady with selenium
+RSpec.describe "My page time entries current user widget spec", :js, :selenium do
   let!(:type) { create(:type) }
   let!(:project) { create(:project, types: [type]) }
   let!(:activity) { create(:time_entry_activity) }
@@ -288,7 +289,7 @@ RSpec.describe "My page time entries current user widget spec", :js do
 
     uncheck "Monday" # the day visible_time_entry is logged for
 
-    click_button "Apply"
+    click_on "Apply"
 
     within entries_area.area do
       expect(page)
