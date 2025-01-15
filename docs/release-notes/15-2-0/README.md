@@ -17,13 +17,28 @@ At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### Work package reminders
+
+### Export timesheets as PDF
+
+### Edit lag to folow-precedes relations
+
+### Group and order by for custom fields of type hierarchy
+
+### Create new folder directly when using file storages integrations
+
+### Popover on user information on hover
+
+### Continued updating page headers and subheaders
+https://community.openproject.org/projects/openproject/work_packages/53810
 
 ## Important updates and breaking changes
 
 <!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
 
 <!--more-->
+
+https://community.openproject.org/projects/openproject/work_packages/59872 
 
 ## Bug fixes and changes
 
@@ -55,12 +70,12 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Andrej Sandorf, Stefan Weiberg.
+A heartfelt thank you to the City of Cologne for sponsoring parts of this release. Your support, combined with the incredible efforts of our Community, continues to drive these innovations forward.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Andrej Sandorf, Stefan Weiberg.
+
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
+- ADD
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
 
