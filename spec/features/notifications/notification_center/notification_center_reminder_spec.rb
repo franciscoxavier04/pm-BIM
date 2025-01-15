@@ -47,18 +47,10 @@ RSpec.describe "Notification center reminder, mention and date alert",
     wait_for_reload
   end
 
-  it "shows the reminder alert in own entry" do
+  it "shows the reminder alert within aggregation with reminder note" do
     center.within_item(notification_reminder) do
-      expect(page).to have_text("##{work_package.id}\n- #{project.name} -\nReminder")
-      expect(page).to have_no_text("Actor user")
+      expect(page).to have_text("Date alert, Mentioned, Reminder")
       expect(page).to have_text("a few seconds ago.\nNote: “This is an important reminder”")
-    end
-  end
-
-  it "shows other notification reasons aggregated" do
-    center.within_item(notification_date_alert) do
-      expect(page).to have_text("##{work_package.id}\n- #{project.name} -\nDate alert, Mentioned")
-      expect(page).to have_no_text("Actor user")
     end
   end
 end
