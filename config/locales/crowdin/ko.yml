@@ -658,6 +658,7 @@ ko:
       no_results_title_text: 현재 사용 가능한 관계가 없습니다.
       blankslate_heading: "관계 없음"
       blankslate_description: "이 작업 패키지에는 아직 관계가 없습니다."
+    label_add_child_button: "Child"
     label_add_x: "%{x} 추가"
     label_edit_x: "%{x} 편집"
     label_add_description: "설명 추가"
@@ -666,6 +667,7 @@ ko:
       title: "지연(일)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "관련 항목"
       label_relates_plural: "관련 항목"
       label_relates_to_singular: "관련 항목"
@@ -680,6 +682,9 @@ ko:
       follows_description: "이 패키지를 시작하려면 관련 작업 패키지가 반드시 먼저 완료되어야 합니다"
       label_child_singular: "자식"
       label_child_plural: "자식"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "블록"
       label_blocks_plural: "블록"

@@ -668,6 +668,7 @@ eu:
       no_results_title_text: There are currently no relations available.
       blankslate_heading: "No relations"
       blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
     label_add_x: "Add %{x}"
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
@@ -676,6 +677,7 @@ eu:
       title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
       label_relates_plural: "related to"
       label_relates_to_singular: "related to"
@@ -690,6 +692,9 @@ eu:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
