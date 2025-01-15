@@ -18,10 +18,11 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   attr_reader :relations_mediator, :relation_to_scroll_to
 
   delegate :work_package,
-           :visible_relations,
-           :children,
+           :visible_children,
+           :invisible_children,
            :directionally_aware_grouped_relations,
            :any_relations?,
+           :any_children?,
            to: :relations_mediator
   # Initialize the component with required data
   #

@@ -82,19 +82,23 @@
         end
 
         # Children
-        if children.any?
+        if any_children?
           base_key = "#{key_namespace}.label_child"
+
+          # Combine visible and invisible children into a single list
+          all_children = visible_children.map { |r| [r, :visible] } +
+            invisible_children.map { |r| [r, :ghost] }
 
           flex.with_row do
             render_relation_group(
               title: t("#{base_key}_plural").capitalize,
               relation_type: :children,
-              items: children
-            ) do |child|
+              items: all_children
+            ) do |child, visibility|
               render(WorkPackageRelationsTab::RelationComponent.new(work_package:,
                                                                     relation: nil,
                                                                     child:,
-                                                                    visibility: :visible))
+                                                                    visibility: visibility))
             end
           end
         end

@@ -41,12 +41,16 @@ class WorkPackageRelationsTab::RelationsMediator
     @visible_relations ||= work_package.relations.includes(:to, :from).visible
   end
 
-  def children
-    @children ||= work_package.children.visible
+  def visible_children
+    @visible_children ||= work_package.children.visible
   end
 
   def invisible_relations
     @invisible_relations = work_package.relations.includes(:to, :from).where.not(id: @visible_relations.select(:id))
+  end
+
+  def invisible_children
+    @invisible_children ||= work_package.children.where.not(id: @visible_children.select(:id))
   end
 
   def directionally_aware_grouped_relations
@@ -65,6 +69,10 @@ class WorkPackageRelationsTab::RelationsMediator
 
   def any_relations?
     visible_relations.any? || invisible_relations.any? || children.any?
+  end
+
+  def any_children?
+    visible_children.any? || invisible_children.any?
   end
 
   private
