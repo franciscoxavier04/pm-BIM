@@ -54,7 +54,7 @@ module Projects::LifeCycles
         leading_visual: { icon: :calendar },
         datepicker_options: {
           inDialog: true,
-          data: { action: "change->overview--project-life-cycles-form#handleChange" }
+          data: { action: "change->overview--project-life-cycles-form#previewForm" }
         },
         wrapper_data_attributes: {
           "qa-field-name": qa_field_name
