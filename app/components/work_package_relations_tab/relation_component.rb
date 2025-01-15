@@ -34,6 +34,8 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def should_render_action_menu?
+    return false unless visible?
+
     if parent_child_relationship?
       allowed_to_manage_subtasks?
     else
@@ -47,6 +49,10 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
 
   def allowed_to_manage_relations?
     helpers.current_user.allowed_in_project?(:manage_work_package_relations, @work_package.project)
+  end
+
+  def visible?
+    @visibility == :visible
   end
 
   def underlying_resource_id
