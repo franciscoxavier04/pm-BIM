@@ -52,7 +52,7 @@ You can select one of the following relations:
 > [!TIP]
 > Prior to 15.1, *Predecessor (before)* was called *Precedes*, and *Successor (after)* was called *Follows*.
 
-For the relations of type Predecessor/Successor, you can also define **Lag**, which is the minimum number of working days to keep in between the two work packages. The default setting for Lag is 0 working days. You can always edit the *Description* and *Lag* fields at a later time.
+For the relations of type Predecessor/Successor, you can also define **Lag**, which is the minimum number of working days to keep in between the two work packages. The default setting for lag is 0 working days. You can always edit the *Description* and *Lag* fields at a later time.
 
 ![Add a successor work package in OpenProject](openproject_user_guide_relations_tab_edit_lag.png)
 
