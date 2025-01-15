@@ -175,9 +175,9 @@ class RecurringMeetingsController < ApplicationController
     service = ::RecurringMeetings::ICalService.new(user: current_user, series: @recurring_meeting)
     filename, result =
       if params[:occurrence_id].present?
-        scheduled_meeting = @recurring_meeting.scheduled_meetings.find_by(meeting_id: params[:occurrence_id])
-        ["#{@recurring_meeting.title} - #{scheduled_meeting.start_time.to_date.iso8601}",
-         service.generate_occurrence(scheduled_meeting)]
+        occurrence = @recurring_meeting.meetings.find_by(id: params[:occurrence_id])
+        ["#{@recurring_meeting.title} - #{occurrence.start_time.to_date.iso8601}",
+         service.generate_occurrence(occurrence)]
       else
         [@recurring_meeting.title, service.generate_series]
       end

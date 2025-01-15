@@ -57,12 +57,14 @@ module RecurringMeetings
       ServiceResult.failure(message: e.message)
     end
 
-    def generate_occurrence(scheduled_meeting)
+    def generate_occurrence(meeting)
+      # Get the time the meeting was scheduled to take place
+      scheduled_meeting = meeting.scheduled_meeting
       ical_result(scheduled_meeting) do
-        occurrence_event(scheduled_meeting.start_time, scheduled_meeting.meeting)
+        occurrence_event(scheduled_meeting.start_time, meeting)
       end
     rescue StandardError => e
-      Rails.logger.error("Failed to generate ICS for meeting #{scheduled_meeting.meeting_id}: #{e.message}")
+      Rails.logger.error("Failed to generate ICS for meeting #{meeting.id}: #{e.message}")
       ServiceResult.failure(message: e.message)
     end
 

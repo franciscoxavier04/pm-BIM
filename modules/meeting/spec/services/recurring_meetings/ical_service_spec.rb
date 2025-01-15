@@ -145,7 +145,7 @@ RSpec.describe RecurringMeetings::ICalService, type: :model do # rubocop:disable
     end
 
     context "when passing a specific occurrence" do
-      let(:result) { service.generate_occurrence(schedule).result }
+      let(:result) { service.generate_occurrence(schedule.meeting).result }
 
       it "creates the specific event when requested" do
         expect(parsed_events.count).to eq(1)
