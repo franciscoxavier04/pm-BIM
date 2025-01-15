@@ -221,7 +221,7 @@ RSpec.describe "Notification center date alerts", :js, :with_cuprite,
       center.expect_item(notification_wp_due_today, "Finish date is today.")
 
       # Doesn't show the date alert for the mention, not the alert
-      center.expect_item(notification_wp_double_mention, /(seconds|minutes) ago by Anonymous/)
+      center.expect_item(notification_wp_double_mention, "Finish date is in 1 day.")
       center.expect_no_item(notification_wp_double_date_alert)
 
       # When switch to date alerts, it shows the alert, no longer the mention

@@ -107,7 +107,8 @@ export class InAppNotificationDateAlertComponent implements OnInit {
   private deriveMostRelevantAlert(aggregatedNotifications:INotification[]) {
     // Second case: We have one date alert + some others
     const dateAlerts = aggregatedNotifications.filter((notification) => notification.reason === 'dateAlert');
-    const first = aggregatedNotifications[0];
+    const first = dateAlerts[0];
+
     if (dateAlerts.length > 1) {
       const found = dateAlerts.find((notification) => notification._embedded.details[0].property === 'dueDate');
       return found || first;
