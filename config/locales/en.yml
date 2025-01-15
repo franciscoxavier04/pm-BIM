@@ -799,6 +799,8 @@ en:
 
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
 
   label_invitation: Invitation
   account:

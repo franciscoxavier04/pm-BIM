@@ -34,8 +34,6 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def should_render_action_menu?
-    return false unless visible?
-
     if parent_child_relationship?
       allowed_to_manage_subtasks?
     else
