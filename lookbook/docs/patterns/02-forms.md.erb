@@ -176,7 +176,7 @@ In the example below we can see how the preview mechanism can be applied to form
 
 #### How it works:
 
-The form preview mechanism can be applied to any form by binding the `form-preview` stimulus controller to it and then watch the input fields for changes:
+The form preview mechanism can be applied to any form by binding the `form-preview` global stimulus controller to it and then watch the input fields for changes:
 
   ```ruby
     primer_form_with(
@@ -196,39 +196,37 @@ The form preview mechanism can be applied to any form by binding the `form-previ
 
 #### Customizing the triggering mechanism:
 
-In some cases we might want to further customize the triggering behaviour, for example when using a date range picker input field. For date range pickers we want to trigger the form preview only when the both the start and end dates are chosen and the datepicker is closed. The solution is to create a form specific controller that will decide if the `form-preview` controller should be called.
+In some cases we might want to further customize the triggering behaviour, for example when using a date range picker input field. For date range pickers we want to trigger the form preview only when the both the start and end dates are chosen and the datepicker is closed. The solution is to create a form specific controller that will inherit from the `FormPreviewController` controller, and it decides if the `submit` action needs to be called.
 
-1. The form specific controller handles the input changes on the form. It also dispatches the arbitrarily chosen `triggerFormPreview` event when the date range picker is not visible anymore.
+1. The form specific controller handles the input changes on the form. It also calls the `submit()` function from the parent controller when the date range picker is not visible anymore.
 
     ```typescript
-      export default class CustomFormPreviewFormController extends Controller {
-        handleChange(event:Event) {
+      export default class CustomFormPreviewFormController extends FormPreviewController {
+        previewForm(event:Event) {
           const target = event.target as HTMLElement;
           if (this.datePickerVisible(target)) {
             return; // The datepicker is still open, do not submit yet.
           }
 
-          this.dispatch('triggerFormPreview');
+          this.submit();
         }
       }
     ```
-2. In order to chain the `custom-form-preview` and `form-preview` controller events, the following definition needs to be added on the form:
+2. The definition of the controller and the preview url should also point to the new controller:
 
     ```ruby
       primer_form_with(
         url: "/foo",
         method: :get,
         data: {
-          "controller": "custom-form-preview form-preview",
-          "action": "custom-form-preview:triggerFormPreview->form-preview#submit",
-          "form-preview-url-value": preview_path
+          "controller": "custom-form-preview",
+          "custom-form-preview-url-value": preview_path
         }
       ) do |f|
-        f.text_field(name: :answer, data: { action: "change->custom-form-preview#handleChange" })
+        f.text_field(name: :answer, data: { action: "change->custom-form-preview#previewForm" })
       end
     ```
-  - The `"action": "custom-form-preview:triggerFormPreview->form-preview#submit"` will route the `custom-form-preview#handleChange` action to the `form-preview#submit` action via the dispatched `triggerFormPreview` event.
-  - The `data: { action: "change->custom-form-preview#handleChange" }` watches the input changes and calls the `custom-form-preview#handleChange`.
+  - The `data: { action: "change->custom-form-preview#previewForm" }` watches the input changes and calls the `custom-form-preview#previewForm`.
 
 **Important note:** Javascript rendered elements inside the form such as the datepicker above, could be broken after the form update. This happens, because the datepicker input get replaced without re-initializing the datepicker library. To fix the issue, we can either avoid updating the datepicker input elements using "data-turbo-permanent", or we can programatically re-initialize them after the form update. In case of angular components, this issue is solved automatically by not updating them the components. For more info see the `turbo:before-morph-element` eventlistener in the `turbo-global-listeners.ts`.
 

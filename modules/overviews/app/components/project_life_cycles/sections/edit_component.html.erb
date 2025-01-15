@@ -6,9 +6,8 @@
       model:,
       method: :put,
       data: {
-        "controller": "overview--project-life-cycles-form form-preview",
-        "action": "overview--project-life-cycles-form:triggerFormPreview->form-preview#submit",
-        "form-preview-url-value": project_life_cycles_form_path(project_id: model.id),
+        "controller": "overview--project-life-cycles-form",
+        "overview--project-life-cycles-form-url-value": project_life_cycles_form_path(project_id: model.id),
         "application-target": "dynamic",
         turbo: true,
         turbo_stream: true,

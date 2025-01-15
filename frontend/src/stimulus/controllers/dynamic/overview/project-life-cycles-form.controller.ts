@@ -28,16 +28,16 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
+import FormPreviewController from '../../form-preview.controller';
 
-export default class ProjectLifeCyclesFormController extends Controller {
+export default class ProjectLifeCyclesFormController extends FormPreviewController {
   previewForm(event:Event) {
     const target = event.target as HTMLElement;
     if (this.datePickerVisible(target)) {
       return; // flatpickr is still open, do not submit yet.
     }
 
-    this.dispatch('triggerFormPreview');
+    void this.submit();
   }
 
   datePickerVisible(element:HTMLElement) {
