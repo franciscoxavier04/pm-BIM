@@ -173,18 +173,19 @@ class RecurringMeetingsController < ApplicationController
 
   def download_ics # rubocop:disable Metrics/AbcSize
     service = ::RecurringMeetings::ICalService.new(user: current_user, series: @recurring_meeting)
-    result =
+    filename, result =
       if params[:occurrence_id].present?
         scheduled_meeting = @recurring_meeting.scheduled_meetings.find_by(meeting_id: params[:occurrence_id])
-        service.generate_occurrence(scheduled_meeting)
+        ["#{@recurring_meeting.title} - #{scheduled_meeting.start_time.to_date.iso8601}",
+         service.generate_occurrence(scheduled_meeting)]
       else
-        service.generate_series
+        [@recurring_meeting.title, service.generate_series]
       end
 
     result
       .on_failure { |call| render_500(message: call.message) }
       .on_success do |call|
-      send_data call.result, filename: filename_for_content_disposition("#{@recurring_meeting.title}.ics")
+      send_data call.result, filename: filename_for_content_disposition("#{filename}.ics")
     end
   end
 
