@@ -54,6 +54,12 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
     expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
   end
 
+  it "enables the submit button" do
+    render_component
+
+    expect(page.find("button[type=submit]")).not_to be_disabled
+  end
+
   context "when enterprise edition is not activated" do
     before do
       allow(EnterpriseToken).to receive(:active?).and_return(false)
@@ -72,6 +78,12 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
       expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
     end
 
+    it "disables the submit button" do
+      render_component
+
+      expect(page.find("button[type=submit]")).to be_disabled
+    end
+
     context "and when the subject is already automatically generated" do
       let(:type) { create(:type, patterns: { subject: { blueprint: "Hello world", enabled: true } }) }
 
@@ -86,6 +98,12 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
 
         expect(page.find("input[type=radio][value=auto]")).not_to be_disabled
         expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
+      end
+
+      it "enables the submit button" do
+        render_component
+
+        expect(page.find("button[type=submit]")).not_to be_disabled
       end
     end
   end

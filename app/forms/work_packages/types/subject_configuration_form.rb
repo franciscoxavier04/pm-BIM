@@ -67,7 +67,12 @@ module WorkPackages
           )
         end
 
-        subject_form.submit(name: :submit, label: I18n.t(:button_save), scheme: :primary)
+        subject_form.submit(
+          name: :submit,
+          label: I18n.t(:button_save),
+          disabled: !EnterpriseToken.active? && !has_pattern?,
+          scheme: :primary
+        )
       end
 
       private
