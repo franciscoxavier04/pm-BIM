@@ -118,7 +118,7 @@ module RecurringMeetings
         e.dtend = ical_datetime meeting.end_time, tzid
         e.url = url_helpers.project_meeting_url(meeting.project, meeting)
         e.location = meeting.location.presence
-        e.sequence = 2
+        e.sequence = meeting.lock_version
 
         add_attendees(e, meeting)
       end
