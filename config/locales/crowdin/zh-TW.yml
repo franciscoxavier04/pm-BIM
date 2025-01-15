@@ -30,7 +30,7 @@ zh-TW:
         no_results_description_text: "選擇「顯示所有內容」以顯示所有活動和留言"
         label_activity_show_all: "全部顯示"
         label_activity_show_only_comments: "僅顯示留言"
-        label_activity_show_only_changes: "僅顯示差異"
+        label_activity_show_only_changes: "僅顯示檔案異動"
         label_sort_asc: "最新的在最下面"
         label_sort_desc: "最新的在最上面"
         label_type_to_comment: "留言。輸入 @ 來通知他人。"
