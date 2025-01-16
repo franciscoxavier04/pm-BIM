@@ -40,7 +40,7 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationController do
   context "when the user is not logged in" do
     let(:user) { User.anonymous }
 
-    it "responds with forbidden" do
+    it "requires login" do
       put :update_subject_configuration, params: { id: wp_type.id }
       expect(response.status).to redirect_to signin_url(back_url: subject_configuration_type_url(wp_type))
     end
@@ -73,7 +73,7 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationController do
 
     context "if form data is invalid" do
       let(:form_data) { { subject_configuration: "generated", pattern: nil } }
-      let(:expected_pattern_data) { { subject: { blueprint: "", enabled: true } } }
+      let(:expected_pattern_data) { { "subject" => { blueprint: "", enabled: true } } }
       let(:service_result) { ServiceResult.failure }
 
       it "renders the edit template" do
@@ -85,7 +85,7 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationController do
     context "if form data is valid" do
       context "with generated subject configuration" do
         let(:form_data) { { subject_configuration: "generated", pattern: "Vacation - {{assignee}}" } }
-        let(:expected_pattern_data) { { subject: { blueprint: "Vacation - {{assignee}}", enabled: true } } }
+        let(:expected_pattern_data) { { "subject" => { blueprint: "Vacation - {{assignee}}", enabled: true } } }
         let(:service_result) { ServiceResult.success }
 
         it "redirects to the current tab path" do
@@ -95,7 +95,7 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationController do
 
       context "with manual subject configuration, but still persisted blueprint" do
         let(:form_data) { { subject_configuration: "manual", pattern: "Vacation - {{assignee}}" } }
-        let(:expected_pattern_data) { { subject: { blueprint: "Vacation - {{assignee}}", enabled: false } } }
+        let(:expected_pattern_data) { { "subject" => { blueprint: "Vacation - {{assignee}}", enabled: false } } }
         let(:service_result) { ServiceResult.success }
 
         it "redirects to the current tab path" do
@@ -105,7 +105,7 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationController do
 
       context "with manual subject configuration and no blueprint" do
         let(:form_data) { { subject_configuration: "manual", pattern: nil } }
-        let(:expected_pattern_data) { nil }
+        let(:expected_pattern_data) { {} }
         let(:service_result) { ServiceResult.success }
 
         it "redirects to the current tab path" do

@@ -614,8 +614,6 @@ class PermittedParams
           :color_id,
           :default,
           :description,
-          :subject_configuration,
-          :subject_pattern,
           { project_ids: [] }
         ],
         user: %i(

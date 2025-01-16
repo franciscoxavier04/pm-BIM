@@ -63,19 +63,29 @@ module WorkPackages
       def tab_path = edit_tab_type_path(id: @type.id, tab: :subject_configuration)
 
       def pattern_collection_update(form_params)
-        case form_params
-        in { subject_configuration: "generated", pattern: String => blueprint }
-          { subject: { blueprint:, enabled: true } }
-        in { subject_configuration: "manual", pattern: String => blueprint }
-          if blueprint.empty?
-            # Submitting the form with an empty blueprint and manual subject configuration will
-            # remove the subject pattern from the collection
-            nil
+        patterns = @type.patterns.to_h
+
+        subject_pattern =
+          case form_params
+          in { subject_configuration: "generated", pattern: String => blueprint }
+            { subject: { blueprint:, enabled: true } }
+          in { subject_configuration: "manual", pattern: String => blueprint }
+            if blueprint.empty?
+              # Submitting the form with an empty blueprint and manual subject configuration will
+              # remove the subject pattern from the collection
+              nil
+            else
+              { subject: { blueprint:, enabled: false } }
+            end
           else
-            { subject: { blueprint:, enabled: false } }
+            nil
           end
+
+        if subject_pattern.nil?
+          patterns.delete("subject")
+          patterns
         else
-          nil
+          patterns.merge(subject_pattern.stringify_keys)
         end
       end
     end

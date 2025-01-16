@@ -40,7 +40,9 @@ module TabsHelper
   end
 
   def selected_tab(tabs, default_tab = nil)
-    tabs.detect { |t| t[:name] == params[:tab] || t[:name] == default_tab } || tabs.first
+    tabs.detect { |t| t[:name] == params[:tab] } ||
+      tabs.detect { |t| t[:name] == default_tab } ||
+      tabs.first
   end
 
   def tabs_for_key(key, params = {})
