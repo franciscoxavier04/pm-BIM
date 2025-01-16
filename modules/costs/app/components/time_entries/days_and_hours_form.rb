@@ -39,7 +39,7 @@ module TimeEntries
       f.single_date_picker name: :spent_on,
                            type: "date",
                            required: true,
-                           datepicker_options: { inDialog: true },
+                           datepicker_options: { inDialog: "time-entry-dialog" },
                            value: model.spent_on&.iso8601,
                            label: TimeEntry.human_attribute_name(:spent_on)
 
