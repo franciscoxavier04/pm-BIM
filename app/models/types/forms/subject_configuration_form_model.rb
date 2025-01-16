@@ -28,37 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackages
-  module Types
-    class SubjectConfigurationComponent < ApplicationComponent
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
+module Types
+  module Forms
+    class SubjectConfigurationFormModel
+      extend ActiveModel::Naming
 
-      def form_options
-        form_model = subject_form_object
+      attr_reader :subject_configuration, :pattern, :validation_errors
 
-        {
-          url: subject_configuration_type_path(id: model.id),
-          method: :put,
-          model: form_model,
-          data: {
-            application_target: "dynamic",
-            controller: "admin--subject-configuration",
-            admin__subject_configuration_hide_pattern_input_value: form_model.subject_configuration == :manual
-          }
-        }
-      end
-
-      private
-
-      def subject_form_object
-        subject_pattern = model.patterns.subject || ::Types::Pattern.new(blueprint: "", enabled: false)
-
-        ::Types::Forms::SubjectConfigurationFormModel.new(
-          subject_configuration: subject_pattern.enabled ? :generated : :manual,
-          pattern: subject_pattern.blueprint,
-          validation_errors: model.errors
-        )
+      def initialize(subject_configuration:, pattern:, validation_errors: {})
+        @subject_configuration = subject_configuration
+        @pattern = pattern
+        @validation_errors = validation_errors
       end
     end
   end

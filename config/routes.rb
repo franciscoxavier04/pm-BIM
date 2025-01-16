@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -129,13 +131,18 @@ Rails.application.routes.draw do
 
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
-  get "/types/:id/edit/:tab" => "types#edit",
-      as: "edit_type_tab"
-  match "/types/:id/update/:tab" => "types#update",
-        as: "update_type_tab",
-        via: %i[post patch]
   resources :types do
-    post "move/:id", action: "move", on: :collection
+    member do
+      get "edit/:tab" => "types#edit", as: "edit_tab"
+      match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
+      put :subject_configuration,
+          controller: "work_packages/types/subject_configuration",
+          action: "update_subject_configuration"
+    end
+
+    collection do
+      post "move/:id", action: "move"
+    end
   end
 
   resources :statuses, except: :show
