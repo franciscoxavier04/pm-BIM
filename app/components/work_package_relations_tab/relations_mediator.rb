@@ -68,7 +68,7 @@ class WorkPackageRelationsTab::RelationsMediator
   end
 
   def any_relations?
-    visible_relations.any? || invisible_relations.any? || children.any?
+    visible_relations.any? || invisible_relations.any? || visible_children.any? || invisible_children.any?
   end
 
   def any_children?
