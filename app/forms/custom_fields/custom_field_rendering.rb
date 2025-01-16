@@ -68,6 +68,7 @@ module CustomFields::CustomFieldRendering
   # - initial values for user inputs are not displayed
   # - allow/disallow-non-open version setting is not yet respected in the version selector
   # - rich text editor is not yet supported
+  # - hierarchy should not use a flat list
 
   def single_value_custom_field_input(builder, custom_field)
     form_args = form_arguments(custom_field)
@@ -81,6 +82,8 @@ module CustomFields::CustomFieldRendering
       CustomFields::Inputs::Int.new(builder, **form_args)
     when "float"
       CustomFields::Inputs::Float.new(builder, **form_args)
+    when "hierarchy"
+      CustomFields::Inputs::SingleSelectList.new(builder, **form_args)
     when "list"
       CustomFields::Inputs::SingleSelectList.new(builder, **form_args)
     when "date"
@@ -98,6 +101,8 @@ module CustomFields::CustomFieldRendering
     form_args = form_arguments(custom_field)
 
     case custom_field.field_format
+    when "hierarchy"
+      CustomFields::Inputs::MultiSelectList.new(builder, **form_args)
     when "list"
       CustomFields::Inputs::MultiSelectList.new(builder, **form_args)
     when "user"
