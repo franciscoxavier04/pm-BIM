@@ -42,7 +42,7 @@ module OpenProject::Bim
              } do
       project_module(:bim,
                      dependencies: :work_package_tracking,
-                     if: ->(*) { OpenProject::Configuration.bim? }) do
+                     if: ->(_) { OpenProject::Configuration.bim? }) do
         permission :view_ifc_models,
                    {
                      "bim/ifc_models/ifc_models": %i[index show defaults],
