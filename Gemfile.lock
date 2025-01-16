@@ -58,6 +58,17 @@ GIT
       parallel_tests (>= 3.3.0, < 5)
       rspec (>= 3.10)
 
+GIT
+  remote: https://github.com/toy/ferrum.git
+  revision: 889b29926f017530a0e087b1db0bc02747e437b1
+  ref: mouse-events-buttons-property-0.15
+  specs:
+    ferrum (0.15)
+      addressable (~> 2.5)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (~> 0.7)
+
 PATH
   remote: modules/auth_plugins
   specs:
@@ -344,8 +355,8 @@ GEM
     awesome_nested_set (3.8.0)
       activerecord (>= 4.0.0, < 8.1)
     aws-eventstream (1.3.0)
-    aws-partitions (1.1031.0)
-    aws-sdk-core (3.214.1)
+    aws-partitions (1.1037.0)
+    aws-sdk-core (3.215.1)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -360,7 +371,7 @@ GEM
     aws-sdk-sns (1.92.0)
       aws-sdk-core (~> 3, >= 3.210.0)
       aws-sigv4 (~> 1.5)
-    aws-sigv4 (1.10.1)
+    aws-sigv4 (1.11.0)
       aws-eventstream (~> 1, >= 1.0.2)
     axe-core-api (4.10.2)
       dumb_delegator
@@ -432,7 +443,7 @@ GEM
     compare-xml (0.66)
       nokogiri (~> 1.8)
     concurrent-ruby (1.3.4)
-    connection_pool (2.4.1)
+    connection_pool (2.5.0)
     cookiejar (0.3.4)
     cose (1.3.1)
       cbor (~> 0.5.9)
@@ -453,9 +464,6 @@ GEM
     date_validator (0.12.0)
       activemodel (>= 3)
       activesupport (>= 3)
-    debug (1.10.0)
-      irb (~> 1.10)
-      reline (>= 0.3.8)
     deckar01-task_list (2.3.4)
       html-pipeline (~> 2.0)
     declarative (0.0.20)
@@ -472,8 +480,8 @@ GEM
       dotenv (= 3.1.7)
       railties (>= 6.1)
     drb (2.2.1)
-    dry-auto_inject (1.0.1)
-      dry-core (~> 1.0)
+    dry-auto_inject (1.1.0)
+      dry-core (~> 1.1)
       zeitwerk (~> 2.6)
     dry-configurable (1.3.0)
       dry-core (~> 1.1)
@@ -491,9 +499,9 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.1)
       zeitwerk (~> 2.6)
-    dry-monads (1.6.0)
+    dry-monads (1.7.0)
       concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0, < 2)
+      dry-core (~> 1.1)
       zeitwerk (~> 2.6)
     dry-schema (1.14.0)
       concurrent-ruby (~> 1.0)
@@ -532,7 +540,7 @@ GEM
       activemodel
     equivalent-xml (0.6.0)
       nokogiri (>= 1.4.3)
-    erb_lint (0.7.0)
+    erb_lint (0.8.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
@@ -561,11 +569,6 @@ GEM
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
     fastimage (2.3.1)
-    ferrum (0.15)
-      addressable (~> 2.5)
-      concurrent-ruby (~> 1.1)
-      webrick (~> 1.7)
-      websocket-driver (~> 0.7)
     ffi (1.17.1)
     flamegraph (0.9.5)
     fog-aws (3.30.0)
@@ -602,7 +605,7 @@ GEM
       i18n (>= 0.7)
       multi_json
       request_store (>= 1.0)
-    good_job (3.26.2)
+    good_job (3.99.1)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
@@ -710,7 +713,7 @@ GEM
     launchy (3.0.1)
       addressable (~> 2.8)
       childprocess (~> 5.0)
-    lefthook (1.10.1)
+    lefthook (1.10.5)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
     letter_opener_web (3.0.0)
@@ -815,7 +818,7 @@ GEM
       actionview
       openproject-octicons (= 19.20.0)
       railties
-    openproject-primer_view_components (0.51.0)
+    openproject-primer_view_components (0.52.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.20.0)
@@ -828,13 +831,13 @@ GEM
     optimist (3.2.0)
     os (1.1.4)
     ostruct (0.6.1)
-    ox (2.14.19)
+    ox (2.14.20)
       bigdecimal (>= 3.0)
     paper_trail (15.2.0)
       activerecord (>= 6.1)
       request_store (~> 1.4)
     parallel (1.26.3)
-    parallel_tests (4.8.0)
+    parallel_tests (4.9.0)
       parallel
     parser (3.3.6.0)
       ast (~> 2.4.1)
@@ -1017,7 +1020,7 @@ GEM
     rspec-support (3.13.2)
     rspec-wait (1.0.1)
       rspec (>= 3.4)
-    rubocop (1.69.2)
+    rubocop (1.70.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -1106,7 +1109,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     ssrf_filter (1.0.8)
-    stackprof (0.2.26)
+    stackprof (0.2.27)
     store_attribute (2.0.0)
       activerecord (>= 6.1)
     stringex (2.8.6)
@@ -1225,6 +1228,7 @@ DEPENDENCIES
   brakeman (~> 7.0.0)
   browser (~> 6.2.0)
   budgets!
+  byebug
   capybara (~> 3.40.0)
   capybara-screenshot (~> 1.0.17)
   capybara_accessible_selectors!
@@ -1242,7 +1246,6 @@ DEPENDENCIES
   dalli (~> 3.2.0)
   dashboards!
   date_validator (~> 0.12.0)
-  debug
   deckar01-task_list (~> 2.3.1)
   disposable (~> 0.6.2)
   doorkeeper (~> 5.8.0)
@@ -1258,13 +1261,14 @@ DEPENDENCIES
   escape_utils (~> 1.3)
   factory_bot (~> 6.5.0)
   factory_bot_rails (~> 6.4.4)
+  ferrum!
   ffi (~> 1.15)
   flamegraph
   fog-aws
   friendly_id (~> 5.5.0)
   fuubar (~> 2.5.0)
   gon (~> 6.4.0)
-  good_job (= 3.26.2)
+  good_job (= 3.99.1)
   google-apis-gmail_v1
   googleauth
   grape (~> 2.2.0)
@@ -1320,7 +1324,7 @@ DEPENDENCIES
   openproject-octicons (~> 19.20.0)
   openproject-octicons_helper (~> 19.20.0)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.51.0)
+  openproject-primer_view_components (~> 0.52.0)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,16 +33,18 @@ class CustomFields::Inputs::MultiSelectList < CustomFields::Inputs::Base::Autoco
     # autocompleter does not set key with blank value if nothing is selected or input is cleared
     # in order to let acts_as_customizable handle the clearing of the value, we need to set the value to blank via a hidden field
     # which sends blank if autocompleter is cleared
-    custom_value_form.hidden(**input_attributes.merge(
+    custom_value_form.hidden(
+      **input_attributes,
       scope_name_to_model: false,
-      name: "#{@object.class.name.downcase}[custom_field_values][#{input_attributes[:name]}][]",
+      name: "#{@object.model_name.element}[custom_field_values][#{input_attributes[:name]}][]",
       value:
-    ))
+    )
 
     custom_value_form.autocompleter(**input_attributes) do |list|
       @custom_field.custom_options.each do |custom_option|
         list.option(
-          label: custom_option.value, value: custom_option.id,
+          label: custom_option.value,
+          value: custom_option.id,
           selected: selected?(custom_option)
         )
       end
