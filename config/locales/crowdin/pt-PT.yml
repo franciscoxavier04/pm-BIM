@@ -665,14 +665,16 @@ pt-PT:
       no_results_title_text: Atualmente, não existem relações disponíveis.
       blankslate_heading: "Sem relações"
       blankslate_description: "Este pacote de trabalho ainda não tem quaisquer relações."
+    label_add_child_button: "Child"
     label_add_x: "Adicionar %{x}"
     label_edit_x: "Editar %{x}"
     label_add_description: "Adicionar descrição"
     lag:
       subject: "Lag"
       title: "Lag (in days)"
-      caption: "The gap in number of working days in between the two work packages"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "relacionado com"
       label_relates_plural: "relacionado com"
       label_relates_to_singular: "relacionado com"
@@ -687,6 +689,9 @@ pt-PT:
       follows_description: "O pacote de trabalho relacionado tem necessariamente de ser iniciado antes deste começar"
       label_child_singular: "secundário"
       label_child_plural: "secundários"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "bloqueia"
       label_blocks_plural: "bloqueia"
@@ -787,6 +792,7 @@ pt-PT:
         is_required: "Obrigatório"
         max_length: "Tamanho máximo"
         min_length: "Tamanho mínimo"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Permitir seleção múltipla"
         possible_values: "Valores possíveis"
         regexp: "Expressão regular"
@@ -822,6 +828,8 @@ pt-PT:
         attr_lastname: "Atributo Sobrenome"
         attr_login: "Atributo Utilizador"
         attr_mail: "Atributo E-mail"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Base DN"
         host: "Anfitrião"
         onthefly: "Criação automática de utilizador"
@@ -865,6 +873,9 @@ pt-PT:
       project_custom_field:
         is_required: "Obrigatório para todos os projetos"
         custom_field_section: Secção
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Colunas"
         relations_to_type_column: "Relações com %{type}"
@@ -1797,6 +1808,10 @@ pt-PT:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Personalize a configuração do formulário com estes complementos adicionais:"
         add_groups: "Adicionar novos grupos de atributos"
@@ -2581,6 +2596,7 @@ pt-PT:
   label_project_new: "Novo Projecto"
   label_project_plural: "Projetos"
   label_project_list_plural: "Listas do projeto"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Atributos do projeto"
   label_project_custom_field_plural: "Atributos do projeto"
   label_project_settings: "Configurações do projeto"
@@ -3022,6 +3038,7 @@ pt-PT:
   notice_bad_request: "Pedido inválido."
   notice_not_authorized: "Não está autorizado a aceder a esta página."
   notice_not_authorized_archived_project: "O projeto ao qual tentou aceder foi arquivado."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "A sua palavra passe está incorreta. Não foi possível continuar."
   notice_principals_found_multiple: "Foram encontrados %{number} resultados. Carregue em TAB para ver o primeiro resultado."
   notice_principals_found_single: "Foi encontrado um resultado. Carregue em TAB para vê-lo."
@@ -3196,9 +3213,9 @@ pt-PT:
       are_you_sure: "Tem a certeza de que deseja arquivar o projeto '%{name}'?"
       archived: "Arquivado"
     count:
-      zero: "0 Projetos"
-      one: "1 Projeto"
-      other: "%{count} Projetos"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Atividade"
   project_module_forums: "Fórums"
   project_module_work_package_tracking: "Tarefas"
@@ -3330,6 +3347,7 @@ pt-PT:
     activated: "ativado"
     deactivated: "desativado"
   search_input_placeholder: "Procurar ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Habilitar CORS"
   setting_apiv3_cors_origins: "Partilha de recursos entre origens (CORS) permitidos pela API V3"
   setting_apiv3_cors_origins_text_html: >
@@ -3555,6 +3573,27 @@ pt-PT:
       new:
         heading: "Novo atributo"
         description: "As alterações a este atributo do projeto irão refletir-se em todos os projetos em que estiver ativado. Os atributos obrigatórios não podem ser desativados por projeto."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Foi verificado o módulo do projeto %{module} que depende de %{dependencies}. Também tem de verificar estas dependências."
       section_new_projects: "Configurações para novos projetos"
@@ -3588,6 +3627,7 @@ pt-PT:
   text_are_you_sure_continue: "Tem a certeza que deseja continuar?"
   text_are_you_sure_with_children: "Apagar o pacote de trabalho e todos os pacotes de trabalho filhos?"
   text_are_you_sure_with_project_custom_fields: "A eliminação deste atributo também elimina os seus valores em todos os projetos. Tem a certeza de que pretende fazê-lo?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Atribuir ao projeto"
   text_form_configuration: >
     Pode personalizar quais os campos que serão exibidos nos formulários de pacote de trabalho. Pode agrupar livremente os campos para refletir as necessidades para o seu domínio.
@@ -4035,6 +4075,8 @@ pt-PT:
       builtin: Aplicação de instância incorporada
       confidential: Confidencial
       singular: "Aplicação OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Aplicações OAuth"
       named: "Aplicação OAuth '%{name}'"
       new: "Nova aplicação OAuth"

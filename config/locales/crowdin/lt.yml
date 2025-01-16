@@ -683,14 +683,16 @@ lt:
       no_results_title_text: There are currently no relations available.
       blankslate_heading: "No relations"
       blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
     label_add_x: "Add %{x}"
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
     lag:
       subject: "Lag"
       title: "Lag (in days)"
-      caption: "The gap in number of working days in between the two work packages"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
       label_relates_plural: "related to"
       label_relates_to_singular: "related to"
@@ -705,6 +707,9 @@ lt:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
@@ -805,6 +810,7 @@ lt:
         is_required: "Būtinas"
         max_length: "Maksimalus ilgis"
         min_length: "Minimalus ilgis"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Leisti daugybinio žymėjimo galimybę"
         possible_values: "Galimos reikšmės"
         regexp: "Reguliari išraiška"
@@ -840,6 +846,8 @@ lt:
         attr_lastname: "Pavardės atributas"
         attr_login: "Naudotojo atributas"
         attr_mail: "El. paštos atributas"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Bazinis DN"
         host: "Serveris"
         onthefly: "Automatinis naudotojų kūrimas"
@@ -883,6 +891,9 @@ lt:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Skiltis
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Stulpeliai"
         relations_to_type_column: "Ryšiai su %{type}"
@@ -1871,6 +1882,10 @@ lt:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Pritaikyti sau formos konfigūraciją su šiais naujais priedais:"
         add_groups: "Pridėti naujas atributų grupes"
@@ -2655,6 +2670,7 @@ lt:
   label_project_new: "Naujas projektas"
   label_project_plural: "Projektai"
   label_project_list_plural: "Projektų sąrašai"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Projekto atributai"
   label_project_custom_field_plural: "Projekto atributai"
   label_project_settings: "Projekto nustatymai"
@@ -3099,6 +3115,7 @@ lt:
   notice_bad_request: "Netinkama užklausa."
   notice_not_authorized: "Jūs neturite prieigos teisių prie šio puslapio."
   notice_not_authorized_archived_project: "Projektas, kurį bandote atidaryti, buvo suarchyvuotas."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Jūsų slaptažodis yra neteisingas. Negalima tęsti."
   notice_principals_found_multiple: "Rasta %{number} rezultatai (-as, -ų).\nPaspauskite 'Tab', kad susikoncentruotumėte į pirmą rezultatą."
   notice_principals_found_single: "Yra vienas rezultatas.\nPaspauskite 'Tab', kad susikoncentruotumėte į jį."
@@ -3274,9 +3291,9 @@ lt:
       are_you_sure: "Ar Jūs tikrai norite suarchyvuoti projektą '%{name}'?"
       archived: "Suarchyvuotas"
     count:
-      zero: "0 projektų"
-      one: "1 projektas"
-      other: "%{count} projektai"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Veikla"
   project_module_forums: "Forumai"
   project_module_work_package_tracking: "Darbų paketai"
@@ -3408,6 +3425,7 @@ lt:
     activated: "aktyvus"
     deactivated: "neaktyvus"
   search_input_placeholder: "Paieška..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Įgalinti CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) leidžiami kilmės domenai"
   setting_apiv3_cors_origins_text_html: >
@@ -3633,6 +3651,27 @@ lt:
       new:
         heading: "Naujas atributas"
         description: "Šio projekto atributo pakeitimas matysis visuose projektuose, kur jis įjungtas. Privalomų atributų negalima išjungti konkrečiame projekte."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Parinktas projekto modulis %{module}, kuris priklauso nuo %{dependencies}. Jums reikia pažymėti ir šias priklausomybes."
       section_new_projects: "Naujų projektų nustatymai"
@@ -3666,6 +3705,7 @@ lt:
   text_are_you_sure_continue: "Ar tikrai norite tęsti?"
   text_are_you_sure_with_children: "Ištrinti darbų paketą ir visus jo vaikų paketus?"
   text_are_you_sure_with_project_custom_fields: "Ištrynus šį atributą taipogi bus ištrintos ir jo reikšmės visuose projektuose. Ar tikrai norite tai padaryti?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Priskirti projektui"
   text_form_configuration: >
     Jūs galite nustatyti, kurie laukeliai bus rodomi darbų paketų formoje. Jūs galite laisvai grupuoti laukelius pagal savo poreikius.
@@ -4114,6 +4154,8 @@ lt:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth aplikacija"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth aplikacijos"
       named: "OAuth aplikacija „%{name}“"
       new: "Nauja OAuth aplikacija"

@@ -655,14 +655,16 @@ zh-CN:
       no_results_title_text: 目前没有任何关系。
       blankslate_heading: "没有关系"
       blankslate_description: "此工作包还没有任何关系。"
+    label_add_child_button: "子项"
     label_add_x: "添加 %{x}"
     label_edit_x: "编辑 %{x}"
     label_add_description: "添加说明"
     lag:
       subject: "间隔"
       title: "间隔(天数)"
-      caption: "两个工作包之间相隔的工作日数"
+      caption: "两个工作包之间的最低工作日数。"
     relations:
+      label_new_child_created: "创建新工作包并将其添加为子项"
       label_relates_singular: "关联到"
       label_relates_plural: "关联到"
       label_relates_to_singular: "关联到"
@@ -677,6 +679,9 @@ zh-CN:
       follows_description: "相关工作包必须在本工作包启动前完成"
       label_child_singular: "子节点"
       label_child_plural: "子节点"
+      new_child: "新建子项"
+      new_child_text: "创建工作包，作为当前(父)工作包的子项"
+      existing_child: "添加现有子项"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
       label_blocks_singular: "阻止"
       label_blocks_plural: "阻止"
@@ -777,6 +782,7 @@ zh-CN:
         is_required: "必填"
         max_length: "最大长度"
         min_length: "最小长度"
+        content_right_to_left: "内容从右到左"
         multi_value: "允许多选"
         possible_values: "可能的值"
         regexp: "正则表达式"
@@ -812,6 +818,8 @@ zh-CN:
         attr_lastname: "姓氏属性"
         attr_login: "用户名属性"
         attr_mail: "电子邮件属性"
+        filter_string: "筛选字符串"
+        admin: "管理员"
         base_dn: "基本 DN"
         host: "主机"
         onthefly: "自动创建用户"
@@ -855,6 +863,9 @@ zh-CN:
       project_custom_field:
         is_required: "在所有项目中应用"
         custom_field_section: 单元
+      project/life_cycle_step_definition:
+        name: "名称"
+        color: "颜色"
       query:
         column_names: "列"
         relations_to_type_column: "与%{type} 的关系"
@@ -1759,6 +1770,10 @@ zh-CN:
     upsale:
       title: "企业附加组件"
       link_title: "更多信息"
+      automatic_subject_generation:
+        description: "使用引用的属性和文本自动生成主题。"
+      customize_life_cycle:
+        description: "创建和组织与 PM2 项目周期规划不同的项目阶段和关口。"
       form_configuration:
         description: "使用以下附加组件自定义表单配置："
         add_groups: "添加新属性组"
@@ -2543,6 +2558,7 @@ zh-CN:
   label_project_new: "新的项目"
   label_project_plural: "项目"
   label_project_list_plural: "项目列表"
+  label_project_lifecycle: "项目生命周期"
   label_project_attributes_plural: "项目属性"
   label_project_custom_field_plural: "项目属性"
   label_project_settings: "项目设置"
@@ -2982,6 +2998,7 @@ zh-CN:
   notice_bad_request: "错误的请求。"
   notice_not_authorized: "您无权访问此页。"
   notice_not_authorized_archived_project: "您尝试访问的项目已存档。"
+  notice_requires_enterprise_token: "企业令牌缺失或不允许访问此页面。"
   notice_password_confirmation_failed: "您的密码不正确。无法继续。"
   notice_principals_found_multiple: "找到 %{number} 条结果。\n 点击以关注第一条结果。"
   notice_principals_found_single: "这有一个结果。\n点击来关注它。"
@@ -3288,6 +3305,7 @@ zh-CN:
     activated: "已激活"
     deactivated: "已取消激活"
   search_input_placeholder: "搜索"
+  setting_apiv3_cors_title: "跨源资源共享 (CORS)"
   setting_apiv3_cors_enabled: "启用 CORS"
   setting_apiv3_cors_origins: "API v3 跨域资源共享 (CORS) 允许的域"
   setting_apiv3_cors_origins_text_html: >
@@ -3513,6 +3531,27 @@ zh-CN:
       new:
         heading: "新建属性"
         description: "对该项目属性的更改将反映在启用该属性的所有项目中。不能按项目禁用必填属性。"
+    project_life_cycle_step_definitions:
+      heading: "项目生命周期"
+      heading_description: "项目生命周期由阶段和关口组成，用于构建项目。它们将显示在项目的概述页面，并在项目列表中提供。可以选择单个阶段和关口来定制项目，但无法在项目级别上重新排序。"
+      label_add: "添加"
+      label_add_description: "添加生命周期定义"
+      label_add_stage: "阶段"
+      label_add_gate: "关口"
+      filter:
+        label: "搜索项目阶段或关口"
+      section_header: "阶段和关口"
+      non_defined: "目前既未定义阶段也未定关口。"
+      new:
+        description: "对该项目步骤的更改将反映在启用该步骤的所有项目中。"
+      new_stage:
+        heading: "新阶段"
+      new_gate:
+        heading: "新关口"
+      edit_stage:
+        heading: "编辑阶段"
+      edit_gate:
+        heading: "编辑阶段"
     projects:
       missing_dependencies: "已检查依赖于 %{dependencies} 的项目模块 %{module}。您也需要检查这些依赖项。"
       section_new_projects: "新项目的设置"
@@ -3546,6 +3585,7 @@ zh-CN:
   text_are_you_sure_continue: "确定要继续吗？"
   text_are_you_sure_with_children: "删除工作包和所有子工作包吗？"
   text_are_you_sure_with_project_custom_fields: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
+  text_are_you_sure_with_project_life_cycle_step: "删除该步骤也会删除其在所有项目中的使用。您确定要这样做吗？"
   text_assign_to_project: "分配给项目"
   text_form_configuration: >
     您可以自定义哪些字段将显示在工作包窗体中。您可以自由地对字段进行分组, 以反映您的域的需求。
@@ -3991,6 +4031,8 @@ zh-CN:
       builtin: 内置实例应用程序
       confidential: 机密
       singular: "OAuth应用程序"
+      scopes: "范围"
+      client_credentials: "客户端凭据"
       plural: "OAuth应用程序"
       named: "OAuth 应用程序“%{name}”"
       new: "新的 OAuth 应用程序"

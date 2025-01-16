@@ -341,8 +341,8 @@ pl:
     settings:
       change_identifier: Identyfikator zmiany
       actions:
-        label_enable_all: "Enable all"
-        label_disable_all: "Disable all"
+        label_enable_all: "Włącz wszystkie"
+        label_disable_all: "Wyłącz wszystkie"
       activities:
         no_results_title_text: Nie ma dostępnych żadnych aktywności.
       forums:
@@ -355,7 +355,7 @@ pl:
         no_results_title_text: Nie ma dostępnych pól niestandardowych.
       life_cycle:
         header:
-          title: "Project lifecycle"
+          title: "Cykl życia projektu"
           description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
         non_defined: "Neither stages nor gates are currently defined."
         section_header: "Stages and gates"
@@ -683,14 +683,16 @@ pl:
       no_results_title_text: Obecnie nie są dostępne żadne relacje.
       blankslate_heading: "Brak relacji"
       blankslate_description: "Ten pakiet roboczy nie ma jeszcze żadnych relacji."
+    label_add_child_button: "Child"
     label_add_x: "Dodaj %{x}"
     label_edit_x: "Edytuj %{x}"
     label_add_description: "Dodaj opis"
     lag:
       subject: "Lag"
       title: "Lag (in days)"
-      caption: "The gap in number of working days in between the two work packages"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "ma relację z"
       label_relates_plural: "ma relację z"
       label_relates_to_singular: "ma relację z"
@@ -705,6 +707,9 @@ pl:
       follows_description: "Powiązany pakiet roboczy musi koniecznie zostać ukończony przed rozpoczęciem tego pakietu"
       label_child_singular: "element podrzędny"
       label_child_plural: "elementy podrzędne"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blok"
       label_blocks_plural: "bloki"
@@ -805,6 +810,7 @@ pl:
         is_required: "Wymagane"
         max_length: "Maksymalna długość"
         min_length: "Minimalna długość"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Zezwól na wybór wielokrotny"
         possible_values: "Możliwe wartości"
         regexp: "Wyrażenie regularne"
@@ -840,6 +846,8 @@ pl:
         attr_lastname: "Atrybut nazwiska"
         attr_login: "Atrybut nazwy użytkownika"
         attr_mail: "Atrybut adresu e-mail"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Bazowa nazwa wyróżniająca"
         host: "Host"
         onthefly: "Automatyczne tworzenie użytkowników"
@@ -883,6 +891,9 @@ pl:
       project_custom_field:
         is_required: "Wymagane dla wszystkich projektów"
         custom_field_section: Sekcja
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Kolumny"
         relations_to_type_column: "Relacje %{type}"
@@ -1871,6 +1882,10 @@ pl:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Dostosuj konfigurację formularza za pomocą tych dodatków:"
         add_groups: "Dodaj nowe grupy atrybutów"
@@ -2655,6 +2670,7 @@ pl:
   label_project_new: "Nowy projekt"
   label_project_plural: "Projekty"
   label_project_list_plural: "Listy projektów"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Atrybuty projektu"
   label_project_custom_field_plural: "Atrybuty projektu"
   label_project_settings: "Ustawienia projektu"
@@ -3098,6 +3114,7 @@ pl:
   notice_bad_request: "Nieprawidłowe żądanie."
   notice_not_authorized: "Brak uprawnień dostępu do tej strony."
   notice_not_authorized_archived_project: "The project you're trying to access has been archived."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Nieprawidłowe hasło. Nie można kontynuować."
   notice_principals_found_multiple: "Znaleziono %{number} wyników.\nNaciśnij Tab, aby wybrać pierwszy rezultat."
   notice_principals_found_single: "Znaleziono 1 wynik.\nNaciśnij Tab, aby go wybrać."
@@ -3274,9 +3291,9 @@ pl:
       are_you_sure: "Jesteś pewien, że chcesz zarchiwizować projekt '%{name}'?"
       archived: "Zarchiwizowano"
     count:
-      zero: "0 projektów"
-      one: "1 projekt"
-      other: "Liczba projektów: %{count}"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Działanie"
   project_module_forums: "Fora"
   project_module_work_package_tracking: "Pakiety robocze"
@@ -3408,6 +3425,7 @@ pl:
     activated: "aktywowano"
     deactivated: "dezaktywowano"
   search_input_placeholder: "Wyszukaj ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Włącz CORS"
   setting_apiv3_cors_origins: "Dozwolone źródła mechanizmu Cross-Origin Resource Sharing (CORS) interfejsu API V3"
   setting_apiv3_cors_origins_text_html: >
@@ -3633,6 +3651,27 @@ pl:
       new:
         heading: "Nowy atrybut"
         description: "Zmiany tego atrybutu projektu zostaną odzwierciedlone we wszystkich projektach, w których jest on włączony. Wymaganych atrybutów nie można wyłączyć dla poszczególnych projektów."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Sprawdzono moduł projektu %{module}, który zależy od %{dependencies}. Musisz sprawdzić również te zależności."
       section_new_projects: "Ustawienia nowych projektów"
@@ -3666,6 +3705,7 @@ pl:
   text_are_you_sure_continue: "Czy na pewno chcesz kontynuować?"
   text_are_you_sure_with_children: "Usunąć pakiet roboczy i wszystkie podrzędne pakiety?"
   text_are_you_sure_with_project_custom_fields: "Usunięcie tego atrybutu spowoduje również usunięcie jego wartości we wszystkich projektach. Czy na pewno chcesz to zrobić?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Przypisz do projektu"
   text_form_configuration: >
     Możesz określić, które pola będą wyświetlane w formularzach Work Package. Możesz dowolnie grupować pola aby dostosować do swoich potrzeb.
@@ -4115,6 +4155,8 @@ pl:
       builtin: Wbudowana aplikacja
       confidential: Poufne
       singular: "Aplikacje OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "Aplikacje OAuth"
       named: "Aplikacja OAuth „%{name}”"
       new: "Nowa aplikacja OAuth"

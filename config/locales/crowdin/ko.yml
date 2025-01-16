@@ -658,14 +658,16 @@ ko:
       no_results_title_text: 현재 사용 가능한 관계가 없습니다.
       blankslate_heading: "관계 없음"
       blankslate_description: "이 작업 패키지에는 아직 관계가 없습니다."
+    label_add_child_button: "Child"
     label_add_x: "%{x} 추가"
     label_edit_x: "%{x} 편집"
     label_add_description: "설명 추가"
     lag:
       subject: "지연"
       title: "지연(일)"
-      caption: "두 작업 패키지 간의 근무일 수 차이"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "관련 항목"
       label_relates_plural: "관련 항목"
       label_relates_to_singular: "관련 항목"
@@ -680,6 +682,9 @@ ko:
       follows_description: "이 패키지를 시작하려면 관련 작업 패키지가 반드시 먼저 완료되어야 합니다"
       label_child_singular: "자식"
       label_child_plural: "자식"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "블록"
       label_blocks_plural: "블록"
@@ -780,6 +785,7 @@ ko:
         is_required: "필수"
         max_length: "최대 길이"
         min_length: "최소 길이"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "다중 선택 허용"
         possible_values: "가능한 값"
         regexp: "정규 표현식"
@@ -815,6 +821,8 @@ ko:
         attr_lastname: "성 특성"
         attr_login: "사용자 이름 특성"
         attr_mail: "이메일 특성"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "기본 DN"
         host: "호스트"
         onthefly: "자동 사용자 생성"
@@ -858,6 +866,9 @@ ko:
       project_custom_field:
         is_required: "모든 프로젝트에 필수"
         custom_field_section: 섹션
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "컬럼"
         relations_to_type_column: "%{type}에 대한 관계"
@@ -1762,6 +1773,10 @@ ko:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "다음과 같은 기타 추가 기능으로 양식 구성을 사용자 지정하세요."
         add_groups: "새로운 특성 그룹 추가"
@@ -2546,6 +2561,7 @@ ko:
   label_project_new: "새 프로젝트"
   label_project_plural: "프로젝트"
   label_project_list_plural: "프로젝트 목록"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "프로젝트 특성"
   label_project_custom_field_plural: "프로젝트 특성"
   label_project_settings: "프로젝트 설정"
@@ -2987,6 +3003,7 @@ ko:
   notice_bad_request: "잘못된 요청입니다."
   notice_not_authorized: "이 페이지에 액세스할 권한이 없습니다."
   notice_not_authorized_archived_project: "액세스하려는 프로젝트는 이미 보관되어 있습니다."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "암호가 올바르지 않습니다. 계속할 수 없습니다."
   notice_principals_found_multiple: "%{number} 개의 결과가 발견되었습니다.\n첫번째 결과를 보려면 탭 해주세요."
   notice_principals_found_single: "한 개의 결과가 있습니다.\n보려면 탭 해주세요."
@@ -3159,9 +3176,9 @@ ko:
       are_you_sure: "프로젝트 '%{name}'을(를) 보관하시겠습니까?"
       archived: "보관됨"
     count:
-      zero: "0개 프로젝트"
-      one: "1개 프로젝트"
-      other: "%{count}개 프로젝트"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "활동"
   project_module_forums: "포럼"
   project_module_work_package_tracking: "작업 패키지"
@@ -3293,6 +3310,7 @@ ko:
     activated: "활성화됨"
     deactivated: "비활성화됨"
   search_input_placeholder: "검색..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORS 사용"
   setting_apiv3_cors_origins: "API V3 CORS(크로스-원본 리소스 공유) 허용 원본"
   setting_apiv3_cors_origins_text_html: >
@@ -3518,6 +3536,27 @@ ko:
       new:
         heading: "새로운 특성"
         description: "이 프로젝트 특성에 대한 변경 사항은 이 특성이 활성화된 모든 프로젝트에 반영됩니다. 필수 특성은 프로젝트별로 비활성화할 수 없습니다."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "%{dependencies}에 의존하는 프로젝트 모듈 %{module}이(가) 확인되었습니다. 이러한 종속성도 확인해야 합니다."
       section_new_projects: "새 프로젝트의 설정"
@@ -3551,6 +3590,7 @@ ko:
   text_are_you_sure_continue: "계속하시겠습니까?"
   text_are_you_sure_with_children: "작업 패키지 및 모든 자식 작업 패키지를 삭제하시겠습니까?"
   text_are_you_sure_with_project_custom_fields: "이 특성을 삭제하면 모든 프로젝트에서 해당 값도 삭제됩니다. 계속하시겠습니까?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "프로젝트에 할당"
   text_form_configuration: >
     작업 패키지 양식으로 표시할 필드를 사용자 지정할 수 있습니다. 해당 도메인의 요구 사항을 반영하도록 필드를 자유롭게 그룹화할 수 있습니다.
@@ -3997,6 +4037,8 @@ ko:
       builtin: 기본 제공 인스턴스 애플리케이션
       confidential: 기밀
       singular: "OAuth 애플리케이션"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth 애플리케이션"
       named: "OAuth 애플리케이션 '%{name}'"
       new: "새로운 OAuth 애플리케이션"

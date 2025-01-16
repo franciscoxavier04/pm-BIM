@@ -34,6 +34,7 @@ module Components
     include Capybara::RSpecMatchers
     include RSpec::Matchers
     include Flash::Expectations
+    include Redmine::I18n
 
     attr_reader :time_logging_modal
 
@@ -57,19 +58,24 @@ module Components
       expect(page).to have_css("#{row_selector(row)} .units", text: value)
     end
 
-    def edit_time_entry(new_value, row)
+    def edit_time_entry(row, hours:)
       SeleniumHubWaiter.wait
       page.find("#{row_selector(row)} .icon-edit").click
 
       time_logging_modal.is_visible true
-      time_logging_modal.update_field "hours", new_value
-      time_logging_modal.work_package_is_missing false
+      time_logging_modal.change_hours(hours)
+      time_logging_modal.activity_input_disabled_because_work_package_missing? false
 
-      time_logging_modal.perform_action "Save"
-      SeleniumHubWaiter.wait
+      time_logging_modal.submit
+
+      if using_cuprite?
+        wait_for_reload
+      else
+        sleep 1
+      end
 
       expect_action_icon "edit", row
-      expect_value new_value, row
+      expect_value l_hours(hours), row
     end
 
     def edit_cost_entry(new_value, row, cost_entry_id)
@@ -86,9 +92,13 @@ module Components
 
     def delete_entry(row)
       SeleniumHubWaiter.wait
-      page.find("#{row_selector(row)} .icon-delete").click
 
-      page.driver.browser.switch_to.alert.accept
+      if using_cuprite?
+        accept_confirm { page.find("#{row_selector(row)} .icon-delete").click }
+      else
+        page.find("#{row_selector(row)} .icon-delete").click
+        page.driver.browser.switch_to.alert.accept
+      end
     end
 
     private
