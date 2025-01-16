@@ -141,6 +141,13 @@ export default class TimeEntryController extends Controller {
         Math.floor(newEndTime / 60).toString().padStart(2, '0'),
         Math.round(newEndTime % 60).toString().padStart(2, '0'),
       ].join(':');
+    } else if (endTimeInMinutes && hoursInMinutes) {
+      const newStartTime = (endTimeInMinutes - hoursInMinutes) % (24 * 60);
+
+      this.startTimeInputTarget.value = [
+        Math.floor(newStartTime / 60).toString().padStart(2, '0'),
+        Math.round(newStartTime % 60).toString().padStart(2, '0'),
+      ].join(':');
     }
 
     this.toggleEndTimePlusCaption(startTimeInMinutes, hoursInMinutes);

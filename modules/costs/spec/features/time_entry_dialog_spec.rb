@@ -174,6 +174,20 @@ RSpec.describe "time entry dialog", :js, with_flag: :track_start_and_end_times_f
       time_logging_modal.shows_caption("+2 days")
     end
 
+    it "calculates the end time based on start time and hours" do
+      time_logging_modal.update_time_field("start_time", hour: 10, minute: 0)
+      time_logging_modal.update_field("hours", "3h")
+
+      time_logging_modal.has_field_with_value("end_time", "13:00")
+    end
+
+    it "calculates the start time based on end time and hours" do
+      time_logging_modal.update_time_field("end_time", hour: 10, minute: 0)
+      time_logging_modal.update_field("hours", "3h")
+
+      time_logging_modal.has_field_with_value("start_time", "07:00")
+    end
+
     it "recalculates the end time, when changing the hours field" do
       time_logging_modal.update_time_field("start_time", hour: 10, minute: 0)
       time_logging_modal.update_time_field("end_time", hour: 12, minute: 30)
