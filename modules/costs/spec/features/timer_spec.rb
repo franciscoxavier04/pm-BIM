@@ -69,7 +69,7 @@ RSpec.describe "Work Package timer", :js, :selenium do
       time_logging_modal.has_field_with_value "hours", /(\d\.)?\d+/
       time_logging_modal.activity_input_disabled_because_work_package_missing? false
       # wait for available_work_packages query to finish before saving
-      time_logging_modal.expect_work_package(work_package_a.subject)
+      time_logging_modal.expect_work_package(work_package_a)
 
       time_logging_modal.submit
       time_logging_modal.is_visible false
@@ -106,7 +106,7 @@ RSpec.describe "Work Package timer", :js, :selenium do
       time_logging_modal.has_field_with_value "hours", /(\d\.)?\d+/
       time_logging_modal.activity_input_disabled_because_work_package_missing? false
       # wait for available_work_packages query to finish before saving
-      time_logging_modal.expect_work_package(work_package_a.subject)
+      time_logging_modal.expect_work_package(work_package_a)
 
       time_logging_modal.submit
 
@@ -171,7 +171,7 @@ RSpec.describe "Work Package timer", :js, :selenium do
       time_logging_modal.has_field_with_value "hours", /(\d\.)?\d+/
       time_logging_modal.activity_input_disabled_because_work_package_missing? false
       # wait for available_work_packages query to finish before saving
-      time_logging_modal.expect_work_package(work_package_a.subject)
+      time_logging_modal.expect_work_package(work_package_a)
 
       time_logging_modal.submit
       time_logging_modal.is_visible false
@@ -183,7 +183,7 @@ RSpec.describe "Work Package timer", :js, :selenium do
       time_logging_modal.has_field_with_value "hours", /(\d\.)?\d+/
       time_logging_modal.activity_input_disabled_because_work_package_missing? false
       # wait for available_work_packages query to finish before saving
-      time_logging_modal.expect_work_package(work_package_a.subject)
+      time_logging_modal.expect_work_package(work_package_a)
 
       time_logging_modal.submit
       time_logging_modal.is_visible false

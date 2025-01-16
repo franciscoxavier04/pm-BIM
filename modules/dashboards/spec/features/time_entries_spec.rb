@@ -122,7 +122,7 @@ RSpec.describe "Time entries widget on dashboard", :js, :with_cuprite do
 
     time_logging_modal.is_visible true
 
-    time_logging_modal.expect_work_package work_package.subject
+    time_logging_modal.expect_work_package work_package
 
     time_logging_modal.update_field "hours", 4
 
