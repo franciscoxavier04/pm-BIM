@@ -28,34 +28,47 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class CustomFields::Inputs::MultiUserSelectList < CustomFields::Inputs::Base::Autocomplete::MultiValueInput
-  include CustomFields::Inputs::Base::Autocomplete::UserQueryUtils
+module TimeEntries
+  class TimeEntryFormComponent < ApplicationComponent
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-  form do |custom_value_form|
-    # autocompleter does not set key with blank value if nothing is selected or input is cleared
-    # in order to let acts_as_customizable handle the clearing of the value, we need to set the value to blank via a hidden field
-    # which sends blank if autocompleter is cleared
-    custom_value_form.hidden(
-      **input_attributes,
-      scope_name_to_model: false,
-      name: "#{@object.model_name.element}[custom_field_values][#{input_attributes[:name]}][]",
-      value:
-    )
+    def initialize(time_entry:, show_user: true, show_work_package: true)
+      super()
+      @time_entry = time_entry
+      @show_user = show_user
+      @show_work_package = show_work_package
+    end
 
-    custom_value_form.autocompleter(**input_attributes)
-  end
+    private
 
-  private
+    attr_reader :time_entry, :show_user, :show_work_package
 
-  def decorated?
-    false
-  end
+    delegate :project, :work_package, to: :time_entry
 
-  def autocomplete_options
-    super.merge(user_autocomplete_options)
-  end
+    def form_options
+      base = {
+        model: time_entry,
+        data: {
+          turbo: true,
+          "time-entry-target" => "form",
+          refresh_form_url: refresh_form_time_entries_path
+        },
+        id: "time-entry-form"
+      }
 
-  def custom_input_value
-    @custom_values.filter_map(&:value)
+      if time_entry.persisted?
+        base.merge({
+                     url: time_entry_path(time_entry),
+                     method: :patch
+                   })
+      else
+
+        base.merge({
+                     url: time_entries_path,
+                     method: :post
+                   })
+      end
+    end
   end
 end

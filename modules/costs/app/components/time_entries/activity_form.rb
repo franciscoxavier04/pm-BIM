@@ -28,34 +28,45 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class CustomFields::Inputs::MultiUserSelectList < CustomFields::Inputs::Base::Autocomplete::MultiValueInput
-  include CustomFields::Inputs::Base::Autocomplete::UserQueryUtils
+module TimeEntries
+  class ActivityForm < ApplicationForm
+    form do |f|
+      f.autocompleter(
+        name: :activity_id,
+        label: TimeEntry.human_attribute_name(:activity),
+        required: false,
+        include_blank: true,
+        autocomplete_options: {
+          placeholder: placeholder_text,
+          focusDirectly: false,
+          multiple: false,
+          decorated: true,
+          disabled: !project_or_work_package_selected?,
+          append_to: "#time-entry-dialog"
+        }
+      ) do |select|
+        activities.each do |activity|
+          select.option(value: activity.id, label: activity.name, selected: (model.activity_id == activity.id))
+        end
+      end
+    end
 
-  form do |custom_value_form|
-    # autocompleter does not set key with blank value if nothing is selected or input is cleared
-    # in order to let acts_as_customizable handle the clearing of the value, we need to set the value to blank via a hidden field
-    # which sends blank if autocompleter is cleared
-    custom_value_form.hidden(
-      **input_attributes,
-      scope_name_to_model: false,
-      name: "#{@object.model_name.element}[custom_field_values][#{input_attributes[:name]}][]",
-      value:
-    )
+    private
 
-    custom_value_form.autocompleter(**input_attributes)
-  end
+    delegate :project, :work_package, to: :model
 
-  private
+    def project_or_work_package_selected?
+      work_package.present? || project.present?
+    end
 
-  def decorated?
-    false
-  end
+    def placeholder_text
+      I18n.t("placeholder_activity_select_work_package_first") unless project_or_work_package_selected?
+    end
 
-  def autocomplete_options
-    super.merge(user_autocomplete_options)
-  end
+    def activities
+      return [] if project.blank?
 
-  def custom_input_value
-    @custom_values.filter_map(&:value)
+      TimeEntryActivity.active_in_project(project)
+    end
   end
 end

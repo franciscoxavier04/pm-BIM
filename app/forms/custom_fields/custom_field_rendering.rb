@@ -29,6 +29,8 @@
 #++
 
 module CustomFields::CustomFieldRendering
+  include ActiveSupport::Concern
+
   def render_custom_fields(form:)
     custom_fields.each do |custom_field|
       form.fields_for(:custom_field_values) do |builder|

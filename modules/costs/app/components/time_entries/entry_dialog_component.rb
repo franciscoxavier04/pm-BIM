@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,36 +26,30 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class CustomFields::Inputs::MultiUserSelectList < CustomFields::Inputs::Base::Autocomplete::MultiValueInput
-  include CustomFields::Inputs::Base::Autocomplete::UserQueryUtils
+module TimeEntries
+  class EntryDialogComponent < ApplicationComponent
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-  form do |custom_value_form|
-    # autocompleter does not set key with blank value if nothing is selected or input is cleared
-    # in order to let acts_as_customizable handle the clearing of the value, we need to set the value to blank via a hidden field
-    # which sends blank if autocompleter is cleared
-    custom_value_form.hidden(
-      **input_attributes,
-      scope_name_to_model: false,
-      name: "#{@object.model_name.element}[custom_field_values][#{input_attributes[:name]}][]",
-      value:
-    )
+    MODAL_ID = "time-entry-dialog"
 
-    custom_value_form.autocompleter(**input_attributes)
-  end
+    def initialize(time_entry:, show_user: true, show_work_package: true)
+      super()
+      @time_entry = time_entry
+      @show_user = show_user
+      @show_work_package = show_work_package
+    end
 
-  private
+    private
 
-  def decorated?
-    false
-  end
+    attr_reader :time_entry, :open, :show_user, :show_work_package
 
-  def autocomplete_options
-    super.merge(user_autocomplete_options)
-  end
+    def can_delete_time_entry?
+      return false if time_entry.new_record?
 
-  def custom_input_value
-    @custom_values.filter_map(&:value)
+      DeleteContract.deletion_allowed?(@time_entry, User.current)
+    end
   end
 end

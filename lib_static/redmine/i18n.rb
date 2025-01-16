@@ -172,6 +172,21 @@ module Redmine
       "UTC#{user.time_zone.now.formatted_offset}"
     end
 
+    ##
+    # Formats an ActiveSupport::TimeZone object into a user-friendly string.
+    # @param time_zone [ActiveSupport::TimeZone] The time zone to format.
+    # @return [String] The formatted time zone string.
+    def friendly_timezone_name(time_zone)
+      tz_info = time_zone.tzinfo
+
+      if tz_info.canonical_zone.name == "Etc/UTC"
+        "UTC"
+      else
+        friendly_names = ActiveSupport::TimeZone::MAPPING.select { |_, v| v == tz_info.canonical_zone.name }.keys.sort
+        "(UTC#{ActiveSupport::TimeZone.seconds_to_utc_offset(tz_info.base_utc_offset)}) #{friendly_names.join(', ')}"
+      end
+    end
+
     def day_name(day)
       ::I18n.t("date.day_names")[day % 7]
     end

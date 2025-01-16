@@ -28,34 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class CustomFields::Inputs::MultiUserSelectList < CustomFields::Inputs::Base::Autocomplete::MultiValueInput
-  include CustomFields::Inputs::Base::Autocomplete::UserQueryUtils
-
-  form do |custom_value_form|
-    # autocompleter does not set key with blank value if nothing is selected or input is cleared
-    # in order to let acts_as_customizable handle the clearing of the value, we need to set the value to blank via a hidden field
-    # which sends blank if autocompleter is cleared
-    custom_value_form.hidden(
-      **input_attributes,
-      scope_name_to_model: false,
-      name: "#{@object.model_name.element}[custom_field_values][#{input_attributes[:name]}][]",
-      value:
-    )
-
-    custom_value_form.autocompleter(**input_attributes)
-  end
-
-  private
-
-  def decorated?
-    false
-  end
-
-  def autocomplete_options
-    super.merge(user_autocomplete_options)
-  end
-
-  def custom_input_value
-    @custom_values.filter_map(&:value)
+module TimeEntries
+  class CommentsForm < ApplicationForm
+    form do |f|
+      f.text_area name: :comments, label: TimeEntry.human_attribute_name(:comments)
+    end
   end
 end
