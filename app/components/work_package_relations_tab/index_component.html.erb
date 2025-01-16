@@ -63,7 +63,7 @@
 
           flex.with_row(mb: 4) do
             render_relation_group(
-              title: t("#{base_key}_plural").capitalize,
+              title: t("#{base_key}_plural").upcase_first,
               relation_type:,
               items: relations_of_type
             ) do |relation|
@@ -79,7 +79,7 @@
 
           flex.with_row do
             render_relation_group(
-              title: t("#{base_key}_plural").capitalize,
+              title: t("#{base_key}_plural").upcase_first,
               relation_type: :children,
               items: children
             ) do |child|
