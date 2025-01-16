@@ -78,13 +78,13 @@ module Components
     def expect_work_package(work_package)
       title = "#{work_package.type.name} ##{work_package.id} #{work_package.subject}"
       within modal_container do
-        expect(page).to have_css("opce-autocompleter[data-resource*=work_packages] > .ng-value", text: title, wait: 10)
+        expect(page).to have_css("opce-autocompleter[data-resource*=work_packages] .ng-value", text: title, wait: 10)
       end
     end
 
     def expect_user(user)
       within modal_container do
-        expect(page).to have_css("opce-user-autocompleter > .ng-value", text: user.name, wait: 10)
+        expect(page).to have_css("opce-user-autocompleter .ng-value", text: user.name, wait: 10)
       end
     end
 
