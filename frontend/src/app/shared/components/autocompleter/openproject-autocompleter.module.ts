@@ -16,9 +16,6 @@ import {
   WorkPackageAutocompleterComponent,
 } from 'core-app/shared/components/autocompleter/work-package-autocompleter/wp-autocompleter.component';
 import {
-  TimeEntryWorkPackageAutocompleterComponent,
-} from 'core-app/shared/components/autocompleter/te-work-package-autocompleter/te-work-package-autocompleter.component';
-import {
   VersionAutocompleterComponent,
 } from 'core-app/shared/components/autocompleter/version-autocompleter/version-autocompleter.component';
 import {
@@ -52,12 +49,15 @@ import {
 import {
   ProjectAutocompleterTemplateComponent,
 } from 'core-app/shared/components/autocompleter/project-autocompleter/project-autocompleter-template.component';
+import {
+  TimeEntriesWorkPackageAutocompleterComponent,
+} from 'core-app/shared/components/autocompleter/time-entries-work-package-autocompleter/time-entries-work-package-autocompleter.component';
 
 export const OPENPROJECT_AUTOCOMPLETE_COMPONENTS = [
   CreateAutocompleterComponent,
   VersionAutocompleterComponent,
   WorkPackageAutocompleterComponent,
-  TimeEntryWorkPackageAutocompleterComponent,
+  TimeEntriesWorkPackageAutocompleterComponent,
   DraggableAutocompleteComponent,
   UserAutocompleterComponent,
   UserAutocompleterTemplateComponent,

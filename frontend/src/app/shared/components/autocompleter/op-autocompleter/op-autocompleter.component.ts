@@ -293,7 +293,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
   initialDebounce = true;
 
-  private opAutocompleterService = new OpAutocompleterService(this.apiV3Service);
+  readonly opAutocompleterService = new OpAutocompleterService(this.apiV3Service);
 
   constructor(
     readonly injector:Injector,

@@ -78,7 +78,7 @@ module Components
     def expect_work_package(work_package)
       title = "#{work_package.type.name} ##{work_package.id} #{work_package.subject}"
       within modal_container do
-        expect(page).to have_css("opce-autocompleter[data-resource*=work_packages] .ng-value", text: title, wait: 10)
+        expect(page).to have_css("opce-time-entries-work-package-autocompleter .ng-value", text: title, wait: 10)
       end
     end
 
@@ -124,7 +124,7 @@ module Components
     end
 
     def update_field(field_name, value)
-      if field_name.in?(["work_package_id", "user_id", "activity_id"])
+      if field_name.in?(%w[work_package_id user_id activity_id])
         select_autocomplete modal_container.find("#time_entry_#{field_name}"),
                             query: value,
                             select_text: value,
