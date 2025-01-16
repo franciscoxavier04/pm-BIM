@@ -31,6 +31,8 @@
 require File.expand_path("#{File.dirname(__FILE__)}/../spec_helper.rb")
 
 RSpec.describe "time entry dialog", :js, with_flag: :track_start_and_end_times_for_time_entries do
+  include Redmine::I18n
+
   shared_let(:project) { create(:project_with_types) }
 
   shared_let(:work_package_a) { create(:work_package, subject: "WP A", project:) }
@@ -118,7 +120,7 @@ RSpec.describe "time entry dialog", :js, with_flag: :track_start_and_end_times_f
       time_logging_modal.update_field("user_id", other_user.name)
 
       time_logging_modal.expect_user(other_user)
-      time_logging_modal.shows_caption(I18n.t("notice_different_time_zones", tz: "(UTC+09:00) Osaka"))
+      time_logging_modal.shows_caption(I18n.t("notice_different_time_zones", tz: friendly_timezone_name(other_user.time_zone)))
     end
   end
 

@@ -31,6 +31,7 @@
 require File.expand_path("#{File.dirname(__FILE__)}/../spec_helper.rb")
 
 RSpec.describe TimeEntriesController do
+  include Redmine::I18n
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 
@@ -271,7 +272,7 @@ RSpec.describe TimeEntriesController do
         get :user_tz_caption, params: { user_id: other_user.id }, format: :turbo_stream
         expect(response.body).to include(
           "caption=\"#{I18n.t('notice_different_time_zones',
-                              tz: described_class.helpers.friendly_timezone_name(other_user.time_zone))}\""
+                              tz: friendly_timezone_name(other_user.time_zone))}\""
         )
       end
     end

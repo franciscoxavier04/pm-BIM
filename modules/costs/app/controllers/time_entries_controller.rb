@@ -31,6 +31,7 @@
 class TimeEntriesController < ApplicationController
   include OpTurbo::ComponentStream
   include OpTurbo::DialogStreamHelper
+  include Redmine::I18n
 
   before_action :require_login
 
@@ -57,7 +58,7 @@ class TimeEntriesController < ApplicationController
   def user_tz_caption
     user = User.visible.find_by(id: params[:user_id])
     caption = if user && user.time_zone != User.current.time_zone
-                I18n.t("notice_different_time_zones", tz: helpers.friendly_timezone_name(user.time_zone))
+                I18n.t("notice_different_time_zones", tz: friendly_timezone_name(user.time_zone))
               else
                 ""
               end
