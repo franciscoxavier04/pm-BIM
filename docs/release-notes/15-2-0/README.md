@@ -24,7 +24,7 @@ You can now use the *Reminder* function to receive a reminder about a work packa
 
 ![Set a work package reminder in OpenProject](openproject_set_wp_reminders.png)
 
-> ![TIP] 
+> [!TIP]
 > You can also receive immediate notifications via e-mail for personal reminders. To do that, [adjust your account settings](../../user-guide/account-settings/#email-reminders) accordingly.
 
 [Read more about setting work package reminders](../../user-guide/work-packages/edit-work-package/#work-package-reminders).
@@ -40,7 +40,7 @@ Here is an example of a timesheet PDF export:
 ![A timesheet PDF export example](openproject_userguide_timesheet_pdf_export_file.png)
 
 > [!TIP]
-> Keep in mind that this report will only include time entries, but not the cost ones.
+> Keep in mind that this timesheet report will only include time entries, but not the cost ones.
 
 [Learn how to export timesheets as PDF](../../user-guide/time-and-costs/reporting/#export-time-sheets).
 
@@ -106,7 +106,7 @@ We continued introducing standardized components for page headers and subheaders
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A heartfelt thank you to the City of Cologne for sponsoring parts of this release. Your support, combined with the incredible efforts of our Community, continues to drive these innovations forward.
+A heartfelt thank you to the City of Cologne and ZenDiS for sponsoring parts of this release. Your support, combined with the incredible efforts of our Community, continues to drive these innovations forward.
 
 Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Stefan Weiberg.
 
