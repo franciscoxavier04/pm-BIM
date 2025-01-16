@@ -30,7 +30,7 @@ You can now use the *Reminder* function to receive a reminder about a work packa
 
 ### Export timesheets as PDF
 
-Time reports can now we exported not only in Excel, but also in PDF format. Navigate to Time and costs module of your project, specify all report filters according to your needs and press the **Export PDF timesheet** button. 
+Time reports can now be exported not only in Excel, but also in PDF format. Navigate to the Time and costs module of your project, specify all report filters according to your needs and press the **Export PDF timesheet** button. 
 
 ![Export timesheet in PDF format in OpenProject](openproject_user_timesheet_pdf_export.png)
 
