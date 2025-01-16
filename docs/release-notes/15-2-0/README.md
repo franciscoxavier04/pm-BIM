@@ -10,15 +10,14 @@ release_date: 2024-12-23
 
 Release date: 2024-12-23
 
-We released OpenProject [OpenProject 15.2.0](https://community.openproject.org/versions/2143).
-The release contains several bug fixes and we recommend updating to the newest version.
+We released [OpenProject 15.2.0](https://community.openproject.org/versions/2143). The release contains several bug fixes, and we recommend updating to the newest version.
 In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
 ### Work package reminders
 
-You can now use the *Reminder* function to receive a reminder about a work package at a later point in time. Simply navigate to any work package, select the **Reminder icon** and specify when you would like to be reminded. You will receive a notification in the notification center. 
+You can now use the Reminder function to receive a reminder about a work package at a later point in time. Simply navigate to any work package, select the **Reminder icon** and specify when you would like to be reminded. You will receive a notification in the notification center. 
 
 ![Work package reminder icon in OpenProject](openproject_user_guide_wp_reminder_icon.png)
 
@@ -31,7 +30,7 @@ You can now use the *Reminder* function to receive a reminder about a work packa
 
 ### Export timesheets as PDF
 
-Time reports can now be exported not only in Excel, but also in PDF format. Navigate to the Time and costs module of your project, specify all report filters according to your needs and press the **Export PDF timesheet** button. 
+Time reports can now be exported not only in Excel, but also in PDF format. Navigate to the Time and costs module of your project, specify all report filters according to your needs, and press the **Export PDF timesheet** button. 
 
 ![Export timesheet in PDF format in OpenProject](openproject_user_timesheet_pdf_export.png)
 
@@ -54,7 +53,7 @@ For Predecessor/Successor relations, you can now specify a **lag**, which repres
 
 ### Create a new folder directly when using file storages integrations
 
-Users can now create a folder structure directly while selecting the destination folder for file uploads, enhancing the integration with both Nextcloud and OneDrive/SharePoint. This improvement simplifies the process by allowing users to organize their files during the upload, without the need to separately create folders in the file storage, thus streamlining workflows and improving overall efficiency.
+Users can now create a folder structure directly while selecting the destination folder for file uploads, enhancing the integration with both **Nextcloud** and **OneDrive/SharePoint**. This improvement simplifies the process by allowing users to organize their files during the upload, without the need to separately create folders in the file storage, thus streamlining workflows and improving overall efficiency.
 
 ![Create a new folder when uploading a file to a file storage](openproject-file-storage-new-folder.png)
 
