@@ -10,7 +10,7 @@
     ) %>
   <% end %>
   <% d.with_footer(variant: :large) do %>
-    <% flex_layout(justify_content: :space_between, classes: 'time-entry-dialog-footer-buttons') do |flex| %>
+    <% flex_layout(justify_content: :flex_end, classes: 'time-entry-dialog-footer-buttons') do |flex| %>
       <% if time_entry.persisted? %>
         <% flex.with_column do %>
           <%= render(
@@ -28,6 +28,7 @@
           ) { t("button_delete") } %>
         <% end %>
       <% end %>
+      <% flex.with_column(classes: "time-entry-button-push") %>
       <% flex.with_column do %>
         <%= render(
           Primer::ButtonComponent.new(data: { "close-dialog-id": "time-entry-dialog" }),
