@@ -24,9 +24,10 @@ You can now use the *Reminder* function to receive a reminder about a work packa
 
 ![Set a work package reminder in OpenProject](openproject_set_wp_reminders.png)
 
-> ![TIP] You can also receive immediate notifications via e-mail for personal reminders. To do that adjust your [account settings](../../user-guide/account-settings/#email-reminders) accordingly.
+> ![TIP] 
+> You can also receive immediate notifications via e-mail for personal reminders. To do that adjust your [account settings](../../user-guide/account-settings/#email-reminders) accordingly.
 
-[Read more about setting work package reminders](../../user-guide/work-packages/edit-work-package/#work-package-reminders)
+[Read more about setting work package reminders](../../user-guide/work-packages/edit-work-package/#work-package-reminders).
 
 ### Export timesheets as PDF
 
@@ -34,25 +35,24 @@ Time reports can now be exported not only in Excel, but also in PDF format. Navi
 
 ![Export timesheet in PDF format in OpenProject](openproject_user_timesheet_pdf_export.png)
 
-Here is an example of a timesheet PDF export.
+Here is an example of a timesheet PDF export:
 
 ![A timesheet PDF export example](openproject_userguide_timesheet_pdf_export_file.png)
 
 > [!TIP]
->
 > Keep in mind that this report will only include time entries, but not the cost ones.
 
 [Learn how to export timesheets as PDF](../../user-guide/time-and-costs/reporting/#export-time-sheets).
 
 ### Edit lag to follow-precedes relations
 
-For Predecessor/Successor relations, you can specify **lag**, which represents the minimum number of working days to maintain between two work packages. This flexibility ensures more precise scheduling and helps align task dependencies effectively. By default, the lag is set to 0 working days, but you can update the *Description* and *Lag* fields anytime to adapt to changes in your project timeline.
+For Predecessor/Successor relations, you can now specify a **lag**, which represents the minimum number of working days to maintain between two work packages. This flexibility ensures more precise scheduling and helps align task dependencies effectively. By default, the lag is set to 0 working days, but you can update the *Description* and *Lag* fields anytime to adapt to changes in your project timeline.
 
 ![Specify predecessor/successor work package relations in OpenProject](openproject_user_guide_relations_tab_edit_lag.png)
 
-[Read more about work package relations](https://www.openproject.org/docs/user-guide/work-packages/work-package-relations-hierarchies)
+[Read more about work package relations](../../user-guide/work-packages/work-package-relations-hierarchies).
 
-### Create new folder directly when using file storages integrations
+### Create a new folder directly when using file storages integrations
 
 Users can now create a folder structure directly while selecting the destination folder for file uploads, enhancing the integration with both Nextcloud and OneDrive/SharePoint. This improvement simplifies the process by allowing users to organize their files during the upload, without the need to separately create folders in the file storage, thus streamlining workflows and improving overall efficiency.
 
@@ -74,7 +74,7 @@ To simplify accessing specific user details without needing to navigate to their
 
 We continued introducing standardized components for page headers and subheaders across multiple project pages, to further improve design consistency. 
 
-[Find out in more detail which pages were updated](https://community.openproject.org/projects/openproject/work_packages/53810)
+[Find out which pages have been updated in the associated work package for these design updates](https://community.openproject.org/projects/openproject/work_packages/53810).
 
 ## Bug fixes and changes
 
@@ -108,10 +108,12 @@ We continued introducing standardized components for page headers and subheaders
 ## Contributions
 A heartfelt thank you to the City of Cologne for sponsoring parts of this release. Your support, combined with the incredible efforts of our Community, continues to drive these innovations forward.
 
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Andrej Sandorf, Stefan Weiberg.
+Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Stefan Weiberg.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
-- ADD
+- [atifahnordin](https://crowdin.com/profile/atifahnordin), for an outstanding number of translations into Malay.
+- [Vlastislav Dockal](https://crowdin.com/profile/vdockal), for a great number of translations into Czech.
+- [Alin Marcu](https://crowdin.com/profile/deconfcom), for a great number of translations into Romanian.
+- [Yuliia Pavliuk](https://crowdin.com/profile/pav.yulia), for a great number of translations into Ukrainian.
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
-
