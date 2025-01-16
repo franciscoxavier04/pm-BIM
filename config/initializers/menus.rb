@@ -336,7 +336,13 @@ Redmine::MenuManager.map :admin_menu do |menu|
             parent: :admin_work_packages
 
   menu.push :admin_projects_settings,
-            { controller: "/admin/settings/project_custom_fields", action: :index },
+            Proc.new { # TODO: doesn't need to be a proc when condition is removed
+              if OpenProject::FeatureDecisions.stages_and_gates_active?
+                { controller: "/admin/settings/project_life_cycle_step_definitions", action: :index }
+              else
+                { controller: "/admin/settings/project_custom_fields", action: :index }
+              end
+            },
             if: Proc.new { User.current.admin? },
             caption: :label_project_plural,
             icon: "project"
