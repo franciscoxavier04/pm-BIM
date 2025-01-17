@@ -29,12 +29,12 @@
         end
 
         if @project.nil?
-          modal_body.with_row(mt: 3) do
+          modal_body.with_row(mb: 3) do
             render(Meeting::ProjectAutocompleter.new(f))
           end
         end
 
-        modal_body.with_row(mt: 3) do
+        modal_body.with_row do
           render(Meeting::Title.new(f))
         end
 
