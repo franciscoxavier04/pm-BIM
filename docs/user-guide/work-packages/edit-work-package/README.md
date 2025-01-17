@@ -117,6 +117,12 @@ You will receive the reminder through the [Notification center](../../notificati
 
 ![Work package reminder in OpenProject notificaiton center](openproject_user_guide_wp_set_reminder_notification.png)
 
+>  [!NOTE] 
+>
+> If multiple notifications exist for a single work package, the reminder will take precedence, showing the reminder note at the bottom of the  page. 
+>
+> In case a work package has both a reminder and date alert  notification set up, then the date alert is combined with the reminder note, so that both are visible.
+
 > [!TIP]
 >
 > You can set to receive immediate notifications via e-mail for personal reminders. To do that adjust your [account settings](../../user-guide/account-settings/#email-reminders) accordingly.

@@ -35,6 +35,12 @@ Each row in Notification center is a work package that has generated a notificat
 
 The work packages are listed in order of freshness. The work packages on top of the list have the "newest" notifications. This means if there is a new update to a work package that was further down in your notification list, it will be moved to the top since that is now the newest notification.
 
+> [!NOTE] 
+>
+> If multiple notifications exist for a single work package, the [work package reminder](../work-packages/work-package-reminders) will take precedence, showing the reminder note at the bottom of the  page. 
+>
+> In case a work package has both a reminder and date alert  notification set up, then the date alert is combined with the reminder note, so that both are visible.
+
 ## Manage notifications
 
 Click on a notification to open the Activity tab of this work package in split screen. If you double click on a notification, it will open the full view of a work package. 
