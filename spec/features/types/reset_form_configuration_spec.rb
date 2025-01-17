@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -49,7 +51,7 @@ RSpec.describe "Reset form configuration",
       custom_field
 
       login_as(admin)
-      visit edit_type_tab_path(id: type.id, tab: "form_configuration")
+      visit edit_tab_type_path(id: type.id, tab: "form_configuration")
     end
 
     it "resets the form properly after changes with CFs (Regression test #27487)" do
