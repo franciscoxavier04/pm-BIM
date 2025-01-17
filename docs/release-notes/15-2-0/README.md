@@ -10,28 +10,27 @@ release_date: 2024-12-23
 
 Release date: 2024-12-23
 
-We released OpenProject [OpenProject 15.2.0](https://community.openproject.org/versions/2143).
-The release contains several bug fixes and we recommend updating to the newest version.
+We released [OpenProject 15.2.0](https://community.openproject.org/versions/2143). The release contains several bug fixes, and we recommend updating to the newest version.
 In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
 ### Work package reminders
 
-You can now use the *Reminder* function to receive a reminder about a work package at a later point in time. Simply navigate to any work package, select the **Reminder icon** and specify when you would like to be reminded. You will receive a notification in the notification center. 
+You can now use the Reminder function to receive a reminder about a work package at a later point in time. Simply navigate to any work package, select the **Reminder icon** and specify when you would like to be reminded. You will receive a notification in the notification center. 
 
 ![Work package reminder icon in OpenProject](openproject_user_guide_wp_reminder_icon.png)
 
 ![Set a work package reminder in OpenProject](openproject_set_wp_reminders.png)
 
-> ![TIP] 
+> [!TIP]
 > You can also receive immediate notifications via e-mail for personal reminders. To do that, [adjust your account settings](../../user-guide/account-settings/#email-reminders) accordingly.
 
 [Read more about setting work package reminders](../../user-guide/work-packages/edit-work-package/#work-package-reminders).
 
 ### Export timesheets as PDF
 
-Time reports can now be exported not only in Excel, but also in PDF format. Navigate to the Time and costs module of your project, specify all report filters according to your needs and press the **Export PDF timesheet** button. 
+Time reports can now be exported not only in Excel, but also in PDF format. Navigate to the Time and costs module of your project, specify all report filters according to your needs, and press the **Export PDF timesheet** button. 
 
 ![Export timesheet in PDF format in OpenProject](openproject_user_timesheet_pdf_export.png)
 
@@ -40,11 +39,11 @@ Here is an example of a timesheet PDF export:
 ![A timesheet PDF export example](openproject_userguide_timesheet_pdf_export_file.png)
 
 > [!TIP]
-> Keep in mind that this report will only include time entries, but not the cost ones.
+> Keep in mind that this time report will only include time entries, but not the cost ones.
 
 [Learn how to export timesheets as PDF](../../user-guide/time-and-costs/reporting/#export-time-sheets).
 
-### Edit lag to follow-precedes relations
+### Add a lag to Predecessor/Successor relations
 
 For Predecessor/Successor relations, you can now specify a **lag**, which represents the minimum number of working days to maintain between two work packages. This flexibility ensures more precise scheduling and helps align task dependencies effectively. By default, the lag is set to 0 working days, but you can update the *Description* and *Lag* fields anytime to adapt to changes in your project timeline.
 
@@ -54,7 +53,7 @@ For Predecessor/Successor relations, you can now specify a **lag**, which repres
 
 ### Create a new folder directly when using file storages integrations
 
-Users can now create a folder structure directly while selecting the destination folder for file uploads, enhancing the integration with both Nextcloud and OneDrive/SharePoint. This improvement simplifies the process by allowing users to organize their files during the upload, without the need to separately create folders in the file storage, thus streamlining workflows and improving overall efficiency.
+Users can now create a folder structure directly while selecting the destination folder for file uploads, enhancing the integration with both **Nextcloud** and **OneDrive/SharePoint**. This improvement simplifies the process by allowing users to organize their files during the upload, without the need to separately create folders in the file storage, thus streamlining workflows and improving overall efficiency.
 
 ![Create a new folder when uploading a file to a file storage](openproject-file-storage-new-folder.png)
 
@@ -106,7 +105,7 @@ We continued introducing standardized components for page headers and subheaders
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A heartfelt thank you to the City of Cologne for sponsoring parts of this release. Your support, combined with the incredible efforts of our Community, continues to drive these innovations forward.
+A heartfelt thank you to the City of Cologne and ZenDiS for sponsoring parts of this release. Your support, combined with the incredible efforts of our Community, continues to drive these innovations forward.
 
 Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Stefan Weiberg.
 
