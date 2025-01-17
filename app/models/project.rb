@@ -100,7 +100,8 @@ class Project < ApplicationRecord
 
   acts_as_favorable
 
-  acts_as_customizable # extended in Projects::CustomFields in order to support sections
+  acts_as_customizable validate_on: :saving_custom_fields
+  # extended in Projects::CustomFields in order to support sections
   # and project-level activation of custom fields
 
   acts_as_searchable columns: %W(#{table_name}.name #{table_name}.identifier #{table_name}.description),
