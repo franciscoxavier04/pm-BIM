@@ -33,12 +33,15 @@ RSpec.describe OpenIDConnect::JwtParser do
   subject(:parse) { described_class.new.parse(token) }
 
   let(:private_key) { OpenSSL::PKey::RSA.generate(2048) }
-  let(:payload) { { "sub" => "M. Curie", "iss" => "International Space Station", "aud" => our_client_id } }
+  let(:payload) do
+    { "exp" => expiration, "sub" => "M. Curie", "iss" => "International Space Station", "aud" => our_client_id }
+  end
   let(:token) { JWT.encode(payload, private_key, "RS256", { kid: "key-identifier" }) }
 
   let!(:provider) { create(:oidc_provider) }
   let(:known_issuer) { "International Space Station" }
   let(:our_client_id) { "openproject.org" }
+  let(:expiration) { 1.minute.from_now.to_i }
 
   before do
     allow(JSON::JWK::Set::Fetcher).to receive(:fetch).and_return(
@@ -142,6 +145,18 @@ RSpec.describe OpenIDConnect::JwtParser do
       end
 
       it { is_expected.to be_failure }
+    end
+  end
+
+  context "when the token is expired" do
+    let(:expiration) { 1.second.ago.to_i }
+
+    it { is_expected.to be_failure }
+
+    context "and when not verifying expiration" do
+      subject(:parse) { described_class.new(verify_expiration: false).parse(token) }
+
+      it { is_expected.to be_success }
     end
   end
 end
