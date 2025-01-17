@@ -1,0 +1,90 @@
+publiccodeYmlVersion: "0.4"
+
+name: OpenProject
+applicationSuite: MegaProductivitySuite
+url: "https://github.com/opf/openproject"
+landingURL: "https://www.openproject.org"
+isBasedOn: "https://www.openproject.org"
+softwareVersion: "15.2"
+releaseDate: "2025-01-21"
+logo: img/logo.svg
+
+platforms:
+  - linux
+
+categories:
+  - project management
+  - issue tracker
+  - project portfolio management
+
+usedBy:
+  - ZenDiS GmbH
+  - opendesk
+
+roadmap: "https://www.openproject.org/roadmap"
+
+developmentStatus: development
+
+softwareType: "standalone/server"
+
+intendedAudience:
+  scope:
+    - public administration
+  countries:
+    - de
+    - fr
+    - en
+    - it
+    - es
+  unsupportedCountries:
+
+description:
+  en:
+    localisedName: OpenProject
+    shortDescription: >
+          OpenProject is a web-based project management software. 
+
+    longDescription: >
+          OpenProject is an open-source project management software widely used in the public sector, including initiatives like openDesk. 
+          It supports collaborative planning, tracking, and managing of projects with features such as Gantt charts, task management, agile boards, time tracking, and reporting. The software is self-hosted or available as a hosted service, providing full data control and security.
+
+    documentation: "https://www.openproject.org/docs"
+    apiDocumentation: "https://www.openproject.org/docs/api/"
+
+    features:
+      
+          - Project planning and scheduling
+          - Product roadmap and release planning
+          - Task management and team collaboration
+          - Agile and Scrum
+          - Time tracking, cost reporting, and budgeting
+          - Bug tracking
+          - Wikis
+          - Forums
+          - Meeting agendas and meeting minutes
+
+    screenshots:
+
+    videos:
+       - https://youtube.com/openproject
+    awards:
+  
+
+legal:
+  license: GGPL-3.0
+  mainCopyrightOwner: OpenProject GmbH
+  repoOwner: OpenProject GmbH
+
+maintenance:
+  type: "contract"
+
+  contacts:
+    - name: Niels Lindenthal
+      
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - en
+    - it
+    - fr
+    - de
