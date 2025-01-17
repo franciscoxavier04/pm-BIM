@@ -39,7 +39,7 @@ Here is an example of a timesheet PDF export:
 ![A timesheet PDF export example](openproject_userguide_timesheet_pdf_export_file.png)
 
 > [!TIP]
-> Keep in mind that this timesheet report will only include time entries, but not the cost ones.
+> Keep in mind that this time report will only include time entries, but not the cost ones.
 
 [Learn how to export timesheets as PDF](../../user-guide/time-and-costs/reporting/#export-time-sheets).
 
