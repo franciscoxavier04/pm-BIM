@@ -43,7 +43,7 @@ Here is an example of a timesheet PDF export:
 
 [Learn how to export timesheets as PDF](../../user-guide/time-and-costs/reporting/#export-time-sheets).
 
-### Edit lag to follow-precedes relations
+### Add a lag to Predecessor/Successor relations
 
 For Predecessor/Successor relations, you can now specify a **lag**, which represents the minimum number of working days to maintain between two work packages. This flexibility ensures more precise scheduling and helps align task dependencies effectively. By default, the lag is set to 0 working days, but you can update the *Description* and *Lag* fields anytime to adapt to changes in your project timeline.
 
