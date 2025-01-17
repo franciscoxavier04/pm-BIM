@@ -87,10 +87,10 @@ ko:
   validation_failure_integer: "은(는) 유효한 정수가 아닙니다."
   export:
     timesheet:
-      title: "Your PDF timesheet export"
-      button: "Export PDF timesheet"
-      timesheet: "Timesheet"
-      time: "Time"
+      title: "내 PDF 타임시트 내보내기"
+      button: "PDF 타임시트 내보내기"
+      timesheet: "타임시트"
+      time: "시간"
     cost_reports:
       title: "비용 리포트 XML로 내보내기"
   reporting:
