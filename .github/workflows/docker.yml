@@ -55,7 +55,10 @@ jobs:
           echo "Version: $VERSION"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "checkout_ref=$CHECKOUT_REF" >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v4
+      - name: Checkout
+        with:
+          ref: ${{ needs.setup.outputs.checkout_ref }}
+        uses: actions/checkout@v4
       - name: Cache NPM
         uses: runs-on/cache@v4
         with:
