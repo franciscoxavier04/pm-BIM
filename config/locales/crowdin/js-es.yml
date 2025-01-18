@@ -625,11 +625,11 @@ es:
       date_alerts:
         milestone_date: "Fecha de hito"
         overdue: "Vencido"
-        overdue_since: "desde %{difference_in_days}"
-        property_today: "es hoy"
-        property_is: "está en %{difference_in_days}"
-        property_was: "era hace %{difference_in_days}"
-        property_is_deleted: "se ha eliminado"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Alertas de fecha"
           description: "Con las alertas de fecha, recibirá notificaciones de próximas fechas de inicio o finalización para que nunca olvide una fecha límite importante."

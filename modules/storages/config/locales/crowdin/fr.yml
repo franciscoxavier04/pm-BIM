@@ -344,7 +344,7 @@ fr:
         title: Configuration de l'intégration terminée
       timeout:
         link_text: état de santé de la configuration de stockage de fichiers
-        subtitle: OpenProject n'a pas pu vous donner accès au dossier du projet dans le délai imparti. Veuillez réessayer.<br><br> Si ce problème persiste, veuillez contacter votre administrateur OpenProject pour vérifier le %{storages_health_link}.
+        subtitle: OpenProject n'a pas pu vous donner accès au dossier du projet dans le délai imparti. Veuillez réessayer.<br><br> Si ce problème persiste, veuillez contacter votre administrateur OpenProject pour vérifier %{storages_health_link}.
       waiting:
         subtitle: Un instant, s'il vous plaît, cela peut prendre un peu de temps...
         title: Nous configurons vos permissions sur le dossier du projet.
