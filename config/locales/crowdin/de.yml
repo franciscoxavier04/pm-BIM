@@ -284,6 +284,7 @@ de:
       label: "Bezeichnung"
       short: "Kurzname"
       parent: "Übergeordnetes Arbeitspaket"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Suche in %{app_title}"
     overwritten_tabs:
@@ -661,7 +662,7 @@ de:
       no_results_title_text: Derzeit sind keine Beziehungen verfügbar.
       blankslate_heading: "Keine Beziehungen"
       blankslate_description: "Dieses Arbeitspaket hat noch keine Beziehungen."
-    label_add_child_button: "Child"
+    label_add_child_button: "Kind"
     label_add_x: "%{x} hinzufügen"
     label_edit_x: "%{x} editieren"
     label_add_description: "Beschreibung hinzufügen"
@@ -670,7 +671,7 @@ de:
       title: "Verzögerung (in Tagen)"
       caption: "Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen."
     relations:
-      label_new_child_created: "New work package created and added as a child"
+      label_new_child_created: "Neues Arbeitspaket erstellt und als Kind hinzugefügt"
       label_relates_singular: "Beziehung mit"
       label_relates_plural: "Beziehungen mit"
       label_relates_to_singular: "Beziehung mit"
@@ -685,9 +686,9 @@ de:
       follows_description: "Das verknüpfte Arbeitspaket muss beendet sein bevor dieses Arbeitspaket starten kann"
       label_child_singular: "Untergeordnetes Arbeitspaket"
       label_child_plural: "Untergeordnete Arbeitspakete"
-      new_child: "New child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      new_child: "Neues Kind"
+      new_child_text: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
+      existing_child: "Vorhandenes Kind"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       label_blocks_singular: "Blockiert"
       label_blocks_plural: "Blockiert"

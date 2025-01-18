@@ -287,6 +287,7 @@
       label: "Label"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Søk i %{app_title}"
     overwritten_tabs:

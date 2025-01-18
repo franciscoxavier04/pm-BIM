@@ -284,6 +284,7 @@ es:
       label: "Etiqueta"
       short: "Nombre corto"
       parent: "Principal"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Buscar en %{app_title}"
     overwritten_tabs:

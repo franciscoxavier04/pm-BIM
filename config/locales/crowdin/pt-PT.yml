@@ -285,6 +285,7 @@ pt-PT:
       label: "Etiqueta"
       short: "Nome abreviado"
       parent: "Principal"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Pesquisar em %{app_title}"
     overwritten_tabs:

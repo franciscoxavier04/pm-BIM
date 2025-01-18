@@ -287,6 +287,7 @@ ko:
       label: "레이블"
       short: "짧은 이름"
       parent: "부모"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "%{app_title}에서 검색"
     overwritten_tabs:

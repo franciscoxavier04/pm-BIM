@@ -287,6 +287,7 @@ tr:
       label: "Etiket"
       short: "Kısa adı"
       parent: "Üst"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "%{app_title} içinde ara"
     overwritten_tabs:

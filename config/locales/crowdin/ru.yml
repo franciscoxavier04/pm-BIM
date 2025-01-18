@@ -286,6 +286,7 @@ ru:
       label: "Метка"
       short: "Короткое имя"
       parent: "Родитель"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Поиск в %{app_title}"
     overwritten_tabs:
