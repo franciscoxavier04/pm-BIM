@@ -33,6 +33,12 @@ import { debounce, DebouncedFunc } from 'lodash';
 import Idiomorph from 'idiomorph/dist/idiomorph.cjs';
 import { FrameElement, TurboBeforeFrameRenderEvent } from '@hotwired/turbo';
 
+declare global {
+  interface HTMLElementTagNameMap {
+    'turbo-frame':FrameElement
+  }
+}
+
 export default class PreviewController extends Controller {
   static targets = [
     'form',
@@ -89,8 +95,8 @@ export default class PreviewController extends Controller {
       }
     });
 
-    const turboFrame = this.formTarget.closest('turbo-frame') as FrameElement;
-    turboFrame.addEventListener('turbo:before-frame-render', this.frameMorphRenderer);
+    const turboFrame = this.formTarget.closest('turbo-frame');
+    turboFrame?.addEventListener('turbo:before-frame-render', this.frameMorphRenderer);
   }
 
   disconnect() {
@@ -103,10 +109,8 @@ export default class PreviewController extends Controller {
       }
       target.removeEventListener('blur', this.debouncedPreview);
     });
-    const turboFrame = this.formTarget.closest('turbo-frame') as FrameElement;
-    if (turboFrame) {
-      turboFrame.removeEventListener('turbo:before-frame-render', this.frameMorphRenderer);
-    }
+    const turboFrame = this.formTarget.closest('turbo-frame');
+    turboFrame?.removeEventListener('turbo:before-frame-render', this.frameMorphRenderer);
   }
 
   markFieldAsTouched(event:{ target:HTMLInputElement }) {
@@ -139,7 +143,7 @@ export default class PreviewController extends Controller {
     const wpAction = wpPath.endsWith('/work_packages/new/progress') ? 'new' : 'edit';
 
     const editUrl = `${wpPath}/${wpAction}?${new URLSearchParams(wpParams).toString()}`;
-    const turboFrame = this.formTarget.closest('turbo-frame') as FrameElement;
+    const turboFrame = this.formTarget.closest('turbo-frame');
 
     if (turboFrame) {
       turboFrame.src = editUrl;
