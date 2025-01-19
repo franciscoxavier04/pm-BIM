@@ -70,8 +70,8 @@ export default class PreviewController extends Controller {
     // new ids, the ids referenced by `aria-describedby` are stale. This makes
     // caption and validation message unaccessible for screen readers and other
     // assistive technologies. This is why morph cannot be used here.
-    this.frameMorphRenderer = (event:TurboBeforeFrameRenderEvent) => {
-      event.detail.render = (currentElement:HTMLElement, newElement:HTMLElement) => {
+    this.frameMorphRenderer = (event) => {
+      event.detail.render = (currentElement, newElement) => {
         Idiomorph.morph(currentElement, newElement, { ignoreActiveValue: true });
       };
     };
