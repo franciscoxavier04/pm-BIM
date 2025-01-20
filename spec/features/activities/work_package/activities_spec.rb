@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2012-2024 the OpenProject GmbH
@@ -978,12 +980,14 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
         # the scroll position is at around 700, some other part of the frontend code seems to trigger a scroll
         # happens for the files tab as well for example
         #
-        # it "does not scroll to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
-        #   sleep 1 # wait for a potential auto scrolling to finish
-        #   # expect activity tab not to be visibe, as the page is not scrolled to the bottom
-        #   scroll_position = page.evaluate_script("document.querySelector(\"#content-body\").scrollTop")
-        #   expect(scroll_position).to eq(0)
-        # end
+        it "does not scroll to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
+          pending "bug/59916-on-narrow-screens-(including-mobile)-the-view-always-scrolls-to-the-activity"
+
+          sleep 1 # wait for a potential auto scrolling to finish
+          # expect activity tab not to be visibe, as the page is not scrolled to the bottom
+          scroll_position = page.evaluate_script("document.querySelector(\"#content-body\").scrollTop")
+          expect(scroll_position).to eq(0)
+        end
       end
     end
 
