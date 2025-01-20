@@ -106,3 +106,34 @@ description:
 
       Its open-source nature ensures transparency and benefits from an active
       community contributing to continuous improvement.
+  de:
+    localisedName: OpenProject
+    documentation: 'https://www.openproject.org/docs'
+    apiDocumentation: 'https://www.openproject.org/docs/api'
+    shortDescription: 'OpenProject is a web-based project management software'
+    features:
+      - Projektplanung
+      - Aufgabenverwaltung
+      - Agile Workflows
+      - Besprechungsmanagement
+      - Zeit- und Kostenverfolgung
+      - Online-Zusammenarbeit
+      - Gantt-Diagramme
+      - Agile Boards
+      - Wissensmanagement
+      - Detaillierte Berichterstattung
+      - Anpassbare Workflows
+      - Selbstdefinierte Felder für Projekte, Aufgaben und mehr
+      - Grundlinie (Planungsvergleich)
+      - Integration in Nextcloud sowie in OneDrive/SharePoint
+      - Integration in GitHub und in GitLab
+    longDescription: >
+      OpenProject ist das Projektmanagement-Modul von [www.opendesk.eu](http://www.opendesk.eu), einer integrierten Office- und Collaboration-Suite für den öffentlichen Sektor.
+
+      OpenProject unterstützt Ihre Projektplanung, Aufgabenmanagement, agile Workflows, Zeiterfassung und teamübergreifende Zusammenarbeit. Dank wichtiger Funktionen wie Gantt-Diagrammen, Scrum- und Kanban-Boards sowie detaillierter Berichterstellung eignet sich das Tool für eine Vielzahl von Projekten und Branchen.
+
+      OpenProject bietet sowohl Cloud-basierte als auch selbst gehostete Bereitstellungsoptionen, wodurch Organisationen flexibel bei der Handhabung von Datensicherheit und -betrieb sind.
+
+      Die Software entspricht den BSI-IT-Grundschutz-Standards für Barrierefreiheit und Sicherheit und ist somit auch für Branchen mit besonders strengen Anforderungen geeignet.
+
+      Die Tatsache, dass es sich um eine Open Source Software handelt, sorgt für Transparenz und bietet den Vorteil einer aktiven Gemeinschaft, welche zur kontinuierlichen Produktverbesserung beiträgt.
