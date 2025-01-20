@@ -250,7 +250,7 @@ Rails.application.reloader.to_prepare do
                      },
                      permissible_on: %i[work_package project],
                      contract_actions: { work_packages: %i[read],
-                                         work_package_reminders: %i[modal_body] }
+                                         work_package_reminders: %i[manage] }
 
       wpt.permission :add_work_packages,
                      {

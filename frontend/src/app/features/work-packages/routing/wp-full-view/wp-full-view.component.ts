@@ -123,7 +123,7 @@ export class WorkPackagesFullViewComponent extends WorkPackageSingleViewBase imp
     this.displayTimerButton = Object.prototype.hasOwnProperty.call(wp, 'logTime');
     this.displayShareButton$ = this.currentUserService.hasCapabilities$('work_package_shares/index', (wp.project as ProjectResource).id);
     this.displayReminderButton$ = this.currentUserService.isLoggedInAndHasCapabalities$(
-      'work_package_reminders/modal_body',
+      'work_package_reminders/manage',
       (this.workPackage.project as ProjectResource).id,
     );
 
