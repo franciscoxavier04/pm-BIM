@@ -287,6 +287,7 @@ sv:
       label: "Etikett"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
@@ -667,14 +668,16 @@ sv:
       no_results_title_text: There are currently no relations available.
       blankslate_heading: "No relations"
       blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
     label_add_x: "Add %{x}"
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
     lag:
       subject: "Lag"
       title: "Lag (in days)"
-      caption: "The gap in number of working days in between the two work packages"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
       label_relates_plural: "related to"
       label_relates_to_singular: "related to"
@@ -689,6 +692,9 @@ sv:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
@@ -870,6 +876,9 @@ sv:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Kolumner"
         relations_to_type_column: "Relationer till %{type}"
@@ -1802,6 +1811,10 @@ sv:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Lägg till nya attributgrupper"
@@ -2586,6 +2599,7 @@ sv:
   label_project_new: "Nytt projekt"
   label_project_plural: "Projekt"
   label_project_list_plural: "Projektlistor"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Projektinställningar"
@@ -3028,6 +3042,7 @@ sv:
   notice_bad_request: "Felaktig förfrågan."
   notice_not_authorized: "Du har inte behörighet att komma åt denna sida."
   notice_not_authorized_archived_project: "Projektet som du försöker komma åt har arkiverats."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Ditt lösenord är inte korrekt. Kan inte fortsätta."
   notice_principals_found_multiple: "%{number} resultat hittades. Använd TAB för att fokusera på det första."
   notice_principals_found_single: "Ett resultat. Använd TAB för att fokusera på det."
@@ -3202,9 +3217,9 @@ sv:
       are_you_sure: "Är du säker på att du vill arkivera projektet '%{name}'?"
       archived: "Arkiverad"
     count:
-      zero: "0 projekt"
-      one: "1 projekt"
-      other: "%{count} projekt"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Aktivitet"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Arbetspaket"
@@ -3562,6 +3577,27 @@ sv:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -3595,6 +3631,7 @@ sv:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Ta bort arbetspaket och alla underarbetspaket?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tilldela till projektet"
   text_form_configuration: >
     Du kan anpassa vilka fält som ska visas i formulär för arbetspaket. Du kan fritt gruppera fälten för att återspegla behoven för din domän.

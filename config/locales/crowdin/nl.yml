@@ -284,6 +284,7 @@ nl:
       label: "Label"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Zoeken in %{app_title}"
     overwritten_tabs:
@@ -665,14 +666,16 @@ nl:
       no_results_title_text: There are currently no relations available.
       blankslate_heading: "No relations"
       blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
     label_add_x: "Add %{x}"
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
     lag:
       subject: "Lag"
       title: "Lag (in days)"
-      caption: "The gap in number of working days in between the two work packages"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
       label_relates_plural: "related to"
       label_relates_to_singular: "related to"
@@ -687,6 +690,9 @@ nl:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
@@ -868,6 +874,9 @@ nl:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Sectie
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Kolommen"
         relations_to_type_column: "Betrekkingen %{type}"
@@ -1800,6 +1809,10 @@ nl:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Toevoegen van nieuwe attribuutgroepen"
@@ -2584,6 +2597,7 @@ nl:
   label_project_new: "Nieuw project"
   label_project_plural: "Projecten"
   label_project_list_plural: "Projectlijsten"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Project Instellingen"
@@ -3025,6 +3039,7 @@ nl:
   notice_bad_request: "Foute ingave."
   notice_not_authorized: "U bent niet gemachtigd om deze pagina te openen."
   notice_not_authorized_archived_project: "Het project dat u probeert te bezoeken is gearchiveerd."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Uw wachtwoord is niet correct. Kan niet doorgaan."
   notice_principals_found_multiple: "Er zijn %{number} resultaten gevonden.   Tab om het eerste resultaat te tonen."
   notice_principals_found_single: "Er is één resultaat. Tab om te tonen."
@@ -3199,9 +3214,9 @@ nl:
       are_you_sure: "Weet u zeker dat u dit project '%{name}' wilt archiveren?"
       archived: "Gearchiveerd"
     count:
-      zero: "0 Projecten"
-      one: "1 Project"
-      other: "%{count} Projecten"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Activiteit"
   project_module_forums: "Fora"
   project_module_work_package_tracking: "Werkpakketten"
@@ -3561,6 +3576,27 @@ nl:
       new:
         heading: "Nieuw attribuut"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Instellingen voor nieuwe projecten"
@@ -3594,6 +3630,7 @@ nl:
   text_are_you_sure_continue: "Weet u zeker dat u wilt doorgaan?"
   text_are_you_sure_with_children: "Verwijder werk pakket en alle kinderen daarvan?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Wijs aan project toe"
   text_form_configuration: >
     U kunt aanpassen welke velden worden weergegeven in pakket werkformulieren. U kunt deze velden vrij groeperen om de weergave aan uw eigen behoeften aan te passen.

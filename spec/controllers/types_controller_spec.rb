@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -265,7 +267,7 @@ RSpec.describe TypesController do
 
         it do
           expect(response).to(
-            redirect_to(edit_type_tab_path(id: type.id, tab: "settings"))
+            redirect_to(edit_tab_type_path(id: type.id, tab: "settings"))
           )
         end
 
@@ -304,7 +306,7 @@ RSpec.describe TypesController do
 
         it do
           expect(response).to(
-            redirect_to(edit_type_tab_path(id: type.id, tab: :projects))
+            redirect_to(edit_tab_type_path(id: type.id, tab: :projects))
           )
         end
 

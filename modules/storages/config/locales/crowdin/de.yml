@@ -4,7 +4,7 @@ de:
       storages/file_link:
         origin_id: Ursprungs-ID
       storages/project_storage:
-        storage: Storage
+        storage: Speicherung
       storages/storage:
         creator: Ersteller
         drive: Laufwerk ID
@@ -345,8 +345,8 @@ de:
         subtitle: Sie werden weitergeleitet
         title: Einrichtung der Integration abgeschlossen
       timeout:
-        link_text: health status of the file storage setup
-        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the %{storages_health_link}.
+        link_text: Status des Dateispeicher-Setups
+        subtitle: OpenProject konnte Ihnen den Zugriff auf den Projektordner nicht innerhalb der erwarteten Zeitspanne ermöglichen. Versuchen Sie es bitte noch einmal.<br><br> Wenn dieses Problem weiterhin besteht, wenden Sie sich bitte an Ihren OpenProject-Administrator, um %{storages_health_link} zu überprüfen.
       waiting:
         subtitle: Einen Moment bitte, dies könnte etwas dauern...
         title: Wir richten Ihre Berechtigungen für den Projektordner ein.
