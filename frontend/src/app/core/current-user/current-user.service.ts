@@ -65,10 +65,10 @@ export class CurrentUserService {
 
   public isLoggedInAndHasCapabalities$(action:string|string[], projectContext:string|null):Observable<boolean> {
     return combineLatest([
-      this.hasCapabilities$(action, projectContext),
       this.isLoggedIn$,
+      this.hasCapabilities$(action, projectContext),
     ]).pipe(
-      map(([hasCapabilities, isLoggedIn]) => hasCapabilities && isLoggedIn),
+      map(([isLoggedIn, hasCapabilities]) => isLoggedIn && hasCapabilities),
     );
   }
 
