@@ -1,3 +1,5 @@
+require 'sanitize'
+
 module WorkPackages
   module ActivitiesTab
     module Journals
@@ -75,7 +77,7 @@ module WorkPackages
 
         def render_committer_name(committer)
           render(Primer::Beta::Text.new(font_weight: :bold, mr: 1)) do
-            committer.gsub(%r{<.+@.+>}, "").strip
+            Sanitize.fragment(committer.gsub(%r{<.+@.+>}, "").strip)
           end
         end
       end
