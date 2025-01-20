@@ -64,43 +64,35 @@ module WorkPackages
         end
 
         def base_journals
-          # Get journals with eager loading
-          journals = API::V3::Activities::ActivityEagerLoadingWrapper.wrap(
+          combine_and_sort_records(fetch_journals, fetch_revisions)
+        end
+
+        def fetch_journals
+          API::V3::Activities::ActivityEagerLoadingWrapper.wrap(
             work_package
               .journals
-              .includes(
-                :user,
-                :customizable_journals,
-                :attachable_journals,
-                :storable_journals,
-                :notifications
-              )
+              .includes(:user, :customizable_journals, :attachable_journals, :storable_journals, :notifications)
               .reorder(version: journal_sorting)
               .with_sequence_version
           )
+        end
 
-          # Get associated revisions
-          revisions = work_package.changesets.includes(:user, :repository)
+        def fetch_revisions
+          work_package.changesets.includes(:user, :repository)
+        end
 
-          # Combine and sort them by date
-          if journal_sorting_desc?
-            (journals + revisions).sort_by do |record|
-              timestamp = if record.is_a?(API::V3::Activities::ActivityEagerLoadingWrapper)
-                            record.created_at&.to_i
-                          elsif record.is_a?(Changeset)
-                            record.committed_on.to_i
-                          end
-              [-timestamp, -record.id]
-            end
-          else
-            (journals + revisions).sort_by do |record|
-              timestamp = if record.is_a?(API::V3::Activities::ActivityEagerLoadingWrapper)
-                            record.created_at&.to_i
-                          elsif record.is_a?(Changeset)
-                            record.committed_on.to_i
-                          end
-              [timestamp, record.id]
-            end
+        def combine_and_sort_records(journals, revisions)
+          (journals + revisions).sort_by do |record|
+            timestamp = record_timestamp(record)
+            journal_sorting_desc? ? [-timestamp, -record.id] : [timestamp, record.id]
+          end
+        end
+
+        def record_timestamp(record)
+          if record.is_a?(API::V3::Activities::ActivityEagerLoadingWrapper)
+            record.created_at&.to_i
+          elsif record.is_a?(Changeset)
+            record.committed_on.to_i
           end
         end
 
