@@ -37,7 +37,7 @@ The work packages are listed in order of freshness. The work packages on top of 
 
 > [!NOTE] 
 >
-> If multiple notifications exist for a single work package, the [work package reminder](../work-packages/edit-work-package/work-package-reminders) will take precedence, showing the reminder note at the bottom of the  page. 
+> If multiple notifications exist for a single work package, the [work package reminder](../work-packages/edit-work-package/#work-package-reminders) will take precedence, showing the reminder note at the bottom of the  page. 
 >
 > In case a work package has both a reminder and date alert  notification set up, then the date alert is combined with the reminder note, so that both are visible.
 
