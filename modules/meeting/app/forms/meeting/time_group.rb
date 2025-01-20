@@ -64,7 +64,7 @@ class Meeting::TimeGroup < ApplicationForm
         label: Meeting.human_attribute_name(:duration),
         visually_hide_label: false,
         required: true,
-        trailing_visual: { text: { text: I18n.t("text_hours") } },
+        trailing_visual: { text: { text: I18n.t("datetime.units.hour.other") } },
         data: {
           controller: "chronic-duration",
           application_target: "dynamic"
