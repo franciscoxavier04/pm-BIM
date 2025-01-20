@@ -67,7 +67,7 @@ description:
     localisedName: OpenProject
     documentation: 'https://www.openproject.org/docs'
     apiDocumentation: 'https://www.openproject.org/docs/api'
-    shortDescription: 'OpenProject is a web-based project management software'
+    shortDescription: 'OpenProject ist die führende Open-Source-Projektmanagement-Software'
     features:
       - Project planning
       - Task management
@@ -108,8 +108,8 @@ description:
       community contributing to continuous improvement.
   de:
     localisedName: OpenProject
-    documentation: 'https://www.openproject.org/docs'
-    apiDocumentation: 'https://www.openproject.org/docs/api'
+    documentation: 'https://www.openproject.org/de/docs/'
+    apiDocumentation: 'https://www.openproject.org/de/docs/api'
     shortDescription: 'OpenProject is a web-based project management software'
     features:
       - Projektplanung
