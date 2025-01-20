@@ -68,7 +68,7 @@ class OpenProject::Reporting::CostEntryXlsTable < OpenProject::XlsExport::XlsVie
     return "" if start_timestamp.nil? || end_timestamp.nil?
 
     days_between = (end_timestamp.to_date - start_timestamp.to_date).to_i
-    day_prefix = days_between > 1 ? "#{end_timestamp.to_date.iso8601} " : ""
+    day_prefix = days_between >= 1 ? "#{end_timestamp.to_date.iso8601} " : ""
     "#{day_prefix}#{format_time(end_timestamp, include_date: false)}"
   end
 
