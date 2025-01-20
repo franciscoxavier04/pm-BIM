@@ -38,9 +38,6 @@ dependsOn:
   open:
     - name: PostgreSQL
       versionMin: '13'
-    - name: Ruby
-      version: '3.3'
-    - name: Puma
 maintenance:
   type: contract
   contacts:
