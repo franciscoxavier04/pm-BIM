@@ -625,11 +625,11 @@ it:
       date_alerts:
         milestone_date: "Data inizio"
         overdue: "In ritardo"
-        overdue_since: "da %{difference_in_days}"
-        property_today: "è oggi"
-        property_is: "tra %{difference_in_days}"
-        property_was: "era %{difference_in_days} fa"
-        property_is_deleted: "è eliminato"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Avvisi data"
           description: "Con gli avvisi sulle date, sarai avvisato delle prossime date di inizio o di fine in modo da non perdere mai o dimenticare una scadenza importante."

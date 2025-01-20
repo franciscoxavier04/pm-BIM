@@ -129,6 +129,7 @@ zh-TW:
   label_recurring_meeting_more_past: "還有 %{count} 更多過去的會議。"
   label_recurring_meeting_more_past_singular: "還有 %{count} 更多過去的會議。"
   label_recurring_meeting_show_more: "顯示更多"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "編輯系列會議"
   label_recurring_meeting_series_delete: "刪除系列會議"
   label_my_meetings: "我的會議"

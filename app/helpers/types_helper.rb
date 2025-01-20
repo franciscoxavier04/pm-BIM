@@ -45,12 +45,6 @@ module ::TypesHelper
         label: "types.edit.form_configuration.tab"
       },
       {
-        name: "subject_configuration",
-        path: edit_tab_type_path(id: @type.id, tab: :subject_configuration),
-        label: "types.edit.subject_configuration.tab",
-        view_component: WorkPackages::Types::SubjectConfigurationComponent
-      },
-      {
         name: "projects",
         partial: "types/form/projects",
         path: edit_tab_type_path(id: @type.id, tab: :projects),
@@ -61,7 +55,7 @@ module ::TypesHelper
     if OpenProject::FeatureDecisions.generate_work_package_subjects_active?
       subject_configuration_tab = {
         name: "subject_configuration",
-        path: edit_type_tab_path(id: @type.id, tab: :subject_configuration),
+        path: edit_tab_type_path(id: @type.id, tab: :subject_configuration),
         label: "types.edit.subject_configuration.tab",
         view_component: WorkPackages::Types::SubjectConfigurationComponent
       }

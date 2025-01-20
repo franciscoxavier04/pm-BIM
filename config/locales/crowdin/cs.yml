@@ -665,6 +665,7 @@ cs:
         title: "Pro sdílení pracovního balíčku chybí pracovní postup"
         message: "Pro roli 'Pracovní balíček' není nastaven žádný pracovní postup. Bez pracovního postupu nemůže sdílení s uživatelem změnit stav pracovního balíčku. Pracovní toky mohou být zkopírovány. Vyberte typ zdroje (např. 'Úkol') a zdrojovou roli (např. 'Člen'). Pak vyberte cílové typy. Na začátku můžete vybrat všechny typy jako cíle. Nakonec vyberte roli 'Editor pracovních balíčků' jako cíl a stiskněte 'Kopírovat'. Poté, co jste tak vytvořili výchozí nastavení, vyladit pracovní postupy, jak to děláte pro každou jinou roli."
         link_message: "Konfigurace pracovních postupů v administraci."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
