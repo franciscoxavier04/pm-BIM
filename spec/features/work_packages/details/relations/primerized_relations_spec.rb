@@ -33,6 +33,7 @@ RSpec.describe "Primerized work package relations tab",
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project) }
+  shared_let(:admin) { create(:admin) }
   shared_let(:user) do
     create(:user,
            member_with_permissions: {
@@ -152,8 +153,8 @@ RSpec.describe "Primerized work package relations tab",
       relations_tab.expect_relation(relation_blocked)
 
       # Relations not visible due to lack of permissions on the project
-      relations_tab.expect_no_relation(restricted_relation_relates)
-      relations_tab.expect_no_relation(restricted_child_work_package)
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
   end
 
@@ -170,8 +171,8 @@ RSpec.describe "Primerized work package relations tab",
       tabs.expect_counter("relations", 3)
 
       # Relations not visible due to lack of permissions on the project
-      relations_tab.expect_no_relation(restricted_relation_relates)
-      relations_tab.expect_no_relation(restricted_child_work_package)
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
 
     it "can delete children" do
@@ -185,8 +186,8 @@ RSpec.describe "Primerized work package relations tab",
       tabs.expect_counter("relations", 3)
 
       # Relations not visible due to lack of permissions on the project
-      relations_tab.expect_no_relation(restricted_relation_relates)
-      relations_tab.expect_no_relation(restricted_child_work_package)
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
   end
 
@@ -208,8 +209,8 @@ RSpec.describe "Primerized work package relations tab",
 
       # Unchanged
       tabs.expect_counter("relations", 4)
-      relations_tab.expect_no_relation(restricted_relation_relates)
-      relations_tab.expect_no_relation(restricted_child_work_package)
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
 
       # Edit again
       relations_tab.edit_relation_description(relation_follows, "And they can be edited!")
@@ -221,8 +222,8 @@ RSpec.describe "Primerized work package relations tab",
       tabs.expect_counter("relations", 4)
 
       # Relations not visible due to lack of permissions on the project
-      relations_tab.expect_no_relation(restricted_relation_relates)
-      relations_tab.expect_no_relation(restricted_child_work_package)
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
 
     it "does not have an edit action for children" do
@@ -230,7 +231,7 @@ RSpec.describe "Primerized work package relations tab",
 
       wait_for_network_idle
 
-      child_row = relations_panel.find("[data-test-selector='op-relation-row-#{child_wp.id}']")
+      child_row = relations_panel.find("[data-test-selector='op-relation-row-visible-#{child_wp.id}']")
 
       within(child_row) do
         page.find("[data-test-selector='op-relation-row-#{child_wp.id}-action-menu']").click
@@ -296,9 +297,9 @@ RSpec.describe "Primerized work package relations tab",
       # Relation is created
       expect(Relation.follows.where(from: wp_successor, to: work_package)).to exist
 
-      # Relations not visible due to lack of permissions on the project
-      relations_tab.expect_no_relation(restricted_relation_relates)
-      relations_tab.expect_no_relation(restricted_child_work_package)
+      # Ghost relations are shown here due to lack of permissions on the project
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
 
     it "does not autocomplete unrelatable work packages" do
@@ -340,9 +341,9 @@ RSpec.describe "Primerized work package relations tab",
       # Child relation is created
       expect(not_child_yet_wp.reload.parent).to eq work_package
 
-      # Relations not visible due to lack of permissions on the project
-      relations_tab.expect_no_relation(restricted_relation_relates)
-      relations_tab.expect_no_relation(restricted_child_work_package)
+      # Ghost relations are shown here due to lack of permissions on the project
+      relations_tab.expect_ghost_relation(restricted_relation_relates)
+      relations_tab.expect_ghost_relation(restricted_child_work_package)
     end
 
     it "doesn't autocomplete parent, children, and WP itself" do
