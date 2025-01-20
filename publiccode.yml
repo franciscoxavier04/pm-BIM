@@ -62,9 +62,6 @@ localisation:
     - gr
     - se
     - us
-it:
-  conforme:
-    gdpr: true
 description:
   en:
     localisedName: OpenProject
