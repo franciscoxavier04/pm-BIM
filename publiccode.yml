@@ -23,11 +23,13 @@ usedBy:
   - FITKO
   - Stadt Chemnitz
 categories:
-  - project-management
-  - project-collaboration
+  - agile-project-management
+  - budgeting
   - enterprise-project-management
   - help-desk
   - knowledge-management
+  - project-collaboration
+  - project-management
   - task-management
   - time-management
   - time-tracking
