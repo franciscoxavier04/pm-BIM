@@ -284,6 +284,7 @@ pl:
       label: "Etykieta"
       short: "Nazwa skrócona"
       parent: "Element nadrzędny"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:

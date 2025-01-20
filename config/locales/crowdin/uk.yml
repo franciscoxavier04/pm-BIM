@@ -282,6 +282,7 @@ uk:
       label: "Мітка"
       short: "Коротка назва"
       parent: "Батьківський елемент"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:

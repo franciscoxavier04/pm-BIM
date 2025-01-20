@@ -284,6 +284,7 @@ zh-CN:
       label: "标签"
       short: "简称"
       parent: "父级"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "在%{app_title}中搜索"
     overwritten_tabs:

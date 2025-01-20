@@ -286,6 +286,7 @@ pt-BR:
       label: "Rótulo"
       short: "Nome abreviado"
       parent: "Pai"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Buscar em %{app_title}"
     overwritten_tabs:

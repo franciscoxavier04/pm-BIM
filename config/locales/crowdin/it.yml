@@ -284,6 +284,7 @@ it:
       label: "Etichetta"
       short: "Abbreviazione"
       parent: "Genitore"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Cerca in %{app_title}"
     overwritten_tabs:
