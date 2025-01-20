@@ -26,5 +26,19 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-.autocomplete-select-decoration--wrapper
-  position: relative
+// copied from https://github.com/primer/css/blob/main/src/support/variables/layout.scss
+$spacer-map-rem: (
+  0: 0,
+  1: var(--base-size-4, 4px),
+  2: var(--base-size-8, 8px),
+  3: var(--base-size-16, 16px),
+  4: var(--base-size-24, 24px),
+  5: var(--base-size-32, 32px),
+  6: var(--base-size-40, 40px),
+) !default;
+
+@each $scale, $size in $spacer-map-rem {
+  .gap-#{$scale} { gap: $size !important; }
+  .row-gap-#{$scale} { row-gap: $size !important; }
+  .column-gap-#{$scale} { column-gap: $size !important; }
+}

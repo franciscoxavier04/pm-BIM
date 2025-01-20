@@ -305,7 +305,7 @@ module Components
         SeleniumHubWaiter.wait
 
         retry_block do
-          select_relation_type "Child"
+          select_relation_type "Existing child"
         end
 
         within "##{WorkPackageRelationsTab::AddWorkPackageChildFormComponent::DIALOG_ID}" do

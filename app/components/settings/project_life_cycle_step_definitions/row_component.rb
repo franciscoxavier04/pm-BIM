@@ -28,27 +28,33 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  class PatternCollectionType < ActiveModel::Type::Value
-    def assert_valid_value(value)
-      cast(value)
-    end
+module Settings
+  module ProjectLifeCycleStepDefinitions
+    class RowComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
+      include Projects::LifeCycleDefinitionHelper
 
-    def cast(value)
-      PatternCollection.build(patterns: value).value_or { nil }
-    end
+      alias_method :definition, :model
 
-    def serialize(pattern)
-      return super if pattern.nil?
+      options :first?,
+              :last?
 
-      YAML.dump(pattern.to_h)
-    end
+      private
 
-    def deserialize(value)
-      return if value.blank?
-
-      data = YAML.safe_load(value)
-      cast(data)
+      def move_action(menu:, move_to:, label:, icon:)
+        menu.with_item(
+          label:,
+          href: move_admin_settings_project_life_cycle_step_definition_path(definition, move_to:),
+          form_arguments: {
+            method: :patch
+          },
+          data: {
+            "projects--settings--border-box-filter-target": "hideWhenFiltering"
+          }
+        ) do |item|
+          item.with_leading_visual_icon(icon:)
+        end
+      end
     end
   end
 end

@@ -28,13 +28,20 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  class PatternCollectionContract < Dry::Validation::Contract
-    params do
-      required(:subject).hash do
-        required(:blueprint).filled(:string)
-        required(:enabled).filled(:bool)
-      end
+module WorkPackages::Dialogs
+  class CreateDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpenProject::FormTagHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
+
+    attr_reader :work_package, :project
+
+    def initialize(work_package:, project:)
+      super
+
+      @work_package = work_package
+      @project = project
     end
   end
 end

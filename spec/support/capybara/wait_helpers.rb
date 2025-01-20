@@ -28,26 +28,26 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  PatternCollection = Data.define(:patterns) do
-    private_class_method :new
-
-    def self.build(patterns:, contract: PatternCollectionContract.new)
-      contract.call(patterns).to_monad.fmap { |success| new(success.to_h) }
-    end
-
-    def initialize(patterns:)
-      transformed = patterns.transform_values { Pattern.new(**_1) }.freeze
-
-      super(patterns: transformed)
-    end
-
-    def [](value)
-      patterns.fetch(value)
-    end
-
-    def to_h
-      patterns.stringify_keys.transform_values(&:to_h)
+module WaitHelpers
+  # Wait for an element to stop being resized on the page
+  #
+  # Useful to wait for a primer dialog to finish opening, as they have an
+  # opening animation.
+  #
+  # @param selector [String] CSS selector for the element to wait for
+  # @param wait [Integer] Optional maximum time to wait in seconds, defaults to
+  #   Capybara's default wait time
+  def wait_for_size_animation_completion(selector, wait: Capybara.default_max_wait_time)
+    element = page.find(selector, wait:)
+    page.document.synchronize do
+      initial_position = page.evaluate_script("arguments[0].getBoundingClientRect()", element)
+      sleep 0.1 # Small delay to allow for animation
+      final_position = page.evaluate_script("arguments[0].getBoundingClientRect()", element)
+      raise Capybara::ExpectationNotMet, "Animation not finished" unless initial_position == final_position
     end
   end
+end
+
+RSpec.configure do |config|
+  config.include WaitHelpers, type: :feature
 end
