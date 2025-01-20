@@ -119,7 +119,7 @@ At the configured date and time, you will receive the reminder in [Notification 
 
 > [!TIP]
 >
-> You can set to receive immediate notifications via e-mail for personal reminders. To do that, adjust your [account settings](../../user-guide/account-settings/#email-reminders) accordingly.
+> You can set to receive immediate notifications via e-mail for personal reminders. To do that, adjust your [account settings](../../account-settings/#email-reminders) accordingly.
 
 ## Watchers
 
