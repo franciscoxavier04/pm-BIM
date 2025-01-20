@@ -625,11 +625,11 @@ ca:
       date_alerts:
         milestone_date: "Data de fita"
         overdue: "Vençut"
-        overdue_since: "des de %{difference_in_days}"
-        property_today: "és avui"
-        property_is: "és en %{difference_in_days}"
-        property_was: "va ser fa %{difference_in_days}"
-        property_is_deleted: "eliminat"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Alertes per dates"
           description: "Amb les alertes per dates, se't notificarà quan una data d'inici o finalització s'apropi de tal manera que no se't puguin oblidar o passar dates rellevants."

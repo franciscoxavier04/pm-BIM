@@ -87,10 +87,10 @@ it:
   validation_failure_integer: "non è un numero intero valido"
   export:
     timesheet:
-      title: "Your PDF timesheet export"
-      button: "Export PDF timesheet"
-      timesheet: "Timesheet"
-      time: "Time"
+      title: "Esportazione del tuo foglio presenze in formato PDF"
+      button: "Esportazione del foglio presenze in PDF"
+      timesheet: "Foglio presenze"
+      time: "Ora"
     cost_reports:
       title: "Esportazione XLS dei report sui costi"
   reporting:

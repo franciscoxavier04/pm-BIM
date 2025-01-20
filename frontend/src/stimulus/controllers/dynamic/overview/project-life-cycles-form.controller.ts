@@ -35,7 +35,7 @@ export default class ProjectLifeCyclesFormController extends Controller {
 
   declare readonly formTarget:HTMLFormElement;
 
-  handleChange(event:Event) {
+  previewForm(event:Event) {
     const target = event.target as HTMLElement;
     const previewUrl = this.formTarget.dataset.previewUrl;
 
@@ -50,9 +50,6 @@ export default class ProjectLifeCyclesFormController extends Controller {
   }
 
   datePickerVisible(element:HTMLElement) {
-    const nextElement = element.nextElementSibling;
-    return nextElement
-           && nextElement.classList.contains('flatpickr-calendar')
-           && nextElement.classList.contains('open');
+    return element.classList.contains('active');
   }
 }
