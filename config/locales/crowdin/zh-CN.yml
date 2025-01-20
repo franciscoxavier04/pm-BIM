@@ -676,7 +676,7 @@ zh-CN:
       label_follows_plural: "前任(之前)"
       follows_description: "相关工作包必须在本工作包启动前完成"
       label_child_singular: "子节点"
-      label_child_plural: "子节点"
+      label_child_plural: "子项"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
       label_blocks_singular: "阻止"
       label_blocks_plural: "阻止"

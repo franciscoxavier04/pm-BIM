@@ -88,9 +88,13 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, :w
           # Retrying due to a race condition between filling the input vs submitting the form preview.
           original_dates = [life_cycle_initiating.start_date, life_cycle_initiating.end_date]
           dialog.set_date_for(life_cycle_initiating, value: original_dates)
+
+          page.driver.clear_network_traffic
           dialog.set_date_for(life_cycle_initiating, value: initiating_dates)
 
           dialog.expect_caption(life_cycle_initiating, text: "Duration: 8 working days")
+          # Ensure that only 1 ajax request is triggered after setting the date range.
+          expect(page.driver.browser.network.traffic.size).to eq(1)
         end
 
         ready_for_planning_date = start_date + 1.day

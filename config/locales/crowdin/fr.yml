@@ -344,8 +344,8 @@ fr:
     settings:
       change_identifier: Changer l'identifiant
       actions:
-        label_enable_all: "Enable all"
-        label_disable_all: "Disable all"
+        label_enable_all: "Activer tout"
+        label_disable_all: "Désactiver tout"
       activities:
         no_results_title_text: Aucune activité disponible pour le moment.
       forums:
@@ -358,18 +358,18 @@ fr:
         no_results_title_text: Il n'y a actuellement aucun champ personnalisé disponible.
       life_cycle:
         header:
-          title: "Project lifecycle"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          title: "Cycle de vie du projet"
+          description_html: 'Ces étapes et portes du cycle de vie du projet seront affichés dans votre <a href=%{overview_url} target="_blank">page d''aperçu du projet</a> et sont définis dans les <a href=%{admin_settings_url} target="_blank">paramètres d''administration</a> par l''administrateur de l''instance. Vous pouvez activer ou désactiver des attributs individuels.'
+        non_defined: "Ni les étapes ni les portes ne sont actuellement définies."
+        section_header: "Étapes et portes"
         step:
-          use_in_project: "Use %{step} in this project"
+          use_in_project: "Utiliser %{step} dans ce projet"
         filter:
-          label: "Search project stage or gate"
+          label: "Recherche d'une étape ou d'une porte de projet"
       project_custom_fields:
         header:
           title: "Attributs du projet"
-          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          description_html: 'Ces attributs de projet seront affichés dans votre <a href=%{overview_url} target="_blank">page d''aperçu du projet</a> sous leurs sections respectives. Vous pouvez activer ou désactiver des attributs individuels. Les attributs et les sections du projet sont définis dans les <a href=%{admin_settings_url} target="_blank">paramètres d''administration</a> par l''administrateur de l''instance. '
         filter:
           label: "Rechercher un attribut de projet"
         actions:
@@ -390,8 +390,8 @@ fr:
         no_results_title_text: Il n'y a pas d'espace disque supplémentaire utilisé par ce projet.
   project_stage:
     working_days_count:
-      one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      one: "Durée : %{count} jour ouvrable"
+      other: "Durée : %{count} jours ouvrables"
   lists:
     create:
       success: "La liste modifiée a été enregistrée en tant que nouvelle liste"
@@ -512,12 +512,12 @@ fr:
     groups:
       member_in_these_groups: "Cet utilisateur est actuellement membre des groupes suivants :"
       no_results_title_text: Cet utilisateur n'est actuellement membre d'aucun groupe.
-      summary_with_more: Member of %{names} and %{count_link}.
-      more: "%{count} more"
-      summary: Member of %{names}.
+      summary_with_more: Membre de %{names} et %{count_link}.
+      more: "%{count} de plus"
+      summary: Membre de %{names}.
     memberships:
       no_results_title_text: Cet utilisateur n'est membre d'aucun projet pour le moment.
-    open_profile: "Open profile"
+    open_profile: "Ouvrir le profil"
   page:
     text: "Texte"
   placeholder_users:
@@ -587,26 +587,26 @@ fr:
       no_results_content_text: Créer un nouveau type
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Configuration du formulaire"
       more_info_text_html: >
         L'édition Entreprise vous permet de personnaliser la configuration du formulaire avec ces add-ons supplémentaires : <br> <ul class="%{list_styling_class}"> <li><b>Ajouter de nouveaux groupes d'attributs</b></li> <li><b>Renommer les groupes d'attributs</b></li> <li><b>Ajouter une table des lots de travaux connexes</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projets"
+        enabled_projects: "Projets activés"
       settings:
-        tab: "Settings"
-        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+        tab: "Paramètres"
+        type_color_text: La couleur sélectionnée distingue les différents types dans les graphiques de Gantt ou les tableaux des lots de travaux. Il est donc recommandé d'utiliser une couleur forte.
       subject_configuration:
-        tab: "Subject configuration"
+        tab: "Configuration du sujet"
         manually_editable_subjects:
-          label: "Manually editable subjects"
-          caption: "Users can manually enter and edit work package subjects without restrictions."
+          label: "Sujets modifiables manuellement"
+          caption: "Les utilisateurs peuvent saisir et modifier manuellement les sujets des lots de travaux sans restrictions."
         automatically_generated_subjects:
-          label: "Automatically generated subjects"
-          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+          label: "Sujets générés automatiquement"
+          caption: "Définissez un modèle utilisant des attributs et du texte référencés pour générer automatiquement des sujets de lots de travaux. Les utilisateurs ne pourront pas modifier manuellement les sujets."
         pattern:
-          label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          label: "Modèle de sujet"
+          caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
   versions:
     overview:
       work_packages_in_archived_projects: "La version est partagée avec les projets archivés qui ont encore des lots de travaux assignés à cette version. Ils sont comptés, mais n'apparaîtront pas dans les vues liées."
@@ -670,9 +670,9 @@ fr:
     label_edit_x: "Modifier %{x}"
     label_add_description: "Ajouter une description"
     lag:
-      subject: "Lag"
-      title: "Lag (in days)"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      subject: "Délai"
+      title: "Délai (en jours)"
+      caption: "Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux."
     relations:
       label_relates_singular: "lié à"
       label_relates_plural: "liés à"
@@ -688,7 +688,7 @@ fr:
       follows_description: "Le lot de travaux lié doit nécessairement se terminer avant que celui-ci puisse commencer"
       label_child_singular: "enfant"
       label_child_plural: "enfants"
-      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
       label_blocks_singular: "blocs"
       label_blocks_plural: "blocs"
       blocks_description: "Le lot de travaux associé ne peut pas être fermé avant que celui-ci soit fermé en premier"
@@ -879,7 +879,7 @@ fr:
         to: "Lot de travaux associé"
       reminder:
         remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_time: "Heure "
       repository:
         url: "URL"
       role:
@@ -968,7 +968,7 @@ fr:
       messages:
         accepted: "doi(ven)t être accepté(e)(s)."
         after: "doit être après %{date}."
-        after_today: "must be in the future."
+        after_today: "doit se situer dans le futur."
         after_or_equal_to: "Doit être après ou égal à %{date}."
         before: "doit être antérieur(e) à %{date}."
         before_or_equal_to: "doit être antérieur(e) ou égal(e) à %{date}."
@@ -1015,7 +1015,7 @@ fr:
         not_an_integer: "n'est pas un entier."
         not_an_iso_date: "n’est pas une date valide. Format requis : AAAA-MM-JJ."
         not_same_project: "n'appartient pas au même projet."
-        datetime_must_be_in_future: "must be in the future."
+        datetime_must_be_in_future: "doit se situer dans le futur."
         odd: "doit être impair."
         regex_match_failed: "ne correspond pas à l'expression régulière %{expression}."
         regex_invalid: "n’a pas pu être validé avec l’expression régulière associée."
@@ -1129,38 +1129,38 @@ fr:
           attributes:
             type:
               must_be_a_stage_or_gate: "doit être soit Project::StageDefinition soit Project::GateDefinition"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "doit correspondre au nom de la classe instanciée"
         project/gate_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+              type_and_class_name_mismatch: "doit être un Project::GateDefinition"
         project/stage_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
+              type_and_class_name_mismatch: "doit être un Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "doit être soit Project::Stage soit Project::Gate"
               must_be_a_stage: "doit être un Project::Stage"
               must_be_a_gate: "doit être un Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              type_and_class_name_mismatch: "doit correspondre au nom de la classe instanciée"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+              end_date_not_allowed: "Impossible d'assigner une date de fin à un Project::Gate"
             type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
+              type_and_class_name_mismatch: "doit être un Project::Gate"
             date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              non_continuous_dates: "ne peut pas être antérieure à la date de fin (%{step} précédente)."
         project/stage:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-              incomplete: "is incomplete."
+              start_date_must_be_before_end_date: "la date de début doit être antérieure à la date de fin."
+              non_continuous_dates: "ne peut pas être antérieure à la date de fin (%{step} précédente)."
+              incomplete: "est incomplet."
             type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
+              type_and_class_name_mismatch: "doit être un Project::Stage"
         query:
           attributes:
             project:
@@ -1377,8 +1377,8 @@ fr:
         other: "Notifications"
       placeholder_user: "Utilisateur de remplacement"
       project: "Projet"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
+      project/gate_definition: "Porte"
+      project/stage_definition: "Étape"
       project_query:
         one: "Liste de projets"
         other: "Listes de projets"
@@ -1579,7 +1579,7 @@ fr:
   button_print: "Imprimer"
   button_quote: "Citer"
   button_remove: Supprimer
-  button_remove_reminder: "Remove reminder"
+  button_remove_reminder: "Supprimer le rappel"
   button_rename: "Renommer"
   button_replace: "Remplacer"
   button_revoke: "Révoquer"
@@ -1590,7 +1590,7 @@ fr:
   button_save_as: "Enregistrer sous"
   button_apply_changes: "Appliquer les modifications"
   button_save_back: "Enregistrer et revenir"
-  button_set_reminder: "Set reminder"
+  button_set_reminder: "Définir un rappel"
   button_show: "Afficher"
   button_sort: "Trier"
   button_submit: "Envoyer"
@@ -1796,8 +1796,8 @@ fr:
   direction: de gauche à droite
   ee:
     upsale:
-      title: "Enterprise add-on"
-      link_title: "More information"
+      title: "Add-on Enterprise"
+      link_title: "Plus d'informations"
       form_configuration:
         description: "Personnaliser la configuration du formulaire avec ces add-ons supplémentaires :"
         add_groups: "Ajouter de nouveaux groupes d’attributs"
@@ -1834,7 +1834,7 @@ fr:
   error_pdf_export_too_many_columns: "Trop de colonnes sélectionnées pour l’exportation PDF. Veuillez réduire le nombre de colonnes."
   error_pdf_failed_to_export: "L'export PDF n'a pas pu être enregistré: %{error}"
   error_token_authenticity: "Impossible de vérifier le jeton de Cross-Site Request Forgery. Avez-vous essayé d'envoyer des données sur plusieurs navigateurs ou onglets ? Veuillez fermer tous les onglets et réessayer."
-  error_reminder_not_found: "The reminder was not found or was already notified about."
+  error_reminder_not_found: "Le rappel n'a pas été trouvé ou a déjà été notifié."
   error_work_package_not_found_in_project: "Le Lot de Travaux n'a pas été trouvé ou n'appartient pas à ce projet"
   error_work_package_id_not_found: "Le lot de travaux n'a pas été trouvé."
   error_must_be_project_member: "doit être membre du projet"
@@ -2128,7 +2128,7 @@ fr:
       responsible: "Responsable"
       shared: "Partagé"
       watched: "Observateur"
-      reminder: "Reminder"
+      reminder: "Rappel"
     facets:
       unread: "Non lu"
       unread_title: "Afficher les messages non lus"
@@ -2296,10 +2296,10 @@ fr:
   label_default: "défaut"
   label_delete_user: "Supprimer l’utilisateur"
   label_delete_project: "Supprimer le projet"
-  label_delete: "Delete"
+  label_delete: "Supprimer"
   label_deleted: "supprimé"
   label_deleted_custom_field: "(champs personnalisés supprimés)"
-  label_deleted_custom_item: "(deleted item)"
+  label_deleted_custom_item: "(élément supprimé)"
   label_deleted_custom_option: "(option supprimée)"
   label_empty_element: "(vide)"
   label_missing_or_hidden_custom_option: "(valeur manquante ou manque d'autorisations d'accès)"
@@ -2520,7 +2520,7 @@ fr:
   label_none_parentheses: "(none)"
   label_not_contains: "ne contient pas"
   label_not_equals: "n'est pas"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Cycle de vie du projet"
   label_on: "le"
   label_operator_all: "n'est pas vide"
   label_operator_none: "est vide"
@@ -2622,7 +2622,7 @@ fr:
   label_reporting: "Rapport"
   label_reporting_plural: "Rapports"
   label_repository: "Référentiel"
-  label_repository_remove: "Remove repository"
+  label_repository_remove: "Supprimer le dépôt"
   label_repository_root: "Racine du dépôt"
   label_repository_plural: "Dépôts"
   label_required: "requis"
@@ -2685,7 +2685,7 @@ fr:
   label_this_month: "ce mois"
   label_this_week: "cette semaine"
   label_this_year: "cette année"
-  label_time: "Time"
+  label_time: "Heure "
   label_time_entry_plural: "Temps passé"
   label_time_entry_activity_plural: "Activités du temps passé"
   label_title: "Titre"
@@ -2721,7 +2721,7 @@ fr:
   label_user_settings: "Paramètres de l'utilisateur"
   label_users_settings: "Paramètres des utilisateurs"
   label_version_new: "Nouvelle version"
-  label_version_edit: "Edit version"
+  label_version_edit: "Modifier la version"
   label_version_plural: "Versions"
   label_version_sharing_descendants: "Avec sous-projets"
   label_version_sharing_hierarchy: "Avec hiérarchie du projet"
@@ -2859,13 +2859,13 @@ fr:
         prefix: "Reçu en raison du paramètre de notification : %{reason}"
         date_alert_start_date: "Alarmes"
         date_alert_due_date: "Alarmes"
-        reminder: "Reminder"
+        reminder: "Rappel"
       see_all: "Voir tout"
       updated_at: "Mis à jour le %{timestamp} par %{user}"
     reminder_notifications:
-      subject: "Reminder: %{note}"
-      heading: "You have a new reminder"
-      note: "Note: “%{note}”"
+      subject: "Rappel : %{note}"
+      heading: "Vous avez un nouveau rappel"
+      note: "Note : « %{note} »"
     sharing:
       work_packages:
         allowed_actions: "Vous pouvez %{allowed_actions} ce lot de travaux. Cela peut changer en fonction de votre rôle dans le projet et de vos droits."
@@ -3032,7 +3032,7 @@ fr:
   notice_successful_connection: "Connection réussie."
   notice_successful_create: "Création réussie."
   notice_successful_delete: "Suppression réussie."
-  notice_successful_cancel: "Successful cancellation."
+  notice_successful_cancel: "Annulation réussie."
   notice_successful_update: "Mise à jour réussie."
   notice_successful_update_custom_fields_added_to_project: |
     Mise à jour réussie. Les champs personnalisés des types activés sont automatiquement activés
@@ -3110,7 +3110,7 @@ fr:
   permission_edit_own_time_entries: "Éditer mes propres enregistrements de temps"
   permission_edit_project: "Éditer le projet"
   permission_edit_project_attributes: "Modifier les attributs du projet"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_stages_and_gates: "Modifier les étapes et les portes du projet"
   permission_edit_reportings: "Éditer rapports"
   permission_edit_time_entries: "Modifier les journaux de temps pour les autres utilisateurs"
   permission_edit_timelines: "Éditer les lignes du temps"
@@ -3140,12 +3140,12 @@ fr:
   permission_search_project: "Rechercher un projet"
   permission_select_custom_fields: "Sélectionner les champs personnalisés"
   permission_select_project_custom_fields: "Sélectionner les attributs du projet"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_life_cycle: "Sélectionner les étapes et les portes du projet"
+  permission_select_project_life_cycle_explanation: "Activer/désactiver les étapes et les portes d'un projet. Permet à l'utilisateur de sélectionner le cycle de vie approprié pour le projet, car les étapes et les portes inactives ne seront pas visibles dans la page de présentation du projet ni dans la liste des projets."
   permission_select_project_modules: "Sélectionner modules de projet"
   permission_share_work_packages: "Partager des lots de travaux"
   permission_manage_types: "Sélectionner types"
-  permission_manage_own_reminders: "Create own reminders"
+  permission_manage_own_reminders: "Créer des rappels personnalisés"
   permission_view_project: "Voir les projets"
   permission_view_changesets: "Voir révisions du dépôt dans OpenProject"
   permission_view_commit_author_statistics: "Voir les statistiques des auteurs de «commit»"
@@ -3166,7 +3166,7 @@ fr:
   permission_work_package_assigned_explanation: "Des lots de travaux peuvent être assignés à des utilisateurs et des groupes possédant ce rôle dans le projet respectif"
   permission_view_project_activity: "Visualisation de l'activité du projet"
   permission_view_project_attributes: "Voir les attributs du projet"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_stages_and_gates: "Voir les étapes et les portes du projet"
   permission_save_bcf_queries: "Enregistrer les requêtes BCF"
   permission_manage_public_bcf_queries: "Gérer les requêtes publiques BCF"
   permission_edit_attribute_help_texts: "Modifier les textes d'aide des attributs"
@@ -3848,10 +3848,10 @@ fr:
       view_description: "Peut consulter ce lot de travaux."
     reminders:
       label_remind_at: "Date"
-      note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
-      success_update_message: "Reminder updated successfully."
-      success_deletion_message: "Reminder deleted successfully."
+      note_placeholder: "Pourquoi définissez-vous ce rappel ?"
+      success_creation_message: "Le rappel a été défini avec succès. Vous recevrez une notification pour ce lot de travaux au moment choisi."
+      success_update_message: "Rappel mis à jour avec succès."
+      success_deletion_message: "Rappel supprimé avec succès."
   sharing:
     count:
       zero: "0 utilisateur"

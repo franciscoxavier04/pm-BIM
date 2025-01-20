@@ -624,11 +624,11 @@ tr:
       date_alerts:
         milestone_date: "Kilometre taşı tarihi"
         overdue: "Süresi geçmiş"
-        overdue_since: "%{difference_in_days} beri"
-        property_today: "bugün"
-        property_is: "%{difference_in_days} içinde"
-        property_was: "%{difference_in_days} önceydi"
-        property_is_deleted: "silindi"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Tarih uyarısı"
           description: "Tarih uyarıları ile yaklaşan başlangıç veya bitiş tarihleri hakkında bilgilendirileceksiniz, böylece önemli bir teslim tarihini asla kaçırmaz veya unutmazsınız."

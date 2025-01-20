@@ -358,17 +358,17 @@ ru:
       life_cycle:
         header:
           title: "Жизненный цикл проекта"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          description_html: 'Эти этапы и стадии жизненного цикла проекта будут отображаться на <a href=%{overview_url} target="_blank">странице обзора проекта</a> и определяться в <a href=%{admin_settings_url} target="_blank">настройках администрирования</a> OpenProject. Вы можете включать или отключать отдельные атрибуты.'
+        non_defined: "В настоящее время не определены ни этапы, ни стадии."
+        section_header: "Этапы и стадии"
         step:
           use_in_project: "Использовано %{step} в этом проекте"
         filter:
-          label: "Search project stage or gate"
+          label: "Поиск этапа или стадии проекта"
       project_custom_fields:
         header:
           title: "Атрибуты проекта"
-          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          description_html: 'Эти атрибуты проекта будут отображаться на <a href=%{overview_url} target="_blank">странице обзора проекта</a> в соответствующих разделах. Вы можете включить или отключить отдельные атрибуты. Атрибуты проекта и разделы определяются в <a href=%{admin_settings_url} target="_blank">настройках администрирования</a> OpenProject. '
         filter:
           label: "Поиск атрибута проекта"
         actions:
@@ -691,7 +691,7 @@ ru:
     lag:
       subject: "Отставание"
       title: "Отставание (в днях)"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: "Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ."
     relations:
       label_relates_singular: "связан с"
       label_relates_plural: "связаны с"
@@ -1402,8 +1402,8 @@ ru:
         other: "Уведомлений"
       placeholder_user: "Пользователь-заполнитель"
       project: "Проект"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
+      project/gate_definition: "Стадия"
+      project/stage_definition: "Этап"
       project_query:
         one: "Список проектов"
         few: "Списки проектов"
@@ -3188,7 +3188,7 @@ ru:
   permission_edit_own_time_entries: "Редактировать собственные учетные записи о времени"
   permission_edit_project: "Редактировать проект"
   permission_edit_project_attributes: "Редактирование атрибутов проекта"
-  permission_edit_project_stages_and_gates: "Edit project stages and gates"
+  permission_edit_project_stages_and_gates: "Редактировать этапы и стадии проекта"
   permission_edit_reportings: "Редактировать отчеты"
   permission_edit_time_entries: "Править трудозатраты других пользователей"
   permission_edit_timelines: "Редактировать графики"
@@ -3218,8 +3218,8 @@ ru:
   permission_search_project: "Поиск проекта"
   permission_select_custom_fields: "Выберите настраиваемые поля"
   permission_select_project_custom_fields: "Выберите атрибуты проекта"
-  permission_select_project_life_cycle: "Select project stages and gates"
-  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
+  permission_select_project_life_cycle: "Выберите этапы и стадии проекта"
+  permission_select_project_life_cycle_explanation: "Активировать/деактивировать этапы и стадии в проекте. Позволяет пользователю выбрать жизненный цикл, подходящий для данного проекта, поскольку неактивные этапы и стадии не будут видны ни на странице обзора проекта, ни в списке проектов."
   permission_select_project_modules: "Выбор модулей проекта"
   permission_share_work_packages: "Поделиться пакетами работ"
   permission_manage_types: "Выберите типы"
@@ -3244,7 +3244,7 @@ ru:
   permission_work_package_assigned_explanation: "Пакеты работ могут быть привязаны к пользователям и группам в зависимости от этой роли в рамках соответствующего проекта"
   permission_view_project_activity: "Просмотр деятельности по проекту"
   permission_view_project_attributes: "Просмотр атрибутов проекта"
-  permission_view_project_stages_and_gates: "View project stages and gates"
+  permission_view_project_stages_and_gates: "Просмотр этапов и стадий проекта"
   permission_save_bcf_queries: "Сохранить запросы BCF"
   permission_manage_public_bcf_queries: "Управление публичными BCF запросами"
   permission_edit_attribute_help_texts: "Редактировать атрибут справки"
