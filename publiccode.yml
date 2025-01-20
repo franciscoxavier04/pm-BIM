@@ -66,12 +66,27 @@ it:
   conforme:
     gdpr: true
 description:
-  it:
+  en:
     localisedName: OpenProject
-    genericName: OpenProject
     documentation: 'https://www.openproject.org/docs'
     apiDocumentation: 'https://www.openproject.org/docs/api'
-    shortDescription: 'OpenProject is a web-based project management software. '
+    shortDescription: 'OpenProject is a web-based project management software'
+    features:
+      - Project planning
+      - Task management
+      - Agile workflows
+      - Meeting management
+      - Time and Cost tracking
+      - Collaboration
+      - Gantt charts
+      - Agile boards
+      - Knowledge management
+      - Detailed reporting
+      - Customizable workflows
+      - Custom fields for projects, tasks, and more
+      - Baseline Comparison
+      - Integrations into Nextcloud and OneDrive/SharePoint
+      - Integrations into GitHub and GitLab
     longDescription: >
       OpenProject is the project management module of
       [www.opendesk.eu](http://www.opendesk.eu/), an integrated office and
