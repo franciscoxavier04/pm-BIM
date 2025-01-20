@@ -66,7 +66,7 @@ export class WorkPackageSplitViewToolbarComponent implements OnInit {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     this.displayShareButton$ = this.currentUserService.hasCapabilities$('work_package_shares/index', this.workPackage.project.id);
     this.displayReminderButton$ = this.currentUserService.isLoggedInAndHasCapabalities$(
-      'work_package_reminders/manage',
+      'work_packages/read',
       (this.workPackage.project as ProjectResource).id,
     );
   }

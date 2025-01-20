@@ -249,8 +249,7 @@ Rails.application.reloader.to_prepare do
                        "work_packages/reminders": %i[modal_body create update destroy]
                      },
                      permissible_on: %i[work_package project],
-                     contract_actions: { work_packages: %i[read],
-                                         work_package_reminders: %i[manage] }
+                     contract_actions: { work_packages: %i[read] }
 
       wpt.permission :add_work_packages,
                      {
