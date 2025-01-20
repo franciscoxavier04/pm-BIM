@@ -383,17 +383,17 @@ RSpec.describe "Work package reminder modal",
     end
   end
 
-  context "with anonymous user with role that can view work packages" do
-    let!(:anonymous_user) do
-      create(:anonymous).tap do
-        ProjectRole.anonymous.add_permission! :view_work_packages
-      end
+  context "with anonymous user with role that can view work packages", with_settings: { login_required: false } do
+    before do
+      ProjectRole.anonymous.add_permission! :view_work_packages
+      project.update!(public: true)
     end
 
-    current_user { anonymous_user }
+    current_user { User.anonymous }
 
     it "does not render the reminder button when visiting the work package page" do
       work_package_page.visit!
+      work_package_page.ensure_loaded
       work_package_page.expect_no_reminder_button
     end
   end
