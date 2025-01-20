@@ -122,6 +122,7 @@ class Project < ApplicationRecord
       @validation_context
     end
   end
+
   acts_as_searchable columns: %W(#{table_name}.name #{table_name}.identifier #{table_name}.description),
                      date_column: "#{table_name}.created_at",
                      project_key: "id",
