@@ -1,4 +1,4 @@
-# This repository adheres to the publiccode.yml standard by including this 
+# This repository adheres to the publiccode.yml standard by including this
 # metadata file that makes public software easily discoverable.
 # More info at https://github.com/italia/publiccode.yml
 
@@ -12,7 +12,7 @@ softwareVersion: '15.2'
 developmentStatus: development
 softwareType: standalone/web
 platforms:
-  - linux
+  - web
 usedBy:
   - ZenDiS GmbH
   - Stadt Köln
