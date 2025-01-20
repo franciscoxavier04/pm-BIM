@@ -9,7 +9,7 @@ url: 'https://github.com/opf/openproject'
 roadmap: 'https://www.openproject.org/roadmap'
 releaseDate: '2025-01-21'
 softwareVersion: '15.2'
-developmentStatus: development
+developmentStatus: stable
 softwareType: standalone/web
 platforms:
   - web
