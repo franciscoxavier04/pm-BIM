@@ -3,8 +3,6 @@ cs:
     attributes:
       storages/file_link:
         origin_id: Origin ID
-      storages/project_storage:
-        storage: Storage
       storages/storage:
         creator: Autor
         drive: ID disku

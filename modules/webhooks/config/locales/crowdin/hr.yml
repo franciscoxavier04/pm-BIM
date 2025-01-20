@@ -8,7 +8,6 @@ hr:
         url: 'Payload URL'
         secret: 'Signature secret'
         events: 'Events'
-        enabled: 'Enabled'
         projects: 'Omogućeni projekti'
       webhooks/log:
         event_name: 'Event name'

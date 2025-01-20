@@ -8,7 +8,6 @@ ka:
         url: 'ჩასატვირთი URL'
         secret: 'Signature secret'
         events: 'მოვლენები'
-        enabled: 'Enabled'
         projects: 'Enabled projects'
       webhooks/log:
         event_name: 'მოვლენის სახელი'

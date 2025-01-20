@@ -8,7 +8,6 @@ it:
         url: 'URL Payload'
         secret: 'Firma segreta'
         events: 'Eventi'
-        enabled: 'Abilitato'
         projects: 'Progetti abilitati'
       webhooks/log:
         event_name: 'Nome dell''evento'

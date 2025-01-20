@@ -287,7 +287,6 @@ cs:
       label: "Popisek"
       short: "Krátký název"
       parent: "Nadřazený"
-      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Hledat v %{app_title}"
     overwritten_tabs:
@@ -546,7 +545,7 @@ cs:
       irreversible: "Tato akce je nevratná"
       confirmation: "Zadejte název zástupného uživatele %{name} pro potvrzení odstranění."
     upsale:
-      title: placeholder uživatel
+      title: Placeholder uživatel
       description: >
         Placeholder uživatelé jsou způsob, jak přiřadit pracovní balíčky uživatelům, kteří nejsou součástí vašeho projektu. Mohou být užiteční v řadě scénářů; například, pokud potřebujete sledovat úkoly u zdroje, který ještě nejsou pojmenovány nebo dostupné, nebo pokud nechcete této osobě umožnit přístup k OpenProject ale stále chcete sledovat úkoly, které jim byly přiděleny.
   prioritiies:
@@ -687,7 +686,6 @@ cs:
       no_results_title_text: V současné době nejsou k dispozici žádné vztahy.
       blankslate_heading: "Žádné vztahy"
       blankslate_description: "Tento pracovní balíček ještě nemá žádné vztahy."
-    label_add_child_button: "Child"
     label_add_x: "Přidat %{x}"
     label_edit_x: "Upravit %{x}"
     label_add_description: "Přidat popis"
@@ -696,7 +694,6 @@ cs:
       title: "Zpoždění (ve dnech)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
-      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "související s"
       label_relates_plural: "související s"
       label_relates_to_singular: "související s"
@@ -711,9 +708,6 @@ cs:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "dítě"
       label_child_plural: "Potomci"
-      new_child: "New child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "bloky"
       label_blocks_plural: "bloky"
@@ -814,7 +808,6 @@ cs:
         is_required: "Požadováno"
         max_length: "Maximální délka"
         min_length: "Minimální délka"
-        content_right_to_left: "Right-to-Left content"
         multi_value: "Povolit multi-select"
         possible_values: "Možné hodnoty"
         regexp: "Regulární výraz"
@@ -850,8 +843,6 @@ cs:
         attr_lastname: "Příjmení (atribut)"
         attr_login: "Atribut uživatelského jména"
         attr_mail: "Email (atribut)"
-        filter_string: "Filter string"
-        admin: "Administrator"
         base_dn: "Base DN"
         host: "Hostitel"
         onthefly: "Automatické vytváření uživatele"
@@ -869,7 +860,7 @@ cs:
           false: "archivováno"
         identifier: "Identifikátor"
         latest_activity_at: "Poslední aktivita"
-        parent: "Podprojekt"
+        parent: "Nadřazený projekt"
         public_value:
           title: "Viditelnost"
           true: "veřejný"
@@ -895,9 +886,6 @@ cs:
       project_custom_field:
         is_required: "Vyžadováno pro všechny projekty"
         custom_field_section: Sekce
-      project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
       query:
         column_names: "Sloupce"
         relations_to_type_column: "Vztahy s %{type}"
@@ -1121,7 +1109,7 @@ cs:
         meeting:
           error_conflict: "Nelze uložit, protože schůzku mezitím aktualizoval někdo jiný. Znovu načtěte stránku."
         notifications:
-          at_least_one_channel: "Alespoň jeden kanál pro odesílání oznámení musí být specifikován."
+          at_least_one_channel: "Pro odesílání notifikací musí být specifikován alespoň jeden kanál"
           attributes:
             read_ian:
               read_on_creation: "nelze nastavit na pravdivé při vytváření oznámení "
@@ -1409,11 +1397,11 @@ cs:
       member: "Člen"
       news: "Novinky"
       notification:
-        one: "Oznámení"
-        few: "Oznámení"
-        many: "Oznámení"
-        other: "Oznámení"
-      placeholder_user: "placeholder uživatel"
+        one: "Notifikace"
+        few: "Notifikací"
+        many: "Notifikací"
+        other: "Notifikace"
+      placeholder_user: "Placeholder uživatel"
       project: "Projekt"
       project/gate_definition: "Brána"
       project/stage_definition: "Fáze"
@@ -1886,10 +1874,6 @@ cs:
     upsale:
       title: "Doplňky Enterprise Edice"
       link_title: "Více informací"
-      automatic_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
-      customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Přizpůsobte si konfiguraci formuláře s těmito doplňky:"
         add_groups: "Přidat nové skupiny atributů"
@@ -2166,7 +2150,7 @@ cs:
   instructions_after_error: "Zkuste se znovu přihlásit kliknutím na %{signin}. Pokud chyba přetrvává, požádejte správce o pomoc."
   menus:
     admin:
-      mail_notification: "E-mailová upozornění"
+      mail_notification: "E-mailové notifikace"
       mails_and_notifications: "E-maily a oznámení"
       aggregation: "Agregace"
       api_and_webhooks: "API & Webhooky"
@@ -2230,7 +2214,7 @@ cs:
       by_project: "Nepřečteno dle projektu"
       by_reason: "Důvod"
       inbox: "Doručená pošta"
-    send_notifications: "Odeslat oznámení pro tuto akci"
+    send_notifications: "Pro tuto akci odeslat notifikaci"
     work_packages:
       subject:
         created: "Pracovní balíček byl vytvořen."
@@ -2641,9 +2625,9 @@ cs:
   label_permissions: "Práva"
   label_permissions_report: "Přehled oprávnění"
   label_personalize_page: "Přizpůsobit tuto stránku"
-  label_placeholder_user: "placeholder uživatel"
+  label_placeholder_user: "Placeholder uživatel"
   label_placeholder_user_new: ""
-  label_placeholder_user_plural: "placeholder uživatelé"
+  label_placeholder_user_plural: "Placeholder uživatelé"
   label_planning: "Plánování"
   label_please_login: "Přihlaste se prosím"
   label_plugins: "Pluginy"
@@ -2666,7 +2650,7 @@ cs:
   label_project_attribute_plural: "Atributy projektu"
   label_project_attribute_manage_link: "Správa atributů produktu"
   label_project_count: "Celkový počet projektů"
-  label_project_copy_notifications: "Během kopie projektu odeslat oznámení e-mailem"
+  label_project_copy_notifications: "Během kopírování projektu odeslat notifikace e-mailem"
   label_project_latest: "Nejnovější projekty"
   label_project_default_type: "Povolit prázdný typ"
   label_project_hierarchy: "Hierarchie projektu"
@@ -2674,7 +2658,6 @@ cs:
   label_project_new: "Nový projekt"
   label_project_plural: "Projekty"
   label_project_list_plural: "Seznamy projektů"
-  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Atributy projektu"
   label_project_custom_field_plural: "Atributy projektu"
   label_project_settings: "Nastavení projektu"
@@ -2816,7 +2799,7 @@ cs:
   label_version_new: "Nová verze"
   label_version_edit: "Upravit verzi"
   label_version_plural: "Verze"
-  label_version_sharing_descendants: "S Podprojekty"
+  label_version_sharing_descendants: "S podprojekty"
   label_version_sharing_hierarchy: "S hierarchií projektu"
   label_version_sharing_none: "Není sdíleno"
   label_version_sharing_system: "Se všemi projekty"
@@ -2921,28 +2904,28 @@ cs:
     digests:
       including_mention_singular: "včetně zmínky"
       including_mention_plural: "včetně %{number_mentioned} zmínění"
-      unread_notification_singular: "1 nepřečtené oznámení"
-      unread_notification_plural: "%{number_unread} nepřečtených oznámení"
+      unread_notification_singular: "1 nepřečtená notifikace"
+      unread_notification_plural: "%{number_unread} nepřečtených notifikací"
       you_have: "Máte"
     logo_alt_text: "Logo"
     mention:
       subject: "%{user_name} vás zmínil v #%{id} - %{subject}"
     notification:
-      center: "Centrum oznámení"
+      center: "Centrum notifikací"
       see_in_center: "Zobrazit komentář v oznamovacím centru"
       settings: "Změnit nastavení e-mailu"
     salutation: "Ahoj %{user}!"
     salutation_full_name: "Jméno a příjmení"
     work_packages:
       created_at: "Vytvořeno v %{timestamp} uživatelem %{user} "
-      login_to_see_all: "Přihlaste se pro zobrazení všech oznámení."
+      login_to_see_all: "Přihlaste se pro zobrazení všech notifikací."
       mentioned: "Byli jste <b>zmíněni v komentáři</b>"
       mentioned_by: "%{user} vás zmínil v komentáři"
       more_to_see:
-        one: "Existuje ještě 1 pracovní balíček s oznámeními."
-        few: "Existuje ještě  %{count}  pracovních balíčků s oznámeními."
-        many: "Existuje ještě  %{count}  pracovních balíčků s oznámeními."
-        other: "Existuje ještě  %{count}  pracovních balíčků s oznámeními."
+        one: "Existuje ještě 1 pracovní balíček s notifikací."
+        few: "Existuje ještě %{count} pracovních balíčků s notifikacema."
+        many: "Existuje ještě %{count} pracovních balíčků s notifikacema."
+        other: "Existuje ještě %{count} pracovních balíčků s notifikacema."
       open_in_browser: "Otevřít v prohlížeči"
       reason:
         watched: "Sledováno"
@@ -2951,7 +2934,7 @@ cs:
         mentioned: "Zmíněné"
         shared: "Sdílené"
         subscribed: "vše"
-        prefix: "Obdrženo z důvodu nastavení oznámení: %{reason}"
+        prefix: "Obdrženo z důvodu nastavení notifikací: %{reason}"
         date_alert_start_date: "Upozornění na datum"
         date_alert_due_date: "Upozornění na datum"
         reminder: "Připomínka"
@@ -3118,7 +3101,6 @@ cs:
   notice_bad_request: "Chybný požadavek."
   notice_not_authorized: "Nemáte oprávnění k přístupu na tuto stránku."
   notice_not_authorized_archived_project: "Projekt, na který se pokoušíte přistoupit byl archivován."
-  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Heslo není správné. Nelze pokračovat."
   notice_principals_found_multiple: "Nalezeno %{number} výsledků. \nStiskněte Tab pro přechod na první výsledek."
   notice_principals_found_single: "Existuje jeden výsledek. \n Záložka pro zaměření."
@@ -3233,7 +3215,7 @@ cs:
   permission_move_work_packages: "Přesun pracovních balíčků"
   permission_protect_wiki_pages: "Ochrana stránky wiki"
   permission_rename_wiki_pages: "Přejmenovat stránky wiki"
-  permission_save_queries: "Uložit pohled"
+  permission_save_queries: "Uložit zobrazení"
   permission_search_project: "Hledat projekt"
   permission_select_custom_fields: "Vybrat vlastní pole"
   permission_select_project_custom_fields: "Vyberte atributy projektu"
@@ -3295,9 +3277,9 @@ cs:
       are_you_sure: "Opravdu chcete archivovat projekt '%{name}'?"
       archived: "Archivováno"
     count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      zero: "0 projektů"
+      one: "1 projekt"
+      other: "%{count} Projektů"
   project_module_activity: "Aktivita"
   project_module_forums: "Fóra"
   project_module_work_package_tracking: "Pracovní balíčky"
@@ -3431,7 +3413,6 @@ cs:
     activated: "Aktivováno "
     deactivated: "Deaktivováno"
   search_input_placeholder: "Hledat ..."
-  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Povolit CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) povolené počátky"
   setting_apiv3_cors_origins_text_html: >
@@ -3639,7 +3620,7 @@ cs:
       enable_subscriptions_text_html: Umožňuje uživatelům s nezbytnými oprávněními přihlásit se do OpenProject kalendářů a získat přístup k informacím o pracovním balíčku prostřednictvím externího klienta kalendáře. <strong>Poznámka:</strong> Před povolením si prosím přečtěte <a href="%{link}" target="_blank">iCalendar předplatné</a>.
     language_name_being_default: "%{language_name} (výchozí)"
     notifications:
-      events_explanation: "Určuje, pro kterou událost je odeslán e-mail. Pracovní balíčky jsou z tohoto seznamu vyloučeny, protože oznámení pro ně mohou být nastavena speciálně pro každého uživatele."
+      events_explanation: "Určuje, pro kterou událost je odeslán e-mail. Pracovní balíčky jsou z tohoto seznamu vyloučeny, protože notifikace pro ně mohou být nastavena speciálně pro každého uživatele."
       delay_minutes_explanation: "Odesílání e-mailu může být pozdrženo, aby bylo uživatelům s nakonfigurovaným v oznámení aplikace před odesláním pošty potvrzeno oznámení. Uživatelé, kteří si přečtou oznámení v aplikaci, nedostanou e-mail pro již přečtené oznámení."
     other: "Ostatní"
     passwords: "Hesla"
@@ -3657,27 +3638,6 @@ cs:
       new:
         heading: "Nový atribut"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
-      filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
-      new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
     projects:
       missing_dependencies: "Projektový modul %{module} byl zkontrolován, který závisí na %{dependencies}. Tyto závislosti musíte také zkontrolovat."
       section_new_projects: "Nastavení pro nové projekty"
@@ -3711,7 +3671,6 @@ cs:
   text_are_you_sure_continue: "Jste si jisti, že chcete pokračovat?"
   text_are_you_sure_with_children: "Smazat pracovní balíček a všechny podřízené pracovní balíčky?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Přiřadit k projektu"
   text_form_configuration: >
     Můžete si upravit, která pole budou zobrazena ve formulářích pracovních balíčků. Pole můžete volně seskupit tak, aby odrážela potřeby vaší domény.
@@ -3746,7 +3705,7 @@ cs:
   text_destroy_with_associated: "Existují další objekty, které jsou přiřazeny k pracovním balíčkům a které mají být odstraněny. Tyto objekty jsou následující typy:"
   text_destroy_what_to_do: "Co chcete udělat?"
   text_diff_truncated: "... Toto rozlišení bylo zkráceno, protože přesahuje maximální velikost, kterou lze zobrazit."
-  text_email_delivery_not_configured: "Doručení e-mailu není nakonfigurováno a oznámení jsou zakázána.\nNakonfigurujte váš SMTP server pro jejich povolení."
+  text_email_delivery_not_configured: "Doručení e-mailu není nakonfigurováno a notifikace jsou zakázány.\nNakonfigurujte váš SMTP server pro jejich povolení."
   text_enumeration_category_reassign_to: "Přiřadit je k této hodnotě:"
   text_enumeration_destroy_question: "%{count} objektů je přiřazeno k této hodnotě."
   text_file_repository_writable: "Do adresáře příloh lze zapisovat"
@@ -4160,8 +4119,6 @@ cs:
       builtin: Vestavěná aplikace
       confidential: Důvěrné
       singular: "OAuth aplikace"
-      scopes: "Scopes"
-      client_credentials: "Client credentials"
       plural: "OAuth aplikace"
       named: "OAuth aplikace '%{name}'"
       new: "Nová OAuth aplikace"

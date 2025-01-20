@@ -111,28 +111,7 @@ export class IanCenterService extends UntilDestroyedMixin {
   notifications$ = this
     .aggregatedCenterNotifications$
     .pipe(
-      map((items) => {
-        return Object.values(items).reduce((acc, workPackageNotificationGroup) => {
-          const { reminders, others } = workPackageNotificationGroup.reduce((result, notification) => {
-            if (notification.reason === 'reminder') {
-              result.reminders.push(notification);
-            } else {
-              result.others.push(notification);
-            }
-            return result;
-          }, { reminders: [] as INotification[], others: [] as INotification[] });
-
-          // Extract reminders into standalone groups so they can be displayed individually
-          if (reminders.length > 0) {
-            reminders.forEach((reminder) => acc.push([reminder]));
-          }
-          if (others.length > 0) {
-            acc.push(others);
-          }
-
-          return acc;
-        }, [] as INotification[][]);
-      }),
+      map((items) => Object.values(items)),
       distinctUntilChanged(),
     );
 

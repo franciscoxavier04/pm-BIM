@@ -8,7 +8,6 @@ ms:
         url: 'Muatan URL'
         secret: 'Rahsia tandatangan'
         events: 'Peristiwa'
-        enabled: 'Didayakan'
         projects: 'Projek yang didayakan'
       webhooks/log:
         event_name: 'Nama peristiwa'

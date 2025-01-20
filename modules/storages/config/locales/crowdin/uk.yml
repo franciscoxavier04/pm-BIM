@@ -3,8 +3,6 @@ uk:
     attributes:
       storages/file_link:
         origin_id: Код джерела
-      storages/project_storage:
-        storage: Сховище
       storages/storage:
         creator: Автор
         drive: ID диску

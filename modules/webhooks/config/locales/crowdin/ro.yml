@@ -8,7 +8,6 @@ ro:
         url: 'URL de încărcare utilă'
         secret: 'Secretul semnăturii'
         events: 'Evenimente'
-        enabled: 'Enabled'
         projects: 'Proiecte activate'
       webhooks/log:
         event_name: 'Numele evenimentului'

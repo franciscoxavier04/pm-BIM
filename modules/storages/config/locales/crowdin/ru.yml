@@ -3,8 +3,6 @@ ru:
     attributes:
       storages/file_link:
         origin_id: ID оригинала
-      storages/project_storage:
-        storage: Хранилище
       storages/storage:
         creator: Создатель
         drive: ID диска

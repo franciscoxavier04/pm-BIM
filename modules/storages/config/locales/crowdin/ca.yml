@@ -3,8 +3,6 @@ ca:
     attributes:
       storages/file_link:
         origin_id: ID d'origen
-      storages/project_storage:
-        storage: Storage
       storages/storage:
         creator: Autor
         drive: Drive ID

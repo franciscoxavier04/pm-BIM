@@ -8,7 +8,6 @@ sk:
         url: 'Payload URL'
         secret: 'Signature secret'
         events: 'Events'
-        enabled: 'Enabled'
         projects: 'Povolené projekty'
       webhooks/log:
         event_name: 'Event name'

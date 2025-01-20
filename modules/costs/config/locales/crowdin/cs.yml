@@ -33,7 +33,6 @@ cs:
       cost_type:
         unit: "Název jednotky"
         unit_plural: "Název Pluralizované jednotky"
-        default: "Typ nákladů ve výchozím nastavení"
       work_package:
         costs_by_type: "Strávené jednotky"
         labor_costs: "Náklady práce"
@@ -45,16 +44,6 @@ cs:
         rate: "Kurz"
       user:
         default_rates: "Výchozí sazby"
-      time_entry:
-        project: Project
-        user: User
-        work_package: Work package
-        hours: Hodiny
-        comments: Comment
-        activity: Aktivita
-        spent_on: Datum
-        start_time: Start time
-        end_time: Finish time
     models:
       cost_type:
         one: "Druh nákladů"
@@ -64,8 +53,6 @@ cs:
       rate: "Sazba"
     errors:
       models:
-        time_entry:
-          invalid_time: "must be between 00:00 and 23:59."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Pracovní balíček #%{id} není platný cíl pro přeřazení nákladových položek."
           nullify_is_not_valid_for_cost_entries: "K projektu nelze přiřadit položky nákladů."
@@ -80,7 +67,6 @@ cs:
     fixed_date: "Pevné datum"
   button_add_rate: "Přidat kurz"
   button_log_costs: "Logovat jednotkové náklady"
-  button_log_time: "Log"
   caption_booked_on_project: "Rezervováno v projektu"
   caption_default: "Výchozí"
   caption_default_rate_history_for: "Výchozí historie sazeb  pro %{user}"
@@ -92,7 +78,6 @@ cs:
   caption_save_rate: "Uložit kurz"
   caption_set_rate: "Nastavit aktuální sazbu."
   caption_show_locked: "Zobrazit uzamčené typy"
-  caption_log_time_dialog: "Log time"
   description_date_for_new_rate: "Datum pro nový kurz"
   group_by_others: "není v žádné skupině"
   label_between: "mezi"
@@ -132,12 +117,10 @@ cs:
   label_until: "do"
   label_valid_from: "Platné od"
   label_yes: "Ano"
-  placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Něco se pokazilo. Zkuste to prosím znovu."
   notice_successful_restore: "Úspěšně obnoveno."
   notice_successful_lock: "Úspěšně uzamčeno."
   notice_cost_logged_successfully: "Jednotková cena byla úspěšně zaznamenána."
-  notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   permission_edit_cost_entries: "Upravit rezervované jednotkové náklady"
   permission_edit_own_cost_entries: "Upravit vlastní rezervované jednotkové náklady"
   permission_edit_hourly_rates: "Upravit hodinové sazby"

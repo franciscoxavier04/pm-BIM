@@ -8,7 +8,6 @@ id:
         url: 'URL muatan'
         secret: 'Rahasia tanda tangan'
         events: 'Acara'
-        enabled: 'Enabled'
         projects: 'Proyek-proyek yang diaktifkan'
       webhooks/log:
         event_name: 'Nama acara'

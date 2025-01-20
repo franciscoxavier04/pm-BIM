@@ -625,11 +625,11 @@ ms:
       date_alerts:
         milestone_date: "Tarikh pencapaian"
         overdue: "Tertangguh"
-        overdue_since: "sejak %{difference_in_days}"
-        property_today: "adalah hari ini"
-        property_is: "adalah dalam %{difference_in_days}"
-        property_was: "%{difference_in_days} yang lalu"
-        property_is_deleted: "dipadamkan"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Peringatan tarikh"
           description: "Dengan peringatan tarikh, anda akan dimaklumkan tentang tarikh mula dan akhir yang akan datang supaya anda tidak pernah terlepas atau lupa tarikh akhir yang penting."

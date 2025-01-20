@@ -285,7 +285,6 @@ pt-PT:
       label: "Etiqueta"
       short: "Nome abreviado"
       parent: "Principal"
-      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Pesquisar em %{app_title}"
     overwritten_tabs:
@@ -666,7 +665,6 @@ pt-PT:
       no_results_title_text: Atualmente, não existem relações disponíveis.
       blankslate_heading: "Sem relações"
       blankslate_description: "Este pacote de trabalho ainda não tem quaisquer relações."
-    label_add_child_button: "Elemento secundário"
     label_add_x: "Adicionar %{x}"
     label_edit_x: "Editar %{x}"
     label_add_description: "Adicionar descrição"
@@ -675,7 +673,6 @@ pt-PT:
       title: "Desfasamento (em dias)"
       caption: "O número mínimo de dias úteis a manter entre os dois pacotes de trabalho."
     relations:
-      label_new_child_created: "Novo pacote de trabalho criado e adicionado como um elemento secundário"
       label_relates_singular: "relacionado com"
       label_relates_plural: "relacionado com"
       label_relates_to_singular: "relacionado com"
@@ -690,9 +687,6 @@ pt-PT:
       follows_description: "O pacote de trabalho relacionado tem necessariamente de ser iniciado antes deste começar"
       label_child_singular: "secundário"
       label_child_plural: "secundários"
-      new_child: "Novo elemento secundário"
-      new_child_text: "Cria um pacote de trabalho relacionado como um subitem do pacote de trabalho atual (principal)"
-      existing_child: "Elemento secundário existente"
       child_description: "Torna o pacote de trabalho relacionado num subitem do pacote de trabalho atual (principal)"
       label_blocks_singular: "bloqueia"
       label_blocks_plural: "bloqueia"
@@ -793,7 +787,6 @@ pt-PT:
         is_required: "Obrigatório"
         max_length: "Tamanho máximo"
         min_length: "Tamanho mínimo"
-        content_right_to_left: "Conteúdo da direita para a esquerda"
         multi_value: "Permitir seleção múltipla"
         possible_values: "Valores possíveis"
         regexp: "Expressão regular"
@@ -829,8 +822,6 @@ pt-PT:
         attr_lastname: "Atributo Sobrenome"
         attr_login: "Atributo Utilizador"
         attr_mail: "Atributo E-mail"
-        filter_string: "Cadeia do filtro"
-        admin: "Administrador"
         base_dn: "Base DN"
         host: "Anfitrião"
         onthefly: "Criação automática de utilizador"
@@ -874,9 +865,6 @@ pt-PT:
       project_custom_field:
         is_required: "Obrigatório para todos os projetos"
         custom_field_section: Secção
-      project/life_cycle_step_definition:
-        name: "Nome"
-        color: "Cor"
       query:
         column_names: "Colunas"
         relations_to_type_column: "Relações com %{type}"
@@ -1809,10 +1797,6 @@ pt-PT:
     upsale:
       title: "Suplemento Enterprise"
       link_title: "Mais informação"
-      automatic_subject_generation:
-        description: "Crie temas gerados automaticamente utilizando atributos e texto referenciados."
-      customize_life_cycle:
-        description: "Crie e organize fases e portas de projeto diferentes das fornecidas pelo planeamento do ciclo de projeto PM2."
       form_configuration:
         description: "Personalize a configuração do formulário com estes complementos adicionais:"
         add_groups: "Adicionar novos grupos de atributos"
@@ -2597,7 +2581,6 @@ pt-PT:
   label_project_new: "Novo Projecto"
   label_project_plural: "Projetos"
   label_project_list_plural: "Listas do projeto"
-  label_project_lifecycle: "Ciclo de vida do projeto"
   label_project_attributes_plural: "Atributos do projeto"
   label_project_custom_field_plural: "Atributos do projeto"
   label_project_settings: "Configurações do projeto"
@@ -3039,7 +3022,6 @@ pt-PT:
   notice_bad_request: "Pedido inválido."
   notice_not_authorized: "Não está autorizado a aceder a esta página."
   notice_not_authorized_archived_project: "O projeto ao qual tentou aceder foi arquivado."
-  notice_requires_enterprise_token: "O token da empresa está em falta ou não permite o acesso a esta página."
   notice_password_confirmation_failed: "A sua palavra passe está incorreta. Não foi possível continuar."
   notice_principals_found_multiple: "Foram encontrados %{number} resultados. Carregue em TAB para ver o primeiro resultado."
   notice_principals_found_single: "Foi encontrado um resultado. Carregue em TAB para vê-lo."
@@ -3214,9 +3196,9 @@ pt-PT:
       are_you_sure: "Tem a certeza de que deseja arquivar o projeto '%{name}'?"
       archived: "Arquivado"
     count:
-      zero: "0 projetos"
-      one: "1 projeto"
-      other: "%{count} projetos"
+      zero: "0 Projetos"
+      one: "1 Projeto"
+      other: "%{count} Projetos"
   project_module_activity: "Atividade"
   project_module_forums: "Fórums"
   project_module_work_package_tracking: "Tarefas"
@@ -3348,7 +3330,6 @@ pt-PT:
     activated: "ativado"
     deactivated: "desativado"
   search_input_placeholder: "Procurar ..."
-  setting_apiv3_cors_title: "Partilha de recursos entre origens (CORS)"
   setting_apiv3_cors_enabled: "Habilitar CORS"
   setting_apiv3_cors_origins: "Partilha de recursos entre origens (CORS) permitidos pela API V3"
   setting_apiv3_cors_origins_text_html: >
@@ -3574,27 +3555,6 @@ pt-PT:
       new:
         heading: "Novo atributo"
         description: "As alterações a este atributo do projeto irão refletir-se em todos os projetos em que estiver ativado. Os atributos obrigatórios não podem ser desativados por projeto."
-    project_life_cycle_step_definitions:
-      heading: "Ciclo de vida do projeto"
-      heading_description: "O ciclo de vida do projeto consiste em fases e portas que estruturam os seus projetos. Estas irão aparecer na página de visão geral de um projeto e estão disponíveis na lista de projetos. Pode selecionar fases e portas individuais para personalizar um projeto, mas não é possível reordenar ao nível do projeto."
-      label_add: "Adicionar"
-      label_add_description: "Adicionar definição do ciclo de vida"
-      label_add_stage: "Fase"
-      label_add_gate: "Porta"
-      filter:
-        label: "Pesquisar fase ou porta do projeto"
-      section_header: "Fases e portas"
-      non_defined: "Atualmente, não estão definidas nem as fases nem as portas."
-      new:
-        description: "As alterações a este passo do projeto serão refletidas em todos os projetos em que estiver ativado."
-      new_stage:
-        heading: "Nova fase"
-      new_gate:
-        heading: "Nova porta"
-      edit_stage:
-        heading: "Editar fase"
-      edit_gate:
-        heading: "Editar porta"
     projects:
       missing_dependencies: "Foi verificado o módulo do projeto %{module} que depende de %{dependencies}. Também tem de verificar estas dependências."
       section_new_projects: "Configurações para novos projetos"
@@ -3628,7 +3588,6 @@ pt-PT:
   text_are_you_sure_continue: "Tem a certeza que deseja continuar?"
   text_are_you_sure_with_children: "Apagar o pacote de trabalho e todos os pacotes de trabalho filhos?"
   text_are_you_sure_with_project_custom_fields: "A eliminação deste atributo também elimina os seus valores em todos os projetos. Tem a certeza de que pretende fazê-lo?"
-  text_are_you_sure_with_project_life_cycle_step: "A eliminação deste passo também elimina as suas utilizações em todos os projetos. Tem a certeza de que pretende fazê-lo?"
   text_assign_to_project: "Atribuir ao projeto"
   text_form_configuration: >
     Pode personalizar quais os campos que serão exibidos nos formulários de pacote de trabalho. Pode agrupar livremente os campos para refletir as necessidades para o seu domínio.
@@ -4076,8 +4035,6 @@ pt-PT:
       builtin: Aplicação de instância incorporada
       confidential: Confidencial
       singular: "Aplicação OAuth"
-      scopes: "Âmbitos"
-      client_credentials: "Credenciais do cliente"
       plural: "Aplicações OAuth"
       named: "Aplicação OAuth '%{name}'"
       new: "Nova aplicação OAuth"

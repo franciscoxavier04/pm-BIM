@@ -287,7 +287,6 @@ et:
       label: "Label"
       short: "Short name"
       parent: "Parent"
-      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
@@ -669,7 +668,6 @@ et:
       no_results_title_text: There are currently no relations available.
       blankslate_heading: "No relations"
       blankslate_description: "This work package does not have any relations yet."
-    label_add_child_button: "Child"
     label_add_x: "Add %{x}"
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
@@ -678,7 +676,6 @@ et:
       title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
-      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
       label_relates_plural: "related to"
       label_relates_to_singular: "related to"
@@ -693,9 +690,6 @@ et:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
-      new_child: "New child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
@@ -796,7 +790,6 @@ et:
         is_required: "Nõutav"
         max_length: "Maksimaalne pikkus"
         min_length: "Lühima lubatud parooli pikkus"
-        content_right_to_left: "Right-to-Left content"
         multi_value: "Allow multi-select"
         possible_values: "Võimalikud väärtused"
         regexp: "Regulaaravaldis"
@@ -832,8 +825,6 @@ et:
         attr_lastname: "Perekonnanimi"
         attr_login: "Username attribute"
         attr_mail: "E-posti aadress"
-        filter_string: "Filter string"
-        admin: "Administrator"
         base_dn: "Põhiline domeeninimi"
         host: "Host"
         onthefly: "Automatic user creation"
@@ -877,9 +868,6 @@ et:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
-      project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
       query:
         column_names: "Väljad"
         relations_to_type_column: "Relations to %{type}"
@@ -1812,10 +1800,6 @@ et:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
-      automatic_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
-      customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
@@ -2600,7 +2584,6 @@ et:
   label_project_new: "Uus projekt"
   label_project_plural: "Projektid"
   label_project_list_plural: "Project lists"
-  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "Projekti sätted"
@@ -3043,7 +3026,6 @@ et:
   notice_bad_request: "Vigane päring."
   notice_not_authorized: "Sul ei ole sellele lehele ligipääsuks õigusi."
   notice_not_authorized_archived_project: "See projekt on arhiveeritud."
-  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Your password is not correct. Cannot continue."
   notice_principals_found_multiple: "There are %{number} results found. \n Tab to focus the first result."
   notice_principals_found_single: "There is one result. \n Tab to focus it."
@@ -3218,9 +3200,9 @@ et:
       are_you_sure: "Are you sure you want to archive the project '%{name}'?"
       archived: "Archived"
     count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      zero: "0 Projects"
+      one: "1 Project"
+      other: "%{count} Projects"
   project_module_activity: "Tegevus"
   project_module_forums: "Foorumid"
   project_module_work_package_tracking: "Teemad"
@@ -3354,7 +3336,6 @@ et:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Search ..."
-  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -3580,27 +3561,6 @@ et:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
-    project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
-      label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
-      filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
-      new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
-      new_stage:
-        heading: "New stage"
-      new_gate:
-        heading: "New gate"
-      edit_stage:
-        heading: "Edit stage"
-      edit_gate:
-        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -3634,7 +3594,6 @@ et:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Oled Sa kindel oma soovis see teema koos selle alamteemadega täielikult kustutada?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
-  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Määra projektile"
   text_form_configuration: >
     You can customize which fields will be displayed in work package forms. You can freely group the fields to reflect the needs for your domain.
@@ -4082,8 +4041,6 @@ et:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth application"
-      scopes: "Scopes"
-      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

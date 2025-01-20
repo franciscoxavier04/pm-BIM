@@ -463,7 +463,7 @@ module Settings
       },
       enterprise_plan: {
         description: "Default EE selected plan",
-        default: "enterprise-on-premises---euro---1-year",
+        default: "enterprise-on-premises---basic---euro---1-year",
         writable: false
       },
       feeds_enabled: {

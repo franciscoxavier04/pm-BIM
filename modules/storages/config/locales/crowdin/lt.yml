@@ -3,8 +3,6 @@ lt:
     attributes:
       storages/file_link:
         origin_id: Kilmės Id
-      storages/project_storage:
-        storage: Storage
       storages/storage:
         creator: Kūrėjas
         drive: Disko ID

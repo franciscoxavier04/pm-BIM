@@ -282,7 +282,6 @@ uk:
       label: "Мітка"
       short: "Коротка назва"
       parent: "Батьківський елемент"
-      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:
@@ -680,7 +679,6 @@ uk:
       no_results_title_text: Зараз немає доступних зв’язків.
       blankslate_heading: "Немає зв’язків"
       blankslate_description: "Цей пакет робіт ще не має зв’язків."
-    label_add_child_button: "Дочірній"
     label_add_x: "Додати %{x}"
     label_edit_x: "Редагувати %{x}"
     label_add_description: "Додати опис"
@@ -689,7 +687,6 @@ uk:
       title: "Затримка (у днях)"
       caption: "Мінімальна кількість робочих днів між двома пакетами робіт."
     relations:
-      label_new_child_created: "Новий пакет робіт створено й додано як дочірній"
       label_relates_singular: "зв’язано з"
       label_relates_plural: "зв’язано з"
       label_relates_to_singular: "зв’язано з"
@@ -704,9 +701,6 @@ uk:
       follows_description: "Зв’язаний пакет робіт обов’язково має завершуватися перед початком цього"
       label_child_singular: "дочірній елемент"
       label_child_plural: "дочірні елементи"
-      new_child: "Новий дочірній"
-      new_child_text: "Створює звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
-      existing_child: "Наявний дочірній"
       child_description: "Вкладає звʼязаний пакет робіт як піделемент поточного (батьківського) пакета робіт"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
@@ -807,7 +801,6 @@ uk:
         is_required: "Обов'язкове поле"
         max_length: "Максимальна довжина"
         min_length: "Мінімальна довжина"
-        content_right_to_left: "Письмо зліва направо"
         multi_value: "Дозволити вибір"
         possible_values: "Можливі значення"
         regexp: "Регулярний вираз"
@@ -843,8 +836,6 @@ uk:
         attr_lastname: "Атрибут «Прізвище»"
         attr_login: "Атрибут «Ім’я користувача»"
         attr_mail: "Атрибут «Електронна адреса»"
-        filter_string: "Рядок фільтра"
-        admin: "Адміністратор"
         base_dn: "Базове ім’я DN"
         host: "Хост"
         onthefly: "Автоматичне створення користувачів"
@@ -888,9 +879,6 @@ uk:
       project_custom_field:
         is_required: "Обов’язково для всіх проєктів"
         custom_field_section: Розділ
-      project/life_cycle_step_definition:
-        name: "Ім’я"
-        color: "Колір"
       query:
         column_names: "Стовпці"
         relations_to_type_column: "Відносини з %{type}"
@@ -1879,10 +1867,6 @@ uk:
     upsale:
       title: "Доповнення версії Enterprise"
       link_title: "Додаткові відомості"
-      automatic_subject_generation:
-        description: "Створюйте автоматично згенеровані теми на основі атрибутів і тексту."
-      customize_life_cycle:
-        description: "Створюйте й упорядковуйте різні етапи й контрольні точки проєкту, а не лише ті, що передбачені плануванням циклу проєкту PM2."
       form_configuration:
         description: "Налаштуйте конфігурацію форми за допомогою цих додаткових доповнень:"
         add_groups: "Додати нові групи атрибутів"
@@ -2486,7 +2470,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції зі встановлення"
+  label_installation_guides: "Інструкції із встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
@@ -2667,7 +2651,6 @@ uk:
   label_project_new: "Новий проект"
   label_project_plural: "Проекти"
   label_project_list_plural: "Списки проєкту"
-  label_project_lifecycle: "Життєвий цикл проєкту"
   label_project_attributes_plural: "Атрибути проєкту"
   label_project_custom_field_plural: "Атрибути проєкту"
   label_project_settings: "Налаштування проекту"
@@ -3111,7 +3094,6 @@ uk:
   notice_bad_request: "Неправильний Запит."
   notice_not_authorized: "Ви не авторизовані для доступу до цієї сторінки."
   notice_not_authorized_archived_project: "Проект ви намагаєтеся отримати доступ до архіву."
-  notice_requires_enterprise_token: "Токен Enterprise відсутній або не надає доступу до цієї сторінки."
   notice_password_confirmation_failed: "Ваш пароль неправильний. Неможливо продовжити."
   notice_principals_found_multiple: "There are %{number} знайдені результати. \nВкладка для фокусування першого результату."
   notice_principals_found_single: "Знайдений один результат. Натисніть <TAB> для переходу до нього."
@@ -3423,7 +3405,6 @@ uk:
     activated: "активовано"
     deactivated: "деактивовано"
   search_input_placeholder: "Пошук ..."
-  setting_apiv3_cors_title: "Спільне використання ресурсів із різних джерел (CORS)"
   setting_apiv3_cors_enabled: "Увімкнути CORS"
   setting_apiv3_cors_origins: "Дозволені джерела CORS (Cross-Origin Resource Sharing) в API версії 3"
   setting_apiv3_cors_origins_text_html: >
@@ -3649,27 +3630,6 @@ uk:
       new:
         heading: "Новий атрибут"
         description: "Зміни цього атрибута проєкту відобразяться в усіх проєктах, де його ввімкнено. Обов’язкові атрибути не можна вимикати для окремого проєкту."
-    project_life_cycle_step_definitions:
-      heading: "Життєвий цикл проєкту"
-      heading_description: "Життєвий цикл проєкту складається з етапів і контрольних точок, які структурують ваші проєкти. Вони відображатимуться на сторінці огляду проєкту й у списку проєктів. Ви можете вибирати окремі етапи й контрольні точки, але не можете перевпорядковувати їх на рівні проєкту."
-      label_add: "Додати"
-      label_add_description: "Додайте визначення життєвого циклу"
-      label_add_stage: "Етап"
-      label_add_gate: "Контрольна точка"
-      filter:
-        label: "Пошук етапу або контрольної точки проєкту"
-      section_header: "Етапи й контрольні точки"
-      non_defined: "Зараз не визначено ні етапи, ні контрольні точки."
-      new:
-        description: "Зміни цього етапу проєкту відображатимуться в усіх проєктах із цим етапом."
-      new_stage:
-        heading: "Новий етап"
-      new_gate:
-        heading: "Нова контрольна точка"
-      edit_stage:
-        heading: "Редагувати етап"
-      edit_gate:
-        heading: "Редагувати етап"
     projects:
       missing_dependencies: "Перевірено модуль проєкту %{module}, який містить залежності від %{dependencies}. Ці залежності потрібно також перевірити."
       section_new_projects: "Налаштування нових проєктів"
@@ -3703,7 +3663,6 @@ uk:
   text_are_you_sure_continue: "Хочете продовжити?"
   text_are_you_sure_with_children: "Видалити робочий пакет і всі дочірні робочі пакети?"
   text_are_you_sure_with_project_custom_fields: "Видалення цього атрибута також призведе до видалення його значень у всіх проєктах. Ви впевнені?"
-  text_are_you_sure_with_project_life_cycle_step: "Видалення цього етапу також призведе до його видалення в усіх проєктах. Ви впевнені?"
   text_assign_to_project: "Призначити на проект"
   text_form_configuration: >
     Можна налаштувати, які поля будуть відображатися у формах робочих пакетів. Ви можете вільно групувати поля для відображення потреб вашого домену.
@@ -4152,8 +4111,6 @@ uk:
       builtin: Вбудований екземпляр застосунку
       confidential: Конфіденційний
       singular: "Програма OAuth"
-      scopes: "Області"
-      client_credentials: "Облікові дані клієнта"
       plural: "Програми OAuth"
       named: " Програми OAuth '%{name}'"
       new: "Нова програма OAuth"

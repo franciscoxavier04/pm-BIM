@@ -8,7 +8,6 @@ el:
         url: 'Payload URL'
         secret: 'Κρυφή υπογραφή'
         events: 'Συμβάντα'
-        enabled: 'Enabled'
         projects: 'Ενεργοποιημένα έργα'
       webhooks/log:
         event_name: 'Όνομα συμβάντος'

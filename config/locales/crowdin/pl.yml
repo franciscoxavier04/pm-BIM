@@ -284,7 +284,6 @@ pl:
       label: "Etykieta"
       short: "Nazwa skrócona"
       parent: "Element nadrzędny"
-      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Wyszukaj w %{app_title}"
     overwritten_tabs:
@@ -684,7 +683,6 @@ pl:
       no_results_title_text: Obecnie nie są dostępne żadne relacje.
       blankslate_heading: "Brak relacji"
       blankslate_description: "Ten pakiet roboczy nie ma jeszcze żadnych relacji."
-    label_add_child_button: "Element podrzędny"
     label_add_x: "Dodaj %{x}"
     label_edit_x: "Edytuj %{x}"
     label_add_description: "Dodaj opis"
@@ -693,7 +691,6 @@ pl:
       title: "Opóźnienie (w dniach)"
       caption: "Minimalna liczba dni roboczych wymagana między dwoma pakietami roboczymi."
     relations:
-      label_new_child_created: "Nowy pakiet roboczy utworzono i dodano jako element podrzędny"
       label_relates_singular: "ma relację z"
       label_relates_plural: "ma relację z"
       label_relates_to_singular: "ma relację z"
@@ -708,9 +705,6 @@ pl:
       follows_description: "Powiązany pakiet roboczy musi koniecznie zostać ukończony przed rozpoczęciem tego pakietu"
       label_child_singular: "element podrzędny"
       label_child_plural: "elementy podrzędne"
-      new_child: "Nowy element podrzędny"
-      new_child_text: "Tworzy powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
-      existing_child: "Istniejący element podrzędny"
       child_description: "Ustawia powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
       label_blocks_singular: "blok"
       label_blocks_plural: "bloki"
@@ -811,7 +805,6 @@ pl:
         is_required: "Wymagane"
         max_length: "Maksymalna długość"
         min_length: "Minimalna długość"
-        content_right_to_left: "Treść od prawej do lewej"
         multi_value: "Zezwól na wybór wielokrotny"
         possible_values: "Możliwe wartości"
         regexp: "Wyrażenie regularne"
@@ -847,8 +840,6 @@ pl:
         attr_lastname: "Atrybut nazwiska"
         attr_login: "Atrybut nazwy użytkownika"
         attr_mail: "Atrybut adresu e-mail"
-        filter_string: "Ciąg filtru"
-        admin: "Administrator"
         base_dn: "Bazowa nazwa wyróżniająca"
         host: "Host"
         onthefly: "Automatyczne tworzenie użytkowników"
@@ -892,9 +883,6 @@ pl:
       project_custom_field:
         is_required: "Wymagane dla wszystkich projektów"
         custom_field_section: Sekcja
-      project/life_cycle_step_definition:
-        name: "Nazwa"
-        color: "Kolor"
       query:
         column_names: "Kolumny"
         relations_to_type_column: "Relacje %{type}"
@@ -1010,7 +998,7 @@ pl:
         confirmation: "nie pasuje do %{attribute}."
         could_not_be_copied: "Nie można było (w pełni) skopiować %{dependency}."
         does_not_exist: "nie istnieje."
-        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise edition"
+        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise Edition"
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
@@ -1883,10 +1871,6 @@ pl:
     upsale:
       title: "Dodatek wersji Enterprise"
       link_title: "Więcej informacji"
-      automatic_subject_generation:
-        description: "Utwórz automatycznie generowane tematy za pomocą wywoływanych atrybutów i tekstu."
-      customize_life_cycle:
-        description: "Twórz i organizuj etapy i bramki projektu inne niż zapewniane przez planowanie cyklu projektu PM2."
       form_configuration:
         description: "Dostosuj konfigurację formularza za pomocą tych dodatków:"
         add_groups: "Dodaj nowe grupy atrybutów"
@@ -2671,7 +2655,6 @@ pl:
   label_project_new: "Nowy projekt"
   label_project_plural: "Projekty"
   label_project_list_plural: "Listy projektów"
-  label_project_lifecycle: "Cykl życia projektu"
   label_project_attributes_plural: "Atrybuty projektu"
   label_project_custom_field_plural: "Atrybuty projektu"
   label_project_settings: "Ustawienia projektu"
@@ -3115,7 +3098,6 @@ pl:
   notice_bad_request: "Nieprawidłowe żądanie."
   notice_not_authorized: "Brak uprawnień dostępu do tej strony."
   notice_not_authorized_archived_project: "The project you're trying to access has been archived."
-  notice_requires_enterprise_token: "Brak tokenu wersji Enterprise lub nie zezwala ona na dostęp do tej strony."
   notice_password_confirmation_failed: "Nieprawidłowe hasło. Nie można kontynuować."
   notice_principals_found_multiple: "Znaleziono %{number} wyników.\nNaciśnij Tab, aby wybrać pierwszy rezultat."
   notice_principals_found_single: "Znaleziono 1 wynik.\nNaciśnij Tab, aby go wybrać."
@@ -3426,7 +3408,6 @@ pl:
     activated: "aktywowano"
     deactivated: "dezaktywowano"
   search_input_placeholder: "Wyszukaj ..."
-  setting_apiv3_cors_title: "Współdzielenie zasobów między źródłami (CORS)"
   setting_apiv3_cors_enabled: "Włącz CORS"
   setting_apiv3_cors_origins: "Dozwolone źródła mechanizmu Cross-Origin Resource Sharing (CORS) interfejsu API V3"
   setting_apiv3_cors_origins_text_html: >
@@ -3652,27 +3633,6 @@ pl:
       new:
         heading: "Nowy atrybut"
         description: "Zmiany tego atrybutu projektu zostaną odzwierciedlone we wszystkich projektach, w których jest on włączony. Wymaganych atrybutów nie można wyłączyć dla poszczególnych projektów."
-    project_life_cycle_step_definitions:
-      heading: "Cykl życia projektu"
-      heading_description: "Cykl życia projektu składa się z etapów i bramek, które kształtują Twoje projekty. Będą one wyświetlane na stronie przeglądu projektu i będą dostępne na liście projektów. Poszczególne etapy i bramki można wybrać w celu dostosowania projektu, ale nie można zmienić kolejności na poziomie projektu."
-      label_add: "Dodaj"
-      label_add_description: "Dodaj definicję cyklu życia"
-      label_add_stage: "Etap"
-      label_add_gate: "Bramka"
-      filter:
-        label: "Wyszukaj etap lub brankę projektu"
-      section_header: "Etapy i bramki"
-      non_defined: "Ani etapy, ani bramki nie są obecnie zdefiniowane."
-      new:
-        description: "Zmiany w tym kroku projektu zostaną odzwierciedlone we wszystkich projektach, w których jest on włączony."
-      new_stage:
-        heading: "Nowy etap"
-      new_gate:
-        heading: "Nowa bramka"
-      edit_stage:
-        heading: "Edytuj etap"
-      edit_gate:
-        heading: "Edytuj bramkę"
     projects:
       missing_dependencies: "Sprawdzono moduł projektu %{module}, który zależy od %{dependencies}. Musisz sprawdzić również te zależności."
       section_new_projects: "Ustawienia nowych projektów"
@@ -3706,7 +3666,6 @@ pl:
   text_are_you_sure_continue: "Czy na pewno chcesz kontynuować?"
   text_are_you_sure_with_children: "Usunąć pakiet roboczy i wszystkie podrzędne pakiety?"
   text_are_you_sure_with_project_custom_fields: "Usunięcie tego atrybutu spowoduje również usunięcie jego wartości we wszystkich projektach. Czy na pewno chcesz to zrobić?"
-  text_are_you_sure_with_project_life_cycle_step: "Usunięcie tego kroku spowoduje również usunięcie jego użycia we wszystkich projektach. Czy na pewno chcesz to zrobić?"
   text_assign_to_project: "Przypisz do projektu"
   text_form_configuration: >
     Możesz określić, które pola będą wyświetlane w formularzach Work Package. Możesz dowolnie grupować pola aby dostosować do swoich potrzeb.
@@ -4156,8 +4115,6 @@ pl:
       builtin: Wbudowana aplikacja
       confidential: Poufne
       singular: "Aplikacje OAuth"
-      scopes: "Zakresy"
-      client_credentials: "Poświadczenia klienta"
       plural: "Aplikacje OAuth"
       named: "Aplikacja OAuth „%{name}”"
       new: "Nowa aplikacja OAuth"

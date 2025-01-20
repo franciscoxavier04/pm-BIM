@@ -8,7 +8,6 @@ lt:
         url: '„Krovinio“ URL'
         secret: 'Parašo paslaptis'
         events: 'Įvykiai'
-        enabled: 'Enabled'
         projects: 'Įgalinti projektai'
       webhooks/log:
         event_name: 'Įvykio pavadinimas'
