@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -265,7 +267,7 @@ RSpec.describe TypesController do
 
         it do
           expect(response).to(
-            redirect_to(edit_type_tab_path(id: type.id, tab: "settings"))
+            redirect_to(edit_tab_type_path(id: type.id, tab: "settings"))
           )
         end
 
@@ -304,63 +306,12 @@ RSpec.describe TypesController do
 
         it do
           expect(response).to(
-            redirect_to(edit_type_tab_path(id: type.id, tab: :projects))
+            redirect_to(edit_tab_type_path(id: type.id, tab: :projects))
           )
         end
 
         it "has no projects assigned" do
           expect(Type.find_by(name: "My type").projects.count).to eq(0)
-        end
-      end
-
-      describe "when updating the subject pattern" do
-        let(:params) do
-          { "id" => type.id,
-            "type" => { subject_pattern: blueprint, subject_configuration: "auto" },
-            "tab" => "subject_configuration" }
-        end
-        let(:blueprint) { "I choose you {{assignee}}!" }
-
-        before do
-          patch :update, params:
-        end
-
-        it { expect(response).to be_redirect }
-
-        it do
-          expect(response).to(
-            redirect_to(edit_type_tab_path(id: type.id, tab: "subject_configuration"))
-          )
-        end
-
-        it "stores the pattern" do
-          pattern = Type.find(type.id).patterns.subject
-
-          expect(pattern).to be_present
-          expect(pattern).to be_enabled
-          expect(pattern.blueprint).to eq(blueprint)
-        end
-
-        context "and when the subject is configured manually" do
-          let(:params) do
-            { "id" => type.id,
-              "type" => { subject_pattern: blueprint, subject_configuration: "manual" },
-              "tab" => "subject_configuration" }
-          end
-
-          it "disables the pattern" do
-            pattern = Type.find(type.id).patterns.subject
-
-            expect(pattern).to be_present
-            expect(pattern).not_to be_enabled
-          end
-
-          it "stores the previously used blueprint" do
-            pattern = Type.find(type.id).patterns.subject
-
-            expect(pattern).to be_present
-            expect(pattern.blueprint).to eq(blueprint)
-          end
         end
       end
     end

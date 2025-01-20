@@ -286,6 +286,7 @@ ms:
       label: "Label"
       short: "Nama pendek"
       parent: "Ibu bapa"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Cari dalam %{app_title}"
     overwritten_tabs:

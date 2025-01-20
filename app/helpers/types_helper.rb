@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -33,19 +35,25 @@ module ::TypesHelper
       {
         name: "settings",
         partial: "types/form/settings",
-        path: edit_type_tab_path(id: @type.id, tab: :settings),
+        path: edit_tab_type_path(id: @type.id, tab: :settings),
         label: "types.edit.settings.tab"
       },
       {
         name: "form_configuration",
         partial: "types/form/form_configuration",
-        path: edit_type_tab_path(id: @type.id, tab: :form_configuration),
+        path: edit_tab_type_path(id: @type.id, tab: :form_configuration),
         label: "types.edit.form_configuration.tab"
+      },
+      {
+        name: "subject_configuration",
+        path: edit_tab_type_path(id: @type.id, tab: :subject_configuration),
+        label: "types.edit.subject_configuration.tab",
+        view_component: WorkPackages::Types::SubjectConfigurationComponent
       },
       {
         name: "projects",
         partial: "types/form/projects",
-        path: edit_type_tab_path(id: @type.id, tab: :projects),
+        path: edit_tab_type_path(id: @type.id, tab: :projects),
         label: "types.edit.projects.tab"
       }
     ]

@@ -8,7 +8,7 @@ pl:
         url: 'URL do wywołania'
         secret: 'Tajny klucz podpisu'
         events: 'Zdarzenia'
-        enabled: 'Enabled'
+        enabled: 'Włączone'
         projects: 'Aktywne projekty'
       webhooks/log:
         event_name: 'Nazwa zdarzenia'

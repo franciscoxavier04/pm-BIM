@@ -286,6 +286,7 @@ hu:
       label: "Label"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Keresés:  %{app_title} oldalon"
     overwritten_tabs:

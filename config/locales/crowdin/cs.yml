@@ -287,6 +287,7 @@ cs:
       label: "Popisek"
       short: "Krátký název"
       parent: "Nadřazený"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Hledat v %{app_title}"
     overwritten_tabs:

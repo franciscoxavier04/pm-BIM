@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -68,6 +70,8 @@ module TimeEntries
     attribute :tweek
     attribute :user_id,
               permission: :log_time
+
+    attribute :start_time # TODO: Add validation with global setting
 
     def assignable_activities
       if model.project

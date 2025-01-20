@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -51,7 +53,7 @@ RSpec.describe "form configuration", :js, :selenium do
 
       before do
         login_as(admin)
-        visit edit_type_tab_path(id: type.id, tab: "form_configuration")
+        visit edit_tab_type_path(id: type.id, tab: "form_configuration")
       end
 
       it "resets the form properly after changes" do
@@ -256,7 +258,7 @@ RSpec.describe "form configuration", :js, :selenium do
         custom_field
 
         login_as(admin)
-        visit edit_type_tab_path(id: type.id, tab: "form_configuration")
+        visit edit_tab_type_path(id: type.id, tab: "form_configuration")
       end
 
       it "shows the field" do
@@ -286,7 +288,7 @@ RSpec.describe "form configuration", :js, :selenium do
         custom_field
 
         login_as(admin)
-        visit edit_type_tab_path(id: type.id, tab: "form_configuration")
+        visit edit_tab_type_path(id: type.id, tab: "form_configuration")
 
         # Should be initially disabled
         form.expect_inactive(cf_identifier)
@@ -370,7 +372,7 @@ RSpec.describe "form configuration", :js, :selenium do
 
     it "must disable adding and renaming groups" do
       login_as(admin)
-      visit edit_type_tab_path(id: type.id, tab: "form_configuration")
+      visit edit_tab_type_path(id: type.id, tab: "form_configuration")
 
       find(".group-edit-handler", text: "DETAILS").click
       dialog.expect_open
