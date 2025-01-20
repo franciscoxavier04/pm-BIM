@@ -101,25 +101,25 @@ You can remove an attachment by hovering over it and clicking the **Delete** ico
 
 ## Work package reminders
 
-If you want to be reminded about a work package at  later point in time, you can use the **Reminder** function. Click the **Reminder** (alarm clock) icon in the work package detailed view.
+If you want to be reminded about a work package at a later point in time, you can use the **Reminder** function. Click the **Reminder** (alarm clock) icon in the work package detailed view.
 
 ![Work package reminder icon in OpenProject](openproject_user_guide_wp_reminder_icon.png)
 
-Specify the time and date, or set a note for the reminder to be set, then click the **Set reminder** button.
+Specify the time and date on which you would like to be reminded and optionally add a note for more context. Then click the **Set reminder** button.
 
 ![Set reminder in OpenProject work packages](openproject_user_guide_wp_set_reminder.png)
 
-Once you set a reminder, you will see a confirmation message. The reminder icon will now show the badge to indicate that a reminder was set. Clicking on the reminder icon again will allow editing it. 
+Once you set a reminder, you will see a confirmation message. The reminder icon will now show a badge to indicate that a reminder has been set. Clicking on the reminder icon again will let you modify the existing one.
 
 ![A badge to indicate a set reminder in OpenProject work package](openproject_user_guide_wp_reminder_badge.png)
 
-You will receive the reminder through the [Notification center](../../notifications/#access-in-app-notifications). 
+At the configured date and time, you will receive the reminder in [Notification center](../../notifications/#access-in-app-notifications). 
 
 ![Work package reminder in OpenProject notificaiton center](openproject_user_guide_wp_set_reminder_notification.png)
 
 > [!TIP]
 >
-> You can set to receive immediate notifications via e-mail for personal reminders. To do that adjust your [account settings](../../user-guide/account-settings/#email-reminders) accordingly.
+> You can set to receive immediate notifications via e-mail for personal reminders. To do that, adjust your [account settings](../../user-guide/account-settings/#email-reminders) accordingly.
 
 ## Watchers
 
