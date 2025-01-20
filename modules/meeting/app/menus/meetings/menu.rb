@@ -71,9 +71,20 @@ module Meetings
             .map do |id, title|
         href = polymorphic_path([project, :recurring_meeting], { id: })
         OpenProject::Menu::MenuItem.new(title:,
-                                        selected: params[:current_href] == href,
+                                        selected: selected?(href),
                                         href:)
       end
+    end
+
+    def selected?(href)
+      current_href = params[:current_href]
+
+      return current_href == href unless current_href&.match(/\/meetings\/\d+$/) && !href.is_a?(Hash)
+
+      current_meeting_id = current_href.split("/").last.to_i
+      href_meeting_id = href.split("/").last.to_i
+
+      Meeting.find(current_meeting_id).recurring_meeting_id == href_meeting_id
     end
 
     def recurring_menu_item
