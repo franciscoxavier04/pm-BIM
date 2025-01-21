@@ -466,7 +466,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
       filter(() => !!(this.defaultData || this.getOptionsFn)),
       distinctUntilChanged(),
       tap(() => this.loading$.next(true)),
-      debounceTime(this.debounceTimeMs),
+      debounceTime(this.debounceTimeForCurrentEnvironment),
       switchMap((queryString:string) => {
         if (this.relations && this.url) {
           return this.fetchFromUrl(queryString);
@@ -520,6 +520,10 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
       .pipe(
         map((collection:CollectionResource<T>) => collection.elements),
       );
+  }
+
+  private get debounceTimeForCurrentEnvironment():number {
+    return (window.OpenProject.environment === 'test') ? 0 : this.debounceTimeMs;
   }
 
   writeValue(value:T|T[]|null):void {
