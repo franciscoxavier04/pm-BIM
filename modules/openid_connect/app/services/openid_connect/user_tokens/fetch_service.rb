@@ -37,9 +37,12 @@ module OpenIDConnect
     class FetchService
       include Dry::Monads[:result]
 
-      def initialize(user:, jwt_parser: JwtParser.new(verify_audience: false, verify_expiration: false))
+      def initialize(user:,
+                     allow_token_exchange: true,
+                     jwt_parser: JwtParser.new(verify_audience: false, verify_expiration: false))
         @user = user
         @provider = user.authentication_provider
+        @allow_token_exchange = allow_token_exchange
         @jwt_parser = jwt_parser
       end
 
@@ -51,6 +54,9 @@ module OpenIDConnect
       # identified as being expired. There is no guarantee that all access tokens will be properly
       # recognized as expired, so client's still need to make sure to handle rejected access tokens
       # properly. Also see #refreshed_access_token_for.
+      #
+      # A token exchange is attempted, if the provider supports OAuth 2.0 Token Exchange and a token
+      # for the target audience either can't be found or it has expired, but has no available refresh token.
       def access_token_for(audience:)
         token = token_with_audience(audience)
         token = token.bind do |t|
@@ -71,6 +77,9 @@ module OpenIDConnect
       # The access token will always be refreshed before being returned by this method.
       # It is advised to use this method, after learning that a remote service rejected
       # an access token, because it was expired.
+      #
+      # A token exchange is attempted, if the provider supports OAuth 2.0 Token Exchange and a token
+      # for the target audience either can't be found or it has expired, but has no available refresh token.
       def refreshed_access_token_for(audience:)
         token_with_audience(audience)
           .bind { |t| refresh(t) }
@@ -81,11 +90,67 @@ module OpenIDConnect
 
       def token_with_audience(aud)
         token = @user.oidc_user_tokens.where("audiences ? :aud", aud:).first
-        token ? Success(token) : Failure("No token for given audience")
+        return Success(token) if token
+
+        return exchange_token_for(aud) if can_exchange_token?
+
+        Failure("No token for audience '#{aud}'")
+      end
+
+      def can_exchange_token?
+        @allow_token_exchange && @provider&.token_exchange_capable?
+      end
+
+      def exchange_token_for(audience)
+        self.class.new(user: @user, allow_token_exchange: false)
+                  .access_token_for(audience: UserToken::IDP_AUDIENCE)
+                  .bind do |idp_token|
+                    exchange_token_request(idp_token, audience).bind do |json|
+                      access_token = json["access_token"]
+                      refresh_token = json["refresh_token"]
+                      break Failure("Token exchange response invalid") if access_token.blank?
+
+                      token = store_exchanged_token(audience:, access_token:, refresh_token:)
+
+                      Success(token)
+                    end
+                  end
+      end
+
+      def exchange_token_request(access_token, audience)
+        response = OpenProject.httpx
+                              .basic_auth(@provider.client_id, @provider.client_secret)
+                              .post(@provider.token_endpoint, form: {
+                                      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+                                      subject_token: access_token,
+                                      audience:
+                                    })
+        response.raise_for_status
+
+        Success(response.json)
+      rescue HTTPX::Error => e
+        Failure(e)
+      end
+
+      def store_exchanged_token(audience:, access_token:, refresh_token:)
+        token = @user.oidc_user_tokens.where("audiences ? :audience", audience:).first
+        if token
+          if token.audiences.size > 1
+            raise "Did not expect to update token with multiple audiences (#{token.audiences}) in-place."
+          end
+
+          token.update!(access_token:, refresh_token:)
+        else
+          token = @user.oidc_user_tokens.create!(access_token:, refresh_token:, audiences: [audience])
+        end
+
+        token
       end
 
       def refresh(token)
-        return Failure("Can't refresh the access token") if token.refresh_token.blank?
+        if token.refresh_token.blank?
+          return exchange_instead_of_refresh(token)
+        end
 
         refresh_token_request(token.refresh_token).bind do |json|
           access_token = json["access_token"]
@@ -96,6 +161,17 @@ module OpenIDConnect
 
           Success(token)
         end
+      end
+
+      def exchange_instead_of_refresh(token)
+        # We can attempt a token exchange instead of a refresh, if we previously exchanged the token.
+        # For simplicity we do not consider scenarios where the original token had a wider audience,
+        # because all tokens obtained through exchange in this service will have exactly one audience.
+        if can_exchange_token? && token.audiences.size == 1
+          return exchange_token_for(token.audiences.first)
+        end
+
+        Failure("Can't refresh the access token")
       end
 
       def refresh_token_request(refresh_token)
