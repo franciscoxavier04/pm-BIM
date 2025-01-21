@@ -312,7 +312,7 @@ RSpec.describe Project, "customizable" do
           bool_custom_field.id => true
         }
 
-        project.save!
+        project.save!(context: :saving_custom_fields)
       end
 
       it_behaves_like "implicitly enabled and saved custom values"
@@ -426,7 +426,7 @@ RSpec.describe Project, "customizable" do
       before do
         project.send(:"custom_field_#{text_custom_field.id}=", "foo")
         project.send(:"custom_field_#{bool_custom_field.id}=", true)
-        project.save!
+        project.save!(context: :saving_custom_fields)
       end
 
       it_behaves_like "implicitly enabled and saved custom values"
