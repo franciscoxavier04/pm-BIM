@@ -44,7 +44,7 @@ RSpec.describe "Cost reports XLS export", :js, with_flag: { track_start_and_end_
     create(:time_entry, user:, work_package:, project:,
                         start_time: 1 * 60,
                         spent_on: 2.days.ago,
-                        hours: 1.0,
+                        hours: 1.95,
                         time_zone: "UTC")
   end
   shared_let(:time_entry_long) do
@@ -120,7 +120,7 @@ RSpec.describe "Cost reports XLS export", :js, with_flag: { track_start_and_end_
     title, _, time_entry_row, time_entry_long_row = subject.second.rows
     expect_sheet_title title
     if allow_show_start_and_end_times
-      expect_time_entry time_entry_row, time_entry, "01:00 AM", "02:00 AM"
+      expect_time_entry time_entry_row, time_entry, "01:00 AM", "02:57 AM"
       expect_time_entry time_entry_long_row, time_entry_long, "01:00 AM",
                         "#{(time_entry_long.spent_on + 1.day).iso8601} 05:00 AM"
     else

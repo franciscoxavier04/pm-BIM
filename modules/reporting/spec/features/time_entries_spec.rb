@@ -13,7 +13,7 @@ RSpec.describe "Cost report showing time entries with start & end times", :js,
     create :time_entry, user:, work_package:, project:,
                         start_time: 1 * 60,
                         spent_on: 1.day.ago,
-                        hours: 1.0,
+                        hours: 1.25,
                         time_zone: "UTC"
   end
   shared_let(:time_entry_long) do
@@ -37,8 +37,8 @@ RSpec.describe "Cost report showing time entries with start & end times", :js,
       table.expect_sort_header_column("TIME", present: true)
       table.rows_count 2
 
-      table.expect_value("1.00 hours", 1)
-      table.expect_cell_text("01:00 AM - 02:00 AM", 1, 2)
+      table.expect_value("1.25 hours", 1)
+      table.expect_cell_text("01:00 AM - 02:15 AM", 1, 2)
 
       table.expect_value("28.00 hours", 2)
       table.expect_cell_text("01:00 AM - 05:00 AM (+1d)", 2, 2)
