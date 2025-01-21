@@ -30,8 +30,7 @@
 
 class CustomFields::Inputs::MultiVersionSelectList < CustomFields::Inputs::Base::Autocomplete::MultiValueInput
   include AssignableCustomFieldValues
-
-  delegate :assignable_versions, to: :@object
+  include CustomFields::Inputs::VersionSelect
 
   form do |custom_value_form|
     # autocompleter does not set key with blank value if nothing is selected or input is cleared
@@ -44,7 +43,7 @@ class CustomFields::Inputs::MultiVersionSelectList < CustomFields::Inputs::Base:
       value:
     )
 
-    custom_value_form.autocompleter(**input_attributes) do |list|
+    custom_value_form.autocompleter(**version_input_attributes) do |list|
       assignable_custom_field_values(@custom_field).each do |version|
         list.option(
           label: version.name,
