@@ -81,7 +81,7 @@ class Meeting::TimeGroup < ApplicationForm
     @initial_date = meeting.start_date.presence || format_time_as_date(meeting.start_time, format: "%Y-%m-%d")
 
     duration = duration_value(meeting)
-    @duration = duration.nil? ? "" : ChronicDuration.output(duration * 3600, format: :hours_only)
+    @duration = duration.nil? ? "" : duration
   end
 
   private
