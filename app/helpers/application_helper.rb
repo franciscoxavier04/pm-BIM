@@ -192,10 +192,7 @@ module ApplicationHelper
   def authoring_at(created, author)
     return if author.nil?
 
-    I18n.t(:"js.label_added_time_by",
-           author: html_escape(author.name),
-           age: created,
-           authorLink: user_path(author)).html_safe
+    I18n.t(:"js.label_added_time_by", authorLink: link_to_user(author), age: created).html_safe
   end
 
   def time_tag(time)
