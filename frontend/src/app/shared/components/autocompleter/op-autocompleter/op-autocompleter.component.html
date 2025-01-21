@@ -4,6 +4,7 @@
     *ngIf="inputName && !(multiple && multipleAsSeparateInputs)"
     type="hidden"
     [attr.name]="inputName"
+    [value]="mappedInputValue"
     [attr.data-action]="hiddenFieldAction">
   <ng-container *ngIf="multiple && multipleAsSeparateInputs">
     <input

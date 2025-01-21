@@ -286,7 +286,7 @@ ru:
       label: "Метка"
       short: "Короткое имя"
       parent: "Родитель"
-      blueprint: "Pattern blueprint"
+      blueprint: "Шаблон чертежа"
   global_search:
     placeholder: "Поиск в %{app_title}"
     overwritten_tabs:
@@ -664,6 +664,7 @@ ru:
         title: "Отсутствует рабочий процесс для совместного использования пакета работ"
         message: "Для роли «Редактор рабочего пакета» не настроен рабочий процесс. Без рабочего процесса пользователь, к которому предоставлен общий доступ, не может изменить состояние рабочего пакета. Рабочие процессы можно копировать. Выберите тип источника (например, «Задача») и роль источника (например, «Участник»). Затем выберите целевые типы. Для начала вы можете выбрать все типы в качестве целей. Наконец, выберите роль «Редактор рабочего пакета» в качестве цели и нажмите «Копировать». После создания настроек по умолчанию настройте рабочие процессы так же, как и для любой другой роли."
         link_message: "Настройте рабочие процессы в Администрировании."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -686,7 +687,7 @@ ru:
       no_results_title_text: На данный момент связи отсутствуют.
       blankslate_heading: "Нет связей"
       blankslate_description: "У этого пакета работ пока нет никаких связей."
-    label_add_child_button: "Child"
+    label_add_child_button: "Дочерний пакет работ"
     label_add_x: "Добавить %{x}"
     label_edit_x: "Редактировать %{x}"
     label_add_description: "Добавить описание"
@@ -695,7 +696,7 @@ ru:
       title: "Отставание (в днях)"
       caption: "Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ."
     relations:
-      label_new_child_created: "New work package created and added as a child"
+      label_new_child_created: "Новый пакет работ создан и добавлен как дочерний"
       label_relates_singular: "связан с"
       label_relates_plural: "связаны с"
       label_relates_to_singular: "связан с"
@@ -710,9 +711,9 @@ ru:
       follows_description: "Соответствующий пакет работ обязательно должен быть завершен до того, как начнется этот пакет"
       label_child_singular: "дочерний пакет работ"
       label_child_plural: "дочерние пакеты работ"
-      new_child: "New child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      new_child: "Новый дочерний пакет работ"
+      new_child_text: "Создает связанный пакет работ в качестве подпункта текущего (родительского) пакета работ"
+      existing_child: "Существующий дочерний пакет работ"
       child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"

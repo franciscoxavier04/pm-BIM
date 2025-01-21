@@ -24,7 +24,7 @@
               Relation::TYPES.each do |relation_type, type_configuration_hash|
                 label_key = "#{I18N_NAMESPACE}.relations.#{type_configuration_hash[:name]}_singular"
                 menu.with_item(
-                  label: t(label_key).capitalize,
+                  label: t(label_key).upcase_first,
                   href: new_relation_path(relation_type:),
                   test_selector: new_button_test_selector(relation_type:),
                   content_arguments: {
@@ -56,7 +56,7 @@
 
           flex.with_row(mb: 4) do
             render_relation_group(
-              title: t("#{base_key}_plural").capitalize,
+              title: t("#{base_key}_plural").upcase_first,
               relation_type: relation_group.type,
               items: all_relations
             ) do |relation, visibility|
@@ -80,7 +80,7 @@
 
           flex.with_row do
             render_relation_group(
-              title: t("#{base_key}_plural").capitalize,
+              title: t("#{base_key}_plural").upcase_first,
               relation_type: :children,
               items: all_children
             ) do |child, visibility|

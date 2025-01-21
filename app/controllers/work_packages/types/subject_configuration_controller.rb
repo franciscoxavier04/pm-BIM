@@ -63,7 +63,7 @@ module WorkPackages
       def tab_path = edit_tab_type_path(id: @type.id, tab: :subject_configuration)
 
       def pattern_collection_update(form_params)
-        patterns = @type.patterns.to_h
+        patterns = @type.patterns.to_h.symbolize_keys
 
         subject_pattern =
           case form_params
@@ -82,10 +82,10 @@ module WorkPackages
           end
 
         if subject_pattern.nil?
-          patterns.delete("subject")
+          patterns.delete(:subject)
           patterns
         else
-          patterns.merge(subject_pattern.stringify_keys)
+          patterns.merge(subject_pattern)
         end
       end
     end

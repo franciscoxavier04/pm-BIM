@@ -234,6 +234,9 @@ import { appBaseSelector, ApplicationBaseComponent } from 'core-app/core/routing
 import { SpotSwitchComponent } from 'core-app/spot/components/switch/switch.component';
 import { OPContextMenuService } from 'core-app/shared/components/op-context-menu/op-context-menu.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
+import {
+  TimeEntriesWorkPackageAutocompleterComponent,
+} from 'core-app/shared/components/autocompleter/time-entries-work-package-autocompleter/time-entries-work-package-autocompleter.component';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -425,6 +428,7 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-project-autocompleter', ProjectAutocompleterComponent, { injector });
     registerCustomElement('opce-members-autocompleter', MembersAutocompleterComponent, { injector });
     registerCustomElement('opce-user-autocompleter', UserAutocompleterComponent, { injector });
+    registerCustomElement('opce-time-entries-work-package-autocompleter', TimeEntriesWorkPackageAutocompleterComponent, { injector });
     registerCustomElement('opce-macro-attribute-value', AttributeValueMacroComponent, { injector });
     registerCustomElement('opce-macro-attribute-label', AttributeLabelMacroComponent, { injector });
     registerCustomElement('opce-macro-wp-quickinfo', WorkPackageQuickinfoMacroComponent, { injector });

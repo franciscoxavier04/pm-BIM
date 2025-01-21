@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -58,6 +60,18 @@ module Components
       expect(page).to have_css("#{row_selector(row)} .units", text: value)
     end
 
+    def expect_cell_text(value, row, column)
+      expect(page).to have_css(cell_selector(row, column), text: value)
+    end
+
+    def expect_sort_header_column(text, present: true)
+      if present
+        expect(page).to have_css("#result-table .generic-table--sort-header", text:)
+      else
+        expect(page).to have_no_css("#result-table .generic-table--sort-header", text:)
+      end
+    end
+
     def edit_time_entry(row, hours:)
       SeleniumHubWaiter.wait
       page.find("#{row_selector(row)} .icon-edit").click
@@ -82,7 +96,7 @@ module Components
       SeleniumHubWaiter.wait
       page.find("#{row_selector(row)} .icon-edit").click
 
-      expect(page).to have_current_path("/cost_entries/" + cost_entry_id + "/edit")
+      expect(page).to have_current_path("/cost_entries/#{cost_entry_id}/edit")
 
       SeleniumHubWaiter.wait
       fill_in("cost_entry_units", with: new_value)
@@ -105,6 +119,10 @@ module Components
 
     def row_selector(row)
       "#result-table tbody tr:nth-of-type(#{row})"
+    end
+
+    def cell_selector(row, column)
+      "#{row_selector(row)} td:nth-of-type(#{column})"
     end
   end
 end

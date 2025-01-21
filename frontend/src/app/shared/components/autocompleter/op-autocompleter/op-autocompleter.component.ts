@@ -200,7 +200,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
   @Input() public selectableGroupAsModel?:boolean = true;
 
-  @Input() public searchFn:(term:string, item:any) => boolean;
+  @Input() public searchFn:(term:string, item:unknown) => boolean;
 
   @Input() public trackByFn = this.defaultTrackByFunction();
 
@@ -293,7 +293,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
   initialDebounce = true;
 
-  private opAutocompleterService = new OpAutocompleterService(this.apiV3Service);
+  readonly opAutocompleterService = new OpAutocompleterService(this.apiV3Service);
 
   constructor(
     readonly injector:Injector,
@@ -319,17 +319,6 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
     if (this.items) {
       this.items$.next(this.items as IOPAutocompleterOption[]);
     }
-
-    if (this.inputValue && this.resource && !this.model) {
-      this
-        .opAutocompleterService
-        .loadValue(this.inputValue, this.resource, this.multiple)
-        .subscribe((resource) => {
-          this.model = resource as unknown as T;
-          this.syncHiddenField(this.mappedInputValue);
-          this.cdRef.detectChanges();
-        });
-    }
   }
 
   ngOnChanges(changes:SimpleChanges):void {
@@ -341,6 +330,17 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
   ngAfterViewInit():void {
     if (this.inputName && this.model) {
       this.syncHiddenField(this.mappedInputValue);
+    }
+
+    if (this.inputValue && this.resource && !this.model) {
+      this
+        .opAutocompleterService
+        .loadValue(this.inputValue, this.resource, this.multiple)
+        .subscribe((resource) => {
+          this.model = resource as unknown as T;
+          this.syncHiddenField(this.mappedInputValue);
+          this.cdRef.detectChanges();
+        });
     }
 
     this.ngZone.runOutsideAngular(() => {
@@ -385,7 +385,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
     this.open.emit();
   }
 
-  public getOptionsItems(searchKey:string):Observable<any> {
+  public getOptionsItems(searchKey:string):Observable<unknown> {
     return of((this.items as IOPAutocompleterOption[])?.filter((element) => element.name.includes(searchKey)));
   }
 
@@ -414,6 +414,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
     this.onTouched(val);
     this.onChange(val);
     this.syncHiddenField(this.mappedInputValue);
+    this.syncedInput?.nativeElement.dispatchEvent(new Event('change'));
     this.change.emit(val);
 
     if (this.resetOnChange) {
@@ -592,13 +593,19 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
     );
   }
 
-  protected syncHiddenField(mappedInputValue:string|string[]) {
+  protected syncHiddenField(mappedInputValue:string|string[]):void {
     const input = this.syncedInput?.nativeElement;
-    if (input) {
-      input.value = Array.isArray(mappedInputValue) ? mappedInputValue.join(',') : mappedInputValue;
-      const event = new Event('change');
-      input.dispatchEvent(event);
+    if (!input) {
+      return;
     }
+
+    const newValue = Array.isArray(mappedInputValue) ? mappedInputValue.join(',') : mappedInputValue;
+    // Don't fire a change event if the value is the same
+    if (input.value === newValue) {
+      return;
+    }
+
+    input.value = newValue;
   }
 
   public addNewObjectFn(searchTerm:string):unknown {

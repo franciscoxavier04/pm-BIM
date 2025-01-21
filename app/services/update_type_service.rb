@@ -42,19 +42,35 @@ class UpdateTypeService < BaseTypeService
 
   def set_params_and_validate(params)
     # Set patterns includes a data validation before assigning the value to the attribute.
-    # A failure should return a failure.
-    set_patterns(params) if params[:patterns].present?
-    return [false, type.errors] if type.errors.any?
+    # A validation failure should return a service call failure.
+    if params[:patterns].present?
+      validate_enterprise_action(params[:patterns])
+      set_patterns(params[:patterns])
+      return [false, type.errors] if type.errors.any?
+    end
 
     super
   end
 
-  def set_patterns(params)
+  def validate_enterprise_action(patterns)
+    change_from_manual_to_generated = !type.patterns.subject&.enabled? && patterns.dig(:subject, :enabled)
+    action = :work_package_subject_generation
+
+    if change_from_manual_to_generated && !EnterpriseToken.allows_to?(action)
+      type.errors.add(:patterns, :error_enterprise_only, action: action.to_s.titleize)
+    end
+  end
+
+  def set_patterns(patterns)
     Types::Patterns::Collection
-      .build(patterns: params[:patterns])
+      .build(patterns:)
       .either(
         ->(collection) { type.patterns = collection },
-        ->(result) { type.errors.add(:patterns, result.errors(full: true).messages.join(", ")) }
+        ->(result) do
+          result.errors(full: true).messages.each do |message|
+            type.errors.add(:patterns, message.text)
+          end
+        end
       )
   end
 end

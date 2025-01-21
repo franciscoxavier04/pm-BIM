@@ -640,6 +640,7 @@ vi:
         title: "Thiếu quy trình làm việc cho việc chia sẻ gói công việc"
         message: "Không có quy trình làm việc nào được cấu hình cho vai trò 'Biên tập viên gói công việc'. Không có quy trình làm việc, người được chia sẻ không thể thay đổi trạng thái của gói công việc. Các quy trình làm việc có thể được sao chép. Chọn một loại nguồn (ví dụ: 'Nhiệm vụ') và vai trò nguồn (ví dụ: 'Thành viên'). Sau đó chọn các loại mục tiêu. Để bắt đầu, bạn có thể chọn tất cả các loại làm mục tiêu. Cuối cùng, chọn vai trò 'Biên tập viên gói công việc' làm mục tiêu và nhấp vào 'Sao chép'. Sau khi đã tạo ra các mặc định như vậy, tinh chỉnh các quy trình làm việc như bạn làm với mọi vai trò khác."
         link_message: "Cấu hình các quy trình làm việc trong quản trị."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:

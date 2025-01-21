@@ -624,11 +624,11 @@ ru:
       date_alerts:
         milestone_date: "Дата вехи"
         overdue: "Просрочено"
-        overdue_since: "на %{difference_in_days}"
-        property_today: "сегодня"
-        property_is: "находится в %{difference_in_days}"
-        property_was: "была %{difference_in_days} назад"
-        property_is_deleted: "удалено"
+        overdue_since: "с %{difference_in_days}."
+        property_today: "сегодня."
+        property_is: "в %{difference_in_days}."
+        property_was: "было %{difference_in_days} назад."
+        property_is_deleted: "удалено."
         upsale:
           title: "Дата оповещения"
           description: "С датой оповещения вы будете получать уведомления о предстоящих датах начала или окончания, чтобы никогда не пропустить или не забыть важный сроки."
