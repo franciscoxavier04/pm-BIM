@@ -38,7 +38,7 @@ module Components
     def is_visible(visible)
       if visible
         within modal_container do
-          expect(page).to have_text(I18n.t("button_log_time"))
+          expect(page).to have_button(I18n.t("button_log_time"))
         end
       else
         expect(page).to have_no_css "dialog#time-entry-dialog"
