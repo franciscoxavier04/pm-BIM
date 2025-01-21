@@ -68,6 +68,16 @@ description:
     documentation: 'https://www.openproject.org/docs'
     apiDocumentation: 'https://www.openproject.org/docs/api'
     shortDescription: 'OpenProject is a web-based project management software'
+    screenshots:
+      - 'screenshots/opencode_openproject_file_storages.png'
+      - 'screenshots/opencode_openproject_gantt_chart.png'
+      - 'screenshots/opencode_openproject_gitlab-integration.png'
+      - 'screenshots/opencode_openproject_homepage.png'
+      - 'screenshots/opencode_openproject_meetings.png'
+      - 'screenshots/opencode_openproject_notifications_wp_reminder.png'
+      - 'screenshots/opencode_openproject_sharepoint_integration_details.png'
+      - 'screenshots/opencode_openproject_teamplanner.png'
+      - 'screenshots/opencode_openproject_work_package_detailed_view.png'
     features:
       - Project planning
       - Task management
@@ -111,6 +121,16 @@ description:
     documentation: 'https://www.openproject.org/de/docs/'
     apiDocumentation: 'https://www.openproject.org/de/docs/api'
     shortDescription: 'OpenProject ist die führende Open Source Projektmanagement-Software'
+    screenshots:
+      - 'screenshots/opencode_openproject_file_storages.png'
+      - 'screenshots/opencode_openproject_gantt_chart.png'
+      - 'screenshots/opencode_openproject_gitlab-integration.png'
+      - 'screenshots/opencode_openproject_homepage.png'
+      - 'screenshots/opencode_openproject_meetings.png'
+      - 'screenshots/opencode_openproject_notifications_wp_reminder.png'
+      - 'screenshots/opencode_openproject_sharepoint_integration_details.png'
+      - 'screenshots/opencode_openproject_teamplanner.png'
+      - 'screenshots/opencode_openproject_work_package_detailed_view.png'
     features:
       - Projektplanung
       - Aufgabenverwaltung
