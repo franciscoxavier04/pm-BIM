@@ -43,6 +43,8 @@ module TimeEntries
                                      label: TimeEntry.human_attribute_name(:work_package),
                                      required: true,
                                      autocomplete_options: {
+                                       defaultData: false,
+                                       component: "opce-time-entries-work-package-autocompleter",
                                        hiddenFieldAction: "change->time-entry#workPackageChanged",
                                        focusDirectly: false,
                                        append_to: "#time-entry-dialog",
