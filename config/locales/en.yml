@@ -2751,6 +2751,7 @@ en:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Delete relation"
+  label_relation_edit: "Edit relation"
   label_relation_new: "New relation"
   label_release_notes: "Release notes"
   label_remaining_work: "Remaining work"

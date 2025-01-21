@@ -14,7 +14,7 @@ flex_layout do |flex|
                                 ml: 2)
 
           if should_render_edit_option?
-            menu.with_item(label: "Edit relation",
+            menu.with_item(label: I18n.t(:label_relation_edit),
                            href: edit_path,
                            test_selector: edit_button_test_selector,
                            content_arguments: {
@@ -24,7 +24,7 @@ flex_layout do |flex|
             end
           end
 
-          menu.with_item(label: "Delete relation",
+          menu.with_item(label: I18n.t(:label_relation_delete),
                          scheme: :danger,
                          href: destroy_path,
                          form_arguments: {
