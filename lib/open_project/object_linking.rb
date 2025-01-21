@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -134,7 +136,29 @@ module OpenProject
       end.html_safe
     end
 
+    def primer_link_to_user(user, options = {})
+      options[:href] ||= user_path(user)
+      options[:target] ||= "_blank"
+      options[:underline] ||= false
+
+      options = add_hover_card_options(user, options)
+
+      render Primer::Beta::Link.new(**options) do
+        user.name
+      end
+    end
+
     private
+
+    def add_hover_card_options(user, options)
+      if options.delete(:hover_card) { true }
+        options[:classes] = [options[:classes], "op-hover-card--preview-trigger"].compact.join(" ")
+        options[:data] ||= {}
+        options[:data][:hover_card_url] = hover_card_user_path(user)
+      end
+
+      options
+    end
 
     def project_link_name(project, show_icon)
       if show_icon && User.current.member_of?(project)
