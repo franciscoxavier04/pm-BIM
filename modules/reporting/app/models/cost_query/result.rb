@@ -65,7 +65,7 @@ class CostQuery::Result < Report::Result
       start = start_timestamp
       return nil if start.nil?
 
-      start + self["units"].to_i.hours
+      start + self["units"].to_f.hours
     end
 
     private

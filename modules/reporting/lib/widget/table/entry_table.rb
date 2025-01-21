@@ -141,7 +141,7 @@ class Widget::Table::EntryTable < Widget::Table
         rows << (content_tag(:tr) do
           concat body_column_field(:spent_on, result)
           if with_times_column?
-            concat content_tag :td, spent_on_time_representation(result.start_timestamp, result["units"].to_i),
+            concat content_tag :td, spent_on_time_representation(result.start_timestamp, result["units"].to_f),
                                class: "start_time right",
                                "raw-data": result.start_timestamp.to_s
           end
