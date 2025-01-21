@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,26 +28,37 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class CustomFields::Inputs::Base::Autocomplete::SingleValueInput < CustomFields::Inputs::Base::Input
-  def input_attributes
-    base_input_attributes.merge(
-      autocomplete_options:,
-      wrapper_data_attributes: {
-        "qa-field-name": qa_field_name
-      }
-    )
-  end
+module CustomFields
+  module Inputs
+    module VersionSelect
+      protected
 
-  def autocomplete_options
-    {
-      multiple: false,
-      decorated: decorated?,
-      focusDirectly: false,
-      append_to:
-    }
-  end
+      def version_input_attributes
+        input_attributes.deep_merge(additional_attributes)
+      end
 
-  def decorated?
-    raise NotImplementedError
+      def additional_attributes
+        if @object.blank? || (@object.respond_to?(:project) && @object.project.blank?)
+          {
+            autocomplete_options: {
+              disabled: true,
+              placeholder: I18n.t("custom_fields.placeholder_version_select")
+            }
+          }
+        else
+          {}
+        end
+      end
+
+      def assignable_versions(only_open:)
+        if @object.is_a?(Project)
+          @object.assignable_versions(only_open: only_open)
+        elsif @object.respond_to?(:project) && @object.project.present?
+          @object.project.assignable_versions(only_open: only_open)
+        else
+          Version.none
+        end
+      end
+    end
   end
 end
