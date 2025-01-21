@@ -96,7 +96,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def lag_as_text(lag)
-    "#{I18n.t('work_package_relations_tab.lag.title')}: #{I18n.t('datetime.distance_in_words.x_days', count: lag)}"
+    "#{I18n.t('work_package_relations_tab.lag.subject')}: #{I18n.t('datetime.distance_in_words.x_days', count: lag)}"
   end
 
   def action_menu_test_selector
