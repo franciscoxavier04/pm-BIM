@@ -64,7 +64,7 @@ class Meeting::TimeGroup < ApplicationForm
         label: Meeting.human_attribute_name(:duration),
         visually_hide_label: false,
         required: true,
-        trailing_visual: { text: { text: I18n.t("datetime.units.hour.other") } },
+        caption: I18n.t("text_in_hours"),
         data: {
           controller: "chronic-duration",
           application_target: "dynamic"
@@ -81,7 +81,7 @@ class Meeting::TimeGroup < ApplicationForm
     @initial_date = meeting.start_date.presence || format_time_as_date(meeting.start_time, format: "%Y-%m-%d")
 
     duration = duration_value(meeting)
-    @duration = duration.nil? ? "" : duration
+    @duration = duration.nil? ? "" : ChronicDuration.output(duration * 3600, format: :hours_only)
   end
 
   private
