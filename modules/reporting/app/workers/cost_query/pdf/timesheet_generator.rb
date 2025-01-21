@@ -5,6 +5,7 @@ class CostQuery::PDF::TimesheetGenerator
   include WorkPackage::PDFExport::Export::Cover
   include WorkPackage::PDFExport::Export::Page
   include WorkPackage::PDFExport::Export::Style
+  include ReportingHelper
 
   H1_FONT_SIZE = 26
   H1_MARGIN_BOTTOM = 2
@@ -106,11 +107,14 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def all_entries
-    @all_entries ||= query
-                       .each_direct_result
-                       .map(&:itself)
-                       .filter { |r| r.fields["type"] == "TimeEntry" }
-                       .map { |r| TimeEntry.find(r.fields["id"]) }
+    @all_entries ||= begin
+      ids = query
+              .each_direct_result
+              .filter { |r| r.fields["type"] == "TimeEntry" }
+              .flat_map { |r| r.fields["id"] }
+
+      TimeEntry.where(id: ids).includes(%i[user activity work_package project])
+    end
   end
 
   def build_table_rows(entries)
@@ -348,26 +352,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def format_spent_on_time(entry)
-    start_timestamp = entry.start_timestamp
-    return "" if start_timestamp.nil?
-
-    result = format_time(start_timestamp, include_date: false)
-    end_timestamp = entry.end_timestamp
-    return result if end_timestamp.nil?
-
-    days_between_suffix = format_days_between(start_timestamp, end_timestamp)
-    "#{result} - #{format_time(end_timestamp, include_date: false)}#{days_between_suffix}"
-  end
-
-  def format_days_between(start_timestamp, end_timestamp)
-    days_between = (end_timestamp.to_date - start_timestamp.to_date).to_i
-    if days_between.positive?
-      " (+#{days_formatter.format_value(days_between, nil).delete(' ')})"
-    end
-  end
-
-  def days_formatter
-    @days_formatter ||= WorkPackage::Exports::Formatters::Days.new(nil)
+    spent_on_time_representation(entry.start_timestamp, entry.hours)
   end
 
   def with_times_column?

@@ -286,6 +286,7 @@ ms:
       label: "Label"
       short: "Nama pendek"
       parent: "Ibu bapa"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Cari dalam %{app_title}"
     overwritten_tabs:
@@ -635,6 +636,7 @@ ms:
         title: "Aliran kerja hilang untuk perkongsian pakej kerja"
         message: "Tiada aliran kerja yang dikonfigurasikan untuk peranan 'Pengedit Pakej Kerja'. Tanpa aliran kerja, yang dikongsikan dengan pengguna tidak boleh mengubah status pakej kerja. Aliran kerja boleh disalin. Pilih jenis sumber (cth. 'Tugasan') dan peranan sumber (cth. 'Ahli'). Kemudian pilih jenis sasaran. Untuk bermula, anda boleh memilih semua jenis sebagai sasaran. Akhirnya, pilih peranan 'Pengedit Pakej Kerja' sebagai sasaran dan tekan 'Salin'. Setelah mencipta default, selaraskan aliran kerja sebagaimana anda lakukan untuk peranan lain."
         link_message: "Konfigurasikan aliran kerja dalam pentadbiran."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:

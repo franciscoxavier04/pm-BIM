@@ -625,11 +625,11 @@ pt-PT:
       date_alerts:
         milestone_date: "Data do marco"
         overdue: "Em atraso"
-        overdue_since: "desde %{difference_in_days}"
-        property_today: "é hoje"
-        property_is: "é em %{difference_in_days}"
-        property_was: "há %{difference_in_days} atrás"
-        property_is_deleted: "foi apagado"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Alertas de data"
           description: "Com os alertas de data, receberá uma notificação sobre as próximas datas de início e conclusão, para que não nunca perca ou esqueça prazos importantes. "

@@ -130,6 +130,7 @@ fi:
   label_recurring_meeting_more_past: "There are %{count} more past meetings."
   label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
   label_recurring_meeting_show_more: "Show more"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
   label_my_meetings: "My meetings"

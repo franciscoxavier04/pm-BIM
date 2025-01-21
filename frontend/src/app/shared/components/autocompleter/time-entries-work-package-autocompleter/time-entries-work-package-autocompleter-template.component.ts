@@ -26,44 +26,30 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+import { ChangeDetectionStrategy, Component, Injector, Input, TemplateRef, ViewChild } from '@angular/core';
 import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Injector,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
-import { WorkPackageAutocompleterComponent } from 'core-app/shared/components/autocompleter/work-package-autocompleter/wp-autocompleter.component';
-
-export type TimeEntryWorkPackageAutocompleterMode = 'all'|'recent';
+  IAutocompleterTemplateComponent,
+  OpAutocompleterComponent,
+} from 'core-app/shared/components/autocompleter/op-autocompleter/op-autocompleter.component';
+import {
+  TimeEntriesWorkPackageAutocompleterComponent,
+} from 'core-app/shared/components/autocompleter/time-entries-work-package-autocompleter/time-entries-work-package-autocompleter.component';
 
 @Component({
-  templateUrl: './te-work-package-autocompleter.component.html',
-  styleUrls: [
-    './te-work-package-autocompleter.component.sass',
-  ],
-  selector: 'te-work-package-autocompleter',
-  encapsulation: ViewEncapsulation.None,
+  templateUrl: './time-entries-work-package-autocompleter-template.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimeEntryWorkPackageAutocompleterComponent extends WorkPackageAutocompleterComponent implements AfterViewInit {
-  @Output() modeSwitch = new EventEmitter<TimeEntryWorkPackageAutocompleterMode>();
+export class TimeEntriesWorkPackageAutocompleterTemplateComponent implements IAutocompleterTemplateComponent {
+  @Input() public mode:string|undefined;
+  @Input() public isOpenedInModal:boolean = false;
+  @Input() public hoverCards:boolean = true;
+
+  @ViewChild('headerTemplate') headerTemplate:TemplateRef<Element>;
+
+  autocompleter:TimeEntriesWorkPackageAutocompleterComponent = this.injector.get(OpAutocompleterComponent) as TimeEntriesWorkPackageAutocompleterComponent;
 
   constructor(
     readonly injector:Injector,
   ) {
-    super(injector);
-
-    this.text.all = this.I18n.t('js.label_all');
-    this.text.recent = this.I18n.t('js.label_recent');
-  }
-
-  public mode:TimeEntryWorkPackageAutocompleterMode = 'all';
-
-  public setMode(value:TimeEntryWorkPackageAutocompleterMode) {
-    if (value !== this.mode) {
-      this.modeSwitch.emit(value);
-    }
-    this.mode = value;
   }
 }

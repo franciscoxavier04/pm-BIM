@@ -625,11 +625,11 @@ uk:
       date_alerts:
         milestone_date: "Дата віхи"
         overdue: "Прострочено"
-        overdue_since: "на %{difference_in_days}"
-        property_today: "сьогодні"
-        property_is: "через %{difference_in_days}"
-        property_was: "%{difference_in_days} тому"
-        property_is_deleted: "видалено"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Оповіщення про дати"
           description: "Завдяки оповіщенням про дати ви завжди знатимете про заплановані дати початку або завершення, тож ніколи не пропускатимете важливі терміни та не забуватимете про них."

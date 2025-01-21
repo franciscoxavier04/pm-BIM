@@ -625,11 +625,11 @@ fr:
       date_alerts:
         milestone_date: "Date jalon"
         overdue: "En retard"
-        overdue_since: "depuis %{difference_in_days}"
-        property_today: "est aujourd’hui"
-        property_is: "est dans %{difference_in_days}"
-        property_was: "était il y a %{difference_in_days}"
-        property_is_deleted: "est supprimé"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Alarmes"
           description: "Avec les alarmes, vous serez informé(e) à l'approche des dates de début ou de fin vous concernant afin de ne jamais manquer ou oublier une échéance importante."

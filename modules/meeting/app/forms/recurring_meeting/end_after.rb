@@ -30,6 +30,7 @@ class RecurringMeeting::EndAfter < ApplicationForm
   form do |meeting_form|
     meeting_form.select_list(
       name: "end_after",
+      required: true,
       label: I18n.t("activerecord.attributes.recurring_meeting.end_after"),
       data: {
         target_name: "end_after",

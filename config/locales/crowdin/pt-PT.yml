@@ -285,6 +285,7 @@ pt-PT:
       label: "Etiqueta"
       short: "Nome abreviado"
       parent: "Principal"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Pesquisar em %{app_title}"
     overwritten_tabs:
@@ -643,6 +644,7 @@ pt-PT:
         title: "Falta um fluxo de trabalho para a partilha de pacotes de trabalho"
         message: "Nenhum fluxo de trabalho está configurado para a função \"Editor do pacote de trabalho\". Sem um fluxo de trabalho, o utilizador não pode alterar o estado do pacote de trabalho. Os fluxos de trabalho podem ser copiados. Selecione um tipo de fonte (por exemplo, \"Tarefa\") e uma função da fonte (por exemplo, \"Membro\"). Em seguida, selecione os tipos de destino. Para começar, pode selecionar todos os tipos como alvos. Por fim, selecione a função \"Editor do pacote de trabalho\" como destino e prima \"Copiar\". Depois de ter criado as predefinições, ajuste os fluxos de trabalho como faz para todas as outras funções."
         link_message: "Configure os fluxos de trabalho na administração."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:

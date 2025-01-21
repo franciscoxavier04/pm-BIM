@@ -625,11 +625,11 @@ pl:
       date_alerts:
         milestone_date: "Data  kamienia milowego"
         overdue: "Przekroczony termin"
-        overdue_since: "od %{difference_in_days}"
-        property_today: "jest dzisiaj"
-        property_is: "jest za %{difference_in_days}"
-        property_was: "była %{difference_in_days} temu"
-        property_is_deleted: "usunięto"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Alerty dotyczące dat"
           description: "Dzięki alertom dotyczącym dat będziesz otrzymywać powiadomienia o zbliżających się terminach rozpoczęcia lub zakończenia pracy, dzięki czemu nigdy nie przegapisz ani nie zapomnisz ważnego terminu."

@@ -62,9 +62,6 @@ import {
   PlainFormattableEditFieldComponent,
 } from 'core-app/shared/components/fields/edit/field-types/plain-formattable-edit-field.component';
 import {
-  TimeEntryWorkPackageEditFieldComponent,
-} from 'core-app/shared/components/fields/edit/field-types/te-work-package-edit-field.component';
-import {
   CombinedDateEditFieldComponent,
 } from 'core-app/shared/components/fields/edit/field-types/combined-date-edit-field.component';
 import {
@@ -141,7 +138,6 @@ export function initializeCoreEditFields(editFieldService:EditFieldService, sele
       )
       .addSpecificFieldType('Project', ProjectStatusEditFieldComponent, 'status', ['status'])
       .addSpecificFieldType('TimeEntry', PlainFormattableEditFieldComponent, 'comment', ['comment'])
-      .addSpecificFieldType('TimeEntry', TimeEntryWorkPackageEditFieldComponent, 'workPackage', ['WorkPackage'])
       .addSpecificFieldType('TimeEntry', HoursDurationEditFieldComponent, 'hours', ['hours']);
 
     selectAutocompleterRegisterService.register(VersionAutocompleterComponent, 'Version');
