@@ -58,7 +58,6 @@ module TimeEntries
     def set_default_attributes(*)
       set_default_user
       set_default_hours
-      set_default_activity if model.activity.nil?
     end
 
     def set_logged_by
@@ -70,28 +69,6 @@ module TimeEntries
     def set_default_user
       model.change_by_system do
         model.user ||= user
-      end
-    end
-
-    def set_default_activity
-      return unless TimeEntryActivity.default
-
-      if model.project
-        assign_default_project_activity
-      else
-        assign_default_activity
-      end
-    end
-
-    def assign_default_project_activity
-      if TimeEntryActivity.active_in_project(model.project).exists?(id: TimeEntryActivity.default.id)
-        assign_default_activity
-      end
-    end
-
-    def assign_default_activity
-      model.change_by_system do
-        model.activity = TimeEntryActivity.default
       end
     end
 
