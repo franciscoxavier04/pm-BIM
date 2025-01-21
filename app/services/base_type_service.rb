@@ -75,13 +75,12 @@ class BaseTypeService
     # (Regression #28400)
     set_attribute_groups(params) if params[:attribute_groups]
 
-    set_subject_pattern(params) if params[:subject_configuration]
-
     # This should go before `set_scalar_params` call to get the
     # project_ids, custom_field_ids diffs from the type and the params.
     # For determining the active custom fields for the type, it is necessary
     # to know whether the type is a milestone or not.
     set_milestone_param(params) unless params[:is_milestone].nil?
+
     set_active_custom_fields
 
     set_active_custom_fields_for_project_ids(params[:project_ids]) if params[:project_ids].present?
@@ -105,12 +104,6 @@ class BaseTypeService
     else
       type.attribute_groups = parse_attribute_groups_params(params)
     end
-  end
-
-  def set_subject_pattern(params)
-    type.patterns = type.patterns.update_pattern(:subject,
-                                                 blueprint: params[:subject_pattern],
-                                                 enabled: params[:subject_configuration] == "auto").value!
   end
 
   def parse_attribute_groups_params(params)

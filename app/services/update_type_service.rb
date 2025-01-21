@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,5 +36,25 @@ class UpdateTypeService < BaseTypeService
     end
 
     super(params, {})
+  end
+
+  private
+
+  def set_params_and_validate(params)
+    # Set patterns includes a data validation before assigning the value to the attribute.
+    # A failure should return a failure.
+    set_patterns(params) if params[:patterns].present?
+    return [false, type.errors] if type.errors.any?
+
+    super
+  end
+
+  def set_patterns(params)
+    Types::Patterns::Collection
+      .build(patterns: params[:patterns])
+      .either(
+        ->(collection) { type.patterns = collection },
+        ->(result) { type.errors.add(:patterns, result.errors(full: true).messages.join(", ")) }
+      )
   end
 end

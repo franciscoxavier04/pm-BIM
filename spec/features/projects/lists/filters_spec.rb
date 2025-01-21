@@ -576,6 +576,25 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
         projects_page.expect_projects_not_listed(project)
       end
     end
+
+    describe "user cf filter" do
+      let(:some_user) { create(:user, member_with_roles: { project => [developer] }) }
+      let!(:user_cf) do
+        create(:user_project_custom_field,
+               name: "A user CF",
+               projects: [project, development_project]).tap do |cf|
+          project.update(custom_field_values: { cf.id => [some_user.id] })
+        end
+      end
+
+      it "filters for the project that has the corresponding value" do
+        load_and_open_filters admin
+
+        projects_page.set_filter(user_cf.column_name, user_cf.name, "is (OR)", [some_user.name])
+
+        projects_page.expect_projects_listed(project)
+      end
+    end
   end
 
   describe "blocked filter" do

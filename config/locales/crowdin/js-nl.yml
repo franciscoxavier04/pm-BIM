@@ -625,11 +625,11 @@ nl:
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "Te laat"
-        overdue_since: "sinds %{difference_in_days}"
-        property_today: "is vandaag"
-        property_is: "is in %{difference_in_days}"
-        property_was: "was %{difference_in_days} geleden"
-        property_is_deleted: "Is verwijderd"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Date alerts"
           description: "Met datummeldingen wordt u op de hoogte gebracht van de start- of einddatum, zodat u nooit een belangrijke deadline mist of vergeet."

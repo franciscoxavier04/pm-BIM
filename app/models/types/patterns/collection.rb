@@ -58,10 +58,6 @@ module Types
         patterns.select { |_, pattern| pattern.enabled? }
       end
 
-      def update_pattern(name, blueprint:, enabled:)
-        self.class.build(patterns: patterns.to_h.merge(name => { blueprint:, enabled: }))
-      end
-
       def to_h
         patterns.stringify_keys.transform_values(&:to_h)
       end

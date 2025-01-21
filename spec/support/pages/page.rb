@@ -28,6 +28,7 @@
 
 require_relative "../toasts/expectations"
 require_relative "../flash/expectations"
+require_relative "../capybara/wait_helpers"
 
 module Pages
   class Page
@@ -38,6 +39,7 @@ module Pages
     include OpenProject::StaticRouting::UrlHelpers
     include Toasts::Expectations
     include Flash::Expectations
+    include WaitHelpers
 
     def current_page?
       URI.parse(current_url).path == path

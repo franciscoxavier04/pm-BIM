@@ -37,34 +37,22 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
 
   let(:type) { create(:type) }
 
-  before do
-    allow(EnterpriseToken).to receive(:active?).and_return(true)
-  end
+  context "when enterprise edition is activated", with_ee: %i[work_package_subject_generation] do
+    it "shows no enterprise banner" do
+      render_component
 
-  it "shows no enterprise banner" do
-    render_component
-
-    expect(page).not_to have_test_selector("op-ee-banner-automatic-subject-generation")
-  end
-
-  it "enables mode selectors", :aggregate_failures do
-    render_component
-
-    expect(page.find("input[type=radio][value=auto]")).not_to be_disabled
-    expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
-  end
-
-  it "enables the submit button" do
-    render_component
-
-    expect(page.find("button[type=submit]")).not_to be_disabled
-  end
-
-  context "when enterprise edition is not activated" do
-    before do
-      allow(EnterpriseToken).to receive(:active?).and_return(false)
+      expect(page).not_to have_test_selector("op-ee-banner-automatic-subject-generation")
     end
 
+    it "enables mode selectors", :aggregate_failures do
+      render_component
+
+      expect(page.find("input[type=radio][value=generated]")).not_to be_disabled
+      expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
+    end
+  end
+
+  context "when enterprise edition is not activated", with_ee: %i[] do
     it "shows the enterprise banner" do
       render_component
 
@@ -74,14 +62,8 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
     it "disables only automatic mode selector", :aggregate_failures do
       render_component
 
-      expect(page.find("input[type=radio][value=auto]")).to be_disabled
+      expect(page.find("input[type=radio][value=generated]")).to be_disabled
       expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
-    end
-
-    it "disables the submit button" do
-      render_component
-
-      expect(page.find("button[type=submit]")).to be_disabled
     end
 
     context "and when the subject is already automatically generated" do
@@ -96,14 +78,8 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
       it "enables mode selectors", :aggregate_failures do
         render_component
 
-        expect(page.find("input[type=radio][value=auto]")).not_to be_disabled
+        expect(page.find("input[type=radio][value=generated]")).not_to be_disabled
         expect(page.find("input[type=radio][value=manual]")).not_to be_disabled
-      end
-
-      it "enables the submit button" do
-        render_component
-
-        expect(page.find("button[type=submit]")).not_to be_disabled
       end
     end
   end

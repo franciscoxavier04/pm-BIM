@@ -83,7 +83,7 @@ gem "htmldiff"
 gem "stringex", "~> 2.8.5"
 
 # CommonMark markdown parser with GFM extension
-gem "commonmarker", "~> 1.1.3"
+gem "commonmarker", "~> 2.0.2"
 
 # HTML pipeline for transformations on text formatter output
 # such as sanitization or additional features
@@ -408,4 +408,4 @@ end
 
 gem "openproject-octicons", "~>19.20.0 "
 gem "openproject-octicons_helper", "~>19.20.0 "
-gem "openproject-primer_view_components", "~>0.52.0"
+gem "openproject-primer_view_components", "~>0.52.1"

@@ -463,7 +463,7 @@ module Settings
       },
       enterprise_plan: {
         description: "Default EE selected plan",
-        default: "enterprise-on-premises---euro---1-year",
+        default: "enterprise-on-premises---basic---euro---1-year",
         writable: false
       },
       feeds_enabled: {
@@ -951,6 +951,13 @@ module Settings
       },
       seed_ldap: {
         description: "Provide an LDAP connection and sync settings through ENV",
+        writable: false,
+        default: nil,
+        format: :hash,
+        string_values: true
+      },
+      seed_design: {
+        description: "Seed enterprise-edition theme colors and logos through ENV",
         writable: false,
         default: nil,
         format: :hash,

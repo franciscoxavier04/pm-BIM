@@ -624,11 +624,11 @@ ro:
       date_alerts:
         milestone_date: "Dată etapă"
         overdue: "Restanțe"
-        overdue_since: "din %{difference_in_days}"
-        property_today: "este astăzi"
-        property_is: "este în %{difference_in_days}"
-        property_was: "a fost %{difference_in_days} acum"
-        property_is_deleted: "este șters"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Alerte date"
           description: "Cu alertele de date, veți fi notificat cu privire la următoarele date de început sau de sfârșit, astfel încât să nu ratați sau să uitați niciodată un termen limită important."
