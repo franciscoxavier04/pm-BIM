@@ -49,6 +49,13 @@ module OpenProject
                         only_path: options.delete(:only_path) { true })
         options[:title] ||= I18n.t(:label_user_named, name:)
 
+        if options.delete(:hover_card) { true }
+          options[:data] ||= {}
+          options[:data][:hover_card_url] = hover_card_user_path(user)
+
+          options[:class] = [options[:class], "op-hover-card--preview-trigger"].compact.join(" ")
+        end
+
         link_to(name, href, options)
       else
         h(user.to_s)
