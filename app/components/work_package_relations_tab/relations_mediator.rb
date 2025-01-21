@@ -71,6 +71,10 @@ class WorkPackageRelationsTab::RelationsMediator
     visible_relations.any? || invisible_relations.any? || visible_children.any? || invisible_children.any?
   end
 
+  def all_relations_count
+    visible_relations.count + invisible_relations.count + visible_children.count + invisible_children.count
+  end
+
   def any_children?
     visible_children.any? || invisible_children.any?
   end

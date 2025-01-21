@@ -692,7 +692,7 @@ Redmine::MenuManager.map :work_package_split_view do |menu|
             { tab: :relations },
             skip_permissions_check: true,
             badge: ->(work_package:, **) {
-              work_package.relations.visible.count + work_package.children.visible.count
+              WorkPackageRelationsTab::RelationsMediator.new(work_package: work_package).all_relations_count
             },
             caption: :"js.work_packages.tabs.relations"
   menu.push :watchers,
