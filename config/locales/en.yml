@@ -745,7 +745,6 @@ en:
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
     lag:
-      subject: "Lag"
       title: "Lag"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
