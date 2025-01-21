@@ -1,0 +1,139 @@
+# This repository adheres to the publiccode.yml standard by including this
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+name: OpenProject
+applicationSuite: openDesk
+url: 'https://github.com/opf/openproject'
+roadmap: 'https://www.openproject.org/roadmap'
+releaseDate: '2025-01-21'
+softwareVersion: '15.1.1'
+developmentStatus: stable
+softwareType: standalone/web
+platforms:
+  - web
+usedBy:
+  - ZenDiS GmbH
+  - Stadt Köln
+  - Stadt Stuttgart
+  - Landtag Brandenburg
+  - Europäische Kommission
+  - Deutsche Bahn
+  - FITKO
+  - Stadt Chemnitz
+categories:
+  - agile-project-management
+  - budgeting
+  - enterprise-project-management
+  - help-desk
+  - knowledge-management
+  - project-collaboration
+  - project-management
+  - task-management
+  - time-management
+  - time-tracking
+  - workflow-management
+dependsOn:
+  open:
+    - name: PostgreSQL
+      versionMin: '13'
+maintenance:
+  type: contract
+  contacts:
+    - name: OpenProject GmbH
+      email: sales@openproject.com
+      phone: '+4928877707'
+legal:
+  license: LGPL-3.0-or-later
+  mainCopyrightOwner: OpenProject GmbH
+  repoOwner: OpenProject GmbH
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - de
+    - fr
+    - co
+    - es
+    - mm
+    - mn
+    - nl
+    - at
+    - gr
+    - se
+    - us
+description:
+  en:
+    localisedName: OpenProject
+    documentation: 'https://www.openproject.org/docs'
+    apiDocumentation: 'https://www.openproject.org/docs/api'
+    shortDescription: 'OpenProject is a web-based project management software'
+    features:
+      - Project planning
+      - Task management
+      - Agile workflows
+      - Meeting management
+      - Time and Cost tracking
+      - Collaboration
+      - Gantt charts
+      - Agile boards
+      - Knowledge management
+      - Detailed reporting
+      - Customizable workflows
+      - Custom fields for projects, tasks, and more
+      - Baseline Comparison
+      - Integrations into Nextcloud and OneDrive/SharePoint
+      - Integrations into GitHub and GitLab
+    longDescription: >
+      OpenProject is the project management module of
+      [www.opendesk.eu](http://www.opendesk.eu/), an integrated office and
+      collaboration suite for the public sector.
+
+
+      OpenProject supports project planning, task management, Agile workflows,
+      time tracking, and collaboration. Key features like Gantt charts, Scrum
+      and Kanban boards, and detailed reporting make it suitable for a variety
+      of projects and industries.
+
+
+      OpenProject offers both cloud-based and self-hosted deployment options,
+      giving organizations flexibility in managing data security and operations.
+
+
+      The software complies with BSI IT Grundschutz standards for accessibility
+      and security, making it reliable for industries with strict requirements.
+
+
+      Its open-source nature ensures transparency and benefits from an active
+      community contributing to continuous improvement.
+  de:
+    localisedName: OpenProject
+    documentation: 'https://www.openproject.org/de/docs/'
+    apiDocumentation: 'https://www.openproject.org/de/docs/api'
+    shortDescription: 'OpenProject ist die führende Open Source Projektmanagement-Software'
+    features:
+      - Projektplanung
+      - Aufgabenverwaltung
+      - Agile Workflows
+      - Besprechungsmanagement
+      - Zeit- und Kostenverfolgung
+      - Online-Zusammenarbeit
+      - Gantt-Diagramme
+      - Agile Boards
+      - Wissensmanagement
+      - Detaillierte Berichterstattung
+      - Anpassbare Workflows
+      - Selbstdefinierte Felder für Projekte, Aufgaben und mehr
+      - Grundlinie (Planungsvergleich)
+      - Integration in Nextcloud sowie in OneDrive/SharePoint
+      - Integration in GitHub und in GitLab
+    longDescription: >
+      OpenProject ist das Projektmanagement-Modul von [www.opendesk.eu](http://www.opendesk.eu), einer integrierten Office- und Collaboration-Suite für den öffentlichen Sektor.
+
+      OpenProject unterstützt Ihre Projektplanung, Aufgabenmanagement, agile Workflows, Zeiterfassung und teamübergreifende Zusammenarbeit. Dank wichtiger Funktionen wie Gantt-Diagrammen, Scrum- und Kanban-Boards sowie detaillierter Berichterstellung eignet sich das Tool für eine Vielzahl von Projekten und Branchen.
+
+      OpenProject bietet sowohl Cloud-basierte als auch selbst gehostete Bereitstellungsoptionen, wodurch Organisationen flexibel bei der Handhabung von Datensicherheit und -betrieb sind.
+
+      Die Software entspricht den BSI-IT-Grundschutz-Standards für Barrierefreiheit und Sicherheit und ist somit auch für Branchen mit besonders strengen Anforderungen geeignet.
+
+      Die Tatsache, dass es sich um eine Open Source Software handelt, sorgt für Transparenz und bietet den Vorteil einer aktiven Gemeinschaft, welche zur kontinuierlichen Produktverbesserung beiträgt.
