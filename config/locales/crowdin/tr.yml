@@ -2627,6 +2627,7 @@ tr:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "İlişkiyi sil"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Yeni ilişki"
   label_release_notes: "Sürüm notları"
   label_remaining_work: "Kalan çalışma"

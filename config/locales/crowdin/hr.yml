@@ -2665,6 +2665,7 @@ hr:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Izbriši relaciju"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nova relacija"
   label_release_notes: "Napomene uz izdavanje"
   label_remaining_work: "Remaining work"

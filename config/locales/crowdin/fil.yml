@@ -2628,6 +2628,7 @@ fil:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Burahin ang relasyon"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Bagong relasyon"
   label_release_notes: "Paglabas ng mga talaan"
   label_remaining_work: "Remaining work"

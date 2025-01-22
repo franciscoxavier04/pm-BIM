@@ -2776,6 +2776,7 @@ ar:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "حذف علاقة"
+  label_relation_edit: "Edit relation"
   label_relation_new: "علاقة جديدة"
   label_release_notes: "ملاحظات الإصدار"
   label_remaining_work: "Remaining work"

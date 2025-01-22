@@ -2625,6 +2625,7 @@ ca:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Suprimir relació"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nova Relació"
   label_release_notes: "Notes de llançament"
   label_remaining_work: "Treball restant"

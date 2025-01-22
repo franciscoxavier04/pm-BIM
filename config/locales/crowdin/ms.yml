@@ -2589,6 +2589,7 @@ ms:
   label_relation: "Tindakan"
   label_relation_actions: "Tindakan perhubungan"
   label_relation_delete: "Hubungan terpadam"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Hubungan baharu"
   label_release_notes: "Nota keluaran"
   label_remaining_work: "Kerja berbaki"

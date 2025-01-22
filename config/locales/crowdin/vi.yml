@@ -2593,6 +2593,7 @@ vi:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Xóa quan hệ"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Quan hệ mới"
   label_release_notes: "Ghi chú phát hành"
   label_remaining_work: "Công việc còn lại"

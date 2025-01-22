@@ -2695,6 +2695,7 @@ uk:
   label_relation: "Зв’язок"
   label_relation_actions: "Дії зі зв’язками"
   label_relation_delete: "Видалити зв'язок"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Новий зв'язок"
   label_release_notes: "Примітки до випуску"
   label_remaining_work: "Залишок роботи"

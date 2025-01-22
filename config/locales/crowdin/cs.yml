@@ -2702,6 +2702,7 @@ cs:
   label_relation: "Vztah"
   label_relation_actions: "akce k Vztahu"
   label_relation_delete: "Odstranit vztah"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nový vztah"
   label_release_notes: "Poznámky k verzi"
   label_remaining_work: "Zbývající práce"

@@ -2624,6 +2624,7 @@ el:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Διαγραφή συσχέτισης"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Νέα συσχέτιση"
   label_release_notes: "Σημειώσεις έκδοσης"
   label_remaining_work: "Remaining work"

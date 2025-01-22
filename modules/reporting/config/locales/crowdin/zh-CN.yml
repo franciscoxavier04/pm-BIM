@@ -93,6 +93,8 @@ zh-CN:
       time: "时间"
     cost_reports:
       title: "您的成本报告 XLS 导出"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "选定的列"

@@ -2587,6 +2587,7 @@ ja:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "関係の削除"
+  label_relation_edit: "Edit relation"
   label_relation_new: "新しい関係"
   label_release_notes: "リリースノート"
   label_remaining_work: "残りの作業"

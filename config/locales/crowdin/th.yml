@@ -2591,6 +2591,7 @@ th:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "ลบความสัมพันธ์"
+  label_relation_edit: "Edit relation"
   label_relation_new: "ความสัมพันธ์ใหม่"
   label_release_notes: "Release notes"
   label_remaining_work: "Remaining work"

@@ -2627,6 +2627,7 @@ sv:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Ta bort relation"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Ny relation"
   label_release_notes: "Versionsnoteringar"
   label_remaining_work: "Remaining work"

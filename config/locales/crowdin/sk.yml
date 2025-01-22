@@ -2702,6 +2702,7 @@ sk:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Odstrániť vzťah"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nový vzťah"
   label_release_notes: "Zoznam zmien"
   label_remaining_work: "Remaining work"

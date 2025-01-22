@@ -2628,6 +2628,7 @@ et:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Kustuta seos"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Uus seos"
   label_release_notes: "Release notes"
   label_remaining_work: "Remaining work"

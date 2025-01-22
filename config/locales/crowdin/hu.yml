@@ -2626,6 +2626,7 @@ hu:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Kapcsolat törlése"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Új kapcsolat"
   label_release_notes: "Kiadási megjegyzések"
   label_remaining_work: "Fennmaradó órák"

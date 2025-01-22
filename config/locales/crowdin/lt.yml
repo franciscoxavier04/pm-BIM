@@ -2699,6 +2699,7 @@ lt:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Pašalinti ryšį"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Naujas ryšys"
   label_release_notes: "Išleidimo informacija"
   label_remaining_work: "Liko darbo"

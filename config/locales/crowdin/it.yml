@@ -2624,6 +2624,7 @@ it:
   label_relation: "Relazione"
   label_relation_actions: "Azioni di relazione"
   label_relation_delete: "Eliminare la relazione"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nuova relazione"
   label_release_notes: "Note di rilascio"
   label_remaining_work: "Lavoro residuo"

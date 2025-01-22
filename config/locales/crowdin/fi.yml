@@ -2628,6 +2628,7 @@ fi:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Poista riippuvuus"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Uusi riippuvuus"
   label_release_notes: "Julkaisutiedot"
   label_remaining_work: "Remaining work"

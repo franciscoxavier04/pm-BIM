@@ -2699,6 +2699,7 @@ pl:
   label_relation: "Relacja"
   label_relation_actions: "Działania relacji"
   label_relation_delete: "Usuń powiązanie"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nowe powiązanie"
   label_release_notes: "Dziennik zamian"
   label_remaining_work: "Pozostała praca"

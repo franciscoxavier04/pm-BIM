@@ -2665,6 +2665,7 @@ ro:
   label_relation: "Relație"
   label_relation_actions: "Acțiuni relație"
   label_relation_delete: "Ștergere relație"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Relație nouă"
   label_release_notes: "Note privind lansarea noii versiuni"
   label_remaining_work: "Muncă rămasă"

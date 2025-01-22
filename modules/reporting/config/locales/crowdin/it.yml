@@ -93,6 +93,8 @@ it:
       time: "Ora"
     cost_reports:
       title: "Esportazione XLS dei report sui costi"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "Colonne selezionate"

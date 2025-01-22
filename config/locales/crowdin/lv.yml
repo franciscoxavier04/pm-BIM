@@ -2665,6 +2665,7 @@ lv:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Delete relation"
+  label_relation_edit: "Edit relation"
   label_relation_new: "New relation"
   label_release_notes: "Informācija par laidienu"
   label_remaining_work: "Atlikušie darbi"

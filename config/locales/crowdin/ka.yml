@@ -2628,6 +2628,7 @@ ka:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Delete relation"
+  label_relation_edit: "Edit relation"
   label_relation_new: "ახალი ურთიერთობა"
   label_release_notes: "გამოშვების შენიშვნები"
   label_remaining_work: "დარჩენილი სამუშაო"

@@ -2628,6 +2628,7 @@ si:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "සම්බන්ධතාවය මකන්න"
+  label_relation_edit: "Edit relation"
   label_relation_new: "නව සම්බන්ධතාවය"
   label_release_notes: "සටහන් නිකුත් කිරීම"
   label_remaining_work: "Remaining work"

@@ -2590,6 +2590,7 @@ ko:
   label_relation: "관계"
   label_relation_actions: "관계 작업"
   label_relation_delete: "관계 삭제"
+  label_relation_edit: "Edit relation"
   label_relation_new: "새 관계"
   label_release_notes: "릴리스 노트"
   label_remaining_work: "남은 작업"

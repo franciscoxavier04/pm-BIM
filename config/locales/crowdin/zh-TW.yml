@@ -2589,6 +2589,7 @@ zh-TW:
   label_relation: "關聯"
   label_relation_actions: "關聯動作"
   label_relation_delete: "刪除關聯"
+  label_relation_edit: "Edit relation"
   label_relation_new: "新增關聯"
   label_release_notes: "發行說明"
   label_remaining_work: "剩餘工作"

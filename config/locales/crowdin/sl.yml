@@ -2700,6 +2700,7 @@ sl:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Izbriši povezavo"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nova povezava"
   label_release_notes: "Opombe ob izdaji"
   label_remaining_work: "Remaining work"

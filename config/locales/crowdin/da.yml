@@ -2626,6 +2626,7 @@ da:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Slet forbindelse"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Ny forbindelse"
   label_release_notes: "Udgivelsesnoter"
   label_remaining_work: "Remaining work"

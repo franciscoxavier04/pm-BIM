@@ -2628,6 +2628,7 @@ bg:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Изтриване на връзка"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Нова връзка"
   label_release_notes: "Бележки по изданието"
   label_remaining_work: "Оставаща работа"

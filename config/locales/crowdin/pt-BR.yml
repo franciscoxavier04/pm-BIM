@@ -2625,6 +2625,7 @@ pt-BR:
   label_relation: "Relação"
   label_relation_actions: "Ações da relação"
   label_relation_delete: "Excluir relação"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nova relação"
   label_release_notes: "Notas da versão"
   label_remaining_work: "Trabalho restante"
