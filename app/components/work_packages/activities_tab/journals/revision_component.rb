@@ -107,7 +107,7 @@ module WorkPackages
 
         def render_committer_name(committer)
           render(Primer::Beta::Text.new(font_weight: :bold, mr: 1)) do
-            Sanitize.fragment(committer.gsub(%r{<.+@.+>}, "").strip)
+            Sanitize.fragment(committer).gsub(%r{<.+@.+>}, "").strip
           end
         end
       end
