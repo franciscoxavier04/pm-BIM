@@ -35,8 +35,8 @@ rm -rf /var/lib/postgresql/{$CURRENT_PGVERSION,$NEXT_PGVERSION}
 su - postgres -c "$PGBIN/initdb -D /tmp/nulldb -E UTF8"
 su - postgres -c "$PGBIN/pg_ctl -D /tmp/nulldb -l /dev/null -l /tmp/nulldb/log -w start"
 
-# give some more time for DB to start
-sleep 5
+# give some more time for DB to start, we are generous for emulated builds such as ppc64le
+timeout=20; while ! su - postgres -c pg_isready; do if [ $((timeout--)) -gt 0 ]; then sleep 1; else break; fi; done
 
 echo "create database structure; create user structure with encrypted password 'p4ssw0rd'; grant all privileges on database structure to structure;" | su - postgres -c psql
 
