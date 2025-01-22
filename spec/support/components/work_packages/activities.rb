@@ -105,9 +105,7 @@ module Components
       def expect_journal_mention(text: nil)
         expect_journal_notes # wait for the notes to be loaded
 
-        page.within_test_selector("op-journal-notes-body") do
-          expect(page).to have_css("a.user-mention", text:, wait: 10)
-        end
+        expect(page).to have_css("a.user-mention", text:, wait: 10)
       end
 
       def expect_notification_bubble
@@ -164,6 +162,44 @@ module Components
         end
       end
 
+      def expect_comment_present(text)
+        page.within_test_selector("op-wp-journals-container") do
+          expect(page).to have_test_selector("op-journal-notes-body", text:, wait: 10)
+        end
+      end
+
+      def type_comment(text)
+        open_new_comment_editor if page.find_test_selector("op-open-work-package-journal-form-trigger")
+
+        # Wait for the editor form to be present and ready
+        wait_for { page }.to have_test_selector("op-work-package-journal-form-element")
+
+        page.within_test_selector("op-work-package-journal-form-element") do
+          editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+          # Wait for the editor to be initialized
+          wait_for { editor.input_element }.to be_present
+          editor.input_element.send_keys(text)
+        end
+
+        # Wait for any pending requests to complete
+        wait_for_network_idle
+      end
+
+      def clear_comment(blur: false)
+        page.within_test_selector("op-work-package-journal-form-element") do
+          editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+          editor.set_value("")
+
+          if blur
+            editor.input_element.send_keys(:tab) # triggers blur by moving focus away
+          end
+        end
+      end
+
+      def submit_comment
+        page.find_test_selector("op-submit-work-package-journal-form").click
+      end
+
       def add_comment(text: nil, save: true)
         if page.find_test_selector("op-open-work-package-journal-form-trigger")
           open_new_comment_editor
@@ -199,6 +235,20 @@ module Components
           if save
             # wait for the comment to be loaded
             wait_for { page }.to have_test_selector("op-journal-notes-body", text:)
+          end
+        end
+      end
+
+      def type_comment_in_edit(journal, text)
+        within_journal_entry(journal) do
+          page.find_test_selector("op-wp-journal-#{journal.id}-action-menu").click
+          page.find_test_selector("op-wp-journal-#{journal.id}-edit").click
+
+          page.within_test_selector("op-work-package-journal-form-element") do
+            editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+            # Wait for the editor to be initialized
+            wait_for { editor.input_element }.to be_present
+            editor.input_element.send_keys(text)
           end
         end
       end
