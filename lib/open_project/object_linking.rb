@@ -51,12 +51,7 @@ module OpenProject
                         only_path: options.delete(:only_path) { true })
         options[:title] ||= I18n.t(:label_user_named, name:)
 
-        if options.delete(:hover_card) { true }
-          options[:data] ||= {}
-          options[:data][:hover_card_url] = hover_card_user_path(user)
-
-          options[:class] = [options[:class], "op-hover-card--preview-trigger"].compact.join(" ")
-        end
+        add_hover_card_options(user, options, clazz_key: :class)
 
         link_to(name, href, options)
       else
@@ -150,9 +145,10 @@ module OpenProject
 
     private
 
-    def add_hover_card_options(user, options)
+    # TODO: doc comment
+    def add_hover_card_options(user, options, clazz_key: :classes)
       if options.delete(:hover_card) { true }
-        options[:classes] = [options[:classes], "op-hover-card--preview-trigger"].compact.join(" ")
+        options[clazz_key] = [options[clazz_key], "op-hover-card--preview-trigger"].compact.join(" ")
         options[:data] ||= {}
         options[:data][:hover_card_url] = hover_card_user_path(user)
       end
