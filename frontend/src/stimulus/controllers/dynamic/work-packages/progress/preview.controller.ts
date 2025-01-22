@@ -31,13 +31,12 @@
 import { Controller } from '@hotwired/stimulus';
 import { debounce, DebouncedFunc } from 'lodash';
 import Idiomorph from 'idiomorph/dist/idiomorph.cjs';
+import { FrameElement, TurboBeforeFrameRenderEvent } from '@hotwired/turbo';
 
-interface TurboBeforeFrameRenderEventDetail {
-  render:(currentElement:HTMLElement, newElement:HTMLElement) => void;
-}
-
-interface HTMLTurboFrameElement extends HTMLElement {
-  src:string;
+declare global {
+  interface HTMLElementTagNameMap {
+    'turbo-frame':FrameElement
+  }
 }
 
 export default class PreviewController extends Controller {
@@ -54,7 +53,7 @@ export default class PreviewController extends Controller {
   declare readonly touchedFieldInputTargets:HTMLInputElement[];
 
   private debouncedPreview:DebouncedFunc<(event:Event) => void>;
-  private frameMorphRenderer:(event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => void;
+  private frameMorphRenderer:(event:TurboBeforeFrameRenderEvent) => void;
   private targetFieldName:string;
   private touchedFields:Set<string>;
 
@@ -77,8 +76,8 @@ export default class PreviewController extends Controller {
     // new ids, the ids referenced by `aria-describedby` are stale. This makes
     // caption and validation message unaccessible for screen readers and other
     // assistive technologies. This is why morph cannot be used here.
-    this.frameMorphRenderer = (event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => {
-      event.detail.render = (currentElement:HTMLElement, newElement:HTMLElement) => {
+    this.frameMorphRenderer = (event) => {
+      event.detail.render = (currentElement, newElement) => {
         Idiomorph.morph(currentElement, newElement, { ignoreActiveValue: true });
       };
     };
@@ -96,8 +95,8 @@ export default class PreviewController extends Controller {
       }
     });
 
-    const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
-    turboFrame.addEventListener('turbo:before-frame-render', this.frameMorphRenderer);
+    const turboFrame = this.formTarget.closest('turbo-frame');
+    turboFrame?.addEventListener('turbo:before-frame-render', this.frameMorphRenderer);
   }
 
   disconnect() {
@@ -110,10 +109,8 @@ export default class PreviewController extends Controller {
       }
       target.removeEventListener('blur', this.debouncedPreview);
     });
-    const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
-    if (turboFrame) {
-      turboFrame.removeEventListener('turbo:before-frame-render', this.frameMorphRenderer);
-    }
+    const turboFrame = this.formTarget.closest('turbo-frame');
+    turboFrame?.removeEventListener('turbo:before-frame-render', this.frameMorphRenderer);
   }
 
   markFieldAsTouched(event:{ target:HTMLInputElement }) {
@@ -146,7 +143,7 @@ export default class PreviewController extends Controller {
     const wpAction = wpPath.endsWith('/work_packages/new/progress') ? 'new' : 'edit';
 
     const editUrl = `${wpPath}/${wpAction}?${new URLSearchParams(wpParams).toString()}`;
-    const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
+    const turboFrame = this.formTarget.closest('turbo-frame');
 
     if (turboFrame) {
       turboFrame.src = editUrl;
