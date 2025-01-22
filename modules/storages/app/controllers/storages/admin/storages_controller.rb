@@ -45,7 +45,7 @@ class Storages::Admin::StoragesController < ApplicationController
   # and set the @<controller_name> variable to the object referenced in the URL.
   before_action :require_admin
   before_action :find_model_object,
-                only: %i[show_oauth_application destroy edit edit_host confirm_destroy update
+                only: %i[show_oauth_application destroy edit edit_host edit_nextcloud_audience confirm_destroy update
                          change_health_notifications_enabled replace_oauth_application]
   before_action :ensure_valid_wizard_parameters, only: [:new]
   before_action :require_ee_token_for_one_drive, only: [:new]
@@ -112,13 +112,14 @@ class Storages::Admin::StoragesController < ApplicationController
 
   def edit_host
     update_via_turbo_stream(
-      component: Storages::Admin::Forms::GeneralInfoFormComponent.new(
-        @storage,
-        form_method: :patch,
-        cancel_button_path: edit_admin_settings_storage_path(@storage)
-      )
+      component: Storages::Admin::Forms::GeneralInfoFormComponent.new(@storage)
     )
 
+    respond_with_turbo_streams
+  end
+
+  def edit_nextcloud_audience
+    update_via_turbo_stream(component: Storages::Admin::Forms::NextcloudAudienceFormComponent.new(@storage))
     respond_with_turbo_streams
   end
 
@@ -136,10 +137,8 @@ class Storages::Admin::StoragesController < ApplicationController
       end
     else
       update_via_turbo_stream(
-        component: Storages::Admin::Forms::GeneralInfoFormComponent.new(
+        component: ::Storages::Peripherals::Registry.resolve("#{@storage}.components.forms.general_information").new(
           @storage,
-          form_method: :patch,
-          cancel_button_path: edit_admin_settings_storage_path(@storage),
           in_wizard: params[:continue_wizard].present?
         )
       )
@@ -243,6 +242,8 @@ class Storages::Admin::StoragesController < ApplicationController
       .permit("name",
               "provider_type",
               "host",
+              "authentication_method",
+              "nextcloud_audience",
               "oauth_client_id",
               "oauth_client_secret",
               "tenant_id",

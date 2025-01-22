@@ -33,15 +33,27 @@ module Storages
     class NextcloudStorageWizard < Wizard
       step :general_information, completed_if: ->(storage) { storage.host.present? && storage.name.present? }
 
+      # Two-Way OAuth 2.0
+
       step :oauth_application,
            section: :oauth_configuration,
+           if: ->(storage) { !storage.authenticate_via_idp? },
            completed_if: ->(storage) { storage.oauth_application.present? },
            preparation: :prepare_oauth_application
 
       step :oauth_client,
            section: :oauth_configuration,
+           if: ->(storage) { !storage.authenticate_via_idp? },
            completed_if: ->(storage) { storage.oauth_client.present? },
            preparation: ->(storage) { storage.build_oauth_client }
+
+      # OAuth 2.0 SSO
+
+      step :nextcloud_audience,
+           section: :oauth_configuration,
+           if: ->(storage) { storage.authenticate_via_idp? },
+           completed_if: ->(storage) { storage.nextcloud_audience.present? },
+           preparation: :prepare_oauth_application
 
       step :automatically_managed_folders,
            completed_if: ->(storage) { !storage.automatic_management_unspecified? },

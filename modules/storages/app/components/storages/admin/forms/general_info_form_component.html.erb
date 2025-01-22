@@ -31,11 +31,21 @@
               general_info_row.with_row(mb: 3) do
                 render(Storages::Admin::ProviderHostInputForm.new(form))
               end
+
+              general_info_row.with_row(mb: 3) do
+                render(Storages::Admin::NextcloudAuthenticationMethodInputForm.new(form))
+              end
             end
 
             if storage.provider_type_one_drive?
               general_info_row.with_row(mb: 3) do
                 render(Storages::Admin::ProviderDriveIdInputForm.new(form))
+              end
+
+              if model.errors.any?
+                general_info_row.with_row(mb: 3) do
+                  render(Primer::Beta::Text.new) { model.errors.full_messages }
+                end
               end
 
               general_info_row.with_row(mb: 3) do

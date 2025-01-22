@@ -40,7 +40,6 @@ module Storages::Storages
     validates :authentication_method, presence: true, inclusion: { in: ::Storages::NextcloudStorage::AUTHENTICATION_METHODS }
 
     attribute :nextcloud_audience
-    validates :nextcloud_audience, presence: true, if: :nextcloud_storage_authenticate_via_idp?
 
     attribute :automatically_managed
 
