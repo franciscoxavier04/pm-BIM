@@ -34,6 +34,8 @@ class Type < ApplicationRecord
 
   include ::Scopes::Scoped
 
+  attribute :patterns, Types::PatternCollectionType.new
+
   before_destroy :check_integrity
 
   has_many :work_packages
@@ -50,16 +52,11 @@ class Type < ApplicationRecord
                           join_table: "#{table_name_prefix}custom_fields_types#{table_name_suffix}",
                           association_foreign_key: "custom_field_id"
 
-  belongs_to :color,
-             optional: true,
-             class_name: "Color"
+  belongs_to :color, optional: true, class_name: "Color"
 
   acts_as_list
 
-  validates :name,
-            presence: true,
-            uniqueness: { case_sensitive: false },
-            length: { maximum: 255 }
+  validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }
 
   validates :is_default, :is_milestone, inclusion: { in: [true, false] }
 
@@ -67,10 +64,7 @@ class Type < ApplicationRecord
 
   default_scope { order("position ASC") }
 
-  scope :without_standard, -> {
-    where(is_standard: false)
-      .order(:position)
-  }
+  scope :without_standard, -> { where(is_standard: false).order(:position) }
 
   def to_s; name end
 

@@ -63,7 +63,8 @@ class WorkPackageRelationsController < ApplicationController
       @work_package.reload
       component = WorkPackageRelationsTab::IndexComponent.new(work_package: @work_package,
                                                               relations: @work_package.relations.visible,
-                                                              children: @work_package.children.visible)
+                                                              children: @work_package.children.visible,
+                                                              relation_to_scroll_to: service_result.result)
       replace_via_turbo_stream(component:)
       respond_with_turbo_streams
     else
@@ -122,12 +123,12 @@ class WorkPackageRelationsController < ApplicationController
 
   def create_relation_params
     params.require(:relation)
-          .permit(:relation_type, :to_id, :description)
+          .permit(:relation_type, :to_id, :description, :lag)
           .merge(from_id: @work_package.id)
   end
 
   def update_relation_params
     params.require(:relation)
-          .permit(:description)
+          .permit(:description, :lag)
   end
 end

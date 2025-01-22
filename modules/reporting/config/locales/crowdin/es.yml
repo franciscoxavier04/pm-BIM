@@ -86,6 +86,11 @@ es:
   validation_failure_date: "no es una fecha válida"
   validation_failure_integer: "no es un entero válido"
   export:
+    timesheet:
+      title: "Su exportación de registro horario en PDF"
+      button: "Exportar registro horario en PDF"
+      timesheet: "Registro horario"
+      time: "Tiempo"
     cost_reports:
       title: "Su exportación de informes de costes XLS"
   reporting:

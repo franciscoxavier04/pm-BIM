@@ -66,7 +66,7 @@ class CustomField < ApplicationRecord
     errors.add(:name, :taken) if name.in?(taken_names)
   end
 
-  validates :field_format, inclusion: { in: OpenProject::CustomFieldFormat.available_formats }
+  validates :field_format, inclusion: { in: -> { OpenProject::CustomFieldFormat.available_formats } }
 
   validate :validate_default_value
   validate :validate_regex
@@ -326,12 +326,15 @@ class CustomField < ApplicationRecord
 
   def possible_user_values_options(obj)
     mapped_with_deduced_project(obj) do |project|
-      if project&.persisted?
-        project.principals
-      else
-        Principal
-          .in_visible_project_or_me(User.current)
-      end
+      scope = if project&.persisted?
+                project.principals
+              else
+                Principal
+                  .in_visible_project_or_me(User.current)
+              end
+
+      scope
+        .select(User::USER_FORMATS_STRUCTURE[Setting.user_format].map(&:to_s), "id", "type")
     end
   end
 

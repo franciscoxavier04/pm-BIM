@@ -357,10 +357,10 @@ fr:
           learn_about: "En savoir plus sur les nouvelles fonctionnalités"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_1":
+          "15_2":
             standard:
               new_features_html: >
-                Cette version apporte diverses fonctionnalités et améliorations, par exemple <br> <ul class="%{list_styling_class}"> <li>Champs personnalisés de type hiérarchique (module Enterprise).</li> <li>Refonte de l'onglet Relations dans les lots de travaux.</li> <li>Refonte de la page d'index des réunions.</li> <li>Sauts de page manuels dans les exportations de lots de travaux PDF.</li> <li>Mode Zen pour les listes de projets.</li> </ul>
+                Cette version apporte diverses fonctionnalités et améliorations, par exemple :<br> <ul class="%{list_styling_class}"> <li>Définissez des rappels pour les lots de travaux afin de générer des notifications d'alerte de date.</li> <li>Créez de nouveaux dossiers directement à partir du sélecteur d'emplacement pour le stockage des fichiers.</li> <li>Spécifiez un délai requis entre les successeurs et les prédécesseurs des lots de travaux.</li> <li>Activez l'ordre et le regroupement des lots de travaux en fonction des valeurs des champs personnalisés de type hiérarchique.</li> <li>Exportez les entrées de temps sous forme de feuilles de temps PDF.</li> <li>Ajoutez une fenêtre contextuelle affichant des informations sur l'utilisateur lors du survol à l'écran.</li> </ul>
     ical_sharing_modal:
       title: "S'abonner au calendrier"
       inital_setup_error_message: "Une erreur est survenue lors de la récupération des données."
@@ -621,14 +621,15 @@ fr:
         prioritized: "Priorisé"
         dateAlert: "Alarmes"
         shared: "Partagé"
+        reminder: "Rappel"
       date_alerts:
         milestone_date: "Date jalon"
         overdue: "En retard"
-        overdue_since: "depuis %{difference_in_days}"
-        property_today: "est aujourd’hui"
-        property_is: "est dans %{difference_in_days}"
-        property_was: "était il y a %{difference_in_days}"
-        property_is_deleted: "est supprimé"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Alarmes"
           description: "Avec les alarmes, vous serez informé(e) à l'approche des dates de début ou de fin vous concernant afin de ne jamais manquer ou oublier une échéance importante."
@@ -653,6 +654,8 @@ fr:
         new_notifications:
           message: "Il y a de nouvelles notifications."
           link_text: "Cliquez ici pour les télécharger."
+      reminders:
+        note: "Note : \"%{note}\""
       settings:
         change_notification_settings: 'Vous pouvez modifier vos <a target="_blank" href="%{url}">paramètres de notification</a> pour vous assurer de ne jamais manquer une mise à jour importante.'
         title: "Paramètres de notifications"
@@ -740,6 +743,7 @@ fr:
         immediate:
           title: "Envoyez-moi un rappel par e-mail"
           mentioned: "Immédiatement quand quelqu'un me @mentionne"
+          personal_reminder: "Immédiatement lorsque je reçois un rappel personnel"
         alerts:
           title: "Alertes par e-mail pour les autres éléments (qui ne sont pas des lots de travaux)"
           explanation: >
@@ -771,10 +775,6 @@ fr:
         upgrade_to_ee_text: "Waouh ! Si vous avez besoin de cette fonctionnalité, vous êtes un véritable pro ! Cela vous dérangerait-il de soutenir les développeurs Open Source en devenant un client de la version Entreprise ?"
         more_information: "Plus d'informations"
         nevermind: "Peu importe"
-      edit:
-        form_configuration: "Configuration du formulaire"
-        projects: "Projets"
-        settings: "Paramètres"
     time_entry:
       work_package_required: "Nécessite d'abord la sélection d'un lot de travaux."
       title: "Consigner temps"
@@ -1043,6 +1043,12 @@ fr:
           not_found: "Cette vue n'existe pas"
           duplicate_query_title: "Le nom de cette vue existe déjà. Changer quand même ?"
         text_no_results: "Aucune vue correspondante n'a été trouvée."
+      reminders:
+        button_label: "Définir un rappel"
+        title:
+          new: "Définir un rappel"
+          edit: "Modifier un rappel"
+        subtitle: "Vous recevrez une notification pour ce lot de travaux au moment choisi."
       scheduling:
         is_parent: "Les dates de ce lot de travaux sont automatiquement déduites de ses enfants. Activez la « Planification manuelle » pour définir les dates."
         is_switched_from_manual_to_automatic: "Les dates de ce lot de travaux peuvent avoir besoin d'être recalculées après avoir passé de la planification manuelle à la planification automatique en raison de relations avec d'autres lots de travaux."
@@ -1346,5 +1352,3 @@ fr:
       waiting_subtitle:
         network_off: "Un problème de réseau est survenu."
         network_on: "Le réseau est à nouveau disponible. Nous essayons."
-        timeout: >
-          OpenProject n'a pas pu vous donner accès au dossier du projet dans le délai imparti. Veuillez réessayer.<br><br> Si ce problème persiste, veuillez contacter votre administrateur OpenProject pour vérifier le <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">statut de santé de l'espace de stockage de fichiers</a>.

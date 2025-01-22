@@ -42,8 +42,10 @@ module Queries::Meetings
 
     def default_scope
       Meeting
+        .not_templated
+        .not_cancelled
         .visible(user)
-        .unscope(:order)
+        .unscope(:order) # remove default scope order
     end
   end
 end

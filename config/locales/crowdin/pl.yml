@@ -340,6 +340,9 @@ pl:
         text: "To działanie nie spowoduje usunięcia żadnego projektu znajdującego się na liście. Czy na pewno chcesz usunąć tę listę projektów?"
     settings:
       change_identifier: Identyfikator zmiany
+      actions:
+        label_enable_all: "Włącz wszystkie"
+        label_disable_all: "Wyłącz wszystkie"
       activities:
         no_results_title_text: Nie ma dostępnych żadnych aktywności.
       forums:
@@ -350,18 +353,26 @@ pl:
         no_results_content_text: Utwórz nową kategorię zadania
       custom_fields:
         no_results_title_text: Nie ma dostępnych pól niestandardowych.
+      life_cycle:
+        header:
+          title: "Cykl życia projektu"
+          description_html: 'Te etapy i bramki w cyklu życia projektu będą wyświetlane na <a href=%{overview_url} target="_blank">stronie przeglądu projektu</a> i są definiowane w <a href=%{admin_settings_url} target="_blank">ustawieniach administracyjnych</a> przez administratora wystąpienia. Poszczególne atrybuty można włączyć lub wyłączyć.'
+        non_defined: "Ani etapy, ani bramki nie są obecnie zdefiniowane."
+        section_header: "Etapy i bramki"
+        step:
+          use_in_project: "Użyj kroku %{step} w tym projekcie"
+        filter:
+          label: "Wyszukaj etap lub brankę projektu"
       project_custom_fields:
         header:
           title: "Atrybuty projektu"
-          description: 'Te atrybuty projektu będą wyświetlane w odpowiednich sekcjach Twojej <a href=%{overview_url} target="_blank">strony przeglądu projektu</a>. Możesz włączyć lub wyłączyć poszczególne atrybuty. Atrybuty i sekcje projektu są definiowane w <a href=%{admin_settings_url} target="_blank">ustawieniach administracyjnych</a> przez administratora wystąpienia. '
+          description_html: 'Te atrybuty projektu będą wyświetlane w odpowiednich sekcjach Twojej <a href=%{overview_url} target="_blank">strony przeglądu projektu</a>. Możesz włączyć lub wyłączyć poszczególne atrybuty. Atrybuty i sekcje projektu są definiowane w <a href=%{admin_settings_url} target="_blank">ustawieniach administracyjnych</a> przez administratora wystąpienia. '
         filter:
           label: "Wyszukaj atrybut projektu"
         actions:
           label_enable_single: "Aktywne w tym projekcie, kliknij, aby wyłączyć"
           label_disable_single: "Nieaktywne w tym projekcie, kliknij, aby włączyć"
           remove_from_project: "Usuń z projektu"
-          label_enable_all: "Włącz wszystkie"
-          label_disable_all: "Wyłącz wszystkie"
         is_required_blank_slate:
           heading: Wymagane we wszystkich projektach
           description: Ten atrybut projektu jest aktywowany we wszystkich projektach, ponieważ zaznaczona jest opcja „Wymagane we wszystkich projektach”. Nie można go dezaktywować dla poszczególnych projektów.
@@ -374,6 +385,12 @@ pl:
         no_results_content_text: Utwórz nową wersję projektu
       storage:
         no_results_title_text: Nie ma dodatkowego zarejestrowanego miejsca na dysku zużytego przez ten projekt.
+  project_stage:
+    working_days_count:
+      one: "Czas trwania: %{count} dzień roboczy"
+      few: "Czas trwania: %{count} dni robocze"
+      many: "Czas trwania: %{count} dni roboczych"
+      other: "Czas trwania: %{count} dnia roboczego"
   lists:
     create:
       success: "Zmodyfikowana lista została zapisana jako nowa lista"
@@ -506,8 +523,12 @@ pl:
     groups:
       member_in_these_groups: "Ten użytkownik jest obecnie członkiem następujących grup:"
       no_results_title_text: Ten użytkownik nie jest obecnie członkiem żadnej grupy.
+      summary_with_more: Członek %{names} i %{count_link}.
+      more: "%{count} więcej"
+      summary: Członek %{names}.
     memberships:
       no_results_title_text: Użytkownik jeszcze nie jest członkiem projektu.
+    open_profile: "Otwórz profil"
   page:
     text: "Tekst"
   placeholder_users:
@@ -580,18 +601,27 @@ pl:
       no_results_title_text: Nie ma jeszcze żadnych typów.
       no_results_content_text: Utwórz nowy typ
     edit:
-      settings: "Ustawienia"
-      form_configuration: "Konfiguracja formularza"
+      form_configuration:
+        tab: "Konfiguracja formularza"
       more_info_text_html: >
         Wersja Enterprise pozwala dostosować konfigurację formularza za pomocą tych dodatków: <br> <ul class="%{list_styling_class}"> <li><b>Dodaj nowe grupy atrybutów</b></li> <li><b>Zmień nazwę grup atrybutów</b></li> <li><b>Dodaj tabelę powiązanych pakietów roboczych</b></li> </ul>
-      projects: "Projekty"
-      enabled_projects: "Aktywne projekty"
-      edit_query: "Edytuj tabelę"
-      query_group_placeholder: "Nadaj nazwę tabeli"
-      reset: "Resetuj do ustawień domyślnych"
-      type_color_text: |
-        Wybrany kolor odróżnia różne typy
-        na wykresach Gantta lub w tabelach pakietów roboczych. W związku z tym zalecane jest stosowanie mocnego koloru.
+      projects:
+        tab: "Projekty"
+        enabled_projects: "Aktywne projekty"
+      settings:
+        tab: "Ustawienia"
+        type_color_text: Wybrany kolor odróżnia różne typy na wykresach Gantta lub w tabelach pakietów roboczych. W związku z tym zalecane jest stosowanie mocnego koloru.
+      subject_configuration:
+        tab: "Konfiguracja tematu"
+        manually_editable_subjects:
+          label: "Ręcznie edytowane tematy"
+          caption: "Użytkownicy mogą bez ograniczeń ręcznie wprowadzać i edytować tematy pakietów roboczych."
+        automatically_generated_subjects:
+          label: "Automatycznie generowane tematy"
+          caption: "Zdefiniuj wzorzec za pomocą wywoływanych atrybutów i tekstu, aby automatycznie generować tematy pakietów roboczych. Użytkownicy nie będą mogli ręcznie edytować tematów."
+        pattern:
+          label: "Wzorzec tematu"
+          caption: "Wyszukaj atrybut lub dodaj tekst. Aby utworzyć odstęp między elementami, dodaj go jako tekst."
   versions:
     overview:
       work_packages_in_archived_projects: "Wersja jest udostępniona z zarchiwizowanymi projektami, które nadal mają pakiety robocze przypisane do tej wersji. Są one liczone, ale nie pojawią się w powiązanych widokach."
@@ -656,6 +686,10 @@ pl:
     label_add_x: "Dodaj %{x}"
     label_edit_x: "Edytuj %{x}"
     label_add_description: "Dodaj opis"
+    lag:
+      subject: "Opóźnienie"
+      title: "Opóźnienie (w dniach)"
+      caption: "Minimalna liczba dni roboczych wymagana między dwoma pakietami roboczymi."
     relations:
       label_relates_singular: "ma relację z"
       label_relates_plural: "ma relację z"
@@ -671,7 +705,7 @@ pl:
       follows_description: "Powiązany pakiet roboczy musi koniecznie zostać ukończony przed rozpoczęciem tego pakietu"
       label_child_singular: "element podrzędny"
       label_child_plural: "elementy podrzędne"
-      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      child_description: "Ustawia powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
       label_blocks_singular: "blok"
       label_blocks_plural: "bloki"
       blocks_description: "Powiązany pakiet roboczy nie może zostać zamknięty, dopóki najpierw nie zostanie zamknięty ten pakiet roboczy"
@@ -860,6 +894,9 @@ pl:
         lag: "Opóźnienie"
         from: "Zadanie"
         to: "Powiązanie zadania"
+      reminder:
+        remind_at_date: "Data"
+        remind_at_time: "Godzina"
       repository:
         url: "ADRES URL"
       role:
@@ -948,6 +985,7 @@ pl:
       messages:
         accepted: "musi być zaakceptowane."
         after: "musi być po %{date}."
+        after_today: "musi przypadać w przyszłości."
         after_or_equal_to: "musi być po lub równe %{date}."
         before: "musi być przed %{date}."
         before_or_equal_to: "musi być przed lub równe %{date}."
@@ -994,6 +1032,7 @@ pl:
         not_an_integer: "nie jest liczbą całkowitą."
         not_an_iso_date: "wprowadzono nieprawidłową datę. Wymagany format: RRRR-MM-DD."
         not_same_project: "nie należy do tego samego projektu."
+        datetime_must_be_in_future: "musi przypadać w przyszłości."
         odd: "musi być nieparzyste."
         regex_match_failed: "nie pasuje do wyrażenia regularnego %{expression}."
         regex_invalid: "nie może być zastosowany z zastosowanym wyrażeniem regularnym."
@@ -1107,16 +1146,38 @@ pl:
           attributes:
             type:
               must_be_a_stage_or_gate: "musi mieć wartość Project::StageDefinition albo Project::GateDefinition"
+              type_and_class_name_mismatch: "musi być zgodna z nazwą tworzonego wystąpienia klasy"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "musi mieć wartość Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "musi mieć wartość Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "musi mieć wartość Project::Stage albo Project::Gate"
               must_be_a_stage: "musi mieć wartość Project::Stage"
               must_be_a_gate: "musi mieć wartość Project::Gate"
+              type_and_class_name_mismatch: "musi odpowiadać nazwie tworzonego wystąpienia klasy"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Nie można przypisać „end_date” do Project::Gate"
+              end_date_not_allowed: "Nie można przypisać daty zakończenia do Project::Gate"
+            type:
+              type_and_class_name_mismatch: "musi mieć wartość Project::Gate"
+            date:
+              non_continuous_dates: "nie może być wcześniejsza niż data zakończenia poprzedniego %{step}."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "data rozpoczęcia musi być wcześniejsza niż data zakończenia."
+              non_continuous_dates: "nie może być wcześniejsza niż data zakończenia poprzedniego %{step}."
+              incomplete: "jest niekompletny."
+            type:
+              type_and_class_name_mismatch: "musi mieć wartość Project::Stage"
         query:
           attributes:
             project:
@@ -1339,6 +1400,8 @@ pl:
         other: "Powiadomień"
       placeholder_user: "Użytkownik zastępczy"
       project: "Projekt"
+      project/gate_definition: "Bramka"
+      project/stage_definition: "Etap"
       project_query:
         one: "Lista projektów"
         few: "Listy projektów"
@@ -1456,6 +1519,7 @@ pl:
     login: "Nazwa użytkownika"
     mail: "Adres e-mail"
     name: "Nazwa"
+    note: "Uwaga"
     password: "Hasło"
     priority: "Priorytet"
     project: "Projekt"
@@ -1552,6 +1616,7 @@ pl:
   button_print: "Drukuj"
   button_quote: "Cytat"
   button_remove: Usuń
+  button_remove_reminder: "Usuń przypomnienie"
   button_rename: "Zmień nazwę"
   button_replace: "Zastąp"
   button_revoke: "Unieważnij"
@@ -1562,6 +1627,7 @@ pl:
   button_save_as: "Zapisz jako"
   button_apply_changes: "Zastosuj zmiany"
   button_save_back: "Zapisz i wróć"
+  button_set_reminder: "Ustaw przypomnienie"
   button_show: "Pokaż"
   button_sort: "Sortowanie"
   button_submit: "Prześlij"
@@ -1803,12 +1869,12 @@ pl:
   direction: ltr
   ee:
     upsale:
+      title: "Dodatek wersji Enterprise"
+      link_title: "Więcej informacji"
       form_configuration:
         description: "Dostosuj konfigurację formularza za pomocą tych dodatków:"
         add_groups: "Dodaj nowe grupy atrybutów"
         rename_groups: "Zmień grupy atrybutów"
-      project_filters:
-        description_html: "Filtrowanie i sortowanie pól niestandardowych jest dodatkiem dla wersji Enterprise."
   enumeration_activities: "Działania śledzenia czasu"
   enumeration_work_package_priorities: "Priorytety pakietów roboczych"
   enumeration_reported_project_statuses: "Status zgłoszonego projektu"
@@ -1841,6 +1907,7 @@ pl:
   error_pdf_export_too_many_columns: "Wybrano zbyt dużo kolumn do eksportu PDF. Zmniejsz liczbę kolumn."
   error_pdf_failed_to_export: "Nie można było zapisać eksportu PDF: %{error}"
   error_token_authenticity: "Nie można zweryfikować tokenu Cross-Site Request Forgery. Czy podjęto próbę przesłania danych w wielu przeglądarkach lub z wielu kart? Zamknij wszystkie karty i spróbuj ponownie."
+  error_reminder_not_found: "Nie znaleziono przypomnienia lub już o nim powiadomiono."
   error_work_package_not_found_in_project: "Pakiet roboczy nie został znaleziony lub nie należy do tego projektu"
   error_work_package_id_not_found: "Nie znaleziono pakietu roboczego."
   error_must_be_project_member: "musi być członkiem projektu"
@@ -2134,6 +2201,7 @@ pl:
       responsible: "Osoba odpowiedzialna"
       shared: "Udostępniono"
       watched: "Obserwator"
+      reminder: "Przypomnienie"
     facets:
       unread: "Nieprzeczytane"
       unread_title: "Pokaż nieprzeczytane"
@@ -2301,8 +2369,10 @@ pl:
   label_default: "Domyślnie"
   label_delete_user: "Usuń użytkownika"
   label_delete_project: "Usuń projekt"
+  label_delete: "Usuń"
   label_deleted: "Usunięty"
   label_deleted_custom_field: "(usunięte pole niestandardowe)"
+  label_deleted_custom_item: "(usunięty element)"
   label_deleted_custom_option: "(opcja usunięta)"
   label_empty_element: "(pusty)"
   label_missing_or_hidden_custom_option: "(brakująca wartość lub brak uprawnień do dostępu)"
@@ -2339,7 +2409,6 @@ pl:
   label_enterprise_active_users: "%{current}/%{limit} zarejestrowanych aktywnych użytkowników"
   label_enterprise_edition: "Wersja Enterprise"
   label_enterprise_support: "Wsparcie Enterprise"
-  label_enterprise_addon: "Dodatek wersji Enterprise"
   label_environment: "Środowisko"
   label_estimates_and_progress: "Szacunki i postęp"
   label_equals: "jest"
@@ -2524,6 +2593,7 @@ pl:
   label_none_parentheses: "(brak)"
   label_not_contains: "nie zawierają"
   label_not_equals: "nie jest"
+  label_life_cycle_step_plural: "Cykl życia projektu"
   label_on: "wł"
   label_operator_all: "nie jest puste"
   label_operator_none: "jest puste"
@@ -2625,6 +2695,7 @@ pl:
   label_reporting: "Zgłoszenie"
   label_reporting_plural: "Zgłoszenia"
   label_repository: "Repozytorium"
+  label_repository_remove: "Usuń repozytorium"
   label_repository_root: "Główne repozytorium"
   label_repository_plural: "Repozytoria"
   label_required: "wymagane"
@@ -2687,6 +2758,7 @@ pl:
   label_this_month: "ten miesiąc"
   label_this_week: "ten tydzień"
   label_this_year: "ten rok"
+  label_time: "Czas"
   label_time_entry_plural: "Czas pracy"
   label_time_entry_activity_plural: "Czas spędzony na aktywności"
   label_title: "Tytuł"
@@ -2722,6 +2794,7 @@ pl:
   label_user_settings: "Ustawienia użytkownika"
   label_users_settings: "Ustawienia użytkowników"
   label_version_new: "Nowa wersja"
+  label_version_edit: "Edytuj wersję"
   label_version_plural: "Wersje"
   label_version_sharing_descendants: "Z podprojektami"
   label_version_sharing_hierarchy: "Z hierarchią projektu"
@@ -2861,8 +2934,13 @@ pl:
         prefix: "Otrzymano z powodu ustawienia powiadomienia: %{reason}"
         date_alert_start_date: "Alert dotyczący daty"
         date_alert_due_date: "Alert dotyczący daty"
+        reminder: "Przypomnienie"
       see_all: "Zobacz wszystkie"
       updated_at: "Zaktualizowano %{timestamp}, autor %{user} "
+    reminder_notifications:
+      subject: "Przypomnienie: %{note}"
+      heading: "Masz nowe przypomnienie"
+      note: "Uwaga: „%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Możesz %{allowed_actions} ten pakiet roboczy. Może się to zmienić w zależności od Twojej roli w projekcie i uprawnień."
@@ -3028,6 +3106,7 @@ pl:
   notice_successful_connection: "Połączenie zakończone sukcesem."
   notice_successful_create: "Tworzenie zakończone sukcesem."
   notice_successful_delete: "Usuwanie zakończone sukcesem."
+  notice_successful_cancel: "Anulowanie powiodło się."
   notice_successful_update: "Aktualizacja zakończona sukcesem."
   notice_successful_update_custom_fields_added_to_project: |
     Pomyślna aktualizacja. Pola własne aktywowanych typów są automatycznie włączane
@@ -3107,6 +3186,7 @@ pl:
   permission_edit_own_time_entries: "Edycja własnych wpisów dziennika"
   permission_edit_project: "Edycja projektu"
   permission_edit_project_attributes: "Edytuj atrybuty projektu"
+  permission_edit_project_stages_and_gates: "Edytuj etapy i bramki projektu"
   permission_edit_reportings: "Edycja raportów"
   permission_edit_time_entries: "Edycja dzienników czasu pracy dla innych użytkowników"
   permission_edit_timelines: "Edycja osi czasu"
@@ -3136,9 +3216,12 @@ pl:
   permission_search_project: "Wyszukaj projekt"
   permission_select_custom_fields: "Wybierz pola niestandardowe"
   permission_select_project_custom_fields: "Wybierz atrybuty projektu"
+  permission_select_project_life_cycle: "Wybierz etapy i bramki projektu"
+  permission_select_project_life_cycle_explanation: "Aktywuj/dezaktywuj etapy i bramki w projekcie. Umożliwia użytkownikowi wybranie cyklu życia odpowiedniego dla projektu, ponieważ nieaktywne etapy i bramki nie będą widoczne na stronie przeglądu projektu ani na liście projektów."
   permission_select_project_modules: "Wybieranie modułów projektu"
   permission_share_work_packages: "Udostępnij pakiety robocze"
   permission_manage_types: "Select types"
+  permission_manage_own_reminders: "Tworzenie własnych przypomnień"
   permission_view_project: "Wyświetl projekty"
   permission_view_changesets: "Zobacz repozytorium poprawek OpenProject"
   permission_view_commit_author_statistics: "Widok statystyk autorów"
@@ -3159,6 +3242,7 @@ pl:
   permission_work_package_assigned_explanation: "Pakiety robocze mogą być przypisane do użytkowników i grup znajdujących się w posiadaniu tej roli w odpowiednim projekcie"
   permission_view_project_activity: "Wyświetl aktywność projektu"
   permission_view_project_attributes: "Wyświetl atrybuty projektu"
+  permission_view_project_stages_and_gates: "Wyświetlanie etapów i bramek projektu"
   permission_save_bcf_queries: "Zapisz zapytania BCF"
   permission_manage_public_bcf_queries: "Zarządzanie publicznymi zapytaniami BCF"
   permission_edit_attribute_help_texts: "Edytuj teksty pomocy dotyczące atrybutów"
@@ -3839,6 +3923,12 @@ pl:
       edit_description: "Może wyświetlać, komentować i edytować ten pakiet roboczy."
       view: "Wyświetlanie"
       view_description: "Może wyświetlić ten pakiet roboczy."
+    reminders:
+      label_remind_at: "Data"
+      note_placeholder: "Dlaczego ustawiasz to przypomnienie?"
+      success_creation_message: "Przypomnienie zostało ustawione. W wybranym terminie otrzymasz powiadomienie dotyczące tego pakietu roboczego."
+      success_update_message: "Przypomnienie zostało zaktualizowane."
+      success_deletion_message: "Przypomnienie zostało usunięte."
   sharing:
     count:
       zero: "0 użytkowników"

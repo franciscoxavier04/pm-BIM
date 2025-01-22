@@ -86,6 +86,11 @@ uk:
   validation_failure_date: "є недійсною датою"
   validation_failure_integer: "не є дійсним цілим числом"
   export:
+    timesheet:
+      title: "Ваші табелі обліку часу, експортовані в PDF"
+      button: "Експортувати табель обліку часу в PDF"
+      timesheet: "Табель обліку часу"
+      time: "Час"
     cost_reports:
       title: "Експорт звітів про витрати у форматі XLS"
   reporting:

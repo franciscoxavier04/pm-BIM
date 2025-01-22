@@ -105,7 +105,7 @@ cs:
     button_update: "Aktualizovat"
     button_export-pdf: "Stáhnout PDF"
     button_export-atom: "Stáhnout Atom"
-    button_generate_pdf: "Generate PDF"
+    button_generate_pdf: ""
     button_create: "Vytvořit"
     card:
       add_new: "Přidat novou kartu"
@@ -140,7 +140,7 @@ cs:
     description_subwork_package: "Podřazený pracovního balíčku #%{id}"
     editor:
       revisions: "Show local modifications"
-      no_revisions: "No local modifications found"
+      no_revisions: "Nebyly nalezeny žádné místní úpravy"
       preview: "Přepnout režim náhledu"
       source_code: "Přepnout zdrojový mód Markdown"
       error_saving_failed: "Uložení dokumentu se nezdařilo s následující chybou: %{error}"
@@ -153,7 +153,7 @@ cs:
         attribute_reference:
           macro_help_tooltip: "Tento textový segment je dynamicky rendrován makrem."
           not_found: "Požadovaný zdroj nebyl nalezen."
-          nested_macro: "This macro is recursively referencing %{model} %{id}."
+          nested_macro: "Tento makro rekurzivně odkazuje na %{model} %{id}."
           invalid_attribute: "Vybraný atribut '%{name}' neexistuje."
         child_pages:
           button: "Odkazy na podřízené stránky"
@@ -356,10 +356,10 @@ cs:
           learn_about: "Další informace o nových funkcích"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_1":
+          "15_2":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Custom fields of type hierarchy (Enterprise add-on).</li> <li>Redesign of the Relations tab in work packages.</li> <li>Redesign of the Meetings index page.</li> <li>Manual page breaks in PDF work package exports.</li> <li>Zen mode for project lists.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Set reminders for work packages to generate date alert notifications.</li> <li>Create new folders directly from the location picker for file storage.</li> <li>Specify a required lag between work packages successors and predecessors.</li> <li>Enable ordering and grouping for work packages on values of custom fields type hierarchy.</li> <li>Export time entries as PDF timesheets.</li> <li>Add a popover displaying user information when hovering.</li> </ul>
     ical_sharing_modal:
       title: "Přihlásit kalendář k odběru"
       inital_setup_error_message: "Při načítání dat došlo k chybě."
@@ -400,7 +400,7 @@ cs:
     label_create: "Vytvořit"
     label_create_work_package: "Vytvořit nový pracovní balíček"
     label_created_by: "Vytvořil(a)"
-    label_current: "current"
+    label_current: "aktuální"
     label_date: "Datum"
     label_date_with_format: "Zadejte %{date_attribute} v následujícím formátu: %{format}"
     label_deactivate: "Deaktivovat"
@@ -620,14 +620,15 @@ cs:
         prioritized: "Prioritní"
         dateAlert: "Upozornění na datum"
         shared: "Sdíleno"
+        reminder: "Připomínka"
       date_alerts:
         milestone_date: "Datum milníku"
         overdue: "Po termínu"
-        overdue_since: "od %{difference_in_days}"
-        property_today: "je dnes"
-        property_is: "je v %{difference_in_days}"
-        property_was: "byl před %{difference_in_days}"
-        property_is_deleted: "Smazáno"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Upozornění na datum"
           description: "S upozorněním na datum budete upozorněni na blížící se datum zahájení nebo ukončení, abyste nikdy nezmeškali nebo nezapomněli na důležitou lhůtu."
@@ -643,17 +644,19 @@ cs:
           with_current_filter: "V současné době nejsou v tomto zobrazení žádná oznámení"
         mark_all_read: "Označit vše jako přečtené"
         mark_as_read: "Označit jako přečtené"
-        text_update_date_by: "%{date} by"
+        text_update_date_by: "%{date} podle"
         total_count_warning: "Zobrazení posledních oznámení %{newest_count} . Nezobrazuje se ještě %{more_count}"
         empty_state:
           no_notification: "Vypadá to, že jste všechno dohnali..."
           no_notification_with_current_project_filter: "Vypadá to, že nemáte žadné nové oznámení pro vybraný projekt."
           no_notification_with_current_filter: "Vypadá to, že tady nic není %{filter} filtr."
-          no_notification_for_filter: "Looks like you are all caught up for this filter."
+          no_notification_for_filter: "Vypadá to, že jste všichni zachytili tento filtr."
           no_selection: "Klikněte na oznámení pro zobrazení všech podrobností o aktivitě."
         new_notifications:
           message: "Máte nová oznámení."
           link_text: "Klikněte zde pro jejich načtení."
+      reminders:
+        note: "Poznámka: \"%{note}\""
       settings:
         change_notification_settings: 'Můžete změnit nastavení <a target="_blank" href="%{url}">oznámení</a> , abyste se ujistili, že nikdy nezmeškáte důležitou aktualizaci.'
         title: "Nastavení oznámení"
@@ -741,6 +744,7 @@ cs:
         immediate:
           title: "Pošlete mi připomenutí e-mailem"
           mentioned: "V momente  když mě někdo @zmiňuje"
+          personal_reminder: "Okamžitě po osobní připomenutí"
         alerts:
           title: "E-mailová upozornění pro ostatní položky (které nejsou pracovní balíčky)"
           explanation: >
@@ -772,10 +776,6 @@ cs:
         upgrade_to_ee_text: "Páni! Pokud potřebujete tuto funkci, jste super pro! Nevadili byste nám podpořit OpenSource vývojáře tím, že se stanete klientem Enterprise Edition?"
         more_information: "Více informací"
         nevermind: "Nevadí"
-      edit:
-        form_configuration: "Konfigurace formuláře"
-        projects: "Projekty"
-        settings: "Nastavení"
     time_entry:
       work_package_required: "Vyžaduje nejprve výběr pracovního balíčku."
       title: "Čas protokolu"
@@ -1001,7 +1001,7 @@ cs:
         workAlternative: "Odhadovaný čas"
         remainingTime: "Zbývající práce"
       default_queries:
-        manually_sorted: "New manually sorted query"
+        manually_sorted: "Nový ručně seřazený dotaz"
         latest_activity: "Poslední aktivita"
         created_by_me: "Vytvořeno mnou"
         assigned_to_me: "Přiřazeno mně"
@@ -1044,12 +1044,18 @@ cs:
           not_found: "Neexistuje takové zobrazení"
           duplicate_query_title: "Název tohoto zobrazení již existuje. Chcete přesto změnit?"
         text_no_results: "Nebyly nalezeny žádné odpovídající zobrazení."
+      reminders:
+        button_label: "Nastavit připomínku"
+        title:
+          new: "Nastavit připomenutí"
+          edit: "Upravit připomínku"
+        subtitle: "Za tento pracovní balíček obdržíte oznámení ve zvoleném čase."
       scheduling:
         is_parent: "Data tohoto pracovního balíčku jsou automaticky odvozena od jeho dětí. Aktivujte 'Manuální plánování' pro ručné nastavení dat."
         is_switched_from_manual_to_automatic: "Data tohoto pracovního balíčku budou možná muset být přepočítána po přepnutí z manuálu na automatické plánování kvůli vztahům s ostatními pracovními balíčky."
       sharing:
         title: "Sdílet pracovní balíček"
-        show_all_users: "Show all users with whom the work package has been shared with"
+        show_all_users: "Zobrazit všechny uživatele, s nimiž byl pracovní balíček sdílen s"
         upsale:
           description: "Sdílejte pracovní balíčky s uživateli, kteří nejsou členy projektu."
       table:
@@ -1194,9 +1200,9 @@ cs:
         zero: "0 dní"
       word:
         one: "1 slovo"
-        few: "%{count} words"
-        many: "%{count} words"
-        other: "%{count} words"
+        few: "%{count} slov"
+        many: "%{count} slov"
+        other: "%{count} slov"
     zen_mode:
       button_activate: "Aktivovat zen režim"
       button_deactivate: "Deaktivovat zen režim"
@@ -1353,5 +1359,3 @@ cs:
       waiting_subtitle:
         network_off: "Je tu problém se sítí."
         network_on: "Síť je zpátky . Zkoušíme to."
-        timeout: >
-          OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">health status of the file storage setup</a>.

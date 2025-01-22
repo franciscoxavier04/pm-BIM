@@ -114,7 +114,7 @@ pt-PT:
             hide_inactive_folders:
               permission_not_set: não foi possível definir permissões em %{path}.
             remote_folders:
-              not_allowed: 'O utilizador %{username} não tem acesso à pasta %{group_folder}. Verifique as permissões de pasta no Nextcloud.'
+              not_allowed: O utilizador %{username} não tem acesso à pasta %{group_folder}. Verifique as permissões de pasta no Nextcloud.
               not_found: "A pasta %{group_folder} não foi encontrada. Verifique a configuração do Nextcloud."
             remove_user_from_group:
               conflict: 'Não foi possível remover o utilizador %{user} do grupo %{group} pelo seguinte motivo: %{reason}'
@@ -145,7 +145,7 @@ pt-PT:
               not_found: "%{current_path} não foi encontrado."
             set_folders_permissions:
               permission_not_set: não foi possível definir permissões em %{path}.
-          error: Ocorreu um erro inesperado. Certifique-se de que a sua instância do Nextcloud está acessível e verifique os registos de trabalho do OpenProject para obter mais informações
+          error: Ocorreu um erro inesperado. Certifique-se de que o seu OneDrive/SharePoin está acessível e verifique os registos de trabalho do OpenProject para obter mais informações
           not_allowed: O OpenProject não tinha permissão para aceder à sua unidade do OneDrive. Verifique as permissões definidas na aplicação do Azure.
           unauthorized: Não foi possível sincronizar o OpenProject com o OneDrive. Verifique o seu armazenamento e a configuração da aplicação do Azure.
           user_does_not_exist: "%{user} não existe no Nextcloud."
@@ -289,7 +289,6 @@ pt-PT:
     label_creation_time: Hora de criação
     label_creator: Criador
     label_delete_storage: Eliminar armazenamento
-    label_edit_storage: Editar armazenamento
     label_edit_storage_access_management: Editar a gestão do acesso ao armazenamento
     label_edit_storage_automatically_managed_folders: Editar o armazenamento pastas geridas automaticamente
     label_edit_storage_host: Editar anfitrião de armazenamento
@@ -343,6 +342,9 @@ pt-PT:
       success:
         subtitle: Está a ser redirecionado
         title: Configuração de integração concluída
+      timeout:
+        link_text: estado de saúde da configuração do armazenamento de ficheiros
+        subtitle: O OpenProject não pôde fornecer acesso à pasta do projeto dentro do período esperado de tempo, tente novamente.<br><br> Se esse problema continuar, entre em contacto com o administrador do OpenProject para verificar o %{storages_health_link}.
       waiting:
         subtitle: Aguarde um momento, esta ação pode demorar algum tempo...
         title: Estamos a definir as suas permissões na pasta do projeto.

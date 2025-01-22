@@ -33,7 +33,7 @@ ro:
         label_activity_show_only_changes: "Arată doar modificările"
         label_sort_asc: "Cele mai noi jos"
         label_sort_desc: "Cele mai noi sus"
-        label_type_to_comment: "Add a comment. Type @ to notify people."
+        label_type_to_comment: "Adaugă un comentariu. Tastează @ pentru a notifica persoane."
         label_submit_comment: "Submit comment"
         changed_on: "changed on"
         created_on: "a creat-o pe"
@@ -343,6 +343,9 @@ ro:
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       change_identifier: Schimbă identificatorul
+      actions:
+        label_enable_all: "Enable all"
+        label_disable_all: "Disable all"
       activities:
         no_results_title_text: În acest moment nu există activități disponibile.
       forums:
@@ -353,18 +356,26 @@ ro:
         no_results_content_text: Creează categorie nouă de pachete de lucru
       custom_fields:
         no_results_title_text: În acest moment nu există câmpuri personalizate disponibile.
+      life_cycle:
+        header:
+          title: "Project lifecycle"
+          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
+        non_defined: "Neither stages nor gates are currently defined."
+        section_header: "Stages and gates"
+        step:
+          use_in_project: "Use %{step} in this project"
+        filter:
+          label: "Search project stage or gate"
       project_custom_fields:
         header:
           title: "Atributele proiectului"
-          description: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "Caută atribut proiect"
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
           remove_from_project: "Elimină din proiect"
-          label_enable_all: "Activează tot"
-          label_disable_all: "Dezactivează tot"
         is_required_blank_slate:
           heading: Obligatoriu în toate proiectele
           description: Acest atribut de proiect este activat în toate proiectele deoarece opțiunea "Obligatoriu în toate proiectele" este bifată. Acesta nu poate fi dezactivat pentru proiecte individuale.
@@ -377,6 +388,11 @@ ro:
         no_results_content_text: Creează versiune nouă
       storage:
         no_results_title_text: Acest proiect nu consumă spațiu suplimentar pe disc.
+  project_stage:
+    working_days_count:
+      one: "Duration: %{count} working day"
+      few: "Duration: %{count} working days"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -503,8 +519,12 @@ ro:
     groups:
       member_in_these_groups: "Acest utilizator este în prezent membru al următoarelor grupuri:"
       no_results_title_text: Acest utilizator nu este în prezent membru în niciun grup.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: Acest utilizator nu este în acest moment participant în vreun proiect.
+    open_profile: "Open profile"
   page:
     text: "Text"
   placeholder_users:
@@ -576,18 +596,27 @@ ro:
       no_results_title_text: În acest moment nu există tipuri.
       no_results_content_text: Creează tip nou
     edit:
-      settings: "Setări"
-      form_configuration: "Configurare formular"
+      form_configuration:
+        tab: "Form configuration"
       more_info_text_html: >
         Ediția Enterprise îți permite să personalizezi configurația formularului cu aceste suplimente: <br> <ul class="%{list_styling_class}"> <li><b>Adăugarea de noi grupuri de atribute</b></li> <li><b>Redenumirea grupurilor de atribute</b></li> <li><b>Adaugă un tabel cu pachetele de lucru aferente</b></li> </ul>
-      projects: "Proiecte"
-      enabled_projects: "Proiecte activate"
-      edit_query: "Editează tabelul"
-      query_group_placeholder: "Dați un nume tabelului"
-      reset: "Resetare AVATAR implicit"
-      type_color_text: |
-        Culoarea selectată distinge diferite tipuri
-        în graficele Gantt sau tabelele pachetelor de lucru. Prin urmare, este recomandat să folosești o culoare puternică.
+      projects:
+        tab: "Projects"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Settings"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        pattern:
+          label: "Subject pattern"
+          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -650,7 +679,11 @@ ro:
       blankslate_description: "Acest pachet de lucru nu are încă o relație."
     label_add_x: "Adaugă %{x}"
     label_edit_x: "Editează %{x}"
-    label_add_description: "Add description"
+    label_add_description: "Adaugă descriere"
+    lag:
+      subject: "Întârziere"
+      title: "Întârziere (în zile)"
+      caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_relates_singular: "asociat cu"
       label_relates_plural: "asociat cu"
@@ -694,14 +727,14 @@ ro:
       label_part_of_plural: "parte din"
       partof_description: "Marchează pachetul de lucru asociat ca incluzând acesta, fără niciun efect suplimentar"
       part_of_description: "Marchează pachetul de lucru asociat ca făcând parte din acesta fără niciun efect suplimentar"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "necesită"
+      label_requires_plural: "necesită"
       requires_description: "Marchează pachetul de lucru asociat ca o cerință pentru acesta"
-      label_required_singular: "required by"
-      label_required_plural: "required by"
+      label_required_singular: "cerut de"
+      label_required_plural: "cerut de"
       required_description: "Marchează acest pachet de lucru ca fiind o cerință pentru cel asociat"
-      label_parent_singular: "parent"
-      label_parent_plural: "parent"
+      label_parent_singular: "părinte"
+      label_parent_plural: "părinte"
   label_invitation: Invitație
   account:
     delete: "Ştergere cont"
@@ -852,9 +885,12 @@ ro:
         filters: "Filtre"
         timeline_labels: "Etichete de cronologie"
       relation:
-        lag: "Lag"
+        lag: "Întârziere"
         from: "Pachet de lucru"
         to: "Pachet de lucru asociat"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -943,6 +979,7 @@ ro:
       messages:
         accepted: "trebuie acceptat."
         after: "trebuie să fie după %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "trebuie să fie după sau în %{date}."
         before: "trebuie să fie înainte de %{date}."
         before_or_equal_to: "trebuie să fie înainte sau în %{date}."
@@ -989,6 +1026,7 @@ ro:
         not_an_integer: "nu este un întreg."
         not_an_iso_date: "nu este o dată validă. Formatul necesar: AAAA-MM-ZZ."
         not_same_project: "nu aparține aceluiași proiect."
+        datetime_must_be_in_future: "must be in the future."
         odd: "trebuie să fie impar."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "nu a putut fi validată cu expresia regulată asociată."
@@ -1102,16 +1140,38 @@ ro:
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
               must_be_a_stage: "must be a Project::Stage"
               must_be_a_gate: "must be a Project::Gate"
+              type_and_class_name_mismatch: "must match the instantiated class name"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign `end_date` to a Project::Gate"
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+            type:
+              type_and_class_name_mismatch: "must be a Project::Gate"
+            date:
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "start date must be before the end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              incomplete: "is incomplete."
+            type:
+              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1331,6 +1391,8 @@ ro:
         other: "Notificări"
       placeholder_user: "Utilizator Placeholder"
       project: "Proiect"
+      project/gate_definition: "Gate"
+      project/stage_definition: "Stage"
       project_query:
         one: "Project list"
         few: "Project lists"
@@ -1441,6 +1503,7 @@ ro:
     login: "Utilizator"
     mail: "E-mail"
     name: "Nume"
+    note: "Note"
     password: "Parolă"
     priority: "Prioritate"
     project: "Proiect"
@@ -1537,6 +1600,7 @@ ro:
   button_print: "Tipărește"
   button_quote: "Citare"
   button_remove: Eliminare
+  button_remove_reminder: "Remove reminder"
   button_rename: "Redenumește"
   button_replace: "Înlocuiește"
   button_revoke: "Revocă"
@@ -1547,6 +1611,7 @@ ro:
   button_save_as: "Salvează ca"
   button_apply_changes: "Aplică modificările"
   button_save_back: "Salvează și înapoi"
+  button_set_reminder: "Set reminder"
   button_show: "Afişare"
   button_sort: "Sortare"
   button_submit: "Trimitere"
@@ -1770,12 +1835,12 @@ ro:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
       form_configuration:
         description: "Personalizați configurația formularului cu aceste add-on-uri suplimentare:"
         add_groups: "Adaugă noi grupuri de atribut"
         rename_groups: "Redenumește atribute grupuri"
-      project_filters:
-        description_html: "Filtrarea și sortarea pe câmpuri personalizate este un supliment al ediției Enterprise."
   enumeration_activities: "Activități de urmărire timp activate"
   enumeration_work_package_priorities: "Priorități pentru pachetele de lucru"
   enumeration_reported_project_statuses: "Stările proiectului raportat"
@@ -1808,6 +1873,7 @@ ro:
   error_pdf_export_too_many_columns: "Prea multe coloane selectate pentru exportul PDF. Vă rugăm să reduceți numărul de coloane."
   error_pdf_failed_to_export: "Exportul pdf nu poate fi salvat: %{error}"
   error_token_authenticity: "Nu se poate verifica tokenul Cross-Site Request Forgery. Ați încercat să trimiteți datele pe mai multe browsere sau tab-uri? Vă rugăm să închideți toate filele și să încercați din nou."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Pachetul de lucru nu a fost găsit sau nu aparține acestui proiect"
   error_work_package_id_not_found: "Pachetul de lucru nu a fost găsit."
   error_must_be_project_member: "trebuie să fie membru al proiectului"
@@ -1908,7 +1974,7 @@ ro:
           drag_area_label: "Manage long text fields"
       xls:
         include_relations:
-          label: "Include relations"
+          label: "Include relații"
           caption: "Această opțiune va crea un duplicat al fiecărui pachet de lucru pentru fiecare relație pe care acesta o are cu un alt pachet de lucru."
         include_descriptions:
           label: "Include descriptions"
@@ -2101,6 +2167,7 @@ ro:
       responsible: "Responsabil"
       shared: "Partajat"
       watched: "Observator"
+      reminder: "Reminder"
     facets:
       unread: "Necitite"
       unread_title: "Afișare necitite"
@@ -2268,8 +2335,10 @@ ro:
   label_default: "Implicit"
   label_delete_user: "Șterge utilizator"
   label_delete_project: "Ștergeți proiectul"
+  label_delete: "Delete"
   label_deleted: "șters"
   label_deleted_custom_field: "(câmp personalizat șters)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opțiune eliminată)"
   label_empty_element: "(gol)"
   label_missing_or_hidden_custom_option: "(valoare lipsă sau lipsa permisiunilor de acces)"
@@ -2306,7 +2375,6 @@ ro:
   label_enterprise_active_users: "%{current}/%{limit} numărul de utilizatori activi rezervați"
   label_enterprise_edition: "Ediția Enterprise"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "Mediu"
   label_estimates_and_progress: "Estimări și progrese"
   label_equals: "este"
@@ -2491,6 +2559,7 @@ ro:
   label_none_parentheses: "(nimic)"
   label_not_contains: "nu conține"
   label_not_equals: "nu este"
+  label_life_cycle_step_plural: "Project lifecycle"
   label_on: "pe"
   label_operator_all: "nu este gol"
   label_operator_none: "este gol"
@@ -2575,8 +2644,8 @@ ro:
   label_related_work_packages: "Pachete de lucru asociate"
   label_relates: "asociat cu"
   label_relates_to: "asociat cu"
-  label_relation: "Relation"
-  label_relation_actions: "Relation actions"
+  label_relation: "Relație"
+  label_relation_actions: "Acțiuni relație"
   label_relation_delete: "Ștergere relație"
   label_relation_new: "Relație nouă"
   label_release_notes: "Note privind lansarea noii versiuni"
@@ -2592,6 +2661,7 @@ ro:
   label_reporting: "Raportare"
   label_reporting_plural: "Raportări"
   label_repository: "Repo"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Rădăcina repo-ului"
   label_repository_plural: "Repo-uri"
   label_required: "obligatoriu"
@@ -2654,6 +2724,7 @@ ro:
   label_this_month: "luna curentă"
   label_this_week: "săptămâna curentă"
   label_this_year: "anul curent"
+  label_time: "Time"
   label_time_entry_plural: "Timp consumat"
   label_time_entry_activity_plural: "Activități timp consumat"
   label_title: "Titlu"
@@ -2689,6 +2760,7 @@ ro:
   label_user_settings: "Setări utilizator"
   label_users_settings: "Users settings"
   label_version_new: "Versiune nouă"
+  label_version_edit: "Edit version"
   label_version_plural: "Versiuni"
   label_version_sharing_descendants: "Cu subproiecte"
   label_version_sharing_hierarchy: "Cu ierarhia de proiect"
@@ -2827,8 +2899,13 @@ ro:
         prefix: "Primită din cauza setării de notificare: %{reason}"
         date_alert_start_date: "Alertă dată"
         date_alert_due_date: "Alertă de dată"
+        reminder: "Reminder"
       see_all: "Vezi tot"
       updated_at: "Actualizat în %{timestamp} de %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."
@@ -2994,6 +3071,7 @@ ro:
   notice_successful_connection: "Conectare reușită."
   notice_successful_create: "Creare reuşită."
   notice_successful_delete: "Ştergere reuşită."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Actualizare reușită."
   notice_successful_update_custom_fields_added_to_project: |
     Actualizare reușită. Câmpurile personalizate ale tipurilor activate sunt activate automat
@@ -3072,6 +3150,7 @@ ro:
   permission_edit_own_time_entries: "Editare jurnale de timp proprii"
   permission_edit_project: "Editare proiect"
   permission_edit_project_attributes: "Edit project attributes"
+  permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "Editare raportări"
   permission_edit_time_entries: "Editați jurnalele de timp pentru alți utilizatori"
   permission_edit_timelines: "Editare linii de timp"
@@ -3101,9 +3180,12 @@ ro:
   permission_search_project: "Caută proiect"
   permission_select_custom_fields: "Selectează câmpuri personalizate"
   permission_select_project_custom_fields: "Select project attributes"
+  permission_select_project_life_cycle: "Select project stages and gates"
+  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Selectare module proiect"
   permission_share_work_packages: "Partajare pachete de lucru"
   permission_manage_types: "Selectare tipuri"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Vezi proiecte"
   permission_view_changesets: "Vizualizare revizii repo în OpenProject"
   permission_view_commit_author_statistics: "Vizualizare statistici autor înregistrări"
@@ -3124,6 +3206,7 @@ ro:
   permission_work_package_assigned_explanation: "Pachetele de lucru pot fi atribuite utilizatorilor și grupurilor care dețin acest rol în proiectul respectiv"
   permission_view_project_activity: "Vezi activitate proiect"
   permission_view_project_attributes: "Vezi atribute proiect"
+  permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
@@ -3805,6 +3888,12 @@ ro:
       edit_description: "Can view, comment and edit this work package."
       view: "Vizualizează"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"

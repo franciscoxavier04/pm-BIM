@@ -52,11 +52,18 @@ uk:
         presenter: "Доповідач"
       meeting_section:
         title: "Назва "
+      recurring_meeting:
+        frequency: "Частота"
+        interval: "Інтервал"
+        start_date: "Починається"
+        end_after: "Завершення серії після"
+        iterations: "Повторення"
     errors:
       messages:
         invalid_time_format: "не є допустимим часом. Необхідний формат: HH:MM"
     models:
-      structured_meeting: "Нарада (динамічна)"
+      recurring_meeting: "Повторювана нарада"
+      structured_meeting: "Одноразова нарада"
       meeting_agenda_item: "Порядок денний"
       meeting_agenda: "Порядок денний"
       meeting_minutes: "Хвилини"
@@ -90,7 +97,8 @@ uk:
   label_meeting: "Зустріч"
   label_meeting_plural: "Зустрічі"
   label_meeting_new: "Нова зустріч"
-  label_meeting_new_dynamic: "Нова динамічна нарада"
+  label_meeting_new_dynamic: "Нова одноразова нарада"
+  label_meeting_new_recurring: "Нова повторювана нарада"
   label_meeting_create: "Створити нараду"
   label_meeting_copy: "Копіювати нараду"
   label_meeting_edit: "Редагувати збори"
@@ -104,23 +112,54 @@ uk:
   label_meeting_date_time: "Дата, час"
   label_meeting_date_and_time: "Дата й час"
   label_meeting_diff: "Відмінність"
+  label_recurring_meeting: "Повторювана нарада"
+  label_recurring_meeting_part_of: "Частина серії нарад"
+  label_recurring_meeting_new: "Нова повторювана нарада"
+  label_recurring_meeting_plural: "Повторювані наради"
+  label_template: "Шаблон"
+  label_recurring_meeting_view: "Переглянути серію нарад"
+  label_recurring_meeting_create: "Створити на основі шаблона"
+  label_recurring_meeting_copy: "Копіювати як одноразову"
+  label_recurring_meeting_cancel: "Скасувати це повторення"
+  label_recurring_meeting_delete: "Видалити повторення"
+  label_recurring_meeting_delete_confirmation: >
+    Ця нарада належить до серії з назвою %{name}. Буде видалено лише це повторення, а не всю серію. Продовжити?
+  label_recurring_occurrence_delete_confirmation: >
+    Будь-яку інформацію про нараду, відсутню в шаблоні, буде втрачено. Продовжити?
+  label_recurring_meeting_restore: "Відновити це повторення"
+  label_recurring_meeting_more: "Є інші (%{count}) заплановані наради (%{schedule})."
+  label_recurring_meeting_more_singular: "Є ще %{count} запланована нарада (%{schedule})."
+  label_recurring_meeting_more_past: "Є інші (%{count}) завершені наради."
+  label_recurring_meeting_more_past_singular: "Є ще %{count} завершена нарада."
+  label_recurring_meeting_show_more: "Показати більше"
+  label_recurring_meeting_series_edit: "Редагувати серію нарад"
+  label_recurring_meeting_series_delete: "Видалити серію нарад"
+  label_my_meetings: "Мої наради"
+  label_all_meetings: "Усі наради"
   label_upcoming_meetings: "Майбутні заходи"
   label_past_meetings: "Минулі заходи"
   label_upcoming_meetings_short: "Майбутні"
   label_past_meetings_short: "Минулі"
   label_involvement: "Участь"
-  label_upcoming_invitations: "Майбутні запрошення"
+  label_invitations: "Запрошення"
+  label_invited_user: "Запрошений користувач"
   label_past_invitations: "Минулі запрошення"
-  label_attendee: "Учасник"
-  label_author: "Автор"
+  label_attended: "Відвідано"
+  label_attended_user: "Користувач-учасник"
+  label_created_by_me: "Створено мною"
   label_notify: "Надіслати на розгляд"
   label_icalendar: "Надіслати iCalendar"
   label_icalendar_download: "Завантажити подію iCalendar"
+  label_view_meeting_series: "Переглянути серію нарад"
+  label_meeting_series: "Серія нарад"
   label_version: "Версія"
   label_time_zone: "Часовий пояс"
   label_start_date: "Дата початку"
   meeting:
+    participants:
+      template: "Ці учасники автоматично отримуватимуть запрошення на всі майбутні наради, які ви створюватимете."
     attachments:
+      template: "Ці прикріплені файли додаватимуться до всіх майбутніх нарад серії."
       text: "Прикріплені файли доступні всім учасникам наради. Ви також можете перетягнути їх у примітки до пунктів порядку денного."
     copy:
       title: "Копіювати нараду: %{title}"
@@ -147,9 +186,12 @@ uk:
     label_mail_all_participants: "Надіслати лист усім учасникам"
     types:
       classic: "Класична"
-      classic_text: "Організуйте нараду у вигляді порядку денного й протоколу в текстовому форматі з підтримкою редагування."
-      structured: "Динамічна"
-      structured_text: "Організуйте нараду у вигляді переліку пунктів порядку денного, за бажанням пов’язавши їх із пакетом робіт."
+      classic_text: "Упорядкуйте нараду у вигляді порядку денного й протоколу в текстовому форматі з підтримкою редагування."
+      structured: "Структурована"
+      one_time: "Одноразова"
+      recurring: "Повторювана"
+      recurring_text: "Створюйте серії нарад на основі динамічного шаблона для кожної події."
+      structured_text: "Упорядкуйте нараду у вигляді динамічного переліку пунктів порядку денного, за бажанням пов’язавши їх із пакетом робіт."
       structured_text_copy: "Зараз копіювання наради стосується лише докладних даних про неї, але не пов’язаних пунктів її порядку денного"
     copied: "Скопійовано з наради #%{id} "
   meeting_section:
@@ -157,6 +199,40 @@ uk:
     delete_confirmation: "Видалення цього розділу також призведе до видалення його елементів порядку денного. Ви впевнені?"
     placeholder_title: "Новий розділ"
     empty_text: "Перетягніть елементи сюди або створіть новий"
+  recurring_meeting:
+    occurrence:
+      infoline: "Ця нарада належить до серії повторюваних нарад."
+      error_no_next: "Це одноразова нарада."
+      first_already_exists: "Перша нарада із цієї серії вже відбулася."
+      first_created: >
+        Першу нараду створено на основі шаблона. Усі наступні наради створюватимуться автоматично в момент початку попередніх.
+    template:
+      button_finalize: "Завершити шаблон"
+      blank_title: "Ваш шаблон серії нарад порожній"
+      description: >
+        Цей шаблон використовуватиметься щоразу, коли створюватимуться нові наради в серії. Ви можете додавати до нього пункти порядку денного, учасників і вкладення.
+      blankslate_finalize: >
+        Коли завершите підготовку цього шаблона, натисніть кнопку "%{button_title}" вище, щоб завершити налаштування й запланувати першу нараду серії.
+      label_view_template: "Переглянути шаблон"
+      label_edit_template: "Редагувати шаблон"
+      banner_html: >
+        Ви редагуєте шаблон серії нарад: %{link}. Кожна нова нарада в серії буде створюватиметься на основі цього шаблона. Зміни не вплинуть на завершені або вже створені наради.
+    frequency:
+      every_weekday: "Кожний(-на) %{day_of_the_week}"
+      daily: "Щодня"
+      working_days: "Кожен робочий день"
+      weekly: "Щотижня"
+    end_after:
+      specific_date: "конкретна дата"
+      iterations: "кількість повторень"
+    starts: "Починається"
+    in_words:
+      daily_interval: "Через %{interval} дн."
+      working_days: "Кожен робочий день"
+      weekly: "Щотижня в %{weekday}"
+      weekly_interval: "Через %{interval} тижн. у %{weekday}"
+      frequency: "%{base} о %{time}"
+      full: "%{base} о %{time}, закінчується %{end_date}"
   notice_successful_notification: "Повідомлення успішно надіслано"
   notice_timezone_missing: Часовий пояс не встановлено і %{zone} передбачається. Щоб вибрати часовий пояс, натисніть тут.
   notice_meeting_updated: "Цю сторінку оновив інший користувач. Перезавантажте її, щоб побачити зміни."
@@ -209,12 +285,17 @@ uk:
   text_deleted_agenda_item: 'Видалений пункт порядку денного'
   label_initial_meeting_details: "Нарада"
   label_meeting_details: "Інформація про зустріч"
+  label_meeting_series_details: "Деталі серії нарад"
   label_meeting_details_edit: "Редагувати інформацію про зустріч"
   label_meeting_state: "Статус наради"
   label_meeting_state_open: "Відкрити"
   label_meeting_state_open_html: "<i>Відкрита</i>"
   label_meeting_state_closed: "Закрито"
   label_meeting_state_closed_html: "<i>Закрита</i>"
+  label_meeting_state_agenda_created: "Порядок денний створено"
+  label_meeting_state_scheduled: "Заплановано"
+  label_meeting_state_cancelled: "Скасовано"
+  label_meeting_state_skipped: "Пропущено"
   label_meeting_reopen_action: "Відкрити зустріч знову"
   label_meeting_close_action: "Закрити зустріч"
   text_meeting_open_description: "Це відкрита нарада. Ви можете додавати або вилучати пункти порядку денного й редагувати їх. Коли нарада завершиться, закрийте її, щоб заблокувати."

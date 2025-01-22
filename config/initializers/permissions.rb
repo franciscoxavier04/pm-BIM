@@ -133,6 +133,26 @@ Rails.application.reloader.to_prepare do
                      permissible_on: :project,
                      require: :member
 
+      map.permission :view_project_stages_and_gates,
+                     {},
+                     permissible_on: :project,
+                     dependencies: :view_project
+
+      map.permission :edit_project_stages_and_gates,
+                     {},
+                     permissible_on: :project,
+                     require: :member,
+                     dependencies: :view_project_stages_and_gates,
+                     contract_actions: { projects: %i[update] }
+
+      map.permission :select_project_life_cycle,
+                     {
+                       "projects/settings/life_cycle_steps": %i[index toggle enable_all disable_all]
+                     },
+                     permissible_on: :project,
+                     require: :member,
+                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
+
       map.permission :manage_members,
                      {
                        members: %i[index new create update destroy destroy_by_principal autocomplete_for_member menu],
@@ -225,7 +245,8 @@ Rails.application.reloader.to_prepare do
                        "work_packages/activities_tab": %i[index update_streams update_sorting update_filter],
                        "work_packages/menus": %i[show],
                        "work_packages/hover_card": %i[show],
-                       work_package_relations_tab: %i[index]
+                       work_package_relations_tab: %i[index],
+                       "work_packages/reminders": %i[modal_body create update destroy]
                      },
                      permissible_on: %i[work_package project],
                      contract_actions: { work_packages: %i[read] }

@@ -52,12 +52,21 @@ module Pages::Meetings
     end
 
     def set_start_date(date)
-      fill_in "Date", with: date, fill_options: { clear: :backspace }
+      fill_in "Date", with: date
+    end
+
+    def set_starts_on(date)
+      fill_in "Starts on", with: date
     end
 
     def set_start_time(time)
       input = page.find_by_id("meeting_start_time_hour")
       page.execute_script("arguments[0].value = arguments[1]", input.native, time)
+      page.execute_script("arguments[0].dispatchEvent(new Event('input'))", input.native)
+    end
+
+    def set_end_date(date)
+      fill_in "End date", with: date, fill_options: { clear: :backspace }
     end
 
     def set_project(project)
@@ -100,7 +109,7 @@ module Pages::Meetings
       click_on("add-meeting-button")
 
       expect(page).to have_link("Classic")
-      expect(page).to have_link("Dynamic")
+      expect(page).to have_link("One-time")
     end
 
     def expect_copy_action(meeting)
@@ -135,6 +144,18 @@ module Pages::Meetings
 
     def set_sidebar_filter(filter_name)
       submenu.click_item(filter_name)
+    end
+
+    def set_quick_filter(upcoming: true)
+      page.within("#content-body") do
+        if upcoming
+          click_link_or_button "Upcoming"
+        else
+          click_link_or_button "Past"
+        end
+      end
+
+      wait_for_network_idle
     end
 
     def expect_no_meetings_listed

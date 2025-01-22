@@ -86,6 +86,11 @@ it:
   validation_failure_date: "non è una data valida"
   validation_failure_integer: "non è un numero intero valido"
   export:
+    timesheet:
+      title: "Esportazione del tuo foglio presenze in formato PDF"
+      button: "Esportazione del foglio presenze in PDF"
+      timesheet: "Foglio presenze"
+      time: "Ora"
     cost_reports:
       title: "Esportazione XLS dei report sui costi"
   reporting:

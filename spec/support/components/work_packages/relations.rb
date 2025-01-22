@@ -187,7 +187,7 @@ module Components
           fill_in "Description", with: description
         end
 
-        click_link_or_button "Save"
+        click_link_or_button "Add"
 
         wait_for_reload if using_cuprite?
 
@@ -201,7 +201,7 @@ module Components
         find_row(target_wp)
       end
 
-      def add_description_to_relation(relatable, description)
+      def edit_relation_description(relatable, description)
         open_relation_dialog(relatable)
 
         within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
@@ -216,14 +216,14 @@ module Components
         end
       end
 
-      def edit_relation_description(relatable, description)
+      def edit_lag_of_relation(relatable, lag)
         open_relation_dialog(relatable)
 
         within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
           expect(page).to have_field("Work package", readonly: true)
-          expect(page).to have_field("Description")
+          expect(page).to have_field("Lag")
 
-          fill_in "Description", with: description
+          fill_in "Lag", with: lag
 
           click_link_or_button "Save"
 

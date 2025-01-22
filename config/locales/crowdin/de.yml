@@ -340,6 +340,9 @@ de:
         text: "Diese Aktion löscht keine Projekte, die in der Liste enthalten sind. Sind Sie sicher, dass Sie diese Projektliste löschen möchten?"
     settings:
       change_identifier: Kennung ändern
+      actions:
+        label_enable_all: "Alles aktivieren"
+        label_disable_all: "Alles deaktivieren"
       activities:
         no_results_title_text: Zur Zeit stehen keine Aktivitäten zur Verfügung.
       forums:
@@ -350,18 +353,26 @@ de:
         no_results_content_text: Neue Arbeitspaket-Kategorie erstellen
       custom_fields:
         no_results_title_text: Derzeit stehen keine benutzerdefinierten Felder zur Verfügung.
+      life_cycle:
+        header:
+          title: "Projektlebenszyklus"
+          description_html: 'Diese Stages und -Gates des Projektlebenszyklus werden auf Ihrer <a href=%{overview_url} target="_blank">Projektübersichtsseite</a> angezeigt und werden in den <a href=%{admin_settings_url} target="_blank">Administrationseinstellungen</a> vom Administrator der Instanz definiert. Sie können einzelne Attribute aktivieren oder deaktivieren.'
+        non_defined: "Keine Stages oder Gates definiert."
+        section_header: "Stages und Gates"
+        step:
+          use_in_project: "%{step} in diesem Projekt verwenden"
+        filter:
+          label: "Stage oder Gate suchen"
       project_custom_fields:
         header:
           title: "Projektattribute"
-          description: 'Diese Projektattribute werden auf Ihrer <a href=%{overview_url} target="_blank">Projektübersichtsseite</a> in den jeweiligen Abschnitten angezeigt. Sie können einzelne Attribute aktivieren oder deaktivieren. Projektattribute und -abschnitte werden in den <a href=%{admin_settings_url} target="_blank">Administrationseinstellungen</a> durch den Administrator der Instanz definiert. '
+          description_html: 'Diese Projektattribute werden auf Ihrer <a href=%{overview_url} target="_blank">Projektübersichtsseite</a> in den jeweiligen Abschnitten angezeigt. Sie können einzelne Attribute aktivieren oder deaktivieren. Projektattribute und -abschnitte werden in den <a href=%{admin_settings_url} target="_blank">Administrationseinstellungen</a> durch den Administrator der Instanz definiert. '
         filter:
           label: "Projektattribut suchen"
         actions:
           label_enable_single: "In diesem Projekt aktiv, zum Deaktivieren anklicken"
           label_disable_single: "In diesem Projekt inaktiv, zum Aktivieren anklicken"
           remove_from_project: "Aus dem Projekt entfernen"
-          label_enable_all: "Alles aktivieren"
-          label_disable_all: "Alles deaktivieren"
         is_required_blank_slate:
           heading: In allen Projekten erforderlich
           description: Dieses Projekt-Attribut ist in allen Projekten aktiviert, da die Option "Benötigt in allen Projekten" aktiviert ist. Es kann nicht für einzelne Projekte deaktiviert werden.
@@ -374,6 +385,10 @@ de:
         no_results_content_text: Neue Version erstellen
       storage:
         no_results_title_text: Durch dieses Projekt wird kein zusätzlicher erfasster Speicherplatz verbraucht.
+  project_stage:
+    working_days_count:
+      one: "Dauer: %{count} Arbeitstag"
+      other: "Dauer: %{count} Arbeitstage"
   lists:
     create:
       success: "Die geänderte Liste wurde als neue Liste gespeichert"
@@ -494,8 +509,12 @@ de:
     groups:
       member_in_these_groups: "Dieser Benutzer ist Mitglied der folgenden Gruppen:"
       no_results_title_text: Dieser Benutzer ist derzeit kein Mitglied in einer Gruppe.
+      summary_with_more: Mitglied von %{names} und %{count_link}.
+      more: "%{count} weitere"
+      summary: Mitglied von %{names}.
     memberships:
       no_results_title_text: Dieser Nutzer ist derzeit in keinem Projekt Mitglied.
+    open_profile: "Profil öffnen"
   page:
     text: "Text"
   placeholder_users:
@@ -562,18 +581,27 @@ de:
       no_results_title_text: Derzeit gibt es keine Typen.
       no_results_content_text: Neuen Typ erstellen
     edit:
-      settings: "Einstellungen"
-      form_configuration: "Formularkonfiguration"
+      form_configuration:
+        tab: "Form-Konfiguration"
       more_info_text_html: >
         Mit der Enterprise Edition können Sie die Formularkonfiguration mit diesen zusätzlichen Add-ons anpassen: <br> <ul class="%{list_styling_class}"> <li><b>Neue Attributgruppen hinzufügen</b></li> <li><b>Attributgruppen umbenennen</b></li> </li> <li><b>Eine Tabelle mit verwandten Arbeitspaketen hinzufügen</b></li> </ul>
-      projects: "Projekte"
-      enabled_projects: "Aktivierte Projekte"
-      edit_query: "Tabelle bearbeiten"
-      query_group_placeholder: "Benennen Sie die Tabelle"
-      reset: "Auf Standardwerte zurücksetzen"
-      type_color_text: |
-        Die ausgewählte Farbe unterscheidet verschiedene Typen
-        in Gantt-Diagrammen oder Arbeitspakettabellen. Es wird daher empfohlen, eine kontrastreiche Farbe zu verwenden.
+      projects:
+        tab: "Projekte"
+        enabled_projects: "Aktivierte Projekte"
+      settings:
+        tab: "Einstellungen"
+        type_color_text: "Die ausgewählte Farbe unterscheidet verschiedene Typen\nin Gantt-Diagrammen und Arbeitspakettabellen. Es wird daher empfohlen, gut unterscheidbare Farben zu verwenden."
+      subject_configuration:
+        tab: "Thema konfigurieren"
+        manually_editable_subjects:
+          label: "Manuell bearbeitbare Themen"
+          caption: "Benutzer können die Themen der Arbeitspakete ohne Einschränkungen manuell eingeben und bearbeiten."
+        automatically_generated_subjects:
+          label: "Automatisch generierte Themen"
+          caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspaketthemen. Nutzer können diese nicht manuell editieren."
+        pattern:
+          label: "Thema-Schema"
+          caption: "Suchen Sie nach einem Attribut oder fügen Sie Text hinzu. Um ein Leerzeichen zwischen Elementen zu erstellen, fügen Sie es als Text hinzu."
   versions:
     overview:
       work_packages_in_archived_projects: "Die Version wird mit archivierten Projekten geteilt, die immer noch Arbeitspakete auf diese Version zugewiesen haben. Die Arbeitspakete werden beim Zählen berücksichtigt, erscheinen aber nicht in den verknüpften Ansichten."
@@ -636,6 +664,10 @@ de:
     label_add_x: "%{x} hinzufügen"
     label_edit_x: "%{x} editieren"
     label_add_description: "Beschreibung hinzufügen"
+    lag:
+      subject: "Verzögerung"
+      title: "Verzögerung (in Tagen)"
+      caption: "Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen."
     relations:
       label_relates_singular: "Beziehung mit"
       label_relates_plural: "Beziehungen mit"
@@ -840,6 +872,9 @@ de:
         lag: "Verzögerung"
         from: "Arbeitspaket"
         to: "Zugehöriges Arbeitspaket"
+      reminder:
+        remind_at_date: "Datum"
+        remind_at_time: "Zeit"
       repository:
         url: "URL"
       role:
@@ -928,6 +963,7 @@ de:
       messages:
         accepted: "muss akzeptiert werden."
         after: "muss nach %{date} sein."
+        after_today: "muss in der Zukunft liegen."
         after_or_equal_to: "muss nach oder gleich %{date} sein."
         before: "muss vor %{date} sein."
         before_or_equal_to: "muss vor oder gleich %{date} sein."
@@ -974,6 +1010,7 @@ de:
         not_an_integer: "ist keine ganzzahlige Zahl."
         not_an_iso_date: "ist kein gültiges Datum - Erwartetes Format: YYY-MM-DD."
         not_same_project: "gehört nicht zum selben Projekt."
+        datetime_must_be_in_future: "muss in der Zukunft liegen."
         odd: "muss ungerade sein."
         regex_match_failed: "stimmt nicht mit dem regulären Ausdruck %{expression} überein."
         regex_invalid: "konnte nicht mit dem zugehörigen regulären Ausdruck überprüft werden."
@@ -1087,16 +1124,38 @@ de:
           attributes:
             type:
               must_be_a_stage_or_gate: "muss entweder ein Project::StageDefinition oder Project::GateDefinition sein"
+              type_and_class_name_mismatch: "muss mit dem instanziierten Klassennamen übereinstimmen"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "muss eine Project::GateDefinition sein"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "muss eine Project::StageDefinition sein"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "muss entweder ein Project::Stage oder Project::Gate sein"
               must_be_a_stage: "muss ein Project::Stage sein"
               must_be_a_gate: "muss ein Project::Gate sein"
+              type_and_class_name_mismatch: "muss mit dem instanziierten Klassennamen übereinstimmen"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Einem Project::Gate kann kein `end_date` zugewiesen werden"
+              end_date_not_allowed: "Kann einem Project::Gate kein Enddatum zuweisen"
+            type:
+              type_and_class_name_mismatch: "muss ein Project::Gate sein"
+            date:
+              non_continuous_dates: "kann nicht vor dem Enddatum des vorherigen %{step} liegen."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "Startdatum muss vor dem Enddatum liegen."
+              non_continuous_dates: "kann nicht vor dem vorherigen Enddatum von %{step} liegen."
+              incomplete: "ist unvollständig."
+            type:
+              type_and_class_name_mismatch: "muss ein Project::Stage sein"
         query:
           attributes:
             project:
@@ -1313,6 +1372,8 @@ de:
         other: "Benachrichtigungen"
       placeholder_user: "Platzhalter-Benutzer"
       project: "Projekt"
+      project/gate_definition: "Gate"
+      project/stage_definition: "Stage"
       project_query:
         one: "Projektlisten"
         other: "Projektlisten"
@@ -1416,6 +1477,7 @@ de:
     login: "Benutzername"
     mail: "E-Mail"
     name: "Name"
+    note: "Anmerkung"
     password: "Kennwort"
     priority: "Priorität"
     project: "Projekt"
@@ -1512,6 +1574,7 @@ de:
   button_print: "Drucken"
   button_quote: "Zitieren"
   button_remove: Entfernen
+  button_remove_reminder: "Erinnerung entfernen"
   button_rename: "Umbenennen"
   button_replace: "Ersetzen"
   button_revoke: "Widerrufen"
@@ -1522,6 +1585,7 @@ de:
   button_save_as: "Speichern unter"
   button_apply_changes: "Änderungen anwenden"
   button_save_back: "Speichern und zurück"
+  button_set_reminder: "Erinnerung einrichten"
   button_show: "Anzeigen"
   button_sort: "Sortierung"
   button_submit: "OK"
@@ -1727,12 +1791,12 @@ de:
   direction: ltr
   ee:
     upsale:
+      title: "Enterprise Add-on"
+      link_title: "Weitere Informationen"
       form_configuration:
         description: "Anpassen der Form-Konfiguration mit diesen zusätzlichen Add-ons:"
         add_groups: "Neue Attributgruppen hinzufügen"
         rename_groups: "Attributgruppen umbenennen"
-      project_filters:
-        description_html: "Filtern und Sortieren auf benutzerdefinierten Feldern ist ein Add-on der Enterprise Edition."
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projekt-Status"
@@ -1765,6 +1829,7 @@ de:
   error_pdf_export_too_many_columns: "Zu viele Spalten für PDF-Export ausgewählt. Bitte reduzieren Sie die Anzahl der ausgewählten Spalten."
   error_pdf_failed_to_export: "Der PDF-Export konnte nicht gespeichert werden: %{error}"
   error_token_authenticity: "Das Cross-Site Request Forgery Token konnte nicht verfiziert werden. Wenn Sie versucht haben, Daten auf mehreren Tabs oder Browsern abzuspeichern, schließen sie diese und laden diese Seite erneut um den Vorgang zu wiederholen."
+  error_reminder_not_found: "Die Erinnerung wurde nicht gefunden oder wurde bereits benachrichtigt."
   error_work_package_not_found_in_project: "Das Arbeitspaket wurde nicht gefunden oder gehört nicht zu diesem Projekt."
   error_work_package_id_not_found: "Das Arbeitspaket wurde nicht gefunden."
   error_must_be_project_member: "muss Mitglied des Projekts sein"
@@ -2058,6 +2123,7 @@ de:
       responsible: "Verantwortlich"
       shared: "Geteilt"
       watched: "Beobachter"
+      reminder: "Erinnerung"
     facets:
       unread: "Ungelesen"
       unread_title: "Ungelesene anzeigen"
@@ -2225,8 +2291,10 @@ de:
   label_default: "Standard"
   label_delete_user: "Benutzer löschen"
   label_delete_project: "Projekt löschen"
+  label_delete: "Löschen"
   label_deleted: "gelöscht"
   label_deleted_custom_field: "(gelöschtes benutzerdefiniertes Feld)"
+  label_deleted_custom_item: "(gelöschter Eintrag)"
   label_deleted_custom_option: "(gelöschte Option)"
   label_empty_element: "(leer)"
   label_missing_or_hidden_custom_option: "(Fehlender Wert oder fehlende Zugriffsberechtigungen)"
@@ -2263,7 +2331,6 @@ de:
   label_enterprise_active_users: "%{current}/%{limit} gebuchte aktive Nutzer"
   label_enterprise_edition: "Enterprise Edition"
   label_enterprise_support: "Enterprise Support"
-  label_enterprise_addon: "Enterprise Add-on"
   label_environment: "Umgebung"
   label_estimates_and_progress: "Schätzungen und Fortschritt"
   label_equals: "ist"
@@ -2448,6 +2515,7 @@ de:
   label_none_parentheses: "(keiner)"
   label_not_contains: "enthält nicht"
   label_not_equals: "ist nicht"
+  label_life_cycle_step_plural: "Projektlebenszyklus"
   label_on: "am"
   label_operator_all: "ist nicht leer"
   label_operator_none: "ist leer"
@@ -2549,6 +2617,7 @@ de:
   label_reporting: "Statusbericht"
   label_reporting_plural: "Statusberichte"
   label_repository: "Projektarchiv"
+  label_repository_remove: "Projektarchiv entfernen"
   label_repository_root: "Stammverzeichnis des Projektarchivs"
   label_repository_plural: "Projektarchive"
   label_required: "benötigt von"
@@ -2611,6 +2680,7 @@ de:
   label_this_month: "aktueller Monat"
   label_this_week: "aktuelle Woche"
   label_this_year: "aktuelles Jahr"
+  label_time: "Zeit"
   label_time_entry_plural: "Aufgewendete Zeit"
   label_time_entry_activity_plural: "Zeitbuchung-Aktivität"
   label_title: "Titel"
@@ -2646,6 +2716,7 @@ de:
   label_user_settings: "Benutzereinstellungen"
   label_users_settings: "Benutzereinstellungen"
   label_version_new: "Neue Version"
+  label_version_edit: "Version bearbeiten"
   label_version_plural: "Versionen"
   label_version_sharing_descendants: "Mit Unterprojekten"
   label_version_sharing_hierarchy: "Mit Projekthierarchie"
@@ -2783,8 +2854,13 @@ de:
         prefix: "Erhalten aufgrund Benachrichtigungseinstellung: %{reason}"
         date_alert_start_date: "Datums-Erinnerung"
         date_alert_due_date: "Datums-Erinnerung"
+        reminder: "Erinnerung"
       see_all: "Alle anzeigen"
       updated_at: "Aktualisiert %{timestamp} von %{user} "
+    reminder_notifications:
+      subject: "Erinnerung: %{note}"
+      heading: "Sie haben eine neue Erinnerung"
+      note: "Anmerkung: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Sie haben auf diesem Arbeitspakte folgende Berechtigungen: %{allowed_actions}. Dies kann sich je nach Ihrer Projektrolle und Berechtigungen ändern."
@@ -2951,6 +3027,7 @@ de:
   notice_successful_connection: "Verbindung erfolgreich."
   notice_successful_create: "Erfolgreich angelegt."
   notice_successful_delete: "Erfolgreich gelöscht."
+  notice_successful_cancel: "Erfolgreiche Absage."
   notice_successful_update: "Erfolgreich aktualisiert."
   notice_successful_update_custom_fields_added_to_project: |
     Erfolgreich aktualisiert. Die benutzerdefinierten Felder der aktivierten Typen werden automatisch
@@ -3028,6 +3105,7 @@ de:
   permission_edit_own_time_entries: "Selbstgebuchte Aufwände bearbeiten"
   permission_edit_project: "Projekt bearbeiten"
   permission_edit_project_attributes: "Projektattribute bearbeiten"
+  permission_edit_project_stages_and_gates: "Projekt-Stages und Gates bearbeiten"
   permission_edit_reportings: "Statusberichte bearbeiten"
   permission_edit_time_entries: "Zeitaufwand für andere Benutzer bearbeiten"
   permission_edit_timelines: "Zeitplan-Reporte bearbeiten"
@@ -3057,9 +3135,12 @@ de:
   permission_search_project: "Projekt suchen"
   permission_select_custom_fields: "Benutzerdefinierte Felder verwalten"
   permission_select_project_custom_fields: "Projektattribute auswählen"
+  permission_select_project_life_cycle: "Projekt-Stages und Gates wählen"
+  permission_select_project_life_cycle_explanation: "(De-)Aktivieren der Stages und Gates in einem Projekt. Erlaubt dem Nutzer die Auswahl des passenden Lebenszyklus-Modells da definierte, aber inaktive Stages und Gates weder auf der Projekt-Übersichtsseite noch in der Projektliste sichtbar sind."
   permission_select_project_modules: "Projektmodule auswählen"
   permission_share_work_packages: "Arbeitspakete teilen"
   permission_manage_types: "Typen auswählen"
+  permission_manage_own_reminders: "Eigene Erinnerungen erstellen"
   permission_view_project: "Projekt anzeigen"
   permission_view_changesets: "Revisionen des Projektarchivs in OpenProject ansehen"
   permission_view_commit_author_statistics: "Commit Autor Statistiken ansehen"
@@ -3080,6 +3161,7 @@ de:
   permission_work_package_assigned_explanation: "Arbeitspakete können Benutzern und Gruppen im Besitz dieser Rolle in dem jeweiligen Projekt zugeordnet werden"
   permission_view_project_activity: "Projektaktivität anzeigen"
   permission_view_project_attributes: "Projektattribute ansehen"
+  permission_view_project_stages_and_gates: "Projekt-Stages und Gates sehen"
   permission_save_bcf_queries: "BCF-Abfragen speichern"
   permission_manage_public_bcf_queries: "Öffentliche BCF-Abfragen verwalten"
   permission_edit_attribute_help_texts: "Attribut-Hilfetxt bearbeiten"
@@ -3759,6 +3841,12 @@ de:
       edit_description: "Kann dieses Arbeitspaket ansehen, kommentieren und editieren."
       view: "Ansicht"
       view_description: "Kann dieses Arbeitspaket ansehen."
+    reminders:
+      label_remind_at: "Datum"
+      note_placeholder: "Warum richten Sie diese Erinnerung ein?"
+      success_creation_message: "Erinnerung erfolgreich eingerichtet. Sie erhalten zum ausgewählten Zeitpunkt eine Benachrichtigung für dieses Arbeitspaket."
+      success_update_message: "Erinnerung aktualisiert erfolgreich."
+      success_deletion_message: "Erinnerung erfolgreich gelöscht."
   sharing:
     count:
       zero: "0 Benutzer"

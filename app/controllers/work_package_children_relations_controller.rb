@@ -46,7 +46,7 @@ class WorkPackageChildrenRelationsController < ApplicationController
     child = WorkPackage.find(params[:work_package][:id])
     service_result = set_relation(child:, parent: @work_package)
 
-    respond_with_relations_tab_update(service_result)
+    respond_with_relations_tab_update(service_result, relation_to_scroll_to: service_result.result)
   end
 
   def destroy
@@ -63,13 +63,14 @@ class WorkPackageChildrenRelationsController < ApplicationController
                                .call(parent:)
   end
 
-  def respond_with_relations_tab_update(service_result)
+  def respond_with_relations_tab_update(service_result, **)
     if service_result.success?
       @work_package.reload
       component = WorkPackageRelationsTab::IndexComponent.new(
         work_package: @work_package,
         relations: @work_package.relations.visible,
-        children: @work_package.children.visible
+        children: @work_package.children.visible,
+        **
       )
       replace_via_turbo_stream(component:)
       update_flash_message_via_turbo_stream(

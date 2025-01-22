@@ -50,11 +50,18 @@ pt-BR:
         presenter: "Apresentador"
       meeting_section:
         title: "Título"
+      recurring_meeting:
+        frequency: "Frequência"
+        interval: "Intervalo"
+        start_date: "Começa em"
+        end_after: "Encerrar série após"
+        iterations: "Ocorrências"
     errors:
       messages:
         invalid_time_format: "não é um horário válido. Formato exigido: HH:MM"
     models:
-      structured_meeting: "Reunião (dinâmica)"
+      recurring_meeting: "Reunião recorrente"
+      structured_meeting: "Reunião única"
       meeting_agenda_item: "Item da agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Atas"
@@ -88,7 +95,8 @@ pt-BR:
   label_meeting: "Reunião"
   label_meeting_plural: "Reuniões"
   label_meeting_new: "Nova Reunião"
-  label_meeting_new_dynamic: "Nova reunião dinâmica"
+  label_meeting_new_dynamic: "Nova reunião única"
+  label_meeting_new_recurring: "Nova reunião recorrente"
   label_meeting_create: "Criar reunião"
   label_meeting_copy: "Copiar reunião"
   label_meeting_edit: "Editar Reunião"
@@ -102,23 +110,54 @@ pt-BR:
   label_meeting_date_time: "Data/Horário"
   label_meeting_date_and_time: "Data e hora"
   label_meeting_diff: "Diferenças"
+  label_recurring_meeting: "Reunião recorrente"
+  label_recurring_meeting_part_of: "Parte de uma série de reuniões"
+  label_recurring_meeting_new: "Nova reunião recorrente"
+  label_recurring_meeting_plural: "Reuniões recorrentes"
+  label_template: "Modelo"
+  label_recurring_meeting_view: "Visualizar série de reuniões"
+  label_recurring_meeting_create: "Criar a partir de um modelo"
+  label_recurring_meeting_copy: "Copiar como único"
+  label_recurring_meeting_cancel: "Cancelar esta ocorrência"
+  label_recurring_meeting_delete: "Excluir ocorrência"
+  label_recurring_meeting_delete_confirmation: >
+    Esta reunião faz parte da série %{name}. Apenas esta ocorrência será excluída, não a série inteira. Deseja continuar?
+  label_recurring_occurrence_delete_confirmation: >
+    Quaisquer informações da reunião que não estejam no modelo serão descartadas. Deseja continuar?
+  label_recurring_meeting_restore: "Restaurar esta ocorrência"
+  label_recurring_meeting_more: "Há mais %{count} reuniões programadas (%{schedule})."
+  label_recurring_meeting_more_singular: "Há mais %{count} reunião programada (%{schedule})."
+  label_recurring_meeting_more_past: "Há mais %{count} reuniões anteriores."
+  label_recurring_meeting_more_past_singular: "Há mais %{count} reunião anterior."
+  label_recurring_meeting_show_more: "Exibir mais"
+  label_recurring_meeting_series_edit: "Editar série de reuniões"
+  label_recurring_meeting_series_delete: "Excluir série de reuniões"
+  label_my_meetings: "Minhas reuniões"
+  label_all_meetings: "Todas as reuniões"
   label_upcoming_meetings: "Próximas reuniões"
   label_past_meetings: "Reuniões anteriores"
   label_upcoming_meetings_short: "Próximos"
   label_past_meetings_short: "Passado"
   label_involvement: "Envolvimento"
-  label_upcoming_invitations: "Próximos convites"
+  label_invitations: "Convites"
+  label_invited_user: "Usuário convidado"
   label_past_invitations: "Convites anteriores"
-  label_attendee: "Participante"
-  label_author: "Criador"
+  label_attended: "Participou"
+  label_attended_user: "Usuário participante"
+  label_created_by_me: "Criado por mim"
   label_notify: "Enviar para revisão"
   label_icalendar: "Enviar iCalendar"
   label_icalendar_download: "Baixar evento iCalendar"
+  label_view_meeting_series: "Visualizar série de reuniões"
+  label_meeting_series: "Séries da reunião"
   label_version: "Versão"
   label_time_zone: "Fuso horário"
   label_start_date: "Data de início"
   meeting:
+    participants:
+      template: "Esses participantes serão adicionados automaticamente a todas as reuniões futuras à medida que forem agendadas."
     attachments:
+      template: "Esses arquivos anexados serão adicionados a todas as reuniões futuras da série."
       text: "Os arquivos anexados podem ser acessados por todos os participantes da reunião. Além disso, você pode simplesmente arrastá-los e soltá-los nas anotações do item da agenda."
     copy:
       title: "Copiar reunião: %{title}"
@@ -145,9 +184,12 @@ pt-BR:
     label_mail_all_participants: "Enviar e-mail para todos os participantes"
     types:
       classic: "Clássico"
-      classic_text: "Organize sua reunião em uma agenda e protocolo de texto formatáveis."
-      structured: "Dinâmico"
-      structured_text: "Organize sua reunião como uma lista de itens da agenda, opcionalmente vinculando-os a um pacote de trabalho."
+      classic_text: "Organize sua reunião como uma única agenda e protocolo de texto formatáveis."
+      structured: "Estruturada"
+      one_time: "Única"
+      recurring: "Recorrente"
+      recurring_text: "Criar série de reuniões com modelo dinâmico para cada evento."
+      structured_text: "Organize sua reunião como uma lista dinâmica de itens da agenda, opcionalmente vinculando-os a um pacote de trabalho."
       structured_text_copy: "Copiar uma reunião atualmente não copiará os itens associados da agenda da reunião, apenas os detalhes"
     copied: "Copiado para a Reunião #%{id}"
   meeting_section:
@@ -155,6 +197,40 @@ pt-BR:
     delete_confirmation: "Excluir a seção também excluirá todos os itens da pauta. Tem certeza de que deseja fazer isso?"
     placeholder_title: "Nova seção"
     empty_text: "Arraste itens para cá ou crie um novo."
+  recurring_meeting:
+    occurrence:
+      infoline: "Esta reunião faz parte de uma série de reuniões recorrentes."
+      error_no_next: "Não há uma próxima ocorrência desta reunião."
+      first_already_exists: "A primeira ocorrência desta série de reuniões já foi agendada."
+      first_created: >
+        A primeira reunião foi criada com sucesso a partir do modelo. Todas as reuniões subsequentes serão criadas automaticamente no horário da ocorrência anterior.
+    template:
+      button_finalize: "Finalizar modelo"
+      blank_title: "O modelo da sua série de reuniões está vazio"
+      description: >
+        Este modelo será utilizado sempre que novas reuniões na série forem criadas. Você pode adicionar itens da agenda, participantes e anexos a este modelo.
+      blankslate_finalize: >
+        Quando terminar de preparar este modelo, clique no botão "%{button_title}" acima para concluir a configuração e agendar a primeira reunião da série.
+      label_view_template: "Ver modelo"
+      label_edit_template: "Editar modelo"
+      banner_html: >
+        Atualmente, você está editando um modelo de série de reuniões: %{link}. Todas as novas ocorrências de reuniões na série usarão este modelo. Alterações não afetarão reuniões passadas ou já agendadas.
+    frequency:
+      every_weekday: "Todos os %{day_of_the_week}"
+      daily: "Diariamente"
+      working_days: "Todos os dias úteis"
+      weekly: "Semanalmente"
+    end_after:
+      specific_date: "uma data específica"
+      iterations: "um número de ocorrências"
+    starts: "Começa"
+    in_words:
+      daily_interval: "A cada %{interval} dias"
+      working_days: "Todos os dias úteis"
+      weekly: "Todas as semanas na %{weekday}"
+      weekly_interval: "Todas as %{interval} semanas em %{weekday}"
+      frequency: "%{base} em %{time}"
+      full: "%{base} em %{time}, termina em %{end_date}"
   notice_successful_notification: "Notificação enviada com sucesso"
   notice_timezone_missing: Nenhum fuso horário está definido, portanto assumiu-se %{zone}. Para escolher o seu fuso horário, clique aqui.
   notice_meeting_updated: "Esta página foi atualizada por outra pessoa. Recarregue para visualizar as alterações."
@@ -207,12 +283,17 @@ pt-BR:
   text_deleted_agenda_item: 'Item da agenda excluído'
   label_initial_meeting_details: "Reunião"
   label_meeting_details: "Detalhes da reunião"
+  label_meeting_series_details: "Detalhes da série de reuniões"
   label_meeting_details_edit: "Editar detalhes da reunião"
   label_meeting_state: "Estado da reunião"
   label_meeting_state_open: "Aberta"
   label_meeting_state_open_html: "<I>Aberta</i>"
   label_meeting_state_closed: "Fechada"
   label_meeting_state_closed_html: "<I>Fechada</i>"
+  label_meeting_state_agenda_created: "Agenda criada"
+  label_meeting_state_scheduled: "Planejada"
+  label_meeting_state_cancelled: "Cancelada"
+  label_meeting_state_skipped: "Pulada"
   label_meeting_reopen_action: "Reabrir reunião"
   label_meeting_close_action: "Fechar reunião"
   text_meeting_open_description: "Esta reunião está aberta. Você pode adicionar/remover itens da agenda e editá-los como desejar. Depois que a reunião terminar, feche-a para bloqueá-la."

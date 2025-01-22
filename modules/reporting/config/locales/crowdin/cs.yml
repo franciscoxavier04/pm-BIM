@@ -86,6 +86,11 @@ cs:
   validation_failure_date: "není platné datum"
   validation_failure_integer: "není platné číslo"
   export:
+    timesheet:
+      title: "Export vašeho výkazu do formátu PDF"
+      button: "Exportovat výkaz PDF"
+      timesheet: "Pracovní výkaz"
+      time: "Čas"
     cost_reports:
       title: "Váš export XLS zprávy o nákladech"
   reporting:
