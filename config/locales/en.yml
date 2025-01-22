@@ -748,7 +748,6 @@ en:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1875,6 +1874,9 @@ en:
       hour:
         one: "hour"
         other: "hours"
+      day:
+        one: "day"
+        other: "days"
 
   description_active: "Active?"
   description_attachment_toggle: "Show/Hide attachments"

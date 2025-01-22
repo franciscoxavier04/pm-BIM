@@ -1324,7 +1324,7 @@ DEPENDENCIES
   openproject-octicons (~> 19.20.0)
   openproject-octicons_helper (~> 19.20.0)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.52.1)
+  openproject-primer_view_components (~> 0.52.2)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!
