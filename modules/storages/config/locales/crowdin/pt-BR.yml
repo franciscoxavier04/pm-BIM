@@ -3,6 +3,8 @@ pt-BR:
     attributes:
       storages/file_link:
         origin_id: Id da origem
+      storages/project_storage:
+        storage: Armazenamento
       storages/storage:
         creator: Criador
         drive: Drive ID
@@ -145,7 +147,7 @@ pt-BR:
               not_found: "%{current_path} não foi encontrado."
             set_folders_permissions:
               permission_not_set: não foi possível definir permissões em %{path}.
-          error: Ocorreu um erro inesperado. Verifique se sua instância do Nextcloud está acessível e confira os registros do OpenProject para obter mais detalhes
+          error: Ocorreu um erro inesperado. Verifique se seu OneDrive/SharePoint está acessível e confira os registros do OpenProject para obter mais detalhes
           not_allowed: OpenProject não conseguiu acessar seu OneDrive. Verifique as permissões definidas no Aplicativo Azure.
           unauthorized: O OpenProject não conseguiu sincronizar com o OneDrive. Verifique as configurações de armazenamento e do aplicativo Azure.
           user_does_not_exist: "%{user} não existe no Nextcloud."
@@ -289,7 +291,6 @@ pt-BR:
     label_creation_time: Hora de criação
     label_creator: Criador
     label_delete_storage: Excluir armazenamento
-    label_edit_storage: Editar armazenamento
     label_edit_storage_access_management: Editar gerenciamento de acesso ao armazenamento
     label_edit_storage_automatically_managed_folders: Editar pastas gerencias automaticamente de armazenamento
     label_edit_storage_host: Editar host de armazenamento
@@ -343,6 +344,9 @@ pt-BR:
       success:
         subtitle: Você está sendo redirecionado
         title: Configuração de integração concluída
+      timeout:
+        link_text: status de saúde da configuração de armazenamento de arquivos
+        subtitle: Não foi possível acessar a pasta do projeto no OpenProject dentro do prazo esperado. Tente novamente.<br><br> Se o problema persistir, entre em contato com seu administrador OpenProject para verificar o %{storages_health_link}.
       waiting:
         subtitle: Aguarde um momento, esta ação pode demorar um pouco...
         title: Estamos definindo suas permissões na pasta do projeto.

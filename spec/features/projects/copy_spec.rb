@@ -28,7 +28,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Projects copy", :js, :with_cuprite,
+RSpec.describe "Projects copy", :js,
                with_good_job_batches: [CopyProjectJob, Storages::CopyProjectFoldersJob, SendCopyProjectStatusEmailJob] do
   describe "with a full copy example" do
     let!(:project) do
@@ -164,10 +164,10 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
 
     context "with correct project custom field activations" do
       before do
-        original_settings_page = Pages::Projects::Settings.new(project)
-        original_settings_page.visit!
+        Pages::Projects::Settings::General.new(project).visit!
 
-        find(".toolbar a", text: "Copy").click
+        page.find_test_selector("project-settings-more-menu").click
+        page.find_test_selector("project-settings--copy").click
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -229,10 +229,10 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
           optional_project_custom_field_with_default.id
         )
 
-        original_settings_page = Pages::Projects::Settings.new(project)
-        original_settings_page.visit!
+        Pages::Projects::Settings::General.new(project).visit!
 
-        find(".toolbar a", text: "Copy").click
+        page.find_test_selector("project-settings-more-menu").click
+        page.find_test_selector("project-settings--copy").click
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -302,10 +302,10 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
       end
 
       before do
-        original_settings_page = Pages::Projects::Settings.new(project)
-        original_settings_page.visit!
+        Pages::Projects::Settings::General.new(project).visit!
 
-        find(".toolbar a", text: "Copy").click
+        page.find_test_selector("project-settings-more-menu").click
+        page.find_test_selector("project-settings--copy").click
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -373,10 +373,10 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
       end
 
       it "copies the project attributes" do
-        original_settings_page = Pages::Projects::Settings.new(project)
-        original_settings_page.visit!
+        Pages::Projects::Settings::General.new(project).visit!
 
-        find(".toolbar a", text: "Copy").click
+        page.find_test_selector("project-settings-more-menu").click
+        page.find_test_selector("project-settings--copy").click
 
         expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -391,7 +391,7 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
         overview_page = Pages::Projects::Show.new(copied_project)
         overview_page.visit!
 
-        overview_page.within_async_loaded_sidebar do
+        overview_page.within_project_attributes_sidebar do
           # User has no permission to edit project attributes.
           expect(page).to have_no_css("[data-test-selector='project-custom-field-section-edit-button']")
           # The custom fields are still copied from the parent project.
@@ -406,10 +406,10 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
     end
 
     it "copies projects and the associated objects" do
-      original_settings_page = Pages::Projects::Settings.new(project)
-      original_settings_page.visit!
+      Pages::Projects::Settings::General.new(project).visit!
 
-      find(".toolbar a", text: "Copy").click
+      page.find_test_selector("project-settings-more-menu").click
+      page.find_test_selector("project-settings--copy").click
 
       expect(page).to have_text "Copy project \"#{project.name}\""
 
@@ -433,8 +433,7 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
       # Will redirect to the new project automatically once the copy process is done
       expect(page).to have_current_path(Regexp.new("#{project_path(copied_project)}/?"))
 
-      copied_settings_page = Pages::Projects::Settings.new(copied_project)
-      copied_settings_page.visit!
+      Pages::Projects::Settings::General.new(copied_project).visit!
 
       # has the parent of the original project
       parent_field.expect_selected parent_project.name
@@ -445,19 +444,21 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
       editor.expect_value "some text cf"
 
       # has wp custom fields of original project active
-      copied_settings_page.visit_tab!("custom_fields")
+      copied_settings_wp_cf_page = Pages::Projects::Settings::WorkPackageCustomFields.new(copied_project)
+      copied_settings_wp_cf_page.visit!
 
-      copied_settings_page.expect_wp_custom_field_active(wp_custom_field)
-      copied_settings_page.expect_wp_custom_field_inactive(inactive_wp_custom_field)
+      copied_settings_wp_cf_page.expect_active(wp_custom_field)
+      copied_settings_wp_cf_page.expect_inactive(inactive_wp_custom_field)
 
       # has types of original project active
-      copied_settings_page.visit_tab!("types")
+      copied_settings_type_page = Pages::Projects::Settings::Type.new(copied_project)
+      copied_settings_type_page.visit!
 
       active_types.each do |type|
-        copied_settings_page.expect_type_active(type)
+        copied_settings_type_page.expect_type_active(type)
       end
 
-      copied_settings_page.expect_type_inactive(inactive_type)
+      copied_settings_type_page.expect_type_inactive(inactive_type)
 
       # Expect wiki was copied
       expect(copied_project.wiki.pages.count).to eq(project.wiki.pages.count)
@@ -540,10 +541,10 @@ RSpec.describe "Projects copy", :js, :with_cuprite,
       wp_table.expect_work_package_listed *order
       wp_table.expect_work_package_order *order
 
-      original_settings_page = Pages::Projects::Settings.new(project)
-      original_settings_page.visit!
+      Pages::Projects::Settings::General.new(project).visit!
 
-      find(".toolbar a", text: "Copy").click
+      page.find_test_selector("project-settings-more-menu").click
+      page.find_test_selector("project-settings--copy").click
 
       fill_in "Name", with: "Copied project"
 

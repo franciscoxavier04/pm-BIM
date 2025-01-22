@@ -287,6 +287,7 @@
       label: "Label"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Søk i %{app_title}"
     overwritten_tabs:
@@ -343,6 +344,9 @@
         text: "Denne handlingen vil ikke slette noen av prosjektene på listen. Er du sikker på at du vil slette denne prosjektlisten?"
     settings:
       change_identifier: Endre identifier
+      actions:
+        label_enable_all: "Enable all"
+        label_disable_all: "Disable all"
       activities:
         no_results_title_text: Det er for tiden ingen aktiviteter tilgjengelig.
       forums:
@@ -353,18 +357,26 @@
         no_results_content_text: Opprett en ny kategori for arbeidspakker
       custom_fields:
         no_results_title_text: Det er ingen egendefinerte felt tilgjengelig.
+      life_cycle:
+        header:
+          title: "Project lifecycle"
+          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
+        non_defined: "Neither stages nor gates are currently defined."
+        section_header: "Stages and gates"
+        step:
+          use_in_project: "Use %{step} in this project"
+        filter:
+          label: "Search project stage or gate"
       project_custom_fields:
         header:
           title: "Prosjektegenskaper"
-          description: 'Disse prosjektegenskapene vil bli vist i din <a href=%{overview_url} target="_blank">oversiktsside for prosjekt</a> under deres respektive seksjoner.  Du kan aktivere eller deaktivere individuelle egenskaper.  Prosjektegenskaper og seksjoner er definert i  <a href=%{admin_settings_url} target="_blank">administrasjonsinnstillingene</a> av en administrator.'
+          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "Søk etter prosjektegenskap"
         actions:
           label_enable_single: "Aktivert i dette prosjektet, klikk for å deaktivere"
           label_disable_single: "Deaktivert i dette prosjektet, klikk for å aktivere"
           remove_from_project: "Remove from project"
-          label_enable_all: "Aktiver alle"
-          label_disable_all: "Deaktiver alle"
         is_required_blank_slate:
           heading: Påkrevd i alle prosjekter
           description: Prosjektattributten er aktivert i alle prosjekter fordi "Påkrevd i alle prosjekter"-alternativet er valgt. Attributten kan ikke deaktiveres for hvert enkelt prosjekt.
@@ -377,6 +389,10 @@
         no_results_content_text: Lag en ny versjon
       storage:
         no_results_title_text: Det er ingen ekstra registrert diskplass brukt av dette prosjektet.
+  project_stage:
+    working_days_count:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "Den endrede listen er lagret som en ny liste"
@@ -497,8 +513,12 @@
     groups:
       member_in_these_groups: "Denne brukeren er for øyeblikket medlem av følgende grupper:"
       no_results_title_text: Denne brukeren er for øyeblikket ikke medlem i noen gruppe.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: Denne brukeren er for øyeblikket ikke medlem av et prosjekt.
+    open_profile: "Open profile"
   page:
     text: "Tekst"
   placeholder_users:
@@ -568,18 +588,27 @@
       no_results_title_text: Det finnes for øyeblikket ingen typer.
       no_results_content_text: Lag en ny type
     edit:
-      settings: "Innstillinger"
-      form_configuration: "Skjema konfigurering"
+      form_configuration:
+        tab: "Form configuration"
       more_info_text_html: >
         Enterprise versjonen gir deg mulighet til å tilpasse konfigurasjon av skjemaer med disse utvidelsene: <br><ul class="%{list_styling_class}">Legg til nye egenskaps-grupper</b></li><li><b>Endre navn på egenskapsgrupper</b></li><li><b>Legg til en tabell over relaterte arbeidspakker</b></li></ul>
-      projects: "Prosjekter"
-      enabled_projects: "Aktiverte prosjekter"
-      edit_query: "Rediger tabell"
-      query_group_placeholder: "Gi tabellen et navn"
-      reset: "Tilbakestill til standard"
-      type_color_text: |
-        Den valgte fargen skiller ulike typer
-        i Gantt-diagrammer eller arbeidspakketabeller. Det er derfor anbefalt å bruke en sterk farge.
+      projects:
+        tab: "Projects"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Settings"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        pattern:
+          label: "Subject pattern"
+          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
   versions:
     overview:
       work_packages_in_archived_projects: "Versjonen er delt med arkiverte prosjekter som fortsatt har arbeidspakker tilordnet denne versjonen. Disse er tellt, men vil ikke vises i de koblede visningene."
@@ -617,6 +646,7 @@
         title: "Arbeidsflyt mangler for deling av arbeidspakker"
         message: "Ingen arbeidsflyt er konfigurert for rollen 'Arbeidspakke redaktør'. Uten en arbeidsflyt kan ikke brukeren endre status på arbeidspakken. Arbeidsflyt kan kopieres. Velg en kildetype (f.eks. 'oppgave') og en kilderolle (f.eks. 'medlem'). Velg så måltyper. Til å begynne med, kan du velge alle typene som mål. Til slutt velger du \"Redigeringsprogrammet for arbeidspakke\" som mål og klikk \"Kopier\". Etter å ha opprettet standardinnstillingene, kan du finjustere arbeidsflytene som du gjør for enhver annen rolle."
         link_message: "Konfigurer arbeidsmetodene i administrasjonen."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -633,6 +663,75 @@
           no_results_title_text: Det finnes ingen tilgjengelige typer.
         version:
           no_results_title_text: Det finnes ingen versjoner tilgjengelige.
+  work_package_relations_tab:
+    index:
+      action_bar_title: "Add relations to other work packages to create a link between them."
+      no_results_title_text: There are currently no relations available.
+      blankslate_heading: "No relations"
+      blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
+    label_add_x: "Add %{x}"
+    label_edit_x: "Edit %{x}"
+    label_add_description: "Add description"
+    lag:
+      subject: "Lag"
+      title: "Lag (in days)"
+      caption: "The minimum number of working days to keep in between the two work packages."
+    relations:
+      label_new_child_created: "New work package created and added as a child"
+      label_relates_singular: "related to"
+      label_relates_plural: "related to"
+      label_relates_to_singular: "related to"
+      label_relates_to_plural: "related to"
+      relates_description: "Creates a visible link between the two work packages with no additional effect"
+      relates_to_description: "Creates a visible link between the two work packages with no additional effect"
+      label_precedes_singular: "successor (after)"
+      label_precedes_plural: "successors (after)"
+      precedes_description: "The related work package necessarily needs to start after this one finishes"
+      label_follows_singular: "predecessor (before)"
+      label_follows_plural: "predecessors (before)"
+      follows_description: "The related work package necessarily needs to finish before this one can start"
+      label_child_singular: "child"
+      label_child_plural: "children"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_blocks_singular: "blocks"
+      label_blocks_plural: "blocks"
+      blocks_description: "The related work package cannot be closed until this one is closed first"
+      label_blocked_singular: "blocked by"
+      label_blocked_plural: "blocked by"
+      label_blocked_by_singular: "blocked by"
+      label_blocked__by_plural: "blocked by"
+      blocked_description: "This work package cannot be closed until the related one is closed first"
+      blocked_by_description: "This work package cannot be closed until the related one is closed first"
+      label_duplicates_singular: "duplicates"
+      label_duplicates_plural: "duplicates"
+      duplicates_description: "This is a copy of the related work package"
+      label_duplicated_singular: "duplicated by"
+      label_duplicated_plural: "duplicated by"
+      label_duplicated_by_singular: "duplicated by"
+      label_duplicated_by_plural: "duplicated by"
+      duplicated_by_description: "The related work package is a copy of this"
+      duplicated_description: "The related work package is a copy of this"
+      label_includes_singular: "includes"
+      label_includes_plural: "includes"
+      includes_description: "Marks the related work package as including this one with no additional effect"
+      label_partof_singular: "part of"
+      label_partof_plural: "part of"
+      label_part_of_singular: "part of"
+      label_part_of_plural: "part of"
+      partof_description: "Marks the related work package as being part of this one with no additional effect"
+      part_of_description: "Marks the related work package as being part of this one with no additional effect"
+      label_requires_singular: "requires"
+      label_requires_plural: "requires"
+      requires_description: "Marks the related work package as a requirement to this one"
+      label_required_singular: "required by"
+      label_required_plural: "required by"
+      required_description: "Marks this work package as being a requirement to the related one"
+      label_parent_singular: "parent"
+      label_parent_plural: "parent"
   label_invitation: Invitasjon
   account:
     delete: "Slett konto"
@@ -697,6 +796,7 @@
         is_required: "Obligatorisk"
         max_length: "Maksimal lengde"
         min_length: "Minimumslengde"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Tillat multivalg"
         possible_values: "Mulige verdier"
         regexp: "Regulære uttrykk"
@@ -732,6 +832,8 @@
         attr_lastname: "Etternavn-attributt"
         attr_login: "Brukernavn egenskap"
         attr_mail: "E-postattributt"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Base DN"
         host: "Vert"
         onthefly: "Automatisk brukeropprettelse"
@@ -775,6 +877,9 @@
       project_custom_field:
         is_required: "Påkrevd for alle prosjekter"
         custom_field_section: Seksjon
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Kolonner"
         relations_to_type_column: "Forbindelser til %{type}"
@@ -786,6 +891,9 @@
         lag: "Forsinkelse"
         from: "Arbeidspakke"
         to: "Relatert arbeidspakke"
+      reminder:
+        remind_at_date: "Date"
+        remind_at_time: "Time"
       repository:
         url: "URL"
       role:
@@ -874,6 +982,7 @@
       messages:
         accepted: "må aksepteres"
         after: "må være etter %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "må være etter eller lik %{date}."
         before: "må være før %{date}."
         before_or_equal_to: "må være før eller lik %{date}."
@@ -920,6 +1029,7 @@
         not_an_integer: "er ikke et heltall."
         not_an_iso_date: "er ikke en gyldig dato. Påkrevd format: ÅÅÅÅ-MM-DD."
         not_same_project: "hører ikke til samme prosjekt."
+        datetime_must_be_in_future: "must be in the future."
         odd: "må være oddetall."
         regex_match_failed: "samsvarer ikke med det regulære uttrykket %{expression}."
         regex_invalid: "kunne ikke valideres med det tilhørende regulære uttrykket."
@@ -1033,16 +1143,38 @@
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
               must_be_a_stage: "must be a Project::Stage"
               must_be_a_gate: "must be a Project::Gate"
+              type_and_class_name_mismatch: "must match the instantiated class name"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign `end_date` to a Project::Gate"
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+            type:
+              type_and_class_name_mismatch: "must be a Project::Gate"
+            date:
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "start date must be before the end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              incomplete: "is incomplete."
+            type:
+              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1259,6 +1391,8 @@
         other: "Varsler"
       placeholder_user: "Plassholder bruker"
       project: "Prosjekt"
+      project/gate_definition: "Gate"
+      project/stage_definition: "Stage"
       project_query:
         one: "Project list"
         other: "Prosjektlister"
@@ -1362,6 +1496,7 @@
     login: "Brukernavn"
     mail: "E-post"
     name: "Navn"
+    note: "Note"
     password: "Passord"
     priority: "Prioritet"
     project: "Prosjekt"
@@ -1458,6 +1593,7 @@
   button_print: "Skriv ut"
   button_quote: "Sitèr"
   button_remove: Fjern
+  button_remove_reminder: "Remove reminder"
   button_rename: "Endre navn"
   button_replace: "Erstatt"
   button_revoke: "Tilbakekall"
@@ -1468,6 +1604,7 @@
   button_save_as: "Lagre som"
   button_apply_changes: "Bruk endringer"
   button_save_back: "Lagre og tilbake"
+  button_set_reminder: "Set reminder"
   button_show: "Vis"
   button_sort: "Sortèr"
   button_submit: "Lagre"
@@ -1673,12 +1810,16 @@
   direction: LTR
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Tilpass skjemakonfigurasjonen med disse ekstra utvidelsene:"
         add_groups: "Legg til nye attributtgrupper"
         rename_groups: "Endre attributtgrupper"
-      project_filters:
-        description_html: "Filtrering og sortering på egendefinerte felter er en utvidelse i Enterprise feltet."
   enumeration_activities: "Tidregistrering aktiviteter"
   enumeration_work_package_priorities: "Prioritering av arbeidspakker"
   enumeration_reported_project_statuses: "Rapportert prosjektstatus"
@@ -1711,6 +1852,7 @@
   error_pdf_export_too_many_columns: "For mange kolonner valgt for PDF eksport. Reduser antall kolonner."
   error_pdf_failed_to_export: "PDF-eksporten kunne ikke lagres: %{error}"
   error_token_authenticity: "Kan ikke bekrefte Cross-Site Request Forgery token. Har du prøvd å sende inn data i flere nettlesere eller faner? Vennligst lukk alle fanene og prøv igjen."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "Arbeidspakken ble ikke funnet eller tilhører ikke dette prosjektet"
   error_work_package_id_not_found: "Arbeidspakken ble ikke funnet."
   error_must_be_project_member: "må være prosjektmedlem"
@@ -2004,6 +2146,7 @@
       responsible: "Ansvarlig"
       shared: "Delt"
       watched: "Overvåker"
+      reminder: "Reminder"
     facets:
       unread: "Ulest"
       unread_title: "Vis ulest"
@@ -2171,8 +2314,10 @@
   label_default: "Standard"
   label_delete_user: "Slett bruker"
   label_delete_project: "Slett prosjekt"
+  label_delete: "Delete"
   label_deleted: "slettet"
   label_deleted_custom_field: "(slettet egendefinert felt)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(slettet alternativ)"
   label_empty_element: "(tom)"
   label_missing_or_hidden_custom_option: "(manglende verdi eller manglende rettigheter)"
@@ -2209,10 +2354,10 @@
   label_enterprise_active_users: "%{current}/%{limit} bookede brukere"
   label_enterprise_edition: "Enterprise Edition"
   label_enterprise_support: "Bedriftsstøtte"
-  label_enterprise_addon: "Enterprise utvidelse"
   label_environment: "Miljø"
   label_estimates_and_progress: "Estimater og fremdrift"
   label_equals: "er"
+  label_equals_with_descendants: "is any with descendants"
   label_everywhere: "overalt"
   label_example: "Eksempel"
   label_experimental: "Eksperimentell"
@@ -2393,6 +2538,7 @@
   label_none_parentheses: "(ingen)"
   label_not_contains: "inneholder ikke"
   label_not_equals: "er ikke"
+  label_life_cycle_step_plural: "Project lifecycle"
   label_on: "på"
   label_operator_all: "er ikke tom"
   label_operator_none: "er tom"
@@ -2454,6 +2600,7 @@
   label_project_new: "Nytt prosjekt"
   label_project_plural: "Prosjekter"
   label_project_list_plural: "Prosjektlister"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Prosjektegenskaper"
   label_project_custom_field_plural: "Prosjektegenskaper"
   label_project_settings: "Prosjektinnstillinger"
@@ -2477,7 +2624,10 @@
   label_related_work_packages: "Relaterte arbeidspakker"
   label_relates: "relatert til"
   label_relates_to: "relatert til"
+  label_relation: "Relation"
+  label_relation_actions: "Relation actions"
   label_relation_delete: "Slett relasjon"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Ny relasjon"
   label_release_notes: "Utgivelsesnotater"
   label_remaining_work: "Gjenstående arbeid"
@@ -2492,6 +2642,7 @@
   label_reporting: "Rapportering"
   label_reporting_plural: "Rapporteringer"
   label_repository: "Pakkebrønn"
+  label_repository_remove: "Remove repository"
   label_repository_root: "Kodelager rot"
   label_repository_plural: "Pakkebrønner"
   label_required: "påkrevd"
@@ -2554,6 +2705,7 @@
   label_this_month: "denne måneden"
   label_this_week: "denne uken"
   label_this_year: "dette året"
+  label_time: "Time"
   label_time_entry_plural: "Tid brukt"
   label_time_entry_activity_plural: "Brukt tid aktivitet"
   label_title: "Tittel"
@@ -2589,6 +2741,7 @@
   label_user_settings: "Brukerinnstillinger"
   label_users_settings: "Brukerinnstillinger"
   label_version_new: "Ny versjon"
+  label_version_edit: "Edit version"
   label_version_plural: "Versjoner"
   label_version_sharing_descendants: "Med underprosjekter"
   label_version_sharing_hierarchy: "Med prosjekthierarkiet"
@@ -2726,8 +2879,13 @@
         prefix: "Mottatt pga. varslingsinnstilling: %{reason}"
         date_alert_start_date: "Dato varsel"
         date_alert_due_date: "Dato varsel"
+        reminder: "Reminder"
       see_all: "Se alle"
       updated_at: "Oppdatert %{timestamp} av %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "Du kan %{allowed_actions} denne arbeidspakken. Dette kan endre avhengig av din prosjektrolle og tillatelser."
@@ -2886,6 +3044,7 @@
   notice_bad_request: "Ugyldig forespørsel."
   notice_not_authorized: "Du har ikke tilgang til å åpne denne siden."
   notice_not_authorized_archived_project: "Prosjektet du forsøker å åpne er arkivert."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Passordet er ikke riktig. Kan ikke fortsette."
   notice_principals_found_multiple: "Det finnes %{number} resultater. \n bruk tab for å fokusere det første resultatet."
   notice_principals_found_single: "Det er ett resultat. \n Bruk tab for å fokusere det."
@@ -2894,6 +3053,7 @@
   notice_successful_connection: "Vellykket tilkobling."
   notice_successful_create: "Opprettelsen var vellykket."
   notice_successful_delete: "Slettingen var vellykket."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Oppdateringen var vellykket."
   notice_successful_update_custom_fields_added_to_project: |
     Vellykket oppdatering. Spesifikke felter for aktiverte typer blir automatisk aktivert
@@ -2971,6 +3131,7 @@
   permission_edit_own_time_entries: "Rediger egne tidsrapporter"
   permission_edit_project: "Rediger prosjekt"
   permission_edit_project_attributes: "Rediger prosjektattributter"
+  permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "Rediger rapporteringer"
   permission_edit_time_entries: "Rediger tidslogger for andre brukere"
   permission_edit_timelines: "Rediger tidslinjer"
@@ -3000,9 +3161,12 @@
   permission_search_project: "Søk i prosjekt"
   permission_select_custom_fields: "Velg egendefinerte felt"
   permission_select_project_custom_fields: "Velg prosjektegenskaper"
+  permission_select_project_life_cycle: "Select project stages and gates"
+  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Velg prosjektmoduler"
   permission_share_work_packages: "Del arbeidspakker"
   permission_manage_types: "Velg typer"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Vis prosjekter"
   permission_view_changesets: "Se revideringer av lagringssteder i OpenProject"
   permission_view_commit_author_statistics: "Vis statistikk over forfatterbidrag"
@@ -3023,6 +3187,7 @@
   permission_work_package_assigned_explanation: "Arbeidspakker kan tildeles brukere og grupper med denne rollen i det respektive prosjektet"
   permission_view_project_activity: "Vis prosjektaktivitet"
   permission_view_project_attributes: "Vis prosjektattributter"
+  permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Lagre BCF-spørringer"
   permission_manage_public_bcf_queries: "Administrere offentlige BCF-spørringer"
   permission_edit_attribute_help_texts: "Rediger hjelpetekster for egenskap"
@@ -3054,9 +3219,9 @@
       are_you_sure: "Er du sikker på at du vil arkivere prosjektet%{name}'?"
       archived: "Arkivert"
     count:
-      zero: "0 prosjekter"
-      one: "1 prosjekt"
-      other: "%{count} prosjekter"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Aktivitet"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Arbeidspakker"
@@ -3190,6 +3355,7 @@
     activated: "aktivert"
     deactivated: "deaktivert"
   search_input_placeholder: "Søk..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Aktiver CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) tillatte opprinnelser"
   setting_apiv3_cors_origins_text_html: >
@@ -3415,6 +3581,27 @@
       new:
         heading: "Ny egenskap"
         description: "Endringer i denne prosjektegenskapen gjenspeiles i alle prosjekter der det er aktivert. Påkrevde egenskaper kan ikke deaktiveres per prosjekt."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Prosjektmodul %{module} ble valgt, og denne avhenger av %{dependencies}. Du må også sjekke disse avhengighetene."
       section_new_projects: "Innstillinger for nye prosjekter"
@@ -3448,6 +3635,7 @@
   text_are_you_sure_continue: "Er du sikker på at du vil fortsette?"
   text_are_you_sure_with_children: "Slette arbeidspakken og alle underordnede arbeidspakker?"
   text_are_you_sure_with_project_custom_fields: "Hvis du sletter dette attributtet, slettes også dets verdier i alle prosjekter. Er du sikker på at du vil gjøre dette?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tildel til prosjektet"
   text_form_configuration: >
     Du kan tilpasse hvilke felt som vises i skjemaer for arbeidspakker. Du kan fritt gruppere feltene for å reflektere behovene for ditt domene.
@@ -3703,6 +3891,12 @@
       edit_description: "Kan vise, kommentere og redigere denne arbeidspakken."
       view: "Vis"
       view_description: "Kan se denne arbeidspakken."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 brukere"
@@ -3889,6 +4083,8 @@
       builtin: Innebygd installasjonsprogram
       confidential: Konfidensiell
       singular: "OAuth program"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth programmer"
       named: "OAuth program '%{name}'"
       new: "Ny OAuth-app"

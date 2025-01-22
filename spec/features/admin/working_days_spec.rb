@@ -28,7 +28,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Working Days", :js, :with_cuprite do
+RSpec.describe "Working Days", :js do
   create_shared_association_defaults_for_work_package_factory
 
   shared_let(:week_days) { week_with_saturday_and_sunday_as_weekend }
@@ -48,6 +48,8 @@ RSpec.describe "Working Days", :js, :with_cuprite do
 
   before do
     visit admin_settings_working_days_and_hours_path
+    # wait for "holidays and closures" calendar to load
+    find(".fc-next-button")
   end
 
   describe "week days" do

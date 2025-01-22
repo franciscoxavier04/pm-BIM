@@ -47,8 +47,7 @@ RSpec.describe "Meetings close" do
   end
 
   context "with permission to close meetings",
-          :js,
-          :with_cuprite do
+          :js do
     let(:permissions) { %i[view_meetings close_meeting_agendas] }
 
     it "can delete own and other`s meetings" do
@@ -58,6 +57,7 @@ RSpec.describe "Meetings close" do
 
       # Go to minutes, expect uneditable
       find(".op-tab-row--link", text: "MINUTES").click
+      wait_for_network_idle
       expect(page).to have_css(".button", text: "Close the agenda to begin the Minutes")
 
       # Close the meeting

@@ -33,7 +33,7 @@ it:
         label_activity_show_only_changes: "Mostra solo le modifiche"
         label_sort_asc: "Più recenti in fondo"
         label_sort_desc: "Più recenti in cima"
-        label_type_to_comment: "Add a comment. Type @ to notify people."
+        label_type_to_comment: "Aggiungi un commento. Digita @ per avvisare le persone."
         label_submit_comment: "Invia commento"
         changed_on: "ha modificato il"
         created_on: "l'ha creata il"
@@ -237,7 +237,7 @@ it:
           one: 1 sottoelemento
           other: "%{count} sottoelementi"
     upsale:
-      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
+      custom_field_format_hierarchy: "Hai bisogno di una gerarchia nei campi personalizzati per le macro-attività?"
     text_add_new_custom_field: >
       Per aggiungere nuovi campi personalizzati a un progetto, è necessario prima crearli.
     is_enabled_globally: "Abilitato a livello globale"
@@ -264,26 +264,27 @@ it:
     single: "oppure"
   dry_validation:
     errors:
-      int?: "must be an integer."
-      filled?: "must be filled."
-      greater_or_equal_zero: "must be greater or equal to 0."
-      not_found: "not found."
+      int?: "deve essere un intero."
+      filled?: "deve essere compilato."
+      greater_or_equal_zero: "deve essere maggiore o uguale a 0."
+      not_found: "non trovato."
       rules:
         item:
-          root_item: "cannot be a root item."
-          not_persisted: "must be an already existing item."
+          root_item: "non può essere un elemento radice."
+          not_persisted: "deve essere un elemento già esistente."
         label:
-          not_unique: "must be unique within the same hierarchy level."
+          not_unique: "deve essere unico all'interno dello stesso livello gerarchico."
         short:
-          not_unique: "must be unique within the same hierarchy level."
+          not_unique: "deve essere unico all'interno dello stesso livello gerarchico."
         parent:
-          not_descendant: "must be a descendant of the hierarchy root."
+          not_descendant: "deve essere un discendente della radice gerarchica."
     rules:
       depth: "Profondità"
       item: "Elemento"
       label: "Etichetta"
       short: "Abbreviazione"
       parent: "Genitore"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Cerca in %{app_title}"
     overwritten_tabs:
@@ -340,6 +341,9 @@ it:
         text: "Questa azione non eliminerà alcun progetto contenuto nell'elenco. Vuoi davvero eliminare questo elenco di progetti?"
     settings:
       change_identifier: Cambia identificatore
+      actions:
+        label_enable_all: "Abilita tutto"
+        label_disable_all: "Disabilita tutto"
       activities:
         no_results_title_text: Al momento non vi sono attività disponibili.
       forums:
@@ -350,18 +354,26 @@ it:
         no_results_content_text: Crea una nuova categoria di macro-attività
       custom_fields:
         no_results_title_text: Al momento non sono disponibili dei campi personalizzati.
+      life_cycle:
+        header:
+          title: "Ciclo di vita del progetto"
+          description_html: 'Queste fasi e controlli di progetto nel ciclo di vita del progetto saranno visualizzati nella tua <a href=%{overview_url} target="_blank">pagina di panoramica del progetto</a> e sono definiti nelle <a href=%{admin_settings_url} target="_blank">impostazioni di amministrazione</a> dall''amministratore dell''istanza. Puoi abilitare o disabilitare singoli attributi.'
+        non_defined: "Attualmente non sono definiti né controlli né fasi."
+        section_header: "Fasi e controlli"
+        step:
+          use_in_project: "Usa %{step} in questo progetto"
+        filter:
+          label: "Cerca la fase o il controllo di progetto"
       project_custom_fields:
         header:
           title: "Attributi del progetto"
-          description: 'Questi attributi del progetto saranno visualizzati nella tua <a href=%{overview_url} target="_blank">pagina di panoramica del progetto</a> sotto le rispettive sezioni. Puoi attivare o disattivare i singoli attributi. Gli attributi e le sezioni del progetto sono definiti nelle <a href=%{admin_settings_url} target="_blank">impostazioni di amministrazione</a> dall''amministratore dell''istanza. '
+          description_html: 'Questi attributi del progetto saranno visualizzati nella tua <a href=%{overview_url} target="_blank">pagina di panoramica del progetto</a> sotto le rispettive sezioni. Puoi attivare o disattivare i singoli attributi. Gli attributi e le sezioni del progetto sono definiti nelle <a href=%{admin_settings_url} target="_blank">impostazioni di amministrazione</a> dall''amministratore dell''istanza. '
         filter:
           label: "Cerca l'attributo del progetto"
         actions:
           label_enable_single: "Attivo in questo progetto, clicca per disattivarlo"
           label_disable_single: "Non attivo in questo progetto, clicca per attivarlo"
           remove_from_project: "Rimuovi dal progetto"
-          label_enable_all: "Abilita tutti"
-          label_disable_all: "Disabilita tutti"
         is_required_blank_slate:
           heading: Richiesto in tutti i progetti
           description: Questo attributo di progetto è attivato in tutti i progetti, poiché l'opzione "Richiesto in tutti i progetti" è selezionata. Non può essere disattivato per i singoli progetti.
@@ -374,6 +386,10 @@ it:
         no_results_content_text: Crea una nuova versione
       storage:
         no_results_title_text: Nessuno spazio su disco registrato aggiuntivo consumato da questo progetto.
+  project_stage:
+    working_days_count:
+      one: "Durata: %{count} giorno lavorativo"
+      other: "Durata: %{count} giorni lavorativi"
   lists:
     create:
       success: "L'elenco modificato è stato salvato come nuovo elenco"
@@ -494,8 +510,12 @@ it:
     groups:
       member_in_these_groups: "Questo utente è attualmente membro dei seguenti gruppi:"
       no_results_title_text: Questo utente al momento non è un membro di alcun gruppo.
+      summary_with_more: Membro di %{names} e %{count_link}.
+      more: "altri %{count}"
+      summary: Membro di %{names}.
     memberships:
       no_results_title_text: Questo utente non è attualmente membro di alcun progetto.
+    open_profile: "Apri il profilo"
   page:
     text: "Testo"
   placeholder_users:
@@ -565,18 +585,27 @@ it:
       no_results_title_text: Al momento non esistono tipi.
       no_results_content_text: Crea un nuovo tipo
     edit:
-      settings: "Impostazioni"
-      form_configuration: "Configurazione del modulo"
+      form_configuration:
+        tab: "Configurazione del modulo"
       more_info_text_html: >
         L'edizione Enterprise ti consente di personalizzare la configurazione dei moduli con queste aggiunte: <br> <ul class="%{list_styling_class}"> <li><b>Aggiungi nuovi gruppi di attributi</b></li> <li><b >Rinomina gruppi di attributi</b></li> <li><b>Aggiungi una tabella di macro-attività correlate</b></li> </ul>
-      projects: "Progetti"
-      enabled_projects: "Progetti abilitati"
-      edit_query: "Modificare la Tabella"
-      query_group_placeholder: "Assegnare un nome alla tabella"
-      reset: "Ripristino predefinite"
-      type_color_text: |
-        Il colore selezionato distingue diverse tipologie
-        neidiagrammi Gantt o nelle tabelle delle macro-attività. Si consiglia quindi di utilizzare colori forti.
+      projects:
+        tab: "Progetti"
+        enabled_projects: "Progetti abilitati"
+      settings:
+        tab: "Impostazioni"
+        type_color_text: Il colore selezionato distingue diverse tipologie nei diagrammi Gantt o nelle tabelle delle macro-attività. Si consiglia quindi di utilizzare colori forti.
+      subject_configuration:
+        tab: "Configurazione dell'oggetto"
+        manually_editable_subjects:
+          label: "Oggetti modificabili manualmente"
+          caption: "Gli utenti possono inserire e modificare manualmente gli oggetti delle macro-attività senza restrizioni."
+        automatically_generated_subjects:
+          label: "Oggetti generati automaticamente"
+          caption: "Definisci uno schema utilizzando attributi e testo referenziati per generare automaticamente gli oggetti delle macro-attività. Gli utenti non saranno in grado di modificare manualmente gli oggetti."
+        pattern:
+          label: "Schema dell'oggetto"
+          caption: "Cerca un attributo o aggiungi testo. Per creare uno spazio tra gli elementi aggiungilo come testo."
   versions:
     overview:
       work_packages_in_archived_projects: "La versione è condivisa con progetti archiviati che hanno ancora macro-attività assegnate a questa versione. Queste vengono conteggiate, ma non appariranno nelle viste collegate."
@@ -614,6 +643,7 @@ it:
         title: "Flusso di lavoro mancante per la condivisione di macro-attività"
         message: "Nessun flusso di lavoro è configurato per il ruolo \"Editor di macro-attività\". Senza un flusso di lavoro, la condivisione con l'utente non può alterare lo stato della macro-attività. I flussi di lavoro possono essere copiati. Seleziona un tipo di origine (ad esempio \"Attività\") e un ruolo di origine (ad esempio \"Membro\"). Quindi seleziona i tipi obiettivo. Per cominciare, potresti selezionare tutti i tipi come obiettivi. Infine, seleziona il ruolo \"Editor di macro-attività\" come destinazione e premi \"Copia\". Dopo aver creato le impostazioni predefinite, perfeziona i flussi di lavoro come fai per ogni altro ruolo."
         link_message: "Configura i flussi di lavoro nell'amministrazione."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -630,6 +660,75 @@ it:
           no_results_title_text: Al momento non sono disponibili tipi.
         version:
           no_results_title_text: Al momento non vi sono versioni disponibili.
+  work_package_relations_tab:
+    index:
+      action_bar_title: "Aggiungi relazioni ad altre macro-attività per creare un collegamento tra di esse."
+      no_results_title_text: Al momento non vi sono relazioni disponibili.
+      blankslate_heading: "Nessuna relazione"
+      blankslate_description: "Questa macro-attività non ha ancora alcuna relazione."
+    label_add_child_button: "Figlio"
+    label_add_x: "Aggiungi %{x}"
+    label_edit_x: "Modifica %{x}"
+    label_add_description: "Aggiungi descrizione"
+    lag:
+      subject: "Ritardo"
+      title: "Ritardo (in giorni)"
+      caption: "Il numero minimo di giorni lavorativi da far trascorrere tra le due macro-attività."
+    relations:
+      label_new_child_created: "Nuova macro-attività creata e aggiunta come figlia"
+      label_relates_singular: "correlata con"
+      label_relates_plural: "correlate con"
+      label_relates_to_singular: "correlata con"
+      label_relates_to_plural: "correlate con"
+      relates_description: "Crea un collegamento visibile tra i due macro-attività senza alcun effetto aggiuntivo"
+      relates_to_description: "Crea un collegamento visibile tra i due macro-attività senza alcun effetto aggiuntivo"
+      label_precedes_singular: "successore (dopo)"
+      label_precedes_plural: "successori (dopo)"
+      precedes_description: "La macro-attività correlata deve necessariamente iniziare dopo la conclusione di questa"
+      label_follows_singular: "predecessore (prima)"
+      label_follows_plural: "predecessori (prima)"
+      follows_description: "La macro-attività correlata deve necessariamente terminare prima dell'inizio di questa"
+      label_child_singular: "figlia"
+      label_child_plural: "figlie"
+      new_child: "Nuovo figlio"
+      new_child_text: "Crea una macro-attività correlata come sottovoce della macro-attività attuale (genitore)"
+      existing_child: "Figlio esistente"
+      child_description: "Rende la macro-attività correlata un sottoelemento della macro-attività corrente (genitore)"
+      label_blocks_singular: "blocca"
+      label_blocks_plural: "blocca"
+      blocks_description: "La relativa macro-attività non può essere chiusa fino a quando questa non sarà chiusa prima"
+      label_blocked_singular: "bloccata da"
+      label_blocked_plural: "bloccate da"
+      label_blocked_by_singular: "bloccata da"
+      label_blocked__by_plural: "bloccate da"
+      blocked_description: "Questa macro-attività non può essere chiusa fino a quando quella correlata non sarà chiusa prima"
+      blocked_by_description: "Questa macro-attività non può essere chiusa fino a quando quella correlata non sarà chiusa prima"
+      label_duplicates_singular: "duplica"
+      label_duplicates_plural: "duplica"
+      duplicates_description: "Questa è una copia della macro-attività correlata"
+      label_duplicated_singular: "duplicata da"
+      label_duplicated_plural: "duplicate da"
+      label_duplicated_by_singular: "duplicata da"
+      label_duplicated_by_plural: "duplicate da"
+      duplicated_by_description: "La macro-attività correlata è una copia di questa"
+      duplicated_description: "La macro-attività correlata è una copia di questa"
+      label_includes_singular: "include"
+      label_includes_plural: "include"
+      includes_description: "Contrassegna la macro-attività correlata come se includesse questa senza alcun effetto aggiuntivo"
+      label_partof_singular: "parte di"
+      label_partof_plural: "parte di"
+      label_part_of_singular: "parte di"
+      label_part_of_plural: "parte di"
+      partof_description: "Contrassegna la macro-attività correlata come se facesse parte di questa senza alcun effetto aggiuntivo"
+      part_of_description: "Contrassegna la macro-attività correlata come se facesse parte di questa senza alcun effetto aggiuntivo"
+      label_requires_singular: "richiede"
+      label_requires_plural: "richiede"
+      requires_description: "Contrassegna la macro-attività correlata come obbligatoria per questa"
+      label_required_singular: "richiesta da"
+      label_required_plural: "richieste da"
+      required_description: "Contrassegna questa macro-attività come obbligatoria per quella correlata"
+      label_parent_singular: "genitore"
+      label_parent_plural: "genitore"
   label_invitation: Invito
   account:
     delete: "Cancella account"
@@ -694,6 +793,7 @@ it:
         is_required: "Richiesto"
         max_length: "Lunghezza massima"
         min_length: "Lunghezza minima"
+        content_right_to_left: "Contenuto da destra a sinistra"
         multi_value: "Consenti selezione multipla"
         possible_values: "Valori possibili"
         regexp: "Espressione regolare"
@@ -729,6 +829,8 @@ it:
         attr_lastname: "Attributo cognome"
         attr_login: "Attributo nome utente"
         attr_mail: "Attributo email"
+        filter_string: "Stringa del filtro"
+        admin: "Amministratore"
         base_dn: "Nome Dominio (DN) base"
         host: "Host"
         onthefly: "Creazione automatica degli utenti"
@@ -772,6 +874,9 @@ it:
       project_custom_field:
         is_required: "Richiesto per tutti i progetti"
         custom_field_section: Sezione
+      project/life_cycle_step_definition:
+        name: "Nome"
+        color: "Colore"
       query:
         column_names: "Colonne"
         relations_to_type_column: "Relazioni con %{type}"
@@ -783,6 +888,9 @@ it:
         lag: "Ritardo"
         from: "Macro-attività"
         to: "Macro-attività correlata"
+      reminder:
+        remind_at_date: "Data"
+        remind_at_time: "Ora"
       repository:
         url: "URL"
       role:
@@ -871,6 +979,7 @@ it:
       messages:
         accepted: "deve essere accettato."
         after: "deve essere successivo al %{date}."
+        after_today: "deve essere nel futuro."
         after_or_equal_to: "deve essere successivo o uguale al %{date}."
         before: "deve essere precedente al %{date}."
         before_or_equal_to: "deve essere precedente o uguale al %{date}."
@@ -917,6 +1026,7 @@ it:
         not_an_integer: "non è un numero intero."
         not_an_iso_date: "non è una data valida. Formato richiesto: AAAA-MM-GG."
         not_same_project: "non appartiene allo stesso progetto."
+        datetime_must_be_in_future: "deve essere nel futuro."
         odd: "deve essere dispari."
         regex_match_failed: "non corrisponde all'espressione regolare %{expression}."
         regex_invalid: "non può essere convalidato con l'espressione regolare associata."
@@ -1029,17 +1139,39 @@ it:
         project/life_cycle_step_definition:
           attributes:
             type:
-              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
+              must_be_a_stage_or_gate: "deve essere Project::StageDefinition o Project::GateDefinition"
+              type_and_class_name_mismatch: "deve corrispondere al nome della classe istanziata"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "deve essere un Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "deve essere un Project::StageDefinition"
         project/life_cycle_step:
           attributes:
             type:
-              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
-              must_be_a_stage: "must be a Project::Stage"
-              must_be_a_gate: "must be a Project::Gate"
+              must_be_a_stage_or_gate: "deve essere Project::Stage o Project::Gate"
+              must_be_a_stage: "deve essere un Project::Stage"
+              must_be_a_gate: "deve essere un Project::Gate"
+              type_and_class_name_mismatch: "deve corrispondere al nome della classe istanziata"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign `end_date` to a Project::Gate"
+              end_date_not_allowed: "Impossibile assegnare la data di fine a un Project::Gate"
+            type:
+              type_and_class_name_mismatch: "deve essere un Project::Gate"
+            date:
+              non_continuous_dates: "non può essere precedente alla data di fine del precedente %{step}."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "la data di inizio deve precedere quella di fine."
+              non_continuous_dates: "non può essere precedente alla data di fine del precedente %{step}."
+              incomplete: "è incompleto."
+            type:
+              type_and_class_name_mismatch: "deve essere un Project::Stage"
         query:
           attributes:
             project:
@@ -1256,6 +1388,8 @@ it:
         other: "Notifiche"
       placeholder_user: "Utente segnaposto"
       project: "Progetto"
+      project/gate_definition: "Controllo"
+      project/stage_definition: "Fase"
       project_query:
         one: "Elenco di progetti"
         other: "Elenchi di progetti"
@@ -1359,6 +1493,7 @@ it:
     login: "Nome utente"
     mail: "Email"
     name: "Nome"
+    note: "Nota"
     password: "Password"
     priority: "Priorità"
     project: "Progetto"
@@ -1455,6 +1590,7 @@ it:
   button_print: "Stampa"
   button_quote: "Cita"
   button_remove: Rimuovi
+  button_remove_reminder: "Rimuovi promemoria"
   button_rename: "Rinomina"
   button_replace: "Sostituisci"
   button_revoke: "Revoca"
@@ -1465,6 +1601,7 @@ it:
   button_save_as: "Salva come"
   button_apply_changes: "Applica modifiche"
   button_save_back: "Salva e ritorna"
+  button_set_reminder: "Imposta promemoria"
   button_show: "Mostra"
   button_sort: "Ordina"
   button_submit: "Invia"
@@ -1670,12 +1807,16 @@ it:
   direction: da sinistra a destra
   ee:
     upsale:
+      title: "Componente aggiuntivo Enterprise"
+      link_title: "Altre informazioni"
+      automatic_subject_generation:
+        description: "Crea oggetti generati automaticamente utilizzando gli attributi e il testo di riferimento."
+      customize_life_cycle:
+        description: "Crea e organizza fasi e controlli di progetto diversi da quelli forniti dalla pianificazione del ciclo di progetto PM2."
       form_configuration:
         description: "Personalizza la configurazione del modulo con le seguenti aggiunte:"
         add_groups: "Aggiunta di gruppi di proprietà"
         rename_groups: "Rinominazione di gruppi di proprietà"
-      project_filters:
-        description_html: "Le opzioni di filtraggio e ordinamento dei campi personalizzati sono disponibili nella versione Enterprise."
   enumeration_activities: "Attività di monitoraggio dei tempi"
   enumeration_work_package_priorities: "Priorità della macro-attività"
   enumeration_reported_project_statuses: "Stato di progetto segnalato"
@@ -1708,6 +1849,7 @@ it:
   error_pdf_export_too_many_columns: "Troppe colonne selezionate per l'esportazione in PDF. Ridurre il numero di colonne."
   error_pdf_failed_to_export: "L'esportazione del PDF non può essere salvata: %{error}"
   error_token_authenticity: "Impossibile verificare il token di richiesta. Forse hai provato a inviare i dati da più browser o schede? Chiudi tutte le schede e riprova."
+  error_reminder_not_found: "Il promemoria non è stato trovato o è già stato notificato."
   error_work_package_not_found_in_project: "La macro-attività non è stata trovata o non appartiene a questo progetto"
   error_work_package_id_not_found: "Impossibile trovare la macro-attività."
   error_must_be_project_member: "deve essere membro del progetto"
@@ -1836,22 +1978,22 @@ it:
       hours: o
       days: g
   pdf_generator:
-    page_nr_footer: "Page %{page} of %{total}"
+    page_nr_footer: "Pagina %{page} di %{total}"
     dialog:
-      title: Generate PDF
-      submit: Generate
+      title: Genera PDF
+      submit: Genera
       header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+        label: Intestazione a destra
+        caption: Testo da visualizzare a destra dell'intestazione
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Piè di pagina centrale
+        caption: Testo da visualizzare al centro del piè di pagina
       hyphenation:
-        label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
+        label: Sillabazione
+        caption: Suddividi le parole tra le righe per migliorare la giustificazione e la leggibilità del testo.
       paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        label: Dimensione del foglio
+        caption: Il formato della carta da utilizzare per il PDF.
   extraction:
     available:
       pdftotext: "Pdfatesto disponibile (opzionale)"
@@ -2001,6 +2143,7 @@ it:
       responsible: "Responsabile"
       shared: "Condiviso"
       watched: "Osservatore"
+      reminder: "Promemoria"
     facets:
       unread: "Non letta"
       unread_title: "Mostra non lette"
@@ -2168,8 +2311,10 @@ it:
   label_default: "Predefinito"
   label_delete_user: "Elimina utente"
   label_delete_project: "Elimina progetto"
+  label_delete: "Elimina"
   label_deleted: "cancellato"
   label_deleted_custom_field: "(campo personalizzato eliminato)"
+  label_deleted_custom_item: "(elemento eliminato)"
   label_deleted_custom_option: "(opzione eliminata)"
   label_empty_element: "(vuoto)"
   label_missing_or_hidden_custom_option: "(valore mancante o assenza di permessi di accesso)"
@@ -2206,10 +2351,10 @@ it:
   label_enterprise_active_users: "%{current}/%{limit} utenti attivi riservati"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Supporto per Imprese"
-  label_enterprise_addon: "Componente aggiuntivo Enterprise"
   label_environment: "Ambiente"
   label_estimates_and_progress: "Stime e progressi"
   label_equals: "è"
+  label_equals_with_descendants: "è qualsiasi con discendenti"
   label_everywhere: "ovunque"
   label_example: "Esempio"
   label_experimental: "Sperimentale"
@@ -2390,6 +2535,7 @@ it:
   label_none_parentheses: "(nessuno)"
   label_not_contains: "non contiene"
   label_not_equals: "non è"
+  label_life_cycle_step_plural: "Ciclo di vita del progetto"
   label_on: "il"
   label_operator_all: "non è vuoto"
   label_operator_none: "è vuoto"
@@ -2451,6 +2597,7 @@ it:
   label_project_new: "Nuovo progetto"
   label_project_plural: "Progetti"
   label_project_list_plural: "Elenchi progetto"
+  label_project_lifecycle: "Ciclo di vita del progetto"
   label_project_attributes_plural: "Attributi del progetto"
   label_project_custom_field_plural: "Attributi del progetto"
   label_project_settings: "Impostazioni progetto"
@@ -2474,7 +2621,10 @@ it:
   label_related_work_packages: "Macro-attività correlate"
   label_relates: "correlato con"
   label_relates_to: "correlato con"
+  label_relation: "Relazione"
+  label_relation_actions: "Azioni di relazione"
   label_relation_delete: "Eliminare la relazione"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nuova relazione"
   label_release_notes: "Note di rilascio"
   label_remaining_work: "Lavoro residuo"
@@ -2489,6 +2639,7 @@ it:
   label_reporting: "Prospetto"
   label_reporting_plural: "Prospetti"
   label_repository: "Archivio"
+  label_repository_remove: "Rimuovi il repository"
   label_repository_root: "Cartella radice dell'archivio"
   label_repository_plural: "Archivi"
   label_required: "obbligatorio"
@@ -2551,6 +2702,7 @@ it:
   label_this_month: "questo mese"
   label_this_week: "questa settimana"
   label_this_year: "questo anno"
+  label_time: "Ora"
   label_time_entry_plural: "Tempo speso"
   label_time_entry_activity_plural: "Attività che richiedono tempo"
   label_title: "Titolo"
@@ -2586,6 +2738,7 @@ it:
   label_user_settings: "Impostazioni utente"
   label_users_settings: "Impostazioni utenti"
   label_version_new: "Nuova versione"
+  label_version_edit: "Modifica versione"
   label_version_plural: "Versioni"
   label_version_sharing_descendants: "Con i sotto-progetti"
   label_version_sharing_hierarchy: "Con la gerarchia del progetto"
@@ -2723,8 +2876,13 @@ it:
         prefix: "Ricevuto a causa dell'impostazione della notifica: %{reason}"
         date_alert_start_date: "Avviso data"
         date_alert_due_date: "Avviso data"
+        reminder: "Promemoria"
       see_all: "Vedi tutti"
       updated_at: "Aggiornato il %{timestamp} da %{user}"
+    reminder_notifications:
+      subject: "Promemoria: %{note}"
+      heading: "Hai un nuovo promemoria"
+      note: "Nota: \"%{note}\""
     sharing:
       work_packages:
         allowed_actions: "Puoi %{allowed_actions} questa macro-attività. Questa impostazione può cambiare a seconda del ruolo e delle autorizzazioni del progetto."
@@ -2883,6 +3041,7 @@ it:
   notice_bad_request: "Richiesta non valida."
   notice_not_authorized: "Non sei autorizzato ad accedere a questa pagina."
   notice_not_authorized_archived_project: "Il progetto che stai tentando di accedere è stato archiviato."
+  notice_requires_enterprise_token: "Il token Enterprise è assente o non consente l'accesso a questa pagina."
   notice_password_confirmation_failed: "La password non è corretta. Impossibile continuare."
   notice_principals_found_multiple: "Trovati %{number} risultati. \n Premi Tab per evidenziare il primo."
   notice_principals_found_single: "Trovato un solo risultato. \n Premi Tab per evidenziarlo."
@@ -2891,6 +3050,7 @@ it:
   notice_successful_connection: "Connesso con successo."
   notice_successful_create: "Creato con successo."
   notice_successful_delete: "Cancellato con successo."
+  notice_successful_cancel: "Cancellato con successo."
   notice_successful_update: "Aggiornato con successo."
   notice_successful_update_custom_fields_added_to_project: |
     Aggiornamento riuscito. I campi personalizzati dei tipi attivati ​​vengono attivati ​​automaticamente
@@ -2968,6 +3128,7 @@ it:
   permission_edit_own_time_entries: "Modificare i propri registri di orario effettuato"
   permission_edit_project: "Modificare un progetto"
   permission_edit_project_attributes: "Modifica gli attributi del progetto"
+  permission_edit_project_stages_and_gates: "Modifica le fasi e i controlli di progetto"
   permission_edit_reportings: "Modificare prospetti"
   permission_edit_time_entries: "Modificare i registri temporali per altri utenti"
   permission_edit_timelines: "Modificare cronologie"
@@ -2997,9 +3158,12 @@ it:
   permission_search_project: "Cerca progetto"
   permission_select_custom_fields: "Seleziona campi personalizzati"
   permission_select_project_custom_fields: "Selezionare gli attributi del progetto"
+  permission_select_project_life_cycle: "Seleziona le fasi e i controlli di progetto"
+  permission_select_project_life_cycle_explanation: "Attiva/Disattiva le fasi e i controlli di un progetto. Consente all'utente di selezionare il ciclo di vita appropriato per il progetto, in quanto le fasi e i controlli inattivi non saranno visibili nella pagina di panoramica del progetto né nell'elenco dei progetti."
   permission_select_project_modules: "Seleziona moduli del progetto"
   permission_share_work_packages: "Condividi macro-attività"
   permission_manage_types: "Seleziona i tipi"
+  permission_manage_own_reminders: "Crea promemoria"
   permission_view_project: "Visualizza progetti"
   permission_view_changesets: "Visualizza l'archivio revisioni in OpenProject"
   permission_view_commit_author_statistics: "Visualizza le statistiche dell'autore delle modifiche confermate"
@@ -3020,6 +3184,7 @@ it:
   permission_work_package_assigned_explanation: "È possibile assegnare macro-attività ad utenti e gruppi che hanno questo ruolo nel rispettivo progetto"
   permission_view_project_activity: "Visualizza attività del progetto"
   permission_view_project_attributes: "Mostra gli attributi del progetto"
+  permission_view_project_stages_and_gates: "Visualizza fasi e controlli di progetto"
   permission_save_bcf_queries: "Salva query BCF"
   permission_manage_public_bcf_queries: "Gestisci query BCF pubbliche"
   permission_edit_attribute_help_texts: "Modifica i testi guida dell'attributo"
@@ -3051,9 +3216,9 @@ it:
       are_you_sure: "Sicuro di voler archiviare il progetto '%{name}'?"
       archived: "Archiviato"
     count:
-      zero: "0 Progetti"
-      one: "1 Progetto"
-      other: "%{count} Progetti"
+      zero: "0 progetti"
+      one: "1 progetto"
+      other: "%{count} progetti"
   project_module_activity: "Attività"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Macro-attività"
@@ -3187,6 +3352,7 @@ it:
     activated: "attivato"
     deactivated: "disattivato"
   search_input_placeholder: "Ricerca..."
+  setting_apiv3_cors_title: "Condivisione incrociata delle risorse (CORS - Cross-Origin Resource Sharing)"
   setting_apiv3_cors_enabled: "Abilita CORS"
   setting_apiv3_cors_origins: "Origini di condivisione CORS (Cross-Origin Resource Sharing) API V3 consentite"
   setting_apiv3_cors_origins_text_html: >
@@ -3412,6 +3578,27 @@ it:
       new:
         heading: "Nuovo attributo"
         description: "Le modifiche a questo attributo di progetto si rifletteranno in tutti i progetti in cui è abilitato. Gli attributi obbligatori non possono essere disabilitati per progetto."
+    project_life_cycle_step_definitions:
+      heading: "Ciclo di vita del progetto"
+      heading_description: "Il ciclo di vita del progetto consiste in fasi e controlli che strutturano i suoi progetti. Appariranno nella pagina di panoramica di un progetto e saranno disponibili nell'elenco dei progetti. Le singole fasi e i controlli possono essere selezionati per personalizzare un progetto, ma non è possibile riordinarli a livello di progetto."
+      label_add: "Aggiungi"
+      label_add_description: "Aggiungi definizione di ciclo di vita"
+      label_add_stage: "Fase"
+      label_add_gate: "Controllo"
+      filter:
+        label: "Cerca la fase o il controllo di progetto"
+      section_header: "Fasi e controlli"
+      non_defined: "Attualmente non sono definiti né controlli né fasi."
+      new:
+        description: "Le modifiche a questa fase di progetto si rifletteranno in tutti i progetti in cui è abilitata."
+      new_stage:
+        heading: "Nuova fase"
+      new_gate:
+        heading: "Nuovo controllo"
+      edit_stage:
+        heading: "Modifica fase"
+      edit_gate:
+        heading: "Modifica controllo"
     projects:
       missing_dependencies: "È stato controllato il modulo del progetto %{module} che dipende da %{dependencies}. È necessario controllare anche queste dipendenze."
       section_new_projects: "Impostazioni per i nuovi progetti"
@@ -3445,6 +3632,7 @@ it:
   text_are_you_sure_continue: "Vuoi davvero continuare?"
   text_are_you_sure_with_children: "Eliminare la macro-attività e tutte le sue sotto-attività?"
   text_are_you_sure_with_project_custom_fields: "L'eliminazione di questo attributo eliminerà anche i suoi valori in tutti i progetti. Continuare?"
+  text_are_you_sure_with_project_life_cycle_step: "L'eliminazione di questa fase eliminerà anche i suoi utilizzi in tutti i progetti. Continuare?"
   text_assign_to_project: "Assegna al progetto"
   text_form_configuration: >
     È possibile personalizzare quali campi verranno visualizzati nei moduli della macro-attività. È possibile raggruppare liberamente i campi per soddisfare le esigenze per il tuo dominio.
@@ -3700,6 +3888,12 @@ it:
       edit_description: "Può visu"
       view: "Visualizzare"
       view_description: "Può visualizzare questa macro-attività."
+    reminders:
+      label_remind_at: "Data"
+      note_placeholder: "Perché stai impostando questo promemoria?"
+      success_creation_message: "Il promemoria è stato impostato con successo. Riceverai una notifica per questa macro-attività all'ora scelta."
+      success_update_message: "Promemoria aggiornato con successo."
+      success_deletion_message: "Promemoria eliminato con successo."
   sharing:
     count:
       zero: "0 utenti"
@@ -3886,6 +4080,8 @@ it:
       builtin: Applicazione di istanza integrata
       confidential: Confidenziale
       singular: "Applicazione OAuth"
+      scopes: "Ambiti"
+      client_credentials: "Credenziali del cliente"
       plural: "Applicazioni OAuth"
       named: "Applicazione OAuth \"%{name}\""
       new: "Nuova Applicazione OAuth"

@@ -29,7 +29,7 @@
 require "spec_helper"
 require "features/work_packages/work_packages_page"
 
-RSpec.describe "work package export" do
+RSpec.describe "work package export", :js, :selenium do
   let(:project) { create(:project_with_types, types: [type_a, type_b]) }
   let(:export_type) { "CSV" }
   let(:current_user) { create(:admin) }
@@ -126,7 +126,7 @@ RSpec.describe "work package export" do
     context "with activated options" do
       let(:query) do
         create(
-          :query, user: current_user, project:,
+          :query, id: 1234, user: current_user, project:,
                   display_sums: true,
                   include_subprojects: true,
                   show_hierarchies: true,
@@ -135,6 +135,7 @@ RSpec.describe "work package export" do
       end
       let(:expected_params) do
         default_expected_params.merge({
+                                        query_id: "1234",
                                         showSums: "true",
                                         includeSubprojects: "true",
                                         showHierarchies: "true"

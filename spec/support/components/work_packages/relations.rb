@@ -39,7 +39,7 @@ module Components
 
       attr_reader :work_package
 
-      def initialize(work_package)
+      def initialize(work_package = nil)
         @work_package = work_package
       end
 
@@ -64,11 +64,11 @@ module Components
 
       def find_row(relatable)
         actual_relatable = find_relatable(relatable)
-        page.find_test_selector("op-relation-row-#{actual_relatable.id}")
+        page.find_test_selector("op-relation-row-#{actual_relatable.id}", wait: 5)
       end
 
       def find_some_row(text:)
-        page.find("[data-test-selector^='op-relation-row']", text:)
+        page.find("[data-test-selector^='op-relation-row']", text:, wait: 5)
       end
 
       def expect_row(work_package)
@@ -77,7 +77,42 @@ module Components
 
       def expect_no_row(relatable)
         actual_relatable = find_relatable(relatable)
-        expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}")
+        expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}"),
+                            "expected no relation row for work package " \
+                            "##{actual_relatable.id} #{actual_relatable.subject.inspect}"
+      end
+
+      def select_relation_type(relation_type)
+        within_new_relation_action_menu do
+          click_link_or_button relation_type
+        end
+      end
+
+      def expect_new_relation_type(relation_type)
+        within_new_relation_action_menu do
+          expect(page).to have_link(relation_type, wait: 1)
+        end
+      end
+
+      def expect_no_new_relation_type(relation_type)
+        within_new_relation_action_menu do
+          expect(page).to have_no_link(relation_type, wait: 1)
+        end
+      end
+
+      def open_new_relation_action_menu
+        return if new_relation_action_menu.visible?
+
+        new_relation_button.click
+      end
+
+      def new_relation_action_menu
+        action_menu_id = new_relation_button["aria-controls"]
+        page.find(id: action_menu_id, visible: :all)
+      end
+
+      def new_relation_button
+        page.find_test_selector("new-relation-action-menu").find_button
       end
 
       def remove_relation(relatable)
@@ -131,12 +166,10 @@ module Components
         # Open create form
 
         SeleniumHubWaiter.wait
-        page.find_test_selector("new-relation-action-menu").click
 
         label_text_for_relation_type = I18n.t("#{i18n_namespace}.label_#{type}_singular")
-        within page.find_by_id("new-relation-action-menu-list") do # Primer appends "list" to the menu id automatically
-          click_link_or_button label_text_for_relation_type.capitalize
-        end
+
+        select_relation_type label_text_for_relation_type.capitalize
 
         wait_for_reload if using_cuprite?
 
@@ -154,7 +187,7 @@ module Components
           fill_in "Description", with: description
         end
 
-        click_link_or_button "Save"
+        click_link_or_button "Add"
 
         wait_for_reload if using_cuprite?
 
@@ -168,16 +201,8 @@ module Components
         find_row(target_wp)
       end
 
-      def add_description_to_relation(relatable, description)
-        actual_relatable = find_relatable(relatable)
-        relation_row = find_row(actual_relatable)
-
-        within relation_row do
-          page.find_test_selector("op-relation-row-#{actual_relatable.id}-action-menu").click
-          page.find_test_selector("op-relation-row-#{actual_relatable.id}-edit-button").click
-        end
-
-        wait_for_reload if using_cuprite?
+      def edit_relation_description(relatable, description)
+        open_relation_dialog(relatable)
 
         within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
           expect(page).to have_field("Work package", readonly: true)
@@ -191,7 +216,22 @@ module Components
         end
       end
 
-      def edit_relation_description(relatable, description)
+      def edit_lag_of_relation(relatable, lag)
+        open_relation_dialog(relatable)
+
+        within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
+          expect(page).to have_field("Work package", readonly: true)
+          expect(page).to have_field("Lag")
+
+          fill_in "Lag", with: lag
+
+          click_link_or_button "Save"
+
+          wait_for_reload if using_cuprite?
+        end
+      end
+
+      def open_relation_dialog(relatable)
         actual_relatable = find_relatable(relatable)
         relation_row = find_row(actual_relatable)
 
@@ -201,17 +241,6 @@ module Components
         end
 
         wait_for_reload if using_cuprite?
-
-        within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
-          expect(page).to have_field("Work package", readonly: true)
-          expect(page).to have_field("Description")
-
-          fill_in "Description", with: description
-
-          click_link_or_button "Save"
-
-          wait_for_reload if using_cuprite?
-        end
       end
 
       def expect_relation(relatable)
@@ -276,11 +305,7 @@ module Components
         SeleniumHubWaiter.wait
 
         retry_block do
-          page.find_test_selector("new-relation-action-menu").click
-
-          within page.find_by_id("new-relation-action-menu-list") do # Primer appends "list" to the menu id automatically
-            click_link_or_button "Child"
-          end
+          select_relation_type "Existing child"
         end
 
         within "##{WorkPackageRelationsTab::AddWorkPackageChildFormComponent::DIALOG_ID}" do
@@ -318,6 +343,13 @@ module Components
         end
 
         expect_no_row(work_package)
+      end
+
+      private
+
+      def within_new_relation_action_menu(&)
+        open_new_relation_action_menu
+        within(new_relation_action_menu, &)
       end
     end
   end

@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "custom fields of type hierarchy", :js, :with_cuprite do
+RSpec.describe "custom fields of type hierarchy", :js do
   let(:admin) { create(:admin) }
   let(:custom_field_index_page) { Pages::CustomFields::IndexPage.new }
   let(:new_custom_field_page) { Pages::CustomFields::NewPage.new }
@@ -40,8 +40,7 @@ RSpec.describe "custom fields of type hierarchy", :js, :with_cuprite do
     allow(EnterpriseToken).to receive(:allows_to?).and_return(true)
   end
 
-  it "lets you create, update and delete a custom field of type hierarchy",
-     with_flag: { custom_field_of_type_hierarchy: true } do
+  it "lets you create, update and delete a custom field of type hierarchy" do
     login_as admin
 
     # region CustomField creation

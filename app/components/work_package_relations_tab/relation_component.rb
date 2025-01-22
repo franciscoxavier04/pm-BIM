@@ -61,7 +61,11 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     relation.description.present?
   end
 
-  def should_display_start_and_end_dates?
+  def lag_present?
+    relation.lag.present? && relation.lag != 0
+  end
+
+  def should_display_dates_row?
     return false if parent_child_relationship?
 
     relation.follows? || relation.precedes?
@@ -85,10 +89,14 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
 
   def destroy_path
     if parent_child_relationship?
-      work_package_child_path(@work_package, @child)
+      work_package_children_relation_path(@work_package, @child)
     else
       work_package_relation_path(@work_package, @relation)
     end
+  end
+
+  def lag_as_text(lag)
+    "#{I18n.t('work_package_relations_tab.lag.subject')}: #{I18n.t('datetime.distance_in_words.x_days', count: lag)}"
   end
 
   def action_menu_test_selector

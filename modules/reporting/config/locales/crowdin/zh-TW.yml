@@ -86,8 +86,15 @@ zh-TW:
   validation_failure_date: "不是一個有效日期"
   validation_failure_integer: "不是一個有效的整數"
   export:
+    timesheet:
+      title: "您的時間表PDF匯出"
+      button: "匯出 PDF 時間表"
+      timesheet: "時間表"
+      time: "時間"
     cost_reports:
       title: "您的成本報表(以XLS匯出)"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "選擇列"

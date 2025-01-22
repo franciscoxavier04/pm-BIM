@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -60,8 +62,8 @@ RSpec.describe TimeEntry do
            spent_on: date,
            hours:,
            start_time: start_time,
-           end_time: start_time + (hours * 60).to_i,
            user:,
+           time_zone: user.time_zone,
            rate: hourly_one,
            comments: "lorem")
   end
@@ -84,7 +86,7 @@ RSpec.describe TimeEntry do
            roles: [create(:project_role, permissions:)])
   end
 
-  describe "#hours" do
+  describe "#hours=" do
     formats = { "2" => 2.0,
                 "21.1" => 21.1,
                 "2,1" => 2.1,
@@ -104,9 +106,24 @@ RSpec.describe TimeEntry do
 
     formats.each do |from, to|
       it "formats '#{from}'" do
-        t = TimeEntry.new(hours: from)
+        t = described_class.new(hours: from)
         expect(t.hours)
           .to eql to
+      end
+    end
+  end
+
+  describe "#start_time=" do
+    formats = {
+      "720" => 720,
+      "12:00" => 720,
+      "13:37" => 817
+    }
+
+    formats.each do |from, to|
+      it "formats '#{from}'" do
+        t = described_class.new(start_time: from)
+        expect(t.start_time).to eql(to)
       end
     end
   end
@@ -424,6 +441,17 @@ RSpec.describe TimeEntry do
         expect(time_entry).to be_valid
       end
 
+      it "allows string time values" do
+        time_entry.start_time = "12:00"
+        expect(time_entry).to be_valid
+      end
+
+      it "does not allow times > 23:59" do
+        time_entry.start_time = "26:00"
+        expect(time_entry).not_to be_valid
+        expect(time_entry.errors.full_messages).to include("Start time must be between 00:00 and 23:59.")
+      end
+
       it "does not allow non integer values" do
         time_entry.start_time = 1.5
         expect(time_entry).not_to be_valid
@@ -433,63 +461,63 @@ RSpec.describe TimeEntry do
         time_entry.start_time = -42
         expect(time_entry).not_to be_valid
       end
-    end
 
-    describe "end_time" do
-      it "allows blank values" do
-        time_entry.end_time = nil
-        expect(time_entry).to be_valid
-      end
-
-      it "allows integer values between 0 and 1439" do
-        time_entry.end_time = 1337
-        expect(time_entry).to be_valid
-      end
-
-      it "does not allow values > 1439" do
-        time_entry.end_time = 1440
-        expect(time_entry).not_to be_valid
-      end
-
-      it "does not allow non integer values" do
-        time_entry.end_time = 1.5
-        expect(time_entry).not_to be_valid
-      end
-
-      it "does not allow negative values" do
-        time_entry.end_time = -42
-        expect(time_entry).not_to be_valid
-      end
-    end
-
-    describe "start_time and end_time" do
-      it "does not allow end times smaller than the start time" do
-        time_entry.start_time = 10 * 60
-        time_entry.end_time = 8 * 60
-
-        expect(time_entry).not_to be_valid
-      end
-
-      context "when enforcing start and end times" do
+      context "when enforcing times" do
         before do
           allow(described_class).to receive(:must_track_start_and_end_time?).and_return(true)
         end
 
         it "validates that both values are present" do
           time_entry.start_time = nil
-          time_entry.end_time = nil
 
           expect(time_entry).not_to be_valid
 
           time_entry.start_time = 10 * 60
 
-          expect(time_entry).not_to be_valid
-
-          time_entry.end_time = 12 * 60
-
           expect(time_entry).to be_valid
         end
       end
+    end
+  end
+
+  describe "#start_timestamp" do
+    it "returns nil if start_time is nil" do
+      time_entry.start_time = nil
+      expect(time_entry.start_timestamp).to be_nil
+    end
+
+    it "returns nil if timezone is nil" do
+      time_entry.time_zone = nil
+      expect(time_entry.start_timestamp).to be_nil
+    end
+
+    it "generates a proper timestamp from the stored information" do
+      time_entry.start_time = 14 * 60
+      time_entry.spent_on = Date.new(2024, 12, 24)
+      time_entry.time_zone = "America/Los_Angeles"
+
+      expect(time_entry.start_timestamp.iso8601).to eq("2024-12-24T14:00:00-08:00")
+    end
+  end
+
+  describe "#end_timestamp" do
+    it "returns nil if start_time is nil" do
+      time_entry.start_time = nil
+      expect(time_entry.end_timestamp).to be_nil
+    end
+
+    it "returns nil if timezone is nil" do
+      time_entry.time_zone = nil
+      expect(time_entry.end_timestamp).to be_nil
+    end
+
+    it "generates a proper timestamp from the stored information" do
+      time_entry.start_time = 8 * 60
+      time_entry.hours = 2.5
+      time_entry.spent_on = Date.new(2024, 12, 24)
+      time_entry.time_zone = "America/Los_Angeles"
+
+      expect(time_entry.end_timestamp.iso8601).to eq("2024-12-24T10:30:00-08:00")
     end
   end
 

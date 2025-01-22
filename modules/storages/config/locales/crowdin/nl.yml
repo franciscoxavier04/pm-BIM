@@ -3,6 +3,8 @@ nl:
     attributes:
       storages/file_link:
         origin_id: Oorsprong ID
+      storages/project_storage:
+        storage: Storage
       storages/storage:
         creator: Maker
         drive: Drive ID
@@ -124,7 +126,7 @@ nl:
               not_found: "%{current_path} is niet gevonden."
             set_folders_permissions:
               permission_not_set: Kan machtigingen niet instellen op %{path}.
-          error: An unexpected error occurred. Please ensure that you Nextcloud instance is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that your Nextcloud instance is reachable and check OpenProject worker logs for more information
           group_does_not_exist: "%{group} does not exist. Check your Nextcloud instance configuration."
           insufficient_privileges: OpenProject does not have enough privileges to add %{user} to %{group}. Check you group settings in Nextcloud.
           not_allowed: Nextcloud block the request.
@@ -145,7 +147,7 @@ nl:
               not_found: "%{current_path} is niet gevonden."
             set_folders_permissions:
               permission_not_set: Kan machtigingen niet instellen op %{path}.
-          error: An unexpected error occurred. Please ensure that you Nextcloud instance is reachable and check OpenProject worker logs for more information
+          error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
           not_allowed: OpenProject wasn't allowed to access your OneDrive drive. Please check the permissions set on the Azure Application.
           unauthorized: OpenProject could not sync with OneDrive. Please check your storage and Azure Application configuration.
           user_does_not_exist: "%{user} bestaat niet in Nextcloud."
@@ -289,7 +291,6 @@ nl:
     label_creation_time: Aanmaaktijd
     label_creator: Maker
     label_delete_storage: Opslag verwijderen
-    label_edit_storage: Opslag bewerken
     label_edit_storage_access_management: Beheer van toegang tot opslag bewerken
     label_edit_storage_automatically_managed_folders: Bewerk automatisch beheerde opslagmappen
     label_edit_storage_host: Edit storage host
@@ -343,6 +344,9 @@ nl:
       success:
         subtitle: Je wordt omgeleid
         title: Integration setup completed
+      timeout:
+        link_text: health status of the file storage setup
+        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check %{storages_health_link}.
       waiting:
         subtitle: One moment please, this might take some time...
         title: We are setting up your permissions on the project folder.

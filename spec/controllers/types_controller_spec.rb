@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -214,7 +216,7 @@ RSpec.describe TypesController do
         get "edit", params: { id: type.id, tab: :settings }
       end
 
-      it { expect(response).to have_http_status(:unprocessable_entity) }
+      it { expect(response).to have_http_status(:ok) }
       it { expect(response).to render_template "edit" }
       it { expect(response).to render_template "types/form/_settings" }
       it { expect(response.body).to have_css "input[@name='type[name]'][@value='My type']" }
@@ -233,7 +235,7 @@ RSpec.describe TypesController do
         get "edit", params: { id: type.id, tab: :projects }
       end
 
-      it { expect(response).to have_http_status(:unprocessable_entity) }
+      it { expect(response).to have_http_status(:ok) }
       it { expect(response).to render_template "edit" }
       it { expect(response).to render_template "types/form/_projects" }
 
@@ -242,7 +244,7 @@ RSpec.describe TypesController do
       }
     end
 
-    describe "POST update" do
+    describe "PATCH update" do
       let(:project2) { create(:project) }
       let(:type) do
         create(:type, name: "My type",
@@ -258,20 +260,35 @@ RSpec.describe TypesController do
         end
 
         before do
-          put :update, params:
+          patch :update, params:
         end
 
         it { expect(response).to be_redirect }
 
         it do
           expect(response).to(
-            redirect_to(edit_type_tab_path(id: type.id, tab: "settings"))
+            redirect_to(edit_tab_type_path(id: type.id, tab: "settings"))
           )
         end
 
         it "is renamed" do
           expect(Type.find_by(name: "My type renamed").id).to eq(type.id)
         end
+      end
+
+      describe "WITH the name being erroneously blank" do
+        let(:params) do
+          { "id" => type.id,
+            "type" => { name: "" },
+            "tab" => "settings" }
+        end
+
+        before do
+          patch :update, params:
+        end
+
+        it { expect(response).to have_http_status(:unprocessable_entity) }
+        it { expect(response).to render_template "edit" }
       end
 
       describe "WITH projects removed" do
@@ -282,14 +299,14 @@ RSpec.describe TypesController do
         end
 
         before do
-          put :update, params:
+          patch :update, params:
         end
 
         it { expect(response).to be_redirect }
 
         it do
           expect(response).to(
-            redirect_to(edit_type_tab_path(id: type.id, tab: :projects))
+            redirect_to(edit_tab_type_path(id: type.id, tab: :projects))
           )
         end
 

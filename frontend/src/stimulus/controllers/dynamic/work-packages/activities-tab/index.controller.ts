@@ -350,7 +350,7 @@ export default class IndexController extends Controller {
     if (window.location.hash.includes('#activity-')) {
       const activityId = window.location.hash.replace('#activity-', '');
       this.scrollToActivity(activityId);
-    } else if (this.sortingValue === 'asc') {
+    } else if (this.sortingValue === 'asc' && (!this.isMobile() || this.isWithinNotificationCenter())) {
       this.scrollToBottom();
     }
   }
@@ -358,9 +358,18 @@ export default class IndexController extends Controller {
   private tryScroll(activityId:string, attempts:number, maxAttempts:number) {
     const scrollableContainer = this.getScrollableContainer();
     const activityElement = document.getElementById(`activity-anchor-${activityId}`);
+    const topPadding = 70;
 
     if (activityElement && scrollableContainer) {
-      scrollableContainer.scrollTop = activityElement.offsetTop - 70;
+      scrollableContainer.scrollTop = 0;
+
+      setTimeout(() => {
+        const containerRect = scrollableContainer.getBoundingClientRect();
+        const elementRect = activityElement.getBoundingClientRect();
+        const relativeTop = elementRect.top - containerRect.top;
+
+        scrollableContainer.scrollTop = relativeTop - topPadding;
+      }, 50);
     } else if (attempts < maxAttempts) {
       setTimeout(() => this.tryScroll(activityId, attempts + 1, maxAttempts), 1000);
     }
@@ -371,11 +380,42 @@ export default class IndexController extends Controller {
     this.tryScroll(activityId, 0, maxAttempts);
   }
 
-  private scrollToBottom() {
+  private tryScrollToBottom(attempts:number = 0, maxAttempts:number = 20) {
     const scrollableContainer = this.getScrollableContainer();
-    if (scrollableContainer) {
-      scrollableContainer.scrollTop = scrollableContainer.scrollHeight;
+
+    if (!scrollableContainer) {
+      if (attempts < maxAttempts) {
+        setTimeout(() => this.tryScrollToBottom(attempts + 1, maxAttempts), 1000);
+      }
+      return;
     }
+
+    scrollableContainer.scrollTop = 0;
+
+    let timeoutId:ReturnType<typeof setTimeout>;
+
+    const observer = new MutationObserver(() => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        observer.disconnect();
+        scrollableContainer.scrollTo({
+          top: scrollableContainer.scrollHeight,
+          behavior: 'smooth',
+        });
+      }, 100);
+    });
+
+    observer.observe(scrollableContainer, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+    });
+  }
+
+  private scrollToBottom() {
+    this.tryScrollToBottom();
   }
 
   setFilterToOnlyComments() { this.filterValue = 'only_comments'; }

@@ -86,8 +86,15 @@ pt-BR:
   validation_failure_date: "não é uma data válida"
   validation_failure_integer: "não é um valor inteiro válido"
   export:
+    timesheet:
+      title: "Sua exportação de planilha de horas em PDF"
+      button: "Exportar planilha de horas em PDF"
+      timesheet: "Planilha de horas"
+      time: "Hora"
     cost_reports:
       title: "Exportação XLS dos seus relatórios de custos"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "Colunas selecionadas"

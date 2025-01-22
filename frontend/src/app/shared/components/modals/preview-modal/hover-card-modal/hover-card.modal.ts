@@ -58,10 +58,18 @@ export class HoverCardComponent extends OpModalComponent implements OnInit {
   @ViewChild('turboFrame')
   set turboFrame(frame:ElementRef<HTMLIFrameElement>|undefined) {
     if (frame !== undefined) {
+      // When a new turbo frame is set, hide the modal until the frame is loaded.
+      // Since the size of the new content is unknown in advance, showing a loading indicator within the hover card
+      // leads to a bumpy result once the actual content is inserted and the card extends its dimensions.
+      this.setOpacity(this.elementRef, 0);
+
       frame.nativeElement?.addEventListener('turbo:frame-load', () => {
         const modal = this.elementRef.nativeElement as HTMLElement;
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-explicit-any
         void this.reposition(modal, this.locals.event.target as HTMLElement);
+
+        // Content has been loaded, card has been positioned. Show it!
+        this.setOpacity(this.elementRef, 1);
       });
     }
   }
@@ -106,5 +114,11 @@ export class HoverCardComponent extends OpModalComponent implements OnInit {
       left: `${x}px`,
       top: `${y}px`,
     });
+  }
+
+  private setOpacity(elementRef:ElementRef, opacity:number) {
+    const element = elementRef.nativeElement as HTMLElement;
+
+    element.style.opacity = opacity.toString();
   }
 }

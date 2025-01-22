@@ -3,6 +3,8 @@ uk:
     attributes:
       storages/file_link:
         origin_id: Код джерела
+      storages/project_storage:
+        storage: Сховище
       storages/storage:
         creator: Автор
         drive: ID диску
@@ -145,7 +147,7 @@ uk:
               not_found: "%{current_path} не знайдено."
             set_folders_permissions:
               permission_not_set: не вдалося встановити дозволи за шляхом %{path}.
-          error: Сталася неочікувана помилка. Щоб дізнатися більше, переконайтеся, що маєте доступ до свого екземпляра Nextcloud, і перевірте журнали працівників OpenProject.
+          error: Сталася неочікувана помилка. Щоб дізнатися більше, переконайтеся, що маєте доступ до свого сховища OneDrive / SharePoint, і перевірте журнали працівників OpenProject.
           not_allowed: OpenProject не має дозволу на доступ до вашого диска OneDrive. Перевірте дозволи, установлені в програмі Azure.
           unauthorized: Не вдалося синхронізувати OpenProject із OneDrive. Перевірте конфігурацію свого сховища й додатку Azure.
           user_does_not_exist: "%{user} не існує в Nextcloud."
@@ -289,7 +291,6 @@ uk:
     label_creation_time: Час створення
     label_creator: Автор
     label_delete_storage: Видалити сховище
-    label_edit_storage: Редагувати сховище
     label_edit_storage_access_management: Змінити керування доступом до сховища
     label_edit_storage_automatically_managed_folders: Редагувати папки сховища з автоматичним керуванням
     label_edit_storage_host: Редагувати хост сховища
@@ -343,6 +344,9 @@ uk:
       success:
         subtitle: Виконується переспрямування
         title: Налаштування інтеграції завершено
+      timeout:
+        link_text: стан справності конфігурації файлового сховища
+        subtitle: Додатку OpenProject не вдалося надати вам доступ до папки проєкту протягом очікуваного періоду. Повторіть спробу.<br><br> Якщо ця проблема не зникне, зверніться до адміністратора OpenProject і попросіть його перевірити %{storages_health_link}.
       waiting:
         subtitle: Трохи зачекайте. Це може зайняти деякий час...
         title: Ми налаштовуємо ваші дозволи для папки проєкту.

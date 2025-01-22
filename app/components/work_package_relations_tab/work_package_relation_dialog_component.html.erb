@@ -3,7 +3,7 @@
                                    size: :large,
                                    id: DIALOG_ID)) do |d|
     d.with_header(variant: :large)
-    d.with_body(classes: "Overlay-body_autocomplete_height") do
+    d.with_body(classes: body_classes) do
       render(WorkPackageRelationsTab::WorkPackageRelationFormComponent.new(
         work_package: @work_package,
         relation: @relation
@@ -21,7 +21,11 @@
           form: FORM_ID,
           data: { turbo: true },
           type: :submit)) do
-          t(:button_save)
+          if @relation.id.present?
+            t(:button_save)
+          else
+            t(:button_add)
+          end
         end
       end
     end

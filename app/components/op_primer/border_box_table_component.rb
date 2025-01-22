@@ -43,7 +43,7 @@ module OpPrimer
       #
       # This results in the description columns to be hidden on mobile
       def mobile_columns(*names)
-        return @mobile_columns || columns if names.empty?
+        return Array(@mobile_columns || columns) if names.empty?
 
         @mobile_columns = names.map(&:to_sym)
       end
@@ -54,27 +54,27 @@ module OpPrimer
       #
       # This results in the description columns to be hidden on mobile
       def mobile_labels(*names)
-        return @mobile_labels if names.empty?
+        return Array(@mobile_labels) if names.empty?
 
         @mobile_labels = names.map(&:to_sym)
       end
 
-      # Declare wide columns, that will result in a grid column span of 3
+      # Declare main columns, that will result in a grid column span of 2 and not truncate text
       #
       #     column_grid_span :title
       #
-      def wide_columns(*names)
-        return Array(@wide_columns) if names.empty?
+      def main_column(*names)
+        return Array(@main_columns) if names.empty?
 
-        @wide_columns = names.map(&:to_sym)
+        @main_columns = names.map(&:to_sym)
       end
     end
 
     delegate :mobile_columns, :mobile_labels,
              to: :class
 
-    def wide_column?(column)
-      self.class.wide_columns.include?(column)
+    def main_column?(column)
+      self.class.main_column.include?(column)
     end
 
     def header_args(_column)
@@ -88,7 +88,7 @@ module OpPrimer
 
     def header_classes(column)
       classes = [heading_class]
-      classes << "op-border-box-grid--wide-column" if wide_column?(column)
+      classes << "op-border-box-grid--main-column" if main_column?(column)
 
       classes.join(" ")
     end
@@ -103,6 +103,10 @@ module OpPrimer
     end
 
     def has_actions?
+      false
+    end
+
+    def has_footer?
       false
     end
 
@@ -132,6 +136,10 @@ module OpPrimer
 
     def blank_icon
       nil
+    end
+
+    def footer
+      raise ArgumentError, "Need to provide footer content"
     end
   end
 end

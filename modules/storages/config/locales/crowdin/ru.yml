@@ -3,6 +3,8 @@ ru:
     attributes:
       storages/file_link:
         origin_id: ID оригинала
+      storages/project_storage:
+        storage: Хранилище
       storages/storage:
         creator: Создатель
         drive: ID диска
@@ -63,7 +65,7 @@ ru:
       label: Изменить папку проекта
     project_folder_mode:
       automatic: Автоматическое управление
-      inactive: Нет определенной папки
+      inactive: Нет конкретной папки
       manual: Существующая папка управляется вручную
     remove_project:
       deletion_failure_flash: Не удалось удалить проект из хранилища. %{error}
@@ -145,7 +147,7 @@ ru:
               not_found: "%{current_path} не найден."
             set_folders_permissions:
               permission_not_set: не удалось установить разрешения на %{path}.
-          error: Произошла непредвиденная ошибка. Пожалуйста, убедитесь, что Nextcloud доступен и проверьте журналы работы OpenProject для дополнительной информации
+          error: Произошла непредвиденная ошибка. Пожалуйста, убедитесь, что OneDrive/SharePoint доступен и проверьте журналы работы OpenProject для дополнительной информации
           not_allowed: OpenProject не был разрешен доступ к OneDrive. Пожалуйста, проверьте разрешения, установленные в приложении Azure.
           unauthorized: OpenProject не удалось синхронизировать с OneDrive. Пожалуйста, проверьте конфигурацию хранилища и приложения Azure.
           user_does_not_exist: "%{user} не существует в Nextcloud."
@@ -289,7 +291,6 @@ ru:
     label_creation_time: Время создания
     label_creator: Создатель
     label_delete_storage: Удалить хранилище
-    label_edit_storage: Редактировать хранилище
     label_edit_storage_access_management: Редактировать управление доступом к хранилищу
     label_edit_storage_automatically_managed_folders: Редактирование хранилища автоматически управляемых папок
     label_edit_storage_host: Изменить узел хранения
@@ -301,7 +302,7 @@ ru:
       application_password: Пароль приложения
       automatically_managed_folders: Автоматически управляемые папки
     label_name: Имя
-    label_new_file_storage: Новая %{provider} хранилище
+    label_new_file_storage: Новое %{provider} хранилище
     label_new_storage: Новое хранилище
     label_no_selected_folder: Папка не выбрана
     label_no_specific_folder: Нет конкретной папки
@@ -343,6 +344,9 @@ ru:
       success:
         subtitle: Вы будете перенаправлены
         title: Установка интеграции завершена
+      timeout:
+        link_text: статус файлового хранилища
+        subtitle: OpenProject не смог предоставить вам доступ к папке проекта в течение ожидаемого периода времени. Пожалуйста, попробуйте еще раз.<br><br> Если эта проблема не исчезнет, обратитесь к администратору OpenProject для проверки %{storages_health_link}.
       waiting:
         subtitle: Одну минутку, пожалуйста, это может занять некоторое время...
         title: Мы настраиваем ваши права доступа к папке проекта.

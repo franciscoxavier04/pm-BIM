@@ -33,6 +33,7 @@ ro:
       cost_type:
         unit: "Denumirea unității"
         unit_plural: "Numele unității pluralizate"
+        default: "Cost type by default"
       work_package:
         costs_by_type: "Unități consumate"
         labor_costs: "Costurile cu forța de muncă"
@@ -44,6 +45,16 @@ ro:
         rate: "Tarif"
       user:
         default_rates: "Tarife"
+      time_entry:
+        project: Project
+        user: User
+        work_package: Work package
+        hours: Ore
+        comments: Comment
+        activity: Activitate
+        spent_on: Dată
+        start_time: Start time
+        end_time: Finish time
     models:
       cost_type:
         one: "Tipul de cost"
@@ -52,6 +63,8 @@ ro:
       rate: "Evaluează"
     errors:
       models:
+        time_entry:
+          invalid_time: "must be between 00:00 and 23:59."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Pachetul de lucru #%{id} nu este o ţintă validă pentru reasocierea timpilor de lucru."
           nullify_is_not_valid_for_cost_entries: "Înregistrările de costuri nu pot fi atribuite unui proiect."
@@ -64,8 +77,9 @@ ro:
     units: "Unități"
     valid_from: "Valabil de la"
     fixed_date: "Dată fixă"
-  button_add_rate: "Adăugare preţ"
+  button_add_rate: "Adaugă preț"
   button_log_costs: "Costurile unitare ale buștenilor"
+  button_log_time: "Log"
   caption_booked_on_project: "Rezervat pe proiect"
   caption_default: "Implicit"
   caption_default_rate_history_for: "Istoricul ratei de neplată pentru %{user}"
@@ -77,6 +91,7 @@ ro:
   caption_save_rate: "Salvează tarif"
   caption_set_rate: "Setează tarif curent"
   caption_show_locked: "Afișați tipurile blocate"
+  caption_log_time_dialog: "Log time"
   description_date_for_new_rate: "Dată pentru noul tarif"
   group_by_others: "nici într-un grup"
   label_between: "între"
@@ -103,23 +118,25 @@ ro:
   label_work_package_filter_add: "Adaugă un filtru pentru pachetul de lucru"
   label_kind: "Tip"
   label_less_or_equal: "<="
-  label_log_costs: "Costurile unitare ale buștenilor"
+  label_log_costs: "Înregistrare costuri unitare"
   label_no: "Nu"
   label_option_plural: "Opțiuni"
   label_overall_costs: "Costuri totale"
   label_rate: "Evaluează"
   label_rate_plural: "Tarife"
   label_status_finished: "Finalizat"
-  label_show: "Show"
+  label_show: "Arată"
   label_units: "Unități de cost"
   label_user: "Utilizator"
   label_until: "până la"
   label_valid_from: "Valabil de la"
   label_yes: "Da"
+  placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ceva n-a mers bine. Vă rugăm să încercați din nou."
   notice_successful_restore: "Restaurare reușită."
   notice_successful_lock: "Blocat cu succes."
   notice_cost_logged_successfully: "Costul unitar a fost înregistrat cu succes."
+  notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   permission_edit_cost_entries: "Editarea costurilor unitare înregistrate"
   permission_edit_own_cost_entries: "Editați propriile costuri unitare contabilizate"
   permission_edit_hourly_rates: "Editați tarifele orare"
@@ -135,8 +152,8 @@ ro:
   permission_view_own_time_entries: "Vizualizează propriul timp consumat"
   project_module_costs: "Timp și costuri"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
+  setting_costs_currency: "Monedă"
+  setting_costs_currency_format: "Format monedă"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "Atribuiți orele și costurile raportate la proiect"
   text_destroy_cost_entries_question: "%{cost_entries} au fost raportate pe pachetele de lucru pe care urmează să le ștergeți. Ce doriți să faceți?"

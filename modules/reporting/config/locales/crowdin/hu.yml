@@ -23,7 +23,7 @@ hu:
   plugin_openproject_reporting:
     name: "OpenProject Reporting"
     description: "This plugin allows creating custom cost reports with filtering and grouping created by the OpenProject Time and costs plugin."
-  button_save_report_as: "Save report as..."
+  button_save_report_as: "Jelentés mentése más néven..."
   comments: "Megjegyzés"
   cost_reports_title: "Idő és költség"
   label_cost_report: "Költség jelentés"
@@ -86,8 +86,15 @@ hu:
   validation_failure_date: "nem érvényes dátum"
   validation_failure_integer: "nem érvényes egész szám"
   export:
+    timesheet:
+      title: "Your PDF timesheet export"
+      button: "Export PDF timesheet"
+      timesheet: "Timesheet"
+      time: "Time"
     cost_reports:
       title: "Költségjelentés készítése XLS formában"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "A kijelölt oszlopok"

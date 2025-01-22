@@ -29,11 +29,19 @@
 require "spec_helper"
 
 RSpec.describe "Primerized work package relations tab",
-               :js, :with_cuprite do
+               :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
-  shared_let(:user) { create(:admin) }
   shared_let(:project) { create(:project) }
+  shared_let(:user) do
+    create(:user,
+           member_with_permissions: {
+             project => %i[add_work_packages
+                           manage_subtasks
+                           manage_work_package_relations
+                           view_work_packages]
+           })
+  end
 
   before_all do
     set_factory_default(:user, user)
@@ -41,16 +49,17 @@ RSpec.describe "Primerized work package relations tab",
     set_factory_default(:project_with_types, project)
   end
 
-  shared_let(:work_package) { create(:work_package, subject: "main") }
+  shared_let(:parent_work_package) { create(:work_package, subject: "parent_work_package") }
+  shared_let(:work_package) { create(:work_package, subject: "work_package (main)", parent: parent_work_package) }
   shared_let(:type1) { create(:type) }
   shared_let(:type2) { create(:type) }
 
   shared_let(:wp_predecessor) do
-    create(:work_package, type: type1, subject: "predecessor of main",
+    create(:work_package, type: type1, subject: "wp_predecessor",
                           start_date: Date.current, due_date: Date.current + 1.week)
   end
-  shared_let(:wp_related) { create(:work_package, type: type2, subject: "related to main") }
-  shared_let(:wp_blocker) { create(:work_package, type: type1, subject: "blocks main") }
+  shared_let(:wp_related) { create(:work_package, type: type2, subject: "wp_related") }
+  shared_let(:wp_blocker) { create(:work_package, type: type1, subject: "wp_blocker") }
 
   shared_let(:relation_follows) do
     create(:relation,
@@ -72,22 +81,47 @@ RSpec.describe "Primerized work package relations tab",
   end
   shared_let(:child_wp) do
     create(:work_package,
+           subject: "child_wp",
            parent: work_package,
            type: type1,
            project: project)
   end
-  shared_let(:not_yet_child_wp) do
+  shared_let(:not_child_yet_wp) do
     create(:work_package,
+           subject: "not_child_yet_wp",
            type: type1,
            project:)
   end
 
-  let(:full_wp_view) { Pages::FullWorkPackage.new(work_package) }
+  # The user should not be able to see any relations to work packages from this
+  # project because the user does not have the permissions to view this project
+  shared_let(:restricted_project) { create(:project) }
+  shared_let(:restricted_work_package) do
+    create(:work_package,
+           subject: "restricted_work_package",
+           project: restricted_project)
+  end
+  shared_let(:restricted_child_work_package) do
+    create(:work_package,
+           subject: "restricted_child_work_package",
+           parent: work_package,
+           project: restricted_project)
+  end
+  shared_let(:restricted_relation_relates) do
+    create(:relation,
+           from: work_package,
+           to: restricted_work_package,
+           relation_type: Relation::TYPE_RELATES)
+  end
+
   let(:relations_tab) { Components::WorkPackages::Relations.new(work_package) }
   let(:relations_panel_selector) { ".detail-panel--relations" }
   let(:relations_panel) { find(relations_panel_selector) }
   let(:work_packages_page) { Pages::PrimerizedSplitWorkPackage.new(work_package) }
   let(:tabs) { Components::WorkPackages::PrimerizedTabs.new }
+  let(:additional_setup) do
+    # Nothing but contexts might overwrite it
+  end
 
   current_user { user }
 
@@ -96,6 +130,7 @@ RSpec.describe "Primerized work package relations tab",
   end
 
   before do
+    additional_setup
     work_packages_page.visit_tab!("relations")
     expect_angular_frontend_initialized
     work_packages_page.expect_subject
@@ -105,6 +140,9 @@ RSpec.describe "Primerized work package relations tab",
   describe "rendering" do
     it "renders the relations tab" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
+
       expect(page).to have_css(relations_panel_selector)
 
       tabs.expect_counter("relations", 4)
@@ -112,6 +150,10 @@ RSpec.describe "Primerized work package relations tab",
       relations_tab.expect_relation(relation_follows)
       relations_tab.expect_relation(relation_relates)
       relations_tab.expect_relation(relation_blocked)
+
+      # Relations not visible due to lack of permissions on the project
+      relations_tab.expect_no_relation(restricted_relation_relates)
+      relations_tab.expect_no_relation(restricted_child_work_package)
     end
   end
 
@@ -119,20 +161,32 @@ RSpec.describe "Primerized work package relations tab",
     it "can delete relations" do
       scroll_to_element relations_panel
 
+      wait_for_network_idle
+
       relations_tab.remove_relation(relation_follows)
 
       expect { relation_follows.reload }.to raise_error(ActiveRecord::RecordNotFound)
 
       tabs.expect_counter("relations", 3)
+
+      # Relations not visible due to lack of permissions on the project
+      relations_tab.expect_no_relation(restricted_relation_relates)
+      relations_tab.expect_no_relation(restricted_child_work_package)
     end
 
     it "can delete children" do
       scroll_to_element relations_panel
 
+      wait_for_network_idle
+
       relations_tab.remove_child(child_wp)
       expect(child_wp.reload.parent).to be_nil
 
       tabs.expect_counter("relations", 3)
+
+      # Relations not visible due to lack of permissions on the project
+      relations_tab.expect_no_relation(restricted_relation_relates)
+      relations_tab.expect_no_relation(restricted_child_work_package)
     end
   end
 
@@ -140,15 +194,22 @@ RSpec.describe "Primerized work package relations tab",
     it "renders an edit form" do
       scroll_to_element relations_panel
 
+      wait_for_network_idle
+
       relation_row = relations_tab.expect_relation(relation_follows)
 
-      relations_tab.add_description_to_relation(relation_follows, "Discovered relations have descriptions!")
+      relations_tab.edit_relation_description(relation_follows, "Discovered relations have descriptions!")
 
-      # Reflects new description
+      relations_tab.edit_lag_of_relation(relation_follows, 5)
+
+      # Reflects new description and lag
       expect(relation_row).to have_text("Discovered relations have descriptions!")
+      expect(relation_row).to have_text("5 days")
 
       # Unchanged
       tabs.expect_counter("relations", 4)
+      relations_tab.expect_no_relation(restricted_relation_relates)
+      relations_tab.expect_no_relation(restricted_child_work_package)
 
       # Edit again
       relations_tab.edit_relation_description(relation_follows, "And they can be edited!")
@@ -158,16 +219,62 @@ RSpec.describe "Primerized work package relations tab",
 
       # Unchanged
       tabs.expect_counter("relations", 4)
+
+      # Relations not visible due to lack of permissions on the project
+      relations_tab.expect_no_relation(restricted_relation_relates)
+      relations_tab.expect_no_relation(restricted_child_work_package)
     end
 
     it "does not have an edit action for children" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
 
       child_row = relations_panel.find("[data-test-selector='op-relation-row-#{child_wp.id}']")
 
       within(child_row) do
         page.find("[data-test-selector='op-relation-row-#{child_wp.id}-action-menu']").click
         expect(page).to have_no_css("[data-test-selector='op-relation-row-#{child_wp.id}-edit-button']")
+      end
+    end
+
+    it "does not show the lag field for all relation types" do
+      scroll_to_element relations_panel
+
+      relations_tab.open_relation_dialog(relation_relates)
+
+      within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
+        expect(page).to have_field("Work package", readonly: true)
+        expect(page).to have_no_field("Lag")
+      end
+    end
+
+    context "with the shown WorkPackage being the 'to' relation part" do
+      let(:another_wp) { create(:work_package, type: type2, subject: "Successor of main") }
+
+      let(:relation_to) do
+        create(:relation,
+               from: another_wp,
+               to: work_package,
+               relation_type: Relation::TYPE_FOLLOWS)
+      end
+
+      let(:additional_setup) do
+        relation_to
+      end
+
+      it "shows the correct related WorkPackage in the dialog (regression #59771)" do
+        scroll_to_element relations_panel
+
+        wait_for_network_idle
+
+        relations_tab.open_relation_dialog(another_wp)
+
+        within "##{WorkPackageRelationsTab::WorkPackageRelationDialogComponent::DIALOG_ID}" do
+          expect(page).to have_field("Work package",
+                                     readonly: true,
+                                     with: "#{another_wp.type.name.upcase} ##{another_wp.id} - #{another_wp.subject}")
+        end
       end
     end
   end
@@ -178,6 +285,8 @@ RSpec.describe "Primerized work package relations tab",
     it "renders the new relation form for the selected type and creates the relation" do
       scroll_to_element relations_panel
 
+      wait_for_network_idle
+
       relations_tab.add_relation(type: :precedes, relatable: wp_successor,
                                  description: "Discovered relations have descriptions!")
       relations_tab.expect_relation(wp_successor)
@@ -186,19 +295,17 @@ RSpec.describe "Primerized work package relations tab",
       tabs.expect_counter("relations", 5)
       # Relation is created
       expect(Relation.follows.where(from: wp_successor, to: work_package)).to exist
+
+      # Relations not visible due to lack of permissions on the project
+      relations_tab.expect_no_relation(restricted_relation_relates)
+      relations_tab.expect_no_relation(restricted_child_work_package)
     end
 
     it "does not autocomplete unrelatable work packages" do
       # wp_predecessor is already related to work_package as relation_follows
       # in a predecessor relation, so it should not be autocompleteable anymore
       # under the "Predecessor (before)" type
-      scroll_to_element relations_panel
-
-      relations_panel.find("[data-test-selector='new-relation-action-menu']").click
-
-      within page.find_by_id("new-relation-action-menu-list") do # Primer appends "list" to the menu id automatically
-        click_link_or_button "Predecessor (before)"
-      end
+      relations_tab.select_relation_type "Predecessor (before)"
 
       wait_for_reload
 
@@ -220,13 +327,59 @@ RSpec.describe "Primerized work package relations tab",
     it "renders the new child form and creates the child relationship" do
       scroll_to_element relations_panel
 
+      wait_for_network_idle
+
       tabs.expect_counter("relations", 4)
 
-      relations_tab.add_existing_child(not_yet_child_wp)
-      relations_tab.expect_child(not_yet_child_wp)
+      relations_tab.add_existing_child(not_child_yet_wp)
+      relations_tab.expect_child(not_child_yet_wp)
 
       # Bumped by one
       tabs.expect_counter("relations", 5)
+
+      # Child relation is created
+      expect(not_child_yet_wp.reload.parent).to eq work_package
+
+      # Relations not visible due to lack of permissions on the project
+      relations_tab.expect_no_relation(restricted_relation_relates)
+      relations_tab.expect_no_relation(restricted_child_work_package)
+    end
+
+    it "doesn't autocomplete parent, children, and WP itself" do
+      relations_tab.select_relation_type "Existing child"
+
+      wait_for_reload
+
+      within "##{WorkPackageRelationsTab::AddWorkPackageChildFormComponent::DIALOG_ID}" do
+        autocomplete_field = page.find("[data-test-selector='work-package-child-form-id']")
+
+        # It doesn't autocomplete children
+        search_autocomplete(autocomplete_field,
+                            query: child_wp.subject,
+                            results_selector: "body")
+
+        expect_no_ng_option(autocomplete_field,
+                            child_wp.subject,
+                            results_selector: "body")
+
+        # It doesn't autocomplete parent
+        search_autocomplete(autocomplete_field,
+                            query: parent_work_package.subject,
+                            results_selector: "body")
+
+        expect_no_ng_option(autocomplete_field,
+                            parent_work_package.subject,
+                            results_selector: "body")
+
+        # It doesn't autocomplete work package itself
+        search_autocomplete(autocomplete_field,
+                            query: work_package.id,
+                            results_selector: "body")
+
+        expect_no_ng_option(autocomplete_field,
+                            work_package.subject,
+                            results_selector: "body")
+      end
     end
   end
 
@@ -240,6 +393,8 @@ RSpec.describe "Primerized work package relations tab",
 
     it "does not show options to add or edit relations" do
       scroll_to_element relations_panel
+
+      wait_for_network_idle
 
       tabs.expect_counter("relations", 4)
 
@@ -255,6 +410,8 @@ RSpec.describe "Primerized work package relations tab",
 
       it "does not show the option to delete the child" do
         scroll_to_element relations_panel
+
+        wait_for_network_idle
 
         tabs.expect_counter("relations", 4)
 
@@ -276,6 +433,8 @@ RSpec.describe "Primerized work package relations tab",
 
       it "does not show the option to edit the relation but only the child" do
         scroll_to_element relations_panel
+
+        wait_for_network_idle
 
         tabs.expect_counter("relations", 4)
 

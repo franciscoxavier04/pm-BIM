@@ -105,7 +105,7 @@ pt-PT:
     button_update: "Atualizar"
     button_export-pdf: "Transferir PDF"
     button_export-atom: "Transferir Atom"
-    button_generate_pdf: "Generate PDF"
+    button_generate_pdf: "Gerar PDF"
     button_create: "Criar"
     card:
       add_new: "Adicionar novo cartão"
@@ -357,10 +357,10 @@ pt-PT:
           learn_about: "Saiba mais sobre os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_0":
+          "15_2":
             standard:
               new_features_html: >
-                A versão traz várias funcionalidades e melhorias para si, por exemplo, <br> <ul class="%{list_styling_class}"> <li>Melhore a sua comunicação com um separador Atividade melhor estruturado, mensagens e notificações de carregamento em tempo real, reações com emoji e muito mais.</li> <li>Beneficie de definições fáceis de autenticação Single Sign-On (Início de sessão único) com SAML e OIDC na sua administração do Enterprise Cloud.</li> <li>Utilize a nova "Função global padrão" e ative as permissões para visualizar endereços de e-mail.</li> <li>Desfrute de uma navegação mais fácil nas listas de projetos com cabeçalhos de tabela de ação rápida.</li> <li>Experimente configurações de design simplificadas com menos variáveis de design da barra lateral necessárias.</li> <li>Reduza a limpeza manual ao adicionar um campo personalizado a um tipo – já não se aplica automaticamente a todos os projetos.</li> <li>Beneficie de uma maior clareza de navegação – "A minha conta" foi renomeada para "Definições da conta".</li> </ul>
+                A versão traz várias funcionalidades e melhorias para si, por exemplo, <br> <ul class="%{list_styling_class}"> <li>Defina lembretes para pacotes de trabalho para gerar notificações de alerta de data.</li> <li>Crie novas pastas diretamente a partir do seletor de localização para armazenamento de ficheiros.</li> <li>Especifique um desfasamento necessário entre os sucessores e os antecessores dos pacotes de trabalho.</li> <li>Ative a ordenação e o agrupamento de pacotes de trabalho com base nos valores da hierarquia de tipos de campos personalizados.</li> <li>Exporte registos de tempo como registos horários em PDF.</li> <li>Adicione uma janela popover que apresenta informações do utilizador ao passar o cursor do rato.</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
@@ -576,7 +576,7 @@ pt-PT:
         members: "Convide novos <b>membros</b> para participarem no seu projeto."
         quick_add_button: "Clique no ícone mais (+) no menu de navegação para <b>criar um novo projeto</b> ou <b>convidar colegas</b>."
         sidebar_arrow: "Use a seta de retorno no canto superior esquerdo para voltar ao <b>menu principal</b> do projeto."
-        welcome: "Take a three-minute introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
+        welcome: "Faça uma visita guiada de 3 minutos para conhecer as <b>funcionalidades mais importantes</b>.<br> Recomendamos que conclua as etapas até ao final. Pode reiniciar a visita a qualquer momento."
         wiki: "Na <b>wiki</b> pode documentar e partilhar conhecimento com a sua equipa."
         backlogs:
           overview: "Faça a gestão do seu trabalho na vista de <b>backlogs</b>."
@@ -621,14 +621,15 @@ pt-PT:
         prioritized: "Priorizado"
         dateAlert: "Alerta de data"
         shared: "Partilhado"
+        reminder: "Lembrete"
       date_alerts:
         milestone_date: "Data do marco"
         overdue: "Em atraso"
-        overdue_since: "desde %{difference_in_days}"
-        property_today: "é hoje"
-        property_is: "é em %{difference_in_days}"
-        property_was: "há %{difference_in_days} atrás"
-        property_is_deleted: "foi apagado"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Alertas de data"
           description: "Com os alertas de data, receberá uma notificação sobre as próximas datas de início e conclusão, para que não nunca perca ou esqueça prazos importantes. "
@@ -653,6 +654,8 @@ pt-PT:
         new_notifications:
           message: "Há novas notificações."
           link_text: "Clique aqui para carregá-las."
+      reminders:
+        note: "Nota: \"%{note}\""
       settings:
         change_notification_settings: 'Pode modificar as suas <a target="_blank" href="%{url}">definições de notificações</a> para garantir que nunca perde uma atualização importante.'
         title: "Definições das notificações"
@@ -740,6 +743,7 @@ pt-PT:
         immediate:
           title: "Enviar-me um lembrete por e-mail"
           mentioned: "Imediatamente quando alguém me @mencionar"
+          personal_reminder: "Imediatamente quando recebo um lembrete pessoal"
         alerts:
           title: "Alertas de e-mail para outros itens (que não são pacotes de trabalho)"
           explanation: >
@@ -771,10 +775,6 @@ pt-PT:
         upgrade_to_ee_text: "Uau! Se precisa deste complemento é porque faz parte dos utilizadores especializados! Gostaria de apoiar os desenvolvedores de OpenSource tornando-se cliente da edição Enterprise?"
         more_information: "Mais informação"
         nevermind: "Não, obrigado"
-      edit:
-        form_configuration: "Configuração do formulário"
-        projects: "Projetos"
-        settings: "Definições"
     time_entry:
       work_package_required: "Requer que selecione um pacote de trabalho primeiro."
       title: "Tempo de registro"
@@ -1043,6 +1043,12 @@ pt-PT:
           not_found: "Não existe tal visualização"
           duplicate_query_title: "O nome desta visualização já existe. Mudar de qualquer forma?"
         text_no_results: "Não foram encontradas visualizações correspondentes."
+      reminders:
+        button_label: "Definir lembrete"
+        title:
+          new: "Definir lembrete"
+          edit: "Editar lembrete"
+        subtitle: "Irá receber uma notificação para este pacote de trabalho na hora selecionada."
       scheduling:
         is_parent: "As datas deste pacote de trabalho são deduzidas automaticamente dos seus filhos. Ative o 'Agendamento manual' para definir as datas."
         is_switched_from_manual_to_automatic: "As datas deste pacote de trabalho podem precisar de ser recalculadas após mudar de agendamento manual para automático, devido a relações com outros pacotes de trabalho."
@@ -1346,5 +1352,3 @@ pt-PT:
       waiting_subtitle:
         network_off: "Há um problema de rede."
         network_on: "A rede está de volta. Estamos a tentar."
-        timeout: >
-          O OpenProject não pôde fornecer acesso à pasta do projeto dentro do período esperado de tempo, tente novamente.<br><br> Se esse problema continuar, entre em contacto com o administrador do OpenProject para verificar o <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">estado de funcionamento da configuração de armazenamento de ficheiros</a>.

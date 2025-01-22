@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2012-2024 the OpenProject GmbH
@@ -80,6 +82,14 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
              firstname: "A",
              lastname: "Viewer",
              member_with_roles: { project => user_role_with_editing_permission })
+    end
+
+    let(:comment_work_package_role) { create(:comment_work_package_role) }
+    let(:user_with_commenting_permission_via_a_work_package_share) do
+      create(:user,
+             firstname: "A",
+             lastname: "Commenter",
+             member_with_roles: { work_package => comment_work_package_role })
     end
 
     let(:work_package) { create(:work_package, project:, author: admin) }
@@ -203,6 +213,22 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
           # allowed to quote other user's comments
           expect(page).to have_test_selector("op-wp-journal-#{first_comment.id}-quote")
         end
+      end
+    end
+
+    context "when a user has been shared a work package with at least comment rights" do
+      current_user { user_with_commenting_permission_via_a_work_package_share }
+
+      before do
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+      end
+
+      it "allows commenting on the work package" do
+        activity_tab.expect_input_field
+
+        activity_tab.add_comment(text: "First comment by user with commenting permission via a work package share")
+        activity_tab.expect_journal_notes(text: "First comment by user with commenting permission via a work package share")
       end
     end
   end
@@ -898,24 +924,70 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         wp_page.wait_for_activity_tab
       end
 
-      it "scrolls to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
-        sleep 1 # wait for auto scrolling to finish
-        activity_tab.expect_journal_container_at_bottom
+      context "when on desktop" do
+        it "scrolls to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
+          sleep 1 # wait for auto scrolling to finish
+          activity_tab.expect_journal_container_at_bottom
 
-        # auto-scrolls to the bottom when a new comment is added by the user
-        # add a comment
-        activity_tab.add_comment(text: "New comment by admin")
-        activity_tab.expect_journal_container_at_bottom
+          # auto-scrolls to the bottom when a new comment is added by the user
+          # add a comment
+          activity_tab.add_comment(text: "New comment by admin")
+          activity_tab.expect_journal_container_at_bottom
 
-        # auto-scrolls to the bottom when a new comment is added by another user
-        # add a comment
-        latest_journal_version = work_package.journals.last.version
-        create(:work_package_journal, user: member, notes: "New comment by member", journable: work_package,
-                                      version: latest_journal_version + 1)
-        # wait for the comment to be added
-        wait_for { page }.to have_test_selector("op-journal-notes-body", text: "New comment by member")
-        sleep 1 # wait for auto scrolling to finish
-        activity_tab.expect_journal_container_at_bottom
+          # auto-scrolls to the bottom when a new comment is added by another user
+          # add a comment
+          latest_journal_version = work_package.journals.last.version
+          create(:work_package_journal, user: member, notes: "New comment by member", journable: work_package,
+                                        version: latest_journal_version + 1)
+          # wait for the comment to be added
+          wait_for { page }.to have_test_selector("op-journal-notes-body", text: "New comment by member")
+          sleep 1 # wait for auto scrolling to finish
+          activity_tab.expect_journal_container_at_bottom
+        end
+      end
+
+      context "when on narrow desktop screen size" do
+        before do
+          page.current_window.resize_to(900, 1200)
+          # simulate a desktop screen which was resized to a smaller width
+          # the height in this spec is important as the activity tab must be visible
+          # otherwise the (in this case undesired) auto scrolling would not be triggered
+
+          wp_page.visit!
+          wp_page.wait_for_activity_tab
+        end
+
+        it "does not scroll to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
+          sleep 1 # wait for a potential auto scrolling to finish
+          # expect activity tab not to be visibe, as the page is not scrolled to the bottom
+          scroll_position = page.evaluate_script("document.querySelector(\"#content-body\").scrollTop")
+          expect(scroll_position).to eq(0)
+        end
+      end
+
+      context "when on mobile screen size" do
+        before do
+          page.current_window.resize_to(500, 1000)
+          # simulate a mobile screen size
+          # the height in this spec is important as the activity tab must be visible
+          # otherwise the (in this case undesired) auto scrolling would not be triggered
+
+          wp_page.visit!
+          wp_page.wait_for_activity_tab
+        end
+
+        # this one is actually failing, but it's not caused by the activity tab
+        # the scroll position is at around 700, some other part of the frontend code seems to trigger a scroll
+        # happens for the files tab as well for example
+        #
+        it "does not scroll to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
+          pending "bug/59916-on-narrow-screens-(including-mobile)-the-view-always-scrolls-to-the-activity"
+
+          sleep 1 # wait for a potential auto scrolling to finish
+          # expect activity tab not to be visibe, as the page is not scrolled to the bottom
+          scroll_position = page.evaluate_script("document.querySelector(\"#content-body\").scrollTop")
+          expect(scroll_position).to eq(0)
+        end
       end
     end
 
@@ -935,7 +1007,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
   end
 
   describe "images in the comment",
-           with_cuprite: false,
+           :js,
+           :selenium,
            with_settings: { journal_aggregation_time_minutes: 0, show_work_package_attachments: false } do
     let(:work_package) { create(:work_package, project:, author: admin) }
     let(:image_fixture) { UploadedFile.load_from("spec/fixtures/files/image.png") }

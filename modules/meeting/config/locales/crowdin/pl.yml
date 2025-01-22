@@ -52,11 +52,18 @@ pl:
         presenter: "Prezenter"
       meeting_section:
         title: "Tytuł"
+      recurring_meeting:
+        frequency: "Częstotliwość"
+        interval: "Interwał"
+        start_date: "Rozpoczyna się"
+        end_after: "Zakończ serię po"
+        iterations: "Wystąpienia"
     errors:
       messages:
         invalid_time_format: "nie jest prawidłowy. Wymagany format to: GG:MM"
     models:
-      structured_meeting: "Spotkanie (dynamiczne)"
+      recurring_meeting: "Spotkanie cykliczne"
+      structured_meeting: "Spotkanie jednorazowe"
       meeting_agenda_item: "Punkt programu"
       meeting_agenda: "Plan spotkania"
       meeting_minutes: "Protokół ze spotkania"
@@ -90,7 +97,8 @@ pl:
   label_meeting: "Spotkanie"
   label_meeting_plural: "Spotkania"
   label_meeting_new: "Nowe spotkanie"
-  label_meeting_new_dynamic: "New dynamic meeting"
+  label_meeting_new_dynamic: "Nowe spotkanie jednorazowe"
+  label_meeting_new_recurring: "Nowe spotkanie cykliczne"
   label_meeting_create: "Utwórz spotkanie"
   label_meeting_copy: "Skopiuj spotkanie"
   label_meeting_edit: "Edycja spotkania"
@@ -104,23 +112,55 @@ pl:
   label_meeting_date_time: "Data/Czas"
   label_meeting_date_and_time: "Data i godzina"
   label_meeting_diff: "Różnice"
+  label_recurring_meeting: "Spotkanie cykliczne"
+  label_recurring_meeting_part_of: "Część serii spotkań"
+  label_recurring_meeting_new: "Nowe spotkanie cykliczne"
+  label_recurring_meeting_plural: "Spotkania cykliczne"
+  label_template: "Szablon"
+  label_recurring_meeting_view: "Wyświetl serię spotkań"
+  label_recurring_meeting_create: "Utwórz z szablonu"
+  label_recurring_meeting_copy: "Skopiuj jako jednorazowe"
+  label_recurring_meeting_cancel: "Anuluj to wystąpienie"
+  label_recurring_meeting_delete: "Usuń wystąpienie"
+  label_recurring_meeting_delete_confirmation: >
+    To spotkanie jest częścią serii o nazwie %{name}. Spowoduje to usunięcie tylko tego konkretnego wystąpienia, a nie całej serii. Czy chcesz kontynuować?
+  label_recurring_occurrence_delete_confirmation: >
+    Wszelkie informacje o spotkaniu, które nie znajdują się w szablonie, zostaną utracone. Czy chcesz kontynuować?
+  label_recurring_meeting_restore: "Przywróć to wystąpienie"
+  label_recurring_meeting_more: "Jest więcej (%{count}) zaplanowanych spotkań (%{schedule})."
+  label_recurring_meeting_more_singular: "Jest jeszcze %{count} zaplanowane spotkanie (%{schedule})."
+  label_recurring_meeting_more_past: "Jest więcej (%{count}) poprzednich spotkań."
+  label_recurring_meeting_more_past_singular: "Jest jeszcze %{count} poprzednie spotkanie."
+  label_recurring_meeting_show_more: "Pokaż więcej"
+  label_recurring_meeting_series_create: "Create meeting series"
+  label_recurring_meeting_series_edit: "Edytuj serię spotkań"
+  label_recurring_meeting_series_delete: "Usuń serię spotkań"
+  label_my_meetings: "Moje spotkania"
+  label_all_meetings: "Wszystkie spotkania"
   label_upcoming_meetings: "Nadchodzące spotkania"
   label_past_meetings: "Przeszłe spotkania"
   label_upcoming_meetings_short: "Nadchodzące"
   label_past_meetings_short: "Poprzednie"
   label_involvement: "Zaangażowanie"
-  label_upcoming_invitations: "Nadchodzące zaproszenia"
+  label_invitations: "Zaproszenia"
+  label_invited_user: "Zaproszony użytkownik"
   label_past_invitations: "Poprzednie zaproszenia"
-  label_attendee: "Uczestnik"
-  label_author: "Twórca"
+  label_attended: "Uczestniczył"
+  label_attended_user: "Uczestniczący użytkownik"
+  label_created_by_me: "Utworzone przeze mnie"
   label_notify: "Wyślij do przeglądu"
   label_icalendar: "Wyślij iCalendar"
   label_icalendar_download: "Pobierz wydarzenie iCalendar"
+  label_view_meeting_series: "Wyświetl serię spotkań"
+  label_meeting_series: "Seria spotkań"
   label_version: "Wersja"
   label_time_zone: "Strefa czasowa"
   label_start_date: "Data rozpoczęcia"
   meeting:
+    participants:
+      template: "Uczestnicy ci będą automatycznie zapraszani na wszystkie przyszłe spotkania w miarę ich tworzenia."
     attachments:
+      template: "Załączone pliki zostaną uwzględnione we wszystkich przyszłych spotkaniach z tej serii."
       text: "Załączone pliki są dostępne dla wszystkich uczestników spotkania. Można je również przeciągać i upuszczać w notatkach do punktów planu spotkania."
     copy:
       title: "Kopiuj spotkanie: %{title}"
@@ -147,9 +187,12 @@ pl:
     label_mail_all_participants: "Wyślij wiadomość e-mail do wszystkich uczestników"
     types:
       classic: "Klasyczny"
-      classic_text: "Zorganizuj spotkanie w formatowanym tekstowym planie spotkania i protokole."
-      structured: "Dynamiczne"
-      structured_text: "Zorganizuj spotkanie jako listę punktów planu spotkania, opcjonalnie powiązując je z pakietem roboczym."
+      classic_text: "Zorganizuj spotkanie w jednym formatowanym tekstowym planie spotkania i protokole."
+      structured: "Zorganizowane"
+      one_time: "Jednorazowe"
+      recurring: "Cykliczne"
+      recurring_text: "Utwórz serię spotkań z dynamicznym szablonem dla każdego wystąpienia."
+      structured_text: "Zorganizuj spotkanie jako dynamiczną listę punktów planu spotkania, opcjonalnie powiązując je z pakietem roboczym."
       structured_text_copy: "Skopiowanie spotkania nie powoduje obecnie skopiowania powiązanych pozycji planu spotkania, a jedynie szczegółów"
     copied: "Skopiowano ze spotkania #%{id}"
   meeting_section:
@@ -157,6 +200,40 @@ pl:
     delete_confirmation: "Usunięcie sekcji spowoduje również usunięcie wszystkich jej elementów punktów planu spotkania. Czy na pewno chcesz to zrobić?"
     placeholder_title: "Nowa sekcja"
     empty_text: "Przeciągnij elementy tutaj lub utwórz nowe"
+  recurring_meeting:
+    occurrence:
+      infoline: "Spotkanie to jest częścią serii spotkań cyklicznych."
+      error_no_next: "Nie ma następnego wystąpienia tego spotkania."
+      first_already_exists: "Pierwsze wystąpienie tej serii spotkań jest już tworzone."
+      first_created: >
+        Pierwsze spotkanie zostało utworzone z szablonu. Wszystkie przyszłe spotkania zostaną utworzone automatycznie o godzinie poprzedniego wystąpienia.
+    template:
+      button_finalize: "Zakończ szablon"
+      blank_title: "Szablon serii spotkań jest pusty"
+      description: >
+        Ten szablon będzie używany za każdym razem, gdy zostaną utworzone nowe spotkania w serii. Do tego szablonu możesz dodać elementy planu spotkania, uczestników i załączniki.
+      blankslate_finalize: >
+        Gdy skończysz przygotowywać ten szablon, kliknij przycisk „%{button_title}” powyżej, aby zakończyć konfigurację i zaplanować pierwsze spotkanie serii.
+      label_view_template: "Wyświetl szablon"
+      label_edit_template: "Edytuj szablon"
+      banner_html: >
+        Aktualnie edytujesz szablon serii spotkań: %{link}. Każde nowe wystąpienie spotkania w serii będzie używać tego szablonu. Zmiany nie będą miały wpływu na wcześniejsze ani już utworzone spotkania.
+    frequency:
+      every_weekday: "Co %{day_of_the_week}"
+      daily: "Codziennie"
+      working_days: "W każdy dzień roboczy"
+      weekly: "Co tydzień"
+    end_after:
+      specific_date: "określona data"
+      iterations: "liczba wystąpień"
+    starts: "Zaczyna się"
+    in_words:
+      daily_interval: "Co %{interval} dni"
+      working_days: "W każdy dzień roboczy"
+      weekly: "Co tydzień w %{weekday}"
+      weekly_interval: "Co %{interval} tyg. w %{weekday}"
+      frequency: "%{base} o %{time}"
+      full: "%{base} o %{time}, kończy się %{end_date}"
   notice_successful_notification: "Powiadomienia wysłane pomyślnie"
   notice_timezone_missing: 'Została ustawiona domyślna strefa czasowa: %{zone}. Aby zmienić strefę czasową, kliknij tutaj.'
   notice_meeting_updated: "Ta strona została zaktualizowana przez kogoś innego. Załaduj ją ponownie, aby wyświetlić zmiany."
@@ -209,12 +286,17 @@ pl:
   text_deleted_agenda_item: 'Usunięty punkt planu spotkania'
   label_initial_meeting_details: "Spotkanie"
   label_meeting_details: "Szczegóły spotkania"
+  label_meeting_series_details: "Szczegóły serii spotkań"
   label_meeting_details_edit: "Edytuj szczegóły spotkania"
   label_meeting_state: "Status spotkania"
   label_meeting_state_open: "Otwórz"
   label_meeting_state_open_html: "<i>Otwarte</i>"
   label_meeting_state_closed: "Zamknięte"
   label_meeting_state_closed_html: "<i>Zamknięte</i>"
+  label_meeting_state_agenda_created: "Utworzono plan spotkania"
+  label_meeting_state_scheduled: "Zaplanowano"
+  label_meeting_state_cancelled: "Anulowano"
+  label_meeting_state_skipped: "Pominięto"
   label_meeting_reopen_action: "Otwórz ponownie spotkanie"
   label_meeting_close_action: "Zamknij spotkanie"
   text_meeting_open_description: "To spotkanie jest otwarte. Możesz dodać/usunąć elementy planu spotkania i edytować je tak, jak chcesz. Po zakończeniu spotkania zamknij je, aby je zablokować."

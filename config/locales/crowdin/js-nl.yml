@@ -357,10 +357,10 @@ nl:
           learn_about: "Meer informatie over de nieuwe functies"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_0":
+          "15_2":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Boost your communication with a better structured Activity tab, real-time loading messages and notifications, emoji reactions, and more.</li> <li>Benefit from easy Single Sign-On authentication settings with SAML and OIDC in your Enterprise Cloud administration.</li> <li>Use the new 'Standard global role' and enable permissions to view email addresses.</li> <li>Enjoy easier navigation in project lists with quick action table headers.</li> <li>Experience simplified design settings with fewer sidebar design variables needed.</li> <li>Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects.</li> <li>Benefit from improved navigation clarity – 'My account' is renamed to 'Account settings'.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Set reminders for work packages to generate date alert notifications.</li> <li>Create new folders directly from the location picker for file storage.</li> <li>Specify a required lag between work packages successors and predecessors.</li> <li>Enable ordering and grouping for work packages on values of custom fields type hierarchy.</li> <li>Export time entries as PDF timesheets.</li> <li>Add a popover displaying user information when hovering.</li> </ul>
     ical_sharing_modal:
       title: "Abonneren op agenda"
       inital_setup_error_message: "Er is een fout opgetreden tijdens het ophalen van gegevens."
@@ -621,14 +621,15 @@ nl:
         prioritized: "Prioritized"
         dateAlert: "Date alert"
         shared: "Gedeeld"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Milestone date"
         overdue: "Te laat"
-        overdue_since: "sinds %{difference_in_days}"
-        property_today: "is vandaag"
-        property_is: "is in %{difference_in_days}"
-        property_was: "was %{difference_in_days} geleden"
-        property_is_deleted: "Is verwijderd"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Date alerts"
           description: "Met datummeldingen wordt u op de hoogte gebracht van de start- of einddatum, zodat u nooit een belangrijke deadline mist of vergeet."
@@ -653,6 +654,8 @@ nl:
         new_notifications:
           message: "Er zijn nieuwe meldingen."
           link_text: "Klik hier om ze te laden."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'You can modify your <a target="_blank" href="%{url}">notification settings</a> to ensure you never miss an important update.'
         title: "Instellingen voor meldingen"
@@ -740,6 +743,7 @@ nl:
         immediate:
           title: "Stuur me een e-mail herinnering"
           mentioned: "Onmiddellijk wanneer iemand @vermeldt"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "E-mail meldingen voor andere items (die geen werkpakketten zijn)"
           explanation: >
@@ -771,10 +775,6 @@ nl:
         upgrade_to_ee_text: "Wow! If you need this add-on you are a super pro! Would you mind supporting us OpenSource developers by becoming an Enterprise edition client?"
         more_information: "Meer informatie"
         nevermind: "Geen aandacht"
-      edit:
-        form_configuration: "Formulier configuratie"
-        projects: "Projecten"
-        settings: "Instellingen"
     time_entry:
       work_package_required: "Vereist eerst een werkpakket te selecteren."
       title: "Gelogde tijd"
@@ -1043,6 +1043,12 @@ nl:
           not_found: "Deze weergave bestaat niet"
           duplicate_query_title: "Naam van deze weergave bestaat al. Toch wijzigen?"
         text_no_results: "Geen overeenkomende weergaven werden gevonden."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "The dates of this work package are automatically deduced from its children. Activate 'Manual scheduling' to set the dates."
         is_switched_from_manual_to_automatic: "The dates of this work package may need to be recalculated after switching from manual to automatic scheduling due to relationships with other work packages."
@@ -1346,5 +1352,3 @@ nl:
       waiting_subtitle:
         network_off: "There is a network problem."
         network_on: "Network is back. We are trying."
-        timeout: >
-          OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check the <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">health status of the file storage setup</a>.

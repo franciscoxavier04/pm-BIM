@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -88,7 +90,7 @@ class TypesController < ApplicationController
 
       call.on_failure do |result|
         flash[:error] = result.errors.full_messages.join("\n")
-        render_edit_tab(@type)
+        render_edit_tab(@type, status: :unprocessable_entity)
       end
     end
   end
@@ -135,16 +137,15 @@ class TypesController < ApplicationController
 
   def redirect_to_type_tab_path(type, notice)
     tab = params["tab"] || "settings"
-    redirect_to(edit_type_tab_path(type, tab:),
-                notice:)
+    redirect_to(edit_tab_type_path(type, tab:), notice:)
   end
 
-  def render_edit_tab(type)
+  def render_edit_tab(type, status: :ok)
     @tab = params[:tab]
     @projects = Project.all
     @type = type
 
-    render action: :edit, status: :unprocessable_entity
+    render action: :edit, status:
   end
 
   def show_local_breadcrumb

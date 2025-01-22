@@ -31,8 +31,7 @@ require "spec_helper"
 require_relative "../../support/pages/structured_meeting//mobile/show"
 
 RSpec.describe "Structured meetings CRUD",
-               :js,
-               :with_cuprite do
+               :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking]) }
@@ -61,7 +60,7 @@ RSpec.describe "Structured meetings CRUD",
   end
 
   let(:current_user) { user }
-  let(:show_page) { Pages::StructuredMeeting::Mobile::Show.new(StructuredMeeting.order(id: :asc).last) }
+  let(:show_page) { Pages::StructuredMeeting::Mobile::Show.new(StructuredMeeting.last) }
 
   include_context "with mobile screen size"
 

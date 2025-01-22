@@ -3,6 +3,8 @@ it:
     attributes:
       storages/file_link:
         origin_id: ID origine
+      storages/project_storage:
+        storage: Archivio
       storages/storage:
         creator: Autore
         drive: ID Drive
@@ -145,7 +147,7 @@ it:
               not_found: "Impossibile trovare %{current_path}."
             set_folders_permissions:
               permission_not_set: impossibile impostare i permessi su %{path}.
-          error: Si è verificato un errore imprevisto. Assicurati che la tua istanza Nextcloud sia raggiungibile e controlla i log dei worker di OpenProject per ulteriori informazioni
+          error: Si è verificato un errore imprevisto. Assicurati che OneDrive/SharePoint sia raggiungibile e controlla i log dei worker di OpenProject per ulteriori informazioni
           not_allowed: OpenProject non è stato autorizzato ad accedere al tuo drive OneDrive. Verifica le autorizzazioni impostate sull'applicazione Azure.
           unauthorized: OpenProject non è riuscito a sincronizzarsi con OneDrive. Verifica la configurazione dell'archiviazione e dell'applicazione Azure.
           user_does_not_exist: "%{user} non esiste in Nextcloud."
@@ -289,7 +291,6 @@ it:
     label_creation_time: Data di creazione
     label_creator: Autore
     label_delete_storage: Elimina archivio
-    label_edit_storage: Modifica archivio
     label_edit_storage_access_management: Modifica gestione degli accessi all'archivio
     label_edit_storage_automatically_managed_folders: Modifica cartelle gestite automaticamente dall'archivio
     label_edit_storage_host: Modifica host dell'archivio
@@ -343,6 +344,9 @@ it:
       success:
         subtitle: Stai per essere reindirizzato
         title: Configurazione dell'integrazione completata
+      timeout:
+        link_text: stato di salute dell'impostazione di archiviazione dei file
+        subtitle: OpenProject non è stato in grado di darti accesso alla cartella del progetto entro il tempo previsto. Prova di nuovo.<br><br> Se il problema persiste contatta il tuo amministratore OpenProject per controllare lo %{storages_health_link}.
       waiting:
         subtitle: Aspetta un attimo, potrebbe volerci un po' di tempo...
         title: Stiamo configurando le tue autorizzazioni sulla cartella del progetto.

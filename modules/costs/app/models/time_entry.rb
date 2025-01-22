@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -38,29 +40,34 @@ class TimeEntry < ApplicationRecord
 
   MIN_TIME = 0 # => 00:00
   MAX_TIME = (60 * 24) - 1 # => 23:59
+  SECONDS_PER_HOUR = 3600.0
 
   acts_as_customizable
 
   acts_as_journalized
 
-  validates_presence_of :user_id, :project_id, :spent_on
-  validates_presence_of :hours, if: -> { !ongoing? }
-  validates_numericality_of :hours, allow_nil: true, message: :invalid
+  validates :user_id, :project_id, :spent_on,
+            presence: true
+  validates :hours,
+            presence: true,
+            if: -> { !ongoing? }
 
-  validates :start_time, :end_time,
+  validates :hours,
+            numericality: {
+              message: :invalid
+            },
+            allow_nil: true
+
+  validates :start_time,
             presence: true,
             if: -> { TimeEntry.must_track_start_and_end_time? }
 
   validates :start_time,
-            numericality: { only_integer: true, greater_than_or_equal_to: MIN_TIME, less_than_or_equal_to: MAX_TIME },
-            allow_blank: true
-
-  validates :end_time,
             numericality: {
               only_integer: true,
-              greater_than: ->(te) { te.start_time.to_i },
-              less_than_or_equal_to: MAX_TIME
-              # TODO: nice error message
+              greater_than_or_equal_to: MIN_TIME,
+              less_than_or_equal_to: MAX_TIME,
+              message: :invalid_time
             },
             allow_blank: true
 
@@ -80,7 +87,7 @@ class TimeEntry < ApplicationRecord
   register_journal_formatted_fields "hours", formatter_key: :time_entry_hours
   register_journal_formatted_fields "user_id", formatter_key: :time_entry_named_association
   register_journal_formatted_fields "work_package_id", "activity_id", formatter_key: :named_association
-  register_journal_formatted_fields "comments", "spent_on", formatter_key: :plaintext
+  register_journal_formatted_fields "comments", "spent_on", "start_time", formatter_key: :plaintext
 
   def self.update_all(updates, conditions = nil, options = {})
     # instead of a update_all, perform an individual update during work_package#move
@@ -99,6 +106,20 @@ class TimeEntry < ApplicationRecord
 
   def hours=(value)
     write_attribute :hours, (value.is_a?(String) ? (value.to_hours || value) : value)
+  end
+
+  def ongoing_hours
+    return nil unless ongoing?
+
+    (Time.zone.now.to_i - created_at.to_i) / SECONDS_PER_HOUR
+  end
+
+  def start_time=(value)
+    if value.is_a?(String) && value =~ /\A(\d{1,2}):(\d{2})\z/
+      super(($1.to_i * 60) + $2.to_i)
+    else
+      super
+    end
   end
 
   # Returns true if the time entry can be edited by usr, otherwise false
@@ -121,6 +142,26 @@ class TimeEntry < ApplicationRecord
       (user_id == usr.id && usr.allowed_in_project?(:view_own_hourly_rate, project))
   end
 
+  def start_timestamp # rubocop:disable Metrics/AbcSize
+    return nil if start_time.blank?
+    return nil if time_zone.blank?
+    return nil if spent_on.blank?
+
+    time_zone_object.local(spent_on.year, spent_on.month, spent_on.day, start_time / 60, start_time % 60)
+  end
+
+  def end_timestamp
+    return nil if start_time.blank?
+    return nil if time_zone.blank?
+    return nil if spent_on.blank?
+
+    if ongoing?
+      start_timestamp + ongoing_hours.hours
+    else
+      start_timestamp + hours.hours
+    end
+  end
+
   class << self
     def can_track_start_and_end_time?(_project: nil)
       OpenProject::FeatureDecisions.track_start_and_end_times_for_time_entries_active? &&
@@ -138,5 +179,9 @@ class TimeEntry < ApplicationRecord
 
   def cost_attribute
     hours
+  end
+
+  def time_zone_object
+    ActiveSupport::TimeZone[time_zone]
   end
 end

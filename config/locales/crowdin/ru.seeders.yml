@@ -36,15 +36,15 @@ ru:
           name: Чёрный
       life_cycle_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 Оранжевый
         item_1:
-          name: PM2 Purple
+          name: PM2 Фиолетовый
         item_2:
-          name: PM2 Red
+          name: PM2 Красный
         item_3:
-          name: PM2 Magenta
+          name: PM2 Пурпурный
         item_4:
-          name: PM2 Green Yellow
+          name: PM2 Зелено-жёлтый
       document_categories:
         item_0:
           name: Документация
@@ -83,19 +83,19 @@ ru:
     standard:
       life_cycles:
         item_0:
-          name: Initiating
+          name: Запуск
         item_1:
-          name: Ready for Planning
+          name: Готов к планированию
         item_2:
-          name: Planning
+          name: Планирование
         item_3:
-          name: Ready for Executing
+          name: Готово к выполнению
         item_4:
-          name: Executing
+          name: Выполнение
         item_5:
-          name: Ready for Closing
+          name: Готов к закрытию
         item_6:
-          name: Closing
+          name: Закрытие
       priorities:
         item_0:
           name: Низкое
@@ -244,7 +244,7 @@ ru:
               wiki:
                 title: Спринт 1
                 content: |
-                  ### Встреча по планированию спринта
+                  ### Совещание по планированию спринта
 
                   _Пожалуйста, документируйте здесь темы на встречу по планированию спринта_
 
@@ -288,7 +288,7 @@ ru:
 
                   * Время (3 ч).
                   * После просмотра спринта, будет модерироваться Scrum Master.
-                  * Команда обсуждает весну: что пошло хорошо, что должно быть улучшено, чтобы быть более продуктивным для следующего спринта или даже весело.
+                  * Команда обсуждает спринт: что пошло хорошо, что должно быть улучшено, чтобы быть более продуктивным для следующего спринта или даже весело.
             item_3:
               name: Спринт 2
           categories:
@@ -486,7 +486,7 @@ ru:
           name: Другие
       types:
         item_0:
-          name: Задание
+          name: Задача
         item_1:
           name: Веха
         item_2:
