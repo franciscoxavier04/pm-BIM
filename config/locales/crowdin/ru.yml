@@ -2643,7 +2643,7 @@ ru:
   label_product_version: "Версия продукта"
   label_profile: "Профиль"
   label_percent_complete: "% Готово"
-  label_progress_tracking: "Прогресс отслеживания"
+  label_progress_tracking: "Отслеживание прогресса"
   label_project: "Проект"
   label_project_activity: "Деятельность"
   label_project_attribute_plural: "Атрибуты проекта"
