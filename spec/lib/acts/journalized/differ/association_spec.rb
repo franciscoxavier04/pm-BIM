@@ -30,8 +30,8 @@
 
 require "spec_helper"
 
-RSpec.describe Acts::Journalized::JournableDiffer do
-  describe ".association_changes" do
+RSpec.describe Acts::Journalized::Differ::Association do
+  describe "#attribute_changes" do
     context "when the objects are work packages" do
       let(:original) do
         build(:work_package,
@@ -51,9 +51,12 @@ RSpec.describe Acts::Journalized::JournableDiffer do
               ])
       end
 
+      let(:instance) do
+        described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id)
+      end
+
       it "returns the changes" do
-        params = [original, changed, "custom_values", "custom_field", :custom_field_id, :value]
-        expect(described_class.association_changes(*params))
+        expect(instance.attribute_changes(:value, key_prefix: "custom_field"))
           .to eq(
             "custom_field_1" => ["1", ""],
             "custom_field_3" => ["", "2"]
@@ -79,9 +82,12 @@ RSpec.describe Acts::Journalized::JournableDiffer do
               ])
       end
 
+      let(:instance) do
+        described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id)
+      end
+
       it "returns the changes" do
-        params = [original, changed, "custom_values", "custom_field", :custom_field_id, :value]
-        expect(described_class.association_changes(*params))
+        expect(instance.attribute_changes(:value, key_prefix: "custom_field"))
           .to eq(
             "custom_field_1" => [nil, "t"],
             "custom_field_2" => ["1", "2"]
@@ -90,7 +96,7 @@ RSpec.describe Acts::Journalized::JournableDiffer do
     end
   end
 
-  describe ".association_changes_multiple_attributes" do
+  describe "#attributes_changes" do
     let(:original) do
       build(:journal, project_life_cycle_step_journals: [
               build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 1, active: false),
@@ -112,10 +118,14 @@ RSpec.describe Acts::Journalized::JournableDiffer do
             ])
     end
 
+    let(:instance) do
+      described_class.new(original, changed,
+                          association: :project_life_cycle_step_journals,
+                          id_attribute: :life_cycle_step_id)
+    end
+
     it "returns the changes" do
-      params = [original, changed, "project_life_cycle_step_journals", "project_life_cycle_steps", :life_cycle_step_id,
-                %i[active start_date end_date]]
-      expect(described_class.association_changes_multiple_attributes(*params))
+      expect(instance.attributes_changes(%i[active start_date end_date], key_prefix: "project_life_cycle_steps"))
         .to eq(
           "project_life_cycle_steps_1_active" => ["false", "true"],
           "project_life_cycle_steps_2_active" => [nil, "true"],

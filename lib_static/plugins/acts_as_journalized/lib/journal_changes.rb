@@ -56,26 +56,28 @@ module JournalChanges
   def get_attachments_changes
     return unless journable&.attachable?
 
-    ::Acts::Journalized::JournableDiffer.association_changes(
+    ::Acts::Journalized::Differ::Association.new(
       predecessor,
       self,
-      "attachable_journals",
-      "attachments",
-      :attachment_id,
-      :filename
+      association: :attachable_journals,
+      id_attribute: :attachment_id
+    ).attribute_changes(
+      :filename,
+      key_prefix: "attachments"
     )
   end
 
   def get_custom_fields_changes
     return unless journable&.customizable?
 
-    customizable_changes = ::Acts::Journalized::JournableDiffer.association_changes(
+    customizable_changes = ::Acts::Journalized::Differ::Association.new(
       predecessor,
       self,
-      "customizable_journals",
-      "custom_fields",
-      :custom_field_id,
-      :value
+      association: :customizable_journals,
+      id_attribute: :custom_field_id
+    ).attribute_changes(
+      :value,
+      key_prefix: "custom_fields"
     )
 
     if journable.class.name == "Project"
@@ -97,13 +99,14 @@ module JournalChanges
   def get_agenda_items_changes
     return unless journable.respond_to?(:agenda_items)
 
-    ::Acts::Journalized::JournableDiffer.association_changes_multiple_attributes(
+    ::Acts::Journalized::Differ::Association.new(
       predecessor,
       self,
-      "agenda_item_journals",
-      "agenda_items",
-      :agenda_item_id,
-      %i[title duration_in_minutes notes position work_package_id]
+      association: :agenda_item_journals,
+      id_attribute: :agenda_item_id
+    ).attributes_changes(
+      %i[title duration_in_minutes notes position work_package_id],
+      key_prefix: "agenda_items"
     )
   end
 
