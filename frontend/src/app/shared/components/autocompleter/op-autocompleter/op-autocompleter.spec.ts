@@ -85,43 +85,84 @@ describe('autocompleter', () => {
     });
   });
 
-  it('should load WorkPackages', fakeAsync(() => {
-    tick();
-    fixture.detectChanges();
-    fixture.componentInstance.ngAfterViewInit();
-    tick(1000);
-    fixture.detectChanges();
-    const select = fixture.componentInstance.ngSelectInstance;
-    expect(select.isOpen).toBeFalse();
-    select.open();
-    select.focus();
-    expect(select.isOpen).toBeTrue();
+  describe('without debounce', () => {
+    it('should load items', fakeAsync(() => {
+      tick();
+      fixture.detectChanges();
+      fixture.componentInstance.ngAfterViewInit();
+      tick(1000);
+      fixture.detectChanges();
+      const select = fixture.componentInstance.ngSelectInstance;
+      expect(select.isOpen).toBeFalse();
+      select.open();
+      select.focus();
+      expect(select.isOpen).toBeTrue();
 
-    expect(select.itemsList.items.length).toEqual(0);
+      expect(select.itemsList.items.length).toEqual(0);
 
-    const inputDebugElement = fixture.debugElement.query(By.css('input[role=combobox]'));
-    const inputElement = inputDebugElement.nativeElement as HTMLInputElement;
+      const inputDebugElement = fixture.debugElement.query(By.css('input[role=combobox]'));
+      const inputElement = inputDebugElement.nativeElement as HTMLInputElement;
 
-    fixture.detectChanges();
-    tick();
-    expect(getOptionsFnSpy).toHaveBeenCalledWith("");
+      fixture.detectChanges();
+      tick();
+      expect(getOptionsFnSpy).toHaveBeenCalledWith("");
 
-    inputElement.value = "Wor";
-    inputElement.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
-    tick();
-    expect(getOptionsFnSpy).toHaveBeenCalledWith("Wor");
+      inputElement.value = "Wor";
+      inputElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+      expect(getOptionsFnSpy).toHaveBeenCalledWith("Wor");
 
-    fixture.detectChanges();
-    expect(select.itemsList.items.length).toEqual(2);
+      fixture.detectChanges();
+      expect(select.itemsList.items.length).toEqual(2);
 
-    inputElement.value = "package 2";
-    inputElement.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
-    tick();
-    expect(getOptionsFnSpy).toHaveBeenCalledWith("package 2");
+      inputElement.value = "package 2";
+      inputElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+      expect(getOptionsFnSpy).toHaveBeenCalledWith("package 2");
 
-    fixture.detectChanges();
-    expect(select.itemsList.items.length).toEqual(1);
-  }));
+      fixture.detectChanges();
+      expect(select.itemsList.items.length).toEqual(1);
+    }));
+  });
+
+  describe('with debounce', () => {
+    beforeEach(() => {
+      fixture.componentInstance.debounceTimeMs = 50;
+    });
+
+    it('should load items with debounce', fakeAsync(() => {
+      tick();
+      fixture.detectChanges();
+      fixture.componentInstance.ngAfterViewInit();
+      tick(1000);
+      fixture.detectChanges();
+      const select = fixture.componentInstance.ngSelectInstance;
+      expect(select.isOpen).toBeFalse();
+      select.open();
+      select.focus();
+      expect(select.isOpen).toBeTrue();
+
+      expect(select.itemsList.items.length).toEqual(0);
+
+      const inputDebugElement = fixture.debugElement.query(By.css('input[role=combobox]'));
+      const inputElement = inputDebugElement.nativeElement as HTMLInputElement;
+
+      fixture.detectChanges();
+      tick();
+      expect(getOptionsFnSpy).not.toHaveBeenCalled();
+      tick(50);
+      expect(getOptionsFnSpy).toHaveBeenCalledWith("");
+      getOptionsFnSpy.calls.reset();
+
+      inputElement.value = "Wor";
+      inputElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      tick();
+      expect(getOptionsFnSpy).not.toHaveBeenCalled();
+      tick(50);
+      expect(getOptionsFnSpy).toHaveBeenCalledWith("Wor");
+    }));
+  });
 });
