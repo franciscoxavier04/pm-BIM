@@ -29,23 +29,41 @@
 #++
 
 module Storages::Storages
-  class CreateContract < ::Storages::Storages::BaseContract
-    attribute :creator
-    validate :creator_must_be_user
-    validate :require_ee_token_for_one_drive
+  class NextcloudAutomaticManagementContract < ::ModelContract
+    attribute :automatically_managed
 
-    private
+    attribute :username
+    validates :username, presence: true, if: :nextcloud_storage_automatic_management_enabled?
+    validates :username,
+              absence: true,
+              unless: -> { nextcloud_storage_automatic_management_enabled? || nextcloud_default_storage_username? }
 
-    def creator_must_be_user
-      unless creator == user
-        errors.add(:creator, :invalid)
+    attribute :password
+    validates :password, presence: true, if: :nextcloud_storage_automatic_management_enabled?
+    validates :password, absence: true, unless: :nextcloud_storage_automatic_management_enabled?
+
+    validate do
+      if nextcloud_storage_automatic_management_enabled? && errors.exclude?(:password) && model.host.present?
+        NextcloudApplicationCredentialsValidator.new(self).call
       end
     end
 
-    def require_ee_token_for_one_drive
-      if ::Storages::Storage.one_drive_without_ee_token?(provider_type)
-        errors.add(:base, I18n.t("api_v3.errors.code_500_missing_enterprise_token"))
-      end
+    private
+
+    def nextcloud_storage_automatic_management_enabled?
+      return false unless nextcloud_storage?
+
+      @model.automatic_management_enabled?
+    end
+
+    def nextcloud_default_storage_username?
+      return false unless nextcloud_storage?
+
+      @model.username == @model.provider_fields_defaults[:username]
+    end
+
+    def nextcloud_storage?
+      @model.is_a?(Storages::NextcloudStorage)
     end
   end
 end

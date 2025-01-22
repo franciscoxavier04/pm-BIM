@@ -32,17 +32,16 @@ module Storages::Admin::Forms
   class GeneralInfoFormComponent < StorageFormComponent
     def self.wrapper_key = :storage_general_info_section
 
-    options form_method: :post,
-            submit_button_disabled: false
+    options submit_button_disabled: false
 
     def form_url
-      query = { continue_wizard: storage.id } if in_wizard
+      query = { origin_component: "general_information" }
+      query[:continue_wizard] = storage.id if in_wizard
 
-      case form_method
-      when :get, :post
-        admin_settings_storages_path(query)
-      when :patch, :put
+      if storage.persisted?
         admin_settings_storage_path(storage, query)
+      else
+        admin_settings_storages_path(query)
       end
     end
 
@@ -61,6 +60,14 @@ module Storages::Admin::Forms
     end
 
     private
+
+    def form_method
+      if storage.persisted?
+        :patch
+      else
+        :post
+      end
+    end
 
     def cancel_button_path
       options.fetch(:cancel_button_path) do

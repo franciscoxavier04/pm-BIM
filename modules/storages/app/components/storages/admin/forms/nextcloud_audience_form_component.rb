@@ -27,25 +27,32 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
+module Storages::Admin::Forms
+  class NextcloudAudienceFormComponent < StorageFormComponent
+    def self.wrapper_key = :storage_nextcloud_audience_section
 
-module Storages::Storages
-  class CreateContract < ::Storages::Storages::BaseContract
-    attribute :creator
-    validate :creator_must_be_user
-    validate :require_ee_token_for_one_drive
+    options submit_button_disabled: false
+
+    def form_url
+      query = { origin_component: "nextcloud_audience" }
+      query[:continue_wizard] = storage.id if in_wizard
+
+      admin_settings_storage_path(storage, query)
+    end
+
+    def submit_button_options
+      { disabled: submit_button_disabled }
+    end
+
+    def cancel_button_options
+      { href: cancel_button_path, data: { turbo_stream: true } }
+    end
 
     private
 
-    def creator_must_be_user
-      unless creator == user
-        errors.add(:creator, :invalid)
-      end
-    end
-
-    def require_ee_token_for_one_drive
-      if ::Storages::Storage.one_drive_without_ee_token?(provider_type)
-        errors.add(:base, I18n.t("api_v3.errors.code_500_missing_enterprise_token"))
-      end
+    def cancel_button_path
+      edit_admin_settings_storage_path(storage)
     end
   end
 end

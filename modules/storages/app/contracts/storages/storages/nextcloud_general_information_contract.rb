@@ -29,23 +29,16 @@
 #++
 
 module Storages::Storages
-  class CreateContract < ::Storages::Storages::BaseContract
-    attribute :creator
-    validate :creator_must_be_user
-    validate :require_ee_token_for_one_drive
+  class NextcloudGeneralInformationContract < ::ModelContract
+    attribute :name
+    validates :name, presence: true, length: { maximum: 255 }
+    attribute :host
+    validates :host, url: { message: :invalid_host_url }, length: { maximum: 255 }
+    # Check that a host actually is a storage server.
+    # But only do so if the validations above for URL were successful.
+    validates :host, secure_context_uri: true, nextcloud_compatible_host: true, unless: -> { errors.include?(:host) }
 
-    private
-
-    def creator_must_be_user
-      unless creator == user
-        errors.add(:creator, :invalid)
-      end
-    end
-
-    def require_ee_token_for_one_drive
-      if ::Storages::Storage.one_drive_without_ee_token?(provider_type)
-        errors.add(:base, I18n.t("api_v3.errors.code_500_missing_enterprise_token"))
-      end
-    end
+    attribute :authentication_method
+    validates :authentication_method, presence: true, inclusion: { in: ::Storages::NextcloudStorage::AUTHENTICATION_METHODS }
   end
 end

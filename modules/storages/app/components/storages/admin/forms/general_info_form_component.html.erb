@@ -31,6 +31,12 @@
               general_info_row.with_row(mb: 3) do
                 render(Storages::Admin::ProviderHostInputForm.new(form))
               end
+
+              if OpenProject::FeatureDecisions.oidc_token_exchange_active?
+                general_info_row.with_row(mb: 3) do
+                  render(Storages::Admin::NextcloudAuthenticationMethodInputForm.new(form))
+                end
+              end
             end
 
             if storage.provider_type_one_drive?
