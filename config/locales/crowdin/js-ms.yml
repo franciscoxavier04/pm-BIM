@@ -383,7 +383,7 @@ ms:
     label_add_row_before: "Tambah baris sebelum"
     label_add_selected_columns: "Tambah kolum yang dipilih"
     label_added_by: "ditambah oleh"
-    label_added_time_by: 'Ditambah oleh <a href="%{authorLink}">%{author} pada %{age}'
+    label_added_time_by: 'Ditambah oleh %{authorLink} pada %{age}'
     label_ago: "hari yang lalu"
     label_all: "semua"
     label_all_uppercase: "Semua"
