@@ -218,6 +218,7 @@ jobs:
           rm -rf vendor/bundle || true
           docker cp bundle:/app/vendor/bundle vendor/bundle
           docker rm bundle
+          echo 'vendor/bundle' >> .dockerignore
       - name: Save vendor/bundle
         id: save-vendor-bundle
         uses: actions/cache/save@v4
