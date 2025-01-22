@@ -62,7 +62,7 @@ class TypesController < ApplicationController
     end
   end
 
-  def create # rubocop:disable Metrics/AbcSize
+  def create
     CreateTypeService
       .new(current_user)
       .call(permitted_type_params, copy_workflow_from: params[:copy_workflow_from]) do |call|
@@ -72,9 +72,7 @@ class TypesController < ApplicationController
         redirect_to_type_tab_path(@type, t(:notice_successful_create))
       end
 
-      call.on_failure do |result|
-        flash[:error] = result.errors.full_messages.join("\n")
-        load_projects_and_types
+      call.on_failure do
         render action: :new, status: :unprocessable_entity
       end
     end
