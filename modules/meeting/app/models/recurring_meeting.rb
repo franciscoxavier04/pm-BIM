@@ -168,7 +168,7 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def remaining_occurrences
-    if end_date.present?
+    if end_after_specific_date?
       schedule.occurrences_between(Time.current, modified_end_date)
     else
       schedule.remaining_occurrences(Time.current)
