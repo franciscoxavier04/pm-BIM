@@ -383,7 +383,7 @@ pt-PT:
     label_add_row_before: "Adicionar linha antes"
     label_add_selected_columns: "Adicionar colunas selecionadas"
     label_added_by: "adicionado por"
-    label_added_time_by: 'Adicionado por <a href="%{authorLink}">%{author}</a> a %{age}'
+    label_added_time_by: 'Adicionado por %{authorLink} a %{age}'
     label_ago: "dias atrás"
     label_all: "todos"
     label_all_uppercase: "Todos"

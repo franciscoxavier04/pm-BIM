@@ -383,7 +383,7 @@ vi:
     label_add_row_before: "Thêm hàng trước"
     label_add_selected_columns: "Thêm các cột đã chọn"
     label_added_by: "được thêm bởi"
-    label_added_time_by: 'Được thêm bởi <a href="%{authorLink}">%{author}</a> lúc %{age}'
+    label_added_time_by: 'Được thêm bởi %{authorLink} lúc %{age}'
     label_ago: "ngày trước"
     label_all: "tất cả"
     label_all_uppercase: "Tất cả"

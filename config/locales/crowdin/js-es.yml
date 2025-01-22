@@ -383,7 +383,7 @@ es:
     label_add_row_before: "Añadir fila encima"
     label_add_selected_columns: "Agregar columnas seleccionadas"
     label_added_by: "agregado por"
-    label_added_time_by: 'Agregado por <a href="%{authorLink}">%{author}</a> a las %{age}'
+    label_added_time_by: 'Agregado por %{authorLink} a las %{age}'
     label_ago: "días antes"
     label_all: "todos"
     label_all_uppercase: "Todos"
