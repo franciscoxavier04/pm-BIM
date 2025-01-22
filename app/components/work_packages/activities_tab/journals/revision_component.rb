@@ -107,7 +107,8 @@ module WorkPackages
 
         def render_committer_name(committer)
           render(Primer::Beta::Text.new(font_weight: :bold, mr: 1)) do
-            Sanitize.fragment(committer).gsub(%r{<.+@.+>}, "").strip
+            safe_string = Sanitize.fragment(committer, Sanitize::Config::RESTRICTED)
+            ERB::Util.html_escape(safe_string.gsub(%r{<[^>]+@[^>]+>}, "").strip)
           end
         end
       end
