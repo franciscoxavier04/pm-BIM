@@ -58,6 +58,8 @@ RSpec.describe "Open the Gitlab tab", :js do
     create(:gitlab_pipeline, gitlab_merge_request: merge_request, name: "a pipeline name")
   end
 
+  let(:activity_tab) { Components::WorkPackages::Activities.new(work_package) }
+
   shared_examples_for "a gitlab tab" do
     before do
       issue
@@ -69,11 +71,12 @@ RSpec.describe "Open the Gitlab tab", :js do
     # comparing the pasted content against the provided text
     def expect_clipboard_content(text)
       work_package_page.switch_to_tab(tab: "activity")
+      work_package_page.wait_for_activity_tab
 
-      work_package_page.trigger_edit_comment
-      work_package_page.update_comment(" ") # ensure the comment editor is fully loaded
+      activity_tab.type_comment(" ") # This will both open the editor and type a space
+      activity_tab.clear_comment # Clear the comment to ensure clean state
       gitlab_tab.paste_clipboard_content
-      expect(work_package_page.add_comment_container).to have_content(text)
+      activity_tab.expect_unsaved_content(text)
 
       work_package_page.switch_to_tab(tab: "gitlab")
     end

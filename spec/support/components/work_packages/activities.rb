@@ -162,9 +162,10 @@ module Components
         end
       end
 
-      def expect_comment_present(text)
-        page.within_test_selector("op-wp-journals-container") do
-          expect(page).to have_test_selector("op-journal-notes-body", text:, wait: 10)
+      def expect_unsaved_content(text)
+        page.within_test_selector("op-work-package-journal-form-element") do
+          editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+          expect(editor.input_element.value).to eq(text)
         end
       end
 
