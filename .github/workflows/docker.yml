@@ -215,10 +215,9 @@ jobs:
       - name: Extract vendor/bundle from container
         run: |
           docker create --name bundle ${{ steps.build.outputs.imageid }}
-          rm -rf vendor/bundle || true
+          mv vendor/bundle vendor/bundle.bak
           docker cp bundle:/app/vendor/bundle vendor/bundle
           docker rm bundle
-          echo 'vendor/bundle' >> .dockerignore
       - name: Save vendor/bundle
         id: save-vendor-bundle
         uses: actions/cache/save@v4
@@ -226,6 +225,9 @@ jobs:
           path: |
             vendor/bundle
           key: ${{ steps.restore-vendor-bundle.outputs.cache-primary-key }}
+      - name: Restore local vendor/bundle to prevent rebuilding of image during push
+        run: |
+          rm -rf vendor/bundle && mv vendor/bundle.bak vendor/bundle
       - name: Test
         # We only test the native container. If that fails the builds for the others
         # will be cancelled as well.
