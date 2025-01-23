@@ -38,18 +38,26 @@ RSpec.describe EnvData::CustomDesignSeeder, :webmock do
   let(:base64_data_url) do
     "data:image/png;base64,#{base64_image}"
   end
-  let(:stub) do
+  let(:png_stub) do
     stub_request(:get, "http://test.foobar.com/image.png")
       .to_return(
         status: 200,
         body: Rails.root.join("spec/fixtures/files/image.png").read
       )
   end
+  let(:svg_stub) do
+    stub_request(:get, "http://test.foobar.com/image.svg")
+      .to_return(
+        status: 200,
+        body: Rails.root.join("spec/fixtures/files/icon_logo.svg").read
+      )
+  end
 
   subject(:seeder) { described_class.new(seed_data) }
 
   before do
-    stub
+    png_stub
+    svg_stub
   end
 
   context "when not provided" do
@@ -87,6 +95,31 @@ RSpec.describe EnvData::CustomDesignSeeder, :webmock do
       expect(DesignColor.find_by(variable: "main-menu-bg-color").hexcode).to eq("#FFFFFF")
       expect(DesignColor.find_by(variable: "main-menu-bg-selected-background").hexcode).to eq("#571EFA")
       expect(DesignColor.find_by(variable: "main-menu-bg-hover-background").hexcode).to eq("#E5E5E5")
+
+      RequestStore.clear!
+      custom_style = CustomStyle.current
+      expect(custom_style.logo.file).to be_present
+      expect(custom_style.logo.file.content_type).to eq "image/png"
+
+      expect(custom_style.touch_icon.file).to be_present
+      expect(custom_style.touch_icon.file.content_type).to eq "image/png"
+    end
+  end
+
+  context "when setting logo as svg",
+          :settings_reset,
+          with_env: {
+            OPENPROJECT_SEED_DESIGN_LOGO: "http://test.foobar.com/image.svg"
+          } do
+    it "sets the content type" do
+      reset(:seed_design)
+
+      seeder.seed!
+
+      custom_style = CustomStyle.current
+
+      expect(custom_style.logo.file).to be_present
+      expect(custom_style.logo.file.content_type).to eq "image/svg+xml"
     end
   end
 
@@ -108,6 +141,7 @@ RSpec.describe EnvData::CustomDesignSeeder, :webmock do
 
       expect(custom_style.favicon.file).to be_nil
       expect(custom_style.logo.file).to be_present
+      expect(custom_style.logo.file.content_type).to eq "image/png"
     end
   end
 
