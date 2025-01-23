@@ -80,17 +80,7 @@ class Meeting::TimeGroup < ApplicationForm
     @initial_time = meeting.start_time_hour.presence || format_time(meeting.start_time, include_date: false, format: "%H:%M")
     @initial_date = meeting.start_date.presence || format_time_as_date(meeting.start_time, format: "%Y-%m-%d")
 
-    duration = duration_value(meeting)
+    duration = meeting.duration
     @duration = duration.nil? ? "" : ChronicDuration.output(duration * 3600, format: :hours_only)
-  end
-
-  private
-
-  def duration_value(meeting)
-    if meeting.is_a?(RecurringMeeting) && meeting.template
-      meeting.template.duration
-    else
-      meeting.duration
-    end
   end
 end

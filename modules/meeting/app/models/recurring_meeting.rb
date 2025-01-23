@@ -92,7 +92,7 @@ class RecurringMeeting < ApplicationRecord
   virtual_attribute :location do
     nil
   end
-  virtual_attribute :duration do
+  virtual_attribute :duration, cast_type: :float do
     nil
   end
 
@@ -112,8 +112,16 @@ class RecurringMeeting < ApplicationRecord
     start_time.day.ordinalize
   end
 
+  def duration
+    if template
+      template.duration
+    else
+      super
+    end
+  end
+
   def schedule
-    @schedule ||= IceCube::Schedule.new(start_time, end_time: modified_end_date).tap do |s|
+    @schedule ||= IceCube::Schedule.new(start_time, duration: duration.hours).tap do |s|
       s.add_recurrence_rule count_rule(frequency_rule)
       exclude_non_working_days(s) if frequency_working_days?
     end
