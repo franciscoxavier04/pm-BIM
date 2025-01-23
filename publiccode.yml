@@ -22,6 +22,7 @@ usedBy:
   - Deutsche Bahn
   - FITKO
   - Stadt Chemnitz
+  -...
 categories:
   - agile-project-management
   - budgeting
@@ -97,7 +98,7 @@ description:
     localisedName: OpenProject
     documentation: 'https://www.openproject.org/docs'
     apiDocumentation: 'https://www.openproject.org/docs/api'
-    shortDescription: 'OpenProject is a web-based project management software'
+    shortDescription: 'Web-based project- and project portfolio management software'
     screenshots:
       - 'screenshots/opencode_openproject_file_storages.png'
       - 'screenshots/opencode_openproject_gantt_chart.png'
@@ -150,7 +151,7 @@ description:
     localisedName: OpenProject
     documentation: 'https://www.openproject.org/de/docs/'
     apiDocumentation: 'https://www.openproject.org/de/docs/api'
-    shortDescription: 'OpenProject ist die führende Open Source Projektmanagement-Software'
+    shortDescription: 'Web-basiertes Projekt-Management und Projektportfolio-Mangement Software'
     screenshots:
       - 'screenshots/opencode_openproject_file_storages.png'
       - 'screenshots/opencode_openproject_gantt_chart.png'

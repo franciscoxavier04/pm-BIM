@@ -33,6 +33,7 @@ vi:
       cost_type:
         unit: "Tên đơn vị"
         unit_plural: "Tên đơn vị đa năng"
+        default: "Cost type by default"
       work_package:
         costs_by_type: "Các đơn vị đã chi"
         labor_costs: "Chi phí nhân công"
@@ -44,12 +45,24 @@ vi:
         rate: "Tỷ giá"
       user:
         default_rates: "Tỷ lệ mặc định"
+      time_entry:
+        project: Project
+        user: User
+        work_package: Work package
+        hours: Giờ
+        comments: Comment
+        activity: Hoạt động
+        spent_on: Ngày
+        start_time: Start time
+        end_time: Finish time
     models:
       cost_type:
         other: "Loại chi phí"
       rate: "Tỷ lệ"
     errors:
       models:
+        time_entry:
+          invalid_time: "must be between 00:00 and 23:59."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Gói công việc #%{id} không phải là mục tiêu hợp lệ để phân bổ lại các mục chi phí."
           nullify_is_not_valid_for_cost_entries: "Các mục chi phí không thể được phân bổ cho một dự án."
@@ -64,6 +77,7 @@ vi:
     fixed_date: "Ngày cố định"
   button_add_rate: "Thêm tỷ lệ"
   button_log_costs: "Ghi lại chi phí đơn vị"
+  button_log_time: "Log"
   caption_booked_on_project: "Đã ghi trên dự án"
   caption_default: "Mặc định"
   caption_default_rate_history_for: "Lịch sử tỷ lệ mặc định cho %{user}"
@@ -75,6 +89,7 @@ vi:
   caption_save_rate: "Lưu tỷ lệ"
   caption_set_rate: "Đặt tỷ lệ hiện tại"
   caption_show_locked: "Hiển thị các loại đã khóa"
+  caption_log_time_dialog: "Log time"
   description_date_for_new_rate: "Ngày cho tỷ lệ mới"
   group_by_others: "không thuộc nhóm nào"
   label_between: "giữa"
@@ -114,10 +129,12 @@ vi:
   label_until: "đến"
   label_valid_from: "Có hiệu lực từ"
   label_yes: "Có"
+  placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Đã xảy ra lỗi. Vui lòng thử lại."
   notice_successful_restore: "Khôi phục thành công."
   notice_successful_lock: "Khóa thành công."
   notice_cost_logged_successfully: "Chi phí đơn vị đã được ghi lại thành công."
+  notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   permission_edit_cost_entries: "Chỉnh sửa chi phí đơn vị đã ghi"
   permission_edit_own_cost_entries: "Chỉnh sửa chi phí đơn vị đã ghi của chính mình"
   permission_edit_hourly_rates: "Chỉnh sửa tỷ lệ theo giờ"

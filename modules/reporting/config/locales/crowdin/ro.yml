@@ -68,7 +68,7 @@ ro:
   label_filter: "Filtrează"
   label_filter_add: "Adaugă filtru"
   label_filter_plural: "Filtre"
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_by_add: "Adaugă atributul Grupează-după"
   label_inactive: "Inactiv"
   label_no: "Nu"
@@ -93,6 +93,8 @@ ro:
       time: "Timp"
     cost_reports:
       title: "Exportul dumneavoastră de rapoarte de costuri XLS"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "Coloane selectate"

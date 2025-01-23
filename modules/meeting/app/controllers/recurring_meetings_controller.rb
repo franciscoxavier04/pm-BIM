@@ -192,7 +192,7 @@ class RecurringMeetingsController < ApplicationController
     end
 
     # Ensure we keep any remaining future meetings that exceed the limit
-    merged + meetings.values.sort_by(&:start_time)
+    (merged + meetings.values).sort_by(&:start_time)
   end
 
   def scheduled_meeting(start_time)
