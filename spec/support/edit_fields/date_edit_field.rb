@@ -42,9 +42,9 @@ class DateEditField < EditField
 
   def input_selector
     if property_name == "combinedDate"
-      "input[name=work_package[start_date]"
+      "input[name='work_package[start_date]']"
     else
-      "input[name=work_package[#{property_name.underscore}]"
+      "input[name='work_package[#{property_name.underscore}]']"
     end
   end
 
@@ -111,6 +111,8 @@ class DateEditField < EditField
     expect(page)
       .to have_selector(modal_selector, wait: 10),
           "Expected date field '#{property_name}' to be active."
+
+    wait_for_network_idle
   end
 
   def expect_inactive!

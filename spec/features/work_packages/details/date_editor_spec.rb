@@ -33,7 +33,7 @@ require "features/work_packages/shared_contexts"
 require "support/edit_fields/edit_field"
 require "features/work_packages/work_packages_page"
 
-RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_format: "%Y-%m-%d" } do
+RSpec.describe "date inplace editor", :js, with_settings: { date_format: "%Y-%m-%d" } do
   shared_let(:project) { create(:project_with_types, public: true) }
   shared_let(:user) { create(:admin) }
   shared_let(:type) { project.types.first }
@@ -64,6 +64,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
     work_packages_page.visit!
     work_packages_page.ensure_page_loaded
+    wait_for_network_idle
   end
 
   it "can directly set the due date when only a start date is set" do
