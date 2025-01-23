@@ -29,7 +29,7 @@
 #++
 
 class SetDefaultAuthenticationMethod < ActiveRecord::Migration[7.1]
-  def change
+  def up
     update_sql = <<~SQL.squish
       UPDATE storages
       SET provider_fields = provider_fields || '{ "authentication_method": "two_way_oauth2" }'::jsonb
@@ -37,5 +37,10 @@ class SetDefaultAuthenticationMethod < ActiveRecord::Migration[7.1]
     SQL
 
     ActiveRecord::Base.connection.execute(update_sql)
+  end
+
+  def down
+    # up-direction is backwards-compatible, no need to restrict a migration rollback
+    # but also nothing to do in case of a rollback
   end
 end
