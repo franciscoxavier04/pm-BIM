@@ -41,10 +41,15 @@ module Acts::Journalized::Differ
         .transform_keys { |id| "#{key_prefix}_#{id}" }
     end
 
-    def attributes_changes(attributes, key_prefix:)
+    def attributes_changes(attributes, key_prefix:, grouped: false)
       attributes.each_with_object({}) do |attribute, result|
         single_attribute_changes(attribute).each do |id, change|
-          result["#{key_prefix}_#{id}_#{attribute}"] = change
+          if grouped
+            result["#{key_prefix}_#{id}"] ||= {}
+            result["#{key_prefix}_#{id}"][attribute] = change
+          else
+            result["#{key_prefix}_#{id}_#{attribute}"] = change
+          end
         end
       end
     end

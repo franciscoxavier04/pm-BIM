@@ -124,15 +124,47 @@ RSpec.describe Acts::Journalized::Differ::Association do
                           id_attribute: :life_cycle_step_id)
     end
 
-    it "returns the changes" do
-      expect(instance.attributes_changes(%i[active start_date end_date], key_prefix: "project_life_cycle_steps"))
-        .to eq(
-          "project_life_cycle_steps_1_active" => ["false", "true"],
-          "project_life_cycle_steps_2_active" => [nil, "true"],
-          "project_life_cycle_steps_3_active" => ["true", "false"],
-          "project_life_cycle_steps_4_end_date" => ["2024-01-17", "2024-01-18"],
-          "project_life_cycle_steps_4_start_date" => ["2024-01-16", "2024-01-17"]
+    describe "by default" do
+      subject(:result) do
+        instance.attributes_changes(
+          %i[active start_date end_date],
+          key_prefix: "project_life_cycle_steps"
         )
+      end
+
+      it "returns the flat changes" do
+        expect(result)
+          .to eq(
+            "project_life_cycle_steps_1_active" => ["false", "true"],
+            "project_life_cycle_steps_2_active" => [nil, "true"],
+            "project_life_cycle_steps_3_active" => ["true", "false"],
+            "project_life_cycle_steps_4_end_date" => ["2024-01-17", "2024-01-18"],
+            "project_life_cycle_steps_4_start_date" => ["2024-01-16", "2024-01-17"]
+          )
+      end
+    end
+
+    describe "grouped" do
+      subject(:result) do
+        instance.attributes_changes(
+          %i[active start_date end_date],
+          key_prefix: "project_life_cycle_steps",
+          grouped: true
+        )
+      end
+
+      it "returns the grouped changes" do
+        expect(result)
+          .to eq(
+            "project_life_cycle_steps_1" => { active: ["false", "true"] },
+            "project_life_cycle_steps_2" => { active: [nil, "true"] },
+            "project_life_cycle_steps_3" => { active: ["true", "false"] },
+            "project_life_cycle_steps_4" => {
+              end_date: ["2024-01-17", "2024-01-18"],
+              start_date: ["2024-01-16", "2024-01-17"]
+            }
+          )
+      end
     end
   end
 end
