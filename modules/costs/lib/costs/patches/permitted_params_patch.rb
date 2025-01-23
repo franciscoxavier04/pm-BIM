@@ -66,13 +66,17 @@ module Costs::Patches::PermittedParamsPatch
     end
 
     def time_entries
+      additional_fields = []
+
+      additional_fields << :start_time if TimeEntry.can_track_start_and_end_time?
+
       params
         .require(:time_entry)
         .permit(
+          *additional_fields,
           :hours,
           :comments,
           :spent_on,
-          :start_time,
           :work_package_id,
           :activity_id,
           :project_id,
