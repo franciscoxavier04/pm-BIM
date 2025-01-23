@@ -160,7 +160,7 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def scheduled_occurrences(limit:)
-    schedule.next_occurrences(limit, Time.current)
+    schedule.next_occurrences(limit, Time.current, spans: true)
   end
 
   def first_occurrence
@@ -177,9 +177,9 @@ class RecurringMeeting < ApplicationRecord
 
   def remaining_occurrences
     if end_after_specific_date?
-      schedule.occurrences_between(Time.current, modified_end_date)
+      schedule.occurrences_between(Time.current, modified_end_date, spans: true)
     else
-      schedule.remaining_occurrences(Time.current)
+      schedule.remaining_occurrences(Time.current, spans: true)
     end
   end
 
