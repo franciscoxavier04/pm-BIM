@@ -110,8 +110,8 @@ class Project < ApplicationRecord
   # Providing a custom context while creating the project, will not execute the callbacks on the
   # `:create` or `:update` contexts, meaning the identifier will not get initialised.
   # In order to initialise the identifier, the `default_validation_context` (`:create`, or `:update`)
-  # should be included when validating via the `:saving_custom_fields`. This way ever create or update
-  # callback will also be executed alongside the `:saving_custom_fields` callbacks.
+  # should be included when validating via the `:saving_custom_fields`. This way every create
+  # or update callback will also be executed alongside the `:saving_custom_fields` callbacks.
   # This problem does not affect the contextless callbacks, they are always executed.
 
   def validation_context
