@@ -15,7 +15,7 @@ export function workPackageRelationsCount(
   const wpRelations = injector.get(WorkPackageRelationsService);
   const wpId = workPackage.id!.toString();
 
-  const url = pathHelper.workPackageGetCounterPath(wpId.toString());
+  const url = pathHelper.workPackageGetRelationsCounterPath(wpId.toString());
   const updateTrigger$ = new Subject<void>();
 
   // Listen for relation state changes

@@ -658,7 +658,7 @@ Rails.application.routes.draw do
     get "/split_view/update_counter" => "work_packages/split_view#update_counter",
         on: :member
 
-    get "/split_view/get_counter" => "work_packages/split_view#get_counter",
+    get "/split_view/get_relations_counter" => "work_packages/split_view#get_relations_counter",
         on: :member
 
     # states managed by client-side (angular) routing on work_package#show
