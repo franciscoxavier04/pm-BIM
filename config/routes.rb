@@ -658,6 +658,9 @@ Rails.application.routes.draw do
     get "/split_view/update_counter" => "work_packages/split_view#update_counter",
         on: :member
 
+    get "/split_view/get_counter" => "work_packages/split_view#get_counter",
+        on: :member
+
     # states managed by client-side (angular) routing on work_package#show
     get "/" => "work_packages#index", on: :collection, as: "index"
     get "/create_new" => "work_packages#index", on: :collection, as: "new_split"

@@ -1,35 +1,24 @@
 import { Injector } from '@angular/core';
-import { combineLatest, Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
-import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
-import { WorkPackageRelationsService } from 'core-app/features/work-packages/components/wp-relations/wp-relations.service';
+import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
+import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 
 export function workPackageRelationsCount(
   workPackage:WorkPackageResource,
   injector:Injector,
 ):Observable<number> {
-  const wpRelations = injector.get(WorkPackageRelationsService);
-  const apiV3Service = injector.get(ApiV3Service);
+  const PathHelper = injector.get(PathHelperService);
+  const turboRequests= injector.get(TurboRequestsService);
   const wpId = workPackage.id!.toString();
 
-  wpRelations.require(wpId);
-
-  return combineLatest([
-    wpRelations
-      .state(wpId.toString())
-      .values$(),
-    apiV3Service
-      .work_packages
-      .id(wpId)
-      .requireAndStream(),
-  ])
-    .pipe(
-      map(([relations, workPackage]) => {
-        const relationCount = _.size(relations);
-        const childrenCount = _.size(workPackage.children);
-
-        return relationCount + childrenCount;
-      }),
-    );
+  const url = PathHelper.workPackageGetCounterPath(wpId.toString());
+  const turbo= turboRequests.request(url);
+  const observable = from(turbo);
+  return observable.pipe(
+    map((response) => {
+      return parseInt(response.html, 10);
+    }),
+  );
 }
