@@ -1,15 +1,17 @@
 <%= render(FormControl.new(input: @input)) do %>
-  <%= content_tag(:div, hidden: true) do %>
-    <%= builder.text_area(@input.name, **@input.input_arguments) %>
+  <%= content_tag(:div, **@field_wrap_arguments) do %>
+    <%= content_tag(:div, hidden: true) do %>
+      <%= builder.text_area(@input.name, **@input.input_arguments) %>
+    <% end %>
+    <%= angular_component_tag "opce-ckeditor-augmented-textarea",
+                              inputs: @rich_text_options.reverse_merge(
+                                {
+                                  textareaSelector: "##{builder.field_id(@input.name)}",
+                                  macros: false,
+                                  turboMode: true
+                                }
+                              ),
+                              class: @input.classes
+    %>
   <% end %>
-  <%= angular_component_tag "opce-ckeditor-augmented-textarea",
-                            inputs: @rich_text_options.reverse_merge(
-                              {
-                                textareaSelector: "##{builder.field_id(@input.name)}",
-                                macros: false,
-                                turboMode: true
-                              }
-                            ),
-                            class: @input.classes
-  %>
 <% end %>

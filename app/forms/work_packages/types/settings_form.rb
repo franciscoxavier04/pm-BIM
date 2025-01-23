@@ -65,7 +65,10 @@ module WorkPackages
           name: :description,
           label: label(:description),
           input_width: :large,
-          rich_text_options: { showAttachments: false }
+          rich_text_options: {
+            macros: :none,
+            showAttachments: false
+          }
         )
 
         subject_form.check_box(

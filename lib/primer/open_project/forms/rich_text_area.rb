@@ -6,6 +6,7 @@ module Primer
       # :nodoc:
       class RichTextArea < Primer::Forms::BaseComponent
         include AngularHelper
+        prepend WrappedInput
 
         delegate :builder, :form, to: :@input
 
