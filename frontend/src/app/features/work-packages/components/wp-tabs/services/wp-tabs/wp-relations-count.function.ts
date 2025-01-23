@@ -14,7 +14,8 @@ export function workPackageRelationsCount(
   const turboRequests = injector.get(TurboRequestsService);
   const wpRelations = injector.get(WorkPackageRelationsService);
   const wpId = workPackage.id!.toString();
-
+  // It is an intermediate solution, until the API can return all relations
+  // in the long term, the tabs are going to be the same as in the notifications
   const url = pathHelper.workPackageGetRelationsCounterPath(wpId.toString());
   const updateTrigger$ = new Subject<void>();
 
