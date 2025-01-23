@@ -90,12 +90,12 @@ module API
 
         date_time_property :start_time,
                            exec_context: :decorator,
-                           getter: ->(*) { represented.start_timestamp },
+                           getter: ->(*) { datetime_formatter.format_datetime(represented.start_timestamp) },
                            if: ->(*) { TimeEntry.can_track_start_and_end_time? }
 
         date_time_property :end_time,
                            exec_context: :decorator,
-                           getter: ->(*) { represented.end_timestamp },
+                           getter: ->(*) { datetime_formatter.format_datetime(represented.end_timestamp) },
                            if: ->(*) { TimeEntry.can_track_start_and_end_time? }
 
         date_time_property :created_at
@@ -137,6 +137,20 @@ module API
           represented.hours = datetime_formatter.parse_duration_to_hours(value,
                                                                          "hours",
                                                                          allow_nil: true)
+        end
+
+        def start_time=(value) # rubocop:disable Metrics/AbcSize
+          ts = datetime_formatter.parse_datetime(value, "start_time", allow_nil: true)
+
+          if ts.nil?
+            represented.start_timestamp = nil
+          elsif ts.to_date != represented.spent_on
+            raise API::Errors::Validation.new("start_time",
+                                              I18n.t("api_v3.errors.validation.start_time_different_date",
+                                                     spent_on: represented.spent_on, start_time: ts.to_date))
+          else
+            represented.start_time = ts.strftime("%H:%M")
+          end
         end
 
         self.to_eager_load = [:work_package,
