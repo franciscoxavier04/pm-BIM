@@ -33,7 +33,6 @@ RSpec.describe "Primerized work package relations tab",
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project) }
-  shared_let(:admin) { create(:admin) }
   shared_let(:user) do
     create(:user,
            member_with_permissions: {

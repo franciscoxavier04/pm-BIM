@@ -20,7 +20,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
 
   delegate :work_package,
            :visible_children,
-           :invisible_children,
+           :ghost_children,
            :directionally_aware_grouped_relations,
            :any_relations?,
            :any_children?,
@@ -34,7 +34,6 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     super()
 
     @relations_mediator = WorkPackageRelationsTab::RelationsMediator.new(work_package:)
-
     @relation_to_scroll_to = relation_to_scroll_to
   end
 

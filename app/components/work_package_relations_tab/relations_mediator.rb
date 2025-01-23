@@ -29,7 +29,7 @@
 #++
 
 class WorkPackageRelationsTab::RelationsMediator
-  RelationGroup = Data.define(:type, :visible_relations, :invisible_relations)
+  RelationGroup = Data.define(:type, :visible_relations, :ghost_relations)
 
   attr_reader :work_package
 
@@ -45,12 +45,12 @@ class WorkPackageRelationsTab::RelationsMediator
     @visible_children ||= work_package.children.visible
   end
 
-  def invisible_relations
-    @invisible_relations = work_package.relations.includes(:to, :from).where.not(id: @visible_relations.select(:id))
+  def ghost_relations
+    @ghost_relations = work_package.relations.includes(:to, :from).where.not(id: @visible_relations.select(:id))
   end
 
-  def invisible_children
-    @invisible_children ||= work_package.children.where.not(id: @visible_children.select(:id))
+  def ghost_children
+    @ghost_children ||= work_package.children.where.not(id: @visible_children.select(:id))
   end
 
   def directionally_aware_grouped_relations
@@ -62,27 +62,27 @@ class WorkPackageRelationsTab::RelationsMediator
       RelationGroup.new(
         type: type,
         visible_relations: filter_relations_by_type(visible_relations, type),
-        invisible_relations: filter_relations_by_type(invisible_relations, type)
+        ghost_relations: filter_relations_by_type(ghost_relations, type)
       )
     end
   end
 
   def any_relations?
-    visible_relations.any? || invisible_relations.any? || visible_children.any? || invisible_children.any?
+    visible_relations.any? || ghost_relations.any? || visible_children.any? || ghost_children.any?
   end
 
   def all_relations_count
-    visible_relations.count + invisible_relations.count + visible_children.count + invisible_children.count
+    visible_relations.count + ghost_relations.count + visible_children.count + ghost_children.count
   end
 
   def any_children?
-    visible_children.any? || invisible_children.any?
+    visible_children.any? || ghost_children.any?
   end
 
   private
 
   def collect_all_relation_types
-    (visible_relations + invisible_relations).map do |relation|
+    (visible_relations + ghost_relations).map do |relation|
       relation.relation_type_for(work_package)
     end.uniq
   end
