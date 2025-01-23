@@ -46,12 +46,12 @@ module OpenProject
       if user.is_a?(User) && user.locked?
         user.name
       elsif user.is_a?(User)
+        only_path = options.delete(:only_path) { true }
         name = user.name
-        href = user_url(user,
-                        only_path: options.delete(:only_path) { true })
+        href = user_url(user, only_path:)
         options[:title] ||= I18n.t(:label_user_named, name:)
 
-        add_hover_card_options(user, options, clazz_key: :class)
+        add_hover_card_options(user, options, only_path:, clazz_key: :class)
 
         link_to(name, href, options)
       else
@@ -146,13 +146,13 @@ module OpenProject
     private
 
     # TODO: doc comment
-    def add_hover_card_options(user, options, clazz_key: :classes)
+    def add_hover_card_options(user, options, only_path: true, clazz_key: :classes)
       if options.delete(:hover_card) { true }
         options[clazz_key] = [options[clazz_key], "op-hover-card--preview-trigger"].compact.join(" ")
         options[:data] ||= {}
-        # This method is called from components that do not have direct access to the routes, so we make the call to
-        # the path helpers explicit:
-        options[:data][:hover_card_url] = Rails.application.routes.url_helpers.hover_card_user_path(user)
+
+        hover_card_url = hover_card_user_url(user, only_path:)
+        options[:data][:hover_card_url] = hover_card_url
       end
 
       options
