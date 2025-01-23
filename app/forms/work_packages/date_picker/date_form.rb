@@ -61,7 +61,7 @@ module WorkPackages
         @work_package = work_package
         @schedule_manually = schedule_manually
         @is_milestone = is_milestone
-        @focused_field = update_focused_field
+        @focused_field = update_focused_field(focused_field)
         @touched_field_map = touched_field_map
         @disabled = disabled
       end
@@ -145,19 +145,22 @@ module WorkPackages
         name == :duration
       end
 
-      def update_focused_field
-        return @focused_field if @focused_field == :duration
+      def update_focused_field(focused_field)
+        return :start_date if focused_field.nil?
 
-        if @focused_field.nil?
-          @focused_field = :start_date
-        end
-
-        opposite_field = @focused_field == :start_date ? :due_date : :start_date
-
-        if field_value(@focused_field).present? && field_value(opposite_field).nil?
-          opposite_field
+        case focused_field.to_s.underscore
+        when "combined_date"
+          if field_value(:start_date).present? && field_value(:due_date).nil?
+            :due_date
+          else
+            :start_date
+          end
+        when "due_date"
+          :due_date
+        when "duration"
+          :duration
         else
-          @focused_field
+          :start_date
         end
       end
 
