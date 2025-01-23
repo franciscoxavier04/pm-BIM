@@ -619,7 +619,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
 
   describe "filtering for lifecycle" do
     shared_let(:stage) do
-      create(:project_stage, project:, start_date: Time.zone.today + 5.days, end_date: Time.zone.today + 10.days)
+      create(:project_stage, project:, start_date: Time.zone.today - 5.days, end_date: Time.zone.today + 10.days)
     end
     shared_let(:gate) { create(:project_gate, project: public_project, date: Time.zone.today + 8.days) }
 
@@ -645,6 +645,10 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           projects_page.set_filter("any_stage_or_gate", "Any stage or gate", "on", [Time.zone.today + 8.days])
 
           projects_page.expect_projects_in_order(project, public_project)
+
+          projects_page.set_filter("any_stage_or_gate", "Any stage or gate", "today")
+
+          projects_page.expect_projects_in_order(project)
         end
       end
 

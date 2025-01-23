@@ -27,16 +27,17 @@
 # ++
 
 class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filters::Base
+  include Queries::Operators::DateRangeClauses
+
   def type
     :date
   end
 
   def available_operators
-    [::Queries::Operators::OnDate]
-  end
-
-  def default_operator
-    ::Queries::Operators::OnDate
+    [
+      ::Queries::Operators::Today,
+      ::Queries::Operators::OnDate
+    ]
   end
 
   def available?
@@ -51,8 +52,13 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   def where
     case operator
     when "=d"
-      stage_where
-        .or(gate_where)
+      stage_where(parsed_start)
+        .or(gate_where(parsed_end))
+        .arel
+        .exists
+    when "t"
+      stage_where(today)
+        .or(gate_where(today))
         .arel
         .exists
     else
@@ -60,22 +66,35 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     end
   end
 
-  def stage_where
-    date = Date.parse(values.first)
-
+  def stage_where(start_date, end_date = start_date)
     Project::LifeCycleStep
       .where("project_id = #{Project.table_name}.id")
       .where(type: Project::Stage.name)
-      .where("start_date <= ? AND end_date >= ?", date, date)
+      .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", nil, start_date))
+      .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", end_date, nil))
   end
 
-  def gate_where
+  def gate_where(date)
     # On gates, only the start_date is set.
-    date = Date.parse(values.first)
-
     Project::LifeCycleStep
       .where("project_id = #{Project.table_name}.id")
       .where(type: Project::Gate.name)
-      .where(start_date: date)
+      .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", date, date))
+  end
+
+  def parsed_start
+    Date.parse(values.first)
+  end
+
+  def parsed_end
+    Date.parse(values.last)
+  end
+
+  def today
+    Time.zone.today
+  end
+
+  def connection
+    ActiveRecord::Base.connection
   end
 end
