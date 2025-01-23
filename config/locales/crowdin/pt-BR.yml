@@ -248,6 +248,7 @@ pt-BR:
     confirm_destroy_option: "Removendo uma opção removerá todas as suas ocorrências (ex. em pacotes de trabalho). Tem certeza que você quer removê-la?"
     reorder_alphabetical: "Reorganizar valores em ordem alfabética"
     reorder_confirmation: "Aviso: A ordem atual dos valores disponíveis será perdida. Continuar?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Marcar o campo personalizado como obrigatório. Isto tornará obrigatório o preenchimento do campo ao criar novos recursos ou ao atualizar recursos existentes."
       is_required_for_project: "Marque esta opção para ativar este atributo e torná-lo obrigatório em todos os projetos. Este atributo não pode ser desativado em projetos individuais."
@@ -673,7 +674,6 @@ pt-BR:
     label_add_description: "Adicionar descrição"
     lag:
       subject: "Atraso"
-      title: "Atraso (em dias)"
       caption: "O número mínimo de dias úteis a ser mantido entre os dois pacotes de trabalho."
     relations:
       label_new_child_created: "Novo pacote de trabalho criado e adicionado como subpacote"
@@ -1775,6 +1775,9 @@ pt-BR:
       hour:
         one: "hora"
         other: "hora"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Ativo?"
   description_attachment_toggle: "Mostrar/Ocultar anexos"
   description_autocomplete: >

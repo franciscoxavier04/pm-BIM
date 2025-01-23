@@ -248,6 +248,7 @@ ru:
     confirm_destroy_option: "Удаление опции приведет к удалению всех ее вхождений (например, в пакеты работ). Вы уверены, что вы хотите удалить ее?"
     reorder_alphabetical: "Переупорядочить значения по алфавиту"
     reorder_confirmation: "Внимание: Текущий порядок доступных значений будет утерян. Продолжить?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Пометить пользовательское поле как обязательное. Это сделает заполнение поля обязательным при создании новых или обновлении существующих ресурсов."
       is_required_for_project: "Установите флажок, чтобы включить этот атрибут и сделать его обязательным для всех проектов. Он не может быть отключен для отдельных проектов."
@@ -693,7 +694,6 @@ ru:
     label_add_description: "Добавить описание"
     lag:
       subject: "Отставание"
-      title: "Отставание (в днях)"
       caption: "Минимальное количество рабочих дней, которое должно быть между двумя пакетами работ."
     relations:
       label_new_child_created: "Новый пакет работ создан и добавлен как дочерний"
@@ -1851,6 +1851,11 @@ ru:
         few: "час"
         many: "час"
         other: "час"
+      day:
+        one: "day"
+        few: "days"
+        many: "days"
+        other: "days"
   description_active: "Активно?"
   description_attachment_toggle: "Показать/скрыть вложения"
   description_autocomplete: >

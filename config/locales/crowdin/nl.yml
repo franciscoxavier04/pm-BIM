@@ -246,6 +246,7 @@ nl:
     confirm_destroy_option: "Het verwijderen van een optie zal alle voorkomingen verwijderen. Weet u zeker dat u deze optie wilt verwijderen?"
     reorder_alphabetical: "Rangschik waarden alfabetisch"
     reorder_confirmation: "Waarschuwing: De huidige volgorde van beschikbare waarden zal verloren gaan. Doorgaan?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Vink aan om dit attribuut te activeren en het in alle projecten vereist te maken. Het kan niet worden gedeactiveerd voor individuele projecten."
@@ -673,7 +674,6 @@ nl:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1775,6 +1775,9 @@ nl:
       hour:
         one: "uur"
         other: "uren"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Actief?"
   description_attachment_toggle: "Bijlagen weergeven/verbergen"
   description_autocomplete: >

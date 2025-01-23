@@ -247,6 +247,7 @@ pt-PT:
     confirm_destroy_option: "Apagar uma opção irá apagar todas as suas ocorrências (ex. em pacotes de trabalho). Tem certeza que quer apagá-la?"
     reorder_alphabetical: "Reordenar valores em ordem alfabética"
     reorder_confirmation: "Aviso: A ordem atual de valores disponíveis será perdida. Continuar?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Marque o campo personalizado como obrigatório. Isto tornará obrigatório o preenchimento do campo ao criar novos recursos ou ao atualizar recursos existentes."
       is_required_for_project: "Selecione para ativar este atributo e torná-lo obrigatório em todos os projetos. Não pode ser desativado para projetos individuais."
@@ -673,7 +674,6 @@ pt-PT:
     label_add_description: "Adicionar descrição"
     lag:
       subject: "Desfasamento"
-      title: "Desfasamento (em dias)"
       caption: "O número mínimo de dias úteis a manter entre os dois pacotes de trabalho."
     relations:
       label_new_child_created: "Novo pacote de trabalho criado e adicionado como um elemento secundário"
@@ -1775,6 +1775,9 @@ pt-PT:
       hour:
         one: "hora"
         other: "horas"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Ativo?"
   description_attachment_toggle: "Mostrar/ocultar anexos"
   description_autocomplete: >

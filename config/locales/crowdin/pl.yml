@@ -246,6 +246,7 @@ pl:
     confirm_destroy_option: "Usunięcie tej opcji spowoduje usunięcie wszystkich powiązanych wystąpień (np. w Work Package). Czy na pewno chcesz to usunąć?"
     reorder_alphabetical: "Ustaw kolejność wartości alfabetycznie"
     reorder_confirmation: "Ostrzeżenie: Bieżąca kolejność dostępnych wartości zostanie utracona. Kontynuować?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Oznacz pole niestandardowe jako wymagane. To spowoduje obowiązkowe wypełnianie pola podczas tworzenia nowych lub aktualizacji istniejących zasobów."
       is_required_for_project: "Zaznacz, aby włączyć ten atrybut i uczynić go wymaganym we wszystkich projektach. Nie można go wyłączyć dla poszczególnych projektów."
@@ -691,7 +692,6 @@ pl:
     label_add_description: "Dodaj opis"
     lag:
       subject: "Opóźnienie"
-      title: "Opóźnienie (w dniach)"
       caption: "Minimalna liczba dni roboczych wymagana między dwoma pakietami roboczymi."
     relations:
       label_new_child_created: "Nowy pakiet roboczy utworzono i dodano jako element podrzędny"
@@ -1849,6 +1849,11 @@ pl:
         few: "godzin"
         many: "godzin"
         other: "godzin"
+      day:
+        one: "day"
+        few: "days"
+        many: "days"
+        other: "days"
   description_active: "Aktywne?"
   description_attachment_toggle: "Pokaż/Ukryj załączniki"
   description_autocomplete: >

@@ -246,6 +246,7 @@ zh-CN:
     confirm_destroy_option: "删除某个选项将会删除其所有实例 (例如, 在工作包中)。确定要删除？"
     reorder_alphabetical: "按字母顺序重新排序"
     reorder_confirmation: "警告：可用值的当前顺序将丢失。是否继续？"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "将自定义字段标记为必填项。这将使在创建新资源或更新现有资源时，填写该字段成为强制要求。"
       is_required_for_project: "选中可启用此属性，并使其成为所有项目的必选项。单个项目不能停用该属性。"
@@ -663,7 +664,6 @@ zh-CN:
     label_add_description: "添加说明"
     lag:
       subject: "间隔"
-      title: "间隔(天数)"
       caption: "两个工作包之间的最低工作日数。"
     relations:
       label_new_child_created: "创建新工作包并将其添加为子项"
@@ -1737,6 +1737,8 @@ zh-CN:
     units:
       hour:
         other: "小时"
+      day:
+        other: "days"
   description_active: "激活？"
   description_attachment_toggle: "显示/隐藏附件"
   description_autocomplete: >
@@ -2587,7 +2589,7 @@ zh-CN:
   label_relation: "关系"
   label_relation_actions: "关联操作"
   label_relation_delete: "删除关系"
-  label_relation_edit: "Edit relation"
+  label_relation_edit: "编辑关系"
   label_relation_new: "新的关系"
   label_release_notes: "更新日志"
   label_remaining_work: "剩余工时"

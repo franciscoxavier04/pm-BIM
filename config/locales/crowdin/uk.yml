@@ -244,6 +244,7 @@ uk:
     confirm_destroy_option: "Видалення опції призведе до видалення всіх його подій (наприклад, у робочих пакетах). Дійсно видалити його?"
     reorder_alphabetical: "Перевпорядкувати значення за алфавітом"
     reorder_confirmation: "Увага! Поточний порядок доступних значень буде втрачено. Продовжити?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Позначте користувацьке поле як обов’язкове. Так його потрібно буде заповнювати під час створення нових або оновлення наявних ресурсів."
       is_required_for_project: "Установіть прапорець, щоб увімкнути цей атрибут і зробити його обов’язковим в усіх проєктах. Його не можна деактивувати для окремих проєктів."
@@ -687,7 +688,6 @@ uk:
     label_add_description: "Додати опис"
     lag:
       subject: "Затримка"
-      title: "Затримка (у днях)"
       caption: "Мінімальна кількість робочих днів між двома пакетами робіт."
     relations:
       label_new_child_created: "Новий пакет робіт створено й додано як дочірній"
@@ -1845,6 +1845,11 @@ uk:
         few: "годин(и)"
         many: "годин(и)"
         other: "годин(и)"
+      day:
+        one: "day"
+        few: "days"
+        many: "days"
+        other: "days"
   description_active: "Активний?"
   description_attachment_toggle: "Показати/приховати вкладення"
   description_autocomplete: >
