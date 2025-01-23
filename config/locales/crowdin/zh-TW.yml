@@ -248,6 +248,7 @@ zh-TW:
     confirm_destroy_option: "刪除一個項目將會一併刪除所有出現這個項目的地方 (例如：在工作項目中)。你確定要刪除它嗎？"
     reorder_alphabetical: "按字母順序重新排列"
     reorder_confirmation: "警告：目前可用值的順序將會遺失。繼續嗎？"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "將此欄位定義成必填。\n"
       is_required_for_project: "勾選以啟用此屬性，並使其成為所有專案的必要屬性。個別專案無法停用。"
@@ -665,7 +666,6 @@ zh-TW:
     label_add_description: "新增說明"
     lag:
       subject: "延遲"
-      title: "延遲（天數）"
       caption: "兩個工作項目之間最少要相隔多少個工作天。"
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1739,6 +1739,8 @@ zh-TW:
     units:
       hour:
         other: "小時"
+      day:
+        other: "days"
   description_active: "啟用？"
   description_attachment_toggle: "顯示/隱藏附件"
   description_autocomplete: >
@@ -2589,6 +2591,7 @@ zh-TW:
   label_relation: "關聯"
   label_relation_actions: "關聯動作"
   label_relation_delete: "刪除關聯"
+  label_relation_edit: "Edit relation"
   label_relation_new: "新增關聯"
   label_release_notes: "發行說明"
   label_remaining_work: "剩餘工作"

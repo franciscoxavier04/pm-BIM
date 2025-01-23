@@ -48,9 +48,9 @@ ja:
       time_entry:
         project: Project
         user: User
-        work_package: Work package
+        work_package: ワークパッケージ
         hours: ' 時間'
-        comments: Comment
+        comments: コメント
         activity: 活動
         spent_on: 日付
         start_time: Start time

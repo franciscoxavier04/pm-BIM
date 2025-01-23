@@ -249,6 +249,7 @@ tr:
     confirm_destroy_option: "Bir seçeneğin silinmesi, kullanıldığı her yerden (örneğin iş paketleri) silinmesine neden olur. Silmek istediğinizden emin misiniz?"
     reorder_alphabetical: "Değerleri alfabetik olarak yeniden sıralayın"
     reorder_confirmation: "Uyarı: Mevcut değerlerin sırası kaybolacak. Devam et?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Bu özelliği etkinleştirmek ve tüm projelerde gerekli kılmak için işaretleyin. Tek tek projeler için devre dışı bırakılamaz."
@@ -675,7 +676,6 @@ tr:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1777,6 +1777,9 @@ tr:
       hour:
         one: "saat"
         other: "saat"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Aktif?"
   description_attachment_toggle: "Ekleri göster/gizle"
   description_autocomplete: >
@@ -2627,6 +2630,7 @@ tr:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "İlişkiyi sil"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Yeni ilişki"
   label_release_notes: "Sürüm notları"
   label_remaining_work: "Kalan çalışma"

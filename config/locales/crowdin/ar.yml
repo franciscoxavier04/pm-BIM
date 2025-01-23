@@ -249,6 +249,7 @@ ar:
     confirm_destroy_option: "Deleting an option will delete all of its occurrences (e.g. in work packages). Are you sure you want to delete it?"
     reorder_alphabetical: "Reorder values alphabetically"
     reorder_confirmation: "Warning: The current order of available values will be lost. Continue?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
@@ -712,7 +713,6 @@ ar:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1926,6 +1926,13 @@ ar:
         few: "ساعه"
         many: "ساعه"
         other: "ساعه"
+      day:
+        zero: "days"
+        one: "day"
+        two: "days"
+        few: "days"
+        many: "days"
+        other: "days"
   description_active: "نشط؟"
   description_attachment_toggle: "إظهار/إخفاء المرفقات"
   description_autocomplete: >
@@ -2776,6 +2783,7 @@ ar:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "حذف علاقة"
+  label_relation_edit: "Edit relation"
   label_relation_new: "علاقة جديدة"
   label_release_notes: "ملاحظات الإصدار"
   label_remaining_work: "Remaining work"

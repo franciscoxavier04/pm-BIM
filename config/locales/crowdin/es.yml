@@ -246,6 +246,7 @@ es:
     confirm_destroy_option: "Al eliminar una opción, se eliminarán todas las repeticiones (por ejemplo, en paquetes de trabajo). ¿Está seguro de que desea eliminarla?"
     reorder_alphabetical: "Ordenar los valores alfabéticamente"
     reorder_confirmation: "Advertencia: Se perderá el orden actual de los valores disponibles. ¿Quiere continuar?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Marcar el campo personalizado como necesario. Esto hará obligatorio rellenar el campo cuando se creen nuevos o se actualicen los recursos existentes."
       is_required_for_project: "Marque esta casilla para activar este atributo y hacerlo obligatorio en todos los proyectos. No puede desactivarse para proyectos individuales."
@@ -673,7 +674,6 @@ es:
     label_add_description: "Añadir descripción"
     lag:
       subject: "Retraso"
-      title: "Retraso (en días)"
       caption: "El número mínimo de días laborables que debe haber entre los dos paquetes de trabajo."
     relations:
       label_new_child_created: "Nuevo paquete de trabajo creado y añadido como elemento secundario"
@@ -1775,6 +1775,9 @@ es:
       hour:
         one: "una hora"
         other: "hora"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Activo?"
   description_attachment_toggle: "Mostrar/ocultar archivos adjuntos"
   description_autocomplete: >
@@ -2625,6 +2628,7 @@ es:
   label_relation: "Relación"
   label_relation_actions: "Acciones de relación"
   label_relation_delete: "Eliminar relación"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nueva relación"
   label_release_notes: "Notas de lanzamiento"
   label_remaining_work: "Trabajo restante"

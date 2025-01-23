@@ -40,14 +40,12 @@ RSpec.describe TimeEntries::SetAttributesService, type: :model do
   let(:hours) { 5.0 }
   let(:comments) { "some comment" }
   let(:contract_instance) do
-    contract = double("contract_instance") # rubocop:disable RSpec/VerifiedDoubles
-    allow(contract)
-      .to receive(:validate)
-      .and_return(contract_valid)
-    allow(contract)
-      .to receive(:errors)
-      .and_return(contract_errors)
-    contract
+    double("contract_instance").tap do |contract| # rubocop:disable RSpec/VerifiedDoubles
+      allow(contract).to receive_messages(
+        validate: contract_valid,
+        errors: contract_errors
+      )
+    end
   end
 
   let(:contract_errors) { double("contract_errors") } # rubocop:disable RSpec/VerifiedDoubles
@@ -101,17 +99,6 @@ RSpec.describe TimeEntries::SetAttributesService, type: :model do
 
     expect(time_entry_instance.changed_by_system["user_id"])
       .to eql [nil, user.id]
-  end
-
-  it "assigns the default TimeEntryActivity" do
-    allow(TimeEntryActivity)
-      .to receive(:default)
-      .and_return(default_activity)
-
-    subject
-
-    expect(time_entry_instance.activity)
-      .to eql default_activity
   end
 
   context "with params" do

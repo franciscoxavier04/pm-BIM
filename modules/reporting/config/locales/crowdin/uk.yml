@@ -93,6 +93,8 @@ uk:
       time: "Час"
     cost_reports:
       title: "Експорт звітів про витрати у форматі XLS"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "Вибрані стовпці"

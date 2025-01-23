@@ -93,6 +93,8 @@ lt:
       time: "Time"
     cost_reports:
       title: "Jūsų kainos ataskaitų XLS eksportas"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "Pasirinkti stulpeliai"

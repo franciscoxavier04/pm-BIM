@@ -246,6 +246,7 @@ de:
     confirm_destroy_option: "Löschen eines Werts entfernt alle bereits gesetzten Werte (z.B. bei Arbeitspaketen). Sind Sie sicher, dass Sie den Wert löschen möchten?"
     reorder_alphabetical: "Alphabetisch umsortieren"
     reorder_confirmation: "Warnung: Die aktuelle Reihenfolge der verfügbaren Werte geht verloren. Fortfahren?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Markieren Sie das benutzerdefinierte Feld als erforderlich. Dies macht es zwingend erforderlich, das Feld auszufüllen, wenn neue oder aktualisierte Ressourcen erstellt werden."
       is_required_for_project: "Das Attribut in allen Projekten erforderlich machen. Es kann dann nicht für einzelne Projekte deaktiviert werden."
@@ -669,7 +670,6 @@ de:
     label_add_description: "Beschreibung hinzufügen"
     lag:
       subject: "Verzögerung"
-      title: "Verzögerung (in Tagen)"
       caption: "Die minimale Anzahl von Arbeitstagen zwischen den zwei Arbeitspaketen."
     relations:
       label_new_child_created: "Neues Arbeitspaket erstellt und als Kind hinzugefügt"
@@ -1771,6 +1771,9 @@ de:
       hour:
         one: "Stunde"
         other: "Stunde"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Aktiv?"
   description_attachment_toggle: "Dateien ein-/ausblenden"
   description_autocomplete: >
@@ -2621,6 +2624,7 @@ de:
   label_relation: "Beziehung"
   label_relation_actions: "Beziehungsaktionen"
   label_relation_delete: "Beziehung löschen"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Neue Beziehung"
   label_release_notes: "Release Notes"
   label_remaining_work: "Verbleibender Aufwand"

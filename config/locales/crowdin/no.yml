@@ -249,6 +249,7 @@
     confirm_destroy_option: "Sletting av et alternativ vil slette alle forekomster (f.eks i arbeidspakker). Er du sikker på at du vil slette den?"
     reorder_alphabetical: "Omorganiser verdier alfabetisk"
     reorder_confirmation: "Advarsel: Gjeldende rekkefølge for tilgjengelige verdier vil gå tapt. Vil du fortsette?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Marker det egendefinerte feltet som påkrevd. Dette vil gjøre det obligatorisk å fylle ut feltet når du oppretter nye eller oppdaterer eksisterende ressurser."
       is_required_for_project: "Marker for å aktivere denne attributten og gjøre den påkrevd i alle prosjekter. Det kan ikke deaktiveres for enkeltprosjekter."
@@ -675,7 +676,6 @@
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1777,6 +1777,9 @@
       hour:
         one: "time"
         other: " timer"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Aktiv?"
   description_attachment_toggle: "Vis/Skjul vedlegg"
   description_autocomplete: >
@@ -2627,6 +2630,7 @@
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Slett relasjon"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Ny relasjon"
   label_release_notes: "Utgivelsesnotater"
   label_remaining_work: "Gjenstående arbeid"

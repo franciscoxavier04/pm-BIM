@@ -249,6 +249,7 @@ cs:
     confirm_destroy_option: "Smazáním možnosti smažete všechny výskyty (např. v pracovních balíčcích). Opravdu ji chcete odstranit?"
     reorder_alphabetical: "Změnit pořadí abecedně"
     reorder_confirmation: "Varování: Aktuální pořadí dostupných hodnot bude ztraceno. Pokračovat?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Označit vlastní pole jako povinné. Bude povinné vyplnit pole při vytváření nových nebo aktualizaci existujících zdrojů."
       is_required_for_project: "Zaškrtnutím tento atribut povolíte a bude vyžadován ve všech projektech. U jednotlivých projektů jej nelze zrušit."
@@ -694,7 +695,6 @@ cs:
     label_add_description: "Přidat popis"
     lag:
       subject: "Zpožďování"
-      title: "Zpoždění (ve dnech)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1852,6 +1852,11 @@ cs:
         few: "hodiny"
         many: "hodiny"
         other: "hodiny"
+      day:
+        one: "day"
+        few: "days"
+        many: "days"
+        other: "days"
   description_active: "Aktivní?"
   description_attachment_toggle: "Zobrazit/skrýt přílohy"
   description_autocomplete: >
@@ -2702,6 +2707,7 @@ cs:
   label_relation: "Vztah"
   label_relation_actions: "akce k Vztahu"
   label_relation_delete: "Odstranit vztah"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nový vztah"
   label_release_notes: "Poznámky k verzi"
   label_remaining_work: "Zbývající práce"

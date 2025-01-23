@@ -249,6 +249,7 @@ fr:
     confirm_destroy_option: "Supprimer une option supprimera toutes ses occurrences (ex. dans les plans de travail). Êtes-vous sûr de vouloir le supprimer ?"
     reorder_alphabetical: "Réorganiser les valeurs par ordre alphabétique"
     reorder_confirmation: "Attention : l'ordre actuel des valeurs disponibles sera perdu. Continuer ?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Marquer le champ personnalisé comme requis. Cela rendra obligatoire de remplir le champ lors de la création ou de la mise à jour des ressources existantes."
       is_required_for_project: "Cocher pour activer cet attribut et le rendre nécessaire dans tous les projets. Il ne peut pas être désactivé pour certains projets."
@@ -674,7 +675,6 @@ fr:
     label_add_description: "Ajouter une description"
     lag:
       subject: "Délai"
-      title: "Délai (en jours)"
       caption: "Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux."
     relations:
       label_new_child_created: "Nouveau lot de travaux créé et ajouté en tant qu'enfant"
@@ -1776,6 +1776,9 @@ fr:
       hour:
         one: "heure"
         other: "heures"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Actif ?"
   description_attachment_toggle: "Afficher/Masquer les pièces jointes"
   description_autocomplete: >
@@ -2626,6 +2629,7 @@ fr:
   label_relation: "Relation"
   label_relation_actions: "Actions de relation"
   label_relation_delete: "Supprimer la relation"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nouvelle relation"
   label_release_notes: "Notes de version"
   label_remaining_work: "Travail restant"

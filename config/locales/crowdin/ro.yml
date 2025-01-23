@@ -249,6 +249,7 @@ ro:
     confirm_destroy_option: "Ștergerea unei opțiuni va șterge toate aparițiile acesteia (de exemplu, în pachetele de lucru). Sunteți sigur că doriți să o ștergeți?"
     reorder_alphabetical: "Reordonează valorile alfabetic"
     reorder_confirmation: "Avertisment: Ordinea curentă a valorilor disponibile se va pierde. Continuați?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Bifează pentru a activa acest atribut și a-l face obligatoriu în toate proiectele. Nu poate fi dezactivat pentru proiecte individuale."
@@ -685,7 +686,6 @@ ro:
     label_add_description: "Adaugă descriere"
     lag:
       subject: "Întârziere"
-      title: "Întârziere (în zile)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1815,6 +1815,10 @@ ro:
         one: "oră"
         few: "ore"
         other: "ore"
+      day:
+        one: "day"
+        few: "days"
+        other: "days"
   description_active: "Activ?"
   description_attachment_toggle: "Afișare/Ascundere atașamente"
   description_autocomplete: >
@@ -2665,6 +2669,7 @@ ro:
   label_relation: "Relație"
   label_relation_actions: "Acțiuni relație"
   label_relation_delete: "Ștergere relație"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Relație nouă"
   label_release_notes: "Note privind lansarea noii versiuni"
   label_remaining_work: "Muncă rămasă"

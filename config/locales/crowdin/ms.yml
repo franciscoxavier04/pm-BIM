@@ -248,6 +248,7 @@ ms:
     confirm_destroy_option: "Padamkan satu pilihan akan memadamkan semua kejadian yang berkaitan dengannya (cth. dalam pakej kerja). Adakah anda pasti anda ingin memadamkannya?"
     reorder_alphabetical: "Susun semula nilai mengikut abjad"
     reorder_confirmation: "Amaran: Susunan semasa nilai yang sedia ada akan hilang. Teruskan?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Tandakan ruang yang tersuai seperti yang diperlukan. Ini akan buatkan ia wajib untuk isikan ruang tersebut apabila membuat sumber yang baharu atau kemas kini sumber sedia ada."
       is_required_for_project: "Semak untuk mendayakan atribut ini dan jadikan ia diperlukan dalam semua projek. Ia tidak boleh dinyahaktifkan untuk projek individu."
@@ -665,7 +666,6 @@ ms:
     label_add_description: "Tambah penerangan"
     lag:
       subject: "Lag"
-      title: "Lag (dalam hari)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1739,6 +1739,8 @@ ms:
     units:
       hour:
         other: "jam"
+      day:
+        other: "days"
   description_active: "Aktif?"
   description_attachment_toggle: "Paparkan/Sembunyikan lampiran"
   description_autocomplete: >
@@ -2589,6 +2591,7 @@ ms:
   label_relation: "Tindakan"
   label_relation_actions: "Tindakan perhubungan"
   label_relation_delete: "Hubungan terpadam"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Hubungan baharu"
   label_release_notes: "Nota keluaran"
   label_remaining_work: "Kerja berbaki"

@@ -251,6 +251,7 @@ vi:
     confirm_destroy_option: "Xóa một tùy chọn sẽ xóa tất cả các sự kiện của nó (ví dụ như trong các gói công việc). Bạn có chắc bạn muốn xóa bỏ nó?"
     reorder_alphabetical: "Sắp xếp lại giá trị theo thứ tự bảng chữ cái"
     reorder_confirmation: "Cảnh báo: Thứ tự hiện tại của các giá trị sẽ bị mất. Tiếp tục?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Đánh dấu trường tùy chỉnh là bắt buộc. Điều này sẽ làm cho việc điền vào trường là bắt buộc khi tạo mới hoặc cập nhật tài nguyên hiện có."
       is_required_for_project: "Tích để bật thuộc tính này và yêu cầu nó trong tất cả các dự án. Không thể hủy kích hoạt nó cho từng dự án."
@@ -669,7 +670,6 @@ vi:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1743,6 +1743,8 @@ vi:
     units:
       hour:
         other: "hours"
+      day:
+        other: "days"
   description_active: "Đang hoạt động?"
   description_attachment_toggle: "Hiển thị/ẩn các đính kèm"
   description_autocomplete: >
@@ -2593,6 +2595,7 @@ vi:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Xóa quan hệ"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Quan hệ mới"
   label_release_notes: "Ghi chú phát hành"
   label_remaining_work: "Công việc còn lại"
