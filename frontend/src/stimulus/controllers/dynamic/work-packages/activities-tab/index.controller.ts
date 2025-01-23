@@ -651,7 +651,7 @@ export default class IndexController extends Controller {
   async onSubmit(event:Event | null = null) {
     if (this.saveInProgress === true) return;
 
-    this.formSubmitInProgress = true;
+    this.setFormSubmitInProgress(true);
 
     event?.preventDefault();
 
@@ -664,11 +664,11 @@ export default class IndexController extends Controller {
         console.error('Error saving activity:', error);
       })
       .finally(() => {
-        this.formSubmitInProgress = false;
+        this.setFormSubmitInProgress(false);
       });
   }
 
-  private set formSubmitInProgress(inProgress:boolean) {
+  private setFormSubmitInProgress(inProgress:boolean) {
     this.saveInProgress = inProgress;
 
     if (this.hasFormSubmitButtonTarget) {
@@ -722,7 +722,7 @@ export default class IndexController extends Controller {
       this.handleStemVisibility();
     }, 10);
 
-    this.formSubmitInProgress = false;
+    this.setFormSubmitInProgress(false);
   }
 
   private resetJournalsContainerMargins():void {
