@@ -39,6 +39,9 @@ module RecurringMeetings
       call.merge! create_meeting_template(recurring_meeting) if call.success?
       schedule_init_job(recurring_meeting) if call.success?
 
+      # Reload the meeting to ensure the template is loaded
+      call.result.reload
+
       call
     end
 
