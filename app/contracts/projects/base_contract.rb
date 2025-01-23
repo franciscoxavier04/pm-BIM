@@ -57,9 +57,7 @@ module Projects
 
     validate :validate_user_allowed_to_manage
 
-    def valid?(context = :saving_custom_fields)
-      super
-    end
+    def valid?(context = :saving_custom_fields) = super
 
     def assignable_parents
       Project
