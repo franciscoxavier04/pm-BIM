@@ -33,14 +33,15 @@ class ScheduledMeeting < ApplicationRecord
   belongs_to :recurring_meeting
 
   scope :upcoming, -> {
-    if instantiated
-      joins(:meeting).where("scheduled_meetings.start_time + (interval '1 hour' * meetings.duration) >= ?", Time.current)
+    if instantiated?
+      joins(:meeting)
+        .where("scheduled_meetings.start_time + (interval '1 hour' * meetings.duration) >= ?", Time.current)
     else
       where(start_time: Time.current..)
     end
   }
   scope :past, -> {
-    if instantiated
+    if instantiated?
       joins(:meeting)
         .where("scheduled_meetings.start_time + (interval '1 hour' * meetings.duration) < ?", Time.current)
     else
@@ -56,4 +57,8 @@ class ScheduledMeeting < ApplicationRecord
 
   validates_uniqueness_of :meeting, allow_nil: true
   validates_presence_of :start_time
+
+  def self.instantiated?
+    any?(&:meeting_id)
+  end
 end
