@@ -52,17 +52,47 @@ legal:
 localisation:
   localisationReady: true
   availableLanguages:
+    - af
+    - ar
+    - bg
+    - ca
+    - cs
+    - da
     - de
-    - fr
-    - co
+    - el
+    - en
+    - eo
     - es
-    - mm
-    - mn
+    - et
+    - fa
+    - fi
+    - fil
+    - fr
+    - hr
+    - hu
+    - id
+    - it
+    - ja
+    - ko
+    - lt
+    - ms
     - nl
-    - at
-    - gr
-    - se
-    - us
+    - no
+    - pl
+    - pt-BR
+    - pt-PT
+    - ro
+    - ru
+    - si
+    - sk
+    - sl
+    - sv
+    - th
+    - tr
+    - uk
+    - vi
+    - zh-CN
+    - zh-TW
 description:
   en:
     localisedName: OpenProject
