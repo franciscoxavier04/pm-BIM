@@ -36,6 +36,7 @@ module OpenIDConnect
     # client_id at an identity provider that OpenProject and the application have in common.
     class FetchService
       include Dry::Monads[:result]
+      include Dry::Monads::Do.for(:access_token_for, :refreshed_access_token_for)
 
       def initialize(user:,
                      jwt_parser: JwtParser.new(verify_audience: false, verify_expiration: false),
@@ -59,16 +60,10 @@ module OpenIDConnect
       # A token exchange is attempted, if the provider supports OAuth 2.0 Token Exchange and a token
       # for the target audience either can't be found or it has expired, but has no available refresh token.
       def access_token_for(audience:)
-        token = token_with_audience(audience)
-        token = token.bind do |t|
-          if expired?(t.access_token)
-            @token_refresh.call(t)
-          else
-            Success(t)
-          end
-        end
+        token = yield token_with_audience(audience)
+        token = yield @token_refresh.call(token) if expired?(token.access_token)
 
-        token.fmap(&:access_token)
+        Success(token.access_token)
       end
 
       ##
@@ -82,9 +77,9 @@ module OpenIDConnect
       # A token exchange is attempted, if the provider supports OAuth 2.0 Token Exchange and a token
       # for the target audience either can't be found or it has expired, but has no available refresh token.
       def refreshed_access_token_for(audience:)
-        token_with_audience(audience)
-          .bind { |t| @token_refresh.call(t) }
-          .fmap(&:access_token)
+        token = yield token_with_audience(audience)
+        token = yield @token_refresh.call(token)
+        Success(token.access_token)
       end
 
       private

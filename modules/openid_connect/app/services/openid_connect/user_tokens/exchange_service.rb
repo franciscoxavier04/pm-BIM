@@ -32,6 +32,7 @@ module OpenIDConnect
   module UserTokens
     class ExchangeService
       include Dry::Monads[:result]
+      include Dry::Monads::Do.for(:call)
 
       class Disabled
         class << self
@@ -50,19 +51,17 @@ module OpenIDConnect
       def call(audience)
         return Failure("Provider does not support token exchange") unless supported?
 
-        FetchService.new(user: @user, token_exchange: Disabled)
-                    .access_token_for(audience: UserToken::IDP_AUDIENCE)
-                    .bind do |idp_token|
-                      exchange_token_request(idp_token, audience).bind do |json|
-                        access_token = json["access_token"]
-                        refresh_token = json["refresh_token"]
-                        break Failure("Token exchange response invalid") if access_token.blank?
+        idp_token = yield FetchService.new(user: @user, token_exchange: Disabled)
+                            .access_token_for(audience: UserToken::IDP_AUDIENCE)
 
-                        token = store_exchanged_token(audience:, access_token:, refresh_token:)
+        json = yield exchange_token_request(idp_token, audience)
 
-                        Success(token)
-                      end
-                    end
+        access_token = json["access_token"]
+        refresh_token = json["refresh_token"]
+        return Failure("Token exchange response invalid") if access_token.blank?
+
+        token = store_exchanged_token(audience:, access_token:, refresh_token:)
+        Success(token)
       end
 
       def supported?

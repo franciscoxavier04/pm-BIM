@@ -32,6 +32,7 @@ module OpenIDConnect
   module UserTokens
     class RefreshService
       include Dry::Monads[:result]
+      include Dry::Monads::Do.for(:call)
 
       def initialize(user:, token_exchange:)
         @user = user
@@ -43,15 +44,15 @@ module OpenIDConnect
           return exchange_instead_of_refresh(token)
         end
 
-        refresh_token_request(token.refresh_token).bind do |json|
-          access_token = json["access_token"]
-          refresh_token = json["refresh_token"]
-          break Failure("Refresh token response invalid") if access_token.blank?
+        json = yield refresh_token_request(token.refresh_token)
 
-          token.update!(access_token:, refresh_token:)
+        access_token = json["access_token"]
+        refresh_token = json["refresh_token"]
+        return Failure("Refresh token response invalid") if access_token.blank?
 
-          Success(token)
-        end
+        token.update!(access_token:, refresh_token:)
+
+        Success(token)
       end
 
       private
