@@ -326,9 +326,6 @@ Style/ColonMethodCall:
 Style/CommentAnnotation:
   Enabled: false
 
-Style/PreferredHashMethods:
-  Enabled: false
-
 Style/Documentation:
   Enabled: false
 
@@ -340,6 +337,9 @@ Style/EachWithObject:
 
 Style/EmptyLiteral:
   Enabled: false
+
+Style/EndlessMethod:
+  Enabled: true
 
 Style/EvenOdd:
   Enabled: false
@@ -399,6 +399,9 @@ Style/PercentLiteralDelimiters:
   Enabled: false
 
 Style/PerlBackrefs:
+  Enabled: false
+
+Style/PreferredHashMethods:
   Enabled: false
 
 Style/Proc:
