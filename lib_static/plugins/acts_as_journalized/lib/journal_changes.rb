@@ -36,6 +36,7 @@ module JournalChanges
       get_data_changes,
       get_attachments_changes,
       get_custom_fields_changes,
+      get_project_life_cycle_steps_changes,
       get_file_links_changes,
       get_agenda_items_changes
     ].compact
@@ -85,6 +86,21 @@ module JournalChanges
     end
 
     customizable_changes
+  end
+
+  def get_project_life_cycle_steps_changes
+    return unless journable.respond_to?(:life_cycle_steps)
+
+    ::Acts::Journalized::Differ::Association.new(
+      predecessor,
+      self,
+      association: :project_life_cycle_step_journals,
+      id_attribute: :life_cycle_step_id
+    ).attributes_changes(
+      %i[start_date end_date active],
+      key_prefix: "project_life_cycle_step",
+      grouped: true
+    )
   end
 
   def get_file_links_changes
