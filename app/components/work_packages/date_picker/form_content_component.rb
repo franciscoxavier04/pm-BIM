@@ -48,7 +48,7 @@ module WorkPackages
         @show_date_form = show_date_form
         @work_package = work_package
         @schedule_manually = ActiveModel::Type::Boolean.new.cast(schedule_manually)
-        @focused_field = parse_focused_field(focused_field)
+        @focused_field = focused_field
         @touched_field_map = touched_field_map
       end
 
@@ -78,10 +78,6 @@ module WorkPackages
 
       def disabled_checkbox?
         !schedule_manually && work_package.children.any?
-      end
-
-      def parse_focused_field(focused_field)
-        %i[start_date due_date duration].include?(focused_field) ? focused_field : :start_date
       end
     end
   end

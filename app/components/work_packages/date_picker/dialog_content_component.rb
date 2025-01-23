@@ -86,6 +86,7 @@ module WorkPackages
       def show_banner?
         @schedule_manually || has_relations?
       end
+
       def has_relations?
         precedes_relations.any? || follows_relations.any? || children.any?
       end
