@@ -173,7 +173,8 @@ RSpec.describe "activity comments", :js, :selenium do
         activity_tab.expect_journal_notes(text: "Single ##{work_package2.id}")
         expect(page).to have_css(".work-packages-activities-tab-journals-item-component opce-macro-wp-quickinfo", count: 2)
         expect(page).to have_css(
-          ".work-packages-activities-tab-journals-item-component opce-macro-wp-quickinfo .op-hover-card--preview-trigger", count: 2
+          ".work-packages-activities-tab-journals-item-component opce-macro-wp-quickinfo .op-hover-card--preview-trigger",
+          count: 2
         )
       end
     end
