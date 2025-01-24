@@ -63,6 +63,7 @@ export default class PatternInputController extends Controller {
 
   connect() {
     this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
+    this.tagInvalidTokens();
   }
 
   // Input field events
