@@ -101,44 +101,6 @@ describe('DynamicFieldsService', () => {
         ],
       },
     };
-    const formSchema:IOPFormSchema = {
-      title: {
-        type: 'String',
-        name: 'Name',
-        required: true,
-        hasDefault: false,
-        writable: true,
-        minLength: 1,
-        maxLength: 255,
-        options: {},
-      },
-      parent: {
-        type: 'Project',
-        name: 'Subproject of',
-        required: false,
-        hasDefault: false,
-        writable: true,
-        location: '_links',
-        _links: {
-          allowedValues: {
-            href: '/api/v3/projects/available_parent_projects?of=25',
-          },
-        },
-      },
-      children: {
-        type: 'Project',
-        name: "Project's children",
-        required: false,
-        hasDefault: false,
-        writable: true,
-        _links: {
-          allowedValues: {
-            href: '/api/v3/projects/available_parent_projects?of=25',
-          },
-        },
-      },
-      _dependencies: [],
-    };
 
     // @ts-ignore
     const formModel = service.getModel(formPayload);
