@@ -73,6 +73,14 @@ module Components
         FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
       end
 
+      def journals_container_class_name
+        "work-packages-activities-tab-journals-index-component"
+      end
+
+      def within_journals_container(&)
+        page.within(".#{journals_container_class_name}", &)
+      end
+
       def within_journal_entry(journal, &)
         wait_for { page }.to have_test_selector("op-wp-journal-entry-#{journal.id}") # avoid flakyness
         page.within_test_selector("op-wp-journal-entry-#{journal.id}", &)
@@ -90,8 +98,8 @@ module Components
         expect(page).not_to have_test_selector("op-journal-notes-body", text:, wait: 10)
       end
 
-      def expect_journal_details_header(text: nil)
-        expect(page).to have_test_selector("op-journal-details-header", text:, wait: 10)
+      def expect_journal_details_header(text: nil, count: nil)
+        expect(page).to have_test_selector("op-journal-details-header", text:, count:, wait: 10)
       end
 
       def expect_no_journal_details_header(text: nil)

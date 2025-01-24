@@ -161,12 +161,13 @@ RSpec.describe "edit work package", :js do
     wp_page.expect_attributes assignee: "-"
 
     wp_page.visit!
+    wp_page.switch_to_tab tab: :activity
+    wp_page.wait_for_activity_tab
 
     # Another (empty) journal should exist now
-    expect(page).to have_css(".op-user-activity--user-name",
-                             text: work_package.journals.last.user.name,
-                             wait: 10,
-                             count: 2)
+    activity_tab.within_journals_container do
+      expect(page).to have_content(work_package.journals.last.user.name, count: 2)
+    end
 
     wp_page.expect_attributes assignee: "-"
 
