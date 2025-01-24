@@ -53,13 +53,6 @@ OpenProject::FeatureDecisions.add :generate_work_package_subjects,
                                   description: "Allows the configuration for work package types to have " \
                                                "automatically generated work package subjects."
 
-# TODO: Remove once the feature flag primerized_work_package_activities is removed altogether
-OpenProject::FeatureDecisions.define_singleton_method(:primerized_work_package_activities_active?) do
-  Rails.env.production? ||
-    (Setting.exists?("feature_primerized_work_package_activities_active") &&
-      Setting.send(:feature_primerized_work_package_activities_active?))
-end
-
 OpenProject::FeatureDecisions.add :stages_and_gates,
                                   description: "Enables the under construction feature of stages and gates."
 
