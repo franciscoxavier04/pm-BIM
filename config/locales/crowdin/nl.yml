@@ -246,15 +246,16 @@ nl:
     confirm_destroy_option: "Het verwijderen van een optie zal alle voorkomingen verwijderen. Weet u zeker dat u deze optie wilt verwijderen?"
     reorder_alphabetical: "Rangschik waarden alfabetisch"
     reorder_confirmation: "Waarschuwing: De huidige volgorde van beschikbare waarden zal verloren gaan. Doorgaan?"
+    placeholder_version_select: "Werkpakket- of projectselectie is eerst vereist"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Vink aan om dit attribuut te activeren en het in alle projecten vereist te maken. Het kan niet worden gedeactiveerd voor individuele projecten."
       is_for_all: "Mark the custom field as available in all existing and new projects."
-      multi_select: "Allows the user to assign multiple values to this custom field."
+      multi_select: "Hiermee kan de gebruiker meerdere waarden aan dit aangepaste veld toewijzen."
       searchable: "Include the field values when using the global search functionality."
-      searchable_for_project: "Check to make this attribute available as a filter in project lists."
+      searchable_for_project: "Vink aan om dit kenmerk beschikbaar te maken als filter in projectlijsten."
       editable: "Sta toe dat het veld door gebruikers zelf bewerkt kan worden."
-      admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
+      admin_only: "Vink aan om dit kenmerk alleen zichtbaar te maken voor beheerders. Gebruikers zonder beheerdersrechten kunnen dit kenmerk niet bekijken of bewerken."
       is_filter: >
         Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
     tab:
@@ -264,27 +265,27 @@ nl:
     single: "of"
   dry_validation:
     errors:
-      int?: "must be an integer."
-      filled?: "must be filled."
-      greater_or_equal_zero: "must be greater or equal to 0."
-      not_found: "not found."
+      int?: "moet een geheel getal zijn."
+      filled?: "moet ingevuld zijn."
+      greater_or_equal_zero: "moet groter dan, of gelijk zijn aan 0."
+      not_found: "niet gevonden."
       rules:
         item:
-          root_item: "cannot be a root item."
-          not_persisted: "must be an already existing item."
+          root_item: "kan geen root-item zijn."
+          not_persisted: "moet een reeds bestaand item zijn."
         label:
-          not_unique: "must be unique within the same hierarchy level."
+          not_unique: "moet uniek zijn binnen hetzelfde hiërarchieniveau."
         short:
-          not_unique: "must be unique within the same hierarchy level."
+          not_unique: "moet uniek zijn binnen hetzelfde hiërarchieniveau."
         parent:
-          not_descendant: "must be a descendant of the hierarchy root."
+          not_descendant: "moet een afstammeling zijn van de root van de hiërarchie."
     rules:
-      depth: "Depth"
+      depth: "Diepte"
       item: "Item"
       label: "Label"
-      short: "Short name"
-      parent: "Parent"
-      blueprint: "Pattern blueprint"
+      short: "Verkorte Naam"
+      parent: "Ouder"
+      blueprint: "Patroonblauwdruk"
   global_search:
     placeholder: "Zoeken in %{app_title}"
     overwritten_tabs:
@@ -325,7 +326,7 @@ nl:
       no_results_title_text: Er zijn momenteel geen projecten
       no_results_content_text: Maak een nieuw project
       search:
-        label: Project name filter
+        label: Projectnaam filter
         placeholder: Zoeken op projectnaam
     lists:
       active: "Actieve projecten"
@@ -357,26 +358,26 @@ nl:
       life_cycle:
         header:
           title: "Project levenscyclus"
-          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+          description_html: 'Deze projectfasen en -poorten in de projectlevenscyclus worden weergegeven in uw <a href=%{overview_url} target="_blank">projectoverzichtspagina</a> en worden gedefinieerd in de <a href=%{admin_settings_url} target="_blank">administratie-instellingen</a> door de beheerder van de instantie. U kunt individuele attributen in- of uitschakelen.'
+        non_defined: "Er zijn momenteel geen fasen of poorten gedefinieerd."
+        section_header: "Fasen en poorten"
         step:
-          use_in_project: "Use %{step} in this project"
+          use_in_project: "Gebruik %{step} in dit project"
         filter:
-          label: "Search project stage or gate"
+          label: "Zoek projectfase of poort"
       project_custom_fields:
         header:
-          title: "Project attributes"
-          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          title: "Project attributen"
+          description_html: 'Deze projectattributen worden weergegeven in uw <a href=%{overview_url} target="_blank">projectoverzichtspagina</a> onder hun respectievelijke secties. U kunt individuele attributen in- of uitschakelen. Projectattributen en secties worden gedefinieerd in de <a href=%{admin_settings_url} target="_blank">administratie-instellingen</a> door de beheerder van de instantie. '
         filter:
-          label: "Search project attribute"
+          label: "Zoek project attribuut"
         actions:
           label_enable_single: "Actief in dit project, klik om uit te schakelen"
           label_disable_single: "Inactief in dit project, klik om in te schakelen"
           remove_from_project: "Remove from project"
         is_required_blank_slate:
           heading: Vereist in alle projecten
-          description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
+          description: Dit project attribuut is ingeschakeld in alle projecten sinds de "Vereist in alle projecten" optie is aangevinkt. Het kan niet worden uitgeschakeld voor individuele projecten.
       types:
         no_results_title_text: Er zijn momenteel geen types beschikbaar.
         form:
@@ -389,13 +390,13 @@ nl:
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
-      other: "Duration: %{count} working days"
+      other: "Duur: %{count} werkdagen"
   lists:
     create:
       success: "De gewijzigde lijst is opgeslagen als een nieuwe lijst"
       failure: "De gewijzigde lijst kan niet worden opgeslagen: %{errors}"
     update:
-      success: "The modified list has been saved"
+      success: "De gewijzigde lijst is opgeslagen"
       failure: "De gewijzigde lijst kan niet worden opgeslagen: %{errors}"
     publish:
       success: "De lijst is openbaar gemaakt"
@@ -404,7 +405,7 @@ nl:
       success: "De lijst is privé gemaakt"
       failure: "De lijst kan niet privé worden gemaakt: %{errors}"
     can_be_saved: "Lijst gewijzigd:"
-    can_be_saved_as: "The modifications can only be saved in a new list:"
+    can_be_saved_as: "De wijzigingen kunnen alleen in een nieuwe lijst worden opgeslagen:"
   members:
     index:
       no_results_title_text: Er zijn momenteel geen leden onderdeel van dit project.
@@ -414,33 +415,33 @@ nl:
     columns:
       shared: "Gedeeld"
     filters:
-      all_shares: "All shares"
+      all_shares: "Alle gedeeld"
     menu:
       all: "Alle"
-      invited: "Invited"
+      invited: "Uitgenodigd"
       locked: "Vergrendeld"
       project_roles: "Projectrollen"
-      wp_shares: "Work package shares"
+      wp_shares: "Werkpakket gedeelden"
       groups: "Groepen"
     delete_member_dialog:
       title: "Lid verwijderen"
       will_remove_the_users_role: "Dit zal de rol van de gebruiker verwijderen uit dit project."
-      will_remove_the_groups_role: "This will remove the group role from this project."
+      will_remove_the_groups_role: "Hierdoor wordt de groepsrol van dit project verwijderd."
       however_work_packages_shared_with_user_html:
         one: "%{shared_work_packages_link} is echter ook gedeeld met deze gebruiker."
         other: "%{shared_work_packages_link} zijn echter ook met deze gebruiker gedeeld."
       however_work_packages_shared_with_group_html:
         one: "%{shared_work_packages_link} is echter ook met deze groep gedeeld."
         other: "%{shared_work_packages_link} is echter ook met deze groep gedeeld."
-      remove_work_packages_shared_with_user_too: "A user that has been removed as member can still access shared work packages. Would you like to remove the shares too?"
-      remove_work_packages_shared_with_group_too: "A group that has been removed as member can still access shared work packages. Would you like to remove the shares too?"
-      will_not_affect_inherited_shares: "(This will not affect work packages shared with their group)."
-      can_remove_direct_but_not_shared_roles: "You can remove this user as a direct project member but a group they are in is also a member of this project, so they will continue being a member via the group."
+      remove_work_packages_shared_with_user_too: "Een gebruiker die als lid is verwijderd, heeft nog steeds toegang tot gedeelde werkpakketten. Wilt u ook de gedeelde pakketten verwijderen?"
+      remove_work_packages_shared_with_group_too: "Een groep die als lid is verwijderd, heeft nog steeds toegang tot gedeelde werkpakketten. Wilt u ook de gedeelde pakketten verwijderen?"
+      will_not_affect_inherited_shares: "(Dit heeft geen invloed op werkpakketten die met hun groep worden gedeeld)."
+      can_remove_direct_but_not_shared_roles: "U kunt deze gebruiker verwijderen als direct project lid, maar een groep waarin hij zit is ook lid van dit project, dus hij blijft lid via die groep."
       also_work_packages_shared_with_user_html:
         one: "Ook is %{shared_work_packages_link} gedeeld met deze gebruiker."
         other: "Ook zijn %{shared_work_packages_link} gedeeld met deze gebruiker."
-      remove_project_membership_or_work_package_shares_too: "Do you want to remove just the user as a direct member (and keep the shares) or remove the work package shares too?"
-      will_remove_all_user_access_priveleges: "Deleting this member will remove all access privileges of the user to the project. The user will still exist as part of the instance."
+      remove_project_membership_or_work_package_shares_too: "Wilt u alleen de gebruiker als direct lid verwijderen (en de gedeelde pakketten behouden) of ook de gedeelde werkpakketten verwijderen?"
+      will_remove_all_user_access_priveleges: "Als u dit lid verwijdert, worden alle toegangsrechten van de gebruiker tot het project verwijderd. De gebruiker zal nog steeds bestaan als deel van de instantie."
       will_remove_all_group_access_priveleges: "Deleting this member will remove all access privileges of the group to the project. The group will still exist as part of the instance."
       cannot_delete_inherited_membership: "You cannot delete this member because they belong to a group that is itself a member of this project."
       cannot_delete_inherited_membership_note_admin_html: "You can either remove the group as a member of the project or this specific member from the group in the %{administration_settings_link}."
@@ -673,7 +674,6 @@ nl:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1775,6 +1775,9 @@ nl:
       hour:
         one: "uur"
         other: "uren"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Actief?"
   description_attachment_toggle: "Bijlagen weergeven/verbergen"
   description_autocomplete: >

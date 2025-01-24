@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,23 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :time_entry do
-    user
-    work_package
-    spent_on { Date.today }
-    activity factory: :time_entry_activity
-    hours { 1.0 }
-    logged_by { user }
+require "support/pages/page"
 
-    after(:build) do |time_entry|
-      time_entry.project ||= time_entry.work_package.project
-    end
-
-    trait :with_start_and_end_time do
-      time_zone { "Asia/Tokyo" }
-      start_time { 390 } # 6:30 AM
-      hours { 2.5 }
+module Pages
+  module WorkPackages
+    class CostEntries < Page
+      # Wait for the :spent_on date field to be loaded. It's backed by a
+      # flatpickr instance.
+      #
+      # The javascript on the "Log unit costs" creation page won't work until
+      # this date field is correctly loaded and displayed
+      def wait_for_spent_on_date_field_to_be_loaded
+        page.has_field?(CostEntry.human_attribute_name(:spent_on))
+      end
     end
   end
 end

@@ -248,6 +248,7 @@ sl:
     confirm_destroy_option: "Če izbrišete možnost, boste izbrisali vse njene primere (npr. v delovnih paketih). Ali ste prepričani, da ga želite izbrisati?"
     reorder_alphabetical: "Reorder values alphabetically"
     reorder_confirmation: "Warning: The current order of available values will be lost. Continue?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
@@ -692,7 +693,6 @@ sl:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1850,6 +1850,11 @@ sl:
         two: "ure"
         few: "ure"
         other: "ure"
+      day:
+        one: "day"
+        two: "days"
+        few: "days"
+        other: "days"
   description_active: "Aktivno?"
   description_attachment_toggle: "Prikaži/ skrij priloge"
   description_autocomplete: >

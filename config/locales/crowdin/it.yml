@@ -246,6 +246,7 @@ it:
     confirm_destroy_option: "L'eliminazione di un'opzione eliminerà tutte le sue occorrenze (ad es. nelle macro-attività). Procedere all'eliminazione?"
     reorder_alphabetical: "Riordina i valori alfabeticamente"
     reorder_confirmation: "Attenzione: l'ordine corrente dei valori disponibili sarà perso. Continuare?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Contrassegna il campo personalizzato come obbligatorio. Ciò renderà obbligatorio compilare il campo durante la creazione di nuove risorse o l'aggiornamento di risorse esistenti."
       is_required_for_project: "Spunta la casella per abilitare questo attributo e renderlo necessario in tutti i progetti. Non può essere disattivato per i singoli progetti."
@@ -672,7 +673,6 @@ it:
     label_add_description: "Aggiungi descrizione"
     lag:
       subject: "Ritardo"
-      title: "Ritardo (in giorni)"
       caption: "Il numero minimo di giorni lavorativi da far trascorrere tra le due macro-attività."
     relations:
       label_new_child_created: "Nuova macro-attività creata e aggiunta come figlia"
@@ -1774,6 +1774,9 @@ it:
       hour:
         one: "ora"
         other: "ora"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Attivo?"
   description_attachment_toggle: "Mostra/Nascondi allegati"
   description_autocomplete: >

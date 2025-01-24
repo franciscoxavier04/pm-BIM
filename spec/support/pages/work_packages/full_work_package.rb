@@ -87,6 +87,13 @@ module Pages
       end
     end
 
+    def select_log_unit_costs_action
+      SeleniumHubWaiter.wait
+      click_button(I18n.t("js.button_more"))
+      find(:menuitem, text: I18n.t(:button_log_costs)).click
+      Pages::WorkPackages::CostEntries.new.wait_for_spent_on_date_field_to_be_loaded
+    end
+
     private
 
     def container

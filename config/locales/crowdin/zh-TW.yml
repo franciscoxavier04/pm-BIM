@@ -248,6 +248,7 @@ zh-TW:
     confirm_destroy_option: "刪除一個項目將會一併刪除所有出現這個項目的地方 (例如：在工作項目中)。你確定要刪除它嗎？"
     reorder_alphabetical: "按字母順序重新排列"
     reorder_confirmation: "警告：目前可用值的順序將會遺失。繼續嗎？"
+    placeholder_version_select: "需要先選擇工作項目或專案"
     instructions:
       is_required: "將此欄位定義成必填。\n"
       is_required_for_project: "勾選以啟用此屬性，並使其成為所有專案的必要屬性。個別專案無法停用。"
@@ -286,7 +287,7 @@ zh-TW:
       label: "標籤"
       short: "簡稱"
       parent: "上層"
-      blueprint: "Pattern blueprint"
+      blueprint: "樣式藍圖"
   global_search:
     placeholder: "在 %{app_title} 搜尋"
     overwritten_tabs:
@@ -636,7 +637,7 @@ zh-TW:
         title: "共用工作項目缺少工作流"
         message: "沒有為\"工作項目編輯者\"角色配置工作流程。沒有工作流參與，參與用戶就無法更改工作項目的狀態。工作流程可以複製。選擇一個類型(例如\"任務\")和角色(例如\"成員\")。然後選擇目標類型。一開始，您可以將所有類型都選擇為目標類型。最後，選擇\"工作項目編輯者\"角色作為目標，然後點擊\"複製\"。在建立預設設定之後，像對其他角色一樣進行微調，以其對工作流程進行詳細調整。"
         link_message: "在管理中配置工作流。"
-    templated_subject_hint: Automatically generated through type %{type}
+    templated_subject_hint: 透過類型 %{type}自動產生
     summary:
       reports:
         category:
@@ -659,16 +660,15 @@ zh-TW:
       no_results_title_text: 目前沒有相關工作項目
       blankslate_heading: "沒有關聯"
       blankslate_description: "此工作項目尚未建立任何關係。"
-    label_add_child_button: "Child"
+    label_add_child_button: "子項目"
     label_add_x: "新增 %{x}"
     label_edit_x: "編輯：%{x}"
     label_add_description: "新增說明"
     lag:
       subject: "延遲"
-      title: "延遲（天數）"
       caption: "兩個工作項目之間最少要相隔多少個工作天。"
     relations:
-      label_new_child_created: "New work package created and added as a child"
+      label_new_child_created: "建立新的工作項目，並以子項目新增"
       label_relates_singular: "相關於"
       label_relates_plural: "相關於"
       label_relates_to_singular: "相關於"
@@ -683,9 +683,9 @@ zh-TW:
       follows_description: "在這個工作項目開始之前，相關的工作必須先完成"
       label_child_singular: "子項目"
       label_child_plural: "子項目"
-      new_child: "New child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
-      existing_child: "Existing child"
+      new_child: "新增子項目"
+      new_child_text: "使相關工作成為目前（上層）工作項目的子項目"
+      existing_child: "現有子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
@@ -1739,6 +1739,8 @@ zh-TW:
     units:
       hour:
         other: "小時"
+      day:
+        other: "天"
   description_active: "啟用？"
   description_attachment_toggle: "顯示/隱藏附件"
   description_autocomplete: >
@@ -2589,7 +2591,7 @@ zh-TW:
   label_relation: "關聯"
   label_relation_actions: "關聯動作"
   label_relation_delete: "刪除關聯"
-  label_relation_edit: "Edit relation"
+  label_relation_edit: "編輯關聯"
   label_relation_new: "新增關聯"
   label_release_notes: "發行說明"
   label_remaining_work: "剩餘工作"

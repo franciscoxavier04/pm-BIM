@@ -93,8 +93,8 @@ zh-TW:
       time: "時間"
     cost_reports:
       title: "您的成本報表(以XLS匯出)"
-      start_time: "Start time"
-      end_time: "End time"
+      start_time: "開始時間"
+      end_time: "結束時間"
   reporting:
     group_by:
       selected_columns: "選擇列"

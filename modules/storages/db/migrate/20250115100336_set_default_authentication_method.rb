@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,23 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :time_entry do
-    user
-    work_package
-    spent_on { Date.today }
-    activity factory: :time_entry_activity
-    hours { 1.0 }
-    logged_by { user }
+class SetDefaultAuthenticationMethod < ActiveRecord::Migration[7.1]
+  def up
+    update_sql = <<~SQL.squish
+      UPDATE storages
+      SET provider_fields = provider_fields || '{ "authentication_method": "two_way_oauth2" }'::jsonb
+      WHERE provider_type = 'Storages::NextcloudStorage' AND NOT provider_fields ? 'authentication_method'
+    SQL
 
-    after(:build) do |time_entry|
-      time_entry.project ||= time_entry.work_package.project
-    end
+    ActiveRecord::Base.connection.execute(update_sql)
+  end
 
-    trait :with_start_and_end_time do
-      time_zone { "Asia/Tokyo" }
-      start_time { 390 } # 6:30 AM
-      hours { 2.5 }
-    end
+  def down
+    # up-direction is backwards-compatible, no need to restrict a migration rollback
+    # but also nothing to do in case of a rollback
   end
 end

@@ -248,6 +248,7 @@ hu:
     confirm_destroy_option: "Egy opció törlése az összes eddigi használatánál (úgy, mint munkacsomagok) is törlődnek. Biztosan törölni szeretné?"
     reorder_alphabetical: "Név szerinti sorrendbe rendezés"
     reorder_confirmation: "Figyelmeztetés: A rendelkezésre álló értékek jelenlegi sorrendje elveszik. Folytatni akarod?\n"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
@@ -674,7 +675,6 @@ hu:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
@@ -1776,6 +1776,9 @@ hu:
       hour:
         one: "óra"
         other: "óra"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Aktív?"
   description_attachment_toggle: "Csatolmányt mutat/elrejt"
   description_autocomplete: >
