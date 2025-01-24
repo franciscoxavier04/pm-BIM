@@ -31,6 +31,8 @@ module RecurringMeetings
     include GoodJob::ActiveJobExtensions::Concurrency
     discard_on ActiveJob::DeserializationError
 
+    CONCURRENCY_KEY_BASE = "RecurringMeetings::InitNextOccurrenceJob-".freeze
+
     good_job_control_concurrency_with(
       # Allow the running job to enqueue the next one
       total_limit: 2,
@@ -47,7 +49,7 @@ module RecurringMeetings
     end
 
     def self.unique_key(recurring_meeting)
-      "RecurringMeetings::InitNextOccurrenceJob-#{recurring_meeting.id}"
+      "#{CONCURRENCY_KEY_BASE}#{recurring_meeting.id}"
     end
 
     attr_accessor :recurring_meeting, :scheduled_time
@@ -74,12 +76,12 @@ module RecurringMeetings
       end
 
       if occurrence_cancelled?
-        Rails.logger.debug { "Will not create next occurrence for series ##{recurring_meeting.id} is already cancelled" }
+        Rails.logger.debug { "Will not create next occurrence for series ##{recurring_meeting.id} as already cancelled" }
         return
       end
 
       unless occurring_at_scheduled_time?
-        Rails.logger.debug { "The given schedule #{scheduled_time} is (no longer) existing for series ##{recurring_meeting.id}" }
+        Rails.logger.debug { "The given schedule #{scheduled_time} (no longer) exists for series ##{recurring_meeting.id}" }
         return
       end
 
