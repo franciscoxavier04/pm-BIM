@@ -120,11 +120,21 @@ RSpec.describe Project, "acts_as_journalized" do
             value: "some string value for project custom field",
             custom_field:)
     end
-    let(:custom_field_id) { "custom_fields_#{custom_value.custom_field_id}" }
+    let(:custom_field_key) { "custom_fields_#{custom_field.id}" }
 
     shared_context "for project with new custom value" do
       before do
         project.update(custom_values: [custom_value])
+      end
+    end
+
+    shared_examples "contains no change for disabled custom field" do
+      before do
+        project.project_custom_field_project_mappings.where(custom_field_id: custom_field.id).delete_all
+      end
+
+      it "contains no change for the disabled custom field" do
+        expect(project.last_journal.details).not_to have_key(custom_field_key)
       end
     end
 
@@ -133,8 +143,10 @@ RSpec.describe Project, "acts_as_journalized" do
 
       it "contains the new custom value change" do
         expect(project.last_journal.details)
-          .to include(custom_field_id => [nil, custom_value.value])
+          .to include(custom_field_key => [nil, custom_value.value])
       end
+
+      it_behaves_like "contains no change for disabled custom field"
     end
 
     context "for updated custom value" do
@@ -152,8 +164,10 @@ RSpec.describe Project, "acts_as_journalized" do
 
       it "contains the change from previous value to updated value" do
         expect(project.last_journal.details)
-          .to include(custom_field_id => [custom_value.value, modified_custom_value.value])
+          .to include(custom_field_key => [custom_value.value, modified_custom_value.value])
       end
+
+      it_behaves_like "contains no change for disabled custom field"
     end
 
     context "when project saved without any changes" do
@@ -181,8 +195,10 @@ RSpec.describe Project, "acts_as_journalized" do
 
       it "contains the change from previous value to nil" do
         expect(project.last_journal.details)
-          .to include(custom_field_id => [custom_value.value, nil])
+          .to include(custom_field_key => [custom_value.value, nil])
       end
+
+      it_behaves_like "contains no change for disabled custom field"
     end
   end
 
