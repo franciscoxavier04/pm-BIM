@@ -22,8 +22,7 @@
                     classes: "op-reactions-button"
                   )) do |button|
               button.with_tooltip(text: number_of_user_reactions_text(data[:users]),
-                                  test_selector: "reaction-tooltip-#{reaction}") do
-                button.with_icon(EmojiReactions.emoji(reaction), size: :small)
+                                  test_selector: "reaction-tooltip-#{reaction}")
               end
               "#{EmojiReaction.emoji(reaction)} #{data[:count]}"
             end
