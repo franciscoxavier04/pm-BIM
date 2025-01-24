@@ -65,6 +65,14 @@ module Components
 
       # helpers for new primerized activities
 
+      def ckeditor
+        Components::WysiwygEditor.new("#work-package-journal-form-element")
+      end
+
+      def get_editor_form_field_element
+        FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+      end
+
       def within_journal_entry(journal, &)
         wait_for { page }.to have_test_selector("op-wp-journal-entry-#{journal.id}") # avoid flakyness
         page.within_test_selector("op-wp-journal-entry-#{journal.id}", &)
@@ -98,8 +106,14 @@ module Components
         expect(page).not_to have_test_selector("op-journal-notes-header", text:, wait: 10)
       end
 
-      def expect_journal_notes(text: nil)
-        expect(page).to have_test_selector("op-journal-notes-body", text:, wait: 10)
+      def expect_journal_notes(text: nil, subselector: nil, count: nil)
+        if text && subselector
+          expect(page).to have_css("#{page.test_selector('op-journal-notes-body')} #{subselector}", text:, wait: 10)
+        elsif text
+          expect(page).to have_test_selector("op-journal-notes-body", text:, wait: 10)
+        elsif count
+          expect(page).to have_test_selector("op-journal-notes-body", count:, wait: 10)
+        end
       end
 
       def expect_journal_mention(text: nil)
@@ -164,7 +178,7 @@ module Components
 
       def expect_unsaved_content(text)
         page.within_test_selector("op-work-package-journal-form-element") do
-          editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+          editor = get_editor_form_field_element
           expect(editor.input_element.value).to eq(text)
         end
       end
@@ -176,7 +190,7 @@ module Components
         wait_for { page }.to have_test_selector("op-work-package-journal-form-element")
 
         page.within_test_selector("op-work-package-journal-form-element") do
-          editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+          editor = get_editor_form_field_element
           # Wait for the editor to be initialized
           wait_for { editor.input_element }.to be_present
           editor.input_element.send_keys(text)
@@ -188,7 +202,7 @@ module Components
 
       def clear_comment(blur: false)
         page.within_test_selector("op-work-package-journal-form-element") do
-          editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+          editor = get_editor_form_field_element
           editor.set_value("")
 
           if blur
@@ -209,7 +223,7 @@ module Components
         end
 
         page.within_test_selector("op-work-package-journal-form-element") do
-          FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element").set_value(text)
+          get_editor_form_field_element.set_value(text)
           page.find_test_selector("op-submit-work-package-journal-form").click if save
         end
 
@@ -229,7 +243,7 @@ module Components
           page.find_test_selector("op-wp-journal-#{journal.id}-edit").click
 
           page.within_test_selector("op-work-package-journal-form-element") do
-            FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element").set_value(text)
+            get_editor_form_field_element.set_value(text)
             page.find_test_selector("op-submit-work-package-journal-form").click if save
           end
 
@@ -246,7 +260,7 @@ module Components
           page.find_test_selector("op-wp-journal-#{journal.id}-edit").click
 
           page.within_test_selector("op-work-package-journal-form-element") do
-            editor = FormFields::Primerized::EditorFormField.new("notes", selector: "#work-package-journal-form-element")
+            editor = get_editor_form_field_element
             # Wait for the editor to be initialized
             wait_for { editor.input_element }.to be_present
             editor.input_element.send_keys(text)
