@@ -61,7 +61,13 @@ module Acts::Journalized::Differ
 
       id_attribute = id_attribute.to_s
 
-      model.send(association).map(&:attributes).group_by { _1[id_attribute] }
+      relation = if association.respond_to?(:call)
+                   association.call(model)
+                 else
+                   model.send(association)
+                 end
+
+      relation.map(&:attributes).group_by { _1[id_attribute] }
     end
 
     def single_attribute_changes(attribute)

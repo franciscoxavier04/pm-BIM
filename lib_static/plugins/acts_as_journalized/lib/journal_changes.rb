@@ -71,21 +71,25 @@ module JournalChanges
   def get_custom_fields_changes
     return unless journable&.customizable?
 
-    customizable_changes = ::Acts::Journalized::Differ::Association.new(
+    association = if journable.is_a?(::Project)
+                    ->(journal) {
+                      journal.customizable_journals
+                             .with(cf_mappings: journable.project_custom_field_project_mappings)
+                             .joins("INNER JOIN cf_mappings USING (custom_field_id)")
+                    }
+                  else
+                    :customizable_journals
+                  end
+
+    ::Acts::Journalized::Differ::Association.new(
       predecessor,
       self,
-      association: :customizable_journals,
+      association:,
       id_attribute: :custom_field_id
     ).attribute_changes(
       :value,
       key_prefix: "custom_fields"
     )
-
-    if journable.class.name == "Project"
-      remove_disabled_project_custom_fields!(customizable_changes)
-    end
-
-    customizable_changes
   end
 
   def get_project_life_cycle_steps_changes
@@ -124,15 +128,5 @@ module JournalChanges
       %i[title duration_in_minutes notes position work_package_id],
       key_prefix: "agenda_items"
     )
-  end
-
-  private
-
-  def remove_disabled_project_custom_fields!(customizable_changes)
-    allowed_custom_field_keys = journable
-      .project_custom_field_project_mappings
-      .map { |c| "custom_fields_#{c.custom_field_id}" }
-
-    customizable_changes.delete_if { |key| !key.in?(allowed_custom_field_keys) }
   end
 end
