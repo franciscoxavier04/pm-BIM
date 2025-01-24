@@ -147,9 +147,10 @@ class RecurringMeetingsController < ApplicationController
   def template_completed
     call = ::RecurringMeetings::InitOccurrenceService
       .new(user: current_user, recurring_meeting: @recurring_meeting)
-      .call(start_time: @first_occurrence.to_time)
+      .call(start_time: @first_occurrence)
 
     if call.success?
+      init_next_occurrence_job(@first_occurrence)
       flash[:success] = I18n.t("recurring_meeting.occurrence.first_created")
     else
       flash[:error] = call.message
@@ -179,6 +180,16 @@ class RecurringMeetingsController < ApplicationController
   end
 
   private
+
+  def init_next_occurrence_job(from_time)
+    # Now we can schedule the job to create the next occurrence
+    next_occurrence = @recurring_meeting.next_occurrence(from_time:)&.to_time
+    return if next_occurrence.nil?
+
+    ::RecurringMeetings::InitNextOccurrenceJob
+      .set(wait_until: from_time)
+      .perform_later(@recurring_meeting, next_occurrence)
+  end
 
   def upcoming_meetings(count:)
     meetings = @recurring_meeting
