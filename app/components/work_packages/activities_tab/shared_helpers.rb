@@ -43,6 +43,23 @@ module WorkPackages
         end
       end
 
+      def activity_anchor_link(journal)
+        render(Primer::Beta::Link.new(
+                 href: activity_url(journal),
+                 scheme: :secondary,
+                 underline: false,
+                 font_size: :small,
+                 data: {
+                   turbo: false,
+                   action: "click->work-packages--activities-tab--index#setAnchor:prevent",
+                   "work-packages--activities-tab--index-id-param": journal_activity_id(journal),
+                   "work-packages--activities-tab--index-anchor-name-param": anchor_name
+                 }
+               )) do
+          "##{journal_activity_id(journal)}"
+        end
+      end
+
       def journal_sorting
         User.current.preference&.comments_sorting || OpenProject::Configuration.default_comment_sort_order
       end
@@ -52,7 +69,19 @@ module WorkPackages
       end
 
       def activity_anchor(journal)
-        "#activity-#{journal.sequence_version}"
+        "##{anchor_name}-#{journal_activity_id(journal)}"
+      end
+
+      def anchor_name
+        OpenProject::FeatureDecisions.work_package_comment_id_url_active? ? "comment" : "activity"
+      end
+
+      def journal_activity_id(journal)
+        if OpenProject::FeatureDecisions.work_package_comment_id_url_active?
+          journal.id
+        else
+          journal.sequence_version
+        end
       end
     end
   end

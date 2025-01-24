@@ -193,16 +193,7 @@ module WorkPackages
             pr: 3,
             classes: "work-packages-activities-tab-journals-item-component-details--activity-link-container"
           ) do
-            render(Primer::Beta::Link.new(
-                     href: activity_url(journal),
-                     scheme: :secondary,
-                     underline: false,
-                     font_size: :small,
-                     data: { turbo: false, action: "click->work-packages--activities-tab--index#setAnchor:prevent",
-                             "work-packages--activities-tab--index-id-param": journal.sequence_version }
-                   )) do
-              "##{journal.sequence_version}"
-            end
+            activity_anchor_link(journal)
           end
         end
 

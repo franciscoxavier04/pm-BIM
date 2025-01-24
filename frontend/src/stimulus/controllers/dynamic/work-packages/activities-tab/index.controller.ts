@@ -8,6 +8,7 @@ import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 interface CustomEventWithIdParam extends Event {
   params:{
     id:string;
+    anchorName:string;
   };
 }
 
@@ -350,9 +351,11 @@ export default class IndexController extends Controller {
   }
 
   private handleInitialScroll() {
-    if (window.location.hash.includes('#activity-')) {
-      const activityId = window.location.hash.replace('#activity-', '');
-      this.scrollToActivity(activityId);
+    // Ex. [ "#comment-80", "comment", "80" ]
+    const activityIdMatch = window.location.hash.match(/#(comment|activity)-(\d+)/);
+
+    if (activityIdMatch && activityIdMatch.length === 3) {
+      this.scrollToActivity(activityIdMatch[2]);
     } else if (this.sortingValue === 'asc' && (!this.isMobile() || this.isWithinNotificationCenter())) {
       this.scrollToBottom();
     }
@@ -429,9 +432,10 @@ export default class IndexController extends Controller {
     // native anchor scroll is causing positioning issues
     event.preventDefault();
     const activityId = event.params.id;
+    const anchorName = event.params.anchorName;
 
     this.scrollToActivity(activityId);
-    window.location.hash = `#activity-${activityId}`;
+    window.location.hash = `#${anchorName}-${activityId}`;
   }
 
   private getCkEditorElement():HTMLElement | null {
