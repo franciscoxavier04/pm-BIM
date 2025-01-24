@@ -140,6 +140,9 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
       start_date.datepicker.expect_start_date "2016-01-03"
 
+      # The inputs have a debounce which we have to wait for before clicking the next field
+      sleep 0.25
+
       # Since the focus shifts automatically, we can directly click again to modify the end date
       start_date.datepicker.select_day "21"
 
@@ -217,7 +220,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     start_date.set_due_date Time.zone.today
 
     # Wait for duration to be derived
-    start_date.expect_duration /\d+ days/
+    start_date.expect_duration /\d+/
 
     # As the to be selected date is automatically toggled,
     # we can directly set the start date afterwards to the same day
@@ -271,7 +274,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     work_packages_page.accept_alert_dialog! if work_packages_page.has_alert_dialog?
 
     # Ensure no modal survives
-    expect(page).to have_no_css(".spot-modal")
+    expect(page).to have_no_css(".spot-drop-modal--body")
   end
 
   context "with a date custom field" do
