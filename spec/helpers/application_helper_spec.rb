@@ -185,7 +185,7 @@ RSpec.describe ApplicationHelper do
         Added by
         <a title="User #{esc_name}" class="op-hover-card--preview-trigger"
           data-hover-card-url="/users/#{author.id}/hover_card" href="/users/#{author.id}">#{esc_name}</a>
-        at 2023-06-02
+        on 2023-06-02
       HTML
 
       expect(authoring_at(created, author))
