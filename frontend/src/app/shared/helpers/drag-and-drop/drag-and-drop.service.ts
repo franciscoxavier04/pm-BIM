@@ -4,6 +4,7 @@ import {
 import { DOCUMENT } from '@angular/common';
 import { DomAutoscrollService } from 'core-app/shared/helpers/drag-and-drop/dom-autoscroll.service';
 import { findIndex, reinsert } from 'core-app/shared/helpers/drag-and-drop/drag-and-drop.helpers';
+import dragula from 'dragula';
 
 export interface DragMember {
   dragContainer:HTMLElement;
