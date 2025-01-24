@@ -29,8 +29,8 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render(
-    Primer::BaseComponent.new(
-      tag: :div,
+    FormControl.new(
+      input: @input,
       classes: "pattern-input",
       "data-controller": "pattern-input",
       "data-pattern-input-pattern-initial-value": @value,
@@ -47,7 +47,7 @@ See COPYRIGHT and LICENSE files for more details.
   <template data-pattern-input-target="suggestionsHeadingTemplate">
     <%= render(Primer::Alpha::ActionList::Heading.new(title: "__placeholder__", heading_level: 2)) %>
   </template>
-  
+
   <template data-pattern-input-target="suggestionsDividerTemplate">
     <%= render(Primer::Alpha::ActionList::Divider.new) %>
   </template>

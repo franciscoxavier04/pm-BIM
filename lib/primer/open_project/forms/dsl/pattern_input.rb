@@ -33,10 +33,11 @@ module Primer
     module Forms
       module Dsl
         class PatternInput < Primer::Forms::Dsl::Input
-          attr_reader :name, :value, :suggestions
+          attr_reader :name, :label, :value, :suggestions
 
-          def initialize(name:, value:, suggestions:, **system_arguments)
+          def initialize(name:, label:, value:, suggestions:, **system_arguments)
             @name = name
+            @label = label
             @value = value
             @suggestions = suggestions
 
