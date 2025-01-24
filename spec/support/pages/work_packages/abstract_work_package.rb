@@ -85,16 +85,6 @@ module Pages
       expect(page).to have_css('[data-test-selector="op-wp-activity-tab"][data-stimulus-controller-connected="true"]')
     end
 
-    def expect_comment(**args)
-      subselector = args.delete(:subselector)
-
-      retry_block do
-        unless page.has_selector?(".user-comment .message #{subselector}".strip, **args)
-          raise "Failed to find comment with #{args.inspect}. Retrying."
-        end
-      end
-    end
-
     def expect_any_active_inline_edit_field
       expect(page).to have_css(".inline-edit--active-field")
     end
@@ -285,26 +275,8 @@ module Pages
       page.click_button(I18n.t("js.button_edit"))
     end
 
-    def trigger_edit_comment
-      add_comment_container.find(".work-package-comment").click
-    end
-
-    def update_comment(comment)
-      editor = ::Components::WysiwygEditor.new ".work-packages--activity--add-comment"
-      editor.click_and_type_slowly comment
-    end
-
-    def save_comment
-      label = "Comment: Save"
-      add_comment_container.find(:xpath, "//button[@title='#{label}']").click
-    end
-
     def save!
       page.click_button(I18n.t("js.button_save"))
-    end
-
-    def add_comment_container
-      find(".work-packages--activity--add-comment")
     end
 
     def click_add_wp_button

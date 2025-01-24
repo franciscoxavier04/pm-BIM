@@ -217,18 +217,6 @@ RSpec.describe "edit work package", :js do
     end
   end
 
-  it "allows the user to add a comment to a work package" do
-    wp_page.ensure_page_loaded
-
-    wp_page.trigger_edit_comment
-    wp_page.update_comment "hallo welt"
-
-    wp_page.save_comment
-
-    wp_page.expect_toast(message: "The comment was successfully added.")
-    wp_page.expect_comment text: "hallo welt"
-  end
-
   it "updates the presented custom fields based on the selected type" do
     wp_page.ensure_page_loaded
 
