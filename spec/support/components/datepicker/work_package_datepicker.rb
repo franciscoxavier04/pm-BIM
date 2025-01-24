@@ -126,12 +126,12 @@ module Components
 
     def expect_manual_scheduling_mode
       expect(container)
-        .to have_css('[data-test-selector="op-datepicker-modal--scheduling_manual"][data-qa-selected]="true"')
+        .to have_css('[data-test-selector="op-datepicker-modal--scheduling_manual"][data-qa-selected="true"]')
     end
 
     def expect_automatic_scheduling_mode
       expect(container)
-        .to have_css('[data-test-selector="op-datepicker-modal--scheduling_automatic"][data-qa-selected]="true"')
+        .to have_css('[data-test-selector="op-datepicker-modal--scheduling_automatic"][data-qa-selected="true"]')
     end
 
     def toggle_scheduling_mode
