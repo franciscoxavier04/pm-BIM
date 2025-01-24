@@ -98,6 +98,8 @@ RSpec.describe "Open the Gitlab tab", :js do
       end
 
       it "allows the user to copy the branch name to the clipboard" do
+        pending "In headless mode, the clipboard content is not copied to the clipboard, how to fix?"
+
         gitlab_tab.git_actions_menu_button.click
         gitlab_tab.git_actions_copy_branch_name_button.click
 
