@@ -144,12 +144,19 @@ module API
 
           if ts.nil?
             represented.start_timestamp = nil
-          elsif ts.to_date != represented.spent_on
+            return
+          end
+
+          if represented.user.present?
+            ts = ts.in_time_zone(represented.user.time_zone)
+          end
+
+          if ts.to_date == represented.spent_on
+            represented.start_time = ts.strftime("%H:%M")
+          else
             raise API::Errors::Validation.new("start_time",
                                               I18n.t("api_v3.errors.validation.start_time_different_date",
                                                      spent_on: represented.spent_on, start_time: ts.to_date))
-          else
-            represented.start_time = ts.strftime("%H:%M")
           end
         end
 
