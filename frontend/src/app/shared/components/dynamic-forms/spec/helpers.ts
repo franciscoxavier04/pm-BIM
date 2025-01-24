@@ -22,6 +22,42 @@ import { ConfigurationService } from 'core-app/core/config/configuration.service
 import { CKEditorSetupService } from 'core-app/shared/components/editor/components/ckeditor/ckeditor-setup.service';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { SpotFormFieldComponent } from 'core-app/spot/components/form-field/form-field.component';
+import { ICKEditorInstance, ICKEditorWatchdog } from '../../editor/components/ckeditor/ckeditor.types';
+
+const ickEditorInstanceStub:ICKEditorInstance = {
+  id: 'test-id',
+  state: 'test-state',
+  getData(options) { return 'test-data' },
+  setData(content) { },
+  destroy() { },
+  enableReadOnlyMode(lockId) { },
+  disableReadOnlyMode(lockId) { },
+  on(event, callback) { },
+  listenTo(node, key, callback, options) { },
+  model: {
+    on(ev, callback) { },
+    fire(ev, data) { },
+    document: { on(ev, callback) { } }
+  },
+  editing: {
+    view: { focus() { }, document }
+  },
+  config: undefined,
+  ui: {
+    focusTracker: { on() { } }
+  },
+  element: document.createElement("test-ick-editor-element")
+}
+
+const ickEditorWatchdogStub:ICKEditorWatchdog = {
+  setCreator(callback) { },
+  setDestructor(callback) { },
+  create(elementOrData, editorConfig) { return Promise.resolve(ickEditorInstanceStub) },
+  destroy() { },
+  on(listener, callback) { },
+  editor: ickEditorInstanceStub,
+  state: 'ready'
+}
 
 export function createDynamicInputFixture(fields:IOPFormlyFieldSettings[], model:any, providers?:any[]):ComponentFixture<any> {
   @Component({
@@ -45,7 +81,8 @@ export function createDynamicInputFixture(fields:IOPFormlyFieldSettings[], model
     @ViewChild(FormlyForm) dynamicForm:FormlyForm;
   }
 
-  const toastServiceSpy = jasmine.createSpyObj('ToastService', ['addError', 'addSuccess']);
+  const toastServiceSpy:jasmine.SpyObj<ToastService> = jasmine.createSpyObj('ToastService', ['addError', 'addSuccess']);
+  const ckEditorSetupServiceSpy:jasmine.SpyObj<CKEditorSetupService> = jasmine.createSpyObj('CKEditorSetupService', ['create']);
 
   TestBed
     .configureTestingModule({
@@ -92,7 +129,7 @@ export function createDynamicInputFixture(fields:IOPFormlyFieldSettings[], model
       {
         set: {
           providers: [
-            CKEditorSetupService,
+            { provide: CKEditorSetupService, useValue: ckEditorSetupServiceSpy },
             { provide: ToastService, useValue: toastServiceSpy },
             {
               provide: NG_VALUE_ACCESSOR,
@@ -109,6 +146,8 @@ export function createDynamicInputFixture(fields:IOPFormlyFieldSettings[], model
     );
 
   TestBed.compileComponents();
+
+  ckEditorSetupServiceSpy.create.and.resolveTo(ickEditorWatchdogStub);
 
   const fixture = TestBed.createComponent(DynamicInputsTestingComponent);
   fixture.detectChanges();
