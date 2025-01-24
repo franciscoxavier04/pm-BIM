@@ -59,7 +59,7 @@ const ickEditorWatchdogStub:ICKEditorWatchdog = {
   state: 'ready'
 }
 
-export function createDynamicInputFixture(fields:IOPFormlyFieldSettings[], model:IOPFormModel, providers?:any[]):ComponentFixture<any> {
+export function createDynamicInputFixture(fields:IOPFormlyFieldSettings[], model:IOPFormModel):ComponentFixture<any> {
   @Component({
     template: `
       <form [formGroup]="form">
@@ -68,8 +68,7 @@ export function createDynamicInputFixture(fields:IOPFormlyFieldSettings[], model
                      [fields]="fields">
         </formly-form>
       </form>      
-    `,
-    providers,
+    `
   })
   class DynamicInputsTestingComponent {
     form = new UntypedFormGroup({});
