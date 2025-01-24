@@ -673,7 +673,7 @@ export class TimeEntryCalendarComponent implements AfterViewInit, OnDestroy {
         }
         return null;
       })
-      .filter((value) => value !== null) as number[];
+      .filter((value) => value !== null);
   }
 
   private handleDialogClose(event:CustomEvent):void {

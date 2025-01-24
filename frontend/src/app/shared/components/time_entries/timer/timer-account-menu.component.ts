@@ -54,7 +54,7 @@ export class TimerAccountMenuComponent extends UntilDestroyedMixin implements On
     .pipe(
       switchMap(() => this.timer$),
       filter((timeEntry) => timeEntry !== null),
-      map((timeEntry:TimeEntryResource) => formatElapsedTime(timeEntry.createdAt as string)),
+      map((timeEntry) => formatElapsedTime(timeEntry.createdAt as string)),
     );
 
   text = {

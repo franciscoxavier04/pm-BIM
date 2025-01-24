@@ -158,8 +158,8 @@ export class StateCacheService<T> {
         (id) => this.observe(id).pipe(startWith(null)),
       ),
     ).pipe(
-      map((values) => values.filter((value) => !!value)),
-    ) as Observable<T[]>;
+      map((values) => values.filter((value) => value !== null)),
+    );
   }
 
   /**

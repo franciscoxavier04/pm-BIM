@@ -68,7 +68,7 @@ export class StopExistingTimerModalComponent extends OpModalComponent implements
     .pipe(
       map(() => this.active),
       filter((timeEntry) => timeEntry !== null),
-      map((timeEntry:TimeEntryResource) => formatElapsedTime(timeEntry.createdAt as string)),
+      map((timeEntry) => formatElapsedTime(timeEntry.createdAt as string)),
     );
 
   public text = {

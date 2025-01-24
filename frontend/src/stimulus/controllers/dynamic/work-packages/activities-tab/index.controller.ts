@@ -245,7 +245,7 @@ export default class IndexController extends Controller {
 
     const dates = Array.from(elements)
       .map((element) => element.getAttribute('data-journal-with-changeset-updated-at'))
-      .filter((dateStr):dateStr is string => dateStr !== null)
+      .filter((dateStr) => dateStr !== null)
       .map((dateStr) => new Date(parseInt(dateStr, 10) * 1000))
       .filter((date) => !Number.isNaN(date.getTime())); // filter out invalid dates
 

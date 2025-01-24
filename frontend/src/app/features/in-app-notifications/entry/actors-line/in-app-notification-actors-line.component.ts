@@ -68,7 +68,7 @@ export class InAppNotificationActorsLineComponent implements OnInit {
           name: actor.title,
         };
       })
-      .filter((actor) => actor !== null) as PrincipalLike[];
+      .filter((actor) => actor !== null);
 
     this.actors = _.uniqBy(actors, (item) => item.href);
   }
