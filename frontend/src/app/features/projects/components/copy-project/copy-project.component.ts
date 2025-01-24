@@ -103,9 +103,9 @@ export class CopyProjectComponent extends UntilDestroyedMixin implements OnInit 
       return false;
     }
 
-    const nameOrParent = ['name', 'parent'].includes(templateOptions.property as string);
+    const nameOrParent = ['name', 'parent'].includes(templateOptions.property!);
     const noPayload = templateOptions.payloadValue == null
-      || (templateOptions.payloadValue as { href?:string|null })?.href == null;
+      || templateOptions.payloadValue?.href == null;
 
     return (templateOptions.required && !templateOptions.hasDefault && noPayload) || nameOrParent;
   }

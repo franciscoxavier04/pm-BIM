@@ -41,6 +41,7 @@ import { SpotFormFieldComponent } from 'core-app/spot/components/form-field/form
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DynamicFieldWrapperComponent } from 'core-app/shared/components/dynamic-forms/components/dynamic-field-wrapper/dynamic-field-wrapper.component';
 import { ConfirmDialogService } from "core-app/shared/components/modals/confirm-dialog/confirm-dialog.service";
+import { IOPDynamicFormSettings } from 'core-app/shared/components/dynamic-forms/typings';
 
 @Component({
   template: `
@@ -112,7 +113,7 @@ describe('DynamicFormComponent', () => {
       },
     },
   };
-  const dynamicFormSettings:any = {
+  const dynamicFormSettings:IOPDynamicFormSettings = {
     fields: [
       {
         type: 'textInput',

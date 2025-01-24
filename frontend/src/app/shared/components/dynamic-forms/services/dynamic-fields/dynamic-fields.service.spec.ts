@@ -29,7 +29,7 @@ describe('DynamicFieldsService', () => {
   });
 
   it('should generate a proper dynamic form schema', () => {
-    const formPayload = {
+    const formPayload:IOPFormModel = {
       name: 'Project 1',
       _links: {
         parent: {
@@ -38,7 +38,7 @@ describe('DynamicFieldsService', () => {
         },
       },
     };
-    const formSchema = {
+    const formSchema:IOPFormSchema = {
       name: {
         type: 'String',
         name: 'Name',
@@ -82,7 +82,7 @@ describe('DynamicFieldsService', () => {
   });
 
   it('should format the form model (add the name property to resources (_links: single and multiple))', () => {
-    const formPayload = {
+    const formPayload:IOPFormModel = {
       title: 'Project 1',
       _links: {
         parent: {
@@ -101,7 +101,7 @@ describe('DynamicFieldsService', () => {
         ],
       },
     };
-    const formSchema = {
+    const formSchema:IOPFormSchema = {
       title: {
         type: 'String',
         name: 'Name',
@@ -152,7 +152,7 @@ describe('DynamicFieldsService', () => {
   });
 
   it('should generate a proper dynamic form config', () => {
-    const formPayload = {
+    const formPayload:IOPFormModel = {
       name: 'Project 1',
       _links: {
         parent: {
@@ -161,7 +161,7 @@ describe('DynamicFieldsService', () => {
         },
       },
     };
-    const formSchema = {
+    const formSchema:IOPFormSchema = {
       parent: {
         type: 'Project',
         name: 'Subproject of',
@@ -197,7 +197,7 @@ describe('DynamicFieldsService', () => {
     };
     // @ts-ignore
     const formlyConfig = service.getConfig(formSchema, formPayload);
-    const formlyFields = formlyConfig.reduce((result, formlyField) => (formlyField.fieldGroup ? [...result, ...formlyField.fieldGroup] : [...result, formlyField]), [] as IOPFormlyFieldSettings[]);
+    const formlyFields = formlyConfig.reduce((result:IOPFormSettings[], formlyField) => (formlyField.fieldGroup ? [...result, ...formlyField.fieldGroup] : [...result, formlyField]), []);
     const formGroup = formlyConfig[1];
 
     expect(formlyFields[1].templateOptions!.label).toBe('Name', 'should set the correct label');
