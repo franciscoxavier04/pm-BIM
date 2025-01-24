@@ -345,11 +345,11 @@ RSpec.describe "API v3 time_entry resource" do
           get api_v3_paths.time_entries
 
           expect(subject.body)
-            .to be_json_eql(time_entry.start_timestamp.to_json)
+            .to be_json_eql(time_entry.start_timestamp.utc.to_json)
             .at_path("_embedded/elements/0/startTime")
 
           expect(subject.body)
-            .to be_json_eql(time_entry.end_timestamp.to_json)
+            .to be_json_eql(time_entry.end_timestamp.utc.to_json)
             .at_path("_embedded/elements/0/endTime")
         end
       end

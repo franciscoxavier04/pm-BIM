@@ -90,12 +90,12 @@ module API
 
         date_time_property :start_time,
                            exec_context: :decorator,
-                           getter: ->(*) { datetime_formatter.format_datetime(represented.start_timestamp) },
+                           getter: ->(*) { datetime_formatter.format_datetime(represented.start_timestamp, allow_nil: true) },
                            if: ->(*) { TimeEntry.can_track_start_and_end_time? }
 
         date_time_property :end_time,
                            exec_context: :decorator,
-                           getter: ->(*) { datetime_formatter.format_datetime(represented.end_timestamp) },
+                           getter: ->(*) { datetime_formatter.format_datetime(represented.end_timestamp, allow_nil: true) },
                            if: ->(*) { TimeEntry.can_track_start_and_end_time? }
 
         date_time_property :created_at
