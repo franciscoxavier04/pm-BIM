@@ -56,8 +56,8 @@ RSpec.describe "Manual scheduling", :js do
 
       # Expect not editable
       start_date.within_modal do
-        expect(page).to have_css('input[name="startDate"][disabled]')
-        expect(page).to have_css('input[name="endDate"][disabled]')
+        expect(page).to have_css('input[name="work_package[start_date]"][disabled]')
+        expect(page).to have_css('input[name="work_package[due_date]"][disabled]')
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Cancel")
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Save")
       end
@@ -66,8 +66,8 @@ RSpec.describe "Manual scheduling", :js do
 
       # Expect editable
       start_date.within_modal do
-        expect(page).to have_css('input[name="startDate"]:not([disabled])')
-        expect(page).to have_css('input[name="endDate"]:not([disabled])')
+        expect(page).to have_css('input[name="work_package[start_date]"]:not([disabled])')
+        expect(page).to have_css('input[name="work_package[due_date]"]:not([disabled])')
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Cancel")
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Save")
       end
@@ -90,8 +90,8 @@ RSpec.describe "Manual scheduling", :js do
 
       # Expect not editable
       start_date.within_modal do
-        expect(page).to have_css("input[name=startDate][disabled]")
-        expect(page).to have_css("input[name=endDate][disabled]")
+        expect(page).to have_css('input[name="work_package[start_date]"][disabled]')
+        expect(page).to have_css('input[name="work_package[due_date]"][disabled]')
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Cancel")
         expect(page).to have_css("#{test_selector('op-datepicker-modal--action')}:not([disabled])", text: "Save")
       end
@@ -101,8 +101,8 @@ RSpec.describe "Manual scheduling", :js do
 
       # Expect not editable
       start_date.within_modal do
-        fill_in "startDate", with: "2020-07-20"
-        fill_in "endDate", with: "2020-07-25"
+        fill_in "work_package[start_date]", with: "2020-07-20"
+        fill_in "work_package[due_date]", with: "2020-07-25"
       end
 
       # Wait for the debounce to be done
