@@ -2,7 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, DebugElement, Input } from '@angular/core';
 import { By } from "@angular/platform-browser";
 import { PullRequestComponent } from "./pull-request.component";
+import { OpIconComponent } from 'core-app/shared/components/icon/icon.component';
 import { IGithubCheckRunResource, IGithubPullRequest, IGithubUserResource } from '../state/github-pull-request.model';
+import { PullRequestStateComponent } from './pull-request-state.component';
 
 @Component({
   selector: 'op-date-time',
@@ -81,6 +83,8 @@ describe('PullRequestComponent', () => {
         declarations: [
           PullRequestComponent,
           OpDateTimeComponent,
+          OpIconComponent,
+          PullRequestStateComponent,
         ],
       })
       .compileComponents();
