@@ -77,7 +77,7 @@ class DateEditField < EditField
 
   def activate_due_date_within_modal
     within_modal do
-      find('[data-test-selector="op-datepicker-modal--end-date-field"]').click
+      find('[data-test-selector="op-datepicker-modal--due-date-field"]').click
     end
   end
 
