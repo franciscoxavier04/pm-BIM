@@ -356,7 +356,7 @@ export default class IndexController extends Controller {
   }
 
   private handleInitialScroll() {
-    const anchorTypeRegex = new RegExp(`#(${AnchorType.Comment}|${AnchorType.Activity})-(\\d+)`);
+    const anchorTypeRegex = new RegExp(`#(${AnchorType.Comment}|${AnchorType.Activity})-(\\d+)`, 'i');
     const activityIdMatch = window.location.hash.match(anchorTypeRegex); // Ex. [ "#comment-80", "comment", "80" ]
 
     if (activityIdMatch && activityIdMatch.length === 3) {
