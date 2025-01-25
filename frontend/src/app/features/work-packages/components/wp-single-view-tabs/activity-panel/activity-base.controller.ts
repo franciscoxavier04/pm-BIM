@@ -45,6 +45,7 @@ import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { WpSingleViewService } from 'core-app/features/work-packages/routing/wp-view-base/state/wp-single-view.service';
 import { BrowserDetector } from 'core-app/core/browser/browser-detector.service';
 import { DeviceService } from 'core-app/core/browser/device.service';
+import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 
 @Directive()
 export class ActivityPanelBaseController extends UntilDestroyedMixin implements OnInit {
@@ -71,6 +72,8 @@ export class ActivityPanelBaseController extends UntilDestroyedMixin implements 
     showAll: this.I18n.t('js.label_activity_show_all'),
   };
 
+  public turboFrameSrc:string;
+
   private additionalScrollMargin = 200;
 
   private initialized = false;
@@ -87,6 +90,7 @@ export class ActivityPanelBaseController extends UntilDestroyedMixin implements 
     readonly browserDetector:BrowserDetector,
     private wpSingleViewService:WpSingleViewService,
     readonly deviceService:DeviceService,
+    readonly pathHelper:PathHelperService,
   ) {
     super();
 
@@ -121,6 +125,8 @@ export class ActivityPanelBaseController extends UntilDestroyedMixin implements 
       .subscribe(() => {
         this.reloadActivities();
       });
+
+    this.turboFrameSrc = `${this.pathHelper.staticBase}/work_packages/${this.workPackage.id}/activities`;
   }
 
   private scrollIfNotificationPresent() {
