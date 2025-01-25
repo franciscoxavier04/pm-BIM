@@ -3,7 +3,7 @@ require "spec_helper"
 require "features/work_packages/work_packages_page"
 require "support/edit_fields/edit_field"
 
-RSpec.describe "Activity tab notifications", :js, :selenium do
+RSpec.describe "Activity tab notifications", :js do
   shared_let(:project) { create(:project_with_types, public: true) }
   shared_let(:work_package) do
     create(:work_package,
@@ -71,6 +71,7 @@ RSpec.describe "Activity tab notifications", :js, :selenium do
     before do
       login_as(admin)
       full_view.visit_tab! "activity"
+      full_view.wait_for_activity_tab
     end
 
     it_behaves_like "when there are notifications for the work package"
@@ -84,6 +85,7 @@ RSpec.describe "Activity tab notifications", :js, :selenium do
     before do
       login_as(admin)
       split_view.visit_tab! "activity"
+      split_view.wait_for_activity_tab
     end
 
     it_behaves_like "when there are notifications for the work package"
@@ -100,6 +102,7 @@ RSpec.describe "Activity tab notifications", :js, :selenium do
     it "does not show an error" do
       full_view.visit_tab! "activity"
       full_view.ensure_page_loaded
+      full_view.wait_for_activity_tab
 
       full_view.expect_no_toaster type: :error, message: "Http failure response for"
       full_view.expect_no_toaster
