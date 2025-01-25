@@ -10,6 +10,7 @@ import { PullRequestComponent } from "core-app/features/plugins/linked/openproje
 import { By } from "@angular/platform-browser";
 import { I18nService } from "core-app/core/i18n/i18n.service";
 import { IGithubPullRequest } from '../state/github-pull-request.model';
+import { PullRequestStateComponent } from '../pull-request/pull-request-state.component';
 
 @Component({
   selector: 'op-date-time',
@@ -133,6 +134,7 @@ describe('TabPrsComponent', () => {
           OpIconComponent,
           GitActionsMenuDirective,
           PullRequestComponent,
+          PullRequestStateComponent,
           OpDateTimeComponent,
         ],
         providers: [
