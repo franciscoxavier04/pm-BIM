@@ -74,6 +74,7 @@ export default class IndexController extends Controller {
 
     this.setLatestKnownChangesetUpdatedAt();
     this.startPolling();
+    this.setCssClasses();
   }
 
   disconnect() {
@@ -459,6 +460,9 @@ export default class IndexController extends Controller {
 
   // Code Maintenance: Get rid of this JS based view port checks when activities are rendered in fully primierized activity tab in all contexts
   private isMobile():boolean {
+    if (this.isWithinNotificationCenter() || this.isWithinSplitScreen()) {
+      return window.innerWidth < 1013;
+    }
     return window.innerWidth < 1279;
   }
 
@@ -468,6 +472,15 @@ export default class IndexController extends Controller {
 
   private isWithinSplitScreen():boolean {
     return window.location.pathname.includes('work_packages/details');
+  }
+
+  private setCssClasses() {
+    if (this.isWithinNotificationCenter()) {
+      this.element.classList.add('work-packages-activities-tab-index-component--within-notification-center');
+    }
+    if (this.isWithinSplitScreen()) {
+      this.element.classList.add('work-packages-activities-tab-index-component--within-split-screen');
+    }
   }
 
   private addEventListenersToCkEditorInstance() {
