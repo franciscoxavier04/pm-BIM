@@ -50,10 +50,11 @@ module WorkPackages
                  underline: false,
                  font_size: :small,
                  data: {
+                   test_selector: "activity-anchor-link",
                    turbo: false,
                    action: "click->work-packages--activities-tab--index#setAnchor:prevent",
                    "work-packages--activities-tab--index-id-param": journal_activity_id(journal),
-                   "work-packages--activities-tab--index-anchor-name-param": anchor_name
+                   "work-packages--activities-tab--index-anchor-name-param": activity_anchor_name
                  }
                )) do
           "##{journal_activity_id(journal)}"
@@ -69,10 +70,10 @@ module WorkPackages
       end
 
       def activity_anchor(journal)
-        "##{anchor_name}-#{journal_activity_id(journal)}"
+        "##{activity_anchor_name}-#{journal_activity_id(journal)}"
       end
 
-      def anchor_name
+      def activity_anchor_name
         OpenProject::FeatureDecisions.work_package_comment_id_url_active? ? "comment" : "activity"
       end
 

@@ -5,10 +5,15 @@ import {
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 
+enum AnchorType {
+  Comment = 'comment',
+  Activity = 'activity',
+}
+
 interface CustomEventWithIdParam extends Event {
   params:{
     id:string;
-    anchorName:string;
+    anchorName:AnchorType;
   };
 }
 
@@ -351,19 +356,19 @@ export default class IndexController extends Controller {
   }
 
   private handleInitialScroll() {
-    // Ex. [ "#comment-80", "comment", "80" ]
-    const activityIdMatch = window.location.hash.match(/#(comment|activity)-(\d+)/);
+    const anchorTypeRegex = new RegExp(`#(${AnchorType.Comment}|${AnchorType.Activity})-(\\d+)`);
+    const activityIdMatch = window.location.hash.match(anchorTypeRegex); // Ex. [ "#comment-80", "comment", "80" ]
 
     if (activityIdMatch && activityIdMatch.length === 3) {
-      this.scrollToActivity(activityIdMatch[2]);
+      this.scrollToActivity(activityIdMatch[1] as AnchorType, activityIdMatch[2]);
     } else if (this.sortingValue === 'asc' && (!this.isMobile() || this.isWithinNotificationCenter())) {
       this.scrollToBottom();
     }
   }
 
-  private tryScroll(activityId:string, attempts:number, maxAttempts:number) {
+  private tryScroll(activityAnchorName:AnchorType, activityId:string, attempts:number, maxAttempts:number) {
     const scrollableContainer = this.getScrollableContainer();
-    const activityElement = document.getElementById(`activity-anchor-${activityId}`);
+    const activityElement = document.querySelector(`[data-anchor-${activityAnchorName}-id="${activityId}"]`);
     const topPadding = 70;
 
     if (activityElement && scrollableContainer) {
@@ -377,13 +382,13 @@ export default class IndexController extends Controller {
         scrollableContainer.scrollTop = relativeTop - topPadding;
       }, 50);
     } else if (attempts < maxAttempts) {
-      setTimeout(() => this.tryScroll(activityId, attempts + 1, maxAttempts), 1000);
+      setTimeout(() => this.tryScroll(activityAnchorName, activityId, attempts + 1, maxAttempts), 1000);
     }
   }
 
-  private scrollToActivity(activityId:string) {
+  private scrollToActivity(activityAnchorName:AnchorType, activityId:string) {
     const maxAttempts = 20; // wait max 20 seconds for the activity to be rendered
-    this.tryScroll(activityId, 0, maxAttempts);
+    this.tryScroll(activityAnchorName, activityId, 0, maxAttempts);
   }
 
   private tryScrollToBottom(attempts:number = 0, maxAttempts:number = 20) {
@@ -434,7 +439,7 @@ export default class IndexController extends Controller {
     const activityId = event.params.id;
     const anchorName = event.params.anchorName;
 
-    this.scrollToActivity(activityId);
+    this.scrollToActivity(anchorName, activityId);
     window.location.hash = `#${anchorName}-${activityId}`;
   }
 

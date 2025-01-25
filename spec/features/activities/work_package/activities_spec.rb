@@ -886,30 +886,70 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
       context "when sorting set to asc" do
         let!(:admin_preferences) { create(:user_preference, user: admin, others: { comments_sorting: :asc }) }
 
-        before do
-          visit project_work_package_path(project, work_package.id, "activity", anchor: "activity-1")
-          wp_page.wait_for_activity_tab
+        context "with #activity- anchor" do
+          before do
+            visit project_work_package_path(project, work_package.id, "activity", anchor: "activity-1")
+            wp_page.wait_for_activity_tab
+          end
+
+          it "scrolls to the comment specified in the URL", :aggregate_failures do
+            wait_for_auto_scrolling_to_finish
+            activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
+
+            activity_tab.expect_activity_anchor_link(text: "#1")
+          end
         end
 
-        it "scrolls to the comment specified in the URL", :aggregate_failures do
-          sleep 1 # wait for auto scrolling to finish
-          activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
+        context "with #comment- anchor",
+                with_flag: { primerized_work_package_activities: true, work_package_comment_id_url: true } do
+          before do
+            visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-1")
+            wp_page.wait_for_activity_tab
+          end
+
+          it "scrolls to the comment specified in the URL", :aggregate_failures do
+            wait_for_auto_scrolling_to_finish
+            activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
+
+            # activity_tab.expect_no_activity_anchor_link TODO: Enable once timestamps converted to anchors
+          end
         end
       end
 
       context "when sorting set to desc" do
         let!(:admin_preferences) { create(:user_preference, user: admin, others: { comments_sorting: :desc }) }
 
-        before do
-          visit project_work_package_path(project, work_package.id, "activity", anchor: "activity-1")
-          wp_page.wait_for_activity_tab
+        context "with #activity- anchor" do
+          before do
+            visit project_work_package_path(project, work_package.id, "activity", anchor: "activity-1")
+            wp_page.wait_for_activity_tab
+          end
+
+          it "scrolls to the comment specified in the URL", :aggregate_failures do
+            wait_for_auto_scrolling_to_finish
+            activity_tab.expect_journal_container_at_bottom # would be at the top if no anchor would be provided
+
+            activity_tab.expect_activity_anchor_link(text: "#1")
+          end
         end
 
-        it "scrolls to the comment specified in the URL", :aggregate_failures do
-          sleep 1 # wait for auto scrolling to finish
-          activity_tab.expect_journal_container_at_bottom # would be at the top if no anchor would be provided
+        context "with #comment- anchor",
+                with_flag: { primerized_work_package_activities: true, work_package_comment_id_url: true } do
+          before do
+            visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-1")
+            wp_page.wait_for_activity_tab
+          end
+
+          it "scrolls to the comment specified in the URL", :aggregate_failures do
+            wait_for_auto_scrolling_to_finish
+            activity_tab.expect_journal_container_at_bottom # would be at the top if no anchor would be provided
+
+            # activity_tab.expect_no_activity_anchor_link TODO: Enable once timestamps converted to anchors
+          end
         end
       end
+
+      def wait_for_auto_scrolling_to_finish = sleep(1)
     end
 
     context "when sorting set to asc" do
