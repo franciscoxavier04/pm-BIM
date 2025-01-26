@@ -135,11 +135,11 @@ tr:
               name: Temel kurulu
               lists:
                 item_0:
-                  name: Wish list
+                  name: İstek listesi
                 item_1:
-                  name: Short list
+                  name: Kısa liste
                 item_2:
-                  name: Priority list for today
+                  name: Bugün için öncelik listesi
                 item_3:
                   name: Hiçbir zaman
             parent_child:
