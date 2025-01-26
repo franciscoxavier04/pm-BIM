@@ -166,4 +166,4 @@ nl:
   api_v3:
     errors:
       validation:
-        start_time_different_date: "Date part of startTime (%{start_time}) must be the same as the spentOn (%{spent_on}) date."
+        start_time_different_date: "Het datumgedeelte van start tijd (%{start_time}) moet hetzelfde zijn als de uitgegeven op (%{spent_on}) datum."

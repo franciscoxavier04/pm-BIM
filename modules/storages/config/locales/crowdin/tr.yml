@@ -4,7 +4,7 @@ tr:
       storages/file_link:
         origin_id: Kaynak kimliği
       storages/project_storage:
-        storage: Storage
+        storage: Depolama
       storages/storage:
         creator: Oluşturan
         drive: Drive ID
@@ -24,11 +24,11 @@ tr:
         storages/project_storage:
           attributes:
             project_folder_id:
-              blank: Please select a folder.
+              blank: Lütfen bir klasör seçin.
             project_folder_mode:
               mode_unavailable: is not available for this storage.
             project_ids:
-              blank: Please select a project.
+              blank: Lütfen bir proje seçin.
         storages/storage:
           attributes:
             host:
@@ -46,7 +46,7 @@ tr:
   api_v3:
     errors:
       too_many_elements_created_at_once: Aynı anda çok fazla öğe oluşturuldu. En fazla %{max} bekleniyordu, %{actual} alındı.
-  external_file_storages: External file storages
+  external_file_storages: Harici dosya depoları
   permission_create_files: 'Automatically managed project folders: Create files'
   permission_create_files_explanation: This permission is only available for Nextcloud storages
   permission_delete_files: 'Automatically managed project folders: Delete files'
@@ -382,8 +382,8 @@ tr:
         name: OneDrive/SharePoint
         name_placeholder: e.g. OneDrive
     show_attachments_toggle:
-      description: 'Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage. '
-      label: Show attachments in the work packages files tab
+      description: 'Bu seçeneğin devre dışı bırakılması, iş paketleri dosyaları sekmesindeki ekler listesini gizleyecektir. Bir iş paketinin açıklamasına eklenen dosyalar dahili ekler deposuna yüklenmeye devam edecektir. '
+      label: İş paketleri dosyaları sekmesinde ekleri göster
     storage_list_blank_slate:
       description: Add a storage to see them here.
       heading: You don't have any storages yet.
