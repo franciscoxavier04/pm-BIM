@@ -105,6 +105,7 @@ RSpec.describe "Primerized work package relations tab",
     create(:work_package,
            subject: "restricted_child_work_package",
            parent: work_package,
+           start_date: Time.zone.today,
            project: restricted_project)
   end
   shared_let(:restricted_relation_relates) do
@@ -154,6 +155,24 @@ RSpec.describe "Primerized work package relations tab",
       # Relations not visible due to lack of permissions on the project
       relations_tab.expect_ghost_relation(restricted_relation_relates)
       relations_tab.expect_ghost_relation(restricted_child_work_package)
+    end
+
+    it "renders ghost children" do
+      scroll_to_element relations_panel
+
+      wait_for_network_idle
+
+      restricted_child_row = relations_panel.find(
+        "[data-test-selector='op-relation-row-ghost-#{restricted_child_work_package.id}']"
+      )
+
+      within(restricted_child_row) do
+        expect(restricted_child_row).to have_no_css(
+          "[data-test-selector='op-relation-row-#{restricted_child_work_package.id}-action-menu']"
+        )
+
+        expect(restricted_child_row).to have_text(Time.zone.today.strftime("%m/%d/%Y").to_s)
+      end
     end
   end
 
