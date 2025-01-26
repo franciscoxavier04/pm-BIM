@@ -43,23 +43,19 @@ module OpenProject
 
     # Displays a link to user's account page if active or registered
     def link_to_user(user, options = {})
-      if user.is_a?(User) && user.locked?
-        user.name
-      elsif user.is_a?(User)
-        only_path = options.delete(:only_path) { true }
-        name = user.name
-        href = user_url(user, only_path:)
-        options[:title] ||= I18n.t(:label_user_named, name:)
+      return h(user.to_s) unless user.is_a?(User)
+      return h(user.name) if user.locked? && !User.current.admin?
 
-        add_hover_card_options(user, options, only_path:, clazz_key: :class)
+      only_path = options.delete(:only_path) { true }
+      name = options.delete(:name) { user.name }
+      options[:title] ||= I18n.t(:label_user_named, name:)
 
-        link_to(name, href, options)
-      else
-        h(user.to_s)
-      end
+      add_hover_card_options(user, options, only_path:, clazz_key: :class)
+
+      link_to(name, user_url(user, only_path:), options)
     end
 
-    # Displays a link to groups's account page
+    # Displays a link to group's account page
     def link_to_group(group, options = {})
       return h(group.to_s) unless group.is_a?(Group)
 
