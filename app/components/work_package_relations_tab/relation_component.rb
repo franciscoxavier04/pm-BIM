@@ -72,7 +72,7 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def should_display_dates_row?
-    return false if parent_child_relationship?
+    return true if parent_child_relationship?
 
     relation.follows? || relation.precedes?
   end

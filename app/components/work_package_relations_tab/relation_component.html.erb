@@ -75,41 +75,52 @@
     # Show dates for both visible and ghost relation
     if should_display_dates_row?
       flex.with_row(flex_layout: true, align_items: :center, color: :muted, mb: 2) do |dates_row|
-        if precedes? && lag_present?
+        if parent_child_relationship?
           dates_row.with_column(mr: 1) do
-            render(Primer::Beta::Octicon.new(icon: "arrow-both"))
-          end
-          dates_row.with_column(mr: 3) do
-            render(Primer::Beta::Text.new) do
-              lag_as_text(relation.lag)
-            end
-          end
-        end
-
-        if related_work_package.start_date.present? || related_work_package.due_date.present?
-          dates_row.with_column(mr: 1) do
-            icon = if follows?
-                     :calendar
-                   elsif precedes?
-                     :pin
-                   end
-
-            render(Primer::Beta::Octicon.new(icon:))
+            render(Primer::Beta::Octicon.new(icon: :calendar))
           end
           dates_row.with_column do
             render(Primer::Beta::Text.new) do
               "#{format_date(related_work_package.start_date)} - #{format_date(related_work_package.due_date)}"
             end
           end
-        end
-
-        if follows? && lag_present?
-          dates_row.with_column(ml: 3, mr: 1) do
-            render(Primer::Beta::Octicon.new(icon: "arrow-both"))
+        else
+          if precedes? && lag_present?
+            dates_row.with_column(mr: 1) do
+              render(Primer::Beta::Octicon.new(icon: "arrow-both"))
+            end
+            dates_row.with_column(mr: 3) do
+              render(Primer::Beta::Text.new) do
+                lag_as_text(relation.lag)
+              end
+            end
           end
-          dates_row.with_column(mr: 1) do
-            render(Primer::Beta::Text.new) do
-              lag_as_text(relation.lag)
+
+          if related_work_package.start_date.present? || related_work_package.due_date.present?
+            dates_row.with_column(mr: 1) do
+              icon = if follows?
+                       :calendar
+                     elsif precedes?
+                       :pin
+                     end
+
+              render(Primer::Beta::Octicon.new(icon:))
+            end
+            dates_row.with_column do
+              render(Primer::Beta::Text.new) do
+                "#{format_date(related_work_package.start_date)} - #{format_date(related_work_package.due_date)}"
+              end
+            end
+          end
+
+          if follows? && lag_present?
+            dates_row.with_column(ml: 3, mr: 1) do
+              render(Primer::Beta::Octicon.new(icon: "arrow-both"))
+            end
+            dates_row.with_column(mr: 1) do
+              render(Primer::Beta::Text.new) do
+                lag_as_text(relation.lag)
+              end
             end
           end
         end
