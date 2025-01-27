@@ -174,7 +174,7 @@ class CostReportsController < ApplicationController
   # Update a record with new query parameters and save it. Redirects to the
   # specified record or renders the updated table on XHR
   def update
-    if set_filter? # apply
+    if set_filter? # save
       old_query = @query
       prepare_query
       if old_query
