@@ -84,6 +84,7 @@ module Acts::Journalized::Differ
     end
 
     def combine_journals(journals, attribute)
+      # TODO: is there real case where there will be more than one value?
       journals.pluck(attribute).sort.join(",") if journals
     end
   end
