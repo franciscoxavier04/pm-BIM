@@ -88,7 +88,7 @@ class CostReportsController < ApplicationController
   def render_html
     session[session_name].try(:delete, :name)
     # get rid of unsaved filters and grouping
-    store_query(@query) if @query&.id != session[session_name].try(:id)
+    store_query if @query && @query&.id != session[session_name].try(:id)
     render locals: { menu_name: project_or_global_menu }
   end
 
@@ -150,7 +150,7 @@ class CostReportsController < ApplicationController
   # at :id does not exist
   def show
     if @query
-      store_query(@query)
+      store_query
       table
       render action: "index", locals: { menu_name: project_or_global_menu } unless performed?
     else
@@ -197,7 +197,7 @@ class CostReportsController < ApplicationController
     @query.name = params[:query_name]
     @query.public! if make_query_public?
     @query.save!
-    store_query(@query)
+    store_query
     if request.xhr?
       render plain: @query.name
     else
@@ -541,12 +541,12 @@ class CostReportsController < ApplicationController
 
   ##
   # Store query in the session
-  def store_query(_query)
+  def store_query
     cookie = {}
     cookie[:groups] = cookie_groups
     cookie[:filters] = cookie_filters
-    cookie[:name] = @query.name if @query.name
-    cookie[:id] = @query.id
+    cookie[:name] = @query.name if @query&.name
+    cookie[:id] = @query.id if @query&.id
     session[session_name] = cookie
   end
 
