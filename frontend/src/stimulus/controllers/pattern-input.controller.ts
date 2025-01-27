@@ -30,6 +30,12 @@
 
 import { Controller } from '@hotwired/stimulus';
 
+// internal type used to filter suggestions
+type FilteredSuggestions = Array<{
+  key:string;
+  values:Array<{ prop:string; value:string; }>;
+}>;
+
 export default class PatternInputController extends Controller {
   static targets = [
     'tokenTemplate',
@@ -59,10 +65,12 @@ export default class PatternInputController extends Controller {
   declare patternInitialValue:string;
   declare suggestionsInitialValue:Record<string, Record<string, string>>;
 
+  validTokens:string[];
   currentRange:Range|undefined = undefined;
 
   connect() {
     this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
+    this.extractValidTokens();
     this.tagInvalidTokens();
   }
 
@@ -129,6 +137,11 @@ export default class PatternInputController extends Controller {
   }
 
   // internal methods
+  extractValidTokens() {
+    const res = Object.values(this.suggestionsInitialValue).map((group) => (Object.keys(group)));
+    this.validTokens = ([] as string[]).concat(...res);
+  }
+
   private updateFormInputValue():void {
     this.formInputTarget.value = this.toBlueprint();
   }
@@ -199,16 +212,8 @@ export default class PatternInputController extends Controller {
   private filterSuggestions(word:string):void {
     this.clearSuggestionsFilter();
 
-    const filtered = Object.keys(this.suggestionsInitialValue).map((key) => {
-      const group = this.suggestionsInitialValue[key];
-      return {
-        key,
-        values: Object.keys(group).filter((prop) => {
-          const value = group[prop];
-          return value.toLowerCase().includes(word.toLowerCase()) || prop.toLowerCase().includes(word.toLowerCase()) || word === '*';
-        }).map((prop) => ({ prop, value: group[prop] })),
-      };
-    }).filter((group) => group.values.length > 0);
+    const filtered = this.getFilteredSuggestionsData(word);
+
     // insert the HTML
     filtered.forEach((group) => {
       const groupHeader = this.suggestionsHeadingTemplateTarget.content?.cloneNode(true) as HTMLElement;
@@ -220,7 +225,7 @@ export default class PatternInputController extends Controller {
         const suggestionTemplate = this.suggestionsItemTemplateTarget.content?.cloneNode(true) as HTMLElement;
         const suggestionItem = suggestionTemplate.firstElementChild as HTMLElement;
         suggestionItem.dataset.prop = suggestion.prop;
-        suggestionItem.querySelector('span')!.innerText = suggestion.value;
+        this.setSuggestionText(suggestionItem, suggestion.value);
         this.suggestionsTarget.appendChild(suggestionItem);
       });
 
@@ -229,17 +234,33 @@ export default class PatternInputController extends Controller {
     });
   }
 
+  setSuggestionText(suggestionItem:HTMLElement, value:string) {
+    const textContainer = suggestionItem.querySelector('span');
+    if (textContainer) {
+      textContainer.innerText = value;
+    } else {
+      throw new Error('suggestion template does not have a span to hold the suggestion value');
+    }
+  }
+
+  private getFilteredSuggestionsData(word:string):FilteredSuggestions {
+    return Object.keys(this.suggestionsInitialValue).map((key) => {
+      const group = this.suggestionsInitialValue[key];
+      return {
+        key,
+        values: Object.entries(group).filter(([prop, value]) => {
+          return value.toLowerCase().includes(word.toLowerCase()) || prop.toLowerCase().includes(word.toLowerCase()) || word === '*';
+        }).map(([prop, value]) => ({ prop, value })),
+      };
+    }).filter((group) => group.values.length > 0);
+  }
+
   private tagInvalidTokens():void {
     this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element) => {
       const token = element.textContent?.trim();
 
       let exists = false;
-      Object.keys(this.suggestionsInitialValue).forEach((key) => {
-        const group = this.suggestionsInitialValue[key];
-        Object.keys(group).forEach((prop) => {
-          if (prop === token) { exists = true; }
-        });
-      });
+      this.validTokens.forEach((prop) => { if (prop === token) { exists = true; } });
 
       if (exists) {
         element.classList.remove('Label--danger');
@@ -247,14 +268,6 @@ export default class PatternInputController extends Controller {
         element.classList.add('Label--danger');
       }
     });
-  }
-
-  private hide(el:HTMLElement):void {
-    el.setAttribute('hidden', 'hidden');
-  }
-
-  private show(el:HTMLElement):void {
-    el.removeAttribute('hidden');
   }
 
   private createToken(value:string):HTMLElement {
