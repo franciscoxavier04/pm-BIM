@@ -176,20 +176,9 @@ export class HoverCardTriggerService {
   }
 
   private findSiblingElementWithHoverCardData(el:HTMLElement) {
-    let sibling = el.previousElementSibling;
-    while (sibling) {
-      if (sibling.classList.contains('op-principal')) {
-        return this.childElementWithHoverCardTrigger(sibling);
-      }
-      sibling = sibling.previousElementSibling;
-    }
-
-    sibling = el.nextElementSibling;
-    while (sibling) {
-      if (sibling.classList.contains('op-principal')) {
-        return this.childElementWithHoverCardTrigger(sibling);
-      }
-      sibling = sibling.nextElementSibling;
+    const sibling = jQuery(el).siblings('.op-principal').get(0);
+    if (sibling) {
+      return this.childElementWithHoverCardTrigger(sibling);
     }
 
     return null;
