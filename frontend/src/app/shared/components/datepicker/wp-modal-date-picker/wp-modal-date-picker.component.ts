@@ -220,7 +220,7 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
       instance.setDate(dates[0]);
     } else {
       const selectedDate:Date = this.lastClickedDate(dates) || dates[0];
-      if (this.fieldName === 'due_date') {
+      if (this.fieldName === 'due_date' || (this.fieldName === 'duration' && this.startDate !== null && this.dueDate === null)) {
         this.setDueDate(selectedDate);
         this.fieldName = 'start_date';
       } else {

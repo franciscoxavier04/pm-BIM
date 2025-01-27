@@ -492,8 +492,12 @@ module WorkPackages
       # the values don't match (e.g because a float was passed)
       return false if !value.is_a?(String) && value != duration
 
-      # A string is passed, put the transformed value does not match
-      return false if value.is_a?(String) && value.to_i.to_s != value
+      if value.is_a?(String)
+        return true if value == "" && duration.nil?
+
+        # A string is passed, put the transformed value does not match
+        return false if value.to_i.to_s != value
+      end
 
       # duration is valid
       true
