@@ -36,12 +36,19 @@ module Storages::Admin::Forms
     attr_reader :storage
     alias_method :oauth_client, :model
 
+    options in_wizard: false
+
+    def self.wrapper_key = :storage_oauth_client_section
+
     def initialize(oauth_client:, storage:, **)
       super(oauth_client, **)
       @storage = storage
     end
 
-    def self.wrapper_key = :storage_oauth_client_section
+    def form_url
+      query = { continue_wizard: storage.id } if in_wizard
+      admin_settings_storage_oauth_client_path(storage, query)
+    end
 
     def form_method
       options[:form_method] || default_form_method
@@ -74,6 +81,10 @@ module Storages::Admin::Forms
 
     def default_form_method
       first_time_configuration? ? :post : :patch
+    end
+
+    def data_attributes
+      { turbo_frame: "page-content" }
     end
   end
 end

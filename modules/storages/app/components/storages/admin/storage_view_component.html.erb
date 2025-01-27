@@ -5,8 +5,8 @@
     end
 
     component.with_row(scheme: :default) do
-      if storage.new_record?
-        render(Storages::Admin::Forms::GeneralInfoFormComponent.new(storage))
+      if wizard_step == "general_info"
+        render(Storages::Admin::Forms::GeneralInfoFormComponent.new(storage, in_wizard: true))
       else
         render(Storages::Admin::GeneralInfoComponent.new(storage))
       end
@@ -16,21 +16,25 @@
       component.with_row(scheme: :neutral, color: :muted) do
         grid_layout('op-storage-view--row', tag: :div, align_items: :center) do |grid|
           grid.with_area(:item, tag: :div, mr: 3) do
-            render(Primer::Beta::Text.new(font_weight: :semibold, mr: 1)) { I18n.t('storages.file_storage_view.oauth_applications') }
+            render(Primer::Beta::Text.new(font_weight: :semibold, mr: 1)) { I18n.t('storages.file_storage_view.oauth_configuration') }
           end
         end
       end
 
       component.with_row(scheme: :default) do
-        if storage.new_record? || openproject_oauth_application_section_closed?
-          render(Storages::Admin::OAuthApplicationInfoComponent.new(oauth_application:, storage:))
+        if wizard_step == "oauth_application"
+          render(Storages::Admin::OAuthApplicationInfoCopyComponent.new(oauth_application:, storage:, in_wizard: true))
         else
-          render(Storages::Admin::OAuthApplicationInfoCopyComponent.new(oauth_application:, storage:))
+          render(Storages::Admin::OAuthApplicationInfoComponent.new(oauth_application:, storage:))
         end
       end
 
       component.with_row(scheme: :default) do
-        render(Storages::Admin::OAuthClientInfoComponent.new(oauth_client: storage.oauth_client, storage:))
+        if wizard_step == "oauth_client"
+          render(Storages::Admin::Forms::OAuthClientFormComponent.new(oauth_client: storage.oauth_client, storage:, in_wizard: true))
+        else
+          render(Storages::Admin::OAuthClientInfoComponent.new(oauth_client: storage.oauth_client, storage:))
+        end
       end
 
       component.with_row(scheme: :neutral, color: :muted) do
@@ -42,10 +46,10 @@
       end
 
       component.with_row(scheme: :default) do
-        if automatically_managed_project_folders_section_closed?
-          render(Storages::Admin::AutomaticallyManagedProjectFoldersInfoComponent.new(storage))
+        if wizard_step == "automatically_managed_project_folders"
+          render(Storages::Admin::Forms::AutomaticallyManagedProjectFoldersFormComponent.new(storage, in_wizard: true))
         else
-          render(Storages::Admin::Forms::AutomaticallyManagedProjectFoldersFormComponent.new(storage))
+          render(Storages::Admin::AutomaticallyManagedProjectFoldersInfoComponent.new(storage))
         end
       end
     end
@@ -60,23 +64,35 @@
       end
 
       component.with_row(scheme: :default) do
-        render(Storages::Admin::AccessManagementComponent.new(storage))
+        if wizard_step == "access_management"
+          render(Storages::Admin::Forms::AccessManagementFormComponent.new(storage, in_wizard: true))
+        else
+          render(Storages::Admin::AccessManagementComponent.new(storage))
+        end
       end
 
       component.with_row(scheme: :neutral, color: :muted) do
         grid_layout('op-storage-view--row', tag: :div, align_items: :center) do |grid|
           grid.with_area(:item, tag: :div, mr: 3) do
-            render(Primer::Beta::Text.new(font_weight: :semibold, mr: 1)) { I18n.t('storages.file_storage_view.oauth_applications') }
+            render(Primer::Beta::Text.new(font_weight: :semibold, mr: 1)) { I18n.t('storages.file_storage_view.oauth_configuration') }
           end
         end
       end
 
       component.with_row(scheme: :default) do
-        render(Storages::Admin::OAuthClientInfoComponent.new(oauth_client: storage.oauth_client, storage:))
+        if wizard_step == "oauth_client"
+          render(Storages::Admin::Forms::OAuthClientFormComponent.new(oauth_client: storage.oauth_client, storage:, in_wizard: true))
+        else
+          render(Storages::Admin::OAuthClientInfoComponent.new(oauth_client: storage.oauth_client, storage:))
+        end
       end
 
       component.with_row(scheme: :default) do
-        render(Storages::Admin::RedirectUriComponent.new(oauth_client: storage.oauth_client, storage:))
+        if wizard_step == "redirect_uri"
+          render(Storages::Admin::Forms::RedirectUriFormComponent.new(oauth_client: storage.oauth_client, storage:, in_wizard: true))
+        else
+          render(Storages::Admin::RedirectUriComponent.new(oauth_client: storage.oauth_client, storage:))
+        end
       end
     end
   end

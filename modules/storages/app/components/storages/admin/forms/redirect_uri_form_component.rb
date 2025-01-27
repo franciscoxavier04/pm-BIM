@@ -36,12 +36,19 @@ module Storages::Admin::Forms
     attr_reader :storage
     alias_method :oauth_client, :model
 
+    options in_wizard: false
+
+    def self.wrapper_key = :storage_redirect_uri_section
+
     def initialize(oauth_client:, storage:, **)
       super(oauth_client, **)
       @storage = storage
     end
 
-    def self.wrapper_key = :storage_redirect_uri_section
+    def form_url
+      query = { continue_wizard: storage.id } if in_wizard
+      finish_setup_admin_settings_storage_oauth_client_path(storage, query)
+    end
 
     def cancel_button_path
       storage.persisted? ? edit_admin_settings_storage_path(storage) : admin_settings_storages_path
