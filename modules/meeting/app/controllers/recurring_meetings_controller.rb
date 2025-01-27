@@ -10,12 +10,14 @@ class RecurringMeetingsController < ApplicationController
 
   before_action :find_meeting,
                 only: %i[show update details_dialog delete_dialog destroy edit init
-                         delete_scheduled template_completed download_ics notify end_series end_series_dialog]
+                         delete_scheduled_dialog delete_scheduled template_completed download_ics notify end_series
+                         end_series_dialog]
   before_action :find_optional_project,
-                only: %i[index show new create update details_dialog delete_dialog destroy edit delete_scheduled notify]
+                only: %i[index show new create update details_dialog delete_dialog destroy edit delete_scheduled_dialog
+                         delete_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
-  before_action :get_scheduled_meeting, only: %i[delete_scheduled]
+  before_action :get_scheduled_meeting, only: %i[delete_scheduled_dialog delete_scheduled]
 
   before_action :convert_params, only: %i[create update]
   before_action :check_template_completable, only: %i[template_completed]
@@ -192,6 +194,13 @@ class RecurringMeetingsController < ApplicationController
     end
 
     redirect_to action: :show, id: @recurring_meeting, status: :see_other
+  end
+
+  def delete_scheduled_dialog
+    respond_with_dialog RecurringMeetings::DeleteScheduledDialogComponent.new(
+      scheduled: @scheduled,
+      project: @project
+    )
   end
 
   def delete_scheduled

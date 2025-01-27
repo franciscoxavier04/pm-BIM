@@ -294,6 +294,14 @@ en:
         Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series.
 
         This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost.
+
+        Do you want to continue?
+      confirm_button: "Cancel occurrence"
 
   notice_successful_notification: "Notification sent successfully"
   notice_timezone_missing: No time zone is set and %{zone} is assumed. To choose your time zone, please click here.

@@ -149,6 +149,23 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
   end
 
+  it "can cancel a scheduled occurrence from the global show page" do
+    show_page.visit!
+
+    show_page.cancel_occurrence date: "01/07/2025 01:30 PM"
+    show_page.in_delete_scheduled_dialog do
+      check "I understand that this deletion cannot be reversed"
+
+      click_on "Cancel occurrence"
+    end
+
+    expect_flash(type: :success, message: "Successful cancellation.")
+
+    expect(page).to have_current_path(show_page.path)
+
+    show_page.expect_cancelled_meeting date: "01/07/2025 01:30 PM"
+  end
+
   it "can cancel an occurrence from the project show page" do
     show_page.visit_project!
 
@@ -165,6 +182,23 @@ RSpec.describe "Recurring meetings CRUD",
 
     show_page.expect_no_open_meeting date: "12/31/2024 01:30 PM"
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
+  end
+
+  it "can cancel a scheduled occurrence from the project show page" do
+    show_page.visit_project!
+
+    show_page.cancel_occurrence date: "01/07/2025 01:30 PM"
+    show_page.in_delete_scheduled_dialog do
+      check "I understand that this deletion cannot be reversed"
+
+      click_on "Cancel occurrence"
+    end
+
+    expect_flash(type: :success, message: "Successful cancellation.")
+
+    expect(page).to have_current_path(show_page.project_path)
+
+    show_page.expect_cancelled_meeting date: "01/07/2025 01:30 PM"
   end
 
   it "can edit the details of a recurring meeting" do
