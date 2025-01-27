@@ -109,6 +109,9 @@ RSpec.describe "Datepicker logic on parents", :js, with_settings: { date_format:
         datepicker.toggle_scheduling_mode
         datepicker.expect_automatic_scheduling_mode
 
+        # In automatic mode, the dates are set by the children.
+        # Therefore, the calendar sheets also show the start_date of the child first
+        first_monday = Time.zone.parse(child_attributes[:start_date]).beginning_of_month.next_occurring(:monday)
         datepicker.expect_disabled(first_monday)
       end
     end
