@@ -254,7 +254,7 @@ en:
             description: Add items to this list to create sub-items inside another one
         delete_dialog:
           title: "Delete custom field item"
-          description: "This action is irreversible and will remove all containing sub-items. Assigned values of this item or its descendants will get removed. If the custom field is marked as required, this will render the elements invalid."
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
