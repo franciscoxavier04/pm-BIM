@@ -136,10 +136,6 @@ en:
   label_recurring_meeting_copy: "Copy as one-off"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
-  label_recurring_meeting_delete_confirmation: >
-    This meeting is part of a series called %{name}.
-    This will only delete this particular occurrence and not the entire series.
-    Do you want to continue?
   label_recurring_occurrence_delete_confirmation: >
     Any meeting information not in the template will be lost.
     Do you want to continue?
@@ -222,6 +218,19 @@ en:
       structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Copying a meeting will currently not copy the associated meeting agenda items, just the details"
     copied: "Copied from Meeting #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          Do you want to continue?
+      occurrence:
+        title: "Delete occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{name}</strong>.
+          This will only delete this particular occurrence and not the entire series.
+          Do you want to continue?
 
   meeting_section:
     untitled_title: "Untitled section"
