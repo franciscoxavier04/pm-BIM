@@ -1,8 +1,8 @@
 <%=
-  helpers.content_controller "poll-for-changes",
+  helpers.content_controller "poll-for-changes keep-scroll-position",
                      poll_for_changes_url_value: check_for_updates_meeting_path(@meeting),
                      poll_for_changes_interval_value: check_for_updates_interval,
-                     poll_for_changes_autoscroll_enabled_value: true
+                     keep_scroll_position_url_value: meeting_path(@meeting)
 
   component_wrapper do
     render(Primer::OpenProject::PageHeader.new(
