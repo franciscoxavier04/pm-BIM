@@ -31,8 +31,8 @@
 module WorkPackages
   module Types
     class SettingsForm < ApplicationForm
-      form do |subject_form|
-        subject_form.text_field(
+      form do |settings_form|
+        settings_form.text_field(
           name: :name,
           label: label(:name),
           placeholder: I18n.t(:label_name),
@@ -41,7 +41,7 @@ module WorkPackages
           disabled: model.is_standard?
         )
 
-        subject_form.color_select_list(
+        settings_form.color_select_list(
           name: :color_id,
           label: Color.model_name.human,
           caption: I18n.t("types.edit.settings.type_color_text"),
@@ -49,41 +49,45 @@ module WorkPackages
         )
 
         if show_work_flow_copy?
-          subject_form.select_list(
+          settings_form.select_list(
             name: :copy_workflow_from,
             label: label(:copy_workflow_from),
             include_blank: true,
             input_width: :large
           ) do |other_types|
             work_package_types.each do |type|
-              other_types.option(value: type.id, label: type.name)
+              other_types.option(
+                value: type.id,
+                label: type.name,
+                selected: type.id == prefilled_copy_workflow_from
+              )
             end
           end
         end
 
-        subject_form.rich_text_area(
+        settings_form.rich_text_area(
           name: :description,
           label: label(:description),
           input_width: :large,
           rich_text_options: { showAttachments: false }
         )
 
-        subject_form.check_box(
+        settings_form.check_box(
           name: :is_milestone,
           label: label(:is_milestone)
         )
 
-        subject_form.check_box(
+        settings_form.check_box(
           name: :is_in_roadmap,
           label: label(:is_in_roadmap)
         )
 
-        subject_form.check_box(
+        settings_form.check_box(
           name: :is_default,
           label: label(:is_default)
         )
 
-        subject_form.submit(
+        settings_form.submit(
           name: :submit,
           label: I18n.t(:button_save),
           scheme: :primary
@@ -102,6 +106,10 @@ module WorkPackages
 
       def work_package_types
         Type.all
+      end
+
+      def prefilled_copy_workflow_from
+        @builder.options[:copy_workflow_from]
       end
     end
   end

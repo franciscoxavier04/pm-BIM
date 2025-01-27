@@ -180,10 +180,14 @@ RSpec.describe TypesController do
         end
 
         let(:params) do
-          { "type" => { name: "New type",
-                        project_ids: { "1" => project.id },
-                        custom_field_ids: { "1" => custom_field_1.id, "2" => custom_field_2.id } },
-            "copy_workflow_from" => existing_type.id }
+          {
+            "type" => {
+              name: "New type",
+              project_ids: { "1" => project.id },
+              custom_field_ids: { "1" => custom_field_1.id, "2" => custom_field_2.id },
+              copy_workflow_from: existing_type.id
+            }
+          }
         end
 
         before do

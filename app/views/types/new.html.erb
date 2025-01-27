@@ -39,4 +39,10 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-<%= render WorkPackages::Types::SettingsComponent.new(@type) %>
+<%=
+  render WorkPackages::Types::SettingsComponent.new(
+    @type,
+    copy_workflow_from: params.dig(:type, :copy_workflow_from),
+    params:
+  )
+%>

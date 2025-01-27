@@ -34,11 +34,17 @@ module WorkPackages
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 
+      def initialize(model, **options)
+        @copy_workflow_from = options[:copy_workflow_from].to_i
+        super
+      end
+
       def form_options
         {
           url: model.new_record? ? types_path : type_path(id: model.id),
           method: model.new_record? ? :post : :patch,
-          model:
+          model:,
+          copy_workflow_from: @copy_workflow_from
         }
       end
     end

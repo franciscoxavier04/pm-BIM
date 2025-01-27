@@ -65,7 +65,7 @@ class TypesController < ApplicationController
   def create
     CreateTypeService
       .new(current_user)
-      .call(permitted_type_params, copy_workflow_from: params[:copy_workflow_from]) do |call|
+      .call(permitted_type_params, copy_workflow_from: params.dig(:type, :copy_workflow_from)) do |call|
       @type = call.result
 
       call.on_success do
