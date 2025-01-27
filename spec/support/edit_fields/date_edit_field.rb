@@ -8,7 +8,6 @@ class DateEditField < EditField
                  selector: nil,
                  is_milestone: false,
                  is_table: false)
-
     super(context, property_name, selector:)
     self.milestone = is_milestone
     self.is_table = is_table
@@ -50,7 +49,9 @@ class DateEditField < EditField
 
   def property_name
     if milestone
-      "date"
+      # when displaying date picker for milestone, only one date is displayed,
+      # and the input field name is `start_date`.
+      "start_date"
     else
       super
     end
