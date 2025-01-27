@@ -116,6 +116,18 @@ module Components
       expect(container).to have_css('[data-test-selector="op-datepicker-modal--duration-field"][data-qa-highlighted]')
     end
 
+    def expect_start_date_error(expected_error)
+      expect_field_error(start_date_field, expected_error)
+    end
+
+    def expect_due_date_error(expected_error)
+      expect_field_error(due_date_field, expected_error)
+    end
+
+    def expect_duration_error(expected_error)
+      expect_field_error(duration_field, expected_error)
+    end
+
     def expect_scheduling_mode(manually)
       if manually
         expect_manual_scheduling_mode
@@ -166,6 +178,26 @@ module Components
 
     def clear_duration
       set_duration("")
+    end
+
+    private
+
+    def expect_field_error(field, expected_error)
+      input_validation_element = input_aria_related_element(field, describedby: "validation")
+      if expected_error.nil?
+        expect(input_validation_element&.visible?)
+          .to be_falsey, "Expected no error message for #{field['name']} field, " \
+                         "got \"#{input_validation_element&.text}\""
+      else
+        expect(input_validation_element).to have_text(expected_error)
+      end
+    end
+
+    def input_aria_related_element(input_element, describedby:)
+      input_element["aria-describedby"]
+        .split
+        .find { _1.start_with?("#{describedby}-") }
+        &.then { |id| find(id:, visible: :all) }
     end
   end
 end
