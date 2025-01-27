@@ -921,7 +921,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
 
         context "with #activity- anchor" do
           before do
-            visit project_work_package_path(project, work_package.id, "activity", anchor: "activity-1")
+            visit project_work_package_path(project, work_package.id, "activity", anchor: "activity-2")
             wp_page.wait_for_activity_tab
           end
 
@@ -929,14 +929,14 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_bottom # would be at the top if no anchor would be provided
 
-            activity_tab.expect_activity_anchor_link(text: "#1")
+            activity_tab.expect_activity_anchor_link(text: "#2")
           end
         end
 
         context "with #comment- anchor",
                 with_flag: { primerized_work_package_activities: true, work_package_comment_id_url: true } do
           before do
-            visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-1")
+            visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-#{comment_1.id}")
             wp_page.wait_for_activity_tab
           end
 
