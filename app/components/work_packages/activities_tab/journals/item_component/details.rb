@@ -160,13 +160,21 @@ module WorkPackages
 
         def render_mobile_updated_time(container)
           container.with_column do
-            render(Primer::Beta::Text.new(font_size: :small, color: :subtle, mt: 1)) { format_time(journal.updated_at) }
+            if OpenProject::FeatureDecisions.work_package_comment_id_url_active?
+              activity_anchor_link(journal) { journal_updated_at_formatted_time(journal) }
+            else
+              journal_updated_at_formatted_time(journal)
+            end
           end
         end
 
         def render_updated_time(container)
           container.with_column(mr: 1, classes: "hidden-for-mobile") do
-            render(Primer::Beta::Text.new(font_size: :small, color: :subtle, mt: 1)) { format_time(journal.updated_at) }
+            if OpenProject::FeatureDecisions.work_package_comment_id_url_active?
+              activity_anchor_link(journal) { journal_updated_at_formatted_time(journal) }
+            else
+              journal_updated_at_formatted_time(journal)
+            end
           end
         end
 
@@ -189,6 +197,8 @@ module WorkPackages
         end
 
         def render_activity_link(container)
+          return if OpenProject::FeatureDecisions.work_package_comment_id_url_active?
+
           container.with_column(
             pr: 3,
             classes: "work-packages-activities-tab-journals-item-component-details--activity-link-container"

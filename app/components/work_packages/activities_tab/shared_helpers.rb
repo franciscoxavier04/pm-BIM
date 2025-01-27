@@ -57,7 +57,13 @@ module WorkPackages
                    "work-packages--activities-tab--index-anchor-name-param": activity_anchor_name
                  }
                )) do
-          "##{journal_activity_id(journal)}"
+          block_given? ? yield : "##{journal_activity_id(journal)}"
+        end
+      end
+
+      def journal_updated_at_formatted_time(journal)
+        render(Primer::Beta::Text.new(font_size: :small, color: :subtle, mt: 1)) do
+          format_time(journal.updated_at)
         end
       end
 

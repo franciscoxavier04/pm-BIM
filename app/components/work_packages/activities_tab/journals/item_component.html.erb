@@ -45,7 +45,11 @@
                       end
                     end
                   header_start_container.with_column(mr: 1, classes: "hidden-for-mobile") do
-                    render(Primer::Beta::Text.new(font_size: :small, color: :subtle, mt: 1)) { format_time(journal.updated_at) }
+                    if OpenProject::FeatureDecisions.work_package_comment_id_url_active?
+                      activity_anchor_link(journal) { journal_updated_at_formatted_time(journal) }
+                    else
+                      journal_updated_at_formatted_time(journal)
+                    end
                   end
                 end
                 header_container.with_column(flex_layout: true, align_items: :center) do |header_end_container|

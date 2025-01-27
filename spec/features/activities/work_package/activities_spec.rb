@@ -883,6 +883,8 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
     end
 
     describe "scrolls to comment specified in the URL" do
+      include Redmine::I18n
+
       context "when sorting set to asc" do
         let!(:admin_preferences) { create(:user_preference, user: admin, others: { comments_sorting: :asc }) }
 
@@ -903,7 +905,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
         context "with #comment- anchor",
                 with_flag: { primerized_work_package_activities: true, work_package_comment_id_url: true } do
           before do
-            visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-1")
+            visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-#{comment_1.id}")
             wp_page.wait_for_activity_tab
           end
 
@@ -911,7 +913,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
 
-            # activity_tab.expect_no_activity_anchor_link TODO: Enable once timestamps converted to anchors
+            activity_tab.expect_activity_anchor_link(text: format_time(comment_1.updated_at))
           end
         end
       end
@@ -944,7 +946,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_bottom # would be at the top if no anchor would be provided
 
-            # activity_tab.expect_no_activity_anchor_link TODO: Enable once timestamps converted to anchors
+            activity_tab.expect_activity_anchor_link(text: format_time(comment_1.updated_at))
           end
         end
       end

@@ -159,10 +159,6 @@ module Components
         expect(page).to have_test_selector("activity-anchor-link", text:)
       end
 
-      def expect_no_activity_anchor_link
-        expect(page).not_to have_test_selector("activity-anchor-link")
-      end
-
       def add_comment(text: nil, save: true)
         if page.find_test_selector("op-open-work-package-journal-form-trigger")
           open_new_comment_editor
