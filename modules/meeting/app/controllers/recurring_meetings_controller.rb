@@ -41,10 +41,15 @@ class RecurringMeetingsController < ApplicationController
     @recurring_meeting = RecurringMeeting.new(project: @project)
   end
 
-  def show
+  def show # rubocop:disable Metrics/AbcSize
     @direction = params[:direction]
     @max_count = max_count
-    @count = [(params[:count].to_i + 5), @max_count].min
+    @count =
+      if @max_count
+        [(params[:count].to_i + 5), @max_count].min
+      else
+        params[:count].to_i + 5
+      end
 
     @meetings = if @direction == "past"
                   @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
