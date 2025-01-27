@@ -40,7 +40,7 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do
       create(:user, member_with_roles: { project => role })
     end
     let(:role) { create(:project_role, permissions:) }
-    let(:permissions) { %i(view_work_packages add_work_package_notes) }
+    let(:permissions) { %i(view_work_packages add_work_package_comments) }
 
     before do
       allow(User).to receive(:current).and_return(current_user)

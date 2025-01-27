@@ -112,7 +112,7 @@ RSpec.describe "Activity tab", :js do
       let(:role) do
         create(:project_role, permissions: %i[view_work_packages
                                               view_changesets
-                                              add_work_package_notes])
+                                              add_work_package_comments])
       end
       let(:user) do
         create(:user,

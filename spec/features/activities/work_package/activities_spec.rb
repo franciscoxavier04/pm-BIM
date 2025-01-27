@@ -38,7 +38,8 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
   let(:admin) { create(:admin) }
   let(:member_role) do
     create(:project_role,
-           permissions: %i[view_work_packages edit_work_packages add_work_packages work_package_assigned add_work_package_notes])
+           permissions: %i[view_work_packages edit_work_packages add_work_packages work_package_assigned
+                           add_work_package_comments])
   end
   let(:member) do
     create(:user,
@@ -64,7 +65,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
 
     let(:viewer_role_with_commenting_permission) do
       create(:project_role,
-             permissions: %i[view_work_packages add_work_package_notes edit_own_work_package_notes])
+             permissions: %i[view_work_packages add_work_package_comments edit_own_work_package_comments])
     end
     let(:viewer_with_commenting_permission) do
       create(:user,
@@ -75,7 +76,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
 
     let(:user_role_with_editing_permission) do
       create(:project_role,
-             permissions: %i[view_work_packages add_work_package_notes edit_work_package_notes])
+             permissions: %i[view_work_packages add_work_package_comments edit_work_package_comments])
     end
     let(:user_with_editing_permission) do
       create(:user,
@@ -153,7 +154,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
       end
     end
 
-    context "when a user has add_work_package_notes and edit_own_work_package_notes permission" do
+    context "when a user has add_work_package_comments and edit_own_work_package_comments permission" do
       current_user { viewer_with_commenting_permission }
 
       before do
@@ -192,7 +193,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
       end
     end
 
-    context "when a user has add_work_package_notes and general edit_work_package_notes permission" do
+    context "when a user has add_work_package_comments and general edit_work_package_comments permission" do
       current_user { user_with_editing_permission }
 
       before do

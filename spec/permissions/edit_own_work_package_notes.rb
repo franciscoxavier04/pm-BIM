@@ -29,10 +29,10 @@
 require "spec_helper"
 require File.expand_path("../support/permission_specs", __dir__)
 
-RSpec.describe WorkPackages::ActivitiesTabController, "edit_own_work_package_notes permission", type: :controller do # rubocop:disable RSpec/EmptyExampleGroup
+RSpec.describe WorkPackages::ActivitiesTabController, "edit_own_work_package_comments permission", type: :controller do # rubocop:disable RSpec/EmptyExampleGroup
   include PermissionSpecs
 
-  check_permission_required_for("work_packages/activities_tab#edit", :edit_work_package_notes)
-  check_permission_required_for("work_packages/activities_tab#cancel_edit", :edit_work_package_notes)
-  check_permission_required_for("work_packages/activities_tab#update", :edit_work_package_notes)
+  check_permission_required_for("work_packages/activities_tab#edit", :edit_work_package_comments)
+  check_permission_required_for("work_packages/activities_tab#cancel_edit", :edit_work_package_comments)
+  check_permission_required_for("work_packages/activities_tab#update", :edit_work_package_comments)
 end

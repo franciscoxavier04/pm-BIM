@@ -40,7 +40,7 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
   let(:work_package) do
     create(:work_package, author: current_user, project:)
   end
-  let(:permissions) { %i[view_work_packages edit_work_package_notes] }
+  let(:permissions) { %i[view_work_packages edit_work_package_comments] }
   let(:activity) { work_package.journals.first }
   let(:comment) { "This is a new test comment!" }
 
@@ -109,14 +109,14 @@ RSpec.describe API::V3::Activities::ActivitiesAPI, content_type: :json do
       end
 
       context "when having only the edit own permission" do
-        let(:permissions) { %i[view_work_packages edit_own_work_package_notes] }
+        let(:permissions) { %i[view_work_packages edit_own_work_package_comments] }
 
         it_behaves_like "unauthorized access"
       end
     end
 
     context "when having only the edit own permission" do
-      let(:permissions) { %i[view_work_packages edit_own_work_package_notes] }
+      let(:permissions) { %i[view_work_packages edit_own_work_package_comments] }
 
       it_behaves_like "valid activity request", "Activity::Comment"
 

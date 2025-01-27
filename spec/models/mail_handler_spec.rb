@@ -146,7 +146,7 @@ RSpec.describe MailHandler do
   end
 
   shared_context "with a reply to a wp mention" do
-    let(:permissions) { %i[add_work_package_notes view_work_packages] }
+    let(:permissions) { %i[add_work_package_comments view_work_packages] }
     let!(:user) do
       create(:user,
              mail: "j.doe@openproject.org",
@@ -168,7 +168,7 @@ RSpec.describe MailHandler do
   end
 
   shared_context "with a reply to a wp mention with attributes" do
-    let(:permissions) { %i[add_work_package_notes view_work_packages edit_work_packages work_package_assigned] }
+    let(:permissions) { %i[add_work_package_comments view_work_packages edit_work_packages work_package_assigned] }
     let(:role) do
       create(:project_role, permissions:)
     end

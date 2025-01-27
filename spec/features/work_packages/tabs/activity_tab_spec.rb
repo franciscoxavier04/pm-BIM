@@ -135,7 +135,7 @@ RSpec.describe "Activity tab", :js do
 
     context "with permission" do
       let(:role) do
-        create(:project_role, permissions: %i[view_work_packages add_work_package_notes])
+        create(:project_role, permissions: %i[view_work_packages add_work_package_comments])
       end
       let(:user) do
         create(:user,

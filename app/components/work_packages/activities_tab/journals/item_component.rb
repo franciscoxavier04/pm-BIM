@@ -87,7 +87,7 @@ module WorkPackages
         end
 
         def allowed_to_quote?
-          User.current.allowed_in_project?(:add_work_package_notes, journal.journable.project)
+          User.current.allowed_in_project?(:add_work_package_comments, journal.journable.project)
         end
 
         def copy_url_action_item(menu)

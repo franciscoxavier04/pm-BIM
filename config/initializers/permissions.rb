@@ -281,7 +281,7 @@ Rails.application.reloader.to_prepare do
                      require: :loggedin,
                      dependencies: :view_work_packages
 
-      wpt.permission :add_work_package_notes,
+      wpt.permission :add_work_package_comments,
                      {
                        # FIXME: Although the endpoint is removed, the code checking whether a user
                        # is eligible to add work packages through the API still seems to rely on this.
@@ -291,7 +291,7 @@ Rails.application.reloader.to_prepare do
                      permissible_on: %i[work_package project],
                      dependencies: :view_work_packages
 
-      wpt.permission :edit_work_package_notes,
+      wpt.permission :edit_work_package_comments,
                      {
                        "work_packages/activities_tab": %i[edit cancel_edit update]
                      },
@@ -299,7 +299,7 @@ Rails.application.reloader.to_prepare do
                      require: :loggedin,
                      dependencies: :view_work_packages
 
-      wpt.permission :edit_own_work_package_notes,
+      wpt.permission :edit_own_work_package_comments,
                      {
                        "work_packages/activities_tab": %i[edit cancel_edit update]
                      },

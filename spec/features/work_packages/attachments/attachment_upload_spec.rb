@@ -32,7 +32,7 @@ require "features/page_objects/notification"
 RSpec.describe "Upload attachment to work package", :js, :selenium do
   let(:role) do
     create(:project_role,
-           permissions: %i[view_work_packages add_work_packages edit_work_packages add_work_package_notes])
+           permissions: %i[view_work_packages add_work_packages edit_work_packages add_work_package_comments])
   end
   let(:dev) do
     create(:user,
@@ -87,7 +87,7 @@ RSpec.describe "Upload attachment to work package", :js, :selenium do
         context "with a user that is not allowed to add images (Regression #28541)" do
           let(:role) do
             create(:project_role,
-                   permissions: %i[view_work_packages add_work_packages add_work_package_notes])
+                   permissions: %i[view_work_packages add_work_packages add_work_package_comments])
           end
 
           it "can open the editor to add an image, but image upload is not shown" do
@@ -107,7 +107,7 @@ RSpec.describe "Upload attachment to work package", :js, :selenium do
         context "with a user that is allowed add attachments but not edit WP (#29203)" do
           let(:role) do
             create(:project_role,
-                   permissions: %i[view_work_packages add_work_package_attachments add_work_package_notes])
+                   permissions: %i[view_work_packages add_work_package_attachments add_work_package_comments])
           end
 
           it "can open the editor and image upload is shown" do
@@ -300,7 +300,7 @@ RSpec.describe "Upload attachment to work package", :js, :selenium do
     context "with a user that is allowed to add attachments but not edit WP (#29203)" do
       let(:role) do
         create(:project_role,
-               permissions: %i[view_work_packages add_work_package_attachments add_work_package_notes])
+               permissions: %i[view_work_packages add_work_package_attachments add_work_package_comments])
       end
 
       include_examples "attachment dropzone common"

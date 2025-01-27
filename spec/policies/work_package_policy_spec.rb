@@ -58,9 +58,9 @@ RSpec.describe WorkPackagePolicy, type: :controller do
         expect(subject).to be_allowed(work_package, :edit)
       end
 
-      it "is false if the user has only the add_work_package_notes permission" do
+      it "is false if the user has only the add_work_package_comments permission" do
         mock_permissions_for(user) do |mock|
-          mock.allow_in_project :add_work_package_notes, project:
+          mock.allow_in_project :add_work_package_comments, project:
         end
 
         expect(subject).not_to be_allowed(work_package, :edit)
@@ -68,7 +68,7 @@ RSpec.describe WorkPackagePolicy, type: :controller do
 
       it "is false if the user has the permissions but the work package is unpersisted" do
         mock_permissions_for(user) do |mock|
-          mock.allow_in_project :edit_work_packages, :add_work_package_notes, project:
+          mock.allow_in_project :edit_work_packages, :add_work_package_comments, project:
         end
 
         allow(work_package).to receive(:persisted?).and_return false
@@ -92,16 +92,16 @@ RSpec.describe WorkPackagePolicy, type: :controller do
         expect(subject).not_to be_allowed(work_package, :comment)
       end
 
-      it "is true if the user has the add_work_package_notes permission" do
+      it "is true if the user has the add_work_package_comments permission" do
         mock_permissions_for(user) do |mock|
-          mock.allow_in_project :add_work_package_notes, project:
+          mock.allow_in_project :add_work_package_comments, project:
         end
         expect(subject).to be_allowed(work_package, :comment)
       end
 
-      it "is true if the user has the add_work_package_notes permission on the work package" do
+      it "is true if the user has the add_work_package_comments permission on the work package" do
         mock_permissions_for(user) do |mock|
-          mock.allow_in_work_package :add_work_package_notes, work_package:
+          mock.allow_in_work_package :add_work_package_comments, work_package:
         end
         expect(subject).to be_allowed(work_package, :comment)
       end

@@ -89,7 +89,7 @@ class WorkPackagePolicy < BasePolicy
   end
 
   def comment_allowed?(work_package)
-    user.allowed_in_work_package?(:add_work_package_notes, work_package) || edit_allowed?(work_package)
+    user.allowed_in_work_package?(:add_work_package_comments, work_package) || edit_allowed?(work_package)
   end
 
   def assign_version_allowed?(work_package)

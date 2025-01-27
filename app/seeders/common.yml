@@ -281,8 +281,8 @@ work_package_roles:
       - :view_work_packages
       - :edit_work_packages
       - :work_package_assigned
-      - :add_work_package_notes
-      - :edit_own_work_package_notes
+      - :add_work_package_comments
+      - :edit_own_work_package_comments
       - :manage_work_package_relations
       - :copy_work_packages
       - :export_work_packages
@@ -293,8 +293,8 @@ work_package_roles:
     permissions:
       - :view_work_packages
       - :work_package_assigned
-      - :add_work_package_notes
-      - :edit_own_work_package_notes
+      - :add_work_package_comments
+      - :edit_own_work_package_comments
       - :export_work_packages
       - :add_work_package_attachments
   - reference: :default_role_work_package_viewer
@@ -334,8 +334,8 @@ project_roles:
       - :edit_work_packages
       - :assign_versions
       - :work_package_assigned
-      - :add_work_package_notes
-      - :edit_own_work_package_notes
+      - :add_work_package_comments
+      - :edit_own_work_package_comments
       - :manage_work_package_relations
       - :manage_subtasks
       - :save_queries
@@ -383,8 +383,8 @@ project_roles:
     position: 4
     permissions:
       - :view_work_packages
-      - :add_work_package_notes
-      - :edit_own_work_package_notes
+      - :add_work_package_comments
+      - :edit_own_work_package_comments
       - :save_queries
       - :view_calendar
       - :comment_news
