@@ -33,8 +33,11 @@ require "rails_helper"
 RSpec.describe Meetings::RowComponent, type: :component do
   include Rails.application.routes.url_helpers
 
-  let(:table) { instance_double(Meetings::TableComponent, columns: [], grid_class: "test", has_actions?: true) }
   let(:project) { build_stubbed(:project) }
+  let(:table) do
+    instance_double(Meetings::TableComponent, columns: [], grid_class: "test", has_actions?: true, current_project:)
+  end
+  let(:current_project) { nil }
   let(:user) { build_stubbed(:user) }
 
   subject do
@@ -77,8 +80,18 @@ RSpec.describe Meetings::RowComponent, type: :component do
       context "with a one-off meeting" do
         let(:meeting) { build_stubbed(:meeting, project:) }
 
-        it "shows delete menu item" do
-          expect(subject).to have_link "Delete meeting", href: delete_dialog_meeting_path(meeting)
+        context "without a current project" do
+          it "shows delete menu item" do
+            expect(subject).to have_link "Delete meeting", href: delete_dialog_meeting_path(meeting)
+          end
+        end
+
+        context "with a current project" do
+          let(:current_project) { project }
+
+          it "shows delete menu item" do
+            expect(subject).to have_link "Delete meeting", href: delete_dialog_project_meeting_path(project, meeting)
+          end
         end
       end
 
@@ -86,8 +99,18 @@ RSpec.describe Meetings::RowComponent, type: :component do
         let(:series) { build_stubbed(:recurring_meeting, project:) }
         let(:meeting) { build_stubbed(:structured_meeting_template, recurring_meeting: series, project:) }
 
-        it "shows delete menu item" do
-          expect(subject).to have_link "Delete occurrence", href: delete_dialog_meeting_path(meeting)
+        context "without a current project" do
+          it "shows delete menu item" do
+            expect(subject).to have_link "Delete occurrence", href: delete_dialog_meeting_path(meeting)
+          end
+        end
+
+        context "with a current project" do
+          let(:current_project) { project }
+
+          it "shows delete menu item" do
+            expect(subject).to have_link "Delete occurrence", href: delete_dialog_project_meeting_path(project, meeting)
+          end
         end
       end
     end

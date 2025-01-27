@@ -30,6 +30,8 @@
 
 module Meetings
   class RowComponent < ::OpPrimer::BorderBoxRowComponent
+    delegate :current_project, to: :table
+
     def project_name
       helpers.link_to_project model.project, {}, {}, false
     end
@@ -140,7 +142,7 @@ module Meetings
 
       menu.with_item(label: recurring_meeting.present? ? I18n.t(:label_recurring_meeting_delete) : I18n.t(:label_meeting_delete),
                      scheme: :danger,
-                     href: delete_dialog_meeting_path(model),
+                     href: polymorphic_path([:delete_dialog, current_project, model.becomes(Meeting)]),
                      tag: :a,
                      content_arguments: {
                        data: { controller: "async-dialog" }
