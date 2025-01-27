@@ -117,23 +117,27 @@ RSpec.describe "Relations children tab", :js, :with_cuprite do
   end
 
   context "when all possible custom fields are there" do
-    let!(:user) { create(:admin) }
-
-    before do
+    shared_let(:user) { create(:admin) }
+    shared_let(:all_possible_custom_fields) do
       factory_bot_custom_field_traits_for("WorkPackage")
         .product([true, false])
-        .each do |trait, is_required|
-          cf = create(:wp_custom_field, trait, is_required:)
-          project.types.first.custom_fields << cf
-          project.work_package_custom_fields << cf
+        .map do |trait, is_required|
+          create(:wp_custom_field, trait, is_required:)
         end
+    end
+
+    before do
+      all_possible_custom_fields.each do |cf|
+        project.types.first.custom_fields << cf
+        project.work_package_custom_fields << cf
+      end
     end
 
     it "displays a field for each required custom field" do
       wp_page.visit_tab!("relations")
       relations_tab.select_relation_type "New child"
 
-      project.work_package_custom_fields.each do |cf|
+      all_possible_custom_fields.each do |cf|
         create_dialog.in_dialog do
           if cf.required?
             # `visible: :all` is needed as text custom field use a hidden textarea internally
