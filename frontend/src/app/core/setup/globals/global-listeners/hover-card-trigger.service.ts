@@ -58,9 +58,13 @@ export class HoverCardTriggerService {
     jQuery(document.body).on('mouseover', '.op-hover-card--preview-trigger', (e) => {
       e.preventDefault();
       e.stopPropagation();
+
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const el = e.target as HTMLElement;
       if (!el) { return; }
+
+      // For some elements, the hover card data is on another element. We need to find that element.
+      const dataSource = this.getDataSource(el);
 
       if (this.previousTarget && this.previousTarget === el) {
         // Re-entering the trigger counts as hovering over the card:
@@ -73,8 +77,7 @@ export class HoverCardTriggerService {
       this.close(true);
       this.previousTarget = el;
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const turboFrameUrl = el.getAttribute('data-hover-card-url');
+      const turboFrameUrl = this.parseHoverCardUrl(dataSource);
       if (!turboFrameUrl) { return; }
 
       // Reset close timer for when hovering over multiple triggers in quick succession.
@@ -87,7 +90,7 @@ export class HoverCardTriggerService {
 
       // Set a delay before showing the hover card
       this.hoverTimeout = window.setTimeout(() => {
-        this.showHoverCard(el, turboFrameUrl, e);
+        this.showHoverCard(dataSource, turboFrameUrl, e);
       }, this.OPEN_DELAY_IN_MS);
     });
 
@@ -159,6 +162,45 @@ export class HoverCardTriggerService {
       // Allow opening this target once more, since it has been orderly closed
       this.previousTarget = null;
     }
+  }
+
+  private getDataSource(el:HTMLElement) {
+    if (el.className.includes('op-hover-card--data-on-sibling-principal')) {
+      const candidate = this.findSiblingElementWithHoverCardData(el);
+      if (candidate) {
+        return candidate as HTMLElement;
+      }
+    }
+
+    return el;
+  }
+
+  private findSiblingElementWithHoverCardData(el:HTMLElement) {
+    let sibling = el.previousElementSibling;
+    while (sibling) {
+      if (sibling.classList.contains('op-principal')) {
+        return this.childElementWithHoverCardTrigger(sibling);
+      }
+      sibling = sibling.previousElementSibling;
+    }
+
+    sibling = el.nextElementSibling;
+    while (sibling) {
+      if (sibling.classList.contains('op-principal')) {
+        return this.childElementWithHoverCardTrigger(sibling);
+      }
+      sibling = sibling.nextElementSibling;
+    }
+
+    return null;
+  }
+
+  private childElementWithHoverCardTrigger(principal:Element) {
+    return principal.querySelector('.op-hover-card--preview-trigger');
+  }
+
+  private parseHoverCardUrl(el:HTMLElement) {
+    return el.getAttribute('data-hover-card-url');
   }
 
   private parseHoverCardOptions(el:HTMLElement) {
