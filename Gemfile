@@ -241,7 +241,7 @@ gem "httpx"
 gem "ice_nine"
 
 group :test do
-  gem "launchy", "~> 3.0.0"
+  gem "launchy", "~> 3.1.0"
   gem "rack-test", "~> 2.2.0"
   gem "shoulda-context", "~> 2.0"
 

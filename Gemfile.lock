@@ -711,9 +711,10 @@ GEM
     ladle (1.0.1)
       open4 (~> 1.0)
     language_server-protocol (3.17.0.4)
-    launchy (3.0.1)
+    launchy (3.1.0)
       addressable (~> 2.8)
       childprocess (~> 5.0)
+      logger (~> 1.6)
     lefthook (1.10.10)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
@@ -1285,7 +1286,7 @@ DEPENDENCIES
   json_schemer (~> 2.3.0)
   json_spec (~> 1.1.4)
   ladle
-  launchy (~> 3.0.0)
+  launchy (~> 3.1.0)
   lefthook
   letter_opener_web
   listen (~> 3.9.0)
