@@ -155,13 +155,23 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
           days.duration(work_package.start_date, work_package.due_date)
         end
     when :due_date
+      return if invalid_duration?
+
       work_package.due_date = days.due_date(work_package.start_date, work_package.duration)
     when :start_date
+      return if invalid_duration?
+
       work_package.start_date = days.start_date(work_package.due_date, work_package.duration)
     end
   end
-
   # rubocop:enable Metrics/AbcSize
+
+  def invalid_duration?
+    return false if work_package.duration.nil?
+    return true unless work_package.duration.is_a?(Integer)
+
+    work_package.duration <= 0
+  end
 
   def set_default_attributes(attributes)
     set_default_priority

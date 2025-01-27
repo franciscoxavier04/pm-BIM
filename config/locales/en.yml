@@ -1433,6 +1433,7 @@ en:
               smaller_than_dates: "is smaller than the interval between the start and the finish date."
               not_available_for_milestones: "is not available for milestone typed work packages."
               cannot_be_null: "can not be set to null as start date and finish date are known."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "cannot be a milestone."
               cannot_be_self_assigned: "cannot be assigned to itself."

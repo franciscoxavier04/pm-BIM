@@ -239,9 +239,14 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
     start_date.datepicker.expect_visible
     start_date.datepicker.set_duration -128
-    start_date.datepicker.focus_start_date
+    start_date.datepicker.expect_duration_error "Must be greater than 0."
+    start_date.datepicker.expect_start_date_error nil
+    start_date.datepicker.expect_due_date_error nil
 
-    start_date.datepicker.expect_duration 128
+    start_date.datepicker.set_duration "invalid"
+    start_date.datepicker.expect_duration_error "Is not a valid duration."
+    start_date.datepicker.expect_start_date_error nil
+    start_date.datepicker.expect_due_date_error nil
   end
 
   it "saves the date when clearing and then confirming" do
