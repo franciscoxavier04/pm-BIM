@@ -11,3 +11,8 @@
       display: block
       margin-left: var(--control-small-size)
       margin-top: var(--control-xsmall-gap)
+
+// For hover cards to work within the auto completer, we have to ensure that the hover event can be properly
+// triggered when mousing over the name. The easiest way to do this is to set it to inline-block.
+.op-user-autocompleter--name.op-hover-card--preview-trigger
+  display: inline-block
