@@ -30,7 +30,6 @@ import { Injectable, Injector, NgZone } from '@angular/core';
 import { OpModalService } from 'core-app/shared/components/modal/modal.service';
 import { HoverCardComponent } from 'core-app/shared/components/modals/preview-modal/hover-card-modal/hover-card.modal';
 import { PortalOutletTarget } from 'core-app/shared/components/modal/portal-outlet-target.enum';
-import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class HoverCardTriggerService {
@@ -39,7 +38,6 @@ export class HoverCardTriggerService {
   private mouseInModal = false;
   private hoverTimeout:number|null = null;
   private closeTimeout:number|null = null;
-  private modal:Observable<HoverCardComponent>|null;
   // Set to custom when opening the hover card on top of another modal
   private modalTarget:PortalOutletTarget = PortalOutletTarget.Default;
   private previousTarget:HTMLElement|null = null;
@@ -121,7 +119,7 @@ export class HoverCardTriggerService {
 
     // There is only one possible slot to insert a modal. If that slot is taken, we assume the other modal
     // to be more important than a hover card and give up.
-    this.modal = this.opModalService.showIfNotActive(
+    const modal = this.opModalService.showIfNotActive(
       HoverCardComponent,
       this.injector,
       { turboFrameSrc: turboFrameUrl, event: e },
@@ -130,7 +128,7 @@ export class HoverCardTriggerService {
       this.modalTarget,
     );
 
-    this.modal?.subscribe((previewModal) => {
+    modal?.subscribe((previewModal) => {
       this.modalElement = previewModal.elementRef.nativeElement as HTMLElement;
       previewModal.alignment = 'top';
 
@@ -160,14 +158,9 @@ export class HoverCardTriggerService {
     }
 
     if (!this.mouseInModal) {
-      // The subscription ensures that we only close the current modal if it is indeed a HoverCardComponent.
-      // If we just called `opModalService.close()` here, we might close another spot modal instead, such as the
-      // share dialog.
-      this.modal?.subscribe((_modal) => {
-        this.opModalService.close();
-        // Allow opening this target once more, since it has been orderly closed
-        this.previousTarget = null;
-      });
+      this.opModalService.close();
+      // Allow opening this target once more, since it has been orderly closed
+      this.previousTarget = null;
     }
   }
 
