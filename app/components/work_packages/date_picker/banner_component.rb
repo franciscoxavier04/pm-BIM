@@ -131,11 +131,24 @@ module WorkPackages
       end
 
       def all_relational_wp_ids
-        @work_package
-          .relations
-          .pluck(:from_id, :to_id)
-          .flatten
-          .uniq
+        relation_ids = [@work_package.id.to_s]
+        relation_ids.push(
+          @work_package
+            .relations
+            .pluck(:from_id, :to_id)
+            .flatten
+            .uniq
+        )
+
+        if @work_package.parent_id.present?
+          relation_ids.push(@work_package.ancestors.pluck(:id).map(&:to_s)).flatten!
+        end
+
+        if @work_package.children.present?
+          relation_ids.push(@work_package.children.pluck(:id).map(&:to_s)).flatten!
+        end
+
+        relation_ids
       end
 
       def test_selector

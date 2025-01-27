@@ -113,7 +113,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
              due_date: Date.parse("2016-01-25"))
     end
 
-    it "selecting a date before the current start date will move the finish date" do
+    it "selecting a date before the current start date will keep the finish date" do
       start_date.activate!
       start_date.expect_active!
 
@@ -122,12 +122,12 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
       start_date.datepicker.select_day "1"
 
       start_date.datepicker.expect_start_date "2016-01-01"
-      start_date.datepicker.expect_due_date "2016-01-24"
-      start_date.datepicker.expect_duration 24
+      start_date.datepicker.expect_due_date "2016-01-25"
+      start_date.datepicker.expect_duration 25
 
       start_date.save!
       start_date.expect_inactive!
-      start_date.expect_state_text "2016-01-01 - 2016-01-24"
+      start_date.expect_state_text "2016-01-01 - 2016-01-25"
     end
 
     it "selecting a date in between changes the date that is currently in focus" do
@@ -416,7 +416,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
       it "shows a banner that the relations are ignored" do
         expect(page).to have_css(test_selector("op-modal-banner-warning").to_s,
-                                 text: "Manually scheduled. Dates not affected by relations. This has child work packages but their start dates are ignored.")
+                                 text: "Manually scheduled. Dates not affected by relations.\nThis has child work packages but their start dates are ignored.")
 
         # When toggling manually scheduled
         start_date.toggle_scheduling_mode
@@ -445,7 +445,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
         start_date.toggle_scheduling_mode
 
         expect(page).to have_css(test_selector("op-modal-banner-warning").to_s,
-                                 text: "Manually scheduled. Dates not affected by relations. This has child work packages but their start dates are ignored.")
+                                 text: "Manually scheduled. Dates not affected by relations.\nThis has child work packages but their start dates are ignored.")
 
         new_window = window_opened_by { click_on "Show relations" }
         switch_to_window new_window
@@ -479,7 +479,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
           datepicker.expect_ignore_non_working_days true
 
           expect(page).to have_css(test_selector("op-modal-banner-warning").to_s,
-                                   text: "Manually scheduled. Dates not affected by relations. This has child work packages but their start dates are ignored.")
+                                   text: "Manually scheduled. Dates not affected by relations.\nThis has child work packages but their start dates are ignored.")
 
           # Reset when disabled
           start_date.toggle_scheduling_mode
