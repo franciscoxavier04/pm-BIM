@@ -108,12 +108,24 @@ module WorkPackages
       end
 
       def overlapping_predecessor?
-        predecessor_work_packages.any? { |wp| wp.due_date.after?(@work_package.start_date) }
+        return false if @work_package.start_date.nil?
+
+        predecessor_work_packages.any? do |wp|
+          return false if wp.due_date.nil?
+
+          wp.due_date.after?(@work_package.start_date)
+        end
       end
 
       def predecessor_with_large_gap?
+        return false if @work_package.start_date.nil?
+
         sorted = predecessor_work_packages.sort_by(&:due_date)
-        sorted.last.due_date.before?(@work_package.start_date - 2)
+
+        last_due_date = sorted.last.due_date
+        return false if last_due_date.nil?
+
+        last_due_date.before?(@work_package.start_date - 2)
       end
 
       def predecessor_relations
@@ -132,13 +144,14 @@ module WorkPackages
 
       def all_relational_wp_ids
         relation_ids = [@work_package.id.to_s]
-        relation_ids.push(
-          @work_package
-            .relations
-            .pluck(:from_id, :to_id)
-            .flatten
-            .uniq
-        )
+        relation_ids
+          .push(@work_package
+                  .relations
+                  .visible
+                  .pluck(:from_id, :to_id))
+          .flatten!
+
+        relation_ids = relation_ids.map!(&:to_s).uniq
 
         if @work_package.parent_id.present?
           relation_ids.push(@work_package.ancestors.pluck(:id).map(&:to_s)).flatten!
