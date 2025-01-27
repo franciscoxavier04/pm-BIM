@@ -85,7 +85,7 @@ RSpec.describe "Recurring meetings CRUD",
     RecurringMeetings::InitNextOccurrenceJob.perform_now(meeting, meeting.first_occurrence.to_time)
   end
 
-  it "can delete a recurring meeting from the show page and return to the index page" do
+  it "can delete a recurring meeting from the global show page and return to the index page" do
     show_page.visit!
 
     show_page.delete_meeting_series
@@ -95,7 +95,23 @@ RSpec.describe "Recurring meetings CRUD",
       click_on "Delete permanently"
     end
 
-    expect(page).to have_current_path meetings_path # check path
+    expect(page).to have_current_path meetings_path
+
+    expect_flash(type: :success, message: "Successful deletion.")
+    show_page.expect_no_meeting date: "12/31/2024 01:30 PM"
+  end
+
+  it "can delete a recurring meeting from the project show page and return to the index page" do
+    show_page.visit_project!
+
+    show_page.delete_meeting_series
+    show_page.in_delete_recurring_dialog do
+      page.check "I understand that this deletion cannot be reversed"
+
+      click_on "Delete permanently"
+    end
+
+    expect(page).to have_current_path project_meetings_path(project)
 
     expect_flash(type: :success, message: "Successful deletion.")
     show_page.expect_no_meeting date: "12/31/2024 01:30 PM"
@@ -115,8 +131,26 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_open_meeting date: "01/07/2025 01:30 PM"
   end
 
-  it "can cancel an occurrence" do
+  it "can cancel an occurrence from the global show page" do
     show_page.visit!
+
+    show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
+    show_page.in_delete_dialog do
+      check "I understand that this deletion cannot be reversed"
+
+      click_on "Delete permanently"
+    end
+
+    expect_flash(type: :success, message: "Successful cancellation.")
+
+    expect(page).to have_current_path(show_page.path)
+
+    show_page.expect_no_open_meeting date: "12/31/2024 01:30 PM"
+    show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
+  end
+
+  it "can cancel an occurrence from the project show page" do
+    show_page.visit_project!
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     show_page.in_delete_dialog do
@@ -170,7 +204,7 @@ RSpec.describe "Recurring meetings CRUD",
 
     expect_flash(type: :success, message: "Successful cancellation.")
 
-    expect(page).to have_current_path(show_page.project_path)
+    expect(page).to have_current_path(show_page.path)
 
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
     show_page.expect_cancelled_actions date: "12/31/2024 01:30 PM"
