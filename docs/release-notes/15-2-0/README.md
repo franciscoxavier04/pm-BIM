@@ -3,12 +3,12 @@ title: OpenProject 15.2.0
 sidebar_navigation:
     title: 15.2.0
 release_version: 15.2.0
-release_date: 2024-12-23
+release_date: 2025-01-22
 ---
 
 # OpenProject 15.2.0
 
-Release date: 2024-12-23
+Release date: 2025-01-22
 
 We released [OpenProject 15.2.0](https://community.openproject.org/versions/2143). The release contains several bug fixes, and we recommend updating to the newest version.
 In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
@@ -90,16 +90,35 @@ We continued introducing standardized components for page headers and subheaders
 - Feature: When adding new relations, auto-scroll to show the newly added relation \[[#59769](https://community.openproject.org/wp/59769)\]
 - Feature: Create new icon for setting reminders \[[#59793](https://community.openproject.org/wp/59793)\]
 - Feature: Export cost query as timesheet PDF \[[#59824](https://community.openproject.org/wp/59824)\]
-- Feature: Generate PDF document from a work package description  \[[#45896](https://community.openproject.org/wp/45896)\]
+- Feature: Improve comprehensibility of the &quot;Add relations&quot; modal \[[#60462](https://community.openproject.org/wp/60462)\]
 - Bugfix: Mobile: tap twice on comment input to start typing \[[#57107](https://community.openproject.org/wp/57107)\]
+- Bugfix: Activity panel (Notification center goes into mobile layout even on a desktop when the browser on desktop \[[#59235](https://community.openproject.org/wp/59235)\]
 - Bugfix: Folders missing in log lines for &quot;Unexpected Content Error&quot; \[[#59346](https://community.openproject.org/wp/59346)\]
 - Bugfix: Activity tab does not scroll to the bottom or correct comment on mobile \[[#59458](https://community.openproject.org/wp/59458)\]
+- Bugfix: Activity only shows 1 value even if several were updated \[[#59855](https://community.openproject.org/wp/59855)\]
+- Bugfix: User Hovercard rendering is bumpy \[[#59879](https://community.openproject.org/wp/59879)\]
+- Bugfix: User hovercard is showing on User own profile page and other users profile page \[[#59898](https://community.openproject.org/wp/59898)\]
+- Bugfix: User hovercard is showing behind the Meeting participants overlay \[[#59907](https://community.openproject.org/wp/59907)\]
+- Bugfix: Impossible to group by CF hierarchy multi-select \[[#59920](https://community.openproject.org/wp/59920)\]
 - Bugfix: Proto plugin dose not work with OpenProject 15 \[[#59931](https://community.openproject.org/wp/59931)\]
 - Bugfix: Project membership in group administration lists global roles \[[#59934](https://community.openproject.org/wp/59934)\]
 - Bugfix: Internal server error on Azure OIDC login with expired client secret \[[#59960](https://community.openproject.org/wp/59960)\]
 - Bugfix: OpenID setup fails due to Claims is not a valid JSON object \[[#59962](https://community.openproject.org/wp/59962)\]
+- Bugfix: Wrong locale of error message while personal API access token creation \[[#60025](https://community.openproject.org/wp/60025)\]
 - Bugfix: Filter translations for Meetings Module missing \[[#60113](https://community.openproject.org/wp/60113)\]
-- Bugfix: New WP form doesn&#39;t open in split view when on the WP list page \[[#60274](https://community.openproject.org/wp/60274)\]
+- Bugfix: Saving a new WP triggers browser warning message \[[#60133](https://community.openproject.org/wp/60133)\]
+- Bugfix: Meeting creator is not added as invitee by default + All meetings menu point should not have a filter by default \[[#60287](https://community.openproject.org/wp/60287)\]
+- Bugfix: Titles do not always use App Title \[[#60371](https://community.openproject.org/wp/60371)\]
+- Bugfix: No connection error after folder creation in file picker \[[#60384](https://community.openproject.org/wp/60384)\]
+- Bugfix: Non working days not shown on calendar widget \[[#60410](https://community.openproject.org/wp/60410)\]
+- Bugfix: Distance between sticky buttons and form field above is too small in scrollable modals \[[#60430](https://community.openproject.org/wp/60430)\]
+- Bugfix: Reminders generate two or more lines for a work package in notification center, clicking one selects all \[[#60449](https://community.openproject.org/wp/60449)\]
+- Bugfix: The &#39;set reminder&#39; action is available to users who are not signed in \[[#60458](https://community.openproject.org/wp/60458)\]
+- Bugfix: ActionView::Template::Error happening in MessagesController#show  \[[#60478](https://community.openproject.org/wp/60478)\]
+- Bugfix: Reminder menu item is not placed correctly \[[#60501](https://community.openproject.org/wp/60501)\]
+- Bugfix: Vanishing filters in &quot;Work package table&quot;-widgets  \[[#60546](https://community.openproject.org/wp/60546)\]
+- Bugfix: Remove permission restriction for users to set their own reminders \[[#60568](https://community.openproject.org/wp/60568)\]
+- Bugfix: Relations dropdown capitalizes wrong in German \[[#60627](https://community.openproject.org/wp/60627)\]
 
 <!-- END AUTOMATED SECTION -->
 <!-- Warning: Anything above this line will be automatically removed by the release script -->

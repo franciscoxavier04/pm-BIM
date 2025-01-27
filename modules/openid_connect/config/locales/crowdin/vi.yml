@@ -11,10 +11,10 @@ vi:
         slug: Unique identifier
         display_name: Tên hiển thị
         client_id: Client ID
-        client_secret: Client secret
+        client_secret: Khóa bí mật người dùng
         secret: Bí mật
         scope: Phạm vi
-        grant_types_supported: Supported grant types
+        grant_types_supported: Loại hỗ trợ
         limit_self_registration: Giới hạn đăng ký tự động
         authorization_endpoint: Authorization endpoint
         userinfo_endpoint: User information endpoint

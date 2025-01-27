@@ -154,5 +154,24 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         dialog.expect_closed
       end
     end
+
+    context "when there is an invalid custom field on the project (Regression#60666)" do
+      let(:custom_field) { create(:string_project_custom_field, is_required: true, is_for_all: true) }
+
+      before do
+        project.custom_field_values = { custom_field.id => nil }
+        project.save(validate: false)
+      end
+
+      it "allows saving and closing the dialog without the custom field validation to interfere" do
+        dialog = overview_page.open_edit_dialog_for_life_cycles
+
+        expect_angular_frontend_initialized
+
+        # Saving the dialog is successful
+        dialog.submit
+        dialog.expect_closed
+      end
+    end
   end
 end

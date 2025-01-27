@@ -24,13 +24,16 @@ export default class IndexController extends Controller {
     showConflictFlashMessageUrl: String,
   };
 
-  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'reactionButton'];
+  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
 
   declare readonly journalsContainerTarget:HTMLElement;
   declare readonly buttonRowTarget:HTMLInputElement;
   declare readonly formRowTarget:HTMLElement;
   declare readonly formTarget:HTMLFormElement;
+  declare readonly formSubmitButtonTarget:HTMLButtonElement;
   declare readonly reactionButtonTargets:HTMLElement[];
+
+  declare readonly hasFormSubmitButtonTarget:boolean;
 
   declare updateStreamsUrlValue:string;
   declare sortingValue:string;
@@ -648,7 +651,7 @@ export default class IndexController extends Controller {
   async onSubmit(event:Event | null = null) {
     if (this.saveInProgress === true) return;
 
-    this.saveInProgress = true;
+    this.setFormSubmitInProgress(true);
 
     event?.preventDefault();
 
@@ -661,8 +664,16 @@ export default class IndexController extends Controller {
         console.error('Error saving activity:', error);
       })
       .finally(() => {
-        this.saveInProgress = false;
+        this.setFormSubmitInProgress(false);
       });
+  }
+
+  private setFormSubmitInProgress(inProgress:boolean) {
+    this.saveInProgress = inProgress;
+
+    if (this.hasFormSubmitButtonTarget) {
+      this.formSubmitButtonTarget.disabled = inProgress;
+    }
   }
 
   private prepareFormData():FormData {
@@ -711,7 +722,7 @@ export default class IndexController extends Controller {
       this.handleStemVisibility();
     }, 10);
 
-    this.saveInProgress = false;
+    this.setFormSubmitInProgress(false);
   }
 
   private resetJournalsContainerMargins():void {

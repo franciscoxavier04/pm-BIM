@@ -50,9 +50,9 @@ ja:
       meeting_section:
         title: "タイトル"
       recurring_meeting:
-        frequency: "Frequency"
-        interval: "Interval"
-        start_date: "Starts on"
+        frequency: "頻度"
+        interval: "インターバル"
+        start_date: "開始:"
         end_after: "End series after"
         iterations: "Occurrences"
     errors:

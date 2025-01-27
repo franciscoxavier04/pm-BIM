@@ -162,3 +162,7 @@ zh-CN:
   week: "周"
   js:
     text_are_you_sure: "是否确定？"
+  api_v3:
+    errors:
+      validation:
+        start_time_different_date: "Date part of startTime (%{start_time}) must be the same as the spentOn (%{spent_on}) date."

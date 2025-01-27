@@ -246,7 +246,7 @@ zh-CN:
     confirm_destroy_option: "删除某个选项将会删除其所有实例 (例如, 在工作包中)。确定要删除？"
     reorder_alphabetical: "按字母顺序重新排序"
     reorder_confirmation: "警告：可用值的当前顺序将丢失。是否继续？"
-    placeholder_version_select: "Work package or project selection is required first"
+    placeholder_version_select: "需要先选择工作包或项目"
     instructions:
       is_required: "将自定义字段标记为必填项。这将使在创建新资源或更新现有资源时，填写该字段成为强制要求。"
       is_required_for_project: "选中可启用此属性，并使其成为所有项目的必选项。单个项目不能停用该属性。"
@@ -1738,7 +1738,7 @@ zh-CN:
       hour:
         other: "小时"
       day:
-        other: "days"
+        other: "天"
   description_active: "激活？"
   description_attachment_toggle: "显示/隐藏附件"
   description_autocomplete: >

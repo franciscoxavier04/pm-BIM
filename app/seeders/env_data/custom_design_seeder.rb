@@ -29,7 +29,7 @@
 module EnvData
   class CustomDesignSeeder < Seeder
     def seed_data!
-      custom_style = CustomStyle.current || CustomStyle.new
+      custom_style = CustomStyle.current || CustomStyle.create!
 
       print_status "    ↳ Setting custom design colors" do
         seed_colors
@@ -56,7 +56,7 @@ module EnvData
         if data.blank?
           custom_style.public_send(:"remove_#{key}")
         elsif data.match?(/^https?:\/\//)
-          custom_style.public_send(:"remote_#{key}_url=", data)
+          seed_remote_url(custom_style, key, data)
         else
           io = Base64StringIO.new(data, key.to_s)
           custom_style.public_send(:"#{key}=", io)
@@ -83,36 +83,64 @@ module EnvData
       value = Setting.seed_design["export_cover_text_color"]
       custom_style.export_cover_text_color = value.presence
     end
-  end
 
-  class Base64StringIO < StringIO
-    attr_reader :filename
+    def seed_remote_url(custom_style, key, url)
+      response = HTTPX.get(url)
+      raise "Failed to set #{key} from #{url}: #{response}" unless response.status == 200
 
-    def initialize(data_url, base_name)
-      metadata, encoded = data_url.split(",")
+      build_attachable_file(key.to_s, response.body.to_s) do |file|
+        custom_style.public_send(:"#{key}=", file)
+        custom_style.save!
+      end
+    end
 
-      if metadata.blank? || encoded.blank? || !metadata.start_with?("data:")
-        raise ArgumentError, "Expected data URL, got #{data_url}"
+    def build_attachable_file(file_name, data)
+      Tempfile.open(file_name) do |tempfile|
+        tempfile.binmode
+        tempfile.write(data)
+        tempfile.rewind
+
+        content_type = OpenProject::ContentTypeDetector.new(tempfile.path).detect
+        mime_type = MIME::Types[content_type].last
+        raise ArgumentError, "Unknown mime type: #{content_type}" if mime_type.nil?
+
+        file = OpenProject::Files.build_uploaded_file(tempfile,
+                                                      content_type,
+                                                      file_name: "#{file_name}.#{mime_type.preferred_extension}")
+
+        yield(file)
+      end
+    end
+
+    class Base64StringIO < StringIO
+      attr_reader :filename
+
+      def initialize(data_url, base_name)
+        metadata, encoded = data_url.split(",")
+
+        if metadata.blank? || encoded.blank? || !metadata.start_with?("data:")
+          raise ArgumentError, "Expected data URL, got #{data_url}"
+        end
+
+        @filename = "#{base_name}.#{extension(metadata)}"
+        bytes = ::Base64.strict_decode64(encoded)
+
+        super(bytes)
       end
 
-      @filename = "#{base_name}.#{extension(metadata)}"
-      bytes = ::Base64.strict_decode64(encoded)
+      def original_filename
+        filename
+      end
 
-      super(bytes)
-    end
+      def extension(metadata)
+        content_type = metadata.match(%r{data:([^;]+)})&.captures&.first
+        raise ArgumentError, "Failed to parse content type from metadata: #{metadata}" if content_type.nil?
 
-    def original_filename
-      filename
-    end
+        mime_type = MIME::Types[content_type].last
+        raise ArgumentError, "Unknown mime type: #{content_type}" if mime_type.nil?
 
-    def extension(metadata)
-      content_type = metadata.match(%r{data:([^;]+)})&.captures&.first
-      raise ArgumentError, "Failed to parse content type from metadata: #{metadata}" if content_type.nil?
-
-      mime_type = MIME::Types[content_type].last
-      raise ArgumentError, "Unknown mime type: #{content_type}" if mime_type.nil?
-
-      mime_type.preferred_extension
+        mime_type.preferred_extension
+      end
     end
   end
 end

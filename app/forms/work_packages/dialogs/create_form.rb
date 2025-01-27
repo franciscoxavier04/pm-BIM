@@ -38,6 +38,7 @@ module WorkPackages::Dialogs
       super()
 
       @work_package = work_package
+      @schema = API::V3::WorkPackages::Schema::SpecificWorkPackageSchema.new(work_package:)
       @wrapper_id = wrapper_id
       @contract = WorkPackages::CreateContract.new(work_package, User.current)
     end
@@ -76,7 +77,8 @@ module WorkPackages::Dialogs
         label: WorkPackage.human_attribute_name(:subject),
         required: true,
         autofocus: autofocus_subject?,
-        input_width: :large
+        input_width: :large,
+        disabled: !@schema.writable?(:subject)
       )
 
       f.rich_text_area(
@@ -85,7 +87,8 @@ module WorkPackages::Dialogs
         rich_text_options: {
           resource: work_package,
           showAttachments: false
-        }
+        },
+        disabled: !@schema.writable?(:description)
       )
 
       render_custom_fields(form: f)

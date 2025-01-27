@@ -33,7 +33,7 @@ fa:
       cost_type:
         unit: "نام واحد"
         unit_plural: "نام واحد پولی"
-        default: "Cost type by default"
+        default: "نوع ارزش به صورت پیش فرض"
       work_package:
         costs_by_type: "واحد هزینه‌کرد"
         labor_costs: "هزینه های نیروی کار"
@@ -46,14 +46,14 @@ fa:
       user:
         default_rates: "ضرایب پرداختی (نرخ) پیشفرض"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: پروژه
+        user: کاربر
+        work_package: بسته کاری
         hours: ساعت‌‌‌‌‌‌
-        comments: Comment
+        comments: نظر
         activity: فعالیت
         spent_on: تاریخ
-        start_time: Start time
+        start_time: زمان شروع
         end_time: Finish time
     models:
       cost_type:
@@ -90,7 +90,7 @@ fa:
   caption_save_rate: "ذخیره امتیاز"
   caption_set_rate: "تنظیم ضریب پرداخت (نرخ) کنونی"
   caption_show_locked: "نمایش انواع قفل‌شده"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "پیگیری زمان"
   description_date_for_new_rate: "تاریخ برای شروع ضریب پرداختی (نرخ) جدید"
   group_by_others: "در هیچ گروهی نیست"
   label_between: "بین"
@@ -151,8 +151,8 @@ fa:
   permission_view_own_time_entries: "مشاهده زمان صرف‌شده خود"
   project_module_costs: "زمان و هزینه‌ها"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
+  setting_costs_currency: "واحد پول"
+  setting_costs_currency_format: "فرمت واحد پول"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "تخصیص ساعت‌ها و هزینه‌های گزارش شده به پروژه"
   text_destroy_cost_entries_question: "%{cost_entries} در بسته‌های کاری که می‌خواهید حذف کنید گزارش شده است. میخوای چیکار کنی؟"
@@ -163,3 +163,7 @@ fa:
   week: "هفته"
   js:
     text_are_you_sure: "آیا مطمئن هستید؟"
+  api_v3:
+    errors:
+      validation:
+        start_time_different_date: "Date part of startTime (%{start_time}) must be the same as the spentOn (%{spent_on}) date."
