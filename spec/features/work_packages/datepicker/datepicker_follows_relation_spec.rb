@@ -73,7 +73,7 @@ RSpec.describe "Datepicker logic on follow relationships", :js, with_settings: {
       # shows the current date again. We need to wait for it to be reinitialized
       # before showing another date. Ideally the flatpickr should not be
       # reinitialized if it does not need to (dates not changed for instance).
-      datepicker.expect_disabled Date.current
+      datepicker.expect_visible_day Date.current
 
       datepicker.show_date "2024-02-05"
       datepicker.expect_disabled Date.parse("2024-02-05")
