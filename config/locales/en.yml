@@ -710,7 +710,7 @@ en:
           manual_mobile: "Ignoring relations."
           manual_gap_between_predecessors: "There is a gap between this and all predecessors."
           manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
-          manual_with_children: "This has child work package but their start dates are ignored."
+          manual_with_children: "This has child work packages but their start dates are ignored."
         title:
           automatic_mobile: "Automatically scheduled."
           automatic_with_children: "The dates are determined by child work packages."
