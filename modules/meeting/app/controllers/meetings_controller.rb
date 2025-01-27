@@ -33,6 +33,7 @@ class MeetingsController < ApplicationController
   before_action :determine_author, only: %i[history]
   before_action :build_meeting, only: %i[new new_dialog]
   before_action :find_meeting, except: %i[index new create new_dialog]
+  before_action :set_project, only: %i[copy history update update_participants]
   before_action :set_activity, only: %i[history]
   before_action :find_copy_from_meeting, only: %i[create]
   before_action :convert_params, only: %i[create update update_participants]
@@ -79,8 +80,9 @@ class MeetingsController < ApplicationController
           else
             render(Meetings::ShowComponent.new(meeting: @meeting, project: @project), layout: true)
           end
-        elsif @meeting.agenda.present? && @meeting.agenda.locked?
-          params[:tab] ||= "minutes"
+        else
+          @project = @meeting.project
+          params[:tab] ||= "minutes" if @meeting.agenda.present? && @meeting.agenda.locked?
         end
       end
     end
@@ -211,6 +213,7 @@ class MeetingsController < ApplicationController
         render turbo_stream: @turbo_streams
       end
       format.html do
+        @project = @meeting.project
         render :edit
       end
     end
@@ -393,9 +396,12 @@ class MeetingsController < ApplicationController
     @meeting = Meeting
       .includes([:project, :author, { participants: :user }, :agenda, :minutes])
       .find(params[:id])
-    @project = @meeting.project
   rescue ActiveRecord::RecordNotFound
     render_404
+  end
+
+  def set_project
+    @project = @meeting.project
   end
 
   def convert_params # rubocop:disable Metrics/AbcSize
