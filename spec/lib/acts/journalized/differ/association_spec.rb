@@ -32,67 +32,49 @@ require "spec_helper"
 
 RSpec.describe Acts::Journalized::Differ::Association do
   describe "#attribute_changes" do
-    context "when the objects are work packages" do
-      let(:original) do
-        build(:work_package,
-              custom_values: [
-                build_stubbed(:work_package_custom_value, custom_field_id: 1, value: 1),
-                build_stubbed(:work_package_custom_value, custom_field_id: 2, value: nil),
-                build_stubbed(:work_package_custom_value, custom_field_id: 3, value: "")
-              ])
-      end
-
-      let(:changed) do
-        build(:work_package,
-              custom_values: [
-                build_stubbed(:work_package_custom_value, custom_field_id: 1, value: ""),
-                build_stubbed(:work_package_custom_value, custom_field_id: 2, value: ""),
-                build_stubbed(:work_package_custom_value, custom_field_id: 3, value: 2)
-              ])
-      end
-
-      let(:instance) do
-        described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id)
-      end
-
-      it "returns the changes" do
-        expect(instance.attribute_changes(:value, key_prefix: "custom_field"))
-          .to eq(
-            "custom_field_1" => ["1", ""],
-            "custom_field_3" => ["", "2"]
-          )
-      end
+    let(:original) do
+      build(:work_package,
+            custom_values: [
+              build_stubbed(:work_package_custom_value, custom_field_id: nil, value: nil),
+              build_stubbed(:work_package_custom_value, custom_field_id: nil, value: ""),
+              build_stubbed(:work_package_custom_value, custom_field_id: 1, value: 1),
+              build_stubbed(:work_package_custom_value, custom_field_id: 2, value: 2),
+              # not for custom_field_id: 3
+              build_stubbed(:work_package_custom_value, custom_field_id: 4, value: 4),
+              build_stubbed(:work_package_custom_value, custom_field_id: 5, value: ""),
+              build_stubbed(:work_package_custom_value, custom_field_id: 6, value: nil),
+              build_stubbed(:work_package_custom_value, custom_field_id: 7, value: nil)
+            ])
     end
 
-    context "with a default custom value" do
-      let(:original) do
-        build(:work_package,
-              custom_values: [
-                build_stubbed(:work_package_custom_value, custom_field_id: nil, value: nil),
-                build_stubbed(:work_package_custom_value, custom_field_id: nil, value: ""),
-                build_stubbed(:work_package_custom_value, custom_field_id: 2, value: 1)
-              ])
-      end
+    let(:changed) do
+      build(:work_package,
+            custom_values: [
+              build_stubbed(:work_package_custom_value, custom_field_id: nil, value: nil),
+              build_stubbed(:work_package_custom_value, custom_field_id: nil, value: ""),
+              build_stubbed(:work_package_custom_value, custom_field_id: 1, value: 1),
+              build_stubbed(:work_package_custom_value, custom_field_id: 2, value: 22),
+              build_stubbed(:work_package_custom_value, custom_field_id: 3, value: 3),
+              build_stubbed(:work_package_custom_value, custom_field_id: 4, value: ""),
+              build_stubbed(:work_package_custom_value, custom_field_id: 5, value: 5),
+              build_stubbed(:work_package_custom_value, custom_field_id: 6, value: 6),
+              build_stubbed(:work_package_custom_value, custom_field_id: 7, value: "")
+            ])
+    end
 
-      let(:changed) do
-        build(:work_package,
-              custom_values: [
-                build_stubbed(:work_package_custom_value, custom_field_id: 1, value: "t"),
-                build_stubbed(:work_package_custom_value, custom_field_id: 2, value: 2)
-              ])
-      end
+    let(:instance) do
+      described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id)
+    end
 
-      let(:instance) do
-        described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id)
-      end
-
-      it "returns the changes" do
-        expect(instance.attribute_changes(:value, key_prefix: "custom_field"))
-          .to eq(
-            "custom_field_1" => [nil, "t"],
-            "custom_field_2" => ["1", "2"]
-          )
-      end
+    it "returns the changes" do
+      expect(instance.attribute_changes(:value, key_prefix: "custom_field"))
+        .to eq(
+          "custom_field_2" => ["2", "22"],
+          "custom_field_3" => [nil, "3"],
+          "custom_field_4" => ["4", ""],
+          "custom_field_5" => ["", "5"],
+          "custom_field_6" => ["", "6"]
+        )
     end
   end
 
