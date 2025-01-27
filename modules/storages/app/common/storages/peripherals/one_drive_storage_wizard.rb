@@ -28,48 +28,45 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-# The logic for creating storage was extracted from the controller and put into
-# a service: https://dev.to/joker666/ruby-on-rails-pattern-service-objects-b19
-# Purpose: create and persist a Storages::Storage record
-# Used by: Storages::Admin::StoragesController#create, API::V3::Storages::StoragesAPI
-# The comments here are also valid for the other *_service.rb files
-module Storages::Storages
-  class CreateService < ::BaseServices::Create
-    def initialize(*, create_oauth_app: true, **)
-      super(*, **)
+module Storages
+  module Peripherals
+    class OneDriveStorageWizard < Wizard
+      step :general_info, completed_if: ->(storage) { storage.name.present? }
 
-      @create_oauth_app = create_oauth_app
-    end
+      step :access_management,
+           completed_if: ->(storage) { !storage.automatic_management_unspecified? },
+           preparation: :prepare_storage_for_access_management_form
 
-    protected
+      step :oauth_client,
+           completed_if: ->(storage) { storage.oauth_client.present? },
+           preparation: ->(storage) { storage.build_oauth_client }
 
-    def after_perform(service_call)
-      super
-      return service_call unless create_oauth_app?
+      step :redirect_uri,
+           completed_if: ->(storage) {
+              # Working around the fact that there is nothing changed on the storage after showing
+              # the redirect url. The redirect URL step only exists to show the oauth client's redirect
+              # URL to the user right after the client was created.
+             storage.oauth_client&.created_at && storage.oauth_client.created_at < 10.seconds.ago
+           }
 
-      storage = service_call.result
-      # Automatically create an OAuthApplication object for the Nextcloud storage
-      # using values from storage (particularly :host) as defaults
-      if storage.provider_type_nextcloud?
-        persist_service_result = ::Storages::OAuthApplications::CreateService.new(storage:, user:).call
-        storage.oauth_application = persist_service_result.result if persist_service_result.success?
-        service_call.add_dependent!(persist_service_result)
+      private
+
+      def prepare_storage_for_access_management_form(storage)
+        ::Storages::Storages::SetProviderFieldsAttributesService
+          .new(user:, model: storage, contract_class: EmptyContract)
+          .call
       end
 
-      service_call
-    end
+      def prepare_oauth_application(storage)
+        persist_service_result = ::Storages::OAuthApplications::CreateService.new(storage:, user:).call
+        storage.oauth_application = persist_service_result.result if persist_service_result.success?
+      end
 
-    # @override BaseServices::Create#instance to return a Storages::{ProviderType}Storage class name
-    # At this stage, the model contract has already been validated, so we can be sure of the provider_type presence
-    # @example instance_klass = Storages::NextcloudStorage
-    #
-    def instance(params)
-      instance_klass = params[:provider_type].constantize
-      instance_klass.new
-    end
-
-    def create_oauth_app?
-      @create_oauth_app
+      def prepare_storage_for_automatic_management_form(storage)
+        ::Storages::Storages::SetProviderFieldsAttributesService
+          .new(user:, model: storage, contract_class: EmptyContract)
+          .call
+      end
     end
   end
 end

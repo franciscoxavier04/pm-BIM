@@ -203,7 +203,7 @@ en:
       automatically_managed_folders: Automatically managed folders
       general_information: General information
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth applications
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders

@@ -56,7 +56,7 @@ RSpec.describe "Admin Create a new file storage",
         within_test_selector("storages-select-provider-action-menu") { click_on("Nextcloud") }
       end
 
-      expect(page).to have_current_path(select_provider_admin_settings_storages_path(provider: "nextcloud"))
+      expect(page).to have_current_path(new_admin_settings_storage_path(provider: "nextcloud"))
 
       aggregate_failures "Select provider view" do
         # Page Header
@@ -219,7 +219,7 @@ RSpec.describe "Admin Create a new file storage",
         within_test_selector("storages-select-provider-action-menu") { click_on("OneDrive/SharePoint") }
       end
 
-      expect(page).to have_current_path(select_provider_admin_settings_storages_path(provider: "one_drive"))
+      expect(page).to have_current_path(new_admin_settings_storage_path(provider: "one_drive"))
 
       aggregate_failures "Select provider view" do
         # Page Header
@@ -327,10 +327,10 @@ RSpec.describe "Admin Create a new file storage",
     end
   end
 
-  describe "Select provider page" do
+  describe "new page" do
     context "when navigating directly to the page" do
       it "redirects you back to the index page" do
-        visit select_provider_admin_settings_storages_path
+        visit new_admin_settings_storage_path
 
         expect(page).to have_current_path(admin_settings_storages_path)
         wait_for { page }.to have_text("Please select a valid storage provider.")
@@ -339,7 +339,7 @@ RSpec.describe "Admin Create a new file storage",
 
     context "when navigating to the page with an invalid provider" do
       it "redirects you back to the index page" do
-        visit select_provider_admin_settings_storages_path(provider: "foobar")
+        visit new_admin_settings_storage_path(provider: "foobar")
 
         expect(page).to have_current_path(admin_settings_storages_path)
         wait_for { page }.to have_text("Please select a valid storage provider.")

@@ -57,6 +57,10 @@ module Storages
         register(:set_permissions, StorageInteraction::Nextcloud::SetPermissionsCommand)
       end
 
+      namespace("components") do
+        register(:setup_wizard, NextcloudStorageWizard)
+      end
+
       namespace("contracts") do
         register(:storage, ::Storages::Storages::NextcloudContract)
       end

@@ -36,6 +36,8 @@ module Storages::Admin
     attr_reader :storage
     alias_method :oauth_application, :model
 
+    options in_wizard: false
+
     def initialize(oauth_application:, storage:, **)
       super(oauth_application, **)
       @storage = storage
@@ -56,14 +58,16 @@ module Storages::Admin
       {
         scheme: :primary,
         tag: :a,
-        href: submit_button_path
-      }.merge(options.fetch(:submit_button_options, {}))
+        href: submit_button_path,
+        data: { turbo_stream: true, turbo_frame: "page-content" }
+      }
     end
 
     private
 
     def submit_button_path
-      options[:submit_button_path] || show_oauth_application_admin_settings_storage_path(storage)
+      query = { continue_wizard: storage.id } if in_wizard
+      show_oauth_application_admin_settings_storage_path(storage, query)
     end
   end
 end

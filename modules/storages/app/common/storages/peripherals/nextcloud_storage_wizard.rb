@@ -27,35 +27,36 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-#
-module Storages::Admin::Forms
-  class AccessManagementFormComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
 
-    alias_method :storage, :model
+module Storages
+  module Peripherals
+    class NextcloudStorageWizard < Wizard
+      step :general_info, completed_if: ->(storage) { storage.host.present? && storage.name.present? }
 
-    options in_wizard: false
+      step :oauth_application,
+           completed_if: ->(storage) { storage.oauth_application.present? },
+           preparation: :prepare_oauth_application
 
-    def self.wrapper_key = :access_management_section
+      step :oauth_client,
+           completed_if: ->(storage) { storage.oauth_client.present? },
+           preparation: ->(storage) { storage.build_oauth_client }
 
-    def form_url
-      query = { continue_wizard: storage.id } if in_wizard
-      admin_settings_storage_access_management_path(storage, query)
-    end
+      step :automatically_managed_project_folders,
+           completed_if: ->(storage) { !storage.automatic_management_unspecified? },
+           preparation: :prepare_storage_for_automatic_management_form
 
-    private
+      private
 
-    def form_method
-      first_time_configuration? ? :post : :patch
-    end
+      def prepare_oauth_application(storage)
+        create_result = ::Storages::OAuthApplications::CreateService.new(storage:, user:).call
+        storage.oauth_application = create_result.result if create_result.success?
+      end
 
-    def cancel_button_path
-      edit_admin_settings_storage_path(storage)
-    end
-
-    def first_time_configuration?
-      storage.automatic_management_new_record?
+      def prepare_storage_for_automatic_management_form(storage)
+        ::Storages::Storages::SetProviderFieldsAttributesService
+          .new(user:, model: storage, contract_class: EmptyContract)
+          .call
+      end
     end
   end
 end

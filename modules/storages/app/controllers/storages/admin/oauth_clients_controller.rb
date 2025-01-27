@@ -64,26 +64,14 @@ class Storages::Admin::OAuthClientsController < ApplicationController
 
     service_result.on_failure do
       update_via_turbo_stream(component: Storages::Admin::Forms::OAuthClientFormComponent.new(oauth_client: @oauth_client,
-                                                                                              storage: @storage))
+                                                                                              storage: @storage,
+                                                                                              in_wizard: true))
+      respond_with_turbo_streams
     end
 
     service_result.on_success do
-      if @storage.provider_type_nextcloud?
-        prepare_storage_for_automatic_management_form
-      end
-
-      update_via_turbo_stream(component: Storages::Admin::OAuthClientInfoComponent.new(oauth_client: @oauth_client,
-                                                                                       storage: @storage))
-      update_via_turbo_stream(component: Storages::Admin::Forms::RedirectUriFormComponent.new(
-        oauth_client: @oauth_client, storage: @storage, is_complete: false
-      ))
-
-      if @storage.provider_type_nextcloud? && @storage.automatic_management_new_record?
-        update_via_turbo_stream(component: Storages::Admin::Forms::AutomaticallyManagedProjectFoldersFormComponent.new(@storage))
-      end
+      redirect_to(new_admin_settings_storage_path(continue_wizard: @storage.id), status: :see_other)
     end
-
-    respond_with_turbo_streams
   end
 
   def update

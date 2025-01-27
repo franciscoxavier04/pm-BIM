@@ -59,8 +59,6 @@ Rails.application.routes.draw do
           post :validate_connection, on: :member
         end
 
-        get :select_provider, on: :collection
-
         member do
           get :show_oauth_application
           get :edit_host

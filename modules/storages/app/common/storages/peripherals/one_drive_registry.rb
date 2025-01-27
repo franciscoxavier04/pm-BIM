@@ -51,6 +51,10 @@ module Storages
         register(:set_permissions, StorageInteraction::OneDrive::SetPermissionsCommand)
       end
 
+      namespace("components") do
+        register(:setup_wizard, OneDriveStorageWizard)
+      end
+
       namespace("contracts") do
         register(:storage, ::Storages::Storages::OneDriveContract)
       end
