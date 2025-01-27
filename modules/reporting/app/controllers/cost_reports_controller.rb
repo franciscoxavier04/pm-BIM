@@ -174,12 +174,14 @@ class CostReportsController < ApplicationController
   # Update a record with new query parameters and save it. Redirects to the
   # specified record or renders the updated table on XHR
   def update
-    if params[:set_filter].to_i == 1 # save
+    if set_filter? # apply
       old_query = @query
       prepare_query
-      old_query.migrate(@query)
-      old_query.save!
-      @query = old_query
+      if old_query
+        old_query.migrate(@query)
+        old_query.save!
+        @query = old_query
+      end
     end
     if request.xhr?
       table
