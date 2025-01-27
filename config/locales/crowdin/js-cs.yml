@@ -139,7 +139,7 @@ cs:
     description_select_work_package: "Vyberte pracovní balíček #%{id}"
     description_subwork_package: "Podřazený pracovního balíčku #%{id}"
     editor:
-      revisions: "Show local modifications"
+      revisions: "Zobrazit místní úpravy"
       no_revisions: "Nebyly nalezeny žádné místní úpravy"
       preview: "Přepnout režim náhledu"
       source_code: "Přepnout zdrojový mód Markdown"
@@ -624,11 +624,11 @@ cs:
       date_alerts:
         milestone_date: "Datum milníku"
         overdue: "Po termínu"
-        overdue_since: "since %{difference_in_days}."
-        property_today: "is today."
-        property_is: "is in %{difference_in_days}."
-        property_was: "was %{difference_in_days} ago."
-        property_is_deleted: "is deleted."
+        overdue_since: "od %{difference_in_days}"
+        property_today: "je dnes."
+        property_is: "je v %{difference_in_days}"
+        property_was: "byl před %{difference_in_days}"
+        property_is_deleted: "je vymazán."
         upsale:
           title: "Upozornění na datum"
           description: "S upozorněním na datum budete upozorněni na blížící se datum zahájení nebo ukončení, abyste nikdy nezmeškali nebo nezapomněli na důležitou lhůtu."

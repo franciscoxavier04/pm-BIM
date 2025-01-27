@@ -33,7 +33,7 @@ tr:
       cost_type:
         unit: "Birim adı"
         unit_plural: "Birden fazla birim adı"
-        default: "Cost type by default"
+        default: "Varsayılan maliyet türü"
       work_package:
         costs_by_type: "Harcanan maliyet"
         labor_costs: "İşçilik maliyetleri"
@@ -117,7 +117,7 @@ tr:
   label_work_package_filter_add: "İş paketi filtresi ekle"
   label_kind: "Tür"
   label_less_or_equal: "<="
-  label_log_costs: "Günlük birim maliyetleri"
+  label_log_costs: "Birim maliyet kaydet"
   label_no: "Hayır"
   label_option_plural: "Ayarlar"
   label_overall_costs: "Tüm maliyetler"

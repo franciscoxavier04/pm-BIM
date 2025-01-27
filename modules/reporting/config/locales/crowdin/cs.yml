@@ -93,8 +93,8 @@ cs:
       time: "Čas"
     cost_reports:
       title: "Váš export XLS zprávy o nákladech"
-      start_time: "Start time"
-      end_time: "End time"
+      start_time: "Čas zahájení"
+      end_time: "Čas ukončení"
   reporting:
     group_by:
       selected_columns: "Vybrané sloupce"
