@@ -152,35 +152,38 @@ module Components
     end
 
     ##
-    # Expect the given date to be non working
+    # Expect the given date to be visible
+    def expect_visible_day(date)
+      label = date.strftime("%B %-d, %Y")
+      expect(page).to have_css(".flatpickr-day[aria-label='#{label}']")
+    end
+
+    ##
+    # Expect the given date to be visible and a non-working day
     def expect_non_working(date)
       label = date.strftime("%B %-d, %Y")
-      expect(page).to have_css(".flatpickr-day.flatpickr-non-working-day[aria-label='#{label}']",
-                               wait: 20)
+      expect(page).to have_css(".flatpickr-day.flatpickr-non-working-day[aria-label='#{label}']")
     end
 
     ##
-    # Expect the given date to be non working
+    # Expect the given date to be visible and a working day
     def expect_working(date)
       label = date.strftime("%B %-d, %Y")
-      expect(page).to have_css(".flatpickr-day:not(.flatpickr-non-working-day)[aria-label='#{label}']",
-                               wait: 20)
+      expect(page).to have_css(".flatpickr-day:not(.flatpickr-non-working-day)[aria-label='#{label}']")
     end
 
     ##
-    # Expect the given date to be non working
+    # Expect the given date to be visible and disabled
     def expect_disabled(date)
       label = date.strftime("%B %-d, %Y")
-      expect(page).to have_css(".flatpickr-day.flatpickr-disabled[aria-label='#{label}']",
-                               wait: 20)
+      expect(page).to have_css(".flatpickr-day.flatpickr-disabled[aria-label='#{label}']")
     end
 
     ##
-    # Expect the given date to be non working
+    # Expect the given date to be visible and enabled
     def expect_not_disabled(date)
       label = date.strftime("%B %-d, %Y")
-      expect(page).to have_css(".flatpickr-day:not(.flatpickr-disabled)[aria-label='#{label}']",
-                               wait: 20)
+      expect(page).to have_css(".flatpickr-day:not(.flatpickr-disabled)[aria-label='#{label}']")
     end
 
     protected
