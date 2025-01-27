@@ -494,7 +494,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
   end
 
   context "with the work package having a precedes relation" do
-    let!(:work_package) { create(:work_package, project:, schedule_manually:) }
+    let!(:work_package) { create(:work_package, project:, schedule_manually:, start_date: wp_start_date, due_date: wp_due_date) }
     let!(:preceding) { create(:work_package, project:, start_date: 10.days.ago, due_date: 5.days.ago) }
 
     let!(:relationship) do
@@ -544,6 +544,42 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
         expect(page).to have_css(test_selector("op-modal-banner-warning").to_s,
                                  text: "Manually scheduled. Dates not affected by relations.\nClick on \"Show relations\" for Gantt overview.")
+      end
+    end
+
+    context "with the work package having a precedes relation which overlaps" do
+      let(:schedule_manually) { true }
+      let(:wp_start_date) { 6.days.ago }
+      let(:wp_due_date) { 1.day.ago }
+
+      it "shows a banner that there is an overlap" do
+        expect(page).to have_css(test_selector("op-modal-banner-warning").to_s,
+                                 text: "Manually scheduled. Dates not affected by relations.\nOverlaps with at least one predecessor.")
+
+        # When toggling manually scheduled
+        start_date.toggle_scheduling_mode
+
+        # Expect new banner info
+        expect(page).to have_css(test_selector("op-modal-banner-info").to_s,
+                                 text: "The start date is set by a predecessor.\nClick on \"Show relations\" for Gantt overview.")
+      end
+    end
+
+    context "with the work package having a precedes relation with a gap of over two days" do
+      let(:schedule_manually) { true }
+      let(:wp_start_date) { 1.day.ago }
+      let(:wp_due_date) { 1.day.ago }
+
+      it "shows a banner that there is a gap" do
+        expect(page).to have_css(test_selector("op-modal-banner-warning").to_s,
+                                 text: "Manually scheduled. Dates not affected by relations.\nThere is a gap between this and all predecessors.")
+
+        # When toggling manually scheduled
+        start_date.toggle_scheduling_mode
+
+        # Expect new banner info
+        expect(page).to have_css(test_selector("op-modal-banner-info").to_s,
+                                 text: "The start date is set by a predecessor.\nClick on \"Show relations\" for Gantt overview.")
       end
     end
   end
