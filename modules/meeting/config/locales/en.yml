@@ -287,6 +287,13 @@ en:
         The following meetings are planned in the recurring meeting schedule but are not open yet. 
         Every time a planned meeting starts, the next one will automatically be opened for you. 
         You can also open planned meetings manually to import the template and start editing the agenda.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html: >
+        Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series.
+
+        This action is not reversible. Please proceed with caution.
 
   notice_successful_notification: "Notification sent successfully"
   notice_timezone_missing: No time zone is set and %{zone} is assumed. To choose your time zone, please click here.

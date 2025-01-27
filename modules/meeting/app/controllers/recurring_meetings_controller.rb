@@ -9,10 +9,10 @@ class RecurringMeetingsController < ApplicationController
   include OpTurbo::DialogStreamHelper
 
   before_action :find_meeting,
-                only: %i[show update details_dialog destroy edit init
+                only: %i[show update details_dialog delete_dialog destroy edit init
                          delete_scheduled template_completed download_ics notify end_series end_series_dialog]
   before_action :find_optional_project,
-                only: %i[index show new create update details_dialog destroy edit delete_scheduled notify]
+                only: %i[index show new create update details_dialog delete_dialog destroy edit delete_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
   before_action :get_scheduled_meeting, only: %i[delete_scheduled]
@@ -154,6 +154,13 @@ class RecurringMeetingsController < ApplicationController
       flash[:error] = call.message
     end
     redirect_to action: :show
+  end
+
+  def delete_dialog
+    respond_with_dialog RecurringMeetings::DeleteDialogComponent.new(
+      recurring_meeting: @recurring_meeting,
+      project: @project
+    )
   end
 
   def destroy
