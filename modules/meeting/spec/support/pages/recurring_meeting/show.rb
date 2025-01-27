@@ -117,6 +117,10 @@ module Pages::RecurringMeeting
       page.within("#new-meeting-dialog", &)
     end
 
+    def in_delete_dialog(&)
+      page.within("#delete-meeting-dialog", &)
+    end
+
     def expect_no_meeting(date:)
       expect(page).to have_no_css("li", text: date)
     end

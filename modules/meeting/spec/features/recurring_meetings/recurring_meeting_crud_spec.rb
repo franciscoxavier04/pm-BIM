@@ -114,8 +114,11 @@ RSpec.describe "Recurring meetings CRUD",
   it "can cancel an occurrence" do
     show_page.visit!
 
-    accept_confirm(I18n.t(:label_recurring_occurrence_delete_confirmation)) do
-      show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
+    show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
+    show_page.in_delete_dialog do
+      check "I understand that this deletion cannot be reversed"
+
+      click_on "Delete permanently"
     end
 
     expect_flash(type: :success, message: "Successful cancellation.")
@@ -154,11 +157,17 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
     show_page.expect_scheduled_actions date: "01/07/2025 01:30 PM"
 
-    accept_confirm(I18n.t(:label_recurring_occurrence_delete_confirmation)) do
-      show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
+    show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
+    show_page.in_delete_dialog do
+      check "I understand that this deletion cannot be reversed"
+
+      click_on "Delete permanently"
     end
 
-    wait_for_network_idle
+    expect_flash(type: :success, message: "Successful cancellation.")
+
+    expect(page).to have_current_path(show_page.project_path)
+
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
     show_page.expect_cancelled_actions date: "12/31/2024 01:30 PM"
   end
