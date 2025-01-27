@@ -69,6 +69,12 @@ RSpec.describe "Datepicker logic on follow relationships", :js, with_settings: {
 
       datepicker.toggle_ignore_non_working_days
       datepicker.expect_ignore_non_working_days true
+      # Toggling non-working days reinitializes the displayed flatpickr, which
+      # shows the current date again. We need to wait for it to be reinitialized
+      # before showing another date. Ideally the flatpickr should not be
+      # reinitialized if it does not need to (dates not changed for instance).
+      datepicker.expect_disabled Date.current
+
       datepicker.show_date "2024-02-05"
       datepicker.expect_disabled Date.parse("2024-02-05")
       datepicker.expect_disabled Date.parse("2024-02-04")
