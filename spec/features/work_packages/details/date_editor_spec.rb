@@ -233,7 +233,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     start_date.expect_state_text Time.zone.today.strftime("%Y-%m-%d")
   end
 
-  it "can set a negative duration which gets transformed (Regression #44219)" do
+  it "can set a negative duration which shows an error message (Regression #44219)" do
     start_date.activate!
     start_date.expect_active!
 
@@ -511,6 +511,8 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
     context "when work package is manually scheduled" do
       let(:schedule_manually) { true }
+      let(:wp_start_date) { nil }
+      let(:wp_due_date) { nil }
 
       it "shows a banner that the relations are ignored" do
         expect(page).to have_css(test_selector("op-modal-banner-warning").to_s,
@@ -534,6 +536,8 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
     context "when work package is not manually scheduled" do
       let(:schedule_manually) { false }
+      let(:wp_start_date) { nil }
+      let(:wp_due_date) { nil }
 
       it "shows a banner that the start date it set by the predecessor" do
         expect(page).to have_css(test_selector("op-modal-banner-info").to_s,
