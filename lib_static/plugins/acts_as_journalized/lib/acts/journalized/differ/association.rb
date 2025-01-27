@@ -31,8 +31,8 @@
 module Acts::Journalized::Differ
   class Association
     def initialize(original, changed, association:, id_attribute:)
-      @original_by_id = attributes_by_id(original, association, id_attribute)
-      @changed_by_id = attributes_by_id(changed, association, id_attribute)
+      @original_by_id = association_by_id(original, association, id_attribute)
+      @changed_by_id = association_by_id(changed, association, id_attribute)
       @ids = (@changed_by_id.keys | @original_by_id.keys).compact
     end
 
@@ -56,10 +56,8 @@ module Acts::Journalized::Differ
 
     private
 
-    def attributes_by_id(model, association, id_attribute)
+    def association_by_id(model, association, id_attribute)
       return {} unless model
-
-      id_attribute = id_attribute.to_s
 
       relation = if association.respond_to?(:call)
                    association.call(model)
@@ -67,11 +65,11 @@ module Acts::Journalized::Differ
                    model.send(association)
                  end
 
-      relation.map(&:attributes).group_by { _1[id_attribute] }
+      relation.group_by(&id_attribute.to_sym)
     end
 
     def single_attribute_changes(attribute)
-      attribute = attribute.to_s
+      attribute = attribute.to_sym
 
       pairs = @ids.index_with do |id|
         [
@@ -85,7 +83,7 @@ module Acts::Journalized::Differ
 
     def combine_journals(journals, attribute)
       # TODO: is there real case where there will be more than one value?
-      journals.pluck(attribute).sort.join(",") if journals
+      journals.map(&attribute).sort.join(",") if journals
     end
   end
 end
