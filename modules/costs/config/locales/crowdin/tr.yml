@@ -102,7 +102,7 @@ tr:
   label_work_package_filter_add: "İş paketi filtresi ekle"
   label_kind: "Tür"
   label_less_or_equal: "<="
-  label_log_costs: "Günlük birim maliyetleri"
+  label_log_costs: "Birim maliyet kaydet"
   label_no: "Hayır"
   label_option_plural: "Ayarlar"
   label_overall_costs: "Tüm maliyetler"
