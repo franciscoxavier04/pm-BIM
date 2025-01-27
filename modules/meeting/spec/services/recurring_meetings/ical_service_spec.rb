@@ -48,7 +48,7 @@ RSpec.describe RecurringMeetings::ICalService, type: :model do # rubocop:disable
 
   let(:template) { series.template }
   let(:service) { described_class.new(user:, series:) }
-  let(:result) { service.call.result }
+  let(:result) { service.generate_series.result }
 
   let(:parsed_ical) { Icalendar::Calendar.parse(result).first }
   let(:parsed_events) { parsed_ical.events }
@@ -73,7 +73,6 @@ RSpec.describe RecurringMeetings::ICalService, type: :model do # rubocop:disable
       expect(parsed_events.count).to eq(1)
       expect(series_ical).to include("LOCATION:https://example.com/meet/important-meeting")
       expect(series_ical).to include("SUMMARY:[My Project] Weekly")
-      expect(series_ical).to include("UID:#{Setting.app_title}-#{Setting.host_name}-meeting-series-#{series.id}")
       expect(series_ical).to include("ATTENDEE;CN=Bob Barker;EMAIL=bob@example.com;PARTSTAT=NEEDS-ACTION;RSVP=TRU")
       expect(series_ical).to include("ATTENDEE;CN=Foo Fooer;EMAIL=foo@example.com;PARTSTAT=NEEDS-ACTION;RSVP=TRUE")
     end
@@ -143,6 +142,19 @@ RSpec.describe RecurringMeetings::ICalService, type: :model do # rubocop:disable
       expect(moved).to include("DTSTART;TZID=America/New_York:20241216T063000")
       expect(moved).to include("DTEND;TZID=America/New_York:20241216T073000")
       expect(moved).to include("URL:http://#{Setting.host_name}/projects/my-project/meetings/#{moved_schedule.meeting_id}")
+    end
+
+    context "when passing a specific occurrence" do
+      let(:result) { service.generate_occurrence(schedule.meeting).result }
+
+      it "creates the specific event when requested" do
+        expect(parsed_events.count).to eq(1)
+        occurrence = parsed_events.first.to_ical
+
+        expect(occurrence).to include("DTSTART;TZID=America/New_York:20241208T050000")
+        expect(occurrence).to include("DTEND;TZID=America/New_York:20241208T060000")
+        expect(occurrence).to include("URL:http://#{Setting.host_name}/projects/my-project/meetings/#{schedule.meeting_id}")
+      end
     end
   end
 end

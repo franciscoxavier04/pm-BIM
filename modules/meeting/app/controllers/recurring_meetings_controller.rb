@@ -7,8 +7,10 @@ class RecurringMeetingsController < ApplicationController
   include OpTurbo::DialogStreamHelper
 
   before_action :find_meeting,
-                only: %i[show update details_dialog destroy edit init delete_scheduled template_completed download_ics]
-  before_action :find_optional_project, only: %i[index show new create update details_dialog destroy edit delete_scheduled]
+                only: %i[show update details_dialog destroy edit init
+                         delete_scheduled template_completed download_ics notify]
+  before_action :find_optional_project,
+                only: %i[index show new create update details_dialog destroy edit delete_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
   before_action :get_scheduled_meeting, only: %i[delete_scheduled]
@@ -150,6 +152,7 @@ class RecurringMeetingsController < ApplicationController
       .call(start_time: @first_occurrence.to_time)
 
     if call.success?
+      deliver_invitation_mails
       flash[:success] = I18n.t("recurring_meeting.occurrence.first_created")
     else
       flash[:error] = call.message
@@ -168,17 +171,45 @@ class RecurringMeetingsController < ApplicationController
     redirect_to polymorphic_path([@project, @recurring_meeting]), status: :see_other
   end
 
-  def download_ics
-    ::RecurringMeetings::ICalService
-      .new(user: current_user, series: @recurring_meeting)
-      .call
+  def download_ics # rubocop:disable Metrics/AbcSize
+    service = ::RecurringMeetings::ICalService.new(user: current_user, series: @recurring_meeting)
+    filename, result =
+      if params[:occurrence_id].present?
+        occurrence = @recurring_meeting.meetings.find_by(id: params[:occurrence_id])
+        ["#{@recurring_meeting.title} - #{occurrence.start_time.to_date.iso8601}",
+         service.generate_occurrence(occurrence)]
+      else
+        [@recurring_meeting.title, service.generate_series]
+      end
+
+    result
       .on_failure { |call| render_500(message: call.message) }
       .on_success do |call|
-      send_data call.result, filename: filename_for_content_disposition("#{@recurring_meeting.title}.ics")
+      send_data call.result, filename: filename_for_content_disposition("#{filename}.ics")
     end
   end
 
+  def notify
+    deliver_invitation_mails
+    flash[:notice] = I18n.t(:notice_successful_notification)
+    redirect_to action: :show
+  end
+
   private
+
+  def deliver_invitation_mails
+    @recurring_meeting
+      .template
+      .participants
+      .invited
+      .find_each do |participant|
+      MeetingSeriesMailer.template_completed(
+        @recurring_meeting,
+        participant.user,
+        User.current
+      ).deliver_later
+    end
+  end
 
   def upcoming_meetings(count:)
     meetings = @recurring_meeting
