@@ -249,6 +249,51 @@ OPENPROJECT_SEED_LDAP_EXAMPLE_GROUPFILTER_EXAMPLEFILTER_GROUP__ATTRIBUTE="cn"
 
 When a filter is defined, synchronization happens directly during seeding for enterprise editions. Be aware of that when you create the connection that e.g., the LDAP connection needs to be reachable.
 
+
+
+### Seeding Custom Theme and Design (Enterprise add-on)
+
+In an automated deployment setup such as installing OpenProject using our Helm chart, you might want to provide the custom design through environment variables.
+
+
+
+> [!NOTE]
+>
+> Setting these variables will not have an effect on the Community Edition.
+
+
+
+**Setting design colors**
+
+```shell
+OPENPROJECT_SEED_DESIGN_PRIMARY__BUTTON__COLOR="#1F883D"
+OPENPROJECT_SEED_DESIGN_ACCENT__COLOR="#1F883D"
+OPENPROJECT_SEED_DESIGN_HEADER__BG__COLOR="#1A67A3"
+OPENPROJECT_SEED_DESIGN_HEADER__ITEM__BG__HOVER__COLOR="#E5E5E5"
+OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__COLOR="#FFFFFF"
+OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__SELECTED__BACKGROUND="#1F883D"
+OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__HOVER__BACKGROUND="#E5E5E5"
+OPENPROJECT_SEED_DESIGN_EXPORT__COVER__TEXT__COLOR="#333333"
+```
+
+**Setting logos and icons through environment variables**
+
+You can also provide the logo used in the main app header, as well as favicons or touchicons through these variables. OpenProject supports downloading images during seed from a reachable URL, or as base64-encoded data URLs.
+
+```shell
+# Main logo of the application
+OPENPROJECT_SEED_DESIGN_LOGO="https://my.example.com/logo.png"
+# Favicon and touch icons for ios
+OPENPROJECT_SEED_DESIGN_FAVICON="data:image/png;base64,iVBO....."
+OPENPROJECT_SEED_DESIGN_TOUCH__ICON="data:image/png;base64,foo..."
+OPENPROJECT_SEED_DESIGN_EXPORT__LOGO="..."
+OPENPROJECT_SEED_DESIGN_EXPORT__COVER="..."
+```
+
+
+
+
+
 ## Examples for common use cases
 
 * `attachments_storage_path`
