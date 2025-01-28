@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -50,16 +52,21 @@ class CostQuery::Filter::WorkPackageId < Report::Filter::Base
     return nil unless value.to_i.to_s == value.to_s # we expect an work_package-id
 
     work_package = WorkPackage.find(value.to_i)
-    [text_for_work_package(work_package), work_package.id] if work_package and work_package.visible?(User.current)
+    [text_for_work_package(work_package), work_package.id] if work_package&.visible?(User.current)
   end
 
   def self.text_for_tuple(id, subject)
     str = "##{id} "
-    str << (subject.length > 30 ? subject.first(26) + "..." : subject)
+    str << (subject.length > 30 ? "#{subject.first(26)}..." : subject)
   end
 
-  def self.text_for_work_package(i)
-    i = i.first if i.is_a? Array
-    text_for_touble(i.id, i.subject)
+  def self.text_for_work_package(work_package_or_work_package_list)
+    wp = if work_package_or_work_package_list.is_a?(Array)
+           work_package_or_work_package_list.first
+         else
+           work_package_or_work_package_list
+         end
+
+    text_for_tuple(wp.id, wp.subject)
   end
 end
