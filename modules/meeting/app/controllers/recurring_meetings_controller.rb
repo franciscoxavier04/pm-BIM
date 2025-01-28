@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecurringMeetingsController < ApplicationController
   include RecurringMeetingsHelper
   include Layout
@@ -154,7 +156,7 @@ class RecurringMeetingsController < ApplicationController
     if call.success?
       init_next_occurrence_job(@first_occurrence)
       deliver_invitation_mails
-      
+
       flash[:success] = I18n.t("recurring_meeting.occurrence.first_created")
     else
       flash[:error] = call.message
