@@ -31,17 +31,19 @@
 module Storages
   module Peripherals
     class NextcloudStorageWizard < Wizard
-      step :general_info, completed_if: ->(storage) { storage.host.present? && storage.name.present? }
+      step :general_information, completed_if: ->(storage) { storage.host.present? && storage.name.present? }
 
       step :oauth_application,
+           section: :oauth_configuration,
            completed_if: ->(storage) { storage.oauth_application.present? },
            preparation: :prepare_oauth_application
 
       step :oauth_client,
+           section: :oauth_configuration,
            completed_if: ->(storage) { storage.oauth_client.present? },
            preparation: ->(storage) { storage.build_oauth_client }
 
-      step :automatically_managed_project_folders,
+      step :automatically_managed_folders,
            completed_if: ->(storage) { !storage.automatic_management_unspecified? },
            preparation: :prepare_storage_for_automatic_management_form
 

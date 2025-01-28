@@ -33,15 +33,10 @@ module Storages::Admin
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    attr_reader :storage
-    alias_method :oauth_application, :model
+    alias_method :storage, :model
+    delegate :oauth_application, to: :storage
 
     options in_wizard: false
-
-    def initialize(oauth_application:, storage:, **)
-      super(oauth_application, **)
-      @storage = storage
-    end
 
     def self.wrapper_key = :storage_openproject_oauth_section
 

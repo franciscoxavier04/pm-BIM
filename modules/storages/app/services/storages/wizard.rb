@@ -30,7 +30,7 @@
 
 module Storages
   class Wizard
-    StepDefinition = Data.define(:name, :if, :completed_if, :preparation) do
+    StepDefinition = Data.define(:name, :section, :if, :completed_if, :preparation) do
       def use_on?(wizard)
         call_with_model(self.if, wizard)
       end
@@ -63,9 +63,9 @@ module Storages
         steps_by_name.values
       end
 
-      def step(name, completed_if:, if: ->(_) { true }, preparation: ->(_) {})
+      def step(name, completed_if:, if: ->(_) { true }, preparation: ->(_) {}, section: name)
         name = name.to_sym
-        steps_by_name[name] = StepDefinition.new(name:, if:, completed_if:, preparation:)
+        steps_by_name[name] = StepDefinition.new(name:, section:, if:, completed_if:, preparation:)
       end
     end
 
@@ -83,6 +83,10 @@ module Storages
       steps_by_name.fetch(next_step).prepare_on(self)
 
       next_step
+    end
+
+    def section_name(name)
+      steps_by_name.fetch(name).section
     end
 
     def steps

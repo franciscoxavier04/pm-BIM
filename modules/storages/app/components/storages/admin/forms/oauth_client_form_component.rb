@@ -33,17 +33,11 @@ module Storages::Admin::Forms
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
 
-    attr_reader :storage
-    alias_method :oauth_client, :model
+    alias_method :storage, :model
 
     options in_wizard: false
 
     def self.wrapper_key = :storage_oauth_client_section
-
-    def initialize(oauth_client:, storage:, **)
-      super(oauth_client, **)
-      @storage = storage
-    end
 
     def form_url
       query = { continue_wizard: storage.id } if in_wizard
@@ -64,6 +58,10 @@ module Storages::Admin::Forms
     end
 
     private
+
+    def oauth_client
+      options[:oauth_client] || storage.oauth_client
+    end
 
     def one_drive_integration_link(target: "_blank")
       href = ::OpenProject::Static::Links[:storage_docs][:one_drive_oauth_application][:href]

@@ -33,10 +33,15 @@ module Storages::Admin
     include OpPrimer::ComponentHelpers
     include StorageViewInformation
 
-    options wizard_step: nil
+    options wizard: nil,
+            wizard_step: nil
+
+    def initialize(*, **)
+      super
+
+      raise ArgumentError, "wizard is required" if wizard.nil?
+    end
 
     alias_method :storage, :model
-
-    delegate :oauth_application, to: :model
   end
 end

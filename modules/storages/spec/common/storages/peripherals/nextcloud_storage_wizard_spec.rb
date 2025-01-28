@@ -45,10 +45,10 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
   end
 
   it "has all steps pending in correct order" do
-    expect(wizard.pending_steps).to eq(%i[general_info
+    expect(wizard.pending_steps).to eq(%i[general_information
                                           oauth_application
                                           oauth_client
-                                          automatically_managed_project_folders])
+                                          automatically_managed_folders])
   end
 
   context "when name and host were set" do
@@ -58,8 +58,8 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
       model.save!
     end
 
-    it "has general_info step completed" do
-      expect(wizard.completed_steps).to eq(%i[general_info])
+    it "has general_information step completed" do
+      expect(wizard.completed_steps).to eq(%i[general_information])
     end
 
     it "has no oauth_application yet" do
@@ -72,7 +72,7 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
       end
 
       it "automatically finished the oauth_application step" do
-        expect(wizard.completed_steps).to eq(%i[general_info
+        expect(wizard.completed_steps).to eq(%i[general_information
                                                 oauth_application])
       end
 
@@ -90,7 +90,7 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
         end
 
         it "finishes the oauth_client step" do
-          expect(wizard.completed_steps).to eq(%i[general_info
+          expect(wizard.completed_steps).to eq(%i[general_information
                                                   oauth_application
                                                   oauth_client])
         end
@@ -122,10 +122,10 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
           end
 
           it "has all steps completed" do
-            expect(wizard.completed_steps).to eq(%i[general_info
+            expect(wizard.completed_steps).to eq(%i[general_information
                                                     oauth_application
                                                     oauth_client
-                                                    automatically_managed_project_folders])
+                                                    automatically_managed_folders])
           end
         end
       end

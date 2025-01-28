@@ -31,17 +31,20 @@
 module Storages
   module Peripherals
     class OneDriveStorageWizard < Wizard
-      step :general_info, completed_if: ->(storage) { storage.name.present? }
+      step :general_information, completed_if: ->(storage) { storage.name.present? }
 
       step :access_management,
+           section: :access_management_section,
            completed_if: ->(storage) { !storage.automatic_management_unspecified? },
            preparation: :prepare_storage_for_access_management_form
 
       step :oauth_client,
+           section: :oauth_configuration,
            completed_if: ->(storage) { storage.oauth_client.present? },
            preparation: ->(storage) { storage.build_oauth_client }
 
       step :redirect_uri,
+           section: :oauth_configuration,
            completed_if: ->(storage) {
              # Working around the fact that there is nothing changed on the storage after showing
              # the redirect url. The redirect URL step only exists to show the oauth client's redirect

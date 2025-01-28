@@ -141,4 +141,21 @@ RSpec.describe Storages::Wizard do
       end
     end
   end
+
+  describe "#section_name" do
+    let(:wizard_class) do
+      Class.new(described_class) do
+        step :a, completed_if: ->(i) { i > 0 }
+        step :b, completed_if: ->(i) { i > 10 }, section: :c
+      end
+    end
+
+    it "defaults to the step name" do
+      expect(wizard.section_name(:a)).to eq(:a)
+    end
+
+    it "uses the name passed by section parameter if present" do
+      expect(wizard.section_name(:b)).to eq(:c)
+    end
+  end
 end

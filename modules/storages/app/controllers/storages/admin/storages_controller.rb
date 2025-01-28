@@ -75,7 +75,8 @@ class Storages::Admin::StoragesController < ApplicationController
                    .result
     end
 
-    @target_step = storage_wizard(@storage).prepare_next_step.to_s
+    @wizard = storage_wizard(@storage)
+    @target_step = @wizard.prepare_next_step
   end
 
   def upsale; end
@@ -105,7 +106,9 @@ class Storages::Admin::StoragesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @wizard = storage_wizard(@storage)
+  end
 
   def edit_host
     update_via_turbo_stream(
@@ -141,6 +144,7 @@ class Storages::Admin::StoragesController < ApplicationController
         )
       )
 
+      @wizard = storage_wizard(@storage)
       respond_with_turbo_streams do |format|
         # FIXME: This should be a partial stream update
         format.html { render :edit }
@@ -156,6 +160,7 @@ class Storages::Admin::StoragesController < ApplicationController
       respond_with_turbo_streams
     else
       flash.now[:error] = I18n.t("storages.health_email_notifications.error_could_not_be_saved")
+      @wizard = storage_wizard(@storage)
       render :edit
     end
   end
@@ -185,20 +190,16 @@ class Storages::Admin::StoragesController < ApplicationController
   def replace_oauth_application
     @storage.oauth_application.destroy
     service_result = ::Storages::OAuthApplications::CreateService.new(storage: @storage, user: current_user).call
-    @oauth_application = service_result.result
 
     if service_result.success?
-      update_via_turbo_stream(component: Storages::Admin::GeneralInfoComponent.new(@storage))
+      @storage.oauth_application = service_result.result
 
-      update_via_turbo_stream(
-        component: Storages::Admin::OAuthApplicationInfoCopyComponent.new(
-          oauth_application: @oauth_application,
-          storage: @storage
-        )
-      )
+      update_via_turbo_stream(component: Storages::Admin::GeneralInfoComponent.new(@storage))
+      update_via_turbo_stream(component: Storages::Admin::OAuthApplicationInfoCopyComponent.new(@storage))
 
       respond_with_turbo_streams
     else
+      @wizard = storage_wizard(@storage)
       # FIXME: This should be a partial stream update
       render :edit
     end
