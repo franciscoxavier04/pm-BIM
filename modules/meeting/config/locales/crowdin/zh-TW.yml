@@ -124,6 +124,8 @@ zh-TW:
   label_recurring_occurrence_delete_confirmation: >
     任何不在範本中的會議資訊將會遺失。要繼續嗎？
   label_recurring_meeting_restore: "恢復此事件"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "還有 %{count} 預定會議 (%{schedule})。"
   label_recurring_meeting_more_singular: "還有 %{count} 預定會議 (%{schedule})。"
   label_recurring_meeting_more_past: "還有 %{count} 更多過去的會議。"
@@ -173,6 +175,9 @@ zh-TW:
         立即發送電子郵件邀請函給上述選定的與會者。您也可以稍後隨時手動執行。
       send_invitation_emails_structured: "立即向所有參與者傳送電子郵件邀請函。您也可以稍後隨時手動執行。"
       open_meeting_link: "打開會議連結"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} 已經向您發送了一個 %{title} 會議邀請"
       rescheduled:

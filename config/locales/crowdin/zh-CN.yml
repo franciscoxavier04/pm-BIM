@@ -226,6 +226,9 @@ zh-CN:
           item:
             title: 该项目下面没有任何层级
             description: 在此列表中添加条目，以便在另一个列表中创建子条目
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "项目标签"
           short: "短名"
@@ -1551,8 +1554,9 @@ zh-CN:
   button_copy_and_follow: "复制和跟踪"
   button_create: "创建"
   button_create_and_continue: "创建并继续"
-  button_delete: "删除"
   button_decline: "拒绝"
+  button_delete: "删除"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "删除关注者 %{name}"
   button_download: "下载"
   button_duplicate: "复制"
@@ -3670,6 +3674,7 @@ zh-CN:
   text_notice_security_badge_displayed_html: >
     注：如果启用，这会在 <a href="%{information_panel_path}">%{information_panel_label}</a> 管理面板中和首页上显示一个包含您的安装状态的徽章。徽章仅向管理员显示。<br/>徽章将根据官方的 OpenProject 版本数据库检查您当前的 OpenProject 版本，提醒您是否存在任何更新或已知漏洞。如需详细了解检查可以提供哪些信息，需要哪些数据来提供可用更新，以及如何禁用此检查，请访问<a href="%{more_info_url}">配置文档</a>。
   text_own_membership_delete_confirmation: "您要移除部分或全部权限，并且可能无法在此后编辑这个项目。\n您确定要继续吗？"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "插件资产目录可写"
   text_powered_by: "Powered by %{link}"
   text_project_identifier_info: "只有小写字母 (a-z)、 数字、 短划线和下划线被允许，必须以小写字母开头。"

@@ -226,6 +226,9 @@ nl:
           item:
             title: Dit item heeft geen onderstaand hiërarchie niveau
             description: Voeg items aan deze lijst toe om sub-items binnen een andere lijst te maken
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Verkorte Naam"
@@ -1570,8 +1573,9 @@ nl:
   button_copy_and_follow: "Kopiëren en volg"
   button_create: "Maken"
   button_create_and_continue: "Aanmaken en doorgaan"
-  button_delete: "Verwijderen"
   button_decline: "Weigeren"
+  button_delete: "Verwijderen"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Verwijderen van watcher %{name}"
   button_download: "Downloaden"
   button_duplicate: "Dupliceren"
@@ -3714,6 +3718,7 @@ nl:
   text_notice_security_badge_displayed_html: >
     Opmerking: indien ingeschakeld zal dit een badge weergeven met uw installatiestatus in de <a href="%{information_panel_path}">%{information_panel_label}</a> administratie paneel, en op de homepage. Deze wordt alleen getoond aan beheerders. <br/> De badge zal uw huidige OpenProject versie controleren tegen de officiële OpenProject-database om u te waarschuwen voor updates of bekende kwetsbaarheden. Voor meer informatie over wat de controle biedt, welke gegevens nodig zijn om beschikbare updates te verstrekken en hoe deze controle kan worden uitgeschakeld, bezoek <a href="%{more_info_url}">de configuratiedocumentatie</a>.
   text_own_membership_delete_confirmation: "U staat op het punt om enkele of alle van uw machtigingen te verwijderen en kan dit project daarna mogelijk niet meer bewerken.\nWeet u zeker dat u wilt doorgaan?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Plugin directory schrijfbaar"
   text_powered_by: "Powered by %{link}"
   text_project_identifier_info: "Alleen kleine letters (a-z), cijfers, streepjes en underscores (_) zijn toegestaan, moet beginnen met een kleine letter."

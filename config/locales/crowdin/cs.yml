@@ -229,6 +229,9 @@ cs:
           item:
             title: Tato položka nemá žádnou úroveň hierarchie níže
             description: Přidat položky do tohoto seznamu k vytvoření podpoložek uvnitř jiného
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Štítek položky"
           short: "Krátký název"
@@ -1612,8 +1615,9 @@ cs:
   button_copy_and_follow: "Kopírovat a pokračovat"
   button_create: "Vytvořit"
   button_create_and_continue: "Vytvořit a pokračovat"
-  button_delete: "Odstranit"
   button_decline: "Zamítnout"
+  button_delete: "Odstranit"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Odstranit sledujícího %{name}"
   button_download: "Stáhnout"
   button_duplicate: "Kopie"
@@ -3798,6 +3802,7 @@ cs:
   text_notice_security_badge_displayed_html: >
     Poznámka: Pokud je povoleno, bude zobrazen odznak se stavem instalace v <a href="%{information_panel_path}">%{information_panel_label}</a> administrativním panelu, a na domovské stránce. Zobrazuje se pouze administrátorům. <br/> Odznak zkontroluje vaši aktuální verzi OpenProject proti oficiální databázi OpenProject release, aby vás upozornil na jakékoliv aktualizace nebo známá slabá místa. Pro více informací o tom, co kontrola stanoví, jaké údaje jsou potřebné k poskytnutí dostupných aktualizací, a jak tuto kontrolu zakázat, navštivte <a href="%{more_info_url}">konfigurační dokumentaci</a>.
   text_own_membership_delete_confirmation: "Chystáte se odebrat si některá nebo všechna svá oprávnění, potom již nemusíte být schopni upravit tento projekt.\nOpravdu chcete pokračovat?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Zapisovatelný adresář aktiv pluginu"
   text_powered_by: "Běží na %{link}"
   text_project_identifier_info: "Jsou povolena pouze malá písmena (a-z), číslice, pomlčky a podtržítka. Musí začínat malým písmenem."
