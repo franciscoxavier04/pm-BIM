@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Work package revision component", :js, :with_cuprite, with_flag: { primerized_work_package_activities: true } do
+RSpec.describe "Work package revision component", :js, :with_cuprite do
   let(:project) { create(:project) }
   let(:user) { create(:admin) }
   let(:work_package) { create(:work_package, project:) }
