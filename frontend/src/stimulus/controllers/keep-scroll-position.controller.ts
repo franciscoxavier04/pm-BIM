@@ -29,61 +29,55 @@
  */
 
 import { ApplicationController } from 'stimulus-use';
-import { renderStreamMessage } from '@hotwired/turbo';
 
-export default class PollForChangesController extends ApplicationController {
+export default class KeepScrollPositionController extends ApplicationController {
   static values = {
     url: String,
-    interval: Number,
-    reference: String,
   };
 
-  static targets = ['reference'];
+  static targets = ['triggerButton'];
 
-  declare referenceTarget:HTMLElement;
-  declare readonly hasReferenceTarget:boolean;
+  declare triggerButtonTarget:HTMLLinkElement;
 
-  declare referenceValue:string;
   declare urlValue:string;
-  declare intervalValue:number;
-
-  private interval:number;
 
   connect() {
     super.connect();
 
-    if (this.intervalValue !== 0) {
-      this.interval = window.setInterval(() => {
-        void this.triggerTurboStream();
-      }, this.intervalValue || 10_000);
-    }
+    window.addEventListener('turbo:load', this.autoscrollToLastKnownPosition.bind(this));
+    window.addEventListener('DOMContentLoaded', this.autoscrollToLastKnownPosition.bind(this));
   }
 
   disconnect() {
     super.disconnect();
-    clearInterval(this.interval);
   }
 
-  buildReference():string {
-    if (this.hasReferenceTarget) {
-      return this.referenceTarget.dataset.referenceValue as string;
+  triggerButtonTargetConnected() {
+    this.triggerButtonTarget.addEventListener('click', this.rememberCurrentScrollPosition.bind(this));
+  }
+
+  rememberCurrentScrollPosition() {
+    const currentPosition = document.getElementById('content-body')?.scrollTop;
+
+    if (currentPosition !== undefined) {
+      sessionStorage.setItem(this.scrollPositionKey(), currentPosition.toString());
+    }
+  }
+
+  autoscrollToLastKnownPosition() {
+    const lastKnownPos = sessionStorage.getItem(this.scrollPositionKey());
+    if (lastKnownPos) {
+      const content = document.getElementById('content-body');
+
+      if (content) {
+        content.scrollTop = parseInt(lastKnownPos, 10);
+      }
     }
 
-    return this.referenceValue;
+    sessionStorage.removeItem(this.scrollPositionKey());
   }
 
-  triggerTurboStream() {
-    void fetch(`${this.urlValue}?reference=${this.buildReference()}`, {
-      headers: {
-        Accept: 'text/vnd.turbo-stream.html',
-      },
-    }).then(async (r) => {
-      if (r.status === 200) {
-        clearInterval(this.interval);
-
-        const html = await r.text();
-        renderStreamMessage(html);
-      }
-    });
+  private scrollPositionKey():string {
+    return `${this.urlValue}/scrollPosition`;
   }
 }
