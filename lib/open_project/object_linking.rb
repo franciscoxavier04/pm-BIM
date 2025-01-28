@@ -42,6 +42,7 @@ module OpenProject
     end
 
     # Displays a link to user's account page if active or registered
+    # Will attach a user hover card to the link.
     def link_to_user(user, options = {})
       return h(user.to_s) unless user.is_a?(User)
       return h(user.name) if user.locked? && !User.current.admin?
@@ -127,6 +128,7 @@ module OpenProject
       end.html_safe
     end
 
+    # Like #link_to_user, but will render a Primer link instead of a regular link.
     def primer_link_to_user(user, options = {})
       options[:href] ||= user_path(user)
       options[:target] ||= "_blank"
@@ -141,7 +143,9 @@ module OpenProject
 
     private
 
-    # TODO: doc comment
+    # Accepts a user and an options hash. Will apply a hover card config for the user to the options hash.
+    # Will not do anything if `hover_card` is set to false within the options.
+    # You can use this method if you want to render a link and apply a user hover card to it.
     def add_hover_card_options(user, options, only_path: true, clazz_key: :classes)
       if options.delete(:hover_card) { true }
         options[clazz_key] = [options[clazz_key], "op-hover-card--preview-trigger"].compact.join(" ")
