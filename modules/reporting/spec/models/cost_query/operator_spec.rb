@@ -36,6 +36,12 @@ RSpec.describe CostQuery::Operator, :reporting_query_helper do
   let!(:project1) { create(:project, name: "project1", created_at: 5.minutes.ago) }
   let!(:project2) { create(:project, name: "project2", created_at: 6.minutes.ago) }
 
+  let(:admin) { create(:admin) }
+
+  before do
+    allow(User).to receive(:current).and_return(admin)
+  end
+
   def cost_query(table, field, operator, *values)
     sql = CostQuery::SqlStatement.new table
     yield sql if block_given?

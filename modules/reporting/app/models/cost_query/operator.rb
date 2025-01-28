@@ -50,8 +50,13 @@ class CostQuery::Operator < Report::Operator
     def modify(query, field, *values)
       p_ids = []
       values.each do |value|
-        p_ids += ([value] << Project.find(value).descendants.map(&:id))
+        project = Project.visible.find(value)
+        next unless project
+
+        p_ids << project.id
+        p_ids += project.descendants.pluck(:id)
       end
+
       "=".to_operator.modify query, field, p_ids
     rescue ActiveRecord::RecordNotFound
       query
@@ -63,9 +68,14 @@ class CostQuery::Operator < Report::Operator
       p_ids = []
       values.each do |value|
         value.to_s.split(",").each do |id|
-          p_ids += ([id] << Project.find(id).descendants.map(&:id))
+          project = Project.visible.find(id)
+          next unless project
+
+          p_ids << project.id
+          p_ids += project.descendants.pluck(:id)
         end
       end
+
       "!".to_operator.modify query, field, p_ids
     rescue ActiveRecord::RecordNotFound
       query
@@ -76,8 +86,13 @@ class CostQuery::Operator < Report::Operator
     def modify(query, field, *values)
       wp_ids = []
       values.each do |value|
-        wp_ids += ([value] << WorkPackage.find(value).descendants.map(&:id))
+        work_package = WorkPackage.visible.find(value)
+        next unless work_package
+
+        wp_ids << work_package.id
+        wp_ids += work_package.descendants.pluck(:id)
       end
+
       "=".to_operator.modify query, field, wp_ids
     rescue ActiveRecord::RecordNotFound
       query
@@ -89,9 +104,14 @@ class CostQuery::Operator < Report::Operator
       wp_ids = []
       values.each do |value|
         value.to_s.split(",").each do |id|
-          wp_ids += ([id] << WorkPackage.find(id).descendants.map(&:id))
+          work_package = WorkPackage.visible.find(id)
+          next unless work_package
+
+          wp_ids << work_package.id
+          wp_ids += work_package.descendants.pluck(:id)
         end
       end
+
       "!".to_operator.modify query, field, wp_ids
     rescue ActiveRecord::RecordNotFound
       query
