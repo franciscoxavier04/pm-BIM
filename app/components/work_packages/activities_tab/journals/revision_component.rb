@@ -45,6 +45,23 @@ module WorkPackages
           @filter = filter
         end
 
+        def render_committer_name(committer)
+          render(Primer::Beta::Text.new(font_weight: :bold, mr: 1)) do
+            remove_email_addresses(committer)
+          end
+        end
+
+        def remove_email_addresses(committer)
+          return "" if committer.blank?
+
+          ERB::Util.html_escape(
+            Sanitize.fragment(
+              committer.gsub(%r{<[^>]+@[^>]+>}, ""),
+              Sanitize::Config::RESTRICTED
+            ).strip
+          )
+        end
+
         private
 
         attr_reader :changeset, :filter
@@ -102,17 +119,6 @@ module WorkPackages
                    font_weight: :bold
                  )) do
             changeset.user.name
-          end
-        end
-
-        def render_committer_name(committer)
-          render(Primer::Beta::Text.new(font_weight: :bold, mr: 1)) do
-            ERB::Util.html_escape(
-              Sanitize.fragment(
-                committer.gsub(%r{<[^>]+@[^>]+>}, "").strip,
-                Sanitize::Config::RESTRICTED
-              )
-            )
           end
         end
       end
