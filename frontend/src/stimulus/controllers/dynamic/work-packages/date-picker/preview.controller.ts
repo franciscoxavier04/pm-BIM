@@ -43,6 +43,8 @@ export default class PreviewController extends DialogPreviewController {
 
   markFieldAsTouched(event:{ target:HTMLInputElement }) {
     super.markFieldAsTouched(event);
+
+    this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
   }
 
   // Ensures that on create forms, there is an "id" for the un-persisted
