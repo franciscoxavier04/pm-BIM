@@ -33,17 +33,12 @@ module Storages::Admin::Forms
     include OpPrimer::ComponentHelpers
     include OpTurbo::Streamable
 
-    attr_reader :storage
-    alias_method :oauth_client, :model
+    alias_method :storage, :model
+    delegate :oauth_client, to: :storage
 
     options in_wizard: false
 
     def self.wrapper_key = :storage_redirect_uri_section
-
-    def initialize(oauth_client:, storage:, **)
-      super(oauth_client, **)
-      @storage = storage
-    end
 
     def form_url
       query = { continue_wizard: storage.id } if in_wizard

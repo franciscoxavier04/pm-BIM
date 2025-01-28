@@ -39,7 +39,7 @@ See COPYRIGHT and LICENSE files for more details.
 
   <%= render(Primer::Alpha::Layout.new(stacking_breakpoint: :lg)) do |component| %>
     <% component.with_main do %>
-      <%= render(::Storages::Admin::StorageViewComponent.new(@storage)) %>
+      <%= render(::Storages::Admin::StorageViewComponent.new(@storage, wizard: @wizard)) %>
     <% end %>
     <% component.with_sidebar(col_placement: :end, row_placement: :end) do %>
       <%= render(::Storages::Admin::SidePanelComponent.new(storage: @storage)) %>

@@ -26,5 +26,5 @@
 <% end %>
 
 <%= content_tag("turbo-frame", id: "page-content") do %>
-  <%= render(Storages::Admin::StorageViewComponent.new(@storage, wizard_step: @target_step)) %>
+  <%= render(Storages::Admin::StorageViewComponent.new(@storage, wizard: @wizard, wizard_step: @target_step)) %>
 <% end %>

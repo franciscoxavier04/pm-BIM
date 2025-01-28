@@ -45,7 +45,7 @@ RSpec.describe Storages::Peripherals::OneDriveStorageWizard do
   end
 
   it "has all steps pending in correct order" do
-    expect(wizard.pending_steps).to eq(%i[general_info
+    expect(wizard.pending_steps).to eq(%i[general_information
                                           access_management
                                           oauth_client
                                           redirect_uri])
@@ -57,8 +57,8 @@ RSpec.describe Storages::Peripherals::OneDriveStorageWizard do
       model.save!
     end
 
-    it "has general_info step completed" do
-      expect(wizard.completed_steps).to eq(%i[general_info])
+    it "has general_information step completed" do
+      expect(wizard.completed_steps).to eq(%i[general_information])
     end
 
     it "still didn't specify how to manage folders" do
@@ -71,7 +71,7 @@ RSpec.describe Storages::Peripherals::OneDriveStorageWizard do
       end
 
       it "automatically finished the access_management step" do
-        expect(wizard.completed_steps).to eq(%i[general_info
+        expect(wizard.completed_steps).to eq(%i[general_information
                                                 access_management])
       end
 
@@ -93,7 +93,7 @@ RSpec.describe Storages::Peripherals::OneDriveStorageWizard do
         end
 
         it "finishes the oauth_client step" do
-          expect(wizard.completed_steps).to eq(%i[general_info
+          expect(wizard.completed_steps).to eq(%i[general_information
                                                   access_management
                                                   oauth_client])
         end
@@ -115,7 +115,7 @@ RSpec.describe Storages::Peripherals::OneDriveStorageWizard do
 
           it "after some time, the final step is completed" do
             Timecop.travel(15.seconds.from_now) do
-              expect(wizard.completed_steps).to eq(%i[general_info
+              expect(wizard.completed_steps).to eq(%i[general_information
                                                       access_management
                                                       oauth_client
                                                       redirect_uri])
