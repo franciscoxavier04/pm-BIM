@@ -43,7 +43,11 @@ RSpec.describe Acts::Journalized::Differ::Association do
               build_stubbed(:work_package_custom_value, custom_field_id: 4, value: 4),
               build_stubbed(:work_package_custom_value, custom_field_id: 5, value: ""),
               build_stubbed(:work_package_custom_value, custom_field_id: 6, value: nil),
-              build_stubbed(:work_package_custom_value, custom_field_id: 7, value: nil)
+              build_stubbed(:work_package_custom_value, custom_field_id: 7, value: nil),
+              build_stubbed(:work_package_custom_value, custom_field_id: 8, value: 1),
+              build_stubbed(:work_package_custom_value, custom_field_id: 8, value: 2),
+              build_stubbed(:work_package_custom_value, custom_field_id: 9, value: 1),
+              build_stubbed(:work_package_custom_value, custom_field_id: 9, value: 2)
             ])
     end
 
@@ -58,7 +62,11 @@ RSpec.describe Acts::Journalized::Differ::Association do
               build_stubbed(:work_package_custom_value, custom_field_id: 4, value: ""),
               build_stubbed(:work_package_custom_value, custom_field_id: 5, value: 5),
               build_stubbed(:work_package_custom_value, custom_field_id: 6, value: 6),
-              build_stubbed(:work_package_custom_value, custom_field_id: 7, value: "")
+              build_stubbed(:work_package_custom_value, custom_field_id: 7, value: ""),
+              build_stubbed(:work_package_custom_value, custom_field_id: 8, value: 2),
+              build_stubbed(:work_package_custom_value, custom_field_id: 8, value: 1),
+              build_stubbed(:work_package_custom_value, custom_field_id: 9, value: 3),
+              build_stubbed(:work_package_custom_value, custom_field_id: 9, value: 2)
             ])
     end
 
@@ -73,7 +81,8 @@ RSpec.describe Acts::Journalized::Differ::Association do
           "custom_field_3" => [nil, "3"],
           "custom_field_4" => ["4", ""],
           "custom_field_5" => ["", "5"],
-          "custom_field_6" => ["", "6"]
+          "custom_field_6" => ["", "6"],
+          "custom_field_9" => ["1,2", "2,3"]
         )
     end
   end
