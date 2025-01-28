@@ -31,7 +31,7 @@
 require "spec_helper"
 require "support/flash/expectations"
 
-RSpec.describe "Work package activity", :js, with_flag: { primerized_work_package_activities: true } do
+RSpec.describe "Work package activity", :js, :with_cuprite do
   include Flash::Expectations
 
   let(:project) { create(:project) }
