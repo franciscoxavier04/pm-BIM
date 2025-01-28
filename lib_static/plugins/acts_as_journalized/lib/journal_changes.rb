@@ -103,7 +103,7 @@ module JournalChanges
       association: :project_life_cycle_step_journals,
       id_attribute: :life_cycle_step_id
     ).attributes_changes(
-      %i[start_date end_date active],
+      %i[active date date_range],
       key_prefix: "project_life_cycle_step",
       grouped: true
     )

@@ -32,4 +32,10 @@ class Journal::ProjectLifeCycleStepJournal < Journal::AssociatedJournal
   self.table_name = "project_life_cycle_step_journals"
 
   belongs_to :life_cycle_step, class_name: "Project::LifeCycleStep"
+
+  alias_attribute :date, :start_date
+
+  def date_range
+    start_date..end_date if start_date || end_date
+  end
 end
