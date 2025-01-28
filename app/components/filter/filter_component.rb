@@ -76,9 +76,45 @@ module Filter
             ]
           }
         }
+      when Queries::Filters::Shared::CustomFields::User
+        { autocomplete_options: user_autocomplete_options(filter) }
       else
         {}
       end
+    end
+
+    def user_autocomplete_options(filter)
+      {
+        component: "opce-user-autocompleter",
+        defaultData: false,
+        placeholder: I18n.t(:label_user_search),
+        resource:,
+        url: ::API::V3::Utilities::PathHelper::ApiV3Path.principals,
+        filters:,
+        searchKey: search_key,
+        inputValue: custom_input_value(filter),
+        focusDirectly: false
+      }
+    end
+
+    def resource
+      "principals"
+    end
+
+    def search_key
+      "any_name_attribute"
+    end
+
+    def filters
+      [
+        { name: "type", operator: "=", values: ["User"] },
+        { name: "status", operator: "!", values: [Principal.statuses["locked"].to_s] },
+        { name: "member", operator: "=", values: Project.visible.pluck(:id) }
+      ]
+    end
+
+    def custom_input_value(filter)
+      filter.values
     end
   end
 end
