@@ -27,7 +27,7 @@
 #++
 
 class MeetingsController < ApplicationController
-  before_action :load_and_authorize_in_optional_project, only: %i[index new new_dialog show create delete_dialog destroy history]
+  before_action :load_and_authorize_in_optional_project, only: %i[index new new_dialog show create delete_dialog destroy]
   before_action :verify_activities_module_activated, only: %i[history]
   before_action :determine_date_range, only: %i[history]
   before_action :determine_author, only: %i[history]
