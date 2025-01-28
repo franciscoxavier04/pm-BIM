@@ -42,6 +42,10 @@ export class HoverCardTriggerService {
   private modalTarget:PortalOutletTarget = PortalOutletTarget.Default;
   private previousTarget:HTMLElement|null = null;
 
+  // Track whether we currently show a hover card or not. It is important not to open multiple hover cards at
+  // the same time, and refrain from closing the wrong kind of modal overlay.
+  private isShowingHoverCard:boolean = false;
+
   // The time you need to keep hovering over a trigger before the hover card is shown
   OPEN_DELAY_IN_MS = 1000;
   // The time you need to keep away from trigger/hover card before an opened card is closed
@@ -114,6 +118,8 @@ export class HoverCardTriggerService {
   private showHoverCard(el:HTMLElement, turboFrameUrl:string, e:JQuery.MouseOverEvent) {
     // Abort if the element is no longer present in the DOM. This can happen when this method is called after a delay.
     if (!document.body.contains(el)) { return; }
+    // Do not try to show two hover cards at the same time.
+    if (this.isShowingHoverCard) { return; }
 
     this.parseHoverCardOptions(el);
 
@@ -129,6 +135,7 @@ export class HoverCardTriggerService {
     );
 
     modal?.subscribe((previewModal) => {
+      this.isShowingHoverCard = true;
       this.modalElement = previewModal.elementRef.nativeElement as HTMLElement;
       previewModal.alignment = 'top';
 
@@ -157,13 +164,22 @@ export class HoverCardTriggerService {
       this.mouseInModal = false;
     }
 
-    if (!this.mouseInModal) {
+    // It is important to check if we are currently showing a hover card. If we closed the modal service without
+    // doing so, we might accidentally close another modal (e.g. share dialog).
+    if (this.isShowingHoverCard && !this.mouseInModal) {
       this.opModalService.close();
+      this.isShowingHoverCard = false;
       // Allow opening this target once more, since it has been orderly closed
       this.previousTarget = null;
     }
   }
 
+  /*
+   * Some elements do not carry the hover data arguments on themselves, but rely on nearby elements to provide them.
+   * For example in the auto completer.
+   *
+   * This method will return the element that actually carries the hover card data.
+   */
   private getDataSource(el:HTMLElement) {
     if (el.className.includes('op-hover-card--data-on-sibling-principal')) {
       const candidate = this.findSiblingElementWithHoverCardData(el);
