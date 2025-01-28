@@ -30,12 +30,24 @@
         },
         'aria-label': t(:label_recurring_meeting_series_edit),
         test_selector: "edit-meeting-details-button",
-      )
+      ) do |item|
+        item.with_leading_visual_icon(icon: :pencil)
+      end
 
       menu.with_item(
         label: t(:label_icalendar_download),
         href: download_ics_recurring_meeting_path(@meeting)
-      )
+      ) do |item|
+        item.with_leading_visual_icon(icon: :calendar)
+      end
+
+      menu.with_item(
+        label: t('meeting.label_mail_all_participants'),
+        href: notify_recurring_meeting_path(@meeting),
+        form_arguments: { method: :post }
+      ) do |item|
+        item.with_leading_visual_icon(icon: :mail)
+      end
 
       menu.with_item(
         label: I18n.t(:label_recurring_meeting_series_delete),
@@ -44,7 +56,9 @@
         form_arguments: {
           method: :delete, data: { confirm: t("text_are_you_sure"), turbo: 'false' }
         }
-      )
+      ) do |item|
+        item.with_leading_visual_icon(icon: :trash)
+      end
     end
   end
 end %>

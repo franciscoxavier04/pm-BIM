@@ -93,6 +93,8 @@ vi:
       time: "Thời gian"
     cost_reports:
       title: "Xuất báo cáo chi phí của bạn sang XLS"
+      start_time: "Thời gian bắt đầu"
+      end_time: "Thời gian kết thúc"
   reporting:
     group_by:
       selected_columns: "Các cột đã chọn"

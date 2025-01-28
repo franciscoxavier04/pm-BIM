@@ -125,11 +125,14 @@ pt-BR:
   label_recurring_occurrence_delete_confirmation: >
     Quaisquer informações da reunião que não estejam no modelo serão descartadas. Deseja continuar?
   label_recurring_meeting_restore: "Restaurar esta ocorrência"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Há mais %{count} reuniões programadas (%{schedule})."
   label_recurring_meeting_more_singular: "Há mais %{count} reunião programada (%{schedule})."
   label_recurring_meeting_more_past: "Há mais %{count} reuniões anteriores."
   label_recurring_meeting_more_past_singular: "Há mais %{count} reunião anterior."
   label_recurring_meeting_show_more: "Exibir mais"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Editar série de reuniões"
   label_recurring_meeting_series_delete: "Excluir série de reuniões"
   label_my_meetings: "Minhas reuniões"
@@ -173,6 +176,9 @@ pt-BR:
         Envie um convite por e-mail imediatamente para os participantes selecionados acima. Você também pode enviar convites manualmente a qualquer momento no futuro.
       send_invitation_emails_structured: "Envie imediatamente um convite por e-mail para todos os participantes. Você também pode enviá-lo manualmente a qualquer momento."
       open_meeting_link: "Abrir reunião"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} enviou a você um convite para a reunião %{title}"
       rescheduled:

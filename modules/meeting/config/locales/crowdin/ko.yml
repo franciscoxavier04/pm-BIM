@@ -124,11 +124,14 @@ ko:
   label_recurring_occurrence_delete_confirmation: >
     템플릿에 없는 미팅 정보는 모두 손실됩니다. 계속하시겠습니까?
   label_recurring_meeting_restore: "이 항목 복원"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "예정된 미팅(%{schedule})이 %{count}개 더 있습니다."
   label_recurring_meeting_more_singular: "예정된 미팅(%{schedule})이 %{count}개 더 있습니다."
   label_recurring_meeting_more_past: "지난 미팅이 %{count}개 더 있습니다."
   label_recurring_meeting_more_past_singular: "지난 미팅이 %{count}개 더 있습니다."
   label_recurring_meeting_show_more: "자세히 표시"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "미팅 시리즈 편집"
   label_recurring_meeting_series_delete: "미팅 시리즈 삭제"
   label_my_meetings: "내 미팅"
@@ -172,6 +175,9 @@ ko:
         위에서 선택한 참가자에게 즉시 이메일 초대를 보내세요. 나중에 언제든지 수동으로 할 수도 있습니다.
       send_invitation_emails_structured: "모든 참가자에게 즉시 이메일 초대를 보내세요. 나중에 언제든지 수동으로 할 수도 있습니다."
       open_meeting_link: "미팅 열기"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} 님이 %{title} 미팅 초대장을 귀하에게 보냈습니다"
       rescheduled:

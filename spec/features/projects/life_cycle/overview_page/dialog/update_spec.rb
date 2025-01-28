@@ -29,8 +29,7 @@
 require "spec_helper"
 require_relative "../shared_context"
 
-RSpec.describe "Edit project stages and gates on project overview page", :js, :with_cuprite,
-               with_flag: { stages_and_gates: true } do
+RSpec.describe "Edit project stages and gates on project overview page", :js, with_flag: { stages_and_gates: true } do
   include_context "with seeded projects and stages and gates"
   shared_let(:overview) { create :overview, project: }
 
@@ -149,6 +148,25 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, :w
           dialog.set_date_for(life_cycle_ready_for_planning, value:)
           dialog.expect_no_validation_message(life_cycle_ready_for_planning)
         end
+
+        # Saving the dialog is successful
+        dialog.submit
+        dialog.expect_closed
+      end
+    end
+
+    context "when there is an invalid custom field on the project (Regression#60666)" do
+      let(:custom_field) { create(:string_project_custom_field, is_required: true, is_for_all: true) }
+
+      before do
+        project.custom_field_values = { custom_field.id => nil }
+        project.save(validate: false)
+      end
+
+      it "allows saving and closing the dialog without the custom field validation to interfere" do
+        dialog = overview_page.open_edit_dialog_for_life_cycles
+
+        expect_angular_frontend_initialized
 
         # Saving the dialog is successful
         dialog.submit

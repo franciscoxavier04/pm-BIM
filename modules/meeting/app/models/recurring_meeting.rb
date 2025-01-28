@@ -1,3 +1,33 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
 class RecurringMeeting < ApplicationRecord
   # Magical maximum of iterations
   MAX_ITERATIONS = 1000
@@ -83,7 +113,7 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def schedule
-    @schedule ||= IceCube::Schedule.new(start_time, end_time: end_date).tap do |s|
+    @schedule ||= IceCube::Schedule.new(start_time, end_time: modified_end_date).tap do |s|
       s.add_recurrence_rule count_rule(frequency_rule)
       exclude_non_working_days(s) if frequency_working_days?
     end
@@ -138,8 +168,8 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def remaining_occurrences
-    if end_date.present?
-      schedule.occurrences_between(Time.current, end_date)
+    if end_after_specific_date?
+      schedule.occurrences_between(Time.current, modified_end_date)
     else
       schedule.remaining_occurrences(Time.current)
     end
@@ -160,6 +190,11 @@ class RecurringMeeting < ApplicationRecord
 
   def unset_schedule
     @schedule = nil
+  end
+
+  # Because IceCube is exclusive by default for end_time for a schedule
+  def modified_end_date
+    @modified_end_date ||= end_date + 1.day
   end
 
   def end_date_constraints
@@ -202,7 +237,7 @@ class RecurringMeeting < ApplicationRecord
     if end_after_iterations?
       rule.count(iterations)
     else
-      rule.until(end_date.to_time(:utc))
+      rule.until(modified_end_date.to_time(:utc))
     end
   end
 

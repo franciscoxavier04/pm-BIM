@@ -93,6 +93,8 @@ ja:
       time: "時間"
     cost_reports:
       title: "あなたのコストレポートXLSのエクスポート"
+      start_time: "開始時間"
+      end_time: "終了時間"
   reporting:
     group_by:
       selected_columns: "選択された列"

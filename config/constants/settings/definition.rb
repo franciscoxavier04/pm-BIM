@@ -956,6 +956,13 @@ module Settings
         format: :hash,
         string_values: true
       },
+      seed_design: {
+        description: "Seed enterprise-edition theme colors and logos through ENV",
+        writable: false,
+        default: nil,
+        format: :hash,
+        string_values: true
+      },
       self_registration: {
         default: 2
       },

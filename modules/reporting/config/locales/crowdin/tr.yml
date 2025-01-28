@@ -93,6 +93,8 @@ tr:
       time: "Zaman"
     cost_reports:
       title: "Maliyet Raporlarınızın XLS çıktısı"
+      start_time: "Başlangıç zamanı"
+      end_time: "Bitiş zamanı"
   reporting:
     group_by:
       selected_columns: "Seçilen sütunlar"

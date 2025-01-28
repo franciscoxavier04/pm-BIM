@@ -93,6 +93,8 @@ nl:
       time: "Tijd"
     cost_reports:
       title: "Jouw kostenrapporten XLS export"
+      start_time: "Starttijd"
+      end_time: "Eindtijd"
   reporting:
     group_by:
       selected_columns: "Geselecteerde kolommen"

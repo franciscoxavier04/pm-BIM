@@ -125,11 +125,14 @@ tr:
   label_recurring_occurrence_delete_confirmation: >
     Any meeting information not in the template will be lost. Do you want to continue?
   label_recurring_meeting_restore: "Restore this occurrence"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
   label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
   label_recurring_meeting_more_past: "There are %{count} more past meetings."
   label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
   label_recurring_meeting_show_more: "Daha fazlasını göster"
+  label_recurring_meeting_series_create: "Toplantı serisi oluştur"
   label_recurring_meeting_series_edit: "Toplantı serisini düzenle"
   label_recurring_meeting_series_delete: "Toplantı serisini sil"
   label_my_meetings: "Toplantılarım"
@@ -173,6 +176,9 @@ tr:
         Yukarıda seçilen katılımcıların hepsine e-posta davetiyesi gönder. Bu işi daha sonra herhangi bir zamanda elle de gerçekleştirebilirsiniz.
       send_invitation_emails_structured: "Tüm katılımcılara e-posta ile davetiye gönder. Bu işlemi daha sonra herhangi bir zamanda elle de gerçekleştirebilirsiniz."
       open_meeting_link: "Açık toplantı"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} size toplantı için bir davetiye gönderdi %{title}"
       rescheduled:

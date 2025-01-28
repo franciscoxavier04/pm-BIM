@@ -125,11 +125,14 @@ nl:
   label_recurring_occurrence_delete_confirmation: >
     Alle vergaderinformatie die niet in de sjabloon staat, zal verloren gaan. Wilt u doorgaan?
   label_recurring_meeting_restore: "Herstel deze gebeurtenis"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Er zijn nog %{count} geplande vergaderingen (%{schedule})."
   label_recurring_meeting_more_singular: "Er zijn nog %{count} geplande vergaderingen (%{schedule})."
   label_recurring_meeting_more_past: "Er zijn %{count} meer eerdere vergaderingen."
   label_recurring_meeting_more_past_singular: "Er zijn %{count} meer eerdere vergaderingen."
   label_recurring_meeting_show_more: "Toon meer"
+  label_recurring_meeting_series_create: "Maak vergader reeks"
   label_recurring_meeting_series_edit: "Vergaderreeks bewerken"
   label_recurring_meeting_series_delete: "Verwijder serie van vergaderingen"
   label_my_meetings: "Mijn vergaderingen"
@@ -173,6 +176,9 @@ nl:
         Stuur onmiddellijk een e-mailuitnodiging naar de hierboven geselecteerde deelnemers. U kunt dit ook later op elk gewenst moment handmatig doen.
       send_invitation_emails_structured: "Stuur onmiddellijk een e-mailuitnodiging naar de hierboven geselecteerde deelnemers. U kunt dit ook later op elk gewenst moment handmatig doen."
       open_meeting_link: "Open vergadering"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} heeft je een uitnodiging gestuurd voor de meeting %{title}"
       rescheduled:

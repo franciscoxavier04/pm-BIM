@@ -35,16 +35,30 @@ module WorkPackages
       include OpTurbo::Streamable
 
       def form_options
+        form_model = subject_form_object
+
         {
-          url: "https://example.com",
+          url: subject_configuration_type_path(id: model.id),
           method: :put,
-          model:,
+          model: form_model,
           data: {
             application_target: "dynamic",
             controller: "admin--subject-configuration",
-            admin__subject_configuration_hide_pattern_input_value: true
+            admin__subject_configuration_hide_pattern_input_value: form_model.subject_configuration == :manual
           }
         }
+      end
+
+      private
+
+      def subject_form_object
+        subject_pattern = model.patterns.subject || ::Types::Pattern.new(blueprint: "", enabled: false)
+
+        ::Types::Forms::SubjectConfigurationFormModel.new(
+          subject_configuration: subject_pattern.enabled ? :generated : :manual,
+          pattern: subject_pattern.blueprint,
+          validation_errors: model.errors
+        )
       end
     end
   end

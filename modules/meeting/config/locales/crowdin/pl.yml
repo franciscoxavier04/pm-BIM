@@ -127,11 +127,14 @@ pl:
   label_recurring_occurrence_delete_confirmation: >
     Wszelkie informacje o spotkaniu, które nie znajdują się w szablonie, zostaną utracone. Czy chcesz kontynuować?
   label_recurring_meeting_restore: "Przywróć to wystąpienie"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Jest więcej (%{count}) zaplanowanych spotkań (%{schedule})."
   label_recurring_meeting_more_singular: "Jest jeszcze %{count} zaplanowane spotkanie (%{schedule})."
   label_recurring_meeting_more_past: "Jest więcej (%{count}) poprzednich spotkań."
   label_recurring_meeting_more_past_singular: "Jest jeszcze %{count} poprzednie spotkanie."
   label_recurring_meeting_show_more: "Pokaż więcej"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edytuj serię spotkań"
   label_recurring_meeting_series_delete: "Usuń serię spotkań"
   label_my_meetings: "Moje spotkania"
@@ -175,6 +178,9 @@ pl:
         Natychmiast wyślij zaproszenie w wiadomości e-mail do uczestników wybranych powyżej. Możesz to również zrobić ręcznie w dowolnym momencie później.
       send_invitation_emails_structured: "Natychmiast wyślij zaproszenie w wiadomości e-mail do wszystkich uczestników. Możesz to również zrobić ręcznie w dowolnym momencie później."
       open_meeting_link: "Spotkania otwarte"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "Użytkownik %{actor} wysłał Ci zaproszenie na spotkanie %{title}"
       rescheduled:

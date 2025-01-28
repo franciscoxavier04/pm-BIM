@@ -125,11 +125,14 @@ si:
   label_recurring_occurrence_delete_confirmation: >
     Any meeting information not in the template will be lost. Do you want to continue?
   label_recurring_meeting_restore: "Restore this occurrence"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
   label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
   label_recurring_meeting_more_past: "There are %{count} more past meetings."
   label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
   label_recurring_meeting_show_more: "Show more"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
   label_my_meetings: "My meetings"
@@ -173,6 +176,9 @@ si:
         Send an email invitation immediately to the participants selected above. You can also do this manually at any time later.
       send_invitation_emails_structured: "Send an email invitation immediately to all participants. You can also do this manually at any time later."
       open_meeting_link: "Open meeting"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} has sent you an invitation for the meeting %{title}"
       rescheduled:

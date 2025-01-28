@@ -93,6 +93,8 @@
       time: "Time"
     cost_reports:
       title: "Din XLS-eksport av kostnadsrapporter"
+      start_time: "Start time"
+      end_time: "End time"
   reporting:
     group_by:
       selected_columns: "Valgte kolonner"
