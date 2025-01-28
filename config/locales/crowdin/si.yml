@@ -229,6 +229,9 @@ si:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -1574,8 +1577,9 @@ si:
   button_copy_and_follow: "පිටපත් කර අනුගමනය කරන්න"
   button_create: "සාදන්න"
   button_create_and_continue: "සාදන්න සහ ඉදිරියට යන්න"
-  button_delete: "මකන්න"
   button_decline: "පරිහානිය"
+  button_delete: "මකන්න"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "මුරකරු මකන්න %{name}"
   button_download: "බාගත කරන්න"
   button_duplicate: "අනුපිටපත්"
@@ -3719,6 +3723,7 @@ si:
   text_notice_security_badge_displayed_html: >
     සටහන: සක්රීය කර ඇත්නම්, මෙය <a href="%{information_panel_path}">%{information_panel_label}</a> පරිපාලන පැනලයේ ඔබේ ස්ථාපන තත්ත්වය සහිත ලාංඡනයක් සහ මුල් පිටුවේ පෙන්වනු ඇත. එය පරිපාලකයින්ට පමණක් පෙන්වනු ලැබේ. <br/> මෙම ලාංඡනය මඟින් ඔබගේ වර්තමාන OpenProject අනුවාදය නිල OpenProject නිකුතු දත්ත ගබඩාවට එරෙහිව පරීක්ෂා කරනු ඇත. චෙක්පත සපයන දේ පිළිබඳ වැඩි විස්තර සඳහා, ලබා ගත හැකි යාවත්කාලීන ලබා දීමට අවශ්ය දත්ත මොනවාද, සහ මෙම චෙක්පත අක්රිය කරන්නේ කෙසේද, කරුණාකර <a href="%{more_info_url}">මානකරන ලියකියවිලි</a>වෙත පිවිසෙන්න.
   text_own_membership_delete_confirmation: "ඔබ ඔබේ අවසර කිහිපයක් හෝ සියල්ල ඉවත් කිරීමට ආසන්නව සිටින අතර ඉන් පසුව මෙම ව්යාපෘතිය සංස්කරණය කිරීමට තවදුරටත් නොහැකි වනු ඇත.\nඔබට දිගටම කරගෙන යාමට අවශ්ය බව ඔබට විශ්වාසද?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "ප්ලගිනය වත්කම් නාමාවලිය ලිවිය හැකි"
   text_powered_by: "%{link}විසින් තල්ලු"
   text_project_identifier_info: "අඩු සිද්ධි අකුරු (a-z), අංක, ඩෂ් සහ යටි ඉරි වලට පමණක් අවසර ඇත, අඩු සිද්ධි අකුරකින් ආරම්භ කළ යුතුය."

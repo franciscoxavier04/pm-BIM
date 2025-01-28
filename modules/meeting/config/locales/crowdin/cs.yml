@@ -127,6 +127,8 @@ cs:
   label_recurring_occurrence_delete_confirmation: >
     Veškeré informace o schůzce, které nejsou v šabloně, budou ztraceny. Chcete pokračovat?
   label_recurring_meeting_restore: "Obnovit tento výskyt"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Dalších %{count} naplánovaných schůzek (%{schedule})."
   label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
   label_recurring_meeting_more_past: "Dalších  %{count}  minulých schůzek "
@@ -176,6 +178,9 @@ cs:
         Send an email invitation immediately to the participants selected above. You can also do this manually at any time later.
       send_invitation_emails_structured: "Send an email invitation immediately to all participants. You can also do this manually at any time later."
       open_meeting_link: "Otevřít schůzku"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} vám poslal pozvánku na schůzku %{title}"
       rescheduled:

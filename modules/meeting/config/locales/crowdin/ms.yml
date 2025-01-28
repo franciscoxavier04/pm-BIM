@@ -124,6 +124,8 @@ ms:
   label_recurring_occurrence_delete_confirmation: >
     Sebarang maklumat mesyuarat yang tiada dalam templat akan hilang. Adakah anda mahu meneruskan?
   label_recurring_meeting_restore: "Pulihkan kejadian ini"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Terdapat %{count} lagi mesyuarat yang dijadualkan (%{schedule})."
   label_recurring_meeting_more_singular: "Terdapat %{count} lagi mesyuarat berjadual (%{schedule})."
   label_recurring_meeting_more_past: "Terdapat %{count} lagi mesyuarat yang lalu."
@@ -173,6 +175,9 @@ ms:
         Hantar jemputan e-mel segera kepada peserta yang dipilih di atas. Anda juga boleh melakukan ini secara manual pada bila-bila masa kemudian.
       send_invitation_emails_structured: "Hantar jemputan e-mel dengan segera kepada semua peserta. Anda juga boleh melakukan ini secara manual pada bila-bila masa kemudian."
       open_meeting_link: "Buka mesyuarat"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} telah menghantar anda jemputan ke mesyuarat %{title}"
       rescheduled:

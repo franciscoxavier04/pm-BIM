@@ -229,6 +229,9 @@ ro:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -1593,8 +1596,9 @@ ro:
   button_copy_and_follow: "Copiază și continuă"
   button_create: "Creează"
   button_create_and_continue: "Creează și continuă"
-  button_delete: "Șterge"
   button_decline: "Refuză"
+  button_delete: "Șterge"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Ștergere observator %{name}"
   button_download: "Descărcare"
   button_duplicate: "Duplicare"
@@ -3758,6 +3762,7 @@ ro:
   text_notice_security_badge_displayed_html: >
     Notă: dacă este activată, aceasta va afișa o insignă cu starea instalării în fereastra <a href="%{information_panel_path}">%{information_panel_label}</a> panoul de administrare și pe pagina principală. Aceasta este afișată numai pentru administratori. <br/> Insigna va verifica versiunea curentă a OpenProject în raport cu baza de date oficială a versiunilor OpenProject pentru a alerta cu privire la orice actualizări sau vulnerabilități cunoscute. Pentru mai multe informații despre ce oferă verificarea, ce date sunt necesare pentru a furniza actualizările disponibile și cum să dezactivezi această verificare, te rog să vizitezi <a href="%{more_info_url}">documentația de configurare</a>.
   text_own_membership_delete_confirmation: "Sunteţi cale de a elimina unele sau toate permisiunile şi e posibil să nu mai puteți edita acest proiect după aceea. \nSunteţi sigur că doriţi să continuaţi?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Se poate scrie în directorul de resurse pentru module"
   text_powered_by: "Propulsat de %{link}"
   text_project_identifier_info: "Doar litere mici (a-z), numere, cratime şi linii de subliniere sunt permise, trebuie să înceapă cu o literă mică."

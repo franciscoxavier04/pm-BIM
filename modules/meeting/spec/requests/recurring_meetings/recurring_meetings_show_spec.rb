@@ -182,5 +182,22 @@ RSpec.describe "Recurring meetings show",
         expect(page).to have_no_css("#recurring-meetings-footer-component")
       end
     end
+
+    context "when the meeting has no end date" do
+      let(:recurring_meeting) do
+        create :recurring_meeting,
+               project:,
+               author: user,
+               start_time: Time.zone.today + 1.day,
+               frequency: "daily",
+               end_after: "never"
+      end
+
+      it "shows footer, but no counts" do
+        get recurring_meeting_path(recurring_meeting)
+
+        expect(page).to have_text "There are more scheduled meetings"
+      end
+    end
   end
 end

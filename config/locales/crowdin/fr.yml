@@ -229,6 +229,9 @@ fr:
           item:
             title: Cet élément n'a pas de niveau hiérarchique inférieur
             description: Ajoutez des éléments à cette liste pour créer des sous-éléments dans une autre liste
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Étiquette de l'élément"
           short: "Nom abrégé"
@@ -1572,8 +1575,9 @@ fr:
   button_copy_and_follow: "Copier et suivre"
   button_create: "Créer"
   button_create_and_continue: "Créer et continuer"
-  button_delete: "Supprimer"
   button_decline: "Refuser"
+  button_delete: "Supprimer"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Supprimer l'observateur %{name}"
   button_download: "Télécharger"
   button_duplicate: "Dupliquer"
@@ -3717,6 +3721,7 @@ fr:
   text_notice_security_badge_displayed_html: >
     Remarque : si cette option est activée, un badge indiquant l'état de votre installation s'affichera dans le panneau <a href="%{information_panel_path}">%{information_panel_label}</a> administration et sur la page d'accueil. Il n'est affiché que pour les administrateurs. <br/>Le badge vérifiera votre version actuelle d'OpenProject par rapport à la base de données officielle d'OpenProject pour vous avertir de toute mise à jour ou vulnérabilité connue. Pour plus d'informations sur ce que la vérification fournit, quelles données sont nécessaires pour fournir les mises à jour disponibles, et comment désactiver cette vérification, veuillez visiter <a href="%{more_info_url}">la documentation de configuration</a>.
   text_own_membership_delete_confirmation: "Vous êtes sur le point de retirer tout ou partie de vos permissions et ne pourrez peut-être plus modifier le projet par la suite.\nÊtes vous sûr de vouloir continuer?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Répertoire des « plugin assets » est accessible en écriture"
   text_powered_by: "Propulsé par %{link}"
   text_project_identifier_info: "Seulement les lettres en minuscule (a-z), les nombres, les tirets et les underscores sont autorisés, il est obligatoire de commencer avec une lettre en minuscule."

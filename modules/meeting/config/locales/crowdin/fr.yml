@@ -125,6 +125,8 @@ fr:
   label_recurring_occurrence_delete_confirmation: >
     Toutes les informations relatives à la réunion qui ne figurent pas dans le modèle seront perdues. Voulez-vous continuer ?
   label_recurring_meeting_restore: "Restaurer cette occurrence"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Il y a %{count} autres réunions prévues (%{schedule})."
   label_recurring_meeting_more_singular: "Il y a %{count} autre réunion prévue (%{schedule})."
   label_recurring_meeting_more_past: "Il y a %{count} autres réunions passées."
@@ -174,6 +176,9 @@ fr:
         Envoyez immédiatement une invitation par e-mail aux participants sélectionnés ci-dessus. Vous pouvez également le faire manuellement à tout moment par la suite.
       send_invitation_emails_structured: "Envoyez immédiatement une invitation par e-mail à tous les participants. Vous pouvez également le faire manuellement à tout moment par la suite."
       open_meeting_link: "Ouvrir la réunion"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} vous a envoyé une invitation pour la réunion %{title}"
       rescheduled:

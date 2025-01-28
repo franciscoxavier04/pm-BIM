@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecurringMeetingsController < ApplicationController
   include RecurringMeetingsHelper
   include Layout
@@ -7,8 +9,10 @@ class RecurringMeetingsController < ApplicationController
   include OpTurbo::DialogStreamHelper
 
   before_action :find_meeting,
-                only: %i[show update details_dialog destroy edit init delete_scheduled template_completed download_ics]
-  before_action :find_optional_project, only: %i[index show new create update details_dialog destroy edit delete_scheduled]
+                only: %i[show update details_dialog destroy edit init
+                         delete_scheduled template_completed download_ics notify]
+  before_action :find_optional_project,
+                only: %i[index show new create update details_dialog destroy edit delete_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
   before_action :get_scheduled_meeting, only: %i[delete_scheduled]
@@ -37,10 +41,15 @@ class RecurringMeetingsController < ApplicationController
     @recurring_meeting = RecurringMeeting.new(project: @project)
   end
 
-  def show
+  def show # rubocop:disable Metrics/AbcSize
     @direction = params[:direction]
     @max_count = max_count
-    @count = [(params[:count].to_i + 5), @max_count].min
+    @count =
+      if @max_count
+        [(params[:count].to_i + 5), @max_count].min
+      else
+        params[:count].to_i + 5
+      end
 
     @meetings = if @direction == "past"
                   @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
@@ -147,9 +156,12 @@ class RecurringMeetingsController < ApplicationController
   def template_completed
     call = ::RecurringMeetings::InitOccurrenceService
       .new(user: current_user, recurring_meeting: @recurring_meeting)
-      .call(start_time: @first_occurrence.to_time)
+      .call(start_time: @first_occurrence)
 
     if call.success?
+      init_next_occurrence_job(@first_occurrence)
+      deliver_invitation_mails
+
       flash[:success] = I18n.t("recurring_meeting.occurrence.first_created")
     else
       flash[:error] = call.message
@@ -168,17 +180,55 @@ class RecurringMeetingsController < ApplicationController
     redirect_to polymorphic_path([@project, @recurring_meeting]), status: :see_other
   end
 
-  def download_ics
-    ::RecurringMeetings::ICalService
-      .new(user: current_user, series: @recurring_meeting)
-      .call
+  def download_ics # rubocop:disable Metrics/AbcSize
+    service = ::RecurringMeetings::ICalService.new(user: current_user, series: @recurring_meeting)
+    filename, result =
+      if params[:occurrence_id].present?
+        occurrence = @recurring_meeting.meetings.find_by(id: params[:occurrence_id])
+        ["#{@recurring_meeting.title} - #{occurrence.start_time.to_date.iso8601}",
+         service.generate_occurrence(occurrence)]
+      else
+        [@recurring_meeting.title, service.generate_series]
+      end
+
+    result
       .on_failure { |call| render_500(message: call.message) }
       .on_success do |call|
-      send_data call.result, filename: filename_for_content_disposition("#{@recurring_meeting.title}.ics")
+      send_data call.result, filename: filename_for_content_disposition("#{filename}.ics")
     end
   end
 
+  def notify
+    deliver_invitation_mails
+    flash[:notice] = I18n.t(:notice_successful_notification)
+    redirect_to action: :show
+  end
+
   private
+
+  def init_next_occurrence_job(from_time)
+    # Now we can schedule the job to create the next occurrence
+    next_occurrence = @recurring_meeting.next_occurrence(from_time:)&.to_time
+    return if next_occurrence.nil?
+
+    ::RecurringMeetings::InitNextOccurrenceJob
+      .set(wait_until: from_time)
+      .perform_later(@recurring_meeting, next_occurrence)
+  end
+
+  def deliver_invitation_mails
+    @recurring_meeting
+      .template
+      .participants
+      .invited
+      .find_each do |participant|
+      MeetingSeriesMailer.template_completed(
+        @recurring_meeting,
+        participant.user,
+        User.current
+      ).deliver_later
+    end
+  end
 
   def upcoming_meetings(count:)
     meetings = @recurring_meeting

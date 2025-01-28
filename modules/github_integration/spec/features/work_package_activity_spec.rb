@@ -75,7 +75,8 @@ RSpec.describe "Work Package Activity Tab",
     }
   end
 
-  let(:work_package_page) { Pages::SplitWorkPackage.new(work_package, project) }
+  let(:wp_page) { Pages::FullWorkPackage.new(work_package, project) }
+  let(:activity_tab) { Components::WorkPackages::Activities.new(work_package) }
 
   context "when the pull request is merged" do
     let(:action) { "closed" }
@@ -99,8 +100,8 @@ RSpec.describe "Work Package Activity Tab",
       let(:state) { "closed" }
 
       before do
-        work_package_page.visit_tab! "activity"
-        work_package_page.ensure_page_loaded
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
       end
 
       it "renders a comment stating the Pull Request was merged by the merge actor" do
@@ -113,7 +114,7 @@ RSpec.describe "Work Package Activity Tab",
                          github_user_link: pull_request_merging_user.github_login)}
         GITHUB_MERGE_COMMENT
 
-        expect(page).to have_css(".user-comment > .message", text: expected_merge_comment)
+        activity_tab.expect_journal_notes(text: expected_merge_comment)
       end
     end
   end
@@ -133,8 +134,8 @@ RSpec.describe "Work Package Activity Tab",
 
     context "and I visit the work package's activity tab" do
       before do
-        work_package_page.visit_tab! "activity"
-        work_package_page.ensure_page_loaded
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
       end
 
       it "renders a comment stating the Work Package was referenced in the Pull Request" do
@@ -147,7 +148,7 @@ RSpec.describe "Work Package Activity Tab",
                              github_user_link: pull_request_author.github_login)}
         GITHUB_REFERENCED_COMMENT
 
-        expect(page).to have_css(".user-comment > .message", text: expected_referenced_comment)
+        activity_tab.expect_journal_notes(text: expected_referenced_comment)
       end
     end
   end
@@ -167,8 +168,8 @@ RSpec.describe "Work Package Activity Tab",
 
     context "and I visit the work package's activity tab" do
       before do
-        work_package_page.visit_tab! "activity"
-        work_package_page.ensure_page_loaded
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
       end
 
       it "renders a comment stating that said action was performed on the Pull Request" do
@@ -181,7 +182,7 @@ RSpec.describe "Work Package Activity Tab",
                                           github_user_link: pull_request_author.github_login)}
         GITHUB_READY_FOR_REVIEW_COMMENT
 
-        expect(page).to have_css(".user-comment > .message", text: expected_action_comment)
+        activity_tab.expect_journal_notes(text: expected_action_comment)
       end
     end
   end

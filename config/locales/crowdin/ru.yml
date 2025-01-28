@@ -228,6 +228,9 @@ ru:
           item:
             title: Этот элемент не имеет уровня иерархии ниже
             description: Добавьте элементы в этот список, чтобы создать подпункты внутри другого списка
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Название элемента"
           short: "Краткое имя"
@@ -1611,8 +1614,9 @@ ru:
   button_copy_and_follow: "Скопировать и продолжить"
   button_create: "Создать"
   button_create_and_continue: "Создать и продолжить"
-  button_delete: "Удалить"
   button_decline: "Отклонить"
+  button_delete: "Удалить"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Удаление наблюдателя %{name}"
   button_download: "Скачать"
   button_duplicate: "Дублировать"
@@ -3477,7 +3481,7 @@ ru:
   setting_brute_force_block_minutes: "Время блокирования пользователя за"
   setting_cache_formatted_text: "Кэшировать форматированный текст"
   setting_use_wysiwyg_description: "Выберите включение CKEditor5 WYSIWYG редактора для всех пользователей по умолчанию. CKEditor обладает ограниченной функциональностью для GFM Markdown."
-  setting_column_options: "Столбцы пакета работ по умолчанию"
+  setting_column_options: "Столбцы таблицы пакетов работ по умолчанию"
   setting_commit_fix_keywords: "Корректирующие ключевые слова"
   setting_commit_logs_encoding: "Зафиксировать кодировку сообщений"
   setting_commit_logtime_activity_id: "Деятельности с учетом времени"
@@ -3795,6 +3799,7 @@ ru:
   text_notice_security_badge_displayed_html: >
     Примечание: Если этот параметр включен, значок с вашим статусом установки будет отображен в панели администрирования <a href="%{information_panel_path}">%{information_panel_label}</a> и на домашней странице. Он отображается только администраторам. <br/> Знак будет проверять текущую версию OpenProject в официальной базе данных релизов OpenProject для оповещения вас о каких-либо обновлениях или известных уязвимостях. Для дополнительной информации, необходимой для проверки доступных обновлений, и о том как отключить эту проверку, пожалуйста, посетите <a href="%{more_info_url}">конфигурации документации</a>.
   text_own_membership_delete_confirmation: "Вы собираетесь удалить все или некоторые разрешения, доступные Вам. Вы не сможете редактировать проект после этого действия. Вы уверены?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Папка активов дополнения(plugin) доступна для записи"
   text_powered_by: "С использованием %{link}"
   text_project_identifier_info: "Разрешены только строчные буквы (a-z), цифры, тире и знаки подчеркивания, начинать с буквы нижнего регистра."

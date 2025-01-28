@@ -227,6 +227,9 @@ pt-PT:
           item:
             title: Este item não tem nenhum nível hierárquico abaixo
             description: Adicione itens a esta lista para criar subitens dentro de outra lista
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Etiqueta do item"
           short: "Nome abreviado"
@@ -1571,8 +1574,9 @@ pt-PT:
   button_copy_and_follow: "Copiar e seguir"
   button_create: "Criar"
   button_create_and_continue: "Criar e continuar"
-  button_delete: "Eliminar"
   button_decline: "Rejeitar"
+  button_delete: "Eliminar"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Eliminar observador %{name}"
   button_download: "Transferir"
   button_duplicate: "Duplicar"
@@ -3713,6 +3717,7 @@ pt-PT:
   text_notice_security_badge_displayed_html: >
     Nota: se ativo, irá mostrar um emblema com o estado da sua instalação no painel de administração <a href="%{information_panel_path}">%{information_panel_label}</a> e na página inicial. Só é mostrado a administradores. <br/> O emblema verificará a sua versão atual do OpenProject em relação à base de dados oficial da versão do OpenProject para o alertar sobre quaisquer atualizações ou vulnerabilidades conhecidas. Para obter mais informações sobre o que a verificação fornece, quais os dados que são necessários para fornecer atualizações disponíveis e como desativar esta verificação, visite <a href="%{more_info_url}">the configuration documentation</a>.
   text_own_membership_delete_confirmation: "Está prestes a eliminar parcial ou totalmente as suas permissões. É possível que não possa editar o projeto após esta acção.\nTem a certeza de que deseja continuar?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "É possíver escrever na pasta de ativos dos módulos de extensão"
   text_powered_by: "Desenvolvido por %{link}"
   text_project_identifier_info: "Apenas letras minúsculas (a-z), números, traços e underscores são permitidos, deve começar com uma letra minúscula."

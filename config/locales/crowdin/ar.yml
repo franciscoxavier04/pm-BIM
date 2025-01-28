@@ -229,6 +229,9 @@ ar:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -1650,8 +1653,9 @@ ar:
   button_copy_and_follow: "انسخ واتبع"
   button_create: "إنشاء"
   button_create_and_continue: "إنشاء ومواصلة"
-  button_delete: "احذف"
   button_decline: "Decline"
+  button_delete: "احذف"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "حذف المراقب %{name}"
   button_download: "تحميل"
   button_duplicate: "كرِّر"
@@ -3877,6 +3881,7 @@ ar:
   text_notice_security_badge_displayed_html: >
     Note: if enabled, this will display a badge with your installation status in the <a href="%{information_panel_path}">%{information_panel_label}</a> administration panel, and on the home page. It is displayed to administrators only. <br/> The badge will check your current OpenProject version against the official OpenProject release database to alert you of any updates or known vulnerabilities. For more information on what the check provides, what data is needed to provide available updates, and how to disable this check, please visit <a href="%{more_info_url}">the configuration documentation</a>.
   text_own_membership_delete_confirmation: "أنت على وشك إزالة بعض أو كافة الأذونات الخاصة بك، وقد لن تكون قادراً على تحرير هذا المشروع بعد ذلك. هل أنت متأكد من أنك تريد المتابعة؟"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "دليل أصول البرنامج المساعدة القابل للكتابة"
   text_powered_by: "بواسطة %{link}"
   text_project_identifier_info: "يتم السماح فقط رسائل الحالة الأدنى (أ-ي) وأرقام، والشرطات وتسطير، يجب أن تبدأ بحرف حالة الأدنى."
