@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,29 +28,24 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module RecurringMeetings
-  class CreateService < ::BaseServices::Create
-    include WithTemplate
+class RecurringMeetings::InitNextOccurrenceWatchdogJob < ApplicationJob
+  queue_with_priority :low
 
-    protected
+  def perform
+    key = RecurringMeetings::InitNextOccurrenceJob::CONCURRENCY_KEY_BASE
 
-    def after_perform(call)
-      return call unless call.success?
+    RecurringMeeting
+      .joins("LEFT JOIN good_jobs ON good_jobs.concurrency_key = CONCAT('#{key}', recurring_meetings.id)")
+      .where(good_jobs: { id: nil })
+      .find_each do |series|
+      next_occurrence = series.next_occurrence
 
-      recurring_meeting = call.result
-      call.merge! create_meeting_template(recurring_meeting) if call.success?
-
-      call
-    end
-
-    def create_meeting_template(recurring_meeting)
-      template = StructuredMeeting.new(@template_params)
-      template.project = recurring_meeting.project
-      template.template = true
-      template.recurring_meeting = recurring_meeting
-      template.author = user
-
-      ServiceResult.new(success: template.save, errors: template.errors)
+      if next_occurrence
+        Rails.logger.warn { "Meeting series ##{series.id} lost its InitNextOccurrenceJob. Re-scheduling." }
+        RecurringMeetings::InitNextOccurrenceJob.perform_later(series, next_occurrence)
+      else
+        Rails.logger.debug { "Meeting series ##{series.id} has no next occurrence. Skipping resetting init job" }
+      end
     end
   end
 end

@@ -123,17 +123,17 @@ RSpec.describe "Recurring meetings creation",
       wait_for_network_idle
 
       # Sends out an invitation to the series
-      perform_enqueued_jobs
-      expect(ActionMailer::Base.deliveries.size).to eq 2
-      title = ActionMailer::Base.deliveries.map(&:subject).uniq.first
-      expect(title).to eq "[#{project.name}] Meeting series Some title"
-
       show_page.visit!
       expect(page).to have_css(".start_time", count: 3)
 
       show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
       show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
       show_page.expect_scheduled_meeting date: "01/14/2025 01:30 PM"
+
+      perform_enqueued_jobs
+      expect(ActionMailer::Base.deliveries.size).to eq 2
+      title = ActionMailer::Base.deliveries.map(&:subject).uniq.first
+      expect(title).to eq "[#{project.name}] Meeting series Some title"
     end
   end
 

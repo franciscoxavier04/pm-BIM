@@ -82,7 +82,7 @@ RSpec.describe "Recurring meetings CRUD",
     login_as current_user
 
     # Assuming the first init job has run
-    RecurringMeetings::InitNextOccurrenceJob.perform_now(meeting)
+    RecurringMeetings::InitNextOccurrenceJob.perform_now(meeting, meeting.first_occurrence.to_time)
   end
 
   it "can delete a recurring meeting from the show page and return to the index page" do

@@ -31,8 +31,15 @@ module RecurringMeetings
     include GoodJob::ActiveJobExtensions::Concurrency
     discard_on ActiveJob::DeserializationError
 
+    CONCURRENCY_KEY_BASE = "RecurringMeetings::InitNextOccurrenceJob-".freeze
+
     good_job_control_concurrency_with(
-      total_limit: 1,
+      # Allow the running job to enqueue the next one
+      total_limit: 2,
+      # But allow only one enqueued job
+      enqueue_limit: 1,
+      # And one running job
+      perform_limit: 1,
       key: -> { self.class.unique_key(arguments.first) }
     )
 
@@ -42,38 +49,39 @@ module RecurringMeetings
     end
 
     def self.unique_key(recurring_meeting)
-      "RecurringMeetings::InitNextOccurrenceJob-#{recurring_meeting.id}"
+      "#{CONCURRENCY_KEY_BASE}#{recurring_meeting.id}"
     end
 
-    attr_accessor :recurring_meeting
+    attr_accessor :recurring_meeting, :scheduled_time
 
-    def perform(recurring_meeting)
+    def perform(recurring_meeting, scheduled_time)
       self.recurring_meeting = recurring_meeting
-
-      if next_scheduled_time.nil?
-        Rails.logger.debug { "Meeting series #{recurring_meeting} is ending." }
-        return
-      end
+      self.scheduled_time = scheduled_time
 
       # Schedule the next job
       schedule_next_job
 
-      # Schedule the next occurrence, if not instantiated
-      check_next_occurrence
+      # Schedule the given occurrence, if not instantiated
+      check_occurrence
     rescue StandardError => e
-      Rails.logger.error { "Error while initializing next occurrence for series ##{recurring_meeting}: #{e.message}" }
+      Rails.logger.error { "Error while initializing next occurrence for series ##{recurring_meeting.id}: #{e.message}" }
     end
 
     private
 
-    def check_next_occurrence
-      if next_occurrence_instantiated?
-        Rails.logger.debug { "Will not create next occurrence for series #{recurring_meeting} as already instantiated" }
+    def check_occurrence # rubocop:disable Metrics/AbcSize
+      if occurrence_instantiated?
+        Rails.logger.debug { "Will not create next occurrence for series ##{recurring_meeting.id} as already instantiated" }
         return
       end
 
-      if next_occurrence_cancelled?
-        Rails.logger.debug { "Will not create next occurrence for series #{recurring_meeting} is already cancelled" }
+      if occurrence_cancelled?
+        Rails.logger.debug { "Will not create next occurrence for series ##{recurring_meeting.id} as already cancelled" }
+        return
+      end
+
+      unless occurring_at_scheduled_time?
+        Rails.logger.debug { "The given schedule #{scheduled_time} (no longer) exists for series ##{recurring_meeting.id}" }
         return
       end
 
@@ -83,10 +91,10 @@ module RecurringMeetings
     def init_meeting
       call = ::RecurringMeetings::InitOccurrenceService
         .new(user: User.system, recurring_meeting:)
-        .call(start_time: next_scheduled_time)
+        .call(start_time: scheduled_time)
 
       call.on_success do
-        Rails.logger.debug { "Initialized occurrence for series ##{recurring_meeting} at #{next_scheduled_time}" }
+        Rails.logger.debug { "Initialized occurrence for series ##{recurring_meeting} at #{scheduled_time}" }
       end
 
       call.on_failure do
@@ -98,38 +106,51 @@ module RecurringMeetings
 
     ##
     # Schedule when this job should be run the next time
+    # When the next meeting takes place
     def schedule_next_job
-      # Do not schedule if the series is ending
-      return if next_scheduled_time.nil?
+      if next_scheduled_time.nil?
+        Rails.logger.info { "Meeting series ##{recurring_meeting.id} is ending." }
+        return
+      end
 
       self
         .class
-        .set(wait_until: next_scheduled_time)
-        .perform_later(recurring_meeting)
+        .set(wait_until: scheduled_time)
+        .perform_later(recurring_meeting, next_scheduled_time)
+    end
+
+    ##
+    # Return whether the given scheduled_time is occurring
+    # This might no longer be the case if the meeting was rescheduled.
+    def occurring_at_scheduled_time?
+      recurring_meeting.schedule.occurs_at?(scheduled_time)
     end
 
     ##
     # Return if there is already an instantiated upcoming meeting
-    def next_occurrence_instantiated?
+    # for the current scheduled_time
+    def occurrence_instantiated?
       recurring_meeting
         .scheduled_instances
         .where.not(meeting_id: nil)
-        .exists?(start_time: next_scheduled_time)
+        .exists?(start_time: scheduled_time)
     end
 
     ##
-    # Return if the next occurrence is cancelled
-    def next_occurrence_cancelled?
+    # Return if the current scheduled time is cancelled
+    def occurrence_cancelled?
       recurring_meeting
         .scheduled_instances
         .where(cancelled: true)
-        .exists?(start_time: next_scheduled_time)
+        .exists?(start_time: scheduled_time)
     end
 
     def next_scheduled_time
       return @next_scheduled_time if defined?(@next_scheduled_time)
 
-      @next_scheduled_time = recurring_meeting.next_occurrence&.to_time
+      @next_scheduled_time = recurring_meeting
+        .next_occurrence(from_time: scheduled_time)
+        &.to_time
     end
   end
 end
