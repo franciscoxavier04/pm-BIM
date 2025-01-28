@@ -31,16 +31,16 @@ class CostQuery::Filter::WorkPackageId < Report::Filter::Base
     WorkPackage.model_name.human
   end
 
+  def self.available_operators
+    ["=", "!", "=_child_work_packages", "!_child_work_packages"].map(&:to_operator)
+  end
+
   def self.available_values(*)
     WorkPackage
       .where(project_id: Project.allowed_to(User.current, :view_work_packages))
       .order(:id)
       .pluck(:id, :subject)
       .map { |id, subject| [text_for_tuple(id, subject), id] }
-  end
-
-  def self.available_operators
-    ["="].map(&:to_operator)
   end
 
   ##

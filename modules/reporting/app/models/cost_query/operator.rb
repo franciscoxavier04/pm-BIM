@@ -71,4 +71,30 @@ class CostQuery::Operator < Report::Operator
       query
     end
   end
+
+  new "=_child_work_packages", validate: :integers, label: :label_is_work_package_with_descendants do
+    def modify(query, field, *values)
+      wp_ids = []
+      values.each do |value|
+        wp_ids += ([value] << WorkPackage.find(value).descendants.map(&:id))
+      end
+      "=".to_operator.modify query, field, wp_ids
+    rescue ActiveRecord::RecordNotFound
+      query
+    end
+  end
+
+  new "!_child_work_packages", validate: :integers, label: :label_is_not_work_package_with_descendants do
+    def modify(query, field, *values)
+      wp_ids = []
+      values.each do |value|
+        value.to_s.split(",").each do |id|
+          wp_ids += ([id] << WorkPackage.find(id).descendants.map(&:id))
+        end
+      end
+      "!".to_operator.modify query, field, wp_ids
+    rescue ActiveRecord::RecordNotFound
+      query
+    end
+  end
 end
