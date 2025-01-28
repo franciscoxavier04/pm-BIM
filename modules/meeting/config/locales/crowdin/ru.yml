@@ -127,12 +127,14 @@ ru:
   label_recurring_occurrence_delete_confirmation: >
     Любая информация о совещании, не включенная в шаблон, будет потеряна. Вы хотите продолжить?
   label_recurring_meeting_restore: "Восстановить это событие"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Есть еще %{count} запланированных совещаний (%{schedule})."
   label_recurring_meeting_more_singular: "Есть еще %{count} запланированное совещание (%{schedule})."
   label_recurring_meeting_more_past: "Есть еще %{count} прошедших совещаний."
   label_recurring_meeting_more_past_singular: "Есть еще %{count} прошедшее совещание."
   label_recurring_meeting_show_more: "Показать еще"
-  label_recurring_meeting_series_create: "Create meeting series"
+  label_recurring_meeting_series_create: "Создать серию совещаний"
   label_recurring_meeting_series_edit: "Изменить серию совещаний"
   label_recurring_meeting_series_delete: "Удалить серию совещаний"
   label_my_meetings: "Мои совещания"
@@ -176,6 +178,9 @@ ru:
         Немедленно отправьте приглашение по электронной почте участникам, выбранным выше. Вы также можете сделать это вручную в любое время позже.
       send_invitation_emails_structured: "Отправить приглашение по электронной почте сразу всем участникам. Вы также можете сделать это вручную в любое время."
       open_meeting_link: "Открыть совещание"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} отправил вам приглашение на совещание %{title}"
       rescheduled:

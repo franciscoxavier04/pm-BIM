@@ -30,6 +30,7 @@
 
 module RecurringMeetings
   class ShowPageHeaderComponent < ApplicationComponent
+    include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
     include ApplicationHelper
 

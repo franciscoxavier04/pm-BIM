@@ -21,8 +21,8 @@
 #++
 tr:
   plugin_openproject_reporting:
-    name: "OpenProject Reporting"
-    description: "This plugin allows creating custom cost reports with filtering and grouping created by the OpenProject Time and costs plugin."
+    name: "OpenProject Raporlama"
+    description: "Bu eklenti, OpenProject Zaman ve maliyetler eklentisi tarafından oluşturulan filtreleme ve gruplama ile özel maliyet raporları oluşturmaya izin verir."
   button_save_report_as: "Farklı kaydet..."
   comments: "Yorum"
   cost_reports_title: "Zaman ve maliyetler"
@@ -87,14 +87,14 @@ tr:
   validation_failure_integer: "geçerli bir tamsayı değil"
   export:
     timesheet:
-      title: "Your PDF timesheet export"
-      button: "Export PDF timesheet"
-      timesheet: "Timesheet"
-      time: "Time"
+      title: "PDF zaman çizelgenizin dışa aktarımı"
+      button: "PDF zaman çizelgesini dışa aktar"
+      timesheet: "Zaman Çizelgesi"
+      time: "Zaman"
     cost_reports:
       title: "Maliyet Raporlarınızın XLS çıktısı"
-      start_time: "Start time"
-      end_time: "End time"
+      start_time: "Başlangıç zamanı"
+      end_time: "Bitiş zamanı"
   reporting:
     group_by:
       selected_columns: "Seçilen sütunlar"

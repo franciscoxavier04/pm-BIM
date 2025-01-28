@@ -37,6 +37,7 @@ class RecurringMeeting::EndAfter < ApplicationForm
         "show-when-value-selected-target": "cause"
       }
     ) do |list|
+      list.option(value: "never", label: I18n.t("recurring_meeting.end_after.never"))
       list.option(value: "specific_date", label: I18n.t("recurring_meeting.end_after.specific_date"))
       list.option(value: "iterations", label: I18n.t("recurring_meeting.end_after.iterations"))
     end

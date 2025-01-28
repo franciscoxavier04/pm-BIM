@@ -78,12 +78,12 @@ cs:
           added_html: "nastavit na <i>%{value}</i>"
           removed: "odstraněno"
           updated: "změněno z %{old_value} na %{value}"
-          updated_html: "changed from <i>%{old_value}</i> to <i>%{value}</i>"
+          updated_html: "změněno z <i>%{old_value}</i> na <i>%{value}</i>"
         position:
           updated: "přeřazeno"
         work_package:
           updated: "změněno z %{old_value} na %{value}"
-          updated_html: "changed from <i>%{old_value}</i> to <i>%{value}</i>"
+          updated_html: "změněno z <i>%{old_value}</i> na <i>%{value}</i>"
   description_attended: "zúčastněn"
   description_invite: "pozván"
   events:
@@ -125,14 +125,16 @@ cs:
   label_recurring_meeting_delete_confirmation: >
     This meeting is part of a series called %{name}. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   label_recurring_occurrence_delete_confirmation: >
-    Any meeting information not in the template will be lost. Do you want to continue?
+    Veškeré informace o schůzce, které nejsou v šabloně, budou ztraceny. Chcete pokračovat?
   label_recurring_meeting_restore: "Obnovit tento výskyt"
-  label_recurring_meeting_more: "There are %{count} more scheduled meetings (%{schedule})."
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
+  label_recurring_meeting_more: "Dalších %{count} naplánovaných schůzek (%{schedule})."
   label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
   label_recurring_meeting_more_past: "Dalších  %{count}  minulých schůzek "
-  label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
+  label_recurring_meeting_more_past_singular: "Dalších  %{count}  minulých schůzek "
   label_recurring_meeting_show_more: "Ukázat více"
-  label_recurring_meeting_series_create: "Create meeting series"
+  label_recurring_meeting_series_create: "Vytvořit sérii schůzek"
   label_recurring_meeting_series_edit: "Upravit sérii schůzek"
   label_recurring_meeting_series_delete: "Odstranit sérii schůzek"
   label_my_meetings: "Moje schůzky"
@@ -158,10 +160,10 @@ cs:
   label_start_date: "Datum zahájení"
   meeting:
     participants:
-      template: "These participants will be invited automatically to all future meetings as they are created."
+      template: "Tito účastníci budou automaticky pozváni na všechna budoucí zasedání po jejich vytvoření."
     attachments:
       template: "These attached files will be included in all future meetings in the series."
-      text: "Attached files are available to all meeting participants. You can also drag and drop these into agenda item notes."
+      text: "Přiložené soubory jsou k dispozici všem účastníkům schůzky. Můžete je také přetáhnout do poznámek k pořadu jednání."
     copy:
       title: "Kopírovat schůzku %{title}"
       attachments: "Kopírovat přílohy"
@@ -176,6 +178,9 @@ cs:
         Send an email invitation immediately to the participants selected above. You can also do this manually at any time later.
       send_invitation_emails_structured: "Send an email invitation immediately to all participants. You can also do this manually at any time later."
       open_meeting_link: "Otevřít schůzku"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} vám poslal pozvánku na schůzku %{title}"
       rescheduled:
@@ -191,13 +196,13 @@ cs:
       structured: "Strukturované"
       one_time: "Jednorázový"
       recurring: "Opakované"
-      recurring_text: "Create meeting series with dynamic template for each occurrence."
+      recurring_text: "Vytvořte sérii schůzek s dynamickou šablonou pro každou událost."
       structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Kopírování schůzky v současné době nezkopíruje související body pořadu jednání, jen podrobnosti"
     copied: "Zkopírováno ze schůzky #%{id}"
   meeting_section:
     untitled_title: "Sekce bez názvu"
-    delete_confirmation: "Deleting the section will also delete all of its agenda items. Are you sure you want to do this?"
+    delete_confirmation: "Smazáním sekce také smažete všechny body agendy. Opravdu to chcete udělat?"
     placeholder_title: "Nová sekce"
     empty_text: "Přetáhněte položky sem nebo vytvořte nové"
   recurring_meeting:
@@ -219,7 +224,7 @@ cs:
       banner_html: >
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
-      every_weekday: "Every %{day_of_the_week}"
+      every_weekday: "Každý %{day_of_the_week}"
       daily: "Denně"
       working_days: "Každý pracovní den"
       weekly: "Týdně"
@@ -231,9 +236,9 @@ cs:
       daily_interval: "Každé %{interval} dny"
       working_days: "Každý pracovní den"
       weekly: "Každý týden na %{weekday}"
-      weekly_interval: "Every %{interval} weeks on %{weekday}"
-      frequency: "%{base} at %{time}"
-      full: "%{base} at %{time}, ends on %{end_date}"
+      weekly_interval: "Každý %{interval} týdny v %{weekday}"
+      frequency: "%{base} v %{time}"
+      full: "%{base} v %{time}, končí %{end_date}"
   notice_successful_notification: "Oznámení bylo úspěšně odesláno"
   notice_timezone_missing: Není nastaveno žádné časové pásmo a předpokládá se %{zone} . Chcete-li vybrat časové pásmo, klikněte prosím zde.
   notice_meeting_updated: "Tato stránka byla aktualizována někým jiným. Pro zobrazení změn znovu načtena."
@@ -286,7 +291,7 @@ cs:
   text_deleted_agenda_item: 'Vymazaný bod programu'
   label_initial_meeting_details: "Schůzka"
   label_meeting_details: "Podrobnosti o schůzce"
-  label_meeting_series_details: "Meeting series details"
+  label_meeting_series_details: "Detaily série schůzek"
   label_meeting_details_edit: "Upravit podrobnosti schůzky"
   label_meeting_state: "Stav schůzky"
   label_meeting_state_open: "Otevřít"

@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       post :init
       post :delete_scheduled
       post :template_completed
+      post :notify
     end
     collection do
       get :humanize_schedule, controller: "recurring_meetings/schedule", action: :humanize_schedule

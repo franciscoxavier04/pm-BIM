@@ -217,8 +217,17 @@ module Pages::StructuredMeeting
       expect(page).to have_field(id: "checkbox_attended_#{participant.id}", checked: attended, disabled: !editable)
     end
 
+    def expect_participant_invited(participant, invited: true)
+      expect(page).to have_text(participant.name)
+      expect(page).to have_field(id: "checkbox_invited_#{participant.id}", checked: invited)
+    end
+
     def invite_participant(participant)
-      check(id: "checkbox_invited_#{participant.id}")
+      id = "checkbox_invited_#{participant.id}"
+      retry_block do
+        check(id:)
+        raise "Expected #{participant.id} to be invited now" unless page.has_checked_field?(id:)
+      end
     end
 
     def expect_available_participants(count:)
@@ -248,11 +257,13 @@ module Pages::StructuredMeeting
     end
 
     def add_section(&)
-      page.within("#meeting-agenda-items-new-button-component") do
-        click_on I18n.t(:button_add)
-        click_on "Section"
-        # wait for the disabled button, indicating the turbo streams are applied
-        expect(page).to have_css("#meeting-agenda-items-new-button-component button[disabled='disabled']")
+      retry_block do
+        page.within("#meeting-agenda-items-new-button-component") do
+          click_on I18n.t(:button_add)
+          click_on "Section"
+          # wait for the disabled button, indicating the turbo streams are applied
+          expect(page).to have_css("#meeting-agenda-items-new-button-component button[disabled='disabled']")
+        end
       end
 
       in_latest_section_form(&)

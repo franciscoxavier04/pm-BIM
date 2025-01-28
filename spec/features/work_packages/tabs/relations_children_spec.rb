@@ -5,6 +5,8 @@ require "spec_helper"
 require "support/edit_fields/edit_field"
 
 RSpec.describe "Relations children tab", :js, :with_cuprite do
+  include CustomFieldsHelpers
+
   shared_let(:normal_cf) { create(:string_wp_custom_field, is_required: false) }
   shared_let(:required_cf) { create(:string_wp_custom_field, is_required: true) }
   shared_let(:type_milestone) { create(:type_milestone) }
@@ -111,6 +113,47 @@ RSpec.describe "Relations children tab", :js, :with_cuprite do
       relations_tab.expect_add_relation_button
       relations_tab.expect_new_relation_type("Existing child")
       relations_tab.expect_no_new_relation_type("New child")
+    end
+  end
+
+  context "when all possible custom fields are there" do
+    shared_let(:user) { create(:admin) }
+    shared_let(:all_possible_custom_fields) do
+      factory_bot_custom_field_traits_for("WorkPackage")
+        .product([true, false])
+        .map do |trait, is_required|
+          create(:wp_custom_field, trait, is_required:)
+        end
+    end
+
+    before do
+      all_possible_custom_fields.each do |cf|
+        project.types.first.custom_fields << cf
+        project.work_package_custom_fields << cf
+      end
+    end
+
+    it "displays a field for each required custom field" do
+      wp_page.visit_tab!("relations")
+      relations_tab.select_relation_type "New child"
+
+      all_possible_custom_fields.each do |cf|
+        create_dialog.in_dialog do
+          if cf.required?
+            # `visible: :all` is needed as text custom field use a hidden textarea internally
+            expect(page).to have_field cf.name, visible: :all
+          else
+            expect(page).to have_no_field cf.name
+          end
+        end
+      end
+    end
+
+    it "focuses the subject input field" do
+      wp_page.visit_tab!("relations")
+      relations_tab.select_relation_type "New child"
+
+      create_dialog.expect_subject_field_focused
     end
   end
 end

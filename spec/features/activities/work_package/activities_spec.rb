@@ -31,7 +31,7 @@
 require "spec_helper"
 require "support/flash/expectations"
 
-RSpec.describe "Work package activity", :js, with_flag: { primerized_work_package_activities: true } do
+RSpec.describe "Work package activity", :js, :with_cuprite do
   include Flash::Expectations
 
   let(:project) { create(:project) }
@@ -897,8 +897,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
           end
         end
 
-        context "with #comment- anchor",
-                with_flag: { primerized_work_package_activities: true, work_package_comment_id_url: true } do
+        context "with #comment- anchor", with_flag: { work_package_comment_id_url: true } do
           before do
             visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-#{comment_1.id}")
             wp_page.wait_for_activity_tab
@@ -930,8 +929,7 @@ RSpec.describe "Work package activity", :js, with_flag: { primerized_work_packag
           end
         end
 
-        context "with #comment- anchor",
-                with_flag: { primerized_work_package_activities: true, work_package_comment_id_url: true } do
+        context "with #comment- anchor", with_flag: { work_package_comment_id_url: true } do
           before do
             visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-#{comment_1.id}")
             wp_page.wait_for_activity_tab

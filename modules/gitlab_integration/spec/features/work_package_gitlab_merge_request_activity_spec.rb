@@ -69,6 +69,7 @@ RSpec.describe "Work Package Activity Tab",
   end
 
   let(:work_package_page) { Pages::SplitWorkPackage.new(work_package, project) }
+  let(:activity_tab) { Components::WorkPackages::Activities.new(work_package) }
 
   context "when there is a merge request event" do
     before do
@@ -80,6 +81,7 @@ RSpec.describe "Work Package Activity Tab",
       before do
         work_package_page.visit_tab! "activity"
         work_package_page.ensure_page_loaded
+        work_package_page.wait_for_activity_tab
       end
 
       let(:expected_comment) do
@@ -89,7 +91,7 @@ RSpec.describe "Work Package Activity Tab",
       end
 
       it "renders a comment referencing the Merge Request" do
-        expect(page).to have_css(".user-comment > .message", text: expected_comment)
+        activity_tab.expect_journal_notes(text: expected_comment)
       end
     end
   end

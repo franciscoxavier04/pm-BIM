@@ -39,7 +39,6 @@ require_relative "../../lib_static/open_project/feature_decisions"
 #     OpenProject::FeatureDecisions.add :some_flag
 #   end
 
-OpenProject::FeatureDecisions.add :primerized_work_package_activities
 OpenProject::FeatureDecisions.add :built_in_oauth_applications,
                                   description: "Allows the display and use of built-in OAuth applications."
 
@@ -53,13 +52,6 @@ OpenProject::FeatureDecisions.add :recurring_meetings,
 OpenProject::FeatureDecisions.add :generate_work_package_subjects,
                                   description: "Allows the configuration for work package types to have " \
                                                "automatically generated work package subjects."
-
-# TODO: Remove once the feature flag primerized_work_package_activities is removed altogether
-OpenProject::FeatureDecisions.define_singleton_method(:primerized_work_package_activities_active?) do
-  Rails.env.production? ||
-    (Setting.exists?("feature_primerized_work_package_activities_active") &&
-      Setting.send(:feature_primerized_work_package_activities_active?))
-end
 
 OpenProject::FeatureDecisions.add :stages_and_gates,
                                   description: "Enables the under construction feature of stages and gates."

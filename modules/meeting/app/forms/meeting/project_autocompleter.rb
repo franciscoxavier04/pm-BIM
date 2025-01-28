@@ -43,6 +43,7 @@ class Meeting::ProjectAutocompleter < ApplicationForm
         dropdownPosition: "bottom",
         inputName: "project_id",
         inputValue: @project&.id,
+        appendTo: "#new-meeting-dialog",
         filters: [{ name: "user_action", operator: "=", values: ["meetings/create"] }]
       }
     )

@@ -8,7 +8,7 @@ cs:
         url: "Payload URL\n"
         secret: 'Tajný podpis'
         events: 'Události'
-        enabled: 'Enabled'
+        enabled: 'Zapnuto'
         projects: 'Povolené projekty'
       webhooks/log:
         event_name: 'Název události'

@@ -82,7 +82,7 @@ RSpec.describe "Recurring meetings CRUD",
     login_as current_user
 
     # Assuming the first init job has run
-    RecurringMeetings::InitNextOccurrenceJob.perform_now(meeting)
+    RecurringMeetings::InitNextOccurrenceJob.perform_now(meeting, meeting.first_occurrence.to_time)
   end
 
   it "can delete a recurring meeting from the show page and return to the index page" do
@@ -135,7 +135,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.in_edit_dialog do
       page.select("Daily", from: "Frequency")
       meetings_page.set_start_time "11:00"
-      page.select("a number of occurrences", from: "End series after")
+      page.select("a number of occurrences", from: "Meeting series ends")
       page.fill_in("Occurrences", with: "8")
 
       sleep 0.5

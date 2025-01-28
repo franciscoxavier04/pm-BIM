@@ -127,6 +127,8 @@ uk:
   label_recurring_occurrence_delete_confirmation: >
     Будь-яку інформацію про нараду, відсутню в шаблоні, буде втрачено. Продовжити?
   label_recurring_meeting_restore: "Відновити це повторення"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Є інші (%{count}) заплановані наради (%{schedule})."
   label_recurring_meeting_more_singular: "Є ще %{count} запланована нарада (%{schedule})."
   label_recurring_meeting_more_past: "Є інші (%{count}) завершені наради."
@@ -176,6 +178,9 @@ uk:
         Надішліть запрошення електронною поштою вибраним вище учасникам. Це можна будь-коли зробити вручну.
       send_invitation_emails_structured: "Надішліть запрошення електронною поштою одразу всім учасникам. Це можна будь-коли зробити вручну."
       open_meeting_link: "Відкрити зустріч"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} надіслав запрошення на зустріч %{title}"
       rescheduled:
