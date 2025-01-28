@@ -61,7 +61,8 @@ module JournalChanges
       predecessor,
       self,
       association: :attachable_journals,
-      id_attribute: :attachment_id
+      id_attribute: :attachment_id,
+      all_values: :joined
     ).attribute_changes(
       :filename,
       key_prefix: "attachments"
@@ -85,7 +86,8 @@ module JournalChanges
       predecessor,
       self,
       association:,
-      id_attribute: :custom_field_id
+      id_attribute: :custom_field_id,
+      all_values: :joined
     ).attribute_changes(
       :value,
       key_prefix: "custom_fields"
@@ -123,7 +125,8 @@ module JournalChanges
       predecessor,
       self,
       association: :agenda_item_journals,
-      id_attribute: :agenda_item_id
+      id_attribute: :agenda_item_id,
+      all_values: :joined
     ).attributes_changes(
       %i[title duration_in_minutes notes position work_package_id],
       key_prefix: "agenda_items"

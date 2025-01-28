@@ -252,7 +252,8 @@ class Journable::WithHistoricAttributes < SimpleDelegator
         historic_journable,
         __getobj__,
         association: :custom_values,
-        id_attribute: :custom_field_id
+        id_attribute: :custom_field_id,
+        all_values: :joined
       ).attribute_changes(
         :value,
         key_prefix: "custom_field"

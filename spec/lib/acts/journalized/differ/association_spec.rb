@@ -71,19 +71,60 @@ RSpec.describe Acts::Journalized::Differ::Association do
     end
 
     let(:instance) do
-      described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id)
+      described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id, all_values:)
     end
 
-    it "returns the changes" do
-      expect(instance.attribute_changes(:value, key_prefix: "custom_field"))
-        .to eq(
-          "custom_field_2" => ["2", "22"],
-          "custom_field_3" => [nil, "3"],
-          "custom_field_4" => ["4", ""],
-          "custom_field_5" => ["", "5"],
-          "custom_field_6" => ["", "6"],
-          "custom_field_9" => ["1,2", "2,3"]
-        )
+    subject(:result) do
+      instance.attribute_changes(:value, key_prefix: "custom_field")
+    end
+
+    describe "requesting all values changes joined" do
+      let(:all_values) { :joined }
+
+      it "returns the changes" do
+        expect(result)
+          .to eq(
+            "custom_field_2" => ["2", "22"],
+            "custom_field_3" => [nil, "3"],
+            "custom_field_4" => ["4", ""],
+            "custom_field_5" => ["", "5"],
+            "custom_field_6" => ["", "6"],
+            "custom_field_9" => ["1,2", "2,3"]
+          )
+      end
+    end
+
+    describe "requesting all values changes as array" do
+      let(:all_values) { true }
+
+      it "returns the changes" do
+        expect(result)
+          .to eq(
+            "custom_field_2" => [["2"], ["22"]],
+            "custom_field_3" => [nil, ["3"]],
+            "custom_field_4" => [["4"], nil],
+            "custom_field_5" => [nil, ["5"]],
+            "custom_field_6" => [nil, ["6"]],
+            "custom_field_9" => [["1", "2"], ["2", "3"]]
+          )
+      end
+    end
+
+    describe "requesting single value change" do
+      let(:all_values) { false }
+
+      it "returns the changes" do
+        expect(result)
+          .to eq(
+            "custom_field_2" => ["2", "22"],
+            "custom_field_3" => [nil, "3"],
+            "custom_field_4" => ["4", nil],
+            "custom_field_5" => [nil, "5"],
+            "custom_field_6" => [nil, "6"],
+            "custom_field_8" => ["1", "2"],
+            "custom_field_9" => ["1", "3"]
+          )
+      end
     end
   end
 
@@ -114,7 +155,8 @@ RSpec.describe Acts::Journalized::Differ::Association do
     let(:instance) do
       described_class.new(original, changed,
                           association: :project_life_cycle_step_journals,
-                          id_attribute: :life_cycle_step_id)
+                          id_attribute: :life_cycle_step_id,
+                          all_values:)
     end
 
     describe "by default" do
@@ -125,17 +167,38 @@ RSpec.describe Acts::Journalized::Differ::Association do
         )
       end
 
-      it "returns the flat changes" do
-        expect(result)
-          .to eq(
-            "project_life_cycle_steps_1_active" => ["false", "true"],
-            "project_life_cycle_steps_2_active" => [nil, "true"],
-            "project_life_cycle_steps_3_active" => ["true", "false"],
-            "project_life_cycle_steps_3_end_date" => ["", "2024-01-18"],
-            "project_life_cycle_steps_3_start_date" => ["", "2024-01-17"],
-            "project_life_cycle_steps_4_end_date" => ["2024-01-17", "2024-01-18"],
-            "project_life_cycle_steps_4_start_date" => ["2024-01-16", "2024-01-17"]
-          )
+      describe "requesting joined changes for all values" do
+        let(:all_values) { :joined }
+
+        it "returns the flat changes" do
+          expect(result)
+            .to eq(
+              "project_life_cycle_steps_1_active" => ["false", "true"],
+              "project_life_cycle_steps_2_active" => [nil, "true"],
+              "project_life_cycle_steps_3_active" => ["true", "false"],
+              "project_life_cycle_steps_3_end_date" => ["", "2024-01-18"],
+              "project_life_cycle_steps_3_start_date" => ["", "2024-01-17"],
+              "project_life_cycle_steps_4_end_date" => ["2024-01-17", "2024-01-18"],
+              "project_life_cycle_steps_4_start_date" => ["2024-01-16", "2024-01-17"]
+            )
+        end
+      end
+
+      describe "requesting single value change" do
+        let(:all_values) { false }
+
+        it "returns the flat changes" do
+          expect(result)
+            .to eq(
+              "project_life_cycle_steps_1_active" => [false, true],
+              "project_life_cycle_steps_2_active" => [nil, true],
+              "project_life_cycle_steps_3_active" => [true, false],
+              "project_life_cycle_steps_3_end_date" => [nil, Date.new(2024, 1, 18)],
+              "project_life_cycle_steps_3_start_date" => [nil, Date.new(2024, 1, 17)],
+              "project_life_cycle_steps_4_end_date" => [Date.new(2024, 1, 17), Date.new(2024, 1, 18)],
+              "project_life_cycle_steps_4_start_date" => [Date.new(2024, 1, 16), Date.new(2024, 1, 17)]
+            )
+        end
       end
     end
 
@@ -148,21 +211,46 @@ RSpec.describe Acts::Journalized::Differ::Association do
         )
       end
 
-      it "returns the grouped changes" do
-        expect(result)
-          .to eq(
-            "project_life_cycle_steps_1" => { active: ["false", "true"] },
-            "project_life_cycle_steps_2" => { active: [nil, "true"] },
-            "project_life_cycle_steps_3" => {
-              active: ["true", "false"],
-              end_date: ["", "2024-01-18"],
-              start_date: ["", "2024-01-17"]
-            },
-            "project_life_cycle_steps_4" => {
-              end_date: ["2024-01-17", "2024-01-18"],
-              start_date: ["2024-01-16", "2024-01-17"]
-            }
-          )
+      describe "requesting joined changes for all values" do
+        let(:all_values) { :joined }
+
+        it "returns the grouped changes" do
+          expect(result)
+            .to eq(
+              "project_life_cycle_steps_1" => { active: ["false", "true"] },
+              "project_life_cycle_steps_2" => { active: [nil, "true"] },
+              "project_life_cycle_steps_3" => {
+                active: ["true", "false"],
+                end_date: ["", "2024-01-18"],
+                start_date: ["", "2024-01-17"]
+              },
+              "project_life_cycle_steps_4" => {
+                end_date: ["2024-01-17", "2024-01-18"],
+                start_date: ["2024-01-16", "2024-01-17"]
+              }
+            )
+        end
+      end
+
+      describe "requesting single value change" do
+        let(:all_values) { false }
+
+        it "returns the grouped changes" do
+          expect(result)
+            .to eq(
+              "project_life_cycle_steps_1" => { active: [false, true] },
+              "project_life_cycle_steps_2" => { active: [nil, true] },
+              "project_life_cycle_steps_3" => {
+                active: [true, false],
+                end_date: [nil, Date.new(2024, 1, 18)],
+                start_date: [nil, Date.new(2024, 1, 17)]
+              },
+              "project_life_cycle_steps_4" => {
+                end_date: [Date.new(2024, 1, 17), Date.new(2024, 1, 18)],
+                start_date: [Date.new(2024, 1, 16), Date.new(2024, 1, 17)]
+              }
+            )
+        end
       end
     end
   end
