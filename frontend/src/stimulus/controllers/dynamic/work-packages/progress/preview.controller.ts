@@ -35,7 +35,7 @@ export default class PreviewController extends DialogPreviewController {
     super.markFieldAsTouched(event);
 
     if (this.isWorkBasedMode()) {
-      this.keepWorkValue();
+      this.keepFieldValueWithPriority('estimated_hours', 'remaining_hours', 'done_ratio');
     }
   }
 
@@ -61,61 +61,5 @@ export default class PreviewController extends DialogPreviewController {
 
   private isWorkBasedMode() {
     return super.findValueInput('done_ratio') !== undefined;
-  }
-
-  private keepWorkValue() {
-    if (super.isInitialValueEmpty('estimated_hours') && !super.isTouched('estimated_hours')) {
-      // let work be derived
-      return;
-    }
-
-    if (super.isBeingEdited('estimated_hours')) {
-      this.untouchFieldsWhenWorkIsEdited();
-    } else if (super.isBeingEdited('remaining_hours')) {
-      this.untouchFieldsWhenRemainingWorkIsEdited();
-    } else if (super.isBeingEdited('done_ratio')) {
-      this.untouchFieldsWhenPercentCompleteIsEdited();
-    }
-  }
-
-  private untouchFieldsWhenWorkIsEdited() {
-    if (this.areBothTouched('remaining_hours', 'done_ratio')) {
-      if (super.isValueEmpty('done_ratio') && super.isValueEmpty('remaining_hours')) {
-        return;
-      }
-      if (super.isValueEmpty('done_ratio')) {
-        super.markUntouched('done_ratio');
-      } else {
-        super.markUntouched('remaining_hours');
-      }
-    } else if (super.isTouchedAndEmpty('remaining_hours') && super.isValueSet('done_ratio')) {
-      // force remaining work derivation
-      super.markUntouched('remaining_hours');
-      super.markTouched('done_ratio');
-    } else if (super.isTouchedAndEmpty('done_ratio') && super.isValueSet('remaining_hours')) {
-      // force % complete derivation
-      super.markUntouched('done_ratio');
-      super.markTouched('remaining_hours');
-    }
-  }
-
-  private untouchFieldsWhenRemainingWorkIsEdited():void {
-    if (super.isTouchedAndEmpty('estimated_hours') && super.isValueSet('done_ratio')) {
-      // force work derivation
-      super.markUntouched('estimated_hours');
-      super.markTouched('done_ratio');
-    } else if (super.isValueSet('estimated_hours')) {
-      super.markUntouched('done_ratio');
-    }
-  }
-
-  private untouchFieldsWhenPercentCompleteIsEdited():void {
-    if (super.isValueSet('estimated_hours')) {
-      super.markUntouched('remaining_hours');
-    }
-  }
-
-  private areBothTouched(fieldName1:string, fieldName2:string):boolean {
-    return super.isTouched(fieldName1) && super.isTouched(fieldName2);
   }
 }

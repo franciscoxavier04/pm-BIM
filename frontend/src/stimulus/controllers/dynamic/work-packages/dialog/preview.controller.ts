@@ -212,6 +212,10 @@ export abstract class DialogPreviewController extends Controller {
     return this.touchedFields.has(fieldName);
   }
 
+  protected areBothTouched(fieldName1:string, fieldName2:string):boolean {
+    return this.isTouched(fieldName1) && this.isTouched(fieldName2);
+  }
+
   protected isInitialValueEmpty(fieldName:string):boolean {
     const valueInput = this.findInitialValueInput(fieldName);
     return valueInput?.value === '';
@@ -244,5 +248,57 @@ export abstract class DialogPreviewController extends Controller {
         input.value = this.isTouched(fieldName) ? 'true' : 'false';
       }
     });
+  }
+
+  protected keepFieldValueWithPriority(priority1:string, priority2:string, priority3:string) {
+    if (this.isInitialValueEmpty(priority1) && !this.isTouched(priority1)) {
+      // let priority field be derived
+      return;
+    }
+
+    if (this.isBeingEdited(priority1)) {
+      this.untouchFieldsWhenPriority1IsEdited(priority2, priority3);
+    } else if (this.isBeingEdited(priority2)) {
+      this.untouchFieldsWhenPriority2IsEdited(priority1, priority3);
+    } else if (this.isBeingEdited(priority3)) {
+      this.untouchFieldsWhenPriority3IsEdited(priority1, priority2);
+    }
+  }
+
+  private untouchFieldsWhenPriority1IsEdited(priority2:string, priority3:string) {
+    if (this.areBothTouched(priority2, priority3)) {
+      if (this.isValueEmpty(priority3) && this.isValueEmpty(priority2)) {
+        return;
+      }
+      if (this.isValueEmpty(priority3)) {
+        this.markUntouched(priority3);
+      } else {
+        this.markUntouched(priority2);
+      }
+    } else if (this.isTouchedAndEmpty(priority2) && this.isValueSet(priority3)) {
+      // force priority 2 derivation
+      this.markUntouched(priority2);
+      this.markTouched(priority3);
+    } else if (this.isTouchedAndEmpty(priority3) && this.isValueSet(priority2)) {
+      // force priority 3 derivation
+      this.markUntouched(priority3);
+      this.markTouched(priority2);
+    }
+  }
+
+  private untouchFieldsWhenPriority2IsEdited(priority1:string, priority3:string):void {
+    if (this.isTouchedAndEmpty(priority1) && this.isValueSet(priority3)) {
+      // force priority 1 derivation
+      this.markUntouched(priority1);
+      this.markTouched(priority3);
+    } else if (this.isValueSet(priority1)) {
+      this.markUntouched(priority3);
+    }
+  }
+
+  private untouchFieldsWhenPriority3IsEdited(priority1:string, priority2:string):void {
+    if (this.isValueSet(priority1)) {
+      this.markUntouched(priority2);
+    }
   }
 }
