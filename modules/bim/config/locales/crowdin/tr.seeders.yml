@@ -666,7 +666,7 @@ tr:
                 *   ...
             item_14:
               subject: Asset Management
-              description: Enjoy your building :)
+              description: Binanızın keyfini çıkarın :)
         demo-bcf-management-project:
           name: "(Demo) BCF management"
           status_explanation: All tasks are on schedule. The people involved know their tasks. The system is completely set up.

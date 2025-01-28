@@ -56,7 +56,7 @@ tr:
           nullify_is_not_valid_for_cost_entries: "Maliyet girdileri bir projeye atanamaz."
   attributes:
     comment: "Yorumlar"
-    cost_type: "Maliyet türleri"
+    cost_type: "Maliyet türü"
     costs: "Ücretler"
     current_rate: "Aktüel oran"
     hours: "Saat"
