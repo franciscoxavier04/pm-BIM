@@ -31,7 +31,7 @@
 require "spec_helper"
 
 RSpec.describe Acts::Journalized::Differ::Association do
-  describe "#attribute_changes" do
+  describe "#single_attribute_changes" do
     let(:original) do
       build(:work_package,
             custom_values: [
@@ -75,7 +75,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
     end
 
     subject(:result) do
-      instance.attribute_changes(:value, key_prefix: "custom_field")
+      instance.single_attribute_changes(:value, key_prefix: "custom_field")
     end
 
     describe "requesting all values changes joined" do
@@ -128,7 +128,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
     end
   end
 
-  describe "#attributes_changes" do
+  describe "#multiple_attributes_changes" do
     let(:original) do
       build(:journal, project_life_cycle_step_journals: [
               build_stubbed(:project_life_cycle_step_journal, life_cycle_step_id: 1, active: false),
@@ -161,7 +161,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
 
     describe "by default" do
       subject(:result) do
-        instance.attributes_changes(
+        instance.multiple_attributes_changes(
           %i[active start_date end_date],
           key_prefix: "project_life_cycle_steps"
         )
@@ -204,7 +204,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
 
     describe "grouped" do
       subject(:result) do
-        instance.attributes_changes(
+        instance.multiple_attributes_changes(
           %i[active start_date end_date],
           key_prefix: "project_life_cycle_steps",
           grouped: true

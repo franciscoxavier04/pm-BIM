@@ -254,7 +254,7 @@ class Journable::WithHistoricAttributes < SimpleDelegator
         association: :custom_values,
         id_attribute: :custom_field_id,
         all_values: :joined
-      ).attribute_changes(
+      ).single_attribute_changes(
         :value,
         key_prefix: "custom_field"
       )

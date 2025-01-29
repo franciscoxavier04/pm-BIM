@@ -63,7 +63,7 @@ module JournalChanges
       association: :attachable_journals,
       id_attribute: :attachment_id,
       all_values: :joined
-    ).attribute_changes(
+    ).single_attribute_changes(
       :filename,
       key_prefix: "attachments"
     )
@@ -88,7 +88,7 @@ module JournalChanges
       association:,
       id_attribute: :custom_field_id,
       all_values: :joined
-    ).attribute_changes(
+    ).single_attribute_changes(
       :value,
       key_prefix: "custom_fields"
     )
@@ -102,7 +102,7 @@ module JournalChanges
       self,
       association: :project_life_cycle_step_journals,
       id_attribute: :life_cycle_step_id
-    ).attributes_changes(
+    ).multiple_attributes_changes(
       %i[active date date_range],
       key_prefix: "project_life_cycle_step",
       grouped: true
@@ -127,7 +127,7 @@ module JournalChanges
       association: :agenda_item_journals,
       id_attribute: :agenda_item_id,
       all_values: :joined
-    ).attributes_changes(
+    ).multiple_attributes_changes(
       %i[title duration_in_minutes notes position work_package_id],
       key_prefix: "agenda_items"
     )

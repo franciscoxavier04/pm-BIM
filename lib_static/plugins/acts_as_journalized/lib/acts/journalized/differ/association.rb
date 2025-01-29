@@ -37,14 +37,14 @@ module Acts::Journalized::Differ
       @all_values = all_values
     end
 
-    def attribute_changes(attribute, key_prefix:)
-      single_attribute_changes(attribute)
+    def single_attribute_changes(attribute, key_prefix:)
+      attribute_changes(attribute)
         .transform_keys { |id| "#{key_prefix}_#{id}" }
     end
 
-    def attributes_changes(attributes, key_prefix:, grouped: false)
+    def multiple_attributes_changes(attributes, key_prefix:, grouped: false)
       attributes.each_with_object({}) do |attribute, result|
-        single_attribute_changes(attribute).each do |id, change|
+        attribute_changes(attribute).each do |id, change|
           if grouped
             result["#{key_prefix}_#{id}"] ||= {}
             result["#{key_prefix}_#{id}"][attribute] = change
@@ -69,7 +69,7 @@ module Acts::Journalized::Differ
       relation.group_by(&id_attribute.to_sym)
     end
 
-    def single_attribute_changes(attribute)
+    def attribute_changes(attribute)
       attribute = attribute.to_sym
 
       pairs = @ids.index_with do |id|
