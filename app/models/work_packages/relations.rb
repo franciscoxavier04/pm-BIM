@@ -87,4 +87,31 @@ module WorkPackages::Relations
              dependent: :nullify,
              inverse_of: :to
   end
+
+  def visible_relations(user = User.current)
+    # The query in here is used to improve performance by reducing the number of
+    # work packages that have to be checked for whether they are visible.
+    # Since the method looks for relations on the current work package, only work packages
+    # that are on either end of a relation with the current work package need to be considered.
+    # The number should be quite small compared to the total number of work packages.
+    relation_from_or_to = Relation
+                          .select(
+                            <<~SQL.squish
+                              CASE
+                              WHEN from_id = #{id}
+                              THEN to_id
+                              ELSE from_id
+                              END id
+                            SQL
+                          )
+                          .where("relations.from_id = :id OR relations.to_id = :id", id: id)
+                          .arel
+
+    self_id = Arel.sql("SELECT #{id} AS id")
+
+    wp_focus_scope = Arel::Nodes::UnionAll.new(relation_from_or_to, self_id)
+
+    relations
+      .visible(user, work_package_focus_scope: wp_focus_scope)
+  end
 end

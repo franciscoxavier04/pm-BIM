@@ -38,7 +38,7 @@ class WorkPackageRelationsTab::RelationsMediator
   end
 
   def visible_relations
-    @visible_relations ||= work_package.relations.includes(:to, :from).visible
+    @visible_relations ||= work_package.visible_relations.includes(:to, :from)
   end
 
   def visible_children
