@@ -67,15 +67,7 @@ module Filter
       case filter
       when Queries::Filters::Shared::ProjectFilter::Required,
            Queries::Filters::Shared::ProjectFilter::Optional
-        {
-          autocomplete_options: {
-            component: "opce-project-autocompleter",
-            resource: "projects",
-            filters: [
-              { name: "active", operator: "=", values: ["t"] }
-            ]
-          }
-        }
+        { autocomplete_options: project_autocompleter_options }
       when Queries::Filters::Shared::CustomFields::User
         { autocomplete_options: user_autocomplete_options(filter) }
       else
@@ -83,38 +75,32 @@ module Filter
       end
     end
 
+    def project_autocompleter_options
+      {
+        component: "opce-project-autocompleter",
+        resource: "projects",
+        filters: [
+          { name: "active", operator: "=", values: ["t"] }
+        ]
+      }
+    end
+
     def user_autocomplete_options(filter)
       {
         component: "opce-user-autocompleter",
         defaultData: false,
         placeholder: I18n.t(:label_user_search),
-        resource:,
+        resource: "principals",
         url: ::API::V3::Utilities::PathHelper::ApiV3Path.principals,
-        filters:,
-        searchKey: search_key,
-        inputValue: custom_input_value(filter),
+        filters: [
+          { name: "type", operator: "=", values: ["User"] },
+          { name: "status", operator: "!", values: [Principal.statuses["locked"].to_s] },
+          { name: "member", operator: "=", values: Project.visible.pluck(:id) }
+        ],
+        searchKey: "any_name_attribute",
+        inputValue: filter.values,
         focusDirectly: false
       }
-    end
-
-    def resource
-      "principals"
-    end
-
-    def search_key
-      "any_name_attribute"
-    end
-
-    def filters
-      [
-        { name: "type", operator: "=", values: ["User"] },
-        { name: "status", operator: "!", values: [Principal.statuses["locked"].to_s] },
-        { name: "member", operator: "=", values: Project.visible.pluck(:id) }
-      ]
-    end
-
-    def custom_input_value(filter)
-      filter.values
     end
   end
 end
