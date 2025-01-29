@@ -34,9 +34,9 @@ module ::TypesHelper
     tabs = [
       {
         name: "settings",
-        partial: "types/form/settings",
         path: edit_tab_type_path(id: @type.id, tab: :settings),
-        label: "types.edit.settings.tab"
+        label: "types.edit.settings.tab",
+        view_component: WorkPackages::Types::SettingsComponent
       },
       {
         name: "form_configuration",
