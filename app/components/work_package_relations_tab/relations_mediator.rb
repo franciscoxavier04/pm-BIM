@@ -46,7 +46,7 @@ class WorkPackageRelationsTab::RelationsMediator
   end
 
   def ghost_relations
-    @ghost_relations = work_package.relations.includes(:to, :from).where.not(id: @visible_relations.select(:id))
+    @ghost_relations = work_package.relations.includes(:to, :from).where.not(id: visible_relations.select(:id))
   end
 
   def ghost_children
