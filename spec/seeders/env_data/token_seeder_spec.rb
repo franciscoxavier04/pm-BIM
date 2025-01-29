@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -24,16 +26,38 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-class EnvDataSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      EnvData::CustomDesignSeeder,
-      EnvData::LdapSeeder,
-      EnvData::TokenSeeder
-    ]
+#++
+
+require "spec_helper"
+
+RSpec.describe EnvData::TokenSeeder do
+  let(:seed_data) { Source::SeedData.new({}) }
+
+  subject(:seeder) { described_class.new(seed_data) }
+
+  context "when not provided" do
+    it "does nothing" do
+      expect { seeder.seed! }.not_to change(EnterpriseToken, :count)
+    end
   end
 
-  def namespace
-    "EnvData"
+  context "when providing a seed token",
+          :settings_reset,
+          with_env: {
+            OPENPROJECT_SEED__ENTERPRISE__TOKEN: Rails.root.join("spec/fixtures/ee_tokens/v2_1_user_test_host.token").read
+          } do
+    it "seeds the token" do
+      reset(:seed_enterprise_token)
+      Setting.host_name = "test.host"
+      expect { seeder.seed! }.to change(EnterpriseToken, :count).by(1)
+    end
+
+    context "when domain mismatches" do
+      it "raises an error" do
+        reset(:seed_enterprise_token)
+        Setting.host_name = "foo.example.com"
+        expect { seeder.seed! }.to raise_error(/Validation failed: Domain is invalid./)
+      end
+    end
   end
 end

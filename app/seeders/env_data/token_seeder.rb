@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -24,16 +26,20 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-class EnvDataSeeder < CompositeSeeder
-  def data_seeder_classes
-    [
-      EnvData::CustomDesignSeeder,
-      EnvData::LdapSeeder,
-      EnvData::TokenSeeder
-    ]
-  end
+#++
+module EnvData
+  class TokenSeeder < Seeder
+    def seed_data!
+      Rails.logger.debug "*** Seeding Enterprise support token from ENV"
 
-  def namespace
-    "EnvData"
+      token = Setting.seed_enterprise_token
+      if token.present?
+        EnterpriseToken.create! encoded_token: token.gsub("\\n", "\n")
+      end
+    end
+
+    def applicable?
+      !EnterpriseToken.exists?
+    end
   end
 end
