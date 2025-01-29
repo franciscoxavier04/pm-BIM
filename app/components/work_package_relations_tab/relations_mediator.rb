@@ -50,7 +50,7 @@ class WorkPackageRelationsTab::RelationsMediator
   end
 
   def ghost_children
-    @ghost_children ||= work_package.children.where.not(id: @visible_children.select(:id))
+    @ghost_children ||= work_package.children.where.not(id: visible_children.select(:id))
   end
 
   def directionally_aware_grouped_relations
