@@ -85,6 +85,16 @@ export default class PatternInputController extends Controller {
       firstSuggestion?.focus();
       event.preventDefault();
     }
+    if (event.key === 'ArrowLeft') {
+      if (this.contentTarget.innerHTML.startsWith('<')) {
+        this.insertSpaceIfFirstCharacter();
+      }
+    }
+    if (event.key === 'ArrowRight') {
+      if (this.contentTarget.innerHTML.endsWith('>')) {
+        this.insertSpaceIfLastCharacter();
+      }
+    }
 
     // close the suggestions
     if (event.key === 'Escape' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
@@ -159,6 +169,65 @@ export default class PatternInputController extends Controller {
     }
   }
 
+  insertSpaceIfFirstCharacter() {
+    const selection = document.getSelection();
+    if (selection && selection.rangeCount) {
+      const range = selection.getRangeAt(0);
+      // create a test range
+      // select the whole content of the input
+      // then set the "end" position to the current actual selection position (the caret)
+      const testRange = document.createRange();
+      testRange.selectNodeContents(this.contentTarget);
+      testRange.setEnd(range.startContainer, range.startOffset);
+
+      // if the resulting range is empty it is at the end of the input
+      if (testRange.toString() === '') {
+        // add a space
+        const beforeToken = document.createTextNode(' ');
+        const firstContent = this.contentTarget.firstChild as HTMLElement;
+        this.contentTarget.insertBefore(beforeToken, firstContent);
+
+        this.setRealCaretPositionAtNode(beforeToken, 'before');
+      }
+    }
+  }
+
+  insertSpaceIfLastCharacter():void {
+    const selection = document.getSelection();
+    if (selection && selection.rangeCount) {
+      const range = selection.getRangeAt(0);
+      // create a test range
+      // select the whole content of the input
+      // then set the "start" position to the current actual selection position (the caret)
+      const testRange = document.createRange();
+      testRange.selectNodeContents(this.contentTarget);
+      testRange.setStart(range.endContainer, range.endOffset);
+
+      // if the resulting range is empty it is at the end of the input
+      if (testRange.toString() === '') {
+        // add a space
+        const afterToken = document.createTextNode(' ');
+        this.contentTarget.appendChild(afterToken);
+
+        this.setRealCaretPositionAtNode(afterToken);
+      }
+    }
+  }
+
+  setRealCaretPositionAtNode(target:Node, position:'before'|'after' = 'after'):void {
+    const selection = document.getSelection();
+    if (selection) {
+      const postRange = document.createRange();
+      if (position === 'after') {
+        postRange.setStartAfter(target);
+      } else {
+        postRange.setStartBefore(target);
+      }
+      selection?.removeAllRanges();
+      selection?.addRange(postRange);
+    }
+  }
+
   private insertToken(tokenElement:HTMLElement) {
     if (this.currentRange) {
       const targetNode = this.currentRange.startContainer;
@@ -176,12 +245,7 @@ export default class PatternInputController extends Controller {
       wordRange.deleteContents();
       wordRange.insertNode(tokenElement);
 
-      const postRange = document.createRange();
-      postRange.setStartAfter(tokenElement);
-
-      const selection = document.getSelection();
-      selection?.removeAllRanges();
-      selection?.addRange(postRange);
+      this.setRealCaretPositionAtNode(tokenElement);
 
       this.updateFormInputValue();
       this.setRange();
