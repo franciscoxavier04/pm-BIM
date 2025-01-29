@@ -41,10 +41,15 @@ class RecurringMeetingsController < ApplicationController
     @recurring_meeting = RecurringMeeting.new(project: @project)
   end
 
-  def show
+  def show # rubocop:disable Metrics/AbcSize
     @direction = params[:direction]
     @max_count = max_count
-    @count = [(params[:count].to_i + 5), @max_count].min
+    @count =
+      if @max_count
+        [(params[:count].to_i + 5), @max_count].min
+      else
+        params[:count].to_i + 5
+      end
 
     if @direction == "past"
       @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
@@ -226,27 +231,23 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def upcoming_meetings(count:)
-    meetings = @recurring_meeting
-      .scheduled_instances(upcoming: true)
+    instantiated = @recurring_meeting
+      .upcoming_not_cancelled_meetings
       .index_by(&:start_time)
 
-    size = 0
-    counter = count
-    while size <= 5
-      merged = @recurring_meeting
-                 .scheduled_occurrences(limit: counter)
-                 .filter_map { |start_time| scheduled_meeting(start_time) unless meetings.include?(start_time) }
+    cancelled = @recurring_meeting
+      .upcoming_cancelled_meetings
+      .index_by(&:start_time)
 
-      cancelled = meetings.select { |_, meeting| meeting.cancelled == true }
-      cancelled.each { |start_time, _| meetings.delete(start_time) }
+    scheduled = @recurring_meeting
+               .scheduled_occurrences(limit: count + instantiated.count)
+               .reject { |start_time| instantiated.include?(start_time) }
+               .map { |start_time| cancelled[start_time] || scheduled_meeting(start_time) }
+               .first(count)
 
-      merged.concat(cancelled.values)
+    # binding.pry
 
-      counter += cancelled.blank? ? 1 : cancelled.count
-      size = merged.count
-    end
-
-    [meetings.values.sort_by(&:start_time), merged.sort_by(&:start_time).first(count)]
+    [instantiated.values.sort_by(&:start_time), scheduled]
   end
 
   def scheduled_meeting(start_time)

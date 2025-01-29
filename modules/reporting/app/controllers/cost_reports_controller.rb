@@ -174,7 +174,7 @@ class CostReportsController < ApplicationController
   # Update a record with new query parameters and save it. Redirects to the
   # specified record or renders the updated table on XHR
   def update
-    if set_filter? # save
+    if save_query? # save
       old_query = @query
       prepare_query
       if old_query
@@ -182,6 +182,8 @@ class CostReportsController < ApplicationController
         old_query.save!
         @query = old_query
       end
+    elsif set_filter? # apply
+      prepare_query
     end
     if request.xhr?
       table
@@ -465,6 +467,12 @@ class CostReportsController < ApplicationController
   # FIXME: rename to set_query?
   def set_filter?
     params[:set_filter].to_i == 1
+  end
+
+  ##
+  # Determines if the request contains a query to save
+  def save_query?
+    params[:save_query].to_i == 1
   end
 
   ##

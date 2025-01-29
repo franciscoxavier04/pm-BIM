@@ -257,11 +257,13 @@ module Pages::StructuredMeeting
     end
 
     def add_section(&)
-      page.within("#meeting-agenda-items-new-button-component") do
-        click_on I18n.t(:button_add)
-        click_on "Section"
-        # wait for the disabled button, indicating the turbo streams are applied
-        expect(page).to have_css("#meeting-agenda-items-new-button-component button[disabled='disabled']")
+      retry_block do
+        page.within("#meeting-agenda-items-new-button-component") do
+          click_on I18n.t(:button_add)
+          click_on "Section"
+          # wait for the disabled button, indicating the turbo streams are applied
+          expect(page).to have_css("#meeting-agenda-items-new-button-component button[disabled='disabled']")
+        end
       end
 
       in_latest_section_form(&)

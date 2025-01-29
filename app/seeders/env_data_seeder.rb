@@ -27,8 +27,9 @@
 class EnvDataSeeder < CompositeSeeder
   def data_seeder_classes
     [
+      EnvData::CustomDesignSeeder,
       EnvData::LdapSeeder,
-      EnvData::CustomDesignSeeder
+      EnvData::TokenSeeder
     ]
   end
 
