@@ -28,45 +28,12 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Enumerations
-  class TableComponent < ::TableComponent
-    attr_reader :enumeration
-
-    def initialize(enumeration:, rows: [], **)
-      super(rows: rows, **)
-      @enumeration = enumeration
-    end
-
-    def columns
-      headers.map(&:first)
-    end
-
-    def sortable?
-      false
-    end
-
-    def headers
-      @headers ||= [
-        ["name", { caption: Enumeration.human_attribute_name(:name) }],
-        enumeration.can_have_default_value? ? ["is_default", { caption: Enumeration.human_attribute_name(:is_default) }] : nil,
-        ["active", { caption: Enumeration.human_attribute_name(:active) }],
-        with_colors ? ["color", { caption: Enumeration.human_attribute_name(:color) }] : nil,
-        ["sort", { caption: I18n.t(:label_sort) }]
-      ].compact
-    end
-
-    def with_colors
-      rows.colored?
-    end
-
-    def inline_create_link
-      link_to new_enumeration_path(type: rows.name),
-              aria: { label: t(:label_enumeration_new) },
-              class: "wp-inline-create--add-link",
-              data: { "test-selector": "create-enumeration-#{rows.name.underscore.dasherize}" },
-              title: t(:label_enumeration_new) do
-        helpers.op_icon("icon icon-add")
-      end
-    end
+class RemoveIsDefaultForTimeEntryActivities < ActiveRecord::Migration[7.1]
+  def up
+    execute <<~SQL.squish
+      UPDATE "enumerations"
+      SET "is_default" = false
+      WHERE "type" = 'TimeEntryActivity'
+    SQL
   end
 end
