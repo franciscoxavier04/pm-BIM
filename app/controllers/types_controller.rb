@@ -135,7 +135,7 @@ class TypesController < ApplicationController
 
   def redirect_to_type_tab_path(type, notice)
     tab = params["tab"] || "settings"
-    redirect_to(edit_tab_type_path(type, tab:), notice:)
+    redirect_to(edit_tab_type_path(type, tab:), notice:, status: :see_other)
   end
 
   def render_edit_tab(type, status: :ok)
