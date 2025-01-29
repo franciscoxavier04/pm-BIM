@@ -908,6 +908,30 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
             activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
 
             activity_tab.expect_activity_anchor_link(text: format_time(comment_1.updated_at))
+
+            activity_tab.filter_journals(:only_changes)
+
+            activity_tab.expect_activity_anchor_link(text: format_time(comment_1.updated_at))
+          end
+        end
+
+        context "when on mobile screen size", with_flag: { work_package_comment_id_url: true } do
+          before do
+            page.current_window.resize_to(500, 1000)
+
+            visit project_work_package_path(project, work_package.id, "activity", anchor: "comment-#{comment_1.id}")
+            wp_page.wait_for_activity_tab
+          end
+
+          it "scrolls to the comment specified in the URL", :aggregate_failures do
+            wait_for_auto_scrolling_to_finish
+            activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
+
+            activity_tab.expect_activity_anchor_link(text: format_time(comment_1.updated_at))
+
+            activity_tab.filter_journals(:only_changes)
+
+            activity_tab.expect_activity_anchor_link(text: format_time(comment_1.updated_at))
           end
         end
       end
