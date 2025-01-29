@@ -219,7 +219,7 @@ RSpec.describe "Notification center",
                read_ian: true)
       end
 
-      it "opens a toaster if the notification is part of the current filters" do
+      it "auto updates the center when a new notification is created" do
         visit home_path
         center.open
         center.expect_bell_count 2
@@ -227,25 +227,10 @@ RSpec.describe "Notification center",
         center.expect_work_package_item notification2
         center.expect_no_toaster
         notification3.update(read_ian: false)
-        center.expect_toast
-        center.update_via_toaster
         center.expect_no_toaster
         center.expect_work_package_item notification
         center.expect_work_package_item notification2
         center.expect_work_package_item notification3
-      end
-
-      it "does not open a toaster if the notification is not part of the current filters" do
-        visit home_path
-        center.open
-        center.expect_bell_count 2
-        side_menu.click_item "Mentioned"
-        side_menu.finished_loading
-        center.expect_no_toaster
-        notification3.update(read_ian: false)
-        # We need to wait for the bell to poll for updates
-        sleep 15
-        center.expect_no_toaster
       end
     end
 

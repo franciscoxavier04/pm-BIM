@@ -228,6 +228,9 @@ hu:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -1572,8 +1575,9 @@ hu:
   button_copy_and_follow: "Másol és folytat"
   button_create: "Létrehoz"
   button_create_and_continue: "Létrehoz és folytat"
-  button_delete: "Törlés"
   button_decline: "Elutasít"
+  button_delete: "Törlés"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Megfigyelő törlése %{name}"
   button_download: "Letöltés"
   button_duplicate: "Másolás ide"
@@ -3716,6 +3720,7 @@ hu:
   text_notice_security_badge_displayed_html: >
     Megjegyzés: ha engedélyezve van, akkor a telepítési állapotot jelző jelvény jelenik meg a <a href="%{information_panel_path}">%{information_panel_label} </a> adminisztrációs panelen és a kezdőlapon. Csak a rendszergazdák számára jelenik meg. <br/> A jelvény ellenőrzi az aktuális OpenProject verziót a hivatalos OpenProject kiadási adatbázishoz képest, hogy figyelmeztesse Önt minden frissítésre vagy ismert biztonsági résre. Ha többet szeretne megtudni arról, hogy mit tartalmaz az ellenőrzés, milyen adatokra van szükség az elérhető frissítésekhez, és hogyan tilthatja le ezt az ellenőrzést, keresse fel a <a href="%{more_info_url}"> konfigurációs dokumentációt </a>.
   text_own_membership_delete_confirmation: "Értesítem arról, hogy eltávolít néhány vagy az összes jogosultságot, és ezt követően már nem lehet szerkeszteni ezt a projektet. Biztosan folytatni kívánja?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Plugin eszközök könyvtára írható"
   text_powered_by: "Készítette %{link}"
   text_project_identifier_info: "Csak kisbetű (a-z), számok, kötőjelek és aláhúzásjelek van engedélyezve, és kisbetűvel kell kezdődnie."

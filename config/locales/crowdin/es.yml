@@ -226,6 +226,9 @@ es:
           item:
             title: Este elemento no tiene ningún nivel de jerarquía inferior
             description: Añada elementos a esta lista para crear subelementos dentro de otra
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Etiqueta del elemento"
           short: "Nombre corto"
@@ -1571,8 +1574,9 @@ es:
   button_copy_and_follow: "Copiar y seguir"
   button_create: "Crear"
   button_create_and_continue: "Crear y continuar"
-  button_delete: "Borrar"
   button_decline: "Declinar"
+  button_delete: "Borrar"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Eliminar observador %{name}"
   button_download: "Descargar"
   button_duplicate: "Duplicar"
@@ -3715,6 +3719,7 @@ es:
   text_notice_security_badge_displayed_html: >
     Nota: al activarse, se mostrará una insignia con el estado de instalación en el <a href="%{information_panel_path}">%{information_panel_label}</a> panel de administración, y en la página principal. Solamente será visible para administradores. <br/> La insignia comprobará tu versión actual de OpenProject comparada con la base de datos oficial de OpenProject para alertarte de cualquier actualización o vulnerabilidad. Para más información sobre las funciones de la comprobación, los datos necesarios para conseguir actualizaciones disponibles, o para desactivar esta comprobación, por favor visita <a href="%{more_info_url}">la documentación de configuración</a>.
   text_own_membership_delete_confirmation: "Estás a punto de eliminar algunos o todos tus permisos, y podrías no poder volver a editar este proyecto.\n¿Estás seguro/a de que quieres continuar?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Directorio de extensiones activos escribible"
   text_powered_by: "Con tecnología de %{link}"
   text_project_identifier_info: "Se permiten sólo letras minúsculas (a-z), números, guiones y guiones bajos, debe comenzar con una letra minúscula."

@@ -227,6 +227,9 @@ ja:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -1551,8 +1554,9 @@ ja:
   button_copy_and_follow: "コピー後表示"
   button_create: "作成"
   button_create_and_continue: "連続作成"
-  button_delete: "削除"
   button_decline: "同意しない"
+  button_delete: "削除"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "ウォッチャー「%{name}」を削除"
   button_download: "ダウンロード"
   button_duplicate: "複製"
@@ -3675,6 +3679,7 @@ ja:
   text_notice_security_badge_displayed_html: >
     602/5000 注：有効にすると、<a href="%{information_panel_path}">%{information_panel_label}</a>管理パネルとホームページに、インストールステータスのバッジが表示されます。 管理者のみに表示されます。 <br/>バッジは、最新のOpenProjectバージョンを公式のOpenProjectリリースデータベースと照合して、アップデートや既知の脆弱性について警告します。 チェックの内容、利用可能なアップデートを提供するために必要なデータ、およびこのチェックを無効にする方法の詳細については、<a href="%{more_info_url}">設定ドキュメント</a>をご覧ください。
   text_own_membership_delete_confirmation: "一部またはすべての権限を自分自身から剥奪しようとしているため、このプロジェクトを編集できなくなる可能性があります。\n本当に続けますか？"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "プラグインの「assets」ディレクトリが書き込み可能"
   text_powered_by: "Powered by %{link}"
   text_project_identifier_info: "アルファベット小文字(a-z)・数字・ハイフン・アンダースコアが使えます。アルファベット小文字で始まる必要があります。"

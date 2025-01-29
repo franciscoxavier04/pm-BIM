@@ -70,9 +70,6 @@ import {
 import {
   WorkPackageAutocompleterComponent,
 } from 'core-app/shared/components/autocompleter/work-package-autocompleter/wp-autocompleter.component';
-import {
-  WorkPackageCommentFieldComponent,
-} from 'core-app/features/work-packages/components/work-package-comment/wp-comment-field.component';
 import { ProjectEditFieldComponent } from './field-types/project-edit-field.component';
 import {
   HoursDurationEditFieldComponent,
@@ -114,8 +111,7 @@ export function initializeCoreEditFields(editFieldService:EditFieldService, sele
       .addFieldType(WorkPackageEditFieldComponent, 'workPackage', ['WorkPackage'])
       .addFieldType(BooleanEditFieldComponent, 'boolean', ['Boolean'])
       .addFieldType(DateEditFieldComponent, 'date', ['Date'])
-      .addFieldType(FormattableEditFieldComponent, 'wiki-textarea', ['Formattable'])
-      .addFieldType(WorkPackageCommentFieldComponent, '_comment', ['comment']);
+      .addFieldType(FormattableEditFieldComponent, 'wiki-textarea', ['Formattable']);
 
     editFieldService
       .addSpecificFieldType(

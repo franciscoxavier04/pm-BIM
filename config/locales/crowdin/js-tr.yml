@@ -31,10 +31,10 @@ tr:
         Bu dosyayı silmek istiyor musunuz? Bu işlem geri alınamaz.
       draggable_hint: |
         Editör alanında, satır içi görüntüye veya referans ekine sürükleyin. Sürüklemeye devam ederken kapalı editör alanları açılacaktır.
-      quarantined_hint: "The file is quarantined, as a virus was found. It is not available for download."
+      quarantined_hint: "Dosya, bir virüs bulunduğu için karantinaya alındı. İndirmek için kullanılamaz."
     autocomplete_ng_select:
-      add_tag: "Add item"
-      clear_all: "Clear all"
+      add_tag: "Öge ekle"
+      clear_all: "Tümünü temizle"
       loading: "Yükleniyor..."
       not_found: "Hiçbir öge bulunamadı"
       type_to_search: "Aramak için metni yazın"
@@ -105,7 +105,7 @@ tr:
     button_update: "Güncelleştirme"
     button_export-pdf: "PDF indir"
     button_export-atom: "Atom indir"
-    button_generate_pdf: "Generate PDF"
+    button_generate_pdf: "PDF oluştur"
     button_create: "Oluştur"
     card:
       add_new: "Yeni kart ekleyin"
@@ -115,7 +115,7 @@ tr:
       remove_from_list: "Kartı listeden çıkar"
     caption_rate_history: "Ücret geçmişi"
     clipboard:
-      browser_error: "Your browser doesn't support copying to clipboard. Please copy it manually: %{content}"
+      browser_error: "Tarayıcınız panoya kopyalamayı desteklemiyor. Lütfen elle kopyalayın: %{content}"
       copied_successful: "Panoya başarıyla kopyalandı!"
     chart:
       type: "Grafik tipi"
@@ -139,8 +139,8 @@ tr:
     description_select_work_package: "#%{id} nolu iş paketini seçin"
     description_subwork_package: "#%{id} nolu iş paketinin alt parçası"
     editor:
-      revisions: "Show local modifications"
-      no_revisions: "No local modifications found"
+      revisions: "Yerel değişiklikleri göster"
+      no_revisions: "Yerel değişiklik bulunamadı"
       preview: "Önizleme modunu aç/kapat"
       source_code: "Markdown kaynak modunu değiştir"
       error_saving_failed: "Aşağıdaki nedenden dolayı belge kayıt edilemedi: %{error}"
@@ -361,14 +361,14 @@ tr:
               new_features_html: >
                 Sürüm sizin için çeşitli özellikler ve iyileştirmeler getiriyor, örneğin <br> <ul class="%{list_styling_class}"> <li>Tarih uyarısı bildirimleri oluşturmak için iş paketleri için hatırlatıcılar ayarlayın.</li> <li>Dosya depolama için doğrudan konum seçiciden yeni klasörler oluşturun.</li> <li>İş paketleri ardılları ve öncülleri arasında gerekli bir gecikme belirtin.</li> <li>Özel alan türü hiyerarşisinin değerlerine göre iş paketleri için sıralama ve gruplamayı etkinleştirin.</li> <li>Zaman girişlerini PDF zaman çizelgeleri olarak dışa aktarın.</li> <li>Üzerine gelindiğinde kullanıcı bilgilerini görüntüleyen bir açılır pencere ekleyin.</li> </ul>
     ical_sharing_modal:
-      title: "Subscribe to calendar"
+      title: "Takvime abone ol"
       inital_setup_error_message: "An error occured while fetching data."
       description: "You can use the URL (iCalendar) to subscribe to this calendar in an external client and view up-to-date work package information from there."
       warning: "Please don't share this URL with other users. Anyone with this link will be able to view work package details without an account or password."
-      token_name_label: "Where will you be using this?"
-      token_name_placeholder: 'Type a name, e.g. "Phone"'
+      token_name_label: "Bunu nerede kullanacaksınız?"
+      token_name_placeholder: 'Bir ad yazın, örneğin "Telefon"'
       token_name_description_text: 'If you subscribe to this calendar from multiple devices, this name will help you distinguish between them in your <a href="my/access_token", target="_blank">access tokens</a> list.'
-      copy_url_label: "Copy URL"
+      copy_url_label: "Adresi kopyala"
       ical_generation_error_text: "An error occured while generating the calendar URL."
       success_message: 'The URL "%{name}" was successfully copied to your clipboard. Paste it in your calendar client to complete the subscription.'
     label_activate: "Etkinleştir"
@@ -400,7 +400,7 @@ tr:
     label_create: "Oluştur"
     label_create_work_package: "Yeni iş paketi oluştur"
     label_created_by: "Oluşturan"
-    label_current: "current"
+    label_current: "mevcut"
     label_date: "Tarih"
     label_date_with_format: "Aşağıdaki biçimi kullanarak %{date_attribute} girin: %{format}"
     label_deactivate: "Etkisizleştir"
@@ -454,7 +454,7 @@ tr:
     label_less_than_ago: "bir haftadan kısa bir süre önce"
     label_loading: "Yükleniyor..."
     label_mail_notification: "E-posta bildirimleri"
-    label_manage_columns: "Manage and reorder columns"
+    label_manage_columns: "Sütunları yeniden sırala ve yönet"
     label_me: "ben"
     label_meeting_agenda: "Ajanda"
     label_meeting_minutes: "Dakika"
@@ -493,7 +493,7 @@ tr:
     label_report: "Rapor (bildiri)"
     label_repository_plural: "Depolar"
     label_save_as: "Farklı Kaydet"
-    label_search_columns: "Search a column"
+    label_search_columns: "Bir sütunda arama yap"
     label_select_project: "Bir proje seçin"
     label_select_watcher: "Takipçi seç..."
     label_selected_filter_list: "Seçilen filtreler"
@@ -533,7 +533,7 @@ tr:
     label_watcher_added_successfully: "Takipçi başarıyla eklendi!"
     label_watcher_deleted_successfully: "Takipçi başarıyla silindi!"
     label_work_package_details_you_are_here: "You are on the %{tab} tab for %{type} %{subject}."
-    label_work_package_context_menu: "Work package context menu"
+    label_work_package_context_menu: "İş paketi bağlam menüsü"
     label_unwatch: "İzleme"
     label_unwatch_work_package: "İş pakaketini izlemeyi bırak"
     label_uploaded_by: "Yükleyen"
@@ -617,10 +617,10 @@ tr:
         scheduled: "Zamanlandı"
         commented: "Yorumlandı"
         processed: "İşlendi"
-        prioritized: "Prioritized"
+        prioritized: "Öncelikli"
         dateAlert: "Tarih uyarısı"
-        shared: "Shared"
-        reminder: "Reminder"
+        shared: "Paylaşılan"
+        reminder: "Hatırlatma"
       date_alerts:
         milestone_date: "Kilometre taşı tarihi"
         overdue: "Süresi geçmiş"
@@ -645,14 +645,14 @@ tr:
         text_update_date_by: "%{date} by"
         total_count_warning: "En yeni %{newest_count} bildirim gösteriliyor. %{more_count} tane daha görüntülenmiyor."
         empty_state:
-          no_notification: "Looks like you are all caught up."
-          no_notification_with_current_project_filter: "Looks like you are all caught up with the selected project."
-          no_notification_with_current_filter: "Looks like you are all caught up for %{filter} filter."
+          no_notification: "Görünüşe göre yapacağınız bir şey kalmadı."
+          no_notification_with_current_project_filter: "Görünüşe göre seçili proje için yapacağınız bir şey kalmadı."
+          no_notification_with_current_filter: "Görünüşe göre %{filter} filtresi için yapacağınız bir şey kalmadı."
           no_notification_for_filter: "Looks like you are all caught up for this filter."
           no_selection: "Tüm etkinlik ayrıntılarını görüntülemek için bir bildirime tıklayın."
         new_notifications:
           message: "Yeni bildirimler var"
-          link_text: "Click here to load them."
+          link_text: "Yüklemek için buraya tıklayın."
       reminders:
         note: "Note: “%{note}”"
       settings:
@@ -780,11 +780,11 @@ tr:
       tracking: "Zaman takibi"
       stop: "Dur"
     timer:
-      start_new_timer: "Start new timer"
-      timer_already_running: "To start a new timer, you must first stop the current timer:"
-      timer_already_stopped: "No active timer for this work package, have you stopped it in another window?"
+      start_new_timer: "Yeni zamanlayıcı başlat"
+      timer_already_running: "Yeni bir zamanlayıcı başlatmak için önce mevcut zamanlayıcıyı durdurmanız gerekir:"
+      timer_already_stopped: "Bu iş paketi için aktif zamanlayıcı yok, başka bir pencerede durdurdunuz mu?"
       tracking_time: "Tracking time"
-      button_stop: "Stop current timer"
+      button_stop: "Geçerli zamanlayıcıyı durdur"
     two_factor_authentication:
       label_two_factor_authentication: "İki faktörlü kimlik doğrulama"
     watchers:
@@ -888,7 +888,7 @@ tr:
       share: "Paylaş"
       selected_count: "%{count} selected"
       selection:
-        mixed: "Mixed"
+        mixed: "Karışık"
     work_packages:
       bulk_actions:
         move: "Projenin toplu değişimi"
@@ -975,7 +975,7 @@ tr:
         description: "Açıklama"
         date: "Tarih"
         percentComplete: "% Tamamlandı"
-        percentCompleteAlternative: "Progress"
+        percentCompleteAlternative: "İlerleme"
         dueDate: "Bitiş tarihi"
         duration: "Süre"
         spentTime: "Harcanan zaman"
@@ -995,11 +995,11 @@ tr:
         updatedAt: "Güncelleme tarihi"
         versionName: "Sürüm"
         version: "Sürüm"
-        work: "Work"
+        work: "Çalışma"
         workAlternative: "Tahmini süre"
         remainingTime: "Kalan çalışma"
       default_queries:
-        manually_sorted: "New manually sorted query"
+        manually_sorted: "Elle sıralanmış yeni sorgu"
         latest_activity: "En son etkinlik"
         created_by_me: "Benim oluşturduklarım"
         assigned_to_me: "Bana atananlar"
@@ -1028,7 +1028,7 @@ tr:
         move_column_left: "Sütunu sola taşı"
         move_column_right: "Sütunu sağa taşı"
         hide_column: "Sütunu gizle"
-        insert_columns: "Insert columns"
+        insert_columns: "Sütun ekle"
         filters: "Filtreler"
         display_sums: "Toplamları görüntüle"
         confirm_edit_cancel: "Bu görünümün adını düzenlemeyi iptal etmek istediğinizden emin misiniz? Başlık önceki değere ayarlanacaktır."
@@ -1043,19 +1043,19 @@ tr:
           duplicate_query_title: "Bu isimde bir görünüm var. Yinede devam edilsin mi?"
         text_no_results: "Eşleşen görünüm bulunamadı."
       reminders:
-        button_label: "Set reminder"
+        button_label: "Hatırlatma ayarla"
         title:
-          new: "Set reminder"
-          edit: "Edit reminder"
-        subtitle: "You will receive a notification for this work package at the chosen time."
+          new: "Hatırlatma ayarla"
+          edit: "Hatırlatma düzenle"
+        subtitle: "Seçilen zamanda bu iş paketi için bir bildirim alacaksınız."
       scheduling:
         is_parent: "Bu çalışma paketinin tarihleri otomatik olarak çocuklarından çıkarılır. Tarihleri ayarlamak için 'Manuel zamanlama'yı etkinleştirin."
         is_switched_from_manual_to_automatic: "Bu çalışma paketinin tarihlerinin, diğer çalışma paketleriyle olan ilişkiler nedeniyle manuelden otomatik zamanlamaya geçtikten sonra yeniden hesaplanması gerekebilir."
       sharing:
-        title: "Share work package"
+        title: "İş paketini paylaş"
         show_all_users: "İş paketinin paylaşıldığı tüm kullanıcıları gösterin"
         upsale:
-          description: "Share work packages with users who are not members of the project."
+          description: "İş paketlerini proje üyesi olmayan kullanıcılarla paylaşın."
       table:
         configure_button: "İş paketi tablosunu kopyala"
         summary: "İş paketi satır tabloları ve iş paketi nitelik sütunları."
@@ -1120,7 +1120,7 @@ tr:
         save_as: "Farklı Kaydet"
         export: "Dışarı aktar"
         visibility_settings: "Görünürlük ayarları"
-        share_calendar: "Subscribe to calendar"
+        share_calendar: "Takvime abone ol"
         page_settings: "Görünümü yeniden isimlendir"
         delete: "Sil"
       filter: "Filtre"
@@ -1193,8 +1193,8 @@ tr:
         other: "%{count} gün"
         zero: "0 gün"
       word:
-        one: "1 word"
-        other: "%{count} words"
+        one: "1 kelime"
+        other: "%{count} kelime"
     zen_mode:
       button_activate: "Zen modunu etkinleştir"
       button_deactivate: "Zen modunu devre dışı bırak"
@@ -1203,7 +1203,7 @@ tr:
       close_search: "Aramayı kapat"
       current_project_and_all_descendants: "Bu projede + alt projelerde"
       current_project: "Bu projede"
-      recently_viewed: "Recently viewed"
+      recently_viewed: "Son görüntülenenler"
       search: "Ara"
       title:
         all_projects: "tüm projeler"
@@ -1326,8 +1326,8 @@ tr:
       legends:
         changes_since: "Changes since"
         changes_between: "Changes between"
-        now_meets_filter_criteria: "Now meets filter criteria"
-        no_longer_meets_filter_criteria: "No longer meets filter criteria"
+        now_meets_filter_criteria: "Şimdi filtre kriterlerini karşılıyor"
+        no_longer_meets_filter_criteria: "Artık filtre kriterlerini karşılamıyor"
         maintained_with_changes: "Maintained with changes"
         in_your_timezone: "In your local timezone:"
       icon_tooltip:
@@ -1349,5 +1349,5 @@ tr:
       waiting_title:
         timeout: "Zaman Aşımı"
       waiting_subtitle:
-        network_off: "There is a network problem."
-        network_on: "Network is back. We are trying."
+        network_off: "Bir ağ sorunu var."
+        network_on: "Ağ geri döndü. Deniyoruz."

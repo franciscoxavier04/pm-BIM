@@ -67,8 +67,9 @@ class RecurringMeeting < ApplicationRecord
 
   enum end_after: {
     specific_date: 0,
-    iterations: 1
-  }.freeze, _prefix: true, _default: "specific_date"
+    iterations: 1,
+    never: 3
+  }.freeze, _prefix: true, _default: "never"
 
   has_many :meetings,
            inverse_of: :recurring_meeting,
@@ -139,10 +140,16 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def full_schedule_in_words
-    I18n.t("recurring_meeting.in_words.full",
-           base: base_schedule,
-           time: format_time(start_time, include_date: false),
-           end_date: format_date(last_occurrence))
+    if end_after_never?
+      I18n.t("recurring_meeting.in_words.never_ending",
+             base: base_schedule,
+             time: format_time(start_time, include_date: false))
+    else
+      I18n.t("recurring_meeting.in_words.full",
+             base: base_schedule,
+             time: format_time(start_time, include_date: false),
+             end_date: format_date(last_occurrence))
+    end
   end
 
   def human_frequency_schedule
@@ -168,9 +175,10 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def remaining_occurrences
-    if end_after_specific_date?
+    case end_after
+    when "specific_date"
       schedule.occurrences_between(Time.current, modified_end_date)
-    else
+    when "iterations"
       schedule.remaining_occurrences(Time.current)
     end
   end
@@ -234,10 +242,13 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def count_rule(rule)
-    if end_after_iterations?
+    case end_after
+    when "specific_date"
+      rule.until(modified_end_date.to_time(:utc))
+    when "iterations"
       rule.count(iterations)
     else
-      rule.until(modified_end_date.to_time(:utc))
+      rule
     end
   end
 

@@ -207,4 +207,19 @@ RSpec.describe RecurringMeeting,
       end
     end
   end
+
+  describe "never ending meeting" do
+    subject do
+      build(:recurring_meeting,
+            start_time: Time.zone.tomorrow + 10.hours,
+            frequency: "daily",
+            end_after: "never")
+    end
+
+    it "schedules daily", :aggregate_failures do
+      expect(subject.first_occurrence).to eq Time.zone.tomorrow + 10.hours
+      expect(subject.remaining_occurrences).to be_nil
+      expect { subject.last_occurrence }.to raise_error(ArgumentError)
+    end
+  end
 end

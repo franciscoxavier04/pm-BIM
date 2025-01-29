@@ -493,10 +493,10 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
         return NEVER;
       }),
-      tap(
-        () => this.loading$.next(false),
-        () => this.loading$.next(false),
-      ),
+      tap({
+        next: () => this.loading$.next(false),
+        error: () => this.loading$.next(false),
+      }),
     );
   }
 

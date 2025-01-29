@@ -6,6 +6,7 @@ import { of, map } from 'rxjs';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { OpAutocompleterComponent } from './op-autocompleter.component';
+import { TOpAutocompleterResource } from './typings';
 import { By } from '@angular/platform-browser';
 
 describe('autocompleter', () => {

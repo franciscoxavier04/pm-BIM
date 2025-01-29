@@ -22,7 +22,7 @@ tr:
         signature_method: Signature algorithm
         digest_method: Digest algorithm
         format: "Format"
-        icon: "Custom icon"
+        icon: "Özel simge"
   activerecord:
     errors:
       models:
@@ -142,7 +142,7 @@ tr:
       want_assertions_encrypted: >
         If enabled, require the identity provider to encrypt the assertion response using the certificate pair that you provide.
       certificate: >
-        Enter the X509 PEM-formatted certificate used by OpenProject for signing SAML requests.
+        OpenProject tarafından SAML isteklerini imzalamak için kullanılacak X509 PEM biçimli sertifikayı girin.
       private_key: >
         Enter the X509 PEM-formatted private key for the above certificate. This needs to be an RSA private key.
       signature_method: >
