@@ -10,7 +10,7 @@ class RecurringMeetingsController < ApplicationController
 
   before_action :find_meeting,
                 only: %i[show update details_dialog destroy edit init
-                         delete_scheduled template_completed download_ics notify]
+                         delete_scheduled template_completed download_ics notify end_series end_series_dialog]
   before_action :find_optional_project,
                 only: %i[index show new create update details_dialog destroy edit delete_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
@@ -137,6 +137,23 @@ class RecurringMeetingsController < ApplicationController
         end
       end
     end
+  end
+
+  def end_series_dialog
+    respond_with_dialog RecurringMeetings::EndSeriesDialogComponent.new(@recurring_meeting)
+  end
+
+  def end_series
+    call = ::RecurringMeetings::UpdateService
+      .new(model: @recurring_meeting, user: current_user)
+      .call(end_after: "specific_date", end_date: Time.zone.today)
+
+    if call.success?
+      @recurring_meeting.scheduled_meetings.upcoming.destroy_all
+    else
+      flash[:error] = call.message
+    end
+    redirect_to action: :show
   end
 
   def destroy

@@ -35,7 +35,7 @@
             },
             'aria-label': t(:label_recurring_meeting_series_edit),
             test_selector: "edit-meeting-details-button",
-            ) do |item|
+          ) do |item|
             item.with_leading_visual_icon(icon: :pencil)
           end
 
@@ -53,6 +53,17 @@
           ) do |item|
             item.with_leading_visual_icon(icon: :mail)
           end
+
+          menu.with_item(
+            label: t(:label_recurring_meeting_series_end),
+            href: end_series_dialog_recurring_meeting_path(@meeting),
+            tag: :a,
+            content_arguments: {
+              data: { controller: 'async-dialog' },
+            }
+          ) do |item|
+            item.with_leading_visual_icon(icon: :"x-circle")
+          end if @meeting.start_time.to_date <= Time.zone.today
 
           menu.with_item(
             label: I18n.t(:label_recurring_meeting_series_delete),

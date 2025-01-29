@@ -155,6 +155,8 @@ en:
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_confirm: "End series"
   label_my_meetings: "My meetings"
   label_all_meetings: "All meetings"
   label_upcoming_meetings: "Upcoming meetings"
@@ -293,6 +295,8 @@ en:
   text_duration_in_hours: "Duration in hours"
   text_in_hours: "in hours"
   text_meeting_agenda_for_meeting: 'agenda for the meeting "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Are you sure you want to close the meeting agenda?"
   text_meeting_agenda_open_are_you_sure: "This will overwrite all changes in the minutes! Do you want to continue?"
   text_meeting_minutes_for_meeting: 'minutes for the meeting "%{meeting}"'
