@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,14 +28,51 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Widget::Controls::Save < Widget::Controls
-  def render
-    return "" if @subject.new_record? or !@options[:can_save]
+require "spec_helper"
+require_relative "support/pages/cost_report_page"
 
-    write link_to(I18n.t(:button_save),
-                  "#",
-                  id: "query-breadcrumb-save",
-                  class: "button icon-context icon-save",
-                  "data-target": url_for(action: :update, id: @subject.id, set_filter: "1", save_query: "1"))
+RSpec.describe "Cost report page apply", :js do
+  let(:project) { create(:project) }
+  let(:user) { create(:admin) }
+  let(:report_page) { Pages::CostReportPage.new project }
+
+  before do
+    login_as user
+    visit cost_reports_path(project)
+    report_page.save as: "Testreport"
+  end
+
+  def clear_project_filter
+    within "#filter_project_id" do
+      find(".filter_rem").click
+    end
+  end
+
+  def reload_page
+    page.refresh
+    wait_for_reload
+  end
+
+  it "applying does not save a report" do
+    # we load our report
+    click_on "Testreport"
+
+    # we have project filter
+    expect(page).to have_css("#filter_project_id")
+
+    # we remove it
+    clear_project_filter
+
+    # must be gone
+    expect(page).to have_no_css("#filter_project_id")
+
+    # press Apply
+    report_page.apply
+
+    # reload report
+    click_on "Testreport"
+
+    # must be present
+    expect(page).to have_css("#filter_project_id")
   end
 end
