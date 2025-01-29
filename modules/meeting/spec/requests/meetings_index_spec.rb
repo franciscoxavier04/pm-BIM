@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -108,11 +110,11 @@ RSpec.describe "Meeting index",
            with_settings: { start_of_week: 1 } do
     it "sorts upcoming meetings into buckets" do
       expect(subject).to have_http_status(:ok)
-      content = page.find("#content")
+      content = page.find_by_id("content")
       expect(content).to have_text "Tomorrow"
       expect(content).to have_text "Later this week"
       expect(content).to have_text "Next week and later"
-      expect(content).not_to have_text "an earlier meeting"
+      expect(content).to have_no_text "an earlier meeting"
 
       today = page.find("[data-test-selector='meetings-table-today']")
       expect(today).to have_text "meeting starting soon"
@@ -136,13 +138,13 @@ RSpec.describe "Meeting index",
 
       it "shows only the matching bucket" do
         expect(subject).to have_http_status(:ok)
-        content = page.find("#content")
+        content = page.find_by_id("content")
         expect(content).to have_text "Tomorrow"
         expect(content).to have_text "Later this week"
         expect(content).to have_text "Next week and later"
-        expect(content).not_to have_text "Today"
+        expect(content).to have_no_text "Today"
 
-        expect(page).not_to have_css("#meetings-table-today")
+        expect(page).to have_no_css("#meetings-table-today")
 
         tomorrow = page.find("[data-test-selector='meetings-table-tomorrow']")
         expect(tomorrow).to have_text "meeting starting tomorrow"
@@ -163,12 +165,12 @@ RSpec.describe "Meeting index",
     it "sorts upcoming meetings into buckets" do
       expect(subject).to have_http_status(:ok)
 
-      content = page.find("#content")
+      content = page.find_by_id("content")
       expect(content).to have_text "Today"
       expect(content).to have_text "Tomorrow"
       expect(content).to have_text "Later this week"
       expect(content).to have_text "Next week and later"
-      expect(content).not_to have_text "an earlier meeting"
+      expect(content).to have_no_text "an earlier meeting"
 
       today = page.find("[data-test-selector='meetings-table-today']")
       expect(today).to have_text "meeting starting soon"
@@ -191,11 +193,11 @@ RSpec.describe "Meeting index",
     it "sorts upcoming meetings into buckets" do
       expect(subject).to have_http_status(:ok)
 
-      content = page.find("#content")
+      content = page.find_by_id("content")
       expect(content).to have_text "Tomorrow"
       expect(content).to have_text "Next week and later"
-      expect(content).not_to have_text "Later this week"
-      expect(content).not_to have_text "an earlier meeting"
+      expect(content).to have_no_text "Later this week"
+      expect(content).to have_no_text "an earlier meeting"
 
       today = page.find("[data-test-selector='meetings-table-today']")
       expect(today).to have_text "meeting starting soon"
@@ -203,7 +205,7 @@ RSpec.describe "Meeting index",
       tomorrow = page.find("[data-test-selector='meetings-table-tomorrow']")
       expect(tomorrow).to have_text "meeting starting tomorrow"
 
-      expect(page).not_to have_css("[data-test-selector='meetings-table-this_week']")
+      expect(page).to have_no_css("[data-test-selector='meetings-table-this_week']")
 
       later = page.find("[data-test-selector='meetings-table-later']")
       expect(later).to have_text "weekend meeting on saturday"
@@ -219,23 +221,45 @@ RSpec.describe "Meeting index",
     it "shows only one table" do
       expect(subject).to have_http_status(:ok)
 
-      content = page.find("#content")
-      expect(content).not_to have_text "Today"
-      expect(content).not_to have_text "Tomorrow"
-      expect(content).not_to have_text "Later this week"
-      expect(content).not_to have_text "Next week and later"
+      content = page.find_by_id("content")
+      expect(content).to have_no_text "Today"
+      expect(content).to have_no_text "Tomorrow"
+      expect(content).to have_no_text "Later this week"
+      expect(content).to have_no_text "Next week and later"
 
       table = page.find("[data-test-selector='Meetings::TableComponent']")
       expect(table).to have_text "an earlier meeting"
-      expect(table).not_to have_text "meeting starting soon"
-      expect(table).not_to have_text "meeting starting tomorrow"
-      expect(table).not_to have_text "weekend meeting on sunday"
-      expect(table).not_to have_text "meeting on next monday"
-      expect(table).not_to have_text "meeting on next friday"
+      expect(table).to have_no_text "meeting starting soon"
+      expect(table).to have_no_text "meeting starting tomorrow"
+      expect(table).to have_no_text "weekend meeting on sunday"
+      expect(table).to have_no_text "meeting on next monday"
+      expect(table).to have_no_text "meeting on next friday"
     end
   end
 
-  describe "paginating options", with_settings: { per_page_options_array: [1, 5] } do
+  describe "paginating options", with_settings: { per_page_options: "1,5" } do
+    context "when requesting the first page with per_page=1" do
+      let(:request) { get "/projects/#{project.id}/meetings?page=1&per_page=1" }
 
+      it "shows a pagination" do
+        expect(subject).to have_http_status(:ok)
+
+        expect(page).to have_css(".op-pagination--pages .op-pagination--item_current", text: "1")
+        expect(page).to have_text "meeting on next monday"
+        expect(page).to have_no_text "meeting on next friday"
+      end
+    end
+
+    context "when requesting the second page with per_page=2" do
+      let(:request) { get "/projects/#{project.id}/meetings?page=2&per_page=1" }
+
+      it "shows a pagination" do
+        expect(subject).to have_http_status(:ok)
+
+        expect(page).to have_css(".op-pagination--pages .op-pagination--item_current", text: "2")
+        expect(page).to have_no_text "meeting on next monday"
+        expect(page).to have_text "meeting on next friday"
+      end
+    end
   end
 end

@@ -363,11 +363,11 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def group_meetings(all_meetings)
+  def group_meetings(all_meetings) # rubocop:disable Metrics/AbcSize
     next_week = Time.current.next_occurring(Redmine::I18n.start_of_week)
     groups = Hash.new { |h, k| h[k] = [] }
     groups[:later] = all_meetings
-      .where("start_time >= ?", next_week)
+      .where(start_time: next_week..)
       .order(start_time: :asc)
       .paginate(page: page_param, per_page: per_page_param)
 
@@ -375,18 +375,19 @@ class MeetingsController < ApplicationController
     return groups if page_param > 1
 
     all_meetings
-      .where("start_time < ?", next_week)
+      .where(start_time: ...next_week)
       .order(start_time: :asc)
       .each do |meeting|
       start_date = meeting.start_time.to_date
 
-      group_key = if start_date == Time.zone.today
-        :today
-      elsif start_date == Time.zone.tomorrow
-        :tomorrow
-      else
-        :this_week
-      end
+      group_key =
+        if start_date == Time.zone.today
+          :today
+        elsif start_date == Time.zone.tomorrow
+          :tomorrow
+        else
+          :this_week
+        end
 
       groups[group_key] << meeting
     end

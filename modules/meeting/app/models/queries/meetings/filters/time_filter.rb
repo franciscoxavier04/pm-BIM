@@ -47,7 +47,7 @@ class Queries::Meetings::Filters::TimeFilter < Queries::Meetings::Filters::Meeti
     if past?
       ['"meetings"."start_time" < ?', Time.current]
     else
-      ['"meetings"."start_time" + "meetings"."duration" * interval \'1 hour\' > ?', Time.current]
+      ['"meetings"."start_time" + "meetings"."duration" * interval \'1 hour\' >= ?', Time.current]
     end
   end
 

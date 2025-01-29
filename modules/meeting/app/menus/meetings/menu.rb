@@ -95,7 +95,7 @@ module Meetings
         menu_item(title: I18n.t(:label_invitations),
                   query_params: { filters: invitation_filter, sort: "start_time" }),
         menu_item(title: I18n.t(:label_attended),
-                  query_params: { filters: attendee_filter }),
+                  query_params: { filters: attendee_filter, upcoming: false }),
         menu_item(title: I18n.t(:label_created_by_me),
                   query_params: { filters: author_filter })
       ]

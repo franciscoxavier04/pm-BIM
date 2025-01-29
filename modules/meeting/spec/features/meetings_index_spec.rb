@@ -160,8 +160,8 @@ RSpec.describe "Meetings", "Index", :js do
         end
 
         it "show all past meetings" do
-          meetings_page.expect_meetings_listed_in_table(yesterdays_meeting)
-          meetings_page.expect_meetings_not_listed(meeting, tomorrows_meeting)
+          meetings_page.expect_meetings_listed_in_table(yesterdays_meeting, meeting, ongoing_meeting)
+          meetings_page.expect_meetings_not_listed(tomorrows_meeting)
         end
       end
 
@@ -192,8 +192,8 @@ RSpec.describe "Meetings", "Index", :js do
         it "shows all past meetings I've been marked as attending to" do
           meetings_page.expect_meetings_listed(yesterdays_meeting)
           meetings_page.expect_meetings_not_listed(meeting,
-                                               ongoing_meeting,
-                                               tomorrows_meeting)
+                                                   ongoing_meeting,
+                                                   tomorrows_meeting)
 
           # Switch to upcoming
           meetings_page.set_quick_filter upcoming: true
@@ -201,8 +201,7 @@ RSpec.describe "Meetings", "Index", :js do
           meetings_page.expect_meetings_listed(tomorrows_meeting)
           meetings_page.expect_meetings_not_listed(yesterdays_meeting,
                                                    meeting,
-                                                   ongoing_meeting,
-                                                   tomorrows_meeting)
+                                                   ongoing_meeting)
         end
       end
 
