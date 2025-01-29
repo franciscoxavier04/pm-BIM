@@ -60,7 +60,7 @@ module Meetings
     end
 
     def duration
-      "#{number_with_delimiter model.duration} h"
+      render OpenProject::Common::DurationComponent.new(model.duration, :hours, abbreviated: false)
     end
 
     def location
