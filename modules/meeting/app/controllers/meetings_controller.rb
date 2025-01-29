@@ -58,8 +58,7 @@ class MeetingsController < ApplicationController
   menu_item :new_meeting, only: %i[new create]
 
   def index
-    @query = load_query
-    @meetings = load_meetings(@query)
+    load_meetings
 
     render "index",
            locals: { menu_name: project_or_global_menu }
@@ -353,10 +352,46 @@ class MeetingsController < ApplicationController
     query.where("invited_user_id", "=", [User.current.id.to_s])
   end
 
-  def load_meetings(query)
-    query
-      .results
+  def load_meetings
+    @query = load_query
+
+    # We group meetings into individual groups, but only for upcoming meetings
+    if params[:upcoming] == "false"
+      @meetings = @query.results.paginate(page: page_param, per_page: per_page_param)
+    else
+      @grouped_meetings = group_meetings(@query.results)
+    end
+  end
+
+  def group_meetings(all_meetings)
+    next_week = Time.current.next_occurring(Redmine::I18n.start_of_week)
+    groups = Hash.new { |h, k| h[k] = [] }
+    groups[:later] = all_meetings
+      .where("start_time >= ?", next_week)
+      .order(start_time: :asc)
       .paginate(page: page_param, per_page: per_page_param)
+
+    # If we're on the second page, only show the "later" group
+    return groups if page_param > 1
+
+    all_meetings
+      .where("start_time < ?", next_week)
+      .order(start_time: :asc)
+      .each do |meeting|
+      start_date = meeting.start_time.to_date
+
+      group_key = if start_date == Time.zone.today
+        :today
+      elsif start_date == Time.zone.tomorrow
+        :tomorrow
+      else
+        :this_week
+      end
+
+      groups[group_key] << meeting
+    end
+
+    groups
   end
 
   def build_meeting

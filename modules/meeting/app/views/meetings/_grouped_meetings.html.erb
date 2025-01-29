@@ -26,15 +26,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<% html_title t(:label_meeting_plural) %>
 
-<%= render(Meetings::IndexPageHeaderComponent.new(project: @project)) %>
-<%= render(Meetings::IndexSubHeaderComponent.new(query: @query, project: @project, params:)) %>
 
-<% if @grouped_meetings -%>
-  <%= render partial: "grouped_meetings" %>
-<% elsif @meetings.empty? -%>
+<% if @grouped_meetings.empty? || @grouped_meetings.values.all?(&:empty?) -%>
   <%= no_results_box %>
-<% else %>
-  <%= render Meetings::TableComponent.new(rows: @meetings, current_project: @project) %>
-<% end -%>
+<% end %>
+<% %i[today tomorrow this_week later].each_with_index do |key, i| %>
+  <% group = @grouped_meetings[key] %>
+  <% if group.present? %>
+    <%= render(Primer::Beta::Heading.new(
+      tag: :h3,
+      mb: 3,
+      mt: i == 0 ? 0 : 3
+    )) { I18n.t("label_meeting_index_#{key}") } %>
+    <%= render Meetings::TableComponent.new(
+      rows: group,
+      current_project: @project,
+      test_selector: "meetings-table-#{key}"
+    ) %>
+  <% end %>
+<% end %>
