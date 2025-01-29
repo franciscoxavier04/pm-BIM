@@ -265,6 +265,18 @@ en:
       weekly_interval: "Every %{interval} weeks on %{weekday}"
       frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section.
+        Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. 
+        Every time a planned meeting starts, the next one will automatically be opened for you. 
+        You can also open planned meetings manually to import the template and start editing the agenda.
+      
 
   notice_successful_notification: "Notification sent successfully"
   notice_timezone_missing: No time zone is set and %{zone} is assumed. To choose your time zone, please click here.

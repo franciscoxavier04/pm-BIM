@@ -46,11 +46,11 @@ class RecurringMeetingsController < ApplicationController
     @max_count = max_count
     @count = [(params[:count].to_i + 5), @max_count].min
 
-    @meetings = if @direction == "past"
-                  @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
-                else
-                  upcoming_meetings(count: @count)
-                end
+    if @direction == "past"
+      @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
+    else
+      @meetings, @planned_meetings = upcoming_meetings(count: @count)
+    end
 
     respond_to do |format|
       format.html do
@@ -230,14 +230,23 @@ class RecurringMeetingsController < ApplicationController
       .scheduled_instances(upcoming: true)
       .index_by(&:start_time)
 
-    merged = @recurring_meeting
-      .scheduled_occurrences(limit: count)
-      .map do |start_time|
-      meetings.delete(start_time) || scheduled_meeting(start_time)
+    size = 0
+    counter = count
+    while size <= 5
+      merged = @recurring_meeting
+                 .scheduled_occurrences(limit: counter)
+                 .filter_map { |start_time| scheduled_meeting(start_time) unless meetings.include?(start_time) }
+
+      cancelled = meetings.select { |_, meeting| meeting.cancelled == true }
+      cancelled.each { |start_time, _| meetings.delete(start_time) }
+
+      merged.concat(cancelled.values)
+
+      counter += cancelled.blank? ? 1 : cancelled.count
+      size = merged.count
     end
 
-    # Ensure we keep any remaining future meetings that exceed the limit
-    (merged + meetings.values).sort_by(&:start_time)
+    [meetings.values.sort_by(&:start_time), merged.sort_by(&:start_time).first(count)]
   end
 
   def scheduled_meeting(start_time)
