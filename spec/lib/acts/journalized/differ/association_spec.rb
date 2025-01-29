@@ -71,7 +71,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
     end
 
     let(:instance) do
-      described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id, all_values:)
+      described_class.new(original, changed, association: :custom_values, id_attribute: :custom_field_id, multiple_values:)
     end
 
     subject(:result) do
@@ -79,7 +79,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
     end
 
     describe "requesting all values changes joined" do
-      let(:all_values) { :joined }
+      let(:multiple_values) { :joined }
 
       it "returns the changes" do
         expect(result)
@@ -95,7 +95,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
     end
 
     describe "requesting all values changes as array" do
-      let(:all_values) { true }
+      let(:multiple_values) { true }
 
       it "returns the changes" do
         expect(result)
@@ -111,7 +111,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
     end
 
     describe "requesting single value change" do
-      let(:all_values) { false }
+      let(:multiple_values) { false }
 
       it "returns the changes" do
         expect(result)
@@ -156,7 +156,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
       described_class.new(original, changed,
                           association: :project_life_cycle_step_journals,
                           id_attribute: :life_cycle_step_id,
-                          all_values:)
+                          multiple_values:)
     end
 
     describe "by default" do
@@ -168,7 +168,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
       end
 
       describe "requesting joined changes for all values" do
-        let(:all_values) { :joined }
+        let(:multiple_values) { :joined }
 
         it "returns the flat changes" do
           expect(result)
@@ -185,7 +185,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
       end
 
       describe "requesting single value change" do
-        let(:all_values) { false }
+        let(:multiple_values) { false }
 
         it "returns the flat changes" do
           expect(result)
@@ -212,7 +212,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
       end
 
       describe "requesting joined changes for all values" do
-        let(:all_values) { :joined }
+        let(:multiple_values) { :joined }
 
         it "returns the grouped changes" do
           expect(result)
@@ -233,7 +233,7 @@ RSpec.describe Acts::Journalized::Differ::Association do
       end
 
       describe "requesting single value change" do
-        let(:all_values) { false }
+        let(:multiple_values) { false }
 
         it "returns the grouped changes" do
           expect(result)
