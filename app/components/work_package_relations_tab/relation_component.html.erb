@@ -81,7 +81,11 @@
           end
           dates_row.with_column do
             render(Primer::Beta::Text.new) do
-              "#{format_date(related_work_package.start_date)} - #{format_date(related_work_package.due_date)}"
+              if related_work_package.start_date == related_work_package.due_date
+                "#{format_date(related_work_package.start_date)}"
+              else
+                "#{format_date(related_work_package.start_date)} - #{format_date(related_work_package.due_date)}"
+              end
             end
           end
         else
@@ -95,24 +99,23 @@
               end
             end
           end
-
-          if related_work_package.start_date.present? || related_work_package.due_date.present?
-            dates_row.with_column(mr: 1) do
-              icon = if follows?
-                       :calendar
-                     elsif precedes?
-                       :pin
-                     end
-
-              render(Primer::Beta::Octicon.new(icon:))
-            end
-            dates_row.with_column do
-              render(Primer::Beta::Text.new) do
+          dates_row.with_column(mr: 1) do
+            icon = if related_work_package.schedule_manually
+                     :pin
+                   else
+                     :calendar
+                   end
+            render(Primer::Beta::Octicon.new(icon:))
+          end
+          dates_row.with_column do
+            render(Primer::Beta::Text.new) do
+              if related_work_package.start_date == related_work_package.due_date
+                "#{format_date(related_work_package.start_date)}"
+              else
                 "#{format_date(related_work_package.start_date)} - #{format_date(related_work_package.due_date)}"
               end
             end
           end
-
           if follows? && lag_present?
             dates_row.with_column(ml: 3, mr: 1) do
               render(Primer::Beta::Octicon.new(icon: "arrow-both"))
