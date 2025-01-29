@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,15 +28,40 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "active_job"
+module JobPriority
+  extend ActiveSupport::Concern
 
-class ApplicationJob < ActiveJob::Base
-  include ::JobStatus::ApplicationJobWithStatus
-  include SharedJobSetup
-  include JobPriority
+  included do
+    # Default to queue with priority 10
+    queue_with_priority :default
+  end
 
+  class_methods do
+    ##
+    # Return a priority number on the given payload
+    def priority_number(prio = :default)
+      case prio
+      when :high
+        0
+      when :notification
+        5
+      when :above_normal
+        7
+      when :below_normal
+        13
+      when :low
+        20
+      else
+        10
+      end
+    end
 
-  def job_scheduled_at
-    GoodJob::Job.where(id: job_id).pick(:scheduled_at)
+    def queue_with_priority(value = :default)
+      if value.is_a?(Symbol)
+        super(priority_number(value))
+      else
+        super
+      end
+    end
   end
 end
