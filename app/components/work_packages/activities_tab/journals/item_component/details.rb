@@ -66,7 +66,10 @@ module WorkPackages
             flex_layout: true,
             justify_content: :space_between,
             classes: "work-packages-activities-tab-journals-item-component-details--journal-details-header-container",
-            id: "activity-anchor-#{journal.sequence_version}"
+            data: {
+              "anchor-activity-id": journal.sequence_version,
+              "anchor-comment-id": journal.id
+            }
           ) do |header_container|
             render_header_start(header_container)
             render_header_end(header_container)

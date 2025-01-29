@@ -6,7 +6,6 @@
       if show_comment_container?
         journal_container.with_row do
           render(border_box_container(
-                  id: "activity-anchor-#{journal_container_id}",
                   padding: :condensed,
                   "aria-label": I18n.t("activities.work_packages.activity_tab.commented"),
                   data: {

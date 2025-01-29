@@ -90,10 +90,6 @@ module WorkPackages
           User.current.allowed_in_project?(:add_work_package_notes, journal.journable.project)
         end
 
-        def journal_container_id
-          journal_activity_id(journal)
-        end
-
         def copy_url_action_item(menu)
           menu.with_item(label: t("button_copy_link_to_clipboard"),
                          tag: :button,
