@@ -51,7 +51,7 @@ RSpec.describe Storages::NextcloudStorage do
     it { expect(storage).not_to be_a_provider_type_one_drive }
   end
 
-  describe "#configured?" do
+  describe "#configured? and #configuration_checks" do
     context "with a complete configuration" do
       let(:storage) do
         build(:nextcloud_storage,
@@ -59,15 +59,15 @@ RSpec.describe Storages::NextcloudStorage do
               oauth_client: build(:oauth_client))
       end
 
-      it "returns true" do
+      it "#configured? returns true" do
         expect(storage.configured?).to be(true)
+      end
 
-        aggregate_failures "configuration_checks" do
-          expect(storage.configuration_checks)
-            .to eq(host_name_configured: true,
-                   storage_oauth_client_configured: true,
-                   openproject_oauth_application_configured: true)
-        end
+      it "#configuration_checks contains all checks" do
+        expect(storage.configuration_checks)
+          .to eq(host_name_configured: true,
+                  storage_oauth_client_configured: true,
+                  openproject_oauth_application_configured: true)
       end
     end
 
