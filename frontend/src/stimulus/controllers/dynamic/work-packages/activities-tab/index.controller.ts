@@ -24,13 +24,16 @@ export default class IndexController extends Controller {
     showConflictFlashMessageUrl: String,
   };
 
-  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'reactionButton'];
+  static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
 
   declare readonly journalsContainerTarget:HTMLElement;
   declare readonly buttonRowTarget:HTMLInputElement;
   declare readonly formRowTarget:HTMLElement;
   declare readonly formTarget:HTMLFormElement;
+  declare readonly formSubmitButtonTarget:HTMLButtonElement;
   declare readonly reactionButtonTargets:HTMLElement[];
+
+  declare readonly hasFormSubmitButtonTarget:boolean;
 
   declare updateStreamsUrlValue:string;
   declare sortingValue:string;
@@ -74,6 +77,7 @@ export default class IndexController extends Controller {
 
     this.setLatestKnownChangesetUpdatedAt();
     this.startPolling();
+    this.setCssClasses();
   }
 
   disconnect() {
@@ -350,7 +354,7 @@ export default class IndexController extends Controller {
     if (window.location.hash.includes('#activity-')) {
       const activityId = window.location.hash.replace('#activity-', '');
       this.scrollToActivity(activityId);
-    } else if (this.sortingValue === 'asc') {
+    } else if (this.sortingValue === 'asc' && (!this.isMobile() || this.isWithinNotificationCenter())) {
       this.scrollToBottom();
     }
   }
@@ -427,7 +431,17 @@ export default class IndexController extends Controller {
     event.preventDefault();
     const activityId = event.params.id;
 
-    this.scrollToActivity(activityId);
+    // not using the scrollToActivity method here as it is causing flickering issues
+    // in case of a setAnchor click, we can go for a direct scroll approach
+    const scrollableContainer = this.getScrollableContainer();
+    const activityElement = document.getElementById(`activity-anchor-${activityId}`);
+
+    if (scrollableContainer && activityElement) {
+      scrollableContainer.scrollTo({
+        top: activityElement.offsetTop - 90,
+        behavior: 'smooth',
+      });
+    }
     window.location.hash = `#activity-${activityId}`;
   }
 
@@ -459,6 +473,9 @@ export default class IndexController extends Controller {
 
   // Code Maintenance: Get rid of this JS based view port checks when activities are rendered in fully primierized activity tab in all contexts
   private isMobile():boolean {
+    if (this.isWithinNotificationCenter() || this.isWithinSplitScreen()) {
+      return window.innerWidth < 1013;
+    }
     return window.innerWidth < 1279;
   }
 
@@ -468,6 +485,15 @@ export default class IndexController extends Controller {
 
   private isWithinSplitScreen():boolean {
     return window.location.pathname.includes('work_packages/details');
+  }
+
+  private setCssClasses() {
+    if (this.isWithinNotificationCenter()) {
+      this.element.classList.add('work-packages-activities-tab-index-component--within-notification-center');
+    }
+    if (this.isWithinSplitScreen()) {
+      this.element.classList.add('work-packages-activities-tab-index-component--within-split-screen');
+    }
   }
 
   private addEventListenersToCkEditorInstance() {
@@ -648,7 +674,7 @@ export default class IndexController extends Controller {
   async onSubmit(event:Event | null = null) {
     if (this.saveInProgress === true) return;
 
-    this.saveInProgress = true;
+    this.setFormSubmitInProgress(true);
 
     event?.preventDefault();
 
@@ -661,8 +687,16 @@ export default class IndexController extends Controller {
         console.error('Error saving activity:', error);
       })
       .finally(() => {
-        this.saveInProgress = false;
+        this.setFormSubmitInProgress(false);
       });
+  }
+
+  private setFormSubmitInProgress(inProgress:boolean) {
+    this.saveInProgress = inProgress;
+
+    if (this.hasFormSubmitButtonTarget) {
+      this.formSubmitButtonTarget.disabled = inProgress;
+    }
   }
 
   private prepareFormData():FormData {
@@ -711,7 +745,7 @@ export default class IndexController extends Controller {
       this.handleStemVisibility();
     }, 10);
 
-    this.saveInProgress = false;
+    this.setFormSubmitInProgress(false);
   }
 
   private resetJournalsContainerMargins():void {

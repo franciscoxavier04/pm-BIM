@@ -56,7 +56,7 @@ cs:
         frequency: "Frekvence"
         interval: "Interval"
         start_date: "Začíná v"
-        end_after: "Ukončení výskytu po"
+        end_after: "Meeting series ends"
         iterations: "Výskyty"
     errors:
       messages:
@@ -127,11 +127,15 @@ cs:
   label_recurring_occurrence_delete_confirmation: >
     Veškeré informace o schůzce, které nejsou v šabloně, budou ztraceny. Chcete pokračovat?
   label_recurring_meeting_restore: "Obnovit tento výskyt"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Dalších %{count} naplánovaných schůzek (%{schedule})."
+  label_recurring_meeting_no_end_date: "There are more scheduled meetings (%{schedule})."
   label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
   label_recurring_meeting_more_past: "Dalších  %{count}  minulých schůzek "
   label_recurring_meeting_more_past_singular: "Dalších  %{count}  minulých schůzek "
   label_recurring_meeting_show_more: "Ukázat více"
+  label_recurring_meeting_series_create: "Vytvořit sérii schůzek"
   label_recurring_meeting_series_edit: "Upravit sérii schůzek"
   label_recurring_meeting_series_delete: "Odstranit sérii schůzek"
   label_my_meetings: "Moje schůzky"
@@ -175,6 +179,9 @@ cs:
         Send an email invitation immediately to the participants selected above. You can also do this manually at any time later.
       send_invitation_emails_structured: "Send an email invitation immediately to all participants. You can also do this manually at any time later."
       open_meeting_link: "Otevřít schůzku"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} vám poslal pozvánku na schůzku %{title}"
       rescheduled:
@@ -223,8 +230,9 @@ cs:
       working_days: "Každý pracovní den"
       weekly: "Týdně"
     end_after:
-      specific_date: "konkrétní datum"
-      iterations: "počet výskytů"
+      never: "never"
+      specific_date: "after a specific date"
+      iterations: "after a number of occurrences"
     starts: "Začíná"
     in_words:
       daily_interval: "Každé %{interval} dny"
@@ -233,12 +241,13 @@ cs:
       weekly_interval: "Každý %{interval} týdny v %{weekday}"
       frequency: "%{base} v %{time}"
       full: "%{base} v %{time}, končí %{end_date}"
+      never_ending: "%{base} at %{time}"
   notice_successful_notification: "Oznámení bylo úspěšně odesláno"
   notice_timezone_missing: Není nastaveno žádné časové pásmo a předpokládá se %{zone} . Chcete-li vybrat časové pásmo, klikněte prosím zde.
   notice_meeting_updated: "Tato stránka byla aktualizována někým jiným. Pro zobrazení změn znovu načtena."
   permission_create_meetings: "Vytvořit schůzku\n"
   permission_edit_meetings: "Upravit schůzku"
-  permission_delete_meetings: "Odstranit schůzky"
+  permission_delete_meetings: "Smazat schůzku"
   permission_view_meetings: "Zobrazit schůzky"
   permission_create_meeting_agendas: "Vytvořit agendy schůzek"
   permission_create_meeting_agendas_explanation: "Umožňuje upravovat obsah programu klasické schůzky."

@@ -65,6 +65,10 @@ module Pages::Meetings
       page.execute_script("arguments[0].dispatchEvent(new Event('input'))", input.native)
     end
 
+    def set_end_after(value)
+      select value, from: "Meeting series ends"
+    end
+
     def set_end_date(date)
       fill_in "End date", with: date, fill_options: { clear: :backspace }
     end

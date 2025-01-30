@@ -45,6 +45,8 @@ zh-CN:
   label_greater: ">"
   label_is_not_project_with_subprojects: "不是（包含子项目）"
   label_is_project_with_subprojects: "是（包含子项目）"
+  label_is_work_package_with_descendants: "is (includes descendants)"
+  label_is_not_work_package_with_descendants: "is not (includes descendants)"
   label_work_package_attributes: "工作包属性"
   label_less: "<"
   label_logged_by_reporting: "记录者为"
@@ -93,6 +95,8 @@ zh-CN:
       time: "时间"
     cost_reports:
       title: "您的成本报告 XLS 导出"
+      start_time: "开始时间"
+      end_time: "结束时间"
   reporting:
     group_by:
       selected_columns: "选定的列"
