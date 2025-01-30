@@ -26,7 +26,9 @@ properties:
     format: date-time
     description: The time the time entry was created
   startTime:
-    type: string
+    type:
+      - string
+      - "null"
     format: date-time
     description: |-
       The time the time entry was started, or null if the time entry does not have a start time.
@@ -35,7 +37,9 @@ properties:
 
       This field is only available if the global `allow_tracking_start_and_end_times` setting is enabled.
   endTime:
-    type: string
+    type:
+      - string
+      - "null"
     format: date-time
     description: |-
       The time the time entry was ended, or null if the time entry does not have a start time.
