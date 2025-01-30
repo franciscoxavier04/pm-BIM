@@ -55,6 +55,13 @@ module Relations
     end
 
     def validate_nodes_relatable
+      # when creating a relation from the work package relations tab and not selecting a WorkPackage
+      # the to_id is not set
+      # in this case we only want to show the "WorkPackage can't be blank" error instead of a
+      # misleading circular dependencies error
+      # the error is added by the models presence validation
+      return if model.to_id.nil?
+
       if (model.from_id_changed? || model.to_id_changed?) &&
          WorkPackage.relatable(model.from, model.relation_type, ignored_relation: model).where(id: model.to_id).empty?
         errors.add :base, I18n.t(:"activerecord.errors.messages.circular_dependency")

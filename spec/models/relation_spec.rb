@@ -49,6 +49,21 @@ RSpec.describe Relation do
     expect(relation).to be_valid
   end
 
+  it "validates relation uniqueness on both from_id and to_id" do
+    create(:relation, from:, to:)
+
+    relation = build(:relation, from:, to:)
+    expect(relation).not_to be_valid
+    expect(relation.errors.as_json).to include(to_id: ["has already been taken."])
+
+    other = create(:work_package)
+    relation = build(:relation, from:, to: other)
+    expect(relation).to be_valid
+
+    relation = build(:relation, from: other, to:)
+    expect(relation).to be_valid
+  end
+
   describe "all relation types" do
     Relation::TYPES.each do |key, type_hash|
       let(:type) { key }

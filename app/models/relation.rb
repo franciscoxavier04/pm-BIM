@@ -109,7 +109,8 @@ class Relation < ApplicationRecord
     greater_than_or_equal_to: 0
   }
 
-  validates :to, uniqueness: { scope: :from }
+  # The primer form depends on to_id being validated
+  validates :to_id, uniqueness: { scope: :from }, presence: true
 
   before_validation :reverse_if_needed
 
