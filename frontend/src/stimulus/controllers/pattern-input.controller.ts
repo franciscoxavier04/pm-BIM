@@ -120,7 +120,16 @@ export default class PatternInputController extends Controller {
 
     this.tagInvalidTokens();
 
-    // update cursor
+    // this resets the cursor position without changing it
+    // it is necessary because chromium based browsers try to
+    // retain styling and adds a unwanted <font> tag,
+    // breaking the behaviour of this component
+    const selection = document.getSelection();
+    if (selection && selection.rangeCount) {
+      const range = selection.getRangeAt(0);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
     this.setRange();
   }
 
