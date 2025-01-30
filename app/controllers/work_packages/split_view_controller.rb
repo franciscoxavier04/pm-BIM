@@ -46,7 +46,7 @@ class WorkPackages::SplitViewController < ApplicationController
   end
 
   def get_relations_counter
-    render plain: WorkPackageRelationsTab::RelationsMediator.new(work_package: @work_package).all_relations_count
+    render json: { count: WorkPackageRelationsTab::RelationsMediator.new(work_package: @work_package).all_relations_count }
   end
 
   private
