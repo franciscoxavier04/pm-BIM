@@ -290,7 +290,7 @@ RSpec.describe "Meetings", "Index", :js do
         meetings_page.expect_create_new_button
       end
 
-      it "allows creation of both types of meetings", with_flag: { recurring_meetings: true } do
+      it "allows creation of both types of meetings" do
         meetings_page.visit!
 
         meetings_page.expect_create_new_types
