@@ -304,6 +304,10 @@ export class PathHelperService {
     return `${this.workPackagePath(workPackageId)}/split_view/update_counter?counter=${counter}`;
   }
 
+  public workPackageGetRelationsCounterPath(workPackageId:string|number) {
+    return `${this.workPackagePath(workPackageId)}/split_view/get_relations_counter`;
+  }
+
   // Work Package Bulk paths
 
   public workPackagesBulkEditPath() {

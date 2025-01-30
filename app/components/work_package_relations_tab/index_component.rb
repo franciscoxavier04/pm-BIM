@@ -16,9 +16,15 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   include Turbo::FramesHelper
   include OpTurbo::Streamable
 
-  attr_reader :relations_mediator, :directionally_aware_grouped_relations, :relation_to_scroll_to
+  attr_reader :relations_mediator, :relation_to_scroll_to
 
-  delegate :work_package, :relations, :children, :any_relations?, to: :relations_mediator
+  delegate :work_package,
+           :visible_children,
+           :ghost_children,
+           :directionally_aware_grouped_relations,
+           :any_relations?,
+           :any_children?,
+           to: :relations_mediator
 
   # Initialize the component with required data
   #
@@ -28,7 +34,6 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     super()
 
     @relations_mediator = WorkPackageRelationsTab::RelationsMediator.new(work_package:)
-    @directionally_aware_grouped_relations = group_relations_by_directional_context
     @relation_to_scroll_to = relation_to_scroll_to
   end
 
@@ -50,12 +55,6 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
 
   def should_render_create_button?
     should_render_add_child? || should_render_add_relations?
-  end
-
-  def group_relations_by_directional_context
-    relations.group_by do |relation|
-      relation.relation_type_for(work_package)
-    end
   end
 
   def render_relation_group(title:, relation_type:, items:, &_block)
@@ -129,12 +128,12 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
   end
 
   def render_items(border_box, items)
-    items.each do |item|
+    items.each do |relation, visibility|
       border_box.with_row(
-        test_selector: row_test_selector(item),
-        data: data_attribute(item)
+        test_selector: row_test_selector(relation, visibility),
+        data: data_attribute(relation)
       ) do
-        yield(item)
+        yield(relation, visibility)
       end
     end
   end
@@ -169,9 +168,9 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     "op-new-relation-button-#{relation_type}"
   end
 
-  def row_test_selector(item)
+  def row_test_selector(item, visibility)
     related_work_package_id = find_related_work_package_id(item)
-    "op-relation-row-#{related_work_package_id}"
+    "op-relation-row-#{visibility}-#{related_work_package_id}"
   end
 
   def find_related_work_package_id(item)
