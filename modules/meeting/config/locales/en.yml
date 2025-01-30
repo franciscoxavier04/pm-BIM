@@ -156,7 +156,7 @@ en:
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
   label_recurring_meeting_series_end: "End meeting series"
-  label_recurring_meeting_series_confirm: "End series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "My meetings"
   label_all_meetings: "All meetings"
   label_upcoming_meetings: "Upcoming meetings"
