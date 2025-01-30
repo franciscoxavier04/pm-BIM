@@ -55,7 +55,7 @@ module Relations
     end
 
     def validate_nodes_relatable
-      if (model.from_id_changed? || model.to_id_changed?) &&
+      if (model.from_id_changed? || model.to_id_changed?) && (model.from_id.present? && model.to_id.present?) &&
          WorkPackage.relatable(model.from, model.relation_type, ignored_relation: model).where(id: model.to_id).empty?
         errors.add :base, I18n.t(:"activerecord.errors.messages.circular_dependency")
       end
