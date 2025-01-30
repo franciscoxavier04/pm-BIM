@@ -103,23 +103,6 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     end
   end
 
-  def dates_icon(work_package)
-    work_package.schedule_manually ? :pin : :calendar
-  end
-
-  def formatted_dates(work_package)
-    start_date = work_package.start_date ? format_date(work_package.start_date) : nil
-    due_date = work_package.due_date ? format_date(work_package.due_date) : nil
-
-    # If both dates are missing, return just one dash
-    return "-" if start_date.nil? && due_date.nil?
-
-    return start_date if start_date == due_date
-
-    # Return the formatted date range (start_date - due_date)
-    "#{start_date} - #{due_date}"
-  end
-
   def lag_as_text(lag)
     "#{I18n.t('work_package_relations_tab.lag.subject')}: #{I18n.t('datetime.distance_in_words.x_days', count: lag)}"
   end
