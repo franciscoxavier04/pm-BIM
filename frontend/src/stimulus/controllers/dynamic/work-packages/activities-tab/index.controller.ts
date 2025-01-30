@@ -430,7 +430,17 @@ export default class IndexController extends Controller {
     event.preventDefault();
     const activityId = event.params.id;
 
-    this.scrollToActivity(activityId);
+    // not using the scrollToActivity method here as it is causing flickering issues
+    // in case of a setAnchor click, we can go for a direct scroll approach
+    const scrollableContainer = this.getScrollableContainer();
+    const activityElement = document.getElementById(`activity-anchor-${activityId}`);
+
+    if (scrollableContainer && activityElement) {
+      scrollableContainer.scrollTo({
+        top: activityElement.offsetTop - 90,
+        behavior: 'smooth',
+      });
+    }
     window.location.hash = `#activity-${activityId}`;
   }
 
