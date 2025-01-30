@@ -88,6 +88,7 @@ module Filter
     def user_autocomplete_options(filter)
       {
         component: "opce-user-autocompleter",
+        hideSelected: true,
         defaultData: false,
         placeholder: I18n.t(:label_user_search),
         resource: "principals",
@@ -98,7 +99,6 @@ module Filter
           { name: "member", operator: "=", values: Project.visible.pluck(:id) }
         ],
         searchKey: "any_name_attribute",
-        inputValue: filter.values,
         focusDirectly: false
       }
     end
