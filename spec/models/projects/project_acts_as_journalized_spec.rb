@@ -46,32 +46,32 @@ RSpec.describe Project, "acts_as_journalized" do
 
     it "notes the changes to name" do
       expect(Journal.first.details[:name])
-        .to contain_exactly(nil, project.name)
+        .to eql([nil, project.name])
     end
 
     it "notes the changes to description" do
       expect(Journal.first.details[:description])
-        .to contain_exactly(nil, project.description)
+        .to eql([nil, project.description])
     end
 
     it "notes the changes to public flag" do
       expect(Journal.first.details[:public])
-        .to contain_exactly(nil, project.public)
+        .to eql([nil, project.public])
     end
 
     it "notes the changes to identifier" do
       expect(Journal.first.details[:identifier])
-        .to contain_exactly(nil, project.identifier)
+        .to eql([nil, project.identifier])
     end
 
     it "notes the changes to active flag" do
       expect(Journal.first.details[:active])
-        .to contain_exactly(nil, project.active)
+        .to eql([nil, project.active])
     end
 
     it "notes the changes to template flag" do
       expect(Journal.first.details[:templated])
-        .to contain_exactly(nil, project.templated)
+        .to eql([nil, project.templated])
     end
 
     it "has the timestamp of the project update time for created_at" do
