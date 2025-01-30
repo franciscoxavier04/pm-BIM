@@ -43,8 +43,23 @@ class WorkPackageChildrenRelationsController < ApplicationController
   end
 
   def create
-    child = WorkPackage.find(params[:work_package][:id])
-    service_result = set_relation(child:, parent: @work_package)
+    if params[:work_package][:id].present?
+      child = WorkPackage.find(params[:work_package][:id])
+      service_result = set_relation(child:, parent: @work_package)
+    else
+      child = WorkPackage.new
+      child.errors.add(:id, :blank)
+      service_result = ServiceResult.failure(result: child)
+    end
+
+    if service_result.failure?
+      update_via_turbo_stream(
+        component: WorkPackageRelationsTab::AddWorkPackageChildFormComponent.new(work_package: @work_package,
+                                                                                 child: service_result.result,
+                                                                                 base_errors: service_result.errors[:base]),
+        status: :bad_request
+      )
+    end
 
     respond_with_relations_tab_update(service_result, relation_to_scroll_to: service_result.result)
   end
