@@ -10,14 +10,14 @@ class RecurringMeetingsController < ApplicationController
 
   before_action :find_meeting,
                 only: %i[show update details_dialog delete_dialog destroy edit init
-                         delete_scheduled_dialog delete_scheduled template_completed download_ics notify end_series
+                         delete_scheduled_dialog destroy_scheduled template_completed download_ics notify end_series
                          end_series_dialog]
   before_action :find_optional_project,
                 only: %i[index show new create update details_dialog delete_dialog destroy edit delete_scheduled_dialog
-                         delete_scheduled notify]
+                         destroy_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
-  before_action :get_scheduled_meeting, only: %i[delete_scheduled_dialog delete_scheduled]
+  before_action :get_scheduled_meeting, only: %i[delete_scheduled_dialog destroy_scheduled]
 
   before_action :convert_params, only: %i[create update]
   before_action :check_template_completable, only: %i[template_completed]
@@ -203,7 +203,7 @@ class RecurringMeetingsController < ApplicationController
     )
   end
 
-  def delete_scheduled
+  def destroy_scheduled
     if @scheduled.update(cancelled: true)
       flash[:notice] = I18n.t(:notice_successful_cancel)
     else

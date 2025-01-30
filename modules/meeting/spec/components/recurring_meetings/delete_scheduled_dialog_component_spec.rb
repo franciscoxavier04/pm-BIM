@@ -54,7 +54,7 @@ RSpec.describe RecurringMeetings::DeleteScheduledDialogComponent, type: :compone
       let(:project) { nil }
 
       it "renders the correct form action" do
-        expect(subject).to have_element "form", action: delete_scheduled_recurring_meeting_path(
+        expect(subject).to have_element "form", action: destroy_scheduled_recurring_meeting_path(
           recurring_meeting, start_time: start_time.iso8601
         )
       end
@@ -64,7 +64,7 @@ RSpec.describe RecurringMeetings::DeleteScheduledDialogComponent, type: :compone
       let(:project) { build_stubbed(:project) }
 
       it "renders the correct form action" do
-        expect(subject).to have_element "form", action: delete_scheduled_project_recurring_meeting_path(
+        expect(subject).to have_element "form", action: destroy_scheduled_project_recurring_meeting_path(
           project, recurring_meeting, start_time: start_time.iso8601
         )
       end

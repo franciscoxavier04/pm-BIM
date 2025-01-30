@@ -35,10 +35,10 @@ See COPYRIGHT and LICENSE files for more details.
     cancel_button_text:,
     form_arguments: {
       action: polymorphic_path(
-        [:delete_scheduled, @project, @scheduled.recurring_meeting],
+        [:destroy_scheduled, @project, @scheduled.recurring_meeting],
         start_time: @scheduled.start_time.iso8601
       ),
-      method: :post,
+      method: :delete,
       data: { turbo: true }
     }
   )) do |dialog|

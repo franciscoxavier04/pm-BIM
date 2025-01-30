@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       member do
         get :delete_dialog
         get :delete_scheduled_dialog
-        post :delete_scheduled
+        delete :destroy_scheduled
       end
     end
   end
@@ -72,7 +72,7 @@ Rails.application.routes.draw do
       get :delete_dialog
       get :delete_scheduled_dialog
       post :init
-      post :delete_scheduled
+      delete :destroy_scheduled
       post :template_completed
       post :notify
       post :end_series
