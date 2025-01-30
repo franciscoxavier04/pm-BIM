@@ -53,7 +53,7 @@ vi:
         frequency: "Tần suất"
         interval: "Khoảng thời gian"
         start_date: "Bắt đầu vào"
-        end_after: "Kết thúc chuỗi sau"
+        end_after: "Kết thúc chuỗi họp"
         iterations: "Số lần xuất hiện"
     errors:
       messages:
@@ -124,9 +124,10 @@ vi:
   label_recurring_occurrence_delete_confirmation: >
     Bất cứ thông tin cuộc họp nào không có trong mẫu đều bị mất. Bạn có muốn tiếp tục không?
   label_recurring_meeting_restore: "Khôi phục lại lần họp này"
-  label_recurring_meeting_schedule: "Schedule"
-  label_recurring_meeting_next_occurrence: "Next occurrence"
+  label_recurring_meeting_schedule: "Lên lịch"
+  label_recurring_meeting_next_occurrence: "Lần họp tới"
   label_recurring_meeting_more: "Còn %{count} cuộc họp được lên lịch nữa (%{schedule})."
+  label_recurring_meeting_no_end_date: "Còn nhiều lịch họp (%{schedule})."
   label_recurring_meeting_more_singular: "Còn %{count} cuộc họp được lên lịch nữa (%{schedule})."
   label_recurring_meeting_more_past: "Còn %{count} cuộc họp trước đó."
   label_recurring_meeting_more_past_singular: "Còn %{count} cuộc họp trước đó."
@@ -176,8 +177,8 @@ vi:
       send_invitation_emails_structured: "Gửi lời mời qua email ngay lập tức đến tất cả người tham gia. Bạn cũng có thể thực hiện thủ công bất kỳ lúc nào sau đó."
       open_meeting_link: "Mở cuộc họp"
       series:
-        title: "[%{project_name}] Meeting series %{title}"
-        summary: "%{actor} has set up a new meeting series %{title}"
+        title: "[%{project_name}] Chuỗi họp %{title}"
+        summary: "%{actor} đã lập chuỗi họp mới %{title}"
       invited:
         summary: "%{actor} đã gửi cho bạn một lời mời tham gia cuộc họp %{title}"
       rescheduled:
@@ -219,23 +220,25 @@ vi:
       label_view_template: "Xem Mẫu"
       label_edit_template: "Sửa mẫu"
       banner_html: >
-        You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
+        Bạn hiện đang chỉnh sửa mẫu của chuỗi họp: %{link}. Mỗi lần xuất hiện mới của một cuộc họp trong chuỗi sẽ sử dụng mẫu này. Các thay đổi sẽ không ảnh hưởng đến các cuộc họp trước đây hoặc đã tạo.
     frequency:
-      every_weekday: "Every %{day_of_the_week}"
-      daily: "Daily"
-      working_days: "Every working day"
-      weekly: "Weekly"
+      every_weekday: "Mỗi %{day_of_the_week}"
+      daily: "Mỗi ngày"
+      working_days: "Mỗi ngày làm việc"
+      weekly: "Mỗi tuần"
     end_after:
-      specific_date: "a specific date"
-      iterations: "a number of occurrences"
-    starts: "Starts"
+      never: "không bao giờ"
+      specific_date: "sau ngày cụ thể"
+      iterations: "sau số lần họp"
+    starts: "Bắt đầu"
     in_words:
-      daily_interval: "Every %{interval} days"
-      working_days: "Every working day"
-      weekly: "Every week on %{weekday}"
-      weekly_interval: "Every %{interval} weeks on %{weekday}"
-      frequency: "%{base} at %{time}"
-      full: "%{base} at %{time}, ends on %{end_date}"
+      daily_interval: "Mỗi %{interval} ngày"
+      working_days: "Mỗi ngày làm việc"
+      weekly: "Mỗi tuần vào %{weekday}"
+      weekly_interval: "Mỗi %{interval} tuần vào %{weekday}"
+      frequency: "%{base} vào %{time}"
+      full: "%{base} vào %{time}, kết thúc vào %{end_date}"
+      never_ending: "%{base} vào %{time}"
   notice_successful_notification: "Đã gửi thông báo thành công"
   notice_timezone_missing: Chưa đặt múi giờ và %{zone} đã được chọn. Để chọn múi giowf của bạn, nhấn vào đây.
   notice_meeting_updated: "Trang này đã được người khác cập nhật. Tải lại để xem thay đổi."
@@ -288,17 +291,17 @@ vi:
   text_deleted_agenda_item: 'Mục chương trình nghị sự đã bị xóa'
   label_initial_meeting_details: "Cuộc họp"
   label_meeting_details: "Chi tiết cuộc họp"
-  label_meeting_series_details: "Meeting series details"
+  label_meeting_series_details: "Chi tiết chuỗi họp"
   label_meeting_details_edit: "Chỉnh sửa chi tiết cuộc họp"
   label_meeting_state: "Trạng thái cuộc họp"
   label_meeting_state_open: "Mở"
   label_meeting_state_open_html: "<i>Mở</i>"
   label_meeting_state_closed: "Đã đóng"
   label_meeting_state_closed_html: "<i>Đã đóng</i>"
-  label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_scheduled: "Scheduled"
-  label_meeting_state_cancelled: "Cancelled"
-  label_meeting_state_skipped: "Skipped"
+  label_meeting_state_agenda_created: "Agenda đã tạo"
+  label_meeting_state_scheduled: "Đã lên lịch"
+  label_meeting_state_cancelled: "Đã hủy"
+  label_meeting_state_skipped: "Đã bỏ qua"
   label_meeting_reopen_action: "Mở lại cuộc họp"
   label_meeting_close_action: "Đóng cuộc họp"
   text_meeting_open_description: "Cuộc họp này đang mở. Bạn có thể thêm/xóa các mục chương trình nghị sự và chỉnh sửa chúng theo ý muốn. Sau khi cuộc họp kết thúc, hãy đóng nó để khóa lại."

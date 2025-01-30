@@ -45,6 +45,8 @@ ko:
   label_greater: ">"
   label_is_not_project_with_subprojects: "일치하지 않음(하위 프로젝트 포함)"
   label_is_project_with_subprojects: "일치함(하위 프로젝트 포함)"
+  label_is_work_package_with_descendants: "is (includes descendants)"
+  label_is_not_work_package_with_descendants: "is not (includes descendants)"
   label_work_package_attributes: "작업 패키지 특성"
   label_less: "<"
   label_logged_by_reporting: "기록자"

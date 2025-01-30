@@ -368,7 +368,7 @@ export default class IndexController extends Controller {
 
   private tryScroll(activityAnchorName:AnchorType, activityId:string, attempts:number, maxAttempts:number) {
     const scrollableContainer = this.getScrollableContainer();
-    const activityElement = document.querySelector(`[data-anchor-${activityAnchorName}-id="${activityId}"]`);
+    const activityElement = this.getActivityAnchorElement(activityAnchorName, activityId);
     const topPadding = 70;
 
     if (activityElement && scrollableContainer) {
@@ -436,10 +436,22 @@ export default class IndexController extends Controller {
   setAnchor(event:CustomEventWithIdParam) {
     // native anchor scroll is causing positioning issues
     event.preventDefault();
+
     const activityId = event.params.id;
     const anchorName = event.params.anchorName;
 
-    this.scrollToActivity(anchorName, activityId);
+    // not using the scrollToActivity method here as it is causing flickering issues
+    // in case of a setAnchor click, we can go for a direct scroll approach
+    const scrollableContainer = this.getScrollableContainer();
+    const activityElement = this.getActivityAnchorElement(anchorName, activityId);
+
+    if (scrollableContainer && activityElement) {
+      scrollableContainer.scrollTo({
+        top: activityElement.offsetTop - 90,
+        behavior: 'smooth',
+      });
+    }
+
     window.location.hash = `#${anchorName}-${activityId}`;
   }
 
@@ -467,6 +479,10 @@ export default class IndexController extends Controller {
 
     // valid for desktop
     return document.querySelector('.tabcontent') as HTMLElement;
+  }
+
+  private getActivityAnchorElement(activityAnchorName:AnchorType, activityId:string):HTMLElement | null {
+    return document.querySelector(`[data-anchor-${activityAnchorName}-id="${activityId}"]`);
   }
 
   // Code Maintenance: Get rid of this JS based view port checks when activities are rendered in fully primierized activity tab in all contexts
