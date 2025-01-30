@@ -40,14 +40,6 @@ RSpec.describe "Recurring meetings end series",
                with_flag: { recurring_meetings: true } do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
-  before_all do
-    travel_to(Date.new(2025, 1, 29))
-  end
-
-  after(:all) do # rubocop:disable RSpec/BeforeAfterAll
-    travel_back
-  end
-
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
   shared_let(:user) do
     create :user,
@@ -58,7 +50,7 @@ RSpec.describe "Recurring meetings end series",
   shared_let(:meeting) do
     create :recurring_meeting,
            project:,
-           start_time: DateTime.parse("2025-01-29T10:30:00Z"),
+           start_time: DateTime.parse("2025-01-28T10:30:00Z"),
            duration: 1,
            frequency: "weekly",
            end_after: "never",
@@ -70,10 +62,16 @@ RSpec.describe "Recurring meetings end series",
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
   before do
+    travel_to(Time.zone.local(2025, 1, 29, 9, 30))
+
     login_as current_user
 
     # Assuming the first init job has run
     RecurringMeetings::InitNextOccurrenceJob.perform_now(meeting, meeting.first_occurrence.to_time)
+  end
+
+  after do
+    travel_back
   end
 
   it "can end the meeting early" do
@@ -83,17 +81,33 @@ RSpec.describe "Recurring meetings end series",
     click_on "End meeting series"
     expect(page).to have_css("#recurring-meetings-end-series-dialog")
     expect(page).to have_text("Ending the series will delete any future open or scheduled meeting occurrences")
-    check "I understand that this deletion cannot be reversed"
 
-    click_on "Delete permanently"
+    retry_block do
+      check "I understand that this deletion cannot be reversed"
+      expect(page).to have_checked_field("I understand that this deletion cannot be reversed")
+    end
+
+    click_on "End series now"
 
     expect(page).to have_current_path recurring_meeting_path(meeting)
-    show_page.expect_no_open_meeting date: "01/29/2025"
+    expect(page).to have_text("Nothing to display")
   end
 
   context "when meeting start time is in the future" do
     before do
       meeting.update! start_time: DateTime.parse("2025-01-30T10:30:00Z")
+    end
+
+    it "does not show this action" do
+      show_page.visit!
+      page.find_test_selector("recurring-meeting-action-menu").click
+      expect(page).to have_no_text "End meeting series"
+    end
+  end
+
+  context "when meeting start time is today" do
+    before do
+      meeting.update! start_time: DateTime.parse("2025-01-29T20:30:00Z")
     end
 
     it "does not show this action" do

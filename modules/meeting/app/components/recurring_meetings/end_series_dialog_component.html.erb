@@ -36,7 +36,6 @@ See COPYRIGHT and LICENSE files for more details.
       method: :post
     }
   )) do |dialog|
-    dialog.with_show_button { I18n.t(:label_recurring_meeting_series_confirm) }
     dialog.with_confirmation_message do |message|
       message.with_heading(tag: :h2) { I18n.t(:text_meeting_series_end_early_heading) }
       message.with_description_content(I18n.t(:text_meeting_series_end_early))
