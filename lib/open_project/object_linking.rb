@@ -43,7 +43,7 @@ module OpenProject
 
     # Displays a link to user's account page if active or registered
     # Will attach a user hover card to the link.
-    def link_to_user(user, options = {})
+    def link_to_user(user, options = {}) # rubocop:disable Metrics/AbcSize
       return h(user.to_s) unless user.is_a?(User)
       return h(user.name) if user.locked? && !User.current.admin?
 
