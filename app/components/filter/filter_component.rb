@@ -67,15 +67,15 @@ module Filter
       case filter
       when Queries::Filters::Shared::ProjectFilter::Required,
            Queries::Filters::Shared::ProjectFilter::Optional
-        { autocomplete_options: project_autocompleter_options }
+        { autocomplete_options: project_autocomplete_options }
       when Queries::Filters::Shared::CustomFields::User
-        { autocomplete_options: user_autocomplete_options(filter) }
+        { autocomplete_options: user_autocomplete_options }
       else
         {}
       end
     end
 
-    def project_autocompleter_options
+    def project_autocomplete_options
       {
         component: "opce-project-autocompleter",
         resource: "projects",
@@ -85,7 +85,7 @@ module Filter
       }
     end
 
-    def user_autocomplete_options(filter)
+    def user_autocomplete_options
       {
         component: "opce-user-autocompleter",
         hideSelected: true,

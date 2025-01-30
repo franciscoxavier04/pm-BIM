@@ -349,24 +349,32 @@ module Pages
 
       def set_custom_field_filter(selected_filter, human_operator, values, send_keys: false)
         if selected_filter.has_css?('[data-filter-autocomplete="true"]', wait: 0)
-          values.each do |query|
-            select_autocomplete find('[data-filter-autocomplete="true"]'),
-                                query:,
-                                results_selector: "body"
-          end
-        elsif selected_filter[:"data-filter-type"] == "list_optional"
-          if values.size == 1
-            value_select = find('.single-select select[name="value"]')
-            value_select.select values.first
-          end
-        elsif selected_filter[:"data-filter-type"] == "date"
-          if human_operator == "on"
-            if send_keys
-              find_field("value").send_keys values.first
-            else
-              fill_in "value", with: values.first
-            end
-          end
+          set_autocomplete_filter(values)
+        elsif selected_filter[:"data-filter-type"] == "list_optional" && values.size == 1
+          set_list_filter(values)
+        elsif selected_filter[:"data-filter-type"] == "date" && human_operator == "on"
+          set_date_filter(values, send_keys)
+        end
+      end
+
+      def set_autocomplete_filter(values)
+        values.each do |query|
+          select_autocomplete find('[data-filter-autocomplete="true"]'),
+                              query:,
+                              results_selector: "body"
+        end
+      end
+
+      def set_list_filter(values)
+        value_select = find('.single-select select[name="value"]')
+        value_select.select values.first
+      end
+
+      def set_date_filter(values, send_keys)
+        if send_keys
+          find_field("value").send_keys values.first
+        else
+          fill_in "value", with: values.first
         end
       end
 
