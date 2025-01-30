@@ -39,7 +39,7 @@ RSpec.describe "Meeting index",
   shared_let(:past) do
     create(:structured_meeting,
            title: "an earlier meeting",
-           start_time: DateTime.parse("2025-01-29T07:00:00Z"),
+           start_time: DateTime.parse("2025-01-29T06:00:00Z"),
            project:,
            author: user)
   end
