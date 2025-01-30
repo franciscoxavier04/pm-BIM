@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   version-check:
-    if: contains(github.event.pull_request.labels.*.name, 'needs review')
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
 
     steps:
