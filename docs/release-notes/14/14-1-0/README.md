@@ -25,7 +25,7 @@ For more information, [please see our security advisory](https://github.com/opf/
 We unfortunately can no longer provide the OpenProject app for the Univention app center due to incompatibility of their PostgreSQL version in app center 5.0. They have announced that a newer PostgreSQL version will be available in a newer version of the app center.
 This means that we are unable to provide new versions of OpenProject in the Univention app center. The last version available in the app center is OpenProject 13.4.1.
 
-As OpenProject currently does not provide its own multi-container setup, the app is no longer upgradable. We recommend you switch to a docker- or packaged-based installation instead. Please use the [integrated backup functionality](../../system-admin-guide/backup/) to extract a backup from your installation. See the [restoration guide](../../installation-and-operations/operation/restoring/) on how to restore this backup to a new installation.
+As OpenProject currently does not provide its own multi-container setup, the app is no longer upgradable. We recommend you switch to a docker- or packaged-based installation instead. Please use the [integrated backup functionality](../../../system-admin-guide/backup/) to extract a backup from your installation. See the [restoration guide](../../../installation-and-operations/operation/restoring/) on how to restore this backup to a new installation.
 
 In the future, we are collaborating with Univention to provide a connector app for OpenProject, allowing you to integrate their IDM solution
 into an existing deployed OpenProject application.
@@ -43,7 +43,7 @@ If you need to work on the database directly, you can still use the `docker exec
 
 It is now possible to export a Gantt view as PDF in the OpenProject Enterprise edition. This allows users to easily print Gantt charts in a nice design. Choose between different paper formats, set the column width, and specify whether the PDF file should display your work packages on a daily, monthly or quarterly basis.
 
-Please note that we plan to further improve the [PDF export of Gantt view](../../user-guide/gantt-chart/#gantt-chart-pdf-export-enterprise-add-on) in future releases.
+Please note that we plan to further improve the [PDF export of Gantt view](../../../user-guide/gantt-chart/#gantt-chart-pdf-export-enterprise-add-on) in future releases.
 
 ![Export your Gantt view as PDF](openproject-14-1-gantt-pdf-export-figma.png)
 
@@ -53,7 +53,7 @@ This feature was requested by many in the Community and will be a great benefit,
 
 ![OpenProject dropdown menu showing favorite projects, displayed with yellow stars](openproject-14-1-favorite-projects-overview.shadow.png)
 
-See our documentation to learn more about [how to mark a project as favorite](../../user-guide/project-overview/#mark-a-project-as-favorite).
+See our documentation to learn more about [how to mark a project as favorite](../../../user-guide/project-overview/#mark-a-project-as-favorite).
 
 ### Advanced features for the Meetings module
 
@@ -74,13 +74,13 @@ Apart from these features that apply the Meetings module directly, the following
 
 **Please note**: On the project overview page and on the My page, the "+" button on the top right has been removed. However, new widgets can be added by project admins as usual if you hover at the border of an existing widget and click on the “+” there.
 
-Read more about [dynamic meetings in OpenProject](../../user-guide/meetings/dynamic-meetings/).
+Read more about [dynamic meetings in OpenProject](../../../user-guide/meetings/dynamic-meetings/).
 
 ### Possibility to hide attachments in the Files tab
 
 Admins now are able to hide the attachment section in the Files tab. This setting can be changed both at an instance and project levels and is particularly useful for projects where users should only upload files via external storage, e.g. Nextcloud.
 
-To make this possible Attachment and Files Storages settings were moved together under **Files** section, both in the [instance administration](../../system-admin-guide/files/attachments/) and under [project settings](../../user-guide/projects/project-settings/files/).
+To make this possible Attachment and Files Storages settings were moved together under **Files** section, both in the [instance administration](../../../system-admin-guide/files/attachments/) and under [project settings](../../../user-guide/projects/project-settings/files/).
 
 ![Show attachments setting in OpenProject](openproject-14-1-administration-files.png)
 
@@ -96,17 +96,17 @@ Users can now create custom field of the type Link (URL). Remember to activate i
 
 ![Create a custom field of the type Link](openproject-14-1-custom-field-link.png)
 
-Read more about [custom fields](../../system-admin-guide/custom-fields/).
+Read more about [custom fields](../../../system-admin-guide/custom-fields/).
 
 ### Save a changed sort order of custom project lists
 
 Custom project lists can now not only be changed in order, but also saved as such. Additionally, you can change your own saved lists and save them again so that you do not have to start from scratch.
 
-Read more on [project lists](../../user-guide/projects/project-lists/).
+Read more on [project lists](../../../user-guide/projects/project-lists/).
 
 ### A "Manage project attributes" button on the project overview page
 
-With OpenProject 14.0, we released the feature to create a custom set of project attributes grouped in sections on the project overview page. With 14.1, you will additionally have a button to [Manage project attributes](../../user-guide/project-overview/#project-attributes) on the project overview page.
+With OpenProject 14.0, we released the feature to create a custom set of project attributes grouped in sections on the project overview page. With 14.1, you will additionally have a button to [Manage project attributes](../../../user-guide/project-overview/#project-attributes) on the project overview page.
 
 ### OneDrive/SharePoint: A "no permission“ message to file links
 
@@ -191,4 +191,4 @@ Also thanks for finding and responsibly disclosing the CVE-2024-135224 vulnerabi
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight user [Syvert](https://crowdin.com/profile/syvert)
 who has done an outstanding number of translations for the Norwegian language in recent weeks.
 
-Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

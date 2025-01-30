@@ -34,7 +34,7 @@ When project folders are configured, all project-related files are automatically
 
 ![Manual project folders for OneDrive/SharePoint storages in OpenProject](onedrive-storage-add-folders.png)
 
-See our user guide to learn more about this Enterprise add-on and how to [use the SharePoint integration](../../user-guide/file-management/one-drive-integration/).
+See our user guide to learn more about this Enterprise add-on and how to [use the SharePoint integration](../../../user-guide/file-management/one-drive-integration/).
 
 ## Show file links of files that are not available to the user in the cloud storage
 
@@ -42,7 +42,7 @@ In 13.2 we improved the functionality of file storages. Even if a file has been 
 
 ![Deleted file storage file in OpenProject](deleted-file.png)
 
-This new feature is available for [both file storage integrations](../../user-guide/file-management).
+This new feature is available for [both file storage integrations](../../../user-guide/file-management).
 
 ## Filter for roles, groups, and shares in the project members list
 
@@ -50,19 +50,19 @@ With OpenProject 13.2, users can filter the list of project member based on user
 
 ![Project members filter in OpenProject](project-members.png)
 
-Read more about filtering the project members list in our [user guide](../../user-guide/members/#project-members-overview).
+Read more about filtering the project members list in our [user guide](../../../user-guide/members/#project-members-overview).
 
 ## Allow assignee and accountable for shared work packages (Enterprise add-on)
 
 In OpenProject 13.1, we introduced the work package sharing feature with external users. In the 13.2 release, these shared users can now be designated as assignee and accountable for the work packages that have been shared with them. This is useful for teams collaborating with external partners who cannot access sensitive project data but still require access to specific tasks within the project.
 
-Learn more about our [Sharing work packages (Enterprise add-on)](../../user-guide/work-packages/share-work-packages/).
+Learn more about our [Sharing work packages (Enterprise add-on)](../../../user-guide/work-packages/share-work-packages/).
 
 ## Status change without rights to edit a work package
 
 In OpenProject 13.2, the ability to modify the status of a work package is now separated from the broader "Edit work package" permission. This separation means that a user can be granted the right to change the status without having the permission to edit the entire work package.
 
-Read more about [roles and permissions for users of OpenProject](../../system-admin-guide/users-permissions/roles-permissions/).
+Read more about [roles and permissions for users of OpenProject](../../../system-admin-guide/users-permissions/roles-permissions/).
 
 ## Quick context menu in Gantt view: Show relations
 
@@ -72,7 +72,7 @@ Please note that this option is only available if you have selected a Gantt view
 
 ![Quick context menu in Gantt charts in OpenProject](gantt-relations.png)
 
-Read more about [Gantt charts in OpenProject](../../user-guide/gantt-chart/)
+Read more about [Gantt charts in OpenProject](../../../user-guide/gantt-chart/)
 
 ## New field names and calculation of work and remaining work
 
@@ -129,4 +129,4 @@ A very special thank you goes to our sponsors for features and improvements of t
 
 A big thanks to Community members for reporting bugs and helping us identifying and providing fixes, especially to Arun M, Patrick Massé and Richard Richter.
 
-A big thank you to every other dedicated user who has [reported bugs](../../development/report-a-bug), supported the community by asking and answering questions in the [forum](https://community.openproject.org/projects/openproject/boards) and provided translations on [CrowdIn](https://crowdin.com/projects/opf).
+A big thank you to every other dedicated user who has [reported bugs](../../../development/report-a-bug), supported the community by asking and answering questions in the [forum](https://community.openproject.org/projects/openproject/boards) and provided translations on [CrowdIn](https://crowdin.com/projects/opf).

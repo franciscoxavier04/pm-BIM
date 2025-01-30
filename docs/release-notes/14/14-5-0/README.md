@@ -18,9 +18,9 @@ In these Release Notes, we will give an overview of important feature changes as
 
 The installation repository for Docker Compose has been moved to [https://github.com/opf/openproject-docker-compose](https://github.com/opf/openproject-docker-compose).
 
-When updating, you will note that the repository now only contains the Docker compose setup, and the legacy Kubernetes deployment option has been removed. This means the folder structure has been changed slightly. No other changes are necessary. As we introduced a new local image starting in 14.4., the command to install and upgrade the Docker compose setup has been changed. Please double-check the [Docker compose installation guide](../../installation-and-operations/installation/docker/) on how to upgrade your installation.
+When updating, you will note that the repository now only contains the Docker compose setup, and the legacy Kubernetes deployment option has been removed. This means the folder structure has been changed slightly. No other changes are necessary. As we introduced a new local image starting in 14.4., the command to install and upgrade the Docker compose setup has been changed. Please double-check the [Docker compose installation guide](../../../installation-and-operations/installation/docker/) on how to upgrade your installation.
 
-If you are looking for an option to install OpenProject on Kubernetes, please use our [OpenProject Helm chart](../../installation-and-operations/installation/helm-chart/).
+If you are looking for an option to install OpenProject on Kubernetes, please use our [OpenProject Helm chart](../../../installation-and-operations/installation/helm-chart/).
 
 ## Important feature changes
 
@@ -38,7 +38,7 @@ Admins responsible for storages in OpenProject can now save time by enabling a s
 
 ![Example screenshot of the admin page of a Nextcloud file storage, showing the 'Enabled in projects' tab](openproject-14-5-multiple-projects-to-storage.png)
 
-This feature works for all [external file storages](../../system-admin-guide/files/external-file-storages/) that are currently possible with OpenProject.
+This feature works for all [external file storages](../../../system-admin-guide/files/external-file-storages/) that are currently possible with OpenProject.
 
 ### Export work package lists in an updated modal with additional settings
 
@@ -60,7 +60,7 @@ We did some design changes in the notification center, to improve your user expe
 
 In addition to reCAPTCHA, administrators can now use [CloudFlare Turnstile](https://developers.cloudflare.com/turnstile/) as Captcha. Cloudflare Turnstile is an alternative to Recaptcha that avoids user interaction. 
 
-To use Cloudflare Turnstile with OpenProject, you need to configure the reCAPTCHA settings in the Cloudflare dashboard. Read more in our [system admin guide](../../system-admin-guide/authentication/recaptcha/).
+To use Cloudflare Turnstile with OpenProject, you need to configure the reCAPTCHA settings in the Cloudflare dashboard. Read more in our [system admin guide](../../../system-admin-guide/authentication/recaptcha/).
 
 ![Screenshot showing OpenProject authentication administration with dropdown to choose CloudFlare Turnstile as Captcha](openproject-14-5-recaptcha-turnstile.png)
 
@@ -74,7 +74,7 @@ Filtering and searching project lists has been improved with OpenProject 14.5:
 1. A fixed search field has been added so that you can quickly enter a project name and search for it.
 2. When selecting a new filter, the project list below will immediately reload and display the selected filters.
 
-See our user guide to learn more about [project lists and how to filter them](../../user-guide/projects/project-lists/#project-lists-filters).
+See our user guide to learn more about [project lists and how to filter them](../../../user-guide/projects/project-lists/#project-lists-filters).
 
 ### PDF export of meeting agenda and meeting
 
@@ -199,7 +199,7 @@ We thank the following security researchers for approaching us with reports, war
 - Lukasz D. Tulikowski ([@tulik](https://github.com/tulik))
 - Iqra Aslam
 
-If you would like to report a vulnerability or help us make OpenProject more secure through other ways, please see our [Statement on Security](../../security-and-privacy/statement-on-security/) for more information.
+If you would like to report a vulnerability or help us make OpenProject more secure through other ways, please see our [Statement on Security](../../../security-and-privacy/statement-on-security/) for more information.
 
 ## Contributions
 
@@ -214,4 +214,4 @@ Last but not least, we are very grateful for our very engaged translation contri
 - [Sebvita_devinci](https://crowdin.com/profile/sebvita_devinci), for proof reading French translations.
 - [Alin Marcu](https://crowdin.com/profile/deconfcom), for proof reading Romanian translations.
 
-Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
