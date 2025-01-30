@@ -54,7 +54,7 @@ tr:
         frequency: "Sıklık"
         interval: "Zaman aralığı"
         start_date: "Başlama zamanı"
-        end_after: "Meeting series ends"
+        end_after: "Toplantı serisi bitişi"
         iterations: "Yineleme sayısı"
     errors:
       messages:
@@ -118,8 +118,8 @@ tr:
   label_recurring_meeting_view: "Toplantı serisini görüntüle"
   label_recurring_meeting_create: "Şablondan oluştur"
   label_recurring_meeting_copy: "Tek seferlik olarak kopyalayın"
-  label_recurring_meeting_cancel: "Cancel this occurrence"
-  label_recurring_meeting_delete: "Delete occurrence"
+  label_recurring_meeting_cancel: "Bu etklinliği iptal et"
+  label_recurring_meeting_delete: "İptal et"
   label_recurring_meeting_delete_confirmation: >
     This meeting is part of a series called %{name}. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   label_recurring_occurrence_delete_confirmation: >
@@ -218,8 +218,8 @@ tr:
         This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
       blankslate_finalize: >
         When you're done preparing this template, click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
-      label_view_template: "View template"
-      label_edit_template: "Edit template"
+      label_view_template: "Şablonu görüntüle"
+      label_edit_template: "Şablonu düzenle"
       banner_html: >
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
@@ -236,7 +236,7 @@ tr:
       daily_interval: "Her %{interval} günde"
       working_days: "Her iş günü"
       weekly: "Every week on %{weekday}"
-      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      weekly_interval: "Her %{interval} haftada bir %{weekday} günleri"
       frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
       never_ending: "%{base} at %{time}"

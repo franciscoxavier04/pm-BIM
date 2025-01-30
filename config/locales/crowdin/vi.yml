@@ -26,11 +26,11 @@ vi:
       no_results_title_text: Đã không có bất kỳ hoạt động nào cho dự án trong khung thời gian này.
     work_packages:
       activity_tab:
-        no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
-        label_activity_show_all: "Show everything"
-        label_activity_show_only_comments: "Show comments only"
-        label_activity_show_only_changes: "Show changes only"
+        no_results_title_text: Không hiện hoạt động nào
+        no_results_description_text: "Chọn \"Hiện mọi thứ\" để hiện tất cả các hoạt động và bình luận"
+        label_activity_show_all: "Hiện mọi thứ"
+        label_activity_show_only_comments: "Chỉ hiện bình luận"
+        label_activity_show_only_changes: "Chỉ hiện thay đổi"
         label_sort_asc: "Newest at the bottom"
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
@@ -3063,7 +3063,7 @@ vi:
     text_getting_started_description: "Nhận cái nhìn tổng quan nhanh về quản lý dự án và cộng tác nhóm với OpenProject. Bạn có thể khởi động lại video này từ menu trợ giúp."
     welcome: "Chào mừng đến với %{app_title}"
     select_language: "Vui lòng chọn ngôn ngữ của bạn"
-  permission_add_work_package_notes: "Thêm ghi chú"
+  permission_add_work_package_notes: "Add comments"
   permission_add_work_packages: "Thêm mới Gói công việc"
   permission_add_messages: "Đăng tin nhắn"
   permission_add_project: "Tạo dự án"
@@ -3093,10 +3093,11 @@ vi:
   permission_delete_timelines: "Xóa mốc thời gian"
   permission_delete_wiki_pages: "Xóa trang wiki"
   permission_delete_wiki_pages_attachments: "Xóa tệp đính kèm"
-  permission_edit_work_package_notes: "Chỉnh sửa ghi chú"
+  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Chỉnh sửa gói công việc"
   permission_edit_messages: "Chỉnh sửa tin nhắn"
-  permission_edit_own_work_package_notes: "Chỉnh sửa ghi chú của riêng bạn"
+  permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Chỉnh sửa tin nhắn của riêng bạn"
   permission_edit_own_time_entries: "Chỉnh sửa nhật ký thời gian của riêng bạn"
   permission_edit_project: "Chỉnh sửa dự án"
