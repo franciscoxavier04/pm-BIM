@@ -107,6 +107,20 @@ export default class TimeEntryController extends Controller {
       return;
     }
 
+    // The time entry input fields are currently not valid, so we do not need to calculate anything.
+    // A time entry input field is invalid when it is only partially filled out.
+    if (!this.startTimeInputTarget.checkValidity() || !this.endTimeInputTarget.checkValidity()) {
+      return;
+    }
+
+    // when we have reset one of the input fields for start- or end-time, we want to unset both fields
+    if ((initiatedBy === this.startTimeInputTarget && this.startTimeInputTarget.value === '') || (initiatedBy === this.endTimeInputTarget && this.endTimeInputTarget.value === '')) {
+      this.startTimeInputTarget.value = '';
+      this.endTimeInputTarget.value = '';
+      this.toggleEndTimePlusCaption(0, 0);
+      return;
+    }
+
     const startTimeParts = this.startTimeInputTarget.value.split(':');
     const endTimeParts = this.endTimeInputTarget.value.split(':');
 

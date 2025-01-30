@@ -50,6 +50,7 @@ module TimeEntries
                        required: start_and_end_time_required?,
                        label: TimeEntry.human_attribute_name(:start_time),
                        value: model.start_timestamp&.strftime("%H:%M"),
+                       show_clear_button: true,
                        data: {
                          "time-entry-target" => "startTimeInput",
                          "action" => "input->time-entry#timeInputChanged"
@@ -60,6 +61,7 @@ module TimeEntries
                        required: start_and_end_time_required?,
                        label: TimeEntry.human_attribute_name(:end_time),
                        value: model.end_timestamp&.strftime("%H:%M"),
+                       show_clear_button: true,
                        caption: end_time_caption,
                        data: {
                          "time-entry-target" => "endTimeInput",
