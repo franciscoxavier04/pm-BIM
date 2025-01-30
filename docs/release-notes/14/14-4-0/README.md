@@ -22,7 +22,7 @@ OpenProject 14.4 introduces a new feature that allows OpenID clients, such as Ne
 
 With this feature, the OpenProject API will validate access tokens issued by the OpenID provider (Keycloak) by checking the token's signature and authenticating the user using the sub claim value. This integration ensures secure and efficient API authentication for OpenID clients.
 
-For more details, take a look at our [API documentation](../../api/introduction/#oidc-provider-generated-jwt-as-a-bearer-token).
+For more details, take a look at our [API documentation](../../../api/introduction/#oidc-provider-generated-jwt-as-a-bearer-token).
 
 ### Improve error messages and logs of automatically managed project folders synchronization services/jobs
 
@@ -38,7 +38,7 @@ For more details, see https://community.openproject.org/wp/56861.
 
 ### Personal settings: Dark mode
 
-Dark mode for OpenProject is finally here! In the '[My account](../../user-guide/account-settings/#profile-settings)' section under 'Settings', there is an **option labeled 'Mode' where users can now select 'Dark (Beta).'** – as an alternative to the light mode. When the dark mode is selected, the change applies only to that user, not to the entire instance. 
+Dark mode for OpenProject is finally here! In the '[My account](../../../user-guide/account-settings/#profile-settings)' section under 'Settings', there is an **option labeled 'Mode' where users can now select 'Dark (Beta).'** – as an alternative to the light mode. When the dark mode is selected, the change applies only to that user, not to the entire instance. 
 
 ![News setting for dark mode in OpenProject, displayed in dark mode](openproject-14-4-dark-mode.png)
 
@@ -48,7 +48,7 @@ For more details, see https://community.openproject.org/wp/36233.
 
 ### Project attributes: Separate permissions for viewing and editing
 
-In OpenProject 14.4, new permissions for managing [project attributes](../../user-guide/projects/project-settings/project-attributes/) provide project admins with more control over who can view and edit these attributes.
+In OpenProject 14.4, new permissions for managing [project attributes](../../../user-guide/projects/project-settings/project-attributes/) provide project admins with more control over who can view and edit these attributes.
 
 The update adds **two new permissions: 'View project attributes' and 'Edit project attributes'**. 'View project attributes' is added to all roles, while 'Edit project attributes' is added to roles with the 'Edit project' permission.
 
@@ -66,7 +66,7 @@ Here is an example of a new status that triggers a % Complete of 73%:
 
 ![Screenshot showing the OpenProject administration for a new status with % Complete 73%](openproject-14-4-status-percentage-complete.png)
 
-For more details on status-based progress reporting, see our [system admin guide](../../system-admin-guide/manage-work-packages/work-package-status/).
+For more details on status-based progress reporting, see our [system admin guide](../../../system-admin-guide/manage-work-packages/work-package-status/).
 
 ### Nextcloud storages: Connection validation
 
@@ -76,7 +76,7 @@ Last month, we already released a connection validation feature for OneDrive/Sha
 
 The validations include checking if the external storage server is reachable, verifying for SSL errors, ensuring the server is accessible, confirming that necessary apps are activated on Nextcloud and that their versions are compatible, and validating the app password.
 
-Read more about connection validation for Nextcloud in our [system admin guide](../../system-admin-guide/files/external-file-storages/health-status/#connection-validation-for-nextcloud).
+Read more about connection validation for Nextcloud in our [system admin guide](../../../system-admin-guide/files/external-file-storages/health-status/#connection-validation-for-nextcloud).
 
 ### Project lists: Select/Exclude projects in project list explicitly via filter
 
@@ -124,7 +124,7 @@ In the activity tab, updates to long text custom fields will be displayed as in 
 
 ![Example screenshot showing how changes on a custom field will now look like in the work package activity tab](Custom_field__long_text__changed.png)
 
-Clicking on the "Details" link will take the user to the diff view, which is also used for work package descriptions and project status explanations. See our [user guide on custom fields](../../user-guide/projects/project-settings/custom-fields/) for more information.
+Clicking on the "Details" link will take the user to the diff view, which is also used for work package descriptions and project status explanations. See our [user guide on custom fields](../../../user-guide/projects/project-settings/custom-fields/) for more information.
 
 <!--more-->
 

@@ -31,7 +31,7 @@ The release contains various new features and improvements:
 
 We are delighted about the GitLab integration, which is officially available with OpenProject 13.4. It goes back to the plugin that Community contributor [Benjamin Tey](https://community.openproject.org/users/69094) created 3 years ago. Many thanks at this point to everyone who worked on the GitLab integration and the plugin – inside and outside of OpenProject's core development team! Such projects are a great example of the power of open source collaboration.💙
 
-With this integration, you can manage GitLab's units of work (merge requests and issues) from within OpenProject by linking them with work packages. Read more about OpenProject's GitLab integration [in our system admin guide](https://www.openproject.com/docs/system-admin-guide/integrations/gitlab-integration/).
+With this integration, you can manage GitLab's units of work (merge requests and issues) from within OpenProject by linking them with work packages. Read more about OpenProject's GitLab integration [in our system admin guide](../../../system-admin-guide/integrations/gitlab-integration/).
 
 <div class="blog-box-info">
 
@@ -48,7 +48,7 @@ Before upgrading, please do the following:
 
 ### Advanced features for custom project lists
 
-With OpenProject 13.4 we are again releasing further features for custom [project lists](../../user-guide/projects/project-lists/). The most important update here is that you can now modify the selection and order of columns, then save them in a  newly configured view, much like how you typically manage a work package list.
+With OpenProject 13.4 we are again releasing further features for custom [project lists](../../../user-guide/projects/project-lists/). The most important update here is that you can now modify the selection and order of columns, then save them in a  newly configured view, much like how you typically manage a work package list.
 
 In addition, you will now be reminded to save changes to your project list in the form of a **Save link** in the top right corner. This helps users remember to save the view and not lose their work when they leave the page.
 
@@ -72,7 +72,7 @@ Stay tuned: Further advanced features for our Meetings module are planned for up
 
 ### Virus scanning functionality with ClamAV (Enterprise add-on)
 
-Another important step towards data security: With OpenProject 13.4, users' uploaded files can be scanned for viruses, using the ClamAV antivirus engine. To do so, a new attachment menu item is created with Antivirus settings. Read more about virus scanning using ClamAV in our [system admin guide](../../system-admin-guide/files/attachments/virus-scanning/).
+Another important step towards data security: With OpenProject 13.4, users' uploaded files can be scanned for viruses, using the ClamAV antivirus engine. To do so, a new attachment menu item is created with Antivirus settings. Read more about virus scanning using ClamAV in our [system admin guide](../../../system-admin-guide/files/attachments/virus-scanning/).
 
 ![OpenProject's admin settings for virus scanning with ClamAV](openproject_virus_scanning.png)
 
@@ -173,4 +173,4 @@ An important part is also the translations, for which we thank the following con
 - [Marek Bajon](https://crowdin.com/profile/mbajon), who translated to Polish
 - [Vlastislav Dockal](https://crowdin.com/profile/vdockal), who translated to Czech
 
-Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
