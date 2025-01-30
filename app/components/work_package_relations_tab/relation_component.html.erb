@@ -75,57 +75,21 @@
     # Show dates for both visible and ghost relation
     if should_display_dates_row?
       flex.with_row(flex_layout: true, align_items: :center, color: :muted, mb: 2) do |dates_row|
-        if parent_child_relationship?
-          dates_row.with_column(mr: 1) do
-            render(Primer::Beta::Octicon.new(icon: :calendar))
-          end
-          dates_row.with_column do
-            render(Primer::Beta::Text.new) do
-              if related_work_package.start_date == related_work_package.due_date
-                "#{format_date(related_work_package.start_date)}"
-              else
-                "#{format_date(related_work_package.start_date)} - #{format_date(related_work_package.due_date)}"
-              end
-            end
-          end
-        else
-          if precedes? && lag_present?
-            dates_row.with_column(mr: 1) do
-              render(Primer::Beta::Octicon.new(icon: "arrow-both"))
-            end
-            dates_row.with_column(mr: 3) do
-              render(Primer::Beta::Text.new) do
-                lag_as_text(relation.lag)
-              end
-            end
-          end
-          dates_row.with_column(mr: 1) do
-            icon = if related_work_package.schedule_manually
-                     :pin
-                   else
-                     :calendar
-                   end
-            render(Primer::Beta::Octicon.new(icon:))
-          end
-          dates_row.with_column do
-            render(Primer::Beta::Text.new) do
-              if related_work_package.start_date == related_work_package.due_date
-                "#{format_date(related_work_package.start_date)}"
-              else
-                "#{format_date(related_work_package.start_date)} - #{format_date(related_work_package.due_date)}"
-              end
-            end
-          end
-          if follows? && lag_present?
-            dates_row.with_column(ml: 3, mr: 1) do
-              render(Primer::Beta::Octicon.new(icon: "arrow-both"))
-            end
-            dates_row.with_column(mr: 1) do
-              render(Primer::Beta::Text.new) do
-                lag_as_text(relation.lag)
-              end
-            end
-          end
+        if precedes? && lag_present?
+          dates_row.with_column(mr: 1) { render(Primer::Beta::Octicon.new(icon: "arrow-both")) }
+          dates_row.with_column(mr: 2) { render(Primer::Beta::Text.new) { lag_as_text(relation.lag) } }
+        end
+
+        dates_row.with_column(mr: 1) do
+          render(Primer::Beta::Octicon.new(icon: dates_icon(related_work_package)))
+        end
+        dates_row.with_column do
+          render(Primer::Beta::Text.new) { formatted_dates(related_work_package) }
+        end
+
+        if follows? && lag_present?
+          dates_row.with_column(ml: 2, mr: 1) { render(Primer::Beta::Octicon.new(icon: "arrow-both")) }
+          dates_row.with_column(mr: 1) { render(Primer::Beta::Text.new) { lag_as_text(relation.lag) } }
         end
       end
     end
