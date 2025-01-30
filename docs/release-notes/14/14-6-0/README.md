@@ -44,7 +44,7 @@ Additionally, users can include sub-projects when adding, which automatically se
 
 ![Screenshot showing the new administration page to add custom fields to multiple projects](open-project-14-6-custom-fields-new-highlighted.png)
 
-Learn more about [custom fields and how to create them](../../user-guide/projects/project-settings/custom-fields/) in our user guide.
+Learn more about [custom fields and how to create them](../../../user-guide/projects/project-settings/custom-fields/) in our user guide.
 
 ### Use relative work package attribute macros
 
@@ -56,7 +56,7 @@ Macros such as *workPackageValue:assignee* have been implemented, allowing the d
 
 ![Screenshot showing a work package with macros in the description](openproject-14-6-macros.png)
 
-See our [documentation for a list of available attributes for work packages](../../user-guide/wysiwyg/#available-attributes-for-work-packages) and take a look at [this blog article to learn more about using macros with OpenProject](https://www.openproject.org/blog/how-to-use-macros/).
+See our [documentation for a list of available attributes for work packages](../../../user-guide/wysiwyg/#available-attributes-for-work-packages) and take a look at [this blog article to learn more about using macros with OpenProject](https://www.openproject.org/blog/how-to-use-macros/).
 
 ### Show empty lines in saved rich text
 
@@ -66,7 +66,7 @@ Before 14.6, OpenProject's editors, such as in the work package description, did
 
 On the Meetings tab in the split screen view, the number next to the “Meetings (2)” tab should include both current and past meetings. Previously, only future meetings were counted. So if you use the Meetings module and reference work packages there, you may notice a higher number on the work package tab for meetings.
 ### Changes to design settings in administration
-[Design settings in OpenProject administration](../../system-admin-guide/design) were split into several sections, to make navigation easier and eliminate scrolling down the page to find the correct setting.
+[Design settings in OpenProject administration](../../../system-admin-guide/design) were split into several sections, to make navigation easier and eliminate scrolling down the page to find the correct setting.
 <!--more-->
 
 ## Bug fixes and changes
@@ -143,4 +143,4 @@ Last but not least, we are very grateful for our very engaged translation contri
 - [BigSeung](https://crowdin.com/profile/BigSeung), for translations into Korean.
 - [Raffaele Brevetti](https://crowdin.com/profile/rbrevetti), for translations into Italian.
 
-Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

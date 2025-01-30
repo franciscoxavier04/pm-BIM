@@ -23,7 +23,7 @@ Starting with this release, OpenProject will validate that the request HOST head
 In some cases, you may need to set `ProxyPreserveHost On` (Apache2) or `proxy_set_header Host $host;` (nginx) to avoid receiving errors.
 
 For more information on these changes, see the installation guides for your installation method of choice:
-[Installation documentation](../../installation-and-operations/installation/)
+[Installation documentation](../../../installation-and-operations/installation/)
 
 
 This choice will reduce the chance of errors in configuration while preventing the possibility of a host header injection from within the application - a common security vulnerability if not prevented at the proxying server itself.
@@ -61,7 +61,7 @@ For more information, see work package https://community.openproject.org/wp/5587
 
 ### Favorite project lists
 
-In addition to marking individual projects as favorites, users can now mark project lists as favorites. A star icon appears next to saved private project lists, turning yellow when marked as a favorite. [Read more about favorite project lists in our user guide](../../user-guide/projects/project-lists/#favorite-project-lists).
+In addition to marking individual projects as favorites, users can now mark project lists as favorites. A star icon appears next to saved private project lists, turning yellow when marked as a favorite. [Read more about favorite project lists in our user guide](../../../user-guide/projects/project-lists/#favorite-project-lists).
 
 ![Screenshot of a private project list and highlighted yellow stars - one as a button on the top right, one next to the name in the project lists overview](openproject-14-3-favorite-project-lists-highlighted.png)
 
@@ -69,8 +69,8 @@ In addition to marking individual projects as favorites, users can now mark proj
 
 Continuing our focus on project portfolio management, OpenProject 14.3 introduces the ability to share project lists. Users can now:
 
-- [Share project lists with everyone on your instance](../../user-guide/projects/project-lists/#share-with-everyone-at-openproject).
-- [Share project lists with specific users or groups](../../user-guide/projects/project-lists/#share-project-lists-with-individual-users-and-groups-enterprise-add-on).
+- [Share project lists with everyone on your instance](../../../user-guide/projects/project-lists/#share-with-everyone-at-openproject).
+- [Share project lists with specific users or groups](../../../user-guide/projects/project-lists/#share-project-lists-with-individual-users-and-groups-enterprise-add-on).
 
 Please note that sharing project lists with individuals or groups is, just like sharing work packages with individuals or groups, an Enterprise add-on.
 
@@ -83,7 +83,7 @@ In response to user feedback, OpenProject 14.3 now allows administrators to choo
 - Hours only
 - Hours and days
 
-This flexibility aims to accommodate different user preferences and improve the overall user experience. Read more about [units of measurement for progress reporting with OpenProject](../../user-guide/time-and-costs/progress-tracking/#units-of-measurement).
+This flexibility aims to accommodate different user preferences and improve the overall user experience. Read more about [units of measurement for progress reporting with OpenProject](../../../user-guide/time-and-costs/progress-tracking/#units-of-measurement).
 
 ![Admin settings to choose the progress reporting duration format](openproject-14-3-progress-reporting-hours-only.png)
 
@@ -91,7 +91,7 @@ This flexibility aims to accommodate different user preferences and improve the 
 
 With OpenProject 14.3, administrators can now manually trigger and test the connection for OneDrive/SharePoint storages. This feature helps ensure that storage settings are correctly configured and provides feedback if issues are detected. This validation is available once the file storage is fully configured and works for all OneDrive/SharePoint storages, supplementing the Health status check for automatically managed project folders.
 
-Read more about [connection validation for external file storages](../../system-admin-guide/files/external-file-storages/health-status/#connection-validation).
+Read more about [connection validation for external file storages](../../../system-admin-guide/files/external-file-storages/health-status/#connection-validation).
 
 > [!NOTE]
 > We will start working on connection validation for Nextcloud storages soon. So if you're using Nextcloud as external file storage, stay tuned for our next releases!
@@ -118,7 +118,7 @@ In OpenProject 14.3, users can now easily return to the global modules by unsele
 
 ### Gantt chart PDF export (Enterprise add-on): Date zoom based on calendar weeks
 
-When exporting a Gantt chart to PDF, users will now be able to select calendar weeks as date zoom. This feature is particularly helpful for environments that communicate events based on calendar weeks. Read more about how to [export data from a Gantt diagram in OpenProject](../../user-guide/gantt-chart/#how-to-export-data-from-a-gantt-diagram).
+When exporting a Gantt chart to PDF, users will now be able to select calendar weeks as date zoom. This feature is particularly helpful for environments that communicate events based on calendar weeks. Read more about how to [export data from a Gantt diagram in OpenProject](../../../user-guide/gantt-chart/#how-to-export-data-from-a-gantt-diagram).
 
 ![Screenshot of the Gantt chart PDF export, weeks selected as date zoom](openproject-14-3-gantt-chart-pdf-export.png)
 
@@ -192,4 +192,4 @@ A thank you also goes to Eric Guo for contributing the Date zoom based on calend
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight user [Todor Belov](https://crowdin.com/profile/todor.belov), who has done an outstanding number of translations for the Bulgarian language in recent weeks.
 
-Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

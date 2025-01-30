@@ -8,16 +8,16 @@ GIT
 
 GIT
   remote: https://github.com/opf/md-to-pdf
-  revision: fe05b4f8bae8fd46f4fa93b8e0adee6295ef7388
-  ref: fe05b4f8bae8fd46f4fa93b8e0adee6295ef7388
+  revision: 965034bdd4b119c7233ea4ecd62d3964d3dec11d
+  ref: 965034bdd4b119c7233ea4ecd62d3964d3dec11d
   specs:
-    md_to_pdf (0.1.2)
+    md_to_pdf (0.1.5)
       color_conversion (~> 0.1)
       front_matter_parser (~> 1.0)
       json-schema (~> 4.3)
       markly (~> 0.10)
       matrix (~> 0.4)
-      nokogiri (~> 1.16)
+      nokogiri (~> 1.18)
       prawn (~> 2.4)
       prawn-table (~> 0.2)
       text-hyphen (~> 1.5)
@@ -820,7 +820,7 @@ GEM
       actionview
       openproject-octicons (= 19.20.0)
       railties
-    openproject-primer_view_components (0.52.2)
+    openproject-primer_view_components (0.52.4)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.20.0)
@@ -1326,7 +1326,7 @@ DEPENDENCIES
   openproject-octicons (~> 19.20.0)
   openproject-octicons_helper (~> 19.20.0)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.52.2)
+  openproject-primer_view_components (~> 0.52.4)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!

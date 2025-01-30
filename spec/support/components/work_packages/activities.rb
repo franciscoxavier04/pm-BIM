@@ -184,6 +184,10 @@ module Components
         end
       end
 
+      def expect_activity_anchor_link(text:)
+        expect(page).to have_test_selector("activity-anchor-link", text:)
+      end
+
       def expect_unsaved_content(text)
         page.within_test_selector("op-work-package-journal-form-element") do
           editor = get_editor_form_field_element
