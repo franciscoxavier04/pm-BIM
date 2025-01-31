@@ -62,7 +62,7 @@ module Meetings
 
     def current_breadcrumb_element
       if section_present?
-        I18n.t("menus.breadcrumb.nested_element", section_header: current_section.header, title: page_title).html_safe
+        helpers.nested_breadcrumb_element(current_section.header, page_title)
       else
         page_title
       end
