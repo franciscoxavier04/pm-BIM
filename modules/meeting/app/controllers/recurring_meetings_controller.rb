@@ -231,7 +231,7 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def upcoming_meetings(count:)
-    instantiated = @recurring_meeting
+    opened = @recurring_meeting
       .upcoming_not_cancelled_meetings
       .index_by(&:start_time)
 
@@ -239,15 +239,15 @@ class RecurringMeetingsController < ApplicationController
       .upcoming_cancelled_meetings
       .index_by(&:start_time)
 
-    scheduled = @recurring_meeting
+    # Planned meetings consist of scheduled occurrences and cancelled meetings
+    # Open meetings are removed from the scheduled occurrences as they are displayed separately
+    planned = @recurring_meeting
                .scheduled_occurrences(limit: count + instantiated.count)
                .reject { |start_time| instantiated.include?(start_time) }
                .map { |start_time| cancelled[start_time] || scheduled_meeting(start_time) }
                .first(count)
 
-    # binding.pry
-
-    [instantiated.values.sort_by(&:start_time), scheduled]
+    [opened.values.sort_by(&:start_time), planned]
   end
 
   def scheduled_meeting(start_time)

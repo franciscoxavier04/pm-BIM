@@ -195,9 +195,6 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def upcoming_not_cancelled_meetings
-    # filter_scope = upcoming ? :upcoming : :past
-    # direction = upcoming ? :asc : :desc
-
     scheduled_meetings
       .includes(:meeting)
       .upcoming
@@ -206,9 +203,6 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def upcoming_cancelled_meetings
-    # filter_scope = upcoming ? :upcoming : :past
-    # direction = upcoming ? :asc : :desc
-
     scheduled_meetings
       .upcoming
       .cancelled
