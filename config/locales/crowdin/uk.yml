@@ -747,6 +747,8 @@ uk:
       required_description: "Позначає цей робочий пакет як обовʼязковий для звʼязаного з ним"
       label_parent_singular: "батьківський елемент"
       label_parent_plural: "батьківський елемент"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Запрошення
   account:
     delete: "Видалити обліковий запис"

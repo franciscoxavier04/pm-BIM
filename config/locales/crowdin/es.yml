@@ -733,6 +733,8 @@ es:
       required_description: "Marca este paquete de trabajo como requisito del relacionado"
       label_parent_singular: "principal"
       label_parent_plural: "principal"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitación
   account:
     delete: "Borrar cuenta"

@@ -733,6 +733,8 @@ pt-PT:
       required_description: "Assinala este pacote de trabalho como sendo um requisito para o pacote relacionado"
       label_parent_singular: "principal"
       label_parent_plural: "principal"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Convite
   account:
     delete: "Eliminar conta"

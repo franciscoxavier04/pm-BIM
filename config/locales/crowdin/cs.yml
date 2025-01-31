@@ -754,6 +754,8 @@ cs:
       required_description: "Označí tento pracovní balíček jako nevyhnutnost na související"
       label_parent_singular: "nadřazený"
       label_parent_plural: "nadřazený"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Pozvánka
   account:
     delete: "Odstranit účet"

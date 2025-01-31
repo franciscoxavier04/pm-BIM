@@ -726,6 +726,8 @@ ko:
       required_description: "이 작업 패키지를 관련 패키지에 대한 요구 사항으로 표시합니다"
       label_parent_singular: "부모"
       label_parent_plural: "부모"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: 초대
   account:
     delete: "계정 삭제"

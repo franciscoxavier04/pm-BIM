@@ -78,7 +78,7 @@ de:
     fixed_date: "Referenzdatum"
   button_add_rate: "Satz hinzufügen"
   button_log_costs: "Stückkosten buchen"
-  button_log_time: "Protokoll"
+  button_log_time: "Protokollieren"
   caption_booked_on_project: "Auf das Projekt gebucht"
   caption_default: "Standard"
   caption_default_rate_history_for: "Standardsatz-Historie für %{user}"

@@ -751,6 +751,8 @@ pl:
       required_description: "Oznacza ten pakiet roboczy jako wymaganie powiązanego pakietu roboczego"
       label_parent_singular: "nadrzędny"
       label_parent_plural: "nadrzędne"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Zaproszenie
   account:
     delete: "Usuń konto"

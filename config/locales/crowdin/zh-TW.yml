@@ -725,6 +725,8 @@ zh-TW:
       required_description: "將此工作項目標示為相關工作的需求"
       label_parent_singular: "上層"
       label_parent_plural: "上層"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: 邀請
   account:
     delete: "刪除帳號"

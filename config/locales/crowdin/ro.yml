@@ -745,6 +745,8 @@ ro:
       required_description: "Marchează acest pachet de lucru ca fiind o cerință pentru cel asociat"
       label_parent_singular: "părinte"
       label_parent_plural: "părinte"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitație
   account:
     delete: "Ştergere cont"

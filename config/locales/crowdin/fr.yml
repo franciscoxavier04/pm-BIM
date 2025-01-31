@@ -734,6 +734,8 @@ fr:
       required_description: "Marque ce lot de travaux comme étant une exigence pour le lot de travaux correspondant"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitation
   account:
     delete: "Supprimer le compte"

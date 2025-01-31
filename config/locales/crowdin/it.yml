@@ -732,6 +732,8 @@ it:
       required_description: "Contrassegna questa macro-attività come obbligatoria per quella correlata"
       label_parent_singular: "genitore"
       label_parent_plural: "genitore"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invito
   account:
     delete: "Cancella account"

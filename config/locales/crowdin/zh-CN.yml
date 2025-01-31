@@ -723,6 +723,8 @@ zh-CN:
       required_description: "将此工作包标记为相关工作包的需求"
       label_parent_singular: "父级"
       label_parent_plural: "父级"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: 邀请
   account:
     delete: "删除帐户"
