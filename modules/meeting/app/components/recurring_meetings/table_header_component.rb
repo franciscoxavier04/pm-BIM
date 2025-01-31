@@ -42,11 +42,5 @@ module RecurringMeetings
       @subtitle = subtitle
       @planned = planned
     end
-
-    private
-
-    def planned
-      @planned ? 5 : 0
-    end
   end
 end

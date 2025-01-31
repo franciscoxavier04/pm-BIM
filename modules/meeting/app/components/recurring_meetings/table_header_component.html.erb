@@ -30,7 +30,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   component_wrapper do
     flex_layout do |flex|
-      flex.with_row(mb: 2, mt: planned) do
+      flex.with_row(mb: 2, mt: @planned ? 5 : 0) do
         flex_layout(justify_content: :space_between) do |container|
           container.with_column do
             render(Primer::Beta::Heading.new(tag: :h3)) { @title }

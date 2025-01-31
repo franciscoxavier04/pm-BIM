@@ -36,11 +36,40 @@ See COPYRIGHT and LICENSE files for more details.
   <%= no_results_box %>
 <% else -%>
   <% if @direction == "past" -%>
-    <%= render RecurringMeetings::TableComponent.new(rows: @meetings, current_project: @project, count: @count, direction: @direction, max_count: @max_count) %>
+    <%= render RecurringMeetings::TableComponent.new(
+      rows: @meetings,
+      current_project: @project,
+      count: @count,
+      direction: @direction,
+      max_count: @max_count
+    ) %>
   <% else -%>
-    <%= render RecurringMeetings::TableHeaderComponent.new(meeting: @recurring_meeting, title: I18n.t("recurring_meeting.agenda_opened.title"), subtitle: I18n.t("recurring_meeting.agenda_opened.subtitle")) %>
-    <%= render RecurringMeetings::TableComponent.new(rows: @meetings, current_project: @project, count: @count, direction: @direction, max_count: @max_count) %>
-    <%= render RecurringMeetings::TableHeaderComponent.new(meeting: @recurring_meeting, title: I18n.t("recurring_meeting.planned.title"), subtitle: I18n.t("recurring_meeting.planned.subtitle"), planned: true) %>
-    <%= render RecurringMeetings::TableComponent.new(rows: @planned_meetings, current_project: @project, count: @count, direction: @direction, max_count: @max_count) %>
+    <%= render RecurringMeetings::TableHeaderComponent.new(
+      meeting: @recurring_meeting,
+      title: I18n.t("recurring_meeting.agenda_opened.title"),
+      subtitle: I18n.t("recurring_meeting.agenda_opened.subtitle")
+    ) %>
+    <%= render RecurringMeetings::TableComponent.new(
+      rows: @meetings,
+      current_project: @project,
+      count: @count,
+      direction: @direction,
+      max_count: @max_count,
+      test_selector: "agenda-opened-table"
+    ) %>
+    <%= render RecurringMeetings::TableHeaderComponent.new(
+      meeting: @recurring_meeting,
+      title: I18n.t("recurring_meeting.planned.title"),
+      subtitle: I18n.t("recurring_meeting.planned.subtitle"),
+      planned: true
+    ) %>
+    <%= render RecurringMeetings::TableComponent.new(
+      rows: @planned_meetings,
+      current_project: @project,
+      count: @count,
+      direction: @direction,
+      max_count: @max_count,
+      test_selector: "planned-table"
+    ) %>
    <% end -%>
 <% end -%>
