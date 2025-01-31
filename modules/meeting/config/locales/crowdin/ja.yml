@@ -53,6 +53,7 @@ ja:
         frequency: "頻度"
         interval: "インターバル"
         start_date: "開始:"
+        end_after: "シリーズ終了"
         end_after: "Meeting series ends"
         iterations: "Occurrences"
     errors:
@@ -228,7 +229,7 @@ ja:
       weekly: "Weekly"
     end_after:
       never: "never"
-      specific_date: "after a specific date"
+      specific_date: "特定の日付"
       iterations: "after a number of occurrences"
     starts: "Starts"
     in_words:
