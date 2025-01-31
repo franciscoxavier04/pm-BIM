@@ -38,8 +38,9 @@ module OpenIDConnect
       RS512
     ].freeze
 
-    def initialize(verify_audience: true, required_claims: [])
+    def initialize(verify_audience: true, verify_expiration: true, required_claims: [])
       @verify_audience = verify_audience
+      @verify_expiration = verify_expiration
       @required_claims = required_claims
     end
 
@@ -56,6 +57,7 @@ module OpenIDConnect
           true,
           {
             algorithm: alg,
+            verify_expiration: @verify_expiration,
             verify_aud: @verify_audience,
             aud: provider.client_id,
             required_claims: all_required_claims
