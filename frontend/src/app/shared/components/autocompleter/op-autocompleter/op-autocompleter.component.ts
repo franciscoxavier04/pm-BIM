@@ -20,7 +20,7 @@ import {
   TemplateRef,
   Type,
   ViewChild,
-  ViewContainerRef,
+  ViewContainerRef, ViewEncapsulation,
 } from '@angular/core';
 import { DropdownPosition, NgSelectComponent } from '@ng-select/ng-select';
 import { BehaviorSubject, merge, NEVER, Observable, of, Subject } from 'rxjs';
@@ -74,6 +74,7 @@ export interface IAutocompleterTemplateComponent {
 @Component({
   selector: 'op-autocompleter',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './op-autocompleter.component.html',
   styleUrls: ['./op-autocompleter.component.sass'],
   providers: [
