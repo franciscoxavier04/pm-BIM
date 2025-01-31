@@ -103,7 +103,7 @@ class Relation < ApplicationRecord
   scope :follows_with_lag,
         -> { follows.where("lag > 0") }
 
-  validates :lag, numericality: { allow_nil: true }
+  validates :lag, numericality: { allow_nil: true, less_than_or_equal_to: 2_147_483_647 }
 
   validates :to, presence: true, uniqueness: { scope: :from }
 
