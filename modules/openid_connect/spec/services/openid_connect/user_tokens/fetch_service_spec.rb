@@ -30,11 +30,13 @@
 require "spec_helper"
 
 RSpec.describe OpenIDConnect::UserTokens::FetchService, :webmock do
-  let(:service) { described_class.new(user:, jwt_parser:) }
-  let(:user) { create(:user, identity_url: "#{provider.slug}:1337") }
-  let(:provider) { create(:oidc_provider) }
+  let(:service) { described_class.new(user:, jwt_parser:, token_exchange:, token_refresh:) }
+  let(:user) { create(:user) }
   let(:jwt_parser) { instance_double(OpenIDConnect::JwtParser, parse: Success([parsed_jwt, nil])) }
   let(:parsed_jwt) { { "exp" => Time.now.to_i + 60 } }
+
+  let(:token_exchange) { instance_double(OpenIDConnect::UserTokens::ExchangeService, supported?: false) }
+  let(:token_refresh) { instance_double(OpenIDConnect::UserTokens::RefreshService) }
 
   let(:access_token) { "the-access-token" }
   let(:refresh_token) { "the-refresh-token" }
@@ -42,56 +44,16 @@ RSpec.describe OpenIDConnect::UserTokens::FetchService, :webmock do
   let(:existing_audience) { "existing-audience" }
   let(:queried_audience) { existing_audience }
 
-  let(:refresh_response) do
-    {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-      body: { access_token: "#{access_token}-refreshed", refresh_token: "#{refresh_token}-refreshed" }.to_json
-    }
-  end
-
   before do
     user.oidc_user_tokens.create!(access_token:, refresh_token:, audiences: [existing_audience])
-    stub_request(:post, provider.token_endpoint).to_return(**refresh_response)
-  end
-
-  shared_examples_for "returns a refreshed access token" do
-    it { is_expected.to be_success }
-
-    it "returns a refreshed access token" do
-      expect(result.value!).to eq("the-access-token-refreshed")
+    allow(token_refresh).to receive(:call) do |token|
+      token.update!(access_token: "access-token-refreshed", refresh_token: "refresh-token-refreshed")
+      Success(token)
     end
-
-    it "updates the stored access token" do
-      expect { subject }.to change { user.oidc_user_tokens.first.access_token }.to("the-access-token-refreshed")
-    end
-
-    it "updates the stored refresh token" do
-      expect { subject }.to change { user.oidc_user_tokens.first.refresh_token }.to("the-refresh-token-refreshed")
-    end
-
-    context "when the refresh response is unexpected JSON" do
-      let(:refresh_response) do
-        {
-          status: 200, # misbehaving server responds with wrong JSON for success status
-          headers: { "Content-Type": "application/json" },
-          body: { error: "I can't let you do that Dave!" }.to_json
-        }
-      end
-
-      it { is_expected.to be_failure }
-    end
-
-    context "when the refresh response has unexpected status" do
-      let(:refresh_response) do
-        {
-          status: 502,
-          headers: { "Content-Type": "text/html" },
-          body: "<html><body>502 Bad Gateway</body></html>"
-        }
-      end
-
-      it { is_expected.to be_failure }
+    allow(token_exchange).to receive(:call) do |aud|
+      Success(user.oidc_user_tokens.create!(access_token: "access-token-exchanged",
+                                            refresh_token: "refresh-token-exchanged",
+                                            audiences: [aud]))
     end
   end
 
@@ -117,17 +79,10 @@ RSpec.describe OpenIDConnect::UserTokens::FetchService, :webmock do
     context "when the token is expired" do
       let(:parsed_jwt) { { "exp" => Time.now.to_i } }
 
-      it_behaves_like "returns a refreshed access token"
+      it { is_expected.to be_success }
 
-      context "and there is no refresh token" do
-        let(:refresh_token) { nil }
-
-        it { is_expected.to be_failure }
-
-        it "does not try to perform a token refresh" do
-          subject
-          expect(WebMock).not_to have_requested(:post, provider.token_endpoint)
-        end
+      it "returns the refreshed access token" do
+        expect(result.value!).to eq("access-token-refreshed")
       end
     end
 
@@ -135,29 +90,42 @@ RSpec.describe OpenIDConnect::UserTokens::FetchService, :webmock do
       let(:queried_audience) { "wrong-audience" }
 
       it { is_expected.to be_failure }
+
+      it "does not attempt a token exchange" do
+        subject
+        expect(token_exchange).not_to have_received(:call)
+      end
+
+      context "and the provider is token exchange capable" do
+        let(:token_exchange) { instance_double(OpenIDConnect::UserTokens::ExchangeService, supported?: true) }
+
+        it { is_expected.to be_success }
+
+        it "returns the exchanged access token" do
+          expect(result.value!).to eq("access-token-exchanged")
+        end
+
+        it "tries to exchange the correct audience" do
+          subject
+          expect(token_exchange).to have_received(:call).with(queried_audience)
+        end
+      end
     end
   end
 
   describe "#refreshed_access_token_for" do
     subject(:result) { service.refreshed_access_token_for(audience: queried_audience) }
 
-    it_behaves_like "returns a refreshed access token"
+    it { is_expected.to be_success }
+
+    it "returns the refreshed access token" do
+      expect(result.value!).to eq("access-token-refreshed")
+    end
 
     context "when audience can't be found" do
       let(:queried_audience) { "wrong-audience" }
 
       it { is_expected.to be_failure }
-    end
-
-    context "and there is no refresh token" do
-      let(:refresh_token) { nil }
-
-      it { is_expected.to be_failure }
-
-      it "does not try to perform a token refresh" do
-        subject
-        expect(WebMock).not_to have_requested(:post, provider.token_endpoint)
-      end
     end
   end
 end

@@ -36,10 +36,15 @@ module OpenIDConnect
     # client_id at an identity provider that OpenProject and the application have in common.
     class FetchService
       include Dry::Monads[:result]
+      include Dry::Monads::Do.for(:access_token_for, :refreshed_access_token_for)
 
-      def initialize(user:, jwt_parser: JwtParser.new(verify_audience: false, verify_expiration: false))
+      def initialize(user:,
+                     jwt_parser: JwtParser.new(verify_audience: false, verify_expiration: false),
+                     token_exchange: ExchangeService.new(user:),
+                     token_refresh: RefreshService.new(user:, token_exchange:))
         @user = user
-        @provider = user.authentication_provider
+        @token_exchange = token_exchange
+        @token_refresh = token_refresh
         @jwt_parser = jwt_parser
       end
 
@@ -51,17 +56,14 @@ module OpenIDConnect
       # identified as being expired. There is no guarantee that all access tokens will be properly
       # recognized as expired, so client's still need to make sure to handle rejected access tokens
       # properly. Also see #refreshed_access_token_for.
+      #
+      # A token exchange is attempted, if the provider supports OAuth 2.0 Token Exchange and a token
+      # for the target audience either can't be found or it has expired, but has no available refresh token.
       def access_token_for(audience:)
-        token = token_with_audience(audience)
-        token = token.bind do |t|
-          if expired?(t.access_token)
-            refresh(t)
-          else
-            Success(t)
-          end
-        end
+        token = yield token_with_audience(audience)
+        token = yield @token_refresh.call(token) if expired?(token.access_token)
 
-        token.fmap(&:access_token)
+        Success(token.access_token)
       end
 
       ##
@@ -71,45 +73,24 @@ module OpenIDConnect
       # The access token will always be refreshed before being returned by this method.
       # It is advised to use this method, after learning that a remote service rejected
       # an access token, because it was expired.
+      #
+      # A token exchange is attempted, if the provider supports OAuth 2.0 Token Exchange and a token
+      # for the target audience either can't be found or it has expired, but has no available refresh token.
       def refreshed_access_token_for(audience:)
-        token_with_audience(audience)
-          .bind { |t| refresh(t) }
-          .fmap(&:access_token)
+        token = yield token_with_audience(audience)
+        token = yield @token_refresh.call(token)
+        Success(token.access_token)
       end
 
       private
 
       def token_with_audience(aud)
         token = @user.oidc_user_tokens.where("audiences ? :aud", aud:).first
-        token ? Success(token) : Failure("No token for given audience")
-      end
+        return Success(token) if token
 
-      def refresh(token)
-        return Failure("Can't refresh the access token") if token.refresh_token.blank?
+        return @token_exchange.call(aud) if @token_exchange.supported?
 
-        refresh_token_request(token.refresh_token).bind do |json|
-          access_token = json["access_token"]
-          refresh_token = json["refresh_token"]
-          break Failure("Refresh token response invalid") if access_token.blank?
-
-          token.update!(access_token:, refresh_token:)
-
-          Success(token)
-        end
-      end
-
-      def refresh_token_request(refresh_token)
-        response = OpenProject.httpx
-                              .basic_auth(@provider.client_id, @provider.client_secret)
-                              .post(@provider.token_endpoint, form: {
-                                      grant_type: :refresh_token,
-                                      refresh_token:
-                                    })
-        response.raise_for_status
-
-        Success(response.json)
-      rescue HTTPX::Error => e
-        Failure(e)
+        Failure("No token for audience '#{aud}'")
       end
 
       def expired?(token_string)
