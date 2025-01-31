@@ -46,6 +46,7 @@ module TimeEntries
     validate :validate_hours_are_in_range
     validate :validate_project_is_set
     validate :validate_work_package
+    validate :validate_user
 
     validates :spent_on,
               date: { before_or_equal_to: Proc.new { Date.new(9999, 12, 31) },
@@ -97,6 +98,15 @@ module TimeEntries
       end
     end
 
+    def validate_user
+      return unless model.user || model.user_id_changed?
+      return if model.user == model.logged_by
+
+      if user_invisible?
+        errors.add :user_id, :invalid
+      end
+    end
+
     def validate_hours_are_in_range
       errors.add :hours, :invalid if model.hours&.negative?
     end
@@ -117,8 +127,8 @@ module TimeEntries
       model.work_package && model.project != model.work_package.project
     end
 
-    def validate_logged_by_current_user
-      errors.add :logged_by_id, :not_current_user if model.logged_by != logged_by
+    def user_invisible?
+      model.user.nil? || !model.user.visible?
     end
 
     def validate_self_timer
