@@ -32,19 +32,19 @@ module RecurringMeetings
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, title:, subtitle:, space: false)
+    def initialize(meeting:, title:, subtitle:, planned: false)
       super
 
       @meeting = meeting
       @title = title
       @subtitle = subtitle
-      @space = space
+      @planned = planned
     end
 
     private
 
-    def space
-      @space ? 2 : 0
+    def planned
+      @planned ? 5 : 0
     end
   end
 end
