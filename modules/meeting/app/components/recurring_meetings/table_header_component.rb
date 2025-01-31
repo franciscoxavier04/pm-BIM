@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,14 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module RecurringMeetingsHelper
-  def max_count
-    if @direction == "past"
-      @recurring_meeting.scheduled_instances(upcoming: false).count
-    else
-      open = @recurring_meeting.upcoming_not_cancelled_meetings
+module RecurringMeetings
+  class TableHeaderComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
+    include OpPrimer::ComponentHelpers
 
-      @recurring_meeting.remaining_occurrences&.count&.- open.count
+    def initialize(meeting:, title:, subtitle:, planned: false)
+      super
+
+      @meeting = meeting
+      @title = title
+      @subtitle = subtitle
+      @planned = planned
     end
   end
 end

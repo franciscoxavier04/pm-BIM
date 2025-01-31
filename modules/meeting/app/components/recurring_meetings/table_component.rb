@@ -39,7 +39,7 @@ module RecurringMeetings
     end
 
     def has_footer?
-      return false unless recurring_meeting
+      return false unless recurring_meeting && rows.any? { |r| r.id.nil? }
       return true if options[:max_count].nil?
 
       options[:max_count] - count > 0

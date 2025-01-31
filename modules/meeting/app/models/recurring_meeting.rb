@@ -194,6 +194,21 @@ class RecurringMeeting < ApplicationRecord
       .order(start_time: direction)
   end
 
+  def upcoming_not_cancelled_meetings
+    scheduled_meetings
+      .includes(:meeting)
+      .upcoming
+      .not_cancelled
+      .order(start_time: :asc)
+  end
+
+  def upcoming_cancelled_meetings
+    scheduled_meetings
+      .upcoming
+      .cancelled
+      .order(start_time: :asc)
+  end
+
   private
 
   def unset_schedule
