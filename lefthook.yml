@@ -17,6 +17,10 @@ pre-commit:
       files: git diff --name-only --staged
       glob: "*.rb"
       run: bin/dirty-rubocop --uncommitted --force-exclusion {files}
+    erb_lint:
+      files: git diff --name-only --staged
+      glob: "*.erb"
+      run: erb_lint {files}
     primer-view-components-version-is-the-same-everyhwere:
       files: git diff --name-only --staged
       glob: "{Gemfile.lock,frontend/package.json}"
