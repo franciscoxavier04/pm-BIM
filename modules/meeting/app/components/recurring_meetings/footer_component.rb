@@ -42,6 +42,10 @@ module RecurringMeetings
       @max_count = max_count
     end
 
+    def next_count
+      @current_count + PaginationHelper::SHOW_MORE_DEFAULT_INCREMENT
+    end
+
     def label
       # If it never ends, don't try to count it
       return endless_label if @meeting.end_after_never?
