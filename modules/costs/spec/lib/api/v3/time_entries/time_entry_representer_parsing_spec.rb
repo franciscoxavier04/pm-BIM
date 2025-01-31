@@ -185,7 +185,7 @@ RSpec.describe API::V3::TimeEntries::TimeEntryRepresenter, "parsing" do
           # We are sending in 12:30:00 UTC as the start time, in Tokyo time (for 2017-07-28) that equals
           # 21:30:00 in Japan Standard Time (JST), so the time should be set to 21:30
 
-          expect(time_entry.start_time).to eq((21 * 60) + 30) # 12:30
+          expect(time_entry.start_time).to eq((21 * 60) + 30) # 21:30
 
           expect(time_entry.start_timestamp).to eq(DateTime.parse("2017-07-28T12:30:00Z"))
           expect(time_entry.end_timestamp).to eq(DateTime.parse("2017-07-28T17:30:00Z"))
