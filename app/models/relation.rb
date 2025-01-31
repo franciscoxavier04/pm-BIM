@@ -105,9 +105,7 @@ class Relation < ApplicationRecord
 
   validates :lag, numericality: { allow_nil: true, less_than_or_equal_to: 2_147_483_647 }
 
-  validates :to, presence: true, uniqueness: { scope: :from }
-
-  validates :from, presence: true
+  validates :to, uniqueness: { scope: :from }
 
   before_validation :reverse_if_needed
 
