@@ -52,7 +52,7 @@ RSpec.describe "Manual scheduling", :js do
       start_date.expect_active!
 
       # Expect not to be scheduled manually
-      start_date.expect_scheduling_mode manually: false
+      start_date.expect_automatic_scheduling_mode
 
       # Expect not editable
       start_date.within_modal do
@@ -86,7 +86,7 @@ RSpec.describe "Manual scheduling", :js do
       due_date.cancel_by_click
 
       start_date.activate!
-      start_date.expect_scheduling_mode manually: false
+      start_date.expect_automatic_scheduling_mode
 
       # Expect not editable
       start_date.within_modal do

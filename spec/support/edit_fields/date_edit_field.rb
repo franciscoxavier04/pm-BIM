@@ -32,8 +32,11 @@ class DateEditField < EditField
            :expect_duration,
            :set_duration,
            :duration_field,
-           :toggle_ignore_non_working_days,
-           :toggle_scheduling_mode, to: :datepicker
+           :toggle_working_days_only,
+           :toggle_scheduling_mode,
+           :expect_manual_scheduling_mode,
+           :expect_automatic_scheduling_mode,
+           to: :datepicker
 
   def modal_selector
     '[data-test-selector="op-datepicker-modal"]'
@@ -55,19 +58,6 @@ class DateEditField < EditField
     else
       super
     end
-  end
-
-  def expect_scheduling_mode(manually:)
-    datepicker.expect_scheduling_mode(manually)
-  end
-
-  def set_scheduling_mode(manually:)
-    # Expect currently set before toggling
-    expect_scheduling_mode(manually:)
-    # Change mode
-    datepicker.toggle_scheduling_mode
-    # Expect toggled
-    expect_scheduling_mode(manually: !manually)
   end
 
   def activate_start_date_within_modal
