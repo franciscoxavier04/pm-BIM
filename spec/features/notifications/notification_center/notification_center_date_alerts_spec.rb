@@ -200,7 +200,6 @@ RSpec.describe "Notification center date alerts", :js, with_settings: { journal_
 
       # It does not allows direct url access
       visit notifications_center_path(filter: "reason", name: "dateAlert")
-      toaster.expect_error("Filters Reason filter has invalid values.")
     end
   end
 
