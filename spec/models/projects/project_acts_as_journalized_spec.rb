@@ -202,6 +202,170 @@ RSpec.describe Project, "acts_as_journalized" do
     end
   end
 
+  describe "life cycle steps", with_settings: { journal_aggregation_time_minutes: 0 } do
+    describe "activation/deactivation" do
+      let!(:stage) { build(:project_stage, project:, active: true, start_date: nil, end_date: nil) }
+      let!(:gate) { build(:project_gate, project:, active: true, date: nil) }
+
+      context "when adding activated" do
+        it "contains the change" do
+          project.update!(life_cycle_steps: [stage, gate])
+
+          expect(project.last_journal.details).to eq(
+            {
+              "project_life_cycle_step_#{stage.id}" => { "active" => [nil, true] },
+              "project_life_cycle_step_#{gate.id}" => { "active" => [nil, true] }
+            }
+          )
+        end
+      end
+
+      context "when deactivating" do
+        before do
+          project.update!(life_cycle_steps: [stage, gate])
+        end
+
+        it "contains the change" do
+          stage.update(active: false)
+          gate.update(active: false)
+          project.save!
+
+          expect(project.last_journal.details).to eq(
+            {
+              "project_life_cycle_step_#{stage.id}" => { "active" => [true, false] },
+              "project_life_cycle_step_#{gate.id}" => { "active" => [true, false] }
+            }
+          )
+        end
+      end
+    end
+
+    describe "modifying dates" do
+      let!(:stage) { create(:project_stage, project:, start_date: original_stage_start, end_date: original_stage_end) }
+      let!(:gate) { create(:project_gate, project:, date: original_gate_date) }
+
+      before do
+        project.save!
+      end
+
+      context "when setting dates" do
+        let(:original_stage_start) { nil }
+        let(:original_stage_end) { nil }
+        let(:original_gate_date) { nil }
+
+        it "contains the change" do
+          stage.update(start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 1, 31))
+          gate.update(date: Date.new(2025, 2, 1))
+          project.save!
+
+          expect(project.last_journal.details).to match(
+            {
+              "project_life_cycle_step_#{stage.id}" => hash_including(
+                "date_range" => [
+                  nil,
+                  Date.new(2025, 1, 30)..Date.new(2025, 1, 31)
+                ]
+              ),
+              "project_life_cycle_step_#{gate.id}" => hash_including(
+                "date" => [
+                  nil, Date.new(2025, 2, 1)
+                ]
+              )
+            }
+          )
+        end
+      end
+
+      context "when changing dates" do
+        let(:original_stage_start) { Date.new(2025, 1, 30) }
+        let(:original_stage_end) { Date.new(2025, 1, 31) }
+        let(:original_gate_date) { Date.new(2025, 2, 1) }
+
+        it "contains the change" do
+          stage.update(start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 2, 1))
+          gate.update(date: Date.new(2025, 2, 3))
+          project.save!
+
+          expect(project.last_journal.details).to match(
+            {
+              "project_life_cycle_step_#{stage.id}" => hash_including(
+                "date_range" => [
+                  Date.new(2025, 1, 30)..Date.new(2025, 1, 31),
+                  Date.new(2025, 1, 30)..Date.new(2025, 2, 1)
+                ]
+              ),
+              "project_life_cycle_step_#{gate.id}" => hash_including(
+                "date" => [
+                  Date.new(2025, 2, 1),
+                  Date.new(2025, 2, 3)
+                ]
+              )
+            }
+          )
+        end
+      end
+
+      context "when removing dates" do
+        let(:original_stage_start) { Date.new(2025, 1, 30) }
+        let(:original_stage_end) { Date.new(2025, 1, 31) }
+        let(:original_gate_date) { Date.new(2025, 2, 1) }
+
+        it "contains the change" do
+          stage.update(start_date: nil, end_date: nil)
+          gate.update(date: nil)
+          project.save!
+
+          expect(project.last_journal.details).to match(
+            {
+              "project_life_cycle_step_#{stage.id}" => hash_including(
+                "date_range" => [
+                  Date.new(2025, 1, 30)..Date.new(2025, 1, 31),
+                  nil
+                ]
+              ),
+              "project_life_cycle_step_#{gate.id}" => hash_including(
+                "date" => [
+                  Date.new(2025, 2, 1),
+                  nil
+                ]
+              )
+            }
+          )
+        end
+      end
+    end
+
+    describe "combined" do
+      let!(:stage) do
+        build(:project_stage, project:, active: true, start_date: Date.new(2025, 1, 30), end_date: Date.new(2025, 1, 31))
+      end
+      let!(:gate) { build(:project_gate, project:, active: true, date: Date.new(2025, 2, 1)) }
+
+      it "contains both changes" do
+        project.update!(life_cycle_steps: [stage, gate])
+
+        expect(project.last_journal.details).to match(
+          {
+            "project_life_cycle_step_#{stage.id}" => hash_including(
+              "active" => [nil, true],
+              "date_range" => [
+                nil,
+                Date.new(2025, 1, 30)..Date.new(2025, 1, 31)
+              ]
+            ),
+            "project_life_cycle_step_#{gate.id}" => hash_including(
+              "active" => [nil, true],
+              "date" => [
+                nil,
+                Date.new(2025, 2, 1)
+              ]
+            )
+          }
+        )
+      end
+    end
+  end
+
   describe "on project deletion" do
     shared_let(:custom_field) { create(:string_project_custom_field) }
     let(:custom_value) do
