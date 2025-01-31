@@ -39,6 +39,16 @@ FactoryBot.define do
       time_entry.project ||= time_entry.work_package.project
     end
 
+    after(:create) do |time_entry|
+      time_entry.update(project: time_entry.work_package.project)
+
+      # ensure user is member of project
+      unless time_entry.user.member_of?(time_entry.project)
+        role = create(:project_role, permissions: [:view_project])
+        create(:member, user: time_entry.user, project: time_entry.project, roles: [role])
+      end
+    end
+
     trait :with_start_and_end_time do
       time_zone { "Asia/Tokyo" }
       start_time { 390 } # 6:30 AM
