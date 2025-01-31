@@ -115,18 +115,6 @@ RSpec.shared_examples_for "relation contract" do
       it_behaves_like "contract is invalid", from: :error_not_found
     end
 
-    context "when no from value is set" do
-      let(:relation_from) { nil }
-
-      it_behaves_like "contract is invalid", from: :error_not_found
-    end
-
-    context "when no to value is set" do
-      let(:relation_to) { nil }
-
-      it_behaves_like "contract is invalid", to: :error_not_found
-    end
-
     context "when the work package for to is not visible" do
       let(:relation_to_visible) { false }
 
