@@ -474,22 +474,22 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
                                    text: "The dates are determined by child work packages.\nClick on \"Show relations\" for Gantt overview.")
 
           # Expect "Working days only" to be checked
-          datepicker.expect_ignore_non_working_days_disabled
-          datepicker.expect_ignore_non_working_days false, disabled: true
+          datepicker.expect_working_days_only_disabled
+          datepicker.expect_working_days_only true
 
           # When toggling manually scheduled
           start_date.toggle_scheduling_mode
-          datepicker.expect_ignore_non_working_days_enabled
-          datepicker.toggle_ignore_non_working_days
-          datepicker.expect_ignore_non_working_days true
+          datepicker.expect_working_days_only_enabled
+          datepicker.toggle_working_days_only
+          datepicker.expect_working_days_only false
 
           expect(page).to have_css(test_selector("op-modal-banner-warning").to_s,
                                    text: "Manually scheduled. Dates not affected by relations.\nThis has child work packages but their start dates are ignored.")
 
           # Reset when disabled
           start_date.toggle_scheduling_mode
-          datepicker.expect_ignore_non_working_days_disabled
-          datepicker.expect_ignore_non_working_days false, disabled: true
+          datepicker.expect_working_days_only_disabled
+          datepicker.expect_working_days_only true
 
           expect(page).to have_css(test_selector("op-modal-banner-info").to_s,
                                    text: "The dates are determined by child work packages.\nClick on \"Show relations\" for Gantt overview.")

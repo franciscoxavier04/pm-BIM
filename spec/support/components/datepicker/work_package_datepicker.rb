@@ -20,7 +20,7 @@ module Components
     ##
     # Expect duration
     def expect_duration(value)
-      if value.nil? || value == ""
+      if value.blank?
         value = ""
       end
 
@@ -125,14 +125,6 @@ module Components
       expect_field_error(duration_field, expected_error)
     end
 
-    def expect_scheduling_mode(manually)
-      if manually
-        expect_manual_scheduling_mode
-      else
-        expect_automatic_scheduling_mode
-      end
-    end
-
     def expect_manual_scheduling_mode
       expect(container)
         .to have_css('[data-test-selector="op-datepicker-modal--scheduling_manual"][data-qa-selected="true"]')
@@ -149,27 +141,22 @@ module Components
       end
     end
 
-    def expect_ignore_non_working_days_disabled
+    def expect_working_days_only_disabled
       expect(container)
         .to have_field("work_package[ignore_non_working_days]", disabled: true)
     end
 
-    def expect_ignore_non_working_days_enabled
+    def expect_working_days_only_enabled
       expect(container)
         .to have_field("work_package[ignore_non_working_days]", disabled: false)
     end
 
-    def expect_ignore_non_working_days(val, disabled: false)
-      if val
-        expect(container)
-          .to have_field("work_package[ignore_non_working_days]", checked: false, disabled:)
-      else
-        expect(container)
-          .to have_field("work_package[ignore_non_working_days]", checked: true, disabled:)
-      end
+    def expect_working_days_only(checked)
+      expect(container)
+        .to have_field("work_package[ignore_non_working_days]", checked:, disabled: :all)
     end
 
-    def toggle_ignore_non_working_days
+    def toggle_working_days_only
       find("label", text: "Working days only").click
     end
 
