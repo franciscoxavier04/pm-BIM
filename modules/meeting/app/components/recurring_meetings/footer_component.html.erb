@@ -43,7 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
             scheme: :link,
             size: :medium,
             tag: :a,
-            href: polymorphic_path([@project, @meeting], count: @current_count, direction: @direction),
+            href: polymorphic_path([@project, @meeting], limit: next_count, direction: @direction),
             data: {
               keep_scroll_position_target: "triggerButton"
             }
@@ -55,5 +55,3 @@ See COPYRIGHT and LICENSE files for more details.
     end
   end
 %>
-
-

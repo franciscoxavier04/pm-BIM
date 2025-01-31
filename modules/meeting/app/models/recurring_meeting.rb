@@ -97,6 +97,10 @@ class RecurringMeeting < ApplicationRecord
     nil
   end
 
+  def ending?
+    !end_after_never?
+  end
+
   def human_frequency
     I18n.t("recurring_meeting.frequency.#{frequency}")
   end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class RecurringMeetingsController < ApplicationController
-  include RecurringMeetingsHelper
   include Layout
   include PaginationHelper
   include OpTurbo::ComponentStream
@@ -21,6 +20,7 @@ class RecurringMeetingsController < ApplicationController
 
   before_action :convert_params, only: %i[create update]
   before_action :check_template_completable, only: %i[template_completed]
+  before_action :build_meeting_limits, only: %i[show]
 
   menu_item :meetings
 
@@ -47,13 +47,6 @@ class RecurringMeetingsController < ApplicationController
 
   def show # rubocop:disable Metrics/AbcSize
     @direction = params[:direction]
-    @max_count = max_count
-    @count =
-      if @max_count
-        [(params[:count].to_i + 5), @max_count].min
-      else
-        params[:count].to_i + 5
-      end
 
     if @direction == "past"
       @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
@@ -283,6 +276,18 @@ class RecurringMeetingsController < ApplicationController
       .first(count)
 
     [opened.values.sort_by(&:start_time), planned]
+  end
+
+  def build_meeting_limits
+    @max_count =
+      if @direction == "past"
+        @recurring_meeting.scheduled_instances(upcoming: false).count
+      elsif @recurring_meeting.ending?
+        open = @recurring_meeting.upcoming_instantiated_meetings
+        @recurring_meeting.remaining_occurrences.count - open.count
+      end
+
+    @count = [show_more_limit_param, @max_count].compact.min
   end
 
   def scheduled_meeting(start_time)
