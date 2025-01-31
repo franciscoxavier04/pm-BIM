@@ -42,7 +42,7 @@ class AttributeHelpTexts::IndexPageHeaderComponent < ApplicationComponent
     [
       { href: admin_index_path, text: t("label_administration") },
       helpers.nested_breadcrumb_element(t(:"attribute_help_texts.label_plural"),
-                                       I18n.t(currently_selected_tab[:label].to_s))
+                                        I18n.t(currently_selected_tab[:label].to_s))
     ]
   end
 

@@ -35,7 +35,7 @@ See COPYRIGHT and LICENSE files for more details.
       [{ href: project_overview_path(@project.id), text: @project.name },
        { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
        { href: external_file_storages_project_settings_project_storages_path(@project), text: t("project_module_storages") },
-       helpers.nested_breadcrumb_element(@storage.name, t("storages.page_titles.project_storage_members.title"))
+       nested_breadcrumb_element(@storage.name, t("storages.page_titles.project_storage_members.title"))
       ],
       selected_item_font_weight: :normal)
   end

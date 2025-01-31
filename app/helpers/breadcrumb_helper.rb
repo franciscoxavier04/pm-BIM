@@ -42,7 +42,7 @@ module BreadcrumbHelper
   end
 
   def nested_breadcrumb_element(section_header, title)
-    output = ''.html_safe
+    output = "".html_safe
     output << "#{section_header}: "
     output << content_tag(:strong, title)
 
