@@ -357,7 +357,7 @@ class MeetingsController < ApplicationController
 
     # We group meetings into individual groups, but only for upcoming meetings
     if params[:upcoming] == "false"
-      @meetings = @query.results.paginate(page: page_param, per_page: per_page_param)
+      @meetings = show_more_pagination(@query.results)
     else
       @grouped_meetings = group_meetings(@query.results)
     end
@@ -366,13 +366,9 @@ class MeetingsController < ApplicationController
   def group_meetings(all_meetings) # rubocop:disable Metrics/AbcSize
     next_week = Time.current.next_occurring(Redmine::I18n.start_of_week)
     groups = Hash.new { |h, k| h[k] = [] }
-    groups[:later] = all_meetings
-      .where(start_time: next_week..)
-      .order(start_time: :asc)
-      .paginate(page: page_param, per_page: per_page_param)
-
-    # If we're on the second page, only show the "later" group
-    return groups if page_param > 1
+    groups[:later] = show_more_pagination(all_meetings
+                                            .where(start_time: next_week..)
+                                            .order(start_time: :asc))
 
     all_meetings
       .where(start_time: ...next_week)

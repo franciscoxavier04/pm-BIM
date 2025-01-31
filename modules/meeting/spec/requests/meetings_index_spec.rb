@@ -237,27 +237,28 @@ RSpec.describe "Meeting index",
     end
   end
 
-  describe "paginating options", with_settings: { per_page_options: "1,5" } do
-    context "when requesting the first page with per_page=1" do
-      let(:request) { get "/projects/#{project.id}/meetings?page=1&per_page=1" }
+  describe "paginating options" do
+    context "when requesting the first page with limit=1" do
+      let(:request) { get "/projects/#{project.id}/meetings?limit=1" }
 
       it "shows a pagination" do
         expect(subject).to have_http_status(:ok)
 
-        expect(page).to have_css(".op-pagination--pages .op-pagination--item_current", text: "1")
+        expect(page).to have_css("#meetings-table-footer-component")
+        expect(page).to have_text "There is one more meeting"
         expect(page).to have_text "meeting on next monday"
         expect(page).to have_no_text "meeting on next friday"
       end
     end
 
-    context "when requesting the second page with per_page=2" do
-      let(:request) { get "/projects/#{project.id}/meetings?page=2&per_page=1" }
+    context "when requesting the second page with limit=100" do
+      let(:request) { get "/projects/#{project.id}/meetings?limit=100" }
 
       it "shows a pagination" do
         expect(subject).to have_http_status(:ok)
 
-        expect(page).to have_css(".op-pagination--pages .op-pagination--item_current", text: "2")
-        expect(page).to have_no_text "meeting on next monday"
+        expect(page).to have_no_css("#meetings-table-footer-component")
+        expect(page).to have_text "meeting on next monday"
         expect(page).to have_text "meeting on next friday"
       end
     end
