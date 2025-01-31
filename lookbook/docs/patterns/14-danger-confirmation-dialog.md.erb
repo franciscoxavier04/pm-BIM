@@ -1,6 +1,6 @@
-The DangerConfirmationDialog is used to get a second layer of confirmation before they execute a potentially breaking, non-reversible action such as deletion.
+The DangerConfirmationDialog is used to get a second layer of confirmation from the user before they execute a potentially breaking, non-reversible action such as deletion.
 
-The goal of the dialog is to inform the user that the action is not reversible and require one additional interaction before the user can confirm the deletion.
+The dial will inform the user that the action is not reversible and require one additional interaction before the user can confirm the deletion.
 
 The DangerConfirmationDialog is a sub-component of FeedbackDialog.
 
@@ -19,7 +19,7 @@ The FeedbackDialog is a variation of FeedbackDialog. It consists of:
 - A confirmation checkbox with text: "I understand that this deletion cannot be reversed"
 - Footer actions: "Cancel" and "Delete permanently" (danger red)
 
-The "Delete permanently" button is disabled until the user checks the confirmation checkbox
+The "Delete permanently" button is disabled until the user checks the confirmation checkbox.
 
 The additional content area can be replaced with other options, such as different text, a list of work packages or additional interaction.
 
@@ -38,15 +38,15 @@ If you need a variant with a different structure, please contact the UX and Fron
 
 #### Do:
 
-- Give the user relevant detail possible. For example, when bulk deleting, list the work packages that will be deleted.f
-- Use the simplest variant that will do the job, usually the default with customised text tailored to the specific context. Only choose variations or add additional elements if absolutely required.
+- Do give the user relevant detail possible. For example, when bulk deleting, list the work packages that will be deleted.
+- Do use the simplest variant that will do the job, usually the default with customised text tailored to the specific context. Only choose variations or add additional elements if absolutely required.
 
 #### Don't:
 
-- Overload the content slot with too much information or additional interactions; we want the user to read and understand the consequences of this action. If the context that is needed is particularly complicated, consult the Design team for help on how to proceed.
-- Use it to provide feedback. Use the FeedbackDialog instead.
-- Add additional margins or spacing.
-- Change the danger icon
+- Don't overload the content slot with too much information or additional interactions; we want the user to read and understand the consequences of this action. If the context that is needed is particularly complicated, consult the Design team for help on how to proceed.
+- Don't use it to provide feedback. Use the FeedbackDialog instead.
+- Don't add additional margins or spacing.
+- Don't change the danger icon
 
 ### Used in
 
