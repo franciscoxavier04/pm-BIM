@@ -59,17 +59,7 @@ class WorkPackageRelationsController < ApplicationController
     service_result = Relations::CreateService.new(user: current_user)
                                              .call(create_relation_params)
 
-    if service_result.success?
-      @work_package.reload
-      component = WorkPackageRelationsTab::IndexComponent.new(work_package: @work_package,
-                                                              relations: @work_package.relations.visible,
-                                                              children: @work_package.children.visible,
-                                                              relation_to_scroll_to: service_result.result)
-      replace_via_turbo_stream(component:)
-      respond_with_turbo_streams
-    else
-      respond_with_turbo_streams(status: :unprocessable_entity)
-    end
+    respond_with_relations_tab_update(service_result, relation_to_scroll_to: service_result.result)
   end
 
   def update
@@ -78,40 +68,29 @@ class WorkPackageRelationsController < ApplicationController
            model: @relation)
       .call(update_relation_params)
 
-    if service_result.success?
-      @work_package.reload
-      component = WorkPackageRelationsTab::IndexComponent.new(work_package: @work_package,
-                                                              relations: @work_package.relations.visible,
-                                                              children: @work_package.children.visible)
-      replace_via_turbo_stream(component:)
-      respond_with_turbo_streams
-    else
-      respond_with_turbo_streams(status: :unprocessable_entity)
-    end
+    respond_with_relations_tab_update(service_result)
   end
 
   def destroy
     service_result = Relations::DeleteService.new(user: current_user, model: @relation).call
 
-    if service_result.success?
-      @children = WorkPackage.where(parent_id: @work_package.id).visible
-      @relations = @work_package
-        .relations
-        .reload
-        .includes(:to, :from)
-        .visible
+    respond_with_relations_tab_update(service_result)
+  end
 
-      component = WorkPackageRelationsTab::IndexComponent.new(work_package: @work_package,
-                                                              relations: @relations,
-                                                              children: @children)
+  private
+
+  def respond_with_relations_tab_update(service_result, **)
+    if service_result.success?
+      @work_package.reload
+      component = WorkPackageRelationsTab::IndexComponent.new(work_package: @work_package, **)
       replace_via_turbo_stream(component:)
+      render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))
+
       respond_with_turbo_streams
     else
       respond_with_turbo_streams(status: :unprocessable_entity)
     end
   end
-
-  private
 
   def set_work_package
     @work_package = WorkPackage.find(params[:work_package_id])

@@ -62,7 +62,8 @@ module OpenProject::Meeting
         permission :edit_meetings,
                    {
                      meetings: %i[edit cancel_edit update update_title details_dialog update_details update_participants],
-                     recurring_meetings: %i[edit cancel_edit update update_title details_dialog update_details],
+                     recurring_meetings: %i[edit cancel_edit update update_title details_dialog update_details
+                                            notify],
                      work_package_meetings_tab: %i[add_work_package_to_meeting_dialog add_work_package_to_meeting]
                    },
                    permissible_on: :project,

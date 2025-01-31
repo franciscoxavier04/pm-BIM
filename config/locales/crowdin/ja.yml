@@ -227,6 +227,9 @@ ja:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -247,6 +250,7 @@ ja:
     confirm_destroy_option: "オプションを削除すると、そのすべての派生 (例えばワークパッケージ) が削除されます。削除してもよろしいですか?"
     reorder_alphabetical: "Reorder values alphabetically"
     reorder_confirmation: "Warning: The current order of available values will be lost. Continue?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "必要に応じてカスタムフィールドをマークします。新規または既存のリソースを作成する際にフィールドを入力することが必須になります。"
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
@@ -285,6 +289,7 @@ ja:
       label: "Label"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
@@ -633,6 +638,7 @@ ja:
         title: "作業項目の共有のためのワークフローがありません"
         message: "「作業項目エディタ」ロールに対してワークフローが設定されていません。ワークフローがなければ、ユーザーと共有された作業項目のステータスは変更できません。 ワークフローをコピーすることができます。ソースタイプ(例:「タスク」)とソースロール(例:「メンバー」)を選択します。 次に、ターゲットタイプを選択します。最初に、すべてのタイプをターゲットとして選択できます。 最後に、「作業項目の編集」ロールをターゲットとして選択し、「コピー」を押します。 このようにしてデフォルトを作成した後、他のすべてのロールに対して行うようにワークフローを微調整します。"
         link_message: "管理画面でワークフローを構成します。"
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -655,14 +661,15 @@ ja:
       no_results_title_text: There are currently no relations available.
       blankslate_heading: "No relations"
       blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
     label_add_x: "Add %{x}"
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "遅れ(日)"
       caption: "2つの作業パッケージの間に空ける最低作業日数。"
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
       label_relates_plural: "related to"
       label_relates_to_singular: "related to"
@@ -677,6 +684,9 @@ ja:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "関連するワークパッケージを現在の(親)ワークパッケージのサブ項目にします。"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
@@ -713,6 +723,8 @@ ja:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: 案内
   account:
     delete: "アカウントを削除"
@@ -777,6 +789,7 @@ ja:
         is_required: "必須"
         max_length: "最大値の長さ"
         min_length: "最短長"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "複数選択を許可"
         possible_values: "選択肢"
         regexp: "正規表現"
@@ -812,6 +825,8 @@ ja:
         attr_lastname: "苗字"
         attr_login: "ユーザー名属性"
         attr_mail: "メール"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "ベースDN"
         host: "ホスト"
         onthefly: "ユーザーの自動作成"
@@ -855,6 +870,9 @@ ja:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "列"
         relations_to_type_column: "%{type} との関連"
@@ -1538,8 +1556,9 @@ ja:
   button_copy_and_follow: "コピー後表示"
   button_create: "作成"
   button_create_and_continue: "連続作成"
-  button_delete: "削除"
   button_decline: "同意しない"
+  button_delete: "削除"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "ウォッチャー「%{name}」を削除"
   button_download: "ダウンロード"
   button_duplicate: "複製"
@@ -1724,6 +1743,8 @@ ja:
     units:
       hour:
         other: "時"
+      day:
+        other: "days"
   description_active: "有効？"
   description_attachment_toggle: "添付ファイルの表示/非表示"
   description_autocomplete: >
@@ -1759,6 +1780,10 @@ ja:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "これらの追加機能でフォームの設定をカスタマイズします:"
         add_groups: "新しい属性グループを追加"
@@ -2543,6 +2568,7 @@ ja:
   label_project_new: "新規プロジェクト"
   label_project_plural: "プロジェクト"
   label_project_list_plural: "Project lists"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "プロジェクトの設定"
@@ -2569,6 +2595,7 @@ ja:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "関係の削除"
+  label_relation_edit: "Edit relation"
   label_relation_new: "新しい関係"
   label_release_notes: "リリースノート"
   label_remaining_work: "残りの作業"
@@ -2984,6 +3011,7 @@ ja:
   notice_bad_request: "不正な要求です。"
   notice_not_authorized: "このページにアクセスする権限がありません。"
   notice_not_authorized_archived_project: "アクセスしようとしたプロジェクトはアーカイブされています。"
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "パスワードが正しくありません。続行できません。"
   notice_principals_found_multiple: "%{number} の検索結果があります。 \n タブで最初の結果へフォーカスします。"
   notice_principals_found_single: "1 つの結果があります。 \n タブでフォーカスします。"
@@ -3031,7 +3059,7 @@ ja:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "言語を選択してください"
-  permission_add_work_package_notes: "注記の追加"
+  permission_add_work_package_notes: "Add comments"
   permission_add_work_packages: "ワークパッケージの追加"
   permission_add_messages: "メッセージの投稿"
   permission_add_project: "プロジェクトの作成"
@@ -3061,10 +3089,11 @@ ja:
   permission_delete_timelines: "タイムラインの削除"
   permission_delete_wiki_pages: "Wikiページの削除"
   permission_delete_wiki_pages_attachments: "添付ファイルの削除"
-  permission_edit_work_package_notes: "注記の編集"
+  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "ワークパッケージの編集"
   permission_edit_messages: "メッセージの編集"
-  permission_edit_own_work_package_notes: "自分が記入した注記の編集"
+  permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "自分の投稿したメッセージの編集"
   permission_edit_own_time_entries: "自分が記入した作業時間の編集"
   permission_edit_project: "プロジェクトの編集"
@@ -3157,9 +3186,9 @@ ja:
       are_you_sure: "プロジェクト '%{name}' をアーカイブしてもよろしいですか？"
       archived: "アーカイブ済み"
     count:
-      zero: "0 個のプロジェクト"
-      one: "1 個のプロジェクト"
-      other: "%{count}個のプロジェクト"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "活動"
   project_module_forums: "フォーラム"
   project_module_work_package_tracking: "ワークパッケージ"
@@ -3293,6 +3322,7 @@ ja:
     activated: "有効化"
     deactivated: "無効化"
   search_input_placeholder: "検索…"
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORSを有効にする"
   setting_apiv3_cors_origins: "API V3のオリジン間リソース共有 (CORS) が許可されています"
   setting_apiv3_cors_origins_text_html: >
@@ -3518,6 +3548,27 @@ ja:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "新規プロジェクトの設定"
@@ -3551,6 +3602,7 @@ ja:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "仕事項目と子項目を削除してもよろしいですか？"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "プロジェクト自体に割り当てする"
   text_form_configuration: >
     ワークパッケージのフォームに表示されるフィールドをカスタマイズできます。自由にフィールドをグループ化して、あなたのドメインのニーズを反映できます。
@@ -3630,6 +3682,7 @@ ja:
   text_notice_security_badge_displayed_html: >
     602/5000 注：有効にすると、<a href="%{information_panel_path}">%{information_panel_label}</a>管理パネルとホームページに、インストールステータスのバッジが表示されます。 管理者のみに表示されます。 <br/>バッジは、最新のOpenProjectバージョンを公式のOpenProjectリリースデータベースと照合して、アップデートや既知の脆弱性について警告します。 チェックの内容、利用可能なアップデートを提供するために必要なデータ、およびこのチェックを無効にする方法の詳細については、<a href="%{more_info_url}">設定ドキュメント</a>をご覧ください。
   text_own_membership_delete_confirmation: "一部またはすべての権限を自分自身から剥奪しようとしているため、このプロジェクトを編集できなくなる可能性があります。\n本当に続けますか？"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "プラグインの「assets」ディレクトリが書き込み可能"
   text_powered_by: "Powered by %{link}"
   text_project_identifier_info: "アルファベット小文字(a-z)・数字・ハイフン・アンダースコアが使えます。アルファベット小文字で始まる必要があります。"
@@ -3996,6 +4049,8 @@ ja:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuthアプリケーション"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuthアプリケーション"
       named: "OAuthアプリケーション '%{name}'"
       new: "新しいOAuthアプリケーション"

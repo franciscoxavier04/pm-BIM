@@ -53,7 +53,7 @@ vi:
         frequency: "Tần suất"
         interval: "Khoảng thời gian"
         start_date: "Bắt đầu vào"
-        end_after: "Kết thúc chuỗi sau"
+        end_after: "Kết thúc chuỗi họp"
         iterations: "Số lần xuất hiện"
     errors:
       messages:
@@ -124,11 +124,15 @@ vi:
   label_recurring_occurrence_delete_confirmation: >
     Bất cứ thông tin cuộc họp nào không có trong mẫu đều bị mất. Bạn có muốn tiếp tục không?
   label_recurring_meeting_restore: "Khôi phục lại lần họp này"
+  label_recurring_meeting_schedule: "Lên lịch"
+  label_recurring_meeting_next_occurrence: "Lần họp tới"
   label_recurring_meeting_more: "Còn %{count} cuộc họp được lên lịch nữa (%{schedule})."
+  label_recurring_meeting_no_end_date: "Còn nhiều lịch họp (%{schedule})."
   label_recurring_meeting_more_singular: "Còn %{count} cuộc họp được lên lịch nữa (%{schedule})."
   label_recurring_meeting_more_past: "Còn %{count} cuộc họp trước đó."
   label_recurring_meeting_more_past_singular: "Còn %{count} cuộc họp trước đó."
   label_recurring_meeting_show_more: "Xem thêm"
+  label_recurring_meeting_series_create: "Tạo chuỗi các cuộc họp"
   label_recurring_meeting_series_edit: "Sửa chuỗi các cuộc họp"
   label_recurring_meeting_series_delete: "Xóa chuỗi các cuộc họp"
   label_my_meetings: "Cuộc họp của tôi"
@@ -172,6 +176,9 @@ vi:
         Gửi lời mời qua email ngay lập tức đến những người tham gia được chọn ở trên. Bạn cũng có thể thực hiện thủ công bất kỳ lúc nào sau đó.
       send_invitation_emails_structured: "Gửi lời mời qua email ngay lập tức đến tất cả người tham gia. Bạn cũng có thể thực hiện thủ công bất kỳ lúc nào sau đó."
       open_meeting_link: "Mở cuộc họp"
+      series:
+        title: "[%{project_name}] Chuỗi họp %{title}"
+        summary: "%{actor} đã lập chuỗi họp mới %{title}"
       invited:
         summary: "%{actor} đã gửi cho bạn một lời mời tham gia cuộc họp %{title}"
       rescheduled:
@@ -220,8 +227,9 @@ vi:
       working_days: "Mỗi ngày làm việc"
       weekly: "Mỗi tuần"
     end_after:
-      specific_date: "a specific date"
-      iterations: "a number of occurrences"
+      never: "không bao giờ"
+      specific_date: "sau ngày cụ thể"
+      iterations: "sau số lần họp"
     starts: "Bắt đầu"
     in_words:
       daily_interval: "Mỗi %{interval} ngày"
@@ -230,6 +238,7 @@ vi:
       weekly_interval: "Mỗi %{interval} tuần vào %{weekday}"
       frequency: "%{base} vào %{time}"
       full: "%{base} vào %{time}, kết thúc vào %{end_date}"
+      never_ending: "%{base} vào %{time}"
   notice_successful_notification: "Đã gửi thông báo thành công"
   notice_timezone_missing: Chưa đặt múi giờ và %{zone} đã được chọn. Để chọn múi giowf của bạn, nhấn vào đây.
   notice_meeting_updated: "Trang này đã được người khác cập nhật. Tải lại để xem thay đổi."

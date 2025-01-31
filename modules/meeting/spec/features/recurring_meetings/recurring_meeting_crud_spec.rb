@@ -35,7 +35,6 @@ require_relative "../../support/pages/meetings/index"
 
 RSpec.describe "Recurring meetings CRUD",
                :js,
-               :with_cuprite,
                with_flag: { recurring_meetings: true } do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
@@ -136,7 +135,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.in_edit_dialog do
       page.select("Daily", from: "Frequency")
       meetings_page.set_start_time "11:00"
-      page.select("a number of occurrences", from: "End series after")
+      page.select("a number of occurrences", from: "Meeting series ends")
       page.fill_in("Occurrences", with: "8")
 
       sleep 0.5

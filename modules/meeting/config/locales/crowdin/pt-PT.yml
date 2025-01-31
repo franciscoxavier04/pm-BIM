@@ -54,7 +54,7 @@ pt-PT:
         frequency: "Frequência"
         interval: "Intervalo"
         start_date: "Inicia em"
-        end_after: "Terminar a série após"
+        end_after: "Meeting series ends"
         iterations: "Ocorrências"
     errors:
       messages:
@@ -125,11 +125,15 @@ pt-PT:
   label_recurring_occurrence_delete_confirmation: >
     Qualquer informação da reunião que não esteja no modelo será perdida. Pretende continuar?
   label_recurring_meeting_restore: "Restaurar esta ocorrência"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Existem mais %{count} reuniões agendadas (%{schedule})."
+  label_recurring_meeting_no_end_date: "There are more scheduled meetings (%{schedule})."
   label_recurring_meeting_more_singular: "Existe mais %{count} reunião agendada (%{schedule})."
   label_recurring_meeting_more_past: "Existem mais %{count} reuniões no passado."
   label_recurring_meeting_more_past_singular: "Existe mais %{count} reunião no passado."
   label_recurring_meeting_show_more: "Mostrar mais"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Editar série de reuniões"
   label_recurring_meeting_series_delete: "Eliminar série de reuniões"
   label_my_meetings: "As minhas reuniões"
@@ -173,6 +177,9 @@ pt-PT:
         Envie imediatamente um convite por e-mail aos participantes selecionados acima. Também pode fazê-lo manualmente em qualquer altura.
       send_invitation_emails_structured: "Envie imediatamente um convite por e-mail a todos os participantes. Também pode fazê-lo manualmente em qualquer altura."
       open_meeting_link: "Entrar na Reunião"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} enviou-lhe um convite para a reunião %{title}"
       rescheduled:
@@ -221,8 +228,9 @@ pt-PT:
       working_days: "Todos os dias úteis"
       weekly: "Semanal"
     end_after:
-      specific_date: "uma data específica"
-      iterations: "um certo número de ocorrências"
+      never: "never"
+      specific_date: "after a specific date"
+      iterations: "after a number of occurrences"
     starts: "Começa"
     in_words:
       daily_interval: "A cada %{interval} dias"
@@ -231,6 +239,7 @@ pt-PT:
       weekly_interval: "A cada %{interval} semanas à/ao %{weekday}"
       frequency: "%{base} às %{time}"
       full: "%{base} às %{time}, termina a %{end_date}"
+      never_ending: "%{base} at %{time}"
   notice_successful_notification: "Notificação enviada com sucesso"
   notice_timezone_missing: Sem fuso horário definido, presume-se %{zone}. Para escolher o seu fuso horário, por favor clique aqui.
   notice_meeting_updated: "Esta página foi atualizada por outra pessoa. Recarregue para ver as alterações."

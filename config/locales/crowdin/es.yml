@@ -226,6 +226,9 @@ es:
           item:
             title: Este elemento no tiene ningún nivel de jerarquía inferior
             description: Añada elementos a esta lista para crear subelementos dentro de otra
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Etiqueta del elemento"
           short: "Nombre corto"
@@ -246,6 +249,7 @@ es:
     confirm_destroy_option: "Al eliminar una opción, se eliminarán todas las repeticiones (por ejemplo, en paquetes de trabajo). ¿Está seguro de que desea eliminarla?"
     reorder_alphabetical: "Ordenar los valores alfabéticamente"
     reorder_confirmation: "Advertencia: Se perderá el orden actual de los valores disponibles. ¿Quiere continuar?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Marcar el campo personalizado como necesario. Esto hará obligatorio rellenar el campo cuando se creen nuevos o se actualicen los recursos existentes."
       is_required_for_project: "Marque esta casilla para activar este atributo y hacerlo obligatorio en todos los proyectos. No puede desactivarse para proyectos individuales."
@@ -284,6 +288,7 @@ es:
       label: "Etiqueta"
       short: "Nombre corto"
       parent: "Principal"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Buscar en %{app_title}"
     overwritten_tabs:
@@ -643,6 +648,7 @@ es:
         title: "Falta el flujo de trabajo para compartir paquetes de trabajo"
         message: "Ningún flujo de trabajo está configurado para el rol 'Editor de paquetes de trabajo'. Sin un flujo de trabajo, el usuario compartido no puede alterar el estado del paquete de trabajo. Los flujos de trabajo pueden ser copiados. Seleccione un tipo de base (por ejemplo, 'Tarea') y el rol de base (por ejemplo, 'Miembro'). Luego seleccione los tipos de destino. Para empezar, puede seleccionar todos los tipos como objetivos. Por último, seleccione el papel de \"Editor de paquetes de trabajo\" como objetivo y presione \"Copiar\". Después de haber creado así los valores predeterminados, ajuste los flujos de trabajo como lo hace para cualquier otro rol."
         link_message: "Configure un flujo de trabajo en la administración."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -665,14 +671,15 @@ es:
       no_results_title_text: No hay relaciones disponibles por el momento.
       blankslate_heading: "Sin relaciones"
       blankslate_description: "Este paquete de trabajo aún no tiene relaciones."
+    label_add_child_button: "Niño"
     label_add_x: "Añadir %{x}"
     label_edit_x: "Editar %{x}"
     label_add_description: "Añadir descripción"
     lag:
       subject: "Retraso"
-      title: "Retraso (en días)"
       caption: "El número mínimo de días laborables que debe haber entre los dos paquetes de trabajo."
     relations:
+      label_new_child_created: "Nuevo paquete de trabajo creado y añadido como elemento secundario"
       label_relates_singular: "relacionado con"
       label_relates_plural: "relacionado con"
       label_relates_to_singular: "relacionado con"
@@ -687,6 +694,9 @@ es:
       follows_description: "El paquete de trabajo relacionado tiene que terminar necesariamente antes de que este pueda empezar"
       label_child_singular: "secundario"
       label_child_plural: "secundarios"
+      new_child: "Niño nuevo"
+      new_child_text: "Crea un paquete de trabajo relacionado como un subelemento del paquete de trabajo actual (principal)"
+      existing_child: "Niño existente"
       child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
       label_blocks_singular: "bloques"
       label_blocks_plural: "bloques"
@@ -723,6 +733,8 @@ es:
       required_description: "Marca este paquete de trabajo como requisito del relacionado"
       label_parent_singular: "principal"
       label_parent_plural: "principal"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitación
   account:
     delete: "Borrar cuenta"
@@ -787,6 +799,7 @@ es:
         is_required: "Obligatorio"
         max_length: "Longitud máxima"
         min_length: "Longitud mínima"
+        content_right_to_left: "Contenido de derecha a izquierda"
         multi_value: "Permitir selección múltiple"
         possible_values: "Valores posibles"
         regexp: "Expresión regular"
@@ -822,6 +835,8 @@ es:
         attr_lastname: "Atributo Apellido"
         attr_login: "Atributo Nombre de usuario"
         attr_mail: "Atributo Correo electrónico"
+        filter_string: "Texto del filtro"
+        admin: "Administrador"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Creación automática de usuarios"
@@ -865,6 +880,9 @@ es:
       project_custom_field:
         is_required: "Obligatorio para todos los proyectos"
         custom_field_section: Sección
+      project/life_cycle_step_definition:
+        name: "Nombre"
+        color: "Color"
       query:
         column_names: "Columnas"
         relations_to_type_column: "Relaciones con %{type}"
@@ -1558,8 +1576,9 @@ es:
   button_copy_and_follow: "Copiar y seguir"
   button_create: "Crear"
   button_create_and_continue: "Crear y continuar"
-  button_delete: "Borrar"
   button_decline: "Declinar"
+  button_delete: "Borrar"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Eliminar observador %{name}"
   button_download: "Descargar"
   button_duplicate: "Duplicar"
@@ -1762,6 +1781,9 @@ es:
       hour:
         one: "una hora"
         other: "hora"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Activo?"
   description_attachment_toggle: "Mostrar/ocultar archivos adjuntos"
   description_autocomplete: >
@@ -1797,6 +1819,10 @@ es:
     upsale:
       title: "Extensión Enterprise"
       link_title: "Más información"
+      automatic_subject_generation:
+        description: "Cree asuntos generados automáticamente utilizando atributos y texto referenciados."
+      customize_life_cycle:
+        description: "Cree y organice etapas y puertas de proyecto diferentes de las que ofrece la planificación del ciclo del proyecto PM2."
       form_configuration:
         description: "Personalice la configuración del formulario con estas extensiones:"
         add_groups: "Añadir nuevos grupos de atributos"
@@ -2581,6 +2607,7 @@ es:
   label_project_new: "Nuevo proyecto"
   label_project_plural: "Proyectos"
   label_project_list_plural: "Listas de proyectos"
+  label_project_lifecycle: "Ciclo de vida del proyecto"
   label_project_attributes_plural: "Atributos del proyecto"
   label_project_custom_field_plural: "Atributos del proyecto"
   label_project_settings: "Configuración del proyecto"
@@ -2607,6 +2634,7 @@ es:
   label_relation: "Relación"
   label_relation_actions: "Acciones de relación"
   label_relation_delete: "Eliminar relación"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nueva relación"
   label_release_notes: "Notas de lanzamiento"
   label_remaining_work: "Trabajo restante"
@@ -3023,6 +3051,7 @@ es:
   notice_bad_request: "Petición incorrecta."
   notice_not_authorized: "No está autorizado a acceder a esta página."
   notice_not_authorized_archived_project: "El proyecto que usted esta tratando de acceder ha sido archivado."
+  notice_requires_enterprise_token: "Falta el token de la empresa o no permite el acceso a esta página."
   notice_password_confirmation_failed: "La contraseña es incorrecta. No se puede continuar."
   notice_principals_found_multiple: "Hemos encontrado %{number} resultados. \n Pulse TAB para ver el primer resultado."
   notice_principals_found_single: "Se ha encontrado solo un resultado. \n Pulse TAB para verlo."
@@ -3070,7 +3099,7 @@ es:
     text_getting_started_description: "Obtenga un resumen rápido sobre la gestión de proyectos y la colaboración en equipo con OpenProject. Puedes volver a ver este video des del menú de ayuda."
     welcome: "Bienvenido a %{app_title}"
     select_language: "Seleccione su idioma"
-  permission_add_work_package_notes: "Añadir notas"
+  permission_add_work_package_notes: "Add comments"
   permission_add_work_packages: "Añadir paquetes de trabajo"
   permission_add_messages: "Publicar mensajes"
   permission_add_project: "Crear proyectos"
@@ -3100,10 +3129,11 @@ es:
   permission_delete_timelines: "Eliminar cronogramas"
   permission_delete_wiki_pages: "Eliminar wiki página"
   permission_delete_wiki_pages_attachments: "Eliminar adjuntos"
-  permission_edit_work_package_notes: "Editar notas"
+  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Editar paquetes de trabajo"
   permission_edit_messages: "Editar mensajes"
-  permission_edit_own_work_package_notes: "Editar notas propias"
+  permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Editar mensajes propios"
   permission_edit_own_time_entries: "Editar registros de tiempo propios"
   permission_edit_project: "Editar proyecto"
@@ -3198,7 +3228,7 @@ es:
     count:
       zero: "0 proyectos"
       one: "1 proyecto"
-      other: "%{count} proyectos"
+      other: "%{count} projectos"
   project_module_activity: "Actividad"
   project_module_forums: "Foros"
   project_module_work_package_tracking: "Paquetes de trabajo"
@@ -3332,6 +3362,7 @@ es:
     activated: "Habilitado"
     deactivated: "deshabilitado"
   search_input_placeholder: "Buscar..."
+  setting_apiv3_cors_title: "Intercambio de recursos entre orígenes (CORS)"
   setting_apiv3_cors_enabled: "Habilitar CORS"
   setting_apiv3_cors_origins: "Orígenes permitidos de la API de CORS (uso compartido de recursos entre orígenes) V3"
   setting_apiv3_cors_origins_text_html: >
@@ -3557,6 +3588,27 @@ es:
       new:
         heading: "Nuevo atributo"
         description: "Los cambios en este atributo del proyecto se reflejarán en todos los proyectos en los que esté habilitado. Los atributos obligatorios no pueden desactivarse por proyecto."
+    project_life_cycle_step_definitions:
+      heading: "Ciclo de vida del proyecto"
+      heading_description: "El ciclo de vida de un proyecto consta de etapas y puertas que estructuran sus proyectos. Aparecerán en la página de resumen de un proyecto y estarán disponibles en la lista de proyectos. Se pueden seleccionar etapas y puertas individuales para personalizar un proyecto, pero no es posible reordenarlas a nivel de proyecto."
+      label_add: "Añadir"
+      label_add_description: "Añadir definición de ciclo de vida"
+      label_add_stage: "Etapa"
+      label_add_gate: "Puerta"
+      filter:
+        label: "Buscar etapa o puerta del proyecto"
+      section_header: "Etapas y puertas"
+      non_defined: "Actualmente no están definidas ni las etapas ni las puertas."
+      new:
+        description: "Los cambios en este paso del proyecto se reflejarán en todos los proyectos en los que esté habilitado."
+      new_stage:
+        heading: "Nueva etapa"
+      new_gate:
+        heading: "Nueva puerta"
+      edit_stage:
+        heading: "Editar etapa"
+      edit_gate:
+        heading: "Editar puerta"
     projects:
       missing_dependencies: "Se ha comprobado el módulo de proyecto %{module} que depende de %{dependencies}. Necesitas comprobar estas dependencias también."
       section_new_projects: "Configuración para nuevos proyectos"
@@ -3590,6 +3642,7 @@ es:
   text_are_you_sure_continue: "¿Seguro que quiere continuar?"
   text_are_you_sure_with_children: "¿Eliminar el paquete de trabajo y todos sus paquetes dependientes?"
   text_are_you_sure_with_project_custom_fields: "Al eliminar este atributo también se eliminarán sus valores en todos los proyectos. ¿Seguro que desea hacerlo?"
+  text_are_you_sure_with_project_life_cycle_step: "Al eliminar este paso también se eliminarán sus usos en todos los proyectos. ¿seguro que desea hacerlo?"
   text_assign_to_project: "Asignar al proyecto"
   text_form_configuration: >
     Puede personalizar los campos que se mostrarán en forma de paquete de trabajo. Puede agrupar libremente los campos para adaptarlos a las necesidades de su dominio.
@@ -3669,6 +3722,7 @@ es:
   text_notice_security_badge_displayed_html: >
     Nota: al activarse, se mostrará una insignia con el estado de instalación en el <a href="%{information_panel_path}">%{information_panel_label}</a> panel de administración, y en la página principal. Solamente será visible para administradores. <br/> La insignia comprobará tu versión actual de OpenProject comparada con la base de datos oficial de OpenProject para alertarte de cualquier actualización o vulnerabilidad. Para más información sobre las funciones de la comprobación, los datos necesarios para conseguir actualizaciones disponibles, o para desactivar esta comprobación, por favor visita <a href="%{more_info_url}">la documentación de configuración</a>.
   text_own_membership_delete_confirmation: "Estás a punto de eliminar algunos o todos tus permisos, y podrías no poder volver a editar este proyecto.\n¿Estás seguro/a de que quieres continuar?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Directorio de extensiones activos escribible"
   text_powered_by: "Con tecnología de %{link}"
   text_project_identifier_info: "Se permiten sólo letras minúsculas (a-z), números, guiones y guiones bajos, debe comenzar con una letra minúscula."
@@ -4036,6 +4090,8 @@ es:
       builtin: Aplicación de instancia incorporada
       confidential: Confidencial
       singular: "Aplicación OAuth"
+      scopes: "Ámbitos"
+      client_credentials: "Credenciales de cliente"
       plural: "Aplicaciones OAuth"
       named: "Aplicación OAuth '%{name}'"
       new: "Nueva aplicación OAuth"
