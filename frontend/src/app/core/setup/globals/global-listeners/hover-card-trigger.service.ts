@@ -67,9 +67,6 @@ export class HoverCardTriggerService {
       const el = e.target as HTMLElement;
       if (!el) { return; }
 
-      // For some elements, the hover card data is on another element. We need to find that element.
-      const dataSource = this.getDataSource(el);
-
       if (this.previousTarget && this.previousTarget === el) {
         // Re-entering the trigger counts as hovering over the card:
         this.mouseInModal = true;
@@ -81,7 +78,7 @@ export class HoverCardTriggerService {
       this.close(true);
       this.previousTarget = el;
 
-      const turboFrameUrl = this.parseHoverCardUrl(dataSource);
+      const turboFrameUrl = this.parseHoverCardUrl(el);
       if (!turboFrameUrl) { return; }
 
       // Reset close timer for when hovering over multiple triggers in quick succession.
@@ -94,7 +91,7 @@ export class HoverCardTriggerService {
 
       // Set a delay before showing the hover card
       this.hoverTimeout = window.setTimeout(() => {
-        this.showHoverCard(dataSource, turboFrameUrl, e);
+        this.showHoverCard(el, turboFrameUrl, e);
       }, this.OPEN_DELAY_IN_MS);
     });
 
@@ -172,36 +169,6 @@ export class HoverCardTriggerService {
       // Allow opening this target once more, since it has been orderly closed
       this.previousTarget = null;
     }
-  }
-
-  /*
-   * Some elements do not carry the hover data arguments on themselves, but rely on nearby elements to provide them.
-   * For example in the auto completer.
-   *
-   * This method will return the element that actually carries the hover card data.
-   */
-  private getDataSource(el:HTMLElement) {
-    if (el.className.includes('op-hover-card--data-on-sibling-principal')) {
-      const candidate = this.findSiblingElementWithHoverCardData(el);
-      if (candidate) {
-        return candidate as HTMLElement;
-      }
-    }
-
-    return el;
-  }
-
-  private findSiblingElementWithHoverCardData(el:HTMLElement) {
-    const sibling = jQuery(el).siblings('.op-principal').get(0);
-    if (sibling) {
-      return this.childElementWithHoverCardTrigger(sibling);
-    }
-
-    return null;
-  }
-
-  private childElementWithHoverCardTrigger(principal:Element) {
-    return principal.querySelector('.op-hover-card--preview-trigger');
   }
 
   private parseHoverCardUrl(el:HTMLElement) {

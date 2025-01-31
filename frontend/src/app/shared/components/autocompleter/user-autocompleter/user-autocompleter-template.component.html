@@ -8,11 +8,13 @@
     [principal]="item"
     [hideName]="true"
     [hoverCard]="hoverCards"
-    [hoverCardModalTarget]="isOpenedInModal ? 'custom' : 'default'"
+    [hoverCardModalTarget]="getHoverCardTarget()"
     size="mini"
   ></op-principal>
   <span [opSearchHighlight]="search"
-        class="op-user-autocompleter--name op-hover-card--preview-trigger op-hover-card--data-on-sibling-principal">
+        [attr.data-hover-card-target]="getHoverCardTarget()"
+        [attr.data-hover-card-url]="getHoverCardUrl(item.id)"
+        class="op-user-autocompleter--name op-hover-card--preview-trigger">
       {{ item.name }}
     </span>
   <span

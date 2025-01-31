@@ -26,14 +26,12 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
+import { ChangeDetectionStrategy, Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
-import { IAutocompleterTemplateComponent } from 'core-app/shared/components/autocompleter/op-autocompleter/op-autocompleter.component';
+  IAutocompleterTemplateComponent,
+} from 'core-app/shared/components/autocompleter/op-autocompleter/op-autocompleter.component';
+import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
+import { PortalOutletTarget } from 'core-app/shared/components/modal/portal-outlet-target.enum';
 
 @Component({
   templateUrl: './user-autocompleter-template.component.html',
@@ -45,6 +43,16 @@ export class UserAutocompleterTemplateComponent implements IAutocompleterTemplat
   @Input() public isOpenedInModal:boolean = false;
   @Input() public hoverCards:boolean = true;
 
+  constructor(private readonly pathHelperService:PathHelperService) {}
+
   @ViewChild('optionTemplate') optionTemplate:TemplateRef<Element>;
   @ViewChild('footerTemplate') footerTemplate?:TemplateRef<Element>;
+
+  public getHoverCardTarget():number {
+    return this.isOpenedInModal ? PortalOutletTarget.Custom : PortalOutletTarget.Default;
+  }
+
+  public getHoverCardUrl(id:string) {
+    return this.hoverCards ? this.pathHelperService.userHoverCardPath(id) : '';
+  }
 }
