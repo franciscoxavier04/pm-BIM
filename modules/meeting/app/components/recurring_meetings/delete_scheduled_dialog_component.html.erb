@@ -35,8 +35,8 @@ See COPYRIGHT and LICENSE files for more details.
     cancel_button_text:,
     form_arguments: {
       action: polymorphic_path(
-        [:destroy_scheduled, @project, @scheduled.recurring_meeting],
-        start_time: @scheduled.start_time.iso8601
+        [:destroy_scheduled, @project, @scheduled_meeting.recurring_meeting],
+        start_time: @scheduled_meeting.start_time.iso8601
       ),
       method: :delete,
       data: { turbo: true }

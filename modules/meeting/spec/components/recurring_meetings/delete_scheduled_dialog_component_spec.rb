@@ -36,12 +36,12 @@ RSpec.describe RecurringMeetings::DeleteScheduledDialogComponent, type: :compone
   let(:project) { build_stubbed(:project) }
   let(:recurring_meeting) { build_stubbed(:recurring_meeting, project:, end_after: :iterations, iterations: 6) }
   let(:start_time) { 1.day.from_now }
-  let(:scheduled) { recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: start_time) }
+  let(:scheduled_meeting) { recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: start_time) }
   let(:meeting) { build_stubbed(:structured_meeting_template, recurring_meeting:) }
   let(:user) { build_stubbed(:user) }
 
   subject do
-    render_inline(described_class.new(scheduled:, project:))
+    render_inline(described_class.new(scheduled_meeting:, project:))
     page
   end
 

@@ -198,13 +198,13 @@ class RecurringMeetingsController < ApplicationController
 
   def delete_scheduled_dialog
     respond_with_dialog RecurringMeetings::DeleteScheduledDialogComponent.new(
-      scheduled: @scheduled,
+      scheduled_meeting: @scheduled_meeting,
       project: @project
     )
   end
 
   def destroy_scheduled
-    if @scheduled.update(cancelled: true)
+    if @scheduled_meeting.update(cancelled: true)
       flash[:notice] = I18n.t(:notice_successful_cancel)
     else
       flash[:error] = I18n.t(:error_failed_to_delete_entry)
@@ -288,9 +288,9 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def get_scheduled_meeting
-    @scheduled = @recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: params[:start_time])
+    @scheduled_meeting = @recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: params[:start_time])
 
-    render_400 unless @scheduled.meeting_id.nil?
+    render_400 unless @scheduled_meeting.meeting_id.nil?
   end
 
   def find_optional_project
