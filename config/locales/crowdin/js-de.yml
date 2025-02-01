@@ -624,11 +624,11 @@ de:
       date_alerts:
         milestone_date: "Datum des Meilensteins"
         overdue: "Überfällig"
-        overdue_since: "since %{difference_in_days}."
-        property_today: "is today."
-        property_is: "is in %{difference_in_days}."
-        property_was: "was %{difference_in_days} ago."
-        property_is_deleted: "is deleted."
+        overdue_since: "seit %{difference_in_days}."
+        property_today: "ist heute."
+        property_is: "ist in %{difference_in_days}."
+        property_was: "war vor %{difference_in_days}."
+        property_is_deleted: "ist gelöscht."
         upsale:
           title: "Datums-Erinnerungen"
           description: "Mit Datums-Erinnerungen werden Sie über bevorstehende Start- oder Endtermine informiert, so dass Sie nie einen wichtigen Termin verpassen oder übersehen."

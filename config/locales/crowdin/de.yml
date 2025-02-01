@@ -2075,8 +2075,6 @@ de:
       api_and_webhooks: "API und Webhooks"
     quick_add:
       label: "Schnellmenue öffnen"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

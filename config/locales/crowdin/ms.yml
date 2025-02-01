@@ -2043,8 +2043,6 @@ ms:
       api_and_webhooks: "API dan webhooks"
     quick_add:
       label: "Buka menu tambah cepat"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

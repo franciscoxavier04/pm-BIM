@@ -2078,8 +2078,6 @@ nl:
       api_and_webhooks: "API en webhooks"
     quick_add:
       label: "Open snel toevoegenmenu"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:
