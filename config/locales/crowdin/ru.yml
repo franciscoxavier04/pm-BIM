@@ -2183,8 +2183,6 @@ ru:
       api_and_webhooks: "API и вебхуки"
     quick_add:
       label: "Открыть меню быстрого добавления"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

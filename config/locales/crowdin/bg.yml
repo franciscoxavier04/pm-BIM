@@ -2108,8 +2108,6 @@ bg:
       api_and_webhooks: "API и уеб куки"
     quick_add:
       label: "Отворете менюто за бързо добавяне"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

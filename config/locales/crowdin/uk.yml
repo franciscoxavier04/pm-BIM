@@ -2177,8 +2177,6 @@ uk:
       api_and_webhooks: "API та вебгуки"
     quick_add:
       label: "Відкрити меню швидкого додавання"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

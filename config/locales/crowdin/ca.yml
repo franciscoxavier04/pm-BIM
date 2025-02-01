@@ -2105,8 +2105,6 @@ ca:
       api_and_webhooks: "API i webhooks"
     quick_add:
       label: "Obre el menú d'afegir ràpidament"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

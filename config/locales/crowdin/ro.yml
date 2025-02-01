@@ -2146,8 +2146,6 @@ ro:
       api_and_webhooks: "API și webhook-uri"
     quick_add:
       label: "Deschide meniul adăugare rapidă"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

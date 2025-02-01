@@ -2069,8 +2069,6 @@ ko:
       api_and_webhooks: "API 및 webhook"
     quick_add:
       label: "빠른 추가 메뉴 열기"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

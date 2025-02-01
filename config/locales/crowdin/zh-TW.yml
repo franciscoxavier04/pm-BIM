@@ -2068,8 +2068,6 @@ zh-TW:
       api_and_webhooks: "API 和 Webhook"
     quick_add:
       label: "打開快速添加菜單"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

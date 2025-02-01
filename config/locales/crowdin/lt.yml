@@ -2181,8 +2181,6 @@ lt:
       api_and_webhooks: "API ir tinklo jungtys"
     quick_add:
       label: "Atidaryti greitą pridėjimo meniu"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:

@@ -2105,8 +2105,6 @@ es:
       api_and_webhooks: "API y webhooks"
     quick_add:
       label: "Abrir menú de adición rápida"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:
