@@ -135,6 +135,8 @@ ms:
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit siri mesyuarat"
   label_recurring_meeting_series_delete: "Padamkan siri mesyuarat"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "Mesyuarat saya"
   label_all_meetings: "Semua mesyuarat"
   label_upcoming_meetings: "Mesyuarat akan datang"
@@ -239,6 +241,14 @@ ms:
       frequency: "%{base} pada %{time}"
       full: "%{base} pada %{time}, berakhir pada %{end_date}"
       never_ending: "%{base} at %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Pemberitahuan berjaya dihantar"
   notice_timezone_missing: Tiada zon waktu yang ditetapkan dan %{zone} adalah diandaikan. Untuk pilih zon waktu anda, sila klik sini.
   notice_meeting_updated: "Halaman ini telah dikemas kini oleh orang lain. Muat semula untuk melihat perubahan."
@@ -260,6 +270,8 @@ ms:
   text_duration_in_hours: "Tempoh masa dalam jam"
   text_in_hours: "dalam jam"
   text_meeting_agenda_for_meeting: 'agenda untuk mesyuarat "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Adakah anda pasti anda ingin menutup agenda mesyuarat?"
   text_meeting_agenda_open_are_you_sure: "Ini akan menggantikan semua perubahan dalam minit mesyuarat! Adakah anda ingin teruskan?"
   text_meeting_minutes_for_meeting: 'minit untuk mesyuarat "%{meeting}"'

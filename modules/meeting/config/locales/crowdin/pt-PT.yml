@@ -136,6 +136,8 @@ pt-PT:
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Editar série de reuniões"
   label_recurring_meeting_series_delete: "Eliminar série de reuniões"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "As minhas reuniões"
   label_all_meetings: "Todas as reuniões"
   label_upcoming_meetings: "Próximas reuniões"
@@ -240,6 +242,14 @@ pt-PT:
       frequency: "%{base} às %{time}"
       full: "%{base} às %{time}, termina a %{end_date}"
       never_ending: "%{base} at %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Notificação enviada com sucesso"
   notice_timezone_missing: Sem fuso horário definido, presume-se %{zone}. Para escolher o seu fuso horário, por favor clique aqui.
   notice_meeting_updated: "Esta página foi atualizada por outra pessoa. Recarregue para ver as alterações."
@@ -261,6 +271,8 @@ pt-PT:
   text_duration_in_hours: "Duração em horas"
   text_in_hours: "em horas"
   text_meeting_agenda_for_meeting: 'agenda para a reunião "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Tem a certeza de que deseja fechar a agenda da reunião?"
   text_meeting_agenda_open_are_you_sure: "Isto irá gravar por cima de todas as alterações nos minutos! Pretende continuar?"
   text_meeting_minutes_for_meeting: 'minutos para a reunião "%{meeting}"'

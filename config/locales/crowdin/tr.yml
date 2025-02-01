@@ -2238,7 +2238,7 @@ tr:
   label_available_project_work_package_types: "Uygun iş paketi tipleri"
   label_available_projects: "Available projects"
   label_api_doc: "API belgelendirmesi"
-  label_backup: "Destek olmak"
+  label_backup: "Yedek"
   label_backup_code: "Yedek kod"
   label_basic_details: "Temel bilgiler"
   label_between: "arasında"
@@ -2990,8 +2990,8 @@ tr:
     subject: "Genel izinleriniz güncellendi"
     body:
       updated_by:
-        without_message: "%{user} sahip olduğunuz rolleri küresel olarak güncelledi."
-        with_message: "%{user} küresel olarak yazdığınız rolleri güncelledi:"
+        without_message: "%{user} sahip olduğunuz rolleri genel olarak güncelledi."
+        with_message: "%{user} genel olarak yazdığınız rolleri güncelledi:"
       roles: "Aşağıdaki rollere sahipsiniz:"
   mail_user_activation_limit_reached:
     subject: Kullanıcı etkinleştirme sınırına ulaşıldı

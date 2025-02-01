@@ -136,6 +136,8 @@ ca:
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "My meetings"
   label_all_meetings: "All meetings"
   label_upcoming_meetings: "Pròximes reunions"
@@ -240,6 +242,14 @@ ca:
       frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
       never_ending: "%{base} at %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Notificació enviada correctament"
   notice_timezone_missing: No s'ha configurat la zona horària i la %{zone} és assumida. Per seleccionar la teva zona horària, si us plau, fes clic aquí.
   notice_meeting_updated: "This page has been updated by someone else. Reload to view changes."
@@ -261,6 +271,8 @@ ca:
   text_duration_in_hours: "Duració en hores"
   text_in_hours: "en hores"
   text_meeting_agenda_for_meeting: 'agenda per la reunió "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Estàs segur que vols tancar l'agenda de la reunió?"
   text_meeting_agenda_open_are_you_sure: "Això sobreescriurà tots els canvis a l'acte! Vols continuar?"
   text_meeting_minutes_for_meeting: 'actes per la reunió "%{meeting}"'

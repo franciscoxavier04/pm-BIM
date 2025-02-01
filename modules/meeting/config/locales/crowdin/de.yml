@@ -54,7 +54,7 @@ de:
         frequency: "Häufigkeit"
         interval: "Intervall"
         start_date: "Started am"
-        end_after: "Meeting series ends"
+        end_after: "Besprechungsserie endet"
         iterations: "Ereignisse"
     errors:
       messages:
@@ -126,16 +126,18 @@ de:
     Alle Inhalte der Besprechung, die nicht aus der Vorlage stammen, werden gelöscht werden. Möchten Sie fortfahren?
   label_recurring_meeting_restore: "Dieses Vorkommen wiederherstellen"
   label_recurring_meeting_schedule: "Schedule"
-  label_recurring_meeting_next_occurrence: "Next occurrence"
+  label_recurring_meeting_next_occurrence: "Nächstes Ereignis"
   label_recurring_meeting_more: "Es gibt %{count} folgende Besprechungen (%{schedule})."
-  label_recurring_meeting_no_end_date: "There are more scheduled meetings (%{schedule})."
+  label_recurring_meeting_no_end_date: "Es sind weitere Besprechungen geplant (%{schedule})."
   label_recurring_meeting_more_singular: "Es gibt %{count} folgende Besprechung (%{schedule})."
   label_recurring_meeting_more_past: "Es gibt %{count} weitere vergangene Besprechungen."
   label_recurring_meeting_more_past_singular: "Es gibt %{count} weitere vergangene Besprechung."
   label_recurring_meeting_show_more: "Mehr anzeigen"
-  label_recurring_meeting_series_create: "Create meeting series"
+  label_recurring_meeting_series_create: "Besprechungsserie erstellen"
   label_recurring_meeting_series_edit: "Terminserie bearbeiten"
   label_recurring_meeting_series_delete: "Terminserie löschen"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "Meine Besprechungen"
   label_all_meetings: "Alle Besprechungen"
   label_upcoming_meetings: "Zukünftige Meetings"
@@ -178,8 +180,8 @@ de:
       send_invitation_emails_structured: "Sofortige E-Mail-Einladung an alle Teilnehmer senden. Sie können dies auch zu einem späteren Zeitpunkt manuell tun."
       open_meeting_link: "Besprechung öffnen"
       series:
-        title: "[%{project_name}] Meeting series %{title}"
-        summary: "%{actor} has set up a new meeting series %{title}"
+        title: "[%{project_name}] Besprechungsserie %{title}"
+        summary: "%{actor} hat eine neue Besprechungsserie %{title} eingerichtet"
       invited:
         summary: "%{actor} hat Ihnen eine Einladung für die folgende Besprechung gesendet: %{title}"
       rescheduled:
@@ -228,9 +230,9 @@ de:
       working_days: "An Arbeitstagen"
       weekly: "Wöchentlich"
     end_after:
-      never: "never"
-      specific_date: "after a specific date"
-      iterations: "after a number of occurrences"
+      never: "nie"
+      specific_date: "nach einem bestimmten Datum"
+      iterations: "nach einer Reihe von Ereignissen"
     starts: "Beginnt"
     in_words:
       daily_interval: "Alle %{interval} Tage"
@@ -239,7 +241,15 @@ de:
       weekly_interval: "Alle %{interval} Wochen am %{weekday}"
       frequency: "%{base} um %{time}"
       full: "%{base} um %{time}, endet %{end_date}"
-      never_ending: "%{base} at %{time}"
+      never_ending: "%{base} um %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Benachrichtigung erfolgreich gesendet"
   notice_timezone_missing: Keine Zeitzone eingestellt und daher %{zone} angenommen. Um Ihre Zeitzone einzustellen, klicken Sie bitte hier.
   notice_meeting_updated: "Diese Seite wurde von einem anderen Benutzer verändert. Laden Sie neu, um die Änderungen zu sehen."
@@ -261,6 +271,8 @@ de:
   text_duration_in_hours: "Dauer in Stunden"
   text_in_hours: "in Stunden"
   text_meeting_agenda_for_meeting: 'die Agenda für die Besprechung "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Sind Sie sicher, dass Sie die Agenda schließen wollen?"
   text_meeting_agenda_open_are_you_sure: "Es werden alle Änderungen im Protokoll überschrieben! Wollen Sie fortfahren?"
   text_meeting_minutes_for_meeting: 'das Protokoll für die Besprechung "%{meeting}"'

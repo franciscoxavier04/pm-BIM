@@ -135,6 +135,8 @@ zh-CN:
   label_recurring_meeting_series_create: "创建会议系列"
   label_recurring_meeting_series_edit: "编辑会议系列"
   label_recurring_meeting_series_delete: "删除会议系列"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "我的会议"
   label_all_meetings: "所有会议"
   label_upcoming_meetings: "即将进行的会议"
@@ -239,6 +241,14 @@ zh-CN:
       frequency: "%{base} 在 %{time}"
       full: "%{base} 在 %{time}，在 %{end_date} 结束"
       never_ending: "%{base} at %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "通知发送成功"
   notice_timezone_missing: 没有设定时区，预设时区为 %{zone}。要选择您的时区，请单击此处。
   notice_meeting_updated: "此页面已被其他人更新。重新加载以查看更改。"
@@ -260,6 +270,8 @@ zh-CN:
   text_duration_in_hours: "持续时间（单位：小时）"
   text_in_hours: "小时"
   text_meeting_agenda_for_meeting: '“%{meeting}”会议议程'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "确定要关闭该会议议程吗？"
   text_meeting_agenda_open_are_you_sure: "这将在几分钟内覆盖所有更改！要继续吗？"
   text_meeting_minutes_for_meeting: '“%{meeting}“会议记录'

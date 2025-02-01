@@ -138,6 +138,8 @@ ru:
   label_recurring_meeting_series_create: "Создать серию совещаний"
   label_recurring_meeting_series_edit: "Изменить серию совещаний"
   label_recurring_meeting_series_delete: "Удалить серию совещаний"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "Мои совещания"
   label_all_meetings: "Все совещания"
   label_upcoming_meetings: "Предстоящие встречи"
@@ -242,6 +244,14 @@ ru:
       frequency: "%{base} в %{time}"
       full: "%{base} в %{time}, заканчивается %{end_date}"
       never_ending: "%{base} at %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Уведомление успешно отправленно"
   notice_timezone_missing: Не установлен часовой пояс и применена %{zone}. Чтобы выбрать часовой пояс, пожалуйста, нажмите сюда.
   notice_meeting_updated: "Эта страница была обновлена кем-то другим. Перезагрузите страницу, чтобы просмотреть изменения."
@@ -263,6 +273,8 @@ ru:
   text_duration_in_hours: "Длительность в часах"
   text_in_hours: "в часах"
   text_meeting_agenda_for_meeting: 'Повестка дня встречи «%{meeting}»'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Вы уверены, что хотите закрыть повестку дня собрания?"
   text_meeting_agenda_open_are_you_sure: "Все изменения в протоколах будут перезаписаны! Продолжить?"
   text_meeting_minutes_for_meeting: 'Протокол совещания «%{meeting}»'

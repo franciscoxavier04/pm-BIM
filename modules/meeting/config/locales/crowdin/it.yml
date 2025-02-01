@@ -136,6 +136,8 @@ it:
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Modifica serie di riunioni"
   label_recurring_meeting_series_delete: "Elimina serie di riunioni"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "Le mie riunioni"
   label_all_meetings: "Tutte le riunioni"
   label_upcoming_meetings: "Prossime riunioni"
@@ -240,6 +242,14 @@ it:
       frequency: "%{base} alle ore %{time}"
       full: "%{base} alle ore %{time}, fine alle ore %{end_date}"
       never_ending: "%{base} at %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Notifica inviata con successo"
   notice_timezone_missing: Nessun fuso orario è impostato e la %{zone} è un requisito necessario. Per scegliere il tuo fuso orario, fare clic qui.
   notice_meeting_updated: "Questa pagina è stata aggiornata da qualcun altro. Ricarica per visualizzare le modifiche."
@@ -261,6 +271,8 @@ it:
   text_duration_in_hours: "Durata in ore"
   text_in_hours: "in ore"
   text_meeting_agenda_for_meeting: 'ordine del giorno della riunione "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Vuoi davvero chiudere l'agenda di questa riunione?"
   text_meeting_agenda_open_are_you_sure: "Questo sovrascriverà tutte le modifiche nei verbali! Vuoi continuare?"
   text_meeting_minutes_for_meeting: 'verbali per l''incontro "%{meeting}"'

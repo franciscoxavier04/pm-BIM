@@ -227,8 +227,8 @@ de:
             title: Dieses Element hat keine untergeordnete Hierarchieebene
             description: Füge Elemente zu dieser Liste hinzu, um Unterelemente innerhalb eines anderen zu erstellen
         delete_dialog:
-          title: "Delete custom field item"
-          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
+          title: "Benutzerdefiniertes Feldelement löschen"
+          description: "Mit dieser Aktion werden das Element und alle seine Unterelemente unwiderruflich entfernt. Alle zugewiesenen Werte werden endgültig gelöscht. Wenn dieses Feld erforderlich ist, kann das Entfernen von Elementen dazu führen, dass bestehende Arbeitspakete ungültig werden."
         placeholder:
           label: "Elementbezeichnung"
           short: "Kurzname"
@@ -249,7 +249,7 @@ de:
     confirm_destroy_option: "Löschen eines Werts entfernt alle bereits gesetzten Werte (z.B. bei Arbeitspaketen). Sind Sie sicher, dass Sie den Wert löschen möchten?"
     reorder_alphabetical: "Alphabetisch umsortieren"
     reorder_confirmation: "Warnung: Die aktuelle Reihenfolge der verfügbaren Werte geht verloren. Fortfahren?"
-    placeholder_version_select: "Work package or project selection is required first"
+    placeholder_version_select: "Zunächst muss ein Arbeitspaket oder ein Projekt ausgewählt werden"
     instructions:
       is_required: "Markieren Sie das benutzerdefinierte Feld als erforderlich. Dies macht es zwingend erforderlich, das Feld auszufüllen, wenn neue oder aktualisierte Ressourcen erstellt werden."
       is_required_for_project: "Das Attribut in allen Projekten erforderlich machen. Es kann dann nicht für einzelne Projekte deaktiviert werden."
@@ -288,7 +288,7 @@ de:
       label: "Bezeichnung"
       short: "Kurzname"
       parent: "Übergeordnetes Arbeitspaket"
-      blueprint: "Pattern blueprint"
+      blueprint: "Blaupause für Muster"
   global_search:
     placeholder: "Suche in %{app_title}"
     overwritten_tabs:
@@ -644,7 +644,7 @@ de:
         title: "Der Workflow für das Teilen von Arbeitspaketen fehlt"
         message: "Es ist kein Workflow für die Rolle ‚Work package editor‘ konfiguriert. Nur mit einem solchen Workflow können Benutzer, mit denen ein Arbeitspaket geteilt wurde, den Status des Arbeitspakets ändern. Workflows lassen sich einfach kopieren. Wählen Sie dazu einen Quell-Typ (z. B. ‚Task‘) und eine Quell-Rolle (z. B. 'Member') aus. Wählen Sie dann die Ziel-Typen aus. Als ersten Schritt können Sie alle Typen als Ziel-Typen auswählen. Danach wählen Sie die Ziel-Rolle ‚Work package editor‘ aus und drücken Sie auf den Knopf ‚Kopieren‘. Nachdem Sie hiermit eine Grundlage geschaffen haben, können Sie danach diese Workflows weiter anpassen, ganz genau wie Sie es für jede andere Rolle bereits getan haben."
         link_message: "Konfigurieren Sie die Workflows in der Administration."
-    templated_subject_hint: Automatically generated through type %{type}
+    templated_subject_hint: Automatisch durch den Typ %{type} erzeugt
     summary:
       reports:
         category:
@@ -729,8 +729,8 @@ de:
       required_description: "Markiert dieses Arbeitspaket als Voraussetzung für das verknüpfte Arbeitspaket"
       label_parent_singular: "Übergeordnetes Arbeitspaket"
       label_parent_plural: "Übergeordnete Arbeitspakete"
-      ghost_relation_title: "Related work package"
-      ghost_relation_description: "This is not visible to you due to permissions."
+      ghost_relation_title: "Zugehöriges Arbeitspaket"
+      ghost_relation_description: "Dies ist für Sie aufgrund von Berechtigungen nicht sichtbar."
   label_invitation: Einladung
   account:
     delete: "Konto löschen"
@@ -1574,7 +1574,7 @@ de:
   button_create_and_continue: "Anlegen und weiter"
   button_decline: "Ablehnen"
   button_delete: "Löschen"
-  button_delete_permanently: "Delete permanently"
+  button_delete_permanently: "Endgültig löschen"
   button_delete_watcher: "Lösche Beobachter %{name}"
   button_download: "Download"
   button_duplicate: "Duplizieren"
@@ -1778,8 +1778,8 @@ de:
         one: "Stunde"
         other: "Stunde"
       day:
-        one: "day"
-        other: "days"
+        one: "Tag"
+        other: "Tage"
   description_active: "Aktiv?"
   description_attachment_toggle: "Dateien ein-/ausblenden"
   description_autocomplete: >
@@ -2630,7 +2630,7 @@ de:
   label_relation: "Beziehung"
   label_relation_actions: "Beziehungsaktionen"
   label_relation_delete: "Beziehung löschen"
-  label_relation_edit: "Edit relation"
+  label_relation_edit: "Beziehung bearbeiten"
   label_relation_new: "Neue Beziehung"
   label_release_notes: "Release Notes"
   label_remaining_work: "Verbleibender Aufwand"
@@ -3096,7 +3096,7 @@ de:
     text_getting_started_description: "Erhalten Sie einen schnellen Überblick über die Projektverwaltung und die Zusammenarbeit mit OpenProject. Sie können dieses Video über das Hilfe-Menü neu starten."
     welcome: "Willkommen zu %{app_title}"
     select_language: "Bitte wählen Sie Ihre Sprache"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_notes: "Kommentare hinzufügen"
   permission_add_work_packages: "Arbeitspakete hinzufügen"
   permission_add_messages: "Forenbeiträge hinzufügen"
   permission_add_project: "Projekte erstellen"
@@ -3126,11 +3126,11 @@ de:
   permission_delete_timelines: "Zeitplan-Reporte löschen"
   permission_delete_wiki_pages: "Wiki-Seiten löschen"
   permission_delete_wiki_pages_attachments: "Anhänge löschen"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_notes: "Kommentare moderieren"
+  permission_edit_work_package_notes_explanation: "Achtung: Benutzer mit dieser Berechtigung können den Kommentar eines anderen Benutzers bearbeiten."
   permission_edit_work_packages: "Arbeitspakete bearbeiten"
   permission_edit_messages: "Forenbeiträge bearbeiten"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_work_package_notes: "Eigene Kommentare bearbeiten"
   permission_edit_own_messages: "Eigene Forenbeiträge bearbeiten"
   permission_edit_own_time_entries: "Selbstgebuchte Aufwände bearbeiten"
   permission_edit_project: "Projekt bearbeiten"
@@ -3719,7 +3719,7 @@ de:
   text_notice_security_badge_displayed_html: >
     Hinweis: Wenn aktiviert, wird dies eine Plakette mit dem Status Ihrer Installation in der <a href="%{information_panel_path}">%{information_panel_label}</a> unter Administration und auf der Startseite anzeigen. Es wird nur Administratoren gezeigt. <br/> Die Plakette überprüft Ihre aktuelle OpenProject-Version gegen die offizielle Release Datenbank, um Sie über Updates oder bekannten Sicherheitslücken zu informieren. Für die Überprüfung der Version werden Daten benötigt, um verfügbare Updates für Ihre Umgebung zurückzugeben. Für mehr Informationen über die Plakette, welche Daten sie benötigt und wie Sie diese Überprüfung deaktivieren können, besuchen Sie bitte <a href="%{more_info_url}">die Konfigurationsdokumentation</a>.
   text_own_membership_delete_confirmation: "Sie sind dabei, einige oder alle Ihre Berechtigungen zu entfernen. Es ist möglich, dass Sie danach das Projekt nicht mehr ansehen oder bearbeiten dürfen.\nSind Sie sicher, dass Sie dies tun möchten?"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "Ich verstehe, dass diese Löschung nicht rückgängig gemacht werden kann"
   text_plugin_assets_writable: "Verzeichnis für Plugin-Assets beschreibbar"
   text_powered_by: "Powered by %{link}"
   text_project_identifier_info: "Kleinbuchstaben (a-z), Ziffern, Binde- und Unterstriche erlaubt. Muss mit einem Kleinbuchstaben beginnen."

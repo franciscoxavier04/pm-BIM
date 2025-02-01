@@ -138,6 +138,8 @@ cs:
   label_recurring_meeting_series_create: "Vytvořit sérii schůzek"
   label_recurring_meeting_series_edit: "Upravit sérii schůzek"
   label_recurring_meeting_series_delete: "Odstranit sérii schůzek"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "Moje schůzky"
   label_all_meetings: "Všechny schůzky"
   label_upcoming_meetings: "Nadcházející schůzky"
@@ -242,6 +244,14 @@ cs:
       frequency: "%{base} v %{time}"
       full: "%{base} v %{time}, končí %{end_date}"
       never_ending: "%{base} at %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Oznámení bylo úspěšně odesláno"
   notice_timezone_missing: Není nastaveno žádné časové pásmo a předpokládá se %{zone} . Chcete-li vybrat časové pásmo, klikněte prosím zde.
   notice_meeting_updated: "Tato stránka byla aktualizována někým jiným. Pro zobrazení změn znovu načtena."
@@ -263,6 +273,8 @@ cs:
   text_duration_in_hours: "Doba trvání v hodinách"
   text_in_hours: "v hodinách"
   text_meeting_agenda_for_meeting: 'Agenda schůzky "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Jste si jisti, že chcete ukončit program schůzky?"
   text_meeting_agenda_open_are_you_sure: "Toto přepíše všechny změny v zápisech! Chcete pokračovat?"
   text_meeting_minutes_for_meeting: 'zápis pro schůzku "%{meeting}"'

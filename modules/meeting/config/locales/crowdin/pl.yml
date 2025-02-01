@@ -138,6 +138,8 @@ pl:
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edytuj serię spotkań"
   label_recurring_meeting_series_delete: "Usuń serię spotkań"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "Moje spotkania"
   label_all_meetings: "Wszystkie spotkania"
   label_upcoming_meetings: "Nadchodzące spotkania"
@@ -242,6 +244,14 @@ pl:
       frequency: "%{base} o %{time}"
       full: "%{base} o %{time}, kończy się %{end_date}"
       never_ending: "%{base} at %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Powiadomienia wysłane pomyślnie"
   notice_timezone_missing: 'Została ustawiona domyślna strefa czasowa: %{zone}. Aby zmienić strefę czasową, kliknij tutaj.'
   notice_meeting_updated: "Ta strona została zaktualizowana przez kogoś innego. Załaduj ją ponownie, aby wyświetlić zmiany."
@@ -263,6 +273,8 @@ pl:
   text_duration_in_hours: "Czas trwania w godzinach"
   text_in_hours: "w godzinach"
   text_meeting_agenda_for_meeting: 'agenda spotkania "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Czy na pewno chcesz zamknąć plan spotkania?"
   text_meeting_agenda_open_are_you_sure: "To zastąpił wszystkie zmiany w protokołach! Czy chcesz kontynuować?"
   text_meeting_minutes_for_meeting: 'protokół ze spotkania "%{meeting}"'

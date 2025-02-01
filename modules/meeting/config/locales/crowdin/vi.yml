@@ -135,6 +135,8 @@ vi:
   label_recurring_meeting_series_create: "Tạo chuỗi các cuộc họp"
   label_recurring_meeting_series_edit: "Sửa chuỗi các cuộc họp"
   label_recurring_meeting_series_delete: "Xóa chuỗi các cuộc họp"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
   label_my_meetings: "Cuộc họp của tôi"
   label_all_meetings: "Tất cả các cuộc họp"
   label_upcoming_meetings: "Các cuộc họp sắp tới"
@@ -239,6 +241,14 @@ vi:
       frequency: "%{base} vào %{time}"
       full: "%{base} vào %{time}, kết thúc vào %{end_date}"
       never_ending: "%{base} vào %{time}"
+    agenda_opened:
+      title: "Agenda opened"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Đã gửi thông báo thành công"
   notice_timezone_missing: Chưa đặt múi giờ và %{zone} đã được chọn. Để chọn múi giowf của bạn, nhấn vào đây.
   notice_meeting_updated: "Trang này đã được người khác cập nhật. Tải lại để xem thay đổi."
@@ -260,6 +270,8 @@ vi:
   text_duration_in_hours: "Thời lượng tính bằng giờ"
   text_in_hours: "bằng giờ"
   text_meeting_agenda_for_meeting: 'Các ý chính cho cuộc họp "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Bạn có chắc chắn muốn đóng chương trình nghị sự cuộc họp không?"
   text_meeting_agenda_open_are_you_sure: "Điều này sẽ ghi đè tất cả các thay đổi trong biên bản! Bạn có muốn tiếp tục không?"
   text_meeting_minutes_for_meeting: 'biên bản cuộc họp "%{meeting}"'

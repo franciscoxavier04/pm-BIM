@@ -7,9 +7,9 @@ ru:
     standard:
       projects:
         demo-project:
-          meetings:
+          meeting_series:
             item_0:
-              title: Еженедельно
+              title: Weekly
           meeting_agenda_items:
             item_0:
               title: Хорошие новости
