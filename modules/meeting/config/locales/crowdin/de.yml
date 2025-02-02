@@ -136,8 +136,8 @@ de:
   label_recurring_meeting_series_create: "Besprechungsserie erstellen"
   label_recurring_meeting_series_edit: "Terminserie bearbeiten"
   label_recurring_meeting_series_delete: "Terminserie löschen"
-  label_recurring_meeting_series_end: "End meeting series"
-  label_recurring_meeting_series_end_now: "End series now"
+  label_recurring_meeting_series_end: "Besprechungsserie beenden"
+  label_recurring_meeting_series_end_now: "Serie jetzt beenden"
   label_my_meetings: "Meine Besprechungen"
   label_all_meetings: "Alle Besprechungen"
   label_upcoming_meetings: "Zukünftige Meetings"
@@ -243,11 +243,11 @@ de:
       full: "%{base} um %{time}, endet %{end_date}"
       never_ending: "%{base} um %{time}"
     agenda_opened:
-      title: "Agenda opened"
+      title: "Tagesordnung eröffnet"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
     planned:
-      title: "Planned"
+      title: "Geplant"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
   notice_successful_notification: "Benachrichtigung erfolgreich gesendet"
@@ -271,8 +271,8 @@ de:
   text_duration_in_hours: "Dauer in Stunden"
   text_in_hours: "in Stunden"
   text_meeting_agenda_for_meeting: 'die Agenda für die Besprechung "%{meeting}"'
-  text_meeting_series_end_early_heading: "Delete future occurrences?"
-  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
+  text_meeting_series_end_early_heading: "Zukünftige Vorkommnisse löschen?"
+  text_meeting_series_end_early: "Durch das Beenden der Serie werden alle zukünftigen offenen oder geplanten Besprechungsereignisse gelöscht"
   text_meeting_closing_are_you_sure: "Sind Sie sicher, dass Sie die Agenda schließen wollen?"
   text_meeting_agenda_open_are_you_sure: "Es werden alle Änderungen im Protokoll überschrieben! Wollen Sie fortfahren?"
   text_meeting_minutes_for_meeting: 'das Protokoll für die Besprechung "%{meeting}"'
