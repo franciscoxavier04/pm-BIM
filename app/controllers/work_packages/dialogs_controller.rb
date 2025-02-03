@@ -45,14 +45,18 @@ class WorkPackages::DialogsController < ApplicationController
   def create
     call = WorkPackages::CreateService.new(user: current_user).call(create_params)
 
-    if call.success?
-      flash[:notice] = I18n.t("work_package_relations_tab.relations.label_new_child_created")
-      redirect_back fallback_location: project_work_package_path(@project, call.result), status: :see_other
-    else
-      form_component = WorkPackages::Dialogs::CreateFormComponent.new(work_package: call.result, project: @project)
-      update_via_turbo_stream(component: form_component, status: :bad_request)
+    respond_with_relations_tab_update(call, relation_to_scroll_to: call.result)
+  end
+
+  def respond_with_relations_tab_update(service_result, **)
+    if service_result.success?
+      component = WorkPackageRelationsTab::IndexComponent.new(work_package: service_result.result.parent, **)
+      replace_via_turbo_stream(component:)
+      render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))
 
       respond_with_turbo_streams
+    else
+      respond_with_turbo_streams(status: :unprocessable_entity)
     end
   end
 
@@ -99,6 +103,10 @@ class WorkPackages::DialogsController < ApplicationController
       type: contract.assignable_types.first,
       project: @project
     }
+  end
+
+  def work_package_params
+    params.require(:work_package).permit(:type_id, :subject, :project_id, :status_id, :priority_id, :author_id, :parent_id)
   end
 
   def default_breadcrumb; end
