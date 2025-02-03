@@ -391,7 +391,7 @@ en:
   label_meeting_state_closed: "Closed"
   label_meeting_state_closed_html: "<i>Closed</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_scheduled: "Scheduled"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
   label_meeting_reopen_action: "Reopen meeting"
