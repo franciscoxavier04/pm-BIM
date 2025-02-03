@@ -222,4 +222,16 @@ RSpec.describe RecurringMeeting,
       expect { subject.last_occurrence }.to raise_error(ArgumentError)
     end
   end
+
+  describe "#upcoming_instantiated_meetings" do
+    let!(:recurring_meeting) { create(:recurring_meeting) }
+    let!(:ongoing_meeting) do
+      create(:scheduled_meeting, :persisted, start_time: 5.minutes.ago, recurring_meeting: recurring_meeting)
+    end
+    let!(:cancelled_meeting) { create(:scheduled_meeting, recurring_meeting: recurring_meeting, cancelled: true) }
+
+    it "returns only upcoming and not cancelled meetings" do
+      expect(recurring_meeting.upcoming_instantiated_meetings).to eq [ongoing_meeting]
+    end
+  end
 end
