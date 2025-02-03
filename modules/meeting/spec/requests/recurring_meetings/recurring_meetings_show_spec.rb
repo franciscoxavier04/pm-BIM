@@ -110,7 +110,7 @@ RSpec.describe "Recurring meetings show",
       get recurring_meeting_path(recurring_meeting)
 
       content = page.find_by_id("content")
-      expect(content).to have_text "Agenda opened"
+      expect(content).to have_text "Open"
       expect(content).to have_text "Planned"
 
       open_meeting_date = format_time(open_meeting.start_time)
