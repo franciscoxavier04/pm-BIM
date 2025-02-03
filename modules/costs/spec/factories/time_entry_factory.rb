@@ -30,7 +30,7 @@ FactoryBot.define do
   factory :time_entry do
     user
     work_package
-    spent_on { Date.today }
+    spent_on { Time.zone.today }
     activity factory: :time_entry_activity
     hours { 1.0 }
     logged_by { user }
@@ -43,9 +43,9 @@ FactoryBot.define do
       time_entry.update(project: time_entry.work_package.project)
 
       # ensure user is member of project
-      unless time_entry.user.member_of?(time_entry.project)
+      unless Member.exists?(principal: time_entry.user, project: time_entry.project)
         role = create(:project_role, permissions: [:view_project])
-        create(:member, user: time_entry.user, project: time_entry.project, roles: [role])
+        create(:member, principal: time_entry.user, project: time_entry.project, roles: [role])
       end
     end
 
