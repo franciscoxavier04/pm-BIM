@@ -19,7 +19,7 @@ interface CustomEventWithIdParam extends Event {
 
 export default class IndexController extends Controller {
   static values = {
-    updateStreamsUrl: String,
+    updateStreamsPath: String,
     sorting: String,
     pollingIntervalInMs: Number,
     filter: String,
@@ -41,7 +41,7 @@ export default class IndexController extends Controller {
 
   declare readonly hasFormSubmitButtonTarget:boolean;
 
-  declare updateStreamsUrlValue:string;
+  declare updateStreamsPathValue:string;
   declare sortingValue:string;
   declare lastServerTimestampValue:string;
   declare intervallId:number;
@@ -204,7 +204,8 @@ export default class IndexController extends Controller {
   }
 
   private prepareUpdateStreamsUrl():string {
-    const url = new URL(this.updateStreamsUrlValue);
+    const baseUrl = window.location.origin;
+    const url = new URL(this.updateStreamsPathValue, baseUrl);
     url.searchParams.set('sortBy', this.sortingValue);
     url.searchParams.set('filter', this.filterValue);
     url.searchParams.set('last_update_timestamp', this.lastServerTimestampValue);
