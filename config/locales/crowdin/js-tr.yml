@@ -742,7 +742,7 @@ tr:
         immediate:
           title: "Bana email hatırlatıcısı gönder"
           mentioned: "Birisi benden @bahsettiğinde hemen"
-          personal_reminder: "Immediately when I receive a personal reminder"
+          personal_reminder: "Kişisel bir hatırlatma aldığımda hemen"
         alerts:
           title: "Diğer öğeler için e-posta uyarıları (iş paketleri olmayanlar)"
           explanation: >
