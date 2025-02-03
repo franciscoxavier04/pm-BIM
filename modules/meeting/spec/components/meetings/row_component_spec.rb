@@ -35,7 +35,11 @@ RSpec.describe Meetings::RowComponent, type: :component do
 
   let(:project) { build_stubbed(:project) }
   let(:table) do
-    instance_double(Meetings::TableComponent, columns: [], grid_class: "test", has_actions?: true, current_project:)
+    instance_double(Meetings::TableComponent, columns: [:title], mobile_columns: [:title], mobile_labels: [],
+                                              grid_class: "test",
+                                              main_column?: false,
+                                              has_actions?: true,
+                                              current_project:)
   end
   let(:current_project) { nil }
   let(:user) { build_stubbed(:user) }
@@ -49,10 +53,67 @@ RSpec.describe Meetings::RowComponent, type: :component do
     login_as(user)
   end
 
+  describe "title column" do
+    context "with a one-off meeting" do
+      let(:meeting) { build_stubbed(:structured_meeting, project:, title: "One-time fun!") }
+
+      it "is shows the meeting title" do
+        expect(subject).to have_text "One-time fun!"
+      end
+
+      context "without a current project" do
+        it "links to the meeting" do
+          expect(subject).to have_link "One-time fun!", href: meeting_path(meeting)
+        end
+      end
+
+      context "with a current project" do
+        let(:current_project) { project }
+
+        it "links to the meeting" do
+          expect(subject).to have_link "One-time fun!", href: project_meeting_path(project, meeting)
+        end
+      end
+    end
+
+    context "with an associated recurring/templated meeting" do
+      let(:series) { build_stubbed(:recurring_meeting, project:) }
+      let(:meeting) do
+        build_stubbed(:structured_meeting_template, recurring_meeting: series, project:, title: "Regular catch ups :)")
+      end
+
+      it "is shows the meeting template title" do
+        expect(subject).to have_text "Regular catch ups :)"
+      end
+
+      context "without a current project" do
+        it "links to the meeting occurrence" do
+          expect(subject).to have_link "Regular catch ups :)", href: meeting_path(meeting)
+        end
+
+        it "links to the meeting series" do
+          expect(subject).to have_link "Weekly", href: recurring_meeting_path(series)
+        end
+      end
+
+      context "with a current project" do
+        let(:current_project) { project }
+
+        it "links to the meeting occurrence" do
+          expect(subject).to have_link "Regular catch ups :)", href: project_meeting_path(project, meeting)
+        end
+
+        it "links to the meeting series" do
+          expect(subject).to have_link "Weekly", href: project_recurring_meeting_path(project, series)
+        end
+      end
+    end
+  end
+
   describe "actions" do
     context "with default permissions" do
       context "with a one-off meeting" do
-        let(:meeting) { build_stubbed(:meeting, project:) }
+        let(:meeting) { build_stubbed(:structured_meeting, project:) }
 
         it "shows default menu items" do
           expect(subject).to have_link "Download iCalendar event"
@@ -63,9 +124,22 @@ RSpec.describe Meetings::RowComponent, type: :component do
         let(:series) { build_stubbed(:recurring_meeting, project:) }
         let(:meeting) { build_stubbed(:structured_meeting_template, recurring_meeting: series, project:) }
 
-        it "shows default menu items" do
-          expect(subject).to have_link "View meeting series"
+        it "shows download iCal menu item" do
           expect(subject).to have_link "Download iCalendar event"
+        end
+
+        context "without a current project" do
+          it "shows view meeting series menu item" do
+            expect(subject).to have_link "View meeting series", href: recurring_meeting_path(series)
+          end
+        end
+
+        context "with a current project" do
+          let(:current_project) { project }
+
+          it "shows view meeting series menu item" do
+            expect(subject).to have_link "View meeting series", href: project_recurring_meeting_path(project, series)
+          end
         end
       end
     end
@@ -78,7 +152,7 @@ RSpec.describe Meetings::RowComponent, type: :component do
       end
 
       context "with a one-off meeting" do
-        let(:meeting) { build_stubbed(:meeting, project:) }
+        let(:meeting) { build_stubbed(:structured_meeting, project:) }
 
         context "without a current project" do
           it "shows delete menu item" do
@@ -123,7 +197,7 @@ RSpec.describe Meetings::RowComponent, type: :component do
       end
 
       context "with a one-off meeting" do
-        let(:meeting) { build_stubbed(:meeting, project:) }
+        let(:meeting) { build_stubbed(:structured_meeting, project:) }
 
         it "shows copy menu item" do
           expect(subject).to have_link "Copy meeting"

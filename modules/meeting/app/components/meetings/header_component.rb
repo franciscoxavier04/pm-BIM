@@ -94,7 +94,8 @@ module Meetings
 
     def meeting_series_element
       if @series.present?
-        { href: recurring_meeting_path(@series), text: @series.title }
+        { href: @project.present? ? project_recurring_meeting_path(@project, @series) : recurring_meeting_path(@series),
+          text: @series.title }
       end
     end
 

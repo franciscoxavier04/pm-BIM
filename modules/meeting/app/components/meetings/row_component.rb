@@ -42,14 +42,14 @@ module Meetings
       elsif recurring_meeting.present?
         occurrence_title
       else
-        link_to model.title, project_meeting_path(model.project, model)
+        link_to model.title, polymorphic_path([current_project, model.becomes(Meeting)])
       end
     end
 
     def occurrence_title
       safe_join(
-        [(link_to model.title, project_meeting_path(model.project, model)),
-         (link_to recurring_label, recurring_meeting_path(recurring_meeting))], "  "
+        [(link_to model.title, polymorphic_path([current_project, model.becomes(Meeting)])),
+         (link_to recurring_label, polymorphic_path([current_project, recurring_meeting]))], "  "
       )
     end
 
@@ -109,7 +109,7 @@ module Meetings
 
     def view_meeting_series(menu)
       menu.with_item(label: I18n.t(:label_recurring_meeting_view),
-                     href: recurring_meeting_path(recurring_meeting)) do |item|
+                     href: polymorphic_path([current_project, recurring_meeting])) do |item|
         item.with_leading_visual_icon(icon: :iterations)
       end
     end
