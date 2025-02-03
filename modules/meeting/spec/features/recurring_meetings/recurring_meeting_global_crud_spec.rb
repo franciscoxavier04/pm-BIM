@@ -35,9 +35,7 @@ require_relative "../../support/pages/structured_meeting/show"
 require_relative "../../support/pages/recurring_meeting/show"
 require_relative "../../support/pages/meetings/index"
 
-RSpec.describe "Recurring meetings global CRUD",
-               :js,
-               with_flag: { recurring_meetings: true } do
+RSpec.describe "Recurring meetings global CRUD", :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   before_all do
