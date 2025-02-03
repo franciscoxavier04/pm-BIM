@@ -31,7 +31,7 @@ module RecurringMeetingsHelper
     if @direction == "past"
       @recurring_meeting.scheduled_instances(upcoming: false).count
     else
-      open = @recurring_meeting.upcoming_not_cancelled_meetings
+      open = @recurring_meeting.upcoming_instantiated_meetings
 
       @recurring_meeting.remaining_occurrences&.count&.- open.count
     end

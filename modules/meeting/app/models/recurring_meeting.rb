@@ -194,11 +194,12 @@ class RecurringMeeting < ApplicationRecord
       .order(start_time: direction)
   end
 
-  def upcoming_not_cancelled_meetings
+  def upcoming_instantiated_meetings
     scheduled_meetings
       .includes(:meeting)
-      .upcoming
       .not_cancelled
+      .joins(:meeting)
+      .where("meetings.start_time + (interval '1 hour' * meetings.duration) >= ?", Time.current)
       .order(start_time: :asc)
   end
 
