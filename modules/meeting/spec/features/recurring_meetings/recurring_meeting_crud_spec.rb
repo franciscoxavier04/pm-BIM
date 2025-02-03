@@ -89,7 +89,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.visit!
 
     show_page.delete_meeting_series
-    show_page.in_delete_recurring_dialog do
+    show_page.within_modal "Delete meeting series" do
       page.check "I understand that this deletion cannot be reversed"
 
       click_on "Delete permanently"
@@ -119,7 +119,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.visit!
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
-    show_page.in_delete_dialog do
+    show_page.within_modal "Delete meeting occurrence" do
       check "I understand that this deletion cannot be reversed"
 
       click_on "Delete permanently"
@@ -136,8 +136,8 @@ RSpec.describe "Recurring meetings CRUD",
   it "can cancel a scheduled occurrence from the show page" do
     show_page.visit!
 
-    show_page.cancel_occurrence date: "01/07/2025 01:30 PM"
-    show_page.in_delete_scheduled_dialog do
+    show_page.cancel_scheduled_occurrence date: "01/07/2025 01:30 PM"
+    show_page.within_modal "Cancel meeting occurrence" do
       check "I understand that this deletion cannot be reversed"
 
       click_on "Cancel occurrence"
@@ -156,7 +156,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_subtitle text: "Every week on Tuesday at 01:30 PM, ends on 01/14/2025"
 
     show_page.edit_meeting_series
-    show_page.in_edit_dialog do
+    show_page.within_modal "Edit Meeting" do
       page.select("Daily", from: "Frequency")
       meetings_page.set_start_time "11:00"
       page.select("a number of occurrences", from: "Meeting series ends")
@@ -179,7 +179,7 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_scheduled_actions date: "01/07/2025 01:30 PM"
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
-    show_page.in_delete_dialog do
+    show_page.within_modal "Delete meeting occurrence" do
       check "I understand that this deletion cannot be reversed"
 
       click_on "Delete permanently"

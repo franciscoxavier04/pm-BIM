@@ -93,11 +93,10 @@ RSpec.describe "Structured meetings global CRUD",
   end
 
   it "can delete a meeting and get back to the index page" do
-    click_on("op-meetings-header-action-trigger")
+    show_page.trigger_dropdown_menu_item "Delete meeting"
+    show_page.expect_modal "Delete meeting"
 
-    click_on "Delete meeting"
-
-    within "#delete-meeting-dialog" do
+    show_page.within_modal "Delete meeting" do
       check "I understand that this deletion cannot be reversed"
 
       click_on "Delete permanently"

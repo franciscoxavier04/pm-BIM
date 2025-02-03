@@ -210,11 +210,10 @@ RSpec.describe "Structured meetings CRUD",
   end
 
   it "can delete a meeting and get back to the index page" do
-    click_on("op-meetings-header-action-trigger")
+    show_page.trigger_dropdown_menu_item "Delete meeting"
+    show_page.expect_modal "Delete meeting"
 
-    click_on "Delete meeting"
-
-    within "#delete-meeting-dialog" do
+    show_page.within_modal "Delete meeting" do
       check "I understand that this deletion cannot be reversed"
 
       click_on "Delete permanently"
@@ -322,7 +321,7 @@ RSpec.describe "Structured meetings CRUD",
 
     # check for copied participants with attended status reset
     page.find_test_selector("manage-participants-button").click
-    expect(page).to have_css("#edit-participants-dialog")
+    expect(page).to have_modal("Participants")
     expect(page).to have_field(id: "checkbox_invited_#{other_user.id}", checked: true)
     expect(page).to have_field(id: "checkbox_attended_#{other_user.id}", checked: false)
 
