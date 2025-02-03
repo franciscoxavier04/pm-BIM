@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -60,8 +62,8 @@ class Meeting < ApplicationRecord
   scope :not_recurring, -> { where(recurring_meeting_id: nil) }
   scope :recurring, -> { where.not(id: not_recurring) }
 
-  scope :from_tomorrow, -> { where(["start_time >= ?", Date.tomorrow.beginning_of_day]) }
-  scope :from_today, -> { where(["start_time >= ?", Time.zone.today.beginning_of_day]) }
+  scope :from_tomorrow, -> { where(start_time: Date.tomorrow.beginning_of_day..) }
+  scope :from_today, -> { where(start_time: Time.zone.today.beginning_of_day..) }
 
   scope :upcoming, -> { where("start_time + (interval '1 hour' * duration) >= ?", Time.current) }
   scope :past, -> { where("start_time + (interval '1 hour' * duration) < ?", Time.current) }
