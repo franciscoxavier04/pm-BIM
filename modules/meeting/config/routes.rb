@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     end
     resources :recurring_meetings, only: %i[index new create show destroy] do
       member do
+        post :init
         get :delete_dialog
         get :delete_scheduled_dialog
         delete :destroy_scheduled

@@ -103,6 +103,20 @@ RSpec.describe "Recurring meetings global CRUD", :js do
     show_page.expect_no_meeting date: "12/31/2024 01:30 PM"
   end
 
+  it "can use the 'Open' button" do
+    show_page.visit!
+
+    show_page.open date: "01/07/2025 01:30 PM"
+    wait_for_reload
+
+    expect(page).to have_current_path meeting_path(Meeting.last)
+
+    show_page.visit!
+
+    show_page.expect_no_planned_meeting date: "01/07/2025 01:30 PM"
+    show_page.expect_open_meeting date: "01/07/2025 01:30 PM"
+  end
+
   it "can cancel an occurrence from the show page" do
     show_page.visit!
 

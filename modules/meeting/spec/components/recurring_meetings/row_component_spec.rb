@@ -35,8 +35,11 @@ RSpec.describe RecurringMeetings::RowComponent, type: :component do
 
   let(:project) { build_stubbed(:project) }
   let(:table) do
-    instance_double(RecurringMeetings::TableComponent,
-                    columns: [], grid_class: "test", has_actions?: true, current_project:)
+    instance_double(RecurringMeetings::TableComponent, columns: [:create], mobile_columns: [:create], mobile_labels: [],
+                                                       grid_class: "test",
+                                                       main_column?: false,
+                                                       has_actions?: true,
+                                                       current_project:)
   end
   let(:recurring_meeting) { build_stubbed(:recurring_meeting, project:) }
   let(:current_project) { nil }
@@ -52,6 +55,60 @@ RSpec.describe RecurringMeetings::RowComponent, type: :component do
   end
 
   describe "actions" do
+    context "with project create meetings permissions" do
+      before do
+        mock_permissions_for(user) do |mock|
+          mock.allow_in_project(:create_meetings, project:)
+        end
+      end
+
+      context "with a scheduled meeting" do
+        let(:scheduled_meeting) { build_stubbed(:scheduled_meeting, :scheduled, recurring_meeting:) }
+
+        context "without a current project" do
+          it "shows 'Open' button" do
+            expect(subject).to have_link "Open", href: init_recurring_meeting_path(
+              recurring_meeting, start_time: scheduled_meeting.start_time.iso8601
+            )
+          end
+        end
+
+        context "with a current project" do
+          let(:current_project) { project }
+
+          it "shows 'Open' button" do
+            expect(subject).to have_link "Open", href: init_project_recurring_meeting_path(
+              project, recurring_meeting, start_time: scheduled_meeting.start_time.iso8601
+            )
+          end
+        end
+      end
+
+      context "with a cancelled scheduled meeting" do
+        let(:scheduled_meeting) { build_stubbed(:scheduled_meeting, :cancelled, recurring_meeting:) }
+
+        context "without a current project" do
+          it "shows restore menu item" do
+            expect(subject).to have_button "Restore this occurrence"
+            expect(subject).to have_element "form", method: "post", action: init_recurring_meeting_path(
+              recurring_meeting, start_time: scheduled_meeting.start_time.iso8601
+            )
+          end
+        end
+
+        context "with a current project" do
+          let(:current_project) { project }
+
+          it "shows restore menu item" do
+            expect(subject).to have_button "Restore this occurrence"
+            expect(subject).to have_element "form", method: "post", action: init_project_recurring_meeting_path(
+              project, recurring_meeting, start_time: scheduled_meeting.start_time.iso8601
+            )
+          end
+        end
+      end
+    end
+
     context "with project delete meetings permissions" do
       before do
         mock_permissions_for(user) do |mock|

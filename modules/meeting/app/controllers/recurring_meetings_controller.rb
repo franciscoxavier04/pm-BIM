@@ -12,7 +12,7 @@ class RecurringMeetingsController < ApplicationController
                          delete_scheduled_dialog destroy_scheduled template_completed download_ics notify end_series
                          end_series_dialog]
   before_action :find_optional_project,
-                only: %i[index show new create update details_dialog delete_dialog destroy edit delete_scheduled_dialog
+                only: %i[index show new init create update details_dialog delete_dialog destroy edit delete_scheduled_dialog
                          destroy_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
@@ -66,7 +66,7 @@ class RecurringMeetingsController < ApplicationController
       .call(start_time: DateTime.iso8601(params[:start_time]))
 
     if call.success?
-      redirect_to project_meeting_path(call.result.project, call.result), status: :see_other
+      redirect_to polymorphic_path([@project, call.result.becomes(Meeting)]), status: :see_other
     else
       flash[:error] = call.message
       redirect_to action: :show, id: @recurring_meeting

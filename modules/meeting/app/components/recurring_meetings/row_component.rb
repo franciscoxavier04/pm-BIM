@@ -130,7 +130,7 @@ module RecurringMeetings
           size: :medium,
           tag: :a,
           data: { "turbo-method": "post" },
-          href: init_recurring_meeting_path(model.recurring_meeting.id, start_time: model.start_time.iso8601)
+          href: polymorphic_path([:init, current_project, recurring_meeting], start_time: model.start_time.iso8601)
         )
       ) do |_c|
         I18n.t(:label_recurring_meeting_create)
@@ -209,7 +209,7 @@ module RecurringMeetings
 
       menu.with_item(
         label: I18n.t(:label_recurring_meeting_restore),
-        href: init_recurring_meeting_path(recurring_meeting, start_time: model.start_time.iso8601),
+        href: polymorphic_path([:init, current_project, recurring_meeting], start_time: model.start_time.iso8601),
         form_arguments: {
           method: :post
         }
