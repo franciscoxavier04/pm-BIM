@@ -41,7 +41,8 @@ module TimeEntries
       if show_work_package_field?
         f.work_package_autocompleter name: :work_package_id,
                                      label: TimeEntry.human_attribute_name(:work_package),
-                                     required: true,
+                                     required: work_package_required?,
+                                     validation_message: work_package_validation_error,
                                      autocomplete_options: {
                                        defaultData: false,
                                        component: "opce-time-entries-work-package-autocompleter",
@@ -70,6 +71,20 @@ module TimeEntries
       else
         ::API::V3::Utilities::PathHelper::ApiV3Path.time_entries_available_work_packages_on_create
       end
+    end
+
+    # When logging time from a project page or the work package page, the project id field is set in the background.
+    # When logging from the my page the project is only settable via the work package so in this case we need to make
+    # the WP field mandatory and get the error message from the project_id field and move it to the work_package_id field.
+    #
+    # We're still discussing if we make the work package mandatory, then this will become obsolete and
+    # probably be removed.
+    def work_package_required?
+      model.project.blank?
+    end
+
+    def work_package_validation_error
+      model.errors[:project_id]&.first
     end
 
     def work_package_completer_filters
