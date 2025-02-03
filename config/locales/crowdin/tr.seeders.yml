@@ -108,8 +108,8 @@ tr:
       projects:
         demo-project:
           name: Demo project
-          status_explanation: All tasks are on schedule. The people involved know their tasks. The system is completely set up.
-          description: This is a short summary of the goals of this demo project.
+          status_explanation: Tüm görevler programa uygundur. İlgili kişiler görevlerini biliyor. Sistem tamamen kurulmuştur.
+          description: Bu, bu demo projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
               title: Welcome to your demo project
@@ -178,10 +178,10 @@ tr:
             item_0:
               subject: Start of project
             item_1:
-              subject: Organize open source conference
+              subject: Açık kaynak konferansı düzenleyin
               children:
                 item_0:
-                  subject: Set date and location of conference
+                  subject: Konferans tarihini ve yerini belirleyin
                   children:
                     item_0:
                       subject: Send invitation to speakers
@@ -226,8 +226,8 @@ tr:
             More information: [https://www.openproject.org/docs/user-guide/wiki/](https://www.openproject.org/docs/user-guide/wiki/)
         scrum-project:
           name: Scrum project
-          status_explanation: All tasks are on schedule. The people involved know their tasks. The system is completely set up.
-          description: This is a short summary of the goals of this demo Scrum project.
+          status_explanation: Tüm görevler programa uygundur. İlgili kişiler görevlerini biliyor. Sistem tamamen kurulmuştur.
+          description: Bu, bu demo Scrum projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
               title: Welcome to your Scrum demo project
@@ -240,9 +240,9 @@ tr:
             item_1:
               name: Product Backlog
             item_2:
-              name: Sprint 1
+              name: Koşu 1
               wiki:
-                title: Sprint 1
+                title: Koşu 1
                 content: |
                   ### Sprint planning meeting
 
@@ -290,7 +290,7 @@ tr:
                   * After Sprint Review, will be moderated by Scrum Master.
                   * The team discusses the sprint: what went well, what needs to be improved to be more productive for the next sprint or even have more fun.
             item_3:
-              name: Sprint 2
+              name: Koşu 2
           categories:
             item_0: Category 1 (to be changed in Project settings)
           queries:

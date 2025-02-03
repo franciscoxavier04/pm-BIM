@@ -170,19 +170,44 @@ module Pages::Meetings
     end
 
     def expect_meetings_listed_in_order(*meetings)
-      within "[data-test-selector='Meetings::TableComponent']" do
+      retry_block do
         listed_meeting_titles = all("li div.title").map(&:text)
-
         expect(listed_meeting_titles).to eq(meetings.map(&:title))
       end
     end
 
-    def expect_meetings_listed(*meetings)
+    def expect_meetings_listed_in_table(*meetings)
       within "[data-test-selector='Meetings::TableComponent']" do
         meetings.each do |meeting|
-          expect(page).to have_css("div.title",
-                                   text: meeting.title)
+          expect(page).to have_css("div.title", text: meeting.title)
         end
+      end
+    end
+
+    def expect_meeting_listed_in_group(meeting, key: meeting_group_key(meeting))
+      within "[data-test-selector='meetings-table-#{key}']" do
+        expect(page).to have_css("div.title", text: meeting.title)
+      end
+    end
+
+    def meeting_group_key(meeting)
+      start_date = meeting.start_time.to_date
+      next_week = Time.current.next_occurring(Redmine::I18n.start_of_week)
+
+      if start_date == Time.zone.today
+        :today
+      elsif start_date == Time.zone.tomorrow
+        :tomorrow
+      elsif start_date < next_week
+        :this_week
+      else
+        :later
+      end
+    end
+
+    def expect_meetings_listed(*meetings)
+      meetings.each do |meeting|
+        expect(page).to have_css("div.title", text: meeting.title)
       end
     end
 

@@ -35,9 +35,7 @@ require_relative "../../support/pages/structured_meeting/show"
 require_relative "../../support/pages/recurring_meeting/show"
 require_relative "../../support/pages/meetings/index"
 
-RSpec.describe "Recurring meetings end series",
-               :js,
-               with_flag: { recurring_meetings: true } do
+RSpec.describe "Recurring meetings end series", :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }

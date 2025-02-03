@@ -33,8 +33,7 @@ require_relative "../../support/pages/structured_meeting/show"
 require_relative "../../support/pages/meetings/index"
 
 RSpec.describe "Structured meetings CRUD",
-               :js,
-               with_flag: { recurring_meetings: true } do
+               :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking]) }

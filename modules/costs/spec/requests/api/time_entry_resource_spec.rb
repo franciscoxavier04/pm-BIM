@@ -286,10 +286,7 @@ RSpec.describe "API v3 time_entry resource" do
       end
 
       before do
-        create(:member,
-               roles: [role],
-               project: other_project,
-               user: current_user)
+        current_user.members.find_by(project: other_project).roles << role
         get path
       end
 

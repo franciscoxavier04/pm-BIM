@@ -34,7 +34,7 @@ module Meetings
     def menu_items
       [
         OpenProject::Menu::MenuGroup.new(header: nil, children: top_level_menu_items),
-        meeting_series_menu_group,
+        OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_meeting_series), children: meeting_series_menu_items),
         OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_involvement), children: involvement_sidebar_menu_items)
       ].compact
     end
@@ -49,13 +49,7 @@ module Meetings
         recurring_menu_item,
         menu_item(title: I18n.t(:label_all_meetings),
                   query_params: { filters: all_filter })
-      ].compact
-    end
-
-    def meeting_series_menu_group
-      return unless OpenProject::FeatureDecisions.recurring_meetings_active?
-
-      OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_meeting_series), children: meeting_series_menu_items)
+      ]
     end
 
     def meeting_series_menu_items
@@ -80,8 +74,6 @@ module Meetings
     end
 
     def recurring_menu_item
-      return unless OpenProject::FeatureDecisions.recurring_meetings_active?
-
       recurring_filter = [{ type: { operator: "=", values: ["t"] } }].to_json
 
       menu_item(title: I18n.t("label_recurring_meeting_plural"),
@@ -95,7 +87,7 @@ module Meetings
         menu_item(title: I18n.t(:label_invitations),
                   query_params: { filters: invitation_filter, sort: "start_time" }),
         menu_item(title: I18n.t(:label_attended),
-                  query_params: { filters: attendee_filter }),
+                  query_params: { filters: attendee_filter, upcoming: false }),
         menu_item(title: I18n.t(:label_created_by_me),
                   query_params: { filters: author_filter })
       ]
