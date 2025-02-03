@@ -302,6 +302,8 @@ en:
 
         Do you want to continue?
       confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
 
   notice_successful_notification: "Notification sent successfully"
   notice_timezone_missing: No time zone is set and %{zone} is assumed. To choose your time zone, please click here.
