@@ -1,0 +1,14 @@
+.wp-datepicker-dialog-date-form
+  display: grid
+  grid-template-columns: 1fr 1fr 170px
+  grid-template-areas: "start-date due-date duration"
+  grid-column-gap: 1rem
+
+  &--field-container
+    &_hidden
+      display: none
+
+  &--add-button
+    // The other fields have a 20px label on top + 4px space between label and field
+    margin-top: 24px
+    width: 100%
