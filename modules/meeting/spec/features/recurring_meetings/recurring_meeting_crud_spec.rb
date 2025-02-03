@@ -90,7 +90,7 @@ RSpec.describe "Recurring meetings CRUD",
 
     show_page.delete_meeting_series
     show_page.within_modal "Delete meeting series" do
-      page.check "I understand that this deletion cannot be reversed"
+      check "I understand that this deletion cannot be reversed", allow_label_click: true
 
       click_on "Delete permanently"
     end
@@ -120,7 +120,7 @@ RSpec.describe "Recurring meetings CRUD",
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     show_page.within_modal "Delete meeting occurrence" do
-      check "I understand that this deletion cannot be reversed"
+      check "I understand that this deletion cannot be reversed", allow_label_click: true
 
       click_on "Delete permanently"
     end
@@ -138,7 +138,7 @@ RSpec.describe "Recurring meetings CRUD",
 
     show_page.cancel_scheduled_occurrence date: "01/07/2025 01:30 PM"
     show_page.within_modal "Cancel meeting occurrence" do
-      check "I understand that this deletion cannot be reversed"
+      check "I understand that this deletion cannot be reversed", allow_label_click: true
 
       click_on "Cancel occurrence"
     end
@@ -180,7 +180,7 @@ RSpec.describe "Recurring meetings CRUD",
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     show_page.within_modal "Delete meeting occurrence" do
-      check "I understand that this deletion cannot be reversed"
+      check "I understand that this deletion cannot be reversed", allow_label_click: true
 
       click_on "Delete permanently"
     end

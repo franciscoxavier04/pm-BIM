@@ -82,7 +82,7 @@ RSpec.describe "Recurring meetings end series",
       expect(page).to have_text("Ending the series will delete any future open or scheduled meeting occurrences")
 
       retry_block do
-        check "I understand that this deletion cannot be reversed"
+        check "I understand that this deletion cannot be reversed", allow_label_click: true
         expect(page).to have_checked_field("I understand that this deletion cannot be reversed")
       end
 
