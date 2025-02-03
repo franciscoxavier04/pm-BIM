@@ -9,13 +9,15 @@ class RecurringMeetingsController < ApplicationController
   include OpTurbo::DialogStreamHelper
 
   before_action :find_meeting,
-                only: %i[show update details_dialog destroy edit init
-                         delete_scheduled template_completed download_ics notify end_series end_series_dialog]
+                only: %i[show update details_dialog delete_dialog destroy edit init
+                         delete_scheduled_dialog destroy_scheduled template_completed download_ics notify end_series
+                         end_series_dialog]
   before_action :find_optional_project,
-                only: %i[index show new create update details_dialog destroy edit delete_scheduled notify]
+                only: %i[index show new create update details_dialog delete_dialog destroy edit delete_scheduled_dialog
+                         destroy_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
-  before_action :get_scheduled_meeting, only: %i[delete_scheduled]
+  before_action :get_scheduled_meeting, only: %i[delete_scheduled_dialog destroy_scheduled]
 
   before_action :convert_params, only: %i[create update]
   before_action :check_template_completable, only: %i[template_completed]
@@ -158,6 +160,13 @@ class RecurringMeetingsController < ApplicationController
     redirect_to action: :show
   end
 
+  def delete_dialog
+    respond_with_dialog RecurringMeetings::DeleteDialogComponent.new(
+      recurring_meeting: @recurring_meeting,
+      project: @project
+    )
+  end
+
   def destroy
     if @recurring_meeting.destroy
       flash[:notice] = I18n.t(:notice_successful_delete)
@@ -189,8 +198,15 @@ class RecurringMeetingsController < ApplicationController
     redirect_to action: :show, id: @recurring_meeting, status: :see_other
   end
 
-  def delete_scheduled
-    if @scheduled.update(cancelled: true)
+  def delete_scheduled_dialog
+    respond_with_dialog RecurringMeetings::DeleteScheduledDialogComponent.new(
+      scheduled_meeting: @scheduled_meeting,
+      project: @project
+    )
+  end
+
+  def destroy_scheduled
+    if @scheduled_meeting.update(cancelled: true)
       flash[:notice] = I18n.t(:notice_successful_cancel)
     else
       flash[:error] = I18n.t(:error_failed_to_delete_entry)
@@ -274,9 +290,9 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def get_scheduled_meeting
-    @scheduled = @recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: params[:start_time])
+    @scheduled_meeting = @recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: params[:start_time])
 
-    render_400 unless @scheduled.meeting_id.nil?
+    render_400 unless @scheduled_meeting.meeting_id.nil?
   end
 
   def find_optional_project

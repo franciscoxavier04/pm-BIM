@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,26 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Meeting::ProjectAutocompleter < ApplicationForm
-  form do |f|
-    f.project_autocompleter(
-      name: "project_id",
-      id: "project_id",
-      label: Project.model_name.human,
-      required: true,
-      autocomplete_options: {
-        with_search_icon: true,
-        openDirectly: false,
-        focusDirectly: false,
-        dropdownPosition: "bottom",
-        inputName: "project_id",
-        inputValue: @project&.id,
-        appendTo: "#new-meeting-dialog",
-        filters: [{ name: "user_action", operator: "=", values: ["meetings/create"] }],
-        data: {
-          "test-selector": "project_id"
-        }
-      }
-    )
+module RecurringMeetings
+  class DeleteDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
+
+    def initialize(recurring_meeting:, project:)
+      super
+
+      @recurring_meeting = recurring_meeting
+      @project = project
+    end
+
+    private
+
+    def id = "delete-recurring-meeting-dialog"
+
+    def title = I18n.t("recurring_meeting.delete_dialog.title")
+
+    def confirmation_message
+      t("recurring_meeting.delete_dialog.confirmation_message_html",
+        title: @recurring_meeting.title,
+        count: @recurring_meeting.remaining_occurrences&.count || 0) # actually ♾️, but we show same message as for 0
+    end
   end
 end

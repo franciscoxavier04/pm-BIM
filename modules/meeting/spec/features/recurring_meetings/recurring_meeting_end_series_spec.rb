@@ -75,17 +75,17 @@ RSpec.describe "Recurring meetings end series", :js do
   it "can end the meeting early" do
     show_page.visit!
 
-    page.find_test_selector("recurring-meeting-action-menu").click
-    click_on "End meeting series"
-    expect(page).to have_css("#recurring-meetings-end-series-dialog")
-    expect(page).to have_text("Ending the series will delete any future open or scheduled meeting occurrences")
+    show_page.end_meeting_series
+    show_page.within_modal "End meeting series" do
+      expect(page).to have_text("Ending the series will delete any future open or scheduled meeting occurrences")
 
-    retry_block do
-      check "I understand that this deletion cannot be reversed"
-      expect(page).to have_checked_field("I understand that this deletion cannot be reversed")
+      retry_block do
+        check "I understand that this deletion cannot be reversed", allow_label_click: true
+        expect(page).to have_checked_field("I understand that this deletion cannot be reversed")
+      end
+
+      click_on "End series now"
     end
-
-    click_on "End series now"
 
     expect(page).to have_current_path recurring_meeting_path(meeting)
     expect(page).to have_text("Nothing to display")

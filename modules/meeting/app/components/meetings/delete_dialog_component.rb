@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,26 +28,46 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Meeting::ProjectAutocompleter < ApplicationForm
-  form do |f|
-    f.project_autocompleter(
-      name: "project_id",
-      id: "project_id",
-      label: Project.model_name.human,
-      required: true,
-      autocomplete_options: {
-        with_search_icon: true,
-        openDirectly: false,
-        focusDirectly: false,
-        dropdownPosition: "bottom",
-        inputName: "project_id",
-        inputValue: @project&.id,
-        appendTo: "#new-meeting-dialog",
-        filters: [{ name: "user_action", operator: "=", values: ["meetings/create"] }],
-        data: {
-          "test-selector": "project_id"
-        }
-      }
-    )
+module Meetings
+  class DeleteDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
+
+    def initialize(meeting:, project:)
+      super
+
+      @meeting = meeting
+      @project = project
+    end
+
+    delegate :recurring_meeting, to: :@meeting
+
+    private
+
+    def id = "delete-meeting-dialog"
+
+    def title
+      if recurring_meeting.present?
+        I18n.t("meeting.delete_dialog.occurrence.title")
+      else
+        I18n.t("meeting.delete_dialog.one_time.title")
+      end
+    end
+
+    def heading
+      if recurring_meeting.present?
+        I18n.t("meeting.delete_dialog.occurrence.heading")
+      else
+        I18n.t("meeting.delete_dialog.one_time.heading")
+      end
+    end
+
+    def confirmation_message
+      if recurring_meeting.present?
+        t("meeting.delete_dialog.occurrence.confirmation_message_html", title: recurring_meeting.title)
+      else
+        t("meeting.delete_dialog.one_time.confirmation_message_html")
+      end
+    end
   end
 end
