@@ -52,13 +52,15 @@ See COPYRIGHT and LICENSE files for more details.
           <%= setting_text_field :costs_currency_format, type: :string, container_class: "-middle" %>
         </div>
 
-        <div class="form--field">
-          <%= setting_check_box :allow_tracking_start_and_end_times, container_class: "-middle" %>
-        </div>
+        <%- if OpenProject::FeatureDecisions.track_start_and_end_times_for_time_entries_active? %>
+          <div class="form--field">
+            <%= setting_check_box :allow_tracking_start_and_end_times, container_class: "-middle" %>
+          </div>
 
-        <div class="form--field">
-          <%= setting_check_box :enforce_tracking_start_and_end_times, container_class: "-middle" %>
-        </div>
+          <div class="form--field">
+            <%= setting_check_box :enforce_tracking_start_and_end_times, container_class: "-middle" %>
+          </div>
+        <%- end %>
       </section>
 
 
