@@ -112,13 +112,13 @@ class CostQuery::PDF::TimesheetGenerator
 
   def all_entries
     @all_entries ||= begin
-        ids = query
-                .each_direct_result
-                .filter { |r| r.fields["type"] == "TimeEntry" }
-                .flat_map { |r| r.fields["id"] }
+      ids = query
+              .each_direct_result
+              .filter { |r| r.fields["type"] == "TimeEntry" }
+              .flat_map { |r| r.fields["id"] }
 
-        TimeEntry.where(id: ids).includes(%i[user activity work_package project])
-      end
+      TimeEntry.where(id: ids).includes(%i[user activity work_package project])
+    end
   end
 
   def build_table_rows(entries)
