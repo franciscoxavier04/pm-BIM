@@ -220,7 +220,7 @@ en:
         title: "Delete meeting"
         heading: "Delete this meeting?"
         confirmation_message_html: >
-          Do you want to continue?
+          This action is not reversible. Please proceed with caution.
       occurrence:
         title: "Delete meeting occurrence"
         heading: "Delete this meeting occurrence?"

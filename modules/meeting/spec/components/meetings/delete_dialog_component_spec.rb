@@ -73,7 +73,7 @@ RSpec.describe Meetings::DeleteDialogComponent, type: :component do
     end
 
     it "shows a simple confirmation message" do
-      expect(subject).to have_text "Do you want to continue?"
+      expect(subject).to have_text "This action is not reversible. Please proceed with caution."
     end
   end
 
