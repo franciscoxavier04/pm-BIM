@@ -58,8 +58,7 @@ class MeetingsController < ApplicationController
   menu_item :new_meeting, only: %i[new create]
 
   def index
-    @query = load_query
-    @meetings = load_meetings(@query)
+    load_meetings
 
     render "index",
            locals: { menu_name: project_or_global_menu }
@@ -353,10 +352,43 @@ class MeetingsController < ApplicationController
     query.where("invited_user_id", "=", [User.current.id.to_s])
   end
 
-  def load_meetings(query)
-    query
-      .results
-      .paginate(page: page_param, per_page: per_page_param)
+  def load_meetings
+    @query = load_query
+
+    # We group meetings into individual groups, but only for upcoming meetings
+    if params[:upcoming] == "false"
+      @meetings = show_more_pagination(@query.results)
+    else
+      @grouped_meetings = group_meetings(@query.results)
+    end
+  end
+
+  def group_meetings(all_meetings) # rubocop:disable Metrics/AbcSize
+    next_week = Time.current.next_occurring(Redmine::I18n.start_of_week)
+    groups = Hash.new { |h, k| h[k] = [] }
+    groups[:later] = show_more_pagination(all_meetings
+                                            .where(start_time: next_week..)
+                                            .order(start_time: :asc))
+
+    all_meetings
+      .where(start_time: ...next_week)
+      .order(start_time: :asc)
+      .each do |meeting|
+      start_date = meeting.start_time.to_date
+
+      group_key =
+        if start_date == Time.zone.today
+          :today
+        elsif start_date == Time.zone.tomorrow
+          :tomorrow
+        else
+          :this_week
+        end
+
+      groups[group_key] << meeting
+    end
+
+    groups
   end
 
   def build_meeting

@@ -46,9 +46,6 @@ OpenProject::FeatureDecisions.add :generate_pdf_from_work_package,
                                   description: "Allows to generate a PDF document from a work package description. " \
                                                "See #45896 for details."
 
-OpenProject::FeatureDecisions.add :recurring_meetings,
-                                  description: "Differentiate between one-time and recurring meetings."
-
 OpenProject::FeatureDecisions.add :generate_work_package_subjects,
                                   description: "Allows the configuration for work package types to have " \
                                                "automatically generated work package subjects."

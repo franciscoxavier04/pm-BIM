@@ -45,6 +45,19 @@ module Redmine
           .sort
     end
 
+    def self.start_of_week
+      case Setting.start_of_week.to_i
+      when 1
+        :monday
+      when 7
+        :sunday
+      when 6
+        :saturday
+      else
+        Date.beginning_of_week
+      end
+    end
+
     def self.valid_languages
       all_languages & (Setting.available_languages + [Setting.default_language])
     end
