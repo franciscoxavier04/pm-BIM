@@ -56,14 +56,20 @@
       end
 
       if show_date_form
-        body.with_row(mb: 3, classes: "FormControl-horizontalGroup--sm-vertical") do
-          render(WorkPackages::DatePicker::DateForm.new(f,
-                                                        work_package:,
-                                                        schedule_manually:,
-                                                        is_milestone: milestone?,
-                                                        focused_field:,
-                                                        touched_field_map:,
-                                                        disabled: disabled?))
+        body.with_row(mb: 3) do
+          render(WorkPackages::DatePicker::DateFormComponent.new(work_package:,
+                                                                 schedule_manually:,
+                                                                 is_milestone: milestone?,
+                                                                 focused_field:,
+                                                                 disabled: disabled?))
+        end
+        body.with_row do
+          render(WorkPackages::DatePicker::HiddenValuesForm.new(f,
+                                                                work_package:,
+                                                                is_milestone: milestone?,
+                                                                schedule_manually:,
+                                                                touched_field_map:,
+                                                                ))
         end
 
         body.with_row(mb: 3) do

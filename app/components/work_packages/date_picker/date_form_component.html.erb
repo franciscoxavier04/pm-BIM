@@ -1,0 +1,37 @@
+<%=
+  grid_layout("wp-datepicker-dialog-date-form", tag: :div) do |body|
+    body.with_area("start-date") do
+      flex_layout do |start_date|
+        start_date.with_row(classes: container_classes(:start_date, :button)) do
+          render(Primer::ButtonComponent.new(classes: "wp-datepicker-dialog-date-form--add-button")) do |button|
+            button.with_leading_visual_icon(icon: :plus)
+            I18n.t("attributes.start_date")
+          end
+        end
+
+        start_date.with_row(classes: container_classes(:start_date, :text_field)) do
+          render(Primer::Alpha::TextField.new(**text_field_options(name: :start_date, label: I18n.t("attributes.start_date"))))
+        end
+      end
+    end
+
+    body.with_area("due-date") do
+      flex_layout do |due_date|
+        due_date.with_row(classes: container_classes(:due_date, :button)) do
+          render(Primer::ButtonComponent.new(classes: "wp-datepicker-dialog-date-form--add-button")) do |button|
+            button.with_leading_visual_icon(icon: :plus)
+            I18n.t("attributes.due_date")
+          end
+        end
+
+        due_date.with_row(classes: container_classes(:due_date, :text_field)) do
+          render(Primer::Alpha::TextField.new(**text_field_options(name: :due_date, label: I18n.t("attributes.due_date"))))
+        end
+      end
+    end
+
+    body.with_area("duration") do
+      render(Primer::Alpha::TextField.new(**text_field_options(name: :duration, label: I18n.t("activerecord.attributes.work_package.duration"))))
+    end
+  end
+%>

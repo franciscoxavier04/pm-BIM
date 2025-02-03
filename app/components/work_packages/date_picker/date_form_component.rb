@@ -30,79 +30,53 @@
 
 module WorkPackages
   module DatePicker
-    class DateForm < ApplicationForm
-      ##
-      # Primer::Forms::BaseComponent or ApplicationForm will always autofocus the
-      # first input field with an error present on it. Despite this behavior being
-      # a11y-friendly, it breaks the modal's UX when an invalid input field
-      # is rendered.
-      #
-      # The reason for this is since we're implementing a "format on blur", when
-      # we make a request to the server that will set an input field in an invalid
-      # state and it is returned as such, any time we blur this autofocused field,
-      # we'll perform another request that will still have the input in an invalid
-      # state causing it to autofocus again and preventing us from leaving this
-      # "limbo state".
-      ##
-      def before_render
-        # no-op
-      end
-
+    class DateFormComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
       attr_reader :work_package
 
       def initialize(work_package:,
                      schedule_manually:,
                      disabled:,
                      is_milestone:,
-                     focused_field: :start_date,
-                     touched_field_map: {})
+                     focused_field: :start_date)
         super()
 
         @work_package = work_package
         @schedule_manually = schedule_manually
         @is_milestone = is_milestone
         @focused_field = update_focused_field(focused_field)
-        @touched_field_map = touched_field_map
         @disabled = disabled
-      end
-
-      form do |query_form|
-        query_form.group(layout: :horizontal) do |group|
-          group.hidden(name: "schedule_manually", value: @schedule_manually)
-
-          if @is_milestone
-            text_field(group, name: :start_date, label: I18n.t("attributes.date"))
-
-            hidden_touched_field(group, name: :start_date)
-          else
-            text_field(group, name: :start_date, label: I18n.t("attributes.start_date"))
-            text_field(group, name: :due_date, label: I18n.t("attributes.due_date"))
-            text_field(group, name: :duration, label: I18n.t("activerecord.attributes.work_package.duration"))
-
-            hidden_touched_field(group, name: :start_date)
-            hidden_touched_field(group, name: :due_date)
-            hidden_touched_field(group, name: :duration)
-          end
-
-          hidden_touched_field(group, name: :ignore_non_working_days)
-          hidden_touched_field(group, name: :schedule_manually)
-
-          group.fields_for(:initial) do |builder|
-            WorkPackages::DatePicker::InitialValuesForm.new(builder, work_package:, is_milestone: @is_milestone)
-          end
-        end
       end
 
       private
 
-      def text_field(group, name:, label:)
+      def container_classes(name, type)
+        classes = "wp-datepicker-dialog-date-form--field-container"
+        case type
+        when :button
+          classes += " wp-datepicker-dialog-date-form--field-container_hidden" if show_text_field?(name)
+        when :text_field
+          classes += " wp-datepicker-dialog-date-form--field-container_hidden" unless show_text_field?(name)
+        else
+          # Do nothing
+        end
+
+        classes
+      end
+
+      def show_text_field?(name)
+        field_value(name).present? || (name == :due_date && field_value(:start_date).nil?)
+      end
+
+      def text_field_options(name:, label:)
         text_field_options = default_field_options(name).merge(
-          name:,
+          name: "work_package[#{name.to_s}]",
+          id: "work_package_#{name.to_s}",
           value: field_value(name),
           disabled: disabled?(name),
           label:,
           caption: caption(name),
-          show_clear_button: name != :duration,
+          show_clear_button: !duration_field?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name)
         )
@@ -113,7 +87,7 @@ module WorkPackages
           )
         end
 
-        group.text_field(**text_field_options)
+        text_field_options
       end
 
       def caption(name)
@@ -131,17 +105,6 @@ module WorkPackages
                                       })) { text }
       end
 
-      def hidden_touched_field(group, name:)
-        group.hidden(name: :"#{name}_touched",
-                     value: touched(name),
-                     data: { "work-packages--date-picker--preview-target": "touchedFieldInput",
-                             "referrer-field": name })
-      end
-
-      def touched(name)
-        @touched_field_map["#{name}_touched"] || false
-      end
-
       def duration_field?(name)
         name == :duration
       end
@@ -151,7 +114,7 @@ module WorkPackages
 
         case focused_field.to_s.underscore
         when "combined_date"
-          if field_value(:start_date).present? && field_value(:due_date).nil?
+          if field_value(:due_date).present? && field_value(:start_date).nil?
             :due_date
           else
             :start_date
