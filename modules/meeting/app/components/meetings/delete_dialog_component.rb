@@ -64,7 +64,7 @@ module Meetings
 
     def confirmation_message
       if recurring_meeting.present?
-        t("meeting.delete_dialog.occurrence.confirmation_message_html", name: recurring_meeting.title)
+        t("meeting.delete_dialog.occurrence.confirmation_message_html", title: recurring_meeting.title)
       else
         t("meeting.delete_dialog.one_time.confirmation_message_html")
       end

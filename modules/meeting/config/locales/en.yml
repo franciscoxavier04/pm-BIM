@@ -225,7 +225,7 @@ en:
         title: "Delete meeting occurrence"
         heading: "Delete this meeting occurrence?"
         confirmation_message_html: >
-          This meeting is part of a series called <strong>%{name}</strong>.
+          This meeting is part of a series called <strong>%{title}</strong>.
           This will only delete this particular occurrence and not the entire series.
           Do you want to continue?
 
