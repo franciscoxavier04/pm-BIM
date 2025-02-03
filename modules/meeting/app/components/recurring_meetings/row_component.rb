@@ -97,7 +97,7 @@ module RecurringMeetings
       elsif instantiated?
         meeting.state
       else
-        "scheduled"
+        "planned"
       end
     end
 

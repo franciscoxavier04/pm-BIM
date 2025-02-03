@@ -112,7 +112,7 @@ class Meeting < ApplicationRecord
 
   enum state: {
     open: 0, # 0 -> default, leave values for future states between open and closed
-    scheduled: 1,
+    planned: 1,
     cancelled: 4,
     closed: 5
   }
