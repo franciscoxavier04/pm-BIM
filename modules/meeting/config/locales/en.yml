@@ -222,7 +222,7 @@ en:
         confirmation_message_html: >
           Do you want to continue?
       occurrence:
-        title: "Delete occurrence"
+        title: "Delete meeting occurrence"
         heading: "Delete this meeting occurrence?"
         confirmation_message_html: >
           This meeting is part of a series called <strong>%{name}</strong>.
