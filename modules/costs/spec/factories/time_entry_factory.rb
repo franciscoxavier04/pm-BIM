@@ -40,7 +40,9 @@ FactoryBot.define do
     end
 
     after(:create) do |time_entry|
-      time_entry.update(project: time_entry.work_package.project)
+      if time_entry.work_package.present?
+        time_entry.update(project: time_entry.work_package.project)
+      end
 
       # ensure user is member of project
       unless Member.exists?(principal: time_entry.user, project: time_entry.project)
