@@ -29,12 +29,11 @@ jobs:
             rubocop-rspec_rails:gemfile
           reporter: github-pr-check
           only_changed: true
-      # This step can be removed once https://github.com/WizardComputer/action-erblint/pull/2 is merged
-      - name: Run bundle install
-        run: bundle install
+      - name: Install erb_lint
+        run: gem install -N erb_lint erblint-github
       - name: Run erb-lint
-        uses: WizardComputer/action-erblint@v1.0.0
+        uses: tk0miya/action-erblint@v1
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
-          use_bundler: false
+          fail_on_error: true
