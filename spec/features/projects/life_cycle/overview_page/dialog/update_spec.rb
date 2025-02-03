@@ -31,9 +31,12 @@ require_relative "../shared_context"
 
 RSpec.describe "Edit project stages and gates on project overview page", :js, with_flag: { stages_and_gates: true } do
   include_context "with seeded projects and stages and gates"
+
   shared_let(:overview) { create :overview, project: }
 
   let(:overview_page) { Pages::Projects::Show.new(project) }
+
+  let(:activity_page) { Pages::Projects::Activity.new(project) }
 
   current_user { admin }
 
@@ -105,13 +108,34 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         dialog.expect_closed
 
         # Sidebar is refreshed with the updated values
-        expected_date_range = initiating_dates.map { |date| date.strftime("%m/%d/%Y") }.join(" - ")
+        expected_date_range = initiating_dates.map { I18n.l(_1) }.join(" - ")
         overview_page.within_life_cycle_container(life_cycle_initiating) do
           expect(page).to have_text expected_date_range
         end
 
         overview_page.within_life_cycle_container(life_cycle_ready_for_planning) do
-          expect(page).to have_text ready_for_planning_date.strftime("%m/%d/%Y")
+          expect(page).to have_text I18n.l(ready_for_planning_date)
+        end
+
+        activity_page.visit!
+
+        activity_page.show_details
+
+        life_cycle_initiating_was = life_cycle_initiating.dup
+        life_cycle_initiating.reload
+
+        life_cycle_ready_for_planning_was = life_cycle_ready_for_planning.dup
+        life_cycle_ready_for_planning.reload
+
+        activity_page.within_journal(number: 1) do
+          activity_page.expect_activity("Initiating changed from " \
+                                        "#{I18n.l life_cycle_initiating_was.start_date} - " \
+                                        "#{I18n.l life_cycle_initiating_was.end_date} to " \
+                                        "#{I18n.l life_cycle_initiating.start_date} - " \
+                                        "#{I18n.l life_cycle_initiating.end_date}")
+          activity_page.expect_activity("Ready for Planning changed from " \
+                                        "#{I18n.l life_cycle_ready_for_planning_was.date} to " \
+                                        "#{I18n.l life_cycle_ready_for_planning.date}")
         end
       end
 
@@ -152,6 +176,19 @@ RSpec.describe "Edit project stages and gates on project overview page", :js, wi
         # Saving the dialog is successful
         dialog.submit
         dialog.expect_closed
+
+        activity_page.visit!
+
+        activity_page.show_details
+
+        life_cycle_ready_for_planning_was = life_cycle_ready_for_planning.dup
+        life_cycle_ready_for_planning.reload
+
+        activity_page.within_journal(number: 1) do
+          activity_page.expect_activity("Ready for Planning changed from " \
+                                        "#{I18n.l life_cycle_ready_for_planning_was.date} to " \
+                                        "#{I18n.l life_cycle_ready_for_planning.date}")
+        end
       end
     end
 
