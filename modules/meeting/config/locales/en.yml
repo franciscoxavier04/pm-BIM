@@ -157,6 +157,9 @@ en:
   label_recurring_meeting_series_delete: "Delete meeting series"
   label_recurring_meeting_series_end: "End meeting series"
   label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    one: "There is one more meeting."
+    other: "There are %{count} more meetings."
   label_my_meetings: "My meetings"
   label_all_meetings: "All meetings"
   label_upcoming_meetings: "Upcoming meetings"
@@ -324,6 +327,10 @@ en:
   label_meeting_created_by: "Created by"
   label_meeting_last_updated: "Last updated"
   label_meeting_reload: "Reload"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Agenda items"
   label_agenda_items_reordered: "reordered"
 

@@ -26,16 +26,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module RecurringMeetings
-  class ShowComponent < ApplicationComponent
+module Meetings
+  class TableFooterComponent < ApplicationComponent
     include ApplicationHelper
+    include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, project:)
+    attr_reader :total, :count, :upcoming
+
+    def initialize(count:, total:, upcoming:)
       super
 
-      @meeting = meeting
-      @project = project
+      @count = count
+      @total = total
+      @upcoming = upcoming
+    end
+
+    def label
+      I18n.t(:label_meeting_more, count: total - count)
+    end
+
+    def next_count
+      [
+        total,
+        count + PaginationHelper::SHOW_MORE_DEFAULT_INCREMENT
+      ].min
     end
   end
 end

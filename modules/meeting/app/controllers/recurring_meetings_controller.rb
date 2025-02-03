@@ -23,12 +23,14 @@ class RecurringMeetingsController < ApplicationController
   menu_item :meetings
 
   def index
-    @recurring_meetings =
+    results =
       if @project
         RecurringMeeting.visible.where(project_id: @project.id)
       else
         RecurringMeeting.visible
       end
+
+    @recurring_meetings = show_more_pagination(results)
 
     respond_to do |format|
       format.html do
@@ -51,11 +53,12 @@ class RecurringMeetingsController < ApplicationController
         params[:count].to_i + 5
       end
 
-    if @direction == "past"
-      @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
-    else
-      @meetings, @planned_meetings = upcoming_meetings(count: @count)
-    end
+
+      if @direction == "past"
+        @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
+      else
+        @meetings, @planned_meetings =upcoming_meetings(count: @count)
+      end
 
     respond_to do |format|
       format.html do
