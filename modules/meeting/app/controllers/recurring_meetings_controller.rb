@@ -53,12 +53,11 @@ class RecurringMeetingsController < ApplicationController
         params[:count].to_i + 5
       end
 
-
-      if @direction == "past"
-        @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
-      else
-        @meetings, @planned_meetings =upcoming_meetings(count: @count)
-      end
+    if @direction == "past"
+      @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
+    else
+      @meetings, @planned_meetings = upcoming_meetings(count: @count)
+    end
 
     respond_to do |format|
       format.html do
@@ -252,7 +251,7 @@ class RecurringMeetingsController < ApplicationController
 
   def upcoming_meetings(count:)
     opened = @recurring_meeting
-      .upcoming_not_cancelled_meetings
+      .upcoming_instantiated_meetings
       .index_by(&:start_time)
 
     cancelled = @recurring_meeting
@@ -262,10 +261,10 @@ class RecurringMeetingsController < ApplicationController
     # Planned meetings consist of scheduled occurrences and cancelled meetings
     # Open meetings are removed from the scheduled occurrences as they are displayed separately
     planned = @recurring_meeting
-               .scheduled_occurrences(limit: count + opened.count)
-               .reject { |start_time| opened.include?(start_time) }
-               .map { |start_time| cancelled[start_time] || scheduled_meeting(start_time) }
-               .first(count)
+      .scheduled_occurrences(limit: count + opened.count)
+      .reject { |start_time| opened.include?(start_time) }
+      .map { |start_time| cancelled[start_time] || scheduled_meeting(start_time) }
+      .first(count)
 
     [opened.values.sort_by(&:start_time), planned]
   end
