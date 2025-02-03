@@ -414,12 +414,24 @@ RSpec.describe TimeEntry do
   end
 
   describe ".can_track_start_and_end_time?" do
-    context "with the setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
-      it { expect(described_class).to be_can_track_start_and_end_time }
+    context "with the feature flag enabled", with_flag: { track_start_and_end_times_for_time_entries: true } do
+      context "with the setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
+        it { expect(described_class).to be_can_track_start_and_end_time }
+      end
+
+      context "with the setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
+        it { expect(described_class).not_to be_can_track_start_and_end_time }
+      end
     end
 
-    context "with the setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
-      it { expect(described_class).not_to be_can_track_start_and_end_time }
+    context "with the feature flag disabled", with_flag: { track_start_and_end_times_for_time_entries: false } do
+      context "with the setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
+        it { expect(described_class).not_to be_can_track_start_and_end_time }
+      end
+
+      context "with the setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
+        it { expect(described_class).not_to be_can_track_start_and_end_time }
+      end
     end
   end
 
@@ -516,23 +528,47 @@ RSpec.describe TimeEntry do
   end
 
   describe ".must_track_start_and_end_time?" do
-    context "with the allow setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
-      context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
-        it { expect(described_class).to be_must_track_start_and_end_time }
+    context "with the feature flag enabled", with_flag: { track_start_and_end_times_for_time_entries: true } do
+      context "with the allow setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
+        context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
+          it { expect(described_class).to be_must_track_start_and_end_time }
+        end
+
+        context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
       end
 
-      context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
-        it { expect(described_class).not_to be_must_track_start_and_end_time }
+      context "with the allow setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
+        context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
+
+        context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
       end
     end
 
-    context "with the allow setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
-      context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
-        it { expect(described_class).not_to be_must_track_start_and_end_time }
+    context "with the feature flag disabled", with_flag: { track_start_and_end_times_for_time_entries: false } do
+      context "with the allow setting enabled", with_settings: { allow_tracking_start_and_end_times: true } do
+        context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
+
+        context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
       end
 
-      context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
-        it { expect(described_class).not_to be_must_track_start_and_end_time }
+      context "with the allow setting disabled", with_settings: { allow_tracking_start_and_end_times: false } do
+        context "with the enforce setting enabled", with_settings: { enforce_tracking_start_and_end_times: true } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
+
+        context "with the enforce setting disabled", with_settings: { enforce_tracking_start_and_end_times: false } do
+          it { expect(described_class).not_to be_must_track_start_and_end_time }
+        end
       end
     end
   end

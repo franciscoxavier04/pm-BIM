@@ -30,7 +30,7 @@
 
 require File.expand_path("#{File.dirname(__FILE__)}/../spec_helper.rb")
 
-RSpec.describe "time entry dialog", :js do
+RSpec.describe "time entry dialog", :js, with_flag: :track_start_and_end_times_for_time_entries do
   include Redmine::I18n
 
   shared_let(:project) { create(:project_with_types) }
