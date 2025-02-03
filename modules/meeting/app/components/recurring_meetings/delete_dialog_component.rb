@@ -49,7 +49,7 @@ module RecurringMeetings
     def confirmation_message
       t("recurring_meeting.delete_dialog.confirmation_message_html",
         title: @recurring_meeting.title,
-        count: @recurring_meeting.remaining_occurrences.count)
+        count: @recurring_meeting.remaining_occurrences&.count || 0) # actually ♾️, but we show same message as for 0
     end
   end
 end

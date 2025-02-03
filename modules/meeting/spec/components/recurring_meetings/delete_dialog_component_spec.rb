@@ -69,7 +69,25 @@ RSpec.describe RecurringMeetings::DeleteDialogComponent, type: :component do
     expect(subject).to have_text "Permanently delete this meeting series?"
   end
 
-  it "shows a confirmation message detailing the remaining occurrences in the series" do
-    expect(subject).to have_text "will delete all 6 meetings in this series"
+  context "with a meeting series that ends - with several remaining meetings" do
+    it "shows a confirmation message with a count of the remaining meetings" do
+      expect(subject).to have_text "will delete all 6 meetings in this series"
+    end
+  end
+
+  context "with a meeting series that ends - with one remaining meeting" do
+    let(:recurring_meeting) { build_stubbed(:recurring_meeting, project:, end_after: :iterations, iterations: 1) }
+
+    it "shows a confirmation message mentioning one remaining meeting" do
+      expect(subject).to have_text "will also delete one meeting in this series"
+    end
+  end
+
+  context "with a meeting series that never ends" do
+    let(:recurring_meeting) { build_stubbed(:recurring_meeting, project:, end_after: :never) }
+
+    it "shows a confirmation message without a count" do
+      expect(subject).to have_text "will delete any meetings in this series"
+    end
   end
 end

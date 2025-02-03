@@ -290,10 +290,17 @@ en:
     delete_dialog:
       title: "Delete meeting series"
       heading: "Permanently delete this meeting series?"
-      confirmation_message_html: >
-        Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series.
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series.
+          This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series.
+          This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series.
+          This action is not reversible. Please proceed with caution.
 
-        This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "Cancel meeting occurrence"
       heading: "Cancel this meeting occurrence?"
