@@ -76,7 +76,6 @@ export class HoverCardTriggerService {
 
       // Hovering over a new target. Close the old one (if any).
       this.close(true);
-      this.previousTarget = el;
 
       const turboFrameUrl = this.parseHoverCardUrl(el);
       if (!turboFrameUrl) { return; }
@@ -84,10 +83,7 @@ export class HoverCardTriggerService {
       // Reset close timer for when hovering over multiple triggers in quick succession.
       // A timer from a previous hover card might still be running. We do not want it to
       // close the new (i.e. this) hover card.
-      if (this.closeTimeout) {
-        clearTimeout(this.closeTimeout);
-        this.closeTimeout = null;
-      }
+      this.clearCloseTimer();
 
       // Set a delay before showing the hover card
       this.hoverTimeout = window.setTimeout(() => {
@@ -133,6 +129,7 @@ export class HoverCardTriggerService {
 
     modal?.subscribe((previewModal) => {
       this.isShowingHoverCard = true;
+      this.previousTarget = el;
       this.modalElement = previewModal.elementRef.nativeElement as HTMLElement;
       previewModal.alignment = 'top';
 
@@ -145,6 +142,13 @@ export class HoverCardTriggerService {
     if (this.hoverTimeout) {
       clearTimeout(this.hoverTimeout);
       this.hoverTimeout = null;
+    }
+  }
+
+  private clearCloseTimer() {
+    if (this.closeTimeout) {
+      clearTimeout(this.closeTimeout);
+      this.closeTimeout = null;
     }
   }
 
