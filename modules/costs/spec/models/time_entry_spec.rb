@@ -45,7 +45,7 @@ RSpec.describe TimeEntry do
   end
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
-  let(:date) { Date.today }
+  let(:date) { Time.zone.today }
   let(:rate) { build(:cost_rate) }
   let!(:hourly_one) { create(:hourly_rate, valid_from: 2.days.ago, project:, user:) }
   let!(:hourly_three) { create(:hourly_rate, valid_from: 4.days.ago, project:, user:) }
@@ -80,10 +80,16 @@ RSpec.describe TimeEntry do
   end
 
   def ensure_membership(project, user, permissions)
-    create(:member,
-           project:,
-           user:,
-           roles: [create(:project_role, permissions:)])
+    member = Member.find_by(principal: user, project: project)
+
+    if member
+      member.roles << create(:project_role, permissions:)
+    else
+      create(:member,
+             project:,
+             user:,
+             roles: [create(:project_role, permissions:)])
+    end
   end
 
   describe "#hours=" do

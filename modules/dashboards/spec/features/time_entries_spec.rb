@@ -34,18 +34,14 @@ RSpec.describe "Time entries widget on dashboard", :js, :with_cuprite do
   let!(:type) { create(:type) }
   let!(:project) { create(:project, types: [type]) }
   let!(:other_project) { create(:project, types: [type]) }
-  let!(:work_package) do
-    create(:work_package,
-           project:,
-           type:,
-           author: user)
-  end
+  let!(:work_package) { create(:work_package, project:, type:, author: user) }
+  let!(:other_work_package) { create(:work_package, project: other_project, type:, author: user) }
   let!(:visible_time_entry) do
     create(:time_entry,
            work_package:,
            project:,
            user:,
-           spent_on: Date.today,
+           spent_on: Time.zone.today,
            hours: 6,
            comments: "My comment")
   end
@@ -54,13 +50,13 @@ RSpec.describe "Time entries widget on dashboard", :js, :with_cuprite do
            work_package:,
            project:,
            user: other_user,
-           spent_on: Date.today - 1.day,
+           spent_on: 1.day.ago.to_date,
            hours: 5,
            comments: "Another`s comment")
   end
   let!(:invisible_time_entry) do
     create(:time_entry,
-           work_package:,
+           work_package: other_work_package,
            project: other_project,
            user:,
            hours: 4)

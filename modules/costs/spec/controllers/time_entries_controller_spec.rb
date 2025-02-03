@@ -74,7 +74,7 @@ RSpec.describe TimeEntriesController do
         context "and the user has the edit_own_time_entries permission on the project" do
           before do
             role = create(:project_role, permissions: %i[view_own_time_entries edit_own_time_entries])
-            create(:member, user: user, project: project1, roles: [role])
+            user.members.find_by(project: project1).roles << role
           end
 
           it "allows the user to open the dialog" do
@@ -92,7 +92,7 @@ RSpec.describe TimeEntriesController do
         context "and the user has the edit_time_entries permission on the project" do
           before do
             role = create(:project_role, permissions: %i[view_time_entries edit_time_entries])
-            create(:member, user: user, project: project1, roles: [role])
+            user.members.find_by(project: project1).roles << role
           end
 
           it "allows the user to open the dialog" do
