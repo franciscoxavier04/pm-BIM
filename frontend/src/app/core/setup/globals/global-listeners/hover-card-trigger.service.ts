@@ -27,19 +27,13 @@
 //++
 
 import { Injectable, Injector, NgZone } from '@angular/core';
-import { OpModalService } from 'core-app/shared/components/modal/modal.service';
-import { HoverCardComponent } from 'core-app/shared/components/modals/preview-modal/hover-card-modal/hover-card.modal';
-import { PortalOutletTarget } from 'core-app/shared/components/modal/portal-outlet-target.enum';
+import { computePosition, flip, limitShift, shift } from '@floating-ui/dom';
 
 @Injectable({ providedIn: 'root' })
 export class HoverCardTriggerService {
-  private modalElement:HTMLElement;
-
   private mouseInModal = false;
   private hoverTimeout:number|null = null;
   private closeTimeout:number|null = null;
-  // Set to custom when opening the hover card on top of another modal
-  private modalTarget:PortalOutletTarget = PortalOutletTarget.Default;
   private previousTarget:HTMLElement|null = null;
 
   // Track whether we currently show a hover card or not. It is important not to open multiple hover cards at
@@ -52,7 +46,6 @@ export class HoverCardTriggerService {
   CLOSE_DELAY_IN_MS = 250;
 
   constructor(
-    readonly opModalService:OpModalService,
     readonly ngZone:NgZone,
     readonly injector:Injector,
   ) {
@@ -87,7 +80,7 @@ export class HoverCardTriggerService {
 
       // Set a delay before showing the hover card
       this.hoverTimeout = window.setTimeout(() => {
-        this.showHoverCard(el, turboFrameUrl, e);
+        this.showHoverCard(el, turboFrameUrl);
       }, this.OPEN_DELAY_IN_MS);
     });
 
@@ -108,32 +101,68 @@ export class HoverCardTriggerService {
     });
   }
 
-  private showHoverCard(el:HTMLElement, turboFrameUrl:string, e:JQuery.MouseOverEvent) {
+  private showHoverCard(el:HTMLElement, turboFrameUrl:string) {
     // Abort if the element is no longer present in the DOM. This can happen when this method is called after a delay.
     if (!document.body.contains(el)) { return; }
     // Do not try to show two hover cards at the same time.
     if (this.isShowingHoverCard) { return; }
 
-    this.parseHoverCardOptions(el);
+    this.loadAndShowHoverCard(el, turboFrameUrl);
+  }
 
-    // There is only one possible slot to insert a modal. If that slot is taken, we assume the other modal
-    // to be more important than a hover card and give up.
-    const modal = this.opModalService.showIfNotActive(
-      HoverCardComponent,
-      this.injector,
-      { turboFrameSrc: turboFrameUrl, event: e },
-      true,
-      false,
-      this.modalTarget,
+  private loadAndShowHoverCard(el:HTMLElement, turboFrameUrl:string) {
+    const overlay = jQuery('#hover-card-overlay').get(0);
+    if (!overlay) { return; }
+
+    overlay.innerHTML = '';
+
+    const div = document.createElement('div');
+    div.className = 'op-hover-card';
+    overlay.appendChild(div);
+
+    const turboFrame = document.createElement('turbo-frame');
+    turboFrame.id = 'op-hover-card-body';
+    div.appendChild(turboFrame);
+    turboFrame.setAttribute('src', turboFrameUrl);
+
+    this.isShowingHoverCard = true;
+    this.previousTarget = el;
+
+    this.setOpacity(div, 0);
+
+    turboFrame.addEventListener('turbo:frame-load', () => {
+      void this.reposition(div, el);
+
+      // Content has been loaded, card has been positioned. Show it!
+      this.setOpacity(div, 1);
+    });
+  }
+
+  private setOpacity(element:HTMLElement, opacity:number) {
+    element.style.opacity = opacity.toString();
+  }
+
+  private async reposition(element:HTMLElement, target:HTMLElement) {
+    const floatingEl = element;
+
+    const { x, y } = await computePosition(
+      target,
+      floatingEl,
+      {
+        placement: 'top',
+        middleware: [
+          flip({
+            mainAxis: true,
+            crossAxis: true,
+            fallbackAxisSideDirection: 'start',
+          }),
+          shift({ limiter: limitShift() }),
+        ],
+      },
     );
-
-    modal?.subscribe((previewModal) => {
-      this.isShowingHoverCard = true;
-      this.previousTarget = el;
-      this.modalElement = previewModal.elementRef.nativeElement as HTMLElement;
-      previewModal.alignment = 'top';
-
-      void previewModal.reposition(this.modalElement, el);
+    Object.assign(floatingEl.style, {
+      left: `${x}px`,
+      top: `${y}px`,
     });
   }
 
@@ -168,7 +197,10 @@ export class HoverCardTriggerService {
     // It is important to check if we are currently showing a hover card. If we closed the modal service without
     // doing so, we might accidentally close another modal (e.g. share dialog).
     if (this.isShowingHoverCard && !this.mouseInModal) {
-      this.opModalService.close();
+      const overlay = jQuery('#hover-card-overlay').get(0);
+      if (!overlay) { return; }
+      overlay.innerHTML = '';
+
       this.isShowingHoverCard = false;
       // Allow opening this target once more, since it has been orderly closed
       this.previousTarget = null;
@@ -177,12 +209,5 @@ export class HoverCardTriggerService {
 
   private parseHoverCardUrl(el:HTMLElement) {
     return el.getAttribute('data-hover-card-url');
-  }
-
-  private parseHoverCardOptions(el:HTMLElement) {
-    const modalTarget = el.getAttribute('data-hover-card-target');
-    if (modalTarget) {
-      this.modalTarget = parseInt(modalTarget, 10);
-    }
   }
 }
