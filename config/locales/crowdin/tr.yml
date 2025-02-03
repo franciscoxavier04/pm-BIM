@@ -389,8 +389,8 @@ tr:
         form:
           enable_type_in_project: '" %{type} " türünü etkinleştir'
       versions:
-        no_results_title_text: Şu anda proje için versiyon mevcut değil.
-        no_results_content_text: Yeni bir versiyon oluştur
+        no_results_title_text: Şu anda proje için sürüm mevcut değil.
+        no_results_content_text: Yeni bir sürüm oluştur
       storage:
         no_results_title_text: Bu proje tarafından tüketilen ek kayıtlı disk alanı yoktur.
   project_stage:
@@ -419,13 +419,13 @@ tr:
     invite_by_mail: "Davet gönder %{mail}"
     send_invite_to: "Send invite to"
     columns:
-      shared: "Shared"
+      shared: "Paylaşılan"
     filters:
       all_shares: "Tüm paylaşımlar"
     menu:
       all: "Hepsi"
-      invited: "Davet Edildi"
-      locked: "Kilitlendi"
+      invited: "Davet edilen"
+      locked: "Kilitlenen"
       project_roles: "Proje Rolleri"
       wp_shares: "İş paketi paylaşımları"
       groups: "Gruplar"
@@ -449,7 +449,7 @@ tr:
       remove_project_membership_or_work_package_shares_too: "Do you want to remove just the user as a direct member (and keep the shares) or remove the work package shares too?"
       will_remove_all_user_access_priveleges: "Deleting this member will remove all access privileges of the user to the project. The user will still exist as part of the instance."
       will_remove_all_group_access_priveleges: "Deleting this member will remove all access privileges of the group to the project. The group will still exist as part of the instance."
-      cannot_delete_inherited_membership: "You cannot delete this member because they belong to a group that is itself a member of this project."
+      cannot_delete_inherited_membership: "Bu üyeyi silemezsiniz çünkü kendisi bu projenin üyesi olan bir grubta yer almaktadır."
       cannot_delete_inherited_membership_note_admin_html: "You can either remove the group as a member of the project or this specific member from the group in the %{administration_settings_link}."
       cannot_delete_inherited_membership_note_non_admin: "You can either remove the group as a member of the project or contact your administrator to remove this specific member from the group."
     delete_work_package_shares_dialog:
@@ -1418,11 +1418,11 @@ tr:
       wiki_page: "Viki sayfası"
   errors:
     header_invalid_fields:
-      one: "There was a problem with the following field:"
-      other: "Aşağıdaki alanları ile ilgili sorunlar oluştu:"
+      one: "Aşağıdaki alanla ilgili bir sorun oluştu:"
+      other: "Aşağıdaki alanlar ile ilgili sorunlar oluştu:"
     header_additional_invalid_fields:
-      one: "Additionally, there was a problem with the following field:"
-      other: "Additionally, there were problems with the following fields:"
+      one: "Ek olarak, aşağıdaki alanla ilgili bir sorun vardı:"
+      other: "Ek olarak, aşağıdaki alanlarla ilgili bir sorun vardı:"
     field_erroneous_label: "Bu alan geçersiz:% {full_errors}\nLütfen geçerli bir değer girin. %{full_errors}."
   activity:
     item:
@@ -2362,7 +2362,7 @@ tr:
   label_enterprise_edition: "Enterprise sürüm"
   label_enterprise_support: "Enterprise support"
   label_environment: "Ortam"
-  label_estimates_and_progress: "Estimates and progress"
+  label_estimates_and_progress: "Tahminler ve ilerleme"
   label_equals: "şuysa"
   label_equals_with_descendants: "is any with descendants"
   label_everywhere: "heryer"
@@ -2507,7 +2507,7 @@ tr:
   label_module_plural: "Modüller"
   label_modules: "Modüller"
   label_months_from: "aydan itibaren"
-  label_more: "Fazlası"
+  label_more: "Diğer"
   label_more_than_ago: "günler önce"
   label_move_column_left: "Sütunu sola taşı"
   label_move_column_right: "Sütunu sağa taşı"
@@ -3534,9 +3534,9 @@ tr:
       remaining_scan_complete_html: >
         Remaining files have been scanned. There are %{file_count} in quarantine. You are being redirected to the quarantine page. Use this page to delete or override quarantined files.
       remaining_rescanned_files: >
-        Virus scanning has been enabled successfully. There are %{file_count} that were uploaded previously and still need to be scanned. This process has been scheduled in the background. The files will remain accessible during the scan.
+        Virüs taraması başarıyla etkinleştirildi. Daha önce yüklenen ve hala taranması gereken %{file_count} var. Bu işlem arka planda zamanlandı. Dosyalar tarama sırasında erişilebilir kalacaktır.
       upsale:
-        description: "Ensure uploaded files in OpenProject are scanned for viruses before being accessible by other users."
+        description: "OpenProject'te yüklenen dosyaların diğer kullanıcılar tarafından erişilmeden önce virüslere karşı tarandığından emin olun."
       actions:
         delete: "Dosya sil"
         quarantine: "Dosyayı karantinaya al"
@@ -3899,8 +3899,8 @@ tr:
       view_description: "Bu iş paketini görüntüleyebilir."
     reminders:
       label_remind_at: "Tarih"
-      note_placeholder: "Why are you setting this reminder?"
-      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      note_placeholder: "Bu hatırlatmayı neden yapıyorsunuz?"
+      success_creation_message: "Hatırlatma başarıyla ayarlandı. Seçilen zamanda bu iş paketi için bir bildirim alacaksınız."
       success_update_message: "Hatırlatma başarıyla güncellendi."
       success_deletion_message: "Hatırlatma başarıyla silindi."
   sharing:
