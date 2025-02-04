@@ -197,7 +197,7 @@ class WorkPackages::ProgressForm < ApplicationForm
   end
 
   def default_field_options(name)
-    data = { "work-packages--progress--preview-target": "fieldInput",
+    data = { "work-packages--progress--preview-target": "progressInput",
              action: "work-packages--progress--preview#markFieldAsTouched" }
 
     if @focused_field == name
