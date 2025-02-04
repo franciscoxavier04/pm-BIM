@@ -15,6 +15,7 @@ import FlashController from './controllers/flash.controller';
 import OpProjectsZenModeController from './controllers/dynamic/projects/zen-mode.controller';
 import PasswordConfirmationDialogController from './controllers/password-confirmation-dialog.controller';
 import KeepScrollPositionController from './controllers/keep-scroll-position.controller';
+import PatternInputController from './controllers/pattern-input.controller';
 
 declare global {
   interface Window {
@@ -45,3 +46,4 @@ instance.register('show-when-value-selected', OpShowWhenValueSelectedController)
 instance.register('table-highlighting', TableHighlightingController);
 instance.register('projects-zen-mode', OpProjectsZenModeController);
 instance.register('keep-scroll-position', KeepScrollPositionController);
+instance.register('pattern-input', PatternInputController);

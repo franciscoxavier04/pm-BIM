@@ -28,18 +28,34 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  module Forms
-    class SubjectConfigurationFormModel
-      extend ActiveModel::Naming
+module Primer
+  module OpenProject
+    module Forms
+      module Dsl
+        class PatternInput < Primer::Forms::Dsl::Input
+          attr_reader :name, :label, :value, :suggestions
 
-      attr_reader :subject_configuration, :pattern, :suggestions, :validation_errors
+          def initialize(name:, label:, value:, suggestions:, **system_arguments)
+            @name = name
+            @label = label
+            @value = value
+            @suggestions = suggestions
 
-      def initialize(subject_configuration:, pattern:, suggestions:, validation_errors: {})
-        @subject_configuration = subject_configuration
-        @pattern = pattern
-        @suggestions = suggestions
-        @validation_errors = validation_errors
+            super(**system_arguments)
+          end
+
+          def to_component
+            WorkPackages::Types::PatternInput.new(input: self, value:, suggestions:)
+          end
+
+          def type
+            :pattern_autocompleter
+          end
+
+          def focusable?
+            true
+          end
+        end
       end
     end
   end
