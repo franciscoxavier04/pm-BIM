@@ -213,9 +213,7 @@ RSpec.describe "Structured meetings CRUD",
     show_page.expect_modal "Delete meeting"
 
     show_page.within_modal "Delete meeting" do
-      check "I understand that this deletion cannot be reversed", allow_label_click: true
-
-      click_on "Delete permanently"
+      click_on "Delete"
     end
 
     expect(page).to have_current_path project_meetings_path(project)

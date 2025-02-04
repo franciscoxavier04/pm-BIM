@@ -106,9 +106,7 @@ RSpec.describe "Recurring meetings global CRUD", :js do
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     show_page.within_modal "Delete meeting occurrence" do
-      check "I understand that this deletion cannot be reversed", allow_label_click: true
-
-      click_on "Delete permanently"
+      click_on "Delete"
     end
 
     expect_flash(type: :success, message: "Successful cancellation.")
@@ -124,8 +122,6 @@ RSpec.describe "Recurring meetings global CRUD", :js do
 
     show_page.cancel_planned_occurrence date: "01/07/2025 01:30 PM"
     show_page.within_modal "Cancel meeting occurrence" do
-      check "I understand that this deletion cannot be reversed", allow_label_click: true
-
       click_on "Cancel occurrence"
     end
 
