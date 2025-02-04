@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class RecurringMeetingsController < ApplicationController
-  include RecurringMeetingsHelper
   include Layout
   include PaginationHelper
   include OpTurbo::ComponentStream
@@ -9,16 +8,19 @@ class RecurringMeetingsController < ApplicationController
   include OpTurbo::DialogStreamHelper
 
   before_action :find_meeting,
-                only: %i[show update details_dialog destroy edit init
-                         delete_scheduled template_completed download_ics notify end_series end_series_dialog]
+                only: %i[show update details_dialog delete_dialog destroy edit init
+                         delete_scheduled_dialog destroy_scheduled template_completed download_ics notify end_series
+                         end_series_dialog]
   before_action :find_optional_project,
-                only: %i[index show new create update details_dialog destroy edit delete_scheduled notify]
+                only: %i[index show new create update details_dialog delete_dialog destroy edit delete_scheduled_dialog
+                         destroy_scheduled notify]
   before_action :authorize_global, only: %i[index new create]
   before_action :authorize, except: %i[index new create]
-  before_action :get_scheduled_meeting, only: %i[delete_scheduled]
+  before_action :get_scheduled_meeting, only: %i[delete_scheduled_dialog destroy_scheduled]
 
   before_action :convert_params, only: %i[create update]
   before_action :check_template_completable, only: %i[template_completed]
+  before_action :build_meeting_limits, only: %i[show]
 
   menu_item :meetings
 
@@ -45,13 +47,6 @@ class RecurringMeetingsController < ApplicationController
 
   def show # rubocop:disable Metrics/AbcSize
     @direction = params[:direction]
-    @max_count = max_count
-    @count =
-      if @max_count
-        [(params[:count].to_i + 5), @max_count].min
-      else
-        params[:count].to_i + 5
-      end
 
     if @direction == "past"
       @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
@@ -158,6 +153,13 @@ class RecurringMeetingsController < ApplicationController
     redirect_to action: :show
   end
 
+  def delete_dialog
+    respond_with_dialog RecurringMeetings::DeleteDialogComponent.new(
+      recurring_meeting: @recurring_meeting,
+      project: @project
+    )
+  end
+
   def destroy
     if @recurring_meeting.destroy
       flash[:notice] = I18n.t(:notice_successful_delete)
@@ -189,8 +191,15 @@ class RecurringMeetingsController < ApplicationController
     redirect_to action: :show, id: @recurring_meeting, status: :see_other
   end
 
-  def delete_scheduled
-    if @scheduled.update(cancelled: true)
+  def delete_scheduled_dialog
+    respond_with_dialog RecurringMeetings::DeleteScheduledDialogComponent.new(
+      scheduled_meeting: @scheduled_meeting,
+      project: @project
+    )
+  end
+
+  def destroy_scheduled
+    if @scheduled_meeting.update(cancelled: true)
       flash[:notice] = I18n.t(:notice_successful_cancel)
     else
       flash[:error] = I18n.t(:error_failed_to_delete_entry)
@@ -269,14 +278,26 @@ class RecurringMeetingsController < ApplicationController
     [opened.values.sort_by(&:start_time), planned]
   end
 
+  def build_meeting_limits
+    @max_count =
+      if @direction == "past"
+        @recurring_meeting.scheduled_instances(upcoming: false).count
+      elsif @recurring_meeting.ending?
+        open = @recurring_meeting.upcoming_instantiated_meetings
+        @recurring_meeting.remaining_occurrences.count - open.count
+      end
+
+    @count = [show_more_limit_param, @max_count].compact.min
+  end
+
   def scheduled_meeting(start_time)
     ScheduledMeeting.new(start_time:, recurring_meeting: @recurring_meeting)
   end
 
   def get_scheduled_meeting
-    @scheduled = @recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: params[:start_time])
+    @scheduled_meeting = @recurring_meeting.scheduled_meetings.find_or_initialize_by(start_time: params[:start_time])
 
-    render_400 unless @scheduled.meeting_id.nil?
+    render_400 unless @scheduled_meeting.meeting_id.nil?
   end
 
   def find_optional_project

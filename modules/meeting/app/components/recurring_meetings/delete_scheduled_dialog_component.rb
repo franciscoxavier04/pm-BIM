@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,14 +28,28 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module RecurringMeetingsHelper
-  def max_count
-    if @direction == "past"
-      @recurring_meeting.scheduled_instances(upcoming: false).count
-    else
-      open = @recurring_meeting.upcoming_instantiated_meetings
+module RecurringMeetings
+  class DeleteScheduledDialogComponent < ApplicationComponent
+    include ApplicationHelper
+    include OpTurbo::Streamable
 
-      @recurring_meeting.remaining_occurrences&.count&.- open.count
+    def initialize(scheduled_meeting:, project:)
+      super
+
+      @scheduled_meeting = scheduled_meeting
+      @project = project
     end
+
+    private
+
+    def id = "delete-scheduled-recurring-meeting-dialog"
+
+    def title = I18n.t("recurring_meeting.scheduled_delete_dialog.title")
+
+    def confirmation_message = t("recurring_meeting.scheduled_delete_dialog.confirmation_message_html")
+
+    def confirm_button_text = I18n.t("recurring_meeting.scheduled_delete_dialog.confirm_button")
+
+    def cancel_button_text = I18n.t(:button_close)
   end
 end

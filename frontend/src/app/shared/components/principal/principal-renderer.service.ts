@@ -118,6 +118,7 @@ export class PrincipalRendererService {
 
     if (!name.hide) {
       const el = this.renderName(principal, type, name.link, title || principal.name, name.classes);
+      this.setHoverCardAttributes(el, avatar, principal);
       container.appendChild(el);
     }
   }

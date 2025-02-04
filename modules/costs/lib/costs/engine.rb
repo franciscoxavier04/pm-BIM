@@ -146,6 +146,11 @@ module Costs
       ::Settings::Definition.add "enforce_tracking_start_and_end_times", default: false, format: :boolean
     end
 
+    initializer "costs.feature_decisions" do
+      OpenProject::FeatureDecisions.add :track_start_and_end_times_for_time_entries,
+                                        description: "Allows admins to enable tracking start and end times for time entries"
+    end
+
     activity_provider :time_entries, class_name: "Activities::TimeEntryActivityProvider", default: false
 
     patches %i[Project User PermittedParams]

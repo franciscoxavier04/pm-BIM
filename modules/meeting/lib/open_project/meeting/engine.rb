@@ -70,8 +70,8 @@ module OpenProject::Meeting
                    require: :member
         permission :delete_meetings,
                    {
-                     meetings: [:destroy],
-                     recurring_meetings: %i[destroy delete_scheduled]
+                     meetings: %i[delete_dialog destroy],
+                     recurring_meetings: %i[delete_dialog destroy delete_scheduled_dialog destroy_scheduled]
                    },
                    permissible_on: :project,
                    require: :member

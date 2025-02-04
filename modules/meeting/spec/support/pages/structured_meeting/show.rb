@@ -63,6 +63,10 @@ module Pages::StructuredMeeting
       end
     end
 
+    def expect_modal(...)
+      expect(page).to have_modal(...)
+    end
+
     def expect_no_add_form
       expect(page).not_to have_test_selector("#meeting-agenda-items-form-component")
     end
@@ -204,11 +208,11 @@ module Pages::StructuredMeeting
 
     def open_participant_form
       page.find_test_selector("manage-participants-button").click
-      expect(page).to have_css("#edit-participants-dialog")
+      expect_modal("Participants")
     end
 
     def in_participant_form(&)
-      page.within("#edit-participants-dialog", &)
+      page.within_modal("Participants", &)
     end
 
     def expect_participant(participant, invited: false, attended: false, editable: true)

@@ -90,7 +90,7 @@ RSpec.describe "Recurring meetings show",
 
   describe "upcoming tab" do
     let!(:upcoming_open_meeting) do
-      create(:structured_meeting, recurring_meeting:, start_time: Time.zone.today + 10.hours, state: :open)
+      create(:structured_meeting, recurring_meeting:, start_time: Time.zone.today + 1.day + 10.hours, state: :open)
     end
     let!(:open_meeting) do
       create :scheduled_meeting,

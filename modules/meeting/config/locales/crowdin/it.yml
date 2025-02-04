@@ -120,10 +120,6 @@ it:
   label_recurring_meeting_copy: "Copia come una tantum"
   label_recurring_meeting_cancel: "Annulla questa ricorrenza"
   label_recurring_meeting_delete: "Elimina ricorrenza"
-  label_recurring_meeting_delete_confirmation: >
-    Questa riunione fa parte di una serie chiamata %{name}. L'operazione eliminerà solo questa particolare ricorrenza e non l'intera serie. Vuoi continuare?
-  label_recurring_occurrence_delete_confirmation: >
-    Qualsiasi informazione sulla riunione non contenuta nel modello andrà persa. Vuole continuare?
   label_recurring_meeting_restore: "Ripristina questa ricorrenza"
   label_recurring_meeting_schedule: "Schedule"
   label_recurring_meeting_next_occurrence: "Next occurrence"
@@ -138,6 +134,9 @@ it:
   label_recurring_meeting_series_delete: "Elimina serie di riunioni"
   label_recurring_meeting_series_end: "End meeting series"
   label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    one: "There is one more meeting."
+    other: "There are %{count} more meetings."
   label_my_meetings: "Le mie riunioni"
   label_all_meetings: "Tutte le riunioni"
   label_upcoming_meetings: "Prossime riunioni"
@@ -201,6 +200,17 @@ it:
       structured_text: "Organizza la tua riunione come un elenco dinamico di punti all'ordine del giorno, collegandoli facoltativamente a una macro-attività."
       structured_text_copy: "La copia di una riunione al momento non copierà gli elementi dell'ordine del giorno della riunione, ma solo i dettagli"
     copied: "Copiato dalla riunione #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "Sezione senza titolo"
     delete_confirmation: "L'eliminazione della sezione eliminerà anche tutti i suoi elementi dell'ordine del giorno. Continuare?"
@@ -250,6 +260,24 @@ it:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "Notifica inviata con successo"
   notice_timezone_missing: Nessun fuso orario è impostato e la %{zone} è un requisito necessario. Per scegliere il tuo fuso orario, fare clic qui.
   notice_meeting_updated: "Questa pagina è stata aggiornata da qualcun altro. Ricarica per visualizzare le modifiche."
@@ -287,6 +315,10 @@ it:
   label_meeting_created_by: "Creato da"
   label_meeting_last_updated: "Ultimo aggiornamento"
   label_meeting_reload: "Ricarica"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Punti all'ordine del giorno"
   label_agenda_items_reordered: "riordinato"
   label_agenda_item_remove: "Rimuovi dall'ordine del giorno"

@@ -31,16 +31,8 @@
 module WorkPackages
   module ActivitiesTab
     module SharedHelpers
-      def truncated_user_name(user)
-        render(Primer::Beta::Link.new(
-                 href: user_url(user),
-                 target: "_blank",
-                 scheme: :primary,
-                 underline: false,
-                 font_weight: :bold
-               )) do
-          user.name
-        end
+      def truncated_user_name(user, hover_card: false)
+        helpers.primer_link_to_user(user, scheme: :primary, font_weight: :bold, hover_card:)
       end
 
       def activity_anchor_link(journal)

@@ -14,8 +14,8 @@ services:
       - POSTGRES_PASSWORD=keycloak
 
   keycloak:
-    image: quay.io/keycloak/keycloak:21.1
-    command: ["start-dev", "--proxy edge", "--spi-connections-http-client-default-disable-trust-manager=true"]
+    image: quay.io/keycloak/keycloak:26.1
+    command: ["start-dev", "--proxy-headers", "xforwarded", "--spi-connections-http-client-default-disable-trust-manager=true"]
     restart: unless-stopped
     networks:
       - external

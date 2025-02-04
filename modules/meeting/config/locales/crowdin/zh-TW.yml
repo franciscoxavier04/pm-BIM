@@ -119,10 +119,6 @@ zh-TW:
   label_recurring_meeting_copy: "複製為一次性"
   label_recurring_meeting_cancel: "取消此事件"
   label_recurring_meeting_delete: "刪除此事件"
-  label_recurring_meeting_delete_confirmation: >
-    此會議是 %{name}系列的一部分。這只會刪除此特定事件，而不會刪除整個系列。您要繼續嗎？
-  label_recurring_occurrence_delete_confirmation: >
-    任何不在範本中的會議資訊將會遺失。要繼續嗎？
   label_recurring_meeting_restore: "恢復此事件"
   label_recurring_meeting_schedule: "排程"
   label_recurring_meeting_next_occurrence: "下一次會議"
@@ -135,8 +131,10 @@ zh-TW:
   label_recurring_meeting_series_create: "建立會議系列"
   label_recurring_meeting_series_edit: "編輯系列會議"
   label_recurring_meeting_series_delete: "刪除系列會議"
-  label_recurring_meeting_series_end: "End meeting series"
-  label_recurring_meeting_series_end_now: "End series now"
+  label_recurring_meeting_series_end: "編輯系列會議"
+  label_recurring_meeting_series_end_now: "立即結束系列"
+  label_meeting_more:
+    other: "There are %{count} more meetings."
   label_my_meetings: "我的會議"
   label_all_meetings: "所有會議"
   label_upcoming_meetings: "即將到來的會議"
@@ -200,6 +198,17 @@ zh-TW:
       structured_text: "將會議組織為動態的議程項目清單，可選擇將其連結到工作項目。"
       structured_text_copy: "目前複製會議不會複製相關會議的議程項目，只會複製會議的詳細信息。"
     copied: "從會議紀錄 #%{id} 中複製"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "無標題章節"
     delete_confirmation: "刪除該章節也會刪除其所有的議程項目。您確定要這麼做？"
@@ -242,13 +251,31 @@ zh-TW:
       full: "%{base} 於 %{time}, 結束於 %{end_date}"
       never_ending: "%{base} 在 %{time}"
     agenda_opened:
-      title: "Agenda opened"
+      title: "已開啟議程"
       subtitle: >
-        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+        公開會議的議程可以編輯，並顯示在個別使用者的「我的會議」區段中。變更會議系列範本不會影響已開放的會議。
     planned:
-      title: "Planned"
+      title: "已規劃"
       subtitle: >
-        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+        下列會議已規劃在重複性會議排程中，但尚未開啟。每次計劃的會議開始時，下一個會議就會自動為您開啟。您也可以手動開啟已規劃的會議，匯入範本並開始編輯議程。
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "通知傳送成功"
   notice_timezone_missing: 沒有設定時區，預設時區為 %{zone} 。請按這裡選擇您的時區。
   notice_meeting_updated: "本頁已由他人更新。重新載入以查看變更。"
@@ -270,8 +297,8 @@ zh-TW:
   text_duration_in_hours: "持續時間 (小時)"
   text_in_hours: "小時數"
   text_meeting_agenda_for_meeting: '%{meeting} 的會議大綱'
-  text_meeting_series_end_early_heading: "Delete future occurrences?"
-  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
+  text_meeting_series_end_early_heading: "刪除未來會議？"
+  text_meeting_series_end_early: "結束該系列會刪除任何未來開放或排程的會議事件"
   text_meeting_closing_are_you_sure: "確實要關閉議程嗎？"
   text_meeting_agenda_open_are_you_sure: "將會覆蓋所有會議紀錄中的變動！您希望繼續嗎？"
   text_meeting_minutes_for_meeting: '%{meeting} 的會議記錄'
@@ -286,6 +313,10 @@ zh-TW:
   label_meeting_created_by: "建立者"
   label_meeting_last_updated: "最後更新於"
   label_meeting_reload: "重新載入"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "議程"
   label_agenda_items_reordered: "重新排列"
   label_agenda_item_remove: "從議程中刪除"

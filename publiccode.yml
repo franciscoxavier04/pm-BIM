@@ -11,6 +11,7 @@ releaseDate: '2025-01-22'
 softwareVersion: '15.2.0'
 developmentStatus: stable
 softwareType: standalone/web
+logo: '/app/assets/images/icon_logo.svg'
 platforms:
   - web
 usedBy:
@@ -30,7 +31,7 @@ usedBy:
   - ...
 categories:
   - agile-project-management
-  - udgeting
+  - budgeting
   - enterprise-project-management
   - help-desk
   - knowledge-management
@@ -105,15 +106,15 @@ description:
     apiDocumentation: 'https://www.openproject.org/docs/api'
     shortDescription: Web-based project- and project portfolio management software
     screenshots:
-      - screenshots/opencode_openproject_file_storages.png
-      - screenshots/opencode_openproject_gantt_chart.png
-      - screenshots/opencode_openproject_gitlab-integration.png
-      - screenshots/opencode_openproject_homepage.png
-      - screenshots/opencode_openproject_meetings.png
-      - screenshots/opencode_openproject_notifications_wp_reminder.png
-      - screenshots/opencode_openproject_sharepoint_integration_details.png
       - screenshots/opencode_openproject_teamplanner.png
       - screenshots/opencode_openproject_work_package_detailed_view.png
+      - screenshots/opencode_openproject_gantt_chart.png
+      - screenshots/opencode_openproject_meetings.png
+      - screenshots/opencode_openproject_notifications_wp_reminder.png
+      - screenshots/opencode_openproject_homepage.png
+      - screenshots/opencode_openproject_gitlab-integration.png
+      - screenshots/opencode_openproject_sharepoint_integration_details.png
+      - screenshots/opencode_openproject_file_storages.png
     features:
       - Project planning and scheduling
       - Task management
@@ -134,19 +135,13 @@ description:
       planning, task management, Agile workflows, time tracking, and project
       portfolio management.
 
-      The software can be deployed on an organization’s own infrastructure,
-      ensuring that users retain full control over their data and systems.
-      Additionally, the software vendors offers a SaaS solution.
+      The software can be deployed on an organization’s own infrastructure, ensuring that users retain full control over their data and systems.
+      
+      Additionally, the manufacturer offers hosting in a data center within the European Union in their [Enterprise Cloud](https://www.openproject.org/enterprise-edition/), which complies with the General Data Protection Regulation (GDPR).
 
-      OpenProject complies with the requirements of the [BSI
-      IT-Grundschutz](https://www.bsi.bund.de/EN/Topics/ITGrundschutz/itgrundschutz_node.html)
-      and is continuously tested against the WCAG 2.1 guidelines, as
-      demonstrated in the [audit
-      report](https://gitlab.opencode.de/bmi/opendesk/info/-/blob/main/24.03/Barrierefreiheit/Barrierefreiheitsbericht%20-%20Komponente%20Projekte.pdf).
+      OpenProject complies with the requirements of the [BSI IT-Grundschutz](https://www.bsi.bund.de/EN/Topics/ITGrundschutz/itgrundschutz_node.html) and is continuously tested against the WCAG 2.1 guidelines, as demonstrated in the [audit report](https://gitlab.opencode.de/bmi/opendesk/info/-/blob/main/24.03/Barrierefreiheit/Barrierefreiheitsbericht%20-%20Komponente%20Projekte.pdf).
 
-      OpenProject is fully compatible with the [German Administrative Cloud
-      Strategy
-      (DVS)](https://www.cio.bund.de/Webs/CIO/EN/digital-solutions/digital-sovereignty/german-administrative-cloud-strategy/german-administrative-cloud-strategy-node.html).
+      OpenProject is fully compatible with the [German Administrative Cloud Strategy (DVS)](https://www.cio.bund.de/Webs/CIO/EN/digital-solutions/digital-sovereignty/german-administrative-cloud-strategy/german-administrative-cloud-strategy-node.html).
 
       OpenProject is part of the open-source office and collaboration suite
       [openDesk](https://www.opendesk.eu).
@@ -156,7 +151,7 @@ description:
     localisedName: OpenProject
     documentation: 'https://www.openproject.org/de/docs/'
     apiDocumentation: 'https://www.openproject.org/de/docs/api'
-    shortDescription: Web-basiertes Projekt-Management und Projektportfolio-Mangement Software
+    shortDescription: Web-basierte Projekt-Management und Projektportfolio-Mangement Software
     screenshots:
       - screenshots/opencode_openproject_file_storages.png
       - screenshots/opencode_openproject_gantt_chart.png
@@ -182,15 +177,11 @@ description:
       - Integration in GitHub und in GitLab
     longDescription: >
 
-      OpenProject ist eine web-basierte Projektmanagement-Lösung, welche
-      speziell auf die Anforderungen der öffentlichen Verwaltung zugeschnitten
-      ist. Sie unterstützt Projektplanung, Aufgabenmanagement, agile Workflows,
-      Zeiterfassung und Projektportfolio-Management.
+      OpenProject ist eine web-basierte Projektmanagement-Lösung, welche speziell auf die Anforderungen der öffentlichen Verwaltung zugeschnitten ist. Sie unterstützt Projektplanung, Aufgabenmanagement, agile Workflows, Zeiterfassung und Projektportfolio-Management.
 
-      Die Software kann in der eigenen Infrastruktur betrieben werden, sodass
-      einsetzende Organisationen die volle Kontrolle über ihre Daten und Systeme
-      behalten. Zusätzlich bietet der Hersteller ein SaaS-Angebot an, das eine
-      flexible Nutzung ermöglicht.
+      Die Software kann in der eigenen Infrastruktur betrieben werden, sodass einsetzende Organisationen die volle Kontrolle über ihre Daten behalten.
+      
+      Zusätzlich bietet der Hersteller in ihrer [Enterprise Cloud](https://www.openproject.org/de/enterprise-edition) ein Hosting in einem Rechenzentrum innerhalb der Europäischen Union an, das gemäß der Datenschutz-Grundverordnung (DS-GVO) erfolgt.
 
       OpenProject entspricht den Anforderungen des [BSI
       IT-Grundschutzes](https://www.bsi.bund.de/DE/Themen/ITGrundschutz/itgrundschutz_node.html)
@@ -199,9 +190,6 @@ description:
       [Prüfbericht](https://gitlab.opencode.de/bmi/opendesk/info/-/blob/main/24.03/Barrierefreiheit/Barrierefreiheitsbericht%20-%20Komponente%20Projekte.pdf)
       dargestellt.
 
-      OpenProject ist vollständig kompatibel mit der [Deutschen
-      Verwaltungscloud-Strategie
-      (DVS)](https://www.cio.bund.de/Webs/CIO/DE/digitale-loesungen/digitale-souveraenitaet/deutsche-verwaltungscloud-strategie/deutsche-verwaltungscloud-strategie-node.html).
+      OpenProject ist vollständig kompatibel mit der [Deutschen Verwaltungscloud-Strategie (DVS)](https://www.cio.bund.de/Webs/CIO/DE/digitale-loesungen/digitale-souveraenitaet/deutsche-verwaltungscloud-strategie/deutsche-verwaltungscloud-strategie-node.html).
 
-      OpenProject ist Teil der Open Source Office- und Kollaborationssuite
-      [openDesk](https://www.opendesk.eu).
+      OpenProject ist Teil der Open Source Office- und Kollaborationssuite [openDesk](https://www.opendesk.eu).
