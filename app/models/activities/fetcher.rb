@@ -81,7 +81,7 @@ module Activities
       when :default
         default_scope!
       else
-        @scope = scope & event_types
+        @scope = Array(scope) & event_types
       end
     end
 
