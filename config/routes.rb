@@ -636,6 +636,10 @@ Rails.application.routes.draw do
 
     resources :children_relations, only: %i[new create destroy], controller: "work_package_children_relations"
 
+    resources :create_child_relation, only: %i[new create], controller: "work_package_create_child_relation" do
+      post :refresh_form
+    end
+
     resource :progress, only: %i[new edit update], controller: "work_packages/progress"
     collection do
       resource :progress,
