@@ -159,9 +159,7 @@ module Authentication
     end
 
     ##
-    # Allow to map existing users with an Omniauth source if the login
-    # already exists, and no existing auth source or omniauth provider is
-    # linked
+    # Allow to map existing users with an Omniauth source if the login already exists
     def remap_existing_user
       return unless Setting.oauth_allow_remapping_of_existing_users?
 
