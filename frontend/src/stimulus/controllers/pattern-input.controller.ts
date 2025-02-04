@@ -290,16 +290,23 @@ export default class PatternInputController extends Controller {
     // insert the HTML
     filtered.forEach((group) => {
       const groupHeader = this.suggestionsHeadingTemplateTarget.content?.cloneNode(true) as HTMLElement;
-      groupHeader.querySelector('h2')!.innerText = group.key;
+      if (groupHeader) {
+        const headerElement = groupHeader.querySelector('h2');
+        if (headerElement) {
+          headerElement.innerText = group.key;
+        }
 
-      this.suggestionsTarget.appendChild(groupHeader);
+        this.suggestionsTarget.appendChild(groupHeader);
+      }
 
       group.values.forEach((suggestion) => {
         const suggestionTemplate = this.suggestionsItemTemplateTarget.content?.cloneNode(true) as HTMLElement;
         const suggestionItem = suggestionTemplate.firstElementChild as HTMLElement;
-        suggestionItem.dataset.prop = suggestion.prop;
-        this.setSuggestionText(suggestionItem, suggestion.value);
-        this.suggestionsTarget.appendChild(suggestionItem);
+        if (suggestionTemplate && suggestionItem) {
+          suggestionItem.dataset.prop = suggestion.prop;
+          this.setSuggestionText(suggestionItem, suggestion.value);
+          this.suggestionsTarget.appendChild(suggestionItem);
+        }
       });
 
       const groupDivider = this.suggestionsDividerTemplateTarget.content?.cloneNode(true) as HTMLElement;
