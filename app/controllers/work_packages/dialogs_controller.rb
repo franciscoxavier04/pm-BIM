@@ -39,15 +39,23 @@ class WorkPackages::DialogsController < ApplicationController
   authorize_with_permission :add_work_packages
 
   def new
-    respond_with_dialog WorkPackages::Dialogs::CreateDialogComponent.new(work_package: @work_package, project: @project)
+    respond_with_dialog WorkPackages::Dialogs::CreateDialogComponent.new(
+      work_package: @work_package, project: @project, is_in_relations_tab: @is_in_relations_tab
+    )
   end
 
   def create
+    is_in_relations_tab = params[:is_in_relations_tab]
+
     call = WorkPackages::CreateService.new(user: current_user).call(create_params)
 
     if call.success?
-      flash[:notice] = I18n.t("work_package_relations_tab.relations.label_new_child_created")
-      redirect_back fallback_location: project_work_package_path(@project, call.result), status: :see_other
+      if is_in_relations_tab == "true"
+        create_in_relations_tab(call)
+      else
+        flash[:notice] = I18n.t("work_package_relations_tab.relations.label_new_child_created")
+        redirect_back fallback_location: project_work_package_path(@project, call.result), status: :see_other
+      end
     else
       form_component = WorkPackages::Dialogs::CreateFormComponent.new(work_package: call.result, project: @project)
       update_via_turbo_stream(component: form_component, status: :bad_request)
@@ -71,6 +79,16 @@ class WorkPackages::DialogsController < ApplicationController
 
   private
 
+  def create_in_relations_tab(service_result)
+    component = WorkPackageRelationsTab::IndexComponent.new(
+      work_package: service_result.result.parent, relation_to_scroll_to: service_result.result
+    )
+    replace_via_turbo_stream(component:)
+    render_success_flash_message_via_turbo_stream(message: I18n.t("work_package_relations_tab.relations.label_new_child_created"))
+
+    respond_with_turbo_streams
+  end
+
   def build_work_package
     initial = WorkPackage.new(project: @project)
 
@@ -82,6 +100,7 @@ class WorkPackages::DialogsController < ApplicationController
     @work_package = call.result
     @work_package.errors.clear
     @work_package.custom_values.each { |cv| cv.errors.clear }
+    @is_in_relations_tab = params[:is_in_relations_tab]
   end
 
   def new_params

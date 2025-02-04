@@ -6,7 +6,7 @@
   )) do |dialog|
     dialog.with_header(variant: :large)
     dialog.with_body do
-      render(WorkPackages::Dialogs::CreateFormComponent.new(work_package:, project:))
+      render(WorkPackages::Dialogs::CreateFormComponent.new(work_package:, project:, is_in_relations_tab: @is_in_relations_tab))
     end
 
     dialog.with_footer do

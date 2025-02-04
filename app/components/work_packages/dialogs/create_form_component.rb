@@ -34,13 +34,14 @@ module WorkPackages::Dialogs
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    attr_reader :work_package, :project
+    attr_reader :work_package, :project, :is_in_relations_tab
 
-    def initialize(work_package:, project:)
+    def initialize(work_package:, project:, is_in_relations_tab: false)
       super
 
       @work_package = work_package
       @project = project
+      @is_in_relations_tab = is_in_relations_tab
     end
   end
 end
