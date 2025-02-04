@@ -32,6 +32,8 @@ import {
 } from 'core-app/shared/components/autocompleter/op-autocompleter/op-autocompleter.component';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { PortalOutletTarget } from 'core-app/shared/components/modal/portal-outlet-target.enum';
+import { PrincipalLike } from 'core-app/shared/components/principal/principal-types';
+import { hrefFromPrincipal, typeFromHref } from 'core-app/shared/components/principal/principal-helper';
 
 @Component({
   templateUrl: './user-autocompleter-template.component.html',
@@ -52,7 +54,14 @@ export class UserAutocompleterTemplateComponent implements IAutocompleterTemplat
     return this.isOpenedInModal ? PortalOutletTarget.Custom : PortalOutletTarget.Default;
   }
 
-  public getHoverCardUrl(id:string) {
-    return this.hoverCards ? this.pathHelperService.userHoverCardPath(id) : '';
+  public getHoverCardUrl(principal:PrincipalLike) {
+    if (!this.hoverCards || !principal.id) { return ''; }
+
+    const type = typeFromHref(hrefFromPrincipal(principal));
+    if (!type || type !== 'user') {
+      return '';
+    }
+
+    return this.pathHelperService.userHoverCardPath(principal.id);
   }
 }
