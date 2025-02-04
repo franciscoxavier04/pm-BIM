@@ -57,7 +57,7 @@ module SharingStrategies
     # portal outlet when rendering, causing bugs. Until the work package share dialog is refactored to be an
     # async-dialog, we must disable hover cards for it.
     def allow_hover_cards?
-      false
+      true
     end
 
     def share_description(share) # rubocop:disable Metrics/PerceivedComplexity,Metrics/AbcSize
