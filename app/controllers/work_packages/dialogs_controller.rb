@@ -45,23 +45,11 @@ class WorkPackages::DialogsController < ApplicationController
   end
 
   def create
-    is_in_relations_tab = params[:is_in_relations_tab]
-
     call = WorkPackages::CreateService.new(user: current_user).call(create_params)
 
-    if call.success?
-      if is_in_relations_tab == "true"
-        create_in_relations_tab(call)
-      else
-        flash[:notice] = I18n.t("work_package_relations_tab.relations.label_new_child_created")
-        redirect_back fallback_location: project_work_package_path(@project, call.result), status: :see_other
-      end
-    else
-      form_component = WorkPackages::Dialogs::CreateFormComponent.new(work_package: call.result, project: @project)
-      update_via_turbo_stream(component: form_component, status: :bad_request)
+    return handle_success(call) if call.success?
 
-      respond_with_turbo_streams
-    end
+    handle_failure(call)
   end
 
   def refresh_form
@@ -78,6 +66,21 @@ class WorkPackages::DialogsController < ApplicationController
   end
 
   private
+
+  def handle_success(call)
+    if params[:is_in_relations_tab] == "true"
+      create_in_relations_tab(call)
+    else
+      flash[:notice] = I18n.t("work_package_relations_tab.relations.label_new_child_created")
+      redirect_back fallback_location: project_work_package_path(@project, call.result), status: :see_other
+    end
+  end
+
+  def handle_failure(call)
+    form_component = WorkPackages::Dialogs::CreateFormComponent.new(work_package: call.result, project: @project)
+    update_via_turbo_stream(component: form_component, status: :bad_request)
+    respond_with_turbo_streams
+  end
 
   def create_in_relations_tab(service_result)
     component = WorkPackageRelationsTab::IndexComponent.new(
