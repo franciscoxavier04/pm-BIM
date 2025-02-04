@@ -1,5 +1,4 @@
 import { TurboHelpers } from './helpers';
-import { StreamElement } from '@hotwired/turbo';
 
 export function addTurboEventListeners() {
   // Close the primer dialog when the form inside has been submitted with a success response.
@@ -35,16 +34,22 @@ export function addTurboEventListeners() {
   // in Handle Turbo Drive page loads (full reloads)
   document.addEventListener('turbo:before-render', (event) => {
     TurboHelpers.scrubScriptElements(event.detail.newBody);
-  });
+  }, { capture: true });
 
   // in Turbo Streams (partial updates)
   document.addEventListener('turbo:before-stream-render', (event) => {
-    const content = (event.target as StreamElement).templateContent;
-    TurboHelpers.scrubScriptElements(content);
+    const fallbackToDefaultActions = event.detail.render;
+
+    event.detail.render = (streamElement) => {
+      const content = streamElement.templateElement.content;
+      TurboHelpers.scrubScriptElements(content);
+
+      return fallbackToDefaultActions(streamElement);
+    };
   });
 
   // in Turbo Frames (when they load new content)
-  document.addEventListener('turbo:frame-render', (event) => {
-    TurboHelpers.scrubScriptElements(event.target as HTMLElement);
-  });
+  document.addEventListener('turbo:before-frame-render', (event) => {
+    TurboHelpers.scrubScriptElements(event.detail.newFrame);
+  }, { capture: true });
 }
