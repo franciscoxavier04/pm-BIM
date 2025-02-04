@@ -119,10 +119,6 @@ ms:
   label_recurring_meeting_copy: "Salin sebagai one-off"
   label_recurring_meeting_cancel: "Batalkan kejadian ini"
   label_recurring_meeting_delete: "Padam kejadian"
-  label_recurring_meeting_delete_confirmation: >
-    Mesyuarat ini adalah sebahagian daripada siri yang dipanggil %{name}. Ini hanya akan memadamkan kejadian tertentu ini dan bukan keseluruhan siri. Adakah anda mahu meneruskan?
-  label_recurring_occurrence_delete_confirmation: >
-    Sebarang maklumat mesyuarat yang tiada dalam templat akan hilang. Adakah anda mahu meneruskan?
   label_recurring_meeting_restore: "Pulihkan kejadian ini"
   label_recurring_meeting_schedule: "Schedule"
   label_recurring_meeting_next_occurrence: "Next occurrence"
@@ -137,6 +133,8 @@ ms:
   label_recurring_meeting_series_delete: "Padamkan siri mesyuarat"
   label_recurring_meeting_series_end: "End meeting series"
   label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    other: "There are %{count} more meetings."
   label_my_meetings: "Mesyuarat saya"
   label_all_meetings: "Semua mesyuarat"
   label_upcoming_meetings: "Mesyuarat akan datang"
@@ -200,6 +198,17 @@ ms:
       structured_text: "Atur mesyuarat anda sebagai senarai item agenda yang dinamik, secara pilihan memautkannya ke pakej kerja."
       structured_text_copy: "Menyalin mesyuarat pada masa ini tidak akan menyalin item agenda mesyuarat yang berkaitan, hanya butiran sahaja"
     copied: "Disalin daripada Mesyuarat #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "Bahagian tanpa tajuk"
     delete_confirmation: "Memadam bahagian ini akan memadam setiap item agenda juga. Adakah anda pasti anda ingin berbuat demikian?"
@@ -249,6 +258,24 @@ ms:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "Pemberitahuan berjaya dihantar"
   notice_timezone_missing: Tiada zon waktu yang ditetapkan dan %{zone} adalah diandaikan. Untuk pilih zon waktu anda, sila klik sini.
   notice_meeting_updated: "Halaman ini telah dikemas kini oleh orang lain. Muat semula untuk melihat perubahan."
@@ -286,6 +313,10 @@ ms:
   label_meeting_created_by: "Dicipta oleh"
   label_meeting_last_updated: "Kemas kini terakhir"
   label_meeting_reload: "Muat semula"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Item-item agenda"
   label_agenda_items_reordered: "disusun semula"
   label_agenda_item_remove: "Keluarkan daripada agenda"

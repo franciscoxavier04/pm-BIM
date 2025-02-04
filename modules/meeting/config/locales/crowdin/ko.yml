@@ -119,10 +119,6 @@ ko:
   label_recurring_meeting_copy: "일회성 복사"
   label_recurring_meeting_cancel: "이 항목 취소"
   label_recurring_meeting_delete: "항목 삭제"
-  label_recurring_meeting_delete_confirmation: >
-    이 미팅은 %{name}(이)라는 시리즈의 일부입니다. 이렇게 하면 전체 시리즈가 아닌 이 특정 항목만 삭제됩니다. 계속하시겠습니까?
-  label_recurring_occurrence_delete_confirmation: >
-    템플릿에 없는 미팅 정보는 모두 손실됩니다. 계속하시겠습니까?
   label_recurring_meeting_restore: "이 항목 복원"
   label_recurring_meeting_schedule: "Schedule"
   label_recurring_meeting_next_occurrence: "Next occurrence"
@@ -137,6 +133,8 @@ ko:
   label_recurring_meeting_series_delete: "미팅 시리즈 삭제"
   label_recurring_meeting_series_end: "End meeting series"
   label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    other: "There are %{count} more meetings."
   label_my_meetings: "내 미팅"
   label_all_meetings: "모든 미팅"
   label_upcoming_meetings: "다가오는 이벤트"
@@ -200,6 +198,17 @@ ko:
       structured_text: "미팅을 의제 항목의 다이내믹 목록으로 구성하고, 선택적으로 작업 패키지에 연결합니다."
       structured_text_copy: "미팅을 복사하면 관련 미팅 의제 항목은 현재 복사되지 않고 세부 정보만 복사됩니다"
     copied: "미팅 #%{id}에서 복사됨"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "제목 없는 섹션"
     delete_confirmation: "이 섹션을 삭제하면 모든 의제 항목도 삭제됩니다. 계속하시겠습니까?"
@@ -249,6 +258,24 @@ ko:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "알림이 전송됨"
   notice_timezone_missing: 표준 시간대가 설정되지 않았으며 %{zone}(으)로 간주됩니다. 해당 표준 시간대를 선택하려면 여기를 클릭하세요.
   notice_meeting_updated: "이 페이지는 다른 사람이 업데이트했습니다. 변경 사항을 보려면 다시 로드하세요."
@@ -286,6 +313,10 @@ ko:
   label_meeting_created_by: "작성자"
   label_meeting_last_updated: "마지막 업데이트"
   label_meeting_reload: "다시 로드"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "의제 항목"
   label_agenda_items_reordered: "재정렬됨"
   label_agenda_item_remove: "의제에서 제거"

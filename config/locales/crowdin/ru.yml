@@ -229,8 +229,8 @@ ru:
             title: Этот элемент не имеет уровня иерархии ниже
             description: Добавьте элементы в этот список, чтобы создать подпункты внутри другого списка
         delete_dialog:
-          title: "Delete custom field item"
-          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
+          title: "Удалить элемент пользовательского поля"
+          description: "Это действие необратимо удалит элемент и все его подпункты. Все присвоенные значения будут удалены навсегда. Если это поле является обязательным, удаление элементов может привести к тому, что существующие рабочие пакеты работ станут недействительными."
         placeholder:
           label: "Название элемента"
           short: "Краткое имя"
@@ -753,8 +753,8 @@ ru:
       required_description: "Отмечает этот пакет работ как требование к связанному"
       label_parent_singular: "родитель"
       label_parent_plural: "родители"
-      ghost_relation_title: "Related work package"
-      ghost_relation_description: "This is not visible to you due to permissions."
+      ghost_relation_title: "Связанный пакет работ"
+      ghost_relation_description: "Это не видно для вас из-за разрешений."
   label_invitation: Приглашение
   account:
     delete: "Удалить учётную запись"
@@ -1618,7 +1618,7 @@ ru:
   button_create_and_continue: "Создать и продолжить"
   button_decline: "Отклонить"
   button_delete: "Удалить"
-  button_delete_permanently: "Delete permanently"
+  button_delete_permanently: "Удалить навсегда"
   button_delete_watcher: "Удаление наблюдателя %{name}"
   button_download: "Скачать"
   button_duplicate: "Дублировать"
@@ -3179,7 +3179,7 @@ ru:
     text_getting_started_description: "Получите быстрый обзор управления проектом и сотрудничества команды с OpenProject. Вы можете перезапустить это видео в меню справки."
     welcome: "Добро пожаловать в %{app_title}"
     select_language: "Пожалуйста, выберите язык"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_notes: "Добавить комментарии"
   permission_add_work_packages: "Добавление пакетов работ"
   permission_add_messages: "Написать сообщения"
   permission_add_project: "Создание проектов"
@@ -3209,11 +3209,11 @@ ru:
   permission_delete_timelines: "Удалить графики"
   permission_delete_wiki_pages: "Удалить wiki-страницы"
   permission_delete_wiki_pages_attachments: "Удалить вложения"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_notes: "Модерировать комментарии"
+  permission_edit_work_package_notes_explanation: "Внимание: Пользователи с таким правом могут редактировать любые комментарии."
   permission_edit_work_packages: "Редактировать пакеты работ"
   permission_edit_messages: "Редактировать сообщения"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_work_package_notes: "Редактировать свои комментарии"
   permission_edit_own_messages: "Редактировать свои сообщения"
   permission_edit_own_time_entries: "Редактировать собственные учетные записи о времени"
   permission_edit_project: "Редактировать проект"
@@ -3800,7 +3800,7 @@ ru:
   text_notice_security_badge_displayed_html: >
     Примечание: Если этот параметр включен, значок с вашим статусом установки будет отображен в панели администрирования <a href="%{information_panel_path}">%{information_panel_label}</a> и на домашней странице. Он отображается только администраторам. <br/> Знак будет проверять текущую версию OpenProject в официальной базе данных релизов OpenProject для оповещения вас о каких-либо обновлениях или известных уязвимостях. Для дополнительной информации, необходимой для проверки доступных обновлений, и о том как отключить эту проверку, пожалуйста, посетите <a href="%{more_info_url}">конфигурации документации</a>.
   text_own_membership_delete_confirmation: "Вы собираетесь удалить все или некоторые разрешения, доступные Вам. Вы не сможете редактировать проект после этого действия. Вы уверены?"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "Я понимаю, что это удаление невозможно отменить"
   text_plugin_assets_writable: "Папка активов дополнения(plugin) доступна для записи"
   text_powered_by: "С использованием %{link}"
   text_project_identifier_info: "Разрешены только строчные буквы (a-z), цифры, тире и знаки подчеркивания, начинать с буквы нижнего регистра."

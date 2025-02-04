@@ -122,10 +122,6 @@ cs:
   label_recurring_meeting_copy: "Kopírovat jako jednorázový"
   label_recurring_meeting_cancel: "Zrušit toto opakování"
   label_recurring_meeting_delete: "Odstranit výskyt"
-  label_recurring_meeting_delete_confirmation: >
-    This meeting is part of a series called %{name}. This will only delete this particular occurrence and not the entire series. Do you want to continue?
-  label_recurring_occurrence_delete_confirmation: >
-    Veškeré informace o schůzce, které nejsou v šabloně, budou ztraceny. Chcete pokračovat?
   label_recurring_meeting_restore: "Obnovit tento výskyt"
   label_recurring_meeting_schedule: "Schedule"
   label_recurring_meeting_next_occurrence: "Next occurrence"
@@ -140,6 +136,11 @@ cs:
   label_recurring_meeting_series_delete: "Odstranit sérii schůzek"
   label_recurring_meeting_series_end: "End meeting series"
   label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    one: "There is one more meeting."
+    few: "There are %{count} more meetings."
+    many: "There are %{count} more meetings."
+    other: "There are %{count} more meetings."
   label_my_meetings: "Moje schůzky"
   label_all_meetings: "Všechny schůzky"
   label_upcoming_meetings: "Nadcházející schůzky"
@@ -203,6 +204,17 @@ cs:
       structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
       structured_text_copy: "Kopírování schůzky v současné době nezkopíruje související body pořadu jednání, jen podrobnosti"
     copied: "Zkopírováno ze schůzky #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "Sekce bez názvu"
     delete_confirmation: "Smazáním sekce také smažete všechny body agendy. Opravdu to chcete udělat?"
@@ -252,6 +264,24 @@ cs:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "Oznámení bylo úspěšně odesláno"
   notice_timezone_missing: Není nastaveno žádné časové pásmo a předpokládá se %{zone} . Chcete-li vybrat časové pásmo, klikněte prosím zde.
   notice_meeting_updated: "Tato stránka byla aktualizována někým jiným. Pro zobrazení změn znovu načtena."
@@ -289,6 +319,10 @@ cs:
   label_meeting_created_by: "Vytvořil"
   label_meeting_last_updated: "Naposledy aktualizováno"
   label_meeting_reload: "Obnovit"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Bod programu"
   label_agenda_items_reordered: "přeřazeno"
   label_agenda_item_remove: "Odebrat z programu"

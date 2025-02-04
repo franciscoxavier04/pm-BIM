@@ -122,10 +122,6 @@ uk:
   label_recurring_meeting_copy: "Копіювати як одноразову"
   label_recurring_meeting_cancel: "Скасувати це повторення"
   label_recurring_meeting_delete: "Видалити повторення"
-  label_recurring_meeting_delete_confirmation: >
-    Ця нарада належить до серії з назвою %{name}. Буде видалено лише це повторення, а не всю серію. Продовжити?
-  label_recurring_occurrence_delete_confirmation: >
-    Будь-яку інформацію про нараду, відсутню в шаблоні, буде втрачено. Продовжити?
   label_recurring_meeting_restore: "Відновити це повторення"
   label_recurring_meeting_schedule: "Schedule"
   label_recurring_meeting_next_occurrence: "Next occurrence"
@@ -140,6 +136,11 @@ uk:
   label_recurring_meeting_series_delete: "Видалити серію нарад"
   label_recurring_meeting_series_end: "End meeting series"
   label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    one: "There is one more meeting."
+    few: "There are %{count} more meetings."
+    many: "There are %{count} more meetings."
+    other: "There are %{count} more meetings."
   label_my_meetings: "Мої наради"
   label_all_meetings: "Усі наради"
   label_upcoming_meetings: "Майбутні заходи"
@@ -203,6 +204,17 @@ uk:
       structured_text: "Упорядкуйте нараду у вигляді динамічного переліку пунктів порядку денного, за бажанням пов’язавши їх із пакетом робіт."
       structured_text_copy: "Зараз копіювання наради стосується лише докладних даних про неї, але не пов’язаних пунктів її порядку денного"
     copied: "Скопійовано з наради #%{id} "
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "Розділ без назви"
     delete_confirmation: "Видалення цього розділу також призведе до видалення його елементів порядку денного. Ви впевнені?"
@@ -252,6 +264,24 @@ uk:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "Повідомлення успішно надіслано"
   notice_timezone_missing: Часовий пояс не встановлено і %{zone} передбачається. Щоб вибрати часовий пояс, натисніть тут.
   notice_meeting_updated: "Цю сторінку оновив інший користувач. Перезавантажте її, щоб побачити зміни."
@@ -289,6 +319,10 @@ uk:
   label_meeting_created_by: "Створено "
   label_meeting_last_updated: "Востаннє оновлено"
   label_meeting_reload: "Перезавантажити"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Пункти порядку денного"
   label_agenda_items_reordered: "перевпорядковано"
   label_agenda_item_remove: "Зняти з порядку денного"

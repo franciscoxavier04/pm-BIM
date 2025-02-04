@@ -120,10 +120,6 @@ de:
   label_recurring_meeting_copy: "Als einmalige Besprechung kopieren"
   label_recurring_meeting_cancel: "Diese Besprechung absagen"
   label_recurring_meeting_delete: "Besprechung löschen"
-  label_recurring_meeting_delete_confirmation: >
-    Diese Besprechung ist Teil der Terminserie %{name}. Dadurch wird nur dieses bestimmte Ereignis und nicht die gesamte Serie gelöscht. Möchten Sie fortfahren?
-  label_recurring_occurrence_delete_confirmation: >
-    Alle Inhalte der Besprechung, die nicht aus der Vorlage stammen, werden gelöscht werden. Möchten Sie fortfahren?
   label_recurring_meeting_restore: "Dieses Vorkommen wiederherstellen"
   label_recurring_meeting_schedule: "Schedule"
   label_recurring_meeting_next_occurrence: "Nächstes Ereignis"
@@ -138,6 +134,9 @@ de:
   label_recurring_meeting_series_delete: "Terminserie löschen"
   label_recurring_meeting_series_end: "Besprechungsserie beenden"
   label_recurring_meeting_series_end_now: "Serie jetzt beenden"
+  label_meeting_more:
+    one: "There is one more meeting."
+    other: "There are %{count} more meetings."
   label_my_meetings: "Meine Besprechungen"
   label_all_meetings: "Alle Besprechungen"
   label_upcoming_meetings: "Zukünftige Meetings"
@@ -201,6 +200,17 @@ de:
       structured_text: "Organisieren Sie Ihr Meeting als strukturierte Liste von Einträgen und verknüpfen Sie diese optional mit einem Arbeitspaket."
       structured_text_copy: "Das Kopieren einer Besprechung kopiert derzeit nicht die zugehörigen Tagesordnungspunkte, sondern nur dessen Details"
     copied: "Kopiert von Meeting #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "Unbenannter Abschnitt"
     delete_confirmation: "Wenn Sie den Abschnitt löschen, werden auch alle zugehörigen Tagesordnungspunkte gelöscht. Möchten Sie fortfahren?"
@@ -250,6 +260,24 @@ de:
       title: "Geplant"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "Benachrichtigung erfolgreich gesendet"
   notice_timezone_missing: Keine Zeitzone eingestellt und daher %{zone} angenommen. Um Ihre Zeitzone einzustellen, klicken Sie bitte hier.
   notice_meeting_updated: "Diese Seite wurde von einem anderen Benutzer verändert. Laden Sie neu, um die Änderungen zu sehen."
@@ -287,6 +315,10 @@ de:
   label_meeting_created_by: "Erstellt von"
   label_meeting_last_updated: "Zuletzt aktualisiert"
   label_meeting_reload: "Neu laden"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Tagesordnungspunkte"
   label_agenda_items_reordered: "neu geordnet"
   label_agenda_item_remove: "Von der Tagesordnung entfernen"

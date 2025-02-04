@@ -119,10 +119,6 @@ vi:
   label_recurring_meeting_copy: "Sao một lần"
   label_recurring_meeting_cancel: "Hủy lần này"
   label_recurring_meeting_delete: "Xóa lần họp"
-  label_recurring_meeting_delete_confirmation: >
-    Cuộc họp này là một phần của chuỗi có tên %{name}. Ở đây chỉ xóa lần họp này chứ không phải cả chuỗi. Bạn có muốn tiếp tục?
-  label_recurring_occurrence_delete_confirmation: >
-    Bất cứ thông tin cuộc họp nào không có trong mẫu đều bị mất. Bạn có muốn tiếp tục không?
   label_recurring_meeting_restore: "Khôi phục lại lần họp này"
   label_recurring_meeting_schedule: "Lên lịch"
   label_recurring_meeting_next_occurrence: "Lần họp tới"
@@ -137,6 +133,8 @@ vi:
   label_recurring_meeting_series_delete: "Xóa chuỗi các cuộc họp"
   label_recurring_meeting_series_end: "End meeting series"
   label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    other: "There are %{count} more meetings."
   label_my_meetings: "Cuộc họp của tôi"
   label_all_meetings: "Tất cả các cuộc họp"
   label_upcoming_meetings: "Các cuộc họp sắp tới"
@@ -200,6 +198,17 @@ vi:
       structured_text: "Tổ chức cuộc họp của bạn dưới dạng danh sách động các mục chương trình nghị sự, có thể liên kết chúng với một gói công việc."
       structured_text_copy: "Sao chép một cuộc họp hiện tại sẽ không sao chép các mục chương trình nghị sự liên quan, chỉ sao chép các chi tiết"
     copied: "Sao chép từ Cuộc họp #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "Phần không tiêu đề"
     delete_confirmation: "Xóa phần này cũng sẽ xóa tất cả các mục chương trình nghị sự của nó. Bạn có chắc chắn muốn làm điều này không?"
@@ -249,6 +258,24 @@ vi:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "Đã gửi thông báo thành công"
   notice_timezone_missing: Chưa đặt múi giờ và %{zone} đã được chọn. Để chọn múi giowf của bạn, nhấn vào đây.
   notice_meeting_updated: "Trang này đã được người khác cập nhật. Tải lại để xem thay đổi."
@@ -286,6 +313,10 @@ vi:
   label_meeting_created_by: "Được tạo bởi"
   label_meeting_last_updated: "Cập nhật lần cuối"
   label_meeting_reload: "Tải lại"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Các mục chương trình nghị sự"
   label_agenda_items_reordered: "đã sắp xếp lại"
   label_agenda_item_remove: "Gỡ bỏ khỏi chương trình nghị sự"
