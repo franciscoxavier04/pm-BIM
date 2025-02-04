@@ -88,5 +88,13 @@ module Meetings
     def recurring?
       model.first.is_a?(RecurringMeeting)
     end
+
+    def blank_title
+      I18n.t("meeting.blankslate.title")
+    end
+
+    def blank_description
+      I18n.t("meeting.blankslate.desc")
+    end
   end
 end

@@ -165,7 +165,7 @@ module Pages::Meetings
     def expect_no_meetings_listed
       within "#content-wrapper" do
         expect(page)
-          .to have_content I18n.t(:no_results_title_text)
+          .to have_content I18n.t("meeting.blankslate.title")
       end
     end
 
