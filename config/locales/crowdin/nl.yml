@@ -598,16 +598,16 @@ nl:
         tab: "Onderwerp configuratie"
         manually_editable_subjects:
           label: "Handmatig bewerkbare onderwerpen"
-          caption: "Users can manually enter and edit work package subjects without restrictions."
+          caption: "Gebruikers kunnen werkpakketonderwerpen handmatig invoeren en bewerken zonder beperkingen."
         automatically_generated_subjects:
-          label: "Automatically generated subjects"
-          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+          label: "Automatisch gegenereerde onderwerpen"
+          caption: "Definieer een patroon met kenmerken en tekst waarnaar verwezen wordt om automatisch werkpakketonderwerpen te genereren. Gebruikers kunnen de onderwerpen niet handmatig bewerken."
         pattern:
-          label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          label: "Onderwerp patroon"
+          caption: "Zoek naar een attribuut of voeg tekst toe. Als u een spatie tussen elementen wilt maken, voegt u deze toe als tekst."
   versions:
     overview:
-      work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
+      work_packages_in_archived_projects: "De versie wordt gedeeld met gearchiveerde projecten waaraan nog werkpakketten zijn toegewezen aan deze versie. Deze worden meegeteld, maar verschijnen niet in de gekoppelde weergaven."
       no_results_title_text: Er zijn momenteel geen werkpakketten toegewezen aan deze versie.
   wiki:
     page_not_editable_index: De opgevraagde pagina bestaat (nog) niet. Je bent doorverwezen naar de index van alle wiki-pagina's.
@@ -628,15 +628,15 @@ nl:
       could_not_be_saved: "De volgende werkpakketten konden niet worden opgeslagen:"
       none_could_be_saved: "Geen van de %{total} werkpakketten konden worden bijgewerkt."
       x_out_of_y_could_be_saved: "%{failing} van de %{total} werkpakketten konden niet worden bijgewerkt terwijl %{success} kon."
-      selected_because_descendants: "While %{selected} work packages were selected, in total %{total} work packages are affected which includes descendants."
+      selected_because_descendants: "Terwijl %{selected} werkpakketten zijn geselecteerd, worden in totaal %{total} werkpakketten beïnvloed, die ook afstammelingen bevatten."
       descendant: "afstammeling van geselecteerde"
     move:
       no_common_statuses_exists: "Er is geen status beschikbaar voor alle geselecteerde werkpakketten. Hun status kan niet worden gewijzigd."
       unsupported_for_multiple_projects: "Bulk verplaatsen/kopiëren wordt niet ondersteund voor werkpakketten uit meerdere projecten"
       current_type_not_available_in_target_project: >
-        The current type of the work package is not enabled in the target project. Please enable the type in the target project if you'd like it to remain unchanged. Otherwise, select an available type in the target project from the list.
+        Het huidige type van het werkpakket is niet ingeschakeld in het doelproject. Schakel het type in het doelproject in als u wilt dat het ongewijzigd blijft. Selecteer anders een beschikbaar type in het doelproject in uit de lijst.
       bulk_current_type_not_available_in_target_project: >
-        The current types of the work packages aren't enabled in the target project. Please enable the types in the target project if you'd like them to remain unchanged. Otherwise, select an available type in the target project from the list.
+        De huidige types van het werkpakket zijn niet ingeschakeld in het doelproject. Schakel de types in het doelproject in als u wilt dat deze ongewijzigd blijft. Anders selecteer een beschikbaar type in het doelproject uit de lijst.
     sharing:
       missing_workflow_warning:
         title: "Workflow missing for work package sharing"
@@ -660,68 +660,68 @@ nl:
           no_results_title_text: Er zijn momenteel geen versies beschikbaar.
   work_package_relations_tab:
     index:
-      action_bar_title: "Add relations to other work packages to create a link between them."
-      no_results_title_text: There are currently no relations available.
-      blankslate_heading: "No relations"
-      blankslate_description: "This work package does not have any relations yet."
-    label_add_x: "Add %{x}"
-    label_edit_x: "Edit %{x}"
-    label_add_description: "Add description"
+      action_bar_title: "Voeg relaties toe naar andere werkpakketten om een koppeling tussen deze te maken."
+      no_results_title_text: Er zijn momenteel geen relaties beschikbaar.
+      blankslate_heading: "Geen relaties"
+      blankslate_description: "Dit werkpakket heeft nog geen relaties."
+    label_add_x: "Toevoegen %{x}"
+    label_edit_x: "Bewerk %{x}"
+    label_add_description: "Beschrijving toevoegen"
     lag:
-      subject: "Lag"
+      subject: "Vertraging"
       title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
-      relates_description: "Creates a visible link between the two work packages with no additional effect"
-      relates_to_description: "Creates a visible link between the two work packages with no additional effect"
-      label_precedes_singular: "successor (after)"
-      label_precedes_plural: "successors (after)"
-      precedes_description: "The related work package necessarily needs to start after this one finishes"
-      label_follows_singular: "predecessor (before)"
-      label_follows_plural: "predecessors (before)"
-      follows_description: "The related work package necessarily needs to finish before this one can start"
-      label_child_singular: "child"
-      label_child_plural: "children"
+      label_relates_singular: "gerelateerd aan"
+      label_relates_plural: "gerelateerd aan"
+      label_relates_to_singular: "gerelateerd aan"
+      label_relates_to_plural: "gerelateerd aan"
+      relates_description: "Creëert een zichtbare koppeling tussen de twee werkpakketten zonder extra effect"
+      relates_to_description: "Creëert een zichtbare koppeling tussen de twee werkpakketten zonder extra effect"
+      label_precedes_singular: "opvolger (na)"
+      label_precedes_plural: "opvolgers (na)"
+      precedes_description: "Het gerelateerde werkpakket moet noodzakelijkerwijs starten nadat dit werkpakket is voltooid"
+      label_follows_singular: "voorganger (vóór)"
+      label_follows_plural: "voorgangers (vóór)"
+      follows_description: "Het gerelateerde werkpakket moet noodzakelijkerwijs voltooid zijn voordat dit werkpakket kan beginnen"
+      label_child_singular: "kind"
+      label_child_plural: "kinderen"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
-      blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
-      blocked_description: "This work package cannot be closed until the related one is closed first"
-      blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
-      duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
-      duplicated_by_description: "The related work package is a copy of this"
-      duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
-      includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
-      partof_description: "Marks the related work package as being part of this one with no additional effect"
-      part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
-      requires_description: "Marks the related work package as a requirement to this one"
-      label_required_singular: "required by"
-      label_required_plural: "required by"
-      required_description: "Marks this work package as being a requirement to the related one"
-      label_parent_singular: "parent"
-      label_parent_plural: "parent"
+      label_blocks_singular: "blokkeert"
+      label_blocks_plural: "blokkeren"
+      blocks_description: "Het gerelateerde werkpakket kan pas worden afgesloten als eerst dit werkpakket eerst is afgesloten"
+      label_blocked_singular: "geblokkeerd door"
+      label_blocked_plural: "geblokkeerd door"
+      label_blocked_by_singular: "geblokkeerd door"
+      label_blocked__by_plural: "geblokkeerd door"
+      blocked_description: "Dit werkpakket kan pas worden afgesloten als eerst het gerelateerde werkpakket is afgesloten"
+      blocked_by_description: "Dit werkpakket kan pas worden afgesloten als eerst het gerelateerde werkpakket is afgesloten"
+      label_duplicates_singular: "duplicaat"
+      label_duplicates_plural: "duplicaten"
+      duplicates_description: "Dit is een kopie van het gerelateerde werkpakket"
+      label_duplicated_singular: "gedupliceerd door"
+      label_duplicated_plural: "gedupliceerd door"
+      label_duplicated_by_singular: "gedupliceerd door"
+      label_duplicated_by_plural: "gedupliceerd door"
+      duplicated_by_description: "Het gerelateerde werkpakket is een kopie van deze"
+      duplicated_description: "Het gerelateerde werkpakket is een kopie van deze"
+      label_includes_singular: "samenhangend"
+      label_includes_plural: "bevat"
+      includes_description: "Markeert het gerelateerde werkpakket als inclusief met dit werkpakket zonder bijkomend effect"
+      label_partof_singular: "onderdeel van"
+      label_partof_plural: "onderdelen van"
+      label_part_of_singular: "onderdeel van"
+      label_part_of_plural: "onderdelen van"
+      partof_description: "Markeert het gerelateerde werkpakket als onderdeel van dit werkpakket zonder bijkomend effect"
+      part_of_description: "Markeert het gerelateerde werkpakket als onderdeel van dit werkpakket zonder bijkomend effect"
+      label_requires_singular: "vereist"
+      label_requires_plural: "vereist"
+      requires_description: "Markeert het gerelateerde werkpakket als een vereiste voor dit werkpakket"
+      label_required_singular: "vereist door"
+      label_required_plural: "vereist door"
+      required_description: "Markeert dit werkpakket als een vereiste voor het gerelateerde werkpakket"
+      label_parent_singular: "bovenliggend"
+      label_parent_plural: "bovenliggende"
   label_invitation: Uitnodiging
   account:
     delete: "Account Verwijderen"
@@ -1140,25 +1140,25 @@ nl:
           attributes:
             type:
               must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
-              must_be_a_stage: "must be a Project::Stage"
-              must_be_a_gate: "must be a Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              must_be_a_stage: "moet een Project::Gate zijn"
+              must_be_a_gate: "moet een Project::Gate zijn"
+              type_and_class_name_mismatch: "moet overeenkomen met de geconcretiseerd klassenaam"
         project/gate:
           attributes:
             base:
-              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+              end_date_not_allowed: "Kan geen einddatum toewijzen aan een Project::Gate"
             type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
+              type_and_class_name_mismatch: "moet een Project::Gate zijn"
             date:
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              non_continuous_dates: "kan niet eerder zijn dan de einddatum van de vorige %{step}."
         project/stage:
           attributes:
             date_range:
-              start_date_must_be_before_end_date: "start date must be before the end date."
-              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
-              incomplete: "is incomplete."
+              start_date_must_be_before_end_date: "startdatum moet voor de einddatum liggen."
+              non_continuous_dates: "kan niet eerder zijn dan de einddatum van de vorige %{step}."
+              incomplete: "is onvolledig."
             type:
-              type_and_class_name_mismatch: "must be a Project::Stage"
+              type_and_class_name_mismatch: "moet een Project::Gate zijn"
         query:
           attributes:
             project:
@@ -1179,7 +1179,7 @@ nl:
               forbidden: "Tijdstempels bevatten verboden waarden: %{values}"
               format: "%{message}"
             selects:
-              name_not_included: "The 'Name' column needs to be included"
+              name_not_included: "De kolom \"Naam\" moet worden opgenomen"
               nonexistent: "The column '%{column}' does not exist."
               format: "%{message}"
           group_by_hierarchies_exclusive: "is uitsluiten door samenvoeging, '%{group_by}'. U kunt beide niet activeren."
@@ -2335,7 +2335,7 @@ nl:
   label_environment: "Omgeving"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "is"
-  label_equals_with_descendants: "is any with descendants"
+  label_equals_with_descendants: "is elk met afstammelingen"
   label_everywhere: "overal"
   label_example: "Voorbeeld"
   label_experimental: "Experimenteel"
