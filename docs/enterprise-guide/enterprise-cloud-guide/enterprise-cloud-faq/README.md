@@ -26,9 +26,7 @@ Yes. The protection of personal data is for OpenProject more than just a legal r
 
 ## Is the Enterprise cloud certified?
 
-The data center (AWS) we use for Enterprise cloud edition is ISO27001 certified.
-
-For more information please visit the [information regarding security measures](https://www.openproject.org/legal/data-processing-agreement/technical-and-organizational-data-security-measures) on our website.
+Yes, both data centers AWS and Netways are ISO 27001 certified. For more information please visit the [information regarding security measures](https://www.openproject.org/legal/data-processing-agreement/technical-and-organizational-data-security-measures) on our website.
 
 ## How to change the OpenProject Enterprise cloud creators account?
 
