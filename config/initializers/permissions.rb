@@ -291,19 +291,19 @@ Rails.application.reloader.to_prepare do
                      permissible_on: %i[work_package project],
                      dependencies: :view_work_packages
 
-      wpt.permission :edit_work_package_notes,
-                     {
-                       "work_packages/activities_tab": %i[edit cancel_edit update]
-                     },
-                     permissible_on: :project,
-                     require: :loggedin,
-                     dependencies: :view_work_packages
-
       wpt.permission :edit_own_work_package_notes,
                      {
                        "work_packages/activities_tab": %i[edit cancel_edit update]
                      },
                      permissible_on: %i[work_package project],
+                     require: :loggedin,
+                     dependencies: :view_work_packages
+
+      wpt.permission :edit_work_package_notes,
+                     {
+                       "work_packages/activities_tab": %i[edit cancel_edit update]
+                     },
+                     permissible_on: :project,
                      require: :loggedin,
                      dependencies: :view_work_packages
 

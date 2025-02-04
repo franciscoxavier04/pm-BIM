@@ -1,3 +1,33 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
 class RecurringMeeting < ApplicationRecord
   # Magical maximum of iterations
   MAX_ITERATIONS = 1000
@@ -37,8 +67,9 @@ class RecurringMeeting < ApplicationRecord
 
   enum end_after: {
     specific_date: 0,
-    iterations: 1
-  }.freeze, _prefix: true, _default: "specific_date"
+    iterations: 1,
+    never: 3
+  }.freeze, _prefix: true, _default: "never"
 
   has_many :meetings,
            inverse_of: :recurring_meeting,
@@ -83,7 +114,7 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def schedule
-    @schedule ||= IceCube::Schedule.new(start_time, end_time: end_date).tap do |s|
+    @schedule ||= IceCube::Schedule.new(start_time, end_time: modified_end_date).tap do |s|
       s.add_recurrence_rule count_rule(frequency_rule)
       exclude_non_working_days(s) if frequency_working_days?
     end
@@ -109,10 +140,16 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def full_schedule_in_words
-    I18n.t("recurring_meeting.in_words.full",
-           base: base_schedule,
-           time: format_time(start_time, include_date: false),
-           end_date: format_date(last_occurrence))
+    if end_after_never?
+      I18n.t("recurring_meeting.in_words.never_ending",
+             base: base_schedule,
+             time: format_time(start_time, include_date: false))
+    else
+      I18n.t("recurring_meeting.in_words.full",
+             base: base_schedule,
+             time: format_time(start_time, include_date: false),
+             end_date: format_date(last_occurrence))
+    end
   end
 
   def human_frequency_schedule
@@ -138,9 +175,10 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def remaining_occurrences
-    if end_date.present?
-      schedule.occurrences_between(Time.current, end_date)
-    else
+    case end_after
+    when "specific_date"
+      schedule.occurrences_between(Time.current, modified_end_date)
+    when "iterations"
       schedule.remaining_occurrences(Time.current)
     end
   end
@@ -156,10 +194,31 @@ class RecurringMeeting < ApplicationRecord
       .order(start_time: direction)
   end
 
+  def upcoming_instantiated_meetings
+    scheduled_meetings
+      .includes(:meeting)
+      .not_cancelled
+      .joins(:meeting)
+      .where("meetings.start_time + (interval '1 hour' * meetings.duration) >= ?", Time.current)
+      .order(start_time: :asc)
+  end
+
+  def upcoming_cancelled_meetings
+    scheduled_meetings
+      .upcoming
+      .cancelled
+      .order(start_time: :asc)
+  end
+
   private
 
   def unset_schedule
     @schedule = nil
+  end
+
+  # Because IceCube is exclusive by default for end_time for a schedule
+  def modified_end_date
+    @modified_end_date ||= end_date + 1.day
   end
 
   def end_date_constraints
@@ -199,10 +258,13 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def count_rule(rule)
-    if end_after_iterations?
+    case end_after
+    when "specific_date"
+      rule.until(modified_end_date.to_time(:utc))
+    when "iterations"
       rule.count(iterations)
     else
-      rule.until(end_date.to_time(:utc))
+      rule
     end
   end
 
