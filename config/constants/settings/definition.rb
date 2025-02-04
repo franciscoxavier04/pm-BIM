@@ -701,8 +701,8 @@ module Settings
         default: 60000
       },
       oauth_allow_remapping_of_existing_users: {
-        description: "When set to false, prevent users from other identity providers to take over accounts connected " \
-                     "to another identity provider.",
+        description: "When set to false, prevent users from other identity providers to take over accounts " \
+                     "that exist in OpenProject.",
         default: true
       },
       omniauth_direct_login_provider: {
