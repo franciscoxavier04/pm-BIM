@@ -57,10 +57,13 @@ module OpenIDConnect
         json = yield exchange_token_request(idp_token, audience)
 
         access_token = json["access_token"]
-        refresh_token = json["refresh_token"]
         return Failure("Token exchange response invalid") if access_token.blank?
 
-        token = store_exchanged_token(audience:, access_token:, refresh_token:)
+        # We are explicitly opting to not store the refresh token for exchanged tokens
+        # For one there is no need to store one, we can simply exchange a new token once the old expired.
+        # A second reason is that at least Keycloak (an IDP we implement against), offers broken
+        # refresh tokens after token exchange (see https://github.com/keycloak/keycloak/issues/37016)
+        token = store_exchanged_token(audience:, access_token:, refresh_token: nil)
         Success(token)
       end
 
