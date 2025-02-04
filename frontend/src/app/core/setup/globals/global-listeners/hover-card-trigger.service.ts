@@ -111,7 +111,7 @@ export class HoverCardTriggerService {
   }
 
   private loadAndShowHoverCard(el:HTMLElement, turboFrameUrl:string) {
-    const overlay = jQuery('#hover-card-overlay').get(0);
+    const overlay = document.getElementById('hover-card-overlay');
     if (!overlay) { return; }
 
     overlay.innerHTML = '';
@@ -197,7 +197,7 @@ export class HoverCardTriggerService {
     // It is important to check if we are currently showing a hover card. If we closed the modal service without
     // doing so, we might accidentally close another modal (e.g. share dialog).
     if (this.isShowingHoverCard && !this.mouseInModal) {
-      const overlay = jQuery('#hover-card-overlay').get(0);
+      const overlay = document.getElementById('hover-card-overlay');
       if (!overlay) { return; }
       overlay.innerHTML = '';
 
