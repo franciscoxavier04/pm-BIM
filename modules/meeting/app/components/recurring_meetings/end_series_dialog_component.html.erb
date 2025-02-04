@@ -28,7 +28,7 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%=
-  render(Primer::OpenProject::DangerConfirmationDialog.new(
+  render(Primer::OpenProject::DangerDialog.new(
     id: "recurring-meetings-end-series-dialog",
     confirm_button_text: I18n.t(:label_recurring_meeting_series_end_now),
     title: I18n.t("recurring_meeting.end_series_dialog.title"),
