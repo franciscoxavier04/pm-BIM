@@ -38,7 +38,6 @@ class WorkPackageCreateChildRelationController < ApplicationController
   authorize_with_permission :add_work_packages
 
   def new
-    binding.pry
     respond_with_dialog WorkPackageRelationsTab::CreateWorkPackageChildDialogComponent.new(work_package: @work_package)
   end
 
@@ -72,7 +71,6 @@ class WorkPackageCreateChildRelationController < ApplicationController
   private
 
   def build_work_package
-    binding.pry
     initial = WorkPackage.new(project: @project)
 
     call = WorkPackages::SetAttributesService
