@@ -76,7 +76,6 @@ import { DynamicContentModalComponent } from 'core-app/shared/components/modals/
 import {
   PasswordConfirmationModalComponent,
 } from 'core-app/shared/components/modals/request-for-confirmation/password-confirmation.modal';
-import { HoverCardComponent } from 'core-app/shared/components/modals/preview-modal/hover-card-modal/hover-card.modal';
 import {
   OpHeaderProjectSelectComponent,
 } from 'core-app/shared/components/header-project-select/header-project-select.component';
@@ -381,7 +380,6 @@ export function initializeServices(injector:Injector) {
     ConfirmDialogModalComponent,
     DynamicContentModalComponent,
     PasswordConfirmationModalComponent,
-    HoverCardComponent,
 
     // Main menu
     MainMenuResizerComponent,
