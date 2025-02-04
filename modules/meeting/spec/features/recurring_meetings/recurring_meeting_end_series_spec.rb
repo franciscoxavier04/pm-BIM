@@ -88,7 +88,7 @@ RSpec.describe "Recurring meetings end series", :js do
     end
 
     expect(page).to have_current_path recurring_meeting_path(meeting)
-    expect(page).to have_text("Nothing to display")
+    expect(page).to have_text("No open meetings at the moment")
   end
 
   context "when meeting start time is in the future" do
