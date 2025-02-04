@@ -63,21 +63,23 @@ Rails.application.routes.draw do
 
   resources :cost_entries, controller: "costlog", only: %i[edit update destroy]
 
-  resources :cost_types, only: %i[index new edit update create destroy] do
-    member do
-      # TODO: check if this can be replaced with update method
-      put :set_rate
-      patch :restore
-    end
-  end
+  get "/cost_types", to: redirect("/admin/cost_types")
 
   # TODO: this is a duplicate from a route defined under project/:project_id, check whether we really want to do that
   resources :hourly_rates, only: %i[edit update]
 
-  scope :admin do
+  namespace :admin do
+    resources :cost_types, only: %i[index new edit update create destroy] do
+      member do
+        # TODO: check if this can be replaced with update method
+        put :set_rate
+        patch :restore
+      end
+    end
+
     resource :costs,
              only: %i[show update],
-             controller: :costs_settings,
-             as: "admin_costs_settings"
+             controller: "costs_settings",
+             as: "costs_settings"
   end
 end
