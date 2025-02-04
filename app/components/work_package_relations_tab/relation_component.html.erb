@@ -44,7 +44,7 @@
         end
       end
 
-      flex.with_row(mb: 2) do
+      flex.with_row(mb: 2, classes: "relation-row--subject") do
         render(Primer::Beta::Link.new(href: work_package_path(related_work_package),
                                       color: :default,
                                       underline: false,
