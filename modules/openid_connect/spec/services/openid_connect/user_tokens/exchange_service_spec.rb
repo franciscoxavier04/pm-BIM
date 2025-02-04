@@ -66,7 +66,7 @@ RSpec.describe OpenIDConnect::UserTokens::ExchangeService, :webmock do
     it "creates a new user token", :aggregate_failures do
       expect { subject }.to change(user.oidc_user_tokens, :count).from(2).to(3)
       expect(user.oidc_user_tokens.last.access_token).to eq("the-access-token-exchanged")
-      expect(user.oidc_user_tokens.last.refresh_token).to eq("the-refresh-token-exchanged")
+      expect(user.oidc_user_tokens.last.refresh_token).to be_nil
     end
 
     it "returns the new user token" do
@@ -87,7 +87,7 @@ RSpec.describe OpenIDConnect::UserTokens::ExchangeService, :webmock do
       it "creates a new user token", :aggregate_failures do
         expect { subject }.not_to change(user.oidc_user_tokens, :count)
         expect(user.oidc_user_tokens.last.access_token).to eq("the-access-token-exchanged")
-        expect(user.oidc_user_tokens.last.refresh_token).to eq("the-refresh-token-exchanged")
+        expect(user.oidc_user_tokens.last.refresh_token).to be_nil
       end
 
       it "returns the updated user token" do
