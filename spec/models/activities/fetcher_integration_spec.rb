@@ -74,7 +74,7 @@ RSpec.describe Activities::Fetcher, "integration" do
         end
 
         it "finds only events for which permissions are satisfied" do
-          # project attributes, news and message only require the user to be member
+          # project details, news and message only require the user to be member
           expect(subject.map(&:journable_id))
             .to contain_exactly(project.id, message.id, news.id)
         end
@@ -123,7 +123,7 @@ RSpec.describe Activities::Fetcher, "integration" do
         end
 
         it "finds only events for which permissions are satisfied" do
-          # project attributes, news and message only require the user to be member
+          # project details, news and message only require the user to be member
           expect(subject.map(&:journable_id))
             .to contain_exactly(project.id, message.id, news.id)
         end
@@ -212,7 +212,7 @@ RSpec.describe Activities::Fetcher, "integration" do
         end
 
         it "finds only events for which permissions are satisfied" do
-          # project attributes and news only require the user to be member
+          # project details and news only require the user to be member
           expect(subject.map(&:journable_id))
             .to contain_exactly(project.id, subproject.id, news.id, subproject_news.id, work_package.id)
           expect(subject.filter { |e| e.event_type.starts_with?("work_package") }.map(&:journable_id))
@@ -274,7 +274,7 @@ RSpec.describe Activities::Fetcher, "integration" do
         end
 
         it "finds only events for which permissions are satisfied" do
-          # project attributes, news and message only require the user to be member
+          # project details, news and message only require the user to be member
           expect(subject.map(&:journable_id))
             .to contain_exactly(project.id, message.id, news.id)
         end

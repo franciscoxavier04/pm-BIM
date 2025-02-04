@@ -2141,7 +2141,7 @@ en:
     changeset: "Changeset edited"
     message: Message edited
     news: News
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "Project edited"
     projects: "Project edited"
     reply: Replied
