@@ -676,6 +676,7 @@ nl:
     label_add_description: "Beschrijving toevoegen"
     lag:
       subject: "Vertraging"
+      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "Nieuw werkpakket aangemaakt en toegevoegd als kind"
