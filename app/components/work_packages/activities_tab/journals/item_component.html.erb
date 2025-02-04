@@ -31,7 +31,7 @@
                   end
                   header_start_container.with_column(mr: 1,
                                                     classes: "work-packages-activities-tab-journals-item-component--user-name ellipsis hidden-for-mobile") do
-                    truncated_user_name(journal.user)
+                    truncated_user_name(journal.user, hover_card: true)
                   end
                   if journal.initial?
                       header_start_container.with_column(

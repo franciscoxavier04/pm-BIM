@@ -32,7 +32,7 @@ require_relative "../../support/pages/my/page"
 
 RSpec.describe "Arbitrary WorkPackage query table widget on my page",
                :js,
-               :selenium do
+               :with_cuprite do
   let!(:type) { create(:type) }
   let!(:other_type) { create(:type) }
   let!(:priority) { create(:default_priority) }
@@ -163,12 +163,8 @@ RSpec.describe "Arbitrary WorkPackage query table widget on my page",
   context "without the permission to save queries" do
     let(:permissions) { %i[view_work_packages add_work_packages] }
 
-    let!(:my_page_grid) do
-      create(:my_page, :empty, user:)
-    end
-
     it "cannot add the widget" do
-      my_page.expect_unable_to_add_widget(1, 1, :within, "Work packages table")
+      my_page.expect_unable_to_add_widget(1, 2, :column, "Work packages table")
     end
   end
 end
