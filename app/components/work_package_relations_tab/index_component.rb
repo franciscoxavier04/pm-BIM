@@ -107,7 +107,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
     if helpers.current_user.allowed_in_project?(:add_work_packages, work_package.project)
       menu.with_item(
         label: t("work_package_relations_tab.relations.new_child"),
-        href: new_work_package_create_child_relation_path(work_package.project, parent_id: work_package.id),
+        href: new_work_package_children_relation_path(project: work_package.project, parent_id: work_package.id, isNew: true),
         content_arguments: {
           data: { turbo_stream: true }
         }
@@ -118,7 +118,7 @@ class WorkPackageRelationsTab::IndexComponent < ApplicationComponent
 
     menu.with_item(
       label: t("work_package_relations_tab.relations.existing_child"),
-      href: new_work_package_children_relation_path(work_package),
+      href: new_work_package_children_relation_path(work_package, isNew: false),
       content_arguments: {
         data: { turbo_stream: true }
       }
