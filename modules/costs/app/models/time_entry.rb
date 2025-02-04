@@ -48,6 +48,7 @@ class TimeEntry < ApplicationRecord
 
   validates :user_id, :project_id, :spent_on,
             presence: true
+
   validates :hours,
             presence: true,
             if: -> { !ongoing? }

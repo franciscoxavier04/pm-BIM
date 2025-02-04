@@ -118,6 +118,12 @@ module Components
       end
     end
 
+    def field_has_error(field, error)
+      within modal_container do
+        expect(page).to have_css(".FormControl:has(label[for=time_entry_#{field}]) > .FormControl-inlineValidation", text: error)
+      end
+    end
+
     def update_time_field(field_name, hour:, minute:)
       built_time = browser_timezone.local(2025, 1, 1, hour, minute, 0)
       page.fill_in "time_entry_#{field_name}", with: built_time.iso8601
