@@ -1,5 +1,5 @@
-require File.expand_path(File.dirname(__FILE__) + "/../../spec_helper")
-require File.expand_path(File.dirname(__FILE__) + "/../../shared_examples")
+require_relative "../../spec_helper"
+require_relative "../../shared_examples"
 
 RSpec.describe Avatars::UsersController do
   include_context "there are users with and without avatars"

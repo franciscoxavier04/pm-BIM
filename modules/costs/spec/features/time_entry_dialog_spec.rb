@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require File.expand_path("#{File.dirname(__FILE__)}/../spec_helper.rb")
+require_relative "../spec_helper"
 
 RSpec.describe "time entry dialog", :js, with_flag: :track_start_and_end_times_for_time_entries do
   include Redmine::I18n
