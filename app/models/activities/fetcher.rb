@@ -137,7 +137,7 @@ module Activities
     end
 
     def sort_by_most_recent_first(events)
-      events.sort { |a, b| b.event_datetime <=> a.event_datetime }
+      events.sort_by { -it.event_datetime.to_f }
     end
 
     def constantized_providers(event_type)
