@@ -101,9 +101,5 @@ class WorkPackages::DialogsController < ApplicationController
     }
   end
 
-  def work_package_params
-    params.require(:work_package).permit(:type_id, :subject, :project_id, :status_id, :priority_id, :author_id, :parent_id)
-  end
-
   def default_breadcrumb; end
 end
