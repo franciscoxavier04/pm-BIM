@@ -147,7 +147,7 @@ class RecurringMeeting < ApplicationRecord
     end
   end
 
-  def full_schedule_in_words
+  def full_schedule_in_words # rubocop:disable Metrics/AbcSize
     if has_ended?
       I18n.t("recurring_meeting.in_words.full_past",
              base: base_schedule,
