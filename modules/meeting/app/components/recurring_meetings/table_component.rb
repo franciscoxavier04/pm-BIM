@@ -30,7 +30,7 @@
 
 module RecurringMeetings
   class TableComponent < ::OpPrimer::BorderBoxTableComponent
-    options :current_project, :count, :direction, :max_count
+    options :current_project, :count, :direction, :max_count, :blankslate_title, :blankslate_desc
 
     columns :start_time, :relative_time, :status, :create
 
@@ -88,6 +88,26 @@ module RecurringMeetings
 
     def count
       @count ||= [options[:count], rows.count].max
+    end
+
+    def blankslate?
+      options[:blankslate_title].present?
+    end
+
+    def render_blank_slate
+      render(Primer::Beta::Blankslate.new(border: false)) do |component|
+        component.with_visual_icon(icon: blank_icon, size: :medium) if blank_icon
+        component.with_heading(tag: :h2) { blank_title }
+        component.with_description { blank_description }
+      end
+    end
+
+    def blank_title
+      blankslate? ? options[:blankslate_title] : I18n.t(:label_nothing_display)
+    end
+
+    def blank_description
+      blankslate? ? options[:blankslate_desc] : I18n.t(:no_results_title_text)
     end
   end
 end

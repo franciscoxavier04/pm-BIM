@@ -100,17 +100,17 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_no_meeting date: "12/31/2024 01:30 PM"
   end
 
-  it "can use the 'Create from template' button" do
+  it "can use the 'Open' button" do
     show_page.visit!
 
-    show_page.create_from_template date: "01/07/2025 01:30 PM"
+    show_page.open date: "01/07/2025 01:30 PM"
     wait_for_reload
 
     expect(page).to have_current_path project_meeting_path(project, Meeting.last)
 
     show_page.visit!
 
-    show_page.expect_no_scheduled_meeting date: "01/07/2025 01:30 PM"
+    show_page.expect_no_planned_meeting date: "01/07/2025 01:30 PM"
     show_page.expect_open_meeting date: "01/07/2025 01:30 PM"
   end
 
@@ -132,10 +132,10 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_cancelled_meeting date: "12/31/2024 01:30 PM"
   end
 
-  it "can cancel a scheduled occurrence from the show page" do
+  it "can cancel a planned occurrence from the show page" do
     show_page.visit!
 
-    show_page.cancel_scheduled_occurrence date: "01/07/2025 01:30 PM"
+    show_page.cancel_planned_occurrence date: "01/07/2025 01:30 PM"
     show_page.within_modal "Cancel meeting occurrence" do
       check "I understand that this deletion cannot be reversed", allow_label_click: true
 
@@ -174,8 +174,8 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
     show_page.expect_open_actions date: "12/31/2024 01:30 PM"
 
-    show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
-    show_page.expect_scheduled_actions date: "01/07/2025 01:30 PM"
+    show_page.expect_planned_meeting date: "01/07/2025 01:30 PM"
+    show_page.expect_planned_actions date: "01/07/2025 01:30 PM"
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
     show_page.within_modal "Delete meeting occurrence" do
@@ -198,7 +198,7 @@ RSpec.describe "Recurring meetings CRUD",
     it "does not allow to act on the recurring meeting" do
       show_page.visit!
 
-      expect(page).to have_no_content "Create from template"
+      expect(page).to have_no_button "Open"
       show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
 
       within("li", text: "12/31/2024 01:30 PM") do
@@ -211,8 +211,8 @@ RSpec.describe "Recurring meetings CRUD",
         click_on "more-button"
       end
 
-      show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
-      show_page.expect_scheduled_meeting date: "01/14/2025 01:30 PM"
+      show_page.expect_planned_meeting date: "01/07/2025 01:30 PM"
+      show_page.expect_planned_meeting date: "01/14/2025 01:30 PM"
 
       expect(page).not_to have_test_selector "recurring-meeting-action-menu"
     end

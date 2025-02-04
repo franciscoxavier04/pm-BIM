@@ -88,6 +88,7 @@ RSpec.describe "Recurring meetings creation",
       meetings_page.set_end_after "a specific date"
       meetings_page.set_end_date "2025-01-15"
 
+      sleep 0.5 # quick fix as wait_for_network_idle isn't working all the time
       expect(page).to have_text "Every week on Tuesday at 01:30 PM"
 
       click_on "Create meeting"
@@ -127,8 +128,8 @@ RSpec.describe "Recurring meetings creation",
       expect(page).to have_css(".start_time", count: 3)
 
       show_page.expect_open_meeting date: "12/31/2024 01:30 PM"
-      show_page.expect_scheduled_meeting date: "01/07/2025 01:30 PM"
-      show_page.expect_scheduled_meeting date: "01/14/2025 01:30 PM"
+      show_page.expect_planned_meeting date: "01/07/2025 01:30 PM"
+      show_page.expect_planned_meeting date: "01/14/2025 01:30 PM"
 
       perform_enqueued_jobs
       expect(ActionMailer::Base.deliveries.size).to eq 2
