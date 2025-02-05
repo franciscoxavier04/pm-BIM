@@ -2155,8 +2155,6 @@ ru:
       api_and_webhooks: "API и вебхуки"
     quick_add:
       label: "Открыть меню быстрого добавления"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:
@@ -3451,7 +3449,7 @@ ru:
   setting_brute_force_block_minutes: "Время блокирования пользователя за"
   setting_cache_formatted_text: "Кэшировать форматированный текст"
   setting_use_wysiwyg_description: "Выберите включение CKEditor5 WYSIWYG редактора для всех пользователей по умолчанию. CKEditor обладает ограниченной функциональностью для GFM Markdown."
-  setting_column_options: "Столбцы пакета работ по умолчанию"
+  setting_column_options: "Столбцы таблицы пакетов работ по умолчанию"
   setting_commit_fix_keywords: "Корректирующие ключевые слова"
   setting_commit_logs_encoding: "Зафиксировать кодировку сообщений"
   setting_commit_logtime_activity_id: "Деятельности с учетом времени"

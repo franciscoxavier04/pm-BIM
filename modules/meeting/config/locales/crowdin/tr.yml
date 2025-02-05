@@ -22,9 +22,9 @@
 #English strings go here for Rails i18n
 tr:
   plugin_openproject_meeting:
-    name: "OpenProject Meeting"
+    name: "OpenProject Toplantı"
     description: >-
-      This module adds functions to support project meetings to OpenProject. Meetings can be scheduled selecting invitees from the same project to take part in the meeting. An agenda can be created and sent to the invitees. After the meeting, attendees can be selected and minutes can be created based on the agenda. Finally, the minutes can be sent to all attendees and invitees.
+      Bu modül OpenProject'e proje toplantılarını destekleyen fonksiyonlar ekler. Toplantılar, aynı projeden toplantıya katılacak davetliler seçilerek planlanabilir. Bir gündem oluşturulabilir ve davetlilere gönderilebilir. Toplantıdan sonra katılımcılar seçilebilir ve gündeme göre tutanaklar oluşturulabilir. Son olarak, tutanaklar tüm katılımcılara ve davetlilere gönderilebilir.
   activerecord:
     attributes:
       meeting:
@@ -51,17 +51,17 @@ tr:
       meeting_section:
         title: "Başlık"
       recurring_meeting:
-        frequency: "Frequency"
-        interval: "Interval"
-        start_date: "Starts on"
-        end_after: "End series after"
-        iterations: "Occurrences"
+        frequency: "Sıklık"
+        interval: "Zaman aralığı"
+        start_date: "Başlama zamanı"
+        end_after: "Sonrasında seriyi sonlandırın"
+        iterations: "Yineleme sayısı"
     errors:
       messages:
         invalid_time_format: "geçerli bir zaman değil. Gerekli format: SS:DD"
     models:
-      recurring_meeting: "Recurring meeting"
-      structured_meeting: "One-time meeting"
+      recurring_meeting: "Yinelenen toplantı"
+      structured_meeting: "Tek seferlik toplantı"
       meeting_agenda_item: "Ajanda öğesi"
       meeting_agenda: "Ajanda"
       meeting_minutes: "Dakika"
@@ -95,8 +95,8 @@ tr:
   label_meeting: "Toplantı"
   label_meeting_plural: "Toplantılar"
   label_meeting_new: "Yeni Toplantı"
-  label_meeting_new_dynamic: "New one-time meeting"
-  label_meeting_new_recurring: "New recurring meeting"
+  label_meeting_new_dynamic: "Yeni tek seferlik toplantı"
+  label_meeting_new_recurring: "Yeni yinelenen toplantı"
   label_meeting_create: "Toplantı oluştur"
   label_meeting_copy: "Toplantıyı kopyala"
   label_meeting_edit: "Toplantıyı Düzenle"
@@ -110,16 +110,16 @@ tr:
   label_meeting_date_time: "Tarih/Saat"
   label_meeting_date_and_time: "Tarih ve zaman"
   label_meeting_diff: "Fark"
-  label_recurring_meeting: "Recurring meeting"
-  label_recurring_meeting_part_of: "Part of a meeting series"
-  label_recurring_meeting_new: "New recurring meeting"
-  label_recurring_meeting_plural: "Recurring meetings"
-  label_template: "Template"
-  label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Create from template"
-  label_recurring_meeting_copy: "Copy as one-off"
-  label_recurring_meeting_cancel: "Cancel this occurrence"
-  label_recurring_meeting_delete: "Delete occurrence"
+  label_recurring_meeting: "Yinelenen toplantı"
+  label_recurring_meeting_part_of: "Toplantı serisinin bir parçası"
+  label_recurring_meeting_new: "Yeni yinelenen toplantı"
+  label_recurring_meeting_plural: "Yinelenen toplantı"
+  label_template: "Şablon"
+  label_recurring_meeting_view: "Toplantı serisini görüntüle"
+  label_recurring_meeting_create: "Şablondan oluştur"
+  label_recurring_meeting_copy: "Tek seferlik olarak kopyalayın"
+  label_recurring_meeting_cancel: "Bu etklinliği iptal et"
+  label_recurring_meeting_delete: "İptal et"
   label_recurring_meeting_delete_confirmation: >
     This meeting is part of a series called %{name}. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   label_recurring_occurrence_delete_confirmation: >
@@ -129,27 +129,27 @@ tr:
   label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
   label_recurring_meeting_more_past: "There are %{count} more past meetings."
   label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
-  label_recurring_meeting_show_more: "Show more"
-  label_recurring_meeting_series_edit: "Edit meeting series"
-  label_recurring_meeting_series_delete: "Delete meeting series"
-  label_my_meetings: "My meetings"
-  label_all_meetings: "All meetings"
+  label_recurring_meeting_show_more: "Daha fazlasını göster"
+  label_recurring_meeting_series_edit: "Toplantı serisini düzenle"
+  label_recurring_meeting_series_delete: "Toplantı serisini sil"
+  label_my_meetings: "Toplantılarım"
+  label_all_meetings: "Tüm toplantılar"
   label_upcoming_meetings: "Yaklaşan toplantılar"
   label_past_meetings: "Geçmiş toplantılar"
   label_upcoming_meetings_short: "Yaklaşan"
   label_past_meetings_short: "Geçmiş"
   label_involvement: "Katılım"
-  label_invitations: "Invitations"
-  label_invited_user: "Invited user"
+  label_invitations: "Davetler"
+  label_invited_user: "Davetli kullanıcı"
   label_past_invitations: "Geçmiş davetiyeler"
-  label_attended: "Attended"
-  label_attended_user: "Attended user"
-  label_created_by_me: "Created by me"
+  label_attended: "Katıldığım"
+  label_attended_user: "Katılan kullanıcı"
+  label_created_by_me: "Oluşturduklarım"
   label_notify: "Gözden geçirilmek üzere gönder"
   label_icalendar: "Takvime gönder"
   label_icalendar_download: "iCalender etkinliğini indir "
-  label_view_meeting_series: "View meeting series"
-  label_meeting_series: "Meeting series"
+  label_view_meeting_series: "Toplantı serisini görüntüle"
+  label_meeting_series: "Toplantı serisi"
   label_version: "Sürüm"
   label_time_zone: "Saat dilim"
   label_start_date: "Başlama tarihi"
@@ -168,7 +168,7 @@ tr:
       agenda_text: "Eski toplantının gündemini kopyalayın"
       participants: "Katılımcı listesini kopyala"
     email:
-      send_emails: "Email participants"
+      send_emails: "Katılımcılara e-posta gönder"
       send_invitation_emails: >
         Yukarıda seçilen katılımcıların hepsine e-posta davetiyesi gönder. Bu işi daha sonra herhangi bir zamanda elle de gerçekleştirebilirsiniz.
       send_invitation_emails_structured: "Tüm katılımcılara e-posta ile davetiye gönder. Bu işlemi daha sonra herhangi bir zamanda elle de gerçekleştirebilirsiniz."
@@ -176,7 +176,7 @@ tr:
       invited:
         summary: "%{actor} size toplantı için bir davetiye gönderdi %{title}"
       rescheduled:
-        header: "Meeting %{title} has been rescheduled"
+        header: "%{title} toplantısı yeniden planlandı"
         summary: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
         body: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
         old_date_time: "Eski tarih/saat"
@@ -184,18 +184,18 @@ tr:
     label_mail_all_participants: "Tüm katılımcılara e-posta gönderin"
     types:
       classic: "Klasik"
-      classic_text: "Organize your meeting as a single formattable text agenda and protocol."
-      structured: "Structured"
-      one_time: "One-time"
-      recurring: "Recurring"
+      classic_text: "Toplantınızı biçimlendirilebilir bir metin gündemi ve protokolüyle düzenleyin."
+      structured: "Planlı"
+      one_time: "Tek seferlik"
+      recurring: "Tekrarlanan"
       recurring_text: "Create meeting series with dynamic template for each occurrence."
-      structured_text: "Organize your meeting as a dynamic list of agenda items, optionally linking them to a work package."
+      structured_text: "Toplantınızı dinamik bir gündem maddeleri listesi olarak düzenleyin ve isteğe bağlı olarak bunları bir iş paketine bağlayın."
       structured_text_copy: "Toplantıyı kopyalamak toplantıyla ilgili ajanda maddelerini kopyalamayacaktır, sadece detaylar kopyalanacak"
     copied: "#%{id} numaralı toplantıdan kopyalandı"
   meeting_section:
-    untitled_title: "Untitled section"
-    delete_confirmation: "Deleting the section will also delete all of its agenda items. Are you sure you want to do this?"
-    placeholder_title: "New section"
+    untitled_title: "İsimsiz bölüm"
+    delete_confirmation: "Bölümün silinmesi tüm gündem maddelerini de silecektir. Bunu yapmak istediğinizden emin misiniz?"
+    placeholder_title: "Yeni bölüm"
     empty_text: "Maddeleri buraya sürükleyin ya da yeni bir tane oluşturun"
   recurring_meeting:
     occurrence:
@@ -205,30 +205,30 @@ tr:
       first_created: >
         The first meeting has been successfuly created from template. All future meetings will be created automatically at the time of the previous occurrence.
     template:
-      button_finalize: "Finish template"
+      button_finalize: "Bitiş şablonu"
       blank_title: "Your meeting series template is empty"
       description: >
         This template will be used whenever new meetings in the series get created. You can add agenda items, participants, and attachments to this template.
       blankslate_finalize: >
         When you're done preparing this template, click the '%{button_title}' button above to finish the setup and schedule the first meeting of the series.
-      label_view_template: "View template"
-      label_edit_template: "Edit template"
+      label_view_template: "Şablonu görüntüle"
+      label_edit_template: "Şablonu düzenle"
       banner_html: >
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
       every_weekday: "Every %{day_of_the_week}"
-      daily: "Daily"
-      working_days: "Every working day"
-      weekly: "Weekly"
+      daily: "Günlük"
+      working_days: "Her iş günü"
+      weekly: "Haftalık"
     end_after:
-      specific_date: "a specific date"
+      specific_date: "belirli bir tarih"
       iterations: "a number of occurrences"
     starts: "Starts"
     in_words:
-      daily_interval: "Every %{interval} days"
-      working_days: "Every working day"
+      daily_interval: "Her %{interval} günde"
+      working_days: "Her iş günü"
       weekly: "Every week on %{weekday}"
-      weekly_interval: "Every %{interval} weeks on %{weekday}"
+      weekly_interval: "Her %{interval} haftada bir %{weekday} günleri"
       frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
   notice_successful_notification: "Bildirim başarıyla gönderildi"
@@ -272,8 +272,8 @@ tr:
   label_agenda_item_undisclosed_wp: "#%{id} numaralı iş parçası görünmez"
   label_agenda_item_deleted_wp: "Silinmiş iş parçsına referans"
   label_agenda_item_actions: "Ajanda maddeleri için eylemler"
-  label_agenda_item_move_to_top: "Yukarıya taşı"
-  label_agenda_item_move_to_bottom: "Aşağıya taşı"
+  label_agenda_item_move_to_top: "En üste taşı"
+  label_agenda_item_move_to_bottom: "En aşağı taşı"
   label_agenda_item_move_up: "Yukarı taşı"
   label_agenda_item_move_down: "Aşağı taşı"
   label_agenda_item_add_notes: "Not eklemek"
@@ -283,17 +283,17 @@ tr:
   text_deleted_agenda_item: 'Silinen ajanda maddesi'
   label_initial_meeting_details: "Toplantı"
   label_meeting_details: "Toplantı detayları"
-  label_meeting_series_details: "Meeting series details"
+  label_meeting_series_details: "Toplantı serisi detayları"
   label_meeting_details_edit: "Toplantı detaylarını düzenle"
   label_meeting_state: "Toplantı durumu"
   label_meeting_state_open: "Aç"
   label_meeting_state_open_html: "<i>Açık</i>"
   label_meeting_state_closed: "Kapalı"
   label_meeting_state_closed_html: "<i>Kapalı</i>"
-  label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_scheduled: "Scheduled"
-  label_meeting_state_cancelled: "Cancelled"
-  label_meeting_state_skipped: "Skipped"
+  label_meeting_state_agenda_created: "Gündem oluşturuldu"
+  label_meeting_state_scheduled: "Zamanlandı"
+  label_meeting_state_cancelled: "İptal edildi"
+  label_meeting_state_skipped: "Atlandı"
   label_meeting_reopen_action: "Toplantıyı tekrar aç"
   label_meeting_close_action: "Toplantıyı kapat"
   text_meeting_open_description: "Bu toplantı açık. Gündem maddesi ekleyip çıkartabilir ve bu maddeleri düzenleyebilirsiniz. Toplantı bittikten sonra kilitlemek için toplantıyı kapatın."
@@ -307,7 +307,7 @@ tr:
   text_meeting_not_present_anymore: "Toplantı silinmiş. Başka bir toplantı seçin lütfen."
   label_add_work_package_to_meeting_dialog_title: "Toplantıya iş parçası ekleyin"
   label_add_work_package_to_meeting_dialog_button: "Toplantıya ekle"
-  label_meeting_selection_caption: "It's only possible to add this work package to upcoming or ongoing open meetings."
+  label_meeting_selection_caption: "Bu çalışma paketini yalnızca yaklaşan veya devam eden açık toplantılara eklemek mümkündür."
   text_add_work_package_to_meeting_description: "Bir iş paketi tartışılmak üzere bir veya birden fazla toplantıya eklenebilir. Bununla ilgili tüm notlar da burada görülebilir."
   text_agenda_item_no_notes: "Not verilmemiştir"
   text_agenda_item_not_editable_anymore: "Bu takvim maddesi artık düzenlenemez."

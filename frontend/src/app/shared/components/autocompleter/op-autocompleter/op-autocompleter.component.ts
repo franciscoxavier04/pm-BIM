@@ -23,8 +23,8 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { DropdownPosition, NgSelectComponent } from '@ng-select/ng-select';
-import { BehaviorSubject, merge, NEVER, Observable, of, Subject, timer } from 'rxjs';
-import { debounce, distinctUntilChanged, filter, switchMap, tap, map } from 'rxjs/operators';
+import { BehaviorSubject, merge, NEVER, Observable, of, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, switchMap, tap, map } from 'rxjs/operators';
 import { AddTagFn, GroupValueFn } from '@ng-select/ng-select/lib/ng-select.component';
 
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
@@ -228,6 +228,8 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
   @Input() public relations?:boolean = false;
 
+  @Input() public debounceTimeMs:number = 250;
+
   @Output() public open = new EventEmitter<unknown>();
 
   @Output() public close = new EventEmitter<unknown>();
@@ -283,8 +285,6 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
   projectedFooterTemplate:TemplateRef<Element>;
 
   footerTemplate:TemplateRef<Element>;
-
-  initialDebounce = true;
 
   private opAutocompleterService = new OpAutocompleterService(this.apiV3Service);
 
@@ -466,7 +466,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
       filter(() => !!(this.defaultData || this.getOptionsFn)),
       distinctUntilChanged(),
       tap(() => this.loading$.next(true)),
-      debounce(() => timer(this.getDebounceTimeout())),
+      debounceTime(this.debounceTimeForCurrentEnvironment),
       switchMap((queryString:string) => {
         if (this.relations && this.url) {
           return this.fetchFromUrl(queryString);
@@ -522,12 +522,8 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
       );
   }
 
-  private getDebounceTimeout():number {
-    if (this.initialDebounce) {
-      this.initialDebounce = false;
-      return 0;
-    }
-    return 50;
+  private get debounceTimeForCurrentEnvironment():number {
+    return (window.OpenProject.environment === 'test') ? 0 : this.debounceTimeMs;
   }
 
   writeValue(value:T|T[]|null):void {

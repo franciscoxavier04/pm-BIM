@@ -50,10 +50,10 @@ ja:
       meeting_section:
         title: "タイトル"
       recurring_meeting:
-        frequency: "Frequency"
-        interval: "Interval"
-        start_date: "Starts on"
-        end_after: "End series after"
+        frequency: "頻度"
+        interval: "インターバル"
+        start_date: "開始:"
+        end_after: "シリーズ終了"
         iterations: "Occurrences"
     errors:
       messages:
@@ -220,7 +220,7 @@ ja:
       working_days: "Every working day"
       weekly: "Weekly"
     end_after:
-      specific_date: "a specific date"
+      specific_date: "特定の日付"
       iterations: "a number of occurrences"
     starts: "Starts"
     in_words:

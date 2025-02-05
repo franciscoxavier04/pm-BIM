@@ -100,4 +100,4 @@ A very special thank you goes to our sponsors for features and improvements of t
 
 We also want to thank our Community members, particularly James Neale, TARIQ YASIN, Jeff Li, Christian Jeschke, Sreekanth Gopalakris, Jörg Mollowitz, Sven Kunze, Steffen Kirschke, and Valeria Aguzzi for reporting bugs and helping us identify and provide fixes.
 
-A big thank you to every other dedicated user who has [reported bugs](../../development/report-a-bug), supported the community by asking and answering questions in the [forum](https://community.openproject.org/projects/openproject/boards) and provided translations on [CrowdIn](https://crowdin.com/projects/opf).
+A big thank you to every other dedicated user who has [reported bugs](../../../development/report-a-bug), supported the community by asking and answering questions in the [forum](https://community.openproject.org/projects/openproject/boards) and provided translations on [CrowdIn](https://crowdin.com/projects/opf).

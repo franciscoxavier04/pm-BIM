@@ -2041,8 +2041,6 @@ zh-CN:
       api_and_webhooks: "API 和 Webhook"
     quick_add:
       label: "打开快速添加菜单"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:
