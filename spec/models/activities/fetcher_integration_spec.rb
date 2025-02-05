@@ -84,7 +84,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
       context "if project has activity disabled" do
         before do
-          project.enabled_module_names = project.enabled_module_names - ["activity"]
+          project.enabled_module_names -= ["activity"]
         end
 
         it "finds no events" do
@@ -95,7 +95,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
       context "if restricting the scope" do
         before do
-          options[:scope] = %w(time_entries messages)
+          options[:scope] = %w[time_entries messages]
         end
 
         it "finds only events matching the scope" do
@@ -107,6 +107,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
     context "for activities in a project" do
       let(:options) { { project: } }
+
       let!(:activities) { [project, work_package, message, news, time_entry, changeset, wiki_page] }
 
       it "finds events of all types" do
@@ -117,11 +118,11 @@ RSpec.describe Activities::Fetcher, "integration" do
       context "if lacking permissions" do
         before do
           role
-          .role_permissions
-          # n.b. public permissions are now stored in the database just like others, so to keep the tests like they are
-          # we need to filter them out here
-          .reject { |permission| OpenProject::AccessControl.permission(permission.permission.to_sym).public? }
-          .map(&:destroy)
+            .role_permissions
+            # n.b. public permissions are now stored in the database just like others, so to keep the tests like they
+            # are we need to filter them out here
+            .reject { |permission| OpenProject::AccessControl.permission(permission.permission.to_sym).public? }
+            .each(&:destroy)
         end
 
         it "finds only events for which permissions are satisfied" do
@@ -133,7 +134,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
       context "if project has activity disabled" do
         before do
-          project.enabled_module_names = project.enabled_module_names - ["activity"]
+          project.enabled_module_names -= ["activity"]
         end
 
         it "finds no events" do
@@ -144,7 +145,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
       context "if restricting the scope" do
         before do
-          options[:scope] = %w(time_entries messages)
+          options[:scope] = %w[time_entries messages]
         end
 
         it "finds only events matching the scope" do
@@ -160,24 +161,21 @@ RSpec.describe Activities::Fetcher, "integration" do
           project.reload
         end
       end
+
+      let(:options) { { project:, with_subprojects: 1 } }
       let(:subproject_news) { create(:news, project: subproject) }
       let(:subproject_work_package) { create(:work_package, project: subproject, author: event_user) }
-      let(:subproject_member) do
+      let(:subproject_member_permissions) { permissions }
+
+      let!(:subproject_member) do
         create(:member,
                user:,
                project: subproject,
-               roles: [create(:project_role, permissions:)])
+               roles: [create(:project_role, permissions: subproject_member_permissions)])
       end
-
       let!(:activities) { [project, subproject, news, subproject_news, work_package, subproject_work_package] }
 
       context "if including subprojects" do
-        before do
-          subproject_member
-        end
-
-        let(:options) { { project:, with_subprojects: 1 } }
-
         it "finds events in the subproject" do
           expect(event_journables)
             .to match_array(activities)
@@ -196,7 +194,7 @@ RSpec.describe Activities::Fetcher, "integration" do
       end
 
       context "if not member of the subproject" do
-        let(:options) { { project:, with_subprojects: 1 } }
+        let!(:subproject_member) { nil }
 
         it "lacks events from subproject" do
           expect(event_journables)
@@ -205,13 +203,7 @@ RSpec.describe Activities::Fetcher, "integration" do
       end
 
       context "if lacking permissions for the subproject" do
-        let(:options) { { project:, with_subprojects: 1 } }
-        let!(:subproject_member) do
-          create(:member,
-                 user:,
-                 project: subproject,
-                 roles: [create(:project_role, permissions: [])])
-        end
+        let(:subproject_member_permissions) { [] }
 
         it "finds only events for which permissions are satisfied" do
           # project details and news only require the user to be member
@@ -221,10 +213,6 @@ RSpec.describe Activities::Fetcher, "integration" do
       end
 
       context "if excluding subprojects" do
-        before do
-          subproject_member
-        end
-
         let(:options) { { project:, with_subprojects: nil } }
 
         it "lacks events from subproject" do
@@ -236,6 +224,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
     context "for activities of a user" do
       let(:options) { { author: user } }
+
       let!(:activities) do
         # Login to have all the journals created as the user
         login_as(user)
@@ -259,7 +248,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
       context "if project has activity disabled" do
         before do
-          project.enabled_module_names = project.enabled_module_names - ["activity"]
+          project.enabled_module_names -= ["activity"]
         end
 
         it "finds no events" do
@@ -282,7 +271,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
       context "if restricting the scope" do
         before do
-          options[:scope] = %w(time_entries messages)
+          options[:scope] = %w[time_entries messages]
         end
 
         it "finds only events matching the scope" do
