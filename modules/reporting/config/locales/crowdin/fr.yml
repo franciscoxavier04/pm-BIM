@@ -93,6 +93,7 @@ fr:
       button: "Exporter la feuille de temps PDF"
       timesheet: "Feuille de temps"
       time: "Temps"
+      sum_hours: Sum
     cost_reports:
       title: "Exportation XLS de vos rapports de coûts"
       start_time: "Start time"

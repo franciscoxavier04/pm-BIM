@@ -93,6 +93,7 @@ it:
       button: "Esportazione del foglio presenze in PDF"
       timesheet: "Foglio presenze"
       time: "Ora"
+      sum_hours: Sum
     cost_reports:
       title: "Esportazione XLS dei report sui costi"
       start_time: "Start time"

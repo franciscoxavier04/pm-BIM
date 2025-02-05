@@ -2226,6 +2226,7 @@ hr:
   label_add_subtask: "Novi pod radni zadatak"
   label_added: "dodano"
   label_added_by: "Added by %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Dodao korisnik %{author} %{age} prije"
   label_additional_workflow_transitions_for_assignee: "Dodatne workflow tranzicije su dopuštene samo kad je korisnik opunomoćen za određeni zadatak"
   label_additional_workflow_transitions_for_author: "Dodatne workflow tranzicije su dopuštene kada je korisnik autor"

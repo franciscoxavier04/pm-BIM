@@ -116,7 +116,7 @@ nl:
   label_recurring_meeting_plural: "Terugkerende vergaderingen"
   label_template: "Sjabloon"
   label_recurring_meeting_view: "Bekijk vergaderreeksen"
-  label_recurring_meeting_create: "Op basis van sjabloon maken"
+  label_recurring_meeting_create: "Open"
   label_recurring_meeting_copy: "Eenmalig kopiëren"
   label_recurring_meeting_cancel: "Deze gebeurtenis annuleren"
   label_recurring_meeting_delete: "Gebeurtenis verwijderen"
@@ -252,14 +252,21 @@ nl:
       frequency: "%{base} op %{time}"
       full: "%{base} op %{time}, eindigt op %{end_date}"
       never_ending: "%{base} op %{time}"
-    agenda_opened:
-      title: "Agenda geopend"
+    open:
+      title: "Open"
       subtitle: >
-        Open vergaderingen hebben agenda's die bewerkt kunnen worden en verschijnen in het gedeelte "Mijn vergaderingen" van individuele gebruikers. Wijzigingen aan het sjabloon voor reeksen vergaderingen hebben geen invloed op al geopende vergaderingen.
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
       title: "Gepland"
       subtitle: >
         De volgende vergaderingen zijn gepland in het terugkerende vergaderschema, maar zijn nog niet geopend. Telkens wanneer een geplande vergadering begint, wordt de volgende automatisch voor u geopend. U kunt geplande vergaderingen ook handmatig openen om de sjabloon te importeren en te beginnen met het bewerken van de agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
     delete_dialog:
       title: "Delete meeting series"
       heading: "Permanently delete this meeting series?"
@@ -344,7 +351,7 @@ nl:
   label_meeting_state_closed: "Gesloten"
   label_meeting_state_closed_html: "<i>Gesloten</i>"
   label_meeting_state_agenda_created: "Agenda aangemaakt"
-  label_meeting_state_scheduled: "Gepland"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Geannuleerd"
   label_meeting_state_skipped: "Overgeslagen"
   label_meeting_reopen_action: "Heropen vergadering"

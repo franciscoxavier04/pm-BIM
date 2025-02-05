@@ -2185,6 +2185,7 @@ es:
   label_add_subtask: "Agregar subtarea"
   label_added: "agregado"
   label_added_by: "Añadido por %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Añadida por %{author}  hace %{age}"
   label_additional_workflow_transitions_for_assignee: "Transiciones adicionales permitidas cuando el usuario es el asignado"
   label_additional_workflow_transitions_for_author: "Transiciones adicionales permitidas cuando el usuario es el autor"

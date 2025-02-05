@@ -227,8 +227,8 @@ zh-CN:
             title: 该项目下面没有任何层级
             description: 在此列表中添加条目，以便在另一个列表中创建子条目
         delete_dialog:
-          title: "Delete custom field item"
-          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
+          title: "删除自定义字段项"
+          description: "此操作将不可逆转地删除该项及其所有子项。任何分配的值都将被永久删除。 如果需要此字段，删除项目可能会导致现有工作包无效。"
         placeholder:
           label: "项目标签"
           short: "短名"
@@ -723,8 +723,8 @@ zh-CN:
       required_description: "将此工作包标记为相关工作包的需求"
       label_parent_singular: "父级"
       label_parent_plural: "父级"
-      ghost_relation_title: "Related work package"
-      ghost_relation_description: "This is not visible to you due to permissions."
+      ghost_relation_title: "相关工作包"
+      ghost_relation_description: "由于权限问题，您无法看到这些信息。"
   label_invitation: 邀请
   account:
     delete: "删除帐户"
@@ -1558,7 +1558,7 @@ zh-CN:
   button_create_and_continue: "创建并继续"
   button_decline: "拒绝"
   button_delete: "删除"
-  button_delete_permanently: "Delete permanently"
+  button_delete_permanently: "永久删除"
   button_delete_watcher: "删除关注者 %{name}"
   button_download: "下载"
   button_duplicate: "复制"
@@ -2146,6 +2146,7 @@ zh-CN:
   label_add_subtask: "添加子任务"
   label_added: "已添加"
   label_added_by: "由%{author}添加"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "由 %{author} %{age} 前添加"
   label_additional_workflow_transitions_for_assignee: "当用户是受理人时允许额外的转移"
   label_additional_workflow_transitions_for_author: "当用户是作者时允许额外转移"
@@ -3054,7 +3055,7 @@ zh-CN:
     text_getting_started_description: "快速了解 OpenProject 的项目管理和团队协作。您可以从帮助菜单重新启动此视频。"
     welcome: "欢迎使用 %{app_title}"
     select_language: "请选择您的语言"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_notes: "添加评论"
   permission_add_work_packages: "添加工作包"
   permission_add_messages: "发布消息"
   permission_add_project: "创建项目"
@@ -3084,11 +3085,11 @@ zh-CN:
   permission_delete_timelines: "删除时间线"
   permission_delete_wiki_pages: "删除维基页面"
   permission_delete_wiki_pages_attachments: "删除附件"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_notes: "中度评论"
+  permission_edit_work_package_notes_explanation: "注意：拥有此权限的用户可以编辑任何人的评论。"
   permission_edit_work_packages: "编辑工作包"
   permission_edit_messages: "编辑消息"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_work_package_notes: "编辑自己的评论"
   permission_edit_own_messages: "编辑自己的消息"
   permission_edit_own_time_entries: "编辑自己的时间记录"
   permission_edit_project: "编辑项目"
@@ -3675,7 +3676,7 @@ zh-CN:
   text_notice_security_badge_displayed_html: >
     注：如果启用，这会在 <a href="%{information_panel_path}">%{information_panel_label}</a> 管理面板中和首页上显示一个包含您的安装状态的徽章。徽章仅向管理员显示。<br/>徽章将根据官方的 OpenProject 版本数据库检查您当前的 OpenProject 版本，提醒您是否存在任何更新或已知漏洞。如需详细了解检查可以提供哪些信息，需要哪些数据来提供可用更新，以及如何禁用此检查，请访问<a href="%{more_info_url}">配置文档</a>。
   text_own_membership_delete_confirmation: "您要移除部分或全部权限，并且可能无法在此后编辑这个项目。\n您确定要继续吗？"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "我理解这种删除不可逆转"
   text_plugin_assets_writable: "插件资产目录可写"
   text_powered_by: "Powered by %{link}"
   text_project_identifier_info: "只有小写字母 (a-z)、 数字、 短划线和下划线被允许，必须以小写字母开头。"

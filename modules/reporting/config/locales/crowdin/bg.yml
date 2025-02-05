@@ -93,6 +93,7 @@ bg:
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "Time"
+      sum_hours: Sum
     cost_reports:
       title: "Вашият износ на отчети за разходите XLS"
       start_time: "Start time"

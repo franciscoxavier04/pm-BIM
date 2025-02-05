@@ -62,7 +62,7 @@ tr:
   project_module_storages: Dosyalar
   project_storages:
     edit_project_folder:
-      label: Proje klasörünü düzenleme
+      label: Proje türünü düzenle
     project_folder_mode:
       automatic: Automatically managed
       inactive: Belirli bir klasör yok

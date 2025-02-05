@@ -115,7 +115,7 @@ vi:
   label_recurring_meeting_plural: "Họp định kỳ"
   label_template: "Mẫu"
   label_recurring_meeting_view: "Xem chuỗi các cuộc họp"
-  label_recurring_meeting_create: "Tạo từ mẫu"
+  label_recurring_meeting_create: "Open"
   label_recurring_meeting_copy: "Sao một lần"
   label_recurring_meeting_cancel: "Hủy lần này"
   label_recurring_meeting_delete: "Xóa lần họp"
@@ -250,14 +250,21 @@ vi:
       frequency: "%{base} vào %{time}"
       full: "%{base} vào %{time}, kết thúc vào %{end_date}"
       never_ending: "%{base} vào %{time}"
-    agenda_opened:
-      title: "Agenda opened"
+    open:
+      title: "Open"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
     delete_dialog:
       title: "Delete meeting series"
       heading: "Permanently delete this meeting series?"
@@ -342,7 +349,7 @@ vi:
   label_meeting_state_closed: "Đã đóng"
   label_meeting_state_closed_html: "<i>Đã đóng</i>"
   label_meeting_state_agenda_created: "Agenda đã tạo"
-  label_meeting_state_scheduled: "Đã lên lịch"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Đã hủy"
   label_meeting_state_skipped: "Đã bỏ qua"
   label_meeting_reopen_action: "Mở lại cuộc họp"

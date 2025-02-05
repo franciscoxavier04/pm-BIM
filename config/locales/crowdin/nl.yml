@@ -676,7 +676,6 @@ nl:
     label_add_description: "Beschrijving toevoegen"
     lag:
       subject: "Vertraging"
-      title: "Lag (in days)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "Nieuw werkpakket aangemaakt en toegevoegd als kind"
@@ -2185,6 +2184,7 @@ nl:
   label_add_subtask: "Subtaak toevoegen"
   label_added: "toegevoegd"
   label_added_by: "Toegevoegd door %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Toegevoegd door %{author} %{age} geleden"
   label_additional_workflow_transitions_for_assignee: "Extra overgangen zijn toegestaan als de gebruiker de eigenaar is"
   label_additional_workflow_transitions_for_author: "Extra overgangen zijn toegestaan als de gebruiker de auteur is"

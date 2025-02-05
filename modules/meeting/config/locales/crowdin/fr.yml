@@ -116,7 +116,7 @@ fr:
   label_recurring_meeting_plural: "Réunions récurrentes"
   label_template: "Modèle"
   label_recurring_meeting_view: "Voir la série de réunions"
-  label_recurring_meeting_create: "Créer à partir d'un modèle"
+  label_recurring_meeting_create: "Open"
   label_recurring_meeting_copy: "Copier en tant que réunion ponctuelle"
   label_recurring_meeting_cancel: "Annuler cette occurrence"
   label_recurring_meeting_delete: "Supprimer l'occurrence"
@@ -252,14 +252,21 @@ fr:
       frequency: "%{base} à %{time}"
       full: "%{base} à %{time}, se termine le %{end_date}"
       never_ending: "%{base} at %{time}"
-    agenda_opened:
-      title: "Agenda opened"
+    open:
+      title: "Open"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
     delete_dialog:
       title: "Delete meeting series"
       heading: "Permanently delete this meeting series?"
@@ -344,7 +351,7 @@ fr:
   label_meeting_state_closed: "Fermé"
   label_meeting_state_closed_html: "<i>Fermé</i>"
   label_meeting_state_agenda_created: "Ordre du jour créé"
-  label_meeting_state_scheduled: "Planifiée"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Annulée"
   label_meeting_state_skipped: "Ignorée"
   label_meeting_reopen_action: "Réouvrir la réunion"

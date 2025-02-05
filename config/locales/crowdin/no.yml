@@ -2187,6 +2187,7 @@
   label_add_subtask: "Legg til underoppgave"
   label_added: "lagt til"
   label_added_by: "Lagt til av %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Lagt inn av %{author} for %{age} siden"
   label_additional_workflow_transitions_for_assignee: "Ytterligere overganger tillatt når brukeren er deltaker"
   label_additional_workflow_transitions_for_author: "Flere overganger er tillatt når brukeren er forfatter"

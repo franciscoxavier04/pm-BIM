@@ -2148,6 +2148,7 @@ ms:
   label_add_subtask: "Tambah subtugas"
   label_added: "ditambah"
   label_added_by: "Ditambah oleh %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Ditambah oleh %{author} %{age} yang lalu"
   label_additional_workflow_transitions_for_assignee: "Peralihan tambahan dibenarkan jika pengguna ialah penerima tugasan"
   label_additional_workflow_transitions_for_author: "Peralihan tambahan dibenarkan apabila pengguna ialah pengarang"

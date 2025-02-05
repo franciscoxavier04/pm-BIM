@@ -93,6 +93,7 @@
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "Time"
+      sum_hours: Sum
     cost_reports:
       title: "Din XLS-eksport av kostnadsrapporter"
       start_time: "Start time"

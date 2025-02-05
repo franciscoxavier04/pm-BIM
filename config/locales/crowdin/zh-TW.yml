@@ -2148,6 +2148,7 @@ zh-TW:
   label_add_subtask: "新增子任務"
   label_added: "已新增"
   label_added_by: "由 %{author} 新增"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "由%{author}於%{age}前新增"
   label_additional_workflow_transitions_for_assignee: "使用者是執行者時，可用狀態"
   label_additional_workflow_transitions_for_author: "使用者是作者，可用狀態"

@@ -93,6 +93,7 @@ hu:
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "Time"
+      sum_hours: Sum
     cost_reports:
       title: "Költségjelentés készítése XLS formában"
       start_time: "Start time"

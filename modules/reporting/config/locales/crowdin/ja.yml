@@ -93,6 +93,7 @@ ja:
       button: "PDFタイムシートをエクスポート"
       timesheet: "タイムシート"
       time: "時間"
+      sum_hours: Sum
     cost_reports:
       title: "あなたのコストレポートXLSのエクスポート"
       start_time: "開始時間"

@@ -116,7 +116,7 @@ tr:
   label_recurring_meeting_plural: "Yinelenen toplantı"
   label_template: "Şablon"
   label_recurring_meeting_view: "Toplantı serisini görüntüle"
-  label_recurring_meeting_create: "Şablondan oluştur"
+  label_recurring_meeting_create: "Open"
   label_recurring_meeting_copy: "Tek seferlik olarak kopyalayın"
   label_recurring_meeting_cancel: "Bu etklinliği iptal et"
   label_recurring_meeting_delete: "İptal et"
@@ -237,12 +237,12 @@ tr:
     frequency:
       every_weekday: "Every %{day_of_the_week}"
       daily: "Günlük"
-      working_days: "Every working day"
+      working_days: "Her iş günü"
       weekly: "Haftalık"
     end_after:
-      never: "never"
-      specific_date: "after a specific date"
-      iterations: "after a number of occurrences"
+      never: "hiçbir zaman"
+      specific_date: "belirli bir tarihten sonra"
+      iterations: "birkaç terkrardan sonra"
     starts: "Starts"
     in_words:
       daily_interval: "Her %{interval} günde"
@@ -252,14 +252,21 @@ tr:
       frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
       never_ending: "%{base} at %{time}"
-    agenda_opened:
-      title: "Agenda opened"
+    open:
+      title: "Open"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
       title: "Planned"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
     delete_dialog:
       title: "Delete meeting series"
       heading: "Permanently delete this meeting series?"
@@ -344,7 +351,7 @@ tr:
   label_meeting_state_closed: "Kapalı"
   label_meeting_state_closed_html: "<i>Kapalı</i>"
   label_meeting_state_agenda_created: "Gündem oluşturuldu"
-  label_meeting_state_scheduled: "Zamanlandı"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "İptal edildi"
   label_meeting_state_skipped: "Atlandı"
   label_meeting_reopen_action: "Toplantıyı tekrar aç"

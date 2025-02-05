@@ -93,6 +93,7 @@ pl:
       button: "Wyeksportuj kartę czasu pracy w formacie PDF"
       timesheet: "Karta czasu pracy"
       time: "Czas"
+      sum_hours: Sum
     cost_reports:
       title: "Twój eksport raportów kosztów w formacie XLS"
       start_time: "Start time"

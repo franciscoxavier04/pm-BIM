@@ -2261,6 +2261,7 @@ lt:
   label_add_subtask: "Pridėti antrinę užduotį"
   label_added: "pridėtas"
   label_added_by: "Pridėjo %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "%{author} pridėjo prieš %{age}"
   label_additional_workflow_transitions_for_assignee: "Papildomi darbų eigos variantai leistini, kai darbas paskirtas vartotojui"
   label_additional_workflow_transitions_for_author: "Papildomi darbų eigos variantai leistini, kai vartotojas yra autorius"

@@ -93,6 +93,7 @@ tr:
       button: "PDF zaman çizelgesini dışa aktar"
       timesheet: "Zaman Çizelgesi"
       time: "Zaman"
+      sum_hours: Sum
     cost_reports:
       title: "Maliyet Raporlarınızın XLS çıktısı"
       start_time: "Başlangıç zamanı"

@@ -2226,6 +2226,7 @@ ro:
   label_add_subtask: "Adaugă sub-sarcină"
   label_added: "adăugat"
   label_added_by: "Adăugat de %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Adăugat de %{author} acum %{age}"
   label_additional_workflow_transitions_for_assignee: "Tranziții suplimentare permise când utilizatorul este executantul"
   label_additional_workflow_transitions_for_author: "Tranziții suplimentare permise când utilizatorul este autorul"

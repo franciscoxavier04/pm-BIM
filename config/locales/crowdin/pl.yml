@@ -2261,6 +2261,7 @@ pl:
   label_add_subtask: "Dodać zadanie podrzędne"
   label_added: "dodane"
   label_added_by: "Dodał %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Dodane przez %{author} %{age} temu"
   label_additional_workflow_transitions_for_assignee: "Dodatkowe przejścia dozwolone, gdy użytkownik jest cesjonariuszem"
   label_additional_workflow_transitions_for_author: "Dodatkowe przejścia dozwolone, gdy użytkownik jest autorem"

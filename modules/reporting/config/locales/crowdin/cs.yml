@@ -93,6 +93,7 @@ cs:
       button: "Exportovat výkaz PDF"
       timesheet: "Pracovní výkaz"
       time: "Čas"
+      sum_hours: Sum
     cost_reports:
       title: "Váš export XLS zprávy o nákladech"
       start_time: "Čas zahájení"

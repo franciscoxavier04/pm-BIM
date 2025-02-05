@@ -2186,6 +2186,7 @@ fr:
   label_add_subtask: "Ajouter une sous-tâche"
   label_added: "ajouté"
   label_added_by: "Ajouté par %{author} "
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Ajouté par %{author} il y a %{age}"
   label_additional_workflow_transitions_for_assignee: "Transitions supplémentaires autorisées lorsque l'utilisateur est l'assigné"
   label_additional_workflow_transitions_for_author: "Transitions supplémentaires autorisées lorsque l'utilisateur est l'auteur"

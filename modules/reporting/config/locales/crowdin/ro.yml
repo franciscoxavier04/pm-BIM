@@ -93,6 +93,7 @@ ro:
       button: "Export PDF timesheet"
       timesheet: "Timesheet"
       time: "Timp"
+      sum_hours: Sum
     cost_reports:
       title: "Exportul dumneavoastră de rapoarte de costuri XLS"
       start_time: "Start time"

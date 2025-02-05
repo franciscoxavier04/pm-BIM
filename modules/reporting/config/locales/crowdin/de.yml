@@ -93,6 +93,7 @@ de:
       button: "Stundenzettel als PDF exportieren"
       timesheet: "Stundenzettel"
       time: "Stunden"
+      sum_hours: Sum
     cost_reports:
       title: "Kostenbericht als XLS-Export"
       start_time: "Startzeit"

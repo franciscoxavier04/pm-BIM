@@ -2184,6 +2184,7 @@ it:
   label_add_subtask: "Aggiungi sotto-attività"
   label_added: "aggiunto"
   label_added_by: "Aggiunto da %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Aggiunto da %{author} %{age} fa"
   label_additional_workflow_transitions_for_assignee: "Transizioni aggiuntive consentite quando l'utente è l'assegnatario"
   label_additional_workflow_transitions_for_author: "Transizioni aggiuntive consentite quando l'utente è l'autore"

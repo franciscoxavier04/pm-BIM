@@ -2263,6 +2263,7 @@ ru:
   label_add_subtask: "Добавить подзадачу"
   label_added: "Добавлено"
   label_added_by: "Добавлено %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Добавлено %{author} %{age} назад"
   label_additional_workflow_transitions_for_assignee: "Дополнительные переходы допускается, если пользователь является правопреемником"
   label_additional_workflow_transitions_for_author: "Дополнительные переходы допускаются, если пользователь является автором"

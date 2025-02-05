@@ -118,7 +118,7 @@ ru:
   label_recurring_meeting_plural: "Повторяющиеся совещания"
   label_template: "Шаблон"
   label_recurring_meeting_view: "Посмотреть серию совещаний"
-  label_recurring_meeting_create: "Создать из шаблона"
+  label_recurring_meeting_create: "Open"
   label_recurring_meeting_copy: "Копировать как одноразовое"
   label_recurring_meeting_cancel: "Отменить это событие"
   label_recurring_meeting_delete: "Удалить событие"
@@ -137,10 +137,10 @@ ru:
   label_recurring_meeting_series_end: "Завершить серию совещаний"
   label_recurring_meeting_series_end_now: "Завершите серию сейчас"
   label_meeting_more:
-    one: "There is one more meeting."
+    one: "Есть еще одно совещание."
     few: "There are %{count} more meetings."
     many: "There are %{count} more meetings."
-    other: "There are %{count} more meetings."
+    other: "Есть еще %{count} совещаний."
   label_my_meetings: "Мои совещания"
   label_all_meetings: "Все совещания"
   label_upcoming_meetings: "Предстоящие встречи"
@@ -206,15 +206,15 @@ ru:
     copied: "Скопировано со встречи #%{id}"
     delete_dialog:
       one_time:
-        title: "Delete meeting"
-        heading: "Delete this meeting?"
+        title: "Удалить совещание"
+        heading: "Удалить это совещание?"
         confirmation_message_html: >
-          This action is not reversible. Please proceed with caution.
+          Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
       occurrence:
-        title: "Delete meeting occurrence"
-        heading: "Delete this meeting occurrence?"
+        title: "Удалить событие совещания"
+        heading: "Удалить это событие совещания?"
         confirmation_message_html: >
-          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+          Это совещание является частью серии под названием <strong>%{title}</strong>. Это приведет к удалению только этого конкретного совещания, а не всей серии. Хотите ли Вы продолжить?
   meeting_section:
     untitled_title: "Раздел без названия"
     delete_confirmation: "Удаление раздела также удалит все пункты его повестки дня. Вы уверены, что хотите это сделать?"
@@ -256,32 +256,39 @@ ru:
       frequency: "%{base} в %{time}"
       full: "%{base} в %{time}, заканчивается %{end_date}"
       never_ending: "%{base} в %{time}"
-    agenda_opened:
-      title: "Повестка дня открыта"
+    open:
+      title: "Open"
       subtitle: >
-        Открытые совещания имеют повестки дня, которые могут быть отредактированы и показаны в разделе «Мои совещания». Изменения в шаблоне серии совещаний не влияют на уже открытые совещания.
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
       title: "Запланировано"
       subtitle: >
         Следующие совещания запланированы в расписании повторяющихся совещаний, но пока не открыты. Каждый раз, когда начинается запланированное совещание, для вас автоматически откроется следующее совещание. Вы также можете вручную открыть запланированные совещания, чтобы импортировать шаблон и начать редактировать повестку дня.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
     delete_dialog:
-      title: "Delete meeting series"
-      heading: "Permanently delete this meeting series?"
+      title: "Удалить серию совещаний"
+      heading: "Удалить эту серию совещаний навсегда?"
       confirmation_message_html:
         zero: >
-          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+          Удаление <strong>%{title}</strong> приведет к удалению всех совещаний в этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
         one: >
-          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+          Удаление <strong>%{title}</strong> также удалит одно совещание из этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+          Удаление <strong>%{title}</strong> приведет к удалению %{count} совещаний в этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
     scheduled_delete_dialog:
-      title: "Cancel meeting occurrence"
-      heading: "Cancel this meeting occurrence?"
+      title: "Отменить это событие"
+      heading: "Отменить это событие?"
       confirmation_message_html: >
-        Any meeting information not in the template will be lost. Do you want to continue?
-      confirm_button: "Cancel occurrence"
+        Любая информация о совещании, не включенная в шаблон, будет потеряна. Вы хотите продолжить?
+      confirm_button: "Отменить событие"
     end_series_dialog:
-      title: "End meeting series"
+      title: "Завершить серию совещаний"
   notice_successful_notification: "Уведомление успешно отправленно"
   notice_timezone_missing: Не установлен часовой пояс и применена %{zone}. Чтобы выбрать часовой пояс, пожалуйста, нажмите сюда.
   notice_meeting_updated: "Эта страница была обновлена кем-то другим. Перезагрузите страницу, чтобы просмотреть изменения."
@@ -319,10 +326,10 @@ ru:
   label_meeting_created_by: "Автор"
   label_meeting_last_updated: "Последнее обновление"
   label_meeting_reload: "Перезагрузить"
-  label_meeting_index_today: "Today"
-  label_meeting_index_tomorrow: "Tomorrow"
-  label_meeting_index_this_week: "Later this week"
-  label_meeting_index_later: "Next week and later"
+  label_meeting_index_today: "Сегодня"
+  label_meeting_index_tomorrow: "Завтра"
+  label_meeting_index_this_week: "Позже на этой неделе"
+  label_meeting_index_later: "На следующей неделе и позже"
   label_agenda_items: "Пункты повестки"
   label_agenda_items_reordered: "переупорядочено"
   label_agenda_item_remove: "Удалить из повестки"
@@ -348,7 +355,7 @@ ru:
   label_meeting_state_closed: "Закрыть"
   label_meeting_state_closed_html: "<i>Закрытый</i>"
   label_meeting_state_agenda_created: "Повестка дня создана"
-  label_meeting_state_scheduled: "Запланировано"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Отменено"
   label_meeting_state_skipped: "Пропущено"
   label_meeting_reopen_action: "Открыть совещание заново"

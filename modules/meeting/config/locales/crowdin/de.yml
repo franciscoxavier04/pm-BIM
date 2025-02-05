@@ -116,7 +116,7 @@ de:
   label_recurring_meeting_plural: "Wiederkehrende Besprechungen"
   label_template: "Vorlage"
   label_recurring_meeting_view: "Terminserie ansehen"
-  label_recurring_meeting_create: "Aus Vorlage erstellen"
+  label_recurring_meeting_create: "Open"
   label_recurring_meeting_copy: "Als einmalige Besprechung kopieren"
   label_recurring_meeting_cancel: "Diese Besprechung absagen"
   label_recurring_meeting_delete: "Besprechung löschen"
@@ -252,14 +252,21 @@ de:
       frequency: "%{base} um %{time}"
       full: "%{base} um %{time}, endet %{end_date}"
       never_ending: "%{base} um %{time}"
-    agenda_opened:
-      title: "Tagesordnung eröffnet"
+    open:
+      title: "Open"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
       title: "Geplant"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
     delete_dialog:
       title: "Delete meeting series"
       heading: "Permanently delete this meeting series?"
@@ -344,7 +351,7 @@ de:
   label_meeting_state_closed: "Geschlossen"
   label_meeting_state_closed_html: "<i>Geschlossen</i>"
   label_meeting_state_agenda_created: "Tagesordnung erstellt"
-  label_meeting_state_scheduled: "Geplant"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Abgesagt"
   label_meeting_state_skipped: "Übersprungen"
   label_meeting_reopen_action: "Besprechung wiedereröffnen"
