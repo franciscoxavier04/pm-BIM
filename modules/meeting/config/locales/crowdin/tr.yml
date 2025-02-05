@@ -218,7 +218,7 @@ tr:
     frequency:
       every_weekday: "Every %{day_of_the_week}"
       daily: "Günlük"
-      working_days: "Every working day"
+      working_days: "Her iş günü"
       weekly: "Haftalık"
     end_after:
       specific_date: "belirli bir tarih"
