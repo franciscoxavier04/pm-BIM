@@ -214,7 +214,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def set_filter
-    @filter = params[:filter]&.to_sym || :all
+    @filter = (params[:filter] || params.dig(:journal, :filter))&.to_sym || :all
   end
 
   def journal_sorting
@@ -249,7 +249,9 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def perform_update_streams_from_last_update_timestamp
-    if params[:last_update_timestamp].present? && (last_updated_at = Time.zone.parse(params[:last_update_timestamp]))
+    last_update_timestamp = params[:last_update_timestamp] || params.dig(:journal, :last_update_timestamp)
+
+    if last_update_timestamp.present? && (last_updated_at = Time.zone.parse(last_update_timestamp))
       generate_time_based_update_streams(last_updated_at)
       generate_work_package_journals_emoji_reactions_update_streams
     else

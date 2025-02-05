@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+#
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2023 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,40 +29,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackages
-  module ActivitiesTab
-    module Journals
-      class NewComponent < ApplicationComponent
-        include ApplicationHelper
-        include OpPrimer::ComponentHelpers
-        include OpTurbo::Streamable
+module WorkPackages::ActivitiesTab::Journals
+  class HiddenForm < ApplicationForm
+    form do |journals_form|
+      journals_form.hidden(name: :last_update_timestamp, value: @last_server_timestamp)
+      journals_form.hidden(name: :filter, value: @filter)
+    end
 
-        def initialize(work_package:, filter:, last_server_timestamp:, journal: nil, form_hidden_initially: true)
-          super
-
-          @work_package = work_package
-          @filter = filter
-          @last_server_timestamp = last_server_timestamp
-          @journal = journal
-          @form_hidden_initially = form_hidden_initially
-        end
-
-        private
-
-        attr_reader :work_package, :filter, :last_server_timestamp, :form_hidden_initially
-
-        def journal
-          @journal || Journal.new(journable: work_package)
-        end
-
-        def button_row_display_value
-          form_hidden_initially ? :block : :none
-        end
-
-        def form_row_display_value
-          form_hidden_initially ? :none : :block
-        end
-      end
+    def initialize(last_server_timestamp:, filter: :all)
+      super()
+      @last_server_timestamp = last_server_timestamp
+      @filter = filter
     end
   end
 end
