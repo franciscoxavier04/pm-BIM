@@ -42,7 +42,7 @@ module Activities
       @meeting = options[:meeting]
       @options = options
 
-      self.scope = options[:scope] || :all
+      @scope = parse_scope(options[:scope])
     end
 
     # Returns an array of available event types
@@ -72,26 +72,20 @@ module Activities
 
     protected
 
-    # Sets the scope
     # Argument can be :all, :default or an array of event types
-    def scope=(scope)
+    def parse_scope(scope)
       case scope
-      when :all
-        @scope = event_types
+      when :all, false, nil
+        event_types
       when :default
-        default_scope!
+        OpenProject::Activity.default_event_types.to_a
       else
         scope = Array(scope)
 
         scope << "project_details" if scope.delete("project_attributes")
 
-        @scope = scope & event_types
+        scope & event_types
       end
-    end
-
-    # Resets the scope to the default scope
-    def default_scope!
-      @scope = OpenProject::Activity.default_event_types.to_a
     end
 
     def events_from_providers(from, to, limit)
