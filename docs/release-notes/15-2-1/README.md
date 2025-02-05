@@ -11,7 +11,7 @@ release_date: 2025-02-05
 Release date: 2025-02-05
 
 We released OpenProject [OpenProject 15.2.1](https://community.openproject.org/versions/2170).
-The release contains several bug fixes and we recommend updating to the newest version.
+The release contains several bug fixes and a security related fix and we recommend updating to the newest version.
 In these Release Notes, we will give an overview of important feature changes.
 At the end, you will find a complete list of all changes and bug fixes.
 
@@ -41,3 +41,5 @@ At the end, you will find a complete list of all changes and bug fixes.
 ## Contributions
 A big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
 This release, special thanks for reporting and finding bugs go to Boris Lukashev, Serg Baranov, Lars Briem, Andrey Dermeyko.
+
+A special thanks goes out to [Kanitin Pholngam](https://github.com/meanknt) for responsible disclosure of a potential security vulnerability. Thank you for reaching out to us and your help in identifying this issue. If you have a security vulnerability you would like to disclose, please see our [statement on security](https://www.openproject.org/docs/development/security/).
