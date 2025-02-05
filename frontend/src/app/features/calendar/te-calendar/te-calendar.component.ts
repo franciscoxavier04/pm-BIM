@@ -632,7 +632,7 @@ export class TimeEntryCalendarComponent implements AfterViewInit, OnDestroy {
           </li>
           <li class="tooltip--map--item">
             <span class="tooltip--map--key">${schema.activity.name}:</span>
-            <span class="tooltip--map--value">${this.sanitizedValue(entry.activity.name)}</span>
+            <span class="tooltip--map--value">${this.sanitizedValue(entry.activity?.name || '')}</span>
           </li>
           <li class="tooltip--map--item">
             <span class="tooltip--map--key">${schema.hours.name}:</span>
