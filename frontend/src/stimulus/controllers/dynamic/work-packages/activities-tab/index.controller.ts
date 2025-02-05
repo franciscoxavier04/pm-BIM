@@ -1,33 +1,3 @@
-/*
- * -- copyright
- * OpenProject is an open source project management software.
- * Copyright (C) 2023 the OpenProject GmbH
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License version 3.
- *
- * OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
- * Copyright (C) 2006-2013 Jean-Philippe Lang
- * Copyright (C) 2010-2013 the ChiliProject Team
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- *
- * See COPYRIGHT and LICENSE files for more details.
- * ++
- */
-
 import { Controller } from '@hotwired/stimulus';
 import {
   ICKEditorInstance,
@@ -89,14 +59,14 @@ export default class IndexController extends Controller {
   private handleWorkPackageUpdateBound:EventListener;
   private handleVisibilityChangeBound:EventListener;
   private rescueEditorContentBound:EventListener;
+  private handleTurboSubmitStartBound:EventListener;
+  private handleTurboSubmitEndBound:EventListener;
 
-  private onSubmitBound:EventListener;
   private onEscapeEditorBound:EventListener;
   private adjustMarginBound:EventListener;
   private onBlurEditorBound:EventListener;
   private onFocusEditorBound:EventListener;
 
-  private saveInProgress:boolean;
   private updateInProgress:boolean;
   private turboRequests:TurboRequestsService;
 
@@ -113,7 +83,7 @@ export default class IndexController extends Controller {
     this.handleInitialScroll();
     this.populateRescuedEditorContent();
     this.markAsConnected();
-    this.safeUpdateWorkPackageFormsWithStateChecks(); // required if switching back to the activities tab from another tab
+    this.safeUpdateWorkPackageFormsWithStateChecks();
 
     this.setLatestKnownChangesetUpdatedAt();
     this.startPolling();
@@ -149,10 +119,16 @@ export default class IndexController extends Controller {
     this.handleVisibilityChangeBound = () => { void this.handleVisibilityChange(); };
     this.rescueEditorContentBound = () => { void this.rescueEditorContent(); };
 
+    this.handleTurboSubmitStartBound = (event:Event) => { void this.handleTurboSubmitStart(event); };
+    this.handleTurboSubmitEndBound = (event:Event) => { void this.handleTurboSubmitEnd(event); };
+
     document.addEventListener('work-package-updated', this.handleWorkPackageUpdateBound);
     document.addEventListener('work-package-notifications-updated', this.handleWorkPackageUpdateBound);
     document.addEventListener('visibilitychange', this.handleVisibilityChangeBound);
     document.addEventListener('beforeunload', this.rescueEditorContentBound);
+
+    this.element.addEventListener('turbo:submit-start', this.handleTurboSubmitStartBound);
+    this.element.addEventListener('turbo:submit-end', this.handleTurboSubmitEndBound);
   }
 
   private removeEventListeners() {
@@ -160,6 +136,9 @@ export default class IndexController extends Controller {
     document.removeEventListener('work-package-notifications-updated', this.handleWorkPackageUpdateBound);
     document.removeEventListener('visibilitychange', this.handleVisibilityChangeBound);
     document.removeEventListener('beforeunload', this.rescueEditorContentBound);
+
+    this.element.removeEventListener('turbo:submit-start', this.handleTurboSubmitStartBound);
+    this.element.removeEventListener('turbo:submit-end', this.handleTurboSubmitEndBound);
   }
 
   private handleVisibilityChange() {
@@ -547,7 +526,6 @@ export default class IndexController extends Controller {
   }
 
   private addEventListenersToCkEditorInstance() {
-    this.onSubmitBound = () => { void this.onSubmit(); };
     this.onEscapeEditorBound = () => { void this.closeEditor(); };
     this.adjustMarginBound = () => { void this.adjustJournalContainerMargin(); };
     this.onBlurEditorBound = () => { void this.onBlurEditor(); };
@@ -560,7 +538,6 @@ export default class IndexController extends Controller {
 
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
-      editorElement.addEventListener('saveRequested', this.onSubmitBound);
       editorElement.addEventListener('editorEscape', this.onEscapeEditorBound);
       editorElement.addEventListener('editorKeyup', this.adjustMarginBound);
       editorElement.addEventListener('editorBlur', this.onBlurEditorBound);
@@ -571,7 +548,6 @@ export default class IndexController extends Controller {
   private removeEventListenersFromCkEditorInstance() {
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
-      editorElement.removeEventListener('saveRequested', this.onSubmitBound);
       editorElement.removeEventListener('editorEscape', this.onEscapeEditorBound);
       editorElement.removeEventListener('editorKeyup', this.adjustMarginBound);
       editorElement.removeEventListener('editorBlur', this.onBlurEditorBound);
@@ -704,52 +680,45 @@ export default class IndexController extends Controller {
     this.adjustJournalContainerMargin();
   }
 
-  private closeForm() {
-    this.hideEditor();
-    this.formTarget.reset();
-    this.notifyFormClose();
-  }
-
   private isEditorEmpty():boolean {
     const ckEditorInstance = this.getCkEditorInstance();
 
     return !!(ckEditorInstance?.getData({ trim: false }).length === 0);
   }
 
-  async onSubmit(event:Event | null = null) {
-    event?.preventDefault();
-
-    if (this.saveInProgress === true) return;
-
-    this.setFormSubmitInProgress(true);
-
-    const formData = this.prepareFormData();
-    void this.submitForm(formData)
-      .then(({ html, headers }) => {
-        this.handleSuccessfulSubmission(html, headers);
-        this.formTarget.reset();
-      })
-      .catch((error) => {
-        console.error('Error saving activity:', error);
-      })
-      .finally(() => {
-        this.setFormSubmitInProgress(false);
-        this.notifyFormClose();
-      });
+  private handleTurboSubmitStart(_event:Event) {
+    this.setCKEditorReadonlyMode(true);
   }
 
-  private notifyFormClose() {
-    this.dispatch('onSubmit-end');
-  }
+  private handleTurboSubmitEnd(event:Event) {
+    const formSubmitResponse = (event as CustomEvent<{ fetchResponse:{ succeeded:boolean; response:{ headers:Headers } } }>).detail.fetchResponse;
 
-  private setFormSubmitInProgress(inProgress:boolean) {
-    this.saveInProgress = inProgress;
+    this.setCKEditorReadonlyMode(false);
 
-    if (this.hasFormSubmitButtonTarget) {
-      this.formSubmitButtonTarget.disabled = inProgress;
+    if (formSubmitResponse.succeeded) {
+      // extract server timestamp from response headers in order to be in sync with the server
+      this.setLastServerTimestampViaHeaders(formSubmitResponse.response.headers);
+
+      if (!this.journalsContainerTarget) return;
+
+      this.clearEditor();
+      this.closeForm();
+      this.resetJournalsContainerMargins();
+
+      setTimeout(() => {
+        if (this.isMobile() && !this.isWithinNotificationCenter()) {
+          // wait for the keyboard to be fully down before scrolling further
+          // timeout amount tested on mobile devices for best possible user experience
+        this.scrollInputContainerIntoView(800);
+        } else {
+          this.scrollJournalContainer(
+            this.sortingValue === 'asc',
+            true,
+          );
+        }
+        this.handleStemVisibility();
+      }, 10);
     }
-
-    this.setCKEditorReadonlyMode(inProgress);
   }
 
   private setCKEditorReadonlyMode(disabled:boolean) {
@@ -765,55 +734,6 @@ export default class IndexController extends Controller {
     }
   }
 
-  private prepareFormData():FormData {
-    const ckEditorInstance = this.getCkEditorInstance();
-    const data = ckEditorInstance ? ckEditorInstance.getData({ trim: false }) : '';
-
-    const formData = new FormData(this.formTarget);
-    formData.append('last_update_timestamp', this.lastServerTimestampValue);
-    formData.append('filter', this.filterValue);
-    formData.append('journal[notes]', data);
-
-    return formData;
-  }
-
-  private async submitForm(formData:FormData):Promise<{ html:string, headers:Headers }> {
-    return this.turboRequests.request(this.formTarget.action, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
-      },
-    }, true);
-  }
-
-  private handleSuccessfulSubmission(html:string, headers:Headers) {
-    // extract server timestamp from response headers in order to be in sync with the server
-    this.setLastServerTimestampViaHeaders(headers);
-
-    if (!this.journalsContainerTarget) return;
-
-    this.clearEditor();
-    this.hideEditor();
-    this.resetJournalsContainerMargins();
-
-    setTimeout(() => {
-      if (this.isMobile() && !this.isWithinNotificationCenter()) {
-        // wait for the keyboard to be fully down before scrolling further
-        // timeout amount tested on mobile devices for best possible user experience
-        this.scrollInputContainerIntoView(800);
-      } else {
-        this.scrollJournalContainer(
-          this.sortingValue === 'asc',
-          true,
-        );
-      }
-      this.handleStemVisibility();
-    }, 10);
-
-    this.setFormSubmitInProgress(false);
-  }
-
   private resetJournalsContainerMargins():void {
     if (!this.journalsContainerTarget) return;
 
@@ -825,6 +745,16 @@ export default class IndexController extends Controller {
     if (headers.has('X-Server-Timestamp')) {
       this.lastServerTimestampValue = headers.get('X-Server-Timestamp') as string;
     }
+  }
+
+  private closeForm() {
+    this.hideEditor();
+    this.formTarget.reset();
+    this.notifyFormClose();
+  }
+
+  private notifyFormClose() {
+    this.dispatch('onSubmit-end');
   }
 
   // Towards the code below:
