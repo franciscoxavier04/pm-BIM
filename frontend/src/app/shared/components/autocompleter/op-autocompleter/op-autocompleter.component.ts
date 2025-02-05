@@ -613,7 +613,13 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
     return null;
   }
 
-  protected defaultCompareWithFunction():(a:unknown, b:unknown) => boolean {
-    return (a, b) => a === b;
+  protected defaultCompareWithFunction():null|((a:unknown, b:unknown) => boolean) {
+    return (a, b) => {
+      if (this.bindValue) {
+        return (a as Record<string, unknown>)[this.bindValue] === b;
+      }
+
+      return a === b;
+    };
   }
 }
