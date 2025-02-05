@@ -56,7 +56,7 @@ pl:
         frequency: "Częstotliwość"
         interval: "Interwał"
         start_date: "Rozpoczyna się"
-        end_after: "Zakończ serię po"
+        end_after: "Meeting series ends"
         iterations: "Wystąpienia"
     errors:
       messages:
@@ -118,22 +118,29 @@ pl:
   label_recurring_meeting_plural: "Spotkania cykliczne"
   label_template: "Szablon"
   label_recurring_meeting_view: "Wyświetl serię spotkań"
-  label_recurring_meeting_create: "Utwórz z szablonu"
+  label_recurring_meeting_create: "Open"
   label_recurring_meeting_copy: "Skopiuj jako jednorazowe"
   label_recurring_meeting_cancel: "Anuluj to wystąpienie"
   label_recurring_meeting_delete: "Usuń wystąpienie"
-  label_recurring_meeting_delete_confirmation: >
-    To spotkanie jest częścią serii o nazwie %{name}. Spowoduje to usunięcie tylko tego konkretnego wystąpienia, a nie całej serii. Czy chcesz kontynuować?
-  label_recurring_occurrence_delete_confirmation: >
-    Wszelkie informacje o spotkaniu, które nie znajdują się w szablonie, zostaną utracone. Czy chcesz kontynuować?
   label_recurring_meeting_restore: "Przywróć to wystąpienie"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Jest więcej (%{count}) zaplanowanych spotkań (%{schedule})."
+  label_recurring_meeting_no_end_date: "There are more scheduled meetings (%{schedule})."
   label_recurring_meeting_more_singular: "Jest jeszcze %{count} zaplanowane spotkanie (%{schedule})."
   label_recurring_meeting_more_past: "Jest więcej (%{count}) poprzednich spotkań."
   label_recurring_meeting_more_past_singular: "Jest jeszcze %{count} poprzednie spotkanie."
   label_recurring_meeting_show_more: "Pokaż więcej"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edytuj serię spotkań"
   label_recurring_meeting_series_delete: "Usuń serię spotkań"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    one: "There is one more meeting."
+    few: "There are %{count} more meetings."
+    many: "There are %{count} more meetings."
+    other: "There are %{count} more meetings."
   label_my_meetings: "Moje spotkania"
   label_all_meetings: "Wszystkie spotkania"
   label_upcoming_meetings: "Nadchodzące spotkania"
@@ -175,6 +182,9 @@ pl:
         Natychmiast wyślij zaproszenie w wiadomości e-mail do uczestników wybranych powyżej. Możesz to również zrobić ręcznie w dowolnym momencie później.
       send_invitation_emails_structured: "Natychmiast wyślij zaproszenie w wiadomości e-mail do wszystkich uczestników. Możesz to również zrobić ręcznie w dowolnym momencie później."
       open_meeting_link: "Spotkania otwarte"
+      series:
+        title: "[%{project_name}] Meeting series %{title}"
+        summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "Użytkownik %{actor} wysłał Ci zaproszenie na spotkanie %{title}"
       rescheduled:
@@ -194,6 +204,17 @@ pl:
       structured_text: "Zorganizuj spotkanie jako dynamiczną listę punktów planu spotkania, opcjonalnie powiązując je z pakietem roboczym."
       structured_text_copy: "Skopiowanie spotkania nie powoduje obecnie skopiowania powiązanych pozycji planu spotkania, a jedynie szczegółów"
     copied: "Skopiowano ze spotkania #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Delete meeting occurrence"
+        heading: "Delete this meeting occurrence?"
+        confirmation_message_html: >
+          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
   meeting_section:
     untitled_title: "Sekcja bez nazwy"
     delete_confirmation: "Usunięcie sekcji spowoduje również usunięcie wszystkich jej elementów punktów planu spotkania. Czy na pewno chcesz to zrobić?"
@@ -223,8 +244,9 @@ pl:
       working_days: "W każdy dzień roboczy"
       weekly: "Co tydzień"
     end_after:
-      specific_date: "określona data"
-      iterations: "liczba wystąpień"
+      never: "never"
+      specific_date: "after a specific date"
+      iterations: "after a number of occurrences"
     starts: "Zaczyna się"
     in_words:
       daily_interval: "Co %{interval} dni"
@@ -233,6 +255,40 @@ pl:
       weekly_interval: "Co %{interval} tyg. w %{weekday}"
       frequency: "%{base} o %{time}"
       full: "%{base} o %{time}, kończy się %{end_date}"
+      never_ending: "%{base} at %{time}"
+    open:
+      title: "Open"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "Powiadomienia wysłane pomyślnie"
   notice_timezone_missing: 'Została ustawiona domyślna strefa czasowa: %{zone}. Aby zmienić strefę czasową, kliknij tutaj.'
   notice_meeting_updated: "Ta strona została zaktualizowana przez kogoś innego. Załaduj ją ponownie, aby wyświetlić zmiany."
@@ -254,6 +310,8 @@ pl:
   text_duration_in_hours: "Czas trwania w godzinach"
   text_in_hours: "w godzinach"
   text_meeting_agenda_for_meeting: 'agenda spotkania "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Czy na pewno chcesz zamknąć plan spotkania?"
   text_meeting_agenda_open_are_you_sure: "To zastąpił wszystkie zmiany w protokołach! Czy chcesz kontynuować?"
   text_meeting_minutes_for_meeting: 'protokół ze spotkania "%{meeting}"'
@@ -268,6 +326,10 @@ pl:
   label_meeting_created_by: "Utworzony przez"
   label_meeting_last_updated: "Ostatnia aktualizacja"
   label_meeting_reload: "Załaduj ponownie"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Punkty planu spotkania"
   label_agenda_items_reordered: "zmieniono kolejność"
   label_agenda_item_remove: "Usuń z planu spotkania"
@@ -293,7 +355,7 @@ pl:
   label_meeting_state_closed: "Zamknięte"
   label_meeting_state_closed_html: "<i>Zamknięte</i>"
   label_meeting_state_agenda_created: "Utworzono plan spotkania"
-  label_meeting_state_scheduled: "Zaplanowano"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Anulowano"
   label_meeting_state_skipped: "Pominięto"
   label_meeting_reopen_action: "Otwórz ponownie spotkanie"

@@ -229,6 +229,9 @@ tr:
           item:
             title: Bu öğenin altında herhangi bir hiyerarşi düzeyi yoktur
             description: Başka bir listenin içinde alt öğeler oluşturmak için bu listeye öğeler ekleyin
+        delete_dialog:
+          title: "Delete custom field item"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Öğe etiketi"
           short: "Kısa adı"
@@ -249,6 +252,7 @@ tr:
     confirm_destroy_option: "Bir seçeneğin silinmesi, kullanıldığı her yerden (örneğin iş paketleri) silinmesine neden olur. Silmek istediğinizden emin misiniz?"
     reorder_alphabetical: "Değerleri alfabetik olarak yeniden sıralayın"
     reorder_confirmation: "Uyarı: Mevcut değerlerin sırası kaybolacak. Devam et?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Özel alanı gerekli olarak işaretleyin. Bu, yeni kaynaklar oluştururken veya mevcut kaynakları güncellerken alanın doldurulmasını zorunlu hale getirecektir."
       is_required_for_project: "Bu özelliği etkinleştirmek ve tüm projelerde gerekli kılmak için işaretleyin. Tek tek projeler için devre dışı bırakılamaz."
@@ -287,6 +291,7 @@ tr:
       label: "Etiket"
       short: "Kısa adı"
       parent: "Üst"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "%{app_title} içinde ara"
     overwritten_tabs:
@@ -645,6 +650,7 @@ tr:
         title: "İş paketi paylaşımı için iş akışı eksik"
         message: "No workflow is configured for the 'Work package editor' role. Without a workflow, the shared with user cannot alter the status of the work package. Workflows can be copied. Select a source type (e.g. 'Task') and source role (e.g. 'Member'). Then select the target types. To start with, you could select all the types as targets. Finally, select the 'Work package editor' role as the target and press 'Copy'. After having thus created the defaults, fine tune the workflows as you do for every other role."
         link_message: "İş akışlarını yönetim alanından yapılandırın."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -667,14 +673,15 @@ tr:
       no_results_title_text: There are currently no relations available.
       blankslate_heading: "İlişki yok"
       blankslate_description: "Bu iş paketinin henüz herhangi bir ilişkisi bulunmamaktadır."
+    label_add_child_button: "Alt"
     label_add_x: "%{x} ekle"
     label_edit_x: "%{x} düzenle"
     label_add_description: "Açıklama ekle"
     lag:
       subject: "Gecikme"
-      title: "Gecikme (gün olarak)"
       caption: "İki iş paketi arasında beklenmesi gereken en az iş günü sayısı."
     relations:
+      label_new_child_created: "Yeni iş paketi oluşturuldu ve alt olarak eklendi"
       label_relates_singular: "ilişkili"
       label_relates_plural: "ilişkili"
       label_relates_to_singular: "ilişkili"
@@ -689,6 +696,9 @@ tr:
       follows_description: "Bu iş paketinin başlayabilmesi için ilgili iş paketinin mutlaka bitmesi gerekir"
       label_child_singular: "alt"
       label_child_plural: "alt"
+      new_child: "Yeni alt"
+      new_child_text: "Geçerli (ana) iş paketinin bir alt öğesi olarak ilgili bir iş paketi oluşturur"
+      existing_child: "Mevcut alt"
       child_description: "İlgili iş paketini geçerli (ana) iş paketinin bir alt öğesi yapar"
       label_blocks_singular: "engelleyen"
       label_blocks_plural: "engelleyen"
@@ -725,6 +735,8 @@ tr:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Davet
   account:
     delete: "Hesabı sil"
@@ -789,6 +801,7 @@ tr:
         is_required: "Gerekli"
         max_length: "Maksimum uzunluk"
         min_length: "Minimum uzunluk"
+        content_right_to_left: "Sağdan Sola içerik"
         multi_value: "Çoklu seçime izin ver"
         possible_values: "Olası değerler"
         regexp: "Düzenli ifade"
@@ -824,6 +837,8 @@ tr:
         attr_lastname: "Soyad özniteliği"
         attr_login: "Kullanıcı adı özelliği"
         attr_mail: "E-posta özniteliği"
+        filter_string: "Filter string"
+        admin: "Yönetici"
         base_dn: "Temel DN"
         host: "Sunucu"
         onthefly: "Otomatik kullanıcı oluşturma"
@@ -867,6 +882,9 @@ tr:
       project_custom_field:
         is_required: "Tüm projelerde zorunludur"
         custom_field_section: Bölüm
+      project/life_cycle_step_definition:
+        name: "İsim"
+        color: "Renk"
       query:
         column_names: "Sütunlar"
         relations_to_type_column: "%{type} ile ilişkileri"
@@ -1452,7 +1470,7 @@ tr:
     base: "Genel Hata:"
     blocks_ids: "Engellenen iş paketlerinin ID'leri"
     category: "Kategori"
-    comment: "Yorumlar"
+    comment: "Yorum"
     comments: "Yorum"
     content: "İçerik"
     color: "Renk"
@@ -1560,8 +1578,9 @@ tr:
   button_copy_and_follow: "Kopyala ve takip et"
   button_create: "Oluştur"
   button_create_and_continue: "Oluştur ve devam et"
-  button_delete: "Sil"
   button_decline: "Reddet"
+  button_delete: "Sil"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "%{name} isimli takipçiyi sil"
   button_download: "İndir"
   button_duplicate: "Çoğalt"
@@ -1764,6 +1783,9 @@ tr:
       hour:
         one: "saat"
         other: "saat"
+      day:
+        one: "gün"
+        other: "gün"
   description_active: "Aktif?"
   description_attachment_toggle: "Ekleri göster/gizle"
   description_autocomplete: >
@@ -1799,6 +1821,10 @@ tr:
     upsale:
       title: "Enterprise eklenti"
       link_title: "Daha fazla bilgi"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Bu ek eklentilerle form yapılandırmasını özelleştirin:"
         add_groups: "Yeni öznitelik grubu ekleyin"
@@ -2161,6 +2187,7 @@ tr:
   label_add_subtask: "Alt görev ekle"
   label_added: "eklendi"
   label_added_by: "%{author} tarafından eklendi"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "%{author} tarafından %{age} önce eklendi"
   label_additional_workflow_transitions_for_assignee: "Kullanıcı atanan olduğu zaman tanınacak ek yetkiler"
   label_additional_workflow_transitions_for_author: "Kullanıcı oluşturan olduğunda izin verilen ek geçişler"
@@ -2581,6 +2608,7 @@ tr:
   label_project_new: "Yeni proje"
   label_project_plural: "Projeler"
   label_project_list_plural: "Proje listesi"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Proje öznitelikleri"
   label_project_custom_field_plural: "Proje öznitelikleri"
   label_project_settings: "Proje Ayarları"
@@ -2607,6 +2635,7 @@ tr:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "İlişkiyi sil"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Yeni ilişki"
   label_release_notes: "Sürüm notları"
   label_remaining_work: "Kalan çalışma"
@@ -3022,6 +3051,7 @@ tr:
   notice_bad_request: "Hatalı istek."
   notice_not_authorized: "Bu sayfaya erişme yetkiniz yok."
   notice_not_authorized_archived_project: "Erişmeye çalıştığınız proje arşive kaldırılmış."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Şifreniz doğru değil. Devam edilemez."
   notice_principals_found_multiple: "%{number} sonuç bulundu.\nİlk sonuç için TABa basın."
   notice_principals_found_single: "Bir sonuç bulundu. \n Ona gitmek için TABa basın."
@@ -3069,7 +3099,7 @@ tr:
     text_getting_started_description: "OpenProject ile proje yönetimi ve ekip işbirliği hakkında hızlı bir genel bakış elde edin. Bu videoyu yardım menüsünden yeniden başlatabilirsiniz."
     welcome: "%{app_title}'a hoş geldiniz"
     select_language: "Lütfen dilinizi seçin"
-  permission_add_work_package_notes: "Not eklemek"
+  permission_add_work_package_notes: "Add comments"
   permission_add_work_packages: "İş paketi eklemek"
   permission_add_messages: "İleti göndermek"
   permission_add_project: "Proje oluşturma"
@@ -3099,10 +3129,11 @@ tr:
   permission_delete_timelines: "Zaman akışını silmek"
   permission_delete_wiki_pages: "Wiki sayfalarını silmek"
   permission_delete_wiki_pages_attachments: "Ekleri silmek"
-  permission_edit_work_package_notes: "Notları düzenle"
+  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "İş paketlerini düzenlemek"
   permission_edit_messages: "İletileri düzenlemek"
-  permission_edit_own_work_package_notes: "Kendi notlarını düzenlemek"
+  permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Kendi iletilerini düzenlemek"
   permission_edit_own_time_entries: "Kendi zaman kayıtlarını düzenlemek"
   permission_edit_project: "Proje düzenleme"
@@ -3195,9 +3226,9 @@ tr:
       are_you_sure: "'%{name}' projesini arşivlemek istediğinize emin misiniz?"
       archived: "Arşivlenen"
     count:
-      zero: "Proje yok"
-      one: "1 Proje"
-      other: "%{count} Proje"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Etkinlik"
   project_module_forums: "Forumlar"
   project_module_work_package_tracking: "İş paketleri"
@@ -3331,6 +3362,7 @@ tr:
     activated: "etkinleştirmek"
     deactivated: "devre dışı bırakmak"
   search_input_placeholder: "Ara ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORS'u etkinleştir"
   setting_apiv3_cors_origins: "API V3 Kaynaklar Arası Kaynak Paylaşımı (CORS) izin verilen kaynaklar"
   setting_apiv3_cors_origins_text_html: >
@@ -3556,6 +3588,27 @@ tr:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Ekle"
+      label_add_description: "Yaşam döngüsü tanımı ekleyin"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Yeni projeler için ayarlar"
@@ -3589,6 +3642,7 @@ tr:
   text_are_you_sure_continue: "Devam etmek istediğinize emin misiniz?"
   text_are_you_sure_with_children: "Sil iş paketi ve tüm alt çalışma paketlerini?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Projeye ata"
   text_form_configuration: >
     İş paketi formunda görüntülenecek alanları özelleştirebilirsiniz. Tüm işlerinizde kullanabileceğiniz şekilde bunları gruplayabilirsiniz.
@@ -3668,6 +3722,7 @@ tr:
   text_notice_security_badge_displayed_html: >
     Not: Etkinleştirildiğinde, bu,  <a href="%{information_panel_path}">%{information_panel_label}</a> yönetim panelinde ve giriş sayfasında yükleme durumunuzla birlikte bir rozet görüntüler. Sadece yöneticilere gösterilir. <br/> Rozet, mevcut OpenProject sürümünüzü resmi OpenProject sürüm veritabanına karşı kontrol eder ve sizi herhangi bir güncelleme veya bilinen güvenlik açığı hakkında uyarır. Çekin sağladığı, mevcut güncellemeleri sağlamak için hangi verilerin gerekli olduğu ve bu kontrolün nasıl devre dışı bırakılacağı hakkında daha fazla bilgi için lütfen <a href="%{more_info_url}"> yapılandırma belgelerini </a> ziyaret edin.
   text_own_membership_delete_confirmation: "İzinlerinizden bazılarını veya tümünü kaldırmak üzeresiniz ve bundan sonra bu projeyi düzenleyemeyebilirsiniz. Devam etmek istediğine emin misin?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Plugin assets dizini yazılabilir"
   text_powered_by: "%{link} tarafından destekleniyor"
   text_project_identifier_info: "Yalnızca küçük harfler (a-z), sayılar, tire ve alt tire kullanılabilir ve mutlaka küçük harfle başlamalıdır."
@@ -4035,6 +4090,8 @@ tr:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAuth uygulaması"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth uygulamaları"
       named: "Oauth uygulaması %{name}"
       new: "Yeni OAuth uygulaması"

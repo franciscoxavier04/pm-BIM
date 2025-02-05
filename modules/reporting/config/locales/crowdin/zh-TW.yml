@@ -45,13 +45,15 @@ zh-TW:
   label_greater: ">"
   label_is_not_project_with_subprojects: "不是 (包括子專案)"
   label_is_project_with_subprojects: "是 (包括子專案)"
+  label_is_work_package_with_descendants: "是（包括繼任）"
+  label_is_not_work_package_with_descendants: "不是（包括繼任）"
   label_work_package_attributes: "工作項目屬性"
   label_less: "<"
   label_logged_by_reporting: "記錄者"
   label_money: "現金價值"
   label_month_reporting: "月"
   label_new_report: "新建成本報表"
-  label_open: "開啟"
+  label_open: "開啟中"
   label_operator: "操作員"
   label_private_report_plural: "私密成本報告"
   label_progress_bar_explanation: "產生報告中..."
@@ -68,7 +70,7 @@ zh-TW:
   label_filter: "篩選條件"
   label_filter_add: "新增篩選條件"
   label_filter_plural: "篩選條件"
-  label_group_by: "分類"
+  label_group_by: "分組依據"
   label_group_by_add: "新增分組依據屬性"
   label_inactive: "«不活動»"
   label_no: "否"
@@ -91,8 +93,11 @@ zh-TW:
       button: "匯出 PDF 時間表"
       timesheet: "時間表"
       time: "時間"
+      sum_hours: Sum
     cost_reports:
       title: "您的成本報表(以XLS匯出)"
+      start_time: "開始時間"
+      end_time: "結束時間"
   reporting:
     group_by:
       selected_columns: "選擇列"

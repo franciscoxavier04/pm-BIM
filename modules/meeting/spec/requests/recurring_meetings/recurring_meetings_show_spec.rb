@@ -88,6 +88,44 @@ RSpec.describe "Recurring meetings show",
     end
   end
 
+  describe "upcoming tab" do
+    let!(:upcoming_open_meeting) do
+      create(:structured_meeting, recurring_meeting:, start_time: Time.zone.today + 1.day + 10.hours, state: :open)
+    end
+    let!(:open_meeting) do
+      create :scheduled_meeting,
+             meeting: upcoming_open_meeting,
+             recurring_meeting:,
+             start_time: Time.zone.today + 1.day + 10.hours
+    end
+
+    let!(:cancelled_meeting) do
+      create :scheduled_meeting,
+             recurring_meeting:,
+             start_time: Time.zone.today + 2.days + 10.hours,
+             cancelled: true
+    end
+
+    it "sorts meetings into two tables based on state" do
+      get recurring_meeting_path(recurring_meeting)
+
+      content = page.find_by_id("content")
+      expect(content).to have_text "Open"
+      expect(content).to have_text "Planned"
+
+      open_meeting_date = format_time(open_meeting.start_time)
+      cancelled_meeting_date = format_time(cancelled_meeting.start_time)
+      scheduled_meeting_date = format_time(Time.zone.today + 2.days + 10.hours)
+
+      agenda_opened = page.find("[data-test-selector='agenda-opened-table']")
+      expect(agenda_opened).to have_text open_meeting_date
+
+      planned = page.find("[data-test-selector='planned-table']")
+      expect(planned).to have_text cancelled_meeting_date
+      expect(planned).to have_text scheduled_meeting_date
+    end
+  end
+
   describe "upcoming quick filter" do
     context "with a rescheduled meeting" do
       let!(:rescheduled_instance) do
@@ -180,6 +218,23 @@ RSpec.describe "Recurring meetings show",
         get recurring_meeting_path(recurring_meeting)
 
         expect(page).to have_no_css("#recurring-meetings-footer-component")
+      end
+    end
+
+    context "when the meeting has no end date" do
+      let(:recurring_meeting) do
+        create :recurring_meeting,
+               project:,
+               author: user,
+               start_time: Time.zone.today + 1.day,
+               frequency: "daily",
+               end_after: "never"
+      end
+
+      it "shows footer, but no counts" do
+        get recurring_meeting_path(recurring_meeting)
+
+        expect(page).to have_text "There are more scheduled meetings"
       end
     end
   end
