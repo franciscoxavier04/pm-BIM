@@ -34,11 +34,14 @@ See COPYRIGHT and LICENSE files for more details.
 <% if @grouped_meetings -%>
   <%= render partial: "grouped_meetings" %>
 <% elsif @meetings.empty? -%>
-  <%= no_results_box %>
+  <%= render Meetings::TableComponent.new(
+        rows: [],
+        current_project: @project
+      ) %>
 <% else %>
   <%= render Meetings::TableComponent.new(
-    rows: @meetings,
-    current_project: @project,
-    upcoming: params[:upcoming],
-    ) %>
+        rows: @meetings,
+        current_project: @project,
+        upcoming: params[:upcoming]
+      ) %>
 <% end -%>

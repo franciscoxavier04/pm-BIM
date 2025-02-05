@@ -231,6 +231,9 @@ en:
           This meeting is part of a series called <strong>%{title}</strong>.
           This will only delete this particular occurrence and not the entire series.
           Do you want to continue?
+    blankslate:
+      title: "No meetings to display"
+      desc: "There are no meetings that meet the active filter criteria."
 
   meeting_section:
     untitled_title: "Untitled section"
