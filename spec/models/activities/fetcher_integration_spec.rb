@@ -62,13 +62,54 @@ RSpec.describe Activities::Fetcher, "integration" do
 
     subject(:event_journables) { instance.events(from: 30.days.ago, to: 1.day.from_now).map { it.journal.journable } }
 
+    def activities_of_types(*klasses)
+      activities.select do |activity|
+        klasses.any? do |klass|
+          activity.is_a?(klass)
+        end
+      end
+    end
+
+    shared_examples "specifying scope" do
+      context "without scope set" do
+        it "finds events of all types" do
+          expect(event_journables)
+            .to match_array(activities)
+        end
+      end
+
+      context "with scope :all" do
+        before { options[:scope] = :all }
+
+        it "finds events of all types" do
+          expect(event_journables)
+            .to match_array(activities)
+        end
+      end
+
+      context "with scope :default" do
+        before { options[:scope] = :default }
+
+        it "finds events that are registered to be shown by default" do
+          expect(event_journables)
+            .to match_array(activities_of_types(WorkPackage, Changeset))
+        end
+      end
+
+      context "with scope of event types" do
+        before { options[:scope] = %w[time_entries messages project_details] }
+
+        it "finds only events matching the scope" do
+          expect(event_journables)
+            .to match_array(activities_of_types(Message, TimeEntry, Project))
+        end
+      end
+    end
+
     context "for global activities" do
       let!(:activities) { [project, work_package, message, news, time_entry, changeset, wiki_page] }
 
-      it "finds events of all types" do
-        expect(event_journables)
-          .to match_array(activities)
-      end
+      include_examples "specifying scope"
 
       context "if lacking permissions" do
         before do
@@ -92,17 +133,6 @@ RSpec.describe Activities::Fetcher, "integration" do
             .to be_empty
         end
       end
-
-      context "if restricting the scope" do
-        before do
-          options[:scope] = %w[time_entries messages]
-        end
-
-        it "finds only events matching the scope" do
-          expect(event_journables)
-            .to contain_exactly(message, time_entry)
-        end
-      end
     end
 
     context "for activities in a project" do
@@ -110,10 +140,7 @@ RSpec.describe Activities::Fetcher, "integration" do
 
       let!(:activities) { [project, work_package, message, news, time_entry, changeset, wiki_page] }
 
-      it "finds events of all types" do
-        expect(event_journables)
-          .to match_array(activities)
-      end
+      include_examples "specifying scope"
 
       context "if lacking permissions" do
         before do
@@ -142,17 +169,6 @@ RSpec.describe Activities::Fetcher, "integration" do
             .to be_empty
         end
       end
-
-      context "if restricting the scope" do
-        before do
-          options[:scope] = %w[time_entries messages]
-        end
-
-        it "finds only events matching the scope" do
-          expect(event_journables)
-            .to contain_exactly(message, time_entry)
-        end
-      end
     end
 
     context "for activities in a subproject" do
@@ -175,12 +191,7 @@ RSpec.describe Activities::Fetcher, "integration" do
       end
       let!(:activities) { [project, subproject, news, subproject_news, work_package, subproject_work_package] }
 
-      context "if including subprojects" do
-        it "finds events in the subproject" do
-          expect(event_journables)
-            .to match_array(activities)
-        end
-      end
+      include_examples "specifying scope"
 
       context "if the subproject has activity disabled" do
         before do
@@ -231,10 +242,7 @@ RSpec.describe Activities::Fetcher, "integration" do
         [project, work_package, message, news, time_entry, changeset, wiki_page]
       end
 
-      it "finds events of all types" do
-        expect(event_journables)
-          .to match_array(activities)
-      end
+      include_examples "specifying scope"
 
       context "for a different user" do
         let(:other_user) { create(:user) }
@@ -266,17 +274,6 @@ RSpec.describe Activities::Fetcher, "integration" do
           # project details, news and message only require the user to be member
           expect(event_journables)
             .to contain_exactly(project, message, news)
-        end
-      end
-
-      context "if restricting the scope" do
-        before do
-          options[:scope] = %w[time_entries messages]
-        end
-
-        it "finds only events matching the scope" do
-          expect(event_journables)
-            .to contain_exactly(message, time_entry)
         end
       end
     end
