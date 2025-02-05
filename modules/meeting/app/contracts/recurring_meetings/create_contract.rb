@@ -29,10 +29,19 @@
 module RecurringMeetings
   class CreateContract < BaseContract
     validate :user_allowed_to_add
+    validate :project_is_present
 
     private
 
+    def project_is_present
+      if model.project.nil?
+        errors.add :project_id, :blank
+      end
+    end
+
     def user_allowed_to_add
+      return if model.project.nil?
+
       unless user.allowed_in_project?(:create_meetings, model.project)
         errors.add :base, :error_unauthorized
       end
