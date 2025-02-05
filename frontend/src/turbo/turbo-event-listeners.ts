@@ -1,3 +1,5 @@
+import { TurboHelpers } from './helpers';
+
 export function addTurboEventListeners() {
   // Close the primer dialog when the form inside has been submitted with a success response.
   //
@@ -31,4 +33,29 @@ export function addTurboEventListeners() {
     headers['Turbo-Referrer'] = window.location.href;
     headers['X-Turbo-Nonce'] = document.getElementsByName('csp-nonce')[0]?.getAttribute('content') || '';
   });
+
+  // Turbo adds nonces to all scripts, even though we want to explicitly pass nonces
+  // https://github.com/hotwired/turbo/issues/294#issuecomment-2633216052
+  // We remove them manually as a workaround
+  // in Handle Turbo Drive page loads (full reloads)
+  document.addEventListener('turbo:before-render', (event) => {
+    TurboHelpers.scrubScriptElements(event.detail.newBody);
+  }, { capture: true });
+
+  // in Turbo Streams (partial updates)
+  document.addEventListener('turbo:before-stream-render', (event) => {
+    const fallbackToDefaultActions = event.detail.render;
+
+    event.detail.render = (streamElement) => {
+      const content = streamElement.templateElement.content;
+      TurboHelpers.scrubScriptElements(content);
+
+      return fallbackToDefaultActions(streamElement);
+    };
+  });
+
+  // in Turbo Frames (when they load new content)
+  document.addEventListener('turbo:before-frame-render', (event) => {
+    TurboHelpers.scrubScriptElements(event.detail.newFrame);
+  }, { capture: true });
 }
