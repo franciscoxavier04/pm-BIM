@@ -35,6 +35,19 @@ RSpec.describe Relation do
   let(:type) { "relates" }
   let(:relation) { build(:relation, from:, to:, relation_type: type) }
 
+  it "validates lag numericality" do
+    relation.lag = -1
+    expect(relation).not_to be_valid
+    expect(relation.errors[:lag]).to include("must be greater than or equal to 0.")
+
+    relation.lag = 2_147_483_648
+    expect(relation).not_to be_valid
+    expect(relation.errors[:lag]).to include("must be less than or equal to 2147483647.")
+
+    relation.lag = 1_000
+    expect(relation).to be_valid
+  end
+
   describe "all relation types" do
     Relation::TYPES.each do |key, type_hash|
       let(:type) { key }

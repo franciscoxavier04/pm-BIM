@@ -39,6 +39,7 @@ module Relations
     validate :validate_to_exists
     validate :validate_nodes_relatable
     validate :validate_accepted_type
+    validate :validate_lag_numericality
 
     def self.model
       Relation
@@ -70,6 +71,13 @@ module Relations
     def manage_relations_permission?
       unless manage_relations?
         errors.add :base, :error_unauthorized
+      end
+    end
+
+    def validate_lag_numericality
+      unless model.lag.nil? || model.lag.between?(0, 2_147_483_647)
+        errors.add :lag, :less_than_or_equal_to if model.lag > 2_147_483_647
+        errors.add :lag, :greater_than_or_equal_to if model.lag < 0
       end
     end
 
