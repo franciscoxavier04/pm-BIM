@@ -615,7 +615,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
   protected defaultCompareWithFunction():null|((a:unknown, b:unknown) => boolean) {
     return (a, b) => {
-      if (this.bindValue) {
+      if (this.bindValue && !_.isObject(b)) {
         return (a as Record<string, unknown>)[this.bindValue] === b;
       }
 
