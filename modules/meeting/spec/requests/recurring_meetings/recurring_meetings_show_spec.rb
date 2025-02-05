@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -46,6 +48,7 @@ RSpec.describe "Recurring meetings show",
 
   let(:current_user) { user }
   let(:show_page) { Pages::RecurringMeeting::Show.new(recurring_meeting).with_capybara_page(page) }
+  let(:request) { get recurring_meeting_path(recurring_meeting) }
 
   before do
     login_as(current_user)
@@ -60,6 +63,32 @@ RSpec.describe "Recurring meetings show",
     it "shows project recurring meetings" do
       get project_recurring_meeting_path(project, recurring_meeting)
       expect(response).to have_http_status(:ok)
+    end
+
+    context "when the meeting has and end_date < today" do
+      before do
+        recurring_meeting.update_columns(end_date: Time.zone.yesterday)
+      end
+
+      it "shows the appropriate blankslate and text" do
+        request
+        expect(page).to have_text "Meeting series ended"
+        expect(page).to have_text "ended on #{format_date(Time.zone.yesterday)}"
+      end
+    end
+
+    context "when the meeting has no end_date, but iterations" do
+      before do
+        recurring_meeting.update_columns(end_after: "iterations",
+                                         iterations: 2,
+                                         start_time: Time.zone.today - 3.days + 10.hours)
+      end
+
+      it "shows the blankslate for two days ago" do
+        request
+        expect(page).to have_text "Meeting series ended"
+        expect(page).to have_text "ended on #{format_date(Time.zone.today - 2.days)}"
+      end
     end
   end
 

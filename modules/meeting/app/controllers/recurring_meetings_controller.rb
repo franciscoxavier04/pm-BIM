@@ -282,7 +282,7 @@ class RecurringMeetingsController < ApplicationController
     @max_count =
       if @direction == "past"
         @recurring_meeting.scheduled_instances(upcoming: false).count
-      elsif @recurring_meeting.ending?
+      elsif @recurring_meeting.will_end?
         open = @recurring_meeting.upcoming_instantiated_meetings
         @recurring_meeting.remaining_occurrences.count - open.count
       end

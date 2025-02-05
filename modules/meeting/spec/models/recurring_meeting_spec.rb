@@ -219,7 +219,7 @@ RSpec.describe RecurringMeeting,
     it "schedules daily", :aggregate_failures do
       expect(subject.first_occurrence).to eq Time.zone.tomorrow + 10.hours
       expect(subject.remaining_occurrences).to be_nil
-      expect { subject.last_occurrence }.to raise_error(ArgumentError)
+      expect(subject.last_occurrence).to be_nil
     end
   end
 

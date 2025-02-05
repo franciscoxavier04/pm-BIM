@@ -46,7 +46,7 @@
             item.with_leading_visual_icon(icon: :mail)
           end
 
-          if @meeting.start_time.to_date < Time.zone.today
+          if !@meeting.has_ended? && @meeting.start_time.to_date < Time.zone.today
             menu.with_item(
               label: t(:label_recurring_meeting_series_end),
               href: end_series_dialog_recurring_meeting_path(@meeting),
