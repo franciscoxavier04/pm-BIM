@@ -4,11 +4,16 @@
   grid-template-areas: "start-date due-date duration"
   grid-column-gap: 1rem
 
-  &--field-container
-    &_hidden
-      display: none
 
   &--add-button
     // The other fields have a 20px label on top + 4px space between label and field
     margin-top: 24px
     width: 100%
+
+  &--date-container
+    &:not(&_date-field-hidden)
+      .wp-datepicker-dialog-date-form--button-container
+        display: none
+    &_date-field-hidden
+      .wp-datepicker-dialog-date-form--text-field-container
+        display: none

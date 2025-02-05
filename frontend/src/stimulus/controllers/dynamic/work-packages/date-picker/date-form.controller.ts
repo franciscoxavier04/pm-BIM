@@ -40,25 +40,31 @@ export default class DateFormController extends Controller {
 
   declare readonly dueDateFieldContainerTarget:HTMLElement;
 
-  toggleStartDateFieldVisibility(e:Event) {
-    this.hideButton(e.target as HTMLElement);
+  private toggled:boolean = false;
 
-    this.startDateFieldContainerTarget.classList.remove('wp-datepicker-dialog-date-form--field-container_hidden');
+  startDateFieldContainerTargetConnected() {
+    if (this.toggled) {
+      Array.from(document.getElementsByClassName('wp-datepicker-dialog-date-form--date-container_date-field-hidden')).forEach((el) => {
+        el.classList.remove('wp-datepicker-dialog-date-form--date-container_date-field-hidden');
+      });
+    }
+  }
+
+  toggleStartDateFieldVisibility() {
+    this.toggleFieldVisibility();
     this.startDateFieldContainerTarget.querySelector('input')?.focus();
   }
 
-  toggleDueDateFieldVisibility(e:Event) {
-    this.hideButton(e.target as HTMLElement);
-
-    this.dueDateFieldContainerTarget.classList.remove('wp-datepicker-dialog-date-form--field-container_hidden');
-    this.dueDateFieldContainerTarget.querySelector('input')?.focus();
+  toggleDueDateFieldVisibility() {
+    this.toggleFieldVisibility();
+    this.startDateFieldContainerTarget.querySelector('input')?.focus();
   }
 
-  hideButton(button:HTMLElement) {
-    const closestFieldContainer = button.closest('.wp-datepicker-dialog-date-form--field-container');
+  private toggleFieldVisibility() {
+    Array.from(document.getElementsByClassName('wp-datepicker-dialog-date-form--date-container_date-field-hidden')).forEach((el) => {
+      el.classList.remove('wp-datepicker-dialog-date-form--date-container_date-field-hidden');
+    });
 
-    if (closestFieldContainer) {
-      closestFieldContainer.classList.add('wp-datepicker-dialog-date-form--field-container_hidden');
-    }
+    this.toggled = true;
   }
 }
