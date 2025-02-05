@@ -103,7 +103,18 @@ class Relation < ApplicationRecord
   scope :follows_with_lag,
         -> { follows.where("lag > 0") }
 
-  validates :lag, numericality: { allow_nil: true, less_than_or_equal_to: 2_147_483_647, greater_than_or_equal_to: 0 }
+  validates :lag, numericality: {
+    allow_nil: true,
+    less_than_or_equal_to: 2_147_483_647,
+    greater_than_or_equal_to: 0,
+    message: ->(_, data) {
+      if data[:value] < 0
+        I18n.t("activerecord.errors.models.relation.attributes.lag.negative_value")
+      else
+        I18n.t("activerecord.errors.models.relation.attributes.lag.high_value")
+      end
+    }
+  }
 
   validates :to, uniqueness: { scope: :from }
 

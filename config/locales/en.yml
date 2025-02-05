@@ -1307,6 +1307,9 @@ en:
             from:
               error_not_found: "work package in `from` position not found or not visible"
               error_readonly: "an existing relation's `from` link is immutable"
+            lag:
+              high_value: "The value for lag is too high."
+              negative_value: "Lag cannot be negative."
         repository:
           not_available: "SCM vendor is not available"
           not_whitelisted: "is not allowed by the configuration."
