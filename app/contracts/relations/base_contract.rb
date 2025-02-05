@@ -75,9 +75,12 @@ module Relations
     end
 
     def validate_lag_numericality
-      unless model.lag.nil? || model.lag.between?(0, 2_147_483_647)
-        errors.add :lag, :less_than_or_equal_to if model.lag > 2_147_483_647
-        errors.add :lag, :greater_than_or_equal_to if model.lag < 0
+      if model.lag.present?
+        if model.lag < 0
+          errors.add :lag, I18n.t(:"activerecord.errors.messages.circular_dependency")
+        elsif model.lag > 2_147_483_647
+          errors.add :lag, I18n.t(:"activerecord.errors.models.relation.attributes.lag.high_value")
+        end
       end
     end
 

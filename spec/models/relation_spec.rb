@@ -38,11 +38,11 @@ RSpec.describe Relation do
   it "validates lag numericality" do
     relation.lag = -1
     expect(relation).not_to be_valid
-    expect(relation.errors[:lag]).to include("must be greater than or equal to 0.")
+    expect(relation.errors[:lag]).to include(I18n.t(:"activerecord.errors.models.relation.attributes.lag.negative_value"))
 
     relation.lag = 2_147_483_648
     expect(relation).not_to be_valid
-    expect(relation.errors[:lag]).to include("must be less than or equal to 2147483647.")
+    expect(relation.errors[:lag]).to include(I18n.t(:"activerecord.errors.models.relation.attributes.lag.high_value"))
 
     relation.lag = 1_000
     expect(relation).to be_valid
