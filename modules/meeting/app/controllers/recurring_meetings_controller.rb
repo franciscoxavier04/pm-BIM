@@ -18,6 +18,7 @@ class RecurringMeetingsController < ApplicationController
   before_action :authorize, except: %i[index new create]
   before_action :get_scheduled_meeting, only: %i[delete_scheduled_dialog destroy_scheduled]
 
+  before_action :set_direction, only: %i[show]
   before_action :convert_params, only: %i[create update]
   before_action :check_template_completable, only: %i[template_completed]
   before_action :build_meeting_limits, only: %i[show]
@@ -46,8 +47,6 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def show # rubocop:disable Metrics/AbcSize
-    @direction = params[:direction]
-
     if @direction == "past"
       @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
     else
@@ -276,6 +275,10 @@ class RecurringMeetingsController < ApplicationController
       .first(count)
 
     [opened.values.sort_by(&:start_time), planned]
+  end
+
+  def set_direction
+    @direction = params[:direction]
   end
 
   def build_meeting_limits

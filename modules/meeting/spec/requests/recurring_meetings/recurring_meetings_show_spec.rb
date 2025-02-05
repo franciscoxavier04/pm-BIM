@@ -115,6 +115,17 @@ RSpec.describe "Recurring meetings show",
       expect(page).to have_no_text format_time(past_schedule_cancelled.start_time)
       expect(page).to have_no_css("li", text: "Cancelled")
     end
+
+    context "when meeting has ended and no upcoming meetings remain" do
+      before do
+        recurring_meeting.update_columns(end_date: Time.zone.yesterday)
+      end
+
+      it "still shows the one past meeting (Regression #61280)" do
+        get recurring_meeting_path(recurring_meeting, direction: "past")
+        expect(page).to have_text format_time(past_instance.start_time)
+      end
+    end
   end
 
   describe "upcoming tab" do
