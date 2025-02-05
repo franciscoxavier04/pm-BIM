@@ -2,7 +2,7 @@
 
 module Patterns
   # @hidden
-  class DangerConfirmationDialogPreview < ViewComponent::Preview
+  class DangerDialogPreview < ViewComponent::Preview
     # @display min_height 400px
     def default
       render_with_template

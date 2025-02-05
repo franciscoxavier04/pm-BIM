@@ -1,12 +1,12 @@
-The DangerConfirmationDialog is used to get a second layer of confirmation from the user before they execute a potentially breaking, non-reversible action such as deletion.
+The DangerDialog is used to get a second layer of confirmation from the user before they execute a potentially breaking, non-reversible action such as deletion.
 
 The dial will inform the user that the action is not reversible and require one additional interaction before the user can confirm the deletion.
 
-The DangerConfirmationDialog is a sub-component of FeedbackDialog.
+The DangerDialog is a sub-component of FeedbackDialog.
 
 ### Overview
 
-<%= embed Patterns::DangerConfirmationDialogPreview, :default, panels: %i[source] %>
+<%= embed Patterns::DangerDialogPreview, :default, panels: %i[source] %>
 
 ### Anatomy
 
@@ -50,7 +50,7 @@ If you need a variant with a different structure, please contact the UX and Fron
 
 ### Used in
 
-The DangerConfirmationDialog will replace the traditional Rails danger zone area in at least these places:
+The DangerDialog will replace the traditional Rails danger zone area in at least these places:
 
 - work_packages: bulk/destroyusers: deletion
 - repositories: destroy
@@ -71,5 +71,5 @@ The confirmation dialog should also be used where we are currently using browser
 ### Technical notes
 
 * In order to actually delete some object, you will most likely need a form which the "delete" button then submits. We have two ways to achieve that:
-  * ([`With form_arguments`](../../inspect/primer/open_project/danger_confirmation_dialog/with_form))
-  * ([`With a form builder`](../../inspect/primer/open_project/danger_confirmation_dialog/with_form_builder_form))
+  * ([`With form_arguments`](../../inspect/primer/open_project/danger_dialog/with_form))
+  * ([`With a form builder`](../../inspect/primer/open_project/danger_dialog/with_form_builder_form))

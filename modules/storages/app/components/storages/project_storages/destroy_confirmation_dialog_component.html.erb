@@ -40,11 +40,11 @@ See COPYRIGHT and LICENSE files for more details.
       method: :delete
     ) do |form|
       render(Primer::OpenProject::FeedbackDialog.new(
-        id: id,
-        title: nil,
-        test_selector: id,
-        size: :large
-      )) do |dialog|
+               id:,
+               title:,
+               test_selector: id,
+               size: :large
+             )) do |dialog|
         dialog.with_feedback_message(icon_arguments: { icon: :alert, color: :danger }) do |message|
           message.with_heading(tag: :h2) { heading }
           message.with_description { text }
