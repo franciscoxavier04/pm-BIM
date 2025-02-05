@@ -104,6 +104,15 @@ RSpec.describe Activities::Fetcher, "integration" do
             .to match_array(activities_of_types(Message, TimeEntry, Project))
         end
       end
+
+      context "with scope of compatibility alias of project_attributes for project_details" do
+        before { options[:scope] = %w[project_attributes] }
+
+        it "finds only events matching the scope" do
+          expect(event_journables)
+            .to match_array(activities_of_types(Project))
+        end
+      end
     end
 
     context "for global activities" do

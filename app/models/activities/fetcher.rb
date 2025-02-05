@@ -81,7 +81,11 @@ module Activities
       when :default
         default_scope!
       else
-        @scope = Array(scope) & event_types
+        scope = Array(scope)
+
+        scope << "project_details" if scope.delete("project_attributes")
+
+        @scope = scope & event_types
       end
     end
 
