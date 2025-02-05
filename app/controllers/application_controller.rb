@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   # user's session to execute requests. It also prevents an attacker to log in
   # a user with the attacker's account. API requests each contain their own
   # authentication token, e.g. as key parameter or header, so they don't have
-  # to be protected by CSRF protection as long as they don't create a session
+  # to be protected by CSRF protection as long as they don't create a session.
   #
   # We can't reliably determine here whether a request is an API
   # request as this happens in our way too complex find_current_user method
@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
   # no session is active and that no autologin cookie is set.
   #
   # Thus, we always reset any active session and the autologin cookie to make
-  # sure find_current user doesn't find a user based on an active session.
+  # sure find_current_user doesn't find a user based on an active session.
   #
   # Nevertheless, API requests should not be aborted, which they would be
   # if we raised an error here. Still, users should see an error message
@@ -104,7 +104,6 @@ class ApplicationController < ActionController::Base
     #
     # See http://stackoverflow.com/a/15350123 for more information on login CSRF.
     unless api_request?
-
       # Check whether user have cookies enabled, otherwise they'll only be
       # greeted with the CSRF error upon login.
       message = I18n.t(:error_token_authenticity)
@@ -112,14 +111,14 @@ class ApplicationController < ActionController::Base
 
       log_csrf_failure
 
-      render_error status: 422, message:
+      render_error status: 422, message: message
     end
   end
 
   # Ensure the default handler is listed FIRST
   unless Rails.application.config.consider_all_requests_local
     rescue_from StandardError do |exception|
-      render_500 exception:
+      render_500 exception: exception
     end
   end
 
@@ -129,7 +128,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActiveRecord::ConnectionTimeoutError do |exception|
-    render_500 exception:,
+    render_500 exception: exception,
                payload: ::OpenProject::Logging::ThreadPoolContextBuilder.build!
   end
 
@@ -166,7 +165,7 @@ class ApplicationController < ActionController::Base
   end
 
   def tag_request
-    ::OpenProject::Appsignal.tag_request(controller: self, request:)
+    ::OpenProject::Appsignal.tag_request(controller: self, request: request)
   end
 
   def reload_mailer_settings!
@@ -186,7 +185,6 @@ class ApplicationController < ActionController::Base
   def log_csrf_failure
     message = "CSRF validation error"
     message << " (No session cookie present)" if openproject_cookie_missing?
-
     op_handle_error message, reference: :csrf_validation_failed
   end
 
@@ -220,7 +218,7 @@ class ApplicationController < ActionController::Base
     # 1. Use completely authenticated user
     # 2. Use user with some authenticated stages not completed.
     #    In this case user is not considered logged in, but identified.
-    #    It covers localization for extra authentication stages(like :consent, for example)
+    #    It covers localization for extra authentication stages (like :consent, for example)
     # 3. Use anonymous instance.
     user = RequestStore[:current_user] ||
            (session[:authenticated_user_id].present? && User.find_by(id: session[:authenticated_user_id])) ||
@@ -255,7 +253,6 @@ class ApplicationController < ActionController::Base
   # Finds and sets @project based on @object.project
   def find_project_from_association
     render_404 if @object.blank?
-
     @project = @object.project
   rescue ActiveRecord::RecordNotFound
     render_404
@@ -287,11 +284,8 @@ class ApplicationController < ActionController::Base
   # TODO: this method is right now only suited for controllers of objects that somehow have an association to Project
   def find_object_and_scope
     model_object = self.class._model_object.find(params[:id]) if params[:id].present?
-
     associations = self.class._model_scope + [Project]
-
     associated = find_belongs_to_chained_objects(associations, model_object)
-
     associated.each do |a|
       instance_variable_set("@" + a.class.to_s.downcase, a)
     end
@@ -311,8 +305,6 @@ class ApplicationController < ActionController::Base
                                       else
                                         [association.to_s.downcase, association.to_s.downcase]
                                       end
-
-      # TODO: Remove this hidden dependency on params
       instances << (
         if instances.last.nil?
           scope_name.camelize.constantize.find(params[:"#{scope_name}_id"])
@@ -334,26 +326,28 @@ class ApplicationController < ActionController::Base
                                 .where(id: params[:work_package_id] || params[:ids])
                                 .order("id ASC")
     fail ActiveRecord::RecordNotFound if @work_packages.empty?
-
     @projects = @work_packages.filter_map(&:project).uniq
     @project = @projects.first if @projects.size == 1
   rescue ActiveRecord::RecordNotFound
     render_404
   end
 
+  # ---------------------------------------------------------------------------
+  # Modified Back URL Handling to Prevent Open Redirects
+  #
+  # Instead of directly using params[:back_url] or HTTP_REFERER,
+  # we now pass the URL through our validation helper.
+  # ---------------------------------------------------------------------------
   def back_url
-    params[:back_url] || request.env["HTTP_REFERER"]
+    # Validate and return the user-supplied URL if it is an internal URL.
+    # If not, this will return nil.
+    valid_internal_url(params[:back_url]) || valid_internal_url(request.env["HTTP_REFERER"])
   end
 
   def redirect_back_or_default(default, use_escaped = true)
-    policy = RedirectPolicy.new(
-      params[:back_url],
-      hostname: request.host,
-      default:,
-      return_escaped: use_escaped
-    )
-
-    redirect_to policy.redirect_url
+    # If back_url is present and safe, use it. Otherwise, use the provided default.
+    target = back_url || default
+    redirect_to target
   end
 
   # Picks which layout to use based on the request
@@ -446,9 +440,7 @@ class ApplicationController < ActionController::Base
 
   def default_breadcrumb
     label = "label_#{controller_name.singularize}"
-
-    I18n.t(label + "_plural",
-           default: label.to_sym)
+    I18n.t(label + "_plural", default: label.to_sym)
   end
 
   helper_method :default_breadcrumb
@@ -469,7 +461,6 @@ class ApplicationController < ActionController::Base
   def check_session_lifetime
     if session_expired?
       self.logged_user = nil
-
       flash[:warning] = I18n.t("notice_forced_logout", ttl_time: Setting.session_ttl)
       redirect_to(controller: "/account", action: "login", back_url: login_back_url)
     end
@@ -505,17 +496,13 @@ class ApplicationController < ActionController::Base
   end
 
   def login_back_url
-    # Extract only the basic url parameters on non-GET requests
     if request.get?
-      # rely on url_for to fill in the parameters of the current request
       url_for(login_back_url_params)
     else
       url_params = params.permit(:action, :id, :project_id, :controller)
-
       unless url_params[:controller].to_s.starts_with?("/")
         url_params[:controller] = "/#{url_params[:controller]}"
       end
-
       url_for(url_params)
     end
   end
@@ -527,9 +514,34 @@ class ApplicationController < ActionController::Base
   # ActiveSupport load hooks provide plugins with a consistent entry point to patch core classes.
   # They should be called at the very end of a class definition or file,
   # so plugins can be sure everything has been loaded. This load hook allows plugins to register
-  # callbacks when the core application controller is fully loaded. Good explanation of load hooks:
-  # http://simonecarletti.com/blog/2011/04/understanding-ruby-and-rails-lazy-load-hooks/
+  # callbacks when the core application controller is fully loaded.
   ActiveSupport.run_load_hooks(:application_controller, self)
 
   prepend AuthSourceSSO
+
+  # ---------------------------------------------------------------------------
+  # NEW: URL Validation Helper
+  #
+  # This method ensures that any URL provided (typically via params[:back_url] or HTTP_REFERER)
+  # is safe for internal redirection. It only allows relative URLs that:
+  #  - Have no scheme (i.e. no "http:" or "https:")
+  #  - Have no host
+  #  - Have a path starting with a single forward slash '/'
+  #  - Do not start with double slashes (which could be interpreted as protocol-relative URLs)
+  #
+  # If the URL does not pass these checks, the method returns nil.
+  # ---------------------------------------------------------------------------
+  def valid_internal_url(url)
+    return nil unless url.present?
+    begin
+      uri = URI.parse(url)
+    rescue URI::InvalidURIError
+      return nil
+    end
+    if uri.scheme.nil? && uri.host.nil? && uri.path.present? && uri.path.start_with?('/') && !url.start_with?('//')
+      uri.to_s
+    else
+      nil
+    end
+  end
 end
