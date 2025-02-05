@@ -2104,19 +2104,26 @@ en:
     page_nr_footer: "Page %{page} of %{total}"
     dialog:
       title: Generate PDF
-      submit: Generate
+      submit: Download
+      templates:
+        label: "Template"
+        template_attributes:
+          label: "Attributes and description"
+          caption: All the attributes present in the current form configuration using the default template.
+        template_contract:
+          label: "Contract"
+          caption: Work package details formatted to the standard German contract form.
       header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+        label: Additional header text
+        caption: This text will appear on every page to the right of the header.
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
-      paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
 
   extraction:
     available:

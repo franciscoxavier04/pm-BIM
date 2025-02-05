@@ -98,7 +98,13 @@ class WorkPackagesController < ApplicationController
   end
 
   def generate_pdf
-    exporter = WorkPackage::PDFExport::DocumentGenerator.new(work_package, params)
+    exporter = case params[:template]
+               when "contract"
+                 WorkPackage::PDFExport::DocumentGenerator.new(work_package, params)
+               else
+                 # when "attributes"
+                 WorkPackage::PDFExport::WorkPackageToPdf.new(work_package, params)
+               end
     export = exporter.export!
     send_data(export.content, type: export.mime_type, filename: export.title)
   rescue ::Exports::ExportError => e

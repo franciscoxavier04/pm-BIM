@@ -2,28 +2,46 @@
   title: I18n.t("pdf_generator.dialog.title"),
   id: MODAL_ID,
   size: :medium_portrait
-)) do |dialog|
-  dialog.with_header(variant: :large)
-  dialog.with_body do
-    primer_form_with(
-      url: generate_pdf_work_package_path(work_package),
-      data: { turbo: false },
-      id: GENERATE_PDF_FORM_ID
-    ) do |form|
+)) do |dialog| %>
+  <% dialog.with_header(variant: :large) %>
+  <% dialog.with_body do %>
+    <%= primer_form_with(
+          url: generate_pdf_work_package_path(work_package),
+          data: { turbo: false },
+          id: GENERATE_PDF_FORM_ID
+        ) do |form|
       flex_layout do |modal_body|
-        generate_selects.each_with_index do |entry, index|
-          modal_body.with_row(mt: index == 0 ? 0 : 3) do
-            render(Primer::Alpha::Select.new(
-              name: entry[:name],
-              label: entry[:label],
-              caption: entry[:caption],
-              size: :medium,
-              input_width: :small,
-              value: entry[:options].find { |e| e[:default] }[:value])
-            ) do |component|
-              entry[:options].each do |entry|
-                component.option(label: entry[:label], value: entry[:value])
-              end
+        modal_body.with_row(mt: 0) do
+          render(Primer::Alpha::Select.new(
+            name: "template",
+            label: I18n.t("pdf_generator.dialog.templates.label"),
+            caption: templates_default[:caption],
+            input_width: :large)) do |component|
+            selected = templates_default[:value]
+            templates_options.each do |entry|
+              component.option(label: entry[:label], value: entry[:value], selected: selected == entry[:value])
+            end
+          end
+        end
+        modal_body.with_row(mt: 3) do
+          render(Primer::Alpha::CheckBox.new(
+            id: "hyphenation_enabled",
+            name: "hyphenation",
+            checked: true,
+            value: "true",
+            unchecked_value: "false",
+            label: I18n.t("pdf_generator.dialog.hyphenation.label"),
+            caption: I18n.t("pdf_generator.dialog.hyphenation.caption"),
+            visually_hide_label: false))
+        end
+        modal_body.with_row(mt: 3) do
+          render(Primer::Alpha::Select.new(
+            name: "hyphenation_language",
+            label: I18n.t("pdf_generator.dialog.hyphenation_language.label"),
+            input_width: :large)) do |component|
+            selected = hyphenation_default[:value]
+            hyphenation_options.each do |entry|
+              component.option(label: entry[:label], value: entry[:value], selected: selected == entry[:value])
             end
           end
         end
@@ -46,12 +64,12 @@
           )
         end
       end
-    end
-  end
-  dialog.with_footer do
-    render(Primer::ButtonComponent.new(data: { "close-dialog-id": MODAL_ID })) { I18n.t(:button_cancel) }
-    render(Primer::ButtonComponent.new(
+    end %>
+  <% end %>
+  <% dialog.with_footer do %>
+    <%= render(Primer::ButtonComponent.new(data: { "close-dialog-id": MODAL_ID })) { I18n.t(:button_cancel) } %>
+    <%= render(Primer::ButtonComponent.new(
       scheme: :primary, type: :submit, form: GENERATE_PDF_FORM_ID,
-      data: { "close-dialog-id": MODAL_ID })) { I18n.t("pdf_generator.dialog.submit") }
-  end
-end %>
+      data: { "close-dialog-id": MODAL_ID })) { I18n.t("pdf_generator.dialog.submit") } %>
+  <% end %>
+<% end %>

@@ -55,34 +55,45 @@ module WorkPackages
           work_package.subject
         end
 
-        def generate_selects
+        def templates_default
+          templates_options[0]
+        end
+
+        def templates_options
           [
             {
-              name: "hyphenation",
-              label: I18n.t("pdf_generator.dialog.hyphenation.label"),
-              caption: I18n.t("pdf_generator.dialog.hyphenation.caption"),
-              options: hyphenation_options
+              label: I18n.t("pdf_generator.dialog.templates.template_attributes.label"),
+              caption: I18n.t("pdf_generator.dialog.templates.template_attributes.caption"),
+              value: "attributes"
             },
             {
-              name: "paper_size",
-              label: I18n.t("pdf_generator.dialog.paper_size.label"),
-              caption: I18n.t("pdf_generator.dialog.paper_size.caption"),
-              options: paper_size_options
+              label: I18n.t("pdf_generator.dialog.templates.template_contract.label"),
+              caption: I18n.t("pdf_generator.dialog.templates.template_contract.caption"),
+              value: "contract"
             }
           ]
+        end
+
+        def hyphenation_default
+          hyphenation_language_by_locale || hyphenation_options[0]
+        end
+
+        def hyphenation_language_by_locale
+          search_locale = I18n.locale.to_s
+          hyphenation_options.find { |lang| lang[:value] == search_locale }
         end
 
         def hyphenation_options
           # This is a list of languages that are supported by the hyphenation library
           # https://rubygems.org/gems/text-hyphen
           # The labels are the language names in the language itself (NOT to be put I18n)
-          supported_languages = [
+          [
+            { label: "-", value: "" },
             { label: "Català", value: "ca" },
             { label: "Dansk", value: "da" },
             { label: "Deutsch", value: "de" },
             { label: "Eesti", value: "et" },
-            { label: "English (UK)", value: "en_uk" },
-            { label: "English (USA)", value: "en_us" },
+            { label: "English", value: "en" },
             { label: "Español", value: "es" },
             { label: "Euskara", value: "eu" },
             { label: "Français", value: "fr" },
@@ -104,22 +115,6 @@ module WorkPackages
             { label: "Čeština", value: "cs" },
             { label: "Монгол", value: "mn" },
             { label: "Русский", value: "ru" }
-          ]
-
-          [{ value: "", label: "Off", default: true }].concat(supported_languages)
-        end
-
-        def paper_size_options
-          [
-            { label: "A4", value: "A4", default: true },
-            { label: "A3", value: "A3" },
-            { label: "A2", value: "A2" },
-            { label: "A1", value: "A1" },
-            { label: "A0", value: "A0" },
-            { label: "Executive", value: "EXECUTIVE" },
-            { label: "Folio", value: "FOLIO" },
-            { label: "Letter", value: "LETTER" },
-            { label: "Tabloid", value: "TABLOID" }
           ]
         end
       end

@@ -6,11 +6,11 @@
         label: entry[:label],
         caption: entry[:caption],
         size: :medium,
-        input_width: :small,
-        value: entry[:options].find { |e| e[:default] }[:value])
+        input_width: :small)
           ) do |component|
+        selected = entry[:options].find { |e| e[:default] }[:value]
         entry[:options].each do |entry|
-          component.option(label: entry[:label], value: entry[:value])
+          component.option(label: entry[:label], value: entry[:value], selected: selected == entry[:value])
         end
       end %>
     <% end %>
