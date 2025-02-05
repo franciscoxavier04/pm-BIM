@@ -110,60 +110,28 @@ export class HoverCardTriggerService {
     this.loadAndShowHoverCard(el, turboFrameUrl);
   }
 
-  private loadAndShowHoverCard(el:HTMLElement, turboFrameUrl:string) {
-    const overlay = document.getElementById('hover-card-overlay');
+  private loadAndShowHoverCard(targetEl:HTMLElement, turboFrameUrl:string) {
+    const overlay = this.getAndResetOverlay();
     if (!overlay) { return; }
 
-    overlay.innerHTML = '';
-
-    const div = document.createElement('div');
-    div.className = 'op-hover-card';
-    overlay.appendChild(div);
-
-    const turboFrame = document.createElement('turbo-frame');
-    turboFrame.id = 'op-hover-card-body';
-    div.appendChild(turboFrame);
-    turboFrame.setAttribute('src', turboFrameUrl);
+    const { turboFrame, popover } = this.constructPopover(overlay, turboFrameUrl);
 
     this.isShowingHoverCard = true;
-    this.previousTarget = el;
+    this.previousTarget = targetEl;
 
-    this.setOpacity(div, 0);
+    this.setOpacity(popover, 0);
 
     turboFrame.addEventListener('turbo:frame-load', () => {
-      void this.reposition(div, el);
+      void this.reposition(popover, targetEl);
 
       // Content has been loaded, card has been positioned. Show it!
-      this.setOpacity(div, 1);
+      this.setOpacity(popover, 1);
+      popover.showPopover();
     });
   }
 
   private setOpacity(element:HTMLElement, opacity:number) {
     element.style.opacity = opacity.toString();
-  }
-
-  private async reposition(element:HTMLElement, target:HTMLElement) {
-    const floatingEl = element;
-
-    const { x, y } = await computePosition(
-      target,
-      floatingEl,
-      {
-        placement: 'top',
-        middleware: [
-          flip({
-            mainAxis: true,
-            crossAxis: true,
-            fallbackAxisSideDirection: 'start',
-          }),
-          shift({ limiter: limitShift() }),
-        ],
-      },
-    );
-    Object.assign(floatingEl.style, {
-      left: `${x}px`,
-      top: `${y}px`,
-    });
   }
 
   // Should be called when the mouse leaves the hover-zone so that we no longer attempt ot display the hover card.
@@ -197,9 +165,7 @@ export class HoverCardTriggerService {
     // It is important to check if we are currently showing a hover card. If we closed the modal service without
     // doing so, we might accidentally close another modal (e.g. share dialog).
     if (this.isShowingHoverCard && !this.mouseInModal) {
-      const overlay = document.getElementById('hover-card-overlay');
-      if (!overlay) { return; }
-      overlay.innerHTML = '';
+      this.getAndResetOverlay();
 
       this.isShowingHoverCard = false;
       // Allow opening this target once more, since it has been orderly closed
@@ -207,7 +173,55 @@ export class HoverCardTriggerService {
     }
   }
 
+  private getAndResetOverlay() {
+    const overlay = document.getElementById('hover-card-overlay');
+    if (overlay) {
+      overlay.innerHTML = '';
+    }
+
+    return overlay;
+  }
+
   private parseHoverCardUrl(el:HTMLElement) {
     return el.getAttribute('data-hover-card-url');
+  }
+
+  private async reposition(element:HTMLElement, target:HTMLElement) {
+    const floatingEl = element;
+
+    const { x, y } = await computePosition(
+      target,
+      floatingEl,
+      {
+        placement: 'top',
+        middleware: [
+          flip({
+            mainAxis: true,
+            crossAxis: true,
+            fallbackAxisSideDirection: 'start',
+          }),
+          shift({ limiter: limitShift() }),
+        ],
+      },
+    );
+    Object.assign(floatingEl.style, {
+      left: `${x}px`,
+      top: `${y}px`,
+    });
+  }
+
+  private constructPopover(overlay:HTMLElement, turboFrameUrl:string) {
+    const popover = document.createElement('div');
+    popover.className = 'op-hover-card';
+    popover.setAttribute('popover', 'auto');
+
+    const turboFrame = document.createElement('turbo-frame');
+    turboFrame.id = 'op-hover-card-body';
+    popover.appendChild(turboFrame);
+    turboFrame.setAttribute('src', turboFrameUrl);
+
+    overlay.appendChild(popover);
+
+    return { turboFrame, popover };
   }
 }
