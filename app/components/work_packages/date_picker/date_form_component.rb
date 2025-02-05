@@ -50,16 +50,9 @@ module WorkPackages
 
       private
 
-      def container_classes(name, type)
-        classes = "wp-datepicker-dialog-date-form--field-container"
-        case type
-        when :button
-          classes += " wp-datepicker-dialog-date-form--field-container_hidden" if show_text_field?(name)
-        when :text_field
-          classes += " wp-datepicker-dialog-date-form--field-container_hidden" unless show_text_field?(name)
-        else
-          # Do nothing
-        end
+      def container_classes(name)
+        classes = "wp-datepicker-dialog-date-form--date-container"
+        classes += " wp-datepicker-dialog-date-form--date-container_date-field-hidden" unless show_text_field?(name)
 
         classes
       end
