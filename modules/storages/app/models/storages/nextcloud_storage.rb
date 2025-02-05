@@ -70,6 +70,10 @@ module Storages
       authentication_method == "oauth2_sso"
     end
 
+    def audience
+      nextcloud_audience
+    end
+
     def configuration_checks
       {
         storage_oauth_client_configured: oauth_client.present?,

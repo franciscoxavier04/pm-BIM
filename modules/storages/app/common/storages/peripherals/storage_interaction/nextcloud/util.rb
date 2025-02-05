@@ -70,7 +70,9 @@ module Storages
               case auth_strategy.key
               when :basic_auth
                 ServiceResult.success(result: storage.username)
-              when :oauth_user_token
+              when :oauth_user_token || :sso_user_token
+                # README: So, this might lead to problems. How can we ensure, that at this point in time,
+                # the remote identity is already created for token exchange?
                 origin_user_id = RemoteIdentity.where(user_id: auth_strategy.user, oauth_client: storage.oauth_client)
                                                .pick(:origin_user_id)
                 if origin_user_id.present?

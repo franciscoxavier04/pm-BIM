@@ -37,10 +37,24 @@ module Storages
             ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::BasicAuth.strategy
           end
 
-          UserBound = ->(user:) do
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-              .strategy
-              .with_user(user)
+          UserBound = ->(user:, storage:) do
+            # README: This check does not match for user that are only hijacked by an IDP based login.
+            token_exchange_preferred = storage.audience.present? && user.authentication_provider.present?
+
+            if token_exchange_preferred
+              ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken
+                .strategy
+                .with_user(user)
+            elsif storage.oauth_configuration.present?
+              # README: This allows for potentially optional configuration of OAuth authentication method.
+              ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
+                .strategy
+                .with_user(user)
+            else
+              # README: If for a user - storage combination no possible authentication method is found, the
+              # noop strategy will result in non authorized requests.
+              ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Noop.strategy
+            end
           end
         end
       end

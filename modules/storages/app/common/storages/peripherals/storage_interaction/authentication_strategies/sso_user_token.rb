@@ -32,17 +32,34 @@ module Storages
   module Peripherals
     module StorageInteraction
       module AuthenticationStrategies
-        module OneDriveStrategies
-          UserLess = -> do
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthClientCredentials.strategy
+        class SsoUserToken
+          def self.strategy
+            Strategy.new(:sso_user_token)
           end
 
-          UserBound = ->(user:, storage:) do
-            # README: OneDrive storages won't support any authentication method switching - related to the fact,
-            # that we don't yet plan to rewrite the configuration form yet.
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-              .strategy
-              .with_user(user)
+          def initialize(user)
+            @user = user
+          end
+
+          def call(storage:, http_options: {}, &)
+            # README: important remark: this code will NOT automatically refresh, if the token does not have
+            # information about the expiration date. The question is, IF we want to support this case.
+            # In the case above, the token will be used without refresh, which will lead to an unauthorized response
+            # once the token is no longer valid. This can only be solved right now by logging out
+            # and in again - which will replace the account token itself.
+            # Open question: Do we want to support this case?
+            OpenIDConnect::UserTokens::FetchService
+              .new(user: @user)
+              .access_token_for(audience: storage.audience)
+              .either(
+                ->(token) do
+                  opts = http_options.deep_merge({ headers: { "Authorization" => "Bearer #{token}" } })
+                  yield OpenProject.httpx.with(opts)
+                end,
+                ->(error) do
+                  Failures::Builder.call(code: :unauthorized, log_message: error.message)
+                end
+              )
           end
         end
       end

@@ -42,6 +42,8 @@ module Storages
             AuthenticationStrategies::BasicAuth.new
           when :oauth_user_token
             AuthenticationStrategies::OAuthUserToken.new(strategy.user)
+          when :sso_user_token
+            AuthenticationStrategies::SsoUserToken.new(strategy.user)
           when :oauth_client_credentials
             AuthenticationStrategies::OAuthClientCredentials.new(strategy.use_cache)
           else
