@@ -9,7 +9,7 @@ title: Spacings
 tokens = JSON.parse File.read(Rails.root.join("frontend/src/app/spot/styles/tokens/dist/tokens.json"))
 tokens
   .select { |k, _v| k.start_with?("spot-spacing-") }
-  .sort_by { |k,| k.split("-")[2].gsub("_", ".").to_f }
+  .sort_by { |k,| k.split("-")[2].tr("_", ".").to_f }
   .each do |name, value|
  %>
 <div class="spacings--spacing">

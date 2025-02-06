@@ -48,7 +48,7 @@ See COPYRIGHT and LICENSE files for more details.
   <%= hidden_field_tag "permissions[0]", "", id: nil %>
 
   <% group_permissions_by_module(@permissions).each do |mod, mod_permissions| %>
-    <% module_name = mod.blank? ? "form--" + I18n.t("attributes.project") : "form--" + l_or_humanize(mod, prefix: "project_module_").gsub(" ", "_") %>
+    <% module_name = mod.blank? ? "form--" + I18n.t("attributes.project") : "form--" + l_or_humanize(mod, prefix: "project_module_").tr(" ", "_") %>
     <% escaped_name = module_name.parameterize %>
     <fieldset class="form--fieldset -collapsible" id="<%= escaped_name %>">
       <legend class="form--fieldset-legend">
