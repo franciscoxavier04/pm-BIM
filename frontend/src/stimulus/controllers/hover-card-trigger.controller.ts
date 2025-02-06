@@ -58,10 +58,6 @@ export default class HoverCardTriggerController extends ApplicationController {
     this.setupListener();
   }
 
-  disconnect() {
-    super.disconnect();
-  }
-
   setupListener() {
     jQuery(this.element).on('mouseover', '.op-hover-card--preview-trigger', (e) => {
       e.preventDefault();
