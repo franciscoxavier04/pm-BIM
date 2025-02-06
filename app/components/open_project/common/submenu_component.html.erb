@@ -111,11 +111,7 @@
             classes: "op-submenu--footer-action"
           ) do |button|
             button.with_leading_visual_icon(icon: "plus")
-            if @create_btn_options[:btn_text].present?
-              @create_btn_options[:btn_text]
-            else
-              I18n.t("label_#{@create_btn_options[:module_key]}")
-            end
+            @create_btn_options[:btn_text].presence || I18n.t("label_#{@create_btn_options[:module_key]}")
           end %>
     </div>
   <% end %>

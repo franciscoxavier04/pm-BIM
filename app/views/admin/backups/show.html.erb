@@ -41,7 +41,7 @@ See COPYRIGHT and LICENSE files for more details.
 
     <div class="wiki">
       <ul>
-        <% Token::Backup.all.includes(:user).each do |token| %>
+        <% Token::Backup.includes(:user).each do |token| %>
           <li>
             <% if current_user.allowed_globally?(:manage_user) %>
               <%= link_to token.user.name, edit_user_path(token.user) %>

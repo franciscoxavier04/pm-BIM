@@ -72,5 +72,5 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
 <% end %>
 
-<%= render partial: "pagination", locals: { pagination_previous_date: @pagination_previous_date, pagination_next_date: @pagination_next_date } unless params[:work_packages].present? %>
+<%= render partial: "pagination", locals: { pagination_previous_date: @pagination_previous_date, pagination_next_date: @pagination_next_date } if params[:work_packages].blank? %>
 <% html_title(t(:label_search)) -%>

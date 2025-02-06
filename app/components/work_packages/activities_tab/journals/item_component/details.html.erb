@@ -19,7 +19,7 @@
           render_details(details_container)
         end
       else
-        if has_details? && !journal.notes.present?
+        if has_details? && journal.notes.blank?
           render_details_header(details_container)
         end
         render_details(details_container)

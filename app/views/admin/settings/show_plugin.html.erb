@@ -34,7 +34,7 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_title { @page_title }
     header.with_breadcrumbs(
       [{ href: admin_index_path, text: t("label_administration") },
-       *(@breadcrumb_elements if @breadcrumb_elements.present?),
+       *@breadcrumb_elements.presence,
        @page_title]
     )
   end

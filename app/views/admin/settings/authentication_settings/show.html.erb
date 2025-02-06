@@ -42,7 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= styled_form_tag(admin_settings_authentication_path, method: :patch) do %>
   <section class="form--section">
     <fieldset class="form--fieldset">
-      <legend class="form--fieldset-legend"><%= I18n.t(:general, scope: [:settings]) %></legend>
+      <legend class="form--fieldset-legend"><%= I18n.t("settings.general") %></legend>
       <div class="form--field"><%= setting_check_box :login_required %></div>
 
       <div class="form--field"><%= setting_select :self_registration, [[t(:label_disabled), Setting::SelfRegistration.disabled.to_s],
@@ -88,7 +88,7 @@ See COPYRIGHT and LICENSE files for more details.
     </fieldset>
 
     <fieldset class="form--fieldset">
-      <legend class="form--fieldset-legend"><%= I18n.t(:passwords, scope: [:settings]) %></legend>
+      <legend class="form--fieldset-legend"><%= I18n.t("settings.passwords") %></legend>
       <% if !OpenProject::Configuration.disable_password_login? %>
         <div class="form--field -wide-label"><%= setting_text_field :password_min_length, size: 6, container_class: "-xslim" %></div>
         <div class="form--field -wide-label">
@@ -123,7 +123,7 @@ See COPYRIGHT and LICENSE files for more details.
 
     <% unless OpenProject::Configuration.disable_password_login? %>
       <fieldset class="form--fieldset">
-        <legend class="form--fieldset-legend"><%= I18n.t(:brute_force_prevention, scope: [:settings]) %></legend>
+        <legend class="form--fieldset-legend"><%= I18n.t("settings.brute_force_prevention") %></legend>
         <div class="form--field -wide-label"><%= setting_text_field :brute_force_block_after_failed_logins, container_class: "-xslim" %>
           <span class="form--field-instructions">
             <%= t(:text_hint_disable_with_0) %>
@@ -134,7 +134,7 @@ See COPYRIGHT and LICENSE files for more details.
     <% end %>
 
     <fieldset class="form--fieldset">
-      <legend class="form--fieldset-legend"><%= I18n.t(:session, scope: [:settings]) %></legend>
+      <legend class="form--fieldset-legend"><%= I18n.t("settings.session") %></legend>
       <div class="form--field -wide-label"><%= setting_select :autologin,
                                                               ([[t(:label_disabled), 0]] +
                                                                 Settings::Definition[:autologin].allowed.collect do |days|
@@ -153,7 +153,7 @@ See COPYRIGHT and LICENSE files for more details.
     </fieldset>
 
     <fieldset class="form--fieldset">
-      <legend class="form--fieldset-legend"><%= I18n.t(:other, scope: [:settings]) %></legend>
+      <legend class="form--fieldset-legend"><%= I18n.t("settings.other") %></legend>
       <div class="form--field -wide-label"><%= setting_check_box :log_requesting_user %></div>
     </fieldset>
   </section>

@@ -92,7 +92,7 @@ See COPYRIGHT and LICENSE files for more details.
         <span class="form--check-box-field-container -slim">
           <%= check_box_tag "toggle_consent_time",
                             "1",
-                            !Setting.consent_time.present?,
+                            Setting.consent_time.blank?,
                             id: "toggle_consent_time" %>
         </span>
       <% end %>
