@@ -29,10 +29,10 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% content_controller "project-storage-form",
                       dynamic: true,
-                      'project-storage-form-folder-mode-value': @project_storage.project_folder_mode,
-                      'project-storage-form-placeholder-folder-name-value': t(:"storages.label_no_selected_folder"),
-                      'project-storage-form-not-logged-in-validation-value': t(:"storages.instructions.not_logged_into_storage"),
-                      'project-storage-form-last-project-folders-value': @last_project_folders %>
+                      "project-storage-form-folder-mode-value": @project_storage.project_folder_mode,
+                      "project-storage-form-placeholder-folder-name-value": t(:"storages.label_no_selected_folder"),
+                      "project-storage-form-not-logged-in-validation-value": t(:"storages.instructions.not_logged_into_storage"),
+                      "project-storage-form-last-project-folders-value": @last_project_folders %>
 
 <div class="form--field -required">
   <%= f.label :storage_id, class: "form--label -bold" do %>
@@ -45,7 +45,7 @@ See COPYRIGHT and LICENSE files for more details.
           :span,
           storage.name,
           data: {
-            'project-storage-form-target': "storage",
+            "project-storage-form-target": "storage",
             storage: {
               name: storage.name,
               id: storage.id,
@@ -61,7 +61,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= f.hidden_field :project_folder_id,
                    data: {
-                     'project-storage-form-target': "projectFolderIdInput"
+                     "project-storage-form-target": "projectFolderIdInput"
                    } %>
 
 <div class="form--field -required">
@@ -124,7 +124,7 @@ See COPYRIGHT and LICENSE files for more details.
     data-project-storage-form-target="projectFolderSection">
     <%= styled_button_tag class: "button_no-margin",
                           data: {
-                            'project-storage-form-target': "selectProjectFolderButton",
+                            "project-storage-form-target": "selectProjectFolderButton",
                             action: "project-storage-form#selectProjectFolder"
                           },
                           type: "button" do %>
@@ -136,7 +136,7 @@ See COPYRIGHT and LICENSE files for more details.
                                 input: storage_login_input(@project_storage.storage)
                               },
                               data: {
-                                'project-storage-form-target': "loginButton"
+                                "project-storage-form-target": "loginButton"
                               } %>
     <span
       data-project-storage-form-target="selectedFolderText">...</span>
@@ -146,7 +146,7 @@ See COPYRIGHT and LICENSE files for more details.
                     t(:"storages.instructions.empty_project_folder_validation"),
                     class: "form--field-error -with-bottom-spacing",
                     data: {
-                      'project-storage-form-target': "projectFolderIdValidation"
+                      "project-storage-form-target": "projectFolderIdValidation"
                     } %>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 <%= render(
       Primer::Alpha::Dialog.new(
-        title: t(:'queries.configure_view.heading'),
+        title: t(:"queries.configure_view.heading"),
         size: :large,
         id: MODAL_ID,
         # Hack to give the draggable autcompleter (ng-select) bound to the dialog
@@ -33,9 +33,9 @@
                                                 id: COLUMN_HTML_ID,
                                                 dragAreaName: "#{COLUMN_HTML_ID}_dragarea",
                                                 formControlId: "#{COLUMN_HTML_ID}_autocompleter",
-                                                inputLabel: I18n.t(:'queries.configure_view.columns.input_label'),
-                                                inputPlaceholder: I18n.t(:'queries.configure_view.columns.input_placeholder'),
-                                                dragAreaLabel: I18n.t(:'queries.configure_view.columns.drag_area_label'),
+                                                inputLabel: I18n.t(:"queries.configure_view.columns.input_label"),
+                                                inputPlaceholder: I18n.t(:"queries.configure_view.columns.input_placeholder"),
+                                                dragAreaLabel: I18n.t(:"queries.configure_view.columns.drag_area_label"),
                                                 appendToComponent: true
                                               } %>
           <% end %>

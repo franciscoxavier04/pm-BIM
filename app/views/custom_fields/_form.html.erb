@@ -53,7 +53,7 @@ See COPYRIGHT and LICENSE files for more details.
                  disabled: !@custom_field.new_record?,
                  data: {
                    action: "admin--custom-fields#formatChanged",
-                   'admin--custom-fields-target': "format"
+                   "admin--custom-fields-target": "format"
                  } %>
     <div class="form--field-extra-actions" <%= format_dependent.attributes(:enterpriseBanner) %>>
       <%= angular_component_tag "opce-enterprise-banner",

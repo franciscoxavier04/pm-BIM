@@ -42,7 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= styled_form_tag(admin_settings_users_path, method: :patch, class: "admin-settings--form") do %>
 
   <fieldset class="form--fieldset">
-    <legend class="form--fieldset-legend"><%= t(:'settings.user.default_preferences') %></legend>
+    <legend class="form--fieldset-legend"><%= t(:"settings.user.default_preferences") %></legend>
 
     <div class="form--field" id="setting_default_language">
       <%= setting_select :default_language, all_lang_options_for_select, container_class: "-slim" %>
@@ -59,7 +59,7 @@ See COPYRIGHT and LICENSE files for more details.
   </fieldset>
 
   <fieldset class="form--fieldset">
-    <legend class="form--fieldset-legend"><%= t(:'settings.user.display_format') %></legend>
+    <legend class="form--fieldset-legend"><%= t(:"settings.user.display_format") %></legend>
 
     <div class="form--field">
       <%= setting_select :user_format, @options[:user_format], container_class: "-slim" %>
@@ -68,7 +68,7 @@ See COPYRIGHT and LICENSE files for more details.
   </fieldset>
 
   <fieldset class="form--fieldset">
-    <legend class="form--fieldset-legend"><%= t(:'settings.user.deletion') %></legend>
+    <legend class="form--fieldset-legend"><%= t(:"settings.user.deletion") %></legend>
     <div class="form--field">
       <%= setting_check_box :users_deletable_by_admins %>
     </div>

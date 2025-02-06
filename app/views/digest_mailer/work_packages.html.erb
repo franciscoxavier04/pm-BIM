@@ -10,9 +10,9 @@
     <td>
       <%= render partial: "mailer/mailer_header",
                  locals: {
-                   summary: "#{I18n.t(:'mail.digests.you_have')} #{digest_summary_text(@notification_ids.length, @mentioned_count)}",
+                   summary: "#{I18n.t(:"mail.digests.you_have")} #{digest_summary_text(@notification_ids.length, @mentioned_count)}",
                    button_href: notifications_url,
-                   button_text: I18n.t(:'mail.notification.center'),
+                   button_text: I18n.t(:"mail.notification.center"),
                    user: @user,
                  } %>
 
@@ -43,7 +43,7 @@
       <%= render layout: "mailer/notification_settings_table",
                  locals: {
                    button_url: my_reminders_url,
-                   button_text: I18n.t(:'mail.notification.settings')
+                   button_text: I18n.t(:"mail.notification.settings")
                  } do %>
         <% if @aggregated_notifications.length > DigestMailer::MAX_SHOWN_WORK_PACKAGES %>
           <table>
@@ -63,7 +63,7 @@
                       <a href="<%= notifications_url %>"
                          target="_blank"
                          style="color: #1A67A3; text-decoration: none; font-size: 14px;white-space: nowrap;">
-                        <%= I18n.t(:'mail.work_packages.see_all') %>
+                        <%= I18n.t(:"mail.work_packages.see_all") %>
                       </a>
                     </td>
                   </tr>

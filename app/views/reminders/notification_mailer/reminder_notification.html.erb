@@ -12,7 +12,7 @@
                  locals: {
                    summary: reminder_summary_text,
                    button_href: notifications_url,
-                   button_text: I18n.t(:'mail.notification.center'),
+                   button_text: I18n.t(:"mail.notification.center"),
                    user: @user,
                  } %>
 
@@ -39,7 +39,7 @@
       <%= render layout: "mailer/notification_settings_table",
                  locals: {
                    button_url: my_reminders_url,
-                   button_text: I18n.t(:'mail.notification.settings')
+                   button_text: I18n.t(:"mail.notification.settings")
                  } do %>
       <% end %>
 

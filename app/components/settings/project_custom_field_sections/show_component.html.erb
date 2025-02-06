@@ -16,7 +16,7 @@
           section_header_container.with_column(flex_layout: true, justify_content: :flex_end) do |actions_container|
             actions_container.with_column do
               render(Primer::Alpha::ActionMenu.new(data: { test_selector: "project-custom-field-section-action-menu" })) do |menu|
-                menu.with_show_button(icon: "kebab-horizontal", 'aria-label': t("settings.project_attributes.label_section_actions"), scheme: :invisible)
+                menu.with_show_button(icon: "kebab-horizontal", "aria-label": t("settings.project_attributes.label_section_actions"), scheme: :invisible)
                 edit_action_item(menu)
                 move_actions(menu)
                 if @project_custom_fields.empty?
@@ -40,7 +40,7 @@
         end
       end
       if @project_custom_fields.empty?
-        component.with_row(data: { 'empty-list-item': true }) do
+        component.with_row(data: { "empty-list-item": true }) do
           flex_layout(align_items: :center, justify_content: :space_between) do |empty_list_container|
             empty_list_container.with_column(ml: 4, mr: 2) do
               render(Primer::Beta::Text.new(color: :subtle)) { t("settings.project_attributes.label_no_project_custom_fields") }

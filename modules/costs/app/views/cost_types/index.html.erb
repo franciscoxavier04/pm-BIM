@@ -58,7 +58,7 @@ See COPYRIGHT and LICENSE files for more details.
         <legend><%= t(:label_filter_plural) %></legend>
         <ul class="simple-filters--filters">
           <li class="simple-filters--filter">
-            <%= styled_label_tag :fixed_date, t(:'attributes.fixed_date'), class: "simple-filters--filter-name" %>
+            <%= styled_label_tag :fixed_date, t(:"attributes.fixed_date"), class: "simple-filters--filter-name" %>
             <div class='simple-filters--filter-value'>
               <%= angular_component_tag "opce-basic-single-date-picker",
                                         inputs: {

@@ -26,7 +26,7 @@
         grid.with_area(
           :notes,
           display: display_notes_input_value,
-          data: { 'meeting-agenda-item-form-target': "notesInput" }
+          data: { "meeting-agenda-item-form-target": "notesInput" }
         ) do
           render(MeetingAgendaItem::Notes.new(f))
         end
@@ -39,7 +39,7 @@
                   scheme: :secondary,
                   tag: :a,
                   href: @cancel_path,
-                  data: { 'turbo-stream': true }
+                  data: { "turbo-stream": true }
                 )
               ) do |_c|
                 t("button_cancel")

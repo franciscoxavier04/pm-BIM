@@ -39,7 +39,7 @@
               }
             ),
             csrf_token: form_authenticity_token,
-            data: { 'turbo-method': :put, 'turbo-stream': true,
+            data: { "turbo-method": :put, "turbo-stream": true,
                     test_selector: "toggle-project-custom-field-mapping-#{@project_custom_field.id}" },
             checked: active_in_project?,
             enabled: !@project_custom_field.required?, # required fields cannot be disabled

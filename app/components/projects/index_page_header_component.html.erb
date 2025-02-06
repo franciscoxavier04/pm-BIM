@@ -1,7 +1,7 @@
 <%= component_wrapper(tag: "turbo-frame") do %>
   <%=
     render(Primer::OpenProject::PageHeader.new(state: @state)) do |header|
-      header.with_title(data: { 'test-selector': "project-query-name" }) do |title|
+      header.with_title(data: { "test-selector": "project-query-name" }) do |title|
         title.with_editable_form(
           model: query,
           update_path: @query.new_record? ? project_queries_path(projects_query_params) : project_query_path(@query, projects_query_params),
@@ -136,7 +136,7 @@
 
         menu.with_item(
           tag: :a,
-          label: t(:'queries.configure_view.heading'),
+          label: t(:"queries.configure_view.heading"),
           href: configure_view_modal_project_queries_path(projects_query_params),
           content_arguments: { data: { controller: "async-dialog" } }
         ) do |item|

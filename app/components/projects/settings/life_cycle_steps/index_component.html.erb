@@ -33,7 +33,7 @@
               end
             end
             header_container.with_column(flex_layout: true, justify_content: :flex_end) do |actions_container|
-              actions_container.with_column(data: { 'projects--settings--border-box-filter-target': "hideWhenFiltering" }) do
+              actions_container.with_column(data: { "projects--settings--border-box-filter-target": "hideWhenFiltering" }) do
                 render(
                   Primer::Beta::Button.new(
                     tag: :a,
@@ -41,15 +41,15 @@
                     scheme: :invisible,
                     font_weight: :bold,
                     color: :subtle,
-                    'aria-label': t("projects.settings.actions.label_enable_all"),
-                    data: { 'turbo-method': :post, test_selector: "enable-all-life-cycle-steps" }
+                    "aria-label": t("projects.settings.actions.label_enable_all"),
+                    data: { "turbo-method": :post, test_selector: "enable-all-life-cycle-steps" }
                   )
                 ) do |button|
                   button.with_leading_visual_icon(icon: "check-circle", color: :subtle)
                   t("projects.settings.actions.label_enable_all")
                 end
               end
-              actions_container.with_column(data: { 'projects--settings--border-box-filter-target': "hideWhenFiltering" }) do
+              actions_container.with_column(data: { "projects--settings--border-box-filter-target": "hideWhenFiltering" }) do
                 render(
                   Primer::Beta::Button.new(
                     tag: :a,
@@ -57,8 +57,8 @@
                     scheme: :invisible,
                     font_weight: :bold,
                     color: :subtle,
-                    'aria-label': t("projects.settings.actions.label_disable_all"),
-                    data: { 'turbo-method': :post, test_selector: "disable-all-life-cycle-steps" }
+                    "aria-label": t("projects.settings.actions.label_disable_all"),
+                    data: { "turbo-method": :post, test_selector: "disable-all-life-cycle-steps" }
                   )
                 ) do |button|
                   button.with_leading_visual_icon(icon: "x-circle", color: :subtle)
@@ -75,7 +75,7 @@
         else
           life_cycle_definitions_and_step_active.each do |definition, active|
             component.with_row(
-              data: { 'projects--settings--border-box-filter-target': "searchItem" },
+              data: { "projects--settings--border-box-filter-target": "searchItem" },
               test_selector: "project-life-cycle-step-#{definition.id}"
             ) do
               render(Projects::Settings::LifeCycleSteps::StepComponent.new(definition:, active?: active))

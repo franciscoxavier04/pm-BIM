@@ -30,7 +30,7 @@
       flex.with_row(
         mt: 2,
         hidden: provider.metadata_url.blank?,
-        data: { value: :url, 'show-when-value-selected-target': "effect" }
+        data: { value: :url, "show-when-value-selected-target": "effect" }
       ) do
         render(Saml::Providers::MetadataUrlForm.new(form, provider:))
       end
@@ -38,7 +38,7 @@
       flex.with_row(
         mt: 2,
         hidden: provider.metadata_xml.blank?,
-        data: { value: :xml, 'show-when-value-selected-target': "effect" }
+        data: { value: :xml, "show-when-value-selected-target": "effect" }
       ) do
         render(Saml::Providers::MetadataXmlForm.new(form, provider:))
       end

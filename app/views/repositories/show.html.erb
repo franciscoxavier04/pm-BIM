@@ -52,7 +52,7 @@ See COPYRIGHT and LICENSE files for more details.
         id: "revision_selector",
         class: "form -vertical",
         data: {
-          'repository-navigation-target': "form",
+          "repository-navigation-target": "form",
         }
       ) do %>
     <li class="toolbar-item toolbar-input-group hidden-for-mobile">
@@ -64,7 +64,7 @@ See COPYRIGHT and LICENSE files for more details.
                          id: "revision-identifier-input",
                          placeholder: t(:label_revision),
                          data: {
-                           'repository-navigation-target': "revision",
+                           "repository-navigation-target": "revision",
                            action: "keydown.enter->repository-navigation#sendForm"
                          } %>
     </li>
@@ -78,7 +78,7 @@ See COPYRIGHT and LICENSE files for more details.
                        include_blank: "--- #{t(:actionview_instancetag_blank_option)} ---",
                        id: "revision-branch-select",
                        data: {
-                         'repository-navigation-target': "branch",
+                         "repository-navigation-target": "branch",
                          action: "repository-navigation#applyValue"
                        } %>
       </li>
@@ -93,7 +93,7 @@ See COPYRIGHT and LICENSE files for more details.
                        include_blank: "--- #{t(:actionview_instancetag_blank_option)} ---",
                        id: "revision-tag-select",
                        data: {
-                         'repository-navigation-target': "tag",
+                         "repository-navigation-target": "tag",
                          action: "repository-navigation#applyValue"
                        } %>
       </li>

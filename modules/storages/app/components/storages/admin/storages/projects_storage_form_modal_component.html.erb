@@ -71,10 +71,10 @@ See COPYRIGHT and LICENSE files for more details.
               data: {
                 "application-target": "dynamic",
                 controller: "storages--project-folder-mode-form",
-                'storages--project-folder-mode-form-folder-mode-value': @project_storage.project_folder_mode,
-                'storages--project-folder-mode-form-placeholder-folder-name-value': t(:"storages.label_no_selected_folder"),
-                'storages--project-folder-mode-form-not-logged-in-validation-value': t(:"storages.instructions.not_logged_into_storage"),
-                'storages--project-folder-mode-form-last-project-folders-value': @last_project_folders
+                "storages--project-folder-mode-form-folder-mode-value": @project_storage.project_folder_mode,
+                "storages--project-folder-mode-form-placeholder-folder-name-value": t(:"storages.label_no_selected_folder"),
+                "storages--project-folder-mode-form-not-logged-in-validation-value": t(:"storages.instructions.not_logged_into_storage"),
+                "storages--project-folder-mode-form-last-project-folders-value": @last_project_folders
               }
             ) do
               render(Storages::Admin::ProjectStorages::ProjectFolderModeForm.new(form, project_storage:))
@@ -85,7 +85,7 @@ See COPYRIGHT and LICENSE files for more details.
 
       concat(
         render(Primer::Alpha::Dialog::Footer.new(show_divider: false)) do
-          concat(render(Primer::ButtonComponent.new(data: { 'close-dialog-id': dialog_id })) { cancel_button_text })
+          concat(render(Primer::ButtonComponent.new(data: { "close-dialog-id": dialog_id })) { cancel_button_text })
           concat(render(Primer::ButtonComponent.new(scheme: :primary, type: :submit)) { submit_button_text })
         end
       )

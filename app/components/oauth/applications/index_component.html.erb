@@ -6,7 +6,7 @@
           render(
             border_box_container(
               mb: 4, data: {
-                'test-selector': "op-admin-oauth--built-in-applications"
+                "test-selector": "op-admin-oauth--built-in-applications"
               }
             )
           ) do |component|
@@ -21,7 +21,7 @@
                 render(
                   Primer::Beta::Text.new(
                     data: {
-                      'test-selector': "op-admin-oauth--built-in-applications-placeholder"
+                      "test-selector": "op-admin-oauth--built-in-applications-placeholder"
                     }
                   )
                 ) do
@@ -47,7 +47,7 @@
 
           if @other_applications.empty?
             component.with_row do
-              render(Primer::Beta::Text.new(data: { 'test-selector': "op-admin-oauth--applications-placeholder" })) do
+              render(Primer::Beta::Text.new(data: { "test-selector": "op-admin-oauth--applications-placeholder" })) do
                 t("oauth.empty_application_lists")
               end
             end

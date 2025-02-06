@@ -5,10 +5,10 @@
         id: dialog_id,
         title: heading_text,
         data: {
-          'application-target': "dynamic",
+          "application-target": "dynamic",
           controller: "storages--oauth-access-grant-nudge-modal",
-          'storages--oauth-access-grant-nudge-modal-close-button-label-value': I18n.t("button_close"),
-          'storages--oauth-access-grant-nudge-modal-loading-screen-reader-message-value': waiting_title,
+          "storages--oauth-access-grant-nudge-modal-close-button-label-value": I18n.t("button_close"),
+          "storages--oauth-access-grant-nudge-modal-loading-screen-reader-message-value": waiting_title,
         },
         test_selector: "oauth-access-grant-nudge-modal",
         size: :large
@@ -19,7 +19,7 @@
         role: :alert,
         aria: { live: :assertive },
         data: {
-          'storages--oauth-access-grant-nudge-modal-target': "header"
+          "storages--oauth-access-grant-nudge-modal-target": "header"
         },
         visually_hide_title: true
       )
@@ -33,7 +33,7 @@
             Primer::Beta::Text.new(
               display: :none,
               data: {
-                'storages--oauth-access-grant-nudge-modal-target': "loadingIndicator"
+                "storages--oauth-access-grant-nudge-modal-target": "loadingIndicator"
               }
             )
           ) { render(Storages::OpenProjectStorageModalComponent::Body.new(:waiting, waiting_title:)) }
@@ -59,8 +59,8 @@
               scheme: :default,
               size: :medium,
               data: {
-                'close-dialog-id': dialog_id,
-                'storages--oauth-access-grant-nudge-modal-target': "closeButton"
+                "close-dialog-id": dialog_id,
+                "storages--oauth-access-grant-nudge-modal-target": "closeButton"
               }
             )
           ) { cancel_button_text }
@@ -72,7 +72,7 @@
             url: confirm_button_url,
             method: :get,
             data: {
-              'storages--oauth-access-grant-nudge-modal-target': "requestAccessForm"
+              "storages--oauth-access-grant-nudge-modal-target": "requestAccessForm"
             }
           ) do |_form|
             render(
@@ -82,7 +82,7 @@
                 type: :submit,
                 aria: { label: login_button_aria_label },
                 data: {
-                  'storages--oauth-access-grant-nudge-modal-target': "requestAccessButton",
+                  "storages--oauth-access-grant-nudge-modal-target": "requestAccessButton",
                   action: "storages--oauth-access-grant-nudge-modal#requestAccess"
                 }
               )

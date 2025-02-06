@@ -100,7 +100,7 @@
             <div class="form--field-container">
               <% date = action.values.first %>
               <%= angular_component_tag "opce-custom-date-action-admin",
-                                        data: { 'field-value': date.try(:iso8601) || date, 'field-name': input_name } %>
+                                        data: { "field-value": date.try(:iso8601) || date, "field-name": input_name } %>
             </div>
           <% elsif %i(string_property text_property).include?(action.type) %>
             <div class="form--field-container">
@@ -146,7 +146,7 @@
   <div class="form--field">
     <label class="form--label" for="custom-actions-form--add-action">
       <%= op_icon("icon-add icon4") %>
-      <%= I18n.t(:'custom_actions.actions.add') %>
+      <%= I18n.t(:"custom_actions.actions.add") %>
     </label>
     <span class="form--field-container">
       <span class="form--text-field-container -middle">

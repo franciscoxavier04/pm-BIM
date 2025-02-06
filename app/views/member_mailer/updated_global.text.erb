@@ -7,7 +7,7 @@
 
 <%= @message %>
 
-<%= I18n.t(:'mail_member_updated_global.body.roles') %>
+<%= I18n.t(:"mail_member_updated_global.body.roles") %>
 <% @roles.each do |role| %>
   * <%= h(role.name) %>
 <% end %>

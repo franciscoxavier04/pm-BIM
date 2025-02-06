@@ -29,8 +29,8 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% content_controller "storages--storage-form",
                       dynamic: true,
-                      'storages--storage-form-one-drive-placeholder-value': t(:"storages.provider_types.one_drive.name_placeholder"),
-                      'storages--storage-form-nextcloud-placeholder-value': t(:"storages.provider_types.nextcloud.name_placeholder") %>
+                      "storages--storage-form-one-drive-placeholder-value": t(:"storages.provider_types.one_drive.name_placeholder"),
+                      "storages--storage-form-nextcloud-placeholder-value": t(:"storages.provider_types.nextcloud.name_placeholder") %>
 
 <!-- Included form for create and edit operations, please see the controller for comments -->
 <%= error_messages_for @storage %>
@@ -46,7 +46,7 @@ See COPYRIGHT and LICENSE files for more details.
                    container_class: "-slim"
                  },
                  data: {
-                   'storages--storage-form-target': "selectProviderType"
+                   "storages--storage-form-target": "selectProviderType"
                  } %>
     <span class="form--field-instructions"><%= t("storages.instructions.type") %> <%= t("storages.instructions.type_link_text") %></span>
   </div>
@@ -56,7 +56,7 @@ See COPYRIGHT and LICENSE files for more details.
                      placeholder: I18n.t("storages.provider_types.#{@storage}.name_placeholder"),
                      container_class: "-slim",
                      data: {
-                       'storages--storage-form-target': "storageName"
+                       "storages--storage-form-target": "storageName"
                      } %>
     <span class="form--field-instructions"><%= t("storages.instructions.name") %></span>
   </div>

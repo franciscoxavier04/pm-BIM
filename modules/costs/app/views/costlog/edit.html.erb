@@ -45,7 +45,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= labelled_tabular_form_for @cost_entry, url: url, html: { method: method } do |f| %>
   <%= error_messages_for "cost_entry" %>
   <%= back_url_hidden_field_tag %>
-  <%= f.hidden_field :element_id, value: "cost_entry", class: "remote-field--input", data: { 'remote-field-key': "element_id" } %>
+  <%= f.hidden_field :element_id, value: "cost_entry", class: "remote-field--input", data: { "remote-field-key": "element_id" } %>
 
   <div class="form--field -required">
     <%= f.text_field :work_package_id,
@@ -63,7 +63,7 @@ See COPYRIGHT and LICENSE files for more details.
   <div class="form--field -required">
     <%= f.date_picker :spent_on,
                       required: true,
-                      data: { 'remote-field-key': "fixed_date" } %>
+                      data: { "remote-field-key": "fixed_date" } %>
     <label for="cost_entry_spent_on" class="hidden-for-sighted"><%= t(:label_date) %> <%= t(:text_hint_date_format) %></label>
   </div>
   <% if User.current.allowed_in_project? :log_costs, @project %>
@@ -87,7 +87,7 @@ See COPYRIGHT and LICENSE files for more details.
                  {
                    required: true,
                    class: "remote-field--input",
-                   data: { 'remote-field-key': "cost_type_id" }
+                   data: { "remote-field-key": "cost_type_id" }
                  } %></p>
   </div>
   <div class="form--field -required">
@@ -106,7 +106,7 @@ See COPYRIGHT and LICENSE files for more details.
                        suffix: h(suffix),
                        suffix_id: "cost_entry_unit_name",
                        class: "remote-field--input",
-                       data: { 'remote-field-key': "units" },
+                       data: { "remote-field-key": "units" },
                        container_class: "-slim" %>
     <% end %>
   </div>

@@ -21,7 +21,7 @@
                    user: @shared_with_user,
                    summary:,
                    button_href: @url,
-                   button_text: I18n.t(:'mail.sharing.work_packages.open_work_package'),
+                   button_text: I18n.t(:"mail.sharing.work_packages.open_work_package"),
                  } %>
 
       <%= render layout: "mailer/notification_row",
@@ -50,7 +50,7 @@
       <%= render partial: "mailer/notification_settings_table",
                  locals: {
                    button_url: my_reminders_url,
-                   button_text: I18n.t(:'mail.notification.settings')
+                   button_text: I18n.t(:"mail.notification.settings")
                  } %>
 
       <% if @shared_with_user.invited? %>

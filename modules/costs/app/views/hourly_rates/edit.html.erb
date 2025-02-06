@@ -55,7 +55,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= labelled_tabular_form_for @user,
                               url: { action: "update", project_id: @project },
-                              data: { controller: "subform", 'application-target': "dynamic" },
+                              data: { controller: "subform", "application-target": "dynamic" },
                               method: :put do |f| %>
   <%= back_url_hidden_field_tag %>
   <%= error_messages_for "user" %>

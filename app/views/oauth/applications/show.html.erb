@@ -83,13 +83,13 @@ See COPYRIGHT and LICENSE files for more details.
 
   <% if !@application.client_credentials_user_id %>
     <% component.with_attribute(
-         key: I18n.t(:'doorkeeper.auth_url'),
+         key: I18n.t(:"doorkeeper.auth_url"),
          value: oauth_authorization_url
        ) %>
   <% end %>
 
   <% component.with_attribute(
-       key: I18n.t(:'doorkeeper.access_token_url'),
+       key: I18n.t(:"doorkeeper.access_token_url"),
        value: oauth_token_url
      ) %>
 <% end %>

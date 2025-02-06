@@ -62,7 +62,7 @@ See COPYRIGHT and LICENSE files for more details.
 
         collection.with_component(Primer::Alpha::Dialog::Footer.new) do
           component_collection do |footer|
-            footer.with_component(Primer::ButtonComponent.new(data: { 'close-dialog-id': "new-access-token-dialog" })) do
+            footer.with_component(Primer::ButtonComponent.new(data: { "close-dialog-id": "new-access-token-dialog" })) do
               I18n.t("button_cancel")
             end
 
