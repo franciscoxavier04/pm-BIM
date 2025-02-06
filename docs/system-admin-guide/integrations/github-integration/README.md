@@ -1,6 +1,6 @@
 ---
 sidebar_navigation:
-  title: GitHub integration
+  title: GitHub integration - Documentation
   priority: 900
 description: Integrate the GitHub pull request workflow into OpenProject.
 keywords: github integration

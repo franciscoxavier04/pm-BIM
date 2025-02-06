@@ -1,6 +1,6 @@
 ---
 sidebar_navigation:
-  title: GitLab integration
+  title: GitLab integration - Documentation
   priority: 800
 description: Integrate the GitLab merge request and issues into OpenProject.
 keywords: GitLab, GitLab integration, merge request
