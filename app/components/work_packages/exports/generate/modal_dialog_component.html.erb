@@ -7,7 +7,11 @@
   <% dialog.with_body do %>
     <%= primer_form_with(
           url: generate_pdf_work_package_path(work_package),
-          data: { turbo: false },
+          data: {
+            turbo: false,
+            "application-target": "dynamic",
+            controller: "work-packages--export--generate-pdf-form",
+          },
           id: GENERATE_PDF_FORM_ID
         ) do
           flex_layout do |modal_body|
@@ -16,11 +20,22 @@
                        name: "template",
                        label: I18n.t("pdf_generator.dialog.templates.label"),
                        caption: templates_default[:caption],
-                       input_width: :large
+                       input_width: :large,
+                       data: {
+                         "work-packages--export--generate-pdf-form-target": "templates",
+                         action: "change->work-packages--export--generate-pdf-form#templatesChanged"
+                       }
                      )) do |component|
                 selected = templates_default[:value]
                 templates_options.each do |entry|
-                  component.option(label: entry[:label], value: entry[:value], selected: selected == entry[:value])
+                  component.option(
+                    label: entry[:label],
+                    value: entry[:value],
+                    selected: selected == entry[:value],
+                    data: {
+                      caption: entry[:caption]
+                    }
+                  )
                 end
               end
             end
@@ -28,7 +43,7 @@
               render(Primer::Alpha::CheckBox.new(
                        id: "hyphenation_enabled",
                        name: "hyphenation",
-                       checked: true,
+                       checked: false,
                        value: "true",
                        unchecked_value: "false",
                        label: I18n.t("pdf_generator.dialog.hyphenation.label"),

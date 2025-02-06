@@ -29,7 +29,7 @@
 require "spec_helper"
 require "features/work_packages/work_packages_page"
 
-RSpec.describe "work package PDF generator", :js, :selenium, with_flag: { generate_pdf_from_work_package: true } do
+RSpec.describe "work package generate PDF dialog", :js, :selenium do
   let(:user) { create(:admin) }
   let(:project) { create(:project) }
   let(:default_footer_text) { work_package.subject }
@@ -42,7 +42,8 @@ RSpec.describe "work package PDF generator", :js, :selenium, with_flag: { genera
       header_text_right: default_header_text,
       footer_text_center: default_footer_text,
       hyphenation: "",
-      paper_size: "A4"
+      hyphenation_language: "en",
+      template: "attributes"
     }
   end
   let(:download_list) do
@@ -56,6 +57,8 @@ RSpec.describe "work package PDF generator", :js, :selenium, with_flag: { genera
           responsible: user)
   end
   let(:document_generator) { instance_double(WorkPackage::PDFExport::DocumentGenerator) }
+  let(:wp_exporter) { instance_double(WorkPackage::PDFExport::WorkPackageToPdf) }
+  let(:generators) { [document_generator, wp_exporter] }
 
   RSpec::Matchers.define :has_mandatory_params do |expected|
     match do |actual|
@@ -74,16 +77,22 @@ RSpec.describe "work package PDF generator", :js, :selenium, with_flag: { genera
     allow(WorkPackage::PDFExport::DocumentGenerator)
       .to receive(:new)
             .and_return(document_generator)
-    allow(document_generator)
-      .to receive(:initialize)
-            .with(work_package, has_mandatory_params(expected_params))
-    allow(document_generator)
-      .to receive(:export!)
-            .and_return(
-              Exports::Result.new(
-                format: :pdf, title: "filename.pdf", content: "PDF Content", mime_type: "application/pdf"
+    allow(WorkPackage::PDFExport::WorkPackageToPdf)
+      .to receive(:new)
+            .and_return(document_generator)
+
+    generators.each do |generator|
+      allow(generator)
+        .to receive(:initialize)
+              .with(work_package, has_mandatory_params(expected_params))
+      allow(generator)
+        .to receive(:export!)
+              .and_return(
+                Exports::Result.new(
+                  format: :pdf, title: "filename.pdf", content: "PDF Content", mime_type: "application/pdf"
+                )
               )
-            )
+    end
   end
 
   def open_generate_pdf_dialog!
@@ -92,7 +101,7 @@ RSpec.describe "work package PDF generator", :js, :selenium, with_flag: { genera
   end
 
   def generate!
-    click_link_or_button "Generate"
+    click_link_or_button "Download"
     expect(subject).to have_text("filename.pdf")
   end
 
@@ -116,19 +125,31 @@ RSpec.describe "work package PDF generator", :js, :selenium, with_flag: { genera
     end
   end
 
-  context "with custom parameters" do
+  context "with contracts template" do
     let(:expected_params) do
-      default_expected_params.merge({
-                                      header_text_right: "Custom Header Text",
-                                      footer_text_center: "Custom Footer Text",
-                                      hyphenation: "de",
-                                      paper_size: "LETTER"
-                                    })
+      default_expected_params.merge({ template: "contracts" })
     end
 
     it "downloads with options" do
-      select "Letter", from: "paper_size"
-      select "Deutsch", from: "hyphenation"
+      generate!
+    end
+  end
+
+  context "with custom parameters" do
+    let(:expected_params) do
+      default_expected_params.merge(
+        {
+          header_text_right: "Custom Header Text",
+          footer_text_center: "Custom Footer Text",
+          hyphenation: "1",
+          hyphenation_language: "de"
+        }
+      )
+    end
+
+    it "downloads with options" do
+      check("Hyphenation")
+      select "Deutsch", from: "hyphenation_language"
       fill_in "header_text_right", with: "Custom Header Text"
       fill_in "footer_text_center", with: "Custom Footer Text"
       generate!

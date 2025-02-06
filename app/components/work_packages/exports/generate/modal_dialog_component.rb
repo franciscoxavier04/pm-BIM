@@ -62,13 +62,13 @@ module WorkPackages
         def templates_options
           [
             {
-              label: I18n.t("pdf_generator.dialog.templates.template_attributes.label"),
-              caption: I18n.t("pdf_generator.dialog.templates.template_attributes.caption"),
+              label: I18n.t("pdf_generator.template_attributes.label"),
+              caption: I18n.t("pdf_generator.template_attributes.caption"),
               value: "attributes"
             },
             {
-              label: I18n.t("pdf_generator.dialog.templates.template_contract.label"),
-              caption: I18n.t("pdf_generator.dialog.templates.template_contract.caption"),
+              label: I18n.t("pdf_generator.template_contract.label"),
+              caption: I18n.t("pdf_generator.template_contract.caption"),
               value: "contract"
             }
           ]
