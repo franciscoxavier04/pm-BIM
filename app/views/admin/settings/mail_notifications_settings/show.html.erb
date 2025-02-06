@@ -69,7 +69,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
 
   <%
-    email_methods = [:smtp, :sendmail]
+    email_methods = %i[smtp sendmail]
     email_methods << :letter_opener if Rails.env.development?
   %>
   <%= content_tag :fieldset, id: "mail_configuration", class: "form--fieldset" do %>
@@ -79,7 +79,7 @@ See COPYRIGHT and LICENSE files for more details.
       <div class="form--field"><%= setting_text_field :smtp_address, container_class: "-middle" %></div>
       <div class="form--field"><%= setting_text_field :smtp_port, size: 6, container_class: "-xslim" %></div>
       <div class="form--field"><%= setting_text_field :smtp_domain, container_class: "-middle" %></div>
-      <div class="form--field"><%= setting_select(:smtp_authentication, [:none, :plain, :login, :cram_md5], container_class: "-slim") %></div>
+      <div class="form--field"><%= setting_select(:smtp_authentication, %i[none plain login cram_md5], container_class: "-slim") %></div>
       <div class="form--field"><%= setting_text_field :smtp_user_name, container_class: "-middle" %></div>
       <div class="form--field"><%= setting_password :smtp_password, container_class: "-middle" %></div>
       <div class="form--field"><%= setting_check_box :smtp_enable_starttls_auto %></div>

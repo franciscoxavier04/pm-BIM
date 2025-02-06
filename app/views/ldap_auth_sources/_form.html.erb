@@ -137,7 +137,7 @@ See COPYRIGHT and LICENSE files for more details.
   <div class="form--field">
     <%= f.password_field "account_password",
                          label: LdapAuthSource.human_attribute_name(:password),
-                         placeholder: ((@ldap_auth_source.new_record? || @ldap_auth_source.account_password.blank?) ? "" : ("●" * 15)),
+                         placeholder: (@ldap_auth_source.new_record? || @ldap_auth_source.account_password.blank? ? "" : ("●" * 15)),
                          autocomplete: "off",
                          container_class: "-middle" %>
     <span class="form--field-instructions">

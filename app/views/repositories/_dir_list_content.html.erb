@@ -78,9 +78,9 @@ See COPYRIGHT and LICENSE files for more details.
     </td>
     <td class="hidden-for-sighted"> <%= depth %></td>
     <td class="size"><%= (entry.size ? number_to_human_size(entry.size, precision: 3) : "?") unless entry.dir? %></td>
-    <% changeset = @project.repository.find_changeset_by_name(entry.lastrev.identifier) if entry.lastrev && entry.lastrev.identifier %>
+    <% changeset = @project.repository.find_changeset_by_name(entry.lastrev.identifier) if entry.lastrev&.identifier %>
     <td class="revision"><%= link_to_revision(changeset, @project) if changeset %></td>
-    <td class="age"><%= distance_of_time_in_words(entry.lastrev.time, Time.now) if entry.lastrev && entry.lastrev.time %></td>
+    <td class="age"><%= distance_of_time_in_words(entry.lastrev.time, Time.now) if entry.lastrev&.time %></td>
     <td class="author"><%= if entry.lastrev
                              changeset.nil? ? h(replace_invalid_utf8(entry.lastrev.author.to_s.split("<").first)) : h(changeset.author)
                            end %></td>

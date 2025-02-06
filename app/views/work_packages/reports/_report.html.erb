@@ -65,7 +65,7 @@ See COPYRIGHT and LICENSE files for more details.
               <%= link_to h(row.name),
                           project_report_property_path(
                             (row.is_a?(Project) ? row : @project),
-                            "#{report.field}",
+                            report.field.to_s,
                             row.id
                           ) %>
             </td>
@@ -76,7 +76,7 @@ See COPYRIGHT and LICENSE files for more details.
                                    project_report_property_status_path(
                                      (row.is_a?(Project) ? row : @project),
                                      status.id,
-                                     "#{report.field}",
+                                     report.field.to_s,
                                      row.id
                                    ) %>
               </td>
@@ -86,7 +86,7 @@ See COPYRIGHT and LICENSE files for more details.
                                  { report.field => row.id, "closed" => 0 },
                                  project_report_property_open_path(
                                    (row.is_a?(Project) ? row : @project),
-                                   "#{report.field}",
+                                   report.field.to_s,
                                    row.id
                                  ) %>
             </td>
@@ -95,7 +95,7 @@ See COPYRIGHT and LICENSE files for more details.
                                  { report.field => row.id, "closed" => 1 },
                                  project_report_property_closed_path(
                                    (row.is_a?(Project) ? row : @project),
-                                   "#{report.field}",
+                                   report.field.to_s,
                                    row.id
                                  ) %>
             </td>
@@ -104,7 +104,7 @@ See COPYRIGHT and LICENSE files for more details.
                                  { report.field => row.id },
                                  project_report_property_path(
                                    (row.is_a?(Project) ? row : @project),
-                                   "#{report.field}",
+                                   report.field.to_s,
                                    row.id
                                  ) %>
             </td>

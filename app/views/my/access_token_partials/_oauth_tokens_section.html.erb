@@ -50,7 +50,7 @@ See COPYRIGHT and LICENSE files for more details.
                         } %>
             <tbody>
               <% granted_applications.each do |application, tokens| %>
-                <% latest = tokens.sort_by(&:created_at).last %>
+                <% latest = tokens.max_by(&:created_at) %>
                 <tr id="oauth-application-grant-<%= application.id %>">
                   <td class="-w-rel-60" data-test-selector="oauth-token-row-<%= application.id %>-name">
                     <%= t("oauth.application.named", name: application.name) %>

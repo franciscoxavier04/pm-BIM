@@ -83,7 +83,10 @@ See COPYRIGHT and LICENSE files for more details.
         </tr>
       </thead>
       <tbody>
-        <% total_budget = BigDecimal(0); labor_budget = BigDecimal(0); material_budget = BigDecimal(0); spent = BigDecimal(0) %>
+        <% total_budget = BigDecimal(0)
+           labor_budget = BigDecimal(0)
+           material_budget = BigDecimal(0)
+           spent = BigDecimal(0) %>
         <% budgets.each do |budget| %>
         <tr id="budget-<%= budget.id %>" class="<%= budget.css_classes %>">
           <td><%= link_to budget.id, budget_path(budget.id) %></td>
@@ -91,7 +94,7 @@ See COPYRIGHT and LICENSE files for more details.
           <%= content_tag(:td, number_to_currency(budget.budget, precision: 0), class: "currency") %>
           <%= content_tag(:td, number_to_currency(budget.spent, precision: 0), class: "currency") %>
           <%= content_tag(:td, number_to_currency(budget.budget - budget.spent, precision: 0), class: "currency") %>
-          <%= content_tag(:td, extended_progress_bar(budget.budget_ratio, legend: "#{budget.budget_ratio}")) %>
+          <%= content_tag(:td, extended_progress_bar(budget.budget_ratio, legend: budget.budget_ratio.to_s)) %>
           <%-
             total_budget += budget.budget
             labor_budget += budget.labor_budget

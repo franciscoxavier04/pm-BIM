@@ -155,7 +155,7 @@ See COPYRIGHT and LICENSE files for more details.
               <td class="buttons">
                 <%= link_to(
                       op_icon("icon icon-delete"),
-                      (custom_field_path(custom_field)),
+                      custom_field_path(custom_field),
                       method: :delete,
                       data: { confirm: I18n.t(:text_are_you_sure) },
                       title: t(:button_delete)

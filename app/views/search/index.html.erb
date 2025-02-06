@@ -51,8 +51,8 @@ See COPYRIGHT and LICENSE files for more details.
         <dt class="<%= e.event_type %>">
 
           <% event_type = e.event_type == "meeting" ? "meetings" : e.event_type %>
-          <% event_type = e.event_type == "budget" ? "budget" : event_type %>
-          <% event_type = e.event_type == "reply" ? "forums" : event_type %>
+          <% event_type = "budget" if e.event_type == "budget" %>
+          <% event_type = "forums" if e.event_type == "reply" %>
           <%= icon_wrapper("icon-context icon-#{event_type}", e.event_name) %>
 
           <% if e.project != @project %>

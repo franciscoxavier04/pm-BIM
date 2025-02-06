@@ -27,7 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 <% name = @placeholder_user.name %>
-<% html_title(t(:label_administration), "#{t('placeholder_users.deletion_info.heading', name: name)}") -%>
+<% html_title(t(:label_administration), t("placeholder_users.deletion_info.heading", name: name).to_s) -%>
 
 <%= labelled_tabular_form_for(
       :placeholder_user,

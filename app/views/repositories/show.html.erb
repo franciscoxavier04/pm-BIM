@@ -118,7 +118,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
   <p>
     <%
-      has_branches = (!@repository.branches.nil? && !@repository.branches.empty?)
+      has_branches = !@repository.branches.nil? && !@repository.branches.empty?
       sep = ""
     %>
 

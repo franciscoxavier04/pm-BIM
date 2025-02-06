@@ -23,7 +23,7 @@
         component.with_attribute(
           key: ::Webhooks::Webhook.human_attribute_name("events"),
           value: if @webhook.all_projects?
-                   (t(:label_all))
+                   t(:label_all)
                  else
                    @webhook.projects.join(", ")
                  end

@@ -62,7 +62,7 @@ See COPYRIGHT and LICENSE files for more details.
         label: t("repositories.subversion.password"),
         name: "ignore",
         id: "repository-password-placeholder",
-        value: ((repository.new_record? || repository.password.blank?) ? "" : ("x" * 15)),
+        value: (repository.new_record? || repository.password.blank? ? "" : ("x" * 15)),
         container_class: "-middle"
       ) %>
   <%=

@@ -51,7 +51,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= t("project.destroy.confirmation", identifier: @project_to_destroy.identifier) %>
       <% if @project_to_destroy.descendants.any? %>
         <br>
-        <% descendants = h(@project_to_destroy.descendants.collect { |p| p.to_s }.join(", ")) %>
+        <% descendants = h(@project_to_destroy.descendants.collect(&:to_s).join(", ")) %>
         <%= t("project.destroy.subprojects_confirmation", value: "<strong>#{h(descendants)}</strong>").html_safe %>
       <% end %>
     </p>

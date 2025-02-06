@@ -10,7 +10,7 @@
     <%= content_tag(
           "opce-colors-autocompleter",
           "",
-          class: "colors-autocomplete form--select-container " + "#{container_class.present? ? container_class : '-middle'}",
+          class: "colors-autocomplete form--select-container " + (container_class.present? ? container_class : "-middle").to_s,
           data: { colors: options_for_colors(object),
                   selected_color: selected_color(object),
                   highlight_text_inline: highlight_text_inline,
