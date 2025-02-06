@@ -63,7 +63,7 @@ export default class HoverCardTriggerController extends ApplicationController {
   }
 
   setupListener() {
-    jQuery(document.body).on('mouseover', '.op-hover-card--preview-trigger', (e) => {
+    jQuery(this.element).on('mouseover', '.op-hover-card--preview-trigger', (e) => {
       e.preventDefault();
       e.stopPropagation();
 
@@ -95,26 +95,26 @@ export default class HoverCardTriggerController extends ApplicationController {
       }, this.OPEN_DELAY_IN_MS);
     });
 
-    jQuery(document.body).on('mouseleave', '.op-hover-card--preview-trigger', () => {
+    jQuery(this.element).on('mouseleave', '.op-hover-card--preview-trigger', () => {
       this.clearHoverTimer();
       this.mouseInModal = false;
       this.closeAfterTimeout();
     });
 
-    jQuery(document.body).on('mouseleave', '.op-hover-card', () => {
+    jQuery(this.element).on('mouseleave', '.op-hover-card', () => {
       this.clearHoverTimer();
       this.mouseInModal = false;
       this.closeAfterTimeout();
     });
 
-    jQuery(document.body).on('mouseenter', '.op-hover-card', () => {
+    jQuery(this.element).on('mouseenter', '.op-hover-card', () => {
       this.mouseInModal = true;
     });
   }
 
   private showHoverCard(el:HTMLElement, turboFrameUrl:string) {
     // Abort if the element is no longer present in the DOM. This can happen when this method is called after a delay.
-    if (!document.body.contains(el)) { return; }
+    if (!this.element.contains(el)) { return; }
     // Do not try to show two hover cards at the same time.
     if (this.isShowingHoverCard) { return; }
 
@@ -138,10 +138,6 @@ export default class HoverCardTriggerController extends ApplicationController {
       // Content has been loaded, card has been positioned. Show it!
       popover.showPopover();
     });
-  }
-
-  private setOpacity(element:HTMLElement, opacity:number) {
-    element.style.opacity = opacity.toString();
   }
 
   // Should be called when the mouse leaves the hover-zone so that we no longer attempt ot display the hover card.
@@ -262,7 +258,7 @@ export default class HoverCardTriggerController extends ApplicationController {
     if (targetParentDialog) {
       targetParentDialog.appendChild(overlay);
     } else {
-      document.body.appendChild(overlay);
+      this.element.appendChild(overlay);
     }
   }
 }
