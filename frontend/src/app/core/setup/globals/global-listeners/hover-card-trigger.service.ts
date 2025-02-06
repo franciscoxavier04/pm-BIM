@@ -121,13 +121,10 @@ export class HoverCardTriggerService {
     this.isShowingHoverCard = true;
     this.previousTarget = targetEl;
 
-    this.setOpacity(popover, 0);
-
     turboFrame.addEventListener('turbo:frame-load', () => {
       void this.reposition(popover, targetEl);
 
       // Content has been loaded, card has been positioned. Show it!
-      this.setOpacity(popover, 1);
       popover.showPopover();
     });
   }
