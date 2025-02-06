@@ -37,13 +37,13 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-<%= styled_form_tag(admin_settings_users_path, method: :patch, class: 'admin-settings--form') do %>
+<%= styled_form_tag(admin_settings_users_path, method: :patch, class: "admin-settings--form") do %>
 
   <fieldset class="form--fieldset">
     <legend class="form--fieldset-legend"><%= t(:'settings.user.default_preferences') %></legend>
 
     <div class="form--field" id="setting_default_language">
-      <%= setting_select :default_language, all_lang_options_for_select, container_class: '-slim' %>
+      <%= setting_select :default_language, all_lang_options_for_select, container_class: "-slim" %>
     </div>
 
     <%= render Settings::TimeZoneSettingComponent.new(
@@ -52,7 +52,7 @@ See COPYRIGHT and LICENSE files for more details.
         ) %>
 
     <div class="form--field">
-      <%= setting_check_box :default_auto_hide_popups, label: 'activerecord.attributes.user_preference.auto_hide_popups' %>
+      <%= setting_check_box :default_auto_hide_popups, label: "activerecord.attributes.user_preference.auto_hide_popups" %>
     </div>
   </fieldset>
 
@@ -60,7 +60,7 @@ See COPYRIGHT and LICENSE files for more details.
     <legend class="form--fieldset-legend"><%= t(:'settings.user.display_format') %></legend>
 
     <div class="form--field">
-      <%= setting_select :user_format, @options[:user_format], container_class: '-slim' %>
+      <%= setting_select :user_format, @options[:user_format], container_class: "-slim" %>
     </div>
 
   </fieldset>
@@ -88,27 +88,27 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field">
       <%= setting_block("consent_time") do %>
         <span class="form--check-box-field-container -slim">
-          <%= check_box_tag 'toggle_consent_time',
-                            '1',
+          <%= check_box_tag "toggle_consent_time",
+                            "1",
                             !Setting.consent_time.present?,
-                            id: 'toggle_consent_time' %>
+                            id: "toggle_consent_time" %>
         </span>
       <% end %>
       <div class="form--field-instructions">
-        <%= I18n.t('consent.text_update_consent_time') %>
+        <%= I18n.t("consent.text_update_consent_time") %>
         <br>
         <strong>
-          <%= I18n.t('consent.update_consent_last_time',
+          <%= I18n.t("consent.update_consent_last_time",
                      update_time: Setting.consent_time.present? ? format_time(Setting.consent_time) : t(:label_never)) %>
         </strong>
       </div>
     </div>
     <div class="form--field">
-      <%= setting_text_field :consent_decline_mail, size: 6, container_class: '-middle' %>
+      <%= setting_text_field :consent_decline_mail, size: 6, container_class: "-middle" %>
       <span class="form--field-instructions">
-        <%= t('consent.contact_mail_instructions') %>
+        <%= t("consent.contact_mail_instructions") %>
       </span>
     </div>
   </fieldset>
-  <%= styled_button_tag t(:button_save), class: '-primary -with-icon icon-checkmark' %>
+  <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
 <% end %>

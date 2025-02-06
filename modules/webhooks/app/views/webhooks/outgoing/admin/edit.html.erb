@@ -14,11 +14,11 @@
 
 <%= labelled_tabular_form_for @webhook,
                               url: { action: :update },
-                              as: 'webhook',
-                              html: { class: 'form', autocomplete: 'off' } do |f| %>
+                              as: "webhook",
+                              html: { class: "form", autocomplete: "off" } do |f| %>
   <%= render partial: "form", locals: { f: f, webhook: @webhook } %>
   <p>
-    <%= styled_button_tag t(:button_save), class: '-primary -with-icon icon-checkmark' %>
-    <%= link_to t(:button_cancel), { action: :index }, class: 'button -with-icon icon-cancel' %>
+    <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
+    <%= link_to t(:button_cancel), { action: :index }, class: "button -with-icon icon-cancel" %>
   </p>
 <% end %>

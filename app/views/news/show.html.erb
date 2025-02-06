@@ -42,7 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
                                 href: edit_news_path(@news),
                                 aria: { label: I18n.t(:button_edit) },
                                 title: I18n.t(:button_edit)) do |button|
-        csp_onclick('jQuery("#edit-news").show()', '.edit-news-button')
+        csp_onclick('jQuery("#edit-news").show()', ".edit-news-button")
         button.with_leading_visual_icon(icon: :pencil)
         t(:button_edit)
       end
@@ -68,10 +68,10 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% if authorize_for('news', 'edit') %>
   <div id="edit-news" style="display:none;">
-    <%= labelled_tabular_form_for @news, html: { id: 'news-form' } do |f| %>
-      <%= render partial: 'form', locals: { f: f } %>
-      <%= styled_button_tag t(:button_save), class: '-primary -with-icon icon-checkmark' %>
-      <%= link_to_function t(:button_cancel), 'jQuery("#edit-news").hide()', class: 'button -with-icon icon-cancel' %>
+    <%= labelled_tabular_form_for @news, html: { id: "news-form" } do |f| %>
+      <%= render partial: "form", locals: { f: f } %>
+      <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
+      <%= link_to_function t(:button_cancel), 'jQuery("#edit-news").hide()', class: "button -with-icon icon-cancel" %>
     <% end %>
   </div>
 <% end %>
@@ -91,11 +91,11 @@ See COPYRIGHT and LICENSE files for more details.
     <% next if comment.new_record? %>
       <div class="comment">
         <div class="contextual">
-          <%= link_to_if_authorized icon_wrapper('icon-context icon-delete', t(:button_delete)),
-                                {controller: '/news/comments', action: 'destroy', id: comment},
+          <%= link_to_if_authorized icon_wrapper("icon-context icon-delete", t(:button_delete)),
+                                {controller: "/news/comments", action: "destroy", id: comment},
                                 data: { confirm: t(:text_are_you_sure) },
                                 method: :delete,
-                                class: 'no-decoration-on-hover',
+                                class: "no-decoration-on-hover",
                                 title: t(:button_delete),
                                 alt: t(:button_delete) %>
         </div>
@@ -107,14 +107,14 @@ See COPYRIGHT and LICENSE files for more details.
   <% if authorize_for 'news/comments', 'create' %>
     <%= form_for([@news, Comment.new], html: { id: "add_comment_form" }) do %>
       <div>
-        <%= label_tag 'comment_comments', Journal.human_attribute_name(:notes), class: 'hidden-for-sighted' %>
-        <%= text_area 'comment',
-                      'comments',
-                      class: 'wiki-edit' %>
-        <%= wikitoolbar_for 'comment_comments', preview_context: preview_context(@news) %>
+        <%= label_tag "comment_comments", Journal.human_attribute_name(:notes), class: "hidden-for-sighted" %>
+        <%= text_area "comment",
+                      "comments",
+                      class: "wiki-edit" %>
+        <%= wikitoolbar_for "comment_comments", preview_context: preview_context(@news) %>
       </div>
       <p>
-        <%= submit_tag t(:button_add_comment), class: 'button -primary' %>
+        <%= submit_tag t(:button_add_comment), class: "button -primary" %>
       </p>
     <% end %>
   <% end %>

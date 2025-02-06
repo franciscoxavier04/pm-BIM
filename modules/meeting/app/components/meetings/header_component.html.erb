@@ -49,7 +49,7 @@
                               button_arguments: { icon: "kebab-horizontal",
                                                   "aria-label": t("label_meeting_actions"),
                                                   classes: "hide-when-print",
-                                                  test_selector: 'op-meetings-header-action-trigger'}) do |menu|
+                                                  test_selector: "op-meetings-header-action-trigger"}) do |menu|
         menu.with_item(label: t("label_meeting_edit_title"),
                        href: edit_meeting_path(@meeting),
                        content_arguments: {
@@ -74,9 +74,9 @@
 
             if @meeting.open? &&User.current.allowed_in_project?(:send_meeting_agendas_notification, @meeting.project
             )
-              menu.with_item(label: t('meeting.label_mail_all_participants'),
+              menu.with_item(label: t("meeting.label_mail_all_participants"),
                              href: notify_meeting_path(@meeting),
-                             form_arguments: { method: :post, data: { turbo: 'false' } }) do |item|
+                             form_arguments: { method: :post, data: { turbo: "false" } }) do |item|
                 item.with_leading_visual_icon(icon: :mail)
               end
             end

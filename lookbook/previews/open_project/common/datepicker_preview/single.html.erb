@@ -3,7 +3,7 @@
     form do |query_form|
       query_form.single_date_picker(
           name: :date,
-          label: 'Date',
+          label: "Date",
           leading_visual: { icon: },
           value: value.iso8601,
           datepicker_options: { inDialog: in_dialog }
@@ -11,7 +11,7 @@
 
       query_form.single_date_picker(
           name: :date,
-          label: 'Date',
+          label: "Date",
           leading_visual: { icon: },
           value: value.iso8601,
           datepicker_options: { inDialog: in_dialog }
@@ -19,7 +19,7 @@
 
       query_form.single_date_picker(
           name: :date,
-          label: 'Date',
+          label: "Date",
           leading_visual: { icon: },
           value: value.iso8601,
           datepicker_options: { inDialog: in_dialog }
@@ -38,7 +38,7 @@
 
     <%= render(Primer::Alpha::Dialog::Body.new) do
       primer_form_with(
-            url: '/abc',
+            url: "/abc",
             id: "my-form") do |f|
          render(the_form.new(f))
       end
@@ -51,7 +51,7 @@
   <% end %>
 <% else %>
   <%= primer_form_with(
-            url: '/abc',
+            url: "/abc",
             id: "my-form") do |f|
          render(the_form.new(f))
   end %>

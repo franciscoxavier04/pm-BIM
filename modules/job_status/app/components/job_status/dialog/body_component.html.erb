@@ -18,15 +18,15 @@
           flex.with_row { render(Primer::Beta::Link.new(
             href: redirect_url,
             data: {
-              action: 'job-status-polling#redirectClick',
+              action: "job-status-polling#redirectClick",
               "job-status-polling-target": job_errors.present? ? nil : "redirect"
             }
-          )) { I18n.t('job_status_dialog.redirect_link') } }
+          )) { I18n.t("job_status_dialog.redirect_link") } }
         end
         if download_url.present?
-          flex.with_row { render(Primer::Beta::Text.new) { I18n.t('job_status_dialog.download_starts') } }
+          flex.with_row { render(Primer::Beta::Text.new) { I18n.t("job_status_dialog.download_starts") } }
           flex.with_row { render(Primer::Beta::Text.new) {
-            I18n.t('job_status_dialog.link_to_download',
+            I18n.t("job_status_dialog.link_to_download",
                    link: (render(Primer::Beta::Link.new(
                      href: download_url,
                      target: "_blank",
@@ -37,7 +37,7 @@
                      data: {
                        "job-status-polling-target": "download"
                      }
-                   )) { I18n.t('job_status_dialog.click_here') })
+                   )) { I18n.t("job_status_dialog.click_here") })
             ).html_safe
           } }
         end

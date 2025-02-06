@@ -34,10 +34,10 @@ See COPYRIGHT and LICENSE files for more details.
     <label class="form--label" for="project_enabled_module_names_<%= name %>">
       <%= l_or_humanize(name, prefix: "project_module_") %>
       <% if EnterpriseToken.show_banners? && OpenProject::AccessControl.module_enterprise_feature?(name) %>
-        <%= spot_icon('enterprise-addons',
+        <%= spot_icon("enterprise-addons",
                       inline: true,
-                      size: '1_25',
-                      classnames: 'upsale-colored') %>
+                      size: "1_25",
+                      classnames: "upsale-colored") %>
       <% end %>
     </label>
     <div class="form--field-container">

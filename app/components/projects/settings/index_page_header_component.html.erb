@@ -22,13 +22,13 @@
 
     header.with_action_button(tag: :a,
                               mobile_icon: :pencil,
-                              mobile_label: t('projects.settings.change_identifier'),
+                              mobile_label: t("projects.settings.change_identifier"),
                               size: :medium,
                               href: project_identifier_path(@project),
-                              aria: { label: t('projects.settings.change_identifier') },
-                              title: t('projects.settings.change_identifier')) do |button|
+                              aria: { label: t("projects.settings.change_identifier") },
+                              title: t("projects.settings.change_identifier")) do |button|
       button.with_leading_visual_icon(icon: :pencil)
-      t('projects.settings.change_identifier')
+      t("projects.settings.change_identifier")
     end
 
     header.with_action_menu(
@@ -59,17 +59,17 @@
         menu.with_item(
           tag: :a,
           label: t(:button_archive),
-          href: project_archive_path(@project, status: '', name: @project.name),
+          href: project_archive_path(@project, status: "", name: @project.name),
           content_arguments: {
-            data: { confirm: t('project.archive.are_you_sure', name: @project.name), method: :post, },
+            data: { confirm: t("project.archive.are_you_sure", name: @project.name), method: :post, },
             test_selector: "project-settings--archive"
           }
         ) do |item|
-          item.with_leading_visual_icon(icon: 'lock')
+          item.with_leading_visual_icon(icon: "lock")
         end
       end
       if User.current.admin?
-        label = @project.templated ? 'remove_from_templates' : 'make_template'
+        label = @project.templated ? "remove_from_templates" : "make_template"
         menu.with_item(
           tag: :a,
           label: t("project.template.#{label}"),

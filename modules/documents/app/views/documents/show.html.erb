@@ -42,7 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
                                 mobile_icon: :pencil,
                                 mobile_label: t(:button_edit),
                                 size: :medium,
-                                href: url_for({controller: '/documents', action: 'edit', id: @document}),
+                                href: url_for({controller: "/documents", action: "edit", id: @document}),
                                 aria: { label: t(:button_edit) },
                                 title: t(:button_edit)) do |button|
         button.with_leading_visual_icon(icon: :pencil)
@@ -55,7 +55,7 @@ See COPYRIGHT and LICENSE files for more details.
                                 mobile_icon: :trash,
                                 mobile_label: t(:button_delete),
                                 size: :medium,
-                                href: url_for({controller: '/documents', action: 'destroy', id: @document}),
+                                href: url_for({controller: "/documents", action: "destroy", id: @document}),
                                 aria: { label: I18n.t(:button_delete) },
                                 data: {
                                   confirm: I18n.t(:text_are_you_sure),

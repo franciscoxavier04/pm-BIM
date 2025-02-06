@@ -81,10 +81,10 @@ See COPYRIGHT and LICENSE files for more details.
                   <%= form_for cost_type, url: restore_cost_type_path(cost_type),
                                           method: :patch,
                                           html: { id: "restore_cost_type_#{cost_type.id}",
-                                                  class: 'restore_cost_type' } do |f| %>
+                                                  class: "restore_cost_type" } do |f| %>
                     <button type="submit"
                             class="button--link submit_cost_type">
-                      <%= icon_wrapper('icon icon-unlocked', I18n.t(:button_unlock)) %>
+                      <%= icon_wrapper("icon icon-unlocked", I18n.t(:button_unlock)) %>
                     </button>
                   <% end %>
                 </td>

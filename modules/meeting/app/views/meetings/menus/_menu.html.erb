@@ -3,6 +3,6 @@
   .merge(current_href: request.path) %>
 <%= turbo_frame_tag "meeting_sidemenu",
                       src: @project.present? ? menu_project_meetings_path(@project, **request_params) : meetings_menu_path(**request_params),
-                      target: '_top',
+                      target: "_top",
                       data: { turbo: false },
                       loading: :lazy %>

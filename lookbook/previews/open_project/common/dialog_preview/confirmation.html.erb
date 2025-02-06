@@ -7,9 +7,9 @@
   <% d.with_body { message } %>
 
   <% d.with_footer do %>
-    <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { 'Cancel' } %>
-    <%= form_with(url: 'some_url', method: :post) do %>
-      <%= render(Primer::Beta::Button.new(scheme: :primary, type: :submit)) { 'Confirm' } %>
+    <%= render(Primer::Beta::Button.new(data: { "close-dialog-id": dialog_id })) { "Cancel" } %>
+    <%= form_with(url: "some_url", method: :post) do %>
+      <%= render(Primer::Beta::Button.new(scheme: :primary, type: :submit)) { "Confirm" } %>
     <% end %>
   <% end %>
 <% end %>

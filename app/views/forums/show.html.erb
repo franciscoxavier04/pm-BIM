@@ -34,16 +34,16 @@ See COPYRIGHT and LICENSE files for more details.
                                   url: forum_topics_path(@forum),
                                   html: {
                                     multipart: true,
-                                    id: 'message-form',
-                                    class: 'form',
+                                    id: "message-form",
+                                    class: "form",
                                     data: { turbo: false }
                                   } do |f| %>
-      <%= render partial: 'messages/form', locals: { f: f } %>
+      <%= render partial: "messages/form", locals: { f: f } %>
 
       <hr class="form--separator">
-      <%= styled_button_tag t(:button_create), class: '-primary -with-icon icon-checkmark' %>
-      <%= link_to t(:button_cancel), '', class: 'cancel-add-message-button button -with-icon icon-cancel' %>
-      <% csp_onclick('jQuery("#add-message").hide();', '.cancel-add-message-button') %>
+      <%= styled_button_tag t(:button_create), class: "-primary -with-icon icon-checkmark" %>
+      <%= link_to t(:button_cancel), "", class: "cancel-add-message-button button -with-icon icon-cancel" %>
+      <% csp_onclick('jQuery("#add-message").hide();', ".cancel-add-message-button") %>
     <% end %>
     <div id="preview"></div>
   <% end %>
@@ -68,8 +68,8 @@ See COPYRIGHT and LICENSE files for more details.
                                      aria: { label: t(:label_message_new) },
                                      title: t(:label_message_new),
                                      tag: :a,
-                                     class: 'add-message-button',
-                                     href: url_for({ controller: '/messages', action: 'new', forum_id: @forum })) do |button|
+                                     class: "add-message-button",
+                                     href: url_for({ controller: "/messages", action: "new", forum_id: @forum })) do |button|
           button.with_leading_visual_icon(icon: :plus)
           t(:label_message)
         end
@@ -119,10 +119,10 @@ See COPYRIGHT and LICENSE files for more details.
           <tr>
             <td class="subject">
               <% if message.sticky? %>
-                <%= op_icon('icon-wiki', title: I18n.t('js.label_board_sticky')) %>
+                <%= op_icon("icon-wiki", title: I18n.t("js.label_board_sticky")) %>
               <% end %>
               <% if message.locked? %>
-                <%= op_icon('icon-locked', title: I18n.t('js.label_board_locked')) %>
+                <%= op_icon("icon-locked", title: I18n.t("js.label_board_locked")) %>
               <% end %>
               <%= link_to message.subject, topic_path(message) %>
             </td>
@@ -154,9 +154,9 @@ See COPYRIGHT and LICENSE files for more details.
 <% end %>
 
 <%= other_formats_links do |f| %>
-  <%= f.link_to 'Atom', url: { key: User.current.rss_key } %>
+  <%= f.link_to "Atom", url: { key: User.current.rss_key } %>
 <% end %>
 <% html_title h(@forum.name) %>
 <% content_for :header_tags do %>
-  <%= auto_discovery_link_tag(:atom, { format: 'atom', key: User.current.rss_key }, title: "#{@project}: #{@forum}") %>
+  <%= auto_discovery_link_tag(:atom, { format: "atom", key: User.current.rss_key }, title: "#{@project}: #{@forum}") %>
 <% end %>

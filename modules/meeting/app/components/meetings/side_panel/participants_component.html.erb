@@ -5,7 +5,7 @@
       section.with_counter(count: @meeting.invited_or_attended_participants.count)
 
       if @meeting.templated?
-        section.with_description { I18n.t('meeting.participants.template') }
+        section.with_description { I18n.t("meeting.participants.template") }
       end
 
       if @meeting.editable?
@@ -15,7 +15,7 @@
           tag: :a,
           href: participants_dialog_meeting_path(@meeting),
           classes: "hide-when-print",
-          data: { controller: 'async-dialog' },
+          data: { controller: "async-dialog" },
           'aria-label': t("label_meeting_manage_participants"),
           test_selector: "manage-participants-button",
         )
@@ -41,7 +41,7 @@
                 tag: :a,
                 href: participants_dialog_meeting_path(@meeting),
                 classes: "hide-when-print",
-                data: { controller: 'async-dialog' }
+                data: { controller: "async-dialog" }
               )) do |button|
                 button.with_leading_visual_icon(icon: "person-add")
                 t("label_meeting_add_participants")

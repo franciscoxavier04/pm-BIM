@@ -7,14 +7,14 @@
     d.with_header(variant: :large)
 
     d.with_body do
-      component_wrapper(class: 'Overlay-form') do
+      component_wrapper(class: "Overlay-form") do
         primer_form_with(
           id: "edit_participants_form",
           model: @meeting,
           method: :put,
           url: update_participants_meeting_path(@meeting),
           data: { turbo: true, turbo_stream: true },
-          class: 'Overlay-form'
+          class: "Overlay-form"
         ) do |f|
           flex_layout do |form_container|
 
@@ -47,10 +47,10 @@
 
                         existing_participant_container.with_row do
                           flex_layout(align_items: :center) do |existing_participant|
-                            existing_participant.with_column(flex: 1, classes: 'ellipsis') do
+                            existing_participant.with_column(flex: 1, classes: "ellipsis") do
                               render(Users::AvatarComponent.new(
                                 user: participant.user,
-                                classes: 'op-principal_flex',
+                                classes: "op-principal_flex",
                                 hover_card: { active: true, target: :custom }
                               ))
                             end
@@ -87,10 +87,10 @@
                       end
                     else
                       flex_layout(align_items: :center) do |new_participant|
-                        new_participant.with_column(flex: 1, classes: 'ellipsis') do
+                        new_participant.with_column(flex: 1, classes: "ellipsis") do
                           render(Users::AvatarComponent.new(
                             user:,
-                            classes: 'op-principal_flex',
+                            classes: "op-principal_flex",
                             hover_card: { active: true, target: :custom }
                           ))
                         end
@@ -120,7 +120,7 @@
             end
 
             form_container.with_row do
-              helpers.angular_component_tag 'opce-custom-modal-overlay'
+              helpers.angular_component_tag "opce-custom-modal-overlay"
             end
           end
         end

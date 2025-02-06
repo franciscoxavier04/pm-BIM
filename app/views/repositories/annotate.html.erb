@@ -28,13 +28,13 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 <%= call_hook(:view_repositories_show_contextual, { repository: @repository, project: @project }) %>
 <% html_title(t(:button_annotate)) %>
-<%= render partial: 'repository_header', locals: { empty: false } %>
+<%= render partial: "repository_header", locals: { empty: false } %>
 
 <div class="repository-breadcrumbs">
-  <%= render partial: 'breadcrumbs',
-             locals: { path: @path, revision: @rev }.merge(kind: 'file') %>
+  <%= render partial: "breadcrumbs",
+             locals: { path: @path, revision: @rev }.merge(kind: "file") %>
 </div>
-<p><%= render partial: 'link_to_functions' %></p>
+<p><%= render partial: "link_to_functions" %></p>
 
 <% if @annotate.nil? || @annotate.empty? %>
   <%= no_results_box %>
@@ -50,7 +50,7 @@ See COPYRIGHT and LICENSE files for more details.
             <th class="line-num" id="L<%= line_num %>"><a href="#L<%= line_num %>"><%= line_num %></a></th>
             <td class="revision">
               <%= (revision.identifier ? link_to_revision(revision, @project) : format_revision(revision)) if revision %></td>
-            <td class="author"><%= h(revision.author.to_s.split('<').first) if revision %></td>
+            <td class="author"><%= h(revision.author.to_s.split("<").first) if revision %></td>
             <td class="line-code">
               <pre><%= line %></pre>
             </td>

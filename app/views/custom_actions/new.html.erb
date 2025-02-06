@@ -27,7 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% html_title t(:label_administration), t('custom_actions.new') %>
+<% html_title t(:label_administration), t("custom_actions.new") %>
 
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
@@ -42,6 +42,6 @@ See COPYRIGHT and LICENSE files for more details.
 <%= error_messages_for @custom_action %>
 
 <%= labelled_tabular_form_for @custom_action do |f| %>
-  <%= render partial: 'form', locals: { f: f } %>
-  <%= styled_button_tag t(:button_create), class: '-primary -with-icon icon-checkmark' %>
+  <%= render partial: "form", locals: { f: f } %>
+  <%= styled_button_tag t(:button_create), class: "-primary -with-icon icon-checkmark" %>
 <% end %>

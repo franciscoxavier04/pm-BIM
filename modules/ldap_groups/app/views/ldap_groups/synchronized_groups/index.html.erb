@@ -1,4 +1,4 @@
-<% html_title(t(:label_administration), t('ldap_groups.synchronized_groups.plural')) -%>
+<% html_title(t(:label_administration), t("ldap_groups.synchronized_groups.plural")) -%>
 
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
@@ -37,17 +37,17 @@ end %>
 
 <div class="op-toast -info">
   <div class="op-toast--content">
-    <strong><%= t('note') %></strong>
-    <%= t('ldap_groups.synchronized_groups.help_text_html') %>
+    <strong><%= t("note") %></strong>
+    <%= t("ldap_groups.synchronized_groups.help_text_html") %>
   </div>
 </div>
 
 <section class="admin--edit-section">
-  <h3 class="form--section-title"><%= t('ldap_groups.synchronized_filters.plural') %></h3>
+  <h3 class="form--section-title"><%= t("ldap_groups.synchronized_filters.plural") %></h3>
   <%= render ::LdapGroups::SynchronizedFilters::TableComponent.new(rows: @filters) %>
 </section>
 
 <section class="admin--edit-section">
-  <h3 class="form--section-title"><%= t('ldap_groups.synchronized_groups.plural') %></h3>
+  <h3 class="form--section-title"><%= t("ldap_groups.synchronized_groups.plural") %></h3>
   <%= render ::LdapGroups::SynchronizedGroups::TableComponent.new(rows: @groups) %>
 </section>

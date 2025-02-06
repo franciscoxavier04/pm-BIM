@@ -30,7 +30,7 @@ See COPYRIGHT and LICENSE files for more details.
 <% local_assigns[:additional_breadcrumb] = @user.name %>
 
 <% new_status =  t("user.#{@status_change}") %>
-<%= labelled_tabular_form_for :user, url: change_status_user_path(@user, @status_change => '1'), html: { method: :post, class: 'form' } do %>
+<%= labelled_tabular_form_for :user, url: change_status_user_path(@user, @status_change => "1"), html: { method: :post, class: "form" } do %>
     <section class="form--section">
       <h3 class="form--section-title">
         <%= @user.name %>:
@@ -38,7 +38,7 @@ See COPYRIGHT and LICENSE files for more details.
       </h3>
 
       <p>
-        <%= t('user.confirm_status_change', name: @user.name) %>
+        <%= t("user.confirm_status_change", name: @user.name) %>
       </p>
 
       <%=
@@ -62,8 +62,8 @@ See COPYRIGHT and LICENSE files for more details.
 
     </section>
     <hr class="form--separator">
-      <%= styled_button_tag '', class: '-primary' do %>
-        <%= op_icon('button--icon icon-checkmark') %>
+      <%= styled_button_tag "", class: "-primary" do %>
+        <%= op_icon("button--icon icon-checkmark") %>
         <span class="button--text"><%= new_status %></span>
       <% end %>
 <% end %>

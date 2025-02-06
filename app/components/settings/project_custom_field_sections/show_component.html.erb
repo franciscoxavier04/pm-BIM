@@ -5,7 +5,7 @@
         flex_layout(justify_content: :space_between, align_items: :center) do |section_header_container|
           section_header_container.with_column(flex_layout: true, align_items: :center) do |content_container|
             content_container.with_column(mr: 2) do
-              render(Primer::OpenProject::DragHandle.new(classes: 'handle'))
+              render(Primer::OpenProject::DragHandle.new(classes: "handle"))
             end
             content_container.with_column do
               render(Primer::Beta::Text.new(font_weight: :bold)) do
@@ -28,7 +28,7 @@
             end
             actions_container.with_column do
               render(Primer::Alpha::Dialog.new(
-                id: "project-custom-field-section-dialog#{@project_custom_field_section.id}", title: t('settings.project_attributes.label_new_section'),
+                id: "project-custom-field-section-dialog#{@project_custom_field_section.id}", title: t("settings.project_attributes.label_new_section"),
                 size: :medium_portrait
               )) do |dialog|
                 render(Settings::ProjectCustomFieldSections::DialogBodyFormComponent.new(project_custom_field_section: @project_custom_field_section))
@@ -53,7 +53,7 @@
                   data: { turbo: "false", test_selector: "new-project-custom-field-button" }
                 )) do |button|
                   button.with_leading_visual_icon(icon: :plus)
-                  t('settings.project_attributes.label_new_attribute')
+                  t("settings.project_attributes.label_new_attribute")
                 end
             end
           end

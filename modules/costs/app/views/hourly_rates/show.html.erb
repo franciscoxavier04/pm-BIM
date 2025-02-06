@@ -49,8 +49,8 @@ See COPYRIGHT and LICENSE files for more details.
 <% if @project %>
   <% html_title t(:caption_rate_history_for, user: @user.name) %>
 
-  <%= render :partial => 'list_project' %>
+  <%= render :partial => "list_project" %>
 <% else %>
-  <%= render :partial => 'list_default' %>
-  <%= render :partial => 'list' %>
+  <%= render :partial => "list_default" %>
+  <%= render :partial => "list" %>
 <% end %>

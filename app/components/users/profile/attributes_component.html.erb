@@ -10,7 +10,7 @@
           end
 
           details_container.with_row do
-            mail_to(escape_javascript(@user.mail), nil, encode: 'javascript')
+            mail_to(escape_javascript(@user.mail), nil, encode: "javascript")
           end
         end
 

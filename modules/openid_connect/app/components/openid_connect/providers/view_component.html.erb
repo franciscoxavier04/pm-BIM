@@ -13,7 +13,7 @@
     end
 
     case provider.oidc_provider
-    when 'google'
+    when "google"
       component.with_row(scheme: :default) do
         basic_details_component = if edit_state == :name
                                      OpenIDConnect::Providers::Sections::FormComponent.new(
@@ -59,7 +59,7 @@
           ))
         end
       end
-    when 'microsoft_entra'
+    when "microsoft_entra"
       component.with_row(scheme: :default) do
         basic_details_component = if edit_state == :name
                                      OpenIDConnect::Providers::Sections::FormComponent.new(
@@ -130,7 +130,7 @@
       end
 
       component.with_row(scheme: :neutral, color: :muted) do
-        render(Primer::Beta::Text.new(font_weight: :bold)) { I18n.t('openid_connect.providers.label_automatic_configuration') }
+        render(Primer::Beta::Text.new(font_weight: :bold)) { I18n.t("openid_connect.providers.label_automatic_configuration") }
       end
 
       component.with_row(scheme: :default) do
@@ -158,7 +158,7 @@
       end
 
       component.with_row(scheme: :neutral, color: :muted) do
-        render(Primer::Beta::Text.new(font_weight: :bold)) { I18n.t('openid_connect.providers.label_advanced_configuration') }
+        render(Primer::Beta::Text.new(font_weight: :bold)) { I18n.t("openid_connect.providers.label_advanced_configuration") }
       end
 
       component.with_row(scheme: :default) do
@@ -210,7 +210,7 @@
       end
 
       component.with_row(scheme: :neutral, color: :muted) do
-        render(Primer::Beta::Text.new(font_weight: :bold)) { I18n.t('openid_connect.providers.label_optional_configuration') }
+        render(Primer::Beta::Text.new(font_weight: :bold)) { I18n.t("openid_connect.providers.label_optional_configuration") }
       end
 
       component.with_row(scheme: :default) do

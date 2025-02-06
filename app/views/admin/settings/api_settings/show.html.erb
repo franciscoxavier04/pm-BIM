@@ -43,13 +43,13 @@ See COPYRIGHT and LICENSE files for more details.
       <%= setting_check_box :rest_api_enabled %>
     </div>
     <div class="form--field">
-      <%= setting_number_field :apiv3_max_page_size, min: 50, container_class: '-slim' %>
+      <%= setting_number_field :apiv3_max_page_size, min: 50, container_class: "-slim" %>
       <div class="form--field-instructions">
         <p><%= t(:setting_apiv3_max_page_instructions_html) %></p>
       </div>
     </div>
     <div class="form--field">
-      <%= setting_check_box :apiv3_write_readonly_attributes, container_class: '-slim' %>
+      <%= setting_check_box :apiv3_write_readonly_attributes, container_class: "-slim" %>
       <div class="form--field-instructions">
         <p><%= t(:setting_apiv3_write_readonly_attributes_instructions_html,
                  api_documentation_link: static_link_to(:api_docs)
@@ -76,7 +76,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= setting_check_box :apiv3_cors_enabled %>
     </div>
     <div class="form--field">
-      <%= setting_text_area :apiv3_cors_origins, rows: 5, container_class: '-wide' %>
+      <%= setting_text_area :apiv3_cors_origins, rows: 5, container_class: "-wide" %>
       <div class="form--field-instructions">
         <p><%= t(:text_line_separated) %></p>
         <p><%= t(:setting_apiv3_cors_origins_text_html,
@@ -84,5 +84,5 @@ See COPYRIGHT and LICENSE files for more details.
       </div>
     </div>
   </section>
-  <%= styled_button_tag t(:button_save), class: '-primary -with-icon icon-checkmark' %>
+  <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
 <% end %>

@@ -34,12 +34,12 @@ See COPYRIGHT and LICENSE files for more details.
         url: placeholder_user_path(@placeholder_user),
         html: {
             method: :delete,
-            class: 'form danger-zone',
+            class: "form danger-zone",
         }) do %>
   <div class='wiki'>
     <section class="form--section">
       <h3 class="form--section-title">
-        <%= t('placeholder_users.deletion_info.heading',
+        <%= t("placeholder_users.deletion_info.heading",
               name: content_tag(:em, name))
             .html_safe %>
       </h3>
@@ -58,9 +58,9 @@ See COPYRIGHT and LICENSE files for more details.
       </p>
       <div class="danger-zone--verification">
         <input type="text" name="name_verification">
-        <%= styled_button_tag '', class: '-primary', disabled: true do
-          concat content_tag :i, '', class: 'button--icon icon-delete'
-          concat content_tag :span, t(:button_delete), class: 'button--text'
+        <%= styled_button_tag "", class: "-primary", disabled: true do
+          concat content_tag :i, "", class: "button--icon icon-delete"
+          concat content_tag :span, t(:button_delete), class: "button--text"
         end %>
       </div>
     </section>

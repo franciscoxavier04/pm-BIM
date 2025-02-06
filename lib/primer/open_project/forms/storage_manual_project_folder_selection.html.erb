@@ -7,7 +7,7 @@
           display: :inline_block,
           data: @select_folder_button_options.delete(:data) { {} }
         )) do |button|
-          button.with_leading_visual_icon(icon: 'file-directory')
+          button.with_leading_visual_icon(icon: "file-directory")
           I18n.t(:"storages.buttons.select_folder")
         end
       %>
@@ -22,7 +22,7 @@
         ) { I18n.t(:"storages.label_no_selected_folder") }
       %>
     <% else %>
-        <%= angular_component_tag 'opce-storage-login-button',
+        <%= angular_component_tag "opce-storage-login-button",
                                     data: @storage_login_button_options.delete(:data) { {} },
                                     inputs: @storage_login_button_options.delete(:inputs) { {} } %>
     <% end %>

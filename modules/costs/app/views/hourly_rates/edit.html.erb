@@ -52,14 +52,14 @@ See COPYRIGHT and LICENSE files for more details.
 <% end %>
 
 <%= labelled_tabular_form_for @user,
-                              url: {action: 'update', project_id: @project},
-                              data: { controller: 'subform', 'application-target': 'dynamic' },
+                              url: {action: "update", project_id: @project},
+                              data: { controller: "subform", 'application-target': "dynamic" },
                               method: :put do |f| %>
   <%= back_url_hidden_field_tag %>
-  <%= error_messages_for 'user' %>
+  <%= error_messages_for "user" %>
   <%- @rates.each do |rate| -%>
     <%- @rate = rate -%>
-    <%= error_messages_for 'rate' %>
+    <%= error_messages_for "rate" %>
   <%- end -%>
   <div class="generic-table--container">
     <div class="generic-table--results-container">
@@ -95,7 +95,7 @@ See COPYRIGHT and LICENSE files for more details.
         <tbody id="rates_body" class="subform-container" data-subform-target="table">
           <%= render partial: "hourly_rates/rate", object: HourlyRate.new(valid_from: Date.current), locals: { templated: true } %>
           <%- @rates.each_with_index do |rate, index| -%>
-            <%= render partial: 'rate', object: rate, locals: {index: index} %>
+            <%= render partial: "rate", object: rate, locals: {index: index} %>
           <%- end -%>
         </tbody>
       </table>
@@ -104,11 +104,11 @@ See COPYRIGHT and LICENSE files for more details.
   </div>
   <div class="wp-inline-create-button">
     <a href="#" class="add-row-button wp-inline-create--add-link" data-action="subform#addRow">
-      <%= op_icon('icon icon-add') %>
+      <%= op_icon("icon icon-add") %>
         <%= t(:button_add_rate) %>
     </a>
   </div>
   <div class="generic-table--action-buttons">
-    <%= styled_button_tag t(:button_save), class: '-with-icon icon-checkmark' %>
+    <%= styled_button_tag t(:button_save), class: "-with-icon icon-checkmark" %>
   </div>
 <% end %>

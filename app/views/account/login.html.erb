@@ -35,8 +35,8 @@ See COPYRIGHT and LICENSE files for more details.
 
   <hr class="form--separator">
   <% unless OpenProject::Configuration.disable_password_login? %>
-    <%= render partial: 'password_login_form' %>
+    <%= render partial: "password_login_form" %>
   <% end %>
-  <%= render partial: 'auth_providers' %>
+  <%= render partial: "auth_providers" %>
 </div>
 <%= call_hook :view_account_login_bottom %>

@@ -42,11 +42,11 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= labelled_tabular_form_for @application,
                               url: { action: "update" },
-                              html: { class: nil, autocomplete: 'off' },
+                              html: { class: nil, autocomplete: "off" },
                               as: :application do |f| %>
-  <%= render partial: 'form', locals: { f: f } %>
+  <%= render partial: "form", locals: { f: f } %>
 
   <p>
-    <%= styled_button_tag t(:button_save), class: '-primary -with-icon icon-checkmark' %>
+    <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
   </p>
 <% end %>

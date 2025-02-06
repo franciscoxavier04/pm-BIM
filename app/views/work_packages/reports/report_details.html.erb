@@ -32,7 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
 <div class="form--fieldset">
   <div class="form--fieldset-legend"><%= @report.report_type %></div>
 
-  <%= render partial: 'report', locals: { statuses: @statuses,
+  <%= render partial: "report", locals: { statuses: @statuses,
                                           rows: @rows,
                                           data: @data,
                                           field_name: @field,
@@ -40,4 +40,4 @@ See COPYRIGHT and LICENSE files for more details.
   <br>
 </div>
 
-<%= link_to t(:button_back), report_project_work_packages_path(@project), class:'button' %>
+<%= link_to t(:button_back), report_project_work_packages_path(@project), class:"button" %>

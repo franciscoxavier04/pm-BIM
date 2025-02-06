@@ -23,8 +23,8 @@
 %>
 
 <p>
-  <%= t('webhooks.outgoing.explanation.text',
-        link: link_to(t(:'webhooks.outgoing.explanation.link'), admin_settings_aggregation_path, target: '_blank')).html_safe %>
+  <%= t("webhooks.outgoing.explanation.text",
+        link: link_to(t(:'webhooks.outgoing.explanation.link'), admin_settings_aggregation_path, target: "_blank")).html_safe %>
 </p>
 
 <%= render ::Webhooks::Outgoing::Webhooks::TableComponent.new(rows: @webhooks) %>

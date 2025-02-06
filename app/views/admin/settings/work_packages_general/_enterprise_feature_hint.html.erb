@@ -1,7 +1,7 @@
 <% unless EnterpriseToken.allows_to?(ee_feature) %>
   <div class="form--field-extra-actions">
     <%=
-      angular_component_tag 'opce-enterprise-banner',
+      angular_component_tag "opce-enterprise-banner",
                             inputs: {
                               collapsible: true,
                               textMessage: explanation,

@@ -21,7 +21,7 @@
           tag: :a,
           href:,
           classes: "hide-when-print",
-          data: { controller: 'async-dialog' },
+          data: { controller: "async-dialog" },
           'aria-label': t(:label_meeting_details_edit),
           test_selector: "edit-meeting-details-button",
         )
@@ -111,7 +111,7 @@
           end
         end
 
-        details.with_row(mt: 2, classes: 'meeting-detail-participants hide-when-print', display: [nil, nil, :none]) do
+        details.with_row(mt: 2, classes: "meeting-detail-participants hide-when-print", display: [nil, nil, :none]) do
           render_meeting_attribute_row(:people) do
             flex_layout(align_items: :center) do |people|
               people.with_column(mr: 2) do
@@ -130,7 +130,7 @@
                   tag: :a,
                   href: participants_dialog_meeting_path(@meeting),
                   classes: "hide-when-print",
-                  data: { controller: 'async-dialog' }
+                  data: { controller: "async-dialog" }
                 )) do
                   t("label_meeting_show_all_participants")
                 end

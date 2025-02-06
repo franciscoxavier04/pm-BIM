@@ -32,7 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% title = @cost_type.name %>
 <% else %>
   <% html_title t(:label_administration), t(:label_cost_type_plural) %>
-  <% title = t(:label_new) + ' ' + I18n.t('activerecord.models.cost_type.one') %>
+  <% title = t(:label_new) + " " + I18n.t("activerecord.models.cost_type.one") %>
 <% end %>
 
 <%=
@@ -46,18 +46,18 @@ See COPYRIGHT and LICENSE files for more details.
 %>
 
 <%= labelled_tabular_form_for @cost_type,
-                              data: { controller: 'subform', 'application-target': 'dynamic' } do |f| %>
-  <%= error_messages_for 'cost_type' %>
+                              data: { controller: "subform", 'application-target': "dynamic" } do |f| %>
+  <%= error_messages_for "cost_type" %>
   <%= back_url_hidden_field_tag %>
 
   <div class="form--field -required">
-    <%= f.text_field :name, required: true, container_class: '-wide' %>
+    <%= f.text_field :name, required: true, container_class: "-wide" %>
   </div>
   <div class="form--field -required">
-    <%= f.text_field :unit, required: true, container_class: '-middle' %>
+    <%= f.text_field :unit, required: true, container_class: "-middle" %>
   </div>
   <div class="form--field -required">
-    <%= f.text_field :unit_plural, required: true, container_class: '-middle' %>
+    <%= f.text_field :unit_plural, required: true, container_class: "-middle" %>
   </div>
   <div class="form--field">
     <%= f.check_box :default %>
@@ -109,7 +109,7 @@ See COPYRIGHT and LICENSE files for more details.
               b.valid_from <=> a.valid_from
             end
           end.each_with_index do |rate, index| %>
-            <%= render partial: 'rate', object: rate, locals: {index: index} %>
+            <%= render partial: "rate", object: rate, locals: {index: index} %>
           <%- end -%>
         </tbody>
       </table>
@@ -123,9 +123,9 @@ See COPYRIGHT and LICENSE files for more details.
        class="add-row-button wp-inline-create--add-link"
        title="<%= t(:button_add_rate) %>"
        data-action="subform#addRow">
-      <%= op_icon('icon icon-add') %>
+      <%= op_icon("icon icon-add") %>
     </a>
   </div>
-  <%= styled_button_tag t(:button_save), class: '-with-icon icon-checkmark' %>
+  <%= styled_button_tag t(:button_save), class: "-with-icon icon-checkmark" %>
 <% end %>
 </costs-subform>

@@ -48,7 +48,7 @@ See COPYRIGHT and LICENSE files for more details.
                                    aria: { label: t(:label_news_new)},
                                    title: I18n.t(:label_work_package_status_new),
                                    tag: :a,
-                                   id: 'new_news_link',
+                                   id: "new_news_link",
                                    data: { "test-selector": "add-news-button"},
                                    href: new_project_news_path(@project)) do |button|
         button.with_leading_visual_icon(icon: :plus)
@@ -61,7 +61,7 @@ See COPYRIGHT and LICENSE files for more details.
 <% if @newss.any? %>
   <% @newss.each do |news| %>
    <div class="news">
-     <h3 class="news--header"><%= avatar(news.author) %><%= link_to_project(news.project) + ': ' unless news.project == @project %>
+     <h3 class="news--header"><%= avatar(news.author) %><%= link_to_project(news.project) + ": " unless news.project == @project %>
        <%= link_to h(news.title), news_path(news) %>
        <%= "(#{t(:label_x_comments, count: news.comments_count)})" if news.comments_count > 0 %></h3>
     <p class="author additional-information"><%= authoring news.created_at, news.author %></p>
@@ -82,9 +82,9 @@ See COPYRIGHT and LICENSE files for more details.
 <%= pagination_links_full @newss %>
 
 <%= other_formats_links do |f| %>
-  <%= f.link_to 'Atom', url: {project_id: @project, key: User.current.rss_key} %>
+  <%= f.link_to "Atom", url: {project_id: @project, key: User.current.rss_key} %>
 <% end %>
 
 <% content_for :header_tags do %>
-  <%= auto_discovery_link_tag(:atom, params.merge({format: 'atom', page: nil, key: User.current.rss_key})) %>
+  <%= auto_discovery_link_tag(:atom, params.merge({format: "atom", page: nil, key: User.current.rss_key})) %>
 <% end %>

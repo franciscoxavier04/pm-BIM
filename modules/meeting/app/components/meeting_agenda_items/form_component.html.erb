@@ -5,7 +5,7 @@
       method: @method,
       url: @submit_path
     ) do |f|
-      grid_layout('op-meeting-agenda-item-form', tag: :div) do |grid|
+      grid_layout("op-meeting-agenda-item-form", tag: :div) do |grid|
         grid.with_area(:title) do
           case @type
           when :simple

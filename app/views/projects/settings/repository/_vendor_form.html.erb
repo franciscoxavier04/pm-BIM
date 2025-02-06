@@ -35,13 +35,13 @@ See COPYRIGHT and LICENSE files for more details.
      <div class="form--field">
       <%= styled_label_tag type, t("repositories.#{@repository.vendor}.#{type}_title") %>
       <div class="form--field-container">
-        <%= styled_radio_button_tag 'scm_type',
+        <%= styled_radio_button_tag "scm_type",
                                     type,
                                     scm_types.length == 1 ? true : false,
                                     id: type,
                                     autofocus: true,
                                     data: {
-                                      action: 'repository-settings#toggleContent'
+                                      action: "repository-settings#toggleContent"
                                     } %>
       </div>
     </div>

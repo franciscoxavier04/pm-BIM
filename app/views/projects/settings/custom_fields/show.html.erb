@@ -43,7 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
                                    aria: { label: t(:label_custom_field_new)},
                                    title: I18n.t(:label_custom_field_new),
                                    tag: :a,
-                                   href: new_custom_field_path(type: 'WorkPackageCustomField')) do |button|
+                                   href: new_custom_field_path(type: "WorkPackageCustomField")) do |button|
         button.with_leading_visual_icon(icon: :plus)
         CustomField.model_name.human
       end
@@ -54,9 +54,9 @@ See COPYRIGHT and LICENSE files for more details.
 <% if @wp_custom_fields.any? %>
   <%= labelled_tabular_form_for @project,
                                 url: project_settings_custom_fields_path(@project),
-                                html: { id: 'modules-form' } do |form| %>
+                                html: { id: "modules-form" } do |form| %>
 
-    <%= render partial: 'form',
+    <%= render partial: "form",
                locals: {
                  project: @project,
                  form: form,
@@ -64,9 +64,9 @@ See COPYRIGHT and LICENSE files for more details.
                } %>
 
     <div class="generic-table--action-buttons">
-      <%= form.button t(:button_save), class: 'button -primary -with-icon icon-checkmark' %>
+      <%= form.button t(:button_save), class: "button -primary -with-icon icon-checkmark" %>
     </div>
   <% end %>
 <% else %>
-  <%= no_results_box custom_title: t('projects.settings.custom_fields.no_results_title_text') %>
+  <%= no_results_box custom_title: t("projects.settings.custom_fields.no_results_title_text") %>
 <% end %>

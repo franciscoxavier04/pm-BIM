@@ -76,7 +76,7 @@ See COPYRIGHT and LICENSE files for more details.
                 <td><%= h committer %></td>
                 <td>
                   <%= hidden_field_tag "committers[#{i}][]", committer %>
-                  <%= select_tag "committers[#{i}][]", content_tag('option', "-- #{t(:actionview_instancetag_blank_option)} --", value: '') + options_from_collection_for_select(@users, 'id', 'name', user_id.to_i) %>
+                  <%= select_tag "committers[#{i}][]", content_tag("option", "-- #{t(:actionview_instancetag_blank_option)} --", value: "") + options_from_collection_for_select(@users, "id", "name", user_id.to_i) %>
                 </td>
               </tr>
               <% i += 1 -%>
@@ -88,8 +88,8 @@ See COPYRIGHT and LICENSE files for more details.
     </div>
     <hr class="form--separator">
     <p>
-      <%= submit_tag t(:button_update), class: 'button -primary' %>
-      <%= link_to project_settings_repository_path(@project.id), class: 'button' do %>
+      <%= submit_tag t(:button_update), class: "button -primary" %>
+      <%= link_to project_settings_repository_path(@project.id), class: "button" do %>
         <span class="button--text"><%= t(:button_cancel) %></span>
       <% end %>
     </p>

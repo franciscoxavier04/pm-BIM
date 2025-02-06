@@ -4,12 +4,12 @@
   <% end %>
 
   <% if @user.uses_external_authentication? %>
-    <%= render partial: 'users/form/authentication/external', locals: { f: f } %>
+    <%= render partial: "users/form/authentication/external", locals: { f: f } %>
   <% else %>
-    <%= render partial: 'users/form/authentication/auth_source', locals: { f: f } %>
+    <%= render partial: "users/form/authentication/auth_source", locals: { f: f } %>
 
     <% if current_user.admin? %>
-      <%= render partial: 'users/form/authentication/internal', locals: { f: f } %>
+      <%= render partial: "users/form/authentication/internal", locals: { f: f } %>
     <% end %>
   <% end %>
 </section>

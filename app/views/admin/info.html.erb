@@ -53,12 +53,12 @@ See COPYRIGHT and LICENSE files for more details.
 
   if display_security_badge_graphic?
     content = content_tag :object, nil, data: security_badge_url, type: "image/svg+xml"
-    content += link_to '',
+    content += link_to "",
                        ::OpenProject::Static::Links[:security_badge_documentation][:href],
                        title: t(:label_what_is_this),
-                       class: 'security-badge--help-icon icon-context icon-help1',
-                       target: '_blank'
-    component.with_attribute(key: '', value: content)
+                       class: "security-badge--help-icon icon-context icon-help1",
+                       target: "_blank"
+    component.with_attribute(key: "", value: content)
   end
 
   if OpenProject::Database.version_deprecated?
@@ -70,7 +70,7 @@ See COPYRIGHT and LICENSE files for more details.
       You can perform the upgrade ahead of the release at any time by following the guides.
       </p>
     STR
-    component.with_attribute(key: 'Deprecation warning', value:)
+    component.with_attribute(key: "Deprecation warning", value:)
   end
 
   if (updated_on = OpenProject::VERSION.updated_on).present?
@@ -83,7 +83,7 @@ end %>
 
   @checklist.each do |label, result|
     aria_label = result ? t(:general_text_Yes) : t(:general_text_No)
-    icon = result ? 'check-circle-fill' : 'circle'
+    icon = result ? "check-circle-fill" : "circle"
     value = render Primer::Beta::Octicon.new(icon:, "aria-label": aria_label)
     component.with_attribute(key: I18n.t(label), value:)
   end
@@ -95,7 +95,7 @@ end %>
       component.with_header(title: t(:label_storage_group, identifier: i + 1))
 
       component.with_attribute(key: t(:label_storage_for),
-                               value: safe_join(entries[:labels], '<br/>'.html_safe))
+                               value: safe_join(entries[:labels], "<br/>".html_safe))
 
       component.with_attribute(key: t(:label_storage_free_space),
                                value: number_to_human_size(entries[:data][:free], precision: 2))

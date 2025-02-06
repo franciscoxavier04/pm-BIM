@@ -33,8 +33,8 @@ See COPYRIGHT and LICENSE files for more details.
   <%= tag("embed", width: 800,
                    height: 300,
                    type: "image/svg+xml",
-                   src: url_for(controller: '/repositories',
-                                   action: 'graph',
+                   src: url_for(controller: "/repositories",
+                                   action: "graph",
                                    project_id: @project.id,
                                    graph: "commits_per_month")) %>
 </p>
@@ -43,13 +43,13 @@ See COPYRIGHT and LICENSE files for more details.
     <%= tag("embed", width: 800,
                      height: 400,
                      type: "image/svg+xml",
-                     src: url_for(controller: '/repositories',
-                                     action: 'graph',
+                     src: url_for(controller: "/repositories",
+                                     action: "graph",
                                      project_id: @project.id,
                                      graph: "commits_per_author")) %>
   </p>
 <% end %>
 
-<p><%= link_to t(:button_back), action: 'show', project_id: @project.id %></p>
+<p><%= link_to t(:button_back), action: "show", project_id: @project.id %></p>
 
 <% html_title(t(:label_repository), t(:label_statistics)) -%>

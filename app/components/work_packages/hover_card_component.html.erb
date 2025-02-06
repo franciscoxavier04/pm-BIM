@@ -1,6 +1,6 @@
 <%=
     if @work_package.present?
-      grid_layout('op-wp-hover-card', tag: :div) do |grid|
+      grid_layout("op-wp-hover-card", tag: :div) do |grid|
         grid.with_area(:info, tag: :div) do
           render(WorkPackages::InfoLineComponent.new(work_package: @work_package))
         end

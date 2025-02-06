@@ -41,9 +41,9 @@ See COPYRIGHT and LICENSE files for more details.
                                aria: { label: t(:label_version_new) },
                                title: t(:label_version_new),
                                tag: :a,
-                               href: url_for({ controller: '/versions', action: 'new', project_id: @project })) do |button|
+                               href: url_for({ controller: "/versions", action: "new", project_id: @project })) do |button|
     button.with_leading_visual_icon(icon: :plus)
-    t('activerecord.models.version')
+    t("activerecord.models.version")
   end
 end %>
 
@@ -55,7 +55,7 @@ end %>
       <h3 class="version icon-context icon-modules">
         <%= link_to_version(version, name: h(version.name), id: "version-#{version.name}") %>
       </h3>
-      <%= render partial: 'versions/overview', locals: {version: version} %>
+      <%= render partial: "versions/overview", locals: {version: version} %>
       <%= render(partial: "wiki/text", locals: { page: version.wiki_page }) if version.wiki_page %>
       <% if (issues = @wps_by_version[version]) && issues.size > 0 %>
       <form>
@@ -77,8 +77,8 @@ end %>
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= render partial: 'roadmap_filter' %>
-  <%= render partial: 'roadmap_version_links' %>
+  <%= render partial: "roadmap_filter" %>
+  <%= render partial: "roadmap_version_links" %>
 <% end %>
 
 <% html_title(t(:label_roadmap)) %>

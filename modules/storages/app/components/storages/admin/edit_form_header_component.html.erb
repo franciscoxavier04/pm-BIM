@@ -34,7 +34,7 @@ See COPYRIGHT and LICENSE files for more details.
     ) do %>
   <%=
     render(Primer::OpenProject::PageHeader.new) do |header|
-      header.with_title(test_selector: 'storage-new-page-header--title') do
+      header.with_title(test_selector: "storage-new-page-header--title") do
         render OpTurbo::FrameComponent.new(@storage, context: :edit_storage_header) do
           label_storage_name_with_provider_label
         end

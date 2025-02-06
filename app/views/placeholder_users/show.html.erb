@@ -46,7 +46,7 @@ See COPYRIGHT and LICENSE files for more details.
         <% for membership in @memberships %>
           <li>
             <%= link_to_project(membership.project) %>
-            (<%= h membership.roles.sort.collect(&:to_s).join(', ') %>, <%= format_date(membership.created_at) %>)
+            (<%= h membership.roles.sort.collect(&:to_s).join(", ") %>, <%= format_date(membership.created_at) %>)
           </li>
         <% end %>
       </ul>

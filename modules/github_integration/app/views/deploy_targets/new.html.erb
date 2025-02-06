@@ -41,6 +41,6 @@ See COPYRIGHT and LICENSE files for more details.
 <%= error_messages_for @deploy_target %>
 
 <%= labelled_tabular_form_for @deploy_target, url: deploy_targets_path do |f| %>
-  <%= render partial: 'deploy_targets/form', locals: { f: f, deploy_target: @deploy_target } %>
-  <%= styled_button_tag t(:button_save), class: '-highlight -with-icon icon-checkmark' %>
+  <%= render partial: "deploy_targets/form", locals: { f: f, deploy_target: @deploy_target } %>
+  <%= styled_button_tag t(:button_save), class: "-highlight -with-icon icon-checkmark" %>
 <% end %>

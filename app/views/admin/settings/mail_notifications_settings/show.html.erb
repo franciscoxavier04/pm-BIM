@@ -41,16 +41,16 @@ See COPYRIGHT and LICENSE files for more details.
 <%= styled_form_tag(admin_settings_mail_notifications_path, method: :patch) do %>
   <% if @deliveries %>
     <section class="form--section">
-      <div class="form--field"><%= setting_text_field :mail_from, size: 60, container_class: '-middle' %></div>
+      <div class="form--field"><%= setting_text_field :mail_from, size: 60, container_class: "-middle" %></div>
       <div class="form--field"><%= setting_check_box :bcc_recipients %></div>
       <div class="form--field"><%= setting_check_box :plain_text_mail %></div>
       <div class="form--field">
         <%= setting_select :emails_salutation,
                            [
                              [User.human_attribute_name(:firstname), :firstname],
-                             [t('mail.salutation_full_name'), :name],
+                             [t("mail.salutation_full_name"), :name],
                            ],
-                           container_class: '-middle' %>
+                           container_class: "-middle" %>
       </div>
     </section>
 
@@ -72,14 +72,14 @@ See COPYRIGHT and LICENSE files for more details.
   %>
   <%= content_tag :fieldset, id: "mail_configuration", class: "form--fieldset" do %>
     <legend class="form--fieldset-legend"><%= t(:text_setup_mail_configuration) %></legend>
-    <div class="form--field"><%= setting_select(:email_delivery_method, email_methods, id: "email_delivery_method_switch", container_class: '-slim') %></div>
+    <div class="form--field"><%= setting_select(:email_delivery_method, email_methods, id: "email_delivery_method_switch", container_class: "-slim") %></div>
     <div id="email_delivery_method_smtp" class="email_delivery_method_settings">
-      <div class="form--field"><%= setting_text_field :smtp_address, container_class: '-middle' %></div>
-      <div class="form--field"><%= setting_text_field :smtp_port, size: 6, container_class: '-xslim' %></div>
-      <div class="form--field"><%= setting_text_field :smtp_domain, container_class: '-middle' %></div>
-      <div class="form--field"><%= setting_select(:smtp_authentication, [:none, :plain, :login, :cram_md5], container_class: '-slim') %></div>
-      <div class="form--field"><%= setting_text_field :smtp_user_name, container_class: '-middle' %></div>
-      <div class="form--field"><%= setting_password :smtp_password, container_class: '-middle' %></div>
+      <div class="form--field"><%= setting_text_field :smtp_address, container_class: "-middle" %></div>
+      <div class="form--field"><%= setting_text_field :smtp_port, size: 6, container_class: "-xslim" %></div>
+      <div class="form--field"><%= setting_text_field :smtp_domain, container_class: "-middle" %></div>
+      <div class="form--field"><%= setting_select(:smtp_authentication, [:none, :plain, :login, :cram_md5], container_class: "-slim") %></div>
+      <div class="form--field"><%= setting_text_field :smtp_user_name, container_class: "-middle" %></div>
+      <div class="form--field"><%= setting_password :smtp_password, container_class: "-middle" %></div>
       <div class="form--field"><%= setting_check_box :smtp_enable_starttls_auto %></div>
       <div class="form--field"><%= setting_check_box :smtp_ssl %></div>
     </div>
@@ -92,12 +92,12 @@ See COPYRIGHT and LICENSE files for more details.
     </div>
   <% end unless OpenProject::Configuration['email_delivery_configuration'] == 'legacy' %>
 
-  <%= styled_button_tag t(:button_save), class: '-primary -with-icon icon-checkmark' %>
+  <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
 
   <% if @deliveries %>
     <div style="float:none;display:inline-block;font-weight:bold;">
       <%= link_to t(:label_send_test_email),
-                  { controller: '/admin', action: 'test_email' },
+                  { controller: "/admin", action: "test_email" },
                   method: :post %>
     </div>
   <% end %>

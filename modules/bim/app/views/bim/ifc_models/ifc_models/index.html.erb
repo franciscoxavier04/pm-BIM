@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<% html_title(t('ifc_models.label_ifc_models')) -%>
+<% html_title(t("ifc_models.label_ifc_models")) -%>
 
 <%=
     render Primer::OpenProject::PageHeader.new do |header|
@@ -65,7 +65,7 @@ See COPYRIGHT and LICENSE files for more details.
 %>
 
 <% if @ifc_models.defaults.empty? %>
-  <%= render partial: 'no_default_notice', locals: { project: @project } %>
+  <%= render partial: "no_default_notice", locals: { project: @project } %>
 <% end %>
 
 <%= render ::Bim::IfcModels::TableComponent.new(rows: @ifc_models) %>

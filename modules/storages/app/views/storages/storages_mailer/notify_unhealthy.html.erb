@@ -27,10 +27,10 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<table <%= placeholder_table_styles(width: '100%', style: 'width:100%;max-width:700px') %>>
+<table <%= placeholder_table_styles(width: "100%", style: "width:100%;max-width:700px") %>>
   <tr>
     <td>
-      <%= render(partial: 'mailer/mailer_header',
+      <%= render(partial: "mailer/mailer_header",
                  locals: {
                    user: @admin,
                    summary: I18n.t("mail.storages.health.unhealthy.summary", storage_name: @storage.name),
@@ -38,7 +38,7 @@ See COPYRIGHT and LICENSE files for more details.
                    button_text: I18n.t(:'mail.storages.health.see_storage_settings')
                  }) %>
 
-      <%= render(partial: 'health_status_notification',
+      <%= render(partial: "health_status_notification",
                  locals: {
                    state: :unhealthy,
                    storage: @storage,
@@ -46,7 +46,7 @@ See COPYRIGHT and LICENSE files for more details.
                    reason: "#{@storage.health_reason_identifier} - #{@storage.health_reason_description}"
                  }) %>
 
-      <%= render(partial: 'mailer/notification_settings_table',
+      <%= render(partial: "mailer/notification_settings_table",
                  locals: {
                    button_url: @url,
                    button_text: I18n.t(:'mail.storages.health.email_notification_settings')
@@ -54,7 +54,7 @@ See COPYRIGHT and LICENSE files for more details.
 
       <table>
         <tr>
-          <%= placeholder_cell('13px', vertical: false) %>
+          <%= placeholder_cell("13px", vertical: false) %>
         </tr>
       </table>
     </td>

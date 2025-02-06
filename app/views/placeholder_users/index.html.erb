@@ -47,7 +47,7 @@ See COPYRIGHT and LICENSE files for more details.
                                    tag: :a,
                                    href: new_placeholder_user_path) do |button|
         button.with_leading_visual_icon(icon: :plus)
-        t('activerecord.models.placeholder_user')
+        t("activerecord.models.placeholder_user")
       end
 
       subheader.with_bottom_pane_component do
@@ -58,11 +58,11 @@ See COPYRIGHT and LICENSE files for more details.
 
   <%= render PlaceholderUsers::TableComponent.new(rows: @placeholder_users) %>
 <% else %>
-  <%= render template: 'common/upsale',
+  <%= render template: "common/upsale",
         locals: {
-          feature_title: I18n.t('placeholder_users.upsale.title'),
-          feature_description: I18n.t('placeholder_users.upsale.description'),
-          feature_reference: 'placeholder_users',
-          feature_video: 'enterprise/placeholder_users.mp4'
+          feature_title: I18n.t("placeholder_users.upsale.title"),
+          feature_description: I18n.t("placeholder_users.upsale.description"),
+          feature_reference: "placeholder_users",
+          feature_video: "enterprise/placeholder_users.mp4"
         } %>
 <% end %>

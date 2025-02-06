@@ -3,33 +3,33 @@
     form do |query_form|
       query_form.group do |group|
         group.text_field(
-          name: 'a',
-          label: 'The first field'
+          name: "a",
+          label: "The first field"
         )
 
         group.text_field(
-          name: 'b',
-          label: 'The second field'
+          name: "b",
+          label: "The second field"
         )
 
         group.text_field(
-          name: 'c',
-          label: 'The third field'
+          name: "c",
+          label: "The third field"
         )
 
         group.text_field(
-          name: 'd',
-          label: 'The fourth field'
+          name: "d",
+          label: "The fourth field"
         )
 
         group.text_field(
-          name: 'e',
-          label: 'The fifth field'
+          name: "e",
+          label: "The fifth field"
         )
 
         group.text_field(
-          name: 'f',
-          label: 'The sixth field'
+          name: "f",
+          label: "The sixth field"
         )
       end
     end
@@ -44,7 +44,7 @@
 
   <%= render(Primer::Alpha::Dialog::Body.new) do
     primer_form_with(
-          url: '/abc',
+          url: "/abc",
           id: form_id) do |f|
        render(the_form.new(f))
     end

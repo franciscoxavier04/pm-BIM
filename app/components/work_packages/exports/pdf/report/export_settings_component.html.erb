@@ -12,7 +12,7 @@
     <%= helpers.angular_component_tag "opce-draggable-autocompleter",
                                       inputs: {
                                         id: "ltf-select-export-pdf-report",
-                                        name: 'long_text_fields',
+                                        name: "long_text_fields",
                                         dragAreaName: "ltf-select-export-pdf-report_dragarea",
                                         formControlId: "ltf-select-export-pdf-report_autocompleter",
                                         appendToComponent: true,
@@ -27,7 +27,7 @@
   <% end %>
   <%= container.with_row do |_pdf_report_images| %>
     <%= render OpenProject::Common::DividerComponent.new %>
-    <%= render(Primer::Alpha::CheckBox.new(name: 'show_images',
+    <%= render(Primer::Alpha::CheckBox.new(name: "show_images",
                                            checked: true,
                                            value: "true",
                                            unchecked_value: "false",

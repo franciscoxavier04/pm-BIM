@@ -29,7 +29,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <div class="op-activity-days">
   <% events_by_day_sorted_by_newest_first.each do |day, events| %>
-    <%= content_tag(@header_tag, helpers.format_activity_day(day), class: 'op-activity-days--header') %>
+    <%= content_tag(@header_tag, helpers.format_activity_day(day), class: "op-activity-days--header") %>
 
     <ul class="op-activity-list">
       <%=

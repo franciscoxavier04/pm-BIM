@@ -1,7 +1,7 @@
-<%= component_wrapper(tag: 'turbo-frame') do %>
+<%= component_wrapper(tag: "turbo-frame") do %>
   <%=
     render(Primer::OpenProject::PageHeader.new(state: @state)) do |header|
-      header.with_title(data: { 'test-selector': 'project-query-name' }) do |title|
+      header.with_title(data: { 'test-selector': "project-query-name" }) do |title|
         title.with_editable_form(model: query,
                                 update_path: @query.new_record? ? project_queries_path(projects_query_params) : project_query_path(@query, projects_query_params),
                                 method: @query.new_record? ? :post : :put,
@@ -9,8 +9,8 @@
                                 input_name: "name",
                                 label: ProjectQuery.human_attribute_name(:name),
                                 placeholder: I18n.t(:"projects.lists.new.placeholder"),
-                                scope: 'query',
-                                id: 'project-save-form')
+                                scope: "query",
+                                id: "project-save-form")
         page_title
       end
       header.with_breadcrumbs(breadcrumb_items, selected_item_font_weight: current_breadcrumb_element == page_title ? :bold : :normal)
@@ -78,7 +78,7 @@
       ) do |menu|
         if can_rename?
           menu.with_item(
-            label: t('button_rename'),
+            label: t("button_rename"),
             href: rename_project_query_path(query),
           ) do |item|
             item.with_leading_visual_icon(icon: :pencil)
@@ -88,12 +88,12 @@
         if gantt_portfolio_project_ids.any?
           menu.with_item(
             tag: :a,
-            label: t('projects.index.open_as_gantt'),
+            label: t("projects.index.open_as_gantt"),
             href: gantt_portfolio_query_link,
-            id: 'projects-index-open-as-gantt',
-            content_arguments: { target: '_blank' }
+            id: "projects-index-open-as-gantt",
+            content_arguments: { target: "_blank" }
           ) do |item|
-            item.with_leading_visual_icon(icon: 'op-view-timeline')
+            item.with_leading_visual_icon(icon: "op-view-timeline")
           end
         end
 
@@ -103,13 +103,13 @@
           href: activities_path,
           content_arguments: { rel: "nofollow" }
         ) do |item|
-          item.with_leading_visual_icon(icon: 'tasklist')
+          item.with_leading_visual_icon(icon: "tasklist")
         end
 
         if can_save?
           menu_save_item(
             menu:,
-            label: t('button_save'),
+            label: t("button_save"),
             href: project_query_path(query, projects_query_params),
             method: :patch
           )
@@ -118,18 +118,18 @@
         if may_save_as?
           menu_save_item(
             menu:,
-            label: t('button_save_as'),
+            label: t("button_save_as"),
             href: new_project_query_path(projects_query_params)
           )
         end
 
         menu.with_item(
           tag: :a,
-          label: t('js.label_export'),
+          label: t("js.label_export"),
           href: export_list_modal_projects_path(projects_query_params),
           content_arguments: { data: { controller: "async-dialog" }, rel: "nofollow" }
         ) do |item|
-          item.with_leading_visual_icon(icon: 'sign-out')
+          item.with_leading_visual_icon(icon: "sign-out")
         end
 
         menu.with_item(
@@ -149,16 +149,16 @@
             href: destroy_confirmation_modal_project_query_path(query.id),
             content_arguments: { data: { controller: "async-dialog" }}
           ) do |item|
-            item.with_leading_visual_icon(icon: 'trash')
+            item.with_leading_visual_icon(icon: "trash")
           end
         end
         menu.with_item(
           tag: :button,
-          label: t('label_zen_mode'),
+          label: t("label_zen_mode"),
           content_arguments: { data: { controller: "projects-zen-mode", target: "projects-zen-mode.button", action: "click->projects-zen-mode#performAction" }
           }
         ) do |item|
-          item.with_leading_visual_icon(icon: 'screen-full')
+          item.with_leading_visual_icon(icon: "screen-full")
         end
       end
     end

@@ -68,13 +68,13 @@ See COPYRIGHT and LICENSE files for more details.
     if authorize_for(:wiki, :edit) && !(@version.wiki_page_title.blank? || @version.project.wiki.nil?)
       header.with_action_button(tag: :a,
                                 mobile_icon: :pencil,
-                                mobile_label: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' ')),
+                                mobile_label: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: " ")),
                                 size: :medium,
-                                href: url_for({ controller: '/wiki', action: 'edit', project_id: @version.project, id: @version.wiki_page_title }),
-                                aria: { label: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' ')) },
-                                title: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' '))) do |button|
+                                href: url_for({ controller: "/wiki", action: "edit", project_id: @version.project, id: @version.wiki_page_title }),
+                                aria: { label: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: " ")) },
+                                title: t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: " "))) do |button|
         button.with_leading_visual_icon(icon: :pencil)
-        t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: ' '))
+        t(:button_edit_associated_wikipage, page_title: truncate(@version.wiki_page_title, length: 50, separator: " "))
       end
     end
     call_hook(:view_versions_show_contextual, { version: @version, project: @project })
@@ -83,7 +83,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <div class="widget-boxes -grid">
   <div class="widget-box -thin">
-    <%= render partial: 'versions/overview', locals: { version: @version } %>
+    <%= render partial: "versions/overview", locals: { version: @version } %>
   </div>
 
   <% if @version.estimated_hours > 0 || User.current.allowed_in_project?(:view_time_entries, @project) %>

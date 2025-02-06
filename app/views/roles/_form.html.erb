@@ -35,7 +35,7 @@ See COPYRIGHT and LICENSE files for more details.
      data-application-target="dynamic"
      data-admin--roles-global-role-value="<%= role.is_a?(GlobalRole) %>">
   <div class="form--field -required">
-    <%= f.text_field :name, required: true, container_class: '-slim' %>
+    <%= f.text_field :name, required: true, container_class: "-slim" %>
   </div>
   <div class="form--field">
     <% if role.new_record? %>
@@ -45,7 +45,7 @@ See COPYRIGHT and LICENSE files for more details.
                                  "1",
                                  role.is_a?(GlobalRole),
                                  data: {
-                                   action: 'admin--roles#toggle'
+                                   action: "admin--roles#toggle"
                                  }) %>
       </div>
     <% else %>

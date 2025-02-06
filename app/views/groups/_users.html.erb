@@ -33,7 +33,7 @@ See COPYRIGHT and LICENSE files for more details.
     <% if @group.users.any? %>
       <div class="generic-table--container">
         <div id="group_users_table" class="generic-table--results-container">
-          <%= render partial: 'groups/users_table' %>
+          <%= render partial: "groups/users_table" %>
         </div>
       </div>
     <% else %>
@@ -52,9 +52,9 @@ See COPYRIGHT and LICENSE files for more details.
           <legend class="form--fieldset-legend"><%= t(:label_user_new) %></legend>
           <div class="form--field -vertical">
             <%=
-              angular_component_tag 'opce-user-autocompleter',
+              angular_component_tag "opce-user-autocompleter",
                                   inputs: {
-                                    inputName: 'user_ids',
+                                    inputName: "user_ids",
                                     filters: autocompleter_filters(@group),
                                   },
                                   class: "new-group-members--autocomplete"
@@ -62,7 +62,7 @@ See COPYRIGHT and LICENSE files for more details.
           </div>
           <div>
             <%= styled_button_tag t(:button_add),
-                                  class: '-primary -with-icon icon-checkmark' %>
+                                  class: "-primary -with-icon icon-checkmark" %>
           </div>
         </fieldset>
       <% end %>

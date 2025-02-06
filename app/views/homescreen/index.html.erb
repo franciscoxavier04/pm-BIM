@@ -33,7 +33,7 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-<%= render partial: 'announcements/show' %>
+<%= render partial: "announcements/show" %>
 
 <% if @homescreen[:blocks].any? %>
   <section class="widget-boxes -flex">
@@ -51,7 +51,7 @@ See COPYRIGHT and LICENSE files for more details.
   <section class="homescreen--links">
 
   <% @homescreen[:links].each do |link| %>
-    <% title = I18n.t(link[:label], scope: 'homescreen.links') %>
+    <% title = I18n.t(link[:label], scope: "homescreen.links") %>
     <a class="homescreen--links--item" href="<%= link[:url] %>" target="_blank" title="<%= title %>">
       <%= op_icon(link[:icon]) %>
       <%= title %>

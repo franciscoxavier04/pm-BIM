@@ -48,7 +48,7 @@ See COPYRIGHT and LICENSE files for more details.
             <% else %>
               <%= token.user.name %>
             <% end %>
-            <%= token.user == current_user ? "(#{I18n.t(:you)})" : '' %>
+            <%= token.user == current_user ? "(#{I18n.t(:you)})" : "" %>
           </li>
         <% end %>
       </ul>

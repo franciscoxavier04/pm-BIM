@@ -46,7 +46,7 @@ See COPYRIGHT and LICENSE files for more details.
                                  tag: :a,
                                  href: new_type_path) do |button|
       button.with_leading_visual_icon(icon: :plus)
-      t('activerecord.attributes.work_package.type')
+      t("activerecord.attributes.work_package.type")
     end
   end
 %>
@@ -127,8 +127,8 @@ See COPYRIGHT and LICENSE files for more details.
                 <% if type.workflows.empty? %>
                 <span class="icon-context icon-warning">
                   <%= t(:text_type_no_workflow) %>
-                  (<%= link_to t(:button_edit), { controller: '/workflows',
-                                                  action: 'edit',
+                  (<%= link_to t(:button_edit), { controller: "/workflows",
+                                                  action: "edit",
                                                   type_id: type} %>)
                 </span>
                 <% end %>
@@ -143,14 +143,14 @@ See COPYRIGHT and LICENSE files for more details.
                 <%= checked_image(type.is_milestone) %>
               </td>
               <td class="timelines-pet-reorder">
-                <%= reorder_links('type', {action: 'move', id: type}) %>
+                <%= reorder_links("type", {action: "move", id: type}) %>
               </td>
               <td class="buttons">
                 <% if !type.is_standard? %>
-                  <%= link_to '', type,
+                  <%= link_to "", type,
                                   method: :delete,
                                   data: { confirm: t(:text_are_you_sure) },
-                                  class: 'icon icon-delete',
+                                  class: "icon icon-delete",
                                   title: t(:button_delete) %>
                 <% end %>
               </td>
