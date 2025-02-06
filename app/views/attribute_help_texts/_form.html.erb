@@ -40,9 +40,11 @@ See COPYRIGHT and LICENSE files for more details.
     <% end %>
   </div>
 
-  <% resource = ::API::V3::HelpTexts::HelpTextRepresenter.new(@attribute_help_text,
-                                                              current_user: current_user,
-                                                              embed_links: true) %>
+  <% resource = ::API::V3::HelpTexts::HelpTextRepresenter.new(
+       @attribute_help_text,
+       current_user: current_user,
+       embed_links: true
+     ) %>
 
   <div class="form--field -required -visible-overflow">
     <%= f.text_area :help_text,

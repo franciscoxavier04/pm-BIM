@@ -2,14 +2,18 @@
 
 <%=
   if @group
-    I18n.t("mail.sharing.work_packages.summary.group",
-           user: @sharer,
-           group: @group,
-           role_rights: @role_rights)
+    I18n.t(
+      "mail.sharing.work_packages.summary.group",
+      user: @sharer,
+      group: @group,
+      role_rights: @role_rights
+    )
   else
-    I18n.t("mail.sharing.work_packages.summary.user",
-           user: @sharer,
-           role_rights: @role_rights)
+    I18n.t(
+      "mail.sharing.work_packages.summary.user",
+      user: @sharer,
+      role_rights: @role_rights
+    )
   end
 %>
 <%= "-" * 100 %>

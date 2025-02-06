@@ -1,8 +1,8 @@
-<%= hidden_field :import_options, :unknown_types_action,      :value => params.dig(:import_options, :unknown_types_action) %>
-<%= hidden_field :import_options, :unknown_statuses_action,   :value => params.dig(:import_options, :unknown_statuses_action) %>
+<%= hidden_field :import_options, :unknown_types_action, :value => params.dig(:import_options, :unknown_types_action) %>
+<%= hidden_field :import_options, :unknown_statuses_action, :value => params.dig(:import_options, :unknown_statuses_action) %>
 <%= hidden_field :import_options, :unknown_priorities_action, :value => params.dig(:import_options, :unknown_priorities_action) %>
-<%= hidden_field :import_options, :invalid_people_action,     :value => params.dig(:import_options, :invalid_people_action) %>
-<%= hidden_field :import_options, :unknown_mails_action,      :value => params.dig(:import_options, :unknown_mails_action) %>
+<%= hidden_field :import_options, :invalid_people_action, :value => params.dig(:import_options, :invalid_people_action) %>
+<%= hidden_field :import_options, :unknown_mails_action, :value => params.dig(:import_options, :unknown_mails_action) %>
 
 <% if params.dig(:import_options, :unknown_types_chose_ids)&.any? %>
   <% params.dig(:import_options, :unknown_types_chose_ids).each do |id| %>

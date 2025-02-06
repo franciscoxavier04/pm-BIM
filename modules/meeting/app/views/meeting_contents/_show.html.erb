@@ -45,7 +45,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% if can_edit_meeting_content?(content, content_type) -%>
     <div data-meeting-content-target="editor"
          hidden>
-      <%= render(:partial => "meeting_contents/form", :locals => {:content => content, :content_type => content_type}) %>
+      <%= render(:partial => "meeting_contents/form", :locals => { :content => content, :content_type => content_type }) %>
     </div>
   <% end -%>
 
@@ -63,9 +63,11 @@ See COPYRIGHT and LICENSE files for more details.
 <%# We cannot render attachments for journaled content %>
   <% unless local_assigns[:journaled_version] %>
     <% resource = ::API::V3::MeetingContents::MeetingContentRepresenter.new(content, current_user: current_user, embed_links: true) %>
-    <%= list_attachments(resource,
-                         data: {
-                           'meeting-content-target': "attachments"
-                         }) %>
+    <%= list_attachments(
+          resource,
+          data: {
+            'meeting-content-target': "attachments"
+          }
+        ) %>
   <% end %>
 </div>

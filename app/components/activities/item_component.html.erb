@@ -37,13 +37,15 @@ See COPYRIGHT and LICENSE files for more details.
     <%= project_suffix %>
   </div>
   <%=
-    render(Activities::ItemSubtitleComponent.new(
-      user: display_user? && @event.event_author,
-      datetime: @event.event_datetime,
-      is_creation: initial?,
-      is_deletion: deletion?,
-      is_work_package: work_package?,
-      journable_type: @event.journal.journable_type)
+    render(
+      Activities::ItemSubtitleComponent.new(
+        user: display_user? && @event.event_author,
+        datetime: @event.event_datetime,
+        is_creation: initial?,
+        is_deletion: deletion?,
+        is_work_package: work_package?,
+        journable_type: @event.journal.journable_type
+      )
     )
   %>
   <% if comment.present? -%>

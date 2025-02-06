@@ -44,9 +44,13 @@ See COPYRIGHT and LICENSE files for more details.
 
             if show_email?
               f.with_column(classes: "op-user-hover-card--email") do
-                render(Primer::Beta::Text.new(font_size: :small,
-                                              color: :muted,
-                                              data: { test_selector: "user-hover-card-email" })) do
+                render(
+                  Primer::Beta::Text.new(
+                    font_size: :small,
+                    color: :muted,
+                    data: { test_selector: "user-hover-card-email" }
+                  )
+                ) do
                   @user.mail
                 end
               end
@@ -69,9 +73,13 @@ See COPYRIGHT and LICENSE files for more details.
         end
 
         flex.with_row do
-          render(Primer::Beta::Button.new(tag: :a,
-                                          href: helpers.allowed_management_user_profile_path(@user),
-                                          data: { test_selector: "user-hover-card-profile-btn" })) do
+          render(
+            Primer::Beta::Button.new(
+              tag: :a,
+              href: helpers.allowed_management_user_profile_path(@user),
+              data: { test_selector: "user-hover-card-profile-btn" }
+            )
+          ) do
             I18n.t("users.open_profile")
           end
         end

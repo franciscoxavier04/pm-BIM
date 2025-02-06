@@ -82,7 +82,7 @@ See COPYRIGHT and LICENSE files for more details.
         <tbody>
           <% cost_types.each do |cost_type| %>
           <tr>
-            <%= content_tag :td, link_to(cost_type.name, {:controller => "/cost_types", :action => "edit", :id => cost_type}) %>
+            <%= content_tag :td, link_to(cost_type.name, { :controller => "/cost_types", :action => "edit", :id => cost_type }) %>
             <%= content_tag :td, cost_type.unit %>
             <%= content_tag :td, cost_type.unit_plural %>
             <%= content_tag :td, to_currency_with_empty(cost_type.rate_at(@fixed_date)), :class => "currency", :id => "cost_type_#{cost_type.id}_rate" %>
@@ -108,11 +108,11 @@ See COPYRIGHT and LICENSE files for more details.
             </td>
             <%= content_tag :td, cost_type.is_default? ? icon_wrapper("icon icon-checkmark", I18n.t(:general_text_Yes)) : "" %>
             <td class="buttons">
-              <%= form_for cost_type, url:    cost_type_path(cost_type),
+              <%= form_for cost_type, url: cost_type_path(cost_type),
                                       method: :delete,
-                                      html:   { id:    "delete_cost_type_#{cost_type.id}",
-                                                class: "delete_cost_type",
-                                                title: t(:button_lock) } do |f| %>
+                                      html: { id: "delete_cost_type_#{cost_type.id}",
+                                              class: "delete_cost_type",
+                                              title: t(:button_lock) } do |f| %>
                 <button type="submit"
                         class="button--link submit_cost_type">
                   <%= icon_wrapper("icon icon-locked", I18n.t(:button_lock)) %>

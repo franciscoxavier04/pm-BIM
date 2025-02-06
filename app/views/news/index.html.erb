@@ -36,21 +36,25 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { t(:label_news_plural) }
-    header.with_breadcrumbs([*([ href: home_path, text: organization_name ] unless @project),
-                             *([ href: project_overview_path(@project.id), text: @project.name ] if @project),
-                             t(:label_news_plural)])
+    header.with_breadcrumbs(
+      [*([href: home_path, text: organization_name] unless @project),
+       *([href: project_overview_path(@project.id), text: @project.name] if @project),
+       t(:label_news_plural)]
+    )
   end
 %>
 <% if managable %>
   <%=
     render(Primer::OpenProject::SubHeader.new) do |subheader|
-      subheader.with_action_button(scheme: :primary,
-                                   aria: { label: t(:label_news_new)},
-                                   title: I18n.t(:label_work_package_status_new),
-                                   tag: :a,
-                                   id: "new_news_link",
-                                   data: { "test-selector": "add-news-button"},
-                                   href: new_project_news_path(@project)) do |button|
+      subheader.with_action_button(
+        scheme: :primary,
+        aria: { label: t(:label_news_new) },
+        title: I18n.t(:label_work_package_status_new),
+        tag: :a,
+        id: "new_news_link",
+        data: { "test-selector": "add-news-button" },
+        href: new_project_news_path(@project)
+      ) do |button|
         button.with_leading_visual_icon(icon: :plus)
         t(:label_news_singular)
       end
@@ -72,8 +76,10 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
 <% else %>
   <% if managable %>
-    <%= no_results_box(action_url:     new_project_news_path(@project),
-                       display_action: true) %>
+    <%= no_results_box(
+          action_url: new_project_news_path(@project),
+          display_action: true
+        ) %>
   <% else %>
     <%= no_results_box %>
   <% end %>
@@ -82,9 +88,9 @@ See COPYRIGHT and LICENSE files for more details.
 <%= pagination_links_full @newss %>
 
 <%= other_formats_links do |f| %>
-  <%= f.link_to "Atom", url: {project_id: @project, key: User.current.rss_key} %>
+  <%= f.link_to "Atom", url: { project_id: @project, key: User.current.rss_key } %>
 <% end %>
 
 <% content_for :header_tags do %>
-  <%= auto_discovery_link_tag(:atom, params.merge({format: "atom", page: nil, key: User.current.rss_key})) %>
+  <%= auto_discovery_link_tag(:atom, params.merge({ format: "atom", page: nil, key: User.current.rss_key })) %>
 <% end %>

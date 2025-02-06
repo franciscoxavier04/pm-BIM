@@ -32,9 +32,11 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { "#{t(:button_delete)} #{@budget.subject}" }
-    header.with_breadcrumbs([{href: project_overview_path(@project.identifier), text: @project.name},
-                             {href: projects_budgets_path(@project.identifier), text: I18n.t(:label_budget_plural)},
-                             "#{t(:button_delete)} #{@budget.subject}"])
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project.identifier), text: @project.name },
+       { href: projects_budgets_path(@project.identifier), text: I18n.t(:label_budget_plural) },
+       "#{t(:button_delete)} #{@budget.subject}"]
+    )
   end
 %>
 

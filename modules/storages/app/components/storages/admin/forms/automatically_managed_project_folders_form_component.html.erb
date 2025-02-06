@@ -27,9 +27,11 @@
             render(Storages::Admin::ManagedProjectFolders::AutomaticManagementCheckbox.new(form, storage:))
           end
 
-          project_folders_form.with_row(mb: 3,
-                                        data: { 'storages--automatically-managed-project-folders-form-target': "applicationPasswordInput" },
-                                        **application_password_display_options) do
+          project_folders_form.with_row(
+            mb: 3,
+            data: { 'storages--automatically-managed-project-folders-form-target': "applicationPasswordInput" },
+            **application_password_display_options
+          ) do
             render(Storages::Admin::ManagedProjectFolders::ApplicationPasswordInput.new(form, storage:))
           end
 

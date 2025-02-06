@@ -28,7 +28,7 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%= form_tag(filter_path, method: :get) do %>
-   <% collapsed_class =  initially_visible? ? "" : "collapsed" %>
+   <% collapsed_class = initially_visible? ? "" : "collapsed" %>
   <fieldset class="simple-filters--container <%= collapsed_class %>" data-members-form-target="filterContainer">
     <legend><%= t(:label_filter_plural) %></legend>
     <% if has_close_icon? %>
@@ -51,14 +51,14 @@ See COPYRIGHT and LICENSE files for more details.
         <li class="simple-filters--filter">
           <label class='simple-filters--filter-name' for='group_id'><%= Group.model_name.human %>:</label>
           <%= collection_select :group,
-                              :id,
-                              groups,
-                              :id,
-                              :name,
-                              { include_blank: true,
-                                selected: params[:group_id].to_i },
-                              { name: "group_id",
-                                class: "simple-filters--filter-value" } %>
+                                :id,
+                                groups,
+                                :id,
+                                :name,
+                                { include_blank: true,
+                                  selected: params[:group_id].to_i },
+                                { name: "group_id",
+                                  class: "simple-filters--filter-value" } %>
         </li>
       <% end %>
       <% if roles.present? %>
@@ -78,7 +78,8 @@ See COPYRIGHT and LICENSE files for more details.
               {
                 name: "role_id",
                 class: "simple-filters--filter-value"
-              })
+              }
+            )
           %>
         </li>
       <% end %>
@@ -96,7 +97,8 @@ See COPYRIGHT and LICENSE files for more details.
                 include_blank: true,
                 name: "shared_role_id",
                 class: "simple-filters--filter-value"
-              })
+              }
+            )
           %>
         </li>
       <% end %>

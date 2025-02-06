@@ -30,9 +30,12 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { t("project.identifier.title") }
-    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
-                             { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
-                             t("project.identifier.title")]) end
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project.id), text: @project.name },
+       { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+       t("project.identifier.title")]
+    )
+  end
 %>
 
 <%= error_messages_for @project %>
@@ -70,8 +73,10 @@ See COPYRIGHT and LICENSE files for more details.
     <br>
 
     <div class="form--field-instructions">
-      <%= t(:text_length_between, min: 1,
-                                  max: Project::IDENTIFIER_MAX_LENGTH) %>
+      <%= t(
+            :text_length_between, min: 1,
+                                  max: Project::IDENTIFIER_MAX_LENGTH
+          ) %>
       <%= t(:text_project_identifier_info).html_safe %>
     </div>
 

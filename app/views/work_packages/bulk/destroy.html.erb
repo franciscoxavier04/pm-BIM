@@ -55,7 +55,7 @@ See COPYRIGHT and LICENSE files for more details.
       <div class="form--field -trailing-label">
         <%= styled_label_tag "to_do_action_nullify", t(:text_assign_to_project) %>
         <div class="form--field-container">
-          <%= styled_radio_button_tag "to_do[action]" , "nullify" %>
+          <%= styled_radio_button_tag "to_do[action]", "nullify" %>
         </div>
       </div>
       <div class="grid-block">
@@ -64,8 +64,10 @@ See COPYRIGHT and LICENSE files for more details.
             <%= styled_label_tag "to_do_action_reassign", t(:text_reassign) %>
             <div class="form--field-container">
               <%= styled_radio_button_tag "to_do[action]", "reassign" %>
-              <% csp_onclick('if(jQuery("#to_do_action_reassign").prop("checked")) { jQuery("#to_do_reassign_to_id").focus(); }',
-                             "#reassign") %>
+              <% csp_onclick(
+                   'if(jQuery("#to_do_action_reassign").prop("checked")) { jQuery("#to_do_reassign_to_id").focus(); }',
+                   "#reassign"
+                 ) %>
             </div>
           </div>
         </div>
@@ -83,7 +85,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= styled_button_tag title: t(:button_delete), class: "-primary" do
             concat content_tag :i, "", class: "button--icon icon-delete"
             concat content_tag :span, t(:button_delete), class: "button--text"
-            end %>
+          end %>
       <%= link_to_function t(:button_cancel),
                            "history.back()",
                            title: t(:button_cancel),

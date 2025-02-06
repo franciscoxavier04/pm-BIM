@@ -38,12 +38,13 @@ See COPYRIGHT and LICENSE files for more details.
 
 <br>
 <p>
-   <%= t(:mail_body_register_links_html,
-               webinar_link: link_to("Webinar Link", OpenProject::Static::Links.links[:webinar_videos][:href]),
-               youtube_link: link_to("Youtube Link", OpenProject::Configuration.youtube_channel),
-               get_started_link: link_to("Get Started Videos Link", OpenProject::Static::Links.links[:get_started_videos][:href]),
-               documentation_link: link_to("Documentation Link", OpenProject::Static::Links.links[:openproject_docs][:href])
-               ) %>
+   <%= t(
+         :mail_body_register_links_html,
+         webinar_link: link_to("Webinar Link", OpenProject::Static::Links.links[:webinar_videos][:href]),
+         youtube_link: link_to("Youtube Link", OpenProject::Configuration.youtube_channel),
+         get_started_link: link_to("Get Started Videos Link", OpenProject::Static::Links.links[:get_started_videos][:href]),
+         documentation_link: link_to("Documentation Link", OpenProject::Static::Links.links[:openproject_docs][:href])
+       ) %>
 </p>
 
 <p>

@@ -32,9 +32,11 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
     header.with_title { t(:label_general) }
-    header.with_breadcrumbs([{ href: admin_index_path, text: t("label_administration") },
-                             { href: admin_settings_general_path, text: t(:label_system_settings) },
-                             t(:label_general)])
+    header.with_breadcrumbs(
+      [{ href: admin_index_path, text: t("label_administration") },
+       { href: admin_settings_general_path, text: t(:label_system_settings) },
+       t(:label_general)]
+    )
   end
 %>
 
@@ -70,10 +72,12 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field">
       <%= setting_check_box :security_badge_displayed %>
       <span class="form--field-instructions">
-        <%= t(:text_notice_security_badge_displayed_html,
+        <%= t(
+              :text_notice_security_badge_displayed_html,
               information_panel_label: t(:label_information),
               more_info_url: ::OpenProject::Static::Links[:security_badge_documentation][:href],
-              information_panel_path: info_admin_index_path) %>
+              information_panel_path: info_admin_index_path
+            ) %>
       </span>
     </div>
     <% end %>

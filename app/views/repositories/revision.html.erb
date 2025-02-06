@@ -43,7 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
     <% end %>
   </li>
   <li class="toolbar-item">
-    <%= form_tag({controller: "/repositories", action: "revision", project_id: @project}, method: :get) do %>
+    <%= form_tag({ controller: "/repositories", action: "revision", project_id: @project }, method: :get) do %>
       <%= text_field_tag :rev, @rev, placeholder: t(:label_revision) %>
     <% end %>
   </li>

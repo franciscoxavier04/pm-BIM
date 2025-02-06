@@ -32,7 +32,7 @@
           <%= setting_label key, label: :setting_repository_checkout_text %>
           <div class="form--field-container">
             <%= styled_text_area_tag key, Setting.repository_checkout_data[vendor]["text"],
-                                      placeholder: t("repositories.checkout.default_instructions.#{vendor}") %>
+                                     placeholder: t("repositories.checkout.default_instructions.#{vendor}") %>
           </div>
           <div class="form--field-instructions"><%= t("repositories.checkout.text_instructions") %></div>
         </div>

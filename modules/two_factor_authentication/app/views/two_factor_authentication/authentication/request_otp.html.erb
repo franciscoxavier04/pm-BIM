@@ -11,9 +11,11 @@
         { action: :confirm_otp },
         id: "submit_otp",
         autocomplete: "off", data: {
-                                challenge_url: url_for(action: :webauthn_challenge, format: :json),
-                                device_type: @used_device.class.device_type,
-                                action: "submit->two-factor-authentication#onVerifyDevice"}) do %>
+          challenge_url: url_for(action: :webauthn_challenge, format: :json),
+          device_type: @used_device.class.device_type,
+          action: "submit->two-factor-authentication#onVerifyDevice"
+        }
+      ) do %>
     <%= back_url_hidden_field_tag %>
     <h2><%= t "two_factor_authentication.label_two_factor_authentication" %></h2>
     <% identifier = @used_device.request_2fa_identifier(@strategy.channel) %>

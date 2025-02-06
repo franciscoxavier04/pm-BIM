@@ -9,14 +9,15 @@
       header.with_breadcrumbs(breadcrumb_items)
 
       if render_create_button?
-        header.with_action_menu(menu_arguments: { anchor_align: :end },
-                                button_arguments: { icon: "op-kebab-vertical",
-                                                    classes: "hide-when-print",
-                                                    "aria-label": "Menu",
-                                                    data: {
-                                                      "test-selector": "recurring-meeting-action-menu"
-                                                    } }) do |menu, _button|
-
+        header.with_action_menu(
+          menu_arguments: { anchor_align: :end },
+          button_arguments: { icon: "op-kebab-vertical",
+                              classes: "hide-when-print",
+                              "aria-label": "Menu",
+                              data: {
+                                "test-selector": "recurring-meeting-action-menu"
+                              } }
+        ) do |menu, _button|
           menu.with_item(
             label: I18n.t(:label_recurring_meeting_series_edit),
             icon: :gear,

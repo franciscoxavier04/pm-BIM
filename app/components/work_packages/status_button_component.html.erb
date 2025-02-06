@@ -13,9 +13,11 @@
       end
 
       @items.each do |item|
-        menu.with_item(label: item.name,
-                       content_arguments: { classes: "__hl_inline_status_#{item.id}",
-                                            align_items: :center }) do |menu_item|
+        menu.with_item(
+          label: item.name,
+          content_arguments: { classes: "__hl_inline_status_#{item.id}",
+                               align_items: :center }
+        ) do |menu_item|
           menu_item.with_trailing_visual_icon(icon: :lock) if item.is_readonly?
         end
       end

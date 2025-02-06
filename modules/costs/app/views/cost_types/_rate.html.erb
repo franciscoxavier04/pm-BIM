@@ -43,19 +43,20 @@ See COPYRIGHT and LICENSE files for more details.
   <tr><td colspan="3"><%= error_messages %></td></tr>
 <% end %>
 <%= fields_for prefix, rate, builder: TabularFormBuilder do |rate_form| %>
-  <%= content_tag(:tr,
-                  id: id_prefix,
-                  data: templated ? { 'row-target': "true" } : {},
-                  style: templated ? "display: none;" : ""
+  <%= content_tag(
+        :tr,
+        id: id_prefix,
+        data: templated ? { 'row-target': "true" } : {},
+        style: templated ? "display: none;" : ""
       ) do %>
     <td class="-no-ellipsis">
       <label class="hidden-for-sighted" for="<%= "#{id_prefix}_valid_from" %>"><%= Rate.human_attribute_name(:valid_from) %></label>
       <%= rate_form.date_picker :valid_from,
-                               index: id_or_index,
-                               class: "date costs-date-picker",
-                               no_field_container: true,
-                               no_label: true,
-                               required: templated ? false : true %>
+                                index: id_or_index,
+                                class: "date costs-date-picker",
+                                no_field_container: true,
+                                no_label: true,
+                                required: templated ? false : true %>
     </td>
     <td class="currency">
       <span class="inline-label">

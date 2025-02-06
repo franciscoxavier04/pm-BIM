@@ -29,15 +29,20 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { t("project.destroy.title", name: @project_to_destroy) }
-    header.with_breadcrumbs([{ href: project_overview_path(@project_to_destroy.id), text: @project_to_destroy.name },
-                             { href: project_settings_general_path(@project_to_destroy.id), text: I18n.t("label_project_settings") },
-                             t("project.destroy.title", name: @project_to_destroy)]) end
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project_to_destroy.id), text: @project_to_destroy.name },
+       { href: project_settings_general_path(@project_to_destroy.id), text: I18n.t("label_project_settings") },
+       t("project.destroy.title", name: @project_to_destroy)]
+    )
+  end
 %>
 
-<%= styled_form_tag(project_path(@project_to_destroy),
-                    class: "danger-zone",
-                    data: { turbo: false },
-                    method: :delete) do %>
+<%= styled_form_tag(
+      project_path(@project_to_destroy),
+      class: "danger-zone",
+      data: { turbo: false },
+      method: :delete
+    ) do %>
   <section class="form--section">
     <h3 class="form--section-title">
       <%= t("project.destroy.title", name: "<em>#{h(@project_to_destroy)}</em>").html_safe %>
@@ -66,9 +71,9 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="danger-zone--verification">
       <input type="text">
       <%= styled_button_tag title: t(:button_delete), class: "-primary", disabled: true do
-        concat content_tag :i, "", class: "button--icon icon-delete"
-        concat content_tag :span, t(:button_delete), class: "button--text"
-      end %>
+            concat content_tag :i, "", class: "button--icon icon-delete"
+            concat content_tag :span, t(:button_delete), class: "button--text"
+          end %>
       <%= link_to projects_path,
                   title: t(:button_cancel),
                   class: "button -with-icon icon-cancel" do %>

@@ -26,9 +26,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<%= styled_form_tag(openid_connect_provider_path(@provider),
-                    class: "danger-zone",
-                    method: :delete) do %>
+<%= styled_form_tag(
+      openid_connect_provider_path(@provider),
+      class: "danger-zone",
+      method: :delete
+    ) do %>
   <section class="form--section">
     <h3 class="form--section-title">
       <%= t("openid_connect.delete_title") %>
@@ -53,9 +55,9 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="danger-zone--verification">
       <%= text_field_tag :delete_confirmation %>
       <%= styled_button_tag title: t(:button_delete), class: "-primary", disabled: true do
-        concat content_tag :i, "", class: "button--icon icon-delete"
-        concat content_tag :span, t(:button_delete), class: "button--text"
-      end %>
+            concat content_tag :i, "", class: "button--icon icon-delete"
+            concat content_tag :span, t(:button_delete), class: "button--text"
+          end %>
       <%= link_to openid_connect_providers_path,
                   title: t(:button_cancel),
                   class: "button -with-icon icon-cancel" do %>

@@ -50,8 +50,8 @@
         <% events.each do |key, label| %>
           <label class="form--label-with-check-box">
             <%= styled_check_box_tag "webhook[events][]",
-                              key,
-                              event_names.include?(key) -%>
+                                     key,
+                                     event_names.include?(key) -%>
             <%= label %>
           </label>
         <% end %>
@@ -86,10 +86,10 @@
       <% Project.pluck(:id, :name).each do |id, name| %>
         <label class="form--label-with-check-box">
           <%= styled_check_box_tag "webhook[selected_project_ids][]",
-                            id,
-                            !@webhook.all_projects? && @webhook.project_ids.include?(id),
-                            disabled: @webhook.all_projects?,
-                            class: "webhooks--selected-project-ids" -%>
+                                   id,
+                                   !@webhook.all_projects? && @webhook.project_ids.include?(id),
+                                   disabled: @webhook.all_projects?,
+                                   class: "webhooks--selected-project-ids" -%>
           <%= name %>
         </label>
       <% end %>

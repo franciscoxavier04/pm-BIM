@@ -40,8 +40,10 @@
         )
         concat(
           render(
-            Primer::OpenProject::FeedbackMessage.new(icon_arguments: {icon: :"sign-in", color: :muted},
-                                                     data: { "storages--oauth-access-grant-nudge-modal-target": "requestAccessBody" })
+            Primer::OpenProject::FeedbackMessage.new(
+              icon_arguments: { icon: :"sign-in", color: :muted },
+              data: { "storages--oauth-access-grant-nudge-modal-target": "requestAccessBody" }
+            )
           ) do |component|
             component.with_heading(tag: :h2, aria: { hidden: true }) { heading_text }
 

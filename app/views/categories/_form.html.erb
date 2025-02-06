@@ -37,7 +37,7 @@ See COPYRIGHT and LICENSE files for more details.
                Principal
                    .possible_assignee(@project)
                    .ordered_by_name
-                   .collect{|u| [u.name, u.id]},
+                   .collect { |u| [u.name, u.id] },
                include_blank: true,
                container_class: "-slim" %>
 </div>

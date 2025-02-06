@@ -30,9 +30,11 @@ See COPYRIGHT and LICENSE files for more details.
 <%= @meeting.project.name %>: <%= @meeting.title %> (<%= meeting_url(@meeting) %>)
 <%= @meeting.author %>
 
-<%= t("meeting.email.rescheduled.body",
+<%= t(
+      "meeting.email.rescheduled.body",
       actor: @actor,
-      title: @meeting.title) %>
+      title: @meeting.title
+    ) %>
 
 <%= t("meeting.email.rescheduled.old_date_time") %>:
 <%= format_time_as_date @changes[:old_start] %> <%= format_time @changes[:old_start], include_date: false %> - <%= format_time (@changes[:old_start] + @changes[:old_duration]), include_date: false %> (<%= formatted_time_zone_offset %>}

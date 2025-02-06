@@ -36,9 +36,11 @@ See COPYRIGHT and LICENSE files for more details.
       method: :post
     ) do |form|
       component_collection do |collection|
-        collection.with_component(Primer::Alpha::Dialog::Body.new(
-          aria: { label: I18n.t("my.access_token.new_access_token_dialog_title") }
-        )) do
+        collection.with_component(
+          Primer::Alpha::Dialog::Body.new(
+            aria: { label: I18n.t("my.access_token.new_access_token_dialog_title") }
+          )
+        ) do
           flex_layout(mb: 3) do |body|
             body.with_row do
               render(Primer::Alpha::Banner.new(scheme: :warning)) do

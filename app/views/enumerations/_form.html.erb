@@ -45,10 +45,10 @@ See COPYRIGHT and LICENSE files for more details.
   <% if @enumeration.class.colored? %>
     <%= render partial: "/colors/color_autocomplete_field",
                locals: {
-                   form: f,
-                   object: @enumeration,
-                   type: "enumeration",
-                   label: @enumeration.color_label
+                 form: f,
+                 object: @enumeration,
+                 type: "enumeration",
+                 label: @enumeration.color_label
                } %>
   <% end %>
 </section>

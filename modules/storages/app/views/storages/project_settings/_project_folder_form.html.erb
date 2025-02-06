@@ -41,19 +41,21 @@ See COPYRIGHT and LICENSE files for more details.
   <div class="form--field-container">
     <%= f.hidden_field :storage_id %>
     <% storage = @project_storage.storage %>
-    <%= content_tag(:span,
-                    storage.name,
-                    data: {
-                      'project-storage-form-target': "storage",
-                      storage: {
-                        name: storage.name,
-                        id: storage.id,
-                        _links: {
-                          self: { href: api_v3_paths.storage(storage.id) },
-                          type: { href: API::V3::Storages::URN_STORAGE_TYPE_NEXTCLOUD }
-                        }
-                      },
-                    }) %>
+    <%= content_tag(
+          :span,
+          storage.name,
+          data: {
+            'project-storage-form-target': "storage",
+            storage: {
+              name: storage.name,
+              id: storage.id,
+              _links: {
+                self: { href: api_v3_paths.storage(storage.id) },
+                type: { href: API::V3::Storages::URN_STORAGE_TYPE_NEXTCLOUD }
+              }
+            },
+          }
+        ) %>
   </div>
 </div>
 
@@ -91,9 +93,9 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field-container">
       <%= f.label :project_folder_mode, value: "automatic", class: "form--label-with-radio-button" do %>
         <%= f.radio_button :project_folder_mode,
-                          "automatic",
-                          no_label: true,
-                          data: { action: "project-storage-form#updateForm" } %>
+                           "automatic",
+                           no_label: true,
+                           data: { action: "project-storage-form#updateForm" } %>
         <%= t(:"storages.label_automatic_folder") %>
       <% end %>
     </div>

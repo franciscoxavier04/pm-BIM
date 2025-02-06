@@ -41,9 +41,9 @@ See COPYRIGHT and LICENSE files for more details.
   <% if @custom_field.type == 'ProjectCustomField' %>
     <div class="form--field -required">
       <%= f.select :custom_field_section_id,
-                  ProjectCustomFieldSection.all.collect { |s| [s.name, s.id] },
-                  { container_class: "-slim" },
-                  required: true %>
+                   ProjectCustomFieldSection.all.collect { |s| [s.name, s.id] },
+                   { container_class: "-slim" },
+                   required: true %>
     </div>
   <% end %>
   <div class="form--field">

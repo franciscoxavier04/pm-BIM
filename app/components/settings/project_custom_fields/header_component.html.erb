@@ -21,16 +21,17 @@
         end
       end
 
-      subheader.with_action_button(tag: :a,
-                                   href: new_admin_settings_project_custom_field_path(type: "ProjectCustomField"),
-                                   scheme: :primary,
-                                   data: { turbo: "false", test_selector: "new-project-custom-field-button" },
-                                   mobile_icon: :plus,
-                                   mobile_label: t("settings.project_attributes.label_new_attribute")) do |button|
+      subheader.with_action_button(
+        tag: :a,
+        href: new_admin_settings_project_custom_field_path(type: "ProjectCustomField"),
+        scheme: :primary,
+        data: { turbo: "false", test_selector: "new-project-custom-field-button" },
+        mobile_icon: :plus,
+        mobile_label: t("settings.project_attributes.label_new_attribute")
+      ) do |button|
         button.with_leading_visual_icon(icon: :plus)
         t("settings.project_attributes.label_new_attribute")
       end
-
     end
   %>
 <% end %>

@@ -1,17 +1,18 @@
 <div class="<%= multi_value ? "multi-select" : "single-select" %>">
   <span class="inline-label">
-    <% select_options = [ :value,
-                          options_from_collection_for_select(
-                              filter.allowed_values,
-                              :second,
-                              :first,
-                              selected_values),
-                          {
-                            class: "form--select -slim",
-                            'data-filter--filters-form-target': "filterValueSelect",
-                            'data-filter-name': filter.name,
-                            id: "#{filter.name}_value"
-                          }]
+    <% select_options = [:value,
+                         options_from_collection_for_select(
+                           filter.allowed_values,
+                           :second,
+                           :first,
+                           selected_values
+                         ),
+                         {
+                           class: "form--select -slim",
+                           'data-filter--filters-form-target': "filterValueSelect",
+                           'data-filter-name': filter.name,
+                           id: "#{filter.name}_value"
+                         }]
        if multi_value
          select_options.third[:multiple] = true
        end %>

@@ -29,10 +29,12 @@
 
   <% end %>
 
-  <%= link_to(OpenProject::Static::Links.links[:pricing][:href],
-              class: "button -primary",
-              target: "_blank",
-              rel: "noopener") do %>
+  <%= link_to(
+        OpenProject::Static::Links.links[:pricing][:href],
+        class: "button -primary",
+        target: "_blank",
+        rel: "noopener"
+      ) do %>
     <%= spot_icon("enterprise-addons") %>
     <span class="button--text"><%= t("admin.enterprise.buttons.upgrade") %></span>
   <% end %>

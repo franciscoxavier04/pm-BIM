@@ -30,10 +30,13 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { t(:label_repository_remove) }
-    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
-                             { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
-                             { href: project_settings_repository_path, text: t(:label_repository) },
-                             t(:label_repository_remove)]) end
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project.id), text: @project.name },
+       { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+       { href: project_settings_repository_path, text: t(:label_repository) },
+       t(:label_repository_remove)]
+    )
+  end
 %>
 <% if @repository.managed? %>
   <%= styled_form_tag(project_repository_path(@project), method: :delete, class: "danger-zone") do %>
@@ -57,16 +60,16 @@ See COPYRIGHT and LICENSE files for more details.
       <div class="danger-zone--verification">
         <input type="text"><input>
         <%= styled_button_tag project_repository_path(@project),
-          method: :delete,
-          title: t(:button_delete),
-          disabled: true,
-          class: "-primary" do %>
+                              method: :delete,
+                              title: t(:button_delete),
+                              disabled: true,
+                              class: "-primary" do %>
             <%= op_icon("button--icon icon-delete") %>
             <span class="button--text"><%= t(:button_delete) %></span>
         <% end %>
         <%= link_to project_settings_repository_path(@project),
-          title: t(:button_cancel),
-          class: "button -with-icon icon-cancel" do %>
+                    title: t(:button_cancel),
+                    class: "button -with-icon icon-cancel" do %>
             <%= t(:button_cancel) %>
         <% end %>
       </div>
@@ -77,10 +80,12 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="op-toast--content">
       <p><strong><%= t("repositories.destroy.title_not_managed", repository_type: "<em>#{h(@repository.repository_type)} - #{t(:project_module_repository)}</em>").html_safe %></strong><br></p>
       <p>
-        <%= t("repositories.destroy.subtitle_not_managed",
-            repository_type: "#{h(@repository.repository_type)} - #{t(:project_module_repository)}",
-            project_name: h(@project.identifier),
-            url: h(@repository.url)).html_safe %> <br>
+        <%= t(
+              "repositories.destroy.subtitle_not_managed",
+              repository_type: "#{h(@repository.repository_type)} - #{t(:project_module_repository)}",
+              project_name: h(@project.identifier),
+              url: h(@repository.url)
+            ).html_safe %> <br>
       </p>
       <p>
         <span><%= t("repositories.destroy.info_not_managed") %></span>
@@ -89,14 +94,14 @@ See COPYRIGHT and LICENSE files for more details.
         <%= link_to project_repository_path(@project),
                     title: t(:button_delete),
                     method: :delete,
-                    data: { "test-selector": "remove-repository-button"},
+                    data: { "test-selector": "remove-repository-button" },
                     class: "button" do %>
           <%= op_icon("button--icon icon-remove") %>
           <span class="button--text"><%= t(:button_remove) %></span>
         <% end %>
         <%= link_to project_settings_repository_path(@project),
-          title: t(:button_cancel),
-          class: "button -with-icon icon-cancel" do %>
+                    title: t(:button_cancel),
+                    class: "button -with-icon icon-cancel" do %>
             <%= t(:button_cancel) %>
         <% end %>
       </p>

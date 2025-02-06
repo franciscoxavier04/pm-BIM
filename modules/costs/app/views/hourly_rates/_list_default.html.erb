@@ -79,7 +79,7 @@ See COPYRIGHT and LICENSE files for more details.
           <tr>
             <td style="padding-right: 1em;"><%= rate.valid_from %></td>
             <td class="currency"><%= number_to_currency(rate.rate) %></td>
-            <td><%= rate == current_rate ? icon_wrapper("icon-context icon-checkmark",I18n.t(:general_text_Yes)) : "" %></td>
+            <td><%= rate == current_rate ? icon_wrapper("icon-context icon-checkmark", I18n.t(:general_text_Yes)) : "" %></td>
           </tr>
         <%- end -%>
         </tbody>

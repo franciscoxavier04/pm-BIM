@@ -27,17 +27,19 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= labelled_tabular_form_for(:member, url: main_app.project_members_path,
-                              method: :post,
-                              html: { id: "members_add_form",
-                                      class: "form -vertical -bordered -medium-compressed"},
-                              data: {
-                                'members-form-target': "addMemberForm",
-                                controller: "user-limit",
-                                'user-limit-open-seats-value': OpenProject::Enterprise.open_seats_count,
-                                'user-limit-member-autocompleter-value': true,
-                                'application-target': "dynamic",
-                              }) do |f| %>
+<%= labelled_tabular_form_for(
+      :member, url: main_app.project_members_path,
+               method: :post,
+               html: { id: "members_add_form",
+                       class: "form -vertical -bordered -medium-compressed" },
+               data: {
+                 'members-form-target': "addMemberForm",
+                 controller: "user-limit",
+                 'user-limit-open-seats-value': OpenProject::Enterprise.open_seats_count,
+                 'user-limit-member-autocompleter-value': true,
+                 'application-target': "dynamic",
+               }
+    ) do |f| %>
     <a title="<%= t("js.close_form_title") %>"
        class="hide-member-form-button form--close icon-context icon-close"
        data-action="members-form#hideAddMemberForm"></a>
@@ -82,10 +84,10 @@ See COPYRIGHT and LICENSE files for more details.
               <%= select_tag "member[role_ids][]", options_for_select(options),
                              multiple: false,
                              no_label: true,
-                             title:    t(:label_role_search),
+                             title: t(:label_role_search),
                              tabIndex: 0,
-                             class:    "form--select",
-                             id:       "member_role_ids" %>
+                             class: "form--select",
+                             id: "member_role_ids" %>
             </div>
           </div>
         </div>

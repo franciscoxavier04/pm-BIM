@@ -28,10 +28,12 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%=
-  render(Admin::AttachmentsSettingsHeaderComponent.new(
-    title: t("settings.antivirus.title"),
-    selected: 2
-  ))
+  render(
+    Admin::AttachmentsSettingsHeaderComponent.new(
+      title: t("settings.antivirus.title"),
+      selected: 2
+    )
+  )
 %>
 
 <%= styled_form_tag(
@@ -55,7 +57,8 @@ See COPYRIGHT and LICENSE files for more details.
                          action: "refresh-on-form-changes#triggerTurboStream"
                        } %>
     <div class="form--field-instructions">
-      <p><%= t("settings.antivirus.modes.description_html",
+      <p><%= t(
+               "settings.antivirus.modes.description_html",
                disabled_option: t(:label_disabled_uppercase),
                socket_option: "ClamAV (Socket)",
                host_option: "ClamAV (Host)",

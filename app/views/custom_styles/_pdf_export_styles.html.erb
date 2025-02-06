@@ -98,9 +98,13 @@ See COPYRIGHT and LICENSE files for more details.
           <div class="form--field-affix">
             <% design_color_name = "export_cover_text_color" %>
             <% design_color_hex = @custom_style.export_cover_text_color.present? ? @custom_style.export_cover_text_color : "" %>
-            <%= icon_for_color(OpenStruct.new(variable: design_color_name,
-                                              hexcode: design_color_hex),
-                               data: { target: "#" + design_color_name }) %>
+            <%= icon_for_color(
+                  OpenStruct.new(
+                    variable: design_color_name,
+                    hexcode: design_color_hex
+                  ),
+                  data: { target: "#" + design_color_name }
+                ) %>
           </div>
           <span class="form--text-field-container">
             <%= styled_text_field_tag design_color_name,

@@ -4,7 +4,7 @@
   <%= render layout: "mailer/border_table" do %>
     <tr>
       <td>
-        <table <%= placeholder_table_styles(width:"100%",style: "width:100%;font-size:14px;") %>>
+        <table <%= placeholder_table_styles(width: "100%", style: "width:100%;font-size:14px;") %>>
           <tr>
             <%= placeholder_cell("12px", vertical: true) %>
             <td>
@@ -32,7 +32,8 @@
                     <% unique_reasons.each_with_index do |reason, index| %>
                       <%= I18n.t(
                             :"mail.work_packages.reason.#{reason || :unknown}",
-                            default: "") %><%= ", " unless unique_reasons.size-1 == index %>
+                            default: ""
+                          ) %><%= ", " unless unique_reasons.size - 1 == index %>
                     <% end %>
                   </td>
                   <td>

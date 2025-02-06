@@ -32,21 +32,25 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
     header.with_title { I18n.t(:label_cost_type_plural) }
-    header.with_breadcrumbs([{ href: admin_index_path, text: t("label_administration") },
-                             { href: url_for({ controller: "/admin/settings", action: "show_plugin", id: :costs }), text: t(:project_module_costs) },
-                             I18n.t(:label_cost_type_plural)])
+    header.with_breadcrumbs(
+      [{ href: admin_index_path, text: t("label_administration") },
+       { href: url_for({ controller: "/admin/settings", action: "show_plugin", id: :costs }), text: t(:project_module_costs) },
+       I18n.t(:label_cost_type_plural)]
+    )
   end
 %>
 
 <%= render(Primer::OpenProject::SubHeader.new) do |subheader| %>
-  <% subheader.with_action_button(scheme: :primary,
-                                 aria: { label: I18n.t(:button_add_cost_type) },
-                                 title: I18n.t(:button_add_cost_type),
-                                 tag: :a,
-                                 href: new_cost_type_path) do |button|
-      button.with_leading_visual_icon(icon: :plus)
-      CostType.model_name.human
-    end %>
+  <% subheader.with_action_button(
+       scheme: :primary,
+       aria: { label: I18n.t(:button_add_cost_type) },
+       title: I18n.t(:button_add_cost_type),
+       tag: :a,
+       href: new_cost_type_path
+     ) do |button|
+       button.with_leading_visual_icon(icon: :plus)
+       CostType.model_name.human
+     end %>
 
    <% subheader.with_bottom_pane_component do %>
     <%= styled_form_tag(cost_types_path, { method: :get, id: "query_form" }) do %>

@@ -27,10 +27,12 @@
               end
             end
             actions_container.with_column do
-              render(Primer::Alpha::Dialog.new(
-                id: "project-custom-field-section-dialog#{@project_custom_field_section.id}", title: t("settings.project_attributes.label_new_section"),
-                size: :medium_portrait
-              )) do |dialog|
+              render(
+                Primer::Alpha::Dialog.new(
+                  id: "project-custom-field-section-dialog#{@project_custom_field_section.id}", title: t("settings.project_attributes.label_new_section"),
+                  size: :medium_portrait
+                )
+              ) do |dialog|
                 render(Settings::ProjectCustomFieldSections::DialogBodyFormComponent.new(project_custom_field_section: @project_custom_field_section))
               end
             end
@@ -44,17 +46,19 @@
               render(Primer::Beta::Text.new(color: :subtle)) { t("settings.project_attributes.label_no_project_custom_fields") }
             end
             empty_list_container.with_column do
-              render(Primer::Beta::Button.new(
+              render(
+                Primer::Beta::Button.new(
                   tag: :a,
                   href: new_admin_settings_project_custom_field_path(
                     type: "ProjectCustomField", custom_field_section_id: @project_custom_field_section.id
                   ),
                   scheme: :secondary,
                   data: { turbo: "false", test_selector: "new-project-custom-field-button" }
-                )) do |button|
-                  button.with_leading_visual_icon(icon: :plus)
-                  t("settings.project_attributes.label_new_attribute")
-                end
+                )
+              ) do |button|
+                button.with_leading_visual_icon(icon: :plus)
+                t("settings.project_attributes.label_new_attribute")
+              end
             end
           end
         end

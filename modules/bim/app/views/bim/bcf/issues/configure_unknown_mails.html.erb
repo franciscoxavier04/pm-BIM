@@ -1,16 +1,18 @@
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { t("bcf.bcf_xml.import_title") }
-    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
-                             { href: defaults_bcf_project_ifc_models_path(@project.identifier), text: I18n.t(:"bcf.label_bcf") },
-                             t("bcf.bcf_xml.import_title")])
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project.id), text: @project.name },
+       { href: defaults_bcf_project_ifc_models_path(@project.identifier), text: I18n.t(:"bcf.label_bcf") },
+       t("bcf.bcf_xml.import_title")]
+    )
   end
 %>
 
 <%= styled_form_tag({ action: :configure_import }, multipart: true, method: :post) do %>
   <%= render partial: "import_errors", locals: { error_message: t("bcf.bcf_xml.import.unknown_emails_found"),
                                                  error_objects: @importer.aggregations.unknown_mails,
-                                                 error_default_text: t("bcf.bcf_xml.import.unknown_property")} %>
+                                                 error_default_text: t("bcf.bcf_xml.import.unknown_property") } %>
   <% if @roles.any? %>
     <% if  User.current.admin? %>
       <hr class="form--separator">
@@ -24,11 +26,11 @@
             <%= styled_select_tag "import_options[unknown_mails_invite_role_ids][]",
                                   options_for_select(options),
                                   no_label: true,
-                                  title:    t(:label_role_search),
+                                  title: t(:label_role_search),
                                   tabIndex: 0,
                                   container_class: "-slim",
                                   class: "option-label--select",
-                                  id:       "unknown_mails_invite_role_ids" %>
+                                  id: "unknown_mails_invite_role_ids" %>
             (<%= t("bcf.recommended") %>)
           </label>
         </div>

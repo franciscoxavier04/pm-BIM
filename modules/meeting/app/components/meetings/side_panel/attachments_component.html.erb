@@ -20,12 +20,14 @@
       end
 
       resource = ::API::V3::Meetings::MeetingRepresenter.new(@meeting, current_user: User.current, embed_links: false)
-      helpers.list_attachments(resource,
-                               inputs: {
-                                 allowUploading: true,
-                                 showTimestamp: false,
-                                 externalUploadButton: "#meetings-add-attachments"
-                               })
+      helpers.list_attachments(
+        resource,
+        inputs: {
+          allowUploading: true,
+          showTimestamp: false,
+          externalUploadButton: "#meetings-add-attachments"
+        }
+      )
     end
   end
 %>

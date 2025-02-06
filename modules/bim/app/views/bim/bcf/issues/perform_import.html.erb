@@ -6,9 +6,9 @@
     header.with_breadcrumbs(
       [{ href: project_overview_path(@project.id), text: @project.name },
        { href: defaults_bcf_project_ifc_models_path(@project.identifier), text: I18n.t(:"bcf.label_bcf") },
-       nested_breadcrumb_element(t("bcf.bcf_xml.import_title"), t(:label_summary))
-      ],
-      selected_item_font_weight: :normal)
+       nested_breadcrumb_element(t("bcf.bcf_xml.import_title"), t(:label_summary))],
+      selected_item_font_weight: :normal
+    )
   end
 %>
 

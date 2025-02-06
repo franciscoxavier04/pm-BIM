@@ -17,13 +17,13 @@
                  } %>
 
       <%= render layout: "mailer/notification_row",
-                  locals: {
-                    work_package: @notification.resource,
-                    unique_reasons: [@notification.reason],
-                    show_count: true,
-                    count: 1,
-                    user: @user
-                  } do %>
+                 locals: {
+                   work_package: @notification.resource,
+                   unique_reasons: [@notification.reason],
+                   show_count: true,
+                   count: 1,
+                   user: @user
+                 } do %>
         <table <%= placeholder_table_styles %>>
           <tr>
             <td style="line-height: 24px; font-size: 14px; white-space: normal;">

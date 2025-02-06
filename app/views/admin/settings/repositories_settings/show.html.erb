@@ -32,9 +32,11 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
     header.with_title { t(:label_repository_plural) }
-    header.with_breadcrumbs([{ href: admin_index_path, text: t("label_administration") },
-                             { href: admin_settings_general_path, text: t(:label_system_settings) },
-                             t(:label_repository_plural)])
+    header.with_breadcrumbs(
+      [{ href: admin_index_path, text: t("label_administration") },
+       { href: admin_settings_general_path, text: t(:label_system_settings) },
+       t(:label_repository_plural)]
+    )
   end
 %>
 
@@ -57,25 +59,27 @@ See COPYRIGHT and LICENSE files for more details.
     </div>
     <div class="form--field">
       <%= setting_check_box :sys_api_enabled %>
-      <% csp_onclick("jQuery('#settings_sys_api_key').prop('disabled', !this.checked)",
-                     "#settings_sys_api_enabled",
-                     prevent_default: false) %>
+      <% csp_onclick(
+           "jQuery('#settings_sys_api_key').prop('disabled', !this.checked)",
+           "#settings_sys_api_enabled",
+           prevent_default: false
+         ) %>
       <div class="form--field-instructions">
         <%= t(:setting_sys_api_description) %>
       </div>
     </div>
     <div class="form--field"><%= setting_text_field :sys_api_key, size: 30,
-                                        id: "settings_sys_api_key",
-                                        disabled: !Setting.sys_api_enabled?,
-                                        label: :setting_mail_handler_api_key,
-                                        container_class: "-middle" %>
+                                                                  id: "settings_sys_api_key",
+                                                                  disabled: !Setting.sys_api_enabled?,
+                                                                  label: :setting_mail_handler_api_key,
+                                                                  container_class: "-middle" %>
     </div>
     <%
     available_scms = OpenProject::SCM::Manager.registered
-      .map {|vendor, klass| [klass.vendor_name, vendor.to_s] }
+      .map { |vendor, klass| [klass.vendor_name, vendor.to_s] }
 
     manageable_scms = OpenProject::SCM::Manager.manageable
-      .map {|vendor, klass| [klass.vendor_name, vendor.to_s, { disabled: !klass.enabled? }]}
+      .map { |vendor, klass| [klass.vendor_name, vendor.to_s, { disabled: !klass.enabled? }] }
     %>
     <div class="form--field">
 
@@ -124,20 +128,22 @@ See COPYRIGHT and LICENSE files for more details.
         <div class="form--field -vertical">
           <%= styled_label_tag :settings_commit_fix_status_id, t(:label_applied_status) %>
           <div class="form--field-container">
-            <%= setting_select :commit_fix_status_id, [["--- #{t(:actionview_instancetag_blank_option)} ---", "0", { disabled: true }]] + Status.all.collect{ |status| [status.name, status.id.to_s] }, label: false %>
+            <%= setting_select :commit_fix_status_id, [["--- #{t(:actionview_instancetag_blank_option)} ---", "0", { disabled: true }]] + Status.all.collect { |status| [status.name, status.id.to_s] }, label: false %>
           </div>
         </div>
       </div>
     </div>
     <div class="form--field">
       <%= setting_check_box :commit_logtime_enabled %>
-      <% csp_onclick("jQuery('#settings_commit_logtime_activity_id').prop('disabled', !this.checked)",
-                     "#setting_commit_logtime_enabled") %>
+      <% csp_onclick(
+           "jQuery('#settings_commit_logtime_activity_id').prop('disabled', !this.checked)",
+           "#setting_commit_logtime_enabled"
+         ) %>
     </div>
     <div class="form--field"><%= setting_select :commit_logtime_activity_id,
-         [[t(:label_default), 0]] + TimeEntryActivity.shared.map {|activity| [activity.name, activity.id.to_s]},
-         disabled: !Setting.commit_logtime_enabled?,
-         container_class: "-middle" %></div>
+                                                [[t(:label_default), 0]] + TimeEntryActivity.shared.map { |activity| [activity.name, activity.id.to_s] },
+                                                disabled: !Setting.commit_logtime_enabled?,
+                                                container_class: "-middle" %></div>
   </fieldset>
   <%= styled_button_tag t(:button_save), class: "-primary -with-icon icon-checkmark" %>
 <% end %>

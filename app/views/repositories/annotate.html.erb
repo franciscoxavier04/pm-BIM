@@ -39,13 +39,13 @@ See COPYRIGHT and LICENSE files for more details.
 <% if @annotate.nil? || @annotate.empty? %>
   <%= no_results_box %>
 <% else %>
-  <% colors = Hash.new {|k,v| k[v] = (k.size % 12) } %>
+  <% colors = Hash.new { |k, v| k[v] = (k.size % 12) } %>
   <div class="autoscroll">
     <table class="filecontent annotate highlight">
       <tbody>
         <% line_num = 1 %>
         <% syntax_highlight(@path, to_utf8_for_repositories(@annotate.content)) do |line| %>
-          <% revision = @annotate.revisions[line_num-1] %>
+          <% revision = @annotate.revisions[line_num - 1] %>
           <tr class="bloc-<%= revision.nil? ? 0 : colors[revision.identifier || revision.revision] %>">
             <th class="line-num" id="L<%= line_num %>"><a href="#L<%= line_num %>"><%= line_num %></a></th>
             <td class="revision">

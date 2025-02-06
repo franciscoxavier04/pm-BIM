@@ -26,9 +26,10 @@
       test_selector: "project-favorite-button"
     )
 
-    header.with_action_menu(menu_arguments: { anchor_align: :end },
-                            button_arguments: { icon: "op-kebab-vertical", "aria-label": t(:label_menu) }) do |menu|
-
+    header.with_action_menu(
+      menu_arguments: { anchor_align: :end },
+      button_arguments: { icon: "op-kebab-vertical", "aria-label": t(:label_menu) }
+    ) do |menu|
       if User.current.allowed_in_project?(:select_project_custom_fields, @project)
         menu.with_item(
           label: t(:label_project_attribute_manage_link),
@@ -50,7 +51,6 @@
           item.with_leading_visual_icon(icon: :lock)
         end
       end
-
     end
   end
 %>

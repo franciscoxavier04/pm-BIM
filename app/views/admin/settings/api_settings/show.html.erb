@@ -31,9 +31,11 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
     header.with_title { t(:label_api_access_key_type) }
-    header.with_breadcrumbs([{ href: admin_index_path, text: t("label_administration") },
-                             { href: admin_settings_api_path, text: t("menus.admin.api_and_webhooks") },
-                             t(:label_api_access_key_type)])
+    header.with_breadcrumbs(
+      [{ href: admin_index_path, text: t("label_administration") },
+       { href: admin_settings_api_path, text: t("menus.admin.api_and_webhooks") },
+       t(:label_api_access_key_type)]
+    )
   end
 %>
 
@@ -51,7 +53,8 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field">
       <%= setting_check_box :apiv3_write_readonly_attributes, container_class: "-slim" %>
       <div class="form--field-instructions">
-        <p><%= t(:setting_apiv3_write_readonly_attributes_instructions_html,
+        <p><%= t(
+                 :setting_apiv3_write_readonly_attributes_instructions_html,
                  api_documentation_link: static_link_to(:api_docs)
                ) %></p>
       </div>
@@ -79,8 +82,10 @@ See COPYRIGHT and LICENSE files for more details.
       <%= setting_text_area :apiv3_cors_origins, rows: 5, container_class: "-wide" %>
       <div class="form--field-instructions">
         <p><%= t(:text_line_separated) %></p>
-        <p><%= t(:setting_apiv3_cors_origins_text_html,
-                 origin_link: ::OpenProject::Static::Links[:origin_mdn_documentation][:href]) %></p>
+        <p><%= t(
+                 :setting_apiv3_cors_origins_text_html,
+                 origin_link: ::OpenProject::Static::Links[:origin_mdn_documentation][:href]
+               ) %></p>
       </div>
     </div>
   </section>

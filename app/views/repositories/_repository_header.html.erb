@@ -28,8 +28,10 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <opce-persistent-toggle data-identifier="repository.checkout_instructions"></opce-persistent-toggle>
-<%= toolbar title: t("repositories.named_repository",
-                     vendor_name: @repository.class.vendor_name) do %>
+<%= toolbar title: t(
+      "repositories.named_repository",
+      vendor_name: @repository.class.vendor_name
+    ) do %>
   <% if @instructions && @instructions.available? %>
   <li class="toolbar-item toolbar-input-group hidden-for-mobile">
     <div class="toolbar-input-group--affix -prepend">
@@ -60,17 +62,19 @@ See COPYRIGHT and LICENSE files for more details.
   <% if !empty && User.current.allowed_in_project?(:browse_repository, @project) %>
   <li class="toolbar-item -icon-only">
     <%= link_to stats_project_repository_path(@project),
-        class: "button", title: t(:label_statistics) do %>
+                class: "button", title: t(:label_statistics) do %>
       <%= op_icon("button--icon icon-chart1") %>
     <% end %>
   </li>
   <% end %>
-  <%= call_hook(:repositories_navigation_toolbar,
-                { repository: @repository, project: @project, repository_empty: empty }) %>
+  <%= call_hook(
+        :repositories_navigation_toolbar,
+        { repository: @repository, project: @project, repository_empty: empty }
+      ) %>
   <% if User.current.allowed_in_project?(:manage_repository, @project) %>
     <li class="toolbar-item -icon-only">
       <%= link_to project_settings_repository_path(@project),
-          class: "button", title: t(:label_setting_plural) do %>
+                  class: "button", title: t(:label_setting_plural) do %>
         <%= op_icon("button--icon icon-settings") %>
       <% end %>
     </li>

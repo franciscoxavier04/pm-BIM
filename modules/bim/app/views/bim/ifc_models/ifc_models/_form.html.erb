@@ -39,7 +39,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
 <% end %>
 
-<div class="form--field <%= @ifc_model.new_record? ? "-required": "" %>">
+<div class="form--field <%= @ifc_model.new_record? ? "-required" : "" %>">
   <% if OpenProject::Configuration.direct_uploads? %>
     <input class="form--file-field" type="file" name="file" accept=".ifc">
   <% else %>

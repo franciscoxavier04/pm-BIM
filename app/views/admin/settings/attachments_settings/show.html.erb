@@ -28,10 +28,12 @@ See COPYRIGHT and LICENSE files for more details.
 ++#%>
 
 <%=
-  render(Admin::AttachmentsSettingsHeaderComponent.new(
-    title: t(:"attributes.attachments"),
-    selected: 1,
-  ))
+  render(
+    Admin::AttachmentsSettingsHeaderComponent.new(
+      title: t(:"attributes.attachments"),
+      selected: 1,
+    )
+  )
 %>
 
 <%= styled_form_tag(
@@ -51,7 +53,8 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field">
       <%= setting_text_area :attachment_whitelist, rows: 5, container_class: "-wide" %>
       <div class="form--field-instructions">
-        <%= t("settings.attachments.whitelist_text_html",
+        <%= t(
+              "settings.attachments.whitelist_text_html",
               ext_example: "*.jpg",
               mime_example: "image/jpeg",
             ) %>

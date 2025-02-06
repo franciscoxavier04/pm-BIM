@@ -3,7 +3,8 @@
     <div class="form--field">
       <%= setting_text_field :antivirus_scan_target, container_class: "-wide", not_translated_label: "ClamAV (Socket)" %>
       <div class="form--field-instructions">
-        <p><%= t("settings.antivirus.modes.clamav_socket_html",
+        <p><%= t(
+                 "settings.antivirus.modes.clamav_socket_html",
                  example: content_tag(:code, "/var/run/clamav/clamd.ctl"),
                ) %>
         </p>
@@ -13,7 +14,8 @@
     <div class="form--field">
       <%= setting_text_field :antivirus_scan_target, container_class: "-wide", not_translated_label: "ClamAV (Host)" %>
       <div class="form--field-instructions">
-        <p><%= t("settings.antivirus.modes.clamav_host_html",
+        <p><%= t(
+                 "settings.antivirus.modes.clamav_host_html",
                  example: content_tag(:code, "remotehost:1024"),
                ) %>
         </p>
@@ -29,7 +31,8 @@
                          ],
                          container_class: "-wide" %>
       <div class="form--field-instructions">
-        <p><%= t("settings.antivirus.actions.instructions_html",
+        <p><%= t(
+                 "settings.antivirus.actions.instructions_html",
                  quarantine_option: t("settings.antivirus.actions.quarantine"),
                  delete_option: t("settings.antivirus.actions.delete")
                ) %></p>

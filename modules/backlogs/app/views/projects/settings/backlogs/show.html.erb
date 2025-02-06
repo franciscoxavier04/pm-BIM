@@ -30,15 +30,19 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { t("backlogs.definition_of_done") }
-    header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name  },
-                             { href: project_settings_general_path(@project.id), text: I18n.t(:label_project_settings) },
-                             t("backlogs.definition_of_done")])
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project.id), text: @project.name },
+       { href: project_settings_general_path(@project.id), text: I18n.t(:label_project_settings) },
+       t("backlogs.definition_of_done")]
+    )
   end
 %>
 
-<%= styled_form_tag(project_settings_backlogs_path(@project),
-                    method: :patch,
-                    id: "edit_project_#{@project.id}") do %>
+<%= styled_form_tag(
+      project_settings_backlogs_path(@project),
+      method: :patch,
+      id: "edit_project_#{@project.id}"
+    ) do %>
 
 <div class="generic-table--container">
   <div class="generic-table--results-container">

@@ -6,8 +6,10 @@
           classes: "work-packages-activities-tab-journals-index-component--journals-inner-container",
           mb: inner_container_margin_bottom
         ) do
-          flex_layout(id: insert_target_modifier_id,
-                     data: { test_selector: "op-wp-journals-container" }) do |journals_index_container|
+          flex_layout(
+            id: insert_target_modifier_id,
+            data: { test_selector: "op-wp-journals-container" }
+          ) do |journals_index_container|
             if empty_state?
               journals_index_container.with_row(mt: 2, mb: 3) do
                 render(
@@ -27,10 +29,12 @@
                 if record.is_a?(Changeset)
                   render(WorkPackages::ActivitiesTab::Journals::RevisionComponent.new(changeset: record, filter:))
                 else
-                  render(WorkPackages::ActivitiesTab::Journals::ItemComponent.new(
-                          journal: record, filter:,
-                          grouped_emoji_reactions: wp_journals_grouped_emoji_reactions[record.id]
-                        ))
+                  render(
+                    WorkPackages::ActivitiesTab::Journals::ItemComponent.new(
+                      journal: record, filter:,
+                      grouped_emoji_reactions: wp_journals_grouped_emoji_reactions[record.id]
+                    )
+                  )
                 end
               end
             end
@@ -57,10 +61,12 @@
             if record.is_a?(Changeset)
               render(WorkPackages::ActivitiesTab::Journals::RevisionComponent.new(changeset: record, filter:))
             else
-              render(WorkPackages::ActivitiesTab::Journals::ItemComponent.new(
-                      journal: record, filter:,
-                      grouped_emoji_reactions: wp_journals_grouped_emoji_reactions[record.id]
-                    ))
+              render(
+                WorkPackages::ActivitiesTab::Journals::ItemComponent.new(
+                  journal: record, filter:,
+                  grouped_emoji_reactions: wp_journals_grouped_emoji_reactions[record.id]
+                )
+              )
             end
           end
         end

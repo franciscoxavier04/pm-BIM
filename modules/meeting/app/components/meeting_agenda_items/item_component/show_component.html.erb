@@ -27,9 +27,13 @@
 
       grid.with_area(:title, tag: :div) do
         if @meeting_agenda_item.visible_work_package?
-          render(Primer::Beta::Link.new(href: work_package_path(@meeting_agenda_item.work_package), underline: false,
-                                        test_selector: "op-meeting-agenda-title",
-                                        font_size: :normal, font_weight: :bold, target: "_blank")) do
+          render(
+            Primer::Beta::Link.new(
+              href: work_package_path(@meeting_agenda_item.work_package), underline: false,
+              test_selector: "op-meeting-agenda-title",
+              font_size: :normal, font_weight: :bold, target: "_blank"
+            )
+          ) do
             @meeting_agenda_item.work_package.subject
           end
         end
@@ -54,11 +58,13 @@
       grid.with_area(:actions, tag: :div, justify_self: :end, classes: "hide-when-print") do
         if edit_enabled?
           render(Primer::Alpha::ActionMenu.new) do |menu|
-            menu.with_show_button(icon: "kebab-horizontal",
-                                  'aria-label': I18n.t(:label_agenda_item_actions),
-                                  scheme: :invisible,
-                                  ml: 2,
-                                  test_selector: "op-meeting-agenda-actions")
+            menu.with_show_button(
+              icon: "kebab-horizontal",
+              'aria-label': I18n.t(:label_agenda_item_actions),
+              scheme: :invisible,
+              ml: 2,
+              test_selector: "op-meeting-agenda-actions"
+            )
             edit_action_item(menu) if @meeting_agenda_item.editable?
             add_note_action_item(menu) if @meeting_agenda_item.editable? && @meeting_agenda_item.notes.blank?
             unless first? && last?

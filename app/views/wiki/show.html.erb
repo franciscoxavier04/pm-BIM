@@ -39,14 +39,16 @@ See COPYRIGHT and LICENSE files for more details.
 <% @formatted_text = format_text @page, :text, attachments: @page.attachments %>
 <% description strip_tags(@formatted_text) %>
 
-<%= toolbar title: title, html: {class: "-with-dropdown"} do %>
+<%= toolbar title: title, html: { class: "-with-dropdown" } do %>
   <% if @editable %>
     <% if @page && User.current.allowed_in_project?(:edit_wiki_pages, @project) %>
       <li class="toolbar-item">
-          <%= link_to({controller: "/wiki", action: "new_child", project_id: @project.identifier, id: @page},
-              { class: "button -primary",
-                aria: {label: t("wiki.index.no_results_content_text")},
-                title: t("wiki.index.no_results_content_text")}) do %>
+          <%= link_to(
+                { controller: "/wiki", action: "new_child", project_id: @project.identifier, id: @page },
+                { class: "button -primary",
+                  aria: { label: t("wiki.index.no_results_content_text") },
+                  title: t("wiki.index.no_results_content_text") }
+              ) do %>
             <%= op_icon("button--icon icon-add") %>
             <span class="button--text"><%= t(:create_new_page) %></span>
           <% end %>
@@ -54,10 +56,12 @@ See COPYRIGHT and LICENSE files for more details.
     <% end %>
     <% if @page.current_version? %>
       <li class="toolbar-item">
-        <%= link_to_if_authorized({ action: "edit", id: @page },
-                                  { aria: { label: t(:button_edit) },
-                                    title: t(:button_edit),
-                                    class: "button" }) do %>
+        <%= link_to_if_authorized(
+              { action: "edit", id: @page },
+              { aria: { label: t(:button_edit) },
+                title: t(:button_edit),
+                class: "button" }
+            ) do %>
           <%= op_icon("button--icon icon-edit") %>
           <span class="button--text"><%= t(:button_edit) %></span>
         <% end %>
@@ -68,7 +72,7 @@ See COPYRIGHT and LICENSE files for more details.
     </li>
     <% unless @page.current_version? %>
       <li class="toolbar-item  hidden-for-mobile">
-        <%= link_to(t(:label_history), {action: "history", id: @page}, class: "button icon-wiki") %>
+        <%= link_to(t(:label_history), { action: "history", id: @page }, class: "button icon-wiki") %>
       </li>
     <% end %>
   <% end %>
@@ -80,21 +84,29 @@ See COPYRIGHT and LICENSE files for more details.
     </a>
     <ul style="display:none;" class="menu-drop-down-container">
       <% if @editable %>
-        <%= li_unless_nil(link_to_if_authorized(t(:button_lock), {action: "protect", id: @page, protected: 1}, method: :post, class: "icon-context icon-locked")) if !@page.protected? %>
-        <%= li_unless_nil(link_to_if_authorized(t(:button_unlock), {action: "protect", id: @page, protected: 0}, method: :post, class: "icon-context icon-unlocked")) if @page.protected? %>
+        <%= li_unless_nil(link_to_if_authorized(t(:button_lock), { action: "protect", id: @page, protected: 1 }, method: :post, class: "icon-context icon-locked")) if !@page.protected? %>
+        <%= li_unless_nil(link_to_if_authorized(t(:button_unlock), { action: "protect", id: @page, protected: 0 }, method: :post, class: "icon-context icon-unlocked")) if @page.protected? %>
         <% if @page.current_version? %>
-          <%= li_unless_nil(link_to_if_authorized(t(:button_rename),
-                                                  {action: "rename", id: @page},
-                                                  class: "icon-context icon-rename")) %>
-          <%= li_unless_nil(link_to_if_authorized(t(:button_change_parent_page),
-                                                  {action: "edit_parent_page", id: @page},
-                                                  class: "icon-context icon-link")) %>
+          <%= li_unless_nil(
+                link_to_if_authorized(
+                  t(:button_rename),
+                  { action: "rename", id: @page },
+                  class: "icon-context icon-rename"
+                )
+              ) %>
+          <%= li_unless_nil(
+                link_to_if_authorized(
+                  t(:button_change_parent_page),
+                  { action: "edit_parent_page", id: @page },
+                  class: "icon-context icon-link"
+                )
+              ) %>
         <% end %>
-        <%= li_unless_nil(link_to_if_authorized(t(:button_delete), {action: "destroy", id: @page}, method: :delete, data: { confirm: t(:text_are_you_sure) }, class: "icon-context icon-delete")) %>
-        <%= li_unless_nil(link_to_if_authorized(t(:button_rollback), {action: "edit", id: @page, version: @page.version }, class: "icon-context icon-cancel")) unless @page.current_version? %>
+        <%= li_unless_nil(link_to_if_authorized(t(:button_delete), { action: "destroy", id: @page }, method: :delete, data: { confirm: t(:text_are_you_sure) }, class: "icon-context icon-delete")) %>
+        <%= li_unless_nil(link_to_if_authorized(t(:button_rollback), { action: "edit", id: @page, version: @page.version }, class: "icon-context icon-cancel")) unless @page.current_version? %>
       <% end %>
-      <%= li_unless_nil(link_to_if_authorized(t(:label_history), {action: "history", id: @page}, class: "icon-context icon-activity-history")) %>
-      <%= li_unless_nil(link_to_if_authorized(t(:button_manage_menu_entry), {controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page}, class: "icon-context icon-settings")) %>
+      <%= li_unless_nil(link_to_if_authorized(t(:label_history), { action: "history", id: @page }, class: "icon-context icon-activity-history")) %>
+      <%= li_unless_nil(link_to_if_authorized(t(:button_manage_menu_entry), { controller: "/wiki_menu_items", action: "edit", project_id: @project.identifier, id: @page }, class: "icon-context icon-settings")) %>
       <li>
         <%= link_to t(:button_print),
                     "",
@@ -117,12 +129,12 @@ See COPYRIGHT and LICENSE files for more details.
           <%= render partial: "wiki/wiki_export_modal" %>
         </section>
       <% end %>
-      <%= li_unless_nil(link_to_if_authorized(t(:label_table_of_contents), {controller: "/wiki", action: "index", project_id: @project.identifier, id: @page}, class: "icon-context icon-view-list")) %>
+      <%= li_unless_nil(link_to_if_authorized(t(:label_table_of_contents), { controller: "/wiki", action: "index", project_id: @project.identifier, id: @page }, class: "icon-context icon-view-list")) %>
     </ul>
   </li>
 <% end %>
 
-<% breadcrumb_paths(*(@page.ancestors.reverse.collect { |parent| link_to h(parent.breadcrumb_title), {id: parent, project_id: parent.project}} + [h(@page.breadcrumb_title)])) %>
+<% breadcrumb_paths(*(@page.ancestors.reverse.collect { |parent| link_to h(parent.breadcrumb_title), { id: parent, project_id: parent.project } } + [h(@page.breadcrumb_title)])) %>
 
 <% if params[:version] %>
   <hr>

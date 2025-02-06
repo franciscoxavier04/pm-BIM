@@ -43,9 +43,9 @@
         method: :put,
         url: meeting_section_path(@meeting_section.meeting, @meeting_section),
         data: {
-            "controller": "meeting-section-form",
-            "application-target": "dynamic",
-            "meeting-section-form-cancel-url-value": cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section)
+          "controller": "meeting-section-form",
+          "application-target": "dynamic",
+          "meeting-section-form-cancel-url-value": cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section)
         }
       ) do |f|
         flex_layout do |editable_title_form|
@@ -58,12 +58,14 @@
           end
 
           editable_title_form.with_column do
-            render(Primer::Beta::Button.new(
-              scheme: :secondary,
-              tag: :a,
-              href: cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section),
-              data: { 'turbo-stream': true }
-            )) do |_c|
+            render(
+              Primer::Beta::Button.new(
+                scheme: :secondary,
+                tag: :a,
+                href: cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section),
+                data: { 'turbo-stream': true }
+              )
+            ) do |_c|
               t("button_cancel")
             end
           end

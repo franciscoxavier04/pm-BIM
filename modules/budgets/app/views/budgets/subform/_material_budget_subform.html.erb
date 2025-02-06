@@ -106,7 +106,7 @@ See COPYRIGHT and LICENSE files for more details.
             class="budget-item-container"
             data-costs--budget-subform-target="table">
             <%- @budget.material_budget_items.each_with_index do |material_budget_item, index| -%>
-              <%= render partial: "budgets/items/material_budget_item", object: material_budget_item, locals: {index: index} %>
+              <%= render partial: "budgets/items/material_budget_item", object: material_budget_item, locals: { index: index } %>
             <%- end -%>
           </tbody>
         </table>

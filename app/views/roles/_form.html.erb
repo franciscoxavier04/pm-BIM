@@ -41,12 +41,14 @@ See COPYRIGHT and LICENSE files for more details.
     <% if role.new_record? %>
       <%= styled_label_tag :global_role, t(:label_global_role) %>
       <div class="form--field-container">
-        <%= styled_check_box_tag("global_role",
-                                 "1",
-                                 role.is_a?(GlobalRole),
-                                 data: {
-                                   action: "admin--roles#toggle"
-                                 }) %>
+        <%= styled_check_box_tag(
+              "global_role",
+              "1",
+              role.is_a?(GlobalRole),
+              data: {
+                action: "admin--roles#toggle"
+              }
+            ) %>
       </div>
     <% else %>
       <%= styled_label_tag :unchangeable, "#{t(:label_role_type)} #{t(:label_not_changeable)}" %>
@@ -58,7 +60,7 @@ See COPYRIGHT and LICENSE files for more details.
 
   <div data-admin--roles-target="memberAttributes"
        hidden>
-    <%= render partial: "member_attributes", locals: { f: f, role: role, roles: roles&.select {|r| !r.is_a?(GlobalRole)} } %>
+    <%= render partial: "member_attributes", locals: { f: f, role: role, roles: roles&.select { |r| !r.is_a?(GlobalRole) } } %>
   </div>
 
   <div data-admin--roles-target="globalPermissions"

@@ -37,17 +37,21 @@ See COPYRIGHT and LICENSE files for more details.
       <div class="form--field-container">
         <div class="form--select-container -middle">
           <label class="form--label" for="source_type_id"><%= Type.model_name.human %></label>
-          <%= select_tag("source_type_id",
-                         "<option value=\"\">--- #{t(:actionview_instancetag_blank_option)} ---</option>".html_safe +
-                             "<option value=\"any\">--- #{ t(:label_copy_same_as_target) } ---</option>".html_safe +
-                             options_from_collection_for_select(@types, "id", "name", @source_type && @source_type.id), class: "form--select") %>
+          <%= select_tag(
+                "source_type_id",
+                "<option value=\"\">--- #{t(:actionview_instancetag_blank_option)} ---</option>".html_safe +
+                    "<option value=\"any\">--- #{t(:label_copy_same_as_target)} ---</option>".html_safe +
+                    options_from_collection_for_select(@types, "id", "name", @source_type && @source_type.id), class: "form--select"
+              ) %>
         </div>
         <div class="form--select-container -middle">
           <label class="form--label" for='source_role_id'><%= Role.model_name.human %></label>
-          <%= select_tag("source_role_id",
-                         "<option value=\"\">--- #{t(:actionview_instancetag_blank_option)} ---</option>".html_safe +
-                             "<option value=\"any\">--- #{ t(:label_copy_same_as_target) } ---</option>".html_safe +
-                             options_from_collection_for_select(@roles, "id", "name", @source_role && @source_role.id), class: "form--select") %>
+          <%= select_tag(
+                "source_role_id",
+                "<option value=\"\">--- #{t(:actionview_instancetag_blank_option)} ---</option>".html_safe +
+                    "<option value=\"any\">--- #{t(:label_copy_same_as_target)} ---</option>".html_safe +
+                    options_from_collection_for_select(@roles, "id", "name", @source_role && @source_role.id), class: "form--select"
+              ) %>
         </div>
       </div>
     </div>

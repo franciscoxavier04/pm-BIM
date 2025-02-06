@@ -5,10 +5,13 @@
   <ul class="widget-box--arrow-links">
     <% @favorite_projects.each do |project| %>
       <li>
-        <%= render(Primer::Beta::Octicon.new(
-          icon: "star-fill",
-          classes: "op-primer--star-icon",
-          "aria-label": I18n.t(:label_favorite))) %>
+        <%= render(
+              Primer::Beta::Octicon.new(
+                icon: "star-fill",
+                classes: "op-primer--star-icon",
+                "aria-label": I18n.t(:label_favorite)
+              )
+            ) %>
 
         <%= link_to project, project_path(project),
                     title: short_project_description(project),
@@ -37,9 +40,9 @@
 <div class="widget-box--blocks--buttons">
   <% if User.current.allowed_globally?(:add_project) %>
     <%= link_to new_project_path,
-          { class: "button -primary",
-            aria: {label: t(:label_project_new)},
-            title: t(:label_project_new)} do %>
+                { class: "button -primary",
+                  aria: { label: t(:label_project_new) },
+                  title: t(:label_project_new) } do %>
       <%= op_icon("button--icon icon-add") %>
       <span class="button--text"><%= Project.model_name.human %></span>
     <% end %>

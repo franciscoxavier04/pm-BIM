@@ -53,14 +53,14 @@ See COPYRIGHT and LICENSE files for more details.
 
       <%= label_tag "reassign_to_id", t(:description_wiki_subpages_reassign), class: "hidden-for-sighted" %>
       <%= styled_select_tag "reassign_to_id",
-                     options_for_select(wiki_page_options_for_select(@reassignable_to)),
-                     { container_class: "-wide"} %>
+                            options_for_select(wiki_page_options_for_select(@reassignable_to)),
+                            { container_class: "-wide" } %>
       <% csp_onclick("jQuery('#todo_reassign').attr('checked', true)", "#reassign_to_id") %>
     </div>
   <% end %>
 
   <%= submit_tag t(:button_apply), class: "button -primary" %>
   <%= link_to t(:button_cancel),
-      { controller: "/wiki", action: "show", project_id: @project, id: @page },
-      class: "button" %>
+              { controller: "/wiki", action: "show", project_id: @project, id: @page },
+              class: "button" %>
 <% end %>

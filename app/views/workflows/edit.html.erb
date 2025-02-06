@@ -63,7 +63,7 @@ See COPYRIGHT and LICENSE files for more details.
   </fieldset>
 <% end %>
 <% if @type && @role && @statuses.any? %>
-  <%= form_tag({action: :update}, id: "workflow_form", method: :patch) do %>
+  <%= form_tag({ action: :update }, id: "workflow_form", method: :patch) do %>
     <%= hidden_field_tag "type_id", @type.id %>
     <%= hidden_field_tag "role_id", @role.id %>
 

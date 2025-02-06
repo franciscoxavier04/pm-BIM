@@ -30,11 +30,13 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
     header.with_title { @message.subject }
-    header.with_breadcrumbs( [{ href: project_overview_path(@project.id), text: @project.name },
-                              { href: project_forums_path(@project), text: t(:label_forum_plural) },
-                              { href: project_forum_path(@project, @forum), text: @forum.name },
-                             @message.subject])
- end
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project.id), text: @project.name },
+       { href: project_forums_path(@project), text: t(:label_forum_plural) },
+       { href: project_forum_path(@project, @forum), text: @forum.name },
+       @message.subject]
+    )
+  end
 %>
 
 <%= labelled_tabular_form_for @message,

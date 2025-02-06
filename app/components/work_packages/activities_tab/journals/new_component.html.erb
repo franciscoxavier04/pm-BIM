@@ -5,10 +5,12 @@
         display: button_row_display_value,
         data: {
           "work-packages--activities-tab--index-target": "buttonRow"
-        }) do
+        }
+      ) do
         flex_layout(justify_content: :space_between) do |button_row|
           button_row.with_column(classes: "work-packages-activities-tab-journals-new-component--input-trigger-column", mr: 2) do
-            render(Primer::Beta::Button.new(
+            render(
+              Primer::Beta::Button.new(
                 text_align: :left,
                 scheme: :default,
                 size: :medium,
@@ -17,17 +19,20 @@
                   "action": "click->work-packages--activities-tab--index#showForm dragover->work-packages--activities-tab--index#showForm",
                   "test_selector": "op-open-work-package-journal-form-trigger"
                 }
-              )) do
+              )
+            ) do
               render(Primer::Beta::Text.new(color: :muted, font_weight: :normal)) { t("activities.work_packages.activity_tab.label_type_to_comment") }
             end
           end
           button_row.with_column do
-            render(Primer::Beta::IconButton.new(
+            render(
+              Primer::Beta::IconButton.new(
                 scheme: :default,
                 icon: :"paper-airplane",
                 "aria-label": t("activities.work_packages.activity_tab.label_submit_comment"),
                 disabled: true
-              ))
+              )
+            )
           end
         end
       end
@@ -56,16 +61,18 @@
               render(WorkPackages::ActivitiesTab::Journals::NotesForm.new(f))
             end
             form_container.with_column do
-              render(Primer::Beta::IconButton.new(
-                scheme: :default,
-                icon: :"paper-airplane",
-                "aria-label": t("activities.work_packages.activity_tab.label_submit_comment"),
-                type: :submit,
-                data: {
-                  "test_selector": "op-submit-work-package-journal-form",
-                  "work-packages--activities-tab--index-target": "formSubmitButton"
-                }
-              ))
+              render(
+                Primer::Beta::IconButton.new(
+                  scheme: :default,
+                  icon: :"paper-airplane",
+                  "aria-label": t("activities.work_packages.activity_tab.label_submit_comment"),
+                  type: :submit,
+                  data: {
+                    "test_selector": "op-submit-work-package-journal-form",
+                    "work-packages--activities-tab--index-target": "formSubmitButton"
+                  }
+                )
+              )
             end
           end
         end
