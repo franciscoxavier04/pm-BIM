@@ -255,7 +255,7 @@ cs:
       is_for_all: "Označit vlastní pole jako dostupné ve všech existujících a nových projektech."
       multi_select: "Umožňuje uživateli přiřadit tomuto vlastnímu poli více hodnot."
       searchable: "Zahrnout hodnoty polí při použití globální funkce vyhledávání."
-      searchable_for_project: "Check to make this attribute available as a filter in project lists."
+      searchable_for_project: "Zaškrtněte pro zpřístupnění tohoto atributu jako filtru v seznamech projektů."
       editable: "Umožnit editaci pole samotnými uživateli."
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
@@ -729,7 +729,7 @@ cs:
       duplicated_description: "Související pracovní balíček je kopií tohoto"
       label_includes_singular: "zahrnuje"
       label_includes_plural: "zahrnuje"
-      includes_description: "Marks the related work package as including this one with no additional effect"
+      includes_description: "označí související pracovní balíček jako zahrnující tento balíček bez dalšího účinku."
       label_partof_singular: "část"
       label_partof_plural: "část"
       label_part_of_singular: "část"
@@ -1988,7 +1988,7 @@ cs:
           caption: "Vyloučit obrázky pro zmenšení velikosti exportu PDF."
         gantt_zoom_levels:
           label: "Úrovně přiblížení"
-          caption: "Select what is the zoom level for dates displayed in the chart."
+          caption: "Vyberte úroveň přiblížení pro data zobrazená v grafu."
           options:
             days: "Dny"
             weeks: "Týdny"
@@ -2003,7 +2003,7 @@ cs:
             very_wide: "Velmi široký"
         paper_size:
           label: "Velikost papíru"
-          caption: "Depending on the chart size more than one page might be exported."
+          caption: "V závislosti na velikosti grafu může být exportováno více než jedna stránka."
         long_text_fields:
           input_caption: "Ve výchozím nastavení jsou vybrána všechna dlouhá textová pole."
           input_label: "Přidat dlouhá textová pole"
@@ -2051,7 +2051,7 @@ cs:
         caption: Text, který se zobrazí uprostřed zápatí
       hyphenation:
         label: Dělení slov
-        caption: Break words between lines to improve text justification and readability.
+        caption: Zlomte slova mezi řádky, abyste zlepšili odůvodnění textu a jeho čitelnost.
       paper_size:
         label: Velikost papíru
         caption: Velikost papíru, který se má použít pro PDF.
@@ -2918,7 +2918,7 @@ cs:
       created_at: "Vytvořeno v %{timestamp} uživatelem %{user} "
       login_to_see_all: "Přihlaste se pro zobrazení všech notifikací."
       mentioned: "Byli jste <b>zmíněni v komentáři</b>"
-      mentioned_by: "%{user} vás zmínil v komentáři"
+      mentioned_by: "%{user} vás zmínil v komentáři OpenProject"
       more_to_see:
         one: "Existuje ještě 1 pracovní balíček s notifikací."
         few: "Existuje ještě %{count} pracovních balíčků s notifikacema."
@@ -3493,7 +3493,7 @@ cs:
   setting_work_package_done_ratio: "Režim výpočtu průběhu"
   setting_work_package_done_ratio_field: "Na základě práce"
   setting_work_package_done_ratio_field_caption_html: >-
-    <i>% Complete</i> can be freely set to any value. If you optionally enter a value for <i>Work</i>, <i>Remaining work</i> will automatically be derived.
+    Upravit vlastní komentáře
   setting_work_package_done_ratio_status: "Na základě stavu"
   setting_work_package_done_ratio_status_caption_html: >-
     Každý stav má přiřazenou hodnotu <i>% kompletní</i> . Změna stavu změní <i>% Dokončeno</i>.
@@ -3899,9 +3899,9 @@ cs:
     progress:
       label_note: "Poznámka:"
       modal:
-        work_based_help_text: "Each field is automatically calculated from the two others when possible."
+        work_based_help_text: "Každé pole se automaticky vypočítá ze dvou ostatních, pokud je to možné."
         status_based_help_text: "% Dokončeno je nastaveno podle stavu pracovního balíčku."
-        migration_warning_text: "In work-based progress calculation mode, % Complete cannot be manually set and is tied to Work. The existing value has been kept but cannot be edited. Please input Work first."
+        migration_warning_text: "V režimu výpočtu postupu založeného na práci nelze % dokončeno nastavit ručně a je vázáno na práci. Stávající hodnota byla zachována, ale nelze ji upravovat. Zadejte prosím nejprve položku Práce."
       derivation_hints:
         done_ratio:
           cleared_because_remaining_work_is_empty: "Vymazáno, protože zbývající práce je prázdná."

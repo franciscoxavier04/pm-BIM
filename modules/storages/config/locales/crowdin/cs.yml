@@ -129,7 +129,7 @@ cs:
           insufficient_privileges: OpenProject does not have enough privileges to add %{user} to %{group}. Check you group settings in Nextcloud.
           not_allowed: Nextcloud blokuje požadavek.
           unauthorized: OpenProject nelze synchronizovat s Nextcloudem. Zkontrolujte prosím konfiguraci úložiště a Nextcloudu.
-          user_does_not_exist: "%{user} does not exist in Nextcloud."
+          user_does_not_exist: "%{user} neexistuje v Nextcloudu."
         one_drive_sync_service:
           attributes:
             create_folder:
