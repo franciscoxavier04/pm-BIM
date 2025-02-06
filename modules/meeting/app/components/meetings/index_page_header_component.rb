@@ -41,7 +41,7 @@ module Meetings
       if current_item.present?
         current_item.title
       else
-        I18n.t(:label_meeting_plural)
+        I18n.t(:label_my_meetings)
       end
     end
 

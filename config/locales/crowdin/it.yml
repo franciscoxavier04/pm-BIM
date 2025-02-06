@@ -76,11 +76,11 @@ it:
       upgrade_to_ee: "Aggiorna a Enterprise edition"
       add_token: "Carica un token di assistenza per Enterprise edition"
       delete_token_modal:
-        text: "Vuoi davvero rimuovere il token Enterprise Edition attualmente utilizzato?"
+        text: "Vuoi davvero rimuovere il token Enterprise edition attualmente utilizzato?"
         title: "Elimina token"
       replace_token: "Sostituisci il token di assistenza attuale"
       order: "Ordina l'edizione Enterprise on-premises"
-      paste: "Incolla il tuo token di assistenza per Enterprise Edition"
+      paste: "Incolla il tuo token di assistenza per Enterprise edition"
       required_for_feature: "Questa aggiunta è disponibile solo con un token di assistenza Enterprise Edition attivo."
       enterprise_link: "Per ulteriori informazioni, clicca qui."
       start_trial: "Inizia la prova gratuita"
@@ -226,6 +226,10 @@ it:
           item:
             title: Questo elemento non ha alcun livello gerarchico sotto
             description: Aggiungi elementi a questo elenco per creare sottoelementi all'interno di un altro
+        delete_dialog:
+          title: "Delete custom field item"
+          heading: "Delete custom field item?"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Etichetta elemento"
           short: "Abbreviazione"
@@ -246,6 +250,7 @@ it:
     confirm_destroy_option: "L'eliminazione di un'opzione eliminerà tutte le sue occorrenze (ad es. nelle macro-attività). Procedere all'eliminazione?"
     reorder_alphabetical: "Riordina i valori alfabeticamente"
     reorder_confirmation: "Attenzione: l'ordine corrente dei valori disponibili sarà perso. Continuare?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Contrassegna il campo personalizzato come obbligatorio. Ciò renderà obbligatorio compilare il campo durante la creazione di nuove risorse o l'aggiornamento di risorse esistenti."
       is_required_for_project: "Spunta la casella per abilitare questo attributo e renderlo necessario in tutti i progetti. Non può essere disattivato per i singoli progetti."
@@ -284,6 +289,7 @@ it:
       label: "Etichetta"
       short: "Abbreviazione"
       parent: "Genitore"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Cerca in %{app_title}"
     overwritten_tabs:
@@ -466,6 +472,7 @@ it:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: Il token %{type} è stato generato
         warning: 'Nota: Questa è l''unica volta in cui vedrai questo token, assicurati di copiarlo subito.'
       errors:
@@ -642,6 +649,7 @@ it:
         title: "Flusso di lavoro mancante per la condivisione di macro-attività"
         message: "Nessun flusso di lavoro è configurato per il ruolo \"Editor di macro-attività\". Senza un flusso di lavoro, la condivisione con l'utente non può alterare lo stato della macro-attività. I flussi di lavoro possono essere copiati. Seleziona un tipo di origine (ad esempio \"Attività\") e un ruolo di origine (ad esempio \"Membro\"). Quindi seleziona i tipi obiettivo. Per cominciare, potresti selezionare tutti i tipi come obiettivi. Infine, seleziona il ruolo \"Editor di macro-attività\" come destinazione e premi \"Copia\". Dopo aver creato le impostazioni predefinite, perfeziona i flussi di lavoro come fai per ogni altro ruolo."
         link_message: "Configura i flussi di lavoro nell'amministrazione."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -664,14 +672,15 @@ it:
       no_results_title_text: Al momento non vi sono relazioni disponibili.
       blankslate_heading: "Nessuna relazione"
       blankslate_description: "Questa macro-attività non ha ancora alcuna relazione."
+    label_add_child_button: "Figlio"
     label_add_x: "Aggiungi %{x}"
     label_edit_x: "Modifica %{x}"
     label_add_description: "Aggiungi descrizione"
     lag:
       subject: "Ritardo"
-      title: "Ritardo (in giorni)"
       caption: "Il numero minimo di giorni lavorativi da far trascorrere tra le due macro-attività."
     relations:
+      label_new_child_created: "Nuova macro-attività creata e aggiunta come figlia"
       label_relates_singular: "correlata con"
       label_relates_plural: "correlate con"
       label_relates_to_singular: "correlata con"
@@ -686,6 +695,9 @@ it:
       follows_description: "La macro-attività correlata deve necessariamente terminare prima dell'inizio di questa"
       label_child_singular: "figlia"
       label_child_plural: "figlie"
+      new_child: "Nuovo figlio"
+      new_child_text: "Crea una macro-attività correlata come sottovoce della macro-attività attuale (genitore)"
+      existing_child: "Figlio esistente"
       child_description: "Rende la macro-attività correlata un sottoelemento della macro-attività corrente (genitore)"
       label_blocks_singular: "blocca"
       label_blocks_plural: "blocca"
@@ -722,6 +734,8 @@ it:
       required_description: "Contrassegna questa macro-attività come obbligatoria per quella correlata"
       label_parent_singular: "genitore"
       label_parent_plural: "genitore"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invito
   account:
     delete: "Cancella account"
@@ -786,6 +800,7 @@ it:
         is_required: "Richiesto"
         max_length: "Lunghezza massima"
         min_length: "Lunghezza minima"
+        content_right_to_left: "Contenuto da destra a sinistra"
         multi_value: "Consenti selezione multipla"
         possible_values: "Valori possibili"
         regexp: "Espressione regolare"
@@ -821,6 +836,8 @@ it:
         attr_lastname: "Attributo cognome"
         attr_login: "Attributo nome utente"
         attr_mail: "Attributo email"
+        filter_string: "Stringa del filtro"
+        admin: "Amministratore"
         base_dn: "Nome Dominio (DN) base"
         host: "Host"
         onthefly: "Creazione automatica degli utenti"
@@ -864,6 +881,9 @@ it:
       project_custom_field:
         is_required: "Richiesto per tutti i progetti"
         custom_field_section: Sezione
+      project/life_cycle_step_definition:
+        name: "Nome"
+        color: "Colore"
       query:
         column_names: "Colonne"
         relations_to_type_column: "Relazioni con %{type}"
@@ -979,7 +999,7 @@ it:
         confirmation: "non coincide con %{attribute}."
         could_not_be_copied: "%{dependency} non può essere (completamente) copiato."
         does_not_exist: "non esiste."
-        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise Edition"
+        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise edition"
         error_unauthorized: "potrebbe non essere accessibile."
         error_readonly: "è in sola lettura, pertanto non è stato possibile modificarlo."
         error_conflict: "L'informazione è stata aggiornata da almeno un altro utente nel frattempo."
@@ -1557,8 +1577,9 @@ it:
   button_copy_and_follow: "Copia e segui"
   button_create: "Crea"
   button_create_and_continue: "Crea e continua"
-  button_delete: "Cancella"
   button_decline: "Rifiuto"
+  button_delete: "Cancella"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Eliminare osservatore %{name}"
   button_download: "Scarica"
   button_duplicate: "Duplica"
@@ -1761,6 +1782,9 @@ it:
       hour:
         one: "ora"
         other: "ora"
+      day:
+        one: "day"
+        other: "days"
   description_active: "Attivo?"
   description_attachment_toggle: "Mostra/Nascondi allegati"
   description_autocomplete: >
@@ -1796,6 +1820,10 @@ it:
     upsale:
       title: "Componente aggiuntivo Enterprise"
       link_title: "Altre informazioni"
+      automatic_subject_generation:
+        description: "Crea oggetti generati automaticamente utilizzando gli attributi e il testo di riferimento."
+      customize_life_cycle:
+        description: "Crea e organizza fasi e controlli di progetto diversi da quelli forniti dalla pianificazione del ciclo di progetto PM2."
       form_configuration:
         description: "Personalizza la configurazione del modulo con le seguenti aggiunte:"
         add_groups: "Aggiunta di gruppi di proprietà"
@@ -1823,7 +1851,7 @@ it:
   error_cookie_missing: "Il cookie di OpenProject è mancante. Prego, verifica che i cookie siano attivati, questa applicazione non funziona correttamente senza."
   error_custom_option_not_found: "L'opzione non esiste."
   error_enterprise_activation_user_limit: "Il tuo account potrebbe non essere attivo (raggiunto il limite utente). Si prega di contattare l'amministratore per ottenere l'accesso."
-  error_enterprise_token_invalid_domain: "L'Enterprise Edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
+  error_enterprise_token_invalid_domain: "L'Enterprise edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
   error_failed_to_delete_entry: "Cancellazione voce non riuscita."
   error_in_dependent: "Errore nel tentativo di modificare l'oggetto dipendente: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Errore nel tentativo di creare un oggetto dipendente: %{dependent_class} - %{related_subject}: %{error}"
@@ -2006,10 +2034,10 @@ it:
     blocks:
       community: "Comunità di OpenProject"
       upsale:
-        title: "Aggiorna ad Enterprise Edition"
+        title: "Aggiorna ad Enterprise edition"
         more_info: "Altre informazioni"
     links:
-      upgrade_enterprise_edition: "Aggiorna ad Enterprise Edition"
+      upgrade_enterprise_edition: "Aggiorna ad Enterprise edition"
       postgres_migration: "Migrazione dell'installazione su PostgreSQL"
       user_guides: "Guide utente"
       faq: "FAQ"
@@ -2158,6 +2186,7 @@ it:
   label_add_subtask: "Aggiungi sotto-attività"
   label_added: "aggiunto"
   label_added_by: "Aggiunto da %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Aggiunto da %{author} %{age} fa"
   label_additional_workflow_transitions_for_assignee: "Transizioni aggiuntive consentite quando l'utente è l'assegnatario"
   label_additional_workflow_transitions_for_author: "Transizioni aggiuntive consentite quando l'utente è l'autore"
@@ -2330,7 +2359,7 @@ it:
   label_enumerations: "Enumerazioni"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} utenti attivi riservati"
-  label_enterprise_edition: "Enterprise Edition"
+  label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Supporto per Imprese"
   label_environment: "Ambiente"
   label_estimates_and_progress: "Stime e progressi"
@@ -2578,6 +2607,7 @@ it:
   label_project_new: "Nuovo progetto"
   label_project_plural: "Progetti"
   label_project_list_plural: "Elenchi progetto"
+  label_project_lifecycle: "Ciclo di vita del progetto"
   label_project_attributes_plural: "Attributi del progetto"
   label_project_custom_field_plural: "Attributi del progetto"
   label_project_settings: "Impostazioni progetto"
@@ -2604,6 +2634,7 @@ it:
   label_relation: "Relazione"
   label_relation_actions: "Azioni di relazione"
   label_relation_delete: "Eliminare la relazione"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Nuova relazione"
   label_release_notes: "Note di rilascio"
   label_remaining_work: "Lavoro residuo"
@@ -3020,6 +3051,7 @@ it:
   notice_bad_request: "Richiesta non valida."
   notice_not_authorized: "Non sei autorizzato ad accedere a questa pagina."
   notice_not_authorized_archived_project: "Il progetto che stai tentando di accedere è stato archiviato."
+  notice_requires_enterprise_token: "Il token Enterprise è assente o non consente l'accesso a questa pagina."
   notice_password_confirmation_failed: "La password non è corretta. Impossibile continuare."
   notice_principals_found_multiple: "Trovati %{number} risultati. \n Premi Tab per evidenziare il primo."
   notice_principals_found_single: "Trovato un solo risultato. \n Premi Tab per evidenziarlo."
@@ -3068,7 +3100,7 @@ it:
     text_getting_started_description: "Fai una rapida panoramica della gestione dei progetti e della collaborazione in team con OpenProject. Puoi riavviare questo video dal menu di aiuto."
     welcome: "Benvenuto in %{app_title}"
     select_language: "Per favore seleziona la tua lingua"
-  permission_add_work_package_notes: "Aggiungi nota"
+  permission_add_work_package_notes: "Add comments"
   permission_add_work_packages: "Aggiungere macro-attività (work package)"
   permission_add_messages: "Postare messaggi"
   permission_add_project: "Crea progetti"
@@ -3098,10 +3130,11 @@ it:
   permission_delete_timelines: "Elimina cronologie"
   permission_delete_wiki_pages: "Eliminare pagine wiki"
   permission_delete_wiki_pages_attachments: "Elimina allegati"
-  permission_edit_work_package_notes: "Modificare note"
+  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Modificare macro-attività"
   permission_edit_messages: "Modificare messaggi"
-  permission_edit_own_work_package_notes: "Modificare le proprie note"
+  permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Modificare i propri messaggi"
   permission_edit_own_time_entries: "Modificare i propri registri di orario effettuato"
   permission_edit_project: "Modificare un progetto"
@@ -3194,9 +3227,9 @@ it:
       are_you_sure: "Sicuro di voler archiviare il progetto '%{name}'?"
       archived: "Archiviato"
     count:
-      zero: "0 Progetti"
-      one: "1 Progetto"
-      other: "%{count} Progetti"
+      zero: "0 progetti"
+      one: "1 progetto"
+      other: "%{count} progetti"
   project_module_activity: "Attività"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Macro-attività"
@@ -3330,6 +3363,7 @@ it:
     activated: "attivato"
     deactivated: "disattivato"
   search_input_placeholder: "Ricerca..."
+  setting_apiv3_cors_title: "Condivisione incrociata delle risorse (CORS - Cross-Origin Resource Sharing)"
   setting_apiv3_cors_enabled: "Abilita CORS"
   setting_apiv3_cors_origins: "Origini di condivisione CORS (Cross-Origin Resource Sharing) API V3 consentite"
   setting_apiv3_cors_origins_text_html: >
@@ -3555,6 +3589,27 @@ it:
       new:
         heading: "Nuovo attributo"
         description: "Le modifiche a questo attributo di progetto si rifletteranno in tutti i progetti in cui è abilitato. Gli attributi obbligatori non possono essere disabilitati per progetto."
+    project_life_cycle_step_definitions:
+      heading: "Ciclo di vita del progetto"
+      heading_description: "Il ciclo di vita del progetto consiste in fasi e controlli che strutturano i suoi progetti. Appariranno nella pagina di panoramica di un progetto e saranno disponibili nell'elenco dei progetti. Le singole fasi e i controlli possono essere selezionati per personalizzare un progetto, ma non è possibile riordinarli a livello di progetto."
+      label_add: "Aggiungi"
+      label_add_description: "Aggiungi definizione di ciclo di vita"
+      label_add_stage: "Fase"
+      label_add_gate: "Controllo"
+      filter:
+        label: "Cerca la fase o il controllo di progetto"
+      section_header: "Fasi e controlli"
+      non_defined: "Attualmente non sono definiti né controlli né fasi."
+      new:
+        description: "Le modifiche a questa fase di progetto si rifletteranno in tutti i progetti in cui è abilitata."
+      new_stage:
+        heading: "Nuova fase"
+      new_gate:
+        heading: "Nuovo controllo"
+      edit_stage:
+        heading: "Modifica fase"
+      edit_gate:
+        heading: "Modifica controllo"
     projects:
       missing_dependencies: "È stato controllato il modulo del progetto %{module} che dipende da %{dependencies}. È necessario controllare anche queste dipendenze."
       section_new_projects: "Impostazioni per i nuovi progetti"
@@ -3588,6 +3643,7 @@ it:
   text_are_you_sure_continue: "Vuoi davvero continuare?"
   text_are_you_sure_with_children: "Eliminare la macro-attività e tutte le sue sotto-attività?"
   text_are_you_sure_with_project_custom_fields: "L'eliminazione di questo attributo eliminerà anche i suoi valori in tutti i progetti. Continuare?"
+  text_are_you_sure_with_project_life_cycle_step: "L'eliminazione di questa fase eliminerà anche i suoi utilizzi in tutti i progetti. Continuare?"
   text_assign_to_project: "Assegna al progetto"
   text_form_configuration: >
     È possibile personalizzare quali campi verranno visualizzati nei moduli della macro-attività. È possibile raggruppare liberamente i campi per soddisfare le esigenze per il tuo dominio.
@@ -3667,6 +3723,7 @@ it:
   text_notice_security_badge_displayed_html: >
     Nota: se abilitata questa opzione visualizzerà un badge con lo stato dell'installazione nel pannello di amministrazione di <a href="%{information_panel_path}">%{information_panel_label}</a> e sulla home page. Verrà visualizzata solo agli amministratori. <br/> il badge controllerà la tua attuale versione di OpenProject con l'ultima versione rilasciata per avvisarti di eventuali aggiornamenti o risoluzioni di vulnerabilità note. Per ulteriori informazioni sulle funzionalità offerte dal controllo, su quali dati è necessario fornire per ottenere gli aggiornamenti disponibili e su come disabilitare questo controllo, visita <a href="%{more_info_url}">la documentazione sulla configurazione</a>.
   text_own_membership_delete_confirmation: "Stai per rimuovere qualcuno o tutti i tuoi permessi e potresti non essere più in grado di modificare questo progetto dopo questo passo.\nSei sicuro di voler continuare?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Cartella del pool di plugin installati scrivibile"
   text_powered_by: "Offerto da %{link}"
   text_project_identifier_info: "Solo le lettere minuscole (a-z), numeri, trattini e trattini bassi sono consentiti, devi iniziare con una lettera maiuscola."
@@ -4035,6 +4092,8 @@ it:
       builtin: Applicazione di istanza integrata
       confidential: Confidenziale
       singular: "Applicazione OAuth"
+      scopes: "Ambiti"
+      client_credentials: "Credenziali del cliente"
       plural: "Applicazioni OAuth"
       named: "Applicazione OAuth \"%{name}\""
       new: "Nuova Applicazione OAuth"

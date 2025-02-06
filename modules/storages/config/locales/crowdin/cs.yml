@@ -3,6 +3,8 @@ cs:
     attributes:
       storages/file_link:
         origin_id: Origin ID
+      storages/project_storage:
+        storage: Úložiště
       storages/storage:
         creator: Autor
         drive: ID disku
@@ -72,6 +74,7 @@ cs:
         confirmation_text: Please, confirm you understand and want to remove this file storage from this project
         heading_text: Odstranit projekt z %{storage}
         text: This action is irreversible and will remove all links from work packages of this project to files and folders of that storage.
+        title: Remove project from storage
       label: Odstranit projekt
   services:
     attributes:

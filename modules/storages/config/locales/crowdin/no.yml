@@ -3,6 +3,8 @@
     attributes:
       storages/file_link:
         origin_id: Opprinnelses ID
+      storages/project_storage:
+        storage: Storage
       storages/storage:
         creator: Skaper
         drive: Stasjon ID
@@ -72,6 +74,7 @@
         confirmation_text: Vennligst bekreft at du forstår og ønsker å fjerne fillagringen fra dette prosjektet
         heading_text: Fjern prosjektet fra %{storage}
         text: Denne handlingen er irreversibel, og vil fjerne alle koblinger fra arbeidspakker i dette prosjektet til filer og mapper i denne lagringen.
+        title: Remove project from storage
       label: Slett prosjekt
   services:
     attributes:

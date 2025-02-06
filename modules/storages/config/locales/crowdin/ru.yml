@@ -3,6 +3,8 @@ ru:
     attributes:
       storages/file_link:
         origin_id: ID оригинала
+      storages/project_storage:
+        storage: Хранилище
       storages/storage:
         creator: Создатель
         drive: ID диска
@@ -72,6 +74,7 @@ ru:
         confirmation_text: Пожалуйста, подтвердите, что Вы понимаете и хотите удалить это файловое хранилище из данного проекта
         heading_text: Удалить проект из %{storage}
         text: Это действие необратимо и удалит все ссылки из пакетов работ этого проекта на файлы и папки этого хранилища.
+        title: Remove project from storage
       label: Удалить проект
   services:
     attributes:

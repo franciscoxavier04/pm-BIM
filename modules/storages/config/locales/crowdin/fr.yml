@@ -3,6 +3,8 @@ fr:
     attributes:
       storages/file_link:
         origin_id: Id d'origine
+      storages/project_storage:
+        storage: Stockage
       storages/storage:
         creator: Créateur
         drive: ID du lecteur
@@ -72,6 +74,7 @@ fr:
         confirmation_text: Veuillez confirmer que vous avez compris et que vous souhaitez supprimer cet espace de stockage de fichiers de ce projet.
         heading_text: Supprimer le projet de %{storage}
         text: Cette action est irréversible et supprimera tous les liens des lots de travaux de ce projet vers les fichiers et dossiers de cet espace de stockage.
+        title: Remove project from storage
       label: Supprimer le projet
   services:
     attributes:

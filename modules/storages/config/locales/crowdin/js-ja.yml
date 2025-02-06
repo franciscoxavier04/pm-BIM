@@ -43,7 +43,7 @@ ja:
           The automatically managed project folder was not yet found. Please wait a bit, reload the page to fetch the newest data, and try again.
         managed_project_folder_no_access: >
           You have no access yet to the managed project folder. Please wait a bit and try again.
-        cannot_create_folder: フォルダの作成に失敗しました。特殊な文字や記号の使用を避けてください。
+        cannot_create_folder: Failed to create folder. Avoid using special characters and symbols and make sure the folder does not exist already.
         upload_keep_both: "Keep both"
         upload_replace: "置き換え"
       file_links:

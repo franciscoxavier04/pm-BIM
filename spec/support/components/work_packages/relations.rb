@@ -64,7 +64,12 @@ module Components
 
       def find_row(relatable)
         actual_relatable = find_relatable(relatable)
-        page.find_test_selector("op-relation-row-#{actual_relatable.id}", wait: 5)
+        page.find_test_selector("op-relation-row-visible-#{actual_relatable.id}", wait: 5)
+      end
+
+      def find_ghost_row(relatable)
+        actual_relatable = find_relatable(relatable)
+        page.find_test_selector("op-relation-row-ghost-#{actual_relatable.id}", wait: 5)
       end
 
       def find_some_row(text:)
@@ -77,7 +82,7 @@ module Components
 
       def expect_no_row(relatable)
         actual_relatable = find_relatable(relatable)
-        expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}"),
+        expect(page).not_to have_test_selector("op-relation-row-visible-#{actual_relatable.id}"),
                             "expected no relation row for work package " \
                             "##{actual_relatable.id} #{actual_relatable.subject.inspect}"
       end
@@ -247,6 +252,10 @@ module Components
         find_row(relatable)
       end
 
+      def expect_ghost_relation(relatable)
+        find_ghost_row(relatable)
+      end
+
       def expect_relation_by_text(text)
         find_some_row(text:)
       end
@@ -305,7 +314,7 @@ module Components
         SeleniumHubWaiter.wait
 
         retry_block do
-          select_relation_type "Child"
+          select_relation_type "Existing child"
         end
 
         within "##{WorkPackageRelationsTab::AddWorkPackageChildFormComponent::DIALOG_ID}" do
