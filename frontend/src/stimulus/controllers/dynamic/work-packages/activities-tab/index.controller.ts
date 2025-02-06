@@ -730,12 +730,13 @@ export default class IndexController extends Controller {
 
   private setCKEditorReadonlyMode(disabled:boolean) {
     const ckEditorInstance = this.getCkEditorInstance();
+    const editorLockID = 'work-packages-activities-tab-index-component';
 
     if (ckEditorInstance) {
       if (disabled) {
-        ckEditorInstance.enableReadOnlyMode('work-packages-activities-tab-index-component');
+        ckEditorInstance.enableReadOnlyMode(editorLockID);
       } else {
-        ckEditorInstance.disableReadOnlyMode('work-packages-activities-tab-index-component');
+        ckEditorInstance.disableReadOnlyMode(editorLockID);
       }
     }
   }
