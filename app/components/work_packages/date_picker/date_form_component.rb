@@ -51,8 +51,8 @@ module WorkPackages
       private
 
       def container_classes(name)
-        classes = "wp-datepicker-dialog-date-form--date-container"
-        classes += " wp-datepicker-dialog-date-form--date-container_date-field-hidden" unless show_text_field?(name)
+        classes = "wp-datepicker-dialog-date-form--button-container"
+        classes += " wp-datepicker-dialog-date-form--button-container_visible" unless show_text_field?(name)
 
         classes
       end

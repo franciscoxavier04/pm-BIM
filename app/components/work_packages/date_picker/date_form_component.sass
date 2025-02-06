@@ -10,10 +10,9 @@
     margin-top: 24px
     width: 100%
 
-  &--date-container
-    &:not(&_date-field-hidden)
-      .wp-datepicker-dialog-date-form--button-container
-        display: none
-    &_date-field-hidden
-      .wp-datepicker-dialog-date-form--text-field-container
+  &--button-container
+    &:not(&_visible)
+      display: none
+    &_visible
+      + .wp-datepicker-dialog-date-form--text-field-container
         display: none

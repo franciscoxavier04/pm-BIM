@@ -2,9 +2,8 @@
   grid_layout("wp-datepicker-dialog-date-form",
               tag: :div) do |body|
     body.with_area("start-date") do
-      flex_layout(classes: container_classes(:start_date),
-                  data: { "work-packages--date-picker--date-form-target": "startDateFieldContainer" }) do |start_date|
-        start_date.with_row(classes: "wp-datepicker-dialog-date-form--button-container") do
+      flex_layout(data: { "work-packages--date-picker--date-form-target": "startDateFieldContainer" }) do |start_date|
+        start_date.with_row(classes: container_classes(:start_date), data: { skip_morphing: true }) do
           render(Primer::ButtonComponent.new(classes: "wp-datepicker-dialog-date-form--add-button",
                                              data: { action: "work-packages--date-picker--date-form#toggleStartDateFieldVisibility" })) do |button|
             button.with_leading_visual_icon(icon: :plus)
@@ -19,9 +18,8 @@
     end
 
     body.with_area("due-date") do
-      flex_layout(classes: container_classes(:due_date),
-                  data: { "work-packages--date-picker--date-form-target": "dueDateFieldContainer" }) do |due_date|
-        due_date.with_row(classes: "wp-datepicker-dialog-date-form--button-container") do
+      flex_layout(data: { "work-packages--date-picker--date-form-target": "dueDateFieldContainer" }) do |due_date|
+        due_date.with_row(classes: container_classes(:due_date), data: { skip_morphing: true }) do
           render(Primer::ButtonComponent.new(classes: "wp-datepicker-dialog-date-form--add-button",
                                              data: { action: "work-packages--date-picker--date-form#toggleDueDateFieldVisibility" })) do |button|
             button.with_leading_visual_icon(icon: :plus)
