@@ -231,6 +231,14 @@ export class HoverCardTriggerService {
     return { turboFrame, popover };
   }
 
+  /*
+   * For dialogs, we must ensure that the overlay is a child of the dialog, not the body. Otherwise, the overlay
+   * is visible, but cannot be interacted with. This is a bug, see https://github.com/whatwg/html/issues/9936
+   *
+   * Until this is fixed, we must ensure the popover is interactable. We can do this by checking
+   * if the target element is a child of a dialog, and if so, append the hover card overlay to the dialog.
+   * Otherwise, we append it to the body.
+   */
   private moveOverlayToAppropriateParent(overlay:HTMLElement, targetEl:HTMLElement) {
     const targetParentDialog = targetEl.closest('dialog-helper > dialog');
 
