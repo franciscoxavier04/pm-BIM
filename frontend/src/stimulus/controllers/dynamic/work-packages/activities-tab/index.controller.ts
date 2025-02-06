@@ -724,7 +724,7 @@ export default class IndexController extends Controller {
           );
         }
         this.handleStemVisibility();
-      }, 10);
+      }, 100);
     }
   }
 
