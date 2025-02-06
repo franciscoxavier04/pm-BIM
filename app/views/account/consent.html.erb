@@ -32,7 +32,6 @@ See COPYRIGHT and LICENSE files for more details.
 <%= call_hook :view_account_consent_top %>
 <div id="login-form" class="account-consent form -bordered">
 
-
   <%= form_tag(account_confirm_consent_path, method: :post, class: "form -wide-labels") do %>
     <%= render partial: 'user_consent_check' %>
     <section class="form--section">

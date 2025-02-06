@@ -92,8 +92,7 @@
       <div class="form--field-container">
         <%= text_field_tag 'saml_provider[request_attributes][][name]',
                            request['name'],
-                           id: "#{base_key}_name"
-        %>
+                           id: "#{base_key}_name" %>
       </div>
     </div>
     <div class="form--field -required">
@@ -101,10 +100,9 @@
       <div class="form--field-container">
         <%= text_field_tag 'saml_provider[request_attributes][][name_format]',
                            request['name_format'],
-                           id: "#{base_key}_format"
-        %>
+                           id: "#{base_key}_format" %>
       </div>
     </div>
-    <hr/>
+    <hr>
   <% end %>
 </fieldset>

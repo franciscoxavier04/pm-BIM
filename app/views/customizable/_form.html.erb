@@ -40,7 +40,8 @@ See COPYRIGHT and LICENSE files for more details.
     form_options = {
       custom_value: form.object.custom_value_for(custom_field.id),
       custom_field: custom_field
-    } %>
+    }
+  %>
   <%= form.fields_for_custom_fields :custom_field_values, form.object, form_options do |cf_form| %>
     <% show_required = custom_field.is_required? && !custom_field.boolean? %>
     <%= content_tag :div,

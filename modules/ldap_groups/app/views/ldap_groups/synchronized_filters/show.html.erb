@@ -13,7 +13,6 @@
   </div>
 <% end %>
 
-
 <section class="admin--edit-section">
   <%= render(AttributeGroups::AttributeGroupComponent.new) do |component|
     component.with_attribute(key: @filter.class.human_attribute_name(:name),

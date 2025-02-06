@@ -85,8 +85,7 @@ See COPYRIGHT and LICENSE files for more details.
                                   class: 'form--select-container -wide remote-field--input',
                                   data: {
                                     'test-selector': 'project_id'
-                                  }
-        %>
+                                  } %>
       </div>
     </div>
   <% end %>
@@ -106,8 +105,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= f.date_picker :start_date,
                         id: 'meeting-form-start-date',
                         required: true,
-                        no_label: true
-      %>
+                        no_label: true %>
       <label for="meeting-form-start-time" class="hidden-for-sighted">
         <%= Meeting.human_attribute_name(:start_time) %>
         <label lang="en">

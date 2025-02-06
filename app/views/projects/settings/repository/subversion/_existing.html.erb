@@ -40,10 +40,10 @@ See COPYRIGHT and LICENSE files for more details.
     <code>https://</code>
     <code>svn://</code>
     <code>svn+[tunnelscheme]://</code>
-    <br/>
+    <br>
   </div>
 </div>
-<hr/>
+<hr>
 <div class="form--field">
   <%= form.text_field(:login,
                       size: 30,
@@ -59,8 +59,7 @@ See COPYRIGHT and LICENSE files for more details.
                           name: 'ignore',
                           id: 'repository-password-placeholder',
                           value: ((repository.new_record? || repository.password.blank?) ? '' : ('x' * 15)),
-                          container_class: '-middle')
-  %>
+                          container_class: '-middle') %>
   <%=
     content_for(:additional_js_dom_ready) do
       "jQuery('#repository-password-placeholder')

@@ -13,9 +13,9 @@
     <% if feature_description.empty? %>
       <p class="upsale--feature-reference">
         <%= t('js.admin.enterprise.upsale.benefits.description') %>
-        </br>
+        <br>
         <%= t('js.admin.enterprise.upsale.benefits.premium_features_text') %>
-        </br>
+        <br>
         <%= t('js.admin.enterprise.upsale.benefits.professional_support_text') %>
       </p>
     <% else %>
@@ -37,7 +37,7 @@
     <% end %>
 
     <p> <%= feature_title %> <%= t('admin.enterprise.enterprise_info_html') %>
-    </br>
+    <br>
     <%= t('admin.enterprise.upgrade_info') %>
     </p>
     <%= link_to(OpenProject::Static::Links.links[:contact_us][:href],

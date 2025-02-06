@@ -1,7 +1,7 @@
 <% default_device = @user.otp_devices.get_default %>
 
 <section class="admin--edit-section">
-    <%= render partial: 'two_factor_authentication/my/two_factor_devices/two_factor_status', locals: { device: default_device }%>
+    <%= render partial: 'two_factor_authentication/my/two_factor_devices/two_factor_status', locals: { device: default_device } %>
 </section>
 
 <section class="admin--edit-section">

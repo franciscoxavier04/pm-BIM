@@ -43,7 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
 <br>
 <div style="clear: both;"></div>
 <fieldset class="form--fieldset" id="wiki_menu_item_setting">
-  <legend class="form--fieldset-legend"><%=t(:menu_item_setting)%></legend>
+  <legend class="form--fieldset-legend"><%= t(:menu_item_setting) %></legend>
   <p>
     <%= form.radio_button 'setting', :no_item %>
     <%= form.label 'setting_no_item', t(:label_wiki_dont_show_menu_item) %>
@@ -64,6 +64,6 @@ See COPYRIGHT and LICENSE files for more details.
   class: '-primary -with-icon icon-checkmark' %>
   <%= link_to t(:button_cancel),
   {controller: '/wiki', action: 'show', project_id: @project, id: @page_title},
-  class: 'button -with-icon icon-cancel'%>
+  class: 'button -with-icon icon-cancel' %>
 </p>
 <% end %>

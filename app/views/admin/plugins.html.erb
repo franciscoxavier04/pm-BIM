@@ -77,7 +77,7 @@ See COPYRIGHT and LICENSE files for more details.
         <tbody>
           <% @plugins.each do |plugin| %>
             <tr>
-              <td><span class="name"><%=h plugin.name %></span>
+              <td><span class="name"><%= h plugin.name %></span>
                 <%= content_tag('span', plugin.description, class: 'description') if plugin.description.present? %>
                 <%= content_tag('span', link_to(plugin.url, plugin.url), class: 'url') if plugin.url.present? %>
               </td>

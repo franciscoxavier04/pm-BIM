@@ -5,13 +5,13 @@
       <% setting_base = "settings[repository_checkout_data][#{vendor}]" %>
       <% enabled = Setting.repository_checkout_data[vendor]['enabled'].to_i > 0 %>
       <fieldset class="form--fieldset -collapsible collapsed">
-        <legend class="form--fieldset-legend" title="<%= klass.vendor_name %>" >
+        <legend class="form--fieldset-legend" title="<%= klass.vendor_name %>">
           <a href="#"><%= klass.vendor_name %>
           </a>
         </legend>
         <div class="form--field">
           <% key = "#{setting_base}[enabled]" %>
-          <input type="hidden" name="<%= key %>" value="0" id="<% "#{key}_hidden" %>" />
+          <input type="hidden" name="<%= key %>" value="0" id="<% "#{key}_hidden" %>">
           <%= setting_label key, label: :setting_repository_checkout_display %>
           <div class="form--field-container">
             <%= styled_check_box_tag key, 1, enabled, class: 'settings-repositories--checkout-toggle' %>

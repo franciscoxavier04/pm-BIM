@@ -11,16 +11,16 @@
     </p>
     <p class="danger-zone--warning">
       <span class="icon icon-info2"></span>
-      <%= t('ldap_groups.synchronized_groups.destroy.confirmation', name: @group.dn, users_count: @group.users.count)%>
+      <%= t('ldap_groups.synchronized_groups.destroy.confirmation', name: @group.dn, users_count: @group.users.count) %>
     </p>
     <p>
-      <span><%= t('ldap_groups.synchronized_groups.destroy.info')%></span>
-      <br/>
+      <span><%= t('ldap_groups.synchronized_groups.destroy.info') %></span>
+      <br>
       <%= t('ldap_groups.synchronized_groups.destroy.verification',
             name: "<em class=\"danger-zone--expected-value\">#{h(@group.dn)}</em>").html_safe %>
     </p>
     <div class="danger-zone--verification">
-      <input type="text"></input>
+      <input type="text"><input>
       <%= styled_button_tag title: t(:button_delete), class: '-primary', disabled: true do
         concat content_tag :i, '', class: 'button--icon icon-delete'
         concat content_tag :span, t(:button_delete), class: 'button--text'

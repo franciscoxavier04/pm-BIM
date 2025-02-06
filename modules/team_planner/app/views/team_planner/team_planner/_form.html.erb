@@ -53,8 +53,7 @@ See COPYRIGHT and LICENSE files for more details.
                                 class: 'form--select-container -wide remote-field--input',
                                 data: {
                                   'test-selector': 'project_id'
-                                }
-      %>
+                                } %>
     </div>
     <div class="form--field-instructions">
       <p><%= t 'help_texts.views.project',
@@ -69,8 +68,7 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field-container">
       <%= styled_check_box_tag 'query[public]',
                                '1',
-                               @view.public
-      %>
+                               @view.public %>
     </div>
     <div class="form--field-instructions">
       <p><%= t 'help_texts.views.public' %></p>
@@ -83,8 +81,7 @@ See COPYRIGHT and LICENSE files for more details.
     <div class="form--field-container">
       <%= styled_check_box_tag 'query[starred]',
                                '1',
-                               @view.starred
-      %>
+                               @view.starred %>
     </div>
     <div class="form--field-instructions">
       <p><%= t 'help_texts.views.favoured' %></p>

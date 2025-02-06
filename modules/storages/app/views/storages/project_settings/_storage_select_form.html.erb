@@ -32,8 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
                @available_storages.map { |storage| ["#{storage.name} (#{storage})", storage.id] },
                class: '-bold',
                selected: @available_storages.first.id.to_s,
-               container_class: '-slim'
-  %>
+               container_class: '-slim' %>
   <% if User.current.admin? %>
       <span class="form--field-instructions">
         <%= t(:"storages.instructions.setting_up_additional_storages") %>

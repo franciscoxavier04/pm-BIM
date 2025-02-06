@@ -30,8 +30,7 @@
                                         appendTo: "body",
                                         labelForId: "custom_action_actions_#{condition.key}",
                                         inputValue: condition.values
-                                      }
-            %>
+                                      } %>
           <% else %>
             <%= angular_component_tag 'opce-autocompleter',
                                       inputs: {
@@ -44,8 +43,7 @@
                                         bindValue: "id",
                                         labelForId: "custom_action_conditions_#{condition.key}",
                                         appendTo: "body",
-                                      }
-            %>
+                                      } %>
           <% end %>
         </div>
       </div>
@@ -79,8 +77,7 @@
                                               appendTo: "body",
                                               labelForId: "custom_action_actions_#{action.key}",
                                               inputValue: action.values.first
-                                            }
-                  %>
+                                            } %>
                 <% else %>
                   <%= angular_component_tag 'opce-autocompleter',
                                             inputs: {
@@ -93,8 +90,7 @@
                                               bindValue: "id",
                                               labelForId: "custom_action_actions_#{action.key}",
                                               appendTo: "body",
-                                            }
-                  %>
+                                            } %>
                 <% end %>
               </div>
             </div>

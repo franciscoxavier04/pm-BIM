@@ -34,7 +34,7 @@ See COPYRIGHT and LICENSE files for more details.
                               html: {method: :put, multipart: true, id: 'wiki_form'} do |f| %>
   <%= f.hidden_field :lock_version %>
 
-  <%= render partial: 'wiki/page_form', locals: {f: f}  %>
+  <%= render partial: 'wiki/page_form', locals: {f: f} %>
 
 <% end %>
 
@@ -42,4 +42,3 @@ See COPYRIGHT and LICENSE files for more details.
 <% content_for :header_tags do %>
   <%= robot_exclusion_tag %>
 <% end %>
-

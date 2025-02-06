@@ -71,7 +71,7 @@ See COPYRIGHT and LICENSE files for more details.
     <%= labelled_tabular_form_for @news, html: { id: 'news-form' } do |f| %>
       <%= render partial: 'form', locals: { f: f } %>
       <%= styled_button_tag t(:button_save), class: '-primary -with-icon icon-checkmark' %>
-      <%= link_to_function t(:button_cancel), 'jQuery("#edit-news").hide()', class: 'button -with-icon icon-cancel'%>
+      <%= link_to_function t(:button_cancel), 'jQuery("#edit-news").hide()', class: 'button -with-icon icon-cancel' %>
     <% end %>
   </div>
 <% end %>
@@ -84,7 +84,7 @@ See COPYRIGHT and LICENSE files for more details.
 <div class="op-uc-container">
   <%= format_text(@news.description, object: @news) %>
 </div>
-<br />
+<br>
 <div id="comments" class="news--comments comments">
   <h3 class="icon-context icon-quote"><%= t(:label_comment_plural) %></h3>
   <% @comments.each do |comment| %>

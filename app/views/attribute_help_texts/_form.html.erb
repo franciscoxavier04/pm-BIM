@@ -34,8 +34,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= f.select :attribute_name,
                    [[@attribute_help_text.attribute_caption, @attribute_help_text.attribute_name]],
                    {},
-                   disabled: true
-      %>
+                   disabled: true %>
     <% else %>
       <%= f.select :attribute_name, selectable_attributes(@attribute_help_text), container_class: '-middle' %>
     <% end %>

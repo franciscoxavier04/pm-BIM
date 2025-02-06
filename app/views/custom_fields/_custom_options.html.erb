@@ -82,8 +82,7 @@ See COPYRIGHT and LICENSE files for more details.
         <%= f.fields_for :custom_options, custom_option do |co_f| %>
           <tr
             class="dragula-element custom-option-row"
-            data-admin--custom-fields-target="customOptionRow"
-          >
+            data-admin--custom-fields-target="customOptionRow">
             <td>
               <span class="dragula-handle icon icon-table icon-drag-handle"></span>
               <%= co_f.hidden_field :id,
@@ -111,8 +110,7 @@ See COPYRIGHT and LICENSE files for more details.
                     rel="nofollow"
                     href="#"
                     class="sort-up-custom-option"
-                    data-action="admin--custom-fields#moveRowToTheTop"
-                  >
+                    data-action="admin--custom-fields#moveRowToTheTop">
                     <%= op_icon('icon-context icon-sort-up icon-small') %>
                   </a>
                   <a
@@ -120,16 +118,14 @@ See COPYRIGHT and LICENSE files for more details.
                     rel="nofollow"
                     href="#"
                     class="move-up-custom-option"
-                    data-action="admin--custom-fields#moveRowUp"
-                  >
+                    data-action="admin--custom-fields#moveRowUp">
                     <%= op_icon('icon-context icon-arrow-up2 icon-small') %>
                   </a>
                   <a
                     title="<%= t(:label_sort_lower) %>"
                     rel="nofollow" href="#"
                     class="move-down-custom-option"
-                    data-action="admin--custom-fields#moveRowDown"
-                  >
+                    data-action="admin--custom-fields#moveRowDown">
                     <%= op_icon('icon-context icon-arrow-down2 icon-small') %>
                   </a>
                   <a
@@ -137,8 +133,7 @@ See COPYRIGHT and LICENSE files for more details.
                     rel="nofollow"
                     href="#"
                     class="sort-down-custom-option"
-                    data-action="admin--custom-fields#moveRowToTheBottom"
-                  >
+                    data-action="admin--custom-fields#moveRowToTheBottom">
                     <%= op_icon('icon-context icon-sort-down icon-small') %>
                   </a>
                 </span>

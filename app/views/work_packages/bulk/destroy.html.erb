@@ -53,7 +53,7 @@ See COPYRIGHT and LICENSE files for more details.
         </div>
       </div>
       <div class="form--field -trailing-label">
-        <%=styled_label_tag 'to_do_action_nullify', t(:text_assign_to_project) %>
+        <%= styled_label_tag 'to_do_action_nullify', t(:text_assign_to_project) %>
         <div class="form--field-container">
           <%= styled_radio_button_tag 'to_do[action]' , 'nullify' %>
         </div>
@@ -87,7 +87,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= link_to_function t(:button_cancel),
                            "history.back()",
                            title: t(:button_cancel),
-                           class: 'button -with-icon icon-cancel'%>
+                           class: 'button -with-icon icon-cancel' %>
   </section>
 
 <% end %>

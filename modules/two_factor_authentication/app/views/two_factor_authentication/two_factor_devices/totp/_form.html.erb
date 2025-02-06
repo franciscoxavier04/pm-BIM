@@ -1,5 +1,5 @@
 <fieldset class="form--fieldset">
-  <legend class="form--fieldset-legend" title="<%= @device.name  %>"><%= @device.name  %></legend>
+  <legend class="form--fieldset-legend" title="<%= @device.name %>"><%= @device.name %></legend>
 
   <p><%= t('two_factor_authentication.devices.totp.description') %></p>
 
@@ -15,17 +15,15 @@
 
 <div class="mobile-otp-qr-form"
      data-controller="two-factor-authentication"
-     data-application-target="dynamic"
->
+     data-application-target="dynamic">
   <div class="qr-code-element"
        data-value="<%= device.provisioning_url %>"
-       data-two-factor-authentication-target="qrCodeElement"
-  >
+       data-two-factor-authentication-target="qrCodeElement">
   </div>
   <div class="mobile-otp-qr-manually">
     <p>
       <strong><%= t('two_factor_authentication.devices.totp.question_cannot_scan') %></strong>
-      <br/>
+      <br>
       <%= t('two_factor_authentication.devices.totp.text_cannot_scan') %>
     </p>
     <%= render(AttributeGroups::AttributeGroupComponent.new) do |component|

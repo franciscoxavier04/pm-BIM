@@ -33,8 +33,8 @@ See COPYRIGHT and LICENSE files for more details.
                                { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
                                t(:label_work_package_category_plural)
                              ])
-  end %>
-
+  end
+%>
 
 <% if current_user.allowed_in_project?(:manage_categories, @project) %>
   <%=
@@ -87,8 +87,8 @@ See COPYRIGHT and LICENSE files for more details.
           <% for category in @project.categories %>
             <% unless category.new_record? %>
               <tr>
-                <td><%=h(category.name) %></td>
-                <td><%=h(category.assigned_to.name) if category.assigned_to %></td>
+                <td><%= h(category.name) %></td>
+                <td><%= h(category.assigned_to.name) if category.assigned_to %></td>
                 <td class="buttons">
                   <%= link_to_if_authorized '',
                                             { controller: '/categories', action: 'edit', id: category },

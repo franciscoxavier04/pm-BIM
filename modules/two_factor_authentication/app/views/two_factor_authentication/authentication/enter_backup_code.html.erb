@@ -8,11 +8,11 @@
     <div class="form--field -required -wide-label">
       <%= styled_label_tag 'backup_code', t('two_factor_authentication.backup_codes.singular') %>
       <div class="form--field-container">
-        <%= styled_text_field_tag 'backup_code', nil, required: true, autocomplete: 'off', size: 20, maxlength: 20, tabindex: 1, autofocus: true  %>
+        <%= styled_text_field_tag 'backup_code', nil, required: true, autocomplete: 'off', size: 20, maxlength: 20, tabindex: 1, autofocus: true %>
       </div>
     </div>
     <div class="login-form--footer">
-      <input type="submit" name="login" value="<%=t(:button_submit)%>" class="button -primary button_no-margin" tabindex="2" />
+      <input type="submit" name="login" value="<%= t(:button_submit) %>" class="button -primary button_no-margin" tabindex="2">
     </div>
   <% end %>
 </div>

@@ -39,7 +39,7 @@ See COPYRIGHT and LICENSE files for more details.
     <ul class="mb-3">
       <li> <%= t('provider.delete_warning.delete_result_1') %>
       <li> <%= t('provider.delete_warning.delete_result_user_count', count: @provider.user_count) %>
-      <% if Setting.omniauth_direct_login_provider == @provider.slug  %>
+      <% if Setting.omniauth_direct_login_provider == @provider.slug %>
       <li> <%= t('provider.delete_warning.delete_result_direct') %>
       <% end %>
     </ul>

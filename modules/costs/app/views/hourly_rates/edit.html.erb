@@ -46,10 +46,9 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-
 <%- default_rate = @user.current_default_rate -%>
-<% if default_rate%>
-<p><strong><%= t(:label_current_default_rate) %>:</strong> <%= number_to_currency(default_rate.rate)%></p>
+<% if default_rate %>
+<p><strong><%= t(:label_current_default_rate) %>:</strong> <%= number_to_currency(default_rate.rate) %></p>
 <% end %>
 
 <%= labelled_tabular_form_for @user,

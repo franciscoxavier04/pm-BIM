@@ -48,7 +48,7 @@ See COPYRIGHT and LICENSE files for more details.
     <% end %>
   </li>
 <% end %>
-<p><% if @changeset.scmid %>ID: <%= h(@changeset.scmid) %><br />
+<p><% if @changeset.scmid %>ID: <%= h(@changeset.scmid) %><br>
   <% end %>
   <span class="author"><%= authoring(@changeset.committed_on, @changeset.author) %></span></p>
 <%= format_revision_text @changeset.comments %>

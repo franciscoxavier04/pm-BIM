@@ -34,7 +34,8 @@ See COPYRIGHT and LICENSE files for more details.
                                { href: project_forums_path(@project.id), text: t(:label_forum_plural) },
                                t(:label_forum_new)
                              ])
-    end %>
+    end
+%>
 <%= labelled_tabular_form_for [@project, @forum] do |f| %>
   <%= render partial: 'form', locals: {f: f} %>
   <%= f.button t(:button_create), class: 'button -primary -with-icon icon-checkmark' %>

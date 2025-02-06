@@ -40,7 +40,7 @@ See COPYRIGHT and LICENSE files for more details.
                                   } do |f| %>
       <%= render partial: 'messages/form', locals: { f: f } %>
 
-      <hr class="form--separator"/>
+      <hr class="form--separator">
       <%= styled_button_tag t(:button_create), class: '-primary -with-icon icon-checkmark' %>
       <%= link_to t(:button_cancel), '', class: 'cancel-add-message-button button -with-icon icon-cancel' %>
       <% csp_onclick('jQuery("#add-message").hide();', '.cancel-add-message-button') %>
@@ -48,7 +48,6 @@ See COPYRIGHT and LICENSE files for more details.
     <div id="preview"></div>
   <% end %>
 </div>
-
 
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
@@ -138,8 +137,8 @@ See COPYRIGHT and LICENSE files for more details.
             <td class="replies"><%= message.replies_count %></td>
             <td class="last_message">
               <% if message.last_reply %>
-                <%= authoring message.last_reply.created_at, message.last_reply.author %><br/>
-                <br/>
+                <%= authoring message.last_reply.created_at, message.last_reply.author %><br>
+                <br>
                 <%= link_to_message message.last_reply, no_root: true %>
               <% end %>
             </td>

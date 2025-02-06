@@ -1,5 +1,5 @@
 <section class="form--section">
-  <h3 class="form--section-title"><%=t('consent.title')%></h3>
+  <h3 class="form--section-title"><%= t('consent.title') %></h3>
   <% consent_link = admin_settings_users_path(anchor: 'consent_settings') %>
 
   <%= render ::Components::OnOffStatusComponent.new({

@@ -43,7 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
     <%= link_to t(:button_update), {:controller => '/hourly_rates', :action => 'edit', :project_id => project, :id => @user}, :class => 'icon icon-edit', :accesskey => accesskey(:edit) %>
   <% end %>
 </div>
-<h3><%=h project.name %><%= (" - " + number_to_currency(current_rate.rate)) if current_rate %></h3>
+<h3><%= h project.name %><%= (" - " + number_to_currency(current_rate.rate)) if current_rate %></h3>
 <% if rates.empty? %>
   <%= no_results_box %>
 <% else %>

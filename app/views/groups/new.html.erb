@@ -29,7 +29,6 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% html_title t(:label_administration), t("label_group_new") %>
 
-
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
     header.with_title { t(:label_group_new) }
@@ -39,7 +38,6 @@ See COPYRIGHT and LICENSE files for more details.
                              t(:label_group_new)])
   end
 %>
-
 
 <%= labelled_tabular_form_for(@group) do |f| %>
   <%= render partial: 'form', locals: { f: f } %>

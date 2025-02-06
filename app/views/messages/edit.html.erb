@@ -34,7 +34,8 @@ See COPYRIGHT and LICENSE files for more details.
                               { href: project_forums_path(@project), text: t(:label_forum_plural) },
                               { href: project_forum_path(@project, @forum), text: @forum.name },
                              @message.subject])
- end %>
+ end
+%>
 
 <%= labelled_tabular_form_for @message,
                               url: topic_path(@message),
@@ -47,7 +48,7 @@ See COPYRIGHT and LICENSE files for more details.
                               } do |f| %>
   <%= render partial: 'form', locals: { f: f, replying: !@message.parent.nil? } %>
 
-  <hr class="form--separator"/>
+  <hr class="form--separator">
 
   <%= f.button t(:button_save), class: 'button -primary -with-icon icon-checkmark' %>
   <%= link_to t(:button_cancel), topic_path(@message), class: 'button -with-icon icon-cancel' %>

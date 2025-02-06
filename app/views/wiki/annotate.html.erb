@@ -27,7 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<% html_title t(:project_module_wiki), t(:label_history), t(:text_comment_wiki_page, page: @page.title)  %>
+<% html_title t(:project_module_wiki), t(:label_history), t(:text_comment_wiki_page, page: @page.title) %>
 <% breadcrumb_paths(*(@page.ancestors.reverse.collect { |parent| link_to h(parent.breadcrumb_title), {id: parent, project_id: parent.project}} + [h(@page.breadcrumb_title)] )) %>
 
 <%= toolbar title: h(@page.title) do %>
@@ -59,7 +59,7 @@ See COPYRIGHT and LICENSE files for more details.
         <td class="revision"><%= link_to line[0], controller: '/wiki', action: 'show', project_id: @project, id: @page, version: line[0] %></td>
         <td class="author"><%= h(line[1]) %></td>
         <td class="line-code">
-          <pre><%=h line[2] %></pre>
+          <pre><%= h line[2] %></pre>
         </td>
       </tr>
       <% line_num += 1 %>

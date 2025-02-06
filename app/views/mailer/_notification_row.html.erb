@@ -28,17 +28,17 @@
                   <%= placeholder_cell('8px', vertical: true) %>
                   <td width="100%" style="color: #878787;">
                     #<%= work_package.id %> - <%= work_package.project %>
-                    <%=  ' - ' unless unique_reasons.length === 1 && unique_reasons.first.nil? %>
+                    <%= ' - ' unless unique_reasons.length === 1 && unique_reasons.first.nil? %>
                     <% unique_reasons.each_with_index do |reason, index| %>
                       <%= I18n.t(
                             :"mail.work_packages.reason.#{reason || :unknown}",
-                            default: '') %><%= ', ' unless unique_reasons.size-1 == index  %>
+                            default: '') %><%= ', ' unless unique_reasons.size-1 == index %>
                     <% end %>
                   </td>
                   <td>
                     <table <%= placeholder_table_styles %>>
                       <tr>
-                        <% if show_count  %>
+                        <% if show_count %>
                           <td style="background-color: #00A3FF;
                             color: white;
                             border-radius: 10px;

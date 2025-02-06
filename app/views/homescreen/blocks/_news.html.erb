@@ -9,7 +9,7 @@
         <%= link_to h(news.title), news_path(news) %>
       </div>
       <div class="widget-box--author news-author"><%= authoring_at format_date(news.created_at), news.author %></div>
-      <p class="widget-box--additional-info"><%=  news.summary %></p>
+      <p class="widget-box--additional-info"><%= news.summary %></p>
     </li>
   <% end %>
   </ul>

@@ -139,7 +139,7 @@ See COPYRIGHT and LICENSE files for more details.
                 <%= format_time(changeset.committed_on) %>
               </td>
               <td class="author">
-                <%=h changeset.author %>
+                <%= h changeset.author %>
               </td>
               <td class="comments">
                 <%= format_revision_text(truncate_at_line_break(Changeset.to_utf8(changeset.comments, changeset.repository.repo_log_encoding))) %>

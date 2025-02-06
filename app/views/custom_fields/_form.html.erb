@@ -31,8 +31,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <section
   class="form--section"
-  id="custom_field_form"
->
+  id="custom_field_form">
   <div class="form--field -required" id="custom_field_name_attributes">
     <%= f.text_field :name,
                      required: true,
@@ -44,8 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= f.select :custom_field_section_id,
                   ProjectCustomFieldSection.all.collect { |s| [s.name, s.id] },
                   { container_class: '-slim' },
-                  required: true
-      %>
+                  required: true %>
     </div>
   <% end %>
   <div class="form--field">
@@ -56,8 +54,7 @@ See COPYRIGHT and LICENSE files for more details.
                  data: {
                    action: 'admin--custom-fields#formatChanged',
                    'admin--custom-fields-target': 'format'
-                 }
-    %>
+                 } %>
     <div class="form--field-extra-actions" <%= format_dependent.attributes(:enterpriseBanner) %>>
       <%= angular_component_tag "opce-enterprise-banner",
                                 inputs: {
@@ -66,8 +63,7 @@ See COPYRIGHT and LICENSE files for more details.
                                   opReferrer: "custom-field-hierarchy",
                                   textMessage: I18n.t("custom_fields.upsale.custom_field_format_hierarchy"),
                                   moreInfoLink: OpenProject::Static::Links.links[:enterprise_docs][:boards][:href]
-                                }
-      %>
+                                } %>
     </div>
   </div>
 
@@ -124,8 +120,7 @@ See COPYRIGHT and LICENSE files for more details.
           type="button"
           class="spot-link"
           data-test-selector="add-custom-option"
-          data-action="admin--custom-fields#addOption"
-        >
+          data-action="admin--custom-fields#addOption">
           <span class="spot-icon spot-icon_1_25 spot-icon_add"></span>
           <span><%= t(:button_add) %></span>
         </button>

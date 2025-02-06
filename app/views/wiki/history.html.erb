@@ -120,8 +120,8 @@ See COPYRIGHT and LICENSE files for more details.
             <tr class="wiki-page-version">
               <td class="id"><%= link_to h(ver.version), action: 'show', id: @page, project_id: @page.project, version: ver.version %></td>
               <td class="checkbox">
-                <% if show_diff && (line_num < @versions.size)  %>
-                  <label for="<%="cb-#{line_num}"%>" class="hidden-for-sighted"><%= t(:description_compare_from) + ' ' + t(:label_version) + " " + h(ver.version.to_s) %></label>
+                <% if show_diff && (line_num < @versions.size) %>
+                  <label for="<%= "cb-#{line_num}" %>" class="hidden-for-sighted"><%= t(:description_compare_from) + ' ' + t(:label_version) + " " + h(ver.version.to_s) %></label>
                   <%= radio_button_tag('version_from',
                                        ver.version,
                                        (line_num==1),
@@ -135,7 +135,7 @@ See COPYRIGHT and LICENSE files for more details.
               </td>
               <td class="checkbox">
                 <% if show_diff && (line_num > 1) %>
-                  <label for="<%="cbto-#{line_num}"%>" class="hidden-for-sighted"><%= t(:description_compare_to) + ' ' + t(:label_version) + " " + h(ver.version.to_s) %></label>
+                  <label for="<%= "cbto-#{line_num}" %>" class="hidden-for-sighted"><%= t(:description_compare_to) + ' ' + t(:label_version) + " " + h(ver.version.to_s) %></label>
                   <%= radio_button_tag('version_to',
                                        ver.version,
                                        (line_num==2),
@@ -148,7 +148,7 @@ See COPYRIGHT and LICENSE files for more details.
               </td>
               <td class="updated_at"><%= format_time(ver.created_at) %></td>
               <td class="author"><%= link_to_user ver.user %></td>
-              <td class="comments"><%=h ver.notes %></td>
+              <td class="comments"><%= h ver.notes %></td>
               <td class="buttons"><%= link_to t(:button_annotate), action: 'annotate', id: @page, version: ver.version %></td>
             </tr>
             <% line_num += 1 %>

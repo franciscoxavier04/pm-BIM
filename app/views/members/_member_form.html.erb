@@ -46,8 +46,7 @@ See COPYRIGHT and LICENSE files for more details.
       <div class="grid-content medium-5 small-12 collapse -flex">
         <div
           class="form--field"
-          data-user-limit-target="inviteUserForm"
-        >
+          data-user-limit-target="inviteUserForm">
           <%
             user_id_title = I18n.t(:label_principal_search)
 
@@ -64,8 +63,7 @@ See COPYRIGHT and LICENSE files for more details.
                                       url: autocomplete_for_member_project_members_path + '.json',
                                       appendTo: "body",
                                       multiple: true
-                                    }
-          %>
+                                    } %>
         </div>
       </div>
       <div class="grid-content medium-8 small-12 -flex -with-button">
@@ -76,8 +74,7 @@ See COPYRIGHT and LICENSE files for more details.
                                       inputs: {
                                         attribute: 'members',
                                         attributeScope: 'Project'
-                                      }
-            %>
+                                      } %>
           <% end %>
           <div class="form--field-container">
             <div class="form--select-container -auto">

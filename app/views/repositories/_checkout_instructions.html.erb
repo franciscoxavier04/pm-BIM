@@ -37,7 +37,7 @@ See COPYRIGHT and LICENSE files for more details.
     <p>
     <%= simple_format instructions.instructions %>
     <% if instructions.manages_permissions? %>
-      <br/>
+      <br>
       <span><%= t('repositories.checkout.access_permission') %>:</span>
       <strong><%= t("repositories.checkout.access.#{instructions.permission}") %></strong>
     <% end %>

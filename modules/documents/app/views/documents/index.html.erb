@@ -50,7 +50,6 @@ See COPYRIGHT and LICENSE files for more details.
   %>
 <% end %>
 
-
 <% if @grouped.empty? %>
   <%= no_results_box %>
 <% end %>
@@ -73,15 +72,15 @@ See COPYRIGHT and LICENSE files for more details.
         <%= radio_button_tag 'group_by', 'category', (@group_by == 'category'), class: 'submit-this-form' %>
       <label for="group_by_category">
         <%= Document.human_attribute_name(:category) %>
-      </label><br />
+      </label><br>
         <%= radio_button_tag 'group_by', 'date', (@group_by == 'date'), class: 'submit-this-form' %>
       <label for="group_by_date">
         <%= t(:label_date) %>
-      </label><br />
+      </label><br>
         <%= radio_button_tag 'group_by', 'title', (@group_by == 'title'), class: 'submit-this-form' %>
       <label for="group_by_title">
         <%= Document.human_attribute_name(:title) %>
-      </label><br />
+      </label><br>
         <%= radio_button_tag 'group_by', 'author', (@group_by == 'author'), class: 'submit-this-form' %>
       <label for="group_by_author">
         <%= t 'documents.label_attachment_author' %>

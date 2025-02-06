@@ -73,7 +73,6 @@ See COPYRIGHT and LICENSE files for more details.
     component.with_attribute(key: 'Deprecation warning', value:)
   end
 
-
   if (updated_on = OpenProject::VERSION.updated_on).present?
     component.with_attribute(key: t(:label_last_change_on), value: format_time(updated_on))
   end
@@ -104,7 +103,8 @@ end %>
       value = number_to_human_size(entries[:data][:used], precision: 2)
       value += "(#{entries[:data][:percent_used].round(2)})"
       component.with_attribute(key: t(:label_storage_used_space), value:)
-    end %>
+    end
+  %>
 <% end %>
 
 <%= call_hook(:view_admin_info_bottom) %>

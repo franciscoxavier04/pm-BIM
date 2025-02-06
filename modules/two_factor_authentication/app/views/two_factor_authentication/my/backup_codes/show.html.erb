@@ -26,12 +26,11 @@
   </ul>
 </div>
 
-<hr class="hide-when-print"/>
+<hr class="hide-when-print">
 
 <div
   data-controller="two-factor-authentication"
-  data-application-target="dynamic"
->
+  data-application-target="dynamic">
   <%= content_tag :a,
                   id: 'download_2fa_backup_codes',
                   class: "button hide-when-print",
@@ -43,8 +42,7 @@
   <button
     id="print_2fa_backup_codes"
     class="button hide-when-print"
-    data-action="two-factor-authentication#print"
-  >
+    data-action="two-factor-authentication#print">
     <%= op_icon 'button--icon icon-print' %>
     <span class="button--text"><%= t(:button_print) %></span>
   </button>

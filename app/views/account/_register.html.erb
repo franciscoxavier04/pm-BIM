@@ -64,8 +64,8 @@ See COPYRIGHT and LICENSE files for more details.
         <%= call_hook :view_account_register_after_basic_information, f: f %>
         <%= render partial: "customizable/form",
                    locals: { form: f, all_fields: false, only_required: true, wide_labels: true } %>
-        <br/>
-        <br/>
+        <br>
+        <br>
         <% if @user.change_password_allowed? %>
           <div class="form--field -required -wide-label -reduced-margin">
             <%= f.password_field :password,
@@ -85,7 +85,7 @@ See COPYRIGHT and LICENSE files for more details.
         <% end %>
       </section>
       <% if user_consent_required? %>
-        <hr/>
+        <hr>
         <%= render partial: 'account/user_consent_check' %>
       <% end %>
       <%= render partial: 'account/auth_providers', locals: { omniauth_title: I18n.t('account.signup_with_auth_provider'), wide: true } %>

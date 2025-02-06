@@ -57,7 +57,7 @@ See COPYRIGHT and LICENSE files for more details.
             ).html_safe %>
       </p>
       <div class="danger-zone--verification">
-        <input type="text" name="name_verification"/>
+        <input type="text" name="name_verification">
         <%= styled_button_tag '', class: '-primary', disabled: true do
           concat content_tag :i, '', class: 'button--icon icon-delete'
           concat content_tag :span, t(:button_delete), class: 'button--text'

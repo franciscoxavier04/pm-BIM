@@ -33,7 +33,8 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_breadcrumbs([{ href: project_overview_path(@project.id), text: @project.name },
                              { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
                              { href: project_settings_repository_path, text: t(:label_repository) },
-                             t(:label_repository_remove)]) end %>
+                             t(:label_repository_remove)]) end
+%>
 <% if @repository.managed? %>
   <%= styled_form_tag(project_repository_path(@project), method: :delete, class: 'danger-zone') do %>
     <section class="form--section">
@@ -41,9 +42,9 @@ See COPYRIGHT and LICENSE files for more details.
         <%= t('repositories.destroy.title', repository_type: "<em>#{h(@repository.repository_type)} - #{t(:project_module_repository)}</em>").html_safe %>
       </h3>
       <p>
-        <%= t('repositories.destroy.subtitle', repository_type: "#{h(@repository.repository_type)} - #{t(:project_module_repository)}", project_name: h(@project.identifier)).html_safe %> <br />
+        <%= t('repositories.destroy.subtitle', repository_type: "#{h(@repository.repository_type)} - #{t(:project_module_repository)}", project_name: h(@project.identifier)).html_safe %> <br>
         <%= t('repositories.destroy.confirmation') %>
-        <br/>
+        <br>
         <%= t('repositories.destroy.managed_path_note', path: @repository.root_url) %>
       </p>
       <p class="danger-zone--warning">
@@ -54,7 +55,7 @@ See COPYRIGHT and LICENSE files for more details.
         <%= t('repositories.destroy.repository_verification', identifier: "<em class=\"danger-zone--expected-value\">#{h(@project.identifier)}</em>").html_safe %>
       </p>
       <div class="danger-zone--verification">
-        <input type="text"></input>
+        <input type="text"><input>
         <%= styled_button_tag project_repository_path(@project),
           method: :delete,
           title: t(:button_delete),
@@ -74,12 +75,12 @@ See COPYRIGHT and LICENSE files for more details.
 <% else %>
   <div class="op-toast -warning">
     <div class="op-toast--content">
-      <p><strong><%= t('repositories.destroy.title_not_managed', repository_type: "<em>#{h(@repository.repository_type)} - #{t(:project_module_repository)}</em>").html_safe %></strong><br /></p>
+      <p><strong><%= t('repositories.destroy.title_not_managed', repository_type: "<em>#{h(@repository.repository_type)} - #{t(:project_module_repository)}</em>").html_safe %></strong><br></p>
       <p>
         <%= t('repositories.destroy.subtitle_not_managed',
             repository_type: "#{h(@repository.repository_type)} - #{t(:project_module_repository)}",
             project_name: h(@project.identifier),
-            url: h(@repository.url)).html_safe %> <br />
+            url: h(@repository.url)).html_safe %> <br>
       </p>
       <p>
         <span><%= t('repositories.destroy.info_not_managed') %></span>

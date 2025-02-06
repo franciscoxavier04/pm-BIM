@@ -30,7 +30,7 @@ See COPYRIGHT and LICENSE files for more details.
 <div id="participants-section">
   <% if @project %>
     <div class="form--field">
-      <label class="form--label"><%=Meeting.human_attribute_name(:participants) %></label>
+      <label class="form--label"><%= Meeting.human_attribute_name(:participants) %></label>
       <div class="form--field-container">
         <table class="form--matrix">
           <thead>
@@ -44,7 +44,7 @@ See COPYRIGHT and LICENSE files for more details.
           <% @meeting.all_changeable_participants.sort.each do |user| -%>
             <%= hidden_field_tag "meeting[participants_attributes][][user_id]", user.id %>
             <tr class="form--matrix-row">
-              <td class="form--matrix-cell"><%=h user %></td>
+              <td class="form--matrix-cell"><%= h user %></td>
               <% if @meeting.participants.present? && participant = @meeting.participants.detect{|p| p.user_id == user.id} -%>
                 <%= hidden_field_tag "meeting[participants_attributes][][id]", participant.id %>
                 <td class="form--matrix-checkbox-cell">

@@ -4,5 +4,5 @@
   <%= link_to format_version_name(version),
               project_roadmap_path({ anchor: link_to_version_id(version) }.merge(params.permit(:completed,
                                                                                                :with_subprojects,
-                                                                                               type_ids: []).to_h)) %><br />
+                                                                                               type_ids: []).to_h)) %><br>
 <% end %>

@@ -129,7 +129,7 @@ See COPYRIGHT and LICENSE files for more details.
               </td>
               <td id="test"><%= format_time(content_version.created_at) %></td>
               <td><em><%= User.find content_version.user_id %></em></td>
-              <td><%=h content_version.notes %></td>
+              <td><%= h content_version.notes %></td>
           </tr>
         <% end %>
       </tbody>

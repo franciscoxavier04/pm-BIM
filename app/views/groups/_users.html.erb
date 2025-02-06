@@ -49,7 +49,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= styled_form_tag(members_of_group_path(@group), method: :post) do %>
 
         <fieldset class="form--fieldset">
-          <legend class="form--fieldset-legend"><%=t(:label_user_new)%></legend>
+          <legend class="form--fieldset-legend"><%= t(:label_user_new) %></legend>
           <div class="form--field -vertical">
             <%=
               angular_component_tag 'opce-user-autocompleter',

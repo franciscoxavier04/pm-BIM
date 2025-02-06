@@ -38,14 +38,13 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-
 <%= styled_form_tag(admin_settings_general_path, method: :patch) do %>
   <section class="form--section">
     <div class="form--field"><%= setting_text_field :app_title, size: 30, container_class: '-middle' %></div>
     <div class="form--field">
       <%= setting_text_field :per_page_options, size: 20, container_class: '-slim' %>
       <span class="form--field-instructions">
-        <%= t(:text_comma_separated) %><br/>
+        <%= t(:text_comma_separated) %><br>
         <%= t(:text_notice_too_many_values_are_inperformant) %>
       </span>
     </div>

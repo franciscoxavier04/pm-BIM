@@ -12,7 +12,7 @@
 
 <%= labelled_tabular_form_for @announcement,
              :url => {:action => :update},
-             :html => {:method => :put} do |f|%>
+             :html => {:method => :put} do |f| %>
   <div class="form--field">
     <%= f.text_area :text,
                     :cols => 80,

@@ -2,7 +2,8 @@
   flex_layout(data: {
     "application-target": "dynamic",
     controller: "work-packages--export--pdf--settings"
-  }) do |container| %>
+  }) do |container|
+%>
   <%= container.with_row do %>
     <%= render(Primer::Alpha::RadioButtonGroup.new(
       full_width: true,

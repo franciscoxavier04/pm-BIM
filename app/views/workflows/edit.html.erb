@@ -32,7 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= styled_form_tag({}, method: 'get') do %>
   <fieldset class="simple-filters--container">
-    <legend><%=t(:text_workflow_edit)%></legend>
+    <legend><%= t(:text_workflow_edit) %></legend>
     <ul class="simple-filters--filters">
       <li class="simple-filters--filter">
         <%= styled_label_tag :role_id, Role.model_name.human, class: 'simple-filters--filter-name' %>

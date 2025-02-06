@@ -109,7 +109,7 @@ See COPYRIGHT and LICENSE files for more details.
               <div class="generic-table--sort-header-outer">
                 <div class="generic-table--sort-header">
                   <span>
-                    <%=t(:button_sort)%>
+                    <%= t(:button_sort) %>
                   </span>
                 </div>
               </div>
@@ -163,5 +163,5 @@ See COPYRIGHT and LICENSE files for more details.
   </div>
   <%= pagination_links_full @types %>
 <% else %>
-  <%= no_results_box(action_url: new_type_path, display_action: true)%>
+  <%= no_results_box(action_url: new_type_path, display_action: true) %>
 <% end %>

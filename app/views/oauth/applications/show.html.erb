@@ -45,7 +45,7 @@ See COPYRIGHT and LICENSE files for more details.
     ) do %>
       <p>
         <code><%= flash[:_application_secret] %></code>
-        <br/>
+        <br>
         <strong><%= t 'oauth.client_secret_notice' %></strong>
       </p>
     <% end %>
@@ -56,7 +56,7 @@ See COPYRIGHT and LICENSE files for more details.
       key: t('oauth.client_credentials_impersonation_set_to')
     ) do %>
       <%= link_to_user User.find_by(id: user_id) %>
-      <br/>
+      <br>
       <strong><%= t('oauth.client_credentials_impersonation_warning') %></strong>
     <% end %>
   <% end %>

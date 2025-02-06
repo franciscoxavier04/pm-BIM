@@ -17,7 +17,7 @@
                               url: { action: :create } do |f| %>
 
   <fieldset class="form--fieldset">
-    <legend class="form--fieldset-legend"><%= @group.class.human_attribute_name 'auth_source'  %></legend>
+    <legend class="form--fieldset-legend"><%= @group.class.human_attribute_name 'auth_source' %></legend>
 
     <div class="form--field -required">
       <%= f.select :ldap_auth_source_id,
@@ -31,7 +31,7 @@
     </div>
   </fieldset>
   <fieldset class="form--fieldset">
-    <legend class="form--fieldset-legend"><%= @group.class.model_name.human  %></legend>
+    <legend class="form--fieldset-legend"><%= @group.class.model_name.human %></legend>
 
     <div class="form--field -required">
       <%= f.text_field :dn,

@@ -33,9 +33,9 @@
               <%= render(Primer::Beta::Button.new(scheme: :primary,
                                                 type: :submit)) { I18n.t(:button_save) } %>
             <% end %>
-          <% end%>
+          <% end %>
         <% end %>
-      <% else%>
+      <% else %>
         <%= form_flex_container.with_row(flex_layout: true,
                                          justify_content: :flex_end) do |actions_row| %>
           <%= actions_row.with_column(mr: 2) do %>
@@ -46,7 +46,7 @@
                                               type: :submit)) { I18n.t(:button_set_reminder) } %>
           <% end %>
         <% end %>
-      <% end%>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

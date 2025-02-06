@@ -1,7 +1,7 @@
 <fieldset class="form--fieldset">
   <p>
     <%= t 'webhooks.outgoing.form.introduction' %>
-    <br/>
+    <br>
     <%= link_to t('webhooks.outgoing.form.apiv3_doc_url'), OpenProject::Static::Links.links[:api_docs][:href] %>
   </p>
 
@@ -43,7 +43,7 @@
   </div>
 
   <% event_names = @webhook.event_names %>
-  <% OpenProject::Webhooks::EventResources.available_events_map.each do |resource_label, events|  %>
+  <% OpenProject::Webhooks::EventResources.available_events_map.each do |resource_label, events| %>
     <div class="form--field">
       <label class="form--label"><%= resource_label %></label>
       <div class="form--field-container -vertical">
@@ -109,5 +109,3 @@
     });
   }(jQuery));
 <% end %>
-
-

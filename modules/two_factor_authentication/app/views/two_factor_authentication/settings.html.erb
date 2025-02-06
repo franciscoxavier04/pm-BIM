@@ -9,7 +9,6 @@
   end
 %>
 
-
 <section class="admin--edit-section">
   <%= styled_form_tag({ action: :update },
                       method: :post,
@@ -18,7 +17,7 @@
       <legend class="form--fieldset-legend"><%= t('two_factor_authentication.settings.current_configuration') %></legend>
       <p>
         <%= t('two_factor_authentication.settings.text_configuration') %>
-        <br/>
+        <br>
         <% configuration_link = OpenProject::Static::Links.links.fetch :configuration_guide %>
         <%= link_to t('two_factor_authentication.settings.text_configuration_guide'),
                     configuration_link[:href],

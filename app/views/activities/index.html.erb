@@ -39,7 +39,7 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-<%= render(Activities::DaysComponent.new(events: @events, current_project: @project, activity_page: @activity_page))  %>
+<%= render(Activities::DaysComponent.new(events: @events, current_project: @project, activity_page: @activity_page)) %>
 
 <% if @events.empty? %>
   <%= no_results_box %>

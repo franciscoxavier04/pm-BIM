@@ -46,8 +46,7 @@ See COPYRIGHT and LICENSE files for more details.
                                 value: @datepicker_options.fetch(:value) { @input.input_arguments[:value] || builder.object&.send(@input.name) },
                                 inputClassNames: @datepicker_options.fetch(:class) { @input.input_arguments[:class] },
                                 dataAction: @datepicker_options.fetch(:data, {}).fetch(:action, nil)
-                              )
-      %>
+                              ) %>
     <% end %>
   <% end %>
 <% end %>

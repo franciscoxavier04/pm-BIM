@@ -35,7 +35,8 @@ See COPYRIGHT and LICENSE files for more details.
                              { href: project_settings_categories_path(@project.id), text: t(:label_work_package_category_plural) },
                             t(:label_work_package_category_new)
                             ])
-  end %>
+  end
+%>
 
 <%= labelled_tabular_form_for [@project, @category], as: :category  do |f| %>
   <%= render partial: 'categories/form', locals: { f: f } %>

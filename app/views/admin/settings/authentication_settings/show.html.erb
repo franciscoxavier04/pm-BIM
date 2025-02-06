@@ -65,8 +65,7 @@ See COPYRIGHT and LICENSE files for more details.
           .order("lower(display_name) ASC")
           .select(:type, :display_name, :slug)
           .to_a
-          .map { |p| ["#{p.display_name} (#{p.human_type})", p.slug] }
-        %>
+          .map { |p| ["#{p.display_name} (#{p.human_type})", p.slug] } %>
         <%= setting_select :omniauth_direct_login_provider,
                            [[t(:label_disabled), ""]] + providers,
                            container_class: '-middle' %>
@@ -76,7 +75,6 @@ See COPYRIGHT and LICENSE files for more details.
         </span>
       </div>
     </fieldset>
-
 
     <fieldset class="form--fieldset">
       <fieldset id="registration_footer" class="form--fieldset">

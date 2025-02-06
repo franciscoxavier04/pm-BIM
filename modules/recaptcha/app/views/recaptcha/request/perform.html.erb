@@ -5,7 +5,7 @@
   <%= styled_form_tag({ action: :verify }, { :autocomplete => "off", :id => 'submit_captcha' }) do %>
     <% if [OpenProject::Recaptcha::TYPE_V2, OpenProject::Recaptcha::TYPE_HCAPTCHA].include?(recaptcha_settings['recaptcha_type']) %>
       <% input_name = "g-recaptcha-response" %>
-      <input type="hidden" name="<%= input_name %>" />
+      <input type="hidden" name="<%= input_name %>">
       <%= recaptcha_tags(
         nonce: content_security_policy_script_nonce,
         callback: 'submitRecaptchaForm',
@@ -43,7 +43,7 @@
       <% end %>
     <% elsif recaptcha_settings['recaptcha_type'] == ::OpenProject::Recaptcha::TYPE_TURNSTILE %>
       <% input_name = "turnstile-response" %>
-      <input type="hidden" name="<%= input_name %>" />
+      <input type="hidden" name="<%= input_name %>">
       <%= nonced_javascript_include_tag "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" %>
 
       <div id="turnstile-container"></div>

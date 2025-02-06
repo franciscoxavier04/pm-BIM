@@ -50,7 +50,7 @@ See COPYRIGHT and LICENSE files for more details.
           <% available_roles.each do |role| %>
             <%= render partial: 'principals/available_global_role', locals: {role: role} %>
           <% end %>
-          <p><br/><%= styled_button_tag t(:button_add), class: '-with-icon icon-checkmark' %></p>
+          <p><br><%= styled_button_tag t(:button_add), class: '-with-icon icon-checkmark' %></p>
         <% end %>
       </span>
     <% end %>

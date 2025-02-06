@@ -31,7 +31,7 @@ See COPYRIGHT and LICENSE files for more details.
 <%= render Budgets::ShowPageHeaderComponent.new(budget: @budget, project: @project) %>
 
 <div class="<%= @budget.css_classes %> details">
-  <h3><%=h @budget.subject %></h3>
+  <h3><%= h @budget.subject %></h3>
   <p class="author">
     <%= authoring @budget.created_at, @budget.author %>.
     <%= t(:label_updated_time, value: distance_of_time_in_words(Time.now, @budget.updated_at)) + '.' if @budget.created_at != @budget.updated_at %>

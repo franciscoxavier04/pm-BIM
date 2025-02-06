@@ -32,11 +32,11 @@ See COPYRIGHT and LICENSE files for more details.
       <thead>
         <tr>
           <th></th>
-          <th colspan="<%= @statuses.length%>">
+          <th colspan="<%= @statuses.length %>">
             <div class="generic-table--sort-header-outer -no-border">
               <div class="generic-table--sort-header workflow-table--header">
                 <span>
-                  <%=t(:label_new_statuses_allowed)%>
+                  <%= t(:label_new_statuses_allowed) %>
                 </span>
                 <span class="workflow-table--check-all">
                   (<%= check_all_links 'workflow_form_' + name %>)
@@ -54,7 +54,7 @@ See COPYRIGHT and LICENSE files for more details.
                                      class: 'no-decoration-on-hover',
                                      title: "#{t(:label_check_uncheck_all_in_column)}",
                                      alt: "#{t(:label_check_uncheck_all_in_column)}") %>
-                <%=h new_status.name %>
+                <%= h new_status.name %>
               </th>
           <% end %>
         </tr>
@@ -68,7 +68,7 @@ See COPYRIGHT and LICENSE files for more details.
                                    class: 'no-decoration-on-hover',
                                    title: "#{t(:label_check_uncheck_all_in_row)}",
                                    alt: "#{t(:label_check_uncheck_all_in_row)}") %>
-              <%=h old_status.name %>
+              <%= h old_status.name %>
             </td>
             <% for new_status in @statuses -%>
               <td>
@@ -81,7 +81,7 @@ See COPYRIGHT and LICENSE files for more details.
         <tr class="-no-highlighting">
           <td colspan="<%= @statuses.length + 2 %>">
                         <span class="workflow-table--turned-header">
-              <%=t(:label_current_status)%>
+              <%= t(:label_current_status) %>
             </span>
           </td>
         </tr>
