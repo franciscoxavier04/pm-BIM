@@ -148,11 +148,11 @@ module OpenProject
     # You can use this method if you want to render a link and apply a user hover card to it.
     def add_hover_card_options(user, options, only_path: true, clazz_key: :classes)
       if options.delete(:hover_card) { true } && user.is_a?(User)
-        options[clazz_key] = [options[clazz_key], "op-hover-card--preview-trigger"].compact.join(" ")
         options[:data] ||= {}
 
         hover_card_url = hover_card_user_url(user, only_path:)
         options[:data][:hover_card_url] = hover_card_url
+        options[:data][:hover_card_trigger_target] = "trigger"
       end
 
       options

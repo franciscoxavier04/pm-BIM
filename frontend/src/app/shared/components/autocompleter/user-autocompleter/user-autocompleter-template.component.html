@@ -12,7 +12,8 @@
   ></op-principal>
   <span [opSearchHighlight]="search"
         [attr.data-hover-card-url]="getHoverCardUrl(item)"
-        class="op-user-autocompleter--name op-hover-card--preview-trigger">
+        data-hover-card-trigger-target="trigger"
+        class="op-user-autocompleter--name">
       {{ item.name }}
     </span>
   <span

@@ -22,7 +22,7 @@
     >
       <!--Selectable option-->
       <span
-        class="op-hover-card--preview-trigger"
+        data-hover-card-trigger-target="trigger"
         [attr.data-hover-card-url]="getHoverCardUrl(item.principal)"
         [ngOptionHighlight]="search">{{ item.principal.name }}</span>
       <span
