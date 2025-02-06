@@ -28,6 +28,7 @@
 
 import { Injectable, Injector, NgZone } from '@angular/core';
 import { computePosition, flip, limitShift, shift } from '@floating-ui/dom';
+import { sanitizeUrl } from '@braintree/sanitize-url';
 
 @Injectable({ providedIn: 'root' })
 export class HoverCardTriggerService {
@@ -185,8 +186,19 @@ export class HoverCardTriggerService {
     return newOverlay;
   }
 
+  /*
+   * Will fetch the URL from the element's data attribute and sanitize it.
+   * When there is no URL or if the URL is invalid, will return an empty string.
+   */
   private parseHoverCardUrl(el:HTMLElement) {
-    return el.getAttribute('data-hover-card-url');
+    let url = el.getAttribute('data-hover-card-url');
+    if (!url) { return ''; }
+
+    url = sanitizeUrl(url);
+
+    // `sanitizeUrl` will return 'about:blank' for invalid URLs. We will return an empty-string instead since
+    // there's no reason to show an empty hover card.
+    return url === 'about:blank' ? '' : url;
   }
 
   private async reposition(element:HTMLElement, target:HTMLElement) {
