@@ -1,37 +1,43 @@
-//-- copyright
-// OpenProject is an open source project management software.
-// Copyright (C) the OpenProject GmbH
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License version 3.
-//
-// OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
-// Copyright (C) 2006-2013 Jean-Philippe Lang
-// Copyright (C) 2010-2013 the ChiliProject Team
-//
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of the GNU General Public License
-// as published by the Free Software Foundation; either version 2
-// of the License, or (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-//
-// See COPYRIGHT and LICENSE files for more details.
-//++
+/*
+ * -- copyright
+ * OpenProject is an open source project management software.
+ * Copyright (C) the OpenProject GmbH
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3.
+ *
+ * OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+ * Copyright (C) 2006-2013 Jean-Philippe Lang
+ * Copyright (C) 2010-2013 the ChiliProject Team
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * See COPYRIGHT and LICENSE files for more details.
+ * ++
+ */
 
-import { Injectable } from '@angular/core';
-import { computePosition, flip, limitShift, shift } from '@floating-ui/dom';
+import { ApplicationController } from 'stimulus-use';
 import { sanitizeUrl } from '@braintree/sanitize-url';
+import { computePosition, flip, limitShift, shift } from '@floating-ui/dom';
 
-@Injectable({ providedIn: 'root' })
-export class HoverCardTriggerService {
+/**
+ * This controller is responsible for showing a hover card when hovering over a trigger element.
+ * You can define a trigger element by adding the class `op-hover-card--preview-trigger` to it.
+ * To have hover cards available everywhere, add this controller to the body tag.
+ */
+export default class HoverCardTriggerController extends ApplicationController {
   private mouseInModal = false;
   private hoverTimeout:number|null = null;
   private closeTimeout:number|null = null;
@@ -45,6 +51,16 @@ export class HoverCardTriggerService {
   OPEN_DELAY_IN_MS = 1000;
   // The time you need to keep away from trigger/hover card before an opened card is closed
   CLOSE_DELAY_IN_MS = 250;
+
+  connect() {
+    super.connect();
+
+    this.setupListener();
+  }
+
+  disconnect() {
+    super.disconnect();
+  }
 
   setupListener() {
     jQuery(document.body).on('mouseover', '.op-hover-card--preview-trigger', (e) => {

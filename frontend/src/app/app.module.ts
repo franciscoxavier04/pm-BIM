@@ -53,7 +53,6 @@ import { OpenprojectDashboardsModule } from 'core-app/features/dashboards/openpr
 import {
   OpenprojectWorkPackageGraphsModule,
 } from 'core-app/shared/components/work-package-graphs/openproject-work-package-graphs.module';
-import { HoverCardTriggerService } from 'core-app/core/setup/globals/global-listeners/hover-card-trigger.service';
 import { OpenprojectOverviewModule } from 'core-app/features/overview/openproject-overview.module';
 import { OpenprojectMyPageModule } from 'core-app/features/my-page/openproject-my-page.module';
 import { OpenprojectProjectsModule } from 'core-app/features/projects/openproject-projects.module';
@@ -239,7 +238,6 @@ import {
 
 export function initializeServices(injector:Injector) {
   return () => {
-    const PreviewTrigger = injector.get(HoverCardTriggerService);
     const topMenuService = injector.get(TopMenuService);
     const keyboardShortcuts = injector.get(KeyboardShortcutService);
     const contextMenu = injector.get(OPContextMenuService);
@@ -249,13 +247,11 @@ export function initializeServices(injector:Injector) {
     injector.get(RevitAddInSettingsButtonService);
 
     topMenuService.register();
-    PreviewTrigger.setupListener();
     contextMenu.register();
 
     // Re-register on turbo:load
     document.addEventListener('turbo:load', () => {
       topMenuService.register();
-      PreviewTrigger.setupListener();
       contextMenu.register();
       currentProject.detect();
     });

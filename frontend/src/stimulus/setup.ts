@@ -16,6 +16,7 @@ import OpProjectsZenModeController from './controllers/dynamic/projects/zen-mode
 import PasswordConfirmationDialogController from './controllers/password-confirmation-dialog.controller';
 import KeepScrollPositionController from './controllers/keep-scroll-position.controller';
 import PatternInputController from './controllers/pattern-input.controller';
+import HoverCardTriggerController from './controllers/hover-card-trigger.controller';
 
 declare global {
   interface Window {
@@ -41,6 +42,7 @@ instance.register('poll-for-changes', PollForChangesController);
 instance.register('print', PrintController);
 instance.register('refresh-on-form-changes', RefreshOnFormChangesController);
 instance.register('form-preview', FormPreviewController);
+instance.register('hover-card-trigger', HoverCardTriggerController);
 instance.register('show-when-checked', OpShowWhenCheckedController);
 instance.register('show-when-value-selected', OpShowWhenValueSelectedController);
 instance.register('table-highlighting', TableHighlightingController);
