@@ -13,7 +13,7 @@
     end
 
     def row_class
-      @clazz ||= Class.new(OpPrimer::BorderBoxRowComponent) do
+      @row_class ||= Class.new(OpPrimer::BorderBoxRowComponent) do
         def self.name
           "MyRow"
         end
