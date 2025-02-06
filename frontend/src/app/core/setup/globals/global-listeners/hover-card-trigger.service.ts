@@ -26,7 +26,7 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { Injectable, Injector, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { computePosition, flip, limitShift, shift } from '@floating-ui/dom';
 import { sanitizeUrl } from '@braintree/sanitize-url';
 
@@ -45,12 +45,6 @@ export class HoverCardTriggerService {
   OPEN_DELAY_IN_MS = 1000;
   // The time you need to keep away from trigger/hover card before an opened card is closed
   CLOSE_DELAY_IN_MS = 250;
-
-  constructor(
-    readonly ngZone:NgZone,
-    readonly injector:Injector,
-  ) {
-  }
 
   setupListener() {
     jQuery(document.body).on('mouseover', '.op-hover-card--preview-trigger', (e) => {
@@ -150,11 +144,9 @@ export class HoverCardTriggerService {
   }
 
   private closeAfterTimeout() {
-    this.ngZone.runOutsideAngular(() => {
-      this.closeTimeout = window.setTimeout(() => {
-        this.close();
-      }, this.CLOSE_DELAY_IN_MS);
-    });
+    this.closeTimeout = window.setTimeout(() => {
+      this.close();
+    }, this.CLOSE_DELAY_IN_MS);
   }
 
   private close(forceClose=false) {
