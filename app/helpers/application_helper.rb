@@ -290,7 +290,7 @@ module ApplicationHelper
 
   def body_data_attributes(local_assigns)
     {
-      controller: "application",
+      controller: "application hover-card-trigger",
       relative_url_root: root_path,
       overflowing_identifier: ".__overflowing_body",
       rendered_at: Time.zone.now.iso8601,
