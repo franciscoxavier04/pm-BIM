@@ -188,9 +188,5 @@ module Pages::RecurringMeeting
         click_on "more-button"
       end
     end
-
-    # def for_meeting(date:, &)
-    #   within("li", text: date, &)
-    # end
   end
 end
