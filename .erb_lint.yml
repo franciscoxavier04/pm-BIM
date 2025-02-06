@@ -15,6 +15,10 @@ linters:
     rubocop_config:
       inherit_from:
         - .rubocop.yml
+      Layout/FirstArgumentIndentation:
+        EnforcedStyle: consistent
+      Layout/FirstMethodArgumentLineBreak:
+        Enabled: true
       Layout/InitialIndentation:
         Enabled: false
       Layout/LeadingEmptyLines:
