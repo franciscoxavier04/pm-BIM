@@ -61,8 +61,8 @@ See COPYRIGHT and LICENSE files for more details.
         href: news_path(@news),
         mobile_icon: :trash,
         mobile_label: I18n.t("button_delete"),
-        data: { confirm: t(:text_are_you_sure), method: :delete, },
-        aria: { label: I18n.t("button_delete") },
+        data: { confirm: t(:text_are_you_sure), method: :delete },
+        aria: { label: I18n.t("button_delete") }
       ) do |button|
         button.with_leading_visual_icon(icon: :trash)
         I18n.t("button_delete")

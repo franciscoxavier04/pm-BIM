@@ -13,7 +13,7 @@
         turbo_stream: true,
         "test-selector": "async-dialog-content"
       },
-      url: update_project_life_cycles_path(project_id: model.id),
+      url: update_project_life_cycles_path(project_id: model.id)
     ) do |f|
       render(Primer::Forms::SpacingWrapper.new) do
         f.fields_for(:available_life_cycle_steps) do |life_cycle_form|

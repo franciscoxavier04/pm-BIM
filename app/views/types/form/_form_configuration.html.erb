@@ -36,7 +36,7 @@ See COPYRIGHT and LICENSE files for more details.
         <% if EnterpriseToken.show_banners? %>
           <%= angular_component_tag "opce-no-results",
                                     inputs: {
-                                      title: t("text_form_configuration") + t("text_custom_field_hint_activate_per_project"),
+                                      title: t("text_form_configuration") + t("text_custom_field_hint_activate_per_project")
                                     } %>
           <%= angular_component_tag "opce-enterprise-banner",
                                     inputs: {
@@ -44,7 +44,7 @@ See COPYRIGHT and LICENSE files for more details.
                                       opReferrer: "form-configuration",
                                       topMargin: true,
                                       textMessage: t("types.edit.more_info_text_html"),
-                                      moreInfoLink: OpenProject::Static::Links.links[:enterprise_docs][:form_configuration][:href],
+                                      moreInfoLink: OpenProject::Static::Links.links[:enterprise_docs][:form_configuration][:href]
                                     } %>
         <% end %>
       </div>

@@ -9,7 +9,7 @@
       <%= recaptcha_tags(
             nonce: content_security_policy_script_nonce,
             callback: "submitRecaptchaForm",
-            site_key: recaptcha_settings["website_key"],
+            site_key: recaptcha_settings["website_key"]
           ) %>
 
       <%= nonced_javascript_tag do %>

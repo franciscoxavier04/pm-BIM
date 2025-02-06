@@ -54,7 +54,7 @@
             classes: "op-primer--star-icon",
             tag: :a,
             href: helpers.build_favorite_path(query, format: :html),
-            data: { method: :delete, "test-selector": "project-query-unfavorite" },
+            data: { method: :delete, "test-selector": "project-query-unfavorite" }
           )
         else
           header.with_action_icon_button(
@@ -63,7 +63,7 @@
             label: t(:button_favorite),
             tag: :a,
             href: helpers.build_favorite_path(query, format: :html),
-            data: { method: :post, "test-selector": "project-query-favorite" },
+            data: { method: :post, "test-selector": "project-query-favorite" }
           )
         end
       end
@@ -81,7 +81,7 @@
         if can_rename?
           menu.with_item(
             label: t("button_rename"),
-            href: rename_project_query_path(query),
+            href: rename_project_query_path(query)
           ) do |item|
             item.with_leading_visual_icon(icon: :pencil)
           end

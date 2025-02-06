@@ -12,7 +12,7 @@
               action: "input->filter--filter-list#filterLists",
               "filter--filter-list-target": "filter",
               "test-selector": "op-submenu--search-input"
-            },
+            }
           ) %>
 
       <%= render Primer::Beta::Text.new(
@@ -20,7 +20,7 @@
             classes: "op-submenu--search-no-results-container",
             data: {
               "test-selector": "op-submenu--search-no-results",
-              "filter--filter-list-target": "noResultsText",
+              "filter--filter-list-target": "noResultsText"
             }
           ) do
             I18n.t("js.autocompleter.notFoundText")

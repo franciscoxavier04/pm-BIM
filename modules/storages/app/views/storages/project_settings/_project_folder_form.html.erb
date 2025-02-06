@@ -53,7 +53,7 @@ See COPYRIGHT and LICENSE files for more details.
                 self: { href: api_v3_paths.storage(storage.id) },
                 type: { href: API::V3::Storages::URN_STORAGE_TYPE_NEXTCLOUD }
               }
-            },
+            }
           }
         ) %>
   </div>
@@ -71,7 +71,7 @@ See COPYRIGHT and LICENSE files for more details.
     <%= angular_component_tag "opce-static-attribute-help-text",
                               inputs: {
                                 title: t(:"storages.label_project_folder"),
-                                content: t(:"storages.help_texts.project_folder"),
+                                content: t(:"storages.help_texts.project_folder")
                               } %>
   <% end %>
   <% if @project_storage.project_folder_mode_possible?('inactive') %>

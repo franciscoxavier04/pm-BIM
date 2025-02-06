@@ -24,10 +24,10 @@
             href: details_dialog_recurring_meeting_path(@meeting),
             tag: :a,
             content_arguments: {
-              data: { controller: "async-dialog" },
+              data: { controller: "async-dialog" }
             },
             "aria-label": t(:label_recurring_meeting_series_edit),
-            test_selector: "edit-meeting-details-button",
+            test_selector: "edit-meeting-details-button"
           ) do |item|
             item.with_leading_visual_icon(icon: :pencil)
           end
@@ -53,7 +53,7 @@
               href: end_series_dialog_recurring_meeting_path(@meeting),
               tag: :a,
               content_arguments: {
-                data: { controller: "async-dialog" },
+                data: { controller: "async-dialog" }
               }
             ) do |item|
               item.with_leading_visual_icon(icon: :"x-circle")

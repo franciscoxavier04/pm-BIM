@@ -5,7 +5,7 @@
       <div class="form--field-instructions">
         <p><%= t(
                  "settings.antivirus.modes.clamav_socket_html",
-                 example: content_tag(:code, "/var/run/clamav/clamd.ctl"),
+                 example: content_tag(:code, "/var/run/clamav/clamd.ctl")
                ) %>
         </p>
       </div>
@@ -16,7 +16,7 @@
       <div class="form--field-instructions">
         <p><%= t(
                  "settings.antivirus.modes.clamav_host_html",
-                 example: content_tag(:code, "remotehost:1024"),
+                 example: content_tag(:code, "remotehost:1024")
                ) %>
         </p>
       </div>
@@ -27,7 +27,7 @@
       <%= setting_select :antivirus_scan_action,
                          [
                            [t("settings.antivirus.actions.quarantine"), :quarantine],
-                           [t("settings.antivirus.actions.delete"), :delete],
+                           [t("settings.antivirus.actions.delete"), :delete]
                          ],
                          container_class: "-wide" %>
       <div class="form--field-instructions">

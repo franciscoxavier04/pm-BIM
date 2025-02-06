@@ -21,7 +21,7 @@
           update_path: update_title_meeting_path(@meeting),
           cancel_path: cancel_edit_meeting_path(@meeting),
           label: Meeting.human_attribute_name(:title),
-          placeholder: Meeting.human_attribute_name(:title),
+          placeholder: Meeting.human_attribute_name(:title)
         )
         if @meeting.template?
           "#{@meeting.title} (#{I18n.t(:label_template)})"
@@ -42,7 +42,7 @@
           mobile_icon: :check,
           size: :medium,
           data: { "turbo-method": :post },
-          href: template_completed_recurring_meeting_path(@meeting.recurring_meeting),
+          href: template_completed_recurring_meeting_path(@meeting.recurring_meeting)
         ) do |button|
           button.with_leading_visual_icon(icon: :check)
           I18n.t("recurring_meeting.template.button_finalize")
@@ -102,7 +102,7 @@
           tag: :a,
           href: history_meeting_path(@meeting),
           content_arguments: {
-            "data-controller": "async-dialog",
+            "data-controller": "async-dialog"
           },
           value: ""
         ) do |item|

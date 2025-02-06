@@ -46,7 +46,7 @@
             render(
               Saml::Providers::Sections::MetadataFormComponent.new(
                 provider,
-                edit_mode:,
+                edit_mode:
               )
             )
           else
@@ -90,7 +90,7 @@
                 view_mode:,
                 heading: t("saml.providers.label_configuration_details"),
                 description: t("saml.providers.section_texts.configuration"),
-                label: provider.persisted? && !provider.configured? ? t(:label_incomplete) : nil,
+                label: provider.persisted? && !provider.configured? ? t(:label_incomplete) : nil
               )
             )
           end

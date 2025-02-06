@@ -41,7 +41,7 @@ See COPYRIGHT and LICENSE files for more details.
               show_wiki_edits: 1,
               apply: true,
               key: User.current.rss_key,
-              format: "atom",
+              format: "atom"
             ), class: "op-export-options--option-link" do %>
           <%= op_icon("icon-big icon-export-atom") %>
           <span class="op-export-options--option-label"><%= t("export.format.atom") %></span>
@@ -51,7 +51,7 @@ See COPYRIGHT and LICENSE files for more details.
         <%= link_to url_for(
               version: @page.version,
               id: @page,
-              format: "markdown",
+              format: "markdown"
             ), class: "op-export-options--option-link" do %>
           <%= op_icon("icon-big icon-ticket") %>
           <span class="op-export-options--option-label"><%= t("text_formatting.markdown") %></span>

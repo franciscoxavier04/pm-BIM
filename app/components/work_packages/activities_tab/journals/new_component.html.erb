@@ -51,7 +51,7 @@
             action: "submit->work-packages--activities-tab--index#onSubmit",
             test_selector: "op-work-package-journal-form-element"
           },
-          url: work_package_activities_path(work_package_id: work_package.id),
+          url: work_package_activities_path(work_package_id: work_package.id)
         ) do |f|
           flex_layout(justify_content: :space_between, align_items: :flex_end) do |form_container|
             form_container.with_column(

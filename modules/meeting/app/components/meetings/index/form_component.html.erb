@@ -8,7 +8,7 @@
         turbo: true,
         controller: [
           "show-when-value-selected",
-          @meeting.is_a?(RecurringMeeting) ? "recurring-meetings--form" : nil,
+          @meeting.is_a?(RecurringMeeting) ? "recurring-meetings--form" : nil
         ].compact.join(" "),
         "application-target": "dynamic"
       },
@@ -73,7 +73,7 @@
               Primer::Beta::Text.new(
                 id: "recurring-meeting-frequency-schedule",
                 font_size: :small,
-                color: :subtle,
+                color: :subtle
               )
             ) { @meeting.human_frequency_schedule }
           end
@@ -86,7 +86,7 @@
 
               frequency_row.with_column(
                 flex: 1,
-                hidden: @meeting.frequency_working_days?,
+                hidden: @meeting.frequency_working_days?
               ) do
                 flex_layout do |end_after|
                   end_after.with_row(

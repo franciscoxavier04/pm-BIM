@@ -1,7 +1,7 @@
 <%= render(Primer::Beta::Blankslate.new) do |component|
       component.with_visual_icon(icon: blankslate_config[:icon], size: :medium)
       component.with_heading(tag: :h2).with_content(
-        blankslate_config[:heading_text],
+        blankslate_config[:heading_text]
       )
       component.with_description do
         flex_layout do |flex|

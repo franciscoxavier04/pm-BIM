@@ -125,7 +125,7 @@ See COPYRIGHT and LICENSE files for more details.
       <%= render partial: "/budgets/items/budget_override_cost_form",
                  locals: {
                    field_name: "cost_entry[overridden_costs]",
-                   cost_value: unitless_currency_number(@cost_entry.real_costs),
+                   cost_value: unitless_currency_number(@cost_entry.real_costs)
                  } %>
 
       </span>
