@@ -393,7 +393,7 @@ export default class IndexController extends Controller {
     this.tryScroll(activityAnchorName, activityId, 0, maxAttempts);
   }
 
-  private tryScrollToBottom(attempts:number = 0, maxAttempts:number = 20) {
+  private tryScrollToBottom(attempts:number = 0, maxAttempts:number = 20, behavior:ScrollBehavior = 'smooth') {
     const scrollableContainer = this.getScrollableContainer();
 
     if (!scrollableContainer) {
@@ -415,7 +415,7 @@ export default class IndexController extends Controller {
         observer.disconnect();
         scrollableContainer.scrollTo({
           top: scrollableContainer.scrollHeight,
-          behavior: 'smooth',
+          behavior,
         });
       }, 100);
     });
@@ -428,7 +428,7 @@ export default class IndexController extends Controller {
   }
 
   private scrollToBottom() {
-    this.tryScrollToBottom();
+    this.tryScrollToBottom(0, 20, 'auto');
   }
 
   setFilterToOnlyComments() { this.filterValue = 'only_comments'; }
