@@ -74,7 +74,7 @@ See COPYRIGHT and LICENSE files for more details.
           </tr>
         </thead>
         <tbody id="rates_body">
-        <% current_rate = @user.current_default_rate() %>
+        <% current_rate = @user.current_default_rate %>
         <%- @rates_default.each do |rate| -%>
           <tr>
             <td style="padding-right: 1em;"><%= rate.valid_from %></td>

@@ -111,13 +111,15 @@ See COPYRIGHT and LICENSE files for more details.
               <% end %>
             </td>
             <td class="buttons">
-              <%= link_to(
-                    "", role_path(role),
-                    method: :delete,
-                    data: { confirm: t(:text_are_you_sure) },
-                    class: "icon icon-delete",
-                    title: t(:button_delete)
-                  ) unless role.builtin? %>
+              <%= unless role.builtin?
+                    link_to(
+                      "", role_path(role),
+                      method: :delete,
+                      data: { confirm: t(:text_are_you_sure) },
+                      class: "icon icon-delete",
+                      title: t(:button_delete)
+                    )
+                  end %>
             </td>
           </tr>
         <% end %>

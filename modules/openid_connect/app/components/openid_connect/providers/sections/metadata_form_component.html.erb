@@ -20,15 +20,15 @@
       end
 
       flex.with_row do
-        render(Primer::Beta::Text.new(tag: :p, font_weight: :bold)) {
+        render(Primer::Beta::Text.new(tag: :p, font_weight: :bold)) do
           I18n.t("openid_connect.providers.label_metadata")
-        }
+        end
       end
 
       flex.with_row do
-        render(Primer::Beta::Text.new(tag: :p)) {
+        render(Primer::Beta::Text.new(tag: :p)) do
           I18n.t("openid_connect.providers.section_texts.metadata_form_description")
-        }
+        end
       end
 
       flex.with_row do

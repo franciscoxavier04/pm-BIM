@@ -100,12 +100,11 @@ See COPYRIGHT and LICENSE files for more details.
         <tbody id="rates_body" class="subform-container" data-subform-target="table">
           <%= render partial: "rate", object: CostRate.new(valid_from: Date.current), locals: { templated: true } %>
           <% @cost_type.rates.sort do |a, b|
-               case
-               when !a.valid? && !b.valid?
+               if !a.valid? && !b.valid?
                  0
-               when !a.valid?
+               elsif !a.valid?
                  -1
-               when !b.valid?
+               elsif !b.valid?
                  1
                else
                  b.valid_from <=> a.valid_from

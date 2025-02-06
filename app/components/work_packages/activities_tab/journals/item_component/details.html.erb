@@ -19,16 +19,10 @@
           render_details(details_container)
         end
       else
-        if has_details?
-          if journal.notes.present?
-            render_details(details_container)
-          else
-            render_details_header(details_container)
-            render_details(details_container)
-          end
-        else
-          render_details(details_container)
+        if has_details? && !journal.notes.present?
+          render_details_header(details_container)
         end
+        render_details(details_container)
       end
     end
   end

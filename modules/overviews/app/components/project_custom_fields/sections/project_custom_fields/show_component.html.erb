@@ -25,7 +25,7 @@
 
     custom_field_value_container.with_row(w: :full) do
       if not_set?
-        render(Primer::Beta::Text.new()) { t("placeholders.default") }
+        render(Primer::Beta::Text.new) { t("placeholders.default") }
       else
         render_value
       end

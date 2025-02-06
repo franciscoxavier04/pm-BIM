@@ -37,7 +37,7 @@ See COPYRIGHT and LICENSE files for more details.
       <div class="form--field-container">
         <%= styled_radio_button_tag "scm_type",
                                     type,
-                                    scm_types.length == 1 ? true : false,
+                                    scm_types.length == 1,
                                     id: type,
                                     autofocus: true,
                                     data: {

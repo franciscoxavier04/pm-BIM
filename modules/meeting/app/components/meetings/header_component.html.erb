@@ -56,15 +56,17 @@
                             classes: "hide-when-print",
                             test_selector: "op-meetings-header-action-trigger" }
       ) do |menu|
-        menu.with_item(
-          label: t("label_meeting_edit_title"),
-          href: edit_meeting_path(@meeting),
-          content_arguments: {
-            data: { 'turbo-stream': true }
-          }
-        ) do |item|
-          item.with_leading_visual_icon(icon: :pencil)
-        end if @meeting.editable? && !@series
+        if @meeting.editable? && !@series
+          menu.with_item(
+            label: t("label_meeting_edit_title"),
+            href: edit_meeting_path(@meeting),
+            content_arguments: {
+              data: { 'turbo-stream': true }
+            }
+          ) do |item|
+            item.with_leading_visual_icon(icon: :pencil)
+          end
+        end
 
         unless @meeting.template?
           menu.with_item(
@@ -107,17 +109,19 @@
           item.with_leading_visual_icon(icon: :clock) # or :check TBD
         end
 
-        menu.with_item(
-          label: delete_label,
-          scheme: :danger,
-          href: polymorphic_path([:delete_dialog, @project, @meeting.becomes(Meeting)]),
-          tag: :a,
-          content_arguments: {
-            data: { controller: "async-dialog" }
-          }
-        ) do |item|
-          item.with_leading_visual_icon(icon: :trash)
-        end if delete_enabled?
+        if delete_enabled?
+          menu.with_item(
+            label: delete_label,
+            scheme: :danger,
+            href: polymorphic_path([:delete_dialog, @project, @meeting.becomes(Meeting)]),
+            tag: :a,
+            content_arguments: {
+              data: { controller: "async-dialog" }
+            }
+          ) do |item|
+            item.with_leading_visual_icon(icon: :trash)
+          end
+        end
       end
     end
   end
