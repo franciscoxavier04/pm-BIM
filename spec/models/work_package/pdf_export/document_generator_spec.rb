@@ -67,7 +67,8 @@ RSpec.describe WorkPackage::PDFExport::DocumentGenerator do
     describe "with a request for a PDF with hyphenation and no header/footer text" do
       let(:options) do
         {
-          hyphenation: "en_us",
+          hyphenation: "1",
+          hyphenation_language: "en_us",
           header_text_right: "",
           footer_text_center: ""
         }
