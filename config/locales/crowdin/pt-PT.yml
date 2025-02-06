@@ -229,6 +229,7 @@ pt-PT:
             description: Adicione itens a esta lista para criar subitens dentro de outra lista
         delete_dialog:
           title: "Delete custom field item"
+          heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Etiqueta do item"
@@ -472,6 +473,7 @@ pt-PT:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: O token %{type} foi gerado
         warning: Note que esta é a única vez que irá ver este token, certifique-se de que o copia agora.
       errors:

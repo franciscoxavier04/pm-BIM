@@ -231,6 +231,7 @@ fr:
             description: Ajoutez des éléments à cette liste pour créer des sous-éléments dans une autre liste
         delete_dialog:
           title: "Delete custom field item"
+          heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Étiquette de l'élément"
@@ -474,6 +475,7 @@ fr:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: Le jeton %{type} a été généré
         warning: Notez que c'est la seule fois que vous verrez ce jeton, assurez-vous de le copier maintenant.
       errors:

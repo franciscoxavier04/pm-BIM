@@ -231,6 +231,7 @@ ko:
             description: 이 목록에 항목을 추가하여 다른 목록 내에서 하위 항목을 만듭니다
         delete_dialog:
           title: "Delete custom field item"
+          heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "항목 레이블"
@@ -467,6 +468,7 @@ ko:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: '%{type} 토큰이 생성되었습니다.'
         warning: 이번에만 이 토큰이 표시됩니다. 지금 이 토큰을 복사해야 합니다.
       errors:

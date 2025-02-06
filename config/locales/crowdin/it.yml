@@ -228,6 +228,7 @@ it:
             description: Aggiungi elementi a questo elenco per creare sottoelementi all'interno di un altro
         delete_dialog:
           title: "Delete custom field item"
+          heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Etichetta elemento"
@@ -471,6 +472,7 @@ it:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: Il token %{type} è stato generato
         warning: 'Nota: Questa è l''unica volta in cui vedrai questo token, assicurati di copiarlo subito.'
       errors:

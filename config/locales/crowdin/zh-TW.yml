@@ -230,6 +230,7 @@ zh-TW:
             description: 將項目加入此清單以在另一個清單中建立子項目
         delete_dialog:
           title: "刪除自訂欄位"
+          heading: "Delete custom field item?"
           description: "此動作將不可逆轉地移除項目及其所有子項目。任何指定的值都會被永久刪除。如果此欄位是必填欄位，移除項目可能會導致現有工作套件失效。"
         placeholder:
           label: "項目標籤"
@@ -466,6 +467,7 @@ zh-TW:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: '%{type} 權杖已生成'
         warning: '注意: 這是您唯一可以看到此權杖的時候, 請務必立即複製它。'
       errors:
@@ -2148,7 +2150,7 @@ zh-TW:
   label_add_subtask: "新增子任務"
   label_added: "已新增"
   label_added_by: "由 %{author} 新增"
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "由 %{author} 於%{date} 新增"
   label_added_time_by: "由%{author}於%{age}前新增"
   label_additional_workflow_transitions_for_assignee: "使用者是執行者時，可用狀態"
   label_additional_workflow_transitions_for_author: "使用者是作者，可用狀態"

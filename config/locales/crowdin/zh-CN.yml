@@ -228,6 +228,7 @@ zh-CN:
             description: 在此列表中添加条目，以便在另一个列表中创建子条目
         delete_dialog:
           title: "删除自定义字段项"
+          heading: "Delete custom field item?"
           description: "此操作将不可逆转地删除该项及其所有子项。任何分配的值都将被永久删除。 如果需要此字段，删除项目可能会导致现有工作包无效。"
         placeholder:
           label: "项目标签"
@@ -464,6 +465,7 @@ zh-CN:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: '%{type} 令牌已生成'
         warning: '注意: 这将是您看到这个令牌的唯一机会, 请务必立即复制它。'
       errors:

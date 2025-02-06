@@ -226,6 +226,7 @@ uk:
             description: Додайте елементи до цього списку, щоб створити піделементи всередині іншого
         delete_dialog:
           title: "Delete custom field item"
+          heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Мітка елемента"
@@ -483,6 +484,7 @@ uk:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: Маркер %{type} згенеровано
         warning: Зверніть увагу, що ви більше не побачите цей маркер, тому обов’язково скопіюйте його зараз.
       errors:

@@ -209,12 +209,19 @@ zh-CN:
         heading: "删除此会议事件？"
         confirmation_message_html: >
           该会议是名为 <strong>%{title}</strong> 的会议系列的一部分。这只会删除该会议，而不会删除整个会议系列。要继续吗？
+    blankslate:
+      title: "No meetings to display"
+      desc: "There are no meetings that meet the active filter criteria."
   meeting_section:
     untitled_title: "无标题章节"
     delete_confirmation: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
     placeholder_title: "新建章节"
     empty_text: "拖动项目到此处或创建一个新项目"
   recurring_meeting:
+    ended_blankslate:
+      title: "Meeting series ended"
+      message: "This meeting series has come to an end. There are no upcoming meetings. "
+      action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
       infoline: "本次会议是定期会议系列的一部分。"
       error_no_next: "此会议没有下一个发生时间。"
@@ -249,6 +256,7 @@ zh-CN:
       weekly_interval: "每 %{interval} 周在 %{weekday}"
       frequency: "%{base} 在 %{time}"
       full: "%{base} 在 %{time}，在 %{end_date} 结束"
+      full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} 在 %{time}"
     open:
       title: "Open"

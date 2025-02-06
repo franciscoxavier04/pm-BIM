@@ -209,12 +209,19 @@ ko:
         heading: "Delete this meeting occurrence?"
         confirmation_message_html: >
           This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+    blankslate:
+      title: "No meetings to display"
+      desc: "There are no meetings that meet the active filter criteria."
   meeting_section:
     untitled_title: "제목 없는 섹션"
     delete_confirmation: "이 섹션을 삭제하면 모든 의제 항목도 삭제됩니다. 계속하시겠습니까?"
     placeholder_title: "새 섹션"
     empty_text: "항목을 여기에 끌어오거나 새로 만들기"
   recurring_meeting:
+    ended_blankslate:
+      title: "Meeting series ended"
+      message: "This meeting series has come to an end. There are no upcoming meetings. "
+      action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
       infoline: "이 미팅은 반복 미팅 시리즈의 일부입니다."
       error_no_next: "이 미팅의 다음 항목이 없습니다."
@@ -249,6 +256,7 @@ ko:
       weekly_interval: "%{interval}주마다 %{weekday}"
       frequency: "%{base}, %{time}"
       full: "%{base}, %{time}, %{end_date}에 종료"
+      full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
       title: "Open"

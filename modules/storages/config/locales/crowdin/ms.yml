@@ -74,6 +74,7 @@ ms:
         confirmation_text: Sila sahkan bahawa anda faham dan ingin memadam storan fail ini daripada projek ini
         heading_text: Alih keluar projek daripada %{storage}
         text: Aksi ini tidak dapat dipulihkan dan akan padamkan semua pautan daripada pakej kerja projek ini ke fail dan folder storan itu.
+        title: Remove project from storage
       label: Keluarkan projek
   services:
     attributes:

@@ -211,12 +211,19 @@ pt-PT:
         heading: "Delete this meeting occurrence?"
         confirmation_message_html: >
           This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+    blankslate:
+      title: "No meetings to display"
+      desc: "There are no meetings that meet the active filter criteria."
   meeting_section:
     untitled_title: "Secção sem título"
     delete_confirmation: "A eliminação da secção também irá eliminar os seus pontos da ordem de trabalhos. Tem a certeza de que pretende fazê-lo?"
     placeholder_title: "Nova secção"
     empty_text: "Arraste itens para aqui ou crie um novo"
   recurring_meeting:
+    ended_blankslate:
+      title: "Meeting series ended"
+      message: "This meeting series has come to an end. There are no upcoming meetings. "
+      action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
       infoline: "Esta reunião faz parte de uma série de reuniões recorrentes."
       error_no_next: "Esta reunião não tem data prevista para a sua próxima ocorrência."
@@ -251,6 +258,7 @@ pt-PT:
       weekly_interval: "A cada %{interval} semanas à/ao %{weekday}"
       frequency: "%{base} às %{time}"
       full: "%{base} às %{time}, termina a %{end_date}"
+      full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
       title: "Open"

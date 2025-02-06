@@ -230,7 +230,8 @@ cs:
             title: Tato položka nemá žádnou úroveň hierarchie níže
             description: Přidat položky do tohoto seznamu k vytvoření podpoložek uvnitř jiného
         delete_dialog:
-          title: "Delete custom field item"
+          title: "Odstranění položku vlastního pole"
+          heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Štítek položky"
@@ -259,7 +260,7 @@ cs:
       is_for_all: "Označit vlastní pole jako dostupné ve všech existujících a nových projektech."
       multi_select: "Umožňuje uživateli přiřadit tomuto vlastnímu poli více hodnot."
       searchable: "Zahrnout hodnoty polí při použití globální funkce vyhledávání."
-      searchable_for_project: "Check to make this attribute available as a filter in project lists."
+      searchable_for_project: "Zaškrtněte pro zpřístupnění tohoto atributu jako filtru v seznamech projektů."
       editable: "Umožnit editaci pole samotnými uživateli."
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
@@ -488,6 +489,7 @@ cs:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: '%{type} token byl vygenerován'
         warning: Note that this is the only time you will see this token, make sure to copy it now.
       errors:
@@ -739,7 +741,7 @@ cs:
       duplicated_description: "Související pracovní balíček je kopií tohoto"
       label_includes_singular: "zahrnuje"
       label_includes_plural: "zahrnuje"
-      includes_description: "Marks the related work package as including this one with no additional effect"
+      includes_description: "označí související pracovní balíček jako zahrnující tento balíček bez dalšího účinku."
       label_partof_singular: "část"
       label_partof_plural: "část"
       label_part_of_singular: "část"
@@ -754,8 +756,8 @@ cs:
       required_description: "Označí tento pracovní balíček jako nevyhnutnost na související"
       label_parent_singular: "nadřazený"
       label_parent_plural: "nadřazený"
-      ghost_relation_title: "Related work package"
-      ghost_relation_description: "This is not visible to you due to permissions."
+      ghost_relation_title: "Související pracovní balíček"
+      ghost_relation_description: "Toto není viditelné z důvodu oprávnění."
   label_invitation: Pozvánka
   account:
     delete: "Odstranit účet"
@@ -1619,7 +1621,7 @@ cs:
   button_create_and_continue: "Vytvořit a pokračovat"
   button_decline: "Zamítnout"
   button_delete: "Odstranit"
-  button_delete_permanently: "Delete permanently"
+  button_delete_permanently: "Trvale odstranit"
   button_delete_watcher: "Odstranit sledujícího %{name}"
   button_download: "Stáhnout"
   button_duplicate: "Kopie"
@@ -2016,7 +2018,7 @@ cs:
           caption: "Vyloučit obrázky pro zmenšení velikosti exportu PDF."
         gantt_zoom_levels:
           label: "Úrovně přiblížení"
-          caption: "Select what is the zoom level for dates displayed in the chart."
+          caption: "Vyberte úroveň přiblížení pro data zobrazená v grafu."
           options:
             days: "Dny"
             weeks: "Týdny"
@@ -2031,7 +2033,7 @@ cs:
             very_wide: "Velmi široký"
         paper_size:
           label: "Velikost papíru"
-          caption: "Depending on the chart size more than one page might be exported."
+          caption: "V závislosti na velikosti grafu může být exportováno více než jedna stránka."
         long_text_fields:
           input_caption: "Ve výchozím nastavení jsou vybrána všechna dlouhá textová pole."
           input_label: "Přidat dlouhá textová pole"
@@ -2079,7 +2081,7 @@ cs:
         caption: Text, který se zobrazí uprostřed zápatí
       hyphenation:
         label: Dělení slov
-        caption: Break words between lines to improve text justification and readability.
+        caption: Zlomte slova mezi řádky, abyste zlepšili odůvodnění textu a jeho čitelnost.
       paper_size:
         label: Velikost papíru
         caption: Velikost papíru, který se má použít pro PDF.
@@ -2264,7 +2266,7 @@ cs:
   label_add_subtask: "Přidat podúkol"
   label_added: "přidáno"
   label_added_by: "Přidáno %{author}"
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "Přidáno %{author} na %{date}"
   label_added_time_by: "Přidáno %{author} před %{age}"
   label_additional_workflow_transitions_for_assignee: "Povolené dodatečné přechody, pokud je uživatel přiřazený"
   label_additional_workflow_transitions_for_author: "Povolené dodatečné přechody, pokud je uživatel autor"
@@ -2949,11 +2951,11 @@ cs:
       created_at: "Vytvořeno v %{timestamp} uživatelem %{user} "
       login_to_see_all: "Přihlaste se pro zobrazení všech oznámení."
       mentioned: "Byli jste <b>zmíněni v komentáři</b>"
-      mentioned_by: "%{user} vás zmínil v komentáři"
+      mentioned_by: "%{user} vás zmínil v komentáři OpenProject"
       more_to_see:
-        one: "Existuje ještě 1 pracovní balíček s oznámeními."
+        one: "Máte ještě 1 pracovní balíček s notifikací."
         few: "Existuje ještě  %{count}  pracovních balíčků s oznámeními."
-        many: "Existuje ještě  %{count}  pracovních balíčků s oznámeními."
+        many: "Máte ještě  %{count}  pracovních balíčků s notifikacemi."
         other: "Existuje ještě  %{count}  pracovních balíčků s oznámeními."
       open_in_browser: "Otevřít v prohlížeči"
       reason:
@@ -3181,7 +3183,7 @@ cs:
     text_getting_started_description: "Získejte rychlý přehled o řízení projektu a spolupráci týmu s OpenProject. Toto video můžete restartovat z nabídky nápovědy."
     welcome: "Vítejte v %{app_title}"
     select_language: "Vyberte prosím svůj jazyk"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_notes: "Přidat komentáře"
   permission_add_work_packages: "Přidat pracovní balíčky"
   permission_add_messages: "Odesílat zprávy"
   permission_add_project: "Vytvořit projekty"
@@ -3211,11 +3213,11 @@ cs:
   permission_delete_timelines: "Odstranit časové osy"
   permission_delete_wiki_pages: "Odstranit wiki stránky"
   permission_delete_wiki_pages_attachments: "Odstranit přílohy"
-  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes: "Moderovat komentáře"
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Upravit pracovní balíčky"
   permission_edit_messages: "Upravit zprávy"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_work_package_notes: "Upravit vlastní komentáře"
   permission_edit_own_messages: "Upravit vlastní zprávy"
   permission_edit_own_time_entries: "Upravit vlastní časové záznamy"
   permission_edit_project: "Upravit projekt"
@@ -3527,7 +3529,7 @@ cs:
   setting_work_package_done_ratio: "Režim výpočtu průběhu"
   setting_work_package_done_ratio_field: "Na základě práce"
   setting_work_package_done_ratio_field_caption_html: >-
-    <i>% Complete</i> can be freely set to any value. If you optionally enter a value for <i>Work</i>, <i>Remaining work</i> will automatically be derived.
+    Upravit vlastní komentáře
   setting_work_package_done_ratio_status: "Na základě stavu"
   setting_work_package_done_ratio_status_caption_html: >-
     Každý stav má přiřazenou hodnotu <i>% kompletní</i> . Změna stavu změní <i>% Dokončeno</i>.
@@ -3804,7 +3806,7 @@ cs:
   text_notice_security_badge_displayed_html: >
     Poznámka: Pokud je povoleno, bude zobrazen odznak se stavem instalace v <a href="%{information_panel_path}">%{information_panel_label}</a> administrativním panelu, a na domovské stránce. Zobrazuje se pouze administrátorům. <br/> Odznak zkontroluje vaši aktuální verzi OpenProject proti oficiální databázi OpenProject release, aby vás upozornil na jakékoliv aktualizace nebo známá slabá místa. Pro více informací o tom, co kontrola stanoví, jaké údaje jsou potřebné k poskytnutí dostupných aktualizací, a jak tuto kontrolu zakázat, navštivte <a href="%{more_info_url}">konfigurační dokumentaci</a>.
   text_own_membership_delete_confirmation: "Chystáte se odebrat si některá nebo všechna svá oprávnění, potom již nemusíte být schopni upravit tento projekt.\nOpravdu chcete pokračovat?"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "Beru na vědomí, že toto vymazání nelze vzít zpět."
   text_plugin_assets_writable: "Zapisovatelný adresář aktiv pluginu"
   text_powered_by: "Běží na %{link}"
   text_project_identifier_info: "Jsou povolena pouze malá písmena (a-z), číslice, pomlčky a podtržítka. Musí začínat malým písmenem."
@@ -3956,9 +3958,9 @@ cs:
     progress:
       label_note: "Poznámka:"
       modal:
-        work_based_help_text: "Each field is automatically calculated from the two others when possible."
+        work_based_help_text: "Každé pole se automaticky vypočítá ze dvou ostatních, pokud je to možné."
         status_based_help_text: "% Dokončeno je nastaveno podle stavu pracovního balíčku."
-        migration_warning_text: "In work-based progress calculation mode, % Complete cannot be manually set and is tied to Work. The existing value has been kept but cannot be edited. Please input Work first."
+        migration_warning_text: "V režimu výpočtu postupu založeného na práci nelze % dokončeno nastavit ručně a je vázáno na práci. Stávající hodnota byla zachována, ale nelze ji upravovat. Zadejte prosím nejprve položku Práce."
       derivation_hints:
         done_ratio:
           cleared_because_remaining_work_is_empty: "Vymazáno, protože zbývající práce je prázdná."

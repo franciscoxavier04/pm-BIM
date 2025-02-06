@@ -13,7 +13,7 @@ def parse_markdown(content)
   anchors = []
   links = []
   document.walk do |node|
-    if node.type == :link || node.type == :image
+    if %i[link image].include?(node.type)
       links.push({ url: node.url, pos: node.source_position, type: node.type })
     elsif node.type == :header
       text = node.to_plaintext.delete("\n").tr(" ", " ")
@@ -144,6 +144,7 @@ class DocsChecker
       { path: "#{@root_path}/docs/api/v3/spec.yml", anchors: [], links: [] },
       { path: "#{@root_path}/docs/installation-and-operations/installation/docker-compose", anchors: [], links: [] },
       { path: "#{@root_path}/docs/installation-and-operations/installation/helm-chart", anchors: [], links: [] },
+      { path: "#{@root_path}/docs/development/security", anchors: [], links: [] },
       { path: "#{@root_path}/docs/development/translate-openproject/fair-language", anchors: [], links: [] }
     )
   end

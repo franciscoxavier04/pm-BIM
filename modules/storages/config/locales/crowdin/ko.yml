@@ -74,6 +74,7 @@ ko:
         confirmation_text: 해당 사항을 이해하며 이 프로젝트에서 이 파일 저장소를 제거할 것인지 확인해 주세요
         heading_text: '%{storage}에서 프로젝트 제거'
         text: 이 작업은 되돌릴 수 없으며 이 프로젝트의 작업 패키지에서 해당 저장소의 파일 및 폴더에 대한 모든 링크를 제거합니다.
+        title: Remove project from storage
       label: 프로젝트 제거
   services:
     attributes:

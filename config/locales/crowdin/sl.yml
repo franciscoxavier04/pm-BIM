@@ -230,6 +230,7 @@ sl:
             description: Add items to this list to create sub-items inside another one
         delete_dialog:
           title: "Delete custom field item"
+          heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
@@ -487,6 +488,7 @@ sl:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: The %{type} token has been generated
         warning: Note that this is the only time you will see this token, make sure to copy it now.
       errors:
