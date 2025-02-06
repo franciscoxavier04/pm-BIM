@@ -140,7 +140,7 @@ export default class HoverCardTriggerController extends ApplicationController {
     });
   }
 
-  // Should be called when the mouse leaves the hover-zone so that we no longer attempt ot display the hover card.
+  // Should be called when the mouse leaves the hover-zone so that we no longer attempt to display the hover card.
   private clearHoverTimer() {
     if (this.hoverTimeout) {
       clearTimeout(this.hoverTimeout);
