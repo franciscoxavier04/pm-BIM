@@ -160,11 +160,13 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def destroy
-    if @recurring_meeting.destroy
-      flash[:notice] = I18n.t(:notice_successful_delete)
-    else
-      flash[:error] = I18n.t(:error_failed_to_delete_entry)
-    end
+    # rubocop:disable Rails/ActionControllerFlashBeforeRender
+    RecurringMeetings::DeleteService
+      .new(model: @recurring_meeting, user: User.current)
+      .call
+      .on_success { flash[:notice] = I18n.t(:notice_successful_delete) }
+      .on_failure { flash[:error] = I18n.t(:error_failed_to_delete_entry) }
+    # rubocop:enable Rails/ActionControllerFlashBeforeRender
 
     respond_to do |format|
       format.html do
