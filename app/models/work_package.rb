@@ -82,6 +82,8 @@ class WorkPackage < ApplicationRecord
 
   scope :visible, ->(user = User.current) { allowed_to(user, :view_work_packages) }
 
+  scope :not_visible, ->(user = User.current) { self.and(visible.invert_where) }
+
   scope :in_status, ->(*args) do
     where(status_id: (args.first.respond_to?(:id) ? args.first.id : args.first))
   end
