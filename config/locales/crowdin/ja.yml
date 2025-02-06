@@ -229,6 +229,7 @@ ja:
             description: Add items to this list to create sub-items inside another one
         delete_dialog:
           title: "Delete custom field item"
+          heading: "Delete custom field item?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
@@ -465,6 +466,7 @@ ja:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: '%{type} トークンが生成されました'
         warning: このトークンが表示されるのは今回だけなので、必ずコピーしてください。
       errors:

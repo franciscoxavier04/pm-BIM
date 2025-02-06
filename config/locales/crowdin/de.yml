@@ -228,6 +228,7 @@ de:
             description: Füge Elemente zu dieser Liste hinzu, um Unterelemente innerhalb eines anderen zu erstellen
         delete_dialog:
           title: "Benutzerdefiniertes Feldelement löschen"
+          heading: "Delete custom field item?"
           description: "Mit dieser Aktion werden das Element und alle seine Unterelemente unwiderruflich entfernt. Alle zugewiesenen Werte werden endgültig gelöscht. Wenn dieses Feld erforderlich ist, kann das Entfernen von Elementen dazu führen, dass bestehende Arbeitspakete ungültig werden."
         placeholder:
           label: "Elementbezeichnung"
@@ -471,6 +472,7 @@ de:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: Das %{type}-Token wurde generiert
         warning: 'Hinweis: Dieser Token ist nur einmal sichtbar, der Token kann jetzt kopiert werden.'
       errors:

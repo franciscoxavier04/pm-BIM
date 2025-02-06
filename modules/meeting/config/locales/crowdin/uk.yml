@@ -215,12 +215,19 @@ uk:
         heading: "Delete this meeting occurrence?"
         confirmation_message_html: >
           This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+    blankslate:
+      title: "No meetings to display"
+      desc: "There are no meetings that meet the active filter criteria."
   meeting_section:
     untitled_title: "Розділ без назви"
     delete_confirmation: "Видалення цього розділу також призведе до видалення його елементів порядку денного. Ви впевнені?"
     placeholder_title: "Новий розділ"
     empty_text: "Перетягніть елементи сюди або створіть новий"
   recurring_meeting:
+    ended_blankslate:
+      title: "Meeting series ended"
+      message: "This meeting series has come to an end. There are no upcoming meetings. "
+      action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
       infoline: "Ця нарада належить до серії повторюваних нарад."
       error_no_next: "Це одноразова нарада."
@@ -255,6 +262,7 @@ uk:
       weekly_interval: "Через %{interval} тижн. у %{weekday}"
       frequency: "%{base} о %{time}"
       full: "%{base} о %{time}, закінчується %{end_date}"
+      full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
       title: "Open"

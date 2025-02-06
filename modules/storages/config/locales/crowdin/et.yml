@@ -74,6 +74,7 @@ et:
         confirmation_text: Please, confirm you understand and want to remove this file storage from this project
         heading_text: Remove project from %{storage}
         text: This action is irreversible and will remove all links from work packages of this project to files and folders of that storage.
+        title: Remove project from storage
       label: Remove project
   services:
     attributes:

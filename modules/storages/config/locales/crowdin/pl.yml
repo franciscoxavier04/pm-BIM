@@ -74,6 +74,7 @@ pl:
         confirmation_text: Potwierdź, że rozumiesz i chcesz usunąć ten magazyn plików z tego projektu.
         heading_text: Usuń projekt z %{storage}
         text: To działanie jest nieodwracalne i spowoduje usunięcie wszystkich linków do plików i folderów tego magazynu z pakietów roboczych tego projektu.
+        title: Remove project from storage
       label: Usuń projekt
   services:
     attributes:

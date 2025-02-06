@@ -228,6 +228,7 @@ nl:
             description: Voeg items aan deze lijst toe om sub-items binnen een andere lijst te maken
         delete_dialog:
           title: "Aangepast veld verwijderen"
+          heading: "Delete custom field item?"
           description: "Deze actie zal het item en al zijn sub-items onherroepelijk verwijderen. Alle toegekende waarden worden permanent verwijderd. Als dit veld vereist is, kan het verwijderen van items ertoe leiden dat bestaande werkpakketten ongeldig worden."
         placeholder:
           label: "Item label"
@@ -471,6 +472,7 @@ nl:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: The %{type} token has been generated
         warning: Note that this is the only time you will see this token, make sure to copy it now.
       errors:

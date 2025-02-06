@@ -215,12 +215,19 @@ lt:
         heading: "Delete this meeting occurrence?"
         confirmation_message_html: >
           This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+    blankslate:
+      title: "No meetings to display"
+      desc: "There are no meetings that meet the active filter criteria."
   meeting_section:
     untitled_title: "Bevardė skiltis"
     delete_confirmation: "Ištrynus skiltį taipogi bus ištrinti ir visi jos plano elementai. Ar tikrai norite tai padaryti?"
     placeholder_title: "Nauja skiltis"
     empty_text: "Tempkite elementus čia arba sukurtkite naują"
   recurring_meeting:
+    ended_blankslate:
+      title: "Meeting series ended"
+      message: "This meeting series has come to an end. There are no upcoming meetings. "
+      action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
       infoline: "This meeting is part of a recurring meeting series."
       error_no_next: "There is no next occurrence for this meeting."
@@ -255,6 +262,7 @@ lt:
       weekly_interval: "Every %{interval} weeks on %{weekday}"
       frequency: "%{base} at %{time}"
       full: "%{base} at %{time}, ends on %{end_date}"
+      full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
       title: "Open"
