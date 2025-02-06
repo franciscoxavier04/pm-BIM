@@ -34,10 +34,13 @@ import { computePosition, flip, limitShift, shift } from '@floating-ui/dom';
 
 /**
  * This controller is responsible for showing a hover card when hovering over a trigger element.
- * You can define a trigger element by adding the class `op-hover-card--preview-trigger` to it.
+ *
+ * You can define a trigger element by adding the `data-hover-card-trigger-target="trigger"` to it.
  * To have hover cards available everywhere, add this controller to the body tag.
  */
 export default class HoverCardTriggerController extends ApplicationController {
+  static targets = ['trigger', 'card'];
+
   private mouseInModal = false;
   private hoverTimeout:number|null = null;
   private closeTimeout:number|null = null;
@@ -52,60 +55,82 @@ export default class HoverCardTriggerController extends ApplicationController {
   // The time you need to keep away from trigger/hover card before an opened card is closed
   CLOSE_DELAY_IN_MS = 250;
 
-  connect() {
-    super.connect();
+  private boundTriggerMouseOver:EventListenerOrEventListenerObject;
+  private boundTriggerMouseLeave:EventListenerOrEventListenerObject;
 
-    this.setupListener();
+  private boundCardMouseLeave:EventListenerOrEventListenerObject;
+  private boundCardMouseEnter:EventListenerOrEventListenerObject;
+
+  initialize() {
+    super.initialize();
+
+    this.boundTriggerMouseOver = this.onMouseOver.bind(this);
+    this.boundTriggerMouseLeave = this.onMouseLeave.bind(this);
+
+    this.boundCardMouseLeave = this.onMouseLeave.bind(this);
+    this.boundCardMouseEnter = this.onMouseEnter.bind(this);
   }
 
-  setupListener() {
-    jQuery(this.element).on('mouseover', '.op-hover-card--preview-trigger', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+  private triggerTargetConnected(trigger:Element) {
+    trigger.addEventListener('mouseover', this.boundTriggerMouseOver);
+    trigger.addEventListener('mouseleave', this.boundTriggerMouseLeave);
+  }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const el = e.target as HTMLElement;
-      if (!el) { return; }
+  private triggerTargetDisconnected(trigger:Element) {
+    trigger.removeEventListener('mouseover', this.boundTriggerMouseOver);
+    trigger.removeEventListener('mouseleave', this.boundTriggerMouseLeave);
+  }
 
-      if (this.previousTarget && this.previousTarget === el) {
-        // Re-entering the trigger counts as hovering over the card:
-        this.mouseInModal = true;
-        // But we will not re-render the same card, abort here
-        return;
-      }
+  private cardTargetConnected(card:Element) {
+    card.addEventListener('mouseleave', this.boundCardMouseLeave);
+    card.addEventListener('mouseenter', this.boundCardMouseEnter);
+  }
 
-      // Hovering over a new target. Close the old one (if any).
-      this.close(true);
+  private cardTargetDisconnected(card:Element) {
+    card.removeEventListener('mouseleave', this.boundCardMouseLeave);
+    card.removeEventListener('mouseenter', this.boundCardMouseEnter);
+  }
 
-      const turboFrameUrl = this.parseHoverCardUrl(el);
-      if (!turboFrameUrl) { return; }
+  private onMouseLeave() {
+    this.clearHoverTimer();
+    this.mouseInModal = false;
+    this.closeAfterTimeout();
+  }
 
-      // Reset close timer for when hovering over multiple triggers in quick succession.
-      // A timer from a previous hover card might still be running. We do not want it to
-      // close the new (i.e. this) hover card.
-      this.clearCloseTimer();
+  private onMouseEnter() {
+    this.mouseInModal = true;
+  }
 
-      // Set a delay before showing the hover card
-      this.hoverTimeout = window.setTimeout(() => {
-        this.showHoverCard(el, turboFrameUrl);
-      }, this.OPEN_DELAY_IN_MS);
-    });
+  private onMouseOver(e:MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
 
-    jQuery(this.element).on('mouseleave', '.op-hover-card--preview-trigger', () => {
-      this.clearHoverTimer();
-      this.mouseInModal = false;
-      this.closeAfterTimeout();
-    });
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const el = e.target as HTMLElement;
+    if (!el) { return; }
 
-    jQuery(this.element).on('mouseleave', '.op-hover-card', () => {
-      this.clearHoverTimer();
-      this.mouseInModal = false;
-      this.closeAfterTimeout();
-    });
-
-    jQuery(this.element).on('mouseenter', '.op-hover-card', () => {
+    if (this.previousTarget && this.previousTarget === el) {
+      // Re-entering the trigger counts as hovering over the card:
       this.mouseInModal = true;
-    });
+      // But we will not re-render the same card, abort here
+      return;
+    }
+
+    // Hovering over a new target. Close the old one (if any).
+    this.close(true);
+
+    const turboFrameUrl = this.parseHoverCardUrl(el);
+    if (!turboFrameUrl) { return; }
+
+    // Reset close timer for when hovering over multiple triggers in quick succession.
+    // A timer from a previous hover card might still be running. We do not want it to
+    // close the new (i.e. this) hover card.
+    this.clearCloseTimer();
+
+    // Set a delay before showing the hover card
+    this.hoverTimeout = window.setTimeout(() => {
+      this.showHoverCard(el, turboFrameUrl);
+    }, this.OPEN_DELAY_IN_MS);
   }
 
   private showHoverCard(el:HTMLElement, turboFrameUrl:string) {
@@ -229,6 +254,7 @@ export default class HoverCardTriggerController extends ApplicationController {
     const popover = document.createElement('div');
     popover.className = 'op-hover-card';
     popover.setAttribute('popover', 'auto');
+    popover.setAttribute('data-hover-card-trigger-target', 'card');
 
     const turboFrame = document.createElement('turbo-frame');
     turboFrame.id = 'op-hover-card-body';

@@ -268,7 +268,7 @@ export class PrincipalRendererService {
       }
     }
 
-    element.classList.add('op-hover-card--preview-trigger');
+    element.setAttribute('data-hover-card-trigger-target', 'trigger');
     element.setAttribute('data-hover-card-url', hoverCard.url);
   }
 }
