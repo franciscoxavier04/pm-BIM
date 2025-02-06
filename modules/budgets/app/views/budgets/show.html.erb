@@ -42,12 +42,12 @@ See COPYRIGHT and LICENSE files for more details.
         component.with_attribute(key: Budget.human_attribute_name(:fixed_date), value: format_date(@budget.fixed_date))
         component.with_attribute(
           key: Budget.human_attribute_name(:budget_ratio),
-          value: extended_progress_bar(@budget.budget_ratio, :width => "80px", :legend => @budget.budget_ratio)
+          value: extended_progress_bar(@budget.budget_ratio, width: "80px", legend: @budget.budget_ratio)
         )
         component.with_attribute(
           key: Budget.human_attribute_name(:description),
           value: content_tag(:div, class: "op-uc-container") do
-            format_text @budget, :description, :attachments => @budget.attachments
+            format_text @budget, :description, attachments: @budget.attachments
           end
         )
       end %>
@@ -55,7 +55,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% resource = budget_attachment_representer(@budget) %>
   <%= list_attachments(resource) %>
 
-  <%= render :partial => "show" %>
+  <%= render partial: "show" %>
 </div>
 
 <div style="clear: both;"></div>
@@ -63,6 +63,6 @@ See COPYRIGHT and LICENSE files for more details.
 <% if authorize_for('budgets', 'edit') %>
   <div id="update" style="display:none;">
   <h3><%= t(:button_update) %></h3>
-  <%= render :partial => "edit" %>
+  <%= render partial: "edit" %>
   </div>
 <% end %>

@@ -46,9 +46,9 @@ See COPYRIGHT and LICENSE files for more details.
         </colgroup>
         <thead>
           <tr>
-            <%= sort_header_tag "name", :caption => CostType.model_name.human %>
-            <%= sort_header_tag "unit", :caption => CostType.human_attribute_name(:unit) %>
-            <%= sort_header_tag "unit_plural", :caption => CostType.human_attribute_name(:unit_plural) %>
+            <%= sort_header_tag "name", caption: CostType.model_name.human %>
+            <%= sort_header_tag "unit", caption: CostType.human_attribute_name(:unit) %>
+            <%= sort_header_tag "unit_plural", caption: CostType.human_attribute_name(:unit_plural) %>
             <th>
               <div class="generic-table--sort-header-outer">
                 <div class="generic-table--sort-header">
@@ -82,12 +82,12 @@ See COPYRIGHT and LICENSE files for more details.
         <tbody>
           <% cost_types.each do |cost_type| %>
           <tr>
-            <%= content_tag :td, link_to(cost_type.name, { :controller => "/cost_types", :action => "edit", :id => cost_type }) %>
+            <%= content_tag :td, link_to(cost_type.name, { controller: "/cost_types", action: "edit", id: cost_type }) %>
             <%= content_tag :td, cost_type.unit %>
             <%= content_tag :td, cost_type.unit_plural %>
-            <%= content_tag :td, to_currency_with_empty(cost_type.rate_at(@fixed_date)), :class => "currency", :id => "cost_type_#{cost_type.id}_rate" %>
+            <%= content_tag :td, to_currency_with_empty(cost_type.rate_at(@fixed_date)), class: "currency", id: "cost_type_#{cost_type.id}_rate" %>
             <td>
-              <%= form_for cost_type, :url => { :controller => "/cost_types", :action => "set_rate", :id => cost_type }, method: :put, html: { class: "inline-label" }  do |f| %>
+              <%= form_for cost_type, url: { controller: "/cost_types", action: "set_rate", id: cost_type }, method: :put, html: { class: "inline-label" }  do |f| %>
                 <label class="hidden-for-sighted" for="<%= "rate_field_#{cost_type.id}" %>"><%= t(:caption_set_rate) %></label>
                 <%= content_tag :input,
                                 "",

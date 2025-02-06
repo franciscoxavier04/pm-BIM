@@ -39,8 +39,8 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-<%= labelled_tabular_form_for @view, url: { controller: "/team_planner/team_planner", action: "create" }, :html => { :id => "team-planner-form" } do |f| -%>
-  <%= render :partial => "form", :locals => { :f => f } %>
+<%= labelled_tabular_form_for @view, url: { controller: "/team_planner/team_planner", action: "create" }, html: { id: "team-planner-form" } do |f| -%>
+  <%= render partial: "form", locals: { f: f } %>
   <%= styled_button_tag t(:button_create), class: "-primary" %>
   <%= link_to t(:button_cancel), { controller: "team_planner/team_planner", action: "overview" },
               class: "button" %>

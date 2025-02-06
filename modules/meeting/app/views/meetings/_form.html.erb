@@ -32,7 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
 <section class="form--section">
 
   <div class="form--field -required">
-    <%= f.text_field :title, :required => true, :size => 60, container_class: "-wide" %>
+    <%= f.text_field :title, required: true, size: 60, container_class: "-wide" %>
   </div>
 
   <% copy_from = local_assigns[:copy_from] %>
@@ -91,7 +91,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
 
   <div class="form--field">
-    <%= f.text_field :location, :size => 60, container_class: "-wide" %>
+    <%= f.text_field :location, size: 60, container_class: "-wide" %>
   </div>
 
   <div class="form--field -required">

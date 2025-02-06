@@ -43,9 +43,9 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= primer_form_with(
       model: @recurring_meeting,
-      url: { :controller => "/recurring_meetings", :action => "create", :project_id => @project }
+      url: { controller: "/recurring_meetings", action: "create", project_id: @project }
     ) do |f| %>
-  <%= render :partial => "form", locals: { f: f } %>
+  <%= render partial: "form", locals: { f: f } %>
 
   <%= render Primer::Beta::Button.new(type: :submit, scheme: :primary, mt: 3) do %>
     <%= t(:button_create) %>

@@ -45,7 +45,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% if can_edit_meeting_content?(content, content_type) -%>
     <div data-meeting-content-target="editor"
          hidden>
-      <%= render(:partial => "meeting_contents/form", :locals => { :content => content, :content_type => content_type }) %>
+      <%= render(partial: "meeting_contents/form", locals: { content: content, content_type: content_type }) %>
     </div>
   <% end -%>
 
@@ -53,7 +53,7 @@ See COPYRIGHT and LICENSE files for more details.
      hidden>
   <% if saved_meeting_content_text_present?(content) -%>
     <div class="wiki op-uc-container">
-      <%= format_text(content.text, :object => @meeting) %>
+      <%= format_text(content.text, object: @meeting) %>
     </div>
   <% else -%>
     <%= no_results_box %>

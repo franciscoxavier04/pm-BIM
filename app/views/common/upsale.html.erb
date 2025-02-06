@@ -29,7 +29,7 @@
     </p>
 
     <% if feature_video.present? %>
-      <%= video_tag feature_video, :controls => false, class: "widget-box--teaser-video", autoplay: true, loop: true, muted: true %>
+      <%= video_tag feature_video, controls: false, class: "widget-box--teaser-video", autoplay: true, loop: true, muted: true %>
     <% elsif feature_image.present? %>
       <%= image_tag feature_image, class: "widget-box--teaser-image" %>
     <% else %>

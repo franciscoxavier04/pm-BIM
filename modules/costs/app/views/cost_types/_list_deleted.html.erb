@@ -45,9 +45,9 @@ See COPYRIGHT and LICENSE files for more details.
         </colgroup>
         <thead>
           <tr>
-            <%= sort_header_tag("name", :caption => CostType.model_name.human) %>
-            <%= sort_header_tag("unit", :caption => CostType.human_attribute_name(:unit)) %>
-            <%= sort_header_tag("unit_plural", :caption => CostType.human_attribute_name(:unit_plural)) %>
+            <%= sort_header_tag("name", caption: CostType.model_name.human) %>
+            <%= sort_header_tag("unit", caption: CostType.human_attribute_name(:unit)) %>
+            <%= sort_header_tag("unit_plural", caption: CostType.human_attribute_name(:unit_plural)) %>
             <th>
               <div class="generic-table--sort-header-outer">
                 <div class="generic-table--sort-header">
@@ -75,7 +75,7 @@ See COPYRIGHT and LICENSE files for more details.
                 <%= content_tag :td, cost_type.name %>
                 <%= content_tag :td, cost_type.unit %>
                 <%= content_tag :td, cost_type.unit_plural %>
-                <%= content_tag :td, to_currency_with_empty(cost_type.rate_at(@fixed_date)), :class => "currency" %>
+                <%= content_tag :td, to_currency_with_empty(cost_type.rate_at(@fixed_date)), class: "currency" %>
                 <%= content_tag :td, cost_type.deleted_at.to_date %>
                 <td class="buttons">
                   <%= form_for cost_type, url: restore_cost_type_path(cost_type),

@@ -51,8 +51,8 @@ See COPYRIGHT and LICENSE files for more details.
     <% unless current_user.id == @user.id %>
       <li class="toolbar-item">
         <%= form_for @user,
-                     :url => { :action => :change_status },
-                     :method => :post do %>
+                     url: { action: :change_status },
+                     method: :post do %>
             <%= change_user_status_buttons(@user) %>
         <% end %>
       </li>

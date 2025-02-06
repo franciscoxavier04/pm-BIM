@@ -45,7 +45,7 @@ See COPYRIGHT and LICENSE files for more details.
         aria: { label: t(:label_document_new) },
         title: t(:label_document_new),
         tag: :a,
-        href: url_for({ :controller => "/documents", :action => "new", :project_id => @project })
+        href: url_for({ controller: "/documents", action: "new", project_id: @project })
       ) do |button|
         button.with_leading_visual_icon(icon: :plus)
         t("activerecord.models.document")
@@ -62,14 +62,14 @@ See COPYRIGHT and LICENSE files for more details.
   <%= augmented_collapsible_section title: group do %>
     <div class="document-category--inner-section">
       <div class="form--field document-category-elements">
-        <%= render :partial => "documents/document", :collection => @grouped[group] %>
+        <%= render partial: "documents/document", collection: @grouped[group] %>
       </div>
     </div>
   <% end %>
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= form_tag({}, :method => :get, class: "sidebar--document-sort") do %>
+  <%= form_tag({}, method: :get, class: "sidebar--document-sort") do %>
     <fieldset class="form--fieldset">
       <legend class="form--fieldset-legend"><%= t(:label_group_by) %></legend>
       <p>
