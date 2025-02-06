@@ -43,11 +43,15 @@ export default class DateFormController extends Controller {
   private toggled:boolean = false;
 
   startDateFieldContainerTargetConnected() {
-    if (this.toggled) {
-      Array.from(document.getElementsByClassName('wp-datepicker-dialog-date-form--date-container_date-field-hidden')).forEach((el) => {
-        el.classList.remove('wp-datepicker-dialog-date-form--date-container_date-field-hidden');
-      });
-    }
+    // When the complete turboFrame updates, we have to remember, whether the date field was already toggled.
+    // In that case, we want to preserve that state
+    this.setInitialVisibility();
+  }
+
+  dueDateFieldContainerTargetConnected() {
+    // When the complete turboFrame updates, we have to remember, whether the date field was already toggled.
+    // In that case, we want to preserve that state
+    this.setInitialVisibility();
   }
 
   toggleStartDateFieldVisibility() {
@@ -61,10 +65,21 @@ export default class DateFormController extends Controller {
   }
 
   private toggleFieldVisibility() {
-    Array.from(document.getElementsByClassName('wp-datepicker-dialog-date-form--date-container_date-field-hidden')).forEach((el) => {
-      el.classList.remove('wp-datepicker-dialog-date-form--date-container_date-field-hidden');
-    });
+    this.hideDateButtons();
 
     this.toggled = true;
+  }
+
+  private setInitialVisibility() {
+    // If a date button has already been toggled once, it will not be shown again.
+    if (this.toggled) {
+      this.hideDateButtons();
+    }
+  }
+
+  private hideDateButtons() {
+    Array.from(document.getElementsByClassName('wp-datepicker-dialog-date-form--button-container_visible')).forEach((el) => {
+      el.classList.remove('wp-datepicker-dialog-date-form--button-container_visible');
+    });
   }
 }
