@@ -4,6 +4,8 @@ module OpenProject::Users
   # @logical_path OpenProject/Users
   class AvatarComponentPreview < Lookbook::Preview
     # Renders a user avatar using the OpenProject opce-principal web component.
+    # Please note that hover cards will not be displayed in the preview, since the necessary Javascript controller
+    # is not loaded.
     # @param size select { choices: [default, medium, mini] }
     # @param link toggle
     # @param show_name toggle
