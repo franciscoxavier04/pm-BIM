@@ -114,6 +114,8 @@ export class HoverCardTriggerService {
     const overlay = this.getAndResetOverlay();
     if (!overlay) { return; }
 
+    this.moveOverlayToAppropriateParent(overlay, targetEl);
+
     const { turboFrame, popover } = this.constructPopover(overlay, turboFrameUrl);
 
     this.isShowingHoverCard = true;
@@ -177,9 +179,13 @@ export class HoverCardTriggerService {
     const overlay = document.getElementById('hover-card-overlay');
     if (overlay) {
       overlay.innerHTML = '';
+      overlay.remove();
     }
 
-    return overlay;
+    const newOverlay = document.createElement('div');
+    newOverlay.id = 'hover-card-overlay';
+
+    return newOverlay;
   }
 
   private parseHoverCardUrl(el:HTMLElement) {
@@ -223,5 +229,15 @@ export class HoverCardTriggerService {
     overlay.appendChild(popover);
 
     return { turboFrame, popover };
+  }
+
+  private moveOverlayToAppropriateParent(overlay:HTMLElement, targetEl:HTMLElement) {
+    const targetParentDialog = targetEl.closest('dialog-helper > dialog');
+
+    if (targetParentDialog) {
+      targetParentDialog.appendChild(overlay);
+    } else {
+      document.body.appendChild(overlay);
+    }
   }
 }
