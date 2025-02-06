@@ -95,7 +95,8 @@ class Relation < ApplicationRecord
 
   scopes :follows_non_manual_ancestors,
          :types,
-         :visible
+         :visible,
+         :ghost
 
   scope :of_work_package,
         ->(work_package) { where(from: work_package).or(where(to: work_package)) }
