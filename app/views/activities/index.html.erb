@@ -56,7 +56,7 @@ See COPYRIGHT and LICENSE files for more details.
           with_subprojects: @with_subprojects ? "1" : "0",
           user_id: params[:user_id]
         }.compact,
-        { title: t(:label_date_from_to, start: format_date(@date_to - 2 * @days), end: format_date(@date_to - @days - 1)),
+        { title: t(:label_date_from_to, start: format_date(@date_to - (2 * @days)), end: format_date(@date_to - @days - 1)),
           class: "navigate-left" }
       ) %>
 </div>

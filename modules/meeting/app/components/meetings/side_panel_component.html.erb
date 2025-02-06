@@ -6,7 +6,7 @@
         panel.with_section(Meetings::SidePanel::StateComponent.new(meeting: @meeting))
       end
 
-      desktop_grid_row_arguments = { display: [:none, nil, :"table_cell"] }
+      desktop_grid_row_arguments = { display: [:none, nil, :table_cell] }
 
       panel.with_section(
         Meetings::SidePanel::ParticipantsComponent.new(meeting: @meeting),

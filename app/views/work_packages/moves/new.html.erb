@@ -46,7 +46,7 @@ See COPYRIGHT and LICENSE files for more details.
       { action: "create" },
       id: "move_form",
       data: {
-        'controller': "refresh-on-form-changes",
+        controller: "refresh-on-form-changes",
         'refresh-on-form-changes-target': "form",
         'refresh-on-form-changes-refresh-url-value': url_for(action: "new")
       },
@@ -88,7 +88,7 @@ See COPYRIGHT and LICENSE files for more details.
                     content_tag("option", t(:label_no_change_option), value: "") +
                       options_from_collection_for_select(@types, "id", "name", @target_type&.id),
                     data: {
-                      'action': "change->refresh-on-form-changes#triggerReload"
+                      action: "change->refresh-on-form-changes#triggerReload"
                     }
                   ) %>
             </div>

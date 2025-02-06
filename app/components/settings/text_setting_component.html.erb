@@ -60,7 +60,7 @@ See COPYRIGHT and LICENSE files for more details.
   <div class="form--field-container">
     <%=
       styled_text_area_tag(
-        "settings[#{name}][#{current_language.to_s}]",
+        "settings[#{name}][#{current_language}]",
         Setting.send(name)[current_language.to_s],
         disabled: !Setting.send(:"#{name}_writable?"),
         label: false,

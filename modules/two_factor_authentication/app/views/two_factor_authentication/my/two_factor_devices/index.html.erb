@@ -23,7 +23,7 @@
             t("two_factor_authentication.label_device")
           end
 
-          @available_devices.each do |key, device_class|
+          @available_devices.each do |key, _device_class|
             menu.with_item(
               label: t("two_factor_authentication.devices.#{key}.title"),
               href: url_for(action: :new, type: key),

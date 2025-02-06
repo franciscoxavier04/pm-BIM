@@ -17,7 +17,7 @@
           url: update_participants_meeting_path(@meeting),
           data: { turbo: true, turbo_stream: true },
           class: "Overlay-form"
-        ) do |f|
+        ) do |_f|
           flex_layout do |form_container|
             form_container.with_row do
               flex_layout(justify_content: :flex_end) do |header|

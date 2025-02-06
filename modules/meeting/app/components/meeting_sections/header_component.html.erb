@@ -43,7 +43,7 @@
         method: :put,
         url: meeting_section_path(@meeting_section.meeting, @meeting_section),
         data: {
-          "controller": "meeting-section-form",
+          controller: "meeting-section-form",
           "application-target": "dynamic",
           "meeting-section-form-cancel-url-value": cancel_edit_meeting_section_path(@meeting_section.meeting, @meeting_section)
         }

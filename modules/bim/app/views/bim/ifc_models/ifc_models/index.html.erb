@@ -39,14 +39,14 @@ See COPYRIGHT and LICENSE files for more details.
 
       header.with_action_button(
         tag: :a,
-        mobile_icon: :"eye",
+        mobile_icon: :eye,
         mobile_label: t("ifc_models.label_show_defaults"),
         href: defaults_bcf_project_ifc_models_path,
         aria: { label: I18n.t("ifc_models.label_show_defaults") },
         data: { test_selector: "ifc-show-default-button" },
         title: I18n.t("ifc_models.label_show_defaults")
       ) do |button|
-        button.with_leading_visual_icon(icon: :"eye")
+        button.with_leading_visual_icon(icon: :eye)
         t("ifc_models.label_show_defaults")
       end
     end
