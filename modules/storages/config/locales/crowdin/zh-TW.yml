@@ -74,7 +74,7 @@ zh-TW:
         confirmation_text: 請確認您瞭解並希望從本專案中移除此檔案儲存空間
         heading_text: 從 %{storage} 移除專案
         text: 此動作是不可逆轉的，並會移除此專案的工作項目到該儲存的檔案和資料夾的所有連結。
-        title: Remove project from storage
+        title: 從儲存庫中移除專案
       label: 移除專案
   services:
     attributes:
