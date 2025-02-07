@@ -58,7 +58,7 @@ See COPYRIGHT and LICENSE files for more details.
         <%= t("repositories.destroy.repository_verification", identifier: "<em class=\"danger-zone--expected-value\">#{h(@project.identifier)}</em>").html_safe %>
       </p>
       <div class="danger-zone--verification">
-        <input type="text"><input>
+        <input type="text">
         <%= styled_button_tag project_repository_path(@project),
                               method: :delete,
                               title: t(:button_delete),
