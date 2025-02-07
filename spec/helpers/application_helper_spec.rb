@@ -183,8 +183,8 @@ RSpec.describe ApplicationHelper do
 
       exp_str = <<-HTML.squish
         Added by
-        <a title="User #{esc_name}" class="op-hover-card--preview-trigger"
-          data-hover-card-url="/users/#{author.id}/hover_card" href="/users/#{author.id}">#{esc_name}</a>
+        <a title="User #{esc_name}" data-hover-card-url="/users/#{author.id}/hover_card"
+           data-hover-card-trigger-target="trigger" href="/users/#{author.id}">#{esc_name}</a>
         on 2023-06-02
       HTML
 
