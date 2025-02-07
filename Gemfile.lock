@@ -698,7 +698,7 @@ GEM
       faraday-follow_redirects
     json-schema (4.3.1)
       addressable (>= 2.8)
-    json_schemer (2.3.0)
+    json_schemer (2.4.0)
       bigdecimal
       hana (~> 1.3)
       regexp_parser (~> 2.0)
@@ -1287,7 +1287,7 @@ DEPENDENCIES
   i18n-tasks (~> 1.0.13)
   ice_cube (~> 0.17.0)
   ice_nine
-  json_schemer (~> 2.3.0)
+  json_schemer (~> 2.4.0)
   json_spec (~> 1.1.4)
   ladle
   launchy (~> 3.1.0)
