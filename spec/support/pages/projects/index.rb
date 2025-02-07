@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -266,7 +268,7 @@ module Pages
 
       def set_advanced_filter(name, human_name, human_operator = nil, values = [], send_keys: false)
         selected_filter = select_filter(name, human_name)
-        select(human_operator, from: "operator") unless boolean_filter?(name)
+        apply_operator(name, human_operator)
 
         within(selected_filter) do
           return unless values.any?
@@ -274,12 +276,12 @@ module Pages
           if boolean_filter?(name)
             set_toggle_filter(values)
           elsif autocomplete_filter?(selected_filter)
+            select(human_operator, from: "operator")
             set_autocomplete_filter(values)
           elsif name == "created_at"
             select(human_operator, from: "operator")
             set_created_at_filter(human_operator, values, send_keys:)
           elsif date_filter?(selected_filter) && human_operator == "on"
-            select(human_operator, from: "operator")
             set_date_filter(values, send_keys)
           end
         end
@@ -292,6 +294,10 @@ module Pages
           find('[data-filter-autocomplete="true"]').click
         end
         visible_user_auto_completer_options
+      end
+
+      def apply_operator(name, human_operator)
+        select(human_operator, from: "operator") unless boolean_filter?(name)
       end
 
       def select_filter(name, human_name)
