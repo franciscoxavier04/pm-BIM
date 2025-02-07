@@ -19,11 +19,11 @@
                     },
                     aria: { label: aria_label_text(reaction, data[:users]) },
                     disabled: current_user_cannot_react?,
-                    classes: "op-reactions-button"
+                    classes: %w[op-reactions-button px-2]
                   )) do |button|
               button.with_tooltip(text: number_of_user_reactions_text(data[:users]),
                                   test_selector: "reaction-tooltip-#{reaction}")
-              "#{EmojiReaction.emoji(reaction)} #{data[:count]}"
+              render(Primer::Beta::Text.new(classes: "f4")) { EmojiReaction.emoji(reaction) } + " #{data[:count]}"
             end
           end
         end
