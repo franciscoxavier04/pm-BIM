@@ -40,6 +40,8 @@ module Storages
             AuthenticationStrategies::Noop.new
           when :basic_auth
             AuthenticationStrategies::BasicAuth.new
+          when :sso_user_token
+            AuthenticationStrategies::SsoUserToken.new(strategy.user)
           when :oauth_user_token
             AuthenticationStrategies::OAuthUserToken.new(strategy.user)
           when :oauth_client_credentials
