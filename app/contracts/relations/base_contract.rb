@@ -39,7 +39,6 @@ module Relations
     validate :validate_to_exists
     validate :validate_nodes_relatable
     validate :validate_accepted_type
-    validate :validate_lag_numericality
 
     def self.model
       Relation
@@ -71,16 +70,6 @@ module Relations
     def manage_relations_permission?
       unless manage_relations?
         errors.add :base, :error_unauthorized
-      end
-    end
-
-    def validate_lag_numericality
-      if model.lag.present?
-        if model.lag < 0
-          errors.add :lag, I18n.t(:"activerecord.errors.messages.circular_dependency")
-        elsif model.lag > 2_147_483_647
-          errors.add :lag, I18n.t(:"activerecord.errors.models.relation.attributes.lag.high_value")
-        end
       end
     end
 
