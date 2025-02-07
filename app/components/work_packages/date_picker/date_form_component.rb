@@ -63,8 +63,8 @@ module WorkPackages
 
       def text_field_options(name:, label:)
         text_field_options = default_field_options(name).merge(
-          name: "work_package[#{name.to_s}]",
-          id: "work_package_#{name.to_s}",
+          name: "work_package[#{name}]",
+          id: "work_package_#{name}",
           value: field_value(name),
           disabled: disabled?(name),
           label:,
@@ -150,17 +150,16 @@ module WorkPackages
 
       def default_field_options(name)
         data = { "work-packages--date-picker--preview-target": "fieldInput",
-                 action: "work-packages--date-picker--preview#markFieldAsTouched " \
+                 action: "#{'work-packages--date-picker--date-form#toggleFieldVisibility' if duration_field?(name)} " \
+                         "work-packages--date-picker--preview#markFieldAsTouched " \
                          "focus->work-packages--date-picker--preview#onHighlightField",
                  test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field" }
 
         if @focused_field == name
           data[:qa_highlighted] = "true"
-        end
-
-        if @focused_field == name
           data[:focus] = "true"
         end
+
         { data: }
       end
     end

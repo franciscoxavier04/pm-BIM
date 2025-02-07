@@ -64,7 +64,7 @@ export default class DateFormController extends Controller {
     this.startDateFieldContainerTarget.querySelector('input')?.focus();
   }
 
-  private toggleFieldVisibility() {
+  toggleFieldVisibility() {
     this.hideDateButtons();
 
     this.toggled = true;
