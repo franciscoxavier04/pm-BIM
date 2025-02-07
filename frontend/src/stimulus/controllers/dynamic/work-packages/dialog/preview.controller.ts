@@ -56,7 +56,8 @@ export abstract class DialogPreviewController extends Controller {
   declare readonly initialValueInputTargets:HTMLInputElement[];
   declare readonly touchedFieldInputTargets:HTMLInputElement[];
 
-  private debouncedPreview:DebouncedFunc<(event:Event) => void>;
+  private debouncedDelayedPreview:DebouncedFunc<(input:HTMLInputElement) => void>;
+  private debouncedImmediatePreview:DebouncedFunc<(input:HTMLInputElement) => void>;
   private frameMorphRenderer:(event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => void;
   private targetFieldName:string;
   private touchedFields:Set<string>;
@@ -72,7 +73,12 @@ export abstract class DialogPreviewController extends Controller {
 
     // if the debounce value is changed, the following test helper must be kept
     // in sync: `spec/support/edit_fields/progress_edit_field.rb`, method `#wait_for_preview_to_complete`
-    this.debouncedPreview = debounce((event:Event) => { void this.preview(event); }, 200);
+    this.debouncedDelayedPreview = debounce((input:HTMLInputElement) => {
+      void this.preview(input);
+    }, 200);
+    this.debouncedImmediatePreview = debounce((input:HTMLInputElement) => {
+      void this.preview(input);
+    }, 0);
 
     // Turbo supports morphing, by adding the <turbo-frame refresh="morph">
     // attribute. However, it does not work that well with primer input: when
@@ -91,22 +97,14 @@ export abstract class DialogPreviewController extends Controller {
               // In case the element is an OpenProject custom dom element, morphing is prevented.
               return !oldNode.tagName?.startsWith('OPCE-');
             },
-            afterNodeMorphed: (oldNode:Element, newNode:Element) => {
-              if (newNode.tagName === 'INPUT' && (newNode as HTMLInputElement).name && (newNode as HTMLInputElement).name.startsWith('work_package[')) {
-                this.dispatchChangeEvent((newNode as HTMLInputElement));
-              }
-            },
           },
         });
+        this.afterRendering();
       };
     };
 
     this.fieldInputTargets.forEach((target) => {
-      if (target.tagName.toLowerCase() === 'select') {
-        target.addEventListener('change', this.debouncedPreview);
-      } else {
-        target.addEventListener('input', this.debouncedPreview);
-      }
+      target.addEventListener('input', this.inputChanged.bind(this));
 
       if (target.dataset.focus === 'true') {
         this.focusAndSetCursorPositionToEndOfInput(target);
@@ -118,13 +116,10 @@ export abstract class DialogPreviewController extends Controller {
   }
 
   disconnect() {
-    this.debouncedPreview.cancel();
+    this.debouncedDelayedPreview.cancel();
+    this.debouncedImmediatePreview.cancel();
     this.fieldInputTargets.forEach((target) => {
-      if (target.tagName.toLowerCase() === 'select') {
-        target.removeEventListener('change', this.debouncedPreview);
-      } else {
-        target.removeEventListener('input', this.debouncedPreview);
-      }
+      target.removeEventListener('input', this.inputChanged.bind(this));
     });
     const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
     if (turboFrame) {
@@ -132,24 +127,55 @@ export abstract class DialogPreviewController extends Controller {
     }
   }
 
+  inputChanged(event:Event) {
+    const field = event.target as HTMLInputElement;
+
+    if (field.name === 'work_package[start_date]') {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
+        const selectedDate = new Date(field.value);
+        this.changeStartDate(selectedDate);
+        this.debouncedDelayedPreview(field);
+      } else if (field.value === '') {
+        this.debouncedDelayedPreview(field);
+      }
+    } else if (field.name === 'work_package[due_date]') {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
+        const selectedDate = new Date(field.value);
+        this.changeDueDate(selectedDate);
+        this.debouncedDelayedPreview(field);
+      } else if (field.value === '') {
+        this.debouncedDelayedPreview(field);
+      }
+    } else {
+      this.debouncedDelayedPreview(field);
+    }
+  }
+
+  changeStartDate(_selectedDate:Date) {
+  }
+
+  changeDueDate(_selectedDate:Date) {
+  }
+
+  protected triggerImmediatePreview(input:HTMLInputElement) {
+    this.debouncedImmediatePreview(input);
+  }
+
   protected cancel():void {
     document.dispatchEvent(new CustomEvent('cancelModalWithTurboContent'));
   }
 
   markFieldAsTouched(event:{ target:HTMLInputElement }) {
-    this.targetFieldName = event.target.name.replace(/^work_package\[([^\]]+)\]$/, '$1');
+    const fieldName = event.target.name.replace(/^work_package\[([^\]]+)\]$/, '$1');
+    this.doMarkFieldAsTouched(fieldName);
+  }
+
+  doMarkFieldAsTouched(fieldName:string) {
+    this.targetFieldName = fieldName;
     this.markTouched(this.targetFieldName);
   }
 
-  async preview(event:Event) {
-    let field:HTMLInputElement;
-    if (event.type === 'blur') {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      field = (event as FocusEvent).relatedTarget as HTMLInputElement;
-    } else {
-      field = event.target as HTMLInputElement;
-    }
-
+  async preview(field:HTMLInputElement|null) {
     const form = this.formTarget;
     const formData = new FormData(form) as unknown as undefined;
     const formParams = new URLSearchParams(formData);
@@ -181,7 +207,7 @@ export abstract class DialogPreviewController extends Controller {
 
   abstract ensureValidWpAction(path:string):string;
 
-  abstract dispatchChangeEvent(field:HTMLInputElement|null):void;
+  abstract afterRendering():void;
 
   protected isBeingEdited(fieldName:string) {
     return fieldName === this.targetFieldName;

@@ -47,8 +47,8 @@ import { DatePicker } from '../datepicker';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 import { populateInputsFromDataset } from 'core-app/shared/components/dataset-inputs';
-import { fromEvent, Subject } from 'rxjs';
-import { debounceTime, filter } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import * as _ from 'lodash';
 
 @Component({
@@ -82,9 +82,9 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
   fieldName:'start_date'|'due_date'|'duration' = 'start_date';
 
   private datePickerInstance:DatePicker;
-  private initializeDatepickerSubject = new Subject<void>();
   private startDateValue:Date|null;
   private dueDateValue:Date|null;
+  private onFlatpickrSetValuesBound = this.onFlatpickrSetValues.bind(this);
 
   constructor(
     readonly injector:Injector,
@@ -100,59 +100,50 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
     populateInputsFromDataset(this);
     this.startDateValue = this.toDate(this.startDate);
     this.dueDateValue = this.toDate(this.dueDate);
-
-    // To make sure the datepicker is reinitialized only once when multiple change events are received
-    this.initializeDatepickerSubject.pipe(
-      debounceTime(0),
-    ).subscribe(() => this.initializeDatepicker());
   }
 
   ngAfterViewInit():void {
-    this.initializeDatepickerSubject.next();
+    this.initializeDatepicker();
 
-    document.addEventListener('date-picker:input-changed', this.changeListener.bind(this));
-    document.addEventListener('date-picker:input-focused', this.focusListener.bind(this));
+    document.addEventListener('date-picker:flatpickr-set-values', this.onFlatpickrSetValuesBound);
   }
 
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnDestroy():void {
     super.ngOnDestroy();
 
-    document.removeEventListener('date-picker:input-changed', this.changeListener.bind(this));
-    document.removeEventListener('date-picker:input-focused', this.focusListener.bind(this));
+    document.removeEventListener('date-picker:flatpickr-set-values', this.onFlatpickrSetValuesBound);
   }
 
-  changeListener(event:CustomEvent) {
-    const details = (event.detail as { field:string, value:string });
+  onFlatpickrSetValues(
+    event:CustomEvent<{
+      dates:Date[];
+      ignoreNonWorkingDays:boolean;
+      mode:'single'|'range';
+    }>,
+  ) {
+    const details = event.detail;
 
-    switch (details.field) {
-      case 'work_package[start_date]':
-        this.startDateValue = this.toDate(details.value);
-        break;
-      case 'work_package[due_date]':
-        this.dueDateValue = this.toDate(details.value);
-        break;
-      case 'work_package[ignore_non_working_days]':
-        this.ignoreNonWorkingDays = details.value !== 'true';
-        break;
-      default:
-        // Case fallthrough for eslint
-        return;
+    // try to set dates only if needed because if we set flatpickr dates,
+    // flatpickr jumps the calendar date to the due date, which is annoying.
+    if (this.isDifferentDates(details.dates, details.mode)) {
+      [this.startDateValue, this.dueDateValue] = details.dates;
+      this.datePickerInstance.setDates(details.dates);
     }
+    this.datePickerInstance.setOption('mode', details.mode);
 
-    // Emit an event to the subject, which will be debounced and trigger the datepicker initialization
-    this.initializeDatepickerSubject.next();
+    if (this.ignoreNonWorkingDays !== details.ignoreNonWorkingDays) {
+      this.ignoreNonWorkingDays = details.ignoreNonWorkingDays;
+      this.datePickerInstance.datepickerInstance.redraw();
+    }
   }
 
-  focusListener(event:CustomEvent) {
-    const details = (event.detail as { field:string });
-
-    if (`work_package[${this.fieldName}]` !== details.field) {
-      // In case a different field is focused, we re-initialize the datepicker to allow for example
-      // * disabling different dates
-      // * switching between single and range mode in certain edge case (see getter for mode below)
-      this.initializeDatepickerSubject.next();
+  private isDifferentDates(dates:Date[], mode:'single'|'range'):boolean {
+    if (mode === 'single') {
+      return dates[0].getTime() !== this.startDateValue?.getTime();
     }
+    return dates[0].getTime() !== this.startDateValue?.getTime()
+        || dates[1].getTime() !== this.dueDateValue?.getTime();
   }
 
   private toDate(date:string|null):Date|null {
@@ -169,7 +160,6 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
   private initializeDatepicker() {
     this.datePickerInstance?.destroy();
     this.fieldName = this.getActiveField();
-    const ignoreNonWorkingDaysTemp = this.ignoreNonWorkingDays;
 
     this.datePickerInstance = new DatePicker(
       this.injector,
@@ -189,7 +179,7 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
         onDayCreate: async (dObj:Date[], dStr:string, fp:flatpickr.Instance, dayElem:DayElement) => {
           onDayCreate(
             dayElem,
-            ignoreNonWorkingDaysTemp,
+            this.ignoreNonWorkingDays,
             await this.datePickerInstance?.isNonWorkingDay(dayElem.dateObj),
             this.isDayDisabled(dayElem),
           );
@@ -216,90 +206,12 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
     return 'range';
   }
 
-  private onFlatpickrChange(dates:Date[], _datestr:string, instance:flatpickr.Instance) {
-    this.fieldName = this.getActiveField();
-
-    if (this.isMilestone) {
-      this.setStartDate(dates[0]);
-      instance.setDate(dates[0]);
-    } else {
-      const selectedDate:Date = this.lastClickedDate(dates) || dates[0];
-      if (this.fieldName === 'due_date' || (this.fieldName === 'duration' && this.startDateValue !== null && this.dueDateValue === null)) {
-        this.setDueDate(selectedDate);
-        this.fieldName = 'start_date';
-      } else {
-        this.setStartDate(selectedDate);
-        this.fieldName = 'due_date';
-      }
-      instance.setDate(this.currentDates());
-    }
-  }
-
-  private lastClickedDate(changedDates:Date[]):Date|null {
-    const flatPickrDates = changedDates.map((date) => this.timezoneService.formattedISODate(date));
-    const fieldDates = _.compact([this.startDateValue, this.dueDateValue])
-                        .map((date) => this.timezoneService.formattedISODate(date));
-    if (flatPickrDates.length === 1) {
-      return this.toDate(flatPickrDates[0]);
-    }
-    const diff = _.difference(flatPickrDates, fieldDates);
-    return this.toDate(diff[0]);
-  }
-
-  // Sets the start date to the given date.
-  //
-  // If the given date is after the due date, then there are two cases:
-  //   - if only one date is already set, then dates are swapped so that start
-  //     date is before due date.
-  //   - if both dates are already set, then the due date is cleared because it
-  //     can't be before the start date.
-  private setStartDate(date:Date) {
-    if (this.dueDateValue && date > this.dueDateValue) {
-      if (this.startDateValue) {
-        // if both dates are set and the clicked date is after the due date,
-        // then the start date is set to the clicked date and both due date and duration are cleared
-        this.startDateValue = date;
-        this.dueDateValue = null;
-        this.clearDurationField();
-      } else {
-        // else one of the two dates is not set, so we are smart and swap them
-        this.startDateValue = this.dueDateValue;
-        this.dueDateValue = date;
-      }
-      this.updateDateField(this.dueDateValue, this.dueDateFieldId);
-    } else {
-      // simply set the start date
-      this.startDateValue = date;
-    }
-    this.updateDateField(this.startDateValue, this.startDateFieldId);
-  }
-
-  // Sets the due date to the given date.
-  //
-  // If the given date is before the start date, then there are two cases:
-  //   - if only one date is already set, then dates are swapped so that start
-  //     date is before due date.
-  //   - if both dates are already set, then the start date is cleared because
-  //     it can't be after the due date.
-  private setDueDate(date:Date) {
-    if (this.startDateValue && this.startDateValue > date) {
-      if (this.dueDateValue) {
-        // if both dates are set and the clicked date is before the start date,
-        // then the due date is set to the clicked date and both start date and duration are cleared
-        this.startDateValue = null;
-        this.dueDateValue = date;
-        this.clearDurationField();
-      } else {
-        // else one of the two dates is not set, so we are smart and swap them
-        this.dueDateValue = this.startDateValue;
-        this.startDateValue = date;
-      }
-      this.updateDateField(this.startDateValue, this.startDateFieldId);
-    } else {
-      // simply set the due date
-      this.dueDateValue = date;
-    }
-    this.updateDateField(this.dueDateValue, this.dueDateFieldId);
+  private onFlatpickrChange(dates:Date[], _datestr:string, _instance:flatpickr.Instance) {
+    document.dispatchEvent(
+      new CustomEvent('date-picker:flatpickr-dates-changed', {
+        detail: { dates },
+      }),
+    );
   }
 
   private isDayDisabled(dayElement:DayElement):boolean {
@@ -345,22 +257,5 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
       default:
         return 'start_date';
     }
-  }
-
-  private updateDateField(date:Date|null, fieldId:string | null):void {
-    if (fieldId) {
-      const field = document.getElementById(fieldId) as HTMLInputElement;
-      if (date) {
-        field.value = this.timezoneService.formattedISODate(date);
-      } else {
-        field.value = '';
-      }
-      field.dispatchEvent(new Event('input'));
-    }
-  }
-
-  private clearDurationField():void {
-    const field = document.getElementById(this.durationFieldId) as HTMLInputElement;
-    field.value = '';
   }
 }
