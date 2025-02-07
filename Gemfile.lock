@@ -302,7 +302,7 @@ GEM
       activemodel (= 7.1.5.1)
       activesupport (= 7.1.5.1)
       timeout (>= 0.4.0)
-    activerecord-import (2.0.0)
+    activerecord-import (2.1.0)
       activerecord (>= 4.2)
     activerecord-nulldb-adapter (1.1.1)
       activerecord (>= 6.0, < 8.1)
@@ -1216,7 +1216,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-xml_parser (~> 2.0.0)
   activemodel-serializers-xml (~> 1.0.1)
-  activerecord-import (~> 2.0.0)
+  activerecord-import (~> 2.1.0)
   activerecord-nulldb-adapter (~> 1.1.0)
   activerecord-session_store (~> 2.1.0)
   acts_as_list (~> 1.2.0)
