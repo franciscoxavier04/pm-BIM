@@ -3,7 +3,7 @@
     if grouped_emoji_reactions.present?
       flex_layout(test_selector: "emoji-reactions", flex_wrap: :wrap, classes: "op-emoji-reactions--gap") do |reactions_container|
         grouped_emoji_reactions.each do |reaction, data|
-          reactions_container.with_column(mr: 2) do
+          reactions_container.with_column(mr: 1) do
             render(Primer::Beta::Button.new(
                     scheme: button_scheme(data[:users]),
                     color: :default,
