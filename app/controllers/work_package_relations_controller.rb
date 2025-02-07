@@ -60,6 +60,15 @@ class WorkPackageRelationsController < ApplicationController
                                              .call(create_relation_params)
 
     respond_with_relations_tab_update(service_result, relation_to_scroll_to: service_result.result)
+
+    if service_result.failure?
+      update_via_turbo_stream(
+        component: WorkPackageRelationsTab::WorkPackageRelationFormComponent.new(work_package: @work_package,
+                                                                                 relation: service_result.result,
+                                                                                 base_errors: service_result.errors[:base]),
+        status: :bad_request
+      )
+    end
   end
 
   def update
@@ -69,6 +78,14 @@ class WorkPackageRelationsController < ApplicationController
       .call(update_relation_params)
 
     respond_with_relations_tab_update(service_result)
+    if service_result.failure?
+      update_via_turbo_stream(
+        component: WorkPackageRelationsTab::WorkPackageRelationFormComponent.new(work_package: @work_package,
+                                                                                 relation: service_result.result,
+                                                                                 base_errors: service_result.errors[:base]),
+        status: :bad_request
+      )
+    end
   end
 
   def destroy
