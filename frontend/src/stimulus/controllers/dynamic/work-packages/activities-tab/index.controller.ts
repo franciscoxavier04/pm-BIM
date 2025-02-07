@@ -713,6 +713,21 @@ export default class IndexController extends Controller {
     if (this.hasFormSubmitButtonTarget) {
       this.formSubmitButtonTarget.disabled = inProgress;
     }
+
+    this.setCKEditorReadonlyMode(inProgress);
+  }
+
+  private setCKEditorReadonlyMode(disabled:boolean) {
+    const ckEditorInstance = this.getCkEditorInstance();
+    const editorLockID = 'work-packages-activities-tab-index-component';
+
+    if (ckEditorInstance) {
+      if (disabled) {
+        ckEditorInstance.enableReadOnlyMode(editorLockID);
+      } else {
+        ckEditorInstance.disableReadOnlyMode(editorLockID);
+      }
+    }
   }
 
   private prepareFormData():FormData {

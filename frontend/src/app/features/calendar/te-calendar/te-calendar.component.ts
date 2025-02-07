@@ -429,7 +429,7 @@ export class TimeEntryCalendarComponent implements AfterViewInit, OnDestroy {
 
   private editEvent(entry:TimeEntryResource):void {
     void this.turboRequests.request(
-      `${this.pathHelper.timeEntryEditDialog(entry.id as string)}`,
+      `${this.pathHelper.timeEntryEditDialog(entry.id as string)}?onlyMe=true`,
       { method: 'GET' },
     );
   }
@@ -465,7 +465,7 @@ export class TimeEntryCalendarComponent implements AfterViewInit, OnDestroy {
     }
 
     void this.turboRequests.request(
-      `${this.pathHelper.timeEntryDialog()}?date=${date.format('YYYY-MM-DD')}`,
+      `${this.pathHelper.timeEntryDialog()}?date=${date.format('YYYY-MM-DD')}&onlyMe=true`,
       { method: 'GET' },
     );
   }
