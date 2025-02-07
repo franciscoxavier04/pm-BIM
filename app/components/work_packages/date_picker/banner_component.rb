@@ -143,25 +143,32 @@ module WorkPackages
       end
 
       def all_relational_wp_ids
-        relation_ids = [@work_package.id.to_s]
-        relation_ids
-          .push(@work_package
-                  .relations
-                  .visible
-                  .pluck(:from_id, :to_id))
-          .flatten!
+        [
+          @work_package.id,
+          *relations_wp_ids,
+          *ancestors_wp_ids,
+          *children_wp_ids
+        ].uniq.map!(&:to_s)
+      end
 
-        relation_ids = relation_ids.map!(&:to_s).uniq
+      def relations_wp_ids
+        @work_package.relations.visible.pluck(:from_id, :to_id).flatten!
+      end
 
+      def ancestors_wp_ids
         if @work_package.parent_id.present?
-          relation_ids.push(@work_package.ancestors.pluck(:id).map(&:to_s)).flatten!
+          @work_package.visible_ancestors.pluck(:id)
+        else
+          []
         end
+      end
 
-        if @work_package.children.present?
-          relation_ids.push(@work_package.children.pluck(:id).map(&:to_s)).flatten!
+      def children_wp_ids
+        if @work_package.children.visible.present?
+          @work_package.children.visible.pluck(:id)
+        else
+          []
         end
-
-        relation_ids
       end
 
       def test_selector
