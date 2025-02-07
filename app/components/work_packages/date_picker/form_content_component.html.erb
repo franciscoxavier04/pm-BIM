@@ -4,15 +4,16 @@
     url: submit_path,
     id: form_id,
     data: { "work-packages--date-picker--preview-target": "form" },
-    html: { autocomplete: "off" },
-    ) do |f|
+    html: { autocomplete: "off" }
+  ) do |f|
     flex_layout do |body|
       body.with_row(mb: 3) do
         flex_layout(classes: "wp-datepicker-dialog--form-block", align_items: :flex_end, justify_content: :space_between) do |first_row|
           first_row.with_column do
             render(Primer::Alpha::FormControl.new(label: I18n.t("work_packages.datepicker_modal.mode.title"))) do |component|
               component.with_input do
-                render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t("work_packages.datepicker_modal.mode.title"), test_selector: "op-datepicker-modal--scheduling",)) do |control|
+                render(Primer::Alpha::SegmentedControl.new("aria-label": I18n.t("work_packages.datepicker_modal.mode.title"),
+                                                           test_selector: "op-datepicker-modal--scheduling")) do |control|
                   control.with_item(tag: :a,
                                     href: work_package_datepicker_dialog_content_path(params.merge(schedule_manually: true).permit!),
                                     data: {
