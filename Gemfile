@@ -207,7 +207,7 @@ gem "plaintext", "~> 0.3.2"
 
 gem "ruby-progressbar", "~> 1.13.0", require: false
 
-gem "mini_magick", "~> 5.0.1", require: false
+gem "mini_magick", "~> 5.1.2", require: false
 
 gem "validate_url"
 
