@@ -31,9 +31,9 @@ In the past, we could not easily use the `Primer::Beta::Popover` component. With
 But it would require us to adjust the DOM of the hover card contents and the styling of the popover, so that it maintains its looks.
 
 Essentially the `HoverCard` is just a div which renders inside a `turboFrame`.
-This hover card is triggered by a class called `op-hover-card--preview-trigger` which can be set on any element.
 
-A global event listener is registered on all elements with this class and triggers the popover when being hovered.
+We have a `HoverCardTriggerController` that listens for hover events on elements with the attribute `data-hover-card-trigger-target="trigger"`
+and renders a hover card for that element when the mouse enters the trigger.
 Additionally, the trigger element needs to pass the URL for the `turboFrame` as a data attribute called `data-hover-card-url`.
 
 When the hovering event is received, the `HoverCardTriggerController` will retrieve the data for the turbo frame from
@@ -53,7 +53,7 @@ The hover card will close automatically when the mouse leaves the trigger or the
     <!-- app/views/module_a/index.html.erb -->
     <a href="work_packages/14/activity"
        data-hover-card-url="work_packages/14/hover_card"
-       class="op-hover-card--preview-trigger">
+       data-hover-card-trigger-target="trigger">
       #14
     </a>
 
@@ -61,7 +61,7 @@ The hover card will close automatically when the mouse leaves the trigger or the
          probably apply the trigger to an <op-principal> tag. -->
     <a href="users/14"
        data-hover-card-url="users/14/hover_card"
-       class="op-hover-card--preview-trigger">
+       data-hover-card-trigger-target="trigger">
       <img src="user_avatar.png" alt="">
     </a>
   </body>
