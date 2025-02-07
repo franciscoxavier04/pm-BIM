@@ -55,40 +55,29 @@ export default class HoverCardTriggerController extends ApplicationController {
   // The time you need to keep away from trigger/hover card before an opened card is closed
   CLOSE_DELAY_IN_MS = 250;
 
-  private boundTriggerMouseOver:EventListenerOrEventListenerObject;
-  private boundTriggerMouseLeave:EventListenerOrEventListenerObject;
-
-  private boundCardMouseLeave:EventListenerOrEventListenerObject;
-  private boundCardMouseEnter:EventListenerOrEventListenerObject;
-
-  initialize() {
-    super.initialize();
-
-    this.boundTriggerMouseOver = this.onMouseOver.bind(this);
-    this.boundTriggerMouseLeave = this.onMouseLeave.bind(this);
-
-    this.boundCardMouseLeave = this.onMouseLeave.bind(this);
-    this.boundCardMouseEnter = this.onMouseEnter.bind(this);
-  }
+  private triggerMouseOverBound= this.onMouseOver.bind(this);
+  private triggerMouseLeaveBound= this.onMouseLeave.bind(this);
+  private cardMouseLeaveBound= this.onMouseLeave.bind(this);
+  private cardMouseEnterBound= this.onMouseEnter.bind(this);
 
   private triggerTargetConnected(trigger:Element) {
-    trigger.addEventListener('mouseover', this.boundTriggerMouseOver);
-    trigger.addEventListener('mouseleave', this.boundTriggerMouseLeave);
+    trigger.addEventListener('mouseover', this.triggerMouseOverBound);
+    trigger.addEventListener('mouseleave', this.triggerMouseLeaveBound);
   }
 
   private triggerTargetDisconnected(trigger:Element) {
-    trigger.removeEventListener('mouseover', this.boundTriggerMouseOver);
-    trigger.removeEventListener('mouseleave', this.boundTriggerMouseLeave);
+    trigger.removeEventListener('mouseover', this.triggerMouseOverBound);
+    trigger.removeEventListener('mouseleave', this.triggerMouseLeaveBound);
   }
 
   private cardTargetConnected(card:Element) {
-    card.addEventListener('mouseleave', this.boundCardMouseLeave);
-    card.addEventListener('mouseenter', this.boundCardMouseEnter);
+    card.addEventListener('mouseleave', this.cardMouseLeaveBound);
+    card.addEventListener('mouseenter', this.cardMouseEnterBound);
   }
 
   private cardTargetDisconnected(card:Element) {
-    card.removeEventListener('mouseleave', this.boundCardMouseLeave);
-    card.removeEventListener('mouseenter', this.boundCardMouseEnter);
+    card.removeEventListener('mouseleave', this.cardMouseLeaveBound);
+    card.removeEventListener('mouseenter', this.cardMouseEnterBound);
   }
 
   private onMouseLeave() {
