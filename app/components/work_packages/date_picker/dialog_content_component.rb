@@ -36,6 +36,9 @@ module WorkPackages
 
       DIALOG_FORM_ID = "datepicker-form"
 
+      # Used for the three tabs for predecessors, successors and children in the date picker modal.
+      Tab = Data.define(:key, :relation_group)
+
       attr_accessor :work_package, :schedule_manually, :focused_field, :touched_field_map
 
       def initialize(work_package:, schedule_manually: true, focused_field: :start_date, touched_field_map: {})
@@ -62,20 +65,11 @@ module WorkPackages
       end
 
       def additional_tabs
+        mediator = WorkPackageRelationsTab::RelationsMediator.new(work_package:)
         [
-          {
-            key: "predecessors",
-            relations: follows_relations
-          },
-          {
-            key: "successors",
-            relations: precedes_relations
-          },
-          {
-            key: "children",
-            relations: children,
-            is_child_relation?: true
-          }
+          Tab.new("predecessors", mediator.relation_group("follows")),
+          Tab.new("successors", mediator.relation_group("precedes")),
+          Tab.new("children", mediator.relation_group("children"))
         ]
       end
 

@@ -4,6 +4,13 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
 
   attr_reader :work_package, :relation, :visibility, :child, :editable
 
+  # Checks if the relation or child work package is visible to the current user
+  #
+  # @param work_package [WorkPackage] The work package whose relations are being displayed
+  # @param relation [Relation, nil] The relation between work packages, if any
+  # @param visibility [Symbol] The visibility status of the relation (:visible or :ghost)
+  # @param child [WorkPackage, nil] The child work package, if this is a parent-child relationship
+  # @param editable [Boolean] Whether the relation can be edited
   def initialize(work_package:,
                  relation:,
                  visibility:,

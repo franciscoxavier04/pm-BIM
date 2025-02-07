@@ -25,17 +25,28 @@
             end
 
             additional_tabs.each do |tab|
-              component.with_tab(id: "wp-datepicker-dialog--content-tab--#{tab[:key]}") do |tab_content|
-                tab_content.with_text { I18n.t("work_packages.datepicker_modal.tabs.#{tab[:key]}") }
-                tab_content.with_counter(count: tab[:relations].count)
+              component.with_tab(id: "wp-datepicker-dialog--content-tab--#{tab.key}") do |tab_content|
+                relation_group = tab.relation_group
+                tab_content.with_text { I18n.t("work_packages.datepicker_modal.tabs.#{tab.key}") }
+                tab_content.with_counter(count: relation_group.count)
                 tab_content.with_panel do
-                  if tab[:relations].any?
+                  if relation_group.any?
                     render(border_box_container(padding: :condensed)) do |box|
-                      tab[:relations].visible.each do |relation|
+                      relation_group.visible_relations.each do |relation|
                         box.with_row(scheme: :default) do
                           render(WorkPackageRelationsTab::RelationComponent.new(work_package:,
-                                                                                relation: (relation unless tab[:is_child_relation?]),
-                                                                                child: (relation if tab[:is_child_relation?]),
+                                                                                relation: (relation unless relation_group.children_type?),
+                                                                                visibility: :visible,
+                                                                                child: (relation if relation_group.children_type?),
+                                                                                editable: false))
+                        end
+                      end
+                      relation_group.ghost_relations.each do |relation|
+                        box.with_row(scheme: :default) do
+                          render(WorkPackageRelationsTab::RelationComponent.new(work_package:,
+                                                                                relation: (relation unless relation_group.children_type?),
+                                                                                visibility: :ghost,
+                                                                                child: (relation if relation_group.children_type?),
                                                                                 editable: false))
                         end
                       end
@@ -43,8 +54,8 @@
                   else
                     render(Primer::Beta::Blankslate.new(border: true)) do |component|
                       component.with_visual_icon(icon: :book, size: :medium)
-                      component.with_heading(tag: :h2) { I18n.t("work_packages.datepicker_modal.tabs.blankslate.#{tab[:key]}.title") }
-                      component.with_description { I18n.t("work_packages.datepicker_modal.tabs.blankslate.#{tab[:key]}.description") }
+                      component.with_heading(tag: :h2) { I18n.t("work_packages.datepicker_modal.tabs.blankslate.#{tab.key}.title") }
+                      component.with_description { I18n.t("work_packages.datepicker_modal.tabs.blankslate.#{tab.key}.description") }
                     end
                   end
                 end
