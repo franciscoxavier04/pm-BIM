@@ -53,10 +53,6 @@ module SharingStrategies
       user.allowed_in_project?(:view_shared_work_packages, @entity.project)
     end
 
-    def allow_hover_cards?
-      true
-    end
-
     def share_description(share) # rubocop:disable Metrics/PerceivedComplexity,Metrics/AbcSize
       scope = %i[sharing user_details]
 
