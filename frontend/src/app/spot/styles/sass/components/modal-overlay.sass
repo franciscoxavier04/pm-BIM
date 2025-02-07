@@ -1,30 +1,3 @@
-#hover-card-overlay
-  display: none
-
-  &:has(.op-hover-card)
-    display: flex
-    flex-direction: column-reverse
-
-@keyframes fade-in-hover-card
-  from
-    opacity: 0
-  to
-    opacity: 1
-
-.op-hover-card
-  inset: unset // needed to position the popover freely on the page
-  border: none // override the default border for popovers
-  animation: fade-in-hover-card .25s ease-in
-  background-color: var(--body-background)
-  width: 500px
-  box-shadow: var(--shadow-floating-medium)
-  padding: var(--overlay-paddingBlock-normal)
-  border-radius: var(--overlay-borderRadius)
-  opacity: 0
-
-  &:popover-open
-    opacity: 1
-
 .spot-modal-overlay
   position: fixed
   top: 0
