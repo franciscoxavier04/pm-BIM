@@ -157,7 +157,7 @@ de:
   storages:
     buttons:
       complete_without_setup: Ohne fortfahren
-      done_complete_setup: Fertig, Einrichtung abschließen
+      done_complete_setup: Fertig, Einrichtung abgeschlossen
       done_continue: Fertig, Fortfahren
       open_storage: Dateispeicher öffnen
       replace_oauth_application: OpenProject OAuth ersetzen
@@ -207,7 +207,7 @@ de:
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Projektordner
-      redirect_uri: URI umleiten
+      redirect_uri: Umleitungs-URI
       storage_provider: Speicheranbieter
     health:
       checked: Zuletzt geprüft %{datetime}
@@ -312,7 +312,7 @@ de:
     label_openproject_oauth_application_secret: OpenProject OAuth geheimer Anwendungsschlüssel
     label_project_folder: Projektordner
     label_provider: Anbieter
-    label_redirect_uri: URI umleiten
+    label_redirect_uri: Umleitungs-URI
     label_show_storage_redirect_uri: Umleitungs-URI anzeigen
     label_status: Status
     label_storage: Speicher
