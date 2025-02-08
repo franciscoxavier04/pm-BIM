@@ -115,7 +115,7 @@ zh-CN:
   label_recurring_meeting_plural: "定期会议"
   label_template: "模板"
   label_recurring_meeting_view: "查看会议系列"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "打开"
   label_recurring_meeting_copy: "一次性复制"
   label_recurring_meeting_cancel: "取消此事件"
   label_recurring_meeting_delete: "删除事件"

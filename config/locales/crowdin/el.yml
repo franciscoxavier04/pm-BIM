@@ -1223,6 +1223,10 @@ el:
             from:
               error_not_found: "το πακέτο εργασίας στην θέση 'από' δεν βρέθηκε ή δεν είναι ορατό"
               error_readonly: "ο σύνδεσμος 'από' μιας υπάρχουσας συσχέτισης είναι αμετάβλητος"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Ο προμηθευτής SCM δεν είναι διαθέσιμος"
           not_whitelisted: "δεν επιτρέπεται από την διαμόρφωση."

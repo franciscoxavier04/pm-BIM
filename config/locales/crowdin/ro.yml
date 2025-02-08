@@ -1236,6 +1236,10 @@ ro:
             from:
               error_not_found: "pachetul de lucru din poziția `from` nu este găsit sau nu este vizibil"
               error_readonly: "legătura `from` a unei relații existente este imuabilă"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Nu este disponibil furnizorul de SCM"
           not_whitelisted: "nu este permisă de configurație."

@@ -1227,6 +1227,10 @@ fil:
             from:
               error_not_found: "work package sa 'mula sa' ang posisyon ay hindi nakita o hindi nakikita"
               error_readonly: "isang umiiral na realsyon 'mula sa' ang link ay hindi mababago"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Ang SCM vendor ay hindi available"
           not_whitelisted: "ay hindi pinayagan ng kumpigurasyon."

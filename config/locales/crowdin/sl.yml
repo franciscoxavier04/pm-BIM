@@ -1243,6 +1243,10 @@ sl:
             from:
               error_not_found: "delovni paket v položaju 'od'  ni najden ali ni viden."
               error_readonly: "obstoječe razmerje 'od' povezave je nespremenljivo"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM prodajalec ni na voljo"
           not_whitelisted: "konfiguracija ne dovoljuje"

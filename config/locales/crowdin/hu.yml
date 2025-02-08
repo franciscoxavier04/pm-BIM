@@ -1225,6 +1225,10 @@ hu:
             from:
               error_not_found: "feladatcsoportban \"a\" pozíció nem található, vagy nem látható"
               error_readonly: "egy létező kapcsolat ',' hivatkozása nem változhat"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM szolgáltató nem elérhető"
           not_whitelisted: "a konfiguráció nem engedélyezi."

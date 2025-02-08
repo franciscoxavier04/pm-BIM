@@ -1226,6 +1226,10 @@
             from:
               error_not_found: "arbeidspakke i \"fra\"-posisjonen er ikke funnet eller ikke synlig"
               error_readonly: "en eksisterende relasjon `fra`-lenke er uforanderlig"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM leverandør er ikke tilgjengelig"
           not_whitelisted: "er ikke tillatt av konfigurasjonen."

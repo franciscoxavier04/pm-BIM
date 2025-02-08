@@ -1224,6 +1224,10 @@ ca:
             from:
               error_not_found: "paquet de treball en posició \"des de\" no trobada o no visible"
               error_readonly: "una relació d'enllaç existent \"des de\" és inamovible"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "El proveïdor SCM no està disponible"
           not_whitelisted: "no està permès per la configuració."
