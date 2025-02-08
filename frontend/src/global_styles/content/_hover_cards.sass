@@ -26,46 +26,29 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { UserResource } from 'core-app/features/hal/resources/user-resource';
-import { I18nService } from 'core-app/core/i18n/i18n.service';
-import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
+#hover-card-overlay
+  display: none
 
-@Component({
-  selector: 'op-user-link',
-  template: `
-    <a *ngIf="href"
-       data-hover-card-trigger-target="trigger"
-       [attr.data-hover-card-url]="hoverCardUrl"
-       [attr.href]="href"
-       [attr.title]="label"
-       [textContent]="name">
-    </a>
-    <ng-container *ngIf="!href">
-      {{ name }}
-    <ng-container>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class UserLinkComponent {
-  @Input() user:UserResource;
+  &:has(.op-hover-card)
+    display: flex
+    flex-direction: column-reverse
 
-  constructor(readonly I18n:I18nService, readonly pathHelperService:PathHelperService) {
-  }
+@keyframes fade-in-hover-card
+  from
+    opacity: 0
+  to
+    opacity: 1
 
-  public get href() {
-    return this.user && this.user.showUserPath;
-  }
+.op-hover-card
+  inset: unset // needed to position the popover freely on the page
+  border: none // override the default border for popovers
+  animation: fade-in-hover-card .25s ease-in
+  background-color: var(--body-background)
+  width: 500px
+  box-shadow: var(--shadow-floating-medium)
+  padding: var(--overlay-paddingBlock-normal)
+  border-radius: var(--overlay-borderRadius)
+  opacity: 0
 
-  public get name() {
-    return this.user && this.user.name;
-  }
-
-  public get label() {
-    return this.I18n.t('js.label_author', { user: this.name });
-  }
-
-  public get hoverCardUrl() {
-    return this.user && this.user.id && this.pathHelperService.userHoverCardPath(this.user.id);
-  }
-}
+  &:popover-open
+    opacity: 1

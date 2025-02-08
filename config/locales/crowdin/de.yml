@@ -1220,6 +1220,10 @@ de:
             from:
               error_not_found: "Arbeitspaket in 'von' Position nicht gefunden oder nicht sichtbar"
               error_readonly: "der 'von' Link einer bestehenden Relation kann nicht geändert werden"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
           not_whitelisted: "wird durch die Konfiguration nicht erlaubt."

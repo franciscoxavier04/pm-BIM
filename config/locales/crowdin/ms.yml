@@ -1216,6 +1216,10 @@ ms:
             from:
               error_not_found: "pakej kerja dalam posisi `dari` tidak dapat ditemui atau tidak kelihatan"
               error_readonly: "pautan `dari` yang sedia ada tidak berubah"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Vendor SCM tidak tersedia"
           not_whitelisted: "tidak dibenarkan oleh konfigurasi."

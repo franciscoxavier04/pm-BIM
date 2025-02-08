@@ -31,7 +31,6 @@ import {
   IAutocompleterTemplateComponent,
 } from 'core-app/shared/components/autocompleter/op-autocompleter/op-autocompleter.component';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
-import { PortalOutletTarget } from 'core-app/shared/components/modal/portal-outlet-target.enum';
 import { PrincipalLike } from 'core-app/shared/components/principal/principal-types';
 import { hrefFromPrincipal, typeFromHref } from 'core-app/shared/components/principal/principal-helper';
 
@@ -49,10 +48,6 @@ export class UserAutocompleterTemplateComponent implements IAutocompleterTemplat
 
   @ViewChild('optionTemplate') optionTemplate:TemplateRef<Element>;
   @ViewChild('footerTemplate') footerTemplate?:TemplateRef<Element>;
-
-  public getHoverCardTarget():number {
-    return this.isOpenedInModal ? PortalOutletTarget.Custom : PortalOutletTarget.Default;
-  }
 
   public getHoverCardUrl(principal:PrincipalLike) {
     if (!this.hoverCards || !principal.id) { return ''; }

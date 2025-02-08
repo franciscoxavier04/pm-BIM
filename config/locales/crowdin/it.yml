@@ -1223,6 +1223,10 @@ it:
             from:
               error_not_found: "impossibile trovare o visualizzare la macro-attività in posizione \"da\""
               error_readonly: "impossibile modificare il collegamento ad una relazione esistente \"da\""
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Il gestore SCM non è disponibile"
           not_whitelisted: "non è consentito dalla configurazione."

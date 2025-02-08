@@ -1217,6 +1217,10 @@ ko:
             from:
               error_not_found: "'시작' 위치의 작업 패키지가 없거나 표시되지 않음"
               error_readonly: "기존 관계의 '시작' 링크는 변경이 불가능합니다."
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM 업체가 가용하지 않습니다."
           not_whitelisted: "은(는) 설절에 허용되지 않습니다."

@@ -1225,6 +1225,10 @@ fr:
             from:
               error_not_found: "lot de travaux dans la position 'depuis' introuvable ou invisible"
               error_readonly: "impossible de modifier le lien d'une relation existante 'depuis'"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
           not_whitelisted: "n'est pas autorisé par la configuration."

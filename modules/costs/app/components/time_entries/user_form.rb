@@ -54,6 +54,7 @@ module TimeEntries
             resource: "principals",
             focusDirectly: false,
             multiple: false,
+            clearable: false,
             appendTo: "#time-entry-dialog"
           }
         )

@@ -1226,6 +1226,10 @@ tr:
             from:
               error_not_found: "iş paketi içerisinde `from` pozisyonu bulunamayor ya da görünür değil"
               error_readonly: "`from` ilişkisi olduğundan bağlantı değiştirilemez"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM satıcısı yok"
           not_whitelisted: "yapılandırmasına izin verilmiyor."

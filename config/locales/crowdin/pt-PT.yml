@@ -1224,6 +1224,10 @@ pt-PT:
             from:
               error_not_found: "pacote de trabalho na posição 'de' não foi encontrada ou não está visível"
               error_readonly: "uma ligação 'de' existente não pode ser mudada"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Fornecedor SCM não está disponível"
           not_whitelisted: "não é permitido pela configuração."

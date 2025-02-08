@@ -1224,6 +1224,10 @@ es:
             from:
               error_not_found: "el paquete de trabajo en la posición 'de' no se ha encontrado o no es visible"
               error_readonly: "la relación existente no se puede modificar 'de' enlace es inmutable"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "El proveedor SMC no está disponible"
           not_whitelisted: "no está permitido por la configuración."

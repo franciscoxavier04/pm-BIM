@@ -1223,6 +1223,10 @@ nl:
             from:
               error_not_found: "werkpakket in `van`-positie niet gevonden of niet zichtbaar"
               error_readonly: "een bestaande `van`-relatielink is onveranderlijk"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM-leverancier is niet beschikbaar"
           not_whitelisted: "is niet toegestaan door de configuratie."

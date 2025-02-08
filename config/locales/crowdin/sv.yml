@@ -1226,6 +1226,10 @@ sv:
             from:
               error_not_found: "arbetspaketet i 'från' hittades inte eller är inte synligt"
               error_readonly: "en befintlig relations 'från'-länk går ej att ändra"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM leverantör är inte tillgänglig"
           not_whitelisted: "tillåts inte av konfigurationen."

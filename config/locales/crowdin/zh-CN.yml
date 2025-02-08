@@ -1214,6 +1214,10 @@ zh-CN:
             from:
               error_not_found: "找不到这个工作包"
               error_readonly: "关系要持久"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM提供商不可用"
           not_whitelisted: "配置所不允许的。"
