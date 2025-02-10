@@ -357,10 +357,10 @@ ko:
           learn_about: "새로운 기능에 대해 자세히 알아보기"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_2":
+          "15_3":
             standard:
               new_features_html: >
-                이 릴리스에는 사용자를 위한 다양한 기능과 개선 사항이 포함되어 있습니다. 예: <br> <ul class="%{list_styling_class}"> <li>작업 패키지에 대한 미리 알림을 설정하여 날짜 경보 알림을 생성합니다.</li> <li>파일 저장소의 위치 선택기에서 새 폴더를 바로 만듭니다.</li> <li>작업 패키지 후행 단계 및 선행 단계 간에 필요한 지연 시간을 지정합니다.</li> <li>사용자 지정 필드 유형 계층 값에 대한 작업 패키지의 순서 지정 및 그룹화를 활성화합니다.</li> <li>시간 항목을 PDF 타임시트로 내보냅니다.</li> <li>마우스를 올리면 사용자 정보가 표시되는 팝오버를 추가합니다.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."

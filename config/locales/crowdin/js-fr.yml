@@ -357,10 +357,10 @@ fr:
           learn_about: "En savoir plus sur les nouvelles fonctionnalités"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_2":
+          "15_3":
             standard:
               new_features_html: >
-                Cette version apporte diverses fonctionnalités et améliorations, par exemple :<br> <ul class="%{list_styling_class}"> <li>Définissez des rappels pour les lots de travaux afin de générer des notifications d'alerte de date.</li> <li>Créez de nouveaux dossiers directement à partir du sélecteur d'emplacement pour le stockage des fichiers.</li> <li>Spécifiez un délai requis entre les successeurs et les prédécesseurs des lots de travaux.</li> <li>Activez l'ordre et le regroupement des lots de travaux en fonction des valeurs des champs personnalisés de type hiérarchique.</li> <li>Exportez les entrées de temps sous forme de feuilles de temps PDF.</li> <li>Ajoutez une fenêtre contextuelle affichant des informations sur l'utilisateur lors du survol à l'écran.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
     ical_sharing_modal:
       title: "S'abonner au calendrier"
       inital_setup_error_message: "Une erreur est survenue lors de la récupération des données."

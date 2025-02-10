@@ -357,10 +357,10 @@ uk:
           learn_about: "Дізнатися більше про нові функції"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_2":
+          "15_3":
             standard:
               new_features_html: >
-                Цей випуск включає багато нових функцій і покращень. <br> <ul class="%{list_styling_class}"> <li>Установлюйте нагадування для пакетів робіт, щоб отримувати завчасні сповіщення.</li> <li>Створюйте нові папки безпосередньо під час вибору місця зберігання файлу в сховищі.</li> <li>Указуйте обов’язковий проміжок часу між нащадками й попередниками пакетів робіт.</li> <li>Дозвольте впорядковувати й групувати пакети робіт за значеннями ієрархії користувацьких полів.</li> <li>Експортуйте записи часу у вигляді таблиць обліку часу в PDF.</li> <li>Налаштуйте появу спливних вікон з інформацією про користувача в разі наведення вказівника миші.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."

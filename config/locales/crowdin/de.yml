@@ -1222,7 +1222,7 @@ de:
               error_readonly: "der 'von' Link einer bestehenden Relation kann nicht geändert werden"
             lag:
               greater_than_or_equal_to:
-                zero: "cannot be negative."
+                zero: "darf nicht negativ sein."
               less_than_or_equal_to: "ist zu hoch."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
