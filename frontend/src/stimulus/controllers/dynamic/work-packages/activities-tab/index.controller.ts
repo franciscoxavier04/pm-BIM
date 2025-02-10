@@ -623,7 +623,13 @@ export default class IndexController extends Controller {
     const userName = target.dataset.userNameParam as string;
     const content = target.dataset.contentParam as string;
 
-    this.openEditorWithInitialData(this.quotedText(content, userName));
+    const quotedText = this.quotedText(content, userName);
+    const formVisible = !this.formRowTarget.classList.contains('d-none');
+    if (formVisible) {
+      this.insertQuoteOnExistingEditor(quotedText);
+    } else {
+      this.openEditorWithInitialData(quotedText);
+    }
   }
 
   private quotedText(rawComment:string, userName:string) {
@@ -632,6 +638,18 @@ export default class IndexController extends Controller {
       .join('');
 
     return `${userName}\n${quoted}`;
+  }
+
+  insertQuoteOnExistingEditor(quotedText:string) {
+    const ckEditorInstance = this.getCkEditorInstance();
+    if (ckEditorInstance) {
+      const editorData = ckEditorInstance.getData({ trim: false });
+      if (editorData.endsWith('<br>') || editorData.endsWith('\n')) {
+        ckEditorInstance.setData(`${editorData}${quotedText}`);
+      } else {
+        ckEditorInstance.setData(`${editorData}\n\n${quotedText}`);
+      }
+    }
   }
 
   openEditorWithInitialData(quotedText:string) {

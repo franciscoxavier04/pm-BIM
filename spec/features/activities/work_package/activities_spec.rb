@@ -776,7 +776,27 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         activity_tab.quote_comment(first_comment_by_member)
 
         # expect the quoted comment to be shown
-        activity_tab.expect_journal_notes(text: "A Member wrote:\nFirst comment by member")
+        activity_tab.ckeditor.expect_value("A Member wrote:\nFirst comment by member")
+      end
+    end
+
+    context "when writing a comment" do
+      current_user { admin }
+
+      before do
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+      end
+
+      it "can quote other user's comments", :aggregate_failures do
+        # open the editor and type something
+        activity_tab.type_comment("Partial message:")
+
+        # quote other user's comment
+        activity_tab.quote_comment(first_comment_by_member)
+
+        # expect the original comment and quote are shown
+        activity_tab.ckeditor.expect_value("Partial message:\nA Member wrote:\nFirst comment by member")
       end
     end
   end
