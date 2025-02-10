@@ -10,13 +10,13 @@ release_date: 2025-02-19
 
 Release date: 2025-02-19
 
-We released OpenProject [OpenProject 15.3.0](https://community.openproject.org/versions/2163). The release contains several bug fixes and we recommend updating to the newest version. Even though it is a minor release, it includes over 40 new features and a big update regarding our Meetings module.  In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
+We released OpenProject [OpenProject 15.3.0](https://community.openproject.org/versions/2163). This release includes several bug fixes, and we recommend updating to the latest version. While it is a minor release, it introduces over 40 new features, including a major update to the Meetings module. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
 ### Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments
 
-Organizing meetings just became much easier with **Recurring Meetings** in OpenProject 15.3. Instead of manually setting up repeated meetings, you can now define a meeting series with flexible recurrence options.
+Organizing meetings just became much easier with **Recurring Meetings** in OpenProject 15.3. Instead of manually setting up repeated meetings, you can now create a Recurring Meeting series with flexible scheduling options.
 
 - **Set up meeting series**: Schedule meetings to recur on a weekly, biweekly, or custom basis.
 - **Manage occurrences**: Each meeting in a series is an individual occurrence, allowing adjustments without affecting the entire series.
@@ -27,7 +27,7 @@ Organizing meetings just became much easier with **Recurring Meetings** in OpenP
 - **Invitation emails for meeting series**: Participants receive automated notifications for scheduled recurring meetings.
 
 > [!NOTE]
-> **Consistent terminology**: The meeting types have been renamed for clarity — OpenProject now distinguishes between **Classic**, **Recurring**, and **One-time** meetings instead of the previous Dynamic vs. Classic naming.
+> **Consistent terminology**: To improve clarity, OpenProject now categorizes meetings as **Classic**, **Recurring**, and **One-time**, replacing the previous Dynamic vs. Classic terminology.
 
 This major feature introduces multiple improvements, with several underlying enhancements that refine scheduling, management, and handling of meeting series. All individual changes related to Recurring Meetings are listed in the full changelog at the end of these release notes.
 
@@ -62,9 +62,9 @@ This enhancement simplifies reporting, making it easier to review and analyze tr
 
 ### Include child work packages in cost reports for more accurate tracking
 
-Cost reports in OpenProject now include child work packages, ensuring more comprehensive cost tracking. Previously, users managing hierarchical work packages (such as epics, features, or sub-tasks) had to manually select each work package to ensure full cost visibility.
+Cost reports in OpenProject now allow to easier include child work packages, ensuring more comprehensive cost tracking. Previously, users managing hierarchical work packages (such as epics, features, or sub-tasks) had to manually select each work package to ensure full cost visibility.
 
-With OpenProject 15.3, a new **Include children** checkbox allows users to automatically pull in all nested work packages when generating cost reports. This eliminates the need for cumbersome manual selection and ensures that all relevant costs are accounted for in reports.
+OpenProject 15.3 introduces a new filter option for cost reports: **is (includes descendents)**, in addition to **is**. This allows users to automatically include all related child work packages (grandchildren, great-grandchildren, etc.) in their cost reports, improving accuracy and efficiency. This eliminates the need for cumbersome manual selection and ensures that all relevant costs are accounted for in reports.
 
 Screenshot
 
@@ -72,12 +72,7 @@ Screenshot
 
 OpenProject now provides better visibility into dependencies by displaying relation dates for work packages that users do not have permission to view. Previously, restricted relations were completely invisible, making it difficult to understand scheduling dependencies.
 
-With OpenProject 15.3, users will see all relations in the Relations tab or date picker. The ones that the user is not allowed to see details display only the following:
-
-- Start and finish dates (for predecessor, successor, and child relations)
-- Lag time (for predecessor and successor relations, if applicable)
-
-Users still cannot interact with restricted work packages but will now understand why a task is scheduled at a specific time.
+OpenProject 15.3 improves transparency by displaying all relations in the Relations tab. While restricted work packages remain inaccessible, their **start and finish dates will now be visible**, along with lag time for applicable relations. This way, users still cannot interact with restricted work packages but will now understand why a task is scheduled at a specific time.
 
 > [!NOTE]
 > If a related work package has the same start and finish date, a single date is displayed instead of a range. This is [another feature of OpenProject 15.3 and applies to all Relations on the Relations tab](https://community.openproject.org/wp/61044), independent from the user's permissions.
@@ -92,7 +87,7 @@ Accidentally deleting hierarchical work packages can lead to irreversible data l
 
 If a user attempts to delete a hierarchy item, a confirmation dialog appears, styled according to the Primer design system. Users must explicitly confirm their intent before deletion can proceed, ensuring greater safety for critical data.
 
-We added similar dialogs in the Meetings module (for deleting meetings) and will also add these kind of dialogs to other "danger zones" of OpenProject within the next releases, e.g. when a user wants to delete a project.
+This confirmation dialog is also now available in the Meetings module for deleting meetings. Over the next releases, OpenProject will expand this feature to additional critical areas, such as project deletions, ensuring safer data management.
 
 ### Show user popover everywhere and also when hovering on the name
 
