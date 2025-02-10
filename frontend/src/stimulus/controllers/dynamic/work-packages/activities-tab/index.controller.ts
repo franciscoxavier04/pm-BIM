@@ -620,10 +620,12 @@ export default class IndexController extends Controller {
   quote(event:Event) {
     event.preventDefault();
     const target = event.currentTarget as HTMLElement;
+    const userId = target.dataset.userIdParam as string;
     const userName = target.dataset.userNameParam as string;
+    const textWrote = target.dataset.textWroteParam as string;
     const content = target.dataset.contentParam as string;
 
-    const quotedText = this.quotedText(content, userName);
+    const quotedText = this.quotedText(content, userId, userName, textWrote);
     const formVisible = !this.formRowTarget.classList.contains('d-none');
     if (formVisible) {
       this.insertQuoteOnExistingEditor(quotedText);
@@ -632,12 +634,13 @@ export default class IndexController extends Controller {
     }
   }
 
-  private quotedText(rawComment:string, userName:string) {
+  private quotedText(rawComment:string, userId:string, userName:string, textWrote:string) {
     const quoted = rawComment.split('\n')
       .map((line:string) => `\n> ${line}`)
       .join('');
 
-    return `${userName}\n${quoted}`;
+    // if we ever change CKEditor or how @mentions work this will break
+    return `<mention class="mention" data-id="${userId}" data-type="user" data-text="@${userName}">@${userName}</mention> ${textWrote}:\n\n${quoted}`;
   }
 
   insertQuoteOnExistingEditor(quotedText:string) {
