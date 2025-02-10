@@ -50,8 +50,8 @@ zh-CN:
       meeting_section:
         title: "标题"
       recurring_meeting:
-        frequency: "频率"
-        interval: "周期"
+        frequency: "周期"
+        interval: "间隔"
         start_date: "开始日期："
         end_after: "会议系列结束"
         iterations: "事件"
@@ -210,7 +210,7 @@ zh-CN:
         confirmation_message_html: >
           该会议是名为 <strong>%{title}</strong> 的会议系列的一部分。这只会删除该会议，而不会删除整个会议系列。要继续吗？
     blankslate:
-      title: "没有要显示的会议"
+      title: "无会议显示"
       desc: "没有符合主动筛选条件的会议。"
   meeting_section:
     untitled_title: "无标题章节"
@@ -219,7 +219,7 @@ zh-CN:
     empty_text: "拖动项目到此处或创建一个新项目"
   recurring_meeting:
     ended_blankslate:
-      title: "会议系列结束"
+      title: "结束"
       message: "本系列会议已经结束，没有即将举行的会议。 "
       action: "您仍可以查看过去的事件或编辑会议系列来扩展它。"
     occurrence:
