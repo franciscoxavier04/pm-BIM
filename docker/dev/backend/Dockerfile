@@ -8,8 +8,6 @@ ENV USER=dev
 ENV RAILS_ENV=development
 ENV NODE_MAJOR=20
 
-ENV BUNDLER_VERSION "2.6.3"
-
 # `--no-log-init` is required as a workaround to avoid disk exhaustion.
 #
 # Read more at:
@@ -52,7 +50,7 @@ WORKDIR /home/$USER/openproject
 
 USER $USER
 
-RUN gem install bundler --version "${BUNDLER_VERSION}" --no-document
+RUN gem install bundler --no-document
 
 ####### Testing image below #########
 
