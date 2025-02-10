@@ -37,7 +37,7 @@ module Meetings
       if cancelled
         calendar.cancel
       else
-        calendar.publish
+        calendar.request
       end
       calendar.to_ical
     end

@@ -107,7 +107,10 @@ class MeetingMailer < UserMailer
       call = ics_service_call(meeting, user, **args)
 
       call.on_success do
-        attachments["meeting.ics"] = call.result
+        attachments["meeting.ics"] = {
+          mime_type: "text/calendar; method=REQUEST; charset=UTF-8",
+          content: call.result
+        }
 
         yield
       end

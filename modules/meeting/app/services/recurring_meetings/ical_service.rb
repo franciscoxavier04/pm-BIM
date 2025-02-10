@@ -76,7 +76,7 @@ module RecurringMeetings
       if cancelled
         calendar.cancel
       else
-        calendar.publish
+        calendar.request
       end
     end
 
