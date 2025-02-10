@@ -76,7 +76,7 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 #### Installing ruby
 
-With both installed, we can now install ruby. 
+With both installed, we can now install ruby.
 You can check available ruby versions with `rbenv install --list`.
 
 We suggest you install the version we require in [.ruby-version](https://github.com/opf/openproject/blob/dev/.ruby-version).
@@ -184,7 +184,7 @@ ruby --version
 ruby 3.4.1 (2024-12-25 revision 48d4efcb85) +PRISM [arm64-darwin23]
 
 bundler --version
-Bundler version 2.5.13
+Bundler version 2.6.3
 
 node --version
 v20.9.0
