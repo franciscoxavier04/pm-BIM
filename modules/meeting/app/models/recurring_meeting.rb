@@ -232,6 +232,10 @@ class RecurringMeeting < ApplicationRecord
       .order(start_time: :asc)
   end
 
+  def instantiated_meetings
+    meetings.not_templated
+  end
+
   private
 
   def unset_schedule
