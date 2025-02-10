@@ -38,8 +38,6 @@ class Meeting::ProjectAutocompleter < ApplicationForm
         openDirectly: false,
         focusDirectly: false,
         dropdownPosition: "bottom",
-        inputName: "project_id",
-        inputValue: @project&.id,
         appendTo: "#new-meeting-dialog",
         filters: [{ name: "user_action", operator: "=", values: ["meetings/create"] }],
         data: {
