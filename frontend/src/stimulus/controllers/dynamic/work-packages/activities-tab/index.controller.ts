@@ -707,12 +707,26 @@ export default class IndexController extends Controller {
     if (ckEditorInstance && ckEditorInstance.getData({ trim: false }).length === 0) {
       this.hideEditor();
     } else {
+      // Store current scroll position before height adjustment
+      const scrollableContainer = this.getScrollableContainer();
+      const scrollPosition = scrollableContainer?.scrollTop || 0;
+
       this.adjustJournalContainerMargin();
+
+      // Restore scroll position after height adjustment
+      if (scrollableContainer) {
+        scrollableContainer.scrollTop = scrollPosition;
+      }
     }
   }
 
   onFocusEditor() {
     this.adjustJournalContainerMargin();
+
+    if (this.isMobile()) {
+      // Ensure editor is fully visible when focused
+      this.scrollInputContainerIntoView(0);
+    }
   }
 
   async onSubmit(event:Event | null = null) {
