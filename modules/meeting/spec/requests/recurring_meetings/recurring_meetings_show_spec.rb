@@ -220,6 +220,40 @@ RSpec.describe "Recurring meetings show",
     end
   end
 
+  context "with an ongoing meeting" do
+    let(:recurring_meeting) do
+      create :recurring_meeting,
+             project:,
+             author: user,
+             start_time: Time.zone.today + 10.hours,
+             frequency: "daily",
+             end_after: "iterations",
+             iterations: 5
+    end
+    let!(:ongoing_instance) do
+      create :structured_meeting,
+             recurring_meeting:,
+             start_time: Time.zone.today + 10.hours - 10.minutes
+    end
+    let!(:ongoing) do
+      create :scheduled_meeting,
+             recurring_meeting:,
+             meeting: ongoing_instance,
+             start_time: Time.zone.today + 10.hours - 10.minutes
+    end
+
+    it "shows the correct number of next occurrences (Regression #61194)" do
+      # While today's meeting is ongoing, but no longer in remaining_occurrences
+      Timecop.freeze(Time.zone.today + 10.hours + 1.minute) do
+        get recurring_meeting_path(recurring_meeting)
+      end
+
+      (1..4).each do |date|
+        expect(page).to have_text format_time(Time.zone.today + date.days + 10.hours)
+      end
+    end
+  end
+
   context "when user has no permissions to access" do
     let(:current_user) { create(:user) }
 
