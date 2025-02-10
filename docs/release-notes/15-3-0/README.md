@@ -10,7 +10,7 @@ release_date: 2025-02-19
 
 Release date: 2025-02-19
 
-We released OpenProject [OpenProject 15.3.0](https://community.openproject.org/versions/2163). The release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. Even though it is a minor release, it includes over 40 new features and a big update regarding our Meetings module. At the end, you will find a complete list of all changes and bug fixes.
+We released OpenProject [OpenProject 15.3.0](https://community.openproject.org/versions/2163). The release contains several bug fixes and we recommend updating to the newest version. Even though it is a minor release, it includes over 40 new features and a big update regarding our Meetings module.  In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
@@ -31,7 +31,11 @@ Organizing meetings just became much easier with **Recurring Meetings** in OpenP
 
 This major feature introduces multiple improvements, with several underlying enhancements that refine scheduling, management, and handling of meeting series. All individual changes related to Recurring Meetings are listed in the full changelog at the end of these release notes.
 
-Screenshot
+The following screenshot shows an example Meetings overview page, highlighting some of the changes for version 15.3:
+
+![Example screenshot of new Meetings overview page with OpenProject 15.3, including Recurring meetings / Meeting series](openproject-15-3-recurring-meetings-highlighted.png)
+
+Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between My meetings / Recurring meetings and All meetings, with seperate sections for Meeting series and Involvement.
 
 ### Create child work packages directly from the Relations tab
 
