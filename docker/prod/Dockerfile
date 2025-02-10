@@ -2,7 +2,6 @@ ARG RUBY_VERSION="3.4.1"
 FROM ruby:${RUBY_VERSION}-bookworm AS base
 LABEL maintainer="operations@openproject.com"
 
-ARG BUNDLER_VERSION="2.6.3"
 ARG NODE_VERSION="20.9.0"
 ARG BIM_SUPPORT=true
 ENV USE_JEMALLOC=false
@@ -44,7 +43,7 @@ RUN useradd -d /home/$APP_USER -m $APP_USER && \
 WORKDIR $APP_PATH
 
 # upgrade bundler
-RUN gem install bundler --version "$BUNDLER_VERSION" --no-document
+RUN gem install bundler --no-document
 
 # system dependencies, nodejs
 COPY ./docker/prod/setup/preinstall-common.sh ./docker/prod/setup/preinstall-common.sh
