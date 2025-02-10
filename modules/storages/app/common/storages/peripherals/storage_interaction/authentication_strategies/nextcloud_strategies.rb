@@ -33,23 +33,28 @@ module Storages
     module StorageInteraction
       module AuthenticationStrategies
         module NextcloudStrategies
+          extend TaggedLogging
+
           UserLess = -> do
             ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::BasicAuth.strategy
           end
 
           UserBound = ->(user:, storage:) do
-            sso_preferred = storage.audience.present? && user.authentication_provider.present?
+            with_tagged_logger do
+              sso_preferred = storage.audience.present? && user.authentication_provider.present?
 
-            if sso_preferred
-              ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken
-                .strategy
-                .with_user(user)
-            elsif storage.oauth_configuration.present?
-              ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-                .strategy
-                .with_user(user)
-            else
-              ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Noop.strategy
+              if sso_preferred
+                ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken
+                  .strategy
+                  .with_user(user)
+              elsif storage.oauth_client.present?
+                ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
+                  .strategy
+                  .with_user(user)
+              else
+                error "No user-bound authentication strategy applicable for file storage #{storage.id}."
+                ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Failure.strategy
+              end
             end
           end
         end

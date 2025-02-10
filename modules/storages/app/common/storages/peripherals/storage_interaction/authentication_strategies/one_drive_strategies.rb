@@ -37,13 +37,11 @@ module Storages
             ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthClientCredentials.strategy
           end
 
-          # rubocop:disable Lint/UnusedBlockArgument
-          UserBound = ->(user:, storage:) do
+          UserBound = ->(user:, storage:) do # rubocop:disable Lint/UnusedBlockArgument
             ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
               .strategy
               .with_user(user)
           end
-          # rubocop:enable Lint/UnusedBlockArgument
         end
       end
     end

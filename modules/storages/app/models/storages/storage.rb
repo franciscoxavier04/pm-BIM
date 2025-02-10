@@ -149,7 +149,7 @@ module Storages
 
     # Returns a value of an audience, if configured for this storage.
     # The presence of an audience signals that this storage prioritizes
-    # remote authentication over token exchange if possible.
+    # remote authentication via Single-Sign-On if possible.
     def audience
       raise Errors::SubclassResponsibility
     end

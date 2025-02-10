@@ -32,30 +32,19 @@ module Storages
   module Peripherals
     module StorageInteraction
       module AuthenticationStrategies
-        class SsoUserToken
+        class Failure
           def self.strategy
-            Strategy.new(:sso_user_token)
+            Strategy.new(:failure)
           end
 
-          def initialize(user)
-            @user = user
+          # rubocop:disable Lint/UnusedMethodArgument
+          def call(storage:, http_options: {})
+            data = ::Storages::StorageErrorData.new(source: self.class)
+            log_message = "Authentication was forced to fail. No request executed."
+            Failures::Builder.call(code: :error, log_message:, data:)
           end
 
-          def call(storage:, http_options: {}, &)
-            OpenIDConnect::UserTokens::FetchService
-              .new(user: @user)
-              .access_token_for(audience: storage.audience)
-              .either(
-                ->(token) do
-                  opts = http_options.deep_merge({ headers: { "Authorization" => "Bearer #{token}" } })
-                  yield OpenProject.httpx.with(opts)
-                end,
-                ->(error) do
-                  log_message = "Failed to fetch access token for user #{@user}. Error: #{error.inspect}"
-                  Failures::Builder.call(code: :unauthorized, log_message:, data: error)
-                end
-              )
-          end
+          # rubocop:enable Lint/UnusedMethodArgument
         end
       end
     end
