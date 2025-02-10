@@ -41,20 +41,24 @@ Please particularly note that filtering between upcoming and past meetings now h
 
 With OpenProject 15.3, you can now again create child work packages directly from the Relations tab, making it faster and more intuitive to build structured work breakdowns.
 
-A new option, **New child**, has been added to the **+ Relation** dropdown. If child work packages already exist, a **+ Child** button appears in the header of the child work packages section and allows you to quickly add another child to the active work package. Selecting **New child** opens a dialog where you can immediately enter essential details like type, subject, description, and other mandatory fields. Once created, the child work package is added to the list, and a confirmation message appears.
+A new option, **New child**, has been added to the **+ Relation** dropdown. Selecting it opens a dialog where you can immediately enter essential details like type, subject, description, and other mandatory fields. Once created, the child work package is added to the list, and a confirmation message appears.
 
-Screenshot
+![Screenshot showing the +Child actions in the dropdown list of the Relations tab](openproject-15-3-child-relation-highlighted.png)
+
+Additionally, if child work packages already exist, a **+ Child** button appears in the header of the child work packages section and allows you to quickly add another child to the active work package:
+
+![Screenshot showing the +Child button in the Relations tab of work packages](openproject-15-3-add-new-child-button-highlighted.png)
 
 ### Include total sums in timesheet PDF exports for better insights
 
 Tracking logged time is now more transparent with total sum calculations in timesheet PDF exports. Previously, users had to manually sum up hours across multiple users. With OpenProject 15.3, the PDF export now includes:
 
 - A summary table on a separate page when exporting timesheets for multiple users, showing total hours per user and a final sum.
-- A sum row under each user’s timesheet table, ensuring quick insights into individual and team-wide logged hours.
+- A sum row under each user's timesheet table, ensuring quick insights into individual and team-wide logged hours.
 
 This enhancement simplifies reporting, making it easier to review and analyze tracked time across teams.
 
-Screenshot
+![Screenshot showing a timesheet overview page, including a sum](openproject-15-3-sums-pdf-timesheet-overview.png)
 
 ### Include child work packages in cost reports for more accurate tracking
 
