@@ -1218,8 +1218,8 @@ zh-TW:
               error_readonly: "您無法更改現有關係的“開始”連結"
             lag:
               greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
+                zero: "不能為負數。"
+              less_than_or_equal_to: "太高。"
         repository:
           not_available: "版本控制無法使用"
           not_whitelisted: "不被設定所允許"
