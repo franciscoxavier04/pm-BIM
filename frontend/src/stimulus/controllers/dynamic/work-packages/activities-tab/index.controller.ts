@@ -598,16 +598,26 @@ export default class IndexController extends Controller {
     this.addEventListenersToCkEditorInstance();
 
     if (this.isMobile()) {
-      // timeout amount tested on mobile devices for best possible user experience
-      this.scrollInputContainerIntoView(100); // first bring the input container fully into view (before focusing!)
-      this.focusEditor(400); // wait before focusing to avoid interference with the auto scroll
+      void this.showFormMobile();
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
-      // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
       this.scrollJournalContainer(true);
       this.focusEditor();
     } else {
       this.focusEditor();
     }
+  }
+
+  private async showFormMobile() {
+    // First focus to trigger keyboard
+    this.focusEditor(100);
+
+    // Wait for virtual keyboard animation - iOS takes ~0.3s to show the keyboard
+    await new Promise<void>((resolve) => {
+      void window.setTimeout(resolve, 300);
+    });
+
+    // Then scroll into position
+    this.scrollInputContainerIntoView(0);
   }
 
   focusEditor(timeout:number = 10) {
