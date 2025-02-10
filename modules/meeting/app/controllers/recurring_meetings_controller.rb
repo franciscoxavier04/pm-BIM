@@ -287,7 +287,8 @@ class RecurringMeetingsController < ApplicationController
         @recurring_meeting.scheduled_instances(upcoming: false).count
       elsif @recurring_meeting.will_end?
         open = @recurring_meeting.upcoming_instantiated_meetings
-        @recurring_meeting.remaining_occurrences.count - open.count
+        ongoing = @recurring_meeting.ongoing_meetings
+        @recurring_meeting.remaining_occurrences.count - open.count + ongoing.count
       end
 
     @count = [show_more_limit_param, @max_count].compact.min
@@ -320,14 +321,14 @@ class RecurringMeetingsController < ApplicationController
     # instance variable.
     @converted_params = recurring_meeting_params.to_h
 
-    @converted_params[:project] = @project
+    @converted_params[:project] = @project if @project.present?
     @converted_params[:duration] = @converted_params[:duration].to_hours if @converted_params[:duration].present?
   end
 
   def recurring_meeting_params
     params
       .require(:meeting)
-      .permit(:title, :location, :start_time_hour, :duration, :start_date,
+      .permit(:project_id, :title, :location, :start_time_hour, :duration, :start_date,
               :interval, :frequency, :end_after, :end_date, :iterations)
   end
 

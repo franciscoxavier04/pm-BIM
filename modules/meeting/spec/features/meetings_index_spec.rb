@@ -113,7 +113,6 @@ RSpec.describe "Meetings", "Index", :js do
     context "when showing all meetings without invitations" do
       it "does not show under My meetings, but in All meetings" do
         meetings_page.visit!
-        # expect(page).to have_content "No meetings to display"
         meetings_page.expect_no_meetings_listed
 
         meetings_page.set_sidebar_filter "All meetings"
