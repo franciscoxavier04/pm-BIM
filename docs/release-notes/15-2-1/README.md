@@ -15,6 +15,14 @@ The release contains several bug fixes and a security related fix and we recomme
 In these Release Notes, we will give an overview of important feature changes.
 At the end, you will find a complete list of all changes and bug fixes.
 
+## CVE-2025-24892: HTML injection in members page
+
+An HTML injection vulnerability in the members detail page for groups was reported and fixed. This affects versions 15.2.0 and below.
+This vulnerability has been assigned the CVE identifier CVE-2025-24892 with a score of 3.5/10 (low).
+
+A big thank you to [Kanitin Pholngam](https://github.com/meanknt) for the discovery and responsible disclosure of this vulnerability.
+For more information, please see our [GitHub advisory page](https://github.com/opf/openproject/security/advisories/GHSA-mg4q-ghvh-cm2j).
+
 <!--more-->
 
 ## Bug fixes and changes
