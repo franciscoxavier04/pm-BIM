@@ -18,7 +18,12 @@ The DangerDialog is a sub-component of FeedbackDialog.
 The FeedbackDialog is a variation of FeedbackDialog. It consists of:
 
 - A red warning icon
-- A heading with a confirmation question such as "Permanently delete?"
+- A title: a short description of the dialog action. This should be written in a neutral tone. The title is currently only used for accessibility purposes. Examples:
+    - "Delete work package"
+    - "Delete project"
+- A heading: a question inviting the user to take a decision, This should be written in an active tone. You may also to give the full descriptive name of the resource on which the action will take place (e.g. "meeting occurrence" rather than just "meeting"). Examples:
+    - "Permanently delete this work package?"
+    - "Cancel this meeting occurrence?"
 - A message explaining the consequences
 - An additional content slot
 - (For the Danger Confirmation) A confirmation checkbox with text: "I understand that this deletion cannot be reversed"
