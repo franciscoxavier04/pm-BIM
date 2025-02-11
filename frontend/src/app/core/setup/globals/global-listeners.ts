@@ -81,6 +81,12 @@ export function initializeGlobalListeners():void {
     document.body.classList.toggle('zen-mode', event.detail.active);
   });
 
+  // Check if a screeen reader is active
+  window.onload = function () {
+    const isScreenReader = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.body.classList.toggle('screen-reader', isScreenReader);
+  };
+
   // Jump to the element given by location.hash, if present
   const { hash } = window.location;
   if (hash && hash.startsWith('#')) {
