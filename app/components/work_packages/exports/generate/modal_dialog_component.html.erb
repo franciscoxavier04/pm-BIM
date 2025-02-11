@@ -29,11 +29,11 @@
                 selected = templates_default.id
                 templates_options.each do |entry|
                   component.option(
-                    label: entry[:label],
-                    value: entry[:id],
-                    selected: selected == entry[:id],
+                    label: entry.label,
+                    value: entry.id,
+                    selected: selected == entry.id,
                     data: {
-                      caption: entry[:caption]
+                      caption: entry.caption
                     }
                   )
                 end
