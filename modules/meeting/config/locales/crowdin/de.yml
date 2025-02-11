@@ -54,7 +54,7 @@ de:
         frequency: "Häufigkeit"
         interval: "Intervall"
         start_date: "Started am"
-        end_after: "Besprechungsserie endet"
+        end_after: "Terminserie endet"
         iterations: "Ereignisse"
     errors:
       messages:
@@ -116,12 +116,12 @@ de:
   label_recurring_meeting_plural: "Wiederkehrende Besprechungen"
   label_template: "Vorlage"
   label_recurring_meeting_view: "Terminserie ansehen"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Öffnen"
   label_recurring_meeting_copy: "Als einmalige Besprechung kopieren"
   label_recurring_meeting_cancel: "Diese Besprechung absagen"
   label_recurring_meeting_delete: "Besprechung löschen"
   label_recurring_meeting_restore: "Dieses Vorkommen wiederherstellen"
-  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_schedule: "Terminplan"
   label_recurring_meeting_next_occurrence: "Nächstes Ereignis"
   label_recurring_meeting_more: "Es gibt %{count} folgende Besprechungen (%{schedule})."
   label_recurring_meeting_no_end_date: "Es sind weitere Besprechungen geplant (%{schedule})."
@@ -129,10 +129,10 @@ de:
   label_recurring_meeting_more_past: "Es gibt %{count} weitere vergangene Besprechungen."
   label_recurring_meeting_more_past_singular: "Es gibt %{count} weitere vergangene Besprechung."
   label_recurring_meeting_show_more: "Mehr anzeigen"
-  label_recurring_meeting_series_create: "Besprechungsserie erstellen"
+  label_recurring_meeting_series_create: "Terminserie erstellen"
   label_recurring_meeting_series_edit: "Terminserie bearbeiten"
   label_recurring_meeting_series_delete: "Terminserie löschen"
-  label_recurring_meeting_series_end: "Besprechungsserie beenden"
+  label_recurring_meeting_series_end: "Terminserie beenden"
   label_recurring_meeting_series_end_now: "Serie jetzt beenden"
   label_meeting_more:
     one: "Es gibt eine weitere Besprechung."
@@ -179,8 +179,8 @@ de:
       send_invitation_emails_structured: "Sofortige E-Mail-Einladung an alle Teilnehmer senden. Sie können dies auch zu einem späteren Zeitpunkt manuell tun."
       open_meeting_link: "Besprechung öffnen"
       series:
-        title: "[%{project_name}] Besprechungsserie %{title}"
-        summary: "%{actor} hat eine neue Besprechungsserie %{title} eingerichtet"
+        title: "[%{project_name}] Terminserie %{title}"
+        summary: "%{actor} hat eine neue Terminserie %{title} eingerichtet"
       invited:
         summary: "%{actor} hat Ihnen eine Einladung für die folgende Besprechung gesendet: %{title}"
       rescheduled:
@@ -193,7 +193,7 @@ de:
     types:
       classic: "Klassisch"
       classic_text: "Organisieren Sie Ihre Besprechung und zugehöriges Protokoll in einem einzelnen Notizblock."
-      structured: "Strukturiert"
+      structured: "Dynamisch"
       one_time: "Einmalig"
       recurring: "Terminserie"
       recurring_text: "Erstellen Sie eine Terminserie mit einer dynamischen Vorlage und wiederkehrenden Besprechungen."
@@ -205,15 +205,15 @@ de:
         title: "Besprechung löschen"
         heading: "Diese Besprechung löschen?"
         confirmation_message_html: >
-          This action is not reversible. Please proceed with caution.
+          Diese Aktion kann nicht rückgängig gemacht werden. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
       occurrence:
         title: "Besprechungsereignis löschen"
         heading: "Dieses Besprechungsereignis löschen?"
         confirmation_message_html: >
-          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+          Diese Besprechung ist Teil der Terminserie <strong>%{title}</strong>. Dadurch wird nur dieses bestimmte Ereignis und nicht die gesamte Serie gelöscht. Möchten Sie fortfahren?
     blankslate:
-      title: "No meetings to display"
-      desc: "There are no meetings that meet the active filter criteria."
+      title: "Keine Besprechungen anzuzeigen"
+      desc: "Es gibt keine Besprechungen, die die Kriterien des aktiven Filters erfüllen."
   meeting_section:
     untitled_title: "Unbenannter Abschnitt"
     delete_confirmation: "Wenn Sie den Abschnitt löschen, werden auch alle zugehörigen Tagesordnungspunkte gelöscht. Möchten Sie fortfahren?"
@@ -221,9 +221,9 @@ de:
     empty_text: "Neue Agendapunkte hierhin bewegen oder neu erstellen"
   recurring_meeting:
     ended_blankslate:
-      title: "Besprechungsserie beendet"
-      message: "This meeting series has come to an end. There are no upcoming meetings. "
-      action: "You can still view past occurrences or edit the meeting series to extend it."
+      title: "Terminserie beendet"
+      message: "Diese Terminserie ist beendet. Es finden keine weiteren Ereignisse statt. "
+      action: "Sie können immer noch vorangegangene Besprechungen dieser Serie anzeigen oder die Serie bearbeiten, um weitere Termine ergänzen."
     occurrence:
       infoline: "Diese Besprechung ist Teil einer Terminserie."
       error_no_next: "Es gibt keinen nächsten Termin für diese Serie."
@@ -231,7 +231,7 @@ de:
       first_created: >
         Die erste Besprechung wurde erfolgreich aus der Vorlage erstellt. Weitere werden automatisch zu dem Zeitpunkt erstellt, wenn die vorhergehende Besprechung startet.
     template:
-      button_finalize: "Vorlage fertigstellen"
+      button_finalize: "Open first meeting"
       blank_title: "Die Vorlage für die wiederkehrenden Besprechungen ist leer"
       description: >
         Diese Vorlage wird immer dann verwendet, wenn neue Besprechungen der Terminserie erstellt werden. Sie können zu dieser Vorlage Tagesordnungspunkte, Teilnehmer und Anhänge hinzufügen.
@@ -261,38 +261,38 @@ de:
       full_past: "%{base} um %{time}, endet am %{end_date}"
       never_ending: "%{base} um %{time}"
     open:
-      title: "Open"
+      title: "Öffnen"
       subtitle: >
-        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+        Offene Besprechungen haben Tagesordnungen, die bearbeitet werden können und im Bereich "Meine Meetings" der Teilnehmer angezeigt werden. Änderungen an der Vorlage für Besprechungsserien wirken sich nicht mehr auf diese bereits geöffneten Besprechungen aus.
       blankslate:
         title: "Zurzeit keine offenen Besprechungen"
-        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
+        desc: "Sie können eine geplante Besprechung manuell öffnen, indem Sie unten auf die Schaltfläche \"Öffnen\" klicken"
     planned:
       title: "Geplant"
       subtitle: >
-        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+        Die folgenden Besprechungen sind als Teil der Terminserie geplant, aber noch nicht geöffnet. Jedes Mal, wenn eine geplante Besprechung beginnt, wird die nächste automatisch für Sie geöffnet. Sie können geplante Besprechungen auch manuell öffnen, um die Vorlage zu importieren und mit der Bearbeitung der Tagesordnung zu beginnen.
       blankslate:
         title: "Keine weiteren geplanten Besprechungen"
         desc: >
-          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
+          In dieser Terminserie sind keine weiteren Besprechungen geplant. Um weitere Besprechungen zu planen oder die Serie zu erweitern, gehen Sie zur Vorlage und bearbeiten Sie die Besprechungsdetails, um das Enddatum, die Häufigkeit oder das Intervall zu ändern.
     delete_dialog:
-      title: "Besprechungsserie löschen"
-      heading: "Diese Besprechungsserie endgültig löschen?"
+      title: "Terminserie löschen"
+      heading: "Diese Terminserie endgültig löschen?"
       confirmation_message_html:
         zero: >
-          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+          Durch die Löschung von <strong>%{title}</strong> werden alle Besprechungen in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
         one: >
-          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+          Durch die Löschung von <strong>%{title}</strong> wird eine bestehende Besprechung in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+          Durch die Löschung von <strong>%{title}</strong> werden alle %{count} Besprechungen in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
     scheduled_delete_dialog:
-      title: "Besprechungsereignis abbrechen"
-      heading: "Dieses Besprechungsereignis abbrechen?"
+      title: "Terminserie abbrechen"
+      heading: "Dieses Ereignis absagen?"
       confirmation_message_html: >
-        Any meeting information not in the template will be lost. Do you want to continue?
-      confirm_button: "Ereignis abbrechen"
+        Sämtliche Inhalte der Besprechung, die nicht aus der Vorlage entstammen, werden gelöscht und verloren werden. Möchten Sie fortfahren?
+      confirm_button: "Besprechung absagen"
     end_series_dialog:
-      title: "Besprechungsserie beenden"
+      title: "Terminserie beenden"
   notice_successful_notification: "Benachrichtigung erfolgreich gesendet"
   notice_timezone_missing: Keine Zeitzone eingestellt und daher %{zone} angenommen. Um Ihre Zeitzone einzustellen, klicken Sie bitte hier.
   notice_meeting_updated: "Diese Seite wurde von einem anderen Benutzer verändert. Laden Sie neu, um die Änderungen zu sehen."
@@ -314,8 +314,8 @@ de:
   text_duration_in_hours: "Dauer in Stunden"
   text_in_hours: "in Stunden"
   text_meeting_agenda_for_meeting: 'die Agenda für die Besprechung "%{meeting}"'
-  text_meeting_series_end_early_heading: "Zukünftige Vorkommnisse löschen?"
-  text_meeting_series_end_early: "Durch das Beenden der Serie werden alle zukünftigen offenen oder geplanten Besprechungsereignisse gelöscht"
+  text_meeting_series_end_early_heading: "Zukünftige Ereignisse löschen?"
+  text_meeting_series_end_early: "Durch das Beenden der Terminserie werden alle zukünftigen offenen oder geplanten Besprechungsereignisse gelöscht"
   text_meeting_closing_are_you_sure: "Sind Sie sicher, dass Sie die Agenda schließen wollen?"
   text_meeting_agenda_open_are_you_sure: "Es werden alle Änderungen im Protokoll überschrieben! Wollen Sie fortfahren?"
   text_meeting_minutes_for_meeting: 'das Protokoll für die Besprechung "%{meeting}"'

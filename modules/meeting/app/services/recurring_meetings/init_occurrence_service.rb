@@ -61,7 +61,8 @@ module RecurringMeetings
     def instantiate_params(start_time)
       {
         start_time:,
-        recurring_meeting:
+        recurring_meeting:,
+        template: false
       }
     end
 

@@ -31,8 +31,11 @@
 class Queries::Principals::Filters::MentionableOnWorkPackageFilter <
   Queries::Principals::Filters::PrincipalFilter
   def allowed_values
-    # We don't care for the first value as we do not display the values visibly
-    @allowed_values ||= ::WorkPackage.visible.pluck(:id).map { |id| [id, id.to_s] }
+    raise NotImplementedError, "There would be too many candidates"
+  end
+
+  def allowed_values_subset
+    @allowed_values_subset ||= ::WorkPackage.visible
   end
 
   def type
@@ -53,6 +56,10 @@ class Queries::Principals::Filters::MentionableOnWorkPackageFilter <
   end
 
   private
+
+  def type_strategy
+    @type_strategy ||= Queries::Filters::Strategies::HugeList.new(self)
+  end
 
   def principals_with_a_membership
     visible_scope.where(id: work_package_members.select(:user_id))

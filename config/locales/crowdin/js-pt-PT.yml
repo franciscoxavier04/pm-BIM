@@ -357,10 +357,10 @@ pt-PT:
           learn_about: "Saiba mais sobre os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_2":
+          "15_3":
             standard:
               new_features_html: >
-                A versão traz várias funcionalidades e melhorias para si, por exemplo, <br> <ul class="%{list_styling_class}"> <li>Defina lembretes para pacotes de trabalho para gerar notificações de alerta de data.</li> <li>Crie novas pastas diretamente a partir do seletor de localização para armazenamento de ficheiros.</li> <li>Especifique um desfasamento necessário entre os sucessores e os antecessores dos pacotes de trabalho.</li> <li>Ative a ordenação e o agrupamento de pacotes de trabalho com base nos valores da hierarquia de tipos de campos personalizados.</li> <li>Exporte registos de tempo como registos horários em PDF.</li> <li>Adicione uma janela popover que apresenta informações do utilizador ao passar o cursor do rato.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."

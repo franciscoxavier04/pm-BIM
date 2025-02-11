@@ -231,7 +231,7 @@ nl:
       first_created: >
         De eerste vergadering is succesvol aangemaakt vanuit het sjabloon. Alle toekomstige vergaderingen worden automatisch aangemaakt op het moment van de vorige vergadering.
     template:
-      button_finalize: "Sjabloon voltooien"
+      button_finalize: "Open first meeting"
       blank_title: "Uw vergaderreeks sjabloon is leeg"
       description: >
         Dit sjabloon wordt gebruikt wanneer nieuwe vergaderingen in de serie worden aangemaakt. U kunt agendapunten, deelnemers en bijlagen aan het sjabloon toevoegen.

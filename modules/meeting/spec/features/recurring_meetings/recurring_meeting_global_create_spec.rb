@@ -83,5 +83,32 @@ RSpec.describe "Recurring meetings global creation",
       expect(meeting.title).to eq "Some title"
       expect(meeting.project).to eq project
     end
+
+    it "shows a project validation error when empty (Regression #61176)" do
+      expect(page).to have_current_path(meetings_page.path)
+      meetings_page.click_on "add-meeting-button"
+
+      page.within("action-list") do
+        meetings_page.click_on "Recurring"
+      end
+
+      meetings_page.set_title "Some title"
+      meetings_page.click_create
+      wait_for_network_idle
+
+      expect(page).to have_text "Project can't be blank."
+      meetings_page.set_project project
+
+      within("[data-test-selector='project_id']") do
+        expect(page).to have_text project.name
+      end
+      meetings_page.click_create
+      wait_for_network_idle
+
+      expect(page).to have_css("h1", text: "Some title")
+      meeting = Meeting.last
+      expect(meeting.title).to eq "Some title"
+      expect(meeting.project).to eq project
+    end
   end
 end

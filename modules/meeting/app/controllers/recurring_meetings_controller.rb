@@ -160,11 +160,13 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def destroy
-    if @recurring_meeting.destroy
-      flash[:notice] = I18n.t(:notice_successful_delete)
-    else
-      flash[:error] = I18n.t(:error_failed_to_delete_entry)
-    end
+    # rubocop:disable Rails/ActionControllerFlashBeforeRender
+    RecurringMeetings::DeleteService
+      .new(model: @recurring_meeting, user: User.current)
+      .call
+      .on_success { flash[:notice] = I18n.t(:notice_successful_delete) }
+      .on_failure { flash[:error] = I18n.t(:error_failed_to_delete_entry) }
+    # rubocop:enable Rails/ActionControllerFlashBeforeRender
 
     respond_to do |format|
       format.html do
@@ -272,7 +274,7 @@ class RecurringMeetingsController < ApplicationController
       .scheduled_occurrences(limit: count + opened.count)
       .reject { |start_time| opened.include?(start_time) }
       .map { |start_time| cancelled[start_time] || scheduled_meeting(start_time) }
-      .first(count)
+      .first([count, 0].max)
 
     [opened.values.sort_by(&:start_time), planned]
   end
@@ -288,7 +290,8 @@ class RecurringMeetingsController < ApplicationController
       elsif @recurring_meeting.will_end?
         open = @recurring_meeting.upcoming_instantiated_meetings
         ongoing = @recurring_meeting.ongoing_meetings
-        @recurring_meeting.remaining_occurrences.count - open.count + ongoing.count
+        total = @recurring_meeting.remaining_occurrences.count - open.count + ongoing.count
+        [total, 0].max
       end
 
     @count = [show_more_limit_param, @max_count].compact.min

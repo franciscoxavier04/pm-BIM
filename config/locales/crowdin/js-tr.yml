@@ -356,10 +356,10 @@ tr:
           learn_about: "Yeni özellikler hakkında daha fazla bilgi edinin"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_2":
+          "15_3":
             standard:
               new_features_html: >
-                Sürüm sizin için çeşitli özellikler ve iyileştirmeler getiriyor, örneğin <br> <ul class="%{list_styling_class}"> <li>Tarih uyarısı bildirimleri oluşturmak için iş paketleri için hatırlatıcılar ayarlayın.</li> <li>Dosya depolama için doğrudan konum seçiciden yeni klasörler oluşturun.</li> <li>İş paketleri ardılları ve öncülleri arasında gerekli bir gecikme belirtin.</li> <li>Özel alan türü hiyerarşisinin değerlerine göre iş paketleri için sıralama ve gruplamayı etkinleştirin.</li> <li>Zaman girişlerini PDF zaman çizelgeleri olarak dışa aktarın.</li> <li>Üzerine gelindiğinde kullanıcı bilgilerini görüntüleyen bir açılır pencere ekleyin.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
     ical_sharing_modal:
       title: "Takvime abone ol"
       inital_setup_error_message: "An error occured while fetching data."
@@ -529,7 +529,7 @@ tr:
     label_work_package_parent: "İş paketini oluştur"
     label_work_package_plural: "İş paketleri"
     label_watch: "Takip et"
-    label_watch_work_package: "İş paketini izle"
+    label_watch_work_package: "İş paketini takip et"
     label_watcher_added_successfully: "Takipçi başarıyla eklendi!"
     label_watcher_deleted_successfully: "Takipçi başarıyla silindi!"
     label_work_package_details_you_are_here: "You are on the %{tab} tab for %{type} %{subject}."
@@ -678,7 +678,7 @@ tr:
           assignee: "Atanan"
           responsible: "Sorumlu"
           shared: "Shared"
-          watched: "İzleyici"
+          watched: "Takip eden"
           work_package_commented: "Tüm yeni yorumlar"
           work_package_created: "Yeni iş paketleri"
           work_package_processed: "Tüm durum değişiklikleri"
@@ -731,7 +731,7 @@ tr:
     reminders:
       settings:
         daily:
-          add_time: "Süre ekle"
+          add_time: "Zaman ekle"
           enable: "Günlük e-posta hatırlatıcılarını etkinleştir"
           explanation: "Bu hatırlatıcıları yalnızca okunmamış bildirimler için ve yalnızca sizin belirlediğiniz saatlerde alacaksınız. %{no_time_zone}"
           no_time_zone: "Hesabınız için bir saat dilimi yapılandırana kadar, saatler UTC olarak yorumlanacaktır."

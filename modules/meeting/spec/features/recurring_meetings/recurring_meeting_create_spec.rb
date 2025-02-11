@@ -118,9 +118,9 @@ RSpec.describe "Recurring meetings creation",
 
       expect(page).to have_css("#meetings-side-panel-participants-component", text: 2)
 
-      expect(page).to have_link("Finish template")
+      expect(page).to have_link("Open first meeting")
 
-      click_link_or_button "Finish template"
+      click_link_or_button "Open first meeting"
       wait_for_network_idle
 
       # Sends out an invitation to the series
