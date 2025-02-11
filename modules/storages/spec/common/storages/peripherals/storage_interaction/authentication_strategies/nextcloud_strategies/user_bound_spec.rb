@@ -32,45 +32,66 @@ require "spec_helper"
 require_module_spec_helper
 
 RSpec.describe Storages::Peripherals::StorageInteraction::AuthenticationStrategies::NextcloudStrategies::UserBound do
-  context "if file storage is configured for sso and oauth and user is provisioned by an IDP" do
+  context "if user is provisioned by an IDP" do
     let(:provider) { create(:oidc_provider) }
     let(:user) { create(:user, identity_url: "#{provider.slug}:me") }
-    let(:storage) { create(:nextcloud_storage_configured) }
 
-    it "must use an SsoUserToken strategy" do
-      strategy = described_class.call(user:, storage:)
-      expect(strategy.key).to eq(:sso_user_token)
+    context "if file storage is configured for sso only" do
+      let(:storage) { create(:nextcloud_storage) }
+
+      it "must use an SsoUserToken strategy" do
+        strategy = described_class.call(user:, storage:)
+        expect(strategy.key).to eq(:sso_user_token)
+      end
+    end
+
+    context "if file storage is configured for sso and oauth" do
+      let(:storage) { create(:nextcloud_storage_configured) }
+
+      it "must use an SsoUserToken strategy" do
+        strategy = described_class.call(user:, storage:)
+        expect(strategy.key).to eq(:sso_user_token)
+      end
+    end
+
+    context "if file storage is configured for oauth only" do
+      let(:storage) { create(:nextcloud_storage_configured, nextcloud_audience: nil) }
+
+      it "must use an OAuthUserToken strategy" do
+        strategy = described_class.call(user:, storage:)
+        expect(strategy.key).to eq(:oauth_user_token)
+      end
     end
   end
 
-  context "if file storage is configured for sso and oauth and user is local" do
+  context "if user is local" do
     let(:user) { create(:user) }
-    let(:storage) { create(:nextcloud_storage_configured) }
 
-    it "must use an OAuthUserToken strategy" do
-      strategy = described_class.call(user:, storage:)
-      expect(strategy.key).to eq(:oauth_user_token)
+    context "if file storage is configured for sso only" do
+      let(:storage) { create(:nextcloud_storage) }
+
+      it "must return the failure strategy" do
+        strategy = described_class.call(user:, storage:)
+        expect(strategy.key).to eq(:failure)
+      end
     end
-  end
 
-  context "if file storage is configured only for oauth and user is provided by an IDP" do
-    let(:provider) { create(:oidc_provider) }
-    let(:user) { create(:user, identity_url: "#{provider.slug}:me") }
-    let(:storage) { create(:nextcloud_storage_configured, nextcloud_audience: nil) }
+    context "if file storage is configured for sso and oauth" do
+      let(:storage) { create(:nextcloud_storage_configured) }
 
-    it "must use an OAuthUserToken strategy" do
-      strategy = described_class.call(user:, storage:)
-      expect(strategy.key).to eq(:oauth_user_token)
+      it "must use an OAuthUserToken strategy" do
+        strategy = described_class.call(user:, storage:)
+        expect(strategy.key).to eq(:oauth_user_token)
+      end
     end
-  end
 
-  context "if file storage is configured only for oauth and user is local" do
-    let(:user) { create(:user) }
-    let(:storage) { create(:nextcloud_storage_configured, nextcloud_audience: nil) }
+    context "if file storage is configured for oauth only" do
+      let(:storage) { create(:nextcloud_storage_configured, nextcloud_audience: nil) }
 
-    it "must use an OAuthUserToken strategy" do
-      strategy = described_class.call(user:, storage:)
-      expect(strategy.key).to eq(:oauth_user_token)
+      it "must use an OAuthUserToken strategy" do
+        strategy = described_class.call(user:, storage:)
+        expect(strategy.key).to eq(:oauth_user_token)
+      end
     end
   end
 

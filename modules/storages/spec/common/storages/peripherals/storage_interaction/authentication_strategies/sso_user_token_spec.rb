@@ -73,7 +73,6 @@ RSpec.describe Storages::Peripherals::StorageInteraction::AuthenticationStrategi
       expect(result.result).to eq(:unauthorized)
       expect(result.errors).to be_a(Storages::StorageError)
       expect(result.errors.data).to eq(error)
-      expect(result.errors.data).to eq(error)
     end
   end
 end
