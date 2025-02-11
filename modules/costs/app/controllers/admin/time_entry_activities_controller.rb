@@ -36,7 +36,9 @@ module Admin
 
     menu_item :time_entry_activities
 
-    def index; end
+    def index
+      @time_entry_activities = TimeEntryActivity.all
+    end
 
     def new; end
 
