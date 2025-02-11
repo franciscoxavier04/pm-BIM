@@ -33,9 +33,9 @@ This major feature introduces multiple improvements, with several underlying enh
 
 The following screenshot shows an example Meetings overview page, highlighting some of the changes for version 15.3:
 
-![Example screenshot of new Meetings overview page with OpenProject 15.3, including Recurring meetings / Meeting series](openproject-15-3-recurring-meetings-highlighted.png)
+![Example screenshot of new Meetings overview page with OpenProject 15.3, including Recurring meetings, Meeting series](openproject-15-3-recurring-meetings-highlighted.png)
 
-Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between My meetings / Recurring meetings and All meetings, with seperate sections for Meeting series and Involvement.
+Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between **My meetings**, **Recurring meetings** and **All meetings**, with seperate sections for Meeting series and Involvement.
 
 ### Create child work packages directly from the Relations tab
 
@@ -66,7 +66,7 @@ Cost reports in OpenProject now allow to easier include child work packages, ens
 
 OpenProject 15.3 introduces a new filter option for cost reports: **is (includes descendents)**, in addition to **is**. This allows users to automatically include all related child work packages (grandchildren, great-grandchildren, etc.) in their cost reports, improving accuracy and efficiency. This eliminates the need for cumbersome manual selection and ensures that all relevant costs are accounted for in reports.
 
-Screenshot
+![Screenshot showing the dropdown in a cost report filter, highlighting the new 'is (includes descendents)' option](openproject-15-3-cost-report-children.png)
 
 ### See dates of previously hidden, permission-restricted relations to make informed scheduling decisions
 
@@ -77,9 +77,9 @@ OpenProject 15.3 improves transparency by displaying all relations in the Relati
 > [!NOTE]
 > If a related work package has the same start and finish date, a single date is displayed instead of a range. This is [another feature of OpenProject 15.3 and applies to all Relations on the Relations tab](https://community.openproject.org/wp/61044), independent from the user's permissions.
 
-These improvements help teams make informed scheduling decisions while maintaining appropriate permission controls.
+These improvements help teams make informed scheduling decisions while maintaining appropriate permission controls. Here is an example, showing two relations – one with full visibility and one with restricted visibility.
 
-Screenshot
+![Mockup showing two relations in a work package, one is displayed in grey with restricted details, only date and lag](openproject-15-3-hidden-relation.png)
 
 ### Display a deletion dialog with danger zone for deleting items in a hierarchy
 
