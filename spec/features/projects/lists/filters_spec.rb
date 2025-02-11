@@ -642,13 +642,25 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
 
           projects_page.expect_filter_available("Any stage or gate")
 
-          projects_page.set_filter("any_stage_or_gate", "Any stage or gate", "on", [Time.zone.today + 8.days])
+          projects_page.set_filter("any_stage_or_gate",
+                                   "Any stage or gate",
+                                   "on",
+                                   [Time.zone.today + 8.days])
 
           projects_page.expect_projects_in_order(project, public_project)
 
-          projects_page.set_filter("any_stage_or_gate", "Any stage or gate", "today")
+          projects_page.set_filter("any_stage_or_gate",
+                                   "Any stage or gate",
+                                   "today")
 
           projects_page.expect_projects_in_order(project)
+
+          projects_page.set_filter("any_stage_or_gate",
+                                   "Any stage or gate",
+                                   "between",
+                                   [Time.zone.today, Time.zone.today + 9.days])
+
+          projects_page.expect_projects_in_order(project, public_project)
         end
       end
 

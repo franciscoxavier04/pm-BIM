@@ -36,7 +36,8 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   def available_operators
     [
       ::Queries::Operators::Today,
-      ::Queries::Operators::OnDate
+      ::Queries::Operators::OnDate,
+      ::Queries::Operators::BetweenDate
     ]
   end
 
@@ -52,13 +53,18 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   def where
     case operator
     when "=d"
-      stage_where(parsed_start)
+      stage_where_on(parsed_start)
         .or(gate_where(parsed_end))
         .arel
         .exists
     when "t"
-      stage_where(today)
-        .or(gate_where(today))
+      stage_where_on(today)
+        .or(gate_where(today, today))
+        .arel
+        .exists
+    when "<>d"
+      stage_where_between(parsed_start, parsed_end)
+        .or(gate_where(parsed_start, parsed_end))
         .arel
         .exists
     else
@@ -66,7 +72,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     end
   end
 
-  def stage_where(start_date, end_date = start_date)
+  def stage_where_on(start_date, end_date = start_date)
     Project::LifeCycleStep
       .where("project_id = #{Project.table_name}.id")
       .where(type: Project::Stage.name)
@@ -74,20 +80,28 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
       .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", end_date, nil))
   end
 
-  def gate_where(date)
+  def stage_where_between(start_date, end_date)
+    Project::LifeCycleStep
+      .where("project_id = #{Project.table_name}.id")
+      .where(type: Project::Stage.name)
+      .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, nil))
+      .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", nil, end_date))
+  end
+
+  def gate_where(start_date, end_date = start_date)
     # On gates, only the start_date is set.
     Project::LifeCycleStep
       .where("project_id = #{Project.table_name}.id")
       .where(type: Project::Gate.name)
-      .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", date, date))
+      .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, end_date))
   end
 
   def parsed_start
-    Date.parse(values.first)
+    values.first.present? ? Date.parse(values.first) : nil
   end
 
   def parsed_end
-    Date.parse(values.last)
+    values.last.present? ? Date.parse(values.last) : nil
   end
 
   def today
