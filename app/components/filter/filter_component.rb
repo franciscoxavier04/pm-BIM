@@ -70,8 +70,9 @@ module Filter
         { autocomplete_options: project_autocomplete_options }
       when Queries::Filters::Shared::CustomFields::User
         { autocomplete_options: user_autocomplete_options }
-      when Queries::Filters::Shared::CustomFields::ListOptional,
-           Queries::Projects::Filters::ProjectStatusFilter,
+      when Queries::Filters::Shared::CustomFields::ListOptional
+        { autocomplete_options: custom_field_list_autocomplete_options(filter) }
+      when Queries::Projects::Filters::ProjectStatusFilter,
            Queries::Projects::Filters::TypeFilter
         { autocomplete_options: list_autocomplete_options(filter) }
       else
@@ -79,11 +80,26 @@ module Filter
       end
     end
 
+    def custom_field_list_autocomplete_options(filter)
+      items = if filter.custom_field.field_format == "version"
+                filter.allowed_values.map { |name, id, project_name| { name:, id:, project_name: } }
+              else
+                filter.allowed_values.map { |name, id| { name:, id: } }
+              end
+
+      autocomplete_options.merge(items:, model: filter.values)
+    end
+
     def list_autocomplete_options(filter)
+      autocomplete_options.merge(
+        items: filter.allowed_values.map { |name, id| { name:, id: } },
+        model: filter.values
+      )
+    end
+
+    def autocomplete_options
       {
         component: "opce-autocompleter",
-        items: filter.allowed_values.map { |name, id| { name:, id: } },
-        model: filter.values,
         bindValue: "id",
         bindLabel: "name",
         hideSelected: true

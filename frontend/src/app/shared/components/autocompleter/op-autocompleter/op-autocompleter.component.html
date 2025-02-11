@@ -183,7 +183,6 @@
           [ngClass]="highlighting('status',item.status?.id)"
           class="op-autocompleter--wp-status"
         ></span>
-
       </div>
     </div>
   </ng-container>
@@ -218,6 +217,10 @@
       class="op-autocompleter__option-principal-email"
       *ngIf="item.email"
       [ngOptionHighlight]="search">{{ item.email }}</span>
+    <span
+      class="op-autocompleter__option-project-name"
+      *ngIf="item.project_name"
+      [ngOptionHighlight]="search">({{ item.project_name }})</span>
   </ng-container>
 </ng-template>
 
