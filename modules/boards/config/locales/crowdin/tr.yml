@@ -13,7 +13,7 @@ tr:
     label_board_type: "Pano türü"
     board_types:
       free: Temel
-      action: "Eylem kurulu (%{attribute})"
+      action: "Eylem panosu (%{attribute})"
     board_type_attributes:
       assignee: Atanan
       status: Durum

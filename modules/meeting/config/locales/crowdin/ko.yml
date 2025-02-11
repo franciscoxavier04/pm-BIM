@@ -229,7 +229,7 @@ ko:
       first_created: >
         첫 번째 미팅이 템플릿에서 성공적으로 생성되었습니다. 향후 모든 미팅은 이전 항목이 발생한 시점에 자동으로 생성됩니다.
     template:
-      button_finalize: "템플릿 완료"
+      button_finalize: "Open first meeting"
       blank_title: "미팅 시리즈 템플릿이 비어 있습니다."
       description: >
         이 템플릿은 시리즈의 새로운 미팅이 생성될 때마다 사용됩니다. 이 템플릿에 안건 항목, 참가자 및 첨부 파일을 추가할 수 있습니다.
