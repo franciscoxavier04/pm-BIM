@@ -30,7 +30,7 @@
 
 module WorkPackages
   module Types
-    class PdfExportTemplateController <ApplicationController
+    class PdfExportTemplateController < ApplicationController
       include OpTurbo::ComponentStream
       before_action :require_admin
       before_action :find_type, only: %i[toggle drop enable_all disable_all]

@@ -32,9 +32,9 @@ require "text/hyphen"
 module WorkPackages
   module Exports
     module Generate
-      class ModalDialogComponent <ApplicationComponent
-        MODAL_ID="op-work-package-generate-pdf-dialog"
-        GENERATE_PDF_FORM_ID="op-work-packages-generate-pdf-dialog-form"
+      class ModalDialogComponent < ApplicationComponent
+        MODAL_ID = "op-work-package-generate-pdf-dialog"
+        GENERATE_PDF_FORM_ID = "op-work-packages-generate-pdf-dialog-form"
         include OpTurbo::Streamable
         include OpPrimer::ComponentHelpers
         attr_reader :work_package, :params

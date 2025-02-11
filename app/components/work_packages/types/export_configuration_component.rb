@@ -30,7 +30,7 @@
 
 module WorkPackages
   module Types
-    class ExportConfigurationComponent <ApplicationComponent
+    class ExportConfigurationComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
       def pdf_export_templates

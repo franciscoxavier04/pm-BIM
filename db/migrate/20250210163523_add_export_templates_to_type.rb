@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class AddExportTemplatesToType <ActiveRecord::Migration[7.1]
+class AddExportTemplatesToType < ActiveRecord::Migration[7.1]
   def change
     add_column :types, :pdf_export_templates, :jsonb, default: {}
   end

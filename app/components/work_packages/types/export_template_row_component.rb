@@ -30,7 +30,7 @@
 
 module WorkPackages
   module Types
-    class ExportTemplateRowComponent <ApplicationComponent
+    class ExportTemplateRowComponent < ApplicationComponent
       include ApplicationHelper
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
