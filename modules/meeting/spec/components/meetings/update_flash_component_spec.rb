@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,36 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class UpdateFlashComponent < ApplicationComponent
-    include OpTurbo::Streamable
+require "rails_helper"
 
-    def initialize(meeting:, project:)
-      super
+RSpec.describe Meetings::UpdateFlashComponent, type: :component do
+  include Rails.application.routes.url_helpers
 
-      @meeting = meeting
-      @project = project
+  let(:project) { build_stubbed(:project) }
+  let(:meeting) { build_stubbed(:meeting, project:) }
+  let(:current_project) { nil }
+  let(:user) { build_stubbed(:user) }
+
+  subject do
+    render_inline(described_class.new(meeting: meeting, project: current_project))
+    page
+  end
+
+  before do
+    login_as(user)
+  end
+
+  context "without a current project" do
+    it "shows 'Reload' button linking to the global meeting page" do
+      expect(subject).to have_link "Reload", href: meeting_path(meeting)
     end
+  end
 
-    def call
-      render(
-        ::OpPrimer::FlashComponent.new(
-          icon: :info,
-          dismiss_scheme: :none,
-          unique_key: "meetings-update-flash"
-        )
-      ) do |banner|
-        banner.with_action_button(
-          tag: :a,
-          href: helpers.polymorphic_path([@project, @meeting.becomes(Meeting)]),
-          size: :medium,
-          data: {
-            keep_scroll_position_target: "triggerButton"
-          }
-        ) { I18n.t("label_meeting_reload") }
+  context "with a current project" do
+    let(:current_project) { project }
 
-        I18n.t("notice_meeting_updated")
-      end
+    it "shows 'Reload' button linking to the project meeting page" do
+      expect(subject).to have_link "Reload", href: project_meeting_path(project, meeting)
     end
   end
 end

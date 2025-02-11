@@ -27,7 +27,8 @@
 #++
 
 class MeetingsController < ApplicationController
-  before_action :load_and_authorize_in_optional_project, only: %i[index new new_dialog show create delete_dialog destroy]
+  before_action :load_and_authorize_in_optional_project,
+                only: %i[index new new_dialog show check_for_updates create delete_dialog destroy]
   before_action :verify_activities_module_activated, only: %i[history]
   before_action :determine_date_range, only: %i[history]
   before_action :determine_author, only: %i[history]
@@ -91,7 +92,7 @@ class MeetingsController < ApplicationController
     if params[:reference] == @meeting.changed_hash
       head :no_content
     else
-      respond_with_flash(Meetings::UpdateFlashComponent.new(@meeting))
+      respond_with_flash(Meetings::UpdateFlashComponent.new(meeting: @meeting, project: @project))
     end
   end
 

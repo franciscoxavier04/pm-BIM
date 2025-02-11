@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         get "menu" => "meetings/menus#show"
       end
       member do
+        get :check_for_updates
         get :delete_dialog
       end
     end
