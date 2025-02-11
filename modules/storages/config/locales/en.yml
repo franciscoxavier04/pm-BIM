@@ -224,6 +224,7 @@ en:
         missing_dependencies: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
         not_configured: The connection could not be validated. Please finish configuration first.
         oidc_provider_missing: There is no OpenID Connect Identity Provider configured.
+        oidc_token_exchange_missing: There is no OpenID Connect Identity Provider with the capability to do Token Exchange.
         placeholder: Check your connection against the server.
         subtitle: Connection validation
         tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.

@@ -231,7 +231,7 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
   end
 
   context "when OpenID Connect is enabled" do
-    let(:storage) { create(:nextcloud_storage_configured, :oidc_enabled) }
+    let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
     let(:app_version) { Storages::SemanticVersion.parse("2.6.3") }
     let(:capabilities_response) do
       ServiceResult.success(result: Storages::NextcloudCapabilities.new(
@@ -242,16 +242,27 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
       ))
     end
 
-    it "succeeds when a provider is available" do
-      create(:oidc_provider)
-
-      expect(subject.type).to eq(:healthy)
-    end
-
-    it "errors if no Provider is available" do
+    it "returns a validation failure if no OIDC Provider is available" do
       expect(subject.type).to eq(:error)
       expect(subject.error_code).to eq(:oidc_provider_missing)
       expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_provider_missing"))
+    end
+
+    context "when an OIDC Provider is available" do
+      it "returns a success" do
+        create(:oidc_provider, :token_exchange_capable)
+
+        expect(subject.type).to eq(:healthy)
+        expect(subject.error_code).to eq(:none)
+      end
+
+      it "returns a validation failure if the provider isn't capable of token exchange" do
+        create(:oidc_provider)
+
+        expect(subject.type).to eq(:error)
+        expect(subject.error_code).to eq(:oidc_token_exchange_missing)
+        expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_token_exchange_missing"))
+      end
     end
   end
 

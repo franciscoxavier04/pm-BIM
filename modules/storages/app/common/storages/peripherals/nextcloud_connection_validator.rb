@@ -57,7 +57,16 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        openid_connect_idp_absent
+        openid_connect_idp_absent.or { openid_connect_token_exchange }
+      end
+
+      def openid_connect_token_exchange
+        return None() if OpenIDConnect::Provider.any? { it.token_exchange_capable? }
+
+        Some(ConnectionValidation.new(type: :error,
+                                      error_code: :oidc_token_exchange_missing,
+                                      timestamp: Time.current,
+                                      description: I18n.t("storages.health.connection_validation.oidc_token_exchange_missing")))
       end
 
       def openid_connect_idp_absent
