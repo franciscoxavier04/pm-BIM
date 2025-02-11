@@ -33,27 +33,37 @@ module Storages
     module StorageInteraction
       module AuthenticationStrategies
         module NextcloudStrategies
-          extend TaggedLogging
-
           UserLess = -> do
             ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::BasicAuth.strategy
           end
 
-          UserBound = ->(user:, storage:) do
-            with_tagged_logger do
-              sso_preferred = storage.audience.present? && user.authentication_provider.present?
+          class UserBound
+            class << self
+              include TaggedLogging
 
-              if sso_preferred
-                ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken
-                  .strategy
-                  .with_user(user)
-              elsif storage.oauth_client.present?
-                ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-                  .strategy
-                  .with_user(user)
-              else
-                error "No user-bound authentication strategy applicable for file storage #{storage.id}."
-                ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Failure.strategy
+              def call(user:, storage:)
+                with_tagged_logger do
+                  sso_preferred = storage.audience.present? && oidc_provider_for(user)
+
+                  if sso_preferred
+                    ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken
+                      .strategy
+                      .with_user(user)
+                  elsif storage.oauth_client.present?
+                    ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
+                      .strategy
+                      .with_user(user)
+                  else
+                    error "No user-bound authentication strategy applicable for file storage #{storage.id}."
+                    ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Failure.strategy
+                  end
+                end
+              end
+
+              private
+
+              def oidc_provider_for(user)
+                user.authentication_provider.is_a?(OpenIDConnect::Provider)
               end
             end
           end
