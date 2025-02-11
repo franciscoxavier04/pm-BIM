@@ -83,6 +83,26 @@ module Components
       set_field(due_date_field, value)
     end
 
+    def enable_start_date
+      page.find_test_selector("wp-datepicker--show-start-date").click
+    end
+
+    def enable_start_date_if_visible
+      if container.has_button?("Start date", visible: true)
+        enable_start_date
+      end
+    end
+
+    def enable_due_date
+      page.find_test_selector("wp-datepicker--show-due-date").click
+    end
+
+    def enable_due_date_if_visible
+      if container.has_button?("Due date", visible: true)
+        enable_due_date
+      end
+    end
+
     def expect_start_highlighted
       expect(container).to have_css('[data-test-selector="op-datepicker-modal--start-date-field"][data-qa-highlighted]')
     end
