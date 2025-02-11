@@ -707,15 +707,11 @@ export default class IndexController extends Controller {
     if (ckEditorInstance && ckEditorInstance.getData({ trim: false }).length === 0) {
       this.hideEditor();
     } else {
-      // Store current scroll position before height adjustment
-      const scrollableContainer = this.getScrollableContainer();
-      const scrollPosition = scrollableContainer?.scrollTop || 0;
-
       this.adjustJournalContainerMargin();
 
-      // Restore scroll position after height adjustment
-      if (scrollableContainer) {
-        scrollableContainer.scrollTop = scrollPosition;
+      if (this.isMobile()) {
+        // wait for the keyboard to be fully down before adjusting scroll position
+        this.scrollInputContainerIntoView(400);
       }
     }
   }
