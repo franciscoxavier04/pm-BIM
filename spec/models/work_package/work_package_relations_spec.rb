@@ -255,7 +255,8 @@ RSpec.describe WorkPackage do
     end
   end
 
-  describe "#visible_relations" do
+  # The combination is speced because it is implemented in a non trivial way.
+  describe "#relations.visible" do
     let!(:user) { create(:user) }
     let!(:view_work_packages_role) { create(:project_role, permissions: %i[view_work_packages]) }
     let!(:no_permission_role) { create(:project_role, permissions: %i[]) }
@@ -282,7 +283,7 @@ RSpec.describe WorkPackage do
     let!(:other_relation) { create(:relation, from: other_work_package, to: visible_work_package) }
 
     it "returns all relations from the called on work package visible to the user" do
-      expect(origin.visible_relations(user))
+      expect(origin.relations.visible(user))
         .to contain_exactly(visible_relation, inverted_visible_relation, shared_relation)
     end
   end
