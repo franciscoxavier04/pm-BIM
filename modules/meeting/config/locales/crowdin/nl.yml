@@ -55,7 +55,7 @@ nl:
         interval: "Interval"
         start_date: "Begint op"
         end_after: "Vergaderreeks eindigt"
-        iterations: "Voorvallen"
+        iterations: "Gebeurtenissen"
     errors:
       messages:
         invalid_time_format: "is geen geldige tijd. Vereist formaat: UH:MM"
@@ -212,8 +212,8 @@ nl:
         confirmation_message_html: >
           Deze bijeenkomst maakt deel uit van een serie genaamd <strong>%{title}</strong>. Hiermee wordt alleen deze specifieke gebeurtenis verwijderd en niet de hele serie. Wilt u doorgaan?
     blankslate:
-      title: "No meetings to display"
-      desc: "There are no meetings that meet the active filter criteria."
+      title: "Geen vergaderingen om weer te geven"
+      desc: "Er zijn geen vergaderingen die voldoen aan de actieve filtercriteria."
   meeting_section:
     untitled_title: "Naamloze sectie"
     delete_confirmation: "Deleting the section will also delete all of its agenda items. Are you sure you want to do this?"
@@ -221,9 +221,9 @@ nl:
     empty_text: "Sleep items hierheen of maak een nieuwe"
   recurring_meeting:
     ended_blankslate:
-      title: "Meeting series ended"
-      message: "This meeting series has come to an end. There are no upcoming meetings. "
-      action: "You can still view past occurrences or edit the meeting series to extend it."
+      title: "Vergaderreeks geëindigd"
+      message: "Deze serie vergaderingen zijn afgelopen. Er zijn geen aanstaande vergaderingen. "
+      action: "U kunt nog steeds eerdere gebeurtenissen bekijken of de vergaderreeks bewerken om deze uit te breiden."
     occurrence:
       infoline: "Deze vergadering is onderdeel van een herhalende vergaderreeks."
       error_no_next: "Er is geen volgende gebeurtenis voor deze vergadering."
@@ -231,7 +231,7 @@ nl:
       first_created: >
         De eerste vergadering is succesvol aangemaakt vanuit het sjabloon. Alle toekomstige vergaderingen worden automatisch aangemaakt op het moment van de vorige vergadering.
     template:
-      button_finalize: "Sjabloon voltooien"
+      button_finalize: "Open first meeting"
       blank_title: "Uw vergaderreeks sjabloon is leeg"
       description: >
         Dit sjabloon wordt gebruikt wanneer nieuwe vergaderingen in de serie worden aangemaakt. U kunt agendapunten, deelnemers en bijlagen aan het sjabloon toevoegen.

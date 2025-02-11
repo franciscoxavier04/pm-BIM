@@ -1245,6 +1245,10 @@ sk:
             from:
               error_not_found: "pracovný balíček v pozícii `z` nebol nájdený alebo nie je viditeľný"
               error_readonly: "prepojenie existujúceho vzťahu `z` sa nedá zmeniť"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM dodávateľ nie je k dispozícii"
           not_whitelisted: "nie je povolené aktuálnou konfiguráciou."

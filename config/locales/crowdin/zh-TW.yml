@@ -230,7 +230,7 @@ zh-TW:
             description: 將項目加入此清單以在另一個清單中建立子項目
         delete_dialog:
           title: "刪除自訂欄位"
-          heading: "Delete custom field item?"
+          heading: "刪除自訂欄位？"
           description: "此動作將不可逆轉地移除項目及其所有子項目。任何指定的值都會被永久刪除。如果此欄位是必填欄位，移除項目可能會導致現有工作套件失效。"
         placeholder:
           label: "項目標籤"
@@ -467,7 +467,7 @@ zh-TW:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: 權杖(Token)已產生
         header: '%{type} 權杖已生成'
         warning: '注意: 這是您唯一可以看到此權杖的時候, 請務必立即複製它。'
       errors:
@@ -1216,6 +1216,10 @@ zh-TW:
             from:
               error_not_found: "“開始”的工作項目不存在或無法顯示"
               error_readonly: "您無法更改現有關係的“開始”連結"
+            lag:
+              greater_than_or_equal_to:
+                zero: "不能為負數。"
+              less_than_or_equal_to: "太高。"
         repository:
           not_available: "版本控制無法使用"
           not_whitelisted: "不被設定所允許"

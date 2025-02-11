@@ -235,7 +235,7 @@ pl:
       first_created: >
         Pierwsze spotkanie zostało utworzone z szablonu. Wszystkie przyszłe spotkania zostaną utworzone automatycznie o godzinie poprzedniego wystąpienia.
     template:
-      button_finalize: "Zakończ szablon"
+      button_finalize: "Open first meeting"
       blank_title: "Szablon serii spotkań jest pusty"
       description: >
         Ten szablon będzie używany za każdym razem, gdy zostaną utworzone nowe spotkania w serii. Do tego szablonu możesz dodać elementy planu spotkania, uczestników i załączniki.

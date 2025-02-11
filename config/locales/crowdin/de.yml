@@ -228,7 +228,7 @@ de:
             description: Füge Elemente zu dieser Liste hinzu, um Unterelemente innerhalb eines anderen zu erstellen
         delete_dialog:
           title: "Benutzerdefiniertes Feldelement löschen"
-          heading: "Delete custom field item?"
+          heading: "Benutzerdefiniertes Feldelement löschen?"
           description: "Mit dieser Aktion werden das Element und alle seine Unterelemente unwiderruflich entfernt. Alle zugewiesenen Werte werden endgültig gelöscht. Wenn dieses Feld erforderlich ist, kann das Entfernen von Elementen dazu führen, dass bestehende Arbeitspakete ungültig werden."
         placeholder:
           label: "Elementbezeichnung"
@@ -472,7 +472,7 @@ de:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: Token generiert
         header: Das %{type}-Token wurde generiert
         warning: 'Hinweis: Dieser Token ist nur einmal sichtbar, der Token kann jetzt kopiert werden.'
       errors:
@@ -1220,6 +1220,10 @@ de:
             from:
               error_not_found: "Arbeitspaket in 'von' Position nicht gefunden oder nicht sichtbar"
               error_readonly: "der 'von' Link einer bestehenden Relation kann nicht geändert werden"
+            lag:
+              greater_than_or_equal_to:
+                zero: "darf nicht negativ sein."
+              less_than_or_equal_to: "ist zu hoch."
         repository:
           not_available: "SCM-Anbieter ist nicht verfügbar"
           not_whitelisted: "wird durch die Konfiguration nicht erlaubt."
@@ -2183,7 +2187,7 @@ de:
   label_add_subtask: "Unteraufgabe hinzufügen"
   label_added: "hinzugefügt"
   label_added_by: "Von %{author} hinzugefügt"
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "Hinzugefügt von %{author} am %{date}"
   label_added_time_by: "Von %{author} vor %{age} hinzugefügt"
   label_additional_workflow_transitions_for_assignee: "Zusätzliche Workflow-Übergänge für den Nutzer, dem ein Arbeitspaket zugewiesen ist"
   label_additional_workflow_transitions_for_author: "Zusätzliche Workflow-Übergänge wenn der Nutzer der Autor des Arbeitspakets ist"

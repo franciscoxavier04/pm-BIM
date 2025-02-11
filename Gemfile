@@ -36,7 +36,7 @@ ruby File.read(File.expand_path(".ruby-version", __dir__)).strip
 
 gem "actionpack-xml_parser", "~> 2.0.0"
 gem "activemodel-serializers-xml", "~> 1.0.1"
-gem "activerecord-import", "~> 2.0.0"
+gem "activerecord-import", "~> 2.1.0"
 gem "activerecord-session_store", "~> 2.1.0"
 gem "ox"
 gem "rails", "~> 7.1.3"
@@ -107,7 +107,7 @@ gem "svg-graph", "~> 2.2.0"
 
 gem "date_validator", "~> 0.12.0"
 gem "email_validator", "~> 2.2.3"
-gem "json_schemer", "~> 2.3.0"
+gem "json_schemer", "~> 2.4.0"
 gem "ruby-duration", "~> 3.2.0"
 
 # `config/initializers/mail_starttls_patch.rb` has also been patched to
@@ -167,7 +167,7 @@ gem "matrix", "~> 0.4.2"
 
 gem "meta-tags", "~> 2.22.0"
 
-gem "paper_trail", "~> 15.2.0"
+gem "paper_trail", "~> 16.0.0"
 
 gem "op-clamav-client", "~> 3.4", require: "clamav"
 
@@ -207,7 +207,7 @@ gem "plaintext", "~> 0.3.2"
 
 gem "ruby-progressbar", "~> 1.13.0", require: false
 
-gem "mini_magick", "~> 5.0.1", require: false
+gem "mini_magick", "~> 5.1.2", require: false
 
 gem "validate_url"
 
@@ -407,4 +407,4 @@ end
 
 gem "openproject-octicons", "~>19.20.0 "
 gem "openproject-octicons_helper", "~>19.20.0 "
-gem "openproject-primer_view_components", "~>0.53.1"
+gem "openproject-primer_view_components", "~>0.54.0"

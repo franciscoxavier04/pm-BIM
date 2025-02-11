@@ -1227,6 +1227,10 @@ si:
             from:
               error_not_found: "සොයාගත නොහැකි හෝ දෘශ්යමාන නොවන `from` තත්ත්වය තුළ වැඩ පැකේජය"
               error_readonly: "පවතින සම්බන්ධතාවයක `from` සබැඳිය නොසැලකිය හැකි ය"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM වෙළෙන්දා ලබා ගත නොහැක"
           not_whitelisted: "වින්යාසය මගින් අවසර නැත."

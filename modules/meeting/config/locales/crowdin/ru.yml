@@ -118,7 +118,7 @@ ru:
   label_recurring_meeting_plural: "Повторяющиеся совещания"
   label_template: "Шаблон"
   label_recurring_meeting_view: "Посмотреть серию совещаний"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Открыть"
   label_recurring_meeting_copy: "Копировать как одноразовое"
   label_recurring_meeting_cancel: "Отменить это событие"
   label_recurring_meeting_delete: "Удалить событие"
@@ -216,8 +216,8 @@ ru:
         confirmation_message_html: >
           Это совещание является частью серии под названием <strong>%{title}</strong>. Это приведет к удалению только этого конкретного совещания, а не всей серии. Хотите ли Вы продолжить?
     blankslate:
-      title: "No meetings to display"
-      desc: "There are no meetings that meet the active filter criteria."
+      title: "Нет совещаний для отображения"
+      desc: "Нет совещаний, удовлетворяющих критериям активного фильтра."
   meeting_section:
     untitled_title: "Раздел без названия"
     delete_confirmation: "Удаление раздела также удалит все пункты его повестки дня. Вы уверены, что хотите это сделать?"
@@ -225,8 +225,8 @@ ru:
     empty_text: "Перенесите элементы сюда или создайте новые"
   recurring_meeting:
     ended_blankslate:
-      title: "Meeting series ended"
-      message: "This meeting series has come to an end. There are no upcoming meetings. "
+      title: "Серия совещаний закончена"
+      message: "Эта серия совещаний подошла к концу. Предстоящих совещаний не будет. "
       action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
       infoline: "Это совещание является частью повторяющейся серии совещаний."
@@ -235,7 +235,7 @@ ru:
       first_created: >
         Первое совещание было успешно создано из шаблона. Все последующие совещания будут создаваться автоматически в момент предыдущего.
     template:
-      button_finalize: "Завершить шаблон"
+      button_finalize: "Open first meeting"
       blank_title: "Ваш шаблон серии совещаний пуст"
       description: >
         Этот шаблон будет использоваться каждый раз, когда будут создаваться новые совещания в серии. Вы можете добавить в этот шаблон пункты повестки дня, участников и вложения.

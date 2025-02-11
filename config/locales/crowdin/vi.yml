@@ -1220,6 +1220,10 @@ vi:
             from:
               error_not_found: "work package ở vị trí `từ` không tìm thấy hoặc không hiển thị"
               error_readonly: "liên kết `from` của một mối quan hệ hiện có là không thay đổi được"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Nhà cung cấp SCM không có sẵn"
           not_whitelisted: "không được cấu hình cho phép."

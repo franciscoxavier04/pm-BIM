@@ -228,7 +228,7 @@ zh-CN:
             description: 在此列表中添加条目，以便在另一个列表中创建子条目
         delete_dialog:
           title: "删除自定义字段项"
-          heading: "Delete custom field item?"
+          heading: "删除自定义字段项？"
           description: "此操作将不可逆转地删除该项及其所有子项。任何分配的值都将被永久删除。 如果需要此字段，删除项目可能会导致现有工作包无效。"
         placeholder:
           label: "项目标签"
@@ -465,7 +465,7 @@ zh-CN:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: 令牌已生成
         header: '%{type} 令牌已生成'
         warning: '注意: 这将是您看到这个令牌的唯一机会, 请务必立即复制它。'
       errors:
@@ -1214,6 +1214,10 @@ zh-CN:
             from:
               error_not_found: "找不到这个工作包"
               error_readonly: "关系要持久"
+            lag:
+              greater_than_or_equal_to:
+                zero: "不能为负数。"
+              less_than_or_equal_to: "太高。"
         repository:
           not_available: "SCM提供商不可用"
           not_whitelisted: "配置所不允许的。"
@@ -2148,7 +2152,7 @@ zh-CN:
   label_add_subtask: "添加子任务"
   label_added: "已添加"
   label_added_by: "由%{author}添加"
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "由 %{author} 添加 %{date}"
   label_added_time_by: "由 %{author} %{age} 前添加"
   label_additional_workflow_transitions_for_assignee: "当用户是受理人时允许额外的转移"
   label_additional_workflow_transitions_for_author: "当用户是作者时允许额外转移"

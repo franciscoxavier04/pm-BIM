@@ -254,7 +254,7 @@ en:
         The first meeting has been successfuly created from template.
         All future meetings will be created automatically at the time of the previous occurrence.
     template:
-      button_finalize: "Finish template"
+      button_finalize: "Open first meeting"
       blank_title: "Your meeting series template is empty"
       description: >
         This template will be used whenever new meetings in the series get created.
@@ -312,13 +312,13 @@ en:
       heading: "Permanently delete this meeting series?"
       confirmation_message_html:
         zero: >
-          Deleting <strong>%{title}</strong> will delete any meetings in this series.
-          This action is not reversible. Please proceed with caution.
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences.
+          The series will be deleted for everyone. Please proceed with caution.
         one: >
-          Deleting <strong>%{title}</strong> will also delete one meeting in this series.
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series.
           This action is not reversible. Please proceed with caution.
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series.
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series.
           This action is not reversible. Please proceed with caution.
 
     scheduled_delete_dialog:

@@ -35,21 +35,33 @@ module Meetings
       [
         OpenProject::Menu::MenuGroup.new(header: nil, children: top_level_menu_items),
         OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_meeting_series), children: meeting_series_menu_items),
-        OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_involvement), children: involvement_sidebar_menu_items)
+        involvement_group
       ].compact
     end
 
     def top_level_menu_items
+      [
+        my_meetings_item,
+        recurring_menu_item,
+        all_meetings_item
+      ].compact
+    end
+
+    def my_meetings_item
+      return unless User.current.logged?
+
+      my_meetings_href = polymorphic_path([project, :meetings])
+      menu_item(title: I18n.t(:label_my_meetings),
+                selected: params[:current_href] == my_meetings_href && params[:filters].blank?)
+    end
+
+    def all_meetings_item
       all_filter = [{ invited_user_id: { operator: "*", values: [] } }].to_json
       my_meetings_href = polymorphic_path([project, :meetings])
 
-      [
-        menu_item(title: I18n.t(:label_my_meetings),
-                  selected: params[:current_href] == my_meetings_href && params[:filters].blank?),
-        recurring_menu_item,
-        menu_item(title: I18n.t(:label_all_meetings),
-                  query_params: { filters: all_filter })
-      ]
+      menu_item(title: I18n.t(:label_all_meetings),
+                selected: User.current.anonymous? && params[:current_href] == my_meetings_href && params[:filters].blank?,
+                query_params: { filters: all_filter })
     end
 
     def meeting_series_menu_items
@@ -78,6 +90,12 @@ module Meetings
 
       menu_item(title: I18n.t("label_recurring_meeting_plural"),
                 query_params: { filters: recurring_filter, sort: "start_time" })
+    end
+
+    def involvement_group
+      return unless User.current.logged?
+
+      OpenProject::Menu::MenuGroup.new(header: I18n.t(:label_involvement), children: involvement_sidebar_menu_items)
     end
 
     def involvement_sidebar_menu_items

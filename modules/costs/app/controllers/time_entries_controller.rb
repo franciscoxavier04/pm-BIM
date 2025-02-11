@@ -46,11 +46,7 @@ class TimeEntriesController < ApplicationController
 
   def dialog
     @show_work_package = params[:work_package_id].blank?
-    @show_user = if @project
-                   User.current.allowed_in_project?(:log_time, @project)
-                 else
-                   User.current.allowed_in_any_project?(:log_time)
-                 end
+    @show_user = show_user_input_in_dialog
 
     @time_entry.spent_on ||= params[:date].presence || Time.zone.today
   end
@@ -131,6 +127,16 @@ class TimeEntriesController < ApplicationController
   end
 
   private
+
+  def show_user_input_in_dialog
+    return false if params[:onlyMe] == "true"
+
+    if @project
+      User.current.allowed_in_project?(:log_time, @project)
+    else
+      User.current.allowed_in_any_project?(:log_time)
+    end
+  end
 
   def form_config_options
     {

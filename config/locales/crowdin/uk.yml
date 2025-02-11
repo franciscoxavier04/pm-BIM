@@ -1238,6 +1238,10 @@ uk:
             from:
               error_not_found: "робочий пакет в `від` положення не знайдено або не видно"
               error_readonly: "існуюча зв'язок `from` є незмінною"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Постачальник SCM недоступний"
           not_whitelisted: "не дозволяється конфігурацією."

@@ -20,7 +20,7 @@ tr:
         unlock_version: 'Sürümün kilidini aç'
         edit_version: 'Sürümü düzenle'
         show_version: 'Sürümü göster'
-        locked: 'Kilitlendi'
+        locked: 'Kilitli'
         closed: 'Kapalı'
       new_board: 'Yeni yazı tahtası'
       add_list: 'Listeyi panele ekle'

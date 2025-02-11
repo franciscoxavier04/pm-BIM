@@ -210,8 +210,8 @@ zh-TW:
         confirmation_message_html: >
           這次會議是 <strong>%{title}</strong> 系列的一部份.這只會刪除此特定事件，而不會刪除整個系列。您要繼續嗎？
     blankslate:
-      title: "No meetings to display"
-      desc: "There are no meetings that meet the active filter criteria."
+      title: "沒有可顯示的會議"
+      desc: "沒有符合篩選條件的會議。"
   meeting_section:
     untitled_title: "無標題章節"
     delete_confirmation: "刪除該章節也會刪除其所有的議程項目。您確定要這麼做？"
@@ -219,9 +219,9 @@ zh-TW:
     empty_text: "將項目拖曳至此處或建立新項目"
   recurring_meeting:
     ended_blankslate:
-      title: "Meeting series ended"
-      message: "This meeting series has come to an end. There are no upcoming meetings. "
-      action: "You can still view past occurrences or edit the meeting series to extend it."
+      title: "系列會議結束"
+      message: "本系列會議已結束。沒有接下來的會議。 "
+      action: "您仍然可以檢視過去發生的事件，或編輯會議系列以延伸它。"
     occurrence:
       infoline: "此會議為定期舉行的系列會議之一。"
       error_no_next: "本次會議無下次會議。"
@@ -229,7 +229,7 @@ zh-TW:
       first_created: >
         第一次會議已從範本成功建立。以後所有的會議都會在前一次發生時自動建立。
     template:
-      button_finalize: "完成範本"
+      button_finalize: "Open first meeting"
       blank_title: "您的會議範本是空的"
       description: >
         每當在系列中建立新會議時，都會使用此範本。您可以在此範本中加入議程項目、與會者和附件。
@@ -256,7 +256,7 @@ zh-TW:
       weekly_interval: "每 %{interval} 週 %{weekday}"
       frequency: "%{base} 在 %{time}"
       full: "%{base} 於 %{time}, 結束於 %{end_date}"
-      full_past: "%{base} at %{time}, ended on %{end_date}"
+      full_past: "%{base} 於 %{time}, 結束於 %{end_date}"
       never_ending: "%{base} 在 %{time}"
     open:
       title: "開始"

@@ -356,10 +356,10 @@ de:
           learn_about: "Erfahren Sie mehr über die neuen Funktionen"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_2":
+          "15_3":
             standard:
               new_features_html: >
-                Die Version bringt Ihnen verschiedene Funktionen und Verbesserungen, z.B. <br> <ul class="%{list_styling_class}"> <li>Legen Sie Erinnerungen für Arbeitspakete fest, um Benachrichtigungen zu generieren.</li> <li>Erstellen Sie neue Ordner direkt beim Hochladen einer Datei.</li> <li>Legen Sie einen gewünschten Abstand zwischen Nachfolgern und Vorgängern von Arbeitspaketen fest.</li> <li>Aktivieren Sie die Sortierung und Gruppierung von Arbeitspaketen nach ihren Werten für benutzerdefinierte Felder vom Typ Hierarchie.</li> <li>Exportieren Sie Zeiteinträge als PDF-Zeiterfassungsbögen.</li> <li>Nutzen Sie ein Popover mit Benutzerinformationen indem Sie den Mauszeiger über Avatare bewegen.</li> </ul>
+                Das Release enthält verschiedene neue Funktionen und Verbesserungen, z.B. <br> <ul class="%{list_styling_class}"> <li>Planen Sie wiederkehrende Besprechungen, um Ihre wöchentlichen, zweiwöchentlichen oder individuellen Termine zu organisieren. </li> <li>Erstellen Sie untergeordnete Arbeitspakete direkt über die Registerkarte Beziehungen.</li> <li>Erfassen Sie Gesamtsummen in Zeiterfassungs-PDF-Exporten, um einen besseren Überblick zu erhalten.</li> <li>Beziehen Sie untergeordnete Arbeitspakete in Kostenberichte ein, um eine genauere Nachvollziehbarkeit zu gewährleisten.</li> <li>Sehen Sie Datumsangaben von zuvor verborgenen Beziehungen trotz eingeschränkter Berechtigungen, um fundierte Planungsentscheidungen zu treffen.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."

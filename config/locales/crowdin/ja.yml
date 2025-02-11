@@ -1214,6 +1214,10 @@ ja:
             from:
               error_not_found: "「開始」の位置にワークパッケージが存在しないか表示されません"
               error_readonly: "既存の関係の「開始」のリンクは変更できません"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCMベンダーは使用できません。"
           not_whitelisted: "は設定で許可されていません。"

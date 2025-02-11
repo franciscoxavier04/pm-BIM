@@ -54,10 +54,26 @@ module Storages
 
       private
 
+      def sso_misconfigured
+        return None() unless @storage.authenticate_via_idp?
+
+        openid_connect_idp_absent
+      end
+
+      def openid_connect_idp_absent
+        return None() if OpenIDConnect::Provider.any?
+
+        Some(ConnectionValidation.new(type: :error,
+                                      error_code: :oidc_provider_missing,
+                                      timestamp: Time.current,
+                                      description: I18n.t("storages.health.connection_validation.oidc_provider_missing")))
+      end
+
       def has_base_configuration_error?
         host_url_not_found
           .or { missing_dependencies }
           .or { version_mismatch }
+          .or { sso_misconfigured }
           .or { with_unexpected_content }
           .or { capabilities_request_failed_with_unknown_error }
       end
@@ -106,7 +122,8 @@ module Storages
 
         capabilities_result = capabilities.result
 
-        if !capabilities_result.app_enabled? || (@storage.automatically_managed? && !capabilities_result.group_folder_enabled?)
+        if !capabilities_result.app_enabled? ||
+             (@storage.automatic_management_enabled? && !capabilities_result.group_folder_enabled?)
           app_name = if capabilities_result.app_enabled?
                        I18n.t("storages.dependencies.nextcloud.group_folders_app")
                      else
@@ -149,7 +166,8 @@ module Storages
                                   expected: min_app_version.to_s)
             )
           )
-        elsif @storage.automatically_managed? && capabilities_result.group_folder_version < min_group_folder_version
+        elsif @storage.automatic_management_enabled? &&
+                capabilities_result.group_folder_version < min_group_folder_version
           Some(
             ConnectionValidation.new(
               type: :error,
