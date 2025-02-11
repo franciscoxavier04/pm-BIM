@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -75,7 +77,7 @@ module OpenProject::TextFormatting
 
       # Transformer to fix task lists in sanitization
       # Replace to do lists in tables with their markdown equivalent
-      def todo_list_transformer
+      def todo_list_transformer # rubocop:disable Metrics/AbcSize,Metrics/PerceivedComplexity
         lambda { |env|
           name = env[:node_name]
           table = env[:node]
