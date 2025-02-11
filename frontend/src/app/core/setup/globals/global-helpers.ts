@@ -45,3 +45,7 @@ export class GlobalHelpers {
     checkboxes.forEach((el) => { el.checked = !allChecked; });
   }
 }
+
+export function getMetaElement(name:string):HTMLMetaElement|null {
+  return document.querySelector(`meta[name=${name}]`);
+}

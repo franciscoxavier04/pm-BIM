@@ -28,7 +28,7 @@
 
 import { OpenProjectPluginContext } from 'core-app/features/plugins/plugin-context';
 import { input, InputState } from '@openproject/reactivestates';
-import { GlobalHelpers } from 'core-app/core/setup/globals/global-helpers';
+import { getMetaElement, GlobalHelpers } from 'core-app/core/setup/globals/global-helpers';
 import { firstValueFrom } from 'rxjs';
 
 /**
@@ -58,15 +58,15 @@ export class OpenProject {
   }
 
   public get urlRoot():string {
-    return this.getMetaElement('app_base_path')?.content || '';
+    return getMetaElement('app_base_path')?.content || '';
   }
 
   public get environment():string {
-    return this.getMetaElement('openproject_initializer')?.dataset.environment || '';
+    return getMetaElement('openproject_initializer')?.dataset.environment || '';
   }
 
   public get edition():string {
-    return this.getMetaElement('openproject_initializer')?.dataset.edition || '';
+    return getMetaElement('openproject_initializer')?.dataset.edition || '';
   }
 
   public get isStandardEdition():boolean {
@@ -98,10 +98,6 @@ export class OpenProject {
     } catch (e) {
       console.error('Failed to access your browsers local storage. Is your local database corrupted?');
     }
-  }
-
-  private getMetaElement(name:string):HTMLMetaElement|null {
-    return document.querySelector(`meta[name=${name}]`);
   }
 }
 
