@@ -28,30 +28,26 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
+module RecurringMeetings
   class DeleteService < ::BaseServices::Delete
     protected
 
+    def default_contract_class
+      Meetings::DeleteContract
+    end
+
     def after_validate(_, call)
       send_cancellation_mail(model)
-      cancel_scheduled_meeting(model)
 
       call
     end
 
     def send_cancellation_mail(meeting)
-      meeting.participants.where(invited: true).find_each do |participant|
+      meeting.template.participants.where(invited: true).find_each do |participant|
         MeetingMailer
-          .cancelled(meeting, participant.user, User.current)
+          .cancelled_series(meeting, participant.user, User.current)
           .deliver_now
       end
-    end
-
-    def cancel_scheduled_meeting(meeting)
-      schedule = meeting.scheduled_meeting
-      return if schedule.nil?
-
-      schedule.update_column(:cancelled, true)
     end
   end
 end

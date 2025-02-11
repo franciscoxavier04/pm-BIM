@@ -89,10 +89,12 @@ RSpec.describe "Recurring meetings global CRUD", :js do
     show_page.visit!
 
     show_page.delete_meeting_series
-    show_page.within_modal "Delete meeting series" do
-      check "I understand that this deletion cannot be reversed", allow_label_click: true
 
-      click_on "Delete permanently"
+    retry_block do
+      show_page.within_modal "Delete meeting series" do
+        check "I understand that this deletion cannot be reversed", allow_label_click: true
+        click_on "Delete permanently"
+      end
     end
 
     expect(page).to have_current_path meetings_path
