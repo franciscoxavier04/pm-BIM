@@ -130,7 +130,6 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
   end
 
   # TODO: check active state
-  # TODO: work with time zones?
 
   context "with a t (today) operator" do
     before do
@@ -196,6 +195,162 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
         Timecop.travel(gate_date.noon + 1.day) do
           expect(instance.results).to be_empty
         end
+      end
+    end
+  end
+
+  context "with a <>d (between) operator" do
+    before do
+      instance.where("any_stage_or_gate", "<>d", values)
+    end
+
+    context "when encompassing the stage completely" do
+      let(:values) { [(stage_start_date - 1.day).to_s, (stage_end_date + 1.day).to_s] }
+
+      it "returns the project with the stage" do
+        expect(instance.results).to contain_exactly(project_with_stage)
+      end
+    end
+
+    context "when encompassing the stage precisely" do
+      let(:values) { [stage_start_date.to_s, stage_end_date.to_s] }
+
+      it "returns the project with the stage" do
+        expect(instance.results).to contain_exactly(project_with_stage)
+      end
+    end
+
+    context "when the values overlap the stage's start date but not the end date" do
+      let(:values) { [(stage_start_date - 1.day).to_s, (stage_end_date - 1.day).to_s] }
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when the values overlap the stage's end date but not the start date" do
+      let(:values) { [(stage_start_date + 1.day).to_s, stage_end_date.to_s] }
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when the values are between the start and the end date of the stage" do
+      let(:values) { [(stage_start_date + 1.day).to_s, (stage_end_date - 1.day).to_s] }
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when only the lower value is provided and that one is before the stage's start date" do
+      let(:values) { [(stage_start_date - 1.day).to_s, ""] }
+
+      # Interferes at it would otherwise be found as well
+      before do
+        Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+      end
+
+      it "returns the project with the stage" do
+        expect(instance.results).to contain_exactly(project_with_stage)
+      end
+    end
+
+    context "when only the lower value is provided and that one is on the stage's start date" do
+      let(:values) { [stage_start_date.to_s, ""] }
+
+      # Interferes at it would otherwise be found as well
+      before do
+        Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+      end
+
+      it "returns the project with the stage" do
+        expect(instance.results).to contain_exactly(project_with_stage)
+      end
+    end
+
+    context "when only the lower value is provided and that one after the stage's start date" do
+      let(:values) { [(stage_start_date + 1.day).to_s, ""] }
+
+      # Interferes at it would otherwise be found as well
+      before do
+        Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+      end
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when only the upper value is provided and that one is after the stage's end date" do
+      let(:values) { ["", (stage_end_date + 1.day).to_s] }
+
+      it "returns the project with the stage" do
+        expect(instance.results).to contain_exactly(project_with_stage)
+      end
+    end
+
+    context "when encompassing the gate completely" do
+      let(:values) { [(gate_date - 1.day).to_s, (gate_date + 1.day).to_s] }
+
+      it "returns the project with the gate" do
+        expect(instance.results).to contain_exactly(project_with_gate)
+      end
+    end
+
+    context "when encompassing the gate precisely" do
+      let(:values) { [gate_date.to_s, gate_date.to_s] }
+
+      it "returns the project with the gate" do
+        expect(instance.results).to contain_exactly(project_with_gate)
+      end
+    end
+
+    context "when only the lower value is provided and that one is before the gate's date" do
+      let(:values) { [(gate_date - 1.day).to_s, ""] }
+
+      it "returns the project with the gate" do
+        expect(instance.results).to contain_exactly(project_with_gate)
+      end
+    end
+
+    context "when only the upper value is provided and that one is after the gate's date" do
+      let(:values) { ["", (gate_date + 1.day).to_s] }
+
+      # Interferes at it would otherwise be found as well
+      before do
+        Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+      end
+
+      it "returns the project with the gate" do
+        expect(instance.results).to contain_exactly(project_with_gate)
+      end
+    end
+
+    context "when only the upper value is provided and that one is on the gate's date" do
+      let(:values) { ["", gate_date.to_s] }
+
+      # Interferes at it would otherwise be found as well
+      before do
+        Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+      end
+
+      it "returns the project with the gate" do
+        expect(instance.results).to contain_exactly(project_with_gate)
+      end
+    end
+
+    context "when only the upper value is provided and that one is before the gate's date" do
+      let(:values) { ["", (gate_date - 1.day).to_s] }
+
+      # Interferes at it would otherwise be found as well
+      before do
+        Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+      end
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
       end
     end
   end
