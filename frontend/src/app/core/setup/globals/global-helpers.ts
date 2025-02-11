@@ -33,22 +33,15 @@
  * It is used in some `link_to_function` helpers in Rails templates
  */
 export class GlobalHelpers {
-  public checkAll(selector:any, checked:any) {
-    document
-      .querySelectorAll(`#${selector} input[type="checkbox"]:not([disabled])`)
-      .forEach((el:HTMLInputElement) => el.checked = checked);
+  public checkAll(selector:string, checked:boolean) {
+     document
+      .querySelectorAll<HTMLInputElement>(`#${selector} input[type="checkbox"]:not([disabled])`)
+      .forEach((el) => { el.checked = checked; });
   }
 
-  public toggleCheckboxesBySelector(selector:any) {
-    const boxes = jQuery(selector);
-    let all_checked = true;
-    for (let i = 0; i < boxes.length; i++) {
-      if (boxes[i].checked === false) {
-        all_checked = false;
-      }
-    }
-    for (let i = 0; i < boxes.length; i++) {
-      boxes[i].checked = !all_checked;
-    }
+  public toggleCheckboxesBySelector(selector:string) {
+    const checkboxes = Array.from(document.querySelectorAll<HTMLInputElement>(selector));
+    const allChecked = checkboxes.every((el) => el.checked);
+    checkboxes.forEach((el) => { el.checked = !allChecked; });
   }
 }
