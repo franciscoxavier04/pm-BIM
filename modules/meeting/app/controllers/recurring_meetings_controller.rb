@@ -272,7 +272,7 @@ class RecurringMeetingsController < ApplicationController
       .scheduled_occurrences(limit: count + opened.count)
       .reject { |start_time| opened.include?(start_time) }
       .map { |start_time| cancelled[start_time] || scheduled_meeting(start_time) }
-      .first(count)
+      .first([count, 0].max)
 
     [opened.values.sort_by(&:start_time), planned]
   end
