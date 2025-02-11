@@ -230,7 +230,7 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
     end
   end
 
-  context "when OpenID Connect is available" do
+  context "when OpenID Connect is enabled" do
     let(:storage) { create(:nextcloud_storage_configured, :oidc_enabled) }
     let(:app_version) { Storages::SemanticVersion.parse("2.6.3") }
     let(:capabilities_response) do
@@ -240,6 +240,12 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
         group_folder_enabled?: false,
         group_folder_version: nil
       ))
+    end
+
+    it "succeeds when a provider is available" do
+      create(:oidc_provider)
+
+      expect(subject.type).to eq(:healthy)
     end
 
     it "errors if no Provider is available" do

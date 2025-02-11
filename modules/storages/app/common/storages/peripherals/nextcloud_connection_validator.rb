@@ -54,7 +54,7 @@ module Storages
 
       private
 
-      def has_oidc_configuration_error?
+      def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
         openid_connect_idp_absent?
@@ -73,7 +73,7 @@ module Storages
         host_url_not_found
           .or { missing_dependencies }
           .or { version_mismatch }
-          .or { has_oidc_configuration_error? }
+          .or { sso_misconfigured }
           .or { with_unexpected_content }
           .or { capabilities_request_failed_with_unknown_error }
       end
