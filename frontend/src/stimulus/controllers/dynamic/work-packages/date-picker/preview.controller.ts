@@ -154,7 +154,9 @@ export default class PreviewController extends DialogPreviewController {
     this.currentStartDate = selectedDate;
     this.setStartDateFieldValue(this.currentStartDate);
     this.doMarkFieldAsTouched('start_date');
-    this.highlightField(this.dueDateField);
+    if (this.currentDueDate) {
+      this.highlightField(this.dueDateField);
+    }
     this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
   }
 
@@ -170,7 +172,9 @@ export default class PreviewController extends DialogPreviewController {
     this.currentDueDate = selectedDate;
     this.setDueDateFieldValue(this.currentDueDate);
     this.doMarkFieldAsTouched('due_date');
-    this.highlightField(this.startDateField);
+    if (this.currentStartDate) {
+      this.highlightField(this.startDateField);
+    }
     this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
   }
 
