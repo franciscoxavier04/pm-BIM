@@ -600,6 +600,7 @@ export default class IndexController extends Controller {
     if (this.isMobile()) {
       void this.showFormMobile();
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
+      // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
       this.scrollJournalContainer(true);
       this.focusEditor();
     } else {
@@ -609,23 +610,24 @@ export default class IndexController extends Controller {
 
   private async showFormMobile() {
     // First scroll input container into view before focusing
-    this.scrollInputContainerIntoView(0);
+    // Use the original 100ms delay that was tested for best scrolling experience
+    this.scrollInputContainerIntoView(100);
 
-    // Wait a bit for the scroll to complete
+    // Wait for the initial scroll to complete
     await new Promise<void>((resolve) => {
       void window.setTimeout(resolve, 100);
     });
 
-    // Then focus editor to trigger keyboard
-    this.focusEditor(0);
+    // Then focus editor with the original 400ms delay that was tested to avoid interference
+    this.focusEditor(400);
 
     // Wait for virtual keyboard animation - iOS takes ~0.3s to show the keyboard
     await new Promise<void>((resolve) => {
       void window.setTimeout(resolve, 300);
     });
 
-    // Final scroll adjustment after keyboard is shown
-    this.scrollInputContainerIntoView(0);
+    // Final scroll adjustment after keyboard is shown, with original 100ms delay
+    this.scrollInputContainerIntoView(100);
   }
 
   focusEditor(timeout:number = 10) {
