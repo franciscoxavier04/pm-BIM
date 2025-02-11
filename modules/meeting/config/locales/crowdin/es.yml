@@ -231,7 +231,7 @@ es:
       first_created: >
         La primera reunión se ha creado correctamente a partir de la plantilla. Todas las reuniones futuras se crearán automáticamente al mismo tiempo que la anterior.
     template:
-      button_finalize: "Finalizar plantilla"
+      button_finalize: "Open first meeting"
       blank_title: "La plantilla de la serie de reuniones está vacía"
       description: >
         Esta plantilla se usará siempre que se creen nuevas reuniones de la serie. Puede añadir elementos de agenda, participantes y archivos adjuntos a esta plantilla.

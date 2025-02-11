@@ -229,7 +229,7 @@ zh-TW:
       first_created: >
         第一次會議已從範本成功建立。以後所有的會議都會在前一次發生時自動建立。
     template:
-      button_finalize: "完成範本"
+      button_finalize: "Open first meeting"
       blank_title: "您的會議範本是空的"
       description: >
         每當在系列中建立新會議時，都會使用此範本。您可以在此範本中加入議程項目、與會者和附件。

@@ -229,7 +229,7 @@ ms:
       first_created: >
         Mesyuarat pertama telah berjaya dibuat daripada templat. Semua mesyuarat akan datang akan dibuat secara automatik pada masa kejadian sebelumnya.
     template:
-      button_finalize: "Selesaikan templat"
+      button_finalize: "Open first meeting"
       blank_title: "Templat siri mesyuarat anda kosong"
       description: >
         Templat ini akan digunakan apabila mesyuarat baharu dalam siri dibuat. Anda boleh menambah item agenda, peserta dan lampiran pada templat ini.

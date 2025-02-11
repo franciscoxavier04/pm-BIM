@@ -44,6 +44,8 @@ module Meetings
     end
 
     def user_allowed_to_add
+      return if model.project.nil?
+
       unless user.allowed_in_project?(:create_meetings, model.project)
         errors.add :base, :error_unauthorized
       end

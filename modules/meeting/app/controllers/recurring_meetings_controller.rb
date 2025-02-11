@@ -288,7 +288,8 @@ class RecurringMeetingsController < ApplicationController
       elsif @recurring_meeting.will_end?
         open = @recurring_meeting.upcoming_instantiated_meetings
         ongoing = @recurring_meeting.ongoing_meetings
-        @recurring_meeting.remaining_occurrences.count - open.count + ongoing.count
+        total = @recurring_meeting.remaining_occurrences.count - open.count + ongoing.count
+        [total, 0].max
       end
 
     @count = [show_more_limit_param, @max_count].compact.min

@@ -229,7 +229,7 @@ zh-CN:
       first_created: >
         第一次会议已成功从模板创建。所有未来的会议将会在上一次发生的时间自动创建。
     template:
-      button_finalize: "完成模板"
+      button_finalize: "Open first meeting"
       blank_title: "您的会议系列模板为空"
       description: >
         此模板将在系列中创建新会议时使用。您可以在此模板中添加议程项目、参与者和附件。

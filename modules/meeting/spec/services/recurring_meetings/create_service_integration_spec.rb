@@ -40,6 +40,18 @@ RSpec.describe RecurringMeetings::CreateService, "integration", type: :model do
 
   subject { instance.call(**params) }
 
+  describe "project" do
+    context "when not provided" do
+      let(:params) { { title: "foo" } }
+
+      it "complains about the project, not the base authorization" do
+        expect(subject).not_to be_success
+        expect(subject.errors[:base]).to be_empty
+        expect(subject.errors[:project_id]).to contain_exactly "can't be blank."
+      end
+    end
+  end
+
   context "with a daily schedule" do
     let(:first_start) { Time.zone.tomorrow + 10.hours }
     let(:params) do

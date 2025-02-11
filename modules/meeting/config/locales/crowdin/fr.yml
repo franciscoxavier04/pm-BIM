@@ -231,7 +231,7 @@ fr:
       first_created: >
         La première réunion a été créée avec succès à partir du modèle. Toutes les réunions futures seront créées automatiquement au moment de l'occurrence précédente.
     template:
-      button_finalize: "Terminer le modèle"
+      button_finalize: "Open first meeting"
       blank_title: "Votre modèle de série de réunions est vide"
       description: >
         Ce modèle sera utilisé chaque fois que de nouvelles réunions seront créées dans la série. Vous pouvez ajouter des points à l'ordre du jour, des participants et des pièces jointes à ce modèle.
