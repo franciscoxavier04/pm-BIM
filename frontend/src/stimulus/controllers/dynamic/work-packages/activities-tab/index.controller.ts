@@ -708,21 +708,11 @@ export default class IndexController extends Controller {
       this.hideEditor();
     } else {
       this.adjustJournalContainerMargin();
-
-      if (this.isMobile()) {
-        // wait for the keyboard to be fully down before adjusting scroll position
-        this.scrollInputContainerIntoView(400);
-      }
     }
   }
 
   onFocusEditor() {
     this.adjustJournalContainerMargin();
-
-    if (this.isMobile()) {
-      // Ensure editor is fully visible when focused
-      this.scrollInputContainerIntoView(0);
-    }
   }
 
   async onSubmit(event:Event | null = null) {
