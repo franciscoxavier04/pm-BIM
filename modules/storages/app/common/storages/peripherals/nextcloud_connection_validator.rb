@@ -57,10 +57,10 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        openid_connect_idp_absent?
+        openid_connect_idp_absent
       end
 
-      def openid_connect_idp_absent?
+      def openid_connect_idp_absent
         return None() if OpenIDConnect::Provider.any?
 
         Some(ConnectionValidation.new(type: :error,
