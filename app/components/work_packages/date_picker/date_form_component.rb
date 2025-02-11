@@ -103,15 +103,13 @@ module WorkPackages
       end
 
       def update_focused_field(focused_field)
-        return :start_date if focused_field.nil?
+        if field_value(:due_date).present? && field_value(:start_date).nil?
+          return :due_date
+        elsif field_value(:start_date).present? && field_value(:due_date).nil?
+          return :start_date
+        end
 
         case focused_field.to_s.underscore
-        when "combined_date"
-          if field_value(:due_date).present? && field_value(:start_date).nil?
-            :due_date
-          else
-            :start_date
-          end
         when "due_date"
           :due_date
         when "duration"

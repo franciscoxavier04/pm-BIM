@@ -61,7 +61,7 @@ export default class DateFormController extends Controller {
 
   toggleDueDateFieldVisibility() {
     this.toggleFieldVisibility();
-    this.startDateFieldContainerTarget.querySelector('input')?.focus();
+    this.dueDateFieldContainerTarget.querySelector('input')?.focus();
   }
 
   toggleFieldVisibility() {
