@@ -28,21 +28,26 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Projects::Settings::TimeEntryActivitiesController < Projects::SettingsController
-  menu_item :settings_time_entry_activities
+module Admin
+  class TimeEntryActivitiesController < ApplicationController
+    # Allow only admins here
+    before_action :require_admin
+    layout "admin"
 
-  def update
-    TimeEntryActivitiesProject.upsert_all(update_params, unique_by: %i[project_id activity_id])
-    flash[:notice] = t(:notice_successful_update)
+    menu_item :time_entry_activities
 
-    redirect_to project_settings_time_entry_activities_path(@project)
-  end
+    def index; end
 
-  private
+    def new; end
 
-  def update_params
-    permitted_params.time_entry_activities_project.map do |attributes|
-      { project_id: @project.id, active: false }.with_indifferent_access.merge(attributes.to_h)
-    end
+    def edit; end
+
+    def create; end
+
+    def update; end
+
+    def destroy; end
+
+    def move; end
   end
 end

@@ -133,10 +133,17 @@ module Costs
 
       menu :admin_menu,
            :cost_types,
-           { controller: "/admin/cost_types", action: "index" },
+           { controller: "/admin/cost_types", action: :index },
            if: ->(*) { User.current.admin? },
            parent: :admin_costs,
            caption: :label_cost_type_plural
+
+      menu :admin_menu,
+           :time_entry_activities,
+           { controller: "/admin/time_entry_activities", action: :index },
+           if: ->(*) { User.current.admin? },
+           parent: :admin_costs,
+           caption: :enumeration_activities
     end
 
     initializer "costs.settings" do

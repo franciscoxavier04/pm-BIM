@@ -69,6 +69,10 @@ Rails.application.routes.draw do
   resources :hourly_rates, only: %i[edit update]
 
   namespace :admin do
+    resources :time_entry_activities, except: [:show] do
+      post :move
+    end
+
     resources :cost_types, only: %i[index new edit update create destroy] do
       member do
         # TODO: check if this can be replaced with update method
