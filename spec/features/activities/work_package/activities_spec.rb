@@ -94,8 +94,11 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
 
     let(:work_package) { create(:work_package, project:, author: admin) }
     let(:first_comment) do
-      create(:work_package_journal, user: admin, notes: "First comment by admin", journable: work_package,
-                                    version: 2)
+      create(:work_package_journal,
+             user: admin,
+             notes: "First comment by admin",
+             journable: work_package,
+             version: 2)
     end
 
     context "when project is public", with_settings: { login_required: false } do
@@ -397,8 +400,11 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
 
     it "shows the comment of another user without browser reload", :aggregate_failures do
       # simulate member creating a comment
-      first_journal = create(:work_package_journal, user: member, notes: "First comment by member", journable: work_package,
-                                                    version: 2)
+      first_journal = create(:work_package_journal,
+                             user: member,
+                             notes: "First comment by member",
+                             journable: work_package,
+                             version: 2)
 
       # the comment is shown without browser reload
       activity_tab.expect_journal_notes(text: "First comment by member")
@@ -409,12 +415,14 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
 
       activity_tab.add_comment(text: "First comment by admin")
 
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "First comment by member",
-                                                              "Second comment by member",
-                                                              "Third comment by member",
-                                                              "First comment by admin"
-                                                            ])
+      activity_tab.expect_comments_order(
+        [
+          "First comment by member",
+          "Second comment by member",
+          "Third comment by member",
+          "First comment by admin"
+        ]
+      )
 
       first_journal.update!(notes: "First comment by member updated")
 
@@ -620,23 +628,29 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
 
     it "sorts the activities based on the sorting preference", :aggregate_failures do
       # expect the default sorting to be asc
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "First comment by admin",
-                                                              "Second comment by admin"
-                                                            ])
+      activity_tab.expect_comments_order(
+        [
+          "First comment by admin",
+          "Second comment by admin"
+        ]
+      )
       activity_tab.set_journal_sorting(:desc)
 
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "Second comment by admin",
-                                                              "First comment by admin"
-                                                            ])
+      activity_tab.expect_comments_order(
+        [
+          "Second comment by admin",
+          "First comment by admin"
+        ]
+      )
 
       activity_tab.set_journal_sorting(:asc)
 
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "First comment by admin",
-                                                              "Second comment by admin"
-                                                            ])
+      activity_tab.expect_comments_order(
+        [
+          "First comment by admin",
+          "Second comment by admin"
+        ]
+      )
 
       # expect a new comment to be added at the bottom
       # when the sorting is set to asc
@@ -644,21 +658,25 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       # creating a new comment
       activity_tab.add_comment(text: "Third comment by admin")
 
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "First comment by admin",
-                                                              "Second comment by admin",
-                                                              "Third comment by admin"
-                                                            ])
+      activity_tab.expect_comments_order(
+        [
+          "First comment by admin",
+          "Second comment by admin",
+          "Third comment by admin"
+        ]
+      )
 
       activity_tab.set_journal_sorting(:desc)
       activity_tab.add_comment(text: "Fourth comment by admin")
 
-      expect(activity_tab.get_all_comments_as_arrary).to eq([
-                                                              "Fourth comment by admin",
-                                                              "Third comment by admin",
-                                                              "Second comment by admin",
-                                                              "First comment by admin"
-                                                            ])
+      activity_tab.expect_comments_order(
+        [
+          "Fourth comment by admin",
+          "Third comment by admin",
+          "Second comment by admin",
+          "First comment by admin"
+        ]
+      )
     end
   end
 
@@ -668,8 +686,11 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       create(:work_package_journal, user: admin, notes: "First comment by admin", journable: work_package, version: 2)
     end
     let!(:journal_mentioning_admin) do
-      create(:work_package_journal, user: member, notes: "First comment by member mentioning @#{admin.name}",
-                                    journable: work_package, version: 3)
+      create(:work_package_journal,
+             user: member,
+             notes: "First comment by member mentioning @#{admin.name}",
+             journable: work_package,
+             version: 3)
     end
     let!(:notificaton_for_admin) do
       create(:notification, recipient: admin, resource: work_package, journal: journal_mentioning_admin, reason: :mentioned)
@@ -1021,8 +1042,11 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
           # auto-scrolls to the bottom when a new comment is added by another user
           # add a comment
           latest_journal_version = work_package.journals.last.version
-          create(:work_package_journal, user: member, notes: "New comment by member", journable: work_package,
-                                        version: latest_journal_version + 1)
+          create(:work_package_journal,
+                 user: member,
+                 notes: "New comment by member",
+                 journable: work_package,
+                 version: latest_journal_version + 1)
           # wait for the comment to be added
           wait_for { page }.to have_test_selector("op-journal-notes-body", text: "New comment by member")
           sleep 1 # wait for auto scrolling to finish
@@ -1420,7 +1444,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         before do
           allow_any_instance_of(WorkPackages::ActivitiesTabController) # rubocop:disable RSpec/AnyInstance
             .to receive(:create_journal_service_call)
-            .and_raise(StandardError.new("Test error"))
+                  .and_raise(StandardError.new("Test error"))
         end
 
         it "shows an error banner when the server returns an error" do
@@ -1442,11 +1466,11 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         before do
           allow_any_instance_of(AddWorkPackageNoteService) # rubocop:disable RSpec/AnyInstance
             .to receive(:call)
-            .and_return(
-              ServiceResult.failure(errors: ActiveModel::Errors.new(Journal.new).tap do |e|
-                e.add(:notes, "Validation error")
-              end)
-            )
+                  .and_return(
+                    ServiceResult.failure(errors: ActiveModel::Errors.new(Journal.new).tap do |e|
+                      e.add(:notes, "Validation error")
+                    end)
+                  )
         end
 
         it "shows a validation error banner" do
@@ -1474,7 +1498,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         before do
           allow_any_instance_of(WorkPackages::ActivitiesTabController) # rubocop:disable RSpec/AnyInstance
             .to receive(:update_journal_service_call)
-            .and_raise(StandardError.new("Test error"))
+                  .and_raise(StandardError.new("Test error"))
         end
 
         it "shows an error banner" do
@@ -1492,11 +1516,11 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         before do
           allow_any_instance_of(Journals::UpdateService) # rubocop:disable RSpec/AnyInstance
             .to receive(:call)
-            .and_return(
-              ServiceResult.failure(errors: ActiveModel::Errors.new(Journal.new).tap do |e|
-                e.add(:notes, "Validation error")
-              end)
-            )
+                  .and_return(
+                    ServiceResult.failure(errors: ActiveModel::Errors.new(Journal.new).tap do |e|
+                      e.add(:notes, "Validation error")
+                    end)
+                  )
         end
 
         it "shows a validation error banner" do
