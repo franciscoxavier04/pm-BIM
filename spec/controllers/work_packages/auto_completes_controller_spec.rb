@@ -118,7 +118,7 @@ RSpec.describe WorkPackages::AutoCompletesController do
 
     describe "returns work package for given id" do
       # this relies on all expected work packages to have ids that contain the given string
-      # we do not want to have work_package_3 so we take it's id + 1 to create a string
+      # we do not want to have work_package_3 so we take its id + 1 to create a string
       # we are sure to not be part of work_package_3's id.
       let(:ids) do
         taken_ids = WorkPackage.pluck(:id).map(&:to_s)

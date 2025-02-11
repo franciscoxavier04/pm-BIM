@@ -99,7 +99,7 @@ module OpenProject::TextFormatting
             # both Foo and Bar are contained by labels
             if checkbox.nil?
               # In case we don't have a checkbox, add the content of the label
-              # or it's parent in case of links directly to the node
+              # or its parent in case of links directly to the node
               to_add = li_node == parent ? label.children : parent
               li_node.add_child to_add
             else
