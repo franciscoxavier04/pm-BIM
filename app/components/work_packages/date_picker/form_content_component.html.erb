@@ -66,7 +66,7 @@
                                                         disabled: disabled?))
         end
 
-        body.with_row(mb: 3) do
+        body.with_row(mb: 3, "aria-hidden": true,) do
           helpers.angular_component_tag "opce-wp-modal-date-picker",
                                         inputs: {
                                           start_date: work_package.start_date,
