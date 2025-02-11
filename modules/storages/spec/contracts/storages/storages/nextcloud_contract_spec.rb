@@ -156,6 +156,8 @@ RSpec.describe Storages::Storages::NextcloudContract, :storage_server_helpers, :
     context "when the authentication method is oauth2_sso" do
       let(:authentication_method) { "oauth2_sso" }
 
+      before { storage.nextcloud_audience = "valid_audience" }
+
       it { is_expected.to be_valid }
     end
 

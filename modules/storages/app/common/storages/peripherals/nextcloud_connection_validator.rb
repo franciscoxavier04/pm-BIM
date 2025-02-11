@@ -54,10 +54,26 @@ module Storages
 
       private
 
+      def sso_misconfigured
+        return None() unless @storage.authenticate_via_idp?
+
+        openid_connect_idp_absent
+      end
+
+      def openid_connect_idp_absent
+        return None() if OpenIDConnect::Provider.any?
+
+        Some(ConnectionValidation.new(type: :error,
+                                      error_code: :oidc_provider_missing,
+                                      timestamp: Time.current,
+                                      description: I18n.t("storages.health.connection_validation.oidc_provider_missing")))
+      end
+
       def has_base_configuration_error?
         host_url_not_found
           .or { missing_dependencies }
           .or { version_mismatch }
+          .or { sso_misconfigured }
           .or { with_unexpected_content }
           .or { capabilities_request_failed_with_unknown_error }
       end
