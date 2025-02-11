@@ -608,16 +608,14 @@ export default class IndexController extends Controller {
   }
 
   private async showFormMobile() {
-    // First focus to trigger keyboard
-    this.focusEditor(100);
-
-    // Wait for virtual keyboard animation - iOS takes ~0.3s to show the keyboard
+    // Let the DOM update and CKEditor initialize before scrolling into view and focusing the editor
+    // This is necessary to honor iOS requirement for user interaction to trigger the virtual keyboard
     await new Promise<void>((resolve) => {
-      void window.setTimeout(resolve, 300);
+      void window.setTimeout(resolve, 50);
     });
 
-    // Then scroll into position
     this.scrollInputContainerIntoView(0);
+    this.focusEditor(0);
   }
 
   focusEditor(timeout:number = 10) {
