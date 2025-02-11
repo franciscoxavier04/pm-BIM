@@ -359,7 +359,7 @@ de:
           "15_3":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
+                Das Release enthält verschiedene neue Funktionen und Verbesserungen, z.B. <br> <ul class="%{list_styling_class}"> <li>Planen Sie wiederkehrende Besprechungen, um Ihre wöchentlichen, zweiwöchentlichen oder individuellen Termine zu organisieren. </li> <li>Erstellen Sie untergeordnete Arbeitspakete direkt über die Registerkarte Beziehungen.</li> <li>Erfassen Sie Gesamtsummen in Zeiterfassungs-PDF-Exporten, um einen besseren Überblick zu erhalten.</li> <li>Beziehen Sie untergeordnete Arbeitspakete in Kostenberichte ein, um eine genauere Nachvollziehbarkeit zu gewährleisten.</li> <li>Sehen Sie Datumsangaben von zuvor verborgenen Beziehungen trotz eingeschränkter Berechtigungen, um fundierte Planungsentscheidungen zu treffen.</li> </ul>
     ical_sharing_modal:
       title: "Kalender abonnieren"
       inital_setup_error_message: "Beim Abrufen der Daten ist ein Fehler aufgetreten."

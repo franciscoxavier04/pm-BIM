@@ -55,7 +55,7 @@ tr:
         work_packages_created:
           title: 'Oluşturduğum iş paketleri'
         work_packages_watched:
-          title: 'İzlediğim iş paketleri'
+          title: 'Takip ettiğim iş paketleri'
         work_packages_table:
           title: 'İş paketleri tablosu'
         work_packages_graph:
