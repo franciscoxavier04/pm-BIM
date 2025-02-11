@@ -10,7 +10,7 @@ release_date: 2025-02-19
 
 Release date: 2025-02-19
 
-We released OpenProject [OpenProject 15.3.0](https://community.openproject.org/versions/2163). This release includes several bug fixes, and we recommend updating to the latest version. While it is a minor release, it introduces over 40 new features, including a major update to the Meetings module. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.3.0](https://community.openproject.org/versions/2163). This release includes several bug fixes, and we recommend updating to the latest version. While it is a minor release, it introduces over 40 new features, including a major update to the Meetings module. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
@@ -35,7 +35,7 @@ The following screenshot shows an example Meetings overview page, highlighting s
 
 ![Example screenshot of new Meetings overview page with OpenProject 15.3, including Recurring meetings, Meeting series](openproject-15-3-recurring-meetings-highlighted.png)
 
-Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between **My meetings**, **Recurring meetings** and **All meetings**, with seperate sections for Meeting series and Involvement.
+Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between **My meetings**, **Recurring meetings** and **All meetings**, with separate sections for Meeting series and Involvement.
 
 ### Create child work packages directly from the Relations tab
 
@@ -64,7 +64,7 @@ This enhancement simplifies reporting, making it easier to review and analyze tr
 
 Cost reports in OpenProject now allow to easier include child work packages, ensuring more comprehensive cost tracking. Previously, users managing hierarchical work packages (such as epics, features, or sub-tasks) had to manually select each work package to ensure full cost visibility.
 
-OpenProject 15.3 introduces a new filter option for cost reports: **is (includes descendents)**, in addition to **is**. This allows users to automatically include all related child work packages (grandchildren, great-grandchildren, etc.) in their cost reports, improving accuracy and efficiency. This eliminates the need for cumbersome manual selection and ensures that all relevant costs are accounted for in reports.
+OpenProject 15.3 introduces a new filter option for cost reports: **is (includes descendants)**, in addition to **is**. This allows users to automatically include all related child work packages (grandchildren, great-grandchildren, etc.) in their cost reports, improving accuracy and efficiency. This eliminates the need for cumbersome manual selection and ensures that all relevant costs are accounted for in reports.
 
 ![Screenshot showing the dropdown in a cost report filter, highlighting the new 'is (includes descendents)' option](openproject-15-3-cost-report-children.png)
 
@@ -75,7 +75,7 @@ OpenProject now provides better visibility into dependencies by displaying relat
 OpenProject 15.3 improves transparency by displaying all relations in the Relations tab. While restricted work packages remain inaccessible, their **start and finish dates will now be visible**, along with lag time for applicable relations. This way, users still cannot interact with restricted work packages but will now understand why a task is scheduled at a specific time.
 
 > [!NOTE]
-> If a related work package has the same start and finish date, a single date is displayed instead of a range. This is [another feature of OpenProject 15.3 and applies to all Relations on the Relations tab](https://community.openproject.org/wp/61044), independent from the user's permissions.
+> If a related work package has the same start and finish date, a single date is displayed instead of a range. This is [another feature of OpenProject 15.3 and applies to all Relations on the Relations tab](https://community.openproject.org/wp/61044), independent of the user's permissions.
 
 These improvements help teams make informed scheduling decisions while maintaining appropriate permission controls. Here is an example, showing two relations – one with full visibility and one with restricted visibility.
 
@@ -217,11 +217,12 @@ Filtering user custom fields is now faster with autocompleters in the project li
 
 A very special thank you goes to City of Cologne for sponsoring parts of this release. Your support, alongside the efforts of our amazing Community, helps drive these innovations.
 
-Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Luka Bradesko, Andrej Sandorf, Max Mutzge, Lars Geiger, Rudi B., Alexander Aleschenko, Alex Fantini, Peter Wafzig.
+Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Luka Bradesko, Max Mutzge, Lars Geiger, Rudi B., Alexander Aleschenko, Alex Fantini, Peter Wafzig.
 
 Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
-- [NAME](https://crowdin.com/profile/top4ek), for a great number of translations into Russian.
-- [NAME](https://crowdin.com/profile/GZTranslations), for a great number of translations into Portuguese.
-- [NAME](https://crowdin.com/profile/BigSeung), for a great number of translations into Korean.
+- [greench](https://crowdin.com/profile/greench), for an outstanding number of translations into Turkish.
+- [Kuma Yamashita](https://crowdin.com/profile/dredgk), for a great number of translations into Japanese.
+- [Willers-ICT](https://crowdin.com/profile/willers-ict), for a great number of translations into Dutch.
+- [Vlastislav Dockal](https://crowdin.com/profile/vdockal), for a great number of translations into Czech.
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
