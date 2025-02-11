@@ -121,4 +121,41 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
       end
     end
   end
+
+  describe "rescheduling mails" do
+    context "when updating the title" do
+      let(:params) do
+        { title: "New title" }
+      end
+
+      it "does not create them" do
+        expect(service_result).to be_success
+        perform_enqueued_jobs
+        expect(ActionMailer::Base.deliveries).to be_empty
+      end
+    end
+
+    context "when updating the frequency and start_time" do
+      let(:params) do
+        { start_time: Time.zone.today + 2.days + 11.hours }
+      end
+
+      let(:recipient) do
+        create(:user, member_with_permissions: { project => %i(view_meetings) })
+      end
+
+      before do
+        series.template.participants.delete_all
+        series.template.participants << MeetingParticipant.new(user: recipient, invited: true)
+      end
+
+      it "sends out rescheduled mails" do
+        expect(service_result).to be_success
+        perform_enqueued_jobs
+        expect(ActionMailer::Base.deliveries.count).to eq(1)
+        expect(ActionMailer::Base.deliveries.first.subject)
+          .to eq "[#{project.name}] Meeting series '#{series.title}' rescheduled"
+      end
+    end
+  end
 end
