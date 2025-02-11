@@ -32,12 +32,11 @@ require "text/hyphen"
 module WorkPackages
   module Exports
     module Generate
-      class ModalDialogComponent < ApplicationComponent
-        MODAL_ID = "op-work-package-generate-pdf-dialog"
-        GENERATE_PDF_FORM_ID = "op-work-packages-generate-pdf-dialog-form"
+      class ModalDialogComponent <ApplicationComponent
+        MODAL_ID="op-work-package-generate-pdf-dialog"
+        GENERATE_PDF_FORM_ID="op-work-packages-generate-pdf-dialog-form"
         include OpTurbo::Streamable
         include OpPrimer::ComponentHelpers
-
         attr_reader :work_package, :params
 
         def initialize(work_package:, params:)
@@ -60,18 +59,7 @@ module WorkPackages
         end
 
         def templates_options
-          [
-            {
-              label: I18n.t("pdf_generator.template_attributes.label"),
-              caption: I18n.t("pdf_generator.template_attributes.caption"),
-              value: "attributes"
-            },
-            {
-              label: I18n.t("pdf_generator.template_contract.label"),
-              caption: I18n.t("pdf_generator.template_contract.caption"),
-              value: "contract"
-            }
-          ]
+          work_package.type.pdf_export_templates_for_type.filter(&:enabled)
         end
 
         def hyphenation_default

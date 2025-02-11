@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Type < ApplicationRecord
+class Type <ApplicationRecord
   # Work Package attributes for this type
   # and constraints to specific attributes (by plugins).
   include ::Type::Attributes
@@ -37,6 +37,9 @@ class Type < ApplicationRecord
   include ::Scopes::Scoped
 
   attribute :patterns, Types::Patterns::CollectionType.new
+
+  store_attribute :pdf_export_templates, :export_templates_disabled, :json
+  store_attribute :pdf_export_templates, :export_templates_order, :json
 
   before_destroy :check_integrity
 
@@ -110,6 +113,12 @@ class Type < ApplicationRecord
 
   def enabled_patterns
     patterns.all_enabled
+  end
+
+  def pdf_export_templates_for_type
+    WorkPackage::PDFExport::Templates::build_in_templates.map do |build_in_template|
+      WorkPackage::PDFExport::Template.new(**build_in_template, enabled: true)
+    end
   end
 
   private
