@@ -183,6 +183,9 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode # toggle to automatic mode
+
+    wait_for_network_idle
+
     combined_field.save!
 
     work_packages_page.expect_and_dismiss_toaster message: "Successful update."
@@ -213,6 +216,8 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode # toggle to manual mode
+
+    wait_for_network_idle
 
     # The calendar needs some time to get initialized.
     sleep 2
@@ -253,6 +258,9 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode
+
+    wait_for_network_idle
+
     combined_field.save!
 
     work_packages_page.expect_and_dismiss_toaster message: "Successful update."
