@@ -166,6 +166,46 @@ RSpec.describe "Recurring meetings show",
     end
   end
 
+  describe "upcoming meeting that is already closed" do
+    shared_let(:recurring_meeting) do
+      create :recurring_meeting,
+             project:,
+             author: user,
+             start_time: Time.zone.today + 10.hours,
+             end_after: "iterations",
+             iterations: 1,
+             frequency: "daily"
+    end
+
+    let!(:ongoing_meeting) do
+      create(:structured_meeting, recurring_meeting:, start_time: Time.zone.today + 10.hours, state: :open)
+    end
+    let!(:ongoing_schedule) do
+      create :scheduled_meeting,
+             meeting: ongoing_meeting,
+             recurring_meeting:,
+             start_time: Time.zone.today + 10.hours
+    end
+
+    it "does not show the meeting ended blankslate" do
+      travel_to(Time.zone.today + 9.hours) do
+        get recurring_meeting_path(recurring_meeting)
+      end
+
+      expect(page).to have_text format_time(ongoing_meeting.start_time)
+      expect(page).to have_text "No more planned meetings"
+      expect(page).to have_no_text "Meeting series ended"
+
+      travel_to(Time.zone.today + 10.hours + 5.minutes) do
+        get recurring_meeting_path(recurring_meeting)
+      end
+
+      expect(page).to have_text format_time(ongoing_meeting.start_time)
+      expect(page).to have_text "No more planned meetings"
+      expect(page).to have_no_text "Meeting series ended"
+    end
+  end
+
   describe "upcoming quick filter" do
     context "with a rescheduled meeting" do
       let!(:rescheduled_instance) do

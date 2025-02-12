@@ -43,6 +43,7 @@ module RecurringMeetings
     def set_default_attributes(_params)
       model.change_by_system do
         model.author = user
+        model.duration ||= 1
       end
     end
   end

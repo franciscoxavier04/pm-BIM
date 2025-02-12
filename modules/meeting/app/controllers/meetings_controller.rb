@@ -402,9 +402,13 @@ class MeetingsController < ApplicationController
   end
 
   def build_meeting
-    @meeting = meeting_class.new
-    @meeting.project = @project
-    @meeting.author = User.current
+    meeting = meeting_class.new
+
+    call = ::Meetings::SetAttributesService
+      .new(user: current_user, model: meeting, contract_class: EmptyContract)
+      .call(project: @project)
+
+    @meeting = call.result
   end
 
   def meeting_class

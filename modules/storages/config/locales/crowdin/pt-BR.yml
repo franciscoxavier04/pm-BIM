@@ -222,6 +222,7 @@ pt-BR:
         host_not_found: Nenhum servidor Nextcloud encontrado na URL de host configurada. Verifique a configuração.
         missing_dependencies: 'Uma dependência necessária está faltando no armazenamento de arquivos. Adicione a seguinte dependência: %{dependency}.'
         not_configured: A conexão não pôde ser validada. Conclua a configuração primeiro.
+        oidc_provider_missing: There is no OpenID Connect Identity Provider configured.
         placeholder: Verifique sua conexão com o servidor.
         subtitle: Validação de conexão
         tenant_id_wrong: O ID do diretório (inquilino) configurado é inválido. Verifique a configuração.

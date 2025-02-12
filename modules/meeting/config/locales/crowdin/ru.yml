@@ -182,11 +182,20 @@ ru:
         Немедленно отправьте приглашение по электронной почте участникам, выбранным выше. Вы также можете сделать это вручную в любое время позже.
       send_invitation_emails_structured: "Отправить приглашение по электронной почте сразу всем участникам. Вы также можете сделать это вручную в любое время."
       open_meeting_link: "Открыть совещание"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Серия совещаний %{title}"
         summary: "%{actor} создал новую серию совещаний %{title}"
       invited:
         summary: "%{actor} отправил вам приглашение на совещание %{title}"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "Встреча %{title} была перенесена"
         summary: "Совещание %{title} перенесено %{actor}"
@@ -284,11 +293,11 @@ ru:
       heading: "Удалить эту серию совещаний навсегда?"
       confirmation_message_html:
         zero: >
-          Удаление <strong>%{title}</strong> приведет к удалению всех совещаний в этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          Удаление <strong>%{title}</strong> также удалит одно совещание из этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          Удаление <strong>%{title}</strong> приведет к удалению %{count} совещаний в этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "Отменить это событие"
       heading: "Отменить это событие?"
@@ -363,7 +372,7 @@ ru:
   label_meeting_state_closed: "Закрыть"
   label_meeting_state_closed_html: "<i>Закрытый</i>"
   label_meeting_state_agenda_created: "Повестка дня создана"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Запланированно"
   label_meeting_state_cancelled: "Отменено"
   label_meeting_state_skipped: "Пропущено"
   label_meeting_reopen_action: "Открыть совещание заново"
