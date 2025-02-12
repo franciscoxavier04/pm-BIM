@@ -242,16 +242,28 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
       ))
     end
 
-    it "succeeds when a provider is available" do
-      create(:oidc_provider)
-
-      expect(subject.type).to eq(:healthy)
-    end
-
-    it "errors if no Provider is available" do
+    it "returns a validation failure if no Provider is available" do
       expect(subject.type).to eq(:error)
       expect(subject.error_code).to eq(:oidc_provider_missing)
       expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_provider_missing"))
+    end
+
+    context "when OIDC Provider is available" do
+      it "returns a success" do
+        create(:oidc_provider)
+
+        expect(subject.type).to eq(:healthy)
+        expect(subject.error_code).to eq(:none)
+      end
+
+      it "returns a validation failure if storage audience isn't set" do
+        create(:oidc_provider)
+        storage.update(nextcloud_audience: nil)
+
+        expect(subject.type).to eq(:error)
+        expect(subject.error_code).to eq(:oidc_audience_missing)
+        expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_audience_missing"))
+      end
     end
   end
 
