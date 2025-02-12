@@ -54,7 +54,7 @@ RSpec.describe Relation do
 
     relation = build(:relation, from:, to:)
     expect(relation).not_to be_valid
-    expect(relation.errors.as_json).to include(to_id: ["has already been taken."])
+    expect(relation.errors.as_json).to include(to: ["has already been taken."])
 
     other = create(:work_package)
     relation = build(:relation, from:, to: other)
