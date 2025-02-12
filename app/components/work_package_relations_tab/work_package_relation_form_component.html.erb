@@ -20,15 +20,16 @@
           # so we need to re-define them here. Figure out solution for this.
           relation = @relation
           lag_shown = show_lag?
-          to_id_field_value = relation.to.present? ? "#{related_work_package.type.name.upcase} ##{related_work_package.id} - #{related_work_package.subject}" : nil
+          field_value = displayable_field_value
+          relation_direction = direction
           url = ::API::V3::Utilities::PathHelper::ApiV3Path.work_package_available_relation_candidates(@work_package.id, type: relation.relation_type_for(@work_package))
           render_inline_form(f) do |my_form|
             if relation.persisted?
               my_form.text_field(
-                name: :to_id,
+                name: relation_direction,
                 label: WorkPackage.model_name.human,
                 visually_hide_label: false,
-                value: to_id_field_value,
+                value: field_value,
                 readonly: true
               )
             else
@@ -38,7 +39,7 @@
               )
 
               my_form.autocompleter(
-                name: :to_id,
+                name: relation_direction,
                 label: WorkPackage.model_name.human,
                 required: true,
                 visually_hide_label: false,

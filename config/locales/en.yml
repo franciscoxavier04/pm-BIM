@@ -1301,11 +1301,11 @@ en:
           typed_dag:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
-            to:
-              error_not_found: "work package in `to` position not found or not visible"
+            to_id:
+              error_not_found: "work package not found or not visible"
               error_readonly: "an existing relation's `to` link is immutable"
-            from:
-              error_not_found: "work package in `from` position not found or not visible"
+            from_id:
+              error_not_found: "work package not found or not visible"
               error_readonly: "an existing relation's `from` link is immutable"
             lag:
               greater_than_or_equal_to:

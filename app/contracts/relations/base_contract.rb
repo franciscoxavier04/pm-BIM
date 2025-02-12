@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -47,11 +49,11 @@ module Relations
     private
 
     def validate_from_exists
-      errors.add :from, :error_not_found unless visible_work_packages.exists? model.from_id
+      errors.add :from_id, :error_not_found unless visible_work_packages.exists? model.from_id
     end
 
     def validate_to_exists
-      errors.add :to, :error_not_found unless visible_work_packages.exists? model.to_id
+      errors.add :to_id, :error_not_found unless visible_work_packages.exists? model.to_id
     end
 
     def validate_nodes_relatable
@@ -60,7 +62,7 @@ module Relations
       # in this case we only want to show the "WorkPackage can't be blank" error instead of a
       # misleading circular dependencies error
       # the error is added by the models presence validation
-      return if model.to_id.nil?
+      return if model.to_id.nil? || model.from_id.nil?
 
       if (model.from_id_changed? || model.to_id_changed?) &&
          WorkPackage.relatable(model.from, model.relation_type, ignored_relation: model).where(id: model.to_id).empty?
@@ -85,6 +87,8 @@ module Relations
     end
 
     def manage_relations?
+      return true if model.from.nil?
+
       user.allowed_in_work_package?(:manage_work_package_relations, model.from)
     end
   end

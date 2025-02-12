@@ -59,7 +59,7 @@ class WorkPackageRelationsController < ApplicationController
     service_result = Relations::CreateService.new(user: current_user)
                                              .call(create_relation_params)
 
-    unless service_result.success?
+    if service_result.failure?
       update_via_turbo_stream(
         component: WorkPackageRelationsTab::WorkPackageRelationFormComponent.new(work_package: @work_package,
                                                                                  relation: service_result.result,
