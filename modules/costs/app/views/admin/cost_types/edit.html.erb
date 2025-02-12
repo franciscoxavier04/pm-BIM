@@ -38,12 +38,14 @@ See COPYRIGHT and LICENSE files for more details.
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
     header.with_title { title }
-    header.with_breadcrumbs([
-                              { href: admin_index_path, text: t("label_administration") },
-                              { href: url_for({ controller: "/admin/costs_settings", action: "show" }), text: t(:project_module_costs) },
-                              { href: admin_cost_types_path, text: t(:label_cost_type_plural) },
-                              title
-                            ])
+    header.with_breadcrumbs(
+      [
+        { href: admin_index_path, text: t("label_administration") },
+        { href: url_for({ controller: "/admin/costs_settings", action: "show" }), text: t(:project_module_costs) },
+        { href: admin_cost_types_path, text: t(:label_cost_type_plural) },
+        title
+      ]
+    )
   end
 %>
 
