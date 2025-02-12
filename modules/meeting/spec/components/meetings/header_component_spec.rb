@@ -50,7 +50,7 @@ RSpec.describe Meetings::HeaderComponent, type: :component do
       expect(subject).to have_navigation "Breadcrumb"
     end
 
-    context "with a one-off meeting" do
+    context "with a one-time meeting" do
       context "without a current project" do
         it "renders global breadcrumbs" do
           expect(subject).to have_css ".breadcrumb-item", count: 3
