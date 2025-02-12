@@ -46,10 +46,6 @@ module WorkPackages
           @params = params
         end
 
-        def default_header_text_right
-          "#{work_package.type} ##{work_package.id}"
-        end
-
         def default_footer_text_center
           work_package.subject
         end

@@ -24,7 +24,6 @@ RSpec.describe WorkPackage::PDFExport::DocumentGenerator do
   end
   let(:shared_options) do
     {
-      header_text_right: "A text on the right of the header",
       footer_text_center: "A text in the center of the footer"
     }
   end
@@ -57,8 +56,7 @@ RSpec.describe WorkPackage::PDFExport::DocumentGenerator do
         user.name,
         export_time_formatted,
         "A text in the center of the footer",
-        "Page 1 of 1",
-        "A text on the right of the header"
+        "Page 1 of 1"
       ]
       result = pdf
       expect(result.join(" ")).to eq(expected_result.join(" "))
@@ -69,7 +67,6 @@ RSpec.describe WorkPackage::PDFExport::DocumentGenerator do
         {
           hyphenation: "1",
           hyphenation_language: "en_us",
-          header_text_right: "",
           footer_text_center: ""
         }
       end
