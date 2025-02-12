@@ -41,9 +41,7 @@ RSpec.describe "work package generate PDF dialog", :js, :selenium do
   shared_let(:user) { create(:admin) }
   shared_let(:project) { create(:project) }
   shared_let(:default_footer_text) { project.name }
-  shared_let(:download_list) do
-    DownloadList.new
-  end
+  shared_let(:download_list) { DownloadList.new }
   let(:work_package) do
     build(:work_package,
           project:,
@@ -53,9 +51,7 @@ RSpec.describe "work package generate PDF dialog", :js, :selenium do
   end
   let(:document_generator) { instance_double(WorkPackage::PDFExport::DocumentGenerator) }
   let(:wp_exporter) { instance_double(WorkPackage::PDFExport::WorkPackageToPdf) }
-  let(:expected_params) do
-    {}
-  end
+  let(:expected_params) { {} }
 
   def visit_work_package_page!
     Pages::FullWorkPackage.new(work_package).visit!
@@ -115,6 +111,7 @@ RSpec.describe "work package generate PDF dialog", :js, :selenium do
         footer_text_right: project.name
       }
     end
+
     it "downloads with options" do
       generate!
     end

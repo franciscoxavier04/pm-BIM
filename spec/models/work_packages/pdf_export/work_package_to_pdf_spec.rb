@@ -183,11 +183,11 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
               .and_return attachments
     end
   end
-  let(:options) {
+  let(:options) do
     {
       footer_text_right: project.name
     }
-  }
+  end
   let(:exporter) do
     described_class.new(work_package, options)
   end
