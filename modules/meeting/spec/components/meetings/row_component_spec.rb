@@ -82,7 +82,7 @@ RSpec.describe Meetings::RowComponent, type: :component do
 
         context "without a current project" do
           it "shows delete menu item" do
-            expect(subject).to have_link "Delete meeting", href: delete_dialog_meeting_path(meeting)
+            expect(subject).to have_link "Delete meeting", href: delete_dialog_project_meeting_path(project, meeting)
           end
         end
 
@@ -101,7 +101,7 @@ RSpec.describe Meetings::RowComponent, type: :component do
 
         context "without a current project" do
           it "shows delete menu item" do
-            expect(subject).to have_link "Delete occurrence", href: delete_dialog_meeting_path(meeting)
+            expect(subject).to have_link "Delete occurrence", href: delete_dialog_project_meeting_path(project, meeting)
           end
         end
 

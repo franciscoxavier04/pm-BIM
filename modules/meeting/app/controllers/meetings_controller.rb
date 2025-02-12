@@ -27,19 +27,16 @@
 #++
 
 class MeetingsController < ApplicationController
-  before_action :load_and_authorize_in_optional_project, only: %i[index new new_dialog show create delete_dialog destroy]
+  before_action :load_and_authorize_in_optional_project
+
   before_action :verify_activities_module_activated, only: %i[history]
   before_action :determine_date_range, only: %i[history]
   before_action :determine_author, only: %i[history]
   before_action :build_meeting, only: %i[new new_dialog]
   before_action :find_meeting, except: %i[index new create new_dialog]
-  before_action :set_project, only: %i[copy history update update_participants]
   before_action :set_activity, only: %i[history]
   before_action :find_copy_from_meeting, only: %i[create]
   before_action :convert_params, only: %i[create update update_participants]
-  before_action :authorize, except: %i[index new create update_title update_details update_participants change_state new_dialog]
-  before_action :authorize_global,
-                only: %i[index new create update_title update_details update_participants change_state new_dialog]
   before_action :prevent_template_destruction, only: :destroy
 
   helper :watchers
@@ -77,11 +74,10 @@ class MeetingsController < ApplicationController
           if @meeting.state == "cancelled"
             render_404
           else
-            render(Meetings::ShowComponent.new(meeting: @meeting, project: @project), layout: true)
+            render(Meetings::ShowComponent.new(meeting: @meeting), layout: true)
           end
-        else
-          @project = @meeting.project
-          params[:tab] ||= "minutes" if @meeting.agenda.present? && @meeting.agenda.locked?
+        elsif @meeting.agenda.present? && @meeting.agenda.locked?
+          params[:tab] ||= "minutes"
         end
       end
     end
@@ -198,9 +194,9 @@ class MeetingsController < ApplicationController
     # rubocop:enable Rails/ActionControllerFlashBeforeRender
 
     if recurring
-      redirect_to polymorphic_path([@project, recurring]), status: :see_other
+      redirect_to project_recurring_meeting_path(@project, recurring), status: :see_other
     else
-      redirect_to polymorphic_path([@project, :meetings]), status: :see_other
+      redirect_to project_meetings_path(@project), status: :see_other
     end
   end
 
@@ -212,7 +208,6 @@ class MeetingsController < ApplicationController
         render turbo_stream: @turbo_streams
       end
       format.html do
-        @project = @meeting.project
         render :edit
       end
     end
@@ -434,10 +429,6 @@ class MeetingsController < ApplicationController
       .find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render_404
-  end
-
-  def set_project
-    @project = @meeting.project
   end
 
   def convert_params # rubocop:disable Metrics/AbcSize

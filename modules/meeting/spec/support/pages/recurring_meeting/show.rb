@@ -32,18 +32,14 @@ module Pages::RecurringMeeting
   class Show < ::Pages::Meetings::Base
     attr_accessor :meeting
 
-    def initialize(meeting, project: nil)
-      super(project)
+    def initialize(meeting)
+      super(meeting.project)
 
       self.meeting = meeting
     end
 
     def path
-      if project
-        project_recurring_meeting_path(project, meeting)
-      else
-        recurring_meeting_path(meeting)
-      end
+      project_recurring_meeting_path(project, meeting)
     end
 
     def expect_planned_meeting(date:)

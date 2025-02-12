@@ -34,6 +34,7 @@ module Pages::Meetings
     attr_accessor :meeting
 
     def initialize(meeting)
+      super(meeting.project)
       self.meeting = meeting
     end
 
@@ -62,7 +63,7 @@ module Pages::Meetings
     end
 
     def path
-      edit_meeting_path(meeting)
+      edit_project_meeting_path(project, meeting)
     end
   end
 end

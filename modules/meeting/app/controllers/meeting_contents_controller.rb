@@ -39,8 +39,8 @@ class MeetingContentsController < ApplicationController
   helper :watchers
   helper :meetings
 
+  before_action :load_and_authorize_in_optional_project
   before_action :find_meeting, :find_content
-  before_action :authorize
 
   def show
     if params[:id].present? && @content.last_journal.version == params[:id].to_i
@@ -99,7 +99,6 @@ class MeetingContentsController < ApplicationController
   def find_meeting
     @meeting = Meeting.includes(:project, :author, :participants, :agenda, :minutes)
                       .find(params[:meeting_id])
-    @project = @meeting.project
     @author = User.current
   rescue ActiveRecord::RecordNotFound
     render_404

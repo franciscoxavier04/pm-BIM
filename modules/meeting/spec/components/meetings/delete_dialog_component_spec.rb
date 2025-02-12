@@ -48,20 +48,10 @@ RSpec.describe Meetings::DeleteDialogComponent, type: :component do
   describe "dialog form" do
     let(:meeting) { build_stubbed(:meeting, project:) }
 
-    context "without a current project" do
-      let(:project) { nil }
+    let(:project) { build_stubbed(:project) }
 
-      it "renders the correct form action" do
-        expect(subject).to have_element "form", action: meeting_path(meeting)
-      end
-    end
-
-    context "with a current project" do
-      let(:project) { build_stubbed(:project) }
-
-      it "renders the correct form action" do
-        expect(subject).to have_element "form", action: project_meeting_path(project, meeting)
-      end
+    it "renders the correct form action" do
+      expect(subject).to have_element "form", action: project_meeting_path(project, meeting)
     end
   end
 

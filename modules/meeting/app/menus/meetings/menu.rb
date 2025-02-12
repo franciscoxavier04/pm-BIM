@@ -76,9 +76,9 @@ module Meetings
       current_href = params[:current_href]
       current_recurring_meeting_id = extracted_id(current_href)
 
-      series.pluck(:id, :title)
-            .map do |id, title|
-        href = polymorphic_path([project, :recurring_meeting], { id: })
+      series.pluck(:id, :project_id, :title)
+            .map do |id, project_id, title|
+        href = project_recurring_meeting_path(project_id, id:)
         OpenProject::Menu::MenuItem.new(title:,
                                         selected: select_status(href, current_href, current_recurring_meeting_id),
                                         href:)

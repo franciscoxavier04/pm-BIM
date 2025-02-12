@@ -74,7 +74,7 @@ RSpec.describe "Recurring meetings global CRUD", :js do
   end
 
   let(:current_user) { user }
-  let(:show_page) { Pages::RecurringMeeting::Show.new(meeting, project: nil) }
+  let(:show_page) { Pages::RecurringMeeting::Show.new(meeting) }
   let(:meetings_page) { Pages::Meetings::Index.new(project: nil) }
 
   before do
@@ -97,7 +97,7 @@ RSpec.describe "Recurring meetings global CRUD", :js do
       end
     end
 
-    expect(page).to have_current_path meetings_path
+    expect(page).to have_current_path project_meetings_path(project)
 
     expect_flash(type: :success, message: "Successful deletion.")
     show_page.expect_no_meeting date: "12/31/2024 01:30 PM"

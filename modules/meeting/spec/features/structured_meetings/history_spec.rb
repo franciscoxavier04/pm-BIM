@@ -37,8 +37,8 @@ RSpec.describe "history",
   include Components::Autocompleter::NgSelectAutocompleteHelpers
   include Redmine::I18n
 
-  shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking]) }
-  shared_let(:other_project) { create(:project, enabled_module_names: %w[work_package_tracking]) }
+  shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking activities]) }
+  shared_let(:other_project) { create(:project, enabled_module_names: %w[work_package_tracking activites]) }
   shared_let(:user) do
     create(:user,
            lastname: "First",
@@ -344,6 +344,7 @@ RSpec.describe "history",
       click_link_or_button "Details"
     end
 
+    wait_for_network_idle
     expect(page).to have_current_path /\/journals\/\d+\/diff\/agenda_items_\d+_notes/
     expect(page).to have_css("ins.diffmod", text: "# Hello there")
   end
@@ -351,7 +352,7 @@ RSpec.describe "history",
   it "for a user with no permissions, renders an error", with_settings: { journal_aggregation_time_minutes: 0 } do
     login_as no_member_user
 
-    visit history_meeting_path(meeting)
+    visit history_project_meeting_path(project, meeting)
 
     expected = "[Error 403] You are not authorized to access this page."
     expect_flash(type: :error, message: expected)

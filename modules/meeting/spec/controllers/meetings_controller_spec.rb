@@ -100,7 +100,7 @@ RSpec.describe MeetingsController do
 
       describe "html" do
         before do
-          get "edit", params: { id: meeting.id }
+          get "edit", params: { project_id: meeting.project_id, id: meeting.id }
         end
 
         it { expect(response).to be_successful }
@@ -195,7 +195,7 @@ RSpec.describe MeetingsController do
     let!(:participant) { create(:meeting_participant, meeting:, attended: true) }
 
     it "produces a background job for notification" do
-      post :notify, params: { id: meeting.id }
+      post :notify, params: { project_id: meeting.project_id, id: meeting.id }
 
       perform_enqueued_jobs
       expect(ActionMailer::Base.deliveries.count).to eq(1)
@@ -207,7 +207,7 @@ RSpec.describe MeetingsController do
       end
 
       it "produces a flash message containing the mail addresses raising the error" do
-        expect { post :notify, params: { id: meeting.id } }.not_to raise_error
+        expect { post :notify, params: { project_id: meeting.project_id, id: meeting.id } }.not_to raise_error
         meeting.participants.each do |participant|
           expect(flash[:error]).to include(participant.name)
         end
