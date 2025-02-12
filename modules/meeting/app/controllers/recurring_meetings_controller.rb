@@ -46,7 +46,7 @@ class RecurringMeetingsController < ApplicationController
     @recurring_meeting = RecurringMeeting.new(project: @project)
   end
 
-  def show # rubocop:disable Metrics/AbcSize
+  def show
     if @direction == "past"
       @meetings = @recurring_meeting.scheduled_instances(upcoming: false).limit(@count)
     else
@@ -237,7 +237,7 @@ class RecurringMeetingsController < ApplicationController
 
   def init_next_occurrence_job(from_time)
     # Now we can schedule the job to create the next occurrence
-    next_occurrence = @recurring_meeting.next_occurrence(from_time:)&.to_time
+    next_occurrence = @recurring_meeting.next_occurrence(from_time:)
     return if next_occurrence.nil?
 
     ::RecurringMeetings::InitNextOccurrenceJob
@@ -352,7 +352,7 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def check_template_completable
-    @first_occurrence = @recurring_meeting.next_occurrence&.to_time
+    @first_occurrence = @recurring_meeting.next_occurrence
     if @first_occurrence.nil?
       render_400(message: I18n.t("recurring_meeting.occurrence.error_no_next"))
       return
