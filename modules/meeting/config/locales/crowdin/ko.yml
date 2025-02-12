@@ -176,11 +176,20 @@ ko:
         위에서 선택한 참가자에게 즉시 이메일 초대를 보내세요. 나중에 언제든지 수동으로 할 수도 있습니다.
       send_invitation_emails_structured: "모든 참가자에게 즉시 이메일 초대를 보내세요. 나중에 언제든지 수동으로 할 수도 있습니다."
       open_meeting_link: "미팅 열기"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Meeting series %{title}"
         summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} 님이 %{title} 미팅 초대장을 귀하에게 보냈습니다"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "%{title} 미팅이 다시 예약되었습니다"
         summary: "%{actor} 님이 %{title} 미팅을 다시 예약했습니다"

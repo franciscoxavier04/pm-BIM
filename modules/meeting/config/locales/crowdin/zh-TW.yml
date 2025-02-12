@@ -176,11 +176,20 @@ zh-TW:
         立即發送電子郵件邀請函給上述選定的與會者。您也可以稍後隨時手動執行。
       send_invitation_emails_structured: "立即向所有參與者傳送電子郵件邀請函。您也可以稍後隨時手動執行。"
       open_meeting_link: "打開會議連結"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] 會議系列 %{title}"
         summary: "%{actor} 已建立一個新的會議系列 %{title}"
       invited:
         summary: "%{actor} 已經向您發送了一個 %{title} 會議邀請"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "會議 %{title} 已經重新安排"
         summary: "會議 %{title} 已經被 %{actor} 重新安排"

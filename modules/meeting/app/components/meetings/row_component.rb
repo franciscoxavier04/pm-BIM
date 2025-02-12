@@ -62,6 +62,8 @@ module Meetings
     end
 
     def duration
+      return if model.duration.blank?
+
       render OpenProject::Common::DurationComponent.new(model.duration, :hours, abbreviated: false)
     end
 

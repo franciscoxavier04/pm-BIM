@@ -178,11 +178,20 @@ it:
         Invia immediatamente un invito via e-mail ai partecipanti selezionati in precedenza. Puoi anche farlo manualmente in qualsiasi momento.
       send_invitation_emails_structured: "Invia immediatamente un invito via e-mail a tutti i partecipanti. Puoi anche farlo manualmente in qualsiasi momento."
       open_meeting_link: "Apri riunione"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Meeting series %{title}"
         summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} ti ha inviato un invito per la riunione %{title}"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "La riunione %{title} è stata riprogrammata"
         summary: "La riunione %{title} è stata riprogrammata da %{actor}"

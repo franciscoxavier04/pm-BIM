@@ -178,11 +178,20 @@ fi:
         Send an email invitation immediately to the participants selected above. You can also do this manually at any time later.
       send_invitation_emails_structured: "Send an email invitation immediately to all participants. You can also do this manually at any time later."
       open_meeting_link: "Open meeting"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Meeting series %{title}"
         summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} has sent you an invitation for the meeting %{title}"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "Meeting %{title} has been rescheduled"
         summary: "Meeting %{title} has been rescheduled by %{actor}"

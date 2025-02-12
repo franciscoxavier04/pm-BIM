@@ -41,5 +41,16 @@ module Meetings
     attribute :start_date
     attribute :start_time
     attribute :start_time_hour
+    attribute :template
+
+    validate :template_requires_series
+
+    private
+
+    def template_requires_series
+      if model.template && model.recurring_meeting_id.nil?
+        errors.add(:template, :invalid)
+      end
+    end
   end
 end

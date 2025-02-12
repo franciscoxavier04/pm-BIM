@@ -176,11 +176,20 @@ ms:
         Hantar jemputan e-mel segera kepada peserta yang dipilih di atas. Anda juga boleh melakukan ini secara manual pada bila-bila masa kemudian.
       send_invitation_emails_structured: "Hantar jemputan e-mel dengan segera kepada semua peserta. Anda juga boleh melakukan ini secara manual pada bila-bila masa kemudian."
       open_meeting_link: "Buka mesyuarat"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Meeting series %{title}"
         summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} telah menghantar anda jemputan ke mesyuarat %{title}"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "Mesyuarat %{title} telah dijadualkan semula"
         summary: "Mesyuarat %{title} telah dijadualkan semula oleh %{actor}"

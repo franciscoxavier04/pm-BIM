@@ -176,11 +176,20 @@ zh-CN:
         立即向上面选定的参加者发送电子邮件邀请。您也可以在之后随时手动发送。
       send_invitation_emails_structured: "立即向所有与会者发送电子邮件邀请。您也可以在之后随时手动发送。"
       open_meeting_link: "打开会议"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] 会议系列 %{title}"
         summary: "%{actor} 设立了一个新的系列会议 %{title}"
       invited:
         summary: "%{actor} 已经向您发送了一个 %{title} 会议邀请"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: " %{title} 会议已经被重新安排"
         summary: "会议 %{title} 已经被 %{actor} 重新安排"

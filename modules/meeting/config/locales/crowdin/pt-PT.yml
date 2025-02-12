@@ -178,11 +178,20 @@ pt-PT:
         Envie imediatamente um convite por e-mail aos participantes selecionados acima. Também pode fazê-lo manualmente em qualquer altura.
       send_invitation_emails_structured: "Envie imediatamente um convite por e-mail a todos os participantes. Também pode fazê-lo manualmente em qualquer altura."
       open_meeting_link: "Entrar na Reunião"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Meeting series %{title}"
         summary: "%{actor} has set up a new meeting series %{title}"
       invited:
         summary: "%{actor} enviou-lhe um convite para a reunião %{title}"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "A reunião %{title} foi remarcada"
         summary: "Reunião %{title} foi remarcada por %{actor}"

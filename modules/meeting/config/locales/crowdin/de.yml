@@ -178,11 +178,20 @@ de:
         Senden Sie sofort eine E-Mail Einladung an die oben ausgewählten Teilnehmer. Sie können dies auch jederzeit manuell durchführen.
       send_invitation_emails_structured: "Sofortige E-Mail-Einladung an alle Teilnehmer senden. Sie können dies auch zu einem späteren Zeitpunkt manuell tun."
       open_meeting_link: "Besprechung öffnen"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Terminserie %{title}"
         summary: "%{actor} hat eine neue Terminserie %{title} eingerichtet"
       invited:
         summary: "%{actor} hat Ihnen eine Einladung für die folgende Besprechung gesendet: %{title}"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "Besprechung %{title} verschoben"
         summary: "Die Besprechung %{title} wurde durch %{actor} verschoben."

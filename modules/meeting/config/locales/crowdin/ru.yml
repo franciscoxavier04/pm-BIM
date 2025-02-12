@@ -182,11 +182,20 @@ ru:
         Немедленно отправьте приглашение по электронной почте участникам, выбранным выше. Вы также можете сделать это вручную в любое время позже.
       send_invitation_emails_structured: "Отправить приглашение по электронной почте сразу всем участникам. Вы также можете сделать это вручную в любое время."
       open_meeting_link: "Открыть совещание"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Серия совещаний %{title}"
         summary: "%{actor} создал новую серию совещаний %{title}"
       invited:
         summary: "%{actor} отправил вам приглашение на совещание %{title}"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "Встреча %{title} была перенесена"
         summary: "Совещание %{title} перенесено %{actor}"
