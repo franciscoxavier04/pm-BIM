@@ -54,6 +54,10 @@ module WorkPackages
           work_package.subject
         end
 
+        def default_footer_text_right
+          work_package.project.name
+        end
+
         def templates_default
           templates_options[0]
         end

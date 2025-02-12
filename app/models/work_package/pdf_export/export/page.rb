@@ -100,10 +100,12 @@ module WorkPackage::PDFExport::Export::Page
       text: footer_date, max_left: page_nr_x - spacing,
       text_style:, top:, max_lines: MAX_NR_OF_PDF_FOOTER_LINES
     )
-    draw_text_multiline_right(
-      text: footer_title, max_left: page_nr_x + page_nr_width + spacing,
-      text_style:, top:, max_lines: MAX_NR_OF_PDF_FOOTER_LINES
-    )
+    if footer_title.present?
+      draw_text_multiline_right(
+        text: footer_title, max_left: page_nr_x + page_nr_width + spacing,
+        text_style:, top:, max_lines: MAX_NR_OF_PDF_FOOTER_LINES
+      )
+    end
   end
 
   def footer_page_nr

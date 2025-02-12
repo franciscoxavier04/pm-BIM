@@ -2125,12 +2125,12 @@ en:
       submit: Download
       templates:
         label: "Template"
-      header_right:
-        label: Additional header text
-        caption: This text will appear on every page to the right of the header.
       footer_center:
         label: Footer text
         caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
         caption: Break line between words for better layout and justification.
