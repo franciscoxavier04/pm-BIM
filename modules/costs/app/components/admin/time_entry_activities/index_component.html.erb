@@ -1,0 +1,85 @@
+<%=
+  flex_layout(data: wrapper_data_attributes) do |flex|
+    flex.with_row do
+      render(Primer::OpenProject::SubHeader.new) do |subheader|
+        subheader.with_filter_input(
+          name: "border-box-filter",
+          label: "Search time entry activity",
+          visually_hide_label: true,
+          placeholder: "Search time entry activity",
+          leading_visual: {
+            icon: :search,
+            size: :small
+          },
+          show_clear_button: false,
+          data: {
+            action: "input->projects--settings--border-box-filter#filterLists",
+            "projects--settings--border-box-filter-target": "filter"
+          }
+        )
+        subheader.with_action_button(scheme: :primary) do |button|
+          button.with_leading_visual_icon(icon: :plus)
+          "Activity"
+        end
+      end
+    end
+
+    flex.with_row do
+      render(border_box_container(data: { test_selector: "admin-time-entry-activity" })) do |component|
+        component.with_header(font_weight: :bold) { "Time entry activities" }
+
+        if time_entry_activities.empty?
+          component.with_row do
+            render(Primer::Beta::Text.new(color: :subtle)) { "No activities exist" }
+          end
+        else
+          time_entry_activities.each do |activity|
+            component.with_row(test_selector: "time-entry-activity-row-#{activity.id}") do
+              flex_layout(align_items: :center, justify_content: :space_between) do |activity_container|
+                activity_container.with_column(flex_layout: true) do |activity_info|
+                  activity_info.with_column(mr: 2) do
+                    render(Primer::OpenProject::DragHandle.new(draggable: true))
+                  end
+
+                  activity_info.with_column(mr: 2) do
+                    render(Primer::Beta::Link.new(href: edit_admin_time_entry_activity_path(activity), underline: false)) do
+                      render(Primer::Beta::Text.new(font_weight: :bold)) { activity.name }
+                    end
+                  end
+
+                  activity_info.with_column(mr: 2) do
+                    render(Primer::Beta::Text.new(color: :subtle)) { activity.active? ? "Active" : "Inactive" }
+                  end
+                end
+
+                activity_container.with_column do
+                  render(Primer::Alpha::ActionMenu.new(test_selector: "op-time-entry-acrtivity--action-menu")) do |menu|
+                    menu.with_show_button(
+                      icon: "kebab-horizontal",
+                      scheme: :invisible,
+                      "aria-label": "Actions"
+                    )
+
+                    menu.with_item(label: I18n.t(:button_edit), tag: :a, href: edit_admin_time_entry_activity_path(activity)) do |item|
+                      item.with_leading_visual_icon(icon: :pencil)
+                    end
+
+                    menu.with_item(
+                      label: I18n.t(:button_delete),
+                      scheme: :danger,
+                      tag: :a,
+                      method: :delete,
+                      href: admin_time_entry_activity_path(activity)
+                    ) do |item|
+                      item.with_leading_visual_icon(icon: :trash)
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+%>

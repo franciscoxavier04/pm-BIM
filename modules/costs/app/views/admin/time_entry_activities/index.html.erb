@@ -42,8 +42,4 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-<ul>
-<%- @time_entry_activities.each do |activity| %>
-  <li><%= activity.name %>
-<%- end %>
-</ul>
+<%= render(Admin::TimeEntryActivities::IndexComponent.new(time_entry_activities: @time_entry_activities)) %>
