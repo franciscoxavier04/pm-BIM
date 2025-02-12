@@ -52,7 +52,7 @@ module WorkPackages
 
       def initialize(work_package:,
                      schedule_manually:,
-                     disabled:,
+                     readonly:,
                      is_milestone:,
                      focused_field: :start_date,
                      touched_field_map: {})
@@ -63,7 +63,7 @@ module WorkPackages
         @is_milestone = is_milestone
         @focused_field = update_focused_field(focused_field)
         @touched_field_map = touched_field_map
-        @disabled = disabled
+        @readonly = readonly
       end
 
       form do |query_form|
@@ -99,7 +99,7 @@ module WorkPackages
         text_field_options = default_field_options(name).merge(
           name:,
           value: field_value(name),
-          disabled: disabled?(name),
+          readonly: readonly?(name),
           label:,
           caption: caption(name),
           show_clear_button: name != :duration,
@@ -121,7 +121,7 @@ module WorkPackages
 
         text = I18n.t(:label_today).capitalize
 
-        return text if @disabled
+        return text if @readonly
 
         render(Primer::Beta::Link.new(href: "",
                                       "aria-label": "select today",
@@ -166,7 +166,7 @@ module WorkPackages
         end
       end
 
-      def disabled?(name)
+      def readonly?(name)
         if name == :duration
           if !@schedule_manually && @work_package.children.any?
             return true
@@ -175,7 +175,7 @@ module WorkPackages
           return false
         end
 
-        @disabled
+        @readonly
       end
 
       def field_value(name)
