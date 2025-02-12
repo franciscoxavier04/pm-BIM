@@ -836,7 +836,7 @@ GEM
     optimist (3.2.0)
     os (1.1.4)
     ostruct (0.6.1)
-    ox (2.14.21)
+    ox (2.14.22)
       bigdecimal (>= 3.0)
     paper_trail (16.0.0)
       activerecord (>= 6.1)
@@ -1673,7 +1673,7 @@ CHECKSUMS
   openproject-octicons (19.20.0) sha256=f8a4ad2aa708505aba81b8362ddf9e4f8e992433f30a63d96f2007795c5419ec
   openproject-octicons_helper (19.20.0) sha256=517f2feb3f9526d640f57b77579325abdb7218a0f81a1fcda28837873498efb0
   openproject-openid_connect (1.0.0)
-  openproject-primer_view_components (0.53.1) sha256=f4b749a0e5219bdec189abbee95f7b8a2e2310322d10b515e9b06605f83e0da3
+  openproject-primer_view_components (0.54.0) sha256=771d4aa50484d0a22bd1fee019469ab8f6a332e74107e92da6d37c149079c0cf
   openproject-recaptcha (1.0.0)
   openproject-reporting (1.0.0)
   openproject-storages (1.0.0)
@@ -1688,7 +1688,7 @@ CHECKSUMS
   os (1.1.4) sha256=57816d6a334e7bd6aed048f4b0308226c5fb027433b67d90a9ab435f35108d3f
   ostruct (0.6.1) sha256=09a3fb7ecc1fa4039f25418cc05ae9c82bd520472c5c6a6f515f03e4988cb817
   overviews (1.0.0)
-  ox (2.14.21) sha256=2cc77af97bdcab1a61df5463bd790ebbc39fb09e0eab9fc843d86f8db6bca0b9
+  ox (2.14.22) sha256=0bbc4a40d109e4b76295c4927b5f2d453070eb5af221e5b05ec0ff58e291c6a9
   paper_trail (16.0.0) sha256=e9b9f0fb1b8b590c8231cfa931b282ba92f90e066e393930a5e1c61ae4c5019d
   parallel (1.26.3) sha256=d86babb7a2b814be9f4b81587bf0b6ce2da7d45969fab24d8ae4bf2bb4d4c7ef
   parallel_tests (4.9.0) sha256=095063aa56d1f0debcacef907a9a7c0f6b80c4f084c271c378cbfe0481c2335a
