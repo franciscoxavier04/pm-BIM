@@ -1576,6 +1576,7 @@ en:
     derived_start_date: "Derived start date"
     display_sums: "Display Sums"
     due_date: "Finish date"
+    end_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
     expires_at: "Expires at"

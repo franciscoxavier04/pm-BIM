@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2010-2024 the OpenProject GmbH
@@ -29,34 +31,34 @@
 module Projects
   module Settings
     module LifeCycleSteps
-      class IndexComponent < ApplicationComponent
-        include ApplicationHelper
-        include OpPrimer::ComponentHelpers
-        include OpTurbo::Streamable
+      class RowComponent < ::RowComponent
+        delegate :definition, :active?, to: :model
 
-        options :project,
-                :life_cycle_definitions
+        def subject = model.name
 
-        private
+        def type = render(Projects::LifeCycleTypeComponent.new(definition))
 
-        def life_cycle_definitions_and_step_active
-          active_ids = project.life_cycle_steps.where(active: true).pluck(:definition_id).to_set
-
-          life_cycle_definitions.all.map do |definition|
-            [definition, definition.id.in?(active_ids)]
-          end
+        def active
+          render(
+            Primer::Alpha::ToggleSwitch.new(
+              src: toggle_project_settings_life_cycle_step_path(id: definition.id),
+              csrf_token: form_authenticity_token,
+              data: { test_selector: "toggle-project-life-cycle-#{definition.id}" },
+              aria: { label: toggle_aria_label },
+              checked: active?,
+              size: :small,
+              status_label_position: :start,
+              classes: "op-primer-adjustments__toggle-switch--hidden-loading-indicator"
+            )
+          )
         end
 
-        def wrapper_data_attributes
-          {
-            controller: "projects--settings--border-box-filter",
-            "application-target": "dynamic",
-            "projects--settings--border-box-filter-clear-button-id-value": clear_button_id
-          }
-        end
+        def duration = nil
 
-        def clear_button_id
-          "border-box-filter-clear-button"
+        def dates = nil
+
+        def toggle_aria_label
+          I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
         end
       end
     end

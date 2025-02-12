@@ -31,6 +31,7 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
 
   before_action :deny_access_on_feature_flag
 
+  before_action :load_life_cycle_steps, only: %i[index]
   before_action :load_life_cycle_definitions, only: %i[index enable_all disable_all]
 
   menu_item :settings_life_cycle_steps
@@ -56,6 +57,10 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
   end
 
   private
+
+  def load_life_cycle_steps
+    @life_cycle_steps = @project.life_cycle_steps.includes(:definition)
+  end
 
   def load_life_cycle_definitions
     @life_cycle_definitions = Project::LifeCycleStepDefinition.order(position: :asc)

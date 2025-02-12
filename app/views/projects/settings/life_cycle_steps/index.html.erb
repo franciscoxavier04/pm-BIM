@@ -30,8 +30,9 @@ See COPYRIGHT and LICENSE files for more details.
 <%= render(Projects::Settings::LifeCycleSteps::IndexPageHeaderComponent.new(project: @project)) %>
 
 <%= render(
-      Projects::Settings::LifeCycleSteps::IndexComponent.new(
+      Projects::Settings::LifeCycleSteps::TableComponent.new(
         project: @project,
+        life_cycle_steps: @life_cycle_steps,
         life_cycle_definitions: @life_cycle_definitions
       )
     ) %>

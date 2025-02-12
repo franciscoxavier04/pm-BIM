@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2010-2024 the OpenProject GmbH
@@ -29,16 +31,38 @@
 module Projects
   module Settings
     module LifeCycleSteps
-      class StepComponent < ApplicationComponent
-        include ApplicationHelper
-        include OpPrimer::ComponentHelpers
-        include OpTurbo::Streamable
+      class TableComponent < ::TableComponent
+        options :project, :life_cycle_steps, :life_cycle_definitions
 
-        options :definition,
-                :active?
+        columns :subject, :type, :active, :duration, :dates
 
-        def toggle_aria_label
-          I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
+        def initialize(**)
+          super(rows: [], **)
+        end
+
+        def sortable? = false
+
+        def headers
+          columns.map do |name|
+            # TODO: a lot of attributes are not really life cycle step attributes (subject, dates)
+            [name, { caption: Project::LifeCycleStep.human_attribute_name(name) }]
+          end
+        end
+
+        def rows
+          @rows ||= begin
+            steps_by_definition_id = life_cycle_steps.index_by(&:definition_id)
+
+            life_cycle_definitions.map do |definition|
+              steps_by_definition_id[definition.id] || definition.build_step(project_id: project.id)
+            end
+          end
+        end
+
+        def render_collection(rows)
+          render(ProjectDateRowComponent.new(row: project, table: self, date_method: :start_date)) +
+          render(row_class.with_collection(rows, table: self)) +
+          render(ProjectDateRowComponent.new(row: project, table: self, date_method: :end_date))
         end
       end
     end
