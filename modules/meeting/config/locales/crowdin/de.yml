@@ -280,11 +280,11 @@ de:
       heading: "Diese Terminserie endgültig löschen?"
       confirmation_message_html:
         zero: >
-          Durch die Löschung von <strong>%{title}</strong> werden alle Besprechungen in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          Durch die Löschung von <strong>%{title}</strong> wird eine bestehende Besprechung in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          Durch die Löschung von <strong>%{title}</strong> werden alle %{count} Besprechungen in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "Terminserie abbrechen"
       heading: "Dieses Ereignis absagen?"

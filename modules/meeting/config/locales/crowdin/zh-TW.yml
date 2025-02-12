@@ -278,11 +278,11 @@ zh-TW:
       heading: "永久刪除此會議系列？"
       confirmation_message_html:
         zero: >
-          刪除 <strong>%{title}</strong>將刪除此系列中的任何會議。此動作不可還原。請小心操作。
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          將刪除 <strong>%{title}</strong>系列中的所有系列會議。此動作不可還原。請小心操作。
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          將刪除 <strong>%{title}</strong>系列中的所有 %{count} 會議。此動作不可還原。請小心操作。
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "取消會議事件？"
       heading: "取消此會議事件？"

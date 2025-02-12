@@ -284,11 +284,11 @@ ru:
       heading: "Удалить эту серию совещаний навсегда?"
       confirmation_message_html:
         zero: >
-          Удаление <strong>%{title}</strong> приведет к удалению всех совещаний в этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          Удаление <strong>%{title}</strong> также удалит одно совещание из этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          Удаление <strong>%{title}</strong> приведет к удалению %{count} совещаний в этой серии. Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "Отменить это событие"
       heading: "Отменить это событие?"
@@ -363,7 +363,7 @@ ru:
   label_meeting_state_closed: "Закрыть"
   label_meeting_state_closed_html: "<i>Закрытый</i>"
   label_meeting_state_agenda_created: "Повестка дня создана"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Запланированно"
   label_meeting_state_cancelled: "Отменено"
   label_meeting_state_skipped: "Пропущено"
   label_meeting_reopen_action: "Открыть совещание заново"
