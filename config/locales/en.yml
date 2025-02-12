@@ -976,7 +976,7 @@ en:
         timeline_labels: "Timeline labels"
       relation:
         lag: "Lag"
-        from: "Work package"
+        from: "Related work package"
         to: "Related work package"
       reminder:
         remind_at_date: "Date"
@@ -1302,10 +1302,10 @@ en:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "work package not found or not visible"
+              error_not_found: "not found or not visible"
               error_readonly: "an existing relation's `to` link is immutable"
             from_id:
-              error_not_found: "work package not found or not visible"
+              error_not_found: "not found or not visible"
               error_readonly: "an existing relation's `from` link is immutable"
             lag:
               greater_than_or_equal_to:
