@@ -231,7 +231,7 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
   end
 
   context "when OpenID Connect is enabled" do
-    let(:storage) { create(:nextcloud_storage_configured, :oidc_enabled) }
+    let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
     let(:app_version) { Storages::SemanticVersion.parse("2.6.3") }
     let(:capabilities_response) do
       ServiceResult.success(result: Storages::NextcloudCapabilities.new(
