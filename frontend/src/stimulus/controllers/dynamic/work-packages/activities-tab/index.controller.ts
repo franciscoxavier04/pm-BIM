@@ -569,21 +569,14 @@ export default class IndexController extends Controller {
     }
   }
 
-  private scrollInputContainerIntoView(timeout:number = 0) {
+  private scrollInputContainerIntoView(timeout:number = 0, behavior:ScrollBehavior = 'smooth') {
     const inputContainer = this.getInputContainer() as HTMLElement;
     setTimeout(() => {
       if (inputContainer) {
-        if (this.sortingValue === 'desc') {
-          inputContainer.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-          });
-        } else {
-          inputContainer.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
-        }
+        inputContainer.scrollIntoView({
+          behavior,
+          block: this.sortingValue === 'desc' ? 'nearest' : 'start',
+        });
       }
     }, timeout);
   }
@@ -598,7 +591,9 @@ export default class IndexController extends Controller {
     this.addEventListenersToCkEditorInstance();
 
     if (this.isMobile()) {
-      void this.showFormMobile();
+      // timeout amount tested on mobile devices for best possible user experience
+      this.scrollInputContainerIntoView(200, 'auto'); // first bring the input container fully into view (before focusing!)
+      this.focusEditor(400); // wait before focusing to avoid interference with the auto scroll
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
       this.scrollJournalContainer(true);
@@ -606,28 +601,6 @@ export default class IndexController extends Controller {
     } else {
       this.focusEditor();
     }
-  }
-
-  private async showFormMobile() {
-    // First scroll input container into view before focusing
-    // Use the original 100ms delay that was tested for best scrolling experience
-    this.scrollInputContainerIntoView(100);
-
-    // Wait for the initial scroll to complete
-    await new Promise<void>((resolve) => {
-      void window.setTimeout(resolve, 100);
-    });
-
-    // Then focus editor with the original 400ms delay that was tested to avoid interference
-    this.focusEditor(400);
-
-    // Wait for virtual keyboard animation - iOS takes ~0.3s to show the keyboard
-    await new Promise<void>((resolve) => {
-      void window.setTimeout(resolve, 300);
-    });
-
-    // Final scroll adjustment after keyboard is shown, with original 100ms delay
-    this.scrollInputContainerIntoView(100);
   }
 
   focusEditor(timeout:number = 10) {
