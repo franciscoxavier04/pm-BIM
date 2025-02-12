@@ -101,15 +101,6 @@ module Pages::RecurringMeeting
         click_on "Cancel this occurrence"
       end
 
-      expect_modal("Delete meeting occurrence")
-    end
-
-    def cancel_planned_occurrence(date:)
-      within("li", text: date) do
-        click_on "more-button"
-        click_on "Cancel this occurrence"
-      end
-
       expect_modal("Cancel meeting occurrence")
     end
 

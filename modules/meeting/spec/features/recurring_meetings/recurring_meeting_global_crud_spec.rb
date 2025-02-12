@@ -107,8 +107,8 @@ RSpec.describe "Recurring meetings global CRUD", :js do
     show_page.visit!
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
-    show_page.within_modal "Delete meeting occurrence" do
-      click_on "Delete"
+    show_page.within_modal "Cancel meeting occurrence" do
+      click_on "Cancel occurrence"
     end
 
     expect_flash(type: :success, message: "Successful cancellation.")
@@ -122,7 +122,7 @@ RSpec.describe "Recurring meetings global CRUD", :js do
   it "can cancel a planned occurrence from the show page" do
     show_page.visit!
 
-    show_page.cancel_planned_occurrence date: "01/07/2025 01:30 PM"
+    show_page.cancel_occurrence date: "01/07/2025 01:30 PM"
     show_page.within_modal "Cancel meeting occurrence" do
       click_on "Cancel occurrence"
     end
