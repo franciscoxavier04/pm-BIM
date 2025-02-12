@@ -176,11 +176,20 @@ zh-CN:
         立即向上面选定的参加者发送电子邮件邀请。您也可以在之后随时手动发送。
       send_invitation_emails_structured: "立即向所有与会者发送电子邮件邀请。您也可以在之后随时手动发送。"
       open_meeting_link: "打开会议"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] 会议系列 %{title}"
         summary: "%{actor} 设立了一个新的系列会议 %{title}"
       invited:
         summary: "%{actor} 已经向您发送了一个 %{title} 会议邀请"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: " %{title} 会议已经被重新安排"
         summary: "会议 %{title} 已经被 %{actor} 重新安排"
@@ -229,7 +238,7 @@ zh-CN:
       first_created: >
         第一次会议已成功从模板创建。所有未来的会议将会在上一次发生的时间自动创建。
     template:
-      button_finalize: "Open first meeting"
+      button_finalize: "打开首次会议"
       blank_title: "您的会议系列模板为空"
       description: >
         此模板将在系列中创建新会议时使用。您可以在此模板中添加议程项目、参与者和附件。
@@ -278,11 +287,11 @@ zh-CN:
       heading: "永久删除此会议系列？"
       confirmation_message_html:
         zero: >
-          删除 <strong>%{title}</strong>将删除该系列中的任何会议。此操作不可逆转。请谨慎操作。
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          删除 <strong>%{title}</strong>也会删除该系列中的一次会议。此操作不可逆转。请谨慎操作。
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          删除 <strong>%{title}</strong>将删除该系列中的所有 %{count} 个会议。此操作不可逆转。请谨慎操作。
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "取消会议事件"
       heading: "取消此会议事件？"
