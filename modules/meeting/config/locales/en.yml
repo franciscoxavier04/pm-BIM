@@ -362,6 +362,9 @@ en:
     end_series_dialog:
       title: "End meeting series"
 
+  outcome:
+    add_button: "Outcome"
+
   notice_successful_notification: "Notification sent successfully"
   notice_timezone_missing: No time zone is set and %{zone} is assumed. To choose your time zone, please click here.
   notice_meeting_updated: "This page has been updated by someone else. Reload to view changes."
