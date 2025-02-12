@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -53,7 +55,7 @@ RSpec.describe "API v3 storages resource", :webmock, content_type: :json do
   end
 
   before do
-    Storages::Peripherals::Registry.stub("nextcloud.queries.auth_check", ->(_) { auth_check_result })
+    Storages::Peripherals::Registry.stub("nextcloud.queries.user", ->(_) { auth_check_result })
     login_as current_user
   end
 

@@ -51,11 +51,8 @@ module Storages
 
         # rubocop:enable Lint/MissingSuper
 
-        def extract_origin_user_id(rack_access_token)
-          OpenProject.httpx.get(
-            UrlBuilder.url(@storage.uri, "/v1.0/me"),
-            headers: { "Authorization" => "Bearer #{rack_access_token.access_token}", "Accept" => "application/json" }
-          ).raise_for_status.json["id"]
+        def storage_name
+          "one_drive"
         end
 
         def to_httpx_oauth_config

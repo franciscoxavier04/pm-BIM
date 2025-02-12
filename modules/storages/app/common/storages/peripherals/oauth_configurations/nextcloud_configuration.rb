@@ -47,8 +47,8 @@ module Storages
 
         # rubocop:enable Lint/MissingSuper
 
-        def extract_origin_user_id(rack_access_token)
-          rack_access_token.raw_attributes[:user_id]
+        def storage_name
+          "nextcloud"
         end
 
         def to_httpx_oauth_config

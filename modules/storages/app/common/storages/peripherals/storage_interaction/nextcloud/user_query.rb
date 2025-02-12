@@ -31,8 +31,10 @@
 module Storages
   module Peripherals
     module StorageInteraction
-      module OneDrive
-        class AuthCheckQuery
+      module Nextcloud
+        class UserQuery
+          using ServiceResultRefinements
+
           def self.call(storage:, auth_strategy:)
             new(storage).call(auth_strategy:)
           end
@@ -42,8 +44,8 @@ module Storages
           end
 
           def call(auth_strategy:)
-            Authentication[auth_strategy].call(storage: @storage) do |http|
-              handle_response http.get(UrlBuilder.url(@storage.uri, "/v1.0/me"))
+            Authentication[auth_strategy].call(storage: @storage, http_options: Util.ocs_api_request) do |http|
+              handle_response(http.get(UrlBuilder.url(@storage.uri, "/ocs/v1.php/cloud/user")))
             end
           end
 
@@ -52,14 +54,25 @@ module Storages
           def handle_response(response)
             case response
             in { status: 200..299 }
-              ServiceResult.success
+              handle_success_response(response)
             in { status: 401 }
               ServiceResult.failure(result: :unauthorized, errors: StorageError.new(code: :unauthorized))
-            in { status: 403 }
-              ServiceResult.failure(result: :forbidden, errors: StorageError.new(code: :forbidden))
             else
               data = StorageErrorData.new(source: self.class, payload: response)
               ServiceResult.failure(result: :error, errors: StorageError.new(code: :error, data:))
+            end
+          end
+
+          def handle_success_response(response)
+            error_data = StorageErrorData.new(source: self.class, payload: response)
+            xml = Nokogiri::XML(response.body.to_s)
+            statuscode = xml.xpath("/ocs/meta/statuscode").text
+
+            case statuscode
+            when "100"
+              ServiceResult.success(result: { id: xml.xpath("/ocs/data/id").text })
+            else
+              Util.error(:error, "Unknown response body", error_data)
             end
           end
         end
