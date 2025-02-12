@@ -32,7 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% title = @cost_type.name %>
 <% else %>
   <% html_title t(:label_administration), t(:label_cost_type_plural) %>
-  <% title = t(:label_new) + " " + I18n.t("activerecord.models.cost_type.one") %>
+  <% title = "#{t(:label_new)} #{I18n.t('activerecord.models.cost_type.one')}" %>
 <% end %>
 
 <%=
@@ -40,7 +40,7 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_title { title }
     header.with_breadcrumbs(
       [{ href: admin_index_path, text: t("label_administration") },
-       { href: url_for({ controller: "/admin/settings", action: "show_plugin", id: :costs }), text: t(:project_module_costs) },
+       { href: admin_costs_settings_path, text: t(:project_module_costs) },
        { href: cost_types_path, text: t(:label_cost_type_plural) },
        title]
     )
