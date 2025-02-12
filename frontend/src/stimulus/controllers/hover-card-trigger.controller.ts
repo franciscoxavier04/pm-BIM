@@ -67,7 +67,11 @@ export default class HoverCardTriggerController extends ApplicationController {
    * option for interaction.
    */
   shouldRegisterHoverEventListeners() {
-    return window.matchMedia('(hover: hover)').matches;
+    const browserSupportsHovering = window.matchMedia('(hover: hover)').matches;
+    // The browser on the CI claims not to support hovering, so we must detect whether we are in a test environment:
+    const isTestEnv = document.body.className.includes('env-test');
+
+    return isTestEnv || browserSupportsHovering;
   }
 
   private triggerTargetConnected(trigger:Element) {
