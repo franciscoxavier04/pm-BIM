@@ -176,11 +176,20 @@ zh-TW:
         立即發送電子郵件邀請函給上述選定的與會者。您也可以稍後隨時手動執行。
       send_invitation_emails_structured: "立即向所有參與者傳送電子郵件邀請函。您也可以稍後隨時手動執行。"
       open_meeting_link: "打開會議連結"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] 會議系列 %{title}"
         summary: "%{actor} 已建立一個新的會議系列 %{title}"
       invited:
         summary: "%{actor} 已經向您發送了一個 %{title} 會議邀請"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "會議 %{title} 已經重新安排"
         summary: "會議 %{title} 已經被 %{actor} 重新安排"
@@ -278,11 +287,11 @@ zh-TW:
       heading: "永久刪除此會議系列？"
       confirmation_message_html:
         zero: >
-          刪除 <strong>%{title}</strong>將刪除此系列中的任何會議。此動作不可還原。請小心操作。
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          將刪除 <strong>%{title}</strong>系列中的所有系列會議。此動作不可還原。請小心操作。
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          將刪除 <strong>%{title}</strong>系列中的所有 %{count} 會議。此動作不可還原。請小心操作。
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "取消會議事件？"
       heading: "取消此會議事件？"

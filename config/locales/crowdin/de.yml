@@ -282,7 +282,7 @@ de:
         short:
           not_unique: "muss innerhalb der gleichen Hierarchieebene eindeutig sein."
         parent:
-          not_descendant: "muss ein Abkömmling der Hierarchiewurzel sein."
+          not_descendant: "muss ein Unterelement der Hierarchiewurzel sein."
     rules:
       depth: "Tiefe"
       item: "Element"

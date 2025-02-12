@@ -74,7 +74,7 @@ es:
         confirmation_text: Confirme que entiende y desea eliminar este almacenamiento de archivos de este proyecto
         heading_text: Eliminar proyecto de %{storage}
         text: Esta acción es irreversible y eliminará todos los enlaces en los paquetes de trabajo de este proyecto a archivos y carpetas de ese almacenamiento.
-        title: Remove project from storage
+        title: Eliminar proyecto del almacenamiento
       label: Eliminar proyecto
   services:
     attributes:

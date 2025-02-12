@@ -359,7 +359,7 @@ zh-CN:
           "15_3":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
+                该版本为您带来了各种功能和改进，例如：<br> <ul class="%{list_styling_class}"> <li>安排定期会议，以简化您的每周、每两周或自定义预约。</li> <li>直接从“关系”选项卡创建子工作包。</li> <li>在时间表 PDF 导出中包含总和，以获得更好的洞察。</li> <li>在成本报告中包括子工作包，以实现更准确的跟踪。</li> <li>查看以前隐藏的权限限制关系的日期，以便做出明智的日程安排决策。</li></ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"

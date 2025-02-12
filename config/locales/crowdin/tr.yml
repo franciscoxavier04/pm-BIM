@@ -2157,7 +2157,7 @@ tr:
       dateAlert: "Tarih uyarısı"
       mentioned: "Bahsedilen"
       responsible: "Sorumlu"
-      shared: "Shared"
+      shared: "Paylaşıldı"
       watched: "Takipçi"
       reminder: "Hatırlatıcı"
     facets:
@@ -2264,7 +2264,7 @@ tr:
   label_calendars_and_dates: "Takvimler ve tarihler"
   label_calendar_show: "Takvimi Göster"
   label_category: "Kategori"
-  label_completed: Completed
+  label_completed: Tamamlandı
   label_consent_settings: "Kullanıcı Rızası"
   label_wiki_menu_item: Viki menü öğesi
   label_select_main_menu_item: Yeni ana menü öğesi seç
@@ -2427,7 +2427,7 @@ tr:
   label_inactive: "Etkin değil"
   label_incoming_emails: "Gelen e-postalar"
   label_includes: "içerir"
-  label_incomplete: Incomplete
+  label_incomplete: Tamamlanmadı
   label_include_sub_projects: Include sub-projects
   label_index_by_date: "Tarihe göre diz"
   label_index_by_title: "Başlığa göre dizin"
@@ -2477,7 +2477,7 @@ tr:
   label_custom_export_cover: "Özel dışarı aktarma kapak arka planı"
   label_custom_export_cover_overlay: "Custom export cover background overlay"
   label_custom_export_cover_text_color: "Metin rengi"
-  label_custom_pdf_export_settings: "Custom PDF export settings"
+  label_custom_pdf_export_settings: "Özel PDF dışa aktarma ayarları"
   label_custom_favicon: "Özel favicon"
   label_custom_touch_icon: "Özel dokunma simgesi"
   label_logout: "Oturumu kapat"
@@ -2491,10 +2491,10 @@ tr:
   label_member_new: "Yeni Üye"
   label_member_all_admin: "(Yönetici durumuna bağlı olarak tüm roller)"
   label_member_plural: "Üyeler"
-  label_membership_plural: "Memberships"
+  label_membership_plural: "Üyelikler"
   label_membership_added: "Üye eklendi"
   label_membership_updated: "Üye güncellendi"
-  label_menu: "Menu"
+  label_menu: "Menü"
   label_menu_badge:
     pre_alpha: "pre-alpha"
     alpha: "alfa"
@@ -2522,7 +2522,7 @@ tr:
   label_my_account: "Hesap ayarları"
   label_my_activity: "Benim faaliyetim"
   label_my_account_data: "Hesap verilerim"
-  label_my_avatar: "My avatar"
+  label_my_avatar: "Avatarım"
   label_my_queries: "Özel sorgularım"
   label_name: "İsim"
   label_never: "Hiçbir zaman"
@@ -2552,7 +2552,7 @@ tr:
   label_none_parentheses: "(yok)"
   label_not_contains: "içermiyor"
   label_not_equals: "değildir"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Proje yaşam döngüsü"
   label_on: "açık"
   label_operator_all: "boş değil"
   label_operator_none: "boş"
@@ -2610,11 +2610,11 @@ tr:
   label_project_latest: "Son projeler"
   label_project_default_type: "Boş türe izin ver"
   label_project_hierarchy: "Proje hiyerarşisi"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projeler"
   label_project_new: "Yeni proje"
   label_project_plural: "Projeler"
   label_project_list_plural: "Proje listesi"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_lifecycle: "Proje yaşam döngüsü"
   label_project_attributes_plural: "Proje öznitelikleri"
   label_project_custom_field_plural: "Proje öznitelikleri"
   label_project_settings: "Proje Ayarları"
@@ -2869,7 +2869,7 @@ tr:
     mention:
       subject: "%{user_name}, #%{id} - %{subject} içinde sizden bahsetti"
     notification:
-      center: "bildirim merkezi"
+      center: "Bildirim Merkezi"
       see_in_center: "Bildirim merkezinde yorumu görün"
       settings: "E-posta ayarlarını değiştir"
     salutation: "Merhaba %{user}"
@@ -3232,9 +3232,9 @@ tr:
       are_you_sure: "'%{name}' projesini arşivlemek istediğinize emin misiniz?"
       archived: "Arşivlenen"
     count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      zero: "Proje yok"
+      one: "1 proje"
+      other: "%{count} proje"
   project_module_activity: "Etkinlik"
   project_module_forums: "Forumlar"
   project_module_work_package_tracking: "İş paketleri"
@@ -3430,9 +3430,9 @@ tr:
   setting_diff_max_lines_displayed: "Görüntülenen fark satırlarının maksimum sayısı"
   setting_omniauth_direct_login_provider: "Direct login SSO provider"
   setting_display_subprojects_work_packages: "Varsayılan olarak ana projenin iş listesinde alt proje iş paketlerini göster"
-  setting_duration_format: "Duration format"
-  setting_duration_format_hours_only: "Hours only"
-  setting_duration_format_days_and_hours: "Days and hours"
+  setting_duration_format: "Süre biçimi"
+  setting_duration_format_hours_only: "Sadece saatler"
+  setting_duration_format_days_and_hours: "Günler ve saatler"
   setting_duration_format_instructions: "This defines how Work, Remaining work, and Time spent durations are displayed."
   setting_emails_footer: "E-posta altbilgi"
   setting_emails_header: "E-posta üstbilgisi"
@@ -3509,11 +3509,11 @@ tr:
   setting_total_percent_complete_mode_work_weighted_average: "İşe göre ağırlıklandırılmış"
   setting_total_percent_complete_mode_work_weighted_average_caption_html: >-
     The <i>total % Complete</i> will be weighted against the <i>Work</i> of each work package in the hierarchy. Work packages without <i>Work</i> will be ignored.
-  setting_total_percent_complete_mode_simple_average: "Simple average"
+  setting_total_percent_complete_mode_simple_average: "Basit ortalama"
   setting_total_percent_complete_mode_simple_average_caption_html: >-
     <i>Work</i> is ignored and the <i>total % Complete</i> will be a simple average of <i>% Complete</i> values of work packages in the hierarchy.
   setting_accessibility_mode_for_anonymous: "İsimsiz kullanıcılar için erişilebilirlik modunu etkinleştir"
-  setting_user_format: "Users name format"
+  setting_user_format: "Kullanıcı adı biçimi"
   setting_user_default_timezone: "Kullanıcıların varsayılan saat dilimi"
   setting_users_deletable_by_admins: "Yöneticiler kullanıcı hesaplarını silebilsin"
   setting_users_deletable_by_self: "Kullanıcılar kendi hesaplarını silebilsin"

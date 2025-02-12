@@ -178,11 +178,20 @@ de:
         Senden Sie sofort eine E-Mail Einladung an die oben ausgewählten Teilnehmer. Sie können dies auch jederzeit manuell durchführen.
       send_invitation_emails_structured: "Sofortige E-Mail-Einladung an alle Teilnehmer senden. Sie können dies auch zu einem späteren Zeitpunkt manuell tun."
       open_meeting_link: "Besprechung öffnen"
+      open_my_meetings_link: "Go to My meetings"
       series:
         title: "[%{project_name}] Terminserie %{title}"
         summary: "%{actor} hat eine neue Terminserie %{title} eingerichtet"
       invited:
         summary: "%{actor} hat Ihnen eine Einladung für die folgende Besprechung gesendet: %{title}"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
         header: "Besprechung %{title} verschoben"
         summary: "Die Besprechung %{title} wurde durch %{actor} verschoben."
@@ -280,11 +289,11 @@ de:
       heading: "Diese Terminserie endgültig löschen?"
       confirmation_message_html:
         zero: >
-          Durch die Löschung von <strong>%{title}</strong> werden alle Besprechungen in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          Durch die Löschung von <strong>%{title}</strong> wird eine bestehende Besprechung in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          Durch die Löschung von <strong>%{title}</strong> werden alle %{count} Besprechungen in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "Terminserie abbrechen"
       heading: "Dieses Ereignis absagen?"
