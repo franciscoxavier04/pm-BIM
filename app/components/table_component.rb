@@ -169,6 +169,10 @@ class TableComponent < ApplicationComponent
     self.class.sortable_columns
   end
 
+  def headers
+    raise NoMethodError, "define headers method in a concrete TableComponent implementation"
+  end
+
   def render_collection(rows)
     render(row_class.with_collection(rows, table: self))
   end
