@@ -43,6 +43,8 @@ class MeetingAgendaItem < ApplicationRecord
   belongs_to :author, class_name: "User", optional: false
   belongs_to :presenter, class_name: "User", optional: true
 
+  has_many :outcomes, class_name: "MeetingOutcome", dependent: :destroy
+
   acts_as_list scope: :meeting_section
   default_scope { order(:position) }
 
