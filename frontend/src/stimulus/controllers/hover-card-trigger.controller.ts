@@ -60,9 +60,21 @@ export default class HoverCardTriggerController extends ApplicationController {
   private cardMouseLeaveBound= this.onMouseLeave.bind(this);
   private cardMouseEnterBound= this.onMouseEnter.bind(this);
 
+  /**
+   * Attempting to show hover cards on touch-based devices often leads to quirky and unwanted
+   * behavior. As all information in our hover cards is optional, we'd rather only show them
+   * on devices that primarily support a mouse cursor. That means that hovering is a reliable
+   * option for interaction.
+   */
+  shouldRegisterHoverEventListeners() {
+    return window.matchMedia('(hover: hover)').matches;
+  }
+
   private triggerTargetConnected(trigger:Element) {
-    trigger.addEventListener('mouseover', this.triggerMouseOverBound);
-    trigger.addEventListener('mouseleave', this.triggerMouseLeaveBound);
+    if (this.shouldRegisterHoverEventListeners()) {
+      trigger.addEventListener('mouseover', this.triggerMouseOverBound);
+      trigger.addEventListener('mouseleave', this.triggerMouseLeaveBound);
+    }
   }
 
   private triggerTargetDisconnected(trigger:Element) {
@@ -71,8 +83,10 @@ export default class HoverCardTriggerController extends ApplicationController {
   }
 
   private cardTargetConnected(card:Element) {
-    card.addEventListener('mouseleave', this.cardMouseLeaveBound);
-    card.addEventListener('mouseenter', this.cardMouseEnterBound);
+    if (this.shouldRegisterHoverEventListeners()) {
+      card.addEventListener('mouseleave', this.cardMouseLeaveBound);
+      card.addEventListener('mouseenter', this.cardMouseEnterBound);
+    }
   }
 
   private cardTargetDisconnected(card:Element) {
