@@ -339,14 +339,17 @@ RSpec.describe "history",
     end
 
     history_page.open_history_modal
-    within("li.op-activity-list--item", match: :first) do
-      expect(page).to have_css("li", text: "Notes set")
-      click_link_or_button "Details"
-    end
 
-    wait_for_network_idle
-    expect(page).to have_current_path /\/journals\/\d+\/diff\/agenda_items_\d+_notes/
-    expect(page).to have_css("ins.diffmod", text: "# Hello there")
+    retry_block do
+      within("li.op-activity-list--item", match: :first) do
+        expect(page).to have_css("li", text: "Notes set")
+        click_link_or_button "Details"
+      end
+
+      wait_for_network_idle
+      expect(page).to have_current_path /\/journals\/\d+\/diff\/agenda_items_\d+_notes/
+      expect(page).to have_css("ins.diffmod", text: "# Hello there")
+    end
   end
 
   it "for a user with no permissions, renders an error", with_settings: { journal_aggregation_time_minutes: 0 } do

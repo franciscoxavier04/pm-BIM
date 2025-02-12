@@ -29,7 +29,6 @@
 class MeetingsController < ApplicationController
   before_action :load_and_authorize_in_optional_project
 
-  before_action :verify_activities_module_activated, only: %i[history]
   before_action :determine_date_range, only: %i[history]
   before_action :determine_author, only: %i[history]
   before_action :build_meeting, only: %i[new new_dialog]
@@ -468,10 +467,6 @@ class MeetingsController < ApplicationController
         .require(:structured_meeting)
         .permit(:title, :location, :start_time_hour, :duration, :start_date, :state, :lock_version)
     end
-  end
-
-  def verify_activities_module_activated
-    render_403 if @project && !@project.module_enabled?("activity")
   end
 
   def set_activity
