@@ -53,6 +53,10 @@ class Project::LifeCycleStepDefinition < ApplicationRecord
     raise NotImplementedError
   end
 
+  def build_step(attributes)
+    step_class.new(definition: self, **attributes)
+  end
+
   def column_name
     "lcsd_#{id}"
   end
