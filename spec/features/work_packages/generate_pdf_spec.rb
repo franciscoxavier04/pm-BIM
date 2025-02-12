@@ -37,7 +37,7 @@ RSpec::Matchers.define :has_mandatory_params do |expected|
   end
 end
 
-RSpec.describe "work package generate PDF dialog", :js, :selenium do
+RSpec.describe "work package generate PDF dialog", :js do
   shared_let(:user) { create(:admin) }
   shared_let(:project) { create(:project) }
   shared_let(:default_footer_text) { project.name }
