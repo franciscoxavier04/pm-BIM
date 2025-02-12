@@ -112,6 +112,10 @@ To prepare the export, first filter and set up the report according to your pref
 >
 > Please note that "Group by" settings won't be applied to the exported file.
 
+> [!TIP]
+>
+> If the exported PDF includes multiple users, an additional page after the cover page will provide an overview table displaying the total hours worked by each user.
+
 ![Settings for timesheet PDF export in OpenProject](openproject_userguide_timeandcosts_timesheet_export_settings.png)
 
 A PDF file will be generated, containing the time entries specified by the report.
