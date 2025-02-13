@@ -230,8 +230,8 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
     end
   end
 
-  context "when OpenID Connect is enabled" do
-    let(:storage) { create(:nextcloud_storage_configured, :oidc_enabled) }
+  describe "OpenID Connect support" do
+    let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
     let(:app_version) { Storages::SemanticVersion.parse("2.6.3") }
     let(:capabilities_response) do
       ServiceResult.success(result: Storages::NextcloudCapabilities.new(
@@ -242,16 +242,30 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
       ))
     end
 
-    it "succeeds when a provider is available" do
-      create(:oidc_provider)
+    let(:user) { create(:user) }
+    let!(:oidc_provider) { create(:oidc_provider) }
+
+    before { User.current = user }
+
+    it "returns a success" do
+      user.update(identity_url: "#{oidc_provider.slug}:UNIVERSALLY-DUPLICATED-IDENTIFIER")
 
       expect(subject.type).to eq(:healthy)
+      expect(subject.error_code).to eq(:none)
     end
 
-    it "errors if no Provider is available" do
+    it "returns a validation failure if storage audience isn't set" do
+      storage.update(nextcloud_audience: nil)
+
       expect(subject.type).to eq(:error)
-      expect(subject.error_code).to eq(:oidc_provider_missing)
-      expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_provider_missing"))
+      expect(subject.error_code).to eq(:oidc_audience_missing)
+      expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_audience_missing"))
+    end
+
+    it "returns a validation warning if the current user isn't provided" do
+      expect(subject.type).to eq(:warning)
+      expect(subject.error_code).to eq(:oidc_non_provisioned_user)
+      expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_non_provisioned_user"))
     end
   end
 
