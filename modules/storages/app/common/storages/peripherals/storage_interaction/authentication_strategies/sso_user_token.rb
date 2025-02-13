@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal:true
 
 #-- copyright
 # OpenProject is an open source project management software.
@@ -28,28 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-Rails.application.configure do
-  config.after_initialize do
-    # Retry jobs that failed with "NameError: uninitialized constant ...Job" as
-    # the worker may have failed to load it because the job class did not exist
-    # at the time of execution. This can happen on upgrades when the worker is
-    # still running the previous version while a migration is enqueuing jobs defined
-    # in the new version.
-    #
-    # Once the migration is over and the worker gets restarted, the job will be
-    # retried thanks to this piece of code below.
-    next unless ActiveRecord::Base.connection.table_exists?(:good_jobs)
+module Storages
+  module Peripherals
+    module StorageInteraction
+      module AuthenticationStrategies
+        class SsoUserToken
+          def self.strategy
+            Strategy.new(:sso_user_token)
+          end
 
-    GoodJob::Job
-      .discarded
-      .where("error LIKE ?", "NameError: uninitialized constant %Job")
-      .find_each do |job|
-        job.retry_job
-        Rails.logger.info("Successfully enqueued job for retry #{job.display_name} (job id: #{job.id})")
-      rescue StandardError => e
-        Rails.logger.error("Failed to enqueue job for retry #{job.display_name} (job id: #{job.id}): #{e.message}")
+          def initialize(user)
+            @user = user
+          end
+
+          def call(storage:, http_options: {}, &)
+            OpenIDConnect::UserTokens::FetchService
+              .new(user: @user)
+              .access_token_for(audience: storage.audience)
+              .either(
+                ->(token) do
+                  opts = http_options.deep_merge({ headers: { "Authorization" => "Bearer #{token}" } })
+                  yield OpenProject.httpx.with(opts)
+                end,
+                ->(error) do
+                  log_message = "Failed to fetch access token for user #{@user}. Error: #{error.inspect}"
+                  Failures::Builder.call(code: :unauthorized, log_message:, data: error)
+                end
+              )
+          end
+        end
       end
-  rescue LoadError
-    # Ignore LoadError that happens when nulldb://db database adapter is used
+    end
   end
 end

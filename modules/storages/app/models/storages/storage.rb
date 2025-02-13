@@ -147,6 +147,13 @@ module Storages
       raise Errors::SubclassResponsibility
     end
 
+    # Returns a value of an audience, if configured for this storage.
+    # The presence of an audience signals that this storage prioritizes
+    # remote authentication via Single-Sign-On if possible.
+    def audience
+      raise Errors::SubclassResponsibility
+    end
+
     def configured?
       configuration_checks.values.all?
     end
