@@ -36,6 +36,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   def available_operators
     [
       ::Queries::Operators::Today,
+      ::Queries::Operators::ThisWeek,
       ::Queries::Operators::OnDate,
       ::Queries::Operators::BetweenDate
     ]
@@ -51,20 +52,25 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   end
 
   def where
-    case operator
-    when "=d"
+    case operator.to_sym
+    when Queries::Operators::OnDate.to_sym
       stage_where_on(parsed_start)
         .or(gate_where(parsed_end))
         .arel
         .exists
-    when "t"
+    when Queries::Operators::Today.to_sym
       stage_where_on(today)
         .or(gate_where(today, today))
         .arel
         .exists
-    when "<>d"
+    when Queries::Operators::BetweenDate.to_sym
       stage_where_between(parsed_start, parsed_end)
         .or(gate_where(parsed_start, parsed_end))
+        .arel
+        .exists
+    when Queries::Operators::ThisWeek.to_sym
+      stage_overlaps_this_week
+        .or(gate_where(today.beginning_of_week, today.end_of_week))
         .arel
         .exists
     else
@@ -74,7 +80,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
 
   def stage_where_on(start_date, end_date = start_date)
     Project::LifeCycleStep
-      .where("project_id = #{Project.table_name}.id")
+      .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
       .where(type: Project::Stage.name)
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", nil, start_date))
       .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", end_date, nil))
@@ -82,7 +88,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
 
   def stage_where_between(start_date, end_date)
     Project::LifeCycleStep
-      .where("project_id = #{Project.table_name}.id")
+      .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
       .where(type: Project::Stage.name)
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, nil))
       .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", nil, end_date))
@@ -91,9 +97,24 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   def gate_where(start_date, end_date = start_date)
     # On gates, only the start_date is set.
     Project::LifeCycleStep
-      .where("project_id = #{Project.table_name}.id")
+      .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
       .where(type: Project::Gate.name)
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, end_date))
+  end
+
+  def stage_overlaps_this_week
+    Project::LifeCycleStep
+      .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
+      .where(type: Project::Stage.name)
+      .where(
+        <<~SQL.squish, today.beginning_of_week, today.end_of_week
+          daterange(#{Project::LifeCycleStep.table_name}.start_date,
+                    #{Project::LifeCycleStep.table_name}.end_date,
+                    '[]')
+          &&
+          daterange(?, ?, '[]')
+        SQL
+      )
   end
 
   def parsed_start
