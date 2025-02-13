@@ -259,7 +259,7 @@ ru:
       new_storage: Прочтите нашу документацию по <a target='_blank' href='%{provider_link}'>настройке интеграции файлового хранилища %{provider_name}</a> для получения дополнительной информации.
       nextcloud:
         application_link_text: Приложение «Интеграция OpenProject»
-        integration: Администрирование NextCloud / OpenProject
+        integration: Администрирование Nextcloud / OpenProject
         oauth_configuration: Скопируйте эти значения из %{application_link_text}.
         provider_configuration: Пожалуйста, убедитесь, что у вас есть права администрирования в копии Nextcloud, и перед установкой настроен %{application_link_text}.
       no_specific_folder: По умолчанию каждый пользователь при загрузке файла начинает работу со своей собственной домашней папки.

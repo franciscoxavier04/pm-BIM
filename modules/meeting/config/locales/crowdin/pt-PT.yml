@@ -117,7 +117,7 @@ pt-PT:
   label_template: "Modelo"
   label_recurring_meeting_view: "Ver séries de reuniões"
   label_recurring_meeting_create: "Abrir"
-  label_recurring_meeting_copy: "Copie como uma única"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancelar esta ocorrência"
   label_recurring_meeting_delete: "Eliminar ocorrência"
   label_recurring_meeting_restore: "Restaurar esta ocorrência"
@@ -221,10 +221,11 @@ pt-PT:
         confirmation_message_html: >
           Esta ação não pode ser anulada. Proceda com cuidado.
       occurrence:
-        title: "Eliminar ocorrência de reunião"
-        heading: "Eliminar esta ocorrência de reunião?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          Esta reunião faz parte de uma série chamada <strong>%{title}</strong>. Esta ação apenas irá eliminar esta ocorrência em particular e não toda a série. Deseja continuar?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "Não há reuniões a apresentar"
       desc: "Não existem reuniões que cumpram os critérios do filtro ativo."

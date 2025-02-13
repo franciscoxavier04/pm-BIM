@@ -117,7 +117,7 @@ it:
   label_template: "Modello"
   label_recurring_meeting_view: "Visualizza la serie di riunioni"
   label_recurring_meeting_create: "Apri"
-  label_recurring_meeting_copy: "Copia come una tantum"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Annulla questa ricorrenza"
   label_recurring_meeting_delete: "Elimina ricorrenza"
   label_recurring_meeting_restore: "Ripristina questa ricorrenza"
@@ -221,10 +221,11 @@ it:
         confirmation_message_html: >
           Questa azione è irreversibile. Procedi con cautela.
       occurrence:
-        title: "Cancellare l'evento della riunione"
-        heading: "Cancellare questa riunione?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          Questa riunione fa parte di una serie chiamata <strong>%{title}</strong>. L'operazione eliminerà solo questa particolare ricorrenza e non l'intera serie. Vuoi continuare?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "Nessuna riunione da visualizzare"
       desc: "Non ci sono riunioni che soddisfano i criteri del filtro attivo."
