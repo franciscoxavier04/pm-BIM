@@ -516,7 +516,12 @@ export default class IndexController extends Controller {
     this.onSubmitBound = () => { void this.onSubmit(); };
     this.adjustMarginBound = () => { void this.adjustJournalContainerMargin(); };
     this.onBlurEditorBound = () => { void this.onBlurEditor(); };
-    this.onFocusEditorBound = () => { void this.onFocusEditor(); };
+    this.onFocusEditorBound = () => {
+      void this.onFocusEditor();
+      if (this.isMobile()) {
+        void this.scrollInputContainerIntoView(100, 'smooth');
+      }
+    };
 
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
@@ -592,7 +597,7 @@ export default class IndexController extends Controller {
 
     if (this.isMobile()) {
       // timeout amount tested on mobile devices for best possible user experience
-      this.scrollInputContainerIntoView(200, 'auto'); // first bring the input container fully into view (before focusing!)
+      this.scrollInputContainerIntoView(100, 'auto'); // first bring the input container fully into view (before focusing!)
       this.focusEditor(400); // wait before focusing to avoid interference with the auto scroll
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
