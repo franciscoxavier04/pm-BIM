@@ -48,8 +48,8 @@ class WorkPackages::GetRescheduledChildrenDatesService
     end
 
     children = @dependencies.children_by_parent_id(work_package.id)
-    start_date = children.min_by(&:start_date).start_date
-    due_date = children.max_by(&:due_date).due_date
+    dates = children.pluck(:start_date, :due_date).flatten.compact
+    start_date, due_date = dates.minmax
 
     ServiceResult.success(result: ParentDates.new(start_date:, due_date:))
   end

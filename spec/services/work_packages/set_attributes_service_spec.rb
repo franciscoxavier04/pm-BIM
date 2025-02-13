@@ -1844,7 +1844,7 @@ RSpec.describe WorkPackages::SetAttributesService,
     end
   end
 
-  context "when switching back to automatic scheduling" do
+  context "when switching back to automatic scheduling for a successor" do
     shared_let(:project) { create(:project) }
     let(:predecessor) do
       create(:work_package,
@@ -1983,6 +1983,45 @@ RSpec.describe WorkPackages::SetAttributesService,
               due_date: child_due_date
             }
           end
+        end
+      end
+    end
+  end
+
+  context "when switching back to automatic scheduling for a parent" do
+    shared_let(:project) { create(:project) }
+    let!(:work_package) do
+      create(:work_package,
+             subject: "work_package",
+             project:,
+             ignore_non_working_days: true,
+             schedule_manually: true,
+             start_date: Time.zone.today,
+             due_date: Time.zone.today + 5.days)
+    end
+    let!(:child) do
+      create(:work_package,
+             subject: "child",
+             project:,
+             parent: work_package,
+             ignore_non_working_days: true,
+             schedule_manually: true,
+             start_date: child_start_date,
+             due_date: child_due_date)
+    end
+    let(:call_attributes) { { schedule_manually: false } }
+    let(:expected_attributes) { {} }
+
+    context "when the child has dates" do
+      let(:child_start_date) { Time.zone.today + 2.days }
+      let(:child_due_date) { Time.zone.today + 3.days }
+
+      include_examples "service call", description: "sets the parent dates to the child dates" do
+        let(:expected_attributes) do
+          {
+            start_date: child_start_date,
+            due_date: child_due_date
+          }
         end
       end
     end
