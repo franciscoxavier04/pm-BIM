@@ -168,6 +168,7 @@ class MeetingsController < ApplicationController
       format.turbo_stream do
         respond_with_dialog Meetings::Index::DialogComponent.new(
           meeting: @meeting,
+          project: @project,
           copy_from:
         )
       end
