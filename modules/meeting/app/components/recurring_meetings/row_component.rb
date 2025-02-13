@@ -156,7 +156,7 @@ module RecurringMeetings
       menu.with_item(label: I18n.t(:label_icalendar_download),
                      href: download_ics_project_recurring_meeting_path(project,
                                                                        model.recurring_meeting,
-                                                                       occurrence_id: model.id),
+                                                                       occurrence_id: meeting.id),
                      content_arguments: {
                        data: { turbo: false }
                      }) do |item|
