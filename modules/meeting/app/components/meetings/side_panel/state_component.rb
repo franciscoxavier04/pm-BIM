@@ -36,12 +36,13 @@ module Meetings
       super
 
       @meeting = meeting
+      @project = meeting.project
     end
 
     private
 
     def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @meeting.project)
+      User.current.allowed_in_project?(:close_meeting_agendas, @project)
     end
   end
 end

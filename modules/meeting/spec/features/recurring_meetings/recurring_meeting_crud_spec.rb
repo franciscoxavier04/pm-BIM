@@ -73,7 +73,7 @@ RSpec.describe "Recurring meetings CRUD",
   end
 
   let(:current_user) { user }
-  let(:show_page) { Pages::RecurringMeeting::Show.new(meeting, project:) }
+  let(:show_page) { Pages::RecurringMeeting::Show.new(meeting) }
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
   before do

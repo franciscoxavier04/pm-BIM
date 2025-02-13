@@ -92,7 +92,7 @@ RSpec.describe "Structured meetings global CRUD", :js do
       click_on "Delete"
     end
 
-    expect(page).to have_current_path meetings_path
+    expect(page).to have_current_path project_meetings_path(project)
 
     expect_flash(type: :success, message: "Successful deletion.")
   end

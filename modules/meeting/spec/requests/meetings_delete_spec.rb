@@ -52,7 +52,7 @@ RSpec.describe "DELETE /meetings/:id",
   end
 
   let(:current_user) { user }
-  let(:request) { delete meeting_path(meeting) }
+  let(:request) { delete project_meeting_path(project, meeting) }
 
   subject do
     request
@@ -79,11 +79,6 @@ RSpec.describe "DELETE /meetings/:id",
 
   context "when user has no permissions to access" do
     let(:current_user) { create(:user) }
-
-    it "does not delete the meeting" do
-      delete meeting_path(meeting)
-      expect(response).to have_http_status(:forbidden)
-    end
 
     it "does not delete project meeting" do
       delete project_meeting_path(project, meeting)

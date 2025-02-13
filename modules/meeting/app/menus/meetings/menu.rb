@@ -70,9 +70,10 @@ module Meetings
       end
     end
 
-    def meeting_series_menu_items
+    def meeting_series_menu_items # rubocop:disable Metrics/AbcSize
       series = RecurringMeeting
         .visible
+        .includes(:project)
         .reorder("LOWER(title)")
 
       if project
@@ -82,10 +83,9 @@ module Meetings
       current_href = params[:current_href]
       current_recurring_meeting_id = extracted_id(current_href)
 
-      series.pluck(:id, :title)
-            .map do |id, title|
-        href = polymorphic_path([project, :recurring_meeting], { id: })
-        OpenProject::Menu::MenuItem.new(title:,
+      series.all.map do |series|
+        href = project_recurring_meeting_path(series.project, series)
+        OpenProject::Menu::MenuItem.new(title: series.title,
                                         selected: select_status(href, current_href, current_recurring_meeting_id),
                                         href:)
       end

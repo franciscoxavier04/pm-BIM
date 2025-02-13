@@ -51,7 +51,7 @@ RSpec.describe "Meetings close" do
     let(:permissions) { %i[view_meetings close_meeting_agendas] }
 
     it "can delete own and other`s meetings" do
-      visit meetings_path(project)
+      visit project_meetings_path(project)
 
       click_on meeting.title
 
@@ -87,7 +87,7 @@ RSpec.describe "Meetings close" do
     let(:permissions) { %i[view_meetings] }
 
     it "cannot delete own and other`s meetings" do
-      visit meetings_path(project)
+      visit project_meetings_path(project)
 
       expect(page)
         .to have_no_link "Close"

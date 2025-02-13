@@ -33,11 +33,12 @@ module Meetings
     include ApplicationHelper
     include OpTurbo::Streamable
 
-    def initialize(meeting:, project:)
+    def initialize(meeting:, back_url: nil)
       super
 
       @meeting = meeting
-      @project = project
+      @project = meeting.project
+      @back_url = back_url
     end
 
     delegate :recurring_meeting, to: :@meeting

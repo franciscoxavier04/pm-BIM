@@ -65,8 +65,10 @@ RSpec.describe RecurringMeetings::RowComponent, type: :component do
         context "without a current project" do
           it "shows cancel menu item" do
             expect(subject).to have_link "Cancel this occurrence",
-                                         href: delete_scheduled_dialog_recurring_meeting_path(
-                                           recurring_meeting, start_time: scheduled_meeting.start_time.iso8601
+                                         href: delete_scheduled_dialog_project_recurring_meeting_path(
+                                           project,
+                                           recurring_meeting,
+                                           start_time: scheduled_meeting.start_time.iso8601
                                          )
           end
         end
@@ -90,7 +92,7 @@ RSpec.describe RecurringMeetings::RowComponent, type: :component do
         context "without a current project" do
           it "shows cancel menu item" do
             expect(subject).to have_link "Cancel this occurrence",
-                                         href: delete_dialog_meeting_path(scheduled_meeting.meeting)
+                                         href: delete_dialog_project_meeting_path(project, scheduled_meeting.meeting)
           end
         end
 
