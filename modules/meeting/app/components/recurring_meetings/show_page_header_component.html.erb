@@ -16,17 +16,16 @@
                                                     data: {
                                                       "test-selector": "recurring-meeting-action-menu"
                                                     } }) do |menu, _button|
-
           menu.with_item(
             label: I18n.t(:label_recurring_meeting_series_edit),
             icon: :gear,
             href: details_dialog_project_recurring_meeting_path(@project, @meeting),
             tag: :a,
             content_arguments: {
-              data: { controller: 'async-dialog' },
+              data: { controller: "async-dialog" }
             },
-            'aria-label': t(:label_recurring_meeting_series_edit),
-            test_selector: "edit-meeting-details-button",
+            "aria-label": t(:label_recurring_meeting_series_edit),
+            test_selector: "edit-meeting-details-button"
           ) do |item|
             item.with_leading_visual_icon(icon: :pencil)
           end
@@ -39,7 +38,7 @@
           end
 
           menu.with_item(
-            label: t('meeting.label_mail_all_participants'),
+            label: t("meeting.label_mail_all_participants"),
             href: notify_project_recurring_meeting_path(@project, @meeting),
             form_arguments: { method: :post }
           ) do |item|
@@ -52,7 +51,7 @@
               href: end_series_dialog_project_recurring_meeting_path(@project, @meeting),
               tag: :a,
               content_arguments: {
-                data: { controller: 'async-dialog' },
+                data: { controller: "async-dialog" }
               }
             ) do |item|
               item.with_leading_visual_icon(icon: :"x-circle")
@@ -65,7 +64,7 @@
             scheme: :danger,
             tag: :a,
             content_arguments: {
-              data: { controller: 'async-dialog' }
+              data: { controller: "async-dialog" }
             }
           ) do |item|
             item.with_leading_visual_icon(icon: :trash)
