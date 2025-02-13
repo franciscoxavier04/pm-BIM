@@ -519,7 +519,7 @@ export default class IndexController extends Controller {
     this.onFocusEditorBound = () => {
       void this.onFocusEditor();
       if (this.isMobile()) {
-        void this.scrollInputContainerIntoView(0);
+        void this.scrollInputContainerIntoView(200);
       }
     };
 
@@ -596,8 +596,6 @@ export default class IndexController extends Controller {
     this.addEventListenersToCkEditorInstance();
 
     if (this.isMobile()) {
-      // first bring the input container fully into view (before focusing!)
-      this.scrollInputContainerIntoView(0);
       this.focusEditor(0);
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
