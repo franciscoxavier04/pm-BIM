@@ -222,6 +222,7 @@ pl:
         host_not_found: Nie znaleziono serwera Nextcloud pod skonfigurowanym adresem URL hosta. Sprawdź konfigurację.
         missing_dependencies: 'Brakuje wymaganej zależności magazynu plików. Dodaj następującą zależność: %{dependency}.'
         not_configured: Nie można zweryfikować połączenia. Najpierw zakończ konfigurację.
+        oidc_provider_missing: Nie skonfigurowano dostawcy tożsamości OpenID Connect.
         placeholder: Sprawdź połączenie z serwerem.
         subtitle: Weryfikacja połączenia
         tenant_id_wrong: Skonfigurowany katalog (dzierżawca) jest nieprawidłowy. Sprawdź konfigurację.

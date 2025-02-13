@@ -42,7 +42,8 @@
                        href: participants_dialog_project_meeting_path(@project, @meeting),
                        classes: "hide-when-print",
                        data: { controller: "async-dialog" }
-                     )) do |button|
+                )
+                     ) do |button|
                 button.with_leading_visual_icon(icon: "person-add")
                 t("label_meeting_add_participants")
               end

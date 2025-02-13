@@ -34,9 +34,9 @@ See COPYRIGHT and LICENSE files for more details.
            title: I18n.t("recurring_meeting.end_series_dialog.title"),
            form_arguments: {
              action: end_series_project_recurring_meeting_path(@project, @series),
-             method: :post
-           }
-         )) do |dialog|
+             method: :post}
+           )
+         ) do |dialog|
     dialog.with_confirmation_message do |message|
       message.with_heading(tag: :h2) { I18n.t(:text_meeting_series_end_early_heading) }
       message.with_description_content(I18n.t(:text_meeting_series_end_early))

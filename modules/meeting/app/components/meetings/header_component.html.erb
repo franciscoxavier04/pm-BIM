@@ -10,12 +10,13 @@
              state: @state,
              data: {
                poll_for_changes_target: "reference",
-               reference_value: @meeting.changed_hash
-             }
-           )) do |header|
+               reference_value: @meeting.changed_hash}
+             )
+           ) do |header|
       header.with_title do |title|
-        title.with_editable_form(model: @meeting,
-                                 update_path: update_title_project_meeting_path(@project, @meeting),
+        title.with_editable_form(
+          model: @meeting,
+          update_path: update_title_project_meeting_path(@project, @meeting),
                                  cancel_path: cancel_edit_project_meeting_path(@project, @meeting),
                                  label: Meeting.human_attribute_name(:title),
                                  placeholder: Meeting.human_attribute_name(:title))
@@ -45,12 +46,13 @@
         end
       end
 
-      header.with_action_menu(menu_arguments: {},
-                              button_arguments: { icon: "kebab-horizontal",
-                                                  "aria-label": t("label_meeting_actions"),
-                                                  classes: "hide-when-print",
-                                                  test_selector: "op-meetings-header-action-trigger" }) do |menu|
-        if @meeting.editable? && !@series
+      header.with_action_menu(
+        menu_arguments: {},
+        button_arguments: { icon: "kebab-horizontal",
+                            "aria-label": t("label_meeting_actions"),
+                            classes: "hide-when-print",
+                            test_selector: "op-meetings-header-action-trigger" }) do |menu|if @meeting.editable? && !@series
+          if @meeting.editable? && !@series
           menu.with_item(label: t("label_meeting_edit_title"),
                          href: edit_project_meeting_path(@project, @meeting),
                          content_arguments: {
@@ -64,8 +66,8 @@
           menu.with_item(label: copy_label,
                          href: copy_project_meeting_path(@project, @meeting),
                          content_arguments: {
-                           data: { turbo_stream: true }
-                         }) do |item|
+                           data: { turbo_stream: true }}
+                         ) do |item|
             item.with_leading_visual_icon(icon: :copy)
           end
 
@@ -83,13 +85,14 @@
           end
         end
 
-        menu.with_item(label: t(:label_history),
-                       tag: :a,
-                       href: history_project_meeting_path(@project, @meeting),
-                       content_arguments: {
-                         "data-controller": "async-dialog"
-                       },
-                       value: "") do |item|
+        menu.with_item(
+          label: t(:label_history),
+          tag: :a,
+          href: history_project_meeting_path(@project, @meeting),
+          content_arguments: {
+            "data-controller": "async-dialog"
+          },
+          value: "") do |item|
           item.with_leading_visual_icon(icon: :clock) # or :check TBD
         end
 
