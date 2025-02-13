@@ -184,8 +184,8 @@ uk:
       open_meeting_link: "Відкрити зустріч"
       open_my_meetings_link: "Перейдіть до Моїх нарад"
       series:
-        title: "[%{project_name}] – серія нарад %{title}"
-        summary: "%{actor} створив(-ла) нову серію нарад %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
       series_rescheduled:
         title: "[%{project_name}] Meeting series '%{title}' rescheduled"
         summary: "%{actor} has changed the schedule for meeting series '%{title}'"
