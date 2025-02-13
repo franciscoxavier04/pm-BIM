@@ -45,9 +45,9 @@ module Relations::Scopes
       # @param [User] user
       # @param [ActiveRecord::Relation, Arel::SelectManager] work_package_focus_scope
       def visible(user = User.current, work_package_focus_scope: nil)
-        wp_arel = work_package_focus_scope.respond_to?(:arel) ? work_package_focus_scope.arel : work_package_focus_scope
         visible_work_packages = WorkPackage.visible(user)
 
+        wp_arel = work_package_focus_scope.respond_to?(:arel) ? work_package_focus_scope.arel : work_package_focus_scope
         visible_work_packages = visible_work_packages.where(WorkPackage.arel_table[:id].in(wp_arel)) if wp_arel
 
         with(visible_work_packages:)
