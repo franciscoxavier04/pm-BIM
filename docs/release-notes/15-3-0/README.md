@@ -101,6 +101,10 @@ Filtering user custom fields is now faster with autocompleters in the project li
 
 ## Important updates and breaking changes
 
+### Centos 8 package support removed
+
+Centos 8 is EOL for quite some time, packages will no longer be built for it starting in OpenProject 15.3.0
+
 <!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
 
 <!--more-->

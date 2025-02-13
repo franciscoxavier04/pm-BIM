@@ -74,7 +74,7 @@ pt-PT:
         confirmation_text: Confirme que compreende e pretende remover este armazenamento de ficheiros deste projeto
         heading_text: Remover projeto de %{storage}
         text: Esta ação é irreversível e irá remover todas as ligações dos pacotes de trabalho deste projeto aos ficheiros e pastas desse armazenamento.
-        title: Remove project from storage
+        title: Remover projeto do armazenamento
       label: Remover projeto
   services:
     attributes:
@@ -222,7 +222,7 @@ pt-PT:
         host_not_found: Não foi encontrado nenhum servidor do Nextcloud no URL do anfitrião configurado. Verifique a configuração.
         missing_dependencies: 'Está em falta uma dependência necessária no armazenamento de ficheiros. Adicione a seguinte dependência: %{dependency}.'
         not_configured: Não foi possível validar a ligação.Termine, primeiro, a configuração.
-        oidc_provider_missing: There is no OpenID Connect Identity Provider configured.
+        oidc_provider_missing: Não existe um fornecedor de identidade OpenID Connect configurado.
         placeholder: Verifique a sua ligação com o servidor.
         subtitle: Validação da ligação
         tenant_id_wrong: O ID do diretório (inquilino) configurado é inválido. Verifique a configuração.

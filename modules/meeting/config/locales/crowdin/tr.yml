@@ -62,7 +62,7 @@ tr:
     models:
       recurring_meeting: "Yinelenen toplantı"
       structured_meeting: "Tek seferlik toplantı"
-      meeting_agenda_item: "Ajanda öğesi"
+      meeting_agenda_item: "Gündem maddesi"
       meeting_agenda: "Ajanda"
       meeting_minutes: "Dakika"
       meeting_section: "Bölüm"
@@ -100,7 +100,7 @@ tr:
   label_meeting_create: "Toplantı oluştur"
   label_meeting_copy: "Toplantıyı kopyala"
   label_meeting_edit: "Toplantıyı Düzenle"
-  label_meeting_agenda: "Ajanda"
+  label_meeting_agenda: "Gündem"
   label_meeting_minutes: "Dakika"
   label_meeting_close: "Kapat"
   label_meeting_open: "Aç"
@@ -180,10 +180,15 @@ tr:
       open_meeting_link: "Açık toplantı"
       open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Meeting series %{title}"
-        summary: "%{actor} has set up a new meeting series %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} size toplantı için bir davetiye gönderdi %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelled: Meeting '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
@@ -193,9 +198,9 @@ tr:
         summary: "'%{title}' has been cancelled by %{actor}."
         date_time: "Scheduled date/time"
       rescheduled:
-        header: "%{title} toplantısı yeniden planlandı"
-        summary: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
-        body: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Eski tarih/saat"
         new_date_time: "Yeni tarih/saat"
     label_mail_all_participants: "Tüm katılımcılara e-posta gönderin"
@@ -345,7 +350,7 @@ tr:
   label_meeting_index_later: "Gelecek hafta ve daha sonra"
   label_agenda_items: "Gündem maddeleri"
   label_agenda_items_reordered: "yeniden sıralandı"
-  label_agenda_item_remove: "Ajandadan kaldır"
+  label_agenda_item_remove: "Gündemden çıkarıldı"
   label_agenda_item_undisclosed_wp: "#%{id} numaralı iş parçası görünmez"
   label_agenda_item_deleted_wp: "Silinmiş iş parçsına referans"
   label_agenda_item_actions: "Ajanda maddeleri için eylemler"

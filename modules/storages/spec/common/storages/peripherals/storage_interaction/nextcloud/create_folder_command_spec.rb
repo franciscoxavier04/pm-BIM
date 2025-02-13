@@ -78,7 +78,7 @@ RSpec.describe Storages::Peripherals::StorageInteraction::Nextcloud::CreateFolde
 
   # For the VCR tests in this block it's necessary to
   # create a user in NextCloud with the account name `member@example1`
-  # and use it's oauth access & refresh tokens on .env.test.local
+  # and use its oauth access & refresh tokens on .env.test.local
   describe "user with custom origin name" do
     let(:user) { create(:user) }
     let(:storage) do
