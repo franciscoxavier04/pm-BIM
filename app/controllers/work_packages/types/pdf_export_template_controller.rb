@@ -37,32 +37,69 @@ module WorkPackages
       before_action :find_template, only: %i[toggle drop]
 
       def enable_all
-        Rails.logger.debug "enable_all"
+        return render_404_turbo_stream if @type.nil?
 
-        respond_with_turbo_streams
+        @type.export_templates_disabled = []
+        @type.save!
+        respond_section_with_turbo_streams
       end
 
       def disable_all
-        Rails.logger.debug "disable_all"
+        return render_404_turbo_stream if @type.nil?
 
-        respond_with_turbo_streams
+        @type.export_templates_disabled = WorkPackage::PDFExport::Templates::static_templates
+                                            .pluck(:id)
+        @type.save!
+        respond_section_with_turbo_streams
       end
 
       def toggle
-        return render_404 if @template.nil?
+        return render_404_turbo_stream if @template.nil?
 
-        Rails.logger.debug { "toggle #{@template.inspect}" }
+        toggle_template(@template.id)
         respond_with_turbo_streams
       end
 
       def drop
-        return render_404 if @template.nil?
+        return render_404_turbo_stream if @template.nil?
 
-        Rails.logger.debug { "drop #{@template.inspect} #{params[:position]}" }
+        position = params[:position].to_i - 1 # drop index starts at 1
+        move_template(@template.id, position)
         respond_to_with_turbo_streams
       end
 
       protected
+
+      def move_template(template_id, position)
+        template_ids = @type.pdf_export_templates_for_type.map(&:id)
+        prev_index = template_ids.find_index(template_id)
+        template_ids.delete_at(prev_index) unless prev_index.nil?
+        template_ids.insert(position, template_id)
+        @type.export_templates_order = template_ids
+        @type.save!
+      end
+
+      def toggle_template(template_id)
+        disabled = @type.export_templates_disabled || []
+        if disabled.include?(template_id)
+          disabled.delete(template_id)
+        else
+          disabled.push(template_id)
+        end
+        @type.export_templates_disabled = disabled
+        @type.save!
+      end
+
+      def respond_section_with_turbo_streams
+        replace_via_turbo_stream(
+          component: ::WorkPackages::Types::ExportTemplateListComponent.new(type: @type)
+        )
+        respond_to_with_turbo_streams
+      end
+
+      def render_404_turbo_stream
+        render_error_flash_message_via_turbo_stream(message: t(:notice_file_not_found))
+      end
 
       def find_type
         @type = ::Type.find(params[:type_id])

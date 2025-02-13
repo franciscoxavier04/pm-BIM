@@ -30,7 +30,43 @@
 
 module WorkPackages
   module Types
-    class ExportConfigurationComponent < ApplicationComponent
+    class ExportTemplateListComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
+
+      def initialize(type:)
+        super
+
+        @type = type
+      end
+
+      def wrapper_data_attributes
+        {
+          controller: "generic-drag-and-drop",
+          "application-target": "dynamic"
+        }
+      end
+
+      def drag_and_drop_target_config
+        {
+          "is-drag-and-drop-target": true,
+          "target-container-accessor": "& > ul",
+          "target-allowed-drag-type": "template"
+        }
+      end
+
+      def draggable_item_config(template)
+        {
+          "draggable-id": template.id,
+          "draggable-type": "template",
+          "drop-url": drop_type_pdf_export_template_path(type_id: @type.id, id: template.id)
+        }
+      end
+
+      def pdf_export_templates
+        @type.pdf_export_templates_for_type
+      end
     end
   end
 end

@@ -2125,6 +2125,7 @@ en:
       submit: Download
       templates:
         label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
         caption: This text will appear on every page at the center of the footer.

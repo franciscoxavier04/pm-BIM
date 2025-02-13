@@ -32,7 +32,19 @@ module WorkPackage::PDFExport
   Template = Data.define(:id, :label, :caption, :enabled)
 
   class Templates
-    def self.build_in_templates
+    def self.build_template_list(disabled_ids, ordered_ids)
+      disabled = disabled_ids || []
+      templates = static_templates.map do |build_in_template|
+        Template.new(**build_in_template, enabled: disabled.exclude?(build_in_template[:id]))
+      end
+      order = ordered_ids || []
+      return templates if order.empty?
+
+      indexes = order.each_with_index.to_a.to_h
+      templates.sort_by { |template| indexes[template.id] }
+    end
+
+    def self.static_templates
       [
         {
           id: "attributes",

@@ -116,9 +116,7 @@ class Type < ApplicationRecord
   end
 
   def pdf_export_templates_for_type
-    WorkPackage::PDFExport::Templates::build_in_templates.map do |build_in_template|
-      WorkPackage::PDFExport::Template.new(**build_in_template, enabled: true)
-    end
+    WorkPackage::PDFExport::Templates::build_template_list(export_templates_disabled, export_templates_order)
   end
 
   private
