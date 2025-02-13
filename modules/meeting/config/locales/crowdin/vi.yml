@@ -178,10 +178,15 @@ vi:
       open_meeting_link: "Mở cuộc họp"
       open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Chuỗi họp %{title}"
-        summary: "%{actor} đã lập chuỗi họp mới %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} đã gửi cho bạn một lời mời tham gia cuộc họp %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelled: Meeting '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
@@ -191,9 +196,9 @@ vi:
         summary: "'%{title}' has been cancelled by %{actor}."
         date_time: "Scheduled date/time"
       rescheduled:
-        header: "Cuộc họp %{title} đã được lên lại lịch"
-        summary: "Cuộc họp %{title} đã được lên lại lịch bởi %{actor}"
-        body: "Cuộc họp %{title} đã được lên lại lịch bởi %{actor}."
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Ngày/giờ cũ"
         new_date_time: "Ngày/giờ mới"
     label_mail_all_participants: "Gửi email đến tất cả người tham gia"

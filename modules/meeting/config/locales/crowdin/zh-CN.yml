@@ -178,10 +178,15 @@ zh-CN:
       open_meeting_link: "打开会议"
       open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] 会议系列 %{title}"
-        summary: "%{actor} 设立了一个新的系列会议 %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} 已经向您发送了一个 %{title} 会议邀请"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelled: Meeting '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
@@ -191,9 +196,9 @@ zh-CN:
         summary: "'%{title}' has been cancelled by %{actor}."
         date_time: "Scheduled date/time"
       rescheduled:
-        header: " %{title} 会议已经被重新安排"
-        summary: "会议 %{title} 已经被 %{actor} 重新安排"
-        body: "此会议 %{title} 已经被 %{actor} 重新安排。"
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "旧日期/时间"
         new_date_time: "新日期/时间"
     label_mail_all_participants: "发送电子邮件给所有参与者"

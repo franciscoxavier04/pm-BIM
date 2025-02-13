@@ -184,10 +184,15 @@ cs:
       open_meeting_link: "Otevřít schůzku"
       open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Setkání řady %{title}"
-        summary: "%{actor} has set up a new meeting series %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} vám poslal pozvánku na schůzku %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelled: Meeting '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
@@ -197,9 +202,9 @@ cs:
         summary: "'%{title}' has been cancelled by %{actor}."
         date_time: "Scheduled date/time"
       rescheduled:
-        header: "Schůzka %{title} byla přeplánována"
-        summary: "Schůzka %{title} byla přeplánována %{actor}"
-        body: "Schůzka %{title} byla přeplánována %{actor}"
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Staré datum/čas"
         new_date_time: "Nové datum/čas"
     label_mail_all_participants: "Poslat e-mail všem účastníkům"
