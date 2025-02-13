@@ -222,6 +222,8 @@ uk:
         host_not_found: Сервер Nextcloud  не знайдено за вказаною URL-адресою. Перевірте конфігурацію.
         missing_dependencies: 'Відсутня обов’язкова залежність для файлового сховища. Додайте таку залежність: %{dependency}.'
         not_configured: Не вдалося перевірити підключення. Спочатку налаштуйте конфігурацію.
+        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Перевірте підключення до сервера.
         subtitle: Перевірка підключення
         tenant_id_wrong: Налаштований ідентифікатор каталогу (клієнта) недійсний. Перевірте конфігурацію.

@@ -222,6 +222,8 @@ es:
         host_not_found: No se ha encontrado ningún servidor Nextcloud en la URL de host configurada. Compruebe la configuración.
         missing_dependencies: 'Falta una dependencia necesaria en el almacenamiento de archivos. Añada la siguiente dependencia: %{dependency}.'
         not_configured: No se ha podido validar la conexión. Por favor, termine primero la configuración.
+        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Compruebe su conexión con el servidor.
         subtitle: Validación de conexión
         tenant_id_wrong: El id de directorio (tenant) configurado no es válido. Por favor, compruebe la configuración.

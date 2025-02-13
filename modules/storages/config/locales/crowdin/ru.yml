@@ -222,6 +222,8 @@ ru:
         host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
         missing_dependencies: 'Для файлового хранилища отсутствует необходимая зависимость. Пожалуйста, добавьте следующую зависимость: %{dependency}.'
         not_configured: Соединение не удалось подтвердить. Пожалуйста, сначала завершите настройку.
+        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Проверьте подключение к серверу.
         subtitle: Проверка соединения
         tenant_id_wrong: Настроенный идентификатор каталога недействителен. Пожалуйста, проверьте конфигурацию.

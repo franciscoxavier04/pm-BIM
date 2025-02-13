@@ -222,6 +222,8 @@ vi:
         host_not_found: Không tìm thấy máy chủ Nextcloud tại url máy chủ được cấu hình. Vui lòng kiểm tra cấu hình.
         missing_dependencies: 'Thiếu sự phụ thuộc bắt buộc vào bộ lưu trữ tệp. Vui lòng thêm sự phụ thuộc sau: %{dependency}.'
         not_configured: Kết nối không thể được xác thực. Vui lòng hoàn tất cấu hình trước.
+        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Kiểm tra kết nối của bạn với máy chủ.
         subtitle: Xác thực kết nối
         tenant_id_wrong: ID thư mục (người thuê) cấu hình không hợp lệ. Vui lòng kiểm tra cấu hình.

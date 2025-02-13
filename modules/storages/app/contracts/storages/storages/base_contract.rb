@@ -61,11 +61,7 @@ module Storages::Storages
       # Otherwise, we get :readonly validation errors.
       contract.writable_attributes.append(*writable_attributes)
 
-      # Validating the contract will clear the errors
-      # of this contract so we save them for later.
-      with_merged_former_errors do
-        contract.validate
-      end
+      validate_and_merge_errors(contract)
     end
 
     def require_ee_token_for_one_drive
