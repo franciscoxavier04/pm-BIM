@@ -180,8 +180,8 @@ it:
       open_meeting_link: "Apri riunione"
       open_my_meetings_link: "Vai alle mie riunioni"
       series:
-        title: "[%{project_name}] Serie di riunioni %{title}"
-        summary: "%{actor} ha organizzato una nuova serie di riunioni %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
       series_rescheduled:
         title: "[%{project_name}] Meeting series '%{title}' rescheduled"
         summary: "%{actor} has changed the schedule for meeting series '%{title}'"

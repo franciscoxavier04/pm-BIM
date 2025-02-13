@@ -184,8 +184,8 @@ pl:
       open_meeting_link: "Spotkania otwarte"
       open_my_meetings_link: "Przejdź do sekcji Moje spotkania"
       series:
-        title: "[%{project_name}] Seria spotkań %{title}"
-        summary: "Użytkownik %{actor} utworzył nową serię spotkań %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
       series_rescheduled:
         title: "[%{project_name}] Meeting series '%{title}' rescheduled"
         summary: "%{actor} has changed the schedule for meeting series '%{title}'"

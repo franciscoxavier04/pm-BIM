@@ -222,7 +222,8 @@
         host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
         missing_dependencies: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
         not_configured: The connection could not be validated. Please finish configuration first.
-        oidc_provider_missing: There is no OpenID Connect Identity Provider configured.
+        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Check your connection against the server.
         subtitle: Connection validation
         tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
@@ -262,7 +263,7 @@
         application_link_text: applikasjon "Integrasjon OpenProject"
         integration: Nextcloud administrasjon / OpenProject
         oauth_configuration: Kopier disse verdiene fra %{application_link_text}.
-        provider_configuration: Kontroller at du har administrasjonsrettigheter i din NextCloud-instans og %{application_link_text} er installert før du utfører oppsettet.
+        provider_configuration: Kontroller at du har administrasjonsrettigheter i din Nextcloud-instans og %{application_link_text} er installert før du utfører oppsettet.
       no_specific_folder: Som standard starter hver bruker på sin egen hjem-mappe når vedkommende laster opp en fil.
       no_storage_set_up: Det er ingen fillagring satt opp ennå.
       not_logged_into_storage: Du må logge inn først for å velge en prosjektmappe.
@@ -285,7 +286,7 @@
       setting_up_additional_storages_non_admin: Administratorer kan sette opp flere fillagre i Administrasjon/fillagre.
       setting_up_storages: For å sette opp fillagre, vennligst besøk
       setting_up_storages_non_admin: Administratorer kan sette opp fillagring i Administrasjon-/fillagre.
-      type: 'Sørg for at du har administrasjonsrettigheter i din NextCloud-instans og har følgende applikasjon installert før du utfører oppsettet:'
+      type: 'Sørg for at du har administrasjonsrettigheter i din Nextcloud-instans og har følgende applikasjon installert før du utfører oppsettet:'
       type_link_text: "«Integrasjon OpenProject»"
     label_active: Aktiv
     label_add_new_storage: Legg til nytt lagringssted
