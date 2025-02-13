@@ -35,47 +35,7 @@
         else
           time_entry_activities.each do |activity|
             component.with_row(test_selector: "time-entry-activity-row-#{activity.id}") do
-              flex_layout(align_items: :center, justify_content: :space_between) do |activity_container|
-                activity_container.with_column(flex_layout: true) do |activity_info|
-                  activity_info.with_column(mr: 2) do
-                    render(Primer::OpenProject::DragHandle.new(draggable: true))
-                  end
-
-                  activity_info.with_column(mr: 2) do
-                    render(Primer::Beta::Link.new(href: edit_admin_time_entry_activity_path(activity), underline: false)) do
-                      render(Primer::Beta::Text.new(font_weight: :bold)) { activity.name }
-                    end
-                  end
-
-                  activity_info.with_column(mr: 2) do
-                    render(Primer::Beta::Text.new(color: :subtle)) { activity.active? ? "Active" : "Inactive" }
-                  end
-                end
-
-                activity_container.with_column do
-                  render(Primer::Alpha::ActionMenu.new(test_selector: "op-time-entry-acrtivity--action-menu")) do |menu|
-                    menu.with_show_button(
-                      icon: "kebab-horizontal",
-                      scheme: :invisible,
-                      "aria-label": "Actions"
-                    )
-
-                    menu.with_item(label: I18n.t(:button_edit), tag: :a, href: edit_admin_time_entry_activity_path(activity)) do |item|
-                      item.with_leading_visual_icon(icon: :pencil)
-                    end
-
-                    menu.with_item(
-                      label: I18n.t(:button_delete),
-                      scheme: :danger,
-                      tag: :a,
-                      method: :delete,
-                      href: admin_time_entry_activity_path(activity)
-                    ) do |item|
-                      item.with_leading_visual_icon(icon: :trash)
-                    end
-                  end
-                end
-              end
+              render(Admin::TimeEntryActivities::ActivityComponent.new(activity: activity, max_activity_position: max_activity_position))
             end
           end
         end

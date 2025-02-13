@@ -38,6 +38,10 @@ module Admin
 
       private
 
+      def max_activity_position
+        time_entry_activities.map(&:position).max
+      end
+
       def wrapper_data_attributes
         {
           # controller: "projects--settings--border-box-filter",
