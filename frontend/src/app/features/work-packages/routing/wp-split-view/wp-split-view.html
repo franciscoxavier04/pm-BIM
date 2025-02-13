@@ -11,12 +11,6 @@
   <div class="work-packages--details-content work-packages-tab-view--overflow"
        [class.work-packages--details-content_no-tabs]="!showTabs"
        *ngIf="workPackage">
-      <span
-        class="hidden-for-sighted"
-        tabindex="-1"
-        [opAutofocus]="shouldFocus"
-        [textContent]="focusAnchorLabel"
-      ></span>
 
     <edit-form
       [resource]="workPackage"
