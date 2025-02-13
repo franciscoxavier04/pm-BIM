@@ -448,7 +448,7 @@ class MeetingsController < ApplicationController
       force_defaults
     end
 
-    # Recurring meeting occurrences can only be copied as one-off meetings
+    # Recurring meeting occurrences can only be copied as one-time meetings
     @converted_params[:recurring_meeting_id] = nil
   end
 

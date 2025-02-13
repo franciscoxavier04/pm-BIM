@@ -51,7 +51,7 @@ RSpec.describe Meetings::RowComponent, type: :component do
 
   describe "actions" do
     context "with default permissions" do
-      context "with a one-off meeting" do
+      context "with a one-time meeting" do
         let(:meeting) { build_stubbed(:meeting, project:) }
 
         it "shows default menu items" do
@@ -77,7 +77,7 @@ RSpec.describe Meetings::RowComponent, type: :component do
         end
       end
 
-      context "with a one-off meeting" do
+      context "with a one-time meeting" do
         let(:meeting) { build_stubbed(:meeting, project:) }
 
         context "without a current project" do
@@ -126,7 +126,7 @@ RSpec.describe Meetings::RowComponent, type: :component do
         end
       end
 
-      context "with a one-off meeting" do
+      context "with a one-time meeting" do
         let(:meeting) { build_stubbed(:meeting, project:) }
 
         it "shows copy menu item" do
