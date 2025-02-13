@@ -37,7 +37,7 @@ tr:
               can_only_contain_work_packages_of_current_sprint: "yalnızca geçerli sprintteki iş paketlerinin kimliklerini içerebilir."
               must_block_at_least_one_work_package: "en az bir biletin kimliğini içermelidir."
             version_id:
-              task_version_must_be_the_same_as_story_version: "ana hikaye sürümüyle aynı olmalıdır."
+              task_version_must_be_the_same_as_story_version: "üst hikaye sürümüyle aynı olmalıdır."
         sprint:
           cannot_end_before_it_starts: "Sprint başlamadan önce bitemez."
   backlogs:

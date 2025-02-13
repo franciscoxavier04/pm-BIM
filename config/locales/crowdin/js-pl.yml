@@ -360,7 +360,7 @@ pl:
           "15_3":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
+                W tej wersji wprowadzono różne funkcje i ulepszenia, np. <br> <ul class="%{list_styling_class}"> <li>Planowanie spotkań cyklicznych w celu usprawnienia cotygodniowych, codwutygodniowych lub niestandardowych spotkań.</li> <li>Tworzenie podrzędnych pakietów roboczych bezpośrednio z karty Relacje.</li> <li>Uwzględnianie sum w eksportach PDF arkuszy czasu pracy w celu uzyskania lepszych danych analitycznych.</li> <li>Uwzględnianie podrzędnych pakietów roboczych w raportach dotyczących kosztów w celu zwiększenia dokładności śledzenia.</li> <li>Wyświetlanie dat wcześniej ukrytych relacji z ograniczonymi uprawnieniami w celu podejmowania świadomych decyzji dotyczących planowania.</li> </ul>
     ical_sharing_modal:
       title: "Subskrybuj kalendarz"
       inital_setup_error_message: "Podczas pobierania danych wystąpił błąd."
@@ -625,11 +625,11 @@ pl:
       date_alerts:
         milestone_date: "Data  kamienia milowego"
         overdue: "Przekroczony termin"
-        overdue_since: "since %{difference_in_days}."
-        property_today: "is today."
-        property_is: "is in %{difference_in_days}."
-        property_was: "was %{difference_in_days} ago."
-        property_is_deleted: "is deleted."
+        overdue_since: "od %{difference_in_days}."
+        property_today: "jest dzisiaj."
+        property_is: "jest za %{difference_in_days}."
+        property_was: "była %{difference_in_days} temu."
+        property_is_deleted: "została usunięta."
         upsale:
           title: "Alerty dotyczące dat"
           description: "Dzięki alertom dotyczącym dat będziesz otrzymywać powiadomienia o zbliżających się terminach rozpoczęcia lub zakończenia pracy, dzięki czemu nigdy nie przegapisz ani nie zapomnisz ważnego terminu."

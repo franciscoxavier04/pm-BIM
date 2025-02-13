@@ -64,7 +64,7 @@ tr:
     button_add: "Ekle"
     button_back: "Geri"
     button_back_to_list_view: "Liste görünümüne geri dön"
-    button_cancel: "İptal etmek"
+    button_cancel: "İptal et"
     button_close: "Kapat"
     button_change_project: "Başka projeye taşı"
     button_check_all: "Hepsini kontrol et"
@@ -1087,7 +1087,7 @@ tr:
         sorting_mode:
           description: "İş paketlerinizi sıralamak için modu seçin:"
           automatic: "Otomatik"
-          manually: "el ile"
+          manually: "Elle"
           warning: "Otomatik sıralama modunu etkinleştirirken önceki sıralamanızı kaybedeceksiniz."
         columns_help_text: "Tablo görünümünüze sütun eklemek için yukarıdaki giriş alanını kullanın. Sütunları yeniden sıralamak için sürükleyip bırakabilirsiniz."
         upsale:
@@ -1132,7 +1132,7 @@ tr:
       button_apply: "Uygula"
       button_save: "Kaydet"
       button_submit: "Gönder"
-      button_cancel: "İptal etmek"
+      button_cancel: "İptal et"
       button_delete: "Sil"
       form_submit:
         title: "Devam etmek için onaylayın"
@@ -1161,7 +1161,7 @@ tr:
       button_save: "%{attribute}: Kaydet"
       button_cancel: "%{attribute}: İptal"
       button_save_all: "Kaydet"
-      button_cancel_all: "İptal etmek"
+      button_cancel_all: "İptal et"
       link_formatting_help: "Metin biçimlendirme yardım"
       btn_preview_enable: "Ön İzleme"
       btn_preview_disable: "Öngörüntülemeyi devre dışı bırak"

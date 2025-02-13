@@ -163,7 +163,7 @@ tr:
       replace_oauth_application: OpenProject OAuth'u değiştirin
       replace_oauth_client: '%{provider_type} OAuth''u değiştirin'
       save_and_continue: Save and continue
-      select_folder: Select folder
+      select_folder: Klasör seç
     configuration_checks:
       oauth_client_incomplete:
         nextcloud: Allow OpenProject to access Nextcloud data using OAuth.
@@ -195,7 +195,7 @@ tr:
         automatic_management: Automatically managed access and folders
         automatic_management_description: Let OpenProject create folders per project automatically and manage its user access. This is recommended as it ensures that every team member has always the correct access permissions.
         description: Select the type of management of user access and folder creation. We recommend to use the Automatically managed access to have a more organised structure and guarantee access to all relevant users.
-        manual_management: Manually managed access and folders
+        manual_management: Elle yönetilen erişim ve klasörler
         manual_management_description: Create and manage folders per project manually on your own. You will need to manually ensure relevant users have access.
         setup_incomplete: Select the type of management of user access and folder creation.
         subtitle: Access management

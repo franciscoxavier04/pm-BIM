@@ -44,7 +44,7 @@ tr:
       rate:
         rate: "Oran"
       user:
-        default_rates: "Varsayılan Fiyatlar"
+        default_rates: "Varsayılan ücretler"
       time_entry:
         project: Proje
         user: Kullanıcı
@@ -68,7 +68,7 @@ tr:
           is_not_a_valid_target_for_cost_entries: "İş numarası # {id}, maliyet girişlerini yeniden atamak için geçerli bir hedef değil.%{id}."
           nullify_is_not_valid_for_cost_entries: "Maliyet girdileri bir projeye atanamaz."
   attributes:
-    comment: "Yorumlar"
+    comment: "Yorum"
     cost_type: "Maliyet türü"
     costs: "Ücretler"
     current_rate: "Aktüel oran"

@@ -227,9 +227,9 @@ it:
             title: Questo elemento non ha alcun livello gerarchico sotto
             description: Aggiungi elementi a questo elenco per creare sottoelementi all'interno di un altro
         delete_dialog:
-          title: "Delete custom field item"
-          heading: "Delete custom field item?"
-          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
+          title: "Elimina elemento campo personalizzato"
+          heading: "Eliminare l'elemento campo personalizzato?"
+          description: "Questa azione rimuoverà in modo irreversibile l'elemento e tutte le sue sottovoci. Tutti i valori assegnati saranno eliminati in modo permanente. Se questo campo è obbligatorio, la rimozione degli elementi può causare l'invalidità delle macro-attività esistenti."
         placeholder:
           label: "Etichetta elemento"
           short: "Abbreviazione"
@@ -250,7 +250,7 @@ it:
     confirm_destroy_option: "L'eliminazione di un'opzione eliminerà tutte le sue occorrenze (ad es. nelle macro-attività). Procedere all'eliminazione?"
     reorder_alphabetical: "Riordina i valori alfabeticamente"
     reorder_confirmation: "Attenzione: l'ordine corrente dei valori disponibili sarà perso. Continuare?"
-    placeholder_version_select: "Work package or project selection is required first"
+    placeholder_version_select: "Prima è necessario selezionare la macro-attività o il progetto"
     instructions:
       is_required: "Contrassegna il campo personalizzato come obbligatorio. Ciò renderà obbligatorio compilare il campo durante la creazione di nuove risorse o l'aggiornamento di risorse esistenti."
       is_required_for_project: "Spunta la casella per abilitare questo attributo e renderlo necessario in tutti i progetti. Non può essere disattivato per i singoli progetti."
@@ -289,7 +289,7 @@ it:
       label: "Etichetta"
       short: "Abbreviazione"
       parent: "Genitore"
-      blueprint: "Pattern blueprint"
+      blueprint: "Schema del modello"
   global_search:
     placeholder: "Cerca in %{app_title}"
     overwritten_tabs:
@@ -472,7 +472,7 @@ it:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: Token generato
         header: Il token %{type} è stato generato
         warning: 'Nota: Questa è l''unica volta in cui vedrai questo token, assicurati di copiarlo subito.'
       errors:
@@ -649,7 +649,7 @@ it:
         title: "Flusso di lavoro mancante per la condivisione di macro-attività"
         message: "Nessun flusso di lavoro è configurato per il ruolo \"Editor di macro-attività\". Senza un flusso di lavoro, la condivisione con l'utente non può alterare lo stato della macro-attività. I flussi di lavoro possono essere copiati. Seleziona un tipo di origine (ad esempio \"Attività\") e un ruolo di origine (ad esempio \"Membro\"). Quindi seleziona i tipi obiettivo. Per cominciare, potresti selezionare tutti i tipi come obiettivi. Infine, seleziona il ruolo \"Editor di macro-attività\" come destinazione e premi \"Copia\". Dopo aver creato le impostazioni predefinite, perfeziona i flussi di lavoro come fai per ogni altro ruolo."
         link_message: "Configura i flussi di lavoro nell'amministrazione."
-    templated_subject_hint: Automatically generated through type %{type}
+    templated_subject_hint: Generato automaticamente attraverso il tipo %{type}
     summary:
       reports:
         category:
@@ -734,8 +734,8 @@ it:
       required_description: "Contrassegna questa macro-attività come obbligatoria per quella correlata"
       label_parent_singular: "genitore"
       label_parent_plural: "genitore"
-      ghost_relation_title: "Related work package"
-      ghost_relation_description: "This is not visible to you due to permissions."
+      ghost_relation_title: "Macro-attività correlata"
+      ghost_relation_description: "Non puoi visualizzare a causa delle autorizzazioni."
   label_invitation: Invito
   account:
     delete: "Cancella account"
@@ -1225,8 +1225,8 @@ it:
               error_readonly: "impossibile modificare il collegamento ad una relazione esistente \"da\""
             lag:
               greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
+                zero: "non può essere negativo."
+              less_than_or_equal_to: "è troppo alto."
         repository:
           not_available: "Il gestore SCM non è disponibile"
           not_whitelisted: "non è consentito dalla configurazione."
@@ -1583,7 +1583,7 @@ it:
   button_create_and_continue: "Crea e continua"
   button_decline: "Rifiuto"
   button_delete: "Cancella"
-  button_delete_permanently: "Delete permanently"
+  button_delete_permanently: "Elimina definitivamente"
   button_delete_watcher: "Eliminare osservatore %{name}"
   button_download: "Scarica"
   button_duplicate: "Duplica"
@@ -1787,8 +1787,8 @@ it:
         one: "ora"
         other: "ora"
       day:
-        one: "day"
-        other: "days"
+        one: "giorno"
+        other: "giorni"
   description_active: "Attivo?"
   description_attachment_toggle: "Mostra/Nascondi allegati"
   description_autocomplete: >
@@ -2190,7 +2190,7 @@ it:
   label_add_subtask: "Aggiungi sotto-attività"
   label_added: "aggiunto"
   label_added_by: "Aggiunto da %{author}"
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "Aggiunto da %{author} il %{date}"
   label_added_time_by: "Aggiunto da %{author} %{age} fa"
   label_additional_workflow_transitions_for_assignee: "Transizioni aggiuntive consentite quando l'utente è l'assegnatario"
   label_additional_workflow_transitions_for_author: "Transizioni aggiuntive consentite quando l'utente è l'autore"
@@ -2638,7 +2638,7 @@ it:
   label_relation: "Relazione"
   label_relation_actions: "Azioni di relazione"
   label_relation_delete: "Eliminare la relazione"
-  label_relation_edit: "Edit relation"
+  label_relation_edit: "Modifica relazione"
   label_relation_new: "Nuova relazione"
   label_release_notes: "Note di rilascio"
   label_remaining_work: "Lavoro residuo"
@@ -3104,7 +3104,7 @@ it:
     text_getting_started_description: "Fai una rapida panoramica della gestione dei progetti e della collaborazione in team con OpenProject. Puoi riavviare questo video dal menu di aiuto."
     welcome: "Benvenuto in %{app_title}"
     select_language: "Per favore seleziona la tua lingua"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_notes: "Aggiungi commenti"
   permission_add_work_packages: "Aggiungere macro-attività (work package)"
   permission_add_messages: "Postare messaggi"
   permission_add_project: "Crea progetti"
@@ -3134,11 +3134,11 @@ it:
   permission_delete_timelines: "Elimina cronologie"
   permission_delete_wiki_pages: "Eliminare pagine wiki"
   permission_delete_wiki_pages_attachments: "Elimina allegati"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_notes: "Modera i commenti"
+  permission_edit_work_package_notes_explanation: "Attenzione: gli utenti con questa autorizzazione possono modificare i commenti di chiunque."
   permission_edit_work_packages: "Modificare macro-attività"
   permission_edit_messages: "Modificare messaggi"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_work_package_notes: "Modifica i commenti propri"
   permission_edit_own_messages: "Modificare i propri messaggi"
   permission_edit_own_time_entries: "Modificare i propri registri di orario effettuato"
   permission_edit_project: "Modificare un progetto"
@@ -3727,7 +3727,7 @@ it:
   text_notice_security_badge_displayed_html: >
     Nota: se abilitata questa opzione visualizzerà un badge con lo stato dell'installazione nel pannello di amministrazione di <a href="%{information_panel_path}">%{information_panel_label}</a> e sulla home page. Verrà visualizzata solo agli amministratori. <br/> il badge controllerà la tua attuale versione di OpenProject con l'ultima versione rilasciata per avvisarti di eventuali aggiornamenti o risoluzioni di vulnerabilità note. Per ulteriori informazioni sulle funzionalità offerte dal controllo, su quali dati è necessario fornire per ottenere gli aggiornamenti disponibili e su come disabilitare questo controllo, visita <a href="%{more_info_url}">la documentazione sulla configurazione</a>.
   text_own_membership_delete_confirmation: "Stai per rimuovere qualcuno o tutti i tuoi permessi e potresti non essere più in grado di modificare questo progetto dopo questo passo.\nSei sicuro di voler continuare?"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "Sono consapevole che questa cancellazione non può essere annullata"
   text_plugin_assets_writable: "Cartella del pool di plugin installati scrivibile"
   text_powered_by: "Offerto da %{link}"
   text_project_identifier_info: "Solo le lettere minuscole (a-z), numeri, trattini e trattini bassi sono consentiti, devi iniziare con una lettera maiuscola."
