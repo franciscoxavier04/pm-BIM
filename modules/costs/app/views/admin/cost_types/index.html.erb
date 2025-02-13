@@ -55,7 +55,7 @@ See COPYRIGHT and LICENSE files for more details.
      end %>
 
    <% subheader.with_bottom_pane_component do %>
-    <%= styled_form_tag(cost_types_path, { method: :get, id: "query_form" }) do %>
+    <%= styled_form_tag(admin_cost_types_path, { method: :get, id: "query_form" }) do %>
       <fieldset id="filters" class="simple-filters--container">
         <legend><%= t(:label_filter_plural) %></legend>
         <ul class="simple-filters--filters">

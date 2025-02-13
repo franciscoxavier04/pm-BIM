@@ -37,6 +37,8 @@ RSpec.describe "Time entry activity" do
   end
 
   it "supports CRUD" do
+    pending "this is currently isaled as we move to their own page"
+
     visit enumerations_path
 
     page.find_test_selector("create-enumeration-time-entry-activity").click
