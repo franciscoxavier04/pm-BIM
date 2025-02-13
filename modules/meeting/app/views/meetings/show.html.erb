@@ -74,7 +74,7 @@ See COPYRIGHT and LICENSE files for more details.
       <% if authorize_for(:meetings, :copy) %>
         <li>
           <%= link_to(t(:button_copy),
-                      copy_meeting_path(@meeting),
+                      copy_project_meeting_path(@project, @meeting),
                       class: "icon-context icon-copy") %>
         </li>
       <% end %>

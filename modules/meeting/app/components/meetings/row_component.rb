@@ -119,7 +119,7 @@ module Meetings
       return unless copy_allowed?
 
       menu.with_item(label: I18n.t(:label_meeting_copy),
-                     href: copy_meeting_path(model),
+                     href: copy_project_meeting_path(project, model),
                      content_arguments: {
                        data: {
                          turbo: model.is_a?(StructuredMeeting),

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       end
 
       member do
+        get :copy
         get :check_for_updates
         get :cancel_edit
         get :download_ics
@@ -149,7 +150,6 @@ Rails.application.routes.draw do
     end
 
     member do
-      get :copy
       match "/:tab" => "meetings#show", :constraints => { tab: /(agenda|minutes)/ },
             :via => :get,
             :as => "tab"
