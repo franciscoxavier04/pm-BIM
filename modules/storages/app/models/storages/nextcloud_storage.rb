@@ -66,6 +66,10 @@ module Storages
       end
     end
 
+    def audience
+      nextcloud_audience
+    end
+
     def authenticate_via_idp?
       authentication_method == "oauth2_sso"
     end

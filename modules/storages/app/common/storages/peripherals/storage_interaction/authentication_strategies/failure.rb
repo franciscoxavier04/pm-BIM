@@ -32,41 +32,19 @@ module Storages
   module Peripherals
     module StorageInteraction
       module AuthenticationStrategies
-        module NextcloudStrategies
-          UserLess = -> do
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::BasicAuth.strategy
+        class Failure
+          def self.strategy
+            Strategy.new(:failure)
           end
 
-          class UserBound
-            class << self
-              include TaggedLogging
-
-              def call(user:, storage:)
-                with_tagged_logger do
-                  sso_preferred = storage.audience.present? && oidc_provider_for(user)
-
-                  if sso_preferred
-                    ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken
-                      .strategy
-                      .with_user(user)
-                  elsif storage.oauth_client.present?
-                    ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-                      .strategy
-                      .with_user(user)
-                  else
-                    error "No user-bound authentication strategy applicable for file storage #{storage.id}."
-                    ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Failure.strategy
-                  end
-                end
-              end
-
-              private
-
-              def oidc_provider_for(user)
-                user.authentication_provider.is_a?(OpenIDConnect::Provider)
-              end
-            end
+          # rubocop:disable Lint/UnusedMethodArgument
+          def call(storage:, http_options: {})
+            data = ::Storages::StorageErrorData.new(source: self.class)
+            log_message = "Authentication was forced to fail. No request executed."
+            Failures::Builder.call(code: :error, log_message:, data:)
           end
+
+          # rubocop:enable Lint/UnusedMethodArgument
         end
       end
     end
