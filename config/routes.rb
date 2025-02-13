@@ -481,10 +481,10 @@ Rails.application.routes.draw do
 
     resources :groups, except: %i[show] do
       member do
-        # this should be put into it's own resource
+        # this should be put into its own resource
         post "/members" => "groups#add_users", as: "members_of"
         delete "/members/:user_id" => "groups#remove_user", as: "member_of"
-        # this should be put into it's own resource
+        # this should be put into its own resource
         patch "/memberships/:membership_id" => "groups#edit_membership", as: "membership_of"
         put "/memberships/:membership_id" => "groups#edit_membership"
         delete "/memberships/:membership_id" => "groups#destroy_membership"
