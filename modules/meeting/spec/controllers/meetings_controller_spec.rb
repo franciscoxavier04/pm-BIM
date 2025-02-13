@@ -54,7 +54,7 @@ RSpec.describe MeetingsController do
           get "show", params: { id: meeting.id }
         end
 
-        it { expect(response).to be_successful }
+        it { expect(response).to redirect_to(project_meeting_path(project, meeting)) }
         it { expect(assigns(:meeting)).to eql meeting }
       end
     end

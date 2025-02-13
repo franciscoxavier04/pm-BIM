@@ -39,7 +39,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
   <% if authorize_for(:meetings, :edit) %>
     <li class="toolbar-item">
-      <%= link_to({ :controller => '/meetings', :action => 'edit', :id => @meeting }, class: 'button', :accesskey => accesskey(:edit)) do %>
+      <%= link_to(edit_project_meeting_path(@project, @meeting), class: 'button', :accesskey => accesskey(:edit)) do %>
         <%= op_icon('button--icon icon-edit') %>
         <span class="button--text"><%= t(:button_edit) %></span>
       <% end %>
@@ -121,8 +121,26 @@ See COPYRIGHT and LICENSE files for more details.
   </div>
 </div>
 
-<%= render_tabs [{ :name => 'agenda', :action => :create_meeting_agendas, :partial => 'meeting_contents/show', :path => meeting_agenda_path(@meeting), :label => :label_meeting_agenda, :content => @meeting.agenda || @meeting.build_agenda, :content_type => "meeting_agenda" },
-                 { :name => 'minutes', :action => :create_meeting_minutes, :partial => 'meeting_contents/show', :path => meeting_minutes_path(@meeting), :label => :label_meeting_minutes, :content => @meeting.minutes || @meeting.build_minutes, :content_type => "meeting_minutes" }] %>
+<%= render_tabs(
+      [
+        { name: 'agenda',
+          action: :create_meeting_agendas,
+          partial: 'meeting_contents/show',
+          path: meeting_agenda_path(@meeting),
+          label: :label_meeting_agenda,
+          content: @meeting.agenda || @meeting.build_agenda,
+          content_type: "meeting_agenda"
+        },
+        {
+          name: 'minutes',
+          action: :create_meeting_minutes,
+          partial: 'meeting_contents/show',
+          path: meeting_minutes_path(@meeting),
+          label: :label_meeting_minutes, content: @meeting.minutes || @meeting.build_minutes,
+          content_type: "meeting_minutes"
+        }
+      ]
+    ) %>
 
 <% if @meeting.journals.changing.present? %>
   <div id="history">

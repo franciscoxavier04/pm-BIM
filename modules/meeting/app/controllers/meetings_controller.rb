@@ -33,6 +33,7 @@ class MeetingsController < ApplicationController
   before_action :determine_author, only: %i[history]
   before_action :build_meeting, only: %i[new new_dialog]
   before_action :find_meeting, except: %i[index new create new_dialog]
+  before_action :redirect_to_project, only: %i[show]
   before_action :set_activity, only: %i[history]
   before_action :find_copy_from_meeting, only: %i[create]
   before_action :convert_params, only: %i[create update update_participants]
@@ -525,5 +526,11 @@ class MeetingsController < ApplicationController
 
   def prevent_template_destruction
     render_400 if @meeting.templated?
+  end
+
+  def redirect_to_project
+    return if @project
+
+    redirect_to project_meeting_path(@meeting.project, @meeting, tab: params[:tab]), status: :see_other
   end
 end
