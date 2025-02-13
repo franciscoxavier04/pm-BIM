@@ -1037,6 +1037,50 @@ RSpec.describe WorkPackages::SetAttributesService,
       end
     end
 
+    context "with negative duration" do
+      let(:work_package) do
+        build_stubbed(:work_package, start_date: Time.zone.today, due_date: Time.zone.today + 5.days)
+      end
+      let(:call_attributes) { { duration: -1 } }
+      let(:expected_attributes) { {} }
+
+      it_behaves_like "service call" do
+        it "keeps the dates and duration values (error to be detected by contract)" do
+          subject
+
+          expect(work_package.start_date)
+            .to eq(Time.zone.today)
+          expect(work_package.due_date)
+            .to eq(Time.zone.today + 5.days)
+          expect(work_package.duration)
+            .to eq(-1)
+        end
+      end
+    end
+
+    context "with invalid duration (when the duration is text)" do
+      let(:work_package) do
+        build_stubbed(:work_package, start_date: Time.zone.today, due_date: Time.zone.today + 5.days)
+      end
+      let(:call_attributes) { { duration: "I am invalid" } }
+      let(:expected_attributes) { {} }
+
+      it_behaves_like "service call" do
+        it "keeps the dates, sets duration to 0 but remembers the string that was used (error to be detected by contract)" do
+          subject
+
+          expect(work_package.start_date)
+            .to eq(Time.zone.today)
+          expect(work_package.due_date)
+            .to eq(Time.zone.today + 5.days)
+          expect(work_package.duration)
+            .to eq(0)
+          expect(work_package.duration_before_type_cast)
+            .to eq("I am invalid")
+        end
+      end
+    end
+
     context "when deriving one value from the two others" do
       # rubocop:disable Layout/ExtraSpacing, Layout/SpaceInsideArrayPercentLiteral, Layout/SpaceInsidePercentLiteralDelimiters, Layout/LineLength
       all_possible_scenarios = [
