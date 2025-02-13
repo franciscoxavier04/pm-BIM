@@ -222,6 +222,8 @@ zh-CN:
         host_not_found: 在配置的主机 URL 中找不到 Nextcloud 服务器。请检查配置。
         missing_dependencies: '文件存储缺少一个必需的依赖项。请添加以下依赖项： %{dependency}.'
         not_configured: 无法验证连接。请先完成配置。
+        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: 检查您与服务器的连接。
         subtitle: 连接验证
         tenant_id_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。

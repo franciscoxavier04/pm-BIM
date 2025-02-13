@@ -222,6 +222,8 @@ ms:
         host_not_found: Tiada pelayan Nextcloud ditemui pada url hos yang dikonfigurasikan. Sila semak konfigurasi.
         missing_dependencies: 'Kebergantungan yang diperlukan tiada pada storan fail. Sila tambahkan kebergantungan berikut: %{dependency}.'
         not_configured: Sambungan tidak dapat disahkan. Sila selesaikan konfigurasi dahulu.
+        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Semak sambungan anda terhadap pelayan.
         subtitle: Pengesahan sambungan
         tenant_id_wrong: Id direktori (penyewa) yang dikonfigurasikan adalah tidak sah. Sila semak konfigurasi.

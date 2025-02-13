@@ -65,6 +65,10 @@ module Storages
       end
     end
 
+    def audience
+      nil
+    end
+
     def oauth_configuration
       Peripherals::OAuthConfigurations::OneDriveConfiguration.new(self)
     end
