@@ -168,7 +168,6 @@ class MeetingsController < ApplicationController
       format.turbo_stream do
         respond_with_dialog Meetings::Index::DialogComponent.new(
           meeting: @meeting,
-          project: @project,
           copy_from:
         )
       end
@@ -178,7 +177,7 @@ class MeetingsController < ApplicationController
   def delete_dialog
     respond_with_dialog Meetings::DeleteDialogComponent.new(
       meeting: @meeting,
-      project: @project
+      back_url: params[:back_url]
     )
   end
 
@@ -196,7 +195,7 @@ class MeetingsController < ApplicationController
     if recurring
       redirect_to project_recurring_meeting_path(@project, recurring), status: :see_other
     else
-      redirect_to project_meetings_path(@project), status: :see_other
+      redirect_back_or_default project_meetings_path(@project), status: :see_other
     end
   end
 

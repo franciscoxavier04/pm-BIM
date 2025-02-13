@@ -143,9 +143,10 @@ module Meetings
     def delete_action(menu)
       return unless delete_allowed?
 
+      back_url = current_project ? nil : meetings_path
       menu.with_item(label: recurring_meeting.present? ? I18n.t(:label_recurring_meeting_delete) : I18n.t(:label_meeting_delete),
                      scheme: :danger,
-                     href: delete_dialog_project_meeting_path(project, model),
+                     href: delete_dialog_project_meeting_path(project, model, back_url:),
                      tag: :a,
                      content_arguments: {
                        data: { controller: "async-dialog" }
