@@ -33,9 +33,11 @@ See COPYRIGHT and LICENSE files for more details.
       <%= column_value(column) %>
     </td>
   <% end %>
-  <td class="buttons">
-    <% button_links.each do |link| %>
-      <%= link %>
-    <% end %>
-  </td>
+  <% if button_column? %>
+    <td class="buttons">
+      <% button_links.each do |link| %>
+        <%= link %>
+      <% end %>
+    </td>
+  <% end %>
 <% end %>

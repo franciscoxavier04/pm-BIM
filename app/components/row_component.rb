@@ -38,7 +38,7 @@ class RowComponent < ApplicationComponent
     @table = table
   end
 
-  delegate :columns, to: :table
+  delegate :columns, :button_column?, to: :table
 
   def row
     model

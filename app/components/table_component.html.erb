@@ -34,7 +34,9 @@ See COPYRIGHT and LICENSE files for more details.
         <% headers.each do |_name, _options| %>
           <col>
         <% end %>
-        <col data-highlight="false">
+        <% if button_column? %>
+          <col data-highlight="false">
+        <% end %>
       </colgroup>
       <thead>
         <tr>
@@ -53,17 +55,18 @@ See COPYRIGHT and LICENSE files for more details.
               </th>
             <% end %>
           <% end %>
-          <th>
-            <%# last column for buttons %>
-            <div class="generic-table--empty-header"></div>
-          </th>
+          <% if button_column? %>
+            <th>
+              <div class="generic-table--empty-header"></div>
+            </th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
         <% if rows.empty? %>
-        <tr class="generic-table--empty-row">
-          <td colspan="<%= headers.length + 1 %>"><%= empty_row_message %></td>
-        </tr>
+          <tr class="generic-table--empty-row">
+            <td colspan="<%= headers.length + 1 %>"><%= empty_row_message %></td>
+          </tr>
         <% end %>
         <%= render_collection rows %>
       </tbody>

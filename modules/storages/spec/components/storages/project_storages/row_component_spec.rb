@@ -37,7 +37,7 @@ RSpec.describe Storages::ProjectStorages::RowComponent,
         project_storage = build_stubbed(:project_storage)
         expect(project_storage).not_to be_project_folder_automatic
 
-        table = instance_double(Storages::ProjectStorages::TableComponent, columns: [])
+        table = instance_double(Storages::ProjectStorages::TableComponent, columns: [], button_column?: true)
         component = described_class.new(row: project_storage, table:)
 
         render_inline(component)
@@ -53,7 +53,7 @@ RSpec.describe Storages::ProjectStorages::RowComponent,
         project_storage = build_stubbed(:project_storage, :as_automatically_managed)
         expect(project_storage).to be_project_folder_automatic
 
-        table = instance_double(Storages::ProjectStorages::TableComponent, columns: [])
+        table = instance_double(Storages::ProjectStorages::TableComponent, columns: [], button_column?: true)
         component = described_class.new(row: project_storage, table:)
 
         render_inline(component)

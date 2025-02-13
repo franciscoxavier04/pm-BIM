@@ -197,6 +197,10 @@ class TableComponent < ApplicationComponent
     true
   end
 
+  def button_column?
+    true
+  end
+
   def sortable_column?(column)
     sortable? && sortable_columns.include?(column.to_sym)
   end

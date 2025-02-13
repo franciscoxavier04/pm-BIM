@@ -42,6 +42,8 @@ module Projects
 
         def sortable? = false
 
+        def button_column? = false
+
         def headers
           columns.map do |name|
             # TODO: a lot of attributes are not really life cycle step attributes (subject, dates)
