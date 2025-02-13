@@ -1302,11 +1302,11 @@ en:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
             to_id:
-              error_not_found: "not found or not visible"
-              error_readonly: "an existing relation's `to` link is immutable"
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             from_id:
-              error_not_found: "not found or not visible"
-              error_readonly: "an existing relation's `from` link is immutable"
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

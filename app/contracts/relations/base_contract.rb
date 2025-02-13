@@ -36,7 +36,7 @@ module Relations
     attribute :from
     attribute :to
 
-    validate :manage_relations_permission?
+    validate :validate_user_allowed
     validate :validate_from_exists
     validate :validate_to_exists
     validate :validate_nodes_relatable
@@ -61,11 +61,10 @@ module Relations
       # the to_id is not set
       # in this case we only want to show the "WorkPackage can't be blank" error instead of a
       # misleading circular dependencies error
-      # the error is added by the models presence validation
-      return if model.to_id.nil? || model.from_id.nil?
+      # the error is added by the `validate_from_exists` and `validate_to_exists` methods
+      return if to_id_or_from_id_nil?
 
-      if (model.from_id_changed? || model.to_id_changed?) &&
-         WorkPackage.relatable(model.from, model.relation_type, ignored_relation: model).where(id: model.to_id).empty?
+      if relation_changed? && circular_dependency?
         errors.add :base, I18n.t(:"activerecord.errors.messages.circular_dependency")
       end
     end
@@ -76,10 +75,24 @@ module Relations
       errors.add :relation_type, :inclusion
     end
 
-    def manage_relations_permission?
+    def validate_user_allowed
+      return if model.to_id.nil? || model.from_id.nil?
+
       unless manage_relations?
         errors.add :base, :error_unauthorized
       end
+    end
+
+    def to_id_or_from_id_nil?
+      model.to_id.nil? || model.from_id.nil?
+    end
+
+    def relation_changed?
+      model.from_id_changed? || model.to_id_changed?
+    end
+
+    def circular_dependency?
+      WorkPackage.relatable(model.from, model.relation_type, ignored_relation: model).where(id: model.to_id).empty?
     end
 
     def visible_work_packages
@@ -87,8 +100,6 @@ module Relations
     end
 
     def manage_relations?
-      return true if model.from.nil?
-
       user.allowed_in_work_package?(:manage_work_package_relations, model.from)
     end
   end

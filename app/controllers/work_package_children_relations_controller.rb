@@ -43,14 +43,7 @@ class WorkPackageChildrenRelationsController < ApplicationController
   end
 
   def create
-    if params[:work_package][:id].present?
-      child = WorkPackage.find(params[:work_package][:id])
-      service_result = set_relation(child:, parent: @work_package)
-    else
-      child = WorkPackage.new
-      child.errors.add(:id, :blank)
-      service_result = ServiceResult.failure(result: child)
-    end
+    service_result = create_service_result
 
     if service_result.failure?
       update_via_turbo_stream(
@@ -72,6 +65,17 @@ class WorkPackageChildrenRelationsController < ApplicationController
   end
 
   private
+
+  def create_service_result
+    if params[:work_package][:id].present?
+      child = WorkPackage.find(params[:work_package][:id])
+      set_relation(child:, parent: @work_package)
+    else
+      child = WorkPackage.new
+      child.errors.add(:id, :blank)
+      ServiceResult.failure(result: child)
+    end
+  end
 
   def set_relation(child:, parent:)
     WorkPackages::UpdateService.new(user: current_user, model: child)
