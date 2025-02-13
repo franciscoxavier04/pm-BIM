@@ -79,7 +79,7 @@ module Meetings
     def check_reschedule?
       model.recurring_meeting_id &&
         model.scheduled_meeting &&
-        model.changed.intersect?(%w[start_time start_date])
+        model.changed.intersect?(%w[start_time start_date start_time_hour])
     end
   end
 end

@@ -88,6 +88,22 @@ RSpec.describe Meetings::UpdateService, "integration", type: :model do
               .to include("must be before #{format_time(Time.zone.today + 3.days + 10.hours)}.")
         end
       end
+
+      context "when moving it later than the start time, then moving only start_time_hour" do
+        let(:params) do
+          { start_time_hour: "09:00" }
+        end
+
+        before do
+          meeting.update_column(:start_time, Time.zone.tomorrow + 11.hours)
+        end
+
+        it "is not valid because needs to be before next occurrence" do
+          expect(service_result).not_to be_success
+          expect(service_result.errors[:start_date])
+            .to include("must be after #{format_time(Time.zone.today + 2.days + 10.hours)}.")
+        end
+      end
     end
 
     context "when moving it to the date of the previous schedule" do
