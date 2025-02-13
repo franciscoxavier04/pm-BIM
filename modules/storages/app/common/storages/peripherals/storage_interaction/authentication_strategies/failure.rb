@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal:true
 
 #-- copyright
 # OpenProject is an open source project management software.
@@ -28,28 +28,25 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-Rails.application.configure do
-  config.after_initialize do
-    # Retry jobs that failed with "NameError: uninitialized constant ...Job" as
-    # the worker may have failed to load it because the job class did not exist
-    # at the time of execution. This can happen on upgrades when the worker is
-    # still running the previous version while a migration is enqueuing jobs defined
-    # in the new version.
-    #
-    # Once the migration is over and the worker gets restarted, the job will be
-    # retried thanks to this piece of code below.
-    next unless ActiveRecord::Base.connection.table_exists?(:good_jobs)
+module Storages
+  module Peripherals
+    module StorageInteraction
+      module AuthenticationStrategies
+        class Failure
+          def self.strategy
+            Strategy.new(:failure)
+          end
 
-    GoodJob::Job
-      .discarded
-      .where("error LIKE ?", "NameError: uninitialized constant %Job")
-      .find_each do |job|
-        job.retry_job
-        Rails.logger.info("Successfully enqueued job for retry #{job.display_name} (job id: #{job.id})")
-      rescue StandardError => e
-        Rails.logger.error("Failed to enqueue job for retry #{job.display_name} (job id: #{job.id}): #{e.message}")
+          # rubocop:disable Lint/UnusedMethodArgument
+          def call(storage:, http_options: {})
+            data = ::Storages::StorageErrorData.new(source: self.class)
+            log_message = "Authentication was forced to fail. No request executed."
+            Failures::Builder.call(code: :error, log_message:, data:)
+          end
+
+          # rubocop:enable Lint/UnusedMethodArgument
+        end
       end
-  rescue LoadError
-    # Ignore LoadError that happens when nulldb://db database adapter is used
+    end
   end
 end

@@ -706,11 +706,11 @@ export default class IndexController extends Controller {
   }
 
   async onSubmit(event:Event | null = null) {
+    event?.preventDefault();
+
     if (this.saveInProgress === true) return;
 
     this.setFormSubmitInProgress(true);
-
-    event?.preventDefault();
 
     const formData = this.prepareFormData();
     void this.submitForm(formData)
