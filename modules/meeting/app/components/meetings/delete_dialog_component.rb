@@ -65,9 +65,25 @@ module Meetings
 
     def confirmation_message
       if recurring_meeting.present?
-        t("meeting.delete_dialog.occurrence.confirmation_message_html", title: recurring_meeting.title)
+        t("meeting.delete_dialog.occurrence.confirmation_message_html")
       else
         t("meeting.delete_dialog.one_time.confirmation_message_html")
+      end
+    end
+
+    def confirm_button_text
+      if recurring_meeting.present?
+        I18n.t("meeting.delete_dialog.occurrence.confirm_button")
+      else
+        I18n.t("button_delete")
+      end
+    end
+
+    def cancel_button_text
+      if recurring_meeting.present?
+        I18n.t("button_close")
+      else
+        I18n.t("button_cancel")
       end
     end
   end

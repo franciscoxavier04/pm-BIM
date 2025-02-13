@@ -72,11 +72,11 @@ RSpec.describe Meetings::DeleteDialogComponent, type: :component do
     let(:meeting) { build_stubbed(:structured_meeting_template, recurring_meeting: series) }
 
     it "shows a heading" do
-      expect(subject).to have_text "Delete this meeting occurrence?"
+      expect(subject).to have_text "Cancel this meeting occurrence?"
     end
 
-    it "shows a message that the meeting is part of a series" do
-      expect(subject).to have_text "meeting is part of a series"
+    it "shows a warning about potential information loss" do
+      expect(subject).to have_text "Any meeting information not in the template will be lost."
     end
   end
 end

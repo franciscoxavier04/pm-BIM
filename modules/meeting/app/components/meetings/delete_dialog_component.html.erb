@@ -31,6 +31,8 @@ See COPYRIGHT and LICENSE files for more details.
   render(Primer::OpenProject::DangerDialog.new(
     id:,
     title:,
+    confirm_button_text:,
+    cancel_button_text:,
     form_arguments: {
       action: project_meeting_path(@project, @meeting, back_url: @back_url),
       method: :delete,

@@ -62,4 +62,8 @@ RSpec.describe RecurringMeetings::DeleteScheduledDialogComponent, type: :compone
   it "shows a heading" do
     expect(subject).to have_text "Cancel this meeting occurrence?"
   end
+
+  it "shows a warning about potential information loss" do
+    expect(subject).to have_text "Any meeting information not in the template will be lost."
+  end
 end
