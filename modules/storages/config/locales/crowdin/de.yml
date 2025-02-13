@@ -157,7 +157,7 @@ de:
   storages:
     buttons:
       complete_without_setup: Ohne fortfahren
-      done_complete_setup: Fertig, Einrichtung abschließen
+      done_complete_setup: Fertig, Einrichtung abgeschlossen
       done_continue: Fertig, Fortfahren
       open_storage: Dateispeicher öffnen
       replace_oauth_application: OpenProject OAuth ersetzen
@@ -222,6 +222,7 @@ de:
         host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
         missing_dependencies: 'Eine erforderliche Abhängigkeit fehlt auf dem Datei-Speicher. Bitte fügen Sie die folgende Abhängigkeit hinzu: %{dependency}.'
         not_configured: Die Verbindung konnte nicht validiert werden. Bitte schließen Sie zuerst die Konfiguration ab.
+        oidc_provider_missing: There is no OpenID Connect Identity Provider configured.
         placeholder: Überprüfen Sie Ihre Verbindung mit dem Server.
         subtitle: Verbindungsvalidierung
         tenant_id_wrong: Die konfigurierte Verzeichnis-(Mandanten-)ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
