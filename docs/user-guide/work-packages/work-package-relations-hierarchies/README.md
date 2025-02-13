@@ -37,12 +37,16 @@ Work package relations indicate that work packages address a similar topic or cr
 
 You can select one of the following relations:
 
+- **New child** - This option creates a related work package as sub-item of the current work package. Current work package become a parent work package.
+
+- **Existing child** - This option allows linking an already existing work package as a child work package to the current (parent) work package.
+
 - **Related to** - This option adds a link from the work package A to work package B, so that project members can immediately see the connection, even if the work packages are not members of the same hierarchy.
 
 - **Duplicates / Duplicated by** - This option indicates that the work package B duplicates a work package A in one way or another, for example both address the same task. This can be useful if you have the same work package that needs to be a part of a closed and public projects at the same time. The connection in this case is only semantic, the changes you make in work package A will need to be adapted in work package B manually.
 
 > [!NOTE]
-> some changes in statuses will be adjusted automatically for the duplicated work package. Specifically, if the status of a work package A is set to be "closed" (or set to any status that is defined to count as "closed" in the  [system settings](../../../system-admin-guide/manage-work-packages/work-package-status/), for example "rejected" often counts as a "closed" status), the status of the work package B will change to "closed". Note that this is direction dependent. Only if the work package A is closed will the work package B be closed as well, not the other way around.
+> Some changes in statuses will be adjusted automatically for the duplicated work package. Specifically, if the status of a work package A is set to be "closed" (or set to any status that is defined to count as "closed" in the  [system settings](../../../system-admin-guide/manage-work-packages/work-package-status/), for example "rejected" often counts as a "closed" status), the status of the work package B will change to "closed". Note that this is direction dependent. Only if the work package A is closed will the work package B be closed as well, not the other way around.
 
 - **Blocks / Blocked by** - This option defines status change restrictions between two work packages. If you set a work package A to be blocking work package B, the status of work package B cannot be set to closed or resolved until the work package A is closed.
 
@@ -60,10 +64,10 @@ For the relations of type Predecessor/Successor, you can also define **Lag**, wh
 
 - **Requires / Required by** - Defines if work package A requires or is required by work package B. There is no additional effect.
 
-- **Child** - Makes the related a work package a sub-item of the current (parent) work package
-
 > [!TIP]
 > The selected relation status will be automatically displayed in the work package that you enter. For example if you select "Blocks" in the current work package A and specify work package B, work package B will automatically show that it is "Blocked by" A.
+
+
 
 ### Moving related work packages
 
@@ -111,15 +115,23 @@ There are **four ways to add or create a child work package**:
 
 ### Add a child in the *Relations* tab in a work package's details view
 
-Open a work package and select the tab *Relations*. Click on *+ Relation* button, scroll down the list of options and select *Child*. 
+Open a work package and select the tab *Relations*. Here you can click on *+ Relation* button, and select either *New child* or *Existing child* option to add a new or an existing child respectively. 
 
-![Add a child](openproject_user_guide_wp_add_child.png)
+![Add a child to a work package in OpenProject](openproject_user_guide_wp_add_child.png)
 
-Insert the name of the new work package and save the newly added child work package by clicking *Save* button. 
+Insert the name of the new work package or select an existing one, then click the *Save* button. 
+
+![Create a new child work package under relations tab in OpenProject](openproject_user_guide_wp_add_child_new.png)
 
 ![Select a child work package in OpenProject](openproject_user_guide_wp_add_child_select.png)
 
 For more information on the work package creation take a look at the guideline on [creating a work package](../create-work-package).
+
+> [!TIP]
+>
+> If children work packages already exist for the current work package, you can also use the **+Child** button next to the respective section. 
+
+![Create child button under work package relations tab in OpenProject](openproject_user_guide_wp_relations_child_button.png)
 
 ## Change the parent work package
 
@@ -129,7 +141,7 @@ To edit or remove the parent of a work package open the work package. At the top
 
 ## Display work package hierarchies
 
-After adding the parent and child work packages they are listed in the *Relations* tab.
+After adding the parent and child work packages they are listed in the *Relations* tab. Related work packages are grouped by the type of relation into respective sections. 
 Note that only the children are shown in the relations tab and the parent isn't.
 
 ![Work package relations displayed in the relations tab in OpenProject](openproject_user_guide_relations_tab.png)
