@@ -38,6 +38,7 @@ module Storages
 
       def initialize(storage:)
         @storage = storage
+        @user = User.current
       end
 
       def validate
@@ -57,16 +58,25 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        openid_connect_idp_absent
+        audience_missing.or { non_provisioned_user }
       end
 
-      def openid_connect_idp_absent
-        return None() if OpenIDConnect::Provider.any?
+      def audience_missing
+        return None() if @storage.audience.present?
 
         Some(ConnectionValidation.new(type: :error,
-                                      error_code: :oidc_provider_missing,
+                                      error_code: :oidc_audience_missing,
                                       timestamp: Time.current,
-                                      description: I18n.t("storages.health.connection_validation.oidc_provider_missing")))
+                                      description: I18n.t("storages.health.connection_validation.oidc_audience_missing")))
+      end
+
+      def non_provisioned_user
+        return None() if @user.authentication_provider.present?
+
+        Some(ConnectionValidation.new(type: :warning,
+                                      error_code: :oidc_non_provisioned_user,
+                                      timestamp: Time.current,
+                                      description: I18n.t("storages.health.connection_validation.oidc_non_provisioned_user")))
       end
 
       def has_base_configuration_error?
@@ -88,14 +98,14 @@ module Storages
 
       def capabilities
         @capabilities ||= Peripherals::Registry
-                            .resolve("#{@storage}.queries.capabilities")
-                            .call(storage: @storage, auth_strategy: noop)
+                          .resolve("#{@storage}.queries.capabilities")
+                          .call(storage: @storage, auth_strategy: noop)
       end
 
       def files
         @files ||= Peripherals::Registry
-                     .resolve("#{@storage}.queries.files")
-                     .call(storage: @storage, auth_strategy: userless, folder: ParentFolder.new(@storage.group_folder))
+                   .resolve("#{@storage}.queries.files")
+                   .call(storage: @storage, auth_strategy: userless, folder: ParentFolder.new(@storage.group_folder))
       end
 
       def maybe_is_not_configured
@@ -123,7 +133,7 @@ module Storages
         capabilities_result = capabilities.result
 
         if !capabilities_result.app_enabled? ||
-             (@storage.automatic_management_enabled? && !capabilities_result.group_folder_enabled?)
+           (@storage.automatic_management_enabled? && !capabilities_result.group_folder_enabled?)
           app_name = if capabilities_result.app_enabled?
                        I18n.t("storages.dependencies.nextcloud.group_folders_app")
                      else
@@ -167,7 +177,7 @@ module Storages
             )
           )
         elsif @storage.automatic_management_enabled? &&
-                capabilities_result.group_folder_version < min_group_folder_version
+              capabilities_result.group_folder_version < min_group_folder_version
           Some(
             ConnectionValidation.new(
               type: :error,

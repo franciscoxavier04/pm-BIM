@@ -94,7 +94,7 @@ FactoryBot.define do
     authentication_method { "two_way_oauth2" }
     nextcloud_audience { nil }
 
-    trait :oidc_enabled do
+    trait :oidc_sso_enabled do
       nextcloud_audience { "nextcloud" }
       authentication_method { "oauth2_sso" }
     end
