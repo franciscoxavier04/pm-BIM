@@ -51,7 +51,7 @@ module OpenProject
       name = options.delete(:name) { user.name }
       options[:title] ||= I18n.t(:label_user_named, name:)
 
-      add_hover_card_options(user, options, only_path:, clazz_key: :class)
+      add_hover_card_options(user, options, only_path:)
 
       link_to(name, user_url(user, only_path:), options)
     end
@@ -146,13 +146,13 @@ module OpenProject
     # Accepts a user and an options hash. Will apply a hover card config for the user to the options hash.
     # Will not do anything if `hover_card` is set to false within the options.
     # You can use this method if you want to render a link and apply a user hover card to it.
-    def add_hover_card_options(user, options, only_path: true, clazz_key: :classes)
-      if options.delete(:hover_card) { true }
-        options[clazz_key] = [options[clazz_key], "op-hover-card--preview-trigger"].compact.join(" ")
+    def add_hover_card_options(user, options, only_path: true)
+      if options.delete(:hover_card) { true } && user.is_a?(User)
         options[:data] ||= {}
 
         hover_card_url = hover_card_user_url(user, only_path:)
         options[:data][:hover_card_url] = hover_card_url
+        options[:data][:hover_card_trigger_target] = "trigger"
       end
 
       options

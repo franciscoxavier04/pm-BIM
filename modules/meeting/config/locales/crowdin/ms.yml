@@ -176,15 +176,29 @@ ms:
         Hantar jemputan e-mel segera kepada peserta yang dipilih di atas. Anda juga boleh melakukan ini secara manual pada bila-bila masa kemudian.
       send_invitation_emails_structured: "Hantar jemputan e-mel dengan segera kepada semua peserta. Anda juga boleh melakukan ini secara manual pada bila-bila masa kemudian."
       open_meeting_link: "Buka mesyuarat"
+      open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Meeting series %{title}"
-        summary: "%{actor} has set up a new meeting series %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} telah menghantar anda jemputan ke mesyuarat %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
-        header: "Mesyuarat %{title} telah dijadualkan semula"
-        summary: "Mesyuarat %{title} telah dijadualkan semula oleh %{actor}"
-        body: "Mesyuarat %{title} telah dijadualkan semula oleh %{actor}"
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Tarikh/masa lama"
         new_date_time: "Tarikh/masa baharu"
     label_mail_all_participants: "Hantar e-mel kepada semua peserta"
@@ -229,7 +243,7 @@ ms:
       first_created: >
         Mesyuarat pertama telah berjaya dibuat daripada templat. Semua mesyuarat akan datang akan dibuat secara automatik pada masa kejadian sebelumnya.
     template:
-      button_finalize: "Selesaikan templat"
+      button_finalize: "Open first meeting"
       blank_title: "Templat siri mesyuarat anda kosong"
       description: >
         Templat ini akan digunakan apabila mesyuarat baharu dalam siri dibuat. Anda boleh menambah item agenda, peserta dan lampiran pada templat ini.
@@ -278,11 +292,11 @@ ms:
       heading: "Permanently delete this meeting series?"
       confirmation_message_html:
         zero: >
-          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "Cancel meeting occurrence"
       heading: "Cancel this meeting occurrence?"

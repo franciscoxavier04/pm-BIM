@@ -176,15 +176,29 @@ vi:
         Gửi lời mời qua email ngay lập tức đến những người tham gia được chọn ở trên. Bạn cũng có thể thực hiện thủ công bất kỳ lúc nào sau đó.
       send_invitation_emails_structured: "Gửi lời mời qua email ngay lập tức đến tất cả người tham gia. Bạn cũng có thể thực hiện thủ công bất kỳ lúc nào sau đó."
       open_meeting_link: "Mở cuộc họp"
+      open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Chuỗi họp %{title}"
-        summary: "%{actor} đã lập chuỗi họp mới %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} đã gửi cho bạn một lời mời tham gia cuộc họp %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
-        header: "Cuộc họp %{title} đã được lên lại lịch"
-        summary: "Cuộc họp %{title} đã được lên lại lịch bởi %{actor}"
-        body: "Cuộc họp %{title} đã được lên lại lịch bởi %{actor}."
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Ngày/giờ cũ"
         new_date_time: "Ngày/giờ mới"
     label_mail_all_participants: "Gửi email đến tất cả người tham gia"
@@ -229,7 +243,7 @@ vi:
       first_created: >
         Cuộc họp đầu tiên đã được tạo thành công từ mẫu. Tất cả các cuộc họp trong tương lai sẽ được tạo tự động tại thời điểm xảy ra trước đó.
     template:
-      button_finalize: "Hoàn thành mẫu"
+      button_finalize: "Open first meeting"
       blank_title: "Mẫu chuỗi họp của bạn đang trống"
       description: >
         Mẫu này sẽ được sử dụng bất cứ khi nào các cuộc họp mới trong chuỗi được tạo. Bạn có thể thêm các mục chương trình làm việc, người tham gia và tệp đính kèm vào mẫu này.
@@ -278,11 +292,11 @@ vi:
       heading: "Permanently delete this meeting series?"
       confirmation_message_html:
         zero: >
-          Deleting <strong>%{title}</strong> will delete any meetings in this series. This action is not reversible. Please proceed with caution.
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
         one: >
-          Deleting <strong>%{title}</strong> will also delete one meeting in this series. This action is not reversible. Please proceed with caution.
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} meetings in this series. This action is not reversible. Please proceed with caution.
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "Cancel meeting occurrence"
       heading: "Cancel this meeting occurrence?"

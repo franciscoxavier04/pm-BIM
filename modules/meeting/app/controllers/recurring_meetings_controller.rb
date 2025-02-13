@@ -160,11 +160,13 @@ class RecurringMeetingsController < ApplicationController
   end
 
   def destroy
-    if @recurring_meeting.destroy
-      flash[:notice] = I18n.t(:notice_successful_delete)
-    else
-      flash[:error] = I18n.t(:error_failed_to_delete_entry)
-    end
+    # rubocop:disable Rails/ActionControllerFlashBeforeRender
+    RecurringMeetings::DeleteService
+      .new(model: @recurring_meeting, user: User.current)
+      .call
+      .on_success { flash[:notice] = I18n.t(:notice_successful_delete) }
+      .on_failure { flash[:error] = I18n.t(:error_failed_to_delete_entry) }
+    # rubocop:enable Rails/ActionControllerFlashBeforeRender
 
     respond_to do |format|
       format.html do
@@ -272,7 +274,7 @@ class RecurringMeetingsController < ApplicationController
       .scheduled_occurrences(limit: count + opened.count)
       .reject { |start_time| opened.include?(start_time) }
       .map { |start_time| cancelled[start_time] || scheduled_meeting(start_time) }
-      .first(count)
+      .first([count, 0].max)
 
     [opened.values.sort_by(&:start_time), planned]
   end
@@ -287,7 +289,9 @@ class RecurringMeetingsController < ApplicationController
         @recurring_meeting.scheduled_instances(upcoming: false).count
       elsif @recurring_meeting.will_end?
         open = @recurring_meeting.upcoming_instantiated_meetings
-        @recurring_meeting.remaining_occurrences.count - open.count
+        ongoing = @recurring_meeting.ongoing_meetings
+        total = @recurring_meeting.remaining_occurrences.count - open.count + ongoing.count
+        [total, 0].max
       end
 
     @count = [show_more_limit_param, @max_count].compact.min
@@ -320,14 +324,14 @@ class RecurringMeetingsController < ApplicationController
     # instance variable.
     @converted_params = recurring_meeting_params.to_h
 
-    @converted_params[:project] = @project
+    @converted_params[:project] = @project if @project.present?
     @converted_params[:duration] = @converted_params[:duration].to_hours if @converted_params[:duration].present?
   end
 
   def recurring_meeting_params
     params
       .require(:meeting)
-      .permit(:title, :location, :start_time_hour, :duration, :start_date,
+      .permit(:project_id, :title, :location, :start_time_hour, :duration, :start_date,
               :interval, :frequency, :end_after, :end_date, :iterations)
   end
 

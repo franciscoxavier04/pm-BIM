@@ -1244,6 +1244,10 @@ ru:
             from:
               error_not_found: "рабочий пакет в позиции `от` не найден или не отображается"
               error_readonly: "в существующих отношениях связь `от` неизменна"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM поставщик не доступен"
           not_whitelisted: "не допускается конфигурацией."

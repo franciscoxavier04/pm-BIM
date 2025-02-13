@@ -32,7 +32,7 @@ tr:
         label_activity_show_only_comments: "Sadece yorumları göster"
         label_activity_show_only_changes: "Yalnızca değişiklikleri göster"
         label_sort_asc: "En alttaki en yeni"
-        label_sort_desc: "En yeniler en üstte"
+        label_sort_desc: "En üstte en yeniler"
         label_type_to_comment: "Bir yorum ekleyin. Kişilere bildirmek için @ yazın."
         label_submit_comment: "Yorum gönder"
         changed_on: "changed on"
@@ -605,15 +605,15 @@ tr:
         tab: "Ayarlar"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
-        tab: "Subject configuration"
+        tab: "Konu yapılandırması"
         manually_editable_subjects:
-          label: "Manually editable subjects"
-          caption: "Users can manually enter and edit work package subjects without restrictions."
+          label: "Elle düzenlenebilir konular"
+          caption: "Kullanıcılar iş paketi konularını kısıtlama olmaksızın elle girebilir ve düzenleyebilir."
         automatically_generated_subjects:
           label: "Automatically generated subjects"
-          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+          caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
         pattern:
-          label: "Subject pattern"
+          label: "Konu deseni"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
   versions:
     overview:
@@ -671,8 +671,8 @@ tr:
           no_results_title_text: Şu anda sürüm bulunmuyor.
   work_package_relations_tab:
     index:
-      action_bar_title: "Add relations to other work packages to create a link between them."
-      no_results_title_text: There are currently no relations available.
+      action_bar_title: "Aralarında bir bağlantı oluşturmak için diğer iş paketlerine ilişkiler ekleyin."
+      no_results_title_text: Şu anda herhangi bir ilişki mevcut değildir.
       blankslate_heading: "İlişki yok"
       blankslate_description: "Bu iş paketinin henüz herhangi bir ilişkisi bulunmamaktadır."
     label_add_child_button: "Alt"
@@ -1226,6 +1226,10 @@ tr:
             from:
               error_not_found: "iş paketi içerisinde `from` pozisyonu bulunamayor ya da görünür değil"
               error_readonly: "`from` ilişkisi olduğundan bağlantı değiştirilemez"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM satıcısı yok"
           not_whitelisted: "yapılandırmasına izin verilmiyor."
@@ -1472,7 +1476,7 @@ tr:
     base: "Genel Hata:"
     blocks_ids: "Engellenen iş paketlerinin ID'leri"
     category: "Kategori"
-    comment: "Yorumlar"
+    comment: "Yorum"
     comments: "Yorum"
     content: "İçerik"
     color: "Renk"
@@ -1621,7 +1625,7 @@ tr:
   button_uncheck_all: "Tüm işaretleri kaldır"
   button_unlock: "Kilidi kaldır"
   button_unfavorite: "Favorilerden çıkar"
-  button_unwatch: "İzleme"
+  button_unwatch: "Takip etme"
   button_update: "Güncelle"
   button_upgrade: "Yükselt"
   button_upload: "Yükle"
@@ -2061,7 +2065,7 @@ tr:
       status_changed: "Status '%{status_name}'"
       system_update: "OpenProject sistem güncellemesi:"
       work_package_duplicate_closed: "Duplicate work package updated:"
-      total_percent_complete_mode_changed_to_work_weighted_average: "Calculation of % Complete totals now weighted by Work."
+      total_percent_complete_mode_changed_to_work_weighted_average: "Tamamlanan % toplamlarının hesaplanması artık İşe göre ağırlıklandırılıyor."
       total_percent_complete_mode_changed_to_simple_average: "Calculation of % Complete totals now based on a simple average of only % Complete values."
     cause_descriptions:
       work_package_predecessor_changed_times: öncülü olarak değişti %{link}
@@ -2153,7 +2157,7 @@ tr:
       dateAlert: "Tarih uyarısı"
       mentioned: "Bahsedilen"
       responsible: "Sorumlu"
-      shared: "Shared"
+      shared: "Paylaşıldı"
       watched: "Takipçi"
       reminder: "Hatırlatıcı"
     facets:
@@ -2239,8 +2243,8 @@ tr:
   label_available_project_work_package_types: "Uygun iş paketi tipleri"
   label_available_projects: "Available projects"
   label_api_doc: "API belgelendirmesi"
-  label_backup: "Yedek"
-  label_backup_code: "Yedek kod"
+  label_backup: "Yedekleme"
+  label_backup_code: "Yedek kodu"
   label_basic_details: "Temel bilgiler"
   label_between: "arasında"
   label_blocked_by: "bağlı"
@@ -2260,7 +2264,7 @@ tr:
   label_calendars_and_dates: "Takvimler ve tarihler"
   label_calendar_show: "Takvimi Göster"
   label_category: "Kategori"
-  label_completed: Completed
+  label_completed: Tamamlandı
   label_consent_settings: "Kullanıcı Rızası"
   label_wiki_menu_item: Viki menü öğesi
   label_select_main_menu_item: Yeni ana menü öğesi seç
@@ -2423,7 +2427,7 @@ tr:
   label_inactive: "Etkin değil"
   label_incoming_emails: "Gelen e-postalar"
   label_includes: "içerir"
-  label_incomplete: Incomplete
+  label_incomplete: Tamamlanmadı
   label_include_sub_projects: Include sub-projects
   label_index_by_date: "Tarihe göre diz"
   label_index_by_title: "Başlığa göre dizin"
@@ -2473,7 +2477,7 @@ tr:
   label_custom_export_cover: "Özel dışarı aktarma kapak arka planı"
   label_custom_export_cover_overlay: "Custom export cover background overlay"
   label_custom_export_cover_text_color: "Metin rengi"
-  label_custom_pdf_export_settings: "Custom PDF export settings"
+  label_custom_pdf_export_settings: "Özel PDF dışa aktarma ayarları"
   label_custom_favicon: "Özel favicon"
   label_custom_touch_icon: "Özel dokunma simgesi"
   label_logout: "Oturumu kapat"
@@ -2487,10 +2491,10 @@ tr:
   label_member_new: "Yeni Üye"
   label_member_all_admin: "(Yönetici durumuna bağlı olarak tüm roller)"
   label_member_plural: "Üyeler"
-  label_membership_plural: "Memberships"
+  label_membership_plural: "Üyelikler"
   label_membership_added: "Üye eklendi"
   label_membership_updated: "Üye güncellendi"
-  label_menu: "Menu"
+  label_menu: "Menü"
   label_menu_badge:
     pre_alpha: "pre-alpha"
     alpha: "alfa"
@@ -2518,7 +2522,7 @@ tr:
   label_my_account: "Hesap ayarları"
   label_my_activity: "Benim faaliyetim"
   label_my_account_data: "Hesap verilerim"
-  label_my_avatar: "My avatar"
+  label_my_avatar: "Avatarım"
   label_my_queries: "Özel sorgularım"
   label_name: "İsim"
   label_never: "Hiçbir zaman"
@@ -2548,11 +2552,11 @@ tr:
   label_none_parentheses: "(yok)"
   label_not_contains: "içermiyor"
   label_not_equals: "değildir"
-  label_life_cycle_step_plural: "Project lifecycle"
+  label_life_cycle_step_plural: "Proje yaşam döngüsü"
   label_on: "açık"
   label_operator_all: "boş değil"
   label_operator_none: "boş"
-  label_operator_equals_or: "(VEYA) dır"
+  label_operator_equals_or: "(YA DA)"
   label_operator_equals_all: "(VE) dir"
   label_operator_shared_with_user_any: "herhangi bir"
   label_open_menu: "Menüyü Aç"
@@ -2606,18 +2610,18 @@ tr:
   label_project_latest: "Son projeler"
   label_project_default_type: "Boş türe izin ver"
   label_project_hierarchy: "Proje hiyerarşisi"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projeler"
   label_project_new: "Yeni proje"
   label_project_plural: "Projeler"
   label_project_list_plural: "Proje listesi"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_lifecycle: "Proje yaşam döngüsü"
   label_project_attributes_plural: "Proje öznitelikleri"
   label_project_custom_field_plural: "Proje öznitelikleri"
   label_project_settings: "Proje Ayarları"
   label_project_attributes_settings: "Project attributes settings"
   label_project_storage_plural: "File Storages"
   label_project_storage_project_folder: "File Storages: Project folders"
-  label_projects_disk_usage_information: "%{count} projects using %{used_disk_space} disk space"
+  label_projects_disk_usage_information: "%{count} proje %{used_disk_space} disk alanı kullanıyor"
   label_project_view_all: "Tüm projeleri görüntüle"
   label_project_show_details: "Proje detaylarını göster"
   label_project_hide_details: "Proje detaylarını gizle"
@@ -2635,9 +2639,9 @@ tr:
   label_relates: "ile ilişkili"
   label_relates_to: "ile ilişkili"
   label_relation: "Relation"
-  label_relation_actions: "Relation actions"
+  label_relation_actions: "İlişki eylemleri"
   label_relation_delete: "İlişkiyi sil"
-  label_relation_edit: "Edit relation"
+  label_relation_edit: "İlişkiyi düzenle"
   label_relation_new: "Yeni ilişki"
   label_release_notes: "Sürüm notları"
   label_remaining_work: "Kalan çalışma"
@@ -2762,7 +2766,7 @@ tr:
   label_view_all_revisions: "Tüm revizyonları görüntüle"
   label_view_diff: "Farklılıkları gör"
   label_view_revisions: "Düzeltmeleri izle"
-  label_watched_work_packages: "İzlenen iş paketleri"
+  label_watched_work_packages: "Takip edilen iş paketleri"
   label_what_is_this: "Bu nedir?"
   label_week: "Hafta"
   label_wiki_content_added: "Viki sayfası eklendi"
@@ -2804,7 +2808,7 @@ tr:
   label_working_days_and_hours: "Çalışma günleri ve saatleri"
   label_x_closed_work_packages_abbr:
     one: "1 kapalı"
-    other: "%{count} kapatıldı"
+    other: "%{count} kapalı"
     zero: "0 kapalı"
   label_x_comments:
     one: "1 yorum"
@@ -2865,7 +2869,7 @@ tr:
     mention:
       subject: "%{user_name}, #%{id} - %{subject} içinde sizden bahsetti"
     notification:
-      center: "bildirim merkezi"
+      center: "Bildirim Merkezi"
       see_in_center: "Bildirim merkezinde yorumu görün"
       settings: "E-posta ayarlarını değiştir"
     salutation: "Merhaba %{user}"
@@ -2880,7 +2884,7 @@ tr:
         other: "Bildirimleri olan %{count} iş paketi daha var."
       open_in_browser: "Tarayıcıda aç"
       reason:
-        watched: "İzlendi"
+        watched: "Takip ediliyor"
         assigned: "Atanmış"
         responsible: "Sorumlu"
         mentioned: "Bahsedilen"
@@ -3091,7 +3095,7 @@ tr:
         units:
           byte:
             one: "Bayt"
-            other: "Byte"
+            other: "Bayt"
           gb: "GB"
           kb: "KB"
           mb: "MB"
@@ -3208,7 +3212,7 @@ tr:
   project:
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
-      project_delete_result_1: "Delete all related data."
+      project_delete_result_1: "İlgili tüm verileri silin."
       project_delete_result_2: "Delete all managed project folders in the attached storages."
       info: "Projeyi silme işlemi geri dönüşü olmayan bir işlemdir."
       project_verification: "Silme işlemini doğrulamak için projenin adını% {name} girin. %{name}"
@@ -3228,9 +3232,9 @@ tr:
       are_you_sure: "'%{name}' projesini arşivlemek istediğinize emin misiniz?"
       archived: "Arşivlenen"
     count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      zero: "Proje yok"
+      one: "1 proje"
+      other: "%{count} proje"
   project_module_activity: "Etkinlik"
   project_module_forums: "Forumlar"
   project_module_work_package_tracking: "İş paketleri"
@@ -3406,7 +3410,7 @@ tr:
   setting_brute_force_block_minutes: "Kullanıcının engellediği süre"
   setting_cache_formatted_text: "Biçimlendirilmiş metni önbelleğe al"
   setting_use_wysiwyg_description: "Tüm kullanıcılar için varsayılan olarak CKEditor5 WYSIWYG düzenleyiciyi etkinleştirmek için seçin. GFM Markdown için CKEditor sınırlı işleve sahiptir."
-  setting_column_options: "Default work package lists columns"
+  setting_column_options: "Varsayılan iş paketi listeleme sütunları"
   setting_commit_fix_keywords: "Anahtar kelimeleri düzeltme"
   setting_commit_logs_encoding: "İleti kodlamayı tamamla"
   setting_commit_logtime_activity_id: "Kaydedilen zaman için faaliyet"
@@ -3426,9 +3430,9 @@ tr:
   setting_diff_max_lines_displayed: "Görüntülenen fark satırlarının maksimum sayısı"
   setting_omniauth_direct_login_provider: "Direct login SSO provider"
   setting_display_subprojects_work_packages: "Varsayılan olarak ana projenin iş listesinde alt proje iş paketlerini göster"
-  setting_duration_format: "Duration format"
-  setting_duration_format_hours_only: "Hours only"
-  setting_duration_format_days_and_hours: "Days and hours"
+  setting_duration_format: "Süre biçimi"
+  setting_duration_format_hours_only: "Sadece saatler"
+  setting_duration_format_days_and_hours: "Günler ve saatler"
   setting_duration_format_instructions: "This defines how Work, Remaining work, and Time spent durations are displayed."
   setting_emails_footer: "E-posta altbilgi"
   setting_emails_header: "E-posta üstbilgisi"
@@ -3502,14 +3506,14 @@ tr:
   setting_sys_api_description: "Depo yönetimi web servisi depolara erişmek için entegrasyon ve kullanıcı yetkilendirmesi sağlar."
   setting_time_format: "Saat"
   setting_total_percent_complete_mode: "Calculation of % Complete hierarchy totals"
-  setting_total_percent_complete_mode_work_weighted_average: "Weighted by work"
+  setting_total_percent_complete_mode_work_weighted_average: "İşe göre ağırlıklandırılmış"
   setting_total_percent_complete_mode_work_weighted_average_caption_html: >-
     The <i>total % Complete</i> will be weighted against the <i>Work</i> of each work package in the hierarchy. Work packages without <i>Work</i> will be ignored.
-  setting_total_percent_complete_mode_simple_average: "Simple average"
+  setting_total_percent_complete_mode_simple_average: "Basit ortalama"
   setting_total_percent_complete_mode_simple_average_caption_html: >-
     <i>Work</i> is ignored and the <i>total % Complete</i> will be a simple average of <i>% Complete</i> values of work packages in the hierarchy.
   setting_accessibility_mode_for_anonymous: "İsimsiz kullanıcılar için erişilebilirlik modunu etkinleştir"
-  setting_user_format: "Users name format"
+  setting_user_format: "Kullanıcı adı biçimi"
   setting_user_default_timezone: "Kullanıcıların varsayılan saat dilimi"
   setting_users_deletable_by_admins: "Yöneticiler kullanıcı hesaplarını silebilsin"
   setting_users_deletable_by_self: "Kullanıcılar kendi hesaplarını silebilsin"
@@ -3659,7 +3663,7 @@ tr:
   text_custom_field_hint_activate_per_project_and_type: >
     Özel alanların iş paketi türü ve proje bazında aktive edilmesi gerekiyor.
   text_wp_status_read_only_html: >
-    Enterprise sürümü, iş paketlerinin durum alanları için şu ek eklentileri ekleyecektir: <br> <ul> <li><b>İş paketlerini belirli durumlar için salt okunur olarak işaretlemeye izin verin</b></li> < /ul>
+    Enterprise sürümü, iş paketlerinin durum alanları için şunlaru ekleyecektir: <br> <ul> <li><b>İş paketlerini belirli durumlar için salt okunur olarak işaretlemeye izin verin</b></li> </ul>
   text_project_custom_field_html: >
     Enterprise sürümü, projelerin özel alanları için şu ek eklentileri ekleyecektir: <br> <ul> <li><b>Bir proje portföy görünümü oluşturmak için Projeler için özel alanları Proje listenize ekleyin</b></li > </ul>
   text_custom_logo_instructions: >
@@ -3697,7 +3701,7 @@ tr:
   text_work_packages_destroy_confirmation: "Seçilen çalışma paket(ler) ini silmek istediğinizden emin misiniz?"
   text_work_packages_ref_in_commit_messages: "İş paketlerini taahhüt mesajlarında referans ve sabitleme"
   text_journal_added: "%{value} %{label} eklendi"
-  text_journal_attachment_added: "%{label} %{value} added as attachment"
+  text_journal_attachment_added: "%{label} %{value} ek olarak eklendi"
   text_journal_attachment_deleted: "%{label} %{old} removed as attachment"
   text_journal_changed_plain: "%{label}, %{old} %{linebreak} iken %{new} olarak değiştirildi"
   text_journal_changed_no_detail: "%{label} güncellendi"
@@ -3880,14 +3884,14 @@ tr:
       derivation_hints:
         done_ratio:
           cleared_because_remaining_work_is_empty: "Cleared because Remaining work is empty."
-          cleared_because_work_is_0h: "Cleared because Work is 0h."
+          cleared_because_work_is_0h: "İş süresiz olduğu için temizlendi."
           derived: "Derived from Work and Remaining work."
         estimated_hours:
           cleared_because_remaining_work_is_empty: "Cleared because Remaining work is empty."
           derived: "Derived from Remaining work and % Complete."
           same_as_remaining_work: "Set to same value as Remaining work."
         remaining_hours:
-          cleared_because_work_is_empty: "Cleared because Work is empty."
+          cleared_because_work_is_empty: "İş boş olduğu için temizlendi."
           cleared_because_percent_complete_is_empty: "Cleared because % Complete is empty."
           decreased_by_delta_like_work: "Decreased by %{delta}, matching the reduction in Work."
           derived: "Derived from Work and % Complete."

@@ -39,27 +39,27 @@ nl:
       description: >
         Gebruik deze parameters om uw identity provider verbinding met OpenProject te configureren.
     metadata_parser:
-      success: "Successfully updated the configuration using the identity provider metadata."
-      invalid_url: "Provided metadata URL is invalid. Provide a HTTP(s) URL."
-      error: "Failed to retrieve the identity provider metadata: %{error}"
+      success: "De configuratie is succesvol bijgewerkt met de metagegevens van de identiteits- provider."
+      invalid_url: "Verstrekte metadata URL is ongeldig. Geef een HTTP(s) URL."
+      error: "Fout bij het ophalen van de metagegevens van de identiteitaanbieder: %{error}"
     providers:
-      label_empty_title: "No SAML providers configured yet."
-      label_empty_description: "Add a provider to see them here."
-      label_automatic_configuration: Automatic configuration
+      label_empty_title: "Er zijn nog geen SAML-providers geconfigureerd."
+      label_empty_description: "Voeg een provider toe om ze hier te zien."
+      label_automatic_configuration: Automatische configuratie
       label_metadata: Metadata
-      label_metadata_endpoint: OpenProject metadata endpoint
-      label_openproject_information: OpenProject information
-      label_configuration_details: "Identity provider endpoints and certificates"
-      label_configuration_encryption: "Signatures and Encryption"
-      label_add_new: New SAML identity provider
-      label_edit: Edit SAML identity provider %{name}
-      label_uid: Internal user id
-      label_mapping: Mapping
-      label_requested_attribute_for: "Requested attribute for: %{attribute}"
-      no_results_table: No SAML identity providers have been defined yet.
-      plural: SAML identity providers
-      singular: SAML identity provider
-      requested_attributes: Requested attributes
+      label_metadata_endpoint: OpenProject metadata eindpunt
+      label_openproject_information: OpenProject informatie
+      label_configuration_details: "Identiteit provider eindpunten en certificaten"
+      label_configuration_encryption: "Handtekeningen en encryptie"
+      label_add_new: Nieuwe SAML identiteitsprovider
+      label_edit: SAML-identiteitsprovider %{name} bewerken
+      label_uid: Interne gebruikers-id
+      label_mapping: Koppeling
+      label_requested_attribute_for: "Attribuut aangevraagd voor: %{attribute}"
+      no_results_table: Er zijn nog geen SAML identity providers gedefinieerd.
+      plural: SAML-identiteitsproviders
+      singular: SAML-identiteitsprovider
+      requested_attributes: Gevraagde kenmerken
       attribute_mapping: Attribute mapping
       attribute_mapping_text: >
         The following fields control which attributes provided by the SAML identity provider are used to provide user attributes in OpenProject
@@ -138,7 +138,7 @@ nl:
       authn_requests_signed: >
         If checked, OpenProject will sign the SAML AuthnRequest. You will have to provide a signing certificate and private key using the fields below.
       want_assertions_signed: >
-        If checked, OpenProject will required signed responses from the identity provider using it's own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
+        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
       want_assertions_encrypted: >
         If enabled, require the identity provider to encrypt the assertion response using the certificate pair that you provide.
       certificate: >

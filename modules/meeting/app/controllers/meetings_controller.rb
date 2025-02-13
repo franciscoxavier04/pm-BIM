@@ -402,9 +402,13 @@ class MeetingsController < ApplicationController
   end
 
   def build_meeting
-    @meeting = meeting_class.new
-    @meeting.project = @project
-    @meeting.author = User.current
+    meeting = meeting_class.new
+
+    call = ::Meetings::SetAttributesService
+      .new(user: current_user, model: meeting, contract_class: EmptyContract)
+      .call(project: @project)
+
+    @meeting = call.result
   end
 
   def meeting_class
@@ -441,7 +445,7 @@ class MeetingsController < ApplicationController
     # instance variable.
     @converted_params = meeting_params.to_h
 
-    @converted_params[:project] = @project
+    @converted_params[:project] = @project if @project.present?
     @converted_params[:duration] = @converted_params[:duration].to_hours if @converted_params[:duration].present?
     @converted_params[:send_notifications] = params[:send_notifications] == "1"
 
@@ -459,9 +463,11 @@ class MeetingsController < ApplicationController
 
   def meeting_params
     if params[:meeting].present?
-      params.require(:meeting).permit(:title, :location, :start_time,
-                                      :duration, :start_date, :start_time_hour, :type,
-                                      participants_attributes: %i[email name invited attended user user_id meeting id])
+      params
+        .require(:meeting)
+        .permit(:title, :location, :start_time, :project_id,
+                :duration, :start_date, :start_time_hour, :type,
+                participants_attributes: %i[email name invited attended user user_id meeting id])
     end
   end
 

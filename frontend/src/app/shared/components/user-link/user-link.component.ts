@@ -35,7 +35,7 @@ import { PathHelperService } from 'core-app/core/path-helper/path-helper.service
   selector: 'op-user-link',
   template: `
     <a *ngIf="href"
-       class="op-hover-card--preview-trigger"
+       data-hover-card-trigger-target="trigger"
        [attr.data-hover-card-url]="hoverCardUrl"
        [attr.href]="href"
        [attr.title]="label"

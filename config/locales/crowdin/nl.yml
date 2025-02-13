@@ -371,7 +371,7 @@ nl:
           label: "Zoek projectfase of poort"
       project_custom_fields:
         header:
-          title: "Project attributen"
+          title: "Projectkenmerken"
           description_html: 'Deze projectattributen worden weergegeven in uw <a href=%{overview_url} target="_blank">projectoverzichtspagina</a> onder hun respectievelijke secties. U kunt individuele attributen in- of uitschakelen. Projectattributen en secties worden gedefinieerd in de <a href=%{admin_settings_url} target="_blank">administratie-instellingen</a> door de beheerder van de instantie. '
         filter:
           label: "Zoek project attribuut"
@@ -832,10 +832,10 @@ nl:
         notes: "Notities"
       ldap_auth_source:
         account: "Account"
-        attr_firstname: "Voornaam"
-        attr_lastname: "Achternaam attribuut"
-        attr_login: "Gebruikersnaam attribuut"
-        attr_mail: "E-mail attribuut"
+        attr_firstname: "Voornaam kenmerk"
+        attr_lastname: "Achternaam kenmerk"
+        attr_login: "Gebruikersnaam kenmerk"
+        attr_mail: "E-mail kenmerk"
         filter_string: "Filter string"
         admin: "Administrator"
         base_dn: "Base DN"
@@ -1223,6 +1223,10 @@ nl:
             from:
               error_not_found: "werkpakket in `van`-positie niet gevonden of niet zichtbaar"
               error_readonly: "een bestaande `van`-relatielink is onveranderlijk"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM-leverancier is niet beschikbaar"
           not_whitelisted: "is niet toegestaan door de configuratie."
@@ -1454,7 +1458,7 @@ nl:
       changeset: "Wijzigingensets"
       message: "Fora"
       news: "Nieuws"
-      project_attribute: "Project attributes"
+      project_attribute: "Projectkenmerken"
       subproject: "Inclusief subprojecten"
       time_entry: "Bestede tijd"
       wiki_edit: "Wiki"
@@ -1891,7 +1895,7 @@ nl:
     changeset: "Wijzigingsset bewerkt"
     message: Bericht bewerkt
     news: Nieuws
-    project_attributes: "Project attributes edited"
+    project_attributes: "Projectkenmerken bewerkt"
     project: "Project bewerkt"
     projects: "Project bewerkt"
     reply: Beantwoord
@@ -1918,8 +1922,8 @@ nl:
             label: "XLS"
       columns:
         input_label_report: "Add columns to attribute table"
-        input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
-        input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_report: "Standaard zijn alle kenmerken geselecteerd die als kolommen in de werkpakketlijst zijn toegevoegd. Lange tekstvelden zijn niet beschikbaar in de kenmerktabel, maar kunnen eronder worden weergegeven."
+        input_caption_table: "Standaard zijn alle kenmerken toegevoegd als kolommen in de werkpakketlijst zijn geselecteerd. Lange tekstvelden zijn niet beschikbaar in de tabel exports."
       pdf:
         export_type:
           label: "PDF export type"
@@ -3586,7 +3590,7 @@ nl:
       edit:
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
       new:
-        heading: "Nieuw attribuut"
+        heading: "Nieuw kenmerk"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"

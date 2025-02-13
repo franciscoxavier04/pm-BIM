@@ -74,7 +74,7 @@ de:
         confirmation_text: Bitte bestätigen Sie die Entfernung des Dateispeichers aus diesem Projekt
         heading_text: Projekt von %{storage} entfernen
         text: Diese Aktion ist unumkehrbar und entfernt alle Verknüpfungen von Arbeitspaketen dieses Projekts zu Dateien und Ordnern dieses Speichers.
-        title: Remove project from storage
+        title: Projekt von Speicherung abtrennen
       label: Projekt entfernen
   services:
     attributes:
@@ -157,7 +157,7 @@ de:
   storages:
     buttons:
       complete_without_setup: Ohne fortfahren
-      done_complete_setup: Fertig, Einrichtung abschließen
+      done_complete_setup: Fertig, Einrichtung abgeschlossen
       done_continue: Fertig, Fortfahren
       open_storage: Dateispeicher öffnen
       replace_oauth_application: OpenProject OAuth ersetzen
@@ -207,7 +207,7 @@ de:
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Projektordner
-      redirect_uri: URI umleiten
+      redirect_uri: Umleitungs-URI
       storage_provider: Speicheranbieter
     health:
       checked: Zuletzt geprüft %{datetime}
@@ -222,6 +222,7 @@ de:
         host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
         missing_dependencies: 'Eine erforderliche Abhängigkeit fehlt auf dem Datei-Speicher. Bitte fügen Sie die folgende Abhängigkeit hinzu: %{dependency}.'
         not_configured: Die Verbindung konnte nicht validiert werden. Bitte schließen Sie zuerst die Konfiguration ab.
+        oidc_provider_missing: There is no OpenID Connect Identity Provider configured.
         placeholder: Überprüfen Sie Ihre Verbindung mit dem Server.
         subtitle: Verbindungsvalidierung
         tenant_id_wrong: Die konfigurierte Verzeichnis-(Mandanten-)ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
@@ -312,7 +313,7 @@ de:
     label_openproject_oauth_application_secret: OpenProject OAuth geheimer Anwendungsschlüssel
     label_project_folder: Projektordner
     label_provider: Anbieter
-    label_redirect_uri: URI umleiten
+    label_redirect_uri: Umleitungs-URI
     label_show_storage_redirect_uri: Umleitungs-URI anzeigen
     label_status: Status
     label_storage: Speicher

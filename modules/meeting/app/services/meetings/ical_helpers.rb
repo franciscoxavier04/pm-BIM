@@ -30,11 +30,25 @@ require "icalendar/tzinfo"
 
 module Meetings
   module ICalHelpers
-    def ical_event(start_time, &)
+    def ical_event(start_time, cancelled:, &)
       calendar = build_icalendar(start_time)
       calendar.event(&)
-      calendar.publish
+
+      if cancelled
+        calendar.cancel
+      else
+        calendar.request
+      end
       calendar.to_ical
+    end
+
+    def set_status(cancelled, event)
+      event.status =
+        if cancelled
+          "CANCELLED"
+        else
+          "CONFIRMED"
+        end
     end
 
     def build_icalendar(start_time)

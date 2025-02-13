@@ -93,7 +93,7 @@ zh-CN:
       button: "导出 PDF 时间表"
       timesheet: "时间表"
       time: "时间"
-      sum_hours: Sum
+      sum_hours: 总和
     cost_reports:
       title: "您的成本报告 XLS 导出"
       start_time: "开始时间"

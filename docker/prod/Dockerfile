@@ -2,9 +2,10 @@ ARG RUBY_VERSION="3.4.1"
 FROM ruby:${RUBY_VERSION}-bookworm AS base
 LABEL maintainer="operations@openproject.com"
 
-ARG BUNDLER_VERSION="2.5.13"
 ARG NODE_VERSION="20.9.0"
 ARG BIM_SUPPORT=true
+ARG CURRENT_PGVERSION="13"
+ARG NEXT_PGVERSION="17"
 ENV USE_JEMALLOC=false
 ENV DEBIAN_FRONTEND=noninteractive
 ENV BUNDLE_JOBS=8
@@ -17,8 +18,6 @@ ENV APP_USER=app
 ENV APP_PATH=/app
 ENV APP_DATA_PATH=/var/openproject/assets
 ENV PGVERSION="13"
-ENV CURRENT_PGVERSION="13"
-ENV NEXT_PGVERSION="15"
 ENV PGBIN="/usr/lib/postgresql/$PGVERSION/bin"
 ENV BUNDLE_WITHOUT="development:test"
 
@@ -44,7 +43,7 @@ RUN useradd -d /home/$APP_USER -m $APP_USER && \
 WORKDIR $APP_PATH
 
 # upgrade bundler
-RUN gem install bundler --version "$BUNDLER_VERSION" --no-document
+RUN gem install bundler --no-document
 
 # system dependencies, nodejs
 COPY ./docker/prod/setup/preinstall-common.sh ./docker/prod/setup/preinstall-common.sh

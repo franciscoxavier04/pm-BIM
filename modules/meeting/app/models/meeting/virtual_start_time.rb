@@ -92,7 +92,6 @@ module Meeting::VirtualStartTime
     # set defaults
     # Start date is set to tomorrow at 10 AM (Current users local time)
     write_attribute(:start_time, User.current.time_zone.now.at_midnight + 34.hours) if start_time.nil?
-    self.duration ||= 1
     update_derived_fields
   end
 

@@ -1242,6 +1242,10 @@ lt:
             from:
               error_not_found: "„nuo“ pozicijos darbų paketas nerastas arba nematomas"
               error_readonly: "esamo ryšio sąsaja „iš“ yra nekintama"
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM tiekėjas neprieinamas"
           not_whitelisted: "neleidžiama pagal konfigūraciją."

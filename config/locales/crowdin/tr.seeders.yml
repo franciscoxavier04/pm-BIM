@@ -132,7 +132,7 @@ tr:
             kanban:
               name: Kanban board
             basic:
-              name: Temel kurulu
+              name: Temel pano
               lists:
                 item_0:
                   name: İstek listesi
@@ -143,7 +143,7 @@ tr:
                 item_3:
                   name: Hiçbir zaman
             parent_child:
-              name: Work breakdown structure
+              name: İş kırılım yapısı
           project-overview:
             widgets:
               item_0:
@@ -210,20 +210,20 @@ tr:
             item_4:
               subject: End of project
           wiki: |
-            _In this wiki you can collaboratively create and edit pages and sub-pages to create a project wiki._
+            Bu wiki'de bir proje wiki'si oluşturmak için sayfaları ve alt sayfaları işbirliği içinde oluşturabilir ve düzenleyebilirsiniz._
 
-            **You can:**
+            **Şunları yapabilirsiniz:**
 
-            * Insert text and images, also with copy and paste from other documents
-            * Create a page hierarchy with parent pages
-            * Include wiki pages to the project menu
-            * Use macros to include, e.g. table of contents, work package lists, or Gantt charts
-            * Include wiki pages in other text fields, e.g. project overview page
-            * Include links to other documents
-            * View the change history
-            * View as Markdown
+            * Diğer belgelerden kopyalayıp yapıştırarak da metin ve resim ekleyebilirsiniz
+            * Üst sayfalarla bir sayfa hiyerarşisi oluşturun
+            * Proje menüsüne wiki sayfalarını ekleyin
+            * Eklemek için makroları kullanın, örn.örneğin içindekiler tablosu, iş paketi listeleri veya Gantt şemaları
+            * Wiki sayfalarını diğer metin alanlarına dahil edin, örneğin projeye genel bakış sayfası
+            * Diğer belgelere bağlantılar ekleyin
+            * Değişiklik geçmişini görüntüleyin
+            * Markdown olarak görüntüleyin
 
-            More information: [https://www.openproject.org/docs/user-guide/wiki/](https://www.openproject.org/docs/user-guide/wiki/)
+            Daha fazla bilgi: [https://www.openproject.org/docs/user-guide/wiki/](https://www.openproject.org/docs/user-guide/wiki/)
         scrum-project:
           name: Scrum project
           status_explanation: Tüm görevler programa uygundur. İlgili kişiler görevlerini biliyor. Sistem tamamen kurulmuştur.

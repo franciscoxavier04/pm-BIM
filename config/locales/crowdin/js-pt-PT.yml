@@ -357,10 +357,10 @@ pt-PT:
           learn_about: "Saiba mais sobre os novos recursos"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_2":
+          "15_3":
             standard:
               new_features_html: >
-                A versão traz várias funcionalidades e melhorias para si, por exemplo, <br> <ul class="%{list_styling_class}"> <li>Defina lembretes para pacotes de trabalho para gerar notificações de alerta de data.</li> <li>Crie novas pastas diretamente a partir do seletor de localização para armazenamento de ficheiros.</li> <li>Especifique um desfasamento necessário entre os sucessores e os antecessores dos pacotes de trabalho.</li> <li>Ative a ordenação e o agrupamento de pacotes de trabalho com base nos valores da hierarquia de tipos de campos personalizados.</li> <li>Exporte registos de tempo como registos horários em PDF.</li> <li>Adicione uma janela popover que apresenta informações do utilizador ao passar o cursor do rato.</li> </ul>
+                A versão traz várias funcionalidades e melhorias para si, por exemplo, <br> <ul class="%{list_styling_class}"> <li>Agende reuniões recorrentes para simplificar os seus compromissos semanais, quinzenais ou personalizados.</li> <li>Crie pacotes de trabalho secundários diretamente a partir do separador Relações.</li> <li>Inclua somas totais nas exportações de folhas de horas em PDF para obter melhores informações.</li> <li>Inclua pacotes de trabalho secundários em relatórios de custos para um controlo mais preciso.</li> <li>Veja as datas de relações anteriormente ocultas e com restrições de permissão para tomar decisões de agendamento informadas.</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
@@ -625,11 +625,11 @@ pt-PT:
       date_alerts:
         milestone_date: "Data do marco"
         overdue: "Em atraso"
-        overdue_since: "since %{difference_in_days}."
-        property_today: "is today."
-        property_is: "is in %{difference_in_days}."
-        property_was: "was %{difference_in_days} ago."
-        property_is_deleted: "is deleted."
+        overdue_since: "desde %{difference_in_days}."
+        property_today: "é hoje."
+        property_is: "é em %{difference_in_days}."
+        property_was: "foi há %{difference_in_days}."
+        property_is_deleted: "foi eliminado."
         upsale:
           title: "Alertas de data"
           description: "Com os alertas de data, receberá uma notificação sobre as próximas datas de início e conclusão, para que não nunca perca ou esqueça prazos importantes. "

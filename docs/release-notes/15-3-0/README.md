@@ -3,23 +3,107 @@ title: OpenProject 15.3.0
 sidebar_navigation:
     title: 15.3.0
 release_version: 15.3.0
-release_date: 2025-02-06
+release_date: 2025-02-19
 ---
 
 # OpenProject 15.3.0
 
-Release date: 2025-02-06
+Release date: 2025-02-19
 
-We released OpenProject [OpenProject 15.3.0](https://community.openproject.org/versions/2163).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.3.0](https://community.openproject.org/versions/2163). This release includes several bug fixes, and we recommend updating to the latest version. While it is a minor release, it introduces over 40 new features, including a major update to the Meetings module. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments
+
+Organizing meetings just became much easier with **Recurring Meetings** in OpenProject 15.3. Instead of manually setting up repeated meetings, you can now create a Recurring Meeting series with flexible scheduling options.
+
+- **Set up meeting series**: Schedule meetings to recur on a weekly, biweekly, or custom basis.
+- **Manage occurrences**: Each meeting in a series is an individual occurrence, allowing adjustments without affecting the entire series.
+- **Flexible modifications**: Adjust single occurrences within a recurring meeting series without disrupting the entire schedule.
+- **Improved meeting index page**: Recurring meetings are clearly displayed in the meetings index, helping users track their schedules efficiently.
+- **ICS file support**: Download and integrate recurring meetings into external calendar applications.
+- **Custom meeting templates**: Define standard templates for recurring meetings to ensure consistency.
+- **Invitation emails for meeting series**: Participants receive automated notifications for scheduled recurring meetings.
+
+> [!NOTE]
+> **Consistent terminology**: To improve clarity, OpenProject now categorizes meetings as **Classic**, **Recurring**, and **One-time**, replacing the previous Dynamic vs. Classic terminology.
+
+This major feature introduces multiple improvements, with several underlying enhancements that refine scheduling, management, and handling of meeting series. All individual changes related to Recurring Meetings are listed in the full changelog at the end of these release notes.
+
+The following screenshot shows an example Meetings overview page, highlighting some of the changes for version 15.3:
+
+![Example screenshot of new Meetings overview page with OpenProject 15.3, including Recurring meetings, Meeting series](openproject-15-3-recurring-meetings-highlighted.png)
+
+Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between **My meetings**, **Recurring meetings** and **All meetings**, with separate sections for Meeting series and Involvement.
+
+### Create child work packages directly from the Relations tab
+
+With OpenProject 15.3, you can now again create child work packages directly from the Relations tab, making it faster and more intuitive to build structured work breakdowns.
+
+A new option, **New child**, has been added to the **+ Relation** dropdown. Selecting it opens a dialog where you can immediately enter essential details like type, subject, description, and other mandatory fields. Once created, the child work package is added to the list, and a confirmation message appears.
+
+![Screenshot showing the +Child actions in the dropdown list of the Relations tab](openproject-15-3-child-relation-highlighted.png)
+
+Additionally, if child work packages already exist, a **+ Child** button appears in the header of the child work packages section and allows you to quickly add another child to the active work package:
+
+![Screenshot showing the +Child button in the Relations tab of work packages](openproject-15-3-add-new-child-button-highlighted.png)
+
+### Include total sums in timesheet PDF exports for better insights
+
+Tracking logged time is now more transparent with total sum calculations in timesheet PDF exports. Previously, users had to manually sum up hours across multiple users. With OpenProject 15.3, the PDF export now includes:
+
+- A summary table on a separate page when exporting timesheets for multiple users, showing total hours per user and a final sum.
+- A sum row under each user's timesheet table, ensuring quick insights into individual and team-wide logged hours.
+
+This enhancement simplifies reporting, making it easier to review and analyze tracked time across teams.
+
+![Screenshot showing a timesheet overview page, including a sum](openproject-15-3-sums-pdf-timesheet-overview.png)
+
+### Include child work packages in cost reports for more accurate tracking
+
+Cost reports in OpenProject now allow to easier include child work packages, ensuring more comprehensive cost tracking. Previously, users managing hierarchical work packages (such as epics, features, or sub-tasks) had to manually select each work package to ensure full cost visibility.
+
+OpenProject 15.3 introduces a new filter option for cost reports: **is (includes descendants)**, in addition to **is**. This allows users to automatically include all related child work packages (grandchildren, great-grandchildren, etc.) in their cost reports, improving accuracy and efficiency. This eliminates the need for cumbersome manual selection and ensures that all relevant costs are accounted for in reports.
+
+![Screenshot showing the dropdown in a cost report filter, highlighting the new 'is (includes descendents)' option](openproject-15-3-cost-report-children.png)
+
+### See dates of previously hidden, permission-restricted relations to make informed scheduling decisions
+
+OpenProject now provides better visibility into dependencies by displaying relation dates for work packages that users do not have permission to view. Previously, restricted relations were completely invisible, making it difficult to understand scheduling dependencies.
+
+OpenProject 15.3 improves transparency by displaying all relations in the Relations tab. While restricted work packages remain inaccessible, their **start and finish dates will now be visible**, along with lag time for applicable relations. This way, users still cannot interact with restricted work packages but will now understand why a task is scheduled at a specific time.
+
+> [!NOTE]
+> If a related work package has the same start and finish date, a single date is displayed instead of a range. This is [another feature of OpenProject 15.3 and applies to all Relations on the Relations tab](https://community.openproject.org/wp/61044), independent of the user's permissions.
+
+These improvements help teams make informed scheduling decisions while maintaining appropriate permission controls. Here is an example, showing two relations – one with full visibility and one with restricted visibility.
+
+![Mockup showing two relations in a work package, one is displayed in grey with restricted details, only date and lag](openproject-15-3-hidden-relation.png)
+
+### Display a deletion dialog with danger zone for deleting items in a hierarchy
+
+Accidentally deleting hierarchical work packages can lead to irreversible data loss. To prevent this, OpenProject 15.3 introduces a danger dialog that requires user consent before proceeding with deletion.
+
+If a user attempts to delete a hierarchy item, a confirmation dialog appears, styled according to the Primer design system. Users must explicitly confirm their intent before deletion can proceed, ensuring greater safety for critical data.
+
+This confirmation dialog is also now available in the Meetings module for deleting meetings. Over the next releases, OpenProject will expand this feature to additional critical areas, such as project deletions, ensuring safer data management.
+
+### Show user popover everywhere and also when hovering on the name
+
+User popovers now appear when hovering over both names and avatars, ensuring a more consistent experience across OpenProject. This improvement enhances usability and makes user details more accessible in different areas of the application.
+
+Additionally, OpenProject 15.3 improves how popovers are displayed within modals, including the work package share dialog, global search, and global invitation modal.
+
+### Enable autocomplete for user custom field filter values on the project list
+
+Filtering user custom fields is now faster with autocompleters in the project list. Users can quickly search and select values from a dropdown, improving usability and performance.
 
 ## Important updates and breaking changes
+
+### Centos 8 package support removed
+
+Centos 8 is EOL for quite some time, packages will no longer be built for it starting in OpenProject 15.3.0
 
 <!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
 
@@ -134,12 +218,15 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to Luka Bradesko, Andrej Sandorf, Max Mutzge, Lars Geiger, Rudi B., Alexander Aleschenko, Alex Fantini, Peter Wafzig.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+A very special thank you goes to City of Cologne for sponsoring parts of this release. Your support, alongside the efforts of our amazing Community, helps drive these innovations.
 
+Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Luka Bradesko, Max Mutzge, Lars Geiger, Rudi B., Alexander Aleschenko, Alex Fantini, Peter Wafzig.
+
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
+- [greench](https://crowdin.com/profile/greench), for an outstanding number of translations into Turkish.
+- [Kuma Yamashita](https://crowdin.com/profile/dredgk), for a great number of translations into Japanese.
+- [Willers-ICT](https://crowdin.com/profile/willers-ict), for a great number of translations into Dutch.
+- [Vlastislav Dockal](https://crowdin.com/profile/vdockal), for a great number of translations into Czech.
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

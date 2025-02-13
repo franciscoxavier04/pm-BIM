@@ -230,9 +230,9 @@ fr:
             title: Cet élément n'a pas de niveau hiérarchique inférieur
             description: Ajoutez des éléments à cette liste pour créer des sous-éléments dans une autre liste
         delete_dialog:
-          title: "Delete custom field item"
-          heading: "Delete custom field item?"
-          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
+          title: "Supprimer l'élément de champ personnalisé"
+          heading: "Supprimer l'élément de champ personnalisé ?"
+          description: "Cette action supprimera de manière irréversible l'élément et tous ses sous-éléments. Toutes les valeurs attribuées seront définitivement supprimées. Si ce champ est obligatoire, la suppression d'éléments peut entraîner l'invalidité des lots de travaux existants."
         placeholder:
           label: "Étiquette de l'élément"
           short: "Nom abrégé"
@@ -253,7 +253,7 @@ fr:
     confirm_destroy_option: "Supprimer une option supprimera toutes ses occurrences (ex. dans les plans de travail). Êtes-vous sûr de vouloir le supprimer ?"
     reorder_alphabetical: "Réorganiser les valeurs par ordre alphabétique"
     reorder_confirmation: "Attention : l'ordre actuel des valeurs disponibles sera perdu. Continuer ?"
-    placeholder_version_select: "Work package or project selection is required first"
+    placeholder_version_select: "La sélection d'un lot de travaux ou d'un projet est requise en premier lieu"
     instructions:
       is_required: "Marquer le champ personnalisé comme requis. Cela rendra obligatoire de remplir le champ lors de la création ou de la mise à jour des ressources existantes."
       is_required_for_project: "Cocher pour activer cet attribut et le rendre nécessaire dans tous les projets. Il ne peut pas être désactivé pour certains projets."
@@ -292,7 +292,7 @@ fr:
       label: "Étiquette"
       short: "Nom abrégé"
       parent: "Parent"
-      blueprint: "Pattern blueprint"
+      blueprint: "Modèle de plan"
   global_search:
     placeholder: "Rechercher dans %{app_title}"
     overwritten_tabs:
@@ -475,7 +475,7 @@ fr:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: Jeton généré
         header: Le jeton %{type} a été généré
         warning: Notez que c'est la seule fois que vous verrez ce jeton, assurez-vous de le copier maintenant.
       errors:
@@ -651,7 +651,7 @@ fr:
         title: "Flux de travail manquant pour le partage de lots de travaux"
         message: "Aucun flux de travail n'est configuré pour le rôle 'Éditeur de lots de travaux'. Sans flux de travail, le partage avec l'utilisateur ne permet pas de modifier l'état du lot de travaux. Les flux de travail peuvent être copiés. Sélectionnez un type de source (par exemple 'Tâche') et un rôle de source (par exemple 'Membre'). Sélectionnez ensuite les types cibles. Pour commencer, vous pouvez sélectionner tous les types comme cibles. Enfin, sélectionnez le rôle 'Éditeur de lot de travaux' comme cible et cliquez sur 'Copier'. Après avoir ainsi créé les valeurs par défaut, affinez les flux de travail comme vous le faites pour tous les autres rôles."
         link_message: "Configurez les flux de travail dans l'administration."
-    templated_subject_hint: Automatically generated through type %{type}
+    templated_subject_hint: Généré automatiquement par le type %{type}
     summary:
       reports:
         category:
@@ -736,8 +736,8 @@ fr:
       required_description: "Marque ce lot de travaux comme étant une exigence pour le lot de travaux correspondant"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
-      ghost_relation_description: "This is not visible to you due to permissions."
+      ghost_relation_title: "Lot de travaux associé"
+      ghost_relation_description: "Cela n'est pas visible pour vous en raison des autorisations."
   label_invitation: Invitation
   account:
     delete: "Supprimer le compte"
@@ -1225,6 +1225,10 @@ fr:
             from:
               error_not_found: "lot de travaux dans la position 'depuis' introuvable ou invisible"
               error_readonly: "impossible de modifier le lien d'une relation existante 'depuis'"
+            lag:
+              greater_than_or_equal_to:
+                zero: "ne peut pas être négatif."
+              less_than_or_equal_to: "est trop élevé."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
           not_whitelisted: "n'est pas autorisé par la configuration."
@@ -1581,7 +1585,7 @@ fr:
   button_create_and_continue: "Créer et continuer"
   button_decline: "Refuser"
   button_delete: "Supprimer"
-  button_delete_permanently: "Delete permanently"
+  button_delete_permanently: "Supprimer définitivement"
   button_delete_watcher: "Supprimer l'observateur %{name}"
   button_download: "Télécharger"
   button_duplicate: "Dupliquer"
@@ -1785,8 +1789,8 @@ fr:
         one: "heure"
         other: "heures"
       day:
-        one: "day"
-        other: "days"
+        one: "jour"
+        other: "jours"
   description_active: "Actif ?"
   description_attachment_toggle: "Afficher/Masquer les pièces jointes"
   description_autocomplete: >
@@ -2188,7 +2192,7 @@ fr:
   label_add_subtask: "Ajouter une sous-tâche"
   label_added: "ajouté"
   label_added_by: "Ajouté par %{author} "
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "Ajouté par %{author} le %{date}"
   label_added_time_by: "Ajouté par %{author} il y a %{age}"
   label_additional_workflow_transitions_for_assignee: "Transitions supplémentaires autorisées lorsque l'utilisateur est l'assigné"
   label_additional_workflow_transitions_for_author: "Transitions supplémentaires autorisées lorsque l'utilisateur est l'auteur"
@@ -2636,7 +2640,7 @@ fr:
   label_relation: "Relation"
   label_relation_actions: "Actions de relation"
   label_relation_delete: "Supprimer la relation"
-  label_relation_edit: "Edit relation"
+  label_relation_edit: "Éditer la relation"
   label_relation_new: "Nouvelle relation"
   label_release_notes: "Notes de version"
   label_remaining_work: "Travail restant"
@@ -3102,7 +3106,7 @@ fr:
     text_getting_started_description: "Obtenez un aperçu rapide de la gestion de projet et de la collaboration en équipe avec OpenProject. Vous pouvez redémarrer cette vidéo à partir du menu d'aide."
     welcome: "Bienvenue sur %{app_title}"
     select_language: "Veuillez sélectionner votre langue"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_notes: "Ajouter des commentaires"
   permission_add_work_packages: "Ajouter des lots de travaux"
   permission_add_messages: "Poster des messages"
   permission_add_project: "Créer des projets"
@@ -3132,11 +3136,11 @@ fr:
   permission_delete_timelines: "Supprimer lignes du temps"
   permission_delete_wiki_pages: "Supprimer des pages wiki"
   permission_delete_wiki_pages_attachments: "Supprimer des pièces jointes"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_notes: "Modérer les commentaires"
+  permission_edit_work_package_notes_explanation: "Attention : les utilisateurs disposant de cette autorisation peuvent modifier les commentaires de n'importe qui."
   permission_edit_work_packages: "Éditer des lots de travaux"
   permission_edit_messages: "Éditer des messages"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_work_package_notes: "Modifier ses propres commentaires"
   permission_edit_own_messages: "Éditer ses propres messages"
   permission_edit_own_time_entries: "Éditer mes propres enregistrements de temps"
   permission_edit_project: "Éditer le projet"
@@ -3725,7 +3729,7 @@ fr:
   text_notice_security_badge_displayed_html: >
     Remarque : si cette option est activée, un badge indiquant l'état de votre installation s'affichera dans le panneau <a href="%{information_panel_path}">%{information_panel_label}</a> administration et sur la page d'accueil. Il n'est affiché que pour les administrateurs. <br/>Le badge vérifiera votre version actuelle d'OpenProject par rapport à la base de données officielle d'OpenProject pour vous avertir de toute mise à jour ou vulnérabilité connue. Pour plus d'informations sur ce que la vérification fournit, quelles données sont nécessaires pour fournir les mises à jour disponibles, et comment désactiver cette vérification, veuillez visiter <a href="%{more_info_url}">la documentation de configuration</a>.
   text_own_membership_delete_confirmation: "Vous êtes sur le point de retirer tout ou partie de vos permissions et ne pourrez peut-être plus modifier le projet par la suite.\nÊtes vous sûr de vouloir continuer?"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "Je comprends que cette suppression ne peut pas être annulée"
   text_plugin_assets_writable: "Répertoire des « plugin assets » est accessible en écriture"
   text_powered_by: "Propulsé par %{link}"
   text_project_identifier_info: "Seulement les lettres en minuscule (a-z), les nombres, les tirets et les underscores sont autorisés, il est obligatoire de commencer avec une lettre en minuscule."

@@ -166,6 +166,46 @@ RSpec.describe "Recurring meetings show",
     end
   end
 
+  describe "upcoming meeting that is already closed" do
+    shared_let(:recurring_meeting) do
+      create :recurring_meeting,
+             project:,
+             author: user,
+             start_time: Time.zone.today + 10.hours,
+             end_after: "iterations",
+             iterations: 1,
+             frequency: "daily"
+    end
+
+    let!(:ongoing_meeting) do
+      create(:structured_meeting, recurring_meeting:, start_time: Time.zone.today + 10.hours, state: :open)
+    end
+    let!(:ongoing_schedule) do
+      create :scheduled_meeting,
+             meeting: ongoing_meeting,
+             recurring_meeting:,
+             start_time: Time.zone.today + 10.hours
+    end
+
+    it "does not show the meeting ended blankslate" do
+      travel_to(Time.zone.today + 9.hours) do
+        get recurring_meeting_path(recurring_meeting)
+      end
+
+      expect(page).to have_text format_time(ongoing_meeting.start_time)
+      expect(page).to have_text "No more planned meetings"
+      expect(page).to have_no_text "Meeting series ended"
+
+      travel_to(Time.zone.today + 10.hours + 5.minutes) do
+        get recurring_meeting_path(recurring_meeting)
+      end
+
+      expect(page).to have_text format_time(ongoing_meeting.start_time)
+      expect(page).to have_text "No more planned meetings"
+      expect(page).to have_no_text "Meeting series ended"
+    end
+  end
+
   describe "upcoming quick filter" do
     context "with a rescheduled meeting" do
       let!(:rescheduled_instance) do
@@ -187,6 +227,57 @@ RSpec.describe "Recurring meetings show",
         new_date = format_time(rescheduled_instance.start_time)
         expect(page).to have_css("li s", text: old_date)
         expect(page).to have_text("#{old_date}\n#{new_date}")
+      end
+    end
+
+    context "with an edited meeting series" do
+      let(:recurring_meeting) do
+        create :recurring_meeting,
+               project:,
+               author: user,
+               start_time: Time.zone.today + 2.days + 10.hours,
+               frequency: "daily",
+               end_after: "iterations",
+               iterations: 2
+      end
+      let!(:first_instance) do
+        create :structured_meeting,
+               recurring_meeting:,
+               start_time: Time.zone.today + 2.days + 10.hours,
+               state: :open
+      end
+      let!(:first) do
+        create :scheduled_meeting,
+               meeting: first_instance,
+               recurring_meeting:,
+               start_time: Time.zone.today + 2.days + 10.hours
+      end
+      let!(:second_instance) do
+        create :structured_meeting,
+               recurring_meeting:,
+               start_time: Time.zone.today + 3.days + 10.hours,
+               state: :open
+      end
+      let!(:second) do
+        create :scheduled_meeting,
+               meeting: second_instance,
+               recurring_meeting:,
+               start_time: Time.zone.today + 3.days + 10.hours
+      end
+
+      before do
+        recurring_meeting.update(iterations: 1)
+      end
+
+      it "shows all open meetings in 'Open', even if they no longer match the schedule (Regression #61301)" do
+        get recurring_meeting_path(recurring_meeting)
+
+        first_date = format_time(first.start_time)
+        second_date = format_time(second.start_time)
+
+        open = page.find("[data-test-selector='agenda-opened-table']")
+        expect(open).to have_text first_date
+        expect(open).to have_text second_date
       end
     end
 
@@ -216,6 +307,40 @@ RSpec.describe "Recurring meetings show",
         (1..5).each do |date|
           expect(page).to have_text format_time(Time.zone.today + date.days + 10.hours)
         end
+      end
+    end
+  end
+
+  context "with an ongoing meeting" do
+    let(:recurring_meeting) do
+      create :recurring_meeting,
+             project:,
+             author: user,
+             start_time: Time.zone.today + 10.hours,
+             frequency: "daily",
+             end_after: "iterations",
+             iterations: 5
+    end
+    let!(:ongoing_instance) do
+      create :structured_meeting,
+             recurring_meeting:,
+             start_time: Time.zone.today + 10.hours - 10.minutes
+    end
+    let!(:ongoing) do
+      create :scheduled_meeting,
+             recurring_meeting:,
+             meeting: ongoing_instance,
+             start_time: Time.zone.today + 10.hours - 10.minutes
+    end
+
+    it "shows the correct number of next occurrences (Regression #61194)" do
+      # While today's meeting is ongoing, but no longer in remaining_occurrences
+      Timecop.freeze(Time.zone.today + 10.hours + 1.minute) do
+        get recurring_meeting_path(recurring_meeting)
+      end
+
+      (1..4).each do |date|
+        expect(page).to have_text format_time(Time.zone.today + date.days + 10.hours)
       end
     end
   end
