@@ -65,7 +65,7 @@ RSpec.describe Meetings::DeleteDialogComponent, type: :component do
     end
   end
 
-  describe "with a one-off meeting" do
+  describe "with a one-time meeting" do
     let(:meeting) { build_stubbed(:meeting, project:) }
 
     it "shows a heading" do

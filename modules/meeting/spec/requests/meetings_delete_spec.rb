@@ -46,7 +46,7 @@ RSpec.describe "DELETE /meetings/:id",
   shared_let(:meeting) do
     create :meeting,
            project:,
-           title: "My one-off meeting",
+           title: "My one-time meeting",
            author: user,
            start_time: Time.zone.today - 10.days + 10.hours
   end
@@ -73,7 +73,7 @@ RSpec.describe "DELETE /meetings/:id",
       expect(ActionMailer::Base.deliveries.size).to eq(1)
       mail = ActionMailer::Base.deliveries.first
       expect(mail.body.parts.first.parts.first.body.to_s)
-        .to include "'My one-off meeting' has been cancelled by #{user.name}"
+        .to include "'My one-time meeting' has been cancelled by #{user.name}"
     end
   end
 
