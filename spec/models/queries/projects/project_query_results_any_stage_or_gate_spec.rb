@@ -35,15 +35,15 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
   shared_let(:view_role) { create(:project_role, permissions: %i[view_project_stages_and_gates]) }
 
-  shared_let(:stage_start_date) { Time.zone.today - 5.days }
-  shared_let(:stage_end_date) { Time.zone.today + 5.days }
+  shared_let(:stage_start_date) { Date.parse("2025-02-07") }
+  shared_let(:stage_end_date) { Date.parse("2025-02-17") }
   shared_let(:project_with_stage) do
     create(:project, name: "Project with stage") do |project|
       create(:project_stage, project:, start_date: stage_start_date, end_date: stage_end_date)
     end
   end
 
-  shared_let(:gate_date) { Time.zone.today + 10.days }
+  shared_let(:gate_date) { Date.parse("2025-02-22") }
   shared_let(:project_with_gate) do
     create(:project, name: "Project with gate") do |project|
       create(:project_gate, project:, date: gate_date)
@@ -58,6 +58,14 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
   end
 
   current_user { user }
+
+  def remove_gate
+    Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+  end
+
+  def remove_stage
+    Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+  end
 
   context "with a =d (on) operator" do
     before do
@@ -130,6 +138,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
   end
 
   # TODO: check active state
+  # TODO: check permissions
 
   context "with a t (today) operator" do
     before do
@@ -199,6 +208,104 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     end
   end
 
+  context "with a w (this week) operator" do
+    before do
+      instance.where("any_stage_or_gate", "w", [])
+    end
+
+    context "when being in the middle of the stage" do
+      it "returns the project whose stage is currently running" do
+        Timecop.travel((stage_start_date + 3.days).noon) do
+          expect(instance.results).to contain_exactly(project_with_stage)
+        end
+      end
+    end
+
+    context "when the current week overlaps the beginning of the stage" do
+      it "returns the project whose stage begins within the week" do
+        Timecop.travel((stage_start_date - 1.day).noon) do
+          expect(instance.results).to contain_exactly(project_with_stage)
+        end
+      end
+    end
+
+    context "when the current week overlaps the end of the stage" do
+      # Would otherwise interfere with the spec
+      before do
+        remove_gate
+      end
+
+      it "returns the project whose stage begins within the week" do
+        Timecop.travel(stage_end_date.noon) do
+          expect(instance.results).to contain_exactly(project_with_stage)
+        end
+      end
+    end
+
+    context "when being before the stage" do
+      it "returns no project" do
+        Timecop.travel(stage_start_date.noon - 7.days) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being after the stage" do
+      it "returns no project" do
+        Timecop.travel(stage_end_date.noon + 7.days) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being a day before the gate" do
+      # Would otherwise interfere with the spec
+      before do
+        remove_stage
+      end
+
+      it "returns the project whose gate is within the current week" do
+        Timecop.travel(gate_date.noon - 1.day) do
+          expect(instance.results).to contain_exactly(project_with_gate)
+        end
+      end
+    end
+
+    context "when being a day after the gate" do
+      # Would otherwise interfere with the spec
+      before do
+        remove_stage
+      end
+
+      it "returns the project whose gate is within the current week" do
+        Timecop.travel(gate_date.noon + 1.day) do
+          expect(instance.results).to contain_exactly(project_with_gate)
+        end
+      end
+    end
+
+    context "when being in the week before the day of the gate" do
+      # Would otherwise interfere with the spec
+      before do
+        remove_stage
+      end
+
+      it "returns no project" do
+        Timecop.travel(gate_date.noon - 7.days) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being in the week after the day of the gate" do
+      it "returns no project" do
+        Timecop.travel(gate_date.noon + 7.days) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+  end
+
   context "with a <>d (between) operator" do
     before do
       instance.where("any_stage_or_gate", "<>d", values)
@@ -249,7 +356,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
       # Interferes at it would otherwise be found as well
       before do
-        Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+        remove_gate
       end
 
       it "returns the project with the stage" do
@@ -262,7 +369,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
       # Interferes at it would otherwise be found as well
       before do
-        Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+        remove_gate
       end
 
       it "returns the project with the stage" do
@@ -275,7 +382,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
       # Interferes at it would otherwise be found as well
       before do
-        Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+        remove_gate
       end
 
       it "returns no project" do
@@ -320,7 +427,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
       # Interferes at it would otherwise be found as well
       before do
-        Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+        remove_stage
       end
 
       it "returns the project with the gate" do
@@ -333,7 +440,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
       # Interferes at it would otherwise be found as well
       before do
-        Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+        remove_stage
       end
 
       it "returns the project with the gate" do
@@ -346,7 +453,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
       # Interferes at it would otherwise be found as well
       before do
-        Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+        remove_stage
       end
 
       it "returns no project" do

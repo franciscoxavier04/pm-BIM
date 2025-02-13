@@ -42,14 +42,14 @@ module Queries::Operators
     def self.begin_of_week
       if I18n.t(:general_first_day_of_week) == "7"
         # week starts on sunday
-        if Date.today.cwday == 7
-          Time.now.at_beginning_of_day
+        if Time.zone.today.cwday == 7
+          Time.current.at_beginning_of_day
         else
-          Time.now.at_beginning_of_week - 1.day
+          Time.current.at_beginning_of_week - 1.day
         end
       else
         # week starts on monday (Rails default)
-        Time.now.at_beginning_of_week
+        Time.current.at_beginning_of_week
       end
     end
   end
