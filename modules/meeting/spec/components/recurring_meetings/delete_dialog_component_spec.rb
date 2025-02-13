@@ -39,7 +39,7 @@ RSpec.describe RecurringMeetings::DeleteDialogComponent, type: :component do
   let(:user) { build_stubbed(:user) }
 
   subject do
-    render_inline(described_class.new(recurring_meeting:, project:))
+    render_inline(described_class.new(recurring_meeting:))
     page
   end
 
@@ -48,14 +48,6 @@ RSpec.describe RecurringMeetings::DeleteDialogComponent, type: :component do
   end
 
   describe "dialog form" do
-    context "without a current project" do
-      let(:project) { nil }
-
-      it "renders the correct form action" do
-        expect(subject).to have_element "form", action: recurring_meeting_path(recurring_meeting)
-      end
-    end
-
     context "with a current project" do
       let(:project) { build_stubbed(:project) }
 

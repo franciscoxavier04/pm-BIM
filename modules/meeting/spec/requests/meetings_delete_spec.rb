@@ -46,13 +46,13 @@ RSpec.describe "DELETE /meetings/:id",
   shared_let(:meeting) do
     create :meeting,
            project:,
-           title: "My one-off meeting",
+           title: "My one-time meeting",
            author: user,
            start_time: Time.zone.today - 10.days + 10.hours
   end
 
   let(:current_user) { user }
-  let(:request) { delete meeting_path(meeting) }
+  let(:request) { delete project_meeting_path(project, meeting) }
 
   subject do
     request
@@ -73,17 +73,12 @@ RSpec.describe "DELETE /meetings/:id",
       expect(ActionMailer::Base.deliveries.size).to eq(1)
       mail = ActionMailer::Base.deliveries.first
       expect(mail.body.parts.first.parts.first.body.to_s)
-        .to include "'My one-off meeting' has been cancelled by #{user.name}"
+        .to include "'My one-time meeting' has been cancelled by #{user.name}"
     end
   end
 
   context "when user has no permissions to access" do
     let(:current_user) { create(:user) }
-
-    it "does not delete the meeting" do
-      delete meeting_path(meeting)
-      expect(response).to have_http_status(:forbidden)
-    end
 
     it "does not delete project meeting" do
       delete project_meeting_path(project, meeting)

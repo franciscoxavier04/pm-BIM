@@ -31,7 +31,7 @@ require "spec_helper"
 RSpec.describe "Meetings locking", :js do
   let(:project) { create(:project, enabled_module_names: %w[meetings]) }
   let(:user) { create(:admin) }
-  let!(:meeting) { create(:meeting) }
+  let!(:meeting) { create(:meeting, project:) }
   let!(:agenda) { create(:meeting_agenda, meeting:) }
   let(:agenda_field) do
     TextEditorField.new(page,

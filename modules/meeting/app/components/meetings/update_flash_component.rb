@@ -31,6 +31,7 @@ module Meetings
     include OpTurbo::Streamable
 
     alias_method :meeting, :model
+    delegate :project, to: :meeting
 
     def call
       render(
@@ -42,7 +43,7 @@ module Meetings
       ) do |banner|
         banner.with_action_button(
           tag: :a,
-          href: helpers.meeting_path(meeting),
+          href: helpers.project_meeting_path(project, meeting),
           size: :medium,
           data: {
             keep_scroll_position_target: "triggerButton"
