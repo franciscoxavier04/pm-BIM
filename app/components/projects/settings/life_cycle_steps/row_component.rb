@@ -53,12 +53,32 @@ module Projects
           )
         end
 
-        def duration = nil
+        def duration
+          case model
+          when Project::Stage
+            model.working_days_count
+          end
+        end
 
-        def dates = nil
+        def dates
+          case model
+          when Project::Gate
+            helpers.format_date(model.date)
+          when Project::Stage
+            format_date_range(model.start_date..model.end_date)
+          end
+        end
 
         def toggle_aria_label
           I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
+        end
+
+        private
+
+        def format_date_range(date_range)
+          return unless date_range.begin || date_range.end
+
+          "#{helpers.format_date(date_range.begin) || '…'} - #{helpers.format_date(date_range.end) || '…'}"
         end
       end
     end
