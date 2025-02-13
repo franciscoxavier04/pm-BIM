@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,32 +26,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module MeetingAgendaItems::Outcomes
-  class NewButtonComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+module MeetingOutcomes
+  class BaseContract < ::ModelContract
+    include ModifiableItem
 
-    def initialize(meeting:, meeting_agenda_item: nil, disabled: false)
-      super
-      # binding.pry
-      @meeting = meeting
-      @meeting_agenda_item = meeting_agenda_item
-      @disabled = @meeting.closed? || disabled
+    def self.model
+      MeetingOutcome
     end
 
-    private
+    attribute :work_package
+    attribute :meeting_agenda_item
 
-    def wrapper_uniq_by
-      @meeting_agenda_item&.id
-    end
-
-    def render?
-      true
-    end
-
-    def button_scheme
-      :secondary
-    end
+    attribute :notes
+    attribute :kind
   end
 end

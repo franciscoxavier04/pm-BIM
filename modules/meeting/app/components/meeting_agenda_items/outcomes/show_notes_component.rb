@@ -28,32 +28,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module MeetingAgendaItems::Outcomes
-  class NewButtonComponent < ApplicationComponent
+module MeetingAgendaItems
+  class Outcomes::ShowNotesComponent < ApplicationComponent
     include ApplicationHelper
-    include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_agenda_item: nil, disabled: false)
+    def initialize(meeting_outcome:)
       super
-      # binding.pry
-      @meeting = meeting
-      @meeting_agenda_item = meeting_agenda_item
-      @disabled = @meeting.closed? || disabled
+
+      @meeting_outcome = meeting_outcome
     end
 
-    private
+    def call
+      render(Primer::Box.new(m: 3)) do
+        component_collection do |collection|
+          collection.with_component(Primer::Beta::Heading.new(tag: :h5)) do
+            "Outcome"
+          end
 
-    def wrapper_uniq_by
-      @meeting_agenda_item&.id
-    end
-
-    def render?
-      true
-    end
-
-    def button_scheme
-      :secondary
+          collection.with_component(Primer::Box.new(classes: "op-uc-container", mt: 1)) do
+            format_text(@meeting_outcome, :notes)
+          end
+        end
+      end
     end
   end
 end

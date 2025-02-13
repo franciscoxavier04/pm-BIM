@@ -1,9 +1,9 @@
 @import 'helpers'
 
-.op-meeting-agenda-item-form
+.op-meeting-outcome-form
   display: grid
   grid-template-columns: minmax(0, 100%) 100px minmax(200px, 1fr)
-  grid-template-areas: "title duration presenter" "notes notes notes" "add_note actions actions"
+  grid-template-areas: "title . ." "notes notes notes" ". actions actions"
   grid-gap: 8px
   // Do not remove easily!
   // The hidden labels of the form inputs are positioned absolutely,
@@ -12,14 +12,6 @@
 
   &--actions
     justify-self: end
-
-  // Render an icon in front of the placeholder
-  &--presenter
-    .ng-placeholder
-      @extend .icon-user
-      &:before
-        @include icon-font-common
-        margin-right: 10px
 
   @media screen and (max-width: $breakpoint-md)
     grid-template-columns: 100px minmax(0, 100%)

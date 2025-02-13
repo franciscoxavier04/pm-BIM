@@ -118,6 +118,17 @@ Rails.application.routes.draw do
         put :move
       end
     end
+    resources :outcomes, controller: "meeting_outcomes" do
+      collection do
+        get :new, action: :new, as: :new
+        get :cancel_new
+      end
+      member do
+        # get :cancel_edit
+        # put :drop
+        # put :move
+      end
+    end
 
     resource :agenda, controller: "meeting_agendas", only: [:update] do
       member do

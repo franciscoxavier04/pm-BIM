@@ -37,7 +37,7 @@ class MeetingAgendaItem::Notes < ApplicationForm
       disabled: @disabled,
       classes: "ck-editor-primer-adjusted",
       rich_text_options: {
-        resource:,
+        # resource:,
         showAttachments: false
       }
     )

@@ -90,7 +90,7 @@
       grid.with_area(:outcomes, tag: :div) do
         flex_layout do |flex|
           flex.with_row do
-            render(MeetingAgendaItems::Outcomes::NewButtonComponent.new(meeting: @meeting))
+            render(MeetingAgendaItems::Outcomes::BaseComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item))
           end
         end
       end

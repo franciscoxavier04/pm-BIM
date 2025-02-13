@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -171,6 +172,49 @@ module Meetings
             type:
           )
         end
+      end
+
+      def render_outcome_form_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item)
+        # binding.pry
+        render_base_outcome_component_via_turbo_stream(meeting:, meeting_agenda_item:, hide_notes: false, meeting_outcome: nil,
+                                                       state: :edit)
+
+        # update_new_outcome_button_via_turbo_stream(disabled: true)
+      end
+
+      def render_base_outcome_component_via_turbo_stream(meeting_outcome:, state:, hide_notes:, meeting: @meeting,
+                                                         meeting_agenda_item: @meeting_agenda_item)
+        # binding.pry
+        update_via_turbo_stream(
+          component: MeetingAgendaItems::Outcomes::BaseComponent.new(
+            hide_notes:,
+            meeting:,
+            meeting_agenda_item:,
+            meeting_outcome:,
+            state:
+          )
+        )
+      end
+
+      # def update_new_outcome_component_via_turbo_stream(hidden: false, meeting_agenda_item: @meeting_agenda_item, meeting: @meeting)
+      #   update_via_turbo_stream(
+      #     component: MeetingAgendaItems::Outcomes::BaseComponent.new(
+      #       hide_notes:
+      #       meeting:,
+      #       meeting_agenda_item:
+      #     )
+      #   )
+      # end
+
+      def update_new_outcome_button_via_turbo_stream(disabled: false, meeting: @meeting,
+                                                     meeting_agenda_item: @meeting_agenda_item)
+        update_via_turbo_stream(
+          component: MeetingAgendaItems::Outcomes::NewButtonComponent.new(
+            disabled:,
+            meeting:,
+            meeting_agenda_item:
+          )
+        )
       end
 
       def update_list_via_turbo_stream(meeting: @meeting, form_hidden: true, form_type: :simple)

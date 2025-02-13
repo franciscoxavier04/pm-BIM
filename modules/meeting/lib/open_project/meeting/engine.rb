@@ -112,7 +112,10 @@ module OpenProject::Meeting
                    permissible_on: :project,
                    require: :member
         permission :create_meeting_minutes,
-                   { meeting_minutes: %i[update preview] },
+                   {
+                     meeting_minutes: %i[update preview],
+                     meeting_outcomes: %i[new cancel_new create edit cancel_edit update destroy drop move] #TODO
+                   },
                    permissible_on: :project,
                    require: :member
         permission :send_meeting_minutes_notification,

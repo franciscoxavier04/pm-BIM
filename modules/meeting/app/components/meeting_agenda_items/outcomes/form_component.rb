@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,31 +27,64 @@
 #++
 
 module MeetingAgendaItems::Outcomes
-  class NewButtonComponent < ApplicationComponent
+  class FormComponent < ApplicationComponent
     include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_agenda_item: nil, disabled: false)
+    def initialize(meeting:, meeting_agenda_item:, meeting_outcome:, method:, submit_path:, cancel_path:,
+                   display_notes_input: nil)
       super
       # binding.pry
       @meeting = meeting
       @meeting_agenda_item = meeting_agenda_item
-      @disabled = @meeting.closed? || disabled
+      @meeting_outcome = meeting_outcome
+      @method = method
+      @submit_path = submit_path
+      @cancel_path = cancel_path
+      @display_notes_input = display_notes_input
+    end
+
+    def wrapper_uniq_by
+      @meeting_outcome.id
+    end
+
+    def render?
+      # User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+      true
     end
 
     private
 
-    def wrapper_uniq_by
-      @meeting_agenda_item&.id
+    def wrapper_data_attributes
+      # {
+      #   controller: "meeting-agenda-item-form",
+      #   "application-target": "dynamic",
+      #   "meeting-agenda-item-form-cancel-url-value": @cancel_path
+      # }
+      nil
     end
 
-    def render?
-      true
+    def display_notes_input_value
+      :block
+      # if @display_notes_input
+      #   :block
+      # elsif @meeting_agenda_item.notes.blank?
+      #   :none
+      # else
+      #   :block
+      # end
     end
 
-    def button_scheme
-      :secondary
+    def display_notes_add_button_value
+      :block
+      # if @display_notes_input
+      #   :none
+      # elsif @meeting_agenda_item.notes.blank?
+      #   :block
+      # else
+      #   :none
+      # end
     end
   end
 end
