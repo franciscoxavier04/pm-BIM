@@ -1065,8 +1065,8 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
       TABLE
       let(:attributes) { { parent: new_parent } }
 
-      it "sets work package and child start date to be soonest start, " \
-         "and parent's start and due dates to be work package start date" do
+      it "sets child start date to be soonest start, " \
+         "and parent and work package start and due dates to be child start date" do
         expect(subject).to be_success
         expect(work_package.reload.parent).to eq new_parent
         expect(subject.all_results.map(&:subject)).to contain_exactly("child", "work_package", "new_parent")
@@ -1075,7 +1075,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
           subject                | MTWTFSS | scheduling mode
           new_parent_predecessor | XX      | manual
           new_parent             |   X     | automatic
-          work_package           |   [     | automatic
+          work_package           |   X     | automatic
           child                  |   [     | automatic
         TABLE
       end
@@ -1152,6 +1152,90 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
           | work_package      | XXXXX..X | automatic
           | child1            | X        | manual
           | child2            |     X..X | automatic
+        TABLE
+      end
+    end
+
+    context "when the work package has two children with dates" do
+      let_work_packages(<<~TABLE)
+        | hierarchy    | MTWTFSS | scheduling mode
+        | work_package | XXX     | manual
+        |   child1     |  X      | manual
+        |   child2     |         | manual
+        |   child3     |    XX   | manual
+      TABLE
+
+      it "sets the parent start and due dates to the children earliest and latest dates" do
+        expect(subject).to be_success
+        expect(subject.all_results).to contain_exactly(work_package)
+
+        expect_work_packages_after_reload([work_package, child1, child2, child3], <<~TABLE)
+          | subject      | MTWTFSS | scheduling mode
+          | work_package |  XXXX   | automatic
+          | child1       |  X      | manual
+          | child2       |         | manual
+          | child3       |    XX   | manual
+        TABLE
+      end
+    end
+
+    context "when the work package has two children with start dates only (no due dates)" do
+      let_work_packages(<<~TABLE)
+        | hierarchy    | MTWTFSS | scheduling mode
+        | work_package | XXX     | manual
+        |   child1     |  [      | manual
+        |   child2     |    [    | manual
+      TABLE
+
+      it "sets the parent start and due dates to the children earliest and latest start dates" do
+        expect(subject).to be_success
+        expect(subject.all_results).to contain_exactly(work_package)
+
+        expect_work_packages_after_reload([work_package, child1, child2], <<~TABLE)
+          | subject      | MTWTFSS | scheduling mode
+          | work_package |  XXX    | automatic
+          | child1       |  [      | manual
+          | child2       |    [    | manual
+        TABLE
+      end
+    end
+
+    context "when the work package has two children with due dates only (no start dates)" do
+      let_work_packages(<<~TABLE)
+        | hierarchy    | MTWTFSS | scheduling mode
+        | work_package | XXX     | manual
+        |   child1     |  ]      | manual
+        |   child2     |     ]   | manual
+      TABLE
+
+      it "sets the parent start and due dates to the children earliest and latest due dates" do
+        expect(subject).to be_success
+        expect(subject.all_results).to contain_exactly(work_package)
+
+        expect_work_packages_after_reload([work_package, child1, child2], <<~TABLE)
+          | subject      | MTWTFSS | scheduling mode
+          | work_package |  XXXX   | automatic
+          | child1       |  ]      | manual
+          | child2       |     ]   | manual
+        TABLE
+      end
+    end
+
+    context "when the work package has one child without dates" do
+      let_work_packages(<<~TABLE)
+        | hierarchy    | MTWTFSS | scheduling mode
+        | work_package | XXX     | manual
+        |   child      |         | manual
+      TABLE
+
+      it "clears the parent dates" do
+        expect(subject).to be_success
+        expect(subject.all_results).to contain_exactly(work_package)
+
+        expect_work_packages_after_reload([work_package, child], <<~TABLE)
+          | subject      | MTWTFSS | scheduling mode
+          | work_package |         | automatic
+          | child        |         | manual
         TABLE
       end
     end
