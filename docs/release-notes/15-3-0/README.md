@@ -10,7 +10,9 @@ release_date: 2025-02-19
 
 Release date: 2025-02-19
 
-We released [OpenProject 15.3.0](https://community.openproject.org/versions/2163). This release includes several bug fixes, and we recommend updating to the latest version. While it is a minor release, it introduces over 40 new features, including a major update to the Meetings module. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.3.0](https://community.openproject.org/versions/2163). This release includes several bug fixes, and we recommend updating to the latest version. It introduces over 40 new features, including a major update to the Meetings module. 
+
+In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
@@ -99,11 +101,15 @@ Additionally, OpenProject 15.3 improves how popovers are displayed within modals
 
 Filtering user custom fields is now faster with autocompleters in the project list. Users can quickly search and select values from a dropdown, improving usability and performance.
 
-## Important updates and breaking changes
+## Important technical updates and breaking changes
 
 ### Centos 8 package support removed
 
-Centos 8 is EOL for quite some time, packages will no longer be built for it starting in OpenProject 15.3.0
+Centos 8 is EOL for quite some time and packages will no longer be built for it, starting with OpenProject 15.3.0.
+
+### Seeding of design variables allowed
+
+It is now possible to set up custom design variables and logos as environment variables. This is useful in automated deployments such as with Kubernetes. For more information, please see [our installations and operations guide](../../installation-and-operations/configuration/#seeding-custom-theme-and-design-enterprise-add-on).
 
 <!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
 
