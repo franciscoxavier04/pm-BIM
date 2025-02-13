@@ -51,6 +51,7 @@ RSpec.describe "OAuthClient callback endpoint" do
            client_id: "kETWr2XsjPxhVbN7Q5jmPq83xribuUTRzgfXthpYT0vSqyJWm4dOnivKzHiZasf0",
            client_secret: "J1sg4L5PYbM2RZL3pUyxTnamvfpcP5eUcCPmeCQHJO60Gy6CJIdDaF4yXOeC8BPS")
   end
+  let(:storage) { oauth_client.integration }
   let(:rack_oauth2_client) { instance_double(Rack::OAuth2::Client) }
   let(:connection_manager) { instance_double(OAuthClients::ConnectionManager) }
   let(:uri) { URI(File.join("oauth_clients", oauth_client.client_id, "callback")) }
@@ -103,12 +104,13 @@ RSpec.describe "OAuthClient callback endpoint" do
 
     context "with valid params" do
       context "without errors" do
-        before do
+        it "redirects to the URL that was referenced by the state param and held by a cookie", :webmock do
+          stub_request(:get, File.join(storage.host, "/ocs/v1.php/cloud/user"))
+            .to_return(status: 200, body: File.read("modules/storages/spec/support/payloads/nextcloud_user_query_success.xml"), headers: {})
+
           uri.query = URI.encode_www_form([["code", code], ["state", state]])
           get uri.to_s
-        end
 
-        it "redirects to the URL that was referenced by the state param and held by a cookie" do
           expect(rack_oauth2_client).to have_received(:authorization_code=).with(code)
           expect(response).to have_http_status :found
           expect(response.location).to eq redirect_uri

@@ -46,18 +46,16 @@ module Storages
 
         def extract_origin_user_id(oauth_client_token)
           auth_strategy = Registry
-                            .resolve("#{storage_name}.authentication.user_bound")
-                            .call(user: oauth_client_token.user)
+                            .resolve("#{@storage}.authentication.user_bound")
+                            .call(user: oauth_client_token.user, storage: @storage)
           Registry
-            .resolve("#{storage_name}.queries.user")
+            .resolve("#{@storage}.queries.user")
             .call(auth_strategy:, storage: @storage)
             .match(
               on_success: ->(user) { user[:id] },
               on_failure: ->(error) { raise "UserQuery responed with #{error}" }
             )
         end
-
-        def storage_name = raise ::Storages::Errors::SubclassResponsibility
       end
     end
   end

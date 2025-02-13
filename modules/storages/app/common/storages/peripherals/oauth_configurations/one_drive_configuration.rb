@@ -51,10 +51,6 @@ module Storages
 
         # rubocop:enable Lint/MissingSuper
 
-        def storage_name
-          "one_drive"
-        end
-
         def to_httpx_oauth_config
           StorageInteraction::AuthenticationStrategies::OAuthConfiguration.new(
             client_id: @oauth_client.client_id,

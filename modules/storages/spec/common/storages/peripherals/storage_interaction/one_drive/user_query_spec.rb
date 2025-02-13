@@ -37,7 +37,9 @@ RSpec.describe Storages::Peripherals::StorageInteraction::OneDrive::UserQuery, :
            oauth_client_token_user: user)
   end
   let(:user) { create(:user) }
-  let(:user_bound_strategy) { Storages::Peripherals::Registry.resolve("one_drive.authentication.user_bound").call(user:) }
+  let(:user_bound_strategy) do
+    Storages::Peripherals::Registry.resolve("one_drive.authentication.user_bound").call(user:, storage:)
+  end
   let(:auth_strategy) { user_bound_strategy }
 
   it "is registered" do

@@ -33,9 +33,6 @@ require_module_spec_helper
 
 RSpec.describe Storages::Peripherals::StorageInteraction::Nextcloud::UserQuery, :webmock do
   let(:user) { create(:user) }
-  # let(:storage) do
-  #   create(:nextcloud_storage_with_local_connection, :as_not_automatically_managed, oauth_client_token_user: user)
-  # end
   let(:storage) do
     create(:nextcloud_storage_with_local_connection,
            :as_automatically_managed,
@@ -43,9 +40,11 @@ RSpec.describe Storages::Peripherals::StorageInteraction::Nextcloud::UserQuery, 
            oauth_client_token_user: user)
   end
   let(:userless_strategy) { Storages::Peripherals::Registry.resolve("nextcloud.authentication.userless").call }
-  let(:user_bound_strategy) { Storages::Peripherals::Registry.resolve("nextcloud.authentication.user_bound").call(user:) }
+  let(:user_bound_strategy) do
+    Storages::Peripherals::Registry.resolve("nextcloud.authentication.user_bound").call(user:, storage:)
+  end
 
-  it "is registered as queries.group_users" do
+  it "is registered" do
     expect(Storages::Peripherals::Registry
              .resolve("#{storage}.queries.user")).to eq(described_class)
   end
