@@ -3,12 +3,18 @@
     flex_layout(mb: 3) do |flex|
       if @meeting.template?
         flex.with_row(mb: 3) do
-          render Primer::Alpha::Banner.new(scheme: :default,
-                                           icon: :info,
-                                           dismiss_scheme: :none) do
-            t("recurring_meeting.template.banner_html",
-              link: link_to(@meeting.recurring_meeting.title,
-                            project_recurring_meeting_path(@meeting.project, @meeting.recurring_meeting)))
+          render Primer::Alpha::Banner.new(
+            scheme: :default,
+            icon: :info,
+            dismiss_scheme: :none
+          ) do
+            t(
+              "recurring_meeting.template.banner_html",
+              link: link_to(
+                @meeting.recurring_meeting.title,
+                project_recurring_meeting_path(@meeting.project, @meeting.recurring_meeting)
+              )
+            )
           end
         end
       end

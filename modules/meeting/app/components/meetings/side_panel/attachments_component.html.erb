@@ -19,7 +19,7 @@
         t("js.label_add_attachments")
       end
 
-      resource = ::API::V3::Meetings::MeetingRepresenter.new(@meeting, current_user: User.current, embed_links: false)
+      resource = API::V3::Meetings::MeetingRepresenter.new(@meeting, current_user: User.current, embed_links: false)
       helpers.list_attachments(
         resource,
         inputs: {

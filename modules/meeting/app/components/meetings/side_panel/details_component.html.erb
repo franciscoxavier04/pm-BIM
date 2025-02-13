@@ -126,14 +126,16 @@
               end
 
               people.with_column(mr: 2) do
-                render(Primer::Beta::Button.new(
-                  scheme: :link,
-                  underline: false,
-                  tag: :a,
-                  href: participants_dialog_project_meeting_path(@project, @meeting),
-                  classes: "hide-when-print",
-                  data: { controller: 'async-dialog' }
-                )) do
+                render(
+                  Primer::Beta::Button.new(
+                    scheme: :link,
+                    underline: false,
+                    tag: :a,
+                    href: participants_dialog_project_meeting_path(@project, @meeting),
+                    classes: "hide-when-print",
+                    data: { controller: "async-dialog" }
+                  )
+                ) do
                   t("label_meeting_show_all_participants")
                 end
               end

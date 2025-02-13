@@ -3,7 +3,7 @@
     flex.with_row do
       render(Primer::Beta::Text.new(color: @meeting_agenda_item.notes.present? ? nil : :subtle)) do
         if @meeting_agenda_item.notes.present?
-          ::OpenProject::TextFormatting::Renderer.format_text(@meeting_agenda_item.notes)
+          OpenProject::TextFormatting::Renderer.format_text(@meeting_agenda_item.notes)
         else
           t("text_agenda_item_no_notes")
         end

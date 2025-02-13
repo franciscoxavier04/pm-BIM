@@ -40,7 +40,7 @@
           end
 
           menu.with_item(
-            label: t('meeting.label_mail_all_participants'),
+            label: t("meeting.label_mail_all_participants"),
             href: notify_project_recurring_meeting_path(@project, @meeting),
             form_arguments: { method: :post }
           ) do |item|

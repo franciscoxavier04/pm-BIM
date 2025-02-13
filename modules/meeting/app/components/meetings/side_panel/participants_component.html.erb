@@ -33,16 +33,18 @@
 
           if @meeting.editable?
             participants_container.with_row(mt: 3) do
-              render(Primer::Beta::Button.new(
-                scheme: :link,
-                color: :default,
-                underline: false,
-                font_weight: :bold,
-                tag: :a,
-                href: participants_dialog_project_meeting_path(@project, @meeting),
-                classes: "hide-when-print",
-                data: { controller: 'async-dialog' }
-              )) do |button|
+              render(
+                Primer::Beta::Button.new(
+                  scheme: :link,
+                  color: :default,
+                  underline: false,
+                  font_weight: :bold,
+                  tag: :a,
+                  href: participants_dialog_project_meeting_path(@project, @meeting),
+                  classes: "hide-when-print",
+                  data: { controller: "async-dialog" }
+                )
+              ) do |button|
                 button.with_leading_visual_icon(icon: "person-add")
                 t("label_meeting_add_participants")
               end
