@@ -79,7 +79,7 @@ RSpec.describe "Datepicker logic on parents", :js, with_settings: { date_format:
       end
 
       it "disables the non-working days options" do
-        datepicker.expect_ignore_non_working_days_disabled
+        datepicker.expect_working_days_only_disabled
         datepicker.expect_automatic_scheduling_mode
 
         first_monday = Time.zone.today.beginning_of_month.next_occurring(:monday)
@@ -100,7 +100,7 @@ RSpec.describe "Datepicker logic on parents", :js, with_settings: { date_format:
       end
 
       it "enables the non-working days options" do
-        datepicker.expect_ignore_non_working_days_enabled
+        datepicker.expect_working_days_only_enabled
         datepicker.expect_manual_scheduling_mode
 
         first_monday = Time.zone.today.beginning_of_month.next_occurring(:monday)
@@ -109,6 +109,9 @@ RSpec.describe "Datepicker logic on parents", :js, with_settings: { date_format:
         datepicker.toggle_scheduling_mode
         datepicker.expect_automatic_scheduling_mode
 
+        # In automatic mode, the dates are set by the children.
+        # Therefore, the calendar sheets also show the start_date of the child first
+        first_monday = Time.zone.parse(child_attributes[:start_date]).beginning_of_month.next_occurring(:monday)
         datepicker.expect_disabled(first_monday)
       end
     end

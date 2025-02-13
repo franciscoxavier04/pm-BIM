@@ -483,7 +483,25 @@ module WorkPackages
     end
 
     def validate_duration_integer
-      errors.add :duration, :not_an_integer if model.duration_before_type_cast != model.duration
+      unless valid_duration?(model.duration_before_type_cast, model.duration)
+        errors.delete(:duration) # delete :greater_than error, because it's not relevant anymore
+        errors.add :duration, :not_an_integer
+      end
+    end
+
+    def valid_duration?(value, duration)
+      # the values don't match (e.g because a float was passed)
+      return false if !value.is_a?(String) && value != duration
+
+      if value.is_a?(String)
+        return true if value == "" && duration.nil?
+
+        # A string is passed, put the transformed value does not match
+        return false if value.to_i.to_s != value.strip
+      end
+
+      # duration is valid
+      true
     end
 
     def validate_duration_matches_dates
@@ -503,11 +521,17 @@ module WorkPackages
     end
 
     def validate_duration_and_dates_are_not_derivable
+      return if dates_derivation_impossible?
+
       %i[start_date due_date duration].each do |field|
         if not_set_but_others_are_present?(field)
           errors.add field, :cannot_be_null
         end
       end
+    end
+
+    def dates_derivation_impossible?
+      model.errors[:duration].any?
     end
 
     def not_set_but_others_are_present?(field)
