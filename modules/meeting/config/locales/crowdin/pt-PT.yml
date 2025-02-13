@@ -182,8 +182,13 @@ pt-PT:
       series:
         title: "[%{project_name}] Série de reuniões %{title}"
         summary: "%{actor} criou uma nova série de reuniões %{title}"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} enviou-lhe um convite para a reunião %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelada: Reunião \"%{title}\""
         header_occurrence: "Cancelada: ocorrência de reunião \"%{title}\""
@@ -193,9 +198,9 @@ pt-PT:
         summary: "\"%{title}\" foi cancelada por %{actor}."
         date_time: "Data/hora programada"
       rescheduled:
-        header: "A reunião %{title} foi remarcada"
-        summary: "Reunião %{title} foi remarcada por %{actor}"
-        body: "A reunião %{title} foi remarcada por %{actor}"
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Data/hora antiga"
         new_date_time: "Nova data/hora"
     label_mail_all_participants: "Enviar e-mail a todos os participantes"

@@ -180,10 +180,15 @@ tr:
       open_meeting_link: "Açık toplantı"
       open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Meeting series %{title}"
-        summary: "%{actor} has set up a new meeting series %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} size toplantı için bir davetiye gönderdi %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelled: Meeting '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
@@ -193,9 +198,9 @@ tr:
         summary: "'%{title}' has been cancelled by %{actor}."
         date_time: "Scheduled date/time"
       rescheduled:
-        header: "%{title} toplantısı yeniden planlandı"
-        summary: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
-        body: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Eski tarih/saat"
         new_date_time: "Yeni tarih/saat"
     label_mail_all_participants: "Tüm katılımcılara e-posta gönderin"

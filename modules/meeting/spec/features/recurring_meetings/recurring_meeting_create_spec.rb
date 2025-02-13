@@ -134,7 +134,7 @@ RSpec.describe "Recurring meetings creation",
       perform_enqueued_jobs
       expect(ActionMailer::Base.deliveries.size).to eq 2
       title = ActionMailer::Base.deliveries.map(&:subject).uniq.first
-      expect(title).to eq "[#{project.name}] Meeting series Some title"
+      expect(title).to eq "[#{project.name}] Meeting series 'Some title'"
     end
   end
 

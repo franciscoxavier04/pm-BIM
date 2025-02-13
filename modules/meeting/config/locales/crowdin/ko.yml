@@ -180,8 +180,13 @@ ko:
       series:
         title: "[%{project_name}] 미팅 시리즈 %{title}"
         summary: "%{actor} 님이 새로운 미팅 시리즈 %{title}을(를) 설정했습니다"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} 님이 %{title} 미팅 초대장을 귀하에게 보냈습니다"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "취소됨: 미팅 '%{title}'"
         header_occurrence: "취소됨: 미팅 항목 '%{title}'"
@@ -191,9 +196,9 @@ ko:
         summary: "'%{title}'을(를) %{actor} 님이 취소했습니다."
         date_time: "스케줄링된 날짜/시간"
       rescheduled:
-        header: "%{title} 미팅이 다시 예약되었습니다"
-        summary: "%{actor} 님이 %{title} 미팅을 다시 예약했습니다"
-        body: "%{actor} 님이 %{title} 미팅을 다시 예약했습니다."
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "이전 날짜/시간"
         new_date_time: "새로운 날짜/시간"
     label_mail_all_participants: "모든 참가자에게 이메일 보내기"
