@@ -113,7 +113,7 @@ module PaginationHelper
   #  * page
   #  parameters.
   #  Prefers page over the other two and
-  #  calculates page in it's absence based on limit and offset.
+  #  calculates page in its absence based on limit and offset.
   #  Return 1 if all else fails.
   def page_param(options = params)
     page = if options[:page]
