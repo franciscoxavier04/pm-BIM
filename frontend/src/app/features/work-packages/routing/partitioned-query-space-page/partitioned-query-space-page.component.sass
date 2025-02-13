@@ -34,6 +34,8 @@
     display: flex
     overflow: auto
     @include styled-scroll-bar
+    :has(.generic-table--no-results-container)
+      padding: 0 1rem 0 1rem
 
   .work-packages-partitioned-page--content-left,
   .work-packages-partitioned-page--content-right
