@@ -51,7 +51,21 @@ RSpec.describe RecurringMeetings::RowComponent, type: :component do
     login_as(user)
   end
 
-  describe "actions" do
+  describe "download ics file" do
+    let(:meeting) { build_stubbed(:meeting, id: 1234, project:, recurring_meeting:) }
+    let(:scheduled_meeting) { build_stubbed(:scheduled_meeting, id: 999, meeting:, recurring_meeting:) }
+
+    it "links to the correct meeting (Regression #61462)" do
+      expect(subject).to have_link "Download iCalendar event",
+                                   href: download_ics_project_recurring_meeting_path(
+                                     project,
+                                     recurring_meeting,
+                                     occurrence_id: meeting.id
+                                   )
+    end
+  end
+
+  describe "cancel occurrence" do
     context "with project delete meetings permissions" do
       before do
         mock_permissions_for(user) do |mock|
