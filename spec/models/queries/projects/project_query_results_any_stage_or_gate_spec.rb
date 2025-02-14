@@ -49,11 +49,13 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       create(:project_gate, project:, date: gate_date)
     end
   end
+  shared_let(:project_without_step) { create(:project, name: "Project without step") }
 
   shared_let(:user) do
     create(:user, member_with_permissions: {
              project_with_stage => %i[view_project_stages_and_gates],
-             project_with_gate => %i[view_project_stages_and_gates]
+             project_with_gate => %i[view_project_stages_and_gates],
+             project_without_step => %i[view_project_stages_and_gates]
            })
   end
 
@@ -81,6 +83,19 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
   def self.disable_gate
     before do
       Project::LifeCycleStep.where(type: Project::Gate.name).update_all(active: false)
+    end
+  end
+
+  def self.remove_permissions
+    before do
+      # We keep the permission within the project without steps so that the filter itself is available
+      # but we check that the filter does not return values.
+      RolePermission
+        .where(role_id: Role.joins(:member_roles)
+                            .where(member_roles: { member_id: Member.where(project: [project_with_stage,
+                                                                                     project_with_gate]) }))
+        .where(permission: :view_project_stages_and_gates)
+        .destroy_all
     end
   end
   # rubocop:enable RSpec/ScatteredSetup
@@ -173,9 +188,27 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
         expect(instance.results).to be_empty
       end
     end
-  end
 
-  # TODO: check permissions
+    context "when filtering in the middle of the stage but without permissions" do
+      let(:values) { [(stage_start_date + ((stage_end_date - stage_start_date) / 2)).to_s] }
+
+      remove_permissions
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when filtering on the day of the gate but without permissions" do
+      let(:values) { [gate_date.to_s] }
+
+      remove_permissions
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+  end
 
   context "with a t (today) operator" do
     before do
@@ -265,7 +298,29 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
         end
       end
     end
+
+    context "when being in the middle of the stage but without permissions" do
+      remove_permissions
+
+      it "returns no project" do
+        Timecop.travel((stage_start_date + (stage_end_date - stage_start_date)).noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being on the day of the gate but without permissions" do
+      remove_permissions
+
+      it "returns no project" do
+        Timecop.travel(gate_date.noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
   end
+
+  # TODO: get the start of week setting in
 
   context "with a w (this week) operator" do
     before do
@@ -370,6 +425,28 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       # Would otherwise interfere with the spec
       remove_stage
       disable_gate
+
+      it "returns no project" do
+        Timecop.travel(gate_date.noon - 1.day) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being in the middle of the stage but without permissions" do
+      remove_permissions
+
+      it "returns no project" do
+        Timecop.travel((stage_start_date + 3.days).noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being a day before the gate but without permissions" do
+      # Would otherwise interfere with the spec
+      remove_stage
+      remove_permissions
 
       it "returns no project" do
         Timecop.travel(gate_date.noon - 1.day) do
@@ -536,6 +613,26 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       let(:values) { [gate_date.to_s, gate_date.to_s] }
 
       disable_gate
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when encompassing the stage completely but without permissions" do
+      let(:values) { [(stage_start_date - 1.day).to_s, (stage_end_date + 1.day).to_s] }
+
+      remove_permissions
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when encompassing the gate precisely but without permissions" do
+      let(:values) { [gate_date.to_s, gate_date.to_s] }
+
+      remove_permissions
 
       it "returns no project" do
         expect(instance.results).to be_empty
