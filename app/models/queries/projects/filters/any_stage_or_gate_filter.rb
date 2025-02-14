@@ -54,30 +54,42 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   end
 
   def where
-    case operator.to_sym
-    when Queries::Operators::OnDate.to_sym
-      stage_where_on(parsed_start)
-        .or(gate_where(parsed_end))
-        .arel
-        .exists
-    when Queries::Operators::Today.to_sym
-      stage_where_on(today)
-        .or(gate_where(today, today))
-        .arel
-        .exists
-    when Queries::Operators::BetweenDate.to_sym
-      stage_where_between(parsed_start, parsed_end)
-        .or(gate_where(parsed_start, parsed_end))
-        .arel
-        .exists
-    when Queries::Operators::ThisWeek.to_sym
-      stage_overlaps_this_week
-        .or(gate_where(today.beginning_of_week, today.end_of_week))
-        .arel
-        .exists
-    else
-      raise "Unknown operator #{operator}"
-    end
+    scope = case operator.to_sym
+            when Queries::Operators::OnDate.to_sym
+              on_date
+            when Queries::Operators::Today.to_sym
+              on_today
+            when Queries::Operators::BetweenDate.to_sym
+              between_date
+            when Queries::Operators::ThisWeek.to_sym
+              this_week
+            else
+              raise "Unknown operator #{operator}"
+            end
+
+    scope
+      .arel
+      .exists
+  end
+
+  def on_date
+    stage_where_on(parsed_start)
+      .or(gate_where(parsed_end))
+  end
+
+  def on_today
+    stage_where_on(today)
+      .or(gate_where(today, today))
+  end
+
+  def between_date
+    stage_where_between(parsed_start, parsed_end)
+      .or(gate_where(parsed_start, parsed_end))
+  end
+
+  def this_week
+    stage_overlaps_this_week
+      .or(gate_where(beginning_of_week.to_date, end_of_week.to_date))
   end
 
   def stage_where_on(start_date, end_date = start_date)
@@ -117,7 +129,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
       .where(type: Project::Stage.name)
       .active
       .where(
-        <<~SQL.squish, today.beginning_of_week, today.end_of_week
+        <<~SQL.squish, beginning_of_week, end_of_week
           daterange(#{Project::LifeCycleStep.table_name}.start_date,
                     #{Project::LifeCycleStep.table_name}.end_date,
                     '[]')
@@ -137,6 +149,14 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
 
   def today
     Time.zone.today
+  end
+
+  def beginning_of_week
+    OpenProject::I18n::Date.time_at_beginning_of_week
+  end
+
+  def end_of_week
+    beginning_of_week + 7.days
   end
 
   def connection
