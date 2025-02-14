@@ -25,7 +25,7 @@ Relations indicate any functional or timely relation (e.g. follows or proceeds, 
 
 Work package relations indicate that work packages address a similar topic or create status dependencies. To create a relationship between two work packages:
 
-1. Select a work package, click on **Relations** to open the relations tab and click the **+ Relation**  button.
+1. Select a work package, click on **Relations** to open the *Relations* tab and click the **+ Relation**  button.
 2. Select the type of relationship from the dropdown menu.
 3. Enter the ID or name of the work package, to which the relation should be created. The autocomplete will suggest the work package to be added.
 4. Enter a description of the relation. It will be visible for both of the related work packages.
@@ -131,7 +131,7 @@ For more information on the work package creation take a look at the guideline o
 >
 > If children work packages already exist for the current work package, you can also use the **+Child** button next to the respective section. 
 
-![Create child button under work package relations tab in OpenProject](openproject_user_guide_wp_relations_child_button.png)
+![Create child button under work package Relations tab in OpenProject](openproject_user_guide_wp_relations_child_button.png)
 
 ## Change the parent work package
 
@@ -142,9 +142,22 @@ To edit or remove the parent of a work package open the work package. At the top
 ## Display work package hierarchies
 
 After adding the parent and child work packages they are listed in the *Relations* tab. Related work packages are grouped by the type of relation into respective sections. 
-Note that only the children are shown in the relations tab and the parent isn't.
 
-![Work package relations displayed in the relations tab in OpenProject](openproject_user_guide_relations_tab.png)
+> [!NOTE]
+>
+> Only the children are shown in the *Relations* tab and the parent isn't.
+
+>  [!TIP]
+>
+> Dates of the related work packages are only shown for date-based relations: children, predecessor and successor. 
+
+![Work package relations displayed in the Relations tab in OpenProject](openproject_user_guide_wp_relations_tab_overview.png)
+
+> [!NOTE]
+>
+> If you do not have necessary permissions (for example if only one specific work package was shared with you, but not the entire project), you will be able to see that a work package has a relation, and the dates of that related work package, but not other details of that related work package.
+
+![Example of work package relations displayed under Relations tab for a user with limited permissions in OpenProject](openproject_user_guide_ghost_relations.png)
 
 Hierarchies can also be displayed from the work package table view.
 To display work package hierarchies make sure the *Subject* column is displayed. You can activate or deactivate the hierarchy by pressing the icon next to the Subject.
