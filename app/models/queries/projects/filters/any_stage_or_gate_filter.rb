@@ -81,6 +81,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   def stage_where_on(start_date, end_date = start_date)
     Project::LifeCycleStep
       .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
+      .where(project_id: Project.allowed_to(User.current, :view_project_stages_and_gates))
       .where(type: Project::Stage.name)
       .active
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", nil, start_date))
@@ -90,6 +91,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   def stage_where_between(start_date, end_date)
     Project::LifeCycleStep
       .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
+      .where(project_id: Project.allowed_to(User.current, :view_project_stages_and_gates))
       .where(type: Project::Stage.name)
       .active
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, nil))
@@ -100,6 +102,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     # On gates, only the start_date is set.
     Project::LifeCycleStep
       .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
+      .where(project_id: Project.allowed_to(User.current, :view_project_stages_and_gates))
       .where(type: Project::Gate.name)
       .active
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, end_date))
@@ -108,6 +111,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   def stage_overlaps_this_week
     Project::LifeCycleStep
       .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
+      .where(project_id: Project.allowed_to(User.current, :view_project_stages_and_gates))
       .where(type: Project::Stage.name)
       .active
       .where(
