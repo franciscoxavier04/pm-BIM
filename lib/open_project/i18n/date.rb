@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2025 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,19 +26,29 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module Queries::Operators
-  class ThisWeek < Base
-    label "this_week"
-    set_symbol "w"
-    require_value false
+module OpenProject
+  module I18n
+    module Date
+      module_function
 
-    def self.sql_for_field(_values, db_table, db_field)
-      from = OpenProject::I18n::Date.time_at_beginning_of_week
-      "#{db_table}.#{db_field} BETWEEN '%s' AND '%s'" % [
-        connection.quoted_date(from), connection.quoted_date(from + 7.days)
-      ]
+      def self.beginning_of_week
+        case (Setting.start_of_week || ::I18n.t(:general_first_day_of_week)).to_i
+        when 1
+          :monday
+        when 7
+          :sunday
+        when 6
+          :saturday
+        else
+          ::Date.beginning_of_week
+        end
+      end
+
+      def time_at_beginning_of_week
+        Time.current.at_beginning_of_week(beginning_of_week)
+      end
     end
   end
 end
