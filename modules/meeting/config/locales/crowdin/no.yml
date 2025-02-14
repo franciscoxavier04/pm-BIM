@@ -117,7 +117,7 @@
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
   label_recurring_meeting_create: "Open"
-  label_recurring_meeting_copy: "Copy as one-off"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
   label_recurring_meeting_restore: "Restore this occurrence"
@@ -180,10 +180,15 @@
       open_meeting_link: "Åpent møte"
       open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Meeting series %{title}"
-        summary: "%{actor} has set up a new meeting series %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} har sendt deg en invitasjon til møtet %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelled: Meeting '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
@@ -193,9 +198,9 @@
         summary: "'%{title}' has been cancelled by %{actor}."
         date_time: "Scheduled date/time"
       rescheduled:
-        header: "Møtet %{title} har blitt endret"
-        summary: "Møte %{title} har blitt endret av %{actor}"
-        body: "Møtet  %{title} har blitt endret av %{actor}."
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Gammel dato/tid"
         new_date_time: "Ny dato/tid"
     label_mail_all_participants: "Send e-post til alle deltagere"
@@ -216,10 +221,11 @@
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
       occurrence:
-        title: "Delete meeting occurrence"
-        heading: "Delete this meeting occurrence?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "No meetings to display"
       desc: "There are no meetings that meet the active filter criteria."

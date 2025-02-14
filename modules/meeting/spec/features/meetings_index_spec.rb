@@ -369,4 +369,57 @@ RSpec.describe "Meetings", "Index", :js do
       meetings_page.expect_no_meeting_location(meeting_with_no_location)
     end
   end
+
+  describe "top level menu items and breadcrumbs (Regression #61343)" do
+    let(:meetings_page) { Pages::Meetings::Index.new(project: nil) }
+
+    context "when the user is logged in and specific filters are selected" do
+      it "shows the correct selected menu item and breadcrumb each time" do
+        meetings_page.visit!
+
+        expect(page).to have_css(".op-submenu--item-action.selected", text: "My meetings")
+        expect(page).to have_css("li.breadcrumb-item-selected", text: "My meetings")
+
+        meetings_page.set_sidebar_filter("Recurring meetings")
+
+        expect(page).to have_css(".op-submenu--item-action.selected", text: "Recurring meetings")
+        expect(page).to have_css("li.breadcrumb-item-selected", text: "Recurring meetings")
+
+        meetings_page.set_sidebar_filter("All meetings")
+
+        expect(page).to have_css(".op-submenu--item-action.selected", text: "All meetings")
+        expect(page).to have_css("li.breadcrumb-item-selected", text: "All meetings")
+      end
+    end
+  end
+
+  describe "top level menu items and breadcrumbs anonymously (Regression #61343)" do
+    let(:user) do
+      create(:anonymous_role, permissions: %i[view_project view_meetings])
+      User.anonymous
+    end
+    let(:project) { create(:public_project, enabled_module_names: %i[meetings]) }
+    let(:meetings_page) { Pages::Meetings::Index.new(project:) }
+
+    context "when the user is logged out and specific filters are selected", with_settings: { login_required?: false } do
+      it "shows the correct selected menu item and breadcrumb each time" do
+        meetings_page.visit!
+
+        # with no filter
+        expect(page).to have_css(".op-submenu--item-action.selected", text: "All meetings")
+        expect(page).to have_css("li.breadcrumb-item-selected", text: "All meetings")
+
+        meetings_page.set_sidebar_filter("Recurring meetings")
+
+        expect(page).to have_css(".op-submenu--item-action.selected", text: "Recurring meetings")
+        expect(page).to have_css("li.breadcrumb-item-selected", text: "Recurring meetings")
+
+        # with an explicitly selected filter
+        meetings_page.set_sidebar_filter("All meetings")
+
+        expect(page).to have_css(".op-submenu--item-action.selected", text: "All meetings")
+        expect(page).to have_css("li.breadcrumb-item-selected", text: "All meetings")
+      end
+    end
+  end
 end

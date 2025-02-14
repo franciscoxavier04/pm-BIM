@@ -33,7 +33,7 @@ id:
         label_activity_show_only_changes: "Show changes only"
         label_sort_asc: "Newest at the bottom"
         label_sort_desc: "Newest on top"
-        label_type_to_comment: "Add a comment. Type @ to notify people."
+        label_type_to_comment: "Menambahkan komentar. Ketik @ untuk memberi tahu orang lain."
         label_submit_comment: "Submit comment"
         changed_on: "changed on"
         created_on: "created this on"
@@ -60,7 +60,7 @@ id:
         main-menu-bg-hover-background: "Menu utama melayang"
       custom_colors: "Warna kostum"
       customize: "Sesuaikan instalasi OpenProject Anda dengan logo dan warna Anda sendiri."
-      enterprise_notice: "As a special 'Thank you!' for their financial contribution to develop OpenProject, this tiny add-on is only available for Enterprise edition support subscribers."
+      enterprise_notice: "Sebagai ucapan 'Terima kasih!' khusus untuk kontribusi finansial mereka dalam mengembangkan OpenProject, add-on kecil ini hanya tersedia untuk pelanggan dukungan edisi Enterprise."
       enterprise_more_info: "Catatan: logo yang digunakan akan dapat diakses publik."
       manage_colors: "Edit warna pilih opsi"
       instructions:
@@ -73,15 +73,15 @@ id:
         main-menu-bg-color: "Warna latar belakang menu sisi kiri."
       theme_warning: mengubah tema akan mengubah custom style anda. Desain akan menghilang. Apakah anda ingin melanjutkannya?
     enterprise:
-      upgrade_to_ee: "Upgrade to the Enterprise edition"
-      add_token: "Upload an Enterprise edition support token"
+      upgrade_to_ee: "Tingkatkan ke edisi Enterprise"
+      add_token: "Unggah sebuah token bantuan Edisi Enterprise"
       delete_token_modal:
         text: "Are you sure you want to remove the current Enterprise edition token used?"
         title: "Hapus token"
       replace_token: "Gantilah token bantuan yang sedang digunakan"
-      order: "Order Enterprise on-premises edition"
-      paste: "Paste your Enterprise edition support token"
-      required_for_feature: "This add-on is only available with an active Enterprise edition support token."
+      order: "Pesan Enterprise edisi di tempat"
+      paste: "Rekat sebuah token bantuan Edisi Enterprise"
+      required_for_feature: "Pengaya ini hanya tersedia dengan token dukungan edisi Enterprise yang aktif."
       enterprise_link: "Untuk informasi lebih lanjut, klik di sini."
       start_trial: "Mulai uji coba gratis"
       book_now: "Pesan sekarang"
@@ -152,7 +152,7 @@ id:
         Jika anda ceklis box ini, OpenProject akan secara otomatis membuat pengguna baru dari seluruh LDAP saat pertamakali autentikasi dengan OpenProject.
         Biarkan tidak terceklis untuk mengizinkan akun yang ada di OpenProject untuk mengautentikasi melalui LDAP!
     connection_encryption: "Enkripsi sambungan"
-    encryption_details: "LDAPS / STARTTLS options"
+    encryption_details: "Opsi LDAPS / STARTTLS"
     system_account: "Akun sistem"
     system_account_legend: |
       OpenProject membutuhkan akses hanya baca melalui akun sistem untuk melihat pengguna dan grup pada pohon LDAP anda.
@@ -165,16 +165,16 @@ id:
       plain: "kosong"
       simple_tls: "LDAPS"
       start_tls: "STARTTLS"
-      plain_description: "Opens an unencrypted connection to the LDAP server. Not recommended for production."
-      simple_tls_description: "Use LDAPS. Requires a separate port on the LDAP server. This mode is often deprecated, we recommend using STARTTLS whenever possible."
-      start_tls_description: "Sends a STARTTLS command after connecting to the standard LDAP port. Recommended for encrypted connections."
+      plain_description: "Membuka koneksi yang tidak terenkripsi ke server LDAP. Tidak direkomendasikan untuk produksi."
+      simple_tls_description: "Gunakan LDAPS. Membutuhkan port terpisah pada server LDAP. Mode ini sering kali tidak digunakan lagi, kami sarankan untuk menggunakan STARTTLS bila memungkinkan."
+      start_tls_description: "Mengirimkan perintah STARTTLS setelah menyambung ke port LDAP standar. Direkomendasikan untuk koneksi terenkripsi."
       section_more_info_link_html: >
         Bagian ini menyangkut keamanan koneksi dari sumber autentikasi LDAP ini.  Untuk informasi selengkapnya, kunjungi <a href="%{link}">dokumentasi Net::LDAP</a>.
     tls_options:
-      verify_peer: "Verify SSL certificate"
+      verify_peer: "Verifikasi sertifikat SSL"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br/> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
-      tls_certificate_description: "If the LDAP server certificate is not in the trust sources of this system, you can add it manually here. Enter a PEM X509 certifiate string."
+        Memungkinkan verifikasi SSL yang ketat terhadap rantai tepercaya sertifikat. <br/> <strong>Peringatan:</strong> Menghilangkan centang pada opsi ini akan menonaktifkan verifikasi SSL pada sertifikat server LDAP. Hal ini membuat koneksi Anda rentan terhadap serangan Man in the Middle.
+      tls_certificate_description: "Jika sertifikat server LDAP tidak ada dalam sumber kepercayaan sistem ini, Anda dapat menambahkannya secara manual di sini. Masukkan string sertifikat PEM X509."
   forums:
     show:
       no_results_title_text: Saat ini tidak ada postingan di forum.
@@ -249,16 +249,16 @@ id:
     reorder_confirmation: "Peringatan: Urutan nilai yang tersedia saat ini akan hilang.  Melanjutkan?"
     placeholder_version_select: "Work package or project selection is required first"
     instructions:
-      is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
+      is_required: "Tandai bidang khusus sesuai kebutuhan. Ini akan membuatnya wajib diisi saat membuat sumber daya baru atau memperbarui sumber daya yang sudah ada."
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
-      is_for_all: "Mark the custom field as available in all existing and new projects."
+      is_for_all: "Tandai bidang khusus sebagai tersedia di semua proyek yang sudah ada dan yang baru."
       multi_select: "Allows the user to assign multiple values to this custom field."
-      searchable: "Include the field values when using the global search functionality."
+      searchable: "Sertakan nilai bidang saat menggunakan fungsi pencarian global."
       searchable_for_project: "Check to make this attribute available as a filter in project lists."
-      editable: "Allow the field to be editable by users themselves."
+      editable: "Izinkan bidang tersebut diedit oleh pengguna sendiri."
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
-        Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+        Mengizinkan bidang kustom untuk digunakan dalam filter di tampilan paket kerja. Perhatikan bahwa hanya dengan memilih 'Untuk semua proyek', bidang kustom akan muncul di tampilan global.
     tab:
       no_results_title_text: Tidak ada bidang kustom saat ini.
       no_results_content_text: Buat bidang kustom baru
@@ -321,7 +321,7 @@ id:
       failed_text: "Permintaan untuk menghapus proyek %{name} telah gagal.  Proyek dibiarkan diarsipkan."
       completed: "Penghapusan proyek %{name} selesai"
       completed_text: "Permintaan untuk menghapus proyek '%{name}' telah selesai."
-      completed_text_children: "Additionally, the following subprojects have been deleted:"
+      completed_text_children: "Selain itu, subproyek berikut ini telah dihapus:"
     index:
       open_as_gantt: "Buka sebagai tampilan Gantt"
       no_results_title_text: Tidak ada proyek saat ini
@@ -335,7 +335,7 @@ id:
       favored: "Favorite projects"
       archived: "Archived projects"
       shared: "Shared project lists"
-      my_lists: "My project lists"
+      my_lists: "Daftar proyek saya"
       new:
         placeholder: "New project list"
       delete_modal:
@@ -375,7 +375,7 @@ id:
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
-          remove_from_project: "Remove from project"
+          remove_from_project: "Hapus dari proyek"
         is_required_blank_slate:
           heading: Required in all projects
           description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
@@ -463,8 +463,8 @@ id:
     access_token:
       create_dialog:
         title: Token generated
-        header: The %{type} token has been generated
-        warning: Note that this is the only time you will see this token, make sure to copy it now.
+        header: Token %{type} telah dibuat
+        warning: Perhatikan bahwa ini adalah satu-satunya saat Anda akan melihat token ini, pastikan untuk menyalinnya sekarang.
       errors:
         token_name_blank: "Please provide an API token name"
         token_name_in_use: "This API token name is already in use, please select a different one"
@@ -481,7 +481,7 @@ id:
       notice_reset_token: "Sebuah token baru %{type} telah dibuat. Token akses Anda adalah:"
       token_value_warning: "Catatan: Anda hanya akan melihat token ini satu kali, pastikan untuk membuat salinannya sekarang."
       no_results_title_text: There are currently no access tokens available.
-      notice_api_token_revoked: "The API token has been deleted. To create a new token please use the button in the API section."
+      notice_api_token_revoked: "Token API telah dihapus. Untuk membuat token baru, gunakan tombol di bagian API."
       notice_rss_token_revoked: "The RSS token has been deleted. To create a new token please use the link in the RSS section."
       notice_ical_token_revoked: 'Token iCalendar "%{token_name}" untuk kalender "%{calendar_name}" proyek "%{project_name}" telah dicabut.  URL iCalendar dengan token ini sekarang tidak valid.'
   news:
@@ -527,7 +527,7 @@ id:
     upsale:
       title: Pengguna placeholder
       description: >
-        Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+        Pengguna placeholder adalah cara untuk memberikan paket kerja kepada pengguna yang bukan bagian dari proyek Anda. Mereka dapat berguna dalam berbagai skenario; misalnya, jika Anda perlu melacak tugas untuk sumber daya yang belum diberi nama atau tersedia, atau jika Anda tidak ingin memberi orang tersebut akses ke OpenProject tetapi masih ingin melacak tugas yang ditugaskan kepada mereka.
   prioritiies:
     edit:
       priority_color_text: |
@@ -584,7 +584,7 @@ id:
       form_configuration:
         tab: "Form configuration"
       more_info_text_html: >
-        Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
+        Edisi Enterprise memungkinkan Anda untuk menyesuaikan konfigurasi formulir dengan pengaya tambahan ini: <br> <ul class="%{list_styling_class}"> <li><b>Menambahkan grup atribut baru</b></li> <li><b>Mengganti nama grup atribut</b></li> <li><b>Menambahkan tabel paket kerja terkait</b></li> </ul>
       projects:
         tab: "Projects"
         enabled_projects: "Enabled projects"
@@ -635,9 +635,9 @@ id:
         The current types of the work packages aren't enabled in the target project. Please enable the types in the target project if you'd like them to remain unchanged. Otherwise, select an available type in the target project from the list.
     sharing:
       missing_workflow_warning:
-        title: "Workflow missing for work package sharing"
-        message: "No workflow is configured for the 'Work package editor' role. Without a workflow, the shared with user cannot alter the status of the work package. Workflows can be copied. Select a source type (e.g. 'Task') and source role (e.g. 'Member'). Then select the target types. To start with, you could select all the types as targets. Finally, select the 'Work package editor' role as the target and press 'Copy'. After having thus created the defaults, fine tune the workflows as you do for every other role."
-        link_message: "Configure the workflows in the administration."
+        title: "Alur kerja yang hilang untuk berbagi paket kerja"
+        message: "Tidak ada alur kerja yang dikonfigurasikan untuk peran 'Editor paket kerja'. Tanpa alur kerja, pengguna yang dibagikan tidak dapat mengubah status paket kerja. Alur kerja dapat disalin. Pilih jenis sumber (misalnya 'Tugas') dan peran sumber (misalnya 'Anggota'). Kemudian pilih jenis target. Sebagai permulaan, Anda dapat memilih semua jenis sebagai target. Terakhir, pilih peran 'Editor paket kerja' sebagai target dan tekan 'Salin'. Setelah membuat default, sesuaikan alur kerja seperti yang Anda lakukan untuk setiap peran lainnya."
+        link_message: "Mengonfigurasi alur kerja dalam administrasi."
     templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
@@ -667,7 +667,7 @@ id:
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: "Jumlah hari kerja minimum yang harus dijaga di antara dua paket pekerjaan."
     relations:
       label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"

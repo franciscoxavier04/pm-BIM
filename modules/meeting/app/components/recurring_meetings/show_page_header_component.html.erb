@@ -20,7 +20,7 @@
           menu.with_item(
             label: I18n.t(:label_recurring_meeting_series_edit),
             icon: :gear,
-            href: details_dialog_recurring_meeting_path(@meeting),
+            href: details_dialog_project_recurring_meeting_path(@project, @meeting),
             tag: :a,
             content_arguments: {
               data: { controller: 'async-dialog' },
@@ -33,14 +33,14 @@
 
           menu.with_item(
             label: t(:label_icalendar_download),
-            href: download_ics_recurring_meeting_path(@meeting)
+            href: download_ics_project_recurring_meeting_path(@project, @meeting)
           ) do |item|
             item.with_leading_visual_icon(icon: :calendar)
           end
 
           menu.with_item(
             label: t('meeting.label_mail_all_participants'),
-            href: notify_recurring_meeting_path(@meeting),
+            href: notify_project_recurring_meeting_path(@project, @meeting),
             form_arguments: { method: :post }
           ) do |item|
             item.with_leading_visual_icon(icon: :mail)
@@ -49,7 +49,7 @@
           if !@meeting.has_ended? && @meeting.start_time.to_date < Time.zone.today
             menu.with_item(
               label: t(:label_recurring_meeting_series_end),
-              href: end_series_dialog_recurring_meeting_path(@meeting),
+              href: end_series_dialog_project_recurring_meeting_path(@project, @meeting),
               tag: :a,
               content_arguments: {
                 data: { controller: 'async-dialog' },
@@ -61,7 +61,7 @@
 
           menu.with_item(
             label: I18n.t(:label_recurring_meeting_series_delete),
-            href: polymorphic_path([:delete_dialog, @project, @meeting]),
+            href: delete_dialog_project_recurring_meeting_path(@project, @meeting),
             scheme: :danger,
             tag: :a,
             content_arguments: {

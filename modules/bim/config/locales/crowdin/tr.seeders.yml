@@ -217,16 +217,16 @@ tr:
                 item_0:
                   subject: Gathering first project information
                   description: |-
-                    ## Goal
+                    ## Hedef
 
-                    *   Define tasks based on the customer needs
-                    *   Time frame and cost estimation shall be defined
+                    * Müşteri ihtiyaçlarına göre görevlerin tanımlanması
+                    * Zaman çerçevesi ve maliyet tahmini tanımlanmalıdır
 
-                    ## Description
+                    ## Açıklama
 
-                    *   Identify the customer needs by having a workshop with him/ her
-                    *   Each need shall represent a task with its corresponding work packages
-                    *   Derive the cost estimation and time frame
+                    * Müşteri ile bir atölye çalışması yaparak ihtiyaçlarının belirlenmesi
+                    * Her ihtiyaç, ilgili iş paketleriyle birlikte bir görevi temsil etmelidir
+                    * Maliyet tahmini ve zaman çerçevesi türetilmelidir
                 item_1:
                   subject: Summarize the results
                   description: |-
@@ -474,19 +474,19 @@ tr:
                 item_0:
                   subject: Gathering the project specific data and information for the BIM model
                   description: |-
-                    ## Goal
+                    ## Hedef
 
-                    *   Identify the information strategy for the customer (e.g. by using plain language questions)
-                    *   If provided, analyze the customer information requirements for the BIM model
-                    *   Define an information delivery strategy according to the customers needs
+                    * Müşteri için bilgi stratejisini belirleyin (örneğin, sade dil soruları kullanarak)
+                    * Sağlanmışsa, BIM modeli için müşteri bilgi gereksinimlerini analiz edin
+                    * Müşterilerin ihtiyaçlarına göre bir bilgi dağıtım stratejisi tanımlayın
 
-                    ## Description
+                    ## Açıklama
 
-                    *   Analyzing the customers needs and goals for using the BIM methodology
-                    *   Results of this tasks should be:
-                    *   The requirements for the project
-                    *   A strategy for the delivery phase
-                    *   ...
+                    * BIM metodolojisini kullanmak için müşterilerin ihtiyaçlarını ve hedeflerini analiz etmek
+                    * Bu görevlerin sonuçları olmalıdır:
+                    * Proje için gereksinimler
+                    * Teslim aşaması için bir strateji
+                    * ...
                 item_1:
                   subject: Creating the BIM execution plan
                   description: |-

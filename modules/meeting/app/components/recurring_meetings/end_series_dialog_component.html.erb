@@ -33,7 +33,7 @@ See COPYRIGHT and LICENSE files for more details.
     confirm_button_text: I18n.t(:label_recurring_meeting_series_end_now),
     title: I18n.t("recurring_meeting.end_series_dialog.title"),
     form_arguments: {
-      action: end_series_recurring_meeting_path(@series),
+      action: end_series_project_recurring_meeting_path(@project, @series),
       method: :post
     }
   )) do |dialog|

@@ -39,16 +39,13 @@ class MeetingContentsController < ApplicationController
   helper :watchers
   helper :meetings
 
+  before_action :load_and_authorize_in_optional_project
   before_action :find_meeting, :find_content
-  before_action :authorize
 
-  def show
+  def show # rubocop:disable Metrics/AbcSize
     if params[:id].present? && @content.last_journal.version == params[:id].to_i
       # Redirect links to the last version
-      redirect_to controller: "/meetings",
-                  action: :show,
-                  id: @meeting,
-                  tab: @content_type.sub(/^meeting_/, "")
+      redirect_to project_meeting_path(@project, @meeting, tab: @content_type.sub(/^meeting_/, ""))
       return
     end
 
@@ -65,7 +62,7 @@ class MeetingContentsController < ApplicationController
 
     if call.success?
       flash[:notice] = I18n.t(:notice_successful_update)
-      redirect_back_or_default controller: "/meetings", action: "show", id: @meeting
+      redirect_back_or_default project_meeting_path(@project, @meeting)
     else
       flash.now[:error] = call.message
       params[:tab] ||= "minutes" if @meeting.agenda.present? && @meeting.agenda.locked?

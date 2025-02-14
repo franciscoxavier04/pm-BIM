@@ -117,7 +117,7 @@ de:
   label_template: "Vorlage"
   label_recurring_meeting_view: "Terminserie ansehen"
   label_recurring_meeting_create: "Öffnen"
-  label_recurring_meeting_copy: "Als einmalige Besprechung kopieren"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Diese Besprechung absagen"
   label_recurring_meeting_delete: "Besprechung löschen"
   label_recurring_meeting_restore: "Dieses Vorkommen wiederherstellen"
@@ -180,10 +180,15 @@ de:
       open_meeting_link: "Besprechung öffnen"
       open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Terminserie %{title}"
-        summary: "%{actor} hat eine neue Terminserie %{title} eingerichtet"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} hat Ihnen eine Einladung für die folgende Besprechung gesendet: %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelled: Meeting '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
@@ -193,9 +198,9 @@ de:
         summary: "'%{title}' has been cancelled by %{actor}."
         date_time: "Scheduled date/time"
       rescheduled:
-        header: "Besprechung %{title} verschoben"
-        summary: "Die Besprechung %{title} wurde durch %{actor} verschoben."
-        body: "Die Besprechung %{title} wurde durch %{actor} verschoben."
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Alte(s) Datum/Zeit"
         new_date_time: "Neue(s) Datum/Zeit"
     label_mail_all_participants: "E-Mail an alle Teilnehmer senden"
@@ -216,10 +221,11 @@ de:
         confirmation_message_html: >
           Diese Aktion kann nicht rückgängig gemacht werden. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
       occurrence:
-        title: "Besprechungsereignis löschen"
-        heading: "Dieses Besprechungsereignis löschen?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          Diese Besprechung ist Teil der Terminserie <strong>%{title}</strong>. Dadurch wird nur dieses bestimmte Ereignis und nicht die gesamte Serie gelöscht. Möchten Sie fortfahren?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "Keine Besprechungen anzuzeigen"
       desc: "Es gibt keine Besprechungen, die die Kriterien des aktiven Filters erfüllen."

@@ -225,9 +225,9 @@ uk:
             title: Цей елемент не має нижчого рівня ієрархії
             description: Додайте елементи до цього списку, щоб створити піделементи всередині іншого
         delete_dialog:
-          title: "Delete custom field item"
-          heading: "Delete custom field item?"
-          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
+          title: "Видалити елемент користувацького поля"
+          heading: "Видалити елемент користувацького поля?"
+          description: "Ця дія, яку не можна відмінити, призведе до вилучення елемента й усіх його вкладених елементів. Усі їх значення буде видалено назавжди. Якщо це обов’язкове поле, пакети робіт, де їх буде вилучено, можуть стати недійсними."
         placeholder:
           label: "Мітка елемента"
           short: "Коротка назва"
@@ -248,7 +248,7 @@ uk:
     confirm_destroy_option: "Видалення опції призведе до видалення всіх його подій (наприклад, у робочих пакетах). Дійсно видалити його?"
     reorder_alphabetical: "Перевпорядкувати значення за алфавітом"
     reorder_confirmation: "Увага! Поточний порядок доступних значень буде втрачено. Продовжити?"
-    placeholder_version_select: "Work package or project selection is required first"
+    placeholder_version_select: "Спочатку потрібно вибрати пакет робіт або проєкт"
     instructions:
       is_required: "Позначте користувацьке поле як обов’язкове. Так його потрібно буде заповнювати під час створення нових або оновлення наявних ресурсів."
       is_required_for_project: "Установіть прапорець, щоб увімкнути цей атрибут і зробити його обов’язковим в усіх проєктах. Його не можна деактивувати для окремих проєктів."
@@ -287,7 +287,7 @@ uk:
       label: "Мітка"
       short: "Коротка назва"
       parent: "Батьківський елемент"
-      blueprint: "Pattern blueprint"
+      blueprint: "Шаблон плану"
   global_search:
     placeholder: "Пошук у додатку %{app_title}"
     overwritten_tabs:
@@ -484,7 +484,7 @@ uk:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: Маркер згенеровано
         header: Маркер %{type} згенеровано
         warning: Зверніть увагу, що ви більше не побачите цей маркер, тому обов’язково скопіюйте його зараз.
       errors:
@@ -664,7 +664,7 @@ uk:
         title: "Відсутній робочий процес для надання доступу до пакета робіт"
         message: "Для ролі «Редактор пакета робіт» не налаштовано жодного робочого процесу. Без робочого процесу користувач, якому надано доступ, не може змінити статус пакета робіт. Робочі процеси можна копіювати. Виберіть вихідний тип (напр., «Завдання») і роль (напр., «Учасник»). Потім виберіть цільові типи. Для початку радимо вибирати всі типи як цільові. Нарешті, виберіть роль «Редактор пакета робіт» і натисніть «Копіювати». Після цього ви зможете налаштовувати робочі процеси для кожної ролі, як ви це зазвичай робите."
         link_message: "Налаштуйте робочі процеси на панелі адміністрування."
-    templated_subject_hint: Automatically generated through type %{type}
+    templated_subject_hint: Автоматично згенеровано з використанням типу %{type}
     summary:
       reports:
         category:
@@ -749,8 +749,8 @@ uk:
       required_description: "Позначає цей робочий пакет як обовʼязковий для звʼязаного з ним"
       label_parent_singular: "батьківський елемент"
       label_parent_plural: "батьківський елемент"
-      ghost_relation_title: "Related work package"
-      ghost_relation_description: "This is not visible to you due to permissions."
+      ghost_relation_title: "Пов’язаний пакет робіт"
+      ghost_relation_description: "Ви не маєте дозволів на перегляд цього елемента."
   label_invitation: Запрошення
   account:
     delete: "Видалити обліковий запис"
@@ -1240,8 +1240,8 @@ uk:
               error_readonly: "існуюча зв'язок `from` є незмінною"
             lag:
               greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
+                zero: "не може мати від’ємне значення."
+              less_than_or_equal_to: "має зависоке значення."
         repository:
           not_available: "Постачальник SCM недоступний"
           not_whitelisted: "не дозволяється конфігурацією."
@@ -1618,7 +1618,7 @@ uk:
   button_create_and_continue: "Створити та продовжити"
   button_decline: "Відхилити"
   button_delete: "Видалити"
-  button_delete_permanently: "Delete permanently"
+  button_delete_permanently: "Видалити назавжди"
   button_delete_watcher: "Видалити спостерігача %{name}"
   button_download: "Завантажити"
   button_duplicate: "Дублювати"
@@ -1858,10 +1858,10 @@ uk:
         many: "годин(и)"
         other: "годин(и)"
       day:
-        one: "day"
-        few: "days"
-        many: "days"
-        other: "days"
+        one: "день"
+        few: "дні"
+        many: "днів"
+        other: "дня"
   description_active: "Активний?"
   description_attachment_toggle: "Показати/приховати вкладення"
   description_autocomplete: >
@@ -2263,7 +2263,7 @@ uk:
   label_add_subtask: "Додати підзавдання"
   label_added: "додано"
   label_added_by: "Автор: %{author}"
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "Додав(-ла) %{author} %{date}"
   label_added_time_by: "Доданий %{author} %{age} назад"
   label_additional_workflow_transitions_for_assignee: "Додаткові переходи можна коли користувач є правонаступником"
   label_additional_workflow_transitions_for_author: "Додаткові переходи дозволені користувачу, який є автором"
@@ -2711,7 +2711,7 @@ uk:
   label_relation: "Зв’язок"
   label_relation_actions: "Дії зі зв’язками"
   label_relation_delete: "Видалити зв'язок"
-  label_relation_edit: "Edit relation"
+  label_relation_edit: "Редагувати зв’язок"
   label_relation_new: "Новий зв'язок"
   label_release_notes: "Примітки до випуску"
   label_remaining_work: "Залишок роботи"
@@ -3179,7 +3179,7 @@ uk:
     text_getting_started_description: "Отримайте стислий огляд управління проєктами та командної роботи в OpenProject. Це відео можна переглянути знову в меню довідки."
     welcome: "Вітаємо в додатку %{app_title}"
     select_language: "Будь ласка, виберіть мову"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_notes: "Додати коментарі"
   permission_add_work_packages: "Додати робочі пакети"
   permission_add_messages: "Відправка повідомлень"
   permission_add_project: "Створення проєктів"
@@ -3209,11 +3209,11 @@ uk:
   permission_delete_timelines: "Видалити графіки"
   permission_delete_wiki_pages: "Видалення wiki-сторінок"
   permission_delete_wiki_pages_attachments: "Видалення прикріплених файлів"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_notes: "Модерувати коментарі"
+  permission_edit_work_package_notes_explanation: "Увага! Користувачі із цим дозволом можуть редагувати будь-чиї коментарі."
   permission_edit_work_packages: "Редагувати робочі пакети"
   permission_edit_messages: "Редагування повідомлень"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_work_package_notes: "Редагувати власні коментарі"
   permission_edit_own_messages: "Редагування власних повідомлень"
   permission_edit_own_time_entries: "Редагування власного обліку часу"
   permission_edit_project: "Редагувати проект"
@@ -3802,7 +3802,7 @@ uk:
   text_notice_security_badge_displayed_html: >
     Примітка: якщо цей параметр увімкнено, на екрані з'явиться значок із статусом інсталяції <a href="%{information_panel_path}">%{information_panel_label}</a>   панелі адміністрування та на головній сторінці. Він відображається лише адміністраторам.   <br/> Значок перевірить поточну версію OpenProject на основі офіційної бази даних випуску OpenProject, щоб сповістити вас про будь-які оновлення або відомі уразливості. Щоб отримати додаткові відомості про те, що надає перевірка, які дані потрібні для надання доступних оновлень, та про те, як вимкнути цю перевірку, відвідайте сторінку   <a href="%{more_info_url}">конфігураційна документація</a>.
   text_own_membership_delete_confirmation: "Ви збираєтесь видалити деякі або всі права, через що можуть зникнути права на редагування цього проекту.\nВи впевнені що хочете продовжити?"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "Я розумію, що це видалення не можна відмінити"
   text_plugin_assets_writable: "Каталог ресурсів модулів доступний для запису"
   text_powered_by: "Працює на %{link}"
   text_project_identifier_info: "Допускаються тільки рядкові малі букви (a-z), цифри, тире та нижнє підкреслення. Початок має бути з малої літери."

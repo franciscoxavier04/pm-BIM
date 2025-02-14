@@ -116,7 +116,7 @@ vi:
   label_template: "Mẫu"
   label_recurring_meeting_view: "Xem chuỗi các cuộc họp"
   label_recurring_meeting_create: "Open"
-  label_recurring_meeting_copy: "Sao một lần"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Hủy lần này"
   label_recurring_meeting_delete: "Xóa lần họp"
   label_recurring_meeting_restore: "Khôi phục lại lần họp này"
@@ -178,10 +178,15 @@ vi:
       open_meeting_link: "Mở cuộc họp"
       open_my_meetings_link: "Go to My meetings"
       series:
-        title: "[%{project_name}] Chuỗi họp %{title}"
-        summary: "%{actor} đã lập chuỗi họp mới %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} đã gửi cho bạn một lời mời tham gia cuộc họp %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
       cancelled:
         header: "Cancelled: Meeting '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
@@ -191,9 +196,9 @@ vi:
         summary: "'%{title}' has been cancelled by %{actor}."
         date_time: "Scheduled date/time"
       rescheduled:
-        header: "Cuộc họp %{title} đã được lên lại lịch"
-        summary: "Cuộc họp %{title} đã được lên lại lịch bởi %{actor}"
-        body: "Cuộc họp %{title} đã được lên lại lịch bởi %{actor}."
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Ngày/giờ cũ"
         new_date_time: "Ngày/giờ mới"
     label_mail_all_participants: "Gửi email đến tất cả người tham gia"
@@ -214,10 +219,11 @@ vi:
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
       occurrence:
-        title: "Delete meeting occurrence"
-        heading: "Delete this meeting occurrence?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "No meetings to display"
       desc: "There are no meetings that meet the active filter criteria."
