@@ -29,31 +29,26 @@
 #++
 
 module Admin
-  class TimeEntryActivitiesController < ApplicationController
-    # Allow only admins here
-    before_action :require_admin
-    layout "admin"
+  module TimeEntryActivities
+    class ActivityForm < ApplicationForm
+      form do |form|
+        form.text_field(
+          name: :name,
+          label: TimeEntryActivity.human_attribute_name(:name),
+          required: true,
+          input_width: :large
+        )
+        form.check_box(
+          name: :active,
+          label: TimeEntryActivity.human_attribute_name(:active)
+        )
 
-    menu_item :time_entry_activities
-
-    def index
-      @time_entry_activities = TimeEntryActivity.all
+        form.submit(
+          name: :submit,
+          label: I18n.t(:button_save),
+          scheme: :primary
+        )
+      end
     end
-
-    def new
-      @time_entry_activity = TimeEntryActivity.new
-    end
-
-    def edit
-      @time_entry_activity = TimeEntryActivity.find(params[:id])
-    end
-
-    def create; end
-
-    def update; end
-
-    def destroy; end
-
-    def move; end
   end
 end

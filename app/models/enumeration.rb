@@ -51,9 +51,14 @@ class Enumeration < ApplicationRecord
   # let all child classes have Enumeration as its model name
   # used to not having to create another route for every subclass of Enumeration
   def self.inherited(child)
-    child.instance_eval do
-      def model_name
-        Enumeration.model_name
+    # in the long run we probably want to have seperate pages, time entry activities are first so we skipt it here
+    enumerations_with_own_settings = %w(TimeEntryActivity)
+
+    unless child.name.in?(enumerations_with_own_settings)
+      child.instance_eval do
+        def model_name
+          Enumeration.model_name
+        end
       end
     end
     super
