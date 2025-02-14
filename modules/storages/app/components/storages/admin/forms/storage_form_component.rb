@@ -28,21 +28,13 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 #
-module Storages::Admin
-  class RedirectUriComponent < StorageInfoComponent
-    def self.wrapper_key = :storage_redirect_uri_section
+module Storages::Admin::Forms
+  class StorageFormComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
 
-    delegate :oauth_client, to: :storage
+    alias_method :storage, :model
 
-    def show_icon_button_options
-      {
-        icon: :eye,
-        tag: :a,
-        href: url_helpers.show_redirect_uri_admin_settings_storage_oauth_client_path(storage),
-        scheme: :invisible,
-        aria: { label: I18n.t("storages.label_show_storage_redirect_uri") },
-        test_selector: "storage-show-redirect-uri-button"
-      }
-    end
+    options in_wizard: false
   end
 end

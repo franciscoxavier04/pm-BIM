@@ -29,15 +29,10 @@
 #++
 #
 module Storages::Admin
-  class OAuthClientInfoComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
-    include StorageViewInformation
-
-    alias_method :storage, :model
-    delegate :oauth_client, to: :storage
-
+  class OAuthClientInfoComponent < StorageInfoComponent
     def self.wrapper_key = :storage_oauth_client_section
+
+    delegate :oauth_client, to: :storage
 
     def edit_icon_button_options
       label = I18n.t("storages.buttons.replace_oauth_client",

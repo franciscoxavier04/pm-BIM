@@ -29,17 +29,11 @@
 #++
 #
 module Storages::Admin::Forms
-  class GeneralInfoFormComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
-
-    alias_method :storage, :model
+  class GeneralInfoFormComponent < StorageFormComponent
+    def self.wrapper_key = :storage_general_info_section
 
     options form_method: :post,
-            submit_button_disabled: false,
-            in_wizard: false
-
-    def self.wrapper_key = :storage_general_info_section
+            submit_button_disabled: false
 
     def form_url
       query = { continue_wizard: storage.id } if in_wizard

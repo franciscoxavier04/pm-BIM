@@ -29,14 +29,9 @@
 #++
 #
 module Storages::Admin
-  class OAuthApplicationInfoComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
-    include StorageViewInformation
-
-    alias_method :storage, :model
-    delegate :oauth_application, to: :storage
-
+  class OAuthApplicationInfoComponent < StorageInfoComponent
     def self.wrapper_key = :storage_openproject_oauth_section
+
+    delegate :oauth_application, to: :storage
   end
 end

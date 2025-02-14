@@ -29,16 +29,10 @@
 #++
 #
 module Storages::Admin::Forms
-  class RedirectUriFormComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
-
-    alias_method :storage, :model
-    delegate :oauth_client, to: :storage
-
-    options in_wizard: false
-
+  class RedirectUriFormComponent < StorageFormComponent
     def self.wrapper_key = :storage_redirect_uri_section
+
+    delegate :oauth_client, to: :storage
 
     def form_url
       query = { continue_wizard: storage.id } if in_wizard

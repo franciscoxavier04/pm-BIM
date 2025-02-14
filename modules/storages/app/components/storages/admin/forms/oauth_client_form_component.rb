@@ -29,14 +29,7 @@
 #++
 #
 module Storages::Admin::Forms
-  class OAuthClientFormComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
-
-    alias_method :storage, :model
-
-    options in_wizard: false
-
+  class OAuthClientFormComponent < StorageFormComponent
     def self.wrapper_key = :storage_oauth_client_section
 
     def form_url

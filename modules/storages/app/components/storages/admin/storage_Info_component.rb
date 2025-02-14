@@ -29,7 +29,12 @@
 #++
 
 module Storages::Admin
-  module StorageViewInformation
+  class StorageInfoComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
+
+    alias_method :storage, :model
+
     private
 
     def editable_storage?

@@ -29,10 +29,7 @@
 #++
 #
 module Storages::Admin
-  class StorageViewComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include StorageViewInformation
-
+  class StorageViewComponent < StorageInfoComponent
     options wizard: nil,
             wizard_step: nil
 
@@ -41,7 +38,5 @@ module Storages::Admin
 
       raise ArgumentError, "wizard is required" if wizard.nil?
     end
-
-    alias_method :storage, :model
   end
 end
