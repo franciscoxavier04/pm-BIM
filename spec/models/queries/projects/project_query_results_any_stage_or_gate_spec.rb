@@ -59,13 +59,31 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
   current_user { user }
 
-  def remove_gate
-    Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+  # rubocop:disable RSpec/ScatteredSetup
+  def self.remove_gate
+    before do
+      Project::LifeCycleStep.where(type: Project::Gate.name).destroy_all
+    end
   end
 
-  def remove_stage
-    Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+  def self.remove_stage
+    before do
+      Project::LifeCycleStep.where(type: Project::Stage.name).destroy_all
+    end
   end
+
+  def self.disable_stage
+    before do
+      Project::LifeCycleStep.where(type: Project::Stage.name).update_all(active: false)
+    end
+  end
+
+  def self.disable_gate
+    before do
+      Project::LifeCycleStep.where(type: Project::Gate.name).update_all(active: false)
+    end
+  end
+  # rubocop:enable RSpec/ScatteredSetup
 
   context "with a =d (on) operator" do
     before do
@@ -135,9 +153,28 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
         expect(instance.results).to be_empty
       end
     end
+
+    context "when filtering in the middle of the stage but with the stage being inactive" do
+      let(:values) { [(stage_start_date + ((stage_end_date - stage_start_date) / 2)).to_s] }
+
+      disable_stage
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when filtering on the day of the gate but with the gate being inactive" do
+      let(:values) { [gate_date.to_s] }
+
+      disable_gate
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
   end
 
-  # TODO: check active state
   # TODO: check permissions
 
   context "with a t (today) operator" do
@@ -147,7 +184,9 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
     context "when being in the middle of the stage" do
       it "returns the project whose stage is currently running" do
-        expect(instance.results).to contain_exactly(project_with_stage)
+        Timecop.travel((stage_start_date + (stage_end_date - stage_start_date)).noon) do
+          expect(instance.results).to contain_exactly(project_with_stage)
+        end
       end
     end
 
@@ -206,6 +245,26 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
         end
       end
     end
+
+    context "when being in the middle of the stage but with the stage being disabled" do
+      disable_stage
+
+      it "returns no project" do
+        Timecop.travel((stage_start_date + (stage_end_date - stage_start_date)).noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being on the day of the gate but with the stage being disabled" do
+      disable_gate
+
+      it "returns no project" do
+        Timecop.travel(gate_date.noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
   end
 
   context "with a w (this week) operator" do
@@ -231,9 +290,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
     context "when the current week overlaps the end of the stage" do
       # Would otherwise interfere with the spec
-      before do
-        remove_gate
-      end
+      remove_gate
 
       it "returns the project whose stage begins within the week" do
         Timecop.travel(stage_end_date.noon) do
@@ -260,9 +317,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
     context "when being a day before the gate" do
       # Would otherwise interfere with the spec
-      before do
-        remove_stage
-      end
+      remove_stage
 
       it "returns the project whose gate is within the current week" do
         Timecop.travel(gate_date.noon - 1.day) do
@@ -273,9 +328,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
     context "when being a day after the gate" do
       # Would otherwise interfere with the spec
-      before do
-        remove_stage
-      end
+      remove_stage
 
       it "returns the project whose gate is within the current week" do
         Timecop.travel(gate_date.noon + 1.day) do
@@ -286,9 +339,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
     context "when being in the week before the day of the gate" do
       # Would otherwise interfere with the spec
-      before do
-        remove_stage
-      end
+      remove_stage
 
       it "returns no project" do
         Timecop.travel(gate_date.noon - 7.days) do
@@ -300,6 +351,28 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     context "when being in the week after the day of the gate" do
       it "returns no project" do
         Timecop.travel(gate_date.noon + 7.days) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being in the middle of the stage but with the stage disabled" do
+      disable_stage
+
+      it "returns no project" do
+        Timecop.travel((stage_start_date + 3.days).noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being a day before the gate but with the gate disabled" do
+      # Would otherwise interfere with the spec
+      remove_stage
+      disable_gate
+
+      it "returns no project" do
+        Timecop.travel(gate_date.noon - 1.day) do
           expect(instance.results).to be_empty
         end
       end
@@ -355,9 +428,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       let(:values) { [(stage_start_date - 1.day).to_s, ""] }
 
       # Interferes at it would otherwise be found as well
-      before do
-        remove_gate
-      end
+      remove_gate
 
       it "returns the project with the stage" do
         expect(instance.results).to contain_exactly(project_with_stage)
@@ -368,9 +439,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       let(:values) { [stage_start_date.to_s, ""] }
 
       # Interferes at it would otherwise be found as well
-      before do
-        remove_gate
-      end
+      remove_gate
 
       it "returns the project with the stage" do
         expect(instance.results).to contain_exactly(project_with_stage)
@@ -381,9 +450,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       let(:values) { [(stage_start_date + 1.day).to_s, ""] }
 
       # Interferes at it would otherwise be found as well
-      before do
-        remove_gate
-      end
+      remove_gate
 
       it "returns no project" do
         expect(instance.results).to be_empty
@@ -426,9 +493,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       let(:values) { ["", (gate_date + 1.day).to_s] }
 
       # Interferes at it would otherwise be found as well
-      before do
-        remove_stage
-      end
+      remove_stage
 
       it "returns the project with the gate" do
         expect(instance.results).to contain_exactly(project_with_gate)
@@ -439,9 +504,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       let(:values) { ["", gate_date.to_s] }
 
       # Interferes at it would otherwise be found as well
-      before do
-        remove_stage
-      end
+      remove_stage
 
       it "returns the project with the gate" do
         expect(instance.results).to contain_exactly(project_with_gate)
@@ -452,9 +515,27 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       let(:values) { ["", (gate_date - 1.day).to_s] }
 
       # Interferes at it would otherwise be found as well
-      before do
-        remove_stage
+      remove_stage
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
       end
+    end
+
+    context "when encompassing the stage completely but with the stage disabled" do
+      let(:values) { [(stage_start_date - 1.day).to_s, (stage_end_date + 1.day).to_s] }
+
+      disable_stage
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when encompassing the gate precisely but with the gate disabled" do
+      let(:values) { [gate_date.to_s, gate_date.to_s] }
+
+      disable_gate
 
       it "returns no project" do
         expect(instance.results).to be_empty
