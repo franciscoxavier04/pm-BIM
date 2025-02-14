@@ -83,7 +83,7 @@ class ServiceResult
     self.result = result
     self.state = state
 
-    initialize_errors(errors)
+    initialize_errors(errors, result)
     @message = message
     @message_type = message_type
 
@@ -232,13 +232,14 @@ class ServiceResult
 
   private
 
-  def initialize_errors(errors)
-    self.errors = errors || new_errors_with_result
+  def initialize_errors(errors, provided_result)
+    self.errors = errors || new_errors_with_result(provided_result)
   end
 
-  def new_errors_with_result
-    ActiveModel::Errors.new(self).tap do |errors|
-      errors.merge!(result) if result.try(:errors).present?
+  def new_errors_with_result(provided_result)
+    base = provided_result.respond_to?(:errors) ? provided_result : self
+    ActiveModel::Errors.new(base).tap do |errors|
+      errors.merge!(provided_result) if base != self
     end
   end
 
