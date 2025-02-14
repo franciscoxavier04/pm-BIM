@@ -152,7 +152,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
   end
 
   def beginning_of_week
-    OpenProject::I18n::Date.time_at_beginning_of_week
+    OpenProject::Internationalization::Date.time_at_beginning_of_week
   end
 
   def end_of_week

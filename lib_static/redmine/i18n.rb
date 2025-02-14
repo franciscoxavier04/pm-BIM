@@ -27,7 +27,7 @@
 #++
 
 # This file is to be split up into smaller files in the OpenProject namespace.
-# A start has been made by splitting off OpenProject::I18n::Date into its own file.
+# A start has been made by splitting off OpenProject::Internationalization::Date into its own file.
 
 module Redmine
   module I18n

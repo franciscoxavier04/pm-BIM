@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe OpenProject::I18n::Date do
+RSpec.describe OpenProject::Internationalization::Date do
   describe ".beginning_of_week" do
     context "when the first day of the week is Sunday", with_settings: { start_of_week: 7 } do
       it "returns :sunday" do

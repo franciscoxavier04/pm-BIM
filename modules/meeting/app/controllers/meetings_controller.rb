@@ -372,7 +372,7 @@ class MeetingsController < ApplicationController
   def group_meetings(all_meetings) # rubocop:disable Metrics/AbcSize
     next_week = Time
       .current
-      .next_occurring(OpenProject::I18n::Date.beginning_of_week)
+      .next_occurring(OpenProject::Internationalization::Date.beginning_of_week)
       .beginning_of_day
     groups = Hash.new { |h, k| h[k] = [] }
     groups[:later] = show_more_pagination(all_meetings
