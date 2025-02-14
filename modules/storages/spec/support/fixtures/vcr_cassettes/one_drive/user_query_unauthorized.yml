@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Wed, 12 Feb 2025 09:18:37 GMT
 - request:
     method: post
-    uri: https://login.microsoftonline.com/e36f1dbc-fdae-427e-b61b-0d96ddfb81a4/oauth2/v2.0/token
+    uri: https://login.microsoftonline.com/4d44bf36-9b56-45c0-8807-bbf386dd047f/oauth2/v2.0/token
     body:
       encoding: ASCII-8BIT
       string: grant_type=refresh_token&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default+offline_access&client_id=b8a5bb54-5fb2-4e0e-9427-9d24dbac32ff&client_secret=nB58Q%7EwWf6.4zUIojn2nzkrpzDWlkQtDSWPcLa6R&refresh_token=1.Aa8AvB1v4679fkK2Gw2W3fuBpFS7pbiyXw5OlCedJNusMv9KAU6vAA.AgABAwEAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P9fuYdbTREQpkZ8rD4xDnTo87QINqdVLwMCTvvfK8qm8E8jqHUQI1vNcWnBxLcz9sLzbFQyYSMWPJfcutVWA6TGcRyChH--auYHFJdWuQVhY-IDHSlr9he4HvBKxu-XHTQe7qIQt-rGsX1S33_s0uhSyGuyx7Yp4IODhR5GAZPTROZVJQ0wm1eizjMNLHN4kBolD0ygtTQYVgxSPHF-DOI-2i-nirY2Vu-9LkNgwHL3N_fAOWCMXXyqzHI__FeqBYlD_r-1WlHOM8mCnFHU1gFU8Uhpo9S1xxrwL6C72znEKIo2ofVfRSNY0ZSiY8wqnR2U08DalYNiTlpm1rZOfwK4pnLws3y4oCHr9MKppUR6ujtl1SqaVmBGhh5B8dbUK4Yk7Rb6bY1r_xChL8Nn97RNvFy0vZ9P2L_iQgp4bOMTboEgX4zxMs8eg98CJZTvKjH431QCXQD81GAmofCH0i_BbSNQt8MWws7F9HfYDf111oz5MBVrHdhSxN-nOXYHy-3_wtyoSpIzkKzUG1uct9YKms8xr-vNLdYWzN8V0C3QgZE6GKKyxNoeZNbuvzl5Bgk7AEYnbLIJDHuRdidaEvNOGB8ppryZqPirTy1ekFYrWSl31nvsi6YKF1APhoePpGLB_5Odw41CmadE9VGx8RCOk2RozTvYXHs5pVx8DEcYW8f9muNudCKNohmHwwehXitXy_BWnNJmdJsZlPgyoycDcuWpgHPr6vsyXehPsuzoWwyFBa9lrIpvHRGE5xTfmZUSkFSkBjAPIzcae6StZTR_mgi3Ro8YZE
