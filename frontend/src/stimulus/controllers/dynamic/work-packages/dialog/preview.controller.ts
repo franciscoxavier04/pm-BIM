@@ -100,7 +100,7 @@ export abstract class DialogPreviewController extends Controller {
               }
 
               // In case we manually want to prevent morphing
-              return typeof (oldNode.getAttribute) === typeof (Function) && !oldNode.getAttribute('data-skip-morphing');
+              return typeof (oldNode.getAttribute) !== typeof (Function) || !oldNode.getAttribute('data-skip-morphing');
             },
           },
         });
