@@ -35,9 +35,13 @@ module Projects
         options :date_method
 
         def subject = render(Primer::Beta::Text.new(color: :muted)) { I18n.t(date_method, scope: "attributes") }
-        def type = nil
+
+        def type = render(Projects::ProjectDateTypeComponent.new)
+
         def active = nil
+
         def duration = nil
+
         def dates = nil
       end
     end

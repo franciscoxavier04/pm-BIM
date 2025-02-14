@@ -29,33 +29,7 @@
 # ++
 
 module Projects
-  class LifeCycleTypeComponent < ApplicationComponent
+  class ProjectDateTypeComponent < ApplicationComponent
     include OpPrimer::ComponentHelpers
-
-    def text
-      model.model_name.human
-    end
-
-    def icon
-      case model
-      when Project::StageDefinition
-        :"git-commit"
-      when Project::GateDefinition
-        :diamond
-      else
-        raise NotImplementedError, "Unknown model #{model.class} to render a LifeCycleTypeComponent with"
-      end
-    end
-
-    def icon_color_class
-      helpers.hl_inline_class("life_cycle_step_definition", model)
-    end
-
-    def text_options
-      # The tag: :div is is a hack to fix the line height difference
-      # caused by font_size: :small. That line height difference
-      # would otherwise lead to the text being not on the same height as the icon
-      { color: :muted, font_size: :small, tag: :div }.merge(options)
-    end
   end
 end
