@@ -42,6 +42,25 @@ export default class DateFormController extends Controller {
 
   private toggled:boolean = false;
 
+  private handleFlatpickrDatesChangedBound = this.handleFlatpickrDatesChanged.bind(this);
+
+  connect() {
+   document.addEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+  }
+
+  disconnect() {
+    document.removeEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+    super.disconnect();
+  }
+
+  handleFlatpickrDatesChanged() {
+    const activeField:HTMLInputElement = document.getElementsByClassName('op-datepicker-modal--date-field_current')[0] as HTMLInputElement;
+
+    if (activeField.name === 'work_package[duration]') {
+      this.toggleFieldVisibility();
+    }
+  }
+
   startDateFieldContainerTargetConnected() {
     // When the complete turboFrame updates, we have to remember, whether the date field was already toggled.
     // In that case, we want to preserve that state
@@ -81,5 +100,6 @@ export default class DateFormController extends Controller {
     Array.from(document.getElementsByClassName('wp-datepicker-dialog-date-form--button-container_visible')).forEach((el) => {
       el.classList.remove('wp-datepicker-dialog-date-form--button-container_visible');
     });
+    document.removeEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
   }
 }

@@ -58,7 +58,7 @@ module WorkPackages
       end
 
       def show_text_field?(name)
-        @is_milestone || field_value(name).present? || (name == :due_date && field_value(:start_date).nil?)
+        @is_milestone || !@schedule_manually || field_value(name).present? || (name == :due_date && field_value(:start_date).nil?)
       end
 
       def text_field_options(name:, label:)
