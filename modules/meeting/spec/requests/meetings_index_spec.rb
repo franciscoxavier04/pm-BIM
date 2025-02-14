@@ -185,7 +185,7 @@ RSpec.describe "Meeting index",
   end
 
   describe "with start_of_week on sunday",
-           with_settings: { start_of_week: 0 } do
+           with_settings: { start_of_week: 7 } do
     it "sorts upcoming meetings into buckets" do
       expect(subject).to have_http_status(:ok)
 

@@ -193,7 +193,7 @@ module Pages::Meetings
 
     def meeting_group_key(meeting)
       start_date = meeting.start_time.to_date
-      next_week = Time.current.next_occurring(Redmine::I18n.start_of_week)
+      next_week = Time.current.next_occurring(OpenProject::I18n::Date.beginning_of_week)
 
       if start_date == Time.zone.today
         :today

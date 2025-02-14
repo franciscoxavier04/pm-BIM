@@ -26,6 +26,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+# This file is to be split up into smaller files in the OpenProject namespace.
+# A start has been made by splitting off OpenProject::I18n::Date into its own file.
+
 module Redmine
   module I18n
     include ActionView::Helpers::NumberHelper
@@ -43,19 +46,6 @@ module Redmine
           .reject! { |l| l.start_with?("js-") }
           .uniq
           .sort
-    end
-
-    def self.start_of_week
-      case Setting.start_of_week.to_i
-      when 1
-        :monday
-      when 7
-        :sunday
-      when 6
-        :saturday
-      else
-        Date.beginning_of_week
-      end
     end
 
     def self.valid_languages
