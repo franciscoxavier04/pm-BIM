@@ -31,7 +31,7 @@ class MeetingSeriesMailer < UserMailer
     @actor = actor
     @series = series
     @template = series.template
-    @next_occurrence = series.next_occurrence&.to_time
+    @next_occurrence = series.next_occurrence
     @user = user
 
     set_headers(series)

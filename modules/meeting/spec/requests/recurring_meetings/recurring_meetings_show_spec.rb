@@ -48,7 +48,7 @@ RSpec.describe "Recurring meetings show",
 
   let(:current_user) { user }
   let(:show_page) { Pages::RecurringMeeting::Show.new(recurring_meeting).with_capybara_page(page) }
-  let(:request) { get recurring_meeting_path(recurring_meeting) }
+  let(:request) { get project_recurring_meeting_path(project, recurring_meeting) }
 
   before do
     login_as(current_user)
@@ -57,7 +57,8 @@ RSpec.describe "Recurring meetings show",
   context "when user has permissions to access" do
     it "shows the recurring meetings" do
       get recurring_meeting_path(recurring_meeting)
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:see_other)
+      expect(response).to redirect_to(project_recurring_meeting_path(project, recurring_meeting))
     end
 
     it "shows project recurring meetings" do
@@ -109,7 +110,7 @@ RSpec.describe "Recurring meetings show",
     end
 
     it "does not show the cancelled meeting" do
-      get recurring_meeting_path(recurring_meeting, direction: "past")
+      get project_recurring_meeting_path(project, recurring_meeting, direction: "past")
 
       expect(page).to have_text format_time(past_instance.start_time)
       expect(page).to have_no_text format_time(past_schedule_cancelled.start_time)
@@ -122,7 +123,7 @@ RSpec.describe "Recurring meetings show",
       end
 
       it "still shows the one past meeting (Regression #61280)" do
-        get recurring_meeting_path(recurring_meeting, direction: "past")
+        get project_recurring_meeting_path(project, recurring_meeting, direction: "past")
         expect(page).to have_text format_time(past_instance.start_time)
       end
     end
@@ -147,7 +148,7 @@ RSpec.describe "Recurring meetings show",
     end
 
     it "sorts meetings into two tables based on state" do
-      get recurring_meeting_path(recurring_meeting)
+      get project_recurring_meeting_path(project, recurring_meeting)
 
       content = page.find_by_id("content")
       expect(content).to have_text "Open"
@@ -189,7 +190,7 @@ RSpec.describe "Recurring meetings show",
 
     it "does not show the meeting ended blankslate" do
       travel_to(Time.zone.today + 9.hours) do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
       end
 
       expect(page).to have_text format_time(ongoing_meeting.start_time)
@@ -197,7 +198,7 @@ RSpec.describe "Recurring meetings show",
       expect(page).to have_no_text "Meeting series ended"
 
       travel_to(Time.zone.today + 10.hours + 5.minutes) do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
       end
 
       expect(page).to have_text format_time(ongoing_meeting.start_time)
@@ -221,7 +222,7 @@ RSpec.describe "Recurring meetings show",
       end
 
       it "shows rescheduled occurrences" do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
 
         old_date = format_time(rescheduled.start_time)
         new_date = format_time(rescheduled_instance.start_time)
@@ -270,7 +271,7 @@ RSpec.describe "Recurring meetings show",
       end
 
       it "shows all open meetings in 'Open', even if they no longer match the schedule (Regression #61301)" do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
 
         first_date = format_time(first.start_time)
         second_date = format_time(second.start_time)
@@ -290,7 +291,7 @@ RSpec.describe "Recurring meetings show",
       end
 
       it "shows the cancelled occurrences" do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
 
         expect(page).to have_css("li", text: format_time(rescheduled.start_time))
         expect(page).to have_css("li", text: "Cancelled")
@@ -301,7 +302,7 @@ RSpec.describe "Recurring meetings show",
       it "shows the next five occurrences" do
         # Assuming we're past today's occurrence
         Timecop.freeze(Time.zone.today + 11.hours) do
-          get recurring_meeting_path(recurring_meeting)
+          get project_recurring_meeting_path(project, recurring_meeting)
         end
 
         (1..5).each do |date|
@@ -336,7 +337,7 @@ RSpec.describe "Recurring meetings show",
     it "shows the correct number of next occurrences (Regression #61194)" do
       # While today's meeting is ongoing, but no longer in remaining_occurrences
       Timecop.freeze(Time.zone.today + 10.hours + 1.minute) do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
       end
 
       (1..4).each do |date|
@@ -350,19 +351,19 @@ RSpec.describe "Recurring meetings show",
 
     it "does not show the recurring meetings" do
       get recurring_meeting_path(recurring_meeting)
-      expect(response).to have_http_status(:not_found)
+      expect(response).to have_http_status(:forbidden)
     end
 
     it "does not show project recurring meetings" do
       get project_recurring_meeting_path(project, recurring_meeting)
-      expect(response).to have_http_status(:not_found)
+      expect(response).to have_http_status(:forbidden)
     end
   end
 
   describe "Show more" do
     context "when there are more than 5 scheduled instances" do
       it "shows the footer" do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
 
         expect(page).to have_css("#recurring-meetings-footer-component")
       end
@@ -380,7 +381,7 @@ RSpec.describe "Recurring meetings show",
       end
 
       it "shows no footer" do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
 
         expect(page).to have_no_css("#recurring-meetings-footer-component")
       end
@@ -397,7 +398,7 @@ RSpec.describe "Recurring meetings show",
       end
 
       it "shows footer, but no counts" do
-        get recurring_meeting_path(recurring_meeting)
+        get project_recurring_meeting_path(project, recurring_meeting)
 
         expect(page).to have_text "There are more scheduled meetings"
       end

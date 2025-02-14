@@ -516,7 +516,12 @@ export default class IndexController extends Controller {
     this.onSubmitBound = () => { void this.onSubmit(); };
     this.adjustMarginBound = () => { void this.adjustJournalContainerMargin(); };
     this.onBlurEditorBound = () => { void this.onBlurEditor(); };
-    this.onFocusEditorBound = () => { void this.onFocusEditor(); };
+    this.onFocusEditorBound = () => {
+      void this.onFocusEditor();
+      if (this.isMobile()) {
+        void this.scrollInputContainerIntoView(200);
+      }
+    };
 
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
@@ -569,21 +574,14 @@ export default class IndexController extends Controller {
     }
   }
 
-  private scrollInputContainerIntoView(timeout:number = 0) {
+  private scrollInputContainerIntoView(timeout:number = 0, behavior:ScrollBehavior = 'smooth') {
     const inputContainer = this.getInputContainer() as HTMLElement;
     setTimeout(() => {
       if (inputContainer) {
-        if (this.sortingValue === 'desc') {
-          inputContainer.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-          });
-        } else {
-          inputContainer.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
-        }
+        inputContainer.scrollIntoView({
+          behavior,
+          block: this.sortingValue === 'desc' ? 'nearest' : 'start',
+        });
       }
     }, timeout);
   }
@@ -598,9 +596,7 @@ export default class IndexController extends Controller {
     this.addEventListenersToCkEditorInstance();
 
     if (this.isMobile()) {
-      // timeout amount tested on mobile devices for best possible user experience
-      this.scrollInputContainerIntoView(100); // first bring the input container fully into view (before focusing!)
-      this.focusEditor(400); // wait before focusing to avoid interference with the auto scroll
+      this.focusEditor(0);
     } else if (this.sortingValue === 'asc' && journalsContainerAtBottom) {
       // scroll to (new) bottom if sorting is ascending and journals container was already at bottom before showing the form
       this.scrollJournalContainer(true);

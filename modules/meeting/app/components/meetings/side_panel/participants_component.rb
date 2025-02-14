@@ -45,6 +45,7 @@ module Meetings
       super
 
       @meeting = meeting
+      @project = meeting.project
     end
 
     def elements

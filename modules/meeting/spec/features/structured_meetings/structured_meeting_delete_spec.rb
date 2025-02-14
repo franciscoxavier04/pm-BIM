@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,41 +32,47 @@ require "spec_helper"
 
 require_relative "../../support/pages/meetings/new"
 require_relative "../../support/pages/structured_meeting/show"
+require_relative "../../support/pages/meetings/index"
 
-RSpec.describe "Structured meetings links caught by turbo",
+RSpec.describe "Structured meetings deletion",
                :js do
-  include Rails.application.routes.url_helpers
+  include Components::Autocompleter::NgSelectAutocompleteHelpers
 
-  shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
+  shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking]) }
   shared_let(:user) do
     create(:user,
            lastname: "First",
-           member_with_permissions: { project => %i[view_meetings create_meetings edit_meetings delete_meetings manage_agendas
-                                                    view_work_packages] }).tap do |u|
+           member_with_permissions: { project => %i[view_meetings create_meetings edit_meetings delete_meetings] }).tap do |u|
       u.pref[:time_zone] = "Etc/UTC"
 
       u.save!
     end
   end
-  shared_let(:meeting1) { create(:structured_meeting, title: "First meeting", project:) }
-  shared_let(:meeting2) { create(:structured_meeting, title: "Other meeting", project:) }
 
-  let(:notes) do
-    <<~NOTES
-      [Meeting link](#{meeting_url(meeting2)})
-    NOTES
-  end
-  let!(:agenda_item) { create(:meeting_agenda_item, meeting: meeting1, notes:) }
-  let(:show_page) { Pages::StructuredMeeting::Show.new(meeting1) }
+  shared_let(:meeting) { create(:meeting, project:, author: user) }
+
+  let(:current_user) { user }
+  let(:meetings_page) { Pages::Meetings::Index.new(project: nil) }
 
   before do
-    login_as user
-    show_page.visit!
+    login_as current_user
+    meetings_page.visit!
   end
 
-  it "can link to the other meeting" do
-    click_link_or_button "Meeting link"
-    expect(page).to have_current_path project_meeting_path(project, meeting2)
-    expect(page).to have_css("#content", text: "Other meeting", visible: :visible)
+  it "can delete globally, redirecting back to global" do
+    expect(page).to have_current_path(meetings_page.path)
+    expect(page).to have_text meeting.title
+
+    within("li", text: meeting.title) do
+      click_on "more-button"
+      click_on "Delete meeting"
+    end
+
+    within("#delete-meeting-dialog") do
+      expect(page).to have_text "Delete this meeting?"
+      click_on "Delete"
+    end
+
+    expect(page).to have_current_path(meetings_page.path)
   end
 end

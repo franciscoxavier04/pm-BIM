@@ -116,7 +116,7 @@ zh-TW:
   label_template: "模板"
   label_recurring_meeting_view: "檢視會議系列"
   label_recurring_meeting_create: "開啟"
-  label_recurring_meeting_copy: "複製為一次性"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "取消此事件"
   label_recurring_meeting_delete: "刪除此事件"
   label_recurring_meeting_restore: "恢復此事件"
@@ -219,10 +219,11 @@ zh-TW:
         confirmation_message_html: >
           此動作無法還原。請小心操作。
       occurrence:
-        title: "刪除會議事件"
-        heading: "刪除此會議事件？"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          這次會議是 <strong>%{title}</strong> 系列的一部份.這只會刪除此特定事件，而不會刪除整個系列。您要繼續嗎？
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "沒有可顯示的會議"
       desc: "沒有符合篩選條件的會議。"

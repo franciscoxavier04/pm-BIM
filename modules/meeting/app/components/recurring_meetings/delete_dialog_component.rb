@@ -33,11 +33,11 @@ module RecurringMeetings
     include ApplicationHelper
     include OpTurbo::Streamable
 
-    def initialize(recurring_meeting:, project:)
+    def initialize(recurring_meeting:)
       super
 
       @recurring_meeting = recurring_meeting
-      @project = project
+      @project = recurring_meeting.project
     end
 
     private
