@@ -83,6 +83,18 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     end
   end
 
+  def self.remove_stage_dates
+    before do
+      stage.update_columns(end_date: nil, start_date: nil)
+    end
+  end
+
+  def self.remove_gate_dates
+    before do
+      gate.update_columns(end_date: nil, start_date: nil)
+    end
+  end
+
   def self.remove_permissions
     before do
       # We keep the permission within the project without steps so that the filter itself is available
@@ -142,6 +154,16 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       end
     end
 
+    context "when the stage has no dates" do
+      let(:values) { [stage_end_date.to_s] }
+
+      remove_stage_dates
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
     context "when filtering on the day of the gate" do
       let(:values) { [gate_date.to_s] }
 
@@ -160,6 +182,16 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
     context "when filtering after the gate" do
       let(:values) { [(gate_date + 1.day).to_s] }
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when the gate has no dates" do
+      let(:values) { [gate_date.to_s] }
+
+      remove_gate_dates
 
       it "returns no project" do
         expect(instance.results).to be_empty
@@ -252,6 +284,14 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       end
     end
 
+    context "when the stage has no dates" do
+      remove_stage_dates
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
     context "when being on the day of the gate" do
       it "returns the project whose gate is on the date of the value" do
         Timecop.travel(gate_date.noon) do
@@ -271,6 +311,16 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     context "when being after the day of the gate" do
       it "returns no project" do
         Timecop.travel(gate_date.noon + 1.day) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when the gate has no dates" do
+      remove_gate_dates
+
+      it "returns no project" do
+        Timecop.travel(gate_date.noon) do
           expect(instance.results).to be_empty
         end
       end
@@ -362,10 +412,17 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       end
     end
 
-    context "when being a day before the gate" do
-      # Would otherwise interfere with the spec
-      remove_stage
+    context "when the stage has no dates" do
+      remove_stage_dates
 
+      it "returns no project" do
+        Timecop.travel(stage_end_date.noon + 7.days) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being a day before the gate" do
       it "returns the project whose gate is within the current week" do
         Timecop.travel(gate_date.noon - 1.day) do
           expect(instance.results).to contain_exactly(project_with_gate)
@@ -374,9 +431,6 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     end
 
     context "when being a day after the gate" do
-      # Would otherwise interfere with the spec
-      remove_stage
-
       it "returns the project whose gate is within the current week" do
         Timecop.travel(gate_date.noon + 1.day) do
           expect(instance.results).to contain_exactly(project_with_gate)
@@ -385,9 +439,6 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     end
 
     context "when being in the week before the day of the gate" do
-      # Would otherwise interfere with the spec
-      remove_stage
-
       it "returns no project" do
         Timecop.travel(gate_date.noon - 7.days) do
           expect(instance.results).to be_empty
@@ -414,8 +465,6 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     end
 
     context "when being a day before the gate but with the gate disabled" do
-      # Would otherwise interfere with the spec
-      remove_stage
       disable_gate
 
       it "returns no project" do
@@ -436,9 +485,17 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     end
 
     context "when being a day before the gate but without permissions" do
-      # Would otherwise interfere with the spec
-      remove_stage
       remove_permissions
+
+      it "returns no project" do
+        Timecop.travel(gate_date.noon - 1.day) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when the gate has no dates" do
+      remove_gate_dates
 
       it "returns no project" do
         Timecop.travel(gate_date.noon - 1.day) do
@@ -638,6 +695,24 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       end
     end
 
+    context "when the stage has no dates" do
+      let(:values) { [(stage_start_date - 1.day).to_s, (stage_end_date + 1.day).to_s] }
+
+      remove_stage_dates
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when no value is provided" do
+      let(:values) { ["", ""] }
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
     context "when encompassing the gate completely" do
       let(:values) { [(gate_date - 1.day).to_s, (gate_date + 1.day).to_s] }
 
@@ -689,6 +764,16 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
       # Interferes at it would otherwise be found as well
       remove_stage
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when the gate has no dates" do
+      let(:values) { [(gate_date - 1.day).to_s, (gate_date + 1.day).to_s] }
+
+      remove_gate_dates
 
       it "returns no project" do
         expect(instance.results).to be_empty
