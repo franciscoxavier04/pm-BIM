@@ -33,8 +33,14 @@ import { findAllFocusableElementsWithin } from 'core-app/shared/helpers/focus-he
 export class FocusHelperService {
   public focus(element:HTMLElement):void {
     setTimeout(() => {
+      //debugger;
       const focusable = findAllFocusableElementsWithin(element)[0] || element;
-      focusable?.focus();
+      if (window.location.hash) {
+        focusable?.focus();
+      } else {
+        // Prevent scroll if there's no hash in the URL
+        focusable?.focus({ preventScroll: true });
+      }
     }, 20);
   }
 }
