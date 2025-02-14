@@ -17,7 +17,11 @@
             "projects--settings--border-box-filter-target": "filter"
           }
         )
-        subheader.with_action_button(scheme: :primary) do |button|
+        subheader.with_action_button(
+          scheme: :primary,
+          tag: :a,
+          href: new_admin_time_entry_activity_path
+        ) do |button|
           button.with_leading_visual_icon(icon: :plus)
           "Activity"
         end
