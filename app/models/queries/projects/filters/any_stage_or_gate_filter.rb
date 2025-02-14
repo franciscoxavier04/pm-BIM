@@ -82,6 +82,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     Project::LifeCycleStep
       .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
       .where(type: Project::Stage.name)
+      .active
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", nil, start_date))
       .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", end_date, nil))
   end
@@ -90,6 +91,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     Project::LifeCycleStep
       .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
       .where(type: Project::Stage.name)
+      .active
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, nil))
       .where(date_range_clause(Project::LifeCycleStep.table_name, "end_date", nil, end_date))
   end
@@ -99,6 +101,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     Project::LifeCycleStep
       .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
       .where(type: Project::Gate.name)
+      .active
       .where(date_range_clause(Project::LifeCycleStep.table_name, "start_date", start_date, end_date))
   end
 
@@ -106,6 +109,7 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     Project::LifeCycleStep
       .where("#{Project::LifeCycleStep.table_name}.project_id = #{Project.table_name}.id")
       .where(type: Project::Stage.name)
+      .active
       .where(
         <<~SQL.squish, today.beginning_of_week, today.end_of_week
           daterange(#{Project::LifeCycleStep.table_name}.start_date,
