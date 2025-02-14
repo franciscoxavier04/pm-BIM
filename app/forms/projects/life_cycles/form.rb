@@ -74,7 +74,7 @@ module Projects::LifeCycles
       input_attributes = { name: :date_range, value: }
       if model.working_days_count
         input_attributes[:caption] =
-          I18n.t("project_stage.working_days_count", count: model.working_days_count)
+          I18n.t("project_lifecycle.working_days_count", count: model.working_days_count)
       end
 
       form.range_date_picker **base_input_attributes, **input_attributes
