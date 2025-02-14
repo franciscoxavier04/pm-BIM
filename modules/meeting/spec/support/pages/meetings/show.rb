@@ -93,7 +93,7 @@ module Pages::Meetings
     end
 
     def path
-      meeting_path(meeting)
+      project_meeting_path(meeting.project, meeting)
     end
   end
 end

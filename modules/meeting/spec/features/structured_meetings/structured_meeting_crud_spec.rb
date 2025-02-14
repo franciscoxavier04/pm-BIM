@@ -293,9 +293,8 @@ RSpec.describe "Structured meetings CRUD",
     end
 
     wait_for_network_idle
-    click_on("op-meetings-header-action-trigger")
-
     retry_block do
+      click_on("op-meetings-header-action-trigger")
       click_on "Copy"
       # dynamically wait for the modal to be loaded
       expect(page).to have_text("Copy meeting")

@@ -119,7 +119,7 @@ uk:
   label_template: "Шаблон"
   label_recurring_meeting_view: "Переглянути серію нарад"
   label_recurring_meeting_create: "Відкрити"
-  label_recurring_meeting_copy: "Копіювати як одноразову"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Скасувати це повторення"
   label_recurring_meeting_delete: "Видалити повторення"
   label_recurring_meeting_restore: "Відновити це повторення"
@@ -184,8 +184,8 @@ uk:
       open_meeting_link: "Відкрити зустріч"
       open_my_meetings_link: "Перейдіть до Моїх нарад"
       series:
-        title: "[%{project_name}] – серія нарад %{title}"
-        summary: "%{actor} створив(-ла) нову серію нарад %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
       series_rescheduled:
         title: "[%{project_name}] Meeting series '%{title}' rescheduled"
         summary: "%{actor} has changed the schedule for meeting series '%{title}'"
@@ -225,10 +225,11 @@ uk:
         confirmation_message_html: >
           Зверніть увагу: цю дію не можна відмінити.
       occurrence:
-        title: "Видалити нараду серії"
-        heading: "Видалити цю нараду серії?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          Ця нарада належить до серії з назвою <strong>%{title}</strong>. Буде видалено лише цю нараду, а не всю її серію. Продовжити?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "Немає нарад"
       desc: "Немає нарад, які відповідають критеріям активного фільтра."

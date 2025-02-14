@@ -4,7 +4,7 @@
       model: @meeting,
       method: :put,
       data: { turbo: true, turbo_stream: true },
-      url: update_details_meeting_path(@meeting)
+      url: update_details_project_meeting_path(@project, @meeting)
     ) do |f|
       component_collection do |collection|
         collection.with_component(Primer::Alpha::Dialog::Body.new) do

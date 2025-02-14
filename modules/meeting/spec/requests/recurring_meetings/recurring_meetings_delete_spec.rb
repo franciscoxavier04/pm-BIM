@@ -54,7 +54,7 @@ RSpec.describe "DELETE /recurring_meetings/:id",
 
   let(:current_user) { user }
   let(:show_page) { Pages::RecurringMeeting::Show.new(recurring_meeting).with_capybara_page(page) }
-  let(:request) { delete recurring_meeting_path(recurring_meeting) }
+  let(:request) { delete project_recurring_meeting_path(project, recurring_meeting) }
 
   subject do
     request
@@ -71,7 +71,7 @@ RSpec.describe "DELETE /recurring_meetings/:id",
   context "when user has permissions to access" do
     it "deletes the series" do
       title = recurring_meeting.title
-      expect(subject).to have_http_status(:found)
+      expect(subject).to have_http_status(:see_other)
 
       expect { recurring_meeting.reload }.to raise_error(ActiveRecord::RecordNotFound)
 
@@ -83,7 +83,7 @@ RSpec.describe "DELETE /recurring_meetings/:id",
     end
 
     context "when deleting an occurrence" do
-      let(:request) { delete meeting_path(recurring_meeting.meetings.not_templated.last) }
+      let(:request) { delete project_meeting_path(project, recurring_meeting.meetings.not_templated.last) }
 
       it "deletes the occurrence" do
         title = recurring_meeting.template.title
@@ -102,14 +102,9 @@ RSpec.describe "DELETE /recurring_meetings/:id",
   context "when user has no permissions to access" do
     let(:current_user) { create(:user) }
 
-    it "does not show the recurring meetings" do
-      delete recurring_meeting_path(recurring_meeting)
-      expect(response).to have_http_status(:not_found)
-    end
-
     it "does not show project recurring meetings" do
       delete project_recurring_meeting_path(project, recurring_meeting)
-      expect(response).to have_http_status(:not_found)
+      expect(response).to have_http_status(:forbidden)
     end
   end
 end

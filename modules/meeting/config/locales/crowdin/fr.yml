@@ -117,7 +117,7 @@ fr:
   label_template: "Modèle"
   label_recurring_meeting_view: "Voir la série de réunions"
   label_recurring_meeting_create: "Ouvrir"
-  label_recurring_meeting_copy: "Copier en tant que réunion ponctuelle"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Annuler cette occurrence"
   label_recurring_meeting_delete: "Supprimer l'occurrence"
   label_recurring_meeting_restore: "Restaurer cette occurrence"
@@ -180,8 +180,8 @@ fr:
       open_meeting_link: "Ouvrir la réunion"
       open_my_meetings_link: "Accéder à Mes réunions"
       series:
-        title: "[%{project_name}] Série de réunions %{title}"
-        summary: "%{actor} a mis en place une nouvelle série de réunions %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
       series_rescheduled:
         title: "[%{project_name}] Meeting series '%{title}' rescheduled"
         summary: "%{actor} has changed the schedule for meeting series '%{title}'"
@@ -221,10 +221,11 @@ fr:
         confirmation_message_html: >
           Cette action est irréversible. Veuillez procéder avec prudence.
       occurrence:
-        title: "Supprimer l'occurrence de la réunion"
-        heading: "Supprimer cette occurrence de réunion ?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          Cette réunion fait partie d'une série intitulée <strong>%{title}</strong>. Cette opération ne supprimera que cette réunion particulière et non l'ensemble de la série. Voulez-vous continuer ?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "Aucune réunion à afficher"
       desc: "Aucune réunion ne répond aux critères du filtre actif."

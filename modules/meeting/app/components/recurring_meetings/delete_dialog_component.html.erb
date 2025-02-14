@@ -33,7 +33,7 @@ See COPYRIGHT and LICENSE files for more details.
       id:,
       title:,
       form_arguments: {
-        action: polymorphic_path([@project, @recurring_meeting]),
+        action: project_recurring_meeting_path(@project, @recurring_meeting),
         method: :delete,
         data: { turbo: true }
       }

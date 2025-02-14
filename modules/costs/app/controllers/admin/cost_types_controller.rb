@@ -74,7 +74,7 @@ module Admin
 
       if @cost_type.save
         flash[:notice] = t(:notice_successful_update)
-        redirect_back_or_default(action: "index")
+        redirect_back_or_default({ action: "index" })
       else
         render action: :edit, status: :unprocessable_entity, layout: !request.xhr?
       end
@@ -96,7 +96,7 @@ module Admin
 
       if @cost_type.save
         flash[:notice] = t(:notice_successful_update)
-        redirect_back_or_default(action: "index")
+        redirect_back_or_default({ action: "index" })
       else
         @cost_type.rates.build(valid_from: Time.zone.today) if @cost_type.rates.empty?
         render action: :edit, status: :unprocessable_entity, layout: !request.xhr?
@@ -113,7 +113,7 @@ module Admin
       if @cost_type.save
         flash[:notice] = t(:notice_successful_lock)
 
-        redirect_back_or_default(action: "index")
+        redirect_back_or_default({ action: "index" })
       end
     end
 
@@ -124,7 +124,7 @@ module Admin
       if @cost_type.save
         flash[:notice] = t(:notice_successful_restore)
 
-        redirect_back_or_default(action: "index")
+        redirect_back_or_default({ action: "index" })
       end
     end
 

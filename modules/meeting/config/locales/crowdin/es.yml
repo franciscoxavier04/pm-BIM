@@ -221,10 +221,11 @@ es:
         confirmation_message_html: >
           Esta acción no es reversible. Proceda con precaución.
       occurrence:
-        title: "Eliminar repetición de reunión"
-        heading: "¿Desea eliminar esta repetición de reunión?"
+        title: "Cancelar repetición de reunión"
+        heading: "¿Desea cancelar esta repetición de reunión?"
         confirmation_message_html: >
-          Esta reunión forma parte de una serie llamada <strong>%{title}</strong>. Esto solo eliminará esta reunión en particular y no toda la serie. ¿Desea continuar?
+          Cualquier información sobre la reunión que no figure en la plantilla se perderá. ¿Desea continuar?
+        confirm_button: "Cancelar repetición"
     blankslate:
       title: "No hay reuniones que mostrar"
       desc: "No hay reuniones que cumplan los criterios del filtro activo."

@@ -41,4 +41,12 @@ class ScheduledMeeting < ApplicationRecord
 
   validates_uniqueness_of :meeting, allow_nil: true
   validates_presence_of :start_time
+
+  def previous_occurrence
+    recurring_meeting.previous_occurrence(from_time: start_time)
+  end
+
+  def next_occurrence
+    recurring_meeting.next_occurrence(from_time: start_time)
+  end
 end

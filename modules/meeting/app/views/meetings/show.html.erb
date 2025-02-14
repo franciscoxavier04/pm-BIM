@@ -39,7 +39,7 @@ See COPYRIGHT and LICENSE files for more details.
   <% end %>
   <% if authorize_for(:meetings, :edit) %>
     <li class="toolbar-item">
-      <%= link_to({ controller: "/meetings", action: "edit", id: @meeting }, class: "button", accesskey: accesskey(:edit)) do %>
+      <%= link_to(edit_project_meeting_path(@project, @meeting), class: "button", accesskey: accesskey(:edit)) do %>
         <%= op_icon("button--icon icon-edit") %>
         <span class="button--text"><%= t(:button_edit) %></span>
       <% end %>
@@ -59,7 +59,7 @@ See COPYRIGHT and LICENSE files for more details.
       <% if authorize_for(:meetings, :notify) %>
         <li>
           <%= link_to t("meeting.label_mail_all_participants"),
-                      notify_meeting_path(@meeting),
+                      notify_project_meeting_path(@project, @meeting),
                       class: "icon-context icon-mail1",
                       method: :post %>
         </li>
@@ -67,7 +67,7 @@ See COPYRIGHT and LICENSE files for more details.
       <% if authorize_for(:meetings, :icalendar) %>
         <li>
           <%= link_to t(:label_icalendar_download),
-                      download_ics_meeting_path(@meeting),
+                      download_ics_project_meeting_path(@project, @meeting),
                       class: "icon-context icon-calendar2" %>
         </li>
       <% end %>
@@ -75,7 +75,7 @@ See COPYRIGHT and LICENSE files for more details.
         <li>
           <%= link_to(
                 t(:button_copy),
-                copy_meeting_path(@meeting),
+                copy_project_meeting_path(@project, @meeting),
                 class: "icon-context icon-copy"
               ) %>
         </li>
@@ -84,7 +84,7 @@ See COPYRIGHT and LICENSE files for more details.
         <li>
           <%= link_to(
                 t(:button_delete),
-                polymorphic_path([@project, @meeting]),
+                project_meeting_path(@project, @meeting),
                 class: "icon-context icon-delete",
                 method: :delete,
                 data: { confirm: t(:text_are_you_sure) }
@@ -124,8 +124,25 @@ See COPYRIGHT and LICENSE files for more details.
   </div>
 </div>
 
-<%= render_tabs [{ name: "agenda", action: :create_meeting_agendas, partial: "meeting_contents/show", path: meeting_agenda_path(@meeting), label: :label_meeting_agenda, content: @meeting.agenda || @meeting.build_agenda, content_type: "meeting_agenda" },
-                 { name: "minutes", action: :create_meeting_minutes, partial: "meeting_contents/show", path: meeting_minutes_path(@meeting), label: :label_meeting_minutes, content: @meeting.minutes || @meeting.build_minutes, content_type: "meeting_minutes" }] %>
+<%= render_tabs(
+      [
+        { name: "agenda",
+          action: :create_meeting_agendas,
+          partial: "meeting_contents/show",
+          path: meeting_agenda_path(@meeting),
+          label: :label_meeting_agenda,
+          content: @meeting.agenda || @meeting.build_agenda,
+          content_type: "meeting_agenda" },
+        {
+          name: "minutes",
+          action: :create_meeting_minutes,
+          partial: "meeting_contents/show",
+          path: meeting_minutes_path(@meeting),
+          label: :label_meeting_minutes, content: @meeting.minutes || @meeting.build_minutes,
+          content_type: "meeting_minutes"
+        }
+      ]
+    ) %>
 
 <% if @meeting.journals.changing.present? %>
   <div id="history">

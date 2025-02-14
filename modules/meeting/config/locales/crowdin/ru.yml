@@ -119,7 +119,7 @@ ru:
   label_template: "Шаблон"
   label_recurring_meeting_view: "Посмотреть серию совещаний"
   label_recurring_meeting_create: "Открыть"
-  label_recurring_meeting_copy: "Копировать как одноразовое"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Отменить это событие"
   label_recurring_meeting_delete: "Удалить событие"
   label_recurring_meeting_restore: "Восстановить это событие"
@@ -225,10 +225,11 @@ ru:
         confirmation_message_html: >
           Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
       occurrence:
-        title: "Удалить событие совещания"
-        heading: "Удалить это событие совещания?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          Это совещание является частью серии под названием <strong>%{title}</strong>. Это приведет к удалению только этого конкретного совещания, а не всей серии. Хотите ли Вы продолжить?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "Нет совещаний для отображения"
       desc: "Нет совещаний, удовлетворяющих критериям активного фильтра."

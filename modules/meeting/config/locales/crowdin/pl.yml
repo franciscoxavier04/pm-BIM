@@ -119,7 +119,7 @@ pl:
   label_template: "Szablon"
   label_recurring_meeting_view: "Wyświetl serię spotkań"
   label_recurring_meeting_create: "Otwórz"
-  label_recurring_meeting_copy: "Skopiuj jako jednorazowe"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Anuluj to wystąpienie"
   label_recurring_meeting_delete: "Usuń wystąpienie"
   label_recurring_meeting_restore: "Przywróć to wystąpienie"
@@ -184,8 +184,8 @@ pl:
       open_meeting_link: "Spotkania otwarte"
       open_my_meetings_link: "Przejdź do sekcji Moje spotkania"
       series:
-        title: "[%{project_name}] Seria spotkań %{title}"
-        summary: "Użytkownik %{actor} utworzył nową serię spotkań %{title}"
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
       series_rescheduled:
         title: "[%{project_name}] Meeting series '%{title}' rescheduled"
         summary: "%{actor} has changed the schedule for meeting series '%{title}'"
@@ -225,10 +225,11 @@ pl:
         confirmation_message_html: >
           To działanie jest nieodwracalne. Postępuj ostrożnie.
       occurrence:
-        title: "Usuń wystąpienie spotkania"
-        heading: "Usunąć to wystąpienie spotkania?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          To spotkanie jest częścią serii o nazwie <strong>%{title}</strong>. Spowoduje to usunięcie tylko tego konkretnego wystąpienia, a nie całej serii. Czy chcesz kontynuować?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "Brak spotkań do wyświetlenia"
       desc: "Nie ma spotkań spełniających kryteria aktywnego filtru."
