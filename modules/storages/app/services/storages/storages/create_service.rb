@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,15 +31,21 @@
 # The logic for creating storage was extracted from the controller and put into
 # a service: https://dev.to/joker666/ruby-on-rails-pattern-service-objects-b19
 # Purpose: create and persist a Storages::Storage record
-# Used by: Storages::Admin::StoragesController#create, could also be used by the
-# API in the future.
+# Used by: Storages::Admin::StoragesController#create, API::V3::Storages::StoragesAPI
 # The comments here are also valid for the other *_service.rb files
 module Storages::Storages
   class CreateService < ::BaseServices::Create
+    def initialize(*, create_oauth_app: true, **)
+      super(*, **)
+
+      @create_oauth_app = create_oauth_app
+    end
+
     protected
 
     def after_perform(service_call)
       super
+      return service_call unless create_oauth_app?
 
       storage = service_call.result
       # Automatically create an OAuthApplication object for the Nextcloud storage
@@ -58,6 +66,10 @@ module Storages::Storages
     def instance(params)
       instance_klass = params[:provider_type].constantize
       instance_klass.new
+    end
+
+    def create_oauth_app?
+      @create_oauth_app
     end
   end
 end

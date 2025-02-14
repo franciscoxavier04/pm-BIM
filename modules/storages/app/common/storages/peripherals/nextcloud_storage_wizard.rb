@@ -29,16 +29,35 @@
 #++
 
 module Storages
-  module Admin
-    class GeneralInfoComponent < StorageInfoComponent
-      def self.wrapper_key = :storage_general_info_section
+  module Peripherals
+    class NextcloudStorageWizard < Wizard
+      step :general_information, completed_if: ->(storage) { storage.host.present? && storage.name.present? }
 
-      def open_href
-        OpenStorageLinks.static_link(storage)
+      step :oauth_application,
+           section: :oauth_configuration,
+           completed_if: ->(storage) { storage.oauth_application.present? },
+           preparation: :prepare_oauth_application
+
+      step :oauth_client,
+           section: :oauth_configuration,
+           completed_if: ->(storage) { storage.oauth_client.present? },
+           preparation: ->(storage) { storage.build_oauth_client }
+
+      step :automatically_managed_folders,
+           completed_if: ->(storage) { !storage.automatic_management_unspecified? },
+           preparation: :prepare_storage_for_automatic_management_form
+
+      private
+
+      def prepare_oauth_application(storage)
+        create_result = ::Storages::OAuthApplications::CreateService.new(storage:, user:).call
+        storage.oauth_application = create_result.result if create_result.success?
       end
 
-      def can_show_open_link?
-        OpenStorageLinks.can_generate_static_link?(storage)
+      def prepare_storage_for_automatic_management_form(storage)
+        ::Storages::Storages::SetProviderFieldsAttributesService
+          .new(user:, model: storage, contract_class: EmptyContract)
+          .call
       end
     end
   end
