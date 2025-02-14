@@ -33,7 +33,7 @@ module Queries::Operators
     require_value false
 
     def self.sql_for_field(_values, db_table, db_field)
-      from = OpenProject::I18n::Date.time_at_beginning_of_week
+      from = OpenProject::Internationalization::Date.time_at_beginning_of_week
       "#{db_table}.#{db_field} BETWEEN '%s' AND '%s'" % [
         connection.quoted_date(from), connection.quoted_date(from + 7.days)
       ]

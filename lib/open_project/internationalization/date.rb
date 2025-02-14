@@ -28,8 +28,11 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
+# The module is not called I18n as that leads to tons of conflicts
+# where I18n is called within the OpenProject module and rails I18n is meant.
+
 module OpenProject
-  module I18n
+  module Internationalization
     module Date
       module_function
 
