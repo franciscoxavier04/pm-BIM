@@ -79,6 +79,7 @@ export default class PreviewController extends DialogPreviewController {
     if (this.isMilestone) {
       this.currentStartDate = dates[0];
       this.setStartDateFieldValue(dates[0]);
+      this.doMarkFieldAsTouched('start_date');
     } else {
       const selectedDate:Date = this.lastClickedDate(dates) || dates[0];
       let dateFieldToChange = this.dateFieldToChange();

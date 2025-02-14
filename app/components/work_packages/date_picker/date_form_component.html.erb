@@ -17,25 +17,27 @@
       end
     end
 
-    body.with_column(classes: "wp-datepicker-dialog-date-form--due-date") do
-      flex_layout(data: { "work-packages--date-picker--date-form-target": "dueDateFieldContainer" }) do |due_date|
-        due_date.with_row(classes: container_classes(:due_date), data: { skip_morphing: true }) do
-          render(Primer::ButtonComponent.new(classes: "wp-datepicker-dialog-date-form--add-button",
-                                             test_selector: "wp-datepicker--show-due-date",
-                                             data: { action: "work-packages--date-picker--date-form#toggleDueDateFieldVisibility" })) do |button|
-            button.with_leading_visual_icon(icon: :plus)
-            I18n.t("attributes.due_date")
+    unless @is_milestone
+      body.with_column(classes: "wp-datepicker-dialog-date-form--due-date") do
+        flex_layout(data: { "work-packages--date-picker--date-form-target": "dueDateFieldContainer" }) do |due_date|
+          due_date.with_row(classes: container_classes(:due_date), data: { skip_morphing: true }) do
+            render(Primer::ButtonComponent.new(classes: "wp-datepicker-dialog-date-form--add-button",
+                                               test_selector: "wp-datepicker--show-due-date",
+                                               data: { action: "work-packages--date-picker--date-form#toggleDueDateFieldVisibility" })) do |button|
+              button.with_leading_visual_icon(icon: :plus)
+              I18n.t("attributes.due_date")
+            end
+          end
+
+          due_date.with_row(classes: "wp-datepicker-dialog-date-form--text-field-container") do
+            render(Primer::Alpha::TextField.new(**text_field_options(name: :due_date, label: I18n.t("attributes.due_date"))))
           end
         end
-
-        due_date.with_row(classes: "wp-datepicker-dialog-date-form--text-field-container") do
-          render(Primer::Alpha::TextField.new(**text_field_options(name: :due_date, label: I18n.t("attributes.due_date"))))
-        end
       end
-    end
 
-    body.with_column(classes: "wp-datepicker-dialog-date-form--duration") do
-      render(Primer::Alpha::TextField.new(**text_field_options(name: :duration, label: I18n.t("activerecord.attributes.work_package.duration"))))
+      body.with_column(classes: "wp-datepicker-dialog-date-form--duration") do
+        render(Primer::Alpha::TextField.new(**text_field_options(name: :duration, label: I18n.t("activerecord.attributes.work_package.duration"))))
+      end
     end
   end
 %>
