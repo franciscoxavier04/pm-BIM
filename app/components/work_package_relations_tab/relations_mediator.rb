@@ -58,11 +58,11 @@ class WorkPackageRelationsTab::RelationsMediator
   end
 
   def ghost_relations
-    @ghost_relations = work_package.relations.includes(:to, :from).ghost
+    @ghost_relations = work_package.relations.includes(:to, :from).where.not(id: visible_relations.select(:id))
   end
 
   def ghost_children
-    @ghost_children ||= work_package.children.not_visible
+    @ghost_children ||= work_package.children.where.not(id: visible_children.select(:id))
   end
 
   def directionally_aware_grouped_relations
