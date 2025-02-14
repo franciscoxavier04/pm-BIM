@@ -34,7 +34,7 @@ module Projects
       class RowComponent < ::RowComponent
         delegate :definition, :active?, to: :model
 
-        def subject = model.name
+        def subject = render(Primer::Beta::Text.new(color: :muted)) { model.name }
 
         def type = render(Projects::LifeCycleTypeComponent.new(definition))
 

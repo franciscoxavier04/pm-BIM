@@ -34,7 +34,7 @@ module Projects
       class ProjectDateRowComponent < ::RowComponent
         options :date_method
 
-        def subject = I18n.t(date_method, scope: "attributes")
+        def subject = render(Primer::Beta::Text.new(color: :muted)) { I18n.t(date_method, scope: "attributes") }
         def type = nil
         def active = nil
         def duration = nil
