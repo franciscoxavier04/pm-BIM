@@ -105,7 +105,7 @@ Filtering user custom fields is now faster with autocompleters in the project li
 
 ### Centos 8 package support removed
 
-Centos 8 is EOL for quite some time and packages will no longer be built for it, starting with OpenProject 15.3.0. For more information, please see [our installations and operations guide](../../installation-and-operations/installation/packaged/#centos-8--rhel-8).
+Centos 8 is EOL for quite some time and packages will no longer be built for it, starting with OpenProject 15.3.0. For more information on CentOS installation, please see [our installations and operations guide](../../installation-and-operations/installation/packaged/#centos-installation).
 
 ### Seeding of design variables allowed (Enterprise add-on)
 
