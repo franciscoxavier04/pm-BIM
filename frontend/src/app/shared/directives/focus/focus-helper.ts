@@ -34,12 +34,7 @@ export class FocusHelperService {
   public focus(element:HTMLElement):void {
     setTimeout(() => {
       const focusable = findAllFocusableElementsWithin(element)[0] || element;
-      if (window.location.hash) {
-        focusable?.focus();
-      } else {
-        // Prevent scroll if there's no hash in the URL
-        focusable?.focus({ preventScroll: true });
-      }
+      focusable?.focus();
     }, 20);
   }
 }
