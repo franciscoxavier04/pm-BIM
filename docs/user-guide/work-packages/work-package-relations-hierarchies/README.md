@@ -37,9 +37,9 @@ Work package relations indicate that work packages address a similar topic or cr
 
 You can select one of the following relations:
 
-- **New child** - This option creates a related work package as sub-item of the current work package. Current work package become a parent work package.
+- **New child** - This option let you create a new package and automatically add it as a child to the current (parent) work package. 
 
-- **Existing child** - This option allows linking an already existing work package as a child work package to the current (parent) work package.
+- **Existing child** - This option allows you to add an existing work package as a child to the current (parent) work package.
 
 - **Related to** - This option adds a link from the work package A to work package B, so that project members can immediately see the connection, even if the work packages are not members of the same hierarchy.
 
@@ -115,11 +115,13 @@ There are **four ways to add or create a child work package**:
 
 ### Add a child in the *Relations* tab in a work package's details view
 
-Open a work package and select the tab *Relations*. Here you can click on *+ Relation* button, and select either *New child* or *Existing child* option to add a new or an existing child respectively. 
+Open a work package and select the tab *Relations*. Here you can click on *+ Relation* button, and select either *New child* or *Existing child* option to add a new or an existing work package as a child to the current one.
 
 ![Add a child to a work package in OpenProject](openproject_user_guide_wp_add_child.png)
 
-Insert the name of the new work package or select an existing one, then click the *Save* button. 
+Type the name of the new work package or select an existing one, then click the *Save* button. 
+
+When creating a new work package as a child, you will be asked to select type, a subject and optionally add description text. If there are required fields for the type selected, they will also appear here.
 
 ![Create a new child work package under relations tab in OpenProject](openproject_user_guide_wp_add_child_new.png)
 
@@ -129,7 +131,7 @@ For more information on the work package creation take a look at the guideline o
 
 > [!TIP]
 >
-> If children work packages already exist for the current work package, you can also use the **+Child** button next to the respective section. 
+> If children work packages already exist for the current work package, you can also use the **+Child** button in the header of the 'Children' section.
 
 ![Create child button under work package Relations tab in OpenProject](openproject_user_guide_wp_relations_child_button.png)
 
