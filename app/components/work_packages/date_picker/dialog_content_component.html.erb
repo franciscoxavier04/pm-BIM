@@ -9,12 +9,13 @@
           collection.with_component(WorkPackages::DatePicker::BannerComponent.new(work_package:, manually_scheduled: schedule_manually))
         end
 
-        collection.with_component(Primer::Alpha::Dialog::Body.new(classes: "wp-datepicker-dialog--body")) do
+        collection.with_component(Primer::Alpha::Dialog::Body.new(classes: "wp-datepicker-dialog--body", p: 0)) do
           render(Primer::Alpha::UnderlinePanels.new(label: I18n.t("work_packages.datepicker_modal.tabs.aria_label"),
-                                                    classes: "wp-datepicker-dialog--UnderlineNav")) do |component|
+                                                    classes: "wp-datepicker-dialog--UnderlineNav",
+                                                    px: 3)) do |component|
             component.with_tab(selected: true, id: "wp-datepicker-dialog--content-tab--dates") do |tab|
               tab.with_text { I18n.t("work_packages.datepicker_modal.tabs.dates") }
-              tab.with_panel  do
+              tab.with_panel(m: 3) do
                 render(WorkPackages::DatePicker::FormContentComponent.new(form_id: DIALOG_FORM_ID,
                                                                           show_date_form: content_editable?,
                                                                           work_package:,
@@ -29,7 +30,7 @@
                 relation_group = tab.relation_group
                 tab_content.with_text { I18n.t("work_packages.datepicker_modal.tabs.#{tab.key}") }
                 tab_content.with_counter(count: relation_group.count)
-                tab_content.with_panel do
+                tab_content.with_panel(m: 2) do
                   if relation_group.any?
                     render(border_box_container(padding: :condensed)) do |box|
                       relation_group.visible_relations.each do |relation|
