@@ -46,6 +46,7 @@ import {
   WorkPackageNotificationService,
 } from 'core-app/features/work-packages/services/notifications/work-package-notification.service';
 import {
+  take,
 } from 'rxjs/operators';
 import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decorator';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
@@ -105,6 +106,8 @@ export class WorkPackageSingleViewBase extends UntilDestroyedMixin {
   public workPackage:WorkPackageResource;
 
   public projectIdentifier:string;
+
+  public focusAnchorLabel:string;
 
   public showStaticPagePath:string;
 
@@ -184,6 +187,13 @@ export class WorkPackageSingleViewBase extends UntilDestroyedMixin {
     if (this.workPackage.$links.attachments) {
       this.attachmentsResourceService.fetchCollection(this.workPackage.$links.attachments.href as string).subscribe();
     }
+
+    // Listen to tab changes to update the tab label
+    this.keepTab.observable
+      .pipe(this.untilDestroyed())
+      .subscribe((tabs:{ active:string }) => {
+        this.updateFocusAnchorLabel(tabs.active);
+      });
   }
 
   protected handleLoadingError(error:unknown):void {
@@ -193,4 +203,12 @@ export class WorkPackageSingleViewBase extends UntilDestroyedMixin {
   /**
    * Recompute the current tab focus label
    */
+  public updateFocusAnchorLabel(tabName:string):string {
+    this.focusAnchorLabel = this.i18n.t('js.label_work_package_details_you_are_here', {
+      tab: this.i18n.t(`js.work_packages.tabs.${tabName}`),
+      type: this.workPackage.type.name,
+      subject: this.workPackage.subject,
+    });
+    return this.focusAnchorLabel;
+  }
 }
