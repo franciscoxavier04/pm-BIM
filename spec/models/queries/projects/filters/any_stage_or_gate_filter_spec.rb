@@ -44,9 +44,9 @@ RSpec.describe Queries::Projects::Filters::AnyStageOrGateFilter do
     end
 
     describe "default_operator" do
-      it "is 'on'" do
+      it "is 'today'" do
         expect(instance.default_operator)
-          .to eql Queries::Operators::OnDate
+          .to eql Queries::Operators::Today
       end
     end
 
