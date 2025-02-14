@@ -45,7 +45,7 @@ export class WorkPackageActivityTabComponent extends ActivityPanelBaseController
 
   public trackByIdentifier = trackByProperty('identifier');
 
-  @ViewChild('activitiesTabContent', { static: true }) public activitiesTabContentElement!:ElementRef;
+  @ViewChild('activitiesTabContent', { static: true }) public activitiesTabContentElement!:ElementRef<HTMLElement>;
 
   ngOnInit() {
     const { workPackageId } = this.uiRouterGlobals.params as unknown as { workPackageId:string };
