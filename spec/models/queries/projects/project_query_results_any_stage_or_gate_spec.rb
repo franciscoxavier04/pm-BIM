@@ -37,18 +37,15 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
   shared_let(:stage_start_date) { Date.parse("2025-02-07") }
   shared_let(:stage_end_date) { Date.parse("2025-02-17") }
-  shared_let(:project_with_stage) do
-    create(:project, name: "Project with stage") do |project|
-      create(:project_stage, project:, start_date: stage_start_date, end_date: stage_end_date)
-    end
+  shared_let(:project_with_stage) { create(:project, name: "Project with stage") }
+  shared_let(:stage) do
+    create(:project_stage, project: project_with_stage, start_date: stage_start_date, end_date: stage_end_date)
   end
 
-  shared_let(:gate_date) { Date.parse("2025-02-22") }
-  shared_let(:project_with_gate) do
-    create(:project, name: "Project with gate") do |project|
-      create(:project_gate, project:, date: gate_date)
-    end
-  end
+  shared_let(:gate_date) { Date.parse("2025-03-06") }
+  shared_let(:project_with_gate) { create(:project, name: "Project with gate") }
+  shared_let(:gate) { create(:project_gate, project: project_with_gate, date: gate_date) }
+
   shared_let(:project_without_step) { create(:project, name: "Project without step") }
 
   shared_let(:user) do
@@ -320,8 +317,6 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     end
   end
 
-  # TODO: get the start of week setting in
-
   context "with a w (this week) operator" do
     before do
       instance.where("any_stage_or_gate", "w", [])
@@ -344,9 +339,6 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
     end
 
     context "when the current week overlaps the end of the stage" do
-      # Would otherwise interfere with the spec
-      remove_gate
-
       it "returns the project whose stage begins within the week" do
         Timecop.travel(stage_end_date.noon) do
           expect(instance.results).to contain_exactly(project_with_stage)
@@ -450,6 +442,110 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
       it "returns no project" do
         Timecop.travel(gate_date.noon - 1.day) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being on Monday, the stage ends on Sunday and the week is configured to start on Sunday",
+            with_settings: { start_of_week: 7 } do
+      before do
+        stage.update_column(:end_date, Date.parse("2025-02-16"))
+      end
+
+      it "returns the project whose stage has ended within the current week" do
+        Timecop.travel(Date.parse("2025-02-17").noon) do
+          expect(instance.results).to contain_exactly(project_with_stage)
+        end
+      end
+    end
+
+    context "when being on Monday, the stage ends on Sunday and the week is configured to start on Monday",
+            with_settings: { start_of_week: 1 } do
+      before do
+        stage.update_column(:end_date, Date.parse("2025-02-16"))
+      end
+
+      it "returns no project as the stage ended in the week before" do
+        Timecop.travel(Date.parse("2025-02-17").noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being on Monday, the gate is on Sunday and the week is configured to start on Sunday",
+            with_settings: { start_of_week: 7 } do
+      before do
+        gate.update_column(:start_date, Date.parse("2025-03-02"))
+      end
+
+      it "returns the project whose gate is in the current week" do
+        Timecop.travel(Date.parse("2025-03-03").noon) do
+          expect(instance.results).to contain_exactly(project_with_gate)
+        end
+      end
+    end
+
+    context "when being on Monday, the gate is on Sunday and the week is configured to start on Monday",
+            with_settings: { start_of_week: 1 } do
+      before do
+        gate.update_column(:start_date, Date.parse("2025-03-02"))
+      end
+
+      it "returns no project as the stage ended in the week before" do
+        Timecop.travel(Date.parse("2025-03-03").noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being on Sunday, the stage ends on Monday and the week is configured to start on Monday",
+            with_settings: { start_of_week: 1 } do
+      before do
+        stage.update_column(:end_date, Date.parse("2025-02-17"))
+      end
+
+      it "returns the project whose stage has ended within the current week" do
+        Timecop.travel(Date.parse("2025-02-23").noon) do
+          expect(instance.results).to contain_exactly(project_with_stage)
+        end
+      end
+    end
+
+    context "when being on Sunday, the stage ends on Monday and the week is configured to start on Sunday",
+            with_settings: { start_of_week: 7 } do
+      before do
+        stage.update_column(:end_date, Date.parse("2025-02-17"))
+      end
+
+      it "returns no project as the stage ended in the week before" do
+        Timecop.travel(Date.parse("2025-02-23").noon) do
+          expect(instance.results).to be_empty
+        end
+      end
+    end
+
+    context "when being on Sunday, the gate is on Monday and the week is configured to start on Monday",
+            with_settings: { start_of_week: 1 } do
+      before do
+        gate.update_column(:start_date, Date.parse("2025-03-03"))
+      end
+
+      it "returns the project whose gate is in the current week" do
+        Timecop.travel(Date.parse("2025-03-09").noon) do
+          expect(instance.results).to contain_exactly(project_with_gate)
+        end
+      end
+    end
+
+    context "when being on Sunday, the gate is on Monday and the week is configured to start on Sunday",
+            with_settings: { start_of_week: 7 } do
+      before do
+        gate.update_column(:start_date, Date.parse("2025-03-03"))
+      end
+
+      it "returns no project as the stage ended in the week before" do
+        Timecop.travel(Date.parse("2025-03-09").noon) do
           expect(instance.results).to be_empty
         end
       end
