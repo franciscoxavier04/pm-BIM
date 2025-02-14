@@ -76,6 +76,11 @@ OpenProject now provides better visibility into dependencies by displaying relat
 
 OpenProject 15.3 improves transparency by displaying all relations in the Relations tab. While restricted work packages remain inaccessible, their **start and finish dates will now be visible**, along with lag time for applicable relations. This way, users still cannot interact with restricted work packages but will now understand why a task is scheduled at a specific time.
 
+Please note that currently, **only the following relations are displayed with a date** – not dependent on permissions: 
+- Successors (after)
+- Predecessors (before)
+- Children
+
 > [!NOTE]
 > If a related work package has the same start and finish date, a single date is displayed instead of a range. This is [another feature of OpenProject 15.3 and applies to all Relations on the Relations tab](https://community.openproject.org/wp/61044), independent of the user's permissions.
 
