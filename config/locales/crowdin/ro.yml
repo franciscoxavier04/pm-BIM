@@ -906,7 +906,7 @@ ro:
         timeline_labels: "Etichete de cronologie"
       relation:
         lag: "Întârziere"
-        from: "Pachet de lucru"
+        from: "Related work package"
         to: "Pachet de lucru asociat"
       reminder:
         remind_at_date: "Date"
@@ -1230,12 +1230,12 @@ ro:
           typed_dag:
             circular_dependency: "Relația creează un cerc închis."
           attributes:
-            to:
-              error_not_found: "pachetul de lucru în poziția `to` nu a fost găsit sau nu este vizibil"
-              error_readonly: "legătura `to` a unei relații existente este imuabilă"
-            from:
-              error_not_found: "pachetul de lucru din poziția `from` nu este găsit sau nu este vizibil"
-              error_readonly: "legătura `from` a unei relații existente este imuabilă"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

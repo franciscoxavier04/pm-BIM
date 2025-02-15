@@ -893,7 +893,7 @@ el:
         timeline_labels: "Ετικέτες χρονοδιαγράμματος"
       relation:
         lag: "Lag"
-        from: "Εργασία"
+        from: "Related work package"
         to: "Σχετικές εργασίες"
       reminder:
         remind_at_date: "Date"
@@ -1217,12 +1217,12 @@ el:
           typed_dag:
             circular_dependency: "Η σχέση αυτή δημιουργεί έναν κύκλο σχέσεων."
           attributes:
-            to:
-              error_not_found: "το πακέτο εργασίας στην θέση 'σε' δεν βρέθηκε ή δεν είναι ορατό"
-              error_readonly: "ο σύνδεσμος 'σε' μιας υπάρχουσας συσχέτισης είναι αμετάβλητος"
-            from:
-              error_not_found: "το πακέτο εργασίας στην θέση 'από' δεν βρέθηκε ή δεν είναι ορατό"
-              error_readonly: "ο σύνδεσμος 'από' μιας υπάρχουσας συσχέτισης είναι αμετάβλητος"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

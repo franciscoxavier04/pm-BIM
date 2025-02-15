@@ -895,7 +895,7 @@ fr:
         timeline_labels: "Étiquettes de chronologie"
       relation:
         lag: "Délai"
-        from: "Lot de travaux"
+        from: "Related work package"
         to: "Lot de travaux associé"
       reminder:
         remind_at_date: "Date"
@@ -1219,12 +1219,12 @@ fr:
           typed_dag:
             circular_dependency: "La relation créée un cercle de relations."
           attributes:
-            to:
-              error_not_found: "lot de travaux dans la position 'à' introuvable ou invisible"
-              error_readonly: "impossible de modifier le lien d'une relation existante 'vers'"
-            from:
-              error_not_found: "lot de travaux dans la position 'depuis' introuvable ou invisible"
-              error_readonly: "impossible de modifier le lien d'une relation existante 'depuis'"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "ne peut pas être négatif."

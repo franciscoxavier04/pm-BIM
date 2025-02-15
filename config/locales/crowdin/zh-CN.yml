@@ -884,7 +884,7 @@ zh-CN:
         timeline_labels: "时间线标签"
       relation:
         lag: "延迟"
-        from: "工作包"
+        from: "Related work package"
         to: "相关的工作包"
       reminder:
         remind_at_date: "日期"
@@ -1208,12 +1208,12 @@ zh-CN:
           typed_dag:
             circular_dependency: "关系会创建关系的循环。"
           attributes:
-            to:
-              error_not_found: "找不到这个工作包"
-              error_readonly: "关系要持久"
-            from:
-              error_not_found: "找不到这个工作包"
-              error_readonly: "关系要持久"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "不能为负数。"

@@ -53,6 +53,8 @@ ko:
         frequency: "빈도"
         interval: "간격"
         start_date: "시작:"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "미팅 시리즈 종료"
         iterations: "항목"
     errors:

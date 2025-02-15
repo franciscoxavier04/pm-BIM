@@ -886,7 +886,7 @@ ms:
         timeline_labels: "Label garis masa"
       relation:
         lag: "Lag"
-        from: "Pakej kerja"
+        from: "Related work package"
         to: "Pakej kerja yang berkaitan"
       reminder:
         remind_at_date: "Tarikh"
@@ -1210,12 +1210,12 @@ ms:
           typed_dag:
             circular_dependency: "Hubungan ini mencipta sebuah lingkaran hubungan."
           attributes:
-            to:
-              error_not_found: "pakej kerja dalam posisi `ke` tidak dapat ditemui atau tidak kelihatan."
-              error_readonly: "pautan `ke` yang sedia ada tidak berubah"
-            from:
-              error_not_found: "pakej kerja dalam posisi `dari` tidak dapat ditemui atau tidak kelihatan"
-              error_readonly: "pautan `dari` yang sedia ada tidak berubah"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

@@ -887,7 +887,7 @@ ko:
         timeline_labels: "타임라인 레이블"
       relation:
         lag: "지연"
-        from: "작업 패키지"
+        from: "Related work package"
         to: "관련 패키지"
       reminder:
         remind_at_date: "날짜"
@@ -1211,12 +1211,12 @@ ko:
           typed_dag:
             circular_dependency: "이 관계는 관계의 원을 만듭니다."
           attributes:
-            to:
-              error_not_found: "'끝' 위치의 작업 패키지가 없거나 표시되지 않음"
-              error_readonly: "기존 관계의 '끝' 링크는 변경이 불가능합니다."
-            from:
-              error_not_found: "'시작' 위치의 작업 패키지가 없거나 표시되지 않음"
-              error_readonly: "기존 관계의 '시작' 링크는 변경이 불가능합니다."
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "- 음수일 수 없습니다."

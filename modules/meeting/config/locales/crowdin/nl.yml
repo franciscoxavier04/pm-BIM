@@ -54,6 +54,8 @@ nl:
         frequency: "Frequentie"
         interval: "Interval"
         start_date: "Begint op"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Vergaderreeks eindigt"
         iterations: "Gebeurtenissen"
     errors:

@@ -56,6 +56,8 @@ ru:
         frequency: "Периодичность"
         interval: "Промежуток"
         start_date: "Начинается"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Серия совещаний заканчивается"
         iterations: "События"
     errors:

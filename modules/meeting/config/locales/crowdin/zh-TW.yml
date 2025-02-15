@@ -53,6 +53,8 @@ zh-TW:
         frequency: "頻率"
         interval: "間隔"
         start_date: "開始於"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "系列會議結束"
         iterations: "出現次數"
     errors:

@@ -913,7 +913,7 @@ sl:
         timeline_labels: "Oznake časovnice"
       relation:
         lag: "Lag"
-        from: "Zahtevek"
+        from: "Related work package"
         to: "Soroden zahtevek"
       reminder:
         remind_at_date: "Date"
@@ -1237,12 +1237,12 @@ sl:
           typed_dag:
             circular_dependency: "Odnos ustvarja krog odnosov."
           attributes:
-            to:
-              error_not_found: "delovni paket v položaju \"do\" ni najden ali ni viden"
-              error_readonly: "obstoječi odnos \"do\" povezave je nespremenljiv"
-            from:
-              error_not_found: "delovni paket v položaju 'od'  ni najden ali ni viden."
-              error_readonly: "obstoječe razmerje 'od' povezave je nespremenljivo"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

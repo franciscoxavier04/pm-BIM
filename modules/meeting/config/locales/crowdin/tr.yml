@@ -54,6 +54,8 @@ tr:
         frequency: "Sıklık"
         interval: "Zaman aralığı"
         start_date: "Başlama zamanı"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Toplantı serisi bitişi"
         iterations: "Yineleme sayısı"
     errors:

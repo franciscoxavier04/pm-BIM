@@ -53,6 +53,8 @@ ja:
         frequency: "頻度"
         interval: "インターバル"
         start_date: "開始:"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Meeting series ends"
         iterations: "Occurrences"
     errors:

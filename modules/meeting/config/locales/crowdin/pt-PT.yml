@@ -54,6 +54,8 @@ pt-PT:
         frequency: "Frequência"
         interval: "Intervalo"
         start_date: "Inicia em"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Fim da série de reuniões"
         iterations: "Ocorrências"
     errors:
