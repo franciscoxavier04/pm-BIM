@@ -3826,6 +3826,7 @@ sl:
   text_unallowed_characters: "Nedovoljeni znaki"
   text_user_invited: Uporabnik je bil povabljen in čaka na registracijo.
   text_user_wrote: "%{value} je napisal(a):"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Delovni paket vsebuje neshranjeno besedilo, ki bo izgubljeno, če zapustite to stran."
   text_what_did_you_change_click_to_add_comment: "Kaj ste spremenili? Kliknite, če želite dodati komentar"
   text_wiki_destroy_confirmation: "Ali ste prepričani da želite izbrisati to wiki stran in vso njeno vsebino?"

@@ -3828,6 +3828,7 @@ sk:
   text_unallowed_characters: "Nepovolené znaky"
   text_user_invited: Používateľ bol pozvaný a čaká na registráciu.
   text_user_wrote: "%{value} napísal:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Pracovný balíček obsahuje neuložený text, ktorý sa stratí, ak opustíte túto stránku."
   text_what_did_you_change_click_to_add_comment: "Čo ste zmenili? Kliknutím pridáte komentár"
   text_wiki_destroy_confirmation: "Naozaj si želáte vymazať túto Wiki a celý jej obsah?"

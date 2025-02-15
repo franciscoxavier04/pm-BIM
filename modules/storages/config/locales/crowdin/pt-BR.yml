@@ -199,11 +199,11 @@ pt-BR:
         manual_management_description: Você pode criar e gerenciar manualmente pastas por projeto por conta própria. No entanto, será necessário garantir manualmente que os usuários relevantes tenham acesso.
         setup_incomplete: Escolha o tipo de gerenciamento de acesso do usuário e criação de pastas.
         subtitle: Gerenciamento de acesso
-        title: Acesso e pastas do projeto
+      access_management_section: Access and project folders
       automatically_managed_folders: Pastas gerenciadas automaticamente
       general_information: Informações gerais
       nextcloud_oauth: OAuth Nextcloud
-      oauth_applications: Aplicações OAuth
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OAuth OpenProject
       project_folders: Pastas do projeto
@@ -222,8 +222,8 @@ pt-BR:
         host_not_found: Nenhum servidor Nextcloud encontrado na URL de host configurada. Verifique a configuração.
         missing_dependencies: 'Uma dependência necessária está faltando no armazenamento de arquivos. Adicione a seguinte dependência: %{dependency}.'
         not_configured: A conexão não pôde ser validada. Conclua a configuração primeiro.
-        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
-        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_audience_missing: O armazenamento não possui um público definido. Isso é necessário para a integração com o OpenID Connect.
+        oidc_non_provisioned_user: O usuário atual não foi fornecido por um Provedor de Identidade OpenID Connect. Execute a verificação novamente com um usuário fornecido.
         placeholder: Verifique sua conexão com o servidor.
         subtitle: Validação de conexão
         tenant_id_wrong: O ID do diretório (inquilino) configurado é inválido. Verifique a configuração.

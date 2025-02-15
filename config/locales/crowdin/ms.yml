@@ -3706,6 +3706,7 @@ ms:
   text_unallowed_characters: "Aksara yang tidak dibenarkan"
   text_user_invited: Pengguna telah dijemput dan sedang menunggu pendaftaran.
   text_user_wrote: "%{value} menulis:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Pakej kerja tersebut mengandungi teks yang belum disimpan yang akan hilang jika anda tinggalkan halaman ini."
   text_what_did_you_change_click_to_add_comment: "Apakah yang telah anda ubah? Klik untuk tambah komen"
   text_wiki_destroy_confirmation: "Adakah anda pasti anda ingin memadam wiki ini dan semua kandungannya?"

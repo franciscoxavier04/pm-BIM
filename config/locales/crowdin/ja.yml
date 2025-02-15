@@ -3705,6 +3705,7 @@ ja:
   text_unallowed_characters: "次の文字は使用できません。"
   text_user_invited: ユーザは招待されて、登録は保留中です。
   text_user_wrote: "%{value}が書き込みました："
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "このページから移動すると、保存されてないテキストを含むワークパッケージが失われます。"
   text_what_did_you_change_click_to_add_comment: "何を変更しましたか？コメントを追加するをクリックしてください"
   text_wiki_destroy_confirmation: "本当にこのWikiページとその内容のすべてを削除してもよろしいですか？"

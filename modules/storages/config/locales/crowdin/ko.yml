@@ -199,11 +199,11 @@ ko:
         manual_management_description: 프로젝트별 폴더를 직접 수동으로 만들고 관리하세요. 관련 사용자에게 액세스 권한이 있는지 수동으로 확인해야 합니다.
         setup_incomplete: 사용자 액세스 및 폴더 생성의 관리 유형을 선택합니다.
         subtitle: 액세스 관리
-        title: 액세스 및 프로젝트 폴더
+      access_management_section: Access and project folders
       automatically_managed_folders: 자동으로 관리되는 폴더
       general_information: 일반 정보
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth 애플리케이션
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: 프로젝트 폴더

@@ -199,11 +199,11 @@ it:
         manual_management_description: Crea e gestisci manualmente le cartelle per progetto. Dovrai assicurarti manualmente che gli utenti interessati abbiano accesso.
         setup_incomplete: Seleziona il tipo di gestione dell'accesso degli utenti e della creazione di cartelle.
         subtitle: Gestione degli accessi
-        title: Accesso e cartelle di progetto
+      access_management_section: Access and project folders
       automatically_managed_folders: Cartelle gestite automaticamente
       general_information: Informazioni generali
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: Applicazioni OAuth
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Cartelle del progetto

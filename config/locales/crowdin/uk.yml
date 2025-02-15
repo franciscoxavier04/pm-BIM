@@ -3820,6 +3820,7 @@ uk:
   text_unallowed_characters: "Недозволені символи"
   text_user_invited: Користувача запрошено та очікує реєстрації.
   text_user_wrote: "%{value} написав:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Робочий пакет містить незбережений текст, який буде втрачено, якщо ви залишите цю сторінку."
   text_what_did_you_change_click_to_add_comment: "Що ви змінили? Натисніть, щоб додати коментар"
   text_wiki_destroy_confirmation: "Ви впевнені що хочете видалити цю Вікі і весь її вміст?"

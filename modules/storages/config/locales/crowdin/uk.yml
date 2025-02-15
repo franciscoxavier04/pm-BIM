@@ -199,11 +199,11 @@ uk:
         manual_management_description: Створюйте папки для кожного проєкту й керуйте ними самостійно. Вам знадобиться вручну надавати доступ відповідним користувачам.
         setup_incomplete: Виберіть тип керування доступом користувачів і створенням папок.
         subtitle: Керування доступом
-        title: Доступ і папки проєкту
+      access_management_section: Access and project folders
       automatically_managed_folders: Папки з автоматичним керуванням
       general_information: Загальна інформація
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: Програми OAuth
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Папки проєкту

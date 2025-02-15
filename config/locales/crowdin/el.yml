@@ -3744,6 +3744,7 @@ el:
   text_unallowed_characters: "Μη επιτρεπόμενοι χαρακτήρες"
   text_user_invited: Ο χρήστης έχει προσκληθεί και εκκρεμεί η εγγραφή του.
   text_user_wrote: "%{value} έγραψε:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Το πακέτο εργασίας περιέχει μη αποθηκευμένο κείμενο το οποίο θα χαθεί αν φύγετε από αυτή τη σελίδα."
   text_what_did_you_change_click_to_add_comment: "Τι αλλαγές κάνατε; Κάντε κλικ για να προσθέσετε ένα σχόλιο"
   text_wiki_destroy_confirmation: "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το wiki και όλα τα περιεχόμενα του;"

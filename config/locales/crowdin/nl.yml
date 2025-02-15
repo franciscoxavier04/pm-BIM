@@ -3744,6 +3744,7 @@ nl:
   text_unallowed_characters: "Ongeldige tekens"
   text_user_invited: De gebruiker is uitgenodigd en is in afwachting van de registratie.
   text_user_wrote: "%{value} schreef:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Het werkpakket bevat niet-opgeslagen tekst die verloren gaat als u deze pagina verlaat."
   text_what_did_you_change_click_to_add_comment: "Wat heb je te veranderen? Klik op Opmerking toevoegen"
   text_wiki_destroy_confirmation: "Weet u zeker dat u deze wiki en alle inhoud wilt verwijderen?"

@@ -3745,6 +3745,7 @@ es:
   text_unallowed_characters: "Caracteres no permitidos"
   text_user_invited: El usuario ha sido invitado y esta a la espera del registro.
   text_user_wrote: "%{value} escribió:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "El paquete de trabajo contiene texto no guardado que se perderá en caso de abandonar esta página."
   text_what_did_you_change_click_to_add_comment: "¿Qué cambió? Haga clic para agregar un comentario"
   text_wiki_destroy_confirmation: "¿Está seguro que desea eliminar este wiki y todo su contenido?"

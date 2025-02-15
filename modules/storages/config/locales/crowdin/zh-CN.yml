@@ -199,11 +199,11 @@ zh-CN:
         manual_management_description: 自己手动创建和管理每个项目的文件夹。您需要手动确保相关用户拥有访问权限。
         setup_incomplete: 选择用户访问和文件夹创建的管理类型。
         subtitle: 访问管理
-        title: 访问和项目文件夹
+      access_management_section: Access and project folders
       automatically_managed_folders: 自动托管的文件夹
       general_information: 一般信息
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth应用程序
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: 项目文件夹

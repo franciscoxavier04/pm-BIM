@@ -3788,6 +3788,7 @@ ro:
   text_unallowed_characters: "Caractere nepermise"
   text_user_invited: Utilizatorul a fost invitat şi este în curs de înregistrare.
   text_user_wrote: "%{value} a scris:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Pachetul de lucru conține text nesemnat care va fi pierdut dacă părăsiți această pagină."
   text_what_did_you_change_click_to_add_comment: "Ce ați schimbat? Faceți clic pentru a adăuga un comentariu"
   text_wiki_destroy_confirmation: "Sunteți sigur că doriți să ștergeți acest wiki şi a întregului conținut?"
