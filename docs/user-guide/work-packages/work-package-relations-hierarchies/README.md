@@ -37,7 +37,7 @@ Work package relations indicate that work packages address a similar topic or cr
 
 You can select one of the following relations:
 
-- **New child** - This option let you create a new package and automatically add it as a child to the current (parent) work package. 
+- **New child** - This option lets you create a new package and automatically adds it as a child to the current (parent) work package. 
 
 - **Existing child** - This option allows you to add an existing work package as a child to the current (parent) work package.
 
