@@ -3705,7 +3705,7 @@ ko:
   text_unallowed_characters: "허용되지 않는 문자"
   text_user_invited: 사용자가 초대되었으며 등록 보류 중입니다.
   text_user_wrote: "%{value}이(가) 작성함:"
-  text_wrote: "wrote"
+  text_wrote: "작성됨"
   text_warn_on_leaving_unsaved: "현재 페이지에는 저장되지 않은 텍스트가 있습니다. 이 페이지를 나가면 텍스트가 손실됩니다."
   text_what_did_you_change_click_to_add_comment: "무엇을 변경하셨습니까? 댓글을 추가하려면 클릭하세요."
   text_wiki_destroy_confirmation: "이 위키와 모든 해당 콘텐츠를 삭제하시겠습니까?"

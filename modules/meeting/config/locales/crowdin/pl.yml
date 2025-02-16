@@ -119,7 +119,7 @@ pl:
   label_template: "Szablon"
   label_recurring_meeting_view: "Wyświetl serię spotkań"
   label_recurring_meeting_create: "Otwórz"
-  label_recurring_meeting_copy: "Copy as one-time"
+  label_recurring_meeting_copy: "Skopiuj jako jednorazowe"
   label_recurring_meeting_cancel: "Anuluj to wystąpienie"
   label_recurring_meeting_delete: "Usuń wystąpienie"
   label_recurring_meeting_restore: "Przywróć to wystąpienie"
@@ -184,15 +184,15 @@ pl:
       open_meeting_link: "Spotkania otwarte"
       open_my_meetings_link: "Przejdź do sekcji Moje spotkania"
       series:
-        title: "[%{project_name}] Meeting series '%{title}'"
-        summary: "%{actor} has set up a new meeting series '%{title}'"
+        title: "[%{project_name}] Seria spotkań „%{title}”"
+        summary: "Użytkownik %{actor} utworzył nową serię spotkań „%{title}”"
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] Zmieniono terminy serii spotkań „%{title}”"
+        summary: "Użytkownik %{actor} zmienił harmonogram serii spotkań „%{title}”"
+        old_schedule: "Stary harmonogram"
+        new_schedule: "Nowy harmonogram"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "Użytkownik %{actor} wysłał Ci zaproszenie na spotkanie „%{title}”"
       cancelled:
         header: "Anulowano: spotkanie „%{title}”"
         header_occurrence: "Anulowano: wystąpienie spotkania „%{title}”"
@@ -202,9 +202,9 @@ pl:
         summary: "„%{title}” anulował użytkownik %{actor}."
         date_time: "Zaplanowana data/godzina"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "Spotkanie „%{title}” zostało przełożone"
+        summary: "Spotkanie „%{title}” zostało przełożone przez użytkownika %{actor}"
+        body: "Spotkanie „%{title}” zostało przełożone przez użytkownika %{actor}."
         old_date_time: "Stara data/godzina"
         new_date_time: "Nowa data/godzina"
     label_mail_all_participants: "Wyślij wiadomość e-mail do wszystkich uczestników"
@@ -225,11 +225,11 @@ pl:
         confirmation_message_html: >
           To działanie jest nieodwracalne. Postępuj ostrożnie.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "Anuluj wystąpienie spotkania"
+        heading: "Anulować to wystąpienie spotkania?"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          Wszelkie informacje o spotkaniu, które nie znajdują się w szablonie, zostaną utracone. Czy chcesz kontynuować?
+        confirm_button: "Anuluj wystąpienie"
     blankslate:
       title: "Brak spotkań do wyświetlenia"
       desc: "Nie ma spotkań spełniających kryteria aktywnego filtru."

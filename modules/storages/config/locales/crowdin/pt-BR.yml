@@ -199,11 +199,11 @@ pt-BR:
         manual_management_description: Você pode criar e gerenciar manualmente pastas por projeto por conta própria. No entanto, será necessário garantir manualmente que os usuários relevantes tenham acesso.
         setup_incomplete: Escolha o tipo de gerenciamento de acesso do usuário e criação de pastas.
         subtitle: Gerenciamento de acesso
-      access_management_section: Access and project folders
+      access_management_section: Acesso e pastas do projeto
       automatically_managed_folders: Pastas gerenciadas automaticamente
       general_information: Informações gerais
       nextcloud_oauth: OAuth Nextcloud
-      oauth_configuration: OAuth configuration
+      oauth_configuration: Configuração de OAuth
       one_drive_oauth: Azure OAuth
       openproject_oauth: OAuth OpenProject
       project_folders: Pastas do projeto

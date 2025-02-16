@@ -138,7 +138,7 @@ pl:
       authn_requests_signed: >
         Jeśli zaznaczone, OpenProject podpisze SAML AuthnRequest. Wymagane będzie podanie certyfikatu podpisu i klucza prywatnego, wykorzystując poniższe pola.
       want_assertions_signed: >
-        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
+        Jeśli zaznaczone, OpenProject będzie wymagał podpisanych odpowiedzi od dostawcy tożsamości, używając własnego klucza certyfikatu. OpenProject zweryfikuje podpis z certyfikatu z sekcji podstawowej konfiguracji.
       want_assertions_encrypted: >
         Jeśli opcja jest włączona, wymaga od dostawcy tożsamości zaszyfrowania jego odpowiedzi za pomocą podanej przez Ciebie pary certyfikatów.
       certificate: >

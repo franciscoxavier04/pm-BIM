@@ -180,15 +180,15 @@ fr:
       open_meeting_link: "Ouvrir la réunion"
       open_my_meetings_link: "Accéder à Mes réunions"
       series:
-        title: "[%{project_name}] Série de réunions %{title}"
-        summary: "%{actor} a mis en place une nouvelle série de réunions %{title}"
+        title: "[%{project_name}] Série de réunions « %{title} »"
+        summary: "%{actor} a mis en place une nouvelle série de réunions « %{title} »"
       series_rescheduled:
-        title: "[%{project_name}] La série de réunions '%{title}' a été reprogrammée"
-        summary: "%{actor} a modifié le calendrier de la série de réunions '%{title}'"
+        title: "[%{project_name}] La série de réunions « %{title} » a été reprogrammée"
+        summary: "%{actor} a modifié le calendrier de la série de réunions « %{title} »"
         old_schedule: "Ancienne planification"
         new_schedule: "Nouvelle planification"
       invited:
-        summary: "%{actor} vous a envoyé une invitation pour la réunion %{title}"
+        summary: "%{actor} vous a envoyé une invitation pour la réunion « %{title} »"
       cancelled:
         header: "Annulée : Réunion « %{title} »"
         header_occurrence: "Annulée : occurrence de la réunion « %{title} »"
@@ -198,9 +198,9 @@ fr:
         summary: "« %{title} » a été annulée par %{actor}."
         date_time: "Date/heure prévue"
       rescheduled:
-        header: "La réunion %{title} a été reprogrammée"
-        summary: "La réunion %{title} a été reprogrammée par %{actor}"
-        body: "La réunion %{title} a été reprogrammée par %{actor}."
+        header: "La réunion « %{title} » a été reprogrammée"
+        summary: "La réunion « %{title} » a été reprogrammée par %{actor}"
+        body: "La réunion « %{title} » a été reprogrammée par %{actor}."
         old_date_time: "Ancienne date/heure"
         new_date_time: "Nouvelle date/heure"
     label_mail_all_participants: "Envoyer un mail à tous les participants"
