@@ -1,14 +1,16 @@
 ---
 sidebar_navigation:
-  title: Dynamic meetings
+  title: Recurring meetings
   priority: 800
 description: Manage meetings with agenda and meeting minutes in OpenProject.
-keywords: meetings, dynamic meetings, agenda, minutes
+keywords: meetings, dynamic meetings, agenda, minutes, recurring meeting
 ---
 
-# Dynamic meetings management
+# Recurring meetings management
 
-Introduced in OpenProject 13.1, dynamic meetings offer easier meeting management, improved agenda creation and the ability to link work packages to meetings and vice-versa.
+Introduced in OpenProject 15.3, recurring meetings offer 
+
+easier meeting management, improved agenda creation and the ability to link work packages to meetings and vice-versa.
 
 > [!NOTE]
 > The **Meetings module needs to be activated** in the [Project Settings](../../projects/project-settings/modules/) to be able to create and edit meetings.
@@ -29,34 +31,7 @@ Introduced in OpenProject 13.1, dynamic meetings offer easier meeting management
 | [Copy a meeting](#copy-a-meeting)                            | How to copy a meeting in OpenProject (recurring meetings). |
 | [Delete a meeting](#delete-a-meeting)                        | How to delete a meeting in OpenProject.                    |
 
-## Meetings in OpenProject
-
-By selecting **Meetings** in the project menu on the left, you get an overview of all the meetings you have been invited to within a specific project sorted by date. By clicking on a meeting name you can view further details of the meeting.
-
-To get an overview of the meetings across multiple projects, you can select **Meetings** in the [global modules menu](../../../user-guide/home/global-modules/).
-
-![Select meetings module from openproject global modules ](openproject_userguide_meetings_module_select.png)
-
-The menu on the left will allow you to filter for upcoming or past meetings. You can also filter the list of the meetings based on your involvement.
-
-![Meetings overview in openproject global modules](openproject_userguide_dynamic_meetings_overview.png)
-
-You can also use the meetings filters to refine the list of meetings based on the following criteria: 
-
-- **Attended user** - shows meetings that a specific user attended
-- **Author** - shows meetings that a specific user created
-- **Invited user** - shows meetings that a specific user was invited to
-- **Project** - shows meetings for a specific project (this will only be displayed in the global module view, i.e. not within a specific project)
-- **Time** - shows past or upcoming meetings
-
-![Filter the list of dynamic meetings in OpenProject](openproject_dynamic_meetings_filters.png)
-
-> [!TIP]
-> If you are interested in how the Meetings module is used by the OpenProject team, please take a look at [this blog article](https://www.openproject.org/blog/meeting-management-example/).
-
-
-
-## Create and edit dynamic meetings
+## Create and edit recurring meetings
 
 ### Create a new meeting
 

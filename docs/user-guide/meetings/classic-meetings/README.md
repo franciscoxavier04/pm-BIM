@@ -1,7 +1,7 @@
 ---
 sidebar_navigation:
   title: Classic meetings
-  priority: 900
+  priority: 700
 description: Manage meetings with agenda and meeting minutes in OpenProject.
 keywords: meetings, classic meetings, agenda, minutes
 ---

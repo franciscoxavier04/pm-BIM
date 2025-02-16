@@ -1,14 +1,14 @@
 ---
 sidebar_navigation:
   title: Meetings FAQ
-  priority: 700
+  priority: 100
 description: Frequently asked questions about meetings.
 keywords: meetings, meetings faq, tickets, how to, task
 ---
 
 # Frequently asked questions (FAQ) for meetings
 
-## What is difference between a dynamic and classic meeting?
+## What is a difference between a dynamic and classic meeting?
 
 [Dynamic meetings](../dynamic-meetings) are an improved version of the meetings meant to improve the user experience when managing meetings in OpenProject.
 
