@@ -890,7 +890,7 @@ vi:
         timeline_labels: "Nhãn dòng thời gian"
       relation:
         lag: "Kết quả chậm"
-        from: "Gói công việc"
+        from: "Related work package"
         to: "Work package liên quan"
       reminder:
         remind_at_date: "Date"
@@ -1214,12 +1214,12 @@ vi:
           typed_dag:
             circular_dependency: "Mối quan hệ tạo ra một vòng tròn các mối quan hệ."
           attributes:
-            to:
-              error_not_found: "work package ở vị trí `đến` không tìm thấy hoặc không hiển thị"
-              error_readonly: "liên kết `to` của một mối quan hệ hiện có là không thay đổi được"
-            from:
-              error_not_found: "work package ở vị trí `từ` không tìm thấy hoặc không hiển thị"
-              error_readonly: "liên kết `from` của một mối quan hệ hiện có là không thay đổi được"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

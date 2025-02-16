@@ -933,7 +933,7 @@ ar:
         timeline_labels: "Timeline labels"
       relation:
         lag: "Lag"
-        from: "مجموعة العمل"
+        from: "Related work package"
         to: "مجموعة عمل ذات صلة"
       reminder:
         remind_at_date: "Date"
@@ -1257,12 +1257,12 @@ ar:
           typed_dag:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
-            to:
-              error_not_found: "work package in `to` position not found or not visible"
-              error_readonly: "الإرتباطات الحالية غير قابلة للتغيير"
-            from:
-              error_not_found: "work package in `from` position not found or not visible"
-              error_readonly: "علاقة الارتباط هذه غير ممكن تغييرها"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

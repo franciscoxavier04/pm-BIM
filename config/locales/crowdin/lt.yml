@@ -912,7 +912,7 @@ lt:
         timeline_labels: "Laiko juostos etiketės"
       relation:
         lag: "Vėlavimas"
-        from: "Darbų paketas"
+        from: "Related work package"
         to: "Susijusių darbų paketas"
       reminder:
         remind_at_date: "Date"
@@ -1236,12 +1236,12 @@ lt:
           typed_dag:
             circular_dependency: "Ryšys sukuria ryšių ciklą."
           attributes:
-            to:
-              error_not_found: "„iki“ pozicijos darbų paketas nerastas arba nematomas"
-              error_readonly: "esamo ryšio sąsaja „iki“ yra nekintama"
-            from:
-              error_not_found: "„nuo“ pozicijos darbų paketas nerastas arba nematomas"
-              error_readonly: "esamo ryšio sąsaja „iš“ yra nekintama"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

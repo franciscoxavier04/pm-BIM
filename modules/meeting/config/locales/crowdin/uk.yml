@@ -56,6 +56,8 @@ uk:
         frequency: "Частота"
         interval: "Інтервал"
         start_date: "Починається"
+        start_time: "Час початку"
+        start_time_hour: "Час початку"
         end_after: "Серія нарад завершується"
         iterations: "Повторення"
     errors:
@@ -119,7 +121,7 @@ uk:
   label_template: "Шаблон"
   label_recurring_meeting_view: "Переглянути серію нарад"
   label_recurring_meeting_create: "Відкрити"
-  label_recurring_meeting_copy: "Copy as one-time"
+  label_recurring_meeting_copy: "Копіювати як одноразову"
   label_recurring_meeting_cancel: "Скасувати це повторення"
   label_recurring_meeting_delete: "Видалити повторення"
   label_recurring_meeting_restore: "Відновити це повторення"
@@ -184,15 +186,15 @@ uk:
       open_meeting_link: "Відкрити зустріч"
       open_my_meetings_link: "Перейдіть до Моїх нарад"
       series:
-        title: "[%{project_name}] Meeting series '%{title}'"
-        summary: "%{actor} has set up a new meeting series '%{title}'"
+        title: "[%{project_name}] – серія нарад «%{title}»"
+        summary: "%{actor} створив(-ла) нову серію нарад «%{title}»"
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] – запланований час серії нарад «%{title}» змінено"
+        summary: "%{actor} змінив(-ла) запланований час серії нарад «%{title}»"
+        old_schedule: "Старий розклад"
+        new_schedule: "Новий розклад"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} надіслав(-ла) вам запрошення на нараду «%{title}»"
       cancelled:
         header: "Скасовано: нарада «%{title}»"
         header_occurrence: "Скасовано: нарада серії «%{title}»"
@@ -202,9 +204,9 @@ uk:
         summary: "«%{title}» скасував(-ла) %{actor}."
         date_time: "Заплановані дата/час"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "Запланований час наради «%{title}» змінено"
+        summary: "Запланований час наради «%{title}» змінив(-ла) %{actor}"
+        body: "Запланований час наради «%{title}» змінив(-ла) %{actor}."
         old_date_time: "Стара дата/час"
         new_date_time: "Нова дата/час"
     label_mail_all_participants: "Надіслати лист усім учасникам"
@@ -225,11 +227,11 @@ uk:
         confirmation_message_html: >
           Зверніть увагу: цю дію не можна відмінити.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "Скасувати нараду серії"
+        heading: "Скасувати цю нараду серії?"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          Будь-яку інформацію про нараду, відсутню в шаблоні, буде втрачено. Продовжити?
+        confirm_button: "Скасувати нараду"
     blankslate:
       title: "Немає нарад"
       desc: "Немає нарад, які відповідають критеріям активного фільтра."

@@ -54,6 +54,8 @@ hu:
         frequency: "Gyakoriság"
         interval: "Időköz"
         start_date: "Starts on"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Meeting series ends"
         iterations: "Előfordulások"
     errors:

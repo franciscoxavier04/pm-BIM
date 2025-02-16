@@ -53,6 +53,8 @@ id:
         frequency: "Kekerapan"
         interval: "Sela Waktu"
         start_date: "Mulai pada"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Meeting series ends"
         iterations: "Kejadian"
     errors:

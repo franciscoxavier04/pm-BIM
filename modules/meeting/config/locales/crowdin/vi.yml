@@ -53,6 +53,8 @@ vi:
         frequency: "Tần suất"
         interval: "Khoảng thời gian"
         start_date: "Bắt đầu vào"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Kết thúc chuỗi họp"
         iterations: "Số lần xuất hiện"
     errors:

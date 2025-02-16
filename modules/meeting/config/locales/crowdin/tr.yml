@@ -54,6 +54,8 @@ tr:
         frequency: "Sıklık"
         interval: "Zaman aralığı"
         start_date: "Başlama zamanı"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Toplantı serisi bitişi"
         iterations: "Yineleme sayısı"
     errors:
@@ -283,7 +285,7 @@ tr:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Planlandı"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -302,7 +304,7 @@ tr:
           Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
       title: "Cancel meeting occurrence"
-      heading: "Cancel this meeting occurrence?"
+      heading: "Sadece bu toplantı mı iptal edilsin?"
       confirmation_message_html: >
         Any meeting information not in the template will be lost. Do you want to continue?
       confirm_button: "Cancel occurrence"
