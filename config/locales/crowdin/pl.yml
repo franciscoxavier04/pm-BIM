@@ -912,7 +912,7 @@ pl:
         timeline_labels: "Etykiety osi czasu"
       relation:
         lag: "Opóźnienie"
-        from: "Related work package"
+        from: "Powiązany pakiet roboczy"
         to: "Powiązanie zadania"
       reminder:
         remind_at_date: "Data"
@@ -1237,11 +1237,11 @@ pl:
             circular_dependency: "Relacja tworzy krąg relacji."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "nie znaleziono lub niewidoczny."
+              error_readonly: "nie można zmienić dla istniejących relacji."
             from_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "nie znaleziono lub niewidoczny."
+              error_readonly: "nie można zmienić dla istniejących relacji."
             lag:
               greater_than_or_equal_to:
                 zero: "— wartość nie może być ujemna."

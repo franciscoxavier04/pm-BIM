@@ -362,7 +362,7 @@ tr:
                 The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
     ical_sharing_modal:
       title: "Takvime abone ol"
-      inital_setup_error_message: "An error occured while fetching data."
+      inital_setup_error_message: "Veri alınırken bir hata oluştu."
       description: "You can use the URL (iCalendar) to subscribe to this calendar in an external client and view up-to-date work package information from there."
       warning: "Please don't share this URL with other users. Anyone with this link will be able to view work package details without an account or password."
       token_name_label: "Bunu nerede kullanacaksınız?"
@@ -648,13 +648,13 @@ tr:
           no_notification: "Görünüşe göre yapacağınız bir şey kalmadı."
           no_notification_with_current_project_filter: "Görünüşe göre seçili proje için yapacağınız bir şey kalmadı."
           no_notification_with_current_filter: "Görünüşe göre %{filter} filtresi için yapacağınız bir şey kalmadı."
-          no_notification_for_filter: "Looks like you are all caught up for this filter."
+          no_notification_for_filter: "Görünüşe göre bu filtre için her şey tamam."
           no_selection: "Tüm etkinlik ayrıntılarını görüntülemek için bir bildirime tıklayın."
         new_notifications:
           message: "Yeni bildirimler var"
           link_text: "Yüklemek için buraya tıklayın."
       reminders:
-        note: "Note: “%{note}”"
+        note: "Not: \"%{note}\""
       settings:
         change_notification_settings: 'Önemli bir güncellemeyi asla kaçırmamak için <a target="_blank" href="%{url}">bildirim ayarlarınızı</a> değiştirebilirsiniz.'
         title: "Bildirim ayarları"
@@ -720,7 +720,7 @@ tr:
       required_outside_context: >
         Lütfen tüm özellikleri görmek için çalışma paketini oluşturacak bir proje seçin. Yalnızca yukarıdaki türden etkin olan projeleri seçebilirsiniz.
       context: "Proje içeriği"
-      click_to_switch_to_project: "Project: %{projectname}"
+      click_to_switch_to_project: "Proje: %{projectname}"
       confirm_template_load: "Şablonu değiştirmek sayfayı yeniden yükleyecek ve bu forma yaptığınız tüm girişleri kaybedeceksiniz. Devam et?"
       use_template: "Şablon kullan"
       no_template_selected: "(Yok)"
@@ -1324,8 +1324,8 @@ tr:
         a_specific_date: "belirli bir tarih"
         between_two_specific_dates: "iki belirli tarih arasında"
       legends:
-        changes_since: "Changes since"
-        changes_between: "Changes between"
+        changes_since: "O zamandan beri değişiklikler"
+        changes_between: "Arasındaki değişiklikler"
         now_meets_filter_criteria: "Şimdi filtre kriterlerini karşılıyor"
         no_longer_meets_filter_criteria: "Artık filtre kriterlerini karşılamıyor"
         maintained_with_changes: "Maintained with changes"
@@ -1344,7 +1344,7 @@ tr:
         remove: "Kaldır"
       drop_modal:
         focus_grab: "Bu, modallar için bir odak noktasıdır. Modal tetikleme öğesine geri dönmek için shift+tab tuşlarına basın."
-        close: "Close modal"
+        close: "Ekranı kapat"
     open_project_storage_modal:
       waiting_title:
         timeout: "Zaman Aşımı"

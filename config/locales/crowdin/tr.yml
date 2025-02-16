@@ -521,7 +521,7 @@ tr:
       no_results_title_text: Bu kullanıcı şu anda hiçbir gruba üye değil.
       summary_with_more: Member of %{names} and %{count_link}.
       more: "%{count} more"
-      summary: Member of %{names}.
+      summary: '%{names} üyesi.'
     memberships:
       no_results_title_text: Bu kullanıcı şuan için bir proje üyesi değil.
     open_profile: "Profili aç"
@@ -1105,10 +1105,10 @@ tr:
         ical_token_query_assignment:
           attributes:
             name:
-              blank: "is mandatory. Please select a name."
-              not_unique: "is already in use. Please select another name."
+              blank: "zorunludur. Lütfen bir isim seçiniz."
+              not_unique: "zaten kullanılıyor. Lütfen başka bir isim seçiniz."
         meeting:
-          error_conflict: "Unable to save because the meeting was updated by someone else in the meantime. Please reload the page."
+          error_conflict: "Toplantı bu sırada başka biri tarafından güncellendiği için kaydedilemiyor. Lütfen sayfayı yeniden yükleyin."
         notifications:
           at_least_one_channel: "Bildirim göndermek için en az bir kanal belirtilmelidir."
           attributes:
@@ -1974,24 +1974,24 @@ tr:
           label: "Açıklamaları dahil et"
           caption: "Bu seçenek ham formatta bir açıklama sütunu ekleyecektir."
     your_work_packages_export: "Work packages are being exported"
-    succeeded: "Export completed"
+    succeeded: "Dışa aktarma tamamlandı"
     failed: "An error has occurred while trying to export the work packages: %{message}"
     format:
       atom: "Atom"
       csv: "CSV"
       pdf: "PDF"
       pdf_overview_table: "PDF Tablosu"
-      pdf_report_with_images: "PDF Report with images"
+      pdf_report_with_images: "Resimli PDF Raporu"
       pdf_report: "PDF Raporu"
       pdf_gantt: "PDF Gantt"
     image:
       omitted: "Görüntü dışa aktarılmadı."
     macro:
-      error: "Macro error, %{message}"
-      attribute_not_found: "attribute not found: %{attribute}"
-      model_not_found: "invalid attribute model: %{model}"
-      resource_not_found: "resource not found: %{resource}"
-      rich_text_unsupported: "Rich text embedding currently not supported in export"
+      error: "Makro hatası, %{message}"
+      attribute_not_found: "öznitelik bulunamadı: %{attribute}"
+      model_not_found: "geçersiz öznitelik modeli: %{model}"
+      resource_not_found: "kaynak bulunamadı: %{resource}"
+      rich_text_unsupported: "Zengin metin yerleştirme şu anda dışa aktarmada desteklenmiyor"
     units:
       hours: sa
       days: g
@@ -2150,7 +2150,7 @@ tr:
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
         removed: "Dosya Depolama belirteci başarıyla kaldırıldı"
         failed: "An error occurred and the token couldn't be removed. Please try again later."
-        unknown_storage: "Unknown storage"
+        unknown_storage: "Bilinmeyen depolama"
   notifications:
     reasons:
       assigned: "Atanan"
@@ -2367,7 +2367,7 @@ tr:
   label_enterprise: "Kurumsal"
   label_enterprise_active_users: "%{current}/%{limit} aktif kullanıcı rezervasyonu"
   label_enterprise_edition: "Enterprise sürüm"
-  label_enterprise_support: "Enterprise support"
+  label_enterprise_support: "Kurumsal destek"
   label_environment: "Ortam"
   label_estimates_and_progress: "Tahminler ve ilerleme"
   label_equals: "şuysa"
@@ -2755,7 +2755,7 @@ tr:
   label_user_settings: "Kullanıcı ayarları"
   label_users_settings: "Kullanıcı ayarları"
   label_version_new: "Yeni sürüm"
-  label_version_edit: "Edit version"
+  label_version_edit: "Sürümü düzenle"
   label_version_plural: "Sürümler"
   label_version_sharing_descendants: "Alt projeler ile"
   label_version_sharing_hierarchy: "Proje hiyerarşisi ile"
@@ -2786,7 +2786,7 @@ tr:
   label_wiki_show_new_page_link: "Alt menü öğesini göster 'Yeni alt sayfa oluştur'"
   label_wiki_show_submenu_item: "Alt menü öğesi olarak göster "
   label_wiki_start: "Başlangıç sayfası"
-  label_work: "Work"
+  label_work: "Çalışma"
   label_work_package: "İş paketi"
   label_work_package_attachments: "İş paketi ekleri"
   label_work_package_category_new: "Yeni kategori"
@@ -2829,7 +2829,7 @@ tr:
   label_x_files:
     one: "1 dosya"
     other: "%{count} dosya"
-    zero: "no files"
+    zero: "dosya yok"
   label_yesterday: "dün"
   label_zen_mode: "Zen modu"
   label_role_type: "Tür"
@@ -2888,18 +2888,18 @@ tr:
         assigned: "Atanmış"
         responsible: "Sorumlu"
         mentioned: "Bahsedilen"
-        shared: "Shared"
+        shared: "Paylaşıldı"
         subscribed: "tüm"
         prefix: "Bildirim ayarı nedeniyle alındı: %{reason}"
         date_alert_start_date: "Tarih uyarısı"
         date_alert_due_date: "Tarih uyarısı"
-        reminder: "Reminder"
+        reminder: "Hatırlatma"
       see_all: "Tümünü gör"
       updated_at: "%{timestamp} tarihinde %{user} tarafından güncellendi"
     reminder_notifications:
       subject: "Reminder: %{note}"
-      heading: "You have a new reminder"
-      note: "Note: “%{note}”"
+      heading: "Yeni bir hatırlatıcınız var"
+      note: "Not: \"%{note}\""
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."

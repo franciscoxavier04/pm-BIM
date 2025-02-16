@@ -53,8 +53,8 @@ zh-CN:
         frequency: "周期"
         interval: "间隔"
         start_date: "开始日期："
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "开始时间"
+        start_time_hour: "开始时间"
         end_after: "会议系列结束"
         iterations: "事件"
     errors:
@@ -118,7 +118,7 @@ zh-CN:
   label_template: "模板"
   label_recurring_meeting_view: "查看会议系列"
   label_recurring_meeting_create: "打开"
-  label_recurring_meeting_copy: "Copy as one-time"
+  label_recurring_meeting_copy: "一次性复制"
   label_recurring_meeting_cancel: "取消此事件"
   label_recurring_meeting_delete: "删除事件"
   label_recurring_meeting_restore: "恢复此事件"
@@ -178,29 +178,29 @@ zh-CN:
         立即向上面选定的参加者发送电子邮件邀请。您也可以在之后随时手动发送。
       send_invitation_emails_structured: "立即向所有与会者发送电子邮件邀请。您也可以在之后随时手动发送。"
       open_meeting_link: "打开会议"
-      open_my_meetings_link: "Go to My meetings"
+      open_my_meetings_link: "转到我的会议"
       series:
-        title: "[%{project_name}] Meeting series '%{title}'"
-        summary: "%{actor} has set up a new meeting series '%{title}'"
+        title: "[%{project_name}] 会议系列 '%{title}'"
+        summary: "%{actor} 设置了一个新的会议系列 '%{title}'"
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] 会议系列 '%{title}' 已重新安排"
+        summary: "%{actor} 已更改会议系列 '%{title}' 的时间表"
+        old_schedule: "旧时间表"
+        new_schedule: "新时间表"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} 向您发送了会议 '%{title}' 的邀请"
       cancelled:
-        header: "Cancelled: Meeting '%{title}'"
-        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
-        header_series: "Cancelled: Meeting series '%{title}'"
-        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
-        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
-        summary: "'%{title}' has been cancelled by %{actor}."
-        date_time: "Scheduled date/time"
+        header: "已取消：会议 '%{title}'"
+        header_occurrence: "已取消：会议事件 '%{title}'"
+        header_series: "已取消：会议系列 '%{title}'"
+        summary_occurrence: "%{actor} 已取消 '%{title}' 的事件。"
+        summary_series: "%{actor} 已取消会议系列 '%{title}'。"
+        summary: "%{actor} 已取消 '%{title}'。"
+        date_time: "预定日期/时间"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "会议 '%{title}' 已经重新安排"
+        summary: "会议 '%{title}' 已经由 %{actor} 重新安排"
+        body: "会议 '%{title}' 已经由 %{actor} 重新安排。"
         old_date_time: "旧日期/时间"
         new_date_time: "新日期/时间"
     label_mail_all_participants: "发送电子邮件给所有参与者"
@@ -221,11 +221,11 @@ zh-CN:
         confirmation_message_html: >
           此操作不可逆。请谨慎处理。
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "取消会议事件"
+        heading: "取消此会议事件？"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          任何不在模板中的会议信息都将丢失。 您想要继续吗？
+        confirm_button: "取消事件"
     blankslate:
       title: "无会议显示"
       desc: "没有符合主动筛选条件的会议。"
@@ -295,11 +295,11 @@ zh-CN:
       heading: "永久删除此会议系列？"
       confirmation_message_html:
         zero: >
-          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
+          会议系列 <strong>%{title}</strong> 没有任何会议事件。将为所有人删除该系列。请谨慎操作。
         one: >
-          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
+          删除 <strong>%{title}</strong> 也会删除此系列中的一次事件。此操作不可逆转。请谨慎操作。
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
+          删除 <strong>%{title}</strong> 将删除此系列中的全部 %{count} 个事件。此操作不可逆转。请谨慎操作。
     scheduled_delete_dialog:
       title: "取消会议事件"
       heading: "取消此会议事件？"

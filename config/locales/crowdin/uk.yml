@@ -908,7 +908,7 @@ uk:
         timeline_labels: "Мітки часової шкали"
       relation:
         lag: "Затримка"
-        from: "Related work package"
+        from: "Пов’язаний пакет робіт"
         to: "Пов'язаний робочий пакет"
       reminder:
         remind_at_date: "Дата"
@@ -1233,11 +1233,11 @@ uk:
             circular_dependency: "Відносини створюють коло відносин."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "не знайдено або приховано."
+              error_readonly: "не можна змінити для наявних зв’язків."
             from_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "не знайдено або приховано."
+              error_readonly: "не можна змінити для наявних зв’язків."
             lag:
               greater_than_or_equal_to:
                 zero: "не може мати від’ємне значення."

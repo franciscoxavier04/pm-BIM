@@ -894,7 +894,7 @@ pt-BR:
         timeline_labels: "Rótulos de linha do tempo"
       relation:
         lag: "Atraso"
-        from: "Related work package"
+        from: "Pacote de trabalho relacionado"
         to: "Pacote de trabalho relacionado"
       reminder:
         remind_at_date: "Data"
@@ -1219,11 +1219,11 @@ pt-BR:
             circular_dependency: "O relacionamento cria um círculo de relacionamentos."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para relações existentes."
             from_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para relações existentes."
             lag:
               greater_than_or_equal_to:
                 zero: "não pode ser negativo."
