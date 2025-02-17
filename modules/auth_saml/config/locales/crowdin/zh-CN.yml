@@ -138,7 +138,7 @@ zh-CN:
       authn_requests_signed: >
         如果选中，OpenProject 将签署 SAML 作者请求。您必须提供签名证书和私人密钥，使用下面的字段。
       want_assertions_signed: >
-        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
+        如果选中，OpenProject 将要求身份提供商使用其自身的证书密钥对提供签名的响应。OpenProject 将使用基础配置部分中的证书来验证签名。
       want_assertions_encrypted: >
         如果启用，则要求身份提供商使用您提供的证书对加密断言响应。
       certificate: >

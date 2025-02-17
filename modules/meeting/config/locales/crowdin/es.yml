@@ -178,29 +178,29 @@ es:
         Envíe inmediatamente una invitación por correo electrónico a los participantes seleccionados anteriormente. También puede hacerlo manualmente en cualquier momento posterior.
       send_invitation_emails_structured: "Envíe inmediatamente una invitación por correo electrónico a todos los participantes. También puede hacerlo manualmente en cualquier momento posterior."
       open_meeting_link: "Abrir reunión"
-      open_my_meetings_link: "Go to My meetings"
+      open_my_meetings_link: "Ir a Mis reuniones"
       series:
-        title: "[%{project_name}] Meeting series '%{title}'"
-        summary: "%{actor} has set up a new meeting series '%{title}'"
+        title: "[%{project_name}] Serie de reuniones «%{title}»"
+        summary: "%{actor} ha creado una nueva serie de reuniones «%{title}»"
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] Serie de reuniones «%{title}» reprogramada"
+        summary: "%{actor} ha cambiado la programación de la serie de reuniones «%{title}»"
+        old_schedule: "Programación antigua"
+        new_schedule: "Nueva programación"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} te ha enviado una invitación para la reunión «%{title}»"
       cancelled:
-        header: "Cancelled: Meeting '%{title}'"
-        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
-        header_series: "Cancelled: Meeting series '%{title}'"
-        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
-        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
-        summary: "'%{title}' has been cancelled by %{actor}."
-        date_time: "Scheduled date/time"
+        header: "Cancelada: Reunión «%{title}»"
+        header_occurrence: "Cancelada: Repetición de la reunión «%{title}»"
+        header_series: "Cancelada: Serie de reuniones «%{title}»"
+        summary_occurrence: "%{actor} ha cancelado una repetición de «%{title}»."
+        summary_series: "%{actor} ha cancelado la serie de reuniones «%{title}»."
+        summary: "%{actor} ha cancelado «%{title}»."
+        date_time: "Fecha/hora programada"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "La reunión «%{title}» ha sido reprogramada"
+        summary: "%{actor} ha reprogramado la reunión «%{title}»"
+        body: "%{actor} ha reprogramado la reunión «%{title}»."
         old_date_time: "Fecha y hora anteriores"
         new_date_time: "Fecha y hora nuevas"
     label_mail_all_participants: "Enviar email a todos los participantes"
@@ -295,11 +295,11 @@ es:
       heading: "¿Eliminar permanentemente esta serie de reuniones?"
       confirmation_message_html:
         zero: >
-          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
+          La serie de reuniones <strong>%{title}</strong> no tiene ninguna reunión. La serie se eliminará para todos. Proceda con precaución.
         one: >
-          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
+          Al eliminar <strong>%{title}</strong> también se eliminará una repetición de esta serie. Esta acción no es reversible. Proceda con precaución.
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
+          Al eliminar <strong>%{title}</strong> se eliminarán todas las apariciones de %{count} en esta serie. Esta acción no es reversible. Proceda con precaución.
     scheduled_delete_dialog:
       title: "Cancelar repetición de reunión"
       heading: "¿Desea cancelar esta repetición de reunión?"

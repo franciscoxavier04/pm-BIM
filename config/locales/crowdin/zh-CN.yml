@@ -884,7 +884,7 @@ zh-CN:
         timeline_labels: "时间线标签"
       relation:
         lag: "延迟"
-        from: "工作包"
+        from: "相关工作包"
         to: "相关的工作包"
       reminder:
         remind_at_date: "日期"
@@ -1208,12 +1208,12 @@ zh-CN:
           typed_dag:
             circular_dependency: "关系会创建关系的循环。"
           attributes:
-            to:
-              error_not_found: "找不到这个工作包"
-              error_readonly: "关系要持久"
-            from:
-              error_not_found: "找不到这个工作包"
-              error_readonly: "关系要持久"
+            to_id:
+              error_not_found: "找不到或不可见。"
+              error_readonly: "无法针对现有关系更改。"
+            from_id:
+              error_not_found: "找不到或不可见。"
+              error_readonly: "无法针对现有关系更改。"
             lag:
               greater_than_or_equal_to:
                 zero: "不能为负数。"
@@ -3700,6 +3700,7 @@ zh-CN:
   text_unallowed_characters: "不允许的字符"
   text_user_invited: 用户已被邀请，正在等待注册。
   text_user_wrote: "%{value} 写道："
+  text_wrote: "已编写"
   text_warn_on_leaving_unsaved: "此工作包包含未保存的文本，如果您离开此页面未保存的文本将会丢失。"
   text_what_did_you_change_click_to_add_comment: "你做出了什么更改？点击添加注释"
   text_wiki_destroy_confirmation: "确实要删除此维基和它的所有内容吗?"

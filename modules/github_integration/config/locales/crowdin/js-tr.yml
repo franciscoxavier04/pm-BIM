@@ -25,15 +25,15 @@ tr:
       work_packages:
         tab_name: "GitHub"
       tab_header:
-        title: "İstekleri getir"
+        title: "Çekme istekleri"
         copy_menu:
           label: Git snippetları
           description: Git snippet'lerini panoya kopyala
         git_actions:
           branch_name: Dal adı
-          commit_message: Mesaj işle
+          commit_message: İşlem mesajı
           cmd: Boş işlemle dal oluştur
-          title: Git için hızlı snippet'ler
+          title: Git için hızlı kod parçaları
           copy_success: '✅ Kopyalandı!'
           copy_error: '❌ Kopyalanamadı!'
       tab_prs:

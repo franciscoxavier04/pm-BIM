@@ -369,7 +369,10 @@ class MeetingsController < ApplicationController
   end
 
   def group_meetings(all_meetings) # rubocop:disable Metrics/AbcSize
-    next_week = Time.current.next_occurring(Redmine::I18n.start_of_week)
+    next_week = Time
+      .current
+      .next_occurring(Redmine::I18n.start_of_week)
+      .beginning_of_day
     groups = Hash.new { |h, k| h[k] = [] }
     groups[:later] = show_more_pagination(all_meetings
                                             .where(start_time: next_week..)

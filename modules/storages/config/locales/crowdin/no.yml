@@ -199,11 +199,11 @@
         manual_management_description: Opprett og behandle mapper manuelt per prosjekt på egenhånd. Du må manuelt sikre at relevante brukere har tilgang.
         setup_incomplete: Velg type behandling av brukertilgang og opprettelse av mappe.
         subtitle: Tilgangsstyring
-        title: Tilgang og prosjektmapper
+      access_management_section: Access and project folders
       automatically_managed_folders: Automatisk administrerte mapper
       general_information: Generell informasjon
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth programmer
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Prosjektmapper

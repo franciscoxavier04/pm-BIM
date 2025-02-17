@@ -893,7 +893,7 @@ nl:
         timeline_labels: "Tijdlijn etiketten"
       relation:
         lag: "Vertraging"
-        from: "Werkpakket"
+        from: "Related work package"
         to: "Verwante werkpakket"
       reminder:
         remind_at_date: "Datum"
@@ -1217,12 +1217,12 @@ nl:
           typed_dag:
             circular_dependency: "De relatie wordt gemaakt van een kring van relaties."
           attributes:
-            to:
-              error_not_found: "werkpakket in positie `naar` niet gevonden of niet zichtbaar"
-              error_readonly: "een bestaande `te`-relatie is onveranderlijk"
-            from:
-              error_not_found: "werkpakket in `van`-positie niet gevonden of niet zichtbaar"
-              error_readonly: "een bestaande `van`-relatielink is onveranderlijk"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3744,6 +3744,7 @@ nl:
   text_unallowed_characters: "Ongeldige tekens"
   text_user_invited: De gebruiker is uitgenodigd en is in afwachting van de registratie.
   text_user_wrote: "%{value} schreef:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Het werkpakket bevat niet-opgeslagen tekst die verloren gaat als u deze pagina verlaat."
   text_what_did_you_change_click_to_add_comment: "Wat heb je te veranderen? Klik op Opmerking toevoegen"
   text_wiki_destroy_confirmation: "Weet u zeker dat u deze wiki en alle inhoud wilt verwijderen?"

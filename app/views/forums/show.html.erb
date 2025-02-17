@@ -66,14 +66,12 @@ See COPYRIGHT and LICENSE files for more details.
   <%=
     render(Primer::OpenProject::SubHeader.new) do |subheader|
       if authorize_for(:messages, :new)
-        subheader.with_action_button(
-          scheme: :primary,
-          aria: { label: t(:label_message_new) },
-          title: t(:label_message_new),
-          tag: :a,
-          class: "add-message-button",
-          href: url_for({ controller: "/messages", action: "new", forum_id: @forum })
-        ) do |button|
+        subheader.with_action_button(scheme: :primary,
+                                     aria: { label: t(:label_message_new) },
+                                     title: t(:label_message_new),
+                                     tag: :a,
+                                     class: "add-message-button",
+                                     href: url_for({ controller: "/messages", action: "new", forum_id: @forum })) do |button|
           button.with_leading_visual_icon(icon: :plus)
           t(:label_message)
         end
@@ -132,7 +130,7 @@ See COPYRIGHT and LICENSE files for more details.
             </td>
             <td class="author">
               <% if message.author %>
-                <%= link_to message.author.name, user_path(message.author) %>
+                <%= link_to_user message.author %>
               <% end %>
             </td>
             <td class="created_at">

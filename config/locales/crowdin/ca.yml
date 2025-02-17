@@ -894,7 +894,7 @@ ca:
         timeline_labels: "Etiquetes de cronologia"
       relation:
         lag: "Retard"
-        from: "Paquet de treball"
+        from: "Related work package"
         to: "Paquet de treball relacionat"
       reminder:
         remind_at_date: "Date"
@@ -1218,12 +1218,12 @@ ca:
           typed_dag:
             circular_dependency: "La relació crea un cercle de relacions."
           attributes:
-            to:
-              error_not_found: "paquet de treball en posició \"cap a\" no trobada o no visible"
-              error_readonly: "una relació d'enllaç existent \"cap a\" és inamovible"
-            from:
-              error_not_found: "paquet de treball en posició \"des de\" no trobada o no visible"
-              error_readonly: "una relació d'enllaç existent \"des de\" és inamovible"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3740,6 +3740,7 @@ ca:
   text_unallowed_characters: "Caràcters no permesos"
   text_user_invited: L'usuari ja ha estat convidat i està pendent de que es registri.
   text_user_wrote: "%{value} va escriure:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Aquest paquet de treball conté text sense desar que es perdrà si surt de la pàgina."
   text_what_did_you_change_click_to_add_comment: "Què has canviat? Fes clic per afegir un comentari"
   text_wiki_destroy_confirmation: "Segur que vols eliminar aquesta wiki i tot el seu contingut?"

@@ -897,7 +897,7 @@ fil:
         timeline_labels: "Ang mga label ng timeline"
       relation:
         lag: "Lag"
-        from: "Work package"
+        from: "Related work package"
         to: "Ang kaugnayan sa pakete na ginagawa"
       reminder:
         remind_at_date: "Date"
@@ -1221,12 +1221,12 @@ fil:
           typed_dag:
             circular_dependency: "Ang relasyon ay lumilikha ng mga bilog na relasyon."
           attributes:
-            to:
-              error_not_found: "work package sa 'to' hindi natagpuan ang posisyon o hindi nakikita"
-              error_readonly: "isang umiiral narelasyon 'to' ang link ay hindi mababago"
-            from:
-              error_not_found: "work package sa 'mula sa' ang posisyon ay hindi nakita o hindi nakikita"
-              error_readonly: "isang umiiral na realsyon 'mula sa' ang link ay hindi mababago"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3747,6 +3747,7 @@ fil:
   text_unallowed_characters: "Hindi pinayagang mga karakter"
   text_user_invited: Ang user ay inanyayahan at isa rin itong pending na registration.
   text_user_wrote: "%{value} isinulat:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Ang work package ay naglalaman ng hindi naka-save na mawala ito kapag ikaw ay aalisa sa pahinang ito."
   text_what_did_you_change_click_to_add_comment: "What did you change? Click to add comment"
   text_wiki_destroy_confirmation: "Sigurado ka ba na gusto mong burahin ang wiki na ito at lahat ng nilalaman nito?"

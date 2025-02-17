@@ -116,11 +116,11 @@ ko:
   label_template: "템플릿"
   label_recurring_meeting_view: "미팅 시리즈 보기"
   label_recurring_meeting_create: "열기"
-  label_recurring_meeting_copy: "Copy as one-time"
+  label_recurring_meeting_copy: "일회성 복사"
   label_recurring_meeting_cancel: "이 항목 취소"
   label_recurring_meeting_delete: "항목 삭제"
   label_recurring_meeting_restore: "이 항목 복원"
-  label_recurring_meeting_schedule: "스케쥴"
+  label_recurring_meeting_schedule: "스케줄"
   label_recurring_meeting_next_occurrence: "다음 항목"
   label_recurring_meeting_more: "예정된 미팅(%{schedule})이 %{count}개 더 있습니다."
   label_recurring_meeting_no_end_date: "예정된 미팅(%{schedule})이 더 있습니다."
@@ -178,15 +178,15 @@ ko:
       open_meeting_link: "미팅 열기"
       open_my_meetings_link: "내 미팅으로 이동"
       series:
-        title: "[%{project_name}] Meeting series '%{title}'"
-        summary: "%{actor} has set up a new meeting series '%{title}'"
+        title: "[%{project_name}] 미팅 시리즈 '%{title}'"
+        summary: "%{actor} 님이 새로운 미팅 시리즈 '%{title}'을(를) 설정했습니다"
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] 미팅 시리즈 '%{title}' 다시 예약됨"
+        summary: "%{actor} 님이 미팅 시리즈 '%{title}'의 스케줄을 변경했습니다"
+        old_schedule: "이전 스케줄"
+        new_schedule: "새로운 스케줄"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} 님이 '%{title}' 미팅 초대장을 귀하에게 보냈습니다"
       cancelled:
         header: "취소됨: 미팅 '%{title}'"
         header_occurrence: "취소됨: 미팅 항목 '%{title}'"
@@ -196,9 +196,9 @@ ko:
         summary: "'%{title}'을(를) %{actor} 님이 취소했습니다."
         date_time: "스케줄링된 날짜/시간"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "'%{title}' 미팅이 다시 예약되었습니다"
+        summary: "%{actor} 님이 '%{title}' 미팅을 다시 예약했습니다"
+        body: "%{actor} 님이 '%{title}' 미팅을 다시 예약했습니다."
         old_date_time: "이전 날짜/시간"
         new_date_time: "새로운 날짜/시간"
     label_mail_all_participants: "모든 참가자에게 이메일 보내기"
@@ -219,11 +219,11 @@ ko:
         confirmation_message_html: >
           이 작업은 되돌릴 수 없습니다. 주의하여 진행하세요.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "미팅 항목 취소"
+        heading: "이 미팅 항목을 취소하시겠습니까?"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          템플릿에 없는 미팅 정보는 모두 손실됩니다. 계속하시겠습니까?
+        confirm_button: "항목 취소"
     blankslate:
       title: "표시할 미팅 없음"
       desc: "활성 필터 기준을 충족하는 미팅이 없습니다."

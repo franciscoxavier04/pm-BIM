@@ -1,4 +1,4 @@
-FROM ruby:3.4.1-bullseye AS develop
+FROM ruby:3.4.2-bullseye AS develop
 MAINTAINER operations@openproject.com
 
 ARG DEV_UID=1000
@@ -21,8 +21,8 @@ RUN groupmod -g $DEV_GID $USER || true
 WORKDIR /home/$USER
 
 RUN apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    postgresql-client libffi7 libffi-dev curl
+  DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  postgresql-client libffi7 libffi-dev curl
 
 # Setup node source and install nodejs. Needed for running certain scripts in backend container,
 # as the `./scripts/api/validate_spec`.
@@ -59,8 +59,8 @@ FROM develop AS test
 USER root
 
 RUN apt-get update -qq && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    jq
+  DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  jq
 
 COPY ./docker/dev/backend/scripts/run-test /usr/bin/run-test
 COPY ./docker/dev/backend/scripts/setup-tests /usr/bin/setup-tests

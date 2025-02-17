@@ -896,7 +896,7 @@
         timeline_labels: "Tidslinje etiketter"
       relation:
         lag: "Forsinkelse"
-        from: "Arbeidspakke"
+        from: "Related work package"
         to: "Relatert arbeidspakke"
       reminder:
         remind_at_date: "Date"
@@ -1220,12 +1220,12 @@
           typed_dag:
             circular_dependency: "Forholdet skaper en sirkel av forhold."
           attributes:
-            to:
-              error_not_found: "Arbeidspakke i \"til\"-posisjonen er ikke funnet eller ikke synlig"
-              error_readonly: "en eksisterende relasjons 'til'-lenke er uforanderlig"
-            from:
-              error_not_found: "arbeidspakke i \"fra\"-posisjonen er ikke funnet eller ikke synlig"
-              error_readonly: "en eksisterende relasjon `fra`-lenke er uforanderlig"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3748,6 +3748,7 @@
   text_unallowed_characters: "Ikke-tillatte tegn"
   text_user_invited: Brukeren har blitt invitert og venter på å bli registrert.
   text_user_wrote: "%{value} skrev:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Arbeidspakken inneholder tekst som ikke er lagret som vil gå tapt hvis du forlater denne siden."
   text_what_did_you_change_click_to_add_comment: "Hva endret du? Klikk for å kommentere"
   text_wiki_destroy_confirmation: "Er du sikker på at du vil slette denne wikien og alt innholdet i den?"
