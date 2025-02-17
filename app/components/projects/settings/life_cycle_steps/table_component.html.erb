@@ -31,18 +31,50 @@ See COPYRIGHT and LICENSE files for more details.
   <div class="generic-table--results-container">
     <table class="generic-table" data-controller="table-highlighting">
       <colgroup>
-        <% headers.each do |_name, _options| %>
+        <% columns.each do %>
           <col>
         <% end %>
       </colgroup>
       <thead>
         <tr>
-          <% headers.each do |name, options| %>
+          <% columns.each do |column| %>
             <th>
               <div class="generic-table--sort-header-outer">
                 <div class="generic-table--sort-header">
                   <span>
-                    <%= options[:caption] %>
+                    <%=
+                      if column == :active
+                        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-#{column}")) do |menu|
+                          helpers.action_button(menu, column, header_caption(column))
+
+                          menu.with_item(
+                            label: t("projects.settings.actions.label_activate_all"),
+                            tag: :a,
+                            href: enable_all_project_settings_life_cycle_steps_path(project_id: project),
+                            "aria-label": t("projects.settings.actions.label_activate_all"),
+                            content_arguments: {
+                              data: { "turbo-method": :post, test_selector: "activate-all-life-cycle-steps" }
+                            }
+                          ) do |item|
+                            item.with_leading_visual_icon(icon: :check)
+                          end
+
+                          menu.with_item(
+                            label: t("projects.settings.actions.label_deactivate_all"),
+                            tag: :a,
+                            href: disable_all_project_settings_life_cycle_steps_path(project_id: project),
+                            "aria-label": t("projects.settings.actions.label_deactivate_all"),
+                            content_arguments: {
+                              data: { "turbo-method": :post, test_selector: "deactivate-all-life-cycle-steps" }
+                            }
+                          ) do |item|
+                            item.with_leading_visual_icon(icon: :x)
+                          end
+                        end
+                      else
+                        header_caption(column)
+                      end
+                    %>
                   </span>
                 </div>
               </div>

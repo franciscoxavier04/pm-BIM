@@ -44,11 +44,8 @@ module Projects
 
         def button_column? = false
 
-        def headers
-          columns.map do |name|
-            # TODO: a lot of attributes are not really life cycle step attributes (subject, dates)
-            [name, { caption: Project::LifeCycleStep.human_attribute_name(name) }]
-          end
+        def header_caption(column)
+          Project::LifeCycleStep.human_attribute_name(column)
         end
 
         def rows

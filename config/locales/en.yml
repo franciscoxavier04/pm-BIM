@@ -384,8 +384,10 @@ en:
     settings:
       change_identifier: Change identifier
       actions:
-        label_enable_all: "Enable all"
+        label_activate_all: "Activate all"
+        label_deactivate_all: "Deactivate all"
         label_disable_all: "Disable all"
+        label_enable_all: "Enable all"
       activities:
         no_results_title_text: There are currently no activities available.
       forums:
