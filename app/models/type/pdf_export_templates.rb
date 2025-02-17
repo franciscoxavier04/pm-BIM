@@ -31,8 +31,8 @@
 class Type::PdfExportTemplates
   Template = Data.define(:id, :label, :caption, :enabled)
 
-  def initialize(model)
-    @type = model
+  def initialize(type)
+    @type = type
   end
 
   def list
@@ -78,11 +78,11 @@ class Type::PdfExportTemplates
   end
 
   def move(template_id, position)
-    template_ids = @type.pdf_export_templates_for_type.map(&:id)
-    prev_index = template_ids.find_index(template_id)
-    template_ids.delete_at(prev_index) unless prev_index.nil?
-    template_ids.insert(position, template_id)
-    @type.export_templates_order = template_ids
+    ordered_template_ids = list.map(&:id)
+    prev_index = ordered_template_ids.find_index(template_id)
+    ordered_template_ids.delete_at(prev_index) unless prev_index.nil?
+    ordered_template_ids.insert(position, template_id)
+    @type.export_templates_order = ordered_template_ids
   end
 
   private
