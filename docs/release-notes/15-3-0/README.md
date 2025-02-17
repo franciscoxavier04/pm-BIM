@@ -39,7 +39,7 @@ The following screenshot shows an example Meetings overview page, highlighting s
 
 Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between **My meetings**, **Recurring meetings** and **All meetings**, with separate sections for Meeting series and Involvement.
 
-See our user guide to learn more about the [updated Meetings module and how to use it](../../user-guide/meetings/).
+[Learn more about the updated Meetings module and how to use it](../../user-guide/meetings/).
 
 ### Create child work packages directly from the Relations tab
 
