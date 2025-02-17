@@ -186,7 +186,11 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def next_occurrence(from_time: Time.current)
-    schedule.next_occurrence(from_time)
+    schedule.next_occurrence(from_time)&.to_time
+  end
+
+  def previous_occurrence(from_time: Time.current)
+    schedule.previous_occurrence(from_time)&.to_time
   end
 
   def remaining_occurrences
@@ -230,6 +234,10 @@ class RecurringMeeting < ApplicationRecord
       .upcoming
       .cancelled
       .order(start_time: :asc)
+  end
+
+  def instantiated_meetings
+    meetings.not_templated
   end
 
   private

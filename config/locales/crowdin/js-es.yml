@@ -360,7 +360,7 @@ es:
           "15_3":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
+                La versión incluye varias funciones y mejoras para usted, por ejemplo: <br> <ul class="%{list_styling_class}"> <li>Programe reuniones periódicas para optimizar sus citas semanales, quincenales o personalizadas. </li> <li>Cree paquetes de trabajo secundarios directamente desde la pestaña Relaciones.</li> <li>Incluya las sumas totales en las exportaciones en PDF de las hojas de horas para obtener una mejor información.</li> <li>Incluya paquetes de trabajo secundarios en los informes de costes para un seguimiento más preciso.</li> <li>Vea las fechas de relaciones previamente ocultas y restringidas por permisos para tomar decisiones informadas sobre la programación.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -625,11 +625,11 @@ es:
       date_alerts:
         milestone_date: "Fecha de hito"
         overdue: "Vencido"
-        overdue_since: "since %{difference_in_days}."
-        property_today: "is today."
-        property_is: "is in %{difference_in_days}."
-        property_was: "was %{difference_in_days} ago."
-        property_is_deleted: "is deleted."
+        overdue_since: "desde %{difference_in_days}."
+        property_today: "es hoy."
+        property_is: "está en %{difference_in_days}."
+        property_was: "fue hace %{difference_in_days}."
+        property_is_deleted: "se ha eliminado."
         upsale:
           title: "Alertas de fecha"
           description: "Con las alertas de fecha, recibirá notificaciones de próximas fechas de inicio o finalización para que nunca olvide una fecha límite importante."

@@ -85,17 +85,17 @@ tr:
         item_0:
           name: Initiating
         item_1:
-          name: Ready for Planning
+          name: Planlama için Hazır
         item_2:
-          name: Planning
+          name: Planlanıyor
         item_3:
-          name: Ready for Executing
+          name: Yürütmeye Hazır
         item_4:
-          name: Executing
+          name: Yürütme
         item_5:
-          name: Ready for Closing
+          name: Kapanışa Hazır
         item_6:
-          name: Closing
+          name: Kapatılıyor
       priorities:
         item_0:
           name: Düşük
@@ -107,18 +107,18 @@ tr:
           name: Acil
       projects:
         demo-project:
-          name: Demo project
+          name: Demo proje
           status_explanation: Tüm görevler programa uygundur. İlgili kişiler görevlerini biliyor. Sistem tamamen kurulmuştur.
           description: Bu, bu demo projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
-              title: Welcome to your demo project
+              title: Demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
-              description: The actual news
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
+              description: Gerçek haberler
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
@@ -130,9 +130,9 @@ tr:
               name: Takım planlayıcısı
           boards:
             kanban:
-              name: Kanban board
+              name: Kanban panosu
             basic:
-              name: Temel kurulu
+              name: Temel pano
               lists:
                 item_0:
                   name: İstek listesi
@@ -143,7 +143,7 @@ tr:
                 item_3:
                   name: Hiçbir zaman
             parent_child:
-              name: Work breakdown structure
+              name: İş kırılım yapısı
           project-overview:
             widgets:
               item_0:
@@ -190,50 +190,50 @@ tr:
                     item_2:
                       subject: Create sponsorship brochure and hand-outs
                 item_1:
-                  subject: Invite attendees to conference
+                  subject: Katılımcıları konferansa davet edin
                 item_2:
-                  subject: Setup conference website
+                  subject: Konferans web sitesi kurulumu
             item_2:
-              subject: Conference
+              subject: Konferans
             item_3:
-              subject: Follow-up tasks
+              subject: Takip görevleri
               children:
                 item_0:
-                  subject: Upload presentations to website
+                  subject: Sunumları web sitesine yükleyin
                 item_1:
-                  subject: Party for conference supporters :-)
+                  subject: Konferans destekçileri için parti :-)
                   description: |-
-                    *   [ ] Beer
-                    *   [ ] Snacks
-                    *   [ ] Music
-                    *   [ ] Even more beer
+                    * [ ] Bira
+                    * [ ] Atıştırmalıklar
+                    * [ ] Müzik
+                    * [ ] Daha da fazla bira
             item_4:
-              subject: End of project
+              subject: Proje sonu
           wiki: |
-            _In this wiki you can collaboratively create and edit pages and sub-pages to create a project wiki._
+            Bu wiki'de bir proje wiki'si oluşturmak için sayfaları ve alt sayfaları işbirliği içinde oluşturabilir ve düzenleyebilirsiniz._
 
-            **You can:**
+            **Şunları yapabilirsiniz:**
 
-            * Insert text and images, also with copy and paste from other documents
-            * Create a page hierarchy with parent pages
-            * Include wiki pages to the project menu
-            * Use macros to include, e.g. table of contents, work package lists, or Gantt charts
-            * Include wiki pages in other text fields, e.g. project overview page
-            * Include links to other documents
-            * View the change history
-            * View as Markdown
+            * Diğer belgelerden kopyalayıp yapıştırarak da metin ve resim ekleyebilirsiniz
+            * Üst sayfalarla bir sayfa hiyerarşisi oluşturun
+            * Proje menüsüne wiki sayfalarını ekleyin
+            * Eklemek için makroları kullanın, örn.örneğin içindekiler tablosu, iş paketi listeleri veya Gantt şemaları
+            * Wiki sayfalarını diğer metin alanlarına dahil edin, örneğin projeye genel bakış sayfası
+            * Diğer belgelere bağlantılar ekleyin
+            * Değişiklik geçmişini görüntüleyin
+            * Markdown olarak görüntüleyin
 
-            More information: [https://www.openproject.org/docs/user-guide/wiki/](https://www.openproject.org/docs/user-guide/wiki/)
+            Daha fazla bilgi: [https://www.openproject.org/docs/user-guide/wiki/](https://www.openproject.org/docs/user-guide/wiki/)
         scrum-project:
-          name: Scrum project
+          name: Scrum projesi
           status_explanation: Tüm görevler programa uygundur. İlgili kişiler görevlerini biliyor. Sistem tamamen kurulmuştur.
           description: Bu, bu demo Scrum projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
-              title: Welcome to your Scrum demo project
+              title: Scrum demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
           versions:
             item_0:
               name: Bug Backlog
@@ -292,28 +292,28 @@ tr:
             item_3:
               name: Koşu 2
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
             item_1:
               name: Ürün bekleme süresi
             item_2:
-              name: Sprint 1
+              name: Koşu 1
             item_3:
               name: Görevler
           boards:
             kanban:
-              name: Kanban board
+              name: Kanban panosu
             basic:
               name: Görev tahtası
               lists:
                 item_0:
-                  name: Wish list
+                  name: İstek listesi
                 item_1:
-                  name: Short list
+                  name: Kısa liste
                 item_2:
-                  name: Priority list for today
+                  name: Bugün için öncelik listesi
                 item_3:
                   name: Hiçbir zaman
           project-overview:
@@ -347,18 +347,18 @@ tr:
                   name: Proje planı
           work_packages:
             item_0:
-              subject: New login screen
+              subject: Yeni giriş ekranı
             item_1:
-              subject: Password reset does not send email
+              subject: Parola sıfırlama e-posta göndermiyor
             item_2:
-              subject: New website
+              subject: Yeni web sitesi
               children:
                 item_0:
-                  subject: Newsletter registration form
+                  subject: Bülten kayıt formu
                 item_1:
-                  subject: Implement product tour
+                  subject: Ürün turunu uygulayın
                 item_2:
-                  subject: New landing page
+                  subject: Yeni açılış sayfası
                   children:
                     item_0:
                       subject: Create wireframes for new landing page
@@ -374,28 +374,28 @@ tr:
             item_6:
               subject: SSL sertifikası
             item_7:
-              subject: Set-up Staging environment
+              subject: Staging ortamının kurulması
             item_8:
-              subject: Choose a content management system
+              subject: Bir içerik yönetim sistemi seçimi
             item_9:
-              subject: Website navigation structure
+              subject: Web sitesi gezinti yapısı
               children:
                 item_0:
                   subject: Set up navigation concept for website.
             item_10:
-              subject: Internal link structure
+              subject: İç bağlantı yapısı
             item_11:
-              subject: Develop v1.0
+              subject: v1.0 geliştirmesi
             item_12:
-              subject: Release v1.0
+              subject: Sürüm v1.0
             item_13:
-              subject: Develop v1.1
+              subject: v1.1 geliştirmesi
             item_14:
-              subject: Release v1.1
+              subject: Sürüm v1.1
             item_15:
-              subject: Develop v2.0
+              subject: v2.0 geliştirmesi
             item_16:
-              subject: Release v2.0
+              subject: Sürüm v2.0
           wiki: |
             ### Sprint planning meeting
 

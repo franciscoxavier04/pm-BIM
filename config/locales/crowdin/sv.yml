@@ -896,7 +896,7 @@ sv:
         timeline_labels: "Etiketter för tidslinje"
       relation:
         lag: "Lag"
-        from: "Arbetspaket"
+        from: "Related work package"
         to: "Relaterat arbetspaketet"
       reminder:
         remind_at_date: "Date"
@@ -1220,12 +1220,12 @@ sv:
           typed_dag:
             circular_dependency: "Förhållandet skapar en cirkel av relationer."
           attributes:
-            to:
-              error_not_found: "arbetspaketet i 'till' hittades inte eller är inte synligt"
-              error_readonly: "en befintlig relations 'till'-länk går ej att ändra"
-            from:
-              error_not_found: "arbetspaketet i 'från' hittades inte eller är inte synligt"
-              error_readonly: "en befintlig relations 'från'-länk går ej att ändra"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

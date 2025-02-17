@@ -31,13 +31,27 @@ class MeetingSeriesMailer < UserMailer
     @actor = actor
     @series = series
     @template = series.template
-    @next_occurrence = series.next_occurrence&.to_time
+    @next_occurrence = series.next_occurrence
     @user = user
 
     set_headers(series)
 
     with_attached_ics(series, user) do
       subject = I18n.t("meeting.email.series.title", title: series.title, project_name: series.project.name)
+      mail(to: user, subject:)
+    end
+  end
+
+  def rescheduled(series, user, actor, changes:)
+    @actor = actor
+    @series = series
+    @user = user
+    @changes = changes
+
+    set_headers(series)
+
+    with_attached_ics(series, user) do
+      subject = I18n.t("meeting.email.series_rescheduled.title", title: series.title, project_name: series.project.name)
       mail(to: user, subject:)
     end
   end

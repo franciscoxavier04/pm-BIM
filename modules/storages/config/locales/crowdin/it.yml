@@ -74,7 +74,7 @@ it:
         confirmation_text: Conferma di aver compreso e di voler rimuovere questo archivio di file da questo progetto
         heading_text: Rimuovi il progetto da %{storage}
         text: Questa azione è irreversibile e rimuoverà tutti i collegamenti dalle macro-attività di questo progetto ai file e alle cartelle di tale archivio.
-        title: Remove project from storage
+        title: Rimuovi il progetto dall'archivio
       label: Rimuovi il progetto
   services:
     attributes:

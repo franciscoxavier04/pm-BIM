@@ -73,7 +73,7 @@ RSpec.describe "Recurring meetings CRUD",
   end
 
   let(:current_user) { user }
-  let(:show_page) { Pages::RecurringMeeting::Show.new(meeting, project:) }
+  let(:show_page) { Pages::RecurringMeeting::Show.new(meeting) }
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
   before do
@@ -88,10 +88,11 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.visit!
 
     show_page.delete_meeting_series
-    show_page.within_modal "Delete meeting series" do
-      check "I understand that this deletion cannot be reversed", allow_label_click: true
-
-      click_on "Delete permanently"
+    retry_block do
+      show_page.within_modal "Delete meeting series" do
+        check "I understand that this deletion cannot be reversed", allow_label_click: true
+        click_on "Delete permanently"
+      end
     end
 
     expect(page).to have_current_path project_meetings_path(project)
@@ -118,8 +119,8 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.visit!
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
-    show_page.within_modal "Delete meeting occurrence" do
-      click_on "Delete"
+    show_page.within_modal "Cancel meeting occurrence" do
+      click_on "Cancel occurrence"
     end
 
     expect_flash(type: :success, message: "Successful cancellation.")
@@ -133,7 +134,7 @@ RSpec.describe "Recurring meetings CRUD",
   it "can cancel a planned occurrence from the show page" do
     show_page.visit!
 
-    show_page.cancel_planned_occurrence date: "01/07/2025 01:30 PM"
+    show_page.cancel_occurrence date: "01/07/2025 01:30 PM"
     show_page.within_modal "Cancel meeting occurrence" do
       click_on "Cancel occurrence"
     end
@@ -174,8 +175,8 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_planned_actions date: "01/07/2025 01:30 PM"
 
     show_page.cancel_occurrence date: "12/31/2024 01:30 PM"
-    show_page.within_modal "Delete meeting occurrence" do
-      click_on "Delete"
+    show_page.within_modal "Cancel meeting occurrence" do
+      click_on "Cancel occurrence"
     end
 
     expect_flash(type: :success, message: "Successful cancellation.")

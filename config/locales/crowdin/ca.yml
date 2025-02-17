@@ -894,7 +894,7 @@ ca:
         timeline_labels: "Etiquetes de cronologia"
       relation:
         lag: "Retard"
-        from: "Paquet de treball"
+        from: "Related work package"
         to: "Paquet de treball relacionat"
       reminder:
         remind_at_date: "Date"
@@ -1218,12 +1218,12 @@ ca:
           typed_dag:
             circular_dependency: "La relació crea un cercle de relacions."
           attributes:
-            to:
-              error_not_found: "paquet de treball en posició \"cap a\" no trobada o no visible"
-              error_readonly: "una relació d'enllaç existent \"cap a\" és inamovible"
-            from:
-              error_not_found: "paquet de treball en posició \"des de\" no trobada o no visible"
-              error_readonly: "una relació d'enllaç existent \"des de\" és inamovible"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

@@ -58,15 +58,22 @@ module Meetings
     def all_meetings_item
       all_filter = [{ invited_user_id: { operator: "*", values: [] } }].to_json
       my_meetings_href = polymorphic_path([project, :meetings])
+      query_params = { filters: all_filter }
 
-      menu_item(title: I18n.t(:label_all_meetings),
-                selected: User.current.anonymous? && params[:current_href] == my_meetings_href && params[:filters].blank?,
-                query_params: { filters: all_filter })
+      if User.current.anonymous?
+        menu_item(title: I18n.t(:label_all_meetings),
+                  selected: params[:current_href] == my_meetings_href && (params[:filters].blank? || selected?(query_params)),
+                  query_params:)
+      else
+        menu_item(title: I18n.t(:label_all_meetings),
+                  query_params:)
+      end
     end
 
-    def meeting_series_menu_items
+    def meeting_series_menu_items # rubocop:disable Metrics/AbcSize
       series = RecurringMeeting
         .visible
+        .includes(:project)
         .reorder("LOWER(title)")
 
       if project
@@ -76,10 +83,9 @@ module Meetings
       current_href = params[:current_href]
       current_recurring_meeting_id = extracted_id(current_href)
 
-      series.pluck(:id, :title)
-            .map do |id, title|
-        href = polymorphic_path([project, :recurring_meeting], { id: })
-        OpenProject::Menu::MenuItem.new(title:,
+      series.all.map do |series|
+        href = project_recurring_meeting_path(series.project, series)
+        OpenProject::Menu::MenuItem.new(title: series.title,
                                         selected: select_status(href, current_href, current_recurring_meeting_id),
                                         href:)
       end

@@ -229,9 +229,9 @@ pt-BR:
             title: Este item não possui nenhum nível de hierarquia abaixo
             description: Adicione itens a esta lista para criar subitens dentro de outro item
         delete_dialog:
-          title: "Delete custom field item"
-          heading: "Delete custom field item?"
-          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
+          title: "Excluir item de campo personalizado"
+          heading: "Excluir item de campo personalizado?"
+          description: "Esta ação removerá o item e todos os seus subitens de forma permanente. Todos os valores atribuídos serão excluídos. Se este campo for obrigatório, a remoção pode invalidar pacotes de trabalho existentes."
         placeholder:
           label: "Rótulo do item"
           short: "Nome abreviado"
@@ -252,7 +252,7 @@ pt-BR:
     confirm_destroy_option: "Removendo uma opção removerá todas as suas ocorrências (ex. em pacotes de trabalho). Tem certeza que você quer removê-la?"
     reorder_alphabetical: "Reorganizar valores em ordem alfabética"
     reorder_confirmation: "Aviso: A ordem atual dos valores disponíveis será perdida. Continuar?"
-    placeholder_version_select: "Work package or project selection is required first"
+    placeholder_version_select: "Primeiro é necessária a seleção do pacote de trabalho ou projeto"
     instructions:
       is_required: "Marcar o campo personalizado como obrigatório. Isto tornará obrigatório o preenchimento do campo ao criar novos recursos ou ao atualizar recursos existentes."
       is_required_for_project: "Marque esta opção para ativar este atributo e torná-lo obrigatório em todos os projetos. Este atributo não pode ser desativado em projetos individuais."
@@ -291,7 +291,7 @@ pt-BR:
       label: "Rótulo"
       short: "Nome abreviado"
       parent: "Pai"
-      blueprint: "Pattern blueprint"
+      blueprint: "Esquema de padrão"
   global_search:
     placeholder: "Buscar em %{app_title}"
     overwritten_tabs:
@@ -474,7 +474,7 @@ pt-BR:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: Token criado
         header: O token %{type} foi gerado
         warning: Esta é a única vez que você verá este token. Certifique-se de copiá-lo agora.
       errors:
@@ -650,7 +650,7 @@ pt-BR:
         title: "Fluxo de trabalho ausente para compartilhamento de pacotes de trabalho"
         message: "Nenhum fluxo de trabalho está configurado para a função \"Editor de pacote de trabalho\". Sem um fluxo de trabalho, o usuário compartilhado não pode alterar o status do pacote de trabalho. Os fluxos de trabalho podem ser copiados. Selecione um tipo de origem (ex.: \"Tarefa\") e uma função de origem (ex.: \"Membro\"). Em seguida, selecione os tipos de destino. Para começar, você pode selecionar todos os tipos como alvos. Por fim, selecione a função \"Editor de pacote de trabalho\" como o destino e pressione \"Copiar\". Depois de criar os padrões, ajuste os fluxos de trabalho da mesma forma que faz para todas as outras funções."
         link_message: "Configure os fluxos de trabalho na administração."
-    templated_subject_hint: Automatically generated through type %{type}
+    templated_subject_hint: Gerado automaticamente através do tipo %{type}
     summary:
       reports:
         category:
@@ -735,8 +735,8 @@ pt-BR:
       required_description: "Marca este pacote de trabalho como um requisito para o pacote de trabalho relacionado"
       label_parent_singular: "pais"
       label_parent_plural: "pais"
-      ghost_relation_title: "Related work package"
-      ghost_relation_description: "This is not visible to you due to permissions."
+      ghost_relation_title: "Pacote de trabalho relacionado"
+      ghost_relation_description: "Você não possui permissão para visualizar isso."
   label_invitation: Convite
   account:
     delete: "Excluir conta"
@@ -894,7 +894,7 @@ pt-BR:
         timeline_labels: "Rótulos de linha do tempo"
       relation:
         lag: "Atraso"
-        from: "Pacote de trabalho"
+        from: "Pacote de trabalho relacionado"
         to: "Pacote de trabalho relacionado"
       reminder:
         remind_at_date: "Data"
@@ -1218,16 +1218,16 @@ pt-BR:
           typed_dag:
             circular_dependency: "O relacionamento cria um círculo de relacionamentos."
           attributes:
-            to:
-              error_not_found: "pacote de trabalho na posição 'para' não foi encontrado ou não está visível"
-              error_readonly: "uma relação existente de link `para` é imutável"
-            from:
-              error_not_found: "pacote de trabalho na posição 'de' não foi encontrado ou não está visível"
-              error_readonly: "uma relação existente de link `de` é imutável"
+            to_id:
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para relações existentes."
+            from_id:
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para relações existentes."
             lag:
               greater_than_or_equal_to:
-                zero: "cannot be negative."
-              less_than_or_equal_to: "is too high."
+                zero: "não pode ser negativo."
+              less_than_or_equal_to: "é muito alto."
         repository:
           not_available: "Fornecedor SCM não está disponível"
           not_whitelisted: "não é permitido pela configuração."
@@ -1584,7 +1584,7 @@ pt-BR:
   button_create_and_continue: "Criar e continuar"
   button_decline: "Recusar"
   button_delete: "Excluir"
-  button_delete_permanently: "Delete permanently"
+  button_delete_permanently: "Excluir de forma permanente"
   button_delete_watcher: "Excluir observador %{name}"
   button_download: "Baixar"
   button_duplicate: "Duplicar"
@@ -1788,8 +1788,8 @@ pt-BR:
         one: "hora"
         other: "hora"
       day:
-        one: "day"
-        other: "days"
+        one: "dia"
+        other: "dias"
   description_active: "Ativo?"
   description_attachment_toggle: "Mostrar/Ocultar anexos"
   description_autocomplete: >
@@ -2191,7 +2191,7 @@ pt-BR:
   label_add_subtask: "Adicionar subtarefa"
   label_added: "adicionado"
   label_added_by: "Adicionado por %{author}"
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "Adicionado por %{author} em %{date}"
   label_added_time_by: "Adicionado por %{author} %{age} atrás"
   label_additional_workflow_transitions_for_assignee: "Transições adicionais permitidas quando o usuário é o responsável"
   label_additional_workflow_transitions_for_author: "Transições adicionais permitidas quando o usuário é o autor"
@@ -2639,7 +2639,7 @@ pt-BR:
   label_relation: "Relação"
   label_relation_actions: "Ações da relação"
   label_relation_delete: "Excluir relação"
-  label_relation_edit: "Edit relation"
+  label_relation_edit: "Editar relação"
   label_relation_new: "Nova relação"
   label_release_notes: "Notas da versão"
   label_remaining_work: "Trabalho restante"
@@ -3104,7 +3104,7 @@ pt-BR:
     text_getting_started_description: "Obtenha uma visão geral da gestão de projetos e colaboração entre equipes com o OpenProject. Você pode assistir este vídeo novamente no menu de ajuda."
     welcome: "Bem-vindo ao %{app_title}"
     select_language: "Por favor, selecione seu idioma"
-  permission_add_work_package_notes: "Add comments"
+  permission_add_work_package_notes: "Adicionar comentários"
   permission_add_work_packages: "Adicionar pacotes de trabalho"
   permission_add_messages: "Postar mensagens"
   permission_add_project: "Criar projetos"
@@ -3134,11 +3134,11 @@ pt-BR:
   permission_delete_timelines: "Excluir cronogramas"
   permission_delete_wiki_pages: "Excluir páginas wiki"
   permission_delete_wiki_pages_attachments: "Excluir anexos"
-  permission_edit_work_package_notes: "Moderate comments"
-  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
+  permission_edit_work_package_notes: "Moderar comentários"
+  permission_edit_work_package_notes_explanation: "Atenção: Usuários com esta permissão podem editar comentários de qualquer pessoa."
   permission_edit_work_packages: "Editar pacotes de trabalho"
   permission_edit_messages: "Editar mensagens"
-  permission_edit_own_work_package_notes: "Edit own comments"
+  permission_edit_own_work_package_notes: "Editar os próprios comentários"
   permission_edit_own_messages: "Editar as próprias mensagens"
   permission_edit_own_time_entries: "Editar os próprios registros de tempo"
   permission_edit_project: "Editar projeto"
@@ -3727,7 +3727,7 @@ pt-BR:
   text_notice_security_badge_displayed_html: >
     Nota: se habilitado, isto irá exibir um distintivo com o seu status de instalação no <a href="%{information_panel_path}">%{information_panel_label}</a>painel de administração e na página inicial. Ele é exibido apenas para administradores. <br/> O distintivo verificará sua versão do OpenProject contra o banco de dados oficial de versões do OpenProject para alertá-lo de quaisquer atualizações ou vulnerabilidades conhecidas. Para obter mais informações sobre o que fornece este distintivo, quais dados necessários para fornecer atualizações disponíveis e como desativar este distintivo, por favor verifique <a href="%{more_info_url}">a documentação de configuração</a>.
   text_own_membership_delete_confirmation: "Você está prestes a remover algumas ou todas as permissões e você pode não ser capaz de editar este projeto depois disso. Tem certeza que deseja continuar?"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "Compreendo que esta exclusão é irreversível"
   text_plugin_assets_writable: "Diretório de plugins ativos é gravável"
   text_powered_by: "Desenvolvido por %{link}"
   text_project_identifier_info: "Apenas letras minúsculas (a-z), números, hífens e sublinhados são permitidos, deve-se começar com uma letra minúscula."

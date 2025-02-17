@@ -74,7 +74,7 @@ RSpec.describe "Meeting requests",
       let(:send_notifications) { "1" }
 
       it "sends an invitation mail to the invited users" do
-        patch(meeting_path(meeting), params:)
+        patch(project_meeting_path(project, meeting), params:)
 
         expect(subject.participants.count).to eq(2)
 
@@ -88,7 +88,7 @@ RSpec.describe "Meeting requests",
       let(:send_notifications) { "0" }
 
       it "sends an invitation mail to the invited users" do
-        patch(meeting_path(meeting), params:)
+        patch(project_meeting_path(project, meeting), params:)
 
         expect(subject.participants.count).to eq(2)
 

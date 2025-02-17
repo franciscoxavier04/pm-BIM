@@ -42,13 +42,16 @@ module RecurringMeetings
     end
 
     def create_meeting_template(recurring_meeting)
-      template = StructuredMeeting.new(@template_params)
-      template.project = recurring_meeting.project
-      template.template = true
-      template.recurring_meeting = recurring_meeting
-      template.author = user
+      params = @template_params.merge(
+        type: "StructuredMeeting",
+        template: true,
+        recurring_meeting:,
+        project: recurring_meeting.project
+      )
 
-      ServiceResult.new(success: template.save, errors: template.errors)
+      Meetings::CreateService
+        .new(user: user)
+        .call(params)
     end
   end
 end

@@ -32,18 +32,14 @@ module Pages::RecurringMeeting
   class Show < ::Pages::Meetings::Base
     attr_accessor :meeting
 
-    def initialize(meeting, project: nil)
-      super(project)
+    def initialize(meeting)
+      super(meeting.project)
 
       self.meeting = meeting
     end
 
     def path
-      if project
-        project_recurring_meeting_path(project, meeting)
-      else
-        recurring_meeting_path(meeting)
-      end
+      project_recurring_meeting_path(project, meeting)
     end
 
     def expect_planned_meeting(date:)
@@ -96,15 +92,6 @@ module Pages::RecurringMeeting
     end
 
     def cancel_occurrence(date:)
-      within("li", text: date) do
-        click_on "more-button"
-        click_on "Cancel this occurrence"
-      end
-
-      expect_modal("Delete meeting occurrence")
-    end
-
-    def cancel_planned_occurrence(date:)
       within("li", text: date) do
         click_on "more-button"
         click_on "Cancel this occurrence"

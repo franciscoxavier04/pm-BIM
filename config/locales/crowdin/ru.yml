@@ -114,7 +114,7 @@ ru:
   attribute_help_texts:
     note_public: "Любой текст и изображения, которые вы добавляете в это поле, видны всем аутентифицированным пользователям!"
     text_overview: "В этом представлении можно создать пользовательскую текстовую справку для атрибутов представления. При ее наличии, она будет показана по клику по значку справки возле атрибута."
-    label_plural: "Атрибут текстов справки"
+    label_plural: "Справка по атрибуту"
     show_preview: "Предпросмотр текста"
     add_new: "Добавить текст справки"
     edit: "Редактировать текст справки для %{attribute_caption}"
@@ -914,7 +914,7 @@ ru:
         timeline_labels: "Временные метки"
       relation:
         lag: "Задержка"
-        from: "Пакет работ"
+        from: "Related work package"
         to: "Похожий пакет работ"
       reminder:
         remind_at_date: "Дата"
@@ -1238,12 +1238,12 @@ ru:
           typed_dag:
             circular_dependency: "Зацикливание зависимостей."
           attributes:
-            to:
-              error_not_found: "рабочий пакет в позиции `до` не найден или не отображается"
-              error_readonly: "в существующих отношениях связь `до` неизменна"
-            from:
-              error_not_found: "рабочий пакет в позиции `от` не найден или не отображается"
-              error_readonly: "в существующих отношениях связь `от` неизменна"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
