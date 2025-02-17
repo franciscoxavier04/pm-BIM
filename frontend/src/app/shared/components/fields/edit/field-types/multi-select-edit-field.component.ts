@@ -234,9 +234,9 @@ export class MultiSelectEditFieldComponent extends EditFieldComponent implements
   protected getHoverCardTriggerTarget() {
     if (this.schema?.type === '[]User') {
       return 'trigger';
-    } else {
-      return '';
     }
+
+    return '';
   }
 
   /**
