@@ -984,7 +984,7 @@ en:
         timeline_labels: "Timeline labels"
       relation:
         lag: "Lag"
-        from: "Work package"
+        from: "Related work package"
         to: "Related work package"
       reminder:
         remind_at_date: "Date"
@@ -1309,12 +1309,12 @@ en:
           typed_dag:
             circular_dependency: "The relationship creates a circle of relationships."
           attributes:
-            to:
-              error_not_found: "work package in `to` position not found or not visible"
-              error_readonly: "an existing relation's `to` link is immutable"
-            from:
-              error_not_found: "work package in `from` position not found or not visible"
-              error_readonly: "an existing relation's `from` link is immutable"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3990,6 +3990,7 @@ en:
   text_unallowed_characters: "Unallowed characters"
   text_user_invited: The user has been invited and is pending registration.
   text_user_wrote: "%{value} wrote:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "The work package contains unsaved text that will be lost if you leave this page."
   text_what_did_you_change_click_to_add_comment: "What did you change? Click to add comment"
   text_wiki_destroy_confirmation: "Are you sure you want to delete this wiki and all its content?"

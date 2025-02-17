@@ -184,15 +184,15 @@ uk:
       open_meeting_link: "Відкрити зустріч"
       open_my_meetings_link: "Перейдіть до Моїх нарад"
       series:
-        title: "[%{project_name}] – серія нарад %{title}"
-        summary: "%{actor} створив(-ла) нову серію нарад %{title}"
+        title: "[%{project_name}] – серія нарад «%{title}»"
+        summary: "%{actor} створив(-ла) нову серію нарад «%{title}»"
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] – запланований час серії нарад «%{title}» змінено"
+        summary: "%{actor} змінив(-ла) запланований час серії нарад «%{title}»"
+        old_schedule: "Старий розклад"
+        new_schedule: "Новий розклад"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} надіслав(-ла) вам запрошення на нараду «%{title}»"
       cancelled:
         header: "Скасовано: нарада «%{title}»"
         header_occurrence: "Скасовано: нарада серії «%{title}»"
@@ -202,9 +202,9 @@ uk:
         summary: "«%{title}» скасував(-ла) %{actor}."
         date_time: "Заплановані дата/час"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "Запланований час наради «%{title}» змінено"
+        summary: "Запланований час наради «%{title}» змінив(-ла) %{actor}"
+        body: "Запланований час наради «%{title}» змінив(-ла) %{actor}."
         old_date_time: "Стара дата/час"
         new_date_time: "Нова дата/час"
     label_mail_all_participants: "Надіслати лист усім учасникам"
@@ -225,10 +225,11 @@ uk:
         confirmation_message_html: >
           Зверніть увагу: цю дію не можна відмінити.
       occurrence:
-        title: "Видалити нараду серії"
-        heading: "Видалити цю нараду серії?"
+        title: "Скасувати нараду серії"
+        heading: "Скасувати цю нараду серії?"
         confirmation_message_html: >
-          Ця нарада належить до серії з назвою <strong>%{title}</strong>. Буде видалено лише цю нараду, а не всю її серію. Продовжити?
+          Будь-яку інформацію про нараду, відсутню в шаблоні, буде втрачено. Продовжити?
+        confirm_button: "Скасувати нараду"
     blankslate:
       title: "Немає нарад"
       desc: "Немає нарад, які відповідають критеріям активного фільтра."

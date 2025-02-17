@@ -199,11 +199,11 @@ zh-TW:
         manual_management_description: 您自己手動建立和管理每個專案的資料夾。 您需要手動確保相關使用者俱有存取權限。
         setup_incomplete: 選擇使用者存取和資料夾建立的管理類型。
         subtitle: 存取管理
-        title: 存取和專案資料夾
+      access_management_section: Access and project folders
       automatically_managed_folders: 自動管理文件夾
       general_information: 基本資訊
       nextcloud_oauth: NextCloud 開放授權 (OAuth)
-      oauth_applications: OAuth 應用程式
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject 開放授權 (OAuth)
       project_folders: 專案資料夾
@@ -222,7 +222,8 @@ zh-TW:
         host_not_found: 在設定的主機網址未找到 Nextcloud 伺服器。請檢查設定。
         missing_dependencies: '檔案儲存中缺少所需的相依性。請新增下列相依性： %{dependency}。'
         not_configured: 連線無法驗證。請先完成設定。
-        oidc_provider_missing: There is no OpenID Connect Identity Provider configured.
+        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: 根據伺服器檢查您的連線。
         subtitle: 連線驗證
         tenant_id_wrong: 設定的目錄 (租戶) id 無效。請檢查設定。

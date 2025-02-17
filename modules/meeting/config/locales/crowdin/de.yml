@@ -54,7 +54,7 @@ de:
         frequency: "Häufigkeit"
         interval: "Intervall"
         start_date: "Started am"
-        end_after: "Terminserie endet"
+        end_after: "Ende der Terminserie"
         iterations: "Ereignisse"
     errors:
       messages:
@@ -178,29 +178,29 @@ de:
         Senden Sie sofort eine E-Mail Einladung an die oben ausgewählten Teilnehmer. Sie können dies auch jederzeit manuell durchführen.
       send_invitation_emails_structured: "Sofortige E-Mail-Einladung an alle Teilnehmer senden. Sie können dies auch zu einem späteren Zeitpunkt manuell tun."
       open_meeting_link: "Besprechung öffnen"
-      open_my_meetings_link: "Go to My meetings"
+      open_my_meetings_link: "Meine Besprechungen anzeigen"
       series:
-        title: "[%{project_name}] Meeting series '%{title}'"
-        summary: "%{actor} has set up a new meeting series '%{title}'"
+        title: "[%{project_name}] Terminserie '%{title}'"
+        summary: "%{actor} hat eine neue Terminserie '%{title}' eingerichtet"
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] Terminserie ''%{title}' verschoben"
+        summary: "%{actor} hat den Zeitplan für die Terminserie '%{title}' geändert"
+        old_schedule: "Alter Zeitplan"
+        new_schedule: "Neuer Zeitplan"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} hat Ihnen eine Einladung für die folgende Besprechung gesendet: '%{title}'"
       cancelled:
-        header: "Cancelled: Meeting '%{title}'"
-        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
-        header_series: "Cancelled: Meeting series '%{title}'"
-        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
-        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
-        summary: "'%{title}' has been cancelled by %{actor}."
-        date_time: "Scheduled date/time"
+        header: "Abgesagt: Besprechung '%{title}'"
+        header_occurrence: "Abgesagt: Wiederkehrende Besprechung '%{title}'"
+        header_series: "Abgesagt: Terminserie '%{title}'"
+        summary_occurrence: "Ein Vorkommen von '%{title}' wurde von %{actor} gelöscht."
+        summary_series: "Die Terminserie '%{title}' wurde von %{actor} abgesagt."
+        summary: "Besprechung '%{title}' wurde von %{actor} abgesagt."
+        date_time: "Geplanter Zeitpunkt"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "Besprechung '%{title}' wurde verschoben"
+        summary: "Die Besprechung '%{title}' wurde durch %{actor} verschoben"
+        body: "Die Besprechung '%{title}' wurde durch %{actor} verschoben."
         old_date_time: "Alte(s) Datum/Zeit"
         new_date_time: "Neue(s) Datum/Zeit"
     label_mail_all_participants: "E-Mail an alle Teilnehmer senden"
@@ -221,10 +221,11 @@ de:
         confirmation_message_html: >
           Diese Aktion kann nicht rückgängig gemacht werden. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
       occurrence:
-        title: "Besprechungsereignis löschen"
-        heading: "Dieses Besprechungsereignis löschen?"
+        title: "Wiederkehrende Besprechung absagen"
+        heading: "Dieses Ereignis absagen?"
         confirmation_message_html: >
-          Diese Besprechung ist Teil der Terminserie <strong>%{title}</strong>. Dadurch wird nur dieses bestimmte Ereignis und nicht die gesamte Serie gelöscht. Möchten Sie fortfahren?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "Keine Besprechungen anzuzeigen"
       desc: "Es gibt keine Besprechungen, die die Kriterien des aktiven Filters erfüllen."
@@ -294,11 +295,11 @@ de:
       heading: "Diese Terminserie endgültig löschen?"
       confirmation_message_html:
         zero: >
-          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
+          Die Terminserie <strong>%{title}</strong> enthält keine Besprechungen. Die Serie wird für alle gelöscht. Bitte gehen Sie mit Vorsicht vor.
         one: >
-          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
+          Durch die Löschung von <strong>%{title}</strong> wird eine bestehende Besprechung in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
+          Durch die Löschung von <strong>%{title}</strong> werden alle %{count} Besprechungen in dieser Serie gelöscht. Diese Aktion ist nicht rückgängig zu machen. Bitte prüfen Sie die Angaben, bevor Sie fortfahren.
     scheduled_delete_dialog:
       title: "Terminserie abbrechen"
       heading: "Dieses Ereignis absagen?"

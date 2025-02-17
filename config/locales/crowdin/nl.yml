@@ -796,24 +796,24 @@ nl:
         editable: "Bewerkbaar"
         field_format: "Formaat"
         is_filter: "Als een filter gebruikt"
-        is_for_all: "For all projects"
+        is_for_all: "Voor alle projecten"
         is_required: "Vereist"
         max_length: "Maximale lengte"
         min_length: "Minimale lengte"
-        content_right_to_left: "Right-to-Left content"
+        content_right_to_left: "Inhoud van rechts naar links"
         multi_value: "Meerdere selecties toegestaan"
         possible_values: "Mogelijke waarden"
         regexp: "Regular expression"
         searchable: "Zoekbaar"
-        admin_only: "Admin-only"
+        admin_only: "Alleen beheerders"
       custom_value:
         value: "Waarde"
       doorkeeper/application:
         uid: "Client-ID"
         secret: "Client secret"
         owner: "Eigenaar"
-        builtin: "Builtin"
-        enabled: "Active"
+        builtin: "Ingebouwd"
+        enabled: "Actief"
         redirect_uri: "URI omleiden"
         client_credentials_user_id: "Client referenties gebruiker ID"
         scopes: "Reikwijdte"
@@ -836,8 +836,8 @@ nl:
         attr_lastname: "Achternaam kenmerk"
         attr_login: "Gebruikersnaam kenmerk"
         attr_mail: "E-mail kenmerk"
-        filter_string: "Filter string"
-        admin: "Administrator"
+        filter_string: "Tekenreeksen filteren"
+        admin: "Admininstrator"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Automatische gebruiker aanmaken"
@@ -879,11 +879,11 @@ nl:
         versions: "Versies"
         work_packages: "Werkpakketten"
       project_custom_field:
-        is_required: "Required for all projects"
+        is_required: "Vereist voor alle projecten"
         custom_field_section: Sectie
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naam"
+        color: "Kleur"
       query:
         column_names: "Kolommen"
         relations_to_type_column: "Betrekkingen %{type}"
@@ -893,11 +893,11 @@ nl:
         timeline_labels: "Tijdlijn etiketten"
       relation:
         lag: "Vertraging"
-        from: "Werkpakket"
+        from: "Related work package"
         to: "Verwante werkpakket"
       reminder:
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Datum"
+        remind_at_time: "Tijd"
       repository:
         url: "URL"
       role:
@@ -905,7 +905,7 @@ nl:
       status:
         is_closed: "Werkpakket gesloten"
         is_readonly: "Werkpakket is alleen-lezen"
-        excluded_from_totals: "Exclude from calculation of totals in hierarchy"
+        excluded_from_totals: "Uitsluiten van berekening van totalen in hiërarchie"
         default_done_ratio: "% Voltooid"
       time_entry:
         activity: "Activiteit"
@@ -939,7 +939,7 @@ nl:
         auto_hide_popups: "Automatisch verbergen geslaagd-meldingen"
         warn_on_leaving_unsaved: "Mij waarschuwen bij het verlaten van een werkpakket met niet-opgeslagen wijzigingen"
         theme: "Modus"
-        mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        mode_guideline: "Sommige modi overschrijven aangepaste themakleuren voor toegankelijkheid en leesbaarheid. Voor het volledige aangepaste thema selecteert u de Light-modus."
       version:
         effective_date: "Einddatum"
         sharing: "Delen"
@@ -973,7 +973,7 @@ nl:
         readonly: "Alleen lezen"
         remaining_hours: "Resterend werk"
         remaining_time: "Resterend werk"
-        shared_with_users: "Shared with"
+        shared_with_users: "Gedeeld met"
         schedule_manually: "Handmatige planning"
         spent_hours: "Bestede tijd"
         spent_time: "Bestede tijd"
@@ -1054,7 +1054,7 @@ nl:
         ldap_auth_source:
           attributes:
             tls_certificate_string:
-              invalid_certificate: "The provided SSL certificate is invalid: %{additional_message}"
+              invalid_certificate: "Het verstrekte SSL-certificaat is ongeldig: %{additional_message}"
               format: "%{message}"
         attachment:
           attributes:
@@ -1073,7 +1073,7 @@ nl:
         custom_fields_project:
           attributes:
             project_ids:
-              blank: "Please select a project."
+              blank: "Selecteer een project."
         custom_actions:
           only_one_allowed: "(%{name}) slechts één waarde is toegestaan."
           empty: "(%{name}) waarde kan niet leeg zijn."
@@ -1146,20 +1146,20 @@ nl:
         project/life_cycle_step_definition:
           attributes:
             type:
-              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              must_be_a_stage_or_gate: "moet Project::StageDefinition of Project::GateDefinition zijn"
+              type_and_class_name_mismatch: "moet overeenkomen met de geïnstantieerde klassenaam"
         project/gate_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+              type_and_class_name_mismatch: "moet een Project::GateDefinition zijn"
         project/stage_definition:
           attributes:
             type:
-              type_and_class_name_mismatch: "must be a Project::StageDefinition"
+              type_and_class_name_mismatch: "moet een Project::StageDefinition zijn"
         project/life_cycle_step:
           attributes:
             type:
-              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
+              must_be_a_stage_or_gate: "moet Project::Stage of Project::Gate zijn"
               must_be_a_stage: "moet een Project::Gate zijn"
               must_be_a_gate: "moet een Project::Gate zijn"
               type_and_class_name_mismatch: "moet overeenkomen met de geconcretiseerd klassenaam"
@@ -1200,7 +1200,7 @@ nl:
               format: "%{message}"
             selects:
               name_not_included: "De kolom \"Naam\" moet worden opgenomen"
-              nonexistent: "The column '%{column}' does not exist."
+              nonexistent: "De kolom '%{column}' bestaat niet."
               format: "%{message}"
           group_by_hierarchies_exclusive: "is uitsluiten door samenvoeging, '%{group_by}'. U kunt beide niet activeren."
           can_only_be_modified_by_owner: "The query can only be modified by its owner."
@@ -1217,12 +1217,12 @@ nl:
           typed_dag:
             circular_dependency: "De relatie wordt gemaakt van een kring van relaties."
           attributes:
-            to:
-              error_not_found: "werkpakket in positie `naar` niet gevonden of niet zichtbaar"
-              error_readonly: "een bestaande `te`-relatie is onveranderlijk"
-            from:
-              error_not_found: "werkpakket in `van`-positie niet gevonden of niet zichtbaar"
-              error_readonly: "een bestaande `van`-relatielink is onveranderlijk"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -1243,7 +1243,7 @@ nl:
               working_days_are_missing: "Ten minste één dag van de week moet worden gedefinieerd als een werkdag."
               previous_working_day_changes_unprocessed: "De vorige wijzigingen in de configuratie van de werkdagen zijn nog niet toegepast."
               hours_per_day_are_missing: "Het aantal uren per dag moet worden gedefinieerd."
-              durations_are_not_positive_numbers: "The durations must be positive numbers."
+              durations_are_not_positive_numbers: "De duur moet een positief getal zijn."
               hours_per_day_is_out_of_bounds: "Uren per dag kunnen niet meer dan 24 zijn"
         status:
           attributes:
@@ -1264,7 +1264,7 @@ nl:
               only_one_global_setting: "Er mag slechts één globale meldingsinstelling zijn."
               email_alerts_global: "De instellingen voor e-mailmeldingen kunnen alleen globaal worden ingesteld."
               format: "%{message}"
-              wrong_date: "Wrong value for Start date, Due date, or Overdue."
+              wrong_date: "Verkeerde waarde voor Begindatum, Vervaldatum of Achterstallig."
         watcher:
           attributes:
             user_id:
@@ -1281,10 +1281,10 @@ nl:
             assigned_to:
               format: "%{message}"
             done_ratio:
-              does_not_match_work_and_remaining_work: "does not match Work and Remaining work"
-              cannot_be_set_when_work_is_zero: "cannot be set when Work is 0h"
-              must_be_set_when_remaining_work_is_set: "required when Remaining work is set."
-              must_be_set_when_work_and_remaining_work_are_set: "required when Work and Remaining work are set."
+              does_not_match_work_and_remaining_work: "komt niet overeen met Werk en Resterend werk"
+              cannot_be_set_when_work_is_zero: "kan niet worden ingesteld als Werk 0h is"
+              must_be_set_when_remaining_work_is_set: "vereist wanneer Resterend werk is ingesteld."
+              must_be_set_when_work_and_remaining_work_are_set: "vereist wanneer Werk en Resterend werk zijn ingesteld."
               inclusion: "moet tussen 0 en 100 liggen."
             due_date:
               not_start_date: "is niet op begindatum, hoewel dit voor mijlpalen vereist is."
@@ -1314,17 +1314,17 @@ nl:
               does_not_exist: "De gekozen categorie bestaat niet."
             estimated_hours:
               not_a_number: "is geen geldige duur."
-              cant_be_inferior_to_remaining_work: "cannot be lower than Remaining work."
-              must_be_set_when_remaining_work_and_percent_complete_are_set: "required when Remaining work and % Complete are set."
+              cant_be_inferior_to_remaining_work: "kan niet lager zijn dan Resterend werk."
+              must_be_set_when_remaining_work_and_percent_complete_are_set: "vereist wanneer Resterend werk en % Voltooid zijn ingesteld."
             remaining_hours:
               not_a_number: "is geen geldige duur."
-              cant_exceed_work: "cannot be higher than Work."
-              must_be_set_when_work_is_set: "required when Work is set."
-              must_be_set_when_work_and_percent_complete_are_set: "required when Work and % Complete are set."
+              cant_exceed_work: "kan niet hoger zijn dan Werk."
+              must_be_set_when_work_is_set: "vereist wanneer Werk is ingesteld."
+              must_be_set_when_work_and_percent_complete_are_set: "vereist wanneer Werk en % Voltooid zijn ingesteld."
               must_be_set_to_zero_hours_when_work_is_set_and_percent_complete_is_100p: >-
-                must be 0h when Work is set and % Complete is 100%.
+                moet 0h zijn als Werk is ingesteld en % Voltooid 100% is.
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
-                must be empty when Work is empty and % Complete is 100%.
+                moet leeg zijn als Werk leeg is en % Voltooid 100% is.
           readonly_status: "Het werkpakket heeft een alleen-lezen status dus kunne attributen niet worden gewijzigd."
         type:
           attributes:
@@ -1338,12 +1338,12 @@ nl:
           attributes:
             base:
               user_limit_reached: "Gebruikerslimiet bereikt. Er kunnen geen accounts meer worden gemaakt voor het huidige abonnement."
-              one_must_be_active: "Admin User cannot be locked/removed. At least one admin must be active."
+              one_must_be_active: "Admin-gebruiker kan niet vergrendeld/verwijderd worden. Er moet minstens één admin actief zijn."
             password_confirmation:
               confirmation: "Wachtwoordbevestiging komt niet overeen met wachtwoord."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Moet karakters bevatten van de volgende klasses (ten minste %{min_count} van %{all_count}):%{rules}"
               lowercase: "kleine letters (bijvoorbeeld 'a')"
               uppercase: "hoofdletters (bijvoorbeeld ' A')"
               numeric: "numerieke (bijvoorbeeld ' 1')"
@@ -1366,7 +1366,7 @@ nl:
           attributes:
             roles:
               ungrantable: "heeft een niet-toewijsbare rol."
-              more_than_one: "has more than one role."
+              more_than_one: "heeft meer dan één rol."
             principal:
               unassignable: "kan niet worden toegewezen aan een project."
         version:
@@ -1504,7 +1504,7 @@ nl:
     login: "Gebruikersnaam"
     mail: "E-mail"
     name: "Naam"
-    note: "Note"
+    note: "Opmerking"
     password: "Wachtwoord"
     priority: "Prioriteit"
     project: "Project"
@@ -1825,7 +1825,7 @@ nl:
       title: "Enterprise add-on"
       link_title: "More information"
       automatic_subject_generation:
-        description: "Create automatically generated subjects using referenced attributes and text."
+        description: "Maak automatisch gegenereerde onderwerpen met behulp van kenmerken en tekst waarnaar verwezen wordt."
       customize_life_cycle:
         description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
@@ -2057,7 +2057,7 @@ nl:
     changes_retracted: "De wijzigingen werden teruggedraaid."
     caused_changes:
       dates_changed: "Data gewijzigd"
-      default_attribute_written: "Read-only attributes written"
+      default_attribute_written: "Alleen-lezen kenmerken geschreven"
       progress_mode_changed_to_status_based: "Voortgangsberekening bijgewerkt"
       status_changed: "Status '%{status_name}'"
       system_update: "OpenProject systeemupdate:"
@@ -2600,7 +2600,7 @@ nl:
   label_progress_tracking: "Progress tracking"
   label_project: "Project"
   label_project_activity: "Projectactiviteit"
-  label_project_attribute_plural: "Project attributes"
+  label_project_attribute_plural: "Projectkenmerken"
   label_project_attribute_manage_link: "Projectattributen beheren"
   label_project_count: "Totale aantal projecten"
   label_project_copy_notifications: "Verzenden van e-mailmeldingen tijdens het project kopiëren"
@@ -2612,10 +2612,10 @@ nl:
   label_project_plural: "Projecten"
   label_project_list_plural: "Projectlijsten"
   label_project_lifecycle: "Project lifecycle"
-  label_project_attributes_plural: "Project attributes"
-  label_project_custom_field_plural: "Project attributes"
+  label_project_attributes_plural: "Projectkenmerken"
+  label_project_custom_field_plural: "Projectkenmerken"
   label_project_settings: "Project Instellingen"
-  label_project_attributes_settings: "Project attributes settings"
+  label_project_attributes_settings: "Project kenmerken instellingen"
   label_project_storage_plural: "Bestandsopslag"
   label_project_storage_project_folder: "Bestandsopslag: Projectmappen"
   label_projects_disk_usage_information: "%{count} projecten die %{used_disk_space} schijfruimte gebruiken"
@@ -3141,7 +3141,7 @@ nl:
   permission_edit_own_messages: "Eigen berichten bewerken"
   permission_edit_own_time_entries: "Bewerk de logboeken van de eigen tijd"
   permission_edit_project: "Project bewerken"
-  permission_edit_project_attributes: "Edit project attributes"
+  permission_edit_project_attributes: "Bewerk project kenmerken"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "Rapporteringen bewerken"
   permission_edit_time_entries: "Bewerk tijdregistraties voor andere gebruikers"
@@ -3171,7 +3171,7 @@ nl:
   permission_save_queries: "Weergaves opslaan"
   permission_search_project: "Search project"
   permission_select_custom_fields: "Aangepaste velden selecteren"
-  permission_select_project_custom_fields: "Select project attributes"
+  permission_select_project_custom_fields: "Selecteer project kenmerk"
   permission_select_project_life_cycle: "Select project stages and gates"
   permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "Selecteer project modules"
@@ -3197,7 +3197,7 @@ nl:
   permission_work_package_assigned: "Toewijzer/verantwoordelijk worden"
   permission_work_package_assigned_explanation: "Werkpakketten kunnen worden toegewezen aan gebruikers en groepen met deze rol in het respectieve project"
   permission_view_project_activity: "Projectactiviteit bekijken"
-  permission_view_project_attributes: "View project attributes"
+  permission_view_project_attributes: "Toon project kenmerken"
   permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
@@ -3373,7 +3373,7 @@ nl:
     Als CORS is ingeschakeld, zijn dit de oorsprong die toegang heeft tot OpenProject API. <br/> Bekijk de <a href="%{origin_link}" target="_blank">Documentatie op de Oorsprongshoofd</a> over hoe u de verwachte waarden kunt opgeven.
   setting_apiv3_write_readonly_attributes: "Schrijftoegang tot alleen-lezen attributen"
   setting_apiv3_write_readonly_attributes_instructions_html: >
-    If enabled, the API will allow administrators to write static read-only attributes during creation, such as createdAt and author. <br/> <strong>Warning:</strong> This setting has a use-case for e.g., importing data, but allows administrators to impersonate the creation of items as other users. All creation requests are being logged however with the true author. </br> For more information on attributes and supported resources, please see the %{api_documentation_link}.
+    Als deze optie is ingeschakeld, staat de API beheerders toe om statische alleen-lezen attributen te schrijven tijdens het aanmaken, zoals createdAt en author. <br/> <strong>Waarschuwing:</strong> Deze instelling heeft een use-case voor bijvoorbeeld het importeren van gegevens, maar staat beheerders toe om zich bij het aanmaken van items voor te doen als andere gebruikers. Alle aanmaakverzoeken worden echter gelogd met de echte auteur. </br> Voor meer informatie over attributen en ondersteunde bronnen, zie de %{api_documentation_link}.
   setting_apiv3_max_page_size: "Maximale API pagina grootte"
   setting_apiv3_max_page_instructions_html: >
     Stel de maximale pagina grootte in waarmee de API zal reageren. Het is niet mogelijk om API-verzoeken uit te voeren die meer waarden op een enkele pagina weergeven. <br/> <strong>Waarschuwing:</strong> Wijzig deze waarde alleen als u zeker weet waarom u het nodig heeft. Het instellen op een hoge waarde zal aanzienlijke prestatieeffecten hebben, terwijl een waarde lager is dan de per pagina opties fouten veroorzaakt in gepagineerde weergaven.
@@ -3744,6 +3744,7 @@ nl:
   text_unallowed_characters: "Ongeldige tekens"
   text_user_invited: De gebruiker is uitgenodigd en is in afwachting van de registratie.
   text_user_wrote: "%{value} schreef:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Het werkpakket bevat niet-opgeslagen tekst die verloren gaat als u deze pagina verlaat."
   text_what_did_you_change_click_to_add_comment: "Wat heb je te veranderen? Klik op Opmerking toevoegen"
   text_wiki_destroy_confirmation: "Weet u zeker dat u deze wiki en alle inhoud wilt verwijderen?"

@@ -912,7 +912,7 @@ lt:
         timeline_labels: "Laiko juostos etiketės"
       relation:
         lag: "Vėlavimas"
-        from: "Darbų paketas"
+        from: "Related work package"
         to: "Susijusių darbų paketas"
       reminder:
         remind_at_date: "Date"
@@ -1236,12 +1236,12 @@ lt:
           typed_dag:
             circular_dependency: "Ryšys sukuria ryšių ciklą."
           attributes:
-            to:
-              error_not_found: "„iki“ pozicijos darbų paketas nerastas arba nematomas"
-              error_readonly: "esamo ryšio sąsaja „iki“ yra nekintama"
-            from:
-              error_not_found: "„nuo“ pozicijos darbų paketas nerastas arba nematomas"
-              error_readonly: "esamo ryšio sąsaja „iš“ yra nekintama"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3823,6 +3823,7 @@ lt:
   text_unallowed_characters: "Neleistini simboliai"
   text_user_invited: Vartotojas yra pakviestas ir laukia registracijos.
   text_user_wrote: "%{value} parašė:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Darbų paketas turi neišsaugoto teksto, kuris bus prarastas, jei išeisite iš šio puslapio."
   text_what_did_you_change_click_to_add_comment: "Ką jūs pakeitėte? Spauskite, kad pridėtumėte komentarą"
   text_wiki_destroy_confirmation: "Ar esate įsitikinęs, jog norite pašalinti šį wiki puslapį ir visą jo turinį?"

@@ -886,7 +886,7 @@ zh-TW:
         timeline_labels: "時間軸標籤"
       relation:
         lag: "延遲"
-        from: "工作項目"
+        from: "Related work package"
         to: "相關的工作項目"
       reminder:
         remind_at_date: "日期"
@@ -1210,12 +1210,12 @@ zh-TW:
           typed_dag:
             circular_dependency: "無限迴圈的關聯。"
           attributes:
-            to:
-              error_not_found: "“結束”的工作項目不存在或無法顯示"
-              error_readonly: "您無法更改現有關係的“結束”連結"
-            from:
-              error_not_found: "“開始”的工作項目不存在或無法顯示"
-              error_readonly: "您無法更改現有關係的“開始”連結"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "不能為負數。"
@@ -1984,7 +1984,7 @@ zh-TW:
   general_csv_decimal_separator: "."
   general_csv_encoding: "UTF-8"
   general_csv_separator: ","
-  general_first_day_of_week: "星期日"
+  general_first_day_of_week: "7"
   general_pdf_encoding: "ISO-8859-1"
   general_text_no: "否"
   general_text_yes: "是"
@@ -3705,6 +3705,7 @@ zh-TW:
   text_unallowed_characters: "不允許的字元"
   text_user_invited: 這個使用者已經被邀請而且正在等待註冊。
   text_user_wrote: "%{value} 寫道："
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "若離開當前頁面，將遺失此工作項目未儲存的內容。"
   text_what_did_you_change_click_to_add_comment: "點擊這裡來說明變更了什麼"
   text_wiki_destroy_confirmation: "您是否確定要刪除此 wiki 和它所有的內容？"

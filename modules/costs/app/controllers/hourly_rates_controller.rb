@@ -108,9 +108,9 @@ class HourlyRatesController < ApplicationController
     if @user.save
       flash[:notice] = t(:notice_successful_update)
       if @project.nil?
-        redirect_back_or_default(controller: "users", action: "edit", id: @user)
+        redirect_back_or_default({ controller: "users", action: "edit", id: @user })
       else
-        redirect_back_or_default(action: "show", id: @user, project_id: @project)
+        redirect_back_or_default({ action: "show", id: @user, project_id: @project })
       end
     else
       if @project.nil?

@@ -116,7 +116,7 @@ ms:
   label_template: "templat"
   label_recurring_meeting_view: "Lihat siri mesyuarat"
   label_recurring_meeting_create: "Open"
-  label_recurring_meeting_copy: "Salin sebagai one-off"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Batalkan kejadian ini"
   label_recurring_meeting_delete: "Padam kejadian"
   label_recurring_meeting_restore: "Pulihkan kejadian ini"
@@ -219,10 +219,11 @@ ms:
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
       occurrence:
-        title: "Delete meeting occurrence"
-        heading: "Delete this meeting occurrence?"
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
         confirmation_message_html: >
-          This meeting is part of a series called <strong>%{title}</strong>. This will only delete this particular occurrence and not the entire series. Do you want to continue?
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
     blankslate:
       title: "No meetings to display"
       desc: "There are no meetings that meet the active filter criteria."

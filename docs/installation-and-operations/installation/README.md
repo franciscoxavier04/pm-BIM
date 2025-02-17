@@ -10,8 +10,8 @@ OpenProject can be setup in these different ways:
 
 | Topic                                                | Content                                                                               |
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| [Installation with DEB/RPM packages](./packaged)     | This is the recommended way to install OpenProject                                    |
-| [Installation with Docker Compose](./docker-compose) | This allows to setup OpenProject in an isolated manner using Docker Compose           | 
+| [Installation with Docker Compose](./docker-compose) | Recommended setup for OpenProject in an isolated manner using Docker Compose          | 
+| [Installation with DEB/RPM packages](./packaged)     | Install OpenProject using your package manager (limited supported distributions)      |
 | [Installation with single Docker container](./docker)| This allows to setup OpenProject in a single Docker container                         | 
 | [Installation with Helm charts](./helm-chart)        | This allows to setup OpenProject using Helm charts                                    |
 | [Other](misc/)                                       | Extra information on installing OpenProject on specific platforms such as Kubernetes. |

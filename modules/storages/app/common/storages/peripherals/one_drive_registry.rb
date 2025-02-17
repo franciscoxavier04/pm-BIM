@@ -51,6 +51,22 @@ module Storages
         register(:set_permissions, StorageInteraction::OneDrive::SetPermissionsCommand)
       end
 
+      namespace("components") do
+        namespace("forms") do
+          register(:access_management, ::Storages::Admin::Forms::AccessManagementFormComponent)
+          register(:general_information, ::Storages::Admin::Forms::GeneralInfoFormComponent)
+          register(:oauth_client, ::Storages::Admin::Forms::OAuthClientFormComponent)
+          register(:redirect_uri, ::Storages::Admin::Forms::RedirectUriFormComponent)
+        end
+
+        register(:setup_wizard, OneDriveStorageWizard)
+
+        register(:access_management, ::Storages::Admin::AccessManagementComponent)
+        register(:general_information, ::Storages::Admin::GeneralInfoComponent)
+        register(:oauth_client, ::Storages::Admin::OAuthClientInfoComponent)
+        register(:redirect_uri, ::Storages::Admin::RedirectUriComponent)
+      end
+
       namespace("contracts") do
         register(:storage, ::Storages::Storages::OneDriveContract)
       end

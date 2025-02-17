@@ -180,15 +180,15 @@ it:
       open_meeting_link: "Apri riunione"
       open_my_meetings_link: "Vai alle mie riunioni"
       series:
-        title: "[%{project_name}] Serie di riunioni %{title}"
-        summary: "%{actor} ha organizzato una nuova serie di riunioni %{title}"
+        title: "[%{project_name}] Serie di riunioni \"%{title}\""
+        summary: "%{actor} ha organizzato una nuova serie di riunioni \"%{title}\""
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] Serie di riunioni \"%{title}\" riprogrammati"
+        summary: "%{actor} ha modificato l'ordine del giorno della serie di riunioni \"%{title}\""
+        old_schedule: "Ordine del giorno precedente"
+        new_schedule: "Ordine del giorno nuovo"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} ti ha inviato un invito per la riunione \"%{title}\""
       cancelled:
         header: "Cancellata: riunione \"%{title}\""
         header_occurrence: "Cancellata: occorrenza della riunione \"%{title}\""
@@ -198,9 +198,9 @@ it:
         summary: "\"%{title}\" è stata cancellata da %{actor}."
         date_time: "Data/ora programmata"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "La riunione \"%{title}\" è stata riprogrammata"
+        summary: "La riunione \"%{title}\" è stata riprogrammata da %{actor}"
+        body: "La riunione \"%{title}\" è stata riprogrammata da %{actor}."
         old_date_time: "Data/ora precedente"
         new_date_time: "Nuova data/ora"
     label_mail_all_participants: "Invia e-mail a tutti i partecipanti"
@@ -221,10 +221,11 @@ it:
         confirmation_message_html: >
           Questa azione è irreversibile. Procedi con cautela.
       occurrence:
-        title: "Cancellare l'evento della riunione"
-        heading: "Cancellare questa riunione?"
+        title: "Cancella l'occorrenza della riunione"
+        heading: "Cancellare questa occorrenza della riunione?"
         confirmation_message_html: >
-          Questa riunione fa parte di una serie chiamata <strong>%{title}</strong>. L'operazione eliminerà solo questa particolare ricorrenza e non l'intera serie. Vuoi continuare?
+          Qualsiasi informazione sulla riunione non contenuta nel modello andrà persa. Vuole continuare?
+        confirm_button: "Cancella l'occorrenza"
     blankslate:
       title: "Nessuna riunione da visualizzare"
       desc: "Non ci sono riunioni che soddisfano i criteri del filtro attivo."

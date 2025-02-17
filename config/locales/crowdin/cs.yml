@@ -915,7 +915,7 @@ cs:
         timeline_labels: "Štítky časové osy"
       relation:
         lag: "Lag"
-        from: "Pracovní balíček"
+        from: "Related work package"
         to: "Související pracovní balíček"
       reminder:
         remind_at_date: "Datum"
@@ -1239,12 +1239,12 @@ cs:
           typed_dag:
             circular_dependency: "Vztah vytvoří cyklický vztah."
           attributes:
-            to:
-              error_not_found: "pracovní balíček v pozici „to“ nenalezen nebo není viditelný"
-              error_readonly: "existující odkaz `to` je neměnný"
-            from:
-              error_not_found: "pracovní balíček v pozici `od` nebyl nalezen nebo není viditelný"
-              error_readonly: "existující odkaz `od` je neměnný"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3828,6 +3828,7 @@ cs:
   text_unallowed_characters: "Nepovolené znaky"
   text_user_invited: Uživatel byl pozván a čeká na registraci.
   text_user_wrote: "%{value} napsal:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Pracovní balíček obsahuje neuložený text, který bude ztracen, když opustíte stránku."
   text_what_did_you_change_click_to_add_comment: "Co jste změnili? Klikněte pro přidání komentáře"
   text_wiki_destroy_confirmation: "Opravdu si přejete odstranit tuto Wiki a celý její obsah?"

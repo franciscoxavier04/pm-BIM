@@ -138,7 +138,7 @@ fa:
       authn_requests_signed: >
         اگر علامت زده شود، OpenProject SAML AuthnRequest را امضا خواهد کرد. باید گواهی امضا و کلید خصوصی را با استفاده از فیلدهای زیر ارائه دهید.
       want_assertions_signed: >
-        اگر علامت زده شود، OpenProject به پاسخ‌های امضا شده از ارائه‌دهنده هویت با استفاده از جفت کلید گواهی خود نیاز دارد. OpenProject امضای گواهی را از قسمت تنظیمات اولیه تأیید می کند.
+        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
       want_assertions_encrypted: >
         در صورت فعال بودن، از ارائه‌دهنده هویت بخواهید که پاسخ ادعا را با استفاده از جفت گواهی ارائه شده رمزگذاری کند.
       certificate: >

@@ -62,20 +62,20 @@ nl:
       requested_attributes: Gevraagde kenmerken
       attribute_mapping: Attribute mapping
       attribute_mapping_text: >
-        The following fields control which attributes provided by the SAML identity provider are used to provide user attributes in OpenProject
+        De volgende velden bepalen welke kenmerken verstrekt door de SAML identity provider worden gebruikt om gebruikers kenmerken te verstrekken in OpenProject
       metadata:
         dialog: "This is the URL where the OpenProject SAML metadata is available. Optionally use it to configure your identity provider:"
       upsale:
         description: Connect OpenProject to a SAML identity provider
       request_attributes:
-        title: 'Requested attributes'
+        title: 'Gevraagde kenmerken'
         legend: >
-          These attributes are added to the SAML XML metadata to signify to the identify provider which attributes OpenProject requires. You may still need to explicitly configure your identity provider to send these attributes. Please refer to your IdP's documentation.
-        name: 'Requested attribute key'
-        format: 'Attribute format'
+          Deze kenmerken worden toegevoegd aan de SAML XML metadata om aan de identity provider aan te geven welke kenmerken OpenProject vereist. Mogelijk moet u uw identiteitsleverancier nog expliciet configureren om deze kenmerken te verzenden. Raadpleeg hiervoor de documentatie van uw IdP.
+        name: 'Gevraagde kenmerk sleutel'
+        format: 'Kenmerk formaat'
       section_headers:
         configuration: "Primary configuration"
-        attributes: "Attributes"
+        attributes: "Kenmerken"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"
@@ -85,8 +85,8 @@ nl:
         configuration_metadata: "This information has been pre-filled using the supplied metadata. In most cases, they do not require editing."
         encryption: "Configure assertion signatures and encryption for SAML requests and responses."
         encryption_form: "You may optionally want to encrypt the assertion response, or have requests from OpenProject signed."
-        mapping: "Manually adjust the mapping between the SAML response and user attributes in OpenProject."
-        requested_attributes: "Define the set of attributes to be requested in the SAML request sent to your identity provider."
+        mapping: "Pas de mapping tussen de SAML respons en gebruikerskenmerken handmatig aan in OpenProject."
+        requested_attributes: "Definieer de set kenmerken die moet worden opgevraagd in het SAML-verzoek dat naar uw identity provider wordt gestuurd."
       seeded_from_env: "This provider was seeded from the environment configuration. It cannot be edited."
     settings:
       metadata_none: "I don't have metadata"
@@ -118,23 +118,23 @@ nl:
       sp_metadata_endpoint: >
         This is the URL where the OpenProject SAML metadata is available. Optionally use it to configure your identity provider.
       mapping: >
-        Configure the mapping between the SAML response and user attributes in OpenProject. You can configure multiple attribute names to look for. OpenProject will choose the first available attribute from the SAML response.
+        Configureer de mapping tussen de SAML respons en gebruikerskenmerken in OpenProject. U kunt meerdere kenmerknamen configureren om naar te zoeken. OpenProject zal het eerste beschikbare kenmerk uit de SAML response kiezen.
       mapping_login: >
-        SAML attributes from the response used for the login.
+        SAML-kenmerken uit het antwoord die voor de aanmelding zijn gebruikt.
       mapping_mail: >
-        SAML attributes from the response used for the email of the user.
+        SAML-kenmerken uit het antwoord die gebruikt zijn voor de email van de gebruiker.
       mapping_firstname: >
-        SAML attributes from the response used for the given name.
+        SAML-kenmerken uit het antwoord die gebruikt zijn voor de opgegeven naam.
       mapping_lastname: >
-        SAML attributes from the response used for the last name.
+        SAML-kenmerken uit het antwoord die gebruikt zijn voor de opgegeven achternaam.
       mapping_uid: >
         SAML attribute to use for the internal user ID. Leave empty to use the name_id attribute instead
       request_uid: >
         SAML attribute to request for the internal user ID. By default, the name_id will be used for this field.
       requested_attributes: >
-        These attributes are added to the SAML request XML to communicate to the identity provider which attributes OpenProject requires.
+        Deze kenmerken worden toegevoegd aan de SAML request XML om aan de identity provider te communiceren welke kenmerken OpenProject nodig heeft.
       requested_format: >
-        The format of the requested attribute. This is used to specify the format of the attribute in the SAML request. Please see [documentation on configuring requested attributes](docs_url) for more information.
+        Het formaat van het gevraagde kenmerk. Dit wordt gebruikt om het formaat van het kenmerk in het SAML-verzoek op te geven. Zie [documentatie over het configureren van aangevraagde attributen](docs_url) voor meer informatie.
       authn_requests_signed: >
         If checked, OpenProject will sign the SAML AuthnRequest. You will have to provide a signing certificate and private key using the fields below.
       want_assertions_signed: >

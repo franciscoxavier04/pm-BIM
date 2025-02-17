@@ -893,7 +893,7 @@ el:
         timeline_labels: "Ετικέτες χρονοδιαγράμματος"
       relation:
         lag: "Lag"
-        from: "Εργασία"
+        from: "Related work package"
         to: "Σχετικές εργασίες"
       reminder:
         remind_at_date: "Date"
@@ -1217,12 +1217,12 @@ el:
           typed_dag:
             circular_dependency: "Η σχέση αυτή δημιουργεί έναν κύκλο σχέσεων."
           attributes:
-            to:
-              error_not_found: "το πακέτο εργασίας στην θέση 'σε' δεν βρέθηκε ή δεν είναι ορατό"
-              error_readonly: "ο σύνδεσμος 'σε' μιας υπάρχουσας συσχέτισης είναι αμετάβλητος"
-            from:
-              error_not_found: "το πακέτο εργασίας στην θέση 'από' δεν βρέθηκε ή δεν είναι ορατό"
-              error_readonly: "ο σύνδεσμος 'από' μιας υπάρχουσας συσχέτισης είναι αμετάβλητος"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3744,6 +3744,7 @@ el:
   text_unallowed_characters: "Μη επιτρεπόμενοι χαρακτήρες"
   text_user_invited: Ο χρήστης έχει προσκληθεί και εκκρεμεί η εγγραφή του.
   text_user_wrote: "%{value} έγραψε:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Το πακέτο εργασίας περιέχει μη αποθηκευμένο κείμενο το οποίο θα χαθεί αν φύγετε από αυτή τη σελίδα."
   text_what_did_you_change_click_to_add_comment: "Τι αλλαγές κάνατε; Κάντε κλικ για να προσθέσετε ένα σχόλιο"
   text_wiki_destroy_confirmation: "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το wiki και όλα τα περιεχόμενα του;"

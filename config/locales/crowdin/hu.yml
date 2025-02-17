@@ -895,7 +895,7 @@ hu:
         timeline_labels: "Idővonal címkék"
       relation:
         lag: "Lag"
-        from: "Feladatcsoport"
+        from: "Related work package"
         to: "Kapcsolódó feladatcsoport"
       reminder:
         remind_at_date: "Date"
@@ -1219,12 +1219,12 @@ hu:
           typed_dag:
             circular_dependency: "A kapcsolat körkörös függőséget hoz létre."
           attributes:
-            to:
-              error_not_found: "feladatcsoportban \"a\" pozíció nem található, vagy nem látható"
-              error_readonly: "egy létező kapcsolat ',' hivatkozása nem változhat"
-            from:
-              error_not_found: "feladatcsoportban \"a\" pozíció nem található, vagy nem látható"
-              error_readonly: "egy létező kapcsolat ',' hivatkozása nem változhat"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3746,6 +3746,7 @@ hu:
   text_unallowed_characters: "Nem engedélyezett karakterek"
   text_user_invited: A felhasználót meghívták és a regisztráció folyamatban van.
   text_user_wrote: "%{value} írta:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "A  feladatcsoport  nem mentett szöveget tartalmaz, ami elveszik ha elhagyod ezt az oldalt."
   text_what_did_you_change_click_to_add_comment: "Mit változtattál? Klikkelj egy megjegyzés hozzáadásához."
   text_wiki_destroy_confirmation: "Biztosan törli ezt a wikit és annak tartalmát?"
