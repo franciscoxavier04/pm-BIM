@@ -12,7 +12,7 @@ keywords: meetings, meetings faq, tickets, how to, task
 
 **Dynamic meetings** were introduced with OpenProject 13.1.0 as an improved version of the meetings meant to improve the user experience when managing meetings in OpenProject.
 
-With OpenProject 15.3.0, dynamic meetings are replaced by [One-time meetings](../one-time-meetings) and [Recurring meetings](../recurring-meetings). 
+With OpenProject 15.3.0, dynamic meetings can either be [one-time meetings](../one-time-meetings) or [recurring meetings](../recurring-meetings). 
 
 ## How long will the classic meetings be available?
 
