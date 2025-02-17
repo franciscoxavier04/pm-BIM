@@ -83,7 +83,7 @@ The left side menu displays all existing meeting series. Click on one will open 
 - **Planned**: lists all meetings within the selected meeting series that are scheduled, but not yet open.  Every time a planned meeting starts, the next one will open automatically. You can also open any of the planned  meetings manually to import the template and start editing the agenda.
 
 >  [!TIP]
-> Once a meeting is open, changes to the template do not affect it. 
+>  Once a meeting is open, changes to the template do not affect it. 
 
 To edit the meeting series, select the **More** (three dots) icon on the far right side of the meeting series name and select *Edit meeting series*.
 
