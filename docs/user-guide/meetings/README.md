@@ -57,13 +57,13 @@ Meetings will be grouped based on the meeting start time into the following grou
 
 The menu on the left will allow you to filter meetings based on following:
 
-- **My meetings** lists all meetings a user participates in
-- **Recurring meetings** lists all recurring meetings visible to a user
-- **All meetings** lists all meetings visible to a user
+- **My meetings** lists all meetings you participate in
+- **Recurring meetings** lists all recurring meetings visible to you
+- **All meetings** lists all meetings visible to you
 - **Meeting series** lists meeting occurrences that are part of recurring meetings
-- **Invitations** lists all meetings a user is invited to
-- **Attended** lists all meetings are user has attended
-- **Created by me** lists all meetings created by user
+- **Invitations** lists all meetings you are invited to
+- **Attended** lists all meetings in which you were marked as having attended
+- **Created by me** lists all meetings created by you
 
 The buttons next to *Filters* will allow you to filter for upcoming or past meetings.
 
