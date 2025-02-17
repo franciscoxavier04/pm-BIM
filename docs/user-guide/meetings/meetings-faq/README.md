@@ -12,7 +12,7 @@ keywords: meetings, meetings faq, tickets, how to, task
 
 **Dynamic meetings** were introduced with OpenProject 13.1.0 as an improved version of the meetings meant to improve the user experience when managing meetings in OpenProject.
 
-With OpenProject 15.3.0, dynamic meetings are replaced by [One-time meetings](/one-time-meetings) and [Recurring meetings](/recurring-meetings). 
+With OpenProject 15.3.0, dynamic meetings are replaced by [One-time meetings](../one-time-meetings) and [Recurring meetings](../recurring-meetings). 
 
 ## How long will the classic meetings be available?
 
@@ -20,7 +20,7 @@ With OpenProject 15.3.0, dynamic meetings are replaced by [One-time meetings](/o
 
 ## Can I add a meeting to a calendar?
 
-Yes, you can [download a meeting as an iCalendar event](../dynamic-meetings/#download-a-meeting-as-an-icalendar-event).
+Yes, you can [download a meeting as an iCalendar event](../one-time-meetings/#download-a-meeting-as-an-icalendar-event).
 
 ## Are the meetings shown in calendar widgets?
 

@@ -37,7 +37,7 @@ Meetings in OpenProject help teams organise discussions, track meeting agendas, 
 
 By selecting **Meetings** in the project menu on the left, you get an overview of all the meetings you have been invited to within a specific project sorted by date. By clicking on a meeting name you can view further details of the meeting.
 
-To get an overview of the meetings across multiple projects, you can select **Meetings** in the [global modules menu](../../../user-guide/home/global-modules/).
+To get an overview of the meetings across multiple projects, you can select **Meetings** in the [global modules menu](../../user-guide/home/global-modules/).
 
 ![Select meetings module from openproject global modules ](openproject_userguide_meetings_module_select.png)
 

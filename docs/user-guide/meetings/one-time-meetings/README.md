@@ -15,11 +15,6 @@ For information on setting up recurring meeting series and templates, please ref
 > [!NOTE]
 > The **Meetings module needs to be activated** in the [Project settings](../../projects/project-settings/modules/) to be able to create and edit meetings.
 
-> [!IMPORTANT]
-> With OpenProject 13.1 we introduced dynamic meetings alongside [classic meetings](../classic-meetings). 
-> With OpenProject 15.3 dynamic meetings are replaced by [one-time meetings](one-time-meetings) and [recurring meetings]../(recurring-meetings) to further improve meeting management.
-> Please keep in mind that the ability to create classic meetings will eventually be removed from OpenProject.
-
 | Topic                                                        | Content                                                    |
 | ------------------------------------------------------------ | ---------------------------------------------------------- |
 | [Create a new meeting](#create-a-new-meeting)                | How to create a new meeting in OpenProject.                |
@@ -86,7 +81,7 @@ If, prior to creating your first section, your meeting already had existing [age
 
 ![Untitled section in OpenProject meeting](openproject_userguide_meetings_untitled_section.png)
 
-After adding a section, you can specify it further by [adding agenda items](#add-an-agenda-item) or [work packages](#link-a-work-pacjage-to-a-meeting) to it. 
+After adding a section, you can specify it further by [adding agenda items](#add-an-agenda-item) or [work packages](#link-a-work-package-to-a-meeting) to it. 
 
 You can also add agenda items to specific sections by either dragging and dropping items into each section, or by clicking on the **More** button (⋯) and choosing your desired action.
 
@@ -208,7 +203,7 @@ Added attachments can be added to the Notes section of agenda packages by draggi
 
 You can track what changes were made to a meeting and by which user. Select the dropdown by clicking on the **More** (three dots) icon in the top right corner and select **Meeting history**.
 
-![Select Meeting history option in OpenProject meetings](openproject_userguide_meetings_Select_meeting_history.png)
+![Select Meeting history option in OpenProject meetings](openproject_userguide_meetings_select_meeting_history.png)
 
 This will display meeting history details.
 
