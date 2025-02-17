@@ -39,6 +39,8 @@ The following screenshot shows an example Meetings overview page, highlighting s
 
 Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between **My meetings**, **Recurring meetings** and **All meetings**, with separate sections for Meeting series and Involvement.
 
+See our user guide to learn more about the [updated Meetings module and how to use it](../../user-guide/meetings/).
+
 ### Create child work packages directly from the Relations tab
 
 With OpenProject 15.3, you can now again create child work packages directly from the Relations tab, making it faster and more intuitive to build structured work breakdowns.
@@ -51,6 +53,8 @@ Additionally, if child work packages already exist, a **+ Child** button appears
 
 ![Screenshot showing the +Child button in the Relations tab of work packages](openproject-15-3-add-new-child-button-highlighted.png)
 
+[Learn more about work package relations and hierarchies in OpenProject](../../user-guide/work-packages/work-package-relations-hierarchies/).
+
 ### Include total sums in timesheet PDF exports for better insights
 
 Tracking logged time is now more transparent with total sum calculations in timesheet PDF exports. Previously, users had to manually sum up hours across multiple users. With OpenProject 15.3, the PDF export now includes:
@@ -62,6 +66,8 @@ This enhancement simplifies reporting, making it easier to review and analyze tr
 
 ![Screenshot showing a timesheet overview page, including a sum](openproject-15-3-sums-pdf-timesheet-overview.png)
 
+[Learn more about time and cost reporting with OpenProject](../../user-guide/time-and-costs/reporting/).
+
 ### Include child work packages in cost reports for more accurate tracking
 
 Cost reports in OpenProject now allow to easier include child work packages, ensuring more comprehensive cost tracking. Previously, users managing hierarchical work packages (such as epics, features, or sub-tasks) had to manually select each work package to ensure full cost visibility.
@@ -69,6 +75,8 @@ Cost reports in OpenProject now allow to easier include child work packages, ens
 OpenProject 15.3 introduces a new filter option for cost reports: **is (includes descendants)**, in addition to **is**. This allows users to automatically include all related child work packages (grandchildren, great-grandchildren, etc.) in their cost reports, improving accuracy and efficiency. This eliminates the need for cumbersome manual selection and ensures that all relevant costs are accounted for in reports.
 
 ![Screenshot showing the dropdown in a cost report filter, highlighting the new 'is (includes descendents)' option](openproject-15-3-cost-report-children.png)
+
+[Learn more about tracking progress with OpenProject](../../user-guide/time-and-costs/progress-tracking/).
 
 ### See dates of previously hidden, permission-restricted relations to make informed scheduling decisions
 
@@ -87,6 +95,8 @@ Please note that currently, **only the following relations are displayed with a 
 These improvements help teams make informed scheduling decisions while maintaining appropriate permission controls. Here is an example, showing two relations – one with full visibility and one with restricted visibility.
 
 ![Mockup showing two relations in a work package, one is displayed in grey with restricted details, only date and lag](openproject-15-3-hidden-relation.png)
+
+[See our user guide to learn more about work package hierarchies in OpenProject](../../user-guide/work-packages/work-package-relations-hierarchies/#display-work-package-hierarchies).
 
 ### Display a deletion dialog with danger zone for deleting items in a hierarchy
 
