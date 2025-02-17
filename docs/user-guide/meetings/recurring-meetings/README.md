@@ -20,21 +20,12 @@ Recurring meetings are helpful to schedule and organize meetings that have same 
 > With OpenProject 15.3 dynamic meetings are replaced by [one-time meetings](one-time-meetings) and recurring meetings to further improve meeting management.
 > Please keep in mind that the ability to create classic meetings will eventually be removed from OpenProject.
 
-| Topic                                                        | Content                                                    |
-| ------------------------------------------------------------ | ---------------------------------------------------------- |
-| [Meetings in OpenProject](#meetings-in-openproject)          | How to open meetings in OpenProject.                       |
-| [Create a new meeting](#create-a-new-meeting)                | How to create a new meeting in OpenProject.                |
-| [Edit a meeting](#edit-a-meeting)                            | How to edit an existing meeting.                           |
-| [Add a work package to the agenda](#add-a-work-package-to-the-agenda) | How to add a work package to a meeting agenda.             |
-| [Create or edit the meeting agenda](#create-or-edit-the-meeting-agenda) | How to create or edit the agenda.                          |
-| [Add meeting participants](#add-meeting-participants)        | How to invite people to a meeting.                         |
-| [Add meeting attachments](#meeting-attachments)              | How to add attachments to a meeting.                       |
-| [Send email to all participants](#send-email-to-all-participants) | How to send an email to all meeting participants.          |
-| [Download a meeting as an iCalendar event](#download-a-meeting-as-an-icalendar-event) | How to download a meeting as an iCalendar event.           |
-| [Close a meeting](#close-a-meeting)                          | How to close a meeting in OpenProject.                     |
-| [Re-open a meeting](#re-open-a-meeting)                      | How to re-open a meeting in OpenProject.                   |
-| [Copy a meeting](#copy-a-meeting)                            | How to copy a meeting in OpenProject (recurring meetings). |
-| [Delete a meeting](#delete-a-meeting)                        | How to delete a meeting in OpenProject.                    |
+| Topic                                                        | Content                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Create and edit recurring meetings](#create-and-edit-recurring-meetings) | How to create and edit recurring meetings in OpenProject.    |
+| [Edit recurring meetings template](#edit-recurring-meetings-template) | How to edit a template for recurring meeting series.         |
+| [Edit recurring meeting series](#edit-recurring-meeting-series) | How to edit  recurring meeting series in OpenProject.        |
+| [Edit a recurring meeting occurrence](#edit-a-recurring-meeting-occurrence) | How to edit a single meeting within recurring meeting series. |
 
 ## Create and edit recurring meetings
 
