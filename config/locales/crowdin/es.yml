@@ -894,7 +894,7 @@ es:
         timeline_labels: "Etiquetas de cronograma"
       relation:
         lag: "Retraso"
-        from: "Paquete de trabajo"
+        from: "Related work package"
         to: "Paquete de trabajo relacionado"
       reminder:
         remind_at_date: "Fecha"
@@ -1218,12 +1218,12 @@ es:
           typed_dag:
             circular_dependency: "La relación crea un bucle de relaciones."
           attributes:
-            to:
-              error_not_found: "el paquete de trabajo en posición 'a' no se ha encontrado o no es visible"
-              error_readonly: "la relación existente no se puede modificar 'a' enlace es inmutable"
-            from:
-              error_not_found: "el paquete de trabajo en la posición 'de' no se ha encontrado o no es visible"
-              error_readonly: "la relación existente no se puede modificar 'de' enlace es inmutable"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "no puede ser negativo."

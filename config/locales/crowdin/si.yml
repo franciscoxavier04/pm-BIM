@@ -897,7 +897,7 @@ si:
         timeline_labels: "කාල නියමය ලේබල්"
       relation:
         lag: "Lag"
-        from: "වැඩ පැකේජය"
+        from: "Related work package"
         to: "අදාළ වැඩ පැකේජය"
       reminder:
         remind_at_date: "Date"
@@ -1221,12 +1221,12 @@ si:
           typed_dag:
             circular_dependency: "සම්බන්ධතාවය සබඳතා කවයක් නිර්මාණය කරයි."
           attributes:
-            to:
-              error_not_found: "සොයාගත නොහැකි හෝ දෘශ්යමාන නොවන `to` තත්ත්වය තුළ වැඩ පැකේජය"
-              error_readonly: "පවතින සම්බන්ධතාවයක `to` සබැඳිය නොසැලකිය හැකි ය"
-            from:
-              error_not_found: "සොයාගත නොහැකි හෝ දෘශ්යමාන නොවන `from` තත්ත්වය තුළ වැඩ පැකේජය"
-              error_readonly: "පවතින සම්බන්ධතාවයක `from` සබැඳිය නොසැලකිය හැකි ය"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

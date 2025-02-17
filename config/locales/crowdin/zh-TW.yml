@@ -886,7 +886,7 @@ zh-TW:
         timeline_labels: "時間軸標籤"
       relation:
         lag: "延遲"
-        from: "工作項目"
+        from: "Related work package"
         to: "相關的工作項目"
       reminder:
         remind_at_date: "日期"
@@ -1210,12 +1210,12 @@ zh-TW:
           typed_dag:
             circular_dependency: "無限迴圈的關聯。"
           attributes:
-            to:
-              error_not_found: "“結束”的工作項目不存在或無法顯示"
-              error_readonly: "您無法更改現有關係的“結束”連結"
-            from:
-              error_not_found: "“開始”的工作項目不存在或無法顯示"
-              error_readonly: "您無法更改現有關係的“開始”連結"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "不能為負數。"

@@ -894,7 +894,7 @@ pt-BR:
         timeline_labels: "Rótulos de linha do tempo"
       relation:
         lag: "Atraso"
-        from: "Pacote de trabalho"
+        from: "Pacote de trabalho relacionado"
         to: "Pacote de trabalho relacionado"
       reminder:
         remind_at_date: "Data"
@@ -1218,12 +1218,12 @@ pt-BR:
           typed_dag:
             circular_dependency: "O relacionamento cria um círculo de relacionamentos."
           attributes:
-            to:
-              error_not_found: "pacote de trabalho na posição 'para' não foi encontrado ou não está visível"
-              error_readonly: "uma relação existente de link `para` é imutável"
-            from:
-              error_not_found: "pacote de trabalho na posição 'de' não foi encontrado ou não está visível"
-              error_readonly: "uma relação existente de link `de` é imutável"
+            to_id:
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para relações existentes."
+            from_id:
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para relações existentes."
             lag:
               greater_than_or_equal_to:
                 zero: "não pode ser negativo."

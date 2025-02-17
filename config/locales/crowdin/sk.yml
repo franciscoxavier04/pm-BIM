@@ -915,7 +915,7 @@ sk:
         timeline_labels: "Značky časovej osi"
       relation:
         lag: "Lag"
-        from: "Pracovný balíček"
+        from: "Related work package"
         to: "Súvisiaci pracovný balíček"
       reminder:
         remind_at_date: "Date"
@@ -1239,12 +1239,12 @@ sk:
           typed_dag:
             circular_dependency: "Vzťah vytvorí kruh vzťahov."
           attributes:
-            to:
-              error_not_found: "pracovný balíček v pozícii `na` nebol nájdený alebo nie je viditeľný"
-              error_readonly: "odkaz `na` existujúci vzťah nie je možné zmeniť"
-            from:
-              error_not_found: "pracovný balíček v pozícii `z` nebol nájdený alebo nie je viditeľný"
-              error_readonly: "prepojenie existujúceho vzťahu `z` sa nedá zmeniť"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

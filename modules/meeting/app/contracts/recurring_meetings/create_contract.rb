@@ -30,6 +30,7 @@ module RecurringMeetings
   class CreateContract < BaseContract
     validate :user_allowed_to_add
     validate :project_is_present
+    validate :start_time_constraints
 
     private
 
@@ -44,6 +45,17 @@ module RecurringMeetings
 
       unless user.allowed_in_project?(:create_meetings, model.project)
         errors.add :base, :error_unauthorized
+      end
+    end
+
+    def start_time_constraints
+      return if model.start_time.nil?
+      return if model.start_time >= Time.zone.now
+
+      if model.start_time.today?
+        errors.add :start_time_hour, :after_today
+      else
+        errors.add :start_date, :after_today
       end
     end
   end

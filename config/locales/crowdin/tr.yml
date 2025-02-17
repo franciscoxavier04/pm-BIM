@@ -896,7 +896,7 @@ tr:
         timeline_labels: "Zaman çizelgesi etiketleri"
       relation:
         lag: "Gecikme"
-        from: "İş paketi"
+        from: "İlgili iş paketi"
         to: "İlgili iş paketi"
       reminder:
         remind_at_date: "Tarih"
@@ -1220,12 +1220,12 @@ tr:
           typed_dag:
             circular_dependency: "İlişki, bir ilişki çemberi oluşturur."
           attributes:
-            to:
-              error_not_found: "çalışma paketinde `to` konum bulunamadı veya görünür değil"
-              error_readonly: "`to` ilişkisi olduğundan bağlantı değiştirilemez"
-            from:
-              error_not_found: "iş paketi içerisinde `from` pozisyonu bulunamayor ya da görünür değil"
-              error_readonly: "`from` ilişkisi olduğundan bağlantı değiştirilemez"
+            to_id:
+              error_not_found: "bulunamadı veya görünmüyor."
+              error_readonly: "mevcut ilişkiler için değiştirilemez."
+            from_id:
+              error_not_found: "bulunamadı veya görünmüyor."
+              error_readonly: "mevcut ilişkiler için değiştirilemez."
             lag:
               greater_than_or_equal_to:
                 zero: "negatif olamaz."

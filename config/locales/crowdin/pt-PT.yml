@@ -894,7 +894,7 @@ pt-PT:
         timeline_labels: "Etiquetas de cronograma"
       relation:
         lag: "Atraso"
-        from: "Pacote de trabalho"
+        from: "Related work package"
         to: "Tarefas Relacionadas"
       reminder:
         remind_at_date: "Data"
@@ -1218,12 +1218,12 @@ pt-PT:
           typed_dag:
             circular_dependency: "A relação cria um círculo de relações."
           attributes:
-            to:
-              error_not_found: "pacote de trabalho na posição 'para' não foi encontrada ou não está visível"
-              error_readonly: "uma ligação 'para' existente não pode ser mudada"
-            from:
-              error_not_found: "pacote de trabalho na posição 'de' não foi encontrada ou não está visível"
-              error_readonly: "uma ligação 'de' existente não pode ser mudada"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "não pode ser negativo."
