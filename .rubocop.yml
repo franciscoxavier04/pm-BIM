@@ -181,6 +181,10 @@ Rails/HttpPositionalArguments:
 Rails/RequireDependency:
   Enabled: true
 
+# Disable deprecated actionfilter
+Rails/ActionFilter:
+  Enabled: false
+
 # For feature specs, we tend to have longer specs that cover a larger part of the functionality.
 # This is done for multiple reasons:
 # * performance, as setting up integration tests is costly
