@@ -908,7 +908,7 @@ uk:
         timeline_labels: "Мітки часової шкали"
       relation:
         lag: "Затримка"
-        from: "Пакет робіт"
+        from: "Пов’язаний пакет робіт"
         to: "Пов'язаний робочий пакет"
       reminder:
         remind_at_date: "Дата"
@@ -1232,12 +1232,12 @@ uk:
           typed_dag:
             circular_dependency: "Відносини створюють коло відносин."
           attributes:
-            to:
-              error_not_found: "робочий пакет в положенні `до` не знайдено або не видно"
-              error_readonly: "зв'язок `до` існуючого відношення незмінна"
-            from:
-              error_not_found: "робочий пакет в `від` положення не знайдено або не видно"
-              error_readonly: "існуюча зв'язок `from` є незмінною"
+            to_id:
+              error_not_found: "не знайдено або приховано."
+              error_readonly: "не можна змінити для наявних зв’язків."
+            from_id:
+              error_not_found: "не знайдено або приховано."
+              error_readonly: "не можна змінити для наявних зв’язків."
             lag:
               greater_than_or_equal_to:
                 zero: "не може мати від’ємне значення."
@@ -3820,6 +3820,7 @@ uk:
   text_unallowed_characters: "Недозволені символи"
   text_user_invited: Користувача запрошено та очікує реєстрації.
   text_user_wrote: "%{value} написав:"
+  text_wrote: "написав(-ла)"
   text_warn_on_leaving_unsaved: "Робочий пакет містить незбережений текст, який буде втрачено, якщо ви залишите цю сторінку."
   text_what_did_you_change_click_to_add_comment: "Що ви змінили? Натисніть, щоб додати коментар"
   text_wiki_destroy_confirmation: "Ви впевнені що хочете видалити цю Вікі і весь її вміст?"

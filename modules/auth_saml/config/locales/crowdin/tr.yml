@@ -74,8 +74,8 @@ tr:
         name: 'Requested attribute key'
         format: 'Attribute format'
       section_headers:
-        configuration: "Primary configuration"
-        attributes: "Attributes"
+        configuration: "Birincil yapılandırma"
+        attributes: "Öznitelikler"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"

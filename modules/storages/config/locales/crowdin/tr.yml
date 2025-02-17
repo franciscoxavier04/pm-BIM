@@ -199,11 +199,11 @@ tr:
         manual_management_description: Create and manage folders per project manually on your own. You will need to manually ensure relevant users have access.
         setup_incomplete: Select the type of management of user access and folder creation.
         subtitle: Access management
-        title: Access and project folders
+      access_management_section: Access and project folders
       automatically_managed_folders: Automatically managed folders
       general_information: General information
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth uygulamaları
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders
@@ -233,15 +233,15 @@ tr:
         unknown_error: The connection could not be validated. An unknown error occurred. Please check the server logs for further information.
         userless_access_denied: The configured app password is invalid.
       label_error: Hata
-      label_healthy: Healthy
+      label_healthy: Sağlıklı
       label_pending: Bekliyor
       label_warning: Uyarı
       project_folders:
         subtitle: Automatically managed project folders
-      since: since %{datetime}
-      title: Health status
+      since: '%{datetime} tarihinden beri'
+      title: Sağlık durumu
     health_email_notifications:
-      description_subscribed: All administrators receive health status email notifications for this storage.
+      description_subscribed: Tüm yöneticiler bu depolama alanı için sistem durumu e-posta bildirimleri alır.
       description_unsubscribed: Health status email notifications for this storage have been turned off for all administrators.
       error_could_not_be_saved: Email notification settings could not be saved. Please try again.
       subscribe: Abone ol
@@ -273,13 +273,13 @@ tr:
         application_link_text: Azure portalı
         copy_redirect_uri: Copy redirect URI
         documentation_link_text: OneDrive/SharePoint dosya depoları belgeleri
-        drive_id: Please copy the ID from the desired drive by following the steps in the %{drive_id_link_text}.
+        drive_id: Lütfen %{drive_id_link_text} adresindeki adımları izleyerek kimliği istediğiniz sürücüden kopyalayın.
         integration: OneDrive/SharePoint
         missing_client_id_for_redirect_uri: Please fill the OAuth values to generate a URI
         oauth_client_redirect_uri: Please copy this value to a new Web redirect URI under Redirect URIs.
         oauth_client_secret: İstemci kimlik bilgileri altında uygulama istemci sırrı yoksa, lütfen yeni bir tane oluşturun.
-        oauth_configuration: Copy these values from the desired application in the %{application_link_text}.
-        provider_configuration: Please make sure you have administration privileges in the %{application_link_text} or contact your Microsoft administrator before doing the setup. In the portal, you also need to register an Azure application or use an existing one for authentication.
+        oauth_configuration: Bu değerleri %{application_link_text} adresindeki istenen uygulamadan kopyalayın.
+        provider_configuration: Lütfen kurulumu yapmadan önce %{application_link_text} adresinde yönetim ayrıcalıklarına sahip olduğunuzdan emin olun veya Microsoft yöneticinize başvurun. Portalda ayrıca bir Azure uygulaması kaydetmeniz veya kimlik doğrulaması için mevcut bir uygulamayı kullanmanız gerekir.
         tenant_id: Please copy the Directory (tenant) ID from the desired application and App registrations in the %{application_link_text}.
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: Ek dosya depoları ayarlamak için lütfen adresi ziyaret edin.
@@ -293,8 +293,8 @@ tr:
     label_automatic_folder: New folder with automatically managed permissions
     label_creation_time: Creation time
     label_creator: Oluşturan
-    label_delete_storage: Delete storage
-    label_edit_storage_access_management: Edit storage access management
+    label_delete_storage: Depolamayı sil
+    label_edit_storage_access_management: Depolama erişim yönetimini düzenleme
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
     label_existing_manual_folder: Existing folder with manually managed permissions
@@ -390,7 +390,7 @@ tr:
     storage_list_blank_slate:
       description: Add a storage to see them here.
       heading: You don't have any storages yet.
-    successful_storage_connection: Storage connected successfully! Remember to activate the storage in the Projects tab for each desired project to use it.
+    successful_storage_connection: Depolama başarıyla bağlandı! Kullanmak istediğiniz her proje için Projeler sekmesinde depolamayı etkinleştirmeyi unutmayın.
     upsale:
       description: |-
         Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to

@@ -887,7 +887,7 @@ ko:
         timeline_labels: "타임라인 레이블"
       relation:
         lag: "지연"
-        from: "작업 패키지"
+        from: "관련 작업 패키지"
         to: "관련 패키지"
       reminder:
         remind_at_date: "날짜"
@@ -1211,12 +1211,12 @@ ko:
           typed_dag:
             circular_dependency: "이 관계는 관계의 원을 만듭니다."
           attributes:
-            to:
-              error_not_found: "'끝' 위치의 작업 패키지가 없거나 표시되지 않음"
-              error_readonly: "기존 관계의 '끝' 링크는 변경이 불가능합니다."
-            from:
-              error_not_found: "'시작' 위치의 작업 패키지가 없거나 표시되지 않음"
-              error_readonly: "기존 관계의 '시작' 링크는 변경이 불가능합니다."
+            to_id:
+              error_not_found: "- 찾을 수 없거나 표시되지 않습니다."
+              error_readonly: "- 기존 관계에 대해서는 변경할 수 없습니다."
+            from_id:
+              error_not_found: "- 찾을 수 없거나 표시되지 않습니다."
+              error_readonly: "- 기존 관계에 대해서는 변경할 수 없습니다."
             lag:
               greater_than_or_equal_to:
                 zero: "- 음수일 수 없습니다."
@@ -3705,6 +3705,7 @@ ko:
   text_unallowed_characters: "허용되지 않는 문자"
   text_user_invited: 사용자가 초대되었으며 등록 보류 중입니다.
   text_user_wrote: "%{value}이(가) 작성함:"
+  text_wrote: "작성됨"
   text_warn_on_leaving_unsaved: "현재 페이지에는 저장되지 않은 텍스트가 있습니다. 이 페이지를 나가면 텍스트가 손실됩니다."
   text_what_did_you_change_click_to_add_comment: "무엇을 변경하셨습니까? 댓글을 추가하려면 클릭하세요."
   text_wiki_destroy_confirmation: "이 위키와 모든 해당 콘텐츠를 삭제하시겠습니까?"

@@ -199,11 +199,11 @@ ko:
         manual_management_description: 프로젝트별 폴더를 직접 수동으로 만들고 관리하세요. 관련 사용자에게 액세스 권한이 있는지 수동으로 확인해야 합니다.
         setup_incomplete: 사용자 액세스 및 폴더 생성의 관리 유형을 선택합니다.
         subtitle: 액세스 관리
-        title: 액세스 및 프로젝트 폴더
+      access_management_section: 액세스 및 프로젝트 폴더
       automatically_managed_folders: 자동으로 관리되는 폴더
       general_information: 일반 정보
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth 애플리케이션
+      oauth_configuration: OAuth 구성
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: 프로젝트 폴더
@@ -222,8 +222,8 @@ ko:
         host_not_found: 구성된 호스트 URL에서 Nextcloud 서버를 찾을 수 없습니다. 구성을 확인하세요.
         missing_dependencies: '파일 저장소에 필수 종속성이 누락되었습니다. 다음 종속성을 추가하세요: %{dependency}.'
         not_configured: 연결에 대한 유효성 검사를 할 수 없습니다. 먼저 구성을 완료하세요.
-        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
-        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_audience_missing: 정의된 오디언스가 저장소에 없습니다. 이는 OpenID Connect 통합에 필요합니다.
+        oidc_non_provisioned_user: 현재 사용자는 OpenID Connect ID 공급자에 의해 제공되지 않았습니다. 제공된 사용자로 확인을 다시 실행하세요.
         placeholder: 서버에 대한 연결을 확인하세요.
         subtitle: 연결 유효성 검사
         tenant_id_wrong: 구성된 디렉터리(테넌트) ID가 잘못되었습니다. 구성을 확인하세요.

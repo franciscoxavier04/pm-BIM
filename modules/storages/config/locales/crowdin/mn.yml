@@ -199,11 +199,11 @@ mn:
         manual_management_description: Create and manage folders per project manually on your own. You will need to manually ensure relevant users have access.
         setup_incomplete: Select the type of management of user access and folder creation.
         subtitle: Access management
-        title: Access and project folders
+      access_management_section: Access and project folders
       automatically_managed_folders: Automatically managed folders
       general_information: General information
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth applications
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders

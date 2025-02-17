@@ -199,11 +199,11 @@ uk:
         manual_management_description: Створюйте папки для кожного проєкту й керуйте ними самостійно. Вам знадобиться вручну надавати доступ відповідним користувачам.
         setup_incomplete: Виберіть тип керування доступом користувачів і створенням папок.
         subtitle: Керування доступом
-        title: Доступ і папки проєкту
+      access_management_section: Доступ і папки проєкту
       automatically_managed_folders: Папки з автоматичним керуванням
       general_information: Загальна інформація
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: Програми OAuth
+      oauth_configuration: Конфігурація OAuth
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Папки проєкту
@@ -222,8 +222,8 @@ uk:
         host_not_found: Сервер Nextcloud  не знайдено за вказаною URL-адресою. Перевірте конфігурацію.
         missing_dependencies: 'Відсутня обов’язкова залежність для файлового сховища. Додайте таку залежність: %{dependency}.'
         not_configured: Не вдалося перевірити підключення. Спочатку налаштуйте конфігурацію.
-        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
-        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_audience_missing: Сховище не має визначеної аудиторії. Це необхідно для інтеграції з OpenID Connect.
+        oidc_non_provisioned_user: Поточного користувача не надано постачальником ідентифікаційних даних OpenID Connect. Повторіть перевірку з наданим користувачем.
         placeholder: Перевірте підключення до сервера.
         subtitle: Перевірка підключення
         tenant_id_wrong: Налаштований ідентифікатор каталогу (клієнта) недійсний. Перевірте конфігурацію.

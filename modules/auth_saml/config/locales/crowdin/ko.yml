@@ -138,7 +138,7 @@ ko:
       authn_requests_signed: >
         이 옵션을 선택하면 OpenProject가 SAML AuthnRequest에 서명합니다. 아래 필드를 사용하여 서명 인증서와 비공개 키를 제공해야 합니다.
       want_assertions_signed: >
-        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
+        이 옵션을 선택하면 OpenProject가 고유한 인증서 키 쌍을 사용한 ID 공급자의 서명된 응답을 요구합니다. OpenProject는 기본 구성 섹션의 인증서와 비교하여 서명을 확인합니다.
       want_assertions_encrypted: >
         이 옵션을 활성화하면 사용자가 제공하는 인증서 쌍을 사용하여 어설션 응답을 암호화하도록 ID 공급자에 요구합니다.
       certificate: >

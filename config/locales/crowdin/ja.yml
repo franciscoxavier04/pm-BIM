@@ -884,7 +884,7 @@ ja:
         timeline_labels: "タイムラインのラベル"
       relation:
         lag: "Lag"
-        from: "ワーク パッケージ"
+        from: "Related work package"
         to: "関係するワークパッケージ"
       reminder:
         remind_at_date: "Date"
@@ -1208,12 +1208,12 @@ ja:
           typed_dag:
             circular_dependency: "関係が、関係のループを作ります。"
           attributes:
-            to:
-              error_not_found: "「終了」の位置のワークパッケージが存在しないか表示されません"
-              error_readonly: "既存の関係の「終了」のリンクは変更できません"
-            from:
-              error_not_found: "「開始」の位置にワークパッケージが存在しないか表示されません"
-              error_readonly: "既存の関係の「開始」のリンクは変更できません"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3705,6 +3705,7 @@ ja:
   text_unallowed_characters: "次の文字は使用できません。"
   text_user_invited: ユーザは招待されて、登録は保留中です。
   text_user_wrote: "%{value}が書き込みました："
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "このページから移動すると、保存されてないテキストを含むワークパッケージが失われます。"
   text_what_did_you_change_click_to_add_comment: "何を変更しましたか？コメントを追加するをクリックしてください"
   text_wiki_destroy_confirmation: "本当にこのWikiページとその内容のすべてを削除してもよろしいですか？"

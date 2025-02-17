@@ -29,7 +29,12 @@
 #++
 
 module Storages::Admin
-  module StorageViewInformation
+  class StorageInfoComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+    include OpTurbo::Streamable
+
+    alias_method :storage, :model
+
     private
 
     def editable_storage?
@@ -95,7 +100,7 @@ module Storages::Admin
     end
 
     def provider_redirect_uri_description
-      if storage.oauth_client
+      if storage.oauth_client&.persisted?
         "#{I18n.t('storages.label_uri')}: #{storage.oauth_client.redirect_uri}"
       else
         I18n.t("storages.configuration_checks.redirect_uri_incomplete.#{storage}")

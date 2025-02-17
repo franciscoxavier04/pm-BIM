@@ -199,11 +199,11 @@ vi:
         manual_management_description: Tạo và quản lý thư mục cho từng dự án thủ công. Bạn sẽ cần phải đảm bảo rằng các người dùng liên quan có quyền truy cập.
         setup_incomplete: Chọn loại quản lý quyền truy cập và tạo thư mục.
         subtitle: Quản lý quyền truy cập
-        title: Quyền truy cập và thư mục dự án
+      access_management_section: Access and project folders
       automatically_managed_folders: Thư mục được quản lý tự động
       general_information: Thông tin chung
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: Ứng dụng OAuth
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Thư mục dự án

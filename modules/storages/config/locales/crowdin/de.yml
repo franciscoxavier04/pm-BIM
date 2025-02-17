@@ -199,11 +199,11 @@ de:
         manual_management_description: Erstellen und verwalten Sie Ordner pro Projekt manuell. Sie müssen händisch sicherstellen, dass die entsprechenden Benutzer Zugriff haben.
         setup_incomplete: Wählen Sie die Art der Verwaltung des Benutzerzugriffs und der Ordnererstellung.
         subtitle: Zugriffsverwaltung
-        title: Zugriff und Projektordner
+      access_management_section: Access and project folders
       automatically_managed_folders: Automatisch verwaltete Projektordner
       general_information: Allgemeine Informationen
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth-Anwendungen
+      oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Projektordner

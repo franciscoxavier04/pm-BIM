@@ -896,7 +896,7 @@ sv:
         timeline_labels: "Etiketter för tidslinje"
       relation:
         lag: "Lag"
-        from: "Arbetspaket"
+        from: "Related work package"
         to: "Relaterat arbetspaketet"
       reminder:
         remind_at_date: "Date"
@@ -1220,12 +1220,12 @@ sv:
           typed_dag:
             circular_dependency: "Förhållandet skapar en cirkel av relationer."
           attributes:
-            to:
-              error_not_found: "arbetspaketet i 'till' hittades inte eller är inte synligt"
-              error_readonly: "en befintlig relations 'till'-länk går ej att ändra"
-            from:
-              error_not_found: "arbetspaketet i 'från' hittades inte eller är inte synligt"
-              error_readonly: "en befintlig relations 'från'-länk går ej att ändra"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."
@@ -3746,6 +3746,7 @@ sv:
   text_unallowed_characters: "Otillåtet tecken"
   text_user_invited: Användaren har bjudits in och inväntar nu dennes registrering.
   text_user_wrote: "%{value} skrev:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Arbetspaketet innehåller osparad text som försvinner om du lämnar sidan."
   text_what_did_you_change_click_to_add_comment: "Vad ändrade du? Klicka för att lägga till kommentar"
   text_wiki_destroy_confirmation: "Är du säker du vill ta bort denna wiki och allt dess innehåll?"

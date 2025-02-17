@@ -793,11 +793,10 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
 
       it "can quote other user's comments", :aggregate_failures do
         # quote other user's comment
-        # not adding additional text in this spec to the spec as I didn't find a way to add text the editor component
         activity_tab.quote_comment(first_comment_by_member)
 
         # expect the quoted comment to be shown
-        activity_tab.ckeditor.expect_value("A Member wrote:\nFirst comment by member")
+        activity_tab.ckeditor.expect_include_value("@A Member wrote:\nFirst comment by member")
       end
     end
 
@@ -817,7 +816,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         activity_tab.quote_comment(first_comment_by_member)
 
         # expect the original comment and quote are shown
-        activity_tab.ckeditor.expect_value("Partial message:\nA Member wrote:\nFirst comment by member")
+        activity_tab.ckeditor.expect_include_value("Partial message:\n@A Member wrote:\nFirst comment by member")
       end
     end
   end
