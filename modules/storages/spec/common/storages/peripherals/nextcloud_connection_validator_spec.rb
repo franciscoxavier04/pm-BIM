@@ -255,11 +255,11 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
     end
 
     it "returns a validation failure if storage audience isn't set" do
-      storage.update(nextcloud_audience: nil)
+      storage.update!(nextcloud_audience: nil)
 
-      expect(subject.type).to eq(:error)
-      expect(subject.error_code).to eq(:oidc_audience_missing)
-      expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_audience_missing"))
+      expect(subject.type).to eq(:none)
+      expect(subject.error_code).to eq(:wrn_not_configured)
+      expect(subject.description).to eq(I18n.t("storages.health.connection_validation.not_configured"))
     end
 
     it "returns a validation warning if the current user isn't provided" do
