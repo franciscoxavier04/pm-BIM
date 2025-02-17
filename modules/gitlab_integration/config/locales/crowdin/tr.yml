@@ -27,11 +27,11 @@ tr:
         gitlab_issue:
           attributes:
             labels:
-              invalid_schema: "must be an array of hashes with keys: color, title"
+              invalid_schema: "anahtarları olan bir özet dizisi olmalıdır: renk, başlık"
         gitlab_merge_request:
           attributes:
             labels:
-              invalid_schema: "must be an array of hashes with keys: color, title"
+              invalid_schema: "anahtarları olan bir özet dizisi olmalıdır: renk, başlık"
   project_module_gitlab: "GitLab"
   permission_show_gitlab_content: "GitLab içeriğini göster"
   gitlab_integration:

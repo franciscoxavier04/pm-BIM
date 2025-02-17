@@ -60,7 +60,7 @@ tr:
     close_popup_title: "Açılır pencereyi kapat"
     close_filter_title: "Filtreyi kapat"
     close_form_title: "Formu kapat"
-    button_add_watcher: "Takipçi ekle"
+    button_add_watcher: "Takip eden ekle"
     button_add: "Ekle"
     button_back: "Geri"
     button_back_to_list_view: "Liste görünümüne geri dön"
@@ -77,7 +77,7 @@ tr:
     button_copy_to_other_project: "Başka projeye çoğalt"
     button_custom-fields: "Özel Alanlar"
     button_delete: "Sil"
-    button_delete_watcher: "Takipçi sil"
+    button_delete_watcher: "Takip eden sil"
     button_details_view: "Ayrıntılar görünümü"
     button_duplicate: "Çoğalt"
     button_edit: "Düzenle"
@@ -456,7 +456,7 @@ tr:
     label_mail_notification: "E-posta bildirimleri"
     label_manage_columns: "Sütunları yeniden sırala ve yönet"
     label_me: "ben"
-    label_meeting_agenda: "Ajanda"
+    label_meeting_agenda: "Gündem"
     label_meeting_minutes: "Dakika"
     label_menu_collapse: "çöküş"
     label_menu_expand: "genişlet"
@@ -495,7 +495,7 @@ tr:
     label_save_as: "Farklı Kaydet"
     label_search_columns: "Bir sütunda arama yap"
     label_select_project: "Bir proje seçin"
-    label_select_watcher: "Takipçi seç..."
+    label_select_watcher: "Takip eden seç..."
     label_selected_filter_list: "Seçilen filtreler"
     label_show_attributes: "Tüm öznitelikleri göster"
     label_show_in_menu: "Görünümü menüde göster"
@@ -530,8 +530,8 @@ tr:
     label_work_package_plural: "İş paketleri"
     label_watch: "Takip et"
     label_watch_work_package: "İş paketini takip et"
-    label_watcher_added_successfully: "Takipçi başarıyla eklendi!"
-    label_watcher_deleted_successfully: "Takipçi başarıyla silindi!"
+    label_watcher_added_successfully: "Takip eden başarıyla eklendi!"
+    label_watcher_deleted_successfully: "Takip eden başarıyla silindi!"
     label_work_package_details_you_are_here: "You are on the %{tab} tab for %{type} %{subject}."
     label_work_package_context_menu: "İş paketi bağlam menüsü"
     label_unwatch: "Takip etme"
@@ -549,7 +549,7 @@ tr:
     label_add_attachments: "Dosyaları ekle"
     label_formattable_attachment_hint: "Dosyaları bu alana sürükleyerek ekleyebilir veya panodan yapıştırabilirsiniz."
     label_remove_file: "%{fileName} Sil"
-    label_remove_watcher: "%{name} isimli takipçi sil"
+    label_remove_watcher: "%{name} isimli takip edeni sil"
     label_remove_all_files: Tüm dosyaları temizle
     label_add_description: "%{file} için açıklama ekle"
     label_upload_notification: "Dosyalar yükleniyor..."
@@ -600,15 +600,15 @@ tr:
         team_planner:
           overview: "Takım planlayıcı, takım üyelerine görsel olarak görevler atamanıza ve kimin ne üzerinde çalıştığına dair bir genel bakış elde etmenize olanak tanır."
           calendar: "Haftalık veya iki haftalık planlama panosu, ekip üyelerinize atanan tüm iş paketlerini görüntüler."
-          add_assignee: "Başlamak için ekip planlayıcıya atanan kişileri ekleyin."
-          add_existing: "Mevcut iş paketlerini arayın ve anında bir ekip üyesine atamak ve başlangıç ve bitiş tarihlerini tanımlamak için bunları ekip planlayıcıya sürükleyin."
+          add_assignee: "Başlamak için takım planlayıcıya atanan kişileri ekleyin."
+          add_existing: "Mevcut iş paketlerini arayın ve anında bir ekip üyesine atamak ve başlangıç ve bitiş tarihlerini tanımlamak için bunları takım planlayıcıya sürükleyin."
           card: "İş paketlerini zamanda geriye veya ileriye taşımak için yatay olarak sürükleyin, başlangıç ve bitiş tarihlerini değiştirmek için kenarları sürükleyin ve hatta başka bir üyeye atamak için farklı bir satıra dikey olarak sürükleyin."
     notifications:
       title: "Bildirimler"
       no_unread: "Okunmamış bildirim yok"
       reasons:
         mentioned: "Bahsedilen"
-        watched: "Takipçi"
+        watched: "Takip edilen"
         assigned: "Atanan"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
@@ -788,12 +788,12 @@ tr:
     two_factor_authentication:
       label_two_factor_authentication: "İki faktörlü kimlik doğrulama"
     watchers:
-      label_loading: takipçiler yükleniyor...
-      label_error_loading: Takipçileri yüklerken bir hata oluştu
-      label_search_watchers: Takipçi arama
-      label_add: Takipçi ekle
+      label_loading: takip edenler yükleniyor...
+      label_error_loading: Takip edenleri yüklerken bir hata oluştu
+      label_search_watchers: Takip eden arama
+      label_add: Takip eden ekle
       label_discard: Seçimi gözardı et
-      typeahead_placeholder: Olası takipçiler için arayın
+      typeahead_placeholder: Olası takip edenler için arayın
     relation_labels:
       parent: "Üst"
       children: "Çocuk"
@@ -832,7 +832,7 @@ tr:
       update_description: "Bu ilişkinin açıklamasını güncelle"
       toggle_description: "İlişki açıklamasını göster"
       update_relation: "İlişki türünü değiştirmek için tıklayın"
-      add_follower: "Takipçi ekle"
+      add_follower: "Takip eden ekle"
       show_relations: "İlişkileri göster"
       add_predecessor: "Öncül ekle"
       remove: "İlişkiyi kaldır"
@@ -974,7 +974,7 @@ tr:
         createdAt: "Oluşturma tarihi"
         description: "Açıklama"
         date: "Tarih"
-        percentComplete: "% Tamamlandı"
+        percentComplete: "Tamamlanma yüzdesi"
         percentCompleteAlternative: "İlerleme"
         dueDate: "Bitiş tarihi"
         duration: "Süre"
@@ -1311,7 +1311,7 @@ tr:
       show_changes_since: "Şu zamandan sonraki değişiklikleri göster"
       baseline_comparison: "Baseline comparison"
       help_description: "Reference time zone for the baseline."
-      time_description: "In your local time: %{datetime}"
+      time_description: "Yerel saatinizle: %{datetime}"
       time: "Saat"
       from: "Başlangıç"
       to: "Bitiş"
@@ -1324,16 +1324,16 @@ tr:
         a_specific_date: "belirli bir tarih"
         between_two_specific_dates: "iki belirli tarih arasında"
       legends:
-        changes_since: "O zamandan beri değişiklikler"
+        changes_since: "Şu zamandan beri değişiklikler"
         changes_between: "Arasındaki değişiklikler"
-        now_meets_filter_criteria: "Şimdi filtre kriterlerini karşılıyor"
+        now_meets_filter_criteria: "Artık filtre kriterlerini karşılıyor"
         no_longer_meets_filter_criteria: "Artık filtre kriterlerini karşılamıyor"
-        maintained_with_changes: "Maintained with changes"
-        in_your_timezone: "In your local timezone:"
+        maintained_with_changes: "Değişikliklerle sürdürüldü"
+        in_your_timezone: "Yerel saat diliminizde:"
       icon_tooltip:
         added: "Added to view within the comparison time period"
         removed: "Removed from view within the comparison time period"
-        changed: "Maintained with modifications"
+        changed: "Değişiklikler ile sürdürüldü"
     forms:
       submit_success_message: "Form başarıyla gönderildi"
       load_error_message: "Form yüklenirken bir hata oluştu"

@@ -7,7 +7,7 @@ tr:
       create_label: 'Takım planlayıcısı'
       create_title: 'Yeni takım planlayıcısı oluştur'
       unsaved_title: 'İsimsiz takım planlayıcısı'
-      no_data: 'Ekip planlayıcınızı ayarlamak için atanan kişileri ekleyin.'
+      no_data: 'Takım planlayıcınızı ayarlamak için atanan kişileri ekleyin.'
       add_assignee: 'Atanan'
       remove_assignee: 'Atananı kaldır'
       two_weeks: '2 hafta'

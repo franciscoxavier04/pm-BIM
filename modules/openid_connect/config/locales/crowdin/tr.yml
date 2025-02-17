@@ -8,14 +8,14 @@ tr:
     attributes:
       openid_connect/provider:
         name: İsim
-        slug: Unique identifier
+        slug: Benzersiz tanımlayıcı
         display_name: Ekran adı
         client_id: İstemci ID
         client_secret: İstemci gizliliği
         secret: Gizli
         scope: kapsam
         grant_types_supported: Supported grant types
-        limit_self_registration: Limit self registration
+        limit_self_registration: Kendi kendine kaydı sınırlayın
         authorization_endpoint: Yetkilendirme bitiş noktası
         userinfo_endpoint: Kullanıcı bilgisi bitiş noktası
         token_endpoint: Gösterge bitiş noktası
@@ -28,7 +28,7 @@ tr:
         icon: Özel simge
         claims: Bilgiler
         acr_values: ACR değerleri
-        redirect_url: Redirect URL
+        redirect_url: Yönlendirme bağlantısı
   activerecord:
     errors:
       models:
