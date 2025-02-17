@@ -10,7 +10,9 @@ release_date: 2025-02-19
 
 Release date: 2025-02-19
 
-We released [OpenProject 15.3.0](https://community.openproject.org/versions/2163). This release includes several bug fixes, and we recommend updating to the latest version. While it is a minor release, it introduces over 40 new features, including a major update to the Meetings module. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.3.0](https://community.openproject.org/versions/2163). This release includes several bug fixes, and we recommend updating to the latest version. It introduces over 40 new features, including a major update to the Meetings module. 
+
+In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
@@ -37,6 +39,8 @@ The following screenshot shows an example Meetings overview page, highlighting s
 
 Please particularly note that filtering between upcoming and past meetings now happens on top of the page instead of the sidebar on the left. The sidebar now distinguishes between **My meetings**, **Recurring meetings** and **All meetings**, with separate sections for Meeting series and Involvement.
 
+[Learn more about the updated Meetings module and how to use it](../../user-guide/meetings/).
+
 ### Create child work packages directly from the Relations tab
 
 With OpenProject 15.3, you can now again create child work packages directly from the Relations tab, making it faster and more intuitive to build structured work breakdowns.
@@ -49,6 +53,8 @@ Additionally, if child work packages already exist, a **+ Child** button appears
 
 ![Screenshot showing the +Child button in the Relations tab of work packages](openproject-15-3-add-new-child-button-highlighted.png)
 
+[Learn more about work package relations and hierarchies in OpenProject](../../user-guide/work-packages/work-package-relations-hierarchies/).
+
 ### Include total sums in timesheet PDF exports for better insights
 
 Tracking logged time is now more transparent with total sum calculations in timesheet PDF exports. Previously, users had to manually sum up hours across multiple users. With OpenProject 15.3, the PDF export now includes:
@@ -60,6 +66,8 @@ This enhancement simplifies reporting, making it easier to review and analyze tr
 
 ![Screenshot showing a timesheet overview page, including a sum](openproject-15-3-sums-pdf-timesheet-overview.png)
 
+[Learn more about time and cost reporting with OpenProject](../../user-guide/time-and-costs/reporting/).
+
 ### Include child work packages in cost reports for more accurate tracking
 
 Cost reports in OpenProject now allow to easier include child work packages, ensuring more comprehensive cost tracking. Previously, users managing hierarchical work packages (such as epics, features, or sub-tasks) had to manually select each work package to ensure full cost visibility.
@@ -68,11 +76,18 @@ OpenProject 15.3 introduces a new filter option for cost reports: **is (includes
 
 ![Screenshot showing the dropdown in a cost report filter, highlighting the new 'is (includes descendents)' option](openproject-15-3-cost-report-children.png)
 
+[Learn more about tracking progress with OpenProject](../../user-guide/time-and-costs/progress-tracking/).
+
 ### See dates of previously hidden, permission-restricted relations to make informed scheduling decisions
 
 OpenProject now provides better visibility into dependencies by displaying relation dates for work packages that users do not have permission to view. Previously, restricted relations were completely invisible, making it difficult to understand scheduling dependencies.
 
 OpenProject 15.3 improves transparency by displaying all relations in the Relations tab. While restricted work packages remain inaccessible, their **start and finish dates will now be visible**, along with lag time for applicable relations. This way, users still cannot interact with restricted work packages but will now understand why a task is scheduled at a specific time.
+
+Please note that currently, **only the following relations are displayed with a date** – not dependent on permissions: 
+- Successors (after)
+- Predecessors (before)
+- Children
 
 > [!NOTE]
 > If a related work package has the same start and finish date, a single date is displayed instead of a range. This is [another feature of OpenProject 15.3 and applies to all Relations on the Relations tab](https://community.openproject.org/wp/61044), independent of the user's permissions.
@@ -80,6 +95,8 @@ OpenProject 15.3 improves transparency by displaying all relations in the Relati
 These improvements help teams make informed scheduling decisions while maintaining appropriate permission controls. Here is an example, showing two relations – one with full visibility and one with restricted visibility.
 
 ![Mockup showing two relations in a work package, one is displayed in grey with restricted details, only date and lag](openproject-15-3-hidden-relation.png)
+
+[See our user guide to learn more about work package hierarchies in OpenProject](../../user-guide/work-packages/work-package-relations-hierarchies/#display-work-package-hierarchies).
 
 ### Display a deletion dialog with danger zone for deleting items in a hierarchy
 
@@ -99,11 +116,15 @@ Additionally, OpenProject 15.3 improves how popovers are displayed within modals
 
 Filtering user custom fields is now faster with autocompleters in the project list. Users can quickly search and select values from a dropdown, improving usability and performance.
 
-## Important updates and breaking changes
+## Important technical updates and breaking changes
 
 ### Centos 8 package support removed
 
-Centos 8 is EOL for quite some time, packages will no longer be built for it starting in OpenProject 15.3.0
+Centos 8 is EOL for quite some time and packages will no longer be built for it, starting with OpenProject 15.3.0. For more information on CentOS installation, please see [our installations and operations guide](../../installation-and-operations/installation/packaged/#centos-installation).
+
+### Seeding of design variables allowed (Enterprise add-on)
+
+It is now possible to set up custom design variables and logos as environment variables. This is useful in automated deployments such as with Kubernetes. For more information, please see [our installations and operations guide](../../installation-and-operations/configuration/#seeding-custom-theme-and-design-enterprise-add-on).
 
 <!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
 
@@ -219,7 +240,7 @@ Centos 8 is EOL for quite some time, packages will no longer be built for it sta
 
 ## Contributions
 
-A very special thank you goes to City of Cologne for sponsoring parts of this release. Your support, alongside the efforts of our amazing Community, helps drive these innovations.
+A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations.
 
 Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to Luka Bradesko, Max Mutzge, Lars Geiger, Rudi B., Alexander Aleschenko, Alex Fantini, Peter Wafzig.
 
