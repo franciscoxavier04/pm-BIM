@@ -46,7 +46,7 @@ RSpec.describe Storages::Peripherals::StorageInteraction::AuthenticationStrategi
     end
 
     context "if file storage is configured for sso and oauth" do
-      let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
+      let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_with_fallback) }
 
       it "must use an SsoUserToken strategy" do
         strategy = described_class.call(user:, storage:)
@@ -77,7 +77,7 @@ RSpec.describe Storages::Peripherals::StorageInteraction::AuthenticationStrategi
     end
 
     context "if file storage is configured for sso and oauth" do
-      let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
+      let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_with_fallback) }
 
       it "must use an OAuthUserToken strategy" do
         strategy = described_class.call(user:, storage:)
@@ -93,15 +93,14 @@ RSpec.describe Storages::Peripherals::StorageInteraction::AuthenticationStrategi
         expect(strategy.key).to eq(:oauth_user_token)
       end
     end
-  end
 
-  context "if file storage is not fully configured" do
-    let(:user) { create(:user) }
-    let(:storage) { create(:nextcloud_storage) }
+    context "if file storage is configured for oauth only, but client and app not fully configured" do
+      let(:storage) { create(:nextcloud_storage) }
 
-    it "must return the failure strategy" do
-      strategy = described_class.call(user:, storage:)
-      expect(strategy.key).to eq(:failure)
+      it "returns the configured strategy" do
+        strategy = described_class.call(user:, storage:)
+        expect(strategy.key).to eq(:oauth_user_token)
+      end
     end
   end
 end

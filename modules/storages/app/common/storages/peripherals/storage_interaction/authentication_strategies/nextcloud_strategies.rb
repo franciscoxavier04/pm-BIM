@@ -43,13 +43,13 @@ module Storages
 
               def call(user:, storage:)
                 with_tagged_logger do
-                  sso_preferred = storage.audience.present? && oidc_provider_for(user)
+                  sso_preferred = storage.authenticate_via_idp? && oidc_provider_for(user)
 
                   if sso_preferred
                     ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken
                       .strategy
                       .with_user(user)
-                  elsif storage.oauth_client.present?
+                  elsif storage.authenticate_via_storage?
                     ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
                       .strategy
                       .with_user(user)
