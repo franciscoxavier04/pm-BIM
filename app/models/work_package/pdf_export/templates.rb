@@ -40,5 +40,5 @@ module WorkPackage::PDFExport::Templates
       label: I18n.t("pdf_generator.template_contract.label"),
       caption: I18n.t("pdf_generator.template_contract.caption")
     }
-  ]
+  ].freeze
 end

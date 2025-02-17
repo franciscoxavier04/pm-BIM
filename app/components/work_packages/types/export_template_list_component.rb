@@ -63,10 +63,6 @@ module WorkPackages
           "drop-url": drop_type_pdf_export_template_path(type_id: @type.id, id: template.id)
         }
       end
-
-      def pdf_export_templates
-        @type.pdf_export_templates.list
-      end
     end
   end
 end

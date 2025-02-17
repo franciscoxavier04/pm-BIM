@@ -39,29 +39,33 @@ See COPYRIGHT and LICENSE files for more details.
           end
           section_header_container.with_column(flex_layout: true, justify_content: :flex_end) do |actions_container|
             actions_container.with_column do
-              render(Primer::Beta::Button.new(
-                tag: :a,
-                href: enable_all_type_pdf_export_template_index_path(type_id: @type.id),
-                scheme: :invisible,
-                font_weight: :bold,
-                color: :subtle,
-                "aria-label": t("projects.settings.actions.label_enable_all"),
-                data: { "turbo-method": :put, "turbo-stream": true }
-              )) do |button|
+              render(
+                Primer::Beta::Button.new(
+                  tag: :a,
+                  href: enable_all_type_pdf_export_template_index_path(type_id: @type.id),
+                  scheme: :invisible,
+                  font_weight: :bold,
+                  color: :subtle,
+                  "aria-label": t("projects.settings.actions.label_enable_all"),
+                  data: { "turbo-method": :put, "turbo-stream": true }
+                )
+              ) do |button|
                 button.with_leading_visual_icon(icon: "check-circle", color: :subtle)
                 I18n.t("types.edit.export_configuration.pdf_export_templates.actions.label_enable_all")
               end
             end
             actions_container.with_column do
-              render(Primer::Beta::Button.new(
-                tag: :a,
-                href: disable_all_type_pdf_export_template_index_path(type_id: @type.id),
-                scheme: :invisible,
-                font_weight: :bold,
-                color: :subtle,
-                "aria-label": t("projects.settings.actions.label_disable_all"),
-                data: { "turbo-method": :put, "turbo-stream": true }
-              )) do |button|
+              render(
+                Primer::Beta::Button.new(
+                  tag: :a,
+                  href: disable_all_type_pdf_export_template_index_path(type_id: @type.id),
+                  scheme: :invisible,
+                  font_weight: :bold,
+                  color: :subtle,
+                  "aria-label": t("projects.settings.actions.label_disable_all"),
+                  data: { "turbo-method": :put, "turbo-stream": true }
+                )
+              ) do |button|
                 button.with_leading_visual_icon(icon: "x-circle", color: :subtle)
                 I18n.t("types.edit.export_configuration.pdf_export_templates.actions.label_disable_all")
               end
@@ -69,15 +73,16 @@ See COPYRIGHT and LICENSE files for more details.
           end
         end
       end
-      pdf_export_templates.each do |template|
+      @type.pdf_export_templates.list.each do |template|
         component.with_row(data: draggable_item_config(template)) do
-          render(WorkPackages::Types::ExportTemplateRowComponent.new(
-            type: @type,
-            template:
-          ))
+          render(
+            WorkPackages::Types::ExportTemplateRowComponent.new(
+              type: @type,
+              template:
+            )
+          )
         end
       end
     end
   end
 %>
-
