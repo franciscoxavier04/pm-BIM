@@ -78,8 +78,18 @@ class WorkPackageChildrenRelationsController < ApplicationController
   end
 
   def set_relation(child:, parent:)
-    WorkPackages::UpdateService.new(user: current_user, model: child)
-                               .call(parent:)
+    if allowed_to_set_parent?(child)
+      WorkPackages::UpdateService.new(user: current_user, model: child)
+                                 .call(parent:)
+    else
+      child.errors.add(:base, I18n.t(:"activerecord.errors.models.work_package.lack_of_permission"))
+      ServiceResult.failure(result: child)
+    end
+  end
+
+  def allowed_to_set_parent?(child)
+    contract = WorkPackages::UpdateContract.new(child, current_user)
+    contract.can_set_parent?
   end
 
   def respond_with_relations_tab_update(service_result, **)
