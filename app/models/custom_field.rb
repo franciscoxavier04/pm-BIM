@@ -318,12 +318,7 @@ class CustomField < ApplicationRecord
 
   def possible_version_values_options(obj)
     project = deduce_project(obj)
-
-    versions = if project&.persisted?
-                 project.shared_versions
-               else
-                 Version.systemwide
-               end
+    versions = deduce_versions(project)
 
     versions.includes(:project)
             .sort
@@ -332,17 +327,7 @@ class CustomField < ApplicationRecord
 
   def possible_user_values_options(obj)
     project = deduce_project(obj)
-
-    users = if project&.persisted?
-              project.principals
-            else
-              Principal
-                .in_visible_project_or_me(User.current)
-            end
-
-    user_format_columns = User::USER_FORMATS_STRUCTURE[Setting.user_format].map(&:to_s)
-    # Always include lastname if not already included, as Groups always need a lastname (alias for name)
-    user_format_columns << "lastname" unless user_format_columns.include?("lastname")
+    users = deduce_principals(project)
 
     users.select(*user_format_columns, "id", "type")
          .sort
@@ -367,6 +352,30 @@ class CustomField < ApplicationRecord
     elsif project.respond_to?(:project)
       project.project
     end
+  end
+
+  def deduce_principals(project)
+    if project&.persisted?
+      project.principals
+    else
+      Principal
+        .in_visible_project_or_me(User.current)
+    end
+  end
+
+  def deduce_versions(project)
+    if project&.persisted?
+      project.shared_versions
+    else
+      Version.systemwide
+    end
+  end
+
+  def user_format_columns
+    user_format_columns = User::USER_FORMATS_STRUCTURE[Setting.user_format].map(&:to_s)
+    # Always include lastname if not already included, as Groups always need a lastname (alias for name)
+    user_format_columns << "lastname" unless user_format_columns.include?("lastname")
+    user_format_columns
   end
 
   def destroy_help_text
