@@ -8,10 +8,9 @@ require:
   - rubocop-performance
   - ./config/initializers/inflections.rb
 
-<% if File.exist?('.rubocop-local.yml') %>
+# A rubocop-local.yml file can be added to customized the styles
 inherit_from:
-  - .rubocop-local.yml
-<% end %>
+  - .rubocop-local*.yml
 
 inherit_mode:
   merge:
