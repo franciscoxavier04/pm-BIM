@@ -71,11 +71,11 @@ module Admin
       end
 
       def move_to_top_activity(menu)
-        form_inputs = [{ name: "position", value: 1 }]
+        form_inputs = [{ name: "move_to", value: "highest" }]
 
         menu.with_item(label: I18n.t(:label_sort_highest),
                        tag: :button,
-                       href: admin_time_entry_activity_move_path(activity),
+                       href: move_admin_time_entry_activity_path(activity),
                        # content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
                        form_arguments: { method: :post, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "move-to-top")
@@ -83,11 +83,11 @@ module Admin
       end
 
       def move_up_activity(menu)
-        form_inputs = [{ name: "position", value: activity.position - 1 }]
+        form_inputs = [{ name: "move_to", value: "higher" }]
 
         menu.with_item(label: I18n.t(:label_sort_higher),
                        tag: :button,
-                       href: admin_time_entry_activity_move_path(activity),
+                       href: move_admin_time_entry_activity_path(activity),
                        # content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
                        form_arguments: { method: :post, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "chevron-up")
@@ -95,11 +95,11 @@ module Admin
       end
 
       def move_down_activity(menu)
-        form_inputs = [{ name: "position", value: activity.position + 1 }]
+        form_inputs = [{ name: "move_to", value: "lower" }]
 
         menu.with_item(label: I18n.t(:label_sort_lower),
                        tag: :button,
-                       href: admin_time_entry_activity_move_path(activity),
+                       href: move_admin_time_entry_activity_path(activity),
                        #  content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
                        form_arguments: { method: :post, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "chevron-down")
@@ -107,11 +107,11 @@ module Admin
       end
 
       def move_to_bottom_activity(menu)
-        form_inputs = [{ name: "position", value: max_activity_position + 1 }]
+        form_inputs = [{ name: "move_to", value: "lowest" }]
 
         menu.with_item(label: I18n.t(:label_sort_lowest),
                        tag: :button,
-                       href: admin_time_entry_activity_move_path(activity),
+                       href: move_admin_time_entry_activity_path(activity),
                        #    content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
                        form_arguments: { method: :post, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "move-to-bottom")

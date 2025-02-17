@@ -70,7 +70,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :time_entry_activities, except: [:show] do
-      post :move
+      member do
+        post :move
+        get :reassign
+      end
     end
 
     resources :cost_types, only: %i[index new edit update create destroy] do

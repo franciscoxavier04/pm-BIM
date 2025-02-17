@@ -32,6 +32,7 @@ module Admin
   class TimeEntryActivitiesController < ApplicationController
     # Allow only admins here
     before_action :require_admin
+    before_action :find_time_entry_activity, only: %i[edit update destroy move reassign]
     layout "admin"
 
     menu_item :time_entry_activities
@@ -44,16 +45,81 @@ module Admin
       @time_entry_activity = TimeEntryActivity.new
     end
 
-    def edit
-      @time_entry_activity = TimeEntryActivity.find(params[:id])
+    def edit; end
+
+    def create
+      @time_entry_activity = TimeEntryActivity.new(permitted_params.time_entry_activities)
+
+      if @time_entry_activity.save
+        flash[:notice] = I18n.t(:notice_successful_update)
+        redirect_to(action: :index)
+      else
+        render action: :new, status: :unprocessable_entity
+      end
     end
 
-    def create; end
+    def update
+      if @time_entry_activity.update(permitted_params.time_entry_activities)
+        flash[:notice] = I18n.t(:notice_successful_update)
+        redirect_to(action: :index)
+      else
+        render action: :edit, status: :unprocessable_entity
+      end
+    end
 
-    def update; end
+    def destroy
+      if @time_entry_activity.in_use?
+        handle_reassignment_on_deletion
+      elsif @time_entry_activity.destroy
+        flash[:notice] = I18n.t(:notice_successful_delete)
+        redirect_to(action: :index)
+      else
+        flash.now[:error] = I18n.t(:error_can_not_delete_entry)
+        redirect_to(action: :index)
+      end
+    end
 
-    def destroy; end
+    def move
+      if @time_entry_activity.update(move_to: move_to_attribute)
+        flash[:notice] = I18n.t(:notice_successful_update)
+      else
+        flash[:error] = I18n.t(:error_type_could_not_be_saved)
+      end
 
-    def move; end
+      redirect_to(action: :index)
+    end
+
+    def reassign
+      @other_activities = TimeEntryActivity.all - [@time_entry_activity]
+    end
+
+    private
+
+    def move_to_attribute
+      move_to = params[:move_to]
+
+      if move_to.in? %w(highest higher lower lowest)
+        move_to
+      else
+        raise ArgumentError, "Invalid move_to value: #{move_to}"
+      end
+    end
+
+    def handle_reassignment_on_deletion
+      reassign_to_id = params.dig(:time_entry_activity, :reassign_to_id)
+
+      if reassign_to_id.present?
+        reassign_to = TimeEntryActivity.find_by(id: reassign_to_id)
+        @time_entry_activity.destroy(reassign_to)
+        flash[:notice] = I18n.t(:notice_successful_delete)
+        redirect_to(action: :index)
+      else
+        redirect_to(action: :reassign, id: @time_entry_activity.id)
+      end
+    end
+
+    def find_time_entry_activity
+      @time_entry_activity = TimeEntryActivity.find(params[:id])
+    end
   end
 end
