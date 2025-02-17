@@ -34,7 +34,11 @@ module Projects
       class ProjectDateRowComponent < ::RowComponent
         options :date_method
 
-        def subject = render(Primer::Beta::Text.new(color: :muted)) { I18n.t(date_method, scope: "attributes") }
+        def subject
+          render(Primer::Beta::Text.new(color: :muted)) do
+            I18n.t(date_method, scope: "activerecord.attributes.project")
+          end
+        end
 
         def type = render(Projects::ProjectDateTypeComponent.new)
 

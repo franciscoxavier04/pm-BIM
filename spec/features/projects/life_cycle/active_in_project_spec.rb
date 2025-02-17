@@ -88,8 +88,8 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
                                             ready_to_close_gate => true,
                                             closing_stage => true)
 
-      # Disable all stages at once
-      project_life_cycle_page.disable_all
+      # Deactivate all stages at once
+      project_life_cycle_page.deactivate_all
 
       project_life_cycle_page.expect_listed(initiating_stage => false,
                                             ready_to_execute_gate => false,
@@ -106,8 +106,8 @@ RSpec.describe "Projects life cycle settings", :js, with_flag: { stages_and_gate
                                             ready_to_close_gate => false,
                                             closing_stage => false)
 
-      # Enable all stages at once
-      project_life_cycle_page.enable_all
+      # Activate all stages at once
+      project_life_cycle_page.activate_all
 
       project_life_cycle_page.expect_listed(initiating_stage => true,
                                             ready_to_execute_gate => true,

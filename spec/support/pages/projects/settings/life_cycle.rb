@@ -75,12 +75,18 @@ module Pages
           toggle_step(definition).click
         end
 
-        def disable_all
-          find_test_selector("disable-all-life-cycle-steps").click
+        def open_active_menu
+          find_by_id("menu-active-button").click
         end
 
-        def enable_all
-          find_test_selector("enable-all-life-cycle-steps").click
+        def deactivate_all
+          open_active_menu
+          find_test_selector("deactivate-all-life-cycle-steps").click
+        end
+
+        def activate_all
+          open_active_menu
+          find_test_selector("activate-all-life-cycle-steps").click
         end
 
         def life_cycle_test_selector(definition)

@@ -964,6 +964,8 @@ en:
         types: "Types"
         versions: "Versions"
         work_packages: "Work Packages"
+        start_date: "Start date"
+        end_date: "Finish date"
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
@@ -1579,7 +1581,6 @@ en:
     derived_start_date: "Derived start date"
     display_sums: "Display Sums"
     due_date: "Finish date"
-    end_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
     expires_at: "Expires at"
