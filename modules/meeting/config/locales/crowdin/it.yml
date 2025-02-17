@@ -54,8 +54,8 @@ it:
         frequency: "Frequenza"
         interval: "Intervallo"
         start_date: "Inizio il"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Ora di inizio"
+        start_time_hour: "Ora di inizio"
         end_after: "Termine della serie di riunioni"
         iterations: "Ricorrenze"
     errors:
@@ -119,7 +119,7 @@ it:
   label_template: "Modello"
   label_recurring_meeting_view: "Visualizza la serie di riunioni"
   label_recurring_meeting_create: "Apri"
-  label_recurring_meeting_copy: "Copy as one-time"
+  label_recurring_meeting_copy: "Copia come una tantum"
   label_recurring_meeting_cancel: "Annulla questa ricorrenza"
   label_recurring_meeting_delete: "Elimina ricorrenza"
   label_recurring_meeting_restore: "Ripristina questa ricorrenza"
@@ -182,15 +182,15 @@ it:
       open_meeting_link: "Apri riunione"
       open_my_meetings_link: "Vai alle mie riunioni"
       series:
-        title: "[%{project_name}] Meeting series '%{title}'"
-        summary: "%{actor} has set up a new meeting series '%{title}'"
+        title: "[%{project_name}] Serie di riunioni \"%{title}\""
+        summary: "%{actor} ha organizzato una nuova serie di riunioni \"%{title}\""
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] Serie di riunioni \"%{title}\" riprogrammati"
+        summary: "%{actor} ha modificato l'ordine del giorno della serie di riunioni \"%{title}\""
+        old_schedule: "Ordine del giorno precedente"
+        new_schedule: "Ordine del giorno nuovo"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} ti ha inviato un invito per la riunione \"%{title}\""
       cancelled:
         header: "Cancellata: riunione \"%{title}\""
         header_occurrence: "Cancellata: occorrenza della riunione \"%{title}\""
@@ -200,9 +200,9 @@ it:
         summary: "\"%{title}\" è stata cancellata da %{actor}."
         date_time: "Data/ora programmata"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "La riunione \"%{title}\" è stata riprogrammata"
+        summary: "La riunione \"%{title}\" è stata riprogrammata da %{actor}"
+        body: "La riunione \"%{title}\" è stata riprogrammata da %{actor}."
         old_date_time: "Data/ora precedente"
         new_date_time: "Nuova data/ora"
     label_mail_all_participants: "Invia e-mail a tutti i partecipanti"
@@ -223,11 +223,11 @@ it:
         confirmation_message_html: >
           Questa azione è irreversibile. Procedi con cautela.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "Cancella l'occorrenza della riunione"
+        heading: "Cancellare questa occorrenza della riunione?"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          Qualsiasi informazione sulla riunione non contenuta nel modello andrà persa. Vuole continuare?
+        confirm_button: "Cancella l'occorrenza"
     blankslate:
       title: "Nessuna riunione da visualizzare"
       desc: "Non ci sono riunioni che soddisfano i criteri del filtro attivo."

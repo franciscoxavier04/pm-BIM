@@ -1,9 +1,9 @@
 #English strings go here for Rails i18n
 tr:
   plugin_openproject_two_factor_authentication:
-    name: "OpenProject Two-factor authentication"
+    name: "OpenProject İki faktörlü kimlik doğrulama"
     description: >-
-      This OpenProject plugin authenticates your users using two-factor authentication by means of one-time password through the TOTP standard (Google Authenticator) or sent to the user's cell phone via SMS or voice call.
+      Bu OpenProject eklentisi, TOTP standardı (Google Authenticator) kullanılarak tek seferlik şifre aracılığıyla veya SMS veya sesli arama yoluyla kullanıcının cep telefonuna gönderilen iki faktörlü kimlik doğrulama kullanarak kullanıcılarınızın kimliğini doğrular.
   activerecord:
     attributes:
       two_factor_authentication/device:
@@ -77,7 +77,7 @@ tr:
       button_register_mobile_phone_for_user: "Cep telefonunu kaydet"
       text_2fa_enabled: "Her girişte bu kullanıcının varsayılan 2FA cihazından bir OTP belirtecini girmesi istenir."
       text_2fa_disabled: "Kullanıcı 'Hesabım sayfası' üzerinden bir 2FA cihazı ayarlamadı"
-      only_sms_allowed: "Only SMS delivery can be set up for other users."
+      only_sms_allowed: "Diğer kullanıcılar için yalnızca SMS gönderimi ayarlanabilir."
     upsale:
       title: "İki aşamalı kimlik doğrulama"
       description: "Tüm proje üyelerine iki faktörlü kimlik doğrulama sunarak (veya zorunlu kılarak) OpenProject bulut sunucunuzun güvenliğini güçlendirin."
@@ -115,12 +115,12 @@ tr:
       failed_to_delete: "2FA cihazı silinemedi."
       is_default_cannot_delete: "Cihaz varsayılan olarak işaretlenmiştir ve aktif bir güvenlik politikası nedeniyle silinemez. Silmeden önce başka bir cihazı varsayılan olarak işaretleyin."
       not_existing: "Hesabınız için 2FA cihazı kayıtlı değil."
-      2fa_from_input: Please enter the code from your <strong>%{device_name}</strong> to verify your identity.
-      2fa_from_webauthn: Please provide the WebAuthn device <strong>%{device_name}</strong>. If it is USB based make sure to plug it in and touch it. Then click the sign in button.
+      2fa_from_input: Kimliğinizi doğrulamak için lütfen <strong>%{device_name}</strong> cihazından kod girin.
+      2fa_from_webauthn: Lütfen WebAuthn cihazını <strong>%{device_name}</strong> sağlayın. USB tabanlı ise cihazınız taktığınızdan ve dokunduğunuzdan emin olun. Ardından oturum açma düğmesine tıklayın.
       webauthn:
         title: "WebAuthn"
         description: Register a FIDO2 device (like YubiKey) or the secure encalve of your mobile device.
-        further_steps: After you have chosen a name, you can click the Continue button. Your browser will prompt you to present your WebAuthn device. When you have done so, you are done registering the device.
+        further_steps: Bir isim seçtikten sonra Devam düğmesine tıklayabilirsiniz. Tarayıcınız sizden WebAuthn cihazınızı göstermenizi isteyecektir. Bunu yaptığınızda, cihazın kaydını tamamlamış olursunuz.
       totp:
         title: "Uygulama tabanlı kimlik doğrulayıcı"
         provisioning_uri: "Kurulum adresi"
