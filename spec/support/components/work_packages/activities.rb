@@ -87,15 +87,15 @@ module Components
       end
 
       def expect_journal_changed_attribute(text:)
-        expect(page).to have_test_selector("op-journal-detail-description", text:, wait: 10)
+        wait_for { page }.to have_test_selector("op-journal-detail-description", text:)
       end
 
       def expect_no_journal_changed_attribute(text: nil)
-        expect(page).not_to have_test_selector("op-journal-detail-description", text:, wait: 10)
+        wait_for { page }.not_to have_test_selector("op-journal-detail-description", text:)
       end
 
       def expect_no_journal_notes(text: nil)
-        expect(page).not_to have_test_selector("op-journal-notes-body", text:, wait: 10)
+        wait_for { page }.not_to have_test_selector("op-journal-notes-body", text:)
       end
 
       def expect_journal_details_header(text: nil, count: nil)
@@ -116,11 +116,11 @@ module Components
 
       def expect_journal_notes(text: nil, subselector: nil, count: nil)
         if text && subselector
-          expect(page).to have_css("#{page.test_selector('op-journal-notes-body')} #{subselector}", text:, wait: 10)
+          wait_for { page }.to have_css("#{page.test_selector('op-journal-notes-body')} #{subselector}", text:)
         elsif text
-          expect(page).to have_test_selector("op-journal-notes-body", text:, wait: 10)
+          wait_for { page }.to have_test_selector("op-journal-notes-body", text:)
         elsif count
-          expect(page).to have_test_selector("op-journal-notes-body", count:, wait: 10)
+          wait_for { page }.to have_test_selector("op-journal-notes-body", count:)
         end
       end
 
@@ -311,7 +311,6 @@ module Components
           page.find_test_selector("op-wp-journals-filter-show-only-changes").click
         end
 
-        # Ensure the journals are reloaded
         wait_for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
       end
 
