@@ -8,12 +8,17 @@ keywords: meetings, dynamic meetings, agenda, minutes, recurring meeting
 
 # Recurring meetings management
 
-Introduced in OpenProject 15.3, recurring meetings offer 
+With OpenProject 15.3, meetings were enhanced by introducing a clear distinction between **one-time meetings** and **recurring meetings**. This page covers the features and functionalities of recurring meetings. For information on one-time meetings, please refer to [this page](../one-time-meetings). 
 
-easier meeting management, improved agenda creation and the ability to link work packages to meetings and vice-versa.
+Recurring meetings are helpful to schedule and organize meetings that have same structure, eliminating redundancy. Recurring meetings in OpenProject consists of a series of meetings, set for a specific duration and frequency, with set agenda and participants. 
 
 > [!NOTE]
-> The **Meetings module needs to be activated** in the [Project Settings](../../projects/project-settings/modules/) to be able to create and edit meetings.
+> The **Meetings module needs to be activated** in the [Project settings](../../projects/project-settings/modules/) to be able to create and edit meetings.
+
+> [!IMPORTANT]
+> With OpenProject 13.1 we introduced dynamic meetings alongside [classic meetings](../classic-meetings). 
+> With OpenProject 15.3 dynamic meetings are replaced by [one-time meetings](one-time-meetings) and recurring meetings to further improve meeting management.
+> Please keep in mind that the ability to create classic meetings will eventually be removed from OpenProject.
 
 | Topic                                                        | Content                                                    |
 | ------------------------------------------------------------ | ---------------------------------------------------------- |
@@ -33,203 +38,92 @@ easier meeting management, improved agenda creation and the ability to link work
 
 ## Create and edit recurring meetings
 
-### Create a new meeting
+You can either create a recurring meeting from within a project or from the global **Meetings** module. For steps on creating a classic meetings please consult [this page](../classic-meetings). For steps on setting up one-time meetings please consult [this page](../one-time-meetings).
 
-You can either create a meeting from within a project or from the global **Meetings** module.
+To create a new recurring meeting, click the green **+ Meeting** button in the upper right corner and select **Recurring**. 
 
+![A button to create recurring meetings in OpenProject](openproject_userguide_meetings_recurring_meeting_button.png)
 
-> [!NOTE]
-> Dynamic meetings were introduced in OpenProject 13.1. At the moment, the Meetings module lets you create [classic](../classic-meetings) or dynamic meetings but please keep in mind that the ability to create [classic meetings](../classic-meetings) will eventually be removed from OpenProject.
+Enter your meeting's title, location, start and end date and time, duration, frequency, interval. Note that if you are creating a meeting from a global module you will first need to select a project to which the meeting is attributed. 
 
-To create a new meeting, click the green **+ Meeting** button in the upper right corner and select if you want to create a dynamic or a classic meeting.
+![Form to create recurring meetings in OpenProject](openproject_userguide_meetings_recurring_meeting_form.png)
 
-![Create new meeting in OpenProject](openproject_dynamic_meetings_create_button.png)
+> [!TIP] 
+> Duration can be entered both in hours and minutes. For example for a meeting that should last for 1.5 hours, you can enter:
+>
+> - 1.5h
+> - 90m
+> - 90min
+> - 1:30
 
-Enter your meeting's title, type, location, start date and duration. 
+**Frequency** offers following options: daily, every working day, weekly.
 
-If you are creating a meeting from a global module you will first need to select a project to which the meeting is attributed. After you have selected a project, the list of potential participants (project members) will appear for you to select who to invite. After the meeting you can note who attended the meeting.
+**Interval** is a **required** integer field that defines the recurrence pattern of a meeting series. It specifies how often a meeting should repeat within the selected recurrence scheme. For example:
 
-![Create a new dynamic meeting in OpenProject](openproject_dynamic_meetings_new_dynamic_meeting_form.png)
+- Daily, Interval = 2 → The meeting occurs every two days.
+- Weekly, Interval = 4 → The meeting occurs every four weeks.
 
-Click the **Create meeting** button to save your changes. You can proceed to adding more meeting details.
+>  [!TIP]
+>  For **working day-based recurrence**, the **Interval field is hidden** and always set to 1, meaning the meeting occurs on every working day without customization.
 
-### Edit a meeting
+**Meeting series ends** field is a select dropdown that defines when a recurring meeting series should stop. Following options are possible:
 
-If you want to change the details of a meeting, for example its time or location, open the meetings details view by clicking on pencil icon next to the **Meeting details**.
+- **Never** - allows eliminating an end date, i.e. meeting series runs infinitely.
+- **After a specific date** – displays a required **End date** field where users must select the final occurrence date.
+- **After a number of occurrences** – Displays a required **Occurrences** input field that only accepts integers. 
 
-![Edit a dynamic meeting in OpenProject](openproject_userguide_edit_dynamic_meeting_icon.png)
+Click the **Create meeting series** button to save your changes. This will create the recurring meeting series and redirect you to the meeting template page that you can edit. 
 
-An edit screen will be displayed, where you can adjust the date, time, duration and location of the meeting.
 
-![edit-meeting](openproject_userguide_edit_screen.png)
+## Edit recurring meetings template
 
-Do not forget to save the changes by clicking the **Save** button. Cancel will bring you back to the details view.
+After creating a meeting series, you are redirected to the recurring meeting template. At this point no meeting within the recurring meeting series has yet been set up. The information you see is template-specific and aims to provide clarity for next steps, as indicated by the blue banner. 
 
-> [!TIP]
-> If someone else edits or updates the current meeting page at the same time and saves their changes, you and all other users on the same page will be notified of this with a small banner at the top of the page. Click the **Reload** button to load the updated version of the page.
+![Template meeting for recurring meetings in OpenProject](openproject_userguide_meetings_recurring_meeting_initial_template.png)
 
-![Banner notifying that a meeting has been updated while a user is editing it in OpenProject meetings module](openproject_dynamic_meetings_page_update_reload_button.png)
+Specify the template meeting the same way that you would a [one-time meeting](./one-time-meeting), adding sections and agenda items, adding participants and linking work packages. Keep in mind that every new occurrence of a meeting in the series will use this template. After you have adjusted the template meeting, you can create the first meeting by clicking **Open first meeting** button, which will direct you to the meeting page of the meeting scheduled first within the series.
 
-In order to edit the title of the meeting select the dropdown menu behind the three dots and select the **Edit meeting title**.
+You can always adjust the template at a later date by selecting the meeting series from the left hand menu and clicking **Edit template** on the meeting series index page. These changes will not affect past or already created (opened) meetings. 
 
-![Edit a meeting title in OpenProject](openproject_userguid_dynamic_meeting_edit_title.png)
+![Edit template button for recurring meetings in OpenProject](openproject_userguide_meetings_recurring_meeting_edit_template_button.png)
 
-### Create or edit the meeting agenda
 
-After creating a meeting, you can set up a **meeting agenda**.
 
-You do this by adding sections, agenda items or existing work packages by selecting the desired option under the green **+ Add** button. You can then add notes to each agenda item.
+## Edit recurring meetings
+### Edit recurring meeting series
 
-![The add button with three choices: section, agenda item or work package](openproject_dynamic_meetings_add_agenda_item.png)
+The left side menu displays all existing meeting series. Click on one will open the index page for this particular series, displaying all meeting occurrences planned for this series, and are grouped into:
 
-#### Add an agenda section 
+-  **Open**: lists all meetings within the series that have been opened and can be edited. All open meetings will also be displayed under *My Meetings* section. 
+- **Planned**: lists all meetings within the selected meeting series that are scheduled, but not yet open.  Every time a planned meeting starts, the next one  will open automatically  You can also open any of the planned  meetings manually to import the template and start editing the agenda.
 
-Sections allow you to group agenda items into blocks for better organization.
+To edit the meeting series select the **More** (three dots) icon on the far right side of the meeting series name and select *Edit meeting series*.
 
-To add a section, click on the **+ Add** button at the bottom of the agenda items and select the **Section** option. 
+![Button to edit recurring meeting series in OpenProject](openproject_userguide_meetings_edit_meeting_series_button.png)
 
-![Add a new section to a meeting agenda in OpenProject](openproject_dynamic_meetings_add_section.png)
+Within the same menu you also have the following options:
 
-If, prior to creating your first section, your meeting already had existing [agenda items](#add-an-agenda-item), they will automatically be contained in a section called **Unnamed section**. You can rename this if you wish. 
+- Download meeting series as iCalendar event
+- Send email to all participants
+- Delete meeting series
 
-> [!NOTE]
-> If you use sections, all agenda items must have sections.
+### Edit a recurring meeting occurrence
 
- ![Untitled section in OpenProject meeting](openproject_dynamic_meetings_untitled_section.png)
+To edit a single meeting within recurring meeting series you have to open it first by clicking the **Open** button next to the meeting. It will then be displayed under *Open* section on the recurring meeting index page, where you can click the meeting date and time. 
 
-![Add an agenda item to a meeting section](openproject_dynamic_meetings_add_item_to_section.png)
+![Select a meeting occurrence on a recurring meetings series index page](openproject_userguide_meetings_edit_meeting_occurence_link.png)
 
-Sections will show the sum of all the duration of all containing items (or at least, those that have a duration specified).
+This will open the specific meeting page. You can then edit the meeting by using same functions as for [editing one-time meetings](./one-time-meetings), including adding sections and agenda points, inviting participants, and adding attachments. 
 
-![Duration of a section in OpenProject meeting](openproject_dynamic_meetings_section_duration.png)
+Additionally you also have the option to copy this specific meeting series occurrence as a one-time meeting. To do that click the **More ** (three dots) icon and select **Copy as one-time meeting**.
 
+![Copy a recurring meeting occurrence as a one-time meeting](openproject_userguide_meetings_copy_recurring_meeting_as_onetime.png)
 
-You can then add agenda items to specific sections by either dragging and dropping items into each, or by clicking on the **More** button (⋯) and choosing your desired action.
 
-This menu also lets you rename a section, move it or delete the entire section by selecting the respective option from the dropdown menu behind the **More** (⋯) icon on the right side. 
 
-> [!IMPORTANT]
-> Deleting a section will delete all containing agenda items. If a section contains agenda items, you will asked for confirmation before deletion.
+Within the same menu you also have the following options:
 
-![Edit or delete a section in an OpenProject meeting](openproject_dynamic_meetings_edit_section_options.png)
-
-You can also re-arrange sections by dragging and dropping sections up and down. If a section is moved, the agenda items will move along with it. 
-
-#### Add an agenda item
-If you select the **Agenda item** option, you can name that item, add notes, set the anticipated duration in minutes and select a user to be displayed next to the agenda item.  This could for example be a meeting or a project member that is accountable for the item or someone who will present that particular topic. 
-
-By default, when creating an agenda item, this will be pre-filled with the name of the user adding the agenda item, but it can either be removed or replaced by one of the other meeting participants.
-
-![Add agenda item](openproject_userguide_add_agenda_item.png)
-
-> [!TIP]
-> If you need to store the agenda outside of OpenProject, you can generate an optimized PDF using the print function (Ctrl/Cmd + P).
-
-#### Link a work package to a meeting
-
-If you select the **Work package** option, you can link a work package by entering either a work package ID, or starting to type in a keyword, which will open a list of possible options.
-
-![Add work package](openproject_userguide_add_work_package.png)
-
-After you have finalized the agenda, you can always edit the agenda items, add notes, move an item up or down or delete it. Clicking on the three dots on the right edge of each agenda item will display a menu of available options, including editing, copying link to clipboard, moving the agenda item within the agenda or deleting it.
-
-![Edit agenda in OpenProject dynamic meetings](openproject_dynamic_meetings_edit_agenda.png)
-
-You may also re-order agenda items by clicking on the drag handle (the icon with six dots) on the left edge of each agenda item and dragging that item above or below.
-
-![Drag handle next to an agenda item](agenda_drag_handle.png)
-
-The durations of each agenda item are automatically summed up. If that sum exceeds the planned duration entered in *Meeting Details*, the duration of those agenda times that exceed the planned duration will appear in red to warn you of the fact.
-
-![OpenProject meeting too long](openproject_dynamic_meetings_agenda_too_long.png)
-
-### Add a work package to the agenda
-
-There are two ways to add a work package to a meeting agenda.
-
-- **From the Meetings module**: using the **+ Add** button [add a work package agenda item](#create-or-edit-the-meeting-agenda) or
-- **From a particular work package**: using the **+ Add to meeting** button on the [Meetings tab](../../work-packages/add-work-packages-to-meetings)
-
-You can add a work package to both upcoming or past meetings as long as the work package is marked **open**.
-
-![OpenProject work packages in meetings agenda](openproject_dynamic_meetings_wp_agenda.png)
-
-> [!TIP]
-> The upcoming meetings are displayed in chronological order, from the nearest meeting to the most distant. 
-> The past meetings are displayed in reverse chronological order, from the most recent meeting to the oldest.
-
-
-
-## Meeting participants
-
-### Add meeting participants
-
-You will see the list of all the invited project members under **Participants**. You can **add participants** (Invitees and Attendees) to a meeting in [edit mode](#edit-a-meeting). The process is the same whether you are creating a new meeting or editing an existing one.
-
-![adding meeting participants](openproject_dynamic_meetings_add_participants.png)
-
-You will see the list of all the project members and be able to tell, based on the check marks next to the name under the *Invited* column, who was invited. After the meeting, you can record who actually took part using the checkmarks under the Attended column.
-
-![invite meeting participants](openproject_dynamic_meetings_add_new_participants.png)
-
-To remove an invited project member from a meeting, simply uncheck both check marks.
-
-Click on the **Save** button to confirm the changes.
-
-### Send email to all participants
-
-You can send an email reminder to all the meeting participants. Select the dropdown by clicking on the three dots in the top right corner and select **Send email to all participants**. An email reminder with the meeting details (including a link to the meeting) is immediately sent to all invitees and attendees.
-
-## Meeting attachments
-
-You can attachments in the meetings in the **Attachments** section in the right bottom corner. You can either user the **+Attach files** link to select files from your computer or drag and drop them.
-
-Added attachments can be added to the Notes section of agenda packages by dragging and dropping them from the Attachments section.
-
-![Attachments in OpenProject dynamic meetings](openproject_dynamic_meetings_attachments.png)
-
-## Meeting history
-
-You can track what changes were made to a meeting and by which user. Select the dropdown by clicking on the three dots in the top right corner and select **Meeting history**.
-
-![Select Meeting history option in OpenProject dynamic meetings](openproject_dynamic_meetings_select_meeting_history.png)
-
-This will display meeting history details.
-
-![Dynamic meeting history in OpenProject](openproject_dynamic_meetings_meeting_history.png)
-
-## Download a meeting as an iCalendar event
-
-You can download a meeting as an iCalendar event. Select the dropdown by clicking on the three dots in the top right corner and select the **Download iCalendar event**.
-
-Read more about [subscribing to a calendar](../../calendar/#subscribe-to-a-calendar).
-
-## Close a meeting
-
-Clicking on the **Close meeting** after the meeting is completed with lock the current state and make render it read-only.
-
-![Close a meeting in OpenProject](openproject_userguide_close_meeting.png)
-
-## Re-open a meeting
-
-Once a meeting has been closed, it can no longer be edited. Project members with the permission to edit and close meetings will, however, see a **Re-open meeting** option. Clicking on this re-opens a meeting and allows further editing.
-
-![Re-open a meeting in OpenProject](openproject_dynmic_meetings_reopen_meeting.png)
-
-## Copy a meeting
-
-You can copy an existing meeting. This is useful if you have recurring meetings. To copy a meeting, click on the three dots in the top right corner and select **Copy**.
-
-![Copy a dynamic meeting in OpenProject](openproject_dynamic_meetings_copy_meeting.png)
-
-A modal will open, which will allow you adjust the title, time, location and further details of the copied meeting. By default, the date for the copied meeting will be set to the next day. You also have an option of copying the agenda, attachments and the list of participants. You also have an option to email all participants after the meeting was copied.
-
-If you copy a closed meeting, the new meeting status will automatically be set to open. Don't forget to **Save** the copied meeting by clicking the **Create** button.
-
-![Edit details of a copied dynamic meeting in OpenProject](openproject_dynamic_meetings_copy_modal.png)
-
-## Delete a meeting
-
-You can delete a meeting. To do so, click on the three dots in the top right corner, select **Delete meeting** and confirm your choice.
-
-![Deleting a dynamic meeting in OpenProject](openproject_dynamic_meetings_delete_meeting.png)
+- Download iCalendar event
+- Send email to all participants
+- View history
+- Cancel this occurence
