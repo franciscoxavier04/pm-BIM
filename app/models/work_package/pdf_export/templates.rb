@@ -28,35 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport
-  Template = Data.define(:id, :label, :caption, :enabled)
-
-  class Templates
-    def self.build_template_list(disabled_ids, ordered_ids)
-      disabled = disabled_ids || []
-      templates = static_templates.map do |build_in_template|
-        Template.new(**build_in_template, enabled: disabled.exclude?(build_in_template[:id]))
-      end
-      order = ordered_ids || []
-      return templates if order.empty?
-
-      indexes = order.each_with_index.to_a.to_h
-      templates.sort_by { |template| indexes[template.id] }
-    end
-
-    def self.static_templates
-      [
-        {
-          id: "attributes",
-          label: I18n.t("pdf_generator.template_attributes.label"),
-          caption: I18n.t("pdf_generator.template_attributes.caption")
-        },
-        {
-          id: "contract",
-          label: I18n.t("pdf_generator.template_contract.label"),
-          caption: I18n.t("pdf_generator.template_contract.caption")
-        }
-      ]
-    end
-  end
+module WorkPackage::PDFExport::Templates
+  TEMPLATES = [
+    {
+      id: "attributes",
+      label: I18n.t("pdf_generator.template_attributes.label"),
+      caption: I18n.t("pdf_generator.template_attributes.caption")
+    },
+    {
+      id: "contract",
+      label: I18n.t("pdf_generator.template_contract.label"),
+      caption: I18n.t("pdf_generator.template_contract.caption")
+    }
+  ]
 end

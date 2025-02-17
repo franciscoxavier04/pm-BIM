@@ -30,6 +30,6 @@
 
 class AddExportTemplatesToType < ActiveRecord::Migration[7.1]
   def change
-    add_column :types, :pdf_export_templates, :jsonb, default: {}
+    add_column :types, :pdf_export_templates_config, :jsonb, default: {}
   end
 end

@@ -38,8 +38,8 @@ class Type < ApplicationRecord
 
   attribute :patterns, Types::Patterns::CollectionType.new
 
-  store_attribute :pdf_export_templates, :export_templates_disabled, :json
-  store_attribute :pdf_export_templates, :export_templates_order, :json
+  store_attribute :pdf_export_templates_config, :export_templates_disabled, :json
+  store_attribute :pdf_export_templates_config, :export_templates_order, :json
 
   before_destroy :check_integrity
 
@@ -115,8 +115,8 @@ class Type < ApplicationRecord
     patterns.all_enabled
   end
 
-  def pdf_export_templates_for_type
-    WorkPackage::PDFExport::Templates::build_template_list(export_templates_disabled, export_templates_order)
+  def pdf_export_templates
+    @pdf_export_templates ||= ::Type::PdfExportTemplates.new(self)
   end
 
   private

@@ -65,7 +65,7 @@ module WorkPackages
       end
 
       def pdf_export_templates
-        @type.pdf_export_templates_for_type
+        @type.pdf_export_templates.list
       end
     end
   end

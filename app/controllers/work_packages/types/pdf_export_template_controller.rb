@@ -39,7 +39,7 @@ module WorkPackages
       def enable_all
         return render_404_turbo_stream if @type.nil?
 
-        @type.export_templates_disabled = []
+        @type.pdf_export_templates.enable_all
         @type.save!
         respond_section_with_turbo_streams
       end
@@ -47,8 +47,7 @@ module WorkPackages
       def disable_all
         return render_404_turbo_stream if @type.nil?
 
-        @type.export_templates_disabled = WorkPackage::PDFExport::Templates::static_templates
-                                            .pluck(:id)
+        @type.pdf_export_templates.disable_all
         @type.save!
         respond_section_with_turbo_streams
       end
@@ -56,39 +55,20 @@ module WorkPackages
       def toggle
         return render_404_turbo_stream if @template.nil?
 
-        toggle_template(@template.id)
+        @type.pdf_export_templates.toggle(@template.id)
+        @type.save!
         respond_with_turbo_streams
       end
 
       def drop
         return render_404_turbo_stream if @template.nil?
 
-        position = params[:position].to_i - 1 # drop index starts at 1
-        move_template(@template.id, position)
+        @type.pdf_export_templates.move(@template.id, params[:position].to_i - 1) # drop index starts at 1
+        @type.save!
         respond_to_with_turbo_streams
       end
 
       protected
-
-      def move_template(template_id, position)
-        template_ids = @type.pdf_export_templates_for_type.map(&:id)
-        prev_index = template_ids.find_index(template_id)
-        template_ids.delete_at(prev_index) unless prev_index.nil?
-        template_ids.insert(position, template_id)
-        @type.export_templates_order = template_ids
-        @type.save!
-      end
-
-      def toggle_template(template_id)
-        disabled = @type.export_templates_disabled || []
-        if disabled.include?(template_id)
-          disabled.delete(template_id)
-        else
-          disabled.push(template_id)
-        end
-        @type.export_templates_disabled = disabled
-        @type.save!
-      end
 
       def respond_section_with_turbo_streams
         replace_via_turbo_stream(
@@ -106,7 +86,7 @@ module WorkPackages
       end
 
       def find_template
-        @template = @type.pdf_export_templates_for_type.find { |t| t.id == params[:id] }
+        @template = @type.pdf_export_templates.find(params[:id])
       end
     end
   end
