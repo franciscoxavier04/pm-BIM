@@ -1,4 +1,5 @@
 <%=
+component_wrapper do
   flex_layout(data: wrapper_data_attributes) do |flex|
     flex.with_row do
       render(Primer::OpenProject::SubHeader.new) do |subheader|
@@ -46,4 +47,5 @@
       end
     end
   end
+end
 %>

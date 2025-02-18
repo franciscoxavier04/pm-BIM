@@ -30,6 +30,8 @@
 
 module Admin
   class TimeEntryActivitiesController < ApplicationController
+    include OpTurbo::ComponentStream
+
     # Allow only admins here
     before_action :require_admin
     before_action :find_time_entry_activity, only: %i[edit update destroy move reassign]
@@ -81,12 +83,20 @@ module Admin
 
     def move
       if @time_entry_activity.update(move_params)
-        flash[:notice] = I18n.t(:notice_successful_update)
+        render_success_flash_message_via_turbo_stream(
+          message: I18n.t(:notice_successful_update)
+        )
       else
-        flash[:error] = I18n.t(:error_type_could_not_be_saved)
+        render_error_flash_message_via_turbo_stream(
+          message: I18n.t(:error_type_could_not_be_saved)
+        )
       end
 
-      redirect_to(action: :index)
+      replace_via_turbo_stream(
+        component: Admin::TimeEntryActivities::IndexComponent.new(time_entry_activities: TimeEntryActivity.all)
+      )
+
+      respond_with_turbo_streams
     end
 
     def reassign
