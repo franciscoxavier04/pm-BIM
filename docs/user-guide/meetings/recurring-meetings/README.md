@@ -60,7 +60,7 @@ Enter your meeting's title, location, start and end date and time, duration, fre
 
 Click the **Create meeting series** button to save your changes. This will create the recurring meeting series and redirect you to the meeting template page. 
 
-## Edit a meeting series template
+## Edit recurring meetings template
 
 After creating a meeting series, you are redirected to the recurring meeting template. At this point, no meeting within the recurring meeting series has yet been set up. You need to first define a template that will be the basis of all upcoming meetings. In other words, all new iterations of meetings in the series will be a copy of this template.
 
