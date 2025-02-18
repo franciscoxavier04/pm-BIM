@@ -57,13 +57,14 @@ module OpenIDConnect
         json = yield exchange_token_request(idp_token, audience)
 
         access_token = json["access_token"]
+        expires_in = json["expires_in"]
         return Failure("Token exchange response invalid") if access_token.blank?
 
         # We are explicitly opting to not store the refresh token for exchanged tokens
         # For one there is no need to store one, we can simply exchange a new token once the old expired.
         # A second reason is that at least Keycloak (an IDP we implement against), offers broken
         # refresh tokens after token exchange (see https://github.com/keycloak/keycloak/issues/37016)
-        token = store_exchanged_token(audience:, access_token:, refresh_token: nil)
+        token = store_exchanged_token(audience:, access_token:, refresh_token: nil, expires_in:)
         Success(token)
       end
 
@@ -88,16 +89,17 @@ module OpenIDConnect
         Failure(e)
       end
 
-      def store_exchanged_token(audience:, access_token:, refresh_token:)
+      def store_exchanged_token(audience:, access_token:, refresh_token:, expires_in:)
+        token_data = { access_token:, refresh_token:, expires_at: expires_in&.seconds&.from_now }
         token = @user.oidc_user_tokens.where("audiences ? :audience", audience:).first
         if token
           if token.audiences.size > 1
             raise "Did not expect to update token with multiple audiences (#{token.audiences}) in-place."
           end
 
-          token.update!(access_token:, refresh_token:)
+          token.update!(**token_data)
         else
-          token = @user.oidc_user_tokens.create!(access_token:, refresh_token:, audiences: [audience])
+          token = @user.oidc_user_tokens.create!(audiences: [audience], **token_data)
         end
 
         token

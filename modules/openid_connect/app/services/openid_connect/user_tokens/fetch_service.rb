@@ -61,7 +61,7 @@ module OpenIDConnect
       # for the target audience either can't be found or it has expired, but has no available refresh token.
       def access_token_for(audience:)
         token = yield token_with_audience(audience)
-        token = yield @token_refresh.call(token) if expired?(token.access_token)
+        token = yield @token_refresh.call(token) if expired?(token)
 
         Success(token.access_token)
       end
@@ -93,11 +93,20 @@ module OpenIDConnect
         Failure("No token for audience '#{aud}'")
       end
 
-      def expired?(token_string)
-        exp = @jwt_parser.parse(token_string).fmap { |decoded, _| decoded["exp"] }.value_or(nil)
-        return false if exp.nil?
+      def expired?(token)
+        exp_time = expires_at(token)
+        return false if exp_time.nil?
 
-        exp <= Time.now.to_i
+        exp_time.past?
+      end
+
+      def expires_at(token)
+        return token.expires_at if token.expires_at.present?
+
+        exp = @jwt_parser.parse(token.access_token).fmap { |decoded, _| decoded["exp"] }.value_or(nil)
+        return nil if exp.nil?
+
+        Time.zone.at(exp)
       end
     end
   end
