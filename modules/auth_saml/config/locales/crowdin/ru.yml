@@ -138,7 +138,7 @@ ru:
       authn_requests_signed: >
         Если установлено, то OpenProject подпишет запрос SAML. Вам нужно будет предоставить сертификат подписи и закрытый ключ, используя поля ниже.
       want_assertions_signed: >
-        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
+        Если установлено, то OpenProject будет требовать подписанные ответы от провайдера идентификации, используя собственную пару ключей сертификата. OpenProject проверит подпись по сертификату из раздела основной настройки.
       want_assertions_encrypted: >
         Если эта опция включена, то провайдер идентификации должен зашифровать свой ответ, используя предоставленную вами пару сертификатов.
       certificate: >

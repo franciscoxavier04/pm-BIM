@@ -894,7 +894,7 @@ es:
         timeline_labels: "Etiquetas de cronograma"
       relation:
         lag: "Retraso"
-        from: "Related work package"
+        from: "Paquete de trabajo relacionado"
         to: "Paquete de trabajo relacionado"
       reminder:
         remind_at_date: "Fecha"
@@ -1219,11 +1219,11 @@ es:
             circular_dependency: "La relación crea un bucle de relaciones."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "no se encuentra o no es visible."
+              error_readonly: "no se puede cambiar para las relaciones existentes."
             from_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "no se encuentra o no es visible."
+              error_readonly: "no se puede cambiar para las relaciones existentes."
             lag:
               greater_than_or_equal_to:
                 zero: "no puede ser negativo."
@@ -3745,7 +3745,7 @@ es:
   text_unallowed_characters: "Caracteres no permitidos"
   text_user_invited: El usuario ha sido invitado y esta a la espera del registro.
   text_user_wrote: "%{value} escribió:"
-  text_wrote: "wrote"
+  text_wrote: "escribió"
   text_warn_on_leaving_unsaved: "El paquete de trabajo contiene texto no guardado que se perderá en caso de abandonar esta página."
   text_what_did_you_change_click_to_add_comment: "¿Qué cambió? Haga clic para agregar un comentario"
   text_wiki_destroy_confirmation: "¿Está seguro que desea eliminar este wiki y todo su contenido?"

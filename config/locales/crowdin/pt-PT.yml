@@ -894,7 +894,7 @@ pt-PT:
         timeline_labels: "Etiquetas de cronograma"
       relation:
         lag: "Atraso"
-        from: "Related work package"
+        from: "Pacote de trabalho relacionado"
         to: "Tarefas Relacionadas"
       reminder:
         remind_at_date: "Data"
@@ -1219,11 +1219,11 @@ pt-PT:
             circular_dependency: "A relação cria um círculo de relações."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para as relações existentes."
             from_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para as relações existentes."
             lag:
               greater_than_or_equal_to:
                 zero: "não pode ser negativo."
@@ -3338,7 +3338,7 @@ pt-PT:
     storage:
       not_available: "O consumo de armazenamento de disco não está disponível para este repositório."
       update_timeout: "Manter as últimas informações de espaço em disco necessário para um repositório por N minutos. Como contar o espaço em disco necessário para um repositório pode ser caro, aumente este valor para reduzir o impacto no desempenho."
-      oauth_application_details: "O valor secreto do cliente não estará acessível novamente após fechar esta janela. Copie esses valores para as definições de integração do OpenProject da NextCloud:"
+      oauth_application_details: "O valor secreto do cliente não estará acessível novamente após fechar esta janela. Copie esses valores para as definições de integração do OpenProject da Nextcloud:"
       oauth_application_details_link_text: "Ir para a página de definições"
       setup_documentation_details: "Se precisar de ajuda para configurar um novo armazenamento de ficheiros, verifique a documentação: "
       setup_documentation_details_link_text: "Definição de armazenamentos"
@@ -3743,7 +3743,7 @@ pt-PT:
   text_unallowed_characters: "Caracteres não permitidos"
   text_user_invited: O utilizador foi convidado e está pendente de registo.
   text_user_wrote: "%{value} escreveu:"
-  text_wrote: "wrote"
+  text_wrote: "escreveu"
   text_warn_on_leaving_unsaved: "O pacote de trabalho contém texto não guardado que será perdido se sair desta página."
   text_what_did_you_change_click_to_add_comment: "O que mudou? Clique para adicionar comentário"
   text_wiki_destroy_confirmation: "Tem a certeza que deseja apagar esta wiki e todo o seu conteúdo?"

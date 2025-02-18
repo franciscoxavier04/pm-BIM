@@ -53,6 +53,8 @@ zh-CN:
         frequency: "周期"
         interval: "间隔"
         start_date: "开始日期："
+        start_time: "开始时间"
+        start_time_hour: "开始时间"
         end_after: "会议系列结束"
         iterations: "事件"
     errors:
