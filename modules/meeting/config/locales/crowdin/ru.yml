@@ -56,8 +56,8 @@ ru:
         frequency: "Периодичность"
         interval: "Промежуток"
         start_date: "Начинается"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Время начала"
+        start_time_hour: "Время начала"
         end_after: "Серия совещаний заканчивается"
         iterations: "События"
     errors:
@@ -121,7 +121,7 @@ ru:
   label_template: "Шаблон"
   label_recurring_meeting_view: "Посмотреть серию совещаний"
   label_recurring_meeting_create: "Открыть"
-  label_recurring_meeting_copy: "Copy as one-time"
+  label_recurring_meeting_copy: "Копировать как одноразовое"
   label_recurring_meeting_cancel: "Отменить это событие"
   label_recurring_meeting_delete: "Удалить событие"
   label_recurring_meeting_restore: "Восстановить это событие"
@@ -184,29 +184,29 @@ ru:
         Немедленно отправьте приглашение по электронной почте участникам, выбранным выше. Вы также можете сделать это вручную в любое время позже.
       send_invitation_emails_structured: "Отправить приглашение по электронной почте сразу всем участникам. Вы также можете сделать это вручную в любое время."
       open_meeting_link: "Открыть совещание"
-      open_my_meetings_link: "Go to My meetings"
+      open_my_meetings_link: "Перейти к списку моих совещаний"
       series:
-        title: "[%{project_name}] Meeting series '%{title}'"
-        summary: "%{actor} has set up a new meeting series '%{title}'"
+        title: "[%{project_name}] Серия совещаний '%{title}'"
+        summary: "%{actor} создал новую серию совещаний '%{title}'"
       series_rescheduled:
-        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
-        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
-        old_schedule: "Old schedule"
-        new_schedule: "New schedule"
+        title: "[%{project_name}] Серия совещаний '%{title}' перенесена"
+        summary: "%{actor} изменил расписание серии совещаний '%{title}'"
+        old_schedule: "Старое расписание"
+        new_schedule: "Новое расписание"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} отправил вам приглашение на совещание '%{title}'"
       cancelled:
-        header: "Cancelled: Meeting '%{title}'"
-        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
-        header_series: "Cancelled: Meeting series '%{title}'"
-        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
-        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
-        summary: "'%{title}' has been cancelled by %{actor}."
-        date_time: "Scheduled date/time"
+        header: "Отменено: совещание '%{title}'"
+        header_occurrence: "Отменено: событие совещания '%{title}'"
+        header_series: "Отменено: серия совещаний '%{title}'"
+        summary_occurrence: "Событие '%{title}' было отменено %{actor}."
+        summary_series: "Серия совещаний '%{title}' была отменена %{actor}."
+        summary: "'%{title}' было отменено %{actor}."
+        date_time: "Запланированная дата/время"
       rescheduled:
-        header: "Meeting '%{title}' has been rescheduled"
-        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        header: "Совещание '%{title}' было перенесено"
+        summary: "Совещание '%{title}' было перенесено %{actor}"
+        body: "Совещание '%{title}' было перенесено %{actor}."
         old_date_time: "Старые дата/время"
         new_date_time: "Новые дата/время"
     label_mail_all_participants: "Отправить письмо всем участникам"
@@ -227,11 +227,11 @@ ru:
         confirmation_message_html: >
           Это действие не обратимо. Пожалуйста, действуйте с осторожностью.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "Отменить это событие"
+        heading: "Отменить это событие?"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          Любая информация о совещании, не включенная в шаблон, будет потеряна. Вы хотите продолжить?
+        confirm_button: "Отменить событие"
     blankslate:
       title: "Нет совещаний для отображения"
       desc: "Нет совещаний, удовлетворяющих критериям активного фильтра."
@@ -244,7 +244,7 @@ ru:
     ended_blankslate:
       title: "Серия совещаний закончена"
       message: "Эта серия совещаний подошла к концу. Предстоящих совещаний не будет. "
-      action: "You can still view past occurrences or edit the meeting series to extend it."
+      action: "Вы по-прежнему можете просматривать прошедшие совещания или редактировать серию совещаний, чтобы расширить ее."
     occurrence:
       infoline: "Это совещание является частью повторяющейся серии совещаний."
       error_no_next: "Следующее событие для этого совещания не состоится."
@@ -252,7 +252,7 @@ ru:
       first_created: >
         Первое совещание было успешно создано из шаблона. Все последующие совещания будут создаваться автоматически в момент предыдущего.
     template:
-      button_finalize: "Open first meeting"
+      button_finalize: "Открыть первое совещание"
       blank_title: "Ваш шаблон серии совещаний пуст"
       description: >
         Этот шаблон будет использоваться каждый раз, когда будут создаваться новые совещания в серии. Вы можете добавить в этот шаблон пункты повестки дня, участников и вложения.
@@ -279,33 +279,33 @@ ru:
       weekly_interval: "Каждые %{interval} недель в %{weekday}"
       frequency: "%{base} в %{time}"
       full: "%{base} в %{time}, заканчивается %{end_date}"
-      full_past: "%{base} at %{time}, ended on %{end_date}"
+      full_past: "%{base} в %{time}, закончился %{end_date}"
       never_ending: "%{base} в %{time}"
     open:
-      title: "Open"
+      title: "Открыть"
       subtitle: >
-        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+        Открытые совещания имеют повестки дня, которые могут быть отредактированы и показаны в разделе «Мои совещания». Изменения в шаблоне серии совещаний не влияют на уже открытые совещания.
       blankslate:
-        title: "No open meetings at the moment"
-        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
+        title: "В данный момент открытых совещаний нет"
+        desc: "Вы можете вручную открыть запланированное совещание, нажав на кнопку Открыть"
     planned:
       title: "Запланировано"
       subtitle: >
         Следующие совещания запланированы в расписании повторяющихся совещаний, но пока не открыты. Каждый раз, когда начинается запланированное совещание, для вас автоматически откроется следующее совещание. Вы также можете вручную открыть запланированные совещания, чтобы импортировать шаблон и начать редактировать повестку дня.
       blankslate:
-        title: "No more planned meetings"
+        title: "Больше нет запланированных совещаний"
         desc: >
-          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
+          В этой серии дополнительных совещаний не запланировано. Чтобы запланировать дополнительные совещания или продлить серию, перейдите к шаблону и отредактируйте детали, чтобы изменить дату окончания, частоту или интервал.
     delete_dialog:
       title: "Удалить серию совещаний"
       heading: "Удалить эту серию совещаний навсегда?"
       confirmation_message_html:
         zero: >
-          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
+          Серия совещаний <strong>%{title}</strong> не содержит ни одного совещания. Серия будет удалена для всех. Пожалуйста, действуйте с осторожностью.
         one: >
-          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
+          Удаление <strong>%{title}</strong> также удалит одно вхождение в эту серию. Это действие необратимо. Пожалуйста, действуйте с осторожностью.
         other: >
-          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
+          Удаление <strong>%{title}</strong> удалит все %{count} вхождений в эту серию. Это действие необратимо. Пожалуйста, действуйте с осторожностью.
     scheduled_delete_dialog:
       title: "Отменить это событие"
       heading: "Отменить это событие?"
