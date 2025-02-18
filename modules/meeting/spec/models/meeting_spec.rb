@@ -32,7 +32,7 @@ RSpec.describe Meeting do
   shared_let (:user1) { create(:user) }
   shared_let (:user2) { create(:user) }
   let(:project) { create(:project, members: project_members) }
-  let(:meeting) { create(:meeting, project:, author: user1) }
+  let(:meeting) { create(:meeting, :author_participates, project:, author: user1) }
   let(:agenda) do
     meeting.create_agenda text: "Meeting Agenda text"
     meeting.reload_agenda # avoiding stale object errors
