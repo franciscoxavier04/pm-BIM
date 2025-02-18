@@ -33,11 +33,16 @@ module Admin
     class ActivityComponent < ApplicationComponent
       include ApplicationHelper
       include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
       options :activity
       options :max_activity_position
 
       private
+
+      def wrapper_uniq_by
+        activity.id
+      end
 
       def first_item?
         activity.position == 1
@@ -77,7 +82,7 @@ module Admin
                        tag: :button,
                        href: move_admin_time_entry_activity_path(activity),
                        # content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
-                       form_arguments: { method: :post, inputs: form_inputs }) do |item|
+                       form_arguments: { method: :put, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "move-to-top")
         end
       end
@@ -89,7 +94,7 @@ module Admin
                        tag: :button,
                        href: move_admin_time_entry_activity_path(activity),
                        # content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
-                       form_arguments: { method: :post, inputs: form_inputs }) do |item|
+                       form_arguments: { method: :put, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "chevron-up")
         end
       end
@@ -101,7 +106,7 @@ module Admin
                        tag: :button,
                        href: move_admin_time_entry_activity_path(activity),
                        #  content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
-                       form_arguments: { method: :post, inputs: form_inputs }) do |item|
+                       form_arguments: { method: :put, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "chevron-down")
         end
       end
@@ -113,7 +118,7 @@ module Admin
                        tag: :button,
                        href: move_admin_time_entry_activity_path(activity),
                        #    content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
-                       form_arguments: { method: :post, inputs: form_inputs }) do |item|
+                       form_arguments: { method: :put, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "move-to-bottom")
         end
       end

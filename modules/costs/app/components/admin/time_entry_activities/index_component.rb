@@ -33,6 +33,7 @@ module Admin
     class IndexComponent < ApplicationComponent
       include ApplicationHelper
       include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
       options :time_entry_activities
 
@@ -44,8 +45,24 @@ module Admin
 
       def wrapper_data_attributes
         {
-          # controller: "projects--settings--border-box-filter",
+          controller: "generic-drag-and-drop",
           "application-target": "dynamic"
+        }
+      end
+
+      def drop_target_config
+        {
+          "is-drag-and-drop-target": true,
+          "target-container-accessor": "& > ul",
+          "target-allowed-drag-type": "time-entry-activity"
+        }
+      end
+
+      def draggable_item_config(activity)
+        {
+          "draggable-id": activity.id,
+          "draggable-type": "time-entry-activity",
+          "drop-url": move_admin_time_entry_activity_path(activity)
         }
       end
     end

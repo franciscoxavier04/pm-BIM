@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :time_entry_activities, except: [:show] do
       member do
-        post :move
+        put :move
         get :reassign
       end
     end

@@ -29,7 +29,7 @@
     end
 
     flex.with_row do
-      render(border_box_container(data: { test_selector: "admin-time-entry-activity" })) do |component|
+      render(border_box_container(data: drop_target_config)) do |component|
         component.with_header(font_weight: :bold) { "Time entry activities" }
 
         if time_entry_activities.empty?
@@ -38,7 +38,7 @@
           end
         else
           time_entry_activities.each do |activity|
-            component.with_row(test_selector: "time-entry-activity-row-#{activity.id}") do
+            component.with_row(test_selector: "time-entry-activity-row-#{activity.id}", data: draggable_item_config(activity)) do
               render(Admin::TimeEntryActivities::ActivityComponent.new(activity: activity, max_activity_position: max_activity_position))
             end
           end

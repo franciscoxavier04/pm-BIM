@@ -80,7 +80,7 @@ module Admin
     end
 
     def move
-      if @time_entry_activity.update(move_to: move_to_attribute)
+      if @time_entry_activity.update(move_params)
         flash[:notice] = I18n.t(:notice_successful_update)
       else
         flash[:error] = I18n.t(:error_type_could_not_be_saved)
@@ -95,13 +95,16 @@ module Admin
 
     private
 
-    def move_to_attribute
+    def move_params
       move_to = params[:move_to]
+      position = Integer(params[:position], exception: false)
 
       if move_to.in? %w(highest higher lower lowest)
-        move_to
+        { move_to: move_to }
+      elsif position
+        { position: position }
       else
-        raise ArgumentError, "Invalid move_to value: #{move_to}"
+        {}
       end
     end
 
