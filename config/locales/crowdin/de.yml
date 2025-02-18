@@ -890,7 +890,7 @@ de:
         timeline_labels: "Timeline-Beschriftungen"
       relation:
         lag: "Verzögerung"
-        from: "Related work package"
+        from: "Verknüpftes Arbeitspaket"
         to: "Zugehöriges Arbeitspaket"
       reminder:
         remind_at_date: "Datum"
@@ -1215,11 +1215,11 @@ de:
             circular_dependency: "Die Beziehung erzeugt eine zirkuläre Abhängigkeit."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "nicht gefunden oder nicht sichtbar."
+              error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
             from_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "nicht gefunden oder nicht sichtbar."
+              error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
             lag:
               greater_than_or_equal_to:
                 zero: "darf nicht negativ sein."
