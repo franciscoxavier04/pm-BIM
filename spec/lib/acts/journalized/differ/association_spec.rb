@@ -174,12 +174,15 @@ RSpec.describe Acts::Journalized::Differ::Association do
           expect(result)
             .to eq(
               "project_life_cycle_steps_1_active" => ["false", "true"],
+
               "project_life_cycle_steps_2_active" => [nil, "true"],
+
               "project_life_cycle_steps_3_active" => ["true", "false"],
-              "project_life_cycle_steps_3_end_date" => ["", "2024-01-18"],
               "project_life_cycle_steps_3_start_date" => ["", "2024-01-17"],
-              "project_life_cycle_steps_4_end_date" => ["2024-01-17", "2024-01-18"],
-              "project_life_cycle_steps_4_start_date" => ["2024-01-16", "2024-01-17"]
+              "project_life_cycle_steps_3_end_date" => ["", "2024-01-18"],
+
+              "project_life_cycle_steps_4_start_date" => ["2024-01-16", "2024-01-17"],
+              "project_life_cycle_steps_4_end_date" => ["2024-01-17", "2024-01-18"]
             )
         end
       end
@@ -191,12 +194,15 @@ RSpec.describe Acts::Journalized::Differ::Association do
           expect(result)
             .to eq(
               "project_life_cycle_steps_1_active" => [false, true],
+
               "project_life_cycle_steps_2_active" => [nil, true],
+
               "project_life_cycle_steps_3_active" => [true, false],
-              "project_life_cycle_steps_3_end_date" => [nil, Date.new(2024, 1, 18)],
               "project_life_cycle_steps_3_start_date" => [nil, Date.new(2024, 1, 17)],
-              "project_life_cycle_steps_4_end_date" => [Date.new(2024, 1, 17), Date.new(2024, 1, 18)],
-              "project_life_cycle_steps_4_start_date" => [Date.new(2024, 1, 16), Date.new(2024, 1, 17)]
+              "project_life_cycle_steps_3_end_date" => [nil, Date.new(2024, 1, 18)],
+
+              "project_life_cycle_steps_4_start_date" => [Date.new(2024, 1, 16), Date.new(2024, 1, 17)],
+              "project_life_cycle_steps_4_end_date" => [Date.new(2024, 1, 17), Date.new(2024, 1, 18)]
             )
         end
       end
@@ -221,12 +227,12 @@ RSpec.describe Acts::Journalized::Differ::Association do
               "project_life_cycle_steps_2" => { active: [nil, "true"] },
               "project_life_cycle_steps_3" => {
                 active: ["true", "false"],
-                end_date: ["", "2024-01-18"],
-                start_date: ["", "2024-01-17"]
+                start_date: ["", "2024-01-17"],
+                end_date: ["", "2024-01-18"]
               },
               "project_life_cycle_steps_4" => {
-                end_date: ["2024-01-17", "2024-01-18"],
-                start_date: ["2024-01-16", "2024-01-17"]
+                start_date: ["2024-01-16", "2024-01-17"],
+                end_date: ["2024-01-17", "2024-01-18"]
               }
             )
         end
@@ -242,12 +248,12 @@ RSpec.describe Acts::Journalized::Differ::Association do
               "project_life_cycle_steps_2" => { active: [nil, true] },
               "project_life_cycle_steps_3" => {
                 active: [true, false],
-                end_date: [nil, Date.new(2024, 1, 18)],
-                start_date: [nil, Date.new(2024, 1, 17)]
+                start_date: [nil, Date.new(2024, 1, 17)],
+                end_date: [nil, Date.new(2024, 1, 18)]
               },
               "project_life_cycle_steps_4" => {
-                end_date: [Date.new(2024, 1, 17), Date.new(2024, 1, 18)],
-                start_date: [Date.new(2024, 1, 16), Date.new(2024, 1, 17)]
+                start_date: [Date.new(2024, 1, 16), Date.new(2024, 1, 17)],
+                end_date: [Date.new(2024, 1, 17), Date.new(2024, 1, 18)]
               }
             )
         end
