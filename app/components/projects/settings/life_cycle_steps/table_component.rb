@@ -61,7 +61,24 @@ module Projects
         def render_collection(rows)
           render(ProjectDateRowComponent.new(row: project, table: self, date_method: :start_date)) +
           render(row_class.with_collection(rows, table: self)) +
+          filter_no_results_row +
           render(ProjectDateRowComponent.new(row: project, table: self, date_method: :end_date))
+        end
+
+        def filter_no_results_row
+          render(
+            Primer::BaseComponent.new(
+              tag: :tr,
+              display: :none,
+              data: { "projects--settings--border-box-filter-target": "noResultsText" }
+            )
+          ) do
+            content_tag :td, colspan: columns.length do
+              render Primer::Beta::Text.new do
+                I18n.t("js.autocompleter.notFoundText")
+              end
+            end
+          end
         end
       end
     end
