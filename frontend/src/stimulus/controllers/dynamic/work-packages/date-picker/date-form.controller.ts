@@ -34,11 +34,20 @@ export default class DateFormController extends Controller {
   static targets = [
     'startDateFieldContainer',
     'dueDateFieldContainer',
+    'startDateField',
+    'dueDateField',
+    'durationField',
   ];
 
   declare readonly startDateFieldContainerTarget:HTMLElement;
 
   declare readonly dueDateFieldContainerTarget:HTMLElement;
+
+  declare readonly startDateFieldTarget:HTMLInputElement;
+
+  declare readonly dueDateFieldTarget:HTMLInputElement;
+
+  declare readonly durationFieldTarget:HTMLInputElement;
 
   private toggled:boolean = false;
 
@@ -54,11 +63,7 @@ export default class DateFormController extends Controller {
   }
 
   handleFlatpickrDatesChanged() {
-    const activeField:HTMLInputElement = document.getElementsByClassName('op-datepicker-modal--date-field_current')[0] as HTMLInputElement;
-
-    if (activeField.name === 'work_package[duration]') {
-      this.toggleFieldVisibility();
-    }
+    this.checkForToggling();
   }
 
   startDateFieldContainerTargetConnected() {
@@ -83,6 +88,16 @@ export default class DateFormController extends Controller {
     this.dueDateFieldContainerTarget.querySelector('input')?.focus();
   }
 
+  checkForToggling() {
+    const activeField:HTMLInputElement = document.getElementsByClassName('op-datepicker-modal--date-field_current')[0] as HTMLInputElement;
+
+    if (!this.areOtherFieldsEmpty(activeField)) {
+      // When one of the other fields is filled, a value change will result in the missing field being calculated
+      // Thus we have to make sure, that it is visible.
+      this.toggleFieldVisibility();
+    }
+  }
+
   toggleFieldVisibility() {
     this.hideDateButtons();
 
@@ -101,5 +116,13 @@ export default class DateFormController extends Controller {
       el.classList.remove('wp-datepicker-dialog-date-form--button-container_visible');
     });
     document.removeEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+  }
+
+  private areOtherFieldsEmpty(activeField:HTMLInputElement) {
+    const inputs = [this.startDateFieldTarget, this.dueDateFieldTarget, this.durationFieldTarget];
+
+    const selectedIndex = inputs.indexOf(activeField);
+
+    return inputs.every((input, index) => index === selectedIndex || input.value.trim() === '');
   }
 }
