@@ -148,7 +148,7 @@ RSpec.shared_examples "work package relations tab", :js, :with_cuprite do
       end
 
       context "with manage_subtasks permissions" do
-        let(:permissions) { %i(view_work_packages manage_subtasks) }
+        let(:permissions) { %i(view_work_packages manage_subtasks edit_work_packages) }
         let!(:parent) { create(:work_package, project:, subject: "Parent WP") }
         let!(:child) { create(:work_package, project:, subject: "Child WP") }
 
