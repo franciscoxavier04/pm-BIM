@@ -152,7 +152,7 @@ module StorageServerHelpers
       .to_return(status: 207, body: folder1_xml_response, headers: {})
     stub_request(:get, normalize_url("#{storage.host}/ocs/v1.php/apps/integration_openproject/fileinfo/11"))
       .to_return(status: 200, body: folder1_fileinfo_response.to_json, headers: {})
-    stub_request(:get, normalize_url("#{storage.host}/ocs/v1.php/cloud/user")).to_return(status: 200, body: "{}")
+    stub_request(:get, normalize_url("#{storage.host}/ocs/v1.php/cloud/user")).to_return(status: 200, body: File.read("modules/storages/spec/support/payloads/nextcloud_user_query_success.xml"))
     stub_request(
       :delete,
       normalize_url("#{storage.host}/remote.php/dav/files/OpenProject/OpenProject/" \
