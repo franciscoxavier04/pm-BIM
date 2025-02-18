@@ -34,7 +34,11 @@ module Projects
       class RowComponent < ::RowComponent
         delegate :definition, :active?, to: :model
 
-        def subject = render(Primer::Beta::Text.new(color: :muted)) { model.name }
+        def subject
+          render(Primer::Beta::Text.new(color: :muted, classes: "filter-target-visible-text")) do
+            model.name
+          end
+        end
 
         def type = render(Projects::LifeCycleTypeComponent.new(definition))
 
@@ -71,6 +75,15 @@ module Projects
 
         def toggle_aria_label
           I18n.t("projects.settings.life_cycle.step.use_in_project", step: definition.name)
+        end
+
+        def row_attributes
+          {
+            data: {
+              "projects--settings--border-box-filter-target": "searchItem",
+              test_selector: "project-life-cycle-step-#{definition.id}"
+            }
+          }
         end
 
         private

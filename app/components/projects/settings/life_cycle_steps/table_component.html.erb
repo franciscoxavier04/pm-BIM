@@ -27,70 +27,80 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<div class="generic-table--container <%= container_class %>" data-test-selector="<%= test_selector %>">
-  <div class="generic-table--results-container">
-    <table class="generic-table" data-controller="table-highlighting">
-      <colgroup>
-        <% columns.each do %>
-          <col>
-        <% end %>
-      </colgroup>
-      <thead>
-        <tr>
-          <% columns.each do |column| %>
-            <th>
-              <div class="generic-table--sort-header-outer">
-                <div class="generic-table--sort-header">
-                  <span>
-                    <%=
-                      if column == :active
-                        render(Primer::Alpha::ActionMenu.new(menu_id: "menu-#{column}")) do |menu|
-                          helpers.action_button(menu, column, header_caption(column))
-
-                          menu.with_item(
-                            label: t("projects.settings.actions.label_activate_all"),
-                            tag: :a,
-                            href: enable_all_project_settings_life_cycle_steps_path(project_id: project),
-                            "aria-label": t("projects.settings.actions.label_activate_all"),
-                            content_arguments: {
-                              data: { "turbo-method": :post, test_selector: "activate-all-life-cycle-steps" }
-                            }
-                          ) do |item|
-                            item.with_leading_visual_icon(icon: :check)
-                          end
-
-                          menu.with_item(
-                            label: t("projects.settings.actions.label_deactivate_all"),
-                            tag: :a,
-                            href: disable_all_project_settings_life_cycle_steps_path(project_id: project),
-                            "aria-label": t("projects.settings.actions.label_deactivate_all"),
-                            content_arguments: {
-                              data: { "turbo-method": :post, test_selector: "deactivate-all-life-cycle-steps" }
-                            }
-                          ) do |item|
-                            item.with_leading_visual_icon(icon: :x)
-                          end
-                        end
-                      else
-                        header_caption(column)
-                      end
-                    %>
-                  </span>
-                </div>
-              </div>
-            </th>
+<%= render(Projects::Settings::LifeCycleSteps::TableControlsComponent.new) do |_controls| %>
+  <div class="generic-table--container <%= container_class %>" data-test-selector="<%= test_selector %>">
+    <div class="generic-table--results-container">
+      <table class="generic-table" data-controller="table-highlighting">
+        <colgroup>
+          <% columns.each do %>
+            <col>
           <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <% if rows.empty? %>
-          <tr class="generic-table--empty-row">
-            <td colspan="<%= headers.length + 1 %>"><%= empty_row_message %></td>
+        </colgroup>
+        <thead>
+          <tr>
+            <% columns.each do |column| %>
+              <th>
+                <div class="generic-table--sort-header-outer">
+                  <div class="generic-table--sort-header">
+                    <span>
+                      <%=
+                        if column == :active
+                          render(Primer::Alpha::ActionMenu.new(menu_id: "menu-#{column}")) do |menu|
+                            helpers.action_button(menu, column, header_caption(column))
+
+                            menu.with_item(
+                              label: t("projects.settings.actions.label_activate_all"),
+                              tag: :a,
+                              href: enable_all_project_settings_life_cycle_steps_path(project_id: project),
+                              "aria-label": t("projects.settings.actions.label_activate_all"),
+                              content_arguments: {
+                                data: {
+                                  "turbo-method": :post,
+                                  test_selector: "activate-all-life-cycle-steps",
+                                  "projects--settings--border-box-filter-target": "disableWhenFiltering"
+                                }
+                              }
+                            ) do |item|
+                              item.with_leading_visual_icon(icon: :check)
+                            end
+
+                            menu.with_item(
+                              label: t("projects.settings.actions.label_deactivate_all"),
+                              tag: :a,
+                              href: disable_all_project_settings_life_cycle_steps_path(project_id: project),
+                              "aria-label": t("projects.settings.actions.label_deactivate_all"),
+                              content_arguments: {
+                                data: {
+                                  "turbo-method": :post,
+                                  test_selector: "deactivate-all-life-cycle-steps",
+                                  "projects--settings--border-box-filter-target": "disableWhenFiltering"
+                                }
+                              }
+                            ) do |item|
+                              item.with_leading_visual_icon(icon: :x)
+                            end
+                          end
+                        else
+                          header_caption(column)
+                        end
+                      %>
+                    </span>
+                  </div>
+                </div>
+              </th>
+            <% end %>
           </tr>
-        <% else %>
-          <%= render_collection rows %>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% if rows.empty? %>
+            <tr class="generic-table--empty-row">
+              <td colspan="<%= headers.length + 1 %>"><%= empty_row_message %></td>
+            </tr>
+          <% else %>
+            <%= render_collection rows %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
+<% end %>

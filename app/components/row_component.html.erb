@@ -27,7 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= content_tag :tr, id: row_css_id, class: row_css_class do %>
+<%= content_tag :tr, row_attributes do %>
   <% columns.each do |column| %>
     <td class="<%= column_css_class(column) %>">
       <%= column_value(column) %>

@@ -32,38 +32,33 @@ import FilterListController from '../../filter/filter-list.controller';
 
 export default class extends FilterListController {
   static targets = [
+    'disableWhenFiltering',
     'hideWhenFiltering',
   ];
 
+  declare readonly disableWhenFilteringTargets:HTMLInputElement[];
   declare readonly hideWhenFilteringTargets:HTMLInputElement[];
 
   filterLists() {
     const query = this.filterTarget.value.toLowerCase();
 
-    if (query.length > 0) {
-      this.hideBulkActionContainers();
-    } else {
-      this.showBulkActionContainers();
-    }
+    this.toggleWhenFiltering(query.length > 0);
 
     super.filterLists();
   }
 
   resetFilterViaClearButton() {
-    this.showBulkActionContainers();
+    this.toggleWhenFiltering(false);
 
     super.resetFilterViaClearButton();
   }
 
-  hideBulkActionContainers() {
-    this.hideWhenFilteringTargets.forEach((item) => {
-      this.setVisibility(item, false);
+  toggleWhenFiltering(filtering:boolean) {
+    this.disableWhenFilteringTargets.forEach((item) => {
+      item.setAttribute('aria-disabled', filtering.toString());
     });
-  }
-
-  showBulkActionContainers() {
     this.hideWhenFilteringTargets.forEach((item) => {
-      this.setVisibility(item, true);
+      this.setVisibility(item, !filtering);
     });
   }
 }

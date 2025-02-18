@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,55 +26,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-##
-# Abstract view component. Subclass this for a concrete table row.
-class RowComponent < ApplicationComponent
-  attr_reader :table
+module Projects
+  module Settings
+    module LifeCycleSteps
+      class TableControlsComponent < ApplicationComponent
+        include OpPrimer::ComponentHelpers
 
-  def initialize(row:, table:, **)
-    super(row, **)
-    @table = table
-  end
+        def wrapper_data_attributes
+          {
+            controller: "projects--settings--border-box-filter",
+            "application-target": "dynamic",
+            "projects--settings--border-box-filter-clear-button-id-value": clear_button_id
+          }
+        end
 
-  delegate :columns, :button_column?, to: :table
-
-  def row
-    model
-  end
-
-  def column_value(column)
-    send(column)
-  end
-
-  def column_css_class(column)
-    column_css_classes[column]
-  end
-
-  def column_css_classes
-    @column_css_classes ||= columns.to_h { |name| [name, name] }
-  end
-
-  def button_links
-    []
-  end
-
-  def row_attributes
-    { id: row_css_id, class: row_css_class }
-  end
-
-  def row_css_id
-    nil
-  end
-
-  def row_css_class
-    nil
-  end
-
-  def checkmark(condition)
-    if condition
-      helpers.op_icon "icon icon-checkmark"
+        def clear_button_id
+          "border-box-filter-clear-button"
+        end
+      end
     end
   end
 end
