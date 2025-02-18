@@ -95,12 +95,7 @@ export abstract class DialogPreviewController extends Controller {
           callbacks: {
             beforeNodeMorphed: (oldNode:Element) => {
               // In case the element is an OpenProject custom dom element, morphing is prevented.
-              if (oldNode.tagName?.startsWith('OPCE-')) {
-                return false;
-              }
-
-              // In case we manually want to prevent morphing
-              return typeof (oldNode.getAttribute) !== typeof (Function) || !oldNode.getAttribute('data-skip-morphing');
+              return !oldNode.tagName?.startsWith('OPCE-');
             },
           },
         });

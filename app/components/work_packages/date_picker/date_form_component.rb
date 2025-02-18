@@ -38,12 +38,14 @@ module WorkPackages
                      schedule_manually:,
                      disabled:,
                      is_milestone:,
-                     focused_field: :start_date)
+                     focused_field: :start_date,
+                     date_mode: nil)
         super()
 
         @work_package = work_package
         @schedule_manually = schedule_manually
         @is_milestone = is_milestone
+        @date_mode = date_mode
         @focused_field = update_focused_field(focused_field)
         @disabled = disabled
       end
@@ -58,7 +60,11 @@ module WorkPackages
       end
 
       def show_text_field?(name)
-        @is_milestone || !@schedule_manually || field_value(name).present? || (name == :due_date && field_value(:start_date).nil?)
+        return true if @is_milestone
+        return true unless @schedule_manually
+
+        (@date_mode.present? && @date_mode == "range") ||
+          field_value(name).present? || (name == :due_date && field_value(:start_date).nil?)
       end
 
       def text_field_options(name:, label:)
@@ -103,10 +109,12 @@ module WorkPackages
       end
 
       def update_focused_field(focused_field)
-        if field_value(:due_date).present? && field_value(:start_date).nil?
-          return :due_date
-        elsif field_value(:start_date).present? && field_value(:due_date).nil?
-          return :start_date
+        if @date_mode.nil? || @date_mode != "range"
+          if field_value(:due_date).present? && field_value(:start_date).nil?
+            return :due_date
+          elsif field_value(:start_date).present? && field_value(:due_date).nil?
+            return :start_date
+          end
         end
 
         case focused_field.to_s.underscore
@@ -148,9 +156,7 @@ module WorkPackages
 
       def default_field_options(name)
         data = { "work-packages--date-picker--preview-target": "fieldInput",
-                 "work-packages--date-picker--date-form-target": "#{name.to_s.camelize(:lower)}Field",
-                 action: "work-packages--date-picker--date-form#checkForToggling " \
-                         "work-packages--date-picker--preview#markFieldAsTouched " \
+                 action: "work-packages--date-picker--preview#markFieldAsTouched " \
                          "focus->work-packages--date-picker--preview#onHighlightField",
                  test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field" }
 
