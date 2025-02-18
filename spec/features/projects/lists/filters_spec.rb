@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2010-2024 the OpenProject GmbH
@@ -454,41 +456,17 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           select_value_id = "#{list_custom_field.column_name}_value"
 
           within(cf_filter) do
-            # Initial filter is a 'single select'
-            expect(cf_filter.find(:select, select_value_id)).not_to be_multiple
-            click_on "Toggle multiselect"
-            # switching to multiselect keeps the current selection
-            expect(cf_filter.find(:select, select_value_id)).to be_multiple
-            expect(cf_filter).to have_select(select_value_id, selected: list_custom_field.possible_values[2].value)
-
-            select list_custom_field.possible_values[3].value, from: select_value_id
+            projects_page.expect_ng_value_label(select_value_id, list_custom_field.possible_values[2].value)
+            projects_page.set_autocomplete_filter list_custom_field.possible_values[3].value, clear: false
           end
           wait_for_reload
 
           cf_filter = page.find("li[data-filter-name='#{list_custom_field.column_name}']")
           within(cf_filter) do
-            # Query has two values for that filter, so it should show a 'multi select'.
-            expect(cf_filter.find(:select, select_value_id)).to be_multiple
-            expect(cf_filter)
-              .to have_select(select_value_id,
-                              selected: [list_custom_field.possible_values[2].value,
-                                         list_custom_field.possible_values[3].value])
-
-            # switching to single select keeps the first selection
-            select list_custom_field.possible_values[1].value, from: select_value_id
-            unselect list_custom_field.possible_values[2].value, from: select_value_id
-
-            click_on "Toggle multiselect"
-            expect(cf_filter.find(:select, select_value_id)).not_to be_multiple
-            expect(cf_filter).to have_select(select_value_id, selected: list_custom_field.possible_values[1].value)
-            expect(cf_filter).to have_no_select(select_value_id, selected: list_custom_field.possible_values[3].value)
-          end
-          wait_for_reload
-
-          cf_filter = page.find("li[data-filter-name='#{list_custom_field.column_name}']")
-          within(cf_filter) do
-            # Query has one value for that filter, so it should show a 'single select'.
-            expect(cf_filter.find(:select, select_value_id)).not_to be_multiple
+            # Query has two values for that filter.
+            projects_page.expect_ng_value_label(select_value_id,
+                                                [list_custom_field.possible_values[2].value,
+                                                 list_custom_field.possible_values[3].value])
           end
 
           # CF date filter work (at least for one operator)
