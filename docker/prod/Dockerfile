@@ -4,8 +4,6 @@ LABEL maintainer="operations@openproject.com"
 
 ARG NODE_VERSION="20.9.0"
 ARG BIM_SUPPORT=true
-ARG CURRENT_PGVERSION="13"
-ARG NEXT_PGVERSION="17"
 ENV USE_JEMALLOC=false
 ENV DEBIAN_FRONTEND=noninteractive
 ENV BUNDLE_JOBS=8
@@ -18,6 +16,8 @@ ENV APP_USER=app
 ENV APP_PATH=/app
 ENV APP_DATA_PATH=/var/openproject/assets
 ENV PGVERSION="13"
+ENV CURRENT_PGVERSION="13"
+ENV NEXT_PGVERSION="17"
 ENV PGBIN="/usr/lib/postgresql/$PGVERSION/bin"
 ENV BUNDLE_WITHOUT="development:test"
 
