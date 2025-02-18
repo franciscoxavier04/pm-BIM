@@ -243,7 +243,7 @@ export class MultiSelectEditFieldComponent extends EditFieldComponent implements
    * For multi-select fields that are of type User, we want to show a hover card when hovering over users in the
    * dropdown. For this to happen we must define a URL for the hover card.
    */
-  protected getHoverCardUrl(item:any) {
+  protected getHoverCardUrl(item:{ id?:string }) {
     if (item && item.id) {
       return this.pathHelperService.userHoverCardPath(item.id);
     }
