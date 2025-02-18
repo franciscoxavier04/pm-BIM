@@ -263,10 +263,18 @@ ru:
       banner_html: >
         В настоящее время вы редактируете шаблон серии совещаний: %{link}. Каждое новое совещание в этой серии будет использовать этот шаблон. Изменения не повлияют на прошлые или уже созданные совещания.
     frequency:
+      x_daily:
+        one: "Every day"
+        few: "Every %{count} days"
+        many: "Every %{count} days"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        few: "Every %{count} weeks"
+        many: "Every %{count} weeks"
+        other: "Every %{count} weeks"
       every_weekday: "Каждый %{day_of_the_week}"
-      daily: "Ежедневно"
       working_days: "Каждый рабочий день"
-      weekly: "Еженедельно"
     end_after:
       never: "никогда"
       specific_date: "после конкретной даты"

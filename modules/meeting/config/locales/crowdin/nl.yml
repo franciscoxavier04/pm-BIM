@@ -259,10 +259,14 @@ nl:
       banner_html: >
         U bewerkt momenteel een sjabloon van een vergaderingsreeks: %{link}. Elke nieuwe vergadering in de serie zal dit sjabloon gebruiken. Wijzigingen hebben geen invloed op al gemaakte vergaderingen.
     frequency:
+      x_daily:
+        one: "Every day"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        other: "Every %{count} weeks"
       every_weekday: "Elke %{day_of_the_week}"
-      daily: "Dagelijks"
       working_days: "Elke werkdag"
-      weekly: "Wekelijks"
     end_after:
       never: "nooit"
       specific_date: "na een specifieke datum"

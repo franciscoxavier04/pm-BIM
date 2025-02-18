@@ -259,10 +259,14 @@ pt-PT:
       banner_html: >
         Está a editar um modelo de uma série de reuniões: %{link}. Cada ocorrência nova de uma reunião na série irá utilizar este modelo. As alterações não irão afetar as reuniões anteriores ou já criadas.
     frequency:
+      x_daily:
+        one: "Every day"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        other: "Every %{count} weeks"
       every_weekday: "A cada %{day_of_the_week}"
-      daily: "Diário"
       working_days: "Todos os dias úteis"
-      weekly: "Semanal"
     end_after:
       never: "nunca"
       specific_date: "após uma data específica"
