@@ -103,7 +103,7 @@ To edit a single meeting within recurring meeting series you have to open it fir
 
 This will open the specific meeting page. You can then edit the meeting by using same functions as for [editing one-time meetings](../one-time-meetings), including adding sections and agenda points, inviting participants, and adding attachments. 
 
-Additionally you also copy a specific meeting series occurrence as a one-time meeting. To do that click the **More ** (three dots) icon and select **Copy as one-time meeting**.
+Additionally you can copy a specific meeting series occurrence as a one-time meeting. To do that click the **More ** (three dots) icon and select **Copy as one-time meeting**.
 
 ![Copy a recurring meeting occurrence as a one-time meeting](openproject_userguide_meetings_copy_recurring_meeting_as_onetime.png)
 
