@@ -95,7 +95,7 @@ module Components
       end
 
       def expect_no_journal_notes(text: nil)
-        wait_for { page }.not_to have_test_selector("op-journal-notes-body", text:)
+        expect(page).not_to have_test_selector("op-journal-notes-body", text:, wait: 10)
       end
 
       def expect_journal_details_header(text: nil, count: nil)
