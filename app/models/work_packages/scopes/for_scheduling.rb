@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -233,7 +235,10 @@ module WorkPackages::Scopes
             LEFT JOIN LATERAL (
               SELECT
                 descendant_hierarchies.ancestor_id from_id,
-                bool_and(COALESCE(descendant_work_packages.schedule_manually, false)) manually
+                bool_and(
+                  COALESCE(descendant_work_packages.schedule_manually, false)
+                  AND (NOT EXISTS (SELECT 1 FROM switching_to_automatic_mode WHERE descendant_work_packages.id = switching_to_automatic_mode.id))
+                ) manually
               FROM work_package_hierarchies descendant_hierarchies
               JOIN work_packages descendant_work_packages
               ON

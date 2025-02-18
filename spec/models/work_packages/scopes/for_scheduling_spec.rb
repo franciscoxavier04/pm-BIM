@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -337,6 +339,28 @@ RSpec.describe WorkPackages::Scopes::ForScheduling, "allowed scope" do
         it "is empty" do
           expect(WorkPackage.for_scheduling([origin]))
             .to be_empty
+        end
+      end
+    end
+
+    context "for a work package with a manually scheduled successor which has a parent" do
+      let!(:existing_work_packages) { [successor, successor_parent] }
+
+      before do
+        successor.update_column(:schedule_manually, true)
+      end
+
+      context "with the successor keeping its manual scheduling" do
+        it "is empty" do
+          expect(WorkPackage.for_scheduling([origin]))
+            .to be_empty
+        end
+      end
+
+      context "with the successor switching to automatic scheduling (like when the relation is created)" do
+        it "consists of the successor and its parent" do
+          expect(WorkPackage.for_scheduling([origin], switching_to_automatic_mode: [successor]))
+            .to contain_exactly(successor, successor_parent)
         end
       end
     end
