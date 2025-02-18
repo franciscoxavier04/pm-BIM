@@ -142,7 +142,8 @@ class WorkPackages::DatePickerController < ApplicationController
     WorkPackages::DatePicker::DialogContentComponent.new(work_package: @work_package,
                                                          schedule_manually:,
                                                          focused_field:,
-                                                         touched_field_map:)
+                                                         touched_field_map:,
+                                                         date_mode:)
   end
 
   def focused_field
@@ -182,6 +183,16 @@ class WorkPackages::DatePickerController < ApplicationController
     find_if_present(params[:schedule_manually]) ||
       find_if_present(params.dig(:work_package, :schedule_manually)) ||
       work_package.schedule_manually
+  end
+
+  def date_mode
+    return params[:date_mode] if params[:date_mode].present?
+
+    if work_package.start_date.nil? || work_package.due_date.nil?
+      "single"
+    else
+      "range"
+    end
   end
 
   def find_if_present(value)

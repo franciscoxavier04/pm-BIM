@@ -15,7 +15,6 @@ import FlashController from './controllers/flash.controller';
 import OpProjectsZenModeController from './controllers/dynamic/projects/zen-mode.controller';
 import PasswordConfirmationDialogController from './controllers/password-confirmation-dialog.controller';
 import PreviewController from './controllers/dynamic/work-packages/date-picker/preview.controller';
-import DateFormController from './controllers/dynamic/work-packages/date-picker/date-form.controller';
 import KeepScrollPositionController from './controllers/keep-scroll-position.controller';
 import PatternInputController from './controllers/pattern-input.controller';
 import HoverCardTriggerController from './controllers/hover-card-trigger.controller';
@@ -50,6 +49,5 @@ instance.register('show-when-value-selected', OpShowWhenValueSelectedController)
 instance.register('table-highlighting', TableHighlightingController);
 instance.register('projects-zen-mode', OpProjectsZenModeController);
 instance.register('work-packages--date-picker--preview', PreviewController);
-instance.register('work-packages--date-picker--date-form', DateFormController);
 instance.register('keep-scroll-position', KeepScrollPositionController);
 instance.register('pattern-input', PatternInputController);

@@ -61,6 +61,7 @@
                                                                  schedule_manually:,
                                                                  is_milestone: milestone?,
                                                                  focused_field:,
+                                                                 date_mode:,
                                                                  disabled: disabled?))
         end
         body.with_row do
@@ -68,8 +69,7 @@
                                                                 work_package:,
                                                                 is_milestone: milestone?,
                                                                 schedule_manually:,
-                                                                touched_field_map:,
-                                                                ))
+                                                                touched_field_map:))
         end
 
         body.with_row(mb: 3) do
