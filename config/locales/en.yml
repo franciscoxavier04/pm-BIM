@@ -1362,6 +1362,10 @@ en:
         work_package:
           is_not_a_valid_target_for_time_entries: "Work package #%{id} is not a valid target for reassigning the time entries."
           attributes:
+            id:
+              format: "%{message}"
+              lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              blank: "ID can't be blank."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -1410,7 +1414,6 @@ en:
               must_be_empty_when_work_is_empty_and_percent_complete_is_100p: >-
                 must be empty when Work is empty and % Complete is 100%.
           readonly_status: "The work package is in a readonly status so its attributes cannot be changed."
-          lack_of_permission: "Cannot add child because work package is read-only."
         type:
           attributes:
             attribute_groups:
