@@ -47,7 +47,7 @@ See COPYRIGHT and LICENSE files for more details.
                   font_weight: :bold,
                   color: :subtle,
                   "aria-label": t("projects.settings.actions.label_enable_all"),
-                  data: { "turbo-method": :put, "turbo-stream": true }
+                  data: { "turbo-method": :put, "turbo-stream": true, test_selector: "enable-all-pdf-export-templates" }
                 )
               ) do |button|
                 button.with_leading_visual_icon(icon: "check-circle", color: :subtle)
@@ -63,7 +63,7 @@ See COPYRIGHT and LICENSE files for more details.
                   font_weight: :bold,
                   color: :subtle,
                   "aria-label": t("projects.settings.actions.label_disable_all"),
-                  data: { "turbo-method": :put, "turbo-stream": true }
+                  data: { "turbo-method": :put, "turbo-stream": true, test_selector: "disable-all-pdf-export-templates" }
                 )
               ) do |button|
                 button.with_leading_visual_icon(icon: "x-circle", color: :subtle)

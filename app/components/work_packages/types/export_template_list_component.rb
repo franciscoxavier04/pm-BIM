@@ -52,7 +52,8 @@ module WorkPackages
         {
           "is-drag-and-drop-target": true,
           "target-container-accessor": "& > ul",
-          "target-allowed-drag-type": "template"
+          "target-allowed-drag-type": "template",
+          test_selector: "pdf-export-template-rows"
         }
       end
 
@@ -60,7 +61,8 @@ module WorkPackages
         {
           "draggable-id": template.id,
           "draggable-type": "template",
-          "drop-url": drop_type_pdf_export_template_path(type_id: @type.id, id: template.id)
+          "drop-url": drop_type_pdf_export_template_path(type_id: @type.id, id: template.id),
+          test_selector: "pdf-export-template-row-#{template.id}"
         }
       end
     end

@@ -40,12 +40,6 @@ module WorkPackages
         @template = template
         @type = type
       end
-
-      private
-
-      def active_in_type?
-        @template.enabled
-      end
     end
   end
 end
