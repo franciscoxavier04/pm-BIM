@@ -69,7 +69,7 @@ RSpec.describe "Work package revision component", :js, :with_cuprite do
       expect(page).to have_test_selector("op-revision-notes-body", text: revision_message)
 
       # Verify revision is shown when filter is set to only changes
-      activity_tab.filter_journals(:only_changes)
+      activity_tab.filter_journals(:only_changes, wait_delay: 1)
       expect(page).to have_test_selector("op-revision-notes-body", text: revision_message)
 
       # Verify revision is not shown when filter is set to only comments

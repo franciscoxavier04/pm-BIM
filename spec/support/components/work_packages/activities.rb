@@ -301,7 +301,8 @@ module Components
         end
       end
 
-      def filter_journals(filter, default_sorting: User.current.preference&.comments_sorting || "desc")
+      def filter_journals(filter, default_sorting: User.current.preference&.comments_sorting || "desc",
+                          wait_delay: RSpec.configuration.wait_delay)
         page.find_test_selector("op-wp-journals-filter-menu").click
 
         case filter
@@ -313,7 +314,16 @@ module Components
           page.find_test_selector("op-wp-journals-filter-show-only-changes").click
         end
 
-        wait_for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
+        if wait_delay > 1
+          warn "OpenProject/NoSleepInFeatureSpecs: Avoid using `sleep` greater than 1 second in feature specs. " \
+               "It will reduce overall performance of the test suite. " \
+               "Consider using Capybara `have_*` matchers or rspec-wait `wait_for` method instead."
+        end
+
+        # Ensure the journals are loaded on the page
+        # NB: The delay is necessary in cases where filter_journals is called multiple times in a row
+        #    to ensure the previous filter has been applied before the next one is applied
+        wait(delay: wait_delay).for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
       end
 
       def set_journal_sorting(sorting, default_filter: :all)
