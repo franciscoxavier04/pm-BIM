@@ -281,12 +281,9 @@ module Pages
           elsif autocomplete_filter?(selected_filter)
             select(human_operator, from: "operator")
             set_autocomplete_filter(values)
-          elsif date_filter?(selected_filter) && human_operator == "on"
+          elsif date_filter?(selected_filter) || date_time_filter?(selected_filter)
             select(human_operator, from: "operator")
             set_date_filter(human_operator, values, send_keys:)
-          elsif /cf_\d+/.match?(name)
-            select(human_operator, from: "operator")
-            set_custom_field_filter(selected_filter, human_operator, values)
           end
         end
       end
@@ -664,6 +661,10 @@ module Pages
 
       def date_filter?(filter)
         filter[:"data-filter-type"] == "date"
+      end
+
+      def date_time_filter?(filter)
+        filter[:"data-filter-type"] == "datetime_past"
       end
 
       def submenu
