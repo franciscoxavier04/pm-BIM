@@ -80,9 +80,9 @@ module Pages
     end
 
     def wait_for_activity_tab
-      expect(page).to have_test_selector("op-wp-activity-tab", wait: 10)
-      # wait for stimulus js component to be mounted
-      expect(page).to have_css('[data-test-selector="op-wp-activity-tab"][data-stimulus-controller-connected="true"]')
+      wait_for { page }.to have_test_selector("op-wp-activity-tab")
+      # ensure stimulus controller is mounted
+      expect(page).to have_css('[data-stimulus-controller-connected="true"]')
     end
 
     def expect_any_active_inline_edit_field
