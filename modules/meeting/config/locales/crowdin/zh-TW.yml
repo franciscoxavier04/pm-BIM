@@ -53,6 +53,8 @@ zh-TW:
         frequency: "頻率"
         interval: "間隔"
         start_date: "開始於"
+        start_time: "開始時間"
+        start_time_hour: "開始時間"
         end_after: "系列會議結束"
         iterations: "出現次數"
     errors:
@@ -116,7 +118,7 @@ zh-TW:
   label_template: "模板"
   label_recurring_meeting_view: "檢視會議系列"
   label_recurring_meeting_create: "開啟"
-  label_recurring_meeting_copy: "Copy as one-time"
+  label_recurring_meeting_copy: "一次性複製"
   label_recurring_meeting_cancel: "取消此事件"
   label_recurring_meeting_delete: "刪除此事件"
   label_recurring_meeting_restore: "恢復此事件"
@@ -219,11 +221,11 @@ zh-TW:
         confirmation_message_html: >
           此動作無法還原。請小心操作。
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "取消會議事件"
+        heading: "取消此會議事件？"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          任何不在範本中的會議資訊將會遺失。 要繼續嗎？
+        confirm_button: "取消事件"
     blankslate:
       title: "沒有可顯示的會議"
       desc: "沒有符合篩選條件的會議。"
@@ -255,10 +257,12 @@ zh-TW:
       banner_html: >
         您目前正在編輯會議系列的範本： %{link}。系列會議中的每次新會議都會使用此範本。變更不會影響過去或已建立的會議。
     frequency:
+      x_daily:
+        other: "Every %{count} days"
+      x_weekly:
+        other: "Every %{count} weeks"
       every_weekday: "每個 %{day_of_the_week}"
-      daily: "每日"
       working_days: "每個工作天"
-      weekly: "每週"
     end_after:
       never: "永不"
       specific_date: "特定日期之後"

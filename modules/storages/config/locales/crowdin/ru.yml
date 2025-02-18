@@ -74,7 +74,7 @@ ru:
         confirmation_text: Пожалуйста, подтвердите, что Вы понимаете и хотите удалить это файловое хранилище из данного проекта
         heading_text: Удалить проект из %{storage}
         text: Это действие необратимо и удалит все ссылки из пакетов работ этого проекта на файлы и папки этого хранилища.
-        title: Remove project from storage
+        title: Удалить проект из хранилища
       label: Удалить проект
   services:
     attributes:
@@ -199,11 +199,11 @@ ru:
         manual_management_description: Создавайте и управляйте папками для каждого проекта вручную. Вам нужно будет вручную обеспечить доступ соответствующим пользователям.
         setup_incomplete: Выберите тип управления доступом пользователя и созданием папок.
         subtitle: Управление доступом
-      access_management_section: Access and project folders
+      access_management_section: Доступ и папки проекта
       automatically_managed_folders: Автоматически управляемые папки
       general_information: Информация общего характера
       nextcloud_oauth: Nextcloud OAuth
-      oauth_configuration: OAuth configuration
+      oauth_configuration: Конфигурация OAuth
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Папки проекта
@@ -222,8 +222,8 @@ ru:
         host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
         missing_dependencies: 'Для файлового хранилища отсутствует необходимая зависимость. Пожалуйста, добавьте следующую зависимость: %{dependency}.'
         not_configured: Соединение не удалось подтвердить. Пожалуйста, сначала завершите настройку.
-        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
-        oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
+        oidc_audience_missing: У хранилища не определена аудитория. Это необходимо для интеграции OpenID Connect.
+        oidc_non_provisioned_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect. Пожалуйста, повторите проверку пользователя.
         placeholder: Проверьте подключение к серверу.
         subtitle: Проверка соединения
         tenant_id_wrong: Настроенный идентификатор каталога недействителен. Пожалуйста, проверьте конфигурацию.

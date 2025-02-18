@@ -54,6 +54,8 @@ de:
         frequency: "Häufigkeit"
         interval: "Intervall"
         start_date: "Started am"
+        start_time: "Startdatum"
+        start_time_hour: "Uhrzeit"
         end_after: "Ende der Terminserie"
         iterations: "Ereignisse"
     errors:
@@ -224,8 +226,8 @@ de:
         title: "Wiederkehrende Besprechung absagen"
         heading: "Dieses Ereignis absagen?"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          Sämtliche Inhalte der Besprechung, die nicht aus der Vorlage entstammen, werden gelöscht und verloren werden. Möchten Sie fortfahren?
+        confirm_button: "Besprechung absagen"
     blankslate:
       title: "Keine Besprechungen anzuzeigen"
       desc: "Es gibt keine Besprechungen, die die Kriterien des aktiven Filters erfüllen."
@@ -246,7 +248,7 @@ de:
       first_created: >
         Die erste Besprechung wurde erfolgreich aus der Vorlage erstellt. Weitere werden automatisch zu dem Zeitpunkt erstellt, wenn die vorhergehende Besprechung startet.
     template:
-      button_finalize: "Open first meeting"
+      button_finalize: "Erste Besprechung öffnen"
       blank_title: "Die Vorlage für die wiederkehrenden Besprechungen ist leer"
       description: >
         Diese Vorlage wird immer dann verwendet, wenn neue Besprechungen der Terminserie erstellt werden. Sie können zu dieser Vorlage Tagesordnungspunkte, Teilnehmer und Anhänge hinzufügen.
@@ -257,10 +259,14 @@ de:
       banner_html: >
         Sie bearbeiten gerade eine Vorlage einer Terminserie: %{link}. Jede neue Besprechung der Serie kopiert diese Vorlage. Änderungen wirken sich nicht auf frühere oder bereits erstellte Besprechungen aus.
     frequency:
+      x_daily:
+        one: "Every day"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        other: "Every %{count} weeks"
       every_weekday: "Jeden %{day_of_the_week}"
-      daily: "Täglich"
       working_days: "An Arbeitstagen"
-      weekly: "Wöchentlich"
     end_after:
       never: "nie"
       specific_date: "nach einem bestimmten Datum"

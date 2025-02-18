@@ -118,6 +118,25 @@ RSpec.describe "Relations children tab", :js, :with_cuprite do
         relations_tab.expect_no_new_relation_type("New child")
       end
     end
+
+    context "in status-based progress calculation mode (bug #61551)",
+            with_settings: { work_package_done_ratio: "status" } do
+      it "can add a new child" do
+        wp_page.visit_tab!("relations")
+        relations_tab.select_relation_type "New child"
+
+        create_dialog.select_type "Task"
+        create_dialog.set_subject "Hello there"
+        create_dialog.submit
+
+        wait_for_network_idle
+
+        page.within("#work-package-relations-tab-content") do
+          expect(page).to have_content("Hello there")
+          expect(page).to have_content("TASK")
+        end
+      end
+    end
   end
 
   context "without permissions to add children" do

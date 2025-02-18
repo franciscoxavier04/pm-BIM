@@ -134,10 +134,6 @@ export class WorkPackageSplitViewComponent extends WorkPackageSingleViewBase imp
     this.recentItemsService.add(wpId);
   }
 
-  get shouldFocus():boolean {
-    return this.$state.params.focus === true;
-  }
-
   get activeTabComponent():Type<TabComponent>|undefined {
     return this
       .wpTabs
