@@ -890,7 +890,7 @@ de:
         timeline_labels: "Timeline-Beschriftungen"
       relation:
         lag: "Verzögerung"
-        from: "Related work package"
+        from: "Verknüpftes Arbeitspaket"
         to: "Zugehöriges Arbeitspaket"
       reminder:
         remind_at_date: "Datum"
@@ -1215,11 +1215,11 @@ de:
             circular_dependency: "Die Beziehung erzeugt eine zirkuläre Abhängigkeit."
           attributes:
             to_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "nicht gefunden oder nicht sichtbar."
+              error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
             from_id:
-              error_not_found: "not found or not visible."
-              error_readonly: "cannot be changed for existing relations."
+              error_not_found: "nicht gefunden oder nicht sichtbar."
+              error_readonly: "kann für bestehende Beziehungen nicht geändert werden."
             lag:
               greater_than_or_equal_to:
                 zero: "darf nicht negativ sein."
@@ -3742,7 +3742,7 @@ de:
   text_unallowed_characters: "Nicht erlaubte Zeichen"
   text_user_invited: Der Nutzer ist eingeladen worden und wartet auf Registrierung.
   text_user_wrote: "%{value} schrieb:"
-  text_wrote: "wrote"
+  text_wrote: "schrieb"
   text_warn_on_leaving_unsaved: "Das Arbeitspaket enthält ungespeicherten Text, der verloren geht wenn Sie die Seite verlassen."
   text_what_did_you_change_click_to_add_comment: "Was haben Sie geändert? Klicken, um einen Kommentar hinzufügen"
   text_wiki_destroy_confirmation: "Sind Sie sicher, dass Sie dieses Wiki mit sämtlichem Inhalt löschen möchten?"

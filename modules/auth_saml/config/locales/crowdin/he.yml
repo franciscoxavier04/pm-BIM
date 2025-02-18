@@ -2,8 +2,8 @@ he:
   activemodel:
     attributes:
       saml/provider:
-        display_name: Name
-        identifier: Identifier
+        display_name: שם
+        identifier: מזהה
         secret: Secret
         scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL

@@ -149,7 +149,7 @@ tr:
             set_folders_permissions:
               permission_not_set: could not set permissions on %{path}.
           error: An unexpected error occurred. Please ensure that OneDrive/SharePoint is reachable and check OpenProject worker logs for more information
-          not_allowed: OpenProject wasn't allowed to access your OneDrive drive. Please check the permissions set on the Azure Application.
+          not_allowed: OpenProject'in OneDrive sürücünüze erişmesine izin verilmedi. Lütfen Azure Uygulamasında ayarlanan izinleri kontrol edin.
           unauthorized: OpenProject OneDrive ile eşitlenemedi. Lütfen depolama alanınızı ve Azure Uygulaması yapılandırmanızı kontrol edin.
           user_does_not_exist: "%{user} does not exist in Nextcloud."
         upload_link_service:
@@ -157,24 +157,24 @@ tr:
   storages:
     buttons:
       complete_without_setup: Complete without it
-      done_complete_setup: Done, complete setup
-      done_continue: Done, continue
-      open_storage: Open file storage
+      done_complete_setup: Bitti, kurulumu tamamlayın
+      done_continue: Bitti, devam et
+      open_storage: Dosya depolamayı aç
       replace_oauth_application: OpenProject OAuth'u değiştirin
       replace_oauth_client: '%{provider_type} OAuth''u değiştirin'
-      save_and_continue: Save and continue
+      save_and_continue: Kaydet ve devam et
       select_folder: Klasör seç
     configuration_checks:
       oauth_client_incomplete:
-        nextcloud: Allow OpenProject to access Nextcloud data using OAuth.
-        one_drive: Allow OpenProject to access Azure data using OAuth to connect OneDrive/Sharepoint.
+        nextcloud: OpenProject'in OAuth kullanarak Nextcloud verilerine erişmesine izin verin.
+        one_drive: OpenProject'in OneDrive/Sharepoint'e bağlanmak için OAuth kullanarak Azure verilerine erişmesine izin verin.
       redirect_uri_incomplete:
-        one_drive: Complete the setup with the correct URI redirection.
+        one_drive: Doğru adres yönlendirmesi ile kurulumu tamamlayın.
     confirm_replace_oauth_application: This action will reset the current OAuth credentials. After confirming you will have to reenter the credentials at the storage provider and all remote users will have to authorize against OpenProject again. Are you sure you want to proceed?
     confirm_replace_oauth_client: This action will reset the current OAuth credentials. After confirming you will have to enter new credentials from the storage provider and all users will have to authorize against %{provider_type} again. Are you sure you want to proceed?
     delete_warning:
-      input_delete_confirmation: Enter the file storage name %{file_storage} to confirm deletion.
-      irreversible_notice: Deleting a file storage is an irreversible action.
+      input_delete_confirmation: Silme işlemini onaylamak için dosya depolama adını %{file_storage} girin.
+      irreversible_notice: Bir dosya deposunun silinmesi geri döndürülemez bir eylemdir.
       project_storage: 'Are you sure you want to delete %{file_storage} from this project? To confirm this action please introduce the storage name in the field below, this will:'
       project_storage_delete_result_1: Remove all links from work packages of this project to files and folders of that storage.
       project_storage_delete_result_2: In case this storage has an automatically managed project folder, this and its files will be deleted forever.
@@ -184,12 +184,12 @@ tr:
       storage_delete_result_3: In case this storage has automatically managed project folders, those and their contained files will be deleted forever.
     dependencies:
       nextcloud:
-        group_folders_app: Group folders
+        group_folders_app: Grup klasörleri
         integration_app: Integration OpenProject
     enabled_in_projects:
       setup_incomplete_description: This storage has an incomplete setup. Please, complete the setup before enabling it in multiple projects.
       setup_incomplete_header: Storage setup incomplete
-    error_invalid_provider_type: Please select a valid storage provider.
+    error_invalid_provider_type: Lütfen geçerli bir depolama sağlayıcısı seçin.
     file_storage_view:
       access_management:
         automatic_management: Automatically managed access and folders
@@ -198,21 +198,21 @@ tr:
         manual_management: Elle yönetilen erişim ve klasörler
         manual_management_description: Create and manage folders per project manually on your own. You will need to manually ensure relevant users have access.
         setup_incomplete: Select the type of management of user access and folder creation.
-        subtitle: Access management
-      access_management_section: Access and project folders
-      automatically_managed_folders: Automatically managed folders
-      general_information: General information
+        subtitle: Erişim yönetimi
+      access_management_section: Erişim ve proje klasörleri
+      automatically_managed_folders: Otomatik olarak yönetilen klasörler
+      general_information: Genel bilgi
       nextcloud_oauth: Nextcloud OAuth
-      oauth_configuration: OAuth configuration
+      oauth_configuration: OAuth yapılandırması
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
-      project_folders: Project folders
+      project_folders: Proje klasörleri
       redirect_uri: Yönlendirme URL'si
-      storage_provider: Storage provider
+      storage_provider: Depolama sağlayıcısı
     health:
-      checked: Last checked %{datetime}
+      checked: Son kontrol %{datetime}
       connection_validation:
-        action: Recheck connection
+        action: Bağlantıyı tekrar kontrol edin
         app_version_mismatch: Entegrasyon OpenProject uygulama sürümü desteklenmiyor. Lütfen Nextcloud sunucunuzu güncelleyin.
         client_id_wrong: The configured OAuth 2 client id is invalid. Please check the configuration.
         client_secret_wrong: The configured OAuth 2 client secret is invalid. Please check the configuration.
@@ -224,7 +224,7 @@ tr:
         not_configured: The connection could not be validated. Please finish configuration first.
         oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
-        placeholder: Check your connection against the server.
+        placeholder: Sunucuyla olan bağlantıyı kontrol edin.
         subtitle: Connection validation
         tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         unexpected_content:
@@ -242,11 +242,11 @@ tr:
       title: Sağlık durumu
     health_email_notifications:
       description_subscribed: Tüm yöneticiler bu depolama alanı için sistem durumu e-posta bildirimleri alır.
-      description_unsubscribed: Health status email notifications for this storage have been turned off for all administrators.
+      description_unsubscribed: Bu depolama alanı için sağlık durumu e-posta bildirimleri tüm yöneticiler için kapatıldı.
       error_could_not_be_saved: Email notification settings could not be saved. Please try again.
       subscribe: Abone ol
       title: E-posta bildirimleri
-      unsubscribe: Unsubscribe
+      unsubscribe: Aboneliği iptal et
     help_texts:
       project_folder: The project folder is the default folder for file uploads for this project. Users can nevertheless still upload files to other locations.
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.
@@ -258,7 +258,7 @@ tr:
       host: 'Lütfen https dahil olmak üzere depolama alanınızın ana bilgisayar adresini ekleyin:'
       managed_project_folders_application_password_caption: 'Enable automatic managed folders by copying this value from: %{provider_type_link}.'
       name: Kullanıcıların birden fazla depolama alanı arasında ayrım yapabilmesi için depolama alanınıza bir ad verin.
-      new_storage: Read our documentation on <a target='_blank' href='%{provider_link}'>setting up a %{provider_name} file storage</a> integration for more information.
+      new_storage: Daha fazla bilgi için <a target='_blank' href='%{provider_link}'>%{provider_name} dosya depolama entegrasyonu kurma</a> hakkındaki belgelerimizi okuyun.
       nextcloud:
         application_link_text: application “Integration OpenProject”
         integration: Nextcloud Yönetimi / OpenProject
@@ -305,7 +305,7 @@ tr:
       application_password: Application password
       automatically_managed_folders: Otomatik olarak yönetilen klasörler
     label_name: İsim
-    label_new_file_storage: New %{provider} storage
+    label_new_file_storage: Yeni %{provider} depolama
     label_new_storage: Yeni depolama
     label_no_selected_folder: Seçili klasör yok
     label_no_specific_folder: Belirli bir klasör yok
@@ -313,7 +313,7 @@ tr:
     label_openproject_oauth_application_id: OpenProject OAuth Client ID
     label_openproject_oauth_application_secret: OpenProject OAuth Client Secret
     label_project_folder: Proje klasörü
-    label_provider: Provider
+    label_provider: Sağlayıcı
     label_redirect_uri: Yönlendirme URL'si
     label_show_storage_redirect_uri: Show redirect URI
     label_status: Durum
@@ -326,18 +326,18 @@ tr:
     members_no_results: No members to display.
     no_results: Henüz ayarlanmış depolama alanı yok.
     oauth_access_granted_modal:
-      access_granted: Access granted
+      access_granted: Erişim izni verildi
       project_settings:
-        access_granted_screen_reader: Access granted. You are now ready to use %{storage}
-        storage_ready: You are now ready to use %{storage}
+        access_granted_screen_reader: Erişim izni verildi. Artık %{storage} depolamasını kullanmaya hazırsınız
+        storage_ready: Artık %{storage} depolamasını kullanmaya hazırsınız
       storage_admin:
-        access_granted_screen_reader: Access granted. You are now ready to add projects to %{storage}
-        storage_ready: You are now ready to add projects to %{storage}
+        access_granted_screen_reader: Erişim izni verildi. Artık %{storage} depolamasına proje eklemeye hazırsınız
+        storage_ready: Artık %{storage} depolamasına proje eklemeye hazırsınız
     oauth_grant_nudge_modal:
       cancel_button_label: Daha sonra yapacağım
-      heading: Login to %{provider_type} required
+      heading: '%{provider_type} adresine giriş gerekli'
       login_button_aria_label: Login to %{storage}
-      login_button_label: "%{provider_type} log in"
+      login_button_label: "%{provider_type} sağlayıcısına giriş yap"
       project_settings:
         description: To get access to the project folder you need to login to %{storage}.
       requesting_access_to: Requesting access to %{storage}
@@ -356,12 +356,12 @@ tr:
     page_titles:
       file_storages:
         delete: Delete file storage
-        subtitle: Add an external file storage in order to upload, link and manage files in work packages.
+        subtitle: İş paketlerindeki dosyaları yüklemek, bağlamak ve yönetmek için harici bir dosya depolama alanı ekleyin.
       managed_project_folders:
         subtitle: |-
-          Let OpenProject create folders per project automatically. This is recommended as it ensures that every team
-          member always has the correct access permissions.
-        subtitle_short: Let OpenProject create folders per project automatically.
+          OpenProject'in her proje için klasörleri otomatik olarak oluşturmasına izin verin. Bu, her ekip
+          üyesinin her zaman doğru erişim izinlerine sahip olmasını sağladığı için önerilir.
+        subtitle_short: OpenProject'in her proje için otomatik olarak klasör oluşturmasına izin verin.
         title: Automatically managed project folders
       project_settings:
         delete: Dosya depolama alanını sil

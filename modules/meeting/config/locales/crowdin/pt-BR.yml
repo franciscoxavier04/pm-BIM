@@ -54,6 +54,8 @@ pt-BR:
         frequency: "Frequência"
         interval: "Intervalo"
         start_date: "Começa em"
+        start_time: "Hora de início"
+        start_time_hour: "Hora de início"
         end_after: "Série de reuniões termina"
         iterations: "Ocorrências"
     errors:
@@ -257,10 +259,14 @@ pt-BR:
       banner_html: >
         Atualmente, você está editando um modelo de série de reuniões: %{link}. Todas as novas ocorrências de reuniões na série usarão este modelo. Alterações não afetarão reuniões passadas ou já agendadas.
     frequency:
+      x_daily:
+        one: "Every day"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        other: "Every %{count} weeks"
       every_weekday: "Todos os %{day_of_the_week}"
-      daily: "Diariamente"
       working_days: "Todos os dias úteis"
-      weekly: "Semanalmente"
     end_after:
       never: "nunca"
       specific_date: "após uma data específica"

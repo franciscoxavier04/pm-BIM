@@ -469,9 +469,9 @@ tr:
       cannot_remove_inherited: "The work packages shares shared via groups cannot be removed."
       cannot_remove_inherited_with_role: "The work packages shares with role %{shared_role_name} are shared via groups and cannot be removed."
       cannot_remove_inherited_note_admin_html: "You can either revoke the share to the group or remove this specific member from the group in the %{administration_settings_link}."
-      cannot_remove_inherited_note_non_admin: "You can either revoke the share to the group or contact your administrator to remove this specific member from the group."
-      will_revoke_directly_granted_access: "This action will revoke their access to all of them, but the work packages shared with a group."
-      will_revoke_access_to_all: "This action will revoke their access to all of them."
+      cannot_remove_inherited_note_non_admin: "Grup paylaşımını iptal edebilir ya da bu üyeyi gruptan çıkarmak için yöneticinizle iletişime geçebilirsiniz."
+      will_revoke_directly_granted_access: "Bu eylem, bir grupla paylaşılan iş paketleri hariç hepsine erişimlerini iptal edecektir."
+      will_revoke_access_to_all: "Bu eylem, hepsine erişimlerini iptal edecektir."
   my:
     access_token:
       create_dialog:
@@ -520,7 +520,7 @@ tr:
       member_in_these_groups: "Bu kullanıcı şu anda aşağıdaki grupların bir üyesidir:"
       no_results_title_text: Bu kullanıcı şu anda hiçbir gruba üye değil.
       summary_with_more: Member of %{names} and %{count_link}.
-      more: "%{count} more"
+      more: "%{count} tane daha"
       summary: '%{names} üyesi.'
     memberships:
       no_results_title_text: Bu kullanıcı şuan için bir proje üyesi değil.
@@ -723,10 +723,10 @@ tr:
       label_includes_singular: "includes"
       label_includes_plural: "includes"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "bir parçasıdır"
+      label_partof_plural: "bir parçasıdır"
+      label_part_of_singular: "bir parçasıdır"
+      label_part_of_plural: "bir parçasıdır"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
       label_requires_singular: "requires"
@@ -1171,7 +1171,7 @@ tr:
             base:
               end_date_not_allowed: "Cannot assign end date to a Project::Gate"
             type:
-              type_and_class_name_mismatch: "must be a Project::Gate"
+              type_and_class_name_mismatch: "bir Project::Gate olmalıdır"
             date:
               non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
         project/stage:
@@ -3553,7 +3553,7 @@ tr:
         clamav_socket_html: Enter the socket to the clamd daemon, e.g., %{example}
         clamav_host_html: Enter the hostname and port to the clamd daemon separated by colon. e.g., %{example}
         description_html: >
-          Select the mode in which the antivirus scanner integration should operate. <br/> <ul> <li><strong>%{disabled_option}</strong>: Uploaded files are not scanned for viruses.</li> <li><strong>%{socket_option}</strong>: You have set up ClamAV on the same server as OpenProject and the scan daemon clamd is running in the background</li> <li><strong>%{host_option}</strong>: You are streaming files to an external virus scanning host.</li> </ul>
+          Antivirüs tarayıcı entegrasyonunun çalışması gereken modu seçin. <br/> <ul> <li><strong>%{disabled_option}</strong>: Yüklenen dosyalar virüslere karşı taranmaz.</li> <li><strong>%{socket_option}</strong>: ClamAV'ı OpenProject ile aynı sunucuya kurdunuz ve tarama servisi clamd arka planda çalışıyor</li> <li><strong>%{host_option}</strong>: Dosyaları harici bir virüs tarama servisine aktarıyorsunuz.</li> </ul>
     brute_force_prevention: "Otomatik kullanıcı engelleme"
     date_format:
       first_date_of_week_and_year_set: >

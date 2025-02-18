@@ -56,6 +56,8 @@ cs:
         frequency: "Frekvence"
         interval: "Interval"
         start_date: "Začíná v"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Řada schůzek končí"
         iterations: "Výskyty"
     errors:
@@ -261,10 +263,18 @@ cs:
       banner_html: >
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
+      x_daily:
+        one: "Every day"
+        few: "Every %{count} days"
+        many: "Every %{count} days"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        few: "Every %{count} weeks"
+        many: "Every %{count} weeks"
+        other: "Every %{count} weeks"
       every_weekday: "Každý %{day_of_the_week}"
-      daily: "Denně"
       working_days: "Každý pracovní den"
-      weekly: "Týdně"
     end_after:
       never: "nikdy"
       specific_date: "po určitém datu"
