@@ -148,7 +148,8 @@ module WorkPackages
 
       def default_field_options(name)
         data = { "work-packages--date-picker--preview-target": "fieldInput",
-                 action: "#{'work-packages--date-picker--date-form#toggleFieldVisibility' if duration_field?(name)} " \
+                 "work-packages--date-picker--date-form-target": "#{name.to_s.camelize(:lower)}Field",
+                 action: "work-packages--date-picker--date-form#checkForToggling " \
                          "work-packages--date-picker--preview#markFieldAsTouched " \
                          "focus->work-packages--date-picker--preview#onHighlightField",
                  test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field" }
