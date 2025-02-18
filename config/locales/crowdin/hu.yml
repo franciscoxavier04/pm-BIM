@@ -895,7 +895,7 @@ hu:
         timeline_labels: "Idővonal címkék"
       relation:
         lag: "Lag"
-        from: "Feladatcsoport"
+        from: "Related work package"
         to: "Kapcsolódó feladatcsoport"
       reminder:
         remind_at_date: "Date"
@@ -1219,12 +1219,12 @@ hu:
           typed_dag:
             circular_dependency: "A kapcsolat körkörös függőséget hoz létre."
           attributes:
-            to:
-              error_not_found: "feladatcsoportban \"a\" pozíció nem található, vagy nem látható"
-              error_readonly: "egy létező kapcsolat ',' hivatkozása nem változhat"
-            from:
-              error_not_found: "feladatcsoportban \"a\" pozíció nem található, vagy nem látható"
-              error_readonly: "egy létező kapcsolat ',' hivatkozása nem változhat"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
             lag:
               greater_than_or_equal_to:
                 zero: "cannot be negative."

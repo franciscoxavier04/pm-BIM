@@ -53,6 +53,8 @@ ms:
         frequency: "Frekuensi"
         interval: "Selang waktu"
         start_date: "Bermula pada"
+        start_time: "Start time"
+        start_time_hour: "Start time"
         end_after: "Meeting series ends"
         iterations: "Kejadian"
     errors:

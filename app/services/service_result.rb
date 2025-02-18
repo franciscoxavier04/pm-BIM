@@ -223,6 +223,13 @@ class ServiceResult
     @state ||= ::Shared::ServiceState.build
   end
 
+  ##
+  # Required as we create an errors object bound to this ServiceResult.
+  # calling `errors#full_messages` will call `human_attribute_name` here.
+  def self.human_attribute_name(*)
+    ApplicationRecord.human_attribute_name(*)
+  end
+
   private
 
   def initialize_errors(errors)

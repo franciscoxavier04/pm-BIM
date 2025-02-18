@@ -894,7 +894,7 @@ pt-PT:
         timeline_labels: "Etiquetas de cronograma"
       relation:
         lag: "Atraso"
-        from: "Pacote de trabalho"
+        from: "Pacote de trabalho relacionado"
         to: "Tarefas Relacionadas"
       reminder:
         remind_at_date: "Data"
@@ -1218,12 +1218,12 @@ pt-PT:
           typed_dag:
             circular_dependency: "A relação cria um círculo de relações."
           attributes:
-            to:
-              error_not_found: "pacote de trabalho na posição 'para' não foi encontrada ou não está visível"
-              error_readonly: "uma ligação 'para' existente não pode ser mudada"
-            from:
-              error_not_found: "pacote de trabalho na posição 'de' não foi encontrada ou não está visível"
-              error_readonly: "uma ligação 'de' existente não pode ser mudada"
+            to_id:
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para as relações existentes."
+            from_id:
+              error_not_found: "não encontrado ou não visível."
+              error_readonly: "não pode ser alterado para as relações existentes."
             lag:
               greater_than_or_equal_to:
                 zero: "não pode ser negativo."
@@ -3338,7 +3338,7 @@ pt-PT:
     storage:
       not_available: "O consumo de armazenamento de disco não está disponível para este repositório."
       update_timeout: "Manter as últimas informações de espaço em disco necessário para um repositório por N minutos. Como contar o espaço em disco necessário para um repositório pode ser caro, aumente este valor para reduzir o impacto no desempenho."
-      oauth_application_details: "O valor secreto do cliente não estará acessível novamente após fechar esta janela. Copie esses valores para as definições de integração do OpenProject da NextCloud:"
+      oauth_application_details: "O valor secreto do cliente não estará acessível novamente após fechar esta janela. Copie esses valores para as definições de integração do OpenProject da Nextcloud:"
       oauth_application_details_link_text: "Ir para a página de definições"
       setup_documentation_details: "Se precisar de ajuda para configurar um novo armazenamento de ficheiros, verifique a documentação: "
       setup_documentation_details_link_text: "Definição de armazenamentos"

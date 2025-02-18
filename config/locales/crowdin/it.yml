@@ -893,7 +893,7 @@ it:
         timeline_labels: "Etichette di sequenza temporale"
       relation:
         lag: "Ritardo"
-        from: "Macro-attività"
+        from: "Macro-attività correlata"
         to: "Macro-attività correlata"
       reminder:
         remind_at_date: "Data"
@@ -1217,12 +1217,12 @@ it:
           typed_dag:
             circular_dependency: "La relazione crea un riferimento circolare."
           attributes:
-            to:
-              error_not_found: "impossibile trovare o visualizzare la macro-attività in posizione \"a\""
-              error_readonly: "impossibile modificare il collegamento ad una relazione esistente \"a\""
-            from:
-              error_not_found: "impossibile trovare o visualizzare la macro-attività in posizione \"da\""
-              error_readonly: "impossibile modificare il collegamento ad una relazione esistente \"da\""
+            to_id:
+              error_not_found: "non trovato o non visibile."
+              error_readonly: "non può essere modificato per le relazioni esistenti."
+            from_id:
+              error_not_found: "non trovato o non visibile."
+              error_readonly: "non può essere modificato per le relazioni esistenti."
             lag:
               greater_than_or_equal_to:
                 zero: "non può essere negativo."
