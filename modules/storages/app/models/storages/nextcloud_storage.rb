@@ -80,8 +80,8 @@ module Storages
 
     def configuration_checks
       {
-        storage_oauth_client_configured: oauth_client.present?,
-        openproject_oauth_application_configured: oauth_application.present?,
+        storage_oauth_client_configured: !authenticate_via_storage? || oauth_client.present?,
+        openproject_oauth_application_configured: !authenticate_via_storage? || oauth_application.present?,
         host_name_configured: host.present? && name.present?,
         nextcloud_audience_configured: !authenticate_via_idp? || nextcloud_audience.present?
       }
