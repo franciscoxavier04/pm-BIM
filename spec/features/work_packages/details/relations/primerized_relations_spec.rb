@@ -37,7 +37,6 @@ RSpec.describe "Primerized work package relations tab",
     create(:user,
            member_with_permissions: {
              project => %i[add_work_packages
-                           edit_work_packages
                            manage_subtasks
                            manage_work_package_relations
                            view_work_packages]
