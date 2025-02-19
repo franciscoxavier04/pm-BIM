@@ -49,7 +49,7 @@ class WorkPackageChildrenRelationsController < ApplicationController
       update_via_turbo_stream(
         component: WorkPackageRelationsTab::AddWorkPackageChildFormComponent.new(work_package: @work_package,
                                                                                  child: service_result.result,
-                                                                                 base_errors: service_result.errors[:base]),
+                                                                                 base_errors: base_errors(service_result.errors)),
         status: :bad_request
       )
     end
@@ -108,5 +108,15 @@ class WorkPackageChildrenRelationsController < ApplicationController
   def set_work_package
     @work_package = WorkPackage.find(params[:work_package_id])
     @project = @work_package.project
+  end
+
+  def base_errors(errors)
+    if errors[:base].present?
+      errors[:base]
+    elsif errors[:id].present?
+      nil
+    else
+      errors.full_messages
+    end
   end
 end

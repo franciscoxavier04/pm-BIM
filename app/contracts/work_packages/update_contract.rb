@@ -49,7 +49,7 @@ module WorkPackages
     attribute_permission :project_id, :move_work_packages
 
     def can_set_parent?
-      @can.allowed?(model, :edit)
+      @can.allowed?(model, :manage_subtasks)
     end
 
     private
