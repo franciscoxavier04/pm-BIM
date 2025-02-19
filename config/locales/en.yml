@@ -1364,7 +1364,7 @@ en:
           attributes:
             id:
               format: "%{message}"
-              lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
               blank: "ID can't be blank."
             assigned_to:
               format: "%{message}"

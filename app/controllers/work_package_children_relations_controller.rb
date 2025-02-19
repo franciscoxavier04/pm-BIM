@@ -82,7 +82,7 @@ class WorkPackageChildrenRelationsController < ApplicationController
       WorkPackages::UpdateService.new(user: current_user, model: child)
                                  .call(parent:)
     else
-      child.errors.add(:id, :lack_of_permission)
+      child.errors.add(:id, :cannot_add_child_because_of_lack_of_permission)
       ServiceResult.failure(result: child)
     end
   end
