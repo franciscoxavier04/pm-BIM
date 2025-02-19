@@ -58,7 +58,7 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        audience_missing.or { non_provisioned_user }
+        audience_missing.or { non_provisioned_user }.or { non_oidc_provisioned_user }
       end
 
       def audience_missing
@@ -71,12 +71,21 @@ module Storages
       end
 
       def non_provisioned_user
-        return None() if @user.authentication_provider.present?
+        return None() if @user.identity_url.present?
 
         Some(ConnectionValidation.new(type: :warning,
                                       error_code: :oidc_non_provisioned_user,
                                       timestamp: Time.current,
                                       description: I18n.t("storages.health.connection_validation.oidc_non_provisioned_user")))
+      end
+
+      def non_oidc_provisioned_user
+        return None() if @user.authentication_provider.is_a?(OpenIDConnect::Provider)
+
+        Some(ConnectionValidation.new(type: :warning,
+                                      error_code: :oidc_non_oidc_user,
+                                      timestamp: Time.current,
+                                      description: I18n.t("storages.health.connection_validation.oidc_non_oidc_user")))
       end
 
       def has_base_configuration_error?
