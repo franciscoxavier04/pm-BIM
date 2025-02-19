@@ -304,14 +304,9 @@ module Components
       def filter_journals(filter, default_sorting: User.current.preference&.comments_sorting || "desc")
         page.find_test_selector("op-wp-journals-filter-menu").click
 
-        case filter
-        when :all
-          page.find_test_selector("op-wp-journals-filter-show-all").click
-        when :only_comments
-          page.find_test_selector("op-wp-journals-filter-show-only-comments").click
-        when :only_changes
-          page.find_test_selector("op-wp-journals-filter-show-only-changes").click
-        end
+        current_filter_name = "op-wp-journals-filter-show-#{filter.to_s.tr('_', '-')}"
+        wait(timeout: 3).for { page }.to have_test_selector(current_filter_name)
+        page.find_test_selector(current_filter_name).click
 
         # Ensure the journals are loaded on the page.
         wait(delay: 1).for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
