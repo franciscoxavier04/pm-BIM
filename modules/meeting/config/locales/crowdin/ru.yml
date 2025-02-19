@@ -264,15 +264,15 @@ ru:
         В настоящее время вы редактируете шаблон серии совещаний: %{link}. Каждое новое совещание в этой серии будет использовать этот шаблон. Изменения не повлияют на прошлые или уже созданные совещания.
     frequency:
       x_daily:
-        one: "Every day"
+        one: "Каждый день"
         few: "Every %{count} days"
         many: "Every %{count} days"
-        other: "Every %{count} days"
+        other: "Каждые %{count} дней"
       x_weekly:
-        one: "Every week"
+        one: "Каждую неделю"
         few: "Every %{count} weeks"
         many: "Every %{count} weeks"
-        other: "Every %{count} weeks"
+        other: "Каждые %{count} недели"
       every_weekday: "Каждый %{day_of_the_week}"
       working_days: "Каждый рабочий день"
     end_after:

@@ -1207,7 +1207,7 @@ tr:
               format: "%{message}"
           group_by_hierarchies_exclusive: "grubu tarafından '%{group_by}' ile birlikte kullanılamaz. Her ikisi de etkinleştiremezsiniz."
           can_only_be_modified_by_owner: "The query can only be modified by its owner."
-          need_permission_to_modify_public_query: "You cannot modify a public query."
+          need_permission_to_modify_public_query: "Genel bir sorguyu değiştiremezsiniz."
           filters:
             custom_fields:
               inexistent: "Hiçbir özel alan filtresi yok."
@@ -1245,13 +1245,13 @@ tr:
             base:
               working_days_are_missing: "Haftanın en az bir günü iş günü olarak tanımlanmalıdır."
               previous_working_day_changes_unprocessed: "Çalışma günleri yapılandırmasında yapılan önceki değişiklikler henüz uygulanmadı."
-              hours_per_day_are_missing: "The number of hours per day must be defined."
-              durations_are_not_positive_numbers: "The durations must be positive numbers."
-              hours_per_day_is_out_of_bounds: "Hours per day can't be more than 24"
+              hours_per_day_are_missing: "Günlük saat sayısı tanımlanmalıdır."
+              durations_are_not_positive_numbers: "Süreler pozitif sayı olmalıdır."
+              hours_per_day_is_out_of_bounds: "Günlük saat 24'ten fazla olamaz"
         status:
           attributes:
             default_done_ratio:
-              inclusion: "must be between 0 and 100."
+              inclusion: "0 ile 100 arasında olmalıdır."
           readonly_default_exlusive: "varsayılan olarak işaretlenen durumlar için etkinleştirilemez."
         time_entry:
           attributes:
@@ -1284,10 +1284,10 @@ tr:
             assigned_to:
               format: "%{message}"
             done_ratio:
-              does_not_match_work_and_remaining_work: "does not match Work and Remaining work"
-              cannot_be_set_when_work_is_zero: "cannot be set when Work is 0h"
-              must_be_set_when_remaining_work_is_set: "required when Remaining work is set."
-              must_be_set_when_work_and_remaining_work_are_set: "required when Work and Remaining work are set."
+              does_not_match_work_and_remaining_work: "İş ve Kalan çalışma ile eşleşmiyor"
+              cannot_be_set_when_work_is_zero: "İş 0sa olduğunda ayarlanamaz"
+              must_be_set_when_remaining_work_is_set: "Kalan iş ayarlandığında gereklidir."
+              must_be_set_when_work_and_remaining_work_are_set: "İş ve Kalan iş ayarlandığında gereklidir."
               inclusion: "must be between 0 and 100."
             due_date:
               not_start_date: "kilometre taşları için gerekli olmasına rağmen başlangıç tarihi değil."
@@ -1963,9 +1963,9 @@ tr:
           caption: "Depending on the chart size more than one page might be exported."
         long_text_fields:
           input_caption: "By default all long text fields are selected."
-          input_label: "Add long text fields"
-          input_placeholder: "Search for long text fields"
-          drag_area_label: "Manage long text fields"
+          input_label: "Uzun metin alanları ekle"
+          input_placeholder: "Uzun metin alanları için ara"
+          drag_area_label: "Uzun metin alanlarını yönet"
       xls:
         include_relations:
           label: "İlişkileri dahil edin"
@@ -1973,9 +1973,9 @@ tr:
         include_descriptions:
           label: "Açıklamaları dahil et"
           caption: "Bu seçenek ham formatta bir açıklama sütunu ekleyecektir."
-    your_work_packages_export: "Work packages are being exported"
+    your_work_packages_export: "İş paketleri dışa aktarılıyor"
     succeeded: "Dışa aktarma tamamlandı"
-    failed: "An error has occurred while trying to export the work packages: %{message}"
+    failed: "İş paketlerini dışa aktarmaya çalışırken bir hata oluştu: %{message}"
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2144,9 +2144,9 @@ tr:
         static_token_name: "RSS token"
         disabled_text: "RSS tokens are not enabled by the administrator. Please contact your administrator to use this feature."
       storages:
-        title: "File Storages"
+        title: "Dosya Depoları"
         text_hint: "File Storage tokens connect this OpenProject instance with an external File Storage."
-        empty_text_hint: "There is no storage access linked to your account."
+        empty_text_hint: "Hesabınıza bağlı herhangi bir depolama erişimi yoktur."
         revoke_token: "Do you really want to remove this token? You will need to login again on %{storage}"
         removed: "Dosya Depolama belirteci başarıyla kaldırıldı"
         failed: "An error occurred and the token couldn't be removed. Please try again later."
@@ -2235,7 +2235,7 @@ tr:
   label_authentication_settings: "Kimlik doğrulama ayarları"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Mevcut genel roller"
-  label_available_project_attributes: "Available project attributes"
+  label_available_project_attributes: "Mevcut proje öznitelikleri"
   label_available_project_forums: "Mevcut forumlar"
   label_available_project_repositories: "Uygun depolar"
   label_available_project_versions: "Uygun sürümler"
@@ -2307,7 +2307,7 @@ tr:
   label_copy_project: "Projeyi kopyala"
   label_core_version: "Çekirdek sürümü"
   label_core_build: "Çekirdek yapı"
-  label_created_by: "Created by %{user}"
+  label_created_by: "%{user} tarafından oluşturuldu"
   label_current_status: "Mevcut durum"
   label_current_version: "Mevcut sürüm"
   label_custom_field_add_no_type: "Bu alanı bir iş paketi türüne ekleyin"
@@ -2331,7 +2331,7 @@ tr:
   label_delete: "Sil"
   label_deleted: "silindi"
   label_deleted_custom_field: "(özel alan silindi)"
-  label_deleted_custom_item: "(deleted item)"
+  label_deleted_custom_item: "(silinmiş öğe)"
   label_deleted_custom_option: "(silinen seçenek)"
   label_empty_element: "(boş)"
   label_missing_or_hidden_custom_option: "(eksik değer veya erişim izinleri eksik)"
@@ -3135,7 +3135,7 @@ tr:
   permission_delete_timelines: "Zaman akışını silmek"
   permission_delete_wiki_pages: "Wiki sayfalarını silmek"
   permission_delete_wiki_pages_attachments: "Ekleri silmek"
-  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes: "Yorumları denetle"
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "İş paketlerini düzenlemek"
   permission_edit_messages: "İletileri düzenlemek"
@@ -3200,13 +3200,13 @@ tr:
   permission_work_package_assigned_explanation: "İşpaketleri bağlı projedeki rollere göre kullanıcı ve gruplara atanabilir"
   permission_view_project_activity: "View project activity"
   permission_view_project_attributes: "View project attributes"
-  permission_view_project_stages_and_gates: "View project stages and gates"
-  permission_save_bcf_queries: "Save BCF queries"
-  permission_manage_public_bcf_queries: "Manage public BCF queries"
-  permission_edit_attribute_help_texts: "Edit attribute help texts"
-  permission_manage_public_project_queries: "Manage public project lists"
-  permission_view_project_query: "View project query"
-  permission_edit_project_query: "Edit project query"
+  permission_view_project_stages_and_gates: "Proje aşamalarını ve kapılarını görüntüleyin"
+  permission_save_bcf_queries: "BCF sorgularını kaydetme"
+  permission_manage_public_bcf_queries: "Genel BCF sorgularını yönetme"
+  permission_edit_attribute_help_texts: "Öznitelik yardım metinlerini düzenleme"
+  permission_manage_public_project_queries: "Genel proje listelerini yönetme"
+  permission_view_project_query: "Proje sorgusunu görüntüleme"
+  permission_edit_project_query: "Proje sorgusunu düzenleme"
   placeholders:
     default: "-"
   project:
@@ -3440,7 +3440,7 @@ tr:
   setting_enabled_scm: "Etkinleştirilmiş SCM"
   setting_enabled_projects_columns: "Columns in a projects list displayed by default"
   setting_feeds_enabled: "Yayınları Etkinleştir"
-  setting_ical_enabled: "Enable iCalendar subscriptions"
+  setting_ical_enabled: "iCalendar aboneliklerini etkinleştir"
   setting_feeds_limit: "Besleme içeriği sınırı"
   setting_file_max_size_displayed: "Satır içi görüntülenen maksimum metin dosyası boyutu"
   setting_host_name: "Ana bilgisayar adı"
@@ -3561,8 +3561,8 @@ tr:
       first_week_of_year_text_html: >
         Select the date of January that is contained in the first week of the year. This value together with first day of the week determines the total number of weeks in a year. For more information, please see our <a href="%{link}" target="_blank">documentation</a> on this topic.
     experimental:
-      save_confirmation: Caution! Risk of data loss! Only activate experimental features if you do not mind breaking your OpenProject installation and losing all of its data.
-      warning_toast: Feature flags are settings that activate features that are still under development. They shall only be used for testing purposes. They shall never be activated on OpenProject installations holding important data. These features will very likely corrupt your data. Use them at your own risk.
+      save_confirmation: Dikkat! Veri kaybı riski! Deneysel özellikleri sadece OpenProject kurulumunuzu bozmak ve tüm verilerini kaybetmeyi önemsemiyorsanız etkinleştirin.
+      warning_toast: Özellik bayrakları, halen geliştirilme aşamasında olan özellikleri etkinleştiren ayarlardır. Sadece test amaçlı kullanılmalıdırlar. Önemli veriler içeren OpenProject kurulumlarında asla etkinleştirilmemelidirler. Bu özellikler büyük olasılıkla verilerinizi bozacaktır. Bunları kendi sorumluluğunuzda kullanın.
       feature_flags: Özellik bayrakları
     general: "Genel"
     highlighting:
@@ -3574,7 +3574,7 @@ tr:
         priority: "Önceliğe göre tüm satır"
     icalendar:
       enable_subscriptions_text_html: Gerekli izinlere sahip kullanıcıların OpenProject takvimlerine abone olmalarını ve harici bir takvim istemcisi aracılığıyla iş paketi bilgilerine erişmelerini sağlar. <strong>Not:</strong> Bunu etkinleştirmeden önce olası güvenlik risklerini anlamak için lütfen <a href="%{link}" target="_blank">iCalendar abonelikleri</a> hakkında bilgi edinin.
-    language_name_being_default: "%{language_name} (default)"
+    language_name_being_default: "%{language_name} (varsayılan)"
     notifications:
       events_explanation: "Bir e-postanın hangi olay için gönderileceğini yönetir. İş paketleri, bildirimleri her kullanıcı için özel olarak yapılandırılabileceğinden bu listenin dışında tutulur."
       delay_minutes_explanation: "E-posta gönderimi, uygulama bildirimi yapılandırılmış olan kullanıcıların bir posta gönderilmeden önce uygulama içindeki bildirimi onaylamasına izin vermek için geciktirilebilir. Uygulama içinde bir bildirim okuyan kullanıcılar, okunan bildirim için bir e-posta almaz."
@@ -3585,54 +3585,54 @@ tr:
       label_new_attribute: "Proje özniteliği"
       label_new_section: "Bölüm"
       label_edit_section: "Başlığı düzenle"
-      label_section_actions: "Section actions"
+      label_section_actions: "Bölüm eylemleri"
       heading_description: "These project attributes appear in the overview page of each project. You can add new attributes, group them into sections and re-order them as you please. These attributes can be enabled or disabled but not re-ordered at a project level."
-      label_project_custom_field_actions: "Project attribute actions"
-      label_no_project_custom_fields: "No project attributes defined in this section"
+      label_project_custom_field_actions: "Proje öznitelik eylemleri"
+      label_no_project_custom_fields: "Bu bölümde tanımlanmış proje özniteliği yok"
       edit:
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
       new:
-        heading: "New attribute"
+        heading: "Yeni öznitelik"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
     project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
-      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      heading: "Proje yaşam döngüsü"
+      heading_description: "Proje yaşam döngüsü, projelerinizi yapılandıran aşamalardan ve kapılardan oluşur. Bunlar bir projenin genel bakış sayfasında görünecek ve projeler listesinde bulunacaktır. Bir projeyi özelleştirmek için tek tek aşamalar ve kapılar seçilebilir, ancak proje düzeyinde yeniden sıralama mümkün değildir."
       label_add: "Ekle"
       label_add_description: "Yaşam döngüsü tanımı ekleyin"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
+      label_add_stage: "Aşama"
+      label_add_gate: "Kapı"
       filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
+        label: "Proje aşaması veya kapısı ara"
+      section_header: "Aşamalar ve kapılar"
+      non_defined: "Şu anda ne aşamalar ne de kapılar tanımlanmıştır."
       new:
-        description: "Changes to this project step will be reflected in all projects where it is enabled."
+        description: "Bu proje adımında yapılan değişiklikler, etkin olduğu tüm projelere yansıtılacaktır."
       new_stage:
-        heading: "New stage"
+        heading: "Yeni aşama"
       new_gate:
-        heading: "New gate"
+        heading: "Yeni kapı"
       edit_stage:
-        heading: "Edit stage"
+        heading: "Aşamayı düzenle"
       edit_gate:
-        heading: "Edit gate"
+        heading: "Kapıyı düzenle"
     projects:
-      missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
+      missing_dependencies: "%{dependencies} bağımlılıkları olan %{module} proje modülü kontrol edildi. Bu bağımlılıkları da kontrol etmeniz gerekir."
       section_new_projects: "Yeni projeler için ayarlar"
-      section_project_overview: "Settings for project lists"
+      section_project_overview: "Proje listeleri için ayarlar"
     session: "Oturum"
     user:
       default_preferences: "Varsayılan Tercihler"
-      display_format: "Display format"
+      display_format: "Gösterim biçimi"
       deletion: "Silme"
     working_days:
       section_work_week: "Çalışma Haftası"
-      section_holidays_and_closures: "Holidays and closures"
+      section_holidays_and_closures: "Tatiller ve kapanışlar"
   text_formatting:
     markdown: "Markdown"
     plain: "Düz yazı"
   status_active: "etkin"
   status_archived: "arşivlendi"
-  status_blocked: "blocked"
+  status_blocked: "engelli"
   status_invited: davet
   status_locked: kilitli
   status_registered: kayıtlı
@@ -3936,9 +3936,9 @@ tr:
     text_empty_state_description: "The %{entity} has not been shared with anyone yet."
     text_empty_state_header: "Paylaşılmamış"
     text_user_limit_reached: "Adding additional users will exceed the current limit. Please contact an administrator to increase the user limit to ensure external users are able to access this %{entity}."
-    text_user_limit_reached_admins: 'Adding additional users will exceed the current limit. Please <a href="%{upgrade_url}">upgrade your plan</a> to be able to add more users.'
+    text_user_limit_reached_admins: 'Ek kullanıcı eklemek mevcut sınırı aşacaktır. Daha fazla kullanıcı ekleyebilmek için lütfen <a href="%{upgrade_url}">planınızı yükseltin</a>.'
     warning_user_limit_reached: >
-      Adding additional users will exceed the current limit. Please contact an administrator to increase the user limit to ensure external users are able to access this %{entity}.
+      Ek kullanıcı eklenmesi mevcut sınırı aşacaktır. Harici kullanıcıların %{entity} adresine erişebilmesini sağlamak amacıyla kullanıcı limitini artırmak için lütfen bir yöneticiyle iletişime geçin.
     warning_user_limit_reached_admin: >
       Adding additional users will exceed the current limit. Please <a href="%{upgrade_url}">upgrade your plan</a> to be able to ensure external users are able to access this %{entity}.
     warning_no_selected_user: "Please select users to share this %{entity} with"
@@ -3946,9 +3946,9 @@ tr:
     user_details:
       locked: "Kilitli kullanıcı"
       invited: "Davetiye gönderildi. "
-      resend_invite: "Resend."
-      invite_resent: "Invite has been resent"
-      not_project_member: "Not a project member"
+      resend_invite: "Tekrar gönder."
+      invite_resent: "Davet yeniden gönderildi"
+      not_project_member: "Proje üyesi değil"
       project_group: "Group members might have additional privileges (as project members)"
       not_project_group: "Group (shared with all members)"
       additional_privileges_project: "Might have additional privileges (as project member)"
@@ -3969,7 +3969,7 @@ tr:
           header: "Herkesle paylaşıldı"
           description: "Everyone can view this project list. You can also add individual users with extra permissions."
         private:
-          header: "Not shared: Private"
+          header: "Paylaşılmadı: Özel"
           description: "This project list has not been shared with anyone yet. Only you can access this list."
       permissions:
         view: "Göster"
@@ -4198,7 +4198,7 @@ tr:
     response:
       unexpected: "Beklenilmeyen bir yanıt alındı."
   you: sen
-  link: link
+  link: bağlantı
   plugin_openproject_auth_plugins:
     name: "OpenProject Auth Eklentileri"
     description: "Integration of OmniAuth strategy providers for authentication in OpenProject."
