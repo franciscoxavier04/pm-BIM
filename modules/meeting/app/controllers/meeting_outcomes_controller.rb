@@ -34,7 +34,7 @@ class MeetingOutcomesController < ApplicationController
   include Meetings::AgendaComponentStreams
 
   before_action :set_meeting
-  before_action :set_meeting_agenda_item, except: %i[edit cancel_edit update]
+  before_action :set_meeting_agenda_item, except: %i[edit cancel_edit update destroy]
   before_action :set_meeting_outcome, except: %i[new cancel_new create]
   before_action :authorize_global, only: %i[new create]
   before_action :authorize, except: %i[new create]
@@ -114,6 +114,20 @@ class MeetingOutcomesController < ApplicationController
     if call.success?
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: call.result, hide_notes: false, state: :show)
+      # else
+    end
+
+    respond_with_turbo_streams
+  end
+
+  def destroy
+    @meeting_agenda_item = @meeting_outcome.meeting_agenda_item
+    call = ::MeetingOutcomes::DeleteService
+      .new(user: current_user, model: @meeting_outcome)
+      .call
+
+    if call.success?
+      render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item, hide_notes: true)
       # else
     end
 

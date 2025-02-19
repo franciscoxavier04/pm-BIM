@@ -10,7 +10,7 @@
       unless @hide_notes
         grid.with_area(:notes) do
           if @state == :edit
-            render(MeetingAgendaItems::Outcomes::NewComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item, meeting_outcome: @meeting_outcome, hidden: false))
+            render(MeetingAgendaItems::Outcomes::InputComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item, meeting_outcome: @meeting_outcome, hidden: false))
           elsif @state == :show
             render(MeetingAgendaItems::Outcomes::ShowNotesComponent.new(meeting_outcome: @meeting_outcome))
           end

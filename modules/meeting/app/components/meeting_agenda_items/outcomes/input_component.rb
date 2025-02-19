@@ -27,7 +27,7 @@
 #++
 
 module MeetingAgendaItems::Outcomes
-  class NewComponent < ApplicationComponent
+  class InputComponent < ApplicationComponent
     include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers

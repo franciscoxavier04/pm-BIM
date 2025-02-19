@@ -69,7 +69,7 @@ module MeetingAgendaItems
     def delete_action_item(menu)
       menu.with_item(label: t("label_agenda_outcome_delete"),
                      scheme: :danger,
-                     href: "",
+                     href: meeting_outcome_path(@meeting, @meeting_outcome),
                      form_arguments: {
                        method: :delete, data: { confirm: t("text_are_you_sure"), "turbo-stream": true }
                      }) do |item|
