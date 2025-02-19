@@ -16,6 +16,10 @@ In these Release Notes, we will give an overview of important feature changes. A
 
 ## Important feature changes
 
+Take a look at the release video showing most important features introduced in 15.3.0.
+
+![Release 15.3 Video](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_15_3_release.mp4)
+
 ### Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments
 
 Organizing meetings just became much easier with **Recurring Meetings** in OpenProject 15.3. Instead of manually setting up repeated meetings, you can now create a Recurring Meeting series with flexible scheduling options.
