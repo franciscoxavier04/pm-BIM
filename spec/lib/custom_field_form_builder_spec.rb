@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -56,6 +58,8 @@ RSpec.describe CustomFieldFormBuilder do
     let(:resource) do
       build_stubbed(:user)
     end
+
+    let(:scope) { instance_double(ActiveRecord::Relation) }
 
     before do
       without_partial_double_verification do
@@ -255,7 +259,6 @@ RSpec.describe CustomFieldFormBuilder do
       let(:project) { build_stubbed(:project) }
       let(:user1) { build_stubbed(:user) }
       let(:user2) { build_stubbed(:user) }
-      let(:scope) { instance_double(ActiveRecord::Relation) }
 
       let(:resource) { project }
 
@@ -273,8 +276,10 @@ RSpec.describe CustomFieldFormBuilder do
                 .and_return(scope)
 
         allow(scope)
-          .to receive(:select)
-                .and_return([user1, user2])
+          .to receive_messages(
+            select: [user1, user2],
+            includes: scope
+          )
       end
 
       it_behaves_like "wrapped in container", "select-container" do
@@ -331,6 +336,10 @@ RSpec.describe CustomFieldFormBuilder do
 
           allow(project)
             .to receive(:shared_versions)
+                  .and_return(scope)
+
+          allow(scope)
+            .to receive(:includes)
                   .and_return([version1, version2])
         end
       end

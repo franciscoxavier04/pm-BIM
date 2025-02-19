@@ -29,6 +29,7 @@ require "spec_helper"
 require_relative "../shared_expectations"
 
 RSpec.describe CustomActions::Actions::CustomField do
+  let(:scope) { instance_double(ActiveRecord::Relation) }
   let(:list_custom_field) do
     build_stubbed(:list_wp_custom_field,
                   custom_options: [build_stubbed(:custom_option, value: "A"),
@@ -406,9 +407,13 @@ RSpec.describe CustomActions::Actions::CustomField do
       let(:versions) { [z_version, a_version, m_version] }
 
       before do
+        allow(scope)
+          .to receive(:includes)
+                .and_return(versions)
+
         allow(Version)
           .to receive(:systemwide)
-          .and_return(versions)
+          .and_return(scope)
       end
 
       context "for a non required field" do
@@ -441,7 +446,6 @@ RSpec.describe CustomActions::Actions::CustomField do
          build_stubbed(:user),
          build_stubbed(:user)]
       end
-      let(:scope) { instance_double(ActiveRecord::Relation) }
 
       before do
         allow(Principal)
@@ -520,7 +524,6 @@ RSpec.describe CustomActions::Actions::CustomField do
          build_stubbed(:user),
          build_stubbed(:user)]
       end
-      let(:scope) { instance_double(ActiveRecord::Relation) }
 
       before do
         allow(Principal)
@@ -551,9 +554,13 @@ RSpec.describe CustomActions::Actions::CustomField do
       end
 
       before do
+        allow(scope)
+          .to receive(:includes)
+                .and_return(versions)
+
         allow(Version)
           .to receive(:systemwide)
-          .and_return(versions)
+          .and_return(scope)
       end
 
       it_behaves_like "associated custom action validations" do
