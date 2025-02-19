@@ -175,7 +175,7 @@ export abstract class DialogPreviewController extends Controller {
     this.markTouched(this.targetFieldName);
   }
 
-  async preview(field:HTMLInputElement|null) {
+  async preview(field:HTMLInputElement|null, additionalData?:{ key:string, val:string }[]) {
     const form = this.formTarget;
     const formData = new FormData(form) as unknown as undefined;
     const formParams = new URLSearchParams(formData);
@@ -183,6 +183,12 @@ export abstract class DialogPreviewController extends Controller {
     const wpParams = Array.from(formParams.entries())
       .filter(([key, _]) => key.startsWith('work_package'));
     wpParams.push(['field', field?.name ?? '']);
+
+    if (additionalData) {
+      additionalData.forEach((data) => {
+        wpParams.push([data.key, data.val]);
+      });
+    }
 
     const wpPath = this.ensureValidPathname(form.action);
     const wpAction = this.ensureValidWpAction(wpPath);
