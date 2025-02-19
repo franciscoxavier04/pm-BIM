@@ -34,6 +34,7 @@ class MeetingAgendaItem::Notes < ApplicationForm
       name: :notes,
       label: MeetingAgendaItem.human_attribute_name(:notes),
       disabled: @disabled,
+      classes: "ck-editor-primer-adjusted",
       rich_text_options: {
         resource:,
         showAttachments: false
