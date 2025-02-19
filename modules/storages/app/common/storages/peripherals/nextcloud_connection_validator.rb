@@ -58,7 +58,7 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        non_provisioned_user.or { non_oidc_provisioned_user }
+        non_provisioned_user.or { non_oidc_provisioned_user }.or { token_usability }
       end
 
       def non_provisioned_user
@@ -68,6 +68,20 @@ module Storages
                                       error_code: :oidc_non_provisioned_user,
                                       timestamp: Time.current,
                                       description: I18n.t("storages.health.connection_validation.oidc_non_provisioned_user")))
+      end
+
+      def token_usability
+        usable_token = @user.oidc_user_tokens.with_audience(@storage.audience).first
+        return None() if usable_token
+
+        # Temporary error as I implement the next steps
+        Some(ConnectionValidation
+               .new(type: :error,
+                    error_code: :oidc_no_token_with_required_audience,
+                    timestamp: Time.current,
+                    description: I18n.t(
+                      "storages.health.connection_validation.oidc_no_token_with_required_audience", audience: @storage.audience
+                    )))
       end
 
       def non_oidc_provisioned_user

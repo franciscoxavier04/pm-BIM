@@ -85,7 +85,7 @@ module OpenIDConnect
       private
 
       def token_with_audience(aud)
-        token = @user.oidc_user_tokens.where("audiences ? :aud", aud:).first
+        token = @user.oidc_user_tokens.with_audience(aud).first
         return Success(token) if token
 
         return @token_exchange.call(aud) if @token_exchange.supported?

@@ -248,6 +248,7 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
     before { User.current = user }
 
     it "returns a success" do
+      create(:oidc_user_token, user:, extra_audiences: storage.audience)
       user.update(identity_url: "#{oidc_provider.slug}:UNIVERSALLY-DUPLICATED-IDENTIFIER")
 
       expect(subject.type).to eq(:healthy)
@@ -274,6 +275,15 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
       expect(subject.type).to eq(:warning)
       expect(subject.error_code).to eq(:oidc_non_oidc_user)
       expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_non_oidc_user"))
+    end
+
+    it "returns an error if the user does not have a usable token" do
+      user.update(identity_url: "#{oidc_provider.slug}:UNIVERSALLY-DUPLICATED-IDENTIFIER")
+
+      expect(subject.type).to eq(:error)
+      expect(subject.error_code).to eq(:oidc_no_token_with_required_audience)
+      expect(subject.description)
+        .to eq(I18n.t("storages.health.connection_validation.oidc_no_token_with_required_audience", audience: storage.audience))
     end
   end
 
