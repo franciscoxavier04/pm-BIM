@@ -6,13 +6,11 @@ import idFromLink from 'core-app/features/hal/helpers/id-from-link';
 import { IPrincipal } from 'core-app/core/state/principals/principal.model';
 import { PrincipalLike } from './principal-types';
 import { hrefFromPrincipal, PrincipalType, typeFromHref } from './principal-helper';
-import { PortalOutletTarget } from 'core-app/shared/components/modal/portal-outlet-target.enum';
 
 export type AvatarSize = 'default'|'medium'|'mini';
 
 export interface HoverCardOptions {
   url?:string;
-  modalTarget?:PortalOutletTarget;
 }
 
 export interface AvatarOptions {
@@ -255,13 +253,13 @@ export class PrincipalRendererService {
   }
 
   private setHoverCardAttributes(element:HTMLElement, options:AvatarOptions, principal:PrincipalLike|IPrincipal):void {
-    const hoverCard = options.hoverCard;
+    const hoverCard = options.hoverCard || {};
 
     if (!hoverCard?.url) {
       // In some cases, there is no URL given although a hover card is expected. For example when the principle
       // is rendered from an angular template. We try to infer the URL here.
       const url = this.userHoverCardUrl(principal);
-      if (hoverCard && url) {
+      if (url) {
         hoverCard.url = url;
       } else {
         return;

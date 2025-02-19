@@ -260,11 +260,11 @@ de:
         Sie bearbeiten gerade eine Vorlage einer Terminserie: %{link}. Jede neue Besprechung der Serie kopiert diese Vorlage. Änderungen wirken sich nicht auf frühere oder bereits erstellte Besprechungen aus.
     frequency:
       x_daily:
-        one: "Every day"
-        other: "Every %{count} days"
+        one: "Jeden Tag"
+        other: "alle %{count} Tage"
       x_weekly:
-        one: "Every week"
-        other: "Every %{count} weeks"
+        one: "Jede Woche"
+        other: "alle %{count} Wochen"
       every_weekday: "Jeden %{day_of_the_week}"
       working_days: "An Arbeitstagen"
     end_after:

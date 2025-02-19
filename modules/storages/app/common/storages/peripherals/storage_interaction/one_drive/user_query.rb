@@ -31,10 +31,8 @@
 module Storages
   module Peripherals
     module StorageInteraction
-      module Nextcloud
-        class AuthCheckQuery
-          using ServiceResultRefinements
-
+      module OneDrive
+        class UserQuery
           def self.call(storage:, auth_strategy:)
             new(storage).call(auth_strategy:)
           end
@@ -44,8 +42,8 @@ module Storages
           end
 
           def call(auth_strategy:)
-            Authentication[auth_strategy].call(storage: @storage, http_options: Util.ocs_api_request) do |http|
-              handle_response http.get(UrlBuilder.url(@storage.uri, "/ocs/v1.php/cloud/user"))
+            Authentication[auth_strategy].call(storage: @storage) do |http|
+              handle_response http.get(UrlBuilder.url(@storage.uri, "/v1.0/me"))
             end
           end
 
@@ -54,9 +52,11 @@ module Storages
           def handle_response(response)
             case response
             in { status: 200..299 }
-              ServiceResult.success
+              ServiceResult.success(result: { id: response.json["id"] })
             in { status: 401 }
               ServiceResult.failure(result: :unauthorized, errors: StorageError.new(code: :unauthorized))
+            in { status: 403 }
+              ServiceResult.failure(result: :forbidden, errors: StorageError.new(code: :forbidden))
             else
               data = StorageErrorData.new(source: self.class, payload: response)
               ServiceResult.failure(result: :error, errors: StorageError.new(code: :error, data:))

@@ -258,9 +258,9 @@ zh-TW:
         您目前正在編輯會議系列的範本： %{link}。系列會議中的每次新會議都會使用此範本。變更不會影響過去或已建立的會議。
     frequency:
       x_daily:
-        other: "Every %{count} days"
+        other: "每 %{count} 天"
       x_weekly:
-        other: "Every %{count} weeks"
+        other: "每 %{count} 週"
       every_weekday: "每個 %{day_of_the_week}"
       working_days: "每個工作天"
     end_after:
