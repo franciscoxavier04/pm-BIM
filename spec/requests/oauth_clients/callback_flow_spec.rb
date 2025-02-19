@@ -104,9 +104,9 @@ RSpec.describe "OAuthClient callback endpoint" do
 
     context "with valid params" do
       context "without errors" do
-        it "redirects to the URL that was referenced by the state param and held by a cookie", :webmock do
-          stub_request(:get, File.join(storage.host, "/ocs/v1.php/cloud/user"))
-            .to_return(status: 200, body: File.read("modules/storages/spec/support/payloads/nextcloud_user_query_success.xml"), headers: {})
+        it "redirects to the URL that was referenced by the state param and held by a cookie", :storage_server_helpers,
+           :webmock do
+          stub_nextcloud_user_query(storage.host)
 
           uri.query = URI.encode_www_form([["code", code], ["state", state]])
           get uri.to_s

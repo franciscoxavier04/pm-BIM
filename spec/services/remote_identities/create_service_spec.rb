@@ -4,7 +4,7 @@ require "spec_helper"
 
 require "services/base_services/behaves_like_create_service"
 
-RSpec.describe RemoteIdentities::CreateService, :webmock, type: :model do
+RSpec.describe RemoteIdentities::CreateService, :storage_server_helpers, :webmock, type: :model do
   let(:user) { create(:user) }
   let(:storage) { create(:nextcloud_storage_configured) }
   let(:oauth_config) { storage.oauth_configuration }
@@ -16,9 +16,7 @@ RSpec.describe RemoteIdentities::CreateService, :webmock, type: :model do
 
   subject(:service) { described_class.new(user:, oauth_config:, oauth_client_token:) }
 
-  before do
-    stub_request(:get, File.join(storage.host, "/ocs/v1.php/cloud/user")).to_return(status: 200, body: File.read("modules/storages/spec/support/payloads/nextcloud_user_query_success.xml"), headers: {})
-  end
+  before { stub_nextcloud_user_query(storage.host) }
 
   describe ".call" do
     it "requires a user, a oauth configuration and a rack token" do
