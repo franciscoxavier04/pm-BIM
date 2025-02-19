@@ -2436,6 +2436,7 @@ en:
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Descending"
   label_details: "Details"
+  label_defaults: "Defaults"
   label_development_roadmap: "Development roadmap"
   label_diff: "diff"
   label_diff_inline: "inline"

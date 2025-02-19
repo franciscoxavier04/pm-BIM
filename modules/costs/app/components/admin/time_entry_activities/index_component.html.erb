@@ -6,7 +6,8 @@ component_wrapper do
         subheader.with_action_button(
           scheme: :primary,
           tag: :a,
-          href: new_admin_time_entry_activity_path
+          href: new_admin_time_entry_activity_path,
+          test_selector: "add-activity-button"
         ) do |button|
           button.with_leading_visual_icon(icon: :plus)
           I18n.t(:button_add_activity)

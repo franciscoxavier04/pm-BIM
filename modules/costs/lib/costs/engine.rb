@@ -128,7 +128,7 @@ module Costs
            :costs_settings,
            { controller: "/admin/costs_settings", action: :show },
            if: Proc.new { User.current.admin? },
-           caption: :label_setting_plural,
+           caption: :label_defaults,
            parent: :admin_costs
 
       menu :admin_menu,
