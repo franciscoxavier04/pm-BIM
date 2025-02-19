@@ -230,4 +230,16 @@ RSpec.describe Meeting do
       expect(meeting.formatted_duration).to be_nil
     end
   end
+
+  describe "#destroy" do
+    context "with an attachment" do
+      let!(:meeting) { create(:meeting, project: project) }
+      let!(:attachment) { create(:attachment, container: meeting) }
+
+      it "does not raise an exception (Regression #61632)" do
+        expect { meeting.destroy! }.not_to raise_error
+        expect { meeting.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end
