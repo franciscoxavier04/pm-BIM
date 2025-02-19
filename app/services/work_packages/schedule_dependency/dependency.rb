@@ -70,6 +70,10 @@ class WorkPackages::ScheduleDependency::Dependency
     descendants.any?
   end
 
+  def has_direct_or_indirect_predecessors?
+    follows_relations.any?
+  end
+
   private
 
   def descendants

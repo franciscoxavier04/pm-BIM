@@ -269,14 +269,14 @@ RSpec.describe "Scheduling mode switching", # rubocop:disable RSpec/DescribeClas
         Relations::DeleteService.new(user:, model: relation).call
       end
 
-      it "keeps work package scheduling mode" do
+      it "switches work package to manual scheduling mode" do
         expect(Relation.count).to eq(0)
         expect_work_packages_after_reload([pred, succ], <<~TABLE)
           | subject       | MTWTFSS | scheduling mode |
           | pred          |         | manual          |
-          | succ          |         | automatic       |
+          | succ          |         | manual          |
         TABLE
-        expect(succ.journals.count).to eq(1) # no modifications
+        expect(succ.journals.count).to eq(2)
       end
     end
 
@@ -309,8 +309,8 @@ RSpec.describe "Scheduling mode switching", # rubocop:disable RSpec/DescribeClas
       let_work_packages(<<~TABLE)
         | hierarchy     | MTWTFSS | scheduling mode | predecessors
         | pred          | XX      | manual          |
-        | succ          |   XX    | automatic       | pred
-        |   child       |   XX    | manual          |
+        | succ          |    XX   | automatic       | pred
+        |   child       |    XX   | manual          |
       TABLE
 
       before do
@@ -318,15 +318,15 @@ RSpec.describe "Scheduling mode switching", # rubocop:disable RSpec/DescribeClas
         Relations::DeleteService.new(user:, model: relation).call
       end
 
-      it "switches work package to manual scheduling mode and keeps the dates" do
+      it "keeps work package automatic scheduling mode because it has a child" do
         expect(Relation.count).to eq(0)
         expect_work_packages_after_reload([pred, succ, child], <<~TABLE)
           | subject       | MTWTFSS | scheduling mode |
           | pred          | XX      | manual          |
-          | succ          |   XX    | manual          |
-          |   child       |   XX    | manual          |
+          | succ          |    XX   | automatic       |
+          |   child       |    XX   | manual          |
         TABLE
-        expect(succ.journals.count).to eq(2)
+        expect(succ.journals.count).to eq(1) # no changes
       end
     end
   end

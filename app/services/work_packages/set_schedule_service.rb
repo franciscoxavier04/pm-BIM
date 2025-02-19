@@ -100,8 +100,10 @@ class WorkPackages::SetScheduleService
   def reschedule(scheduled, dependency)
     if dependency.has_descendants?
       reschedule_by_descendants(scheduled, dependency)
-    else
+    elsif dependency.has_direct_or_indirect_predecessors?
       reschedule_by_predecessors(scheduled, dependency)
+    else
+      scheduled.schedule_manually = true
     end
   end
 

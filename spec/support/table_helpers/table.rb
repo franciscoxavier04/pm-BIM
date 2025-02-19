@@ -65,6 +65,14 @@ module TableHelpers
       @relations
     end
 
+    def monday = Date.current.next_occurring(:monday)
+    def tuesday = monday + 1.day
+    def wednesday = monday + 2.days
+    def thursday = monday + 3.days
+    def friday = monday + 4.days
+    def saturday = monday + 5.days
+    def sunday = monday + 6.days
+
     private
 
     def subject_of(object)

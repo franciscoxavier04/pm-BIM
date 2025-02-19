@@ -187,6 +187,27 @@ RSpec.describe WorkPackages::SetScheduleService do
       expect(subject)
         .to be_success
     end
+
+    context "when the work package is automatically scheduled" do
+      before do
+        work_package.update_column(:schedule_manually, false)
+      end
+
+      it "switches to manual scheduling because it has no predecessors or children" do
+        expect(subject)
+          .to be_success
+
+        # it is the result because it's the one the service is called with
+        expect(subject.result).to be(work_package)
+        # it is in the dependent results too because it has been modified by the service
+        expect(subject.dependent_results.map(&:result)).to contain_exactly(work_package)
+        # so it appears twice in the all_results
+        expect(subject.all_results.map(&:subject))
+          .to contain_exactly(work_package.subject, work_package.subject)
+        expect(work_package.schedule_manually)
+          .to be true
+      end
+    end
   end
 
   context "with a single successor" do

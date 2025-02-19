@@ -40,26 +40,26 @@ class Relations::BaseService < BaseServices::BaseCallable
 
   private
 
-  def update_relation(model, attributes)
-    model.attributes = model.attributes.merge attributes
+  def update_relation(relation, attributes)
+    relation.attributes = relation.attributes.merge attributes
 
-    success, errors = validate_and_save(model, user)
+    success, errors = validate_and_save(relation, user)
 
-    result = ServiceResult.new success:, errors:, result: model
+    result = ServiceResult.new success:, errors:, result: relation
 
-    if success && model.follows?
-      reschedule_result = reschedule(model)
+    if success && relation.follows?
+      reschedule_result = reschedule_successor(relation)
       result.merge!(reschedule_result)
     end
 
     result
   end
 
-  def set_defaults(model)
-    if model.follows?
-      model.lag ||= 0
+  def set_defaults(relation)
+    if relation.follows?
+      relation.lag ||= 0
     else
-      model.lag = nil
+      relation.lag = nil
     end
   end
 end

@@ -30,20 +30,22 @@
 
 module Relations::Concerns
   module Rescheduling
-    def reschedule(relation)
+    def reschedule_successor(relation)
       schedule_result = WorkPackages::SetScheduleService
                         .new(user:,
-                             work_package: relation.predecessor,
+                             work_package: relation.successor,
                              switching_to_automatic_mode: switching_to_automatic_mode(relation))
                         .call
 
-      # The predecessor work package will not be altered by the schedule service so
-      # we do not have to save the result of the service, only the dependent results.
+      # The schedule service does not save by itself. Dependent results must be saved.
       save_result = if schedule_result.success?
-                      schedule_result.dependent_results.all? { |dr| !dr.result.changed? || dr.result.save(validate: false) }
-                    end || false
+                      schedule_result.dependent_results
+                                     .map(&:result)
+                                     .filter(&:changed?)
+                                     .all? { |work_package| work_package.save(validate: false) }
+                    end
 
-      schedule_result.success = save_result
+      schedule_result.success = save_result || false
 
       schedule_result
     end
