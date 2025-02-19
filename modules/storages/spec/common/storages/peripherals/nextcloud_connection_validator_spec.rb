@@ -267,6 +267,14 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
       expect(subject.error_code).to eq(:oidc_non_provisioned_user)
       expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_non_provisioned_user"))
     end
+
+    it "returns a warning if the user is not provided by an oidc provider" do
+      user.update(identity_url: "ldap-provider:this-will-trigger-a-warning")
+
+      expect(subject.type).to eq(:warning)
+      expect(subject.error_code).to eq(:oidc_non_oidc_user)
+      expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_non_oidc_user"))
+    end
   end
 
   private
