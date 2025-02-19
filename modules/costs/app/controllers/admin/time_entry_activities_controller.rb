@@ -84,11 +84,11 @@ module Admin
     def move
       if @time_entry_activity.update(move_params)
         render_success_flash_message_via_turbo_stream(
-          message: I18n.t(:notice_successful_update)
+          message: I18n.t(:caption_activity_order_changed)
         )
       else
         render_error_flash_message_via_turbo_stream(
-          message: I18n.t(:error_type_could_not_be_saved)
+          message: I18n.t(:error_activity_could_not_be_moved)
         )
       end
 

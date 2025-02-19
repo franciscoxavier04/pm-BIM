@@ -3,35 +3,20 @@ component_wrapper do
   flex_layout(data: wrapper_data_attributes) do |flex|
     flex.with_row do
       render(Primer::OpenProject::SubHeader.new) do |subheader|
-        subheader.with_filter_input(
-          name: "border-box-filter",
-          label: "Search time entry activity",
-          visually_hide_label: true,
-          placeholder: "Search time entry activity",
-          leading_visual: {
-            icon: :search,
-            size: :small
-          },
-          show_clear_button: false,
-          data: {
-            action: "input->projects--settings--border-box-filter#filterLists",
-            "projects--settings--border-box-filter-target": "filter"
-          }
-        )
         subheader.with_action_button(
           scheme: :primary,
           tag: :a,
           href: new_admin_time_entry_activity_path
         ) do |button|
           button.with_leading_visual_icon(icon: :plus)
-          "Activity"
+          I18n.t(:button_add_activity)
         end
       end
     end
 
     flex.with_row do
       render(border_box_container(data: drop_target_config)) do |component|
-        component.with_header(font_weight: :bold) { "Time entry activities" }
+        component.with_header(font_weight: :bold) { TimeEntryActivity.model_name.human(count: :other) }
 
         if time_entry_activities.empty?
           component.with_row do

@@ -36,7 +36,7 @@ See COPYRIGHT and LICENSE files for more details.
       [
         { href: admin_index_path, text: t("label_administration") },
         { href: admin_costs_settings_path, text: t(:project_module_costs) },
-        I18n.t(:enumeration_activities)
+        TimeEntryActivity.model_name.human(count: :other)
       ]
     )
   end
