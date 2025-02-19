@@ -40,4 +40,16 @@ class MeetingOutcome < ApplicationRecord
   validates_presence_of :meeting_agenda_item
   validates_presence_of :notes, if: -> { information_kind? }
   validates_presence_of :work_package, if: -> { work_package_kind? }
+
+  # validate :unique_kind
+
+  # def unique_kind
+  #   if meeting_agenda_item.outcomes.exists?(kind: kind)
+  #     errors.add(:kind, "has already been taken for this MeetingAgenda")
+  #   end
+  # end
+
+  def editable?
+    !meeting_agenda_item.meeting&.closed?
+  end
 end

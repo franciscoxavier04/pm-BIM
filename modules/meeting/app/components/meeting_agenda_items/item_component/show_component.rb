@@ -145,5 +145,13 @@ module MeetingAgendaItems
         :subtle
       end
     end
+
+    def notes_classes
+      if OpenProject::FeatureDecisions.meeting_outcomes_active?
+        "op-uc-container muted-color"
+      else
+        "op-uc-container"
+      end
+    end
   end
 end

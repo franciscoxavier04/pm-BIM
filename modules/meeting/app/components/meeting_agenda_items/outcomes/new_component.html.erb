@@ -6,9 +6,9 @@
           meeting: @meeting,
           meeting_agenda_item: @meeting_agenda_item,
           meeting_outcome: @meeting_outcome,
-          method: :post,
-          submit_path: meeting_outcomes_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item&.id, format: :turbo_stream),
-          cancel_path: cancel_new_meeting_outcomes_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item&.id)
+          method:,
+          submit_path:,
+          cancel_path:
         )
       )
     end

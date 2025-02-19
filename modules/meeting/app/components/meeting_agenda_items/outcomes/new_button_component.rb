@@ -36,7 +36,6 @@ module MeetingAgendaItems::Outcomes
 
     def initialize(meeting:, meeting_agenda_item: nil, disabled: false)
       super
-      # binding.pry
       @meeting = meeting
       @meeting_agenda_item = meeting_agenda_item
       @disabled = @meeting.closed? || disabled

@@ -2,13 +2,9 @@
 
 .op-meeting-outcome-form
   display: grid
-  grid-template-columns: minmax(0, 100%) 100px minmax(200px, 1fr)
-  grid-template-areas: "title . ." "notes notes notes" ". actions actions"
+  grid-template-columns: auto
+  grid-template-areas: "notes" "actions"
   grid-gap: 8px
-  // Do not remove easily!
-  // The hidden labels of the form inputs are positioned absolutely,
-  // and thus break the whole layout if there is no container around them
-  position: relative
 
   &--actions
     justify-self: end

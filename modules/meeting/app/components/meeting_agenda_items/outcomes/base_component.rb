@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -32,7 +34,7 @@ module MeetingAgendaItems
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_agenda_item:, meeting_outcome: nil, state: :edit, hide_notes: true)
+    def initialize(meeting:, meeting_agenda_item:, meeting_outcome: nil, state: :show, hide_notes: true)
       super
 
       @meeting = meeting
@@ -42,7 +44,6 @@ module MeetingAgendaItems
       @hide_notes = hide_notes
 
       override
-      # binding.pry
     end
 
     def wrapper_uniq_by
@@ -52,8 +53,8 @@ module MeetingAgendaItems
     private
 
     def override
-      if @meeting_agenda_item&.outcomes&.information_kind&.first&.notes.present?
-        @meeting_outcome = @meeting_agenda_item&.outcomes&.information_kind&.first
+      if @meeting_agenda_item.outcomes.exists? && @state != :edit
+        @meeting_outcome = @meeting_agenda_item.outcomes.information_kind.last
         @state = :show
         @hide_notes = false
       end

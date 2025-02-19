@@ -31,25 +31,49 @@
 module MeetingAgendaItems
   class Outcomes::ShowNotesComponent < ApplicationComponent
     include ApplicationHelper
+    include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
     def initialize(meeting_outcome:)
       super
 
       @meeting_outcome = meeting_outcome
+      @meeting = @meeting_outcome.meeting_agenda_item.meeting
     end
 
-    def call
-      render(Primer::Box.new(m: 3)) do
-        component_collection do |collection|
-          collection.with_component(Primer::Beta::Heading.new(tag: :h5)) do
-            "Outcome"
-          end
+    private
 
-          collection.with_component(Primer::Box.new(classes: "op-uc-container", mt: 1)) do
-            format_text(@meeting_outcome, :notes)
-          end
-        end
+    def edit_enabled?
+      @meeting.open? && User.current.allowed_in_project?(:create_meeting_minutes, @meeting.project)
+    end
+
+    def edit_action_item(menu)
+      menu.with_item(label: t("label_agenda_outcome_edit"),
+                     href: edit_meeting_outcome_path(@meeting, @meeting_outcome),
+                     content_arguments: {
+                       data: { "turbo-stream": true }
+                     }) do |item|
+        item.with_leading_visual_icon(icon: :pencil)
+      end
+    end
+
+    def copy_action_item(menu)
+      url = meeting_url(@meeting, anchor: "item-#{@meeting_outcome.id}")
+      menu.with_item(label: t("button_copy_link_to_clipboard"),
+                     tag: :"clipboard-copy",
+                     content_arguments: { value: url }) do |item|
+        item.with_leading_visual_icon(icon: :copy)
+      end
+    end
+
+    def delete_action_item(menu)
+      menu.with_item(label: t("label_agenda_outcome_delete"),
+                     scheme: :danger,
+                     href: "",
+                     form_arguments: {
+                       method: :delete, data: { confirm: t("text_are_you_sure"), "turbo-stream": true }
+                     }) do |item|
+        item.with_leading_visual_icon(icon: :trash)
       end
     end
   end

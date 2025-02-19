@@ -124,7 +124,7 @@ Rails.application.routes.draw do
         get :cancel_new
       end
       member do
-        # get :cancel_edit
+        get :cancel_edit
         # put :drop
         # put :move
       end

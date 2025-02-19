@@ -426,6 +426,10 @@ en:
 
   label_agenda_item_work_package: "Agenda item work package"
 
+  label_agenda_outcome_actions: "Agenda outcome actions"
+  label_agenda_outcome_edit: "Edit outcome"
+  label_agenda_outcome_delete: "Remove outcome"
+
   text_agenda_item_title: 'Agenda item "%{title}"'
   text_agenda_work_package_deleted: 'Agenda item for deleted work package'
   text_deleted_agenda_item: 'Deleted agenda item'

@@ -81,16 +81,18 @@
 
       grid.with_area(:notes, tag: :div) do
         if @meeting_agenda_item.notes.present?
-          render(Primer::Box.new(classes: "op-uc-container", mt: 1)) do
+          render(Primer::Box.new(classes: notes_classes, mt: 1)) do
             format_text(@meeting_agenda_item, :notes)
           end
         end
       end
 
-      grid.with_area(:outcomes, tag: :div) do
-        flex_layout do |flex|
-          flex.with_row do
-            render(MeetingAgendaItems::Outcomes::BaseComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item))
+      if OpenProject::FeatureDecisions.meeting_outcomes_active?
+        grid.with_area(:outcomes, tag: :div) do
+          flex_layout do |flex|
+            flex.with_row do
+              render(MeetingAgendaItems::Outcomes::BaseComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item))
+            end
           end
         end
       end

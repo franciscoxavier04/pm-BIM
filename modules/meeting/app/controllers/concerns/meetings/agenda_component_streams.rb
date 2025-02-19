@@ -142,7 +142,7 @@ module Meetings
 
       def render_agenda_item_form_via_turbo_stream(meeting: @meeting, meeting_section: @meeting_section, type: :simple)
         if meeting.sections.empty?
-          render_agenda_item_form_for_empty_meeting_via_turbo_stream(meeting:, type:)
+          render_agenda_item_form_for_empty_meeting_via_turbo_stream(type:)
         else
           render_agenda_item_form_in_section_via_turbo_stream(meeting:, meeting_section:, type:)
         end
@@ -150,7 +150,7 @@ module Meetings
         update_new_button_via_turbo_stream(disabled: true)
       end
 
-      def render_agenda_item_form_for_empty_meeting_via_turbo_stream(meeting: @meeting, type: :simple)
+      def render_agenda_item_form_for_empty_meeting_via_turbo_stream(type: :simple)
         update_new_component_via_turbo_stream(
           hidden: false,
           meeting_section: nil,
@@ -175,16 +175,12 @@ module Meetings
       end
 
       def render_outcome_form_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item)
-        # binding.pry
         render_base_outcome_component_via_turbo_stream(meeting:, meeting_agenda_item:, hide_notes: false, meeting_outcome: nil,
                                                        state: :edit)
-
-        # update_new_outcome_button_via_turbo_stream(disabled: true)
       end
 
-      def render_base_outcome_component_via_turbo_stream(meeting_outcome:, state:, hide_notes:, meeting: @meeting,
+      def render_base_outcome_component_via_turbo_stream(hide_notes:, meeting_outcome: nil, state: :show, meeting: @meeting,
                                                          meeting_agenda_item: @meeting_agenda_item)
-        # binding.pry
         update_via_turbo_stream(
           component: MeetingAgendaItems::Outcomes::BaseComponent.new(
             hide_notes:,
@@ -195,16 +191,6 @@ module Meetings
           )
         )
       end
-
-      # def update_new_outcome_component_via_turbo_stream(hidden: false, meeting_agenda_item: @meeting_agenda_item, meeting: @meeting)
-      #   update_via_turbo_stream(
-      #     component: MeetingAgendaItems::Outcomes::BaseComponent.new(
-      #       hide_notes:
-      #       meeting:,
-      #       meeting_agenda_item:
-      #     )
-      #   )
-      # end
 
       def update_new_outcome_button_via_turbo_stream(disabled: false, meeting: @meeting,
                                                      meeting_agenda_item: @meeting_agenda_item)

@@ -35,7 +35,6 @@ module MeetingAgendaItems::Outcomes
     def initialize(meeting:, meeting_agenda_item:, meeting_outcome:, method:, submit_path:, cancel_path:,
                    display_notes_input: nil)
       super
-      # binding.pry
       @meeting = meeting
       @meeting_agenda_item = meeting_agenda_item
       @meeting_outcome = meeting_outcome

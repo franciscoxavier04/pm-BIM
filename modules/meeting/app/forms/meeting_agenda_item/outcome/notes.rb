@@ -45,7 +45,6 @@ class MeetingAgendaItem::Outcome::Notes < ApplicationForm
 
   def initialize(disabled: false)
     @disabled = disabled
-    # binding.pry
   end
 
   def resource

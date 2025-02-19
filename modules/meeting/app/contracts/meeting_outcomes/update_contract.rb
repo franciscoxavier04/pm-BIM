@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,30 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class MeetingAgendaItem::Notes < ApplicationForm
-  delegate :object, to: :@builder
+module MeetingOutcomes
+  class UpdateContract < BaseContract
+    validate :user_allowed_to_edit
 
-  form do |agenda_item_form|
-    agenda_item_form.rich_text_area(
-      name: :notes,
-      label: MeetingAgendaItem.human_attribute_name(:notes),
-      disabled: @disabled,
-      classes: "ck-editor-primer-adjusted",
-      rich_text_options: {
-        resource:,
-        showAttachments: false
-      }
-    )
-  end
-
-  def initialize(disabled: false)
-    @disabled = disabled
-  end
-
-  def resource
-    return unless object&.meeting
-
-    API::V3::Meetings::MeetingRepresenter
-      .new(object.meeting, current_user: User.current, embed_links: false)
+    def user_allowed_to_edit
+      unless user.allowed_in_project?(:create_meeting_minutes, model.meeting_agenda_item.project)
+        errors.add :base, :error_unauthorized
+      end
+    end
   end
 end

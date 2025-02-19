@@ -80,7 +80,6 @@ class MeetingAgendaItemsController < ApplicationController
 
     @meeting_agenda_item = call.result
 
-    binding.pry
     if call.success?
       reset_meeting_from_agenda_item
       # enable continue editing
