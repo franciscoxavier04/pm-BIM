@@ -132,7 +132,13 @@ class WorkPackages::ScheduleDependency
   end
 
   def create_dependencies
-    moving_work_packages.index_with { |work_package| Dependency.new(work_package, self) }
+    (moved_work_packages + moving_work_packages)
+      .filter { |work_package| automatically_scheduled?(work_package) }
+      .index_with { |work_package| Dependency.new(work_package, self) }
+  end
+
+  def automatically_scheduled?(work_package)
+    work_package.schedule_automatically? || switching_to_automatic_mode.include?(work_package)
   end
 
   def moving_work_packages

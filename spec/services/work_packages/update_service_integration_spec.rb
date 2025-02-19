@@ -820,8 +820,8 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
       it "schedules parent to start and end at soonest working start date and the child to start at the parent start" do
         expect_work_packages(subject.all_results, <<~TABLE)
           subject      | MTWTFSS   |
-          work_package |         [ |
           new_parent   |         X |
+          work_package |         [ |
         TABLE
       end
     end
@@ -838,8 +838,8 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
          "and schedules the parent dates to match the child dates" do
         expect_work_packages(subject.all_results, <<~TABLE)
           subject      | MTWTFSS      |
-          work_package |         XXXX |
           new_parent   |         XXXX |
+          work_package |         XXXX |
         TABLE
       end
     end
@@ -855,8 +855,8 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
       it "schedules the moved work package to start and end at the parent soonest working start date" do
         expect_work_packages(subject.all_results, <<~TABLE)
           subject      | MTWTFSS |
-          work_package |     X   |
           new_parent   |     X   |
+          work_package |     X   |
         TABLE
       end
     end
@@ -872,8 +872,8 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
       it "schedules the moved work package to start at the parent soonest working start date and keep the due date" do
         expect_work_packages(subject.all_results, <<~TABLE)
           subject      | MTWTFSS   |
-          work_package |     X..XX |
           new_parent   |     X..XX |
+          work_package |     X..XX |
         TABLE
       end
     end
@@ -888,9 +888,9 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       it "does not reschedule the moved work package, and sets new parent dates to child dates" do
         expect_work_packages(subject.all_results, <<~TABLE)
-          subject      | MTWTFSS   |
-          work_package |        XX |
-          new_parent   |        XX |
+          subject      | MTWTFSS   | scheduling mode
+          new_parent   |        XX | automatic
+          work_package |        XX | manual
         TABLE
       end
     end

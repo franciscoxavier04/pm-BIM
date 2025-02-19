@@ -286,11 +286,9 @@ class WorkPackages::SetAttributesService < BaseServices::SetAttributes
   def update_dates_from_rescheduled_children
     return if work_package.schedule_manually?
 
-    # do a schedule call to get the children rescheduled before getting their dates
-    service = WorkPackages::GetRescheduledChildrenDatesService.new(work_package:)
-    parent_dates = service.call.result
-    work_package.start_date = parent_dates.start_date
-    work_package.due_date = parent_dates.due_date
+    # do a reschedule call to get the work package dates from the rescheduled children
+    service = WorkPackages::SetScheduleService.new(user: User.current, work_package:, switching_to_automatic_mode: [work_package])
+    service.call(work_package.changes.keys.map(&:to_sym)).result
   end
 
   def update_dates_from_self

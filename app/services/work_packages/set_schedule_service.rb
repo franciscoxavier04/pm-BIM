@@ -39,7 +39,7 @@ class WorkPackages::SetScheduleService
   def call(changed_attributes = %i(start_date due_date))
     altered = []
 
-    if %i(start_date due_date parent parent_id).intersect?(changed_attributes)
+    if %i(start_date due_date parent parent_id schedule_manually).intersect?(changed_attributes)
       altered += schedule_following
     end
 
@@ -73,10 +73,21 @@ class WorkPackages::SetScheduleService
   def schedule_following
     altered = []
 
-    WorkPackages::ScheduleDependency.new(work_packages, switching_to_automatic_mode:).in_schedule_order do |scheduled, dependency|
-      reschedule(scheduled, dependency)
+    moved_work_packages = work_packages.flat_map do |work_package|
+      if work_package.parent && work_package.parent_id_changed?
+        [work_package, work_package.parent]
+      else
+        [work_package]
+      end
+    end
 
-      altered << scheduled if scheduled.changed?
+    WorkPackages::ScheduleDependency.new(moved_work_packages, switching_to_automatic_mode:)
+                                    .in_schedule_order do |scheduled, dependency|
+      changes_before = scheduled.changes
+      reschedule(scheduled, dependency)
+      changes_after = scheduled.changes
+
+      altered << scheduled if changes_before != changes_after
     end
 
     altered
