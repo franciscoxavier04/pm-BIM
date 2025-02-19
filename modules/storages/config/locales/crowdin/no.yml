@@ -3,6 +3,8 @@
     attributes:
       storages/file_link:
         origin_id: Opprinnelses ID
+      storages/project_storage:
+        storage: Storage
       storages/storage:
         creator: Skaper
         drive: Stasjon ID
@@ -72,6 +74,7 @@
         confirmation_text: Vennligst bekreft at du forstår og ønsker å fjerne fillagringen fra dette prosjektet
         heading_text: Fjern prosjektet fra %{storage}
         text: Denne handlingen er irreversibel, og vil fjerne alle koblinger fra arbeidspakker i dette prosjektet til filer og mapper i denne lagringen.
+        title: Remove project from storage
       label: Slett prosjekt
   services:
     attributes:
@@ -258,7 +261,7 @@
         application_link_text: applikasjon "Integrasjon OpenProject"
         integration: Nextcloud administrasjon / OpenProject
         oauth_configuration: Kopier disse verdiene fra %{application_link_text}.
-        provider_configuration: Kontroller at du har administrasjonsrettigheter i din NextCloud-instans og %{application_link_text} er installert før du utfører oppsettet.
+        provider_configuration: Kontroller at du har administrasjonsrettigheter i din Nextcloud-instans og %{application_link_text} er installert før du utfører oppsettet.
       no_specific_folder: Som standard starter hver bruker på sin egen hjem-mappe når vedkommende laster opp en fil.
       no_storage_set_up: Det er ingen fillagring satt opp ennå.
       not_logged_into_storage: Du må logge inn først for å velge en prosjektmappe.
@@ -281,7 +284,7 @@
       setting_up_additional_storages_non_admin: Administratorer kan sette opp flere fillagre i Administrasjon/fillagre.
       setting_up_storages: For å sette opp fillagre, vennligst besøk
       setting_up_storages_non_admin: Administratorer kan sette opp fillagring i Administrasjon-/fillagre.
-      type: 'Sørg for at du har administrasjonsrettigheter i din NextCloud-instans og har følgende applikasjon installert før du utfører oppsettet:'
+      type: 'Sørg for at du har administrasjonsrettigheter i din Nextcloud-instans og har følgende applikasjon installert før du utfører oppsettet:'
       type_link_text: "«Integrasjon OpenProject»"
     label_active: Aktiv
     label_add_new_storage: Legg til nytt lagringssted

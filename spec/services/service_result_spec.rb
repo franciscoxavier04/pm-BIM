@@ -151,6 +151,16 @@ RSpec.describe ServiceResult, type: :model do
         expect(instance.errors).not_to eq result.errors
       end
     end
+
+    context "when using default errors" do
+      it "uses the default human_attribute_name from ServiceResult (Regression #61483)" do
+        instance = described_class.new
+        instance.errors.add(:base, "some error")
+        instance.errors.add(:foo, "an error for foo")
+
+        expect { instance.errors.full_messages }.not_to raise_error
+      end
+    end
   end
 
   describe "result" do

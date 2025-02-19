@@ -12,11 +12,11 @@
           id: "edit_participants_form",
           model: @meeting,
           method: :put,
-          url: update_participants_meeting_path(@meeting),
+          url: update_participants_project_meeting_path(@project, @meeting),
           data: { turbo: true, turbo_stream: true },
           class: 'Overlay-form'
         ) do |f|
-          flex_layout(mt: 3) do |form_container|
+          flex_layout do |form_container|
 
             form_container.with_row do
               flex_layout(justify_content: :flex_end) do |header|

@@ -229,6 +229,10 @@ fr:
           item:
             title: Cet élément n'a pas de niveau hiérarchique inférieur
             description: Ajoutez des éléments à cette liste pour créer des sous-éléments dans une autre liste
+        delete_dialog:
+          title: "Supprimer l'élément de champ personnalisé"
+          heading: "Supprimer l'élément de champ personnalisé ?"
+          description: "Cette action supprimera de manière irréversible l'élément et tous ses sous-éléments. Toutes les valeurs attribuées seront définitivement supprimées. Si ce champ est obligatoire, la suppression d'éléments peut entraîner l'invalidité des lots de travaux existants."
         placeholder:
           label: "Étiquette de l'élément"
           short: "Nom abrégé"
@@ -249,6 +253,7 @@ fr:
     confirm_destroy_option: "Supprimer une option supprimera toutes ses occurrences (ex. dans les plans de travail). Êtes-vous sûr de vouloir le supprimer ?"
     reorder_alphabetical: "Réorganiser les valeurs par ordre alphabétique"
     reorder_confirmation: "Attention : l'ordre actuel des valeurs disponibles sera perdu. Continuer ?"
+    placeholder_version_select: "La sélection d'un lot de travaux ou d'un projet est requise en premier lieu"
     instructions:
       is_required: "Marquer le champ personnalisé comme requis. Cela rendra obligatoire de remplir le champ lors de la création ou de la mise à jour des ressources existantes."
       is_required_for_project: "Cocher pour activer cet attribut et le rendre nécessaire dans tous les projets. Il ne peut pas être désactivé pour certains projets."
@@ -287,6 +292,7 @@ fr:
       label: "Étiquette"
       short: "Nom abrégé"
       parent: "Parent"
+      blueprint: "Modèle de plan"
   global_search:
     placeholder: "Rechercher dans %{app_title}"
     overwritten_tabs:
@@ -469,6 +475,7 @@ fr:
   my:
     access_token:
       create_dialog:
+        title: Jeton généré
         header: Le jeton %{type} a été généré
         warning: Notez que c'est la seule fois que vous verrez ce jeton, assurez-vous de le copier maintenant.
       errors:
@@ -644,6 +651,7 @@ fr:
         title: "Flux de travail manquant pour le partage de lots de travaux"
         message: "Aucun flux de travail n'est configuré pour le rôle 'Éditeur de lots de travaux'. Sans flux de travail, le partage avec l'utilisateur ne permet pas de modifier l'état du lot de travaux. Les flux de travail peuvent être copiés. Sélectionnez un type de source (par exemple 'Tâche') et un rôle de source (par exemple 'Membre'). Sélectionnez ensuite les types cibles. Pour commencer, vous pouvez sélectionner tous les types comme cibles. Enfin, sélectionnez le rôle 'Éditeur de lot de travaux' comme cible et cliquez sur 'Copier'. Après avoir ainsi créé les valeurs par défaut, affinez les flux de travail comme vous le faites pour tous les autres rôles."
         link_message: "Configurez les flux de travail dans l'administration."
+    templated_subject_hint: Généré automatiquement par le type %{type}
     summary:
       reports:
         category:
@@ -666,14 +674,15 @@ fr:
       no_results_title_text: Il n'y a actuellement aucune relation disponible.
       blankslate_heading: "Aucune relation"
       blankslate_description: "Ce lot de travaux n'a pas encore de relations."
+    label_add_child_button: "Enfant"
     label_add_x: "Ajouter %{x}"
     label_edit_x: "Modifier %{x}"
     label_add_description: "Ajouter une description"
     lag:
       subject: "Délai"
-      title: "Délai (en jours)"
       caption: "Le nombre minimum de jours ouvrables à respecter entre les deux lots de travaux."
     relations:
+      label_new_child_created: "Nouveau lot de travaux créé et ajouté en tant qu'enfant"
       label_relates_singular: "lié à"
       label_relates_plural: "liés à"
       label_relates_to_singular: "lié à"
@@ -688,6 +697,9 @@ fr:
       follows_description: "Le lot de travaux lié doit nécessairement se terminer avant que celui-ci puisse commencer"
       label_child_singular: "enfant"
       label_child_plural: "enfants"
+      new_child: "Nouvel enfant"
+      new_child_text: "Crée un lot de travaux lié en tant que sous-élément du lot de travaux actuel (parent)"
+      existing_child: "Enfant existant"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
       label_blocks_singular: "blocs"
       label_blocks_plural: "blocs"
@@ -724,6 +736,8 @@ fr:
       required_description: "Marque ce lot de travaux comme étant une exigence pour le lot de travaux correspondant"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      ghost_relation_title: "Lot de travaux associé"
+      ghost_relation_description: "Cela n'est pas visible pour vous en raison des autorisations."
   label_invitation: Invitation
   account:
     delete: "Supprimer le compte"
@@ -788,6 +802,7 @@ fr:
         is_required: "Obligatoire"
         max_length: "Longueur maximale"
         min_length: "Longueur minimale"
+        content_right_to_left: "Contenu de droite à gauche"
         multi_value: "Autoriser la sélection multiple"
         possible_values: "Valeurs possibles"
         regexp: "Expression régulière"
@@ -823,6 +838,8 @@ fr:
         attr_lastname: "Attribut Nom"
         attr_login: "Attribut Nom d'utilisateur"
         attr_mail: "Attribut Adresse électronique"
+        filter_string: "Chaîne du filtre"
+        admin: "Administrateur"
         base_dn: "DN de base"
         host: "Hôte"
         onthefly: "Création automatique des utilisateurs"
@@ -866,6 +883,9 @@ fr:
       project_custom_field:
         is_required: "Requis pour tous les projets"
         custom_field_section: Section
+      project/life_cycle_step_definition:
+        name: "Nom"
+        color: "Couleur"
       query:
         column_names: "Colonnes"
         relations_to_type_column: "Relations avec %{type}"
@@ -875,7 +895,7 @@ fr:
         timeline_labels: "Étiquettes de chronologie"
       relation:
         lag: "Délai"
-        from: "Lot de travaux"
+        from: "Lot de travaux associé"
         to: "Lot de travaux associé"
       reminder:
         remind_at_date: "Date"
@@ -1199,12 +1219,16 @@ fr:
           typed_dag:
             circular_dependency: "La relation créée un cercle de relations."
           attributes:
-            to:
-              error_not_found: "lot de travaux dans la position 'à' introuvable ou invisible"
-              error_readonly: "impossible de modifier le lien d'une relation existante 'vers'"
-            from:
-              error_not_found: "lot de travaux dans la position 'depuis' introuvable ou invisible"
-              error_readonly: "impossible de modifier le lien d'une relation existante 'depuis'"
+            to_id:
+              error_not_found: "introuvable ou non visible."
+              error_readonly: "ne peut pas être modifié pour les relations existantes."
+            from_id:
+              error_not_found: "introuvable ou non visible."
+              error_readonly: "ne peut pas être modifié pour les relations existantes."
+            lag:
+              greater_than_or_equal_to:
+                zero: "ne peut pas être négatif."
+              less_than_or_equal_to: "est trop élevé."
         repository:
           not_available: "Le fournisseur de gestion de contrôle de sources n'est pas disponible"
           not_whitelisted: "n'est pas autorisé par la configuration."
@@ -1559,8 +1583,9 @@ fr:
   button_copy_and_follow: "Copier et suivre"
   button_create: "Créer"
   button_create_and_continue: "Créer et continuer"
-  button_delete: "Supprimer"
   button_decline: "Refuser"
+  button_delete: "Supprimer"
+  button_delete_permanently: "Supprimer définitivement"
   button_delete_watcher: "Supprimer l'observateur %{name}"
   button_download: "Télécharger"
   button_duplicate: "Dupliquer"
@@ -1763,6 +1788,9 @@ fr:
       hour:
         one: "heure"
         other: "heures"
+      day:
+        one: "jour"
+        other: "jours"
   description_active: "Actif ?"
   description_attachment_toggle: "Afficher/Masquer les pièces jointes"
   description_autocomplete: >
@@ -1798,6 +1826,10 @@ fr:
     upsale:
       title: "Add-on Enterprise"
       link_title: "Plus d'informations"
+      automatic_subject_generation:
+        description: "Créez des sujets générés automatiquement à l'aide d'attributs et de textes référencés."
+      customize_life_cycle:
+        description: "Créez et organisez des étapes et des portes de projet différentes de celles fournies par la planification du cycle de projet PM2."
       form_configuration:
         description: "Personnaliser la configuration du formulaire avec ces add-ons supplémentaires :"
         add_groups: "Ajouter de nouveaux groupes d’attributs"
@@ -2160,6 +2192,7 @@ fr:
   label_add_subtask: "Ajouter une sous-tâche"
   label_added: "ajouté"
   label_added_by: "Ajouté par %{author} "
+  label_added_by_on: "Ajouté par %{author} le %{date}"
   label_added_time_by: "Ajouté par %{author} il y a %{age}"
   label_additional_workflow_transitions_for_assignee: "Transitions supplémentaires autorisées lorsque l'utilisateur est l'assigné"
   label_additional_workflow_transitions_for_author: "Transitions supplémentaires autorisées lorsque l'utilisateur est l'auteur"
@@ -2580,6 +2613,7 @@ fr:
   label_project_new: "Nouveau projet"
   label_project_plural: "Projets"
   label_project_list_plural: "Listes de projets"
+  label_project_lifecycle: "Cycle de vie du projet"
   label_project_attributes_plural: "Attributs du projet"
   label_project_custom_field_plural: "Attributs du projet"
   label_project_settings: "Paramètres du projet"
@@ -2606,6 +2640,7 @@ fr:
   label_relation: "Relation"
   label_relation_actions: "Actions de relation"
   label_relation_delete: "Supprimer la relation"
+  label_relation_edit: "Éditer la relation"
   label_relation_new: "Nouvelle relation"
   label_release_notes: "Notes de version"
   label_remaining_work: "Travail restant"
@@ -3022,6 +3057,7 @@ fr:
   notice_bad_request: "Mauvaise requête."
   notice_not_authorized: "Vous n'êtes pas autorisé à accéder à cette page."
   notice_not_authorized_archived_project: "Le projet auquel vous essayer d'accéder a été archivé."
+  notice_requires_enterprise_token: "Le jeton d'entreprise est manquant ou n'autorise pas l'accès à cette page."
   notice_password_confirmation_failed: "Votre mot de passe est incorrect. Impossible de continuer."
   notice_principals_found_multiple: "Il y a %{number} résultats trouvés. Tabulation pour sélectionner le premier résultat."
   notice_principals_found_single: "Il y a un seul résultat. Tabulation pour le sélectionner."
@@ -3070,7 +3106,7 @@ fr:
     text_getting_started_description: "Obtenez un aperçu rapide de la gestion de projet et de la collaboration en équipe avec OpenProject. Vous pouvez redémarrer cette vidéo à partir du menu d'aide."
     welcome: "Bienvenue sur %{app_title}"
     select_language: "Veuillez sélectionner votre langue"
-  permission_add_work_package_notes: "Ajouter des notes"
+  permission_add_work_package_notes: "Ajouter des commentaires"
   permission_add_work_packages: "Ajouter des lots de travaux"
   permission_add_messages: "Poster des messages"
   permission_add_project: "Créer des projets"
@@ -3100,10 +3136,11 @@ fr:
   permission_delete_timelines: "Supprimer lignes du temps"
   permission_delete_wiki_pages: "Supprimer des pages wiki"
   permission_delete_wiki_pages_attachments: "Supprimer des pièces jointes"
-  permission_edit_work_package_notes: "Éditer des notes"
+  permission_edit_work_package_notes: "Modérer les commentaires"
+  permission_edit_work_package_notes_explanation: "Attention : les utilisateurs disposant de cette autorisation peuvent modifier les commentaires de n'importe qui."
   permission_edit_work_packages: "Éditer des lots de travaux"
   permission_edit_messages: "Éditer des messages"
-  permission_edit_own_work_package_notes: "Éditer ses propres notes"
+  permission_edit_own_work_package_notes: "Modifier ses propres commentaires"
   permission_edit_own_messages: "Éditer ses propres messages"
   permission_edit_own_time_entries: "Éditer mes propres enregistrements de temps"
   permission_edit_project: "Éditer le projet"
@@ -3332,6 +3369,7 @@ fr:
     activated: "activé"
     deactivated: "désactivé"
   search_input_placeholder: "Rechercher…"
+  setting_apiv3_cors_title: "Partage croisé des ressources (CORS)"
   setting_apiv3_cors_enabled: "Activer CORS"
   setting_apiv3_cors_origins: "Origines autorisées de l'API V3 Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_origins_text_html: >
@@ -3557,6 +3595,27 @@ fr:
       new:
         heading: "Nouvel attribut"
         description: "Les modifications apportées à cet attribut de projet seront répercutées dans tous les projets où il est activé. Les attributs obligatoires ne peuvent pas être désactivés par projet."
+    project_life_cycle_step_definitions:
+      heading: "Cycle de vie du projet"
+      heading_description: "Le cycle de vie d'un projet se compose d'étapes et de portes qui structurent vos projets. Elles apparaissent dans la page de présentation du projet et sont disponibles dans la liste des projets. Vous pouvez sélectionner des étapes et des portes individuelles pour personnaliser un projet, mais il n'est pas possible de les réorganiser au niveau d'un projet."
+      label_add: "Ajouter"
+      label_add_description: "Ajouter une définition du cycle de vie"
+      label_add_stage: "Étape"
+      label_add_gate: "Porte"
+      filter:
+        label: "Recherche d'une étape ou d'une porte de projet"
+      section_header: "Étapes et portes"
+      non_defined: "Ni les étapes ni les portes ne sont actuellement définies."
+      new:
+        description: "Les modifications apportées à cette étape du projet seront répercutées dans tous les projets où elle est activée."
+      new_stage:
+        heading: "Nouvelle étape"
+      new_gate:
+        heading: "Nouvelle porte"
+      edit_stage:
+        heading: "Modifier l'étape"
+      edit_gate:
+        heading: "Modifier la porte"
     projects:
       missing_dependencies: "Le module de projet %{module} a été vérifié et dépend de %{dependencies}. Vous devez également vérifier ces dépendances."
       section_new_projects: "Paramètres pour les nouveaux projets"
@@ -3590,6 +3649,7 @@ fr:
   text_are_you_sure_continue: "Voulez-vous vraiment continuer ?"
   text_are_you_sure_with_children: "Supprimer le lot de travaux et tous les lots de travaux enfants ?"
   text_are_you_sure_with_project_custom_fields: "Supprimer cet attribut supprimera également ses valeurs dans tous les projets. Voulez-vous vraiment continuer ?"
+  text_are_you_sure_with_project_life_cycle_step: "La suppression de cette étape entraînera également la suppression de son utilisation dans tous les projets. Voulez-vous vraiment continuer ?"
   text_assign_to_project: "Assigner le projet"
   text_form_configuration: >
     Vous pouvez personnaliser comment les champs seront affichés sur le plan de travail. Vous pouvez librement regrouper les champs pour refléter les besoins pour votre domaine.
@@ -3669,6 +3729,7 @@ fr:
   text_notice_security_badge_displayed_html: >
     Remarque : si cette option est activée, un badge indiquant l'état de votre installation s'affichera dans le panneau <a href="%{information_panel_path}">%{information_panel_label}</a> administration et sur la page d'accueil. Il n'est affiché que pour les administrateurs. <br/>Le badge vérifiera votre version actuelle d'OpenProject par rapport à la base de données officielle d'OpenProject pour vous avertir de toute mise à jour ou vulnérabilité connue. Pour plus d'informations sur ce que la vérification fournit, quelles données sont nécessaires pour fournir les mises à jour disponibles, et comment désactiver cette vérification, veuillez visiter <a href="%{more_info_url}">la documentation de configuration</a>.
   text_own_membership_delete_confirmation: "Vous êtes sur le point de retirer tout ou partie de vos permissions et ne pourrez peut-être plus modifier le projet par la suite.\nÊtes vous sûr de vouloir continuer?"
+  text_permanent_delete_confirmation_checkbox_label: "Je comprends que cette suppression ne peut pas être annulée"
   text_plugin_assets_writable: "Répertoire des « plugin assets » est accessible en écriture"
   text_powered_by: "Propulsé par %{link}"
   text_project_identifier_info: "Seulement les lettres en minuscule (a-z), les nombres, les tirets et les underscores sont autorisés, il est obligatoire de commencer avec une lettre en minuscule."
@@ -4036,6 +4097,8 @@ fr:
       builtin: Application d'instance intégrée
       confidential: Confidentiel
       singular: "Application OAuth"
+      scopes: "Portées"
+      client_credentials: "Informations d'identification du client"
       plural: "Applications OAuth"
       named: "Application OAuth '%{name}'"
       new: "Nouvelle application Oauth"

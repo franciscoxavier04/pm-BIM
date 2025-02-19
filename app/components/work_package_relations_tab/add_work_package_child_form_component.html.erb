@@ -1,7 +1,7 @@
 <%= component_wrapper do %>
   <%= primer_form_with(
     id: FORM_ID,
-    model: WorkPackage.new,
+    model: @child,
     **submit_url_options,
     data: {
       turbo: true,
@@ -9,7 +9,7 @@
     }
     ) do |f| %>
     <%# Form fields section %>
-    <%= flex_layout(my: 3) do |flex|
+    <%= flex_layout(mb: 3) do |flex|
         flex.with_row do
           if @base_errors&.any?
             render(Primer::Alpha::Banner.new(mb: 3, icon: :stop, scheme: :danger)) { @base_errors.join("\n") }
@@ -23,6 +23,7 @@
             my_form.work_package_autocompleter(
               name: :id,
               label: WorkPackage.model_name.human,
+              required: true,
               visually_hide_label: false,
               autocomplete_options: {
                 resource: 'work_packages',

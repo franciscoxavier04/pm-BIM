@@ -29,10 +29,10 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render(Primer::OpenProject::FeedbackDialog.new(
-    id:,
-    title: nil,
-    size: :large
-  )) do |dialog|
+           id:,
+           title: I18n.t("my.access_token.create_dialog.title"),
+           size: :large
+         )) do |dialog|
     dialog.with_feedback_message do |message|
       message.with_heading(tag: :h2) { I18n.t("my.access_token.create_dialog.header", type: "API") }
     end

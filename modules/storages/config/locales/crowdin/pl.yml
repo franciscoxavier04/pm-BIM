@@ -3,6 +3,8 @@ pl:
     attributes:
       storages/file_link:
         origin_id: Identyfikator pochodzenia
+      storages/project_storage:
+        storage: Magazyn danych
       storages/storage:
         creator: Twórca
         drive: Identyfikator dysku
@@ -72,6 +74,7 @@ pl:
         confirmation_text: Potwierdź, że rozumiesz i chcesz usunąć ten magazyn plików z tego projektu.
         heading_text: Usuń projekt z %{storage}
         text: To działanie jest nieodwracalne i spowoduje usunięcie wszystkich linków do plików i folderów tego magazynu z pakietów roboczych tego projektu.
+        title: Usuń projekt z magazynu
       label: Usuń projekt
   services:
     attributes:

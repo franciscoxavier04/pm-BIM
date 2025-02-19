@@ -54,7 +54,9 @@ fr:
         frequency: "Fréquence"
         interval: "Intervalle"
         start_date: "Commence le"
-        end_after: "Terminer la série après"
+        start_time: "Heure de début"
+        start_time_hour: "Heure de début"
+        end_after: "La série de réunions se termine"
         iterations: "Occurrences"
     errors:
       messages:
@@ -116,22 +118,27 @@ fr:
   label_recurring_meeting_plural: "Réunions récurrentes"
   label_template: "Modèle"
   label_recurring_meeting_view: "Voir la série de réunions"
-  label_recurring_meeting_create: "Créer à partir d'un modèle"
+  label_recurring_meeting_create: "Ouvrir"
   label_recurring_meeting_copy: "Copier en tant que réunion ponctuelle"
   label_recurring_meeting_cancel: "Annuler cette occurrence"
   label_recurring_meeting_delete: "Supprimer l'occurrence"
-  label_recurring_meeting_delete_confirmation: >
-    Cette réunion fait partie d'une série appelée %{name}. Cette opération ne supprimera que cette réunion particulière et non l'ensemble de la série. Voulez-vous continuer ?
-  label_recurring_occurrence_delete_confirmation: >
-    Toutes les informations relatives à la réunion qui ne figurent pas dans le modèle seront perdues. Voulez-vous continuer ?
   label_recurring_meeting_restore: "Restaurer cette occurrence"
+  label_recurring_meeting_schedule: "Programmer"
+  label_recurring_meeting_next_occurrence: "Occurrence suivante"
   label_recurring_meeting_more: "Il y a %{count} autres réunions prévues (%{schedule})."
+  label_recurring_meeting_no_end_date: "Il y a d'autres réunions planifiées (%{schedule})."
   label_recurring_meeting_more_singular: "Il y a %{count} autre réunion prévue (%{schedule})."
   label_recurring_meeting_more_past: "Il y a %{count} autres réunions passées."
   label_recurring_meeting_more_past_singular: "Il y a %{count} autre réunion passée."
   label_recurring_meeting_show_more: "Afficher plus"
+  label_recurring_meeting_series_create: "Créer une série de réunions"
   label_recurring_meeting_series_edit: "Modifier la série de réunions"
   label_recurring_meeting_series_delete: "Supprimer la série de réunions"
+  label_recurring_meeting_series_end: "Terminer la série de réunions"
+  label_recurring_meeting_series_end_now: "Terminer la série maintenant"
+  label_meeting_more:
+    one: "Il reste une réunion."
+    other: "Il reste %{count} réunions."
   label_my_meetings: "Mes réunions"
   label_all_meetings: "Toutes les réunions"
   label_upcoming_meetings: "Réunions à venir"
@@ -173,12 +180,29 @@ fr:
         Envoyez immédiatement une invitation par e-mail aux participants sélectionnés ci-dessus. Vous pouvez également le faire manuellement à tout moment par la suite.
       send_invitation_emails_structured: "Envoyez immédiatement une invitation par e-mail à tous les participants. Vous pouvez également le faire manuellement à tout moment par la suite."
       open_meeting_link: "Ouvrir la réunion"
+      open_my_meetings_link: "Accéder à Mes réunions"
+      series:
+        title: "[%{project_name}] Série de réunions « %{title} »"
+        summary: "%{actor} a mis en place une nouvelle série de réunions « %{title} »"
+      series_rescheduled:
+        title: "[%{project_name}] La série de réunions « %{title} » a été reprogrammée"
+        summary: "%{actor} a modifié le calendrier de la série de réunions « %{title} »"
+        old_schedule: "Ancienne planification"
+        new_schedule: "Nouvelle planification"
       invited:
-        summary: "%{actor} vous a envoyé une invitation pour la réunion %{title}"
+        summary: "%{actor} vous a envoyé une invitation pour la réunion « %{title} »"
+      cancelled:
+        header: "Annulée : Réunion « %{title} »"
+        header_occurrence: "Annulée : occurrence de la réunion « %{title} »"
+        header_series: "Annulée : série de réunions « %{title} »"
+        summary_occurrence: "Une occurrence de « %{title} » a été annulée par %{actor}."
+        summary_series: "La série de réunions « %{title} » a été annulée par %{actor}."
+        summary: "« %{title} » a été annulée par %{actor}."
+        date_time: "Date/heure prévue"
       rescheduled:
-        header: "La réunion %{title} a été reprogrammée"
-        summary: "La réunion %{title} a été reprogrammée par %{actor}"
-        body: "La réunion %{title} a été reprogrammée par %{actor}."
+        header: "La réunion « %{title} » a été reprogrammée"
+        summary: "La réunion « %{title} » a été reprogrammée par %{actor}"
+        body: "La réunion « %{title} » a été reprogrammée par %{actor}."
         old_date_time: "Ancienne date/heure"
         new_date_time: "Nouvelle date/heure"
     label_mail_all_participants: "Envoyer un mail à tous les participants"
@@ -192,12 +216,31 @@ fr:
       structured_text: "Organisez votre réunion sous la forme d'une liste dynamique de points à l'ordre du jour, en les reliant éventuellement à un lot de travaux."
       structured_text_copy: "Actuellement, la copie d'une réunion n'entraîne pas la copie des points de l'ordre du jour de la réunion, mais uniquement des détails."
     copied: "Copié depuis la réunion #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Supprimer la réunion"
+        heading: "Supprimer cette réunion ?"
+        confirmation_message_html: >
+          Cette action est irréversible. Veuillez procéder avec prudence.
+      occurrence:
+        title: "Annuler l'occurrence de la réunion"
+        heading: "Annuler cette occurrence de réunion ?"
+        confirmation_message_html: >
+          Toutes les informations relatives à la réunion qui ne figurent pas dans le modèle seront perdues. Voulez-vous continuer ?
+        confirm_button: "Annuler l'occurrence"
+    blankslate:
+      title: "Aucune réunion à afficher"
+      desc: "Aucune réunion ne répond aux critères du filtre actif."
   meeting_section:
     untitled_title: "Section sans titre"
     delete_confirmation: "Supprimer la section supprimera également tous les éléments de l'ordre du jour qui s'y rapportent. Voulez-vous vraiment continuer ?"
     placeholder_title: "Nouvelle section"
     empty_text: "Faites glisser des éléments ici ou créez-en un nouveau"
   recurring_meeting:
+    ended_blankslate:
+      title: "La série de réunions est terminée"
+      message: "Cette série de réunions est terminée. Il n'y a pas de prochaines réunions. "
+      action: "Vous pouvez toujours consulter les événements passés ou modifier la série de réunions pour la prolonger."
     occurrence:
       infoline: "Cette réunion fait partie d'une série de réunions récurrentes."
       error_no_next: "Il n'y a pas de prochaine occurrence pour cette réunion."
@@ -205,7 +248,7 @@ fr:
       first_created: >
         La première réunion a été créée avec succès à partir du modèle. Toutes les réunions futures seront créées automatiquement au moment de l'occurrence précédente.
     template:
-      button_finalize: "Terminer le modèle"
+      button_finalize: "Ouvrir la première réunion"
       blank_title: "Votre modèle de série de réunions est vide"
       description: >
         Ce modèle sera utilisé chaque fois que de nouvelles réunions seront créées dans la série. Vous pouvez ajouter des points à l'ordre du jour, des participants et des pièces jointes à ce modèle.
@@ -221,8 +264,9 @@ fr:
       working_days: "Chaque jour ouvrable"
       weekly: "Hebdomadaire"
     end_after:
-      specific_date: "une date spécifique"
-      iterations: "un nombre d'occurrences"
+      never: "jamais"
+      specific_date: "après une date précise"
+      iterations: "après un certain nombre d'occurrences"
     starts: "Début"
     in_words:
       daily_interval: "Tous les %{interval} jours"
@@ -231,6 +275,41 @@ fr:
       weekly_interval: "Toutes les %{interval} semaines le %{weekday}"
       frequency: "%{base} à %{time}"
       full: "%{base} à %{time}, se termine le %{end_date}"
+      full_past: "%{base} à %{time}, terminée le %{end_date}"
+      never_ending: "%{base} à %{time}"
+    open:
+      title: "Ouvrir"
+      subtitle: >
+        Les réunions ouvertes ont un ordre du jour qui peut être modifié et qui apparaît dans la section « Mes réunions » de chaque utilisateur. Les modifications apportées au modèle de série de réunions n'affectent pas les réunions déjà ouvertes.
+      blankslate:
+        title: "Aucune réunion ouverte pour le moment"
+        desc: "Vous pouvez ouvrir manuellement une réunion planifiée en cliquant sur le bouton « Ouvrir » ci-dessous"
+    planned:
+      title: "Planifiée"
+      subtitle: >
+        Les réunions suivantes sont planifiées dans le calendrier des réunions récurrentes, mais ne sont pas encore ouvertes. Chaque fois qu'une réunion planifiée commence, la suivante est automatiquement ouverte pour vous. Vous pouvez également ouvrir les réunions planifiées manuellement pour importer le modèle et commencer à modifier l'ordre du jour.
+      blankslate:
+        title: "Plus de réunions planifiées"
+        desc: >
+          Aucune réunion supplémentaire n'est prévue dans cette série. Pour planifier des réunions supplémentaires ou prolonger la série, accédez au modèle et modifiez les détails de la réunion pour changer la date de fin, la fréquence ou l'intervalle.
+    delete_dialog:
+      title: "Supprimer la série de réunions"
+      heading: "Supprimer définitivement cette série de réunions ?"
+      confirmation_message_html:
+        zero: >
+          La série de réunions <strong>%{title}</strong> n'a aucune occurrence de réunion. La série sera supprimée pour tout le monde. Veuillez procéder avec prudence.
+        one: >
+          La suppression de <strong>%{title}</strong> supprimera également une occurrence de cette série. Cette action est irréversible. Veuillez procéder avec prudence.
+        other: >
+          La suppression de <strong>%{title}</strong> supprimera les %{count} occurrences de cette série. Cette action est irréversible. Veuillez procéder avec prudence.
+    scheduled_delete_dialog:
+      title: "Annuler l'occurrence de la réunion"
+      heading: "Annuler cette occurrence de réunion ?"
+      confirmation_message_html: >
+        Toutes les informations relatives à la réunion qui ne figurent pas dans le modèle seront perdues. Voulez-vous continuer ?
+      confirm_button: "Annuler l'occurrence"
+    end_series_dialog:
+      title: "Terminer la série de réunions"
   notice_successful_notification: "Notification envoyée avec succès"
   notice_timezone_missing: Aucun fuseau horaire n'est défini et %{zone} est supposé. Pour choisir votre fuseau horaire, veuillez cliquer ici.
   notice_meeting_updated: "Cette page a été mise à jour par quelqu'un d'autre. Rechargez pour voir les changements."
@@ -252,6 +331,8 @@ fr:
   text_duration_in_hours: "Durée en heures"
   text_in_hours: "en heures"
   text_meeting_agenda_for_meeting: 'ordre du jour de la réunion «%{meeting} »'
+  text_meeting_series_end_early_heading: "Supprimer les futures occurrences ?"
+  text_meeting_series_end_early: "La fin de la série supprimera les futures occurrences de réunions ouvertes ou planifiées"
   text_meeting_closing_are_you_sure: "Voulez-vous vraiment clôturer l'ordre du jour de la réunion ?"
   text_meeting_agenda_open_are_you_sure: "Ceci va écraser toutes les modifications dans les minutes ! Voulez-vous continuer ?"
   text_meeting_minutes_for_meeting: 'Minutes de la réunion "%{meeting}"'
@@ -266,6 +347,10 @@ fr:
   label_meeting_created_by: "Créé par"
   label_meeting_last_updated: "Dernière mise à jour"
   label_meeting_reload: "Actualiser"
+  label_meeting_index_today: "Aujourd'hui"
+  label_meeting_index_tomorrow: "Demain"
+  label_meeting_index_this_week: "Plus tard dans la semaine"
+  label_meeting_index_later: "La semaine prochaine et plus tard"
   label_agenda_items: "Points de l'ordre du jour"
   label_agenda_items_reordered: "réorganisé"
   label_agenda_item_remove: "Supprimer de l'ordre du jour"
@@ -291,7 +376,7 @@ fr:
   label_meeting_state_closed: "Fermé"
   label_meeting_state_closed_html: "<i>Fermé</i>"
   label_meeting_state_agenda_created: "Ordre du jour créé"
-  label_meeting_state_scheduled: "Planifiée"
+  label_meeting_state_planned: "Planifiée"
   label_meeting_state_cancelled: "Annulée"
   label_meeting_state_skipped: "Ignorée"
   label_meeting_reopen_action: "Réouvrir la réunion"

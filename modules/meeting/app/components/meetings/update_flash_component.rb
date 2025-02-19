@@ -31,6 +31,7 @@ module Meetings
     include OpTurbo::Streamable
 
     alias_method :meeting, :model
+    delegate :project, to: :meeting
 
     def call
       render(
@@ -42,9 +43,11 @@ module Meetings
       ) do |banner|
         banner.with_action_button(
           tag: :a,
-          href: helpers.meeting_path(meeting),
-          data: { turbo: false, poll_for_changes_target: "reloadButton" },
-          size: :medium
+          href: helpers.project_meeting_path(project, meeting),
+          size: :medium,
+          data: {
+            keep_scroll_position_target: "triggerButton"
+          }
         ) { I18n.t("label_meeting_reload") }
 
         I18n.t("notice_meeting_updated")

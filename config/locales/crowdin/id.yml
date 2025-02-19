@@ -33,7 +33,7 @@ id:
         label_activity_show_only_changes: "Show changes only"
         label_sort_asc: "Newest at the bottom"
         label_sort_desc: "Newest on top"
-        label_type_to_comment: "Add a comment. Type @ to notify people."
+        label_type_to_comment: "Menambahkan komentar. Ketik @ untuk memberi tahu orang lain."
         label_submit_comment: "Submit comment"
         changed_on: "changed on"
         created_on: "created this on"
@@ -60,7 +60,7 @@ id:
         main-menu-bg-hover-background: "Menu utama melayang"
       custom_colors: "Warna kostum"
       customize: "Sesuaikan instalasi OpenProject Anda dengan logo dan warna Anda sendiri."
-      enterprise_notice: "As a special 'Thank you!' for their financial contribution to develop OpenProject, this tiny add-on is only available for Enterprise edition support subscribers."
+      enterprise_notice: "Sebagai ucapan 'Terima kasih!' khusus untuk kontribusi finansial mereka dalam mengembangkan OpenProject, add-on kecil ini hanya tersedia untuk pelanggan dukungan edisi Enterprise."
       enterprise_more_info: "Catatan: logo yang digunakan akan dapat diakses publik."
       manage_colors: "Edit warna pilih opsi"
       instructions:
@@ -73,15 +73,15 @@ id:
         main-menu-bg-color: "Warna latar belakang menu sisi kiri."
       theme_warning: mengubah tema akan mengubah custom style anda. Desain akan menghilang. Apakah anda ingin melanjutkannya?
     enterprise:
-      upgrade_to_ee: "Upgrade to the Enterprise edition"
-      add_token: "Upload an Enterprise edition support token"
+      upgrade_to_ee: "Tingkatkan ke edisi Enterprise"
+      add_token: "Unggah sebuah token bantuan Edisi Enterprise"
       delete_token_modal:
         text: "Are you sure you want to remove the current Enterprise edition token used?"
         title: "Hapus token"
       replace_token: "Gantilah token bantuan yang sedang digunakan"
-      order: "Order Enterprise on-premises edition"
-      paste: "Paste your Enterprise edition support token"
-      required_for_feature: "This add-on is only available with an active Enterprise edition support token."
+      order: "Pesan Enterprise edisi di tempat"
+      paste: "Rekat sebuah token bantuan Edisi Enterprise"
+      required_for_feature: "Pengaya ini hanya tersedia dengan token dukungan edisi Enterprise yang aktif."
       enterprise_link: "Untuk informasi lebih lanjut, klik di sini."
       start_trial: "Mulai uji coba gratis"
       book_now: "Pesan sekarang"
@@ -152,7 +152,7 @@ id:
         Jika anda ceklis box ini, OpenProject akan secara otomatis membuat pengguna baru dari seluruh LDAP saat pertamakali autentikasi dengan OpenProject.
         Biarkan tidak terceklis untuk mengizinkan akun yang ada di OpenProject untuk mengautentikasi melalui LDAP!
     connection_encryption: "Enkripsi sambungan"
-    encryption_details: "LDAPS / STARTTLS options"
+    encryption_details: "Opsi LDAPS / STARTTLS"
     system_account: "Akun sistem"
     system_account_legend: |
       OpenProject membutuhkan akses hanya baca melalui akun sistem untuk melihat pengguna dan grup pada pohon LDAP anda.
@@ -165,16 +165,16 @@ id:
       plain: "kosong"
       simple_tls: "LDAPS"
       start_tls: "STARTTLS"
-      plain_description: "Opens an unencrypted connection to the LDAP server. Not recommended for production."
-      simple_tls_description: "Use LDAPS. Requires a separate port on the LDAP server. This mode is often deprecated, we recommend using STARTTLS whenever possible."
-      start_tls_description: "Sends a STARTTLS command after connecting to the standard LDAP port. Recommended for encrypted connections."
+      plain_description: "Membuka koneksi yang tidak terenkripsi ke server LDAP. Tidak direkomendasikan untuk produksi."
+      simple_tls_description: "Gunakan LDAPS. Membutuhkan port terpisah pada server LDAP. Mode ini sering kali tidak digunakan lagi, kami sarankan untuk menggunakan STARTTLS bila memungkinkan."
+      start_tls_description: "Mengirimkan perintah STARTTLS setelah menyambung ke port LDAP standar. Direkomendasikan untuk koneksi terenkripsi."
       section_more_info_link_html: >
         Bagian ini menyangkut keamanan koneksi dari sumber autentikasi LDAP ini.  Untuk informasi selengkapnya, kunjungi <a href="%{link}">dokumentasi Net::LDAP</a>.
     tls_options:
-      verify_peer: "Verify SSL certificate"
+      verify_peer: "Verifikasi sertifikat SSL"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br/> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
-      tls_certificate_description: "If the LDAP server certificate is not in the trust sources of this system, you can add it manually here. Enter a PEM X509 certifiate string."
+        Memungkinkan verifikasi SSL yang ketat terhadap rantai tepercaya sertifikat. <br/> <strong>Peringatan:</strong> Menghilangkan centang pada opsi ini akan menonaktifkan verifikasi SSL pada sertifikat server LDAP. Hal ini membuat koneksi Anda rentan terhadap serangan Man in the Middle.
+      tls_certificate_description: "Jika sertifikat server LDAP tidak ada dalam sumber kepercayaan sistem ini, Anda dapat menambahkannya secara manual di sini. Masukkan string sertifikat PEM X509."
   forums:
     show:
       no_results_title_text: Saat ini tidak ada postingan di forum.
@@ -223,6 +223,10 @@ id:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          heading: "Delete custom field item?"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -243,17 +247,18 @@ id:
     confirm_destroy_option: "Menghapus sebuah pilihan akan menghapus semua kemunculan yang terjadi (mis. dalam paket pekerjaan). Apakah Anda yakin ingin menghapusnya?"
     reorder_alphabetical: "Susun ulang nilai menurut abjad"
     reorder_confirmation: "Peringatan: Urutan nilai yang tersedia saat ini akan hilang.  Melanjutkan?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
-      is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
+      is_required: "Tandai bidang khusus sesuai kebutuhan. Ini akan membuatnya wajib diisi saat membuat sumber daya baru atau memperbarui sumber daya yang sudah ada."
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
-      is_for_all: "Mark the custom field as available in all existing and new projects."
+      is_for_all: "Tandai bidang khusus sebagai tersedia di semua proyek yang sudah ada dan yang baru."
       multi_select: "Allows the user to assign multiple values to this custom field."
-      searchable: "Include the field values when using the global search functionality."
+      searchable: "Sertakan nilai bidang saat menggunakan fungsi pencarian global."
       searchable_for_project: "Check to make this attribute available as a filter in project lists."
-      editable: "Allow the field to be editable by users themselves."
+      editable: "Izinkan bidang tersebut diedit oleh pengguna sendiri."
       admin_only: "Check to make this attribute only visible to administrators. Users without admin rights will not be able to view or edit it."
       is_filter: >
-        Allow the custom field to be used in a filter in work package views. Note that only with 'For all projects' selected, the custom field will show up in global views.
+        Mengizinkan bidang kustom untuk digunakan dalam filter di tampilan paket kerja. Perhatikan bahwa hanya dengan memilih 'Untuk semua proyek', bidang kustom akan muncul di tampilan global.
     tab:
       no_results_title_text: Tidak ada bidang kustom saat ini.
       no_results_content_text: Buat bidang kustom baru
@@ -281,6 +286,7 @@ id:
       label: "Label"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
@@ -315,7 +321,7 @@ id:
       failed_text: "Permintaan untuk menghapus proyek %{name} telah gagal.  Proyek dibiarkan diarsipkan."
       completed: "Penghapusan proyek %{name} selesai"
       completed_text: "Permintaan untuk menghapus proyek '%{name}' telah selesai."
-      completed_text_children: "Additionally, the following subprojects have been deleted:"
+      completed_text_children: "Selain itu, subproyek berikut ini telah dihapus:"
     index:
       open_as_gantt: "Buka sebagai tampilan Gantt"
       no_results_title_text: Tidak ada proyek saat ini
@@ -329,7 +335,7 @@ id:
       favored: "Favorite projects"
       archived: "Archived projects"
       shared: "Shared project lists"
-      my_lists: "My project lists"
+      my_lists: "Daftar proyek saya"
       new:
         placeholder: "New project list"
       delete_modal:
@@ -369,7 +375,7 @@ id:
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
-          remove_from_project: "Remove from project"
+          remove_from_project: "Hapus dari proyek"
         is_required_blank_slate:
           heading: Required in all projects
           description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
@@ -456,8 +462,9 @@ id:
   my:
     access_token:
       create_dialog:
-        header: The %{type} token has been generated
-        warning: Note that this is the only time you will see this token, make sure to copy it now.
+        title: Token generated
+        header: Token %{type} telah dibuat
+        warning: Perhatikan bahwa ini adalah satu-satunya saat Anda akan melihat token ini, pastikan untuk menyalinnya sekarang.
       errors:
         token_name_blank: "Please provide an API token name"
         token_name_in_use: "This API token name is already in use, please select a different one"
@@ -474,7 +481,7 @@ id:
       notice_reset_token: "Sebuah token baru %{type} telah dibuat. Token akses Anda adalah:"
       token_value_warning: "Catatan: Anda hanya akan melihat token ini satu kali, pastikan untuk membuat salinannya sekarang."
       no_results_title_text: There are currently no access tokens available.
-      notice_api_token_revoked: "The API token has been deleted. To create a new token please use the button in the API section."
+      notice_api_token_revoked: "Token API telah dihapus. Untuk membuat token baru, gunakan tombol di bagian API."
       notice_rss_token_revoked: "The RSS token has been deleted. To create a new token please use the link in the RSS section."
       notice_ical_token_revoked: 'Token iCalendar "%{token_name}" untuk kalender "%{calendar_name}" proyek "%{project_name}" telah dicabut.  URL iCalendar dengan token ini sekarang tidak valid.'
   news:
@@ -520,7 +527,7 @@ id:
     upsale:
       title: Pengguna placeholder
       description: >
-        Placeholder users are a way to assign work packages to users who are not part of your project. They can be useful in a range of scenarios; for example, if you need to track tasks for a resource that is not yet named or available, or if you don’t want to give that person access to OpenProject but still want to track tasks assigned to them.
+        Pengguna placeholder adalah cara untuk memberikan paket kerja kepada pengguna yang bukan bagian dari proyek Anda. Mereka dapat berguna dalam berbagai skenario; misalnya, jika Anda perlu melacak tugas untuk sumber daya yang belum diberi nama atau tersedia, atau jika Anda tidak ingin memberi orang tersebut akses ke OpenProject tetapi masih ingin melacak tugas yang ditugaskan kepada mereka.
   prioritiies:
     edit:
       priority_color_text: |
@@ -577,7 +584,7 @@ id:
       form_configuration:
         tab: "Form configuration"
       more_info_text_html: >
-        Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
+        Edisi Enterprise memungkinkan Anda untuk menyesuaikan konfigurasi formulir dengan pengaya tambahan ini: <br> <ul class="%{list_styling_class}"> <li><b>Menambahkan grup atribut baru</b></li> <li><b>Mengganti nama grup atribut</b></li> <li><b>Menambahkan tabel paket kerja terkait</b></li> </ul>
       projects:
         tab: "Projects"
         enabled_projects: "Enabled projects"
@@ -628,9 +635,10 @@ id:
         The current types of the work packages aren't enabled in the target project. Please enable the types in the target project if you'd like them to remain unchanged. Otherwise, select an available type in the target project from the list.
     sharing:
       missing_workflow_warning:
-        title: "Workflow missing for work package sharing"
-        message: "No workflow is configured for the 'Work package editor' role. Without a workflow, the shared with user cannot alter the status of the work package. Workflows can be copied. Select a source type (e.g. 'Task') and source role (e.g. 'Member'). Then select the target types. To start with, you could select all the types as targets. Finally, select the 'Work package editor' role as the target and press 'Copy'. After having thus created the defaults, fine tune the workflows as you do for every other role."
-        link_message: "Configure the workflows in the administration."
+        title: "Alur kerja yang hilang untuk berbagi paket kerja"
+        message: "Tidak ada alur kerja yang dikonfigurasikan untuk peran 'Editor paket kerja'. Tanpa alur kerja, pengguna yang dibagikan tidak dapat mengubah status paket kerja. Alur kerja dapat disalin. Pilih jenis sumber (misalnya 'Tugas') dan peran sumber (misalnya 'Anggota'). Kemudian pilih jenis target. Sebagai permulaan, Anda dapat memilih semua jenis sebagai target. Terakhir, pilih peran 'Editor paket kerja' sebagai target dan tekan 'Salin'. Setelah membuat default, sesuaikan alur kerja seperti yang Anda lakukan untuk setiap peran lainnya."
+        link_message: "Mengonfigurasi alur kerja dalam administrasi."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -653,14 +661,15 @@ id:
       no_results_title_text: There are currently no relations available.
       blankslate_heading: "No relations"
       blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
     label_add_x: "Add %{x}"
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
     lag:
       subject: "Lag"
-      title: "Lag (in days)"
-      caption: "The minimum number of working days to keep in between the two work packages."
+      caption: "Jumlah hari kerja minimum yang harus dijaga di antara dua paket pekerjaan."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "related to"
       label_relates_plural: "related to"
       label_relates_to_singular: "related to"
@@ -675,6 +684,9 @@ id:
       follows_description: "The related work package necessarily needs to finish before this one can start"
       label_child_singular: "child"
       label_child_plural: "children"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
@@ -711,6 +723,8 @@ id:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Undangan
   account:
     delete: "Hapus akun"
@@ -775,6 +789,7 @@ id:
         is_required: "Harus diisi"
         max_length: "Panjang maksimum"
         min_length: "Panjang minimum"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "Membolehkan pilihan majemuk"
         possible_values: "Nilai yang mungkin"
         regexp: "Regular expression"
@@ -810,6 +825,8 @@ id:
         attr_lastname: "Atribut nama belakang"
         attr_login: "Atribut nama pengguna"
         attr_mail: "Atribut email"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Otomatis membuat pengguna"
@@ -853,6 +870,9 @@ id:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Bagian
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Kolom"
         relations_to_type_column: "Relasi untuk %{type}"
@@ -862,7 +882,7 @@ id:
         timeline_labels: "Label alur waktu"
       relation:
         lag: "Lag"
-        from: "Paket-Penugasan"
+        from: "Related work package"
         to: "Work package terkait"
       reminder:
         remind_at_date: "Date"
@@ -1186,12 +1206,16 @@ id:
           typed_dag:
             circular_dependency: "Relasi menciptakan lingkaran relasi-relasi."
           attributes:
-            to:
-              error_not_found: "work package dalam posisi `to` tidak dapat ditemukan atau tidak terlihat"
-              error_readonly: "an existing relation's `to` link is immutable"
-            from:
-              error_not_found: "work package in `from` position not found or not visible"
-              error_readonly: "an existing relation's `from` link is immutable"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Vendor SCM tidak tersedia"
           not_whitelisted: "konfigurasi tidak mengijinkan."
@@ -1536,8 +1560,9 @@ id:
   button_copy_and_follow: "Salin dan amati"
   button_create: "Buat baru"
   button_create_and_continue: "Buat baru dan lanjut"
-  button_delete: "Hapus"
   button_decline: "Tolak"
+  button_delete: "Hapus"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Hapus pemantau, %{name}"
   button_download: "Download"
   button_duplicate: "Duplikasi"
@@ -1722,6 +1747,8 @@ id:
     units:
       hour:
         other: "jam"
+      day:
+        other: "days"
   description_active: "Aktif?"
   description_attachment_toggle: "Tampil/sembunyikan lampiran"
   description_autocomplete: >
@@ -1757,6 +1784,10 @@ id:
     upsale:
       title: "Enterprise add-on"
       link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Menambahkan atribut kelompok-kelompok baru"
@@ -2119,6 +2150,7 @@ id:
   label_add_subtask: "Tambahkan Sub-Tugas"
   label_added: "ditambahkan"
   label_added_by: "Added by %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Ditambahkan oleh %{author} %{age} yang lalu"
   label_additional_workflow_transitions_for_assignee: "Tambahan transisi diperbolehkan ketika user mendapat penugasan"
   label_additional_workflow_transitions_for_author: "Tambahan transisi diperbolehkan ketika user adalah Penulis"
@@ -2539,6 +2571,7 @@ id:
   label_project_new: "Project baru"
   label_project_plural: "Project"
   label_project_list_plural: "Project lists"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Atribut proyek"
   label_project_custom_field_plural: "Atribut proyek"
   label_project_settings: "Projek setting"
@@ -2565,6 +2598,7 @@ id:
   label_relation: "Relation"
   label_relation_actions: "Relation actions"
   label_relation_delete: "Hapus keterkaitan"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Keterkaitan baru"
   label_release_notes: "Release notes"
   label_remaining_work: "Pekerjaan yang tersisa"
@@ -2980,6 +3014,7 @@ id:
   notice_bad_request: "Bad Request."
   notice_not_authorized: "Anda tidak diizinkan untuk mengakses halaman ini."
   notice_not_authorized_archived_project: "Project yang Anda coba akses telah diarsipkan."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Password Anda tidak tepat. Tidak dapat melanjutkan."
   notice_principals_found_multiple: "Ada beberapa %{number} hasil yang ditemukan. \n Tab untuk fokus ke hasil pertama."
   notice_principals_found_single: "Ada satu hasil.\n Tab untuk lebih fokus."
@@ -3026,7 +3061,7 @@ id:
     text_getting_started_description: "Dapatkan ikhtisar singkat manajemen proyek dan kolaborasi tim dengan OpenProject. Anda dapat memulai ulang video ini dari menu bantuan."
     welcome: "Selamat datang di %{app_title}"
     select_language: "Silakan pilih bahasa Anda"
-  permission_add_work_package_notes: "Tambahkan catatan"
+  permission_add_work_package_notes: "Add comments"
   permission_add_work_packages: "Tambah Paket-Penugasan"
   permission_add_messages: "Kirim pesan"
   permission_add_project: "Create projects"
@@ -3056,10 +3091,11 @@ id:
   permission_delete_timelines: "Menghapus Timeline"
   permission_delete_wiki_pages: "Hapus halaman Wiki"
   permission_delete_wiki_pages_attachments: "Hapus lampiran"
-  permission_edit_work_package_notes: "Edit catatan"
+  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit Paket-Penugasan"
   permission_edit_messages: "Edit pesan"
-  permission_edit_own_work_package_notes: "Edit catatan saya"
+  permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Edit pesan"
   permission_edit_own_time_entries: "Edit Time log"
   permission_edit_project: "Edit Project"
@@ -3152,9 +3188,9 @@ id:
       are_you_sure: "Are you sure you want to archive the project '%{name}'?"
       archived: "Diarsipkan"
     count:
-      zero: "0 Projects"
-      one: "1 Project"
-      other: "%{count} Projects"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Activity"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Paket-Penugasan"
@@ -3286,6 +3322,7 @@ id:
     activated: "diaktifkan"
     deactivated: "dinonaktifkan"
   search_input_placeholder: "Mencari ..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Aktifkan CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) memungkinkan asal"
   setting_apiv3_cors_origins_text_html: >
@@ -3511,6 +3548,27 @@ id:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -3544,6 +3602,7 @@ id:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "Hapus Paket-Penugasan dan semua paket turunannya?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tetapkan untuk Project"
   text_form_configuration: >
     Anda dapat mengkustom field-field mana yang akan ditampilkan dalam form paket kerja. Anda dapat dengan bebas mengelompokkan field-field untuk mencerminkan kebutuhan-kebutuhan untuk domain Anda.
@@ -3623,6 +3682,7 @@ id:
   text_notice_security_badge_displayed_html: >
     Catatan: jika diaktifkan, ini akan menampilkan lencana dengan status pemasangan Anda di panel administrasi <a href="%{information_panel_path}">%{information_panel_label}</a>, dan di beranda. Ini hanya ditampilkan kepada administrator. <br/> Lencana akan memeriksa versi OpenProject Anda saat ini dengan database rilis OpenProject resmi untuk memberi tahu Anda tentang pembaruan atau kerentanan yang diketahui. Untuk informasi lebih lanjut tentang apa yang diberikan pemeriksaan, data apa yang diperlukan untuk menyediakan pembaruan yang tersedia, dan cara menonaktifkan pemeriksaan ini, silakan kunjungi <a href="%{more_info_url}">dokumentasi konfigurasi</a>.
   text_own_membership_delete_confirmation: "Anda akan menghapus hak akses Anda dan mungkin Anda tidak dapat lagi mengedit Project ini. Apakah Anda yakin Anda ingin melanjutkan?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Plugin aset direktori, bisa ditulisi"
   text_powered_by: "Didukung oleh %{link}"
   text_project_identifier_info: "Hanya huruf kecil (a-z), angka, garis dan garis bawah yang diperbolehkan, harus diawali dengan huruf kecil."
@@ -3990,6 +4050,8 @@ id:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "aplikasi OAuth"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"
       new: "New OAuth application"

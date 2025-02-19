@@ -50,10 +50,12 @@ zh-CN:
       meeting_section:
         title: "标题"
       recurring_meeting:
-        frequency: "频率"
-        interval: "周期"
+        frequency: "周期"
+        interval: "间隔"
         start_date: "开始日期："
-        end_after: "结束定期会议于"
+        start_time: "开始时间"
+        start_time_hour: "开始时间"
+        end_after: "会议系列结束"
         iterations: "事件"
     errors:
       messages:
@@ -115,22 +117,26 @@ zh-CN:
   label_recurring_meeting_plural: "定期会议"
   label_template: "模板"
   label_recurring_meeting_view: "查看会议系列"
-  label_recurring_meeting_create: "使用模板创建"
+  label_recurring_meeting_create: "打开"
   label_recurring_meeting_copy: "一次性复制"
   label_recurring_meeting_cancel: "取消此事件"
   label_recurring_meeting_delete: "删除事件"
-  label_recurring_meeting_delete_confirmation: >
-    本次会议是名为 %{name} 的会议系列的一部分。只会删除本次会议，而不会删除整个系列。要继续吗？
-  label_recurring_occurrence_delete_confirmation: >
-    任何不在模板中的会议信息都将丢失。要继续吗？
   label_recurring_meeting_restore: "恢复此事件"
+  label_recurring_meeting_schedule: "日程"
+  label_recurring_meeting_next_occurrence: "下一个事件"
   label_recurring_meeting_more: "还有至少 %{count} 个预定会议 (%{schedule})。"
+  label_recurring_meeting_no_end_date: "还有更多预定会议 (%{schedule})。"
   label_recurring_meeting_more_singular: "还有至少 %{count} 个预定会议 (%{schedule})。"
   label_recurring_meeting_more_past: "有至少 %{count} 个过往会议。"
   label_recurring_meeting_more_past_singular: "有至少 %{count} 个过往会议。"
   label_recurring_meeting_show_more: "显示更多"
+  label_recurring_meeting_series_create: "创建会议系列"
   label_recurring_meeting_series_edit: "编辑会议系列"
   label_recurring_meeting_series_delete: "删除会议系列"
+  label_recurring_meeting_series_end: "结束会议系列"
+  label_recurring_meeting_series_end_now: "立即结束系列"
+  label_meeting_more:
+    other: "还有至少 %{count} 个会议。"
   label_my_meetings: "我的会议"
   label_all_meetings: "所有会议"
   label_upcoming_meetings: "即将进行的会议"
@@ -172,12 +178,29 @@ zh-CN:
         立即向上面选定的参加者发送电子邮件邀请。您也可以在之后随时手动发送。
       send_invitation_emails_structured: "立即向所有与会者发送电子邮件邀请。您也可以在之后随时手动发送。"
       open_meeting_link: "打开会议"
+      open_my_meetings_link: "转到我的会议"
+      series:
+        title: "[%{project_name}] 会议系列 '%{title}'"
+        summary: "%{actor} 设置了一个新的会议系列 '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] 会议系列 '%{title}' 已重新安排"
+        summary: "%{actor} 已更改会议系列 '%{title}' 的时间表"
+        old_schedule: "旧时间表"
+        new_schedule: "新时间表"
       invited:
-        summary: "%{actor} 已经向您发送了一个 %{title} 会议邀请"
+        summary: "%{actor} 向您发送了会议 '%{title}' 的邀请"
+      cancelled:
+        header: "已取消：会议 '%{title}'"
+        header_occurrence: "已取消：会议事件 '%{title}'"
+        header_series: "已取消：会议系列 '%{title}'"
+        summary_occurrence: "%{actor} 已取消 '%{title}' 的事件。"
+        summary_series: "%{actor} 已取消会议系列 '%{title}'。"
+        summary: "%{actor} 已取消 '%{title}'。"
+        date_time: "预定日期/时间"
       rescheduled:
-        header: " %{title} 会议已经被重新安排"
-        summary: "会议 %{title} 已经被 %{actor} 重新安排"
-        body: "此会议 %{title} 已经被 %{actor} 重新安排。"
+        header: "会议 '%{title}' 已经重新安排"
+        summary: "会议 '%{title}' 已经由 %{actor} 重新安排"
+        body: "会议 '%{title}' 已经由 %{actor} 重新安排。"
         old_date_time: "旧日期/时间"
         new_date_time: "新日期/时间"
     label_mail_all_participants: "发送电子邮件给所有参与者"
@@ -191,12 +214,31 @@ zh-CN:
       structured_text: "将您的会议组织成一个动态的议程项目列表，并可选地将它们链接到一个工作包。"
       structured_text_copy: "目前复制会议不会复制相关会议的议程项目，只会复制会议的详细信息。"
     copied: "从会议 #%{id} 复制"
+    delete_dialog:
+      one_time:
+        title: "删除会议"
+        heading: "删除这个会议？"
+        confirmation_message_html: >
+          此操作不可逆。请谨慎处理。
+      occurrence:
+        title: "取消会议事件"
+        heading: "取消此会议事件？"
+        confirmation_message_html: >
+          任何不在模板中的会议信息都将丢失。 您想要继续吗？
+        confirm_button: "取消事件"
+    blankslate:
+      title: "无会议显示"
+      desc: "没有符合主动筛选条件的会议。"
   meeting_section:
     untitled_title: "无标题章节"
     delete_confirmation: "删除该属性也会删除其在所有项目中的值。您确定要这样做吗？"
     placeholder_title: "新建章节"
     empty_text: "拖动项目到此处或创建一个新项目"
   recurring_meeting:
+    ended_blankslate:
+      title: "结束"
+      message: "本系列会议已经结束，没有即将举行的会议。 "
+      action: "您仍可以查看过去的事件或编辑会议系列来扩展它。"
     occurrence:
       infoline: "本次会议是定期会议系列的一部分。"
       error_no_next: "此会议没有下一个发生时间。"
@@ -204,7 +246,7 @@ zh-CN:
       first_created: >
         第一次会议已成功从模板创建。所有未来的会议将会在上一次发生的时间自动创建。
     template:
-      button_finalize: "完成模板"
+      button_finalize: "打开首次会议"
       blank_title: "您的会议系列模板为空"
       description: >
         此模板将在系列中创建新会议时使用。您可以在此模板中添加议程项目、参与者和附件。
@@ -220,8 +262,9 @@ zh-CN:
       working_days: "每个工作日"
       weekly: "每周"
     end_after:
-      specific_date: "具体日期"
-      iterations: "具体事件"
+      never: "从不"
+      specific_date: "在指定日期之后"
+      iterations: "在数次事件之后"
     starts: "开始"
     in_words:
       daily_interval: "每 %{interval} 天"
@@ -230,6 +273,41 @@ zh-CN:
       weekly_interval: "每 %{interval} 周在 %{weekday}"
       frequency: "%{base} 在 %{time}"
       full: "%{base} 在 %{time}，在 %{end_date} 结束"
+      full_past: "%{base} 在 %{time}，于 %{end_date}结束"
+      never_ending: "%{base} 在 %{time}"
+    open:
+      title: "打开"
+      subtitle: >
+        公开会议的议程可以编辑，并显示在个人用户的 "我的会议 "部分。更改会议系列模板不会影响已经发生的会议事件。
+      blankslate:
+        title: "目前没有召开的会议"
+        desc: "您可以点击下面的 \"打开 \"按钮，手动召开计划中的会议"
+    planned:
+      title: "已计划"
+      subtitle: >
+        以下会议按经常性会议时间表安排，但尚未开放。 每次计划的会议开始时，下一次会议将自动为您打开。 您也可以手动打开计划的会议来导入模板并开始编辑议程。
+      blankslate:
+        title: "没有更多的会议计划"
+        desc: >
+          本系列没有其他会议计划。 如需添加更多会议或延长会议系列，请转至模板并编辑会议详细信息以更改结束日期、频率或间隔。
+    delete_dialog:
+      title: "删除会议系列"
+      heading: "永久删除此会议系列？"
+      confirmation_message_html:
+        zero: >
+          会议系列 <strong>%{title}</strong> 没有任何会议事件。将为所有人删除该系列。请谨慎操作。
+        one: >
+          删除 <strong>%{title}</strong> 也会删除此系列中的一次事件。此操作不可逆转。请谨慎操作。
+        other: >
+          删除 <strong>%{title}</strong> 将删除此系列中的全部 %{count} 个事件。此操作不可逆转。请谨慎操作。
+    scheduled_delete_dialog:
+      title: "取消会议事件"
+      heading: "取消此会议事件？"
+      confirmation_message_html: >
+        任何不在模板中的会议信息都将丢失。 您想要继续吗？
+      confirm_button: "取消事件"
+    end_series_dialog:
+      title: "结束会议系列"
   notice_successful_notification: "通知发送成功"
   notice_timezone_missing: 没有设定时区，预设时区为 %{zone}。要选择您的时区，请单击此处。
   notice_meeting_updated: "此页面已被其他人更新。重新加载以查看更改。"
@@ -251,6 +329,8 @@ zh-CN:
   text_duration_in_hours: "持续时间（单位：小时）"
   text_in_hours: "小时"
   text_meeting_agenda_for_meeting: '“%{meeting}”会议议程'
+  text_meeting_series_end_early_heading: "删除未来发生的事件？"
+  text_meeting_series_end_early: "结束系列将删除任何将来的公开会议或预定会议的事件"
   text_meeting_closing_are_you_sure: "确定要关闭该会议议程吗？"
   text_meeting_agenda_open_are_you_sure: "这将在几分钟内覆盖所有更改！要继续吗？"
   text_meeting_minutes_for_meeting: '“%{meeting}“会议记录'
@@ -265,6 +345,10 @@ zh-CN:
   label_meeting_created_by: "创建者:"
   label_meeting_last_updated: "最后更新"
   label_meeting_reload: "重新加载"
+  label_meeting_index_today: "今天"
+  label_meeting_index_tomorrow: "明天"
+  label_meeting_index_this_week: "本周晚些时候"
+  label_meeting_index_later: "下周及以后"
   label_agenda_items: "议程项目"
   label_agenda_items_reordered: "重新排序"
   label_agenda_item_remove: "从议程中移除"
@@ -290,7 +374,7 @@ zh-CN:
   label_meeting_state_closed: "已关闭"
   label_meeting_state_closed_html: "<i>关闭</i>"
   label_meeting_state_agenda_created: "议程已创建"
-  label_meeting_state_scheduled: "已加入日程"
+  label_meeting_state_planned: "已计划"
   label_meeting_state_cancelled: "已取消"
   label_meeting_state_skipped: "已跳过"
   label_meeting_reopen_action: "重新开放会议"

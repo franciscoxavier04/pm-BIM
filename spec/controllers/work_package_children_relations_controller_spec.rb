@@ -100,7 +100,7 @@ RSpec.describe WorkPackageChildrenRelationsController do
       send_delete_request
 
       expect(WorkPackageRelationsTab::IndexComponent).to have_received(:new)
-        .with(work_package:, relations: [], children: [])
+        .with(work_package:)
       expect(controller).to have_received(:replace_via_turbo_stream)
         .with(component: an_instance_of(WorkPackageRelationsTab::IndexComponent))
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -54,14 +56,13 @@ class Meeting < ApplicationRecord
   scope :templated, -> { where(template: true) }
   scope :not_templated, -> { where(template: false) }
 
-  scope :cancelled, -> { where(state: :cancelled) }
-  scope :not_cancelled, -> { where.not(id: cancelled) }
+  scope :not_cancelled, -> { where.not.cancelled }
 
   scope :not_recurring, -> { where(recurring_meeting_id: nil) }
-  scope :recurring, -> { where.not(id: not_recurring) }
+  scope :recurring, -> { where.not(recurring_meeting_id: nil) }
 
-  scope :from_tomorrow, -> { where(["start_time >= ?", Date.tomorrow.beginning_of_day]) }
-  scope :from_today, -> { where(["start_time >= ?", Time.zone.today.beginning_of_day]) }
+  scope :from_tomorrow, -> { where(start_time: Date.tomorrow.beginning_of_day..) }
+  scope :from_today, -> { where(start_time: Time.zone.today.beginning_of_day..) }
 
   scope :upcoming, -> { where("start_time + (interval '1 hour' * duration) >= ?", Time.current) }
   scope :past, -> { where("start_time + (interval '1 hour' * duration) < ?", Time.current) }
@@ -112,10 +113,14 @@ class Meeting < ApplicationRecord
 
   enum state: {
     open: 0, # 0 -> default, leave values for future states between open and closed
-    scheduled: 1,
+    planned: 1,
     cancelled: 4,
     closed: 5
   }
+
+  def recurring?
+    recurring_meeting_id.present?
+  end
 
   ##
   # Cache key for detecting changes to be shown to the user

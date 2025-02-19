@@ -3,6 +3,8 @@ pt-BR:
     attributes:
       storages/file_link:
         origin_id: Id da origem
+      storages/project_storage:
+        storage: Armazenamento
       storages/storage:
         creator: Criador
         drive: Drive ID
@@ -72,6 +74,7 @@ pt-BR:
         confirmation_text: Confirme se você entende e deseja remover este armazenamento de arquivos do projeto
         heading_text: Remover projeto de %{storage}
         text: Esta ação é permanente e removerá todos os links entre os pacotes de trabalho deste projeto e os arquivos e pastas desse armazenamento.
+        title: Remover projeto do armazenamento
       label: Remover projeto
   services:
     attributes:

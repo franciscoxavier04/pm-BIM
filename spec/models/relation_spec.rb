@@ -35,6 +35,35 @@ RSpec.describe Relation do
   let(:type) { "relates" }
   let(:relation) { build(:relation, from:, to:, relation_type: type) }
 
+  it "validates lag numericality" do
+    relation.lag = -1
+    expect(relation).not_to be_valid
+    expect(relation.errors[:lag])
+      .to include(I18n.t(:"activerecord.errors.models.relation.attributes.lag.greater_than_or_equal_to.zero"))
+
+    relation.lag = 2_147_483_648
+    expect(relation).not_to be_valid
+    expect(relation.errors[:lag]).to include(I18n.t(:"activerecord.errors.models.relation.attributes.lag.less_than_or_equal_to"))
+
+    relation.lag = 1_000
+    expect(relation).to be_valid
+  end
+
+  it "validates relation uniqueness on both from_id and to_id" do
+    create(:relation, from:, to:)
+
+    relation = build(:relation, from:, to:)
+    expect(relation).not_to be_valid
+    expect(relation.errors.as_json).to include(to: ["has already been taken."])
+
+    other = create(:work_package)
+    relation = build(:relation, from:, to: other)
+    expect(relation).to be_valid
+
+    relation = build(:relation, from: other, to:)
+    expect(relation).to be_valid
+  end
+
   describe "all relation types" do
     Relation::TYPES.each do |key, type_hash|
       let(:type) { key }

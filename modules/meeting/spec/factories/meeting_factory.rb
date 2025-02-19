@@ -31,6 +31,7 @@ FactoryBot.define do
     author factory: :user
     project
     start_time { Date.tomorrow + 10.hours }
+    recurring_meeting { nil }
     duration { 1.0 }
     location { "https://some-url.com" }
     m.sequence(:title) { |n| "Meeting #{n}" }

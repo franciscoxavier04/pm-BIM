@@ -53,7 +53,9 @@ ms:
         frequency: "Frekuensi"
         interval: "Selang waktu"
         start_date: "Bermula pada"
-        end_after: "Tamat siri selepas"
+        start_time: "Start time"
+        start_time_hour: "Start time"
+        end_after: "Meeting series ends"
         iterations: "Kejadian"
     errors:
       messages:
@@ -115,22 +117,26 @@ ms:
   label_recurring_meeting_plural: "Mesyuarat berulang"
   label_template: "templat"
   label_recurring_meeting_view: "Lihat siri mesyuarat"
-  label_recurring_meeting_create: "Buat daripada templat"
-  label_recurring_meeting_copy: "Salin sebagai one-off"
+  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Batalkan kejadian ini"
   label_recurring_meeting_delete: "Padam kejadian"
-  label_recurring_meeting_delete_confirmation: >
-    Mesyuarat ini adalah sebahagian daripada siri yang dipanggil %{name}. Ini hanya akan memadamkan kejadian tertentu ini dan bukan keseluruhan siri. Adakah anda mahu meneruskan?
-  label_recurring_occurrence_delete_confirmation: >
-    Sebarang maklumat mesyuarat yang tiada dalam templat akan hilang. Adakah anda mahu meneruskan?
   label_recurring_meeting_restore: "Pulihkan kejadian ini"
+  label_recurring_meeting_schedule: "Schedule"
+  label_recurring_meeting_next_occurrence: "Next occurrence"
   label_recurring_meeting_more: "Terdapat %{count} lagi mesyuarat yang dijadualkan (%{schedule})."
+  label_recurring_meeting_no_end_date: "There are more scheduled meetings (%{schedule})."
   label_recurring_meeting_more_singular: "Terdapat %{count} lagi mesyuarat berjadual (%{schedule})."
   label_recurring_meeting_more_past: "Terdapat %{count} lagi mesyuarat yang lalu."
   label_recurring_meeting_more_past_singular: "Terdapat %{count} lagi mesyuarat yang lalu."
   label_recurring_meeting_show_more: "Tunjukkan lagi"
+  label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit siri mesyuarat"
   label_recurring_meeting_series_delete: "Padamkan siri mesyuarat"
+  label_recurring_meeting_series_end: "End meeting series"
+  label_recurring_meeting_series_end_now: "End series now"
+  label_meeting_more:
+    other: "There are %{count} more meetings."
   label_my_meetings: "Mesyuarat saya"
   label_all_meetings: "Semua mesyuarat"
   label_upcoming_meetings: "Mesyuarat akan datang"
@@ -172,12 +178,29 @@ ms:
         Hantar jemputan e-mel segera kepada peserta yang dipilih di atas. Anda juga boleh melakukan ini secara manual pada bila-bila masa kemudian.
       send_invitation_emails_structured: "Hantar jemputan e-mel dengan segera kepada semua peserta. Anda juga boleh melakukan ini secara manual pada bila-bila masa kemudian."
       open_meeting_link: "Buka mesyuarat"
+      open_my_meetings_link: "Go to My meetings"
+      series:
+        title: "[%{project_name}] Meeting series '%{title}'"
+        summary: "%{actor} has set up a new meeting series '%{title}'"
+      series_rescheduled:
+        title: "[%{project_name}] Meeting series '%{title}' rescheduled"
+        summary: "%{actor} has changed the schedule for meeting series '%{title}'"
+        old_schedule: "Old schedule"
+        new_schedule: "New schedule"
       invited:
-        summary: "%{actor} telah menghantar anda jemputan ke mesyuarat %{title}"
+        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+      cancelled:
+        header: "Cancelled: Meeting '%{title}'"
+        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_series: "Cancelled: Meeting series '%{title}'"
+        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
+        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary: "'%{title}' has been cancelled by %{actor}."
+        date_time: "Scheduled date/time"
       rescheduled:
-        header: "Mesyuarat %{title} telah dijadualkan semula"
-        summary: "Mesyuarat %{title} telah dijadualkan semula oleh %{actor}"
-        body: "Mesyuarat %{title} telah dijadualkan semula oleh %{actor}"
+        header: "Meeting '%{title}' has been rescheduled"
+        summary: "Meeting '%{title}' has been rescheduled by %{actor}"
+        body: "The meeting '%{title}' has been rescheduled by %{actor}."
         old_date_time: "Tarikh/masa lama"
         new_date_time: "Tarikh/masa baharu"
     label_mail_all_participants: "Hantar e-mel kepada semua peserta"
@@ -191,12 +214,31 @@ ms:
       structured_text: "Atur mesyuarat anda sebagai senarai item agenda yang dinamik, secara pilihan memautkannya ke pakej kerja."
       structured_text_copy: "Menyalin mesyuarat pada masa ini tidak akan menyalin item agenda mesyuarat yang berkaitan, hanya butiran sahaja"
     copied: "Disalin daripada Mesyuarat #%{id}"
+    delete_dialog:
+      one_time:
+        title: "Delete meeting"
+        heading: "Delete this meeting?"
+        confirmation_message_html: >
+          This action is not reversible. Please proceed with caution.
+      occurrence:
+        title: "Cancel meeting occurrence"
+        heading: "Cancel this meeting occurrence?"
+        confirmation_message_html: >
+          Any meeting information not in the template will be lost. Do you want to continue?
+        confirm_button: "Cancel occurrence"
+    blankslate:
+      title: "No meetings to display"
+      desc: "There are no meetings that meet the active filter criteria."
   meeting_section:
     untitled_title: "Bahagian tanpa tajuk"
     delete_confirmation: "Memadam bahagian ini akan memadam setiap item agenda juga. Adakah anda pasti anda ingin berbuat demikian?"
     placeholder_title: "Bahagian baharu"
     empty_text: "Tarik item ke sini atau cipta yang baharu"
   recurring_meeting:
+    ended_blankslate:
+      title: "Meeting series ended"
+      message: "This meeting series has come to an end. There are no upcoming meetings. "
+      action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
       infoline: "Mesyuarat ini adalah sebahagian daripada siri mesyuarat berulang."
       error_no_next: "Tiada kejadian seterusnya untuk mesyuarat ini."
@@ -204,7 +246,7 @@ ms:
       first_created: >
         Mesyuarat pertama telah berjaya dibuat daripada templat. Semua mesyuarat akan datang akan dibuat secara automatik pada masa kejadian sebelumnya.
     template:
-      button_finalize: "Selesaikan templat"
+      button_finalize: "Open first meeting"
       blank_title: "Templat siri mesyuarat anda kosong"
       description: >
         Templat ini akan digunakan apabila mesyuarat baharu dalam siri dibuat. Anda boleh menambah item agenda, peserta dan lampiran pada templat ini.
@@ -220,8 +262,9 @@ ms:
       working_days: "Setiap hari bekerja"
       weekly: "Mingguan"
     end_after:
-      specific_date: "tarikh tertentu"
-      iterations: "beberapa kejadian"
+      never: "never"
+      specific_date: "after a specific date"
+      iterations: "after a number of occurrences"
     starts: "Mula"
     in_words:
       daily_interval: "Setiap %{interval} hari"
@@ -230,6 +273,41 @@ ms:
       weekly_interval: "Setiap %{interval} minggu pada %{weekday}"
       frequency: "%{base} pada %{time}"
       full: "%{base} pada %{time}, berakhir pada %{end_date}"
+      full_past: "%{base} at %{time}, ended on %{end_date}"
+      never_ending: "%{base} at %{time}"
+    open:
+      title: "Open"
+      subtitle: >
+        Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
+      blankslate:
+        title: "No open meetings at the moment"
+        desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
+    planned:
+      title: "Planned"
+      subtitle: >
+        The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
+      blankslate:
+        title: "No more planned meetings"
+        desc: >
+          There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
+    delete_dialog:
+      title: "Delete meeting series"
+      heading: "Permanently delete this meeting series?"
+      confirmation_message_html:
+        zero: >
+          The meeting series <strong>%{title}</strong> does not have any meeting occurrences. The series will be deleted for everyone. Please proceed with caution.
+        one: >
+          Deleting <strong>%{title}</strong> will also delete one occurrence in this series. This action is not reversible. Please proceed with caution.
+        other: >
+          Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
+    scheduled_delete_dialog:
+      title: "Cancel meeting occurrence"
+      heading: "Cancel this meeting occurrence?"
+      confirmation_message_html: >
+        Any meeting information not in the template will be lost. Do you want to continue?
+      confirm_button: "Cancel occurrence"
+    end_series_dialog:
+      title: "End meeting series"
   notice_successful_notification: "Pemberitahuan berjaya dihantar"
   notice_timezone_missing: Tiada zon waktu yang ditetapkan dan %{zone} adalah diandaikan. Untuk pilih zon waktu anda, sila klik sini.
   notice_meeting_updated: "Halaman ini telah dikemas kini oleh orang lain. Muat semula untuk melihat perubahan."
@@ -251,6 +329,8 @@ ms:
   text_duration_in_hours: "Tempoh masa dalam jam"
   text_in_hours: "dalam jam"
   text_meeting_agenda_for_meeting: 'agenda untuk mesyuarat "%{meeting}"'
+  text_meeting_series_end_early_heading: "Delete future occurrences?"
+  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Adakah anda pasti anda ingin menutup agenda mesyuarat?"
   text_meeting_agenda_open_are_you_sure: "Ini akan menggantikan semua perubahan dalam minit mesyuarat! Adakah anda ingin teruskan?"
   text_meeting_minutes_for_meeting: 'minit untuk mesyuarat "%{meeting}"'
@@ -265,6 +345,10 @@ ms:
   label_meeting_created_by: "Dicipta oleh"
   label_meeting_last_updated: "Kemas kini terakhir"
   label_meeting_reload: "Muat semula"
+  label_meeting_index_today: "Today"
+  label_meeting_index_tomorrow: "Tomorrow"
+  label_meeting_index_this_week: "Later this week"
+  label_meeting_index_later: "Next week and later"
   label_agenda_items: "Item-item agenda"
   label_agenda_items_reordered: "disusun semula"
   label_agenda_item_remove: "Keluarkan daripada agenda"
@@ -290,7 +374,7 @@ ms:
   label_meeting_state_closed: "Ditutup"
   label_meeting_state_closed_html: "<i>Ditutup</i>"
   label_meeting_state_agenda_created: "Agenda dicipta"
-  label_meeting_state_scheduled: "Dijadualkan"
+  label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Dibatalkan"
   label_meeting_state_skipped: "Dilangkau"
   label_meeting_reopen_action: "Buka semula mesyuarat"

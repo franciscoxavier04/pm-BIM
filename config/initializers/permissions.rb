@@ -136,14 +136,16 @@ Rails.application.reloader.to_prepare do
       map.permission :view_project_stages_and_gates,
                      {},
                      permissible_on: :project,
-                     dependencies: :view_project
+                     dependencies: :view_project,
+                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
 
       map.permission :edit_project_stages_and_gates,
                      {},
                      permissible_on: :project,
                      require: :member,
                      dependencies: :view_project_stages_and_gates,
-                     contract_actions: { projects: %i[update] }
+                     contract_actions: { projects: %i[update] },
+                     visible: -> { OpenProject::FeatureDecisions.stages_and_gates_active? }
 
       map.permission :select_project_life_cycle,
                      {
@@ -291,19 +293,19 @@ Rails.application.reloader.to_prepare do
                      permissible_on: %i[work_package project],
                      dependencies: :view_work_packages
 
-      wpt.permission :edit_work_package_notes,
-                     {
-                       "work_packages/activities_tab": %i[edit cancel_edit update]
-                     },
-                     permissible_on: :project,
-                     require: :loggedin,
-                     dependencies: :view_work_packages
-
       wpt.permission :edit_own_work_package_notes,
                      {
                        "work_packages/activities_tab": %i[edit cancel_edit update]
                      },
                      permissible_on: %i[work_package project],
+                     require: :loggedin,
+                     dependencies: :view_work_packages
+
+      wpt.permission :edit_work_package_notes,
+                     {
+                       "work_packages/activities_tab": %i[edit cancel_edit update]
+                     },
+                     permissible_on: :project,
                      require: :loggedin,
                      dependencies: :view_work_packages
 

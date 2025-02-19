@@ -36,6 +36,7 @@ module Meetings
       super
 
       @meeting = meeting
+      @project = @meeting.project
       @series = meeting.recurring_meeting
     end
 

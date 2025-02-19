@@ -74,8 +74,8 @@ tr:
         name: 'Requested attribute key'
         format: 'Attribute format'
       section_headers:
-        configuration: "Primary configuration"
-        attributes: "Attributes"
+        configuration: "Birincil yapılandırma"
+        attributes: "Öznitelikler"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"
@@ -85,7 +85,7 @@ tr:
         configuration_metadata: "This information has been pre-filled using the supplied metadata. In most cases, they do not require editing."
         encryption: "Configure assertion signatures and encryption for SAML requests and responses."
         encryption_form: "You may optionally want to encrypt the assertion response, or have requests from OpenProject signed."
-        mapping: "Manually adjust the mapping between the SAML response and user attributes in OpenProject."
+        mapping: "SAML yanıtı ile OpenProject'teki kullanıcı öznitelikleri arasındaki eşlemeyi elle ayarlayın."
         requested_attributes: "Define the set of attributes to be requested in the SAML request sent to your identity provider."
       seeded_from_env: "This provider was seeded from the environment configuration. It cannot be edited."
     settings:

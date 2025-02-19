@@ -3,7 +3,7 @@ ARG RUBY_VERSION
 FROM ruby:${RUBY_VERSION}-bookworm
 
 ENV NODE_VERSION="20.9.0"
-ENV BUNDLER_VERSION="2.5.13"
+ENV BUNDLER_VERSION="2.6.3"
 ENV DEBIAN_FRONTEND=noninteractive
 ENV BUNDLE_WITHOUT="development:production:docker"
 
@@ -11,8 +11,7 @@ ENV PGVERSION=13
 RUN wget --quiet -O- https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
   echo "deb http://apt.postgresql.org/pub/repos/apt bookworm-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 
-# Temporarily use a mirror for Chrome until the official one is not having the problems to spin up sessions with selenium any more.
-ENV CHROME_SOURCE_URL="https://mirror.cs.uchicago.edu/google-chrome/pool/main/g/google-chrome-stable/google-chrome-stable_131.0.6778.85-1_amd64.deb"
+ENV CHROME_SOURCE_URL="https://dl.google.com/dl/linux/direct/google-chrome-stable_current_amd64.deb"
 RUN --mount=type=cache,target=/var/cache/apt export f="/tmp/chrome.deb" && wget --no-verbose -O $f $CHROME_SOURCE_URL && \
   apt-get update -qq && apt-get install -y "$f" postgresql-$PGVERSION postgresql-client-$PGVERSION time imagemagick default-jre-headless firefox-esr && \
   rm -f "$f" && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/lib/postgresql && find /usr/share/locale/* -maxdepth 0 -type d ! -name 'en' -exec rm -rf {} \;

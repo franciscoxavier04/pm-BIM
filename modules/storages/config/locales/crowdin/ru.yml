@@ -3,6 +3,8 @@ ru:
     attributes:
       storages/file_link:
         origin_id: ID оригинала
+      storages/project_storage:
+        storage: Хранилище
       storages/storage:
         creator: Создатель
         drive: ID диска
@@ -72,6 +74,7 @@ ru:
         confirmation_text: Пожалуйста, подтвердите, что Вы понимаете и хотите удалить это файловое хранилище из данного проекта
         heading_text: Удалить проект из %{storage}
         text: Это действие необратимо и удалит все ссылки из пакетов работ этого проекта на файлы и папки этого хранилища.
+        title: Удалить проект из хранилища
       label: Удалить проект
   services:
     attributes:
@@ -256,7 +259,7 @@ ru:
       new_storage: Прочтите нашу документацию по <a target='_blank' href='%{provider_link}'>настройке интеграции файлового хранилища %{provider_name}</a> для получения дополнительной информации.
       nextcloud:
         application_link_text: Приложение «Интеграция OpenProject»
-        integration: Администрирование NextCloud / OpenProject
+        integration: Администрирование Nextcloud / OpenProject
         oauth_configuration: Скопируйте эти значения из %{application_link_text}.
         provider_configuration: Пожалуйста, убедитесь, что у вас есть права администрирования в копии Nextcloud, и перед установкой настроен %{application_link_text}.
       no_specific_folder: По умолчанию каждый пользователь при загрузке файла начинает работу со своей собственной домашней папки.

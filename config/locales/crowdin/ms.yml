@@ -228,6 +228,10 @@ ms:
           item:
             title: Item ini tidak mempunyai sebarang tahap hierarki di bawah
             description: Tambahkan item pada senarai ini untuk membuat sub-item di dalam satu lagi
+        delete_dialog:
+          title: "Delete custom field item"
+          heading: "Delete custom field item?"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Label item"
           short: "Nama pendek"
@@ -248,6 +252,7 @@ ms:
     confirm_destroy_option: "Padamkan satu pilihan akan memadamkan semua kejadian yang berkaitan dengannya (cth. dalam pakej kerja). Adakah anda pasti anda ingin memadamkannya?"
     reorder_alphabetical: "Susun semula nilai mengikut abjad"
     reorder_confirmation: "Amaran: Susunan semasa nilai yang sedia ada akan hilang. Teruskan?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Tandakan ruang yang tersuai seperti yang diperlukan. Ini akan buatkan ia wajib untuk isikan ruang tersebut apabila membuat sumber yang baharu atau kemas kini sumber sedia ada."
       is_required_for_project: "Semak untuk mendayakan atribut ini dan jadikan ia diperlukan dalam semua projek. Ia tidak boleh dinyahaktifkan untuk projek individu."
@@ -286,6 +291,7 @@ ms:
       label: "Label"
       short: "Nama pendek"
       parent: "Ibu bapa"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Cari dalam %{app_title}"
     overwritten_tabs:
@@ -461,6 +467,7 @@ ms:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: Token %{type} telah dihasilkan
         warning: Ambil perhatian bahawa ini adalah satu-satunya masa anda akan melihat token ini, pastikan anda menyalinnya sekarang.
       errors:
@@ -635,6 +642,7 @@ ms:
         title: "Aliran kerja hilang untuk perkongsian pakej kerja"
         message: "Tiada aliran kerja yang dikonfigurasikan untuk peranan 'Pengedit Pakej Kerja'. Tanpa aliran kerja, yang dikongsikan dengan pengguna tidak boleh mengubah status pakej kerja. Aliran kerja boleh disalin. Pilih jenis sumber (cth. 'Tugasan') dan peranan sumber (cth. 'Ahli'). Kemudian pilih jenis sasaran. Untuk bermula, anda boleh memilih semua jenis sebagai sasaran. Akhirnya, pilih peranan 'Pengedit Pakej Kerja' sebagai sasaran dan tekan 'Salin'. Setelah mencipta default, selaraskan aliran kerja sebagaimana anda lakukan untuk peranan lain."
         link_message: "Konfigurasikan aliran kerja dalam pentadbiran."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -657,14 +665,15 @@ ms:
       no_results_title_text: Pada masa ini tiada hubungan tersedia.
       blankslate_heading: "Tiada hubungan"
       blankslate_description: "Pakej kerja ini belum mempunyai apa-apa hubungan lagi."
+    label_add_child_button: "Child"
     label_add_x: "Tambah %{x}"
     label_edit_x: "Sunting %{x}"
     label_add_description: "Tambah penerangan"
     lag:
       subject: "Lag"
-      title: "Lag (dalam hari)"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
+      label_new_child_created: "New work package created and added as a child"
       label_relates_singular: "berkaitan dengan"
       label_relates_plural: "berkaitan dengan"
       label_relates_to_singular: "berkaitan dengan"
@@ -679,6 +688,9 @@ ms:
       follows_description: "Pakej kerja yang berkaitan semestinya perlu diselesaikan sebelum yang ini boleh dimulakan"
       label_child_singular: "anak"
       label_child_plural: "kanak-kanak"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
       child_description: "Menjadikan pakej kerja berkaitan sub-item pakej kerja semasa (ibu bapa)."
       label_blocks_singular: "blok"
       label_blocks_plural: "blok"
@@ -715,6 +727,8 @@ ms:
       required_description: "Tandakan pakej kerja ini sebagai keperluan kepada yang berkaitan"
       label_parent_singular: "ibu bapa"
       label_parent_plural: "ibu bapa"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Jemputan
   account:
     delete: "Padam akaun"
@@ -779,6 +793,7 @@ ms:
         is_required: "Diperlukan"
         max_length: "Panjang maksima"
         min_length: "Panjang minimum"
+        content_right_to_left: "Kandungan Kanan ke Kiri"
         multi_value: "Benarkan pemilihan berganda"
         possible_values: "Nilai yang mungkin"
         regexp: "Ungkapan biasa"
@@ -814,6 +829,8 @@ ms:
         attr_lastname: "Atribut nama akhir"
         attr_login: "Atribut nama pengguna"
         attr_mail: "Atribut e-mel"
+        filter_string: "Rentetan penapis"
+        admin: "Pentadbir"
         base_dn: "Pangkalan DN"
         host: "Hos"
         onthefly: "Penciptaan pengguna automatik"
@@ -857,6 +874,9 @@ ms:
       project_custom_field:
         is_required: "Diperlukan untuk semua projek"
         custom_field_section: Bahagian
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
         column_names: "Kolum"
         relations_to_type_column: "Berhubung dengan %{type}"
@@ -866,7 +886,7 @@ ms:
         timeline_labels: "Label garis masa"
       relation:
         lag: "Lag"
-        from: "Pakej kerja"
+        from: "Related work package"
         to: "Pakej kerja yang berkaitan"
       reminder:
         remind_at_date: "Tarikh"
@@ -1190,12 +1210,16 @@ ms:
           typed_dag:
             circular_dependency: "Hubungan ini mencipta sebuah lingkaran hubungan."
           attributes:
-            to:
-              error_not_found: "pakej kerja dalam posisi `ke` tidak dapat ditemui atau tidak kelihatan."
-              error_readonly: "pautan `ke` yang sedia ada tidak berubah"
-            from:
-              error_not_found: "pakej kerja dalam posisi `dari` tidak dapat ditemui atau tidak kelihatan"
-              error_readonly: "pautan `dari` yang sedia ada tidak berubah"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "Vendor SCM tidak tersedia"
           not_whitelisted: "tidak dibenarkan oleh konfigurasi."
@@ -1540,8 +1564,9 @@ ms:
   button_copy_and_follow: "Salin dan ikut"
   button_create: "Cipta"
   button_create_and_continue: "Simpan dan teruskan"
-  button_delete: "Padam"
   button_decline: "Tolak"
+  button_delete: "Padam"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "Buang pemerhati %{name}"
   button_download: "Muat turun"
   button_duplicate: "Salinan"
@@ -1726,6 +1751,8 @@ ms:
     units:
       hour:
         other: "jam"
+      day:
+        other: "days"
   description_active: "Aktif?"
   description_attachment_toggle: "Paparkan/Sembunyikan lampiran"
   description_autocomplete: >
@@ -1761,6 +1788,10 @@ ms:
     upsale:
       title: "Alat tambah perusahaan"
       link_title: "Maklumat lanjut"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Menyuaikan borang konfigurasi dengan segala jenis tambahan ini:"
         add_groups: "Tambah kumpulan atribut baharu"
@@ -2123,6 +2154,7 @@ ms:
   label_add_subtask: "Tambah subtugas"
   label_added: "ditambah"
   label_added_by: "Ditambah oleh %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "Ditambah oleh %{author} %{age} yang lalu"
   label_additional_workflow_transitions_for_assignee: "Peralihan tambahan dibenarkan jika pengguna ialah penerima tugasan"
   label_additional_workflow_transitions_for_author: "Peralihan tambahan dibenarkan apabila pengguna ialah pengarang"
@@ -2543,6 +2575,7 @@ ms:
   label_project_new: "Projek baharu"
   label_project_plural: "Projek"
   label_project_list_plural: "Senarai projek"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Atribut projek"
   label_project_custom_field_plural: "Atribut projek"
   label_project_settings: "Tetapan projek"
@@ -2569,6 +2602,7 @@ ms:
   label_relation: "Tindakan"
   label_relation_actions: "Tindakan perhubungan"
   label_relation_delete: "Hubungan terpadam"
+  label_relation_edit: "Edit relation"
   label_relation_new: "Hubungan baharu"
   label_release_notes: "Nota keluaran"
   label_remaining_work: "Kerja berbaki"
@@ -2984,6 +3018,7 @@ ms:
   notice_bad_request: "Ralat Permintaan."
   notice_not_authorized: "Anda tidak diberi kebenaran untuk mengakses halaman ini."
   notice_not_authorized_archived_project: "Projek yang anda cuba mengakses telah diarkibkan."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "Kata laluan tidak betul. Tidak boleh teruskan."
   notice_principals_found_multiple: "Terdapat %{number} hasil ditemui. \n Tab untuk memfokuskan hasil pertama."
   notice_principals_found_single: "Terdapat satu hasil. \n Tab untuk fokuskan."
@@ -3030,7 +3065,7 @@ ms:
     text_getting_started_description: "Dapatkan gambaran ringkas pengurusan projek dan kolaborasi kumpulan dengan OpenProject. Anda boleh mula semula video ini di menu bantuan."
     welcome: "Selamat datang ke %{app_title}"
     select_language: "Sila pilih bahasa anda"
-  permission_add_work_package_notes: "Tambah nota"
+  permission_add_work_package_notes: "Add comments"
   permission_add_work_packages: "Tambah pakej kerja"
   permission_add_messages: "Pos mesej"
   permission_add_project: "Cipta projek"
@@ -3060,10 +3095,11 @@ ms:
   permission_delete_timelines: "Padam garis masa"
   permission_delete_wiki_pages: "Padam halaman wiki"
   permission_delete_wiki_pages_attachments: "Padam lampiran"
-  permission_edit_work_package_notes: "Edit nota"
+  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit pakej kerja"
   permission_edit_messages: "Edit mesej"
-  permission_edit_own_work_package_notes: "Edit nota sendiri"
+  permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Edit mesej sendiri"
   permission_edit_own_time_entries: "Edit log masa sendiri"
   permission_edit_project: "Edit projek"
@@ -3156,9 +3192,9 @@ ms:
       are_you_sure: "Adakah anda pasti anda ingin mengarkib projek '%{name}'?"
       archived: "Telah diarkibkan"
     count:
-      zero: "0 Projek"
-      one: "1 Projek"
-      other: "%{count} Projek"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "Aktiviti"
   project_module_forums: "Forum-forum"
   project_module_work_package_tracking: "Pakej kerja"
@@ -3292,6 +3328,7 @@ ms:
     activated: "diaktifkan"
     deactivated: "dinyahaktifkan"
   search_input_placeholder: "Cari ..."
+  setting_apiv3_cors_title: "Perkongsian Sumber Silang Asal (CORS)"
   setting_apiv3_cors_enabled: "Aktifkan CORS"
   setting_apiv3_cors_origins: "Asal yang dibenarkan Perkongsian Sumber Rentas Asal (CORS) API V3 "
   setting_apiv3_cors_origins_text_html: >
@@ -3517,6 +3554,27 @@ ms:
       new:
         heading: "Atribut baharu"
         description: "Perubahan pada atribut projek ini akan dipantulkan ke dalam semua projek di mana ia telah diaktifkan. Atribut yang diperlukan tidak boleh dinyahdayakan berdasarkan setiap projek."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Modul projek %{module} telah disemak yang bergantung pada %{dependencies}. Anda perlu menyemak kebergantungan ini juga."
       section_new_projects: "Tetapan untuk projek baharu"
@@ -3550,6 +3608,7 @@ ms:
   text_are_you_sure_continue: "Adakah anda pasti anda ingin teruskan?"
   text_are_you_sure_with_children: "Padam pakej kerja dan semua pakej kerja anak?"
   text_are_you_sure_with_project_custom_fields: "Memadam atribut ini akan memadam nilainya dalam semua projek. Adakah anda pasti anda ingin lakukan ini?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "Tugaskan ke projek"
   text_form_configuration: >
     Anda boleh mengubah suai ruangan yang akan dipaparkan dalam borang pakej kerja. Anda boleh mengumpulkan ruangan tersebut dengan bebas untuk memantulkan keperluan domain anda.
@@ -3629,6 +3688,7 @@ ms:
   text_notice_security_badge_displayed_html: >
     Perhatian: jika dibenarkan, ini akan paparkan lambang bersertaan status pemasangan di <a href="%{information_panel_path}">%{information_panel_label}</a> panel pentadbiran, dan di halaman utama. Ia hanya akan dipaparkan ke para pentadbir sahaja. <br/> Lambang tersebut akan menyemak versi OpenProject terkini anda terhadap pangkalan data keluaran rasmi OpenProject untuk memaklumkan anda tentang sebarang kemas kini atau kelemahan yang diketahui. Untuk maklumat lanjut bagi penyediaan semakan, data apa yang diperlukan untuk menyediakan kemas kini tersedia, dan bagaimana untuk menyahaktifkan semakan ini, sila kunjungi <a href="%{more_info_url}">dokumentasi konfigurasi</a>.
   text_own_membership_delete_confirmation: "Anda akan mengeluarkan beberapa atau semua kebenaran anda dan mungkin tidak lagi dapat mengedit projek ini selepas itu.\nAdakah anda pasti anda ingin teruskan?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "Aset plugin direktori yang boleh ditulis"
   text_powered_by: "Dikuasakan oleh %{link}"
   text_project_identifier_info: "Hanya huruf kecil (a-z), nombor, sengkang dan tanda garis bawah adalah dibenarkan, mesti mula dengan huruf kecil."
@@ -3996,6 +4056,8 @@ ms:
       builtin: Aplikasi contoh terbina dalam
       confidential: Sulit
       singular: "Aplikasi OAuth"
+      scopes: "Skop"
+      client_credentials: "Bukti kelayakan pelanggan"
       plural: "Aplikasi OAuth"
       named: "'%{name}' aplikasi OAuth"
       new: "Aplikasi OAuth baharu"

@@ -38,18 +38,26 @@ module Meetings
     STATE_EDIT = :edit
     STATE_OPTIONS = [STATE_DEFAULT, STATE_EDIT].freeze
 
-    def initialize(meeting:, project: nil, state: STATE_DEFAULT)
+    def initialize(meeting:, state: STATE_DEFAULT)
       super
 
       @meeting = meeting
       @series = meeting.recurring_meeting
-      @project = project
+      @project = meeting.project
       @state = fetch_or_fallback(STATE_OPTIONS, state)
     end
 
     # Define the interval so it can be overriden through tests
     def check_for_updates_interval
       10_000
+    end
+
+    def ics_download_path
+      if @series
+        download_ics_project_recurring_meeting_path(@series.project, @series, occurrence_id: @meeting.id)
+      else
+        download_ics_project_meeting_path(@meeting.project, @meeting)
+      end
     end
 
     private
@@ -86,7 +94,7 @@ module Meetings
 
     def meeting_series_element
       if @series.present?
-        { href: recurring_meeting_path(@series), text: @series.title }
+        { href: project_recurring_meeting_path(@series.project, @series), text: @series.title }
       end
     end
 
