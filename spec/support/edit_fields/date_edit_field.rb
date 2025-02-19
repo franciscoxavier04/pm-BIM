@@ -137,6 +137,7 @@ class DateEditField < EditField
       datepicker.enable_due_date_if_visible
 
       datepicker.clear!
+
       datepicker.set_start_date value.first
       datepicker.set_due_date value.last
 

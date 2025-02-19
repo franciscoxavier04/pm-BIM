@@ -46,7 +46,7 @@ class WorkPackages::DatePickerController < ApplicationController
     respond_to do |format|
       format.html do
         render :show,
-               locals: { work_package:, schedule_manually:, params: },
+               locals: { work_package:, schedule_manually:, params: params.merge(date_mode: date_mode).permit! },
                layout: false
       end
 
@@ -205,7 +205,7 @@ class WorkPackages::DatePickerController < ApplicationController
 
       params.require(:work_package)
             .slice(*allowed_touched_params)
-            .merge(schedule_manually:)
+            .merge(schedule_manually:, date_mode:)
             .permit!
     end
   end

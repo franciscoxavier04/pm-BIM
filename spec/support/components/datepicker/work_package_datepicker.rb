@@ -88,7 +88,7 @@ module Components
     end
 
     def enable_start_date_if_visible
-      if container.has_button?("Start date", visible: true)
+      if container.has_link?("Start date", visible: true)
         enable_start_date
       end
     end
@@ -98,7 +98,7 @@ module Components
     end
 
     def enable_due_date_if_visible
-      if container.has_button?("Due date", visible: true)
+      if container.has_link?("Due date", visible: true)
         enable_due_date
       end
     end

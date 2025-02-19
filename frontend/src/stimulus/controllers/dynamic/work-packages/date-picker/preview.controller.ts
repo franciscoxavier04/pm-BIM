@@ -32,6 +32,12 @@ import { DialogPreviewController } from '../dialog/preview.controller';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
 
 export default class PreviewController extends DialogPreviewController {
+  static values = {
+    dateMode: String,
+  };
+
+  declare dateModeValue:string;
+
   private timezoneService:TimezoneService;
   private highlightedField:HTMLInputElement|null = null;
 
@@ -58,6 +64,10 @@ export default class PreviewController extends DialogPreviewController {
   disconnect() {
     document.removeEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
     super.disconnect();
+  }
+
+  async preview(field:HTMLInputElement|null) {
+    await super.preview(field, [{ key: 'date_mode', val: this.dateModeValue }]);
   }
 
   private get dueDateField():HTMLInputElement {
