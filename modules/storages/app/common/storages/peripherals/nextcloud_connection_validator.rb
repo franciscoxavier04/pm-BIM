@@ -58,7 +58,7 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        audience_missing.or { non_provisioned_user }.or { oidc_provisioned_user }
+        audience_missing.or { non_provisioned_user }.or { non_oidc_provisioned_user }
       end
 
       def audience_missing
@@ -79,7 +79,7 @@ module Storages
                                       description: I18n.t("storages.health.connection_validation.oidc_non_provisioned_user")))
       end
 
-      def oidc_provisioned_user
+      def non_oidc_provisioned_user
         return None() if @user.authentication_provider.is_a?(OpenIDConnect::Provider)
 
         Some(ConnectionValidation.new(type: :warning,
