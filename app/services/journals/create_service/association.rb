@@ -32,15 +32,17 @@ class Journals::CreateService
   class Association
     include Helpers
 
+    ASSOCIATION_NAMES = %i[
+      AgendaItemable
+      Attachable
+      Customizable
+      ProjectLifeCycleStep
+      Storable
+    ].freeze
+
     def self.for(journable)
-      [
-        AgendaItemable,
-        Attachable,
-        Customizable,
-        ProjectLifeCycleStep,
-        Storable
-      ]
-        .map { _1.new(journable) }
+      ASSOCIATION_NAMES
+        .map { "Journals::CreateService::#{_1}".constantize.new(journable) }
         .select(&:associated?)
     end
 
