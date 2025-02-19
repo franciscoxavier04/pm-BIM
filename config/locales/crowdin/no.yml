@@ -3748,6 +3748,7 @@
   text_unallowed_characters: "Ikke-tillatte tegn"
   text_user_invited: Brukeren har blitt invitert og venter på å bli registrert.
   text_user_wrote: "%{value} skrev:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Arbeidspakken inneholder tekst som ikke er lagret som vil gå tapt hvis du forlater denne siden."
   text_what_did_you_change_click_to_add_comment: "Hva endret du? Klikk for å kommentere"
   text_wiki_destroy_confirmation: "Er du sikker på at du vil slette denne wikien og alt innholdet i den?"

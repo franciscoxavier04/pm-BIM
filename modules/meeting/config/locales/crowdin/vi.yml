@@ -257,10 +257,12 @@ vi:
       banner_html: >
         Bạn hiện đang chỉnh sửa mẫu của chuỗi họp: %{link}. Mỗi lần xuất hiện mới của một cuộc họp trong chuỗi sẽ sử dụng mẫu này. Các thay đổi sẽ không ảnh hưởng đến các cuộc họp trước đây hoặc đã tạo.
     frequency:
+      x_daily:
+        other: "Every %{count} days"
+      x_weekly:
+        other: "Every %{count} weeks"
       every_weekday: "Mỗi %{day_of_the_week}"
-      daily: "Mỗi ngày"
       working_days: "Mỗi ngày làm việc"
-      weekly: "Mỗi tuần"
     end_after:
       never: "không bao giờ"
       specific_date: "sau ngày cụ thể"

@@ -263,10 +263,18 @@ pl:
       banner_html: >
         Aktualnie edytujesz szablon serii spotkań: %{link}. Każde nowe wystąpienie spotkania w serii będzie używać tego szablonu. Zmiany nie będą miały wpływu na wcześniejsze ani już utworzone spotkania.
     frequency:
+      x_daily:
+        one: "Every day"
+        few: "Every %{count} days"
+        many: "Every %{count} days"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        few: "Every %{count} weeks"
+        many: "Every %{count} weeks"
+        other: "Every %{count} weeks"
       every_weekday: "Co %{day_of_the_week}"
-      daily: "Codziennie"
       working_days: "W każdy dzień roboczy"
-      weekly: "Co tydzień"
     end_after:
       never: "nigdy"
       specific_date: "po określonej dacie"

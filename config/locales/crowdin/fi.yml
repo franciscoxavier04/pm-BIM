@@ -3749,6 +3749,7 @@ fi:
   text_unallowed_characters: "Kiellettyjä merkkejä"
   text_user_invited: Käyttäjä on kutsuttu ja on vireillä rekisteröinti.
   text_user_wrote: "%{value} kirjoitti:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "The work package contains unsaved text that will be lost if you leave this page."
   text_what_did_you_change_click_to_add_comment: "Mitä muutit? Lisää kommentti klikkaamalla"
   text_wiki_destroy_confirmation: "Oletko varma että haluat poistaa tämän wiki:n ja kaikki sen sisältämän tiedon?"

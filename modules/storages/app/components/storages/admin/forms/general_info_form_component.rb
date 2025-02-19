@@ -29,19 +29,21 @@
 #++
 #
 module Storages::Admin::Forms
-  class GeneralInfoFormComponent < ApplicationComponent
-    include OpPrimer::ComponentHelpers
-    include OpTurbo::Streamable
-
-    alias_method :storage, :model
+  class GeneralInfoFormComponent < StorageFormComponent
+    def self.wrapper_key = :storage_general_info_section
 
     options form_method: :post,
             submit_button_disabled: false
 
-    def self.wrapper_key = :storage_general_info_section
-
     def form_url
-      options[:form_url] || default_form_url
+      query = { continue_wizard: storage.id } if in_wizard
+
+      case form_method
+      when :get, :post
+        admin_settings_storages_path(query)
+      when :patch, :put
+        admin_settings_storage_path(storage, query)
+      end
     end
 
     def submit_button_options
@@ -59,15 +61,6 @@ module Storages::Admin::Forms
     end
 
     private
-
-    def default_form_url
-      case form_method
-      when :get, :post
-        admin_settings_storages_path
-      when :patch, :put
-        admin_settings_storage_path(storage)
-      end
-    end
 
     def cancel_button_path
       options.fetch(:cancel_button_path) do

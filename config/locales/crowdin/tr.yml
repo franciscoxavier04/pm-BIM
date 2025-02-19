@@ -3746,6 +3746,7 @@ tr:
   text_unallowed_characters: "Yasaklı karakterler"
   text_user_invited: Kullanıcı davet edildi ve kayıt bekliyor.
   text_user_wrote: "%{value} demiş ki:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "İş paketi bu sayfadan ayrıldığınızda kaybolabilecek kaydedilmemiş metinler içeriyor."
   text_what_did_you_change_click_to_add_comment: "Ne değiştirdiniz? Yorum eklemek için tıkayın"
   text_wiki_destroy_confirmation: "Bu wiki'yi ve içeriğini silmek istediğinizden emin misiniz?"

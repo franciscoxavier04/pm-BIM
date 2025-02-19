@@ -259,10 +259,14 @@ de:
       banner_html: >
         Sie bearbeiten gerade eine Vorlage einer Terminserie: %{link}. Jede neue Besprechung der Serie kopiert diese Vorlage. Änderungen wirken sich nicht auf frühere oder bereits erstellte Besprechungen aus.
     frequency:
+      x_daily:
+        one: "Jeden Tag"
+        other: "alle %{count} Tage"
+      x_weekly:
+        one: "Jede Woche"
+        other: "alle %{count} Wochen"
       every_weekday: "Jeden %{day_of_the_week}"
-      daily: "Täglich"
       working_days: "An Arbeitstagen"
-      weekly: "Wöchentlich"
     end_after:
       never: "nie"
       specific_date: "nach einem bestimmten Datum"

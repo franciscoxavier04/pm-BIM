@@ -199,11 +199,11 @@ pl:
         manual_management_description: Samodzielnie ręcznie twórz foldery każdego projektu i zarządzaj nimi. Trzeba będzie ręcznie zapewnić dostęp odpowiednim użytkownikom.
         setup_incomplete: Wybierz typ zarządzania dostępem użytkowników i tworzeniem folderów.
         subtitle: Zarządzanie dostępem
-        title: Dostęp i foldery projektu
+      access_management_section: Dostęp i foldery projektu
       automatically_managed_folders: Automatycznie zarządzane foldery
       general_information: Informacje ogólne
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: Aplikacje OAuth
+      oauth_configuration: Konfiguracja OAuth
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Foldery projektu
@@ -222,6 +222,8 @@ pl:
         host_not_found: Nie znaleziono serwera Nextcloud pod skonfigurowanym adresem URL hosta. Sprawdź konfigurację.
         missing_dependencies: 'Brakuje wymaganej zależności magazynu plików. Dodaj następującą zależność: %{dependency}.'
         not_configured: Nie można zweryfikować połączenia. Najpierw zakończ konfigurację.
+        oidc_audience_missing: Magazyn nie ma zdefiniowanych odbiorców. Jest to konieczne do integracji OpenID Connect.
+        oidc_non_provisioned_user: Bieżący użytkownik nie jest dostarczany przez dostawcę tożsamości OpenID Connect. Ponownie uruchom sprawdzanie z dostarczonym użytkownikiem.
         placeholder: Sprawdź połączenie z serwerem.
         subtitle: Weryfikacja połączenia
         tenant_id_wrong: Skonfigurowany katalog (dzierżawca) jest nieprawidłowy. Sprawdź konfigurację.

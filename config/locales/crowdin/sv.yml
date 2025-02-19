@@ -3746,6 +3746,7 @@ sv:
   text_unallowed_characters: "Otillåtet tecken"
   text_user_invited: Användaren har bjudits in och inväntar nu dennes registrering.
   text_user_wrote: "%{value} skrev:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Arbetspaketet innehåller osparad text som försvinner om du lämnar sidan."
   text_what_did_you_change_click_to_add_comment: "Vad ändrade du? Klicka för att lägga till kommentar"
   text_wiki_destroy_confirmation: "Är du säker du vill ta bort denna wiki och allt dess innehåll?"
