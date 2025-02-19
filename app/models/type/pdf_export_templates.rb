@@ -37,8 +37,8 @@ class Type::PdfExportTemplates
 
   def list
     disabled = @type.export_templates_disabled || []
-    templates = build_in_templates.map do |build_in_template|
-      Template.new(**build_in_template, enabled: disabled.exclude?(build_in_template[:id]))
+    templates = built_in_templates.map do |built_in_template|
+      Template.new(**built_in_template, enabled: disabled.exclude?(built_in_template[:id]))
     end
     order = @type.export_templates_order || []
     return templates if order.empty?
@@ -52,10 +52,10 @@ class Type::PdfExportTemplates
   end
 
   def find(template_id)
-    build_in_template = build_in_templates.find { |t| t[:id] == template_id }
-    if build_in_template
+    built_in_template = built_in_templates.find { |t| t[:id] == template_id }
+    if built_in_template
       disabled = @type.export_templates_disabled || []
-      Template.new(**build_in_template, enabled: disabled.exclude?(build_in_template[:id]))
+      Template.new(**built_in_template, enabled: disabled.exclude?(built_in_template[:id]))
     end
   end
 
@@ -64,7 +64,7 @@ class Type::PdfExportTemplates
   end
 
   def disable_all
-    @type.export_templates_disabled = build_in_templates.pluck(:id)
+    @type.export_templates_disabled = built_in_templates.pluck(:id)
   end
 
   def toggle(template_id)
@@ -87,7 +87,7 @@ class Type::PdfExportTemplates
 
   private
 
-  def build_in_templates
+  def built_in_templates
     ::WorkPackage::PDFExport::Templates::TEMPLATES
   end
 end
