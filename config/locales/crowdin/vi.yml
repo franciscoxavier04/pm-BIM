@@ -2358,7 +2358,7 @@ vi:
   label_filter: "Bộ lọc"
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"
@@ -3711,6 +3711,7 @@ vi:
   text_unallowed_characters: "Ký tự không được phép"
   text_user_invited: Người dùng đã được mời và đang chờ đăng ký.
   text_user_wrote: "%{value} đã viết:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Gói công việc chứa văn bản chưa được lưu sẽ bị mất nếu bạn rời khỏi trang này."
   text_what_did_you_change_click_to_add_comment: "Bạn đã thay đổi gì? Kích để thêm ghi chú"
   text_wiki_destroy_confirmation: "Bạn có chắc chắn muốn xóa wiki này và tất cả nội dung của nó không?"

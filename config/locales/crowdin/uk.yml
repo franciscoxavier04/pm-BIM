@@ -2503,7 +2503,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
@@ -3820,6 +3820,7 @@ uk:
   text_unallowed_characters: "Недозволені символи"
   text_user_invited: Користувача запрошено та очікує реєстрації.
   text_user_wrote: "%{value} написав:"
+  text_wrote: "написав(-ла)"
   text_warn_on_leaving_unsaved: "Робочий пакет містить незбережений текст, який буде втрачено, якщо ви залишите цю сторінку."
   text_what_did_you_change_click_to_add_comment: "Що ви змінили? Натисніть, щоб додати коментар"
   text_wiki_destroy_confirmation: "Ви впевнені що хочете видалити цю Вікі і весь її вміст?"

@@ -32,16 +32,16 @@ See COPYRIGHT and LICENSE files for more details.
 </head>
 <%
   styles = []
-  min_height = params.dig('lookbook', 'display', 'min_height')
+  min_height = params.dig("lookbook", "display", "min_height")
   styles << "min-height: #{min_height}" if min_height.present?
 %>
 
 <%= content_tag :body,
-                class: 'viewcomponent-preview',
+                class: "viewcomponent-preview",
                 data: {
                   controller: "application",
                   "color-mode": "auto",
-                  "light-theme": "light",
+                  "light-theme": "light"
                 },
                 style: styles.join(";") do %>
   <section class="viewcomponent-preview--content">

@@ -257,10 +257,12 @@ ms:
       banner_html: >
         Anda sedang mengedit templat siri mesyuarat: %{link}. Setiap kejadian baharu mesyuarat dalam siri ini akan menggunakan templat ini. Perubahan tidak akan menjejaskan mesyuarat yang lalu atau yang telah dibuat.
     frequency:
+      x_daily:
+        other: "Every %{count} days"
+      x_weekly:
+        other: "Every %{count} weeks"
       every_weekday: "Setiap %{day_of_the_week}"
-      daily: "Harian"
       working_days: "Setiap hari bekerja"
-      weekly: "Mingguan"
     end_after:
       never: "never"
       specific_date: "after a specific date"

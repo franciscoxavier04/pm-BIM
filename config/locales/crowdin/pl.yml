@@ -1018,7 +1018,7 @@ pl:
         confirmation: "nie pasuje do %{attribute}."
         could_not_be_copied: "Nie można było (w pełni) skopiować %{dependency}."
         does_not_exist: "nie istnieje."
-        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise Edition"
+        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise edition"
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
@@ -3823,6 +3823,7 @@ pl:
   text_unallowed_characters: "Niedpuszczalne znaki"
   text_user_invited: Użytkownik został zaproszony i oczekuje na rejestrację.
   text_user_wrote: "%{value} napisał:"
+  text_wrote: "napisał(a)"
   text_warn_on_leaving_unsaved: "Zadanie zawiera niezapisany tekst, który zostanie utracony, jeśli opuścisz tę stronę."
   text_what_did_you_change_click_to_add_comment: "Co zostało przez ciebie zmienione? Kliknij, aby dodać komentarz"
   text_wiki_destroy_confirmation: "Czy na pewno chcesz usunąć to wiki i całą jego zawartość?"

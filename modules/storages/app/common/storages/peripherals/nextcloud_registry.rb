@@ -57,6 +57,22 @@ module Storages
         register(:set_permissions, StorageInteraction::Nextcloud::SetPermissionsCommand)
       end
 
+      namespace("components") do
+        namespace("forms") do
+          register(:automatically_managed_folders, ::Storages::Admin::Forms::AutomaticallyManagedProjectFoldersFormComponent)
+          register(:general_information, ::Storages::Admin::Forms::GeneralInfoFormComponent)
+          register(:oauth_application, ::Storages::Admin::OAuthApplicationInfoCopyComponent)
+          register(:oauth_client, ::Storages::Admin::Forms::OAuthClientFormComponent)
+        end
+
+        register(:setup_wizard, NextcloudStorageWizard)
+
+        register(:automatically_managed_folders, ::Storages::Admin::AutomaticallyManagedProjectFoldersInfoComponent)
+        register(:general_information, ::Storages::Admin::GeneralInfoComponent)
+        register(:oauth_application, ::Storages::Admin::OAuthApplicationInfoComponent)
+        register(:oauth_client, ::Storages::Admin::OAuthClientInfoComponent)
+      end
+
       namespace("contracts") do
         register(:storage, ::Storages::Storages::NextcloudContract)
       end

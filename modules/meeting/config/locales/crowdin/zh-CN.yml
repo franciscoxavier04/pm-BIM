@@ -257,10 +257,12 @@ zh-CN:
       banner_html: >
         您正在编辑会议系列的模板： %{link}。系列会议中的每个新会议都将使用此模板。更改不会影响过往或已创建的会议。
     frequency:
+      x_daily:
+        other: "每 %{count} 天"
+      x_weekly:
+        other: "每 %{count} 周"
       every_weekday: "每个 %{day_of_the_week}"
-      daily: "每日"
       working_days: "每个工作日"
-      weekly: "每周"
     end_after:
       never: "从不"
       specific_date: "在指定日期之后"

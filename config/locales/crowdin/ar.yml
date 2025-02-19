@@ -3907,6 +3907,7 @@ ar:
   text_unallowed_characters: "حرف(أحرف) غير مسموحه"
   text_user_invited: وقد دعي المستخدم وهو انتظار التسجيل.
   text_user_wrote: "%{value} كتب:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "The work package contains unsaved text that will be lost if you leave this page."
   text_what_did_you_change_click_to_add_comment: "What did you change? Click to add comment"
   text_wiki_destroy_confirmation: "هل أنت متأكد من أنك تريد حذف هذا wikiوكافة محتوياته؟"

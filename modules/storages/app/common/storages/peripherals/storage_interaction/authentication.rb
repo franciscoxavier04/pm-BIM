@@ -38,8 +38,12 @@ module Storages
           case strategy.key
           when :noop
             AuthenticationStrategies::Noop.new
+          when :failure
+            AuthenticationStrategies::Failure.new
           when :basic_auth
             AuthenticationStrategies::BasicAuth.new
+          when :sso_user_token
+            AuthenticationStrategies::SsoUserToken.new(strategy.user)
           when :oauth_user_token
             AuthenticationStrategies::OAuthUserToken.new(strategy.user)
           when :oauth_client_credentials

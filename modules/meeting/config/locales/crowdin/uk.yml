@@ -263,10 +263,18 @@ uk:
       banner_html: >
         Ви редагуєте шаблон серії нарад: %{link}. Кожна нова нарада в серії буде створюватиметься на основі цього шаблона. Зміни не вплинуть на завершені або вже створені наради.
     frequency:
+      x_daily:
+        one: "Every day"
+        few: "Every %{count} days"
+        many: "Every %{count} days"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        few: "Every %{count} weeks"
+        many: "Every %{count} weeks"
+        other: "Every %{count} weeks"
       every_weekday: "Кожний(-на) %{day_of_the_week}"
-      daily: "Щодня"
       working_days: "Кожен робочий день"
-      weekly: "Щотижня"
     end_after:
       never: "ніколи"
       specific_date: "після конкретної дати"

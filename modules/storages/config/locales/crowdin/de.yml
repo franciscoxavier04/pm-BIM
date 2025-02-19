@@ -157,7 +157,7 @@ de:
   storages:
     buttons:
       complete_without_setup: Ohne fortfahren
-      done_complete_setup: Fertig, Einrichtung abschließen
+      done_complete_setup: Fertig, Einrichtung abgeschlossen
       done_continue: Fertig, Fortfahren
       open_storage: Dateispeicher öffnen
       replace_oauth_application: OpenProject OAuth ersetzen
@@ -199,11 +199,11 @@ de:
         manual_management_description: Erstellen und verwalten Sie Ordner pro Projekt manuell. Sie müssen händisch sicherstellen, dass die entsprechenden Benutzer Zugriff haben.
         setup_incomplete: Wählen Sie die Art der Verwaltung des Benutzerzugriffs und der Ordnererstellung.
         subtitle: Zugriffsverwaltung
-        title: Zugriff und Projektordner
+      access_management_section: Zugriff und Projektordner
       automatically_managed_folders: Automatisch verwaltete Projektordner
       general_information: Allgemeine Informationen
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth-Anwendungen
+      oauth_configuration: OAuth-Konfiguration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Projektordner
@@ -222,6 +222,8 @@ de:
         host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
         missing_dependencies: 'Eine erforderliche Abhängigkeit fehlt auf dem Datei-Speicher. Bitte fügen Sie die folgende Abhängigkeit hinzu: %{dependency}.'
         not_configured: Die Verbindung konnte nicht validiert werden. Bitte schließen Sie zuerst die Konfiguration ab.
+        oidc_audience_missing: Der Speicher hat keine definierte Zielgruppe. Dies ist für die OpenID Connect-Integration erforderlich.
+        oidc_non_provisioned_user: Der aktuelle Benutzer wird nicht von einem OpenID Connect Identity Provider bereitgestellt. Bitte führen Sie die Prüfung mit einem bereitgestellten Benutzer erneut durch.
         placeholder: Überprüfen Sie Ihre Verbindung mit dem Server.
         subtitle: Verbindungsvalidierung
         tenant_id_wrong: Die konfigurierte Verzeichnis-(Mandanten-)ID ist ungültig. Bitte überprüfen Sie die Konfiguration.
