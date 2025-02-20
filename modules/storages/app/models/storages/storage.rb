@@ -154,6 +154,14 @@ module Storages
       raise Errors::SubclassResponsibility
     end
 
+    def authenticate_via_idp?
+      raise Errors::SubclassResponsibility
+    end
+
+    def authenticate_via_storage?
+      raise Errors::SubclassResponsibility
+    end
+
     def configured?
       configuration_checks.values.all?
     end
