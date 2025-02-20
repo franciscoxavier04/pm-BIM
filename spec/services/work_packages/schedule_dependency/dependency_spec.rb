@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -167,16 +169,16 @@ RSpec.describe WorkPackages::ScheduleDependency::Dependency do
       context "for dependency of the first follower parent" do
         let(:work_package_used_in_dependency) { first_follower_parent }
 
-        it "returns an array with the work_package and the first follower ids" do
-          expect(subject.dependent_ids).to contain_exactly(work_package.id, first_follower.id)
+        it "returns an array with the first follower id" do
+          expect(subject.dependent_ids).to contain_exactly(first_follower.id)
         end
       end
 
       context "for dependency of the first follower grandparent" do
         let(:work_package_used_in_dependency) { first_follower_grandparent }
 
-        it "returns an array with the work_package, the first follower, and the first follower parent ids" do
-          expect(subject.dependent_ids).to contain_exactly(work_package.id, first_follower.id, first_follower_parent.id)
+        it "returns an array with the first follower and the first follower parent ids" do
+          expect(subject.dependent_ids).to contain_exactly(first_follower.id, first_follower_parent.id)
         end
       end
 
@@ -240,8 +242,8 @@ RSpec.describe WorkPackages::ScheduleDependency::Dependency do
         context "for dependency of the follower parent" do
           let(:work_package_used_in_dependency) { follower_parent }
 
-          it "returns an array with the work_package, the follower, and the follower child ids" do
-            expect(subject.dependent_ids).to contain_exactly(work_package.id, follower.id, follower_child.id)
+          it "returns an array with the follower and the follower child ids" do
+            expect(subject.dependent_ids).to contain_exactly(follower.id, follower_child.id)
           end
         end
       end

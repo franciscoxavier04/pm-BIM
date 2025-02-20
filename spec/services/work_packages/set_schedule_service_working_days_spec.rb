@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -673,6 +675,32 @@ RSpec.describe WorkPackages::SetScheduleService, "working days" do
         work_package    | XXXXX      |
         parent_follower |        XXX |
       TABLE
+    end
+  end
+
+  context "with a predecessor and a child automatically scheduled" do
+    let_work_packages(<<~TABLE)
+      hierarchy    | MTWTFSS   | scheduling mode | predecessors
+      predecessor  | XX        | manual          |
+      work_package |   XX      | automatic       | predecessor
+        child      |   XX      | automatic       |
+    TABLE
+
+    context "when switching to manual scheduling" do
+      before do
+        change_work_packages([work_package], <<~TABLE)
+          subject      | scheduling mode |
+          work_package | manual          |
+        TABLE
+      end
+
+      it "switches the child to manual scheduling too" do
+        expect_work_packages(subject.all_results, <<~TABLE)
+          subject      | scheduling mode |
+          work_package | manual          |
+          child        | manual          |
+        TABLE
+      end
     end
   end
 

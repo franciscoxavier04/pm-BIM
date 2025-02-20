@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -80,13 +82,30 @@ class WorkPackages::ScheduleDependency
     @moving_work_packages_set.include?(work_package.id)
   end
 
+  def parent_of(work_package)
+    work_package_by_id(work_package.parent_id)
+  end
+
   def ancestors(work_package)
     @ancestors ||= {}
     @ancestors[work_package] ||= begin
-      parent = work_package_by_id(work_package.parent_id)
+      parent = parent_of(work_package)
 
       if parent
-        [parent] + ancestors(parent)
+        [parent, *ancestors(parent)]
+      else
+        []
+      end
+    end
+  end
+
+  def automatically_scheduled_ancestors(work_package)
+    @automatically_scheduled_ancestors ||= {}
+    @automatically_scheduled_ancestors[work_package] ||= begin
+      parent = parent_of(work_package)
+
+      if parent&.schedule_automatically?
+        [parent, *automatically_scheduled_ancestors(parent)]
       else
         []
       end
@@ -120,9 +139,9 @@ class WorkPackages::ScheduleDependency
                 :moved_work_packages
 
   def all_direct_and_indirect_follows_relations_for(work_package)
-    family = ancestors(work_package) + [work_package] + descendants(work_package)
+    self_and_automatic_ancestors = [work_package] + automatically_scheduled_ancestors(work_package)
     follows_relations_by_follower_id
-      .fetch_values(*family.pluck(:id)) { [] }
+      .fetch_values(*self_and_automatic_ancestors.pluck(:id)) { [] }
       .flatten
       .uniq
   end

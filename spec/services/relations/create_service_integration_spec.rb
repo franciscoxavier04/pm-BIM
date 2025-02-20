@@ -73,8 +73,41 @@ RSpec.describe Relations::CreateService do
         | child_predecessor  | X        | manual
         | parent             |    XX..X | automatic
         |   child            |    XX..X | automatic
-        # this will become the predecessor of the child
       TABLE
+    end
+  end
+
+  context "when creating a successor relation between a predecessor and a parent being manually scheduled" do
+    let_work_packages(<<~TABLE)
+      | hierarchy          | MTWTFSS   | scheduling mode | predecessors
+      | child_predecessor  | X         | manual          |
+      | parent             |     X..XX | manual          |
+      |   child            |  XX       | automatic       | child_predecessor
+      # this will become the predecessor of the parent
+      | parent_predecessor | XXX       | manual          |
+    TABLE
+    let(:attributes) do
+      {
+        "relation_type" => "follows",
+        "from_id" => parent.id,
+        "to_id" => parent_predecessor.id
+      }
+    end
+
+    it "does not impact dates of an automatically scheduled child, because the parent is manually scheduled" do
+      expect(subject).to be_success
+      relation = subject.result
+      expect(relation.predecessor).to eq(parent_predecessor)
+      expect(relation.successor).to eq(parent)
+
+      expect_work_packages_after_reload([parent_predecessor, parent, child, child_predecessor], <<~TABLE)
+        | subject            | MTWTFSS  | scheduling mode
+        | child_predecessor  | X         | manual          |
+        | parent_predecessor | XXX       | manual          |
+        | parent             |     X..XX | manual          |
+        |   child            |  XX       | automatic       |
+      TABLE
+      expect(subject.all_results).to contain_exactly(relation)
     end
   end
 end
