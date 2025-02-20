@@ -147,6 +147,8 @@ class WorkPackages::DatePickerController < ApplicationController
   end
 
   def focused_field
+    return params[:focused_field] if params[:focused_field].present?
+
     trigger = params[:field]
 
     # Decide which field to focus next
