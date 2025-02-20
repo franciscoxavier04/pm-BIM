@@ -110,7 +110,9 @@ module WorkPackages
 
       def update_focused_field(focused_field)
         if @date_mode.nil? || @date_mode != "range"
-          if field_value(:due_date).present? && field_value(:start_date).nil?
+          if focused_field == "duration"
+            return :duration
+          elsif field_value(:due_date).present? && field_value(:start_date).nil?
             return :due_date
           elsif field_value(:start_date).present? && field_value(:due_date).nil?
             return :start_date

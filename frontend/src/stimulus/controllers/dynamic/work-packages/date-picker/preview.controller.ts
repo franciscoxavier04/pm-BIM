@@ -113,6 +113,11 @@ export default class PreviewController extends DialogPreviewController {
       return this.startDateField;
     }
 
+    const currentlyHighledField = document.getElementsByClassName('op-datepicker-modal--date-field_current')[0];
+    if (currentlyHighledField) {
+      this.highlightedField = currentlyHighledField as HTMLInputElement;
+    }
+
     let dateFieldToChange:HTMLInputElement;
     if (this.highlightedField === this.dueDateField
         || (this.highlightedField === this.durationField
@@ -313,6 +318,7 @@ export default class PreviewController extends DialogPreviewController {
       this.highlightField(fieldToHighlight);
       // Datepicker can need an update when the focused field changes. This
       // allows to switch between single and range mode in certain edge cases.
+      this.readCurrentValues();
       this.updateFlatpickrCalendar();
     }
   }

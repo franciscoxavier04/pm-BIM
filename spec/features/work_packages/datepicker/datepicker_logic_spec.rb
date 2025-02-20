@@ -446,6 +446,8 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
       datepicker.expect_start_date 2.days.from_now.to_date.iso8601
       datepicker.expect_due_date "", visible: false
 
+      datepicker.enable_due_date
+
       datepicker.set_today :due
 
       datepicker.expect_start_date ""
@@ -619,7 +621,7 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
 
       datepicker.expect_working_days_only true
       datepicker.expect_start_date "2021-02-15"
-      datepicker.expect_due_date ""
+      datepicker.expect_due_date "", visible: false
       datepicker.expect_duration ""
 
       apply_and_expect_saved duration: nil,
@@ -1016,6 +1018,8 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
 
       today = Time.zone.today
       today_str = today.iso8601
+
+      datepicker.enable_start_date
 
       # Setting start will set active to due
       datepicker.set_today "start"
