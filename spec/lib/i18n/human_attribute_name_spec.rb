@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,20 +26,24 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module ActiveRecord
-  class Base
-    include Redmine::I18n
+require "spec_helper"
 
-    def self.human_attribute_name(attr, options = {})
-      attr = attr.to_s.delete_suffix("_id")
-
-      if Rails.env.local?
-        def attr.humanize(*)
-          raise ArgumentError, "Translation missing. Cannot get human attribute name for attribute #{self}."
-        end
+RSpec.describe "I18n human_attribute_name", type: :helper do
+  let(:test_model) do
+    # Also tests that the application controller has the model included
+    Class.new(ApplicationRecord) do
+      def self.name
+        "TestModel"
       end
-
-      super
     end
+  end
+
+  it "returns a valid translation for basic attribute" do
+    expect(test_model.human_attribute_name("name")).to eq "Name"
+  end
+
+  it "raises an error if the translation is missing" do
+    expect { test_model.human_attribute_name("weird_attribute_that_does_not_exist") }
+      .to raise_error(/Translation missing/)
   end
 end
