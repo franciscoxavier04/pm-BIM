@@ -215,9 +215,9 @@ class WorkPackages::DatePickerController < ApplicationController
   end
 
   def make_fake_initial_work_package
-    initial_params = params["work_package"]["initial"]
-                       .slice(*%w[start_date due_date duration ignore_non_working_days])
-                       .permit!
+    initial_params = params.require(:work_package)
+                       .require(:initial)
+                       .permit(:start_date, :due_date, :duration, :ignore_non_working_days)
     @work_package = WorkPackage.new(initial_params)
     @work_package.clear_changes_information
   end
