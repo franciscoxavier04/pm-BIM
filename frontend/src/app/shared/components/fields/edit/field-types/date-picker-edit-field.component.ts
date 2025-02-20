@@ -127,7 +127,7 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
     url.searchParams.set('work_package[initial][due_date]', this.nullAsEmptyStringFormatter(this.resource.dueDate));
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
     url.searchParams.set('work_package[initial][duration]', this.nullAsEmptyStringFormatter(this.resource.duration));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
     url.searchParams.set('work_package[initial][ignore_non_working_days]', this.nullAsEmptyStringFormatter(this.resource.includeNonWorkingDays));
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
@@ -136,7 +136,7 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
     url.searchParams.set('work_package[due_date]', this.nullAsEmptyStringFormatter(this.resource.dueDate));
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
     url.searchParams.set('work_package[duration]', this.nullAsEmptyStringFormatter(this.resource.duration));
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
     url.searchParams.set('work_package[ignore_non_working_days]', this.nullAsEmptyStringFormatter(this.resource.includeNonWorkingDays));
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (this.resource?.id === 'new') {
@@ -147,7 +147,7 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
     this.turboFrameSrc = url.toString();
   }
 
-  private nullAsEmptyStringFormatter(value:null|string):string {
+  private nullAsEmptyStringFormatter(value:null|undefined|string):string {
     if (value === undefined || value === null) {
       return '';
     }
