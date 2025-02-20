@@ -110,10 +110,16 @@ RSpec.describe("Activation of storages in projects",
     # by default automatic have to be chosen if storage has automatic management enabled
     expect(page).to have_checked_field("New folder with automatically managed permissions")
 
+    # The js needs to be initialized before the stimulus controller will work.
+    # Otherwise, the folder selector will not show up.
+    # For unknown reasons, this takes longer than expected.
+    sleep(1)
     page.find_by_id("storages_project_storage_project_folder_mode_manual").click
 
+    expect(page).to have_test_selector("selected-folder-name", text: "No selected folder")
+
     # Select project folder
-    expect(page).to have_text("No selected folder")
+    expect(page).to have_test_selector("selected-folder-name", text: "No selected folder")
     page.click_on("Select folder")
     location_picker.expect_open
     using_wait_time(20) do
@@ -124,7 +130,7 @@ RSpec.describe("Activation of storages in projects",
     location_picker.confirm
 
     # Add storage
-    expect(page).to have_text("Folder1")
+    expect(page).to have_test_selector("selected-folder-name", text: "Folder1")
     page.click_on("Add")
 
     expect_and_dismiss_flash(message: "Successful creation.")
@@ -147,7 +153,7 @@ RSpec.describe("Activation of storages in projects",
 
     # Change the project folder mode to inactive, project folder is hidden but retained
     page.find_by_id("storages_project_storage_project_folder_mode_inactive").click
-    expect(page).to have_no_text("Folder1")
+    expect(page).not_to have_test_selector("selected-folder-name", text: "Folder1")
     page.click_on("Save")
 
     expect_and_dismiss_flash(message: "Successful update.")
