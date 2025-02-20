@@ -1123,7 +1123,7 @@ ru:
         export: "Экспортировать"
         visibility_settings: "Настройки видимости"
         share_calendar: "Подписаться на календарь"
-        page_settings: "Переименовать представления"
+        page_settings: "Переименовать представление"
         delete: "Удалить"
       filter: "Фильтр"
       unselected_title: "Пакет работ"
