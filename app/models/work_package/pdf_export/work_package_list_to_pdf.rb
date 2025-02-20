@@ -73,6 +73,12 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
     setup_page!
   end
 
+  def get_columns
+    return [] if query.column_names.empty?
+
+    super
+  end
+
   def export!
     file = render_work_packages query.results.work_packages
     success(file)

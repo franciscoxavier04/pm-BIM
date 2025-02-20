@@ -99,10 +99,14 @@ export default class FormController extends Controller<HTMLFormElement> {
     const formParams = new URLSearchParams(formData as unknown as undefined);
     formParams.forEach((value, key) => {
       if (key === 'columns') {
-        query.delete('columns[]');
-        value.split(' ').forEach((v) => {
+        query.delete('columns[]'); // deletes all occurrences of columns[]
+        const columns = value.split(' ');
+        columns.forEach((v) => {
           query.append('columns[]', v);
         });
+        if (columns.length === 0) {
+          query.append('columns[]', ''); // add empty entry to indicate no columns
+        }
         // Skip hidden fields (looped through query options or rails form fields)
       } else if (!['query', 'utf8', 'authenticity_token', 'format'].includes(key)) {
         query.delete(key);
