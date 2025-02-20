@@ -143,7 +143,7 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
       return dates[0].getTime() !== this.startDateValue?.getTime();
     }
     return dates[0].getTime() !== this.startDateValue?.getTime()
-        || dates[1].getTime() !== this.dueDateValue?.getTime();
+        || (dates.length > 1 && dates[1].getTime() !== this.dueDateValue?.getTime());
   }
 
   private toDate(date:string|null):Date|null {

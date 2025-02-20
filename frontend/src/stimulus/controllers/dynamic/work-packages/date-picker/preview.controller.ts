@@ -52,7 +52,7 @@ export default class PreviewController extends DialogPreviewController {
   private handleFlatpickrDatesChangedBound = this.handleFlatpickrDatesChanged.bind(this);
 
   async connect() {
-    this.readCurrentValues();
+    this.readInitialValues();
     super.connect();
 
     const context = await window.OpenProject.getPluginContext();
@@ -271,25 +271,39 @@ export default class PreviewController extends DialogPreviewController {
     this.updateFlatpickrCalendar();
   }
 
-  readCurrentValues() {
+  readInitialValues() {
     this.fieldInputTargets.forEach((inputField) => {
-      if (inputField.name === 'work_package[ignore_non_working_days]') {
-        // field is "Working days only",  but has the name "work_package[ignore_non_working_days]" for form submission.
-        // Submits "0" if checked, and "1" if not checked thanks to a hidden field with same name.
-        this.currentIgnoreNonWorkingDays = !inputField.checked;
-      } else if (inputField.name === 'work_package[start_date]') {
-        this.currentStartDate = this.toDate(inputField.value);
-      } else if (inputField.name === 'work_package[due_date]') {
-        this.currentDueDate = this.toDate(inputField.value);
-        this.isMilestone = false;
-      } else if (inputField.name === 'work_package[duration]') {
-        this.currentDuration = this.toDuration(inputField.value);
-      }
+      this.assignReadValues(inputField);
+    });
+  }
 
-      if (inputField.classList.contains('op-datepicker-modal--date-field_current')) {
-        this.highlightedField = inputField;
+  readCurrentValues() {
+    const fieldNames = ['ignore_non_working_days', 'start_date', 'due_date', 'duration'];
+    fieldNames.forEach((name:string) => {
+      const field = document.getElementById(`work_package_${name}`);
+      if (field) {
+        this.assignReadValues(field as HTMLInputElement);
       }
     });
+  }
+
+  private assignReadValues(inputField:HTMLInputElement) {
+    if (inputField.name === 'work_package[ignore_non_working_days]') {
+      // field is "Working days only",  but has the name "work_package[ignore_non_working_days]" for form submission.
+      // Submits "0" if checked, and "1" if not checked thanks to a hidden field with same name.
+      this.currentIgnoreNonWorkingDays = !inputField.checked;
+    } else if (inputField.name === 'work_package[start_date]') {
+      this.currentStartDate = this.toDate(inputField.value);
+    } else if (inputField.name === 'work_package[due_date]') {
+      this.currentDueDate = this.toDate(inputField.value);
+      this.isMilestone = false;
+    } else if (inputField.name === 'work_package[duration]') {
+      this.currentDuration = this.toDuration(inputField.value);
+    }
+
+    if (inputField.classList.contains('op-datepicker-modal--date-field_current')) {
+      this.highlightedField = inputField;
+    }
   }
 
   // called from inputs defined in the date_picker/date_form.rb
