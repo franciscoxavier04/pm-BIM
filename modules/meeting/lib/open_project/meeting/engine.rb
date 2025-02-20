@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -114,7 +115,7 @@ module OpenProject::Meeting
         permission :create_meeting_minutes,
                    {
                      meeting_minutes: %i[update preview],
-                     meeting_outcomes: %i[new cancel_new create edit cancel_edit update destroy drop move] #TODO
+                     meeting_outcomes: %i[new cancel_new create edit cancel_edit update destroy drop move] # TODO
                    },
                    permissible_on: :project,
                    require: :member

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -33,7 +35,6 @@ class MeetingAgendaItem::Outcome::Notes < ApplicationForm
     outcome_form.rich_text_area(
       name: :outcome,
       label: "Outcome",
-      disabled: @disabled,
       classes: "ck-editor-primer-adjusted",
       rich_text_options: {
         resource:,
@@ -41,10 +42,6 @@ class MeetingAgendaItem::Outcome::Notes < ApplicationForm
         showAttachments: false
       }
     )
-  end
-
-  def initialize(disabled: false)
-    @disabled = disabled
   end
 
   def resource

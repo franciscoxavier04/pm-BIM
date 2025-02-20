@@ -127,7 +127,8 @@ class MeetingOutcomesController < ApplicationController
       .call
 
     if call.success?
-      render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item, hide_notes: true)
+      render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
+                                                     hide_notes: true)
       # else
     end
 
