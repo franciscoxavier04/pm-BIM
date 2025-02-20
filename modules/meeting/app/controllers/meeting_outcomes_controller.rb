@@ -40,7 +40,7 @@ class MeetingOutcomesController < ApplicationController
   before_action :authorize, except: %i[new create]
 
   def new
-    if @meeting.open?
+    if @meeting.in_progress?
       render_outcome_form_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item)
     else
       update_all_via_turbo_stream
@@ -61,7 +61,7 @@ class MeetingOutcomesController < ApplicationController
              .new(user: current_user)
              .call(
                meeting_agenda_item: @meeting_agenda_item,
-               notes: params[:meeting_outcome][:outcome]
+               notes: params[:meeting_outcome][:notes]
              )
 
     @meeting_outcome = call.result
@@ -108,7 +108,7 @@ class MeetingOutcomesController < ApplicationController
              .new(user: current_user, model: @meeting_outcome)
              .call(
                meeting_agenda_item: @meeting_agenda_item,
-               notes: params[:meeting_outcome][:outcome]
+               notes: params[:meeting_outcome][:notes]
              )
 
     if call.success?

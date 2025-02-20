@@ -59,5 +59,9 @@ module MeetingAgendaItems
         @hide_notes = false
       end
     end
+
+    def outcome_enabled?
+      @meeting.in_progress?
+    end
   end
 end

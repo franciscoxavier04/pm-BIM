@@ -6,6 +6,7 @@
       case @meeting.state
       when "open"
         section.with_description(display: [:none, nil, :block]) { t("text_meeting_open_description") }
+
         flex_layout(classes: "op-meeting-sidebar-state") do |open_state|
           open_state.with_row do
             render(Primer::Beta::State.new(title: "state", scheme: :open)) do
@@ -24,13 +25,13 @@
           if edit_enabled?
             section.with_footer_button(
               tag: :a,
-              href: change_state_project_meeting_path(@project, @meeting, state: "closed"),
+              href: change_state_project_meeting_path(@project, @meeting, state: "in_progress"),
               classes: "hide-when-print",
               data: { "turbo-stream": true, "turbo-method": "put" },
               test_selector: "close-meeting-button"
             ) do |button|
-              button.with_leading_visual_icon(icon: :unlock)
-              t("label_meeting_close_action")
+              button.with_leading_visual_icon(icon: :play)
+              t("label_meeting_in_progress_action")
             end
           end
         end
@@ -64,6 +65,38 @@
             end
           end
         end
+      when "in_progress"
+        section.with_description(display: [:none, nil, :block]) { t("text_meeting_in_progress_description") }
+
+        flex_layout(classes: "op-meeting-sidebar-state") do |in_progress_state|
+          in_progress_state.with_row do
+            render(Primer::Beta::State.new(title: "state", scheme: :merged)) do
+              flex_layout do |in_progress_state_label|
+                in_progress_state_label.with_column(mr: 1) do
+                  render(Primer::Beta::Octicon.new(icon: "play"))
+                end
+
+                in_progress_state_label.with_column do
+                  render(Primer::Beta::Text.new) { t("label_meeting_state_in_progress") }
+                end
+              end
+            end
+          end
+
+          if edit_enabled?
+            section.with_footer_button(
+              tag: :a,
+              href: change_state_project_meeting_path(@project, @meeting, state: "closed"),
+              classes: "hide-when-print",
+              data: { "turbo-stream": true, "turbo-method": "put" },
+              test_selector: "close-meeting-button"
+            ) do |button|
+              button.with_leading_visual_icon(icon: :unlock)
+              t("label_meeting_close_action")
+            end
+          end
+        end
+
       end
     end
   end

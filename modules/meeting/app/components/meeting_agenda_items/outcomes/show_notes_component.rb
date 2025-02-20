@@ -44,7 +44,7 @@ module MeetingAgendaItems
     private
 
     def edit_enabled?
-      @meeting.open? && User.current.allowed_in_project?(:create_meeting_minutes, @meeting.project)
+      @meeting.in_progress? && User.current.allowed_in_project?(:create_meeting_minutes, @meeting.project)
     end
 
     def edit_action_item(menu)

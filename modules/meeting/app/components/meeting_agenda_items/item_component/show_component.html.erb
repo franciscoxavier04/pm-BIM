@@ -87,7 +87,7 @@
         end
       end
 
-      if OpenProject::FeatureDecisions.meeting_outcomes_active?
+      if outcome_enabled?
         grid.with_area(:outcomes, tag: :div) do
           flex_layout do |flex|
             flex.with_row do

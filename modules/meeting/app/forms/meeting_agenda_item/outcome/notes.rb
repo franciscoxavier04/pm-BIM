@@ -33,7 +33,7 @@ class MeetingAgendaItem::Outcome::Notes < ApplicationForm
 
   form do |outcome_form|
     outcome_form.rich_text_area(
-      name: :outcome,
+      name: :notes,
       label: "Outcome",
       classes: "ck-editor-primer-adjusted",
       rich_text_options: {

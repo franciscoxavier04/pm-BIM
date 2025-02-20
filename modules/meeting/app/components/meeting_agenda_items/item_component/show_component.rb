@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -49,11 +50,16 @@ module MeetingAgendaItems
     private
 
     def drag_and_drop_enabled?
-      @meeting.open? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+      !@meeting.closed? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
     end
 
     def edit_enabled?
-      @meeting.open? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+      !@meeting.closed? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+    end
+
+    def outcome_enabled?
+      User.current.allowed_in_project?(:create_meeting_minutes,
+                                       @meeting.project) && OpenProject::FeatureDecisions.meeting_outcomes_active?
     end
 
     def first?
@@ -147,7 +153,7 @@ module MeetingAgendaItems
     end
 
     def notes_classes
-      if OpenProject::FeatureDecisions.meeting_outcomes_active?
+      if OpenProject::FeatureDecisions.meeting_outcomes_active? && !@meeting.open?
         "op-uc-container muted-color"
       else
         "op-uc-container"

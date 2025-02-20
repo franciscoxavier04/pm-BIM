@@ -1,7 +1,7 @@
 <%=
   component_wrapper do
     grid_layout("op-meeting-outcome", tag: :div, id: "outcome-#{@meeting_agenda_item.id}", mt: 2) do |grid|
-      if @hide_notes
+      if @hide_notes && outcome_enabled?
         grid.with_area(:button) do
           render(MeetingAgendaItems::Outcomes::NewButtonComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item))
         end
@@ -9,7 +9,7 @@
 
       unless @hide_notes
         grid.with_area(:notes) do
-          if @state == :edit
+          if @state == :edit && outcome_enabled?
             render(MeetingAgendaItems::Outcomes::InputComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item, meeting_outcome: @meeting_outcome, hidden: false))
           elsif @state == :show
             render(MeetingAgendaItems::Outcomes::ShowNotesComponent.new(meeting_outcome: @meeting_outcome))
