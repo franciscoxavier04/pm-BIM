@@ -75,7 +75,7 @@ module WorkPackages
           disabled: disabled?(name),
           label:,
           caption: caption(name),
-          show_clear_button: !duration_field?(name),
+          show_clear_button: disabled?(name) || duration_field?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name)
         )
