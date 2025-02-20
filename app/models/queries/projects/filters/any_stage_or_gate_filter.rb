@@ -153,7 +153,5 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     beginning_of_week + 7.days
   end
 
-  def connection
-    ActiveRecord::Base.connection
-  end
+  delegate :connection, to: :"ActiveRecord::Base"
 end
