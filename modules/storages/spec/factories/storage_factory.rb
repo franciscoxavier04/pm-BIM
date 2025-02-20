@@ -99,6 +99,11 @@ FactoryBot.define do
       authentication_method { "oauth2_sso" }
     end
 
+    trait :oidc_sso_with_fallback do
+      nextcloud_audience { "nextcloud" }
+      authentication_method { "oauth2_sso_with_two_way_oauth2_fallback" }
+    end
+
     trait :as_automatically_managed do
       automatic_management_enabled { true }
       username { "OpenProject" }

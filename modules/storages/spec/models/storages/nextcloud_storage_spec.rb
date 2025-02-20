@@ -133,6 +133,23 @@ RSpec.describe Storages::NextcloudStorage do
           expect(storage.configuration_checks[:storage_oauth_client_configured]).to be(false)
         end
       end
+
+      context "when storage authenticates through IDP" do
+        let(:storage) do
+          build(:nextcloud_storage,
+                authentication_method: "oauth2_sso",
+                nextcloud_audience: "some")
+        end
+
+        it "returns true" do
+          expect(storage.configured?).to be(true)
+
+          aggregate_failures "configuration_checks" do
+            expect(storage.configuration_checks[:openproject_oauth_application_configured]).to be(true)
+            expect(storage.configuration_checks[:storage_oauth_client_configured]).to be(true)
+          end
+        end
+      end
     end
   end
 

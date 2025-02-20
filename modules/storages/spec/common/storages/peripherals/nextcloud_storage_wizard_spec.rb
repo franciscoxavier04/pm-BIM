@@ -152,6 +152,7 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
 
     context "and the nextcloud audience was set" do
       before do
+        wizard.prepare_next_step
         model.nextcloud_audience = "nextcloud"
       end
 
@@ -185,6 +186,109 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
           expect(wizard.completed_steps).to eq(%i[general_information
                                                   nextcloud_audience
                                                   automatically_managed_folders])
+        end
+      end
+    end
+  end
+
+  context "when name and host were set and authentication method is SSO with fallback to Two-Way OAuth 2.0" do
+    before do
+      model.name = "Karl"
+      model.host = "https://nextcloud.local/"
+      model.authentication_method = "oauth2_sso_with_two_way_oauth2_fallback"
+      model.save!
+    end
+
+    it "has general_information step completed" do
+      expect(wizard.completed_steps).to eq(%i[general_information])
+    end
+
+    it "has new steps pending in correct order" do
+      expect(wizard.pending_steps).to eq(%i[nextcloud_audience
+                                            oauth_application
+                                            oauth_client
+                                            automatically_managed_folders])
+    end
+
+    context "and the nextcloud audience was set" do
+      before do
+        wizard.prepare_next_step
+        model.nextcloud_audience = "nextcloud"
+      end
+
+      it "has nextcloud_audience step completed" do
+        expect(wizard.completed_steps).to eq(%i[general_information nextcloud_audience])
+      end
+
+      it "has no oauth_application yet" do
+        expect(model.oauth_application).to be_nil
+      end
+
+      context "and the next step was prepared" do
+        before do
+          wizard.prepare_next_step
+        end
+
+        it "automatically finished the oauth_application step" do
+          expect(wizard.completed_steps).to eq(%i[general_information
+                                                  nextcloud_audience
+                                                  oauth_application])
+        end
+
+        it "now has an oauth_application" do
+          expect(model.oauth_application).to be_present
+        end
+
+        it "has no oauth_client yet" do
+          expect(model.oauth_client).to be_nil
+        end
+
+        context "and the next step was prepared" do
+          before do
+            wizard.prepare_next_step
+          end
+
+          it "finishes the oauth_client step" do
+            expect(wizard.completed_steps).to eq(%i[general_information
+                                                    nextcloud_audience
+                                                    oauth_application
+                                                    oauth_client])
+          end
+
+          it "now has an unsaved oauth_client" do
+            expect(model.oauth_client).to be_present
+            expect(model.oauth_client).not_to be_persisted
+          end
+
+          it "still didn't specify how to manage folders" do
+            expect(model).to be_automatic_management_unspecified
+          end
+
+          context "and after preparing the next step" do
+            before do
+              wizard.prepare_next_step
+            end
+
+            it "enabled automatic storage management, but didn't persist it" do
+              expect(model).to be_automatic_management_enabled
+
+              before, after = model.changes["provider_fields"]
+              expect(before.keys).not_to include("automatically_managed")
+              expect(after.keys).to include("automatically_managed")
+            end
+
+            it "has no pending steps" do
+              expect(wizard.pending_steps).to be_empty
+            end
+
+            it "has all steps completed" do
+              expect(wizard.completed_steps).to eq(%i[general_information
+                                                      nextcloud_audience
+                                                      oauth_application
+                                                      oauth_client
+                                                      automatically_managed_folders])
+            end
+          end
         end
       end
     end

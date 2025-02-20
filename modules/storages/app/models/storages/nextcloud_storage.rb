@@ -35,7 +35,7 @@ module Storages
       username: "OpenProject"
     }.freeze
 
-    AUTHENTICATION_METHODS = %w[two_way_oauth2 oauth2_sso].freeze
+    AUTHENTICATION_METHODS = %w[two_way_oauth2 oauth2_sso oauth2_sso_with_two_way_oauth2_fallback].freeze
 
     store_attribute :provider_fields, :automatically_managed, :boolean
     store_attribute :provider_fields, :username, :string
@@ -71,13 +71,17 @@ module Storages
     end
 
     def authenticate_via_idp?
-      authentication_method == "oauth2_sso"
+      %w[oauth2_sso oauth2_sso_with_two_way_oauth2_fallback].include?(authentication_method)
+    end
+
+    def authenticate_via_storage?
+      %w[two_way_oauth2 oauth2_sso_with_two_way_oauth2_fallback].include?(authentication_method)
     end
 
     def configuration_checks
       {
-        storage_oauth_client_configured: oauth_client.present?,
-        openproject_oauth_application_configured: oauth_application.present?,
+        storage_oauth_client_configured: !authenticate_via_storage? || oauth_client.present?,
+        openproject_oauth_application_configured: !authenticate_via_storage? || oauth_application.present?,
         host_name_configured: host.present? && name.present?,
         nextcloud_audience_configured: !authenticate_via_idp? || nextcloud_audience.present?
       }

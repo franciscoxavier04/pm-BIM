@@ -44,13 +44,13 @@ module Storages
 
       step :oauth_application,
            section: :oauth_configuration,
-           if: ->(storage) { !storage.authenticate_via_idp? },
+           if: ->(storage) { storage.authenticate_via_storage? },
            completed_if: ->(storage) { storage.oauth_application.present? },
            preparation: :prepare_oauth_application
 
       step :oauth_client,
            section: :oauth_configuration,
-           if: ->(storage) { !storage.authenticate_via_idp? },
+           if: ->(storage) { storage.authenticate_via_storage? },
            completed_if: ->(storage) { storage.oauth_client.present? },
            preparation: ->(storage) { storage.build_oauth_client }
 
