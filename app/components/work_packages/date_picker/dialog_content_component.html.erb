@@ -2,7 +2,7 @@
   content_tag("turbo-frame", id: "wp-datepicker-dialog--content") do
     component_wrapper(data: { "application-target": "dynamic",
                               controller: "work-packages--date-picker--preview",
-                              "work-packages--date-picker--preview-date-mode-value": params[:date_mode],
+                              "work-packages--date-picker--preview-date-mode-value": date_mode,
                               test_selector: "op-datepicker-modal" },
                       class: "wp-datepicker-dialog--content") do
       component_collection do |collection|
