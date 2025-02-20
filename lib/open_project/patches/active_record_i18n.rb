@@ -37,7 +37,7 @@ module ActiveRecord
 
       if Rails.env.local?
         def attr.humanize(*)
-          raise ArgumentError, "Translation missing. Cannot get human attribute name for attribute #{self}."
+          raise ArgumentError, "I18n translation missing for attribute #{self}"
         end
       end
 

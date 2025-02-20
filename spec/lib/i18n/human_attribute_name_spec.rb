@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -44,6 +46,6 @@ RSpec.describe "I18n human_attribute_name", type: :helper do
 
   it "raises an error if the translation is missing" do
     expect { test_model.human_attribute_name("weird_attribute_that_does_not_exist") }
-      .to raise_error(/Translation missing/)
+      .to raise_error(/I18n translation missing for attribute weird/)
   end
 end
