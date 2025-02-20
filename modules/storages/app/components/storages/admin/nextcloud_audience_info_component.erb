@@ -36,13 +36,7 @@ See COPYRIGHT and LICENSE files for more details.
       end
 
       grid.with_area(:description, tag: :div, color: :subtle, test_selector: 'nextcloud-audience-description') do
-        concat(render(Primer::Beta::Text.new) {
-          if storage.nextcloud_audience.present?
-            I18n.t('storages.file_storage_view.nextcloud_audience_description', audience: storage.nextcloud_audience)
-          else
-            I18n.t('storages.file_storage_view.nextcloud_audience_blank')
-          end
-        })
+        concat(render(Primer::Beta::Text.new) { audience_summary })
       end
 
       if editable_storage?

@@ -34,7 +34,11 @@ See COPYRIGHT and LICENSE files for more details.
         model:,
         url: form_url,
         method: :patch,
-        data: { turbo_frame: "page-content" }
+        data: {
+          turbo_frame: "page-content",
+          application_target: "dynamic",
+          controller: "storages--storage-audience"
+        }
       ) do |form|
         flex_layout do |general_info_row|
           general_info_row.with_row(mb: 3) do

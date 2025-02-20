@@ -252,6 +252,7 @@ class Storages::Admin::StoragesController < ApplicationController
               "provider_type",
               "host",
               "authentication_method",
+              "audience_configuration",
               "nextcloud_audience",
               "oauth_client_id",
               "oauth_client_secret",

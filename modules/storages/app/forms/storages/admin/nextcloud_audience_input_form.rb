@@ -31,14 +31,41 @@
 module Storages::Admin
   class NextcloudAudienceInputForm < ApplicationForm
     form do |storage_form|
-      storage_form.text_field(
-        name: :nextcloud_audience,
-        label: I18n.t("activerecord.attributes.storages/nextcloud_storage.nextcloud_audience"),
-        required: true,
-        caption: I18n.t("storages.instructions.nextcloud.nextcloud_audience"),
-        placeholder: I18n.t("storages.instructions.nextcloud.nextcloud_audience_placeholder"),
-        input_width: :large
-      )
+      storage_form.radio_button_group(name: :audience_configuration) do |group|
+        group.radio_button(
+          value: :idp,
+          checked: idp?,
+          label: I18n.t("storages.storage_audience.idp.label"),
+          caption: I18n.t("storages.storage_audience.idp.helptext"),
+          data: { action: "storages--storage-audience#hideAudienceInput", "storages--storage-audience-target": "idpRadio" }
+        )
+
+        group.radio_button(
+          value: :manual,
+          checked: !idp?,
+          label: I18n.t("storages.storage_audience.manual.label"),
+          caption: I18n.t("storages.storage_audience.manual.helptext"),
+          data: { action: "storages--storage-audience#showAudienceInput" }
+        )
+      end
+
+      storage_form.group(data: { "storages--storage-audience-target": "audienceInputWrapper" }) do |toggleable_group|
+        toggleable_group.text_field(
+          name: :nextcloud_audience,
+          label: I18n.t("activerecord.attributes.storages/nextcloud_storage.nextcloud_audience"),
+          required: true,
+          caption: I18n.t("storages.instructions.nextcloud.nextcloud_audience"),
+          placeholder: I18n.t("storages.instructions.nextcloud.nextcloud_audience_placeholder"),
+          input_width: :large,
+          data: { "storages--storage-audience-target": "audienceInput" }
+        )
+      end
+    end
+
+    private
+
+    def idp?
+      model.nextcloud_audience == OpenIDConnect::UserToken::IDP_AUDIENCE
     end
   end
 end

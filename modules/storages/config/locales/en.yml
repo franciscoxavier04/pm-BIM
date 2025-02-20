@@ -212,7 +212,8 @@ en:
       general_information: General information
       nextcloud_audience: Nextcloud Audience
       nextcloud_audience_blank: No audience has been configured
-      nextcloud_audience_description: Using audience %{audience}
+      nextcloud_audience_description: Obtaining tokens for audience "%{audience}".
+      nextcloud_audience_idp: Using first access token received by identity provider, regardless of audience.
       nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
@@ -405,6 +406,13 @@ en:
 
         '
       label: Show attachments in the work packages files tab
+    storage_audience:
+      idp:
+        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use first access token obtained by identity provider
+      manual:
+        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
+        label: Define storage audience manually
     storage_list_blank_slate:
       description: Add a storage to see them here.
       heading: You don't have any storages yet.
