@@ -1287,6 +1287,10 @@ ca:
         work_package:
           is_not_a_valid_target_for_time_entries: "Treball paquet #%{id} no és un objectiu vàlid per a reassignar les entrades de temps."
           attributes:
+            id:
+              format: "%{message}"
+              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              blank: "ID can't be blank."
             assigned_to:
               format: "%{message}"
             done_ratio:

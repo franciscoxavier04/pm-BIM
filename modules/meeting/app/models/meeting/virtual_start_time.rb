@@ -129,6 +129,8 @@ module Meeting::VirtualStartTime
   ##
   # Enforce HH::MM time parsing for the given input string
   def parsed_start_time_hour
+    return nil if @start_time_hour.nil?
+
     Time.strptime(@start_time_hour, "%H:%M")
   rescue ArgumentError
     nil
