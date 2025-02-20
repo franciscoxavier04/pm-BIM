@@ -233,6 +233,7 @@ en:
         host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
         missing_dependencies: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
         not_configured: The connection could not be validated. Please finish configuration first.
+        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Check your connection against the server.

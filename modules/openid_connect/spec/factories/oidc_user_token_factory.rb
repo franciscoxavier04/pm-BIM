@@ -9,6 +9,6 @@ FactoryBot.define do
     user
     access_token { "INVALID_TOKEN" }
     refresh_token { "COOL_AID_TOKEN" }
-    audiences { ["__op-idp__"] + Array(extra_audiences) }
+    audiences { [OpenIDConnect::UserToken::IDP_AUDIENCE] + Array(extra_audiences) }
   end
 end
