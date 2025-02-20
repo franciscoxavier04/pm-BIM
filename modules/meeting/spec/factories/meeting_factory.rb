@@ -36,6 +36,12 @@ FactoryBot.define do
     location { "https://some-url.com" }
     m.sequence(:title) { |n| "Meeting #{n}" }
 
+    trait :author_participates do
+      after(:build) do |meeting|
+        meeting.participants.build(user: meeting.author, invited: true)
+      end
+    end
+
     after(:create) do |meeting, evaluator|
       meeting.project = evaluator.project if evaluator.project
     end
