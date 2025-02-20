@@ -84,7 +84,11 @@ module TimeEntries
     end
 
     def work_package_validation_error
-      model.errors[:project_id]&.first
+      if model.errors[:project_id].present?
+        model.errors[:project_id].first
+      else
+        model.errors[:work_package]&.first
+      end
     end
 
     def work_package_completer_filters
