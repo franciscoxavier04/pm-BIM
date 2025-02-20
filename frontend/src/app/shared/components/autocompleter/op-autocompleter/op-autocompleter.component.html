@@ -196,7 +196,10 @@
       class="op-autocompleter--option-principal-avatar"
       size="mini"
     ></op-principal>
-    <span [ngOptionHighlight]="search">{{ item.name }}</span>
+    <span
+      [attr.data-hover-card-trigger-target]="getHoverCardTriggerTarget(item)"
+      [attr.data-hover-card-url]="getHoverCardUrl(item)"
+      [ngOptionHighlight]="search">{{ item.name }}</span>
     <span
       class="op-autocompleter__option-principal-email"
       *ngIf="item.email"
