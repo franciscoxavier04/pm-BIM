@@ -68,17 +68,24 @@ RSpec.describe "Work Package cost fields", :js do
     login_as user
   end
 
+  # It is necessary to use send keys, because some UI events are triggered on keyboard input.
+  def fill_in_with_send_keys(field_name, with:)
+    fill_in(field_name, with:)
+    find_field(field_name).send_keys(:right)
+  end
+
   it "does not show read-only fields" do
     full_view.visit!
     full_view.select_log_unit_costs_action
 
     # Set single value, should update suffix
     select "A", from: "cost_entry_cost_type_id"
-    fill_in "cost_entry_units", with: "1"
+    fill_in_with_send_keys "cost_entry_units", with: "1"
+
     expect(page).to have_css("#cost_entry_unit_name", text: "A single")
     expect(page).to have_css("#cost_entry_costs", text: "1.00 EUR")
 
-    fill_in "cost_entry_units", with: "2"
+    fill_in_with_send_keys "cost_entry_units", with: "2"
     expect(page).to have_css("#cost_entry_unit_name", text: "A plural")
     expect(page).to have_css("#cost_entry_costs", text: "2.00 EUR")
 
@@ -90,8 +97,7 @@ RSpec.describe "Work Package cost fields", :js do
     # Override costs
     find_by_id("cost_entry_costs").click
     SeleniumHubWaiter.wait
-    fill_in "cost_entry_overridden_costs", with: "15.52"
-
+    fill_in_with_send_keys "cost_entry_overridden_costs", with: "15.52"
     click_on "Save"
 
     # Expect correct costs
@@ -114,7 +120,7 @@ RSpec.describe "Work Package cost fields", :js do
       full_view.visit!
       full_view.select_log_unit_costs_action
 
-      fill_in CostEntry.human_attribute_name(:units), with: "1,42"
+      fill_in_with_send_keys CostEntry.human_attribute_name(:units), with: "1,42"
       expect(page).to have_css("#cost_entry_costs", text: "1,42 EUR")
 
       select "B", from: CostEntry.human_attribute_name(:cost_type)
@@ -124,7 +130,7 @@ RSpec.describe "Work Package cost fields", :js do
       # Override costs
       find_by_id("cost_entry_costs").click
       SeleniumHubWaiter.wait
-      fill_in "cost_entry_overridden_costs", with: "1.350,25"
+      fill_in_with_send_keys "cost_entry_overridden_costs", with: "1.350,25"
 
       click_on I18n.t(:button_save)
 
@@ -146,7 +152,7 @@ RSpec.describe "Work Package cost fields", :js do
 
       # Update the costs in german locale
       SeleniumHubWaiter.wait
-      fill_in "cost_entry_overridden_costs", with: "55.000,55"
+      fill_in_with_send_keys "cost_entry_overridden_costs", with: "55.000,55"
       click_on I18n.t(:button_save)
 
       # Add explicit wait for the updated cost value

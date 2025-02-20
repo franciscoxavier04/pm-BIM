@@ -61,6 +61,14 @@ export class RemoteFieldUpdaterComponent implements OnInit {
     this.htmlMode = element.dataset.mode === 'html';
 
     const debouncedEvent = _.debounce((event:InputEvent) => {
+      // Do not handle the change event on input fields, because they can trigger the
+      // debouncedEvent after a form submission which will lead to a broken UI update.
+      // This can happen if the form submission is clicked when an input field is still focused.
+      const target = event.target as HTMLElement | null;
+      if (event.type === 'change' && target instanceof HTMLInputElement) {
+        return;
+      }
+
       // This prevents an update of the result list when
       // tabbing to the result list (9),
       // pressing enter (13)
@@ -112,12 +120,12 @@ export class RemoteFieldUpdaterComponent implements OnInit {
 
     this
       .request(params)
-      .subscribe((response:any) => {
+      .subscribe((response:string|object) => {
         if (this.htmlMode) {
           // Replace the given target
           this.target.innerHTML = response as string;
         } else {
-          _.each(response, (val:string, selector:string) => {
+          _.each(response as object, (val:string, selector:string) => {
             const element = document.getElementById(selector) as HTMLElement|HTMLInputElement;
 
             if (element instanceof HTMLInputElement) {
