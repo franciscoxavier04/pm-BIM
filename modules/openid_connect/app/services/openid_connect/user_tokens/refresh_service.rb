@@ -48,9 +48,10 @@ module OpenIDConnect
 
         access_token = json["access_token"]
         refresh_token = json["refresh_token"]
+        expires_in = json["expires_in"]
         return Failure("Refresh token response invalid") if access_token.blank?
 
-        token.update!(access_token:, refresh_token:)
+        token.update!(access_token:, refresh_token:, expires_at: expires_in&.seconds&.from_now)
 
         Success(token)
       end
