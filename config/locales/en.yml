@@ -434,6 +434,12 @@ en:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
   project_lifecycle:
     project_days: Project days
+    table:
+      subject: "Subject"
+      type: "Type"
+      active: "Active"
+      duration: "Duration"
+      dates: "Dates"
     working_days_count:
       one: "Duration: %{count} working day"
       other: "Duration: %{count} working days"

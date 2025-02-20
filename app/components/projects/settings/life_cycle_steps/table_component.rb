@@ -45,7 +45,7 @@ module Projects
         def button_column? = false
 
         def header_caption(column)
-          Project::LifeCycleStep.human_attribute_name(column)
+          I18n.t(column, scope: "project_lifecycle.table")
         end
 
         def rows
