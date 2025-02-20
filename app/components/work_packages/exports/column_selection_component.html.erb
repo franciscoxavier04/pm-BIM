@@ -2,6 +2,7 @@
                                   inputs: {
                                     id:,
                                     name: "columns",
+                                    columnsSelection: true,
                                     dragAreaName: "#{id}_dragarea",
                                     formControlId: "#{id}_autocompleter",
                                     appendToComponent: true,
@@ -11,5 +12,7 @@
                                     inputCaption: caption,
                                     inputLabel: label,
                                     inputPlaceholder: I18n.t(:"queries.configure_view.columns.input_placeholder"),
-                                    dragAreaLabel: I18n.t(:"queries.configure_view.columns.drag_area_label")
+                                    dragAreaLabel: I18n.t(:"queries.configure_view.columns.drag_area_label"),
+                                    inputError: I18n.t("export.dialog.columns.input_caption_required"),
+                                    required: @required
                                   } %>
