@@ -74,7 +74,7 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
   end
 
   def get_columns
-    return [] if query.column_names.empty?
+    return [] if query.column_names.empty? && wants_report?
 
     super
   end
@@ -85,7 +85,7 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
   rescue Prawn::Errors::CannotFit
     error(I18n.t(:error_pdf_export_too_many_columns))
   rescue StandardError => e
-    Rails.logger.error { "Failed to generate PDF export: #{e}." }
+    Rails.logger.error "Failed to generate PDF export:  #{e.message}:\n#{e.backtrace.join("\n")}"
     error(I18n.t(:error_pdf_failed_to_export, error: e.message[0..300]))
   end
 
