@@ -167,6 +167,16 @@ module WorkPackages
 
         { data: }
       end
+
+      def single_date_field_button_link(focused_field)
+        permitted_params = params.merge(date_mode: "range", focused_field:).permit!
+
+        if params[:action] == "new"
+          new_work_package_datepicker_dialog_content_path(permitted_params)
+        else
+          work_package_datepicker_dialog_content_path(permitted_params)
+        end
+      end
     end
   end
 end

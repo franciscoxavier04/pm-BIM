@@ -64,8 +64,19 @@ class WorkPackages::DatePickerController < ApplicationController
   def new
     make_fake_initial_work_package
     set_date_attributes_to_work_package
+    respond_to do |format|
+      format.turbo_stream do
+        set_date_attributes_to_work_package
 
-    render datepicker_modal_component, status: :ok
+        replace_via_turbo_stream(
+          component: datepicker_modal_component
+        )
+        render turbo_stream: turbo_streams
+      end
+      format.html do
+        render datepicker_modal_component, status: :ok
+      end
+    end
   end
 
   def edit
@@ -89,7 +100,7 @@ class WorkPackages::DatePickerController < ApplicationController
           # the request in order to fetch the new set of Work Package
           # attributes in the ancestry solely on success.
           render turbo_stream: [
-            turbo_stream.morph("wp-datepicker-dialog--content", progress_modal_component)
+            turbo_stream.morph("wp-datepicker-dialog--content", datepicker_modal_component)
           ], status: :unprocessable_entity
         end
       end
