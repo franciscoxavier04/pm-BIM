@@ -242,6 +242,8 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     start_date.activate!
     start_date.expect_active!
 
+    start_date.datepicker.enable_due_date
+
     start_date.datepicker.expect_visible
     start_date.datepicker.set_duration -128
     start_date.datepicker.expect_duration_error "Must be greater than 0."
