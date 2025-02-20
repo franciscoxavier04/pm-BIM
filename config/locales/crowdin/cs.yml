@@ -128,9 +128,9 @@ cs:
     sync_failed: "Nepodařilo se synchronizovat z LDAP: %{message}."
     back_to_index: "Kliknutím sem se vrátíte do seznamu připojení."
     technical_warning_html: |
-      Tento LDAP formulář vyžaduje technické znalosti nastavení LDAP / Active Directory.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Prosím navštivte naši dokumentaci pro podrobné pokyny</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Rozhodčí název spojení LDAP
       host: LDAP název hostitele nebo IP adresa
@@ -138,9 +138,9 @@ cs:
       generic_map: Klíč atributů v LDAP, který je namapován k atributu OpenProject `%{attribute}`
       admin_map_html: "Volitelně: Atribut klíč v LDAP, který <strong>pokud je přítomen</strong> , označí uživatele OpenProject admin. Nechte prázdné, pokud máte pochybnosti."
       system_user_dn_html: |
-        Zadejte DN systémového uživatele používaného pro přístup pouze ke čtení.
-        <br/>
-        Příklad: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Vložte vázané heslo systémového uživatele
       base_dn: |
         Zadejte základní DN podstromu v LDAP chcete, aby OpenProject hledal uživatele a skupiny.
@@ -179,7 +179,7 @@ cs:
     tls_options:
       verify_peer: "Ověřit SSL certifikát"
       verify_peer_description_html: >
-        Umožňuje přísné SSL ověření řetězce důvěryhodných certifikátů. <br/> <strong>Varování:</strong> Odškrtnutím této možnosti zakáže SSL ověření certifikátu LDAP serveru. To odhaluje vaši vazbu na člověka při blízkovýchodních útocích.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Pokud LDAP server není v důvěryhodných zdrojích tohoto systému, můžete jej přidat ručně zde. Zadejte PEM X509 certifikační řetězec."
   forums:
     show:
@@ -590,10 +590,10 @@ cs:
         package is automatically set to this value when this status is selected.
         Ignored in work-based mode.
       status_readonly_html: |
-        Zaškrtněte tuto volbu k označení pracovních balíčků s tímto stavem jako jen pro čtení.
-        Žádné atributy nelze změnit s výjimkou stavu samotného.
-        <br/>
-        <strong>Poznámka</strong>: zděděné hodnoty (např. z potomků či dalších vztahů) budou platné i nadále.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Momentálně zde nejsou žádné stavy pracovního balíčku.
       no_results_content_text: Přidat nový stav
@@ -632,6 +632,14 @@ cs:
         pattern:
           label: "Vzor předmětu"
           caption: "Vyhledejte atribut nebo přidejte text. Pro vytvoření mezery mezi prvky jej přidejte jako text."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "Verze je sdílena s archivovanými projekty, které mají stále pracovní balíčky přiřazené k této verzi. Ty jsou započítány, ale nebudou se objevovat v odkazovaných zobrazeních."
@@ -2074,21 +2082,29 @@ cs:
       days: d
   pdf_generator:
     page_nr_footer: "Strana %{page} z %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generovat PDF
-      submit: Generovat
-      header_right:
-        label: Záhlaví vpravo
-        caption: Text, který se zobrazí vpravo od záhlaví
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Střed zápatí
-        caption: Text, který se zobrazí uprostřed zápatí
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Dělení slov
-        caption: Zlomte slova mezi řádky, abyste zlepšili odůvodnění textu a jeho čitelnost.
-      paper_size:
-        label: Velikost papíru
-        caption: Velikost papíru, který se má použít pro PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext k dispozici (volitelné)"
@@ -2914,7 +2930,7 @@ cs:
   label_global_role: "Globální role"
   label_not_changeable: "(neměnitelné)"
   label_global: "Globální"
-  label_seeded_from_env_warning: Tento záznam byl vytvořen pomocí proměnné nastavení / prostředí. Není upravitelný prostřednictvím uživatelského rozhraní.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Chyba při provádění makra %{macro_name}"
   macro_unavailable: "Makro %{macro_name} nelze zobrazit."
   macros:

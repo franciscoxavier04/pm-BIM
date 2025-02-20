@@ -128,9 +128,9 @@ zh-CN:
     sync_failed: "无法从 LDAP 同步：%{message}。"
     back_to_index: "点击此处返回到连接列表。"
     technical_warning_html: |
-      此 LDAP 表单需要您具备 LDAP / Active Directory 设置的技术知识。
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">请访问我们的文档了解详细说明</a>。
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: LDAP 连接的任意名称
       host: LDAP 主机名或 IP 地址
@@ -138,9 +138,9 @@ zh-CN:
       generic_map: LDAP 中用于映射到 OpenProject `%{attribute}` 属性的属性键
       admin_map_html: "可选：LDAP 中将 OpenProject 用户标记为管理员的属性键（<strong>如存在</strong>）。如有疑问，请留空。"
       system_user_dn_html: |
-        输入系统用户用于只读访问的 DN。
-        <br/>
-        示例：uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: 输入系统用户的绑定密码
       base_dn: |
         输入 LDAP 中您希望 OpenProject 查找用户和组的子树的基本 DN。
@@ -176,7 +176,7 @@ zh-CN:
     tls_options:
       verify_peer: "验证SSL证书"
       verify_peer_description_html: >
-        启用对受信任链证书的严格 SSL 验证。<br/> <strong>警告：</strong>取消选中此选项会禁用 LDAP 服务器证书的 SSL 验证。这将使您的连接暴露于中间人攻击。
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "如果LDAP服务器证书不在此系统的信任源中，您可以在此手动添加它。输入PEM X509证书字符串。"
   forums:
     show:
@@ -562,10 +562,10 @@ zh-CN:
         在<a href="%{href}">基于状态的进度计算模式</a>下，当选择该状态时，工作包的 完成% 会自动设置为该值。
         在基于工作的模式下忽略。
       status_readonly_html: |
-        选中此选项可将此状态的工作包标记为只读。
-        除状态外，不能更改任何属性。
-        <br/>
-        <strong>注</strong>：继承值（例如，来自子级或关系的值）仍然适用。
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: 目前没有工作包状态。
       no_results_content_text: 添加新的状态
@@ -604,6 +604,14 @@ zh-CN:
         pattern:
           label: "主题模式"
           caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "该版本与归档项目共享，这些项目仍然有分配给此版本的工作包。虽然这些工作包被计算在内，但不会显示在链接视图中。"
@@ -1956,21 +1964,29 @@ zh-CN:
       days: 天
   pdf_generator:
     page_nr_footer: "第 %{page} 页，共%{total} 页"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: 生成 PDF
-      submit: 生成
-      header_right:
-        label: 页眉右侧
-        caption: 标题右侧显示的文本
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: 页脚中心
-        caption: 在页脚中心显示的文本
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: 断字
-        caption: 在行之间打断单词，以改进文本解释和可读性。
-      paper_size:
-        label: 纸张大小
-        caption: 用于PDF的纸张大小。
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (可选)"
@@ -2796,7 +2812,7 @@ zh-CN:
   label_global_role: "全局角色"
   label_not_changeable: "（不变）"
   label_global: "全局"
-  label_seeded_from_env_warning: 此记录通过设置/环境变量创建。无法通过 UI 编辑。
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "执行宏 %{macro_name} 出错"
   macro_unavailable: "无法显示宏 %{macro_name} 。"
   macros:

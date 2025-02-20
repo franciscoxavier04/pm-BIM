@@ -103,7 +103,6 @@ id:
     button_settings: "Pengaturan"
     button_uncheck_all: "Uncek semua"
     button_update: "Update"
-    button_export-pdf: "Download PDF"
     button_export-atom: "Download Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Buat baru"

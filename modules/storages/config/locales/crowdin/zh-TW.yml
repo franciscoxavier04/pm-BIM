@@ -223,6 +223,7 @@ zh-TW:
         missing_dependencies: '檔案儲存中缺少所需的相依性。請新增下列相依性： %{dependency}。'
         not_configured: 連線無法驗證。請先完成設定。
         oidc_audience_missing: 儲存沒有定義接收目標。這是 OpenID Connect 整合的必要條件。
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: 當前用戶不是由 OpenID Connect Identity Provider 提供。請使用提供的使用者重新執行檢查。
         placeholder: 根據伺服器檢查您的連線。
         subtitle: 連線驗證

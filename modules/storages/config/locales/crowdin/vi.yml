@@ -223,6 +223,7 @@ vi:
         missing_dependencies: 'Thiếu sự phụ thuộc bắt buộc vào bộ lưu trữ tệp. Vui lòng thêm sự phụ thuộc sau: %{dependency}.'
         not_configured: Kết nối không thể được xác thực. Vui lòng hoàn tất cấu hình trước.
         oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Kiểm tra kết nối của bạn với máy chủ.
         subtitle: Xác thực kết nối

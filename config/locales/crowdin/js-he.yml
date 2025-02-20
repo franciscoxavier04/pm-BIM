@@ -103,7 +103,6 @@ he:
     button_settings: "הגדרות"
     button_uncheck_all: "נקה הכל"
     button_update: "עדכון"
-    button_export-pdf: "הורד קובץ PDF"
     button_export-atom: "Download Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "צור"

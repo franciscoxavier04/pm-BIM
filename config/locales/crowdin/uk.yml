@@ -128,7 +128,9 @@ uk:
     sync_failed: "Не вдалося виконати синхронізацію з LDAP: %{message}."
     back_to_index: "Натисніть тут, щоб повернутися до списку підключень."
     technical_warning_html: |
-      Ця форма LDAP вимагає технічних знань про налаштування LDAP / Active Directory.<br/><a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Щоб отримати докладні вказівки, ознайомтеся з нашою документацією</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Назва атрибута LDAP-підключення
       host: Назва хосту LDAP або IP-адреса
@@ -136,9 +138,9 @@ uk:
       generic_map: Ключ атрибута в LDAP, зіставлений з атрибутом «%{attribute}» OpenProject
       admin_map_html: "Необов’язково. Ключ атрибута в LDAP, який, <strong>якщо є</strong>, призначає користувача адміністратором OpenProject. Нічого не вказуйте, якщо маєте сумніви."
       system_user_dn_html: |
-        Введіть унікальне ім’я системного користувача, за допомогою якого можна отримати доступ лише для читання.
-        <br/>
-        Наприклад: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Введіть пароль зв’язування системного користувача
       base_dn: |
         Введи базове унікальне ім’я піддерева в LDAP, де OpenProject має шукати користувачів і групи. OpenProject фільтруватиме за вказаними іменами користувачів лише в цьому піддереві.
@@ -174,7 +176,7 @@ uk:
     tls_options:
       verify_peer: "Перевірити сертифікат SSL"
       verify_peer_description_html: >
-        Вмикає сувору перевірку SSL ланцюжка довірених сертифікатів. <br/> <strong>Увага!</strong> Якщо зняти цей прапорець, буде вимкнено перевірку SSL сертифіката сервера LDAP. Через це ваше з’єднання може стати  вразливим до MITM-атаки.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Якщо сертифікат сервера LDAP не належить до надійних джерел цієї системи, ви можете додати його вручну тут. Введіть рядок сертифіката PEM X509."
   forums:
     show:
@@ -583,10 +585,10 @@ uk:
         У <a href="%{href}">режимі обчислення прогресу на основі статусу</a> для атрибута «% завершення» пакета робіт автоматично встановлюється це значення, коли вибрано цей статус.
         Ігнорується в режимі на основі роботи.
       status_readonly_html: |
-        Відмітьте цю опцію, щоб позначити пакети робіт з таким статусом, як доступні лише для перегляду.
-        Жоден атрибут не можуть бути змінені за виключенням статусу.
-        <br/>
-        <strong>Примітки</strong>: Будуть застосовані успадковані значення (наприклад, елементів попередників чи нащадків).
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Наразі немає статусів робочих пакетів.
       no_results_content_text: Додати новий статус
@@ -625,6 +627,14 @@ uk:
         pattern:
           label: "Шаблон теми"
           caption: "Знайдіть атрибут або додайте текст. Проміжок між елементами потрібно додавати як текст."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "Доступ до цієї версії надано в архівних проєктах, які досі містять пакети робіт, призначені цій версії. Їх враховано, але вони не відображаються в пов’язаних поданнях."
@@ -2067,21 +2077,29 @@ uk:
       days: д
   pdf_generator:
     page_nr_footer: "Сторінка %{page} з %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Згенерувати PDF
-      submit: Згенерувати
-      header_right:
-        label: Верхній колонтитул, справа
-        caption: Текст, що відображається праворуч від верхнього колонтитула
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Нижній колонтитул, центр
-        caption: Текст, що відображається в центрі нижнього колонтитула
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Перенесення
-        caption: Переносьте слова між рядками, щоб вирівняти текст і покращити його читабельність.
-      paper_size:
-        label: Розмір паперу
-        caption: Розмір паперу для PDF-файлу.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Доступний текст PDF (необов'язково)"
@@ -2907,7 +2925,7 @@ uk:
   label_global_role: "Глобальна роль"
   label_not_changeable: "(не змінюється)"
   label_global: "Глобальний"
-  label_seeded_from_env_warning: Цей запис створено за допомогою параметра /змінної середовища. Його не можна змінити в інтерфейсі користувача.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Помилка виконання макросу %{macro_name}"
   macro_unavailable: "Макрос %{macro_name} не може бути відображений."
   macros:

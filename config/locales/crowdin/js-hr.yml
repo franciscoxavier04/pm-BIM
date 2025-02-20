@@ -103,7 +103,6 @@ hr:
     button_settings: "Postavke"
     button_uncheck_all: "Nemoj odabrati sve"
     button_update: "Ažuriraj"
-    button_export-pdf: "Preuzmi PDF"
     button_export-atom: "Preuzmite Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Stvori"

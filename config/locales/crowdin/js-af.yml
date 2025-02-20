@@ -103,7 +103,6 @@ af:
     button_settings: "Instellings"
     button_uncheck_all: "Ontmerk almal"
     button_update: "Opdateer"
-    button_export-pdf: "Download PDF"
     button_export-atom: "Download Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Skep"

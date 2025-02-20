@@ -223,6 +223,7 @@ ms:
         missing_dependencies: 'Kebergantungan yang diperlukan tiada pada storan fail. Sila tambahkan kebergantungan berikut: %{dependency}.'
         not_configured: Sambungan tidak dapat disahkan. Sila selesaikan konfigurasi dahulu.
         oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Semak sambungan anda terhadap pelayan.
         subtitle: Pengesahan sambungan

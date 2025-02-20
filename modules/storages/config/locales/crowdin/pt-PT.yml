@@ -223,6 +223,7 @@ pt-PT:
         missing_dependencies: 'Está em falta uma dependência necessária no armazenamento de ficheiros. Adicione a seguinte dependência: %{dependency}.'
         not_configured: Não foi possível validar a ligação.Termine, primeiro, a configuração.
         oidc_audience_missing: O armazenamento não tem um público definido. Isto é necessário para a integração do OpenID Connect.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: O utilizador atual não é fornecido por um fornecedor de identidade OpenID Connect. Volte a executar a verificação com um utilizador fornecido.
         placeholder: Verifique a sua ligação com o servidor.
         subtitle: Validação da ligação

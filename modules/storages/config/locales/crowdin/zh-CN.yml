@@ -223,6 +223,7 @@ zh-CN:
         missing_dependencies: '文件存储缺少一个必需的依赖项。请添加以下依赖项： %{dependency}.'
         not_configured: 无法验证连接。请先完成配置。
         oidc_audience_missing: 存储未定义受众。OpenID Connect 集成需要集成。
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: 当前用户并非由 OpenID Connect 身份提供商提供。请针对提供的用户重新运行检查。
         placeholder: 检查您与服务器的连接。
         subtitle: 连接验证

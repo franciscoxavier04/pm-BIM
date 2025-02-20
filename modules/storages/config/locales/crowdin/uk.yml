@@ -223,6 +223,7 @@ uk:
         missing_dependencies: 'Відсутня обов’язкова залежність для файлового сховища. Додайте таку залежність: %{dependency}.'
         not_configured: Не вдалося перевірити підключення. Спочатку налаштуйте конфігурацію.
         oidc_audience_missing: Сховище не має визначеної аудиторії. Це необхідно для інтеграції з OpenID Connect.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: Поточного користувача не надано постачальником ідентифікаційних даних OpenID Connect. Повторіть перевірку з наданим користувачем.
         placeholder: Перевірте підключення до сервера.
         subtitle: Перевірка підключення

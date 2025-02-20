@@ -223,6 +223,7 @@ it:
         missing_dependencies: 'Manca una dipendenza necessaria per l''archiviazione dei file. Aggiungi la seguente dipendenza: %{dependency}.'
         not_configured: Non è stato possibile verificare la connessione. Prima è necessario completare la configurazione.
         oidc_audience_missing: L'archiviazione non ha un pubblico definito. Ciò è necessario per l'integrazione di OpenID Connect.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: L'utente attuale non è fornito da un provider di identità OpenID Connect. Esegui nuovamente il controllo con un utente fornito.
         placeholder: Verifica la tua connessione con il server.
         subtitle: Verifica della connessione

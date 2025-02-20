@@ -223,6 +223,7 @@ fr:
         missing_dependencies: 'Une dépendance requise est manquante dans l''espace de stockage de fichiers. Veuillez ajouter la dépendance suivante : %{dependency}.'
         not_configured: La connexion n'a pas pu être validée. Veuillez d'abord terminer la configuration.
         oidc_audience_missing: Le stockage n'a pas d'audience définie. Cela est nécessaire pour l'intégration d'OpenID Connect.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: L'utilisateur actuel n'est pas fourni par un fournisseur d'identité OpenID Connect. Veuillez réexécuter la vérification avec un utilisateur fourni.
         placeholder: Vérifiez votre connexion avec le serveur.
         subtitle: Validation de la connexion

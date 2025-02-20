@@ -103,7 +103,6 @@ de:
     button_settings: "Einstellungen"
     button_uncheck_all: "Alle abwählen"
     button_update: "Aktualisieren"
-    button_export-pdf: "PDF-Download"
     button_export-atom: "Atom-Download"
     button_generate_pdf: "PDF generieren"
     button_create: "Anlegen"

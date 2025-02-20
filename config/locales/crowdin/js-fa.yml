@@ -103,7 +103,6 @@ fa:
     button_settings: "تنظیمات"
     button_uncheck_all: "لغو انتخاب همه"
     button_update: "به روز رسانی"
-    button_export-pdf: "دانلود PDF"
     button_export-atom: "دریافت Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "ایجاد"

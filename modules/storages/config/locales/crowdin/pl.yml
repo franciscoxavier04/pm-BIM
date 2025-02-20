@@ -223,6 +223,7 @@ pl:
         missing_dependencies: 'Brakuje wymaganej zależności magazynu plików. Dodaj następującą zależność: %{dependency}.'
         not_configured: Nie można zweryfikować połączenia. Najpierw zakończ konfigurację.
         oidc_audience_missing: Magazyn nie ma zdefiniowanych odbiorców. Jest to konieczne do integracji OpenID Connect.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: Bieżący użytkownik nie jest dostarczany przez dostawcę tożsamości OpenID Connect. Ponownie uruchom sprawdzanie z dostarczonym użytkownikiem.
         placeholder: Sprawdź połączenie z serwerem.
         subtitle: Weryfikacja połączenia

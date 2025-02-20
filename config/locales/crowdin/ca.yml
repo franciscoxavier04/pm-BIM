@@ -128,9 +128,9 @@ ca:
     sync_failed: "No s'ha pogut sincronitzar des de LDAP: %{message}."
     back_to_index: "Fes clic aquí per tornar a la llista de connexions."
     technical_warning_html: |
-      Aquest formulari LDAP requereix coneixement tècnic sobre la teva configuració LDAP / Directori actiu.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Si us plau, visita la nostra documentació per a instruccions detallades</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Nom arbitrari de la connexió LDAP
       host: Nom d'amfitrió o adreça IP de LDAP
@@ -138,9 +138,9 @@ ca:
       generic_map: La clau d'atribut en LDAP que és assignada a l'atribut `%{attribute}` d'OpenProject
       admin_map_html: "Opcional: La clau d'atribut en LDAP que <strong>si hi és</strong> marca l'usuari d'OpenProject com a administrador. Deixeu-ho buit en cas de dubte."
       system_user_dn_html: |
-        Introduïu el DN de l'usuari de sistema fet servir per a accés de sols lectura.
-        </br>
-        Exemple: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Introduïu la contrasenya associada de l'usuari del sistema
       base_dn: |
         Introdueix la DN Base del subarbre del LDAP la qual vols que OpenProject faci servir per a buscar usuaris i grups.
@@ -176,7 +176,7 @@ ca:
     tls_options:
       verify_peer: "Verifica el certificat SSL"
       verify_peer_description_html: >
-        Habilita verificacions SSL estrictes del certificat en cadena de confiança. <br/> <strong> Alerta:</strong> Desseleccionar  aquesta opció deshabilita la verificació SSL al certificat del servidor LDAP. Això, exposa la teva connexió als atacs d'intermediari.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Si el certificat de servidor LDAP no està en els recursos de confiança d'aquest sistema, pots afegir-lo manualment aquí. Introdueix una entrada de certificat PEM X509."
   forums:
     show:
@@ -571,10 +571,10 @@ ca:
         package is automatically set to this value when this status is selected.
         Ignored in work-based mode.
       status_readonly_html: |
-        Activeu aquesta opció per a marcar paquets de treball amb els seus estats com a sols lectura.
-        No es poden canviar els atributs amb l'excepció de l'atribut estat-
-        <br/>
-        <strong>Nota</strong> : Els valors heretats (p.e., de fills o relacions) es continuaran aplicant.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Actualment no hi ha cap estat de paquet de treball.
       no_results_content_text: Afegir un nou estat
@@ -613,6 +613,14 @@ ca:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "La versió es comparteix amb projectes arxivats que encara tenen paquets de treball assignats a aquesta versió. Es comptabilitzen, però no apareixeran a les vistes enllaçades."
@@ -1995,21 +2003,29 @@ ca:
       days: d
   pdf_generator:
     page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Generate
-      header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
-      paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext disponible (opcional)"
@@ -2835,7 +2851,7 @@ ca:
   label_global_role: "Global role"
   label_not_changeable: "(no variable)"
   label_global: "Global"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Error en l'execució de la macro %{macro_name}"
   macro_unavailable: "No es pot mostrar la macro %{macro_name}."
   macros:
