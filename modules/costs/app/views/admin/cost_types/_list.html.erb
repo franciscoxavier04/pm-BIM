@@ -82,12 +82,12 @@ See COPYRIGHT and LICENSE files for more details.
         <tbody>
           <% cost_types.each do |cost_type| %>
           <tr>
-            <%= content_tag :td, link_to(cost_type.name, { controller: "/cost_types", action: "edit", id: cost_type }) %>
+            <%= content_tag :td, link_to(cost_type.name, { controller: "/admin/cost_types", action: "edit", id: cost_type }) %>
             <%= content_tag :td, cost_type.unit %>
             <%= content_tag :td, cost_type.unit_plural %>
             <%= content_tag :td, to_currency_with_empty(cost_type.rate_at(@fixed_date)), class: "currency", id: "cost_type_#{cost_type.id}_rate" %>
             <td>
-              <%= form_for cost_type, url: { controller: "/cost_types", action: "set_rate", id: cost_type }, method: :put, html: { class: "inline-label" }  do |f| %>
+              <%= form_for cost_type, url: { controller: "/admin/cost_types", action: "set_rate", id: cost_type }, method: :put, html: { class: "inline-label" }  do |f| %>
                 <label class="hidden-for-sighted" for="<%= "rate_field_#{cost_type.id}" %>"><%= t(:caption_set_rate) %></label>
                 <%= content_tag :input,
                                 "",
@@ -108,7 +108,7 @@ See COPYRIGHT and LICENSE files for more details.
             </td>
             <%= content_tag :td, cost_type.is_default? ? icon_wrapper("icon icon-checkmark", I18n.t(:general_text_Yes)) : "" %>
             <td class="buttons">
-              <%= form_for cost_type, url: cost_type_path(cost_type),
+              <%= form_for cost_type, url: admin_cost_type_path(cost_type),
                                       method: :delete,
                                       html: { id: "delete_cost_type_#{cost_type.id}",
                                               class: "delete_cost_type",

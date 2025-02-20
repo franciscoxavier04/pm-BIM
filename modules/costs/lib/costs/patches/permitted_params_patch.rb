@@ -86,5 +86,9 @@ module Costs::Patches::PermittedParamsPatch
         )
         .merge(custom_field_values(:time_entry))
     end
+
+    def time_entry_activities
+      params.require(:time_entry_activity).permit(:name, :active)
+    end
   end
 end

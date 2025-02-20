@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,9 +28,9 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require File.expand_path(File.dirname(__FILE__) + "/../spec_helper.rb")
+require File.expand_path("#{File.dirname(__FILE__)}/../../spec_helper.rb")
 
-RSpec.describe CostTypesController do
+RSpec.describe Admin::CostTypesController do
   let(:admin)     { create(:admin) }
   let(:cost_type) { create(:cost_type) }
 
@@ -39,7 +41,7 @@ RSpec.describe CostTypesController do
       end
 
       expect(assigns(:cost_type).deleted_at).to be_a Time
-      expect(response).to redirect_to cost_types_path
+      expect(response).to redirect_to admin_cost_types_path
       expect(flash[:notice]).to eq I18n.t(:notice_successful_lock)
     end
   end
@@ -55,7 +57,7 @@ RSpec.describe CostTypesController do
       end
 
       expect(assigns(:cost_type).deleted_at).to be_nil
-      expect(response).to redirect_to cost_types_path
+      expect(response).to redirect_to admin_cost_types_path
       expect(flash[:notice]).to eq I18n.t(:notice_successful_restore)
     end
   end

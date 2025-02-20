@@ -39,15 +39,18 @@ See COPYRIGHT and LICENSE files for more details.
   render(Primer::OpenProject::PageHeader.new) do |header|
     header.with_title { title }
     header.with_breadcrumbs(
-      [{ href: admin_index_path, text: t("label_administration") },
-       { href: admin_costs_settings_path, text: t(:project_module_costs) },
-       { href: cost_types_path, text: t(:label_cost_type_plural) },
-       title]
+      [
+        { href: admin_index_path, text: t("label_administration") },
+        { href: admin_costs_settings_path, text: t(:project_module_costs) },
+        { href: admin_cost_types_path, text: t(:label_cost_type_plural) },
+        title
+      ]
     )
   end
 %>
 
 <%= labelled_tabular_form_for @cost_type,
+                              url: @cost_type.persisted? ? admin_cost_type_path(@cost_type) : admin_cost_types_path,
                               data: { controller: "subform", "application-target": "dynamic" } do |f| %>
   <%= error_messages_for "cost_type" %>
   <%= back_url_hidden_field_tag %>

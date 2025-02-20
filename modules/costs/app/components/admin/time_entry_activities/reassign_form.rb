@@ -28,21 +28,40 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Projects::Settings::TimeEntryActivitiesController < Projects::SettingsController
-  menu_item :settings_time_entry_activities
+module Admin
+  module TimeEntryActivities
+    class ReassignForm < ApplicationForm
+      include OpenProject::StaticRouting::UrlHelpers
 
-  def update
-    TimeEntryActivitiesProject.upsert_all(update_params, unique_by: %i[project_id activity_id])
-    flash[:notice] = t(:notice_successful_update)
+      attr_reader :other_activities
 
-    redirect_to project_settings_time_entry_activities_path(@project)
-  end
+      def initialize(other_activities:)
+        super()
 
-  private
+        @other_activities = other_activities
+      end
 
-  def update_params
-    permitted_params.time_entry_activities_project.map do |attributes|
-      { project_id: @project.id, active: false }.with_indifferent_access.merge(attributes.to_h)
+      form do |form|
+        form.select_list(
+          name: :reassign_to_id,
+          label: I18n.t(:text_enumeration_category_reassign_to),
+          required: true,
+          input_width: :large
+        ) do |select|
+          other_activities.each do |activity|
+            select.option(value: activity.id, label: activity.name)
+          end
+        end
+
+        form.group(layout: :horizontal) do |button_group|
+          button_group.button(name: :cancel,
+                              tag: :a,
+                              label: I18n.t(:button_cancel),
+                              scheme: :default,
+                              href: admin_time_entry_activities_path)
+          button_group.submit(name: :submit, label: I18n.t(:button_apply), scheme: :primary)
+        end
+      end
     end
   end
 end

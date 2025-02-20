@@ -21,24 +21,28 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.v
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<% html_title t(:label_administration), t(:label_enumerations) %>
+
+<% html_title t(:label_administration), t(:enumeration_activities) %>
 
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
-    header.with_title { t(:label_enumerations) }
+    header.with_title { @time_entry_activity.name }
+    header.with_description { I18n.t(:label_time_entry_activity_form_description) }
     header.with_breadcrumbs(
-      [{ href: admin_index_path, text: t(:label_administration) },
-       t(:label_enumerations)]
+      [
+        { href: admin_index_path, text: t("label_administration") },
+        { href: admin_costs_settings_path, text: t(:project_module_costs) },
+        { href: admin_time_entry_activities_path, text: TimeEntryActivity.model_name.human(count: :other) },
+        @time_entry_activity.name
+      ]
     )
   end
 %>
 
-<% enumeration_classes.each do |klass| %>
-  <h3 class="-no-border"><%= t(klass::OptionName) %></h3>
-  <%= render(::Enumerations::TableComponent.new(rows: klass.shared, enumeration: klass)) %>
+<%= primer_form_with(model: @time_entry_activity, url: admin_time_entry_activity_path(@time_entry_activity)) do |f| %>
+  <%= render(Admin::TimeEntryActivities::ActivityForm.new(f)) %>
 <% end %>

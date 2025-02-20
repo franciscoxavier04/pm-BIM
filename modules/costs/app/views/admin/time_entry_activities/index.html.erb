@@ -26,19 +26,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-<% html_title t(:label_administration), t(:label_enumerations) %>
+
+<% html_title t(:label_administration), t(:enumeration_activities) %>
 
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
-    header.with_title { t(:label_enumerations) }
+    header.with_title { I18n.t(:enumeration_activities) }
     header.with_breadcrumbs(
-      [{ href: admin_index_path, text: t(:label_administration) },
-       t(:label_enumerations)]
+      [
+        { href: admin_index_path, text: t("label_administration") },
+        { href: admin_costs_settings_path, text: t(:project_module_costs) },
+        TimeEntryActivity.model_name.human(count: :other)
+      ]
     )
   end
 %>
 
-<% enumeration_classes.each do |klass| %>
-  <h3 class="-no-border"><%= t(klass::OptionName) %></h3>
-  <%= render(::Enumerations::TableComponent.new(rows: klass.shared, enumeration: klass)) %>
-<% end %>
+<%= render(Admin::TimeEntryActivities::IndexComponent.new(time_entry_activities: @time_entry_activities)) %>

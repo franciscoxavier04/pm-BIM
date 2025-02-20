@@ -32,7 +32,7 @@ See COPYRIGHT and LICENSE files for more details.
   project ||= @project
 
   current_rate = if @all_rates
-                   at_date_in_project_with_ancestors(Date.today, all_rates, project)
+                   at_date_in_project_with_ancestors(Time.zone.today, all_rates, project)
                  else
                    @user.current_rate(project)
                  end
@@ -43,7 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
     <%= link_to t(:button_update), { controller: "/hourly_rates", action: "edit", project_id: project, id: @user }, class: "icon icon-edit", accesskey: accesskey(:edit) %>
   <% end %>
 </div>
-<h3><%= h project.name %><%= (" - " + number_to_currency(current_rate.rate)) if current_rate %></h3>
+<h3><%= h project.name %><%= " - #{number_to_currency(current_rate.rate)}" if current_rate %></h3>
 <% if rates.empty? %>
   <%= no_results_box %>
 <% else %>

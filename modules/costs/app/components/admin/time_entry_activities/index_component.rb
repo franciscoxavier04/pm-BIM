@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,23 +26,45 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class Projects::Settings::TimeEntryActivitiesController < Projects::SettingsController
-  menu_item :settings_time_entry_activities
+module Admin
+  module TimeEntryActivities
+    class IndexComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
-  def update
-    TimeEntryActivitiesProject.upsert_all(update_params, unique_by: %i[project_id activity_id])
-    flash[:notice] = t(:notice_successful_update)
+      options :time_entry_activities
 
-    redirect_to project_settings_time_entry_activities_path(@project)
-  end
+      private
 
-  private
+      def max_activity_position
+        time_entry_activities.map(&:position).max
+      end
 
-  def update_params
-    permitted_params.time_entry_activities_project.map do |attributes|
-      { project_id: @project.id, active: false }.with_indifferent_access.merge(attributes.to_h)
+      def wrapper_data_attributes
+        {
+          controller: "generic-drag-and-drop",
+          "application-target": "dynamic"
+        }
+      end
+
+      def drop_target_config
+        {
+          "is-drag-and-drop-target": true,
+          "target-container-accessor": "& > ul",
+          "target-allowed-drag-type": "time-entry-activity"
+        }
+      end
+
+      def draggable_item_config(activity)
+        {
+          "draggable-id": activity.id,
+          "draggable-type": "time-entry-activity",
+          "drop-url": move_admin_time_entry_activity_path(activity)
+        }
+      end
     end
   end
 end

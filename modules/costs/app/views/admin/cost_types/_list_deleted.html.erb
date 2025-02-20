@@ -78,7 +78,7 @@ See COPYRIGHT and LICENSE files for more details.
                 <%= content_tag :td, to_currency_with_empty(cost_type.rate_at(@fixed_date)), class: "currency" %>
                 <%= content_tag :td, cost_type.deleted_at.to_date %>
                 <td class="buttons">
-                  <%= form_for cost_type, url: restore_cost_type_path(cost_type),
+                  <%= form_for cost_type, url: restore_admin_cost_type_path(cost_type),
                                           method: :patch,
                                           html: { id: "restore_cost_type_#{cost_type.id}",
                                                   class: "restore_cost_type" } do |f| %>

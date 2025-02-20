@@ -33,9 +33,11 @@ See COPYRIGHT and LICENSE files for more details.
   render(Primer::OpenProject::PageHeader.new) do |header|
     header.with_title { I18n.t(:label_cost_type_plural) }
     header.with_breadcrumbs(
-      [{ href: admin_index_path, text: t("label_administration") },
-       { href: admin_costs_settings_path, text: t(:project_module_costs) },
-       I18n.t(:label_cost_type_plural)]
+      [
+        { href: admin_index_path, text: t("label_administration") },
+        { href: admin_costs_settings_path, text: t(:project_module_costs) },
+        I18n.t(:label_cost_type_plural)
+      ]
     )
   end
 %>
@@ -46,14 +48,14 @@ See COPYRIGHT and LICENSE files for more details.
        aria: { label: I18n.t(:button_add_cost_type) },
        title: I18n.t(:button_add_cost_type),
        tag: :a,
-       href: new_cost_type_path
+       href: new_admin_cost_type_path
      ) do |button|
        button.with_leading_visual_icon(icon: :plus)
        CostType.model_name.human
      end %>
 
    <% subheader.with_bottom_pane_component do %>
-    <%= styled_form_tag(cost_types_path, { method: :get, id: "query_form" }) do %>
+    <%= styled_form_tag(admin_cost_types_path, { method: :get, id: "query_form" }) do %>
       <fieldset id="filters" class="simple-filters--container">
         <legend><%= t(:label_filter_plural) %></legend>
         <ul class="simple-filters--filters">
