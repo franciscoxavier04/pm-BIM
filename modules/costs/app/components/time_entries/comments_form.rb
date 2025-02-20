@@ -31,7 +31,7 @@
 module TimeEntries
   class CommentsForm < ApplicationForm
     form do |f|
-      f.text_area name: :comments, label: TimeEntry.human_attribute_name(:comments), maxlength: 255
+      f.text_area name: :comments, label: TimeEntry.human_attribute_name(:comments)
     end
   end
 end
