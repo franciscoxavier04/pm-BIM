@@ -146,19 +146,19 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
     end
 
     it "has new steps pending in correct order" do
-      expect(wizard.pending_steps).to eq(%i[nextcloud_audience
+      expect(wizard.pending_steps).to eq(%i[storage_audience
                                             automatically_managed_folders])
     end
 
-    context "and the nextcloud audience was set" do
+    context "and the storage audience was set" do
       before do
         wizard.prepare_next_step
-        model.nextcloud_audience = "nextcloud"
+        model.storage_audience = "nextcloud"
       end
 
-      it "finished the nextcloud_audience step" do
+      it "finished the storage_audience step" do
         expect(wizard.completed_steps).to eq(%i[general_information
-                                                nextcloud_audience])
+                                                storage_audience])
       end
 
       it "still didn't specify how to manage folders" do
@@ -184,7 +184,7 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
 
         it "has all steps completed" do
           expect(wizard.completed_steps).to eq(%i[general_information
-                                                  nextcloud_audience
+                                                  storage_audience
                                                   automatically_managed_folders])
         end
       end
@@ -204,20 +204,20 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
     end
 
     it "has new steps pending in correct order" do
-      expect(wizard.pending_steps).to eq(%i[nextcloud_audience
+      expect(wizard.pending_steps).to eq(%i[storage_audience
                                             oauth_application
                                             oauth_client
                                             automatically_managed_folders])
     end
 
-    context "and the nextcloud audience was set" do
+    context "and the storage audience was set" do
       before do
         wizard.prepare_next_step
-        model.nextcloud_audience = "nextcloud"
+        model.storage_audience = "nextcloud"
       end
 
-      it "has nextcloud_audience step completed" do
-        expect(wizard.completed_steps).to eq(%i[general_information nextcloud_audience])
+      it "has storage_audience step completed" do
+        expect(wizard.completed_steps).to eq(%i[general_information storage_audience])
       end
 
       it "has no oauth_application yet" do
@@ -231,7 +231,7 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
 
         it "automatically finished the oauth_application step" do
           expect(wizard.completed_steps).to eq(%i[general_information
-                                                  nextcloud_audience
+                                                  storage_audience
                                                   oauth_application])
         end
 
@@ -250,7 +250,7 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
 
           it "finishes the oauth_client step" do
             expect(wizard.completed_steps).to eq(%i[general_information
-                                                    nextcloud_audience
+                                                    storage_audience
                                                     oauth_application
                                                     oauth_client])
           end
@@ -283,7 +283,7 @@ RSpec.describe Storages::Peripherals::NextcloudStorageWizard do
 
             it "has all steps completed" do
               expect(wizard.completed_steps).to eq(%i[general_information
-                                                      nextcloud_audience
+                                                      storage_audience
                                                       oauth_application
                                                       oauth_client
                                                       automatically_managed_folders])

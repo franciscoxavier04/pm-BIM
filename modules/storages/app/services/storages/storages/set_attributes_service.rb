@@ -78,7 +78,7 @@ module Storages::Storages
     end
 
     def set_idp_audience
-      storage.nextcloud_audience = OpenIDConnect::UserToken::IDP_AUDIENCE
+      storage.storage_audience = OpenIDConnect::UserToken::IDP_AUDIENCE
     end
   end
 end

@@ -9,7 +9,7 @@ en:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        nextcloud_audience: Nextcloud Audience
+        storage_audience: Storage Audience
       storages/project_storage:
         storage: Storage
       storages/storage:
@@ -210,16 +210,16 @@ en:
       access_management_section: Access and project folders
       automatically_managed_folders: Automatically managed folders
       general_information: General information
-      nextcloud_audience: Nextcloud Audience
-      nextcloud_audience_blank: No audience has been configured
-      nextcloud_audience_description: Obtaining tokens for audience "%{audience}".
-      nextcloud_audience_idp: Using first access token received by identity provider, regardless of audience.
-      nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Project folders
       redirect_uri: Redirect URI
+      storage_audience: Storage Audience
+      storage_audience_blank: No audience has been configured
+      storage_audience_description: Obtaining tokens for audience "%{audience}".
+      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_oauth: Nextcloud OAuth
       storage_provider: Storage provider
     health:
       checked: Last checked %{datetime}
@@ -276,10 +276,10 @@ en:
       nextcloud:
         application_link_text: application “Integration OpenProject”
         integration: Nextcloud Administration / OpenProject
-        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: Copy these values from %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
+        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience_placeholder: e.g. nextcloud
       no_specific_folder: By default, each user will start at their own home folder when they upload a file.
       no_storage_set_up: There are no file storages set up yet.
       not_logged_into_storage: To select a project folder, please first login
@@ -310,8 +310,8 @@ en:
     label_creation_time: Creation time
     label_creator: Creator
     label_delete_storage: Delete storage
-    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Edit storage access management
+    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
     label_existing_manual_folder: Existing folder with manually managed permissions

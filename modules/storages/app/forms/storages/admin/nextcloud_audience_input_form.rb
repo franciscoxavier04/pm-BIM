@@ -51,11 +51,11 @@ module Storages::Admin
 
       storage_form.group(data: { "storages--storage-audience-target": "audienceInputWrapper" }) do |toggleable_group|
         toggleable_group.text_field(
-          name: :nextcloud_audience,
-          label: I18n.t("activerecord.attributes.storages/nextcloud_storage.nextcloud_audience"),
+          name: :storage_audience,
+          label: I18n.t("activerecord.attributes.storages/nextcloud_storage.storage_audience"),
           required: true,
-          caption: I18n.t("storages.instructions.nextcloud.nextcloud_audience"),
-          placeholder: I18n.t("storages.instructions.nextcloud.nextcloud_audience_placeholder"),
+          caption: I18n.t("storages.instructions.nextcloud.storage_audience"),
+          placeholder: I18n.t("storages.instructions.nextcloud.storage_audience_placeholder"),
           input_width: :large,
           data: { "storages--storage-audience-target": "audienceInput" }
         )
@@ -65,7 +65,7 @@ module Storages::Admin
     private
 
     def idp?
-      model.nextcloud_audience == OpenIDConnect::UserToken::IDP_AUDIENCE
+      model.storage_audience == OpenIDConnect::UserToken::IDP_AUDIENCE
     end
   end
 end
