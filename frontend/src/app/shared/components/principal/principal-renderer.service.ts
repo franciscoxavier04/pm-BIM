@@ -104,11 +104,6 @@ export class PrincipalRendererService {
     container.classList.add('op-principal');
     const type = typeFromHref(hrefFromPrincipal(principal)) as PrincipalType;
 
-    // Only actual users provide a hover card with additional info
-    if (type !== 'user') {
-      avatar.hoverCard = undefined;
-    }
-
     if (!avatar.hide) {
       const el = this.renderAvatar(principal, avatar, type);
       container.appendChild(el);
@@ -116,7 +111,7 @@ export class PrincipalRendererService {
 
     if (!name.hide) {
       const el = this.renderName(principal, type, name.link, title || principal.name, name.classes);
-      this.setHoverCardAttributes(el, avatar, principal);
+      this.setHoverCardAttributes(el, avatar, principal, type);
       container.appendChild(el);
     }
   }
@@ -140,7 +135,7 @@ export class PrincipalRendererService {
     fallback.title = principal.name;
     fallback.textContent = userInitials;
 
-    this.setHoverCardAttributes(fallback, options, principal);
+    this.setHoverCardAttributes(fallback, options, principal, type);
 
     if (type === 'placeholder_user' && colorMode !== colorModes.lightHighContrast) {
       fallback.style.color = colorCode;
@@ -173,7 +168,7 @@ export class PrincipalRendererService {
     image.classList.add('op-avatar');
     image.classList.add(`op-avatar_${options.size}`);
 
-    this.setHoverCardAttributes(image, options, principal);
+    this.setHoverCardAttributes(image, options, principal, 'user');
 
     image.src = url;
     image.title = principal.name;
@@ -252,7 +247,12 @@ export class PrincipalRendererService {
     return [first, last].join('');
   }
 
-  private setHoverCardAttributes(element:HTMLElement, options:AvatarOptions, principal:PrincipalLike|IPrincipal):void {
+  private setHoverCardAttributes(element:HTMLElement, options:AvatarOptions, principal:PrincipalLike|IPrincipal, type:PrincipalType):void {
+    // Only actual users provide a hover card with additional info
+    if (type !== 'user') {
+      return;
+    }
+
     const hoverCard = options.hoverCard || {};
 
     if (!hoverCard?.url) {
