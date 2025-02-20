@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,22 +28,21 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class RecurringMeeting::SpecificDate < ApplicationForm
-  form do |meeting_form|
-    meeting_form.text_field(
-      name: :end_date,
-      type: "date",
-      value: @value,
-      label: I18n.t("activerecord.attributes.recurring_meeting.end_date"),
-      required: false,
-      autofocus: false
-    )
-  end
+require "spec_helper"
 
-  def initialize(meeting:)
-    super()
+RSpec.describe Projects::DeleteService, "Meetings", type: :model do
+  shared_let(:user) { create(:admin) }
+  let(:project) { create(:project) }
 
-    end_time = meeting.end_date || 1.year.from_now
-    @value = end_time.strftime("%Y-%m-%d")
+  let(:instance) { described_class.new(user:, model: project) }
+
+  subject { instance.call }
+
+  context "with a meeting series" do
+    let!(:series) { create(:recurring_meeting, project:) }
+
+    it "deletes the project" do
+      expect { subject }.to change(Project, :count).by(-1)
+    end
   end
 end
