@@ -149,7 +149,9 @@ RSpec.describe "Work Package cost fields", :js do
       fill_in "cost_entry_overridden_costs", with: "55.000,55"
       click_on I18n.t(:button_save)
 
-      expect(page).to have_css("#cost_entry_costs", text: "55.000,55 EUR")
+      # Add explicit wait for the updated cost value
+      wait_for { page }.to have_css("#cost_entry_costs", text: "55.000,55 EUR")
+
       entry.reload
       expect(entry.units).to eq(1.42)
       expect(entry.costs).to eq(2.84)
