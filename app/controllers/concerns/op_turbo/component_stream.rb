@@ -46,16 +46,17 @@ module OpTurbo
       modify_via_turbo_stream(component:, action: :update, status:, method:)
     end
 
-    def replace_via_turbo_stream(component:, status: :ok, method: nil)
-      modify_via_turbo_stream(component:, action: :replace, status:, method:)
+    def replace_via_turbo_stream(component:, status: :ok, method: nil, message: nil)
+      modify_via_turbo_stream(component: component, action: :replace, status: status, method: method, message: message)
     end
 
     def remove_via_turbo_stream(component:, status: :ok)
       modify_via_turbo_stream(component:, action: :remove, status:)
     end
 
-    def modify_via_turbo_stream(component:, action:, status:, method: nil)
+    def modify_via_turbo_stream(component:, action:, status:, method: nil, message: nil)
       @turbo_status = status
+      @custom_message = message if message # Store the custom message if provided
       turbo_streams << component.render_as_turbo_stream(
         view_context:,
         action:,
