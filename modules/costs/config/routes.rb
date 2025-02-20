@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get :dialog, on: :member
     get "/users/:user_id/tz_caption", action: :user_tz_caption, on: :collection
     post :refresh_form, on: :collection
+    post :refresh_form, on: :member
   end
 
   scope "projects/:project_id", as: "projects" do
