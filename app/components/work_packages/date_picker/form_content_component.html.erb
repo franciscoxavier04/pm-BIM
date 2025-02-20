@@ -42,6 +42,7 @@
 
           first_row.with_column(mb: 1) do
             render(Primer::Alpha::CheckBox.new(name: "work_package[ignore_non_working_days]",
+                                               id: "work_package_ignore_non_working_days",
                                                label: I18n.t("work_packages.datepicker_modal.ignore_non_working_days.title"),
                                                checked: !work_package.ignore_non_working_days,
                                                disabled: disabled_checkbox?,
