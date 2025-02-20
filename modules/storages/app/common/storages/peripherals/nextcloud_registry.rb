@@ -61,6 +61,7 @@ module Storages
         namespace("forms") do
           register(:automatically_managed_folders, ::Storages::Admin::Forms::AutomaticallyManagedProjectFoldersFormComponent)
           register(:general_information, ::Storages::Admin::Forms::GeneralInfoFormComponent)
+          register(:nextcloud_audience, ::Storages::Admin::Forms::NextcloudAudienceFormComponent)
           register(:oauth_application, ::Storages::Admin::OAuthApplicationInfoCopyComponent)
           register(:oauth_client, ::Storages::Admin::Forms::OAuthClientFormComponent)
         end
@@ -69,12 +70,15 @@ module Storages
 
         register(:automatically_managed_folders, ::Storages::Admin::AutomaticallyManagedProjectFoldersInfoComponent)
         register(:general_information, ::Storages::Admin::GeneralInfoComponent)
+        register(:nextcloud_audience, ::Storages::Admin::NextcloudAudienceInfoComponent)
         register(:oauth_application, ::Storages::Admin::OAuthApplicationInfoComponent)
         register(:oauth_client, ::Storages::Admin::OAuthClientInfoComponent)
       end
 
       namespace("contracts") do
         register(:storage, ::Storages::Storages::NextcloudContract)
+        register(:general_information, ::Storages::Storages::NextcloudGeneralInformationContract)
+        register(:nextcloud_audience, ::Storages::Storages::NextcloudAudienceContract)
       end
 
       namespace("models") do

@@ -58,16 +58,7 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        audience_missing.or { non_provisioned_user }.or { non_oidc_provisioned_user }
-      end
-
-      def audience_missing
-        return None() if @storage.audience.present?
-
-        Some(ConnectionValidation.new(type: :error,
-                                      error_code: :oidc_audience_missing,
-                                      timestamp: Time.current,
-                                      description: I18n.t("storages.health.connection_validation.oidc_audience_missing")))
+        non_provisioned_user.or { non_oidc_provisioned_user }
       end
 
       def non_provisioned_user

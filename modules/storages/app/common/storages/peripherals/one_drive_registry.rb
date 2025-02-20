@@ -69,6 +69,7 @@ module Storages
 
       namespace("contracts") do
         register(:storage, ::Storages::Storages::OneDriveContract)
+        register(:general_information, ::Storages::Storages::OneDriveContract)
       end
 
       namespace("models") do

@@ -29,23 +29,21 @@
 #++
 
 module Storages::Storages
-  class CreateContract < ::Storages::Storages::BaseContract
-    attribute :creator
-    validate :creator_must_be_user
-    validate :require_ee_token_for_one_drive
+  class NextcloudAudienceContract < ::ModelContract
+    attribute :nextcloud_audience
+    validates :nextcloud_audience, presence: true, if: -> { nextcloud_storage_authenticate_via_idp? }
+
+    # Adding this to allow writing the nextcloud_audience
+    attribute :provider_fields
 
     private
 
-    def creator_must_be_user
-      unless creator == user
-        errors.add(:creator, :invalid)
-      end
+    def nextcloud_storage_authenticate_via_idp?
+      nextcloud_storage? && @model.authenticate_via_idp?
     end
 
-    def require_ee_token_for_one_drive
-      if ::Storages::Storage.one_drive_without_ee_token?(provider_type)
-        errors.add(:base, I18n.t("api_v3.errors.code_500_missing_enterprise_token"))
-      end
+    def nextcloud_storage?
+      @model.is_a?(Storages::NextcloudStorage)
     end
   end
 end

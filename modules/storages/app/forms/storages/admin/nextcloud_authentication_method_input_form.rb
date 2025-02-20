@@ -28,23 +28,20 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Storages::Storages
-  class CreateContract < ::Storages::Storages::BaseContract
-    attribute :creator
-    validate :creator_must_be_user
-    validate :require_ee_token_for_one_drive
-
-    private
-
-    def creator_must_be_user
-      unless creator == user
-        errors.add(:creator, :invalid)
-      end
-    end
-
-    def require_ee_token_for_one_drive
-      if ::Storages::Storage.one_drive_without_ee_token?(provider_type)
-        errors.add(:base, I18n.t("api_v3.errors.code_500_missing_enterprise_token"))
+module Storages::Admin
+  class NextcloudAuthenticationMethodInputForm < ApplicationForm
+    form do |storage_form|
+      storage_form.select_list(
+        name: :authentication_method,
+        label: I18n.t("activerecord.attributes.storages/storage.authentication_method"),
+        visually_hide_label: false,
+        required: true,
+        caption: I18n.t("storages.instructions.authentication_method"),
+        input_width: :large
+      ) do |list|
+        ::Storages::NextcloudStorage::AUTHENTICATION_METHODS.each do |m|
+          list.option(label: I18n.t("activerecord.attributes.storages/nextcloud_storage.authentication_methods.#{m}"), value: m)
+        end
       end
     end
   end

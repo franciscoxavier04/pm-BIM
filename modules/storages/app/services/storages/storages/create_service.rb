@@ -50,7 +50,7 @@ module Storages::Storages
       storage = service_call.result
       # Automatically create an OAuthApplication object for the Nextcloud storage
       # using values from storage (particularly :host) as defaults
-      if storage.provider_type_nextcloud?
+      if storage.provider_type_nextcloud? && !storage.authenticate_via_idp?
         persist_service_result = ::Storages::OAuthApplications::CreateService.new(storage:, user:).call
         storage.oauth_application = persist_service_result.result if persist_service_result.success?
         service_call.add_dependent!(persist_service_result)

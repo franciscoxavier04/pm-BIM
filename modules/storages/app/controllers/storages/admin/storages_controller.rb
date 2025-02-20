@@ -45,7 +45,7 @@ class Storages::Admin::StoragesController < ApplicationController
   # and set the @<controller_name> variable to the object referenced in the URL.
   before_action :require_admin
   before_action :find_model_object,
-                only: %i[show_oauth_application destroy edit edit_host confirm_destroy update
+                only: %i[show_oauth_application destroy edit edit_host edit_nextcloud_audience confirm_destroy update
                          change_health_notifications_enabled replace_oauth_application]
   before_action :ensure_valid_wizard_parameters, only: [:new]
   before_action :require_ee_token_for_one_drive, only: [:new]
@@ -83,8 +83,13 @@ class Storages::Admin::StoragesController < ApplicationController
 
   def create
     service_result = Storages::Storages::CreateService
-                       .new(user: current_user, create_oauth_app: false)
-                       .call(permitted_storage_params)
+                       .new(
+                         user: current_user,
+                         create_oauth_app: false,
+                         contract_class: Storages::Storages::CreateContract.with_provider_contract(
+                           current_step_contract(permitted_storage_params[:provider_type])
+                         )
+                       ).call(permitted_storage_params)
 
     @storage = service_result.result
 
@@ -112,21 +117,25 @@ class Storages::Admin::StoragesController < ApplicationController
 
   def edit_host
     update_via_turbo_stream(
-      component: Storages::Admin::Forms::GeneralInfoFormComponent.new(
-        @storage,
-        form_method: :patch,
-        cancel_button_path: edit_admin_settings_storage_path(@storage)
-      )
+      component: Storages::Admin::Forms::GeneralInfoFormComponent.new(@storage)
     )
 
     respond_with_turbo_streams
   end
 
+  def edit_nextcloud_audience
+    update_via_turbo_stream(component: Storages::Admin::Forms::NextcloudAudienceFormComponent.new(@storage))
+    respond_with_turbo_streams
+  end
+
   def update # rubocop:disable Metrics/AbcSize
+    contract_class = Storages::Storages::UpdateContract.with_provider_contract(current_step_contract(@storage))
     service_result = ::Storages::Storages::UpdateService
-                       .new(user: current_user, model: @storage)
-                       .call(permitted_storage_params)
-    @storage = service_result.result
+                       .new(
+                         user: current_user,
+                         model: @storage,
+                         contract_class:
+                       ).call(permitted_storage_params)
 
     if service_result.success?
       if params[:continue_wizard]
@@ -135,11 +144,10 @@ class Storages::Admin::StoragesController < ApplicationController
         redirect_to(edit_admin_settings_storage_path(@storage), status: :see_other)
       end
     else
+      origin_component = params[:origin_component].presence || "general_information"
       update_via_turbo_stream(
-        component: Storages::Admin::Forms::GeneralInfoFormComponent.new(
+        component: ::Storages::Peripherals::Registry.resolve("#{@storage}.components.forms.#{origin_component}").new(
           @storage,
-          form_method: :patch,
-          cancel_button_path: edit_admin_settings_storage_path(@storage),
           in_wizard: params[:continue_wizard].present?
         )
       )
@@ -243,6 +251,8 @@ class Storages::Admin::StoragesController < ApplicationController
       .permit("name",
               "provider_type",
               "host",
+              "authentication_method",
+              "nextcloud_audience",
               "oauth_client_id",
               "oauth_client_secret",
               "tenant_id",
@@ -274,5 +284,12 @@ class Storages::Admin::StoragesController < ApplicationController
 
   def redirect_to_wizard(storage)
     redirect_to(new_admin_settings_storage_path(continue_wizard: storage.id), status: :see_other)
+  end
+
+  def current_step_contract(storage)
+    storage_name = storage.is_a?(String) ? ::Storages::Storage.shorten_provider_type(storage) : storage.to_s
+    origin_component = params[:origin_component].presence || "general_information"
+
+    ::Storages::Peripherals::Registry.resolve("#{storage_name}.contracts.#{origin_component}")
   end
 end
