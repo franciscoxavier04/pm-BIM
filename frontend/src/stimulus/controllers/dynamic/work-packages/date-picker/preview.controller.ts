@@ -70,6 +70,30 @@ export default class PreviewController extends DialogPreviewController {
     await super.preview(field, [{ key: 'date_mode', val: this.dateModeValue }]);
   }
 
+  inputChanged(event:Event) {
+    const field = event.target as HTMLInputElement;
+
+    if (field.name === 'work_package[start_date]') {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
+        const selectedDate = new Date(field.value);
+        this.changeStartDate(selectedDate);
+        this.debouncedDelayedPreview(field);
+      } else if (field.value === '') {
+        this.debouncedDelayedPreview(field);
+      }
+    } else if (field.name === 'work_package[due_date]') {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
+        const selectedDate = new Date(field.value);
+        this.changeDueDate(selectedDate);
+        this.debouncedDelayedPreview(field);
+      } else if (field.value === '') {
+        this.debouncedDelayedPreview(field);
+      }
+    } else {
+      this.debouncedDelayedPreview(field);
+    }
+  }
+
   private get dueDateField():HTMLInputElement {
     return document.getElementsByName('work_package[due_date]')[0] as HTMLInputElement;
   }

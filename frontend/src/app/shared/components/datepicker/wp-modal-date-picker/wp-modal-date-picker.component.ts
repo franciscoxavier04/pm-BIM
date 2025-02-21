@@ -139,18 +139,14 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
   }
 
   private isDifferentDates(dates:Date[], mode:'single'|'range'):boolean {
-    if (mode === 'single') {
-      return dates[0].getTime() !== this.startDateValue?.getTime();
-    }
-    return dates[0].getTime() !== this.startDateValue?.getTime()
-        || (dates.length > 1 && dates[1].getTime() !== this.dueDateValue?.getTime());
+    const [start, end] = dates;
+    return mode === 'single'
+      ? start.getTime() !== this.startDateValue?.getTime()
+      : start.getTime() !== this.startDateValue?.getTime() || end?.getTime() !== this.dueDateValue?.getTime();
   }
 
   private toDate(date:string|null):Date|null {
-    if (date) {
-      return new Date(date);
-    }
-    return null;
+    return date ? new Date(date) : null;
   }
 
   private currentDates():Date[] {
