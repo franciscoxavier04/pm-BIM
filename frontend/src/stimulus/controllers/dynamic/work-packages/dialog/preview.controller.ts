@@ -56,8 +56,8 @@ export abstract class DialogPreviewController extends Controller {
   declare readonly initialValueInputTargets:HTMLInputElement[];
   declare readonly touchedFieldInputTargets:HTMLInputElement[];
 
-  private debouncedDelayedPreview:DebouncedFunc<(input:HTMLInputElement) => void>;
-  private debouncedImmediatePreview:DebouncedFunc<(input:HTMLInputElement) => void>;
+  protected debouncedDelayedPreview:DebouncedFunc<(input:HTMLInputElement) => void>;
+  protected debouncedImmediatePreview:DebouncedFunc<(input:HTMLInputElement) => void>;
   private frameMorphRenderer:(event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => void;
   private targetFieldName:string;
   private touchedFields:Set<string>;
@@ -127,34 +127,8 @@ export abstract class DialogPreviewController extends Controller {
     }
   }
 
+  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
   inputChanged(event:Event) {
-    const field = event.target as HTMLInputElement;
-
-    if (field.name === 'work_package[start_date]') {
-      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
-        const selectedDate = new Date(field.value);
-        this.changeStartDate(selectedDate);
-        this.debouncedDelayedPreview(field);
-      } else if (field.value === '') {
-        this.debouncedDelayedPreview(field);
-      }
-    } else if (field.name === 'work_package[due_date]') {
-      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
-        const selectedDate = new Date(field.value);
-        this.changeDueDate(selectedDate);
-        this.debouncedDelayedPreview(field);
-      } else if (field.value === '') {
-        this.debouncedDelayedPreview(field);
-      }
-    } else {
-      this.debouncedDelayedPreview(field);
-    }
-  }
-
-  changeStartDate(_selectedDate:Date) {
-  }
-
-  changeDueDate(_selectedDate:Date) {
   }
 
   protected triggerImmediatePreview(input:HTMLInputElement) {

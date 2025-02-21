@@ -119,14 +119,14 @@ module WorkPackages
           end
         end
 
-        case focused_field.to_s.underscore
-        when "due_date"
-          :due_date
-        when "duration"
-          :duration
-        else
-          :start_date
-        end
+        date_fields = {
+          "due_date" => :due_date,
+          "start_date" => :start_date,
+          "duration" => :duration
+        }
+
+        # Default is :start_date
+        date_fields.fetch(focused_field.to_s.underscore, :start_date)
       end
 
       def disabled?(name)
