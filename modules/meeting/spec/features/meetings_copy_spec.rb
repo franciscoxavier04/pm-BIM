@@ -50,6 +50,7 @@ RSpec.describe "Meetings copy", :js do
   shared_let(:agenda_text) { "We will talk" }
   shared_let(:meeting) do
     create(:meeting,
+           :author_participates,
            author: user,
            project:,
            title: "Awesome meeting!",

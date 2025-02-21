@@ -33,5 +33,14 @@ require "services/base_services/behaves_like_create_service"
 RSpec.describe Meetings::CreateService, type: :model do
   it_behaves_like "BaseServices create service" do
     let(:factory) { :meeting }
+
+    context "when system user creates the meeting" do
+      let(:user) { User.system }
+
+      it "does not get assigned as the creator" do
+        expect(subject).to be_success
+        expect(subject.result.participants).to be_empty
+      end
+    end
   end
 end
