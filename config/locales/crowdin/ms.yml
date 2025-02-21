@@ -27,7 +27,7 @@ ms:
     work_packages:
       activity_tab:
         no_results_title_text: Tiada aktiviti untuk dipaparkan
-        no_results_description_text: "Pilih \"Tunjukkan semua\" untuk menunjukkan semua aktiviti dan ulasan"
+        no_results_description_text: 'Pilih "Tunjukkan semua" untuk menunjukkan semua aktiviti dan ulasan'
         label_activity_show_all: "Papar semua"
         label_activity_show_only_comments: "Papar komen sahaja"
         label_activity_show_only_changes: "Papar perubahan sahaja"
@@ -2318,6 +2318,7 @@ ms:
   label_missing_or_hidden_custom_option: "(nilai yang hilang atau kurang kebenaran untuk mengakses)"
   label_descending: "Menurun"
   label_details: "Butiran"
+  label_defaults: "Defaults"
   label_development_roadmap: "Jadual pembangunan"
   label_diff: "beza"
   label_diff_inline: "sebaris"

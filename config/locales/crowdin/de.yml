@@ -27,7 +27,7 @@ de:
     work_packages:
       activity_tab:
         no_results_title_text: Keine Aktivität anzuzeigen
-        no_results_description_text: "Wählen Sie \"Alles anzeigen\", um alle Aktivitäten und Kommentare anzuzeigen."
+        no_results_description_text: 'Wählen Sie "Alles anzeigen", um alle Aktivitäten und Kommentare anzuzeigen.'
         label_activity_show_all: "Alles anzeigen"
         label_activity_show_only_comments: "Nur Kommentare anzeigen"
         label_activity_show_only_changes: "Nur Änderungen anzeigen"
@@ -2351,6 +2351,7 @@ de:
   label_missing_or_hidden_custom_option: "(Fehlender Wert oder fehlende Zugriffsberechtigungen)"
   label_descending: "Absteigend"
   label_details: "Details"
+  label_defaults: "Defaults"
   label_development_roadmap: "Entwicklungs-Roadmap"
   label_diff: "diff"
   label_diff_inline: "einspaltig"

@@ -27,7 +27,7 @@ nl:
     work_packages:
       activity_tab:
         no_results_title_text: Geen activiteit om weer te geven
-        no_results_description_text: "Kies \"Alles tonen\" om alle activiteiten en opmerkingen te tonen"
+        no_results_description_text: 'Kies "Alles tonen" om alle activiteiten en opmerkingen te tonen'
         label_activity_show_all: "Alles tonen"
         label_activity_show_only_comments: "Alleen opmerkingen tonen"
         label_activity_show_only_changes: "Alleen wijzigingen weergeven"
@@ -2354,6 +2354,7 @@ nl:
   label_missing_or_hidden_custom_option: "(ontbrekende waarde of ontbrekende machtigingen voor toegang)"
   label_descending: "Aflopend"
   label_details: "Details"
+  label_defaults: "Defaults"
   label_development_roadmap: "Ontwikkeling roadmap"
   label_diff: "diff"
   label_diff_inline: "inline"

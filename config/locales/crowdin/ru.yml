@@ -27,7 +27,7 @@ ru:
     work_packages:
       activity_tab:
         no_results_title_text: Нет деятельности для отображения
-        no_results_description_text: "Выберите \"Показать всё\" для отображения всей деятельности и комментариев"
+        no_results_description_text: 'Выберите "Показать всё" для отображения всей деятельности и комментариев'
         label_activity_show_all: "Показать всё"
         label_activity_show_only_comments: "Показать только комментарии"
         label_activity_show_only_changes: "Показать только изменения"
@@ -2432,6 +2432,7 @@ ru:
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
   label_descending: "По убыванию"
   label_details: "Детали"
+  label_defaults: "Defaults"
   label_development_roadmap: "Дорожная карта разработки"
   label_diff: "отличия"
   label_diff_inline: "Встроенный"

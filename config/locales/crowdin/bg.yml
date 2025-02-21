@@ -27,7 +27,7 @@ bg:
     work_packages:
       activity_tab:
         no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
+        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
         label_activity_show_all: "Show everything"
         label_activity_show_only_comments: "Show comments only"
         label_activity_show_only_changes: "Show changes only"
@@ -2358,6 +2358,7 @@ bg:
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Низходящо"
   label_details: "Подробности"
+  label_defaults: "Defaults"
   label_development_roadmap: "Развитие на пътната карта"
   label_diff: "разл"
   label_diff_inline: "инлайн"

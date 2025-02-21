@@ -59,6 +59,9 @@ fr:
       cost_type:
         one: "Types de coût"
         other: "Types de coûts"
+      time_entry_activity:
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Tarif"
     errors:
       models:
@@ -79,6 +82,7 @@ fr:
   button_add_rate: "Ajouter tarif"
   button_log_costs: "Consigner coûts unitaires"
   button_log_time: "Journal"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Réservé pour le projet"
   caption_default: "Défaut"
   caption_default_rate_history_for: "Historique des tarifs par défaut pour %{user}"
@@ -91,7 +95,11 @@ fr:
   caption_set_rate: "Définir le tarif actuel"
   caption_show_locked: "Afficher les types verrouillés"
   caption_log_time_dialog: "Enregistrer le temps"
+  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Date pour le nouveau tarif"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
+  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "dans aucun groupe"
   label_between: "entre"
   label_cost_filter_add: "Ajouter filtre d'entrée de coût"
@@ -118,6 +126,8 @@ fr:
   label_kind: "Type"
   label_less_or_equal: "<="
   label_log_costs: "Journaliser les coûts unitaires"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Non"
   label_option_plural: "Options"
   label_overall_costs: "Coûts globaux"
@@ -130,6 +140,10 @@ fr:
   label_until: "jusque"
   label_valid_from: "Valable à partir du"
   label_yes: "Oui"
+  label_time: "Heure "
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: La sélection d'un paquet de travail est requise en premier
   notice_something_wrong: "Quelque chose s'est mal passé. Veuillez réessayer."
   notice_successful_restore: "Restauration réussie."

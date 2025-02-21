@@ -59,6 +59,9 @@ hu:
       cost_type:
         one: "Költségtípus"
         other: "Költségtípusok"
+      time_entry_activity:
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Díj"
     errors:
       models:
@@ -79,6 +82,7 @@ hu:
   button_add_rate: "Új díj"
   button_log_costs: "Költségek naplózása"
   button_log_time: "Log"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Foglalt projekt"
   caption_default: "Alapértelmezett"
   caption_default_rate_history_for: "Alapértelmezett díj történet %{user}-nek"
@@ -91,7 +95,11 @@ hu:
   caption_set_rate: "Aktuális díj beállítása"
   caption_show_locked: "Zárolt nemek mutatása"
   caption_log_time_dialog: "Log time"
+  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Új díj dátuma"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
+  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "nincs egy csoportban sem"
   label_between: "között"
   label_cost_filter_add: "Költség tétel szűrő hozzáadása"
@@ -118,6 +126,8 @@ hu:
   label_kind: "Típus"
   label_less_or_equal: "<="
   label_log_costs: "Naplózott költségek"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Nem"
   label_option_plural: "Beállítások"
   label_overall_costs: "Összes költség"
@@ -130,6 +140,10 @@ hu:
   label_until: "-ig"
   label_valid_from: "Innentől érvényes"
   label_yes: "Igen"
+  label_time: "Time"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Valami hiba történt. Kérlek próbáld újra."
   notice_successful_restore: "Sikeres visszaállítás."

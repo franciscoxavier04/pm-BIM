@@ -27,7 +27,7 @@ pt-PT:
     work_packages:
       activity_tab:
         no_results_title_text: Nenhuma atividade a exibir
-        no_results_description_text: "Escolha \"Mostrar tudo\" para mostrar toda a atividade e comentários"
+        no_results_description_text: 'Escolha "Mostrar tudo" para mostrar toda a atividade e comentários'
         label_activity_show_all: "Mostrar tudo"
         label_activity_show_only_comments: "Mostrar apenas comentários"
         label_activity_show_only_changes: "Mostrar apenas alterações"
@@ -2355,6 +2355,7 @@ pt-PT:
   label_missing_or_hidden_custom_option: "(faltam valores ou permissões para acessar)"
   label_descending: "Descendente"
   label_details: "Detalhes"
+  label_defaults: "Defaults"
   label_development_roadmap: "Mapa de Desenvolvimento"
   label_diff: "diff"
   label_diff_inline: "em linha"

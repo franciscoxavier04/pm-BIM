@@ -27,7 +27,7 @@ it:
     work_packages:
       activity_tab:
         no_results_title_text: Nessuna attività da visualizzare
-        no_results_description_text: "Scegli \"Mostra tutto\" per mostrare tutte le attività e i commenti"
+        no_results_description_text: 'Scegli "Mostra tutto" per mostrare tutte le attività e i commenti'
         label_activity_show_all: "Mostra tutto"
         label_activity_show_only_comments: "Mostra solo commenti"
         label_activity_show_only_changes: "Mostra solo le modifiche"
@@ -2355,6 +2355,7 @@ it:
   label_missing_or_hidden_custom_option: "(valore mancante o assenza di permessi di accesso)"
   label_descending: "Decrescente"
   label_details: "Dettagli"
+  label_defaults: "Defaults"
   label_development_roadmap: "Tabella di marcia di sviluppo"
   label_diff: "diff"
   label_diff_inline: "inline"

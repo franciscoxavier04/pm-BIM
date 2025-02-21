@@ -59,6 +59,7 @@ cs:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Řada schůzek končí"
+        end_date: "End date"
         iterations: "Výskyty"
     errors:
       messages:

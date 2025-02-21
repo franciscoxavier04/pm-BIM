@@ -59,6 +59,9 @@ es:
       cost_type:
         one: "Tipo de costo"
         other: "Tipos de costos"
+      time_entry_activity:
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Proporción"
     errors:
       models:
@@ -79,6 +82,7 @@ es:
   button_add_rate: "Añadir tasa"
   button_log_costs: "Registrar costos unitarios"
   button_log_time: "Registro"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Reservados en proyecto"
   caption_default: "Por defecto"
   caption_default_rate_history_for: "Historial de morosidad para %{user}"
@@ -91,7 +95,11 @@ es:
   caption_set_rate: "Ajustar tasa actual"
   caption_show_locked: "Mostrar tipos de bloqueados"
   caption_log_time_dialog: "Tiempo registrado"
+  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Fecha para la nueva tarifa"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
+  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "no en cualquier grupo"
   label_between: "entre"
   label_cost_filter_add: "Agregar filtro para entrada de costo"
@@ -118,6 +126,8 @@ es:
   label_kind: "Tipo"
   label_less_or_equal: "<="
   label_log_costs: "Registrar costos unitarios"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "No"
   label_option_plural: "Opciones"
   label_overall_costs: "Costos totales"
@@ -130,6 +140,10 @@ es:
   label_until: "hasta"
   label_valid_from: "Válido desde"
   label_yes: "Sí"
+  label_time: "Hora"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Primero debe seleccionar el paquete de trabajo
   notice_something_wrong: "Algo salió mal. Por favor intentelo nuevamente."
   notice_successful_restore: "Restauración exitosa."

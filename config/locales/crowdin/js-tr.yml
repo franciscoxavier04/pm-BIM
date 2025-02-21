@@ -641,7 +641,7 @@ tr:
           with_current_filter: "Şu anda bu görünümde bildirim yok"
         mark_all_read: "Tümünü okundu olarak işaretle"
         mark_as_read: "Okundu olarak işaretle"
-        text_update_date_by: "%{date} by"
+        text_update_date_by: "%{date}"
         total_count_warning: "En yeni %{newest_count} bildirim gösteriliyor. %{more_count} tane daha görüntülenmiyor."
         empty_state:
           no_notification: "Görünüşe göre yapacağınız bir şey kalmadı."

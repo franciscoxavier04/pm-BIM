@@ -57,6 +57,7 @@ it:
         start_time: "Ora di inizio"
         start_time_hour: "Ora di inizio"
         end_after: "Termine della serie di riunioni"
+        end_date: "End date"
         iterations: "Ricorrenze"
     errors:
       messages:

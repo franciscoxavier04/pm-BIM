@@ -59,6 +59,7 @@ ru:
         start_time: "Время начала"
         start_time_hour: "Время начала"
         end_after: "Серия совещаний заканчивается"
+        end_date: "End date"
         iterations: "События"
     errors:
       messages:

@@ -27,7 +27,7 @@ cs:
     work_packages:
       activity_tab:
         no_results_title_text: Žádná aktivita k zobrazení
-        no_results_description_text: "Vyberte \"Zobrazit vše\" pro zobrazení všech aktivit a komentářů"
+        no_results_description_text: 'Vyberte "Zobrazit vše" pro zobrazení všech aktivit a komentářů'
         label_activity_show_all: "Zobrazit vše"
         label_activity_show_only_comments: "Zobrazit pouze komentáře"
         label_activity_show_only_changes: "Zobrazit pouze změny"
@@ -2434,6 +2434,7 @@ cs:
   label_missing_or_hidden_custom_option: "(chybí hodnota nebo chybí oprávnění k přístupu)"
   label_descending: "Sestupně"
   label_details: "Podrobnosti"
+  label_defaults: "Defaults"
   label_development_roadmap: "Plán vývoje"
   label_diff: "rozdíl"
   label_diff_inline: "inline"

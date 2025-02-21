@@ -3,9 +3,16 @@ de:
     attributes:
       storages/file_link:
         origin_id: Ursprungs-ID
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+        nextcloud_audience: Nextcloud Audience
       storages/project_storage:
         storage: Speicherung
       storages/storage:
+        authentication_method: Authentication Method
         creator: Ersteller
         drive: Laufwerk ID
         host: Host
@@ -202,6 +209,9 @@ de:
       access_management_section: Zugriff und Projektordner
       automatically_managed_folders: Automatisch verwaltete Projektordner
       general_information: Allgemeine Informationen
+      nextcloud_audience: Nextcloud Audience
+      nextcloud_audience_blank: No audience has been configured
+      nextcloud_audience_description: Using audience %{audience}
       nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth-Konfiguration
       one_drive_oauth: Azure OAuth
@@ -222,7 +232,7 @@ de:
         host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
         missing_dependencies: 'Eine erforderliche Abhängigkeit fehlt auf dem Datei-Speicher. Bitte fügen Sie die folgende Abhängigkeit hinzu: %{dependency}.'
         not_configured: Die Verbindung konnte nicht validiert werden. Bitte schließen Sie zuerst die Konfiguration ab.
-        oidc_audience_missing: Der Speicher hat keine definierte Zielgruppe. Dies ist für die OpenID Connect-Integration erforderlich.
+        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: Der aktuelle Benutzer wird nicht von einem OpenID Connect Identity Provider bereitgestellt. Bitte führen Sie die Prüfung mit einem bereitgestellten Benutzer erneut durch.
         placeholder: Überprüfen Sie Ihre Verbindung mit dem Server.
@@ -253,6 +263,7 @@ de:
       project_folder_bulk: Der Projektordner ist der Standardordner für Datei-Uploads für alle ausgewählten Projekte. Sie können dies in jeder Projekteinstellung individuell ändern. Benutzer können trotzdem Dateien an andere Orte hochladen.
     instructions:
       all_available_storages_already_added: Alle verfügbaren Speicher sind dem Projekt bereits hinzugefügt.
+      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
       automatic_folder: Dies wird automatisch einen Stammordner für dieses Projekt erstellen und die Zugriffsberechtigungen für jedes Projektmitglied verwalten.
       empty_project_folder_validation: Die Auswahl eines Ordners ist zwingend erforderlich, um fortzufahren.
       existing_manual_folder: Sie können einen existierenden Ordner als Hauptordner für dieses Projekt definieren. Die Berechtigungen werden jedoch nicht automatisch verwaltet, der Administrator muss manuell sicherstellen, dass relevante Benutzer Zugriff haben. Der ausgewählte Ordner kann von mehreren Projekten verwendet werden.
@@ -263,6 +274,8 @@ de:
       nextcloud:
         application_link_text: Anwendung „OpenProject Integration“
         integration: Nextcloud Administration / OpenProject
+        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: Kopieren Sie diese Werte aus der %{application_link_text}.
         provider_configuration: Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die %{application_link_text} vor dem Setup installiert wurde.
       no_specific_folder: Standardmäßig startet jeder Benutzer in seinem eigenen Home-Ordner, wenn er eine Datei hochlädt.
@@ -295,6 +308,7 @@ de:
     label_creation_time: Erstellungszeit
     label_creator: Ersteller
     label_delete_storage: Dateispeicher löschen
+    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Speicherzugriffsverwaltung bearbeiten
     label_edit_storage_automatically_managed_folders: Automatisch verwaltete Projektordner des Dateispeichers bearbeiten
     label_edit_storage_host: Dateispeicher-Host bearbeiten

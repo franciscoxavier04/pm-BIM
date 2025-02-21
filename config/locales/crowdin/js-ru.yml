@@ -563,7 +563,7 @@ ru:
     label_version_plural: "Этапы"
     label_view_has_changed: "Это представление имеет несохраненные изменения. Кликните, чтобы сохранить их."
     help_texts:
-      show_modal: "Показать содержимое атрибута текста справки"
+      show_modal: "Показать справку по атрибуту"
     onboarding:
       buttons:
         skip: "Пропустить"

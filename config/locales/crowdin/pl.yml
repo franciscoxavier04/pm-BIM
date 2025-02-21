@@ -27,7 +27,7 @@ pl:
     work_packages:
       activity_tab:
         no_results_title_text: Brak aktywności do wyświetlania
-        no_results_description_text: "Wybierz opcję „Pokaż wszystko”, aby wyświetlić całą aktywność i wszystkie komentarze"
+        no_results_description_text: 'Wybierz opcję „Pokaż wszystko”, aby wyświetlić całą aktywność i wszystkie komentarze'
         label_activity_show_all: "Pokaż wszystko"
         label_activity_show_only_comments: "Pokaż tylko komentarze"
         label_activity_show_only_changes: "Pokaż tylko zmiany"
@@ -2431,6 +2431,7 @@ pl:
   label_missing_or_hidden_custom_option: "(brakująca wartość lub brak uprawnień do dostępu)"
   label_descending: "Malejąco"
   label_details: "Szczegóły"
+  label_defaults: "Defaults"
   label_development_roadmap: "Droga rozwoju"
   label_diff: "Różnice"
   label_diff_inline: "inline"

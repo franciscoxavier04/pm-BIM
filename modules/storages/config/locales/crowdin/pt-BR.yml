@@ -3,9 +3,16 @@ pt-BR:
     attributes:
       storages/file_link:
         origin_id: Id da origem
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+        nextcloud_audience: Nextcloud Audience
       storages/project_storage:
         storage: Armazenamento
       storages/storage:
+        authentication_method: Authentication Method
         creator: Criador
         drive: Drive ID
         host: Servidor
@@ -202,6 +209,9 @@ pt-BR:
       access_management_section: Acesso e pastas do projeto
       automatically_managed_folders: Pastas gerenciadas automaticamente
       general_information: Informações gerais
+      nextcloud_audience: Nextcloud Audience
+      nextcloud_audience_blank: No audience has been configured
+      nextcloud_audience_description: Using audience %{audience}
       nextcloud_oauth: OAuth Nextcloud
       oauth_configuration: Configuração de OAuth
       one_drive_oauth: Azure OAuth
@@ -222,7 +232,7 @@ pt-BR:
         host_not_found: Nenhum servidor Nextcloud encontrado na URL de host configurada. Verifique a configuração.
         missing_dependencies: 'Uma dependência necessária está faltando no armazenamento de arquivos. Adicione a seguinte dependência: %{dependency}.'
         not_configured: A conexão não pôde ser validada. Conclua a configuração primeiro.
-        oidc_audience_missing: O armazenamento não possui um público definido. Isso é necessário para a integração com o OpenID Connect.
+        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: O usuário atual não foi fornecido por um Provedor de Identidade OpenID Connect. Execute a verificação novamente com um usuário fornecido.
         placeholder: Verifique sua conexão com o servidor.
@@ -253,6 +263,7 @@ pt-BR:
       project_folder_bulk: A pasta do projeto é o local padrão para o envio de arquivos em todos os projetos selecionados. Você pode alterar essa configuração individualmente em cada projeto. No entanto, os usuários ainda poderão enviar arquivos para outros locais.
     instructions:
       all_available_storages_already_added: Todos os armazenamentos disponíveis já foram adicionados ao projeto.
+      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
       automatic_folder: Isto irá criar automaticamente uma pasta raiz para este projeto e gerenciará as permissões de acesso para cada membro do projeto.
       empty_project_folder_validation: Selecionar uma pasta é obrigatório para continuar.
       existing_manual_folder: Você pode definir uma pasta existente como a pasta raiz deste projeto. No entanto, as permissões não são gerenciadas automaticamente; o administrador deve garantir manualmente que os usuários necessários tenham acesso. A pasta selecionada pode ser usada por vários projetos.
@@ -263,6 +274,8 @@ pt-BR:
       nextcloud:
         application_link_text: aplicativo “Integration OpenProject”
         integration: Administração de Nextcloud / OpenProject
+        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: Copie estes valores de %{application_link_text}.
         provider_configuration: 'Certifique-se de ter os privilégios de administração em sua instância de Nextcloud e de que o %{application_link_text} está instalado antes de realizar a configuração:'
       no_specific_folder: Por padrão, cada usuário começará na sua própria pasta inicial ao carregar arquivos.
@@ -295,6 +308,7 @@ pt-BR:
     label_creation_time: Hora de criação
     label_creator: Criador
     label_delete_storage: Excluir armazenamento
+    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Editar gerenciamento de acesso ao armazenamento
     label_edit_storage_automatically_managed_folders: Editar pastas gerencias automaticamente de armazenamento
     label_edit_storage_host: Editar host de armazenamento

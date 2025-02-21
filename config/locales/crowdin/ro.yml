@@ -27,7 +27,7 @@ ro:
     work_packages:
       activity_tab:
         no_results_title_text: Nicio activitate de afișat
-        no_results_description_text: "Alege \"Arată tot\" pentru a afișa toată activitatea și comentariile"
+        no_results_description_text: 'Alege "Arată tot" pentru a afișa toată activitatea și comentariile'
         label_activity_show_all: "Afișează tot"
         label_activity_show_only_comments: "Arată doar comentariile"
         label_activity_show_only_changes: "Arată doar modificările"
@@ -2396,6 +2396,7 @@ ro:
   label_missing_or_hidden_custom_option: "(valoare lipsă sau lipsa permisiunilor de acces)"
   label_descending: "Descrescător"
   label_details: "Detalii"
+  label_defaults: "Defaults"
   label_development_roadmap: "Plan de lucru pentru dezvoltare"
   label_diff: "diferențe"
   label_diff_inline: "în text"
