@@ -103,7 +103,6 @@ sl:
     button_settings: "Nastavitve"
     button_uncheck_all: "Odznači vse"
     button_update: "Posodobi"
-    button_export-pdf: "Prenesi PDF"
     button_export-atom: "Prenesi Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Ustvari"

@@ -103,7 +103,6 @@ th:
     button_settings: "การตั้งค่า"
     button_uncheck_all: "เอาเครื่องหมายออกทั้งหมด"
     button_update: "ปรับปรุง"
-    button_export-pdf: "ดาวน์โหลดไฟล์ PDF"
     button_export-atom: "ดาวน์โหลดไฟล์ Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "สร้าง"

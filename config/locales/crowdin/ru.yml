@@ -27,7 +27,7 @@ ru:
     work_packages:
       activity_tab:
         no_results_title_text: Нет деятельности для отображения
-        no_results_description_text: "Выберите \"Показать всё\" для отображения всей деятельности и комментариев"
+        no_results_description_text: 'Выберите "Показать всё" для отображения всей деятельности и комментариев'
         label_activity_show_all: "Показать всё"
         label_activity_show_only_comments: "Показать только комментарии"
         label_activity_show_only_changes: "Показать только изменения"
@@ -128,9 +128,9 @@ ru:
     sync_failed: "Не удалось синхронизировать с LDAP: %{message}."
     back_to_index: "Нажмите здесь, чтобы вернуться к списку подключений."
     technical_warning_html: |
-      Эта LDAP форма требует технических знаний по LDAP / Active Directory.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Пожалуйста, ознакомьтесь с документацией для подробных инструкций</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Произвольное имя подключения LDAP
       host: Имя хоста или IP-адрес LDAP
@@ -138,9 +138,9 @@ ru:
       generic_map: Ключ атрибута в LDAP, сопоставленный с атрибутом OpenProject `%{attribute}`
       admin_map_html: "Необязательно: Ключ атрибута в LDAP, который <strong>при представлении</strong> помечает пользователя администратором. Оставьте пустым, если сомневаетесь."
       system_user_dn_html: |
-        Введите DN пользователя системы, используемого для доступа только для чтения.
-        <br/>
-        Пример: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Введите привязочный пароль системного пользователя
       base_dn: |
         Введите базовый DN поддерева в LDAP, в котором бы OpenProject искал пользователей и групп.
@@ -178,7 +178,7 @@ ru:
     tls_options:
       verify_peer: "Проверка SSL сертификата"
       verify_peer_description_html: >
-        Включает строгую проверку SSL цепочки доверенных сертификатов. <br/> <strong>Предупреждение:</strong> Отключение этой опции отключает проверку SSL сертификата сервера LDAP. Это раскрывает вашу связь с Человеком во время средних атак.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Если сертификат сервера LDAP отсутствует в источниках доверия этой системы, вы можете добавить его вручную. Введите строку сертификации PEM X509."
   forums:
     show:
@@ -588,10 +588,10 @@ ru:
         В <a href="%{href}">режиме расчета прогресса на основе статуса</a> % завершения пакета работ автоматически устанавливается на это значение, когда выбран этот статус.
         Игнорируется в режиме, основанном на работе.
       status_readonly_html: |
-        Установите этот флажок, чтобы пометить пакеты работ как доступные только для чтения.
-        Никакие атрибуты не могут быть изменены за исключением статуса.
-        <br/>
-        <strong>Примечание</strong>: Будут применены унаследованные значения (например, от дочерних или родительских пакетов работ).
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: В данный момент статусы пакетов работ отсутствуют.
       no_results_content_text: Добавить новый статус
@@ -630,6 +630,14 @@ ru:
         pattern:
           label: "Шаблон темы"
           caption: "Поиск атрибута или добавление текста. Чтобы создать пробел между элементами, добавьте его в виде текста."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "Эта версия используется совместно с архивными проектами, в которых все еще есть рабочие пакеты, назначенные на эту версию. Они учитываются, но не отображаются в связанных представлениях."
@@ -2076,21 +2084,29 @@ ru:
       days: д
   pdf_generator:
     page_nr_footer: "Страница %{page} из %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Создать PDF
-      submit: Создать
-      header_right:
-        label: Заголовок справа
-        caption: Текст, отображаемый справа от заголовка
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Нижний колонтитул по центру
-        caption: Текст, отображаемый в центре нижнего колонтитула
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Расстановка переносов
-        caption: Разрыв слов между строками для улучшения выравнивания и читаемости текста.
-      paper_size:
-        label: Размер бумаги
-        caption: Размер бумаги, используемый в PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext доступно (опционально)"
@@ -2416,6 +2432,7 @@ ru:
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
   label_descending: "По убыванию"
   label_details: "Детали"
+  label_defaults: "Defaults"
   label_development_roadmap: "Дорожная карта разработки"
   label_diff: "отличия"
   label_diff_inline: "Встроенный"
@@ -2916,7 +2933,7 @@ ru:
   label_global_role: "Глобальная роль"
   label_not_changeable: "(неизменяемая)"
   label_global: "Глобальная"
-  label_seeded_from_env_warning: Эта запись была создана с помощью параметра / переменной среды. Она не может редактироваться через пользовательский интерфейс.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Ошибка при выполнении макроса %{macro_name}"
   macro_unavailable: "Макрос %{macro_name} не может быть отображен."
   macros:
@@ -3828,6 +3845,7 @@ ru:
   text_unallowed_characters: "Запрещенные символы"
   text_user_invited: Пользователь был приглашен и подлежит регистрации.
   text_user_wrote: "%{value} написал:"
+  text_wrote: "написал"
   text_warn_on_leaving_unsaved: "Не сохраненный текст текущего пакета работ будет потерян, если вы покинете эту страницу."
   text_what_did_you_change_click_to_add_comment: "Что вы изменили? Кликните для добавления комментария"
   text_wiki_destroy_confirmation: "Вы уверены, что хотите удалить этот wiki и все его содержимое?"

@@ -103,7 +103,6 @@ eo:
     button_settings: "Agordoj"
     button_uncheck_all: "Malelekti ĉion"
     button_update: "Ĝisdatigi"
-    button_export-pdf: "Elŝuti PDF"
     button_export-atom: "Elŝuti Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Krei"

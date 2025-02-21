@@ -32,6 +32,8 @@ class EnumerationsController < ApplicationController
   before_action :require_admin
   before_action :find_enumeration, only: %i[edit update move destroy]
 
+  helper_method :enumeration_classes
+
   include CustomFieldsHelper
 
   def index; end
@@ -101,6 +103,10 @@ class EnumerationsController < ApplicationController
   end
 
   protected
+
+  def enumeration_classes
+    [DocumentCategory, IssuePriority]
+  end
 
   def show_local_breadcrumb
     false

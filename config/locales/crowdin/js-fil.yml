@@ -103,7 +103,6 @@ fil:
     button_settings: "Mga setting"
     button_uncheck_all: "I-uncheck lahat"
     button_update: "I-update"
-    button_export-pdf: "I-download ang PDF"
     button_export-atom: "I-download ang atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Lumikha"

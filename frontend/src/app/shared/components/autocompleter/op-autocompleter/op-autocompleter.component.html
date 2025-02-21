@@ -207,6 +207,8 @@
     *ngSwitchCase="resource ==='subproject' || resource ==='version' || resource ==='status' || resource ==='default' || (!resource && !item.depth)">
     <span
       [ngClass]=" additionalClassProperty ? item[additionalClassProperty] : ''"
+      [attr.data-hover-card-trigger-target]="getHoverCardTriggerTarget(item)"
+      [attr.data-hover-card-url]="getHoverCardUrl(item)"
       [ngOptionHighlight]="search">{{ item.name }}
     </span>
     <span

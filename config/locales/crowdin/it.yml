@@ -27,7 +27,7 @@ it:
     work_packages:
       activity_tab:
         no_results_title_text: Nessuna attività da visualizzare
-        no_results_description_text: "Scegli \"Mostra tutto\" per mostrare tutte le attività e i commenti"
+        no_results_description_text: 'Scegli "Mostra tutto" per mostrare tutte le attività e i commenti'
         label_activity_show_all: "Mostra tutto"
         label_activity_show_only_comments: "Mostra solo commenti"
         label_activity_show_only_changes: "Mostra solo le modifiche"
@@ -76,11 +76,11 @@ it:
       upgrade_to_ee: "Aggiorna a Enterprise edition"
       add_token: "Carica un token di assistenza per Enterprise edition"
       delete_token_modal:
-        text: "Vuoi davvero rimuovere il token Enterprise Edition attualmente utilizzato?"
+        text: "Vuoi davvero rimuovere il token Enterprise edition attualmente utilizzato?"
         title: "Elimina token"
       replace_token: "Sostituisci il token di assistenza attuale"
       order: "Ordina l'edizione Enterprise on-premises"
-      paste: "Incolla il tuo token di assistenza per Enterprise Edition"
+      paste: "Incolla il tuo token di assistenza per Enterprise edition"
       required_for_feature: "Questa aggiunta è disponibile solo con un token di assistenza Enterprise Edition attivo."
       enterprise_link: "Per ulteriori informazioni, clicca qui."
       start_trial: "Inizia la prova gratuita"
@@ -128,8 +128,9 @@ it:
     sync_failed: "Sincronizzazione da LDAP non riuscita: %{message}."
     back_to_index: "Clicca qui per tornare all'elenco delle connessioni."
     technical_warning_html: |
-      Questo form LDAP richiede una conoscenza tecnica dell'attuale setup LDAP / Active Directory. <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Per favore visita la nostra documentazione per istruzioni dettagliate</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Nome della connessione LDAP
       host: Nome host LDAP o indirizzo IP
@@ -137,9 +138,9 @@ it:
       generic_map: L'attributo chiave LDAP mappato nell'attributo OpenProject '%{attribute}'
       admin_map_html: "Opzionale: L'attributo chiave LDAP che <strong>se presente</strong> indica l'utente OpenProject come amministratore. Lasciare vuoto se non sicuri."
       system_user_dn_html: |
-        Inserire il nome dominio del sistema utilizzato dall'utente per l'accesso in sola lettura.
-        <br/>
-        Esempio: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Inserire la password associata all'utente di sistema
       base_dn: |
         Inserire il nome dominio del ramo LDAP che si vuole far scansionare da OpenProject per la ricerca di utenti e gruppi.
@@ -176,7 +177,7 @@ it:
     tls_options:
       verify_peer: "Verifica certificato SSL"
       verify_peer_description_html: >
-        Abilita la rigorosa verifica della catena attendibile del certificato SSL. <br/> <strong>Attenzione:</strong> Deselezionare questa opzione disabilita la verifica del certificato SSL del server LDAP. Questo espone la tua connessione ad attacchi di tipo Man in the Middle.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Se il certificato del server LDAP non è nelle fonti di fiducia di questo sistema, è possibile aggiungerlo manualmente qui. Inserisci una stringa certificata PEM X509."
   forums:
     show:
@@ -570,10 +571,10 @@ it:
         Nella <a href="%{href}">modalità di calcolo dell'avanzamento basata sullo stato</a>, la % di completamento di una macro-attività viene impostata automaticamente su questo valore quando viene selezionato questo stato.
         Ignorato nella modalità basata sul lavoro.
       status_readonly_html: |
-        Seleziona questa opzione per contrassegnare i pacchetti di lavoro con questo stato come di sola lettura.
-        Nessun attributo può essere modificato ad eccezione dello stato.
-        <br/>
-        <strong> Nota </strong>: i valori ereditati (ad esempio, dai figli o dalle relazioni) verranno comunque applicati.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Al momento non vi sono relazioni sullo stato delle macro-attività.
       no_results_content_text: Aggiungi un nuovo stato
@@ -612,6 +613,14 @@ it:
         pattern:
           label: "Schema dell'oggetto"
           caption: "Cerca un attributo o aggiungi testo. Per creare uno spazio tra gli elementi aggiungilo come testo."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "La versione è condivisa con progetti archiviati che hanno ancora macro-attività assegnate a questa versione. Queste vengono conteggiate, ma non appariranno nelle viste collegate."
@@ -999,7 +1008,7 @@ it:
         confirmation: "non coincide con %{attribute}."
         could_not_be_copied: "%{dependency} non può essere (completamente) copiato."
         does_not_exist: "non esiste."
-        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise Edition"
+        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise edition"
         error_unauthorized: "potrebbe non essere accessibile."
         error_readonly: "è in sola lettura, pertanto non è stato possibile modificarlo."
         error_conflict: "L'informazione è stata aggiornata da almeno un altro utente nel frattempo."
@@ -1859,7 +1868,7 @@ it:
   error_cookie_missing: "Il cookie di OpenProject è mancante. Prego, verifica che i cookie siano attivati, questa applicazione non funziona correttamente senza."
   error_custom_option_not_found: "L'opzione non esiste."
   error_enterprise_activation_user_limit: "Il tuo account potrebbe non essere attivo (raggiunto il limite utente). Si prega di contattare l'amministratore per ottenere l'accesso."
-  error_enterprise_token_invalid_domain: "L'Enterprise Edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
+  error_enterprise_token_invalid_domain: "L'Enterprise edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
   error_failed_to_delete_entry: "Cancellazione voce non riuscita."
   error_in_dependent: "Errore nel tentativo di modificare l'oggetto dipendente: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Errore nel tentativo di creare un oggetto dipendente: %{dependent_class} - %{related_subject}: %{error}"
@@ -1998,21 +2007,29 @@ it:
       days: g
   pdf_generator:
     page_nr_footer: "Pagina %{page} di %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Genera PDF
-      submit: Genera
-      header_right:
-        label: Intestazione a destra
-        caption: Testo da visualizzare a destra dell'intestazione
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Piè di pagina centrale
-        caption: Testo da visualizzare al centro del piè di pagina
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Sillabazione
-        caption: Suddividi le parole tra le righe per migliorare la giustificazione e la leggibilità del testo.
-      paper_size:
-        label: Dimensione del foglio
-        caption: Il formato della carta da utilizzare per il PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdfatesto disponibile (opzionale)"
@@ -2042,10 +2059,10 @@ it:
     blocks:
       community: "Comunità di OpenProject"
       upsale:
-        title: "Aggiorna ad Enterprise Edition"
+        title: "Aggiorna ad Enterprise edition"
         more_info: "Altre informazioni"
     links:
-      upgrade_enterprise_edition: "Aggiorna ad Enterprise Edition"
+      upgrade_enterprise_edition: "Aggiorna ad Enterprise edition"
       postgres_migration: "Migrazione dell'installazione su PostgreSQL"
       user_guides: "Guide utente"
       faq: "FAQ"
@@ -2338,6 +2355,7 @@ it:
   label_missing_or_hidden_custom_option: "(valore mancante o assenza di permessi di accesso)"
   label_descending: "Decrescente"
   label_details: "Dettagli"
+  label_defaults: "Defaults"
   label_development_roadmap: "Tabella di marcia di sviluppo"
   label_diff: "diff"
   label_diff_inline: "inline"
@@ -2367,7 +2385,7 @@ it:
   label_enumerations: "Enumerazioni"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} utenti attivi riservati"
-  label_enterprise_edition: "Enterprise Edition"
+  label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Supporto per Imprese"
   label_environment: "Ambiente"
   label_estimates_and_progress: "Stime e progressi"
@@ -2838,7 +2856,7 @@ it:
   label_global_role: "Ruolo globale"
   label_not_changeable: "(non modificabile)"
   label_global: "Globale"
-  label_seeded_from_env_warning: Questo record è stato creato tramite un'impostazione/variabile d'ambiente. Non è modificabile tramite l'interfaccia utente.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Errore nell'esecuzione della macro %{macro_name}"
   macro_unavailable: "Non può essere visualizzata la macro %{macro_name}."
   macros:
@@ -3749,6 +3767,7 @@ it:
   text_unallowed_characters: "Caratteri non consentiti"
   text_user_invited: L'utente è stato invitato ed è in attesa di registrazione.
   text_user_wrote: "%{value} ha scritto:"
+  text_wrote: "ha scritto"
   text_warn_on_leaving_unsaved: "La macro-attività corrente contiene testo non salvato che andrà perso se abbandoni questa pagina."
   text_what_did_you_change_click_to_add_comment: "Cosa hai modificato? Clicca per aggiungere un commento"
   text_wiki_destroy_confirmation: "Sei sicuro di che voler cancellare questo wiki e tutti i suoi contenuti?"

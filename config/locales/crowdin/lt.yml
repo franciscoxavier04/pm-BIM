@@ -27,7 +27,7 @@ lt:
     work_packages:
       activity_tab:
         no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
+        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
         label_activity_show_all: "Show everything"
         label_activity_show_only_comments: "Show comments only"
         label_activity_show_only_changes: "Show changes only"
@@ -128,9 +128,9 @@ lt:
     sync_failed: "Nepavyko sinchronizuoti su LDAP: %{message}."
     back_to_index: "Spauskite čia, kad gryžtumėte į jungčių sąrašą."
     technical_warning_html: |
-      Ši LDAP forma reikalauja jūsų LDAP / Active Directory tvarkos žinojimo.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Detalios instrukcijos pateiktos dokumentacijoje</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: LDAP prisijungimui suteiktas pavadinimas
       host: LDAP serverio vardas arba IP adresas
@@ -138,9 +138,9 @@ lt:
       generic_map: LDAP atributo pavadinimas, kuris bus susietas su OpenProject atributu `%{attribute}`
       admin_map_html: "Pasirinktinis: LDAP atributas, kuris <strong>jei bus nustatytas</strong> pažymi, kad naudotojas yra OpenProject administratorius. Jei abejojate, palikite tuščią."
       system_user_dn_html: |
-        Įveskite sisteminio naudotojo, naudojamos tik skaitymo teisėmis jugtis prie LDAP, DN.
-        <br/>
-        Pavyzdžiui: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Įveskite sisteminio naudotojo, kuris jungsis prie LDAP, slaptažodį
       base_dn: |
         Įveskite submedžio, kuriame OpenProject ieškos naudotojų ir grupių šaknies DN (Base DN).
@@ -176,7 +176,7 @@ lt:
     tls_options:
       verify_peer: "Tikrinti SSL sertifikatą"
       verify_peer_description_html: >
-        Įjungia griežtą SSL sertifikatų pasitikėjimo grandinių tikrinimą. <br/> <strong>Įspėjimas:</strong> išjungus šią parinktį išjungiamas LDAP serverio sertifikato SSL tikrinimas. Tai padaro jūsų jungtis pažeidžiamomis Žmogaus per vidurį atakoms.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Jei LDAP serverio sertifikatas neįtrauktas į šios sistemos pasitikimuosius, jūs galite jį pridėti rankiniu būdu čia. Įveskite PEM X509 sertifikato eilutę."
   forums:
     show:
@@ -587,10 +587,10 @@ lt:
         package is automatically set to this value when this status is selected.
         Ignored in work-based mode.
       status_readonly_html: |
-        Pažymėkite čia, jei norite, kad darbų paketai šioje būsenoje būtų tik skaitomi.
-        Nebebus galima keisti jokių atributų išskyrus būseną.
-        <br/>
-        <strong>Pastaba:</strong> paveldėti atributai (pvz., iš vaikų ar sąryšių) gali būti keičiami automatiškai.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Nėra jokių darbų paketo būsenų.
       no_results_content_text: Pridėti naują būseną
@@ -629,6 +629,14 @@ lt:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "Versija bendrinama su archyvuotais projektais, kurie vis dar turi darbo paketų, priskirtų šiai versijai. Jie įskaičiuoti, bet nebus rodomi susietuose vaizduose."
@@ -2075,21 +2083,29 @@ lt:
       days: d
   pdf_generator:
     page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Generate
-      header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
-      paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdf-į-tekstą pasiekiamas (pasirinktinai)"
@@ -2415,6 +2431,7 @@ lt:
   label_missing_or_hidden_custom_option: "(trūksta reikšmės arba prieigos teisių)"
   label_descending: "Mažėjančiai"
   label_details: "Detali informacija"
+  label_defaults: "Defaults"
   label_development_roadmap: "Plėtros veiklos grafikas"
   label_diff: "skirt."
   label_diff_inline: "įterptas"
@@ -2915,7 +2932,7 @@ lt:
   label_global_role: "Visuotinis vaidmuo"
   label_not_changeable: "(negalima pakeisti)"
   label_global: "Globali"
-  label_seeded_from_env_warning: Šis įrašas buvo nustatytas per nustatymą / aplinkos kintamąjį. Jo negalima keisti per UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Klaida vykdant makrokomandą %{macro_name}"
   macro_unavailable: "Makrokomanda %{macro_name} negali būti rodoma."
   macros:
@@ -3827,6 +3844,7 @@ lt:
   text_unallowed_characters: "Neleistini simboliai"
   text_user_invited: Vartotojas yra pakviestas ir laukia registracijos.
   text_user_wrote: "%{value} parašė:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Darbų paketas turi neišsaugoto teksto, kuris bus prarastas, jei išeisite iš šio puslapio."
   text_what_did_you_change_click_to_add_comment: "Ką jūs pakeitėte? Spauskite, kad pridėtumėte komentarą"
   text_wiki_destroy_confirmation: "Ar esate įsitikinęs, jog norite pašalinti šį wiki puslapį ir visą jo turinį?"

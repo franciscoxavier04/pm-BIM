@@ -3,9 +3,16 @@ zh-CN:
     attributes:
       storages/file_link:
         origin_id: 来源 ID
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+        nextcloud_audience: Nextcloud Audience
       storages/project_storage:
         storage: 存储
       storages/storage:
+        authentication_method: Authentication Method
         creator: 创建者
         drive: 驱动器 ID
         host: 主机
@@ -199,11 +206,14 @@ zh-CN:
         manual_management_description: 自己手动创建和管理每个项目的文件夹。您需要手动确保相关用户拥有访问权限。
         setup_incomplete: 选择用户访问和文件夹创建的管理类型。
         subtitle: 访问管理
-        title: 访问和项目文件夹
+      access_management_section: 访问和项目文件夹
       automatically_managed_folders: 自动托管的文件夹
       general_information: 一般信息
+      nextcloud_audience: Nextcloud Audience
+      nextcloud_audience_blank: No audience has been configured
+      nextcloud_audience_description: Using audience %{audience}
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: OAuth应用程序
+      oauth_configuration: OAuth 配置
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: 项目文件夹
@@ -222,6 +232,9 @@ zh-CN:
         host_not_found: 在配置的主机 URL 中找不到 Nextcloud 服务器。请检查配置。
         missing_dependencies: '文件存储缺少一个必需的依赖项。请添加以下依赖项： %{dependency}.'
         not_configured: 无法验证连接。请先完成配置。
+        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
+        oidc_non_provisioned_user: 当前用户并非由 OpenID Connect 身份提供商提供。请针对提供的用户重新运行检查。
         placeholder: 检查您与服务器的连接。
         subtitle: 连接验证
         tenant_id_wrong: 已配置的 OAuth 2 客户端ID无效。请检查配置。
@@ -250,6 +263,7 @@ zh-CN:
       project_folder_bulk: 项目文件夹是所选项目上传文件的默认文件夹。 您可以在每个项目设置中单独修改此操作。用户仍然可以将文件上传到其他位置。
     instructions:
       all_available_storages_already_added: 所有可用存储均已添加到项目。
+      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
       automatic_folder: 这将自动为此项目创建一个根文件夹，并管理每个项目成员的访问权限。
       empty_project_folder_validation: 选择一个文件夹是必须的。
       existing_manual_folder: 您可以指定现有的文件夹作为此项目的根文件夹。 但权限未自动托管，管理员需要手动确保相关用户能够访问。 选定的文件夹可以被多个项目使用。
@@ -260,6 +274,8 @@ zh-CN:
       nextcloud:
         application_link_text: 应用“集成OpenProject”
         integration: Nextcloud 管理/OpenProject
+        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: 从 %{application_link_text} 复制这些值。
         provider_configuration: 在进行设置之前，请确保您在 Nextcloud 实例中具有管理员权限，并且已安装了 %{application_link_text}。
       no_specific_folder: 默认情况下，每个用户上传文件时将从自己的主文件夹开始。
@@ -292,6 +308,7 @@ zh-CN:
     label_creation_time: 创建时间
     label_creator: 创建者
     label_delete_storage: 删除存储
+    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: 编辑存储访问管理
     label_edit_storage_automatically_managed_folders: 编辑存储自动管理的文件夹
     label_edit_storage_host: 编辑存储主机

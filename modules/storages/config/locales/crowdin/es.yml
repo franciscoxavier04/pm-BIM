@@ -3,9 +3,16 @@ es:
     attributes:
       storages/file_link:
         origin_id: Id. de origen
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+        nextcloud_audience: Nextcloud Audience
       storages/project_storage:
         storage: Almacenamiento
       storages/storage:
+        authentication_method: Authentication Method
         creator: Autor
         drive: ID de unidad
         host: Host
@@ -199,11 +206,14 @@ es:
         manual_management_description: Cree y gestione manualmente carpetas por proyecto por su cuenta. Deberá asegurarse manualmente de que los usuarios pertinentes tienen acceso.
         setup_incomplete: Seleccione el tipo de gestión del acceso de los usuarios y la creación de carpetas.
         subtitle: Gestión del acceso
-        title: Carpetas de acceso y de proyecto
+      access_management_section: Carpetas de acceso y de proyecto
       automatically_managed_folders: Carpetas gestionadas automáticamente
       general_information: Información general
+      nextcloud_audience: Nextcloud Audience
+      nextcloud_audience_blank: No audience has been configured
+      nextcloud_audience_description: Using audience %{audience}
       nextcloud_oauth: Nextcloud OAuth
-      oauth_applications: Aplicaciones OAuth
+      oauth_configuration: Configuración de OAuth
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Carpeta del proyecto
@@ -222,6 +232,9 @@ es:
         host_not_found: No se ha encontrado ningún servidor Nextcloud en la URL de host configurada. Compruebe la configuración.
         missing_dependencies: 'Falta una dependencia necesaria en el almacenamiento de archivos. Añada la siguiente dependencia: %{dependency}.'
         not_configured: No se ha podido validar la conexión. Por favor, termine primero la configuración.
+        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
+        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
+        oidc_non_provisioned_user: El usuario actual no ha sido proporcionado por un proveedor de identidad OpenID Connect. Vuelva a ejecutar la comprobación con un usuario proporcionado.
         placeholder: Compruebe su conexión con el servidor.
         subtitle: Validación de conexión
         tenant_id_wrong: El id de directorio (tenant) configurado no es válido. Por favor, compruebe la configuración.
@@ -250,6 +263,7 @@ es:
       project_folder_bulk: La carpeta del proyecto es la carpeta predeterminada para la carga de archivos de todos los proyectos seleccionados. Puede modificar esto individualmente en los ajustes de cada proyecto. No obstante, los usuarios pueden subir archivos a otras ubicaciones.
     instructions:
       all_available_storages_already_added: Ya se añadieron todos los almacenes disponibles al proyecto.
+      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
       automatic_folder: Esto creará automáticamente una carpeta raíz para este proyecto y gestionará los permisos de acceso para cada miembro del proyecto.
       empty_project_folder_validation: Es obligatorio seleccionar una carpeta para continuar.
       existing_manual_folder: Puede designar una carpeta existente como carpeta raíz de este proyecto. Sin embargo, los permisos no se gestionan automáticamente, sino que el administrador debe asegurarse manualmente de que los usuarios pertinentes tienen acceso. La carpeta seleccionada puede ser utilizada por varios proyectos.
@@ -260,6 +274,8 @@ es:
       nextcloud:
         application_link_text: aplicación “Integración OpenProject”
         integration: Administración de Nextcloud / OpenProject
+        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: Copia estos valores de %{application_link_text}.
         provider_configuration: Por favor, asegúrate de tener privilegios de administración en tu instancia de Nextcloud y de que el %{application_link_text} esté instalado antes de realizar la configuración.
       no_specific_folder: Por defecto, cada usuario comenzará en su propia carpeta de inicio cuando cargue un archivo.
@@ -292,6 +308,7 @@ es:
     label_creation_time: Tiempo de creación
     label_creator: Autor
     label_delete_storage: Eliminar almacenamiento
+    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Editar la gestión de acceso al almacenamiento
     label_edit_storage_automatically_managed_folders: Editar carpetas gestionadas automáticamente
     label_edit_storage_host: Editar host del almacenamiento

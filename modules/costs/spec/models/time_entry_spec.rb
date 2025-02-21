@@ -491,13 +491,13 @@ RSpec.describe TimeEntry do
         expect(time_entry).to be_valid
       end
 
-      it "allows values with a length of 255 characters" do
-        time_entry.comments = "a" * 255
+      it "allows values with a length of 1000 characters" do
+        time_entry.comments = "a" * 1000
         expect(time_entry).to be_valid
       end
 
-      it "does not allow values with a length of >255 characters" do
-        time_entry.comments = "a" * 256
+      it "does not allow values with a length of >1000 characters" do
+        time_entry.comments = "a" * 1001
         expect(time_entry).not_to be_valid
       end
     end

@@ -103,7 +103,6 @@ nl:
     button_settings: "Instellingen"
     button_uncheck_all: "Deselecteer alles"
     button_update: "Bijwerken"
-    button_export-pdf: "Download PDF"
     button_export-atom: "Download Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Maken"

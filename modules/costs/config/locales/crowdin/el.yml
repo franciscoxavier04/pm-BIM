@@ -59,6 +59,9 @@ el:
       cost_type:
         one: "Τύπος κόστους"
         other: "Τύποι κόστους"
+      time_entry_activity:
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Αμοιβή"
     errors:
       models:
@@ -79,6 +82,7 @@ el:
   button_add_rate: "Προσθήκη αμοιβής"
   button_log_costs: "Καταγραφή κόστους μονάδας"
   button_log_time: "Log"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Κλείστηκαν στο έργο"
   caption_default: "Προεπιλογή"
   caption_default_rate_history_for: "Προεπιλεγμένο ιστορικό αμοιβής για %{user}"
@@ -91,7 +95,11 @@ el:
   caption_set_rate: "Ορίστε την τρέχουσα αμοιβή"
   caption_show_locked: "Εμφάνιση κλειδωμένων τύπων"
   caption_log_time_dialog: "Log time"
+  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Ημερομηνία για νέα αμοιβή"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
+  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "δεν είναι σε καμία ομάδα"
   label_between: "μεταξύ"
   label_cost_filter_add: "Προσθήκη φίλτρου καταχώρησης κόστους"
@@ -118,6 +126,8 @@ el:
   label_kind: "Τύπος"
   label_less_or_equal: "<="
   label_log_costs: "Καταγραφή κόστους μονάδας"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Όχι"
   label_option_plural: "Επιλογές"
   label_overall_costs: "Συνολικό κόστος"
@@ -130,6 +140,10 @@ el:
   label_until: "μέχρι"
   label_valid_from: "Έγκυρο από"
   label_yes: "Ναι"
+  label_time: "Time"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Κάτι πήγε στραβά. Παρακαλούμε προσπαθήστε ξανά."
   notice_successful_restore: "Επιτυχής επαναφορά."

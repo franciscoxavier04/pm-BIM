@@ -57,6 +57,7 @@ it:
         start_time: "Ora di inizio"
         start_time_hour: "Ora di inizio"
         end_after: "Termine della serie di riunioni"
+        end_date: "End date"
         iterations: "Ricorrenze"
     errors:
       messages:
@@ -259,10 +260,14 @@ it:
       banner_html: >
         Stai attualmente modificando un modello di una serie di riunioni: %{link}. Ogni nuova ricorrenza di una riunione della serie userà questo modello. Le modifiche non influenzeranno le riunioni passate o già create.
     frequency:
+      x_daily:
+        one: "Every day"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        other: "Every %{count} weeks"
       every_weekday: "Ogni %{day_of_the_week}"
-      daily: "Ogni giorno"
       working_days: "Ogni giorno lavorativo"
-      weekly: "Ogni settimana"
     end_after:
       never: "mai"
       specific_date: "dopo una data specifica"

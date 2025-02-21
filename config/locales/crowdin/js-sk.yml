@@ -103,7 +103,6 @@ sk:
     button_settings: "Nastavenia"
     button_uncheck_all: "Odznačiť všetky"
     button_update: "Aktualizovať"
-    button_export-pdf: "Stiahnuť PDF"
     button_export-atom: "Stiahnuť Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Vytvoriť"

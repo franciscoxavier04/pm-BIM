@@ -287,14 +287,16 @@ module Components
         end
 
         expect(page).to have_test_selector("op-work-package-journal-form-element")
-
-        page.within_test_selector("op-work-package-journal-form-element") do
-          page.find_test_selector("op-submit-work-package-journal-form").click
-        end
       end
 
-      def get_all_comments_as_arrary
+      def get_all_comments_as_array
         page.all(".work-packages-activities-tab-journals-item-component--journal-notes-body").map(&:text)
+      end
+
+      def expect_comments_order(items)
+        retry_block do
+          expect(get_all_comments_as_array).to eq(items)
+        end
       end
 
       def filter_journals(filter, default_sorting: User.current.preference&.comments_sorting || "desc")

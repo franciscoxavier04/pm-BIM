@@ -27,7 +27,7 @@ sv:
     work_packages:
       activity_tab:
         no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
+        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
         label_activity_show_all: "Show everything"
         label_activity_show_only_comments: "Show comments only"
         label_activity_show_only_changes: "Show changes only"
@@ -128,9 +128,9 @@ sv:
     sync_failed: "Failed to synchronize from LDAP: %{message}."
     back_to_index: "Click here to go back to the list of connection."
     technical_warning_html: |
-      Detta LDAP-formulär kräver teknisk kunskap om din LDAP / Active Directory-inställning.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Besök vår dokumentation för detaljerade instruktioner</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Ett godtyckligt namn på LDAP-anslutningen
       host: LDAP-värdnamn eller IP-adress
@@ -138,9 +138,9 @@ sv:
       generic_map: Attributnyckeln i LDAP som är mappad till attributet OpenProject `%{attribute}`
       admin_map_html: "Valfritt: Attributnyckeln i LDAP som <strong>om den finns</strong> markerar OpenProject-användaren en administratör. Lämna tomt när du är osäker."
       system_user_dn_html: |
-        Ange DN för systemanvändaren som används för skrivskyddad åtkomst.
-        <br/>
-        Exempel: uid=openproject,ou=system,dc=exempel,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Ange bindlösenord för systemanvändaren
       base_dn: |
         Ange bas-DN för underträdet i LDAP som du vill att OpenProject ska leta efter användare och grupper.
@@ -179,7 +179,7 @@ sv:
     tls_options:
       verify_peer: "Verify SSL certificate"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br/> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "If the LDAP server certificate is not in the trust sources of this system, you can add it manually here. Enter a PEM X509 certifiate string."
   forums:
     show:
@@ -574,9 +574,10 @@ sv:
         package is automatically set to this value when this status is selected.
         Ignored in work-based mode.
       status_readonly_html: |
-        Välj detta val för att markera arbetspaket med denna status som skrivskyddade.
-        Inga attribut kan ändras förutom status.
-        <br/><strong>Notera</strong>Ärvda värden (t. ex. från barn eller relationer) kommer fortfarande gälla.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Det finns för närvarande inga statusar för arbetspaket.
       no_results_content_text: Lägg till ny status
@@ -615,6 +616,14 @@ sv:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -2001,21 +2010,29 @@ sv:
       days: d
   pdf_generator:
     page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Generate
-      header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
-      paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext tillgängligt (tillval)"
@@ -2341,6 +2358,7 @@ sv:
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Fallande"
   label_details: "Detaljer"
+  label_defaults: "Defaults"
   label_development_roadmap: "Utvecklingsplan"
   label_diff: "diff"
   label_diff_inline: "inline"
@@ -2841,7 +2859,7 @@ sv:
   label_global_role: "Global role"
   label_not_changeable: "(kan inte ändras)"
   label_global: "Global"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Fel under körning av makrot %{macro_name}"
   macro_unavailable: "Makrot %{macro_name} kan inte visas."
   macros:
@@ -3750,6 +3768,7 @@ sv:
   text_unallowed_characters: "Otillåtet tecken"
   text_user_invited: Användaren har bjudits in och inväntar nu dennes registrering.
   text_user_wrote: "%{value} skrev:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Arbetspaketet innehåller osparad text som försvinner om du lämnar sidan."
   text_what_did_you_change_click_to_add_comment: "Vad ändrade du? Klicka för att lägga till kommentar"
   text_wiki_destroy_confirmation: "Är du säker du vill ta bort denna wiki och allt dess innehåll?"
