@@ -1082,6 +1082,33 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
     end
   end
 
+  context "when updating child dates" do
+    context "with a hierarchy of ancestors" do
+      let_work_packages(<<~TABLE)
+        | hierarchy          | MTWTFSS | scheduling mode
+        | grandparent        | XXX     | automatic
+        |   parent           | XXX     | automatic
+        |     child          | XXX     | automatic
+        |       work_package | XXX     | manual
+      TABLE
+
+      let(:attributes) { { start_date: _table.tuesday, due_date: _table.friday } }
+
+      it "updates the dates of the whole ancestors hierarchy" do
+        expect(subject).to be_success
+        expect(subject.all_results.pluck(:subject)).to contain_exactly("work_package", "child", "parent", "grandparent")
+
+        expect_work_packages_after_reload([work_package, child, parent, grandparent], <<~TABLE)
+          | subject            | MTWTFSS | scheduling mode
+          | grandparent        |  XXXX   | automatic
+          |   parent           |  XXXX   | automatic
+          |     child          |  XXXX   | automatic
+          |       work_package |  XXXX   | manual
+        TABLE
+      end
+    end
+  end
+
   context "when switching scheduling mode to automatic" do
     let(:attributes) { { schedule_manually: false } }
 
@@ -1100,6 +1127,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       it "sets the dates to the child dates, despite the predecessor" do
         expect(subject).to be_success
+        expect(subject.all_results.pluck(:subject)).to contain_exactly("work_package")
 
         expect_work_packages_after_reload([work_package, predecessor, child], <<~TABLE)
           | subject      | MTWTFSS | scheduling mode
@@ -1122,6 +1150,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       it "sets the dates to start after the predecessor" do
         expect(subject).to be_success
+        expect(subject.all_results.pluck(:subject)).to contain_exactly("work_package", "child")
 
         expect_work_packages_after_reload([predecessor, child_predecessor, work_package, child], <<~TABLE)
           | subject           | MTWTFSS   | scheduling mode
@@ -1145,6 +1174,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       it "reschedule the automatic child to start after the predecessor and parent dates span over both children dates" do
         expect(subject).to be_success
+        expect(subject.all_results.pluck(:subject)).to contain_exactly("work_package", "child2")
 
         expect_work_packages_after_reload([predecessor, work_package, child1, child2], <<~TABLE)
           | subject           | MTWTFSS  | scheduling mode
@@ -1167,7 +1197,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       it "sets the parent start and due dates to the children earliest and latest dates" do
         expect(subject).to be_success
-        expect(subject.all_results).to contain_exactly(work_package)
+        expect(subject.all_results.pluck(:subject)).to contain_exactly("work_package")
 
         expect_work_packages_after_reload([work_package, child1, child2, child3], <<~TABLE)
           | subject      | MTWTFSS | scheduling mode
@@ -1189,7 +1219,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       it "sets the parent start and due dates to the children earliest and latest start dates" do
         expect(subject).to be_success
-        expect(subject.all_results).to contain_exactly(work_package)
+        expect(subject.all_results.pluck(:subject)).to contain_exactly("work_package")
 
         expect_work_packages_after_reload([work_package, child1, child2], <<~TABLE)
           | subject      | MTWTFSS | scheduling mode
@@ -1210,7 +1240,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       it "sets the parent start and due dates to the children earliest and latest due dates" do
         expect(subject).to be_success
-        expect(subject.all_results).to contain_exactly(work_package)
+        expect(subject.all_results.pluck(:subject)).to contain_exactly("work_package")
 
         expect_work_packages_after_reload([work_package, child1, child2], <<~TABLE)
           | subject      | MTWTFSS | scheduling mode
@@ -1230,7 +1260,7 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
 
       it "clears the parent dates" do
         expect(subject).to be_success
-        expect(subject.all_results).to contain_exactly(work_package)
+        expect(subject.all_results.pluck(:subject)).to contain_exactly("work_package")
 
         expect_work_packages_after_reload([work_package, child], <<~TABLE)
           | subject      | MTWTFSS | scheduling mode
@@ -1324,6 +1354,28 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
           successor      |     X   | automatic       |
 
           work_package   |    XXX  | manual          |
+        TABLE
+      end
+    end
+
+    describe "when the parent has no predecessors" do
+      let_work_packages(<<~TABLE)
+        hierarchy      | MTWTFSS | scheduling mode
+        # the child will be removed
+        parent         |    XXX  | automatic
+          work_package |    XXX  | manual
+      TABLE
+
+      it "keeps former parent dates and switch to manual scheduling mode" do
+        expect(subject).to be_success
+        expect(subject.all_results.pluck(:subject))
+          .to contain_exactly("work_package", "parent")
+        expect(work_package.reload.parent).to be_nil
+
+        expect_work_packages(subject.all_results, <<~TABLE)
+          subject        | MTWTFSS | scheduling mode
+          parent         |    XXX  | manual
+          work_package   |    XXX  | manual
         TABLE
       end
     end
