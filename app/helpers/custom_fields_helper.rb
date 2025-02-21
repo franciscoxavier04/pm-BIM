@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -88,18 +90,19 @@ module CustomFieldsHelper
                                                                                            required: custom_field.is_required)
             hidden_tag + checkbox_tag
           when "list"
-            blank_option = if custom_field.is_required? && custom_field.default_value.blank?
-                             "<option value=\"\">--- #{I18n.t(:actionview_instancetag_blank_option)} ---</option>"
-                           elsif custom_field.is_required? && custom_field.default_value.present?
-                             ""
-                           else
-                             "<option></option>"
-                           end
+            include_blank = !custom_field.is_required? ||
+              (custom_field.default_value.blank? ? I18n.t(:actionview_instancetag_blank_option) : false)
 
-            options = blank_option.html_safe + options_for_select(custom_field.possible_values_options(custom_value.customized),
-                                                                  custom_value.value)
+            options = [custom_field.possible_values_options(custom_value.customized), custom_value.value]
 
-            styled_select_tag(field_name, options, id: field_id, container_class: "-middle", required: custom_field.is_required)
+            styled_select_tag(
+              field_name,
+              options_for_select(*options),
+              id: field_id,
+              container_class: "-middle",
+              required: custom_field.is_required,
+              include_blank:
+            )
           else
             styled_text_field_tag(field_name, custom_value.value, id: field_id, container_class: "-middle",
                                                                   required: custom_field.is_required)
@@ -158,12 +161,14 @@ module CustomFieldsHelper
     when "text"
       styled_text_area_tag(field_name, "", id: field_id, rows: 3, with_text_formatting: true)
     when "bool"
-      styled_select_tag(field_name, options_for_select([[I18n.t(:label_no_change_option), ""],
-                                                        ([I18n.t(:label_none), "none"] unless custom_field.required?),
-                                                        [I18n.t(:general_text_yes), "1"],
-                                                        [I18n.t(:general_text_no), "0"]].compact), id: field_id)
+      styled_select_tag(field_name,
+                        options_for_select([([I18n.t(:label_none), "none"] unless custom_field.required?),
+                                            [I18n.t(:general_text_yes), "1"],
+                                            [I18n.t(:general_text_no), "0"]].compact),
+                        id: field_id,
+                        include_blank: I18n.t(:label_no_change_option))
     when "list"
-      base_options = [[I18n.t(:label_no_change_option), ""]]
+      base_options = []
       unless custom_field.required?
         unset_label = custom_field.field_format == "user" ? :label_nobody : :label_none
         base_options << [I18n.t(unset_label), "none"]
@@ -171,9 +176,10 @@ module CustomFieldsHelper
       styled_select_tag(field_name,
                         options_for_select(base_options + custom_field.possible_values_options(project)),
                         id: field_id,
-                        multiple: custom_field.multi_value?)
+                        multiple: custom_field.multi_value?,
+                        include_blank: I18n.t(:label_no_change_option))
     when "hierarchy"
-      base_options = [[I18n.t(:label_no_change_option), ""]]
+      base_options = []
       result = CustomFields::Hierarchy::HierarchicalItemService.new
         .get_descendants(item: custom_field.hierarchy_root, include_self: false)
         .either(
@@ -184,7 +190,11 @@ module CustomFieldsHelper
         label = item.short.present? ? "#{item.label} (#{item.short})" : item.label
         [label, item.id]
       end
-      styled_select_tag(field_name, options_for_select(options), id: field_id, multiple: custom_field.multi_value?)
+      styled_select_tag(field_name,
+                        options_for_select(options),
+                        id: field_id,
+                        multiple: custom_field.multi_value?,
+                        include_blank: I18n.t(:label_no_change_option))
     else
       styled_text_field_tag(field_name, "", id: field_id)
     end
