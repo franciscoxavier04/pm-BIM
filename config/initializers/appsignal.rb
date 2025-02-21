@@ -23,6 +23,11 @@ if OpenProject::Appsignal.enabled?
       ],
       ignore_logs: [
         "GET /health_check"
+      ],
+      filter_session_data: %w[
+        _csrf_token
+        omniauth.oidc_access_token
+        omniauth.oidc_sid
       ]
     }
 
