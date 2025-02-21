@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -82,7 +84,10 @@ module Components
       end
 
       def within_journal_entry(journal, &)
-        wait_for { page }.to have_test_selector("op-wp-journal-entry-#{journal.id}") # avoid flakyness
+        retry_block(screenshot: true) do
+          expect(page).to have_test_selector("op-wp-journal-entry-#{journal.id}")
+        end
+
         page.within_test_selector("op-wp-journal-entry-#{journal.id}", &)
       end
 
@@ -312,8 +317,8 @@ module Components
         end
 
         # Ensure the journals are reloaded
-        # wait_for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
-        # the wait_for will not work as the selector will be switched to the target filter before the page is updated
+        wait_for { page }.to have_test_selector("op-wp-journals-#{filter}-#{default_sorting}")
+        # the wait_for will not work on it's own as the selector will be switched to the target filter before the page is updated
         # so we still need to wait statically unfortuntately to avoid flakyness
         sleep 1
       end
