@@ -105,6 +105,17 @@ module MeetingAgendaItems
       end
     end
 
+    def add_outcome_action_item(menu)
+      menu.with_item(label: t("label_agenda_item_add_outcome"),
+                     href: new_meeting_outcome_path(@meeting_agenda_item.meeting,
+                                                    meeting_agenda_item_id: @meeting_agenda_item&.id),
+                     content_arguments: {
+                       data: { "turbo-stream": true }
+                     }) do |item|
+        item.with_leading_visual_icon(icon: :plus)
+      end
+    end
+
     def copy_action_item(menu)
       url = meeting_url(@meeting, anchor: "item-#{@meeting_agenda_item.id}")
       menu.with_item(label: t("button_copy_link_to_clipboard"),

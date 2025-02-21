@@ -50,6 +50,6 @@ class MeetingOutcome < ApplicationRecord
   # end
 
   def editable?
-    !meeting_agenda_item.meeting&.closed?
+    meeting_agenda_item.meeting&.in_progress?
   end
 end

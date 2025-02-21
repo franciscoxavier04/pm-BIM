@@ -2,7 +2,7 @@
   component_wrapper do
     render(Primer::Box.new(p: 3, classes: "outcome-container", border_radius: 2)) do
       grid_layout("op-meeting-outcome-notes", tag: :div, id: "item-#{@meeting_outcome.id}") do |grid|
-        grid.with_area(:title, tag: :span) do
+        grid.with_area(:title, tag: :span, classes: "title") do
           render(Primer::Beta::Heading.new(tag: :h5)) { "Outcome" }
         end
 

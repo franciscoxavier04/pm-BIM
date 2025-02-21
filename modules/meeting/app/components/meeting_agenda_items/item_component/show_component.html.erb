@@ -67,6 +67,7 @@
             )
             edit_action_item(menu) if @meeting_agenda_item.editable?
             add_note_action_item(menu) if @meeting_agenda_item.editable? && @meeting_agenda_item.notes.blank?
+            add_outcome_action_item(menu) if @meeting_agenda_item.editable? && @meeting.in_progress? && outcome_enabled? && !@meeting_agenda_item.outcomes.exists?
             unless first? && last?
               menu.with_divider
               move_actions(menu)
