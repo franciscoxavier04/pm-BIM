@@ -159,104 +159,50 @@ RSpec.describe Acts::Journalized::Differ::Association do
                           multiple_values:)
     end
 
-    describe "by default" do
-      subject(:result) do
-        instance.multiple_attributes_changes(
-          %i[active start_date end_date],
-          key_prefix: "project_life_cycle_steps"
-        )
-      end
+    subject(:result) do
+      instance.multiple_attributes_changes(
+        %i[active start_date end_date],
+        key_prefix: "project_life_cycle_steps"
+      )
+    end
 
-      describe "requesting joined changes for all values" do
-        let(:multiple_values) { :joined }
+    describe "requesting joined changes for all values" do
+      let(:multiple_values) { :joined }
 
-        it "returns the flat changes" do
-          expect(result)
-            .to eq(
-              "project_life_cycle_steps_1_active" => ["false", "true"],
+      it "returns the flat changes" do
+        expect(result)
+          .to eq(
+            "project_life_cycle_steps_1_active" => ["false", "true"],
 
-              "project_life_cycle_steps_2_active" => [nil, "true"],
+            "project_life_cycle_steps_2_active" => [nil, "true"],
 
-              "project_life_cycle_steps_3_active" => ["true", "false"],
-              "project_life_cycle_steps_3_start_date" => ["", "2024-01-17"],
-              "project_life_cycle_steps_3_end_date" => ["", "2024-01-18"],
+            "project_life_cycle_steps_3_active" => ["true", "false"],
+            "project_life_cycle_steps_3_start_date" => ["", "2024-01-17"],
+            "project_life_cycle_steps_3_end_date" => ["", "2024-01-18"],
 
-              "project_life_cycle_steps_4_start_date" => ["2024-01-16", "2024-01-17"],
-              "project_life_cycle_steps_4_end_date" => ["2024-01-17", "2024-01-18"]
-            )
-        end
-      end
-
-      describe "requesting single value change" do
-        let(:multiple_values) { false }
-
-        it "returns the flat changes" do
-          expect(result)
-            .to eq(
-              "project_life_cycle_steps_1_active" => [false, true],
-
-              "project_life_cycle_steps_2_active" => [nil, true],
-
-              "project_life_cycle_steps_3_active" => [true, false],
-              "project_life_cycle_steps_3_start_date" => [nil, Date.new(2024, 1, 17)],
-              "project_life_cycle_steps_3_end_date" => [nil, Date.new(2024, 1, 18)],
-
-              "project_life_cycle_steps_4_start_date" => [Date.new(2024, 1, 16), Date.new(2024, 1, 17)],
-              "project_life_cycle_steps_4_end_date" => [Date.new(2024, 1, 17), Date.new(2024, 1, 18)]
-            )
-        end
+            "project_life_cycle_steps_4_start_date" => ["2024-01-16", "2024-01-17"],
+            "project_life_cycle_steps_4_end_date" => ["2024-01-17", "2024-01-18"]
+          )
       end
     end
 
-    describe "grouped" do
-      subject(:result) do
-        instance.multiple_attributes_changes(
-          %i[active start_date end_date],
-          key_prefix: "project_life_cycle_steps",
-          grouped: true
-        )
-      end
+    describe "requesting single value change" do
+      let(:multiple_values) { false }
 
-      describe "requesting joined changes for all values" do
-        let(:multiple_values) { :joined }
+      it "returns the flat changes" do
+        expect(result)
+          .to eq(
+            "project_life_cycle_steps_1_active" => [false, true],
 
-        it "returns the grouped changes" do
-          expect(result)
-            .to eq(
-              "project_life_cycle_steps_1" => { active: ["false", "true"] },
-              "project_life_cycle_steps_2" => { active: [nil, "true"] },
-              "project_life_cycle_steps_3" => {
-                active: ["true", "false"],
-                start_date: ["", "2024-01-17"],
-                end_date: ["", "2024-01-18"]
-              },
-              "project_life_cycle_steps_4" => {
-                start_date: ["2024-01-16", "2024-01-17"],
-                end_date: ["2024-01-17", "2024-01-18"]
-              }
-            )
-        end
-      end
+            "project_life_cycle_steps_2_active" => [nil, true],
 
-      describe "requesting single value change" do
-        let(:multiple_values) { false }
+            "project_life_cycle_steps_3_active" => [true, false],
+            "project_life_cycle_steps_3_start_date" => [nil, Date.new(2024, 1, 17)],
+            "project_life_cycle_steps_3_end_date" => [nil, Date.new(2024, 1, 18)],
 
-        it "returns the grouped changes" do
-          expect(result)
-            .to eq(
-              "project_life_cycle_steps_1" => { active: [false, true] },
-              "project_life_cycle_steps_2" => { active: [nil, true] },
-              "project_life_cycle_steps_3" => {
-                active: [true, false],
-                start_date: [nil, Date.new(2024, 1, 17)],
-                end_date: [nil, Date.new(2024, 1, 18)]
-              },
-              "project_life_cycle_steps_4" => {
-                start_date: [Date.new(2024, 1, 16), Date.new(2024, 1, 17)],
-                end_date: [Date.new(2024, 1, 17), Date.new(2024, 1, 18)]
-              }
-            )
-        end
+            "project_life_cycle_steps_4_start_date" => [Date.new(2024, 1, 16), Date.new(2024, 1, 17)],
+            "project_life_cycle_steps_4_end_date" => [Date.new(2024, 1, 17), Date.new(2024, 1, 18)]
+          )
       end
     end
   end

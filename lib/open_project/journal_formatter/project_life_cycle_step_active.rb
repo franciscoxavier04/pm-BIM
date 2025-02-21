@@ -28,63 +28,25 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class OpenProject::JournalFormatter::ProjectLifeCycleStep < JournalFormatter::Base
+class OpenProject::JournalFormatter::ProjectLifeCycleStepActive < JournalFormatter::Base
   def render(key, values, options = { html: true })
+    return if !values[0] == !values[1]
+
     step = Project::LifeCycleStep.find(key[/\d+/])
 
     name = step.definition.name
     label = options[:html] ? content_tag(:strong, name) : name
 
-    messages = [
-      activation_message(values:),
-      date_change_message(values:, step:, options:)
-    ]
-
-    "#{label} #{messages.compact.to_sentence}"
+    "#{label} #{activation_message(values:)}"
   end
 
   private
 
   def activation_message(values:)
-    if values[:active]&.any?
-      if values[:active][1]
-        I18n.t("activity.project_life_cycle_step.activated")
-      else
-        I18n.t("activity.project_life_cycle_step.deactivated")
-      end
-    end
-  end
-
-  def date_change_message(values:, step:, options:)
-    case step
-    when Project::Gate
-      if values[:date]
-        from, to = values[:date].map { format_date(_1) }
-
-        format_date_change(from:, to:, options:)
-      end
-    when Project::Stage
-      if values[:date_range]
-        from, to = values[:date_range].map { format_date_range(_1) }
-
-        format_date_change(from:, to:, options:)
-      end
-    end
-  end
-
-  def format_date_range(date_range)
-    "#{format_date(date_range.begin)} - #{format_date(date_range.end)}" if date_range
-  end
-
-  def format_date_change(from:, to:, options:)
-    if from && to
-      I18n.t("activity.project_life_cycle_step.changed_date", from:, to:)
-    elsif to
-      I18n.t("activity.project_life_cycle_step.added_date", date: to)
-    elsif from
-      date = options[:html] ? content_tag("del", from) : from
-
-      I18n.t("activity.project_life_cycle_step.removed_date", date:)
+    if values[1]
+      I18n.t("activity.project_life_cycle_step.activated")
+    elsif values[0]
+      I18n.t("activity.project_life_cycle_step.deactivated")
     end
   end
 end

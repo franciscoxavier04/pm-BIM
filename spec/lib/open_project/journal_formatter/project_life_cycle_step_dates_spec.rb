@@ -30,9 +30,9 @@
 
 require "spec_helper"
 
-RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStep do
+RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepDates do
   describe "#render" do
-    let(:key) { "project_life_cycle_step_#{step.id}" }
+    let(:key) { "project_life_cycle_step_#{step.id}_date_range" }
 
     subject(:result) { described_class.new(nil).render(key, values, html:) }
 
@@ -60,24 +60,8 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStep do
       let(:step) { build_stubbed(:project_gate, definition:) }
       let(:definition) { build_stubbed(:project_gate_definition, name: "The Gate") }
 
-      context "when activated" do
-        let(:values) { { active: [false, true] } }
-        let(:plain_result) { "The Gate activated" }
-        let(:html_result) { "<strong>The Gate</strong> activated" }
-
-        include_examples "test result"
-      end
-
-      context "when deactivated" do
-        let(:values) { { active: [true, false] } }
-        let(:plain_result) { "The Gate deactivated" }
-        let(:html_result) { "<strong>The Gate</strong> deactivated" }
-
-        include_examples "test result"
-      end
-
       context "when date added" do
-        let(:values) { { date: [nil, date(28)] } }
+        let(:values) { [nil, date(28)..] }
         let(:plain_result) { "The Gate set to 01/28/2025" }
         let(:html_result) { "<strong>The Gate</strong> set to 01/28/2025" }
 
@@ -85,7 +69,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStep do
       end
 
       context "when date changed" do
-        let(:values) { { date: [date(28), date(29)] } }
+        let(:values) { [date(28).., date(29)..] }
         let(:plain_result) { "The Gate changed from 01/28/2025 to 01/29/2025" }
         let(:html_result) { "<strong>The Gate</strong> changed from 01/28/2025 to 01/29/2025" }
 
@@ -93,17 +77,17 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStep do
       end
 
       context "when date removed" do
-        let(:values) { { date: [date(28), nil] } }
+        let(:values) { [date(28).., nil] }
         let(:plain_result) { "The Gate date deleted 01/28/2025" }
         let(:html_result) { "<strong>The Gate</strong> date deleted <del>01/28/2025</del>" }
 
         include_examples "test result"
       end
 
-      context "when activated and date added" do
-        let(:values) { { active: [false, true], date: [nil, date(28)] } }
-        let(:plain_result) { "The Gate activated and set to 01/28/2025" }
-        let(:html_result) { "<strong>The Gate</strong> activated and set to 01/28/2025" }
+      context "when both dates absent" do
+        let(:values) { [nil, nil] }
+        let(:plain_result) { nil }
+        let(:html_result) { nil }
 
         include_examples "test result"
       end
@@ -113,24 +97,8 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStep do
       let(:step) { build_stubbed(:project_stage, definition:) }
       let(:definition) { build_stubbed(:project_stage_definition, name: "The Stage") }
 
-      context "when activated" do
-        let(:values) { { active: [false, true] } }
-        let(:plain_result) { "The Stage activated" }
-        let(:html_result) { "<strong>The Stage</strong> activated" }
-
-        include_examples "test result"
-      end
-
-      context "when deactivated" do
-        let(:values) { { active: [true, false] } }
-        let(:plain_result) { "The Stage deactivated" }
-        let(:html_result) { "<strong>The Stage</strong> deactivated" }
-
-        include_examples "test result"
-      end
-
       context "when date range added" do
-        let(:values) { { date_range: [nil, date(28)..date(29)] } }
+        let(:values) { [nil, date(28)..date(29)] }
         let(:plain_result) { "The Stage set to 01/28/2025 - 01/29/2025" }
         let(:html_result) { "<strong>The Stage</strong> set to 01/28/2025 - 01/29/2025" }
 
@@ -138,7 +106,7 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStep do
       end
 
       context "when date range changed" do
-        let(:values) { { date_range: [date(28)..date(29), date(28)..date(30)] } }
+        let(:values) { [date(28)..date(29), date(28)..date(30)] }
         let(:plain_result) { "The Stage changed from 01/28/2025 - 01/29/2025 to 01/28/2025 - 01/30/2025" }
         let(:html_result) { "<strong>The Stage</strong> changed from 01/28/2025 - 01/29/2025 to 01/28/2025 - 01/30/2025" }
 
@@ -146,17 +114,17 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStep do
       end
 
       context "when date range removed" do
-        let(:values) { { date_range: [date(28)..date(29), nil] } }
+        let(:values) { [date(28)..date(29), nil] }
         let(:plain_result) { "The Stage date deleted 01/28/2025 - 01/29/2025" }
         let(:html_result) { "<strong>The Stage</strong> date deleted <del>01/28/2025 - 01/29/2025</del>" }
 
         include_examples "test result"
       end
 
-      context "when activated and date range added" do
-        let(:values) { { active: [false, true], date_range: [nil, date(28)..date(29)] } }
-        let(:plain_result) { "The Stage activated and set to 01/28/2025 - 01/29/2025" }
-        let(:html_result) { "<strong>The Stage</strong> activated and set to 01/28/2025 - 01/29/2025" }
+      context "when both date ranges absent" do
+        let(:values) { [nil, nil] }
+        let(:plain_result) { nil }
+        let(:html_result) { nil }
 
         include_examples "test result"
       end

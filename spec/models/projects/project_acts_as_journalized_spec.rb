@@ -213,8 +213,8 @@ RSpec.describe Project, "acts_as_journalized" do
 
           expect(project.last_journal.details).to eq(
             {
-              "project_life_cycle_step_#{stage.id}" => { "active" => [nil, true] },
-              "project_life_cycle_step_#{gate.id}" => { "active" => [nil, true] }
+              "project_life_cycle_step_#{stage.id}_active" => [nil, true],
+              "project_life_cycle_step_#{gate.id}_active" => [nil, true]
             }
           )
         end
@@ -232,8 +232,8 @@ RSpec.describe Project, "acts_as_journalized" do
 
           expect(project.last_journal.details).to eq(
             {
-              "project_life_cycle_step_#{stage.id}" => { "active" => [true, false] },
-              "project_life_cycle_step_#{gate.id}" => { "active" => [true, false] }
+              "project_life_cycle_step_#{stage.id}_active" => [true, false],
+              "project_life_cycle_step_#{gate.id}_active" => [true, false]
             }
           )
         end
@@ -260,17 +260,14 @@ RSpec.describe Project, "acts_as_journalized" do
 
           expect(project.last_journal.details).to match(
             {
-              "project_life_cycle_step_#{stage.id}" => hash_including(
-                "date_range" => [
-                  nil,
-                  Date.new(2025, 1, 30)..Date.new(2025, 1, 31)
-                ]
-              ),
-              "project_life_cycle_step_#{gate.id}" => hash_including(
-                "date" => [
-                  nil, Date.new(2025, 2, 1)
-                ]
-              )
+              "project_life_cycle_step_#{stage.id}_date_range" => [
+                nil,
+                Date.new(2025, 1, 30)..Date.new(2025, 1, 31)
+              ],
+              "project_life_cycle_step_#{gate.id}_date_range" => [
+                nil,
+                Date.new(2025, 2, 1)..
+              ]
             }
           )
         end
@@ -288,18 +285,14 @@ RSpec.describe Project, "acts_as_journalized" do
 
           expect(project.last_journal.details).to match(
             {
-              "project_life_cycle_step_#{stage.id}" => hash_including(
-                "date_range" => [
-                  Date.new(2025, 1, 30)..Date.new(2025, 1, 31),
-                  Date.new(2025, 1, 30)..Date.new(2025, 2, 1)
-                ]
-              ),
-              "project_life_cycle_step_#{gate.id}" => hash_including(
-                "date" => [
-                  Date.new(2025, 2, 1),
-                  Date.new(2025, 2, 3)
-                ]
-              )
+              "project_life_cycle_step_#{stage.id}_date_range" => [
+                Date.new(2025, 1, 30)..Date.new(2025, 1, 31),
+                Date.new(2025, 1, 30)..Date.new(2025, 2, 1)
+              ],
+              "project_life_cycle_step_#{gate.id}_date_range" => [
+                Date.new(2025, 2, 1)..,
+                Date.new(2025, 2, 3)..
+              ]
             }
           )
         end
@@ -317,18 +310,14 @@ RSpec.describe Project, "acts_as_journalized" do
 
           expect(project.last_journal.details).to match(
             {
-              "project_life_cycle_step_#{stage.id}" => hash_including(
-                "date_range" => [
-                  Date.new(2025, 1, 30)..Date.new(2025, 1, 31),
-                  nil
-                ]
-              ),
-              "project_life_cycle_step_#{gate.id}" => hash_including(
-                "date" => [
-                  Date.new(2025, 2, 1),
-                  nil
-                ]
-              )
+              "project_life_cycle_step_#{stage.id}_date_range" => [
+                Date.new(2025, 1, 30)..Date.new(2025, 1, 31),
+                nil
+              ],
+              "project_life_cycle_step_#{gate.id}_date_range" => [
+                Date.new(2025, 2, 1)..,
+                nil
+              ]
             }
           )
         end
@@ -346,20 +335,16 @@ RSpec.describe Project, "acts_as_journalized" do
 
         expect(project.last_journal.details).to match(
           {
-            "project_life_cycle_step_#{stage.id}" => hash_including(
-              "active" => [nil, true],
-              "date_range" => [
-                nil,
-                Date.new(2025, 1, 30)..Date.new(2025, 1, 31)
-              ]
-            ),
-            "project_life_cycle_step_#{gate.id}" => hash_including(
-              "active" => [nil, true],
-              "date" => [
-                nil,
-                Date.new(2025, 2, 1)
-              ]
-            )
+            "project_life_cycle_step_#{stage.id}_active" => [nil, true],
+            "project_life_cycle_step_#{stage.id}_date_range" => [
+              nil,
+              Date.new(2025, 1, 30)..Date.new(2025, 1, 31)
+            ],
+            "project_life_cycle_step_#{gate.id}_active" => [nil, true],
+            "project_life_cycle_step_#{gate.id}_date_range" => [
+              nil,
+              Date.new(2025, 2, 1)..
+            ]
           }
         )
       end

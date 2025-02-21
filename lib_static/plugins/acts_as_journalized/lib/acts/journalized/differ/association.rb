@@ -59,19 +59,13 @@ module Acts::Journalized::Differ
     #
     # @param attributes [Array<Symbol>] the list of attributes for which to return changes.
     # @param key_prefix [String] the prefix to add to each key in the resulting hash.
-    # @param grouped [Boolean] whether to group changes by id or return them flat. Default is false.
     # @return [Hash] when not grouped, a hash with key consisting of prefix, id and attribute name, and value being two
     #         element array with changes. When grouped, a hash with key consisting of prefix and id, and value being
     #         a hash with keys being attributes names and values being two element array with changes.
-    def multiple_attributes_changes(attributes, key_prefix:, grouped: false)
+    def multiple_attributes_changes(attributes, key_prefix:)
       attributes.each_with_object({}) do |attribute, result|
         attribute_changes(attribute).each do |id, change|
-          if grouped
-            result["#{key_prefix}_#{id}"] ||= {}
-            result["#{key_prefix}_#{id}"][attribute] = change
-          else
-            result["#{key_prefix}_#{id}_#{attribute}"] = change
-          end
+          result["#{key_prefix}_#{id}_#{attribute}"] = change
         end
       end
     end
