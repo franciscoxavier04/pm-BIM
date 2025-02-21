@@ -49,6 +49,7 @@ module WorkPackages
       def suggestions_list_component
         @suggestions_list_component ||= Primer::Alpha::ActionList.new(
           role: :list,
+          classes: "mr-3",
           "data-pattern-input-target": "suggestions"
         )
       end
