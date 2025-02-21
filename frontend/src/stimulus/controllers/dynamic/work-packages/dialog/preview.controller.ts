@@ -29,10 +29,6 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
-import {
-  debounce,
-  DebouncedFunc,
-} from 'lodash';
 import Idiomorph from 'idiomorph/dist/idiomorph.cjs';
 
 interface TurboBeforeFrameRenderEventDetail {
@@ -56,11 +52,9 @@ export abstract class DialogPreviewController extends Controller {
   declare readonly initialValueInputTargets:HTMLInputElement[];
   declare readonly touchedFieldInputTargets:HTMLInputElement[];
 
-  protected debouncedDelayedPreview:DebouncedFunc<(input:HTMLInputElement) => void>;
-  protected debouncedImmediatePreview:DebouncedFunc<(input:HTMLInputElement) => void>;
-  private frameMorphRenderer:(event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => void;
-  private targetFieldName:string;
-  private touchedFields:Set<string>;
+  protected frameMorphRenderer:(event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => void;
+  protected targetFieldName:string;
+  protected touchedFields:Set<string>;
 
   connect() {
     this.touchedFields = new Set();
@@ -70,15 +64,6 @@ export abstract class DialogPreviewController extends Controller {
         this.touchedFields.add(fieldName);
       }
     });
-
-    // if the debounce value is changed, the following test helper must be kept
-    // in sync: `spec/support/edit_fields/progress_edit_field.rb`, method `#wait_for_preview_to_complete`
-    this.debouncedDelayedPreview = debounce((input:HTMLInputElement) => {
-      void this.preview(input);
-    }, 200);
-    this.debouncedImmediatePreview = debounce((input:HTMLInputElement) => {
-      void this.preview(input);
-    }, 0);
 
     // Turbo supports morphing, by adding the <turbo-frame refresh="morph">
     // attribute. However, it does not work that well with primer input: when
@@ -103,36 +88,24 @@ export abstract class DialogPreviewController extends Controller {
       };
     };
 
-    this.fieldInputTargets.forEach((target) => {
-      target.addEventListener('input', this.inputChanged.bind(this));
-
-      if (target.dataset.focus === 'true') {
-        this.focusAndSetCursorPositionToEndOfInput(target);
-      }
-    });
+    this.registerFieldInputListeners();
 
     const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
     turboFrame.addEventListener('turbo:before-frame-render', this.frameMorphRenderer);
   }
 
   disconnect() {
-    this.debouncedDelayedPreview.cancel();
-    this.debouncedImmediatePreview.cancel();
-    this.fieldInputTargets.forEach((target) => {
-      target.removeEventListener('input', this.inputChanged.bind(this));
-    });
+    this.unregisterFieldInputListeners();
     const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
     if (turboFrame) {
       turboFrame.removeEventListener('turbo:before-frame-render', this.frameMorphRenderer);
     }
   }
 
-  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
-  inputChanged(event:Event) {
+  registerFieldInputListeners() {
   }
 
-  protected triggerImmediatePreview(input:HTMLInputElement) {
-    this.debouncedImmediatePreview(input);
+  unregisterFieldInputListeners() {
   }
 
   protected cancel():void {
@@ -175,7 +148,7 @@ export abstract class DialogPreviewController extends Controller {
     }
   }
 
-  private focusAndSetCursorPositionToEndOfInput(field:HTMLInputElement) {
+  protected focusAndSetCursorPositionToEndOfInput(field:HTMLInputElement) {
     field.focus();
     field.setSelectionRange(
       field.value.length,

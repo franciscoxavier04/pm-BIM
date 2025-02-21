@@ -30,6 +30,10 @@
 
 import { DialogPreviewController } from '../dialog/preview.controller';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
+import {
+  debounce,
+  DebouncedFunc,
+} from 'lodash';
 
 export default class PreviewController extends DialogPreviewController {
   static values = {
@@ -51,7 +55,19 @@ export default class PreviewController extends DialogPreviewController {
 
   private handleFlatpickrDatesChangedBound = this.handleFlatpickrDatesChanged.bind(this);
 
+  private debouncedDelayedPreview:DebouncedFunc<(input:HTMLInputElement) => void>;
+  private debouncedImmediatePreview:DebouncedFunc<(input:HTMLInputElement) => void>;
+
   async connect() {
+    // if the debounce value is changed, the following test helper must be kept
+    // in sync: `spec/support/edit_fields/progress_edit_field.rb`, method `#wait_for_preview_to_complete`
+    this.debouncedDelayedPreview = debounce((input:HTMLInputElement) => {
+      void this.preview(input);
+    }, 200);
+    this.debouncedImmediatePreview = debounce((input:HTMLInputElement) => {
+      void this.preview(input);
+    }, 0);
+
     this.readInitialValues();
     super.connect();
 
@@ -63,6 +79,10 @@ export default class PreviewController extends DialogPreviewController {
 
   disconnect() {
     document.removeEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+
+    this.debouncedDelayedPreview.cancel();
+    this.debouncedImmediatePreview.cancel();
+
     super.disconnect();
   }
 
@@ -70,7 +90,23 @@ export default class PreviewController extends DialogPreviewController {
     await super.preview(field, [{ key: 'date_mode', val: this.dateModeValue }]);
   }
 
-  inputChanged(event:Event) {
+  registerFieldInputListeners() {
+    this.fieldInputTargets.forEach((target) => {
+      target.addEventListener('input', this.inputChanged.bind(this));
+
+      if (target.dataset.focus === 'true') {
+        this.focusAndSetCursorPositionToEndOfInput(target);
+      }
+    });
+  }
+
+  unregisterFieldInputListeners() {
+    this.fieldInputTargets.forEach((target) => {
+      target.removeEventListener('input', this.inputChanged.bind(this));
+    });
+  }
+
+  private inputChanged(event:Event) {
     const field = event.target as HTMLInputElement;
 
     if (field.name === 'work_package[start_date]') {
@@ -128,7 +164,7 @@ export default class PreviewController extends DialogPreviewController {
     }
     this.updateFlatpickrCalendar();
     if (fieldUpdatedWithUserValue) {
-      this.triggerImmediatePreview(fieldUpdatedWithUserValue);
+      this.debouncedImmediatePreview(fieldUpdatedWithUserValue);
     }
   }
 
