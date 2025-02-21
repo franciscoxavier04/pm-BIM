@@ -32,20 +32,21 @@ require "spec_helper"
 
 RSpec.describe RemoteIdentity do
   let(:user) { create(:user) }
-  let(:oauth_client) { create(:oauth_client) }
+  let(:integration) { create(:nextcloud_storage) }
+  let(:auth_source) { create(:oauth_client) }
 
   it "a user can have multiple identities in different oauth clients" do
     other_client = create(:oauth_client)
-    create(:remote_identity, user:, oauth_client:)
-    second_identity = build(:remote_identity, user:, oauth_client: other_client)
+    create(:remote_identity, user:, auth_source:)
+    second_identity = build(:remote_identity, user:, auth_source: other_client)
 
     expect(second_identity).to be_valid
   end
 
-  it "a user can only have one identity per oauth client" do
-    create(:remote_identity, user:, oauth_client:)
+  it "a user can only have one identity per oauth client and integration" do
+    create(:remote_identity, user:, auth_source:, integration:)
 
-    invalid = build(:remote_identity, user:, oauth_client:)
+    invalid = build(:remote_identity, user:, auth_source:, integration:)
 
     expect(invalid).not_to be_valid
     p invalid.errors
@@ -59,8 +60,8 @@ RSpec.describe RemoteIdentity do
   end
 
   it "is destroyed when the related oauth client is destroyed" do
-    create(:remote_identity, oauth_client:)
+    create(:remote_identity, auth_source:)
 
-    expect { oauth_client.destroy }.to change(described_class, :count).by(-1)
+    expect { auth_source.destroy }.to change(described_class, :count).by(-1)
   end
 end

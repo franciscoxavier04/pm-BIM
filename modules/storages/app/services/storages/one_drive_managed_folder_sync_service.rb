@@ -223,11 +223,11 @@ module Storages
     end
 
     def client_remote_identities_scope
-      RemoteIdentity.includes(:user).where(oauth_client: @storage.oauth_client)
+      RemoteIdentity.includes(:user).where(integration: @storage, auth_source: @storage.oauth_client)
     end
 
     def admin_remote_identities_scope
-      RemoteIdentity.includes(:user).where(oauth_client: @storage.oauth_client, user: User.admin.active)
+      RemoteIdentity.includes(:user).where(integration: @storage, auth_source: @storage.oauth_client, user: User.admin.active)
     end
 
     def root_folder = Peripherals::ParentFolder.new("/")

@@ -48,7 +48,8 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
   shared_let(:single_project_user_token) do
     create(:remote_identity,
            user: single_project_user,
-           oauth_client: storage.oauth_client,
+           auth_source: storage.oauth_client,
+           integration: storage,
            origin_user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba")
   end
 
@@ -56,7 +57,8 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
   shared_let(:multiple_project_user_token) do
     create(:remote_identity,
            user: multiple_projects_user,
-           oauth_client: storage.oauth_client,
+           auth_source: storage.oauth_client,
+           integration: storage,
            origin_user_id: "248aeb72-b231-4e71-a466-67fa7df2a285")
   end
 

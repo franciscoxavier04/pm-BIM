@@ -71,7 +71,8 @@ module Storages
               when :basic_auth
                 ServiceResult.success(result: storage.username)
               when :oauth_user_token, :sso_user_token
-                origin_user_id = RemoteIdentity.where(user_id: auth_strategy.user, oauth_client: storage.oauth_client)
+                origin_user_id = RemoteIdentity.where(user_id: auth_strategy.user, auth_source: storage.oauth_client,
+                                                      integration: storage)
                                                .pick(:origin_user_id)
                 if origin_user_id.present?
                   ServiceResult.success(result: origin_user_id)

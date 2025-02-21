@@ -6,27 +6,28 @@ require "services/base_services/behaves_like_create_service"
 
 RSpec.describe RemoteIdentities::CreateService, :storage_server_helpers, :webmock, type: :model do
   let(:user) { create(:user) }
-  let(:storage) { create(:nextcloud_storage_configured) }
-  let(:oauth_config) { storage.oauth_configuration }
+  let(:integration) { create(:nextcloud_storage_configured) }
+  let(:oauth_config) { integration.oauth_configuration }
+  let(:auth_source) { oauth_config.oauth_client }
   let(:oauth_client_token) do
     create(:oauth_client_token,
            user:,
            oauth_client: oauth_config.oauth_client)
   end
 
-  subject(:service) { described_class.new(user:, oauth_config:, oauth_client_token:) }
+  subject(:service) { described_class.new(user:, token: oauth_client_token, integration:) }
 
-  before { stub_nextcloud_user_query(storage.host) }
+  before { stub_nextcloud_user_query(integration.host) }
 
   describe ".call" do
     it "requires a user, a oauth configuration and a rack token" do
       method = described_class.method :call
 
-      expect(method.parameters).to contain_exactly(%i[keyreq user], %i[keyreq oauth_config], %i[keyreq oauth_client_token])
+      expect(method.parameters).to contain_exactly(%i[keyreq user], %i[keyreq token], %i[keyreq integration])
     end
 
     it "succeeds", :webmock do
-      expect(described_class.call(user:, oauth_config:, oauth_client_token:)).to be_success
+      expect(described_class.call(user:, token: oauth_client_token, integration:)).to be_success
     end
   end
 

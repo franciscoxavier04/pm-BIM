@@ -135,6 +135,21 @@ module OpenProject::Storages
         ) do |payload|
           ::Storages::HealthService.new(storage: payload[:storage]).healthy
         end
+
+        OpenProject::Notifications.subscribe(
+          ::OpenIDConnect::UserTokens::FetchService::TOKEN_OBTAINED
+        ) do |payload|
+          audience = payload[:audience]
+          token = payload[:token]
+          storage = Storages::Storage.all.find { |s| s.audience == audience }
+          if storage
+            RemoteIdentities::CreateService
+              .call(user: token.user, integration: storage, token:)
+              .on_failure { raise "RemoteIdentity creation failed" }
+          else
+            puts "WARNING: no integration was found for audience: #{audience}"
+          end
+        end
       end
     end
 

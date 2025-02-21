@@ -100,7 +100,7 @@ module Storages::ProjectStorages::Members
 
     def oauth_client_connected?
       storage.oauth_client.present? &&
-        member.principal.remote_identities.exists?(oauth_client: storage.oauth_client)
+        member.principal.remote_identities.exists?(auth_source: storage.oauth_client)
     end
 
     def can_read_files?

@@ -38,6 +38,10 @@ module OpenIDConnect
       include Dry::Monads[:result]
       include Dry::Monads::Do.for(:access_token_for, :refreshed_access_token_for)
 
+      TOKEN_OBTAINED = "access_token_obtained"
+
+      attr_reader :user
+
       def initialize(user:,
                      jwt_parser: JwtParser.new(verify_audience: false, verify_expiration: false),
                      token_exchange: ExchangeService.new(user:),
@@ -63,6 +67,7 @@ module OpenIDConnect
         token = yield token_with_audience(audience)
         token = yield @token_refresh.call(token) if expired?(token)
 
+        emit_event(token, audience)
         Success(token.access_token)
       end
 
@@ -79,10 +84,20 @@ module OpenIDConnect
       def refreshed_access_token_for(audience:)
         token = yield token_with_audience(audience)
         token = yield @token_refresh.call(token)
+
+        emit_event(token, audience)
         Success(token.access_token)
       end
 
       private
+
+      def emit_event(token, audience)
+        OpenProject::Notifications.send(
+          TOKEN_OBTAINED,
+          audience:,
+          token:
+        )
+      end
 
       def token_with_audience(aud)
         token = @user.oidc_user_tokens.with_audience(aud).first

@@ -54,14 +54,20 @@ module Storages
       shared_let(:storage) { create(:nextcloud_storage_with_complete_configuration, :as_automatically_managed) }
 
       shared_let(:remote_identities) do
-        [create(:remote_identity, user: admin, oauth_client: storage.oauth_client, origin_user_id: "admin"),
+        [create(:remote_identity,
+                user: admin,
+                auth_source: storage.oauth_client,
+                integration: storage,
+                origin_user_id: "admin"),
          create(:remote_identity,
                 user: multiple_projects_user,
-                oauth_client: storage.oauth_client,
+                auth_source: storage.oauth_client,
+                integration: storage,
                 origin_user_id: "multiple_projects_user"),
          create(:remote_identity,
                 user: single_project_user,
-                oauth_client: storage.oauth_client,
+                auth_source: storage.oauth_client,
+                integration: storage,
                 origin_user_id: "single_project_user")]
       end
 
