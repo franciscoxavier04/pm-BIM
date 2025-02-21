@@ -364,6 +364,30 @@ RSpec.describe Project, "acts_as_journalized" do
         )
       end
     end
+
+    describe "when creating without touching project" do
+      let!(:project) do
+        Timecop.freeze(1.year.ago) do
+          create(:project)
+        end
+      end
+
+      before do
+        create(:project_gate, project_id: project.id)
+      end
+
+      it "fails when using save_journals" do
+        expect do
+          project.save_journals
+        end.to raise_error(ActiveRecord::StatementInvalid)
+      end
+
+      it "succeeds when using touch_and_save_journals" do
+        expect do
+          project.touch_and_save_journals
+        end.to change { project.journals.count }.from(1).to(2)
+      end
+    end
   end
 
   describe "on project deletion" do

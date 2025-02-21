@@ -78,6 +78,6 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
       unique_by: %i[project_id definition_id]
     )
 
-    @project.save_journals
+    @project.touch_and_save_journals
   end
 end
