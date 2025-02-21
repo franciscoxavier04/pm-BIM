@@ -45,11 +45,7 @@ export class RemoteFieldUpdaterComponent implements OnInit, OnDestroy {
 
   private url:string;
 
-  private htmlMode:boolean;
-
   private form:HTMLFormElement;
-
-  private target:HTMLElement;
 
   private debouncedUpdaterBound:EventListener;
 
@@ -60,12 +56,10 @@ export class RemoteFieldUpdaterComponent implements OnInit, OnDestroy {
   ngOnInit():void {
     const element = this.elementRef.nativeElement as HTMLElement;
     this.form = element.closest('form') as HTMLFormElement;
-    this.target = this.form.querySelector('.remote-field--target') as HTMLElement;
     this.costTypeSelect = this.form.querySelector('#cost_entry_cost_type_id');
     this.unitsTextField = this.form.querySelector('#cost_entry_units');
 
     this.url = element.dataset.url as string;
-    this.htmlMode = element.dataset.mode === 'html';
 
     this.debouncedUpdaterBound = _.debounce(this.updater.bind(this), 500);
 
@@ -111,12 +105,7 @@ export class RemoteFieldUpdaterComponent implements OnInit, OnDestroy {
   private request(params:Record<string, string>) {
     const headers:Record<string, string> = {};
 
-    // In HTML mode, expect html response
-    if (this.htmlMode) {
-      headers.Accept = 'text/html';
-    } else {
-      headers.Accept = 'application/json';
-    }
+    headers.Accept = 'application/json';
 
     return this.http
       .get(
@@ -124,7 +113,7 @@ export class RemoteFieldUpdaterComponent implements OnInit, OnDestroy {
         {
           params,
           headers,
-          responseType: (this.htmlMode ? 'text' : 'json') as any,
+          responseType: 'json',
           withCredentials: true,
         },
       );
@@ -143,21 +132,16 @@ export class RemoteFieldUpdaterComponent implements OnInit, OnDestroy {
 
     this
       .request(params)
-      .subscribe((response:string|object) => {
-        if (this.htmlMode) {
-          // Replace the given target
-          this.target.innerHTML = response as string;
-        } else {
-          _.each(response as object, (val:string, selector:string) => {
-            const element = document.getElementById(selector) as HTMLElement|HTMLInputElement;
+      .subscribe((response:object) => {
+        _.each(response, (val:string, selector:string) => {
+          const element = document.getElementById(selector) as HTMLElement|HTMLInputElement;
 
-            if (element instanceof HTMLInputElement) {
-              element.value = val;
-            } else if (element) {
-              element.textContent = val;
-            }
-          });
-        }
+          if (element instanceof HTMLInputElement) {
+            element.value = val;
+          } else if (element) {
+            element.textContent = val;
+          }
+        });
       });
   }
 }
