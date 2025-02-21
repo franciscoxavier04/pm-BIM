@@ -84,7 +84,10 @@ module Components
       end
 
       def within_journal_entry(journal, &)
-        wait_for { page }.to have_test_selector("op-wp-journal-entry-#{journal.id}") # avoid flakyness
+        retry_block(screenshot: true) do
+          expect(page).to have_test_selector("op-wp-journal-entry-#{journal.id}")
+        end
+
         page.within_test_selector("op-wp-journal-entry-#{journal.id}", &)
       end
 
