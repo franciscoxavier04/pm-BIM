@@ -26,7 +26,7 @@ tr:
           Bazı %{storageType} verileri getirilemedi. Lütfen bu sayfayı yeniden yüklemeyi deneyin veya %{storageType} yöneticinizle iletişime geçin.
         no_file_links: "Dosyaları bu iş paketine bağlamak için lütfen bunu %{storageType} aracılığıyla yapın."
         not_logged_in: >
-          Bir bağlantı eklemek, bu iş paketiyle ilgili dosyaları görmek veya yüklemek için lütfen %{storageType}'da oturum açın.
+          Bu iş paketiyle ilgili bir bağlantı eklemek, dosyaları görmek veya yüklemek için lütfen %{storageType} adresine giriş yapın.
       files:
         already_existing_header: "This file already exists"
         already_existing_body: >

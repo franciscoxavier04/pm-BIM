@@ -53,7 +53,7 @@ tr:
         comments: Yorum
         activity: Etkinlik
         spent_on: Tarih
-        start_time: Başlangıç zamanı
+        start_time: Başlama tarihi
         end_time: Bitiş zamanı
     models:
       cost_type:

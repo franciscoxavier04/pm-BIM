@@ -1058,7 +1058,7 @@ ar:
         is_switched_from_manual_to_automatic: "The dates of this work package may need to be recalculated after switching from manual to automatic scheduling due to relationships with other work packages."
       sharing:
         title: "Share work package"
-        show_all_users: "Show all users with whom the work package has been shared with"
+        show_all_users: "إظهار كل المستخدمين الذين تم مشاركة حزمة العمل معهم"
         upsale:
           description: "Share work packages with users who are not members of the project."
       table:
