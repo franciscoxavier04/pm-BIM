@@ -293,15 +293,46 @@ RSpec.describe "Admin Edit File storage",
       aggregate_failures "Storage Audience" do
         find_test_selector("storage-edit-storage-audience-button").click
         within_test_selector("storage-audience-form") do
+          expect(page.find(:radio_button, "Define storage audience manually")).to be_checked
+          expect(page).to have_field("Storage Audience")
+
           click_on "Save and continue"
           expect(page).to have_text("Storage Audience can't be blank")
+
+          fill_in "Storage Audience", with: "schmaudience"
+
+          choose("Use first access token obtained by identity provider")
+          expect(page).to have_no_field("Storage Audience")
+          choose("Define storage audience manually")
+          expect(find_field("Storage Audience").value).to be_empty
 
           fill_in "Storage Audience", with: "schmaudience"
           click_on "Save and continue"
         end
 
         expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
-        expect(page).to have_test_selector("storage-audience-description", text: "Using audience schmaudience")
+        expect(page).to have_test_selector("storage-audience-description", text: "Obtaining tokens for audience \"schmaudience\"")
+
+        find_test_selector("storage-edit-storage-audience-button").click
+        within_test_selector("storage-audience-form") do
+          expect(page.find(:radio_button, "Define storage audience manually")).to be_checked
+          expect(find_field("Storage Audience").value).to eq("schmaudience")
+
+          choose("Use first access token obtained by identity provider")
+          click_on "Save and continue"
+        end
+
+        expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
+        expect(page).to have_test_selector(
+          "storage-audience-description",
+          text: "Using first access token received by identity provider, regardless of audience."
+        )
+
+        find_test_selector("storage-edit-storage-audience-button").click
+        within_test_selector("storage-audience-form") do
+          expect(page.find(:radio_button, "Use first access token obtained by identity provider")).to be_checked
+          expect(page).to have_no_field("Storage Audience")
+        end
       end
     end
 
