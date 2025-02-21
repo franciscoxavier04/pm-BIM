@@ -49,6 +49,7 @@ module TimeEntries
                                        hiddenFieldAction: "change->time-entry#workPackageChanged",
                                        focusDirectly: false,
                                        append_to: "#time-entry-dialog",
+                                       relations: true, # allows using the custom url
                                        url: work_package_completer_url,
                                        filters: work_package_completer_filters
                                      }
@@ -84,7 +85,11 @@ module TimeEntries
     end
 
     def work_package_validation_error
-      model.errors[:project_id]&.first
+      if model.errors[:project_id].present?
+        model.errors[:project_id].first
+      else
+        model.errors[:work_package]&.first
+      end
     end
 
     def work_package_completer_filters
