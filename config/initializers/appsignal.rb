@@ -9,17 +9,17 @@ if OpenProject::Appsignal.enabled?
       name: ENV.fetch("APPSIGNAL_NAME"),
       push_api_key: ENV.fetch("APPSIGNAL_KEY"),
       revision: OpenProject::VERSION.to_s,
-      ignore_actions: [
-        "OkComputer::OkComputerController#show",
-        "OkComputer::OkComputerController#index",
-        "GET::API::V3::Notifications::NotificationsAPI",
-        "GET::API::V3::Notifications::NotificationsAPI#/notifications/"
+      ignore_actions: %w[
+        OkComputer::OkComputerController#show
+        OkComputer::OkComputerController#index
+        GET::API::V3::Notifications::NotificationsAPI
+        GET::API::V3::Notifications::NotificationsAPI#/notifications/
       ],
-      ignore_errors: [
-        "Grape::Exceptions::MethodNotAllowed",
-        "ActionController::UnknownFormat",
-        "ActiveJob::DeserializationError",
-        "Net::SMTPServerBusy"
+      ignore_errors: %w[
+        Grape::Exceptions::MethodNotAllowed
+        ActionController::UnknownFormat
+        ActiveJob::DeserializationError
+        Net::SMTPServerBusy
       ],
       ignore_logs: [
         "GET /health_check"
