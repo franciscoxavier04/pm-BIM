@@ -647,25 +647,29 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
                                    "on",
                                    [Time.zone.today + 8.days])
 
+          projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
 
           projects_page.set_filter("any_stage_or_gate",
                                    "Any stage or gate",
                                    "today")
 
+          projects_page.expect_projects_not_listed(development_project, public_project)
           projects_page.expect_projects_in_order(project)
 
           projects_page.set_filter("any_stage_or_gate",
                                    "Any stage or gate",
                                    "between",
-                                   [Time.zone.today, Time.zone.today + 9.days])
+                                   [Time.zone.today - 5.days, Time.zone.today + 10.days])
 
+          projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
 
           projects_page.set_filter("any_stage_or_gate",
                                    "Any stage or gate",
                                    "this week")
 
+          projects_page.expect_projects_not_listed(public_project, development_project)
           projects_page.expect_projects_in_order(project)
         end
       end

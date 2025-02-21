@@ -283,6 +283,7 @@ module Pages
             set_autocomplete_filter(values)
           elsif date_filter?(selected_filter) || date_time_filter?(selected_filter)
             select(human_operator, from: "operator")
+            wait_for_network_idle
             set_date_filter(human_operator, values, send_keys:)
           end
         end
