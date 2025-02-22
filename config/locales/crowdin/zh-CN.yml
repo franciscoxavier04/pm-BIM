@@ -1271,8 +1271,8 @@ zh-CN:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              cannot_add_child_because_of_lack_of_permission: "无法添加子项目，因为您没有权限编辑选定的工作包。"
+              blank: "ID不能为空。"
             assigned_to:
               format: "%{message}"
             done_ratio:
