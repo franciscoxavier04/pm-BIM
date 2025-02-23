@@ -8,7 +8,7 @@ import { ApiV3WorkPackagePaths } from 'core-app/core/apiv3/endpoints/work_packag
 import { WorkPackageResource } from 'core-app/features/hal/resources/work-package-resource';
 import { HalResource } from 'core-app/features/hal/resources/hal-resource';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import { UntilDestroyedMixin } from 'core-app/shared/helpers/angular/until-destroyed.mixin';
 import {
   IAPIFilter,
@@ -87,7 +87,12 @@ export class OpAutocompleterService extends UntilDestroyedMixin {
   // If you need to fetch our default date sources like work_packages or users,
   // you should use the default method (loadAvailable), otherwise you should implement a function for
   // your desired resource
-  public loadData(matching:string, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string) {
+  public loadData(matching:string|null, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string) {
+    // Exit early if the query string is empty as there is no typeahead
+    if (matching === null || matching.length === 0) {
+      return of([]);
+    }
+
     switch (resource) {
       // in this case we can add more functions for fetching usual resources
       default: {
@@ -98,7 +103,12 @@ export class OpAutocompleterService extends UntilDestroyedMixin {
 
   // A method for returning data based on a custom URL (i.e. in time logging we have a special endpoint for retrieving
   // work packages)
-  public loadFromUrl(url:string, matching:string, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string) {
+  public loadFromUrl(url:string, matching:string|null, resource:TOpAutocompleterResource, filters?:IAPIFilter[], searchKey?:string) {
+    // Exit early if the query string is empty as there is no typeahead
+    if (matching === null || matching.length === 0) {
+      return of([]);
+    }
+
     const finalFilters:ApiV3FilterBuilder = this.createFilters(filters ?? [], matching, searchKey);
     const params = this.createParams(resource);
 
