@@ -1696,6 +1696,7 @@ en:
     value: "Value"
     values: "Values"
     version: "Version"
+    visible: "Visible"
     work_package: "Work package"
 
   backup:

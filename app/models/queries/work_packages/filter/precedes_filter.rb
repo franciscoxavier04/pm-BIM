@@ -37,7 +37,7 @@ class Queries::WorkPackages::Filter::PrecedesFilter <
   end
 
   def human_name
-    I18n.t("work_package_relations_tab.relations.label_precedes_singular")
+    I18n.t(:label_precedes)
   end
 
   private

@@ -32,4 +32,10 @@ class ProjectCustomFieldProjectMapping < ApplicationRecord
                                     inverse_of: :project_custom_field_project_mappings
 
   validates :custom_field_id, uniqueness: { scope: :project_id }
+
+  def self.human_attribute_name(attribute, options = {})
+    {
+      project_ids: "#{Project.model_name.human} IDs",
+    }[attribute] || super
+  end
 end

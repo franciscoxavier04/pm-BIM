@@ -31,7 +31,7 @@ require "spec_helper"
 RSpec.describe Queries::WorkPackages::Filter::PrecedesFilter do
   it_behaves_like "filter by work package id" do
     let(:class_key) { :precedes }
-    let(:human_name) { "Precedes" }
+    let(:human_name) { "precedes" }
 
     it_behaves_like "filter for relation" do
       let(:relation_type) { :precedes }

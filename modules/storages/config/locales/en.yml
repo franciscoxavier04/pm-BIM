@@ -18,8 +18,6 @@ en:
         project_folder_mode: Project folder mode
         storage: Storage
         storage_url: Storage URL
-        project_folder_mode: Project folder mode
-        project_folder: Project folder
       storages/storage:
         authentication_method: Authentication Method
         creator: Creator
