@@ -45,7 +45,7 @@ module OpTurbo
     end
 
     included do
-      def render_as_turbo_stream(view_context:, action: :update, method: nil)
+      def render_as_turbo_stream(view_context:, action: :update, method: nil, **attributes)
         case action
         when :update, *INLINE_ACTIONS
           @inner_html_only = true
@@ -66,14 +66,15 @@ module OpTurbo
         end
 
         if method && !action.in?(ACTIONS_WITH_METHOD)
-          raise ArgumentError, "The #{action} action does not supports a method"
+          raise ArgumentError, "The #{action} action does not support a method"
         end
 
         OpTurbo::StreamComponent.new(
           action:,
           method:,
           target: wrapper_key,
-          template:
+          template:,
+          **attributes
         ).render_in(view_context)
       end
 
