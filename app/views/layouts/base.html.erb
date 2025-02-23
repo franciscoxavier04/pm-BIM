@@ -59,6 +59,10 @@ See COPYRIGHT and LICENSE files for more details.
 </noscript>
 <opce-toasts-container></opce-toasts-container>
 <opce-modal-overlay></opce-modal-overlay>
+  <live-region>
+    <div id="polite" aria-live="polite" aria-atomic="true" class="hidden-for-sighted"></div>
+    <div id="assertive" aria-live="assertive" aria-atomic="true" class="hidden-for-sighted"></div>
+  </live-region>
 <opce-spot-drop-modal-portal></opce-spot-drop-modal-portal>
 <% main_menu = render_main_menu(local_assigns.fetch(:menu_name, nil), @project) %>
 <% side_displayed = content_for?(:sidebar) || content_for?(:main_menu) || !main_menu.blank? %>
