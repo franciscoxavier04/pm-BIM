@@ -45,7 +45,7 @@ See COPYRIGHT and LICENSE files for more details.
                           locals: {
                             column_headers: [
                               t("attributes.name"),
-                              WorkPackage.human_attribute_name(:calendar),
+                              Token::ICal.human_attribute_name(:calendar),
                               WorkPackage.human_attribute_name(:project),
                               User.human_attribute_name(:created_at),
                               t("my_account.access_tokens.headers.expiration")

@@ -35,7 +35,7 @@ class ProjectCustomFieldProjectMapping < ApplicationRecord
 
   def self.human_attribute_name(attribute, options = {})
     {
-      project_ids: "#{Project.model_name.human} IDs",
+      project_ids: "#{Project.model_name.human} IDs"
     }[attribute] || super
   end
 end

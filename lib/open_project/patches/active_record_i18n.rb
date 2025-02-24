@@ -35,6 +35,8 @@ module ActiveRecord
     def self.human_attribute_name(attr, options = {})
       attr = attr.to_s.delete_suffix("_id")
 
+      options[:default] ||= I18n.t("activerecord.models.#{attr}", count: 1, default: nil)
+
       if Rails.env.local?
         def attr.humanize(*)
           raise ArgumentError, "I18n translation missing for attribute #{self}"

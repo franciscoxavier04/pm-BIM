@@ -1546,6 +1546,7 @@ en:
         one: "Project list"
         other: "Project lists"
       query: "Custom query"
+      reminder: "Reminder"
       role:
         one: "Role"
         other: "Roles"
