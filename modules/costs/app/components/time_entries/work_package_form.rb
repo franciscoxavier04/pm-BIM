@@ -49,8 +49,8 @@ module TimeEntries
                                        hiddenFieldAction: "change->time-entry#workPackageChanged",
                                        focusDirectly: false,
                                        append_to: "#time-entry-dialog",
-                                       relations: true, # allows using the custom url
                                        url: work_package_completer_url,
+                                       searchKey: "subjectOrId",
                                        filters: work_package_completer_filters
                                      }
       else

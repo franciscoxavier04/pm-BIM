@@ -54,7 +54,7 @@ module OpenIDConnect
         idp_token = yield FetchService.new(user: @user, token_exchange: Disabled)
                             .access_token_for(audience: UserToken::IDP_AUDIENCE)
 
-        json = yield exchange_token_request(idp_token, audience)
+        json = yield TokenRequest.new(provider:).exchange(idp_token, audience)
 
         access_token = json["access_token"]
         expires_in = json["expires_in"]
@@ -73,21 +73,6 @@ module OpenIDConnect
       end
 
       private
-
-      def exchange_token_request(access_token, audience)
-        response = OpenProject.httpx
-                              .basic_auth(provider.client_id, provider.client_secret)
-                              .post(provider.token_endpoint, form: {
-                                      grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
-                                      subject_token: access_token,
-                                      audience:
-                                    })
-        response.raise_for_status
-
-        Success(response.json)
-      rescue HTTPX::Error => e
-        Failure(e)
-      end
 
       def store_exchanged_token(audience:, access_token:, refresh_token:, expires_in:)
         token_data = { access_token:, refresh_token:, expires_at: expires_in&.seconds&.from_now }

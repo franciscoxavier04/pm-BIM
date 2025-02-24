@@ -195,7 +195,7 @@ tr:
       cancelled:
         header: "İptal edildi: Toplantı '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
-        header_series: "Cancelled: Meeting series '%{title}'"
+        header_series: "İptal edildi: Toplantı serisi '%{title}'"
         summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
         summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
         summary: "'%{title}' %{actor} tarafından iptal edilmiştir."
@@ -224,10 +224,10 @@ tr:
         confirmation_message_html: >
           Bu işlem geri döndürülemez. Lütfen dikkatli olun.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "Bu toplantıyı iptal et"
+        heading: "Sadece bu toplantı mı iptal edilsin?"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
+          Şablonda yer almayan tüm toplantı bilgileri kaybolacaktır. Devam etmek istiyor musunuz?
         confirm_button: "Bu etklinliği iptal et"
     blankslate:
       title: "Gösterilecek toplantı yok"
@@ -261,10 +261,10 @@ tr:
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
       x_daily:
-        one: "Every day"
+        one: "Her gün"
         other: "Every %{count} days"
       x_weekly:
-        one: "Every week"
+        one: "Her hafta"
         other: "Every %{count} weeks"
       every_weekday: "Every %{day_of_the_week}"
       working_days: "Her iş günü"
@@ -272,7 +272,7 @@ tr:
       never: "hiçbir zaman"
       specific_date: "belirli bir tarihten sonra"
       iterations: "birkaç terkrardan sonra"
-    starts: "Starts"
+    starts: "Başlangıçlar"
     in_words:
       daily_interval: "Her %{interval} günde"
       working_days: "Her iş günü"

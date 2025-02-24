@@ -12,7 +12,7 @@ ru:
       storages/project_storage:
         storage: Хранилище
       storages/storage:
-        authentication_method: Authentication Method
+        authentication_method: Метод аутентификации
         creator: Создатель
         drive: ID диска
         host: Хост
@@ -275,7 +275,7 @@ ru:
         application_link_text: Приложение «Интеграция OpenProject»
         integration: Администрирование Nextcloud / OpenProject
         nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        nextcloud_audience_placeholder: e.g. nextcloud
+        nextcloud_audience_placeholder: например, nextcloud
         oauth_configuration: Скопируйте эти значения из %{application_link_text}.
         provider_configuration: Пожалуйста, убедитесь, что у вас есть права администрирования в копии Nextcloud, и перед установкой настроен %{application_link_text}.
       no_specific_folder: По умолчанию каждый пользователь при загрузке файла начинает работу со своей собственной домашней папки.

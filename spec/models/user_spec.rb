@@ -47,8 +47,9 @@ RSpec.describe User do
           status:)
   end
 
-  describe "associations" do
+  describe "Associations" do
     it { is_expected.to have_many(:comments).with_foreign_key("author_id").dependent(:destroy).inverse_of(:author) }
+    it { is_expected.to have_many(:emoji_reactions).dependent(:destroy) }
   end
 
   describe "with long but allowed attributes" do

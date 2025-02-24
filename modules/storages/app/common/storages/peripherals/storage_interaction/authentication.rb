@@ -59,7 +59,7 @@ module Storages
         # - :failed_authorization If a user token is available, which is invalid and not refreshable
         # - :error If an unexpected error occurred
         def self.authorization_state(storage:, user:)
-          auth_strategy = AuthenticationStrategies::OAuthUserToken.strategy.with_user(user)
+          auth_strategy = Registry.resolve("#{storage}.authentication.user_bound").call(user:, storage:)
 
           Registry
             .resolve("#{storage}.queries.user")
