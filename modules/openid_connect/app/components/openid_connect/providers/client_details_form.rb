@@ -53,7 +53,6 @@ module OpenIDConnect
         f.text_field(
           name: :scope,
           label: I18n.t("activemodel.attributes.openid_connect/provider.scope"),
-          placeholder: "openid email profile",
           caption: link_translate(
             "openid_connect.instructions.scope",
             links: {

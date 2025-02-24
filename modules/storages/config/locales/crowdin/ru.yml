@@ -3,9 +3,16 @@ ru:
     attributes:
       storages/file_link:
         origin_id: ID оригинала
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+        nextcloud_audience: Nextcloud Audience
       storages/project_storage:
         storage: Хранилище
       storages/storage:
+        authentication_method: Метод аутентификации
         creator: Создатель
         drive: ID диска
         host: Хост
@@ -202,6 +209,9 @@ ru:
       access_management_section: Доступ и папки проекта
       automatically_managed_folders: Автоматически управляемые папки
       general_information: Информация общего характера
+      nextcloud_audience: Nextcloud Audience
+      nextcloud_audience_blank: No audience has been configured
+      nextcloud_audience_description: Using audience %{audience}
       nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: Конфигурация OAuth
       one_drive_oauth: Azure OAuth
@@ -222,7 +232,7 @@ ru:
         host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
         missing_dependencies: 'Для файлового хранилища отсутствует необходимая зависимость. Пожалуйста, добавьте следующую зависимость: %{dependency}.'
         not_configured: Соединение не удалось подтвердить. Пожалуйста, сначала завершите настройку.
-        oidc_audience_missing: У хранилища не определена аудитория. Это необходимо для интеграции OpenID Connect.
+        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect. Пожалуйста, повторите проверку пользователя.
         placeholder: Проверьте подключение к серверу.
@@ -253,6 +263,7 @@ ru:
       project_folder_bulk: Папка проекта - это папка по умолчанию для загрузки файлов для всех выбранных проектов. Вы можете изменить этот параметр в настройках каждого проекта. Тем не менее, пользователи могут загружать файлы в другие места.
     instructions:
       all_available_storages_already_added: Все доступные хранилища уже добавлены в проект.
+      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
       automatic_folder: Это автоматически создаст корневую папку для этого проекта и будет управлять правами доступа для каждого участника проекта.
       empty_project_folder_validation: Выбор папки является обязательным для продолжения.
       existing_manual_folder: Вы можете назначить существующую папку в качестве корневой папки для этого проекта. Однако разрешения не управляются автоматически, администратору необходимо вручную обеспечить доступ соответствующим пользователям. Выбранная папка может использоваться несколькими проектами.
@@ -263,6 +274,8 @@ ru:
       nextcloud:
         application_link_text: Приложение «Интеграция OpenProject»
         integration: Администрирование Nextcloud / OpenProject
+        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        nextcloud_audience_placeholder: например, nextcloud
         oauth_configuration: Скопируйте эти значения из %{application_link_text}.
         provider_configuration: Пожалуйста, убедитесь, что у вас есть права администрирования в копии Nextcloud, и перед установкой настроен %{application_link_text}.
       no_specific_folder: По умолчанию каждый пользователь при загрузке файла начинает работу со своей собственной домашней папки.
@@ -295,6 +308,7 @@ ru:
     label_creation_time: Время создания
     label_creator: Создатель
     label_delete_storage: Удалить хранилище
+    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Редактировать управление доступом к хранилищу
     label_edit_storage_automatically_managed_folders: Редактирование хранилища автоматически управляемых папок
     label_edit_storage_host: Изменить узел хранения

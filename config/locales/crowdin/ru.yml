@@ -27,7 +27,7 @@ ru:
     work_packages:
       activity_tab:
         no_results_title_text: Нет деятельности для отображения
-        no_results_description_text: "Выберите \"Показать всё\" для отображения всей деятельности и комментариев"
+        no_results_description_text: 'Выберите "Показать всё" для отображения всей деятельности и комментариев'
         label_activity_show_all: "Показать всё"
         label_activity_show_only_comments: "Показать только комментарии"
         label_activity_show_only_changes: "Показать только изменения"
@@ -347,7 +347,7 @@ ru:
         title: "Удалить список проектов"
         text: "Это действие не приведет к удалению ни одного проекта, содержащегося в списке. Вы уверены, что хотите удалить этот список проектов?"
     settings:
-      change_identifier: Идентификатор изменений
+      change_identifier: Изменить идентификатор
       actions:
         label_enable_all: "Включить всё"
         label_disable_all: "Выключить всё"
@@ -631,13 +631,13 @@ ru:
           label: "Шаблон темы"
           caption: "Поиск атрибута или добавление текста. Чтобы создать пробел между элементами, добавьте его в виде текста."
       export_configuration:
-        tab: "Generate PDF"
+        tab: "Создать PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
         pdf_export_templates:
-          label: "PDF Export templates"
+          label: "Шаблоны экспорта в PDF"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "Включить всё"
+            label_disable_all: "Выключить всё"
   versions:
     overview:
       work_packages_in_archived_projects: "Эта версия используется совместно с архивными проектами, в которых все еще есть рабочие пакеты, назначенные на эту версию. Они учитываются, но не отображаются в связанных представлениях."
@@ -882,7 +882,7 @@ ru:
           true: "Разархивирован"
           false: "Архивирован"
         identifier: "Идентификатор"
-        latest_activity_at: "Последняя активность"
+        latest_activity_at: "Последние действия"
         parent: "Подпроект"
         public_value:
           title: "Видимость"
@@ -1309,7 +1309,7 @@ ru:
             id:
               format: "%{message}"
               cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              blank: "ID не может быть пустым."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -2085,23 +2085,23 @@ ru:
   pdf_generator:
     page_nr_footer: "Страница %{page} из %{total}"
     template_attributes:
-      label: "Attributes and description"
-      caption: All the attributes present in the current form configuration using the default template.
+      label: "Атрибуты и описание"
+      caption: Все атрибуты, представленные в текущей форме настроек, используют шаблон по умолчанию.
     template_contract:
-      label: "Contract"
-      caption: Work package details formatted to the standard German contract form.
+      label: "Договор"
+      caption: Подробности пакета работ отформатированы в стандартной договорной форме Германии.
     dialog:
       title: Создать PDF
-      submit: Download
+      submit: Скачать
       templates:
-        label: "Template"
-        none_enabled: "No template has been enabled for this work package type"
+        label: "Шаблон"
+        none_enabled: "Для этого типа пакета работ не был определен шаблон"
       footer_center:
-        label: Footer text
-        caption: This text will appear on every page at the center of the footer.
+        label: Текст нижнего колонтитула
+        caption: Этот текст появится на каждой странице в центре нижнего колонтитула.
       footer_right:
-        label: Footer text
-        caption: This text will appear on every page at the right of the footer.
+        label: Текст нижнего колонтитула
+        caption: Этот текст появится на каждой странице с правой стороны нижнего колонтитула.
       hyphenation:
         label: Расстановка переносов
         caption: Break line between words for better layout and justification.
@@ -2432,6 +2432,7 @@ ru:
   label_missing_or_hidden_custom_option: "(отсутствует значение или недостаточно прав для доступа)"
   label_descending: "По убыванию"
   label_details: "Детали"
+  label_defaults: "По умолчанию"
   label_development_roadmap: "Дорожная карта разработки"
   label_diff: "отличия"
   label_diff_inline: "Встроенный"
@@ -3527,7 +3528,7 @@ ru:
   setting_disable_password_login: "Отключить аутентификацию по паролю"
   setting_diff_max_lines_displayed: "Максимальное количество отображаемых строк diff(разницы)"
   setting_omniauth_direct_login_provider: "Прямая аутентификация у провайдера SSO"
-  setting_display_subprojects_work_packages: "Отображать пакеты работ подпроектов в основном проекте по-умолчанию"
+  setting_display_subprojects_work_packages: "Отображать пакеты работ подпроектов в основном проекте по умолчанию"
   setting_duration_format: "Формат длительности"
   setting_duration_format_hours_only: "Только часы"
   setting_duration_format_days_and_hours: "Дни и часы"

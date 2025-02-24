@@ -59,6 +59,7 @@ uk:
         start_time: "Час початку"
         start_time_hour: "Час початку"
         end_after: "Серія нарад завершується"
+        end_date: "End date"
         iterations: "Повторення"
     errors:
       messages:

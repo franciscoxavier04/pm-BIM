@@ -3,9 +3,16 @@ kk:
     attributes:
       storages/file_link:
         origin_id: Origin Id
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+        nextcloud_audience: Nextcloud Audience
       storages/project_storage:
         storage: Storage
       storages/storage:
+        authentication_method: Authentication Method
         creator: Creator
         drive: Drive ID
         host: Host
@@ -202,6 +209,9 @@ kk:
       access_management_section: Access and project folders
       automatically_managed_folders: Automatically managed folders
       general_information: General information
+      nextcloud_audience: Nextcloud Audience
+      nextcloud_audience_blank: No audience has been configured
+      nextcloud_audience_description: Using audience %{audience}
       nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
@@ -222,7 +232,7 @@ kk:
         host_not_found: No Nextcloud server found at the configured host url. Please check the configuration.
         missing_dependencies: 'A required dependency is missing on the file storage. Please add the following dependency: %{dependency}.'
         not_configured: The connection could not be validated. Please finish configuration first.
-        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Check your connection against the server.
@@ -253,6 +263,7 @@ kk:
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.
     instructions:
       all_available_storages_already_added: All available storages are already added to the project.
+      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
       automatic_folder: This will automatically create a root folder for this project and manage the access permissions for each project member.
       empty_project_folder_validation: Selecting a folder is mandatory to proceed.
       existing_manual_folder: You can designate an existing folder as the root folder for this project. The permissions are however not automatically managed, the administrator needs to manually ensure relevant users have access. The selected folder can be used by multiple projects.
@@ -263,6 +274,8 @@ kk:
       nextcloud:
         application_link_text: application “Integration OpenProject”
         integration: Nextcloud Administration / OpenProject
+        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: Copy these values from %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
       no_specific_folder: By default, each user will start at their own home folder when they upload a file.
@@ -295,6 +308,7 @@ kk:
     label_creation_time: Creation time
     label_creator: Creator
     label_delete_storage: Delete storage
+    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Edit storage access management
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host

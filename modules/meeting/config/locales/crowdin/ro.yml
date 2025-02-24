@@ -58,7 +58,8 @@ ro:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Meeting series ends"
-        iterations: "Occurrences"
+        end_date: "Dată sfârșit"
+        iterations: "Apariţii"
     errors:
       messages:
         invalid_time_format: "nu este o oră valabilă. Format necesar: HH:MM"

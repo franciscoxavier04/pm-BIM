@@ -75,6 +75,7 @@ RSpec.describe "Work Package cost fields", :js do
     # Set single value, should update suffix
     select "A", from: "cost_entry_cost_type_id"
     fill_in "cost_entry_units", with: "1"
+
     expect(page).to have_css("#cost_entry_unit_name", text: "A single")
     expect(page).to have_css("#cost_entry_costs", text: "1.00 EUR")
 

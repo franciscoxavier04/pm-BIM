@@ -57,6 +57,7 @@ es:
         start_time: "Hora de inicio"
         start_time_hour: "Hora de inicio"
         end_after: "Fin de la serie de reuniones"
+        end_date: "End date"
         iterations: "Repeticiones"
     errors:
       messages:

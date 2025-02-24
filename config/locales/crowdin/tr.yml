@@ -27,7 +27,7 @@ tr:
     work_packages:
       activity_tab:
         no_results_title_text: Görüntülenecek etkinlik yok
-        no_results_description_text: "Tüm etkinlik ve yorumları göstermek için \"Her şeyi göster \"i seçin"
+        no_results_description_text: 'Tüm etkinlik ve yorumları göstermek için "Her şeyi göster "i seçin'
         label_activity_show_all: "Her şeyi göster"
         label_activity_show_only_comments: "Sadece yorumları göster"
         label_activity_show_only_changes: "Yalnızca değişiklikleri göster"
@@ -411,7 +411,7 @@ tr:
     unpublish:
       success: "Liste gizli hale getirildi"
       failure: "The list cannot be made private: %{errors}"
-    can_be_saved: "List modified:"
+    can_be_saved: "Liste değiştirildi:"
     can_be_saved_as: "The modifications can only be saved in a new list:"
   members:
     index:
@@ -1291,8 +1291,8 @@ tr:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              cannot_add_child_because_of_lack_of_permission: "Seçili iş paketini düzenleme izniniz olmadığı için alt eklenemiyor."
+              blank: "Kimlik boş olamaz."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -2357,6 +2357,7 @@ tr:
   label_missing_or_hidden_custom_option: "(eksik değer veya erişim izinleri eksik)"
   label_descending: "Azalan"
   label_details: "Detaylar"
+  label_defaults: "Defaults"
   label_development_roadmap: "Geliştirme yol haritası"
   label_diff: "fark"
   label_diff_inline: "satır içi"

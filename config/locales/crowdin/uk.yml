@@ -27,7 +27,7 @@ uk:
     work_packages:
       activity_tab:
         no_results_title_text: Немає дій
-        no_results_description_text: "Виберіть \"Показати все\", щоб показати всі дії і коментарі"
+        no_results_description_text: 'Виберіть "Показати все", щоб показати всі дії і коментарі'
         label_activity_show_all: "Показати все"
         label_activity_show_only_comments: "Показувати лише коментарі"
         label_activity_show_only_changes: "Показувати лише зміни"
@@ -2429,6 +2429,7 @@ uk:
   label_missing_or_hidden_custom_option: "(відсутнє значення або бракує дозволів для доступу)"
   label_descending: "За спаданням"
   label_details: "Детальніше"
+  label_defaults: "Defaults"
   label_development_roadmap: "Розробка дорожньої карти"
   label_diff: "різниця"
   label_diff_inline: "підключений"

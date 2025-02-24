@@ -27,7 +27,7 @@ fr:
     work_packages:
       activity_tab:
         no_results_title_text: Aucune activité à afficher
-        no_results_description_text: "Choisissez « Tout afficher » pour afficher toutes les activités et tous les commentaires"
+        no_results_description_text: 'Choisissez « Tout afficher » pour afficher toutes les activités et tous les commentaires'
         label_activity_show_all: "Tout afficher"
         label_activity_show_only_comments: "Afficher uniquement les commentaires"
         label_activity_show_only_changes: "Afficher uniquement les modifications"
@@ -2356,6 +2356,7 @@ fr:
   label_missing_or_hidden_custom_option: "(valeur manquante ou manque d'autorisations d'accès)"
   label_descending: "Décroissant"
   label_details: "Détails"
+  label_defaults: "Defaults"
   label_development_roadmap: "Feuille de route de développement"
   label_diff: "diff"
   label_diff_inline: "en ligne"

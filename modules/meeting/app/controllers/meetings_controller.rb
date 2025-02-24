@@ -403,7 +403,8 @@ class MeetingsController < ApplicationController
   def build_meeting
     meeting = meeting_class.new
 
-    call = ::Meetings::SetAttributesService
+    service = meeting.is_a?(RecurringMeeting) ? ::RecurringMeetings::SetAttributesService : ::Meetings::SetAttributesService
+    call = service
       .new(user: current_user, model: meeting, contract_class: EmptyContract)
       .call(project: @project)
 

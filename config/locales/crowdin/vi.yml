@@ -27,7 +27,7 @@ vi:
     work_packages:
       activity_tab:
         no_results_title_text: Không hiện hoạt động nào
-        no_results_description_text: "Chọn \"Hiện mọi thứ\" để hiện tất cả các hoạt động và bình luận"
+        no_results_description_text: 'Chọn "Hiện mọi thứ" để hiện tất cả các hoạt động và bình luận'
         label_activity_show_all: "Hiện mọi thứ"
         label_activity_show_only_comments: "Chỉ hiện bình luận"
         label_activity_show_only_changes: "Chỉ hiện thay đổi"
@@ -2320,6 +2320,7 @@ vi:
   label_missing_or_hidden_custom_option: "(giá trị thiếu hoặc không có quyền truy cập)"
   label_descending: "Giảm dần"
   label_details: "Chi tiết"
+  label_defaults: "Defaults"
   label_development_roadmap: "Lộ trình phát triển"
   label_diff: "sự khác nhau"
   label_diff_inline: "nội tuyến"

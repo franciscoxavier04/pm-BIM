@@ -53,10 +53,11 @@ de:
       recurring_meeting:
         frequency: "Häufigkeit"
         interval: "Intervall"
-        start_date: "Started am"
+        start_date: "Startet am"
         start_time: "Startdatum"
         start_time_hour: "Uhrzeit"
         end_after: "Ende der Terminserie"
+        end_date: "End date"
         iterations: "Ereignisse"
     errors:
       messages:

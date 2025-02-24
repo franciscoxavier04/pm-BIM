@@ -57,6 +57,7 @@ pt-BR:
         start_time: "Hora de início"
         start_time_hour: "Hora de início"
         end_after: "Série de reuniões termina"
+        end_date: "End date"
         iterations: "Ocorrências"
     errors:
       messages:

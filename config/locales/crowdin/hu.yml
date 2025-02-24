@@ -27,7 +27,7 @@ hu:
     work_packages:
       activity_tab:
         no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
+        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
         label_activity_show_all: "Show everything"
         label_activity_show_only_comments: "Show comments only"
         label_activity_show_only_changes: "Show changes only"
@@ -2357,6 +2357,7 @@ hu:
   label_missing_or_hidden_custom_option: "(hiányzó érték vagy a hozzáférési jogosultságok hiánya)\n"
   label_descending: "Csökkenő"
   label_details: "Részletek"
+  label_defaults: "Defaults"
   label_development_roadmap: "Fejlesztési ütemterv"
   label_diff: "különbség"
   label_diff_inline: "beágyazott"

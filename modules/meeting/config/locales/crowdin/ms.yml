@@ -56,6 +56,7 @@ ms:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Meeting series ends"
+        end_date: "End date"
         iterations: "Kejadian"
     errors:
       messages:

@@ -3,9 +3,16 @@ ms:
     attributes:
       storages/file_link:
         origin_id: ID Asal
+      storages/nextcloud_storage:
+        authentication_methods:
+          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+        nextcloud_audience: Nextcloud Audience
       storages/project_storage:
         storage: Penyimpanan
       storages/storage:
+        authentication_method: Authentication Method
         creator: Pencipta
         drive: ID Pemacu
         host: Hos
@@ -202,6 +209,9 @@ ms:
       access_management_section: Access and project folders
       automatically_managed_folders: Folder yang dikendalikan secara automatik
       general_information: Maklumat umum
+      nextcloud_audience: Nextcloud Audience
+      nextcloud_audience_blank: No audience has been configured
+      nextcloud_audience_description: Using audience %{audience}
       nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth configuration
       one_drive_oauth: OAuth Azure
@@ -222,7 +232,7 @@ ms:
         host_not_found: Tiada pelayan Nextcloud ditemui pada url hos yang dikonfigurasikan. Sila semak konfigurasi.
         missing_dependencies: 'Kebergantungan yang diperlukan tiada pada storan fail. Sila tambahkan kebergantungan berikut: %{dependency}.'
         not_configured: Sambungan tidak dapat disahkan. Sila selesaikan konfigurasi dahulu.
-        oidc_audience_missing: The storage has no audience defined. This is necessary for OpenID Connect integration.
+        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Semak sambungan anda terhadap pelayan.
@@ -253,6 +263,7 @@ ms:
       project_folder_bulk: Folder projek ialah folder lalai untuk muat naik fail untuk semua projek yang dipilih. Anda boleh mengubah suai ini secara individu dalam setiap tetapan projek. Pengguna masih boleh memuat naik fail ke lokasi lain.
     instructions:
       all_available_storages_already_added: Semua storan yang tersedia sudah ditambah ke projek ini.
+      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
       automatic_folder: Ini akan mencipta folder pangkal untuk projek ini dan kendalikan akses kebenaran kepada setiap ahli projek secara automatik.
       empty_project_folder_validation: Memilih folder ialah wajib untuk meneruskan.
       existing_manual_folder: Anda boleh menetapkan folder sedia ada sebagai folder pangkal bagi projek ini. Walau bagaimanapun, kebenarannya bukan dikendalikan secara automatik, ia perlukan pentadbir untuk pastikan pengguna yang berkaitan mempunyai akses secara manual. Folder yang dipilih boleh digunakan oleh pelbagai projek.
@@ -263,6 +274,8 @@ ms:
       nextcloud:
         application_link_text: aplikasi "Intergrasi OpenProject"
         integration: Pentadbiran Nextcloud / OpenProject
+        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: Salin nilai-nilai ini daripada %{application_link_text}.
         provider_configuration: 'Sila pastikan anda mempunyai hak keistimewaan pentadbir di, contohnya, Nextcloud, dan mempunyai aplikasi berikut dipasang sebelum membuat penyediaan: %{application_link_text}'
       no_specific_folder: Secara default, setiap pengguna akan bermula di folder utama mereka apabila ingin memuat naik fail.
@@ -295,6 +308,7 @@ ms:
     label_creation_time: Masa penciptaan
     label_creator: Pencipta
     label_delete_storage: Padamkan storan
+    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Edit pengurusan akses storan
     label_edit_storage_automatically_managed_folders: Edit storan folder yang dikendalikan secara automatik
     label_edit_storage_host: Edit hos storan
