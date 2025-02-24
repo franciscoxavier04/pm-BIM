@@ -48,7 +48,7 @@ module WorkPackages
           end
 
           call.on_failure do
-            @default_tab = "subject_configuration"
+            params[:tab] = "subject_configuration"
             render template: "types/edit", status: :unprocessable_entity
           end
         end
