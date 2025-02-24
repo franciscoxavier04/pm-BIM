@@ -2,11 +2,14 @@
 en:
   activerecord:
     attributes:
+      oauth_client:
+        client_id: Client ID
+        client_secret: Client secret
+      project:
+        project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
         storage: Storage
-      project:
-        project_folder_type: Project folder type
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -26,9 +29,6 @@ en:
         name: Name
         provider_type: Provider type
         tenant: Directory (tenant) ID
-      oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
     errors:
       messages:
         invalid_host_url: is not a valid URL.
@@ -410,7 +410,7 @@ en:
         name: OneDrive/SharePoint
         name_placeholder: e.g. OneDrive
     show_attachments_toggle:
-      description: 'Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.'
+      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Show attachments in the work packages files tab
     storage_list_blank_slate:
       description: Add a storage to see them here.
