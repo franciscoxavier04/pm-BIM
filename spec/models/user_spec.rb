@@ -47,6 +47,10 @@ RSpec.describe User do
           status:)
   end
 
+  describe "Associations" do
+    it { is_expected.to have_many(:emoji_reactions).dependent(:destroy) }
+  end
+
   describe "with long but allowed attributes" do
     it "is valid" do
       user.firstname = "a" * 256
