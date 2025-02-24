@@ -256,6 +256,15 @@ module Components
         find_row(relatable)
       end
 
+      def expect_closest_relation(relatable)
+        actual_relatable = find_relatable(relatable)
+        relation_row = find_row(actual_relatable)
+
+        within relation_row do
+          expect(it).to have_css(".Label", text: "Closest")
+        end
+      end
+
       def expect_ghost_relation(relatable)
         find_ghost_row(relatable)
       end

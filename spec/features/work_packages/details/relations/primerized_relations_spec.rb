@@ -148,7 +148,7 @@ RSpec.describe "Primerized work package relations tab",
 
       tabs.expect_counter("relations", 6)
 
-      relations_tab.expect_relation(relation_follows)
+      relations_tab.expect_closest_relation(relation_follows)
       relations_tab.expect_relation(relation_relates)
       relations_tab.expect_relation(relation_blocked)
 
