@@ -70,10 +70,8 @@ class MeetingOutcomesController < ApplicationController
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: @meeting_outcome, hide_notes: false, state: :show)
     else
-      # update_new_component_via_turbo_stream(
-      #   hidden: false, meeting_agenda_item: @meeting_agenda_item, type: @agenda_item_type
-      # )
       render_base_error_in_flash_message_via_turbo_stream(call.errors)
+      update_all_via_turbo_stream
     end
 
     respond_with_turbo_streams
@@ -82,12 +80,11 @@ class MeetingOutcomesController < ApplicationController
   def edit
     if @meeting_outcome.editable?
       @meeting_agenda_item = @meeting_outcome.meeting_agenda_item
-      # render_outcome_form_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item)
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: @meeting_outcome, hide_notes: false, state: :edit)
-      # else
-      # update_all_via_turbo_stream
-      # render_error_flash_message_via_turbo_stream(message: t("text_meeting_not_editable_anymore"))
+    else
+      render_error_flash_message_via_turbo_stream(message: t("text_meeting_not_editable_anymore"))
+      update_all_via_turbo_stream
     end
 
     respond_with_turbo_streams
@@ -113,9 +110,11 @@ class MeetingOutcomesController < ApplicationController
     if call.success?
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: call.result, hide_notes: false, state: :show)
-      update_all_via_turbo_stream
-      # else
+    else
+      render_base_error_in_flash_message_via_turbo_stream(call.errors)
     end
+
+    update_all_via_turbo_stream
 
     respond_with_turbo_streams
   end
@@ -129,9 +128,11 @@ class MeetingOutcomesController < ApplicationController
     if call.success?
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      hide_notes: true)
-      update_all_via_turbo_stream
-      # else
+    else
+      render_base_error_in_flash_message_via_turbo_stream(call.errors)
     end
+
+    update_all_via_turbo_stream
 
     respond_with_turbo_streams
   end

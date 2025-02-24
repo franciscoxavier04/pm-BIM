@@ -29,19 +29,39 @@
 #++
 
 module MeetingOutcomes
-  module ModifiableItem
+  module EditableItem
     extend ActiveSupport::Concern
 
-    # included do
-    #   validate :validate_modifiable
-    # end
-    #
-    # protected
-    #
-    # def validate_modifiable
-    #   unless model.modifiable?
-    #     errors.add :base, I18n.t(:text_agenda_item_not_editable_anymore)
-    #   end
-    # end
+    included do
+      validate :validate_editable, :validate_meeting_existence, :user_allowed_to_add
+    end
+
+    protected
+
+    def validate_editable
+      unless model.editable?
+        errors.add :base, I18n.t(:text_outcome_not_editable_anymore)
+      end
+    end
+
+    def validate_meeting_existence
+      return if model.meeting_agenda_item.meeting.nil?
+
+      unless visible?
+        errors.add :base, :does_not_exist
+      end
+    end
+
+    def user_allowed_to_add
+      unless user.allowed_in_project?(:create_meeting_minutes, model.meeting_agenda_item.project)
+        errors.add :base, :error_unauthorized
+      end
+    end
+
+    private
+
+    def visible?
+      @visible ||= model.meeting_agenda_item.meeting&.visible?(user)
+    end
   end
 end

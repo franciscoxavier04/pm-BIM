@@ -30,26 +30,5 @@
 
 module MeetingOutcomes
   class CreateContract < BaseContract
-    validate :user_allowed_to_add, :validate_meeting_existence
-
-    def user_allowed_to_add
-      return unless visible?
-
-      unless user.allowed_in_project?(:create_meeting_minutes, model.meeting_agenda_item.project)
-        errors.add :base, :error_unauthorized
-      end
-    end
-
-    def validate_meeting_existence
-      return if model.meeting_agenda_item.meeting.nil?
-
-      errors.add :base, :does_not_exist unless visible?
-    end
-
-    private
-
-    def visible?
-      @visible ||= model.meeting_agenda_item.meeting&.visible?(user)
-    end
   end
 end

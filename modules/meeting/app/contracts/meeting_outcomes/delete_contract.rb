@@ -30,7 +30,7 @@
 
 module MeetingOutcomes
   class DeleteContract < ::DeleteContract
-    include ModifiableItem
+    include EditableItem
 
     delete_permission -> {
       user.allowed_in_project?(:create_meeting_minutes, model.meeting_agenda_item.project)

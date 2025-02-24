@@ -30,12 +30,5 @@
 
 module MeetingOutcomes
   class UpdateContract < BaseContract
-    validate :user_allowed_to_edit
-
-    def user_allowed_to_edit
-      unless user.allowed_in_project?(:create_meeting_minutes, model.meeting_agenda_item.project)
-        errors.add :base, :error_unauthorized
-      end
-    end
   end
 end

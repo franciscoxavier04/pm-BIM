@@ -129,8 +129,12 @@ class Meeting < ApplicationRecord
     parts = Meeting
       .unscoped
       .where(id:)
-      .left_joins(:agenda_items, :sections)
-      .pick(MeetingAgendaItem.arel_table[:updated_at].maximum, MeetingSection.arel_table[:updated_at].maximum)
+      .left_joins(:agenda_items, :sections, agenda_items: :outcomes)
+      .pick(
+        MeetingAgendaItem.arel_table[:updated_at].maximum,
+        MeetingSection.arel_table[:updated_at].maximum,
+        MeetingOutcome.arel_table[:updated_at].maximum
+      )
 
     parts << lock_version
 
