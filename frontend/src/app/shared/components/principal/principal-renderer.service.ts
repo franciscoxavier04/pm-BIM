@@ -10,13 +10,13 @@ import { hrefFromPrincipal, PrincipalType, typeFromHref } from './principal-help
 export type AvatarSize = 'default'|'medium'|'mini';
 
 export interface HoverCardOptions {
+  isActivated:boolean,
   url?:string;
 }
 
 export interface AvatarOptions {
   hide:boolean;
   size:AvatarSize;
-  hoverCard?:HoverCardOptions;
 }
 
 export interface NameOptions {
@@ -40,6 +40,7 @@ export class PrincipalRendererService {
     maxCount = 2,
     name:NameOptions = { hide: false, link: false },
     avatar:AvatarOptions = { hide: false, size: 'medium' },
+    hoverCard:HoverCardOptions = { isActivated: true },
   ):void {
     const wrapper = document.createElement('div');
     const principals = document.createElement('div');
@@ -54,6 +55,7 @@ export class PrincipalRendererService {
       valueForDisplay,
       name,
       avatar,
+      hoverCard,
       false,
     );
 
@@ -70,6 +72,7 @@ export class PrincipalRendererService {
     users:(PrincipalLike|IPrincipal)[],
     name:NameOptions = { hide: false, link: false },
     avatar:AvatarOptions = { hide: false, size: 'default' },
+    hoverCard:HoverCardOptions = { isActivated: true },
     multiLine = false,
   ):void {
     for (let i = 0; i < users.length; i++) {
@@ -78,7 +81,7 @@ export class PrincipalRendererService {
         userElement.classList.add('op-principal--multi-line');
       }
 
-      this.render(userElement, users[i], name, avatar);
+      this.render(userElement, users[i], name, avatar, hoverCard);
 
       container.appendChild(userElement);
 
@@ -96,6 +99,7 @@ export class PrincipalRendererService {
     principal:PrincipalLike|IPrincipal,
     name:NameOptions = { hide: false, link: true },
     avatar:AvatarOptions = { hide: false, size: 'default' },
+    hoverCard:HoverCardOptions = { isActivated: true },
     title:string|null = null,
   ):void {
     if (!container.dataset.testSelector) {
@@ -105,13 +109,13 @@ export class PrincipalRendererService {
     const type = typeFromHref(hrefFromPrincipal(principal)) as PrincipalType;
 
     if (!avatar.hide) {
-      const el = this.renderAvatar(principal, avatar, type);
+      const el = this.renderAvatar(principal, avatar, hoverCard, type);
       container.appendChild(el);
     }
 
     if (!name.hide) {
       const el = this.renderName(principal, type, name.link, title || principal.name, name.classes);
-      this.setHoverCardAttributes(el, avatar, principal, type);
+      this.setHoverCardAttributes(el, hoverCard, principal, type);
       container.appendChild(el);
     }
   }
@@ -119,6 +123,7 @@ export class PrincipalRendererService {
   private renderAvatar(
     principal:PrincipalLike|IPrincipal,
     options:AvatarOptions,
+    hoverCard:HoverCardOptions,
     type:PrincipalType,
   ) {
     const userInitials = this.getInitials(principal.name);
@@ -135,7 +140,7 @@ export class PrincipalRendererService {
     fallback.title = principal.name;
     fallback.textContent = userInitials;
 
-    this.setHoverCardAttributes(fallback, options, principal, type);
+    this.setHoverCardAttributes(fallback, hoverCard, principal, type);
 
     if (type === 'placeholder_user' && colorMode !== colorModes.lightHighContrast) {
       fallback.style.color = colorCode;
@@ -146,7 +151,7 @@ export class PrincipalRendererService {
 
     // Image avatars are only supported for users
     if (type === 'user') {
-      this.renderUserAvatar(principal, fallback, options);
+      this.renderUserAvatar(principal, fallback, options, hoverCard);
     }
 
     return fallback;
@@ -156,6 +161,7 @@ export class PrincipalRendererService {
     principal:PrincipalLike|IPrincipal,
     fallback:HTMLElement,
     options:AvatarOptions,
+    hoverCard:HoverCardOptions,
   ):void {
     const url = this.userAvatarUrl(principal);
 
@@ -168,7 +174,7 @@ export class PrincipalRendererService {
     image.classList.add('op-avatar');
     image.classList.add(`op-avatar_${options.size}`);
 
-    this.setHoverCardAttributes(image, options, principal, 'user');
+    this.setHoverCardAttributes(image, hoverCard, principal, 'user');
 
     image.src = url;
     image.title = principal.name;
@@ -247,26 +253,28 @@ export class PrincipalRendererService {
     return [first, last].join('');
   }
 
-  private setHoverCardAttributes(element:HTMLElement, options:AvatarOptions, principal:PrincipalLike|IPrincipal, type:PrincipalType):void {
+  private setHoverCardAttributes(element:HTMLElement, options:HoverCardOptions, principal:PrincipalLike|IPrincipal, type:PrincipalType):void {
     // Only actual users provide a hover card with additional info
     if (type !== 'user') {
       return;
     }
 
-    const hoverCard = options.hoverCard || {};
+    if (!options.isActivated) {
+      return;
+    }
 
-    if (!hoverCard?.url) {
+    if (!options?.url) {
       // In some cases, there is no URL given although a hover card is expected. For example when the principle
       // is rendered from an angular template. We try to infer the URL here.
       const url = this.userHoverCardUrl(principal);
       if (url) {
-        hoverCard.url = url;
+        options.url = url;
       } else {
         return;
       }
     }
 
     element.setAttribute('data-hover-card-trigger-target', 'trigger');
-    element.setAttribute('data-hover-card-url', hoverCard.url);
+    element.setAttribute('data-hover-card-url', options.url);
   }
 }
