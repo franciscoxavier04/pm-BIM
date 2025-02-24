@@ -341,6 +341,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
 
       wp_page.update_attributes(subject: "A new subject") # rubocop:disable Rails/ActiveRecordAliases
+      wait_for_network_idle
       wp_page.expect_and_dismiss_toaster(message: "Successful update.")
 
       second_journal = work_package.journals.second
@@ -363,6 +364,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       # the journals will not be merged due to the time difference
 
       wp_page.update_attributes(subject: "A new subject!!!") # rubocop:disable Rails/ActiveRecordAliases
+      wait_for_network_idle
 
       third_journal = work_package.journals.third
 
