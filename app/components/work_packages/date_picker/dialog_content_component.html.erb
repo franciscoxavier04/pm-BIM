@@ -11,6 +11,9 @@
 
         collection.with_component(Primer::Alpha::Dialog::Body.new(classes: "wp-datepicker-dialog--body")) do
           render(Primer::Alpha::UnderlinePanels.new(label: I18n.t("work_packages.datepicker_modal.tabs.aria_label"),
+                                                    'aria-label': I18n.t("work_packages.datepicker_modal.tabs.aria_label"),
+                                                    'autofocus': true,
+                                                    'tabindex': '0',
                                                     classes: "wp-datepicker-dialog--UnderlineNav")) do |component|
             component.with_tab(selected: true, id: "wp-datepicker-dialog--content-tab--dates") do |tab|
               tab.with_text { I18n.t("work_packages.datepicker_modal.tabs.dates") }
@@ -19,7 +22,6 @@
                                                                           show_date_form: content_editable?,
                                                                           work_package:,
                                                                           schedule_manually:,
-                                                                          focused_field:,
                                                                           touched_field_map:))
               end
             end
