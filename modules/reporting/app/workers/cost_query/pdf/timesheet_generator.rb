@@ -77,12 +77,7 @@ class CostQuery::PDF::TimesheetGenerator
 
   def generate!
     render_doc
-    if wants_total_page_nrs?
-      @total_page_nr = pdf.page_count + @page_count
-      @page_count = 1
-      setup_page! # clear current pdf
-      render_doc
-    end
+    render_doc_again_with_total_page_nrs! if wants_total_page_nrs?
     pdf.render
   rescue StandardError => e
     Rails.logger.error "Failed to generate PDF export:  #{e.message}:\n#{e.backtrace.join("\n")}"
@@ -97,6 +92,13 @@ class CostQuery::PDF::TimesheetGenerator
     write_entries!
     write_headers!
     write_footers!
+  end
+
+  def render_doc_again_with_total_page_nrs!
+    @total_page_nr = pdf.page_count + @page_count
+    @page_count = 1
+    setup_page! # clear current pdf
+    render_doc
   end
 
   def write_entries!
