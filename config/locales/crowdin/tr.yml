@@ -411,7 +411,7 @@ tr:
     unpublish:
       success: "Liste gizli hale getirildi"
       failure: "The list cannot be made private: %{errors}"
-    can_be_saved: "List modified:"
+    can_be_saved: "Liste değiştirildi:"
     can_be_saved_as: "The modifications can only be saved in a new list:"
   members:
     index:
@@ -1291,8 +1291,8 @@ tr:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              cannot_add_child_because_of_lack_of_permission: "Seçili iş paketini düzenleme izniniz olmadığı için alt eklenemiyor."
+              blank: "Kimlik boş olamaz."
             assigned_to:
               format: "%{message}"
             done_ratio:
