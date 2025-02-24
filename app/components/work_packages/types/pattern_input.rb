@@ -31,6 +31,8 @@
 module WorkPackages
   module Types
     class PatternInput < Primer::Forms::BaseComponent
+      prepend Primer::OpenProject::Forms::WrappedInput
+
       delegate :name, to: :@input
 
       def initialize(input:, value:, suggestions:)
@@ -42,14 +44,14 @@ module WorkPackages
 
       def suggestions_for_stimulus
         @suggestions_for_stimulus ||= @suggestions
-          .transform_keys { |key| key.to_s.humanize }
-          .to_json
+                                        .transform_keys { |key| key.to_s.humanize }
+                                        .to_json
       end
 
       def suggestions_list_component
         @suggestions_list_component ||= Primer::Alpha::ActionList.new(
           role: :list,
-          classes: "mr-3",
+          mr: 5,
           "data-pattern-input-target": "suggestions"
         )
       end
