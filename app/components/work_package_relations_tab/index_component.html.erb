@@ -69,7 +69,8 @@
                 WorkPackageRelationsTab::RelationComponent.new(
                   work_package: work_package,
                   relation: relation,
-                  visibility: visibility
+                  visibility: visibility,
+                  closest: relation_group.closest_relation?(relation)
                 )
               )
             end

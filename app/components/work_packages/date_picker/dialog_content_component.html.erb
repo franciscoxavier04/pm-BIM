@@ -53,7 +53,8 @@
                               relation: (relation unless relation_group.children_type?),
                               visibility: :visible,
                               child: (relation if relation_group.children_type?),
-                              editable: false
+                              editable: false,
+                              closest: relation_group.closest_relation?(relation)
                             )
                           )
                         end
@@ -66,7 +67,8 @@
                               relation: (relation unless relation_group.children_type?),
                               visibility: :ghost,
                               child: (relation if relation_group.children_type?),
-                              editable: false
+                              editable: false,
+                              closest: relation_group.closest_relation?(relation)
                             )
                           )
                         end
