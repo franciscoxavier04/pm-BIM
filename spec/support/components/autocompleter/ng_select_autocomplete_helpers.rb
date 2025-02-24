@@ -35,7 +35,9 @@ module Components::Autocompleter
       retry_block do
         if results_selector
           results_selector = "#{results_selector} .ng-dropdown-panel" if results_selector == "body"
-          page.find(results_selector, wait: 5)
+          within_window(current_window) do
+            page.find(results_selector, wait: 5)
+          end
         else
           within(element) do
             page.find("ng-select .ng-dropdown-panel", wait: 5)

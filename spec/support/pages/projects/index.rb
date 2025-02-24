@@ -288,8 +288,8 @@ module Pages
 
         within(selected_filter) do
           find('[data-filter-autocomplete="true"]').click
-          visible_user_auto_completer_options
         end
+        visible_user_auto_completer_options
       end
 
       def select_filter(name, human_name)
