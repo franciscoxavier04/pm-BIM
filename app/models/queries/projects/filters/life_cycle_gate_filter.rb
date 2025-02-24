@@ -2,7 +2,7 @@
 
 # -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2010-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -28,31 +28,50 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filters::Base
+class Queries::Projects::Filters::LifeCycleGateFilter < Queries::Projects::Filters::Base
+  include Queries::Projects::Filters::DynamicallyFromLifeCycle
   include Queries::Projects::Filters::FilterOnLifeCycle
-  include Queries::Operators::DateRangeClauses
 
-  def human_name
-    I18n.t("project.filters.any_stage_or_gate")
+  class << self
+    def key
+      /\Alcsd_gate_(\d+)\z/
+    end
+
+    private
+
+    def name_for_step(stage)
+      "lcsd_gate_#{stage.id}"
+    end
+
+    def step_subclass
+      Project::GateDefinition
+    end
   end
 
+  def human_name
+    I18n.t("project.filters.life_cycle_gate", gate: life_cycle_step_definition.name)
+  end
+
+  private
+
   def on_date
-    stage_where_on(parsed_start)
-      .or(gate_where(parsed_end))
+    gate_where(parsed_end)
   end
 
   def on_today
-    stage_where_on(today)
-      .or(gate_where(today, today))
+    gate_where(today, today)
   end
 
   def between_date
-    stage_where_between(parsed_start, parsed_end)
-      .or(gate_where(parsed_start, parsed_end))
+    gate_where(parsed_start, parsed_end)
   end
 
   def this_week
-    stage_overlaps_this_week
-      .or(gate_where(beginning_of_week.to_date, end_of_week.to_date))
+    gate_where(beginning_of_week.to_date, end_of_week.to_date)
+  end
+
+  def life_cycle_scope_limit(scope)
+    super
+      .where(definition_id: life_cycle_step_definition.id)
   end
 end
