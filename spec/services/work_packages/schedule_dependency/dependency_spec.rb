@@ -40,7 +40,7 @@ RSpec.describe WorkPackages::ScheduleDependency::Dependency do
 
   create_shared_association_defaults_for_work_package_factory
 
-  shared_let(:work_package) { create(:work_package, subject: "moved") }
+  shared_let(:work_package, refind: true) { create(:work_package, subject: "moved") }
 
   let(:schedule_dependency) { WorkPackages::ScheduleDependency.new(work_package) }
 
@@ -97,7 +97,7 @@ RSpec.describe WorkPackages::ScheduleDependency::Dependency do
 
   describe "#dependent_ids" do
     context "when the work_package has a follower" do
-      let!(:follower) { create_follower_of(work_package) }
+      shared_let(:follower) { create_follower_of(work_package) }
 
       context "for dependency of the follower" do
         let(:work_package_used_in_dependency) { follower }
@@ -105,17 +105,37 @@ RSpec.describe WorkPackages::ScheduleDependency::Dependency do
         it "returns an array with the work package id" do
           expect(subject.dependent_ids).to eq([work_package.id])
         end
+
+        context "when the work package is deleted" do
+          before do
+            work_package.destroy
+          end
+
+          it "returns an empty array" do
+            expect(dependency_for(follower)).to be_nil
+          end
+        end
       end
     end
 
     context "when the work_package has a parent" do
-      let!(:parent) { create_parent_of(work_package) }
+      shared_let(:parent) { create_parent_of(work_package) }
 
       context "for dependency of the parent" do
         let(:work_package_used_in_dependency) { parent }
 
         it "returns an array with the work package id" do
           expect(subject.dependent_ids).to eq([work_package.id])
+        end
+
+        context "when the work package is deleted" do
+          before do
+            work_package.destroy
+          end
+
+          it "returns an empty array" do
+            expect(dependency_for(parent)).to be_nil
+          end
         end
       end
     end
@@ -193,8 +213,8 @@ RSpec.describe WorkPackages::ScheduleDependency::Dependency do
 
     context "with more complex relations" do
       context "when has two consecutive followers" do
-        let!(:follower) { create_follower_of(work_package) }
-        let!(:follower_follower) { create_follower_of(follower) }
+        shared_let(:follower) { create_follower_of(work_package) }
+        shared_let(:follower_follower) { create_follower_of(follower) }
 
         context "for dependency of the first follower" do
           let(:work_package_used_in_dependency) { follower }
@@ -209,6 +229,16 @@ RSpec.describe WorkPackages::ScheduleDependency::Dependency do
 
           it "returns an array with only the first follower id" do
             expect(subject.dependent_ids).to contain_exactly(follower.id)
+          end
+
+          context "when the first follower is deleted" do
+            before do
+              follower.destroy
+            end
+
+            it "returns an empty array" do
+              expect(dependency_for(follower_follower)).to be_nil
+            end
           end
         end
       end

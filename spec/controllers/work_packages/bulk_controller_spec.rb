@@ -57,6 +57,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
   shared_let(:role) do
     create(:project_role,
            permissions: %i[edit_work_packages
+                           delete_work_packages
                            view_work_packages
                            manage_subtasks
                            assign_versions
@@ -593,55 +594,53 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
   end
 
   describe "#destroy" do
-    let(:params) { { "ids" => "1", "to_do" => "blubs" } }
-    let(:service) { double("destroy wp service") }
-
-    before do
-      expect(controller).to receive(:find_work_packages) do
-        controller.instance_variable_set(:@work_packages, [stub_work_package])
+    def send_destroy_request
+      as_logged_in_user(user) do
+        delete :destroy, params:
       end
-
-      expect(controller).to receive(:authorize)
     end
 
     describe "with the cleanup being successful" do
-      before do
-        expect(stub_work_package).to receive(:reload).and_return(stub_work_package)
+      let(:params) { { "ids" => [work_package1.id, work_package2.id] } }
 
-        allow(WorkPackages::DeleteService)
-          .to receive(:new)
-          .with(user:, model: stub_work_package)
-          .and_return(service)
-
-        expect(service)
-          .to receive(:call)
-
-        expect(WorkPackage)
-          .to receive(:cleanup_associated_before_destructing_if_required)
-          .with([stub_work_package], user, params["to_do"]).and_return true
-
-        as_logged_in_user(user) do
-          delete :destroy, params:
-        end
-      end
-
-      it "redirects to the project" do
-        expect(response).to redirect_to(project_work_packages_path(stub_work_package.project))
+      it "deletes the work packages and redirects to the project" do
+        send_destroy_request
+        expect(WorkPackage.find_by(id: [work_package1.id, work_package2.id])).to be_nil
+        expect(response).to redirect_to(project_work_packages_path(work_package1.project))
       end
     end
 
-    describe "without the cleanup being successful" do
-      before do
-        expect(WorkPackage).to receive(:cleanup_associated_before_destructing_if_required).with([stub_work_package], user,
-                                                                                                params["to_do"]).and_return false
+    describe "with the cleanup being unsuccessful" do
+      let(:params) { { "ids" => [work_package1.id, work_package2.id], "to_do" => "blubs" } }
 
-        as_logged_in_user(user) do
-          delete :destroy, params:
-        end
+      before do
+        allow(WorkPackage).to receive(:cleanup_associated_before_destructing_if_required)
+                                .with([work_package1, work_package2], user, params["to_do"])
+                                .and_return false
       end
 
-      it "redirects to the project" do
+      it "does not delete the work packages and renders the destroy template" do
+        send_destroy_request
+        expect(WorkPackage.find_by(id: work_package1.id)).to be_present
+        expect(WorkPackage.find_by(id: work_package2.id)).to be_present
         expect(response).to render_template("destroy")
+      end
+    end
+
+    context "with work packages being related (parent, child, and successor)" do
+      let(:params) { { "ids" => [work_package1.id, work_package2.id, work_package3.id] } }
+
+      before do
+        work_package1.update(subject: "wp", schedule_manually: false)
+        work_package2.update(subject: "child of wp", parent: work_package1)
+        work_package3.update(subject: "successor of wp")
+        create(:follows_relation, predecessor: work_package1, successor: work_package3)
+      end
+
+      it "deletes them all without errors" do
+        send_destroy_request
+        expect(WorkPackage.count).to eq(0)
+        expect(response).to redirect_to(project_work_packages_path(work_package1.project))
       end
     end
   end

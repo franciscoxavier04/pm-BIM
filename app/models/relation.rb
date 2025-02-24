@@ -105,11 +105,17 @@ class Relation < ApplicationRecord
   scope :follows_with_lag,
         -> { follows.where("lag > 0") }
 
+  scope :of_predecessor,
+        ->(work_package) { where(to: work_package) }
+
   scope :of_successor,
         ->(work_package) { where(from: work_package) }
 
   scope :not_of_predecessor,
         ->(work_package) { where.not(to: work_package) }
+
+  scope :not_of_successor,
+        ->(work_package) { where.not(from: work_package) }
 
   validates :lag, numericality: {
     allow_nil: true,
