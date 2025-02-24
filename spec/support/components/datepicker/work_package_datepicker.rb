@@ -84,7 +84,7 @@ module Components
     def enable_start_date
       page.find_test_selector("wp-datepicker--show-start-date").click
       wait_for_network_idle
-      expect_start_date_highlighted
+      expect_start_highlighted
     end
 
     def enable_start_date_if_visible
@@ -96,7 +96,7 @@ module Components
     def enable_due_date
       page.find_test_selector("wp-datepicker--show-due-date").click
       wait_for_network_idle
-      expect_due_date_highlighted
+      expect_due_highlighted
     end
 
     def enable_due_date_if_visible
@@ -111,6 +111,10 @@ module Components
 
     def expect_due_highlighted
       expect(container).to have_css('[data-test-selector="op-datepicker-modal--due-date-field"][data-qa-highlighted]')
+    end
+
+    def expect_duration_highlighted
+      expect(container).to have_css('[data-test-selector="op-datepicker-modal--duration-field"][data-qa-highlighted]')
     end
 
     def duration_field
@@ -131,18 +135,6 @@ module Components
 
     def set_duration(value)
       set_field(duration_field, value)
-    end
-
-    def expect_start_date_highlighted
-      expect(container).to have_css('[data-test-selector="op-datepicker-modal--start-date-field"][data-qa-highlighted]')
-    end
-
-    def expect_due_date_highlighted
-      expect(container).to have_css('[data-test-selector="op-datepicker-modal--due-date-field"][data-qa-highlighted]')
-    end
-
-    def expect_duration_highlighted
-      expect(container).to have_css('[data-test-selector="op-datepicker-modal--duration-field"][data-qa-highlighted]')
     end
 
     def expect_start_date_error(expected_error)

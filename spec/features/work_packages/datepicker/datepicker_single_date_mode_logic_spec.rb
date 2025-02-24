@@ -1,0 +1,748 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
+require "spec_helper"
+require "support/edit_fields/edit_field"
+
+RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js, with_settings: { date_format: "%Y-%m-%d" } do
+  shared_let(:user) { create(:admin) }
+
+  shared_let(:type_bug) { create(:type_bug) }
+  shared_let(:project) { create(:project, types: [type_bug]) }
+
+  shared_let(:bug_wp) { create(:work_package, project:, type: type_bug) }
+
+  # assume sat+sun are non working days
+  shared_let(:week_days) { week_with_saturday_and_sunday_as_weekend }
+
+  let(:work_packages_page) { Pages::FullWorkPackage.new(work_package, project) }
+
+  let(:date_attribute) { :combinedDate }
+  let(:date_field) { work_packages_page.edit_field(date_attribute) }
+  let(:datepicker) { date_field.datepicker }
+
+  let(:current_user) { user }
+  let(:work_package) { bug_wp }
+
+  def save_and_reopen
+    date_field.save!
+    work_packages_page.expect_and_dismiss_toaster message: I18n.t("js.notice_successful_update")
+
+    date_field.activate!
+    date_field.expect_active!
+    # Wait for the datepicker to be initialized
+    datepicker.expect_visible
+  end
+
+  before do
+    Setting.available_languages << current_user.language
+    I18n.locale = current_user.language
+    work_package.update_columns(current_attributes)
+    login_as(current_user)
+
+    work_packages_page.visit!
+    work_packages_page.ensure_page_loaded
+    date_field.activate!
+    date_field.expect_active!
+    # Wait for the datepicker to be initialized
+    datepicker.expect_visible
+  end
+
+  describe "when adding a finish date to a new work package (scenario 1)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "sets the finish date and stays in single-date mode" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.expect_due_highlighted
+
+      datepicker.set_date "2025-02-14"
+
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration ""
+
+      datepicker.expect_due_highlighted
+    end
+  end
+
+  describe "when adding a start date to a new work package (scenario 2)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "sets the start date and switches to range mode" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.enable_start_date
+      datepicker.expect_start_highlighted
+
+      datepicker.set_date "2025-02-12"
+
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.expect_due_highlighted
+    end
+  end
+
+  describe "when modifying a single date" do
+    context "with the new start date in the past (scenario 3a)" do
+      let(:current_attributes) do
+        {
+          start_date: "2025-02-12",
+          due_date: nil,
+          duration: nil
+        }
+      end
+
+      it "sets the start date and stays in single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "", visible: false
+        datepicker.expect_duration ""
+
+        datepicker.expect_start_highlighted
+
+        datepicker.set_date "2025-02-03"
+
+        datepicker.expect_start_date "2025-02-03"
+        datepicker.expect_due_date "", visible: false
+        datepicker.expect_duration ""
+
+        datepicker.expect_start_highlighted
+      end
+    end
+
+    context "with the new finish date in the past (scenario 3b)" do
+      let(:current_attributes) do
+        {
+          start_date: nil,
+          due_date: "2025-02-14",
+          duration: nil
+        }
+      end
+
+      it "sets the finish date and stays in single-date mode" do
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration ""
+
+        datepicker.expect_due_highlighted
+
+        datepicker.set_date "2025-02-03"
+
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date "2025-02-03"
+        datepicker.expect_duration ""
+
+        datepicker.expect_due_highlighted
+      end
+    end
+
+    context "with the new start date in the future (scenario 4a)" do
+      let(:current_attributes) do
+        {
+          start_date: "2025-02-12",
+          due_date: nil,
+          duration: nil
+        }
+      end
+
+      it "sets the start date and stays in single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "", visible: false
+        datepicker.expect_duration ""
+
+        datepicker.expect_start_highlighted
+
+        datepicker.set_date "2025-02-26"
+
+        datepicker.expect_start_date "2025-02-26"
+        datepicker.expect_due_date "", visible: false
+        datepicker.expect_duration ""
+
+        datepicker.expect_start_highlighted
+      end
+    end
+
+    context "with the new finish date in the future (scenario 4b)" do
+      let(:current_attributes) do
+        {
+          start_date: nil,
+          due_date: "2025-02-14",
+          duration: nil
+        }
+      end
+
+      it "sets the finish date and stays in single-date mode" do
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration ""
+
+        datepicker.expect_due_highlighted
+
+        datepicker.set_date "2025-02-26"
+
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date "2025-02-26"
+        datepicker.expect_duration ""
+
+        datepicker.expect_due_highlighted
+      end
+    end
+  end
+
+  context "when clearing the finish date (scenario 5)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: "2025-02-14",
+        duration: nil
+      }
+    end
+
+    it "stays in single-date mode" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration ""
+
+      datepicker.expect_due_highlighted
+
+      datepicker.set_due_date ""
+
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.expect_due_highlighted
+    end
+  end
+
+  context "when clearing the start date (scenario 6)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "stays in single-date mode" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration ""
+
+      datepicker.expect_start_highlighted
+
+      datepicker.set_start_date ""
+
+      datepicker.expect_start_date ""
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration ""
+
+      datepicker.expect_start_highlighted
+    end
+  end
+
+  context "when a finish date is given and a start date is added (scenario 7)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: "2025-02-14",
+        duration: nil
+      }
+    end
+
+    it "switches to range mode and calculates a duration" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration ""
+
+      datepicker.enable_start_date
+      datepicker.expect_start_highlighted
+
+      datepicker.set_date "2025-02-12"
+
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration "3"
+
+      datepicker.expect_due_highlighted
+    end
+  end
+
+  context "when a finish date is given and a duration is added (scenario 8)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: "2025-02-14",
+        duration: nil
+      }
+    end
+
+    it "switches to range mode and calculates a start date" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration ""
+
+      datepicker.focus_duration
+      datepicker.set_duration 3
+
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration "3"
+
+      datepicker.expect_duration_highlighted
+    end
+  end
+
+  context "when a finish date is given at first, then deleted and a duration is added (scenario 9)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: "2025-02-14",
+        duration: nil
+      }
+    end
+
+    it "stays in single-date mode" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration ""
+
+      datepicker.set_due_date ""
+      datepicker.focus_duration
+      datepicker.set_duration 3
+
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration "3"
+
+      datepicker.expect_duration_highlighted
+    end
+  end
+
+  context "when a start date is given and a finish date is added (scenario 10)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "switches to range mode and calculates a duration" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration ""
+
+      datepicker.enable_due_date
+      datepicker.expect_due_highlighted
+
+      datepicker.set_date "2025-02-14"
+
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration "3"
+
+      datepicker.expect_start_highlighted
+    end
+  end
+
+  context "when a start date is given and a duration is added (scenario 11)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "switches to range mode and calculates a finish date" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration ""
+
+      datepicker.focus_duration
+      datepicker.set_duration 3
+
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration "3"
+
+      datepicker.expect_duration_highlighted
+    end
+  end
+
+  context "when a start date is given at first, then deleted and a duration is added (scenario 12)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "stays in single-date mode" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration ""
+
+      datepicker.set_start_date ""
+      datepicker.focus_duration
+      datepicker.set_duration 3
+
+      datepicker.expect_start_date ""
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration "3"
+
+      datepicker.expect_duration_highlighted
+    end
+  end
+
+  context "when start and finish date are given and the finish date is removed (scenario 13)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: "2025-02-14",
+        duration: "3"
+      }
+    end
+
+    it "stays in range mode and removes the duration" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration "3"
+
+      datepicker.set_due_date ""
+
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.expect_due_highlighted
+    end
+  end
+
+  context "when start and finish date are given and the start date is removed (scenario 14)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: "2025-02-14",
+        duration: "3"
+      }
+    end
+
+    it "stays in range mode and removes the duration" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration "3"
+
+      datepicker.set_start_date ""
+
+      datepicker.expect_start_date ""
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration ""
+
+      datepicker.expect_start_highlighted
+    end
+  end
+
+  context "when start and finish date are given and the duration is removed (scenario 15)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: "2025-02-14",
+        duration: "3"
+      }
+    end
+
+    it "stays in range mode and removes the finish date" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration "3"
+
+      datepicker.set_duration ""
+
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.expect_duration_highlighted
+    end
+  end
+
+  context "when only finish date is given, then removed, saved and re-opened (scenario 16)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: "2025-02-14",
+        duration: nil
+      }
+    end
+
+    it "stays in single-date mode and remains the field to hide" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration ""
+
+      datepicker.set_due_date ""
+
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      save_and_reopen
+
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.expect_due_highlighted
+    end
+  end
+
+  context "when only start date is given, then removed, saved and re-opened (scenario 17)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "stays in single-date mode but changes the field to hide" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration ""
+
+      datepicker.set_start_date ""
+
+      datepicker.expect_start_date ""
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration ""
+
+      save_and_reopen
+
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.expect_due_highlighted
+    end
+  end
+
+  context "when start and finish date are given" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: "2025-02-14",
+        duration: "3"
+      }
+    end
+
+    context "and duration is removed, saved and re-opened (scenario 18)" do
+      it "switches to single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_duration ""
+
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date ""
+        datepicker.expect_duration ""
+
+        save_and_reopen
+
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "", visible: false
+        datepicker.expect_duration ""
+
+        datepicker.expect_start_highlighted
+      end
+    end
+
+    context "and start date is removed, saved and re-opened (scenario 19)" do
+      it "switches to single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_start_date ""
+
+        datepicker.expect_start_date ""
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration ""
+
+        save_and_reopen
+
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration ""
+
+        datepicker.expect_due_highlighted
+      end
+    end
+
+    context "and finish date is removed, saved and re-opened (scenario 20)" do
+      it "switches to single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_due_date ""
+
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date ""
+        datepicker.expect_duration ""
+
+        save_and_reopen
+
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "", visible: false
+        datepicker.expect_duration ""
+
+        datepicker.expect_start_highlighted
+      end
+    end
+
+    context "and all dates are cleared, saved and re-opened (scenario 21a)" do
+      it "switches to single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_due_date ""
+        datepicker.set_start_date ""
+
+        datepicker.expect_start_date ""
+        datepicker.expect_due_date ""
+        datepicker.expect_duration ""
+
+        save_and_reopen
+
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date ""
+        datepicker.expect_duration ""
+
+        datepicker.expect_due_highlighted
+      end
+    end
+
+    context "and all dates are cleared in a different order, saved and re-opened (scenario 21b)" do
+      it "switches to single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_start_date ""
+        datepicker.set_due_date ""
+
+        datepicker.expect_start_date ""
+        datepicker.expect_due_date ""
+        datepicker.expect_duration ""
+
+        save_and_reopen
+
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date ""
+        datepicker.expect_duration ""
+
+        datepicker.expect_due_highlighted
+      end
+    end
+
+    context "and all dates are cleared and a duration is set, saved and re-opened (scenario 22a)" do
+      it "switches to single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_due_date ""
+        datepicker.set_start_date ""
+        datepicker.focus_duration
+        datepicker.set_duration "5"
+
+        datepicker.expect_start_date ""
+        datepicker.expect_due_date ""
+        datepicker.expect_duration "5"
+
+        save_and_reopen
+
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date ""
+        datepicker.expect_duration "5"
+
+        datepicker.expect_due_highlighted
+      end
+    end
+
+    context "and all dates are cleared in a different order and a duration is set, saved and re-opened (scenario 22b)" do
+      it "switches to single-date mode" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_start_date ""
+        datepicker.set_due_date ""
+        datepicker.focus_duration
+        datepicker.set_duration "5"
+
+        datepicker.expect_start_date ""
+        datepicker.expect_due_date ""
+        datepicker.expect_duration "5"
+
+        save_and_reopen
+
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date ""
+        datepicker.expect_duration "5"
+
+        datepicker.expect_due_highlighted
+      end
+    end
+  end
+end
