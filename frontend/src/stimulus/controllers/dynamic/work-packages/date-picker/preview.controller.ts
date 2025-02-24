@@ -404,8 +404,8 @@ export default class PreviewController extends DialogPreviewController {
     // This is a very special case in which only one date is set, and we want to
     // modify exactly that date again because it is highlighted. Then it does
     // not make sense to display a range as we are only changing one date.
-    if ((this.highlightedField?.name === 'work_package[start_date]' && this.currentStartDate && !this.currentDueDate)
-      || (this.highlightedField?.name === 'work_package[due_date]' && !this.currentStartDate && this.currentDueDate)) {
+    if ((this.highlightedField?.name === 'work_package[start_date]' && !this.currentDueDate)
+      || (this.highlightedField?.name === 'work_package[due_date]' && !this.currentStartDate)) {
       return 'single';
     }
 
