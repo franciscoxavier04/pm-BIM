@@ -59,6 +59,9 @@ nl:
       cost_type:
         one: "Soort kosten"
         other: "Soort kosten"
+      time_entry_activity:
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Tarief"
     errors:
       models:
@@ -80,6 +83,7 @@ nl:
   button_add_rate: "Tarief toevoegen"
   button_log_costs: "Registreer kost per eenheid"
   button_log_time: "Registreer"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Gereserveerd op project"
   caption_default: "Standaard"
   caption_default_rate_history_for: "Standaard tarief geschiedenis voor %{user}"
@@ -92,7 +96,11 @@ nl:
   caption_set_rate: "Stel huidige tarief in"
   caption_show_locked: "Toon vergrendelde types"
   caption_log_time_dialog: "Registreer tijd"
+  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Datum voor nieuw tarief"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
+  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "niet in een groep"
   label_between: "tussen"
   label_cost_filter_add: "Filter voor kosteninvoer toevoegen"
@@ -119,6 +127,8 @@ nl:
   label_kind: "Type"
   label_less_or_equal: "<="
   label_log_costs: "Registreer kost per eenheid"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Nee"
   label_option_plural: "Opties"
   label_overall_costs: "Totale kosten"
@@ -131,6 +141,10 @@ nl:
   label_until: "tot"
   label_valid_from: "Geldig vanaf"
   label_yes: "Ja"
+  label_time: "Time"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Eerst moet u een werkpakket selecteren
   notice_something_wrong: "Er is iets fout gegaan. Probeer het opnieuw."
   notice_successful_restore: "Herstel geslaagd."

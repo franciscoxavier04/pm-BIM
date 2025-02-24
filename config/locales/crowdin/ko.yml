@@ -27,7 +27,7 @@ ko:
     work_packages:
       activity_tab:
         no_results_title_text: 표시할 활동 없음
-        no_results_description_text: "모든 활동과 코멘트를 표시하려면 '모두 표시'를 선택합니다"
+        no_results_description_text: '모든 활동과 코멘트를 표시하려면 ''모두 표시''를 선택합니다'
         label_activity_show_all: "모두 표시"
         label_activity_show_only_comments: "코멘트만 표시"
         label_activity_show_only_changes: "변경 사항만 표시"
@@ -128,9 +128,9 @@ ko:
     sync_failed: "LDAP에서 동기화하지 못했습니다: %{message}."
     back_to_index: "연결 목록으로 돌아가려면 여기를 클릭하세요."
     technical_warning_html: |
-      이 LDAP 양식을 사용하려면 LDAP / Active Directory 설정에 대한 기술 지식이 필요합니다.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">자세한 지침은 설명서를 참조하세요</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: LDAP 연결의 임의 이름
       host: LDAP 호스트 이름 또는 IP 주소
@@ -138,9 +138,9 @@ ko:
       generic_map: OpenProject `%{attribute}` 특성에 매핑되는 LDAP의 특성 키
       admin_map_html: "선택 사항: <strong>있는 경우</strong> LDAP의 속성 키는 OpenProject 사용자를 관리자로 표시합니다. 확실하지 않은 경우 비워 두세요."
       system_user_dn_html: |
-        읽기 전용 액세스에 사용되는 시스템 사용자의 DN을 입력하세요.
-        <br/>
-        예: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: 시스템 사용자의 바인딩 암호 입력
       base_dn: |
         OpenProject가 사용자 및 그룹을 검색할 LDAP 하위 트리의 기본 DN을 입력하세요.
@@ -179,7 +179,7 @@ ko:
     tls_options:
       verify_peer: "SSL 인증서 확인"
       verify_peer_description_html: >
-        인증서 신뢰 체인의 엄격한 SSL 인증을 활성화합니다. <br/> <strong>경고:</strong> 이 옵션을 선택 취소하면 LDAP 서버 인증서의 SSL 인증이 비활성화됩니다. 이렇게 하면 사용자의 연결이 중간자 공격에 노출됩니다.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "LDAP 서버 인증서가 이 시스템의 신뢰 소스에 없으면 여기에서 수동으로 추가할 수 있습니다. PEM X509 인증서 문자열을 입력하세요."
   forums:
     show:
@@ -566,9 +566,10 @@ ko:
         패키지의 완료 %가 자동으로 이 값으로 설정됩니다.
         작업 기반 모드에서는 무시됩니다.
       status_readonly_html: |
-        이 상태를 읽기 전용으로 작업 패키지에 표시하려면 이 옵션을 선택합니다. 상태를 제외하고 특성은 변경할 수 없습니다.
-        <br/>
-        <strong>참고</strong>: 상속된 값(예: 자식 또는 관계)은 계속 적용됩니다.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: 작업 패키지 상태가 없습니다.
       no_results_content_text: 새 상태 추가
@@ -607,6 +608,14 @@ ko:
         pattern:
           label: "제목 패턴"
           caption: "특성을 검색하거나 텍스트를 추가하세요. 요소 사이에 공백을 넣으려면 텍스트로 추가하세요."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "해당 버전은 이 버전에 할당된 작업 패키지가 아직 있는 보관된 프로젝트와 공유됩니다. 이러한 버전은 카운트되지만, 링크된 보기에 나타나지는 않습니다."
@@ -1963,21 +1972,29 @@ ko:
       days: 일
   pdf_generator:
     page_nr_footer: "%{page}/%{total}페이지"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: PDF 생성
-      submit: 생성
-      header_right:
-        label: 머리글 오른쪽
-        caption: 머리글 오른쪽에 표시할 텍스트
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: 바닥글 가운데
-        caption: 바닥글 가운데에 표시할 텍스트
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: 하이픈 넣기
-        caption: 라인 사이 단어를 구분하여 텍스트 양쪽 맞춤과 가독성을 개선합니다.
-      paper_size:
-        label: 용지 크기
-        caption: PDF에 사용할 용지 크기입니다.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext 사용 가능(선택적)"
@@ -2303,6 +2320,7 @@ ko:
   label_missing_or_hidden_custom_option: "(값이 없거나 액세스 권한이 없음)"
   label_descending: "내림차순"
   label_details: "세부 정보"
+  label_defaults: "Defaults"
   label_development_roadmap: "개발 로드맵"
   label_diff: "차이"
   label_diff_inline: "인라인"
@@ -2803,7 +2821,7 @@ ko:
   label_global_role: "글로벌 역할"
   label_not_changeable: "(변경할 수 없음)"
   label_global: "글로벌"
-  label_seeded_from_env_warning: 이 레코드는 설정/환경 변수를 통해 생성되었습니다. UI를 통해 편집할 수 없습니다.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "매크로 %{macro_name} 실행 중에 오류 발생"
   macro_unavailable: "매크로 %{macro_name}은(는) 표시할 수 없습니다."
   macros:
@@ -3709,6 +3727,7 @@ ko:
   text_unallowed_characters: "허용되지 않는 문자"
   text_user_invited: 사용자가 초대되었으며 등록 보류 중입니다.
   text_user_wrote: "%{value}이(가) 작성함:"
+  text_wrote: "작성됨"
   text_warn_on_leaving_unsaved: "현재 페이지에는 저장되지 않은 텍스트가 있습니다. 이 페이지를 나가면 텍스트가 손실됩니다."
   text_what_did_you_change_click_to_add_comment: "무엇을 변경하셨습니까? 댓글을 추가하려면 클릭하세요."
   text_wiki_destroy_confirmation: "이 위키와 모든 해당 콘텐츠를 삭제하시겠습니까?"

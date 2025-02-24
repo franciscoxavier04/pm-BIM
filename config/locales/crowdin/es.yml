@@ -27,7 +27,7 @@ es:
     work_packages:
       activity_tab:
         no_results_title_text: No hay actividad que mostrar
-        no_results_description_text: "Elija «Mostrar todo» para mostrar toda la actividad y los comentarios"
+        no_results_description_text: 'Elija «Mostrar todo» para mostrar toda la actividad y los comentarios'
         label_activity_show_all: "Mostrar todo"
         label_activity_show_only_comments: "Mostrar solo los comentarios"
         label_activity_show_only_changes: "Mostrar solo los cambios"
@@ -128,8 +128,9 @@ es:
     sync_failed: "Error al sincronizar desde LDAP: %{message}."
     back_to_index: "Haga clic aquí para volver a la lista de conexión."
     technical_warning_html: |
-      Este formulario LDAP requiere conocimientos técnicos para la configuración de su  LDAP / Directorio Activo <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/"> Visite nuestra documentación para obtener instrucciones detalladas.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Nombre arbitrario de la conexión LDAP
       host: Nombre del host LDAP o dirección IP
@@ -137,9 +138,9 @@ es:
       generic_map: La clave de atributo en LDAP que está asignada al proyecto abierto `%{attribute}` atributo
       admin_map_html: "Opcional: la clave de atributo en LDAP que <strong> si esta presente </strong> marca al usuario del proyecto abierto como administrador. Deje en blanco cuando tenga dudas."
       system_user_dn_html: |
-        Ingrese el DN del usuario del sistema utilizado para acceso de solo lectura.
-        <br/>
-        Ejemplo: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Ingrese la contraseña de enlace del usuario del sistema
       base_dn: |
         Ingrese el DN base del subárbol en LDAP que desea que el proyecto abierto busque para usuarios y grupos.
@@ -176,7 +177,7 @@ es:
     tls_options:
       verify_peer: "Verificar certificado SSL"
       verify_peer_description_html: >
-        Permite la verificación estricta SSL de la cadena de confianza del certificado. <br/> <strong>Advertencia:</strong> Desmarcar esta opción desactiva la verificación SSL del certificado del servidor LDAP. Esto expone tu conexión a los ataques de intermediario.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Si el certificado de servidor LDAP no está en las fuentes de confianza de este sistema, puede añadirlo manualmente aquí. Introduzca una cadena de certificación PEM X509."
   forums:
     show:
@@ -571,10 +572,10 @@ es:
         se ajusta automáticamente a este valor cuando se selecciona este estado.
         Se ignora en el modo basado en el trabajo.
       status_readonly_html: |
-        Seleccione esta opción para marcar los paquetes de trabajo que tengan este estado como de solo lectura.
-        Excepto el estado, ningún otro atributo se puede modificar.
-        <br/>
-        <strong>Nota</strong>: Los valores heredados (por ejemplo, de elementos secundarios o relaciones) seguirán aplicándose.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Actualmente no hay estados de paquetes de trabajo.
       no_results_content_text: Añadir un nuevo estado
@@ -613,6 +614,14 @@ es:
         pattern:
           label: "Patrón del asunto"
           caption: "Busque un atributo o añada un texto. Para crear un espacio entre elementos, añádalo como texto."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "La versión se comparte con proyectos archivados que aún tienen paquetes de trabajo asignados a esta versión. Estos se contabilizan, pero no aparecerán en las vistas vinculadas."
@@ -1999,21 +2008,29 @@ es:
       days: d
   pdf_generator:
     page_nr_footer: "Página %{page} de %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generar PDF
-      submit: Generar
-      header_right:
-        label: A la derecha del encabezado
-        caption: Texto que debe aparecer a la derecha del encabezado
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Centro del pie de página
-        caption: Texto que debe aparecer en el centro del pie de página
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Separación silábica
-        caption: Separa las palabras entre líneas para mejorar la justificación y legibilidad del texto.
-      paper_size:
-        label: Tamaño del papel
-        caption: El tamaño del papel a utilizar para el PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext disponible (opcional)"
@@ -2339,6 +2356,7 @@ es:
   label_missing_or_hidden_custom_option: "(faltan valores o permisos de acceso)"
   label_descending: "Descendente"
   label_details: "Detalles"
+  label_defaults: "Defaults"
   label_development_roadmap: "Hoja de ruta de desarrollo"
   label_diff: "diff"
   label_diff_inline: "en línea"
@@ -2839,7 +2857,7 @@ es:
   label_global_role: "Rol global"
   label_not_changeable: "(no modificable)"
   label_global: "Global"
-  label_seeded_from_env_warning: Este registro se ha creado a través de un ajuste / variable de entorno. No es editable a través de la interfaz de usuario.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Error ejecutando el macro %{macro_name}"
   macro_unavailable: "Macro  %{macro_name} no puede ser mostrado."
   macros:
@@ -3749,6 +3767,7 @@ es:
   text_unallowed_characters: "Caracteres no permitidos"
   text_user_invited: El usuario ha sido invitado y esta a la espera del registro.
   text_user_wrote: "%{value} escribió:"
+  text_wrote: "escribió"
   text_warn_on_leaving_unsaved: "El paquete de trabajo contiene texto no guardado que se perderá en caso de abandonar esta página."
   text_what_did_you_change_click_to_add_comment: "¿Qué cambió? Haga clic para agregar un comentario"
   text_wiki_destroy_confirmation: "¿Está seguro que desea eliminar este wiki y todo su contenido?"

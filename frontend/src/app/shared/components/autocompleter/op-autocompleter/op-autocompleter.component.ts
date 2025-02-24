@@ -58,6 +58,8 @@ import {
   IOPAutocompleterOption,
   TOpAutocompleterResource,
 } from 'core-app/shared/components/autocompleter/op-autocompleter/typings';
+import { UserResource } from 'core-app/features/hal/resources/user-resource';
+import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
 
 export interface IAutocompleteItem {
   id:ID;
@@ -306,6 +308,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
     readonly vcRef:ViewContainerRef,
     readonly I18n:I18nService,
     readonly halResourceService:HalResourceService,
+    readonly pathHelperService:PathHelperService,
   ) {
     super();
   }
@@ -613,7 +616,31 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
     return null;
   }
 
-  protected defaultCompareWithFunction():(a:unknown, b:unknown) => boolean {
-    return (a, b) => a === b;
+  protected defaultCompareWithFunction():null|((a:unknown, b:unknown) => boolean) {
+    return (a, b) => {
+      if (this.bindValue && !_.isObject(b)) {
+        return (a as Record<string, unknown>)[this.bindValue] === b;
+      }
+
+      return a === b;
+    };
+  }
+
+  /**
+   * Attaches hover card event listeners by setting this attribute for users.
+   */
+  protected getHoverCardTriggerTarget(item:HalResource) {
+    return item instanceof UserResource ? 'trigger' : '';
+  }
+
+  /**
+   * Enables hover card data loading by setting this attribute for users.
+   */
+  protected getHoverCardUrl(item:HalResource) {
+    if (item instanceof UserResource && item.id) {
+      return this.pathHelperService.userHoverCardPath(item.id);
+    }
+
+    return '';
   }
 }

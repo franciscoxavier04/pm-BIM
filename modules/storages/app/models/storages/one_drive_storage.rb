@@ -65,6 +65,18 @@ module Storages
       end
     end
 
+    def audience
+      nil
+    end
+
+    def authenticate_via_idp?
+      false
+    end
+
+    def authenticate_via_storage?
+      true
+    end
+
     def oauth_configuration
       Peripherals::OAuthConfigurations::OneDriveConfiguration.new(self)
     end

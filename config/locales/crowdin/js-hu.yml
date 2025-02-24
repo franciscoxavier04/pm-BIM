@@ -103,7 +103,6 @@ hu:
     button_settings: "Beállítások"
     button_uncheck_all: "Az összes kijelölés megszüntetése"
     button_update: "Frissítés"
-    button_export-pdf: "PDF-fájl letöltése"
     button_export-atom: "Atom letöltés"
     button_generate_pdf: "Generate PDF"
     button_create: "Létrehoz"

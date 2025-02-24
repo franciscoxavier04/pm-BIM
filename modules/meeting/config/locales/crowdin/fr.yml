@@ -57,6 +57,7 @@ fr:
         start_time: "Heure de début"
         start_time_hour: "Heure de début"
         end_after: "La série de réunions se termine"
+        end_date: "End date"
         iterations: "Occurrences"
     errors:
       messages:
@@ -259,10 +260,14 @@ fr:
       banner_html: >
         Vous êtes en train d'éditer le modèle d'une série de réunions : %{link}. Chaque nouvelle occurrence d'une réunion dans la série utilisera ce modèle. Les modifications n'affecteront pas les réunions passées ou déjà créées.
     frequency:
+      x_daily:
+        one: "Every day"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        other: "Every %{count} weeks"
       every_weekday: "Chaque %{day_of_the_week}"
-      daily: "Quotidienne"
       working_days: "Chaque jour ouvrable"
-      weekly: "Hebdomadaire"
     end_after:
       never: "jamais"
       specific_date: "après une date précise"

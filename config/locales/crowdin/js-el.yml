@@ -103,7 +103,6 @@ el:
     button_settings: "Ρυθμίσεις"
     button_uncheck_all: "Αποεπιλογή όλων"
     button_update: "Ενημέρωση"
-    button_export-pdf: "Λήψη PDF"
     button_export-atom: "Κατεβάστε το Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Δημιουργία"

@@ -103,7 +103,6 @@ zh-TW:
     button_settings: "設定"
     button_uncheck_all: "取消全選"
     button_update: "更新"
-    button_export-pdf: "下載 PDF"
     button_export-atom: "下載 Atom"
     button_generate_pdf: "產生PDF檔案"
     button_create: "建立"

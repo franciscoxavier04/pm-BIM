@@ -103,7 +103,6 @@ es:
     button_settings: "Configuración"
     button_uncheck_all: "Deseleccionar todos"
     button_update: "Actualizar"
-    button_export-pdf: "Descargar PDF"
     button_export-atom: "Descargar Atom"
     button_generate_pdf: "Generar PDF"
     button_create: "Crear"

@@ -59,6 +59,9 @@ de:
       cost_type:
         one: "Kostentyp"
         other: "Kostentypen"
+      time_entry_activity:
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Satz"
     errors:
       models:
@@ -80,6 +83,7 @@ de:
   button_add_rate: "Satz hinzufügen"
   button_log_costs: "Stückkosten buchen"
   button_log_time: "Protokollieren"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Auf das Projekt gebucht"
   caption_default: "Standard"
   caption_default_rate_history_for: "Standardsatz-Historie für %{user}"
@@ -92,7 +96,11 @@ de:
   caption_set_rate: "Aktuellen Satz festlegen"
   caption_show_locked: "Gesperrte Typen anzeigen"
   caption_log_time_dialog: "Zeit protokollieren"
+  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Datum für neuen Satz"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
+  error_activity_could_not_be_moved: "Activity could not be moved."
   group_by_others: "In keiner der Gruppen"
   label_between: "zwischen"
   label_cost_filter_add: "Kostenfilter hinzufügen"
@@ -119,6 +127,8 @@ de:
   label_kind: "Typ"
   label_less_or_equal: "<="
   label_log_costs: "Stückkosten buchen"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Nein"
   label_option_plural: "Optionen"
   label_overall_costs: "Gesamtkosten"
@@ -131,6 +141,10 @@ de:
   label_until: "bis"
   label_valid_from: "Gültig ab"
   label_yes: "Ja"
+  label_time: "Zeit"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Die Auswahl des Arbeitspakets ist zuerst erforderlich
   notice_something_wrong: "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   notice_successful_restore: "Erfolgreich wiederhergestellt."

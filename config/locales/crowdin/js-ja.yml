@@ -104,7 +104,6 @@ ja:
     button_settings: "設定"
     button_uncheck_all: "全てを選択解除"
     button_update: "更新"
-    button_export-pdf: "PDFファイルをダウンロード"
     button_export-atom: "Atomをダウンロード"
     button_generate_pdf: "Generate PDF"
     button_create: "作成"
