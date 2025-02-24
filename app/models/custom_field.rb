@@ -165,8 +165,10 @@ class CustomField < ApplicationRecord
   #        You MUST NOT pass a customizable if this CF has any other format
   def possible_values(obj = nil)
     case field_format
-    when "user", "version"
-      possible_values_options(obj).map(&:last)
+    when "user"
+      possible_users(obj).pluck(:id).map(&:to_s)
+    when "version"
+      possible_versions(obj).pluck(:id).map(&:to_s)
     when "list"
       custom_options
     else
@@ -316,22 +318,26 @@ class CustomField < ApplicationRecord
 
   private
 
-  def possible_version_values_options(obj)
+  def possible_versions(obj)
     project = deduce_project(obj)
-    versions = deduce_versions(project)
+    deduce_versions(project)
+  end
 
-    versions.includes(:project)
-            .sort
-            .map { |u| [u.name, u.id.to_s, u.project.name] }
+  def possible_version_values_options(obj)
+    possible_versions(obj).references(:project)
+                          .sort
+                          .map { |u| [u.name, u.id.to_s, u.project.name] }
+  end
+
+  def possible_users(obj)
+    project = deduce_project(obj)
+    deduce_principals(project)
   end
 
   def possible_user_values_options(obj)
-    project = deduce_project(obj)
-    users = deduce_principals(project)
-
-    users.select(*user_format_columns, "id", "type")
-         .sort
-         .map { |u| [u.name, u.id.to_s] }
+    possible_users(obj).select(*user_format_columns, "id", "type")
+                       .sort
+                       .map { |u| [u.name, u.id.to_s] }
   end
 
   def possible_list_values_options

@@ -81,7 +81,7 @@ module Filter
     end
 
     def custom_field_list_autocomplete_options(filter)
-      items = if filter.custom_field.field_format == "version"
+      items = if filter.custom_field.version?
                 filter.allowed_values.map { |name, id, project_name| { name:, id:, project_name: } }
               else
                 filter.allowed_values.map { |name, id| { name:, id: } }

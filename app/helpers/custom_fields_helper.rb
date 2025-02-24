@@ -64,86 +64,11 @@ module CustomFieldsHelper
     ]
   end
 
-  # Return custom field html tag corresponding to its format
-  def custom_field_tag(name, custom_value) # rubocop:disable Metrics/AbcSize,Metrics/PerceivedComplexity
-    custom_field = custom_value.custom_field
-    field_name = "#{name}[custom_field_values][#{custom_field.id}]"
-    field_id = "#{name}_custom_field_values_#{custom_field.id}"
-
-    field_format = OpenProject::CustomFieldFormat.find_by(name: custom_field.field_format)
-
-    tag = case field_format.try(:edit_as)
-          when "date"
-            angular_component_tag "opce-basic-single-date-picker",
-                                  inputs: {
-                                    required: custom_field.is_required,
-                                    value: custom_value.value,
-                                    id: field_id,
-                                    name: field_name
-                                  }
-          when "text"
-            styled_text_area_tag(field_name, custom_value.value, id: field_id, rows: 3, container_class: "-middle",
-                                                                 required: custom_field.is_required)
-          when "bool"
-            hidden_tag = hidden_field_tag(field_name, "0")
-            checkbox_tag = styled_check_box_tag(field_name, "1", custom_value.typed_value, id: field_id,
-                                                                                           required: custom_field.is_required)
-            hidden_tag + checkbox_tag
-          when "list"
-            include_blank = !custom_field.is_required? ||
-              (custom_field.default_value.blank? ? I18n.t(:actionview_instancetag_blank_option) : false)
-
-            options = [custom_field.possible_values_options(custom_value.customized), custom_value.value]
-
-            styled_select_tag(
-              field_name,
-              options_for_select(*options),
-              id: field_id,
-              container_class: "-middle",
-              required: custom_field.is_required,
-              include_blank:
-            )
-          else
-            styled_text_field_tag(field_name, custom_value.value, id: field_id, container_class: "-middle",
-                                                                  required: custom_field.is_required)
-          end
-
-    tag = content_tag :span, tag, lang: custom_field.name_locale, class: "form--field-container"
-
-    if custom_value.errors.empty?
-      tag
-    else
-      ActionView::Base.wrap_with_error_span(tag, custom_value, "value")
-    end
-  end
-
-  # Return custom field label tag
-  def custom_field_label_tag(name, custom_value)
-    content_tag "label", h(custom_value.custom_field.name) +
-                         (custom_value.custom_field.is_required? ? content_tag("span", " *", class: "required") : ""),
-                for: "#{name}_custom_field_values_#{custom_value.custom_field.id}",
-                class: "form--label #{custom_value.errors.empty? ? nil : 'error'}",
-                lang: custom_value.custom_field.name_locale
-  end
-
-  def hidden_custom_field_label_tag(name, custom_value)
-    content_tag "label", h(custom_value.custom_field.name) +
-                         (custom_value.custom_field.is_required? ? content_tag("span", " *", class: "required") : ""),
-                for: "#{name}_custom_field_values_#{custom_value.custom_field.id}",
-                class: "hidden-for-sighted",
-                lang: custom_value.custom_field.name_locale
-  end
-
   def blank_custom_field_label_tag(name, custom_field)
     content_tag "label", h(custom_field.name) +
                          (custom_field.is_required? ? content_tag("span", " *", class: "required") : ""),
                 for: "#{name}_custom_field_values_#{custom_field.id}",
                 class: "form--label"
-  end
-
-  # Return custom field tag with its label tag
-  def custom_field_tag_with_label(name, custom_value)
-    custom_field_label_tag(name, custom_value) + custom_field_tag(name, custom_value)
   end
 
   def custom_field_tag_for_bulk_edit(name, custom_field, project = nil) # rubocop:disable Metrics/AbcSize
@@ -173,8 +98,16 @@ module CustomFieldsHelper
         unset_label = custom_field.field_format == "user" ? :label_nobody : :label_none
         base_options << [I18n.t(unset_label), "none"]
       end
+
+      possible_values = custom_field.possible_values_options(project)
+      options = if custom_field.version?
+                  grouped_options_for_select(possible_values.group_by(&:last).to_a)
+                else
+                  options_for_select(possible_values)
+                end
+
       styled_select_tag(field_name,
-                        options_for_select(base_options + custom_field.possible_values_options(project)),
+                        options_for_select(base_options) + options,
                         id: field_id,
                         multiple: custom_field.multi_value?,
                         include_blank: I18n.t(:label_no_change_option))
