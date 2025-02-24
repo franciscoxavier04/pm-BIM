@@ -45,7 +45,7 @@ module OpenIDConnect
 
       def exchange(access_token, audience)
         request_token(form: {
-                        grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+                        grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE,
                         subject_token: access_token,
                         audience:
                       })

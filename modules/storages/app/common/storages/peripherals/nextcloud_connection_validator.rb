@@ -32,7 +32,7 @@ module Storages
   module Peripherals
     class NextcloudConnectionValidator
       include TaggedLogging
-      include Dry::Monads[:maybe]
+      include Dry::Monads[:maybe, :result]
 
       using ServiceResultRefinements
 
@@ -58,7 +58,9 @@ module Storages
       def sso_misconfigured
         return None() unless @storage.authenticate_via_idp?
 
-        non_provisioned_user.or { non_oidc_provisioned_user }.or { token_usability }
+        non_provisioned_user
+          .or { non_oidc_provisioned_user }
+          .or { token_usability }
       end
 
       def non_provisioned_user
@@ -70,20 +72,6 @@ module Storages
                                       description: I18n.t("storages.health.connection_validation.oidc_non_provisioned_user")))
       end
 
-      def token_usability
-        usable_token = @user.oidc_user_tokens.with_audience(@storage.audience).first
-        return None() if usable_token
-
-        # Temporary error as I implement the next steps
-        Some(ConnectionValidation
-               .new(type: :error,
-                    error_code: :oidc_no_token_with_required_audience,
-                    timestamp: Time.current,
-                    description: I18n.t(
-                      "storages.health.connection_validation.oidc_no_token_with_required_audience", audience: @storage.audience
-                    )))
-      end
-
       def non_oidc_provisioned_user
         return None() if @user.authentication_provider.is_a?(OpenIDConnect::Provider)
 
@@ -91,6 +79,31 @@ module Storages
                                       error_code: :oidc_non_oidc_user,
                                       timestamp: Time.current,
                                       description: I18n.t("storages.health.connection_validation.oidc_non_oidc_user")))
+      end
+
+      def token_usability
+        service = OpenIDConnect::UserTokens::FetchService.new(user: @user)
+
+        result = service.access_token_for(audience: @storage.audience)
+        return None() if result.success?
+
+        error_code = case result.failure
+                     when :failed_refresh
+                       :oidc_cant_refresh_token
+                     when :failed_token_exchange, :token_exchange_response_invalid
+                       :oidc_cant_exchange_token
+                     else
+                       :unknown_error
+                     end
+
+        # Temporary error as I implement the next steps
+        Some(ConnectionValidation
+               .new(type: :error,
+                    error_code:,
+                    timestamp: Time.current,
+                    description: I18n.t(
+                      "storages.health.connection_validation.#{error_code}", audience: @storage.audience
+                    )))
       end
 
       def has_base_configuration_error?

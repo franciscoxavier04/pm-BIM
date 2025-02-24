@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :oidc_provider, class: "OpenIDConnect::Provider" do
     display_name { "Foobar" }
@@ -22,7 +24,7 @@ FactoryBot.define do
     trait :token_exchange_capable do
       callback(:after_build) do |provider|
         provider.options["grant_types_supported"] ||= []
-        provider.options["grant_types_supported"] << "urn:ietf:params:oauth:grant-type:token-exchange"
+        provider.options["grant_types_supported"] << OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE
       end
     end
   end

@@ -8,7 +8,8 @@ FactoryBot.define do
 
     user
     access_token { "INVALID_TOKEN" }
-    refresh_token { "COOL_AID_TOKEN" }
+    refresh_token { "REFRESH_TOKEN" }
+    expires_at { 1.hour.from_now }
     audiences { [OpenIDConnect::UserToken::IDP_AUDIENCE] + Array(extra_audiences) }
   end
 end

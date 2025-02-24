@@ -71,24 +71,6 @@ module OpenIDConnect
         Success(token.access_token)
       end
 
-      ##
-      # Obtains an access token that can be used to make requests in the user's name at the
-      # remote service identified by the +audience+ parameter.
-      #
-      # The access token will always be refreshed before being returned by this method.
-      # It is advised to use this method, after learning that a remote service rejected
-      # an access token, because it was expired.
-      #
-      # A token exchange is attempted, if the provider supports OAuth 2.0 Token Exchange and a token
-      # for the target audience either can't be found or it has expired, but has no available refresh token.
-      def refreshed_access_token_for(audience:)
-        token = yield token_with_audience(audience)
-        token = yield @token_refresh.call(token)
-
-        emit_event(token, audience)
-        Success(token.access_token)
-      end
-
       private
 
       def emit_event(token, audience)

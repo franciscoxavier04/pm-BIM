@@ -51,16 +51,16 @@ module OpenIDConnect
       end
 
       def call(audience)
-        return Failure("Provider does not support token exchange") unless supported?
+        return Failure(:token_exchange_not_supported) unless supported?
 
         idp_token = yield FetchService.new(user:, token_exchange: Disabled)
-                            .access_token_for(audience: UserToken::IDP_AUDIENCE)
+                                      .access_token_for(audience: UserToken::IDP_AUDIENCE)
 
-        json = yield TokenRequest.new(provider:).exchange(idp_token, audience)
+        json = yield request_exchange(idp_token, audience)
 
         access_token = json["access_token"]
         expires_in = json["expires_in"]
-        return Failure("Token exchange response invalid") if access_token.blank?
+        return Failure(:token_exchange_response_invalid) if access_token.blank?
 
         # We are explicitly opting to not store the refresh token for exchanged tokens
         # For one there is no need to store one, we can simply exchange a new token once the old expired.
@@ -76,6 +76,13 @@ module OpenIDConnect
       end
 
       private
+
+      def request_exchange(idp_token, audience)
+        TokenRequest.new(provider:).exchange(idp_token, audience).or do |error|
+          Rails.logger.error("Failed to refresh token: #{error.inspect}")
+          Failure(:failed_token_exchange)
+        end
+      end
 
       def store_exchanged_token(audience:, access_token:, refresh_token:, expires_in:)
         token_data = { access_token:, refresh_token:, expires_at: expires_in&.seconds&.from_now }

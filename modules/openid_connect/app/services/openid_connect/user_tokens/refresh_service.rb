@@ -70,7 +70,10 @@ module OpenIDConnect
       end
 
       def refresh_token_request(refresh_token)
-        TokenRequest.new(provider:).refresh(refresh_token)
+        TokenRequest.new(provider:).refresh(refresh_token).or do |error|
+          Rails.logger.error("Failed to refresh token: #{error.inspect}")
+          Failure(:failed_refresh)
+        end
       end
 
       def provider
