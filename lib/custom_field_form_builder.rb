@@ -96,7 +96,11 @@ class CustomFieldFormBuilder < TabularFormBuilder
     selected_options = Array(selected).map(&:value)
 
     if custom_field.version?
-      template.grouped_options_for_select(options.group_by(&:last).to_a, selected_options)
+      grouped_options = Hash.new { |hsh, key| hsh[key] = [] }
+      options.each do |label, value, group_key|
+        grouped_options[group_key] << [label, value]
+      end
+      template.grouped_options_for_select(grouped_options, selected_options)
     else
       template.options_for_select(options, selected_options)
     end

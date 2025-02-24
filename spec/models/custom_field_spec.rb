@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -156,7 +158,7 @@ RSpec.describe CustomField do
 
       it "is not valid" do
         expect(field)
-          .to be_invalid
+          .not_to be_valid
       end
     end
 
@@ -295,7 +297,7 @@ RSpec.describe CustomField do
       before do
         field.field_format = "version"
         allow(shared_versions_scope)
-          .to receive(:includes)
+          .to receive(:references)
           .with(:project)
           .and_return(versions)
       end

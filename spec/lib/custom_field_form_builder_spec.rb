@@ -339,7 +339,7 @@ RSpec.describe CustomFieldFormBuilder do
                   .and_return(scope)
 
           allow(scope)
-            .to receive(:includes)
+            .to receive(:references)
                   .and_return([version1, version2])
         end
       end
@@ -355,8 +355,12 @@ RSpec.describe CustomFieldFormBuilder do
                   name="user[#{custom_field.id}]"
                   no_label="true">
             <option value="" label=" "></option>
-            <option value="#{version1.id}">#{version1.name}</option>
-            <option value="#{version2.id}">#{version2.name}</option>
+            <optgroup label="#{version1.project.name}">
+              <option value="#{version1.id}">#{version1.name}</option>
+            </optgroup>
+            <optgroup label="#{version2.project.name}">
+              <option value="#{version2.id}">#{version2.name}</option>
+            </optgroup>
           </select>
         }).at_path("select")
       end
@@ -373,8 +377,12 @@ RSpec.describe CustomFieldFormBuilder do
                     name="user[#{custom_field.id}]"
                     no_label="true">
               <option value="">--- Please select ---</option>
-              <option value="#{version1.id}">#{version1.name}</option>
-              <option value="#{version2.id}">#{version2.name}</option>
+              <optgroup label="#{version1.project.name}">
+                <option value="#{version1.id}">#{version1.name}</option>
+              </optgroup>
+              <optgroup label="#{version2.project.name}">
+                <option value="#{version2.id}">#{version2.name}</option>
+              </optgroup>
             </select>
           }).at_path("select")
         end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -110,7 +112,7 @@ RSpec.describe CustomActions::Actions::CustomField do
       expect(described_class.all.map(&:custom_field))
         .to match_array(custom_fields)
 
-      described_class.all.each do |subclass|
+      described_class.find_each do |subclass|
         expect(subclass.ancestors).to include(described_class)
       end
     end
@@ -408,7 +410,8 @@ RSpec.describe CustomActions::Actions::CustomField do
 
       before do
         allow(scope)
-          .to receive(:includes)
+          .to receive(:references)
+                .with(:project)
                 .and_return(versions)
 
         allow(Version)
@@ -555,7 +558,8 @@ RSpec.describe CustomActions::Actions::CustomField do
 
       before do
         allow(scope)
-          .to receive(:includes)
+          .to receive(:references)
+                .with(:project)
                 .and_return(versions)
 
         allow(Version)
@@ -577,8 +581,8 @@ RSpec.describe CustomActions::Actions::CustomField do
       it_behaves_like "bool custom action validations" do
         let(:allowed_values) do
           [
-            { true: OpenProject::Database::DB_VALUE_TRUE },
-            { false: OpenProject::Database::DB_VALUE_FALSE }
+            { true => OpenProject::Database::DB_VALUE_TRUE },
+            { false => OpenProject::Database::DB_VALUE_FALSE }
           ]
         end
       end
