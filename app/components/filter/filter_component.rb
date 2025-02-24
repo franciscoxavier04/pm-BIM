@@ -81,13 +81,16 @@ module Filter
     end
 
     def custom_field_list_autocomplete_options(filter)
-      items = if filter.custom_field.version?
-                filter.allowed_values.map { |name, id, project_name| { name:, id:, project_name: } }
+      options = if filter.custom_field.version?
+                {
+                  items: filter.allowed_values.map { |name, id, project_name| { name:, id:, project_name: } },
+                  groupBy: "project_name"
+                }
               else
-                filter.allowed_values.map { |name, id| { name:, id: } }
+                { items: filter.allowed_values.map { |name, id| { name:, id: } } }
               end
 
-      autocomplete_options.merge(items:, model: filter.values)
+      autocomplete_options.merge(options).merge(model: filter.values)
     end
 
     def list_autocomplete_options(filter)
