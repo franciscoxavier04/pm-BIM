@@ -31,7 +31,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 <% tabs = types_tabs %>
 
-<%= render Types::EditPageHeaderComponent.new(type: @type, tabs:) %>
+<%= render ::Types::EditPageHeaderComponent.new(type: @type, tabs:) %>
 
 <%=
   selected_tab = selected_tab(tabs)
