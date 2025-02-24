@@ -29,31 +29,32 @@
 require "spec_helper"
 
 RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregation_time_minutes: 0 } do
-  let(:user) { create(:user) }
-  let(:user2) { create(:user) }
-  let(:custom_field_value) { "125" }
-  let(:custom_field1) do
+  shared_let(:user) { create(:user) }
+  shared_let(:custom_field2) { create(:work_package_custom_field) }
+  shared_let(:user2) { create(:user) }
+  shared_let(:custom_field_value) { "125" }
+  shared_let(:custom_field1) do
     create(:work_package_custom_field,
            field_format: "string",
            is_for_all: true)
   end
-  let(:custom_field2) { create(:work_package_custom_field) }
-  let(:custom_field_user) { create(:issue_custom_field, :user) }
-  let(:status) { create(:status) }
-  let(:type) do
+
+  shared_let(:custom_field_user) { create(:issue_custom_field, :user) }
+  shared_let(:status) { create(:status) }
+  shared_let(:type) do
     create(:type_standard,
            custom_fields: [custom_field1, custom_field2, custom_field_user])
   end
-  let(:project1) do
+  shared_let(:project1) do
     create(:project,
            types: [type],
            work_package_custom_fields: [custom_field2])
   end
-  let(:project2) do
+  shared_let(:project2) do
     create(:project,
            types: [type])
   end
-  let(:role) do
+  shared_let(:role) do
     create(:project_role,
            permissions: %i[edit_work_packages
                            view_work_packages
@@ -61,25 +62,25 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
                            assign_versions
                            work_package_assigned])
   end
-  let(:member1_p1) do
+  shared_let(:member1_p1) do
     create(:member,
            project: project1,
            principal: user,
            roles: [role])
   end
-  let(:member2_p1) do
+  shared_let(:member2_p1) do
     create(:member,
            project: project1,
            principal: user2,
            roles: [role])
   end
-  let(:member1_p2) do
+  shared_let(:member1_p2) do
     create(:member,
            project: project2,
            principal: user,
            roles: [role])
   end
-  let(:work_package1) do
+  shared_let(:work_package1) do
     create(:work_package,
            author: user,
            assigned_to: user,
@@ -89,7 +90,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
            custom_field_values: { custom_field1.id => custom_field_value },
            project: project1)
   end
-  let(:work_package2) do
+  shared_let(:work_package2) do
     create(:work_package,
            author: user,
            assigned_to: user,
@@ -99,7 +100,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
            custom_field_values: { custom_field1.id => custom_field_value },
            project: project1)
   end
-  let(:work_package3) do
+  shared_let(:work_package3) do
     create(:work_package,
            author: user,
            type:,
@@ -111,10 +112,6 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
   let(:stub_work_package) { build_stubbed(:work_package) }
 
   before do
-    custom_field1
-    member1_p1
-    member2_p1
-
     allow(User).to receive(:current).and_return user
   end
 
@@ -127,7 +124,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
       it { is_expected.to render_template("edit") }
     end
 
-    context "same project" do
+    context "within same project" do
       before { get :edit, params: { ids: [work_package1.id, work_package2.id] } }
 
       it_behaves_like "response"
@@ -157,7 +154,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
       end
     end
 
-    context "different projects" do
+    context "with different projects" do
       before do
         member1_p2
 
@@ -293,7 +290,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
         end
       end
 
-      context "single project" do
+      context "with a single project" do
         include_context "update_request"
 
         it { expect(response.response_code).to eq(302) }
@@ -303,12 +300,10 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
         it_behaves_like "updated work package"
       end
 
-      context "different projects" do
+      context "with different projects" do
         let(:work_package_ids) { [work_package1.id, work_package2.id, work_package3.id] }
 
         context "with permission" do
-          before { member1_p2 }
-
           include_context "update_request"
 
           it { expect(response.response_code).to eq(302) }
@@ -318,8 +313,12 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
           it_behaves_like "updated work package"
         end
 
-        context "w/o permission" do
+        context "without permission" do
           include_context "update_request"
+
+          before_all do
+            member1_p2.destroy
+          end
 
           it { expect(response.response_code).to eq(403) }
 
@@ -338,7 +337,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
 
           subject { work_packages.map(&:assigned_to_id).uniq }
 
-          context "allowed" do
+          context "when allowed" do
             let!(:member_group_p1) do
               create(:member,
                      project: project1,
@@ -353,7 +352,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
             end
           end
 
-          context "not allowed" do
+          context "when not allowed" do
             render_views
 
             include_context "update_request"
@@ -473,16 +472,16 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
 
         describe "#version" do
           describe "set version_id attribute to some version" do
-            let(:version) do
+            shared_let(:subproject) do
+              create(:project,
+                     parent: project1,
+                     types: [type])
+            end
+            shared_let(:version) do
               create(:version,
                      status: "open",
                      sharing: "tree",
                      project: subproject)
-            end
-            let(:subproject) do
-              create(:project,
-                     parent: project1,
-                     types: [type])
             end
 
             before do
@@ -535,7 +534,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
       end
     end
 
-    context "w/o notification" do
+    context "without notification" do
       let(:send_notification) { "0" }
 
       describe "#delivery" do
@@ -605,7 +604,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
       expect(controller).to receive(:authorize)
     end
 
-    describe "w/ the cleanup being successful" do
+    describe "with the cleanup being successful" do
       before do
         expect(stub_work_package).to receive(:reload).and_return(stub_work_package)
 
@@ -631,7 +630,7 @@ RSpec.describe WorkPackages::BulkController, with_settings: { journal_aggregatio
       end
     end
 
-    describe "w/o the cleanup being successful" do
+    describe "without the cleanup being successful" do
       before do
         expect(WorkPackage).to receive(:cleanup_associated_before_destructing_if_required).with([stub_work_package], user,
                                                                                                 params["to_do"]).and_return false
