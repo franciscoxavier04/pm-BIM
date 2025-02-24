@@ -38,8 +38,28 @@ class WorkPackageRelationsTab::RelationsMediator
       visible_relations.any? || ghost_relations.any?
     end
 
+    def all_relations
+      visible_relations + ghost_relations
+    end
+
+    def closest_relation?(relation) = closest_relation == relation
+
+    def closest_relation = closest_relations.first
+
+    def closest_relations
+      return [] unless follows_type?
+
+      all_relations
+        .sort_by { WorkPackageRelationsTab::ClosestRelation.new(it) }
+        .reverse
+    end
+
     def children_type?
       type == "children"
+    end
+
+    def follows_type?
+      type == "follows"
     end
   end
 
