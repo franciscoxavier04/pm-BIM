@@ -54,14 +54,12 @@ module WorkPackages
                      schedule_manually:,
                      readonly:,
                      is_milestone:,
-                     focused_field: :start_date,
                      touched_field_map: {})
         super()
 
         @work_package = work_package
         @schedule_manually = schedule_manually
         @is_milestone = is_milestone
-        @focused_field = update_focused_field(focused_field)
         @touched_field_map = touched_field_map
         @readonly = readonly
       end
@@ -103,7 +101,7 @@ module WorkPackages
           label:,
           caption: caption(name),
           show_clear_button: name != :duration,
-          classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
+          classes: "op-datepicker-modal--date-field",
           validation_message: validation_message(name)
         )
 
@@ -145,25 +143,6 @@ module WorkPackages
 
       def duration_field?(name)
         name == :duration
-      end
-
-      def update_focused_field(focused_field)
-        return :start_date if focused_field.nil?
-
-        case focused_field.to_s.underscore
-        when "combined_date"
-          if field_value(:start_date).present? && field_value(:due_date).nil?
-            :due_date
-          else
-            :start_date
-          end
-        when "due_date"
-          :due_date
-        when "duration"
-          :duration
-        else
-          :start_date
-        end
       end
 
       def readonly?(name)

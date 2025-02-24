@@ -39,14 +39,13 @@ module WorkPackages
       # Used for the three tabs for predecessors, successors and children in the date picker modal.
       Tab = Data.define(:key, :relation_group)
 
-      attr_accessor :work_package, :schedule_manually, :focused_field, :touched_field_map
+      attr_accessor :work_package, :schedule_manually, :touched_field_map
 
-      def initialize(work_package:, schedule_manually: true, focused_field: :start_date, touched_field_map: {})
+      def initialize(work_package:, schedule_manually: true, touched_field_map: {})
         super
 
         @work_package = work_package
         @schedule_manually = ActiveModel::Type::Boolean.new.cast(schedule_manually)
-        @focused_field = focused_field
         @touched_field_map = touched_field_map
       end
 
