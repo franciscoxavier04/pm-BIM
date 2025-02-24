@@ -110,13 +110,7 @@ module WorkPackages
 
       def update_focused_field(focused_field)
         if @date_mode.nil? || @date_mode != "range"
-          if focused_field == "duration"
-            return :duration
-          elsif field_value(:due_date).present? && field_value(:start_date).nil?
-            return :due_date
-          elsif field_value(:start_date).present? && field_value(:due_date).nil?
-            return :start_date
-          end
+          return focused_field_for_single_date_mode(focused_field)
         end
 
         date_fields = {
@@ -127,6 +121,16 @@ module WorkPackages
 
         # Default is :start_date
         date_fields.fetch(focused_field.to_s.underscore, :start_date)
+      end
+
+      def focused_field_for_single_date_mode(focused_field)
+        if focused_field == "duration"
+          :duration
+        elsif field_value(:start_date).nil?
+          :due_date
+        elsif field_value(:due_date).nil?
+          :start_date
+        end
       end
 
       def disabled?(name)
