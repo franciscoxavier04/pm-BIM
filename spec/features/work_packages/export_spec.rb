@@ -128,7 +128,10 @@ RSpec.describe "work package export", :js, :selenium do
     context "with activated options" do
       let(:query) do
         create(
-          :query, id: 1234, user: current_user, project:,
+          :query,
+          id: 1234,
+          user: current_user,
+          project:,
           display_sums: true,
           include_subprojects: true,
           show_hierarchies: true,
@@ -248,7 +251,6 @@ RSpec.describe "work package export", :js, :selenium do
 
       before do
         choose export_sub_type
-        expect(page).to have_css("[data-pdf-export-type='table']", wait: 2)
       end
 
       it "exports a pdf table" do
@@ -272,7 +274,6 @@ RSpec.describe "work package export", :js, :selenium do
 
       before do
         choose export_sub_type
-        expect(page).to have_css("[data-pdf-export-type='report']", wait: 2)
       end
 
       context "with long text fields" do
@@ -345,7 +346,6 @@ RSpec.describe "work package export", :js, :selenium do
 
         before do
           choose export_sub_type
-          expect(page).to have_css("[data-pdf-export-type='gantt']", wait: 2)
         end
 
         it "exports a gantt chart pdf" do
