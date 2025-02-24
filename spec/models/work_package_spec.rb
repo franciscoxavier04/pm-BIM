@@ -82,6 +82,7 @@ RSpec.describe WorkPackage do
     it { is_expected.to have_many(:member_principals).through(:members).class_name("Principal").source(:principal) }
     it { is_expected.to have_many(:meeting_agenda_items) }
     it { is_expected.to have_many(:meetings).through(:meeting_agenda_items).source(:meeting) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
   end
 
   describe ".new" do

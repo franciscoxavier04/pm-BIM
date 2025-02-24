@@ -91,6 +91,11 @@ class User < Principal
            inverse_of: :user,
            dependent: :destroy
 
+  has_many :comments,
+           foreign_key: "author_id",
+           dependent: :destroy,
+           inverse_of: :author
+
   has_many :remote_identities, dependent: :destroy
 
   # Users blocked via brute force prevention
