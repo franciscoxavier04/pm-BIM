@@ -139,7 +139,7 @@ See COPYRIGHT and LICENSE files for more details.
                                 "project-storage-form-target": "loginButton"
                               } %>
     <span
-      data-project-storage-form-target="selectedFolderText">...</span>
+      data-project-storage-form-target="selectedFolderText" data-test-selector="selected-folder-name">...</span>
   </div>
   <% if @errors&.any? { |error| error.attribute == :project_folder_id } %>
     <%= content_tag :span,
