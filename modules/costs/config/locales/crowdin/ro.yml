@@ -46,11 +46,11 @@ ro:
       user:
         default_rates: "Tarife"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: Proiect
+        user: Utilizator
+        work_package: Pachet de lucru
         hours: Ore
-        comments: Comment
+        comments: Comentariu
         activity: Activitate
         spent_on: Dată
         start_time: Start time
@@ -64,7 +64,7 @@ ro:
     errors:
       models:
         time_entry:
-          invalid_time: "must be between 00:00 and 23:59."
+          invalid_time: "trebuie să fie între 00:00 și 23:59."
           cannot_log_for_this_work_package: "Cannot log time for this work package."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Pachetul de lucru #%{id} nu este o ţintă validă pentru reasocierea timpilor de lucru."

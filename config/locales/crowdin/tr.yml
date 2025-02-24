@@ -411,7 +411,7 @@ tr:
     unpublish:
       success: "Liste gizli hale getirildi"
       failure: "The list cannot be made private: %{errors}"
-    can_be_saved: "List modified:"
+    can_be_saved: "Liste değiştirildi:"
     can_be_saved_as: "The modifications can only be saved in a new list:"
   members:
     index:
@@ -1283,8 +1283,8 @@ tr:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              cannot_add_child_because_of_lack_of_permission: "Seçili iş paketini düzenleme izniniz olmadığı için alt eklenemiyor."
+              blank: "Kimlik boş olamaz."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -2008,14 +2008,14 @@ tr:
         label: Sağ başlık
         caption: Başlığın sağında görüntülenecek metin
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Altbilgi merkezi
+        caption: Altbilginin ortasında görüntülenecek metin
       hyphenation:
         label: Hyphenation
         caption: Break words between lines to improve text justification and readability.
       paper_size:
         label: Kağıt boyutu
-        caption: The size of the paper to use for the PDF.
+        caption: PDF için kullanılacak kağıdın boyutu.
   extraction:
     available:
       pdftotext: "Pdftotext kullanılabilir (isteğe bağlı)"
@@ -2841,7 +2841,7 @@ tr:
   label_global_role: "Global rol"
   label_not_changeable: "(değiştirilemez)"
   label_global: "Küresel"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: Bu kayıt bir ayar / ortam değişkeni aracılığıyla oluşturulmuştur. Arayüz aracılığıyla düzenlenemez.
   macro_execution_error: "Makroyu çalıştırırken hata oluştu %{macro_name}"
   macro_unavailable: "Makro %{macro_name} görüntülenemiyor."
   macros:
