@@ -93,21 +93,8 @@ module CustomFieldsHelper
                         id: field_id,
                         include_blank: I18n.t(:label_no_change_option))
     when "list"
-      base_options = []
-      unless custom_field.required?
-        unset_label = custom_field.field_format == "user" ? :label_nobody : :label_none
-        base_options << [I18n.t(unset_label), "none"]
-      end
-
-      possible_values = custom_field.possible_values_options(project)
-      options = if custom_field.version?
-                  grouped_options_for_select(possible_values.group_by(&:last).to_a)
-                else
-                  options_for_select(possible_values)
-                end
-
       styled_select_tag(field_name,
-                        options_for_select(base_options) + options,
+                        options_for_list(custom_field, project),
                         id: field_id,
                         multiple: custom_field.multi_value?,
                         include_blank: I18n.t(:label_no_change_option))
@@ -163,5 +150,22 @@ module CustomFieldsHelper
     suffix = show_enterprise_text ? " (#{I18n.t(:"ee.upsale.title")})" : ""
 
     "#{label}#{suffix}"
+  end
+
+  def options_for_list(custom_field, project)
+    base_options = []
+    unless custom_field.required?
+      unset_label = custom_field.field_format == "user" ? :label_nobody : :label_none
+      base_options << [I18n.t(unset_label), "none"]
+    end
+
+    possible_values = custom_field.possible_values_options(project)
+    options = if custom_field.version?
+                grouped_options_for_select(possible_values.group_by(&:last).to_a)
+              else
+                options_for_select(possible_values)
+              end
+
+    options_for_select(base_options) + options
   end
 end
