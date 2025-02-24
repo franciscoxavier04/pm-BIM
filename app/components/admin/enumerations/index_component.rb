@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,43 +26,53 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "spec_helper"
+module Admin
+  module Enumerations
+    class IndexComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
-RSpec.describe "Time entry activity" do
-  shared_let(:admin) { create(:admin) }
-  let(:project) { create(:project) }
+      options :enumerations
 
-  before do
-    login_as(admin)
-  end
+      private
 
-  it "allows creating new activities and activating them on projects" do
-    visit admin_time_entry_activities_path
+      def max_position
+        enumerations.map(&:position).max
+      end
 
-    page.find_test_selector("add-enumeration-button").click
+      def wrapper_data_attributes
+        {
+          controller: "generic-drag-and-drop",
+          "application-target": "dynamic"
+        }
+      end
 
-    fill_in "Name", with: "A new activity"
-    click_on("Save")
+      def drop_target_config
+        {
+          "is-drag-and-drop-target": true,
+          "target-container-accessor": "& > ul",
+          "target-allowed-drag-type": "enumeration"
+        }
+      end
 
-    # we are redirected back to the index page
-    expect(page).to have_current_path(admin_time_entry_activities_path)
+      def draggable_item_config(enumeration)
+        {
+          "draggable-id": enumeration.id,
+          "draggable-type": "enumeration",
+          "drop-url": helpers.url_for(action: :move, id: enumeration.id)
+        }
+      end
 
-    expect(page).to have_content("A new activity")
+      def enumeration_class
+        enumerations.klass
+      end
 
-    visit project_settings_general_path(project)
-
-    click_on "Time tracking activities"
-
-    expect(page).to have_field("A new activity", checked: true)
-
-    uncheck "A new activity"
-
-    click_on "Save"
-
-    expect(page).to have_content "Successful update."
-
-    expect(page).to have_field("A new activity", checked: false)
+      def item_component_class
+        ItemComponent
+      end
+    end
   end
 end

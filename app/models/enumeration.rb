@@ -48,25 +48,11 @@ class Enumeration < ApplicationRecord
   scope :shared, -> { where(project_id: nil) }
   scope :active, -> { where(active: true) }
 
-  # let all child classes have Enumeration as its model name
-  # used to not having to create another route for every subclass of Enumeration
-  def self.inherited(child)
-    # in the long run we probably want to have seperate pages, time entry activities are first so we skipt it here
-    enumerations_with_own_settings = %w(TimeEntryActivity)
-
-    unless child.name.in?(enumerations_with_own_settings)
-      child.instance_eval do
-        def model_name
-          Enumeration.model_name
-        end
-      end
-    end
-    super
-  end
-
   def self.colored?
     false
   end
+
+  delegate :colored?, to: :class
 
   def self.default
     # Creates a fake default scope so Enumeration.default will check

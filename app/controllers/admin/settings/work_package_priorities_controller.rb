@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,42 +26,18 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module Admin
-  module TimeEntryActivities
-    class ReassignForm < ApplicationForm
-      include OpenProject::StaticRouting::UrlHelpers
+module Admin::Settings
+  class WorkPackagePrioritiesController < ApplicationController
+    include ::Admin::EnumerationsController
 
-      attr_reader :other_activities
+    menu_item :priorities
 
-      def initialize(other_activities:)
-        super()
+    private
 
-        @other_activities = other_activities
-      end
-
-      form do |form|
-        form.select_list(
-          name: :reassign_to_id,
-          label: I18n.t(:text_enumeration_category_reassign_to),
-          required: true,
-          input_width: :large
-        ) do |select|
-          other_activities.each do |activity|
-            select.option(value: activity.id, label: activity.name)
-          end
-        end
-
-        form.group(layout: :horizontal) do |button_group|
-          button_group.button(name: :cancel,
-                              tag: :a,
-                              label: I18n.t(:button_cancel),
-                              scheme: :default,
-                              href: admin_time_entry_activities_path)
-          button_group.submit(name: :submit, label: I18n.t(:button_apply), scheme: :primary)
-        end
-      end
+    def enumeration_class
+      IssuePriority
     end
   end
 end

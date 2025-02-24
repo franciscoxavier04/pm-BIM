@@ -42,4 +42,4 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-<%= render(Admin::TimeEntryActivities::IndexComponent.new(time_entry_activities: @time_entry_activities)) %>
+<%= render(index_component_class.new(enumerations: @enumerations)) %>

@@ -28,39 +28,24 @@
 
 require "spec_helper"
 
-RSpec.describe "Time entry activity" do
+RSpec.describe "Document categories" do
   shared_let(:admin) { create(:admin) }
-  let(:project) { create(:project) }
 
   before do
     login_as(admin)
   end
 
-  it "allows creating new activities and activating them on projects" do
-    visit admin_time_entry_activities_path
+  it "allows creating new document categories" do
+    visit admin_settings_document_categories_path
 
     page.find_test_selector("add-enumeration-button").click
 
-    fill_in "Name", with: "A new activity"
+    fill_in "Name", with: "Documentation"
     click_on("Save")
 
     # we are redirected back to the index page
-    expect(page).to have_current_path(admin_time_entry_activities_path)
+    expect(page).to have_current_path(admin_settings_document_categories_path)
 
-    expect(page).to have_content("A new activity")
-
-    visit project_settings_general_path(project)
-
-    click_on "Time tracking activities"
-
-    expect(page).to have_field("A new activity", checked: true)
-
-    uncheck "A new activity"
-
-    click_on "Save"
-
-    expect(page).to have_content "Successful update."
-
-    expect(page).to have_field("A new activity", checked: false)
+    expect(page).to have_content("Documentation")
   end
 end

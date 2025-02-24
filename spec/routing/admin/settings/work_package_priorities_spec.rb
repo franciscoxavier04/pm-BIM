@@ -28,21 +28,36 @@
 
 require "spec_helper"
 
-RSpec.describe "Enumerations" do
-  shared_let(:admin) { create(:admin) }
+RSpec.describe Admin::Settings::WorkPackagePrioritiesController, "routing" do
+  describe "work package priorities" do
+    it {
+      expect(subject).to route(:get, "admin/settings/work_package_priorities")
+        .to(controller: "admin/settings/work_package_priorities", action: "index")
+    }
 
-  before do
-    login_as(admin)
-    visit enumerations_path
-  end
+    it {
+      expect(subject).to route(:get, "admin/settings/work_package_priorities/new")
+        .to(controller: "admin/settings/work_package_priorities", action: "new")
+    }
 
-  it "contains all defined enumerations" do
-    classes = Enumeration.subclasses - [TimeEntryActivity]
+    it {
+      expect(subject).to route(:post, "admin/settings/work_package_priorities")
+        .to(controller: "admin/settings/work_package_priorities", action: "create")
+    }
 
-    classes.each do |enumeration|
-      expect(page).to have_css("h3", text: I18n.t(enumeration::OptionName))
-      expect(page).to have_link(I18n.t(:label_enumeration_new),
-                                href: new_enumeration_path(type: enumeration.name))
-    end
+    it {
+      expect(subject).to route(:get, "admin/settings/work_package_priorities/1/edit")
+        .to(controller: "admin/settings/work_package_priorities", action: "edit", id: "1")
+    }
+
+    it {
+      expect(subject).to route(:put, "admin/settings/work_package_priorities/1")
+        .to(controller: "admin/settings/work_package_priorities", action: "update", id: "1")
+    }
+
+    it {
+      expect(subject).to route(:delete, "admin/settings/work_package_priorities/1")
+        .to(controller: "admin/settings/work_package_priorities", action: "destroy", id: "1")
+    }
   end
 end

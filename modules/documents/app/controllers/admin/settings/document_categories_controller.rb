@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,28 +26,19 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
 module Admin
-  module TimeEntryActivities
-    class ActivityForm < ApplicationForm
-      form do |form|
-        form.text_field(
-          name: :name,
-          label: TimeEntryActivity.human_attribute_name(:name),
-          required: true,
-          input_width: :large
-        )
-        form.check_box(
-          name: :active,
-          label: TimeEntryActivity.human_attribute_name(:active)
-        )
+  module Settings
+    class DocumentCategoriesController < ApplicationController
+      include EnumerationsController
 
-        form.submit(
-          name: :submit,
-          label: I18n.t(:button_save),
-          scheme: :primary
-        )
+      menu_item :document_categories
+
+      private
+
+      def enumeration_class
+        DocumentCategory
       end
     end
   end

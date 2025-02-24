@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,41 +28,40 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module Admin
+  module Enumerations
+    class ReassignForm < ApplicationForm
+      include OpenProject::StaticRouting::UrlHelpers
 
-RSpec.describe "Time entry activity" do
-  shared_let(:admin) { create(:admin) }
-  let(:project) { create(:project) }
+      attr_reader :other_enumerations
 
-  before do
-    login_as(admin)
-  end
+      def initialize(other_enumerations:)
+        super()
 
-  it "allows creating new activities and activating them on projects" do
-    visit admin_time_entry_activities_path
+        @other_enumerations = other_enumerations
+      end
 
-    page.find_test_selector("add-enumeration-button").click
+      form do |form|
+        form.select_list(
+          name: :reassign_to_id,
+          label: I18n.t(:text_enumeration_category_reassign_to),
+          required: true,
+          input_width: :large
+        ) do |select|
+          other_enumerations.each do |activity|
+            select.option(value: activity.id, label: activity.name)
+          end
+        end
 
-    fill_in "Name", with: "A new activity"
-    click_on("Save")
-
-    # we are redirected back to the index page
-    expect(page).to have_current_path(admin_time_entry_activities_path)
-
-    expect(page).to have_content("A new activity")
-
-    visit project_settings_general_path(project)
-
-    click_on "Time tracking activities"
-
-    expect(page).to have_field("A new activity", checked: true)
-
-    uncheck "A new activity"
-
-    click_on "Save"
-
-    expect(page).to have_content "Successful update."
-
-    expect(page).to have_field("A new activity", checked: false)
+        form.group(layout: :horizontal) do |button_group|
+          button_group.button(name: :cancel,
+                              tag: :a,
+                              label: I18n.t(:button_cancel),
+                              scheme: :default,
+                              href: admin_time_entry_activities_path)
+          button_group.submit(name: :submit, label: I18n.t(:button_apply), scheme: :primary)
+        end
+      end
+    end
   end
 end

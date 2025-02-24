@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# -- copyright
+#-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2010-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,45 +26,28 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-# ++
+#++
 
-module Admin
-  module TimeEntryActivities
-    class IndexComponent < ApplicationComponent
-      include ApplicationHelper
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
+require "spec_helper"
 
-      options :time_entry_activities
+RSpec.describe "Work package priorities" do
+  shared_let(:admin) { create(:admin) }
 
-      private
+  before do
+    login_as(admin)
+  end
 
-      def max_activity_position
-        time_entry_activities.map(&:position).max
-      end
+  it "allows creating new priorities" do
+    visit admin_settings_work_package_priorities_path
 
-      def wrapper_data_attributes
-        {
-          controller: "generic-drag-and-drop",
-          "application-target": "dynamic"
-        }
-      end
+    page.find_test_selector("add-enumeration-button").click
 
-      def drop_target_config
-        {
-          "is-drag-and-drop-target": true,
-          "target-container-accessor": "& > ul",
-          "target-allowed-drag-type": "time-entry-activity"
-        }
-      end
+    fill_in "Name", with: "Immediate"
+    click_on("Save")
 
-      def draggable_item_config(activity)
-        {
-          "draggable-id": activity.id,
-          "draggable-type": "time-entry-activity",
-          "drop-url": move_admin_time_entry_activity_path(activity)
-        }
-      end
-    end
+    # we are redirected back to the index page
+    expect(page).to have_current_path(admin_settings_work_package_priorities_path)
+
+    expect(page).to have_content("Immediate")
   end
 end

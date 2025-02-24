@@ -460,9 +460,6 @@ Rails.application.routes.draw do
         delete "enterprise/delete_trial_key" => "enterprises#delete_trial_key"
       end
     end
-    resources :enumerations do
-      post "move/:id", action: "move", on: :collection
-    end
 
     delete "design/logo" => "custom_styles#logo_delete", as: "custom_style_logo_delete"
     delete "design/export_logo" => "custom_styles#export_logo_delete", as: "custom_style_export_logo_delete"
@@ -538,6 +535,13 @@ Rails.application.routes.draw do
       # It is important to have this named something else than "work_packages".
       # Otherwise the angular ui-router will also recognize that as a WorkPackage page and apply according classes.
       resource :work_packages_general, controller: "/admin/settings/work_packages_general", only: %i[show update]
+      resources :work_package_priorities, except: [:show] do
+        member do
+          put :move
+          get :reassign
+        end
+      end
+
       resource :progress_tracking, controller: "/admin/settings/progress_tracking", only: %i[show update]
       resource :projects, controller: "/admin/settings/projects_settings", only: %i[show update]
       resource :new_project, controller: "/admin/settings/new_project_settings", only: %i[show update]

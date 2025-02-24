@@ -43,6 +43,6 @@ See COPYRIGHT and LICENSE files for more details.
   end
 %>
 
-<%= primer_form_with(model: @time_entry_activity, url: admin_time_entry_activities_path) do |f| %>
-  <%= render(Admin::TimeEntryActivities::ActivityForm.new(f)) %>
+<%= primer_form_with(model: @enumeration, scope: :enumeration, url: url_for(action: :create)) do |f| %>
+  <%= render(Admin::Enumerations::ItemForm.new(f)) %>
 <% end %>
