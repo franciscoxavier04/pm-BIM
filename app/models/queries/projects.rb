@@ -28,45 +28,47 @@
 
 module Queries::Projects
   ::Queries::Register.register(ProjectQuery) do
-    filter Filters::AncestorFilter
-    filter Filters::AvailableProjectAttributesFilter
-    filter Filters::AvailableCustomFieldsProjectsFilter
-    filter Filters::TypeFilter
     filter Filters::ActiveFilter
-    filter Filters::TemplatedFilter
-    filter Filters::PublicFilter
-    filter Filters::NameFilter
-    filter Filters::NameAndIdentifierFilter
-    filter Filters::MemberOfFilter
-    filter Filters::TypeaheadFilter
-    filter Filters::CustomFieldFilter
+    filter Filters::AncestorFilter
+    filter Filters::AnyStageOrGateFilter
+    filter Filters::AvailableCustomFieldsProjectsFilter
+    filter Filters::AvailableProjectAttributesFilter
     filter Filters::CreatedAtFilter
-    filter Filters::LatestActivityAtFilter
-    filter Filters::PrincipalFilter
-    filter Filters::ParentFilter
+    filter Filters::CustomFieldFilter
+    filter Filters::FavoredFilter
     filter Filters::IdFilter
+    filter Filters::LatestActivityAtFilter
+    filter Filters::LifeCycleGateFilter
+    filter Filters::LifeCycleStageFilter
+    filter Filters::MemberOfFilter
+    filter Filters::NameAndIdentifierFilter
+    filter Filters::NameFilter
+    filter Filters::ParentFilter
+    filter Filters::PrincipalFilter
     filter Filters::ProjectStatusFilter
+    filter Filters::PublicFilter
+    filter Filters::TemplatedFilter
+    filter Filters::TypeFilter
+    filter Filters::TypeaheadFilter
     filter Filters::UserActionFilter
     filter Filters::VisibleFilter
-    filter Filters::FavoredFilter
-    filter Filters::AnyStageOrGateFilter
 
+    order Orders::CustomFieldOrder
     order Orders::DefaultOrder
     order Orders::LatestActivityAtOrder
-    order Orders::RequiredDiskSpaceOrder
-    order Orders::CustomFieldOrder
     order Orders::LifeCycleStepOrder
-    order Orders::ProjectStatusOrder
     order Orders::NameOrder
+    order Orders::ProjectStatusOrder
+    order Orders::RequiredDiskSpaceOrder
     order Orders::TypeaheadOrder
 
     select Selects::CreatedAt
     select Selects::CustomField
     select Selects::Default
+    select Selects::Favored
     select Selects::LatestActivityAt
     select Selects::LifeCycleStep
     select Selects::RequiredDiskSpace
     select Selects::Status
-    select Selects::Favored
   end
 end

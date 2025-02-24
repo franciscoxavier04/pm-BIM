@@ -47,17 +47,19 @@ class Projects::ProjectsFiltersComponent < Filter::FilterComponent
     allowlist = [
       Queries::Filters::Shared::CustomFields::Base,
       Queries::Projects::Filters::ActiveFilter,
+      Queries::Projects::Filters::AnyStageOrGateFilter,
       Queries::Projects::Filters::CreatedAtFilter,
       Queries::Projects::Filters::FavoredFilter,
       Queries::Projects::Filters::IdFilter,
       Queries::Projects::Filters::LatestActivityAtFilter,
+      Queries::Projects::Filters::LifeCycleGateFilter,
+      Queries::Projects::Filters::LifeCycleStageFilter,
       Queries::Projects::Filters::MemberOfFilter,
       Queries::Projects::Filters::NameAndIdentifierFilter,
       Queries::Projects::Filters::ProjectStatusFilter,
       Queries::Projects::Filters::PublicFilter,
       Queries::Projects::Filters::TemplatedFilter,
-      Queries::Projects::Filters::TypeFilter,
-      Queries::Projects::Filters::AnyStageOrGateFilter
+      Queries::Projects::Filters::TypeFilter
     ]
 
     allowlist.any? { |clazz| filter.is_a? clazz }

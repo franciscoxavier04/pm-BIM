@@ -2,7 +2,7 @@
 
 # -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2010-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -35,15 +35,8 @@ RSpec.describe Queries::Projects::Filters::AnyStageOrGateFilter do
     let(:class_key) { :any_stage_or_gate }
     let(:type) { :date }
     let(:model) { Project }
-    let(:attribute) { :created_at }
     let(:values) { ["3"] }
-
-    describe "human_name" do
-      it "is 'Any stage or gate'" do
-        expect(instance.human_name)
-          .to eql I18n.t("project.filters.any_stage_or_gate")
-      end
-    end
+    let(:human_name) { I18n.t("project.filters.any_stage_or_gate") }
 
     describe "default_operator" do
       it "is 'today'" do
