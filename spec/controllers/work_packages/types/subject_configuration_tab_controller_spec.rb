@@ -31,7 +31,7 @@
 
 require "spec_helper"
 
-RSpec.describe WorkPackages::Types::SubjectConfigurationController do
+RSpec.describe WorkPackages::Types::SubjectConfigurationTabController do
   let(:user) { create(:admin) }
   let(:wp_type) { create(:type) }
 

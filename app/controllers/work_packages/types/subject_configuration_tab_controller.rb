@@ -30,7 +30,7 @@
 
 module WorkPackages
   module Types
-    class SubjectConfigurationController < ApplicationController
+    class SubjectConfigurationTabController < ApplicationController
       layout "admin"
 
       before_action :require_admin
