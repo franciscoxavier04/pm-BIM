@@ -84,8 +84,8 @@ module OpTurbo
       render_flash_message_via_turbo_stream(**, scheme: :danger, icon: :stop)
     end
 
-    def render_aria_update_message(role: "alert", message: "asdf")
-      turbo_streams << OpTurbo::StreamComponent.new(action: :aria, role:, message:, target: "nil").render_in(view_context)
+    def render_aria_update_message(role: "alert", message:, type:)
+      turbo_streams << OpTurbo::StreamComponent.new(action: :aria, role:, type:, message:, target: "nil").render_in(view_context)
     end
 
     def render_flash_message_via_turbo_stream(message:, component: OpPrimer::FlashComponent, **)

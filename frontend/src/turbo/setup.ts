@@ -4,6 +4,7 @@ import TurboPower from 'turbo_power';
 import { registerDialogStreamAction } from './dialog-stream-action';
 import { addTurboEventListeners } from './turbo-event-listeners';
 import { registerFlashStreamAction } from './flash-stream-action';
+import { registerAriaStreamAction } from './aria-stream-action';
 import { registerInputCaptionStreamAction } from './input-caption-stream-action';
 import { addTurboGlobalListeners } from './turbo-global-listeners';
 import { applyTurboNavigationPatch } from './turbo-navigation-patch';
@@ -30,6 +31,7 @@ addTurboEventListeners();
 addTurboGlobalListeners();
 registerDialogStreamAction();
 registerFlashStreamAction();
+registerAriaStreamAction();
 registerInputCaptionStreamAction();
 
 // Apply navigational patch
