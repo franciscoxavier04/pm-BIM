@@ -39,6 +39,7 @@ module WorkPackages
                      disabled:,
                      is_milestone:,
                      focused_field: :start_date,
+                     touched_field_map: nil,
                      date_mode: nil)
         super()
 
@@ -46,6 +47,7 @@ module WorkPackages
         @schedule_manually = schedule_manually
         @is_milestone = is_milestone
         @date_mode = date_mode
+        @touched_field_map = touched_field_map
         @focused_field = update_focused_field(focused_field)
         @disabled = disabled
       end
@@ -60,11 +62,13 @@ module WorkPackages
       end
 
       def show_text_field?(name)
-        return true if @is_milestone
-        return true unless @schedule_manually
+        return true if @is_milestone || !@schedule_manually
+        return true if @date_mode.present? && @date_mode == "range"
+        return true if field_value(name).present? || @touched_field_map["#{name}_touched"]
 
-        (@date_mode.present? && @date_mode == "range") ||
-          field_value(name).present? || (name == :due_date && field_value(:start_date).nil?)
+        return true if name == :due_date && field_value(:start_date).nil?
+
+        name == :due_date && @touched_field_map["start_date_touched"].present? && !@touched_field_map["start_date_touched"]
       end
 
       def text_field_options(name:, label:)
@@ -124,13 +128,20 @@ module WorkPackages
       end
 
       def focused_field_for_single_date_mode(focused_field)
-        if focused_field == "duration"
-          :duration
-        elsif field_value(:start_date).nil?
-          :due_date
-        elsif field_value(:due_date).nil?
-          :start_date
+        return :duration if focused_field.to_s == "duration"
+
+        # When the combined date is triggered, we have to actually check for the values.
+        # This happens only on initialization
+        if focused_field == "combinedDate"
+          return :due_date if field_value(:start_date).nil?
+          return :start_date if field_value(:due_date).nil?
         end
+
+        # Focus the field if it is shown..
+        return focused_field if show_text_field?(focused_field)
+
+        # .. if not, focus the other one
+        focused_field == :start_date ? :due_date : :start_date
       end
 
       def disabled?(name)
