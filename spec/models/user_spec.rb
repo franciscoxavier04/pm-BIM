@@ -47,6 +47,10 @@ RSpec.describe User do
           status:)
   end
 
+  describe "associations" do
+    it { is_expected.to have_many(:comments).with_foreign_key("author_id").dependent(:destroy).inverse_of(:author) }
+  end
+
   describe "with long but allowed attributes" do
     it "is valid" do
       user.firstname = "a" * 256
