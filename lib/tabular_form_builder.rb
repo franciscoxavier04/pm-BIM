@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -44,7 +46,7 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
       input_options, label_options = extract_from options
 
       if field_has_errors?(field)
-        input_options[:class] << " -error"
+        add_error_class(input_options)
       end
 
       label = label_for_field(field, label_options)
@@ -92,7 +94,7 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
     input_options, label_options = extract_from options
 
     if field_has_errors?(field)
-      input_options[:class] << " -error"
+      add_error_class(input_options)
     end
 
     @object_name.to_s.sub!(/\[\]$/, "") || @object_name.to_s.sub!(/\[\]\]$/, "]")
@@ -130,7 +132,7 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
     label_options[:for] = "#{sanitized_object_name}_#{field}_#{value.downcase}"
 
     if field_has_errors?(field)
-      input_options[:class] << " -error"
+      add_error_class(input_options)
     end
 
     label = label_for_field(field, label_options)
@@ -146,7 +148,7 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
     end
 
     if field_has_errors?(field)
-      html_options[:class] << " -error"
+      add_error_class(html_options)
     end
 
     merge_required_attributes(options[:required], html_options)
@@ -239,14 +241,14 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
 
   def field_container_css_class(selector, options)
     classes = if TEXT_LIKE_FIELDS.include?(selector)
-                "form--text-field-container"
+                ["form--text-field-container"]
               else
-                "form--#{selector.to_s.tr('_', '-')}-container"
+                ["form--#{selector.to_s.tr('_', '-')}-container"]
               end
 
-    classes << (" #{options.fetch(:container_class, '')}")
+    classes << options[:container_class]
 
-    classes.strip
+    classes.compact
   end
 
   ##
@@ -295,7 +297,7 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
 
   def label_for_field_errors(content, options, field)
     if field_has_errors?(field)
-      options[:class] << " -error"
+      add_error_class(options)
       error_label = I18n.t("errors.field_erroneous_label",
                            full_errors: @object.errors.full_messages_for(field).join(" "))
       content << content_tag("p", error_label, class: "hidden-for-sighted")
@@ -369,5 +371,9 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
     else
       method.to_s.camelize
     end
+  end
+
+  def add_error_class(options)
+    options[:class] = Array(options[:class]) + ["-error"]
   end
 end

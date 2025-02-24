@@ -475,8 +475,6 @@ module ApplicationHelper
 
   def password_complexity_requirements
     rules = OpenProject::Passwords::Evaluator.rules_description
-    # use 0..0, so this doesn't fail if rules is an empty string
-    rules[0] = rules[0..0].upcase
 
     s = raw "<em>" + OpenProject::Passwords::Evaluator.min_length_description + "</em>"
     s += raw "<br /><em>" + rules + "</em>" unless rules.empty?
