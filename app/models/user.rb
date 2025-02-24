@@ -91,6 +91,7 @@ class User < Principal
            inverse_of: :user,
            dependent: :destroy
 
+  has_many :emoji_reactions, dependent: :destroy
   has_many :remote_identities, dependent: :destroy
 
   # Users blocked via brute force prevention
