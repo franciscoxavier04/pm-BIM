@@ -58,7 +58,7 @@ module Admin
                               tag: :a,
                               label: I18n.t(:button_cancel),
                               scheme: :default,
-                              href: admin_time_entry_activities_path)
+                              href: admin_settings_time_entry_activities_path)
           button_group.submit(name: :submit, label: I18n.t(:button_apply), scheme: :primary)
         end
       end

@@ -30,9 +30,7 @@
 
 module Admin
   module Settings
-    class DocumentCategoriesController < ApplicationController
-      include EnumerationsController
-
+    class DocumentCategoriesController < EnumerationsControllerBase
       menu_item :document_categories
 
       private

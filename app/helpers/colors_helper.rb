@@ -88,7 +88,7 @@ module ColorsHelper
 
   def icon_for_color(color, options = {})
     return unless color
-    return unless color.hexcode.present?
+    return if color.hexcode.blank?
 
     style = join_style_arguments(
       "background-color: #{color.hexcode}",

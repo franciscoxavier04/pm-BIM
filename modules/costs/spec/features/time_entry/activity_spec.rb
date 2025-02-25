@@ -37,7 +37,7 @@ RSpec.describe "Time entry activity" do
   end
 
   it "allows creating new activities and activating them on projects" do
-    visit admin_time_entry_activities_path
+    visit admin_settings_time_entry_activities_path
 
     page.find_test_selector("add-enumeration-button").click
 
@@ -45,7 +45,7 @@ RSpec.describe "Time entry activity" do
     click_on("Save")
 
     # we are redirected back to the index page
-    expect(page).to have_current_path(admin_time_entry_activities_path)
+    expect(page).to have_current_path(admin_settings_time_entry_activities_path)
 
     expect(page).to have_content("A new activity")
 

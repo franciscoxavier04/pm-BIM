@@ -29,9 +29,7 @@
 # ++
 
 module Admin::Settings
-  class WorkPackagePrioritiesController < ApplicationController
-    include ::Admin::EnumerationsController
-
+  class WorkPackagePrioritiesController < EnumerationsControllerBase
     menu_item :priorities
 
     private

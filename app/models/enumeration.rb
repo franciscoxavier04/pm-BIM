@@ -174,8 +174,3 @@ class Enumeration < ApplicationRecord
     raise "Can't delete enumeration" if in_use?
   end
 end
-
-# Force load the subclasses in development mode
-%w(time_entry_activity issue_priority).each do |enum_subclass|
-  require enum_subclass
-end

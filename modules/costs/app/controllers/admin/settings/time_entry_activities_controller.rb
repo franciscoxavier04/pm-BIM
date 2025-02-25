@@ -29,19 +29,19 @@
 #++
 
 module Admin
-  class TimeEntryActivitiesController < ApplicationController
-    include EnumerationsController
+  module Settings
+    class TimeEntryActivitiesController < EnumerationsControllerBase
+      menu_item :time_entry_activities
 
-    menu_item :time_entry_activities
+      private
 
-    private
+      def enumeration_class
+        TimeEntryActivity
+      end
 
-    def enumeration_class
-      TimeEntryActivity
-    end
-
-    def enumeration_param_key
-      enumeration_class.model_name.param_key
+      def enumeration_param_key
+        enumeration_class.model_name.param_key
+      end
     end
   end
 end

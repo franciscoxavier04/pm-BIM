@@ -70,10 +70,12 @@ Rails.application.routes.draw do
   resources :hourly_rates, only: %i[edit update]
 
   namespace :admin do
-    resources :time_entry_activities, except: [:show] do
-      member do
-        put :move
-        get :reassign
+    namespace :settings do
+      resources :time_entry_activities, except: [:show] do
+        member do
+          put :move
+          get :reassign
+        end
       end
     end
 
