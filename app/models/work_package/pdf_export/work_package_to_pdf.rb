@@ -58,7 +58,7 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
     render_work_package
     success(pdf.render)
   rescue StandardError => e
-    Rails.logger.error { "Failed to generate PDF export: #{e} #{e.message}}." }
+    Rails.logger.error "Failed to generate PDF export:  #{e.message}:\n#{e.backtrace.join("\n")}"
     error(I18n.t(:error_pdf_failed_to_export, error: e.message))
   end
 
