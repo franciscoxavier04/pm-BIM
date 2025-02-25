@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "datepicker"
 
 module Components
@@ -101,10 +103,6 @@ module Components
       page.find_test_selector("op-datepicker-modal--#{date}-date-field--today").click
     end
 
-    def save!(text: I18n.t(:button_save))
-      super
-    end
-
     def set_duration(value)
       set_field(duration_field, value)
     end
@@ -165,6 +163,10 @@ module Components
     end
 
     private
+
+    def save_button_label
+      I18n.t(:button_save)
+    end
 
     def expect_field_error(field, expected_error)
       input_validation_element = input_aria_related_element(field, describedby: "validation")

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Components
   class Datepicker
     include Capybara::DSL
@@ -113,8 +115,12 @@ module Components
       select_day date.day
     end
 
-    def save!(text: I18n.t(:button_apply))
-      container.find('[data-test-selector="op-datepicker-modal"] .button', text:).click
+    def save!
+      container.click_button save_button_label
+    end
+
+    def expect_save_button_disabled
+      expect(container).to have_button(save_button_label, disabled: true)
     end
 
     ##
@@ -187,6 +193,10 @@ module Components
     end
 
     protected
+
+    def save_button_label
+      I18n.t(:button_apply)
+    end
 
     def focus_field(field)
       field.click
