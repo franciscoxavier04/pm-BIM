@@ -9,7 +9,7 @@
         grid.with_area(
           :notes,
           display: display_notes_input_value,
-          data: { "meeting-agenda-item-form-target": "notesInput" }
+          data: { "test-selector": "meeting-outcome-input" }
         ) do
           render(MeetingAgendaItem::Outcome::Notes.new(f))
         end

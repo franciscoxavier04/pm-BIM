@@ -22,7 +22,7 @@
                 ml: 2,
                 test_selector: "op-meeting-outcome-actions"
               )
-              edit_action_item(menu) if @meeting_outcome.editable?
+              edit_action_item(menu)
               copy_action_item(menu)
               menu.with_divider
               delete_action_item(menu)

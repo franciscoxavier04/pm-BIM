@@ -28,44 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module MeetingOutcomes
-  module EditableItem
-    extend ActiveSupport::Concern
-
-    included do
-      validate :validate_editable, :validate_meeting_existence, :user_allowed_to_add
-    end
-
-    protected
-
-    def validate_editable
-      return unless visible?
-
-      unless model.editable?
-        errors.add :base, I18n.t(:text_outcome_not_editable_anymore)
-      end
-    end
-
-    def validate_meeting_existence
-      return if model.meeting_agenda_item.meeting.nil?
-
-      unless visible?
-        errors.add :base, :does_not_exist
-      end
-    end
-
-    def user_allowed_to_add
-      return unless visible?
-
-      unless user.allowed_in_project?(:create_meeting_minutes, model.meeting_agenda_item.project)
-        errors.add :base, :error_unauthorized
-      end
-    end
-
-    private
-
-    def visible?
-      @visible ||= model.meeting_agenda_item.meeting&.visible?(user)
-    end
+FactoryBot.define do
+  factory :meeting_outcome do |m|
+    meeting_agenda_item factory: :meeting_agenda_item
+    kind { :information }
+    m.sequence(:notes) { |n| "Meeting outcome #{n}" }
   end
 end
