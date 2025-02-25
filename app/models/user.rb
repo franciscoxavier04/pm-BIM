@@ -96,7 +96,6 @@ class User < Principal
            dependent: :destroy,
            inverse_of: :author
 
-
   has_many :emoji_reactions, dependent: :destroy
   has_many :remote_identities, dependent: :destroy
 
