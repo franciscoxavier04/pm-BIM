@@ -30,10 +30,4 @@
 class CustomFieldsProject < ApplicationRecord
   belongs_to :project
   belongs_to :custom_field
-
-  def self.human_attribute_name(attribute, options = {})
-    {
-      project_ids: "#{Project.model_name.human} IDs"
-    }[attribute] || super
-  end
 end

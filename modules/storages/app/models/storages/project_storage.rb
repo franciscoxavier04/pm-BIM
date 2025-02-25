@@ -57,12 +57,6 @@ module Storages
         .where(storage: Storage.automatic_management_enabled)
     end
 
-    def self.human_attribute_name(attribute, options = {})
-      {
-        project_ids: "#{Project.model_name.human} IDs"
-      }[attribute] || super
-    end
-
     def project_folder_mode_possible?(project_folder_mode)
       storage.present? && storage.available_project_folder_modes&.include?(project_folder_mode)
     end

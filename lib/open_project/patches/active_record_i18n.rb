@@ -35,7 +35,7 @@ module ActiveRecord
     def self.human_attribute_name(attr, options = {})
       attr = attr.to_s.delete_suffix("_id")
 
-      options[:default] ||= I18n.t("activerecord.models.#{attr}", count: 1, default: nil)
+      options[:default] ||= :"activerecord.models.#{attr}"
 
       if Rails.env.local?
         def attr.humanize(*)
