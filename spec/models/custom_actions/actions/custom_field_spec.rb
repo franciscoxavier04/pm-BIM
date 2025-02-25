@@ -112,7 +112,7 @@ RSpec.describe CustomActions::Actions::CustomField do
       expect(described_class.all.map(&:custom_field))
         .to match_array(custom_fields)
 
-      described_class.find_each do |subclass|
+      described_class.all.each do |subclass|
         expect(subclass.ancestors).to include(described_class)
       end
     end

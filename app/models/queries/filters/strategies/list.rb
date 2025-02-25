@@ -30,6 +30,9 @@
 
 module Queries::Filters::Strategies
   class List < BaseStrategy
+    delegate :allowed_values,
+             to: :filter
+
     self.supported_operators = ["=", "!"]
     self.default_operator = "="
 
@@ -50,16 +53,12 @@ module Queries::Filters::Strategies
       end
     end
 
-    def allowed_values
-      filter.allowed_values.map { |_, v| v.to_s }
-    end
-
     def valid_values!
-      filter.values &= (allowed_values + ["-1"])
+      filter.values &= (allowed_values.map { |_, v| v.to_s } + ["-1"])
     end
 
     def non_valid_values?
-      (values.compact_blank & (allowed_values + ["-1"])) != values.compact_blank
+      (values.compact_blank & (allowed_values.map { |_, v| v.to_s } + ["-1"])) != values.compact_blank
     end
   end
 end
