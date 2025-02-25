@@ -72,6 +72,12 @@ GIT
       rspec (>= 3.10)
 
 PATH
+  remote: ../openproject-token
+  specs:
+    openproject-token (5.0.0)
+      activemodel
+
+PATH
   remote: modules/auth_plugins
   specs:
     openproject-auth_plugins (1.0.0)
@@ -861,8 +867,6 @@ GEM
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.20.0)
       view_component (>= 3.1, < 4.0)
-    openproject-token (4.0.0)
-      activemodel
     openssl (3.3.0)
     openssl-signature_algorithm (1.3.0)
       openssl (> 2.0)
@@ -1387,7 +1391,7 @@ DEPENDENCIES
   openproject-reporting!
   openproject-storages!
   openproject-team_planner!
-  openproject-token (~> 4.0)
+  openproject-token!
   openproject-two_factor_authentication!
   openproject-webhooks!
   openproject-xls_export!
@@ -1750,7 +1754,7 @@ CHECKSUMS
   openproject-reporting (1.0.0)
   openproject-storages (1.0.0)
   openproject-team_planner (1.0.0)
-  openproject-token (4.0.0) sha256=f71cdad5632b6b7b598223b185f4928366cb6038eca1a84a6de65cf15cecd0e0
+  openproject-token (5.0.0)
   openproject-two_factor_authentication (1.0.0)
   openproject-webhooks (1.0.0)
   openproject-xls_export (1.0.0)
