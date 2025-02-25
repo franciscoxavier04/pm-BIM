@@ -2,8 +2,14 @@
 en:
   activerecord:
     attributes:
+      oauth_client:
+        client_id: Client ID
+        client_secret: Client secret
+      project:
+        project_folder_type: Project folder type
       storages/file_link:
-        origin_id: Origin Id
+        origin: Origin
+        storage: Storage
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -11,7 +17,10 @@ en:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         nextcloud_audience: Nextcloud Audience
       storages/project_storage:
+        project_folder: Project folder
+        project_folder_mode: Project folder mode
         storage: Storage
+        storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
         creator: Creator
@@ -401,9 +410,7 @@ en:
         name: OneDrive/SharePoint
         name_placeholder: e.g. OneDrive
     show_attachments_toggle:
-      description: 'Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
-
-        '
+      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Show attachments in the work packages files tab
     storage_list_blank_slate:
       description: Add a storage to see them here.

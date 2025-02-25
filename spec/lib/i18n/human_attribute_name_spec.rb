@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,13 +30,31 @@
 
 require "spec_helper"
 
-RSpec.describe Queries::WorkPackages::Filter::DuplicatesFilter do
-  it_behaves_like "filter by work package id" do
-    let(:class_key) { :duplicates }
-    let(:human_name) { "duplicates" }
-
-    it_behaves_like "filter for relation" do
-      let(:relation_type) { :duplicates }
+RSpec.describe "I18n human_attribute_name", type: :helper do
+  let(:test_model) do
+    # Also tests that the application controller has the model included
+    Class.new(ApplicationRecord) do
+      def self.name
+        "TestModel"
+      end
     end
+  end
+
+  it "returns a valid translation for basic attribute" do
+    # looks up "activerecord.attributes.test_model.name", "attributes.name",
+    # and "activerecord.models.name" i18n keys
+    # "activerecord.attributes.test_model.name" i18n key does not exist
+    # "attributes.name" i18n key exists and translates to "Name"
+    expect(test_model.human_attribute_name("name")).to eq "Name"
+  end
+
+  it "raises an error if the translation is missing" do
+    expect { test_model.human_attribute_name("weird_attribute_that_does_not_exist") }
+      .to raise_error(/I18n translation missing for attribute weird/)
+  end
+
+  it "returns a valid translation for a model name if corresponding i18n key activerecord.models.<attribute> exists" do
+    # looks up "activerecord.models.project" i18n key
+    expect(test_model.human_attribute_name("project")).to eq "Project"
   end
 end
