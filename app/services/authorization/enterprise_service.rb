@@ -31,7 +31,7 @@
 class Authorization::EnterpriseService
   attr_accessor :token
 
-  GUARDED_ACTIONS = %i[
+  ENTERPRISE_PLAN_ACTIONS = %i[
     baseline_comparison
     board_view
     conditional_highlighting
@@ -57,6 +57,15 @@ class Authorization::EnterpriseService
     work_package_subject_generation
   ].freeze
 
+  CORPORATE_PLAN_ACTIONS = %i[
+    time_tracking_enforcement
+  ].freeze
+
+  ACTIONS_PER_PLAN = {
+    enterprise: ENTERPRISE_PLAN_ACTIONS,
+    corporate: CORPORATE_PLAN_ACTIONS + ENTERPRISE_PLAN_ACTIONS
+  }.freeze
+
   def initialize(token)
     self.token = token
   end
@@ -75,9 +84,17 @@ class Authorization::EnterpriseService
 
   private
 
+  def token_plan
+    # fallback to enterprise if no token is provided
+    (token.token_object.plan || OpenProject::Token::DEFAULT_PLAN).to_sym
+  end
+
+  def allowed_actions
+    @allowed_actions ||= ACTIONS_PER_PLAN[token_plan] + (token.token_object.features || [])
+  end
+
   def process(action)
-    # Every non-expired token
-    GUARDED_ACTIONS.include?(action.to_sym)
+    allowed_actions.include?(action.to_sym)
   end
 
   def result(bool)
