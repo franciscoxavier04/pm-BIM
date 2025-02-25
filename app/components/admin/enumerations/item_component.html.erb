@@ -18,8 +18,10 @@
           end
         end
 
-        enumeration_info.with_column(mr: 2) do
-          render(Primer::Beta::Text.new(color: :subtle)) { enumeration.active? ? "Active" : "Inactive" }
+        unless enumeration.active?
+          enumeration_info.with_column(mr: 2) do
+            render(Primer::Beta::Text.new(color: :subtle)) { t(:label_inactive) }
+          end
         end
       end
 
