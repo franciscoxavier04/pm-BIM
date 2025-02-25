@@ -136,7 +136,7 @@ Rails.application.routes.draw do
       get "edit/:tab" => "types#edit", as: "edit_tab"
       match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
       put :subject_configuration,
-          controller: "work_packages/types/subject_configuration",
+          controller: "work_packages/types/subject_configuration_tab",
           action: "update_subject_configuration"
     end
 

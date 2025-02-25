@@ -30,7 +30,7 @@
 
 module WorkPackages
   module Types
-    class SubjectConfigurationController < ApplicationController
+    class SubjectConfigurationTabController < ApplicationController
       layout "admin"
 
       before_action :require_admin
@@ -48,7 +48,7 @@ module WorkPackages
           end
 
           call.on_failure do
-            @default_tab = "subject_configuration"
+            params[:tab] = "subject_configuration"
             render template: "types/edit", status: :unprocessable_entity
           end
         end
