@@ -40,8 +40,8 @@ tr:
         participants_invited: "Davetliler"
         project: "Proje"
         start_date: "Tarih"
-        start_time: "Başlangıç zamanı "
-        start_time_hour: "Başlangıç zamanı "
+        start_time: "Başlama tarihi"
+        start_time_hour: "Başlama saati"
       meeting_agenda_item:
         title: "Başlık"
         author: "Yazar"
@@ -54,8 +54,8 @@ tr:
         frequency: "Sıklık"
         interval: "Zaman aralığı"
         start_date: "Başlama zamanı"
-        start_time: "Başlangıç zamanı"
-        start_time_hour: "Başlangıç zamanı"
+        start_time: "Başlama tarihi"
+        start_time_hour: "Başlama saati"
         end_after: "Toplantı serisi bitişi"
         iterations: "Yineleme sayısı"
     errors:
@@ -165,7 +165,7 @@ tr:
       template: "Oluşturuldukça bu katılımcılar, gelecekteki tüm toplantılara otomatik olarak davet edilecektir."
     attachments:
       template: "These attached files will be included in all future meetings in the series."
-      text: "Eklenen dosyalar tüm katılımcıların paylaşımına açıktır. Bu dosyaları ajandanıza sürükleyip bırakabilirsiniz."
+      text: "Eklenen dosyalar tüm katılımcıların paylaşımına açıktır. Bu dosyaları gündeme sürükleyip bırakabilirsiniz."
     copy:
       title: "Toplantıyı kopyala: %{title}"
       attachments: "Ekleri kopyala"
@@ -194,7 +194,7 @@ tr:
       cancelled:
         header: "İptal edildi: Toplantı '%{title}'"
         header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
-        header_series: "Cancelled: Meeting series '%{title}'"
+        header_series: "İptal edildi: Toplantı serisi '%{title}'"
         summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
         summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
         summary: "'%{title}' %{actor} tarafından iptal edilmiştir."
@@ -214,7 +214,7 @@ tr:
       recurring: "Tekrarlanan"
       recurring_text: "Create meeting series with dynamic template for each occurrence."
       structured_text: "Toplantınızı dinamik bir gündem maddeleri listesi olarak düzenleyin ve isteğe bağlı olarak bunları bir iş paketine bağlayın."
-      structured_text_copy: "Toplantıyı kopyalamak toplantıyla ilgili ajanda maddelerini kopyalamayacaktır, sadece detaylar kopyalanacak"
+      structured_text_copy: "Toplantıyı kopyalamak toplantıyla ilgili gündem maddelerini kopyalamayacaktır, sadece detaylar kopyalanacak"
     copied: "#%{id} numaralı toplantıdan kopyalandı"
     delete_dialog:
       one_time:
@@ -223,10 +223,10 @@ tr:
         confirmation_message_html: >
           Bu işlem geri döndürülemez. Lütfen dikkatli olun.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "Bu toplantıyı iptal et"
+        heading: "Sadece bu toplantı mı iptal edilsin?"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
+          Şablonda yer almayan tüm toplantı bilgileri kaybolacaktır. Devam etmek istiyor musunuz?
         confirm_button: "Bu etklinliği iptal et"
     blankslate:
       title: "Gösterilecek toplantı yok"
@@ -267,7 +267,7 @@ tr:
       never: "hiçbir zaman"
       specific_date: "belirli bir tarihten sonra"
       iterations: "birkaç terkrardan sonra"
-    starts: "Starts"
+    starts: "Başlangıçlar"
     in_words:
       daily_interval: "Her %{interval} günde"
       working_days: "Her iş günü"
@@ -318,9 +318,9 @@ tr:
   permission_delete_meetings: "Toplantıları silme"
   permission_view_meetings: "Toplantıları görüntüle"
   permission_create_meeting_agendas: "Toplantı gündemleri oluşturun"
-  permission_create_meeting_agendas_explanation: "Klasik Toplantı modülünün ajanda içeriğinin düzenlenmesini sağlar."
+  permission_create_meeting_agendas_explanation: "Klasik Toplantı modülünün gündem içeriğinin düzenlenmesini sağlar."
   permission_manage_agendas: "Acentaları yönetme"
-  permission_manage_agendas_explanation: "Dinamik Toplantı modülünün ajanda maddelerini yönetilmesini sağlar."
+  permission_manage_agendas_explanation: "Dinamik Toplantı modülünün gündem maddelerinin yönetilmesini sağlar."
   permission_close_meeting_agendas: "Acenta kapat"
   permission_send_meeting_agendas_notification: "Acentalar için inceleme bildirimi gönder"
   permission_create_meeting_minutes: "Dakikaları yönet"
@@ -333,7 +333,7 @@ tr:
   text_meeting_agenda_for_meeting: 'toplantı gündemi "%{meeting}"'
   text_meeting_series_end_early_heading: "Gelecekteki toplantılar silinsin mi?"
   text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
-  text_meeting_closing_are_you_sure: "Toplantı ajandasını kapatmak istediğinizden emin misiniz?"
+  text_meeting_closing_are_you_sure: "Toplantı gündemini kapatmak istediğinizden emin misiniz?"
   text_meeting_agenda_open_are_you_sure: "Bu, dakikalardaki tüm değişikliklerin üzerine yazacaktır! Devam etmek istiyor musun?"
   text_meeting_minutes_for_meeting: 'toplantı için dakikalar "%{meeting}"'
   text_notificiation_invited: "Bu posta, aşağıdaki toplantı için bir ics girişi içermektedir:"
@@ -361,17 +361,17 @@ tr:
   label_agenda_item_move_to_bottom: "En aşağı taşı"
   label_agenda_item_move_up: "Yukarı taşı"
   label_agenda_item_move_down: "Aşağı taşı"
-  label_agenda_item_add_notes: "Not eklemek"
+  label_agenda_item_add_notes: "Not ekle"
   label_agenda_item_work_package: "Gündem maddesinin iş parçası"
   text_agenda_item_title: 'Gündem maddesi %{title}"'
-  text_agenda_work_package_deleted: 'Silinen iş parçası için ajanda maddesi'
-  text_deleted_agenda_item: 'Silinen ajanda maddesi'
+  text_agenda_work_package_deleted: 'Silinen iş parçası için gündem maddesi'
+  text_deleted_agenda_item: 'Silinen gündem maddesi'
   label_initial_meeting_details: "Toplantı"
   label_meeting_details: "Toplantı detayları"
   label_meeting_series_details: "Toplantı serisi detayları"
   label_meeting_details_edit: "Toplantı detaylarını düzenle"
   label_meeting_state: "Toplantı durumu"
-  label_meeting_state_open: "Aç"
+  label_meeting_state_open: "Açık"
   label_meeting_state_open_html: "<i>Açık</i>"
   label_meeting_state_closed: "Kapalı"
   label_meeting_state_closed_html: "<i>Kapalı</i>"

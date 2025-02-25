@@ -160,12 +160,6 @@ class Meeting < ApplicationRecord
     !!template
   end
 
-  def author=(user)
-    super
-    # Don't add the author as participant if we already have some through nested attributes
-    participants.build(user:, invited: true) if new_record? && participants.empty? && user
-  end
-
   # Returns true if user or current user is allowed to view the meeting
   def visible?(user = User.current)
     user.allowed_in_project?(:view_meetings, project)

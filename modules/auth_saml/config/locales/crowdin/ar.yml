@@ -45,8 +45,8 @@ ar:
     providers:
       label_empty_title: "No SAML providers configured yet."
       label_empty_description: "Add a provider to see them here."
-      label_automatic_configuration: Automatic configuration
-      label_metadata: Metadata
+      label_automatic_configuration: التكوين التلقائي
+      label_metadata:
       label_metadata_endpoint: OpenProject metadata endpoint
       label_openproject_information: OpenProject information
       label_configuration_details: "Identity provider endpoints and certificates"

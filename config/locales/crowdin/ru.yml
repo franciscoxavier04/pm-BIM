@@ -347,7 +347,7 @@ ru:
         title: "Удалить список проектов"
         text: "Это действие не приведет к удалению ни одного проекта, содержащегося в списке. Вы уверены, что хотите удалить этот список проектов?"
     settings:
-      change_identifier: Идентификатор изменений
+      change_identifier: Изменить идентификатор
       actions:
         label_enable_all: "Включить всё"
         label_disable_all: "Выключить всё"
@@ -874,7 +874,7 @@ ru:
           true: "Разархивирован"
           false: "Архивирован"
         identifier: "Идентификатор"
-        latest_activity_at: "Последняя активность"
+        latest_activity_at: "Последние действия"
         parent: "Подпроект"
         public_value:
           title: "Видимость"
@@ -1298,6 +1298,10 @@ ru:
         work_package:
           is_not_a_valid_target_for_time_entries: "Пакет работ #%{id} не допустимым для переназначения времени записи."
           attributes:
+            id:
+              format: "%{message}"
+              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              blank: "ID не может быть пустым."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -3507,7 +3511,7 @@ ru:
   setting_disable_password_login: "Отключить аутентификацию по паролю"
   setting_diff_max_lines_displayed: "Максимальное количество отображаемых строк diff(разницы)"
   setting_omniauth_direct_login_provider: "Прямая аутентификация у провайдера SSO"
-  setting_display_subprojects_work_packages: "Отображать пакеты работ подпроектов в основном проекте по-умолчанию"
+  setting_display_subprojects_work_packages: "Отображать пакеты работ подпроектов в основном проекте по умолчанию"
   setting_duration_format: "Формат длительности"
   setting_duration_format_hours_only: "Только часы"
   setting_duration_format_days_and_hours: "Дни и часы"

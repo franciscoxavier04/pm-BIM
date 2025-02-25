@@ -1275,6 +1275,10 @@ de:
         work_package:
           is_not_a_valid_target_for_time_entries: "Arbeitspaket #%{id} ist kein gültiges Ziel für die Zuordnung der Zeiterfassungseinträge."
           attributes:
+            id:
+              format: "%{message}"
+              cannot_add_child_because_of_lack_of_permission: "Sie können kein Kind hinzufügen, weil Sie keine Berechtigung haben, das ausgewählte Arbeitspaket zu bearbeiten."
+              blank: "ID darf nicht leer sein."
             assigned_to:
               format: "%{message}"
             done_ratio:

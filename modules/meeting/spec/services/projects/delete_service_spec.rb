@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,37 +28,21 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SetAttributesService < ::BaseServices::SetAttributes
-    def set_attributes(params)
-      participants = params.delete(:participants_attributes)
+require "spec_helper"
 
-      super
+RSpec.describe Projects::DeleteService, "Meetings", type: :model do
+  shared_let(:user) { create(:admin) }
+  let(:project) { create(:project) }
 
-      if participants.present?
-        set_participants(participants)
-      else
-        set_default_participant
-      end
-    end
+  let(:instance) { described_class.new(user:, model: project) }
 
-    def set_default_attributes(_params)
-      model.change_by_system do
-        model.author = user
-        model.duration ||= 1
-      end
-    end
+  subject { instance.call }
 
-    def set_participants(participants_attributes)
-      model.participants.clear if model.new_record?
-      model.participants_attributes = participants_attributes
-    end
+  context "with a meeting series" do
+    let!(:series) { create(:recurring_meeting, project:) }
 
-    def set_default_participant
-      return if model.participants.present? || model.persisted?
-      return if user.builtin?
-
-      model.participants.build(user:, invited: true)
+    it "deletes the project" do
+      expect { subject }.to change(Project, :count).by(-1)
     end
   end
 end

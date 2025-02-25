@@ -693,7 +693,7 @@ ro:
       subject: "Întârziere"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
-      label_new_child_created: "New work package created and added as a child"
+      label_new_child_created: "Pachet de lucru nou creat și adăugat ca și copil"
       label_relates_singular: "asociat cu"
       label_relates_plural: "asociat cu"
       label_relates_to_singular: "asociat cu"
@@ -708,8 +708,8 @@ ro:
       follows_description: "Pachetul de lucru asociat trebuie neapărat să înceapă după finalizarea acestuia"
       label_child_singular: "copil"
       label_child_plural: "copii"
-      new_child: "New child"
-      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      new_child: "Copil nou"
+      new_child_text: "Creează un pachet de lucru asociat ca sub-element al pachetului de lucru curent (părinte)"
       existing_child: "Existing child"
       child_description: "Face din pachetul de lucru asociat un subelement al pachetului de lucru actual (părinte)"
       label_blocks_singular: "blochează"
@@ -1277,7 +1277,7 @@ ro:
               only_one_global_setting: "Trebuie să existe o singură setare globală de notificare."
               email_alerts_global: "Setările de notificare prin e-mail pot fi setate doar la nivel global."
               format: "%{message}"
-              wrong_date: "Valoare greșită pentru Data de începere, Data scadentă sau Întârziere."
+              wrong_date: "Valoare greșită pentru Data de începere, Data scadenței sau Întârziere."
         watcher:
           attributes:
             user_id:
@@ -1291,6 +1291,10 @@ ro:
         work_package:
           is_not_a_valid_target_for_time_entries: "Pachetul de lucru #%{id} nu este o ţintă validă pentru reasocierea timpilor de lucru."
           attributes:
+            id:
+              format: "%{message}"
+              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              blank: "ID can't be blank."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -1653,7 +1657,7 @@ ro:
   button_watch: "Monitorizare"
   button_manage_menu_entry: "Configurare meniu"
   button_add_menu_entry: "Adaugă meniu"
-  button_configure_menu_entry: "Configurare meniu"
+  button_configure_menu_entry: "Configurează element meniu"
   button_delete_menu_entry: "Șterge element meniu"
   button_view_shared_work_packages: "Vezi pachetele de lucru partajate"
   button_manage_roles: "Gestionează rolurile"
@@ -1678,7 +1682,7 @@ ro:
     text_update_consent_time: Bifați această casetă pentru a forța utilizatorii să consimtă din nou. Activați când ați modificat aspectul juridic al informațiilor privind consimțământul de mai sus.
     update_consent_last_time: "Ultima actualizare a consimțământului: %{update_time}"
   copy_project:
-    title: 'Copiați proiectul "%{source_project_name}"'
+    title: 'Copiază proiectul "%{source_project_name}"'
     started: 'A început copierea proiectului "%{source_project_name}" în "%{target_project_name}". Vei fi informat prin mail de îndată ce "%{target_project_name}" este disponibil.'
     failed: "Proiectul %{source_project_name} nu poate fi copiat"
     failed_internal: "Copierea a eșuat din cauza unei erori interne."
@@ -2116,11 +2120,11 @@ ro:
       working_days_changed:
         changed: "by changes to working days (%{changes})"
         days:
-          working: "%{day} funcționează acum"
-          non_working: "%{day} este acum nefuncțională"
+          working: "%{day} este acum lucrătoare"
+          non_working: "%{day}  este acum nelucrătoare"
         dates:
-          working: "%{date} este acum în funcțiune"
-          non_working: "%{date} este acum nefuncțională"
+          working: "%{date} este acum lucrătoare"
+          non_working: "%{date}  este acum nelucrătoare"
       progress_mode_changed_to_status_based: Progress calculation mode set to status-based
       status_excluded_from_totals_set_to_false_message: now included in hierarchy totals
       status_excluded_from_totals_set_to_true_message: now excluded from hierarchy totals
@@ -2373,7 +2377,7 @@ ro:
   label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(opțiune eliminată)"
   label_empty_element: "(gol)"
-  label_missing_or_hidden_custom_option: "(valoare lipsă sau lipsa permisiunilor de acces)"
+  label_missing_or_hidden_custom_option: "(valoare lipsă sau lipsă permisiunilor de acces)"
   label_descending: "Descrescător"
   label_details: "Detalii"
   label_development_roadmap: "Plan de lucru pentru dezvoltare"
@@ -2588,7 +2592,7 @@ ro:
   label_not_configured: "Not configured"
   label_not_found: "nu a fost găsit"
   label_none: "niciunul"
-  label_none_parentheses: "(nimic)"
+  label_none_parentheses: "(niciuna)"
   label_not_contains: "nu conține"
   label_not_equals: "nu este"
   label_life_cycle_step_plural: "Project lifecycle"
@@ -2620,7 +2624,7 @@ ro:
   label_permissions: "Drepturi"
   label_permissions_report: "Raport drepturi"
   label_personalize_page: "Personalizare pagină"
-  label_placeholder_user: "Utilizator Placeholder"
+  label_placeholder_user: "Utilizator placeholder"
   label_placeholder_user_new: "Utilizator nou"
   label_placeholder_user_plural: "Utilizatori de tip Placeholder"
   label_planning: "Planificare"
@@ -2642,7 +2646,7 @@ ro:
   label_progress_tracking: "Progress tracking"
   label_project: "Proiect"
   label_project_activity: "Activitate proiect"
-  label_project_attribute_plural: "Atributele proiectului"
+  label_project_attribute_plural: "Atribute proiect"
   label_project_attribute_manage_link: "Gestionează atribute proiect"
   label_project_count: "Număr total de proiecte"
   label_project_copy_notifications: "Trimitere notificări e-mail în timpul copierii proiectului"
@@ -2725,7 +2729,7 @@ ro:
   label_system_settings: "Setări sistem"
   label_show_completed_versions: "Afișare versiuni complete"
   label_columns: "Coloane"
-  label_sort: "Sortare"
+  label_sort: "Sortează"
   label_sort_ascending: "Ordonează ascendent"
   label_sort_by: "Sortează după %{value}"
   label_sorted_by: "sortate după %{value}"
@@ -2920,8 +2924,8 @@ ro:
       mentioned_by: "%{user} v-a menționat într-un comentariu"
       more_to_see:
         one: "Mai există un pachet de lucru cu notificări."
-        few: "Există %{count} mai multe pachete de lucru cu notificări."
-        other: "Există %{count} mai multe pachete de lucru cu notificări."
+        few: "Există %{count} pachete de lucru cu notificări."
+        other: "Există %{count} de pachete de lucru cu notificări."
       open_in_browser: "Open in browser"
       reason:
         watched: "Urmărit"
@@ -3038,7 +3042,7 @@ ro:
       updated_by:
         without_message: "%{user} a actualizat rolurile pe care le aveți la nivel global."
         with_message: "%{user} a actualizat rolurile pe care le-ați scris la nivel global:"
-      roles: "Acum aveți următoarele roluri:"
+      roles: "Acum ai următoarele roluri:"
   mail_user_activation_limit_reached:
     subject: Limita numărului de utilizatori activi a fost atinsă
     message: |
@@ -3110,7 +3114,7 @@ ro:
   notice_successful_update: "Actualizare reușită."
   notice_successful_update_custom_fields_added_to_project: |
     Actualizare reușită. Câmpurile personalizate ale tipurilor activate sunt activate automat
-    pe formularul pachetului de lucru. <a href="%{url}" target="_blank">Vezi mai multe</a>.
+    în formularul Pachet de lucru. <a href="%{url}" target="_blank">Vezi mai multe</a>.
   notice_to_many_principals_to_display: "Există prea multe rezultate. Restrânge căutarea prin tastarea numelui noului membru (sau grup)."
   notice_user_missing_authentication_method: Utilizatorul nu a ales încă o parolă sau un alt mod de autentificare.
   notice_user_invitation_resent: A fost trimisă o invitație către %{email}.
@@ -3297,7 +3301,7 @@ ro:
     only_subproject_id: "Numai subproiect"
     shared_with_user: "Partajate cu utilizatorii"
     shared_with_me: "Partajate cu mine"
-    subproject_id: "Inclusiv subproiectul"
+    subproject_id: "Include sub-proiectul"
   repositories:
     at_identifier: "la %{identifier}"
     atom_revision_feed: "Lista de revizii Atom"
@@ -3422,7 +3426,7 @@ ro:
   setting_apiv3_max_page_instructions_html: >
     Setaţi dimensiunea maximă a paginii cu care API-ul va răspunde. Nu va fi posibil să efectuați cereri API care returnează mai multe valori pe o singură pagină. <br/> <strong>Avertisment:</strong> Vă rugăm să schimbaţi această valoare numai dacă sunteţi sigur de ce aveţi nevoie. Stabilirea unei valori ridicate va avea ca rezultat un impact semnificativ asupra performanței; în timp ce o valoare mai mică decât opţiunile per pagină va cauza erori în vizualizările paginate.
   setting_apiv3_docs: "Documentație"
-  setting_apiv3_docs_enabled: "Activați pagina de documente"
+  setting_apiv3_docs_enabled: "Activare pagină documente"
   setting_apiv3_docs_enabled_instructions_html: >
     Dacă pagina de documente este activată, puteți obține o vizualizare interactivă a documentației APIv3 la adresa <a href="%{link}" target="_blank">%{link}</a>.
   setting_attachment_whitelist: "Lista albă de încărcare a atașamentelor"

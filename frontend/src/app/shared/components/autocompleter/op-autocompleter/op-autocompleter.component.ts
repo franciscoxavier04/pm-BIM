@@ -294,7 +294,7 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
 
   footerTemplate:TemplateRef<Element>;
 
-  readonly opAutocompleterService = new OpAutocompleterService(this.apiV3Service);
+  readonly opAutocompleterService = new OpAutocompleterService(this.apiV3Service, this.halResourceService);
 
   constructor(
     readonly injector:Injector,
@@ -480,16 +480,16 @@ export class OpAutocompleterComponent<T extends IAutocompleteItem = IAutocomplet
       tap(() => this.loading$.next(true)),
       debounceTime(this.debounceTimeForCurrentEnvironment),
       switchMap((queryString:string) => {
+        if (this.getOptionsFn) {
+          return this.getOptionsFn(queryString);
+        }
+
         if (this.relations && this.url) {
           return this.fetchFromUrl(queryString);
         }
 
         if (this.defaultData) {
           return this.opAutocompleterService.loadData(queryString, this.resource, this.filters, this.searchKey);
-        }
-
-        if (this.getOptionsFn) {
-          return this.getOptionsFn(queryString);
         }
 
         return NEVER;

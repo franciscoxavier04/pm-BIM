@@ -22,7 +22,7 @@
 #English strings go here for Rails i18n
 ru:
   plugin_openproject_meeting:
-    name: "Встреча OpenProject"
+    name: "Совещание OpenProject"
     description: >-
       Этот модуль добавляет поддержку совещаний в проектах. Совещания могут быть запланированы, выбрав приглашенных из того же проекта. Повестка дня может быть создана и отправлена приглашенным лицам. После совещания можно выбрать участников и создать протокол на основе повестки дня. Протокол может быть отправлен всем участникам и приглашенным.
   activerecord:
@@ -89,10 +89,10 @@ ru:
   description_attended: "участие"
   description_invite: "приглашено"
   events:
-    meeting: Встреча отредактирована
-    meeting_agenda: Повестка встречи отредактирована
-    meeting_agenda_closed: Повестка дня встречи закрыта
-    meeting_agenda_opened: Повестка дня встречи открыта
+    meeting: Совещание изменено
+    meeting_agenda: Повестка совещания изменена
+    meeting_agenda_closed: Повестка совещания закрыта
+    meeting_agenda_opened: Повестка совещания открыта
     meeting_minutes: Править  протокол заседания
     meeting_minutes_created: Создан протокол заседания
   error_notification_with_errors: "Не удалось отправить уведомление. Следующие получатели не могут быть уведомлены: %{recipients}"
@@ -145,8 +145,8 @@ ru:
     other: "Есть еще %{count} совещаний."
   label_my_meetings: "Мои совещания"
   label_all_meetings: "Все совещания"
-  label_upcoming_meetings: "Предстоящие встречи"
-  label_past_meetings: "Прошедшие встречи"
+  label_upcoming_meetings: "Предстоящие совещания"
+  label_past_meetings: "Прошедшие совещания"
   label_upcoming_meetings_short: "Предстоящие"
   label_past_meetings_short: "Прошедшие"
   label_involvement: "Вовлечение"
@@ -176,7 +176,7 @@ ru:
       attachments_text: "Копировать все прикрепленные файлы в новое совещание"
       agenda: "Копировать повестку"
       agenda_items: "Копировать пункты повестки дня"
-      agenda_text: "Копировать повестку старой встречи"
+      agenda_text: "Копировать повестку старого совещания"
       participants: "Копировать список участников"
     email:
       send_emails: "Отправить email участникам"
@@ -219,7 +219,7 @@ ru:
       recurring_text: "Создать серию совещаний с динамическим шаблоном для каждого события."
       structured_text: "Организуйте своё совещание в виде списка пунктов повестки, при необходимости связав их с пакетом работ."
       structured_text_copy: "При копировании совещания в настоящее время не скопируются связанные с ним пункты повестки, будут скопированы только детали"
-    copied: "Скопировано со встречи #%{id}"
+    copied: "Скопировано с совещания #%{id}"
     delete_dialog:
       one_time:
         title: "Удалить совещание"
@@ -318,9 +318,9 @@ ru:
   notice_timezone_missing: Не установлен часовой пояс и применена %{zone}. Чтобы выбрать часовой пояс, пожалуйста, нажмите сюда.
   notice_meeting_updated: "Эта страница была обновлена кем-то другим. Перезагрузите страницу, чтобы просмотреть изменения."
   permission_create_meetings: "Создание совещания"
-  permission_edit_meetings: "Править встречи"
-  permission_delete_meetings: "Удалить встречу"
-  permission_view_meetings: "Просмотреть встречи"
+  permission_edit_meetings: "Изменить совещания"
+  permission_delete_meetings: "Удалить совещания"
+  permission_view_meetings: "Просмотреть совещания"
   permission_create_meeting_agendas: "Создать повестку совещания"
   permission_create_meeting_agendas_explanation: "Позволяет редактировать содержимое повестки дня Классического Совещания."
   permission_manage_agendas: "Управление повестками"
@@ -329,7 +329,7 @@ ru:
   permission_send_meeting_agendas_notification: "Отправить уведомление о реценизии  повесток дня"
   permission_create_meeting_minutes: "Управление протоколами"
   permission_send_meeting_minutes_notification: "Отправить уведомление о рецензии протокола"
-  permission_meetings_send_invite: "Пригласить пользователей на встречи"
+  permission_meetings_send_invite: "Пригласить пользователей на совещания"
   permission_send_meeting_agendas_icalendar: "Отправить повестку встречи как элемент календаря"
   project_module_meetings: "Совещания"
   text_duration_in_hours: "Длительность в часах"

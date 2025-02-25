@@ -60,7 +60,7 @@ Enter your meeting's title, location, start and end date and time, duration, fre
 
 - **Never** - the meeting series runs indefinitely
 - **After a specific date** – lets you specify an **end date** (the meeting might end before or on this date, depending on the original start date and frequency)
-- **After a number of occurrences** – lets you specificy the number of individual **occurrences** after which the series will end
+- **After a number of occurrences** – lets you specify the number of individual **occurrences** after which the series will end
 
 Click the **Create meeting series** button to save your changes. This will create the recurring meeting series and redirect you to the meeting template page. 
 
@@ -116,4 +116,4 @@ Within the same menu you also have the following options:
 - Download iCalendar event
 - Send email to all participants
 - View history
-- Cancel this occurence
+- Cancel this occurrence

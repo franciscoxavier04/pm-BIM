@@ -1269,6 +1269,10 @@ zh-CN:
         work_package:
           is_not_a_valid_target_for_time_entries: "工作包 #%{id} 不是重新分配时间条目的有效目标。"
           attributes:
+            id:
+              format: "%{message}"
+              cannot_add_child_because_of_lack_of_permission: "无法添加子项目，因为您没有权限编辑选定的工作包。"
+              blank: "ID不能为空。"
             assigned_to:
               format: "%{message}"
             done_ratio:

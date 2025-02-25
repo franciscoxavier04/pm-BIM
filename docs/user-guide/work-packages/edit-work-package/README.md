@@ -115,7 +115,7 @@ Once you set a reminder, you will see a confirmation message. The reminder icon 
 
 At the configured date and time, you will receive the reminder in [Notification center](../../notifications/#access-in-app-notifications). 
 
-![Work package reminder in OpenProject notificaiton center](openproject_user_guide_wp_set_reminder_notification.png)
+![Work package reminder in OpenProject notification center](openproject_user_guide_wp_set_reminder_notification.png)
 
 >  [!NOTE] 
 >
