@@ -76,6 +76,8 @@ class EnterpriseToken < ApplicationRecord
            :reprieve_days,
            :reprieve_days_left,
            :restrictions,
+           :plan,
+           :features,
            to: :token_object
 
   def token_object

@@ -3,10 +3,12 @@
   data-email="<%= @current_token.mail %>"
   data-company="<%= @current_token.try(:company) %>"
   data-domain="<%= @current_token.try(:domain) %>"
+  data-plan="<%= (@current_token.respond_to?(:plan) ? I18n.t(@current_token.plan, scope: [:enterprise_plans]) : nil) %>"
   data-user-count="<%= @current_token.restrictions.nil? ? t("js.admin.enterprise.upsale.unlimited") : @current_token.restrictions[:active_user_count] %>"
   data-starts-at="<%= format_date @current_token.starts_at %>"
   data-expires-at="<%= @current_token.will_expire? ? (format_date @current_token.expires_at) : t("js.admin.enterprise.upsale.unlimited") %>"
   data-is-expired="<%= @current_token.expired?(reprieve: false) %>"
+  data-additional-features="<%= (@current_token.try(:features) || []).map { |feature| I18n.t(feature, scope: [:enterprise_features], default: feature.to_s.humanize) }.join(", ") %>"
   data-reprieve-days-left="<%= @current_token.reprieve_days_left %>">
 </opce-enterprise-active-saved-trial>
 
