@@ -28,29 +28,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Comment < ApplicationRecord
-  belongs_to :commented, polymorphic: true, counter_cache: true
-  belongs_to :author, class_name: "User"
-
-  validates :commented, :author, :comments, presence: true
-
-  after_create :send_news_comment_added_mail
-
-  acts_as_journalized
-
-  def text
-    comments
-  end
-
-  def post!
-    save!
-  end
-
-  private
-
-  def send_news_comment_added_mail
-    OpenProject::Notifications.send(OpenProject::Events::NEWS_COMMENT_CREATED,
-                                    comment: self,
-                                    send_notification: true)
-  end
+class Journal::CommentJournal < Journal::BaseJournal
+  self.table_name = "comment_journals"
 end
