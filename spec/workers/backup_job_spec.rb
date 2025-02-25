@@ -71,14 +71,18 @@ RSpec.describe BackupJob, type: :model do
 
       allow(Open3).to receive(:capture3).and_return [nil, "Dump failed", db_dump_process_status]
 
+      openproject_sql = Tempfile.new(["openproject", ".sql"]).tap do |f|
+        f.write("SOME SQL")
+        f.rewind
+      end
+
       allow_any_instance_of(BackupJob)
-        .to receive(:tmp_file_name).with("openproject", ".sql").and_return("/tmp/openproject.sql")
+        .to receive(:tmp_file_name).with("openproject", ".sql").and_return(openproject_sql.path)
 
       allow_any_instance_of(BackupJob)
         .to receive(:tmp_file_name).with("openproject-backup", ".zip").and_return("/tmp/openproject.zip")
 
       allow(File).to receive(:read).and_call_original
-      allow(File).to receive(:read).with("/tmp/openproject.sql").and_return "SOME SQL"
     end
 
     def perform
