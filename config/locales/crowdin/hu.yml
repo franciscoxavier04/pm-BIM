@@ -345,6 +345,7 @@ hu:
         placeholder: "Új projektlista"
       delete_modal:
         title: "Projektlista törlése"
+        heading: "Delete this project list?"
         text: "Ez a művelet nem törli a listában szereplő projekteket. Biztos, hogy törölni szeretné ezt a projektlistát?"
     settings:
       change_identifier: Azonosító megváltoztatása

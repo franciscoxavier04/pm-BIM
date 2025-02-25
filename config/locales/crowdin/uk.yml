@@ -343,6 +343,7 @@ uk:
         placeholder: "Новий список проєктів"
       delete_modal:
         title: "Видалити список проєктів"
+        heading: "Delete this project list?"
         text: "Ця дія не призведе до видалення жодного проєкту зі списку. Справді видалити цей список проєктів?"
     settings:
       change_identifier: Ідентифікатор змін

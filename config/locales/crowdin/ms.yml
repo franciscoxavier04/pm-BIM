@@ -345,6 +345,7 @@ ms:
         placeholder: "Senarai projek baharu"
       delete_modal:
         title: "Padamkan senarai projek"
+        heading: "Delete this project list?"
         text: "Tindakan ini tidak akan memadamkan sebarang projek yang terkandung di dalam senarai. Adakah anda pasti untuk memadamkan senarai projek ini?"
     settings:
       change_identifier: Tukar pengenal

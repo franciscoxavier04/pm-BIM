@@ -5,10 +5,10 @@ zh-CN:
         origin_id: 来源 ID
       storages/nextcloud_storage:
         authentication_methods:
-          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
-          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
-          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        nextcloud_audience: Nextcloud Audience
+          oauth2_sso: 通过 OpenID Connect 身份提供商进行单点登录
+          oauth2_sso_with_two_way_oauth2_fallback: 以双向 OAuth 2.0 作为单点登录的备用方案
+          two_way_oauth2: 双向 OAuth 2.0 授权代码流
+        nextcloud_audience: Nextcloud 受众
       storages/project_storage:
         storage: 存储
       storages/storage:
@@ -209,9 +209,9 @@ zh-CN:
       access_management_section: 访问和项目文件夹
       automatically_managed_folders: 自动托管的文件夹
       general_information: 一般信息
-      nextcloud_audience: Nextcloud Audience
-      nextcloud_audience_blank: No audience has been configured
-      nextcloud_audience_description: Using audience %{audience}
+      nextcloud_audience: Nextcloud 受众
+      nextcloud_audience_blank: 未配置受众
+      nextcloud_audience_description: 使用受众 %{audience}
       nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth 配置
       one_drive_oauth: Azure OAuth
@@ -308,7 +308,7 @@ zh-CN:
     label_creation_time: 创建时间
     label_creator: 创建者
     label_delete_storage: 删除存储
-    label_edit_nextcloud_audience: 编辑Nextcloud受众
+    label_edit_nextcloud_audience: 编辑 Nextcloud 受众
     label_edit_storage_access_management: 编辑存储访问管理
     label_edit_storage_automatically_managed_folders: 编辑存储自动管理的文件夹
     label_edit_storage_host: 编辑存储主机

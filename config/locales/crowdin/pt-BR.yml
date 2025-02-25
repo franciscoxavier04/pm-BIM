@@ -345,6 +345,7 @@ pt-BR:
         placeholder: "Nova lista de projetos"
       delete_modal:
         title: "Excluir lista de projetos"
+        heading: "Delete this project list?"
         text: "Esta ação não excluirá nenhum projeto contido na lista. Você tem certeza de que deseja excluir esta lista de projetos?"
     settings:
       change_identifier: Mudar identificador

@@ -60,8 +60,8 @@ nl:
         one: "Soort kosten"
         other: "Soort kosten"
       time_entry_activity:
-        one: "Time tracking activity"
-        other: "Time tracking activities"
+        one: "Activiteit van tijdregistratie"
+        other: "Activiteiten voor tijdregistraties"
       rate: "Tarief"
     errors:
       models:

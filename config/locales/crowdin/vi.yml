@@ -346,6 +346,7 @@ vi:
         placeholder: "Danh sách dự án mới"
       delete_modal:
         title: "Xóa danh sách dự án"
+        heading: "Delete this project list?"
         text: "Hành động này sẽ không xóa bất kỳ dự án nào có trong danh sách. Bạn có chắc chắn muốn xóa danh sách dự án này không?"
     settings:
       change_identifier: Thay đổi định danh

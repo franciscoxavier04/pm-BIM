@@ -344,6 +344,7 @@ it:
         placeholder: "Nuovo elenco progetti"
       delete_modal:
         title: "Elimina elenco progetti"
+        heading: "Delete this project list?"
         text: "Questa azione non eliminerà alcun progetto contenuto nell'elenco. Vuoi davvero eliminare questo elenco di progetti?"
     settings:
       change_identifier: Cambia identificatore

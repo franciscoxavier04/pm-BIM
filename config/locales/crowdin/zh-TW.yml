@@ -345,6 +345,7 @@ zh-TW:
         placeholder: "新專案清單"
       delete_modal:
         title: "刪除專案列表"
+        heading: "Delete this project list?"
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
       change_identifier: 變更識別碼

@@ -343,6 +343,7 @@ lt:
         placeholder: "Naujas projektų sąrašas"
       delete_modal:
         title: "Trinti projektų sąrašą"
+        heading: "Delete this project list?"
         text: "Atlikus šį veiksmą nebus ištrintas nė vienas sąraše esantis projektas. Ar tikrai norite ištrinti šį projektų sąrašą?"
     settings:
       change_identifier: Pokyčio identifikatorius

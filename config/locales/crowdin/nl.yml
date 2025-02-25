@@ -343,6 +343,7 @@ nl:
         placeholder: "Nieuwe projectlijst"
       delete_modal:
         title: "Projectlijst verwijderen"
+        heading: "Delete this project list?"
         text: "Deze actie verwijdert geen enkel project dat de lijst bevat. Weet u zeker dat u deze projectlijst wilt verwijderen?"
     settings:
       change_identifier: Change identifier

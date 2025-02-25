@@ -346,6 +346,7 @@ tr:
         placeholder: "Yeni proje listesi"
       delete_modal:
         title: "Proje listesini sil"
+        heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       change_identifier: Dil Tanımlayıcı değiştir

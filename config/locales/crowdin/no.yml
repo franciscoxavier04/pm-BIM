@@ -346,6 +346,7 @@
         placeholder: "Ny prosjektliste"
       delete_modal:
         title: "Slett prosjektliste"
+        heading: "Delete this project list?"
         text: "Denne handlingen vil ikke slette noen av prosjektene på listen. Er du sikker på at du vil slette denne prosjektlisten?"
     settings:
       change_identifier: Endre identifier

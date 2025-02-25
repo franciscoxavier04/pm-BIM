@@ -346,6 +346,7 @@ ko:
         placeholder: "새 프로젝트 목록"
       delete_modal:
         title: "프로젝트 목록 삭제"
+        heading: "Delete this project list?"
         text: "이 작업을 수행해도 목록에 포함된 프로젝트는 삭제되지 않습니다. 이 프로젝트 목록을 삭제하시겠습니까?"
     settings:
       change_identifier: 식별자 변경

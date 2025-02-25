@@ -128,9 +128,9 @@ zh-CN:
     sync_failed: "无法从 LDAP 同步：%{message}。"
     back_to_index: "点击此处返回到连接列表。"
     technical_warning_html: |
-      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      此 LDAP 表单需要您的 LDAP / Active Directory 设置的技术知识。
       <br>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">请访问我们的文档以了解详细说明</a>。
     attribute_texts:
       name: LDAP 连接的任意名称
       host: LDAP 主机名或 IP 地址
@@ -138,9 +138,9 @@ zh-CN:
       generic_map: LDAP 中用于映射到 OpenProject `%{attribute}` 属性的属性键
       admin_map_html: "可选：LDAP 中将 OpenProject 用户标记为管理员的属性键（<strong>如存在</strong>）。如有疑问，请留空。"
       system_user_dn_html: |
-        Enter the DN of the system user used for read-only access.
+        输入用于只读访问的系统用户 DN。
         <br>
-        Example: uid=openproject,ou=system,dc=example,dc=com
+        例如：uid=openproject,ou=system,dc=example,dc=com
       system_user_password: 输入系统用户的绑定密码
       base_dn: |
         输入 LDAP 中您希望 OpenProject 查找用户和组的子树的基本 DN。
@@ -176,7 +176,7 @@ zh-CN:
     tls_options:
       verify_peer: "验证SSL证书"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        允许严格的 SSL 验证证书信任链。 <br> <strong>警告:</strong> 取消选中此选项将禁用 SSL 验证 LDAP 服务器证书。这会使您的连接暴露于中间人攻击之下。
       tls_certificate_description: "如果LDAP服务器证书不在此系统的信任源中，您可以在此手动添加它。输入PEM X509证书字符串。"
   forums:
     show:
@@ -343,6 +343,7 @@ zh-CN:
         placeholder: "新项目列表"
       delete_modal:
         title: "删除项目列表"
+        heading: "Delete this project list?"
         text: "此操作不会删除列表中包含的任何项目。确定要删除此项目列表吗？"
     settings:
       change_identifier: 更改标识符
