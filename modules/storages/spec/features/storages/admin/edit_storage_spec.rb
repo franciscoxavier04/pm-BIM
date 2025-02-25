@@ -304,9 +304,8 @@ RSpec.describe "Admin Edit File storage",
           choose("Use first access token obtained by identity provider")
           expect(page).to have_no_field("Storage Audience")
           choose("Define storage audience manually")
-          expect(find_field("Storage Audience").value).to be_empty
+          expect(find_field("Storage Audience").value).to eq("schmaudience")
 
-          fill_in "Storage Audience", with: "schmaudience"
           click_on "Save and continue"
         end
 
@@ -332,6 +331,9 @@ RSpec.describe "Admin Edit File storage",
         within_test_selector("storage-audience-form") do
           expect(page.find(:radio_button, "Use first access token obtained by identity provider")).to be_checked
           expect(page).to have_no_field("Storage Audience")
+
+          choose("Define storage audience manually")
+          expect(find_field("Storage Audience").value).to be_empty
         end
       end
     end

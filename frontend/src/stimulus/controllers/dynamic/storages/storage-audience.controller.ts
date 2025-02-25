@@ -48,7 +48,6 @@ export default class StorageAudienceController extends Controller {
   }
 
   showAudienceInput() {
-    this.audienceInputTarget.value = '';
     this.audienceInputWrapperTarget.classList.remove('d-none');
   }
 

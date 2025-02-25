@@ -57,7 +57,8 @@ module Storages::Admin
           caption: I18n.t("storages.instructions.nextcloud.storage_audience"),
           placeholder: I18n.t("storages.instructions.nextcloud.storage_audience_placeholder"),
           input_width: :large,
-          data: { "storages--storage-audience-target": "audienceInput" }
+          data: { "storages--storage-audience-target": "audienceInput" },
+          value: prefilled_audience
         )
       end
     end
@@ -66,6 +67,12 @@ module Storages::Admin
 
     def idp?
       model.storage_audience == OpenIDConnect::UserToken::IDP_AUDIENCE
+    end
+
+    def prefilled_audience
+      return "" if idp?
+
+      model.storage_audience
     end
   end
 end
