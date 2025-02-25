@@ -28,43 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-module Admin
-  module TimeEntryActivities
-    class IndexComponent < ApplicationComponent
-      include ApplicationHelper
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
+module Admin::Settings
+  class WorkPackagePrioritiesController < EnumerationsControllerBase
+    menu_item :priorities
 
-      options :time_entry_activities
+    private
 
-      private
-
-      def max_activity_position
-        time_entry_activities.map(&:position).max
-      end
-
-      def wrapper_data_attributes
-        {
-          controller: "generic-drag-and-drop",
-          "application-target": "dynamic"
-        }
-      end
-
-      def drop_target_config
-        {
-          "is-drag-and-drop-target": true,
-          "target-container-accessor": "& > ul",
-          "target-allowed-drag-type": "time-entry-activity"
-        }
-      end
-
-      def draggable_item_config(activity)
-        {
-          "draggable-id": activity.id,
-          "draggable-type": "time-entry-activity",
-          "drop-url": move_admin_time_entry_activity_path(activity)
-        }
-      end
+    def enumeration_class
+      IssuePriority
     end
   end
 end

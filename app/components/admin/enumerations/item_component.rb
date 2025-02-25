@@ -29,106 +29,107 @@
 # ++
 
 module Admin
-  module TimeEntryActivities
-    class ActivityComponent < ApplicationComponent
+  module Enumerations
+    class ItemComponent < ApplicationComponent
       include ApplicationHelper
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 
-      options :activity
-      options :max_activity_position
+      options :enumeration
+      options :max_position
+
+      delegate :colored?, to: :enumeration
 
       private
 
       def wrapper_uniq_by
-        activity.id
+        enumeration.id
       end
 
       def first_item?
-        activity.position == 1
+        enumeration.position == 1
       end
 
       def last_item?
-        activity.position == max_activity_position
+        enumeration.position == max_position
       end
 
-      def build_activity_menu(menu)
-        edit_activity(menu)
+      def build_enumeration_menu(menu)
+        edit_enumeration(menu)
         menu.with_divider
         if !first_item?
-          move_to_top_activity(menu)
-          move_up_activity(menu)
+          move_to_top_enumeration(menu)
+          move_up_enumeration(menu)
         end
         if !last_item?
-          move_down_activity(menu)
-          move_to_bottom_activity(menu)
+          move_down_enumeration(menu)
+          move_to_bottom_enumeration(menu)
         end
         menu.with_divider
-        deletion_activity(menu)
+        deletion_enumeration(menu)
       end
 
-      def edit_activity(menu)
+      def edit_enumeration(menu)
         menu.with_item(label: I18n.t(:button_edit),
                        tag: :a,
-                       href: edit_admin_time_entry_activity_path(activity)) do |item|
+                       href: helpers.url_for(action: :edit, id: enumeration)) do |item|
           item.with_leading_visual_icon(icon: :pencil)
         end
       end
 
-      def move_to_top_activity(menu)
+      def move_to_top_enumeration(menu)
         form_inputs = [{ name: "move_to", value: "highest" }]
 
         menu.with_item(label: I18n.t(:label_sort_highest),
                        tag: :button,
-                       href: move_admin_time_entry_activity_path(activity),
+                       href: helpers.url_for(action: :move, id: enumeration),
                        # content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
                        form_arguments: { method: :put, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "move-to-top")
         end
       end
 
-      def move_up_activity(menu)
+      def move_up_enumeration(menu)
         form_inputs = [{ name: "move_to", value: "higher" }]
 
         menu.with_item(label: I18n.t(:label_sort_higher),
                        tag: :button,
-                       href: move_admin_time_entry_activity_path(activity),
+                       href: helpers.url_for(action: :move, id: enumeration),
                        # content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
                        form_arguments: { method: :put, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "chevron-up")
         end
       end
 
-      def move_down_activity(menu)
+      def move_down_enumeration(menu)
         form_inputs = [{ name: "move_to", value: "lower" }]
 
         menu.with_item(label: I18n.t(:label_sort_lower),
                        tag: :button,
-                       href: move_admin_time_entry_activity_path(activity),
+                       href: helpers.url_for(action: :move, id: enumeration),
                        #  content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
                        form_arguments: { method: :put, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "chevron-down")
         end
       end
 
-      def move_to_bottom_activity(menu)
+      def move_to_bottom_enumeration(menu)
         form_inputs = [{ name: "move_to", value: "lowest" }]
 
         menu.with_item(label: I18n.t(:label_sort_lowest),
                        tag: :button,
-                       href: move_admin_time_entry_activity_path(activity),
+                       href: helpers.url_for(action: :move, id: enumeration),
                        #    content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
                        form_arguments: { method: :put, inputs: form_inputs }) do |item|
           item.with_leading_visual_icon(icon: "move-to-bottom")
         end
       end
 
-      def deletion_activity(menu)
+      def deletion_enumeration(menu)
         menu.with_item(label: I18n.t(:button_delete),
                        tag: :button,
                        scheme: :danger,
-                       href: admin_time_entry_activity_path(activity),
-                       #    content_arguments: { data: { turbo_frame: ItemsComponent.wrapper_key } },
+                       href: helpers.url_for(action: :destroy, id: enumeration),
                        form_arguments: { method: :delete }) do |item|
           item.with_leading_visual_icon(icon: :trash)
         end

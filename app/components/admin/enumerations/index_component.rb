@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,22 +26,53 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class Color < ApplicationRecord
-  include ::Colors::HexColor
+module Admin
+  module Enumerations
+    class IndexComponent < ApplicationComponent
+      include ApplicationHelper
+      include OpPrimer::ComponentHelpers
+      include OpTurbo::Streamable
 
-  self.table_name = "colors"
+      options :enumerations
 
-  has_many :planning_element_types,
-           class_name: "Type",
-           dependent: :nullify
+      private
 
-  after_initialize :normalize_hexcode
-  before_validation :normalize_hexcode
+      def max_position
+        enumerations.map(&:position).max
+      end
 
-  validates :name, :hexcode, presence: true
+      def wrapper_data_attributes
+        {
+          controller: "generic-drag-and-drop",
+          "application-target": "dynamic"
+        }
+      end
 
-  validates :name, length: { maximum: 255, unless: lambda { |e| e.name.blank? } }
-  validates :hexcode, format: { with: /\A#[0-9A-F]{6}\z/, unless: lambda { |e| e.hexcode.blank? } }
+      def drop_target_config
+        {
+          "is-drag-and-drop-target": true,
+          "target-container-accessor": "& > ul",
+          "target-allowed-drag-type": "enumeration"
+        }
+      end
+
+      def draggable_item_config(enumeration)
+        {
+          "draggable-id": enumeration.id,
+          "draggable-type": "enumeration",
+          "drop-url": helpers.url_for(action: :move, id: enumeration.id)
+        }
+      end
+
+      def enumeration_class
+        enumerations.klass
+      end
+
+      def item_component_class
+        ItemComponent
+      end
+    end
+  end
 end

@@ -323,6 +323,12 @@ Redmine::MenuManager.map :admin_menu do |menu|
             caption: :label_status,
             parent: :admin_work_packages
 
+  menu.push :priorities,
+            { controller: "/admin/settings/work_package_priorities" },
+            if: ->(_) { User.current.admin? },
+            caption: IssuePriority.model_name.human(count: :other),
+            parent: :admin_work_packages
+
   menu.push :progress_tracking,
             { controller: "/admin/settings/progress_tracking", action: :show },
             if: ->(_) { User.current.admin? },
@@ -390,11 +396,6 @@ Redmine::MenuManager.map :admin_menu do |menu|
             caption: :"attribute_help_texts.label_plural",
             icon: "question",
             if: ->(_) { User.current.allowed_globally?(:edit_attribute_help_texts) }
-
-  menu.push :enumerations,
-            { controller: "/enumerations" },
-            if: ->(_) { User.current.admin? },
-            icon: "multi-select"
 
   menu.push :calendars_and_dates,
             { controller: "/admin/settings/working_days_and_hours_settings", action: :show },

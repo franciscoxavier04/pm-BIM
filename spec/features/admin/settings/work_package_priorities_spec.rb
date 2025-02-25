@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,21 +30,24 @@
 
 require "spec_helper"
 
-RSpec.describe "Enumerations" do
+RSpec.describe "Work package priorities" do
   shared_let(:admin) { create(:admin) }
 
   before do
     login_as(admin)
-    visit enumerations_path
   end
 
-  it "contains all defined enumerations" do
-    classes = Enumeration.subclasses - [TimeEntryActivity]
+  it "allows creating new priorities" do
+    visit admin_settings_work_package_priorities_path
 
-    classes.each do |enumeration|
-      expect(page).to have_css("h3", text: I18n.t(enumeration::OptionName))
-      expect(page).to have_link(I18n.t(:label_enumeration_new),
-                                href: new_enumeration_path(type: enumeration.name))
-    end
+    page.find_test_selector("add-enumeration-button").click
+
+    fill_in "Name", with: "Immediate"
+    click_on("Save")
+
+    # we are redirected back to the index page
+    expect(page).to have_current_path(admin_settings_work_package_priorities_path)
+
+    expect(page).to have_content("Immediate")
   end
 end

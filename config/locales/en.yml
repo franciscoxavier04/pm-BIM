@@ -431,6 +431,8 @@ en:
         no_results_content_text: Create a new version
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -1533,6 +1535,9 @@ en:
       forum: "Forum"
       global_role: "Global role"
       group: "Group"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "Member"
       news: "News"
       notification:
@@ -2006,6 +2011,9 @@ en:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
+
 
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"

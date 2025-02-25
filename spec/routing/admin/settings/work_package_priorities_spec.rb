@@ -28,40 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Admin
-  module TimeEntryActivities
-    class ReassignForm < ApplicationForm
-      include OpenProject::StaticRouting::UrlHelpers
+require "spec_helper"
 
-      attr_reader :other_activities
+RSpec.describe Admin::Settings::WorkPackagePrioritiesController, "routing" do
+  describe "work package priorities" do
+    it {
+      expect(subject).to route(:get, "admin/settings/work_package_priorities")
+        .to(controller: "admin/settings/work_package_priorities", action: "index")
+    }
 
-      def initialize(other_activities:)
-        super()
+    it {
+      expect(subject).to route(:get, "admin/settings/work_package_priorities/new")
+        .to(controller: "admin/settings/work_package_priorities", action: "new")
+    }
 
-        @other_activities = other_activities
-      end
+    it {
+      expect(subject).to route(:post, "admin/settings/work_package_priorities")
+        .to(controller: "admin/settings/work_package_priorities", action: "create")
+    }
 
-      form do |form|
-        form.select_list(
-          name: :reassign_to_id,
-          label: I18n.t(:text_enumeration_category_reassign_to),
-          required: true,
-          input_width: :large
-        ) do |select|
-          other_activities.each do |activity|
-            select.option(value: activity.id, label: activity.name)
-          end
-        end
+    it {
+      expect(subject).to route(:get, "admin/settings/work_package_priorities/1/edit")
+        .to(controller: "admin/settings/work_package_priorities", action: "edit", id: "1")
+    }
 
-        form.group(layout: :horizontal) do |button_group|
-          button_group.button(name: :cancel,
-                              tag: :a,
-                              label: I18n.t(:button_cancel),
-                              scheme: :default,
-                              href: admin_time_entry_activities_path)
-          button_group.submit(name: :submit, label: I18n.t(:button_apply), scheme: :primary)
-        end
-      end
-    end
+    it {
+      expect(subject).to route(:put, "admin/settings/work_package_priorities/1")
+        .to(controller: "admin/settings/work_package_priorities", action: "update", id: "1")
+    }
+
+    it {
+      expect(subject).to route(:delete, "admin/settings/work_package_priorities/1")
+        .to(controller: "admin/settings/work_package_priorities", action: "destroy", id: "1")
+    }
   end
 end

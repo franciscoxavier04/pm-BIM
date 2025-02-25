@@ -29,25 +29,18 @@
 #++
 
 module Admin
-  module TimeEntryActivities
-    class ActivityForm < ApplicationForm
-      form do |form|
-        form.text_field(
-          name: :name,
-          label: TimeEntryActivity.human_attribute_name(:name),
-          required: true,
-          input_width: :large
-        )
-        form.check_box(
-          name: :active,
-          label: TimeEntryActivity.human_attribute_name(:active)
-        )
+  module Settings
+    class TimeEntryActivitiesController < EnumerationsControllerBase
+      menu_item :time_entry_activities
 
-        form.submit(
-          name: :submit,
-          label: I18n.t(:button_save),
-          scheme: :primary
-        )
+      private
+
+      def enumeration_class
+        TimeEntryActivity
+      end
+
+      def enumeration_param_key
+        enumeration_class.model_name.param_key
       end
     end
   end

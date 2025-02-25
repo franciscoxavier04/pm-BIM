@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,20 +28,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Color < ApplicationRecord
-  include ::Colors::HexColor
+module Admin
+  module Enumerations
+    class ItemForm < ApplicationForm
+      delegate :object, to: :@builder
 
-  self.table_name = "colors"
+      form do |form|
+        form.text_field(
+          name: :name,
+          label: object.class.human_attribute_name(:name),
+          required: true,
+          input_width: :medium
+        )
 
-  has_many :planning_element_types,
-           class_name: "Type",
-           dependent: :nullify
+        if object.colored?
+          form.color_select_list(
+            label: attribute_name(:color_id),
+            name: :color_id,
+            caption: object.color_label,
+            input_width: :medium
+          )
+        end
 
-  after_initialize :normalize_hexcode
-  before_validation :normalize_hexcode
+        form.check_box(
+          name: :active,
+          label: object.class.human_attribute_name(:active)
+        )
 
-  validates :name, :hexcode, presence: true
-
-  validates :name, length: { maximum: 255, unless: lambda { |e| e.name.blank? } }
-  validates :hexcode, format: { with: /\A#[0-9A-F]{6}\z/, unless: lambda { |e| e.hexcode.blank? } }
+        form.submit(
+          name: :submit,
+          label: I18n.t(:button_save),
+          scheme: :primary
+        )
+      end
+    end
+  end
 end

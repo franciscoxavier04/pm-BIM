@@ -23,7 +23,6 @@ group :opf_plugins do
   gem 'openproject-auth_plugins',              path: 'modules/auth_plugins'
   gem 'openproject-auth_saml',                 path: 'modules/auth_saml'
   gem 'openproject-openid_connect',            path: 'modules/openid_connect'
-  gem 'openproject-documents',                 path: 'modules/documents'
   gem 'openproject-xls_export',                path: 'modules/xls_export'
   gem 'costs',                                 path: 'modules/costs'
   gem 'openproject-reporting',                 path: 'modules/reporting'
@@ -48,6 +47,7 @@ group :opf_plugins do
   gem 'openproject-gantt',                     path: 'modules/gantt'
   gem 'openproject-calendar',                  path: 'modules/calendar'
   gem 'openproject-storages',                  path: 'modules/storages'
+  gem 'openproject-documents',                 path: 'modules/documents'
 
   gem 'openproject-bim',                       path: 'modules/bim'
 end

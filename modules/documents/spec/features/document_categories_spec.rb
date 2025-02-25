@@ -26,20 +26,26 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Color < ApplicationRecord
-  include ::Colors::HexColor
+require "spec_helper"
 
-  self.table_name = "colors"
+RSpec.describe "Document categories" do
+  shared_let(:admin) { create(:admin) }
 
-  has_many :planning_element_types,
-           class_name: "Type",
-           dependent: :nullify
+  before do
+    login_as(admin)
+  end
 
-  after_initialize :normalize_hexcode
-  before_validation :normalize_hexcode
+  it "allows creating new document categories" do
+    visit admin_settings_document_categories_path
 
-  validates :name, :hexcode, presence: true
+    page.find_test_selector("add-enumeration-button").click
 
-  validates :name, length: { maximum: 255, unless: lambda { |e| e.name.blank? } }
-  validates :hexcode, format: { with: /\A#[0-9A-F]{6}\z/, unless: lambda { |e| e.hexcode.blank? } }
+    fill_in "Name", with: "Documentation"
+    click_on("Save")
+
+    # we are redirected back to the index page
+    expect(page).to have_current_path(admin_settings_document_categories_path)
+
+    expect(page).to have_content("Documentation")
+  end
 end

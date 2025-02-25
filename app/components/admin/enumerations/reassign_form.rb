@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,20 +28,40 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Color < ApplicationRecord
-  include ::Colors::HexColor
+module Admin
+  module Enumerations
+    class ReassignForm < ApplicationForm
+      include OpenProject::StaticRouting::UrlHelpers
 
-  self.table_name = "colors"
+      attr_reader :other_enumerations
 
-  has_many :planning_element_types,
-           class_name: "Type",
-           dependent: :nullify
+      def initialize(other_enumerations:)
+        super()
 
-  after_initialize :normalize_hexcode
-  before_validation :normalize_hexcode
+        @other_enumerations = other_enumerations
+      end
 
-  validates :name, :hexcode, presence: true
+      form do |form|
+        form.select_list(
+          name: :reassign_to_id,
+          label: I18n.t(:text_enumeration_category_reassign_to),
+          required: true,
+          input_width: :large
+        ) do |select|
+          other_enumerations.each do |activity|
+            select.option(value: activity.id, label: activity.name)
+          end
+        end
 
-  validates :name, length: { maximum: 255, unless: lambda { |e| e.name.blank? } }
-  validates :hexcode, format: { with: /\A#[0-9A-F]{6}\z/, unless: lambda { |e| e.hexcode.blank? } }
+        form.group(layout: :horizontal) do |button_group|
+          button_group.button(name: :cancel,
+                              tag: :a,
+                              label: I18n.t(:button_cancel),
+                              scheme: :default,
+                              href: admin_settings_time_entry_activities_path)
+          button_group.submit(name: :submit, label: I18n.t(:button_apply), scheme: :primary)
+        end
+      end
+    end
+  end
 end

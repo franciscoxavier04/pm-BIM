@@ -21,8 +21,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.v
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
@@ -31,15 +30,19 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%=
   render(Primer::OpenProject::PageHeader.new) do |header|
-    header.with_title { I18n.t(:enumeration_activities) }
+    header.with_title { I18n.t(:label_new_time_entry_activity) }
+    header.with_description { I18n.t(:label_time_entry_activity_form_description) }
     header.with_breadcrumbs(
       [
         { href: admin_index_path, text: t("label_administration") },
         { href: admin_costs_settings_path, text: t(:project_module_costs) },
-        TimeEntryActivity.model_name.human(count: :other)
+        { href: admin_settings_time_entry_activities_path, text: TimeEntryActivity.model_name.human(count: :other) },
+        I18n.t(:label_new_time_entry_activity)
       ]
     )
   end
 %>
 
-<%= render(Admin::TimeEntryActivities::IndexComponent.new(time_entry_activities: @time_entry_activities)) %>
+<%= primer_form_with(model: @enumeration, scope: :enumeration, url: url_for(action: :create)) do |f| %>
+  <%= render(Admin::Enumerations::ItemForm.new(f)) %>
+<% end %>
