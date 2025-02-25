@@ -103,7 +103,6 @@ cs:
     button_settings: "Nastavení"
     button_uncheck_all: "Odznačit vše"
     button_update: "Aktualizovat"
-    button_export-pdf: "Stáhnout PDF"
     button_export-atom: "Stáhnout Atom"
     button_generate_pdf: ""
     button_create: "Vytvořit"

@@ -103,7 +103,6 @@ pt-PT:
     button_settings: "Definições"
     button_uncheck_all: "Anular selecção"
     button_update: "Atualizar"
-    button_export-pdf: "Transferir PDF"
     button_export-atom: "Transferir Atom"
     button_generate_pdf: "Gerar PDF"
     button_create: "Criar"

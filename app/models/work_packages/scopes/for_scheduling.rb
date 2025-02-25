@@ -43,7 +43,7 @@ module WorkPackages::Scopes
       # stop on that path if the work package evaluated to be added is either:
       #
       #   * itself scheduled manually
-      #   * having all of it's children scheduled manually
+      #   * having all of its children scheduled manually
       #
       # The children themselves are scheduled manually if all of their children
       # are scheduled manually which repeats itself down to the leaf work

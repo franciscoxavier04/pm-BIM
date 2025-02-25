@@ -103,7 +103,6 @@ lt:
     button_settings: "Nustatymai"
     button_uncheck_all: "Atžymėti visus"
     button_update: "Atnaujinti"
-    button_export-pdf: "Atsisiųsti PDF"
     button_export-atom: "Atsisiųsti Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Kurti"

@@ -27,7 +27,7 @@ pt-BR:
     work_packages:
       activity_tab:
         no_results_title_text: Nenhuma atividade disponível para exibição
-        no_results_description_text: "Escolha “Exibir tudo” para mostrar todas as atividades e comentários"
+        no_results_description_text: 'Escolha “Exibir tudo” para mostrar todas as atividades e comentários'
         label_activity_show_all: "Exibir tudo"
         label_activity_show_only_comments: "Exibir apenas comentários"
         label_activity_show_only_changes: "Exibir apenas alterações"
@@ -128,9 +128,9 @@ pt-BR:
     sync_failed: "Não foi possível sincronizar do LDAP: %{message}."
     back_to_index: "Clique aqui para voltar para a lista de conexão."
     technical_warning_html: |
-      Este formulário LDAP requer conhecimento técnico da sua configuração LDAP / Active Directory.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Por favor, visite nossa documentação para instruções detalhadas</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Nome arbitrário da conexão LDAP
       host: Nome ou endereço IP do host LDAP
@@ -138,9 +138,9 @@ pt-BR:
       generic_map: A chave de atributo no LDAP que é mapeada para o atributo `%{attribute}` do OpenProject
       admin_map_html: "Opcional: A chave de atributo no LDAP que <strong> se presente </strong> marca o usuário do OpenProject como administrador. Deixe vazio se estiver em dúvida."
       system_user_dn_html: |
-        Digite o DN do usuário do sistema usado para acesso somente leitura.
-        <br/>
-        Exemplo: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Digite a senha de vinculação do usuário do sistema
       base_dn: |
         Digite a Base DN da subárvore no LDAP que você quer que o OpenProject procure por usuários e grupos.
@@ -178,7 +178,7 @@ pt-BR:
     tls_options:
       verify_peer: "Verificar certificado SSL"
       verify_peer_description_html: >
-        Permite uma verificação SSL estrita da cadeia de confiança do certificado. <br/> <strong>Aviso:</strong> Desmarcar esta opção desativa a verificação SSL do certificado do servidor LDAP, o que expõe a sua conexão a ataques man-in-the-middle.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Se o certificado do servidor LDAP não estiver nas fontes de confiança deste sistema, você poderá adicioná-lo manualmente. Digite uma cadeia de caracteres de certificado PEM X509."
   forums:
     show:
@@ -345,6 +345,7 @@ pt-BR:
         placeholder: "Nova lista de projetos"
       delete_modal:
         title: "Excluir lista de projetos"
+        heading: "Delete this project list?"
         text: "Esta ação não excluirá nenhum projeto contido na lista. Você tem certeza de que deseja excluir esta lista de projetos?"
     settings:
       change_identifier: Mudar identificador
@@ -571,10 +572,10 @@ pt-BR:
         No <a href="%{href}">modo de cálculo de progresso com base no status</a>, o % de conclusão de um pacote de trabalho é automaticamente ajustado para este valor quando o status é selecionado.
         Ignorado no modo baseado em trabalho.
       status_readonly_html: |
-        Use esta opção para marcar pacotes de trabalho com situação como somente leitura.
-        Nenhum atributo pode ser alterado com exceção da situação.
-        <br/>
-        <strong>Nota</strong>: valores herdados (por exemplo, de filhos ou relações) ainda serão aplicados.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Atualmente, não há nenhuma situação de pacote de trabalho.
       no_results_content_text: Adicionar uma nova situação
@@ -613,6 +614,14 @@ pt-BR:
         pattern:
           label: "Padrão de assunto"
           caption: "Pesquise um atributo ou adicione texto. Para inserir um espaço entre os elementos, adicione-o como texto."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "A versão é compartilhada com projetos arquivados que ainda possuem pacotes de trabalho atribuídos a esta versão. Eles são contados, mas não aparecerão nas exibições vinculadas."
@@ -1999,21 +2008,29 @@ pt-BR:
       days: d
   pdf_generator:
     page_nr_footer: "Página %{page} de %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Gerar PDF
-      submit: Gerar
-      header_right:
-        label: Cabeçalho à direita
-        caption: Texto a ser exibido à direita do cabeçalho
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Centro do rodapé
-        caption: Texto a ser exibido no centro do rodapé
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hifenização
-        caption: Quebra de palavras entre as linhas para melhorar a justificação e a legibilidade do texto.
-      paper_size:
-        label: Tamanho do papel
-        caption: O tamanho do papel a ser usado para o PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext disponível (opcional)"
@@ -2339,6 +2356,7 @@ pt-BR:
   label_missing_or_hidden_custom_option: "(algum valor faltando ou falta permissões para acessar)"
   label_descending: "Decrescente"
   label_details: "Detalhes"
+  label_defaults: "Defaults"
   label_development_roadmap: "Planejamento do desenvolvimento"
   label_diff: "diff"
   label_diff_inline: "em linha"
@@ -2839,7 +2857,7 @@ pt-BR:
   label_global_role: "Função global"
   label_not_changeable: "(não modificável)"
   label_global: "Global"
-  label_seeded_from_env_warning: Este registro foi criado por meio de uma configuração / ambiente variável. Ele não pode ser editado pela interface do usuário.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Erro de execução da macro %{macro_name}"
   macro_unavailable: "Macro %{macro_name} não pode ser exibida."
   macros:
@@ -3749,6 +3767,7 @@ pt-BR:
   text_unallowed_characters: "Caracteres não permitidos"
   text_user_invited: O usuário foi convidado e está pendente de registro.
   text_user_wrote: "%{value} escreveu:"
+  text_wrote: "escreveu"
   text_warn_on_leaving_unsaved: "O pacote de trabalho contém texto que não foi salvo e será perdido se você sair desta página."
   text_what_did_you_change_click_to_add_comment: "O que você alterou? Clique para adicionar um comentário"
   text_wiki_destroy_confirmation: "Tem certeza que deseja excluir este wiki e todo o seu conteúdo?"

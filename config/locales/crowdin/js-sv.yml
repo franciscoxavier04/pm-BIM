@@ -103,7 +103,6 @@ sv:
     button_settings: "Inställningar"
     button_uncheck_all: "Avmarkera alla"
     button_update: "Uppdatera"
-    button_export-pdf: "Ladda ner PDF"
     button_export-atom: "Ladda ner Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Skapa"

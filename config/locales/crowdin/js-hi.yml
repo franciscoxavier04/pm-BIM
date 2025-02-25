@@ -103,7 +103,6 @@ hi:
     button_settings: "Settings"
     button_uncheck_all: "सभी अचयनित करें"
     button_update: "अद्यतन करें"
-    button_export-pdf: "Download PDF"
     button_export-atom: "Download Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "रचना करें"

@@ -27,7 +27,7 @@ ms:
     work_packages:
       activity_tab:
         no_results_title_text: Tiada aktiviti untuk dipaparkan
-        no_results_description_text: "Pilih \"Tunjukkan semua\" untuk menunjukkan semua aktiviti dan ulasan"
+        no_results_description_text: 'Pilih "Tunjukkan semua" untuk menunjukkan semua aktiviti dan ulasan'
         label_activity_show_all: "Papar semua"
         label_activity_show_only_comments: "Papar komen sahaja"
         label_activity_show_only_changes: "Papar perubahan sahaja"
@@ -128,9 +128,9 @@ ms:
     sync_failed: "Gagal untuk diselaraskan daripada LDAP: %{message}."
     back_to_index: "Klik di sini untuk kembali ke senarai sambungan."
     technical_warning_html: |
-      Borang LDAP ini memerlukan pengetahuan teknikal LDAP anda / pemasangan Direktori Aktif.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Sila kunjungi dokumentasi kami untuk arahan lebih terperinci</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Nama arbitrari sambungan LDAP
       host: Nama hos atau alamat IP LDAP
@@ -138,9 +138,9 @@ ms:
       generic_map: Kunci atribut LDAP yang telah dipetakan ke atribut `%{attribute}` OpenProject
       admin_map_html: "Pilihan: Kunci atribut LDAP yang <strong>jika hadir</strong> menandakan pengguna OpenProject sebagai pentadbir. Biarkan kosong jika ragu-ragu."
       system_user_dn_html: |
-        Masukkan DN sistem pengguna yang digunakan untuk akses baca sahaja.
-        <br/>
-        Contoh: uid=openproject,ou=sistem,dc=contoh,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Masukkan kata laluan ikatan bagi pengguna sistem
       base_dn: |
         Masukkan pangkalan DN dari subpokok LDAP yang anda mahukan di OpenProject untuk mencari pengguna dan kumpulan.
@@ -178,7 +178,7 @@ ms:
     tls_options:
       verify_peer: "Sahkan sijil SSL"
       verify_peer_description_html: >
-        Membolehkan verifikasi SSL ketat bagi rantaian dipercayai sijil. <br/><strong>Amaran:</strong> Nyahtandakan pilihan ini untuk nyahaktifkan verifikasi SSL bagi sijil server LDAP. Ini mendedahkan hubungan anda kepada Orang dalam serangan Tengah.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Jika sijil server LDAP bukan lagi di sumber yang dipercayai di sistem ini, anda boleh tambahkannya secara manual di sini. Masukkan sijil rentetan PEM X509."
   forums:
     show:
@@ -345,6 +345,7 @@ ms:
         placeholder: "Senarai projek baharu"
       delete_modal:
         title: "Padamkan senarai projek"
+        heading: "Delete this project list?"
         text: "Tindakan ini tidak akan memadamkan sebarang projek yang terkandung di dalam senarai. Adakah anda pasti untuk memadamkan senarai projek ini?"
     settings:
       change_identifier: Tukar pengenal
@@ -564,10 +565,10 @@ ms:
         pakej ditetapkan secara automatik kepada nilai ini apabila status ini dipilih.
         Diabaikan dalam mod berasaskan kerja.
       status_readonly_html: |
-        Tandakan pilihan ini untuk menanda pakej kerja dengan status ini sebagai baca-sahaja.
-        Tiada atribut yang boleh diubah dengan pengecualian status.
-        <br/>
-        <strong>Perhatian</strong>: Nilai yang diwarisi (cth, dari anak-anak atau saudara) masih akan digunakan.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Tiada status pakej kerja buat masa ini.
       no_results_content_text: Tambah status baharu
@@ -606,6 +607,14 @@ ms:
         pattern:
           label: "Corak subjek"
           caption: "Cari atribut atau tambah teks. Untuk mencipta ruang antara elemen, tambahkannya sebagai teks."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "Versi ini dikongsi dengan projek yang diarkibkan yang masih mempunyai pakej kerja ditugaskan ke versi ini. Ini dikira, tetapi tidak akan muncul dalam paparan yang dipautkan."
@@ -1962,21 +1971,29 @@ ms:
       days: h
   pdf_generator:
     page_nr_footer: "Halaman %{page} daripada %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Hasilkan PDF
-      submit: Hasilkan
-      header_right:
-        label: Tajuk kanan
-        caption: Teks untuk dipaparkan di sebelah kanan tajuk
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Pusat pengaki
-        caption: Teks untuk dipaparkan di tengah pengaki
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Sempang
-        caption: Pecah perkataan antara baris untuk meningkatkan justifikasi teks dan kebolehbacaan.
-      paper_size:
-        label: Saiz kertas
-        caption: Saiz kertas untuk digunakan untuk PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "PdfkeTeks tersedia (pilihan)"
@@ -2302,6 +2319,7 @@ ms:
   label_missing_or_hidden_custom_option: "(nilai yang hilang atau kurang kebenaran untuk mengakses)"
   label_descending: "Menurun"
   label_details: "Butiran"
+  label_defaults: "Defaults"
   label_development_roadmap: "Jadual pembangunan"
   label_diff: "beza"
   label_diff_inline: "sebaris"
@@ -2802,7 +2820,7 @@ ms:
   label_global_role: "Peranan global"
   label_not_changeable: "(tidak boleh diubah)"
   label_global: "Global"
-  label_seeded_from_env_warning: Rekod ini telah dicipta melalui tetapan / pemboleh ubah persekitaran. Tidak boleh diedit melalui UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Ralat melaksanakan makro berikut %{macro_name}"
   macro_unavailable: "Makro %{macro_name} tidak dapat dipaparkan."
   macros:
@@ -3710,6 +3728,7 @@ ms:
   text_unallowed_characters: "Aksara yang tidak dibenarkan"
   text_user_invited: Pengguna telah dijemput dan sedang menunggu pendaftaran.
   text_user_wrote: "%{value} menulis:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Pakej kerja tersebut mengandungi teks yang belum disimpan yang akan hilang jika anda tinggalkan halaman ini."
   text_what_did_you_change_click_to_add_comment: "Apakah yang telah anda ubah? Klik untuk tambah komen"
   text_wiki_destroy_confirmation: "Adakah anda pasti anda ingin memadam wiki ini dan semua kandungannya?"

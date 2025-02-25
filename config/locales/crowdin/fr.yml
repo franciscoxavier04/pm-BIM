@@ -27,7 +27,7 @@ fr:
     work_packages:
       activity_tab:
         no_results_title_text: Aucune activité à afficher
-        no_results_description_text: "Choisissez « Tout afficher » pour afficher toutes les activités et tous les commentaires"
+        no_results_description_text: 'Choisissez « Tout afficher » pour afficher toutes les activités et tous les commentaires'
         label_activity_show_all: "Tout afficher"
         label_activity_show_only_comments: "Afficher uniquement les commentaires"
         label_activity_show_only_changes: "Afficher uniquement les modifications"
@@ -128,9 +128,9 @@ fr:
     sync_failed: "Échec de la synchronisation à partir de LDAP : %{message}."
     back_to_index: "Cliquez ici pour revenir à la liste des connexions."
     technical_warning_html: |
-      Ce formulaire LDAP nécessite une connaissance technique de votre configuration LDAP / Active Directory.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Veuillez consulter notre documentation pour des instructions détaillées</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Nom arbitraire de la connexion LDAP
       host: Nom d'hôte ou adresse IP du serveur LDAP
@@ -138,9 +138,9 @@ fr:
       generic_map: La clé d'attribut dans LDAP qui est mappée à l'attribut OpenProject `%{attribute}`
       admin_map_html: "Facultatif : La clé d'attribut dans LDAP qui, <strong>si elle est présente</strong>, marque l'utilisateur OpenProject comme administrateur. Laisser vide en cas de doute."
       system_user_dn_html: |
-        Entrez le DN de l'utilisateur système utilisé pour l'accès en lecture seule.
-        <br/>
-        Exemple : uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Entrez le mot de passe de liaison de l'utilisateur système
       base_dn: |
         Entrez le DN de base de la sous-arborescence LDAP dans laquelle voulez qu'OpenProject recherche des utilisateurs et des groupes.
@@ -179,7 +179,7 @@ fr:
     tls_options:
       verify_peer: "Vérifier le certificat SSL"
       verify_peer_description_html: >
-        Active la vérification SSL stricte de la chaîne de confiance du certificat. <br/> <strong> Avertissement :</strong> décocher cette option désactive la vérification SSL du certificat de serveur LDAP. Cela expose votre connexion aux attaques de type "Man In The Middle".
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Si le certificat du serveur LDAP n'appartient pas aux sources de confiance de ce système, vous pouvez manuellement l'ajouter ici. Entrez une chaîne de certificat PEM X509."
   forums:
     show:
@@ -346,6 +346,7 @@ fr:
         placeholder: "Nouvelle liste de projets"
       delete_modal:
         title: "Supprimer la liste des projets"
+        heading: "Delete this project list?"
         text: "Cette action ne supprimera aucun projet contenu dans la liste. Voulez-vous vraiment supprimer cette liste de projets ?"
     settings:
       change_identifier: Changer l'identifiant
@@ -572,10 +573,10 @@ fr:
         En <a href="%{href}">mode de calcul de la progression basé sur le statut</a>, le pourcentage d'achèvement d'un lot de travaux est automatiquement fixé sur cette valeur lorsque ce statut est sélectionné.
         Cette valeur est ignorée en mode basé sur le travail.
       status_readonly_html: |
-        Cochez cette option pour marquer les paquets de travail avec ce statut en lecture seule.
-        Aucuns attributs ne peut être changés à l’exception de l’État.
-        <br/>
-        <strong>Note</strong>: les valeurs héritées (ex: des enfants ou relations) continueront de s’appliquer.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Aucun statut de lots de travaux pour le moment.
       no_results_content_text: Ajouter un nouveau statut
@@ -614,6 +615,14 @@ fr:
         pattern:
           label: "Modèle de sujet"
           caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "La version est partagée avec les projets archivés qui ont encore des lots de travaux assignés à cette version. Ils sont comptés, mais n'apparaîtront pas dans les vues liées."
@@ -2000,21 +2009,29 @@ fr:
       days: j
   pdf_generator:
     page_nr_footer: "Page %{page} sur %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Générer un fichier PDF
-      submit: Générer
-      header_right:
-        label: En-tête droit
-        caption: Texte à afficher à droite de l'en-tête
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Centre du pied de page
-        caption: Texte à afficher au centre du pied de page
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Division syllabique
-        caption: Séparez les mots entre les lignes pour améliorer la justification et la lisibilité du texte.
-      paper_size:
-        label: Format du papier
-        caption: La taille du papier à utiliser pour le PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext disponible (optionnel)"
@@ -2340,6 +2357,7 @@ fr:
   label_missing_or_hidden_custom_option: "(valeur manquante ou manque d'autorisations d'accès)"
   label_descending: "Décroissant"
   label_details: "Détails"
+  label_defaults: "Defaults"
   label_development_roadmap: "Feuille de route de développement"
   label_diff: "diff"
   label_diff_inline: "en ligne"
@@ -2840,7 +2858,7 @@ fr:
   label_global_role: "Rôle global"
   label_not_changeable: "(non modifiable)"
   label_global: "Global"
-  label_seeded_from_env_warning: Cet enregistrement a été créé grâce à une variable paramètre/environnement. Il n'est pas modifiable via l'interface utilisateur.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Erreur lors de l'exécution de la macro %{macro_name}"
   macro_unavailable: "La macro %{macro_name} ne peut être affichée."
   macros:
@@ -3751,6 +3769,7 @@ fr:
   text_unallowed_characters: "Caractères non autorisés"
   text_user_invited: L'utilisateur a été invité et est en attente d'enregistrement.
   text_user_wrote: "%{value} écrit:"
+  text_wrote: "a écrit"
   text_warn_on_leaving_unsaved: "Le lot de travaux contient du texte non sauvegardé qui sera perdu si vous quittez cette page."
   text_what_did_you_change_click_to_add_comment: "Qu’avez-vous changé ? Cliquez ici pour ajouter un commentaire"
   text_wiki_destroy_confirmation: "Êtes vous sur de vouloir supprimer ce wiki et tout son contenu?"

@@ -60,7 +60,7 @@ class TimeEntry < ApplicationRecord
             allow_nil: true
 
   validates :comments,
-            length: { maximum: 255 },
+            length: { maximum: 1_000 },
             allow_blank: true
 
   validates :start_time,

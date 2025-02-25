@@ -27,7 +27,7 @@ ro:
     work_packages:
       activity_tab:
         no_results_title_text: Nicio activitate de afișat
-        no_results_description_text: "Alege \"Arată tot\" pentru a afișa toată activitatea și comentariile"
+        no_results_description_text: 'Alege "Arată tot" pentru a afișa toată activitatea și comentariile'
         label_activity_show_all: "Afișează tot"
         label_activity_show_only_comments: "Arată doar comentariile"
         label_activity_show_only_changes: "Arată doar modificările"
@@ -128,9 +128,9 @@ ro:
     sync_failed: "Failed to synchronize from LDAP: %{message}."
     back_to_index: "Click here to go back to the list of connection."
     technical_warning_html: |
-      Acest formular LDAP necesită cunoștințe tehnice privind configurația LDAP / Active Directory.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Vă rugăm să vizitați documentația noastră pentru instrucțiuni detaliate</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Numele arbitrar al conexiunii LDAP
       host: Numele gazdei LDAP sau adresa IP
@@ -138,9 +138,9 @@ ro:
       generic_map: Cheia atributului din LDAP care este mapată pe atributul OpenProject `%{attribute}`
       admin_map_html: "Opțional: Cheia atributului în LDAP care, <strong>dacă este prezentă</strong>, marchează utilizatorul OpenProject ca fiind administrator. Lăsați gol dacă aveți îndoieli."
       system_user_dn_html: |
-        Introdu DN-ul utilizatorului de sistem utilizat pentru accesul numai pentru citire.
-        <br/>
-        Exemplu: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Introdu parola de legătură a utilizatorului de sistem
       base_dn: |
         Introdu DN-ul de bază al subarborelui din LDAP în care vrei ca OpenProject să caute utilizatori și grupuri.
@@ -179,7 +179,7 @@ ro:
     tls_options:
       verify_peer: "Verificarea certificatului SSL"
       verify_peer_description_html: >
-        Activează verificarea SSL strictă a lanțului de încredere al certificatului. <br/> <strong>Avertisment:</strong> Debifarea acestei opțiuni dezactivează verificarea SSL a certificatului serverului LDAP. Acest lucru expune conexiunea ta cu Omul în timpul atacurilor din Mijloc.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Dacă certificatul serverului LDAP nu se află în sursele de încredere ale acestui sistem, îl poți adăuga manual aici. Introdu un șir de certificate PEM X509."
   forums:
     show:
@@ -346,6 +346,7 @@ ro:
         placeholder: "Listă nouă proiecte"
       delete_modal:
         title: "Șterge listă proiecte"
+        heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       change_identifier: Schimbă identificatorul
@@ -582,10 +583,10 @@ ro:
         package is automatically set to this value when this status is selected.
         Ignored in work-based mode.
       status_readonly_html: |
-        Bifați această opțiune pentru a marca pachetele de lucru cu acest statut ca fiind numai pentru citire.
-        Nu se poate modifica niciun atribut, cu excepția statutului.
-        <br/>
-        <strong>Notă</strong>: Valorile moștenite (de exemplu, de la copii sau relații) se vor aplica în continuare.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: În acest moment nu există stări pentru pachetele de lucru.
       no_results_content_text: Adaugă stare nouă
@@ -624,6 +625,14 @@ ro:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -2040,21 +2049,29 @@ ro:
       days: d
   pdf_generator:
     page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Generate
-      header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
-      paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext disponibil (opțional)"
@@ -2380,6 +2397,7 @@ ro:
   label_missing_or_hidden_custom_option: "(valoare lipsă sau lipsă permisiunilor de acces)"
   label_descending: "Descrescător"
   label_details: "Detalii"
+  label_defaults: "Defaults"
   label_development_roadmap: "Plan de lucru pentru dezvoltare"
   label_diff: "diferențe"
   label_diff_inline: "în text"
@@ -2396,7 +2414,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2449,7 +2467,7 @@ ro:
   label_generate_key: "Generare cheie"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"
@@ -2880,7 +2898,7 @@ ro:
   label_global_role: "Global role"
   label_not_changeable: "(nu se poate modifica)"
   label_global: "Global"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Eroare la execuția macro-ului %{macro_name}"
   macro_unavailable: "Macro-ul %{macro_name} nu poate fi afișat."
   macros:
@@ -3792,6 +3810,7 @@ ro:
   text_unallowed_characters: "Caractere nepermise"
   text_user_invited: Utilizatorul a fost invitat şi este în curs de înregistrare.
   text_user_wrote: "%{value} a scris:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Pachetul de lucru conține text nesemnat care va fi pierdut dacă părăsiți această pagină."
   text_what_did_you_change_click_to_add_comment: "Ce ați schimbat? Faceți clic pentru a adăuga un comentariu"
   text_wiki_destroy_confirmation: "Sunteți sigur că doriți să ștergeți acest wiki şi a întregului conținut?"

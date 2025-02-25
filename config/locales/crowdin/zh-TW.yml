@@ -27,7 +27,7 @@ zh-TW:
     work_packages:
       activity_tab:
         no_results_title_text: 無活動顯示
-        no_results_description_text: "選擇「顯示所有內容」以顯示所有活動和留言"
+        no_results_description_text: '選擇「顯示所有內容」以顯示所有活動和留言'
         label_activity_show_all: "全部顯示"
         label_activity_show_only_comments: "僅顯示留言"
         label_activity_show_only_changes: "僅顯示檔案異動"
@@ -128,9 +128,9 @@ zh-TW:
     sync_failed: "LDAP同步失敗：%{message} 。"
     back_to_index: "按一下此處返回連線清單。"
     technical_warning_html: |
-      此 LDAP 資料表需要具備 LDAP/Active Directory 技術知識。
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">請查閱此文件取得詳細說明</a>。
+      此 LDAP 設定表需要您提供 LDAP / Active Directory 設定參數。
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">請連到我們的參考文件以取得詳細說明</a>。
     attribute_texts:
       name: LDAP 連線名稱
       host: LDAP 主機名稱或 IP 位址
@@ -138,8 +138,8 @@ zh-TW:
       generic_map: LDAP 的的屬性對應到 OpenProject的 `%{attribute}`
       admin_map_html: "可選：LDAP 中的屬性金鑰，<strong>如果存在即</strong>標示 OpenProject 使用者為管理員。有疑問時請留空。"
       system_user_dn_html: |
-        輸入用於唯讀存取的系統使用者 DN。
-        <br/>
+        輸入唯讀權限的系統使用者 DN。
+        <br>
         範例：uid=openproject,ou=system,dc=example,dc=com
       system_user_password: 輸入該系統之使用者密碼
       base_dn: |
@@ -178,7 +178,7 @@ zh-TW:
     tls_options:
       verify_peer: "驗證SSL證書"
       verify_peer_description_html: >
-        啓用對受信任鏈證書的嚴格SSL驗證。<br/> <strong>警告：</strong>取消選中此選項會禁用LDAP服務器證書的SSL驗證。這將使您的連接暴露於中間人攻擊。
+        啟用憑證信任鏈的嚴格 SSL 驗證。 <br> <strong>警告：</strong>取消選取此選項將停用 LDAP 伺服器憑證的 SSL 驗證。這會暴露您與中間人攻擊的關係。
       tls_certificate_description: "如果LDAP服務器證書不在此系統中，您可以在此手動增加它。輸入PEM X509證書字符串。"
   forums:
     show:
@@ -345,6 +345,7 @@ zh-TW:
         placeholder: "新專案清單"
       delete_modal:
         title: "刪除專案列表"
+        heading: "Delete this project list?"
         text: "此動作不會刪除清單中包含的任何專案。您確定要刪除此專案清單？"
     settings:
       change_identifier: 變更識別碼
@@ -564,10 +565,10 @@ zh-TW:
         在<a href="%{href}">基於狀態的進度計算模式</a>下，工作項目的完成百分比會自動設定為此值。
         而基於工作的模式則會被忽略。
       status_readonly_html: |
-        選中此選項可將具有此狀態的工作項目設定為唯讀。
-        不能更改任何屬性, 但狀態除外。
-        123 _ 2 _
-        <strong>筆記</strong>: 繼承的值 (例如, 來自子項或關係) 仍將適用。
+        勾選此選項可以將該狀態的工作項目標記為唯讀。
+        除狀態外，任何屬性都無法改變。
+        <br>
+        <strong>注意</strong>：繼承的值（例如來自子項或關係）仍然適用。
     index:
       no_results_title_text: 目前沒有工作項目狀態
       no_results_content_text: 新增一個狀態
@@ -606,6 +607,14 @@ zh-TW:
         pattern:
           label: "主題模板"
           caption: "搜尋屬性或新增文字。若要在元素之間建立空格，請將其建立為文字。"
+      export_configuration:
+        tab: "產生PDF檔案"
+        intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
+        pdf_export_templates:
+          label: "PDF匯出範本"
+          actions:
+            label_enable_all: "全部啟用"
+            label_disable_all: "全部停用"
   versions:
     overview:
       work_packages_in_archived_projects: "該版本與歸檔項目共用，這些專案仍然有分配給此版本的工作項目。雖然這些工作項目被計算在內，但不會顯示在視圖中。"
@@ -1962,21 +1971,29 @@ zh-TW:
       days: 日
   pdf_generator:
     page_nr_footer: "頁面 %{page} of %{total}"
+    template_attributes:
+      label: "屬性以及說明"
+      caption: 目前表單配置中存在的所有屬性均使用預設範本。
+    template_contract:
+      label: "合約範本"
+      caption: 工作項目詳細資料格式化為標準德國合約格式。
     dialog:
       title: 產生PDF檔案
-      submit: 產生
-      header_right:
-        label: 標題右側
-        caption: 要顯示在標頭右側的文字
+      submit: 下載
+      templates:
+        label: "範本"
+        none_enabled: "尚未啟用此工作項目類型範本"
       footer_center:
-        label: 頁尾中心
-        caption: 要顯示在頁尾中央的文字
+        label: 頁尾文字
+        caption: 此文字將會出現在每一頁頁尾的中心。
+      footer_right:
+        label: 頁尾文字
+        caption: 此文字將會出現在每一頁頁尾右邊。
       hyphenation:
         label: 連字符
-        caption: 在行與行之間分隔字詞，以改善文字的正確性和可讀性。
-      paper_size:
-        label: 紙張大小
-        caption: PDF 要使用的紙張尺寸。
+        caption: 在單字之間換行，以便更好地佈局和對齊。
+      hyphenation_language:
+        label: '「語言」連字符號'
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (非必要)"
@@ -2302,6 +2319,7 @@ zh-TW:
   label_missing_or_hidden_custom_option: "(缺少值或缺少訪問權限)"
   label_descending: "降冪"
   label_details: "詳細資料"
+  label_defaults: "預設"
   label_development_roadmap: "開發藍圖"
   label_diff: "比較"
   label_diff_inline: "行內"
@@ -2358,7 +2376,7 @@ zh-TW:
   label_filter: "篩選條件"
   label_filter_add: "新增條件"
   label_filter_by: "篩選條件："
-  label_filter_plural: "篩選條件"
+  label_filter_plural: "篩選器"
   label_filters_toggle: "顯示/隱藏篩選條件"
   label_float: "浮點數"
   label_folder: "資料夾"
@@ -2371,7 +2389,7 @@ zh-TW:
   label_generate_key: "產生一個金鑰"
   label_git_path: ".git 目錄的路徑"
   label_greater_or_equal: ">="
-  label_group_by: "分類"
+  label_group_by: "分組依據"
   label_group_new: "新增群組"
   label_group: "群組"
   label_group_named: "群組名稱 %{name}"
@@ -2383,7 +2401,7 @@ zh-TW:
   label_hierarchy: "階層"
   label_hierarchy_leaf: "頁面結構頁"
   label_home: "Home"
-  label_subject_or_id: "名稱或 id"
+  label_subject_or_id: "主旨或 id"
   label_calendar_subscriptions: "訂閱行事曆"
   label_identifier: "識別碼"
   label_in: "在"
@@ -2429,7 +2447,7 @@ zh-TW:
   label_latest_revision_plural: "最新版本"
   label_ldap_authentication: "LDAP 認證"
   label_learn_more: "了解更多"
-  label_less_or_equal: "之後"
+  label_less_or_equal: "<="
   label_less_than_ago: "幾天內"
   label_link_url: "連結(URL)"
   label_list: "清單"
@@ -2802,7 +2820,7 @@ zh-TW:
   label_global_role: "全域角色"
   label_not_changeable: "(不可更改)"
   label_global: "全域設定"
-  label_seeded_from_env_warning: 此記錄通過設置/環境變量創建。無法通過 UI 編輯。
+  label_seeded_from_env_warning: 此記錄已透過設定環境變數建立。無法透過 UI 進行編輯。
   macro_execution_error: "執行巨集 (%{macro_name}) 錯誤"
   macro_unavailable: "巨集 \"%{macro_name}\" 無法顯示"
   macros:
@@ -3709,6 +3727,7 @@ zh-TW:
   text_unallowed_characters: "不允許的字元"
   text_user_invited: 這個使用者已經被邀請而且正在等待註冊。
   text_user_wrote: "%{value} 寫道："
+  text_wrote: "寫"
   text_warn_on_leaving_unsaved: "若離開當前頁面，將遺失此工作項目未儲存的內容。"
   text_what_did_you_change_click_to_add_comment: "點擊這裡來說明變更了什麼"
   text_wiki_destroy_confirmation: "您是否確定要刪除此 wiki 和它所有的內容？"

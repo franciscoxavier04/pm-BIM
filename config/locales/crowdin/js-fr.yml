@@ -103,7 +103,6 @@ fr:
     button_settings: "Paramètres"
     button_uncheck_all: "Tout désélectionner"
     button_update: "Mettre à jour"
-    button_export-pdf: "Télécharger le PDF"
     button_export-atom: "Télécharger Atom"
     button_generate_pdf: "Générer un fichier PDF"
     button_create: "Créer"

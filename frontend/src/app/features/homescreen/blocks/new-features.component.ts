@@ -70,7 +70,7 @@ const featureTeaserImage = `${OpVersionI18n}_features.svg`;
 export class HomescreenNewFeaturesBlockComponent {
   public isStandardEdition:boolean;
 
-  /** Set to true if BIM has it's own changes */
+  /** Set to true if BIM has its own changes */
   hasBimChanges = false;
 
   /** Update the feature image appropriately */

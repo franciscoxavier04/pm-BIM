@@ -57,6 +57,7 @@ tr:
         start_time: "Başlama tarihi"
         start_time_hour: "Başlama saati"
         end_after: "Toplantı serisi bitişi"
+        end_date: "End date"
         iterations: "Yineleme sayısı"
     errors:
       messages:
@@ -259,10 +260,14 @@ tr:
       banner_html: >
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
+      x_daily:
+        one: "Her gün"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Her hafta"
+        other: "Every %{count} weeks"
       every_weekday: "Every %{day_of_the_week}"
-      daily: "Günlük"
       working_days: "Her iş günü"
-      weekly: "Haftalık"
     end_after:
       never: "hiçbir zaman"
       specific_date: "belirli bir tarihten sonra"

@@ -103,7 +103,6 @@ tr:
     button_settings: "Ayarlar"
     button_uncheck_all: "Tümünü işaretleme"
     button_update: "Güncelleştirme"
-    button_export-pdf: "PDF indir"
     button_export-atom: "Atom indir"
     button_generate_pdf: "PDF oluştur"
     button_create: "Oluştur"

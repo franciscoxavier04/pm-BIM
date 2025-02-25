@@ -103,7 +103,6 @@ ne:
     button_settings: "Settings"
     button_uncheck_all: "Uncheck all"
     button_update: "Update"
-    button_export-pdf: "PDF डाउनलोड गर्नुहोस्"
     button_export-atom: "एटम डाउनलोड गर्नुहोस्"
     button_generate_pdf: "Generate PDF"
     button_create: "Create"

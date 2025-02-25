@@ -103,7 +103,6 @@ lv:
     button_settings: "Iestatījumi"
     button_uncheck_all: "Noņemt visus"
     button_update: "Atjaunot"
-    button_export-pdf: "Lejupielādēt PDF"
     button_export-atom: "Download Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Izveidot"

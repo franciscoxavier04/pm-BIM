@@ -232,9 +232,10 @@ RSpec.describe "time entry dialog", :js, with_flag: :track_start_and_end_times_f
         time_logging_modal.submit
       end.not_to change(TimeEntry, :count)
 
-      time_entry.reload
-
-      expect(time_entry.work_package).to eq(work_package_b)
+      retry_block do
+        time_entry.reload
+        expect(time_entry.work_package).to eq(work_package_b)
+      end
     end
   end
 end

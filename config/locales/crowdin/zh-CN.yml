@@ -27,7 +27,7 @@ zh-CN:
     work_packages:
       activity_tab:
         no_results_title_text: 没有显示的活动
-        no_results_description_text: "选择 \"显示所有 \"可以显示所有活动和评论"
+        no_results_description_text: '选择 "显示所有 "可以显示所有活动和评论'
         label_activity_show_all: "显示所有"
         label_activity_show_only_comments: "仅显示评论"
         label_activity_show_only_changes: "仅显示更改"
@@ -79,7 +79,7 @@ zh-CN:
         text: "您确定要删除当前使用的企业版令牌吗？"
         title: "删除令牌"
       replace_token: "替换您当前的支持令牌"
-      order: "订购本地部署版的 Enterprise edition"
+      order: "订购本地部署的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
       required_for_feature: "此功能仅限具激活的企业版支持令牌的订阅者使用。"
       enterprise_link: "如需了解详细信息，请单击此处。"
@@ -128,9 +128,9 @@ zh-CN:
     sync_failed: "无法从 LDAP 同步：%{message}。"
     back_to_index: "点击此处返回到连接列表。"
     technical_warning_html: |
-      此 LDAP 表单需要您具备 LDAP / Active Directory 设置的技术知识。
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">请访问我们的文档了解详细说明</a>。
+      此 LDAP 表单需要您的 LDAP / Active Directory 设置的技术知识。
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">请访问我们的文档以了解详细说明</a>。
     attribute_texts:
       name: LDAP 连接的任意名称
       host: LDAP 主机名或 IP 地址
@@ -138,9 +138,9 @@ zh-CN:
       generic_map: LDAP 中用于映射到 OpenProject `%{attribute}` 属性的属性键
       admin_map_html: "可选：LDAP 中将 OpenProject 用户标记为管理员的属性键（<strong>如存在</strong>）。如有疑问，请留空。"
       system_user_dn_html: |
-        输入系统用户用于只读访问的 DN。
-        <br/>
-        示例：uid=openproject,ou=system,dc=example,dc=com
+        输入用于只读访问的系统用户 DN。
+        <br>
+        例如：uid=openproject,ou=system,dc=example,dc=com
       system_user_password: 输入系统用户的绑定密码
       base_dn: |
         输入 LDAP 中您希望 OpenProject 查找用户和组的子树的基本 DN。
@@ -176,7 +176,7 @@ zh-CN:
     tls_options:
       verify_peer: "验证SSL证书"
       verify_peer_description_html: >
-        启用对受信任链证书的严格 SSL 验证。<br/> <strong>警告：</strong>取消选中此选项会禁用 LDAP 服务器证书的 SSL 验证。这将使您的连接暴露于中间人攻击。
+        允许严格的 SSL 验证证书信任链。 <br> <strong>警告:</strong> 取消选中此选项将禁用 SSL 验证 LDAP 服务器证书。这会使您的连接暴露于中间人攻击之下。
       tls_certificate_description: "如果LDAP服务器证书不在此系统的信任源中，您可以在此手动添加它。输入PEM X509证书字符串。"
   forums:
     show:
@@ -343,6 +343,7 @@ zh-CN:
         placeholder: "新项目列表"
       delete_modal:
         title: "删除项目列表"
+        heading: "Delete this project list?"
         text: "此操作不会删除列表中包含的任何项目。确定要删除此项目列表吗？"
     settings:
       change_identifier: 更改标识符
@@ -562,9 +563,9 @@ zh-CN:
         在<a href="%{href}">基于状态的进度计算模式</a>下，当选择该状态时，工作包的 完成% 会自动设置为该值。
         在基于工作的模式下忽略。
       status_readonly_html: |
-        选中此选项可将此状态的工作包标记为只读。
-        除状态外，不能更改任何属性。
-        <br/>
+        选中此选项将此状态的工作包标记为只读。
+        除了状态外，不能更改其他属性。
+        <br>
         <strong>注</strong>：继承值（例如，来自子级或关系的值）仍然适用。
     index:
       no_results_title_text: 目前没有工作包状态。
@@ -604,6 +605,14 @@ zh-CN:
         pattern:
           label: "主题模式"
           caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
+      export_configuration:
+        tab: "生成 PDF"
+        intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
+        pdf_export_templates:
+          label: "PDF 导出模板"
+          actions:
+            label_enable_all: "全部启用"
+            label_disable_all: "全部禁用"
   versions:
     overview:
       work_packages_in_archived_projects: "该版本与归档项目共享，这些项目仍然有分配给此版本的工作包。虽然这些工作包被计算在内，但不会显示在链接视图中。"
@@ -1960,21 +1969,29 @@ zh-CN:
       days: 天
   pdf_generator:
     page_nr_footer: "第 %{page} 页，共%{total} 页"
+    template_attributes:
+      label: "属性和描述"
+      caption: 目前表单配置中的所有属性均默认模板。
+    template_contract:
+      label: "合同"
+      caption: 工作包细节已格式化为德国标准合同格式。
     dialog:
       title: 生成 PDF
-      submit: 生成
-      header_right:
-        label: 页眉右侧
-        caption: 标题右侧显示的文本
+      submit: 下载
+      templates:
+        label: "模板"
+        none_enabled: "此工作包类型没有启用模板"
       footer_center:
-        label: 页脚中心
-        caption: 在页脚中心显示的文本
+        label: 页脚文本
+        caption: 此文本将出现在每一页的页脚中心。
+      footer_right:
+        label: 页脚文本
+        caption: 此文本将出现在每一页的页脚右侧。
       hyphenation:
         label: 断字
-        caption: 在行之间打断单词，以改进文本解释和可读性。
-      paper_size:
-        label: 纸张大小
-        caption: 用于PDF的纸张大小。
+        caption: 为了更好的布局和说明，在单词之间换行。
+      hyphenation_language:
+        label: 语言和连惯性
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (可选)"
@@ -2300,6 +2317,7 @@ zh-CN:
   label_missing_or_hidden_custom_option: "（缺少值或缺少访问权限）"
   label_descending: "降序"
   label_details: "详细信息"
+  label_defaults: "默认"
   label_development_roadmap: "发展路线图"
   label_diff: "比较"
   label_diff_inline: "内联"
@@ -2629,7 +2647,7 @@ zh-CN:
   label_revision_id: "修订版本 %{value}"
   label_revision_plural: "修订"
   label_roadmap: "路线图"
-  label_roadmap_edit: "编辑路线图%{name}"
+  label_roadmap_edit: "编辑路线图 %{name}"
   label_roadmap_due_in: "%{value} 到期"
   label_roadmap_no_work_packages: "该版本没有工作包。"
   label_roadmap_overdue: "%{value} 超时"
@@ -2800,7 +2818,7 @@ zh-CN:
   label_global_role: "全局角色"
   label_not_changeable: "（不变）"
   label_global: "全局"
-  label_seeded_from_env_warning: 此记录通过设置/环境变量创建。无法通过 UI 编辑。
+  label_seeded_from_env_warning: 此记录是通过设置环境变量创建的，无法通过 UI 编辑。
   macro_execution_error: "执行宏 %{macro_name} 出错"
   macro_unavailable: "无法显示宏 %{macro_name} 。"
   macros:
@@ -3298,7 +3316,7 @@ zh-CN:
       managed: "在 OpenProject 中创建新的存储库"
     storage:
       not_available: "磁盘存储开销不可用于此存储库。"
-      update_timeout: "在 N 分钟内保留存储库最后所需的磁盘空间信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
+      update_timeout: "在 N 分钟内保留存储库最后所需磁盘空间的信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
@@ -3460,7 +3478,7 @@ zh-CN:
   setting_session_ttl_hint: "当设置的值低于5时，其作用类似于禁用。"
   setting_session_ttl_enabled: "会话过期"
   setting_start_of_week: "一周起始日"
-  setting_sys_api_enabled: "启用存储库管理网页服务"
+  setting_sys_api_enabled: "启用版本库管理 web 服务"
   setting_sys_api_description: "存储库管理网页服务提供了集成的，用户授权的存储库访问。"
   setting_time_format: "时间"
   setting_total_percent_complete_mode: "计算 完成% 层次结构总数"
@@ -3704,6 +3722,7 @@ zh-CN:
   text_unallowed_characters: "不允许的字符"
   text_user_invited: 用户已被邀请，正在等待注册。
   text_user_wrote: "%{value} 写道："
+  text_wrote: "已编写"
   text_warn_on_leaving_unsaved: "此工作包包含未保存的文本，如果您离开此页面未保存的文本将会丢失。"
   text_what_did_you_change_click_to_add_comment: "你做出了什么更改？点击添加注释"
   text_wiki_destroy_confirmation: "确实要删除此维基和它的所有内容吗?"
@@ -3806,7 +3825,7 @@ zh-CN:
   warning_user_limit_reached_admin: >
     添加额外的用户将超出当前限制。请<a href="%{upgrade_url}">升级您的计划</a>，以确保外部用户能够访问此实例。
   warning_user_limit_reached_instructions: >
-    您已达到用户限制（%{current}/%{max} 活跃用户）。请联系 sales@openproject.com 升级您的企业版计划以添加额外用户。
+    您达到了用户限制（%{current}/%{max}活跃用户）。 请联系sales@openproject.com以升级您的Enterprise edition计划并添加其他用户。
   warning_protocol_mismatch_html: >
 
   warning_bar:
