@@ -48,6 +48,7 @@ class CustomFields::Inputs::MultiVersionSelectList < CustomFields::Inputs::Base:
         list.option(
           label: version.name,
           value: version.id,
+          group_by: version.project.name,
           selected: selected?(version)
         )
       end
