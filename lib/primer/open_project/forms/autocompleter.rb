@@ -39,7 +39,6 @@ module Primer
           inputs[:inputName] ||= builder.field_name(@input.name)
           inputs[:labelForId] ||= builder.field_id(@input.name)
           inputs[:defaultData] = true unless inputs.key?(:defaultData)
-          inputs[:hideSelected] = true
           inputs
         end
 
