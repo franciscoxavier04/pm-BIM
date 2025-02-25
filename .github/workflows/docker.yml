@@ -219,7 +219,9 @@ jobs:
       - name: Extract vendor/bundle from container
         run: |
           docker create --name bundle ${{ steps.build.outputs.imageid }}
-          mv vendor/bundle vendor/bundle.bak
+          if [ -d vendor/bundle ]; then
+            mv vendor/bundle vendor/bundle.bak
+          fi
           docker cp bundle:/app/vendor/bundle vendor/bundle
           docker rm bundle
       - name: Save vendor/bundle
