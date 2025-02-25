@@ -49,6 +49,7 @@ RSpec.describe User do
 
   describe "Associations" do
     it { is_expected.to have_many(:emoji_reactions).dependent(:destroy) }
+    it { is_expected.to have_many(:reminders).with_foreign_key(:creator_id).dependent(:destroy).inverse_of(:creator) }
   end
 
   describe "with long but allowed attributes" do
