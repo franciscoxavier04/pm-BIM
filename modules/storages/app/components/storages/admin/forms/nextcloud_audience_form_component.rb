@@ -30,12 +30,12 @@
 #
 module Storages::Admin::Forms
   class NextcloudAudienceFormComponent < StorageFormComponent
-    def self.wrapper_key = :storage_nextcloud_audience_section
+    def self.wrapper_key = :storage_audience_section
 
     options submit_button_disabled: false
 
     def form_url
-      query = { origin_component: "nextcloud_audience" }
+      query = { origin_component: "storage_audience" }
       query[:continue_wizard] = storage.id if in_wizard
 
       admin_settings_storage_path(storage, query)

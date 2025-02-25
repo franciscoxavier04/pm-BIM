@@ -256,7 +256,7 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator do
     end
 
     it "returns a validation failure if storage audience isn't set" do
-      storage.update!(nextcloud_audience: nil)
+      storage.update!(storage_audience: nil)
 
       expect(subject.type).to eq(:none)
       expect(subject.error_code).to eq(:wrn_not_configured)

@@ -92,15 +92,15 @@ FactoryBot.define do
     provider_type { Storages::Storage::PROVIDER_TYPE_NEXTCLOUD }
     sequence(:host) { |n| "https://host#{n}.example.com/" }
     authentication_method { "two_way_oauth2" }
-    nextcloud_audience { nil }
+    storage_audience { nil }
 
     trait :oidc_sso_enabled do
-      nextcloud_audience { "nextcloud" }
+      storage_audience { "nextcloud" }
       authentication_method { "oauth2_sso" }
     end
 
     trait :oidc_sso_with_fallback do
-      nextcloud_audience { "nextcloud" }
+      storage_audience { "nextcloud" }
       authentication_method { "oauth2_sso_with_two_way_oauth2_fallback" }
     end
 

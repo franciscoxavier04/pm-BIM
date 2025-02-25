@@ -210,17 +210,17 @@ RSpec.describe "Admin Create a new file storage",
         click_on "Save and continue"
       end
 
-      aggregate_failures "Nextcloud Audience" do
-        within_test_selector("storage-nextcloud-audience-form") do
+      aggregate_failures "Storage Audience" do
+        within_test_selector("storage-audience-form") do
           click_on "Save and continue"
-          expect(page).to have_text("Nextcloud Audience can't be blank.")
+          expect(page).to have_text("Storage Audience can't be blank.")
 
-          fill_in "Nextcloud Audience", with: "nextcloud"
+          fill_in "Storage Audience", with: "nextcloud"
           click_on "Save and continue"
         end
 
-        expect(page).to have_test_selector("label-nextcloud_audience_configured-status", text: "Completed")
-        expect(page).to have_test_selector("nextcloud-audience-description", text: "Using audience nextcloud")
+        expect(page).to have_test_selector("label-storage_audience_configured-status", text: "Completed")
+        expect(page).to have_test_selector("storage-audience-description", text: "Obtaining tokens for audience \"nextcloud\"")
       end
 
       aggregate_failures "Automatically managed project folders" do
