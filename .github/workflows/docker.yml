@@ -235,7 +235,7 @@ jobs:
         run: |
           rm -rf vendor/bundle
 
-          if [ -f vendor/bundle.bak ]; then
+          if [ -d vendor/bundle.bak ]; then
             mv vendor/bundle.bak vendor/bundle
           fi
       - name: Test
