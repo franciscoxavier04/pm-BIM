@@ -68,7 +68,7 @@ class User < Principal
   belongs_to :ldap_auth_source, optional: true
 
   # Authorized OAuth grants
-  has_many :oauth_grants,
+  has_many :oauth_grants, # rubocop:disable Rails/InverseOf
            class_name: "Doorkeeper::AccessGrant",
            foreign_key: "resource_owner_id",
            dependent: :delete_all
