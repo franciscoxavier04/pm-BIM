@@ -31,71 +31,22 @@
 class Authorization::EnterpriseService
   attr_accessor :token
 
-  ENTERPRISE_PLAN_ACTIONS = %i[
-    baseline_comparison
-    board_view
-    conditional_highlighting
-    custom_actions
-    custom_field_hierarchies
-    customize_life_cycle
-    date_alerts
-    define_custom_style
-    edit_attribute_groups
-    gantt_pdf_export
-    grid_widget_wp_graph
-    ldap_groups
-    one_drive_sharepoint_file_storage
-    placeholder_users
-    project_list_sharing
-    readonly_work_packages
-    sso_auth_providers
-    team_planner_view
-    two_factor_authentication
-    virus_scanning
-    work_package_query_relation_columns
-    work_package_sharing
-    work_package_subject_generation
-  ].freeze
-
-  CORPORATE_PLAN_ACTIONS = %i[
-    time_tracking_enforcement
-  ].freeze
-
-  ACTIONS_PER_PLAN = {
-    enterprise: ENTERPRISE_PLAN_ACTIONS,
-    corporate: CORPORATE_PLAN_ACTIONS + ENTERPRISE_PLAN_ACTIONS
-  }.freeze
-
   def initialize(token)
     self.token = token
   end
 
   # Return a true ServiceResult if the token contains this particular action.
-  def call(action)
-    allowed =
-      if token.nil? || token.token_object.nil? || token.expired?
-        false
-      else
-        process(action)
-      end
+  def call(feature)
+    allowed = if token.nil? || token.token_object.nil? || token.expired?
+                false
+              else
+                token.token_object.has_feature?(feature)
+              end
 
     result(allowed)
   end
 
   private
-
-  def token_plan
-    # fallback to enterprise if no token is provided
-    (token.token_object.plan || OpenProject::Token::DEFAULT_PLAN).to_sym
-  end
-
-  def allowed_actions
-    @allowed_actions ||= ACTIONS_PER_PLAN[token_plan] + (token.token_object.features || [])
-  end
-
-  def process(action)
-    allowed_actions.include?(action.to_sym)
-  end
 
   def result(bool)
     ServiceResult.new(success: bool, result: bool)

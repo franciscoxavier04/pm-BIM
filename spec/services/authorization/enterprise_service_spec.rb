@@ -32,30 +32,8 @@ RSpec.describe Authorization::EnterpriseService do
   let(:instance) { described_class.new(token) }
   let(:token) { instance_double(EnterpriseToken, token_object:, expired?: expired?) }
   let(:token_object) { OpenProject::Token.new }
+  let(:feature) { "some_feature" }
   let(:expired?) { false }
-
-  describe "ENTERPRISE_PLAN_ACTIONS" do
-    it "is in alphabetical order" do
-      enterprise_actions = described_class::ENTERPRISE_PLAN_ACTIONS
-      expect(enterprise_actions).to eq(enterprise_actions.sort)
-    end
-  end
-
-  describe "CORPORATE_PLAN_ACTIONS" do
-    it "is in alphabetical order" do
-      corporate_actions = described_class::CORPORATE_PLAN_ACTIONS
-      expect(corporate_actions).to eq(corporate_actions.sort)
-    end
-  end
-
-  describe "ACTONS_PER_PLAN" do
-    it "includes all available plans" do
-      available_plans = OpenProject::Token::PLANS.map(&:to_sym)
-      plans = described_class::ACTIONS_PER_PLAN.keys
-
-      expect(plans).to match_array(available_plans)
-    end
-  end
 
   describe "#initialize" do
     it "has the token" do
@@ -64,9 +42,13 @@ RSpec.describe Authorization::EnterpriseService do
   end
 
   describe "#call" do
-    let(:result) { instance.call(action) }
+    let(:result) { instance.call(feature) }
 
     shared_examples "true result" do
+      before do
+        allow(token_object).to receive(:has_feature?).with(feature).and_return(true) if token_object
+      end
+
       it "returns a true result" do
         expect(result).to be_a ServiceResult
         expect(result).to be_success
@@ -75,6 +57,10 @@ RSpec.describe Authorization::EnterpriseService do
     end
 
     shared_examples "false result" do
+      before do
+        allow(token_object).to receive(:has_feature?).with(feature).and_return(false) if token_object
+      end
+
       it "returns a false result" do
         expect(result).to be_a ServiceResult
         expect(result).not_to be_success
@@ -82,108 +68,38 @@ RSpec.describe Authorization::EnterpriseService do
       end
     end
 
-    shared_examples "false result for any action" do
-      guarded_action = described_class::ENTERPRISE_PLAN_ACTIONS.sample
-
-      context "for known action #{guarded_action}" do
-        let(:action) { guarded_action }
-
-        include_examples "false result"
-      end
-
-      context "for unknown action" do
-        let(:action) { "foo" }
-
-        include_examples "false result"
+    shared_examples "never calls the token object" do
+      it "does not call the token object" do
+        allow(token_object).to receive(:has_feature?)
+        result
+        expect(token_object).not_to have_received(:has_feature?)
       end
     end
 
-    context "with an enterprise plan" do
-      context "for a valid token" do
-        described_class::ENTERPRISE_PLAN_ACTIONS.each do |guarded_action|
-          context "for known action #{guarded_action}" do
-            let(:action) { guarded_action }
+    context "for a valid token" do
+      let(:expired?) { false }
 
-            include_examples "true result"
-          end
-        end
-
-        context "for unknown action" do
-          let(:action) { "foo" }
-
-          include_examples "false result"
-        end
-
-        described_class::ACTIONS_PER_PLAN.each do |plan, actions|
-          next if plan == :enterprise
-
-          context "for actions belonging to the #{plan} plan" do
-            actions.each do |action|
-              next if described_class::ENTERPRISE_PLAN_ACTIONS.include?(action)
-
-              context "for known action #{action}" do
-                let(:action) { action }
-
-                include_examples "false result"
-              end
-            end
-          end
-        end
-      end
-    end
-
-    context "with a corporate plan" do
-      let(:token_object) { OpenProject::Token.new(plan: "corporate") }
-
-      allowed_actions =  described_class::ENTERPRISE_PLAN_ACTIONS + described_class::CORPORATE_PLAN_ACTIONS
-
-      allowed_actions.each do |guarded_action|
-        context "for known action #{guarded_action}" do
-          let(:action) { guarded_action }
-
-          include_examples "true result"
-        end
-
-        context "for unknown action" do
-          let(:action) { "foo" }
-
-          include_examples "false result"
-        end
-      end
-    end
-
-    context "with a plan with an additional feature" do
-      let(:token_object) { OpenProject::Token.new(features: ["foo"]) }
-
-      context "for the additionally defined feature" do
-        let(:action) { "foo" }
-
-        include_examples "true result"
-      end
-
-      context "for unknown action" do
-        let(:action) { "foobar" }
-
-        include_examples "false result"
-      end
+      include_examples "true result"
     end
 
     context "for an expired token" do
       let(:expired?) { true }
 
-      include_examples "false result for any action"
+      include_examples "never calls the token object"
+      include_examples "false result"
     end
 
     context "without a token_object" do
       let(:token_object) { nil }
 
-      include_examples "false result for any action"
+      include_examples "false result"
     end
 
     context "without a token" do
       let(:token) { nil }
 
-      include_examples "false result for any action"
+      include_examples "never calls the token object"
+      include_examples "false result"
     end
   end
 end
