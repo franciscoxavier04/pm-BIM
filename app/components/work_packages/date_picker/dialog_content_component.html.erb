@@ -50,9 +50,9 @@
                           render(
                             WorkPackageRelationsTab::RelationComponent.new(
                               work_package:,
-                              relation: (relation unless relation_group.children_type?),
+                              relation: (relation unless relation_group.type.children?),
                               visibility: :visible,
-                              child: (relation if relation_group.children_type?),
+                              child: (relation if relation_group.type.children?),
                               editable: false,
                               closest: relation_group.closest_relation?(relation)
                             )
@@ -64,9 +64,9 @@
                           render(
                             WorkPackageRelationsTab::RelationComponent.new(
                               work_package:,
-                              relation: (relation unless relation_group.children_type?),
+                              relation: (relation unless relation_group.type.children?),
                               visibility: :ghost,
-                              child: (relation if relation_group.children_type?),
+                              child: (relation if relation_group.type.children?),
                               editable: false,
                               closest: relation_group.closest_relation?(relation)
                             )

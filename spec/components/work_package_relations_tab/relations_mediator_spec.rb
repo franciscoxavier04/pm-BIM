@@ -50,6 +50,16 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
   describe "RelationGroup" do
     let(:group) { mediator.relation_group("follows") }
 
+    describe "#type" do
+      it "returns the type as String" do
+        expect(group.type).to eq "follows"
+      end
+
+      it "defines a predicate method for the type" do
+        expect(group.type).to be_follows
+      end
+    end
+
     describe "#closest_relation" do
       it "returns the closest follows relation" do
         expect(group.closest_relation).to eq _table.relation(predecessor: predecessor2)
