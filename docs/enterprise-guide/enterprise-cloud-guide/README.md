@@ -1,17 +1,18 @@
 ---
 sidebar_navigation:
   title: Enterprise cloud guide
-  priority: 998
+  priority: 900
 description: OpenProject Enterprise cloud guide.
 keywords: cloud edition, enterprise cloud
 ---
 # Enterprise cloud guide
 
-Welcome to the OpenProject **Enterprise cloud guide**.
+Here you can find documentation for the OpenProject Enterprise cloud edition. The Enterprise cloud edition includes all OpenProject Community features plus additional Enterprise add-ons and professional support. Please find a detailed feature comparison [here](https://www.openproject.org/pricing/#features).
 
-![image-20200113133750107](image-20200113133750107.png)
+For the Enterprise Cloud edition, installation and maintenance are managed by OpenProject. This includes regular backups, updates to the latest release, and the installation of security patches.
 
-> **Note**: This guide only describes the management of your Enterprise cloud. The feature descriptions are included in the respective parts of the OpenProject [user guide](../../user-guide).
+> [!NOTE]
+> This guide only describes the management of your Enterprise cloud. The feature descriptions are included in the respective parts of the OpenProject [User guide](../../user-guide).
 
 ## Overview
 
@@ -28,8 +29,3 @@ Welcome to the OpenProject **Enterprise cloud guide**.
 | [Support](../support/)                                                                                      | How to get support as Enterprise cloud user.                                                      |
 | [GDPR and DPA](./gdpr-compliance/)                                                                          | Review and sign a Data Processing Agreement (DPA).                                                |
 
-The OpenProject Enterprise cloud edition contains all OpenProject Community features plus the additional OpenProject Enterprise add-ons, as well as professional support.
-
-For the Enterprise cloud edition the OpenProject experts will take care of the installation as well as maintenance of your OpenProject installation, so you will be able to concentrate on your core business. We will perform regular backups of your Enterprise cloud edition. You will have the latest OpenProject release installed. Hence, you do not have to take care of updates or installation of security patches yourself.
-
-Please find a detailed feature comparison [here](https://www.openproject.org/pricing/#features).

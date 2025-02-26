@@ -80,13 +80,3 @@ You will get an overview of your booked subscription.
 An invoice will be sent via email to the Billing email address.
 
 ![Subscription](Subscription.png)
-
-## Frequently asked questions (FAQ)
-
-### Is there an advantage of the annual over the monthly OpenProject plan?
-
-Yes, your subscription gets cheaper the longer the duration you choose. Please check our current pricing [here](https://www.openproject.org/pricing/).
-
-### Additional questions
-
-You can find additional questions and answers regarding pricing and booking at the bottom of our [pricing website](https://www.openproject.org/pricing/#faq).
