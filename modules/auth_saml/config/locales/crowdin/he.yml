@@ -1,9 +1,9 @@
 he:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
-        display_name: שם
-        identifier: מזהה
+        display_name: Name
+        identifier: Identifier
         secret: Secret
         scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
@@ -23,7 +23,6 @@ he:
         digest_method: Digest algorithm
         format: "Format"
         icon: "Custom icon"
-  activerecord:
     errors:
       models:
         saml/provider:

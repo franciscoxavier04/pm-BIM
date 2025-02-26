@@ -393,6 +393,8 @@ da:
         no_results_content_text: Create a new version
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -786,6 +788,7 @@ da:
       attachment:
         attachment_content: "Attachment content"
         attachment_file_name: "Attachment file name"
+        content_type: "Content-type"
         downloads: "Hentninger"
         file: "Fil"
         filename: "Fil"
@@ -793,10 +796,10 @@ da:
       attribute_help_text:
         attribute_name: "Egenskab"
         help_text: "Help text"
+      capability:
+        context: "Context"
       changeset:
         repository: "Projektarkiv"
-      color:
-        hexcode: "Hex kode"
       comment:
         commented: "Kommenterede" #an object that this comment belongs to
       custom_action:
@@ -829,7 +832,10 @@ da:
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Valid since"
         subscriber: "Subscriber"
         encoded_token: "Enterprise support token"
@@ -841,6 +847,7 @@ da:
         widgets: "Widgets"
       journal:
         notes: "Kommentarer"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Konto"
         attr_firstname: "Fornavn"
@@ -856,6 +863,9 @@ da:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Rollee"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
       planning_element_type_color:
@@ -872,6 +882,7 @@ da:
           true: "public"
           false: "private"
         queries: "Forespørgsler"
+        enabled_modules: "Enabled modules"
         status_code: "Projektstatus"
         description: "Beskrivelse"
         status_explanation: "Project status description"
@@ -892,23 +903,47 @@ da:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Kolonner"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
         group_by: "Gruppér resultater efter"
+        sort_by: "Sort results by"
         filters: "Filtre"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Sammenhørende arbejdspakker"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "Webadresse"
       role:
@@ -918,6 +953,9 @@ da:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivivtet"
         hours: "Timer"
@@ -931,6 +969,7 @@ da:
         is_default: "Activated for new projects by default"
         is_milestone: "Is milestone"
         color: "Farve"
+        patterns: "Patterns"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"
@@ -940,6 +979,10 @@ da:
         force_password_change: "Ændring af adgangskode virksom ved næste login"
         language: "Sprog"
         last_login_on: "Seneste login"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Ny adgangskode"
         password_confirmation: "Bekræftelse"
         consented_at: "Consented at"
@@ -951,6 +994,8 @@ da:
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Finish date"
         sharing: "Deler"
@@ -1407,6 +1452,9 @@ da:
       forum: "Forum"
       global_role: "Global role"
       group: "Gruppe"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "Medlem"
       news: "Nyheder"
       notification:
@@ -1420,6 +1468,7 @@ da:
         one: "Project list"
         other: "Project lists"
       query: "Selvvalgt forespørgsel"
+      reminder: "Reminder"
       role:
         one: "Rolle"
         other: "Rollee"
@@ -1484,18 +1533,25 @@ da:
     assigned_to: "Tildelt"
     assignee: "Tildelt"
     attachments: "Vedhæftninger"
+    actor: "Actor"
+    action: "Action"
     author: "Forfatter"
+    avatar: "Avatar"
     base: "Generel fejl:"
+    body: "Body"
     blocks_ids: "ID'er for blokerede arbejdspakker"
     category: "Kategori"
     comment: "Kommentér"
     comments: "Kommentér"
     content: "Indhold"
     color: "Farve"
+    creator: "Creator"
     created_at: "Oprettet den"
+    custom_field: "Custom field"
     custom_options: "Mulige værdier"
     custom_values: "Selvvalgte felter"
     date: "Dato"
+    dates_interval: "Date range"
     default_columns: "Forudvalgte kolonner"
     description: "Beskrivelse"
     derived_due_date: "Derived finish date"
@@ -1505,39 +1561,63 @@ da:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "Fornavn"
+    filter: "Filter"
     group: "Gruppe"
     groups: "Grupper"
+    hexcode: "Hex code"
     id: "Id"
     is_default: "Forhåndsvalgt værdi"
     is_for_all: "For alle projekter"
     public: "Offentlig"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Arbejdspakke"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Efternavn"
     login: "Username"
     mail: "E-mail"
     name: "Navn"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Adgangskode"
     priority: "Prioritet"
     project: "Projekt"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Accountable"
+    required: "Required"
+    recipient: "Recipient"
     role: "Rolle"
     roles: "Rollee"
+    search: "Search"
     start_date: "Start dato"
     status: "Status"
+    state: "State"
     subject: "Emne"
+    slug: "Slug"
     summary: "Opsummering"
+    text: "Text"
     title: "Titel"
     type: "Type"
+    typeahead: "Autocomplete"
     updated_at: "Opdateret den"
     updated_on: "Opdateret den"
     uploader: "Uploader"
     user: "Bruger"
+    username: "Username"
+    unit: "Unit"
     value: "Værdi"
+    values: "Values"
     version: "Version"
+    visible: "Visible"
     work_package: "Arbejdspakke"
   backup:
     failed: "Backup failed"
@@ -1850,6 +1930,8 @@ da:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Prioritering af arbejdspakker"
   enumeration_reported_project_statuses: "Rapporteret projektstatus"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "Dette projekt kan ikke arkiveres: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -1939,6 +2021,7 @@ da:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2414,6 +2497,7 @@ da:
   label_filter: "Filtre"
   label_filter_add: "Tilføj filter"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filtre"
   label_filters_toggle: "Show/hide filters"
   label_float: "Flyd"
@@ -2693,6 +2777,7 @@ da:
   label_roadmap_overdue: "%{value} forsinket"
   label_role_and_permissions: "Roller og tilladelser"
   label_role_new: "Ny rolle"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Rollee"
   label_role_search: "Assign role to new members"
   label_scm: "Versionskontrolsystem"

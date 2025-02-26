@@ -395,6 +395,8 @@ cs:
         no_results_content_text: Vytvořit novou verzi
       storage:
         no_results_title_text: Neexistuje žádné další diskové místo využívané tímto projektem.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Doba trvání: %{count} pracovní den"
@@ -806,6 +808,7 @@ cs:
       attachment:
         attachment_content: "Obsah přílohy"
         attachment_file_name: "Název souboru přílohy"
+        content_type: "Content-type"
         downloads: "Ke stažení"
         file: "Soubor"
         filename: "Soubor"
@@ -813,10 +816,10 @@ cs:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Text nápovědy"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repozitář"
-      color:
-        hexcode: "Hex kód"
       comment:
         commented: "Komentované" #an object that this comment belongs to
       custom_action:
@@ -849,7 +852,10 @@ cs:
         client_credentials_user_id: "Uživatelské ID klienta"
         scopes: "Rozsah"
         confidential: "Důvěrnost"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Platné od"
         subscriber: "Odběratel"
         encoded_token: "Token podpory Enterprise."
@@ -861,6 +867,7 @@ cs:
         widgets: "Widgety"
       journal:
         notes: "Poznámky"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Účet"
         attr_firstname: "Jméno (atribut)"
@@ -876,6 +883,9 @@ cs:
         tls_certificate_string: "SSL certifikát LDAP serveru"
       member:
         roles: "Role"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "ID klienta"
       planning_element_type_color:
@@ -892,6 +902,7 @@ cs:
           true: "veřejný"
           false: "soukromý"
         queries: "Dotazy"
+        enabled_modules: "Enabled modules"
         status_code: "Stav projektu"
         description: "Popis"
         status_explanation: "Popis stavu projektu"
@@ -912,23 +923,47 @@ cs:
       project_custom_field:
         is_required: "Vyžadováno pro všechny projekty"
         custom_field_section: Sekce
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Název"
         color: "Barva"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Sloupce"
         relations_to_type_column: "Vztahy s %{type}"
         relations_of_type_column: "%{type} relací"
         group_by: "Seskupit výsledky podle"
+        sort_by: "Sort results by"
         filters: "Filtry"
         timeline_labels: "Štítky časové osy"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Související pracovní balíček"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Datum"
         remind_at_time: "Čas"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -938,6 +973,9 @@ cs:
         is_readonly: "Pracovní balíček jen pro čtení"
         excluded_from_totals: "Vyloučit z výpočtu úhrnů v hierarchii"
         default_done_ratio: "% Dokončeno"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivita"
         hours: "Hodiny"
@@ -951,6 +989,7 @@ cs:
         is_default: "Aktivováno pro nové projekty ve výchozím nastavení"
         is_milestone: "Je milník"
         color: "Barva"
+        patterns: "Patterns"
       user:
         admin: "Administrátor"
         auth_source: "Zdroj ověřování"
@@ -960,6 +999,10 @@ cs:
         force_password_change: "Vynutit změnu hesla při příštím přihlášení"
         language: "Jazyk"
         last_login_on: "Datum posledního přihlášení"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Nové heslo"
         password_confirmation: "Potvrzení"
         consented_at: "Souhlas udělen"
@@ -971,6 +1014,8 @@ cs:
         warn_on_leaving_unsaved: "Upozornit mě při opuštění pracovního balíčku s neuloženými změnami"
         theme: "Režim"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Datum dokončení"
         sharing: "Sdílení"
@@ -1431,6 +1476,11 @@ cs:
       forum: "Fórum"
       global_role: "Globální role"
       group: "Skupina"
+      issue_priority:
+        one: "Priority"
+        few: "Priorities"
+        many: "Priorities"
+        other: "Priorities"
       member: "Člen"
       news: "Novinky"
       notification:
@@ -1448,6 +1498,7 @@ cs:
         many: "Project lists"
         other: "Project lists"
       query: "Vlastní dotaz"
+      reminder: "Reminder"
       role:
         one: "Role"
         few: "Role"
@@ -1524,18 +1575,25 @@ cs:
     assigned_to: "Řešitel"
     assignee: "Řešitel"
     attachments: "Přílohy"
+    actor: "Actor"
+    action: "Action"
     author: "Autor"
+    avatar: "Avatar"
     base: "Obecná chyba:"
+    body: "Body"
     blocks_ids: "ID blokovaných pracovních balíčků"
     category: "Kategorie"
     comment: "Komentář"
     comments: "Komentář"
     content: "Obsah"
     color: "Barva"
+    creator: "Creator"
     created_at: "Vytvořeno"
+    custom_field: "Custom field"
     custom_options: "Možné hodnoty"
     custom_values: "Vlastní pole"
     date: "Datum"
+    dates_interval: "Date range"
     default_columns: "Výchozí sloupce"
     description: "Popis"
     derived_due_date: "Derivované Datum ukončení "
@@ -1545,39 +1603,63 @@ cs:
     due_date: "Datum dokončení"
     estimated_hours: "Práce"
     estimated_time: "Práce"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Vyprší za"
     firstname: "Křestní jméno"
+    filter: "Filter"
     group: "Skupina"
     groups: "Skupiny"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Výchozí hodnota"
     is_for_all: "Pro všechny projekty"
     public: "Veřejné"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Pracovní balíček"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Příjmení"
     login: "Uživatelské jméno"
     mail: "E-mail"
     name: "Název"
     note: "Poznámka"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Heslo"
     priority: "Priorita"
     project: "Projekt"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Odpovědný"
+    required: "Required"
+    recipient: "Recipient"
     role: "Role"
     roles: "Role"
+    search: "Search"
     start_date: "Datum zahájení"
     status: "Stav"
+    state: "State"
     subject: "Předmět"
+    slug: "Slug"
     summary: "Souhrn"
+    text: "Text"
     title: "Název"
     type: "Typ"
+    typeahead: "Autocomplete"
     updated_at: "Aktualizováno"
     updated_on: "Aktualizováno"
     uploader: "Uploader"
     user: "Uživatel"
+    username: "Username"
+    unit: "Unit"
     value: "Hodnota"
+    values: "Values"
     version: "Verze"
+    visible: "Visible"
     work_package: "Pracovní balíček"
   backup:
     failed: "Záloha se nezdařila"
@@ -1928,6 +2010,8 @@ cs:
   enumeration_activities: "Sledování času"
   enumeration_work_package_priorities: "Priority pracovního balíčku"
   enumeration_reported_project_statuses: "Nahlášený stav projektu"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Jednotné přihlášení (SSO) pro uživatele '%{value}' selhalo"
   error_can_not_archive_project: "Tento projekt nelze archivovat: %{errors}"
   error_can_not_delete_entry: "Nelze odstranit položku"
@@ -2017,6 +2101,7 @@ cs:
         input_label_report: "Přidat sloupce do tabulky atributů"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "Typ exportu do PDF"
@@ -2492,6 +2577,7 @@ cs:
   label_filter: "Filtry"
   label_filter_add: "Přidat filtr"
   label_filter_by: "Filtrovat podle"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filtry"
   label_filters_toggle: "Zobrazit/skrýt filtry"
   label_float: "Desetinné číslo"
@@ -2771,6 +2857,7 @@ cs:
   label_roadmap_overdue: "%{value} pozdě"
   label_role_and_permissions: "Role a oprávnění"
   label_role_new: "Nová role"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Role"
   label_role_search: "Přiřadit roli novým členům"
   label_scm: "SCM"

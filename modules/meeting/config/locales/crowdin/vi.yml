@@ -64,6 +64,7 @@ vi:
     models:
       recurring_meeting: "Họp định kỳ"
       structured_meeting: "Họp đột xuất"
+      meeting: "Meeting"
       meeting_agenda_item: "Mục chương trình nghị sự"
       meeting_agenda: "Các ý chính"
       meeting_minutes: "Phút"

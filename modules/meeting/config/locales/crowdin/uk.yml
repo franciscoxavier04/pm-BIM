@@ -67,6 +67,7 @@ uk:
     models:
       recurring_meeting: "Повторювана нарада"
       structured_meeting: "Одноразова нарада"
+      meeting: "Meeting"
       meeting_agenda_item: "Порядок денний"
       meeting_agenda: "Порядок денний"
       meeting_minutes: "Хвилини"

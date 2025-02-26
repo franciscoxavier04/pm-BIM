@@ -1,16 +1,25 @@
 pl:
   activerecord:
     attributes:
+      oauth_client:
+        client_id: Client ID
+        client_secret: Client secret
+      project:
+        project_folder_type: Project folder type
       storages/file_link:
-        origin_id: Identyfikator pochodzenia
+        origin: Origin
+        storage: Storage
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        nextcloud_audience: Nextcloud Audience
+        storage_audience: Storage Audience
       storages/project_storage:
+        project_folder: Project folder
+        project_folder_mode: Project folder mode
         storage: Magazyn danych
+        storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
         creator: Twórca
@@ -209,15 +218,16 @@ pl:
       access_management_section: Dostęp i foldery projektu
       automatically_managed_folders: Automatycznie zarządzane foldery
       general_information: Informacje ogólne
-      nextcloud_audience: Nextcloud Audience
-      nextcloud_audience_blank: No audience has been configured
-      nextcloud_audience_description: Using audience %{audience}
-      nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: Konfiguracja OAuth
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Foldery projektu
       redirect_uri: Przekieruj URI
+      storage_audience: Storage Audience
+      storage_audience_blank: No audience has been configured
+      storage_audience_description: Obtaining tokens for audience "%{audience}".
+      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_oauth: Nextcloud OAuth
       storage_provider: Dostawca magazynu
     health:
       checked: Ostatnio sprawdzono %{datetime}
@@ -274,10 +284,10 @@ pl:
       nextcloud:
         application_link_text: aplikacji „Integration OpenProject”
         integration: Administracja Nextcloud / OpenProject
-        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: Skopiuj te wartości z %{application_link_text}.
         provider_configuration: Przed wykonaniem konfiguracji upewnij się, że masz uprawnienia administracyjne w swoim wystąpieniu Nextcloud oraz zainstalowaną aplikację %{application_link_text}.
+        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience_placeholder: e.g. nextcloud
       no_specific_folder: Domyślnie każdy użytkownik rozpocznie we własnym folderze domowym po przesłaniu pliku.
       no_storage_set_up: Nie ma jeszcze skonfigurowanych magazynów plików.
       not_logged_into_storage: Aby wybrać folder projektu, najpierw się zaloguj
@@ -308,8 +318,8 @@ pl:
     label_creation_time: Czas utworzenia
     label_creator: Twórca
     label_delete_storage: Usuń magazyn
-    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Edytuj zarządzania dostępem do magazynu
+    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: Edytuj automatycznie zarządzane foldery magazynu
     label_edit_storage_host: Edytuj hosta magazynu
     label_existing_manual_folder: Istniejący folder z ręcznie zarządzanymi uprawnieniami
@@ -399,8 +409,15 @@ pl:
         name: OneDrive/SharePoint
         name_placeholder: np. OneDrive
     show_attachments_toggle:
-      description: 'Wyłączenie tej opcji spowoduje ukrycie listy załączników na karcie plików pakietów roboczych. Pliki załączone w opisie pakietu roboczego będą nadal przesyłane do wewnętrznego magazynu załączników.'
+      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Pokaż załączniki na karcie plików pakietów roboczych
+    storage_audience:
+      idp:
+        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use first access token obtained by identity provider
+      manual:
+        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
+        label: Define storage audience manually
     storage_list_blank_slate:
       description: Dodaj magazyn, aby zobaczyć go tutaj.
       heading: Nie masz jeszcze żadnych magazynów.

@@ -395,6 +395,8 @@ ka:
         no_results_content_text: Create a new version
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -788,6 +790,7 @@ ka:
       attachment:
         attachment_content: "Attachment content"
         attachment_file_name: "Attachment file name"
+        content_type: "Content-type"
         downloads: "გადმოწერები"
         file: "ფაილი"
         filename: "ფაილი"
@@ -795,10 +798,10 @@ ka:
       attribute_help_text:
         attribute_name: "ატრიბუტი"
         help_text: "დახმარების ტექსტი"
+      capability:
+        context: "Context"
       changeset:
         repository: "რეპოზიტორია"
-      color:
-        hexcode: "თექვსმეტობითი კოდი"
       comment:
         commented: "კომენტარით" #an object that this comment belongs to
       custom_action:
@@ -831,7 +834,10 @@ ka:
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "ფარგლები"
         confidential: "კონფიდენციალური"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "მოქმედების დაწყების დრო"
         subscriber: "გამომწერი"
         encoded_token: "Enterprise support token"
@@ -843,6 +849,7 @@ ka:
         widgets: "ვიჯეტები"
       journal:
         notes: "შენიშვნები"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "ანგარიში"
         attr_firstname: "Firstname attribute"
@@ -858,6 +865,9 @@ ka:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "როლები"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "კლიენტის ID"
       planning_element_type_color:
@@ -874,6 +884,7 @@ ka:
           true: "საჯარო"
           false: "პირადი"
         queries: "მოთხოვნები"
+        enabled_modules: "Enabled modules"
         status_code: "პროექტის სტატუსი"
         description: "აღწერა"
         status_explanation: "Project status description"
@@ -894,23 +905,47 @@ ka:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "სვეტები"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
         group_by: "Group results by"
+        sort_by: "Sort results by"
         filters: "ფილტრები"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Related work package"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -920,6 +955,9 @@ ka:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "აქტივობა"
         hours: "საათი"
@@ -933,6 +971,7 @@ ka:
         is_default: "Activated for new projects by default"
         is_milestone: "საკონტროლო წერტილია"
         color: "ფერი"
+        patterns: "Patterns"
       user:
         admin: "ადმინისტრატორი"
         auth_source: "Authentication source"
@@ -942,6 +981,10 @@ ka:
         force_password_change: "Enforce password change on next login"
         language: "ენა"
         last_login_on: "ბოლო შესვლა"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "ახალი პაროლი"
         password_confirmation: "დასტური"
         consented_at: "ეთანხმება"
@@ -953,6 +996,8 @@ ka:
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "რეჟიმი"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "დასრულების თარიღი"
         sharing: "გაზიარება"
@@ -1409,6 +1454,9 @@ ka:
       forum: "ფორუმი"
       global_role: "გლობალური როლი"
       group: "ჯგუფი"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "წევრი"
       news: "სიახლეები"
       notification:
@@ -1422,6 +1470,7 @@ ka:
         one: "Project list"
         other: "Project lists"
       query: "მომხმარებლის მოთხოვნა"
+      reminder: "Reminder"
       role:
         one: "როლი"
         other: "როლი"
@@ -1486,18 +1535,25 @@ ka:
     assigned_to: "დასაქმებული"
     assignee: "დასაქმებული"
     attachments: "მიმაგრებული ფაილები"
+    actor: "Actor"
+    action: "Action"
     author: "ავტორი"
+    avatar: "Avatar"
     base: "ზოგადი შეცდომა:"
+    body: "Body"
     blocks_ids: "IDs of blocked work packages"
     category: "კატეგორია"
     comment: "კომენტარი"
     comments: "კომენტარი"
     content: "შემცველობა"
     color: "ფერი"
+    creator: "Creator"
     created_at: "შექმნის დრო"
+    custom_field: "Custom field"
     custom_options: "Possible values"
     custom_values: "მორგებადი ველები"
     date: "თარიღი"
+    dates_interval: "Date range"
     default_columns: "Default columns"
     description: "აღწერა"
     derived_due_date: "Derived finish date"
@@ -1507,39 +1563,63 @@ ka:
     due_date: "დასრულების თარიღი"
     estimated_hours: "სამუშაო"
     estimated_time: "სამუშაო"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "ვადა"
     firstname: "სახელი"
+    filter: "Filter"
     group: "ჯგუფი"
     groups: "ჯგუფები"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "ნაგულისხმევი მნიშვნელობა"
     is_for_all: "For all projects"
     public: "საზოგადო"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "სამუშაო პაკეტი"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "გვარი"
     login: "მომხმარებლის სახელი"
     mail: "ელფოსტა"
     name: "სახელი"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "პაროლი"
     priority: "პრიორიტეტი"
     project: "პროექტი"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "ანგარიშვალდებული"
+    required: "Required"
+    recipient: "Recipient"
     role: "როლი"
     roles: "როლები"
+    search: "Search"
     start_date: "დაწყების თარიღი"
     status: "სტატუსი"
+    state: "State"
     subject: "საგანი"
+    slug: "Slug"
     summary: "შეჯამება"
+    text: "Text"
     title: "სათაური"
     type: "ტიპი"
+    typeahead: "Autocomplete"
     updated_at: "განახლების თარიღი"
     updated_on: "განახლების თარიღი"
     uploader: "ამტვირთავი"
     user: "მომხმარებელი"
+    username: "Username"
+    unit: "Unit"
     value: "მნიშვნელობა"
+    values: "Values"
     version: "ვერსია"
+    visible: "Visible"
     work_package: "სამუშაო პაკეტი"
   backup:
     failed: "მარქაფი ჩავარდა"
@@ -1852,6 +1932,8 @@ ka:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -1941,6 +2023,7 @@ ka:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2416,6 +2499,7 @@ ka:
   label_filter: "ფილტრები"
   label_filter_add: "ფილტრის დამატება"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "ფილტრები"
   label_filters_toggle: "Show/hide filters"
   label_float: "მცურავი"
@@ -2695,6 +2779,7 @@ ka:
   label_roadmap_overdue: "%{value} გვიანია"
   label_role_and_permissions: "Roles and permissions"
   label_role_new: "ახალი როლი"
+  label_role_grantable: "Grantable role"
   label_role_plural: "როლი"
   label_role_search: "Assign role to new members"
   label_scm: "SCM"

@@ -1,16 +1,25 @@
 vi:
   activerecord:
     attributes:
+      oauth_client:
+        client_id: Client ID
+        client_secret: Client secret
+      project:
+        project_folder_type: Project folder type
       storages/file_link:
-        origin_id: ID Nguồn
+        origin: Origin
+        storage: Storage
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        nextcloud_audience: Nextcloud Audience
+        storage_audience: Storage Audience
       storages/project_storage:
+        project_folder: Project folder
+        project_folder_mode: Project folder mode
         storage: Storage
+        storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
         creator: Người tạo
@@ -209,15 +218,16 @@ vi:
       access_management_section: Access and project folders
       automatically_managed_folders: Thư mục được quản lý tự động
       general_information: Thông tin chung
-      nextcloud_audience: Nextcloud Audience
-      nextcloud_audience_blank: No audience has been configured
-      nextcloud_audience_description: Using audience %{audience}
-      nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth configuration
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: Thư mục dự án
       redirect_uri: URI chuyển hướng
+      storage_audience: Storage Audience
+      storage_audience_blank: No audience has been configured
+      storage_audience_description: Obtaining tokens for audience "%{audience}".
+      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_oauth: Nextcloud OAuth
       storage_provider: Nhà cung cấp lưu trữ
     health:
       checked: Đã kiểm tra lần cuối vào %{datetime}
@@ -274,10 +284,10 @@ vi:
       nextcloud:
         application_link_text: ứng dụng “Tích hợp OpenProject”
         integration: Quản trị Nextcloud / OpenProject
-        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: Sao chép các giá trị này từ %{application_link_text}.
         provider_configuration: Vui lòng đảm bảo bạn có quyền quản trị trong phiên bản Nextcloud của bạn và ứng dụng %{application_link_text} đã được cài đặt trước khi thực hiện cấu hình.
+        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience_placeholder: e.g. nextcloud
       no_specific_folder: Theo mặc định, mỗi người dùng sẽ bắt đầu tại thư mục cá nhân của họ khi tải lên tệp.
       no_storage_set_up: Chưa có lưu trữ tệp nào được thiết lập.
       not_logged_into_storage: Để chọn thư mục dự án, vui lòng đăng nhập trước
@@ -308,8 +318,8 @@ vi:
     label_creation_time: Thời gian tạo
     label_creator: Người tạo
     label_delete_storage: Xóa lưu trữ
-    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: Chỉnh sửa quản lý quyền truy cập lưu trữ
+    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: Chỉnh sửa thư mục được quản lý tự động của lưu trữ
     label_edit_storage_host: Chỉnh sửa máy chủ lưu trữ
     label_existing_manual_folder: Thư mục hiện có với quyền quản lý thủ công
@@ -399,8 +409,15 @@ vi:
         name: OneDrive/SharePoint
         name_placeholder: 'ví dụ: OneDrive'
     show_attachments_toggle:
-      description: 'Việc tắt tùy chọn này sẽ ẩn danh sách tệp đính kèm trên tab tệp các gói công việc. Các tệp đính kèm trong mô tả của một gói công việc sẽ vẫn được tải lên lưu trữ đính kèm nội bộ.'
+      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: Hiển thị tệp đính kèm trong tab tệp các gói công việc
+    storage_audience:
+      idp:
+        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use first access token obtained by identity provider
+      manual:
+        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
+        label: Define storage audience manually
     storage_list_blank_slate:
       description: Thêm một lưu trữ để thấy chúng ở đây.
       heading: Bạn chưa có lưu trữ nào.

@@ -67,6 +67,7 @@ be:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minutes"

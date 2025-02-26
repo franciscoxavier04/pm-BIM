@@ -394,6 +394,8 @@ ms:
         no_results_content_text: Cipta versi baharu
       storage:
         no_results_title_text: Tiada ruang cakera terekod tambahan yang digunakan untuk projek ini.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       other: "Tempoh: %{count} hari bekerja"
@@ -777,6 +779,7 @@ ms:
       attachment:
         attachment_content: "Kandungan lampiran"
         attachment_file_name: "Nama fail lampiran"
+        content_type: "Content-type"
         downloads: "Muat turun"
         file: "Fail"
         filename: "Fail"
@@ -784,10 +787,10 @@ ms:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Teks bantuan"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repositori"
-      color:
-        hexcode: "Kod Hex"
       comment:
         commented: "Komen" #an object that this comment belongs to
       custom_action:
@@ -820,7 +823,10 @@ ms:
         client_credentials_user_id: "ID Pengguna Kelayakan Pelanggan"
         scopes: "Skop\n"
         confidential: "Sulit"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Sah sehingga"
         subscriber: "Pelanggan"
         encoded_token: "Token sokongan Enterprise"
@@ -832,6 +838,7 @@ ms:
         widgets: "Widget"
       journal:
         notes: "Nota"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Akaun"
         attr_firstname: "Atribut nama pertama"
@@ -847,6 +854,9 @@ ms:
         tls_certificate_string: "Sijil SSL server LDAP"
       member:
         roles: "Peranan\n"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "ID pelanggan"
       planning_element_type_color:
@@ -863,6 +873,7 @@ ms:
           true: "umum"
           false: "peribadi"
         queries: "Pertanyaan"
+        enabled_modules: "Enabled modules"
         status_code: "Status projek"
         description: "Deskripsi"
         status_explanation: "Deskripsi status projek"
@@ -883,23 +894,47 @@ ms:
       project_custom_field:
         is_required: "Diperlukan untuk semua projek"
         custom_field_section: Bahagian
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Kolum"
         relations_to_type_column: "Berhubung dengan %{type}"
         relations_of_type_column: "%{type} hubungan"
         group_by: "Kumpulkan hasil mengikut"
+        sort_by: "Sort results by"
         filters: "Penyaring"
         timeline_labels: "Label garis masa"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Pakej kerja yang berkaitan"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Tarikh"
         remind_at_time: "Masa"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -909,6 +944,9 @@ ms:
         is_readonly: "Pakej kerja baca-sahaja"
         excluded_from_totals: "Dikecualikan daripada pengiraan jumlah dalam hierarki"
         default_done_ratio: "% Lengkap"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktiviti"
         hours: "Jam"
@@ -922,6 +960,7 @@ ms:
         is_default: "Diaktifkan untuk projek baharu secara default"
         is_milestone: "Adalah pencapaian"
         color: "Warna"
+        patterns: "Patterns"
       user:
         admin: "Pentadbir"
         auth_source: "Sumber pengesahan"
@@ -931,6 +970,10 @@ ms:
         force_password_change: "Menguatkuasakan penukaran kata laluan pada log masuk yang berikutnya"
         language: "Bahasa"
         last_login_on: "Log masuk kali terakhir"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Kata laluan baharu"
         password_confirmation: "Pengesahan"
         consented_at: "Dipersetujui di"
@@ -942,6 +985,8 @@ ms:
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
         mode_guideline: "Sesetengah mod akan menulis ganti warna tema tersuai untuk kebolehaksesan dan kebolehbacaan. Untuk tema tersuai penuh, sila pilih mod Cahaya."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Tarikh selesai"
         sharing: "Perkongsian"
@@ -1396,6 +1441,8 @@ ms:
       forum: "Forum"
       global_role: "Peranan global"
       group: "Kumpulan"
+      issue_priority:
+        other: "Priorities"
       member: "Ahli"
       news: "Berita"
       notification:
@@ -1407,6 +1454,7 @@ ms:
       project_query:
         other: "Senarai projek"
       query: "Pertanyaan tersuai"
+      reminder: "Reminder"
       role:
         other: "Peranan\n"
       status: "Status pakej kerja"
@@ -1465,18 +1513,25 @@ ms:
     assigned_to: "Penerima tugasan"
     assignee: "Penerima tugasan"
     attachments: "Lampiran"
+    actor: "Actor"
+    action: "Action"
     author: "Pengarang"
+    avatar: "Avatar"
     base: "Ralat Umum:"
+    body: "Body"
     blocks_ids: "ID pakej kerja yang disekat"
     category: "Kategori"
     comment: "Komen"
     comments: "Komen"
     content: "Kandungan"
     color: "Warna"
+    creator: "Creator"
     created_at: "Dicipta pada"
+    custom_field: "Custom field"
     custom_options: "Nilai yang mungkin"
     custom_values: "Ruangan tersuai"
     date: "Tarikh"
+    dates_interval: "Date range"
     default_columns: "Kolum default"
     description: "Deskripsi"
     derived_due_date: "Tarikh tamat yang diperolehi"
@@ -1486,39 +1541,63 @@ ms:
     due_date: "Tarikh tamat"
     estimated_hours: "Kerja"
     estimated_time: "Kerja"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Tamat tempoh pada"
     firstname: "Nama pertama"
+    filter: "Filter"
     group: "Kumpulan"
     groups: "Kumpulan"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Nilai default"
     is_for_all: "Untuk semua projek"
     public: "Umum"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Pakej kerja"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Nama akhir"
     login: "Nama pengguna"
     mail: "E-mel"
     name: "Nama"
     note: "Nota"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Kata Laluan"
     priority: "Keutamaan"
     project: "Projek"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Bertanggungjawab"
+    required: "Required"
+    recipient: "Recipient"
     role: "Peranan"
     roles: "Peranan\n"
+    search: "Search"
     start_date: "Tarikh mula"
     status: "Status"
+    state: "State"
     subject: "Subjek"
+    slug: "Slug"
     summary: "Ringkasan"
+    text: "Text"
     title: "Tajuk"
     type: "Jenis"
+    typeahead: "Autocomplete"
     updated_at: "Dikemas kini pada"
     updated_on: "Dikemas kini pada"
     uploader: "Pemuat naik\n"
     user: "Pengguna"
+    username: "Username"
+    unit: "Unit"
     value: "Nilai"
+    values: "Values"
     version: "Versi"
+    visible: "Visible"
     work_package: "Pakej kerja"
   backup:
     failed: "Sandaran gagal"
@@ -1812,6 +1891,8 @@ ms:
   enumeration_activities: "Aktiviti penjejakan masa"
   enumeration_work_package_priorities: "Keutamaan pakej kerja"
   enumeration_reported_project_statuses: "Status projek yang dilaporkan"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Log masuk satu kali (SSO) untuk pengguna '%{value}' gagal"
   error_can_not_archive_project: "Projek ini tidak boleh diarkibkan: %{errors}"
   error_can_not_delete_entry: "Tidak dapat membuang entri"
@@ -1901,6 +1982,7 @@ ms:
         input_label_report: "Tambahkan lajur pada jadual atribut"
         input_caption_report: "Secara lalai semua atribut yang ditambahkan sebagai lajur dalam senarai pakej kerja dipilih. Medan teks panjang tidak tersedia dalam jadual atribut, tetapi boleh dipaparkan di bawahnya."
         input_caption_table: "Secara lalai semua atribut yang ditambahkan sebagai lajur dalam senarai pakej kerja dipilih. Medan teks panjang tidak tersedia dalam eksport berasaskan jadual."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "Jenis eksport PDF"
@@ -2376,6 +2458,7 @@ ms:
   label_filter: "Penyaring"
   label_filter_add: "Tambah penyaring"
   label_filter_by: "Tapis mengikut"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Penyaring"
   label_filters_toggle: "Paparkan/sembunyikan penyaring\n"
   label_float: "Terapung"
@@ -2655,6 +2738,7 @@ ms:
   label_roadmap_overdue: "%{value} lambat"
   label_role_and_permissions: "Peranan dan kebenaran"
   label_role_new: "Peranan baharu"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Peranan\n"
   label_role_search: "Tetapkan peranan ke ahli baharu"
   label_scm: "SCM"

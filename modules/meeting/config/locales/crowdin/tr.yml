@@ -65,6 +65,7 @@ tr:
     models:
       recurring_meeting: "Yinelenen toplantı"
       structured_meeting: "Tek seferlik toplantı"
+      meeting: "Meeting"
       meeting_agenda_item: "Gündem maddesi"
       meeting_agenda: "Gündem"
       meeting_minutes: "Dakika"

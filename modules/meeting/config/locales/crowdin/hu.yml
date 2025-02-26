@@ -65,6 +65,7 @@ hu:
     models:
       recurring_meeting: "Ismétlődő megbeszélés"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "Napirendi pont"
       meeting_agenda: "Napirend"
       meeting_minutes: "Jegyzőkönyv"

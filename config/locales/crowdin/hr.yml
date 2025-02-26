@@ -395,6 +395,8 @@ hr:
         no_results_content_text: Dodaj novu verziju projekta
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -797,6 +799,7 @@ hr:
       attachment:
         attachment_content: "Attachment content"
         attachment_file_name: "Attachment file name"
+        content_type: "Content-type"
         downloads: "Preuzimanja"
         file: "Datoteka"
         filename: "Datoteka"
@@ -804,10 +807,10 @@ hr:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Help text"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repozitorij"
-      color:
-        hexcode: "Heksadecimalni kod"
       comment:
         commented: "Komentirano" #an object that this comment belongs to
       custom_action:
@@ -840,7 +843,10 @@ hr:
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Valid since"
         subscriber: "Pretplatnik"
         encoded_token: "Enterprise support token"
@@ -852,6 +858,7 @@ hr:
         widgets: "Widgets"
       journal:
         notes: "Bilješke"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Korisnički račun"
         attr_firstname: "Atribut Ime"
@@ -867,6 +874,9 @@ hr:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Role"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
       planning_element_type_color:
@@ -883,6 +893,7 @@ hr:
           true: "public"
           false: "private"
         queries: "Upiti"
+        enabled_modules: "Enabled modules"
         status_code: "Status projekta"
         description: "Opis"
         status_explanation: "Project status description"
@@ -903,23 +914,47 @@ hr:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Stupci"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
         group_by: "Grupiraj rezultate po"
+        sort_by: "Sort results by"
         filters: "Filteri"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Pripadajući radni paket"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -929,6 +964,9 @@ hr:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivnost"
         hours: "Sati"
@@ -942,6 +980,7 @@ hr:
         is_default: "Activated for new projects by default"
         is_milestone: "Je ključna točka"
         color: "Boja"
+        patterns: "Patterns"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"
@@ -951,6 +990,10 @@ hr:
         force_password_change: "Promjena lozinke pri sljedećoj prijavi na sustav"
         language: "Jezik"
         last_login_on: "Zadnja prijava"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Nova lozinka"
         password_confirmation: "Potvrda"
         consented_at: "Pristanak na"
@@ -962,6 +1005,8 @@ hr:
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Finish date"
         sharing: "Dijeljenje"
@@ -1420,6 +1465,10 @@ hr:
       forum: "Forum"
       global_role: "Global role"
       group: "Grupa"
+      issue_priority:
+        one: "Priority"
+        few: "Priorities"
+        other: "Priorities"
       member: "Član"
       news: "Vijesti"
       notification:
@@ -1435,6 +1484,7 @@ hr:
         few: "Project lists"
         other: "Project lists"
       query: "Prilagođeni upit"
+      reminder: "Reminder"
       role:
         one: "Role"
         few: "Role"
@@ -1505,18 +1555,25 @@ hr:
     assigned_to: "Opunomoćeno"
     assignee: "Opunomoćeno"
     attachments: "Prilozi"
+    actor: "Actor"
+    action: "Action"
     author: "Autor"
+    avatar: "Avatar"
     base: "Opća greška:"
+    body: "Body"
     blocks_ids: "ID-ovi onemogućenih radnih paketa"
     category: "Kategorija"
     comment: "Komentar"
     comments: "Komentar"
     content: "Sadržaj"
     color: "Boja"
+    creator: "Creator"
     created_at: "Izrađeno"
+    custom_field: "Custom field"
     custom_options: "Moguće vrijednosti"
     custom_values: "Prilagođena polja"
     date: "Datum"
+    dates_interval: "Date range"
     default_columns: "Zadani stupci"
     description: "Opis"
     derived_due_date: "Derived finish date"
@@ -1526,39 +1583,63 @@ hr:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Ističe u"
     firstname: "Ime"
+    filter: "Filter"
     group: "Grupa"
     groups: "Grupe"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Zadane vrijednost"
     is_for_all: "Za sve projekte"
     public: "Javno"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Radni paket"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Prezime"
     login: "Korisničko ime"
     mail: "Email"
     name: "Naziv"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Lozinka"
     priority: "Prioritet"
     project: "Projekt"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Accountable"
+    required: "Required"
+    recipient: "Recipient"
     role: "Role"
     roles: "Role"
+    search: "Search"
     start_date: "Datum Početka"
     status: "Status"
+    state: "State"
     subject: "Predmet"
+    slug: "Slug"
     summary: "Sažetak"
+    text: "Text"
     title: "Naziv"
     type: "Tip"
+    typeahead: "Autocomplete"
     updated_at: "Ažurirano"
     updated_on: "Ažurirano"
     uploader: "Uploader"
     user: "Korisnik"
+    username: "Username"
+    unit: "Unit"
     value: "Vrijednost"
+    values: "Values"
     version: "Verzija"
+    visible: "Visible"
     work_package: "Radni paket"
   backup:
     failed: "Backup failed"
@@ -1890,6 +1971,8 @@ hr:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Prioriteti radnog paketa"
   enumeration_reported_project_statuses: "Priopćeni statusi projekta"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -1979,6 +2062,7 @@ hr:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2454,6 +2538,7 @@ hr:
   label_filter: "Filteri"
   label_filter_add: "Dodaj filter"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filteri"
   label_filters_toggle: "Pokaži/Sakrij filtere"
   label_float: "Plutajući"
@@ -2733,6 +2818,7 @@ hr:
   label_roadmap_overdue: "%{value} zakašnjeo"
   label_role_and_permissions: "Role i dozvole"
   label_role_new: "Nova rola"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Role"
   label_role_search: "Dodijeli uloge novim korisnicima"
   label_scm: "SCM"

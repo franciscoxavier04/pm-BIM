@@ -395,6 +395,8 @@ fi:
         no_results_content_text: Luo uusi versio
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -788,6 +790,7 @@ fi:
       attachment:
         attachment_content: "Liitteen sisältö"
         attachment_file_name: "Liitteen tiedoston nimi"
+        content_type: "Content-type"
         downloads: "Lataukset"
         file: "Tiedosto"
         filename: "Tiedosto"
@@ -795,10 +798,10 @@ fi:
       attribute_help_text:
         attribute_name: "Määre"
         help_text: "Help text"
+      capability:
+        context: "Context"
       changeset:
         repository: "Tietovarasto"
-      color:
-        hexcode: "Hex koodi"
       comment:
         commented: "Kommentoitu" #an object that this comment belongs to
       custom_action:
@@ -831,7 +834,10 @@ fi:
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Voimassa alkaen"
         subscriber: "Tilaaja"
         encoded_token: "Enterprise support token"
@@ -843,6 +849,7 @@ fi:
         widgets: "Widgets"
       journal:
         notes: "Kommentit"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Käyttäjätili"
         attr_firstname: "Etunimi-tietue"
@@ -858,6 +865,9 @@ fi:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Roolit"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
       planning_element_type_color:
@@ -874,6 +884,7 @@ fi:
           true: "public"
           false: "private"
         queries: "Kyselyt"
+        enabled_modules: "Enabled modules"
         status_code: "Projektin tila"
         description: "Kuvaus"
         status_explanation: "Project status description"
@@ -894,23 +905,47 @@ fi:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Sarakkeet"
         relations_to_type_column: "Riippuvuus %{type}"
         relations_of_type_column: "%{type} -riippuvuus"
         group_by: "Ryhmittele tulokset"
+        sort_by: "Sort results by"
         filters: "Suodattimet"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Liittyy tehtävään"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -920,6 +955,9 @@ fi:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Tapahtumat"
         hours: "Tunnit"
@@ -933,6 +971,7 @@ fi:
         is_default: "Activated for new projects by default"
         is_milestone: "On virstanpylväs"
         color: "Väri"
+        patterns: "Patterns"
       user:
         admin: "Järjestelmänvalvoja"
         auth_source: "Authentication source"
@@ -942,6 +981,10 @@ fi:
         force_password_change: "Pakota salasanan vaihto seuraavan kirjautumisen yhteydessä"
         language: "Kieli"
         last_login_on: "Edellinen kirjautuminen"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Uusi salasana"
         password_confirmation: "Vahvistus"
         consented_at: "Hyväksytty"
@@ -953,6 +996,8 @@ fi:
         warn_on_leaving_unsaved: "Varoita tallentamattomista muutoksista"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Päättymispäivä"
         sharing: "Jakaminen"
@@ -1409,6 +1454,9 @@ fi:
       forum: "Keskustelupalsta"
       global_role: "Global role"
       group: "Ryhmä"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "Jäsen"
       news: "Uutiset"
       notification:
@@ -1422,6 +1470,7 @@ fi:
         one: "Project list"
         other: "Project lists"
       query: "Mukautettu haku"
+      reminder: "Reminder"
       role:
         one: "Rooli"
         other: "Roolit"
@@ -1486,18 +1535,25 @@ fi:
     assigned_to: "Työn suorittaja"
     assignee: "Työn suorittaja"
     attachments: "Liitteet"
+    actor: "Actor"
+    action: "Action"
     author: "Tekijä"
+    avatar: "Avatar"
     base: "Yleinen virhe:"
+    body: "Body"
     blocks_ids: "Estettyjen työpakettien tunnukset"
     category: "Kategoria"
     comment: "Kommentti"
     comments: "Kommentti"
     content: "Sisältö"
     color: "Väri"
+    creator: "Creator"
     created_at: "Luotu"
+    custom_field: "Custom field"
     custom_options: "Mahdolliset arvot"
     custom_values: "Mukautetut kentät"
     date: "Päivämäärä"
+    dates_interval: "Date range"
     default_columns: "Oletussarakkeet"
     description: "Kuvaus"
     derived_due_date: "Derived finish date"
@@ -1507,39 +1563,63 @@ fi:
     due_date: "Päättymispäivä"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Vanhentuu"
     firstname: "Etunimi"
+    filter: "Filter"
     group: "Ryhmä"
     groups: "Ryhmät"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Oletusarvo"
     is_for_all: "Kaikille projekteille"
     public: "Julkinen"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Työpaketti"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Sukunimi"
     login: "Käyttäjätunnus"
     mail: "Sähköposti"
     name: "Nimi"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Salasana"
     priority: "Prioriteetti"
     project: "Projekti"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Vastuuhenkilö"
+    required: "Required"
+    recipient: "Recipient"
     role: "Rooli"
     roles: "Roolit"
+    search: "Search"
     start_date: "Aloituspäivä"
     status: "Tila"
+    state: "State"
     subject: "Aihe"
+    slug: "Slug"
     summary: "Yhteenveto"
+    text: "Text"
     title: "Otsikko"
     type: "Tyyppi"
+    typeahead: "Autocomplete"
     updated_at: "Päivitetty"
     updated_on: "Päivitetty"
     uploader: "Uploader"
     user: "Käyttäjä"
+    username: "Username"
+    unit: "Unit"
     value: "Arvo"
+    values: "Values"
     version: "Versio"
+    visible: "Visible"
     work_package: "Työpaketti"
   backup:
     failed: "Backup failed"
@@ -1852,6 +1932,8 @@ fi:
   enumeration_activities: "Ajanseurannan tapahtumat"
   enumeration_work_package_priorities: "Work package priorities"
   enumeration_reported_project_statuses: "Reported project status"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -1941,6 +2023,7 @@ fi:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2416,6 +2499,7 @@ fi:
   label_filter: "Suodattimet"
   label_filter_add: "Lisää suodatin"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Suodattimet"
   label_filters_toggle: "Show/hide filters"
   label_float: "Liukuluku"
@@ -2695,6 +2779,7 @@ fi:
   label_roadmap_overdue: "%{value} myöhässä"
   label_role_and_permissions: "Roolit ja oikeudet"
   label_role_new: "Uusi rooli"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Roolit"
   label_role_search: "Määritä rooli uusille jäsenille"
   label_scm: "SCM"

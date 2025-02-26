@@ -1,16 +1,25 @@
 zh-CN:
   activerecord:
     attributes:
+      oauth_client:
+        client_id: Client ID
+        client_secret: Client secret
+      project:
+        project_folder_type: Project folder type
       storages/file_link:
-        origin_id: 来源 ID
+        origin: Origin
+        storage: Storage
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: 通过 OpenID Connect 身份提供商进行单点登录
           oauth2_sso_with_two_way_oauth2_fallback: 以双向 OAuth 2.0 作为单点登录的备用方案
           two_way_oauth2: 双向 OAuth 2.0 授权代码流
-        nextcloud_audience: Nextcloud 受众
+        storage_audience: Storage Audience
       storages/project_storage:
+        project_folder: Project folder
+        project_folder_mode: Project folder mode
         storage: 存储
+        storage_url: Storage URL
       storages/storage:
         authentication_method: 身份验证方式
         creator: 创建者
@@ -209,15 +218,16 @@ zh-CN:
       access_management_section: 访问和项目文件夹
       automatically_managed_folders: 自动托管的文件夹
       general_information: 一般信息
-      nextcloud_audience: Nextcloud 受众
-      nextcloud_audience_blank: 未配置受众
-      nextcloud_audience_description: 使用受众 %{audience}
-      nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth 配置
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: 项目文件夹
       redirect_uri: 重定向 URI
+      storage_audience: Storage Audience
+      storage_audience_blank: No audience has been configured
+      storage_audience_description: Obtaining tokens for audience "%{audience}".
+      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_oauth: Nextcloud OAuth
       storage_provider: 存储提供商
     health:
       checked: 上次检查于 %{datetime}
@@ -274,10 +284,10 @@ zh-CN:
       nextcloud:
         application_link_text: 应用“集成OpenProject”
         integration: Nextcloud 管理/OpenProject
-        nextcloud_audience: 请输入Nextcloud实例用于与身份提供者通信的客户端 ID。
-        nextcloud_audience_placeholder: 例如 Nextcloud
         oauth_configuration: 从 %{application_link_text} 复制这些值。
         provider_configuration: 在进行设置之前，请确保您在 Nextcloud 实例中具有管理员权限，并且已安装了 %{application_link_text}。
+        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience_placeholder: e.g. nextcloud
       no_specific_folder: 默认情况下，每个用户上传文件时将从自己的主文件夹开始。
       no_storage_set_up: 尚未设置文件存储。
       not_logged_into_storage: 要选择一个项目文件夹，请先登录
@@ -308,8 +318,8 @@ zh-CN:
     label_creation_time: 创建时间
     label_creator: 创建者
     label_delete_storage: 删除存储
-    label_edit_nextcloud_audience: 编辑 Nextcloud 受众
     label_edit_storage_access_management: 编辑存储访问管理
+    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: 编辑存储自动管理的文件夹
     label_edit_storage_host: 编辑存储主机
     label_existing_manual_folder: 具有手动管理权限的现有文件夹
@@ -399,8 +409,15 @@ zh-CN:
         name: OneDrive/SharePoint
         name_placeholder: 例如OneDrive
     show_attachments_toggle:
-      description: '禁用此选项将会为新项目隐藏工作包文件标签上的附件列表。 工作包描述中的文件仍将上传到内部附件存储。'
+      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: 在工作包文件选项卡中显示附件
+    storage_audience:
+      idp:
+        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use first access token obtained by identity provider
+      manual:
+        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
+        label: Define storage audience manually
     storage_list_blank_slate:
       description: 在这里添加一个存储以查看它们。
       heading: 您还没有任何存储。

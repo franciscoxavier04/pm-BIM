@@ -65,6 +65,7 @@ pt-BR:
     models:
       recurring_meeting: "Reunião recorrente"
       structured_meeting: "Reunião única"
+      meeting: "Meeting"
       meeting_agenda_item: "Item da agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Atas"

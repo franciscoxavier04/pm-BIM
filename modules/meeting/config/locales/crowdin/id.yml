@@ -64,6 +64,7 @@ id:
     models:
       recurring_meeting: "Rapat berulang"
       structured_meeting: "Rapat satu waktu"
+      meeting: "Meeting"
       meeting_agenda_item: "Item agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Laporan"

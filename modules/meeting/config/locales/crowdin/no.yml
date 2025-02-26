@@ -65,6 +65,7 @@
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "Dagsorden element"
       meeting_agenda: "Saksliste"
       meeting_minutes: "Referat"

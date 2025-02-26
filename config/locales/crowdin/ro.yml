@@ -395,6 +395,8 @@ ro:
         no_results_content_text: Creează versiune nouă
       storage:
         no_results_title_text: Acest proiect nu consumă spațiu suplimentar pe disc.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -797,6 +799,7 @@ ro:
       attachment:
         attachment_content: "Conținutul anexei"
         attachment_file_name: "Numele fișierului atașat"
+        content_type: "Content-type"
         downloads: "Descărcări"
         file: "Fișier"
         filename: "Fișier"
@@ -804,10 +807,10 @@ ro:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Text de ajutor"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repo"
-      color:
-        hexcode: "Cod hex"
       comment:
         commented: "Cu comentarii" #an object that this comment belongs to
       custom_action:
@@ -840,7 +843,10 @@ ro:
         client_credentials_user_id: "Credențiale client ID utilizator"
         scopes: "Scopuri"
         confidential: "Confidenţial"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Valabil din"
         subscriber: "Abonat"
         encoded_token: "Token de sprijin pentru întreprinderi"
@@ -852,6 +858,7 @@ ro:
         widgets: "Widget-uri"
       journal:
         notes: "Mențiuni"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Cont"
         attr_firstname: "Atribut prenume"
@@ -867,6 +874,9 @@ ro:
         tls_certificate_string: "Certificat SSL pentru serverul LDAP"
       member:
         roles: "Roluri"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "ID Client"
       planning_element_type_color:
@@ -883,6 +893,7 @@ ro:
           true: "public"
           false: "privat"
         queries: "Interogări"
+        enabled_modules: "Enabled modules"
         status_code: "Stare proiect"
         description: "Descriere"
         status_explanation: "Descriere stadiu proiect"
@@ -903,23 +914,47 @@ ro:
       project_custom_field:
         is_required: "Obligatoriu în toate proiectele"
         custom_field_section: Secțiune
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Coloane"
         relations_to_type_column: "Relații cu %{type}"
         relations_of_type_column: "%{type} relații"
         group_by: "Grupare rezultate"
+        sort_by: "Sort results by"
         filters: "Filtre"
         timeline_labels: "Etichete de cronologie"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Întârziere"
         from: "Related work package"
         to: "Pachet de lucru asociat"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -929,6 +964,9 @@ ro:
         is_readonly: "Pachet de lucru numai pentru citire"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Finalizat"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Activitate"
         hours: "Ore"
@@ -942,6 +980,7 @@ ro:
         is_default: "Activat în mod implicit pentru proiectele noi"
         is_milestone: "Este reper de etapă"
         color: "Culoare"
+        patterns: "Patterns"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"
@@ -951,6 +990,10 @@ ro:
         force_password_change: "Impune schimbarea parolei la următoarea autentificare"
         language: "Limbă"
         last_login_on: "Ultima autentificare"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Parolă nouă"
         password_confirmation: "Confirmare"
         consented_at: "Consimţit la"
@@ -962,6 +1005,8 @@ ro:
         warn_on_leaving_unsaved: "Avertizează când părăsesc un pachet de lucru cu modificări nesalvate"
         theme: "Mod"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Dată finalizare"
         sharing: "Distribuire"
@@ -1420,6 +1465,10 @@ ro:
       forum: "Forum"
       global_role: "Global role"
       group: "Grup"
+      issue_priority:
+        one: "Priority"
+        few: "Priorities"
+        other: "Priorities"
       member: "Membru"
       news: "Noutăţi"
       notification:
@@ -1435,6 +1484,7 @@ ro:
         few: "Project lists"
         other: "Project lists"
       query: "Interogare personalizată"
+      reminder: "Reminder"
       role:
         one: "Rol"
         few: "Roluri"
@@ -1505,18 +1555,25 @@ ro:
     assigned_to: "Executant"
     assignee: "Executant"
     attachments: "Atașamente"
+    actor: "Actor"
+    action: "Action"
     author: "Autor"
+    avatar: "Avatar"
     base: "Eroare generală:"
+    body: "Body"
     blocks_ids: "ID-urile pachetelor de lucru blocate"
     category: "Categorie"
     comment: "Comentariu"
     comments: "Comentariu"
     content: "Conținut"
     color: "Culoare"
+    creator: "Creator"
     created_at: "Creat pe"
+    custom_field: "Custom field"
     custom_options: "Valori posibile"
     custom_values: "Câmpuri personalizate"
     date: "Data"
+    dates_interval: "Date range"
     default_columns: "Coloane implicite"
     description: "Descriere"
     derived_due_date: "Dată finală derivată"
@@ -1526,39 +1583,63 @@ ro:
     due_date: "Dată finalizare"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Expiră la"
     firstname: "Prenume"
+    filter: "Filter"
     group: "Grup"
     groups: "Grupuri"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Valoare implicită"
     is_for_all: "Pentru toate proiectele"
     public: "Public"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Pachet de lucru"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Nume"
     login: "Utilizator"
     mail: "E-mail"
     name: "Nume"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Parolă"
     priority: "Prioritate"
     project: "Proiect"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Responsabil"
+    required: "Required"
+    recipient: "Recipient"
     role: "Rol"
     roles: "Roluri"
+    search: "Search"
     start_date: "Dată început"
     status: "Stare"
+    state: "State"
     subject: "Subiect"
+    slug: "Slug"
     summary: "Rezumat"
+    text: "Text"
     title: "Titlu"
     type: "Tip"
+    typeahead: "Autocomplete"
     updated_at: "Actualizat pe"
     updated_on: "Actualizat în"
     uploader: "Autor"
     user: "Utilizator"
+    username: "Username"
+    unit: "Unit"
     value: "Valoare"
+    values: "Values"
     version: "Versiune"
+    visible: "Visible"
     work_package: "Pachet de lucru"
   backup:
     failed: "Copia de rezervă a eșuat"
@@ -1890,6 +1971,8 @@ ro:
   enumeration_activities: "Activități de urmărire timp activate"
   enumeration_work_package_priorities: "Priorități pentru pachetele de lucru"
   enumeration_reported_project_statuses: "Stările proiectului raportat"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Autentificarea unică (SSO) pentru utilizatorul '%{value}' a eșuat"
   error_can_not_archive_project: "Acest proiect nu poate fi arhivat: %{errors}"
   error_can_not_delete_entry: "Nu se poate șterge intrarea"
@@ -1979,6 +2062,7 @@ ro:
         input_label_report: "Adaugă coloane la tabelul de atribute"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2454,6 +2538,7 @@ ro:
   label_filter: "Filtre"
   label_filter_add: "Adaugă filtru"
   label_filter_by: "Filtrează după"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filtre"
   label_filters_toggle: "Arată/ascunde filtre"
   label_float: "Număr real"
@@ -2733,6 +2818,7 @@ ro:
   label_roadmap_overdue: "%{value} întârziere"
   label_role_and_permissions: "Roluri și permisiuni"
   label_role_new: "Rol nou"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Roluri"
   label_role_search: "Atribuirea rolului noilor membri"
   label_scm: "SCM"

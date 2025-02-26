@@ -66,6 +66,7 @@ lv:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "Darba kārtības punkts"
       meeting_agenda: "Darba kārtība"
       meeting_minutes: "Protokols"

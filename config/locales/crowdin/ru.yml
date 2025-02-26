@@ -394,6 +394,8 @@ ru:
         no_results_content_text: Создать новую версию
       storage:
         no_results_title_text: Для этого проекта дополнительного дискового пространства не требуется.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Продолжительность: %{count} рабочий день"
@@ -804,6 +806,7 @@ ru:
       attachment:
         attachment_content: "Вложенный контент"
         attachment_file_name: "Название вложенного файла"
+        content_type: "Content-type"
         downloads: "Загрузки"
         file: "Файл"
         filename: "Файл"
@@ -811,10 +814,10 @@ ru:
       attribute_help_text:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
+      capability:
+        context: "Context"
       changeset:
         repository: "Репозиторий"
-      color:
-        hexcode: "Hex-код"
       comment:
         commented: "Прокомментировано" #an object that this comment belongs to
       custom_action:
@@ -847,7 +850,10 @@ ru:
         client_credentials_user_id: "ID пользователя клиента"
         scopes: "Области"
         confidential: "Конфиденциально"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Действует с"
         subscriber: "Подписчик"
         encoded_token: "Маркер поддержки корпоративной версии"
@@ -859,6 +865,7 @@ ru:
         widgets: "Виджеты"
       journal:
         notes: "Примечания"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Аккаунт"
         attr_firstname: "Атрибут имени"
@@ -874,6 +881,9 @@ ru:
         tls_certificate_string: "SSL-сертификат сервера LDAP"
       member:
         roles: "Роль"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "ID клиента"
       planning_element_type_color:
@@ -890,6 +900,7 @@ ru:
           true: "публичный"
           false: "приватный"
         queries: "Запросы"
+        enabled_modules: "Enabled modules"
         status_code: "Статус проекта"
         description: "Описание"
         status_explanation: "Описание статуса проекта"
@@ -910,23 +921,47 @@ ru:
       project_custom_field:
         is_required: "Требуется для всех проектов"
         custom_field_section: Раздел
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Имя"
         color: "Цвет"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Столбцы"
         relations_to_type_column: "Отношения к %{type}"
         relations_of_type_column: "%{type} отношения"
         group_by: "Результаты группы по"
+        sort_by: "Sort results by"
         filters: "Фильтры"
         timeline_labels: "Временные метки"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Задержка"
         from: "Связанный пакет работ"
         to: "Похожий пакет работ"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Дата"
         remind_at_time: "Время"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -936,6 +971,9 @@ ru:
         is_readonly: "Пакет работ только для просмотра"
         excluded_from_totals: "Исключить из расчета итогов в иерархии"
         default_done_ratio: "% завершения"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Деятельность"
         hours: "Часы"
@@ -949,6 +987,7 @@ ru:
         is_default: "В новых проектах активируется по умолчанию"
         is_milestone: "Это веха"
         color: "Цвет"
+        patterns: "Patterns"
       user:
         admin: "Администратор"
         auth_source: "Источник аутентификации"
@@ -958,6 +997,10 @@ ru:
         force_password_change: "Принудительное изменение пароля при следующем входе"
         language: "Язык"
         last_login_on: "Последний вход в систему"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Новый пароль"
         password_confirmation: "Подтверждение"
         consented_at: "Согласен с"
@@ -969,6 +1012,8 @@ ru:
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
         mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Дата окончания"
         sharing: "Совместное использование"
@@ -1429,6 +1474,11 @@ ru:
       forum: "Форум"
       global_role: "Глобальная роль"
       group: "Группа"
+      issue_priority:
+        one: "Priority"
+        few: "Priorities"
+        many: "Priorities"
+        other: "Priorities"
       member: "Участник"
       news: "Новости"
       notification:
@@ -1446,6 +1496,7 @@ ru:
         many: "Списки проектов"
         other: "Списки проектов"
       query: "Настраиваемый запрос"
+      reminder: "Reminder"
       role:
         one: "Роль"
         few: "Роль"
@@ -1522,18 +1573,25 @@ ru:
     assigned_to: "Назначенный"
     assignee: "Назначенный"
     attachments: "Вложения"
+    actor: "Actor"
+    action: "Action"
     author: "Автор"
+    avatar: "Avatar"
     base: "Общая ошибка:"
+    body: "Body"
     blocks_ids: "Идентификаторы заблокированных рабочих пакетов"
     category: "Категория"
     comment: "Комментарий"
     comments: "Комментарий"
     content: "Содержание"
     color: "Цвет"
+    creator: "Creator"
     created_at: "Создано"
+    custom_field: "Custom field"
     custom_options: "Возможные значения"
     custom_values: "Настраиваемые поля"
     date: "Дата"
+    dates_interval: "Date range"
     default_columns: "Столбцы по умолчанию"
     description: "Описание"
     derived_due_date: "Дата окончания производства"
@@ -1543,39 +1601,63 @@ ru:
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
     estimated_time: "Предполагаемое время"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Истекает в"
     firstname: "Имя"
+    filter: "Filter"
     group: "Группа"
     groups: "Группы"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Значение по умолчанию"
     is_for_all: "Для всех проектов"
     public: "Общий"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Пакет работ"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Фамилия"
     login: "Имя пользователя"
     mail: "Электронная почта"
     name: "Имя"
     note: "Заметка"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Пароль"
     priority: "Приоритет"
     project: "Проект"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Ответственный"
+    required: "Required"
+    recipient: "Recipient"
     role: "Роль"
     roles: "Роли"
+    search: "Search"
     start_date: "Дата начала"
     status: "Статус"
+    state: "State"
     subject: "Тема"
+    slug: "Slug"
     summary: "Сводка"
+    text: "Text"
     title: "Заголовок"
     type: "Тип"
+    typeahead: "Autocomplete"
     updated_at: "Обновлено"
     updated_on: "Обновлено"
     uploader: "Кто загрузил"
     user: "Пользователь"
+    username: "Username"
+    unit: "Unit"
     value: "Значение"
+    values: "Values"
     version: "Этапы"
+    visible: "Visible"
     work_package: "Пакет работ"
   backup:
     failed: "Сбой резервного копирования"
@@ -1926,6 +2008,8 @@ ru:
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Сбой единого входа (SSO) для пользователя «%{value}»"
   error_can_not_archive_project: "Этот проект невозможно заархивировать: %{errors}"
   error_can_not_delete_entry: "Не удается удалить содержимое"
@@ -2015,6 +2099,7 @@ ru:
         input_label_report: "Добавить столбцы в таблицу атрибутов"
         input_caption_report: "По умолчанию выбраны все атрибуты, добавленные в качестве колонок в список пакетов работ. Длинные текстовые поля недоступны в таблице атрибутов, но могут быть отображены под ней."
         input_caption_table: "По умолчанию выбраны все атрибуты, добавленные в список пакетов работ. Длинные текстовые поля не доступны в экспорте на основе таблиц."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "Тип экспорта PDF"
@@ -2490,6 +2575,7 @@ ru:
   label_filter: "Фильтры"
   label_filter_add: "Добавить фильтр"
   label_filter_by: "Фильтровать по"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Фильтры"
   label_filters_toggle: "Показать/скрыть фильтры"
   label_float: "Плавающий"
@@ -2769,6 +2855,7 @@ ru:
   label_roadmap_overdue: "%{value} запаздывание"
   label_role_and_permissions: "Роли и разрешения"
   label_role_new: "Новая роль"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Роли"
   label_role_search: "Назначить роль для новых участников"
   label_scm: "SCM"

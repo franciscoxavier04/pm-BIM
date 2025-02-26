@@ -393,6 +393,8 @@ es:
         no_results_content_text: Crear un nueva versión
       storage:
         no_results_title_text: No se ha registrado el uso de espacio en disco adicional por este proyecto.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duración: %{count} día laborable"
@@ -786,6 +788,7 @@ es:
       attachment:
         attachment_content: "Contenido del archivo adjunto"
         attachment_file_name: "Nombre de archivo adjunto"
+        content_type: "Content-type"
         downloads: "Descargas"
         file: "Archivo"
         filename: "Archivo"
@@ -793,10 +796,10 @@ es:
       attribute_help_text:
         attribute_name: "Atributo"
         help_text: "Texto de ayuda"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repositorio"
-      color:
-        hexcode: "Código Hex"
       comment:
         commented: "Comentado" #an object that this comment belongs to
       custom_action:
@@ -829,7 +832,10 @@ es:
         client_credentials_user_id: "ID de Usuario de Credenciales del Cliente"
         scopes: "Ámbitos"
         confidential: "Confidencial"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Válido desde"
         subscriber: "Suscriptor"
         encoded_token: "Token de soporte de Enterprise"
@@ -841,6 +847,7 @@ es:
         widgets: "Widgets"
       journal:
         notes: "Notas"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Cuenta"
         attr_firstname: "Atributo Nombre"
@@ -856,6 +863,9 @@ es:
         tls_certificate_string: "Certificado SSL del servidor LDAP"
       member:
         roles: "Perfiles"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "ID de cliente"
       planning_element_type_color:
@@ -872,6 +882,7 @@ es:
           true: "público"
           false: "privado"
         queries: "Consultas"
+        enabled_modules: "Enabled modules"
         status_code: "Estado del proyecto"
         description: "Descripción"
         status_explanation: "Descripción del estado del proyecto"
@@ -892,23 +903,47 @@ es:
       project_custom_field:
         is_required: "Obligatorio para todos los proyectos"
         custom_field_section: Sección
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Nombre"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Columnas"
         relations_to_type_column: "Relaciones con %{type}"
         relations_of_type_column: "Relaciones de %{type}"
         group_by: "Resultados de grupo por"
+        sort_by: "Sort results by"
         filters: "Filtros"
         timeline_labels: "Etiquetas de cronograma"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Retraso"
         from: "Paquete de trabajo relacionado"
         to: "Paquete de trabajo relacionado"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Fecha"
         remind_at_time: "Hora"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -918,6 +953,9 @@ es:
         is_readonly: "Paquete de trabajo de solo lectura"
         excluded_from_totals: "Excluir del cálculo de totales en la jerarquía"
         default_done_ratio: "% compleado"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Actividad"
         hours: "Horas"
@@ -931,6 +969,7 @@ es:
         is_default: "Activado para nuevos proyectos de forma predeterminada"
         is_milestone: "Es un hito"
         color: "Color"
+        patterns: "Patterns"
       user:
         admin: "Administrador"
         auth_source: "Fuente de autentificación"
@@ -940,6 +979,10 @@ es:
         force_password_change: "Aplicar el cambio de contraseña en el proximo inicio de sesión"
         language: "Idioma"
         last_login_on: "Ultimó acceso"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Nueva contraseña"
         password_confirmation: "Confirmación"
         consented_at: "Consentido en"
@@ -951,6 +994,8 @@ es:
         warn_on_leaving_unsaved: "Avisarme cuando salga de un paquete de trabajo con cambios sin guardar"
         theme: "Modo"
         mode_guideline: "Algunos modos sobrescribirán los colores del tema personalizado por motivos de accesibilidad y legibilidad. Para obtener el tema personalizado completo, seleccione el modo Claro."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Fecha de finalización"
         sharing: "Compartiendo"
@@ -1407,6 +1452,9 @@ es:
       forum: "Foro"
       global_role: "Rol global"
       group: "Grupo"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "Miembro"
       news: "Noticias"
       notification:
@@ -1420,6 +1468,7 @@ es:
         one: "Lista de proyectos"
         other: "Listas de proyectos"
       query: "Consulta personalizada"
+      reminder: "Reminder"
       role:
         one: "Rol"
         other: "Roles"
@@ -1484,18 +1533,25 @@ es:
     assigned_to: "Asignado a"
     assignee: "Asignado a"
     attachments: "Archivos adjuntos"
+    actor: "Actor"
+    action: "Action"
     author: "Autor"
+    avatar: "Avatar"
     base: "Error general:"
+    body: "Body"
     blocks_ids: "Identificadores de paquetes bloqueados"
     category: "Categoría"
     comment: "Comentario"
     comments: "Comentario"
     content: "Contenido"
     color: "Color"
+    creator: "Creator"
     created_at: "Creado en"
+    custom_field: "Custom field"
     custom_options: "Valores posibles"
     custom_values: "Campos Personalizados"
     date: "Fecha"
+    dates_interval: "Date range"
     default_columns: "Columnas predeterminadas"
     description: "Descripción"
     derived_due_date: "Fecha final derivada"
@@ -1505,39 +1561,63 @@ es:
     due_date: "Fecha de finalización"
     estimated_hours: "Trabajo"
     estimated_time: "Trabajo"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Caduca el"
     firstname: "Nombre"
+    filter: "Filter"
     group: "Grupo"
     groups: "Grupos"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Valor predeterminado"
     is_for_all: "Para todos los proyectos"
     public: "Público"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Paquete de trabajo"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Apellido"
     login: "Nombre usuario"
     mail: "Correo electrónico"
     name: "Nombre"
     note: "Nota"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Contraseña"
     priority: "Prioridad"
     project: "Proyecto"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Responsable"
+    required: "Required"
+    recipient: "Recipient"
     role: "Perfil"
     roles: "Roles"
+    search: "Search"
     start_date: "Fecha de inicio"
     status: "Estado"
+    state: "State"
     subject: "Asunto"
+    slug: "Slug"
     summary: "Resumen"
+    text: "Text"
     title: "Título"
     type: "Tipo"
+    typeahead: "Autocomplete"
     updated_at: "Actualizada el"
     updated_on: "Actualizada el"
     uploader: "Cargador"
     user: "Usuario"
+    username: "Username"
+    unit: "Unit"
     value: "Valor"
+    values: "Values"
     version: "Versión"
+    visible: "Visible"
     work_package: "Paquete de trabajo"
   backup:
     failed: "La copia de seguridad ha fallado"
@@ -1850,6 +1930,8 @@ es:
   enumeration_activities: "Actividades de seguimiento del tiempo"
   enumeration_work_package_priorities: "Prioridades del paquete de trabajo"
   enumeration_reported_project_statuses: "Estatus del proyecto reportado"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "El intento de inicio de sesión único (SSO) para el usuario “%{value}” falló"
   error_can_not_archive_project: "Este proyecto no se puede archivar: %{errors}"
   error_can_not_delete_entry: "No se puede eliminar la entrada"
@@ -1939,6 +2021,7 @@ es:
         input_label_report: "Añadir columnas a la tabla de atributos"
         input_caption_report: "Por defecto se seleccionan todos los atributos añadidos como columnas en la lista de paquetes de trabajo. Los campos de texto largo no están disponibles en la tabla de atributos, pero pueden mostrarse debajo de ella."
         input_caption_table: "Por defecto se seleccionan todos los atributos añadidos como columnas en la lista de paquetes de trabajo. Los campos de texto largo no están disponibles en las exportaciones basadas en tablas."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "Tipo de exportación PDF"
@@ -2414,6 +2497,7 @@ es:
   label_filter: "Filtros"
   label_filter_add: "Añadir filtro"
   label_filter_by: "Filtrar por"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filtros"
   label_filters_toggle: "Mostrar/Ocultar filtros"
   label_float: "Desprender"
@@ -2693,6 +2777,7 @@ es:
   label_roadmap_overdue: "%{value} tarde"
   label_role_and_permissions: "Roles y permisos"
   label_role_new: "Nuevo rol"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Perfiles"
   label_role_search: "Asignar rol a nuevos miembros"
   label_scm: "SCM"

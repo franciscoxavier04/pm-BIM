@@ -67,6 +67,7 @@ lt:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "Darbotvarkės punktas"
       meeting_agenda: "Dienotvarkė"
       meeting_minutes: "Minutės"

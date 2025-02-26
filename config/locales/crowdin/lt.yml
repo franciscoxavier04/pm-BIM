@@ -392,6 +392,8 @@ lt:
         no_results_content_text: Sukurti naują versiją
       storage:
         no_results_title_text: Šis projektas papildomos vietos diske nenaudoja.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -803,6 +805,7 @@ lt:
       attachment:
         attachment_content: "Prisegto failo turinys"
         attachment_file_name: "Prisegto failo vardas"
+        content_type: "Content-type"
         downloads: "Atsisiuntimai"
         file: "Failas"
         filename: "Byla"
@@ -810,10 +813,10 @@ lt:
       attribute_help_text:
         attribute_name: "Atributas"
         help_text: "Pagalbos tekstas"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repozitorija"
-      color:
-        hexcode: "Šešioliktainis kodas"
       comment:
         commented: "Komentavo" #an object that this comment belongs to
       custom_action:
@@ -846,7 +849,10 @@ lt:
         client_credentials_user_id: "Kliento įgaliojimų naudotojo ID"
         scopes: "Apimtys"
         confidential: "Konfidencialu"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Galioja nuo"
         subscriber: "Prenumeruotojas"
         encoded_token: "„Enterprise“ paramos raktas"
@@ -858,6 +864,7 @@ lt:
         widgets: "Valdikliai"
       journal:
         notes: "Pastabos"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Paskyra"
         attr_firstname: "Vardo atributas"
@@ -873,6 +880,9 @@ lt:
         tls_certificate_string: "LDAP serverio SSL sertifikatas"
       member:
         roles: "Vaidmenys"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Kliento ID"
       planning_element_type_color:
@@ -889,6 +899,7 @@ lt:
           true: "vieša"
           false: "privatus"
         queries: "Užklausos"
+        enabled_modules: "Enabled modules"
         status_code: "Projekto būsena"
         description: "Aprašymas"
         status_explanation: "Projekto būsenos aprašymas"
@@ -909,23 +920,47 @@ lt:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Skiltis
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Stulpeliai"
         relations_to_type_column: "Ryšiai su %{type}"
         relations_of_type_column: "%{type} ryšiai"
         group_by: "Grupuoti rezultatus pagal"
+        sort_by: "Sort results by"
         filters: "Filtrai"
         timeline_labels: "Laiko juostos etiketės"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Vėlavimas"
         from: "Related work package"
         to: "Susijusių darbų paketas"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -935,6 +970,9 @@ lt:
         is_readonly: "Darbų paketas nekeičiamas"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Veikla"
         hours: "Valandų"
@@ -948,6 +986,7 @@ lt:
         is_default: "Pagal nutylėjimą įjungta naujiems projektams"
         is_milestone: "Yra svarbus etapas"
         color: "Spalva"
+        patterns: "Patterns"
       user:
         admin: "Administratorius"
         auth_source: "Autentifikacijos šaltinis"
@@ -957,6 +996,10 @@ lt:
         force_password_change: "Versti pasikeisti slaptažodį kitą kartą prisijungus"
         language: "Kalba"
         last_login_on: "Paskutinis prisijungimas"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Naujas slaptažodis"
         password_confirmation: "Patvirtinimas"
         consented_at: "Sutikimo laikas"
@@ -968,6 +1011,8 @@ lt:
         warn_on_leaving_unsaved: "Įspėti mane, kai palieku darbų paketą su neišsaugotais pakeitimais"
         theme: "Režimas"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Pabaigos data"
         sharing: "Pasidalijimas"
@@ -1428,6 +1473,11 @@ lt:
       forum: "Forumas"
       global_role: "Visuotinis vaidmuo"
       group: "Grupė"
+      issue_priority:
+        one: "Priority"
+        few: "Priorities"
+        many: "Priorities"
+        other: "Priorities"
       member: "Narys"
       news: "Naujienos"
       notification:
@@ -1445,6 +1495,7 @@ lt:
         many: "Projektų sąrašai"
         other: "Projektų sąrašai"
       query: "Sava užklausa"
+      reminder: "Reminder"
       role:
         one: "Vaidmuo"
         few: "Vaidmenys"
@@ -1521,18 +1572,25 @@ lt:
     assigned_to: "Paskirtas"
     assignee: "Paskirtas"
     attachments: "Priedai"
+    actor: "Actor"
+    action: "Action"
     author: "Autorius"
+    avatar: "Avatar"
     base: "Bendroji klaida:"
+    body: "Body"
     blocks_ids: "Blokuotų darbų paketų ID reikšmės"
     category: "Kategorija"
     comment: "Komentaras"
     comments: "Komentaras"
     content: "Turinys"
     color: "Spalva"
+    creator: "Creator"
     created_at: "Sukurta"
+    custom_field: "Custom field"
     custom_options: "Galimos reikšmės"
     custom_values: "Pritaikyti laukai"
     date: "Data"
+    dates_interval: "Date range"
     default_columns: "Numatytieji stulpeliai"
     description: "Aprašymas"
     derived_due_date: "Išvestinė pabaigos data"
@@ -1542,39 +1600,63 @@ lt:
     due_date: "Pabaigos data"
     estimated_hours: "Darbas"
     estimated_time: "Darbas"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Baigia galioti"
     firstname: "Vardas"
+    filter: "Filter"
     group: "Grupė"
     groups: "Grupės"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Numatytoji vertė"
     is_for_all: "Visiems projektams"
     public: "Viešas"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Darbų paketas"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Pavardė"
     login: "Naudotojas"
     mail: "El. paštas"
     name: "Vardas"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Slaptažodis"
     priority: "Pirmenybė"
     project: "Projektas"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Atsakingas"
+    required: "Required"
+    recipient: "Recipient"
     role: "Vaidmuo"
     roles: "Vaidmenys"
+    search: "Search"
     start_date: "Pradžios data"
     status: "Būsena"
+    state: "State"
     subject: "Tema"
+    slug: "Slug"
     summary: "Santrauka"
+    text: "Text"
     title: "Pavadinimas"
     type: "Tipas"
+    typeahead: "Autocomplete"
     updated_at: "Atnaujinta"
     updated_on: "Atnaujinta"
     uploader: "Įkėlėjas"
     user: "Naudotojas"
+    username: "Username"
+    unit: "Unit"
     value: "Reikšmė"
+    values: "Values"
     version: "Versija"
+    visible: "Visible"
     work_package: "Darbų paketas"
   backup:
     failed: "Nepavyko sukurti atsarginės kopijos"
@@ -1925,6 +2007,8 @@ lt:
   enumeration_activities: "Laiko sekimo veiklos"
   enumeration_work_package_priorities: "Darbų paketo prioritetai"
   enumeration_reported_project_statuses: "Pranešta projekto būsena"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Bendroji autentifikacija (SSO) vartotojui „%{value}“ nepavyko"
   error_can_not_archive_project: "Projekto negalima suarchyvuoti: %{errors}"
   error_can_not_delete_entry: "Nepavyko ištrinti įrašo"
@@ -2014,6 +2098,7 @@ lt:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2489,6 +2574,7 @@ lt:
   label_filter: "Filtrai"
   label_filter_add: "Pridėti filtrą"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filtrai"
   label_filters_toggle: "Rodyti/slėpti filtrus"
   label_float: "Skaičius su kableliu"
@@ -2768,6 +2854,7 @@ lt:
   label_roadmap_overdue: "%{value} vėluojama"
   label_role_and_permissions: "Vaidmenys ir leidimai"
   label_role_new: "Naujas vaidmuo"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Vaidmenys"
   label_role_search: "Priskirti vaidmenį naujiems nariams"
   label_scm: "SCM"

@@ -395,6 +395,8 @@ lv:
         no_results_content_text: Izveidot jaunu versiju
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       zero: "Duration: %{count} working days"
@@ -797,6 +799,7 @@ lv:
       attachment:
         attachment_content: "Attachment content"
         attachment_file_name: "Attachment file name"
+        content_type: "Content-type"
         downloads: "Lejupielādes"
         file: "Fails"
         filename: "Fails"
@@ -804,10 +807,10 @@ lv:
       attribute_help_text:
         attribute_name: "Attribute"
         help_text: "Help text"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repository"
-      color:
-        hexcode: "Hex code"
       comment:
         commented: "Komentēja" #an object that this comment belongs to
       custom_action:
@@ -840,7 +843,10 @@ lv:
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Valid since"
         subscriber: "Subscriber"
         encoded_token: "Enterprise support token"
@@ -852,6 +858,7 @@ lv:
         widgets: "Logrīki"
       journal:
         notes: "Piezīmes"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Konts"
         attr_firstname: "Atribūts FirstName"
@@ -867,6 +874,9 @@ lv:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Lomas"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
       planning_element_type_color:
@@ -883,6 +893,7 @@ lv:
           true: "public"
           false: "private"
         queries: "Vaicājumi"
+        enabled_modules: "Enabled modules"
         status_code: "Projekta statuss"
         description: "Apraksts"
         status_explanation: "Project status description"
@@ -903,23 +914,47 @@ lv:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Kolonnas"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
         group_by: "Grupēt rezultātus pēc"
+        sort_by: "Sort results by"
         filters: "Filtri"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Saistītie pieteikuma tipi"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -929,6 +964,9 @@ lv:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivitāte"
         hours: "Stundas"
@@ -942,6 +980,7 @@ lv:
         is_default: "Activated for new projects by default"
         is_milestone: "Ir atskaites punkts"
         color: "Krāsa"
+        patterns: "Patterns"
       user:
         admin: "Administrators"
         auth_source: "Authentication source"
@@ -951,6 +990,10 @@ lv:
         force_password_change: "Pieprasīt paroles nomaiņu pie nākamās ielogošanās"
         language: "Valoda"
         last_login_on: "Pēdējā pieslēgšanās"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Jaunā parole"
         password_confirmation: "Jaunā parole atkārtoti"
         consented_at: "Consented at"
@@ -962,6 +1005,8 @@ lv:
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Finish date"
         sharing: "Sharing"
@@ -1420,6 +1465,10 @@ lv:
       forum: "Forum"
       global_role: "Global role"
       group: "Group"
+      issue_priority:
+        zero: "Priorities"
+        one: "Priority"
+        other: "Priorities"
       member: "Member"
       news: "Jaunumi"
       notification:
@@ -1435,6 +1484,7 @@ lv:
         one: "Project list"
         other: "Project lists"
       query: "Custom query"
+      reminder: "Reminder"
       role:
         zero: "Lomas"
         one: "Loma"
@@ -1505,18 +1555,25 @@ lv:
     assigned_to: "Pašreizējais atbildīgais"
     assignee: "Pašreizējais atbildīgais"
     attachments: "Attachments"
+    actor: "Actor"
+    action: "Action"
     author: "Autors"
+    avatar: "Avatar"
     base: "General Error:"
+    body: "Body"
     blocks_ids: "IDs of blocked work packages"
     category: "Sadaļa"
     comment: "Komentârs"
     comments: "Komentârs"
     content: "Content"
     color: "Krāsa"
+    creator: "Creator"
     created_at: "Izveidots"
+    custom_field: "Custom field"
     custom_options: "Iespējamās vērtības"
     custom_values: "Pielāgotie lauki"
     date: "Datums"
+    dates_interval: "Date range"
     default_columns: "Default columns"
     description: "Apraksts"
     derived_due_date: "Derived finish date"
@@ -1526,39 +1583,63 @@ lv:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "Vārds"
+    filter: "Filter"
     group: "Group"
     groups: "Groups"
+    hexcode: "Hex code"
     id: "Nr"
     is_default: "Noklusējuma vērtība"
     is_for_all: "Visiem projektiem"
     public: "Publisks"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Darba pieteikums"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Uzvārds"
     login: "Username"
     mail: "E-Pasts"
     name: "Nosaukums"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Parole"
     priority: "Prioritāte"
     project: "Projekts"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Accountable"
+    required: "Required"
+    recipient: "Recipient"
     role: "Loma"
     roles: "Lomas"
+    search: "Search"
     start_date: "Sākuma datums"
     status: "Statuss"
+    state: "State"
     subject: "Nosaukums"
+    slug: "Slug"
     summary: "Kopsavilkums"
+    text: "Text"
     title: "Virsraksts"
     type: "Veids"
+    typeahead: "Autocomplete"
     updated_at: "Labots"
     updated_on: "Labots"
     uploader: "Uploader"
     user: "Lietotāji"
+    username: "Username"
+    unit: "Unit"
     value: "Vērtība"
+    values: "Values"
     version: "Versija"
+    visible: "Visible"
     work_package: "Darba pieteikums"
   backup:
     failed: "Backup failed"
@@ -1890,6 +1971,8 @@ lv:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Pieteikumu prioritātes"
   enumeration_reported_project_statuses: "Reported project status"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -1979,6 +2062,7 @@ lv:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2454,6 +2538,7 @@ lv:
   label_filter: "Filtri"
   label_filter_add: "Pievienot filtru"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filtri"
   label_filters_toggle: "Show/hide filters"
   label_float: "Float"
@@ -2733,6 +2818,7 @@ lv:
   label_roadmap_overdue: "%{value} late"
   label_role_and_permissions: "Roles and permissions"
   label_role_new: "New role"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Lomas"
   label_role_search: "Assign role to new members"
   label_scm: "SCM"

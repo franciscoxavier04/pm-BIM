@@ -64,6 +64,7 @@ ms:
     models:
       recurring_meeting: "Mesyuarat berulang"
       structured_meeting: "Mesyuarat sekali"
+      meeting: "Meeting"
       meeting_agenda_item: "Item agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minit mesyuarat"

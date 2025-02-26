@@ -395,6 +395,8 @@ vi:
         no_results_content_text: Tạo ra một phiên bản mới
       storage:
         no_results_title_text: Không có không gian đĩa bổ sung nào được ghi nhận bởi dự án này.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       other: "Duration: %{count} working days"
@@ -779,6 +781,7 @@ vi:
       attachment:
         attachment_content: "Số lượng Tệp đính kèm"
         attachment_file_name: "Tên tập tin đính kèm"
+        content_type: "Content-type"
         downloads: "Những mục đã tải xuống"
         file: "Tệp"
         filename: "Tệp"
@@ -786,10 +789,10 @@ vi:
       attribute_help_text:
         attribute_name: "Thuộc tính"
         help_text: "Văn bản trợ giúp"
+      capability:
+        context: "Context"
       changeset:
         repository: "Kho lưu trữ"
-      color:
-        hexcode: "Mã màu hex"
       comment:
         commented: "Đã bình luận" #an object that this comment belongs to
       custom_action:
@@ -822,7 +825,10 @@ vi:
         client_credentials_user_id: "ID người dùng thông tin xác thực của khách hàng"
         scopes: "Phạm vi"
         confidential: "Bí mật"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Có hiệu lực kể từ"
         subscriber: "Người đăng ký"
         encoded_token: "Mã thông báo hỗ trợ doanh nghiệp"
@@ -834,6 +840,7 @@ vi:
         widgets: "Tiện ích"
       journal:
         notes: "Ghi chú"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Tài khoản"
         attr_firstname: "Thuộc tính tên"
@@ -849,6 +856,9 @@ vi:
         tls_certificate_string: "Chứng chỉ SSL của máy chủ LDAP"
       member:
         roles: "Vai trò"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "ID khách hàng"
       planning_element_type_color:
@@ -865,6 +875,7 @@ vi:
           true: "công khai"
           false: "riêng tư"
         queries: "Truy vấn"
+        enabled_modules: "Enabled modules"
         status_code: "Trạng thái dự án"
         description: "Mô tả"
         status_explanation: "Mô tả trạng thái dự án"
@@ -885,23 +896,47 @@ vi:
       project_custom_field:
         is_required: "Yêu cầu cho tất cả các dự án"
         custom_field_section: Mục tùy chỉnh
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Cột"
         relations_to_type_column: "Quan hệ với %{type}"
         relations_of_type_column: "%{type} quan hệ"
         group_by: "Nhóm kết quả bởi"
+        sort_by: "Sort results by"
         filters: "Bộ lọc"
         timeline_labels: "Nhãn dòng thời gian"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Kết quả chậm"
         from: "Related work package"
         to: "Work package liên quan"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "Đường dẫn (URL)"
       role:
@@ -911,6 +946,9 @@ vi:
         is_readonly: "Work package chỉ đọc"
         excluded_from_totals: "Loại trừ khỏi tính tổng trong phân cấp"
         default_done_ratio: "% Hoàn thành"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Hoạt động"
         hours: "Giờ"
@@ -924,6 +962,7 @@ vi:
         is_default: "Kích hoạt cho các dự án mới theo mặc định"
         is_milestone: "Là cột mốc"
         color: "Màu sắc"
+        patterns: "Patterns"
       user:
         admin: "Người Quản lý"
         auth_source: "Nguồn xác thực"
@@ -933,6 +972,10 @@ vi:
         force_password_change: "Buộc thay đổi mật khẩu trong lần đăng nhập tiếp theo"
         language: "Ngôn ngữ"
         last_login_on: "Lần đăng nhập trước"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Mật khẩu mới"
         password_confirmation: "Xác nhận lại mật khẩu"
         consented_at: "Đồng ý tại"
@@ -944,6 +987,8 @@ vi:
         warn_on_leaving_unsaved: "Cảnh báo tôi khi rời khỏi gói công việc với thay đổi chưa lưu"
         theme: "Chế độ"
         mode_guideline: "Một số chế độ sẽ ghi đè màu chủ đề tùy chỉnh để đảm bảo khả năng truy cập và dễ đọc. Để có chủ đề tùy chỉnh đầy đủ, vui lòng chọn chế độ Sáng."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Ngày hoàn thành"
         sharing: "Chia sẻ"
@@ -1398,6 +1443,8 @@ vi:
       forum: "Diễn đàn"
       global_role: "Vai trò toàn cầu"
       group: "Nhóm"
+      issue_priority:
+        other: "Priorities"
       member: "Thành viên"
       news: "Tin tức"
       notification:
@@ -1409,6 +1456,7 @@ vi:
       project_query:
         other: "Danh sách dự án"
       query: "Truy vấn riêng"
+      reminder: "Reminder"
       role:
         other: "Vai trò"
       status: "Tình trạng work package"
@@ -1467,18 +1515,25 @@ vi:
     assigned_to: "Người được giao"
     assignee: "Người được phân công"
     attachments: "Đính kèm"
+    actor: "Actor"
+    action: "Action"
     author: "Tác giả"
+    avatar: "Avatar"
     base: "Lỗi tổng quan:"
+    body: "Body"
     blocks_ids: "ID của các work package bị chặn"
     category: "Danh mục"
     comment: "Nhận xét"
     comments: "Nhận xét"
     content: "Nội dung"
     color: "Màu sắc"
+    creator: "Creator"
     created_at: "Tạo ngày"
+    custom_field: "Custom field"
     custom_options: "Giá trị có thể có"
     custom_values: "Tùy chỉnh mục"
     date: "Ngày"
+    dates_interval: "Date range"
     default_columns: "Cột mặc định"
     description: "Mô tả"
     derived_due_date: "Ngày kết thúc suy ra"
@@ -1488,39 +1543,63 @@ vi:
     due_date: "Ngày kết thúc"
     estimated_hours: "Thời gian ước tính"
     estimated_time: "Thời gian ước tính"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Hết hạn vào"
     firstname: "Tên"
+    filter: "Filter"
     group: "Nhóm"
     groups: "Nhóm"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Giá trị mặc định"
     is_for_all: "Cho tất cả các dự án"
     public: "Công khai"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Gói công việc"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Họ"
     login: "Tên người dùng"
     mail: "Thư điện tử"
     name: "Tên"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Mật khẩu"
     priority: "Ưu tiên"
     project: "Dự án"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Trách nhiệm"
+    required: "Required"
+    recipient: "Recipient"
     role: "Vai trò"
     roles: "Vai trò"
+    search: "Search"
     start_date: "Ngày bắt đầu"
     status: "Trạng thái"
+    state: "State"
     subject: "Chủ đề"
+    slug: "Slug"
     summary: "Tóm tắt"
+    text: "Text"
     title: "Tiêu đề"
     type: "Loại"
+    typeahead: "Autocomplete"
     updated_at: "Được cập nhật vào lúc"
     updated_on: "Cập nhật vào"
     uploader: "Tải lên"
     user: "Người dùng"
+    username: "Username"
+    unit: "Unit"
     value: "Giá trị"
+    values: "Values"
     version: "Phiên bản"
+    visible: "Visible"
     work_package: "Work Package"
   backup:
     failed: "Sao lưu thất bại"
@@ -1814,6 +1893,8 @@ vi:
   enumeration_activities: "Theo dõi hoạt động"
   enumeration_work_package_priorities: "Độ ưu tiên của work package"
   enumeration_reported_project_statuses: "Tình trạng dự án đã báo cáo"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Đăng nhập một lần (SSO) cho người dùng '%{value}' không thành công"
   error_can_not_archive_project: "Dự án này không thể lưu trữ: %{errors}"
   error_can_not_delete_entry: "Không thể xoá"
@@ -1903,6 +1984,7 @@ vi:
         input_label_report: "Thêm cột vào bảng thuộc tính"
         input_caption_report: "Theo mặc định, tất cả các thuộc tính được thêm vào dưới dạng cột trong danh sách gói công việc đều được chọn. Các trường văn bản dài không có trong bảng thuộc tính, nhưng có thể được hiển thị bên dưới."
         input_caption_table: "Theo mặc định, tất cả các thuộc tính được thêm vào dưới dạng cột trong danh sách gói công việc đều được chọn. Các trường văn bản dài không khả dụng trong xuất dựa trên bảng."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "Loại xuất PDF"
@@ -2378,6 +2460,7 @@ vi:
   label_filter: "Bộ lọc"
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
@@ -2657,6 +2740,7 @@ vi:
   label_roadmap_overdue: "%{value} trễ hạn"
   label_role_and_permissions: "Vai trò và Quyền hạn"
   label_role_new: "Vai trò mới"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Vai trò"
   label_role_search: "Chỉ định vai trò cho các thành viên mới"
   label_scm: "SCM"

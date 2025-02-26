@@ -65,6 +65,7 @@ fr:
     models:
       recurring_meeting: "Réunion récurrente"
       structured_meeting: "Réunion ponctuelle"
+      meeting: "Meeting"
       meeting_agenda_item: ""
       meeting_agenda: "Ordre du jour"
       meeting_minutes: "Compte-rendu"

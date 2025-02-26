@@ -395,6 +395,8 @@ th:
         no_results_content_text: สร้างรุ่นใหม่
       storage:
         no_results_title_text: ไม่มีการระบุ พื้นที่ดิสก์ ไว้ในโปรเจ็กต์นี้
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       other: "Duration: %{count} working days"
@@ -779,6 +781,7 @@ th:
       attachment:
         attachment_content: "Attachment content"
         attachment_file_name: "Attachment file name"
+        content_type: "Content-type"
         downloads: "ดาวน์โหลด"
         file: "ไฟล์"
         filename: "ไฟล์"
@@ -786,10 +789,10 @@ th:
       attribute_help_text:
         attribute_name: "คุณลักษณะ"
         help_text: "Help text"
+      capability:
+        context: "Context"
       changeset:
         repository: "ที่เก็บข้อมูล"
-      color:
-        hexcode: "Hex code"
       comment:
         commented: "แสดงความเห็น" #an object that this comment belongs to
       custom_action:
@@ -822,7 +825,10 @@ th:
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Valid since"
         subscriber: "Subscriber"
         encoded_token: "Enterprise support token"
@@ -834,6 +840,7 @@ th:
         widgets: "Widgets"
       journal:
         notes: "หมายเหตุ"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "บัญชี"
         attr_firstname: "แอตทริบิวต์ของชื่อ"
@@ -849,6 +856,9 @@ th:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "บทบาท"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
       planning_element_type_color:
@@ -865,6 +875,7 @@ th:
           true: "public"
           false: "private"
         queries: "การสอบถาม"
+        enabled_modules: "Enabled modules"
         status_code: "สถานะของโครงการ"
         description: "คำอธิบาย"
         status_explanation: "Project status description"
@@ -885,23 +896,47 @@ th:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "คอลัมน์"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
         group_by: "จัดกลุ่มผลลัพธ์โดย"
+        sort_by: "Sort results by"
         filters: "ตัวกรอง"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "ชุดภารกิจที่เกี่ยวข้อง"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -911,6 +946,9 @@ th:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "กิจกรรม"
         hours: "ชั่วโมง"
@@ -924,6 +962,7 @@ th:
         is_default: "Activated for new projects by default"
         is_milestone: "Is milestone"
         color: "สี"
+        patterns: "Patterns"
       user:
         admin: "ผู้ดูแลระบบ"
         auth_source: "Authentication source"
@@ -933,6 +972,10 @@ th:
         force_password_change: "บังคับให้เปลี่ยนรหัสผ่านเมื่อมีการเข้าสู่ระบบครั้งถัดไป"
         language: "ภาษา"
         last_login_on: "ล็อกอินครั้งสุดท้าย"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "รหัสผ่านใหม่"
         password_confirmation: "ยืนยันรหัสผ่าน"
         consented_at: "Consented at"
@@ -944,6 +987,8 @@ th:
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Finish date"
         sharing: "แบ่งปัน"
@@ -1398,6 +1443,8 @@ th:
       forum: "ฟอรั่ม"
       global_role: "Global role"
       group: "กลุ่ม"
+      issue_priority:
+        other: "Priorities"
       member: "สมาชิก"
       news: "ข่าวสาร"
       notification:
@@ -1409,6 +1456,7 @@ th:
       project_query:
         other: "Project lists"
       query: "การสอบถามที่กำหนดเอง"
+      reminder: "Reminder"
       role:
         other: "บทบาท"
       status: "สถานะของชุดภารกิจ"
@@ -1467,18 +1515,25 @@ th:
     assigned_to: "ผู้ได้รับมอบหมาย"
     assignee: "ผู้ได้รับมอบหมาย"
     attachments: "ไฟล์แนบ"
+    actor: "Actor"
+    action: "Action"
     author: "ผู้เขียน"
+    avatar: "Avatar"
     base: "ข้อผิดพลาดทั่วไป:"
+    body: "Body"
     blocks_ids: "Id ของแพคเกจการทำงานที่ถูกบล็อก"
     category: "ประเภท"
     comment: "ความคิดเห็น"
     comments: "ความคิดเห็น"
     content: "เนื้อหา"
     color: "สี"
+    creator: "Creator"
     created_at: "สร้างเมื่อ"
+    custom_field: "Custom field"
     custom_options: "ค่าที่เป็นไปได้"
     custom_values: "ฟิลด์ที่กำหนดเอง"
     date: "วันที่"
+    dates_interval: "Date range"
     default_columns: "คอลัมน์เริ่มต้น"
     description: "คำอธิบาย"
     derived_due_date: "Derived finish date"
@@ -1488,39 +1543,63 @@ th:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "ชื่อ"
+    filter: "Filter"
     group: "กลุ่ม"
     groups: "กลุ่ม"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "ค่าเริ่มต้น"
     is_for_all: "สำหรับทุกโครงการ"
     public: "สาธารณะ"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "ชุดภารกิจ"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "นามสกุล"
     login: "Username"
     mail: "อีเมล"
     name: "ชื่อ"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "รหัสผ่าน"
     priority: "ระดับความสำคัญ"
     project: "โครงการ"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Accountable"
+    required: "Required"
+    recipient: "Recipient"
     role: "บทบาท"
     roles: "บทบาท"
+    search: "Search"
     start_date: "วันเริ่มต้น"
     status: "สถานะ"
+    state: "State"
     subject: "หัวข้อ"
+    slug: "Slug"
     summary: "สรุป"
+    text: "Text"
     title: "ชื่อเรื่อง"
     type: "ประเภท"
+    typeahead: "Autocomplete"
     updated_at: "แก้ไขเมื่อ"
     updated_on: "แก้ไขเมื่อ"
     uploader: "Uploader"
     user: "ผู้ใช้"
+    username: "Username"
+    unit: "Unit"
     value: "ค่า"
+    values: "Values"
     version: "เวอร์ชัน"
+    visible: "Visible"
     work_package: "ชุดภารกิจ"
   backup:
     failed: "Backup failed"
@@ -1814,6 +1893,8 @@ th:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "ระดับความสำคัญของชุดภารกิจ"
   enumeration_reported_project_statuses: "สถานะโครงการที่รายงานแล้ว"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -1903,6 +1984,7 @@ th:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2378,6 +2460,7 @@ th:
   label_filter: "ตัวกรอง"
   label_filter_add: "เพิ่มตัวกรอง"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "ตัวกรอง"
   label_filters_toggle: "Show/hide filters"
   label_float: "ลอย"
@@ -2657,6 +2740,7 @@ th:
   label_roadmap_overdue: "%{value} ล่าช้า"
   label_role_and_permissions: "บทบาทและสิทธิ"
   label_role_new: "บทบาทใหม่"
+  label_role_grantable: "Grantable role"
   label_role_plural: "บทบาท"
   label_role_search: "Assign role to new members"
   label_scm: "SCM"

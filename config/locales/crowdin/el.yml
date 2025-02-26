@@ -391,6 +391,8 @@ el:
         no_results_content_text: Δημιουργήστε μια νέα έκδοση
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -784,6 +786,7 @@ el:
       attachment:
         attachment_content: "Περιεχόμενο συνημμένου"
         attachment_file_name: "Όνομα συνημμένου αρχείου"
+        content_type: "Content-type"
         downloads: "Λήψεις"
         file: "Aρχείο"
         filename: "Aρχείο"
@@ -791,10 +794,10 @@ el:
       attribute_help_text:
         attribute_name: "Χαρακτηριστικό"
         help_text: "Κείμενο βοήθειας"
+      capability:
+        context: "Context"
       changeset:
         repository: "Αποθετήριο"
-      color:
-        hexcode: "Κωδικός Hex"
       comment:
         commented: "Σχολιασμένο" #an object that this comment belongs to
       custom_action:
@@ -827,7 +830,10 @@ el:
         client_credentials_user_id: "Διαπιστευτήρια Πελάτη Ταυτότητα Χρήστη"
         scopes: "Φυσικά αντικείμενα"
         confidential: "Εμπιστευτικό"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Ισχύει από"
         subscriber: "Συνδρομητής"
         encoded_token: "Token υποστήριξης Έκδοσης για Επιχειρήσεις"
@@ -839,6 +845,7 @@ el:
         widgets: "Γραφικά στοιχεία"
       journal:
         notes: "Παρατηρήσεις"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Λογαριασμός"
         attr_firstname: "Χαρακτηριστικό ονόματος"
@@ -854,6 +861,9 @@ el:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Ρόλοι"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Ταυτότητα Πελάτη"
       planning_element_type_color:
@@ -870,6 +880,7 @@ el:
           true: "public"
           false: "private"
         queries: "Αναζητήσεις"
+        enabled_modules: "Enabled modules"
         status_code: "Κατάσταση έργου"
         description: "Περιγραφή"
         status_explanation: "Project status description"
@@ -890,23 +901,47 @@ el:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Στήλες"
         relations_to_type_column: "Συσχετίσεις με %{type}"
         relations_of_type_column: "%{type} συσχετίσεις"
         group_by: "Ομαδοποίηση αποτελεσμάτων κατά"
+        sort_by: "Sort results by"
         filters: "Φίλτρα"
         timeline_labels: "Ετικέτες χρονοδιαγράμματος"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Σχετικές εργασίες"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -916,6 +951,9 @@ el:
         is_readonly: "Εργασία μόνο για ανάγνωση"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Δραστηριότητα"
         hours: "Ώρες"
@@ -929,6 +967,7 @@ el:
         is_default: "Ενεργοποιημένα για καινούργια έργα από προεπιλογή"
         is_milestone: "Είναι ορόσημο"
         color: "Χρώμα"
+        patterns: "Patterns"
       user:
         admin: "Διαχειριστής"
         auth_source: "Authentication source"
@@ -938,6 +977,10 @@ el:
         force_password_change: "Επιβολή αλλαγής κωδικού πρόσβασης στην επόμενη σύνδεση"
         language: "Γλώσσα"
         last_login_on: "Τελευταία σύνδεση"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Νέος κωδικός πρόσβασης"
         password_confirmation: "Επιβεβαίωση"
         consented_at: "Συγκατατίθεμαι σε"
@@ -949,6 +992,8 @@ el:
         warn_on_leaving_unsaved: "Προειδοποιήστε με όταν φεύγω από ένα πακέτο εργασίας με μη αποθηκευμένες αλλαγές"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Ημερομηνία λήξης"
         sharing: "Κοινή Χρήση"
@@ -1405,6 +1450,9 @@ el:
       forum: "Φόρουμ"
       global_role: "Global role"
       group: "Ομάδα"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "Μέλος"
       news: "Νέα"
       notification:
@@ -1418,6 +1466,7 @@ el:
         one: "Project list"
         other: "Project lists"
       query: "Προσαρμοσμένη αναζήτηση"
+      reminder: "Reminder"
       role:
         one: "Ρόλος"
         other: "Ρόλοι"
@@ -1482,18 +1531,25 @@ el:
     assigned_to: "Ανάθεση σε"
     assignee: "Ανάθεση σε"
     attachments: "Συνημμένα"
+    actor: "Actor"
+    action: "Action"
     author: "Συγγραφέας"
+    avatar: "Avatar"
     base: "Γενικό σφάλμα:"
+    body: "Body"
     blocks_ids: "Ταυτότητες μπλοκαρισμένων πακέτων εργασίας"
     category: "Κατηγορία"
     comment: "Σχόλιο"
     comments: "Σχόλιο"
     content: "Περιεχόμενο"
     color: "Χρώμα"
+    creator: "Creator"
     created_at: "Δημιουργήθηκε στις"
+    custom_field: "Custom field"
     custom_options: "Πιθανές τιμές"
     custom_values: "Προσαρμοσμένα πεδία"
     date: "Ημερομηνία"
+    dates_interval: "Date range"
     default_columns: "Προεπιλεγμένες στήλες"
     description: "Περιγραφή"
     derived_due_date: "Derived finish date"
@@ -1503,39 +1559,63 @@ el:
     due_date: "Ημερομηνία λήξης"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Λήγει στις"
     firstname: "Όνομα"
+    filter: "Filter"
     group: "Ομάδα"
     groups: "Ομάδες"
+    hexcode: "Hex code"
     id: "Ταυτότητα"
     is_default: "Προεπιλεγμένη τιμή"
     is_for_all: "Για όλα τα έργα"
     public: "Δημόσιο"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Εργασία"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Επώνυμο"
     login: "Όνομα χρήστη"
     mail: "Email"
     name: "Όνομα"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Κωδικός"
     priority: "Προτεραιότητα"
     project: "Έργο"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Υπόλογος"
+    required: "Required"
+    recipient: "Recipient"
     role: "Ρόλος"
     roles: "Ρόλοι"
+    search: "Search"
     start_date: "Ημερομηνία έναρξης"
     status: "Κατάσταση"
+    state: "State"
     subject: "Θέμα"
+    slug: "Slug"
     summary: "Περίληψη"
+    text: "Text"
     title: "Τίτλος"
     type: "Τύπος"
+    typeahead: "Autocomplete"
     updated_at: "Τροποποιήθηκε"
     updated_on: "Τροποποιήθηκε"
     uploader: "Μεταφορτώθηκε από"
     user: "Χρήστης"
+    username: "Username"
+    unit: "Unit"
     value: "Τιμή"
+    values: "Values"
     version: "Έκδοση"
+    visible: "Visible"
     work_package: "Εργασία"
   backup:
     failed: "Backup failed"
@@ -1848,6 +1928,8 @@ el:
   enumeration_activities: "Δραστηριότητες καταγραφής χρόνου"
   enumeration_work_package_priorities: "Προτεραιότητες πακέτου εργασίας"
   enumeration_reported_project_statuses: "Αναφερόμενη κατάσταση έργου"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Το Single Sign-On (SSO) για το χρήση '%{value}' απέτυχε"
   error_can_not_archive_project: "Αυτό το έργο δεν μπορεί να αρχειοθετηθεί: %{errors}"
   error_can_not_delete_entry: "Δεν είναι δυνατή η διαγραφή καταχώρησης"
@@ -1937,6 +2019,7 @@ el:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2412,6 +2495,7 @@ el:
   label_filter: "Φίλτρα"
   label_filter_add: "Προσθήκη φίλτρου"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Φίλτρα"
   label_filters_toggle: "Εμφάνιση/απόκρυψη φίλτρων"
   label_float: "Float"
@@ -2691,6 +2775,7 @@ el:
   label_roadmap_overdue: "%{value} αργοπορημένο"
   label_role_and_permissions: "Ρόλοι και δικαιώματα"
   label_role_new: "Νέος ρόλος"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Ρόλοι"
   label_role_search: "Ανάθεση ρόλων σε νέα μέλη"
   label_scm: "SCM"

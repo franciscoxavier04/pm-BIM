@@ -67,6 +67,7 @@ pl:
     models:
       recurring_meeting: "Spotkanie cykliczne"
       structured_meeting: "Spotkanie jednorazowe"
+      meeting: "Meeting"
       meeting_agenda_item: "Punkt programu"
       meeting_agenda: "Plan spotkania"
       meeting_minutes: "Protokół ze spotkania"

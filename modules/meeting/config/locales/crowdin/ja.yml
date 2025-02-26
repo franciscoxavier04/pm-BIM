@@ -64,6 +64,7 @@ ja:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "議題項目"
       meeting_agenda: "アジェンダ"
       meeting_minutes: "議事録"

@@ -65,6 +65,7 @@ de:
     models:
       recurring_meeting: "Wiederkehrende Besprechung"
       structured_meeting: "Einmalige Besprechung"
+      meeting: "Meeting"
       meeting_agenda_item: "Tagesordnungspunkt"
       meeting_agenda: "Agenda"
       meeting_minutes: "Protokoll"

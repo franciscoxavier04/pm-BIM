@@ -64,6 +64,7 @@ ko:
     models:
       recurring_meeting: "반복 미팅"
       structured_meeting: "일회성 미팅"
+      meeting: "Meeting"
       meeting_agenda_item: "의제 항목"
       meeting_agenda: "의제"
       meeting_minutes: "의사록"

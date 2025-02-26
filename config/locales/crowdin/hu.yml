@@ -394,6 +394,8 @@ hu:
         no_results_content_text: Új verzió létrehozása
       storage:
         no_results_title_text: "Ebben a projektben nincs további rögzített lemezterület.\n"
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -787,6 +789,7 @@ hu:
       attachment:
         attachment_content: "Melléklet tartalma"
         attachment_file_name: "Melléklet fájl neve"
+        content_type: "Content-type"
         downloads: "Letöltés"
         file: "Fájl"
         filename: "File"
@@ -794,10 +797,10 @@ hu:
       attribute_help_text:
         attribute_name: "Attribútum"
         help_text: "Súgószöveg"
+      capability:
+        context: "Context"
       changeset:
         repository: "Csomagtároló"
-      color:
-        hexcode: "Hexa kód"
       comment:
         commented: "Hozzászólás" #an object that this comment belongs to
       custom_action:
@@ -830,7 +833,10 @@ hu:
         client_credentials_user_id: "Ügyféladatok Felhasználói azonosító\n"
         scopes: "Hatáskörök"
         confidential: "Bizalmas"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Érvényes"
         subscriber: "Előfizető"
         encoded_token: "Vállalati támogatás kulcs"
@@ -842,6 +848,7 @@ hu:
         widgets: "Kisalkalmazások"
       journal:
         notes: "Jegyzet"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Felhasználói fiók"
         attr_firstname: "Keresztnév attribútum"
@@ -857,6 +864,9 @@ hu:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Szerepkörök"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Ügyfél azonosító"
       planning_element_type_color:
@@ -873,6 +883,7 @@ hu:
           true: "nyilvános"
           false: "privát"
         queries: "Lekérdezések"
+        enabled_modules: "Enabled modules"
         status_code: "Projekt állapot"
         description: "Leírás"
         status_explanation: "Projekt státuszának leírása"
@@ -893,23 +904,47 @@ hu:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Szekció
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Oszlopok"
         relations_to_type_column: "Kapcsolatok %{type}-hoz"
         relations_of_type_column: "%{type} kapcsolatok"
         group_by: "Csoport szintű eredmények"
+        sort_by: "Sort results by"
         filters: "Szürő"
         timeline_labels: "Idővonal címkék"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Kapcsolódó feladatcsoport"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -919,6 +954,9 @@ hu:
         is_readonly: "Munkacsomag csak olvasható"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Tevékenység"
         hours: "órák"
@@ -932,6 +970,7 @@ hu:
         is_default: "Alapértelmezetten aktiválva az új projekteknél"
         is_milestone: "Mérföldkő"
         color: "Szín"
+        patterns: "Patterns"
       user:
         admin: "Adminisztrátor"
         auth_source: "Hitelesítési forrás"
@@ -941,6 +980,10 @@ hu:
         force_password_change: "Kötelező jelszóváltás a következő bejelentkezéskor"
         language: "Nyelv"
         last_login_on: "Utolsó bejelentkezés"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Új jelszó"
         password_confirmation: "Új jelszó újra"
         consented_at: "Ehhez hozzájárult a"
@@ -952,6 +995,8 @@ hu:
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Mód"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Befejezési dátum"
         sharing: "Megosztás"
@@ -1408,6 +1453,9 @@ hu:
       forum: "Fórum"
       global_role: "Globális szerepkör"
       group: "Csoport"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "Tag"
       news: "Hírek"
       notification:
@@ -1421,6 +1469,7 @@ hu:
         one: "Project list"
         other: "Project lists"
       query: "Egyéni lekérdezés"
+      reminder: "Reminder"
       role:
         one: "Szerepkör"
         other: "Szerepkörök"
@@ -1485,18 +1534,25 @@ hu:
     assigned_to: "Megbízott"
     assignee: "Megbízott"
     attachments: "Csatolmány"
+    actor: "Actor"
+    action: "Action"
     author: "Szerző"
+    avatar: "Avatar"
     base: "Általános hiba:"
+    body: "Body"
     blocks_ids: "Lezárt munkacsomagok azonosítója"
     category: "Kategória"
     comment: "Komment"
     comments: "Vélemény"
     content: "Tartalom"
     color: "Szín"
+    creator: "Creator"
     created_at: "Létrehozva"
+    custom_field: "Custom field"
     custom_options: "Lehetséges értékek"
     custom_values: "Választható mezők"
     date: "dátum"
+    dates_interval: "Date range"
     default_columns: "Alapértelmezett oszlopok"
     description: "Leírás"
     derived_due_date: "Származtatott befejezési időpont"
@@ -1506,39 +1562,63 @@ hu:
     due_date: "Befejezési dátum"
     estimated_hours: "Munka"
     estimated_time: "Munka"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Lejárat ekkor"
     firstname: "Keresztnév"
+    filter: "Filter"
     group: "Csoport"
     groups: "Csoportok"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Alap érték"
     is_for_all: "Minden projekthez"
     public: "Nyilvános"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Feladatcsoport"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Vezetéknév"
     login: "Felhasználónév"
     mail: "Email"
     name: "Név"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Jelszó"
     priority: "Fontosság"
     project: "Projekt"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Felelős"
+    required: "Required"
+    recipient: "Recipient"
     role: "Szerepkör"
     roles: "Szerepkörök"
+    search: "Search"
     start_date: "Indulási dátum"
     status: "Állapot"
+    state: "State"
     subject: "Tárgy"
+    slug: "Slug"
     summary: "Összegzés"
+    text: "Text"
     title: "Cím"
     type: "Típus"
+    typeahead: "Autocomplete"
     updated_at: "Frissítve"
     updated_on: "Frissítve"
     uploader: "Feltöltő"
     user: "Felhasználó"
+    username: "Username"
+    unit: "Unit"
     value: "Érték"
+    values: "Values"
     version: "Verzió"
+    visible: "Visible"
     work_package: "Feladatcsoport"
   backup:
     failed: "A biztonsági mentés sikertelen"
@@ -1851,6 +1931,8 @@ hu:
   enumeration_activities: "Időnyilvántartási tevékenységek"
   enumeration_work_package_priorities: "Feladatcsoport fontosság"
   enumeration_reported_project_statuses: "Projekt állapot beszámoló"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) a '%{value}' felhasználóval sikertelen"
   error_can_not_archive_project: "Ezt a projektet nem lehet archiválni: %{errors}"
   error_can_not_delete_entry: "Bejegyzését nem lehet törölni"
@@ -1940,6 +2022,7 @@ hu:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2415,6 +2498,7 @@ hu:
   label_filter: "Szürő"
   label_filter_add: "Szűrő hozzáadása"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Szűrők"
   label_filters_toggle: "Szűrők mutatása/elrejtése"
   label_float: "Mozgó"
@@ -2694,6 +2778,7 @@ hu:
   label_roadmap_overdue: "%{value} késésben"
   label_role_and_permissions: "Szerepkörök és engedélyek"
   label_role_new: "Új szerepkör"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Szerepkörök"
   label_role_search: "Szerep hozzárendelése az új tagokhoz"
   label_scm: "SCM"

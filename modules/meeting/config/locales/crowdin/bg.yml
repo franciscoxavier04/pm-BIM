@@ -65,6 +65,7 @@ bg:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "Точка от дневния ред"
       meeting_agenda: "Дневен ред"
       meeting_minutes: "Минути"

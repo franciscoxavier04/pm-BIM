@@ -67,6 +67,7 @@ cs:
     models:
       recurring_meeting: "Opakovaná schůzka"
       structured_meeting: "Jednorázová schůzka"
+      meeting: "Meeting"
       meeting_agenda_item: "Pořad jednání"
       meeting_agenda: "Agenda"
       meeting_minutes: "Zápis"

@@ -8,6 +8,7 @@ tr:
         row_count: "Satır sayısı"
         column_count: "Sütun sayısı"
         widgets: "Araçlar"
+        scope: "Scope"
     errors:
       models:
         grids/grid:

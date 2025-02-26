@@ -395,6 +395,8 @@ fil:
         no_results_content_text: Gumawa ng bagong bersyon
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -788,6 +790,7 @@ fil:
       attachment:
         attachment_content: "Nilalaman ng nakalakip"
         attachment_file_name: "Pangalan ng nakalakip na file"
+        content_type: "Content-type"
         downloads: "Ang mga na-download"
         file: "File"
         filename: "File"
@@ -795,10 +798,10 @@ fil:
       attribute_help_text:
         attribute_name: "Katangian"
         help_text: "Tekstong tulong"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repositoryo"
-      color:
-        hexcode: "Hex code"
       comment:
         commented: "Ang komento" #an object that this comment belongs to
       custom_action:
@@ -831,7 +834,10 @@ fil:
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Balido mula noon"
         subscriber: "Taga -subaybay"
         encoded_token: "Enterprise support token"
@@ -843,6 +849,7 @@ fil:
         widgets: "Widgets"
       journal:
         notes: "Ang mga tala"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Akawnt"
         attr_firstname: "Ang katangian ng unang pangalan"
@@ -858,6 +865,9 @@ fil:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Ang mga tungkulin"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
       planning_element_type_color:
@@ -874,6 +884,7 @@ fil:
           true: "public"
           false: "private"
         queries: "Mga query"
+        enabled_modules: "Enabled modules"
         status_code: "Estado ng proyekto"
         description: "Deskripsyon"
         status_explanation: "Project status description"
@@ -894,23 +905,47 @@ fil:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Mga hanay"
         relations_to_type_column: "Mga relasyon sa %{type}"
         relations_of_type_column: "%{type} na mga relasyon"
         group_by: "Mga resulta sa grupo sa pamamagitan ng"
+        sort_by: "Sort results by"
         filters: "Mga nasala"
         timeline_labels: "Ang mga label ng timeline"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Ang kaugnayan sa pakete na ginagawa"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "Ang URL"
       role:
@@ -920,6 +955,9 @@ fil:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktibidad"
         hours: "Mga oras"
@@ -933,6 +971,7 @@ fil:
         is_default: "Activated for new projects by default"
         is_milestone: "Ay milestone"
         color: "Kulay"
+        patterns: "Patterns"
       user:
         admin: "Tagapangasiwa"
         auth_source: "Authentication source"
@@ -942,6 +981,10 @@ fil:
         force_password_change: "Ipatupad ang password na ibahin sa susunod na login"
         language: "Linggwahe"
         last_login_on: "Huling nag login"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Bagong password"
         password_confirmation: "Kompirmasyon"
         consented_at: "Consented at"
@@ -953,6 +996,8 @@ fil:
         warn_on_leaving_unsaved: "Balaan mo ako kung aalais ng worj package na walang pag-save ng pagbabago"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Finish date"
         sharing: "Pagbababahagi"
@@ -1409,6 +1454,9 @@ fil:
       forum: "Forum"
       global_role: "Global role"
       group: "Grupo"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "Miyembro"
       news: "Mga balita"
       notification:
@@ -1422,6 +1470,7 @@ fil:
         one: "Project list"
         other: "Project lists"
       query: "Custom query"
+      reminder: "Reminder"
       role:
         one: "Tungkulin"
         other: "Mga tungkulin"
@@ -1486,18 +1535,25 @@ fil:
     assigned_to: "Naitalaga"
     assignee: "Naitalaga"
     attachments: "Mga kalakip"
+    actor: "Actor"
+    action: "Action"
     author: "May-akda"
+    avatar: "Avatar"
     base: "Pangkalahatang Mali:"
+    body: "Body"
     blocks_ids: "Mga ID ng naka-block na mga pakete sa gumagawa"
     category: "Kategorya"
     comment: "Komento"
     comments: "Komento"
     content: "Nilalaman"
     color: "Kulay"
+    creator: "Creator"
     created_at: "Nilikha sa"
+    custom_field: "Custom field"
     custom_options: "Ang mga posibleng halaga"
     custom_values: "Mga pasadyang patlang"
     date: "Petsa"
+    dates_interval: "Date range"
     default_columns: "I-default ang mga hanay"
     description: "Deskripsyon"
     derived_due_date: "Derived finish date"
@@ -1507,39 +1563,63 @@ fil:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Matapos sa"
     firstname: "Unang pangalan"
+    filter: "Filter"
     group: "Grupo"
     groups: "Mga grupo"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Ang default na halaga"
     is_for_all: "Para sa lahat ng mga proyekto"
     public: "Publiko"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Work package"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Huling pangalan"
     login: "Username"
     mail: "Email"
     name: "Pangalan"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Password"
     priority: "Ang prayoridad"
     project: "Proyekto"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Accountable"
+    required: "Required"
+    recipient: "Recipient"
     role: "Tungkulin"
     roles: "Ang mga tungkulin"
+    search: "Search"
     start_date: "Petsa ng pagsimula"
     status: "Estado"
+    state: "State"
     subject: "Paksa"
+    slug: "Slug"
     summary: "Buod"
+    text: "Text"
     title: "Pamagat"
     type: "Uri"
+    typeahead: "Autocomplete"
     updated_at: "Naka-update sa"
     updated_on: "Naka-update sa"
     uploader: "Uploader"
     user: "Gumagamit"
+    username: "Username"
+    unit: "Unit"
     value: "Halaga"
+    values: "Values"
     version: "Bersyon"
+    visible: "Visible"
     work_package: "Work package"
   backup:
     failed: "Backup failed"
@@ -1852,6 +1932,8 @@ fil:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Ang mga prioridad ng work package"
   enumeration_reported_project_statuses: "Estado ng inuulat na proyekto"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) para sa gumagamit ng '%{value}' ay nabigo"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Hindi mabura na entry"
@@ -1941,6 +2023,7 @@ fil:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2416,6 +2499,7 @@ fil:
   label_filter: "Mga nasala"
   label_filter_add: "Magdagdag ng filter"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Mga nasala"
   label_filters_toggle: "Ipakita/itago ang mga salaan"
   label_float: "Lumutang"
@@ -2695,6 +2779,7 @@ fil:
   label_roadmap_overdue: "%{value} huli"
   label_role_and_permissions: "Ang mga tungkulin at permiso"
   label_role_new: "Bagong tungkulin"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Ang mga tungkulin"
   label_role_search: "Magtalaga ng tungkulin ss mga bagong miyembro"
   label_scm: "SCM"

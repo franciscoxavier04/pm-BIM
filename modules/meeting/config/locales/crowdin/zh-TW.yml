@@ -64,6 +64,7 @@ zh-TW:
     models:
       recurring_meeting: "重複性會議"
       structured_meeting: "一次性會議"
+      meeting: "Meeting"
       meeting_agenda_item: "議程項目"
       meeting_agenda: "會議大綱"
       meeting_minutes: "會議記錄"

@@ -1,13 +1,13 @@
 tr:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
-        display_name: İsim
-        identifier: Tanımlayıcı
-        secret: Gizli Anahtar
-        scope: Kapsam
+        display_name: Name
+        identifier: Identifier
+        secret: Secret
+        scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
-        limit_self_registration: Kendi kendine kaydı sınırlayın
+        limit_self_registration: Limit self registration
         sp_entity_id: Service entity ID
         metadata_url: Identity provider metadata URL
         name_identifier_format: Name identifier format
@@ -19,11 +19,10 @@ tr:
         want_assertions_encrypted: Require encrypted responses
         certificate: Certificate used by OpenProject for SAML requests
         private_key: Corresponding private key for OpenProject SAML requests
-        signature_method: İmza Algoritması
+        signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Biçim"
-        icon: "Özel simge"
-  activerecord:
+        format: "Format"
+        icon: "Custom icon"
     errors:
       models:
         saml/provider:

@@ -395,6 +395,8 @@ si:
         no_results_content_text: නව අනුවාදයක් සාදන්න
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -788,6 +790,7 @@ si:
       attachment:
         attachment_content: "ඇමුණුමක් අන්තර්ගතය"
         attachment_file_name: "ඇමුණුම් ගොනු නම"
+        content_type: "Content-type"
         downloads: "බාගැනීම්"
         file: "ගොනුව"
         filename: "ගොනුව"
@@ -795,10 +798,10 @@ si:
       attribute_help_text:
         attribute_name: "ගුණාංගය"
         help_text: "උපකාරක පෙළ"
+      capability:
+        context: "Context"
       changeset:
         repository: "ගබඩාව"
-      color:
-        hexcode: "Hex කේතය"
       comment:
         commented: "අදහස් දැක්වීය" #an object that this comment belongs to
       custom_action:
@@ -831,7 +834,10 @@ si:
         client_credentials_user_id: "සේවාලාභියා අක්තපත්ර පරිශීලක හැඳුනුම්පත"
         scopes: "විෂය පථ"
         confidential: "රහස්ය"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "එතැන් සිට වලංගු වේ"
         subscriber: "ග්රාහකයා"
         encoded_token: "ව්යවසාය සහාය ටෝකනය"
@@ -843,6 +849,7 @@ si:
         widgets: "විජට්"
       journal:
         notes: "සටහන්"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "ගිණුම"
         attr_firstname: "පළමු නාමය ලක්ෂණය"
@@ -858,6 +865,9 @@ si:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "භූමිකාවන්"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "සේවාලාභියා හැඳුනුම්පත"
       planning_element_type_color:
@@ -874,6 +884,7 @@ si:
           true: "public"
           false: "private"
         queries: "විමසුම්"
+        enabled_modules: "Enabled modules"
         status_code: "ව්යාපෘති තත්ත්වය"
         description: "විස්තරය"
         status_explanation: "Project status description"
@@ -894,23 +905,47 @@ si:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "තීරු"
         relations_to_type_column: "සබඳතා %{type}"
         relations_of_type_column: "%{type} සබඳතා"
         group_by: "කණ්ඩායම් ප්රතිඵල විසින්"
+        sort_by: "Sort results by"
         filters: "පෙරහන්"
         timeline_labels: "කාල නියමය ලේබල්"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "අදාළ වැඩ පැකේජය"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "සැ. නි."
       role:
@@ -920,6 +955,9 @@ si:
         is_readonly: "වැඩ පැකේජය කියවීමට-පමණි"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "ක්‍රියාකාරකම"
         hours: "පැය"
@@ -933,6 +971,7 @@ si:
         is_default: "පෙරනිමියෙන් නව ව්යාපෘති සඳහා සක්රිය"
         is_milestone: "සන්ධිස්ථානයක්"
         color: "වර්ණ"
+        patterns: "Patterns"
       user:
         admin: "පරිපාලක"
         auth_source: "Authentication source"
@@ -942,6 +981,10 @@ si:
         force_password_change: "ඊළඟ පිවිසුම මත මුරපදය වෙනස් කිරීම බලාත්මක කරන්න"
         language: " "
         last_login_on: "අවසාන පිවිසුම"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "නව මුරපදය"
         password_confirmation: "තහවුරු කිරීම"
         consented_at: "එකඟ විය"
@@ -953,6 +996,8 @@ si:
         warn_on_leaving_unsaved: "නොගැලවූ වෙනස්කම් සහිත වැඩ පැකේජයකින් පිටවන විට මට අනතුරු අඟවන්න"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "අවසන් දිනය"
         sharing: "බෙදාගැනීම"
@@ -1409,6 +1454,9 @@ si:
       forum: "සංසදය"
       global_role: "Global role"
       group: "කණ්ඩායම"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "සාමාජික"
       news: "පුවත්"
       notification:
@@ -1422,6 +1470,7 @@ si:
         one: "Project list"
         other: "Project lists"
       query: "අභිරුචි විමසුම"
+      reminder: "Reminder"
       role:
         one: "කාර්යභාරය"
         other: "භූමිකාවන්"
@@ -1486,18 +1535,25 @@ si:
     assigned_to: "අස්ගිනී"
     assignee: "අස්ගිනී"
     attachments: "ඇමුණුම්"
+    actor: "Actor"
+    action: "Action"
     author: "කර්තෘ"
+    avatar: "Avatar"
     base: "සාමාන්ය දෝෂය:"
+    body: "Body"
     blocks_ids: "අවහිර කරන ලද වැඩ පැකේජ වල IDS"
     category: "ප්රවර්ගය"
     comment: "අදහස් දක්වන්න"
     comments: "අදහස් දක්වන්න"
     content: "අන්තර්ගතය"
     color: "වර්ණ"
+    creator: "Creator"
     created_at: "මත නිර්මාණය"
+    custom_field: "Custom field"
     custom_options: "හැකි අගයන්"
     custom_values: "අභිරුචි ක්ෂේත්ර"
     date: "දිනය"
+    dates_interval: "Date range"
     default_columns: "පෙරනිමි තීරු"
     description: "විස්තරය"
     derived_due_date: "Derived finish date"
@@ -1507,39 +1563,63 @@ si:
     due_date: "අවසන් දිනය"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "කල් ඉකුත්"
     firstname: "මුල් නම"
+    filter: "Filter"
     group: "කණ්ඩායම"
     groups: "කණ්ඩායම්"
+    hexcode: "Hex code"
     id: "හැඳු."
     is_default: "පෙරනිමි අගය"
     is_for_all: "සියලුම ව්යාපෘති සඳහා"
     public: "පොදු"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "වැඩ පැකේජය"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "අවසාන නම"
     login: "පරිශීලක නාමය"
     mail: "ඊ-තැපැල්"
     name: "නම"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "මුරපදය"
     priority: "ප්රමුඛතාව"
     project: "ව්යාපෘති"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "වගවීම"
+    required: "Required"
+    recipient: "Recipient"
     role: "කාර්යභාරය"
     roles: "භූමිකාවන්"
+    search: "Search"
     start_date: "ආරම්භක දිනය"
     status: "තත්වය"
+    state: "State"
     subject: "විෂය"
+    slug: "Slug"
     summary: "සාරාංශය"
+    text: "Text"
     title: "මාතෘකාව"
     type: "වර්ගය"
+    typeahead: "Autocomplete"
     updated_at: "යාවත්කාලීන කරන ලදි"
     updated_on: "යාවත්කාලීන කරන ලදි"
     uploader: "උඩුගත කරන්නා"
     user: "පරිශීලක"
+    username: "Username"
+    unit: "Unit"
     value: "අගය"
+    values: "Values"
     version: "අනුවාදය"
+    visible: "Visible"
     work_package: "වැඩ පැකේජය"
   backup:
     failed: "Backup failed"
@@ -1852,6 +1932,8 @@ si:
   enumeration_activities: "කාලය සොයා ගැනීමේ ක්රියාකාරකම්"
   enumeration_work_package_priorities: "වැඩ පැකේජ ප්රමුඛතා"
   enumeration_reported_project_statuses: "වාර්තා කරන ලද ව්යාපෘති තත්ත්වය"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "පරිශීලක '%{value}' සඳහා තනි සංඥා (SSO) අසමත් විය"
   error_can_not_archive_project: "මෙම ව්යාපෘතිය සංරක්ෂණය කළ නොහැක: %{errors}"
   error_can_not_delete_entry: "ප්රවේශය මකා දැමිය නොහැක"
@@ -1941,6 +2023,7 @@ si:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2416,6 +2499,7 @@ si:
   label_filter: "පෙරහන්"
   label_filter_add: "පෙරහන් එකතු කරන්න"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "පෙරහන්"
   label_filters_toggle: "පෙරහන් පෙන්වන්න/සඟවන්න"
   label_float: "පාවෙන"
@@ -2695,6 +2779,7 @@ si:
   label_roadmap_overdue: "%{value} ප්රමාද"
   label_role_and_permissions: "භූමිකාවන් සහ අවසරයන්"
   label_role_new: "නව භූමිකාව"
+  label_role_grantable: "Grantable role"
   label_role_plural: "භූමිකාවන්"
   label_role_search: "නව සාමාජිකයින්ට කාර්යභාරය පැවරීම"
   label_scm: "SCM"

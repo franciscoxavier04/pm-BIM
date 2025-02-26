@@ -65,6 +65,7 @@ nl:
     models:
       recurring_meeting: "Terugkerende vergadering"
       structured_meeting: "Eenmalige vergadering"
+      meeting: "Meeting"
       meeting_agenda_item: "Agendapunt"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minuten"
