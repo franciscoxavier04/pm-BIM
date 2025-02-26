@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -45,6 +46,7 @@ module RecurringMeetings
       cleanup_cancelled_schedules(recurring_meeting)
 
       if should_reschedule?(recurring_meeting)
+        reschedule_future_occurrences(recurring_meeting)
         reschedule_init_job(recurring_meeting)
         send_rescheduled_mail(recurring_meeting)
       end
@@ -61,6 +63,28 @@ module RecurringMeetings
       end
 
       call
+    end
+
+    def reschedule_future_occurrences(recurring_meeting)
+      # Get all future scheduled meetings that have been instantiated, ordered by start time
+      future_meetings = recurring_meeting
+        .scheduled_instances
+        .not_cancelled
+
+      # Get the next occurrences from the schedule matching the number of future meetings
+      next_occurrences = recurring_meeting.scheduled_occurrences(limit: future_meetings.count)
+
+      # Update each meeting's timing to match the new schedule
+      future_meetings.each_with_index do |scheduled, index|
+        next_time = next_occurrences[index]&.to_time
+
+        if next_time
+          Meeting.transaction do
+            scheduled.update_column(:start_time, next_time)
+            scheduled.meeting.update_column(:start_time, next_time)
+          end
+        end
+      end
     end
 
     def cleanup_cancelled_schedules(recurring_meeting)
