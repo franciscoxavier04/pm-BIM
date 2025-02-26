@@ -66,6 +66,37 @@ module RecurringMeetings
     end
 
     def reschedule_future_occurrences(recurring_meeting)
+      if only_time_of_day_changed?(recurring_meeting)
+        update_time_of_day(recurring_meeting)
+      else
+        reschedule_all_occurrences(recurring_meeting)
+      end
+    end
+
+    def only_time_of_day_changed?(recurring_meeting)
+      changes = recurring_meeting.previous_changes.keys
+      changes.include?("start_time_hour") && changes.exclude?("start_date")
+    end
+
+    def update_time_of_day(recurring_meeting)
+      future_meetings = recurring_meeting
+        .scheduled_instances
+        .not_cancelled
+
+      future_meetings.each do |scheduled|
+        new_time = scheduled.start_time.change(
+          hour: recurring_meeting.start_time.hour,
+          min: recurring_meeting.start_time.min
+        )
+
+        Meeting.transaction do
+          scheduled.update_column(:start_time, new_time)
+          scheduled.meeting.update_column(:start_time, new_time)
+        end
+      end
+    end
+
+    def reschedule_all_occurrences(recurring_meeting)
       # Get all future scheduled meetings that have been instantiated, ordered by start time
       future_meetings = recurring_meeting
         .scheduled_instances

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -156,6 +157,49 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
         expect(ActionMailer::Base.deliveries.count).to eq(1)
         expect(ActionMailer::Base.deliveries.first.subject)
           .to eq "[#{project.name}] Meeting series '#{series.title}' rescheduled"
+      end
+    end
+  end
+
+  describe "rescheduling occurrences" do
+    let!(:scheduled_meetings) do
+      Array.new(3) do |i|
+        create(:scheduled_meeting,
+               :persisted,
+               recurring_meeting: series,
+               start_time: Time.zone.today + (i + 1).days + 10.hours)
+      end
+    end
+
+    context "when only changing the time of day" do
+      let(:params) do
+        { start_time_hour: "14:30" }
+      end
+
+      it "updates the time while keeping the same dates" do
+        expect(service_result).to be_success
+
+        # Verify each scheduled meeting keeps its date but changes time
+        scheduled_meetings.each_with_index do |meeting, index|
+          meeting.reload
+          expect(meeting.start_time).to eq(Time.zone.today + (index + 1).days + 14.hours + 30.minutes)
+        end
+      end
+    end
+
+    context "when changing the frequency from daily to weekly" do
+      let(:params) do
+        { frequency: "weekly" }
+      end
+
+      it "reschedules all future occurrences to weekly intervals" do
+        expect(service_result).to be_success
+
+        # Verify each scheduled meeting is moved to weekly intervals
+        scheduled_meetings.each_with_index do |meeting, index|
+          meeting.reload
+          expect(meeting.start_time).to eq(Time.zone.today + ((index + 1) * 7).days + 10.hours)
+        end
       end
     end
   end
