@@ -74,6 +74,9 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
 
     work_packages_page.visit!
     work_packages_page.ensure_page_loaded
+  end
+
+  def open_date_picker
     date_field.activate!
     date_field.expect_active!
     # Wait for the datepicker to be initialized
@@ -92,6 +95,7 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
       end
 
       it "cannot change scheduling mode to automatic" do
+        open_date_picker
         datepicker.expect_manual_scheduling_mode
 
         datepicker.toggle_scheduling_mode
@@ -99,6 +103,81 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
 
         datepicker.expect_save_button_disabled
       end
+    end
+  end
+
+  describe "Scenario 11 (GANTT/Team planner)" do
+    context "when moving the left handle one day to the right" do
+      it "reduces the duration by one day", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 12 (GANTT/Team planner)" do
+    context "when moving a work package to the right" do
+      it "changes to later dates and keeps duration", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 12bis (GANTT/Team planner)" do
+    context "when moving a work package to the left" do
+      it "changes to earlier dates and keeps duration", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 26: Add a predecessor" do
+    context "when adding a predecessor to a work package" do
+      it "changes the work package dates to start right after its predecessor", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 27a: Manual to automatic with multiple predecessors (no lag)" do
+    context "when switching a work package with predecessors to automatic scheduling mode" do
+      it "changes the work package dates to start right after its closest predecessor", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 27b: Manual to automatic with multiple predecessors (with lag)" do
+    context "when switching a work package with predecessors with lag to automatic scheduling mode" do
+      it "changes the work package dates to start right after its closest predecessor", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 28: Add children (parent in manual originally; children all manual, all in working days only)" do
+    context "when adding first children to a work package" do
+      it "switches its scheduling mode to automatic", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 29: Add children (parent in manual originally; children all manual, mixed working days)" do
+    context "when adding first children to a work package, one having working days only unchecked" do
+      it "switches its scheduling mode to automatic with working days only unchecked", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 30: Add children to a successor (start date derived children instead of predecessor)" do
+    context "when adding manually scheduled children to an automatically scheduled work package being a successor" do
+      it "updates its duration and dates based on the children dates, not based on its predecessors dates",
+         skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 30a: Automatically-scheduled successor with children loses all its children (Child 1 removed first)" do
+    context "when removing all children from an automatically scheduled work package being a successor" do
+      it "ends up with duration and 'working days only' attributes based on last removed child (child 1) " \
+         "and start date based on the predecessor", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 30b: Automatically-scheduled successor with children loses all its children (Child 2 removed first)" do
+    context "when removing all children from an automatically scheduled work package being a successor" do
+      it "ends up with duration 'working days only' attributes based on last removed child (child 2) " \
+         "and start date based on the predecessor", skip: "to be implemented later"
+    end
+  end
+
+  describe "Scenario 32: Switch parent with predecessor and children to manual" do
+    context "when switching a work package with predecessors and children to manual scheduling mode" do
+      it "keeps its dates", skip: "to be implemented later"
     end
   end
 end
