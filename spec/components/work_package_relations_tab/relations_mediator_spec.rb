@@ -64,13 +64,16 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
     end
 
     describe "#closest_relations" do
-      it "returns all follows relations with the closest first" do
+      it "returns all follows relations with dates set, with the closest first" do
         expect(group.closest_relations).to eq [
           _table.relation(predecessor: predecessor2),
           _table.relation(predecessor: predecessor3),
-          _table.relation(predecessor: predecessor1),
-          _table.relation(predecessor: predecessor4)
+          _table.relation(predecessor: predecessor1)
         ]
+      end
+
+      it "does not return any follows relations without dates set" do
+        expect(group.closest_relations).not_to include(_table.relation(predecessor: predecessor4))
       end
     end
   end

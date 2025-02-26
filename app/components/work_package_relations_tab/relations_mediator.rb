@@ -50,8 +50,12 @@ class WorkPackageRelationsTab::RelationsMediator
       return [] unless follows_type?
 
       all_relations
-        .sort_by { WorkPackageRelationsTab::ClosestRelation.new(it) }
+        .lazy
+        .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
+        .select(&:soonest_start)
+        .sort
         .reverse
+        .map(&:relation)
     end
 
     def children_type?
