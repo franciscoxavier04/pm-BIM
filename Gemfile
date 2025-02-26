@@ -280,7 +280,7 @@ group :test do
   gem "capybara_accessible_selectors", git: "https://github.com/citizensadvice/capybara_accessible_selectors", tag: "v0.12.0"
   gem "capybara-screenshot", "~> 1.0.17"
   gem "cuprite", "~> 0.15.0"
-  gem "ferrum", github: "toy/ferrum", ref: "mouse-events-buttons-property-0.15"
+  gem "ferrum", github: "opf/ferrum", ref: "mouse-events-buttons-property-0.15"
   gem "rspec-wait"
   gem "selenium-devtools"
   gem "selenium-webdriver", "~> 4.20"
