@@ -7,6 +7,17 @@ GIT
       capybara (~> 3.36)
 
 GIT
+  remote: https://github.com/opf/ferrum.git
+  revision: 889b29926f017530a0e087b1db0bc02747e437b1
+  ref: mouse-events-buttons-property-0.15
+  specs:
+    ferrum (0.15)
+      addressable (~> 2.5)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (~> 0.7)
+
+GIT
   remote: https://github.com/opf/md-to-pdf
   revision: 66893683b94a5fe8f1dc9a60600773307209cdd2
   ref: 66893683b94a5fe8f1dc9a60600773307209cdd2
@@ -59,17 +70,6 @@ GIT
     turbo_tests (2.2.0)
       parallel_tests (>= 3.3.0, < 5)
       rspec (>= 3.10)
-
-GIT
-  remote: https://github.com/toy/ferrum.git
-  revision: 889b29926f017530a0e087b1db0bc02747e437b1
-  ref: mouse-events-buttons-property-0.15
-  specs:
-    ferrum (0.15)
-      addressable (~> 2.5)
-      concurrent-ruby (~> 1.1)
-      webrick (~> 1.7)
-      websocket-driver (~> 0.7)
 
 PATH
   remote: modules/auth_plugins
