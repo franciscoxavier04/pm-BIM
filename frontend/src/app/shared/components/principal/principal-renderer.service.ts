@@ -207,7 +207,6 @@ export class PrincipalRendererService {
       const link = document.createElement('a');
       link.textContent = principal.name;
       link.href = this.principalURL(principal, type);
-      link.target = '_blank';
       link.classList.add('op-principal--name');
       link.title = title;
 
