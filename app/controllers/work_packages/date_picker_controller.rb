@@ -56,6 +56,7 @@ class WorkPackages::DatePickerController < ApplicationController
         replace_via_turbo_stream(
           component: WorkPackages::DatePicker::DialogContentComponent.new(work_package:,
                                                                           schedule_manually:,
+                                                                          focused_field:,
                                                                           touched_field_map:)
         )
         render turbo_stream: turbo_streams
@@ -143,6 +144,7 @@ class WorkPackages::DatePickerController < ApplicationController
   def datepicker_modal_component
     WorkPackages::DatePicker::DialogContentComponent.new(work_package: @work_package,
                                                          schedule_manually:,
+                                                         focused_field:,
                                                          touched_field_map:)
   end
 
