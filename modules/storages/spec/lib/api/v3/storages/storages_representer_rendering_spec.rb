@@ -33,7 +33,7 @@ require_module_spec_helper
 
 RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
   let(:oauth_client_credentials) { build_stubbed(:oauth_client) }
-  let(:user) { build_stubbed(:user) }
+  let(:user) { create(:user) }
   let(:auth_check_result) { ServiceResult.success }
   let(:representer) { described_class.new(storage, current_user: user, embed_links: true) }
 
@@ -73,6 +73,12 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
   end
 
   shared_examples_for "common file storage links" do
+    let(:remote_identity) { create :remote_identity, user:, integration: storage }
+
+    before do
+      remote_identity
+    end
+
     describe "self" do
       it_behaves_like "has a titled link" do
         let(:link) { "self" }
@@ -105,6 +111,16 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
           let(:link) { "authorizationState" }
           let(:href) { "urn:openproject-org:api:v3:storages:authorization:Error" }
           let(:title) { "Error" }
+        end
+      end
+
+      context "if there is no remote identity for the user at the storage" do
+        let(:remote_identity) { nil }
+
+        it_behaves_like "has a titled link" do
+          let(:link) { "authorizationState" }
+          let(:href) { "urn:openproject-org:api:v3:storages:authorization:NotConnected" }
+          let(:title) { "Not connected" }
         end
       end
     end
@@ -173,7 +189,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       end
 
       context "as admin" do
-        let(:user) { build_stubbed(:admin) }
+        let(:user) { create(:admin) }
 
         it_behaves_like "has an untitled link" do
           let(:link) { "oauthClientCredentials" }
@@ -182,7 +198,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       end
 
       context "as admin without oauth client credentials set" do
-        let(:user) { build_stubbed(:admin) }
+        let(:user) { create(:admin) }
         let(:oauth_client_credentials) { nil }
 
         it_behaves_like "has an untitled link" do
@@ -198,13 +214,13 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       it { is_expected.not_to have_json_path("_embedded/oauthClientCredentials") }
 
       context "as admin" do
-        let(:user) { build_stubbed(:admin) }
+        let(:user) { create(:admin) }
 
         it { is_expected.to be_json_eql(oauth_client_credentials.id).at_path("_embedded/oauthClientCredentials/id") }
       end
 
       context "as admin without oauth client credentials set" do
-        let(:user) { build_stubbed(:admin) }
+        let(:user) { create(:admin) }
         let(:oauth_client_credentials) { nil }
 
         it { is_expected.not_to have_json_path("_embedded/oauthClientCredentials") }
@@ -260,7 +276,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
         end
 
         context "as admin" do
-          let(:user) { build_stubbed(:admin) }
+          let(:user) { create(:admin) }
 
           it_behaves_like "has a titled link" do
             let(:link) { "oauthApplication" }
@@ -287,7 +303,7 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
         it { is_expected.not_to have_json_path("_embedded/oauthApplication") }
 
         context "as admin" do
-          let(:user) { build_stubbed(:admin) }
+          let(:user) { create(:admin) }
 
           it { is_expected.to be_json_eql(oauth_application.id).at_path("_embedded/oauthApplication/id") }
         end

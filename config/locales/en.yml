@@ -4577,6 +4577,7 @@ en:
       connected: "Connected"
       error: "Error"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"
