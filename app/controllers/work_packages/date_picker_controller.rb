@@ -165,9 +165,11 @@ class WorkPackages::DatePickerController < ApplicationController
     # Decide which field to focus next
     case trigger
     when "work_package[start_date]"
-      :due_date
+      handle_focus_order_for_fields(:start_date, :due_date)
     when "work_package[duration]"
       :duration
+    when "work_package[due_date]"
+      handle_focus_order_for_fields(:due_date, :start_date)
     else
       :start_date
     end
@@ -260,6 +262,15 @@ class WorkPackages::DatePickerController < ApplicationController
       # Set the dueDate as the SetAttributesService will otherwise throw an error because the fields do not match
       params.require(:work_package)[:due_date] = params.require(:work_package)[:start_date]
       params.require(:work_package)[:due_date_touched] = "true"
+    end
+  end
+
+  def handle_focus_order_for_fields(trigger_field, alternative_field)
+    if !!params[:work_package][:"#{trigger_field}_touched"] && params[:work_package][:"#{trigger_field}"].blank?
+      # Special case, when deleting a value: we want to keep the focus on that field instead of moving to the next field
+      trigger_field
+    else
+      alternative_field
     end
   end
 end
