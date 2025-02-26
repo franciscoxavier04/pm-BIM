@@ -100,6 +100,7 @@ module RecurringMeetings
       # Get all future scheduled meetings that have been instantiated, ordered by start time
       future_meetings = recurring_meeting
         .scheduled_instances
+        .instantiated
         .not_cancelled
 
       # Get the next occurrences from the schedule matching the number of future meetings
@@ -156,10 +157,7 @@ module RecurringMeetings
     def should_reschedule?(recurring_meeting)
       return false if recurring_meeting.next_occurrence.nil?
 
-      recurring_meeting
-        .previous_changes
-        .keys
-        .intersect?(%w[frequency start_date start_time start_time_hour iterations interval end_after end_date])
+      recurring_meeting.reschedule_required?(previous: true)
     end
   end
 end

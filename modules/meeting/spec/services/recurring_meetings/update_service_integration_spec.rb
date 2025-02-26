@@ -203,4 +203,47 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
       end
     end
   end
+
+  describe "updating end conditions" do
+    let!(:scheduled_meetings) do
+      Array.new(3) do |i|
+        create(:scheduled_meeting,
+               :persisted,
+               recurring_meeting: series,
+               start_time: Time.zone.today + (i + 1).days + 10.hours)
+      end
+    end
+
+    context "when changing end_after to iterations with fewer iterations than scheduled meetings" do
+      let(:params) do
+        {
+          end_after: "iterations",
+          iterations: 2
+        }
+      end
+
+      it "fails validation" do
+        expect(service_result).not_to be_success
+        expect(service_result.errors.messages[:base]).to include(
+          I18n.t("activerecord.errors.models.recurring_meeting.must_cover_existing_meetings", count: 2)
+        )
+      end
+    end
+
+    context "when changing end_date to before the last scheduled meeting" do
+      let(:params) do
+        {
+          end_after: "specific_date",
+          end_date: Time.zone.today + 2.days
+        }
+      end
+
+      it "fails validation" do
+        expect(service_result).not_to be_success
+        expect(service_result.errors.messages[:base]).to include(
+          I18n.t("activerecord.errors.models.recurring_meeting.must_cover_existing_meetings", count: 1)
+        )
+      end
+    end
+  end
 end
