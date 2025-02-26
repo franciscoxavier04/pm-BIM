@@ -658,6 +658,7 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
         datepicker.set_due_date ""
         wait_for_network_idle
         datepicker.set_start_date ""
+        wait_for_network_idle
 
         datepicker.expect_start_date ""
         datepicker.expect_due_date ""
@@ -682,6 +683,7 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
         datepicker.set_start_date ""
         wait_for_network_idle
         datepicker.set_due_date ""
+        wait_for_network_idle
 
         datepicker.expect_start_date ""
         datepicker.expect_due_date ""

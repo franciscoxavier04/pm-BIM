@@ -63,12 +63,9 @@ module WorkPackages
 
       def show_text_field?(name)
         return true if @is_milestone || !@schedule_manually
-        return true if @date_mode.present? && @date_mode == "range"
-        return true if field_value(name).present? || @touched_field_map["#{name}_touched"]
+        return true if range_date_mode?
 
-        return true if name == :due_date && field_value(:start_date).nil?
-
-        name == :due_date && @touched_field_map["start_date_touched"].present? && !@touched_field_map["start_date_touched"]
+        show_text_field_in_single_date_mode?(name)
       end
 
       def text_field_options(name:, label:)
@@ -193,6 +190,28 @@ module WorkPackages
         else
           work_package_datepicker_dialog_content_path(permitted_params)
         end
+      end
+
+      def range_date_mode?
+        @date_mode.present? && @date_mode == "range"
+      end
+
+      def field_value_present_or_touched?(name)
+        field_value(name).present? || @touched_field_map["#{name}_touched"]
+      end
+
+      def show_text_field_in_single_date_mode?(name)
+        return true if field_value_present_or_touched?(name)
+
+        # Start date is only shown in the assertion above
+        return false if name != :due_date
+
+        # This handles the edge case, that the datepicker starts in single date mode, with the due date being hidden.
+        # Normally, the start date is the hidden one, except if only a start date is set.
+        # In case we delete the start date, we have to ensure that the datepicker does not switch the fields
+        # and suddenly hides the start date. That is why we check for the touched value.
+        true if field_value(:start_date).nil? &&
+          (@touched_field_map["start_date_touched"] == false || @touched_field_map["start_date_touched"].nil?)
       end
     end
   end
