@@ -82,7 +82,9 @@ module FormFields
           # Make sure the option is displayed under correct grouping title.
           option_group = find(".ng-optgroup", text: grouping)
           option = find(".ng-option.ng-option-child", text: option, visible: :visible)
-          expect(option_group).to eq option.find(:xpath, "preceding-sibling::*[1]")
+          expect(option_group).to eq(
+            option.find(:xpath, "preceding-sibling::*[contains(@class, 'ng-optgroup')][1]")
+          )
         else
           expect(page)
             .to have_css(".ng-option", text: option, visible: :visible)

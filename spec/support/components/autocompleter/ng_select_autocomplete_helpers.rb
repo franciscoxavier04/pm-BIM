@@ -49,9 +49,18 @@ module Components::Autocompleter
       end
     end
 
-    def expect_ng_option(element, option, results_selector: nil, present: true)
+    def expect_ng_option(element, option, grouping: nil, results_selector: nil, present: true)
       within(ng_find_dropdown(element, results_selector:)) do
-        expect(page).to have_conditional_selector(present, ".ng-option", text: option)
+        if grouping && present
+          # Make sure the option is displayed under correct grouping title.
+          option_group = find(".ng-optgroup", text: grouping)
+          option = find(".ng-option.ng-option-child", text: option, visible: :visible)
+          expect(option_group).to eq(
+            option.find(:xpath, "preceding-sibling::*[contains(@class, 'ng-optgroup')][1]")
+          )
+        else
+          expect(page).to have_conditional_selector(present, ".ng-option", text: option)
+        end
       end
     end
 

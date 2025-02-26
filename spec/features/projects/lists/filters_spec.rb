@@ -499,10 +499,11 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     it "displays the visible project members as available options" do
       load_and_open_filters admin
 
-      autocomplete_options = projects_page.autocomplete_options_for(user_cf)
-
-      expect(autocomplete_options).to eq([{ name: some_user.name, email: some_user.mail },
-                                          { name: manager.name, email: manager.mail }])
+      projects_page.expect_autocomplete_options_for(
+        user_cf,
+        [{ name: some_user.name, email: some_user.mail },
+         { name: manager.name, email: manager.mail }]
+      )
     end
   end
 
@@ -546,6 +547,51 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
                                             [list_custom_field.possible_values[2].value,
                                              list_custom_field.possible_values[3].value])
       end
+    end
+  end
+
+  describe "version cf filter" do
+    let!(:versions) do
+      [
+        create(:version, project:, name: "Ringbo 1.0", sharing: "system"),
+        create(:version, project: public_project, name: "Ringbo 2.0", sharing: "system")
+      ]
+    end
+
+    let!(:version_custom_field) do
+      create(:version_project_custom_field,
+             projects: [project, development_project]) do |cf|
+        project.update(custom_field_values: { cf.id => cf.possible_values[0] })
+      end
+    end
+
+    it "filters for the project with the value" do
+      load_and_open_filters admin
+
+      # Both versions are available to select, but under a different project
+      projects_page.expect_autocomplete_options_for(
+        version_custom_field,
+        versions.first,
+        grouping: project.name
+      )
+
+      projects_page.expect_autocomplete_options_for(
+        version_custom_field,
+        versions.second,
+        grouping: public_project.name
+      )
+
+      projects_page.set_filter(version_custom_field.column_name,
+                               version_custom_field.name,
+                               "is (OR)",
+                               [versions[0].name])
+
+      projects_page.expect_projects_not_listed(development_project)
+      projects_page.expect_projects_listed(project)
+
+      # Only the second version is available to select,
+      # because the first one is already selected.
+      projects_page.expect_autocomplete_options_for(version_custom_field, versions[1].name)
     end
   end
 
