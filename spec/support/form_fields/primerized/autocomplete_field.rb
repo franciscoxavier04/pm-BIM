@@ -77,9 +77,16 @@ module FormFields
           .to have_no_css(".ng-option", text: option, visible: :all, wait: 1)
       end
 
-      def expect_option(option)
-        expect(page)
-          .to have_css(".ng-option", text: option, visible: :visible)
+      def expect_option(option, grouping: nil)
+        if grouping
+          # Make sure the option is displayed under correct grouping title.
+          option_group = find(".ng-optgroup", text: grouping)
+          option = find(".ng-option.ng-option-child", text: option, visible: :visible)
+          expect(option_group).to eq option.find(:xpath, "preceding-sibling::*[1]")
+        else
+          expect(page)
+            .to have_css(".ng-option", text: option, visible: :visible)
+        end
       end
 
       def expect_visible
