@@ -73,4 +73,20 @@ RSpec.describe Comment do
         .not_to be_valid
     end
   end
+
+  describe "acts_as_journalized" do
+    let(:work_package) { create(:work_package) }
+    # using work package association as it was introduced along with journalized
+    let(:comment) { described_class.new(author: user, comments: "some important words", commented: work_package) }
+
+    it "creates a journal with the correct journable" do
+      comment.save
+      expect(Journal.last.journable).to eq(comment)
+    end
+
+    it "creates a journal with the correct notes" do
+      comment.save
+      expect(Journal.last.notes).to be_empty
+    end
+  end
 end
