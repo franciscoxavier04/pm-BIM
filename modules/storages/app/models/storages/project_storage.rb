@@ -82,9 +82,7 @@ module Storages
     end
 
     def open(user)
-      auth_strategy = Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-                        .strategy
-                        .with_user(user)
+      auth_strategy = Peripherals::Registry.resolve("#{storage}.authentication.user_bound").call(user:, storage:)
 
       if project_folder_not_accessible?(user)
         Peripherals::Registry
