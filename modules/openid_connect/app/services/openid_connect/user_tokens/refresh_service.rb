@@ -31,12 +31,13 @@
 module OpenIDConnect
   module UserTokens
     class RefreshService
-      include Dry::Monads[:result]
+      include Dry::Monads::Result(TokenOperationError)
       include Dry::Monads::Do.for(:call)
 
       def initialize(user:, token_exchange:)
         @user = user
         @token_exchange = token_exchange
+        @error = TokenOperationError.new(source: self.class)
       end
 
       def call(token)
@@ -49,7 +50,7 @@ module OpenIDConnect
         access_token = json["access_token"]
         refresh_token = json["refresh_token"]
         expires_in = json["expires_in"]
-        return Failure(:token_refresh_response_invalid) if access_token.blank?
+        return Failure(@error.with(code: :token_refresh_response_invalid, payload: json)) if access_token.blank?
 
         token.update!(access_token:, refresh_token:, expires_at: expires_in&.seconds&.from_now)
 
@@ -65,7 +66,7 @@ module OpenIDConnect
         if @token_exchange.supported? && token.audiences.size == 1
           @token_exchange.call(token.audiences.first)
         else
-          Failure(:unable_to_refresh_token)
+          Failure(@error.with(code: :unable_to_refresh_token))
         end
       end
 

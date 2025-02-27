@@ -329,7 +329,7 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator, :webmock do
             exchange_request = stub_request(:post, oidc_provider.token_endpoint)
                                .with(body: { audience: storage.audience, subject_token: exchangeable_token.access_token,
                                              grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE })
-                               .and_return(status: 418)
+                               .and_return(status: 401)
 
             expect(subject.type).to eq(:error)
             expect(subject.error_code).to eq(:oidc_cant_exchange_token)
