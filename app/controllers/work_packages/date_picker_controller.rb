@@ -64,10 +64,9 @@ class WorkPackages::DatePickerController < ApplicationController
   def new
     make_fake_initial_work_package
     set_date_attributes_to_work_package
+
     respond_to do |format|
       format.turbo_stream do
-        set_date_attributes_to_work_package
-
         replace_via_turbo_stream(
           component: datepicker_modal_component
         )
@@ -217,6 +216,7 @@ class WorkPackages::DatePickerController < ApplicationController
   def work_package_datepicker_params
     if params[:work_package]
       handle_milestone_dates
+      handle_form_cleared
 
       params.require(:work_package)
             .slice(*allowed_touched_params)
@@ -263,6 +263,36 @@ class WorkPackages::DatePickerController < ApplicationController
       params.require(:work_package)[:due_date] = params.require(:work_package)[:start_date]
       params.require(:work_package)[:due_date_touched] = "true"
     end
+  end
+
+  def handle_form_cleared
+    touched_params = params.require(:work_package).slice(*allowed_touched_params)
+
+    if two_fields_cleared?(touched_params)
+      # If two fields are already manually cleared, we assume that the user wants to clear the whole form
+      params_array = %i[start_date due_date duration]
+
+      params_array.each do |param|
+        if touched_params[param].nil?
+          params.require(:work_package)[param] = ""
+          params.require(:work_package)["#{param}_touched"] = "true"
+        end
+      end
+    end
+  end
+
+  def two_fields_cleared?(wp_params)
+    start_date = wp_params[:start_date]
+    due_date = wp_params[:due_date]
+    duration = wp_params[:duration]
+
+    # Check which params are set to an empty string
+    empty_params = [start_date, due_date, duration].select { |param| param == "" }
+    # Check which param was not touched
+    missing_param = [start_date, due_date, duration].select(&:nil?)
+
+    # If two values are deleted and one is untouched, return tru
+    empty_params.length == 2 && missing_param.length == 1
   end
 
   def handle_focus_order_for_fields(trigger_field, alternative_field)
