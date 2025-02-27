@@ -19,10 +19,11 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.4.2"
-      - uses: MeilCli/danger-action@v6
-        with:
-          danger_version: ">= 9.5.1"
-          danger_file: "Dangerfile"
-          danger_id: "danger-pr"
+      - name: Setup danger
+        run: |
+          gem install danger
+      - name: Run inconsistent translations check
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          danger --verbose
