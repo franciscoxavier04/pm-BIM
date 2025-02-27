@@ -33,13 +33,10 @@ require Rails.root.join("db/migrate/migration_utils/permission_adder")
 class PopulateCommentsWithRestrictedVisibilityPermissions < ActiveRecord::Migration[7.1]
   def up
     # grant the permission to view/write/edit comments with restricted visibility
-    # to users that can manage work package relations
-    ::Migration::MigrationUtils::PermissionAdder.add(:manage_work_package_relations,
-                                                     :view_comments_with_restricted_visibility)
-    ::Migration::MigrationUtils::PermissionAdder.add(:manage_work_package_relations,
-                                                     :write_comments_with_restricted_visibility)
-    ::Migration::MigrationUtils::PermissionAdder.add(:manage_work_package_relations,
-                                                     :edit_own_comments_with_restricted_visibility)
+    # to users that can manage project members
+    ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :view_comments_with_restricted_visibility)
+    ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :write_comments_with_restricted_visibility)
+    ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :edit_own_comments_with_restricted_visibility)
   end
 
   # noop
