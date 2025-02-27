@@ -55,7 +55,33 @@ module SearchHelper
     highlight_tokens(last_journal(event).try(:notes), tokens) or
       highlight_tokens(attachment_fulltexts(event), tokens) or
       highlight_tokens(attachment_filenames(event), tokens) or
-      highlight_tokens(event.event_description, tokens, text_on_not_found: true)
+      highlight_and_abbreviate_html(event.event_description, tokens)
+  end
+
+  # This is an enhanced version of `highlight_tokens`.
+  # Takes a markdown string, formats it to HTML and highlights the tokens.
+  # Lastly, abbreviates the output and returns the final result as HTML.
+  def highlight_and_abbreviate_html(event_description, tokens)
+    html = OpenProject::TextFormatting::Renderer.format_text(event_description)
+    highlighted_html = highlight_tokens_in_html(html, tokens)
+    # rubocop:disable Rails/OutputSafety
+    abbreviated_html(highlighted_html).html_safe
+    # rubocop:enable Rails/OutputSafety
+  end
+
+  def highlight_tokens_in_html(html, tokens)
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+
+    tokens.each do |token|
+      doc.traverse do |node|
+        next unless node.text?
+
+        highlighted_text = node.content.gsub(/(#{Regexp.escape(token)})/i, '<span class="search-highlight">\1</span>')
+        node.replace(Nokogiri::HTML::DocumentFragment.parse(highlighted_text))
+      end
+    end
+
+    doc.to_html
   end
 
   def text_split_by_token(text, tokens)
@@ -169,5 +195,45 @@ module SearchHelper
     end
 
     abbreviated_words
+  end
+
+  # Similar to `abbreviated_text`, but considers HTML tags and keeps them intact
+  def abbreviated_html(html, max_length: 1200)
+    doc = Nokogiri::HTML::DocumentFragment.parse(html)
+    text_length = 0
+
+    doc.traverse do |node|
+      next unless node.text?
+
+      original_text = node.content
+      abbreviated_text = process_text_node(original_text, text_length, max_length)
+      abbreviated_text = preserve_spaces(original_text, abbreviated_text) || ""
+
+      text_length += abbreviated_text.length
+      node.replace(Nokogiri::XML::Text.new(abbreviated_text, doc))
+
+      break if text_length >= max_length
+    end
+
+    doc.to_html
+  end
+
+  def process_text_node(content, current_length, max_length)
+    return content if current_length >= max_length
+
+    truncated_text = truncate_formatted_text(content, length: 100)
+
+    if current_length + truncated_text.length > max_length
+      t = truncated_text[0..(max_length - current_length - 1)]
+      truncated_text = "#{t}..."
+    end
+
+    truncated_text
+  end
+
+  def preserve_spaces(original_text, modified_text)
+    modified_text = " #{modified_text}" if original_text.start_with?(" ") && !modified_text.start_with?(" ")
+    modified_text = "#{modified_text} " if original_text.end_with?(" ") && !modified_text.end_with?(" ")
+    modified_text
   end
 end
