@@ -13,4 +13,16 @@ module EnterpriseHelper
       }
     end
   end
+
+  def enterprise_token_plan_name(enterprise_token)
+    if enterprise_token.respond_to?(:plan)
+      "#{I18n.t(enterprise_token.plan, scope: [:enterprise_plans])} (#{enterprise_token.version})"
+    end
+  end
+
+  def enterprise_plan_additional_features(enterprise_token)
+    (enterprise_token.try(:features) || [])
+      .map { |feature| I18n.t(feature, scope: [:enterprise_features], default: feature.to_s.humanize) }
+        .join(", ")
+  end
 end

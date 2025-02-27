@@ -82,6 +82,7 @@ class EnterpriseToken < ApplicationRecord
            :restrictions,
            :plan,
            :features,
+           :version,
            to: :token_object
 
   def token_object

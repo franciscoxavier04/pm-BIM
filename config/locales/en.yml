@@ -4578,11 +4578,7 @@ en:
     description: "Adds the OmniAuth SAML provider to OpenProject"
 
   enterprise_plans:
-    basic: Baisc Plan
-    professional: Professional Plan
-    premium: Premium Plan
-    corporate: Corporate Plan
-    legacy_enterprise: "Enterprise Plan (Legacy)"
+    legacy_enterprise: "Enterprise Plan"
 
   enterprise_features:
     baseline_comparison: Baseline Comparison
