@@ -110,7 +110,7 @@ tr:
               name: Takım planlayıcısı
           boards:
             bcf:
-              name: Simple drag'n drop workflow
+              name: Basit sürükle bırak iş akışı
           project-overview:
             widgets:
               item_0:

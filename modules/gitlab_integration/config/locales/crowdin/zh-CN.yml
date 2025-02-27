@@ -22,7 +22,7 @@
 #++
 zh-CN:
   attributes:
-    commit: "Commit"
+    commit: "提交"
     gitlab: "GitLab identifier"
     gitlab_avatar_url: "Avatar URL"
     gitlab_email: "GitLab Email"
@@ -37,7 +37,7 @@ zh-CN:
       gitlab_pipeline:
         ci_details: "CI Details"
       gitlab_merge_request:
-        labels: "Labels"
+        labels: "标签"
     errors:
       models:
         gitlab_issue:

@@ -879,8 +879,6 @@ ro:
         resource: "Resource"
       oauth_client:
         client: "ID Client"
-      planning_element_type_color:
-        hexcode: Cod hexa
       project:
         active_value:
           true: "dezarhivat"

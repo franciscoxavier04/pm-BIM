@@ -153,21 +153,21 @@ tr:
                 options:
                   name: Başlarken
                   text: |
-                    We are glad you joined! We suggest to try a few things to get started in OpenProject.
+                    Katıldığınız için çok mutluyuz! OpenProject'e başlamak için birkaç şey denemenizi öneririz.
 
-                    Discover the most important features with our [Guided Tour]({{opSetting:base_url}}/projects/demo-project/work_packages/?start_onboarding_tour=true).
+                    [Rehberli Tur]({{opSetting:base_url}}/projects/demo-project/work_packages/?start_onboarding_tour=true) ile en önemli özellikleri keşfedin.
 
-                    _Try the following steps:_
+                    _Aşağıdaki adımları deneyin:_
 
-                    1. *Invite new members to your project*: &rightarrow; Go to [Members]({{opSetting:base_url}}/projects/demo-project/members) in the project navigation.
-                    2. *View the work in your project*: &rightarrow; Go to [Work packages]({{opSetting:base_url}}/projects/demo-project/work_packages) in the project navigation.
-                    3. *Create a new work package*: &rightarrow; Go to [Work packages &rightarrow; Create]({{opSetting:base_url}}/projects/demo-project/work_packages/new).
-                    4. *Create and update a project plan*: &rightarrow; Go to [Project plan]({{opSetting:base_url}}/projects/demo-project/work_packages?query_id=##query.id:demo_project__query__project_plan) in the project navigation.
-                    5. *Activate further modules*: &rightarrow; Go to [Project settings &rightarrow; Modules]({{opSetting:base_url}}/projects/demo-project/settings/modules).
-                    6. *Complete your tasks in the project*: &rightarrow; Go to [Work packages &rightarrow; Tasks]({{opSetting:base_url}}/projects/demo-project/work_packages/details/##wp.id:set_date_and_location_of_conference/overview?query_id=##query.id:demo_project__query__tasks).
+                    1. *Projenize yeni üyeler davet edin*: &rightarrow; Proje gezintisinde [Üyeler]({{opSetting:base_url}}/projects/demo-project/members) bölümüne gidin.
+                    2. *Projenizdeki çalışmaları görüntüleyin*: &rightarrow; Proje gezintisinde [İş paketleri]({{opSetting:base_url}}/projects/demo-project/work_packages) bölümüne gidin.
+                    3. *Yeni bir iş paketi oluşturun*: &rightarrow; İş paketleri &rightarrow; Oluştur]({{opSetting:base_url}}/projects/demo-project/work_packages/new) adresine gidin.
+                    4. *Bir proje planı oluşturun ve güncelleyin*: &rightarrow; Proje gezintisinde [Proje planı]({{opSetting:base_url}}/projects/demo-project/work_packages?query_id=##query.id:demo_project__query__project_plan) bölümüne gidin.
+                    5. *Diğer modülleri etkinleştirin*: &rightarrow; Proje ayarları &rightarrow; Modüller]({{opSetting:base_url}}/projects/demo-project/settings/modules) adresine gidin.
+                    6. *Projedeki görevlerinizi tamamlayın*: &rightarrow; İş paketleri &rightarrow; Görevler]({{opSetting:base_url}}/projects/demo-project/work_packages/details/##wp.id:set_date_and_location_of_conference/overview?query_id=##query.id:demo_project__query__tasks) bölümüne gidin.
 
-                    Here you will find our [User Guides](https://www.openproject.org/docs/user-guide/).
-                    Please let us know if you have any questions or need support. Contact us: [support[at]openproject.com](mailto:support@openproject.com).
+                    Burada [Kullanıcı Rehberlerimizi](https://www.openproject.org/docs/user-guide/) bulacaksınız.
+                    Herhangi bir sorunuz varsa veya desteğe ihtiyacınız varsa lütfen bize bildirin. Bize ulaşın: [support[at]openproject.com](mailto:support@openproject.com).
               item_5:
                 options:
                   name: İş paketleri
@@ -176,7 +176,7 @@ tr:
                   name: Aşamalar
           work_packages:
             item_0:
-              subject: Start of project
+              subject: Proje başlangıcı
             item_1:
               subject: Açık kaynak konferansı düzenleyin
               children:
@@ -184,11 +184,11 @@ tr:
                   subject: Konferans tarihini ve yerini belirleyin
                   children:
                     item_0:
-                      subject: Send invitation to speakers
+                      subject: Konuşmacılara davetiye gönderme
                     item_1:
-                      subject: Contact sponsoring partners
+                      subject: Sponsorlarla iletişime geçme
                     item_2:
-                      subject: Create sponsorship brochure and hand-outs
+                      subject: Sponsorluk broşürü ve el broşürleri hazırlama
                 item_1:
                   subject: Katılımcıları konferansa davet edin
                 item_2:
@@ -236,9 +236,9 @@ tr:
                 Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
           versions:
             item_0:
-              name: Bug Backlog
+              name: Hata İş Listesi
             item_1:
-              name: Product Backlog
+              name: Ürün İş Listesi
             item_2:
               name: Koşu 1
               wiki:
@@ -381,7 +381,7 @@ tr:
               subject: Web sitesi gezinti yapısı
               children:
                 item_0:
-                  subject: Set up navigation concept for website.
+                  subject: Web sitesi için gezinti tasarımı oluştur.
             item_10:
               subject: İç bağlantı yapısı
             item_11:

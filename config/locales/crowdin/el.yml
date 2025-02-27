@@ -866,8 +866,6 @@ el:
         resource: "Resource"
       oauth_client:
         client: "Ταυτότητα Πελάτη"
-      planning_element_type_color:
-        hexcode: Κωδικός Hex
       project:
         active_value:
           true: "unarchived"

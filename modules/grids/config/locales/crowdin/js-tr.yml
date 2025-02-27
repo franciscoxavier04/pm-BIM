@@ -1,9 +1,9 @@
 tr:
   js:
     grid:
-      add_widget: 'Widget ekleyin'
-      remove: 'Widget''ı kaldır'
-      configure: 'Widget''ı yapılandır'
+      add_widget: 'Bileşen ekle'
+      remove: 'Bileşeni kaldır'
+      configure: 'Bileşeni yapılandır'
       upsale:
         text: "İş paketi grafiği pencere öğesi gibi bazı pencere öğeleri yalnızca Enterprise sürümünde mevcuttur."
         link: 'Enterprise sürümü.'

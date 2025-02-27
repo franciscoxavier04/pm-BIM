@@ -393,7 +393,7 @@ de:
       storage:
         no_results_title_text: Durch dieses Projekt wird kein zusätzlicher erfasster Speicherplatz verbraucht.
       work_package_priorities:
-        new_label: "New priority"
+        new_label: "Neue Priorität"
   project_stage:
     working_days_count:
       one: "Dauer: %{count} Arbeitstag"
@@ -618,8 +618,8 @@ de:
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "Alles aktivieren"
+            label_disable_all: "Alles deaktivieren"
   versions:
     overview:
       work_packages_in_archived_projects: "Die Version wird mit archivierten Projekten geteilt, die immer noch Arbeitspakete auf diese Version zugewiesen haben. Die Arbeitspakete werden beim Zählen berücksichtigt, erscheinen aber nicht in den verknüpften Ansichten."
@@ -863,8 +863,6 @@ de:
         resource: "Resource"
       oauth_client:
         client: "Client-ID"
-      planning_element_type_color:
-        hexcode: Fabcode (Hex)
       project:
         active_value:
           true: "nicht archiviert"
@@ -921,7 +919,7 @@ de:
         highlighting_mode: "Highlight mode"
         display_representation: "Display mode"
         show_hierarchies: "Display mode"
-        starred: "Favorite"
+        starred: "Favorit"
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
@@ -949,7 +947,7 @@ de:
         excluded_from_totals: "Von der Berechnung der Gesamtsumme in der Hierarchie ausschließen"
         default_done_ratio: "% abgeschlossen"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivität"
@@ -975,8 +973,8 @@ de:
         language: "Sprache"
         last_login_on: "Letzte Anmeldung"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Vorname"
+        last_name: "Nachname"
         first_login: "First login"
         new_password: "Neues Kennwort"
         password_confirmation: "Bestätigung"
@@ -990,7 +988,7 @@ de:
         theme: "Modus"
         mode_guideline: "Einige Darstellungsmodi überschreiben die Farben des benutzerdefinierten Designs, um die Barrierefreiheit und Lesbarkeit zu gewährleisten. Für das vollständige benutzerdefinierte Design wählen Sie bitte den hellen Modus."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Arbeitstage"
       version:
         effective_date: "Endtermin"
         sharing: "Gemeinsame Verwendung"
@@ -1448,8 +1446,8 @@ de:
       global_role: "Globale Rolle"
       group: "Gruppe"
       issue_priority:
-        one: "Priority"
-        other: "Priorities"
+        one: "Priorität"
+        other: "Prioritäten"
       member: "Mitglied"
       news: "Neuigkeiten"
       notification:
@@ -1463,7 +1461,7 @@ de:
         one: "Projektlisten"
         other: "Projektlisten"
       query: "Benutzerdefinierte Abfrage"
-      reminder: "Reminder"
+      reminder: "Erinnerung"
       role:
         one: "Rolle"
         other: "Rollen"
@@ -1540,7 +1538,7 @@ de:
     comments: "Kommentar"
     content: "Inhalt"
     color: "Farbe"
-    creator: "Creator"
+    creator: "Ersteller"
     created_at: "Erstellt"
     custom_field: "Custom field"
     custom_options: "Mögliche Werte"
@@ -1556,7 +1554,7 @@ de:
     due_date: "Endtermin"
     estimated_hours: "Aufwand"
     estimated_time: "Aufwand"
-    email: "Email"
+    email: "E-Mail"
     entity_type: "Entity"
     expires_at: "Läuft ab am"
     firstname: "Vorname"
@@ -1572,7 +1570,7 @@ de:
     #kept for backwards compatibility
     issue: "Arbeitspaket"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Kommentar"
     lastname: "Nachname"
     login: "Benutzername"
     mail: "E-Mail"
@@ -1607,7 +1605,7 @@ de:
     updated_on: "Aktualisiert am"
     uploader: "Bereitgestellt von"
     user: "Benutzer"
-    username: "Username"
+    username: "Benutzername"
     unit: "Unit"
     value: "Wert"
     values: "Values"
@@ -2091,13 +2089,13 @@ de:
       label: "Attributes and description"
       caption: All the attributes present in the current form configuration using the default template.
     template_contract:
-      label: "Contract"
+      label: "Vertrag"
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: PDF generieren
       submit: Download
       templates:
-        label: "Template"
+        label: "Vorlage"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text

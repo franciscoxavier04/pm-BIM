@@ -866,8 +866,6 @@ nl:
         resource: "Resource"
       oauth_client:
         client: "Client-ID"
-      planning_element_type_color:
-        hexcode: Hexadecimale code
       project:
         active_value:
           true: "Niet gearchiveerd"

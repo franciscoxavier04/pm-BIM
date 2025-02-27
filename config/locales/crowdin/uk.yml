@@ -883,8 +883,6 @@ uk:
         resource: "Resource"
       oauth_client:
         client: "ID клієнта"
-      planning_element_type_color:
-        hexcode: Двійковий код
       project:
         active_value:
           true: "розархівовано"

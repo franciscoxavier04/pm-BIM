@@ -888,8 +888,6 @@ sk:
         resource: "Resource"
       oauth_client:
         client: "ID klienta"
-      planning_element_type_color:
-        hexcode: Hex kód
       project:
         active_value:
           true: "unarchived"

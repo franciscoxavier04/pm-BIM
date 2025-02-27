@@ -870,8 +870,6 @@ fa:
         resource: "Resource"
       oauth_client:
         client: "Client ID"
-      planning_element_type_color:
-        hexcode: کد هگزا
       project:
         active_value:
           true: "unarchived"

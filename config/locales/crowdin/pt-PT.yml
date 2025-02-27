@@ -867,8 +867,6 @@ pt-PT:
         resource: "Resource"
       oauth_client:
         client: "ID de cliente"
-      planning_element_type_color:
-        hexcode: Código hex
       project:
         active_value:
           true: "desarquivado"

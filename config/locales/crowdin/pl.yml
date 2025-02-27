@@ -885,8 +885,6 @@ pl:
         resource: "Resource"
       oauth_client:
         client: "Identyfikator klienta"
-      planning_element_type_color:
-        hexcode: Kod szesnastkowy
       project:
         active_value:
           true: "niezarchiwizowane"

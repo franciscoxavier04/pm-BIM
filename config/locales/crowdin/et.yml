@@ -870,8 +870,6 @@ et:
         resource: "Resource"
       oauth_client:
         client: "Kliendi ID"
-      planning_element_type_color:
-        hexcode: Hex kood
       project:
         active_value:
           true: "unarchived"

@@ -870,8 +870,6 @@ ka:
         resource: "Resource"
       oauth_client:
         client: "კლიენტის ID"
-      planning_element_type_color:
-        hexcode: თექვსმეტობითი კოდი
       project:
         active_value:
           true: "გაშლილი"

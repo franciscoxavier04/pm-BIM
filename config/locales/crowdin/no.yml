@@ -869,8 +869,6 @@
         resource: "Resource"
       oauth_client:
         client: "Klient ID"
-      planning_element_type_color:
-        hexcode: Hexadesimalkode
       project:
         active_value:
           true: "Ikke arkivert"

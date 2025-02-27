@@ -870,8 +870,6 @@ bg:
         resource: "Resource"
       oauth_client:
         client: "№ на клиент"
-      planning_element_type_color:
-        hexcode: Шестнадесетичен код
       project:
         active_value:
           true: "unarchived"

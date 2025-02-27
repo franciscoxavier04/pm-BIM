@@ -859,8 +859,6 @@ ms:
         resource: "Resource"
       oauth_client:
         client: "ID pelanggan"
-      planning_element_type_color:
-        hexcode: Kod Hex
       project:
         active_value:
           true: "tidak diarkibkan"

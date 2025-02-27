@@ -859,8 +859,6 @@ ja:
         resource: "Resource"
       oauth_client:
         client: "クライアントID"
-      planning_element_type_color:
-        hexcode: 16進コード
       project:
         active_value:
           true: "unarchived"

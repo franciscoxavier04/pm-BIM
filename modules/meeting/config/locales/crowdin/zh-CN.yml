@@ -64,7 +64,7 @@ zh-CN:
     models:
       recurring_meeting: "定期会议"
       structured_meeting: "动态会议"
-      meeting: "Meeting"
+      meeting: "会议"
       meeting_agenda_item: "议程项目"
       meeting_agenda: "议程"
       meeting_minutes: "会议记录"

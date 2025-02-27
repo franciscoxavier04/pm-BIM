@@ -879,8 +879,6 @@ hr:
         resource: "Resource"
       oauth_client:
         client: "Client ID"
-      planning_element_type_color:
-        hexcode: Heksadecimalni kod
       project:
         active_value:
           true: "unarchived"

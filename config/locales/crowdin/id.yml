@@ -857,8 +857,6 @@ id:
         resource: "Resource"
       oauth_client:
         client: "ID Pelanggan"
-      planning_element_type_color:
-        hexcode: Kode Hexa
       project:
         active_value:
           true: "tidak diarsipkan"

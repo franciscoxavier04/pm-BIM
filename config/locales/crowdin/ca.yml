@@ -867,8 +867,6 @@ ca:
         resource: "Resource"
       oauth_client:
         client: "ID de client"
-      planning_element_type_color:
-        hexcode: Codi hexadecimal
       project:
         active_value:
           true: "desarxivat"

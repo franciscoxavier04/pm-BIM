@@ -861,8 +861,6 @@ ko:
         resource: "Resource"
       oauth_client:
         client: "클라이언트 ID"
-      planning_element_type_color:
-        hexcode: 16진수 코드
       project:
         active_value:
           true: "보관 취소됨"

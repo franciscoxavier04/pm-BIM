@@ -886,8 +886,6 @@ ru:
         resource: "Resource"
       oauth_client:
         client: "ID клиента"
-      planning_element_type_color:
-        hexcode: Шестнадцатеричный код
       project:
         active_value:
           true: "Разархивирован"

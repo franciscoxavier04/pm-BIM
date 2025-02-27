@@ -870,8 +870,6 @@ mn:
         resource: "Resource"
       oauth_client:
         client: "Client ID"
-      planning_element_type_color:
-        hexcode: Hex code
       project:
         active_value:
           true: "unarchived"

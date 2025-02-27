@@ -2,13 +2,13 @@ zh-CN:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: 客户端ID
+        client_secret: 客户端密钥
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: 存储
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: 通过 OpenID Connect 身份提供商进行单点登录
@@ -16,8 +16,8 @@ zh-CN:
           two_way_oauth2: 双向 OAuth 2.0 授权代码流
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
-        project_folder_mode: Project folder mode
+        project_folder: 项目文件夹
+        project_folder_mode: 项目文件夹模式
         storage: 存储
         storage_url: Storage URL
       storages/storage:
@@ -223,7 +223,7 @@ zh-CN:
       openproject_oauth: OpenProject OAuth
       project_folders: 项目文件夹
       redirect_uri: 重定向 URI
-      storage_audience: Storage Audience
+      storage_audience: 存储受众
       storage_audience_blank: No audience has been configured
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.

@@ -2,10 +2,10 @@ zh-CN:
   activerecord:
     attributes:
       saml/provider:
-        display_name: Name
+        display_name: 名称
         identifier: Identifier
         secret: Secret
-        scope: Scope
+        scope: 范围
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
         limit_self_registration: Limit self registration
         sp_entity_id: Service entity ID
@@ -15,14 +15,14 @@ zh-CN:
         idp_slo_service_url: Identity provider logout endpoint
         idp_cert: Public certificate of identity provider
         authn_requests_signed: Sign SAML AuthnRequests
-        want_assertions_signed: Require signed responses
-        want_assertions_encrypted: Require encrypted responses
+        want_assertions_signed: 需要签名回复
+        want_assertions_encrypted: 要求加密回复
         certificate: Certificate used by OpenProject for SAML requests
         private_key: Corresponding private key for OpenProject SAML requests
-        signature_method: Signature algorithm
-        digest_method: Digest algorithm
-        format: "Format"
-        icon: "Custom icon"
+        signature_method: 签名算法
+        digest_method: 摘要算法
+        format: "格式"
+        icon: "自定义图标"
     errors:
       models:
         saml/provider:

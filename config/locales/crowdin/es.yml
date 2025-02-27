@@ -712,7 +712,7 @@ es:
       new_child_text: "Crea un paquete de trabajo relacionado como un subelemento del paquete de trabajo actual (principal)"
       existing_child: "Niño existente"
       child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
-      label_blocks_singular: "bloques"
+      label_blocks_singular: "bloquea"
       label_blocks_plural: "bloques"
       blocks_description: "El paquete de trabajo relacionado no puede cerrarse hasta que este se cierre primero"
       label_blocked_singular: "bloqueado por"
@@ -868,8 +868,6 @@ es:
         resource: "Resource"
       oauth_client:
         client: "ID de cliente"
-      planning_element_type_color:
-        hexcode: Código hexadecimal
       project:
         active_value:
           true: "desarchivado"

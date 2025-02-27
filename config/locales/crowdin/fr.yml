@@ -868,8 +868,6 @@ fr:
         resource: "Resource"
       oauth_client:
         client: "ID client"
-      planning_element_type_color:
-        hexcode: Code hexadécimal
       project:
         active_value:
           true: "désarchivé"

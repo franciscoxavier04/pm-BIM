@@ -7,7 +7,7 @@ tr:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: İsim
         slug: Unique identifier
         display_name: Display name
         client_id: Client ID
@@ -25,7 +25,7 @@ tr:
         issuer: Issuer
         tenant: Tenant
         metadata_url: Metadata URL
-        icon: Custom icon
+        icon: Özel simge
         claims: Claims
         acr_values: ACR values
         redirect_url: Redirect URL

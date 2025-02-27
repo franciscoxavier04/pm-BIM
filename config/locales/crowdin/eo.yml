@@ -870,8 +870,6 @@ eo:
         resource: "Resource"
       oauth_client:
         client: "ID de la kliento"
-      planning_element_type_color:
-        hexcode: Deksesuma kodo
       project:
         active_value:
           true: "unarchived"

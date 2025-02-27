@@ -867,8 +867,6 @@ it:
         resource: "Resource"
       oauth_client:
         client: "ID Client"
-      planning_element_type_color:
-        hexcode: Codice esadecimale
       project:
         active_value:
           true: "Rimosso dall'archivio"

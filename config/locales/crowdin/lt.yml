@@ -885,8 +885,6 @@ lt:
         resource: "Resource"
       oauth_client:
         client: "Kliento ID"
-      planning_element_type_color:
-        hexcode: Šešioliktainis kodas
       project:
         active_value:
           true: "išarchyvuota"

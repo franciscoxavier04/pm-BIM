@@ -9,7 +9,7 @@ zh-CN:
       two_factor_authentication/device:
         identifier: "标识符"
         default: "用作默认"
-        channel: "Channel"
+        channel: "频道"
       two_factor_authentication/device/sms:
         phone_number: "电话号码"
       two_factor_authentication/device/webauthn:

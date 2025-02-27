@@ -861,8 +861,6 @@ vi:
         resource: "Resource"
       oauth_client:
         client: "ID khách hàng"
-      planning_element_type_color:
-        hexcode: Mã Hex
       project:
         active_value:
           true: "chưa lưu trữ"

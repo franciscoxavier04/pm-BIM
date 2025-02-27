@@ -868,8 +868,6 @@ hi:
         resource: "Resource"
       oauth_client:
         client: "Client ID"
-      planning_element_type_color:
-        hexcode: हेक्स कोड
       project:
         active_value:
           true: "unarchived"

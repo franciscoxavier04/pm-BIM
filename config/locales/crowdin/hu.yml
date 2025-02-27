@@ -869,8 +869,6 @@ hu:
         resource: "Resource"
       oauth_client:
         client: "Ügyfél azonosító"
-      planning_element_type_color:
-        hexcode: Hexa kód
       project:
         active_value:
           true: "unarchived"

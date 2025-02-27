@@ -34,8 +34,8 @@ tr:
   enumeration_doc_categories: "Belge kategorileri"
   documents:
     label_attachment_author: "Ek yazar"
-    label_categories: "Categories"
-    new_category: "New category"
+    label_categories: "Kategoriler"
+    new_category: "Yeni kategori"
   label_document_added: "Belge eklendi"
   label_document_new: "Yeni belge"
   label_document_plural: "Belgeler"
