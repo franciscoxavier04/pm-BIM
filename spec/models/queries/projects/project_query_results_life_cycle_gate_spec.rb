@@ -408,4 +408,33 @@ RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
       end
     end
   end
+
+  context "with a !* (none) operator" do
+    before do
+      instance.where("lcsd_gate_#{gate.id}", "!*", [])
+    end
+
+    context "when the gate is active but has no dates" do
+      remove_gate_dates
+
+      it "returns the project with the gate" do
+        expect(instance.results).to contain_exactly(project_with_gate)
+      end
+    end
+
+    context "when the gate is active and has dates" do
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+
+    context "when the gate is inactive and has no dates" do
+      remove_gate_dates
+      disable_gate
+
+      it "returns no project" do
+        expect(instance.results).to be_empty
+      end
+    end
+  end
 end

@@ -41,7 +41,8 @@ module Queries::Projects::Filters::FilterOnLifeCycle
       ::Queries::Operators::Today,
       ::Queries::Operators::ThisWeek,
       ::Queries::Operators::OnDate,
-      ::Queries::Operators::BetweenDate
+      ::Queries::Operators::BetweenDate,
+      ::Queries::Operators::None
     ]
   end
 
@@ -60,6 +61,8 @@ module Queries::Projects::Filters::FilterOnLifeCycle
               between_date
             when Queries::Operators::ThisWeek.to_sym
               this_week
+            when Queries::Operators::None.to_sym
+              none
             else
               raise "Unknown operator #{operator}"
             end
@@ -84,6 +87,10 @@ module Queries::Projects::Filters::FilterOnLifeCycle
   end
 
   def this_week
+    raise NotImplementedError
+  end
+
+  def none
     raise NotImplementedError
   end
 
@@ -116,6 +123,18 @@ module Queries::Projects::Filters::FilterOnLifeCycle
           daterange(?, ?, '[]')
         SQL
       )
+  end
+
+  def stage_none
+    life_cycle_scope(Project::Stage.name)
+      .where(start_date: nil)
+      .where(end_date: nil)
+  end
+
+  def gate_none
+    life_cycle_scope(Project::Gate.name)
+      .where(start_date: nil)
+      .where(end_date: nil)
   end
 
   def gate_where(start_date, end_date = start_date)

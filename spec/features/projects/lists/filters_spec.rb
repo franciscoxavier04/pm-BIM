@@ -650,12 +650,20 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
 
+          projects_page.remove_filter("any_stage_or_gate")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
           projects_page.set_filter("any_stage_or_gate",
                                    "Any stage or gate",
                                    "today")
 
           projects_page.expect_projects_not_listed(development_project, public_project)
           projects_page.expect_projects_in_order(project)
+
+          projects_page.remove_filter("any_stage_or_gate")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
 
           projects_page.set_filter("any_stage_or_gate",
                                    "Any stage or gate",
@@ -665,12 +673,26 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
 
+          projects_page.remove_filter("any_stage_or_gate")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
           projects_page.set_filter("any_stage_or_gate",
                                    "Any stage or gate",
                                    "this week")
 
           projects_page.expect_projects_not_listed(public_project, development_project)
           projects_page.expect_projects_in_order(project)
+
+          projects_page.remove_filter("any_stage_or_gate")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("any_stage_or_gate",
+                                   "Any stage or gate",
+                                   "is empty")
+
+          projects_page.expect_projects_not_listed(public_project, development_project, project)
         end
       end
 
@@ -747,6 +769,16 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
 
           projects_page.expect_projects_not_listed(development_project, public_project)
           projects_page.expect_projects_in_order(project)
+
+          projects_page.remove_filter("lcsd_stage_#{stage.id}")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_stage_#{stage.id}",
+                                   "Lifecycle stage: #{stage.name}",
+                                   "is empty")
+
+          projects_page.expect_projects_not_listed(public_project, development_project, project)
         end
       end
 
@@ -820,6 +852,16 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
 
             projects_page.expect_projects_not_listed(development_project, public_project)
             projects_page.expect_projects_in_order(project)
+
+            projects_page.remove_filter("lcsd_gate_#{gate.id}")
+
+            projects_page.expect_projects_in_order(development_project, project, public_project)
+
+            projects_page.set_filter("lcsd_gate_#{gate.id}",
+                                     "Lifecycle gate: #{gate.name}",
+                                     "is empty")
+
+            projects_page.expect_projects_not_listed(public_project, development_project, project)
           end
         end
 

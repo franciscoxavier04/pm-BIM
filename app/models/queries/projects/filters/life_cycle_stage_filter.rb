@@ -70,6 +70,10 @@ class Queries::Projects::Filters::LifeCycleStageFilter < Queries::Projects::Filt
     stage_overlaps_this_week
   end
 
+  def none
+    stage_none
+  end
+
   def life_cycle_scope_limit(scope)
     super
       .where(definition_id: life_cycle_step_definition.id)

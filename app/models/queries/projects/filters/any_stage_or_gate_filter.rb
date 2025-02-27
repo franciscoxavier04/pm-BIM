@@ -55,4 +55,9 @@ class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filt
     stage_overlaps_this_week
       .or(gate_where(beginning_of_week.to_date, end_of_week.to_date))
   end
+
+  def none
+    stage_none
+      .or(gate_none)
+  end
 end
