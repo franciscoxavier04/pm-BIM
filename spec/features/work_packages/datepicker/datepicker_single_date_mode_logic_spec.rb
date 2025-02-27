@@ -748,5 +748,41 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
         datepicker.expect_due_highlighted
       end
     end
+
+    context "and start date is cleared and a duration is set (scenario 23a)" do
+      it "preserves the start date" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_start_date ""
+        datepicker.focus_duration
+        datepicker.set_duration "3"
+
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.expect_duration_highlighted
+      end
+    end
+
+    context "and finish date is cleared and a duration is set (scenario 23b)" do
+      it "preserves the finish date" do
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.set_due_date ""
+        datepicker.focus_duration
+        datepicker.set_duration "3"
+
+        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_due_date "2025-02-14"
+        datepicker.expect_duration "3"
+
+        datepicker.expect_duration_highlighted
+      end
+    end
   end
 end

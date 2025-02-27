@@ -107,11 +107,63 @@ export default class PreviewController extends DialogPreviewController {
     this.markTouched(this.targetFieldName);
 
     if (this.isWorkBasedMode()) {
-      this.keepFieldValueWithPriority('estimated_hours', 'remaining_hours', 'done_ratio');
+      this.keepWorkValue();
     }
   }
 
   private isWorkBasedMode() {
     return this.findValueInput('done_ratio') !== undefined;
+  }
+
+  private keepWorkValue() {
+    if (this.isInitialValueEmpty('estimated_hours') && !this.isTouched('estimated_hours')) {
+      // let work be derived
+      return;
+    }
+
+    if (this.isBeingEdited('estimated_hours')) {
+      this.untouchFieldsWhenWorkIsEdited();
+    } else if (this.isBeingEdited('remaining_hours')) {
+      this.untouchFieldsWhenRemainingWorkIsEdited();
+    } else if (this.isBeingEdited('done_ratio')) {
+      this.untouchFieldsWhenPercentCompleteIsEdited();
+    }
+  }
+
+  private untouchFieldsWhenWorkIsEdited() {
+    if (this.areBothTouched('remaining_hours', 'done_ratio')) {
+      if (this.isValueEmpty('done_ratio') && this.isValueEmpty('remaining_hours')) {
+        return;
+      }
+      if (this.isValueEmpty('done_ratio')) {
+        this.markUntouched('done_ratio');
+      } else {
+        this.markUntouched('remaining_hours');
+      }
+    } else if (this.isTouchedAndEmpty('remaining_hours') && this.isValueSet('done_ratio')) {
+      // force remaining work derivation
+      this.markUntouched('remaining_hours');
+      this.markTouched('done_ratio');
+    } else if (this.isTouchedAndEmpty('done_ratio') && this.isValueSet('remaining_hours')) {
+      // force % complete derivation
+      this.markUntouched('done_ratio');
+      this.markTouched('remaining_hours');
+    }
+  }
+
+  private untouchFieldsWhenRemainingWorkIsEdited() {
+    if (this.isTouchedAndEmpty('estimated_hours') && this.isValueSet('done_ratio')) {
+      // force work derivation
+      this.markUntouched('estimated_hours');
+      this.markTouched('done_ratio');
+    } else if (this.isValueSet('estimated_hours')) {
+      this.markUntouched('done_ratio');
+    }
+  }
+
+  private untouchFieldsWhenPercentCompleteIsEdited() {
+    if (this.isValueSet('estimated_hours')) {
+      this.markUntouched('remaining_hours');
+    }
   }
 }

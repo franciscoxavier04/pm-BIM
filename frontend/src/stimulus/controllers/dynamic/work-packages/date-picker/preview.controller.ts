@@ -233,7 +233,7 @@ export default class PreviewController extends DialogPreviewController {
     if (this.currentDueDate) {
       this.highlightField(this.dueDateField);
     }
-    this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
+    this.keepFieldValue();
   }
 
   changeDueDate(selectedDate:Date) {
@@ -251,7 +251,7 @@ export default class PreviewController extends DialogPreviewController {
     if (this.currentStartDate) {
       this.highlightField(this.startDateField);
     }
-    this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
+    this.keepFieldValue();
   }
 
   private updateFlatpickrCalendar() {
@@ -306,7 +306,7 @@ export default class PreviewController extends DialogPreviewController {
   doMarkFieldAsTouched(fieldName:string) {
     super.doMarkFieldAsTouched(fieldName);
 
-    this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
+    this.keepFieldValue();
   }
 
   setIgnoreNonWorkingDays(event:{ target:HTMLInputElement }) {
@@ -444,5 +444,65 @@ export default class PreviewController extends DialogPreviewController {
       return parseInt(duration, 10);
     }
     return null;
+  }
+
+  /*
+  * I am aware, that the following methods look pretty similar to the logic on the progress/preview controller.
+  * There are however slight differences. That could still be abstracted into the shared parent controller.
+  * However, this comes at the cost of heavily reduced readability which is why it was agreed to keep it duplicated like this.
+  * Further, in the future, is is likely that the datepicker and the progress will further diverge in their behavior.
+  */
+  private keepFieldValue() {
+    if (this.isInitialValueEmpty('start_date') && !this.isTouched('start_date')) {
+      // let start date be derived
+      return;
+    }
+
+    if (this.isBeingEdited('start_date')) {
+      this.untouchFieldsWhenStartDateIsEdited();
+    } else if (this.isBeingEdited('due_date')) {
+      this.untouchFieldsWhenDueDateIsEdited();
+    } else if (this.isBeingEdited('duration')) {
+      this.untouchFieldsWhenDurationIsEdited();
+    }
+  }
+
+  private untouchFieldsWhenStartDateIsEdited() {
+    if (this.areBothTouched('due_date', 'duration')) {
+      if (this.isValueEmpty('duration') && this.isValueEmpty('due_date')) {
+        return;
+      }
+      if (this.isValueEmpty('duration')) {
+        this.markUntouched('duration');
+      } else {
+        this.markUntouched('due_date');
+      }
+    } else if (this.isTouchedAndEmpty('due_date') && this.isValueSet('duration')) {
+      // force due date derivation
+      this.markUntouched('due_date');
+      this.markTouched('duration');
+    } else if (this.isTouchedAndEmpty('duration') && this.isValueSet('due_date')) {
+      // force duration derivation
+      this.markUntouched('duration');
+      this.markTouched('due_date');
+    }
+  }
+
+  private untouchFieldsWhenDueDateIsEdited():void {
+    if (this.isTouchedAndEmpty('start_date') && this.isValueSet('duration')) {
+      // force start date derivation
+      this.markUntouched('start_date');
+      this.markTouched('duration');
+    } else if (this.isValueSet('start_date')) {
+      this.markUntouched('duration');
+    }
+  }
+
+  private untouchFieldsWhenDurationIsEdited():void {
+    if (this.isValueSet('start_date')) {
+      this.markUntouched('due_date');
+    } else if (this.isValueSet('due_date')) {
+      this.markUntouched('start_date');
+    }
   }
 }
