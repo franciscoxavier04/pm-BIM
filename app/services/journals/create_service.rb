@@ -63,19 +63,18 @@ module Journals
     private
 
     # If the journalizing happens within the configured aggregation time, is carried out by the same user, has an
-    # identical cause and only the predecessor or the journal to be created has notes, the changes are aggregated.
+    # identical cause, only the predecessor or the journal to be created has notes, and the journal is not restricted;
+    # the changes are aggregated.
     # Instead of removing the predecessor, return it here so that it can be stripped in the journal creating
     # SQL to than be refilled. That way, references to the journal, including ones users have, are kept intact.
-    def aggregatable_predecessor(notes, cause)
+    def aggregatable_predecessor(notes, restricted, cause)
       predecessor = journable.last_journal
 
-      if aggregatable?(predecessor, notes, cause)
-        predecessor
-      end
+      predecessor if aggregatable?(predecessor, notes, restricted, cause)
     end
 
     def create_journal(notes, restricted, cause)
-      predecessor = aggregatable_predecessor(notes, cause)
+      predecessor = aggregatable_predecessor(notes, restricted, cause)
 
       log_journal_creation(predecessor)
 
@@ -883,13 +882,14 @@ module Journals
       journable.journals.reload if journable.journals.loaded?
     end
 
-    def aggregatable?(predecessor, notes, cause)
+    def aggregatable?(predecessor, notes, restricted, cause)
       predecessor.present? &&
         aggregation_active? &&
         within_aggregation_time?(predecessor) &&
         same_user?(predecessor) &&
         same_cause?(predecessor, cause) &&
-        only_one_note(predecessor, notes)
+        only_one_note(predecessor, notes) &&
+        unrestricted_journal?(restricted)
     end
 
     def aggregation_active?
@@ -904,6 +904,10 @@ module Journals
       predecessor.notes.empty? || notes.empty?
     end
 
+    def unrestricted_journal?(restricted)
+      !restricted
+    end
+
     def same_user?(predecessor)
       predecessor.user_id == user.id
     end
@@ -914,9 +918,9 @@ module Journals
 
     def log_journal_creation(predecessor)
       if predecessor
-        Rails.logger.debug { "Aggregating journal #{predecessor.id} for #{journable_type} ##{journable.id}" }
+        Rails.logger.debug { "[#{self.class.name}] Aggregating journal #{predecessor.id} for #{journable_type} ##{journable.id}" }
       else
-        Rails.logger.debug { "Inserting new journal for #{journable_type} ##{journable.id}" }
+        Rails.logger.debug { "[#{self.class.name}] Inserting new journal for #{journable_type} ##{journable.id}" }
       end
     end
 
