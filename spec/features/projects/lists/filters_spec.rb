@@ -499,11 +499,12 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     it "displays the visible project members as available options" do
       load_and_open_filters admin
 
-      projects_page.expect_autocomplete_options_for(
-        user_cf,
-        [{ name: some_user.name, email: some_user.mail },
-         { name: manager.name, email: manager.mail }]
-      )
+      expected_options = [
+        { name: some_user.name, email: some_user.mail },
+        { name: manager.name, email: manager.mail }
+      ]
+
+      projects_page.expect_user_autocomplete_options_for(user_cf, expected_options)
     end
   end
 

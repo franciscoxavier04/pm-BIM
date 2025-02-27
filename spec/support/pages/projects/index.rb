@@ -299,13 +299,15 @@ module Pages
         end
       end
 
-      def autocomplete_options_for(custom_field)
+      def expect_user_autocomplete_options_for(custom_field, expected_options)
         selected_filter = select_filter(custom_field.column_name, custom_field.name)
 
         within(selected_filter) do
           find('[data-filter-autocomplete="true"]').click
         end
-        visible_user_auto_completer_options
+        options = visible_user_auto_completer_options
+
+        expect(options).to eq(expected_options)
       end
 
       def apply_operator(name, human_operator)
