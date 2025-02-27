@@ -126,7 +126,7 @@ module WorkPackages
       end
 
       def predecessor_relations
-        @predecessor_relations ||= @work_package.follows_relations
+        @predecessor_relations ||= Relation.used_for_scheduling_of(@work_package)
       end
 
       def predecessor_work_packages

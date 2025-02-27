@@ -95,7 +95,7 @@ class Relation < ApplicationRecord
 
   include ::Scopes::Scoped
 
-  scopes :follows_non_manual_ancestors,
+  scopes :used_for_scheduling_of,
          :types,
          :visible
 
