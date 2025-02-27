@@ -32,18 +32,25 @@ require "rails_helper"
 
 RSpec.describe WorkPackageRelationsTab::IndexComponent, type: :component do
   shared_let(:user) { create(:admin) }
-  # shared_let(:work_package) { create(:work_package) }
+  shared_let(:work_package) { create(:work_package) }
 
-  let(:work_package) { build_stubbed(:work_package) }
+  # let(:work_package) { build_stubbed(:work_package) }
 
-  let!(:predecessor1) { build_stubbed(:work_package) }
-  let!(:relation1) do
-    build_stubbed(:relation, from: work_package,
-                             to: predecessor1,
-                             relation_type: "follows")
-  end
+  # let!(:predecessor1) { build_stubbed(:work_package) }
+  # let!(:relation1) do
+  #  build_stubbed(:relation, from: work_package,
+  #                           to: predecessor1,
+  #                           relation_type: "follows")
+  # end
 
   current_user { user }
+
+  class CapybaraSnapshotSerializer
+    def dump(doc)
+      all_nodes = doc.all("//*")
+      all_nodes.ai(plain: true, indent: 2)
+    end
+  end
 
   class HtmlSnapshotSerializer
     # @param [Nokogiri::HTML4::DocumentFragment] doc The value to serialize.
@@ -92,11 +99,12 @@ RSpec.describe WorkPackageRelationsTab::IndexComponent, type: :component do
 
   def render_component(**params)
     render_inline(described_class.new(work_package:, **params))
+    page
   end
 
   context "with follows relations" do
     it "renders the component" do
-      expect(render_component).to match_snapshot("component", snapshot_serializer: HtmlSnapshotSerializer)
+      expect(render_component).to match_snapshot("component", snapshot_serializer: CapybaraSnapshotSerializer)
     end
 
     # it "renders a title link" do
