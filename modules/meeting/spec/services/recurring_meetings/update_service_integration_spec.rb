@@ -230,6 +230,24 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
       end
     end
 
+    context "when changing interval to 2, so that previous occurrences overlap" do
+      let(:params) do
+        {
+          interval: 2
+        }
+      end
+
+      it "succeeds" do
+        expect(service_result).to be_success
+
+        # Verify each scheduled meeting is moved to weekly intervals
+        scheduled_meetings.each_with_index do |meeting, index|
+          meeting.reload
+          expect(meeting.start_time).to eq(Time.zone.today + ((index + 1) * 2).days + 10.hours)
+        end
+      end
+    end
+
     context "when changing end_date to before the last scheduled meeting" do
       let(:params) do
         {

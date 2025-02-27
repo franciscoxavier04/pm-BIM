@@ -107,11 +107,12 @@ module RecurringMeetings
       next_occurrences = recurring_meeting.scheduled_occurrences(limit: future_meetings.count)
 
       # Update each meeting's timing to match the new schedule
-      future_meetings.each_with_index do |scheduled, index|
-        next_time = next_occurrences[index]&.to_time
+      # Wrap in transaction to allow deferrable unique constraint to work
+      Meeting.transaction do
+        future_meetings.each_with_index do |scheduled, index|
+          next_time = next_occurrences[index]&.to_time
 
-        if next_time
-          Meeting.transaction do
+          if next_time
             scheduled.update_column(:start_time, next_time)
             scheduled.meeting.update_column(:start_time, next_time)
           end
