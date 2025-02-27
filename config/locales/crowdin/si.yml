@@ -27,13 +27,13 @@ si:
     work_packages:
       activity_tab:
         no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
+        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
         label_activity_show_all: "Show everything"
         label_activity_show_only_comments: "Show comments only"
         label_activity_show_only_changes: "Show changes only"
         label_sort_asc: "Newest at the bottom"
         label_sort_desc: "Newest on top"
-        label_type_to_comment: "Type here to comment"
+        label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
         changed_on: "changed on"
         created_on: "created this on"
@@ -128,9 +128,9 @@ si:
     sync_failed: "Failed to synchronize from LDAP: %{message}."
     back_to_index: "Click here to go back to the list of connection."
     technical_warning_html: |
-      මෙම LDAP ආකෘතියට ඔබගේ LDAP/Active Directory සැකසුම පිළිබඳ තාක්ෂණික දැනුම අවශ්ය වේ.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">සවිස්තර උපදෙස් සඳහා කරුණාකර අපගේ ලියකියවිලි වෙත පිවිසෙන්න</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: LDAP සම්බන්ධතාවයේ අත්තනෝමතික නම
       host: LDAP ධාරක නම හෝ IP ලිපිනය
@@ -138,9 +138,9 @@ si:
       generic_map: OpenProject `%{attribute}` ගුණාංගයට සිතියම් ගත කර ඇති LDAP හි ගුණාංග යතුර
       admin_map_html: "විකල්ප: LDAP හි ගුණාංග යතුර <strong>වර්තමාන නම්</strong> OpenProject පරිශීලකයා පරිපාලක සලකුණු කරයි. සැක සහිත විට හිස් තබන්න."
       system_user_dn_html: |
-        කියවීමට පමණක් ප්රවේශය සඳහා භාවිතා කරන පද්ධති පරිශීලකයාගේ ඩී. එන්.
-        <br/>
-        උදාහරණය: uid=openproject, ou=පද්ධතිය, dc=උදාහරණ, dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: පද්ධති පරිශීලකයාගේ බඳින්න මුරපදය ඇතුළත් කරන්න
       base_dn: |
         LDAP හි උප ගසෙහි මූලික ඩීඑන් ඇතුළත් කරන්න ඔබට OpenProject පරිශීලකයින් සහ කණ්ඩායම් සොයා ගැනීමට අවශ්යය.
@@ -179,7 +179,7 @@ si:
     tls_options:
       verify_peer: "Verify SSL certificate"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br/> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "If the LDAP server certificate is not in the trust sources of this system, you can add it manually here. Enter a PEM X509 certifiate string."
   forums:
     show:
@@ -229,6 +229,10 @@ si:
           item:
             title: This item doesn't have any hierarchy level below
             description: Add items to this list to create sub-items inside another one
+        delete_dialog:
+          title: "Delete custom field item"
+          heading: "Delete custom field item?"
+          description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
           label: "Item label"
           short: "Short name"
@@ -239,6 +243,8 @@ si:
           zero: no sub-items
           one: 1 sub-item
           other: "%{count} sub-items"
+    upsale:
+      custom_field_format_hierarchy: "Need a hierarchy in your custom fields for work packages?"
     text_add_new_custom_field: >
       ව්යාපෘතියකට නව අභිරුචි ක්ෂේත්ර එකතු කිරීම සඳහා ඔබ මුලින්ම මෙම ව්යාපෘතියට එකතු කිරීමට පෙර ඒවා නිර්මාණය කළ යුතුය.
     is_enabled_globally: "ගෝලීයව සබල කර ඇත"
@@ -247,6 +253,7 @@ si:
     confirm_destroy_option: "විකල්පයක් මකා දැමීමෙන් එහි සියලු සිදුවීම් මකා දමනු ඇත (උදා: වැඩ පැකේජවල). ඔබට එය මකා දැමීමට අවශ්ය බව ඔබට විශ්වාසද?"
     reorder_alphabetical: "Reorder values alphabetically"
     reorder_confirmation: "Warning: The current order of available values will be lost. Continue?"
+    placeholder_version_select: "Work package or project selection is required first"
     instructions:
       is_required: "Mark the custom field as required. This will make it mandatory to fill in the field when creating new or updating existing resources."
       is_required_for_project: "Check to enable this attribute and make it required in all projects. It cannot be deactived for individual projects."
@@ -285,6 +292,7 @@ si:
       label: "Label"
       short: "Short name"
       parent: "Parent"
+      blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
     overwritten_tabs:
@@ -338,9 +346,13 @@ si:
         placeholder: "New project list"
       delete_modal:
         title: "Delete project list"
+        heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       change_identifier: Change identifier
+      actions:
+        label_enable_all: "Enable all"
+        label_disable_all: "Disable all"
       activities:
         no_results_title_text: දැනට කිසිදු ක්රියාකාරකමක් නොමැත.
       forums:
@@ -351,18 +363,26 @@ si:
         no_results_content_text: නව වැඩ පැකේජ ප්රවර්ගයක් සාදන්න
       custom_fields:
         no_results_title_text: දැනට පවතින අභිරුචි ක්ෂේත්ර නොමැත.
+      life_cycle:
+        header:
+          title: "Project lifecycle"
+          description_html: 'These project stages and gates in the project lifecycle will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> and are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. You can enable or disable individual attributes.'
+        non_defined: "Neither stages nor gates are currently defined."
+        section_header: "Stages and gates"
+        step:
+          use_in_project: "Use %{step} in this project"
+        filter:
+          label: "Search project stage or gate"
       project_custom_fields:
         header:
           title: "Project attributes"
-          description: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
         filter:
           label: "Search project attribute"
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
           remove_from_project: "Remove from project"
-          label_enable_all: "Enable all"
-          label_disable_all: "Disable all"
         is_required_blank_slate:
           heading: Required in all projects
           description: This project attribute is activated in all projects since the "Required in all projects" option is checked. It cannot be deactivated for individual projects.
@@ -375,6 +395,12 @@ si:
         no_results_content_text: නව අනුවාදයක් සාදන්න
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
+  project_stage:
+    working_days_count:
+      one: "Duration: %{count} working day"
+      other: "Duration: %{count} working days"
   lists:
     create:
       success: "The modified list has been saved as a new list"
@@ -452,6 +478,7 @@ si:
   my:
     access_token:
       create_dialog:
+        title: Token generated
         header: The %{type} token has been generated
         warning: Note that this is the only time you will see this token, make sure to copy it now.
       errors:
@@ -495,8 +522,12 @@ si:
     groups:
       member_in_these_groups: "This user is currently a member of the following groups:"
       no_results_title_text: This user is currently not a member in any group.
+      summary_with_more: Member of %{names} and %{count_link}.
+      more: "%{count} more"
+      summary: Member of %{names}.
     memberships:
       no_results_title_text: මෙම පරිශීලකයා දැනට ව්යාපෘතියක සාමාජිකයෙකු නොවේ.
+    open_profile: "Open profile"
   page:
     text: "පෙළ"
   placeholder_users:
@@ -546,10 +577,10 @@ si:
         package is automatically set to this value when this status is selected.
         Ignored in work-based mode.
       status_readonly_html: |
-        මෙම තත්වය සමඟ වැඩ පැකේජ කියවීමට පමණක් සලකුණු කිරීමට මෙම විකල්පය පරීක්ෂා කරන්න.
-        තත්ත්වය හැරුණු විට කිසිදු ගුණාංගයක් වෙනස් කළ නොහැක.
-        <br/>
-        <strong>සටහන</strong>: උරුම වූ වටිනාකම් (උදා: දරුවන් හෝ සබඳතා වලින්) තවමත් අදාළ වේ.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: දැනට වැඩ පැකේජ තත්වයන් නොමැත.
       no_results_content_text: නව තත්වයක් එකතුකරන්න
@@ -567,18 +598,35 @@ si:
       no_results_title_text: දැනට වර්ග නොමැත.
       no_results_content_text: නව වර්ගයක් සාදන්න
     edit:
-      settings: "සැකසුම්"
-      form_configuration: "ආකෘති වින්යාසය"
+      form_configuration:
+        tab: "Form configuration"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
-      projects: "ව්‍යාපෘති"
-      enabled_projects: "සබල කළ ව්‍යාපෘති"
-      edit_query: "වගුව සංස්කරණය"
-      query_group_placeholder: "මේසයට නමක් දෙන්න"
-      reset: "පැහැර හැරීම් නැවත සකසන්න"
-      type_color_text: |
-        The selected color distinguishes different types
-        in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      projects:
+        tab: "Projects"
+        enabled_projects: "Enabled projects"
+      settings:
+        tab: "Settings"
+        type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
+      subject_configuration:
+        tab: "Subject configuration"
+        manually_editable_subjects:
+          label: "Manually editable subjects"
+          caption: "Users can manually enter and edit work package subjects without restrictions."
+        automatically_generated_subjects:
+          label: "Automatically generated subjects"
+          caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
+        pattern:
+          label: "Subject pattern"
+          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -616,6 +664,7 @@ si:
         title: "Workflow missing for work package sharing"
         message: "No workflow is configured for the 'Work package editor' role. Without a workflow, the shared with user cannot alter the status of the work package. Workflows can be copied. Select a source type (e.g. 'Task') and source role (e.g. 'Member'). Then select the target types. To start with, you could select all the types as targets. Finally, select the 'Work package editor' role as the target and press 'Copy'. After having thus created the defaults, fine tune the workflows as you do for every other role."
         link_message: "Configure the workflows in the administration."
+    templated_subject_hint: Automatically generated through type %{type}
     summary:
       reports:
         category:
@@ -632,6 +681,76 @@ si:
           no_results_title_text: දැනට වර්ග නොමැත.
         version:
           no_results_title_text: දැනට කිසිදු අනුවාදයක් නොමැත.
+  work_package_relations_tab:
+    index:
+      action_bar_title: "Add relations to other work packages to create a link between them."
+      no_results_title_text: There are currently no relations available.
+      blankslate_heading: "No relations"
+      blankslate_description: "This work package does not have any relations yet."
+    label_add_child_button: "Child"
+    label_add_x: "Add %{x}"
+    label_edit_x: "Edit %{x}"
+    label_add_description: "Add description"
+    lag:
+      subject: "Lag"
+      caption: "The minimum number of working days to keep in between the two work packages."
+    relations:
+      label_new_child_created: "New work package created and added as a child"
+      label_relates_singular: "related to"
+      label_relates_plural: "related to"
+      label_relates_to_singular: "related to"
+      label_relates_to_plural: "related to"
+      relates_description: "Creates a visible link between the two work packages with no additional effect"
+      relates_to_description: "Creates a visible link between the two work packages with no additional effect"
+      label_precedes_singular: "successor (after)"
+      label_precedes_plural: "successors (after)"
+      precedes_description: "The related work package necessarily needs to start after this one finishes"
+      label_follows_singular: "predecessor (before)"
+      label_follows_plural: "predecessors (before)"
+      follows_description: "The related work package necessarily needs to finish before this one can start"
+      label_child_singular: "child"
+      label_child_plural: "children"
+      new_child: "New child"
+      new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
+      existing_child: "Existing child"
+      child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_blocks_singular: "blocks"
+      label_blocks_plural: "blocks"
+      blocks_description: "The related work package cannot be closed until this one is closed first"
+      label_blocked_singular: "blocked by"
+      label_blocked_plural: "blocked by"
+      label_blocked_by_singular: "blocked by"
+      label_blocked__by_plural: "blocked by"
+      blocked_description: "This work package cannot be closed until the related one is closed first"
+      blocked_by_description: "This work package cannot be closed until the related one is closed first"
+      label_duplicates_singular: "duplicates"
+      label_duplicates_plural: "duplicates"
+      duplicates_description: "This is a copy of the related work package"
+      label_duplicated_singular: "duplicated by"
+      label_duplicated_plural: "duplicated by"
+      label_duplicated_by_singular: "duplicated by"
+      label_duplicated_by_plural: "duplicated by"
+      duplicated_by_description: "The related work package is a copy of this"
+      duplicated_description: "The related work package is a copy of this"
+      label_includes_singular: "includes"
+      label_includes_plural: "includes"
+      includes_description: "Marks the related work package as including this one with no additional effect"
+      label_partof_singular: "part of"
+      label_partof_plural: "part of"
+      label_part_of_singular: "part of"
+      label_part_of_plural: "part of"
+      partof_description: "Marks the related work package as being part of this one with no additional effect"
+      part_of_description: "Marks the related work package as being part of this one with no additional effect"
+      label_requires_singular: "requires"
+      label_requires_plural: "requires"
+      requires_description: "Marks the related work package as a requirement to this one"
+      label_required_singular: "required by"
+      label_required_plural: "required by"
+      required_description: "Marks this work package as being a requirement to the related one"
+      label_parent_singular: "parent"
+      label_parent_plural: "parent"
+      ghost_relation_title: "Related work package"
+      ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: ඇරයුම
   account:
     delete: "ගිණුම මකන්න"
@@ -671,6 +790,7 @@ si:
       attachment:
         attachment_content: "ඇමුණුමක් අන්තර්ගතය"
         attachment_file_name: "ඇමුණුම් ගොනු නම"
+        content_type: "Content-type"
         downloads: "බාගැනීම්"
         file: "ගොනුව"
         filename: "ගොනුව"
@@ -678,10 +798,10 @@ si:
       attribute_help_text:
         attribute_name: "ගුණාංගය"
         help_text: "උපකාරක පෙළ"
+      capability:
+        context: "Context"
       changeset:
         repository: "ගබඩාව"
-      color:
-        hexcode: "Hex කේතය"
       comment:
         commented: "අදහස් දැක්වීය" #an object that this comment belongs to
       custom_action:
@@ -696,6 +816,7 @@ si:
         is_required: "අවශ්‍යයි"
         max_length: "උපරිම දිග"
         min_length: "අවම දිග"
+        content_right_to_left: "Right-to-Left content"
         multi_value: "බහු-තේරීමට ඉඩ දෙන්න"
         possible_values: "හැකි අගයන්"
         regexp: "නිතිපතා ප්රකාශනය"
@@ -713,7 +834,10 @@ si:
         client_credentials_user_id: "සේවාලාභියා අක්තපත්ර පරිශීලක හැඳුනුම්පත"
         scopes: "විෂය පථ"
         confidential: "රහස්ය"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "එතැන් සිට වලංගු වේ"
         subscriber: "ග්රාහකයා"
         encoded_token: "ව්යවසාය සහාය ටෝකනය"
@@ -725,12 +849,15 @@ si:
         widgets: "විජට්"
       journal:
         notes: "සටහන්"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "ගිණුම"
         attr_firstname: "පළමු නාමය ලක්ෂණය"
         attr_lastname: "අවසාන නාමය ලක්ෂණය"
         attr_login: "පරිශීලක නාමය ගුණාංග"
         attr_mail: "ඊ-තැපැල් ගුණාංග"
+        filter_string: "Filter string"
+        admin: "Administrator"
         base_dn: "ඩී. එන් මූලික"
         host: "සත්කාරක"
         onthefly: "Automatic user creation"
@@ -738,10 +865,11 @@ si:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "භූමිකාවන්"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "සේවාලාභියා හැඳුනුම්පත"
-      planning_element_type_color:
-        hexcode: Hex කේතය
       project:
         active_value:
           true: "unarchived"
@@ -754,6 +882,7 @@ si:
           true: "public"
           false: "private"
         queries: "විමසුම්"
+        enabled_modules: "Enabled modules"
         status_code: "ව්යාපෘති තත්ත්වය"
         description: "විස්තරය"
         status_explanation: "Project status description"
@@ -774,17 +903,47 @@ si:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
+      project/life_cycle_step_definition:
+        name: "Name"
+        color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "තීරු"
         relations_to_type_column: "සබඳතා %{type}"
         relations_of_type_column: "%{type} සබඳතා"
         group_by: "කණ්ඩායම් ප්රතිඵල විසින්"
+        sort_by: "Sort results by"
         filters: "පෙරහන්"
         timeline_labels: "කාල නියමය ලේබල්"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
-        from: "වැඩ පැකේජය"
+        from: "Related work package"
         to: "අදාළ වැඩ පැකේජය"
+        relation_type: "Relation type"
+      reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
+        remind_at_date: "Date"
+        remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "සැ. නි."
       role:
@@ -794,6 +953,9 @@ si:
         is_readonly: "වැඩ පැකේජය කියවීමට-පමණි"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "ක්‍රියාකාරකම"
         hours: "පැය"
@@ -807,6 +969,7 @@ si:
         is_default: "පෙරනිමියෙන් නව ව්යාපෘති සඳහා සක්රිය"
         is_milestone: "සන්ධිස්ථානයක්"
         color: "වර්ණ"
+        patterns: "Patterns"
       user:
         admin: "පරිපාලක"
         auth_source: "Authentication source"
@@ -816,6 +979,10 @@ si:
         force_password_change: "ඊළඟ පිවිසුම මත මුරපදය වෙනස් කිරීම බලාත්මක කරන්න"
         language: " "
         last_login_on: "අවසාන පිවිසුම"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "නව මුරපදය"
         password_confirmation: "තහවුරු කිරීම"
         consented_at: "එකඟ විය"
@@ -827,6 +994,8 @@ si:
         warn_on_leaving_unsaved: "නොගැලවූ වෙනස්කම් සහිත වැඩ පැකේජයකින් පිටවන විට මට අනතුරු අඟවන්න"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "අවසන් දිනය"
         sharing: "බෙදාගැනීම"
@@ -873,6 +1042,7 @@ si:
       messages:
         accepted: "පිළිගත යුතුය."
         after: "must be after %{date}."
+        after_today: "must be in the future."
         after_or_equal_to: "%{date}ට පසුව හෝ සමාන විය යුතුය."
         before: "must be before %{date}."
         before_or_equal_to: "%{date}ට පෙර හෝ සමාන විය යුතුය."
@@ -919,6 +1089,7 @@ si:
         not_an_integer: "පූර්ණ සංඛ්යාලයක් නොවේ."
         not_an_iso_date: "වලංගු දිනයක් නොවේ. අවශ්ය ආකෘතිය: YYY-MM-DD."
         not_same_project: "එකම ව්යාපෘතියට අයත් නොවේ."
+        datetime_must_be_in_future: "must be in the future."
         odd: "අමුතු විය යුතුය."
         regex_match_failed: "does not match the regular expression %{expression}."
         regex_invalid: "ආශ්රිත නිත්ය ප්රකාශනය සමඟ වලංගු කළ නොහැකි විය."
@@ -1028,6 +1199,42 @@ si:
           attributes:
             project_ids:
               blank: "Please select a project."
+        project/life_cycle_step_definition:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "must be either Project::StageDefinition or Project::GateDefinition"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::GateDefinition"
+        project/stage_definition:
+          attributes:
+            type:
+              type_and_class_name_mismatch: "must be a Project::StageDefinition"
+        project/life_cycle_step:
+          attributes:
+            type:
+              must_be_a_stage_or_gate: "must be either Project::Stage or Project::Gate"
+              must_be_a_stage: "must be a Project::Stage"
+              must_be_a_gate: "must be a Project::Gate"
+              type_and_class_name_mismatch: "must match the instantiated class name"
+        project/gate:
+          attributes:
+            base:
+              end_date_not_allowed: "Cannot assign end date to a Project::Gate"
+            type:
+              type_and_class_name_mismatch: "must be a Project::Gate"
+            date:
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+        project/stage:
+          attributes:
+            date_range:
+              start_date_must_be_before_end_date: "start date must be before the end date."
+              non_continuous_dates: "can't be earlier than the previous %{step}'s end date."
+              incomplete: "is incomplete."
+            type:
+              type_and_class_name_mismatch: "must be a Project::Stage"
         query:
           attributes:
             project:
@@ -1066,12 +1273,16 @@ si:
           typed_dag:
             circular_dependency: "සම්බන්ධතාවය සබඳතා කවයක් නිර්මාණය කරයි."
           attributes:
-            to:
-              error_not_found: "සොයාගත නොහැකි හෝ දෘශ්යමාන නොවන `to` තත්ත්වය තුළ වැඩ පැකේජය"
-              error_readonly: "පවතින සම්බන්ධතාවයක `to` සබැඳිය නොසැලකිය හැකි ය"
-            from:
-              error_not_found: "සොයාගත නොහැකි හෝ දෘශ්යමාන නොවන `from` තත්ත්වය තුළ වැඩ පැකේජය"
-              error_readonly: "පවතින සම්බන්ධතාවයක `from` සබැඳිය නොසැලකිය හැකි ය"
+            to_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            from_id:
+              error_not_found: "not found or not visible."
+              error_readonly: "cannot be changed for existing relations."
+            lag:
+              greater_than_or_equal_to:
+                zero: "cannot be negative."
+              less_than_or_equal_to: "is too high."
         repository:
           not_available: "SCM වෙළෙන්දා ලබා ගත නොහැක"
           not_whitelisted: "වින්යාසය මගින් අවසර නැත."
@@ -1123,6 +1334,10 @@ si:
         work_package:
           is_not_a_valid_target_for_time_entries: "වැඩ පැකේජය #%{id} යනු කාල සටහන් නැවත පැවරීම සඳහා වලංගු ඉලක්කයක් නොවේ."
           attributes:
+            id:
+              format: "%{message}"
+              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              blank: "ID can't be blank."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -1237,6 +1452,9 @@ si:
       forum: "සංසදය"
       global_role: "Global role"
       group: "කණ්ඩායම"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "සාමාජික"
       news: "පුවත්"
       notification:
@@ -1244,10 +1462,13 @@ si:
         other: "Notifications"
       placeholder_user: "Placeholder user"
       project: "ව්යාපෘති"
+      project/gate_definition: "Gate"
+      project/stage_definition: "Stage"
       project_query:
         one: "Project list"
         other: "Project lists"
       query: "අභිරුචි විමසුම"
+      reminder: "Reminder"
       role:
         one: "කාර්යභාරය"
         other: "භූමිකාවන්"
@@ -1312,18 +1533,25 @@ si:
     assigned_to: "අස්ගිනී"
     assignee: "අස්ගිනී"
     attachments: "ඇමුණුම්"
+    actor: "Actor"
+    action: "Action"
     author: "කර්තෘ"
+    avatar: "Avatar"
     base: "සාමාන්ය දෝෂය:"
+    body: "Body"
     blocks_ids: "අවහිර කරන ලද වැඩ පැකේජ වල IDS"
     category: "ප්රවර්ගය"
     comment: "අදහස් දක්වන්න"
     comments: "අදහස් දක්වන්න"
     content: "අන්තර්ගතය"
     color: "වර්ණ"
+    creator: "Creator"
     created_at: "මත නිර්මාණය"
+    custom_field: "Custom field"
     custom_options: "හැකි අගයන්"
     custom_values: "අභිරුචි ක්ෂේත්ර"
     date: "දිනය"
+    dates_interval: "Date range"
     default_columns: "පෙරනිමි තීරු"
     description: "විස්තරය"
     derived_due_date: "Derived finish date"
@@ -1333,38 +1561,63 @@ si:
     due_date: "අවසන් දිනය"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "කල් ඉකුත්"
     firstname: "මුල් නම"
+    filter: "Filter"
     group: "කණ්ඩායම"
     groups: "කණ්ඩායම්"
+    hexcode: "Hex code"
     id: "හැඳු."
     is_default: "පෙරනිමි අගය"
     is_for_all: "සියලුම ව්යාපෘති සඳහා"
     public: "පොදු"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "වැඩ පැකේජය"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "අවසාන නම"
     login: "පරිශීලක නාමය"
     mail: "ඊ-තැපැල්"
     name: "නම"
+    note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "මුරපදය"
     priority: "ප්රමුඛතාව"
     project: "ව්යාපෘති"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "වගවීම"
+    required: "Required"
+    recipient: "Recipient"
     role: "කාර්යභාරය"
     roles: "භූමිකාවන්"
+    search: "Search"
     start_date: "ආරම්භක දිනය"
     status: "තත්වය"
+    state: "State"
     subject: "විෂය"
+    slug: "Slug"
     summary: "සාරාංශය"
+    text: "Text"
     title: "මාතෘකාව"
     type: "වර්ගය"
+    typeahead: "Autocomplete"
     updated_at: "යාවත්කාලීන කරන ලදි"
     updated_on: "යාවත්කාලීන කරන ලදි"
     uploader: "උඩුගත කරන්නා"
     user: "පරිශීලක"
+    username: "Username"
+    unit: "Unit"
     value: "අගය"
+    values: "Values"
     version: "අනුවාදය"
+    visible: "Visible"
     work_package: "වැඩ පැකේජය"
   backup:
     failed: "Backup failed"
@@ -1423,8 +1676,9 @@ si:
   button_copy_and_follow: "පිටපත් කර අනුගමනය කරන්න"
   button_create: "සාදන්න"
   button_create_and_continue: "සාදන්න සහ ඉදිරියට යන්න"
-  button_delete: "මකන්න"
   button_decline: "පරිහානිය"
+  button_delete: "මකන්න"
+  button_delete_permanently: "Delete permanently"
   button_delete_watcher: "මුරකරු මකන්න %{name}"
   button_download: "බාගත කරන්න"
   button_duplicate: "අනුපිටපත්"
@@ -1443,6 +1697,7 @@ si:
   button_print: "මුද්රණය"
   button_quote: "උපුටා"
   button_remove: ඉවත් කරන්න
+  button_remove_reminder: "Remove reminder"
   button_rename: "නැවත නම් කරන්න"
   button_replace: "ප්රතිස්ථාපනය කරන්න"
   button_revoke: "අවලංගු"
@@ -1453,6 +1708,7 @@ si:
   button_save_as: "ලෙස සුරකින්න"
   button_apply_changes: "Apply changes"
   button_save_back: "සුරකින්න සහ නැවත"
+  button_set_reminder: "Set reminder"
   button_show: "පෙන්වන්න"
   button_sort: "වර්ග"
   button_submit: "ඉදිරිපත් කරන්න"
@@ -1625,6 +1881,9 @@ si:
       hour:
         one: "පැය"
         other: "පැය"
+      day:
+        one: "day"
+        other: "days"
   description_active: "ක්රියාකාරී?"
   description_attachment_toggle: "ඇමුණුම් පෙන්වන්න/සඟවන්න"
   description_autocomplete: >
@@ -1658,15 +1917,21 @@ si:
   direction: LTR
   ee:
     upsale:
+      title: "Enterprise add-on"
+      link_title: "More information"
+      automatic_subject_generation:
+        description: "Create automatically generated subjects using referenced attributes and text."
+      customize_life_cycle:
+        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
       form_configuration:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "නව ගුණාංග කණ්ඩායම් එකතු කරන්න"
         rename_groups: "ගුණාංග කණ්ඩායම් නැවත නම් කරන්න"
-      project_filters:
-        description_html: "Filtering and sorting on custom fields is an Enterprise edition add-on."
   enumeration_activities: "කාලය සොයා ගැනීමේ ක්රියාකාරකම්"
   enumeration_work_package_priorities: "වැඩ පැකේජ ප්රමුඛතා"
   enumeration_reported_project_statuses: "වාර්තා කරන ලද ව්යාපෘති තත්ත්වය"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "පරිශීලක '%{value}' සඳහා තනි සංඥා (SSO) අසමත් විය"
   error_can_not_archive_project: "මෙම ව්යාපෘතිය සංරක්ෂණය කළ නොහැක: %{errors}"
   error_can_not_delete_entry: "ප්රවේශය මකා දැමිය නොහැක"
@@ -1696,6 +1961,7 @@ si:
   error_pdf_export_too_many_columns: "PDF අපනයනය සඳහා තෝරාගෙන ඇති තීරු බොහොමයක්. කරුණාකර තීරු ගණන අඩු කරන්න."
   error_pdf_failed_to_export: "PDF අපනයනය සුරැකිය නොහැකි විය: %{error}"
   error_token_authenticity: "හරස් අඩවි ඉල්ලීම් ව්යාජ ටෝකනය සත්යාපනය කිරීමට නොහැකි විය. ඔබ බහු බ්රව්සර් හෝ ටැබ් මත දත්ත ඉදිරිපත් කිරීමට උත්සාහ කළාද? කරුණාකර සියලුම ටැබ් වසා නැවත උත්සාහ කරන්න."
+  error_reminder_not_found: "The reminder was not found or was already notified about."
   error_work_package_not_found_in_project: "වැඩ පැකේජය සොයාගත නොහැකි හෝ මෙම ව්යාපෘතියට අයත් නොවේ"
   error_work_package_id_not_found: "The work package was not found."
   error_must_be_project_member: "ව්යාපෘති සාමාජිකයෙකු විය යුතුය"
@@ -1755,6 +2021,7 @@ si:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -1823,6 +2090,31 @@ si:
     units:
       hours: h
       days: d
+  pdf_generator:
+    page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
+    dialog:
+      title: Generate PDF
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
+      footer_center:
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
+      hyphenation:
+        label: Hyphenation
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "ලබා ගත හැකි PDftotext (විකල්ප)"
@@ -1924,8 +2216,6 @@ si:
       api_and_webhooks: "API and webhooks"
     quick_add:
       label: "Open quick add menu"
-    breadcrumb:
-      nested_element: "%{section_header}: <b>%{title}</b>"
   my_account:
     access_tokens:
       no_results:
@@ -1972,6 +2262,7 @@ si:
       responsible: "වගවීම"
       shared: "Shared"
       watched: "මුරකරු"
+      reminder: "Reminder"
     facets:
       unread: "Unread"
       unread_title: "Show unread"
@@ -2005,6 +2296,7 @@ si:
   label_add_subtask: "උප කාර්යය එකතු කරන්න"
   label_added: "එකතු"
   label_added_by: "Added by %{author}"
+  label_added_by_on: "Added by %{author} on %{date}"
   label_added_time_by: "%{author} %{age} පෙර විසින් එකතු කරන ලදි"
   label_additional_workflow_transitions_for_assignee: "පරිශීලකයා වන විට අතිරේක සංක්රමණයන් අවසර දෙනු ලැබේ"
   label_additional_workflow_transitions_for_author: "පරිශීලකයා කතුවරයා වන විට අතිරේක සංක්රමණයන් අවසර දෙනු ලැබේ"
@@ -2139,13 +2431,16 @@ si:
   label_default: "පෙරනිමි"
   label_delete_user: "පරිශීලක මකන්න"
   label_delete_project: "ව්යාපෘතිය මකන්න"
+  label_delete: "Delete"
   label_deleted: "මකා දැමූ"
   label_deleted_custom_field: "(මකා දමන ලද අභිරුචි ක්ෂේත්රය)"
+  label_deleted_custom_item: "(deleted item)"
   label_deleted_custom_option: "(deleted option)"
   label_empty_element: "(හිස්)"
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "බැස යාම"
   label_details: "විස්තර"
+  label_defaults: "Defaults"
   label_development_roadmap: "සංවර්ධන මාර්ග සිතියම"
   label_diff: "ඩිෆ්"
   label_diff_inline: "පේළිගත"
@@ -2177,10 +2472,10 @@ si:
   label_enterprise_active_users: "%{current}/%{limit} වෙන් කර ඇති සක්රීය පරිශීලකයින්"
   label_enterprise_edition: "Enterprise edition"
   label_enterprise_support: "Enterprise support"
-  label_enterprise_addon: "Enterprise add-on"
   label_environment: "පරිසරය"
   label_estimates_and_progress: "Estimates and progress"
   label_equals: "වේ"
+  label_equals_with_descendants: "is any with descendants"
   label_everywhere: "සෑම තැනකම"
   label_example: "උදාහරණය"
   label_experimental: "Experimental"
@@ -2202,6 +2497,7 @@ si:
   label_filter: "පෙරහන්"
   label_filter_add: "පෙරහන් එකතු කරන්න"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "පෙරහන්"
   label_filters_toggle: "පෙරහන් පෙන්වන්න/සඟවන්න"
   label_float: "පාවෙන"
@@ -2361,6 +2657,7 @@ si:
   label_none_parentheses: "(කිසිවක් නැත)"
   label_not_contains: "අඩංගු නොවේ"
   label_not_equals: "නැත"
+  label_life_cycle_step_plural: "Project lifecycle"
   label_on: "මත"
   label_operator_all: "is not empty"
   label_operator_none: "is empty"
@@ -2422,6 +2719,7 @@ si:
   label_project_new: "නව ව්යාපෘතිය"
   label_project_plural: "ව්‍යාපෘති"
   label_project_list_plural: "Project lists"
+  label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
   label_project_settings: "ව්යාපෘති සැකසුම්"
@@ -2445,7 +2743,10 @@ si:
   label_related_work_packages: "අදාළ වැඩ පැකේජ"
   label_relates: "සම්බන්ධ"
   label_relates_to: "සම්බන්ධ"
+  label_relation: "Relation"
+  label_relation_actions: "Relation actions"
   label_relation_delete: "සම්බන්ධතාවය මකන්න"
+  label_relation_edit: "Edit relation"
   label_relation_new: "නව සම්බන්ධතාවය"
   label_release_notes: "සටහන් නිකුත් කිරීම"
   label_remaining_work: "Remaining work"
@@ -2460,6 +2761,7 @@ si:
   label_reporting: "වාර්තාකරණය"
   label_reporting_plural: "වාර්තා"
   label_repository: "ගබඩාව"
+  label_repository_remove: "Remove repository"
   label_repository_root: "ගබඩාව මූල"
   label_repository_plural: "ගබඩාවලදී"
   label_required: "අවශ්ය"
@@ -2475,6 +2777,7 @@ si:
   label_roadmap_overdue: "%{value} ප්රමාද"
   label_role_and_permissions: "භූමිකාවන් සහ අවසරයන්"
   label_role_new: "නව භූමිකාව"
+  label_role_grantable: "Grantable role"
   label_role_plural: "භූමිකාවන්"
   label_role_search: "නව සාමාජිකයින්ට කාර්යභාරය පැවරීම"
   label_scm: "SCM"
@@ -2522,6 +2825,7 @@ si:
   label_this_month: "මෙම මාසය"
   label_this_week: "මේ සතියේ"
   label_this_year: "මේ වසරේ"
+  label_time: "Time"
   label_time_entry_plural: "වැය කළ කාලය"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "මාතෘකාව"
@@ -2557,6 +2861,7 @@ si:
   label_user_settings: "පරිශීලක සැකසුම්"
   label_users_settings: "Users settings"
   label_version_new: "නව අනුවාදය"
+  label_version_edit: "Edit version"
   label_version_plural: "අනුවාද"
   label_version_sharing_descendants: "උප ව්යාපෘති සමඟ"
   label_version_sharing_hierarchy: "ව්යාපෘති ධූරාවලිය සමඟ"
@@ -2638,7 +2943,7 @@ si:
   label_global_role: "Global role"
   label_not_changeable: "(not changeable)"
   label_global: "Global"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "සාර්ව ක්රියාත්මක කිරීමේ දෝෂය %{macro_name}"
   macro_unavailable: "සාර්ව %{macro_name} පෙන්විය නොහැක."
   macros:
@@ -2694,8 +2999,13 @@ si:
         prefix: "Received because of the notification setting: %{reason}"
         date_alert_start_date: "Date alert"
         date_alert_due_date: "Date alert"
+        reminder: "Reminder"
       see_all: "See all"
       updated_at: "Updated at %{timestamp} by %{user}"
+    reminder_notifications:
+      subject: "Reminder: %{note}"
+      heading: "You have a new reminder"
+      note: "Note: “%{note}”"
     sharing:
       work_packages:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."
@@ -2854,6 +3164,7 @@ si:
   notice_bad_request: "නරක ඉල්ලීම."
   notice_not_authorized: "මෙම පිටුවට ප්රවේශ වීමට ඔබට අවසර නැත."
   notice_not_authorized_archived_project: "ඔබ ප්රවේශ වීමට උත්සාහ කරන ව්යාපෘතිය සංරක්ෂණය කර ඇත."
+  notice_requires_enterprise_token: "Enterprise token missing or doesn't allow access to this page."
   notice_password_confirmation_failed: "ඔබගේ මුරපදය නිවැරදි නොවේ. දිගටම කරගෙන යා නොහැක."
   notice_principals_found_multiple: "සොයාගෙන ඇත %{number} ප්රතිඵල. \n පළමු ප්රතිඵලය අවධානය යොමු කිරීමට ටැබ්."
   notice_principals_found_single: "එක් ප්රති result ලයක් තිබේ. \n එය අවධානය යොමු කිරීමට ටැබ්."
@@ -2862,6 +3173,7 @@ si:
   notice_successful_connection: "සාර්ථක සම්බන්ධතාවයක්."
   notice_successful_create: "සාර්ථක නිර්මාණය."
   notice_successful_delete: "සාර්ථක මකාදැමීම."
+  notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "සාර්ථක යාවත්කාලීන කිරීම."
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
@@ -2901,7 +3213,7 @@ si:
     text_getting_started_description: "Get a quick overview of project management and team collaboration with OpenProject. You can restart this video from the help menu."
     welcome: "Welcome to %{app_title}"
     select_language: "කරුණාකර ඔබේ භාෂාව තෝරන්න"
-  permission_add_work_package_notes: "සටහන් එකතු කරන්න"
+  permission_add_work_package_notes: "Add comments"
   permission_add_work_packages: "වැඩ පැකේජ එකතු කරන්න"
   permission_add_messages: "තැපැල් පණිවිඩ"
   permission_add_project: "Create projects"
@@ -2931,14 +3243,16 @@ si:
   permission_delete_timelines: "කාලනියමයන් මකන්න"
   permission_delete_wiki_pages: "විකි පිටු මකන්න"
   permission_delete_wiki_pages_attachments: "ඇමුණුම් මකන්න"
-  permission_edit_work_package_notes: "සටහන් සංස්කරණය කරන්න"
+  permission_edit_work_package_notes: "Moderate comments"
+  permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "වැඩ පැකේජ සංස්කරණය කරන්න"
   permission_edit_messages: "පණිවිඩ සංස්කරණය කරන්න"
-  permission_edit_own_work_package_notes: "තමන්ගේම සටහන් සංස්කරණය කරන්න"
+  permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "තමන්ගේම පණිවිඩ සංස්කරණය කරන්න"
   permission_edit_own_time_entries: "ම කාලය ලඝු-සටහන් සංස්කරණය"
   permission_edit_project: "ව්යාපෘතිය සංස්කරණය කරන්න"
   permission_edit_project_attributes: "Edit project attributes"
+  permission_edit_project_stages_and_gates: "Edit project stages and gates"
   permission_edit_reportings: "වාර්තා සංස්කරණය කරන්න"
   permission_edit_time_entries: "Edit time logs for other users"
   permission_edit_timelines: "කාලනියමයන් සංස්කරණය කරන්න"
@@ -2968,9 +3282,12 @@ si:
   permission_search_project: "Search project"
   permission_select_custom_fields: "Select custom fields"
   permission_select_project_custom_fields: "Select project attributes"
+  permission_select_project_life_cycle: "Select project stages and gates"
+  permission_select_project_life_cycle_explanation: "Activate/Deactivate the stages and gates in a project. Enables the user to select the lifecycle appropriate for the project as inactive stages and gates will not be visible in the project overview page nor the project list."
   permission_select_project_modules: "ව්යාපෘති මොඩියුල තෝරන්න"
   permission_share_work_packages: "Share work packages"
   permission_manage_types: "වර්ග තෝරන්න"
+  permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "OpenProject හි නිධි සංශෝධන බලන්න"
   permission_view_commit_author_statistics: "කතෘ සංඛ්යා ලේඛන බලන්න"
@@ -2991,6 +3308,7 @@ si:
   permission_work_package_assigned_explanation: "අදාළ ව්යාපෘතියේ මෙම කාර්යභාරය සතුව ඇති පරිශීලකයින්ට සහ කණ්ඩායම්වලට වැඩ පැකේජ පැවරිය හැකිය"
   permission_view_project_activity: "View project activity"
   permission_view_project_attributes: "View project attributes"
+  permission_view_project_stages_and_gates: "View project stages and gates"
   permission_save_bcf_queries: "Save BCF queries"
   permission_manage_public_bcf_queries: "Manage public BCF queries"
   permission_edit_attribute_help_texts: "Edit attribute help texts"
@@ -3022,9 +3340,9 @@ si:
       are_you_sure: "ඔබට '%{name}' ව්යාපෘතිය සංරක්ෂණය කිරීමට අවශ්ය බව ඔබට විශ්වාසද?"
       archived: "සංරක්ෂිත"
     count:
-      zero: "0 Projects"
-      one: "1 Project"
-      other: "%{count} Projects"
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
   project_module_activity: "ක්‍රියාකාරකම"
   project_module_forums: "සංසද"
   project_module_work_package_tracking: "වැඩ පැකේජ"
@@ -3158,6 +3476,7 @@ si:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "සොයන්න..."
+  setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
   setting_apiv3_cors_origins_text_html: >
@@ -3383,6 +3702,27 @@ si:
       new:
         heading: "New attribute"
         description: "Changes to this project attribute will be reflected in all projects where it is enabled. Required attributes cannot be disabled on a per-project basis."
+    project_life_cycle_step_definitions:
+      heading: "Project lifecycle"
+      heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
+      label_add: "Add"
+      label_add_description: "Add lifecycle definition"
+      label_add_stage: "Stage"
+      label_add_gate: "Gate"
+      filter:
+        label: "Search project stage or gate"
+      section_header: "Stages and gates"
+      non_defined: "Neither stages nor gates are currently defined."
+      new:
+        description: "Changes to this project step will be reflected in all projects where it is enabled."
+      new_stage:
+        heading: "New stage"
+      new_gate:
+        heading: "New gate"
+      edit_stage:
+        heading: "Edit stage"
+      edit_gate:
+        heading: "Edit gate"
     projects:
       missing_dependencies: "Project module %{module} was checked which depends on %{dependencies}. You need to check these dependencies as well."
       section_new_projects: "Settings for new projects"
@@ -3416,6 +3756,7 @@ si:
   text_are_you_sure_continue: "Are you sure you want to continue?"
   text_are_you_sure_with_children: "වැඩ පැකේජය සහ සියලුම ළමා වැඩ පැකේජ මකන්න?"
   text_are_you_sure_with_project_custom_fields: "Deleting this attribute will also delete its values in all projects. Are you sure you want to do this?"
+  text_are_you_sure_with_project_life_cycle_step: "Deleting this step will also delete its usages in all projects. Are you sure you want to do this?"
   text_assign_to_project: "ව්යාපෘතියට පැවරීම"
   text_form_configuration: >
     වැඩ පැකේජ ආකෘතිවල කුමන ක්ෂේත්රයන් පෙන්විය හැකිද යන්න ඔබට රිසිකරණය කළ හැකිය. ඔබ නිදහසේ ඔබේ වසම සඳහා අවශ්යතා පිළිබිඹු කිරීමට ක්ෂේත්ර කණ්ඩායම් හැකි.
@@ -3495,6 +3836,7 @@ si:
   text_notice_security_badge_displayed_html: >
     සටහන: සක්රීය කර ඇත්නම්, මෙය <a href="%{information_panel_path}">%{information_panel_label}</a> පරිපාලන පැනලයේ ඔබේ ස්ථාපන තත්ත්වය සහිත ලාංඡනයක් සහ මුල් පිටුවේ පෙන්වනු ඇත. එය පරිපාලකයින්ට පමණක් පෙන්වනු ලැබේ. <br/> මෙම ලාංඡනය මඟින් ඔබගේ වර්තමාන OpenProject අනුවාදය නිල OpenProject නිකුතු දත්ත ගබඩාවට එරෙහිව පරීක්ෂා කරනු ඇත. චෙක්පත සපයන දේ පිළිබඳ වැඩි විස්තර සඳහා, ලබා ගත හැකි යාවත්කාලීන ලබා දීමට අවශ්ය දත්ත මොනවාද, සහ මෙම චෙක්පත අක්රිය කරන්නේ කෙසේද, කරුණාකර <a href="%{more_info_url}">මානකරන ලියකියවිලි</a>වෙත පිවිසෙන්න.
   text_own_membership_delete_confirmation: "ඔබ ඔබේ අවසර කිහිපයක් හෝ සියල්ල ඉවත් කිරීමට ආසන්නව සිටින අතර ඉන් පසුව මෙම ව්යාපෘතිය සංස්කරණය කිරීමට තවදුරටත් නොහැකි වනු ඇත.\nඔබට දිගටම කරගෙන යාමට අවශ්ය බව ඔබට විශ්වාසද?"
+  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
   text_plugin_assets_writable: "ප්ලගිනය වත්කම් නාමාවලිය ලිවිය හැකි"
   text_powered_by: "%{link}විසින් තල්ලු"
   text_project_identifier_info: "අඩු සිද්ධි අකුරු (a-z), අංක, ඩෂ් සහ යටි ඉරි වලට පමණක් අවසර ඇත, අඩු සිද්ධි අකුරකින් ආරම්භ කළ යුතුය."
@@ -3512,6 +3854,7 @@ si:
   text_unallowed_characters: "අවසර නොලත් චරිත"
   text_user_invited: පරිශීලකයාට ආරාධනා කර ඇති අතර ලියාපදිංචි වීමට නියමිතය.
   text_user_wrote: "%{value} ලිවීය:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "වැඩ පැකේජයේ නොගැලවූ පෙළ අඩංගු වන අතර ඔබ මෙම පිටුවෙන් ඉවත් වුවහොත් අහිමි වනු ඇත."
   text_what_did_you_change_click_to_add_comment: "ඔබ වෙනස් කළේ කුමක්ද? අදහස් එක් කිරීමට ක්ලික් කරන්න"
   text_wiki_destroy_confirmation: "ඔබට මෙම විකි සහ එහි සියලුම අන්තර්ගතයන් මකා දැමීමට අවශ්ය බව ඔබට විශ්වාසද?"
@@ -3671,6 +4014,12 @@ si:
       edit_description: "Can view, comment and edit this work package."
       view: "දැක්ම"
       view_description: "Can view this work package."
+    reminders:
+      label_remind_at: "Date"
+      note_placeholder: "Why are you setting this reminder?"
+      success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
+      success_update_message: "Reminder updated successfully."
+      success_deletion_message: "Reminder deleted successfully."
   sharing:
     count:
       zero: "0 users"
@@ -3857,6 +4206,8 @@ si:
       builtin: Built-in instance application
       confidential: Confidential
       singular: "OAUTH අයදුම්"
+      scopes: "Scopes"
+      client_credentials: "Client credentials"
       plural: "OAUTH අයදුම්පත්"
       named: "OAUTH යෙදුම '%{name}'"
       new: "නව OAUTH අයදුම්"

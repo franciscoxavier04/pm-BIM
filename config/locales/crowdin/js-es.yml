@@ -103,8 +103,8 @@ es:
     button_settings: "Configuración"
     button_uncheck_all: "Deseleccionar todos"
     button_update: "Actualizar"
-    button_export-pdf: "Descargar PDF"
     button_export-atom: "Descargar Atom"
+    button_generate_pdf: "Generar PDF"
     button_create: "Crear"
     card:
       add_new: "Añadir nueva tarjeta"
@@ -356,10 +356,10 @@ es:
           learn_about: "Más información sobre las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_0":
+          "15_3":
             standard:
               new_features_html: >
-                La versión trae varias características y mejoras para usted, por ejemplo <br> <ul class="%{list_styling_class}"> <li>Aumente su comunicación con una pestaña de Actividad mejor estructurada, mensajes y notificaciones de carga en tiempo real, reacciones emoji y mucho más.</li> <li>Benefíciese de una sencilla configuración de autenticación de inicio de sesión único con SAML y OIDC en su administración de Enterprise Cloud.</li> <li>Utilice el nuevo «rol global estándar» y habilite los permisos para ver las direcciones de correo electrónico. </li> <li>Disfrute de una navegación más sencilla en las listas de proyectos con encabezados de tabla de acción rápida.</li> <li>Experimente una configuración de diseño simplificada con menos variables de diseño de barra lateral necesarias.</li> <li>Reduzca la limpieza manual cuando añada un campo personalizado a un tipo. Ya no se aplica automáticamente a todos los proyectos.</li> <li>Benefíciese de una claridad de navegación mejorada. «Mi cuenta» cambia de nombre a «Ajustes de la cuenta».</li> </ul>
+                La versión incluye varias funciones y mejoras para usted, por ejemplo: <br> <ul class="%{list_styling_class}"> <li>Programe reuniones periódicas para optimizar sus citas semanales, quincenales o personalizadas. </li> <li>Cree paquetes de trabajo secundarios directamente desde la pestaña Relaciones.</li> <li>Incluya las sumas totales en las exportaciones en PDF de las hojas de horas para obtener una mejor información.</li> <li>Incluya paquetes de trabajo secundarios en los informes de costes para un seguimiento más preciso.</li> <li>Vea las fechas de relaciones previamente ocultas y restringidas por permisos para tomar decisiones informadas sobre la programación.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -575,7 +575,7 @@ es:
         members: "Invitar a nuevos <b>miembros</b> a unirse a tu proyecto."
         quick_add_button: "Haga clic en el icono del signo más (+) en el menú de navegación del encabezado para <b>crear un proyecto</b> o <b>invitar a compañeros</b>."
         sidebar_arrow: "Usa la flecha de retorno en la esquina superior izquierda para regresar al <b>menú principal</b> del proyecto."
-        welcome: "Realice un paseo de introducción de tres minutos para conocer las <b>funciones más importantes</b>. <br> Le recomendamos que complete todos los pasos. Puede volver a iniciar el paseo en cualquier momento."
+        welcome: "Realice un recorrido de introducción de tres minutos para conocer las <b>funciones más importantes</b>. <br> Le recomendamos que complete todos los pasos. Puede volver a iniciar el paseo en cualquier momento."
         wiki: "En la <b>wiki</b>, puede elaborar documentos y compartir conocimientos con su equipo."
         backlogs:
           overview: "Administre su trabajo en la vista de <b>trabajos pendientes</b>."
@@ -620,14 +620,15 @@ es:
         prioritized: "Priorizado"
         dateAlert: "Alerta de fecha"
         shared: "Compartido"
+        reminder: "Recordatorio"
       date_alerts:
         milestone_date: "Fecha de hito"
         overdue: "Vencido"
-        overdue_since: "desde %{difference_in_days}"
-        property_today: "es hoy"
-        property_is: "está en %{difference_in_days}"
-        property_was: "era hace %{difference_in_days}"
-        property_is_deleted: "se ha eliminado"
+        overdue_since: "desde %{difference_in_days}."
+        property_today: "es hoy."
+        property_is: "está en %{difference_in_days}."
+        property_was: "fue hace %{difference_in_days}."
+        property_is_deleted: "se ha eliminado."
         upsale:
           title: "Alertas de fecha"
           description: "Con las alertas de fecha, recibirá notificaciones de próximas fechas de inicio o finalización para que nunca olvide una fecha límite importante."
@@ -652,6 +653,8 @@ es:
         new_notifications:
           message: "Hay nuevas notificaciones."
           link_text: "Haga clic aquí para cargarlas."
+      reminders:
+        note: "Nota: «%{note}»"
       settings:
         change_notification_settings: 'Puede modificar su <a target="_blank" href="%{url}">configuración de notificaciones</a> para asegurarse que nunca se pierda una actualización importante.'
         title: "Ajustes de notificación"
@@ -739,6 +742,7 @@ es:
         immediate:
           title: "Enviarme un recordatorio por correo electrónico"
           mentioned: "De inmediato cuando alguien me @mencione"
+          personal_reminder: "Inmediatamente al recibir un recordatorio personal"
         alerts:
           title: "Alertas por correo electrónico de otros elementos (que no sean paquetes de trabajo)"
           explanation: >
@@ -770,10 +774,6 @@ es:
         upgrade_to_ee_text: "¡Vaya! Si necesita está extensión, entonces ¡es un usuario experto! ¿Le importaría apoyar a los desarrolladores de código abierto convirtiéndose en cliente de Enterprise?"
         more_information: "Más información"
         nevermind: "No importa"
-      edit:
-        form_configuration: "Configuración del formulario"
-        projects: "Proyectos"
-        settings: "Configuración"
     time_entry:
       work_package_required: "Es necesario seleccionar primero un paquete de trabajo."
       title: "Registro de tiempo"
@@ -1042,6 +1042,12 @@ es:
           not_found: "No existe la vista"
           duplicate_query_title: "El nombre de la vista ya existe. ¿Quiere cambiarlo de todos modos?"
         text_no_results: "No se encontraron vistas que coincidan."
+      reminders:
+        button_label: "Establecer recordatorio"
+        title:
+          new: "Establecer recordatorio"
+          edit: "Editar recordatorio"
+        subtitle: "Recibirá una notificación para este paquete de trabajo en el momento elegido."
       scheduling:
         is_parent: "Las fechas de este paquete de trabajo son deducidas automáticamente de sus sub-elementos. Active 'Programación manual' para establecer las fechas."
         is_switched_from_manual_to_automatic: "Las fechas de este paquete de trabajo pueden necesitar ser recalculadas después de pasar de programación manual a programación automática debido a las relaciones con otros paquetes de trabajo."
@@ -1345,5 +1351,3 @@ es:
       waiting_subtitle:
         network_off: "Hay un problema de red."
         network_on: "La red ha vuelto. Lo estamos intentando."
-        timeout: >
-          OpenProject no ha podido proporcionarle acceso a la carpeta del proyecto en el periodo de tiempo esperado. Inténtelo de nuevo.<br><br> Si el problema persiste, contacte con su administrador de OpenProject para comprobar el <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">estado de salud de la configuración de almacenamiento de archivos</a>.

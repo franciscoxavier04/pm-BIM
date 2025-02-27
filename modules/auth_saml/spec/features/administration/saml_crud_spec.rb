@@ -30,8 +30,7 @@ require "spec_helper"
 require_module_spec_helper
 
 RSpec.describe "SAML administration CRUD",
-               :js,
-               :with_cuprite do
+               :js do
   shared_let(:user) { create(:admin) }
   let(:danger_zone) { DangerZone.new(page) }
 
@@ -175,7 +174,7 @@ RSpec.describe "SAML administration CRUD",
         fill_in "Name", with: "My provider"
         click_link_or_button "Continue"
 
-        expect(page).to have_text "Display name has already been taken."
+        expect(page).to have_text "Name has already been taken."
       end
 
       it "can toggle limit_self_registration (Regression #59370)" do

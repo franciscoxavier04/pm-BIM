@@ -1,5 +1,5 @@
 ja:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: Name
@@ -23,7 +23,6 @@ ja:
         digest_method: Digest algorithm
         format: "Format"
         icon: "Custom icon"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -32,8 +31,8 @@ ja:
           certificate_expired: "is expired and can no longer be used."
           unmatched_private_key: "does not belong to the given certificate"
   saml:
-    menu_title: SAML providers
-    delete_title: Delete SAML provider
+    menu_title: SAML プロバイダ
+    delete_title: SAML プロバイダの削除
     info:
       title: "SAML Protocol Configuration Parameters"
       description: >
@@ -45,15 +44,15 @@ ja:
     providers:
       label_empty_title: "No SAML providers configured yet."
       label_empty_description: "Add a provider to see them here."
-      label_automatic_configuration: Automatic configuration
-      label_metadata: Metadata
+      label_automatic_configuration: 自動設定
+      label_metadata: メタデータ
       label_metadata_endpoint: OpenProject metadata endpoint
       label_openproject_information: OpenProject information
       label_configuration_details: "Identity provider endpoints and certificates"
       label_configuration_encryption: "Signatures and Encryption"
       label_add_new: New SAML identity provider
       label_edit: Edit SAML identity provider %{name}
-      label_uid: Internal user id
+      label_uid: 内部ユーザーID
       label_mapping: Mapping
       label_requested_attribute_for: "Requested attribute for: %{attribute}"
       no_results_table: No SAML identity providers have been defined yet.
@@ -138,7 +137,7 @@ ja:
       authn_requests_signed: >
         If checked, OpenProject will sign the SAML AuthnRequest. You will have to provide a signing certificate and private key using the fields below.
       want_assertions_signed: >
-        If checked, OpenProject will required signed responses from the identity provider using it's own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
+        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
       want_assertions_encrypted: >
         If enabled, require the identity provider to encrypt the assertion response using the certificate pair that you provide.
       certificate: >

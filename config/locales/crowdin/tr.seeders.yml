@@ -34,6 +34,17 @@ tr:
           name: Gri (koyu)
         item_13:
           name: Siyah
+      life_cycle_colors:
+        item_0:
+          name: PM2 Orange
+        item_1:
+          name: PM2 Purple
+        item_2:
+          name: PM2 Red
+        item_3:
+          name: PM2 Magenta
+        item_4:
+          name: PM2 Green Yellow
       document_categories:
         item_0:
           name: Belgeleme
@@ -68,8 +79,23 @@ tr:
         item_0:
           name: Personel ve proje yöneticisi
         item_1:
-          name: Standard global role
+          name: Standart genel rol
     standard:
+      life_cycles:
+        item_0:
+          name: Initiating
+        item_1:
+          name: Planlama için Hazır
+        item_2:
+          name: Planlanıyor
+        item_3:
+          name: Yürütmeye Hazır
+        item_4:
+          name: Yürütme
+        item_5:
+          name: Kapanışa Hazır
+        item_6:
+          name: Kapatılıyor
       priorities:
         item_0:
           name: Düşük
@@ -81,18 +107,18 @@ tr:
           name: Acil
       projects:
         demo-project:
-          name: Demo project
-          status_explanation: All tasks are on schedule. The people involved know their tasks. The system is completely set up.
-          description: This is a short summary of the goals of this demo project.
+          name: Demo proje
+          status_explanation: Tüm görevler programa uygundur. İlgili kişiler görevlerini biliyor. Sistem tamamen kurulmuştur.
+          description: Bu, bu demo projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
-              title: Welcome to your demo project
+              title: Demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
-              description: The actual news
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
+              description: Gerçek haberler
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
@@ -104,20 +130,20 @@ tr:
               name: Takım planlayıcısı
           boards:
             kanban:
-              name: Kanban board
+              name: Kanban panosu
             basic:
-              name: Temel kurulu
+              name: Temel pano
               lists:
                 item_0:
-                  name: Wish list
+                  name: İstek listesi
                 item_1:
-                  name: Short list
+                  name: Kısa liste
                 item_2:
-                  name: Priority list for today
+                  name: Bugün için öncelik listesi
                 item_3:
                   name: Hiçbir zaman
             parent_child:
-              name: Work breakdown structure
+              name: İş kırılım yapısı
           project-overview:
             widgets:
               item_0:
@@ -127,21 +153,21 @@ tr:
                 options:
                   name: Başlarken
                   text: |
-                    We are glad you joined! We suggest to try a few things to get started in OpenProject.
+                    Katıldığınız için çok mutluyuz! OpenProject'e başlamak için birkaç şey denemenizi öneririz.
 
-                    Discover the most important features with our [Guided Tour]({{opSetting:base_url}}/projects/demo-project/work_packages/?start_onboarding_tour=true).
+                    [Rehberli Tur]({{opSetting:base_url}}/projects/demo-project/work_packages/?start_onboarding_tour=true) ile en önemli özellikleri keşfedin.
 
-                    _Try the following steps:_
+                    _Aşağıdaki adımları deneyin:_
 
-                    1. *Invite new members to your project*: &rightarrow; Go to [Members]({{opSetting:base_url}}/projects/demo-project/members) in the project navigation.
-                    2. *View the work in your project*: &rightarrow; Go to [Work packages]({{opSetting:base_url}}/projects/demo-project/work_packages) in the project navigation.
-                    3. *Create a new work package*: &rightarrow; Go to [Work packages &rightarrow; Create]({{opSetting:base_url}}/projects/demo-project/work_packages/new).
-                    4. *Create and update a project plan*: &rightarrow; Go to [Project plan]({{opSetting:base_url}}/projects/demo-project/work_packages?query_id=##query.id:demo_project__query__project_plan) in the project navigation.
-                    5. *Activate further modules*: &rightarrow; Go to [Project settings &rightarrow; Modules]({{opSetting:base_url}}/projects/demo-project/settings/modules).
-                    6. *Complete your tasks in the project*: &rightarrow; Go to [Work packages &rightarrow; Tasks]({{opSetting:base_url}}/projects/demo-project/work_packages/details/##wp.id:set_date_and_location_of_conference/overview?query_id=##query.id:demo_project__query__tasks).
+                    1. *Projenize yeni üyeler davet edin*: &rightarrow; Proje gezintisinde [Üyeler]({{opSetting:base_url}}/projects/demo-project/members) bölümüne gidin.
+                    2. *Projenizdeki çalışmaları görüntüleyin*: &rightarrow; Proje gezintisinde [İş paketleri]({{opSetting:base_url}}/projects/demo-project/work_packages) bölümüne gidin.
+                    3. *Yeni bir iş paketi oluşturun*: &rightarrow; İş paketleri &rightarrow; Oluştur]({{opSetting:base_url}}/projects/demo-project/work_packages/new) adresine gidin.
+                    4. *Bir proje planı oluşturun ve güncelleyin*: &rightarrow; Proje gezintisinde [Proje planı]({{opSetting:base_url}}/projects/demo-project/work_packages?query_id=##query.id:demo_project__query__project_plan) bölümüne gidin.
+                    5. *Diğer modülleri etkinleştirin*: &rightarrow; Proje ayarları &rightarrow; Modüller]({{opSetting:base_url}}/projects/demo-project/settings/modules) adresine gidin.
+                    6. *Projedeki görevlerinizi tamamlayın*: &rightarrow; İş paketleri &rightarrow; Görevler]({{opSetting:base_url}}/projects/demo-project/work_packages/details/##wp.id:set_date_and_location_of_conference/overview?query_id=##query.id:demo_project__query__tasks) bölümüne gidin.
 
-                    Here you will find our [User Guides](https://www.openproject.org/docs/user-guide/).
-                    Please let us know if you have any questions or need support. Contact us: [support[at]openproject.com](mailto:support@openproject.com).
+                    Burada [Kullanıcı Rehberlerimizi](https://www.openproject.org/docs/user-guide/) bulacaksınız.
+                    Herhangi bir sorunuz varsa veya desteğe ihtiyacınız varsa lütfen bize bildirin. Bize ulaşın: [support[at]openproject.com](mailto:support@openproject.com).
               item_5:
                 options:
                   name: İş paketleri
@@ -150,73 +176,73 @@ tr:
                   name: Aşamalar
           work_packages:
             item_0:
-              subject: Start of project
+              subject: Proje başlangıcı
             item_1:
-              subject: Organize open source conference
+              subject: Açık kaynak konferansı düzenleyin
               children:
                 item_0:
-                  subject: Set date and location of conference
+                  subject: Konferans tarihini ve yerini belirleyin
                   children:
                     item_0:
-                      subject: Send invitation to speakers
+                      subject: Konuşmacılara davetiye gönderme
                     item_1:
-                      subject: Contact sponsoring partners
+                      subject: Sponsorlarla iletişime geçme
                     item_2:
-                      subject: Create sponsorship brochure and hand-outs
+                      subject: Sponsorluk broşürü ve el broşürleri hazırlama
                 item_1:
-                  subject: Invite attendees to conference
+                  subject: Katılımcıları konferansa davet edin
                 item_2:
-                  subject: Setup conference website
+                  subject: Konferans web sitesi kurulumu
             item_2:
-              subject: Conference
+              subject: Konferans
             item_3:
-              subject: Follow-up tasks
+              subject: Takip görevleri
               children:
                 item_0:
-                  subject: Upload presentations to website
+                  subject: Sunumları web sitesine yükleyin
                 item_1:
-                  subject: Party for conference supporters :-)
+                  subject: Konferans destekçileri için parti :-)
                   description: |-
-                    *   [ ] Beer
-                    *   [ ] Snacks
-                    *   [ ] Music
-                    *   [ ] Even more beer
+                    * [ ] Bira
+                    * [ ] Atıştırmalıklar
+                    * [ ] Müzik
+                    * [ ] Daha da fazla bira
             item_4:
-              subject: End of project
+              subject: Proje sonu
           wiki: |
-            _In this wiki you can collaboratively create and edit pages and sub-pages to create a project wiki._
+            Bu wiki'de bir proje wiki'si oluşturmak için sayfaları ve alt sayfaları işbirliği içinde oluşturabilir ve düzenleyebilirsiniz._
 
-            **You can:**
+            **Şunları yapabilirsiniz:**
 
-            * Insert text and images, also with copy and paste from other documents
-            * Create a page hierarchy with parent pages
-            * Include wiki pages to the project menu
-            * Use macros to include, e.g. table of contents, work package lists, or Gantt charts
-            * Include wiki pages in other text fields, e.g. project overview page
-            * Include links to other documents
-            * View the change history
-            * View as Markdown
+            * Diğer belgelerden kopyalayıp yapıştırarak da metin ve resim ekleyebilirsiniz
+            * Üst sayfalarla bir sayfa hiyerarşisi oluşturun
+            * Proje menüsüne wiki sayfalarını ekleyin
+            * Eklemek için makroları kullanın, örn.örneğin içindekiler tablosu, iş paketi listeleri veya Gantt şemaları
+            * Wiki sayfalarını diğer metin alanlarına dahil edin, örneğin projeye genel bakış sayfası
+            * Diğer belgelere bağlantılar ekleyin
+            * Değişiklik geçmişini görüntüleyin
+            * Markdown olarak görüntüleyin
 
-            More information: [https://www.openproject.org/docs/user-guide/wiki/](https://www.openproject.org/docs/user-guide/wiki/)
+            Daha fazla bilgi: [https://www.openproject.org/docs/user-guide/wiki/](https://www.openproject.org/docs/user-guide/wiki/)
         scrum-project:
-          name: Scrum project
-          status_explanation: All tasks are on schedule. The people involved know their tasks. The system is completely set up.
-          description: This is a short summary of the goals of this demo Scrum project.
+          name: Scrum projesi
+          status_explanation: Tüm görevler programa uygundur. İlgili kişiler görevlerini biliyor. Sistem tamamen kurulmuştur.
+          description: Bu, bu demo Scrum projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
-              title: Welcome to your Scrum demo project
+              title: Scrum demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
           versions:
             item_0:
-              name: Bug Backlog
+              name: Hata İş Listesi
             item_1:
-              name: Product Backlog
+              name: Ürün İş Listesi
             item_2:
-              name: Sprint 1
+              name: Koşu 1
               wiki:
-                title: Sprint 1
+                title: Koşu 1
                 content: |
                   ### Sprint planning meeting
 
@@ -264,30 +290,30 @@ tr:
                   * After Sprint Review, will be moderated by Scrum Master.
                   * The team discusses the sprint: what went well, what needs to be improved to be more productive for the next sprint or even have more fun.
             item_3:
-              name: Sprint 2
+              name: Koşu 2
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
             item_1:
               name: Ürün bekleme süresi
             item_2:
-              name: Sprint 1
+              name: Koşu 1
             item_3:
               name: Görevler
           boards:
             kanban:
-              name: Kanban board
+              name: Kanban panosu
             basic:
               name: Görev tahtası
               lists:
                 item_0:
-                  name: Wish list
+                  name: İstek listesi
                 item_1:
-                  name: Short list
+                  name: Kısa liste
                 item_2:
-                  name: Priority list for today
+                  name: Bugün için öncelik listesi
                 item_3:
                   name: Hiçbir zaman
           project-overview:
@@ -321,18 +347,18 @@ tr:
                   name: Proje planı
           work_packages:
             item_0:
-              subject: New login screen
+              subject: Yeni giriş ekranı
             item_1:
-              subject: Password reset does not send email
+              subject: Parola sıfırlama e-posta göndermiyor
             item_2:
-              subject: New website
+              subject: Yeni web sitesi
               children:
                 item_0:
-                  subject: Newsletter registration form
+                  subject: Bülten kayıt formu
                 item_1:
-                  subject: Implement product tour
+                  subject: Ürün turunu uygulayın
                 item_2:
-                  subject: New landing page
+                  subject: Yeni açılış sayfası
                   children:
                     item_0:
                       subject: Create wireframes for new landing page
@@ -346,30 +372,30 @@ tr:
             item_5:
               subject: Wrong hover color
             item_6:
-              subject: SSL certificate
+              subject: SSL sertifikası
             item_7:
-              subject: Set-up Staging environment
+              subject: Staging ortamının kurulması
             item_8:
-              subject: Choose a content management system
+              subject: Bir içerik yönetim sistemi seçimi
             item_9:
-              subject: Website navigation structure
+              subject: Web sitesi gezinti yapısı
               children:
                 item_0:
-                  subject: Set up navigation concept for website.
+                  subject: Web sitesi için gezinti tasarımı oluştur.
             item_10:
-              subject: Internal link structure
+              subject: İç bağlantı yapısı
             item_11:
-              subject: Develop v1.0
+              subject: v1.0 geliştirmesi
             item_12:
-              subject: Release v1.0
+              subject: Sürüm v1.0
             item_13:
-              subject: Develop v1.1
+              subject: v1.1 geliştirmesi
             item_14:
-              subject: Release v1.1
+              subject: Sürüm v1.1
             item_15:
-              subject: Develop v2.0
+              subject: v2.0 geliştirmesi
             item_16:
-              subject: Release v2.0
+              subject: Sürüm v2.0
           wiki: |
             ### Sprint planning meeting
 
@@ -474,20 +500,20 @@ tr:
         item_6:
           name: Hata
       welcome:
-        title: Welcome to OpenProject!
+        title: OpenProject'e hoş geldiniz!
         text: |
-          OpenProject is the leading open source project management software. It supports classic, agile as well as hybrid project management and gives you full control over your data.
+          OpenProject, önde gelen açık kaynaklı proje yönetim yazılımıdır. Klasik, çevik ve hibrit proje yönetimini destekler ve verileriniz üzerinde tam kontrol sahibi olmanızı sağlar.
 
-          Core features and use cases:
+          Temel özellikler ve kullanım durumları:
 
-          * [Project Portfolio Management](https://www.openproject.org/collaboration-software-features/project-portfolio-management/)
-          * [Project Planning and Scheduling](https://www.openproject.org/collaboration-software-features/project-planning-scheduling/)
-          * [Task Management and Issue Tracking](https://www.openproject.org/collaboration-software-features/task-management/)
-          * [Agile Boards (Scrum and Kanban)](https://www.openproject.org/collaboration-software-features/agile-project-management/)
-          * [Requirements Management and Release Planning](https://www.openproject.org/collaboration-software-features/product-development/)
-          * [Time and Cost Tracking, Budgets](https://www.openproject.org/collaboration-software-features/time-tracking/)
-          * [Team Collaboration and Documentation](https://www.openproject.org/collaboration-software-features/team-collaboration/)
+          * [Proje Portföy Yönetimi](https://www.openproject.org/collaboration-software-features/project-portfolio-management/)
+          * [Proje Planlama ve Takvimlendirme](https://www.openproject.org/collaboration-software-features/project-planning-scheduling/)
+          * [Görev Yönetimi ve Sorun İzleme](https://www.openproject.org/collaboration-software-features/task-management/)
+          * [Çevik Panolar (Scrum ve Kanban)](https://www.openproject.org/collaboration-software-features/agile-project-management/)
+          * [Gereksinim Yönetimi ve Sürüm Planlama](https://www.openproject.org/collaboration-software-features/product-development/)
+          * [Zaman ve Maliyet Takibi, Bütçeler](https://www.openproject.org/collaboration-software-features/time-tracking/)
+          * [Ekip İşbirliği ve Belgeleme](https://www.openproject.org/collaboration-software-features/team-collaboration/)
 
-          Welcome to the future of project management.
+          Proje yönetiminin geleceğine hoş geldiniz.
 
-          For Admins: You can change this welcome text [here]({{opSetting:base_url}}/admin/settings/general).
+          Yöneticiler için: Bu [karşılama metnini]({{opSetting:base_url}}/admin/settings/general) değiştirebilirsiniz.

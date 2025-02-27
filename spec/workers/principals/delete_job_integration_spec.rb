@@ -346,7 +346,7 @@ RSpec.describe Principals::DeleteJob, type: :model do
       shared_examples_for "public query rewriting" do
         let(:filter_symbol) { filter.to_s.demodulize.underscore.to_sym }
 
-        describe "with the filter has the deleted user as it's value" do
+        describe "with the filter has the deleted user as its value" do
           before do
             query.filter(filter_symbol, values: [principal.id.to_s], operator: "=")
             query.save!
@@ -360,7 +360,7 @@ RSpec.describe Principals::DeleteJob, type: :model do
           end
         end
 
-        describe "with the filter has another user as it's value" do
+        describe "with the filter has another user as its value" do
           before do
             query.filter(filter_symbol, values: [other_user.id.to_s], operator: "=")
             query.save!
@@ -380,7 +380,7 @@ RSpec.describe Principals::DeleteJob, type: :model do
           end
         end
 
-        describe "with the filter has the deleted user and another user as it's value" do
+        describe "with the filter has the deleted user and another user as its value" do
           before do
             query.filter(filter_symbol, values: [principal.id.to_s, other_user.id.to_s], operator: "=")
             query.save!
@@ -475,6 +475,17 @@ RSpec.describe Principals::DeleteJob, type: :model do
       it_behaves_like "cost_query handling"
       it_behaves_like "project query handling"
       it_behaves_like "mention rewriting"
+
+      describe "favorites" do
+        before do
+          project.add_favoring_user(principal)
+          job
+        end
+
+        it "removes the assigned_to association to the principal" do
+          expect(project.favoring_users.reload).to be_empty
+        end
+      end
     end
 
     context "with a group" do

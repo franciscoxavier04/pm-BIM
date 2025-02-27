@@ -34,6 +34,17 @@ ms:
           name: Kelabu (tua)
         item_13:
           name: Hitam
+      life_cycle_colors:
+        item_0:
+          name: PM2 Jingga
+        item_1:
+          name: PM2 Ungu
+        item_2:
+          name: PM2 Merah
+        item_3:
+          name: PM2 Magenta
+        item_4:
+          name: PM2 Hijau Kuning
       document_categories:
         item_0:
           name: Dokumentasi
@@ -68,8 +79,23 @@ ms:
         item_0:
           name: Kakitangan dan pengurus projek
         item_1:
-          name: Standard global role
+          name: Peranan global standard
     standard:
+      life_cycles:
+        item_0:
+          name: Memulakan
+        item_1:
+          name: Bersedia untuk Perancangan
+        item_2:
+          name: Perancangan
+        item_3:
+          name: Sedia untuk Melaksanakan
+        item_4:
+          name: Melaksanakan
+        item_5:
+          name: Sedia untuk Penutupan
+        item_6:
+          name: Penutup
       priorities:
         item_0:
           name: Rendah

@@ -29,7 +29,7 @@
 require "spec_helper"
 require "features/page_objects/notification"
 
-RSpec.describe "Upload attachment to forum message", :js do
+RSpec.describe "Upload attachment to forum message", :js, :selenium do
   let(:forum) { create(:forum) }
   let(:user) do
     create(:user,
@@ -68,9 +68,7 @@ RSpec.describe "Upload attachment to forum message", :js do
     expect(page).to have_content("Image uploaded on creation")
     attachments_list.expect_attached("image.png")
 
-    within ".toolbar-items" do
-      click_on "Edit"
-    end
+    page.find_test_selector("message-edit-button").click
 
     retry_block do
       find(".op-uc-figure").click
@@ -115,9 +113,7 @@ RSpec.describe "Upload attachment to forum message", :js do
     wait_for_network_idle
 
     attachments_list.expect_attached("image.png")
-    within ".toolbar-items" do
-      click_on "Edit"
-    end
+    page.find_test_selector("message-edit-button").click
     wait_for_network_idle
 
     retry_block do

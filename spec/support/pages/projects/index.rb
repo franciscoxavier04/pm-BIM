@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -265,23 +267,42 @@ module Pages
       end
 
       def set_advanced_filter(name, human_name, human_operator = nil, values = [], send_keys: false)
-        select human_name, from: "add_filter_select"
-        selected_filter = page.find("li[data-filter-name='#{name}']")
-        select(human_operator, from: "operator") unless boolean_filter?(name)
+        selected_filter = select_filter(name, human_name)
+        apply_operator(name, human_operator)
 
         within(selected_filter) do
           return unless values.any?
 
           if boolean_filter?(name)
             set_toggle_filter(values)
+          elsif autocomplete_filter?(selected_filter)
+            select(human_operator, from: "operator")
+            set_autocomplete_filter(values)
           elsif name == "created_at"
             select(human_operator, from: "operator")
             set_created_at_filter(human_operator, values, send_keys:)
-          elsif /cf_\d+/.match?(name)
-            select(human_operator, from: "operator")
-            set_custom_field_filter(selected_filter, human_operator, values)
+          elsif date_filter?(selected_filter) && human_operator == "on"
+            set_date_filter(values, send_keys)
           end
         end
+      end
+
+      def autocomplete_options_for(custom_field)
+        selected_filter = select_filter(custom_field.column_name, custom_field.name)
+
+        within(selected_filter) do
+          find('[data-filter-autocomplete="true"]').click
+        end
+        visible_user_auto_completer_options
+      end
+
+      def apply_operator(name, human_operator)
+        select(human_operator, from: "operator") unless boolean_filter?(name)
+      end
+
+      def select_filter(name, human_name)
+        select human_name, from: "add_filter_select"
+        page.find("li[data-filter-name='#{name}']")
       end
 
       def remove_filter(name)
@@ -334,20 +355,28 @@ module Pages
         end
       end
 
-      def set_custom_field_filter(selected_filter, human_operator, values, send_keys: false)
-        if selected_filter[:"data-filter-type"] == "list_optional"
-          if values.size == 1
-            value_select = find('.single-select select[name="value"]')
-            value_select.select values.first
-          end
-        elsif selected_filter[:"data-filter-type"] == "date"
-          if human_operator == "on"
-            if send_keys
-              find_field("value").send_keys values.first
-            else
-              fill_in "value", with: values.first
-            end
-          end
+      def set_autocomplete_filter(values, clear: true)
+        element = find('[data-filter-autocomplete="true"]')
+
+        ng_select_clear(element, raise_on_missing: false) if clear
+
+        Array(values).each do |query|
+          select_autocomplete element,
+                              query:,
+                              results_selector: "body"
+        end
+      end
+
+      def set_list_filter(values)
+        value_select = find('.single-select select[name="value"]')
+        value_select.select values.first
+      end
+
+      def set_date_filter(values, send_keys)
+        if send_keys
+          find_field("value").send_keys values.first
+        else
+          fill_in "value", with: values.first
         end
       end
 
@@ -394,15 +423,18 @@ module Pages
         within "dialog" do
           click_on "Apply"
         end
+
+        wait_for_network_idle
       end
 
-      def expect_no_config_columns(*columns)
+      def expect_no_config_columns(*columns, element_selector: ".op-draggable-autocomplete--input",
+                                   results_selector: ".ng-dropdown-panel-items")
         open_configure_view
 
         columns.each do |column|
-          expect_no_ng_option find(".op-draggable-autocomplete--input"),
+          expect_no_ng_option find(element_selector),
                               column,
-                              results_selector: ".ng-dropdown-panel-items"
+                              results_selector:
         end
 
         within "dialog" do
@@ -628,6 +660,14 @@ module Pages
 
       def boolean_filter?(filter)
         %w[active member_of favored public templated].include?(filter.to_s)
+      end
+
+      def autocomplete_filter?(filter)
+        filter.has_css?('[data-filter-autocomplete="true"]', wait: 0)
+      end
+
+      def date_filter?(filter)
+        filter[:"data-filter-type"] == "date"
       end
 
       def submenu

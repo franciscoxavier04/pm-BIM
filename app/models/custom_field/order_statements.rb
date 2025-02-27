@@ -31,7 +31,7 @@ module CustomField::OrderStatements
   # value of the custom field.
   def order_statement
     case field_format
-    when "string", "date", "bool", "link", "int", "float", "list", "user", "version"
+    when "string", "date", "bool", "link", "int", "float", "list", "user", "version", "hierarchy"
       "cf_order_#{id}.value"
     end
   end
@@ -52,6 +52,8 @@ module CustomField::OrderStatements
       join_for_order_by_user_sql
     when "version"
       join_for_order_by_version_sql
+    when "hierarchy"
+      join_for_order_by_hierarchy_sql
     end
   end
 
@@ -73,7 +75,7 @@ module CustomField::OrderStatements
   # Returns the expression to use in SELECT clause if it differs from one used
   # to group by
   def group_by_select_statement
-    return unless field_format == "list"
+    return unless field_format == "list" || field_format == "hierarchy"
 
     # MIN needed to not add this column to group by, ANY_VALUE can be used when
     # minimum required PostgreSQL becomes 16
@@ -90,7 +92,7 @@ module CustomField::OrderStatements
 
   private
 
-  def can_be_used_for_grouping? = field_format.in?(%w[list date bool int float string link])
+  def can_be_used_for_grouping? = field_format.in?(%w[list date bool int float string link hierarchy])
 
   # Template for all the join statements.
   #
@@ -164,6 +166,15 @@ module CustomField::OrderStatements
     join_for_order_sql(
       value: multi_value? ? "array_agg(versions.name ORDER BY versions.name)" : "versions.name",
       join: "INNER JOIN #{Version.quoted_table_name} versions ON versions.id = cv.value::bigint",
+      multi_value:
+    )
+  end
+
+  def join_for_order_by_hierarchy_sql
+    join_for_order_sql(
+      value: multi_value? ? "ARRAY_AGG(item.position_cache ORDER BY item.position_cache)" : "item.position_cache",
+      add_select: "#{multi_value? ? "ARRAY_TO_STRING(ARRAY_AGG(cv.value ORDER BY item.position_cache), '.')" : 'cv.value'} ids",
+      join: "INNER JOIN #{CustomField::Hierarchy::Item.quoted_table_name} item ON item.id = cv.value::bigint",
       multi_value:
     )
   end

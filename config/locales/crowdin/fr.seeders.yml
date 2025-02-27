@@ -34,6 +34,17 @@ fr:
           name: Gris (foncé)
         item_13:
           name: Noir
+      life_cycle_colors:
+        item_0:
+          name: Orange PM2
+        item_1:
+          name: Violet PM2
+        item_2:
+          name: Rouge PM2
+        item_3:
+          name: Magenta PM2
+        item_4:
+          name: Jaune vert PM2
       document_categories:
         item_0:
           name: Documentation
@@ -70,6 +81,21 @@ fr:
         item_1:
           name: Rôle global standard
     standard:
+      life_cycles:
+        item_0:
+          name: Initiation
+        item_1:
+          name: Prêt pour la planification
+        item_2:
+          name: Planification
+        item_3:
+          name: Prêt pour l'exécution
+        item_4:
+          name: Exécution
+        item_5:
+          name: Prêt pour la fermeture
+        item_6:
+          name: Fermeture
       priorities:
         item_0:
           name: Basse

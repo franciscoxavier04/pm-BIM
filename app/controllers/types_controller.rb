@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -51,28 +53,22 @@ class TypesController < ApplicationController
     if params[:tab].blank?
       redirect_to tab: :settings
     else
-      type = ::Type
-             .includes(:projects,
-                       :custom_fields)
-             .find(params[:id])
-
+      type = ::Type.includes(:projects, :custom_fields).find(params[:id])
       render_edit_tab(type)
     end
   end
 
-  def create # rubocop:disable Metrics/AbcSize
+  def create
     CreateTypeService
       .new(current_user)
-      .call(permitted_type_params, copy_workflow_from: params[:copy_workflow_from]) do |call|
+      .call(permitted_type_params, copy_workflow_from: params.dig(:type, :copy_workflow_from)) do |call|
       @type = call.result
 
       call.on_success do
         redirect_to_type_tab_path(@type, t(:notice_successful_create))
       end
 
-      call.on_failure do |result|
-        flash[:error] = result.errors.full_messages.join("\n")
-        load_projects_and_types
+      call.on_failure do
         render action: :new, status: :unprocessable_entity
       end
     end
@@ -82,14 +78,8 @@ class TypesController < ApplicationController
     UpdateTypeService
       .new(@type, current_user)
       .call(permitted_type_params) do |call|
-      call.on_success do
-        redirect_to_type_tab_path(@type, t(:notice_successful_update))
-      end
-
-      call.on_failure do |result|
-        flash[:error] = result.errors.full_messages.join("\n")
-        render_edit_tab(@type)
-      end
+      call.on_success { redirect_to_type_tab_path(@type, t(:notice_successful_update)) }
+      call.on_failure { render_edit_tab(@type, status: :unprocessable_entity) }
     end
   end
 
@@ -135,16 +125,15 @@ class TypesController < ApplicationController
 
   def redirect_to_type_tab_path(type, notice)
     tab = params["tab"] || "settings"
-    redirect_to(edit_type_tab_path(type, tab:),
-                notice:)
+    redirect_to(edit_tab_type_path(type, tab:), notice:, status: :see_other)
   end
 
-  def render_edit_tab(type)
+  def render_edit_tab(type, status: :ok)
     @tab = params[:tab]
     @projects = Project.all
     @type = type
 
-    render action: :edit, status: :unprocessable_entity
+    render action: :edit, status:
   end
 
   def show_local_breadcrumb

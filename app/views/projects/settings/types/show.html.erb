@@ -27,21 +27,28 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%= toolbar title: t(:label_work_package_types), html: { class: '-minimum-title' } do -%>
-  <%= render partial: 'projects/settings/form_toolbar', locals: { form_name: "types-form" } %>
-<% end %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { I18n.t(:label_work_package_types) }
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project.id), text: @project.name },
+       { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+       I18n.t(:label_work_package_types)]
+    )
+  end
+%>
 
 <% if Type.any? %>
   <%= form_for @project,
                url: project_settings_types_path(@project),
                method: :patch,
-               html: { id: 'types-form' } do |f| %>
-    <%= render partial: 'form',
+               html: { id: "types-form" } do |f| %>
+    <%= render partial: "form",
                locals: { f: f, project: @project } %>
 
   <% end %>
 
-  <br/>
+  <br>
 <% else %>
-  <%= no_results_box custom_title: t('projects.settings.types.no_results_title_text') %>
+  <%= no_results_box custom_title: t("projects.settings.types.no_results_title_text") %>
 <% end %>

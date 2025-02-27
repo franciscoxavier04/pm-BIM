@@ -103,8 +103,8 @@ it:
     button_settings: "Impostazioni"
     button_uncheck_all: "Deseleziona tutti"
     button_update: "Aggiorna"
-    button_export-pdf: "Scarica PDF"
     button_export-atom: "Scarica Atom"
+    button_generate_pdf: "Genera PDF"
     button_create: "Crea"
     card:
       add_new: "Aggiungi una nuova carta"
@@ -356,10 +356,10 @@ it:
           learn_about: "Scopri di più sulle nuove funzionalità"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_0":
+          "15_3":
             standard:
               new_features_html: >
-                Questa versione offre diverse funzionalità e miglioramenti, ad esempio <br> <ul class="%{list_styling_class}"> <li>Migliora la tua comunicazione con una scheda Attività meglio strutturata, messaggi e notifiche di caricamento in tempo reale, reazioni emoji e altro ancora.</li> <li>Approfitta delle semplici impostazioni di autenticazione Single Sign-On con SAML e OIDC nella tua amministrazione Enterprise Cloud.</li> <li>Utilizza il nuovo "Ruolo globale standard" e abilita le autorizzazioni per visualizzare gli indirizzi e-mail.</li> <li>Goditi una navigazione più semplice negli elenchi di progetti con intestazioni di tabella di azioni rapide.</li> <li>Scopri impostazioni di progettazione semplificate con meno variabili di progettazione della barra laterale necessarie.</li> <li>Riduci la pulizia manuale quando aggiungi un campo personalizzato a un tipo: niente più applicazione automatica a tutti i progetti.</li> <li>Approfitta di una navigazione più chiara: "Il mio account" è stato rinominato "Impostazioni account".</li> </ul>
+                Questa versione offre diverse funzionalità e miglioramenti, ad esempio <br> <ul class="%{list_styling_class}"> <li>Pianificazione di riunioni ricorrenti per semplificare gli appuntamenti settimanali, quindicinali o personalizzati.</li> <li>Creazione di macro-attività figlie direttamente dalla scheda Relazioni.</li> <li>Inclusione di somme totali nelle esportazioni PDF delle schede attività per informazioni più approfondite.</li> <li>Inclusione delle macro-attività figlie nei report sui costi per un monitoraggio più accurato.</li> <li>Visualizzazione delle date delle relazioni precedentemente nascoste e con autorizzazioni limitate per prendere decisioni di pianificazione informate.</li> </ul>
     ical_sharing_modal:
       title: "Iscriviti al calendario"
       inital_setup_error_message: "Si è verificato un errore recuperando i dati."
@@ -620,14 +620,15 @@ it:
         prioritized: "Assegnata priorità"
         dateAlert: "Avviso data"
         shared: "Condiviso"
+        reminder: "Promemoria"
       date_alerts:
         milestone_date: "Data inizio"
         overdue: "In ritardo"
-        overdue_since: "da %{difference_in_days}"
-        property_today: "è oggi"
-        property_is: "tra %{difference_in_days}"
-        property_was: "era %{difference_in_days} fa"
-        property_is_deleted: "è eliminato"
+        overdue_since: "da %{difference_in_days}."
+        property_today: "è oggi."
+        property_is: "tra %{difference_in_days}."
+        property_was: "era %{difference_in_days} fa."
+        property_is_deleted: "eliminato."
         upsale:
           title: "Avvisi data"
           description: "Con gli avvisi sulle date, sarai avvisato delle prossime date di inizio o di fine in modo da non perdere mai o dimenticare una scadenza importante."
@@ -652,6 +653,8 @@ it:
         new_notifications:
           message: "Ci sono nuove notifiche."
           link_text: "Clicca qui per caricarli."
+      reminders:
+        note: "Nota: \"%{note}\""
       settings:
         change_notification_settings: 'Puoi modificare le tue <a target="_blank" href="%{url}">impostazioni di notifica</a> per assicurarti di non perderti mai un aggiornamento importante.'
         title: "Impostazioni notifiche"
@@ -739,6 +742,7 @@ it:
         immediate:
           title: "Inviami un promemoria email"
           mentioned: "Subito quando qualcuno mi @menziona"
+          personal_reminder: "Immediatamente quando ricevo un promemoria personale"
         alerts:
           title: "Avvisi email per altri elementi (che non sono macro-attività)"
           explanation: >
@@ -770,10 +774,6 @@ it:
         upgrade_to_ee_text: "Wow! Se hai bisogno di questa aggiunta sei un vero professionista! Ti andrebbe di aiutare noi sviluppatori OpenSource diventando un cliente dell'edizione Enterprise?"
         more_information: "Altre informazioni"
         nevermind: "Lascia stare"
-      edit:
-        form_configuration: "Configurazione del modulo"
-        projects: "Progetti"
-        settings: "Impostazioni"
     time_entry:
       work_package_required: "Richiede prima di selezionare una macro-attività."
       title: "Registra l'orario effettuato"
@@ -1042,6 +1042,12 @@ it:
           not_found: "La vista non esiste"
           duplicate_query_title: "Il nome di questa vista è già esistente. Cambiarlo comunque?"
         text_no_results: "Nessuna vista corrispondente trovata."
+      reminders:
+        button_label: "Imposta promemoria"
+        title:
+          new: "Imposta promemoria"
+          edit: "Modifica promemoria"
+        subtitle: "Riceverai una notifica per questa macro-attività all'ora scelta."
       scheduling:
         is_parent: "Le date di questa macro-attività vengono automaticamente dedotte dai suoi figli. Attiva 'Programmazione manuale' per impostare le date."
         is_switched_from_manual_to_automatic: "Potrebbe essere necessario ricalcolare le date di questa macro-attività dopo il passaggio dalla programmazione manuale alla programmazione automatica a causa delle relazioni con altre macro-attività."
@@ -1345,5 +1351,3 @@ it:
       waiting_subtitle:
         network_off: "C'è un problema di rete."
         network_on: "La rete è tornata. Stiamo provando."
-        timeout: >
-          OpenProject non è stato in grado di darti accesso alla cartella del progetto entro il tempo previsto. Prova di nuovo.<br><br> Se il problema persiste contatta il tuo amministratore OpenProject per controllare lo <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">stato della configurazione di archiviazione dei file</a>.

@@ -4,31 +4,31 @@ pt-PT:
     description: "Adiciona fornecedores da estratégia OmniAuth OpenID Connect ao OpenProject."
   logout_warning: >
     A sua sessão foi terminada. O conteúdo de qualquer formulário que enviar poderá ser perdido. Por favor [inicie a sessão].
-  activemodel:
+  activerecord:
     attributes:
       openid_connect/provider:
-        name: Nome
-        slug: Identificador único
-        display_name: Nome a apresentar
+        name: Name
+        slug: Unique identifier
+        display_name: Display name
         client_id: Client ID
-        client_secret: Client Secret
-        secret: Segredo
-        scope: Contexto
-        limit_self_registration: Limitar auto-registo
-        authorization_endpoint: Endpoint da autorização
-        userinfo_endpoint: Endpoint da informação do utilizador
-        token_endpoint: Endpoint do token
-        end_session_endpoint: Endpoint de término de sessão
-        post_logout_redirect_uri: URI de redirecionamento após o encerramento da sessão
+        client_secret: Client secret
+        secret: Secret
+        scope: Scope
+        grant_types_supported: Supported grant types
+        limit_self_registration: Limit self registration
+        authorization_endpoint: Authorization endpoint
+        userinfo_endpoint: User information endpoint
+        token_endpoint: Token endpoint
+        end_session_endpoint: End session endpoint
+        post_logout_redirect_uri: Post logout redirect URI
         jwks_uri: JWKS URI
-        issuer: Emissor
-        tenant: Inquilino
-        metadata_url: URL dos metadados
-        icon: Ícone personalizado
-        claims: Reclamações
-        acr_values: Valores ACR
-        redirect_url: URL de Redirecionamento
-  activerecord:
+        issuer: Issuer
+        tenant: Tenant
+        metadata_url: Metadata URL
+        icon: Custom icon
+        claims: Claims
+        acr_values: ACR values
+        redirect_url: Redirect URL
     errors:
       models:
         openid_connect/provider:
@@ -62,6 +62,7 @@ pt-PT:
       limit_self_registration: Se estiver ativado, os utilizadores só podem registar-se utilizando este fornecedor se a configuração do fornecedor o permitir.
       display_name: O nome do fornecedor. Este nome será apresentado no botão de início de sessão e na lista de fornecedores.
       tenant: 'Substitua o inquilino predefinido pelo seu próprio inquilino, se aplicável. Consulte <a href=" https://learn.microsoft.com/pt-pt/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri">este artigo</a>.'
+      scope: Se pretender solicitar âmbitos personalizados, pode adicionar um ou vários valores de âmbito separados por espaços aqui. Para obter mais informações, consulte a [documentação do OpenID Connect](docs_url).
       post_logout_redirect_uri: O URL para o qual o fornecedor do OpenID Connect deve redirecionar após um pedido de encerramento de sessão.
       claims: >
         Pode solicitar reclamações adicionais para os endpoints userinfo e id token. Consulte [a nossa documentação sobre o OpenID connect](docs_url) para obter mais informações.
@@ -82,6 +83,7 @@ pt-PT:
       metadata_url: Tenho um URL de endpoint de descoberta
       endpoint_url: URL do Endpoint
     providers:
+      label_providers: "Fornecedores"
       seeded_from_env: "Este fornecedor foi semeado a partir da configuração do ambiente. Não pode ser editado."
       google:
         name: Google

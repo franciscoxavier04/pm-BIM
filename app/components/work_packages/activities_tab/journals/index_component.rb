@@ -32,21 +32,24 @@ module WorkPackages
   module ActivitiesTab
     module Journals
       class IndexComponent < ApplicationComponent
+        MAX_RECENT_JOURNALS = 30
+
         include ApplicationHelper
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
         include WorkPackages::ActivitiesTab::SharedHelpers
 
-        def initialize(work_package:, filter: :all)
+        def initialize(work_package:, filter: :all, deferred: false)
           super
 
           @work_package = work_package
           @filter = filter
+          @deferred = deferred
         end
 
         private
 
-        attr_reader :work_package, :filter
+        attr_reader :work_package, :filter, :deferred
 
         def insert_target_modified?
           true
@@ -60,16 +63,63 @@ module WorkPackages
           journal_sorting == "desc"
         end
 
+        def base_journals
+          combine_and_sort_records(fetch_journals, fetch_revisions)
+        end
+
+        def fetch_journals
+          API::V3::Activities::ActivityEagerLoadingWrapper.wrap(
+            work_package
+              .journals
+              .includes(:user, :customizable_journals, :attachable_journals, :storable_journals, :notifications)
+              .reorder(version: journal_sorting)
+              .with_sequence_version
+          )
+        end
+
+        def fetch_revisions
+          work_package.changesets.includes(:user, :repository)
+        end
+
+        def combine_and_sort_records(journals, revisions)
+          (journals + revisions).sort_by do |record|
+            timestamp = record_timestamp(record)
+            journal_sorting_desc? ? [-timestamp, -record.id] : [timestamp, record.id]
+          end
+        end
+
+        def record_timestamp(record)
+          if record.is_a?(API::V3::Activities::ActivityEagerLoadingWrapper)
+            record.created_at&.to_i
+          elsif record.is_a?(Changeset)
+            record.committed_on.to_i
+          end
+        end
+
         def journals
-          work_package
-            .journals
-            .includes(:user, :notifications)
-            .reorder(version: journal_sorting)
-            .with_sequence_version
+          base_journals
+        end
+
+        def recent_journals
+          if journal_sorting_desc?
+            base_journals.first(MAX_RECENT_JOURNALS)
+          else
+            base_journals.last(MAX_RECENT_JOURNALS)
+          end
+        end
+
+        def older_journals
+          if journal_sorting_desc?
+            base_journals.drop(MAX_RECENT_JOURNALS)
+          else
+            base_journals.take(base_journals.size - MAX_RECENT_JOURNALS)
+          end
         end
 
         def journal_with_notes
-          journals.where.not(notes: "")
+          work_package
+            .journals
+            .where.not(notes: "")
         end
 
         def wp_journals_grouped_emoji_reactions

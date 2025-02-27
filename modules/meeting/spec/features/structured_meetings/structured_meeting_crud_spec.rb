@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -33,8 +34,7 @@ require_relative "../../support/pages/structured_meeting/show"
 require_relative "../../support/pages/meetings/index"
 
 RSpec.describe "Structured meetings CRUD",
-               :js,
-               :with_cuprite do
+               :js do
   include Components::Autocompleter::NgSelectAutocompleteHelpers
 
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings work_package_tracking]) }
@@ -63,7 +63,7 @@ RSpec.describe "Structured meetings CRUD",
 
   let(:current_user) { user }
   let(:new_page) { Pages::Meetings::New.new(project) }
-  let(:meeting) { StructuredMeeting.order(id: :asc).last }
+  let(:meeting) { StructuredMeeting.last }
   let(:show_page) { Pages::StructuredMeeting::Show.new(meeting) }
   let(:meetings_page) { Pages::Meetings::Index.new(project:) }
 
@@ -210,13 +210,16 @@ RSpec.describe "Structured meetings CRUD",
   end
 
   it "can delete a meeting and get back to the index page" do
-    click_on("op-meetings-header-action-trigger")
+    show_page.trigger_dropdown_menu_item "Delete meeting"
+    show_page.expect_modal "Delete meeting"
 
-    accept_confirm(I18n.t("text_are_you_sure")) do
-      click_on "Delete meeting"
+    show_page.within_modal "Delete meeting" do
+      click_on "Delete"
     end
 
     expect(page).to have_current_path project_meetings_path(project)
+
+    expect_flash(type: :success, message: "Successful deletion.")
   end
 
   context "when exporting as ICS" do
@@ -290,9 +293,9 @@ RSpec.describe "Structured meetings CRUD",
       click_on("Save")
     end
 
-    click_on("op-meetings-header-action-trigger")
-
+    wait_for_network_idle
     retry_block do
+      click_on("op-meetings-header-action-trigger")
       click_on "Copy"
       # dynamically wait for the modal to be loaded
       expect(page).to have_text("Copy meeting")
@@ -307,7 +310,7 @@ RSpec.describe "Structured meetings CRUD",
     fill_in "Title", with: "Some title"
     click_on "Create meeting"
 
-    new_meeting = StructuredMeeting.reorder(id: :asc).last
+    new_meeting = StructuredMeeting.last
     expect(page).to have_current_path "/projects/#{project.identifier}/meetings/#{new_meeting.id}"
 
     # check for copied agenda items
@@ -315,7 +318,7 @@ RSpec.describe "Structured meetings CRUD",
 
     # check for copied participants with attended status reset
     page.find_test_selector("manage-participants-button").click
-    expect(page).to have_css("#edit-participants-dialog")
+    expect(page).to have_modal("Participants")
     expect(page).to have_field(id: "checkbox_invited_#{other_user.id}", checked: true)
     expect(page).to have_field(id: "checkbox_attended_#{other_user.id}", checked: false)
 

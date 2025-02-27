@@ -32,33 +32,50 @@ module Meetings
   class TableComponent < ::OpPrimer::BorderBoxTableComponent
     options :current_project # used to determine if displaying the projects column
 
-    columns :title, :project_name, :start_time, :duration, :location
+    columns :title, :start_time, :project_name, :duration, :location, :frequency
+
+    mobile_columns :title, :start_time, :project_name
+
+    mobile_labels :project_name
+
+    main_column :title
 
     def sortable?
-      true
+      false
     end
 
-    def initial_sort
-      %i[start_time asc]
+    def paginated?
+      false
+    end
+
+    def has_footer?
+      model.is_a?(ActiveRecord::Relation) &&
+        (model.total_entries > model.size)
+    end
+
+    def footer
+      render Meetings::TableFooterComponent.new(
+        upcoming: options[:upcoming],
+        total: model.total_entries,
+        count: model.size
+      )
     end
 
     def has_actions?
       true
     end
 
-    def header_args(column)
-      if column == :title
-        { style: "grid-column: span 2" }
-      else
-        super
-      end
+    def mobile_title
+      I18n.t(:label_meeting_plural)
     end
 
     def headers
       @headers ||= [
         [:title, { caption: Meeting.human_attribute_name(:title) }],
+        recurring? ? [:frequency, { caption: I18n.t("activerecord.attributes.recurring_meeting.frequency") }] : nil,
+        [:start_time,
+         { caption: recurring? ? I18n.t("activerecord.attributes.meeting.start_time") : I18n.t(:label_meeting_date_and_time) }],
         current_project.blank? ? [:project_name, { caption: Meeting.human_attribute_name(:project) }] : nil,
-        [:start_time, { caption: I18n.t(:label_meeting_date_and_time) }],
         [:duration, { caption: Meeting.human_attribute_name(:duration) }],
         [:location, { caption: Meeting.human_attribute_name(:location) }]
       ].compact
@@ -66,6 +83,18 @@ module Meetings
 
     def columns
       @columns ||= headers.map(&:first)
+    end
+
+    def recurring?
+      model.first.is_a?(RecurringMeeting)
+    end
+
+    def blank_title
+      I18n.t("meeting.blankslate.title")
+    end
+
+    def blank_description
+      I18n.t("meeting.blankslate.desc")
     end
   end
 end

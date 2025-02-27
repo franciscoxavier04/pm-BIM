@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -129,13 +131,31 @@ Rails.application.routes.draw do
 
   get "/roles/workflow/:id/:role_id/:type_id" => "roles#workflow"
 
-  get "/types/:id/edit/:tab" => "types#edit",
-      as: "edit_type_tab"
-  match "/types/:id/update/:tab" => "types#update",
-        as: "update_type_tab",
-        via: %i[post patch]
   resources :types do
-    post "move/:id", action: "move", on: :collection
+    member do
+      get "edit/:tab" => "types#edit", as: "edit_tab"
+      match "update/:tab" => "types#update", as: "update_tab", via: %i[post patch]
+      put :subject_configuration,
+          controller: "work_packages/types/subject_configuration_tab",
+          action: "update_subject_configuration"
+    end
+
+    resources :pdf_export_template, only: %i[],
+                                    controller: "work_packages/types/pdf_export_template",
+                                    path: "pdf_export_template" do
+      member do
+        post :toggle
+        put :drop
+      end
+      collection do
+        put :enable_all
+        put :disable_all
+      end
+    end
+
+    collection do
+      post "move/:id", action: "move"
+    end
   end
 
   resources :statuses, except: :show
@@ -244,6 +264,15 @@ Rails.application.routes.draw do
             put :disable_all_of_section
           end
         end
+        resources :life_cycle_steps, only: %i[index], path: "life_cycle" do
+          member do
+            post :toggle
+          end
+          collection do
+            post :enable_all
+            post :disable_all
+          end
+        end
         resource :custom_fields, only: %i[show update]
         resource :repository, only: %i[show], controller: "repository"
         resource :versions, only: %i[show]
@@ -330,12 +359,19 @@ Rails.application.routes.draw do
       end
 
       # states managed by client-side routing on work_package#index
-      get "(/*state)" => "work_packages#index", on: :collection, as: ""
+      get "(/*state)" => "work_packages#index", on: :collection, as: "", constraints: { state: /(?!(dialog)).+/ }
+
       get "/create_new" => "work_packages#index", on: :collection, as: "new_split"
       get "/new" => "work_packages#index", on: :collection, as: "new"
 
       # state for show view in project context
-      get "(/*state)" => "work_packages#show", on: :member, as: ""
+      get "(/*state)" => "work_packages#show", on: :member, as: "", constraints: { id: /\d+/, state: /(?!(dialog)).+/ }
+    end
+
+    namespace :work_packages do
+      resource :dialog, only: %i[new create] do
+        post :refresh_form
+      end
     end
 
     resources :activity, :activities, only: :index, controller: "activities" do
@@ -424,9 +460,6 @@ Rails.application.routes.draw do
         delete "enterprise/delete_trial_key" => "enterprises#delete_trial_key"
       end
     end
-    resources :enumerations do
-      post "move/:id", action: "move", on: :collection
-    end
 
     delete "design/logo" => "custom_styles#logo_delete", as: "custom_style_logo_delete"
     delete "design/export_logo" => "custom_styles#export_logo_delete", as: "custom_style_export_logo_delete"
@@ -445,10 +478,10 @@ Rails.application.routes.draw do
 
     resources :groups, except: %i[show] do
       member do
-        # this should be put into it's own resource
+        # this should be put into its own resource
         post "/members" => "groups#add_users", as: "members_of"
         delete "/members/:user_id" => "groups#remove_user", as: "member_of"
-        # this should be put into it's own resource
+        # this should be put into its own resource
         patch "/memberships/:membership_id" => "groups#edit_membership", as: "membership_of"
         put "/memberships/:membership_id" => "groups#edit_membership"
         delete "/memberships/:membership_id" => "groups#destroy_membership"
@@ -502,9 +535,29 @@ Rails.application.routes.draw do
       # It is important to have this named something else than "work_packages".
       # Otherwise the angular ui-router will also recognize that as a WorkPackage page and apply according classes.
       resource :work_packages_general, controller: "/admin/settings/work_packages_general", only: %i[show update]
+      resources :work_package_priorities, except: [:show] do
+        member do
+          put :move
+          get :reassign
+        end
+      end
+
       resource :progress_tracking, controller: "/admin/settings/progress_tracking", only: %i[show update]
       resource :projects, controller: "/admin/settings/projects_settings", only: %i[show update]
       resource :new_project, controller: "/admin/settings/new_project_settings", only: %i[show update]
+      resources :project_life_cycle_step_definitions,
+                path: "project_life_cycle",
+                controller: "/admin/settings/project_life_cycle_step_definitions",
+                only: %i[index create edit update destroy] do
+        collection do
+          get :new_stage
+          get :new_gate
+        end
+        member do
+          patch :move
+          put :drop # should be patch, but requires passing method to generic-drag-and-drop controller
+        end
+      end
       resources :project_custom_fields, controller: "/admin/settings/project_custom_fields" do
         member do
           delete "options/:option_id", action: "delete_option", as: :delete_option_of
@@ -574,6 +627,9 @@ Rails.application.routes.draw do
 
     get "hover_card" => "work_packages/hover_card#show", on: :member
 
+    get "generate_pdf_dialog" => "work_packages#generate_pdf_dialog", on: :member
+    post "generate_pdf" => "work_packages#generate_pdf", on: :member
+
     # move bulk of wps
     get "move/new" => "work_packages/moves#new", on: :collection, as: "new_move"
     post "move" => "work_packages/moves#create", on: :collection, as: "move"
@@ -595,6 +651,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :children_relations, only: %i[new create destroy], controller: "work_package_children_relations"
+
     resource :progress, only: %i[new edit update], controller: "work_packages/progress"
     collection do
       resource :progress,
@@ -602,10 +660,22 @@ Rails.application.routes.draw do
                controller: "work_packages/progress",
                as: :work_package_progress
     end
+    resources :relations_tab, only: %i[index], controller: "work_package_relations_tab"
+    resources :relations, only: %i[new create edit update destroy], controller: "work_package_relations"
+
+    resources :reminders,
+              controller: "work_packages/reminders",
+              only: %i[create update destroy] do
+      get :modal_body, on: :collection
+    end
+
     get "/export_dialog" => "work_packages#export_dialog", on: :collection, as: "export_dialog"
     get :show_conflict_flash_message, on: :collection # we don't need a specific work package for this
 
     get "/split_view/update_counter" => "work_packages/split_view#update_counter",
+        on: :member
+
+    get "/split_view/get_relations_counter" => "work_packages/split_view#get_relations_counter",
         on: :member
 
     # states managed by client-side (angular) routing on work_package#show
@@ -634,6 +704,7 @@ Rails.application.routes.draw do
     resources :memberships, controller: "users/memberships", only: %i[update create destroy]
 
     member do
+      get "/hover_card" => "users/hover_card#show"
       get "/edit(/:tab)" => "users#edit", as: "edit"
       get "/change_status/:change_action" => "users#change_status_info", as: "change_status_info"
       post :change_status
@@ -695,8 +766,8 @@ Rails.application.routes.draw do
 
   scope controller: "sys" do
     match "/sys/repo_auth", action: "repo_auth", via: %i[get post]
+    get "/sys/fetch_changesets", action: "fetch_changesets"
     match "/sys/projects", to: proc { [410, {}, [""]] }, via: :all
-    match "/sys/fetch_changesets", to: proc { [410, {}, [""]] }, via: :all
     match "/sys/projects/:id/repository/update_storage", to: proc { [410, {}, [""]] }, via: :all
   end
 

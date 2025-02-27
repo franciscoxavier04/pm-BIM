@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -40,16 +42,20 @@
 require "open3"
 
 class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::QueryExporter
-  include WorkPackage::PDFExport::Common
-  include WorkPackage::PDFExport::Attachments
-  include WorkPackage::PDFExport::OverviewTable
-  include WorkPackage::PDFExport::SumsTable
-  include WorkPackage::PDFExport::WorkPackageDetail
-  include WorkPackage::PDFExport::TableOfContents
-  include WorkPackage::PDFExport::Page
-  include WorkPackage::PDFExport::Gantt
-  include WorkPackage::PDFExport::Style
-  include WorkPackage::PDFExport::Cover
+  include WorkPackage::PDFExport::Common::Common
+  include WorkPackage::PDFExport::Common::Logo
+  include WorkPackage::PDFExport::Common::Attachments
+  include WorkPackage::PDFExport::Export::ExportCommon
+  include WorkPackage::PDFExport::Export::WorkPackageDetail
+  include WorkPackage::PDFExport::Export::Page
+  include WorkPackage::PDFExport::Export::Style
+  include WorkPackage::PDFExport::Export::OverviewTable
+  include WorkPackage::PDFExport::Export::SumsTable
+  include WorkPackage::PDFExport::Export::WorkPackageDetail
+  include WorkPackage::PDFExport::Export::TableOfContents
+  include WorkPackage::PDFExport::Export::Style
+  include WorkPackage::PDFExport::Export::Cover
+  include WorkPackage::PDFExport::Export::Gantt
 
   attr_accessor :pdf,
                 :options
@@ -67,20 +73,26 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
     setup_page!
   end
 
+  def get_columns
+    return [] if query.column_names.empty? && wants_report?
+
+    super
+  end
+
   def export!
     file = render_work_packages query.results.work_packages
     success(file)
   rescue Prawn::Errors::CannotFit
     error(I18n.t(:error_pdf_export_too_many_columns))
   rescue StandardError => e
-    Rails.logger.error { "Failed to generate PDF export: #{e}." }
-    error(I18n.t(:error_pdf_failed_to_export, error: e.message[0..300]))
+    Rails.logger.error "Failed to generate PDF export:  #{e.message}:\n#{e.backtrace.join("\n")}"
+    error(I18n.t(:error_pdf_failed_to_export, error: e.message))
   end
 
   private
 
   def setup_page!
-    self.pdf = get_pdf(current_language)
+    self.pdf = get_pdf
 
     configure_page_size!(wants_report? ? :portrait : :landscape)
   end
@@ -103,6 +115,22 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
 
   def with_cover?
     wants_report?
+  end
+
+  def cover_page_title
+    project&.name
+  end
+
+  def cover_page_heading
+    heading
+  end
+
+  def cover_page_subheading
+    User.current&.name
+  end
+
+  def cover_page_dates
+    nil
   end
 
   def render_work_packages_pdfs(work_packages, filename)

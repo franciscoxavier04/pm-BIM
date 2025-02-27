@@ -39,16 +39,22 @@ require_relative "../../lib_static/open_project/feature_decisions"
 #     OpenProject::FeatureDecisions.add :some_flag
 #   end
 
-OpenProject::FeatureDecisions.add :primerized_work_package_activities
 OpenProject::FeatureDecisions.add :built_in_oauth_applications,
                                   description: "Allows the display and use of built-in OAuth applications."
 
-OpenProject::FeatureDecisions.add :custom_field_of_type_hierarchy,
-                                  description: "Allows the use of the custom field type 'Hierarchy'."
+OpenProject::FeatureDecisions.add :generate_work_package_subjects,
+                                  description: "Allows the configuration for work package types to have " \
+                                               "automatically generated work package subjects."
 
-# TODO: Remove once the feature flag primerized_work_package_activities is removed altogether
-OpenProject::FeatureDecisions.define_singleton_method(:primerized_work_package_activities_active?) do
-  Rails.env.production? ||
-    (Setting.exists?("feature_primerized_work_package_activities_active") &&
-      Setting.send(:feature_primerized_work_package_activities_active?))
-end
+OpenProject::FeatureDecisions.add :stages_and_gates,
+                                  description: "Enables the under construction feature of stages and gates."
+
+OpenProject::FeatureDecisions.add :oidc_token_exchange,
+                                  description: "Enables the under construction OAuth2 token exchange, allowing " \
+                                               "users to interact with storage providers without consenting " \
+                                               "in OAuth screens before first use."
+
+OpenProject::FeatureDecisions.add :work_package_comment_id_url,
+                                  description: "Introduced a new WP comment URL identifier structure " \
+                                               "`#comment-<journal-id>` replacing the old " \
+                                               "`#activity-<journal-sequence_number>`."

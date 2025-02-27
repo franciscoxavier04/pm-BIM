@@ -30,9 +30,11 @@ sl:
         overridden_costs: "Povoženi stroški "
         spent: "Porabljeno"
         spent_on: "Datum"
+        logged_by: "Logged by"
       cost_type:
         unit: "Ime enote"
         unit_plural: "Pluralizirano ime enote"
+        default: "Cost type by default"
       work_package:
         costs_by_type: "Porabljene enote"
         labor_costs: "Stroški dela"
@@ -44,15 +46,33 @@ sl:
         rate: "Stopnja"
       user:
         default_rates: "Privzeti tečaj"
+      time_entry:
+        project: Project
+        user: User
+        work_package: Work package
+        hours: Ure
+        comments: Comment
+        activity: Aktivnost
+        spent_on: Datum
+        start_time: Start time
+        end_time: Finish time
     models:
       cost_type:
         one: "Vrsta stroška"
         two: "Vrsta stroška"
         few: "Vrsta stroška"
         other: "Vrsta stroška"
+      time_entry_activity:
+        one: "Time tracking activity"
+        two: "Time tracking activities"
+        few: "Time tracking activities"
+        other: "Time tracking activities"
       rate: "Stopnja"
     errors:
       models:
+        time_entry:
+          invalid_time: "must be between 00:00 and 23:59."
+          cannot_log_for_this_work_package: "Cannot log time for this work package."
         work_package:
           is_not_a_valid_target_for_cost_entries: "Delovni paket #%{id} ni veljaven cilj za prerazporeditev vnosov stroškov."
           nullify_is_not_valid_for_cost_entries: "Vnosa stroškov ni mogoče dodeliti projektu."
@@ -67,6 +87,8 @@ sl:
     fixed_date: "Fiksen datum"
   button_add_rate: "Vnesi tečaj"
   button_log_costs: "Stroški enote dnevnika"
+  button_log_time: "Log"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Rezervirano na projektu"
   caption_default: "Privzeto"
   caption_default_rate_history_for: "Zgodovina privzetih tečajev za %{user}"
@@ -78,7 +100,10 @@ sl:
   caption_save_rate: "Shrani tečaj"
   caption_set_rate: "Nastavite trenutni tečaj"
   caption_show_locked: "Pokaži zaklenjene enote"
+  caption_log_time_dialog: "Log time"
   description_date_for_new_rate: "Datum novega tečaja"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
   group_by_others: "ni v nobeni skupini"
   label_between: "med"
   label_cost_filter_add: "Dodajte filter za vnos stroškov"
@@ -87,8 +112,6 @@ sl:
   label_cost_type_plural: "Vrsta stroška"
   label_cost_type_specific: "Vrsta stroška #%{id}: %{name}"
   label_costs_per_page: "Strošek na stran"
-  label_currency: "Valuta"
-  label_currency_format: "Oblika valute"
   label_current_default_rate: "Trenuten prevzeti tečaj\n"
   label_date_on: "vključeno"
   label_deleted_cost_types: "Izbrisane vrste stroškov"
@@ -107,6 +130,8 @@ sl:
   label_kind: "Vrsta"
   label_less_or_equal: "<="
   label_log_costs: "Stroški enote dnevnika"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Ne"
   label_option_plural: "Možnosti"
   label_overall_costs: "Celotni stroški"
@@ -119,10 +144,16 @@ sl:
   label_until: "do"
   label_valid_from: "Veljavno od"
   label_yes: "Da"
+  label_time: "Time"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
+  placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "nekaj je šlo narobe. Prosim poskusite ponovno."
   notice_successful_restore: "Uspešna obnovitev."
   notice_successful_lock: "Uspešno zaklenjeno."
-  notice_cost_logged_successfully: 'Stroški na enoto so bili uspešno prijavljeni.'
+  notice_cost_logged_successfully: "Stroški na enoto so bili uspešno prijavljeni."
+  notice_different_time_zones: "This user has a different time zone (%{tz}). Time will be logged using their time zone."
   permission_edit_cost_entries: "Uredite rezervirane stroške na enoto"
   permission_edit_own_cost_entries: "Uredite lastne rezervirane stroške na enoto"
   permission_edit_hourly_rates: "Urejanje urnih postavk"
@@ -137,6 +168,10 @@ sl:
   permission_view_own_hourly_rate: "Oglejte si lastno urno postavko"
   permission_view_own_time_entries: "Oglejte si svoj porabljen čas"
   project_module_costs: "Čas in stroški"
+  setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
+  setting_costs_currency: "Currency"
+  setting_costs_currency_format: "Format of currency"
+  setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "Projektu dodelite prijavljene ure in stroške"
   text_destroy_cost_entries_question: "%{cost_entries} so bili prijavljeni v delovnih paketih, ki jih boste izbrisali. Kaj želiš narediti ?"
   text_destroy_time_and_cost_entries: "Izbrišite prijavljene ure in stroške"
@@ -146,3 +181,7 @@ sl:
   week: "teden"
   js:
     text_are_you_sure: "Ste prepričani?"
+  api_v3:
+    errors:
+      validation:
+        start_time_different_date: "Date part of startTime (%{start_time}) must be the same as the spentOn (%{spent_on}) date."

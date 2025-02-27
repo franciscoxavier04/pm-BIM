@@ -30,8 +30,7 @@ require "spec_helper"
 require_module_spec_helper
 
 RSpec.describe "OIDC administration CRUD",
-               :js,
-               :with_cuprite do
+               :js do
   shared_let(:user) { create(:admin) }
   let(:danger_zone) { DangerZone.new(page) }
 
@@ -63,6 +62,9 @@ RSpec.describe "OIDC administration CRUD",
       # Client credentials
       fill_in "Client ID", with: "client_id"
       fill_in "Client secret", with: "client secret"
+
+      # Scope
+      fill_in "Scope", with: "custom_scope another_scope"
 
       click_link_or_button "Continue"
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,7 +29,7 @@
 
 require "spec_helper"
 
-RSpec.describe "Meetings copy", :js, :with_cuprite do
+RSpec.describe "Meetings copy", :js do
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
   shared_let(:permissions) { %i[view_meetings create_meetings] }
   shared_let(:user) do
@@ -49,6 +50,7 @@ RSpec.describe "Meetings copy", :js, :with_cuprite do
   shared_let(:agenda_text) { "We will talk" }
   shared_let(:meeting) do
     create(:meeting,
+           :author_participates,
            author: user,
            project:,
            title: "Awesome meeting!",

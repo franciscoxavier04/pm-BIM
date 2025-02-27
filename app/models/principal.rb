@@ -176,6 +176,11 @@ class Principal < ApplicationRecord
     false
   end
 
+  # Returns true if usr or current user is allowed to view the user
+  def visible?(usr = User.current)
+    User.visible(usr).exists?(id: id)
+  end
+
   def <=>(other)
     if instance_of?(other.class)
       to_s.downcase <=> other.to_s.downcase

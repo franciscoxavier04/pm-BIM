@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,11 +29,13 @@
 #++
 
 class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
-  include WorkPackage::PDFExport::Common
-  include WorkPackage::PDFExport::Attachments
-  include WorkPackage::PDFExport::WorkPackageDetail
-  include WorkPackage::PDFExport::Page
-  include WorkPackage::PDFExport::Style
+  include WorkPackage::PDFExport::Common::Common
+  include WorkPackage::PDFExport::Common::Logo
+  include WorkPackage::PDFExport::Common::Attachments
+  include WorkPackage::PDFExport::Export::ExportCommon
+  include WorkPackage::PDFExport::Export::WorkPackageDetail
+  include WorkPackage::PDFExport::Export::Page
+  include WorkPackage::PDFExport::Export::Style
 
   attr_accessor :pdf, :columns
 
@@ -54,12 +58,12 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
     render_work_package
     success(pdf.render)
   rescue StandardError => e
-    Rails.logger.error { "Failed to generated PDF export: #{e} #{e.message}}." }
+    Rails.logger.error "Failed to generate PDF export:  #{e.message}:\n#{e.backtrace.join("\n")}"
     error(I18n.t(:error_pdf_failed_to_export, error: e.message))
   end
 
   def setup_page!
-    self.pdf = get_pdf(current_language)
+    self.pdf = get_pdf
     @page_count = 0
     configure_page_size!(:portrait)
   end
@@ -76,7 +80,7 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   end
 
   def footer_title
-    work_package.project.name
+    options[:footer_text_right]
   end
 
   def title

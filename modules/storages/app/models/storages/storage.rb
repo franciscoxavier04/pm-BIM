@@ -92,14 +92,12 @@ module Storages
     }, prefix: :health
 
     def self.shorten_provider_type(provider_type)
-      case /Storages::(?'provider_name'.*)Storage/.match(provider_type)
-      in provider_name:
-        provider_name.underscore
-      else
-        raise ArgumentError,
-              "Unknown provider_type! Given: #{provider_type}. " \
-              "Expected the following signature: Storages::{Name of the provider}Storage"
-      end
+      short, = PROVIDER_TYPE_SHORT_NAMES.find { |_, long| provider_type == long }
+      return short.to_s if short
+
+      raise ArgumentError,
+            "Unknown provider_type! Given: #{provider_type}. " \
+            "Known provider types are defined in Storages::Storage::PROVIDER_TYPE_SHORT_NAMES."
     end
 
     def self.one_drive_without_ee_token?(provider_type)
@@ -146,6 +144,21 @@ module Storages
     alias automatic_management_enabled automatically_managed
 
     def available_project_folder_modes
+      raise Errors::SubclassResponsibility
+    end
+
+    # Returns a value of an audience, if configured for this storage.
+    # The presence of an audience signals that this storage prioritizes
+    # remote authentication via Single-Sign-On if possible.
+    def audience
+      raise Errors::SubclassResponsibility
+    end
+
+    def authenticate_via_idp?
+      raise Errors::SubclassResponsibility
+    end
+
+    def authenticate_via_storage?
       raise Errors::SubclassResponsibility
     end
 

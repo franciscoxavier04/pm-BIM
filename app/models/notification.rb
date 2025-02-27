@@ -40,7 +40,8 @@ class Notification < ApplicationRecord
     responsible: 9,
     date_alert_start_date: 10,
     date_alert_due_date: 11,
-    shared: 12
+    shared: 12,
+    reminder: 13
   }.freeze
 
   enum :reason, REASONS, prefix: true
@@ -49,6 +50,9 @@ class Notification < ApplicationRecord
   belongs_to :actor, class_name: "User"
   belongs_to :journal
   belongs_to :resource, polymorphic: true
+
+  has_one :reminder_notification, dependent: :destroy
+  has_one :reminder, through: :reminder_notification
 
   include Scopes::Scoped
   scopes :unsent_reminders_before,

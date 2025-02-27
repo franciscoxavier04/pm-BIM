@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -41,6 +42,10 @@ class Queries::Meetings::Filters::AttendedUserFilter < Queries::Meetings::Filter
 
   def where
     "meeting_participants.user_id IN (#{values.join(',')}) AND meeting_participants.attended"
+  end
+
+  def human_name
+    I18n.t(:label_attended_user)
   end
 
   def joins

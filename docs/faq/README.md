@@ -41,6 +41,16 @@ The system requirements can be found [here](../installation-and-operations/syste
 
 Apart from using OpenProject in the cloud (OpenProject Enterprise cloud) OpenProject can be installed in two different ways: The packaged installation of OpenProject is the recommended way to install and maintain OpenProject using DEB or RPM packages. There's also a Docker based installation option.
 
+### Does OpenProject provide software releases with Long Term Support (LTS)?
+
+The OpenProject team does **not** provide Long Term Support. The main reasons are:
+
+- Backporting to older releases creates high  development, quality assurance, and support costs. This time is better  invested in building software releases that solve problems.
+- Supporting parallel versions discourages incremental  upgrades, which over time accumulate complexity and create upgrade  challenges for all users. The goal of the OpenProject team is to make  incremental upgrades (and installations) as simple as possible.
+- Even though OpenProject invests heavily in test  automation, those automated tests cannot avoid all regressions when  backporting bug fixes. This results in significant additional effort for the development and QA teams.
+
+OpenProject provides free hosting as part of its  Cloud edition. With the Cloud edition, admins do not need to worry about software upgrades.
+
 ### How can I learn more about OpenProject?
 
 Here are resources to get to know OpenProject:
@@ -54,7 +64,7 @@ Here are resources to get to know OpenProject:
 
 ### Can I run OpenProject as a single user?
 
-Our minimum plan for the Enterprise cloud edition and Enterprise on-premises edition is five users. Our pricing scheme covers three subscription options: Community edition ($0), Enterprise cloud (€5.95/member/month or $7.25/member/month), and Enterprise on-premises (€5.95/member/month or $7.25/member/month). We recommend to start the [Community version](https://www.openproject.org/download-and-installation/) free of charge if the five user minimum is an issue for you.
+Our minimum plan for the Enterprise cloud edition is 5 users. For the Enterprise on-premises edition it is 25 users. Our pricing scheme covers three subscription options: Community edition ($0), Enterprise cloud (€5.95/member/month or $7.25/member/month), and Enterprise on-premises (€5.95/member/month or $7.25/member/month). We recommend to start the [Community version](https://www.openproject.org/download-and-installation/) free of charge if the five user minimum is an issue for you.
 
 ### OpenProject is Open Source. Which kind of license does it come with? What am I allowed to do? What can I change?
 
@@ -296,7 +306,7 @@ OpenProject changed the database from MySQL (rarely also MariaDB) in older Versi
 
 ### How can I contribute to OpenProject?
 
-We welcome everybody willing to help make OpenProject better. There are a lot of possibilities for helping, be it [improving the translations](../development/translate-openproject) via crowdin, answering questions in the [forums](https://community.openproject.org/projects/openproject/forums) or by fixing bugs and implementing features.
+We welcome everybody willing to help make OpenProject better. There are a lot of possibilities for helping, be it [improving the translations](../contributions-guide/translate-openproject) via crowdin, answering questions in the [forums](https://community.openproject.org/projects/openproject/forums) or by fixing bugs and implementing features.
 
 If you want to code, a good starting point would be to make yourself familiar with the [basic approaches for developing](../development/) in OpenProject and opening a pull request on GitHub referencing an existing bug report or feature request. Find our GitHub page [here](https://github.com/opf/openproject).
 

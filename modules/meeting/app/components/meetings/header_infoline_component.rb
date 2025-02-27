@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -31,6 +32,7 @@ module Meetings
     def initialize(meeting)
       super
       @meeting = meeting
+      @series = meeting.recurring_meeting
     end
 
     def last_updated_at

@@ -34,6 +34,17 @@ ro:
           name: Gri închis
         item_13:
           name: Negru
+      life_cycle_colors:
+        item_0:
+          name: PM2 Orange
+        item_1:
+          name: PM2 Purple
+        item_2:
+          name: PM2 Red
+        item_3:
+          name: PM2 Magenta
+        item_4:
+          name: PM2 Green Yellow
       document_categories:
         item_0:
           name: Documentație
@@ -70,6 +81,21 @@ ro:
         item_1:
           name: Standard global role
     standard:
+      life_cycles:
+        item_0:
+          name: Initiating
+        item_1:
+          name: Ready for Planning
+        item_2:
+          name: Planning
+        item_3:
+          name: Ready for Executing
+        item_4:
+          name: Executing
+        item_5:
+          name: Ready for Closing
+        item_6:
+          name: Closing
       priorities:
         item_0:
           name: Scăzută
@@ -81,7 +107,7 @@ ro:
           name: Imediată
       projects:
         demo-project:
-          name: Demo project
+          name: Proiect demonstrativ
           status_explanation: All tasks are on schedule. The people involved know their tasks. The system is completely set up.
           description: This is a short summary of the goals of this demo project.
           news:
@@ -328,14 +354,14 @@ ro:
               subject: New website
               children:
                 item_0:
-                  subject: Newsletter registration form
+                  subject: Formular de înregistrare la newsletter
                 item_1:
                   subject: Implement product tour
                 item_2:
-                  subject: New landing page
+                  subject: Pagină de destinație nouă
                   children:
                     item_0:
-                      subject: Create wireframes for new landing page
+                      subject: Creează wireframes pentru noua pagină de destinație
             item_3:
               subject: Contact form
             item_4:
@@ -420,9 +446,9 @@ ro:
         item_0:
           name: Nou
         item_1:
-          name: Specificații în curs
+          name: Specificație în curs
         item_2:
-          name: Cu specificații
+          name: Specificat
         item_3:
           name: Confirmat
         item_4:

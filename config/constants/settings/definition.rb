@@ -463,7 +463,7 @@ module Settings
       },
       enterprise_plan: {
         description: "Default EE selected plan",
-        default: "enterprise-on-premises---euro---1-year",
+        default: "enterprise-on-premises---basic---euro---1-year",
         writable: false
       },
       feeds_enabled: {
@@ -701,8 +701,8 @@ module Settings
         default: 60000
       },
       oauth_allow_remapping_of_existing_users: {
-        description: "When set to false, prevent users from other identity providers to take over accounts connected " \
-                     "to another identity provider.",
+        description: "When set to false, prevent users from other identity providers to take over accounts " \
+                     "that exist in OpenProject.",
         default: true
       },
       omniauth_direct_login_provider: {
@@ -923,6 +923,12 @@ module Settings
         default: "https://releases.openproject.com/v1/check.svg",
         writable: false
       },
+      seed_admin_user_locked: {
+        description: "Lock the created admin user after seeding, so it can not be used for logging in. " \
+                     "If set to true, an admin user has to be created manually or through an SSO provider.",
+        default: false,
+        writable: false
+      },
       seed_admin_user_password: {
         description: 'Password to set for the initially created admin user (Login remains "admin").',
         default: "admin",
@@ -949,6 +955,19 @@ module Settings
         default: nil,
         format: :hash,
         string_values: true
+      },
+      seed_design: {
+        description: "Seed enterprise-edition theme colors and logos through ENV",
+        writable: false,
+        default: nil,
+        format: :hash,
+        string_values: true
+      },
+      seed_enterprise_token: {
+        description: "Seed enterprise-edition token through ENV",
+        writable: false,
+        format: :string,
+        default: nil
       },
       self_registration: {
         default: 2

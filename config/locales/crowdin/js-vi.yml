@@ -103,8 +103,8 @@ vi:
     button_settings: "Cài đặt"
     button_uncheck_all: "Bỏ chọn tất cả"
     button_update: "Cập Nhật"
-    button_export-pdf: "Tải xuống PDF"
     button_export-atom: "Tải xuống Atom"
+    button_generate_pdf: "Generate PDF"
     button_create: "Tạo"
     card:
       add_new: "Thêm thẻ mới"
@@ -356,10 +356,10 @@ vi:
           learn_about: "Tìm hiểu thêm về các tính năng mới"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_0":
+          "15_3":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Boost your communication with a better structured Activity tab, real-time loading messages and notifications, emoji reactions, and more.</li> <li>Benefit from easy Single Sign-On authentication settings with SAML and OIDC in your Enterprise Cloud administration.</li> <li>Use the new 'Standard global role' and enable permissions to view email addresses.</li> <li>Enjoy easier navigation in project lists with quick action table headers.</li> <li>Experience simplified design settings with fewer sidebar design variables needed.</li> <li>Reduce manual cleanup when adding a custom field to a type – no more auto-applying to all projects.</li> <li>Benefit from improved navigation clarity – 'My account' is renamed to 'Account settings'.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
     ical_sharing_modal:
       title: "Đăng ký lịch"
       inital_setup_error_message: "Đã xảy ra lỗi khi lấy dữ liệu."
@@ -575,7 +575,7 @@ vi:
         members: "Mời <b>thành viên mới</b> tham gia dự án của bạn."
         quick_add_button: "Nhấp vào biểu tượng cộng (+) trong thanh điều hướng tiêu đề để <b>tạo một dự án mới</b> hoặc <b>mời đồng nghiệp</b>."
         sidebar_arrow: "Sử dụng mũi tên trở lại ở góc trên bên trái để quay lại <b>menu chính</b> của dự án."
-        welcome: "Tham gia tour giới thiệu ba phút để tìm hiểu những <b>tính năng quan trọng</b> nhất. <br> Chúng tôi khuyến nghị bạn hoàn thành các bước cho đến cuối. Bạn có thể khởi động lại tour bất kỳ lúc nào."
+        welcome: "Take a three-minute introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
         wiki: "Trong <b>wiki</b>, bạn có thể tài liệu hóa và chia sẻ kiến thức cùng với nhóm của bạn."
         backlogs:
           overview: "Quản lý công việc của bạn trong chế độ xem <b>backlogs</b>."
@@ -620,14 +620,15 @@ vi:
         prioritized: "được ưu tiên"
         dateAlert: "Cảnh báo ngày"
         shared: "được chia sẻ"
+        reminder: "Reminder"
       date_alerts:
         milestone_date: "Ngày mốc"
         overdue: "Quá hạn"
-        overdue_since: "kể từ %{difference_in_days}"
-        property_today: "là hôm nay"
-        property_is: "là trong %{difference_in_days}"
-        property_was: "đã là %{difference_in_days} trước"
-        property_is_deleted: "đã bị xóa"
+        overdue_since: "since %{difference_in_days}."
+        property_today: "is today."
+        property_is: "is in %{difference_in_days}."
+        property_was: "was %{difference_in_days} ago."
+        property_is_deleted: "is deleted."
         upsale:
           title: "Cảnh báo ngày"
           description: "Với cảnh báo ngày, bạn sẽ được thông báo về các ngày bắt đầu hoặc kết thúc sắp tới để không bao giờ bỏ lỡ hoặc quên hạn chót quan trọng."
@@ -651,6 +652,8 @@ vi:
         new_notifications:
           message: "Có thông báo mới."
           link_text: "Nhấp vào đây để tải chúng."
+      reminders:
+        note: "Note: “%{note}”"
       settings:
         change_notification_settings: 'Bạn có thể thay đổi <a target="_blank" href="%{url}">cài đặt thông báo</a> của mình để đảm bảo không bỏ lỡ cập nhật quan trọng nào.'
         title: "Cài đặt thông báo"
@@ -738,6 +741,7 @@ vi:
         immediate:
           title: "Gửi cho tôi nhắc nhở email"
           mentioned: "Ngay lập tức khi ai đó nhắc đến tôi"
+          personal_reminder: "Immediately when I receive a personal reminder"
         alerts:
           title: "Cảnh báo email cho các mục khác (không phải gói công việc)"
           explanation: >
@@ -769,10 +773,6 @@ vi:
         upgrade_to_ee_text: "Wow! Nếu bạn cần tiện ích bổ sung này, bạn là một chuyên gia tuyệt vời! Bạn có thể hỗ trợ chúng tôi, các nhà phát triển OpenSource, bằng cách trở thành khách hàng của phiên bản Enterprise không?"
         more_information: "Thông tin thêm"
         nevermind: "Không sao"
-      edit:
-        form_configuration: "Cấu hình Biểu mẫu"
-        projects: "Dự án"
-        settings: "Cài đặt"
     time_entry:
       work_package_required: "Yêu cầu chọn một gói công việc trước."
       title: "Ghi thời gian"
@@ -1041,6 +1041,12 @@ vi:
           not_found: "Không có chế độ xem như vậy"
           duplicate_query_title: "Tên của chế độ xem này đã tồn tại. Thay đổi bất chấp?"
         text_no_results: "Không tìm thấy chế độ xem phù hợp."
+      reminders:
+        button_label: "Set reminder"
+        title:
+          new: "Set reminder"
+          edit: "Edit reminder"
+        subtitle: "You will receive a notification for this work package at the chosen time."
       scheduling:
         is_parent: "Ngày của gói công việc này được suy ra tự động từ các con của nó. Kích hoạt 'Lên lịch thủ công' để đặt ngày."
         is_switched_from_manual_to_automatic: "Ngày của gói công việc này có thể cần phải được tính toán lại sau khi chuyển từ lên lịch thủ công sang tự động do mối quan hệ với các gói công việc khác."
@@ -1341,5 +1347,3 @@ vi:
       waiting_subtitle:
         network_off: "Có vấn đề về mạng."
         network_on: "Mạng đã trở lại. Chúng tôi đang thử lại."
-        timeout: >
-          OpenProject không thể cung cấp cho bạn quyền truy cập vào thư mục dự án trong khoảng thời gian dự kiến. Vui lòng thử lại.<br><br> Nếu vấn đề vẫn tiếp tục, vui lòng liên hệ với quản trị viên OpenProject của bạn để kiểm tra <a href="https://www.openproject.org/docs/system-admin-guide/files/external-file-storages/file-storage-troubleshooting/">tình trạng sức khỏe của cài đặt lưu trữ tệp</a>.

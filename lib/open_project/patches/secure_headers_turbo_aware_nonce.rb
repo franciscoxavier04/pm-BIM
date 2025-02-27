@@ -30,13 +30,13 @@
 module OpenProject::Patches::SecureHeadersTurboAwareNonce
   def content_security_policy_script_nonce(request)
     if request.env["HTTP_TURBO_REFERRER"].present?
-      request.env["HTTP_X_TURBO_NONCE"]
-    else
-      super
+      request.env[SecureHeaders::NONCE_KEY] ||= request.env["HTTP_X_TURBO_NONCE"]
     end
+
+    super
   end
 end
 
-OpenProject::Patches.patch_gem_version "secure_headers", "7.0.0" do
+OpenProject::Patches.patch_gem_version "secure_headers", "7.1.0" do
   SecureHeaders.singleton_class.prepend OpenProject::Patches::SecureHeadersTurboAwareNonce
 end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,6 +29,6 @@
 
 class Meeting::Type < ApplicationForm
   form do |meeting_form|
-    meeting_form.hidden(name: :type, value: "StructuredMeeting")
+    meeting_form.hidden(name: :type, value: @builder.object.class.name)
   end
 end

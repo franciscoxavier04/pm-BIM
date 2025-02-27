@@ -7,7 +7,7 @@ uk:
     standard:
       projects:
         demo-project:
-          meetings:
+          meeting_series:
             item_0:
               title: Щотижня
           meeting_agenda_items:

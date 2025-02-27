@@ -48,7 +48,6 @@ import {
 } from 'core-app/features/work-packages/services/notifications/work-package-notification.service';
 import { BackRoutingService } from 'core-app/features/work-packages/components/back-routing/back-routing.service';
 import { WpSingleViewService } from 'core-app/features/work-packages/routing/wp-view-base/state/wp-single-view.service';
-import { CommentService } from 'core-app/features/work-packages/components/wp-activity/comment-service';
 import { RecentItemsService } from 'core-app/core/recent-items.service';
 import { UrlParamsService } from 'core-app/core/navigation/url-params.service';
 import {
@@ -62,7 +61,6 @@ import { TabComponent } from 'core-app/features/work-packages/components/wp-tabs
   selector: 'op-wp-split-view',
   providers: [
     WpSingleViewService,
-    CommentService,
     { provide: HalResourceNotificationService, useClass: WorkPackageNotificationService },
   ],
 })
@@ -95,7 +93,7 @@ export class WorkPackageSplitViewComponent extends WorkPackageSingleViewBase imp
 
     // enable other parts of the application to trigger an immediate update
   // e.g. a stimulus controller
-  // currently used by the new activities tab which does it's own polling
+  // currently used by the new activities tab which does its own polling
   @HostListener('document:ian-update-immediate')
   triggerImmediateUpdate() {
     this.storeService.reload();
@@ -134,10 +132,6 @@ export class WorkPackageSplitViewComponent extends WorkPackageSingleViewBase imp
         }
       });
     this.recentItemsService.add(wpId);
-  }
-
-  get shouldFocus():boolean {
-    return this.$state.params.focus === true;
   }
 
   get activeTabComponent():Type<TabComponent>|undefined {

@@ -27,6 +27,8 @@
 #++
 
 module ColorsHelper
+  include Primer::JoinStyleArgumentsHelper
+
   def options_for_colors(colored_thing)
     colors = []
     Color.find_each do |c|
@@ -49,39 +51,54 @@ module ColorsHelper
   ##
   def color_css
     Color.find_each do |color|
-      set_background_colors_for class_name: ".__hl_inline_color_#{color.id}_dot::before", hexcode: color.hexcode
-      set_foreground_colors_for class_name: ".__hl_inline_color_#{color.id}_text", hexcode: color.hexcode
+      set_background_colors_for(class_name: ".#{hl_inline_class('color', color)}_dot::before", color:)
+      set_foreground_colors_for(class_name: ".#{hl_inline_class('color', color)}_text", color:)
     end
   end
 
   #
   # Styles to display the color of attributes (type, status etc.) for example in the WP view
   ##
-  def resource_color_css(name, scope)
+  def resource_color_css(name, scope, inline_foreground: false)
     scope.includes(:color).find_each do |entry|
       color = entry.color
 
       if color.nil?
-        concat ".__hl_inline_#{name}_#{entry.id}::before { display: none }\n"
+        concat ".#{hl_inline_class(name, entry)}::before { display: none }\n"
         next
       end
 
-      if name === "type"
-        set_foreground_colors_for class_name: ".__hl_inline_#{name}_#{entry.id}", hexcode: color.hexcode
+      if inline_foreground
+        set_foreground_colors_for(class_name: ".#{hl_inline_class(name, entry)}", color:)
       else
-        set_background_colors_for class_name: ".__hl_inline_#{name}_#{entry.id}::before", hexcode: color.hexcode
+        set_background_colors_for(class_name: ".#{hl_inline_class(name, entry)}::before", color:)
       end
 
-      set_background_colors_for class_name: ".__hl_background_#{name}_#{entry.id}", hexcode: color.hexcode
+      set_background_colors_for(class_name: ".#{hl_background_class(name, entry)}", color:)
     end
+  end
+
+  def hl_inline_class(name, model)
+    "__hl_inline_#{name}_#{model.id}"
+  end
+
+  def hl_background_class(name, model)
+    "__hl_background_#{name}_#{model.id}"
   end
 
   def icon_for_color(color, options = {})
     return unless color
+    return if color.hexcode.blank?
 
-    options.merge! class: "color--preview " + options[:class].to_s,
+    style = join_style_arguments(
+      "background-color: #{color.hexcode}",
+      "border-color: #{color.darken(0.5)}50",
+      options[:style]
+    )
+
+    options.merge!(class: "color--preview #{options[:class]}",
                    title: color.name,
-                   style: "background-color: #{color.hexcode};" + options[:style].to_s
+                   style:)
 
     content_tag(:span, " ", options)
   end
@@ -90,10 +107,10 @@ module ColorsHelper
     DesignColor.find_by(variable:)&.hexcode
   end
 
-  def set_background_colors_for(class_name:, hexcode:)
+  def set_background_colors_for(class_name:, color:)
     mode = User.current.pref.theme.split("_", 2)[0]
 
-    concat "#{class_name} { #{default_color_styles(hexcode)} }"
+    concat "#{class_name} { #{default_color_styles(color.hexcode)} }"
     if mode == "dark"
       concat "#{class_name} { #{default_variables_dark} }"
       concat "#{class_name} { #{highlighted_background_dark} }"
@@ -103,10 +120,10 @@ module ColorsHelper
     end
   end
 
-  def set_foreground_colors_for(class_name:, hexcode:)
+  def set_foreground_colors_for(class_name:, color:)
     mode = User.current.pref.theme.split("_", 2)[0]
 
-    concat "#{class_name} { #{default_color_styles(hexcode)} }"
+    concat "#{class_name} { #{default_color_styles(color.hexcode)} }"
     if mode == "dark"
       concat "#{class_name} { #{default_variables_dark} }"
       concat "#{class_name} { #{highlighted_foreground_dark} }"
@@ -153,11 +170,11 @@ module ColorsHelper
      background: rgb(var(--color-r), var(--color-g), var(--color-b)) !important;"
     mode = User.current.pref.theme
 
-    if mode == "light_high_contrast"
-      style += "border: 1px solid hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - 75) * 1%), 1) !important;"
-    else
-      style += "border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - 15) * 1%)) !important;"
-    end
+    style += if mode == "light_high_contrast"
+               "border: 1px solid hsla(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - 75) * 1%), 1) !important;"
+             else
+               "border: 1px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - 15) * 1%)) !important;"
+             end
 
     style
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,32 +32,40 @@ class Relation < ApplicationRecord
   belongs_to :from, class_name: "WorkPackage"
   belongs_to :to, class_name: "WorkPackage"
 
-  TYPE_RELATES      = "relates".freeze
-  TYPE_DUPLICATES   = "duplicates".freeze
-  TYPE_DUPLICATED   = "duplicated".freeze
-  TYPE_BLOCKS       = "blocks".freeze
-  TYPE_BLOCKED      = "blocked".freeze
-  TYPE_PRECEDES     = "precedes".freeze
-  TYPE_FOLLOWS      = "follows".freeze
-  TYPE_INCLUDES     = "includes".freeze
-  TYPE_PARTOF       = "partof".freeze
-  TYPE_REQUIRES     = "requires".freeze
-  TYPE_REQUIRED     = "required".freeze
+  TYPE_RELATES      = "relates"
+  TYPE_PRECEDES     = "precedes"
+  TYPE_FOLLOWS      = "follows"
+  TYPE_BLOCKS       = "blocks"
+  TYPE_BLOCKED      = "blocked"
+  TYPE_DUPLICATES   = "duplicates"
+  TYPE_DUPLICATED   = "duplicated"
+  TYPE_INCLUDES     = "includes"
+  TYPE_PARTOF       = "partof"
+  TYPE_REQUIRES     = "requires"
+  TYPE_REQUIRED     = "required"
   # The parent/child relation is maintained separately
   # (in WorkPackage and WorkPackageHierarchy) and a relation cannot
   # have the type 'parent' but this is abstracted to simplify the code.
-  TYPE_PARENT       = "parent".freeze
-  TYPE_CHILD        = "child".freeze
+  TYPE_PARENT       = "parent"
+  TYPE_CHILD        = "child"
 
   TYPES = {
     TYPE_RELATES => {
       name: :label_relates_to, sym_name: :label_relates_to, order: 1, sym: TYPE_RELATES
     },
+    TYPE_FOLLOWS => {
+      name: :label_follows, sym_name: :label_precedes, order: 7,
+      sym: TYPE_PRECEDES
+    },
+    TYPE_PRECEDES => {
+      name: :label_precedes, sym_name: :label_follows, order: 6,
+      sym: TYPE_FOLLOWS, reverse: TYPE_FOLLOWS
+    },
     TYPE_DUPLICATES => {
-      name: :label_duplicates, sym_name: :label_duplicated_by, order: 2, sym: TYPE_DUPLICATED
+      name: :label_duplicates, sym_name: :label_duplicated_by, order: 6, sym: TYPE_DUPLICATED
     },
     TYPE_DUPLICATED => {
-      name: :label_duplicated_by, sym_name: :label_duplicates, order: 3,
+      name: :label_duplicated_by, sym_name: :label_duplicates, order: 7,
       sym: TYPE_DUPLICATES, reverse: TYPE_DUPLICATES
     },
     TYPE_BLOCKS => {
@@ -64,14 +74,6 @@ class Relation < ApplicationRecord
     TYPE_BLOCKED => {
       name: :label_blocked_by, sym_name: :label_blocks, order: 5,
       sym: TYPE_BLOCKS, reverse: TYPE_BLOCKS
-    },
-    TYPE_PRECEDES => {
-      name: :label_precedes, sym_name: :label_follows, order: 6,
-      sym: TYPE_FOLLOWS, reverse: TYPE_FOLLOWS
-    },
-    TYPE_FOLLOWS => {
-      name: :label_follows, sym_name: :label_precedes, order: 7,
-      sym: TYPE_PRECEDES
     },
     TYPE_INCLUDES => {
       name: :label_includes, sym_name: :label_part_of, order: 8,
@@ -103,7 +105,11 @@ class Relation < ApplicationRecord
   scope :follows_with_lag,
         -> { follows.where("lag > 0") }
 
-  validates :lag, numericality: { allow_nil: true }
+  validates :lag, numericality: {
+    allow_nil: true,
+    less_than_or_equal_to: 2_147_483_647,
+    greater_than_or_equal_to: 0
+  }
 
   validates :to, uniqueness: { scope: :from }
 

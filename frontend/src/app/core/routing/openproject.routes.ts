@@ -181,6 +181,9 @@ export function initializeUiRouterListeners(injector:Injector) {
     // Re-find the current app-base
     openprojectBaseApp = document.querySelector(appBaseSelector);
     uiRouter.urlService.sync();
+
+    // Re-apply the body classes
+    bodyClass(_.get(uiRouter.globals.current, 'data.bodyClasses'), 'add');
   });
 
   // Uncomment to trace route changes
@@ -193,29 +196,6 @@ export function initializeUiRouterListeners(injector:Injector) {
   $transitions.onBefore(
     { to: (state) => (state ? mobileGuardActivated(state) : false) },
     (transition) => redirectToMobileAlternative(transition),
-  );
-
-  // Fire an event when navigating to a different module. This event then can be detected in
-  // the non-angular parts of the application. A usecase for this can be found in the
-  // overview-header.controllers.ts
-  // See https://community.openproject.org/wp/55024 for details.
-  $transitions.onBefore(
-    {},
-    (transition:Transition) => {
-      const fromState = transition.from();
-      const toState = transition.to();
-      if (
-        !!fromState.name
-        && !!toState.name
-        && fromState.name?.split('.')[0] !== toState.name?.split('.')[0]
-      ) {
-        window.dispatchEvent(new CustomEvent('angular:router:module-changed', {
-          detail: toState.name?.split('.')[0],
-        }));
-      }
-
-      return true;
-    },
   );
 
   // Apply classes from bodyClasses in each state definition

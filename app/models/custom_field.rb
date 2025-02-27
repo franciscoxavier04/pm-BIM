@@ -66,7 +66,7 @@ class CustomField < ApplicationRecord
     errors.add(:name, :taken) if name.in?(taken_names)
   end
 
-  validates :field_format, inclusion: { in: OpenProject::CustomFieldFormat.available_formats }
+  validates :field_format, inclusion: { in: -> { OpenProject::CustomFieldFormat.available_formats } }
 
   validate :validate_default_value
   validate :validate_regex
@@ -296,7 +296,7 @@ class CustomField < ApplicationRecord
   end
 
   def multi_value_possible?
-    version? || user? || list? || field_format_hierarchy?
+    OpenProject::CustomFieldFormat.find_by(name: field_format)&.multi_value_possible?
   end
 
   def allow_non_open_versions_possible?
@@ -305,7 +305,7 @@ class CustomField < ApplicationRecord
 
   ##
   # Overrides cache key so that a custom field's representation
-  # is updated correctly when it's mutli_value attribute changes.
+  # is updated correctly when its multi_value attribute changes.
   def cache_key
     tag = multi_value? ? "mv" : "sv"
 
@@ -326,12 +326,18 @@ class CustomField < ApplicationRecord
 
   def possible_user_values_options(obj)
     mapped_with_deduced_project(obj) do |project|
-      if project&.persisted?
-        project.principals
-      else
-        Principal
-          .in_visible_project_or_me(User.current)
-      end
+      scope = if project&.persisted?
+                project.principals
+              else
+                Principal
+                  .in_visible_project_or_me(User.current)
+              end
+
+      user_format_columns = User::USER_FORMATS_STRUCTURE[Setting.user_format].map(&:to_s)
+      # Always include lastname if not already included, as Groups always need a lastname (alias for name)
+      user_format_columns << "lastname" unless user_format_columns.include?("lastname")
+
+      scope.select(*user_format_columns, "id", "type")
     end
   end
 
