@@ -45,6 +45,14 @@ Capybara.add_selector :primer_label, locator_type: [String, Symbol] do
            end
     text.public_send(exact ? :eql? : :include?, locator.to_s)
   end
+
+  expression_filter :scheme do |expr, scheme|
+    builder(expr).add_attribute_conditions(class: "Label--#{scheme.downcase}")
+  end
+
+  describe_expression_filters do |scheme: nil, **|
+    " with scheme #{scheme.inspect}" if scheme
+  end
 end
 
 module Capybara

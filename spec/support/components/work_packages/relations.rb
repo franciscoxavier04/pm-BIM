@@ -257,11 +257,11 @@ module Components
       end
 
       def expect_closest_relation(relatable)
-        expect(find_row(relatable)).to have_primer_label("Closest")
+        expect(find_row(relatable)).to have_primer_label("Closest", scheme: :primary)
       end
 
       def expect_not_closest_relation(relatable)
-        expect(find_row(relatable)).to have_no_primer_label("Closest")
+        expect(find_row(relatable)).to have_no_primer_label("Closest", scheme: :primary)
       end
 
       def expect_ghost_relation(relatable)
