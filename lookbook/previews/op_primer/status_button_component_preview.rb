@@ -4,7 +4,7 @@ module OpPrimer
   # @logical_path OpenProject/Primer
   class StatusButtonComponentPreview < ViewComponent::Preview
     # See the [component documentation](/lookbook/pages/components/status_button) for more details.
-    # @display min_height 400px
+    # @display min_height 200px
     # @param readonly [Boolean]
     # @param disabled [Boolean]
     # @param size [Symbol] select [small, medium, large]
@@ -29,6 +29,8 @@ module OpPrimer
       render(component)
     end
 
+    # See the [component documentation](/lookbook/pages/components/status_button) for more details.
+    # @display min_height 200px
     def with_icon(size: :medium)
       status = OpPrimer::StatusButtonOption.new(name: "Open", icon: :unlock, color: Color.new(hexcode: "#FF0000"))
 
