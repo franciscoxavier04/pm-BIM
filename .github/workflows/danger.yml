@@ -1,12 +1,13 @@
-name: migration-warning-on-release-branches
+name: Dangerfile
 
 on:
   pull_request:
-    branches:
-      - release/*
-    paths:
-      - "db/migrate/**.rb"
-      - "modules/**/db/migrate/*.rb"
+    types: [opened, reopened, synchronize]
+    paths-ignore:
+      - 'docs/**'
+      - 'help/**'
+      - 'packaging/**'
+      - '.pkgr.yml'
 
 jobs:
   danger:
@@ -20,6 +21,7 @@ jobs:
           ruby-version: "3.4.2"
       - uses: MeilCli/danger-action@v6
         with:
+          danger_version: ">= 9.5.1"
           danger_file: "Dangerfile"
           danger_id: "danger-pr"
         env:
