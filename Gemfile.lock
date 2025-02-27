@@ -354,6 +354,7 @@ GEM
       activerecord (>= 4.0)
     awesome_nested_set (3.8.0)
       activerecord (>= 4.0.0, < 8.1)
+    awesome_print (1.9.2)
     aws-eventstream (1.3.1)
     aws-partitions (1.1052.0)
     aws-sdk-core (3.219.0)
@@ -1055,6 +1056,9 @@ GEM
       rspec-support (~> 3.13)
     rspec-retry (0.6.2)
       rspec-core (> 3.3)
+    rspec-snapshot (2.0.3)
+      awesome_print (> 1.0.0)
+      rspec (> 3.0.0)
     rspec-support (3.13.2)
     rspec-wait (1.0.1)
       rspec (>= 3.4)
@@ -1425,6 +1429,7 @@ DEPENDENCIES
   rspec (~> 3.13.0)
   rspec-rails (~> 7.1.0)
   rspec-retry (~> 0.6.1)
+  rspec-snapshot (~> 2.0)
   rspec-wait
   rubocop
   rubocop-capybara
@@ -1506,6 +1511,7 @@ CHECKSUMS
   attr_required (1.0.2) sha256=f0ebfc56b35e874f4d0ae799066dbc1f81efefe2364ca3803dc9ea6a4de6cb99
   auto_strip_attributes (2.6.0) sha256=a7e2e0cf744de2bcd947fd68014220702bcc88c81274c1cd9ce6f7316aae39b0
   awesome_nested_set (3.8.0) sha256=469daff411d80291dbb80d1973133e498048a7afc2519c545f62d2cdebc60eda
+  awesome_print (1.9.2) sha256=e99b32b704acff16d768b3468680793ced40bfdc4537eb07e06a4be11133786e
   aws-eventstream (1.3.1) sha256=4465b2add71d69a36fb1268a738d9b3d1a593c789e0286f28fad38e132d4403b
   aws-partitions (1.1052.0) sha256=4dfe9876211c11433cab7fbb3e693c1837f8a89aaf634678f82d5431b2d7c829
   aws-sdk-core (3.219.0) sha256=d10c3832ece1f1de8edb7cbbcd737dd49b2789fae8744537943e86fdd822c649
@@ -1830,6 +1836,7 @@ CHECKSUMS
   rspec-mocks (3.13.2) sha256=2327335def0e1665325a9b617e3af9ae20272741d80ac550336309a7c59abdef
   rspec-rails (7.1.1) sha256=e15dccabed211e2fd92f21330c819adcbeb1591c1d66c580d8f2d8288557e331
   rspec-retry (0.6.2) sha256=6101ba23a38809811ae3484acde4ab481c54d846ac66d5037ccb40131a60d858
+  rspec-snapshot (2.0.3) sha256=58e52a17a36c0774ffb64940786395e062a9c2f17ce9b01a438928549a0382b9
   rspec-support (3.13.2) sha256=cea3a2463fd9b84b9dcc9685efd80ea701aa8f7b3decb3b3ce795ed67737dbec
   rspec-wait (1.0.1) sha256=50ce9cc7cd20b8bb67b95a4ed56b59a16d4af7e86ae91b28dbf20eeaa2481d1f
   rubocop (1.72.2) sha256=0259a32d89fee60882bf4c4d8847e696357719c9db4971839da742bf053ae96b
