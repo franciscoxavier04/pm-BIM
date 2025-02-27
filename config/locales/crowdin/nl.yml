@@ -27,7 +27,7 @@ nl:
     work_packages:
       activity_tab:
         no_results_title_text: Geen activiteit om weer te geven
-        no_results_description_text: "Kies \"Alles tonen\" om alle activiteiten en opmerkingen te tonen"
+        no_results_description_text: 'Kies "Alles tonen" om alle activiteiten en opmerkingen te tonen'
         label_activity_show_all: "Alles tonen"
         label_activity_show_only_comments: "Alleen opmerkingen tonen"
         label_activity_show_only_changes: "Alleen wijzigingen weergeven"
@@ -128,9 +128,9 @@ nl:
     sync_failed: "Synchronisatie met LDAP mislukt: %{message}."
     back_to_index: "Klik hier om terug te gaan naar de connectielijst."
     technical_warning_html: |
-      Dit LDAP-formulier vereist technische kennis van uw LDAP / Active Directory-configuratie.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Bezoek onze documentatie voor gedetailleerde instructies</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Willekeurige naam van de LDAP-verbinding
       host: LDAP hostnaam of IP-adres
@@ -138,9 +138,9 @@ nl:
       generic_map: De attribuut sleutel in LDAP die is toegewezen aan het OpenProject `%{attribute}` attribuut
       admin_map_html: "Optioneel: De attribuut sleutel in LDAP dat <strong>indien aanwezig</strong> de OpenProject gebruiker markeert als een beheerder. Laat leeg bij twijfel."
       system_user_dn_html: |
-        Vul de DN van de systeemgebruiker in gebruikt voor alleen-lezen toegang.
-        <br/>
-        Voorbeeld: uid=openproject,ou=system,dc=example,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Voer het bindwachtwoord van de systeemgebruiker in
       base_dn: |
         Voer de Basis DN in van de subboom in LDAP waar u wilt dat OpenProject zoekt naar gebruikers en groepen. OpenProject zal filteren op opgegeven gebruikersnamen in deze subboom alleen.
@@ -176,7 +176,7 @@ nl:
     tls_options:
       verify_peer: "Verify SSL certificate"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br/> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "If the LDAP server certificate is not in the trust sources of this system, you can add it manually here. Enter a PEM X509 certifiate string."
   forums:
     show:
@@ -343,6 +343,7 @@ nl:
         placeholder: "Nieuwe projectlijst"
       delete_modal:
         title: "Projectlijst verwijderen"
+        heading: "Delete this project list?"
         text: "Deze actie verwijdert geen enkel project dat de lijst bevat. Weet u zeker dat u deze projectlijst wilt verwijderen?"
     settings:
       change_identifier: Change identifier
@@ -391,6 +392,8 @@ nl:
         no_results_content_text: Maak een nieuwe versie
       storage:
         no_results_title_text: Er is geen extra opgenomen schijfruimte verbruikt door dit project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -570,10 +573,10 @@ nl:
         In <a href="%{href}">de statusgebaseerde voortgang berekeningsmodus</a> wordt het % Voltooid van een werkpakket automatisch op deze waarde ingesteld wanneer deze status geselecteerd is.
         Genegeerd in de werkgebaseerde modus.
       status_readonly_html: |
-        Schakel deze optie in om de werkpakketten met deze status alleen-lezen te markeren.
-        geen kenmerken kunnen worden gewijzigd met uitzondering van de status.
-        <br/>
-        <strong></strong>Opmerking: overgenomen waarden (bijvoorbeeld van kinderen of betrekkingen) blijft van toepassing.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Er zijn momenteel geen werkpakket statussen.
       no_results_content_text: Voeg een nieuwe status toe
@@ -612,6 +615,14 @@ nl:
         pattern:
           label: "Onderwerp patroon"
           caption: "Zoek naar een attribuut of voeg tekst toe. Als u een spatie tussen elementen wilt maken, voegt u deze toe als tekst."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "De versie wordt gedeeld met gearchiveerde projecten waaraan nog werkpakketten zijn toegewezen aan deze versie. Deze worden meegeteld, maar verschijnen niet in de gekoppelde weergaven."
@@ -775,6 +786,7 @@ nl:
       attachment:
         attachment_content: "Inhoud van de bijlage"
         attachment_file_name: "Naam bijlage"
+        content_type: "Content-type"
         downloads: "Downloads"
         file: "Bestand"
         filename: "Bestand"
@@ -782,10 +794,10 @@ nl:
       attribute_help_text:
         attribute_name: "Kenmerk"
         help_text: "Helptekst"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repository"
-      color:
-        hexcode: "Hex code"
       comment:
         commented: "Becommentarieerd" #an object that this comment belongs to
       custom_action:
@@ -818,7 +830,10 @@ nl:
         client_credentials_user_id: "Client referenties gebruiker ID"
         scopes: "Reikwijdte"
         confidential: "Vertrouwelijke"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Geldig sinds"
         subscriber: "Abonnee"
         encoded_token: "Enterprise ondersteuningstoken"
@@ -830,6 +845,7 @@ nl:
         widgets: "Widgets"
       journal:
         notes: "Notities"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Account"
         attr_firstname: "Voornaam kenmerk"
@@ -845,10 +861,11 @@ nl:
         tls_certificate_string: "LDAP server SSL-certificaat"
       member:
         roles: "Rollen"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client-ID"
-      planning_element_type_color:
-        hexcode: Hexadecimale code
       project:
         active_value:
           true: "Niet gearchiveerd"
@@ -861,6 +878,7 @@ nl:
           true: "Openbaar"
           false: "Privé"
         queries: "Query 's"
+        enabled_modules: "Enabled modules"
         status_code: "Projectstatus"
         description: "Omschrijving"
         status_explanation: "Beschrijving van projectstatus"
@@ -881,23 +899,47 @@ nl:
       project_custom_field:
         is_required: "Vereist voor alle projecten"
         custom_field_section: Sectie
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Naam"
         color: "Kleur"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Kolommen"
         relations_to_type_column: "Betrekkingen %{type}"
         relations_of_type_column: "%{type} betrekkingen"
         group_by: "Groepeer resultaten op"
+        sort_by: "Sort results by"
         filters: "Filters"
         timeline_labels: "Tijdlijn etiketten"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Vertraging"
         from: "Related work package"
         to: "Verwante werkpakket"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Datum"
         remind_at_time: "Tijd"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -907,6 +949,9 @@ nl:
         is_readonly: "Werkpakket is alleen-lezen"
         excluded_from_totals: "Uitsluiten van berekening van totalen in hiërarchie"
         default_done_ratio: "% Voltooid"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Activiteit"
         hours: "Uren"
@@ -920,6 +965,7 @@ nl:
         is_default: "Standaart ingesteld voor nieuwe projecten"
         is_milestone: "Is mijlpaal"
         color: "Kleur"
+        patterns: "Patterns"
       user:
         admin: "Beheerder"
         auth_source: "Authentication source"
@@ -929,6 +975,10 @@ nl:
         force_password_change: "Afdwingen van wachtwoordwijziging bij volgende login"
         language: "Taal"
         last_login_on: "Laatste log-in"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Nieuw wachtwoord"
         password_confirmation: "Bevestiging"
         consented_at: "Ingestemd op"
@@ -940,6 +990,8 @@ nl:
         warn_on_leaving_unsaved: "Mij waarschuwen bij het verlaten van een werkpakket met niet-opgeslagen wijzigingen"
         theme: "Modus"
         mode_guideline: "Sommige modi overschrijven aangepaste themakleuren voor toegankelijkheid en leesbaarheid. Voor het volledige aangepaste thema selecteert u de Light-modus."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Einddatum"
         sharing: "Delen"
@@ -1396,6 +1448,9 @@ nl:
       forum: "Forum"
       global_role: "Algemene rol"
       group: "Groep"
+      issue_priority:
+        one: "Priority"
+        other: "Priorities"
       member: "Deelnemer"
       news: "Nieuws"
       notification:
@@ -1409,6 +1464,7 @@ nl:
         one: "Projectlijst"
         other: "Projectlijsten"
       query: "Aangepaste query"
+      reminder: "Reminder"
       role:
         one: "Rol"
         other: "Rollen"
@@ -1473,18 +1529,25 @@ nl:
     assigned_to: "Toegewezene"
     assignee: "Toegewezene"
     attachments: "Bijlagen"
+    actor: "Actor"
+    action: "Action"
     author: "Auteur"
+    avatar: "Avatar"
     base: "Algemene fout:"
+    body: "Body"
     blocks_ids: "It's van geblokkeerde werkpakketten"
     category: "Categorie"
     comment: "Reactie"
     comments: "Commentaar"
     content: "Inhoud"
     color: "Kleur"
+    creator: "Creator"
     created_at: "Gemaakt op"
+    custom_field: "Custom field"
     custom_options: "Mogelijke waarden"
     custom_values: "Aangepaste velden"
     date: "Datum"
+    dates_interval: "Date range"
     default_columns: "Standaardkolommen"
     description: "Omschrijving"
     derived_due_date: "Afgeleide einddatum"
@@ -1494,39 +1557,63 @@ nl:
     due_date: "Einddatum"
     estimated_hours: "Werk"
     estimated_time: "Werk"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Verloopt op"
     firstname: "Voornaam"
+    filter: "Filter"
     group: "Groep"
     groups: "Groepen"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Standaardwaarde"
     is_for_all: "Voor alle projecten"
     public: "Publiek"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Werkpakket"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Achternaam"
     login: "Gebruikersnaam"
     mail: "E-mail"
     name: "Naam"
     note: "Opmerking"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Wachtwoord"
     priority: "Prioriteit"
     project: "Project"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Verantwoording afleggen"
+    required: "Required"
+    recipient: "Recipient"
     role: "Rol"
     roles: "Rollen"
+    search: "Search"
     start_date: "Startdatum"
     status: "Status"
+    state: "State"
     subject: "Onderwerp"
+    slug: "Slug"
     summary: "Samenvatting"
+    text: "Text"
     title: "Titel"
     type: "Type"
+    typeahead: "Autocomplete"
     updated_at: "Bijgewerkt op"
     updated_on: "Bijgewerkt op"
     uploader: "Uploader"
     user: "Gebruiker"
+    username: "Username"
+    unit: "Unit"
     value: "Waarde\n"
+    values: "Values"
     version: "Versie"
+    visible: "Visible"
     work_package: "Werkpakket"
   backup:
     failed: "Back-up mislukt"
@@ -1839,6 +1926,8 @@ nl:
   enumeration_activities: "Activiteiten voor het bijhouden van tijd"
   enumeration_work_package_priorities: "Werkpakket prioriteiten"
   enumeration_reported_project_statuses: "Gerapporteerde projectstatus"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) voor gebruiker '%{value}' is mislukt"
   error_can_not_archive_project: "Dit project kan niet worden gearchiveerd: %{errors}"
   error_can_not_delete_entry: "Niet in staat om ingave te verwijderen"
@@ -1928,6 +2017,7 @@ nl:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "Standaard zijn alle kenmerken geselecteerd die als kolommen in de werkpakketlijst zijn toegevoegd. Lange tekstvelden zijn niet beschikbaar in de kenmerktabel, maar kunnen eronder worden weergegeven."
         input_caption_table: "Standaard zijn alle kenmerken toegevoegd als kolommen in de werkpakketlijst zijn geselecteerd. Lange tekstvelden zijn niet beschikbaar in de tabel exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -1998,21 +2088,29 @@ nl:
       days: d
   pdf_generator:
     page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Generate
-      header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
-      paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext beschikbaar (optioneel)"
@@ -2338,6 +2436,7 @@ nl:
   label_missing_or_hidden_custom_option: "(ontbrekende waarde of ontbrekende machtigingen voor toegang)"
   label_descending: "Aflopend"
   label_details: "Details"
+  label_defaults: "Defaults"
   label_development_roadmap: "Ontwikkeling roadmap"
   label_diff: "diff"
   label_diff_inline: "inline"
@@ -2394,6 +2493,7 @@ nl:
   label_filter: "Filters"
   label_filter_add: "Filter toevoegen"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filters"
   label_filters_toggle: "Filter tonen/verbergen"
   label_float: "Zwevend"
@@ -2673,6 +2773,7 @@ nl:
   label_roadmap_overdue: "%{value} laat"
   label_role_and_permissions: "Rollen en machtigingen"
   label_role_new: "Nieuwe rol"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Rollen"
   label_role_search: "Rol toewijzen aan nieuwe leden"
   label_scm: "SCM"
@@ -2838,7 +2939,7 @@ nl:
   label_global_role: "Algemene rol"
   label_not_changeable: "(niet wijzigbaar)"
   label_global: "Globaal"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Fout bij het uitvoeren van de macro %{macro_name}"
   macro_unavailable: "Macro %{macro_name} kan niet worden weergegeven."
   macros:
@@ -3748,6 +3849,7 @@ nl:
   text_unallowed_characters: "Ongeldige tekens"
   text_user_invited: De gebruiker is uitgenodigd en is in afwachting van de registratie.
   text_user_wrote: "%{value} schreef:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Het werkpakket bevat niet-opgeslagen tekst die verloren gaat als u deze pagina verlaat."
   text_what_did_you_change_click_to_add_comment: "Wat heb je te veranderen? Klik op Opmerking toevoegen"
   text_wiki_destroy_confirmation: "Weet u zeker dat u deze wiki en alle inhoud wilt verwijderen?"

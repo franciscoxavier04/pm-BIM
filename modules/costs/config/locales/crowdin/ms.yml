@@ -30,6 +30,7 @@ ms:
         overridden_costs: "Kos yang diambil alih"
         spent: "Dibelanja"
         spent_on: "Tarikh"
+        logged_by: "Logged by"
       cost_type:
         unit: "Nama unit"
         unit_plural: "Nama majmuk unit"
@@ -58,6 +59,8 @@ ms:
     models:
       cost_type:
         other: "Jenis kos"
+      time_entry_activity:
+        other: "Time tracking activities"
       rate: "Kadar"
     errors:
       models:
@@ -79,6 +82,7 @@ ms:
   button_add_rate: "Tambah kadar"
   button_log_costs: "Log kos unit"
   button_log_time: "Log"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Ditempah pada projek"
   caption_default: "Default"
   caption_default_rate_history_for: "Sejarah kadar default untuk %{user}"
@@ -92,6 +96,8 @@ ms:
   caption_show_locked: "Papar jenis terkunci"
   caption_log_time_dialog: "Log time"
   description_date_for_new_rate: "Tarikh untuk kadar baru"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
   group_by_others: "tiada dalam mana-mana kumpulan"
   label_between: "antara"
   label_cost_filter_add: "Tambah saringan kos entri"
@@ -118,6 +124,8 @@ ms:
   label_kind: "Jenis"
   label_less_or_equal: "<="
   label_log_costs: "Log kos unit"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Tidak"
   label_option_plural: "Pilihan"
   label_overall_costs: "Kos keseluruhan"
@@ -130,6 +138,10 @@ ms:
   label_until: "sehingga"
   label_valid_from: "Sah dari"
   label_yes: "Ya"
+  label_time: "Masa"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ada ralat berlaku. Sila cuba lagi."
   notice_successful_restore: "Pemulihan berjaya."

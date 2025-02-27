@@ -56,6 +56,7 @@ ms:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Meeting series ends"
+        end_date: "End date"
         iterations: "Kejadian"
     errors:
       messages:
@@ -63,6 +64,7 @@ ms:
     models:
       recurring_meeting: "Mesyuarat berulang"
       structured_meeting: "Mesyuarat sekali"
+      meeting: "Meeting"
       meeting_agenda_item: "Item agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minit mesyuarat"
@@ -257,10 +259,12 @@ ms:
       banner_html: >
         Anda sedang mengedit templat siri mesyuarat: %{link}. Setiap kejadian baharu mesyuarat dalam siri ini akan menggunakan templat ini. Perubahan tidak akan menjejaskan mesyuarat yang lalu atau yang telah dibuat.
     frequency:
+      x_daily:
+        other: "Every %{count} days"
+      x_weekly:
+        other: "Every %{count} weeks"
       every_weekday: "Setiap %{day_of_the_week}"
-      daily: "Harian"
       working_days: "Setiap hari bekerja"
-      weekly: "Mingguan"
     end_after:
       never: "never"
       specific_date: "after a specific date"

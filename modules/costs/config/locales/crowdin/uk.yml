@@ -30,6 +30,7 @@ uk:
         overridden_costs: "Перевищення витрат"
         spent: "Витрачений"
         spent_on: "Дата"
+        logged_by: "Logged by"
       cost_type:
         unit: "Назва одиниці"
         unit_plural: "Назва плуралізованої одиниці"
@@ -61,6 +62,11 @@ uk:
         few: "Види витрат"
         many: "Види витрат"
         other: "Види витрат"
+      time_entry_activity:
+        one: "Time tracking activity"
+        few: "Time tracking activities"
+        many: "Time tracking activities"
+        other: "Time tracking activities"
       rate: "Оцінити"
     errors:
       models:
@@ -82,6 +88,7 @@ uk:
   button_add_rate: "Додати ставку"
   button_log_costs: "Витрати лог-одиниць"
   button_log_time: "Записати"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Записаний на проект"
   caption_default: "За замовчуванням"
   caption_default_rate_history_for: "Історія ставок за умовчанням для %{user}"
@@ -95,6 +102,8 @@ uk:
   caption_show_locked: "Показати заблоковані типи"
   caption_log_time_dialog: "Записування часу"
   description_date_for_new_rate: "Дата нової ставки"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
   group_by_others: "ні в якій групі"
   label_between: "між ними"
   label_cost_filter_add: "Додати фільтр введення витрат"
@@ -121,6 +130,8 @@ uk:
   label_kind: "Тип"
   label_less_or_equal: "<="
   label_log_costs: "Витрати лог-одиниць"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Ні"
   label_option_plural: "Опції"
   label_overall_costs: "Загальні витрати"
@@ -133,6 +144,10 @@ uk:
   label_until: "до"
   label_valid_from: "Діє з"
   label_yes: "Так"
+  label_time: "Час"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Спочатку потрібно вибрати пакет робіт
   notice_something_wrong: "Щось пішло не так. Будь ласка спробуйте ще раз."
   notice_successful_restore: "Успішне відновлення."

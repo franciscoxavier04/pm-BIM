@@ -9,8 +9,12 @@ ru:
       two_factor_authentication/device:
         identifier: "Идентификатор"
         default: "Использовать по умолчанию"
+        channel: "Channel"
       two_factor_authentication/device/sms:
         phone_number: "Номер телефона"
+      two_factor_authentication/device/webauthn:
+        webauthn_external: "WebAuthn ID"
+        webauthn_public_key: "WebAuthn public key"
     errors:
       models:
         two_factor_authentication/device:
@@ -174,7 +178,7 @@ ru:
   label_expiration_hint: "%{date} или при выходе из системы"
   label_actions: "Действия"
   label_confirmed: "Подтвержден"
-  button_continue: "Продолжить"
+  button_continue: "Далее"
   button_make_default: "Задать по умолчанию"
   label_unverified_phone: "Сотовый телефон еще не подтвержден"
   notice_phone_number_format: "Введите номер в следующем формате: +XX XXXXXXXX."

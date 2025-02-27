@@ -27,7 +27,7 @@ ar:
     work_packages:
       activity_tab:
         no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
+        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
         label_activity_show_all: "Show everything"
         label_activity_show_only_comments: "Show comments only"
         label_activity_show_only_changes: "Show changes only"
@@ -129,7 +129,7 @@ ar:
     back_to_index: "Click here to go back to the list of connection."
     technical_warning_html: |
       This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
-      <br/>
+      <br>
       <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Arbitrary name of the LDAP connection
@@ -139,7 +139,7 @@ ar:
       admin_map_html: "Optional: The attribute key in LDAP that <strong>if present</strong> marks the OpenProject user an admin. Leave empty when in doubt."
       system_user_dn_html: |
         Enter the DN of the system user used for read-only access.
-        <br/>
+        <br>
         Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Enter the bind password of the system user
       base_dn: |
@@ -179,7 +179,7 @@ ar:
     tls_options:
       verify_peer: "Verify SSL certificate"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br/> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "If the LDAP server certificate is not in the trust sources of this system, you can add it manually here. Enter a PEM X509 certifiate string."
   forums:
     show:
@@ -346,6 +346,7 @@ ar:
         placeholder: "New project list"
       delete_modal:
         title: "Delete project list"
+        heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       change_identifier: Change identifier
@@ -394,6 +395,8 @@ ar:
         no_results_content_text: إنشاء إصدار جديد
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       zero: "Duration: %{count} working days"
@@ -608,7 +611,7 @@ ar:
       status_readonly_html: |
         Check this option to mark work packages with this status as read-only.
         No attributes can be changed with the exception of the status.
-        <br/>
+        <br>
         <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: لا يوجد حالياً حالات لحزمة العمل.
@@ -648,6 +651,14 @@ ar:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -815,6 +826,7 @@ ar:
       attachment:
         attachment_content: "Attachment content"
         attachment_file_name: "Attachment file name"
+        content_type: "Content-type"
         downloads: "التحميلات"
         file: "ملف"
         filename: "ملف"
@@ -822,10 +834,10 @@ ar:
       attribute_help_text:
         attribute_name: "الواصفة"
         help_text: "Help text"
+      capability:
+        context: "Context"
       changeset:
         repository: "مستودع البيانات"
-      color:
-        hexcode: "رمز Hex"
       comment:
         commented: "علّق" #an object that this comment belongs to
       custom_action:
@@ -858,7 +870,10 @@ ar:
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Valid since"
         subscriber: "Subscriber"
         encoded_token: "Enterprise support token"
@@ -870,6 +885,7 @@ ar:
         widgets: "الودجات"
       journal:
         notes: "ملاحظات"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "الحساب"
         attr_firstname: "سمة الاسم الأول"
@@ -885,10 +901,11 @@ ar:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "دور"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
-      planning_element_type_color:
-        hexcode: رمز Hex
       project:
         active_value:
           true: "unarchived"
@@ -901,6 +918,7 @@ ar:
           true: "public"
           false: "private"
         queries: "الاستفسارات"
+        enabled_modules: "Enabled modules"
         status_code: "حالة المشروع"
         description: "الوصف"
         status_explanation: "Project status description"
@@ -921,23 +939,47 @@ ar:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "الأعمدة"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
         group_by: "نتائج المجموعة حسب"
+        sort_by: "Sort results by"
         filters: "عوامل التصفية"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "مجموعة عمل ذات صلة"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Date"
         remind_at_time: "Time"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "الرابط"
       role:
@@ -947,6 +989,9 @@ ar:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "النشاط"
         hours: "الساعات"
@@ -960,6 +1005,7 @@ ar:
         is_default: "Activated for new projects by default"
         is_milestone: "هو مشروع رئيسي"
         color: "اللون"
+        patterns: "Patterns"
       user:
         admin: "مدير النظام"
         auth_source: "Authentication source"
@@ -969,6 +1015,10 @@ ar:
         force_password_change: "تنفيذ تغيير كلمة المرور في تسجيل الدخول التالي"
         language: "اللغة"
         last_login_on: "آخر تسجيل دخول"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "كلمة مرور جديدة"
         password_confirmation: "تأكيد"
         consented_at: "Consented at"
@@ -980,6 +1030,8 @@ ar:
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Finish date"
         sharing: "مشاركة"
@@ -1444,6 +1496,13 @@ ar:
       forum: "المنتدى"
       global_role: "Global role"
       group: "مجموعة"
+      issue_priority:
+        zero: "Priorities"
+        one: "Priority"
+        two: "Priorities"
+        few: "Priorities"
+        many: "Priorities"
+        other: "Priorities"
       member: "عضو"
       news: "الأخبار"
       notification:
@@ -1465,6 +1524,7 @@ ar:
         many: "Project lists"
         other: "Project lists"
       query: "استعلام مخصص"
+      reminder: "Reminder"
       role:
         zero: "دور"
         one: "الدور"
@@ -1553,18 +1613,25 @@ ar:
     assigned_to: "المُسند إليه"
     assignee: "المُسند إليه"
     attachments: "المرفقات"
+    actor: "Actor"
+    action: "Action"
     author: "المؤلف"
+    avatar: "Avatar"
     base: "خطأ عام:"
+    body: "Body"
     blocks_ids: "مُعرِّفات مجموعات العمل المحظورة"
     category: "الفئة"
     comment: "التعليق"
     comments: "تعليق"
     content: "المحتوى"
     color: "اللون"
+    creator: "Creator"
     created_at: "تم الإنشاء في"
+    custom_field: "Custom field"
     custom_options: "القيم المحتملة"
     custom_values: "الحقول المخصصة"
     date: "التاريخ"
+    dates_interval: "Date range"
     default_columns: "الأعمدة الافتراضية"
     description: "الوصف"
     derived_due_date: "Derived finish date"
@@ -1574,39 +1641,63 @@ ar:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "الاسم الأول"
+    filter: "Filter"
     group: "مجموعة"
     groups: "المجموعات"
+    hexcode: "Hex code"
     id: "الهوية المُعَرِّفة"
     is_default: "القيمة الافتراضية"
     is_for_all: "لكافة المشاريع"
     public: "عام"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "مجموعة العمل"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "الاسم الأخير"
     login: "Username"
     mail: "البريد الإكتروني"
     name: "الاسم"
     note: "Note"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "كلمة المرور"
     priority: "الأولوية"
     project: "مشروع"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Accountable"
+    required: "Required"
+    recipient: "Recipient"
     role: "الدور"
     roles: "دور"
+    search: "Search"
     start_date: "تاريخ البدء"
     status: "الحالة"
+    state: "State"
     subject: "الموضوع"
+    slug: "Slug"
     summary: "مُلخّص"
+    text: "Text"
     title: "العنوان"
     type: "النّوع"
+    typeahead: "Autocomplete"
     updated_at: "تم التحديث بتاريخ"
     updated_on: "تم التحديث بتاريخ"
     uploader: "Uploader"
     user: "المستخدم"
+    username: "Username"
+    unit: "Unit"
     value: "القيمة"
+    values: "Values"
     version: "الإصدار"
+    visible: "Visible"
     work_package: "مجموعة العمل"
   backup:
     failed: "Backup failed"
@@ -1995,6 +2086,8 @@ ar:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "أولويات مجموعة العمل"
   enumeration_reported_project_statuses: "حالة للمشروع المبلغ عنه"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -2084,6 +2177,7 @@ ar:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -2154,21 +2248,29 @@ ar:
       days: d
   pdf_generator:
     page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Generate
-      header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
-      paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext available (optional)"
@@ -2494,6 +2596,7 @@ ar:
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "ترتيب تنازلي"
   label_details: "تفاصيل"
+  label_defaults: "Defaults"
   label_development_roadmap: "خارطة طريق التطوير"
   label_diff: "dIFF"
   label_diff_inline: "سطري"
@@ -2550,6 +2653,7 @@ ar:
   label_filter: "عوامل التصفية"
   label_filter_add: "إضافة عامل تصفية"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "عوامل التصفية"
   label_filters_toggle: "Show/hide filters"
   label_float: "عدد عشري"
@@ -2829,6 +2933,7 @@ ar:
   label_roadmap_overdue: "تأخر %{value}"
   label_role_and_permissions: "الأدوار و السماحيات"
   label_role_new: "دور جديد"
+  label_role_grantable: "Grantable role"
   label_role_plural: "دور"
   label_role_search: "تعيين دور للأعضاء الجدد"
   label_scm: "اختصاراً لِ:\"Supply Chain Management\" إدارة سلسة الإمداد"
@@ -2994,7 +3099,7 @@ ar:
   label_global_role: "Global role"
   label_not_changeable: "(غير قابل للتغيير)"
   label_global: "عالمي"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "خطأ في تنفيذ %{macro_name} الماكرو"
   macro_unavailable: "لا يمكن عرض الماكرو %{macro_name}."
   macros:
@@ -3911,6 +4016,7 @@ ar:
   text_unallowed_characters: "حرف(أحرف) غير مسموحه"
   text_user_invited: وقد دعي المستخدم وهو انتظار التسجيل.
   text_user_wrote: "%{value} كتب:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "The work package contains unsaved text that will be lost if you leave this page."
   text_what_did_you_change_click_to_add_comment: "What did you change? Click to add comment"
   text_wiki_destroy_confirmation: "هل أنت متأكد من أنك تريد حذف هذا wikiوكافة محتوياته؟"

@@ -61,6 +61,11 @@ module Components::Autocompleter
       end
     end
 
+    def expect_ng_value_label(field_id, labels)
+      Array(labels).each do |text|
+        expect(page).to have_css("##{field_id} .ng-value-label", text:)
+      end
+    end
     ##
     # Insert the query, typing
     def ng_enter_query(element, query, wait_for_fetched_options: true)
@@ -98,8 +103,10 @@ module Components::Autocompleter
 
     ##
     # clear the ng select field
-    def ng_select_clear(from_element)
-      from_element.find(".ng-clear-wrapper", visible: :all).click
+    def ng_select_clear(from_element, raise_on_missing: true)
+      if raise_on_missing || from_element.has_css?(".ng-clear-wrapper", visible: :all, wait: 1)
+        from_element.find(".ng-clear-wrapper", visible: :all).click
+      end
     end
 
     def select_autocomplete(element,

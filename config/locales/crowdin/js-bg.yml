@@ -103,7 +103,6 @@ bg:
     button_settings: "Настройки"
     button_uncheck_all: "Размаркирай всички"
     button_update: "Обнови"
-    button_export-pdf: "Свали PDF"
     button_export-atom: "Свали Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Създаване"

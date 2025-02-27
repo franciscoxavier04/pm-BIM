@@ -59,6 +59,7 @@ uk:
         start_time: "Час початку"
         start_time_hour: "Час початку"
         end_after: "Серія нарад завершується"
+        end_date: "End date"
         iterations: "Повторення"
     errors:
       messages:
@@ -66,6 +67,7 @@ uk:
     models:
       recurring_meeting: "Повторювана нарада"
       structured_meeting: "Одноразова нарада"
+      meeting: "Meeting"
       meeting_agenda_item: "Порядок денний"
       meeting_agenda: "Порядок денний"
       meeting_minutes: "Хвилини"
@@ -263,10 +265,18 @@ uk:
       banner_html: >
         Ви редагуєте шаблон серії нарад: %{link}. Кожна нова нарада в серії буде створюватиметься на основі цього шаблона. Зміни не вплинуть на завершені або вже створені наради.
     frequency:
+      x_daily:
+        one: "Every day"
+        few: "Every %{count} days"
+        many: "Every %{count} days"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        few: "Every %{count} weeks"
+        many: "Every %{count} weeks"
+        other: "Every %{count} weeks"
       every_weekday: "Кожний(-на) %{day_of_the_week}"
-      daily: "Щодня"
       working_days: "Кожен робочий день"
-      weekly: "Щотижня"
     end_after:
       never: "ніколи"
       specific_date: "після конкретної дати"

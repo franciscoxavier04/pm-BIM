@@ -103,7 +103,6 @@ ar:
     button_settings: "إعدادات"
     button_uncheck_all: "إلغاء اختيار الكل"
     button_update: "التحديث"
-    button_export-pdf: "تنزيل PDF"
     button_export-atom: "تحميل Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "إنشاء"

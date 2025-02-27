@@ -27,7 +27,7 @@ ms:
     work_packages:
       activity_tab:
         no_results_title_text: Tiada aktiviti untuk dipaparkan
-        no_results_description_text: "Pilih \"Tunjukkan semua\" untuk menunjukkan semua aktiviti dan ulasan"
+        no_results_description_text: 'Pilih "Tunjukkan semua" untuk menunjukkan semua aktiviti dan ulasan'
         label_activity_show_all: "Papar semua"
         label_activity_show_only_comments: "Papar komen sahaja"
         label_activity_show_only_changes: "Papar perubahan sahaja"
@@ -128,9 +128,9 @@ ms:
     sync_failed: "Gagal untuk diselaraskan daripada LDAP: %{message}."
     back_to_index: "Klik di sini untuk kembali ke senarai sambungan."
     technical_warning_html: |
-      Borang LDAP ini memerlukan pengetahuan teknikal LDAP anda / pemasangan Direktori Aktif.
-      <br/>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Sila kunjungi dokumentasi kami untuk arahan lebih terperinci</a>.
+      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      <br>
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Nama arbitrari sambungan LDAP
       host: Nama hos atau alamat IP LDAP
@@ -138,9 +138,9 @@ ms:
       generic_map: Kunci atribut LDAP yang telah dipetakan ke atribut `%{attribute}` OpenProject
       admin_map_html: "Pilihan: Kunci atribut LDAP yang <strong>jika hadir</strong> menandakan pengguna OpenProject sebagai pentadbir. Biarkan kosong jika ragu-ragu."
       system_user_dn_html: |
-        Masukkan DN sistem pengguna yang digunakan untuk akses baca sahaja.
-        <br/>
-        Contoh: uid=openproject,ou=sistem,dc=contoh,dc=com
+        Enter the DN of the system user used for read-only access.
+        <br>
+        Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Masukkan kata laluan ikatan bagi pengguna sistem
       base_dn: |
         Masukkan pangkalan DN dari subpokok LDAP yang anda mahukan di OpenProject untuk mencari pengguna dan kumpulan.
@@ -178,7 +178,7 @@ ms:
     tls_options:
       verify_peer: "Sahkan sijil SSL"
       verify_peer_description_html: >
-        Membolehkan verifikasi SSL ketat bagi rantaian dipercayai sijil. <br/><strong>Amaran:</strong> Nyahtandakan pilihan ini untuk nyahaktifkan verifikasi SSL bagi sijil server LDAP. Ini mendedahkan hubungan anda kepada Orang dalam serangan Tengah.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "Jika sijil server LDAP bukan lagi di sumber yang dipercayai di sistem ini, anda boleh tambahkannya secara manual di sini. Masukkan sijil rentetan PEM X509."
   forums:
     show:
@@ -345,6 +345,7 @@ ms:
         placeholder: "Senarai projek baharu"
       delete_modal:
         title: "Padamkan senarai projek"
+        heading: "Delete this project list?"
         text: "Tindakan ini tidak akan memadamkan sebarang projek yang terkandung di dalam senarai. Adakah anda pasti untuk memadamkan senarai projek ini?"
     settings:
       change_identifier: Tukar pengenal
@@ -393,6 +394,8 @@ ms:
         no_results_content_text: Cipta versi baharu
       storage:
         no_results_title_text: Tiada ruang cakera terekod tambahan yang digunakan untuk projek ini.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       other: "Tempoh: %{count} hari bekerja"
@@ -564,10 +567,10 @@ ms:
         pakej ditetapkan secara automatik kepada nilai ini apabila status ini dipilih.
         Diabaikan dalam mod berasaskan kerja.
       status_readonly_html: |
-        Tandakan pilihan ini untuk menanda pakej kerja dengan status ini sebagai baca-sahaja.
-        Tiada atribut yang boleh diubah dengan pengecualian status.
-        <br/>
-        <strong>Perhatian</strong>: Nilai yang diwarisi (cth, dari anak-anak atau saudara) masih akan digunakan.
+        Check this option to mark work packages with this status as read-only.
+        No attributes can be changed with the exception of the status.
+        <br>
+        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Tiada status pakej kerja buat masa ini.
       no_results_content_text: Tambah status baharu
@@ -606,6 +609,14 @@ ms:
         pattern:
           label: "Corak subjek"
           caption: "Cari atribut atau tambah teks. Untuk mencipta ruang antara elemen, tambahkannya sebagai teks."
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "Versi ini dikongsi dengan projek yang diarkibkan yang masih mempunyai pakej kerja ditugaskan ke versi ini. Ini dikira, tetapi tidak akan muncul dalam paparan yang dipautkan."
@@ -768,6 +779,7 @@ ms:
       attachment:
         attachment_content: "Kandungan lampiran"
         attachment_file_name: "Nama fail lampiran"
+        content_type: "Content-type"
         downloads: "Muat turun"
         file: "Fail"
         filename: "Fail"
@@ -775,10 +787,10 @@ ms:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Teks bantuan"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repositori"
-      color:
-        hexcode: "Kod Hex"
       comment:
         commented: "Komen" #an object that this comment belongs to
       custom_action:
@@ -811,7 +823,10 @@ ms:
         client_credentials_user_id: "ID Pengguna Kelayakan Pelanggan"
         scopes: "Skop\n"
         confidential: "Sulit"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Sah sehingga"
         subscriber: "Pelanggan"
         encoded_token: "Token sokongan Enterprise"
@@ -823,6 +838,7 @@ ms:
         widgets: "Widget"
       journal:
         notes: "Nota"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Akaun"
         attr_firstname: "Atribut nama pertama"
@@ -838,10 +854,11 @@ ms:
         tls_certificate_string: "Sijil SSL server LDAP"
       member:
         roles: "Peranan\n"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "ID pelanggan"
-      planning_element_type_color:
-        hexcode: Kod Hex
       project:
         active_value:
           true: "tidak diarkibkan"
@@ -854,6 +871,7 @@ ms:
           true: "umum"
           false: "peribadi"
         queries: "Pertanyaan"
+        enabled_modules: "Enabled modules"
         status_code: "Status projek"
         description: "Deskripsi"
         status_explanation: "Deskripsi status projek"
@@ -874,23 +892,47 @@ ms:
       project_custom_field:
         is_required: "Diperlukan untuk semua projek"
         custom_field_section: Bahagian
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Name"
         color: "Color"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Kolum"
         relations_to_type_column: "Berhubung dengan %{type}"
         relations_of_type_column: "%{type} hubungan"
         group_by: "Kumpulkan hasil mengikut"
+        sort_by: "Sort results by"
         filters: "Penyaring"
         timeline_labels: "Label garis masa"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Lag"
         from: "Related work package"
         to: "Pakej kerja yang berkaitan"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Tarikh"
         remind_at_time: "Masa"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -900,6 +942,9 @@ ms:
         is_readonly: "Pakej kerja baca-sahaja"
         excluded_from_totals: "Dikecualikan daripada pengiraan jumlah dalam hierarki"
         default_done_ratio: "% Lengkap"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktiviti"
         hours: "Jam"
@@ -913,6 +958,7 @@ ms:
         is_default: "Diaktifkan untuk projek baharu secara default"
         is_milestone: "Adalah pencapaian"
         color: "Warna"
+        patterns: "Patterns"
       user:
         admin: "Pentadbir"
         auth_source: "Sumber pengesahan"
@@ -922,6 +968,10 @@ ms:
         force_password_change: "Menguatkuasakan penukaran kata laluan pada log masuk yang berikutnya"
         language: "Bahasa"
         last_login_on: "Log masuk kali terakhir"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Kata laluan baharu"
         password_confirmation: "Pengesahan"
         consented_at: "Dipersetujui di"
@@ -933,6 +983,8 @@ ms:
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
         mode_guideline: "Sesetengah mod akan menulis ganti warna tema tersuai untuk kebolehaksesan dan kebolehbacaan. Untuk tema tersuai penuh, sila pilih mod Cahaya."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Tarikh selesai"
         sharing: "Perkongsian"
@@ -1387,6 +1439,8 @@ ms:
       forum: "Forum"
       global_role: "Peranan global"
       group: "Kumpulan"
+      issue_priority:
+        other: "Priorities"
       member: "Ahli"
       news: "Berita"
       notification:
@@ -1398,6 +1452,7 @@ ms:
       project_query:
         other: "Senarai projek"
       query: "Pertanyaan tersuai"
+      reminder: "Reminder"
       role:
         other: "Peranan\n"
       status: "Status pakej kerja"
@@ -1456,18 +1511,25 @@ ms:
     assigned_to: "Penerima tugasan"
     assignee: "Penerima tugasan"
     attachments: "Lampiran"
+    actor: "Actor"
+    action: "Action"
     author: "Pengarang"
+    avatar: "Avatar"
     base: "Ralat Umum:"
+    body: "Body"
     blocks_ids: "ID pakej kerja yang disekat"
     category: "Kategori"
     comment: "Komen"
     comments: "Komen"
     content: "Kandungan"
     color: "Warna"
+    creator: "Creator"
     created_at: "Dicipta pada"
+    custom_field: "Custom field"
     custom_options: "Nilai yang mungkin"
     custom_values: "Ruangan tersuai"
     date: "Tarikh"
+    dates_interval: "Date range"
     default_columns: "Kolum default"
     description: "Deskripsi"
     derived_due_date: "Tarikh tamat yang diperolehi"
@@ -1477,39 +1539,63 @@ ms:
     due_date: "Tarikh tamat"
     estimated_hours: "Kerja"
     estimated_time: "Kerja"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Tamat tempoh pada"
     firstname: "Nama pertama"
+    filter: "Filter"
     group: "Kumpulan"
     groups: "Kumpulan"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Nilai default"
     is_for_all: "Untuk semua projek"
     public: "Umum"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Pakej kerja"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Nama akhir"
     login: "Nama pengguna"
     mail: "E-mel"
     name: "Nama"
     note: "Nota"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Kata Laluan"
     priority: "Keutamaan"
     project: "Projek"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Bertanggungjawab"
+    required: "Required"
+    recipient: "Recipient"
     role: "Peranan"
     roles: "Peranan\n"
+    search: "Search"
     start_date: "Tarikh mula"
     status: "Status"
+    state: "State"
     subject: "Subjek"
+    slug: "Slug"
     summary: "Ringkasan"
+    text: "Text"
     title: "Tajuk"
     type: "Jenis"
+    typeahead: "Autocomplete"
     updated_at: "Dikemas kini pada"
     updated_on: "Dikemas kini pada"
     uploader: "Pemuat naik\n"
     user: "Pengguna"
+    username: "Username"
+    unit: "Unit"
     value: "Nilai"
+    values: "Values"
     version: "Versi"
+    visible: "Visible"
     work_package: "Pakej kerja"
   backup:
     failed: "Sandaran gagal"
@@ -1803,6 +1889,8 @@ ms:
   enumeration_activities: "Aktiviti penjejakan masa"
   enumeration_work_package_priorities: "Keutamaan pakej kerja"
   enumeration_reported_project_statuses: "Status projek yang dilaporkan"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Log masuk satu kali (SSO) untuk pengguna '%{value}' gagal"
   error_can_not_archive_project: "Projek ini tidak boleh diarkibkan: %{errors}"
   error_can_not_delete_entry: "Tidak dapat membuang entri"
@@ -1892,6 +1980,7 @@ ms:
         input_label_report: "Tambahkan lajur pada jadual atribut"
         input_caption_report: "Secara lalai semua atribut yang ditambahkan sebagai lajur dalam senarai pakej kerja dipilih. Medan teks panjang tidak tersedia dalam jadual atribut, tetapi boleh dipaparkan di bawahnya."
         input_caption_table: "Secara lalai semua atribut yang ditambahkan sebagai lajur dalam senarai pakej kerja dipilih. Medan teks panjang tidak tersedia dalam eksport berasaskan jadual."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "Jenis eksport PDF"
@@ -1962,21 +2051,29 @@ ms:
       days: h
   pdf_generator:
     page_nr_footer: "Halaman %{page} daripada %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Hasilkan PDF
-      submit: Hasilkan
-      header_right:
-        label: Tajuk kanan
-        caption: Teks untuk dipaparkan di sebelah kanan tajuk
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Pusat pengaki
-        caption: Teks untuk dipaparkan di tengah pengaki
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Sempang
-        caption: Pecah perkataan antara baris untuk meningkatkan justifikasi teks dan kebolehbacaan.
-      paper_size:
-        label: Saiz kertas
-        caption: Saiz kertas untuk digunakan untuk PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "PdfkeTeks tersedia (pilihan)"
@@ -2302,6 +2399,7 @@ ms:
   label_missing_or_hidden_custom_option: "(nilai yang hilang atau kurang kebenaran untuk mengakses)"
   label_descending: "Menurun"
   label_details: "Butiran"
+  label_defaults: "Defaults"
   label_development_roadmap: "Jadual pembangunan"
   label_diff: "beza"
   label_diff_inline: "sebaris"
@@ -2358,6 +2456,7 @@ ms:
   label_filter: "Penyaring"
   label_filter_add: "Tambah penyaring"
   label_filter_by: "Tapis mengikut"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Penyaring"
   label_filters_toggle: "Paparkan/sembunyikan penyaring\n"
   label_float: "Terapung"
@@ -2637,6 +2736,7 @@ ms:
   label_roadmap_overdue: "%{value} lambat"
   label_role_and_permissions: "Peranan dan kebenaran"
   label_role_new: "Peranan baharu"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Peranan\n"
   label_role_search: "Tetapkan peranan ke ahli baharu"
   label_scm: "SCM"
@@ -2802,7 +2902,7 @@ ms:
   label_global_role: "Peranan global"
   label_not_changeable: "(tidak boleh diubah)"
   label_global: "Global"
-  label_seeded_from_env_warning: Rekod ini telah dicipta melalui tetapan / pemboleh ubah persekitaran. Tidak boleh diedit melalui UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Ralat melaksanakan makro berikut %{macro_name}"
   macro_unavailable: "Makro %{macro_name} tidak dapat dipaparkan."
   macros:
@@ -3710,6 +3810,7 @@ ms:
   text_unallowed_characters: "Aksara yang tidak dibenarkan"
   text_user_invited: Pengguna telah dijemput dan sedang menunggu pendaftaran.
   text_user_wrote: "%{value} menulis:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "Pakej kerja tersebut mengandungi teks yang belum disimpan yang akan hilang jika anda tinggalkan halaman ini."
   text_what_did_you_change_click_to_add_comment: "Apakah yang telah anda ubah? Klik untuk tambah komen"
   text_wiki_destroy_confirmation: "Adakah anda pasti anda ingin memadam wiki ini dan semua kandungannya?"

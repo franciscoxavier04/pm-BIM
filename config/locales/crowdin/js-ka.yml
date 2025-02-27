@@ -103,7 +103,6 @@ ka:
     button_settings: "მორგება"
     button_uncheck_all: "ყველა მონიშვნის მოხსნა"
     button_update: "განახლება"
-    button_export-pdf: "გადმოწერე PDF"
     button_export-atom: "Atom-ის გადმოწერა"
     button_generate_pdf: "Generate PDF"
     button_create: "შექმნა"

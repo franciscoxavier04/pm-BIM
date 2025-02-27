@@ -103,7 +103,6 @@ si:
     button_settings: "සැකසුම්"
     button_uncheck_all: "සියල්ල ඉවත් කරන්න"
     button_update: "යාවත්කාලීන"
-    button_export-pdf: "PDF බාගන්න"
     button_export-atom: "බාගත කරන්න පරමාණුව"
     button_generate_pdf: "Generate PDF"
     button_create: "සාදන්න"

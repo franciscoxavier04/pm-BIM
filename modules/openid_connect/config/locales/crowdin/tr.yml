@@ -4,32 +4,31 @@ tr:
     description: "OmniAuth OpenID Bağlantı strateji sağlayıcılarını OpenProject'e ekler."
   logout_warning: >
     Çıkış yaptınız. Gönderdiğiniz herhangi bir formun içeriği kaybolabilir. Lütfen giriş yapın].
-  activemodel:
+  activerecord:
     attributes:
       openid_connect/provider:
         name: İsim
-        slug: Benzersiz tanımlayıcı
-        display_name: Ekran adı
-        client_id: İstemci ID
-        client_secret: İstemci gizliliği
-        secret: Gizli
-        scope: kapsam
+        slug: Unique identifier
+        display_name: Display name
+        client_id: Client ID
+        client_secret: Client secret
+        secret: Secret
+        scope: Scope
         grant_types_supported: Supported grant types
-        limit_self_registration: Kendi kendine kaydı sınırlayın
-        authorization_endpoint: Yetkilendirme bitiş noktası
-        userinfo_endpoint: Kullanıcı bilgisi bitiş noktası
-        token_endpoint: Gösterge bitiş noktası
-        end_session_endpoint: Oturum bitiş noktasını sonlandır
-        post_logout_redirect_uri: Oturum kapatma sonrası yönlendirme URI'si
+        limit_self_registration: Limit self registration
+        authorization_endpoint: Authorization endpoint
+        userinfo_endpoint: User information endpoint
+        token_endpoint: Token endpoint
+        end_session_endpoint: End session endpoint
+        post_logout_redirect_uri: Post logout redirect URI
         jwks_uri: JWKS URI
-        issuer: Sağlayıcı
-        tenant: Müşteri
-        metadata_url: Metaveri URL'si
+        issuer: Issuer
+        tenant: Tenant
+        metadata_url: Metadata URL
         icon: Özel simge
-        claims: Bilgiler
-        acr_values: ACR değerleri
-        redirect_url: Yönlendirme bağlantısı
-  activerecord:
+        claims: Claims
+        acr_values: ACR values
+        redirect_url: Redirect URL
     errors:
       models:
         openid_connect/provider:

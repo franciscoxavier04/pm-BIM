@@ -27,6 +27,8 @@
 #++
 
 module ColorsHelper
+  include Primer::JoinStyleArgumentsHelper
+
   def options_for_colors(colored_thing)
     colors = []
     Color.find_each do |c|
@@ -86,10 +88,17 @@ module ColorsHelper
 
   def icon_for_color(color, options = {})
     return unless color
+    return if color.hexcode.blank?
 
-    options.merge! class: "color--preview " + options[:class].to_s,
+    style = join_style_arguments(
+      "background-color: #{color.hexcode}",
+      "border-color: #{color.darken(0.5)}50",
+      options[:style]
+    )
+
+    options.merge!(class: "color--preview #{options[:class]}",
                    title: color.name,
-                   style: "background-color: #{color.hexcode};" + options[:style].to_s
+                   style:)
 
     content_tag(:span, " ", options)
   end

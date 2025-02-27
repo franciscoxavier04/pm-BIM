@@ -57,6 +57,7 @@ es:
         start_time: "Hora de inicio"
         start_time_hour: "Hora de inicio"
         end_after: "Fin de la serie de reuniones"
+        end_date: "End date"
         iterations: "Repeticiones"
     errors:
       messages:
@@ -64,6 +65,7 @@ es:
     models:
       recurring_meeting: "Reunión periódica"
       structured_meeting: "Reunión única"
+      meeting: "Meeting"
       meeting_agenda_item: "Puntos de Agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minutas"
@@ -259,10 +261,14 @@ es:
       banner_html: >
         En este momento está editando una plantilla de una serie de reuniones: %{link}. Cada nueva repetición de una reunión en la serie utilizará esta plantilla. Los cambios no afectarán a las reuniones pasadas o ya creadas.
     frequency:
+      x_daily:
+        one: "Every day"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        other: "Every %{count} weeks"
       every_weekday: "Cada %{day_of_the_week}"
-      daily: "Diariamente"
       working_days: "Todos los dias hábiles"
-      weekly: "Semanalmente"
     end_after:
       never: "nunca"
       specific_date: "después de una fecha específica"

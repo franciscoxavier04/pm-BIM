@@ -103,7 +103,6 @@ fi:
     button_settings: "Asetukset"
     button_uncheck_all: "Poista valinnat"
     button_update: "Päivitä"
-    button_export-pdf: "Lataa PDF"
     button_export-atom: "Lataa Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Uusi"
