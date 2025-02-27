@@ -38,15 +38,6 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
 
   subject(:mediator) { described_class.new(work_package:) }
 
-  shared_let_work_packages(<<~TABLE)
-    hierarchy    | MTWTFSS    | scheduling mode | predecessors
-    predecessor1 | XXX        | manual          |
-    predecessor2 | XX         | manual          |
-    predecessor3 | XX         | manual          |
-    predecessor4 |            | manual          |
-    work_package |          X | automatic       | predecessor1 with lag 2, predecessor2 with lag 7, predecessor3 with lag 7, predecessor4 with lag 10
-  TABLE
-
   describe "RelationGroup" do
     let(:group) { mediator.relation_group("follows") }
 
@@ -60,30 +51,47 @@ RSpec.describe WorkPackageRelationsTab::RelationsMediator do
       end
     end
 
-    describe "#closest_relation" do
-      it "returns the closest follows relation" do
-        expect(group.closest_relation).to eq _table.relation(predecessor: predecessor2)
+    context "having a closest relation" do
+      shared_let_work_packages(<<~TABLE)
+        hierarchy    | MTWTFSS    | scheduling mode | predecessors
+        predecessor1 | XXX        | manual          |
+        predecessor2 | XX         | manual          |
+        predecessor3 | XX         | manual          |
+        predecessor4 |            | manual          |
+        work_package |          X | automatic       | predecessor1 with lag 2, predecessor2 with lag 7, predecessor3 with lag 7, predecessor4 with lag 10
+      TABLE
+
+      describe "#closest_relation" do
+        it "returns the closest follows relation" do
+          expect(group.closest_relation).to eq _table.relation(predecessor: predecessor2)
+        end
+      end
+
+      describe "#closest_relation?(relation)" do
+        it "returns true if the given relation is the closest one, false otherwise" do
+          expect(group.closest_relation?(_table.relation(predecessor: predecessor2))).to be true
+          expect(group.closest_relation?(_table.relation(predecessor: predecessor1))).to be false
+        end
       end
     end
 
-    describe "#closest_relation?(relation)" do
-      it "returns true if the given relation is the closest one, false otherwise" do
-        expect(group.closest_relation?(_table.relation(predecessor: predecessor2))).to be true
-        expect(group.closest_relation?(_table.relation(predecessor: predecessor1))).to be false
-      end
-    end
+    context "without having a closest relation" do
+      shared_let_work_packages(<<~TABLE)
+        hierarchy    | MTWTFSS    | scheduling mode | predecessors
+        predecessor1 |            | manual          |
+        work_package |          X | automatic       | predecessor1 with lag 2
+      TABLE
 
-    describe "#closest_relations" do
-      it "returns all follows relations with dates set, with the closest first" do
-        expect(group.closest_relations).to eq [
-          _table.relation(predecessor: predecessor2),
-          _table.relation(predecessor: predecessor3),
-          _table.relation(predecessor: predecessor1)
-        ]
+      describe "#closest_relation" do
+        it "returns nil" do
+          expect(group.closest_relation).to be_nil
+        end
       end
 
-      it "does not return any follows relations without dates set" do
-        expect(group.closest_relations).not_to include(_table.relation(predecessor: predecessor4))
+      describe "#closest_relation?(relation)" do
+        it "always returns false" do
+          expect(group.closest_relation?(_table.relation(predecessor: predecessor1))).to be false
+        end
       end
     end
   end

@@ -48,18 +48,15 @@ class WorkPackageRelationsTab::RelationsMediator
 
     def closest_relation?(relation) = closest_relation == relation
 
-    def closest_relation = closest_relations.first
-
-    def closest_relations
-      return [] unless type.follows?
+    def closest_relation
+      return nil unless type.follows?
 
       all_relations
         .lazy
         .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
         .select(&:soonest_start)
-        .sort
-        .reverse
-        .map(&:relation)
+        .max
+        &.relation
     end
   end
 
