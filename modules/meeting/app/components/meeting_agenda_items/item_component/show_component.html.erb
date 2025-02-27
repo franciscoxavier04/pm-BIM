@@ -67,7 +67,7 @@
             )
             edit_action_item(menu) if @meeting_agenda_item.editable?
             add_note_action_item(menu) if @meeting_agenda_item.editable? && @meeting_agenda_item.notes.blank?
-            add_outcome_action_item(menu) if @meeting_agenda_item.editable? && @meeting.in_progress? && outcome_enabled? && !@meeting_agenda_item.outcomes.exists?
+            add_outcome_action_item(menu) if add_outcome_action?
             unless first? && last?
               menu.with_divider
               move_actions(menu)
@@ -92,7 +92,7 @@
         grid.with_area(:outcomes, tag: :div) do
           flex_layout do |flex|
             flex.with_row do
-              render(MeetingAgendaItems::Outcomes::BaseComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item))
+              render(MeetingAgendaItems::Outcomes::BaseComponent.new(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item, meeting_outcome: nil, edit: false))
             end
           end
         end

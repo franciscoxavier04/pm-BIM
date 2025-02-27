@@ -174,31 +174,13 @@ module Meetings
         end
       end
 
-      def render_outcome_form_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item)
-        render_base_outcome_component_via_turbo_stream(meeting:, meeting_agenda_item:, hide_notes: false, meeting_outcome: nil,
-                                                       state: :edit)
-      end
-
-      def render_base_outcome_component_via_turbo_stream(hide_notes:, meeting_outcome: nil, state: :show, meeting: @meeting,
-                                                         meeting_agenda_item: @meeting_agenda_item)
+      def render_base_outcome_component_via_turbo_stream(meeting:, meeting_agenda_item:, meeting_outcome:, edit:)
         update_via_turbo_stream(
           component: MeetingAgendaItems::Outcomes::BaseComponent.new(
-            hide_notes:,
             meeting:,
             meeting_agenda_item:,
             meeting_outcome:,
-            state:
-          )
-        )
-      end
-
-      def update_new_outcome_button_via_turbo_stream(disabled: false, meeting: @meeting,
-                                                     meeting_agenda_item: @meeting_agenda_item)
-        update_via_turbo_stream(
-          component: MeetingAgendaItems::Outcomes::NewButtonComponent.new(
-            disabled:,
-            meeting:,
-            meeting_agenda_item:
+            edit:
           )
         )
       end

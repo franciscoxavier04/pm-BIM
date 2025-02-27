@@ -34,11 +34,10 @@ module MeetingAgendaItems::Outcomes
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_agenda_item: nil, disabled: false)
+    def initialize(meeting:, meeting_agenda_item: nil)
       super
       @meeting = meeting
       @meeting_agenda_item = meeting_agenda_item
-      @disabled = @meeting.closed? || disabled
     end
 
     private
@@ -48,7 +47,7 @@ module MeetingAgendaItems::Outcomes
     end
 
     def render?
-      true
+      @meeting.in_progress? && User.current.allowed_in_project?(:create_meeting_minutes, @meeting.project)
     end
 
     def button_scheme

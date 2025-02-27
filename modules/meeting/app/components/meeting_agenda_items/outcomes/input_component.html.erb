@@ -1,16 +1,14 @@
 <%=
   component_wrapper do
-    unless @hidden
-      render(
-        MeetingAgendaItems::Outcomes::FormComponent.new(
-          meeting: @meeting,
-          meeting_agenda_item: @meeting_agenda_item,
-          meeting_outcome: @meeting_outcome,
-          method:,
-          submit_path:,
-          cancel_path:
-        )
+    render(
+      MeetingAgendaItems::Outcomes::FormComponent.new(
+        meeting: @meeting,
+        meeting_agenda_item: @meeting_agenda_item,
+        meeting_outcome: @meeting_outcome,
+        method:,
+        submit_path:,
+        cancel_path:
       )
-    end
+    )
   end
 %>

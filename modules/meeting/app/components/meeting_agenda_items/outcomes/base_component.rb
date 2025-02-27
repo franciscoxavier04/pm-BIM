@@ -34,16 +34,13 @@ module MeetingAgendaItems
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_agenda_item:, meeting_outcome: nil, state: :show, hide_notes: true)
+    def initialize(meeting:, meeting_agenda_item:, meeting_outcome:, edit:)
       super
 
       @meeting = meeting
       @meeting_agenda_item = meeting_agenda_item
-      @meeting_outcome = meeting_outcome
-      @state = state
-      @hide_notes = hide_notes
-
-      override
+      @meeting_outcome = meeting_outcome.presence || override
+      @edit = edit
     end
 
     def wrapper_uniq_by
@@ -53,15 +50,9 @@ module MeetingAgendaItems
     private
 
     def override
-      if @meeting_agenda_item.outcomes.exists? && @state != :edit
+      if @meeting_agenda_item.outcomes.exists?
         @meeting_outcome = @meeting_agenda_item.outcomes.information_kind.last
-        @state = :show
-        @hide_notes = false
       end
-    end
-
-    def outcome_enabled?
-      @meeting.in_progress?
     end
   end
 end

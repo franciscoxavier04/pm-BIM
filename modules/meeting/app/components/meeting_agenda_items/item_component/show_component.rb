@@ -58,8 +58,11 @@ module MeetingAgendaItems
     end
 
     def outcome_enabled?
-      User.current.allowed_in_project?(:create_meeting_minutes,
-                                       @meeting.project) && OpenProject::FeatureDecisions.meeting_outcomes_active?
+      OpenProject::FeatureDecisions.meeting_outcomes_active?
+    end
+
+    def add_outcome_action?
+      @meeting_agenda_item.editable? && @meeting.in_progress? && outcome_enabled? && !@meeting_agenda_item.outcomes.exists?
     end
 
     def first?

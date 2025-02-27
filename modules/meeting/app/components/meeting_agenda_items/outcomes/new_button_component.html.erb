@@ -1,7 +1,7 @@
 <%=
   component_wrapper(style: "position: relative") do
     render(Primer::Alpha::ActionMenu.new(classes: "hide-when-print")) do |component|
-      component.with_show_button(scheme: button_scheme, disabled: @disabled) do |button|
+      component.with_show_button(scheme: button_scheme) do |button|
         button.with_leading_visual_icon(icon: :plus)
         t("outcome.add_button")
       end

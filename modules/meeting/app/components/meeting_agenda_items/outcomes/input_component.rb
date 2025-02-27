@@ -34,12 +34,11 @@ module MeetingAgendaItems::Outcomes
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_agenda_item:, meeting_outcome: nil, hidden: true)
+    def initialize(meeting:, meeting_agenda_item:, meeting_outcome: nil)
       super
       @meeting = meeting
       @meeting_agenda_item = meeting_agenda_item
       @meeting_outcome = meeting_outcome || build_meeting_outcome
-      @hidden = hidden
     end
 
     private
