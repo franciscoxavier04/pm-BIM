@@ -70,6 +70,10 @@ class Queries::Projects::Filters::LifeCycleGateFilter < Queries::Projects::Filte
     gate_where(beginning_of_week.to_date, end_of_week.to_date)
   end
 
+  def none
+    gate_none
+  end
+
   def life_cycle_scope_limit(scope)
     super
       .where(definition_id: life_cycle_step_definition.id)
