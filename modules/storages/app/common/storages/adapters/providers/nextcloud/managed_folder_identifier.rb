@@ -30,31 +30,24 @@
 
 module Storages
   module Adapters
-    module Input
-      RSpec.describe Files do
-        subject(:input) { described_class }
-
-        describe ".new" do
-          it "discourages direct instantiation" do
-            expect { described_class.new(file_id: "file_id", user_permissions: []) }
-              .to raise_error(NoMethodError, /private method 'new'/)
-          end
-        end
-
-        describe ".build" do
-          it "creates a success result for valid input data" do
-            expect(input.build(folder: "DeathStar")).to be_success
+    module Providers
+      module Nextcloud
+        class ManagedFolderIdentifier
+          def initialize(project_storage)
+            @storage = project_storage.storage
+            @project = project_storage.project
           end
 
-          it "coerces the parent folder into a ParentFolder object" do
-            result = input.build(folder: "DeathStar").value!
-
-            expect(result.folder).to be_a(Peripherals::ParentFolder)
+          def name
+            "#{@project.name.tr('/', '|')} (#{@project.id})"
           end
 
-          it "creates a failure result for invalid input data" do
-            expect(input.build(folder: 1)).to be_failure
-            expect(input.build(folder: "")).to be_failure
+          def path
+            "/#{@storage.group_folder}/#{name}/"
+          end
+
+          def location
+            path
           end
         end
       end

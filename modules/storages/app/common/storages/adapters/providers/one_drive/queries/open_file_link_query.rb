@@ -30,31 +30,33 @@
 
 module Storages
   module Adapters
-    module Input
-      RSpec.describe Files do
-        subject(:input) { described_class }
+    module Providers
+      module OneDrive
+        module Queries
+          class OpenFileLinkQuery < Base
+            def call(auth_strategy:, input_data:)
+              Authentication[auth_strategy].call(storage: @storage) do |http|
+                if input_data.open_location
+                  request_parent_id(http, input_data.file_id).bind { request_web_url(http, it) }
+                else
+                  request_web_url(http, input_data.file_id)
+                end
+              end
+            end
 
-        describe ".new" do
-          it "discourages direct instantiation" do
-            expect { described_class.new(file_id: "file_id", user_permissions: []) }
-              .to raise_error(NoMethodError, /private method 'new'/)
-          end
-        end
+            private
 
-        describe ".build" do
-          it "creates a success result for valid input data" do
-            expect(input.build(folder: "DeathStar")).to be_success
-          end
+            def drive_item_query
+              @drive_item_query ||= DriveItemQuery.new(@storage)
+            end
 
-          it "coerces the parent folder into a ParentFolder object" do
-            result = input.build(folder: "DeathStar").value!
+            def request_web_url(http, file_id)
+              drive_item_query.call(http:, drive_item_id: file_id, fields: %w[webUrl]).fmap { it[:webUrl] }
+            end
 
-            expect(result.folder).to be_a(Peripherals::ParentFolder)
-          end
-
-          it "creates a failure result for invalid input data" do
-            expect(input.build(folder: 1)).to be_failure
-            expect(input.build(folder: "")).to be_failure
+            def request_parent_id(http, file_id)
+              drive_item_query.call(http:, drive_item_id: file_id, fields: %w[parentReference]).fmap { it.dig(:parentReference, :id) }
+            end
           end
         end
       end

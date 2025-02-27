@@ -30,32 +30,18 @@
 
 module Storages
   module Adapters
-    module Input
-      RSpec.describe Files do
-        subject(:input) { described_class }
-
-        describe ".new" do
-          it "discourages direct instantiation" do
-            expect { described_class.new(file_id: "file_id", user_permissions: []) }
-              .to raise_error(NoMethodError, /private method 'new'/)
-          end
-        end
-
-        describe ".build" do
-          it "creates a success result for valid input data" do
-            expect(input.build(folder: "DeathStar")).to be_success
-          end
-
-          it "coerces the parent folder into a ParentFolder object" do
-            result = input.build(folder: "DeathStar").value!
-
-            expect(result.folder).to be_a(Peripherals::ParentFolder)
-          end
-
-          it "creates a failure result for invalid input data" do
-            expect(input.build(folder: 1)).to be_failure
-            expect(input.build(folder: "")).to be_failure
-          end
+    module Providers
+      module OneDrive
+        class OneDriveContract < ::ModelContract
+          attribute :host
+          validates :host, absence: true
+          attribute :tenant_id
+          validates :tenant_id,
+                    format: { with: /\A(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|consumers)\z/i }
+          attribute :drive_id
+          # GRAPH API considers drive ids of 16 characters or shorter as personal drive ids. Those are not supported,
+          # and allowing them lead to unexpected behavior.
+          validates :drive_id, presence: true, allow_nil: true, length: { minimum: 17 }
         end
       end
     end

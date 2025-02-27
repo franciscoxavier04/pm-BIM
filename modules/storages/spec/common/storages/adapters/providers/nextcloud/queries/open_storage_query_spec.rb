@@ -28,33 +28,37 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+require "spec_helper"
+require_module_spec_helper
+
 module Storages
   module Adapters
-    module Input
-      RSpec.describe Files do
-        subject(:input) { described_class }
+    module Providers
+      module Nextcloud
+        module Queries
+          RSpec.describe OpenStorageQuery do
+            let(:storage) { create(:nextcloud_storage, host: "https://example.com") }
 
-        describe ".new" do
-          it "discourages direct instantiation" do
-            expect { described_class.new(file_id: "file_id", user_permissions: []) }
-              .to raise_error(NoMethodError, /private method 'new'/)
-          end
-        end
+            it "responds to .call" do
+              expect(described_class).to respond_to(:call)
 
-        describe ".build" do
-          it "creates a success result for valid input data" do
-            expect(input.build(folder: "DeathStar")).to be_success
-          end
+              method = described_class.method(:call)
+              expect(method.parameters).to contain_exactly(%i[keyreq storage], %i[keyreq auth_strategy], %i[keyreq input_data])
+            end
 
-          it "coerces the parent folder into a ParentFolder object" do
-            result = input.build(folder: "DeathStar").value!
+            it "returns the url for opening the file on storage" do
+              url = described_class.call(storage:, auth_strategy: nil, input_data: nil).value!
+              expect(url).to eq("#{storage.host}/index.php/apps/files")
+            end
 
-            expect(result.folder).to be_a(Peripherals::ParentFolder)
-          end
+            context "with a storage with host url with a sub path" do
+              let(:storage) { create(:nextcloud_storage, host: "https://example.com/html") }
 
-          it "creates a failure result for invalid input data" do
-            expect(input.build(folder: 1)).to be_failure
-            expect(input.build(folder: "")).to be_failure
+              it "returns the url for opening the file on storage" do
+                url = described_class.call(storage:, auth_strategy: nil, input_data: nil).value!
+                expect(url).to eq("#{storage.host}/index.php/apps/files")
+              end
+            end
           end
         end
       end

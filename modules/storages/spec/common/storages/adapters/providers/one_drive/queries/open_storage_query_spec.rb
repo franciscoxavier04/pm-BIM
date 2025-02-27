@@ -28,33 +28,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
+require "spec_helper"
+require_module_spec_helper
+
 module Storages
   module Adapters
-    module Input
-      RSpec.describe Files do
-        subject(:input) { described_class }
+    module Providers
+      module OneDrive
+        module Queries
+          RSpec.describe OpenStorageQuery, :webmock do
+            let(:user) { create(:user) }
+            let(:storage) { create(:sharepoint_dev_drive_storage, oauth_client_token_user: user) }
+            let(:auth_strategy) do
+              Registry["one_drive.authentication.user_bound"].call(user)
+            end
 
-        describe ".new" do
-          it "discourages direct instantiation" do
-            expect { described_class.new(file_id: "file_id", user_permissions: []) }
-              .to raise_error(NoMethodError, /private method 'new'/)
-          end
-        end
+            subject { described_class.new(storage) }
 
-        describe ".build" do
-          it "creates a success result for valid input data" do
-            expect(input.build(folder: "DeathStar")).to be_success
-          end
+            describe "#call" do
+              it "responds with correct parameters" do
+                expect(described_class).to respond_to(:call)
 
-          it "coerces the parent folder into a ParentFolder object" do
-            result = input.build(folder: "DeathStar").value!
+                method = described_class.method(:call)
+                expect(method.parameters).to contain_exactly(%i[keyreq storage], %i[keyreq auth_strategy], %i[keyreq input_data])
+              end
 
-            expect(result.folder).to be_a(Peripherals::ParentFolder)
-          end
-
-          it "creates a failure result for invalid input data" do
-            expect(input.build(folder: 1)).to be_failure
-            expect(input.build(folder: "")).to be_failure
+              context "with outbound requests successful", vcr: "one_drive/open_storage_query_success" do
+                it "returns the url for opening the storage" do
+                  call = subject.call(auth_strategy:)
+                  expect(call).to be_success
+                  expect(call.value!).to eq("https://finn.sharepoint.com/sites/openprojectfilestoragetests/VCR")
+                end
+              end
+            end
           end
         end
       end

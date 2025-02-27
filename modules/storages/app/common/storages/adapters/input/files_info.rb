@@ -31,31 +31,12 @@
 module Storages
   module Adapters
     module Input
-      RSpec.describe Files do
-        subject(:input) { described_class }
+      # FIXME: Should FileIDs become a Array(Location)?
+      FilesInfo = Data.define(:file_ids) do
+        private_class_method :new
 
-        describe ".new" do
-          it "discourages direct instantiation" do
-            expect { described_class.new(file_id: "file_id", user_permissions: []) }
-              .to raise_error(NoMethodError, /private method 'new'/)
-          end
-        end
-
-        describe ".build" do
-          it "creates a success result for valid input data" do
-            expect(input.build(folder: "DeathStar")).to be_success
-          end
-
-          it "coerces the parent folder into a ParentFolder object" do
-            result = input.build(folder: "DeathStar").value!
-
-            expect(result.folder).to be_a(Peripherals::ParentFolder)
-          end
-
-          it "creates a failure result for invalid input data" do
-            expect(input.build(folder: 1)).to be_failure
-            expect(input.build(folder: "")).to be_failure
-          end
+        def self.build(file_ids:, contract: FilesInfoContract.new)
+          contract.call(file_ids:).to_monad.fmap { |it| new(**it.to_h) }
         end
       end
     end

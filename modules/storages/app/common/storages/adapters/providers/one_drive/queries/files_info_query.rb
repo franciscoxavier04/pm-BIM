@@ -30,31 +30,37 @@
 
 module Storages
   module Adapters
-    module Input
-      RSpec.describe Files do
-        subject(:input) { described_class }
+    module Providers
+      module OneDrive
+        module Queries
+          class FilesInfoQuery < Base
+            def call(auth_strategy:, input_data:)
+              with_tagged_logger do
+                info "Retrieving file information for #{input_data.file_ids.join(', ')}"
 
-        describe ".new" do
-          it "discourages direct instantiation" do
-            expect { described_class.new(file_id: "file_id", user_permissions: []) }
-              .to raise_error(NoMethodError, /private method 'new'/)
-          end
-        end
+                infos = input_data.file_ids.map do |file_id|
+                  Input::FileInfo.build(file_id:).bind do |file_data|
+                    FileInfoQuery.call(storage: @storage, auth_strategy:, input_data: file_data).value_or do |failure|
+                      return failure if failure.source.module_parent == Authentication
 
-        describe ".build" do
-          it "creates a success result for valid input data" do
-            expect(input.build(folder: "DeathStar")).to be_success
-          end
+                      wrap_storage_file_error(input_data.file_id, failure)
+                    end
+                  end
+                end
 
-          it "coerces the parent folder into a ParentFolder object" do
-            result = input.build(folder: "DeathStar").value!
+                Success(infos)
+              end
+            end
 
-            expect(result.folder).to be_a(Peripherals::ParentFolder)
-          end
+            private
 
-          it "creates a failure result for invalid input data" do
-            expect(input.build(folder: 1)).to be_failure
-            expect(input.build(folder: "")).to be_failure
+            def wrap_storage_file_error(file_id, query_result)
+              Results::StorageFileInfo.new(
+                id: file_id,
+                status: query_result.code,
+                status_code: Rack::Utils::SYMBOL_TO_STATUS_CODE[query_result.code] || 500
+              )
+            end
           end
         end
       end

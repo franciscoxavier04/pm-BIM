@@ -30,31 +30,40 @@
 
 module Storages
   module Adapters
-    module Input
-      RSpec.describe Files do
-        subject(:input) { described_class }
+    module Providers
+      module OneDrive
+        module Queries
+          class OpenStorageQuery < Base
+            def call(auth_strategy:, **)
+              Authentication[auth_strategy].call(storage: @storage) do |http|
+                request_drive(http).fmap { it[:webUrl] }
+              end
+            end
 
-        describe ".new" do
-          it "discourages direct instantiation" do
-            expect { described_class.new(file_id: "file_id", user_permissions: []) }
-              .to raise_error(NoMethodError, /private method 'new'/)
-          end
-        end
+            private
 
-        describe ".build" do
-          it "creates a success result for valid input data" do
-            expect(input.build(folder: "DeathStar")).to be_success
-          end
+            def request_drive(http)
+              handle_responses http.get(request_url)
+            end
 
-          it "coerces the parent folder into a ParentFolder object" do
-            result = input.build(folder: "DeathStar").value!
+            def handle_responses(response)
+              error = Results::Error.new(source: self.class, payload: @storage)
 
-            expect(result.folder).to be_a(Peripherals::ParentFolder)
-          end
+              case response
+              in { status: 200..299 }
+                Success(response.json(symbolize_keys: true))
+              in { status: 404 }
+                Failure(error.with(code: :not_found))
+              in { status: 403 }
+                Failure(error.with(code: :forbidden))
+              in { status: 401 }
+                Failure(error.with(code: :unauthorized))
+              else
+                Failure(error.with(code: :error))
+              end
+            end
 
-          it "creates a failure result for invalid input data" do
-            expect(input.build(folder: 1)).to be_failure
-            expect(input.build(folder: "")).to be_failure
+            def request_url = "#{base_uri}?$select=webUrl"
           end
         end
       end
