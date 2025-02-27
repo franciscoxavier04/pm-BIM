@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,27 +28,51 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module MailNotificationHelper
-  include ::ColorsHelper
+module OpPrimer
+  class StatusButtonComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
 
-  def unique_reasons_of_notifications(notifications)
-    notifications
-      .map(&:reason)
-      .uniq
-  end
+    def initialize(current_status:, items:, readonly: false, disabled: false, button_arguments: {}, menu_arguments: {})
+      super
 
-  def type_color(type, default_fallback)
-    color_id = selected_color(type)
-    if color_id
-      color = Color.find(color_id)
-      return color.super_bright? ? color.darken(0.75) : color.hexcode
+      @current_status = current_status
+      @items = items
+      @readonly = readonly
+      @disabled = disabled
+      @menu_arguments = menu_arguments
+      @button_arguments = button_arguments
     end
 
-    default_fallback
-  end
+    def default_button_title
+      raise NotImplementedError
+    end
 
-  def status_colors(status)
-    color_id = selected_color(status)
-    Color.find(color_id).color_styles_css if color_id
+    def disabled?
+      @disabled
+    end
+
+    def readonly?
+      @readonly
+    end
+
+    def button_content(button)
+      button.with_leading_visual_icon(icon: @current_status.icon) if @current_status.icon
+      button.with_trailing_action_icon(icon: "triangle-down") if !readonly? && @items.any?
+
+      @current_status.name
+    end
+
+    def button_arguments
+      title = @button_arguments.fetch(:title) { default_button_title }
+
+      {
+        title:,
+        disabled: disabled?,
+        aria: {
+          label: title
+        },
+        style: @current_status.color&.color_styles_css
+      }.compact.deep_merge(@button_arguments)
+    end
   end
 end

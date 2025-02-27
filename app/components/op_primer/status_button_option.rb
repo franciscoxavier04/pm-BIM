@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,27 +28,19 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module MailNotificationHelper
-  include ::ColorsHelper
+module OpPrimer
+  class StatusButtonOption # rubocop:disable OpenProject/AddPreviewForViewComponent
+    attr_reader :name, :color, :icon, :item_arguments
 
-  def unique_reasons_of_notifications(notifications)
-    notifications
-      .map(&:reason)
-      .uniq
-  end
-
-  def type_color(type, default_fallback)
-    color_id = selected_color(type)
-    if color_id
-      color = Color.find(color_id)
-      return color.super_bright? ? color.darken(0.75) : color.hexcode
+    def initialize(name:, color: nil, icon: nil, **item_arguments)
+      @name = name
+      @color = color
+      @icon = icon
+      @item_arguments = item_arguments
     end
 
-    default_fallback
-  end
-
-  def status_colors(status)
-    color_id = selected_color(status)
-    Color.find(color_id).color_styles_css if color_id
+    def to_s
+      name
+    end
   end
 end
