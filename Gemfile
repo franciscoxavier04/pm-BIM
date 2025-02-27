@@ -49,7 +49,7 @@ gem "rdoc", ">= 2.4.2"
 gem "doorkeeper", "~> 5.8.0"
 # Maintain our own omniauth due to relative URL root issues
 # see upstream PR: https://github.com/omniauth/omniauth/pull/903
-gem "omniauth", git: "https://github.com/opf/omniauth", ref: "fe862f986b2e846e291784d2caa3d90a658c67f0"
+gem "omniauth", git: "https://github.com/opf/omniauth", ref: "7eb21563ba047ef86d71f099975587b5ec88f9c9"
 gem "request_store", "~> 1.7.0"
 
 gem "warden", "~> 1.2"
