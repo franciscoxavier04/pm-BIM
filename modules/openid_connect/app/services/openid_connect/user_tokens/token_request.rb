@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -55,11 +55,17 @@ module OpenIDConnect
 
       def request_token(form:)
         response = authenticated_request.post(provider.token_endpoint, form:)
-        response.raise_for_status
 
-        Success(response.json)
-      rescue HTTPX::Error => e
-        Failure(e)
+        case response
+        in status: 200
+          Success(response.json)
+        in status: 401
+          Failure(:unauthorized)
+        in status: 403
+          Failure(:forbidden)
+        else
+          Failure(response)
+        end
       end
 
       def authenticated_request

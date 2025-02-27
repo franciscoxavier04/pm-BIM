@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -49,7 +49,7 @@ module OpenIDConnect
         access_token = json["access_token"]
         refresh_token = json["refresh_token"]
         expires_in = json["expires_in"]
-        return Failure("Refresh token response invalid") if access_token.blank?
+        return Failure(:token_refresh_response_invalid) if access_token.blank?
 
         token.update!(access_token:, refresh_token:, expires_at: expires_in&.seconds&.from_now)
 
@@ -63,17 +63,14 @@ module OpenIDConnect
         # For simplicity we do not consider scenarios where the original token had a wider audience,
         # because all tokens obtained through exchange in this service will have exactly one audience.
         if @token_exchange.supported? && token.audiences.size == 1
-          return @token_exchange.call(token.audiences.first)
+          @token_exchange.call(token.audiences.first)
+        else
+          Failure(:unable_to_refresh_token)
         end
-
-        Failure("Can't refresh the access token")
       end
 
       def refresh_token_request(refresh_token)
-        TokenRequest.new(provider:).refresh(refresh_token).or do |error|
-          Rails.logger.error("Failed to refresh token: #{error.inspect}")
-          Failure(:failed_refresh)
-        end
+        TokenRequest.new(provider:).refresh(refresh_token)
       end
 
       def provider

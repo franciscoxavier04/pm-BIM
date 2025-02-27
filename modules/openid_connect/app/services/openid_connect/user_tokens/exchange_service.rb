@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -78,10 +78,7 @@ module OpenIDConnect
       private
 
       def request_exchange(idp_token, audience)
-        TokenRequest.new(provider:).exchange(idp_token, audience).or do |error|
-          Rails.logger.error("Failed to refresh token: #{error.inspect}")
-          Failure(:failed_token_exchange)
-        end
+        TokenRequest.new(provider:).exchange(idp_token, audience)
       end
 
       def store_exchanged_token(audience:, access_token:, refresh_token:, expires_in:)

@@ -32,7 +32,7 @@ module Storages
   module Peripherals
     class NextcloudConnectionValidator
       include TaggedLogging
-      include Dry::Monads[:maybe, :result]
+      include Dry::Monads[:maybe]
 
       using ServiceResultRefinements
 
@@ -96,14 +96,10 @@ module Storages
                        :unknown_error
                      end
 
-        # Temporary error as I implement the next steps
-        Some(ConnectionValidation
-               .new(type: :error,
-                    error_code:,
-                    timestamp: Time.current,
-                    description: I18n.t(
-                      "storages.health.connection_validation.#{error_code}", audience: @storage.audience
-                    )))
+        Some(ConnectionValidation.new(type: :error,
+                                      error_code:,
+                                      timestamp: Time.current,
+                                      description: I18n.t("storages.health.connection_validation.#{error_code}")))
       end
 
       def has_base_configuration_error?
