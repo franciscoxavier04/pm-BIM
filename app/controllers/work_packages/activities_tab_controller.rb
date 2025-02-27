@@ -295,13 +295,14 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def create_journal_service_call
-    ### taken from ActivitiesByWorkPackageAPI
+    to_boolean = ->(value, default) { ActiveRecord::Type::Boolean.new.cast(value.presence || default) }
+
     AddWorkPackageNoteService
       .new(user: User.current,
            work_package: @work_package)
       .call(journal_params[:notes],
-            send_notifications: !(params.has_key?(:notify) && params[:notify] == "false"))
-    ###
+            send_notifications: to_boolean.call(params[:notify], true),
+            restricted: to_boolean.call(journal_params[:restricted], false))
   end
 
   def update_journal_service_call

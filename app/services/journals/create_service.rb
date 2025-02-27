@@ -48,9 +48,9 @@ module Journals
       self.journable = journable
     end
 
-    def call(notes: "", cause: CauseOfChange::NoCause.new)
+    def call(notes: "", restricted: false, cause: CauseOfChange::NoCause.new)
       Journal.transaction do
-        journal = create_journal(notes, cause)
+        journal = create_journal(notes, restricted, cause)
 
         if journal
           reload_journals
@@ -74,12 +74,12 @@ module Journals
       end
     end
 
-    def create_journal(notes, cause)
+    def create_journal(notes, restricted, cause)
       predecessor = aggregatable_predecessor(notes, cause)
 
       log_journal_creation(predecessor)
 
-      create_sql = create_journal_sql(predecessor, notes, cause)
+      create_sql = create_journal_sql(predecessor, notes, restricted, cause)
 
       # We need to ensure that the result is genuine. Otherwise,
       # calling the service repeatedly for the same journable
@@ -187,8 +187,8 @@ module Journals
     # (`insert_attachable`, `insert_customizable` and `insert_storable`) should actually insert data. It is additionally
     # used as the values returned by the overall SQL statement so that an AR instance can be instantiated with it.
     #
-    def create_journal_sql(predecessor, notes, cause)
-      journal_modifications = journal_modification_sql(predecessor, notes, cause)
+    def create_journal_sql(predecessor, notes, restricted, cause)
+      journal_modifications = journal_modification_sql(predecessor, notes, restricted, cause)
       relation_modifications = relation_modifications_sql(predecessor)
 
       journal_cte_clauses = [journal_modifications]
@@ -200,7 +200,7 @@ module Journals
       SQL
     end
 
-    def journal_modification_sql(predecessor, notes, cause)
+    def journal_modification_sql(predecessor, notes, restricted, cause)
       <<~SQL
         cleanup_predecessor_data AS (
           #{cleanup_predecessor_data(predecessor)}
@@ -217,7 +217,7 @@ module Journals
         ), update_predecessor AS (
           #{update_predecessor_sql(predecessor, notes, cause)}
         ), inserted_journal AS (
-          #{update_or_insert_journal_sql(predecessor, notes, cause)}
+          #{update_or_insert_journal_sql(predecessor, notes, restricted, cause)}
         )
       SQL
     end
@@ -307,11 +307,11 @@ module Journals
                column => predecessor.send(referenced_id)
     end
 
-    def update_or_insert_journal_sql(predecessor, notes, cause)
+    def update_or_insert_journal_sql(predecessor, notes, restricted, cause)
       if predecessor
         update_journal_sql(predecessor, notes, cause)
       else
-        insert_journal_sql(notes, cause)
+        insert_journal_sql(notes, restricted, cause)
       end
     end
 
@@ -343,7 +343,7 @@ module Journals
                cause: cause_sql(cause))
     end
 
-    def insert_journal_sql(notes, cause)
+    def insert_journal_sql(notes, restricted, cause)
       journal_sql = <<~SQL
         INSERT INTO
           journals (
@@ -352,6 +352,7 @@ module Journals
             version,
             user_id,
             notes,
+            restricted,
             created_at,
             updated_at,
             data_id,
@@ -365,6 +366,7 @@ module Journals
           COALESCE(max_journals.version, 0) + 1,
           :user_id,
           :notes,
+          :restricted,
           (SELECT updated_at FROM fetch_time),
           (SELECT updated_at FROM fetch_time),
           insert_data.id,
@@ -377,6 +379,7 @@ module Journals
 
       sanitize(journal_sql,
                notes:,
+               restricted:,
                cause: cause_sql(cause),
                journable_id: journable.id,
                journable_type:,
