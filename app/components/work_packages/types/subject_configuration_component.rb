@@ -52,14 +52,26 @@ module WorkPackages
       private
 
       def subject_form_object
-        subject_pattern = model.patterns.subject || ::Types::Pattern.new(blueprint: "", enabled: false)
+        values = subject_configuration_form_values
 
         ::Types::Forms::SubjectConfigurationFormModel.new(
-          subject_configuration: subject_pattern.enabled ? :generated : :manual,
-          pattern: subject_pattern.blueprint,
+          subject_configuration: values[:subject_configuration],
+          pattern: values[:pattern],
           suggestions: ::Types::Patterns::TokenPropertyMapper.new.tokens_for_type(model),
           validation_errors: model.errors
         )
+      end
+
+      def subject_configuration_form_values
+        if params[:types_forms_subject_configuration_form_model].present?
+          params[:types_forms_subject_configuration_form_model]
+        else
+          persisted_subject_pattern = model.patterns.subject || ::Types::Pattern.new(blueprint: "", enabled: false)
+          subject_configuration = persisted_subject_pattern.enabled ? :generated : :manual
+          pattern = persisted_subject_pattern.blueprint
+
+          { subject_configuration:, pattern: }
+        end
       end
     end
   end
