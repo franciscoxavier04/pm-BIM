@@ -111,7 +111,7 @@ module WorkPackages
         return false if @work_package.start_date.nil?
 
         predecessor_work_packages.any? do |wp|
-          return false if wp.due_date.nil?
+          next false if wp.due_date.nil?
 
           wp.due_date.after?(@work_package.start_date)
         end
@@ -120,16 +120,13 @@ module WorkPackages
       def predecessor_with_large_gap?
         return false if @work_package.start_date.nil?
 
-        sorted = predecessor_work_packages.sort_by(&:due_date)
-
-        last_due_date = sorted.last.due_date
-        return false if last_due_date.nil?
-
-        last_due_date.before?(@work_package.start_date - 2)
+        predecessor_work_packages.filter_map(&:due_date)
+                                 .max
+                                 &.before?(@work_package.start_date - 2)
       end
 
       def predecessor_relations
-        @predecessor_relations ||= @work_package.follows_relations
+        @predecessor_relations ||= Relation.used_for_scheduling_of(@work_package)
       end
 
       def predecessor_work_packages

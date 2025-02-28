@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,28 +29,31 @@
 #++
 
 module Relations::Scopes
-  module FollowsNonManualAncestors
+  module UsedForSchedulingOf
     extend ActiveSupport::Concern
 
     class_methods do
-      # Returns all follows relationships of work package ancestors or work package unless
-      # the ancestor or a work package between the ancestor and self is manually scheduled.
-      def follows_non_manual_ancestors(work_package)
-        ancestor_relations_non_manual = WorkPackageHierarchy
-                                          .where(descendant_id: work_package.id)
-                                          .where.not(ancestor_id: from_manual_ancestors(work_package).select(:ancestor_id))
+      # Returns all successor/predecessor relationships in which the work
+      # package or its automatically scheduled ancestors are a successor of. The
+      # automatically scheduled ancestors are the ancestors that are linked to
+      # the work package only through automatically scheduled parents. As soon
+      # as a parent is manually scheduled, its predecessors and ancestors are
+      # not involved in scheduling anymore.
+      def used_for_scheduling_of(work_package)
+        automatically_scheduled_ancestors =
+          WorkPackageHierarchy.where(descendant_id: work_package.id)
+                              .where.not(ancestor_id: manually_scheduled_ancestors(work_package).select(:ancestor_id))
 
-        where(from_id: ancestor_relations_non_manual.select(:ancestor_id))
-          .follows
+        follows.where(from_id: automatically_scheduled_ancestors.select(:ancestor_id))
       end
 
       private
 
-      def from_manual_ancestors(work_package)
-        manually_schedule_ancestors = work_package.ancestors.where(schedule_manually: true)
+      def manually_scheduled_ancestors(work_package)
+        manually_scheduled_ancestors = work_package.ancestors.where(schedule_manually: true)
 
         WorkPackageHierarchy
-          .where(descendant_id: manually_schedule_ancestors.select(:id))
+          .where(descendant_id: manually_scheduled_ancestors.select(:id))
       end
     end
   end

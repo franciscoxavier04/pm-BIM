@@ -39,7 +39,7 @@ module WorkPackages
       # Used for the three tabs for predecessors, successors and children in the date picker modal.
       Tab = Data.define(:key, :relation_group)
 
-      attr_accessor :work_package, :schedule_manually, :focused_field, :touched_field_map
+      attr_reader :work_package, :schedule_manually, :focused_field, :touched_field_map
 
       def initialize(work_package:, schedule_manually: true, focused_field: :start_date, touched_field_map: {})
         super
@@ -52,12 +52,20 @@ module WorkPackages
 
       private
 
-      def precedes_relations
-        @precedes_relations ||= work_package.precedes_relations
+      def schedule_manually?
+        @schedule_manually
       end
 
-      def follows_relations
-        @follows_relations ||= work_package.follows_relations
+      def has_children_or_predecessors?
+        children.any? || follows_relations_used_for_scheduling.any?
+      end
+
+      def follows_relations_used_for_scheduling
+        @follows_relations_used_for_scheduling ||= Relation.used_for_scheduling_of(work_package)
+      end
+
+      def precedes_relations
+        @precedes_relations ||= work_package.precedes_relations
       end
 
       def children
@@ -73,18 +81,17 @@ module WorkPackages
         ]
       end
 
-      def content_editable?
-        @schedule_manually || follows_relations.any? || children.any?
+      # Returns true if dates can be set and saved: if the work package is
+      # scheduled manually or if it is scheduled automatically with children or
+      # predecessors.
+      def can_set_dates?
+        schedule_manually? || has_children_or_predecessors?
       end
 
       def show_banner?
-        follows_relations.any? ||
+        follows_relations_used_for_scheduling.any? ||
           children.any? ||
           (@schedule_manually && (precedes_relations.any? || work_package.parent_id.present?))
-      end
-
-      def has_relations?
-        precedes_relations.any? || follows_relations.any? || children.any?
       end
     end
   end
