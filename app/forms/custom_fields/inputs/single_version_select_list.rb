@@ -43,7 +43,7 @@ class CustomFields::Inputs::SingleVersionSelectList < CustomFields::Inputs::Base
         list.option(
           label: version.name,
           value: version.id,
-          group_by: version.project.name,
+          group_by: group_key(version.project),
           selected: selected?(version)
         )
       end
@@ -58,5 +58,9 @@ class CustomFields::Inputs::SingleVersionSelectList < CustomFields::Inputs::Base
 
   def selected?(version)
     version.id == @custom_value.value&.to_i
+  end
+
+  def group_key(project)
+    project.visible?(User.current) ? project.name : I18n.t(:"project.not_available")
   end
 end
