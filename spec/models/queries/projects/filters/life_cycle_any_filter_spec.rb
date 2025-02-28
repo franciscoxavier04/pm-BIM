@@ -35,8 +35,7 @@ RSpec.describe Queries::Projects::Filters::LifeCycleAnyFilter do
     let(:class_key) { :lcsd_any }
     let(:type) { :date }
     let(:model) { Project }
-    let(:values) { ["3"] }
-    let(:human_name) { I18n.t("project.filters.lcsd_any") }
+    let(:human_name) { I18n.t("project.filters.life_cycle_any") }
 
     describe "default_operator" do
       it "is 'today'" do

@@ -32,6 +32,7 @@ require "spec_helper"
 
 RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
   let(:instance) { described_class.new }
+  let(:filter_key) { "lcsd_stage_#{stage.definition_id}" }
 
   shared_let(:view_role) { create(:project_role, permissions: %i[view_project_stages_and_gates]) }
 
@@ -40,6 +41,12 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
   shared_let(:project_with_stage) { create(:project, name: "Project with stage") }
   shared_let(:stage) do
     create(:project_stage, project: project_with_stage, start_date: stage_start_date, end_date: stage_end_date)
+  end
+
+  # This is added to ensure that the filter only works on the stage provided.
+  shared_let(:project_with_rival_stage) { create(:project, name: "Project with rival stage") }
+  shared_let(:rival_stage) do
+    create(:project_stage, project: project_with_rival_stage, start_date: stage_start_date, end_date: stage_end_date)
   end
 
   shared_let(:gate_date) { Date.parse("2025-03-06") }
@@ -51,6 +58,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
   shared_let(:user) do
     create(:user, member_with_permissions: {
              project_with_stage => %i[view_project_stages_and_gates],
+             project_with_rival_stage => %i[view_project_stages_and_gates],
              project_with_gate => %i[view_project_stages_and_gates],
              project_without_step => %i[view_project_stages_and_gates]
            })
@@ -87,7 +95,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
 
   context "with a =d (on) operator" do
     before do
-      instance.where("lcsd_stage_#{stage.id}", "=d", values)
+      instance.where(filter_key, "=d", values)
     end
 
     context "when filtering in the middle of the stage" do
@@ -163,7 +171,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
 
   context "with a t (today) operator" do
     before do
-      instance.where("lcsd_stage_#{stage.id}", "t", [])
+      instance.where(filter_key, "t", [])
     end
 
     context "when being in the middle of the stage" do
@@ -237,7 +245,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
 
   context "with a w (this week) operator" do
     before do
-      instance.where("lcsd_stage_#{stage.id}", "w", [])
+      instance.where(filter_key, "w", [])
     end
 
     context "when being in the middle of the stage" do
@@ -365,7 +373,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
 
   context "with a <>d (between) operator" do
     before do
-      instance.where("lcsd_stage_#{stage.id}", "<>d", values)
+      instance.where(filter_key, "<>d", values)
     end
 
     context "when encompassing the stage completely" do
@@ -481,7 +489,7 @@ RSpec.describe ProjectQuery, "results of a life cycle stage filter" do
 
   context "with a !* (none) operator" do
     before do
-      instance.where("lcsd_stage_#{stage.id}", "!*", [])
+      instance.where(filter_key, "!*", [])
     end
 
     context "when the gate is active but has no dates" do
