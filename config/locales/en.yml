@@ -4578,6 +4578,7 @@ en:
     description: "Adds the OmniAuth SAML provider to OpenProject"
 
   enterprise_plans:
+    label_token_version: "Token Version"
     legacy_enterprise: "Enterprise Plan"
 
   enterprise_features:

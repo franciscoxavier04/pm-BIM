@@ -16,7 +16,10 @@ module EnterpriseHelper
 
   def enterprise_token_plan_name(enterprise_token)
     if enterprise_token.respond_to?(:plan)
-      "#{I18n.t(enterprise_token.plan, scope: [:enterprise_plans])} (#{enterprise_token.version})"
+      <<~LABEL.squish
+        #{I18n.t(enterprise_token.plan, scope: [:enterprise_plans])}
+        (#{I18n.t('enterprise_plans.label_token_version')} #{enterprise_token.version})
+      LABEL
     end
   end
 
