@@ -723,7 +723,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
         it "allows filtering the projects by the life cycle stage" do
           load_and_open_filters manager
 
-          projects_page.set_filter("lcsd_stage_#{stage.id}",
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
                                    "Lifecycle stage: #{stage.name}",
                                    "on",
                                    [Time.zone.today + 5.days])
@@ -731,22 +731,22 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           projects_page.expect_projects_not_listed(development_project, public_project)
           projects_page.expect_projects_in_order(project)
 
-          projects_page.remove_filter("lcsd_stage_#{stage.id}")
+          projects_page.remove_filter("lcsd_stage_#{stage.definition_id}")
 
           projects_page.expect_projects_in_order(development_project, project, public_project)
 
-          projects_page.set_filter("lcsd_stage_#{stage.id}",
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
                                    "Lifecycle stage: #{stage.name}",
                                    "today")
 
           projects_page.expect_projects_not_listed(development_project, public_project)
           projects_page.expect_projects_in_order(project)
 
-          projects_page.remove_filter("lcsd_stage_#{stage.id}")
+          projects_page.remove_filter("lcsd_stage_#{stage.definition_id}")
 
           projects_page.expect_projects_in_order(development_project, project, public_project)
 
-          projects_page.set_filter("lcsd_stage_#{stage.id}",
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
                                    "Lifecycle stage: #{stage.name}",
                                    "between",
                                    [Time.zone.today - 5.days, Time.zone.today + 10.days])
@@ -754,22 +754,22 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           projects_page.expect_projects_not_listed(development_project, public_project)
           projects_page.expect_projects_in_order(project)
 
-          projects_page.remove_filter("lcsd_stage_#{stage.id}")
+          projects_page.remove_filter("lcsd_stage_#{stage.definition_id}")
 
           projects_page.expect_projects_in_order(development_project, project, public_project)
 
-          projects_page.set_filter("lcsd_stage_#{stage.id}",
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
                                    "Lifecycle stage: #{stage.name}",
                                    "this week")
 
           projects_page.expect_projects_not_listed(development_project, public_project)
           projects_page.expect_projects_in_order(project)
 
-          projects_page.remove_filter("lcsd_stage_#{stage.id}")
+          projects_page.remove_filter("lcsd_stage_#{stage.definition_id}")
 
           projects_page.expect_projects_in_order(development_project, project, public_project)
 
-          projects_page.set_filter("lcsd_stage_#{stage.id}",
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
                                    "Lifecycle stage: #{stage.name}",
                                    "is empty")
 
@@ -804,7 +804,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           it "allows filtering the projects by the life cycle gate" do
             load_and_open_filters manager
 
-            projects_page.set_filter("lcsd_gate_#{gate.id}",
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
                                      "Lifecycle gate: #{gate.name}",
                                      "on",
                                      [Time.zone.today])
@@ -812,22 +812,22 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
             projects_page.expect_projects_not_listed(development_project, project)
             projects_page.expect_projects_in_order(public_project)
 
-            projects_page.remove_filter("lcsd_gate_#{gate.id}")
+            projects_page.remove_filter("lcsd_gate_#{gate.definition_id}")
 
             projects_page.expect_projects_in_order(development_project, project, public_project)
 
-            projects_page.set_filter("lcsd_gate_#{gate.id}",
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
                                      "Lifecycle gate: #{gate.name}",
                                      "today")
 
             projects_page.expect_projects_not_listed(development_project, project)
             projects_page.expect_projects_in_order(public_project)
 
-            projects_page.remove_filter("lcsd_gate_#{gate.id}")
+            projects_page.remove_filter("lcsd_gate_#{gate.definition_id}")
 
             projects_page.expect_projects_in_order(development_project, project, public_project)
 
-            projects_page.set_filter("lcsd_gate_#{gate.id}",
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
                                      "Lifecycle gate: #{gate.name}",
                                      "between",
                                      [Time.zone.today - 5.days, Time.zone.today + 10.days])
@@ -835,22 +835,22 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
             projects_page.expect_projects_not_listed(development_project, project)
             projects_page.expect_projects_in_order(public_project)
 
-            projects_page.remove_filter("lcsd_gate_#{gate.id}")
+            projects_page.remove_filter("lcsd_gate_#{gate.definition_id}")
 
             projects_page.expect_projects_in_order(development_project, project, public_project)
 
-            projects_page.set_filter("lcsd_gate_#{gate.id}",
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
                                      "Lifecycle gate: #{gate.name}",
                                      "this week")
 
             projects_page.expect_projects_not_listed(development_project, project)
             projects_page.expect_projects_in_order(public_project)
 
-            projects_page.remove_filter("lcsd_gate_#{gate.id}")
+            projects_page.remove_filter("lcsd_gate_#{gate.definition_id}")
 
             projects_page.expect_projects_in_order(development_project, project, public_project)
 
-            projects_page.set_filter("lcsd_gate_#{gate.id}",
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
                                      "Lifecycle gate: #{gate.name}",
                                      "is empty")
 

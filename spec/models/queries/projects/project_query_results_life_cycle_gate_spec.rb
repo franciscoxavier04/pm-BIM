@@ -32,6 +32,7 @@ require "spec_helper"
 
 RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
   let(:instance) { described_class.new }
+  let(:filter_key) { "lcsd_gate_#{gate.definition_id}" }
 
   shared_let(:view_role) { create(:project_role, permissions: %i[view_project_stages_and_gates]) }
 
@@ -46,12 +47,17 @@ RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
   shared_let(:project_with_gate) { create(:project, name: "Project with gate") }
   shared_let(:gate) { create(:project_gate, project: project_with_gate, date: gate_date) }
 
+  # This is added to ensure that the filter only works on the gate provided.
+  shared_let(:project_with_rival_gate) { create(:project, name: "Project with rival gate") }
+  shared_let(:rival_gate) { create(:project_gate, project: project_with_rival_gate, date: gate_date) }
+
   shared_let(:project_without_step) { create(:project, name: "Project without step") }
 
   shared_let(:user) do
     create(:user, member_with_permissions: {
              project_with_stage => %i[view_project_stages_and_gates],
              project_with_gate => %i[view_project_stages_and_gates],
+             project_with_rival_gate => %i[view_project_stages_and_gates],
              project_without_step => %i[view_project_stages_and_gates]
            })
   end
@@ -87,7 +93,7 @@ RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
 
   context "with a =d (on) operator" do
     before do
-      instance.where("lcsd_gate_#{gate.id}", "=d", values)
+      instance.where(filter_key, "=d", values)
     end
 
     context "when filtering on the day of the gate" do
@@ -147,7 +153,7 @@ RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
 
   context "with a t (today) operator" do
     before do
-      instance.where("lcsd_gate_#{gate.id}", "t", [])
+      instance.where(filter_key, "t", [])
     end
 
     context "when being on the day of the gate" do
@@ -207,7 +213,7 @@ RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
 
   context "with a w (this week) operator" do
     before do
-      instance.where("lcsd_gate_#{gate.id}", "w", [])
+      instance.where(filter_key, "w", [])
     end
 
     context "when being a day before the gate" do
@@ -327,7 +333,7 @@ RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
 
   context "with a <>d (between) operator" do
     before do
-      instance.where("lcsd_gate_#{gate.id}", "<>d", values)
+      instance.where(filter_key, "<>d", values)
     end
 
     context "when encompassing the gate completely" do
@@ -411,7 +417,7 @@ RSpec.describe ProjectQuery, "results of a life cycle gate filter" do
 
   context "with a !* (none) operator" do
     before do
-      instance.where("lcsd_gate_#{gate.id}", "!*", [])
+      instance.where(filter_key, "!*", [])
     end
 
     context "when the gate is active but has no dates" do
