@@ -33,23 +33,22 @@ require "spec_helper"
 RSpec.describe RemoteIdentity do
   let(:user) { create(:user) }
   let(:integration) { create(:nextcloud_storage) }
-  let(:auth_source) { create(:oauth_client) }
+  let(:oauth_client) { create(:oauth_client) }
+  let(:oidc_provider) { create(:oidc_provider) }
 
-  it "a user can have multiple identities in different oauth clients" do
-    other_client = create(:oauth_client)
-    create(:remote_identity, user:, auth_source:)
-    second_identity = build(:remote_identity, user:, auth_source: other_client)
+  it "a user can have multiple identities within one integration for different auth source" do
+    create(:remote_identity, user:, auth_source: oauth_client, integration:)
+    second_identity = build(:remote_identity, user:, auth_source: oidc_provider, integration:)
 
     expect(second_identity).to be_valid
   end
 
-  it "a user can only have one identity per oauth client and integration" do
-    create(:remote_identity, user:, auth_source:, integration:)
+  it "a user can only have one identity per auth_source and integration" do
+    create(:remote_identity, user:, auth_source: oauth_client, integration:)
 
-    invalid = build(:remote_identity, user:, auth_source:, integration:)
+    invalid = build(:remote_identity, user:, auth_source: oauth_client, integration:)
 
     expect(invalid).not_to be_valid
-    p invalid.errors
     expect(invalid.errors.size).to eq(1)
   end
 
@@ -59,9 +58,17 @@ RSpec.describe RemoteIdentity do
     expect { user.destroy }.to change(described_class, :count).by(-1)
   end
 
-  it "is destroyed when the related oauth client is destroyed" do
-    create(:remote_identity, auth_source:)
+  it "is destroyed when the related auth source is destroyed" do
+    create(:remote_identity, auth_source: oauth_client)
+    create(:remote_identity, auth_source: oidc_provider)
 
-    expect { auth_source.destroy }.to change(described_class, :count).by(-1)
+    expect { oauth_client.destroy }.to change(described_class, :count).by(-1)
+    expect { oidc_provider.destroy }.to change(described_class, :count).by(-1)
+  end
+
+  it "is destroyed when the related integration is destroyed" do
+    create(:remote_identity, integration:)
+
+    expect { integration.destroy }.to change(described_class, :count).by(-1)
   end
 end

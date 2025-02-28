@@ -74,7 +74,7 @@ module Storages
                 auth_source = if auth_strategy.key == :oauth_user_token
                                 storage.oauth_client
                               else
-                                user.authentication_provider
+                                auth_strategy.user.authentication_provider
                               end
                 origin_user_id = RemoteIdentity.where(user_id: auth_strategy.user,
                                                       auth_source:,
