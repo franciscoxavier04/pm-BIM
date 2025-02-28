@@ -66,7 +66,7 @@ tr:
     project_folder_mode:
       automatic: Automatically managed
       inactive: Belirli bir klasör yok
-      manual: Existing folder manually managed
+      manual: Mevcut klasör elle yönetilir
     remove_project:
       deletion_failure_flash: Failed to remove the project from the storage. %{error}
       dialog:
@@ -75,7 +75,7 @@ tr:
         heading_text: Remove project from %{storage}
         text: This action is irreversible and will remove all links from work packages of this project to files and folders of that storage.
         title: Remove project from storage
-      label: Remove project
+      label: Projeyi sil
   services:
     attributes:
       nextcloud_sync_service:
@@ -246,13 +246,13 @@ tr:
       title: E-posta bildirimleri
       unsubscribe: Aboneliği iptal et
     help_texts:
-      project_folder: The project folder is the default folder for file uploads for this project. Users can nevertheless still upload files to other locations.
+      project_folder: Proje klasörü, bu proje için dosya yüklemeleri için varsayılan klasördür. Kullanıcılar yine de dosyaları başka konumlara yükleyebilirler.
       project_folder_bulk: The project folder is the default folder for file uploads for all the projects selected. You can modify this individually in each project settings. Users can nevertheless still upload files to other locations.
     instructions:
       all_available_storages_already_added: Mevcut tüm depolar zaten projeye eklenmiştir.
-      automatic_folder: This will automatically create a root folder for this project and manage the access permissions for each project member.
+      automatic_folder: Bu, bu proje için otomatik olarak bir kök klasör oluşturacak ve her proje üyesi için erişim izinlerini yönetecektir.
       empty_project_folder_validation: Selecting a folder is mandatory to proceed.
-      existing_manual_folder: You can designate an existing folder as the root folder for this project. The permissions are however not automatically managed, the administrator needs to manually ensure relevant users have access. The selected folder can be used by multiple projects.
+      existing_manual_folder: Mevcut bir klasörü bu proje için kök klasör olarak belirleyebilirsiniz. Ancak izinler otomatik olarak yönetilmez, yöneticinin ilgili kullanıcıların erişime sahip olduğundan emin olması gerekir. Seçilen klasör birden fazla proje tarafından kullanılabilir.
       host: 'Lütfen https dahil olmak üzere depolama alanınızın ana bilgisayar adresini ekleyin:'
       managed_project_folders_application_password_caption: 'Enable automatic managed folders by copying this value from: %{provider_type_link}.'
       name: Kullanıcıların birden fazla depolama alanı arasında ayrım yapabilmesi için depolama alanınıza bir ad verin.
@@ -262,7 +262,7 @@ tr:
         integration: Nextcloud Yönetimi / OpenProject
         oauth_configuration: Copy these values from %{application_link_text}.
         provider_configuration: Please make sure you have administration privileges in your Nextcloud instance and the %{application_link_text} is installed before doing the setup.
-      no_specific_folder: By default, each user will start at their own home folder when they upload a file.
+      no_specific_folder: Varsayılan olarak, her kullanıcı bir dosya yüklediğinde kendi ana klasöründen başlayacaktır.
       no_storage_set_up: Henüz ayarlanmış dosya deposu yok.
       not_logged_into_storage: To select a project folder, please first login
       oauth_application_details: The client secret value will not be accessible again after you close this window. Please copy these values into the %{oauth_application_details_link}.
@@ -287,15 +287,15 @@ tr:
       type: 'Lütfen Nextcloud bulut sunucunuzda yönetici ayrıcalıklarına sahip olduğunuzdan ve kurulumu yapmadan önce aşağıdaki uygulamanın kurulu olduğundan emin olun:'
       type_link_text: "“Entegrasyon OpenProject”"
     label_active: Aktif
-    label_add_new_storage: Add new storage
-    label_automatic_folder: New folder with automatically managed permissions
+    label_add_new_storage: Yeni depolama alanı ekleyin
+    label_automatic_folder: Otomatik olarak yönetilen izinlere sahip yeni klasör
     label_creation_time: Oluşturma zamanı
     label_creator: Oluşturan
     label_delete_storage: Depolamayı sil
     label_edit_storage_access_management: Depolama erişim yönetimini düzenleme
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
-    label_existing_manual_folder: Existing folder with manually managed permissions
+    label_existing_manual_folder: Elle yönetilen izinlere sahip mevcut klasör
     label_file_storage: File storage
     label_host: Barındırıcı URL'si
     label_inactive: Etkin değil
@@ -386,8 +386,8 @@ tr:
       description: 'Bu seçeneğin devre dışı bırakılması, iş paketleri dosyaları sekmesindeki ekler listesini gizleyecektir. Bir iş paketinin açıklamasına eklenen dosyalar dahili ekler deposuna yüklenmeye devam edecektir. '
       label: İş paketleri dosyaları sekmesinde ekleri göster
     storage_list_blank_slate:
-      description: Add a storage to see them here.
-      heading: You don't have any storages yet.
+      description: Onları burada görmek için bir depolama ekleyin.
+      heading: Henüz hiç depolamanız yok.
     successful_storage_connection: Depolama başarıyla bağlandı! Kullanmak istediğiniz her proje için Projeler sekmesinde depolamayı etkinleştirmeyi unutmayın.
     upsale:
       description: |-

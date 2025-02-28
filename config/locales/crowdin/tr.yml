@@ -115,7 +115,7 @@ tr:
     note_public: "Bu alana eklediğiniz herhangi bir metin ve resim, oturum açmış tüm kullanıcılar tarafından herkes tarafından görülebilir!"
     text_overview: "Bu görünümde, öznitelikleri görünüm için özel yardım metinler oluşturabilirsiniz. Tanımladığınızda, bu metinler, aidiyet öznitelik yanındaki Yardım simgesini tıklayarak gösterilebilir."
     label_plural: "Öznitelik yardım metinleri"
-    show_preview: "Önizleme metni"
+    show_preview: "Metni önizle"
     add_new: "Yardım metni ekle"
     edit: "%{attribute_caption} için Yardım metni Düzenle"
   background_jobs:
@@ -249,7 +249,7 @@ tr:
       Bir projeye yeni özel alanlar eklemeden önce onları oluşturmalısınız.
     is_enabled_globally: "Genel için etkinleştirildi"
     enabled_in_project: "Projede etkin"
-    contained_in_type: "Türünün kapsadığı"
+    contained_in_type: "Kullanıldığı tipler"
     confirm_destroy_option: "Bir seçeneğin silinmesi, kullanıldığı her yerden (örneğin iş paketleri) silinmesine neden olur. Silmek istediğinizden emin misiniz?"
     reorder_alphabetical: "Değerleri alfabetik olarak yeniden sıralayın"
     reorder_confirmation: "Uyarı: Mevcut değerlerin sırası kaybolacak. Devam et?"
@@ -348,7 +348,7 @@ tr:
         title: "Proje listesini sil"
         text: "Bu eylem, listenin içerdiği hiçbir projeyi silmeyecektir. Bu proje listesini silmek istediğinizden emin misiniz?"
     settings:
-      change_identifier: Dil Tanımlayıcı değiştir
+      change_identifier: Tanımlayıcıyı değiştir
       actions:
         label_enable_all: "Tümünü etkinleştir"
         label_disable_all: "Tümünü devre dışı bırak"
@@ -1203,10 +1203,10 @@ tr:
               format: "%{message}"
             selects:
               name_not_included: "The 'Name' column needs to be included"
-              nonexistent: "The column '%{column}' does not exist."
+              nonexistent: "'%{column}' sütunu mevcut değil."
               format: "%{message}"
           group_by_hierarchies_exclusive: "grubu tarafından '%{group_by}' ile birlikte kullanılamaz. Her ikisi de etkinleştiremezsiniz."
-          can_only_be_modified_by_owner: "The query can only be modified by its owner."
+          can_only_be_modified_by_owner: "Sorgu yalnızca sahibi tarafından değiştirilebilir."
           need_permission_to_modify_public_query: "Genel bir sorguyu değiştiremezsiniz."
           filters:
             custom_fields:
@@ -1321,7 +1321,7 @@ tr:
               does_not_exist: "Belirtilen kategori yok."
             estimated_hours:
               not_a_number: "geçerli bir süre değil."
-              cant_be_inferior_to_remaining_work: "cannot be lower than Remaining work."
+              cant_be_inferior_to_remaining_work: "Kalan İşten daha düşük olamaz."
               must_be_set_when_remaining_work_and_percent_complete_are_set: "required when Remaining work and % Complete are set."
             remaining_hours:
               not_a_number: "geçerli bir süre değil."
@@ -1390,7 +1390,7 @@ tr:
           other: "%{model} kaydı %{count} hatadan dolayı engellendi"
     models:
       attachment: "Dosya"
-      attribute_help_text: "Öznitelik Yardım metni"
+      attribute_help_text: "Öznitelik yardım metni"
       category: "Kategori"
       comment: "Yorum"
       custom_action: "Özel eylem"
@@ -1834,7 +1834,7 @@ tr:
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
-        description: "Create and organize different project stages and gates than the ones provided by PM2 project cycle planning."
+        description: "PM2 proje döngüsü planlaması tarafından sağlananlardan farklı proje aşamaları ve kapıları oluşturun ve düzenleyin."
       form_configuration:
         description: "Bu ek eklentilerle form yapılandırmasını özelleştirin:"
         add_groups: "Yeni öznitelik grubu ekleyin"
@@ -1881,7 +1881,7 @@ tr:
   error_no_type_in_project: "Bu proje ile ilişkili bir tür yok. Lütfen Proje ayarlarını kontrol edin."
   error_omniauth_registration_timed_out: "Harici bir kimlik doğrulama sağlayıcısı aracılığıyla kayıt zaman aşımına uğradı. Lütfen tekrar deneyin."
   error_omniauth_invalid_auth: "Kimlik sağlayıcısından döndürülen kimlik doğrulama bilgileri geçersizdi. Daha fazla yardım için lütfen yöneticinizle iletişime geçin."
-  error_password_change_failed: "Şifreyi değiştirmeye çalışırken bir hata oluştu."
+  error_password_change_failed: "Parolayı değiştirmeye çalışırken bir hata oluştu."
   error_scm_command_failed: "Depoya erişmeye çalışılırken bir hata oluştu:%{value}"
   error_scm_not_found: "Depoda girme veya düzeltme bulunamadı."
   error_type_could_not_be_saved: "Type kaydedilemedi"
@@ -1966,7 +1966,7 @@ tr:
           label: "Kağıt boyutu"
           caption: "Depending on the chart size more than one page might be exported."
         long_text_fields:
-          input_caption: "By default all long text fields are selected."
+          input_caption: "Varsayılan olarak tüm uzun metin alanları seçilidir."
           input_label: "Uzun metin alanları ekle"
           input_placeholder: "Uzun metin alanları için ara"
           drag_area_label: "Uzun metin alanlarını yönet"
@@ -2197,7 +2197,7 @@ tr:
   label_add_subtask: "Alt görev ekle"
   label_added: "eklendi"
   label_added_by: "%{author} tarafından eklendi"
-  label_added_by_on: "Added by %{author} on %{date}"
+  label_added_by_on: "%{author} tarafından %{date} tarihinde eklendi"
   label_added_time_by: "%{author} tarafından %{age} önce eklendi"
   label_additional_workflow_transitions_for_assignee: "Kullanıcı atanan olduğu zaman tanınacak ek yetkiler"
   label_additional_workflow_transitions_for_author: "Kullanıcı oluşturan olduğunda izin verilen ek geçişler"
@@ -2235,7 +2235,7 @@ tr:
   label_ldap_auth_source: "LDAP bağlantısı"
   label_ldap_auth_source_plural: "LDAP bağlantıları"
   label_attribute_expand_text: "The complete text for '%{attribute}'"
-  label_authentication: "Kimlik Doğrulaması"
+  label_authentication: "Kimlik doğrulaması"
   label_authentication_settings: "Kimlik doğrulama ayarları"
   label_available_custom_fields_projects: "Available custom fields projects"
   label_available_global_roles: "Mevcut genel roller"
@@ -2367,7 +2367,7 @@ tr:
   label_end_to_start: "başlamak için bitmek"
   label_enumeration_new: "Yeni numaralandırma değeri"
   label_enumeration_value: "Numaralandırma değeri"
-  label_enumerations: "Sayım Listesi"
+  label_enumerations: "Sabit listesi"
   label_enterprise: "Kurumsal"
   label_enterprise_active_users: "%{current}/%{limit} aktif kullanıcı rezervasyonu"
   label_enterprise_edition: "Enterprise sürüm"
@@ -2510,7 +2510,7 @@ tr:
   label_message_plural: "Mesajlar"
   label_message_posted: "Mesaj eklendi"
   label_min_max_length: "En az - En çok uzunluk"
-  label_minute_plural: "notlar"
+  label_minute_plural: "dakika"
   label_missing_api_access_key: "Eksik API erişim anahtarı"
   label_missing_feeds_access_key: "Eksik RSS erişim anahtarı"
   label_modification: "%{count} değişim"
@@ -2595,7 +2595,7 @@ tr:
   label_precedes: "iletletir"
   label_preferences: "Seçenekler"
   label_preview: "Ön İzleme"
-  label_preview_not_available: "Preview not available"
+  label_preview_not_available: "Önizleme mevcut değil"
   label_previous: "Önceki"
   label_previous_week: "Geçen Hafta"
   label_principal_invite_via_email: " veya yeni kullanıcılar e-posta ile davet et"
@@ -2706,7 +2706,7 @@ tr:
   label_status: "Durum"
   label_storage_free_space: "Kalan disk alanı"
   label_storage_used_space: "Kullanışmış disk alanı"
-  label_storage_group: "Depolama dosya sistemi% {tanımlayıcı} %{identifier}"
+  label_storage_group: "Depolama sistemi %{identifier}"
   label_storage_for: "Için depolama alanını kapsar"
   label_string: "Metin"
   label_subproject: "Alt proje"
@@ -2901,7 +2901,7 @@ tr:
       see_all: "Tümünü gör"
       updated_at: "%{timestamp} tarihinde %{user} tarafından güncellendi"
     reminder_notifications:
-      subject: "Reminder: %{note}"
+      subject: "Hatırlatma: %{note}"
       heading: "Yeni bir hatırlatıcınız var"
       note: "Not: \"%{note}\""
     sharing:
@@ -2909,7 +2909,7 @@ tr:
         allowed_actions: "You may %{allowed_actions} this work package. This can change depending on your project role and permissions."
         create_account: "To access this work package, you will need to create and activate an account on %{instance}."
         open_work_package: "Open work package"
-        subject: "Work package #%{id} was shared with you"
+        subject: "İş paketi #%{id} sizinle paylaşıldı"
         enterprise_text: "Share work packages with users who are not members of the project."
         summary:
           user: "%{user} shared a work package with you with %{role_rights} rights"
@@ -2933,16 +2933,16 @@ tr:
         email_notification_settings: "Storage email notification settings"
         see_storage_settings: "Depolama ayarlarına bakın"
         healthy:
-          subject: 'Storage "%{name}" is now healthy!'
+          subject: '"%{name}" depolaması artık sağlıklı!'
           solved_at: "solved at"
           summary: "The problem with your %{storage_name} storage integration is now solved"
         unhealthy:
           subject: 'Depolama "%{name}" sağlıksız!'
-          since: "since"
+          since: "tarihinden beri"
           summary: "There is a problem with your %{storage_name} storage integration"
           troubleshooting:
-            text: "For more information, check file storages"
-            link_text: "troubleshooting documentation"
+            text: "Daha fazla bilgi için dosya depolamalarını kontrol edin"
+            link_text: "sorun giderme belgesi"
   mail_body_account_activation_request: "Yeni bir kullanıcı ( %{value}) kaydoldu. Hesap onayınızı bekliyor:"
   mail_body_account_information: "Hesap bilgilerinizi giriniz"
   mail_body_account_information_external: "Giriş yapmak için %{value} hesabınızı kullanabilirsiniz."
@@ -2957,7 +2957,7 @@ tr:
   mail_body_incoming_email_error_logs: "Günlükler"
   mail_body_lost_password: "Parolanızı değiştirmek için aşağıdaki bağlantıyı tıklayın:"
   mail_password_change_not_possible:
-    title: "Şifre değişikliği mümkün değil"
+    title: "Parola değişikliği mümkün değil"
     body: "%{app_title} adresindeki hesabınız harici bir kimlik doğrulama sağlayıcısına (%{name}) bağlıdır."
     subtext: "Harici hesap için şifreler uygulamada değiştirilemez. Lütfen kimlik doğrulama sağlayıcınızın kayıp şifre işlevini kullanın."
   mail_body_register: "%{app_title}'e hoş geldiniz. Lütfen bu bağlantıya tıklayarak hesabınızı etkinleştirin:"
@@ -3062,7 +3062,7 @@ tr:
   notice_not_authorized: "Bu sayfaya erişme yetkiniz yok."
   notice_not_authorized_archived_project: "Erişmeye çalıştığınız proje arşive kaldırılmış."
   notice_requires_enterprise_token: "Kurumsal belirteç eksik veya bu sayfaya erişime izin vermiyor."
-  notice_password_confirmation_failed: "Şifreniz doğru değil. Devam edilemez."
+  notice_password_confirmation_failed: "Parolanız doğru değil. Devam edilemez."
   notice_principals_found_multiple: "%{number} sonuç bulundu.\nİlk sonuç için TABa basın."
   notice_principals_found_single: "Bir sonuç bulundu. \n Ona gitmek için TABa basın."
   notice_project_not_deleted: "Proje silinemedi."
@@ -3075,7 +3075,7 @@ tr:
   notice_successful_update_custom_fields_added_to_project: |
     Başarılı güncelleme. Etkinleştirilen türlerin özel alanları, iş paketi formunda otomatik olarak etkinleştirilir. <a href="%{url}" target="_blank">Daha fazlasını görün</a>.
   notice_to_many_principals_to_display: "Çok fazla sonuç var. Yeni üyenin (veya grubun) adını yazarak aramayı daraltın."
-  notice_user_missing_authentication_method: Kullanıcı henüz şifre veya oturum açmak için başka bir yol seçmemiştir.
+  notice_user_missing_authentication_method: Kullanıcı henüz parola belirlemedi veya oturum açmak için başka bir yol seçmedi.
   notice_user_invitation_resent: '%{email} adresine bir davet gönderildi.'
   present_access_key_value: "% {Key_name}, şu:% {value} %{key_name} %{value}"
   notice_automatic_set_of_standard_type: "Standart türün otomatik olarak ayarlanması."
@@ -3194,7 +3194,7 @@ tr:
   permission_view_news: "Haberleri görüntüleme"
   permission_view_members: "Üyeleri görmek"
   permission_view_reportings: "Raporları görüntüle"
-  permission_view_shared_work_packages: "View work package shares"
+  permission_view_shared_work_packages: "İş paketi paylaşımlarını görüntüleme"
   permission_view_time_entries: "Harcanan süreyi görüntüleme"
   permission_view_timelines: "Zaman çizelgelerini görüntüle"
   permission_view_user_email: "Kullanıcıların posta adresini görüntüleme"
@@ -3202,8 +3202,8 @@ tr:
   permission_view_wiki_pages: "Wiki'yi görüntüle"
   permission_work_package_assigned: "Atanan/sorumlu olun"
   permission_work_package_assigned_explanation: "İşpaketleri bağlı projedeki rollere göre kullanıcı ve gruplara atanabilir"
-  permission_view_project_activity: "View project activity"
-  permission_view_project_attributes: "View project attributes"
+  permission_view_project_activity: "Proje faaliyetlerini görüntüleme"
+  permission_view_project_attributes: "Proje özniteliklerini görüntüleme"
   permission_view_project_stages_and_gates: "Proje aşamalarını ve kapılarını görüntüleyin"
   permission_save_bcf_queries: "BCF sorgularını kaydetme"
   permission_manage_public_bcf_queries: "Genel BCF sorgularını yönetme"
@@ -3377,7 +3377,7 @@ tr:
   setting_apiv3_cors_origins: "API V3 Kaynaklar Arası Kaynak Paylaşımı (CORS) izin verilen kaynaklar"
   setting_apiv3_cors_origins_text_html: >
     CORS etkinleştirilirse, bunlar OpenProject API'ye erişmesine izin verilen kaynaklardır. <br/> Beklenen değerlerin nasıl belirtileceğini öğrenmek için lütfen  <a href="%{origin_link}" target="_blank">Kaynak başlığındaki Belgeleri </a> kontrol edin.
-  setting_apiv3_write_readonly_attributes: "Write access to read-only attributes"
+  setting_apiv3_write_readonly_attributes: "Salt okunur özniteliklere yazma erişimi"
   setting_apiv3_write_readonly_attributes_instructions_html: >
     If enabled, the API will allow administrators to write static read-only attributes during creation, such as createdAt and author. <br/> <strong>Warning:</strong> This setting has a use-case for e.g., importing data, but allows administrators to impersonate the creation of items as other users. All creation requests are being logged however with the true author. </br> For more information on attributes and supported resources, please see the %{api_documentation_link}.
   setting_apiv3_max_page_size: "En büyük API sayfası boyutu"
@@ -3393,11 +3393,11 @@ tr:
   setting_sendmail_location: "Çalıştırılabilir sendmail aracının yolu"
   setting_smtp_enable_starttls_auto: "STARTTLS varsa otomatik olarak kullan"
   setting_smtp_ssl: "SSL bağlantısı kullan"
-  setting_smtp_address: "SMTP Sunucusu"
+  setting_smtp_address: "SMTP sunucusu"
   setting_smtp_port: "SMTP port"
   setting_smtp_authentication: "SMTP kimlik doğrulaması"
-  setting_smtp_user_name: "SMTP Kullanıcı Adı"
-  setting_smtp_password: "SMTP Parolası"
+  setting_smtp_user_name: "SMTP kullanıcı adı"
+  setting_smtp_password: "SMTP parolası"
   setting_smtp_domain: "SMTP HELO alan adı"
   setting_activity_days_default: "Proje faaliyetin de gösterilen gün sayısı istinaden"
   setting_app_subtitle: "Uygulama alt başlığı"
@@ -3407,7 +3407,7 @@ tr:
   setting_antivirus_scan_mode: "Tarama modu"
   setting_antivirus_scan_action: "Etkilenen dosya eylemi"
   setting_autofetch_changesets: "Autofetch depo değişiklikleri"
-  setting_autologin: "Otomatik Giriş"
+  setting_autologin: "Otomatik giriş"
   setting_available_languages: "Mevcut diller"
   setting_bcc_recipients: "Kör karbon kopya alıcıları (bcc)"
   setting_brute_force_block_after_failed_logins: "Bu başarısız giriş denemesinden sonra kullanıcıyı engelle"
@@ -3432,7 +3432,7 @@ tr:
   setting_default_projects_public: "Yeni projeler varsayılan olarak herkese açık"
   setting_disable_password_login: "Parola kimlik doğrulamasını devre dışı bırak"
   setting_diff_max_lines_displayed: "Görüntülenen fark satırlarının maksimum sayısı"
-  setting_omniauth_direct_login_provider: "Direct login SSO provider"
+  setting_omniauth_direct_login_provider: "Doğrudan oturum açma SSO sağlayıcısı"
   setting_display_subprojects_work_packages: "Varsayılan olarak ana projenin iş listesinde alt proje iş paketlerini göster"
   setting_duration_format: "Süre biçimi"
   setting_duration_format_hours_only: "Sadece saat"
@@ -3443,15 +3443,15 @@ tr:
   setting_email_login: "Giriş olarak e-posta kullanın"
   setting_enabled_scm: "Etkinleştirilmiş SCM"
   setting_enabled_projects_columns: "Columns in a projects list displayed by default"
-  setting_feeds_enabled: "Yayınları Etkinleştir"
+  setting_feeds_enabled: "Akışları etkinleştir"
   setting_ical_enabled: "iCalendar aboneliklerini etkinleştir"
-  setting_feeds_limit: "Besleme içeriği sınırı"
+  setting_feeds_limit: "Akış içeriği sınırı"
   setting_file_max_size_displayed: "Satır içi görüntülenen maksimum metin dosyası boyutu"
   setting_host_name: "Ana bilgisayar adı"
   setting_hours_per_day: "Gün başına saat"
   setting_hours_per_day_explanation: >-
-    This defines what is considered a "day" when displaying duration in days and hours (for example, if a day is 8 hours, 32 hours would be 4 days).
-  setting_invitation_expiration_days: "Etkinleştirme e-postasının süresi doluyor"
+    Bu, süreyi gün ve saat olarak görüntülerken neyin "gün" olarak kabul edildiğini tanımlar (örneğin, bir gün 8 saat ise, 32 saat 4 gün olacaktır).
+  setting_invitation_expiration_days: "Etkinleştirme e-posta kullanım süresi sonu"
   setting_work_package_done_ratio: "İlerleme hesaplama modu"
   setting_work_package_done_ratio_field: "İş temelli"
   setting_work_package_done_ratio_field_caption_html: >-
@@ -3474,10 +3474,10 @@ tr:
   setting_mail_handler_ignore_filenames: "Yoksayılan posta ekleri"
   setting_new_project_user_role_id: "Bir proje oluşturan yönetici olmayan bir kullanıcıya verilen rolü"
   setting_password_active_rules: "Aktif karakter sınıfları"
-  setting_password_count_former_banned: "Yeniden kullanım için yasaklanan en son kullanılan şifre sayısı"
+  setting_password_count_former_banned: "Yeniden kullanımı yasaklanan en son kullanılan parola sayısı"
   setting_password_days_valid: "Ardından, bir şifre değişikliğinin uygulanması için gereken gün sayısı"
   setting_password_min_length: "Minimum uzunluk"
-  setting_password_min_adhered_rules: "Minimum zorunlu ders sayısı"
+  setting_password_min_adhered_rules: "Gerekli minimum sınıf sayısı"
   setting_per_page_options: "Sayfa başı nesne seçenekleri"
   setting_percent_complete_on_status_closed: "% Complete when status is closed"
   setting_percent_complete_on_status_closed_no_change: "Değişiklik yok"
@@ -3529,9 +3529,9 @@ tr:
   setting_working_days: "İş Günleri"
   settings:
     authentication:
-      single_sign_on: "Single Sign-On"
+      single_sign_on: "Tek Oturum Açma"
       omniauth_direct_login_hint_html: >
-        If this option is active, login requests will redirect to the configured omniauth provider. The login dropdown and sign-in page will be disabled. <br/> <strong>Note:</strong> Unless you also disable password logins, with this option enabled, users can still log in internally by visiting the <code>%{internal_path}</code> login page.
+        Bu seçenek etkinse, oturum açma istekleri yapılandırılmış omniauth sağlayıcısına yönlendirilir. Oturum açma açılır menüsü ve oturum açma sayfası devre dışı bırakılacaktır. <br/> <strong>Not:</strong> Parola girişlerini de devre dışı bırakmadığınız sürece, bu seçenek etkinleştirildiğinde kullanıcılar <code>%{internal_path}</code> giriş sayfasından giriş yapabilirler.
     attachments:
       whitelist_text_html: >
         Yüklenen dosyalar için geçerli dosya uzantılarının ve/veya mim türlerinin bir listesini tanımlayın. <br/> Dosya uzantılarını (ör. <code>%{ext_example}</code>) veya mime türlerini (ör. <code>%{mime_example}</code>) girin. <br/> Herhangi bir dosya türünün yüklenmesine izin vermek için boş bırakın. Birden çok değere izin verilir (her değer için bir satır).
@@ -3673,13 +3673,13 @@ tr:
   text_custom_logo_instructions: >
     Saydam arka plan üzerinde beyaz bir logo önerilir. Hem geleneksel en iyi sonuçları almak ve retina görüntüler için resm boyutlarının 60px ye 460px olduğundan emin olun.
   text_custom_export_logo_instructions: >
-    This is the logo that appears in your PDF exports. It needs to be a PNG or JPEG image file. A black or colored logo on transparent or white background is recommended.
+    Bu, PDF dışa aktarımlarınızda görünen logodur. Bir PNG veya JPEG görüntü dosyası olması gerekir. Şeffaf veya beyaz arka plan üzerinde siyah veya renkli bir logo önerilir.
   text_custom_export_cover_instructions: >
-    This is the image that appears in the background of a cover page in your PDF exports. It needs to be an about 800px width by 500px height sized PNG or JPEG image file.
+    Bu, PDF dışa aktarımlarınızda bir kapak sayfasının arka planında görünen görüntüdür. Yaklaşık 800 piksel genişlik ve 500 piksel yükseklik boyutunda bir PNG veya JPEG görüntü dosyası olması gerekir.
   text_custom_favicon_instructions: >
-    This is the tiny icon that appears in your browser window/tab next to the page's title. It needs to be a squared 32 by 32 pixels sized PNG image file with a transparent background.
+    Bu, tarayıcı pencerenizde/sekmenizde sayfa başlığının yanında görünen küçük simgedir. Şeffaf bir arka plana sahip 32 x 32 piksel boyutunda kare şeklinde bir PNG görüntü dosyası olması gerekir.
   text_custom_touch_icon_instructions: >
-    This is the icon that appears in your mobile or tablet when you place a bookmark on your homescreen. It needs to be a squared 180 by 180 pixels sized PNG image file. Please make sure the image's background is not transparent otherwise it will look bad on iOS.
+    Bu, ana ekranınıza bir yer imi yerleştirdiğinizde cep telefonunuzda veya tabletinizde görünen simgedir. Kare şeklinde 180 x 180 piksel boyutunda bir PNG görüntü dosyası olması gerekir. Lütfen resmin arka planının şeffaf olmadığından emin olun, aksi takdirde iOS'ta kötü görünecektir.
   text_database_allows_tsv: "Veritabanı TSVector erişimi  (isteğe bağlı)"
   text_default_administrator_account_changed: "Varsayılan yönetici hesabı değişti"
   text_default_encoding: "Varsayılan: UTF-8"
@@ -3813,9 +3813,9 @@ tr:
     authentication_provider: "Kimlik doğrulama sağlayıcısı"
     identity_url_text: "The internal unique identifier provided by the authentication provider."
     authentication_settings_disabled_due_to_external_authentication: >
-      Bu kullanıcı harici bir kimlik doğrulama sağlayıcısı aracılığıyla kimlik doğrulaması yapar, böylece OpenProject'de değiştirilecek şifre yoktur.
+      Bu kullanıcı harici bir kimlik doğrulama sağlayıcısı aracılığıyla kimlik doğrulaması yapar, böylece OpenProject'de değiştirilecek parola yoktur.
     authorization_rejected: "Oturum açma izniniz yok."
-    assign_random_password: "Rastgele şifre atayın (kullanıcıya e-posta ile gönderilir)"
+    assign_random_password: "Rastgele parola atayın (kullanıcıya e-posta ile gönderilir)"
     blocked: "geçici olarak kilitlendi"
     blocked_num_failed_logins:
       one: "geçici olarak kilitlenmiştir (bir başarısız giriş denemesi)"
@@ -3827,7 +3827,7 @@ tr:
     invited: davet
     lock: "Kalıcı olarak kilit"
     locked: "kalıcı olarak kilitli"
-    no_login: "Bu kullanıcı, giriş yoluyla şifreyle kimlik doğrulaması yapar. Devre dışı olduğundan, oturum açamazlar."
+    no_login: "Bu kullanıcı parola ile oturum açma yoluyla kimlik doğrulaması yapar. Devre dışı bırakıldığı için giriş yapamazlar."
     password_change_unsupported: Parola değişikliği desteklenmiyor.
     registered: "kayıtlı"
     reset_failed_logins: "Başarısız oturumları sıfırlayın"
@@ -3841,7 +3841,7 @@ tr:
   version_status_locked: "kilitli"
   version_status_open: "açık"
   note: Not
-  note_password_login_disabled: "Şifre girişi %{configuration} tarafından devre dışı bırakıldı."
+  note_password_login_disabled: "Parola girişi %{configuration} tarafından devre dışı bırakıldı."
   warning: Uyarı
   warning_attachments_not_saved: "%{count} dosya (lar) kaydedilemedi."
   warning_imminent_user_limit: >
@@ -3875,7 +3875,7 @@ tr:
   #TODO: merge with work_packages top level key
   work_package:
     updated_automatically_by_child_changes: |
-      _Çocuk iş paketi %{child} _ içindeki değerler değiştirilerek otomatik olarak güncellendi _
+      _%{child} alt iş paketi içindeki değerler değiştirilerek otomatik olarak güncellendi_
     destroy:
       info: "İş paketinin silinmesi geri döndürülemez bir işlemdir."
       title: "İş paketini sil"
@@ -4120,7 +4120,7 @@ tr:
     header:
       builtin_applications: Yerleşik OAuth uygulamaları
       other_applications: Diğer OAuth uygulamaları
-    empty_application_lists: No OAuth applications have been registered.
+    empty_application_lists: Hiçbir OAuth uygulaması kaydedilmemiştir.
     client_id: "Müşteri Kimliği"
     client_secret_notice: >
       Müşterinin sırrını basabileceğimiz tek zaman bu, lütfen not edin ve güvende tutun. Parola olarak değerlendirilmeli ve daha sonra OpenProject tarafından alınamaz.

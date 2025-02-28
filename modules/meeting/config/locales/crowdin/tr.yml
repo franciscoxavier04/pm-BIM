@@ -103,7 +103,7 @@ tr:
   label_meeting_copy: "Toplantıyı kopyala"
   label_meeting_edit: "Toplantıyı Düzenle"
   label_meeting_agenda: "Gündem"
-  label_meeting_minutes: "Dakika"
+  label_meeting_minutes: "Notlar"
   label_meeting_close: "Kapat"
   label_meeting_open: "Aç"
   label_meeting_index_delete: "Sil"
@@ -242,7 +242,7 @@ tr:
       message: "Bu toplantı serisi sona ermiştir. Gelecek toplantı yoktur. "
       action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
-      infoline: "This meeting is part of a recurring meeting series."
+      infoline: "Bu toplantı, yinelenen bir toplantı serisinin parçasıdır."
       error_no_next: "Bu seri için bir toplantı yoktur."
       first_already_exists: "The first occurrence of this meeting series is already instantiated."
       first_created: >
@@ -273,10 +273,10 @@ tr:
       working_days: "Her iş günü"
       weekly: "Her hafta %{weekday} günü"
       weekly_interval: "Her %{interval} haftada bir %{weekday} günleri"
-      frequency: "%{base} at %{time}"
-      full: "%{base} %{time} saatinde, %{end_date} tarihinde sona erer"
-      full_past: "%{base} at %{time}, ended on %{end_date}"
-      never_ending: "%{base} at %{time}"
+      frequency: "%{base} ve %{time}"
+      full: "%{base} %{time} saatinde, %{end_date} tarihinde sona erdi"
+      full_past: "%{base} %{time} saatinde, %{end_date} tarihinde sona erer"
+      never_ending: "%{base} ve %{time}"
     open:
       title: "Açık"
       subtitle: >
