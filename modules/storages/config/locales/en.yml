@@ -349,6 +349,7 @@ en:
       connected: Connected
       connected_no_permissions: User role has no storages permissions
       not_connected: Not connected. The user should login to the storage via the following %{link}.
+      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: No members to display.
     no_results: No storages set up yet.
     oauth_access_granted_modal:
