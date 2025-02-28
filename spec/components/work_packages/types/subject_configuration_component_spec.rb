@@ -32,9 +32,10 @@ require "rails_helper"
 
 RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :component do
   let(:type) { create(:type) }
+  let(:subject_configuration_form_data) { nil }
 
   subject(:render_component) do
-    render_inline(described_class.new(type))
+    render_inline(described_class.new(type, subject_configuration_form_data:))
   end
 
   context "when enterprise edition is activated", with_ee: %i[work_package_subject_generation] do
@@ -75,13 +76,12 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
 
     context "if component is rendered with form values in parameters" do
       before do
-        allow_any_instance_of(described_class).to receive(:params).and_return(params)
         render_component
       end
 
       context "if work package type has subject pattern configured, but form params have option manual selected" do
         let(:type) { create(:type, patterns: { subject: { blueprint: "Created by {{assignee}}", enabled: true } }) }
-        let(:params) { { types_forms_subject_configuration_form_model: { subject_configuration: :manual } } }
+        let(:subject_configuration_form_data) { { subject_configuration: :manual } }
 
         it "must have manual option checked" do
           expect(page.find("input[type=radio][value=manual]")).to be_checked
@@ -89,11 +89,10 @@ RSpec.describe WorkPackages::Types::SubjectConfigurationComponent, type: :compon
       end
 
       context "if work package type has no subject pattern configured, but form params have a pattern" do
-        let(:params) do
+        let(:subject_configuration_form_data) do
           {
-            types_forms_subject_configuration_form_model: {
-              subject_configuration: :generated, pattern: "Created by {{assignee}}"
-            }
+            subject_configuration: :generated,
+            pattern: "Created by {{assignee}}"
           }
         end
 

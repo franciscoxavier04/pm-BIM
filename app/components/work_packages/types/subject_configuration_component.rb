@@ -34,6 +34,11 @@ module WorkPackages
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 
+      def initialize(model, subject_configuration_form_data: nil, **)
+        @subject_configuration_form_data = subject_configuration_form_data
+        super(model, **)
+      end
+
       def form_options
         form_model = subject_form_object
 
@@ -63,8 +68,8 @@ module WorkPackages
       end
 
       def subject_configuration_form_values
-        if params[:types_forms_subject_configuration_form_model].present?
-          params[:types_forms_subject_configuration_form_model]
+        if @subject_configuration_form_data.present?
+          @subject_configuration_form_data
         else
           persisted_subject_pattern = model.patterns.subject || ::Types::Pattern.new(blueprint: "", enabled: false)
           subject_configuration = persisted_subject_pattern.enabled ? :generated : :manual
