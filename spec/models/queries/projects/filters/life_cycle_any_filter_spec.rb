@@ -30,13 +30,13 @@
 
 require "spec_helper"
 
-RSpec.describe Queries::Projects::Filters::AnyStageOrGateFilter do
+RSpec.describe Queries::Projects::Filters::LifeCycleAnyFilter do
   it_behaves_like "basic query filter" do
-    let(:class_key) { :any_stage_or_gate }
+    let(:class_key) { :lcsd_any }
     let(:type) { :date }
     let(:model) { Project }
     let(:values) { ["3"] }
-    let(:human_name) { I18n.t("project.filters.any_stage_or_gate") }
+    let(:human_name) { I18n.t("project.filters.lcsd_any") }
 
     describe "default_operator" do
       it "is 'today'" do

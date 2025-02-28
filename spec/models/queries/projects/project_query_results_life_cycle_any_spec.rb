@@ -111,7 +111,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
   context "with a =d (on) operator" do
     before do
-      instance.where("any_stage_or_gate", "=d", values)
+      instance.where("lcsd_any", "=d", values)
     end
 
     context "when filtering in the middle of the stage" do
@@ -241,7 +241,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
   context "with a t (today) operator" do
     before do
-      instance.where("any_stage_or_gate", "t", [])
+      instance.where("lcsd_any", "t", [])
     end
 
     context "when being in the middle of the stage" do
@@ -369,7 +369,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
   context "with a w (this week) operator" do
     before do
-      instance.where("any_stage_or_gate", "w", [])
+      instance.where("lcsd_any", "w", [])
     end
 
     context "when being in the middle of the stage" do
@@ -611,7 +611,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
   context "with a <>d (between) operator" do
     before do
-      instance.where("any_stage_or_gate", "<>d", values)
+      instance.where("lcsd_any", "<>d", values)
     end
 
     context "when encompassing the stage completely" do
@@ -823,7 +823,7 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
 
   context "with a !* (none) operator" do
     before do
-      instance.where("any_stage_or_gate", "!*", [])
+      instance.where("lcsd_any", "!*", [])
     end
 
     context "when the stage is active but has no dates" do

@@ -626,7 +626,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
       it "does not have the lifecycle step (any) filter" do
         load_and_open_filters manager
 
-        projects_page.expect_filter_not_available("Any stage or gate")
+        projects_page.expect_filter_not_available("Lifecycle: Any stage or gate")
       end
     end
 
@@ -639,56 +639,56 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
         it "allows filtering the projects by life cycle elements" do
           load_and_open_filters manager
 
-          projects_page.expect_filter_available("Any stage or gate")
+          projects_page.expect_filter_available("Lifecycle: Any stage or gate")
 
-          projects_page.set_filter("any_stage_or_gate",
-                                   "Any stage or gate",
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
                                    "on",
                                    [Time.zone.today])
 
           projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
 
-          projects_page.remove_filter("any_stage_or_gate")
+          projects_page.remove_filter("lcsd_any")
 
           projects_page.expect_projects_in_order(development_project, project, public_project)
 
-          projects_page.set_filter("any_stage_or_gate",
-                                   "Any stage or gate",
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
                                    "today")
 
           projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
 
-          projects_page.remove_filter("any_stage_or_gate")
+          projects_page.remove_filter("lcsd_any")
 
           projects_page.expect_projects_in_order(development_project, project, public_project)
 
-          projects_page.set_filter("any_stage_or_gate",
-                                   "Any stage or gate",
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
                                    "between",
                                    [Time.zone.today - 5.days, Time.zone.today + 10.days])
 
           projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
 
-          projects_page.remove_filter("any_stage_or_gate")
+          projects_page.remove_filter("lcsd_any")
 
           projects_page.expect_projects_in_order(development_project, project, public_project)
 
-          projects_page.set_filter("any_stage_or_gate",
-                                   "Any stage or gate",
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
                                    "this week")
 
           projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
 
-          projects_page.remove_filter("any_stage_or_gate")
+          projects_page.remove_filter("lcsd_any")
 
           projects_page.expect_projects_in_order(development_project, project, public_project)
 
-          projects_page.set_filter("any_stage_or_gate",
-                                   "Any stage or gate",
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
                                    "is empty")
 
           projects_page.expect_projects_not_listed(public_project, development_project, project)
@@ -699,7 +699,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
         it "does not have the lifecycle step (any) filter" do
           load_and_open_filters manager
 
-          projects_page.expect_filter_not_available("Any stage or gate")
+          projects_page.expect_filter_not_available("Lifecycle: Any stage or gate")
         end
       end
     end
