@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,12 +30,14 @@
 
 module WorkPackages
   class CreateNoteContract < ::ModelContract
-    def self.model
-      WorkPackage
-    end
+    def self.model = WorkPackage
 
     attribute :journal_notes do
       errors.add(:journal_notes, :error_unauthorized) unless can?(:comment)
+    end
+
+    attribute :journal_restricted do
+      errors.add(:journal_restricted, :invalid) if model.journal_notes.blank? && model.journal_restricted
     end
 
     private
