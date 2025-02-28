@@ -30,6 +30,10 @@
 
 class WorkPackageRelationsTab::RelationsMediator
   RelationGroup = Data.define(:type, :visible_relations, :ghost_relations) do
+    def initialize(type:, visible_relations:, ghost_relations:)
+      super(type: ActiveSupport::StringInquirer.new(type), visible_relations:, ghost_relations:)
+    end
+
     def count
       visible_relations.count + ghost_relations.count
     end
@@ -38,8 +42,21 @@ class WorkPackageRelationsTab::RelationsMediator
       visible_relations.any? || ghost_relations.any?
     end
 
-    def children_type?
-      type == "children"
+    def all_relations
+      visible_relations + ghost_relations
+    end
+
+    def closest_relation?(relation) = closest_relation == relation
+
+    def closest_relation
+      return nil unless type.follows?
+
+      all_relations
+        .lazy
+        .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
+        .select(&:soonest_start)
+        .max
+        &.relation
     end
   end
 

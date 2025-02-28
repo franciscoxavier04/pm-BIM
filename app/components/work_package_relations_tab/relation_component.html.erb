@@ -87,9 +87,14 @@
           render(Primer::Beta::Text.new) { helpers.work_package_formatted_dates(related_work_package) }
         end
 
-        if follows? && lag_present?
-          dates_row.with_column(ml: 2, mr: 1) { render(Primer::Beta::Octicon.new(icon: "arrow-both")) }
-          dates_row.with_column(mr: 1) { render(Primer::Beta::Text.new) { lag_as_text(relation.lag) } }
+        if follows?
+          if lag_present?
+            dates_row.with_column(ml: 2, mr: 1) { render(Primer::Beta::Octicon.new(icon: "arrow-both")) }
+            dates_row.with_column(mr: 1) { render(Primer::Beta::Text.new) { lag_as_text(relation.lag) } }
+          end
+          if closest?
+            dates_row.with_column(ml: 2, mr: 1) { render(Primer::Beta::Label.new(scheme: :primary, inline: true)) { I18n.t("work_package_relations_tab.relations.label_closest") } }
+          end
         end
       end
     end

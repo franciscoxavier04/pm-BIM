@@ -165,10 +165,10 @@ class Relation < ApplicationRecord
     successor.start_date || successor.due_date
   end
 
-  def successor_soonest_start
+  def successor_soonest_start(gap: 1.day)
     if follows? && predecessor_date
       days = WorkPackages::Shared::Days.for(from)
-      relation_start_date = predecessor_date + 1.day
+      relation_start_date = predecessor_date + gap
       days.soonest_working_day(relation_start_date, lag:)
     end
   end
