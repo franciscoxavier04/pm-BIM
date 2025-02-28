@@ -154,6 +154,8 @@ RSpec.describe "Structured meetings CRUD",
 
         ## Close meeting
         find_test_selector("close-meeting-button").click
+        expect(page).to have_text "This meeting is in progress."
+        find_test_selector("close-meeting-button").click
         expect(page).to have_text "This meeting is closed."
 
         show_page.visit!

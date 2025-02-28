@@ -362,9 +362,6 @@ en:
     end_series_dialog:
       title: "End meeting series"
 
-  outcome:
-    add_button: "Outcome"
-
   notice_successful_notification: "Notification sent successfully"
   notice_timezone_missing: No time zone is set and %{zone} is assumed. To choose your time zone, please click here.
   notice_meeting_updated: "This page has been updated by someone else. Reload to view changes."
@@ -427,6 +424,7 @@ en:
 
   label_agenda_item_work_package: "Agenda item work package"
 
+  label_agenda_outcome: "Outcome"
   label_agenda_outcome_actions: "Agenda outcome actions"
   label_agenda_outcome_edit: "Edit outcome"
   label_agenda_outcome_delete: "Remove outcome"
@@ -454,7 +452,7 @@ en:
   label_meeting_reopen_action: "Reopen meeting"
   label_meeting_close_action: "Close meeting"
   label_meeting_in_progress_action: "Mark as in progress"
-  text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. After the meeting is over, close it to lock it."
+  text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
   text_meeting_closed_description: "This meeting is closed. You cannot add/remove agenda items anymore."
   text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
 

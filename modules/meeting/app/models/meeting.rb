@@ -125,7 +125,7 @@ class Meeting < ApplicationRecord
 
   ##
   # Cache key for detecting changes to be shown to the user
-  def changed_hash
+  def changed_hash # rubocop:disable Metrics/AbcSize
     parts = Meeting
       .unscoped
       .where(id:)

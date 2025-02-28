@@ -42,6 +42,6 @@ class MeetingOutcome < ApplicationRecord
   validates_presence_of :work_package, if: -> { work_package_kind? }
 
   def editable?
-    meeting_agenda_item.meeting&.in_progress?
+    meeting_agenda_item.meeting.in_progress?
   end
 end

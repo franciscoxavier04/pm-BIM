@@ -30,12 +30,10 @@
 
 module MeetingAgendaItems::Outcomes
   class FormComponent < ApplicationComponent
-    include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_agenda_item:, meeting_outcome:, method:, submit_path:, cancel_path:,
-                   display_notes_input: nil)
+    def initialize(meeting:, meeting_agenda_item:, meeting_outcome:, method:, submit_path:, cancel_path:)
       super
       @meeting = meeting
       @meeting_agenda_item = meeting_agenda_item
@@ -43,49 +41,19 @@ module MeetingAgendaItems::Outcomes
       @method = method
       @submit_path = submit_path
       @cancel_path = cancel_path
-      @display_notes_input = display_notes_input
     end
 
     def wrapper_uniq_by
       @meeting_outcome.id
     end
 
-    def render?
-      # User.current.allowed_in_project?(:manage_agendas, @meeting.project)
-      true
-    end
-
     private
 
     def wrapper_data_attributes
       # {
-      #   controller: "meeting-agenda-item-form",
-      #   "application-target": "dynamic",
-      #   "meeting-agenda-item-form-cancel-url-value": @cancel_path
+      #   controller: "meeting-outcome-form",
+      #   "application-target": "dynamic"
       # }
-      nil
-    end
-
-    def display_notes_input_value
-      :block
-      # if @display_notes_input
-      #   :block
-      # elsif @meeting_agenda_item.notes.blank?
-      #   :none
-      # else
-      #   :block
-      # end
-    end
-
-    def display_notes_add_button_value
-      :block
-      # if @display_notes_input
-      #   :none
-      # elsif @meeting_agenda_item.notes.blank?
-      #   :block
-      # else
-      #   :none
-      # end
     end
   end
 end

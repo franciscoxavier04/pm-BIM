@@ -211,9 +211,6 @@ module Pages::StructuredMeeting
     def add_outcome(item, &)
       page.within("#meeting-agenda-items-outcomes-base-component-#{item.id}") do
         click_link_or_button "Outcome"
-        page.within(".ActionListItem") do
-          click_link_or_button "Outcome"
-        end
       end
       expect_outcome_form(item)
       page.within("#meeting-agenda-items-outcomes-input-component-#{item.id}", &)
@@ -306,13 +303,20 @@ module Pages::StructuredMeeting
     end
 
     def close_meeting
-      click_on("Close meeting")
+      retry_block do
+        click_on("Open")
+        page.find(".Overlay")
+      end
+
+      page.within(".Overlay") do
+        click_on("Closed")
+      end
       expect(page).to have_link("Reopen meeting")
     end
 
     def reopen_meeting
       click_on("Reopen meeting")
-      expect(page).to have_link("Close meeting")
+      expect(page).to have_link("Mark as in progress")
     end
 
     def close_dialog

@@ -30,7 +30,6 @@
 
 module MeetingAgendaItems::Outcomes
   class InputComponent < ApplicationComponent
-    include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
@@ -44,7 +43,7 @@ module MeetingAgendaItems::Outcomes
     private
 
     def wrapper_uniq_by
-      @meeting_agenda_item&.id
+      @meeting_agenda_item.id
     end
 
     def build_meeting_outcome
@@ -66,7 +65,7 @@ module MeetingAgendaItems::Outcomes
       if @meeting_outcome.id.present?
         meeting_outcome_path(@meeting, @meeting_outcome.id, format: :turbo_stream)
       else
-        meeting_outcomes_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item&.id, format: :turbo_stream)
+        meeting_outcomes_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item.id, format: :turbo_stream)
       end
     end
 
@@ -74,7 +73,7 @@ module MeetingAgendaItems::Outcomes
       if @meeting_outcome.id.present?
         cancel_edit_meeting_outcome_path(@meeting, @meeting_outcome)
       else
-        cancel_new_meeting_outcomes_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item&.id)
+        cancel_new_meeting_outcomes_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item.id)
       end
     end
   end

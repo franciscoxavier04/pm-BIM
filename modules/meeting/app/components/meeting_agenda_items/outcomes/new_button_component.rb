@@ -30,11 +30,10 @@
 
 module MeetingAgendaItems::Outcomes
   class NewButtonComponent < ApplicationComponent
-    include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:, meeting_agenda_item: nil)
+    def initialize(meeting:, meeting_agenda_item:)
       super
       @meeting = meeting
       @meeting_agenda_item = meeting_agenda_item
@@ -43,15 +42,11 @@ module MeetingAgendaItems::Outcomes
     private
 
     def wrapper_uniq_by
-      @meeting_agenda_item&.id
+      @meeting_agenda_item.id
     end
 
     def render?
       @meeting.in_progress? && User.current.allowed_in_project?(:create_meeting_minutes, @meeting.project)
-    end
-
-    def button_scheme
-      :secondary
     end
   end
 end

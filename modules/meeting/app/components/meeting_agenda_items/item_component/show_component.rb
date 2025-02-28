@@ -168,9 +168,9 @@ module MeetingAgendaItems
 
     def notes_classes
       if OpenProject::FeatureDecisions.meeting_outcomes_active? && !@meeting.open?
-        "op-uc-container muted-color"
+        "op-uc-container override muted-color"
       else
-        "op-uc-container"
+        "op-uc-container override"
       end
     end
   end

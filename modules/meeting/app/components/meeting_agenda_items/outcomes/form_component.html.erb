@@ -8,8 +8,10 @@
       grid_layout("op-meeting-outcome-form", tag: :div) do |grid|
         grid.with_area(
           :notes,
-          display: display_notes_input_value,
-          data: { "test-selector": "meeting-outcome-input" }
+          data: {
+            "test-selector": "meeting-outcome-input",
+            "meeting-outcome-form-target": "notesInput"
+          }
         ) do
           render(MeetingAgendaItem::Outcome::Notes.new(f))
         end

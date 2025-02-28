@@ -29,7 +29,6 @@
 #++
 
 class MeetingOutcomesController < ApplicationController
-  # include AttachableServiceCall
   include OpTurbo::ComponentStream
   include Meetings::AgendaComponentStreams
 
@@ -71,6 +70,7 @@ class MeetingOutcomesController < ApplicationController
     if call.success?
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: @meeting_outcome, edit: false)
+      update_header_component_via_turbo_stream
     else
       render_base_error_in_flash_message_via_turbo_stream(call.errors)
       update_all_via_turbo_stream
@@ -112,6 +112,7 @@ class MeetingOutcomesController < ApplicationController
     if call.success?
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: call.result, edit: false)
+      update_header_component_via_turbo_stream
     else
       render_base_error_in_flash_message_via_turbo_stream(call.errors)
     end
@@ -130,6 +131,7 @@ class MeetingOutcomesController < ApplicationController
     if call.success?
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: nil, edit: false)
+      update_header_component_via_turbo_stream
     else
       render_base_error_in_flash_message_via_turbo_stream(call.errors)
     end
@@ -152,13 +154,5 @@ class MeetingOutcomesController < ApplicationController
 
   def set_meeting_outcome
     @meeting_outcome = MeetingOutcome.find(params[:id])
-  end
-
-  def generic_call_failure_response(call)
-    # A failure might imply that the meeting was already closed and the action was triggered from a stale browser window
-    # updating all components resolves the stale state of that window
-    update_all_via_turbo_stream
-    # show additional base error message
-    render_base_error_in_flash_message_via_turbo_stream(call.errors)
   end
 end

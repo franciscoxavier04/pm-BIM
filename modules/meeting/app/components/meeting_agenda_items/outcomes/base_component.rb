@@ -30,7 +30,6 @@
 
 module MeetingAgendaItems
   class Outcomes::BaseComponent < ApplicationComponent
-    include ApplicationHelper
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 

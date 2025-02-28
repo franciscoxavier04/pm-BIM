@@ -1,18 +1,16 @@
 <%=
   component_wrapper(style: "position: relative") do
-    render(Primer::Alpha::ActionMenu.new(classes: "hide-when-print")) do |component|
-      component.with_show_button(scheme: button_scheme) do |button|
-        button.with_leading_visual_icon(icon: :plus)
-        t("outcome.add_button")
-      end
-      component.with_item(
-        label: t("outcome.add_button"),
+    render(
+      Primer::Beta::Button.new(
+        scheme: :secondary,
         tag: :a,
-        content_arguments: {
-          href: new_meeting_outcome_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item&.id),
-          data: { "turbo-stream": true }
-        }
+        href: new_meeting_outcome_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item.id),
+        classes: "hide-when-print",
+        data: { "turbo-stream": true }
       )
+    ) do |button|
+      button.with_leading_visual_icon(icon: :plus)
+      t(:label_agenda_outcome)
     end
   end
 %>
