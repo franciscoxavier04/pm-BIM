@@ -66,7 +66,7 @@ module OpTurbo
         end
 
         if method && !action.in?(ACTIONS_WITH_METHOD)
-          raise ArgumentError, "The #{action} action does not support a method"
+          raise ArgumentError, "The #{action} action does not supports a method"
         end
 
         OpTurbo::StreamComponent.new(

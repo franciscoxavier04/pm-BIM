@@ -46,17 +46,16 @@ module OpTurbo
       modify_via_turbo_stream(component:, action: :update, status:, method:)
     end
 
-    def replace_via_turbo_stream(component:, status: :ok, method: nil, message: nil)
-      modify_via_turbo_stream(component: component, action: :replace, status: status, method: method, message: message)
+    def replace_via_turbo_stream(component:, status: :ok, method: nil)
+      modify_via_turbo_stream(component:, action: :replace, status:, method:)
     end
 
     def remove_via_turbo_stream(component:, status: :ok)
       modify_via_turbo_stream(component:, action: :remove, status:)
     end
 
-    def modify_via_turbo_stream(component:, action:, status:, method: nil, message: nil)
+    def modify_via_turbo_stream(component:, action:, status:, method: nil)
       @turbo_status = status
-      @custom_message = message if message # Store the custom message if provided
       turbo_streams << component.render_as_turbo_stream(
         view_context:,
         action:,
@@ -84,8 +83,8 @@ module OpTurbo
       render_flash_message_via_turbo_stream(**, scheme: :danger, icon: :stop)
     end
 
-    def render_aria_update_message(role: "alert", message:, type:)
-      turbo_streams << OpTurbo::StreamComponent.new(action: :aria, role:, type:, message:, target: "nil").render_in(view_context)
+    def render_aria_update_message(message:, type:, role: "alert")
+      turbo_streams << OpTurbo::StreamComponent.new(action: :aria, message:, type:, role:, target: "nil").render_in(view_context)
     end
 
     def render_flash_message_via_turbo_stream(message:, component: OpPrimer::FlashComponent, **)
