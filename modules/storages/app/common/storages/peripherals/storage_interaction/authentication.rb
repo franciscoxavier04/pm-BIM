@@ -43,7 +43,7 @@ module Storages
           when :basic_auth
             AuthenticationStrategies::BasicAuth.new
           when :bearer_token
-            AuthenticationStrategies::BearerToken.new(strategy.token)
+            AuthenticationStrategies::SpecificBearerToken.new(strategy.token)
           when :sso_user_token
             AuthenticationStrategies::SsoUserToken.new(strategy.user)
           when :oauth_user_token

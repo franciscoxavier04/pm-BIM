@@ -42,21 +42,23 @@ module RemoteIdentities
       @token = token
 
       @model = RemoteIdentity.find_or_initialize_by(user:, auth_source: token.auth_source, integration:)
-      @result = ServiceResult.success(result: @model, errors: @model.errors)
     end
 
     def call
       @model.origin_user_id = @integration.extract_origin_user_id(@token)
-      if @model.save
-        OpenProject::Notifications.send(
-          OpenProject::Events::REMOTE_IDENTITY_CREATED,
-          integration: @integration
-        )
+      if @model.changed?
+        if @model.save
+          OpenProject::Notifications.send(
+            OpenProject::Events::REMOTE_IDENTITY_CREATED,
+            integration: @integration
+          )
+          ServiceResult.success(result: @model)
+        else
+          ServiceResult.failure(result: @model, errors: @model.errors)
+        end
       else
-        @result.success = false
+        ServiceResult.success(result: @model)
       end
-
-      @result
     end
   end
 end

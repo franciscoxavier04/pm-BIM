@@ -38,9 +38,15 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
 
   shared_let(:storage) do
     # Automatically Managed Project Folder Drive
-    create(:sharepoint_dev_drive_storage,
-           drive_id: "b!dmVLG22QlE2PSW0AqVB7UOhZ8n7tjkVGkgqLNnuw2ODRDvn3haLiQIhB5UYNdqMy",
-           oauth_client_token_user: admin)
+    s = create(:sharepoint_dev_drive_storage,
+               drive_id: "b!dmVLG22QlE2PSW0AqVB7UOhZ8n7tjkVGkgqLNnuw2ODRDvn3haLiQIhB5UYNdqMy",
+               oauth_client_token_user: admin)
+    create(:remote_identity,
+           auth_source: s.oauth_client,
+           user: admin,
+           integration: s,
+           origin_user_id: "33db2c84-275d-46af-afb0-c26eb786b194")
+    s
   end
 
   # USER FACTORIES

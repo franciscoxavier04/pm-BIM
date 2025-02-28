@@ -32,7 +32,7 @@ module Storages
   module Peripherals
     module StorageInteraction
       module AuthenticationStrategies
-        class BearerToken
+        class SpecificBearerToken
           def self.strategy
             Strategy.new(:bearer_token)
           end

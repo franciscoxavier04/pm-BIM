@@ -38,7 +38,7 @@ module OpenIDConnect
       include Dry::Monads[:result]
       include Dry::Monads::Do.for(:access_token_for, :refreshed_access_token_for)
 
-      TOKEN_OBTAINED = "access_token_obtained"
+      TOKEN_OBTAINED_EVENT = "access_token_obtained"
 
       attr_reader :user
 
@@ -93,7 +93,7 @@ module OpenIDConnect
 
       def emit_event(token, audience)
         OpenProject::Notifications.send(
-          TOKEN_OBTAINED,
+          TOKEN_OBTAINED_EVENT,
           audience:,
           token:
         )

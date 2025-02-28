@@ -88,6 +88,8 @@ module Storages
 
     scope :in_project, ->(project_id) { joins(project_storages: :project).where(project_storages: { project_id: }) }
 
+    scope :with_audience, ->(audience) { where("provider_fields->>'storage_audience' = ?", audience) }
+
     enum health_status: {
       pending: "pending",
       healthy: "healthy",
@@ -226,7 +228,7 @@ module Storages
 
     def extract_origin_user_id(token)
       auth_strategy = ::Storages::Peripherals::Registry
-                        .resolve("#{self}.authentication.bearer_token")
+                        .resolve("#{self}.authentication.specific_bearer_token")
                         .with_token(token.access_token)
       ::Storages::Peripherals::Registry
         .resolve("#{self}.queries.user")
