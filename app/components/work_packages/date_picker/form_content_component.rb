@@ -58,12 +58,9 @@ module WorkPackages
 
       def submit_path
         if work_package.new_record?
-          url_for(controller: "work_packages/date_picker",
-                  action: "create")
+          datepicker_dialog_content_path
         else
-          url_for(controller: "work_packages/date_picker",
-                  action: "update",
-                  work_package_id: work_package.id)
+          work_package_datepicker_dialog_content_path(work_package)
         end
       end
 
