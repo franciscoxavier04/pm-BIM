@@ -28,7 +28,7 @@ tr:
       document: "Belge"
   activity:
     filter:
-      document: "Dökümanlar"
+      document: "Belgeler"
   default_doc_category_tech: "Teknik belgeler"
   default_doc_category_user: "Kullanıcı belgeleri"
   enumeration_doc_categories: "Belge kategorileri"

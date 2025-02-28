@@ -155,6 +155,19 @@ See COPYRIGHT and LICENSE files for more details.
     <fieldset class="form--fieldset">
       <legend class="form--fieldset-legend"><%= I18n.t("settings.other") %></legend>
       <div class="form--field -wide-label"><%= setting_check_box :log_requesting_user %></div>
+
+      <div class="form--field -wide-label">
+        <%= setting_text_field :after_first_login_redirect_url, container_class: "-middle" %>
+        <span class="form--field-instructions">
+            <%= t(:setting_after_first_login_redirect_url_text_html) %>
+          </span>
+      </div>
+      <div class="form--field -wide-label">
+        <%= setting_text_field :after_login_default_redirect_url, container_class: "-middle" %>
+        <span class="form--field-instructions">
+            <%= t(:setting_after_login_default_redirect_url_text_html) %>
+          </span>
+      </div>
     </fieldset>
   </section>
   <% unless OpenProject::Configuration.disable_password_login? %>
