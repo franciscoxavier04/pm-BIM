@@ -53,6 +53,10 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
              development_project => project_role
            })
   end
+  shared_let(:stage) do
+    create(:project_stage, project:, start_date: Time.zone.today - 5.days, end_date: Time.zone.today + 10.days)
+  end
+  shared_let(:gate) { create(:project_gate, project: public_project, date: Time.zone.today) }
 
   let(:news) { create(:news, project:) }
   let(:projects_page) { Pages::Projects::Index.new }
@@ -618,11 +622,6 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
   end
 
   describe "filtering for any lifecycle step" do
-    shared_let(:stage) do
-      create(:project_stage, project:, start_date: Time.zone.today - 5.days, end_date: Time.zone.today + 10.days)
-    end
-    shared_let(:gate) { create(:project_gate, project: public_project, date: Time.zone.today + 8.days) }
-
     context "with the feature flag disabled", with_flag: { stages_and_gates: false } do
       it "does not have the lifecycle step (any) filter" do
         load_and_open_filters manager
@@ -645,7 +644,7 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
           projects_page.set_filter("any_stage_or_gate",
                                    "Any stage or gate",
                                    "on",
-                                   [Time.zone.today + 8.days])
+                                   [Time.zone.today])
 
           projects_page.expect_projects_not_listed(development_project)
           projects_page.expect_projects_in_order(project, public_project)
@@ -658,8 +657,8 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
                                    "Any stage or gate",
                                    "today")
 
-          projects_page.expect_projects_not_listed(development_project, public_project)
-          projects_page.expect_projects_in_order(project)
+          projects_page.expect_projects_not_listed(development_project)
+          projects_page.expect_projects_in_order(project, public_project)
 
           projects_page.remove_filter("any_stage_or_gate")
 
@@ -681,8 +680,8 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
                                    "Any stage or gate",
                                    "this week")
 
-          projects_page.expect_projects_not_listed(public_project, development_project)
-          projects_page.expect_projects_in_order(project)
+          projects_page.expect_projects_not_listed(development_project)
+          projects_page.expect_projects_in_order(project, public_project)
 
           projects_page.remove_filter("any_stage_or_gate")
 
@@ -707,10 +706,6 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
   end
 
   describe "filtering for a specific lifecycle stage" do
-    shared_let(:stage) do
-      create(:project_stage, project:, start_date: Time.zone.today - 5.days, end_date: Time.zone.today + 10.days)
-    end
-
     context "with the feature flag disabled", with_flag: { stages_and_gates: false } do
       it "does not have the lifecycle (specific stage) filter" do
         load_and_open_filters manager
@@ -792,8 +787,6 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     end
 
     describe "filtering for a specific lifecycle gate" do
-      shared_let(:gate) { create(:project_gate, project: project, date: Time.zone.today) }
-
       context "with the feature flag disabled", with_flag: { stages_and_gates: false } do
         it "does not have the lifecycle (specific gate) filter" do
           load_and_open_filters manager
@@ -816,8 +809,8 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
                                      "on",
                                      [Time.zone.today])
 
-            projects_page.expect_projects_not_listed(development_project, public_project)
-            projects_page.expect_projects_in_order(project)
+            projects_page.expect_projects_not_listed(development_project, project)
+            projects_page.expect_projects_in_order(public_project)
 
             projects_page.remove_filter("lcsd_gate_#{gate.id}")
 
@@ -827,8 +820,8 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
                                      "Lifecycle gate: #{gate.name}",
                                      "today")
 
-            projects_page.expect_projects_not_listed(development_project, public_project)
-            projects_page.expect_projects_in_order(project)
+            projects_page.expect_projects_not_listed(development_project, project)
+            projects_page.expect_projects_in_order(public_project)
 
             projects_page.remove_filter("lcsd_gate_#{gate.id}")
 
@@ -839,8 +832,8 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
                                      "between",
                                      [Time.zone.today - 5.days, Time.zone.today + 10.days])
 
-            projects_page.expect_projects_not_listed(development_project, public_project)
-            projects_page.expect_projects_in_order(project)
+            projects_page.expect_projects_not_listed(development_project, project)
+            projects_page.expect_projects_in_order(public_project)
 
             projects_page.remove_filter("lcsd_gate_#{gate.id}")
 
@@ -850,8 +843,8 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
                                      "Lifecycle gate: #{gate.name}",
                                      "this week")
 
-            projects_page.expect_projects_not_listed(development_project, public_project)
-            projects_page.expect_projects_in_order(project)
+            projects_page.expect_projects_not_listed(development_project, project)
+            projects_page.expect_projects_in_order(public_project)
 
             projects_page.remove_filter("lcsd_gate_#{gate.id}")
 
