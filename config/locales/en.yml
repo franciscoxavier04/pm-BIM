@@ -2929,6 +2929,7 @@ en:
   label_title: "Title"
   label_projects_menu: "Projects"
   label_today: "today"
+  label_token_version: "Token Version"
   label_top_menu: "Top Menu"
   label_topic_plural: "Topics"
   label_total: "Total"
@@ -4578,7 +4579,6 @@ en:
     description: "Adds the OmniAuth SAML provider to OpenProject"
 
   enterprise_plans:
-    label_token_version: "Token Version"
     legacy_enterprise: "Enterprise Plan"
 
   enterprise_features:
