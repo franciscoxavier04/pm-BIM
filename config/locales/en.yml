@@ -3485,7 +3485,7 @@ en:
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
     filters:
-      any_stage_or_gate: "Any stage or gate"
+      life_cycle_any: "Lifecycle: Any stage or gate"
       life_cycle_stage: "Lifecycle stage: %{stage}"
       life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:

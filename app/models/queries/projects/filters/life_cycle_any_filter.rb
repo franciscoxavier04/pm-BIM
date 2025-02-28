@@ -28,12 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Queries::Projects::Filters::AnyStageOrGateFilter < Queries::Projects::Filters::Base
+class Queries::Projects::Filters::LifeCycleAnyFilter < Queries::Projects::Filters::Base
   include Queries::Projects::Filters::FilterOnLifeCycle
   include Queries::Operators::DateRangeClauses
 
+  # Similar to other lifecycle steps
+  def self.key
+    :lcsd_any
+  end
+
   def human_name
-    I18n.t("project.filters.any_stage_or_gate")
+    I18n.t("project.filters.life_cycle_any")
   end
 
   def on_date

@@ -47,11 +47,11 @@ class Projects::ProjectsFiltersComponent < Filter::FilterComponent
     allowlist = [
       Queries::Filters::Shared::CustomFields::Base,
       Queries::Projects::Filters::ActiveFilter,
-      Queries::Projects::Filters::AnyStageOrGateFilter,
       Queries::Projects::Filters::CreatedAtFilter,
       Queries::Projects::Filters::FavoredFilter,
       Queries::Projects::Filters::IdFilter,
       Queries::Projects::Filters::LatestActivityAtFilter,
+      Queries::Projects::Filters::LifeCycleAnyFilter,
       Queries::Projects::Filters::LifeCycleGateFilter,
       Queries::Projects::Filters::LifeCycleStageFilter,
       Queries::Projects::Filters::MemberOfFilter,
