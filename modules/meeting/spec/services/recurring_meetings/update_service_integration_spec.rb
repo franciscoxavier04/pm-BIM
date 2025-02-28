@@ -59,16 +59,16 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
              start_time: Time.zone.today + 1.day + 10.hours)
     end
 
-    context "when updating the start_date to the same time" do
+    context "when updating the start_date to the time of the first cancellation" do
       let(:params) do
         { start_date: Time.zone.today + 1.day }
       end
 
-      it "keeps that cancelled occurrence" do
+      it "removes the cancelled occurrence" do
         expect(service_result).to be_success
         expect(updated_meeting.start_time).to eq(Time.zone.today + 1.day + 10.hours)
 
-        expect { scheduled_meeting.reload }.not_to raise_error
+        expect { scheduled_meeting.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
@@ -199,6 +199,20 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
         scheduled_meetings.each_with_index do |meeting, index|
           meeting.reload
           expect(meeting.start_time).to eq(Time.zone.today + ((index + 1) * 7).days + 10.hours)
+        end
+      end
+
+      context "when one of the scheduled meetings is cancelled" do
+        let!(:cancelled_meeting) do
+          create(:scheduled_meeting,
+                 :cancelled,
+                 recurring_meeting: series,
+                 start_time: Time.zone.today + 5.days + 10.hours)
+        end
+
+        it "removes cancelled schedules" do
+          expect(service_result).to be_success
+          expect { cancelled_meeting.reload }.to raise_error(ActiveRecord::RecordNotFound)
         end
       end
     end

@@ -69,6 +69,7 @@ module RecurringMeetings
       if only_time_of_day_changed?(recurring_meeting)
         update_time_of_day(recurring_meeting)
       else
+        remove_cancelled_schedules(recurring_meeting)
         reschedule_all_occurrences(recurring_meeting)
       end
     end
@@ -79,11 +80,9 @@ module RecurringMeetings
     end
 
     def update_time_of_day(recurring_meeting)
-      future_meetings = recurring_meeting
-        .scheduled_instances
-        .not_cancelled
+      schedule_meetings = recurring_meeting.scheduled_instances
 
-      future_meetings.each do |scheduled|
+      schedule_meetings.each do |scheduled|
         new_time = scheduled.start_time.change(
           hour: recurring_meeting.start_time.hour,
           min: recurring_meeting.start_time.min
@@ -91,9 +90,16 @@ module RecurringMeetings
 
         Meeting.transaction do
           scheduled.update_column(:start_time, new_time)
-          scheduled.meeting.update_column(:start_time, new_time)
+          scheduled.meeting.update_column(:start_time, new_time) if scheduled.meeting_id.present?
         end
       end
+    end
+
+    def remove_cancelled_schedules(recurring_meeting)
+      recurring_meeting
+        .scheduled_meetings
+        .cancelled
+        .delete_all
     end
 
     def reschedule_all_occurrences(recurring_meeting)
