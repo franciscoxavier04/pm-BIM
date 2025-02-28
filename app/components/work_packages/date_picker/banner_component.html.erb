@@ -1,7 +1,5 @@
 <%=
-  render(Primer::Alpha::Banner.new(
-
-    description:,
+  render(Primer::Alpha::Banner.new(description:,
                                    classes: "wp-datepicker--banner wp-datepicker--banner_desktop rounded-top-2",
                                    **banner_options)) do |banner|
     banner.with_action_button(tag: :a, href: link, target: "_blank") { I18n.t("work_packages.datepicker_modal.show_relations") }
