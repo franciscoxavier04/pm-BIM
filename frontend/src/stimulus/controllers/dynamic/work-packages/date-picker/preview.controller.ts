@@ -53,6 +53,7 @@ export default class PreviewController extends DialogPreviewController {
     this.timezoneService = context.services.timezone;
 
     document.addEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+    this.focusOnOpen();
   }
 
   disconnect() {
@@ -349,5 +350,17 @@ export default class PreviewController extends DialogPreviewController {
       return parseInt(duration, 10);
     }
     return null;
+  }
+
+  private focusOnOpen() {
+    const banner = document.querySelector('.wp-datepicker--banner') as HTMLElement;
+    if (banner) {
+      banner.setAttribute('tabindex', '-1');
+      banner.focus();
+    } else {
+      const tabs = document.querySelector('.wp-datepicker-dialog--UnderlineNav') as HTMLElement;
+      tabs.setAttribute('tabindex', '-1');
+      tabs.focus();
+    }
   }
 }
