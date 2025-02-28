@@ -11,6 +11,10 @@ import { GridPageComponent } from 'core-app/shared/components/grids/grid/page/gr
 export class MyPageComponent extends GridPageComponent {
   showToolbar = false;
 
+  protected setHtmlTitle() {
+    // Done in rails
+  }
+
   protected i18nNamespace():string {
     return 'my_page';
   }
