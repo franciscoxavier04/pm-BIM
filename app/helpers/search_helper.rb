@@ -76,7 +76,9 @@ module SearchHelper
       doc.traverse do |node|
         next unless node.text?
 
-        highlighted_text = node.content.gsub(/(#{Regexp.escape(token)})/i, '<span class="search-highlight">\1</span>')
+        t = (tokens.index(node.content.downcase) || 0) % 4
+        highlighted_text = node.content.gsub(/(#{Regexp.escape(token)})/i,
+                                             "<span class='search-highlight token-#{t}'>\\1</span>")
         node.replace(Nokogiri::HTML::DocumentFragment.parse(highlighted_text))
       end
     end
