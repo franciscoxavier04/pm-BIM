@@ -9,6 +9,8 @@ import { GridPageComponent } from 'core-app/shared/components/grids/grid/page/gr
   encapsulation: ViewEncapsulation.None,
 })
 export class MyPageComponent extends GridPageComponent {
+  showToolbar = false;
+
   protected i18nNamespace():string {
     return 'my_page';
   }

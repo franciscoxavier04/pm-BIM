@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,36 +27,25 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module My
+  class PageController < ApplicationController
+    before_action :require_login
+    no_authorization_required! :show
 
-##
-# Intended to be used by the AccountController to decide where to
-# send the user when they logged in.
-module Accounts::RedirectAfterLogin
-  def redirect_after_login(user)
-    if user.first_login
-      user.update_attribute(:first_login, false)
-
-      call_hook :user_first_login, { user: }
-
-      first_login_redirect
-    else
-      default_redirect
+    current_menu_item [:show] do
+      :my_page
     end
-  end
 
-  def default_redirect
-    if (url = Setting.after_login_default_redirect_url)
-      redirect_back_or_default url
-    else
-      redirect_back_or_default home_path
+    def show
+      respond_to do |format|
+        format.html do
+          render locals: { menu_name: :global_menu }
+        end
+      end
     end
-  end
 
-  def first_login_redirect
-    if (url = Setting.after_first_login_redirect_url)
-      redirect_back_or_default url
-    else
-      redirect_back_or_default home_url(first_time_user: true)
+    def default_breadcrumb
+      t("js.my_page.label")
     end
   end
 end
