@@ -36,15 +36,15 @@ tr:
           name: Siyah
       life_cycle_colors:
         item_0:
-          name: PM2 Orange
+          name: PM2 Turuncu
         item_1:
-          name: PM2 Purple
+          name: PM2 Mor
         item_2:
-          name: PM2 Red
+          name: PM2 Kırmızı
         item_3:
-          name: PM2 Magenta
+          name: PM2 Macenta
         item_4:
-          name: PM2 Green Yellow
+          name: PM2 Yeşil Sarı
       document_categories:
         item_0:
           name: Belgeleme
@@ -63,7 +63,7 @@ tr:
         item_1:
           name: Work package commenter
         item_2:
-          name: Work package viewer
+          name: İş paketi görüntüleyici
       project_roles:
         item_0:
           name: Üye Değil

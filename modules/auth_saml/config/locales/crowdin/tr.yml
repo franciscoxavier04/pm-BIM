@@ -21,7 +21,7 @@ tr:
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Format"
+        format: "Biçim"
         icon: "Custom icon"
     errors:
       models:
@@ -56,8 +56,8 @@ tr:
       label_mapping: İlişkilendirme
       label_requested_attribute_for: "%{attribute} için nitelik talebi"
       no_results_table: No SAML identity providers have been defined yet.
-      plural: SAML identity providers
-      singular: SAML identity provider
+      plural: SAML kimlik sağlayıcıları
+      singular: SAML kimlik sağlayıcısı
       requested_attributes: Talep edilen nitelikler
       attribute_mapping: Nitelik ilişkilendirme
       attribute_mapping_text: >

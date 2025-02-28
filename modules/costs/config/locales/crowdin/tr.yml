@@ -126,7 +126,7 @@ tr:
   label_kind: "Tür"
   label_less_or_equal: "<="
   label_log_costs: "Birim maliyet kaydet"
-  label_new_time_entry_activity: "New time entry activity"
+  label_new_time_entry_activity: "Yeni zaman girişi etkinliği"
   label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Hayır"
   label_option_plural: "Ayarlar"
