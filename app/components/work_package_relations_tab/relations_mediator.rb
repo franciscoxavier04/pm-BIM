@@ -52,7 +52,6 @@ class WorkPackageRelationsTab::RelationsMediator
       return nil unless type.follows?
 
       all_relations
-        .lazy
         .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
         .select(&:soonest_start)
         .max
