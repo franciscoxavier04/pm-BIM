@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,36 +27,24 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+require "spec_helper"
 
-##
-# Intended to be used by the AccountController to decide where to
-# send the user when they logged in.
-module Accounts::RedirectAfterLogin
-  def redirect_after_login(user)
-    if user.first_login
-      user.update_attribute(:first_login, false)
+require_relative "../../support/pages/my/page"
 
-      call_hook :user_first_login, { user: }
+RSpec.describe "My page navigation" do
+  shared_let(:user) { create(:user) }
 
-      first_login_redirect
-    else
-      default_redirect
-    end
+  before do
+    login_as user
   end
 
-  def default_redirect
-    if (url = Setting.after_login_default_redirect_url)
-      redirect_back_or_default url
-    else
-      redirect_back_or_default home_path
-    end
-  end
+  it "navigates from global menu to my page" do
+    visit home_path
 
-  def first_login_redirect
-    if (url = Setting.after_first_login_redirect_url)
-      redirect_back_or_default url
-    else
-      redirect_back_or_default home_url(first_time_user: true)
-    end
+    find("#main-menu #{test_selector('op-menu--item-action')}", text: "My page").click
+
+    expect(page).to have_current_path "/my/page"
+    expect(page).to have_css("h1", text: "My page")
+    expect(page).to have_css("#main-menu #{test_selector('op-menu--item-action')}.selected")
   end
 end
