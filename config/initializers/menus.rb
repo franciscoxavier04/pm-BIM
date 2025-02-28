@@ -106,7 +106,7 @@ Redmine::MenuManager.map :account_menu do |menu|
             partial: "/my/timer/menu"
   menu.push :my_page,
             :my_page_path,
-            caption: I18n.t("js.my_page.label"),
+            caption: I18n.t("my_page.label"),
             if: ->(_) { User.current.logged? }
   menu.push :my_profile,
             { controller: "/users", action: "show", id: "me" },
@@ -132,12 +132,17 @@ Redmine::MenuManager.map :global_menu do |menu|
             icon: "home",
             first: true
 
+  menu.push :my_page,
+            { controller: "/my/page", action: "show" },
+            after: :home,
+            icon: "person"
+
   # Projects
   menu.push :projects,
             { controller: "/projects", project_id: nil, action: "index" },
             caption: I18n.t("label_projects_menu"),
             icon: "project",
-            after: :home,
+            after: :my_page,
             if: ->(_) {
               User.current.logged? || !Setting.login_required?
             }

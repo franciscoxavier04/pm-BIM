@@ -7,6 +7,17 @@ GIT
       capybara (~> 3.36)
 
 GIT
+  remote: https://github.com/opf/ferrum.git
+  revision: 889b29926f017530a0e087b1db0bc02747e437b1
+  ref: mouse-events-buttons-property-0.15
+  specs:
+    ferrum (0.15)
+      addressable (~> 2.5)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (~> 0.7)
+
+GIT
   remote: https://github.com/opf/md-to-pdf
   revision: 66893683b94a5fe8f1dc9a60600773307209cdd2
   ref: 66893683b94a5fe8f1dc9a60600773307209cdd2
@@ -26,11 +37,11 @@ GIT
 
 GIT
   remote: https://github.com/opf/omniauth
-  revision: fe862f986b2e846e291784d2caa3d90a658c67f0
-  ref: fe862f986b2e846e291784d2caa3d90a658c67f0
+  revision: 7eb21563ba047ef86d71f099975587b5ec88f9c9
+  ref: 7eb21563ba047ef86d71f099975587b5ec88f9c9
   specs:
-    omniauth (1.9.0)
-      hashie (>= 3.4.6, < 3.7.0)
+    omniauth (1.9.2)
+      hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
 
 GIT
@@ -59,17 +70,6 @@ GIT
     turbo_tests (2.2.0)
       parallel_tests (>= 3.3.0, < 5)
       rspec (>= 3.10)
-
-GIT
-  remote: https://github.com/toy/ferrum.git
-  revision: 889b29926f017530a0e087b1db0bc02747e437b1
-  ref: mouse-events-buttons-property-0.15
-  specs:
-    ferrum (0.15)
-      addressable (~> 2.5)
-      concurrent-ruby (~> 1.1)
-      webrick (~> 1.7)
-      websocket-driver (~> 0.7)
 
 PATH
   remote: modules/auth_plugins
@@ -855,7 +855,7 @@ GEM
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.20.0)
       view_component (>= 3.1, < 4.0)
-    openproject-token (4.0.0)
+    openproject-token (5.0.0)
       activemodel
     openssl (3.3.0)
     openssl-signature_algorithm (1.3.0)
@@ -1382,7 +1382,7 @@ DEPENDENCIES
   openproject-reporting!
   openproject-storages!
   openproject-team_planner!
-  openproject-token (~> 4.0)
+  openproject-token (~> 5.0)
   openproject-two_factor_authentication!
   openproject-webhooks!
   openproject-xls_export!
@@ -1716,7 +1716,7 @@ CHECKSUMS
   nokogiri (1.18.3-x86_64-linux-musl) sha256=8aaecc22c0e5f12dac613e15f9a04059c3ec859d6f98f493cc831bd88fe8e731
   oj (3.16.10) sha256=7f26bed974e331e16d579b470b0865010757f6fe6ee30ea9b67df653fbe13d7c
   okcomputer (1.18.6) sha256=578eee04ad6b3a8ae8e428c39fbff3ca74d1d358f5b21734e73994bf419db092
-  omniauth (1.9.0)
+  omniauth (1.9.2)
   omniauth-openid-connect (0.4.1)
   omniauth-openid_connect-providers (0.2.0)
   omniauth-saml (1.10.5) sha256=946f0c6eb9266642835ad54eca1d0725f5e5cf26e18d1fd7711dabeceddfea8c
@@ -1745,7 +1745,7 @@ CHECKSUMS
   openproject-reporting (1.0.0)
   openproject-storages (1.0.0)
   openproject-team_planner (1.0.0)
-  openproject-token (4.0.0) sha256=f71cdad5632b6b7b598223b185f4928366cb6038eca1a84a6de65cf15cecd0e0
+  openproject-token (5.0.0) sha256=ffc2442d684c929db3eb9f4eedf43349f8c178561f44174cc2f41241daf956b8
   openproject-two_factor_authentication (1.0.0)
   openproject-webhooks (1.0.0)
   openproject-xls_export (1.0.0)
