@@ -256,7 +256,7 @@ tr:
 
                     *   Create a useful overview of the results
                     *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
+                    *   Communicate all the relevant results with the customer
                     *   Identify the fundamental boundary conditions of the project
 
                     ## Description
@@ -271,7 +271,7 @@ tr:
 
                     *   Create a useful overview of the results
                     *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
+                    *   Communicate all the relevant results with the customer
                     *   Identify the fundamental boundary conditions of the project
 
                     ## Description
@@ -622,17 +622,17 @@ tr:
                 item_0:
                   subject: Handover model for construction crew
                   description: |-
-                    ## Goal
+                    ## Hedef
 
-                    *   Everyone knows the model and their tasks
-                    *   Everybody gets all the relevant information, model based
-                    *   ...
+                    * Herkes modeli ve görevlerini bilir
+                    * Herkes ilgili tüm bilgileri alır, model tabanlı
+                    * ...
 
-                    ## Description
+                    ## Açıklama
 
-                    *   The Kickoff on the construction site includes an introduction to the model
-                    *   All the objects should have the information needed for the assigned tasks. If not, data enrichment of the model needs to be done
-                    *   ...
+                    * Şantiyedeki Başlangıç, modele bir giriş içerir
+                    * Tüm nesneler, atanan görevler için gereken bilgilere sahip olmalıdır. Eğer yoksa, modelin veri zenginleştirmesinin yapılması gerekir
+                    * ...
                 item_1:
                   subject: Construct the building
                   description: |-

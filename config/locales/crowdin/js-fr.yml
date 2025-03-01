@@ -221,6 +221,8 @@ fr:
             label_maximum_users: "Nombre maximal d’utilisateurs actif"
             label_starts_at: "Commence à"
             label_expires_at: "Expire le"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Je veux recevoir la <a target="_blank" href="%{link}">newsletter OpenProject</a>.
             taken_domain: Il ne peut y avoir qu'un seul essai actif par domaine.
             domain_mismatch: Le nom d'hôte de la requête actuelle ne correspond pas au nom d'hôte configuré. Veuillez vérifier les paramètres de votre système.
@@ -851,8 +853,6 @@ fr:
       select_branch: "Sélectionner une branche"
     field_value_enter_prompt: "Saisissez une valeur pour « %{field} »"
     project_menu_details: "Détails"
-    scheduling:
-      manual: "Planification manuelle"
     sort:
       sorted_asc: "Tri par ordre croissant appliqué, "
       sorted_dsc: "Tri par ordre décroissant appliqué, "
@@ -900,15 +900,6 @@ fr:
       comment_send_failed: "Une erreur s'est produite. Impossible de soumettre le commentaire."
       comment_updated: "Le commentaire a été mis à jour avec succès."
       confirm_edit_cancel: "Êtes-vous sûr de vouloir annuler l'édition du lot de travaux ?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Planification automatique. Les dates sont dérivées des relations."
-        manually_scheduled: "La planification manuelle est activée, toutes les relations sont ignorées."
-        start_date_limited_by_relations: "Les dates de début et de fin disponibles sont limitées par les relations."
-        changing_dates_affects_follow_relations: "La modification de ces dates affectera les dates des lots de travaux connexes."
-        click_on_show_relations_to_open_gantt: 'Cliquez sur « %{button_name} » pour avoir une vue d''ensemble de GANTT.'
-        show_relations: "Afficher les relations"
-        ignore_non_working_days:
-          title: "Jours ouvrés seulement"
       description_filter: "Filtrer"
       description_enter_text: "Saisir texte"
       description_options_hide: "Masquer les options"

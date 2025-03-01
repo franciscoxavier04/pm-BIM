@@ -221,6 +221,8 @@ tr:
             label_maximum_users: "En çok aktif kullanıcı"
             label_starts_at: "Başlangıç tarihi:"
             label_expires_at: "Bitiş tarihi"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: OpenProject <a target="_blank" href="%{link}">haber bültenini</a> almak istiyorum.
             taken_domain: Alan adı başına yalnızca bir etkin deneme olabilir.
             domain_mismatch: Geçerli istek ana bilgisayar adı, yapılandırılan ana bilgisayar adıyla eşleşmiyor. Lütfen sistem ayarlarınızı tekrar kontrol edin.
@@ -797,15 +799,15 @@ tr:
       parent: "Üst"
       children: "Çocuk"
       relates: "İlişkili"
-      duplicates: "Kopyası"
-      duplicated: "Tarafından çoğaltılır"
+      duplicates: "Kopyalayan"
+      duplicated: "Kopyalanan"
       blocks: "Engeller"
       blocked: "Bağlı"
       precedes: "İletletir"
       follows: "Takip eder"
       includes: "İçerir"
       partof: "Bölümü"
-      requires: "Şunu gerektirir"
+      requires: "Gerektiren"
       required: "Gerektirir"
       relation_type: "ilişki türü"
     relations_hierarchy:
@@ -850,8 +852,6 @@ tr:
       select_branch: "Branş seç"
     field_value_enter_prompt: "'%{field}' için bir değer girin"
     project_menu_details: "Detaylar"
-    scheduling:
-      manual: "Manuel zamanlamayı etkinleştir"
     sort:
       sorted_asc: "Artan sıralama, uygulandı, "
       sorted_dsc: "Azalan sırılama uygulandı, "
@@ -899,15 +899,6 @@ tr:
       comment_send_failed: "Bir hata oluştu. Yorum gönderilemedi."
       comment_updated: "Yorum başarıyla güncelleştirildi."
       confirm_edit_cancel: "İş paketini düzenlemeyi iptal etmek istediğinizden emin misiniz?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Otomatik olarak planlandı. Tarihler ilişkilerden türetilir."
-        manually_scheduled: "Manuel planlama etkinleştirildi, tüm ilişkiler göz ardı edildi."
-        start_date_limited_by_relations: "Kullanılabilir başlangıç ve bitiş tarihleri ilişkilerle sınırlıdır."
-        changing_dates_affects_follow_relations: "Bu tarihlerin değiştirilmesi, ilgili iş paketlerinin tarihlerini etkileyecektir."
-        click_on_show_relations_to_open_gantt: 'GANTT''ye genel bakış için "%{button_name}" üzerine tıklayın.'
-        show_relations: "İlişkileri göster"
-        ignore_non_working_days:
-          title: "Sadece iş günleri"
       description_filter: "Filtre"
       description_enter_text: "Metin girin"
       description_options_hide: "Seçenekleri gizle"

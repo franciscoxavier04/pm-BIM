@@ -640,6 +640,47 @@ tr:
     index:
       no_results_title_text: Sitemizde şuan iş akışı yok.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Bir soydan iş paketi"
       other: "%{count} Bir soydan iş paketi"
@@ -701,8 +742,8 @@ tr:
       label_relates_to_plural: "ilişkili"
       relates_description: "Ek bir etkisi olmadan iki iş paketi arasında görünür bir bağlantı oluşturur"
       relates_to_description: "Ek bir etkisi olmadan iki iş paketi arasında görünür bir bağlantı oluşturur"
-      label_precedes_singular: "ardıl (sonra)"
-      label_precedes_plural: "ardıl (sonra)"
+      label_precedes_singular: "ardılı (sonra)"
+      label_precedes_plural: "ardılı (sonra)"
       precedes_description: "İlgili iş paketinin, bu iş paketi bittikten sonra başlaması gerekmektedir"
       label_follows_singular: "öncülü (önce)"
       label_follows_plural: "öncülü (önce)"
@@ -722,26 +763,26 @@ tr:
       label_blocked__by_plural: "bağlı"
       blocked_description: "İlgili iş paketi kapatılmadan bu iş paketi kapatılamaz"
       blocked_by_description: "İlgili iş paketi kapatılmadan bu iş paketi kapatılamaz"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "kopyalayan"
+      label_duplicates_plural: "kopyalayan"
       duplicates_description: "Bu, ilgili iş paketinin bir kopyasıdır"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "kopyalanan"
+      label_duplicated_plural: "kopyalanan"
+      label_duplicated_by_singular: "kopyalanan"
+      label_duplicated_by_plural: "kopyalanan"
       duplicated_by_description: "İlgili iş paketi bunun bir kopyasıdır"
       duplicated_description: "İlgili iş paketi bunun bir kopyasıdır"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
-      includes_description: "Marks the related work package as including this one with no additional effect"
+      label_includes_singular: "içeren"
+      label_includes_plural: "içeren"
+      includes_description: "İlgili iş paketini, ek bir etki olmaksızın bunu da içerecek şekilde işaretler"
       label_partof_singular: "bir parçasıdır"
       label_partof_plural: "bir parçasıdır"
       label_part_of_singular: "bir parçasıdır"
       label_part_of_plural: "bir parçasıdır"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "gerektiren"
+      label_requires_plural: "gerektiren"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
@@ -1353,6 +1394,7 @@ tr:
               smaller_than_dates: "başlangıç ve bitiş tarihi arasındaki aralıktan daha küçüktür."
               not_available_for_milestones: "kilometre taşı türündeki iş paketleri için kullanılamaz."
               cannot_be_null: "başlangıç tarihi ve süresi bilindiğinden sıfır değerine ayarlanamaz."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "kilometre taşı olamaz."
               cannot_be_self_assigned: "kendisine atanamaz."
@@ -2174,7 +2216,7 @@ tr:
       work_package_parent_changed_times: by changes to parent %{link}
       work_package_children_changed_times: by changes to child %{link}
       work_package_related_changed_times: by changes to related %{link}
-      work_package_duplicate_closed: The status was automatically updated by the duplicated work package %{link}
+      work_package_duplicate_closed: Durum, kopyalayan %{link} iş paketi tarafından otomatik olarak güncellendi
       unaccessable_work_package_changed: by changes to a related work package
       working_days_changed:
         changed: "by changes to working days (%{changes})"
@@ -2195,6 +2237,8 @@ tr:
           Progress calculation automatically <a href="%{href}" target="_blank">set to work-based mode and adjusted with version update</a>.
         progress_calculation_adjusted: >-
           Progress calculation automatically <a href="%{href}" target="_blank">adjusted with version update</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Work and progress totals automatically removed for non-parent work packages with <a href="%{href}" target="_blank">version update</a>. This is a maintenance task and can be safely ignored.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2453,9 +2497,9 @@ tr:
   label_download: "%{count} indirme"
   label_download_plural: "%{count} indirme"
   label_downloads_abbr: "D/L"
-  label_duplicated_by: "tarafından çoğaltılır"
+  label_duplicated_by: "kopyalanan"
   label_duplicate: "kopya"
-  label_duplicates: "çoğaltır"
+  label_duplicates: "kopyalayan"
   label_edit: "Düzenle"
   label_edit_x: "Düzenle: %{x}"
   label_enable_multi_select: "Çoklu seçimi etkinleştir"
@@ -2830,6 +2874,7 @@ tr:
   label_title: "Başlık"
   label_projects_menu: "Projeler"
   label_today: "bugün"
+  label_token_version: "Token Version"
   label_top_menu: "Üst Menü"
   label_topic_plural: "Konular"
   label_total: "Toplam"
@@ -3473,6 +3518,12 @@ tr:
     activated: "etkinleştirmek"
     deactivated: "devre dışı bırakmak"
   search_input_placeholder: "Ara ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORS'u etkinleştir"
   setting_apiv3_cors_origins: "API V3 Kaynaklar Arası Kaynak Paylaşımı (CORS) izin verilen kaynaklar"
@@ -3833,7 +3884,7 @@ tr:
   text_notice_security_badge_displayed_html: >
     Not: Etkinleştirildiğinde, bu,  <a href="%{information_panel_path}">%{information_panel_label}</a> yönetim panelinde ve giriş sayfasında yükleme durumunuzla birlikte bir rozet görüntüler. Sadece yöneticilere gösterilir. <br/> Rozet, mevcut OpenProject sürümünüzü resmi OpenProject sürüm veritabanına karşı kontrol eder ve sizi herhangi bir güncelleme veya bilinen güvenlik açığı hakkında uyarır. Çekin sağladığı, mevcut güncellemeleri sağlamak için hangi verilerin gerekli olduğu ve bu kontrolün nasıl devre dışı bırakılacağı hakkında daha fazla bilgi için lütfen <a href="%{more_info_url}"> yapılandırma belgelerini </a> ziyaret edin.
   text_own_membership_delete_confirmation: "İzinlerinizden bazılarını veya tümünü kaldırmak üzeresiniz ve bundan sonra bu projeyi düzenleyemeyebilirsiniz. Devam etmek istediğine emin misin?"
-  text_permanent_delete_confirmation_checkbox_label: "I understand that this deletion cannot be reversed"
+  text_permanent_delete_confirmation_checkbox_label: "Bu silme işleminin geri alınamayacağını anlıyorum"
   text_plugin_assets_writable: "Plugin assets dizini yazılabilir"
   text_powered_by: "%{link} tarafından destekleniyor"
   text_project_identifier_info: "Yalnızca küçük harfler (a-z), sayılar, tire ve alt tire kullanılabilir ve mutlaka küçük harfle başlamalıdır."
@@ -4310,3 +4361,29 @@ tr:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Tek Oturum Açma"
     description: "OmniAuth SAML sağlayıcısını OpenProject'e ekler"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

@@ -9,7 +9,7 @@ tr:
       openid_connect/provider:
         name: İsim
         slug: Unique identifier
-        display_name: Display name
+        display_name: Görünen isim
         client_id: Client ID
         client_secret: Client secret
         secret: Secret
@@ -28,7 +28,7 @@ tr:
         icon: Özel simge
         claims: Claims
         acr_values: ACR values
-        redirect_url: Redirect URL
+        redirect_url: Yönlendirme bağlantısı
     errors:
       models:
         openid_connect/provider:

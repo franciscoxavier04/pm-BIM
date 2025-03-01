@@ -221,6 +221,8 @@ it:
             label_maximum_users: "Numero massimo di utenti attivi"
             label_starts_at: "Comincia alle"
             label_expires_at: "Scade il"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Voglio ricevere la <a target="_blank" href="%{link}">newsletter</a> di OpenProject.
             taken_domain: Puoi avere solo una prova attiva per ogni dominio.
             domain_mismatch: Il nome host della richiesta attuale non corrisponde al nome host configurato. Controlla le impostazioni di sistema.
@@ -851,8 +853,6 @@ it:
       select_branch: "Selezionare ramo"
     field_value_enter_prompt: "Inserisci un valore per '%{field}'"
     project_menu_details: "Dettagli"
-    scheduling:
-      manual: "Programmazione manuale"
     sort:
       sorted_asc: "Ordinamento crescente applicato, "
       sorted_dsc: "Ordinamento decrescente applicato, "
@@ -900,15 +900,6 @@ it:
       comment_send_failed: "Si è verificato un errore. Impossibile inviare il commento."
       comment_updated: "Il commento è stato aggiornato correttamente."
       confirm_edit_cancel: "Sei sicuro di voler annullare la modifica della macro-attività?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Pianificato automaticamente. Le date derivano dalle relazioni."
-        manually_scheduled: "Programmazione manuale abilitata, tutte le relazioni sono ignorate."
-        start_date_limited_by_relations: "Le date di inizio e di fine disponibili sono limitate dalle relazioni."
-        changing_dates_affects_follow_relations: "La modifica di queste date influenzerà le date delle relative macro-attività."
-        click_on_show_relations_to_open_gantt: 'Clicca su "%{button_name}" per la panoramica GANTT.'
-        show_relations: "Visualizza relazioni"
-        ignore_non_working_days:
-          title: "Solo giorni lavorativi"
       description_filter: "Filtro"
       description_enter_text: "Inserisci testo"
       description_options_hide: "Nascondi opzioni"

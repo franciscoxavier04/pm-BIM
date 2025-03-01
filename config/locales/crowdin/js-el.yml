@@ -220,6 +220,8 @@ el:
             label_maximum_users: "Μέγιστοι ενεργοί χρήστες"
             label_starts_at: "Αρχίζει στις"
             label_expires_at: "Λήγει στις"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Θέλω να λαμβάνω το <a target="_blank" href="%{link}">ενημερωτικό δελτίο</a> του OpenProject.
             taken_domain: Μπορεί να υπάρχει μόνο μια ενεργή δοκιμαστική συνδρομή ανά τομέα.
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -850,8 +852,6 @@ el:
       select_branch: "Επιλογή κλάδου"
     field_value_enter_prompt: "Εισαγωγή τιμής για το '%{field}'"
     project_menu_details: "Λεπτομέρειες"
-    scheduling:
-      manual: "Χειροκίνητος προγραμματισμός"
     sort:
       sorted_asc: "Εφαρμόστηκε αύξουσα ταξινόμηση, "
       sorted_dsc: "Εφαρμόστηκε φθίνουσα ταξινόμηση, "
@@ -899,15 +899,6 @@ el:
       comment_send_failed: "Παρουσιάστηκε ένα σφάλμα. Δεν ήταν δυνατή η υποβολή του σχολίου."
       comment_updated: "Το σχόλιο ενημερώθηκε με επιτυχία."
       confirm_edit_cancel: "Είστε βέβαιοι ότι θέλετε να ακυρώσετε την επεξεργασία αυτού του πακέτου εργασίας;"
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatically scheduled. Dates are derived from relations."
-        manually_scheduled: "Manual scheduling enabled, all relations ignored."
-        start_date_limited_by_relations: "Available start and finish dates are limited by relations."
-        changing_dates_affects_follow_relations: "Changing these dates will affect dates of related work packages."
-        click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for GANTT overview.'
-        show_relations: "Show relations"
-        ignore_non_working_days:
-          title: "Working days only"
       description_filter: "Φίλτρο"
       description_enter_text: "Εισάγετε κείμενο"
       description_options_hide: "Απόκρυψη επιλογών"

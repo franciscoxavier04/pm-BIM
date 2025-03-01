@@ -631,6 +631,47 @@ zh-TW:
     index:
       no_results_title_text: 目前沒有工作流程
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       other: "%{count} 個子工作項目"
     bulk:
@@ -1343,6 +1384,7 @@ zh-TW:
               smaller_than_dates: "小於開始日期和結束日期之間的間隔。"
               not_available_for_milestones: "不適用於里程碑類型的工作項目。"
               cannot_be_null: "無法設置為 null，因為開始日期和結束日期已知。"
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "不能是里程碑"
               cannot_be_self_assigned: "不能指派給自己"
@@ -2155,6 +2197,8 @@ zh-TW:
           自動計算進度<a href="%{href}" target="_blank">設定為「基於工時」模式並隨著版本更新進行調整</a>。
         progress_calculation_adjusted: >-
           自動計算進度<a href="%{href}" target="_blank">隨版本更新調整</a>。
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           使用 <a href="%{href}" target="_blank">版本更新</a>的非父工作包的工作和進度總計自動移除。 這是一個維護任務，可以安全地被忽略。
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2790,6 +2834,7 @@ zh-TW:
   label_title: "標題"
   label_projects_menu: "專案"
   label_today: "今天"
+  label_token_version: "Token Version"
   label_top_menu: "頂層選單"
   label_topic_plural: "主題"
   label_total: "全部"
@@ -3431,6 +3476,12 @@ zh-TW:
     activated: "已啟用"
     deactivated: "已停用"
   search_input_placeholder: "搜尋 ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "跨原始來源資源共用 (CORS, Cross-Origin Resource Sharing)"
   setting_apiv3_cors_enabled: "啟用 CORS"
   setting_apiv3_cors_origins: "CROSS-ORIGIN RESOURCE SHARING (CORS)"
@@ -4267,3 +4318,29 @@ zh-TW:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / SSO單點登錄"
     description: "將 OmniAuth SAML 提供商增加到 OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

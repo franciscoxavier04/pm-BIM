@@ -221,6 +221,8 @@ nl:
             label_maximum_users: "Maximum aantal actieve gebruikers"
             label_starts_at: "Start op"
             label_expires_at: "Verloopt op"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Ik wil de OpenProject <a target="_blank" href="%{link}">nieuwsbrief</a> ontvangen.
             taken_domain: Er kan slechts één actieve proefperiode per domein zijn.
             domain_mismatch: De huidige hostnaam van de aanvraag komt niet overeen met de geconfigureerde hostnaam. Controleer uw systeeminstellingen.
@@ -851,8 +853,6 @@ nl:
       select_branch: "Selecteer pad"
     field_value_enter_prompt: "Breng een waarde in voor veld '%{field}'"
     project_menu_details: "Details"
-    scheduling:
-      manual: "Handmatige planning"
     sort:
       sorted_asc: "Oplopende sorteervolgorde toegepast, "
       sorted_dsc: "Aflopende sorteervolgorde toegepast, "
@@ -900,15 +900,6 @@ nl:
       comment_send_failed: "Er is een fout opgetreden. De opmerking is niet ingediend."
       comment_updated: "De opmerking is succesvol bijgewerkt."
       confirm_edit_cancel: "Bent u zeker dat u het bewerken van het werkpakket wilt annuleren?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatically scheduled. Dates are derived from relations."
-        manually_scheduled: "Manual scheduling enabled, all relations ignored."
-        start_date_limited_by_relations: "Available start and finish dates are limited by relations."
-        changing_dates_affects_follow_relations: "Het wijzigen van deze data heeft invloed op data van gerelateerde werkpakketten."
-        click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for GANTT overview.'
-        show_relations: "Relaties tonen"
-        ignore_non_working_days:
-          title: "Alleen werkdagen"
       description_filter: "Filter"
       description_enter_text: "Tekst invoeren"
       description_options_hide: "Verberg opties"
