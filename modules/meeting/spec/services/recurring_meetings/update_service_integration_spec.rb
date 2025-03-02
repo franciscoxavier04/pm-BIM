@@ -72,6 +72,19 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
       end
     end
 
+    context "when updating only the start time hour" do
+      let(:params) do
+        { start_time_hour: "09:00" }
+      end
+
+      it "updates the cancelled occurrence" do
+        expect(service_result).to be_success
+
+        scheduled_meeting.reload
+        expect(scheduled_meeting.start_time).to eq(Time.zone.today + 1.day + 9.hours)
+      end
+    end
+
     context "when updating the start_date to further in the future" do
       let(:params) do
         { start_date: Time.zone.today + 2.days }

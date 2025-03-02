@@ -43,7 +43,6 @@ module RecurringMeetings
       return call unless call.success?
 
       recurring_meeting = call.result
-      cleanup_cancelled_schedules(recurring_meeting)
 
       if should_reschedule?(recurring_meeting)
         reschedule_future_occurrences(recurring_meeting)
@@ -51,6 +50,7 @@ module RecurringMeetings
         send_rescheduled_mail(recurring_meeting)
       end
 
+      cleanup_cancelled_schedules(recurring_meeting)
       update_template(call)
     end
 
@@ -80,7 +80,7 @@ module RecurringMeetings
     end
 
     def update_time_of_day(recurring_meeting)
-      schedule_meetings = recurring_meeting.scheduled_instances
+      schedule_meetings = recurring_meeting.scheduled_meetings
 
       schedule_meetings.each do |scheduled|
         new_time = scheduled.start_time.change(
