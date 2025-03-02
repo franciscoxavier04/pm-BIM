@@ -964,7 +964,7 @@ ja:
         results: "Results"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "関連するワークパッケージ"
         to: "関係するワークパッケージ"
         relation_type: "Relation type"
       reminder:
@@ -1366,8 +1366,8 @@ ja:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              cannot_add_child_because_of_lack_of_permission: "選択したワークパッケージを編集する権限がないため、子タスクを追加できません。"
+              blank: "IDは空白にできません。"
             assigned_to:
               format: "%{message}"
             done_ratio:

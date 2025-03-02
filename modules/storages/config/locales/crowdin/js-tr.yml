@@ -76,11 +76,11 @@ tr:
             Your file (%{fileName}) is bigger than the storage quota allows. Contact your administrator to modify this quota.
           detail:
             nextcloud: >
-              Please check that the latest version of the Nextcloud App "OpenProject Integration" is installed and contact your administrator for more information.
+              Lütfen Nextcloud Uygulaması "OpenProject Integration"ın en son sürümünün yüklü olduğunu kontrol edin ve daha fazla bilgi için yöneticinizle iletişime geçin.
         link_uploaded_file_error: >
           Yakın zamanda yüklenen '%{fileName}' dosyasını %{workPackageId} iş paketine bağlarken bir hata oluştu.
         tooltip:
-          not_logged_in: "Please log in to the storage to access this file."
+          not_logged_in: "Bu dosyaya erişmek için lütfen depoda oturum açın."
           view_not_allowed: "Bu dosyayı görme izniniz yok."
           not_found: "Bu dosya bulunamadı."
         already_linked_file: "Bu dosya zaten bu iş paketine bağlı."
