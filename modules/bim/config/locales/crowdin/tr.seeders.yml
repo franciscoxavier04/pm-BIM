@@ -40,9 +40,9 @@ tr:
         item_3:
           name: Sorun
         item_4:
-          name: Remark
+          name: Açıklama
         item_5:
-          name: Request
+          name: Talep
         item_6:
           name: Clash
       global_queries:
@@ -55,23 +55,23 @@ tr:
               group_name: Çocuk
       groups:
         item_0:
-          name: Architects
+          name: Mimarlar
         item_1:
-          name: BIM Coordinators
+          name: BIM Koordinatörleri
         item_2:
-          name: BIM Managers
+          name: BIM Yöneticileri
         item_3:
-          name: BIM Modellers
+          name: BIM Modelleyicileri
         item_4:
-          name: Lead BIM Coordinators
+          name: Baş BIM Koordinatörleri
         item_5:
-          name: MEP Engineers
+          name: MEP Mühendisleri
         item_6:
           name: Planlayıcı
         item_7:
-          name: Structural Engineers
+          name: Yapı Mühendisleri
       welcome:
-        title: Welcome to OpenProject BIM edition!
+        title: OpenProject BIM sürümüne hoş geldiniz!
         text: |
           Checkout the demo projects to get started with some examples.
 
@@ -246,11 +246,11 @@ tr:
                   subject: End of basic evaluation
                   description: This type is hierarchically a parent of the types &quot;Clash&quot; and &quot;Request&quot;, thus represents a general note.
             item_2:
-              subject: Preliminary planning
+              subject: Ön planlama
               description: This type is hierarchically a parent of the types &quot;Clash&quot; and &quot;Request&quot;, thus represents a general note.
               children:
                 item_0:
-                  subject: Developing first draft
+                  subject: İlk taslağın geliştirilmesi
                   description: |-
                     ## Goal
 
@@ -265,7 +265,7 @@ tr:
                     *   This overview informs all participants about the decisions made
                     *   ...
                 item_1:
-                  subject: Summarize results
+                  subject: Sonuçların özetlenmesi
                   description: |-
                     ## Goal
 
@@ -283,43 +283,43 @@ tr:
               subject: Passing of preliminary planning
               description: This type is hierarchically a parent of the types &quot;Clash&quot; and &quot;Request&quot;, thus represents a general note.
             item_4:
-              subject: Design planning
+              subject: Tasarım planlaması
               description: This type is hierarchically a parent of the types &quot;Clash&quot; and &quot;Request&quot;, thus represents a general note.
               children:
                 item_0:
-                  subject: Finishing design
+                  subject: Bitirme tasarımı
                   description: |-
-                    ## Goal
+                    ## Hedef
 
-                    *   Design is done
-                    *   All parties are happy with the results of the design planning phase
+                    * Tasarım tamamlandı
+                    * Tüm taraflar tasarım planlama aşamasının sonuçlarından memnun
 
-                    ## Description
+                    ## Açıklama
 
-                    *   The design of the project will be finished
-                    *   All parties agree on the design
-                    *   The owner is happy with the results
-                    *   ...
+                    * Projenin tasarımı bitecek
+                    * Tüm taraflar tasarım üzerinde anlaştı
+                    * İş sahibi sonuçlardan memnun
+                    * ...
                 item_1:
-                  subject: Design freeze
+                  subject: Tasarım dondurma
                   description: This type is hierarchically a parent of the types &quot;Clash&quot; and &quot;Request&quot;, thus represents a general note.
             item_5:
-              subject: Construction phase
+              subject: İnşaat aşaması
               children:
                 item_0:
-                  subject: Start constructing
+                  subject: İnşaatın başlaması
                   description: |-
-                    ## Goal
+                    ## Hedef
 
-                    *   Ground breaking ceremony
-                    *   Setting up the construction site
-                    *   ...
+                    * Temel atma töreni
+                    * Şantiyenin kurulması
+                    * ...
 
-                    ## Description
+                    ## Açıklama
 
-                    *   Preparing the site for the project
-                    *   Get the team together
-                    *   ...
+                    * Proje için sahanın hazırlanması
+                    * Ekibin bir araya getirilmesi
+                    * ...
                 item_1:
                   subject: Foundation
                   description: |-

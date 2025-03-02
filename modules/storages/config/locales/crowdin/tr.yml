@@ -278,7 +278,7 @@ tr:
         oauth_client_secret: İstemci kimlik bilgileri altında uygulama istemci sırrı yoksa, lütfen yeni bir tane oluşturun.
         oauth_configuration: Bu değerleri %{application_link_text} adresindeki istenen uygulamadan kopyalayın.
         provider_configuration: Lütfen kurulumu yapmadan önce %{application_link_text} adresinde yönetim ayrıcalıklarına sahip olduğunuzdan emin olun veya Microsoft yöneticinize başvurun. Portalda ayrıca bir Azure uygulaması kaydetmeniz veya kimlik doğrulaması için mevcut bir uygulamayı kullanmanız gerekir.
-        tenant_id: Please copy the Directory (tenant) ID from the desired application and App registrations in the %{application_link_text}.
+        tenant_id: Lütfen %{application_link_text} adresindeki istenen uygulama ve Uygulama kayıtlarından Dizin (kiracı) Kimliğini kopyalayın.
         tenant_id_placeholder: Name or UUID
       setting_up_additional_storages: Ek dosya depoları ayarlamak için lütfen adresi ziyaret edin.
       setting_up_additional_storages_non_admin: Yöneticiler, Yönetim'de ek dosya depoları kurabilir
@@ -347,7 +347,7 @@ tr:
         title: Entegrasyon kurulumu tamamlandı
       timeout:
         link_text: health status of the file storage setup
-        subtitle: OpenProject could not provide you access to the project folder within the expected period of time. Please, try once again.<br><br> If that problem persists please contact your OpenProject administrator to check %{storages_health_link}.
+        subtitle: OpenProject beklenen süre içinde proje klasörüne erişiminizi sağlayamadı. Lütfen bir kez daha deneyin.<br><br> Bu sorun devam ederse lütfen %{storages_health_link} adresini kontrol etmek için OpenProject yöneticinizle iletişime geçin.
       waiting:
         subtitle: One moment please, this might take some time...
         title: We are setting up your permissions on the project folder.
@@ -369,7 +369,7 @@ tr:
       project_storage_members:
         subtitle: Check the connection status for the storage %{storage_name_link} of all project members.
         title: Members connection status
-    permission_header_explanation: 'File permissions on external storages are applied only to folders and files within automatically managed project folders. Note that not all file permissions are supported by all storage providers. Please check the documentation on <a target=''_blank'' href=''https://www.openproject.org/docs/system-admin-guide/users-permissions/roles-permissions/#file-storages-permissions''>file storage permissions</a> for more information.'
+    permission_header_explanation: 'Harici depolardaki dosya izinleri yalnızca otomatik olarak yönetilen proje klasörlerindeki klasörlere ve dosyalara uygulanır. Tüm dosya izinlerinin tüm depolama sağlayıcıları tarafından desteklenmediğini unutmayın. Daha fazla bilgi için lütfen <a target=''_blank'' href=''https://www.openproject.org/docs/system-admin-guide/users-permissions/roles-permissions/#file-storages-permissions''>dosya depolama izinleriyle</a> ilgili belgeleri kontrol edin.'
     provider_types:
       label: Sağlayıcı türü
       nextcloud:
