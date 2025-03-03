@@ -34,7 +34,8 @@ class AddPolymorphicAuthSourceAndIntegrationToRemoteIdentities < ActiveRecord::M
 
     rename_column :remote_identities, :oauth_client_id, :auth_source_id
     add_column :remote_identities, :auth_source_type, :string
-    remove_index :remote_identities, :auth_source_id, if_exists: true
+    remove_index :remote_identities, :auth_source_id
+    remove_index :remote_identities, %i[user_id auth_source_id]
     add_index :remote_identities, %i[auth_source_type auth_source_id]
 
     add_column :remote_identities, :integration_type, :string
@@ -65,6 +66,7 @@ class AddPolymorphicAuthSourceAndIntegrationToRemoteIdentities < ActiveRecord::M
     rename_column :remote_identities, :auth_source_id, :oauth_client_id
     add_foreign_key :remote_identities, :oauth_clients
     add_index :remote_identities, :oauth_client_id
+    add_index :remote_identities, %i[user_id oauth_client_id], unique: true
     remove_column :remote_identities, :auth_source_type
 
     remove_column :remote_identities, :integration_id

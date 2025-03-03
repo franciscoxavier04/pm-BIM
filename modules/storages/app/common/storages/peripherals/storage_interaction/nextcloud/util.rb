@@ -66,6 +66,7 @@ module Storages
               response.xml.xpath("//s:message").text
             end
 
+            # rubocop:disable Metrics/AbcSize
             def origin_user_id(caller:, storage:, auth_strategy:)
               case auth_strategy.key
               when :basic_auth
@@ -95,6 +96,7 @@ module Storages
                                      "Cannot execute query without user context.")
               end
             end
+            # rubocop:enable Metrics/AbcSize
 
             def error_data_from_response(caller:, response:)
               payload = if response.respond_to?(:content_type)
