@@ -221,6 +221,8 @@ uk:
             label_maximum_users: "Максимальна кількість активних користувачів"
             label_starts_at: "Починається о"
             label_expires_at: "Закінчується о"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Я хочу отримувати розсилку новин <a target="_blank" href="%{link}">OpenProject</a>.
             taken_domain: Може бути лише одна активна пробна версія на домен.
             domain_mismatch: Ім’я хосту поточного запиту не відповідає налаштованому імені хосту. Перевірте свої системні налаштування.
@@ -853,8 +855,6 @@ uk:
       select_branch: "Виберіть гілку"
     field_value_enter_prompt: "Введіть значення для «%{field}»"
     project_menu_details: "Детальніше"
-    scheduling:
-      manual: "Ручне планування"
     sort:
       sorted_asc: "Застосовується сортування за зростанням,"
       sorted_dsc: "Застосовується сортування за спаданням,"
@@ -902,15 +902,6 @@ uk:
       comment_send_failed: "Сталася помилка. Не вдалося додати коментар."
       comment_updated: "Коментар був успішно оновлений."
       confirm_edit_cancel: "Ви дійсно бажаєте скасувати редагування пакету робіт?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Автоматично заплановано. Дати отримано зі зв’язків."
-        manually_scheduled: "Увімкнено ручне планування; усі зв’язки ігноруються."
-        start_date_limited_by_relations: "Доступні дати початку й завершення обмежені зв’язками."
-        changing_dates_affects_follow_relations: "Змінення цих дат вплине на дати пов’язаних пакетів робіт."
-        click_on_show_relations_to_open_gantt: 'Натисніть кнопку «%{button_name}», щоб перейти в режим GANTT.'
-        show_relations: "Показати зв’язки"
-        ignore_non_working_days:
-          title: "Лише робочі дні"
       description_filter: "Фільтр"
       description_enter_text: "Введіть текст"
       description_options_hide: "Сховати опції"

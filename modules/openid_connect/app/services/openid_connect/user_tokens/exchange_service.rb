@@ -44,6 +44,8 @@ module OpenIDConnect
         end
       end
 
+      attr_reader :user
+
       def initialize(user:)
         @user = user
       end
@@ -51,7 +53,7 @@ module OpenIDConnect
       def call(audience)
         return Failure("Provider does not support token exchange") unless supported?
 
-        idp_token = yield FetchService.new(user: @user, token_exchange: Disabled)
+        idp_token = yield FetchService.new(user:, token_exchange: Disabled)
                             .access_token_for(audience: UserToken::IDP_AUDIENCE)
 
         json = yield TokenRequest.new(provider:).exchange(idp_token, audience)
@@ -65,6 +67,7 @@ module OpenIDConnect
         # A second reason is that at least Keycloak (an IDP we implement against), offers broken
         # refresh tokens after token exchange (see https://github.com/keycloak/keycloak/issues/37016)
         token = store_exchanged_token(audience:, access_token:, refresh_token: nil, expires_in:)
+
         Success(token)
       end
 
@@ -76,7 +79,7 @@ module OpenIDConnect
 
       def store_exchanged_token(audience:, access_token:, refresh_token:, expires_in:)
         token_data = { access_token:, refresh_token:, expires_at: expires_in&.seconds&.from_now }
-        token = @user.oidc_user_tokens.where("audiences ? :audience", audience:).first
+        token = user.oidc_user_tokens.where("audiences ? :audience", audience:).first
         if token
           if token.audiences.size > 1
             raise "Did not expect to update token with multiple audiences (#{token.audiences}) in-place."
@@ -84,14 +87,14 @@ module OpenIDConnect
 
           token.update!(**token_data)
         else
-          token = @user.oidc_user_tokens.create!(audiences: [audience], **token_data)
+          token = user.oidc_user_tokens.create!(audiences: [audience], **token_data)
         end
 
         token
       end
 
       def provider
-        @user.authentication_provider
+        user.authentication_provider
       end
     end
   end
