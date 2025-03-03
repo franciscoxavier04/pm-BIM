@@ -47,8 +47,12 @@ Rails.application.routes.draw do
     get "/time_entries/dialog" => "time_entries#dialog"
   end
 
-  scope "my" do
-    get "/timer" => "my/timer#show", as: "my_timers"
+  namespace "my" do
+    get "/timer" => "timer#show", as: "timers"
+
+    get "/time-tracking/day" => "time_tracking#day"
+    get "/time-tracking/week" => "time_tracking#week"
+    get "/time-tracking/month" => "time_tracking#month"
   end
 
   scope "projects/:project_id", as: "project", module: "projects" do

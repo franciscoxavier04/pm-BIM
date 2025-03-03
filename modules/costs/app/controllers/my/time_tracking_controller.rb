@@ -29,24 +29,41 @@
 #++
 
 module My
-  class TimerController < ApplicationController
+  class TimeTrackingController < ApplicationController
     before_action :require_login
-    before_action :find_active_timer, only: %i[show]
 
-    no_authorization_required! :show
+    no_authorization_required!(:day, :week, :month)
 
-    def show
-      render layout: nil
+    current_menu_item do |ctrl|
+      if ctrl.params[:action] == "day" && ctrl.current_day == Time.zone.today
+        :my_time_tracking_today
+      else
+        :my_time_tracking
+      end
     end
 
-    private
+    layout "global"
 
-    def find_active_timer
-      query = Queries::TimeEntries::TimeEntryQuery.new(user: current_user)
-      query.where "ongoing", "=", ["t"]
-      query.where "user_id", "=", [current_user.id]
+    def day; end
 
-      @timer = query.results.first
+    def week; end
+
+    def month; end
+
+    def default_breadcrumb
+      "my time"
+    end
+
+    def current_day
+      @current_day ||= if params[:date].present?
+                         begin
+                           Date.parse(params[:date])
+                         rescue StandardError
+                           Time.zone.today
+                         end
+                       else
+                         Time.zone.today
+                       end
     end
   end
 end
