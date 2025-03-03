@@ -181,8 +181,8 @@ export default class PreviewController extends DialogPreviewController {
     let dateFieldToChange:HTMLInputElement;
     if (this.highlightedField === this.dueDateField
         || (this.highlightedField === this.durationField
-            && this.currentStartDate !== null
-            && this.currentDueDate === null)) {
+        && (this.currentStartDate !== null || !this.isTouched('start_date'))
+        && this.currentDueDate === null)) {
       dateFieldToChange = this.dueDateField;
     } else {
       dateFieldToChange = this.startDateField;

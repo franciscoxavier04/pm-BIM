@@ -111,6 +111,39 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
     end
   end
 
+  context "when adding a duration and a date to a new work package (scenario 1b)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "takes the new date as finish date and calculates the start date" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+
+      datepicker.focus_duration
+      datepicker.set_duration "3"
+
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration "3"
+
+      datepicker.expect_duration_highlighted
+
+      datepicker.set_date "2025-02-14"
+
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration "3"
+
+      datepicker.expect_start_highlighted
+    end
+  end
+
   describe "when adding a start date to a new work package (scenario 2)" do
     let(:current_attributes) do
       {
