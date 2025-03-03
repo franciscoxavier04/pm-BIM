@@ -52,4 +52,7 @@ ActiveRecordDoctor.configure do
     "Day",
     "TemporaryDocument"
   ]
+  detector :missing_unique_indexes, ignore_models: [
+    "Migrations::Attachments::CurrentWikiContent"
+  ]
 end
