@@ -374,6 +374,32 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
     end
   end
 
+  context "when a finish date is given, then changed and a duration is added (scenario 9b)" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: "2025-02-14",
+        duration: nil
+      }
+    end
+
+    it "switches to range mode and calculates a start date" do
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date "2025-02-14"
+      datepicker.expect_duration ""
+
+      datepicker.set_due_date "2025-02-13"
+      datepicker.focus_duration
+      datepicker.set_duration 3
+
+      datepicker.expect_start_date "2025-02-11"
+      datepicker.expect_due_date "2025-02-13"
+      datepicker.expect_duration "3"
+
+      datepicker.expect_duration_highlighted
+    end
+  end
+
   context "when a start date is given and a finish date is added (scenario 10)" do
     let(:current_attributes) do
       {
@@ -446,6 +472,32 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
 
       datepicker.expect_start_date ""
       datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration "3"
+
+      datepicker.expect_duration_highlighted
+    end
+  end
+
+  context "when a start date is given, then changed and a duration is added (scenario 12b)" do
+    let(:current_attributes) do
+      {
+        start_date: "2025-02-12",
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    it "switches to range mode and calculates a finish date" do
+      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_due_date "", visible: false
+      datepicker.expect_duration ""
+
+      datepicker.set_start_date "2025-02-11"
+      datepicker.focus_duration
+      datepicker.set_duration 3
+
+      datepicker.expect_start_date "2025-02-11"
+      datepicker.expect_due_date "2025-02-13"
       datepicker.expect_duration "3"
 
       datepicker.expect_duration_highlighted

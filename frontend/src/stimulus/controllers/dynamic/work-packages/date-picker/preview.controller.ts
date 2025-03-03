@@ -499,10 +499,12 @@ export default class PreviewController extends DialogPreviewController {
   }
 
   private untouchFieldsWhenDurationIsEdited():void {
-    if (this.isValueSet('start_date')) {
-      this.markUntouched('due_date');
-    } else if (this.isValueSet('due_date')) {
-      this.markUntouched('start_date');
+    if (this.areBothTouched('start_date', 'due_date')) {
+      if (this.isValueSet('start_date')) {
+        this.markUntouched('due_date');
+      } else if (this.isValueSet('due_date')) {
+        this.markUntouched('start_date');
+      }
     }
   }
 }
