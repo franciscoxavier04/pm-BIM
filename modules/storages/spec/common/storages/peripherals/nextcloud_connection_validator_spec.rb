@@ -273,7 +273,15 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator, :webmock do
     describe "checks related to the token" do
       let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:UNIVERSALLY-DUPLICATED-IDENTIFIER") }
 
-      context "when the token doesn't have the necessary audiences"
+      context "when the token doesn't have the necessary audiences" do
+        it "returns a validation failure in case the server does not support token exchange" do
+          create(:oidc_user_token, user:)
+
+          expect(subject.type).to eq(:error)
+          expect(subject.error_code).to eq(:oidc_cant_acquire_token)
+          expect(subject.description).to eq(I18n.t("storages.health.connection_validation.oidc_cant_acquire_token"))
+        end
+      end
 
       describe "token refresh" do
         let(:expired_storage_token) do
@@ -289,10 +297,21 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator, :webmock do
           expect(refresh_request).to have_been_requested.once
         end
 
+        it "returns a validation failure when the refresh response is invalid" do
+          stub_request(:post, oidc_provider.token_endpoint)
+            .with(body: { grant_type: "refresh_token", refresh_token: expired_storage_token.refresh_token })
+            .and_return_json(status: 200, body: { error: "this is a broken endpoint" })
+
+          expect(subject.type).to eq(:error)
+          expect(subject.error_code).to eq(:oidc_cant_refresh_token)
+          expect(subject.description)
+            .to eq(I18n.t("storages.health.connection_validation.oidc_cant_refresh_token"))
+        end
+
         it "returns validation failure about an unusable token if refresh fails" do
           stub_request(:post, oidc_provider.token_endpoint)
             .with(body: { grant_type: "refresh_token", refresh_token: expired_storage_token.refresh_token })
-            .and_return(status: 400)
+            .and_return(status: 401)
 
           expect(subject.type).to eq(:error)
           expect(subject.error_code).to eq(:oidc_cant_refresh_token)
@@ -314,11 +333,11 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator, :webmock do
             expect(exchange_request).to have_been_requested.once
           end
 
-          it "returns a validation failure if the exchange fails with an unexpect body" do
+          it "returns a validation failure if the exchange fails with an unexpected body" do
             exchange_request = stub_request(:post, oidc_provider.token_endpoint)
                                .with(body: { audience: storage.audience, subject_token: exchangeable_token.access_token,
                                              grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE })
-                               .and_return_json(status: 200, body: { error: "failed" })
+                               .and_return_json(status: 200, body: { error: "failed " })
 
             expect(subject.type).to eq(:error)
             expect(subject.error_code).to eq(:oidc_cant_exchange_token)

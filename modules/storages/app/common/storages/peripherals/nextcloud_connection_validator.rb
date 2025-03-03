@@ -88,10 +88,12 @@ module Storages
         return None() if result.success?
 
         error_code = case result.failure
-                     when :failed_refresh
-                       :oidc_cant_refresh_token
-                     when :failed_token_exchange, :token_exchange_response_invalid
+                     in { code: /token_exchange/ | :unable_to_refresh_token }
                        :oidc_cant_exchange_token
+                     in { code: /token_refresh/ }
+                       :oidc_cant_refresh_token
+                     in { code: :no_token_for_audience }
+                       :oidc_cant_acquire_token
                      else
                        :unknown_error
                      end

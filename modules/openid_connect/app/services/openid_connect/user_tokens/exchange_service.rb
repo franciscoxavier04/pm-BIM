@@ -60,7 +60,7 @@ module OpenIDConnect
         json = yield exchange_token_request(idp_token, audience)
 
         access_token, expires_in = json.values_at("access_token", "expires_in")
-        Failure(@error.with(code: :token_exchange_response_invalid, payload: json)) if access_token.blank?
+        return Failure(@error.with(code: :token_exchange_response_invalid, payload: json)) if access_token.blank?
 
         # We are explicitly opting to not store the refresh token for exchanged tokens
         # For one there is no need to store one, we can simply exchange a new token once the old expired.
@@ -82,7 +82,9 @@ module OpenIDConnect
       end
 
       def exchange_token_request(idp_token, audience)
-        TokenRequest.new(provider:).exchange(idp_token, audience)
+        TokenRequest.new(provider:).exchange(idp_token, audience).alt_map do
+          it.with(code: :"token_exchange_#{it.code}", source: self.class)
+        end
       end
 
       def store_exchanged_token(audience:, access_token:, refresh_token:, expires_in:)
