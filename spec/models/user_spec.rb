@@ -50,6 +50,8 @@ RSpec.describe User do
   describe "Associations" do
     it { is_expected.to have_many(:emoji_reactions).dependent(:destroy) }
     it { is_expected.to have_many(:reminders).with_foreign_key(:creator_id).dependent(:destroy).inverse_of(:creator) }
+    it { is_expected.to have_many(:oauth_grants).with_foreign_key(:resource_owner_id).dependent(:delete_all) }
+    it { is_expected.to have_many(:oauth_applications).dependent(:destroy) }
   end
 
   describe "with long but allowed attributes" do
