@@ -30,6 +30,7 @@ pl:
         overridden_costs: "Koszty zastąpione"
         spent: "Wydatki"
         spent_on: "Data"
+        logged_by: "Logged by"
       cost_type:
         unit: "Nazwa jednostki"
         unit_plural: "Liczba mnoga jednostki"
@@ -61,6 +62,11 @@ pl:
         few: "Rodzaje kosztów"
         many: "Rodzaje kosztów"
         other: "Rodzaje kosztów"
+      time_entry_activity:
+        one: "Time tracking activity"
+        few: "Time tracking activities"
+        many: "Time tracking activities"
+        other: "Time tracking activities"
       rate: "Stawka"
     errors:
       models:
@@ -82,6 +88,7 @@ pl:
   button_add_rate: "Dodaj stawkę"
   button_log_costs: "Rejestruj koszty jednostkowe"
   button_log_time: "Dziennik"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Zarezerwowano na projekt"
   caption_default: "Domyślny"
   caption_default_rate_history_for: "Domyślna stawka historii dla %{user}"
@@ -95,6 +102,8 @@ pl:
   caption_show_locked: "Pokaż zamknięte typy kosztów"
   caption_log_time_dialog: "Czas wykonania wpisu"
   description_date_for_new_rate: "Data nowej stawki"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
   group_by_others: "nie w każdej grupie"
   label_between: "pomiędzy"
   label_cost_filter_add: "Dodaj filtr kosztów"
@@ -121,6 +130,8 @@ pl:
   label_kind: "Typ"
   label_less_or_equal: "≤"
   label_log_costs: "Rejestruj koszty jednostkowe"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Nie"
   label_option_plural: "Opcje"
   label_overall_costs: "Koszt całkowity"
@@ -133,6 +144,10 @@ pl:
   label_until: "do"
   label_valid_from: "Ważny od"
   label_yes: "Tak"
+  label_time: "Czas"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: W pierwszej kolejności wymagany jest wybór pakietu roboczego
   notice_something_wrong: "Coś poszło nie tak. Proszę spróbuj ponownie."
   notice_successful_restore: "Przywracanie się powiodło."

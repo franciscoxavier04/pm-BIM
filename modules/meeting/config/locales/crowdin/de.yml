@@ -57,6 +57,7 @@ de:
         start_time: "Startdatum"
         start_time_hour: "Uhrzeit"
         end_after: "Ende der Terminserie"
+        end_date: "End date"
         iterations: "Ereignisse"
     errors:
       messages:
@@ -64,6 +65,7 @@ de:
     models:
       recurring_meeting: "Wiederkehrende Besprechung"
       structured_meeting: "Einmalige Besprechung"
+      meeting: "Meeting"
       meeting_agenda_item: "Tagesordnungspunkt"
       meeting_agenda: "Agenda"
       meeting_minutes: "Protokoll"
@@ -259,10 +261,14 @@ de:
       banner_html: >
         Sie bearbeiten gerade eine Vorlage einer Terminserie: %{link}. Jede neue Besprechung der Serie kopiert diese Vorlage. Änderungen wirken sich nicht auf frühere oder bereits erstellte Besprechungen aus.
     frequency:
+      x_daily:
+        one: "Jeden Tag"
+        other: "alle %{count} Tage"
+      x_weekly:
+        one: "Jede Woche"
+        other: "alle %{count} Wochen"
       every_weekday: "Jeden %{day_of_the_week}"
-      daily: "Täglich"
       working_days: "An Arbeitstagen"
-      weekly: "Wöchentlich"
     end_after:
       never: "nie"
       specific_date: "nach einem bestimmten Datum"

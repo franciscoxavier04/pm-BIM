@@ -106,7 +106,12 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def human_frequency
-    I18n.t("recurring_meeting.frequency.#{frequency}")
+    case frequency
+    when "working_days"
+      I18n.t("recurring_meeting.frequency.working_days")
+    else
+      I18n.t("recurring_meeting.frequency.x_#{frequency}", count: interval)
+    end
   end
 
   def human_day_of_week

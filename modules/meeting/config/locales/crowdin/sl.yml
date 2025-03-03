@@ -59,6 +59,7 @@ sl:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Meeting series ends"
+        end_date: "End date"
         iterations: "Occurrences"
     errors:
       messages:
@@ -66,6 +67,7 @@ sl:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Dnevni red"
       meeting_minutes: "Zapisnik"
@@ -263,10 +265,18 @@ sl:
       banner_html: >
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
+      x_daily:
+        one: "Every day"
+        two: "Every %{count} days"
+        few: "Every %{count} days"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        two: "Every %{count} weeks"
+        few: "Every %{count} weeks"
+        other: "Every %{count} weeks"
       every_weekday: "Every %{day_of_the_week}"
-      daily: "Daily"
       working_days: "Every working day"
-      weekly: "Weekly"
     end_after:
       never: "never"
       specific_date: "after a specific date"

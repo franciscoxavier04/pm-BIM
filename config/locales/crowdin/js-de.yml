@@ -103,7 +103,6 @@ de:
     button_settings: "Einstellungen"
     button_uncheck_all: "Alle abwählen"
     button_update: "Aktualisieren"
-    button_export-pdf: "PDF-Download"
     button_export-atom: "Atom-Download"
     button_generate_pdf: "PDF generieren"
     button_create: "Anlegen"
@@ -221,6 +220,8 @@ de:
             label_maximum_users: "Maximale aktive Nutzer"
             label_starts_at: "Beginnt am"
             label_expires_at: "Endet am"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Ich möchte den OpenProject <a target="_blank" href="%{link}">Newsletter</a> erhalten.
             taken_domain: Es kann nur eine aktive Testversion pro Domain geben.
             domain_mismatch: Der Hostname der aktuellen Anfrage stimmt nicht mit dem konfigurierten Hostnamen überein. Bitte überprüfen Sie Ihre Systemeinstellungen.
@@ -851,8 +852,6 @@ de:
       select_branch: "Branch auswählen"
     field_value_enter_prompt: "Einen Wert für '%{field}' eingeben"
     project_menu_details: "Details"
-    scheduling:
-      manual: "Manuelle Planung"
     sort:
       sorted_asc: "Aufsteigende Sortierung angewendet, "
       sorted_dsc: "Absteigende Sortierung angewendet, "
@@ -900,15 +899,6 @@ de:
       comment_send_failed: "Ein Fehler ist aufgetreten. Der Kommentar konnte nicht gespeichert werden."
       comment_updated: "Der Kommentar wurde erfolgreich aktualisiert."
       confirm_edit_cancel: "Die Bearbeitung dieses Arbeitspakets wirklich abbrechen?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatisch geplant. Termine werden aus Beziehungen abgeleitet."
-        manually_scheduled: "Manuelle Terminplanung aktiviert, alle Beziehungen wurden ignoriert."
-        start_date_limited_by_relations: "Die verfügbaren Start- und Endtermine sind durch Beziehungen begrenzt."
-        changing_dates_affects_follow_relations: "Das Ändern dieser Daten wirkt sich auf die Termine verwandter Arbeitspakete aus."
-        click_on_show_relations_to_open_gantt: 'Klicken Sie auf "%{button_name}" für eine GANTT-Übersicht.'
-        show_relations: "Beziehungen anzeigen"
-        ignore_non_working_days:
-          title: "Nur Werktage"
       description_filter: "Filter"
       description_enter_text: "Text eingeben"
       description_options_hide: "Optionen ausblenden"

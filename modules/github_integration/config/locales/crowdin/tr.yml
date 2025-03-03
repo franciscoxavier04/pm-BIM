@@ -20,6 +20,20 @@
 #See COPYRIGHT and LICENSE files for more details.
 #++
 tr:
+  attributes:
+    additions_count: "Ekleme sayısı"
+    deletions_count: "Silinme sayısı"
+    comments_count: "Yorum sayısı"
+    github_html_url: "Çekme İsteği Adresi"
+    github_app_owner_avatar_url: "Sahip avatar adresi"
+    review_comments_count: "İnceleme yorumlarının sayısı"
+    github: "GitHub tanımlayıcı"
+    github_avatar_url: "Avatar adresi"
+    github_updated_at: "Güncellenme tarihi"
+    github_login: "GitHub girişi"
+    labels: "Etiketler"
+    repository: "Depo"
+    changed_files_count: "Değişen dosyalar"
   button_add_deploy_target: Dağıtım hedefi ekle
   label_deploy_target: Hedefi dağıt
   label_deploy_target_new: Yeni dağıtım hedefi

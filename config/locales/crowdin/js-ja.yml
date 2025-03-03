@@ -104,7 +104,6 @@ ja:
     button_settings: "設定"
     button_uncheck_all: "全てを選択解除"
     button_update: "更新"
-    button_export-pdf: "PDFファイルをダウンロード"
     button_export-atom: "Atomをダウンロード"
     button_generate_pdf: "Generate PDF"
     button_create: "作成"
@@ -223,6 +222,8 @@ ja:
             label_maximum_users: "アクティブなユーザーの最大数"
             label_starts_at: "開始"
             label_expires_at: "有効期限"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: OpenProject <a target="_blank" href="%{link}">ニュースレター</a> を受け取りたい。
             taken_domain: 有効なトライアルはドメインごとに1つしかありません。
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -852,8 +853,6 @@ ja:
       select_branch: "分岐を選択する"
     field_value_enter_prompt: "'%{field}'の値を入力"
     project_menu_details: "詳細"
-    scheduling:
-      manual: "手動スケジュール"
     sort:
       sorted_asc: "昇順の並べ替えを適用しました。 "
       sorted_dsc: "降順の並べ替えを適用しました。 "
