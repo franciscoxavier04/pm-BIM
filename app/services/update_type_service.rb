@@ -43,9 +43,11 @@ class UpdateTypeService < BaseTypeService
   def set_params_and_validate(params)
     # Set patterns includes a data validation before assigning the value to the attribute.
     # A validation failure should return a service call failure.
-    if params[:patterns].present?
-      validate_enterprise_action(params[:patterns])
-      set_patterns(params[:patterns])
+    patterns = params[:patterns]
+    if patterns.present?
+      validate_enterprise_action(patterns)
+      validate_pattern_content(patterns)
+      set_patterns(patterns)
       return [false, type.errors] if type.errors.any?
     end
 
@@ -60,6 +62,25 @@ class UpdateTypeService < BaseTypeService
       type.errors.add(:patterns, :error_enterprise_only, action: action.to_s.titleize)
     end
   end
+
+  def validate_pattern_content(patterns) # rubocop:disable Metrics/AbcSize
+    blueprint = patterns.dig(:subject, :blueprint)
+    return if blueprint.nil?
+
+    valid_tokens = flat_valid_token_list
+    invalid_tokens = blueprint.scan(Types::PatternResolver::TOKEN_REGEX)
+                              .reduce([]) do |acc, match|
+      token = Types::Patterns::Token.build(match).key
+      valid_tokens.include?(token) ? acc : acc << token
+    end
+
+    if invalid_tokens.any?
+      message = I18n.t("types.edit.subject_configuration.errors.invalid_tokens", tokens: invalid_tokens.join(", "))
+      type.errors.add(:patterns, message)
+    end
+  end
+
+  def flat_valid_token_list = Types::Patterns::TokenPropertyMapper.new.tokens_for_type(type).values.map(&:keys).flatten
 
   def set_patterns(patterns)
     Types::Patterns::Collection
