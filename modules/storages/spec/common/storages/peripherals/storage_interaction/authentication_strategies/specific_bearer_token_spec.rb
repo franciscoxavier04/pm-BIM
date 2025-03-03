@@ -1,4 +1,4 @@
-# frozen_string_literal:true
+# frozen_string_literal: true
 
 #-- copyright
 # OpenProject is an open source project management software.
@@ -28,26 +28,22 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Storages
-  module Peripherals
-    module StorageInteraction
-      module AuthenticationStrategies
-        module OneDriveStrategies
-          SpecificBearerToken = -> do
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SpecificBearerToken.strategy
-          end
+require "spec_helper"
+require_module_spec_helper
 
-          UserLess = -> do
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthClientCredentials.strategy
-          end
+RSpec.describe Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SpecificBearerToken do
+  let(:storage) { create(:nextcloud_storage) }
+  let(:access_token) { "my_access_token" }
 
-          UserBound = ->(user:, storage:) do # rubocop:disable Lint/UnusedBlockArgument
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-              .strategy
-              .with_user(user)
-          end
-        end
-      end
+  it "must yield with passed access token without" do
+    strategy = described_class.strategy.with_token(access_token)
+    was_yielded = false
+
+    Storages::Peripherals::StorageInteraction::Authentication[strategy].call(storage:) do |http|
+      was_yielded = true
+      expect(http.instance_variable_get(:@options).headers["authorization"]).to eq("Bearer #{access_token}")
     end
+
+    expect(was_yielded).to be_truthy
   end
 end

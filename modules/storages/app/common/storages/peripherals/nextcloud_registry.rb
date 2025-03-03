@@ -88,6 +88,7 @@ module Storages
       namespace("authentication") do
         register(:userless, StorageInteraction::AuthenticationStrategies::NextcloudStrategies::UserLess, call: false)
         register(:user_bound, StorageInteraction::AuthenticationStrategies::NextcloudStrategies::UserBound)
+        register(:specific_bearer_token, StorageInteraction::AuthenticationStrategies::NextcloudStrategies::SpecificBearerToken)
       end
     end
   end

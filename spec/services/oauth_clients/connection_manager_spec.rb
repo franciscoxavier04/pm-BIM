@@ -124,7 +124,7 @@ RSpec.describe OAuthClients::ConnectionManager, :webmock, type: :model do
 
       it "fills in the origin_user_id" do
         expect { subject }.to change(OAuthClientToken, :count).by(1).and(change(RemoteIdentity, :count).by(1))
-        last_token = RemoteIdentity.find_by!(user:, oauth_client:)
+        last_token = RemoteIdentity.find_by!(user:, auth_source: oauth_client)
 
         expect(last_token.origin_user_id).to eq("admin")
       end

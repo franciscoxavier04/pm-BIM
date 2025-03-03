@@ -32,20 +32,22 @@ module Storages
   module Peripherals
     module StorageInteraction
       module AuthenticationStrategies
-        module OneDriveStrategies
-          SpecificBearerToken = -> do
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SpecificBearerToken.strategy
+        class SpecificBearerToken
+          def self.strategy
+            Strategy.new(:bearer_token)
           end
 
-          UserLess = -> do
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthClientCredentials.strategy
+          attr_reader :bearer_token
+
+          def initialize(bearer_token)
+            @bearer_token = bearer_token
           end
 
-          UserBound = ->(user:, storage:) do # rubocop:disable Lint/UnusedBlockArgument
-            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-              .strategy
-              .with_user(user)
+          # rubocop:disable Lint/UnusedMethodArgument
+          def call(storage:, http_options: {})
+            yield OpenProject.httpx.bearer_auth(bearer_token).with(http_options)
           end
+          # rubocop:enable Lint/UnusedMethodArgument
         end
       end
     end

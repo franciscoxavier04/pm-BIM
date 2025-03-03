@@ -33,6 +33,10 @@ module Storages
     module StorageInteraction
       module AuthenticationStrategies
         module NextcloudStrategies
+          SpecificBearerToken = -> do
+            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SpecificBearerToken.strategy
+          end
+
           UserLess = -> do
             ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::BasicAuth.strategy
           end

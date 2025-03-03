@@ -115,7 +115,7 @@ module OAuthClients
           oauth_client_token.save!
 
           RemoteIdentities::CreateService
-            .call(user: @user, oauth_config: @config, oauth_client_token:)
+            .call(user: @user, integration: @oauth_client.integration, token: oauth_client_token)
             .on_failure { raise ActiveRecord::Rollback }
         end
 
