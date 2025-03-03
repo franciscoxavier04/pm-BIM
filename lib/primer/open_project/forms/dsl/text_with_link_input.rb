@@ -7,9 +7,7 @@ module Primer
         class TextWithLinkInput < Primer::Forms::Dsl::Input
           attr_reader :name, :label
 
-          def initialize(name:, label:, text_input_object: {}, link_object: {}, **system_arguments)
-            @name = name
-            @label = label
+          def initialize(text_input_object: {}, link_object: {}, **system_arguments)
             @text_input_object = text_input_object
             @link_object = link_object
 
