@@ -43,6 +43,16 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
   shared_let(:week_days) { week_with_saturday_and_sunday_as_weekend }
 
   let(:work_packages_page) { Pages::FullWorkPackage.new(work_package, project) }
+  let(:wp_table) { Pages::WorkPackagesTable.new(project) }
+
+  let!(:query) do
+    query              = build(:query, user:, project:)
+    query.column_names = ["subject", "start_date", "due_date", "duration"]
+    query.filters.clear
+
+    query.save!
+    query
+  end
 
   let(:date_attribute) { :combinedDate }
   let(:date_field) { work_packages_page.edit_field(date_attribute) }
@@ -783,6 +793,55 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
 
         datepicker.expect_duration_highlighted
       end
+    end
+  end
+
+  context "when being on the WP table" do
+    let(:current_attributes) do
+      {
+        start_date: nil,
+        due_date: nil,
+        duration: nil
+      }
+    end
+
+    before do
+      wp_table.visit_query query
+    end
+
+    it "can open the datepicker" do
+      start_field = wp_table.edit_field(work_package, :start_date)
+      start_field.activate!
+      start_field.expect_active!
+
+      datepicker.expect_visible
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+      datepicker.expect_due_highlighted
+      datepicker.cancel!
+
+      due_field = wp_table.edit_field(work_package, :due_field)
+      due_field.activate!
+      due_field.expect_active!
+
+      datepicker.expect_visible
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+      datepicker.expect_due_highlighted
+      datepicker.cancel!
+
+      duration = wp_table.edit_field(work_package, :duration)
+      duration.activate!
+      duration.expect_active!
+
+      datepicker.expect_visible
+      datepicker.expect_start_date "", visible: false
+      datepicker.expect_due_date ""
+      datepicker.expect_duration ""
+      datepicker.expect_duration_highlighted
+      datepicker.cancel!
     end
   end
 end

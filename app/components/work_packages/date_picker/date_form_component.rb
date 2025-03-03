@@ -129,7 +129,7 @@ module WorkPackages
 
         # When the combined date is triggered, we have to actually check for the values.
         # This happens only on initialization
-        if focused_field == "combinedDate"
+        if focused_field == :combined_date
           return :due_date if field_value(:start_date).nil?
           return :start_date if field_value(:due_date).nil?
         end
