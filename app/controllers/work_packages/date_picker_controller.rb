@@ -200,7 +200,8 @@ class WorkPackages::DatePickerController < ApplicationController
   end
 
   def date_mode
-    return params[:date_mode] if params[:date_mode].present?
+    # Once in range mode, always in range mode
+    return params[:date_mode] if params[:date_mode].present? && params[:date_mode] == "range"
 
     if work_package.start_date.nil? || work_package.due_date.nil?
       "single"
