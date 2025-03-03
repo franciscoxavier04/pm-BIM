@@ -88,7 +88,7 @@ module Storages
         return None() if result.success?
 
         error_code = case result.failure
-                     in { code: /token_exchange/ | :unable_to_refresh_token }
+                     in { code: /token_exchange/ | :unable_to_exchange_token }
                        :oidc_cant_exchange_token
                      in { code: /token_refresh/ }
                        :oidc_cant_refresh_token

@@ -75,11 +75,7 @@ module OpenIDConnect
       private
 
       def emit_event(token, audience)
-        OpenProject::Notifications.send(
-          TOKEN_OBTAINED_EVENT,
-          audience:,
-          token:
-        )
+        OpenProject::Notifications.send(TOKEN_OBTAINED_EVENT, audience:, token:)
       end
 
       def token_with_audience(aud)

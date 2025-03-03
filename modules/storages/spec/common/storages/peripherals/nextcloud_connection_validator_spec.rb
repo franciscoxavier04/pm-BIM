@@ -245,7 +245,14 @@ RSpec.describe Storages::Peripherals::NextcloudConnectionValidator, :webmock do
     let(:user) { create(:user, identity_url: "#{oidc_provider.slug}:UNIVERSALLY-DUPLICATED-IDENTIFIER") }
     let!(:oidc_provider) { create(:oidc_provider) }
 
-    before { User.current = user }
+    before do
+      User.current = user
+
+      xml_response = Rails.root.join("modules/storages/spec/support/payloads/nextcloud_user_query_success.xml")
+
+      stub_request(:get, "#{storage.uri}ocs/v1.php/cloud/user")
+        .and_return(status: 200, body: File.read(xml_response), headers: { content_type: "text/xml" })
+    end
 
     it "returns a success" do
       create(:oidc_user_token, user:, extra_audiences: storage.audience)

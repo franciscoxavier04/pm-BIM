@@ -48,19 +48,18 @@ module OpenIDConnect
 
       def initialize(user:)
         @user = user
-        @error = TokenOperationError.new(source: self.class)
       end
 
       def call(audience)
         unless supported?
-          return Failure(@error.with(code: :token_exchange_not_supported, payload: provider&.grant_types_supported))
+          return failure_with(code: :token_exchange_not_supported, payload: provider&.grant_types_supported)
         end
 
-        idp_token = yield fetch_openproject_token
+        idp_token = yield fetch_idp_token
         json = yield exchange_token_request(idp_token, audience)
 
         access_token, expires_in = json.values_at("access_token", "expires_in")
-        return Failure(@error.with(code: :token_exchange_response_invalid, payload: json)) if access_token.blank?
+        return failure_with(code: :token_exchange_response_invalid, payload: json) if access_token.blank?
 
         # We are explicitly opting to not store the refresh token for exchanged tokens
         # For one there is no need to store one, we can simply exchange a new token once the old expired.
@@ -77,8 +76,12 @@ module OpenIDConnect
 
       private
 
-      def fetch_openproject_token
-        FetchService.new(user: @user, token_exchange: Disabled).access_token_for(audience: UserToken::IDP_AUDIENCE)
+      def failure_with(**) = Failure(error.with(**))
+
+      def error = TokenOperationError.new(source: self.class)
+
+      def fetch_idp_token
+        FetchService.new(user:, token_exchange: Disabled).access_token_for(audience: UserToken::IDP_AUDIENCE)
       end
 
       def exchange_token_request(idp_token, audience)
