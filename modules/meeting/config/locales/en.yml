@@ -75,7 +75,7 @@ en:
         recurring_meeting:
           must_cover_existing_meetings:
             one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
-            other: "There are %{count} open meetings in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
             format: "%{message}"
 
       messages:
