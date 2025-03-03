@@ -994,6 +994,53 @@ RSpec.describe "Datepicker modal logic test cases (WP #43539)", :js, with_settin
     end
   end
 
+  context "when setting 'Duration' and 'Working days only' of an automatically scheduled work package" do
+    let(:work_package) do
+      bug_wp.tap do |wp|
+        # add a predecessor so that automatic scheduling mode can be selected and date picker is visible.
+        predecessor = milestone_wp
+        milestone_wp.update!(
+          start_date: "2022-06-17",
+          due_date: "2022-06-19",
+          duration: 4,
+          ignore_non_working_days: true
+        )
+        create(:follows_relation, to: predecessor, from: wp)
+      end
+    end
+    let(:current_attributes) do
+      {
+        start_date: "2022-06-20",
+        due_date: "2022-06-21",
+        duration: 2,
+        schedule_manually: false
+      }
+    end
+
+    it "updates the finish date, instead of disappearing (Regression #61894)" do
+      datepicker.expect_automatic_scheduling_mode
+      datepicker.expect_due_date "2022-06-21", disabled: true
+      datepicker.expect_duration 2
+      datepicker.expect_working_days_only true
+
+      datepicker.set_duration 6
+
+      # start date is 20 and Saturday and Sunday are non-working days, so finish date is 27
+      datepicker.expect_due_date "2022-06-27", disabled: true
+
+      datepicker.uncheck_working_days_only
+
+      # start date is 20, non-working days are ignored so finish date is 25
+      datepicker.expect_due_date "2022-06-25", disabled: true
+
+      apply_and_expect_saved start_date: Date.parse("2022-06-20"),
+                             due_date: Date.parse("2022-06-25"),
+                             duration: 6,
+                             ignore_non_working_days: true,
+                             schedule_manually: false
+    end
+  end
+
   context "when setting start and due date through today links" do
     let(:current_attributes) do
       {
