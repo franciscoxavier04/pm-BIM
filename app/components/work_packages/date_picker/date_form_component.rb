@@ -75,7 +75,6 @@ module WorkPackages
           value: field_value(name),
           disabled: disabled?(name),
           label:,
-          caption: caption(name),
           show_clear_button: !disabled?(name) && !duration_field?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name),
@@ -91,7 +90,7 @@ module WorkPackages
         text_field_options
       end
 
-      def caption(name)
+      def today(name:)
         return if duration_field?(name)
 
         text = I18n.t(:label_today).capitalize
