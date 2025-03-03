@@ -35,14 +35,20 @@ module My
     no_authorization_required!(:day, :week, :month)
 
     current_menu_item do |ctrl|
-      if ctrl.params[:action] == "day" && ctrl.current_day == Time.zone.today
+      if ctrl.params[:action] == "day" && ctrl.today?
         :my_time_tracking_today
+      elsif ctrl.params[:action] == "week" && ctrl.this_week?
+        :my_time_tracking_this_week
+      elsif ctrl.params[:action] == "month" && ctrl.this_month?
+        :my_time_tracking_this_month
       else
         :my_time_tracking
       end
     end
 
     layout "global"
+
+    helper_method :current_day, :today?, :this_week?, :this_month?
 
     def day; end
 
@@ -54,16 +60,40 @@ module My
       "my time"
     end
 
+    def today?
+      current_day == Time.zone.today
+    end
+
+    def this_week?
+      current_day == Time.zone.today.beginning_of_week
+    end
+
+    def this_month?
+      current_day == Time.zone.today.beginning_of_month
+    end
+
+    private
+
     def current_day
-      @current_day ||= if params[:date].present?
-                         begin
-                           Date.parse(params[:date])
-                         rescue StandardError
-                           Time.zone.today
-                         end
-                       else
-                         Time.zone.today
-                       end
+      return @current_day if defined?(@current_day)
+
+      parsed_date = if params[:date].present?
+                      begin
+                        Date.iso8601(params[:date])
+                      rescue StandardError
+                        nil
+                      end
+                    end
+
+      @current_day = parsed_date || current_date
+    end
+
+    def current_date
+      case params[:action].to_sym
+      when :day then Time.zone.today
+      when :week then Time.zone.today.beginning_of_week
+      when :month then Time.zone.today.beginning_of_month
+      end
     end
   end
 end

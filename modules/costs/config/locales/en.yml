@@ -164,6 +164,7 @@ en:
   label_cost: "Cost"
   label_costs: "Costs"
   label_mandatory_fields: "Mandatory fields"
+  label_my_time_tracking: "My time tracking"
 
   placeholder_activity_select_work_package_first: Work package selection is required first
 
