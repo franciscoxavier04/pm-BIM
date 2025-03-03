@@ -1,6 +1,11 @@
 <%= render(Primer::BaseComponent.new(tag: :div)) do %>
   <% if @series && !@meeting.template? %>
+    <%= render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting, size: :small)) %>
     <%= t("recurring_meeting.occurrence.infoline", title: @series.title) %>
+  <% elsif !@meeting.template? %>
+    <%= render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting, size: :small)) %>
+    <%= t(:label_meeting_created_by) %>
+    <%= helpers.primer_link_to_user(@meeting.author) %>.
   <% else %>
     <%= t(:label_meeting_created_by) %>
     <%= helpers.primer_link_to_user(@meeting.author) %>.

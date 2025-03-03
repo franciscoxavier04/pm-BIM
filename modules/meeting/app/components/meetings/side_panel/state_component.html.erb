@@ -7,7 +7,7 @@
       when "open"
         flex_layout(classes: "op-meeting-sidebar-state") do |open_state|
           open_state.with_row do
-            render(status_button)
+            status_button
           end
 
           open_state.with_row(mt: 3, classes: "hidden-for-mobile") do
@@ -31,7 +31,7 @@
       when "closed"
         flex_layout(classes: "op-meeting-sidebar-state") do |closed_state|
           closed_state.with_row do
-            render(status_button)
+            status_button
           end
 
           closed_state.with_row(mt: 3, classes: "hidden-for-mobile") do
@@ -54,7 +54,7 @@
       when "in_progress"
         flex_layout(classes: "op-meeting-sidebar-state") do |in_progress_state|
           in_progress_state.with_row do
-            render(status_button)
+            status_button
           end
 
           in_progress_state.with_row(mt: 3, classes: "hidden-for-mobile") do

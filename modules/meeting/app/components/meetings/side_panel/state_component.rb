@@ -48,53 +48,7 @@ module Meetings
     end
 
     def status_button
-      current_status = case @meeting.state
-                       when "open"
-                         open_status
-                       when "in_progress"
-                         in_progress_status
-                       when "closed"
-                         closed_status
-                       end
-
-      OpPrimer::StatusButtonComponent.new(current_status: current_status,
-                                          items: [open_status, in_progress_status, closed_status],
-                                          readonly: !edit_enabled?,
-                                          disabled: !edit_enabled?,
-                                          button_arguments: { title: "Status", size: :medium })
-    end
-
-    def open_status
-      OpPrimer::StatusButtonOption.new(name: t("label_meeting_state_open"),
-                                       color: Color.new(hexcode: "#1F883D"),
-                                       icon: :"issue-opened",
-                                       tag: :a,
-                                       href: change_state_project_meeting_path(@project, @meeting, state: "open"),
-                                       content_arguments: {
-                                         data: { "turbo-stream": true, "turbo-method": "put" }
-                                       })
-    end
-
-    def in_progress_status
-      OpPrimer::StatusButtonOption.new(name: t("label_meeting_state_in_progress"),
-                                       color: Color.new(hexcode: "#9A6700"),
-                                       icon: :play,
-                                       tag: :a,
-                                       href: change_state_project_meeting_path(@project, @meeting, state: "in_progress"),
-                                       content_arguments: {
-                                         data: { "turbo-stream": true, "turbo-method": "put" }
-                                       })
-    end
-
-    def closed_status
-      OpPrimer::StatusButtonOption.new(name: t("label_meeting_state_closed"),
-                                       color: Color.new(hexcode: "#8250DF"),
-                                       icon: :"codescan-checkmark",
-                                       tag: :a,
-                                       href: change_state_project_meeting_path(@project, @meeting, state: "closed"),
-                                       content_arguments: {
-                                         data: { "turbo-stream": true, "turbo-method": "put" }
-                                       })
+      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
     end
   end
 end

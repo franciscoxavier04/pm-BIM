@@ -44,10 +44,10 @@ module Meetings
 
     def call
       render(OpPrimer::StatusButtonComponent.new(current_status: current_status,
-                                          items: [open_status, in_progress_status, closed_status],
-                                          readonly: !edit_enabled?,
-                                          disabled: !edit_enabled?,
-                                          button_arguments: { title: t("label_meeting_state"), size: @size}))
+                                                 items: [open_status, in_progress_status, closed_status],
+                                                 readonly: !edit_enabled?,
+                                                 disabled: !edit_enabled?,
+                                                 button_arguments: { title: t("label_meeting_state"), size: @size }))
     end
 
     private
