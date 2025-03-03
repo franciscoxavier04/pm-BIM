@@ -10,24 +10,24 @@ keywords: quote, request, offer, tender, bid
 
 If you would like to request a quote for OpenProject Enterprise cloud you can do so in your trial instance. Alternatively, you can refer to our website for the Enterprise cloud edition [pricing](https://www.openproject.org/pricing/).
 
-To create a quote please, **click on the BUY NOW teaser**, e.g. in the application header or or in the project menu.
+To create a quote please, click the **Buy now** button in the application header or or in the project menu.
 
-![Enterprise cloud edition](Cloud-edition-buy-now-teaser.png)
+![Buy now button in the application header and in the project menu in an OpenProject Enterprise cloud test instance](openproject_enterprise_guide_buy_now_button.png)
 
-You will be directed to -> *Administration* -> *Billing*.
+You will be directed to -> *Administration* -> *Subscription*.
 
-(1) First, choose if you want to subscribe to an **annual or monthly plan**.
+First, choose between the professional and basic **support plan**. 
 
-(2) Select the **amount of users** from the drop-down list. The number of users can only be selected in steps of five, the minimum is five users.
+Next, select the **amount of users** from the drop-down list. The number of users can only be selected in steps of five, the minimum is five users.
 
-(3) Select your **country** from the drop-down list.
+Specify your **subscription period** and select your **country** from the drop-down list.
 
-(4) The **total amount** (excluding VAT) will be displayed.
+The **total amount** (excluding VAT) will be displayed based on the information you enter.
 
-(5) Click on **Request a quote**.
+Finally click on **Request a quote** button. 
 
-![request-a-quote-cloud](request-a-quote-cloud.png)
+![Request a quote for a trial cloud instance in OpenProject administration](openproject_enterprise_guide_request_a_quote.png)
 
-You will then be asked to provide your address details. After populating the respective fields please click on **Request a quote**.
+You will then be asked to provide your address details. After populating the respective fields please click the **Request a quote** button.
 
 After that you will receive an **email with the quote**. The email includes a link to accept the quote. Your subscription will be updated once you accept the quote.
