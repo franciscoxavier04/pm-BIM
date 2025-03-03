@@ -73,6 +73,12 @@
               menu.with_divider
               move_actions(menu)
             end
+            
+            if move_to_next_meeting_enabled?
+              menu.with_divider
+              move_to_next_meeting_action_item(menu)
+            end
+            
             menu.with_divider
             copy_action_item(menu)
             menu.with_divider

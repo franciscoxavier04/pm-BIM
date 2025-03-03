@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -146,7 +147,23 @@ module Pages::StructuredMeeting
       expect(page).not_to have_test_selector("op-meeting-agenda-title", text: title)
     end
 
+    def expect_agenda_action_menu(item)
+      expect(page)
+        .to have_css("#meeting-agenda-items-item-component-#{item.id} #{test_selector('op-meeting-agenda-actions')}")
+    end
+
+    def expect_no_agenda_action_menu(item)
+      expect(page)
+        .to have_no_css("#meeting-agenda-items-item-component-#{item.id} #{test_selector('op-meeting-agenda-actions')}")
+    end
+
     def select_action(item, action)
+      open_menu(item) do
+        click_on action
+      end
+    end
+
+    def open_menu(item, &)
       retry_block do
         page.within("#meeting-agenda-items-item-component-#{item.id}") do
           page.find_test_selector("op-meeting-agenda-actions").click
@@ -154,9 +171,7 @@ module Pages::StructuredMeeting
         page.find(".Overlay")
       end
 
-      page.within(".Overlay") do
-        click_on action
-      end
+      page.within(".Overlay", &)
     end
 
     def select_outcome_action(action)
