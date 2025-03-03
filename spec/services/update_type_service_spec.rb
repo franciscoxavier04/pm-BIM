@@ -101,22 +101,6 @@ RSpec.describe UpdateTypeService do
       end
     end
 
-    context "if pattern contains invalid tokens", with_ee: %i[work_package_subject_generation] do
-      let(:params) { { patterns: { subject: { blueprint: "Vacation - {{vaders_toy}}", enabled: true } } } }
-      let(:valid_token_hash) { { work_package: { assignee: "Assignee" } } }
-
-      before do
-        token_mapper_double = instance_double(Types::Patterns::TokenPropertyMapper)
-        allow(token_mapper_double).to receive(:tokens_for_type).and_return(valid_token_hash)
-        allow(Types::Patterns::TokenPropertyMapper).to receive(:new).and_return(token_mapper_double)
-      end
-
-      it "is invalid" do
-        expect(service_call).to be_failure
-        expect(service_call.errors[:patterns].first).to include "contains invalid tokens"
-      end
-    end
-
     context "if pattern build returns validation error", with_ee: %i[work_package_subject_generation] do
       let(:params) { { patterns: { subject: { blueprint: "", enabled: true } } } }
 

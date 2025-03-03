@@ -677,8 +677,6 @@ en:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-        errors:
-          invalid_tokens: "The pattern contains invalid tokens: %{tokens}"
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1519,6 +1517,8 @@ en:
               duplicate_group: "The group name '%{group}' is used more than once. Group names must be unique."
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Unnamed groups are not allowed."
+            patterns:
+              invalid_tokens: "The pattern contains invalid tokens: %{tokens}"
         user:
           attributes:
             base:
