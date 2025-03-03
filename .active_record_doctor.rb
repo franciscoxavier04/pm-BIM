@@ -37,4 +37,19 @@ ActiveRecordDoctor.configure do
     "active_storage_variant_records",
     "action_text_rich_texts"
   ]
+
+  detector :undefined_table_references, ignore_models: [
+    "ActionMailbox::InboundEmail",
+    "ActionText::EncryptedRichText",
+    "ActionText::RichText",
+    "ActiveStorage::Attachment",
+    "ActiveStorage::Blob",
+    "ActiveStorage::VariantRecord",
+    "ApplicationVersion",
+    "Migrations::Attachments::CurrentWikiContent",
+    "Action",
+    "Capability",
+    "Day",
+    "TemporaryDocument"
+  ]
 end
