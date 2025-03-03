@@ -9,6 +9,7 @@ import { DayResourceService } from 'core-app/core/state/days/day.service';
 import { IDay } from 'core-app/core/state/days/day.model';
 import * as moment from 'moment-timezone';
 import { ConfigurationService } from 'core-app/core/config/configuration.service';
+import { DayHeaderContentArg } from '@fullcalendar/core';
 
 @Injectable()
 export class OpCalendarService extends UntilDestroyedMixin {
@@ -45,13 +46,22 @@ export class OpCalendarService extends UntilDestroyedMixin {
     return [];
   }
 
-  dayHeaderContent({ date }:{ date?:Date }):string {
-    const utcDate = moment(date).utc();
+  dayHeaderContent(event:DayHeaderContentArg):string {
+    // When the user did not configure a custom date format, we can always return the default content for the
+    // fullcalendar day header.
+    if (!this.configurationService.dateFormatPresent()) {
+      return event.text;
+    }
 
-    // If no date format is configured, use a very unambiguous one as default
-    const configuredDateFormat = this.configurationService.dateFormatPresent()
-      ? this.configurationService.dateFormat() : 'YYYY-MM-DD';
+    // Additionally, we must use the default in dayGridMonth view, as it displays the day of the week:
+    if (event.view.type === 'dayGridMonth') {
+      return event.text;
+    }
 
+    // We are not in month grid view and there is a date format configured => return a formatted date according to
+    // the settings. Prefix the day of the week name for better readability.
+    const configuredDateFormat = this.configurationService.dateFormat();
+    const utcDate = moment(event.date).utc();
     return utcDate.format(`ddd ${configuredDateFormat}`);
   }
 }
