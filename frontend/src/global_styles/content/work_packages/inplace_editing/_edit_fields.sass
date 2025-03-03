@@ -12,13 +12,13 @@
   // Style actual edit inputs
   // Checkboxes need to be excluded because the width
   // causes an ugly increase of the box
-  &:not(.subject) input:not([type='checkbox']):not(.spot-text-field--input):not(.spot-input)
+  &:not(.subject) input:not([type='checkbox']):not(.spot-text-field--input):not(.spot-input):not(.FormControl-input)
     // Full width to inline-edit inputs
     width: 100%
     line-height: 24px
     border-radius: 2px
 
-  input:not([type='checkbox'])
+  input:not([type='checkbox']):not(.FormControl-input)
     // Same height as the row - padding
     height: 24px
     padding: 2px
@@ -44,4 +44,3 @@
   .inline-edit--display-field
     display: block
     padding: 5px 0 5px 5px
-

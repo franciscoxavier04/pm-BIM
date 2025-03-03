@@ -99,7 +99,7 @@ class WorkPackages::DatePickerController < ApplicationController
           # the request in order to fetch the new set of Work Package
           # attributes in the ancestry solely on success.
           render turbo_stream: [
-            turbo_stream.morph("wp-datepicker-dialog--content", datepicker_modal_component)
+            turbo_stream.morph("wp-datepicker-dialog--frame", datepicker_modal_component)
           ], status: :unprocessable_entity
         end
       end
@@ -139,7 +139,7 @@ class WorkPackages::DatePickerController < ApplicationController
           # the request in order to fetch the new set of Work Package
           # attributes in the ancestry solely on success.
           render turbo_stream: [
-            turbo_stream.morph("wp-datepicker-dialog--content", datepicker_modal_component)
+            turbo_stream.morph("wp-datepicker-dialog--frame", datepicker_modal_component)
           ], status: :unprocessable_entity
         end
       end
