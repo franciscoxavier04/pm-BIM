@@ -66,6 +66,7 @@ module Activities
       events = events_from_providers(from, to, limit)
 
       eager_load_associations(events)
+      filter_by_visibility(events)
 
       sort_by_most_recent_first(events)
     end
@@ -114,6 +115,12 @@ module Activities
       end
     end
 
+    def filter_by_visibility(events)
+      events.reject! do |event|
+        event.journal.restricted? && !@user.allowed_in_project?(:view_comments_with_restricted_visibility, event.project)
+      end
+    end
+
     def projects_of_event_set(events)
       project_ids = events.filter_map(&:project_id).uniq
 
@@ -130,10 +137,10 @@ module Activities
       journal_ids = events.map(&:event_id)
 
       Journal
-      .includes(:data, :customizable_journals, :attachable_journals, :bcf_comment)
-      .find(journal_ids)
-      .then { |journals| ::API::V3::Activities::ActivityEagerLoadingWrapper.wrap(journals) }
-      .index_by(&:id)
+        .includes(:data, :customizable_journals, :attachable_journals, :bcf_comment)
+        .find(journal_ids)
+        .then { |journals| ::API::V3::Activities::ActivityEagerLoadingWrapper.wrap(journals) }
+        .index_by(&:id)
     end
 
     def sort_by_most_recent_first(events)

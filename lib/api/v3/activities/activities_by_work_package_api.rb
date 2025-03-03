@@ -35,11 +35,16 @@ module API
         resource :activities do
           get do
             self_link = api_v3_paths.work_package_activities @work_package.id
-            journals = @work_package.journals.includes(:data,
-                                                       :customizable_journals,
-                                                       :attachable_journals,
-                                                       :storable_journals,
-                                                       :bcf_comment)
+
+            can_see_restricted = User.current.allowed_in_work_package?(:view_comments_with_restricted_visibility, @work_package)
+            journals = @work_package
+              .journals
+              .where(can_see_restricted ? nil : { restricted: false })
+              .includes(:data,
+                        :customizable_journals,
+                        :attachable_journals,
+                        :storable_journals,
+                        :bcf_comment)
 
             Activities::ActivityCollectionRepresenter.new(journals,
                                                           self_link:,
