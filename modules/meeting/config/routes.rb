@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -105,6 +106,7 @@ Rails.application.routes.draw do
         get :cancel_edit
         put :drop
         put :move
+        post :move_to_next, action: :move_to_next_meeting
       end
     end
     resources :sections, controller: "meeting_sections" do
