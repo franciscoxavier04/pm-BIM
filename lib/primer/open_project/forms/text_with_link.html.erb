@@ -1,0 +1,14 @@
+<%= render(Primer::BaseComponent.new(tag: :div)) do %>
+  <%= render(Primer::OpenProject::FlexLayout.new) do |layout| %>
+    <% layout.with_row do %>
+      <%= render Primer::Alpha::TextField.new(
+        **@text_input_object
+      ) %>
+    <% end %>
+
+    <% layout.with_row do %>
+      <%= render(Primer::Beta::Link.new(**@link_object)) { @link_object[:text] } %>
+    <% end %>
+  <% end %>
+<% end %>
+
