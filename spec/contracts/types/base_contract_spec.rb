@@ -28,38 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Types
-  class PatternResolver
-    TOKEN_REGEX = /{{[0-9A-Za-z_]+}}/
+require "spec_helper"
 
-    def initialize(pattern)
-      @mapper = Patterns::TokenPropertyMapper.new
-      @pattern = pattern
-      @tokens = pattern.scan(TOKEN_REGEX).map { |token| Patterns::Token.build(token) }
-    end
+RSpec.describe Types::BaseContract do
+  let(:current_user) { build_stubbed(:user) }
+  let(:work_package_type) { Type.new }
 
-    def resolve(work_package)
-      @tokens.inject(@pattern) do |pattern, token|
-        pattern.gsub(token.pattern, get_value(work_package, token))
+  subject(:contract) { described_class.new(work_package_type, current_user) }
+
+  describe "#validation" do
+    context "if subject generation patterns contains invalid tokens" do
+      let(:valid_tokens_hash) { { work_package: { assignee: "Assignee" } } }
+      let(:work_package_type) do
+        Type.new(patterns: { subject: { blueprint: "Vacation {{vaders_toy}}", enabled: true } })
       end
-    end
 
-    private
+      before do
+        token_mapper_double = instance_double(Types::Patterns::TokenPropertyMapper)
+        allow(token_mapper_double).to receive(:tokens_for_type).and_return(valid_tokens_hash)
+        allow(Types::Patterns::TokenPropertyMapper).to receive(:new).and_return(token_mapper_double)
+      end
 
-    def get_value(work_package, token)
-      context = token.context == :work_package ? work_package : work_package.public_send(token.context)
-
-      stringify(@mapper[token.context_key].call(context))
-    end
-
-    def stringify(value)
-      case value
-      when Date, Time, DateTime
-        value.strftime("%Y-%m-%d")
-      when NilClass
-        "NA"
-      else
-        value.to_s
+      it "is invalid" do
+        contract.validate
+        expect(subject.errors.symbols_for(:patterns)).to contain_exactly(:invalid_tokens)
       end
     end
   end
