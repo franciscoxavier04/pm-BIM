@@ -1,10 +1,10 @@
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title { "my time: day view" }
+    header.with_title { I18n.t(:label_today) }
     header.with_breadcrumbs(
       [
-        { title: "label_my_time_tracking", href: my_time_tracking_week_path },
-        "day view"
+        { text: I18n.t(:label_my_time_tracking), href: my_time_tracking_week_path },
+        I18n.t(:label_today)
       ]
     )
   end

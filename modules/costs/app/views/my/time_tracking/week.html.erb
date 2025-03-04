@@ -1,6 +1,65 @@
 <%=
   render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title { "my time week" }
-    header.with_breadcrumbs(["my time"])
+    header.with_title(variant: :large) { I18n.t(:label_this_week) }
+    header.with_breadcrumbs(
+      [
+        { text: I18n.t(:label_my_time_tracking), href: my_time_tracking_week_path },
+        I18n.t(:label_this_week)
+      ]
+    )
+
+    btn = lambda do |button|
+      button.with_leading_visual_icon(icon: :calendar)
+      button.with_trailing_action_icon(icon: :"triangle-down")
+      "Calendar"
+    end
+
+    header.with_action_menu(menu_arguments: { anchor_align: :end }, button_arguments: { button_block: btn }) do |menu|
+      menu.with_item(label: "Calendar") do |item|
+        item.with_leading_visual_icon(icon: :calendar)
+      end
+      menu.with_item(label: "List") do |item|
+        item.with_leading_visual_icon(icon: "list-unordered")
+      end
+    end
+
+    header.with_action_zen_mode_button
+    header.with_action_icon_button(icon: "ellipsis", mobile_icon: "ellipsis", label: "more")
   end
 %>
+
+<%= render(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_component do
+        concat(render(Primer::Beta::IconButton.new(icon: "search", aria: { label: "Search" })))
+
+        concat(
+          render(Primer::Beta::Button.new) do |button|
+            button.with_leading_visual_icon(icon: :project)
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Project"
+          end
+        )
+
+        concat(
+          render(Primer::Beta::Button.new) do |button|
+            button.with_leading_visual_icon(icon: :log)
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Activity"
+          end
+        )
+      end
+
+      component.with_text do
+        "#{Time.zone.now.beginning_of_week.day} - #{Time.zone.now.end_of_week.day}, #{Time.zone.now.strftime('%B %Y')}"
+      end
+      component.with_action_component do
+        render(Primer::Beta::ButtonGroup.new) do |group|
+          group.with_button(icon: "arrow-left", aria: { label: "Previous week" })
+          group.with_button(icon: "arrow-right", aria: { label: "Next week" })
+        end
+      end
+
+      component.with_action_button { "Today" }
+
+      component.with_action_button(scheme: :primary) { "Log Time" }
+    end %>
