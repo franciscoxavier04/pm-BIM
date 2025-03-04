@@ -9,7 +9,7 @@
     class="inline-edit--field op-input"
     [ngModel]="formattedValue"
     (click)="onInputClick($event)"
-    (focus)="opened = true"
+    (focus)="showDatePickerModal()"
     disabled="disabled"
     [id]="handler.htmlId"
   />

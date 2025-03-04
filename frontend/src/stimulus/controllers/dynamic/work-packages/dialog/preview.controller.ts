@@ -150,10 +150,12 @@ export abstract class DialogPreviewController extends Controller {
 
   protected focusAndSetCursorPositionToEndOfInput(field:HTMLInputElement) {
     field.focus();
-    field.setSelectionRange(
-      field.value.length,
-      field.value.length,
-    );
+    if (field.type === 'text') {
+      field.setSelectionRange(
+        field.value.length,
+        field.value.length,
+      );
+    }
   }
 
   abstract ensureValidPathname(formAction:string):string;
