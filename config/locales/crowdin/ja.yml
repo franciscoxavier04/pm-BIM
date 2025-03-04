@@ -1000,6 +1000,10 @@ ja:
         is_milestone: "マイルストーン"
         color: "色"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "管理者"
         auth_source: "認証ソース"
@@ -2101,24 +2105,21 @@ ja:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: 生成
-      header_right:
-        label: ヘッダーの右
-        caption: ヘッダーの右側に表示されるテキスト
+      submit: Download
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: フッターの中央
-        caption: フッターの中央に表示されるテキスト
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
       footer_right:
         label: Footer text
         caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
+        caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
-      templates:
-        label: "Template"
-        none_enabled: "No template has been enabled for this work package type"
   extraction:
     available:
       pdftotext: "Pdftotextが利用可能 (オプション)"
@@ -2950,7 +2951,7 @@ ja:
   label_global_role: "グローバルロール"
   label_not_changeable: "（変更不可）"
   label_global: "全般"
-  label_seeded_from_env_warning: このレコードは設定/環境変数によって作成されました。UIから編集することはできません。
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "マクロ%{macro_name}を実行中にエラーが発生しました。"
   macro_unavailable: "マクロ%{macro_name}を表示できません。"
   macros:

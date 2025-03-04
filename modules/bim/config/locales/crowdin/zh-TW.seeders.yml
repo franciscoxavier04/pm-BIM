@@ -107,7 +107,7 @@ zh-TW:
             item_2:
               name: 任務
             item_3:
-              name: 小組工作企劃
+              name: 團隊規劃
           boards:
             bcf:
               name: 簡單的拖放工作流程
@@ -169,7 +169,7 @@ zh-TW:
             item_2:
               name: 任務
             item_3:
-              name: 小組工作企劃
+              name: 團隊規劃
           project-overview:
             widgets:
               item_0:
@@ -251,32 +251,30 @@ zh-TW:
                 item_0:
                   subject: 發展初稿
                   description: |-
-                    ## Goal
+                    ## 目標
 
-                    *   Create a useful overview of the results
-                    *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
-                    *   Identify the fundamental boundary conditions of the project
+                    *   建立有用的結果總覽
+                    *   檢查已完成的工作並總結結果
+                    *   與客戶溝通所有相關結果
+                    *   確認專案的基本邊界條件
 
-                    ## Description
-
-                    *   Each topic gets its own overview which will be used as a catalogue of results
-                    *   This overview informs all participants about the decisions made
+                    ## 描述
+                    *   每個主題都有自己的總覽，作為結果目錄使用
+                    *   此總覽可讓所有參與者了解所做的決策
                     *   ...
                 item_1:
                   subject: 匯總結果
                   description: |-
-                    ## Goal
+                    ## 目標
 
-                    *   Create a useful overview of the results
-                    *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
-                    *   Identify the fundamental boundary conditions of the project
+                    *   建立有用的結果總覽
+                    *   檢查已完成的工作並總結結果
+                    *   與客戶溝通所有相關結果
+                    *   確認專案的基本邊界條件
 
-                    ## Description
-
-                    *   Each topic gets its own overview which will be used as a catalogue of results
-                    *   This overview informs all participants about the decisions made
+                    ## 描述
+                    *   每個主題都有自己的總覽，作為結果目錄使用
+                    *   此總覽可讓所有參與者了解所做的決策
                     *   ...
             item_3:
               subject: 初步規劃通過
@@ -422,7 +420,7 @@ zh-TW:
             item_2:
               name: 任務
             item_3:
-              name: 小組工作企劃
+              name: 團隊規劃
           project-overview:
             widgets:
               item_0:
@@ -695,7 +693,7 @@ zh-TW:
             item_6:
               name: 任務
             item_7:
-              name: 小組工作企劃
+              name: 團隊規劃
           boards:
             bcf:
               name: BCF 問題

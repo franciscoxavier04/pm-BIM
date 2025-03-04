@@ -1011,6 +1011,10 @@ sv:
         is_milestone: "Är milstolpe"
         color: "Färg"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administratör"
         auth_source: "Authentication source"

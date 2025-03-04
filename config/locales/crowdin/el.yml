@@ -1007,6 +1007,10 @@ el:
         is_milestone: "Είναι ορόσημο"
         color: "Χρώμα"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Διαχειριστής"
         auth_source: "Authentication source"

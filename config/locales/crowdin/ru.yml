@@ -1027,6 +1027,10 @@ ru:
         is_milestone: "Это веха"
         color: "Цвет"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Администратор"
         auth_source: "Источник аутентификации"

@@ -1047,6 +1047,10 @@ ar:
         is_milestone: "هو مشروع رئيسي"
         color: "اللون"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "مدير النظام"
         auth_source: "Authentication source"

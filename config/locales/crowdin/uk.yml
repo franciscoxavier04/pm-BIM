@@ -1024,6 +1024,10 @@ uk:
         is_milestone: "Це віха"
         color: "Колір"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Адміністратор"
         auth_source: "Джерело автентифікації"

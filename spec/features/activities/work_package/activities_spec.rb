@@ -341,7 +341,6 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
 
       wp_page.update_attributes(subject: "A new subject") # rubocop:disable Rails/ActiveRecordAliases
-      wait_for_network_idle
       wp_page.expect_and_dismiss_toaster(message: "Successful update.")
 
       second_journal = work_package.journals.second
@@ -360,11 +359,13 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         activity_tab.expect_journal_notes(text: "First comment")
       end
 
-      travel_to (Setting.journal_aggregation_time_minutes.to_i.minutes + 1.minute).from_now
-      # the journals will not be merged due to the time difference
+      # make sure the updated happens after aggregation time
+      aggregation_time = Setting.journal_aggregation_time_minutes.to_i.minutes.ago
+      first_journal.update!(updated_at: aggregation_time - 2.minutes)
+      second_journal.update!(updated_at: aggregation_time - 1.minute)
+      # we attempted this with travel_to and that happens to be quite flaky
 
       wp_page.update_attributes(subject: "A new subject!!!") # rubocop:disable Rails/ActiveRecordAliases
-      wait_for_network_idle
 
       third_journal = work_package.journals.third
 

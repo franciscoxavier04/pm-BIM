@@ -97,6 +97,7 @@ RSpec.describe "GET /projects/:project_id/settings/project_storages/:id/oauth_ac
 
       before do
         Storages::Peripherals::Registry.stub("nextcloud.queries.user", ->(_) { ServiceResult.success })
+        create(:remote_identity, user:, integration: storage)
       end
 
       it "redirects to destination_url" do

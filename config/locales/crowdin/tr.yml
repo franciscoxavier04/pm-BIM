@@ -1010,6 +1010,10 @@ tr:
         is_milestone: "Kilometre taşı"
         color: "Renk"
         patterns: "Desenler"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Yönetici"
         auth_source: "Kimlik doğrulama kaynağı"

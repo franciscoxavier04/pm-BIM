@@ -38,6 +38,7 @@ FactoryBot.define do
     interval { 1 }
     iterations { 10 }
     end_after { "specific_date" }
+    time_zone { "UTC" }
 
     location { "https://some-url.com" }
     m.sequence(:title) { |n| "Meeting series #{n}" }

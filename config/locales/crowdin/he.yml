@@ -1029,6 +1029,10 @@ he:
         is_milestone: "Is milestone"
         color: "צבע"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "מנהל מערכת"
         auth_source: "Authentication source"

@@ -1009,6 +1009,10 @@ hi:
         is_milestone: "Is milestone"
         color: "रंग"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "व्यवस्थापक"
         auth_source: "Authentication source"

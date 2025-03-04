@@ -1011,6 +1011,10 @@ eo:
         is_milestone: "Ĝi estas mejloŝtono"
         color: "Koloro"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administranto"
         auth_source: "Authentication source"

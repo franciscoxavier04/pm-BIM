@@ -1011,6 +1011,10 @@ fi:
         is_milestone: "On virstanpylväs"
         color: "Väri"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Järjestelmänvalvoja"
         auth_source: "Authentication source"
