@@ -34,7 +34,9 @@
 # backends that use the same database as Active Record as a queue, hence they
 # don't need this feature.
 #++
-# Rails.application.config.active_job.enqueue_after_transaction_commit = :default
+
+# OP does use the same database as the queue. So writing to GoodJob is already transactional.
+Rails.application.config.active_job.enqueue_after_transaction_commit = :never
 
 ###
 # Adds image/webp to the list of content types Active Storage considers as an image
