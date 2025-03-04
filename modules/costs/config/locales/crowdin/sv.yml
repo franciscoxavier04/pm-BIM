@@ -30,6 +30,7 @@ sv:
         overridden_costs: "Åsidosatta kostnader"
         spent: "Spenderat"
         spent_on: "Datum"
+        logged_by: "Logged by"
       cost_type:
         unit: "Enhetsnamn"
         unit_plural: "Enhetsnamn plural"
@@ -59,6 +60,9 @@ sv:
       cost_type:
         one: "Kostnadstyp"
         other: "Kostnadstyper"
+      time_entry_activity:
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Timpris"
     errors:
       models:
@@ -80,6 +84,7 @@ sv:
   button_add_rate: "Lägg till timpris"
   button_log_costs: "Logga enhetskostnader"
   button_log_time: "Log"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Bokade på projekt"
   caption_default: "Standard"
   caption_default_rate_history_for: "Historiskt standardtimpris för %{user}"
@@ -93,6 +98,8 @@ sv:
   caption_show_locked: "Visa låst typer"
   caption_log_time_dialog: "Log time"
   description_date_for_new_rate: "Datum för nytt timpris"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
   group_by_others: "inte i någon grupp"
   label_between: "mellan"
   label_cost_filter_add: "Lägg till filter för kostnadspost"
@@ -119,6 +126,8 @@ sv:
   label_kind: "Typ"
   label_less_or_equal: "<="
   label_log_costs: "Logga enhetskostnader"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Nej"
   label_option_plural: "Alternativ"
   label_overall_costs: "Totalkostnader"
@@ -131,6 +140,10 @@ sv:
   label_until: "fram till"
   label_valid_from: "Gäller från"
   label_yes: "Ja"
+  label_time: "Time"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ett fel inträffade. Försök igen."
   notice_successful_restore: "Lyckad återställning."

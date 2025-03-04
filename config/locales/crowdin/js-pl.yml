@@ -103,7 +103,6 @@ pl:
     button_settings: "Ustawienia"
     button_uncheck_all: "Odznacz wszystko"
     button_update: "Aktualizacja"
-    button_export-pdf: "Pobierz plik PDF"
     button_export-atom: "Pobierz Atom"
     button_generate_pdf: "Wygeneruj PDF"
     button_create: "Utwórz"
@@ -222,6 +221,8 @@ pl:
             label_maximum_users: "Maksymalna liczba aktywnych użytkowników"
             label_starts_at: "Data rozpoczęcia"
             label_expires_at: "Wygasa"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Chcę otrzymywać <a target="_blank" href="%{link}">biuletyn </a> OpenProject.
             taken_domain: W każdej domenie może być aktywna tylko jedna wersja próbna.
             domain_mismatch: Obecna nazwa hosta żądania nie pasuje do skonfigurowanej nazwy hosta. Sprawdź dokładnie ustawienia systemu.
@@ -854,8 +855,6 @@ pl:
       select_branch: "Wybierz gałąź"
     field_value_enter_prompt: "Wprowadź wartość dla '%{field}'"
     project_menu_details: "Szczegóły"
-    scheduling:
-      manual: "Planowanie ręczne"
     sort:
       sorted_asc: "Zastosowano sortowanie rosnące, "
       sorted_dsc: "Zastosowano sortowanie malejące, "
@@ -903,15 +902,6 @@ pl:
       comment_send_failed: "Wystąpił błąd. Nie można zamieścić komentarza."
       comment_updated: "Komentarz zaktualizowano pomyślnie."
       confirm_edit_cancel: "Czy na pewno chcesz anulować edycję pakietu pracy?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatycznie zaplanowano. Daty pochodzą z relacji."
-        manually_scheduled: "Włączono ręczne planowanie, tym samym wszystkie relacje zostają zignorowane."
-        start_date_limited_by_relations: "Dostępne daty rozpoczęcia i zakończenia są ograniczone relacjami."
-        changing_dates_affects_follow_relations: "Zmiana tych dat wpłynie na daty powiązanych pakietów roboczych."
-        click_on_show_relations_to_open_gantt: 'Kliknij "%{button_name}", aby wyświetlić wykres GANTTa.'
-        show_relations: "Pokaż relacje"
-        ignore_non_working_days:
-          title: "Tylko dni robocze"
       description_filter: "Filtr"
       description_enter_text: "Wpisz tekst"
       description_options_hide: "Ukryj opcje"

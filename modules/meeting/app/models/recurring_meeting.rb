@@ -56,6 +56,10 @@ class RecurringMeeting < ApplicationRecord
            if: -> { end_after_specific_date? }
 
   after_initialize :set_defaults
+
+  # Unset any previously set schedule before running validations
+  before_validation :unset_schedule
+
   after_save :unset_schedule
   before_destroy :remove_jobs
 
@@ -106,7 +110,12 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def human_frequency
-    I18n.t("recurring_meeting.frequency.#{frequency}")
+    case frequency
+    when "working_days"
+      I18n.t("recurring_meeting.frequency.working_days")
+    else
+      I18n.t("recurring_meeting.frequency.x_#{frequency}", count: interval)
+    end
   end
 
   def human_day_of_week
@@ -173,6 +182,12 @@ class RecurringMeeting < ApplicationRecord
     I18n.t("recurring_meeting.in_words.frequency",
            base: base_schedule,
            time: format_time(start_time, include_date: false))
+  end
+
+  def reschedule_required?(previous: false)
+    (previous ? previous_changes : changes)
+      .keys
+      .intersect?(%w[frequency start_date start_time start_time_hour iterations interval end_after end_date])
   end
 
   def scheduled_occurrences(limit:)

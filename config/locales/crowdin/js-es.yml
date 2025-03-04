@@ -103,7 +103,6 @@ es:
     button_settings: "Configuración"
     button_uncheck_all: "Deseleccionar todos"
     button_update: "Actualizar"
-    button_export-pdf: "Descargar PDF"
     button_export-atom: "Descargar Atom"
     button_generate_pdf: "Generar PDF"
     button_create: "Crear"
@@ -222,6 +221,8 @@ es:
             label_maximum_users: "Máximo de usuarios activos"
             label_starts_at: "Empieza el"
             label_expires_at: "Expira el"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Quiero recibir el <a target="_blank" href="%{link}">boletín</a> de OpenProject.
             taken_domain: Solo puede existir una prueba activa por dominio.
             domain_mismatch: El nombre actual de host no coincide con el nombre de host configurado. Por favor, comprueba la configuración del sistema.
@@ -852,8 +853,6 @@ es:
       select_branch: "Seleccione rama"
     field_value_enter_prompt: "Introduzca un valor para '%{field}'"
     project_menu_details: "Detalles"
-    scheduling:
-      manual: "Programación manual"
     sort:
       sorted_asc: "Orden ascendiente aplicado, "
       sorted_dsc: "Orden descendiente aplicado, "
@@ -901,15 +900,6 @@ es:
       comment_send_failed: "Ha ocurrido un error. No se pudo añadir el comentario."
       comment_updated: "El comentario se actualizó correctamente."
       confirm_edit_cancel: "¿Está seguro que desea cancelar la edición del paquete de trabajo?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Programado automáticamente. Las fechas están derivadas de relaciones."
-        manually_scheduled: "Programación manual activa, todas las relaciones son ignoradas."
-        start_date_limited_by_relations: "Las fechas de inicio y final disponibles están limitadas por relaciones."
-        changing_dates_affects_follow_relations: "Cambiar estas fechas afectará a las fechas de los paquetes de trabajo relacionados."
-        click_on_show_relations_to_open_gantt: 'Haga clic en "%{button_name}" para la vista general de GANTT.'
-        show_relations: "Mostrar relaciones"
-        ignore_non_working_days:
-          title: "Solo días laborables"
       description_filter: "Filtro"
       description_enter_text: "Introducir texto"
       description_options_hide: "Ocultar opciones"

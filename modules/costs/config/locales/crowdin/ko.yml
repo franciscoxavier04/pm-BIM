@@ -30,6 +30,7 @@ ko:
         overridden_costs: "재정의된 비용"
         spent: "소비"
         spent_on: "날짜"
+        logged_by: "Logged by"
       cost_type:
         unit: "단위 이름"
         unit_plural: "복수형 단위 이름"
@@ -58,6 +59,8 @@ ko:
     models:
       cost_type:
         other: "비용 유형"
+      time_entry_activity:
+        other: "Time tracking activities"
       rate: "요금"
     errors:
       models:
@@ -79,6 +82,7 @@ ko:
   button_add_rate: "요금 추가"
   button_log_costs: "단위 비용 기록"
   button_log_time: "기록"
+  button_add_activity: "Activity"
   caption_booked_on_project: "프로젝트에서 예약됨"
   caption_default: "기본값"
   caption_default_rate_history_for: "%{user}에 대한 기본 요금 기록"
@@ -92,6 +96,8 @@ ko:
   caption_show_locked: "잠긴 유형 표시"
   caption_log_time_dialog: "시간 기록"
   description_date_for_new_rate: "새로운 요금의 날짜"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
   group_by_others: "어떤 그룹에도 없음"
   label_between: "사이에"
   label_cost_filter_add: "비용 항목 필터 추가"
@@ -118,6 +124,8 @@ ko:
   label_kind: "유형"
   label_less_or_equal: "<="
   label_log_costs: "단위 비용 기록"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "아니요"
   label_option_plural: "옵션"
   label_overall_costs: "전체 비용"
@@ -130,6 +138,10 @@ ko:
   label_until: "다음까지:"
   label_valid_from: "다음부터 유효함"
   label_yes: "예"
+  label_time: "시간"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: 먼저 작업 패키지 선택이 필요합니다
   notice_something_wrong: "문제가 발생했습니다. 다시 시도해 주세요."
   notice_successful_restore: "성공적으로 복원되었습니다."

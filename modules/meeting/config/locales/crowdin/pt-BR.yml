@@ -57,13 +57,21 @@ pt-BR:
         start_time: "Hora de início"
         start_time_hour: "Hora de início"
         end_after: "Série de reuniões termina"
+        end_date: "End date"
         iterations: "Ocorrências"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "não é um horário válido. Formato exigido: HH:MM"
     models:
       recurring_meeting: "Reunião recorrente"
       structured_meeting: "Reunião única"
+      meeting: "Meeting"
       meeting_agenda_item: "Item da agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Atas"
@@ -259,10 +267,14 @@ pt-BR:
       banner_html: >
         Atualmente, você está editando um modelo de série de reuniões: %{link}. Todas as novas ocorrências de reuniões na série usarão este modelo. Alterações não afetarão reuniões passadas ou já agendadas.
     frequency:
+      x_daily:
+        one: "Every day"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        other: "Every %{count} weeks"
       every_weekday: "Todos os %{day_of_the_week}"
-      daily: "Diariamente"
       working_days: "Todos os dias úteis"
-      weekly: "Semanalmente"
     end_after:
       never: "nunca"
       specific_date: "após uma data específica"

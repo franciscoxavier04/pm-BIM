@@ -59,13 +59,21 @@ ru:
         start_time: "Время начала"
         start_time_hour: "Время начала"
         end_after: "Серия совещаний заканчивается"
+        end_date: "Дата окончания"
         iterations: "События"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "недопустимое время. Требуемый формат: ЧЧ:ММ"
     models:
       recurring_meeting: "Повторяющееся совещание"
       structured_meeting: "Однократное совещание"
+      meeting: "Совещание"
       meeting_agenda_item: "Пункт повестки"
       meeting_agenda: "Повестка дня"
       meeting_minutes: "Протокол(-ы)"
@@ -263,10 +271,18 @@ ru:
       banner_html: >
         В настоящее время вы редактируете шаблон серии совещаний: %{link}. Каждое новое совещание в этой серии будет использовать этот шаблон. Изменения не повлияют на прошлые или уже созданные совещания.
     frequency:
+      x_daily:
+        one: "Каждый день"
+        few: "Every %{count} days"
+        many: "Every %{count} days"
+        other: "Каждые %{count} дней"
+      x_weekly:
+        one: "Каждую неделю"
+        few: "Every %{count} weeks"
+        many: "Every %{count} weeks"
+        other: "Каждые %{count} недели"
       every_weekday: "Каждый %{day_of_the_week}"
-      daily: "Ежедневно"
       working_days: "Каждый рабочий день"
-      weekly: "Еженедельно"
     end_after:
       never: "никогда"
       specific_date: "после конкретной даты"

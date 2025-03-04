@@ -30,6 +30,7 @@ pt-PT:
         overridden_costs: "Custos substituídos"
         spent: "Gasto"
         spent_on: "Data"
+        logged_by: "Logged by"
       cost_type:
         unit: "Nome da Unidade"
         unit_plural: "Nome da unidade no plural"
@@ -59,6 +60,9 @@ pt-PT:
       cost_type:
         one: "Tipo de custo"
         other: "Tipos de custos"
+      time_entry_activity:
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Taxa"
     errors:
       models:
@@ -80,6 +84,7 @@ pt-PT:
   button_add_rate: "Adicionar Taxa"
   button_log_costs: "Registar custos unitários"
   button_log_time: "Registo"
+  button_add_activity: "Activity"
   caption_booked_on_project: "Marcado no projeto"
   caption_default: "Predefinido"
   caption_default_rate_history_for: "História de taxa padrão para %{user}"
@@ -93,6 +98,8 @@ pt-PT:
   caption_show_locked: "Mostrar tipos bloqueados"
   caption_log_time_dialog: "Registo de tempo"
   description_date_for_new_rate: "Data para nova taxa"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
   group_by_others: "em nenhum grupo"
   label_between: "entre"
   label_cost_filter_add: "Adicionar filtro de entrada de custo"
@@ -119,6 +126,8 @@ pt-PT:
   label_kind: "Tipo"
   label_less_or_equal: "<="
   label_log_costs: "Registar custos unitários"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Não"
   label_option_plural: "Opções"
   label_overall_costs: "Custos totais"
@@ -131,6 +140,10 @@ pt-PT:
   label_until: "até"
   label_valid_from: "Válido desde"
   label_yes: "Sim"
+  label_time: "Hora"
+  label_cost: "Cost"
+  label_costs: "Costs"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: A seleção do pacote de trabalho é necessária em primeiro lugar
   notice_something_wrong: "Ocorreu um erro. Por favor, tente novamente."
   notice_successful_restore: "Restauração bem-sucedida."

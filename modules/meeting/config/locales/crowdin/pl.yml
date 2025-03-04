@@ -59,13 +59,21 @@ pl:
         start_time: "Czas rozpoczęcia"
         start_time_hour: "Czas rozpoczęcia"
         end_after: "Seria spotkań kończy się"
+        end_date: "End date"
         iterations: "Wystąpienia"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "nie jest prawidłowy. Wymagany format to: GG:MM"
     models:
       recurring_meeting: "Spotkanie cykliczne"
       structured_meeting: "Spotkanie jednorazowe"
+      meeting: "Meeting"
       meeting_agenda_item: "Punkt programu"
       meeting_agenda: "Plan spotkania"
       meeting_minutes: "Protokół ze spotkania"
@@ -263,10 +271,18 @@ pl:
       banner_html: >
         Aktualnie edytujesz szablon serii spotkań: %{link}. Każde nowe wystąpienie spotkania w serii będzie używać tego szablonu. Zmiany nie będą miały wpływu na wcześniejsze ani już utworzone spotkania.
     frequency:
+      x_daily:
+        one: "Every day"
+        few: "Every %{count} days"
+        many: "Every %{count} days"
+        other: "Every %{count} days"
+      x_weekly:
+        one: "Every week"
+        few: "Every %{count} weeks"
+        many: "Every %{count} weeks"
+        other: "Every %{count} weeks"
       every_weekday: "Co %{day_of_the_week}"
-      daily: "Codziennie"
       working_days: "W każdy dzień roboczy"
-      weekly: "Co tydzień"
     end_after:
       never: "nigdy"
       specific_date: "po określonej dacie"

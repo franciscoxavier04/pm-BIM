@@ -103,7 +103,6 @@ ms:
     button_settings: "Tetapan"
     button_uncheck_all: "Nyahtandakan semua"
     button_update: "Kemas kini"
-    button_export-pdf: "Muat turun PDF"
     button_export-atom: "Muat Turun Atom"
     button_generate_pdf: "Menjana PDF"
     button_create: "Cipta"
@@ -222,6 +221,8 @@ ms:
             label_maximum_users: "Pengguna aktif maksimum"
             label_starts_at: "Mula pada"
             label_expires_at: "Tamat tempoh pada"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Saya ingin menerima <a target="_blank" href="%{link}">surat berita</a> OpenProject.
             taken_domain: Hanya boleh mempunyai satu percubaan aktif setiap domain.
             domain_mismatch: Permintaan nama hos semasa tidak sepadan dengan nama hos yang dikonfigurasikan. Sila semak tetapan sistem anda sekali lagi.
@@ -851,8 +852,6 @@ ms:
       select_branch: "Pilih cabang"
     field_value_enter_prompt: "Masukkan nilai untuk '%{field}'"
     project_menu_details: "Butiran-butiran"
-    scheduling:
-      manual: "Penjadualan secara manual"
     sort:
       sorted_asc: "Susunan menaik digunakan, "
       sorted_dsc: "Susunan menurun digunakan, "
@@ -900,15 +899,6 @@ ms:
       comment_send_failed: "Ralat telah berlaku. Tidak dapat menghantar komen."
       comment_updated: "Komen telah berjaya dikemas kini."
       confirm_edit_cancel: "Adakah anda pasti anda ingin membatalkan edit pakej kerja?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Dijadualkan secara automatik. Tarikh diperolehi daripada hubungan."
-        manually_scheduled: "Penjadualan secara manual dibenarkan, semua hubungan diabaikan."
-        start_date_limited_by_relations: "Tarikh mula dan akhir yang tersedia adalah dibatasi oleh hubungan."
-        changing_dates_affects_follow_relations: "Mengubah tarikh ini akan mempengaruhi tarikh pakej kerja yang berkaitan."
-        click_on_show_relations_to_open_gantt: 'Klik "%{button_name}" untuk gambaran keseluruhan GANTT.'
-        show_relations: "Paparkan hubungan"
-        ignore_non_working_days:
-          title: "Hari bekerja sahaja"
       description_filter: "Penyaring"
       description_enter_text: "Masukkan teks"
       description_options_hide: "Sembunyikan pilihan"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,9 +31,8 @@
 require "spec_helper"
 require_module_spec_helper
 
-RSpec.describe "API v3 storages resource", :webmock, content_type: :json do
+RSpec.describe "API v3 storages resource", :storage_server_helpers, :webmock, content_type: :json do
   include API::V3::Utilities::PathHelper
-  include StorageServerHelpers
   include UserPermissionsHelper
 
   shared_let(:permissions) { %i(view_work_packages view_file_links) }
@@ -53,7 +54,7 @@ RSpec.describe "API v3 storages resource", :webmock, content_type: :json do
   end
 
   before do
-    Storages::Peripherals::Registry.stub("nextcloud.queries.auth_check", ->(_) { auth_check_result })
+    Storages::Peripherals::Registry.stub("nextcloud.queries.user", ->(_) { auth_check_result })
     login_as current_user
   end
 
@@ -243,28 +244,40 @@ RSpec.describe "API v3 storages resource", :webmock, content_type: :json do
         end
       end
 
-      context "when authorization succeeds and storage is connected" do
-        let(:auth_check_result) { ServiceResult.success }
+      context "when user has a remote identity for the storage" do
+        before do
+          create :remote_identity, user: current_user, integration: storage
+        end
 
-        include_examples "a storage authorization result",
-                         expected: API::V3::Storages::URN_CONNECTION_CONNECTED,
-                         has_authorize_link: false
+        context "when authorization succeeds and storage is connected" do
+          let(:auth_check_result) { ServiceResult.success }
+
+          include_examples "a storage authorization result",
+                           expected: API::V3::Storages::URN_CONNECTION_CONNECTED,
+                           has_authorize_link: false
+        end
+
+        context "when authorization fails" do
+          let(:auth_check_result) { ServiceResult.failure(errors: Storages::StorageError.new(code: :unauthorized)) }
+
+          include_examples "a storage authorization result",
+                           expected: API::V3::Storages::URN_CONNECTION_AUTH_FAILED,
+                           has_authorize_link: true
+        end
+
+        context "when authorization fails with an error" do
+          let(:auth_check_result) { ServiceResult.failure(errors: Storages::StorageError.new(code: :error)) }
+
+          include_examples "a storage authorization result",
+                           expected: API::V3::Storages::URN_CONNECTION_ERROR,
+                           has_authorize_link: false
+        end
       end
 
-      context "when authorization fails" do
-        let(:auth_check_result) { ServiceResult.failure(errors: Storages::StorageError.new(code: :unauthorized)) }
-
+      context "when user has no remote identity for the storage" do
         include_examples "a storage authorization result",
-                         expected: API::V3::Storages::URN_CONNECTION_AUTH_FAILED,
+                         expected: API::V3::Storages::URN_CONNECTION_NOT_CONNECTED,
                          has_authorize_link: true
-      end
-
-      context "when authorization fails with an error" do
-        let(:auth_check_result) { ServiceResult.failure(errors: Storages::StorageError.new(code: :error)) }
-
-        include_examples "a storage authorization result",
-                         expected: API::V3::Storages::URN_CONNECTION_ERROR,
-                         has_authorize_link: false
       end
     end
   end

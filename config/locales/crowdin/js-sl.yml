@@ -103,7 +103,6 @@ sl:
     button_settings: "Nastavitve"
     button_uncheck_all: "Odznači vse"
     button_update: "Posodobi"
-    button_export-pdf: "Prenesi PDF"
     button_export-atom: "Prenesi Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Ustvari"
@@ -221,6 +220,8 @@ sl:
             label_maximum_users: "Največje število aktivnih uporabnikov"
             label_starts_at: "Se začne z"
             label_expires_at: "Izteče ob"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Želim prejemati OpenProject  <a target="_blank" href="%{link}">novice</a>.
             taken_domain: Možen je le en aktivni preizkus na domeno.
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -853,8 +854,6 @@ sl:
       select_branch: "Izberite vejo"
     field_value_enter_prompt: "Vnesite vrednost za '%{field}'"
     project_menu_details: "Podrobnosti"
-    scheduling:
-      manual: "Ročno razvrščanje."
     sort:
       sorted_asc: "Uporabljeno je naraščajoče razvrščanje, "
       sorted_dsc: "Uporabljeno je padajoče razvrščanje, "
@@ -902,15 +901,6 @@ sl:
       comment_send_failed: "Prišlo je do napake. Komentarja ni bilo mogoče shraniti. "
       comment_updated: "Komentar je bil uspešno naložen. "
       confirm_edit_cancel: "Ali ste prepričani, da želite preklicati urejanje delovnega paketa? "
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatically scheduled. Dates are derived from relations."
-        manually_scheduled: "Manual scheduling enabled, all relations ignored."
-        start_date_limited_by_relations: "Available start and finish dates are limited by relations."
-        changing_dates_affects_follow_relations: "Changing these dates will affect dates of related work packages."
-        click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for GANTT overview.'
-        show_relations: "Show relations"
-        ignore_non_working_days:
-          title: "Working days only"
       description_filter: "Filtriraj"
       description_enter_text: "Vnesite besedilo"
       description_options_hide: "Skrij možnosti"
