@@ -60,6 +60,3 @@ OpenProject::FeatureDecisions.add :work_package_comment_id_url,
                                   description: "Introduced a new WP comment URL identifier structure " \
                                                "`#comment-<journal-id>` replacing the old " \
                                                "`#activity-<journal-sequence_number>`."
-
-OpenProject::FeatureDecisions.add :meeting_outcomes,
-                                  description: "Add outcomes and decisions to meeting agenda items"

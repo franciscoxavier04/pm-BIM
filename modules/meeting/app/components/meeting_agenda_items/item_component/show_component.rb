@@ -57,12 +57,8 @@ module MeetingAgendaItems
       !@meeting.closed? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
     end
 
-    def outcome_enabled?
-      OpenProject::FeatureDecisions.meeting_outcomes_active?
-    end
-
     def add_outcome_action?
-      @meeting_agenda_item.editable? && @meeting.in_progress? && outcome_enabled? && !@meeting_agenda_item.outcomes.exists?
+      @meeting_agenda_item.editable? && @meeting.in_progress? && !@meeting_agenda_item.outcomes.exists?
     end
 
     def first?
@@ -167,10 +163,10 @@ module MeetingAgendaItems
     end
 
     def notes_classes
-      if OpenProject::FeatureDecisions.meeting_outcomes_active? && !@meeting.open?
-        "op-uc-container override muted-color"
-      else
+      if @meeting.open?
         "op-uc-container override"
+      else
+        "op-uc-container override muted-color"
       end
     end
   end

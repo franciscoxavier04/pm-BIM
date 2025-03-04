@@ -28,9 +28,7 @@ require "spec_helper"
 
 require_relative "../../../support/pages/structured_meeting/show"
 
-RSpec.describe "Meeting Outcomes CRUD",
-               :js,
-               with_flag: { meeting_outcomes: true } do
+RSpec.describe "Meeting Outcomes CRUD", :js do
   shared_let(:project) { create(:project, enabled_module_names: %w[meetings]) }
   shared_let(:user) do
     create :user,
