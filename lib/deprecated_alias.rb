@@ -29,7 +29,7 @@
 module DeprecatedAlias
   def deprecated_alias(old_method, new_method)
     define_method(old_method) do |*args, **kwargs, &block|
-      OpenProject::Deprecation.replaced(old_method, new_method, caller)
+      OpenProject::Deprecation.replaced(old_method, new_method, caller_locations)
       send(new_method, *args, **kwargs, &block)
     end
   end
