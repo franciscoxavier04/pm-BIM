@@ -45,8 +45,8 @@ module RemoteIdentities
     end
 
     def call
-      @model.origin_user_id = @integration.extract_origin_user_id(@token)
-      if @model.changed?
+      if @model.new_record?
+        @model.origin_user_id = @integration.extract_origin_user_id(@token)
         if @model.save
           OpenProject::Notifications.send(
             OpenProject::Events::REMOTE_IDENTITY_CREATED,
