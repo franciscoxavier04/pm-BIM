@@ -62,11 +62,18 @@ pl:
         end_date: "End date"
         iterations: "Wystąpienia"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "nie jest prawidłowy. Wymagany format to: GG:MM"
     models:
       recurring_meeting: "Spotkanie cykliczne"
       structured_meeting: "Spotkanie jednorazowe"
+      meeting: "Meeting"
       meeting_agenda_item: "Punkt programu"
       meeting_agenda: "Plan spotkania"
       meeting_minutes: "Protokół ze spotkania"

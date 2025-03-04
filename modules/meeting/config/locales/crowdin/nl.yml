@@ -60,11 +60,18 @@ nl:
         end_date: "End date"
         iterations: "Gebeurtenissen"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "is geen geldige tijd. Vereist formaat: UH:MM"
     models:
       recurring_meeting: "Terugkerende vergadering"
       structured_meeting: "Eenmalige vergadering"
+      meeting: "Meeting"
       meeting_agenda_item: "Agendapunt"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minuten"

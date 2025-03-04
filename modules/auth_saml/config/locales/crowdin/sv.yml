@@ -1,8 +1,8 @@
 sv:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
-        display_name: Namn
+        display_name: Name
         identifier: Identifier
         secret: Secret
         scope: Scope
@@ -23,7 +23,6 @@ sv:
         digest_method: Digest algorithm
         format: "Format"
         icon: "Custom icon"
-  activerecord:
     errors:
       models:
         saml/provider:

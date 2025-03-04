@@ -59,11 +59,18 @@ ms:
         end_date: "End date"
         iterations: "Kejadian"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "bukan masa yang sah. Format yang diperlukan: JJ:MM"
     models:
       recurring_meeting: "Mesyuarat berulang"
       structured_meeting: "Mesyuarat sekali"
+      meeting: "Meeting"
       meeting_agenda_item: "Item agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minit mesyuarat"

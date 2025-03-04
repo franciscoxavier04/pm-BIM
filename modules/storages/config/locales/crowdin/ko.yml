@@ -1,16 +1,25 @@
 ko:
   activerecord:
     attributes:
+      oauth_client:
+        client_id: Client ID
+        client_secret: Client secret
+      project:
+        project_folder_type: Project folder type
       storages/file_link:
-        origin_id: 원본 ID
+        origin: Origin
+        storage: Storage
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        nextcloud_audience: Nextcloud Audience
+        storage_audience: Storage Audience
       storages/project_storage:
+        project_folder: Project folder
+        project_folder_mode: Project folder mode
         storage: 저장소
+        storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
         creator: 생성자
@@ -209,15 +218,16 @@ ko:
       access_management_section: 액세스 및 프로젝트 폴더
       automatically_managed_folders: 자동으로 관리되는 폴더
       general_information: 일반 정보
-      nextcloud_audience: Nextcloud Audience
-      nextcloud_audience_blank: No audience has been configured
-      nextcloud_audience_description: Using audience %{audience}
-      nextcloud_oauth: Nextcloud OAuth
       oauth_configuration: OAuth 구성
       one_drive_oauth: Azure OAuth
       openproject_oauth: OpenProject OAuth
       project_folders: 프로젝트 폴더
       redirect_uri: 리디렉션 URI
+      storage_audience: Storage Audience
+      storage_audience_blank: No audience has been configured
+      storage_audience_description: Obtaining tokens for audience "%{audience}".
+      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_oauth: Nextcloud OAuth
       storage_provider: 저장소 공급자
     health:
       checked: '마지막 확인: %{datetime}'
@@ -274,10 +284,10 @@ ko:
       nextcloud:
         application_link_text: 애플리케이션 “Integration OpenProject”
         integration: Nextcloud 관리/OpenProject
-        nextcloud_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        nextcloud_audience_placeholder: e.g. nextcloud
         oauth_configuration: '%{application_link_text}에서 이러한 값을 복사합니다.'
         provider_configuration: 설정을 수행하기 전에 Nextcloud 인스턴스에서 관리 권한이 있고 %{application_link_text}이(가) 설치되어 있는지 확인하세요.
+        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience_placeholder: e.g. nextcloud
       no_specific_folder: 기본적으로 각 사용자는 파일을 업로드할 때 고유한 홈 폴더에서 시작합니다.
       no_storage_set_up: 아직 파일 저장소가 설정되지 않았습니다.
       not_logged_into_storage: 프로젝트 폴더를 선택하려면 먼저 로그인하세요
@@ -308,8 +318,8 @@ ko:
     label_creation_time: 생성 시간
     label_creator: 생성자
     label_delete_storage: 저장소 삭제
-    label_edit_nextcloud_audience: Edit Nextcloud Audience
     label_edit_storage_access_management: 저장소 액세스 관리 편집
+    label_edit_storage_audience: Edit Storage Audience
     label_edit_storage_automatically_managed_folders: 저장소 자동 관리 폴더 편집
     label_edit_storage_host: 저장소 호스트 편집
     label_existing_manual_folder: 수동으로 관리되는 권한이 있는 기존 폴더
@@ -399,8 +409,15 @@ ko:
         name: OneDrive/SharePoint
         name_placeholder: '예: OneDrive'
     show_attachments_toggle:
-      description: '이 옵션을 비활성화하면 작업 패키지 파일 탭에서 첨부 파일 목록이 숨겨집니다. 작업 패키지 설명에 첨부된 파일은 내부 첨부 파일 저장소에 계속 업로드됩니다. '
+      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
       label: 작업 패키지 파일 탭에 첨부 파일 표시
+    storage_audience:
+      idp:
+        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
+        label: Use first access token obtained by identity provider
+      manual:
+        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
+        label: Define storage audience manually
     storage_list_blank_slate:
       description: 여기에서 보려면 저장소를 추가합니다.
       heading: 아직 저장소가 없습니다.

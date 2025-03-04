@@ -66,6 +66,38 @@ RSpec.describe OpenIDConnect::UserTokens::FetchService, :webmock do
       expect(result.value!).to eq(access_token)
     end
 
+    it "emits appropriate event" do
+      allow(OpenProject::Notifications)
+        .to receive(:send).with(described_class::TOKEN_OBTAINED_EVENT, token: instance_of(OpenIDConnect::UserToken),
+                                                                       audience: queried_audience).once
+      expect(result.value!).to eq(access_token)
+    end
+
+    it "does not create RemoteIdentity if storage with appropriate audience is absent" do
+      create(:nextcloud_storage, storage_audience: "not-expected-audience")
+      expect { result }.not_to change(RemoteIdentity, :count)
+    end
+
+    context "when storage with appropriate audience is present", :storage_server_helpers, :webmock do
+      it "raises an error if auth source is not present" do
+        storage = create(:nextcloud_storage, storage_audience: existing_audience)
+        stub_nextcloud_user_query(storage.host)
+
+        expect { result }.to raise_error("RemoteIdentity creation failed: Auth Source can't be blank.")
+      end
+
+      it "creates remote identity if auth source is present" do
+        slug = create(:oidc_provider).slug
+        user.identity_url = "#{slug}:qweqweqweqwe"
+        user.save
+
+        storage = create(:nextcloud_storage, storage_audience: existing_audience)
+        stub_nextcloud_user_query(storage.host)
+
+        expect { result }.to change(RemoteIdentity, :count).from(0).to(1)
+      end
+    end
+
     context "when the token doesn't expire and can't be parsed as JWT" do
       let(:jwt_parser) { instance_double(OpenIDConnect::JwtParser, parse: Failure("Not a valid JWT")) }
 
@@ -134,22 +166,6 @@ RSpec.describe OpenIDConnect::UserTokens::FetchService, :webmock do
           expect(token_exchange).to have_received(:call).with(queried_audience)
         end
       end
-    end
-  end
-
-  describe "#refreshed_access_token_for" do
-    subject(:result) { service.refreshed_access_token_for(audience: queried_audience) }
-
-    it { is_expected.to be_success }
-
-    it "returns the refreshed access token" do
-      expect(result.value!).to eq("access-token-refreshed")
-    end
-
-    context "when audience can't be found" do
-      let(:queried_audience) { "wrong-audience" }
-
-      it { is_expected.to be_failure }
     end
   end
 end

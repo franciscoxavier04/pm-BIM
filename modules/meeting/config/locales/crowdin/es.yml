@@ -60,11 +60,18 @@ es:
         end_date: "End date"
         iterations: "Repeticiones"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "no es una hora válida. Formato requerido: HH:MM"
     models:
       recurring_meeting: "Reunión periódica"
       structured_meeting: "Reunión única"
+      meeting: "Meeting"
       meeting_agenda_item: "Puntos de Agenda"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minutas"

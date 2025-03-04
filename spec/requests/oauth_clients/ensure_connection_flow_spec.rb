@@ -139,6 +139,7 @@ RSpec.describe "/oauth_clients/:oauth_client_id/ensure_connection endpoint", :we
           let!(:oauth_client_token) do
             create(:oauth_client_token, oauth_client:, user:)
           end
+          let!(:remote_identity) { create(:remote_identity, user:, integration: storage) }
 
           before do
             stub_request(:get, "#{storage.host}ocs/v1.php/cloud/user")

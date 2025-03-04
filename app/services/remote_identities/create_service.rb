@@ -32,35 +32,33 @@ module RemoteIdentities
   class CreateService
     attr_reader :user, :model
 
-    def self.call(user:, oauth_config:, oauth_client_token:)
-      new(user:, oauth_config:, oauth_client_token:).call
+    def self.call(user:, integration:, token:)
+      new(user:, integration:, token:).call
     end
 
-    def initialize(user:, oauth_config:, oauth_client_token:)
+    def initialize(user:, integration:, token:)
       @user = user
-      @oauth_config = oauth_config
-      @oauth_client_token = oauth_client_token
+      @integration = integration
+      @token = token
 
-      @model = RemoteIdentity.find_or_initialize_by(user:, oauth_client: oauth_config.oauth_client)
-      @result = ServiceResult.success(result: @model, errors: @model.errors)
+      @model = RemoteIdentity.find_or_initialize_by(user:, auth_source: token.auth_source, integration:)
     end
 
     def call
-      @model.origin_user_id = @oauth_config.extract_origin_user_id(@oauth_client_token)
-      if @model.save
-        emit_event(@oauth_config.oauth_client.integration)
+      @model.origin_user_id = @integration.extract_origin_user_id(@token)
+      if @model.changed?
+        if @model.save
+          OpenProject::Notifications.send(
+            OpenProject::Events::REMOTE_IDENTITY_CREATED,
+            integration: @integration
+          )
+          ServiceResult.success(result: @model)
+        else
+          ServiceResult.failure(result: @model, errors: @model.errors)
+        end
       else
-        @result.success = false
+        ServiceResult.success(result: @model)
       end
-
-      @result
-    end
-
-    def emit_event(integration)
-      OpenProject::Notifications.send(
-        OpenProject::Events::REMOTE_IDENTITY_CREATED,
-        integration:
-      )
     end
   end
 end

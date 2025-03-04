@@ -42,6 +42,8 @@ module Storages
             AuthenticationStrategies::Failure.new
           when :basic_auth
             AuthenticationStrategies::BasicAuth.new
+          when :bearer_token
+            AuthenticationStrategies::SpecificBearerToken.new(strategy.token)
           when :sso_user_token
             AuthenticationStrategies::SsoUserToken.new(strategy.user)
           when :oauth_user_token
@@ -55,10 +57,14 @@ module Storages
 
         # Checks for the current authorization state of a user on a specific file storage.
         # Returns one of three results:
-        # - :connected If a valid user token is available
-        # - :failed_authorization If a user token is available, which is invalid and not refreshable
+        # - :connected If requests can be made to the storage in the user's name
+        # - :failed_authorization If the token to request the storage in the user's name was rejected
+        # - :not_connected if the user still needs to establish a connection to the storage
         # - :error If an unexpected error occurred
         def self.authorization_state(storage:, user:)
+          selector = AuthenticationMethodSelector.new(storage:, user:)
+          return :not_connected if RemoteIdentity.where(integration: storage, user:).none? && selector.storage_oauth?
+
           auth_strategy = Registry.resolve("#{storage}.authentication.user_bound").call(user:, storage:)
 
           Registry

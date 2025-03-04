@@ -133,7 +133,7 @@ module Meeting::VirtualStartTime
     return nil if @start_time_hour.nil?
 
     Time.strptime(@start_time_hour, "%H:%M")
-  rescue ArgumentError
+  rescue ArgumentError, TypeError
     nil
   end
 end

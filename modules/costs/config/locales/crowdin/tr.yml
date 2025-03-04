@@ -22,7 +22,7 @@
 tr:
   plugin_costs:
     name: "Zaman ve maliyetler"
-    description: "This module adds features for planning and tracking costs of projects."
+    description: "Bu modül, projelerin maliyetlerini planlamak ve izlemek için özellikler ekler."
   activerecord:
     attributes:
       cost_entry:
@@ -30,9 +30,10 @@ tr:
         overridden_costs: "Geçersiz kılınmış maliyetler"
         spent: "Harcanan"
         spent_on: "Tarih"
+        logged_by: "Tarafından giriş yapıldı"
       cost_type:
         unit: "Birim adı"
-        unit_plural: "Birden fazla birim adı"
+        unit_plural: "Birimin çoğul adı"
         default: "Varsayılan maliyet türü"
       work_package:
         costs_by_type: "Harcanan maliyet"
@@ -60,8 +61,8 @@ tr:
         one: "Maliyet türü"
         other: "Maliyet türü"
       time_entry_activity:
-        one: "Time tracking activity"
-        other: "Time tracking activities"
+        one: "Zaman izleme etkinliği"
+        other: "Zaman izleme etkinlikleri"
       rate: "Oranlar"
     errors:
       models:
@@ -83,7 +84,7 @@ tr:
   button_add_rate: "Oran ekle"
   button_log_costs: "Günlük birim maliyetleri"
   button_log_time: "Kayıt"
-  button_add_activity: "Activity"
+  button_add_activity: "Etkinlik"
   caption_booked_on_project: "Proje rezervasyonu yaptırdı"
   caption_default: "Varsayılan"
   caption_default_rate_history_for: "%{user} için varsayılan hızı geçmişi"
@@ -96,11 +97,9 @@ tr:
   caption_set_rate: "Güncel oranı ayarla"
   caption_show_locked: "Kilitli türleri göster"
   caption_log_time_dialog: "Zaman kaydet"
-  caption_activity_order_changed: "Order successfully changed."
   description_date_for_new_rate: "Yeni oran için tarih"
-  description_costs_settings: "Define the desired format for the costs in all projects."
-  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
-  error_activity_could_not_be_moved: "Activity could not be moved."
+  description_costs_settings: "Tüm projelerdeki maliyetler için istenen biçimi tanımlayın."
+  description_time_settings: "Tüm projelerde zaman kaydı yapılırken hangi alanların doldurulmasının zorunlu olduğunu tanımlayın."
   group_by_others: "herhangi bir grupta değil"
   label_between: "arasında"
   label_cost_filter_add: "Maliyet girişi filtresi ekle"
@@ -110,9 +109,9 @@ tr:
   label_cost_type_specific: "Maliyet türü #%{id}: %{name}"
   label_costs_per_page: "Her sayfa için maliyet"
   label_current_default_rate: "Güncel varsayılan oran"
-  label_date_on: "açık"
+  label_date_on: "tarihinde"
   label_deleted_cost_types: "Silinmiş maliyet türleri"
-  label_locked_cost_types: "Kilit maliyet türleri"
+  label_locked_cost_types: "Kilitli maliyet türleri"
   label_display_cost_entries: "Birim maliyetlerini göster"
   label_display_time_entries: "Raporlanan saatleri göster"
   label_display_types: "Ekran türleri"
@@ -127,7 +126,7 @@ tr:
   label_kind: "Tür"
   label_less_or_equal: "<="
   label_log_costs: "Birim maliyet kaydet"
-  label_new_time_entry_activity: "New time entry activity"
+  label_new_time_entry_activity: "Yeni zaman girişi etkinliği"
   label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Hayır"
   label_option_plural: "Ayarlar"
@@ -142,9 +141,9 @@ tr:
   label_valid_from: "Geçerlilik"
   label_yes: "Evet"
   label_time: "Zaman"
-  label_cost: "Cost"
-  label_costs: "Costs"
-  label_mandatory_fields: "Mandatory fields"
+  label_cost: "Maliyet"
+  label_costs: "Maliyetler"
+  label_mandatory_fields: "Zorunlu alanlar"
   placeholder_activity_select_work_package_first: Öncelikle iş paketi seçimi gereklidir
   notice_something_wrong: "Bir şeyler yanlış gitti. Lütfen tekrar deneyin."
   notice_successful_restore: "Başarılı bir geri yükleme."

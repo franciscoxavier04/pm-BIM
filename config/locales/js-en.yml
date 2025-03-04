@@ -56,8 +56,7 @@ en:
       active: "Active %{label} %{name}"
 
     backup:
-      attachments_disabled:
-        Attachments may not be included since they exceed the maximum overall size allowed.
+      attachments_disabled: Attachments may not be included since they exceed the maximum overall size allowed.
         You can change this via the configuration (requires a server restart).
       info: >
         You can trigger a backup here. The process can take some time depending on the amount
@@ -246,6 +245,8 @@ en:
             label_maximum_users: "Maximum active users"
             label_starts_at: "Starts at"
             label_expires_at: "Expires at"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: I want to receive the OpenProject <a target="_blank" href="%{link}">newsletter</a>.
             taken_domain: There can only be one active trial per domain.
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -1320,8 +1321,7 @@ en:
           title: "Placeholder user"
           title_no_ee: "Placeholder user (Enterprise edition only add-on)"
           description: "Has no access to the project and no emails are sent out."
-          description_no_ee:
-            'Has no access to the project and no emails are sent out.
+          description_no_ee: 'Has no access to the project and no emails are sent out.
             <br>Check out the <a href="%{eeHref}" target="_blank">Enterprise edition</a>'
 
       principal:

@@ -219,7 +219,9 @@ jobs:
       - name: Extract vendor/bundle from container
         run: |
           docker create --name bundle ${{ steps.build.outputs.imageid }}
-          mv vendor/bundle vendor/bundle.bak
+          if [ -d vendor/bundle ]; then
+            mv vendor/bundle vendor/bundle.bak
+          fi
           docker cp bundle:/app/vendor/bundle vendor/bundle
           docker rm bundle
       - name: Save vendor/bundle
@@ -231,7 +233,11 @@ jobs:
           key: ${{ steps.restore-vendor-bundle.outputs.cache-primary-key }}
       - name: Restore pre-build vendor/bundle to prevent 2nd build from scratch during push
         run: |
-          rm -rf vendor/bundle && mv vendor/bundle.bak vendor/bundle
+          rm -rf vendor/bundle
+
+          if [ -d vendor/bundle.bak ]; then
+            mv vendor/bundle.bak vendor/bundle
+          fi
       - name: Test
         # We only test the native container. If that fails the builds for the others
         # will be cancelled as well.

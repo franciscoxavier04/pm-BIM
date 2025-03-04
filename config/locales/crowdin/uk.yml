@@ -392,6 +392,8 @@ uk:
         no_results_content_text: Створіть нову версію
       storage:
         no_results_title_text: Цей проєкт не потребує додаткового дискового простору.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Тривалість: %{count} робочий день"
@@ -650,6 +652,47 @@ uk:
     index:
       no_results_title_text: Наразі немає робочих процесів.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Один робочий пакет нащадків"
       few: "%{count} нащадки робочого пакета"
@@ -801,6 +844,7 @@ uk:
       attachment:
         attachment_content: "Вміст вкладення"
         attachment_file_name: "Назва файлу вкладеного файлу"
+        content_type: "Content-type"
         downloads: "Завантаження"
         file: "Файл"
         filename: "Файл"
@@ -808,10 +852,10 @@ uk:
       attribute_help_text:
         attribute_name: "Атрибут"
         help_text: "Довідковий текст"
+      capability:
+        context: "Context"
       changeset:
         repository: "Репозиторій"
-      color:
-        hexcode: "Двійковий код"
       comment:
         commented: "Коментар" #an object that this comment belongs to
       custom_action:
@@ -844,7 +888,10 @@ uk:
         client_credentials_user_id: "Ідентифікатор користувача для облікових даних клієнта"
         scopes: "Область дії"
         confidential: "Конфіденційний"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Дійсний з"
         subscriber: "Абонент"
         encoded_token: "Маркер підтримки підприємства"
@@ -856,6 +903,7 @@ uk:
         widgets: "Віджети"
       journal:
         notes: "Нотатки"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Обліковий запис"
         attr_firstname: "Атрибут «Ім’я»"
@@ -871,10 +919,11 @@ uk:
         tls_certificate_string: "Сертифікат SSL сервера LDAP"
       member:
         roles: "Роль"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "ID клієнта"
-      planning_element_type_color:
-        hexcode: Двійковий код
       project:
         active_value:
           true: "розархівовано"
@@ -887,6 +936,7 @@ uk:
           true: "публічний"
           false: "приватний"
         queries: "Запити"
+        enabled_modules: "Enabled modules"
         status_code: "Статус Проекту"
         description: "Опис"
         status_explanation: "Опис стану проєкту"
@@ -907,23 +957,47 @@ uk:
       project_custom_field:
         is_required: "Обов’язково для всіх проєктів"
         custom_field_section: Розділ
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Ім’я"
         color: "Колір"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Стовпці"
         relations_to_type_column: "Відносини з %{type}"
         relations_of_type_column: "%{type} відносини"
         group_by: "Групувати результати по"
+        sort_by: "Sort results by"
         filters: "Фільтри"
         timeline_labels: "Мітки часової шкали"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Затримка"
         from: "Пов’язаний пакет робіт"
         to: "Пов'язаний робочий пакет"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Дата"
         remind_at_time: "Час"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "Посилання"
       role:
@@ -933,6 +1007,9 @@ uk:
         is_readonly: "Пакет робіт лише для перегляду"
         excluded_from_totals: "Виключити з підрахунку підсумків в ієрархії"
         default_done_ratio: "% завершення"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Активність"
         hours: "Години"
@@ -946,6 +1023,11 @@ uk:
         is_default: "Активовано для нових проектів за замовчуванням"
         is_milestone: "Це віха"
         color: "Колір"
+        patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Адміністратор"
         auth_source: "Джерело автентифікації"
@@ -955,6 +1037,10 @@ uk:
         force_password_change: "Примусово змінити пароль на наступному вході в систему"
         language: "Мова"
         last_login_on: "Останній вхід"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Новий пароль"
         password_confirmation: "Підтвердження"
         consented_at: "Згоден на"
@@ -966,6 +1052,8 @@ uk:
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
         theme: "Режим"
         mode_guideline: "У деяких режимах кольори користувацької теми замінюються, щоб полегшити взаємодію з користувачем і зробити її зручнішою. Якщо потрібна повністю користувацька тема, виберіть світлий режим."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Дата закінчення"
         sharing: "Поширення"
@@ -1324,6 +1412,7 @@ uk:
               smaller_than_dates: "менша за інтервал між датами початку й закінчення."
               not_available_for_milestones: "недоступна для пакетів робіт типу «віха»."
               cannot_be_null: "не може мати нульове значення, оскільки задано дату закінчення й тривалість."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "не може бути важливою подією."
               cannot_be_self_assigned: "– не можна призначити собі."
@@ -1426,6 +1515,11 @@ uk:
       forum: "Форум"
       global_role: "Глобальна роль"
       group: "Група"
+      issue_priority:
+        one: "Priority"
+        few: "Priorities"
+        many: "Priorities"
+        other: "Priorities"
       member: "Учасник"
       news: "Новини"
       notification:
@@ -1443,6 +1537,7 @@ uk:
         many: "Списки проєктів"
         other: "Списки проєктів"
       query: "Частковий запит"
+      reminder: "Reminder"
       role:
         one: "роль"
         few: "Роль"
@@ -1519,18 +1614,25 @@ uk:
     assigned_to: "Призначений"
     assignee: "Призначений"
     attachments: "Вкладення"
+    actor: "Actor"
+    action: "Action"
     author: "Автор"
+    avatar: "Avatar"
     base: "Загальна помилка:"
+    body: "Body"
     blocks_ids: "Ідентифікатори заблокованих робочих пакетів"
     category: "Категорія"
     comment: "Коментар"
     comments: "Коментар"
     content: "Контент"
     color: "Колір"
+    creator: "Creator"
     created_at: "Створений"
+    custom_field: "Custom field"
     custom_options: "Можливі значення"
     custom_values: "Індивідуальні поля"
     date: "Дата"
+    dates_interval: "Date range"
     default_columns: "Типові колонки"
     description: "Опис"
     derived_due_date: "Отримана дата завершення"
@@ -1540,39 +1642,63 @@ uk:
     due_date: "Дата закінчення"
     estimated_hours: "Робота"
     estimated_time: "Робота"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Закінчується о"
     firstname: "Ім'я"
+    filter: "Filter"
     group: "Група"
     groups: "Групи"
+    hexcode: "Hex code"
     id: "№"
     is_default: "Значення за замовчуванням"
     is_for_all: "Для усіх проектів"
     public: "Публічний"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Пакет робіт"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Прізвище"
     login: "Ім'я користувача"
     mail: "Електронна пошта"
     name: "Ім’я"
     note: "Примітка"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Пароль"
     priority: "Пріоритет"
     project: "Проект"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Відповідальний"
+    required: "Required"
+    recipient: "Recipient"
     role: "роль"
     roles: "Роль"
+    search: "Search"
     start_date: "Початок"
     status: "Статус"
+    state: "State"
     subject: "Тема"
+    slug: "Slug"
     summary: "Резюме"
+    text: "Text"
     title: "Назва"
     type: "Тип"
+    typeahead: "Autocomplete"
     updated_at: "Оновлене"
     updated_on: "Оновлене"
     uploader: "Завантажувач"
     user: "Користувач"
+    username: "Username"
+    unit: "Unit"
     value: "Значення"
+    values: "Values"
     version: "Версія"
+    visible: "Visible"
     work_package: "Пакет робіт"
   backup:
     failed: "Помилка резервної копії"
@@ -1923,6 +2049,8 @@ uk:
   enumeration_activities: "Дії щодо відстеження часу"
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Єдиний вхід (SSO) для користувача %{value} не вдалося "
   error_can_not_archive_project: "Цей проєкт не можна архівувати: %{errors}"
   error_can_not_delete_entry: "Неможливо видалити запис"
@@ -2012,6 +2140,7 @@ uk:
         input_label_report: "Додати стовпці в таблицю атрибутів"
         input_caption_report: "За замовчуванням вибрано всі атрибути, додані як стовпці в список пакетів робіт. Довгі текстові поля недоступні в таблиці атрибутів, але можуть відображатися під нею."
         input_caption_table: "За замовчуванням вибрано всі атрибути, додані як стовпці в список пакетів робіт. Довгі текстові поля недоступні в експортах даних таблиці."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "Тип експорту PDF"
@@ -2186,6 +2315,8 @@ uk:
           Обчислення прогресу автоматично <a href="%{href}" target="_blank">переведено в режим на основі робіт</a>, і його результати скориговано відповідно до оновленої версії</a>.
         progress_calculation_adjusted: >-
           Результати обчислення прогресу автоматично <a href="%{href}" target="_blank">скориговано відповідно до оновленої версії</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Результати обчислення обсягу й прогресу виконання роботи автоматично вилучено з небатьківських пакетів робіт з <a href="%{href}" target="_blank">оновленням версії</a>. Це завдання з технічного обслуговування, і його можна ігнорувати.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2487,6 +2618,7 @@ uk:
   label_filter: "Фільтри"
   label_filter_add: "Додати фільтр"
   label_filter_by: "Фільтрувати за"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Фільтри"
   label_filters_toggle: "Показати / приховати фільтри"
   label_float: "З плаваючою крапкою"
@@ -2766,6 +2898,7 @@ uk:
   label_roadmap_overdue: "%{value} запізнення"
   label_role_and_permissions: "Ролі і права доступу"
   label_role_new: "Нова роль"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Роль"
   label_role_search: "Призначити роль для нових членів"
   label_scm: "Тип сховища"
@@ -2819,6 +2952,7 @@ uk:
   label_title: "Назва"
   label_projects_menu: "Проекти"
   label_today: "сьогодні"
+  label_token_version: "Token Version"
   label_top_menu: "Верхнє меню"
   label_topic_plural: "Теми"
   label_total: "Усього"
@@ -3466,6 +3600,12 @@ uk:
     activated: "активовано"
     deactivated: "деактивовано"
   search_input_placeholder: "Пошук ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Спільне використання ресурсів із різних джерел (CORS)"
   setting_apiv3_cors_enabled: "Увімкнути CORS"
   setting_apiv3_cors_origins: "Дозволені джерела CORS (Cross-Origin Resource Sharing) в API версії 3"
@@ -4307,3 +4447,29 @@ uk:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Служба єдиного входу"
     description: "Додає постачальника OmniAuth SAML в OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

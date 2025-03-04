@@ -30,10 +30,10 @@
 
 module Storages::Storages
   class NextcloudAudienceContract < ::ModelContract
-    attribute :nextcloud_audience
-    validates :nextcloud_audience, presence: true, if: -> { nextcloud_storage_authenticate_via_idp? }
+    attribute :storage_audience
+    validates :storage_audience, presence: true, if: -> { nextcloud_storage_authenticate_via_idp? }
 
-    # Adding this to allow writing the nextcloud_audience
+    # Adding this to allow writing the storage_audience
     attribute :provider_fields
 
     private

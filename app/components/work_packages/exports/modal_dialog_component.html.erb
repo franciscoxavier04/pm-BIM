@@ -39,10 +39,12 @@
                   "application-target": "dynamic",
                   action: "submit->work-packages--export--form#submitForm",
                   controller: "work-packages--export--form",
+                  "work-packages--export--form-job-status-dialog-id-value": MODAL_ID,
                   "work-packages--export--form-job-status-dialog-url-value": job_status_dialog_path("_job_uuid_")
                 }
               ) do |form| %>
             <input type="hidden" name="query" value="<%= query_params %>">
+            <input type="hidden" name="format" value="<%= format[:id] %>">
             <%= render(format[:component].new(query)) %>
           <% end %>
         <% end %>
@@ -54,7 +56,6 @@
     <%= render(
           Primer::ButtonComponent.new(
             data: {
-              "close-dialog-id": MODAL_ID,
               "work-packages--export--dialog-target": "submit"
             },
             scheme: :primary, type: :submit,

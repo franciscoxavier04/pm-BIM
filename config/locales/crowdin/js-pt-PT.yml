@@ -221,6 +221,8 @@ pt-PT:
             label_maximum_users: "Máximo de utilizadores ativos"
             label_starts_at: "Começa em"
             label_expires_at: "Expira a"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Quero receber a <a target="_blank" href="%{link}">newsletter</a> do OpenProject.
             taken_domain: Só pode haver um teste ativo por domínio.
             domain_mismatch: O nome de host da requisição atual não corresponde ao nome de host configurado. Verifique novamente as configurações do seu sistema.
@@ -851,8 +853,6 @@ pt-PT:
       select_branch: "Selecionar o branch"
     field_value_enter_prompt: "Insira um valor para '%{field}'"
     project_menu_details: "Detalhes"
-    scheduling:
-      manual: "Agendamento manual"
     sort:
       sorted_asc: "Ordenação crescente aplicada, "
       sorted_dsc: "Ordenação decrescente aplicada, "
@@ -900,15 +900,6 @@ pt-PT:
       comment_send_failed: "Ocorreu um erro. Não foi possível submeter o comentário."
       comment_updated: "O comentário foi atualizado com sucesso."
       confirm_edit_cancel: "Tem certeza que deseja cancelar a edição do pacote de trabalho?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Agendado automaticamente. As datas são derivadas das relações."
-        manually_scheduled: "Agendamento manual habilitado, todas as relações ignoradas."
-        start_date_limited_by_relations: "As datas de início e término disponíveis são limitadas pelas relações."
-        changing_dates_affects_follow_relations: "Alterar estas datas vai afetar datas de pacotes de trabalho relacionados."
-        click_on_show_relations_to_open_gantt: 'Clique em "%{button_name}" para uma visão geral do GANTT.'
-        show_relations: "Mostrar relações"
-        ignore_non_working_days:
-          title: "Apenas dias úteis"
       description_filter: "Filtro"
       description_enter_text: "Digite o texto"
       description_options_hide: "Ocultar opções"

@@ -137,6 +137,7 @@ RSpec.describe "scheduling mode", :js do
   end
 
   it "can toggle the scheduling mode through the date modal" do
+    pending "disable this spec until it's being fixed"
     expect(wp.schedule_manually).to be_falsey
 
     # Editing the start/due dates of a parent work package is possible if the

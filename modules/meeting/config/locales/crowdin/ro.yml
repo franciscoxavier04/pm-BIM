@@ -61,11 +61,18 @@ ro:
         end_date: "Dată sfârșit"
         iterations: "Apariţii"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "nu este o oră valabilă. Format necesar: HH:MM"
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
+      meeting: "Meeting"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Agendă"
       meeting_minutes: "Minute"

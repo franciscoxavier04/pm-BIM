@@ -7,11 +7,24 @@ GIT
       capybara (~> 3.36)
 
 GIT
-  remote: https://github.com/opf/md-to-pdf
-  revision: 5a3938c7721f406af2adebe5ccab58d8f13aeb6b
-  ref: 5a3938c7721f406af2adebe5ccab58d8f13aeb6b
+  remote: https://github.com/opf/ferrum.git
+  revision: 889b29926f017530a0e087b1db0bc02747e437b1
+  ref: mouse-events-buttons-property-0.15
   specs:
-    md_to_pdf (0.1.5)
+    ferrum (0.15)
+      addressable (~> 2.5)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (~> 0.7)
+
+GIT
+  remote: https://github.com/opf/md-to-pdf
+  revision: 66893683b94a5fe8f1dc9a60600773307209cdd2
+  ref: 66893683b94a5fe8f1dc9a60600773307209cdd2
+  specs:
+    md_to_pdf (0.2.0)
+      base64 (~> 0.2)
+      bigdecimal (~> 3.1)
       color_conversion (~> 0.1)
       front_matter_parser (~> 1.0)
       json-schema (~> 4.3)
@@ -24,11 +37,11 @@ GIT
 
 GIT
   remote: https://github.com/opf/omniauth
-  revision: fe862f986b2e846e291784d2caa3d90a658c67f0
-  ref: fe862f986b2e846e291784d2caa3d90a658c67f0
+  revision: 7eb21563ba047ef86d71f099975587b5ec88f9c9
+  ref: 7eb21563ba047ef86d71f099975587b5ec88f9c9
   specs:
-    omniauth (1.9.0)
-      hashie (>= 3.4.6, < 3.7.0)
+    omniauth (1.9.2)
+      hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
 
 GIT
@@ -57,17 +70,6 @@ GIT
     turbo_tests (2.2.0)
       parallel_tests (>= 3.3.0, < 5)
       rspec (>= 3.10)
-
-GIT
-  remote: https://github.com/toy/ferrum.git
-  revision: 889b29926f017530a0e087b1db0bc02747e437b1
-  ref: mouse-events-buttons-property-0.15
-  specs:
-    ferrum (0.15)
-      addressable (~> 2.5)
-      concurrent-ruby (~> 1.1)
-      webrick (~> 1.7)
-      websocket-driver (~> 0.7)
 
 PATH
   remote: modules/auth_plugins
@@ -289,6 +291,8 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+    active_record_doctor (1.15.0)
+      activerecord (>= 4.2.0)
     activejob (7.1.5.1)
       activesupport (= 7.1.5.1)
       globalid (>= 0.3.6)
@@ -730,7 +734,7 @@ GEM
       addressable (~> 2.8)
       childprocess (~> 5.0)
       logger (~> 1.6)
-    lefthook (1.11.0)
+    lefthook (1.11.2)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
     letter_opener_web (3.0.0)
@@ -854,12 +858,12 @@ GEM
       actionview
       openproject-octicons (= 19.20.0)
       railties
-    openproject-primer_view_components (0.55.0)
+    openproject-primer_view_components (0.56.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
       openproject-octicons (>= 19.20.0)
       view_component (>= 3.1, < 4.0)
-    openproject-token (4.0.0)
+    openproject-token (5.0.0)
       activemodel
     openssl (3.3.0)
     openssl-signature_algorithm (1.3.0)
@@ -1058,7 +1062,7 @@ GEM
     rspec-support (3.13.2)
     rspec-wait (1.0.1)
       rspec (>= 3.4)
-    rubocop (1.72.2)
+    rubocop (1.73.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -1069,7 +1073,7 @@ GEM
       rubocop-ast (>= 1.38.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.0)
+    rubocop-ast (1.38.1)
       parser (>= 3.3.1.0)
     rubocop-capybara (2.21.0)
       rubocop (~> 1.41)
@@ -1265,6 +1269,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-xml_parser (~> 2.0.0)
+  active_record_doctor (~> 1.15.0)
   activemodel-serializers-xml (~> 1.0.1)
   activerecord-import (~> 2.1.0)
   activerecord-nulldb-adapter (~> 1.1.0)
@@ -1380,12 +1385,12 @@ DEPENDENCIES
   openproject-octicons (~> 19.20.0)
   openproject-octicons_helper (~> 19.20.0)
   openproject-openid_connect!
-  openproject-primer_view_components (~> 0.55.0)
+  openproject-primer_view_components (~> 0.56.0)
   openproject-recaptcha!
   openproject-reporting!
   openproject-storages!
   openproject-team_planner!
-  openproject-token (~> 4.0)
+  openproject-token (~> 5.0)
   openproject-two_factor_authentication!
   openproject-webhooks!
   openproject-xls_export!
@@ -1484,6 +1489,7 @@ CHECKSUMS
   actionpack-xml_parser (2.0.1) sha256=40cb461ee99445314ab580a783fb7413580deb8b28113c9e70ecd7c1b334d5e6
   actiontext (7.1.5.1) sha256=b8e261cfad5bc6a78b3f15be5e7c7f32190041b3dc6f027a3a353b4392d2f7ec
   actionview (7.1.5.1) sha256=8c559a213501798e29b50b5341a643a70bbf6fa0aa2abaf571d0efc59dc4f6aa
+  active_record_doctor (1.15.0) sha256=614a49e259a679d17cbc62dead9217acaf7191a371115606132473123b426b13
   activejob (7.1.5.1) sha256=7633376c857f4c491d06b5a7f5d86d9f07afc595398354a3f1abe80eb7e35767
   activemodel (7.1.5.1) sha256=74727466854a7fbdfe8f2702ca3112b23877500d4926bf7e02e921ad542191f1
   activemodel-serializers-xml (1.0.3) sha256=fa1b16305e7254cc58a59c68833e3c0a593a59c8ab95d3be5aaea7cd9416c397
@@ -1671,7 +1677,7 @@ CHECKSUMS
   ladle (1.0.1) sha256=e8586964108c798d48bf57d2a65bd5602e8e5223a176b6602a0fb36c0bda90dc
   language_server-protocol (3.17.0.4) sha256=c484626478664fd13482d8180947c50a8590484b1258b99b7aedb3b69df89669
   launchy (3.1.1) sha256=72b847b5cc961589dde2c395af0108c86ff0119f42d4648d25b5440ebb10059e
-  lefthook (1.11.0) sha256=fb0e39ec4a461f088f2cae78fa0294a92ff09233de57cf2ecf65202295d19f1f
+  lefthook (1.11.2) sha256=4bcd3c5bba4996727d96fffcf02e090f50bf672ca76677f46ba0f98a862eddc2
   letter_opener (1.10.0) sha256=2ff33f2e3b5c3c26d1959be54b395c086ca6d44826e8bf41a14ff96fdf1bdbb2
   letter_opener_web (3.0.0) sha256=3f391efe0e8b9b24becfab5537dfb17a5cf5eb532038f947daab58cb4b749860
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
@@ -1685,7 +1691,7 @@ CHECKSUMS
   marcel (1.0.4) sha256=0d5649feb64b8f19f3d3468b96c680bae9746335d02194270287868a661516a4
   markly (0.12.1) sha256=fda3a53ec29e349e9c30e34cf9da322aa260d66627f75b2d3a8ad9633e5cbab9
   matrix (0.4.2) sha256=71083ccbd67a14a43bfa78d3e4dc0f4b503b9cc18e5b4b1d686dc0f9ef7c4cc0
-  md_to_pdf (0.1.5)
+  md_to_pdf (0.2.0)
   messagebird-rest (1.4.2) sha256=1501e16ad76c87558f20f3b26cb39d05f587b349b44b8bf8056b040e9b495301
   meta-tags (2.22.1) sha256=e5ae1febbd320d396c7226d7edb868e5d63466c14b9c8b06622a1a74e6dce354
   method_source (1.1.0) sha256=181301c9c45b731b4769bc81e8860e72f9161ad7d66dd99103c9ab84f560f5c5
@@ -1719,7 +1725,7 @@ CHECKSUMS
   nokogiri (1.18.3-x86_64-linux-musl) sha256=8aaecc22c0e5f12dac613e15f9a04059c3ec859d6f98f493cc831bd88fe8e731
   oj (3.16.10) sha256=7f26bed974e331e16d579b470b0865010757f6fe6ee30ea9b67df653fbe13d7c
   okcomputer (1.18.6) sha256=578eee04ad6b3a8ae8e428c39fbff3ca74d1d358f5b21734e73994bf419db092
-  omniauth (1.9.0)
+  omniauth (1.9.2)
   omniauth-openid-connect (0.4.1)
   omniauth-openid_connect-providers (0.2.0)
   omniauth-saml (1.10.5) sha256=946f0c6eb9266642835ad54eca1d0725f5e5cf26e18d1fd7711dabeceddfea8c
@@ -1743,12 +1749,12 @@ CHECKSUMS
   openproject-octicons (19.20.0) sha256=f8a4ad2aa708505aba81b8362ddf9e4f8e992433f30a63d96f2007795c5419ec
   openproject-octicons_helper (19.20.0) sha256=517f2feb3f9526d640f57b77579325abdb7218a0f81a1fcda28837873498efb0
   openproject-openid_connect (1.0.0)
-  openproject-primer_view_components (0.55.0) sha256=1ee4ed1ee60c41604f30f8ce074ff8929ed6c79873c394f4128614289ddac235
+  openproject-primer_view_components (0.56.0) sha256=a54603c33cb154bdbe6f24e8cbad9ce99a4f12be6f5526196bb5df73bb68eb1e
   openproject-recaptcha (1.0.0)
   openproject-reporting (1.0.0)
   openproject-storages (1.0.0)
   openproject-team_planner (1.0.0)
-  openproject-token (4.0.0) sha256=f71cdad5632b6b7b598223b185f4928366cb6038eca1a84a6de65cf15cecd0e0
+  openproject-token (5.0.0) sha256=ffc2442d684c929db3eb9f4eedf43349f8c178561f44174cc2f41241daf956b8
   openproject-two_factor_authentication (1.0.0)
   openproject-webhooks (1.0.0)
   openproject-xls_export (1.0.0)
@@ -1832,8 +1838,8 @@ CHECKSUMS
   rspec-retry (0.6.2) sha256=6101ba23a38809811ae3484acde4ab481c54d846ac66d5037ccb40131a60d858
   rspec-support (3.13.2) sha256=cea3a2463fd9b84b9dcc9685efd80ea701aa8f7b3decb3b3ce795ed67737dbec
   rspec-wait (1.0.1) sha256=50ce9cc7cd20b8bb67b95a4ed56b59a16d4af7e86ae91b28dbf20eeaa2481d1f
-  rubocop (1.72.2) sha256=0259a32d89fee60882bf4c4d8847e696357719c9db4971839da742bf053ae96b
-  rubocop-ast (1.38.0) sha256=4fdf6792fe443a9a18acb12dbc8225d0d64cd1654e41fedb30e79c18edbb26ae
+  rubocop (1.73.0) sha256=8a86a9030594cda8d90bd39a3b2d4f21319065b29a8ce19c843d02b5a26d648f
+  rubocop-ast (1.38.1) sha256=80ecbe2ac9bb26693cab9405bf72b41b85a1f909f20f021b983c32c2e7d857fe
   rubocop-capybara (2.21.0) sha256=5d264efdd8b6c7081a3d4889decf1451a1cfaaec204d81534e236bc825b280ab
   rubocop-factory_bot (2.26.1) sha256=8de13cd4edcee5ca800f255188167ecef8dbfc3d1fae9f15734e9d2e755392aa
   rubocop-openproject (0.2.0) sha256=2300ed6b638a34a9368b458dc5fb618ae396da6a27670b50519ad1e3cea65ccb

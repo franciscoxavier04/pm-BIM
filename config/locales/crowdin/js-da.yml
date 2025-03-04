@@ -220,6 +220,8 @@ da:
             label_maximum_users: "Maximum active users"
             label_starts_at: "Starter fra"
             label_expires_at: "Expires at"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Jeg ønsker at modtage OpenProject <a target="_blank" href="%{link}">nyhedsbrevet</a>.
             taken_domain: Der kan kun være én aktiv prøve pr. domæne.
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -850,8 +852,6 @@ da:
       select_branch: "Vælg gren"
     field_value_enter_prompt: "Indtast en værdi for '%{field}'"
     project_menu_details: "Detaljer"
-    scheduling:
-      manual: "Manual scheduling"
     sort:
       sorted_asc: "Ascending sort applied, "
       sorted_dsc: "Descending sort applied, "
@@ -899,15 +899,6 @@ da:
       comment_send_failed: "En fejl opstod. Kunne ikke indsende kommentaren."
       comment_updated: "Kommentaren blev opdateret."
       confirm_edit_cancel: "Are you sure you want to cancel editing the work package?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatically scheduled. Dates are derived from relations."
-        manually_scheduled: "Manual scheduling enabled, all relations ignored."
-        start_date_limited_by_relations: "Available start and finish dates are limited by relations."
-        changing_dates_affects_follow_relations: "Changing these dates will affect dates of related work packages."
-        click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for GANTT overview.'
-        show_relations: "Show relations"
-        ignore_non_working_days:
-          title: "Working days only"
       description_filter: "Filter"
       description_enter_text: "Indtast tekst"
       description_options_hide: "Gem muligheder"

@@ -38,9 +38,15 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
 
   shared_let(:storage) do
     # Automatically Managed Project Folder Drive
-    create(:sharepoint_dev_drive_storage,
-           drive_id: "b!dmVLG22QlE2PSW0AqVB7UOhZ8n7tjkVGkgqLNnuw2ODRDvn3haLiQIhB5UYNdqMy",
-           oauth_client_token_user: admin)
+    s = create(:sharepoint_dev_drive_storage,
+               drive_id: "b!dmVLG22QlE2PSW0AqVB7UOhZ8n7tjkVGkgqLNnuw2ODRDvn3haLiQIhB5UYNdqMy",
+               oauth_client_token_user: admin)
+    create(:remote_identity,
+           auth_source: s.oauth_client,
+           user: admin,
+           integration: s,
+           origin_user_id: "33db2c84-275d-46af-afb0-c26eb786b194")
+    s
   end
 
   # USER FACTORIES
@@ -48,7 +54,8 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
   shared_let(:single_project_user_token) do
     create(:remote_identity,
            user: single_project_user,
-           oauth_client: storage.oauth_client,
+           auth_source: storage.oauth_client,
+           integration: storage,
            origin_user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba")
   end
 
@@ -56,7 +63,8 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
   shared_let(:multiple_project_user_token) do
     create(:remote_identity,
            user: multiple_projects_user,
-           oauth_client: storage.oauth_client,
+           auth_source: storage.oauth_client,
+           integration: storage,
            origin_user_id: "248aeb72-b231-4e71-a466-67fa7df2a285")
   end
 

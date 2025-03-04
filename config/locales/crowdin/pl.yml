@@ -392,6 +392,8 @@ pl:
         no_results_content_text: Utwórz nową wersję projektu
       storage:
         no_results_title_text: Nie ma dodatkowego zarejestrowanego miejsca na dysku zużytego przez ten projekt.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Czas trwania: %{count} dzień roboczy"
@@ -652,6 +654,47 @@ pl:
     index:
       no_results_title_text: Nie ma jeszcze żadnego obiegu pracy.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Jeden potomny pakiet roboczy"
       few: "Wiele potomnych pakietów roboczych (%{count})"
@@ -803,6 +846,7 @@ pl:
       attachment:
         attachment_content: "Zawartość załącznika"
         attachment_file_name: "Nazwa pliku załącznika"
+        content_type: "Content-type"
         downloads: "Pliki do pobrania"
         file: "Plik"
         filename: "Plik"
@@ -810,10 +854,10 @@ pl:
       attribute_help_text:
         attribute_name: "Atrybut"
         help_text: "Tekst pomocy"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repozytorium"
-      color:
-        hexcode: "Kod szesnastkowy"
       comment:
         commented: "Skomentował" #an object that this comment belongs to
       custom_action:
@@ -846,7 +890,10 @@ pl:
         client_credentials_user_id: "Identyfikator użytkownika poświadczeń klienta"
         scopes: "Zakresy"
         confidential: "Poufne"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Ważne od"
         subscriber: "Subskrybent"
         encoded_token: "Token wsparcia Enterprise"
@@ -858,6 +905,7 @@ pl:
         widgets: "Widżety"
       journal:
         notes: "Notatki"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Konto"
         attr_firstname: "Atrybut imienia"
@@ -873,10 +921,11 @@ pl:
         tls_certificate_string: "Certyfikat SSL serwera LDAP"
       member:
         roles: "Role"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Identyfikator klienta"
-      planning_element_type_color:
-        hexcode: Kod szesnastkowy
       project:
         active_value:
           true: "niezarchiwizowane"
@@ -889,6 +938,7 @@ pl:
           true: "publiczne"
           false: "prywatne"
         queries: "Kwerendy"
+        enabled_modules: "Enabled modules"
         status_code: "Stan projektu"
         description: "Opis"
         status_explanation: "Opis statusu projektu"
@@ -909,23 +959,47 @@ pl:
       project_custom_field:
         is_required: "Wymagane dla wszystkich projektów"
         custom_field_section: Sekcja
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
         name: "Nazwa"
         color: "Kolor"
       query:
+        sums: "Sums"
+        columns: "Columns"
         column_names: "Kolumny"
         relations_to_type_column: "Relacje %{type}"
         relations_of_type_column: " %{type} relacji"
         group_by: "Grupuj wyniki"
+        sort_by: "Sort results by"
         filters: "Filtry"
         timeline_labels: "Etykiety osi czasu"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Results"
       relation:
         lag: "Opóźnienie"
         from: "Powiązany pakiet roboczy"
         to: "Powiązanie zadania"
+        relation_type: "Relation type"
       reminder:
+        remindable: "Reminded object"
+        remind_at: "Remind at"
         remind_at_date: "Data"
         remind_at_time: "Godzina"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "ADRES URL"
       role:
@@ -935,6 +1009,9 @@ pl:
         is_readonly: "Pakiet roboczy tylko do odczytu"
         excluded_from_totals: "Wyłącz z obliczania sum w hierarchii"
         default_done_ratio: "% ukończenia"
+      token/ical:
+        calendar: "Calendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Działanie"
         hours: "Godziny"
@@ -948,6 +1025,11 @@ pl:
         is_default: "Domyślnie aktywny dla nowych projektów"
         is_milestone: "Jest Kamieniem Milowym"
         color: "Kolor"
+        patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrator"
         auth_source: "Źródło uwierzytelniania"
@@ -957,6 +1039,10 @@ pl:
         force_password_change: "Wymusza zmianę hasła przy następnym logowaniu"
         language: "Język"
         last_login_on: "Ostatnie logowanie"
+        failed_login_count: "Failed login attempts"
+        first_name: "First name"
+        last_name: "Last name"
+        first_login: "First login"
         new_password: "Nowe hasło"
         password_confirmation: "Potwierdzenie"
         consented_at: "Zgodę na"
@@ -968,6 +1054,8 @@ pl:
         warn_on_leaving_unsaved: "Ostrzegaj mnie, gdy opuszczam zadanie z niezapisanymi zmianami"
         theme: "Tryb"
         mode_guideline: "Niektóre tryby zastąpią niestandardowe kolory motywu w celu zapewnienia dostępności i czytelności. Aby stosować pełny motyw niestandardowy, wybierz tryb Jasny."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Data zakończenia"
         sharing: "Udostępnianie"
@@ -1326,6 +1414,7 @@ pl:
               smaller_than_dates: "jest krótszy niż interwał między datą rozpoczęcia i zakończenia."
               not_available_for_milestones: "nie jest dostępny dla pakietów prac wpisywanych jako \"kamienie milowe\"."
               cannot_be_null: "nie można ustawić na wartość zero, ponieważ data rozpoczęcia, zakończenia i czas trwania są znane."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "nie może być kamieniem milowym."
               cannot_be_self_assigned: "nie może być przypisany do siebie."
@@ -1428,6 +1517,11 @@ pl:
       forum: "Forum"
       global_role: "Rola globalna"
       group: "Grupa"
+      issue_priority:
+        one: "Priority"
+        few: "Priorities"
+        many: "Priorities"
+        other: "Priorities"
       member: "Członek"
       news: "Aktualności"
       notification:
@@ -1445,6 +1539,7 @@ pl:
         many: "List projektów"
         other: "Listy projektów"
       query: "Kwerenda użytkownika"
+      reminder: "Reminder"
       role:
         one: "Rola"
         few: "Rol"
@@ -1521,18 +1616,25 @@ pl:
     assigned_to: "Przypisany do"
     assignee: "Przypisana osoba"
     attachments: "Załączniki"
+    actor: "Actor"
+    action: "Action"
     author: "Autor"
+    avatar: "Avatar"
     base: "Błąd ogólny:"
+    body: "Body"
     blocks_ids: "Identyfikatory zablokowanych pakietów roboczych"
     category: "Kategoria"
     comment: "Typ kosztu"
     comments: "Komentarz"
     content: "Zawartość"
     color: "Kolor"
+    creator: "Creator"
     created_at: "Utworzone"
+    custom_field: "Custom field"
     custom_options: "Możliwe wartości"
     custom_values: "Pola niestandardowe"
     date: "Data"
+    dates_interval: "Date range"
     default_columns: "Domyślne kolumny"
     description: "Opis"
     derived_due_date: "Wyprowadzona data zakończenia"
@@ -1542,39 +1644,63 @@ pl:
     due_date: "Data zakończenia"
     estimated_hours: "Praca"
     estimated_time: "Praca"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Wygasa"
     firstname: "Imię"
+    filter: "Filter"
     group: "Grupa"
     groups: "Grupy"
+    hexcode: "Hex code"
     id: "ID"
     is_default: "Wartość domyślna"
     is_for_all: "Dla wszystkich projektów"
     public: "Publiczny"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Zadanie"
+    journal: "Journal"
+    journal_notes: "Comment"
     lastname: "Nazwisko"
     login: "Nazwa użytkownika"
     mail: "Adres e-mail"
     name: "Nazwa"
     note: "Uwaga"
+    notes: "Notes"
+    number: "Number"
+    options: "Options"
+    operator: "Operator"
     password: "Hasło"
     priority: "Priorytet"
     project: "Projekt"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Osoba odpowiedzialna"
+    required: "Required"
+    recipient: "Recipient"
     role: "Rola"
     roles: "Role"
+    search: "Search"
     start_date: "Data rozpoczęcia"
     status: "Status"
+    state: "State"
     subject: "Temat"
+    slug: "Slug"
     summary: "Podsumowanie"
+    text: "Text"
     title: "Tytuł"
     type: "Typ"
+    typeahead: "Autocomplete"
     updated_at: "Aktualizacja"
     updated_on: "Aktualizacja"
     uploader: "Osoba przesyłająca"
     user: "Użytkownik"
+    username: "Username"
+    unit: "Unit"
     value: "Wartość"
+    values: "Values"
     version: "Wersja"
+    visible: "Visible"
     work_package: "Zadanie"
   backup:
     failed: "Tworzenie kopii zapasowej nie powiodło się"
@@ -1925,6 +2051,8 @@ pl:
   enumeration_activities: "Działania śledzenia czasu"
   enumeration_work_package_priorities: "Priorytety pakietów roboczych"
   enumeration_reported_project_statuses: "Status zgłoszonego projektu"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Pojedyncze logowanie (SSO) dla użytkownika '%{value}' nie powiodło się"
   error_can_not_archive_project: "Tego projektu nie można zarchiwizować: %{errors}"
   error_can_not_delete_entry: "Nie można usunąć wpisu"
@@ -2014,6 +2142,7 @@ pl:
         input_label_report: "Dodaj kolumny do tabeli atrybutów"
         input_caption_report: "Domyślnie zaznaczone są wszystkie atrybuty dodane jako kolumny na liście pakietów roboczych. Długie pola tekstowe nie są dostępne w tabeli atrybutów, ale mogą być wyświetlane pod nią."
         input_caption_table: "Domyślnie zaznaczone są wszystkie atrybuty dodane jako kolumny na liście pakietów roboczych. Długie pola tekstowe nie są dostępne w eksportach opartych na tabelach."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "Typ eksportu PDF"
@@ -2188,6 +2317,8 @@ pl:
           Obliczanie postępu jest automatycznie <a href="%{href}" target="_blank">ustawiane na tryb oparty na pracy i dostosowywane wraz z aktualizacją wersji</a>.
         progress_calculation_adjusted: >-
           Obliczanie postępu jest automatycznie <a href="%{href}" target="_blank">dostosowywane wraz z aktualizacją wersji</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Sumy pracy i postępu są automatycznie usuwane dla pakietów pracy innych niż nadrzędne wraz z <a href="%{href}" target="_blank">aktualizacją wersji</a>. Jest to zadanie konserwacyjne i można je bezpiecznie zignorować.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2489,6 +2620,7 @@ pl:
   label_filter: "Filtry"
   label_filter_add: "Dodaj filtr"
   label_filter_by: "Filtruj według"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filtry"
   label_filters_toggle: "Pokaż/Ukryj filtry"
   label_float: "Liczba rzeczywista"
@@ -2768,6 +2900,7 @@ pl:
   label_roadmap_overdue: "%{value} late"
   label_role_and_permissions: "Role i uprawnienia"
   label_role_new: "Nowa rola"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Role"
   label_role_search: "Przydziel role nowemu członkowi"
   label_scm: "SCM"
@@ -2821,6 +2954,7 @@ pl:
   label_title: "Tytuł"
   label_projects_menu: "Projekty"
   label_today: "dzisiaj"
+  label_token_version: "Token Version"
   label_top_menu: "Głowne Menu"
   label_topic_plural: "Tematy"
   label_total: "Ogółem"
@@ -3467,6 +3601,12 @@ pl:
     activated: "aktywowano"
     deactivated: "dezaktywowano"
   search_input_placeholder: "Wyszukaj ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Współdzielenie zasobów między źródłami (CORS)"
   setting_apiv3_cors_enabled: "Włącz CORS"
   setting_apiv3_cors_origins: "Dozwolone źródła mechanizmu Cross-Origin Resource Sharing (CORS) interfejsu API V3"
@@ -4309,3 +4449,29 @@ pl:
   plugin_openproject_auth_saml:
     name: "SAML OmniAuth / pojedyncze logowanie"
     description: "Dodaje dostawcę SAML OmniAuth do OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation
