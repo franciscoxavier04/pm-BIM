@@ -30,7 +30,7 @@
 
 require "spec_helper"
 
-RSpec.describe RecurringMeetings::UpdateService, "integration", freeze_time: Time.zone.today + 12.hours, type: :model do
+RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
   shared_let(:project) { create(:project, enabled_module_names: %i[meetings]) }
   shared_let(:user) do
     create(:user, member_with_permissions: { project => %i(view_meetings edit_meetings) })

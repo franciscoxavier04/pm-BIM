@@ -162,6 +162,20 @@ RSpec.describe "work package export", :js, :selenium do
     end
   end
 
+  context "in a split view" do
+    before do
+      wp_table.visit_query query
+      work_packages_page.ensure_loaded
+      wp_table.open_split_view(wp1)
+    end
+
+    it "opens the dialog and exports" do
+      settings_menu.open_and_choose I18n.t("js.toolbar.settings.export")
+      click_on export_type
+      export!
+    end
+  end
+
   context "with CSV export" do
     let(:export_type) { I18n.t("export.dialog.format.options.csv.label") }
     let(:expected_mime_type) { :csv }

@@ -28,18 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module OpenIDConnect
-  module Providers
-    class MetadataUrlForm < BaseForm
-      form do |f|
-        f.text_field(
-          name: :metadata_url,
-          label: I18n.t("openid_connect.settings.endpoint_url"),
-          required: false,
-          disabled: provider.seeded_from_env?,
-          caption: I18n.t("openid_connect.instructions.endpoint_url"),
-          input_width: :xlarge
-        )
+require "spec_helper"
+
+RSpec.describe Types::BaseContract do
+  let(:current_user) { build_stubbed(:user) }
+  let(:work_package_type) { Type.new }
+
+  subject(:contract) { described_class.new(work_package_type, current_user) }
+
+  describe "#validation" do
+    context "if subject generation patterns contains invalid tokens" do
+      let(:valid_tokens_hash) { { work_package: { assignee: "Assignee" } } }
+      let(:work_package_type) do
+        Type.new(patterns: { subject: { blueprint: "Vacation {{vaders_toy}}", enabled: true } })
+      end
+
+      before do
+        token_mapper_double = instance_double(Types::Patterns::TokenPropertyMapper)
+        allow(token_mapper_double).to receive(:tokens_for_type).and_return(valid_tokens_hash)
+        allow(Types::Patterns::TokenPropertyMapper).to receive(:new).and_return(token_mapper_double)
+      end
+
+      it "is invalid" do
+        contract.validate
+        expect(subject.errors.symbols_for(:patterns)).to contain_exactly(:invalid_tokens)
       end
     end
   end

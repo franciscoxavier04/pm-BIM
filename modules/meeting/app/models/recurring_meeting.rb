@@ -39,7 +39,7 @@ class RecurringMeeting < ApplicationRecord
   belongs_to :project
   belongs_to :author, class_name: "User"
 
-  validates_presence_of :start_time, :title, :frequency, :end_after
+  validates_presence_of :start_time, :title, :frequency, :end_after, :time_zone
   validates_presence_of :end_date, if: -> { end_after_specific_date? }
   validates_numericality_of :iterations,
                             only_integer: true,
@@ -134,6 +134,10 @@ class RecurringMeeting < ApplicationRecord
 
   def date
     start_time.day.ordinalize
+  end
+
+  def start_time
+    super&.in_time_zone(time_zone)
   end
 
   def schedule

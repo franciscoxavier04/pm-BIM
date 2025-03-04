@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal:true
 
 #-- copyright
 # OpenProject is an open source project management software.
@@ -28,18 +28,40 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module OpenIDConnect
-  module Providers
-    class MetadataUrlForm < BaseForm
-      form do |f|
-        f.text_field(
-          name: :metadata_url,
-          label: I18n.t("openid_connect.settings.endpoint_url"),
-          required: false,
-          disabled: provider.seeded_from_env?,
-          caption: I18n.t("openid_connect.instructions.endpoint_url"),
-          input_width: :xlarge
-        )
+module Storages
+  module Peripherals
+    module StorageInteraction
+      class AuthenticationMethodSelector
+        attr_reader :storage, :user
+
+        def initialize(storage:, user:)
+          @storage = storage
+          @user = user
+        end
+
+        def authentication_method
+          sso_preferred = storage.authenticate_via_idp? && oidc_provider_for(user)
+
+          if sso_preferred
+            :sso
+          elsif storage.authenticate_via_storage?
+            :storage_oauth
+          end
+        end
+
+        def sso?
+          authentication_method == :sso
+        end
+
+        def storage_oauth?
+          authentication_method == :storage_oauth
+        end
+
+        private
+
+        def oidc_provider_for(user)
+          user.authentication_provider.is_a?(OpenIDConnect::Provider)
+        end
       end
     end
   end

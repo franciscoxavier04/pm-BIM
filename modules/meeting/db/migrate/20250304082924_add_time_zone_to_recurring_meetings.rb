@@ -27,20 +27,27 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+class AddTimeZoneToRecurringMeetings < ActiveRecord::Migration[7.1]
+  def change
+    add_column :recurring_meetings, :time_zone, :string, null: true
 
-module OpenIDConnect
-  module Providers
-    class MetadataUrlForm < BaseForm
-      form do |f|
-        f.text_field(
-          name: :metadata_url,
-          label: I18n.t("openid_connect.settings.endpoint_url"),
-          required: false,
-          disabled: provider.seeded_from_env?,
-          caption: I18n.t("openid_connect.instructions.endpoint_url"),
-          input_width: :xlarge
-        )
+    reversible do |dir|
+      dir.up do
+        execute <<-SQL.squish
+          UPDATE recurring_meetings
+          SET time_zone = COALESCE(
+            (
+              SELECT (user_preferences.settings->>'time_zone')
+              FROM user_preferences
+              WHERE user_preferences.user_id = recurring_meetings.author_id
+              LIMIT 1
+            ),
+            'Etc/UTC'
+          )
+        SQL
       end
     end
+
+    change_column_null :recurring_meetings, :time_zone, false
   end
 end
