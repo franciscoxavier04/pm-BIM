@@ -231,12 +231,11 @@ module SearchHelper
 
     truncated_text = truncate_formatted_text(content, length: 100)
 
-    if current_length + truncated_text.length > max_length
-      t = truncated_text[0..(max_length - current_length - 1)]
-      truncated_text = "#{t}..."
+    if current_length + content.length > max_length
+      truncated_text.truncate(max_length - current_length - 1)
+    else
+      truncated_text
     end
-
-    truncated_text
   end
 
   def preserve_spaces(original_text, modified_text)
