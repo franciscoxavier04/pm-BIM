@@ -204,7 +204,9 @@ class MeetingAgendaItemsController < ApplicationController
       .call(meeting_id: next_occurrence.id, meeting_section: nil)
 
     if update_call.success?
-      render_success_flash_message_via_turbo_stream(message: I18n.t(:notice_successful_update))
+      render_success_flash_message_via_turbo_stream(
+        message: I18n.t(:text_agenda_item_moved_to_next_meeting, date: format_date(next_occurrence.start_time))
+      )
       remove_item_via_turbo_stream(clear_slate: @meeting.agenda_items.empty?)
       update_header_component_via_turbo_stream
       respond_with_turbo_streams
