@@ -102,7 +102,7 @@ module Types
       end
     end
 
-    def validate_subject_generation_pattern # rubocop:disable Metrics/AbcSize
+    def validate_subject_generation_pattern
       blueprint = model.patterns.subject&.blueprint
       return if blueprint.nil?
 
@@ -114,7 +114,7 @@ module Types
       end
 
       if invalid_tokens.any?
-        errors.add(:patterns, :invalid_tokens, tokens: invalid_tokens.join(", "))
+        errors.add(:patterns, :invalid_tokens)
       end
     end
 

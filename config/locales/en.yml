@@ -1518,7 +1518,7 @@ en:
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Unnamed groups are not allowed."
             patterns:
-              invalid_tokens: "The pattern contains invalid tokens: %{tokens}"
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
