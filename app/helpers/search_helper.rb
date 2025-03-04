@@ -73,12 +73,18 @@ module SearchHelper
     doc = Nokogiri::HTML::DocumentFragment.parse(html)
 
     tokens.each do |token|
+      escaped_token = Regexp.escape(token)
+
       doc.traverse do |node|
         next unless node.text?
 
+        escaped_text = CGI.escapeHTML(node.content)
+
         t = (tokens.index(node.content.downcase) || 0) % 4
-        highlighted_text = node.content.gsub(/(#{Regexp.escape(token)})/i,
-                                             "<span class='search-highlight token-#{t}'>\\1</span>")
+        highlighted_text = escaped_text.gsub(/(#{escaped_token})/i) do
+          %{<span class="search-highlight token-#{t}">#{$1}</span>}
+        end
+
         node.replace(Nokogiri::HTML::DocumentFragment.parse(highlighted_text))
       end
     end
