@@ -266,7 +266,7 @@ class MeetingAgendaItemsController < ApplicationController
   end
 
   def check_recurring_meeting_param
-    unless @meeting.recurring? && @meeting.open?
+    if @meeting.closed? || !@meeting.recurring?
       return render_400
     end
 
