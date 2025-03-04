@@ -23,7 +23,7 @@ Your Enterprise cloud data is continuously backed up and retained for 30 days. W
 
 In the Enterprise cloud, backups can only include attachments if the total file size of all attachments is less than 1 GB.
 
-If your attachments exceed this limit, please contact us at [support@openproject.com](support@openproject.com) to manually request a complete backup, which includes an SQL dump with all attachments. Alternatively, consider deleting unused attachments to reduce your data usage below 1 GB.
+If your attachments exceed this limit, please contact us at support@openproject.com to manually request a complete backup, which includes an SQL dump with all attachments. Alternatively, consider deleting unused attachments to reduce your data usage below 1 GB.
 
 If the total attachment size exceeds 1 GB, the **Include attachments** checkbox will be disabled, as shown in the screenshot below:
 
