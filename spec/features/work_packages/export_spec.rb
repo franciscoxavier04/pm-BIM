@@ -127,10 +127,10 @@ RSpec.describe "work package export", :js, :selenium do
       let(:query) do
         create(
           :query, id: 1234, user: current_user, project:,
-                  display_sums: true,
-                  include_subprojects: true,
-                  show_hierarchies: true,
-                  name: "My custom query title"
+          display_sums: true,
+          include_subprojects: true,
+          show_hierarchies: true,
+          name: "My custom query title"
         )
       end
       let(:expected_params) do
@@ -154,6 +154,20 @@ RSpec.describe "work package export", :js, :selenium do
       it "starts an export grouped" do
         export!
       end
+    end
+  end
+
+  context "in a split view" do
+    before do
+      wp_table.visit_query query
+      work_packages_page.ensure_loaded
+      wp_table.open_split_view(wp1)
+    end
+
+    it "opens the dialog and exports" do
+      settings_menu.open_and_choose I18n.t("js.toolbar.settings.export")
+      click_on export_type
+      export!
     end
   end
 
