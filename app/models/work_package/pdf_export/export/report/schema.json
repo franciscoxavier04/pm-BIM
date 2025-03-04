@@ -1,7 +1,7 @@
 {
   "type" : "object",
-  "title" : "PDF Export Styling yml",
-  "description" : "This document describes the style settings format for the [PDF Export styling file](https://github.com/opf/openproject/blob/dev/app/models/work_package/pdf_export/standard.yml)",
+  "title" : "Report",
+  "description" : "This document describes the style settings format for the [PDF Export styling file](https://github.com/opf/openproject/blob/dev/app/models/work_package/pdf_export/report/standard.yml)",
   "properties" : {
     "page" : {
       "$ref" : "#/$defs/page"
