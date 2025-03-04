@@ -1011,6 +1011,10 @@ af:
         is_milestone: "Is milestone"
         color: "Kleur"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administreerder"
         auth_source: "Authentication source"

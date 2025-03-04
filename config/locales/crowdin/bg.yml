@@ -1011,6 +1011,10 @@ bg:
         is_milestone: "Е крайъгълен камък"
         color: "Цвят"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Администратор"
         auth_source: "Authentication source"

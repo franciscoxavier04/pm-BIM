@@ -1026,6 +1026,10 @@ lt:
         is_milestone: "Yra svarbus etapas"
         color: "Spalva"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administratorius"
         auth_source: "Autentifikacijos šaltinis"

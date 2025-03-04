@@ -1020,6 +1020,10 @@ lv:
         is_milestone: "Ir atskaites punkts"
         color: "Krāsa"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrators"
         auth_source: "Authentication source"

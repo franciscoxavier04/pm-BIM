@@ -1011,6 +1011,10 @@ ka:
         is_milestone: "საკონტროლო წერტილია"
         color: "ფერი"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "ადმინისტრატორი"
         auth_source: "Authentication source"

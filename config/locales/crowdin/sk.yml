@@ -1029,6 +1029,10 @@ sk:
         is_milestone: "Je medzník"
         color: "Farba"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Správca"
         auth_source: "Authentication source"

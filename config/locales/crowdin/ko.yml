@@ -1002,6 +1002,10 @@ ko:
         is_milestone: "마일스톤"
         color: "색상"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "관리자"
         auth_source: "인증 소스"

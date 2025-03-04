@@ -1004,6 +1004,10 @@ de:
         is_milestone: "Ist ein Meilenstein"
         color: "Farbe"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrator"
         auth_source: "Authentifizierungsquelle"

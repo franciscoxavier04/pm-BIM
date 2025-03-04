@@ -1011,6 +1011,10 @@ fa:
         is_milestone: "Is milestone"
         color: "رنگ"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "مدیر"
         auth_source: "Authentication source"
