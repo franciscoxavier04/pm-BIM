@@ -42,6 +42,7 @@ module RecurringMeetings
 
     def set_default_attributes(_params)
       model.change_by_system do
+        model.time_zone = user.time_zone.name
         model.author = user
         model.duration ||= 1
       end

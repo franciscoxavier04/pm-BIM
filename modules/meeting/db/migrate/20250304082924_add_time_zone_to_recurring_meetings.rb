@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,36 +27,27 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+class AddTimeZoneToRecurringMeetings < ActiveRecord::Migration[7.1]
+  def change
+    add_column :recurring_meetings, :time_zone, :string, null: true
 
-FactoryBot.define do
-  factory :recurring_meeting, class: "RecurringMeeting" do |m|
-    author factory: :user
-    project
-    start_time { Date.tomorrow + 10.hours }
-    end_date { 1.year.from_now }
-    duration { 1.0 }
-    frequency { "weekly" }
-    interval { 1 }
-    iterations { 10 }
-    end_after { "specific_date" }
-    time_zone { "UTC" }
-
-    location { "https://some-url.com" }
-    m.sequence(:title) { |n| "Meeting series #{n}" }
-
-    after(:create) do |recurring_meeting, evaluator|
-      project = evaluator.project
-      recurring_meeting.project = project
-
-      # create template
-      template = create(:structured_meeting_template,
-                        :author_participates,
-                        author: recurring_meeting.author,
-                        recurring_meeting:,
-                        project:)
-
-      # create agenda item
-      create(:meeting_agenda_item, meeting: template, title: "My template item")
+    reversible do |dir|
+      dir.up do
+        execute <<-SQL.squish
+          UPDATE recurring_meetings
+          SET time_zone = COALESCE(
+            (
+              SELECT (user_preferences.settings->>'time_zone')
+              FROM user_preferences
+              WHERE user_preferences.user_id = recurring_meetings.author_id
+              LIMIT 1
+            ),
+            'Etc/UTC'
+          )
+        SQL
+      end
     end
+
+    change_column_null :recurring_meetings, :time_zone, false
   end
 end
