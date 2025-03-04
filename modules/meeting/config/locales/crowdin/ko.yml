@@ -59,6 +59,12 @@ ko:
         end_date: "End date"
         iterations: "항목"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "은(는) 유효한 시간이 아닙니다. 필요한 형식: HH:MM"
     models:

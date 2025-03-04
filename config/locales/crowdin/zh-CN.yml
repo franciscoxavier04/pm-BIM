@@ -998,6 +998,10 @@ zh-CN:
         is_milestone: "里程碑"
         color: "颜色"
         patterns: "模式"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "管理员"
         auth_source: "身份验证源"

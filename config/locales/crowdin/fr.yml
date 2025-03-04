@@ -1009,6 +1009,10 @@ fr:
         is_milestone: "Est un jalon"
         color: "Couleur"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrateur"
         auth_source: "Sources d'authentification"

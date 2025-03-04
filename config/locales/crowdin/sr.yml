@@ -1020,6 +1020,10 @@ sr:
         is_milestone: "Is milestone"
         color: "Color"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"

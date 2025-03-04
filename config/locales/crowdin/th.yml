@@ -1002,6 +1002,10 @@ th:
         is_milestone: "Is milestone"
         color: "สี"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "ผู้ดูแลระบบ"
         auth_source: "Authentication source"

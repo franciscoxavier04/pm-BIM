@@ -1011,6 +1011,10 @@ fil:
         is_milestone: "Ay milestone"
         color: "Kulay"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Tagapangasiwa"
         auth_source: "Authentication source"

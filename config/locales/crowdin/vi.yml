@@ -1002,6 +1002,10 @@ vi:
         is_milestone: "Là cột mốc"
         color: "Màu sắc"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Người Quản lý"
         auth_source: "Nguồn xác thực"

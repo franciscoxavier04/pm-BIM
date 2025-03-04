@@ -1000,6 +1000,10 @@ ms:
         is_milestone: "Adalah pencapaian"
         color: "Warna"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Pentadbir"
         auth_source: "Sumber pengesahan"

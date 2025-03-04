@@ -1008,6 +1008,10 @@ ca:
         is_milestone: "És una fita"
         color: "Color"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrador"
         auth_source: "Authentication source"

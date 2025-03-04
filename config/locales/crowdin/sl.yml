@@ -1028,6 +1028,10 @@ sl:
         is_milestone: "Mejnik"
         color: "Barva"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Aministrator"
         auth_source: "Authentication source"

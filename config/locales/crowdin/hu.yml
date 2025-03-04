@@ -1010,6 +1010,10 @@ hu:
         is_milestone: "Mérföldkő"
         color: "Szín"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Adminisztrátor"
         auth_source: "Hitelesítési forrás"

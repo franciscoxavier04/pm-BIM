@@ -1008,6 +1008,10 @@ pt-PT:
         is_milestone: "É um marco"
         color: "Cor"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrador"
         auth_source: "Fonte de autenticação"

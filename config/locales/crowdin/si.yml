@@ -1011,6 +1011,10 @@ si:
         is_milestone: "සන්ධිස්ථානයක්"
         color: "වර්ණ"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "පරිපාලක"
         auth_source: "Authentication source"
