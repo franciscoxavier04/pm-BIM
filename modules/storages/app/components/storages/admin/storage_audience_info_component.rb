@@ -30,7 +30,7 @@
 
 module Storages
   module Admin
-    class NextcloudAudienceInfoComponent < StorageInfoComponent
+    class StorageAudienceInfoComponent < StorageInfoComponent
       def self.wrapper_key = :storage_audience_section
 
       def audience_summary

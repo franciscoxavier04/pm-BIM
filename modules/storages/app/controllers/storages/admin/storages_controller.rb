@@ -124,7 +124,7 @@ class Storages::Admin::StoragesController < ApplicationController
   end
 
   def edit_storage_audience
-    update_via_turbo_stream(component: Storages::Admin::Forms::NextcloudAudienceFormComponent.new(@storage))
+    update_via_turbo_stream(component: Storages::Admin::Forms::StorageAudienceFormComponent.new(@storage))
     respond_with_turbo_streams
   end
 
