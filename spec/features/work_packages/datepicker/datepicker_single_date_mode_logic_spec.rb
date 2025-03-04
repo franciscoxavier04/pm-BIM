@@ -845,36 +845,36 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
     end
 
     context "and start date is cleared and a duration is set (scenario 23a)" do
-      it "preserves the start date" do
+      it "calculates the start date" do
         datepicker.expect_start_date "2025-02-12"
         datepicker.expect_due_date "2025-02-14"
         datepicker.expect_duration "3"
 
         datepicker.set_start_date ""
         datepicker.focus_duration
-        datepicker.set_duration "3"
+        datepicker.set_duration "2"
 
-        datepicker.expect_start_date "2025-02-12"
+        datepicker.expect_start_date "2025-02-13"
         datepicker.expect_due_date "2025-02-14"
-        datepicker.expect_duration "3"
+        datepicker.expect_duration "2"
 
         datepicker.expect_duration_highlighted
       end
     end
 
     context "and finish date is cleared and a duration is set (scenario 23b)" do
-      it "preserves the finish date" do
+      it "calculates the finish date" do
         datepicker.expect_start_date "2025-02-12"
         datepicker.expect_due_date "2025-02-14"
         datepicker.expect_duration "3"
 
         datepicker.set_due_date ""
         datepicker.focus_duration
-        datepicker.set_duration "3"
+        datepicker.set_duration "2"
 
         datepicker.expect_start_date "2025-02-12"
-        datepicker.expect_due_date "2025-02-14"
-        datepicker.expect_duration "3"
+        datepicker.expect_due_date "2025-02-13"
+        datepicker.expect_duration "2"
 
         datepicker.expect_duration_highlighted
       end
@@ -895,7 +895,7 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
     end
 
     it "can open the datepicker" do
-      start_field = wp_table.edit_field(work_package, :start_date)
+      start_field = wp_table.edit_field(work_package, :startDate)
       start_field.activate!
       start_field.expect_active!
 
@@ -906,7 +906,7 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
       datepicker.expect_due_highlighted
       datepicker.cancel!
 
-      due_field = wp_table.edit_field(work_package, :due_field)
+      due_field = wp_table.edit_field(work_package, :dueDate)
       due_field.activate!
       due_field.expect_active!
 
