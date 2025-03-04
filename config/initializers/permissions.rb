@@ -309,6 +309,30 @@ Rails.application.reloader.to_prepare do
                      require: :loggedin,
                      dependencies: :view_work_packages
 
+      wpt.permission :view_comments_with_restricted_visibility,
+                     {},
+                     permissible_on: %i[work_package project],
+                     require: :loggedin,
+                     dependencies: :view_work_packages
+
+      wpt.permission :write_comments_with_restricted_visibility,
+                     {},
+                     permissible_on: %i[work_package project],
+                     require: :loggedin,
+                     dependencies: :view_work_packages
+
+      wpt.permission :edit_own_comments_with_restricted_visibility,
+                     {},
+                     permissible_on: %i[work_package project],
+                     require: :loggedin,
+                     dependencies: :view_work_packages
+
+      wpt.permission :edit_others_comments_with_restricted_visibility,
+                     {},
+                     permissible_on: %i[work_package project],
+                     require: :loggedin,
+                     dependencies: :view_work_packages
+
       # WP attachments can be added with :edit_work_packages, this permission allows it without Edit WP as well.
       wpt.permission :add_work_package_attachments,
                      {},
