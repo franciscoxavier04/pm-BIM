@@ -283,7 +283,7 @@ module ApplicationHelper
   end
 
   def theme_options_for_select
-    options = [
+    [
       [t("themes.light"), "light"],
       [t("themes.light_high_contrast"), "light_high_contrast"],
       [t("themes.dark"), "dark"]
@@ -323,6 +323,12 @@ module ApplicationHelper
     options.reverse_merge!(builder: TabularFormBuilder, html: {})
     options[:html][:class] = "form" unless options[:html].has_key?(:class)
     form_for(record, options, &)
+  end
+
+  def labelled_tabular_form_with(model: false, scope: nil, url: nil, format: nil, **options, &)
+    options.reverse_merge!(builder: TabularFormBuilder, html: {})
+    options[:html][:class] = "form" unless options[:html].has_key?(:class)
+    form_with(model:, scope:, url:, format:, **options, &)
   end
 
   def back_url_hidden_field_tag(use_referer: true)
