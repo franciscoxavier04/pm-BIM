@@ -303,8 +303,10 @@ export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, 
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           if (!editor.ui.focusTracker.isFocused) {
             this.editorBlur.emit();
+            debugLog('CKEditor blurred');
           } else {
             this.editorFocus.emit();
+            debugLog('CKEditor focused');
           }
         }, 0);
       },

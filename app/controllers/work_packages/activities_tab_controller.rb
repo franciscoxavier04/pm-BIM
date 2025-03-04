@@ -222,7 +222,7 @@ class WorkPackages::ActivitiesTabController < ApplicationController
   end
 
   def journal_params
-    params.require(:journal).permit(:notes)
+    params.require(:journal).permit(:notes, :restricted)
   end
 
   def handle_successful_create_call(call)
