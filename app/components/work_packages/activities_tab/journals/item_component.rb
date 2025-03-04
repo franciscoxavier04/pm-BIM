@@ -60,6 +60,22 @@ module WorkPackages
           }
         end
 
+        def comment_header_classes
+          [].tap do |classes|
+            if journal.restricted?
+              classes << "work-packages-activities-tab-journals-item-component__header--restricted-comment"
+            end
+          end
+        end
+
+        def comment_body_classes
+          ["work-packages-activities-tab-journals-item-component--journal-notes-body"].tap do |classes|
+            if journal.restricted?
+              classes << "work-packages-activities-tab-journals-item-component__journal-notes-body--restricted-comment"
+            end
+          end
+        end
+
         def show_comment_container?
           (journal.notes.present? || noop?) && filter != :only_changes
         end

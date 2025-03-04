@@ -17,7 +17,11 @@
               }
             )
           ) do |border_box_component|
-            border_box_component.with_header(px: 2, py: 1, data: { test_selector: "op-journal-notes-header" }) do
+            border_box_component.with_header(
+              px: 2, py: 1,
+              data: { test_selector: "op-journal-notes-header" },
+              classes: comment_header_classes
+            ) do
               flex_layout(align_items: :center, justify_content: :space_between) do |header_container|
                 header_container.with_column(
                   flex_layout: true,
@@ -75,6 +79,20 @@
                     end
                   end
 
+                  if journal.restricted?
+                    header_end_container.with_column(mr: 2) do
+                      render(
+                        Primer::Beta::Octicon.new(
+                          :lock,
+                          classes: "work-packages-activities-tab-journals-item-component--restricted-icon",
+                          size: :small,
+                          aria: { label: I18n.t("activities.work_packages.activity_tab.restricted_journal") },
+                          data: { test_selector: "op-journal-restricted-icon" }
+                        )
+                      )
+                    end
+                  end
+
                   unless OpenProject::FeatureDecisions.work_package_comment_id_url_active?
                     header_end_container.with_column do
                       activity_anchor_link(journal)
@@ -100,7 +118,7 @@
               end
             end
             border_box_component.with_body(
-              classes: "work-packages-activities-tab-journals-item-component--journal-notes-body",
+              classes: comment_body_classes,
               data: { test_selector: "op-journal-notes-body" }
             ) do
               if noop?

@@ -48,6 +48,7 @@ en:
         changed: "changed"
         created: "created"
         commented: "commented"
+        restricted_journal: Only visible to a limited group of members.
 
   admin:
     plugins:
