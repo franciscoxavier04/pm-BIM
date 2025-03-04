@@ -421,11 +421,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             projectValue:"#{forbidden_project.identifier}":active
         DESCRIPTION
       end
-
-      it "contains resolved attributes and labels" do
-        # Joining with space for comparison since word wrapping leads to a different array for the same content
-        result = pdf[:strings].join(" ")
-        expected_result = [
+      let(:expected_result) do
+        [
           *expected_details,
           label_title(:description),
           "Project attributes and labels",
@@ -455,6 +452,11 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
 
           "2", export_time_formatted, project.name
         ].flatten.join(" ")
+      end
+
+      it "contains resolved attributes and labels" do
+        # Joining with space for comparison since word wrapping leads to a different array for the same content
+        result = pdf[:strings].join(" ")
         expect(result).to eq(expected_result)
       end
     end
