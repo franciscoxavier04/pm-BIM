@@ -250,7 +250,7 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     start_date.datepicker.expect_start_date_error nil
     start_date.datepicker.expect_due_date_error nil
 
-    start_date.datepicker.set_duration "invalid"
+    start_date.datepicker.set_duration "1,4"
     start_date.datepicker.expect_duration_error "Is not a valid duration."
     start_date.datepicker.expect_start_date_error nil
     start_date.datepicker.expect_due_date_error nil
