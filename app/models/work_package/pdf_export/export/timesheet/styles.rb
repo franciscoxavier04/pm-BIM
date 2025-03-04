@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::Timesheet::Style
+module WorkPackage::PDFExport::Export::Timesheet::Styles
   include MarkdownToPDF::StyleValidation
 
   class PDFStyles

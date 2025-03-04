@@ -4,7 +4,7 @@ class CostQuery::PDF::TimesheetGenerator
   include WorkPackage::PDFExport::Common::Logo
   include WorkPackage::PDFExport::Export::Cover
   include WorkPackage::PDFExport::Export::Page
-  include WorkPackage::PDFExport::Export::Timesheet::Style
+  include WorkPackage::PDFExport::Export::Timesheet::Styles
   include ReportingHelper
 
   H1_FONT_SIZE = 26
