@@ -159,6 +159,34 @@ module Pages::StructuredMeeting
       end
     end
 
+    def select_outcome_action(action)
+      retry_block do
+        page.find_test_selector("op-meeting-outcome-actions").click
+        page.find(".Overlay")
+      end
+
+      page.within(".Overlay") do
+        click_on action
+      end
+    end
+
+    def expect_no_outcome_actions
+      expect(page).to have_no_css("op-meeting-outcome-actions")
+    end
+
+    def expect_no_outcome_action(item)
+      retry_block do
+        page.within("#meeting-agenda-items-item-component-#{item.id}") do
+          page.find_test_selector("op-meeting-agenda-actions").trigger("click")
+        end
+        page.find(".Overlay")
+      end
+
+      page.within(".Overlay") do
+        expect(page).to have_no_text("Add outcome")
+      end
+    end
+
     def select_section_action(section, action)
       retry_block do
         click_on_section_menu(section)
@@ -174,6 +202,41 @@ module Pages::StructuredMeeting
       page.within_test_selector("meeting-section-header-container-#{section.id}") do
         page.find_test_selector("meeting-section-action-menu").click
       end
+    end
+
+    def in_outcome_component(item, &)
+      page.within("#meeting-agenda-items-outcomes-base-component-#{item.id}", &)
+    end
+
+    def add_outcome(item, &)
+      page.within("#meeting-agenda-items-outcomes-base-component-#{item.id}") do
+        click_link_or_button "Outcome"
+      end
+      expect_outcome_form(item)
+      page.within("#meeting-agenda-items-outcomes-input-component-#{item.id}", &)
+    end
+
+    def add_outcome_from_menu(item, &)
+      select_action item, "Add outcome"
+      expect_outcome_form(item)
+      page.within("#meeting-agenda-items-outcomes-input-component-#{item.id}", &)
+    end
+
+    def expect_outcome_form(item)
+      expect(page)
+        .to have_css("#meeting-agenda-items-outcomes-input-component-#{item.id}")
+    end
+
+    def expect_outcome(text)
+      expect(page).to have_css("#meeting-agenda-items-outcomes-show-notes-component", text:)
+    end
+
+    def expect_no_outcome(text)
+      expect(page).to have_no_css("#meeting-agenda-items-outcomes-show-notes-component", text:)
+    end
+
+    def expect_no_outcome_button
+      expect(page).to have_no_css("op-meeting-outcome--button")
     end
 
     def edit_agenda_item(item, &)
@@ -240,13 +303,22 @@ module Pages::StructuredMeeting
     end
 
     def close_meeting
-      click_on("Close meeting")
+      retry_block do
+        page.within(".PageHeader-description") do
+          click_on("Open")
+          page.find(".Overlay")
+        end
+      end
+
+      page.within(".Overlay") do
+        click_on("Closed")
+      end
       expect(page).to have_link("Reopen meeting")
     end
 
     def reopen_meeting
       click_on("Reopen meeting")
-      expect(page).to have_link("Close meeting")
+      expect(page).to have_link("Mark as in progress")
     end
 
     def close_dialog

@@ -28,27 +28,44 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+module MeetingOutcomes
+  module EditableItem
+    extend ActiveSupport::Concern
 
-    def initialize(meeting:)
-      super
+    included do
+      validate :validate_editable, :validate_meeting_existence, :user_allowed_to_add
+    end
 
-      @meeting = meeting
-      @project = meeting.project
+    protected
+
+    def validate_editable
+      return unless visible?
+
+      unless model.editable?
+        errors.add :base, I18n.t(:text_outcome_not_editable_anymore)
+      end
+    end
+
+    def validate_meeting_existence
+      return if model.meeting_agenda_item.meeting.nil?
+
+      unless visible?
+        errors.add :base, :does_not_exist
+      end
+    end
+
+    def user_allowed_to_add
+      return unless visible?
+
+      unless user.allowed_in_project?(:create_meeting_minutes, model.meeting_agenda_item.project)
+        errors.add :base, :error_unauthorized
+      end
     end
 
     private
 
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
+    def visible?
+      @visible ||= model.meeting_agenda_item.meeting&.visible?(user)
     end
   end
 end

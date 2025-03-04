@@ -28,27 +28,26 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+class MeetingAgendaItem::Outcome::Notes < ApplicationForm
+  delegate :object, to: :@builder
 
-    def initialize(meeting:)
-      super
+  form do |outcome_form|
+    outcome_form.rich_text_area(
+      name: :notes,
+      label: "Outcome",
+      classes: "ck-editor-primer-adjusted",
+      rich_text_options: {
+        resource:,
+        editor_type: "constrained",
+        showAttachments: false
+      }
+    )
+  end
 
-      @meeting = meeting
-      @project = meeting.project
-    end
+  def resource
+    return unless object&.meeting_agenda_item
 
-    private
-
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
-    end
+    API::V3::Meetings::MeetingRepresenter
+      .new(object.meeting_agenda_item.meeting, current_user: User.current, embed_links: false)
   end
 end

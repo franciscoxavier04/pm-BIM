@@ -28,27 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+module MeetingOutcomes
+  class BaseContract < ::ModelContract
+    include EditableItem
 
-    def initialize(meeting:)
-      super
-
-      @meeting = meeting
-      @project = meeting.project
+    def self.model
+      MeetingOutcome
     end
 
-    private
+    attribute :work_package
+    attribute :meeting_agenda_item
 
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
-    end
+    attribute :notes
+    attribute :kind
   end
 end

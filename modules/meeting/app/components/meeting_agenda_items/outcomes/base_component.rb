@@ -28,27 +28,30 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
+module MeetingAgendaItems
+  class Outcomes::BaseComponent < ApplicationComponent
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:)
+    def initialize(meeting:, meeting_agenda_item:, meeting_outcome:, edit:)
       super
 
       @meeting = meeting
-      @project = meeting.project
+      @meeting_agenda_item = meeting_agenda_item
+      @meeting_outcome = meeting_outcome.presence || override
+      @edit = edit
+    end
+
+    def wrapper_uniq_by
+      @meeting_agenda_item.id
     end
 
     private
 
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
+    def override
+      if @meeting_agenda_item.outcomes.exists?
+        @meeting_outcome = @meeting_agenda_item.outcomes.information_kind.last
+      end
     end
   end
 end

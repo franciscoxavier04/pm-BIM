@@ -28,27 +28,32 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
+module MeetingAgendaItems::Outcomes
+  class FormComponent < ApplicationComponent
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:)
+    def initialize(meeting:, meeting_agenda_item:, meeting_outcome:, method:, submit_path:, cancel_path:)
       super
-
       @meeting = meeting
-      @project = meeting.project
+      @meeting_agenda_item = meeting_agenda_item
+      @meeting_outcome = meeting_outcome
+      @method = method
+      @submit_path = submit_path
+      @cancel_path = cancel_path
+    end
+
+    def wrapper_uniq_by
+      @meeting_outcome.id
     end
 
     private
 
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
+    def wrapper_data_attributes
+      # {
+      #   controller: "meeting-outcome-form",
+      #   "application-target": "dynamic"
+      # }
     end
   end
 end

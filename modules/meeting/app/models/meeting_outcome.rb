@@ -27,28 +27,21 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+class MeetingOutcome < ApplicationRecord
+  belongs_to :meeting_agenda_item
+  belongs_to :work_package
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+  enum kind: {
+    information: 0,
+    decision: 1,
+    work_package: 2
+  }.freeze, _suffix: true, _default: "information"
 
-    def initialize(meeting:)
-      super
+  validates_presence_of :meeting_agenda_item
+  validates_presence_of :notes, if: -> { information_kind? }
+  validates_presence_of :work_package, if: -> { work_package_kind? }
 
-      @meeting = meeting
-      @project = meeting.project
-    end
-
-    private
-
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
-    end
+  def editable?
+    meeting_agenda_item.meeting.in_progress?
   end
 end

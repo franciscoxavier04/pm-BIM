@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -49,11 +50,15 @@ module MeetingAgendaItems
     private
 
     def drag_and_drop_enabled?
-      @meeting.open? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+      !@meeting.closed? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
     end
 
     def edit_enabled?
-      @meeting.open? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+      !@meeting.closed? && User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+    end
+
+    def add_outcome_action?
+      @meeting_agenda_item.editable? && @meeting.in_progress? && !@meeting_agenda_item.outcomes.exists?
     end
 
     def first?
@@ -96,6 +101,17 @@ module MeetingAgendaItems
                        data: { "turbo-stream": true }
                      }) do |item|
         item.with_leading_visual_icon(icon: :note)
+      end
+    end
+
+    def add_outcome_action_item(menu)
+      menu.with_item(label: t("label_agenda_item_add_outcome"),
+                     href: new_meeting_outcome_path(@meeting_agenda_item.meeting,
+                                                    meeting_agenda_item_id: @meeting_agenda_item&.id),
+                     content_arguments: {
+                       data: { "turbo-stream": true }
+                     }) do |item|
+        item.with_leading_visual_icon(icon: :plus)
       end
     end
 
@@ -143,6 +159,14 @@ module MeetingAgendaItems
         :danger
       else
         :subtle
+      end
+    end
+
+    def notes_classes
+      if @meeting.open?
+        "op-uc-container override"
+      else
+        "op-uc-container override muted-color"
       end
     end
   end

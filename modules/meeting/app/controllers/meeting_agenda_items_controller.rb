@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -39,14 +40,14 @@ class MeetingAgendaItemsController < ApplicationController
   before_action :authorize
 
   def new
-    if @meeting.open?
+    if @meeting.closed?
+      update_all_via_turbo_stream
+      render_error_flash_message_via_turbo_stream(message: t("text_meeting_not_editable_anymore"))
+    else
       if params[:meeting_section_id].present?
         meeting_section = @meeting.sections.find(params[:meeting_section_id])
       end
       render_agenda_item_form_via_turbo_stream(meeting_section:, type: @agenda_item_type)
-    else
-      update_all_via_turbo_stream
-      render_error_flash_message_via_turbo_stream(message: t("text_meeting_not_editable_anymore"))
     end
 
     respond_with_turbo_streams

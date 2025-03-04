@@ -28,27 +28,53 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
+module MeetingAgendaItems::Outcomes
+  class InputComponent < ApplicationComponent
     include OpTurbo::Streamable
     include OpPrimer::ComponentHelpers
 
-    def initialize(meeting:)
+    def initialize(meeting:, meeting_agenda_item:, meeting_outcome: nil)
       super
-
       @meeting = meeting
-      @project = meeting.project
+      @meeting_agenda_item = meeting_agenda_item
+      @meeting_outcome = meeting_outcome || build_meeting_outcome
     end
 
     private
 
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
+    def wrapper_uniq_by
+      @meeting_agenda_item.id
     end
 
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
+    def build_meeting_outcome
+      MeetingOutcome.new(
+        meeting_agenda_item: @meeting_agenda_item,
+        kind: 0
+      )
+    end
+
+    def method
+      if @meeting_outcome.id.present?
+        :put
+      else
+        :post
+      end
+    end
+
+    def submit_path
+      if @meeting_outcome.id.present?
+        meeting_outcome_path(@meeting, @meeting_outcome.id, format: :turbo_stream)
+      else
+        meeting_outcomes_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item.id, format: :turbo_stream)
+      end
+    end
+
+    def cancel_path
+      if @meeting_outcome.id.present?
+        cancel_edit_meeting_outcome_path(@meeting, @meeting_outcome)
+      else
+        cancel_new_meeting_outcomes_path(@meeting, meeting_agenda_item_id: @meeting_agenda_item.id)
+      end
     end
   end
 end

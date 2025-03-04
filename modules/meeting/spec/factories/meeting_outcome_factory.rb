@@ -28,27 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
-
-    def initialize(meeting:)
-      super
-
-      @meeting = meeting
-      @project = meeting.project
-    end
-
-    private
-
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
-    end
+FactoryBot.define do
+  factory :meeting_outcome do |m|
+    meeting_agenda_item factory: :meeting_agenda_item
+    kind { :information }
+    m.sequence(:notes) { |n| "Meeting outcome #{n}" }
   end
 end

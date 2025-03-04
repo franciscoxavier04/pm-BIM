@@ -27,28 +27,17 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+#
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+class CreateMeetingOutcomes < ActiveRecord::Migration[7.1]
+  def change
+    create_table :meeting_outcomes do |t|
+      t.text :notes
+      t.belongs_to :meeting_agenda_item, foreign_key: true
+      t.belongs_to :work_package, foreign_key: true
+      t.integer :kind, default: 0, null: false
 
-    def initialize(meeting:)
-      super
-
-      @meeting = meeting
-      @project = meeting.project
-    end
-
-    private
-
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
+      t.timestamps
     end
   end
 end

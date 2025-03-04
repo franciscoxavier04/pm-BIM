@@ -28,27 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::StateComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
-
-    def initialize(meeting:)
-      super
-
-      @meeting = meeting
-      @project = meeting.project
-    end
-
-    private
-
-    def edit_enabled?
-      User.current.allowed_in_project?(:close_meeting_agendas, @project)
-    end
-
-    def status_button
-      render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting))
+class MeetingAgendaItem::Outcome::Submit < ApplicationForm
+  form do |outcome_form|
+    outcome_form.group(layout: :horizontal) do |button_group|
+      button_group.submit(name: :submit_button, label: I18n.t("button_save"), scheme: :primary)
     end
   end
 end
