@@ -345,7 +345,7 @@ ru:
         placeholder: "Список новых проектов"
       delete_modal:
         title: "Удалить список проектов"
-        heading: "Delete this project list?"
+        heading: "Удалить этот список проектов?"
         text: "Это действие не приведет к удалению ни одного проекта, содержащегося в списке. Вы уверены, что хотите удалить этот список проектов?"
     settings:
       change_identifier: Изменить идентификатор
@@ -395,7 +395,7 @@ ru:
       storage:
         no_results_title_text: Для этого проекта дополнительного дискового пространства не требуется.
       work_package_priorities:
-        new_label: "New priority"
+        new_label: "Новый приоритет"
   project_stage:
     working_days_count:
       one: "Продолжительность: %{count} рабочий день"
@@ -655,6 +655,47 @@ ru:
     index:
       no_results_title_text: В данный момент рабочих потоков нет.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Один пакет работ, являющийся потомком"
       few: "Пакетов работ, являющихся потомками: %{count}"
@@ -806,7 +847,7 @@ ru:
       attachment:
         attachment_content: "Вложенный контент"
         attachment_file_name: "Название вложенного файла"
-        content_type: "Content-type"
+        content_type: "Тип содержимого"
         downloads: "Загрузки"
         file: "Файл"
         filename: "Файл"
@@ -815,7 +856,7 @@ ru:
         attribute_name: "Атрибут"
         help_text: "Текст справки"
       capability:
-        context: "Context"
+        context: "Контекст"
       changeset:
         repository: "Репозиторий"
       comment:
@@ -851,9 +892,9 @@ ru:
         scopes: "Области"
         confidential: "Конфиденциально"
       emoji_reaction:
-        reactable: "Reacted on"
+        reactable: "Реакция на"
       enterprise_token:
-        domain: "Domain"
+        domain: "Доменное имя"
         starts_at: "Действует с"
         subscriber: "Подписчик"
         encoded_token: "Маркер поддержки корпоративной версии"
@@ -882,8 +923,8 @@ ru:
       member:
         roles: "Роль"
       notification:
-        read_ian: "Read in-app"
-        resource: "Resource"
+        read_ian: "Читайте в приложении"
+        resource: "Ресурс"
       oauth_client:
         client: "ID клиента"
       project:
@@ -898,7 +939,7 @@ ru:
           true: "публичный"
           false: "приватный"
         queries: "Запросы"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Включенные модули"
         status_code: "Статус проекта"
         description: "Описание"
         status_explanation: "Описание статуса проекта"
@@ -986,6 +1027,10 @@ ru:
         is_milestone: "Это веха"
         color: "Цвет"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Администратор"
         auth_source: "Источник аутентификации"
@@ -1370,6 +1415,7 @@ ru:
               smaller_than_dates: "меньше интервала между датой начала и датой окончания."
               not_available_for_milestones: "не доступен для пакетов работ с типом Веха."
               cannot_be_null: "не может быть нулевым, поскольку известны дата начала и дата окончания."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "не может быть вехой"
               cannot_be_self_assigned: "не может быть присвоено самому себе."
@@ -1473,10 +1519,10 @@ ru:
       global_role: "Глобальная роль"
       group: "Группа"
       issue_priority:
-        one: "Priority"
+        one: "Приоритет"
         few: "Priorities"
         many: "Priorities"
-        other: "Priorities"
+        other: "Приоритеты"
       member: "Участник"
       news: "Новости"
       notification:
@@ -1494,7 +1540,7 @@ ru:
         many: "Списки проектов"
         other: "Списки проектов"
       query: "Настраиваемый запрос"
-      reminder: "Reminder"
+      reminder: "Напоминание"
       role:
         one: "Роль"
         few: "Роль"
@@ -1572,24 +1618,24 @@ ru:
     assignee: "Назначенный"
     attachments: "Вложения"
     actor: "Actor"
-    action: "Action"
+    action: "Действие"
     author: "Автор"
-    avatar: "Avatar"
+    avatar: "Аватар"
     base: "Общая ошибка:"
-    body: "Body"
+    body: "Сообщение"
     blocks_ids: "Идентификаторы заблокированных рабочих пакетов"
     category: "Категория"
     comment: "Комментарий"
     comments: "Комментарий"
     content: "Содержание"
     color: "Цвет"
-    creator: "Creator"
+    creator: "Автор"
     created_at: "Создано"
-    custom_field: "Custom field"
+    custom_field: "Настраиваемое поле"
     custom_options: "Возможные значения"
     custom_values: "Настраиваемые поля"
     date: "Дата"
-    dates_interval: "Date range"
+    dates_interval: "Период"
     default_columns: "Столбцы по умолчанию"
     description: "Описание"
     derived_due_date: "Дата окончания производства"
@@ -1599,36 +1645,36 @@ ru:
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
     estimated_time: "Предполагаемое время"
-    email: "Email"
+    email: "Эл. почта"
     entity_type: "Entity"
     expires_at: "Истекает в"
     firstname: "Имя"
-    filter: "Filter"
+    filter: "Фильтр"
     group: "Группа"
     groups: "Группы"
-    hexcode: "Hex code"
+    hexcode: "Шестнадцатеричный код"
     id: "ID"
     is_default: "Значение по умолчанию"
     is_for_all: "Для всех проектов"
     public: "Общий"
-    principal: "User or group"
+    principal: "Пользователь или группа"
     #kept for backwards compatibility
     issue: "Пакет работ"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "Журнал"
+    journal_notes: "Комментарий"
     lastname: "Фамилия"
     login: "Имя пользователя"
     mail: "Электронная почта"
     name: "Имя"
     note: "Заметка"
-    notes: "Notes"
+    notes: "Примечания"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "Параметры"
+    operator: "Оператор"
     password: "Пароль"
     priority: "Приоритет"
     project: "Проект"
-    project_ids: "Project IDs"
+    project_ids: "ID проектов"
     reason: "Reason"
     responsible: "Ответственный"
     required: "Required"
@@ -2272,6 +2318,8 @@ ru:
           Расчет прогресса автоматически <a href="%{href}" target="_blank">устанавливается в режим "На основе трудозатрат" и корректируется при обновлении версии</a>.
         progress_calculation_adjusted: >-
           Расчет прогресса автоматически <a href="%{href}" target="_blank">корректируется при обновлении версии</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           При <a href="%{href}" target="_blank">обновлении версии</a> автоматически удаляются итоги работы и прогресса для неродительских пакетов работ. Это задача по обслуживанию, и её можно смело игнорировать.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2907,6 +2955,7 @@ ru:
   label_title: "Заголовок"
   label_projects_menu: "Проекты"
   label_today: "Сегодня"
+  label_token_version: "Token Version"
   label_top_menu: "Верхнее меню"
   label_topic_plural: "Темы"
   label_total: "Всего"
@@ -3553,6 +3602,12 @@ ru:
     activated: "активирован"
     deactivated: "деактивирован"
   search_input_placeholder: "Поиск ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Совместное использование ресурсов между источниками (Cross-Origin Resource Sharing, CORS)"
   setting_apiv3_cors_enabled: "Включить CORS"
   setting_apiv3_cors_origins: "Разделение ресурсов (CORS) разрешено в API V3"
@@ -4394,3 +4449,29 @@ ru:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Однозначный вход"
     description: "Добавляет поставщика OmniAuth SAML в OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

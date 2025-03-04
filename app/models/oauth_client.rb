@@ -30,7 +30,7 @@
 
 class OAuthClient < ApplicationRecord
   belongs_to :integration, polymorphic: true
-  has_many :remote_identities, dependent: :destroy
+  has_many :remote_identities, as: :auth_source, dependent: :destroy
   has_many :oauth_client_tokens, dependent: :destroy
 
   def redirect_uri

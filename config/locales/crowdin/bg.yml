@@ -641,6 +641,47 @@ bg:
     index:
       no_results_title_text: В момента няма работни потоци.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "One descendant work package"
       other: "%{count} work package descendants"
@@ -970,6 +1011,10 @@ bg:
         is_milestone: "Е крайъгълен камък"
         color: "Цвят"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Администратор"
         auth_source: "Authentication source"
@@ -1354,6 +1399,7 @@ bg:
               smaller_than_dates: "е по-малък от интервала между началната и крайната дата."
               not_available_for_milestones: "не е налична за работни пакети, вписани като етап."
               cannot_be_null: "не може да бъде зададена като нула, тъй като началната и крайната дата са известни."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "не може да бъде крайъгълен камък."
               cannot_be_self_assigned: "не може да бъде присвоен на себе си."
@@ -2196,6 +2242,8 @@ bg:
           Изчисляването на напредъка автоматично се <a href="%{href}" target="_blank">настройва на режим, базиран на работата, и се коригира при актуализиране на версията</a>.
         progress_calculation_adjusted: >-
           Изчисляването на напредъка <a href="%{href}" target="_blank">се коригира</a> автоматично <a href=" %{href} " target="_blank">при актуализиране на версията</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Автоматично премахване на общите суми за работа и напредък за работни пакети, които не са родителски, при <a href="%{href}" target="_blank">актуализиране на версията</a>. Това е задача по поддръжката и може спокойно да бъде пренебрегната.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2831,6 +2879,7 @@ bg:
   label_title: "Заглавие"
   label_projects_menu: "Проекти"
   label_today: "днес"
+  label_token_version: "Token Version"
   label_top_menu: "Главно меню"
   label_topic_plural: "Tеми"
   label_total: "Oбщо"
@@ -3476,6 +3525,12 @@ bg:
     activated: "активиран"
     deactivated: "деактивиран"
   search_input_placeholder: "Търсене ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Активирайте CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) позволява разрешения"
@@ -4314,3 +4369,29 @@ bg:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Single-Sign On"
     description: "Adds the OmniAuth SAML provider to OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

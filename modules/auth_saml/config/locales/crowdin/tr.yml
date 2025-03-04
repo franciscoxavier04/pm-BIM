@@ -2,12 +2,12 @@ tr:
   activerecord:
     attributes:
       saml/provider:
-        display_name: Name
+        display_name: İsim
         identifier: Identifier
         secret: Secret
         scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
-        limit_self_registration: Limit self registration
+        limit_self_registration: Kendi kendine kaydı sınırlayın
         sp_entity_id: Service entity ID
         metadata_url: Identity provider metadata URL
         name_identifier_format: Name identifier format
@@ -65,7 +65,7 @@ tr:
       metadata:
         dialog: "This is the URL where the OpenProject SAML metadata is available. Optionally use it to configure your identity provider:"
       upsale:
-        description: Connect OpenProject to a SAML identity provider
+        description: OpenProject'i bir SAML kimlik sağlayıcısına bağlama
       request_attributes:
         title: 'Requested attributes'
         legend: >

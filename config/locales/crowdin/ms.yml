@@ -631,6 +631,47 @@ ms:
     index:
       no_results_title_text: Tiada aliran kerja buat masa ini.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       other: "%{count} keturunan pakej kerja"
     bulk:
@@ -959,6 +1000,10 @@ ms:
         is_milestone: "Adalah pencapaian"
         color: "Warna"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Pentadbir"
         auth_source: "Sumber pengesahan"
@@ -1343,6 +1388,7 @@ ms:
               smaller_than_dates: "adalah lebih kecil daripada selang waktu antara tarikh mula dan akhir."
               not_available_for_milestones: "adalah tidak tersedia untuk pakej kerja jenis pencapaian."
               cannot_be_null: "tidak boleh ditetapkan kepada kosong kerana tarikh mula dan tarikh tamat telah diketahui."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "tidak boleh menjadi pencapaian."
               cannot_be_self_assigned: "tidak boleh ditugaskan pada dirinya."
@@ -2155,6 +2201,8 @@ ms:
           Perkembangan pengiraan <a href="%{href}" target="_blank">ditetapkan ke mod berasaskan kerja secara automatik dan diselaraskan dengan versi kemas kini</a>.
         progress_calculation_adjusted: >-
           Perkembangan pengiraan <a href="%{href}" target="_blank"> diselaraskan dengan versi kemas kini</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Jumlah kerja dan perkembangan dipadam untuk pakej kerja bukan induk secara automatik dengan <a href="%{href}" target="_blank">versi kemas kini</a>. Ini ialah tugasan penyelenggaraan dan boleh diabaikan dengan selamat.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2790,6 +2838,7 @@ ms:
   label_title: "Tajuk"
   label_projects_menu: "Projek"
   label_today: "hari ini"
+  label_token_version: "Token Version"
   label_top_menu: "Menu Teratas"
   label_topic_plural: "Topik"
   label_total: "Jumlah"
@@ -3432,6 +3481,12 @@ ms:
     activated: "diaktifkan"
     deactivated: "dinyahaktifkan"
   search_input_placeholder: "Cari ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Perkongsian Sumber Silang Asal (CORS)"
   setting_apiv3_cors_enabled: "Aktifkan CORS"
   setting_apiv3_cors_origins: "Asal yang dibenarkan Perkongsian Sumber Rentas Asal (CORS) API V3 "
@@ -4268,3 +4323,29 @@ ms:
   plugin_openproject_auth_saml:
     name: "SAML OmniAuth / Daftar Masuk Tunggal"
     description: "Tambah penyediaan SAML OmniAuth ke OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

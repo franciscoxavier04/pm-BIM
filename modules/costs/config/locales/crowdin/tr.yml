@@ -30,7 +30,7 @@ tr:
         overridden_costs: "Geçersiz kılınmış maliyetler"
         spent: "Harcanan"
         spent_on: "Tarih"
-        logged_by: "Logged by"
+        logged_by: "Tarafından giriş yapıldı"
       cost_type:
         unit: "Birim adı"
         unit_plural: "Birimin çoğul adı"
@@ -61,8 +61,8 @@ tr:
         one: "Maliyet türü"
         other: "Maliyet türü"
       time_entry_activity:
-        one: "Time tracking activity"
-        other: "Time tracking activities"
+        one: "Zaman izleme etkinliği"
+        other: "Zaman izleme etkinlikleri"
       rate: "Oranlar"
     errors:
       models:
@@ -84,7 +84,7 @@ tr:
   button_add_rate: "Oran ekle"
   button_log_costs: "Günlük birim maliyetleri"
   button_log_time: "Kayıt"
-  button_add_activity: "Activity"
+  button_add_activity: "Etkinlik"
   caption_booked_on_project: "Proje rezervasyonu yaptırdı"
   caption_default: "Varsayılan"
   caption_default_rate_history_for: "%{user} için varsayılan hızı geçmişi"
@@ -99,7 +99,7 @@ tr:
   caption_log_time_dialog: "Zaman kaydet"
   description_date_for_new_rate: "Yeni oran için tarih"
   description_costs_settings: "Tüm projelerdeki maliyetler için istenen biçimi tanımlayın."
-  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
+  description_time_settings: "Tüm projelerde zaman kaydı yapılırken hangi alanların doldurulmasının zorunlu olduğunu tanımlayın."
   group_by_others: "herhangi bir grupta değil"
   label_between: "arasında"
   label_cost_filter_add: "Maliyet girişi filtresi ekle"

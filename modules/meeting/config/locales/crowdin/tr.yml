@@ -60,6 +60,12 @@ tr:
         end_date: "Bitiş tarihi"
         iterations: "Yineleme sayısı"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "geçerli bir zaman değil. Gerekli format: SS:DD"
     models:
@@ -136,8 +142,8 @@ tr:
   label_recurring_meeting_series_create: "Toplantı serisi oluştur"
   label_recurring_meeting_series_edit: "Toplantı serisini düzenle"
   label_recurring_meeting_series_delete: "Toplantı serisini sil"
-  label_recurring_meeting_series_end: "Toplantı serisinin sonu"
-  label_recurring_meeting_series_end_now: "Seriyi şimdi sonlandırın"
+  label_recurring_meeting_series_end: "Toplantı serisinin bitir"
+  label_recurring_meeting_series_end_now: "Seriyi şimdi sonlandır"
   label_meeting_more:
     one: "Bir toplantı daha var."
     other: "%{count} toplantı daha var."
@@ -192,19 +198,19 @@ tr:
         old_schedule: "Eski plan"
         new_schedule: "Yeni plan"
       invited:
-        summary: "%{actor} has sent you an invitation for the meeting '%{title}'"
+        summary: "%{actor} size '%{title}' toplantısı için bir davet gönderdi"
       cancelled:
         header: "İptal edildi: Toplantı '%{title}'"
-        header_occurrence: "Cancelled: Meeting occurrence '%{title}'"
+        header_occurrence: "İptal edildi: Toplantı '%{title}'"
         header_series: "İptal edildi: Toplantı serisi '%{title}'"
-        summary_occurrence: "An occurrence of '%{title}' has been cancelled by %{actor}."
-        summary_series: "Meeting series '%{title}' has been cancelled by %{actor}."
+        summary_occurrence: "'%{title}' %{actor} tarafından iptal edilmiştir."
+        summary_series: "'%{title}' toplantı serisi %{actor} tarafından iptal edilmiştir."
         summary: "'%{title}' %{actor} tarafından iptal edilmiştir."
         date_time: "Planlanan tarih/saat"
       rescheduled:
         header: "'%{title}' toplantısı yeniden planlandı"
         summary: "'%{title}' toplantısı %{actor} tarafından yeniden planlandı"
-        body: "The meeting '%{title}' has been rescheduled by %{actor}."
+        body: "%{title} toplantısı %{actor} tarafından yeniden planlanmıştır."
         old_date_time: "Eski tarih/saat"
         new_date_time: "Yeni tarih/saat"
     label_mail_all_participants: "Tüm katılımcılara e-posta gönder"
@@ -338,7 +344,7 @@ tr:
   text_in_hours: "saat olarak"
   text_meeting_agenda_for_meeting: 'toplantı gündemi "%{meeting}"'
   text_meeting_series_end_early_heading: "Gelecekteki toplantılar silinsin mi?"
-  text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
+  text_meeting_series_end_early: "Seriyi sonlandırmak, gelecekteki tüm açık veya planlanmış toplantıları silecektir"
   text_meeting_closing_are_you_sure: "Toplantı gündemini kapatmak istediğinizden emin misiniz?"
   text_meeting_agenda_open_are_you_sure: "Bu, dakikalardaki tüm değişikliklerin üzerine yazacaktır! Devam etmek istiyor musun?"
   text_meeting_minutes_for_meeting: 'toplantı için dakikalar "%{meeting}"'

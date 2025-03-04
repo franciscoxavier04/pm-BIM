@@ -158,6 +158,10 @@ module Components
       find("label", text: "Working days only").click
     end
 
+    def uncheck_working_days_only
+      page.find(:checkbox, "Working days only").uncheck
+    end
+
     def clear_duration
       set_duration("")
     end

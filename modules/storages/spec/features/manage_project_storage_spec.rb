@@ -65,7 +65,9 @@ RSpec.describe("Activation of storages in projects",
 
   let(:oauth_client) { create(:oauth_client, integration: storage) }
   let(:oauth_client_token) { create(:oauth_client_token, oauth_client:, user:) }
-  let(:remote_identity) { create(:remote_identity, user:, oauth_client:, origin_user_id: "admin") }
+  let(:remote_identity) do
+    create(:remote_identity, user:, auth_source: oauth_client, integration: storage, origin_user_id: "admin")
+  end
 
   let(:location_picker) { Components::FilePickerDialog.new }
 

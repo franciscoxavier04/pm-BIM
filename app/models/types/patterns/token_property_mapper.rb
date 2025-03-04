@@ -31,7 +31,11 @@
 module Types
   module Patterns
     class TokenPropertyMapper
-      DEFAULT_FUNCTION = ->(key, context) { context.public_send(key.to_sym) }.curry
+      DEFAULT_FUNCTION = ->(key, context) do
+        return nil if context.nil?
+
+        context.public_send(key.to_sym)
+      end.curry
 
       TOKEN_PROPERTY_MAP = IceNine.deep_freeze(
         {

@@ -220,6 +220,8 @@ ru:
             label_maximum_users: "Максимальное число активных пользователей"
             label_starts_at: "Начиная с"
             label_expires_at: "Срок действия до"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Я хочу получать <a target="_blank" href="%{link}">новостную рассылку от OpenProject</a>.
             taken_domain: На каждом домене может быть только один активный пробный период.
             domain_mismatch: Текущее имя узла запроса не совпадает с настроенным именем узла. Пожалуйста, дважды проверьте настройки вашей системы.
@@ -852,8 +854,6 @@ ru:
       select_branch: "Выберите ветку"
     field_value_enter_prompt: "Введите значение для '%{field} ' '"
     project_menu_details: "Детали"
-    scheduling:
-      manual: "Ручное планирование"
     sort:
       sorted_asc: "Сортировка по возрастанию применяется, "
       sorted_dsc: "Применяется сортировка по убыванию, "
@@ -901,15 +901,6 @@ ru:
       comment_send_failed: "Произошла ошибка. Не удалось отправить комментарий."
       comment_updated: "Комментарий успешно обновлен."
       confirm_edit_cancel: "Вы уверены, что хотите отменить редактирование пакета работ?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Автоматически запланировано. Даты выводятся из отношений."
-        manually_scheduled: "Ручное планирование включено, все отношения игнорируются."
-        start_date_limited_by_relations: "Даты начала и окончания доступности ограничены взаимосвязями."
-        changing_dates_affects_follow_relations: "Изменение этих дат повлияет на даты связанных пакетов работ."
-        click_on_show_relations_to_open_gantt: 'Нажмите на "%{button_name}" для просмотра в виде диаграммы Ганта.'
-        show_relations: "Показать взаимосвязи"
-        ignore_non_working_days:
-          title: "Только рабочие дни"
       description_filter: "Фильтр"
       description_enter_text: "Введите текст"
       description_options_hide: "Скрыть параметры"

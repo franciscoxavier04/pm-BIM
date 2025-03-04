@@ -40,6 +40,8 @@
 # db/migrate/20220113144323_create_storage.rb "migration".
 module Storages
   class Storage < ApplicationRecord
+    using Peripherals::ServiceResultRefinements
+
     PROVIDER_TYPES = [
       PROVIDER_TYPE_NEXTCLOUD = "Storages::NextcloudStorage",
       PROVIDER_TYPE_ONE_DRIVE = "Storages::OneDriveStorage"
@@ -61,6 +63,7 @@ module Storages
     has_many :projects, through: :project_storages
     has_one :oauth_client, as: :integration, dependent: :destroy
     has_one :oauth_application, class_name: "::Doorkeeper::Application", as: :integration, dependent: :destroy
+    has_many :remote_identities, as: :integration, dependent: :destroy
 
     validates_uniqueness_of :host, allow_nil: true
     validates_uniqueness_of :name
@@ -84,6 +87,8 @@ module Storages
     scope :automatic_management_enabled, -> { where("provider_fields->>'automatically_managed' = 'true'") }
 
     scope :in_project, ->(project_id) { joins(project_storages: :project).where(project_storages: { project_id: }) }
+
+    scope :with_audience, ->(audience) { where("provider_fields->>'storage_audience' = ?", audience) }
 
     enum :health_status, {
       pending: "pending",
@@ -219,6 +224,19 @@ module Storages
 
     def health_reason_description
       @health_reason_description ||= self.class.extract_part_from_piped_string(health_reason, 1)
+    end
+
+    def extract_origin_user_id(token)
+      auth_strategy = ::Storages::Peripherals::Registry
+                        .resolve("#{self}.authentication.specific_bearer_token")
+                        .with_token(token.access_token)
+      ::Storages::Peripherals::Registry
+        .resolve("#{self}.queries.user")
+        .call(auth_strategy:, storage: self)
+        .match(
+          on_success: ->(user) { user[:id] },
+          on_failure: ->(error) { raise "UserQuery responed with #{error}" }
+        )
     end
   end
 end
