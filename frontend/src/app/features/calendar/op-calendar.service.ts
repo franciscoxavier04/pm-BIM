@@ -61,7 +61,13 @@ export class OpCalendarService extends UntilDestroyedMixin {
     // We are not in month grid view and there is a date format configured => return a formatted date according to
     // the settings. Prefix the day of the week name for better readability.
     const configuredDateFormat = this.configurationService.dateFormat();
+    const formatWithoutYear = this.stripYearFromDateFormat(configuredDateFormat);
     const utcDate = moment(event.date).utc();
-    return utcDate.format(`ddd ${configuredDateFormat}`);
+
+    return utcDate.format(`ddd ${formatWithoutYear}`);
+  }
+
+  stripYearFromDateFormat(format:string):string {
+    return format.replace(/(\/|-|,?\s?)Y{3,4}$/, '').replace(/^Y{4}-/, '');
   }
 }
