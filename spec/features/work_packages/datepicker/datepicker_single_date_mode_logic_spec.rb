@@ -72,8 +72,6 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
   end
 
   before do
-    Setting.available_languages << current_user.language
-    I18n.locale = current_user.language
     work_package.update_columns(current_attributes)
     login_as(current_user)
 
