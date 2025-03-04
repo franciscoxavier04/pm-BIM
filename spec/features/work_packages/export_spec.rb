@@ -127,10 +127,10 @@ RSpec.describe "work package export", :js, :selenium do
       let(:query) do
         create(
           :query, id: 1234, user: current_user, project:,
-          display_sums: true,
-          include_subprojects: true,
-          show_hierarchies: true,
-          name: "My custom query title"
+                  display_sums: true,
+                  include_subprojects: true,
+                  show_hierarchies: true,
+                  name: "My custom query title"
         )
       end
       let(:expected_params) do
