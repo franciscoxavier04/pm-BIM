@@ -29,18 +29,9 @@
 #++
 
 module OpenIDConnect
-  module Providers
-    class MetadataUrlForm < BaseForm
-      form do |f|
-        f.text_field(
-          name: :metadata_url,
-          label: I18n.t("openid_connect.settings.endpoint_url"),
-          required: false,
-          disabled: provider.seeded_from_env?,
-          caption: I18n.t("openid_connect.instructions.endpoint_url"),
-          input_width: :xlarge
-        )
-      end
+  TokenOperationError = Data.define(:code, :payload, :source) do
+    def initialize(source:, payload: nil, code: nil)
+      super
     end
   end
 end
