@@ -55,32 +55,6 @@ export default class PreviewController extends DialogPreviewController {
     super.disconnect();
   }
 
-  registerFieldInputListeners() {
-    this.fieldInputTargets.forEach((target) => {
-      if (target.tagName.toLowerCase() === 'select') {
-        target.addEventListener('change', this.debouncedPreview);
-      } else {
-        target.addEventListener('input', this.debouncedPreview);
-      }
-      target.addEventListener('blur', this.debouncedPreview);
-
-      if (target.dataset.focus === 'true') {
-        this.focusAndSetCursorPositionToEndOfInput(target);
-      }
-    });
-  }
-
-  unregisterFieldInputListeners() {
-    this.fieldInputTargets.forEach((target) => {
-      if (target.tagName.toLowerCase() === 'select') {
-        target.removeEventListener('change', this.debouncedPreview);
-      } else {
-        target.removeEventListener('input', this.debouncedPreview);
-      }
-      target.removeEventListener('blur', this.debouncedPreview);
-    });
-  }
-
   afterRendering():void {
     // Do nothing;
   }

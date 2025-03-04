@@ -90,23 +90,7 @@ export default class PreviewController extends DialogPreviewController {
     await super.preview(field, [{ key: 'date_mode', val: this.dateModeValue }]);
   }
 
-  registerFieldInputListeners() {
-    this.fieldInputTargets.forEach((target) => {
-      target.addEventListener('input', this.inputChanged.bind(this));
-
-      if (target.dataset.focus === 'true') {
-        this.focusAndSetCursorPositionToEndOfInput(target);
-      }
-    });
-  }
-
-  unregisterFieldInputListeners() {
-    this.fieldInputTargets.forEach((target) => {
-      target.removeEventListener('input', this.inputChanged.bind(this));
-    });
-  }
-
-  private inputChanged(event:Event) {
+  inputChanged(event:Event) {
     const field = event.target as HTMLInputElement;
 
     if (field.name === 'work_package[start_date]') {

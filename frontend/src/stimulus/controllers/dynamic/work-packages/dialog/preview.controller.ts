@@ -88,24 +88,21 @@ export abstract class DialogPreviewController extends Controller {
       };
     };
 
-    this.registerFieldInputListeners();
+    this.fieldInputTargets.forEach((target) => {
+     if (target.dataset.focus === 'true') {
+        this.focusAndSetCursorPositionToEndOfInput(target);
+      }
+    });
 
     const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
     turboFrame.addEventListener('turbo:before-frame-render', this.frameMorphRenderer);
   }
 
   disconnect() {
-    this.unregisterFieldInputListeners();
     const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
     if (turboFrame) {
       turboFrame.removeEventListener('turbo:before-frame-render', this.frameMorphRenderer);
     }
-  }
-
-  registerFieldInputListeners() {
-  }
-
-  unregisterFieldInputListeners() {
   }
 
   protected cancel():void {
