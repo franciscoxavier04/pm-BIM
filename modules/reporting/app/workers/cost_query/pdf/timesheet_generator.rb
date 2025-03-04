@@ -4,7 +4,7 @@ class CostQuery::PDF::TimesheetGenerator
   include WorkPackage::PDFExport::Common::Logo
   include WorkPackage::PDFExport::Export::Cover
   include WorkPackage::PDFExport::Export::Page
-  include WorkPackage::PDFExport::Export::Style
+  include WorkPackage::PDFExport::Export::Timesheet::Style
   include ReportingHelper
 
   H1_FONT_SIZE = 26
@@ -16,6 +16,7 @@ class CostQuery::PDF::TimesheetGenerator
   COMMENT_FONT_COLOR = "636C76".freeze
   H2_FONT_SIZE = 20
   H2_MARGIN_BOTTOM = 10
+
   COLUMN_DATE_WIDTH = 66
   COLUMN_ACTIVITY_WIDTH = 100
   COLUMN_HOURS_WIDTH = 60

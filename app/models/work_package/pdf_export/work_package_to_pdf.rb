@@ -32,12 +32,11 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   include WorkPackage::PDFExport::Common::Common
   include WorkPackage::PDFExport::Common::Logo
   include WorkPackage::PDFExport::Common::Attachments
-  include WorkPackage::PDFExport::Export::ExportCommon
   include WorkPackage::PDFExport::Export::MarkdownField
   include WorkPackage::PDFExport::Export::WorkPackageDetail
   include WorkPackage::PDFExport::Export::Page
-  include WorkPackage::PDFExport::Export::Style
-  include WorkPackage::PDFExport::Export::AttributesByForm
+  include WorkPackage::PDFExport::Export::Wp::Styles
+  include WorkPackage::PDFExport::Export::Wp::Attributes
 
   attr_accessor :pdf, :columns
 

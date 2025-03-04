@@ -28,7 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::SumsTable
+module WorkPackage::PDFExport::Export::Report::SumsTable
   def write_work_packages_sums!(_work_packages)
     return unless has_summable_column?
 
@@ -95,6 +95,17 @@ module WorkPackage::PDFExport::Export::SumsTable
 
   def build_sums_group_row(group)
     build_sums_row(get_group_sums(group), make_group_label(group), styles.overview_table_cell)
+  end
+
+  def get_group_sums(group)
+    @group_sums ||= query.results.all_group_sums
+    @group_sums[group] || {}
+  end
+
+  def get_groups
+    query.results.work_package_count_by_group
+         .select { |_, count| count > 0 }
+         .map { |group, _| group }
   end
 
   def build_sums_total_row

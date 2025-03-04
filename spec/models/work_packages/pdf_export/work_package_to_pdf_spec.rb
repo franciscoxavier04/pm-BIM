@@ -33,7 +33,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   include PDFExportSpecUtils
   let(:type) do
     create(:type_bug, custom_fields: [cf_long_text, cf_disabled_in_project, cf_global_bool]).tap do |t|
-      t.attribute_groups.first.attributes.push(cf_disabled_in_project.attribute_name, cf_long_text.attribute_name)
+      t.attribute_groups = t.default_attribute_groups +
+        [["Custom Attributes Group", [cf_disabled_in_project.attribute_name, cf_long_text.attribute_name]]]
     end
   end
   let(:parent_project) do
@@ -201,14 +202,19 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
     end
   end
   let(:expected_details) do
-    ["#{type.name} ##{work_package.id} - #{work_package.subject}"] +
-      exporter.send(:attributes_data_by_wp, work_package)
-              .flat_map do |item|
-        value = get_column_value(item[:name])
-        result = [item[:label].upcase]
-        result << value if value.present?
-        result
+    result = ["#{type.name} ##{work_package.id} - #{work_package.subject}"]
+    type.attribute_groups.each do |group|
+      result.push group.translated_key
+      group.attributes.each do |attribute|
+        columns = exporter.send(:form_key_to_column_entries, attribute.to_sym, work_package)
+        columns.each do |column|
+          result.push column[:label].upcase
+          value = get_column_value(column[:name])
+          result.push value if value.present?
+        end
       end
+    end
+    result
   end
 
   def get_column_value(column_name)
@@ -219,7 +225,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   subject(:pdf) do
     content = export_pdf.content
     # If you want to actually see the PDF for debugging, uncomment the following line
-    # File.binwrite('WorkPackageToPdf-test-preview.pdf', content)
+    # File.binwrite("WorkPackageToPdf-test-preview.pdf", content)
     page_xobjects = PDF::Inspector::XObject.analyze(content).page_xobjects
     images = page_xobjects.flat_map { |o| o.values.select { |v| v.hash[:Subtype] == :Image } }
     logos = page_xobjects.flat_map do |o|
@@ -238,7 +244,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       let(:cf_long_text_description) { "foo" }
 
       it "contains correct data" do
-        result = pdf[:strings]
+        # Joining with space for comparison since word wrapping leads to a different array for the same content
+        result = pdf[:strings].join(" ")
         expected_result = [
           *expected_details,
           label_title(:description),
@@ -246,12 +253,12 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "amet", ", consetetur sadipscing elitr.", " ", "@OpenProject Admin",
           "Image Caption",
           "Foo",
+          "1", export_time_formatted, project.name,
           cf_long_text.name, "foo",
-          "1", export_time_formatted, project.name
-        ].flatten
-        # Joining the results for comparison since word wrapping leads to a different array for the same content
-        expect(result.join(" ")).to eq(expected_result.join(" "))
-        expect(result.join(" ")).not_to include("DisabledCustomField")
+          "2", export_time_formatted, project.name
+        ].flatten.join(" ")
+        expect(result).to eq(expected_result)
+        expect(result).not_to include("DisabledCustomField")
         expect(pdf[:images].length).to eq(2)
       end
     end
@@ -330,10 +337,12 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       end
 
       it "contains resolved attributes and labels" do
-        result = pdf[:strings]
+        # Joining with space for comparison since word wrapping leads to a different array for the same content
+        result = pdf[:strings].join(" ")
         expected_result = [
           *expected_details,
           label_title(:description),
+          "1", export_time_formatted, project.name,
           "Work package attributes and labels",
           supported_work_package_embeds.map do |embed|
             [WorkPackage.human_attribute_name(
@@ -341,7 +350,6 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
             ), embed[1]]
           end,
           "Custom field boolean", I18n.t(:general_text_Yes),
-          "1", export_time_formatted, project.name,
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "No replacement of:", "workPackageValue:1:assignee", " ", "workPackageLabel:assignee",
           "workPackageValue:2:assignee workPackageLabel:assignee",
@@ -353,8 +361,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "[#{I18n.t('export.macro.error', message:
             I18n.t('export.macro.resource_not_found', resource: "WorkPackage #{forbidden_work_package.id}"))}]",
           "2", export_time_formatted, project.name
-        ].flatten
-        expect(result.join(" ")).to eq(expected_result.join(" "))
+        ].flatten.join(" ")
+        expect(result).to eq(expected_result)
       end
     end
 
@@ -414,8 +422,9 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
         DESCRIPTION
       end
 
-      it "contains resolved attributes and labels" do # rubocop:disable RSpec/ExampleLength
-        result = pdf[:strings]
+      it "contains resolved attributes and labels" do
+        # Joining with space for comparison since word wrapping leads to a different array for the same content
+        result = pdf[:strings].join(" ")
         expected_result = [
           *expected_details,
           label_title(:description),
@@ -428,13 +437,13 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Custom field boolean", I18n.t(:general_text_Yes),
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
-
-          "No replacement of:", "projectValue:1:status", "projectLabel:status",
-          "projectValue:2:status projectLabel:status",
-          "projectValue:3:status", "projectLabel:status",
+          "No replacement of:", "projectValue:1:status",
 
           "1", export_time_formatted, project.name,
 
+          "projectLabel:status",
+          "projectValue:2:status projectLabel:status",
+          "projectValue:3:status", "projectLabel:status",
           "Project by identifier:", " ", I18n.t(:general_text_Yes),
           "Project not found:  ",
           "[#{I18n.t('export.macro.error', message:
@@ -445,8 +454,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Access denied by identifier:", " ", "[Macro error, resource not found: Project", "forbidden-project]",
 
           "2", export_time_formatted, project.name
-        ].flatten
-        expect(result.join(" ")).to eq(expected_result.join(" "))
+        ].flatten.join(" ")
+        expect(result).to eq(expected_result)
       end
     end
 
