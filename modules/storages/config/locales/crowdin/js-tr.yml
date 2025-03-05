@@ -2,6 +2,7 @@
 tr:
   js:
     storages:
+      authentication_error: "Authentication with %{storageType} failed"
       link_files_in_storage: "%{storageType} içindeki dosyaları bağla"
       link_existing_files: "Mevcut dosyaları bağla"
       upload_files: "Dosyaları yükle"
@@ -19,6 +20,7 @@ tr:
         one_drive: "OneDrive/SharePoint"
         default: "Depolama"
       information:
+        authentication_error: "The request to %{storageType} could not be authenticated, that's an error."
         connection_error: >
           Bazı %{storageType} ayarları çalışmıyor. Lütfen %{storageType} yöneticinizle iletişime geçin.
         live_data_error: "Dosya ayrıntıları getirilirken hata oluştu"
@@ -27,6 +29,8 @@ tr:
         no_file_links: "Dosyaları bu iş paketine bağlamak için lütfen bunu %{storageType} aracılığıyla yapın."
         not_logged_in: >
           Bu iş paketiyle ilgili bir bağlantı eklemek, dosyaları görmek veya yüklemek için lütfen %{storageType} adresine giriş yapın.
+        suggest_logout: You can try whether logging out and back in fixes this problem.
+        suggest_relink: You can try whether re-linking your account via the login button below fixes this problem.
       files:
         already_existing_header: "Bu dosya zaten mevcut"
         already_existing_body: >

@@ -114,6 +114,7 @@ class Meeting < ApplicationRecord
   enum :state, {
     open: 0, # 0 -> default, leave values for future states between open and closed
     planned: 1,
+    in_progress: 3,
     cancelled: 4,
     closed: 5
   }
@@ -124,12 +125,16 @@ class Meeting < ApplicationRecord
 
   ##
   # Cache key for detecting changes to be shown to the user
-  def changed_hash
+  def changed_hash # rubocop:disable Metrics/AbcSize
     parts = Meeting
       .unscoped
       .where(id:)
-      .left_joins(:agenda_items, :sections)
-      .pick(MeetingAgendaItem.arel_table[:updated_at].maximum, MeetingSection.arel_table[:updated_at].maximum)
+      .left_joins(:agenda_items, :sections, agenda_items: :outcomes)
+      .pick(
+        MeetingAgendaItem.arel_table[:updated_at].maximum,
+        MeetingSection.arel_table[:updated_at].maximum,
+        MeetingOutcome.arel_table[:updated_at].maximum
+      )
 
     parts << lock_version
 
@@ -166,7 +171,7 @@ class Meeting < ApplicationRecord
   end
 
   def editable?(user = User.current)
-    open? && user.allowed_in_project?(:edit_meetings, project)
+    !closed? && user.allowed_in_project?(:edit_meetings, project)
   end
 
   def invited_or_attended_participants

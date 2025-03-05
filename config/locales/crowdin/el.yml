@@ -1030,7 +1030,6 @@ el:
       user_preference:
         comments_sorting: "Εμφάνιση σχολίων"
         impaired: "Λειτουργία προσβασιμότητας"
-        time_zone: "Ζώνη Ώρας"
         auto_hide_popups: "Αυτόματη απόκρυψη ειδοποιήσεων επιτυχίας"
         warn_on_leaving_unsaved: "Προειδοποιήστε με όταν φεύγω από ένα πακέτο εργασίας με μη αποθηκευμένες αλλαγές"
         theme: "Mode"
@@ -1436,6 +1435,8 @@ el:
               duplicate_group: "Το όνομα της ομάδας %{group} χρησιμοποιείται περισσότερες από μία φορές. Τα ονόματα ομάδων πρέπει να είναι μοναδικά."
               query_invalid: "Η ενσωματωμένη αναζήτηση '%{group}' δεν είναι έγκυρη: %{details}"
               group_without_name: "Δεν επιτρέπονται ομάδες χωρίς όνομα."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1646,6 +1647,7 @@ el:
     subject: "Θέμα"
     slug: "Slug"
     summary: "Περίληψη"
+    time_zone: "Time zone"
     text: "Text"
     title: "Τίτλος"
     type: "Τύπος"
@@ -4313,6 +4315,7 @@ el:
       connected: "Connected"
       error: "Σφάλμα"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Σύνδεσμος Ανακατεύθυνσης (URI)"

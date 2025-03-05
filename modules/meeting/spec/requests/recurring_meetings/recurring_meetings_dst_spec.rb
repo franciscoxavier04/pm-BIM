@@ -54,7 +54,7 @@ RSpec.describe "Recurring meetings show DST",
            project:,
            author: berlin_user,
            time_zone: "Europe/Berlin",
-           start_time: Time.zone.tomorrow.in_time_zone("Europe/Berlin") + 10.hours, # March 5th, 10AM CET
+           start_time: DateTime.iso8601("2025-03-05T10:00:00+01:00"),
            frequency: "weekly",
            end_after: "iterations",
            iterations: 10

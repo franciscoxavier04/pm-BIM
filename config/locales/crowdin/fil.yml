@@ -1034,7 +1034,6 @@ fil:
       user_preference:
         comments_sorting: "Ipakita ang mga komento"
         impaired: "Aksezibilidad mode"
-        time_zone: "Time zone"
         auto_hide_popups: "Auto-hide success ang mga abiso"
         warn_on_leaving_unsaved: "Balaan mo ako kung aalais ng worj package na walang pag-save ng pagbabago"
         theme: "Mode"
@@ -1440,6 +1439,8 @@ fil:
               duplicate_group: "The group name '%{group}' is used more than once. Group names must be unique."
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Wala pangalan ng grupo ay hindi pinapayagan."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1650,6 +1651,7 @@ fil:
     subject: "Paksa"
     slug: "Slug"
     summary: "Buod"
+    time_zone: "Time zone"
     text: "Text"
     title: "Pamagat"
     type: "Uri"
@@ -4317,6 +4319,7 @@ fil:
       connected: "Connected"
       error: "Mali"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"

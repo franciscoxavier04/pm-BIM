@@ -1049,7 +1049,6 @@ lt:
       user_preference:
         comments_sorting: "Rodyti komentarus"
         impaired: "Pritaikymas neįgaliesiems"
-        time_zone: "Laiko juosta"
         auto_hide_popups: "Automatiškai slėpti sėkmės pranešimus"
         warn_on_leaving_unsaved: "Įspėti mane, kai palieku darbų paketą su neišsaugotais pakeitimais"
         theme: "Režimas"
@@ -1455,6 +1454,8 @@ lt:
               duplicate_group: "Grupės pavadinimas „%{group}“ panaudotas daugiau nei kartą. Grupių pavadinimai turi būti unikalūs."
               query_invalid: "Įsiūta užklausa „%{group}“ yra netinkama: %{details}"
               group_without_name: "Bevardės grupės nėra leidžiamos."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1687,6 +1688,7 @@ lt:
     subject: "Tema"
     slug: "Slug"
     summary: "Santrauka"
+    time_zone: "Time zone"
     text: "Text"
     title: "Pavadinimas"
     type: "Tipas"
@@ -4398,6 +4400,7 @@ lt:
       connected: "Prisijungta"
       error: "Klaida"
       failed_authorization: "Autorizavimas nepavyko"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integracija"
       label_redirect_uri: "Peradresavimo URI"

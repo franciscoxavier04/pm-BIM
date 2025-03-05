@@ -1030,7 +1030,6 @@ nl:
       user_preference:
         comments_sorting: "Toon reacties"
         impaired: "Toegankelijkheidsmodus"
-        time_zone: "Tijdzone"
         auto_hide_popups: "Automatisch verbergen geslaagd-meldingen"
         warn_on_leaving_unsaved: "Mij waarschuwen bij het verlaten van een werkpakket met niet-opgeslagen wijzigingen"
         theme: "Modus"
@@ -1436,6 +1435,8 @@ nl:
               duplicate_group: "De groep naam ‘%{group}’ word meer dan één keer gebruikt. Groep namen moeten uniek zijn."
               query_invalid: "De ingesloten zoekopdracht '%{group}' is ongeldig: %{details}"
               group_without_name: "Groepen zonder namen zijn niet toegestaan."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1646,6 +1647,7 @@ nl:
     subject: "Onderwerp"
     slug: "Slug"
     summary: "Samenvatting"
+    time_zone: "Time zone"
     text: "Text"
     title: "Titel"
     type: "Type"
@@ -4313,6 +4315,7 @@ nl:
       connected: "Verbonden"
       error: "Fout"
       failed_authorization: "Autorisatie mislukt"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integratie"
       label_redirect_uri: "URI omleiden"
