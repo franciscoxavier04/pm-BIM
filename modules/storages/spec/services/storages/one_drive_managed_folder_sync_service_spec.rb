@@ -59,14 +59,14 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
     identity_url = "#{oidc_provider.slug}:zxczxczxczxc"
     create(:admin, identity_url:)
   end
-  shared_let(:oidc_user_token) do
+  shared_let(:oidc_user_remote_identity) do
     create(:remote_identity,
            user: oidc_user,
            auth_source: oidc_provider,
            integration: storage,
            origin_user_id: "oidc_user")
   end
-  shared_let(:oidc_admin_token) do
+  shared_let(:oidc_admin_remote_identity) do
     create(:remote_identity,
            user: oidc_admin,
            auth_source: oidc_provider,
@@ -74,7 +74,7 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
            origin_user_id: "oidc_admin")
   end
   shared_let(:single_project_user) { create(:user) }
-  shared_let(:single_project_user_token) do
+  shared_let(:single_project_user_remote_identity) do
     create(:remote_identity,
            user: single_project_user,
            auth_source: storage.oauth_client,
@@ -83,7 +83,7 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
   end
 
   shared_let(:multiple_projects_user) { create(:user) }
-  shared_let(:multiple_project_user_token) do
+  shared_let(:multiple_project_user_remote_identity) do
     create(:remote_identity,
            user: multiple_projects_user,
            auth_source: storage.oauth_client,
@@ -418,7 +418,7 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
 
       context "when setting permission fails" do
         it "logs the occurrence", vcr: "one_drive/sync_service_fail_add_user" do
-          single_project_user_token.update(origin_user_id: "my_name_is_mud")
+          single_project_user_remote_identity.update(origin_user_id: "my_name_is_mud")
 
           service.call
           expect(Rails.logger)
