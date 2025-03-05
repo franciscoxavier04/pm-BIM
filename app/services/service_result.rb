@@ -214,8 +214,12 @@ class ServiceResult
   def message
     if @message
       @message
-    elsif failure? && errors.is_a?(ActiveModel::Errors)
-      errors.full_messages.join(" ")
+    elsif failure?
+      if errors.is_a?(ActiveModel::Errors)
+        errors.full_messages.join(" ")
+      elsif errors.respond_to?(:message)
+        errors.message
+      end
     end
   end
 

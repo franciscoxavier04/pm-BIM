@@ -102,6 +102,7 @@ module OAuthClients
         update_oauth_client_token(oauth_client_token, service_result.result)
       else
         rack_access_token = service_result.result
+        id_create_error = nil
         OAuthClientToken.transaction do
           oauth_client_token = OAuthClientToken.new(
             user: @user,
@@ -116,8 +117,13 @@ module OAuthClients
 
           RemoteIdentities::CreateService
             .call(user: @user, integration: @oauth_client.integration, token: oauth_client_token)
-            .on_failure { raise ActiveRecord::Rollback }
+            .on_failure do |e|
+              id_create_error = e
+              raise ActiveRecord::Rollback
+            end
         end
+
+        return id_create_error if id_create_error
 
         ServiceResult.new(success: oauth_client_token.errors.empty?,
                           result: oauth_client_token,
