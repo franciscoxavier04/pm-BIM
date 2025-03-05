@@ -15,7 +15,7 @@ You can subscribe to a monthly or yearly plan. The subscription can be **paid vi
 
 > [!IMPORTANT]
 >
-> Invoice option is only available for yearly subscriptions for customers in the EU, Switzerland and the United States.
+> Payment via bank transfer (invoice option) is only available for yearly subscriptions (at least 1 year) for customers in the EU, Switzerland and the United States.
 >
 
 To upgrade your trial to the full version, click the **Buy now** button in the application header or project menu on the left.
