@@ -36,8 +36,8 @@ module WorkPackages::ActivitiesTab::Journals
         checked: false,
         label_arguments: { class: "no-wrap" },
         data: {
-          "work-packages--activities-tab--restricted-comment-target": "checkbox",
-          action: "input->work-packages--activities-tab--restricted-comment#onCheckboxChange"
+          "work-packages--activities-tab--restricted-comment-target": "visibilityCheckbox",
+          action: "input->work-packages--activities-tab--restricted-comment#toggleVisibility"
         },
         caption:
       )
