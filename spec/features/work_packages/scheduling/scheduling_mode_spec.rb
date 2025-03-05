@@ -137,7 +137,6 @@ RSpec.describe "scheduling mode", :js do
   end
 
   it "can toggle the scheduling mode through the date modal" do
-    pending "disable this spec until it's being fixed"
     expect(wp.schedule_manually).to be_falsey
 
     # Editing the start/due dates of a parent work package is possible if the
@@ -145,6 +144,7 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode # toggle to manual mode
+    combined_field.expect_manual_scheduling_mode
     combined_field.update(%w[2016-01-05 2016-01-10], save: false)
     combined_field.expect_duration 6
     combined_field.save!
@@ -184,6 +184,7 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode # toggle to automatic mode
+    combined_field.expect_automatic_scheduling_mode
     combined_field.save!
 
     work_packages_page.expect_and_dismiss_toaster message: "Successful update."
@@ -214,9 +215,7 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode # toggle to manual mode
-
-    # The calendar needs some time to get initialized.
-    sleep 2
+    combined_field.expect_manual_scheduling_mode
     combined_field.expect_calendar
 
     # Increasing the duration while at it
@@ -254,6 +253,7 @@ RSpec.describe "scheduling mode", :js do
     combined_field.activate!(expect_open: false)
     combined_field.expect_active!
     combined_field.toggle_scheduling_mode
+    combined_field.expect_automatic_scheduling_mode
     combined_field.save!
 
     work_packages_page.expect_and_dismiss_toaster message: "Successful update."
