@@ -655,7 +655,7 @@ GEM
       multi_json (~> 1.11)
       os (>= 0.9, < 2.0)
       signet (>= 0.16, < 2.a)
-    grape (2.2.0)
+    grape (2.3.0)
       activesupport (>= 6)
       dry-types (>= 1.1)
       mustermann-grape (~> 1.1.0)
@@ -1336,7 +1336,7 @@ DEPENDENCIES
   good_job (= 3.99.1)
   google-apis-gmail_v1
   googleauth
-  grape (~> 2.2.0)
+  grape (~> 2.3.0)
   grape_logging (~> 1.8.4)
   grids!
   html-pipeline (~> 2.14.0)
@@ -1646,7 +1646,7 @@ CHECKSUMS
   google-cloud-env (2.2.1) sha256=3c6062aee0b5c863b83f3ce125ea7831507aadf1af7c0d384b74a116c4f649cf
   google-logging-utils (0.1.0) sha256=70950b1e49314273cf2e167adb47b62af7917a4691b580da7e9be67b9205fcd5
   googleauth (1.13.1) sha256=33448ce662e40afeb3e6db5eb9f4ee712467b1701f3857ef9c0aecac8447eca0
-  grape (2.2.0) sha256=42fef93c4865b077a09db05ac0372d4e3ded3143cb1026c1323b7bfa3098f6ee
+  grape (2.3.0) sha256=99484ae2907b06a9e109edf2911c383809bf7f7c00d65554e4d01f0388728bda
   grape_logging (1.8.4) sha256=efcc3e322dbd5d620a68f078733b7db043cf12680144cd03c982f14115c792d1
   gravatar_image_tag (1.2.0) sha256=eb5630fea846b711e713b934a0178fb9785f02f4eb9ced8d6faa4d537c40fdcf
   grids (1.0.0)
