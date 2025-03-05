@@ -143,7 +143,7 @@ gem "secure_headers", "~> 7.1.0"
 gem "browser", "~> 6.2.0"
 
 # Providing health checks
-gem "okcomputer", "~> 1.18.1"
+gem "okcomputer", "~> 1.19.0"
 
 gem "gon", "~> 6.4.0"
 
