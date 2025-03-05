@@ -48,16 +48,36 @@ module My
 
     layout "global"
 
-    helper_method :current_day, :today?, :this_week?, :this_month?
+    helper_method :current_day, :today?, :this_week?, :this_month?, :time_entries_json
 
-    def day; end
+    def day
+      @time_entries = TimeEntry
+        .includes(:project, :activity, :work_package)
+        .where(user: User.current, spent_on: current_day)
 
-    def week; end
+      # TODO: At some point the filters will reduce the list, so we need to load them seperately
+      @project_filters = @time_entries.map(&:project).uniq
+      @activity_filters = @time_entries.map(&:activity).uniq
+    end
 
-    def month; end
+    def week
+      @time_entries = TimeEntry
+        .includes(:project, :activity, :work_package)
+        .where(user: User.current, spent_on: current_day.all_week)
 
-    def default_breadcrumb
-      "my time"
+      # TODO: At some point the filters will reduce the list, so we need to load them seperately
+      @project_filters = @time_entries.map(&:project).uniq
+      @activity_filters = @time_entries.map(&:activity).uniq
+    end
+
+    def month
+      @time_entries = TimeEntry
+        .includes(:project, :activity, :work_package)
+        .where(user: User.current, spent_on: current_day.all_month)
+
+      # TODO: At some point the filters will reduce the list, so we need to load them seperately
+      @project_filters = @time_entries.map(&:project).uniq
+      @activity_filters = @time_entries.map(&:activity).uniq
     end
 
     def today?
@@ -73,6 +93,19 @@ module My
     end
 
     private
+
+    def time_entries_json
+      @time_entries.map do |time_entry|
+        {
+          id: time_entry.id.to_s,
+          title: "#{time_entry.project.name}: ##{time_entry.work_package.id} #{time_entry.work_package.subject}",
+          start: time_entry.start_timestamp || time_entry.spent_on,
+          end: time_entry.end_timestamp || time_entry.spent_on,
+          allDay: time_entry.start_time.blank?
+
+        }
+      end.to_json
+    end
 
     def current_day
       return @current_day if defined?(@current_day)

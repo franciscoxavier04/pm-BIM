@@ -1,0 +1,45 @@
+<div
+  data-controller="my--time-tracking"
+  data-application-target="dynamic"
+  data-my--time-tracking-mode-value="<%= local_assigns[:mode] %>"
+  data-my--time-tracking-time-entries-value="<%= time_entries_json %>"
+  data-my--time-tracking-initial-date-value="<%= current_day %>">
+<%= render(Primer::OpenProject::SubHeader.new) do |component|
+      component.with_filter_component do
+        concat(render(Primer::Beta::IconButton.new(icon: "search", aria: { label: "Search" })))
+
+        concat(
+          render(Primer::Beta::Button.new) do |button|
+            button.with_leading_visual_icon(icon: :project)
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Project"
+          end
+        )
+
+        concat(
+          render(Primer::Beta::Button.new) do |button|
+            button.with_leading_visual_icon(icon: :log)
+            button.with_trailing_action_icon(icon: :"triangle-down")
+            "Activity"
+          end
+        )
+      end
+
+      component.with_text do
+        "#{current_day.beginning_of_week.day}-#{current_day.end_of_week.day}. #{current_day.strftime('%B %Y')}"
+      end
+
+      component.with_action_component do
+        render(Primer::Beta::ButtonGroup.new) do |group|
+          group.with_button(icon: "arrow-left", aria: { label: "Previous week" }, tag: :a, href: my_time_tracking_week_path(date: current_day - 1.week))
+          group.with_button(icon: "arrow-right", aria: { label: "Next week" }, tag: :a, href: my_time_tracking_week_path(date: current_day + 1.week))
+        end
+      end
+
+      component.with_action_button(tag: :a, href: my_time_tracking_week_path(date: Time.zone.today)) { "Today" }
+
+      component.with_action_button(scheme: :primary) { "Log Time" }
+    end %>
+
+<div data-my--time-tracking-target="calendar"></div>
+</div>
