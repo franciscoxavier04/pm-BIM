@@ -939,7 +939,6 @@ fa:
       user_preference:
         comments_sorting: "نمایش نظرات"
         impaired: "حالت دسترسی"
-        time_zone: "منطقه زمانی"
         auto_hide_popups: "پنهان کردن خودکار اعلان های موفقیت"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1523,6 +1522,7 @@ fa:
     status: "وضعیت"
     subject: "موضوع"
     summary: "Summary"
+    time_zone: "Time zone"
     title: "عنوان"
     type: "نوع"
     updated_at: "به روز شده"

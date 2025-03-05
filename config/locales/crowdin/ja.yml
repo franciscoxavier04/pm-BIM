@@ -884,7 +884,7 @@ ja:
         timeline_labels: "タイムラインのラベル"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "関連するワークパッケージ"
         to: "関係するワークパッケージ"
       reminder:
         remind_at_date: "Date"
@@ -926,7 +926,6 @@ ja:
       user_preference:
         comments_sorting: "コメントの表示"
         impaired: "アクセシビリティモード"
-        time_zone: "タイムゾーン"
         auto_hide_popups: "成功通知を自動的に隠す"
         warn_on_leaving_unsaved: "変更を保存せずにワークパッケージから移動するときに警告"
         theme: "Mode"
@@ -1271,8 +1270,8 @@ ja:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              cannot_add_child_because_of_lack_of_permission: "選択したワークパッケージを編集する権限がないため、子タスクを追加できません。"
+              blank: "IDは空白にできません。"
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -1500,6 +1499,7 @@ ja:
     status: "ステータス"
     subject: "タイトル"
     summary: "サマリ"
+    time_zone: "Time zone"
     title: "タイトル"
     type: "タイプ"
     updated_at: "更新日時"
@@ -1962,19 +1962,19 @@ ja:
     page_nr_footer: "Page %{page} of %{total}"
     dialog:
       title: Generate PDF
-      submit: Generate
+      submit: 生成
       header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+        label: ヘッダーの右
+        caption: ヘッダーの右側に表示されるテキスト
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: フッターの中央
+        caption: フッターの中央に表示されるテキスト
       hyphenation:
         label: Hyphenation
         caption: Break words between lines to improve text justification and readability.
       paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        label: 用紙サイズ
+        caption: PDFの用紙サイズ。
   extraction:
     available:
       pdftotext: "Pdftotextが利用可能 (オプション)"
@@ -2800,7 +2800,7 @@ ja:
   label_global_role: "グローバルロール"
   label_not_changeable: "（変更不可）"
   label_global: "全般"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: このレコードは設定/環境変数によって作成されました。UIから編集することはできません。
   macro_execution_error: "マクロ%{macro_name}を実行中にエラーが発生しました。"
   macro_unavailable: "マクロ%{macro_name}を表示できません。"
   macros:

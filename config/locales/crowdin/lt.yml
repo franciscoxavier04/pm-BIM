@@ -954,7 +954,6 @@ lt:
       user_preference:
         comments_sorting: "Rodyti komentarus"
         impaired: "Pritaikymas neįgaliesiems"
-        time_zone: "Laiko juosta"
         auto_hide_popups: "Automatiškai slėpti sėkmės pranešimus"
         warn_on_leaving_unsaved: "Įspėti mane, kai palieku darbų paketą su neišsaugotais pakeitimais"
         theme: "Režimas"
@@ -1558,6 +1557,7 @@ lt:
     status: "Būsena"
     subject: "Tema"
     summary: "Santrauka"
+    time_zone: "Time zone"
     title: "Pavadinimas"
     type: "Tipas"
     updated_at: "Atnaujinta"

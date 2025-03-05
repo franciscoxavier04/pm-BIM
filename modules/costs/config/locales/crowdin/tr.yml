@@ -22,7 +22,7 @@
 tr:
   plugin_costs:
     name: "Zaman ve maliyetler"
-    description: "This module adds features for planning and tracking costs of projects."
+    description: "Bu modül, projelerin maliyetlerini planlamak ve izlemek için özellikler ekler."
   activerecord:
     attributes:
       cost_entry:
@@ -32,7 +32,7 @@ tr:
         spent_on: "Tarih"
       cost_type:
         unit: "Birim adı"
-        unit_plural: "Birden fazla birim adı"
+        unit_plural: "Birimin çoğul adı"
         default: "Varsayılan maliyet türü"
       work_package:
         costs_by_type: "Harcanan maliyet"
@@ -102,9 +102,9 @@ tr:
   label_cost_type_specific: "Maliyet türü #%{id}: %{name}"
   label_costs_per_page: "Her sayfa için maliyet"
   label_current_default_rate: "Güncel varsayılan oran"
-  label_date_on: "açık"
+  label_date_on: "tarihinde"
   label_deleted_cost_types: "Silinmiş maliyet türleri"
-  label_locked_cost_types: "Kilit maliyet türleri"
+  label_locked_cost_types: "Kilitli maliyet türleri"
   label_display_cost_entries: "Birim maliyetlerini göster"
   label_display_time_entries: "Raporlanan saatleri göster"
   label_display_types: "Ekran türleri"

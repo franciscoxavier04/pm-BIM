@@ -8,10 +8,12 @@ GIT
 
 GIT
   remote: https://github.com/opf/md-to-pdf
-  revision: 965034bdd4b119c7233ea4ecd62d3964d3dec11d
-  ref: 965034bdd4b119c7233ea4ecd62d3964d3dec11d
+  revision: 66893683b94a5fe8f1dc9a60600773307209cdd2
+  ref: 66893683b94a5fe8f1dc9a60600773307209cdd2
   specs:
-    md_to_pdf (0.1.5)
+    md_to_pdf (0.2.0)
+      base64 (~> 0.2)
+      bigdecimal (~> 3.1)
       color_conversion (~> 0.1)
       front_matter_parser (~> 1.0)
       json-schema (~> 4.3)
@@ -24,11 +26,11 @@ GIT
 
 GIT
   remote: https://github.com/opf/omniauth
-  revision: fe862f986b2e846e291784d2caa3d90a658c67f0
-  ref: fe862f986b2e846e291784d2caa3d90a658c67f0
+  revision: 7eb21563ba047ef86d71f099975587b5ec88f9c9
+  ref: 7eb21563ba047ef86d71f099975587b5ec88f9c9
   specs:
-    omniauth (1.9.0)
-      hashie (>= 3.4.6, < 3.7.0)
+    omniauth (1.9.2)
+      hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
 
 GIT

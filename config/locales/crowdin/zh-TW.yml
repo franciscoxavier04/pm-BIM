@@ -521,18 +521,18 @@ zh-TW:
     text: "文字"
   placeholder_users:
     right_to_manage_members_missing: >
-      你不被允許刪除「虛擬群組」(placeholder user)。您無權管理虛擬群組所屬的專案成員。
-    delete_tooltip: "刪除「虛擬群組」"
+      您無權刪除佔位使用者。您無權管理佔位使用者為成員的所有專案的成員。
+    delete_tooltip: "刪除佔位使用者"
     deletion_info:
-      heading: "刪除虛擬群組：%{name}"
+      heading: "刪除佔位使用者 %{name}"
       data_consequences: >
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
-      confirmation: "輸入「虛擬群組」名稱： %{name} 來確認刪除"
+      confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
     upsale:
-      title: 虛擬群組
+      title: 占位使用者
       description: >
-        「虛擬群組」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
+        「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
   prioritiies:
     edit:
       priority_color_text: |
@@ -928,7 +928,6 @@ zh-TW:
       user_preference:
         comments_sorting: "顯示留言"
         impaired: "協助工具模式"
-        time_zone: "時區"
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作項目時提示我"
         theme: "模式 "
@@ -1391,7 +1390,7 @@ zh-TW:
       news: "最新消息"
       notification:
         other: "通知"
-      placeholder_user: "虛擬群組"
+      placeholder_user: "占位使用者"
       project: "專案"
       project/gate_definition: "關卡"
       project/stage_definition: "階段"
@@ -1502,6 +1501,7 @@ zh-TW:
     status: "狀態"
     subject: "名稱"
     summary: "總覽"
+    time_zone: "Time zone"
     title: "標題"
     type: "類型"
     updated_at: "更新於"
@@ -2546,9 +2546,9 @@ zh-TW:
   label_permissions: "權限"
   label_permissions_report: "權限列表"
   label_personalize_page: "個人化本頁"
-  label_placeholder_user: "虛擬群組"
-  label_placeholder_user_new: "新增虛擬群組"
-  label_placeholder_user_plural: "虛擬群組"
+  label_placeholder_user: "占位使用者"
+  label_placeholder_user_new: "新的佔位使用者"
+  label_placeholder_user_plural: "占位使用者"
   label_planning: "計劃中"
   label_please_login: "請登入"
   label_plugins: "擴充套件"
@@ -2679,7 +2679,7 @@ zh-TW:
   label_system_storage: "儲存空間資訊"
   label_table_of_contents: "目錄"
   label_tag: "標記"
-  label_team_planner: "小組工作企劃"
+  label_team_planner: "團隊規劃"
   label_text: "長文字"
   label_this_month: "本月"
   label_this_week: "本週"
@@ -3077,7 +3077,7 @@ zh-TW:
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
-  permission_manage_placeholder_user: "新增、修改、刪除「虛擬群組」(placeholder users)"
+  permission_manage_placeholder_user: "建立、編輯及刪除占位使用者"
   permission_add_subprojects: "建立子專案"
   permission_add_work_package_watchers: "新增監看者"
   permission_assign_versions: "指派版本"

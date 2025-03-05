@@ -937,7 +937,6 @@ hi:
       user_preference:
         comments_sorting: "टिप्पणियां प्रदर्शित करें"
         impaired: "पहुँच क्षमता"
-        time_zone: "समय क्षेत्र"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1521,6 +1520,7 @@ hi:
     status: "अवस्था"
     subject: "विषय"
     summary: "सारांश"
+    time_zone: "Time zone"
     title: "शीर्षक"
     type: "प्रकार"
     updated_at: "पर अद्यतीत"

@@ -67,6 +67,7 @@ module Meetings
           start_time: Time.current.next_weekday + 10.hours,
           frequency: meeting_data["frequency"],
           interval: meeting_data["interval"],
+          time_zone: meeting_data["time_zone"],
           project:
         }
       end

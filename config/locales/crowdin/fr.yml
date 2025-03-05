@@ -937,7 +937,6 @@ fr:
       user_preference:
         comments_sorting: "Afficher les commentaires"
         impaired: "Mode d'accessibilité"
-        time_zone: "Fuseau horaire"
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Mode"
@@ -1521,6 +1520,7 @@ fr:
     status: "Statut"
     subject: "Sujet"
     summary: "Résumé"
+    time_zone: "Time zone"
     title: "Titre"
     type: "Type"
     updated_at: "Mis à jour le"

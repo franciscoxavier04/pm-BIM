@@ -957,7 +957,6 @@ sk:
       user_preference:
         comments_sorting: "Zobraziť komentáre"
         impaired: "Režim zjednodušeného ovládania"
-        time_zone: "Časové pásmo"
         auto_hide_popups: "Automaticky skryť upozornenia o úspešných akciách"
         warn_on_leaving_unsaved: "Upozorbiť ma, pri opustení pracovného balíčka s neuloženými zmenami"
         theme: "Mode"
@@ -1561,6 +1560,7 @@ sk:
     status: "Stav"
     subject: "Predmet"
     summary: "Zhrnutie"
+    time_zone: "Time zone"
     title: "Nadpis"
     type: "Typ"
     updated_at: "Aktualizované"

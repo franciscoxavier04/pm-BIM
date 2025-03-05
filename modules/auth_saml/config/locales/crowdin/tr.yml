@@ -20,7 +20,7 @@ tr:
         certificate: Certificate used by OpenProject for SAML requests
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: İmza Algoritması
-        digest_method: Digest algorithm
+        digest_method: Özet algoritması
         format: "Biçim"
         icon: "Özel simge"
   activerecord:
@@ -57,8 +57,8 @@ tr:
       label_mapping: İlişkilendirme
       label_requested_attribute_for: "%{attribute} için nitelik talebi"
       no_results_table: No SAML identity providers have been defined yet.
-      plural: SAML identity providers
-      singular: SAML identity provider
+      plural: SAML kimlik sağlayıcıları
+      singular: SAML kimlik sağlayıcısı
       requested_attributes: Talep edilen nitelikler
       attribute_mapping: Nitelik ilişkilendirme
       attribute_mapping_text: >
@@ -66,7 +66,7 @@ tr:
       metadata:
         dialog: "This is the URL where the OpenProject SAML metadata is available. Optionally use it to configure your identity provider:"
       upsale:
-        description: Connect OpenProject to a SAML identity provider
+        description: OpenProject'i bir SAML kimlik sağlayıcısına bağlama
       request_attributes:
         title: 'Requested attributes'
         legend: >
@@ -138,7 +138,7 @@ tr:
       authn_requests_signed: >
         If checked, OpenProject will sign the SAML AuthnRequest. You will have to provide a signing certificate and private key using the fields below.
       want_assertions_signed: >
-        If checked, OpenProject will required signed responses from the identity provider using it's own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
+        İşaretlenirse, OpenProject kimlik sağlayıcıdan kendi sertifika anahtar çiftini kullanarak imzalı yanıtlar isteyecektir. OpenProject imzayı temel yapılandırma bölümündeki sertifikaya göre doğrulayacaktır.
       want_assertions_encrypted: >
         If enabled, require the identity provider to encrypt the assertion response using the certificate pair that you provide.
       certificate: >

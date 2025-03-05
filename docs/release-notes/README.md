@@ -13,6 +13,13 @@ Stay up to date and get an overview of the new features included in the releases
 <!--- New release notes are generated below. Do not remove comment. -->
 <!--- RELEASE MARKER -->
 
+## 15.3.2
+
+Release date: 2025-03-05
+
+[Release Notes](15-3-2/)
+
+
 ## 15.3.1
 
 Release date: 2025-02-25

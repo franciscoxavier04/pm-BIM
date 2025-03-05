@@ -955,7 +955,6 @@ sl:
       user_preference:
         comments_sorting: "Prikaži komentarje"
         impaired: "Dostopnost"
-        time_zone: "Časovni pas"
         auto_hide_popups: "Samodejno skrij obvestila o uspehu"
         warn_on_leaving_unsaved: "Opozori me, kadar zapuščam stran z neshranjenim besedilom"
         theme: "Mode"
@@ -1559,6 +1558,7 @@ sl:
     status: "Stanje"
     subject: "Zadeva"
     summary: "Povzetek"
+    time_zone: "Time zone"
     title: "Naslov"
     type: "Vrsta"
     updated_at: "Posodobljeno"

@@ -957,7 +957,6 @@ cs:
       user_preference:
         comments_sorting: "Zobrazit komentáře"
         impaired: "Režim usnadnění"
-        time_zone: "Časové pásmo"
         auto_hide_popups: "Automaticky skrýt oznámení o úspěchu"
         warn_on_leaving_unsaved: "Upozornit mě při opuštění pracovního balíčku s neuloženými změnami"
         theme: "Režim"
@@ -1561,6 +1560,7 @@ cs:
     status: "Stav"
     subject: "Předmět"
     summary: "Souhrn"
+    time_zone: "Time zone"
     title: "Název"
     type: "Typ"
     updated_at: "Aktualizováno"

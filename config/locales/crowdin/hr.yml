@@ -948,7 +948,6 @@ hr:
       user_preference:
         comments_sorting: "Prikaži komentare"
         impaired: "Mod dostupnosti"
-        time_zone: "Vremenska zona"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1542,6 +1541,7 @@ hr:
     status: "Status"
     subject: "Predmet"
     summary: "Sažetak"
+    time_zone: "Time zone"
     title: "Naziv"
     type: "Tip"
     updated_at: "Ažurirano"

@@ -932,7 +932,6 @@ de:
       user_preference:
         comments_sorting: "Kommentare anzeigen"
         impaired: "Für die barrierefreie Nutzung optimierte Oberfläche"
-        time_zone: "Zeitzone"
         auto_hide_popups: "Benachrichtigungen erfolgreicher Aktionen automatisch ausblenden"
         warn_on_leaving_unsaved: "Beim Verlassen einer Arbeitspaket-Seite mit ungespeichertem Text warnen"
         theme: "Modus"
@@ -1516,6 +1515,7 @@ de:
     status: "Status"
     subject: "Thema"
     summary: "Zusammenfassung"
+    time_zone: "Time zone"
     title: "Titel"
     type: "Typ"
     updated_at: "Aktualisiert am"
