@@ -31,6 +31,8 @@
 require "rails_helper"
 
 RSpec.describe WorkPackageRelationsTab::IndexComponent, type: :component do
+  create_shared_association_defaults_for_work_package_factory
+
   shared_let(:user) { create(:admin) }
   shared_let(:work_package) { create(:work_package) }
 
@@ -60,11 +62,13 @@ RSpec.describe WorkPackageRelationsTab::IndexComponent, type: :component do
       expect(render_component).to have_test_selector("op-relation-group-children")
     end
 
-    it "renders the relations" do
+    it "renders the relations in child creation order" do
       expect(render_component).to have_list "Children"
 
       list = page.find(:list, "Children")
       expect(list).to have_list_item count: 2, text: /child\d/
+      expect(list).to have_list_item position: 1, text: "child1"
+      expect(list).to have_list_item position: 2, text: "child2"
     end
   end
 
@@ -82,11 +86,28 @@ RSpec.describe WorkPackageRelationsTab::IndexComponent, type: :component do
       expect(render_component).to have_test_selector("op-relation-group-follows")
     end
 
-    it "renders the relations" do
+    it "renders the relations in relation creation order" do
       expect(render_component).to have_list "Predecessors (before)"
 
       list = page.find(:list, "Predecessors (before)")
       expect(list).to have_list_item count: 4, text: /predecessor\d/
+      expect(list).to have_list_item position: 1, text: "predecessor1"
+      expect(list).to have_list_item position: 2, text: "predecessor2"
+      expect(list).to have_list_item position: 3, text: "predecessor3"
+      expect(list).to have_list_item position: 4, text: "predecessor4"
+
+      # delete and recreate relation to predecessor2.
+      relation_attributes = predecessor2.relations.first.attributes
+      predecessor2.relations.first.destroy
+      Relation.create!(relation_attributes.without("id"))
+
+      # predecessor2 should now be at last position
+      render_component
+      list = page.find(:list, "Predecessors (before)")
+      expect(list).to have_list_item position: 1, text: "predecessor1"
+      expect(list).to have_list_item position: 2, text: "predecessor3"
+      expect(list).to have_list_item position: 3, text: "predecessor4"
+      expect(list).to have_list_item position: 4, text: "predecessor2"
     end
 
     it "renders the closest relation" do
