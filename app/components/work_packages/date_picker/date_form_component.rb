@@ -90,7 +90,7 @@ module WorkPackages
         text_field_options
       end
 
-      def today(name:)
+      def render_today_link(name:)
         return if duration_field?(name)
 
         text = I18n.t(:label_today).capitalize
@@ -98,7 +98,7 @@ module WorkPackages
         return text if @disabled
 
         render(Primer::Beta::Link.new(href: "",
-                                      "aria-label":  I18n.t(:label_today_as_"#{name.to_s}")
+                                      "aria-label":  I18n.t("label_today_as_#{name.to_s}"),
                                       data: {
                                         action: "work-packages--date-picker--preview#setTodayForField",
                                         "work-packages--date-picker--preview-field-reference-param": "work_package_#{name}",
