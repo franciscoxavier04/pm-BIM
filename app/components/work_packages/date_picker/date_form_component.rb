@@ -98,11 +98,7 @@ module WorkPackages
         return text if @disabled
 
         render(Primer::Beta::Link.new(href: "",
-                                      "aria-label": if name == :start_date
-                                                      I18n.t(:label_today_as_start_date)
-                                                    else
-                                                      I18n.t(:label_today_as_finish_date)
-                                                    end,
+                                      "aria-label":  I18n.t(:label_today_as_"#{name.to_s}")
                                       data: {
                                         action: "work-packages--date-picker--preview#setTodayForField",
                                         "work-packages--date-picker--preview-field-reference-param": "work_package_#{name}",
