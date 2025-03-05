@@ -127,7 +127,7 @@ zh-TW:
             item_2:
               name: 任務
             item_3:
-              name: 小組工作企劃
+              name: 團隊規劃
           boards:
             kanban:
               name: Kanban看板

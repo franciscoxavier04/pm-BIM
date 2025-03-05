@@ -935,7 +935,6 @@ nl:
       user_preference:
         comments_sorting: "Toon reacties"
         impaired: "Toegankelijkheidsmodus"
-        time_zone: "Tijdzone"
         auto_hide_popups: "Automatisch verbergen geslaagd-meldingen"
         warn_on_leaving_unsaved: "Mij waarschuwen bij het verlaten van een werkpakket met niet-opgeslagen wijzigingen"
         theme: "Modus"
@@ -1519,6 +1518,7 @@ nl:
     status: "Status"
     subject: "Onderwerp"
     summary: "Samenvatting"
+    time_zone: "Time zone"
     title: "Titel"
     type: "Type"
     updated_at: "Bijgewerkt op"

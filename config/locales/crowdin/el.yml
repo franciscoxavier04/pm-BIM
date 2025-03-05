@@ -935,7 +935,6 @@ el:
       user_preference:
         comments_sorting: "Εμφάνιση σχολίων"
         impaired: "Λειτουργία προσβασιμότητας"
-        time_zone: "Ζώνη Ώρας"
         auto_hide_popups: "Αυτόματη απόκρυψη ειδοποιήσεων επιτυχίας"
         warn_on_leaving_unsaved: "Προειδοποιήστε με όταν φεύγω από ένα πακέτο εργασίας με μη αποθηκευμένες αλλαγές"
         theme: "Mode"
@@ -1519,6 +1518,7 @@ el:
     status: "Κατάσταση"
     subject: "Θέμα"
     summary: "Περίληψη"
+    time_zone: "Time zone"
     title: "Τίτλος"
     type: "Τύπος"
     updated_at: "Τροποποιήθηκε"

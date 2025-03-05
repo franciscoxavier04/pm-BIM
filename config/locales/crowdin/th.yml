@@ -930,7 +930,6 @@ th:
       user_preference:
         comments_sorting: "แสดงความคิดเห็น"
         impaired: "โหมดสำหรับผู้พิการ"
-        time_zone: "โซนเวลา"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1504,6 +1503,7 @@ th:
     status: "สถานะ"
     subject: "หัวข้อ"
     summary: "สรุป"
+    time_zone: "Time zone"
     title: "ชื่อเรื่อง"
     type: "ประเภท"
     updated_at: "แก้ไขเมื่อ"

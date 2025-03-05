@@ -948,7 +948,6 @@ sr:
       user_preference:
         comments_sorting: "Display comments"
         impaired: "Accessibility mode"
-        time_zone: "Time zone"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1542,6 +1541,7 @@ sr:
     status: "Status"
     subject: "Subject"
     summary: "Summary"
+    time_zone: "Time zone"
     title: "Title"
     type: "Type"
     updated_at: "Updated on"

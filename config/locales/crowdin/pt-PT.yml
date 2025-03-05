@@ -936,7 +936,6 @@ pt-PT:
       user_preference:
         comments_sorting: "Exibir comentários"
         impaired: "Modo de acessibilidade"
-        time_zone: "Fuso horário"
         auto_hide_popups: "Ocultar automaticamente notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me quando sair de um pacote de trabalho sem guardar as alterações"
         theme: "Modo"
@@ -1520,6 +1519,7 @@ pt-PT:
     status: "Situação"
     subject: "Assunto"
     summary: "Resumo"
+    time_zone: "Time zone"
     title: "Título"
     type: "Tipo"
     updated_at: "Atualizado em"

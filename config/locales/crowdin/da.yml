@@ -937,7 +937,6 @@ da:
       user_preference:
         comments_sorting: "Vis kommentarer"
         impaired: "Tilgængelighedstilstand"
-        time_zone: "Tidszone"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1521,6 +1520,7 @@ da:
     status: "Status"
     subject: "Emne"
     summary: "Opsummering"
+    time_zone: "Time zone"
     title: "Titel"
     type: "Type"
     updated_at: "Opdateret den"

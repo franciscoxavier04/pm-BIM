@@ -902,14 +902,14 @@ ja:
       comment_updated: "正常にコメントを更新しました。"
       confirm_edit_cancel: "作業項目の編集をキャンセルしてもよろしいですか？"
       datepicker_modal:
-        automatically_scheduled_parent: "Automatically scheduled. Dates are derived from relations."
-        manually_scheduled: "Manual scheduling enabled, all relations ignored."
-        start_date_limited_by_relations: "Available start and finish dates are limited by relations."
-        changing_dates_affects_follow_relations: "Changing these dates will affect dates of related work packages."
-        click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for GANTT overview.'
-        show_relations: "Show relations"
+        automatically_scheduled_parent: "自動的にスケジュールされました。日付は関連するタスクから計算されます。"
+        manually_scheduled: "手動スケジュールが有効のため、関連するタスクの日付は無視されます。"
+        start_date_limited_by_relations: "開始日と終了日は、関連するタスクによって制限されます。"
+        changing_dates_affects_follow_relations: "これらの日付を変更すると、関連するワークパッケージの日付に影響します。"
+        click_on_show_relations_to_open_gantt: 'ガントチャートの概要は %{button_name} をクリックします。'
+        show_relations: "関連するタスクを表示"
         ignore_non_working_days:
-          title: "Working days only"
+          title: "営業日のみ"
       description_filter: "フィルタ"
       description_enter_text: "テキスト"
       description_options_hide: "オプションを非表示"

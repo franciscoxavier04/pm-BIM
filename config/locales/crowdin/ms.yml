@@ -928,7 +928,6 @@ ms:
       user_preference:
         comments_sorting: "Paparkan komen"
         impaired: "Mod ketercapaian"
-        time_zone: "Zon waktu"
         auto_hide_popups: "Pemberitahuan kejayaan auto-sembunyi"
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
@@ -1502,6 +1501,7 @@ ms:
     status: "Status"
     subject: "Subjek"
     summary: "Ringkasan"
+    time_zone: "Time zone"
     title: "Tajuk"
     type: "Jenis"
     updated_at: "Dikemas kini pada"
