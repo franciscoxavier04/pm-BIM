@@ -57,18 +57,7 @@
             concat(
               flex_layout do |flex|
                 flex.with_row(mb: 3) do
-                  flex_layout(flex_wrap: :wrap) do |restricted_note_container|
-                    restricted_note_container.with_column(mr: 2) do
-                      render(WorkPackages::ActivitiesTab::Journals::RestrictedNoteForm.new(f))
-                    end
-
-                    restricted_note_container.with_column(
-                      display: :none,
-                      data: { "work-packages--activities-tab--restricted-comment-target": "visibilityExplainer" }
-                    ) do
-                      render(Primer::Beta::Text.new(color: :subtle)) { restricted_visibility_explainer }
-                    end
-                  end
+                  render(WorkPackages::ActivitiesTab::Journals::RestrictedNoteForm.new(f))
                 end
               end
             )
