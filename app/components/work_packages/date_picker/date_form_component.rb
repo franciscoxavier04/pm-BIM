@@ -97,13 +97,17 @@ module WorkPackages
 
         return text if @disabled
 
-        render(Primer::Beta::Link.new(href: "",
-                                      "aria-label":  I18n.t("label_today_as_#{name.to_s}"),
-                                      data: {
-                                        action: "work-packages--date-picker--preview#setTodayForField",
-                                        "work-packages--date-picker--preview-field-reference-param": "work_package_#{name}",
-                                        test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field--today"
-                                      })) { text }
+        render(
+          Primer::Beta::Link.new(
+            href: "",
+            "aria-label": I18n.t("label_today_as_#{name}"),
+            data: {
+              action: "work-packages--date-picker--preview#setTodayForField",
+              "work-packages--date-picker--preview-field-reference-param": "work_package_#{name}",
+              test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field--today"
+            }
+          )
+        ) { text }
       end
 
       def duration_field?(name)
