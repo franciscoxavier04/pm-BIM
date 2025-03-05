@@ -21,7 +21,7 @@
           render(Primer::Alpha::TextField.new(**text_field_options(name: :start_date, label: I18n.t("attributes.start_date"))))
         end
         start_date.with_row(classes: "wp-datepicker-dialog-set-today-link") do
-          today(name: :start_date,)
+          today(name: :start_date)
         end
       end
     end
