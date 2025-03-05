@@ -996,6 +996,8 @@ en:
         active_value:
           true: "unarchived"
           false: "archived"
+        description: "Description"
+        enabled_modules: "Enabled modules"
         identifier: "Identifier"
         latest_activity_at: "Latest activity at"
         parent: "Subproject of"
@@ -1004,9 +1006,7 @@ en:
           true: "public"
           false: "private"
         queries: "Queries"
-        enabled_modules: "Enabled modules"
         status_code: "Project status"
-        description: "Description"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -3485,6 +3485,13 @@ en:
     default: "-"
 
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3497,6 +3504,7 @@ en:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
       title: Change the project's identifier
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project.
@@ -3504,13 +3512,6 @@ en:
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
 
   project_module_activity: "Activity"
   project_module_forums: "Forums"

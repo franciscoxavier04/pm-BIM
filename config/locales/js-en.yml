@@ -777,19 +777,19 @@ en:
       relation_description: "Click to add description for this relation"
 
     project:
+      autocompleter:
+        label: "Project autocompletion"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
+      context: "Project context"
+      copy:
+        copy_options: "Copy options"
+      not_available: "Project N/A"
+      no_template_selected: "(None)"
       required_outside_context: >
         Please choose a project to create the work package in to see all attributes.
         You can only select projects which have the type above activated.
-      context: "Project context"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
       use_template: "Use template"
-      no_template_selected: "(None)"
-      copy:
-        copy_options: "Copy options"
-
-      autocompleter:
-        label: "Project autocompletion"
 
     reminders:
       settings:
