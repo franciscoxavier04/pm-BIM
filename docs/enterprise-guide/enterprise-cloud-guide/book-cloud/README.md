@@ -61,9 +61,7 @@ A payment receipt will be sent via email.
 
 ## Pay per invoice (via bank transfer)
 
-If you book an annual plan and your organization is based in the EU, Switzerland or the United States you can also choose to pay via invoice.
-
-To select this option check the **Pay per invoice** checkbox. This will open additional fields to be filled out.
+To select the **Pay per invoice** option, select the respective checkbox. This will open additional fields to be filled out.
 
 Enter your **Billing information**. If you are a business customer from the EU, please enter a valid **VAT ID number**.
 

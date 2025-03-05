@@ -16,7 +16,7 @@ Simply create a 14 days free trial on: [start.openproject.com](https://start.ope
 
 ### Can I get a custom domain name instead of example.openproject.com?
 
-Yes, you can create your custom domain name. For this service we charge €100 per month. Please contact us via email (support@openproject.com) if you are interested.
+Yes, you can create your custom domain name. For this service we charge €100 per month. Please contact us via email (sales@openproject.com) if you are interested.
 
 ### How can I change the OpenProject Enterprise cloud creators account?
 
@@ -32,7 +32,7 @@ Due to data privacy reasons we automatically delete OpenProject trial environmen
 
 ### Is there an advantage of the annual over the monthly OpenProject plan?
 
-Yes, your subscription gets cheaper the longer the duration you choose. Please check our current pricing [here](https://www.openproject.org/pricing/).
+Yes, longer subscription periods include attractive discounts which save you the equivalent of up to 15 months subscription fees compared to a annual (1 year) plan. Please check our current pricing [here](https://www.openproject.org/pricing/).
 
 ### How can I book additional users for the Enterprise cloud edition?
 
@@ -45,18 +45,19 @@ Please have a look at [this instruction](../manage-cloud-subscription/) for the 
 
 ## Billing and invoicing 
 
-### Can we pay the OpenProject Enterprise cloud edition by transfer?
+### Can we pay the OpenProject Enterprise cloud edition by wire transfer?
 
-Yes, for customers in the EU it is possible to pay by bank transfer (as well as by credit card).
+Yes, for customers in the EU, USA and Switzerland it is possible to pay by bank transfer (as well as by credit card).
+
 To do this, you can sign into your OpenProject environment and select the "Buy now" button from the top menu. You are then directed to the payment page, where you can select the number of users you want to work with and your country. Then you can check the option to pay by invoice and fill out the billing information. You will then receive an invoice from us.
 
 ### When does my OpenProject contract end?
 
-The user may terminate the contract at any time, which will apply by the end of the subscription period (including last day). In case of credit card payment the subscription period is one month or one year; in case of payment via invoice the subscription period is one year. The [agreed subscription period](https://www.openproject.org/legal/terms-of-service/) will be extended automatically if the contract was not terminated on time.
+The user may terminate the contract at any time, which will apply by the end of the subscription period (including last day). The [agreed subscription period](https://www.openproject.org/legal/terms-of-service/) will be extended automatically if the contract was not terminated on time.
 
 ### What shall I do when I run into payment issues with OpenProject?
 
-In case you use the bank transfer payment method please indicate the invoice number. You can find this information in the corresponding invoice (OP…). Otherwise the automatic banking system is not able to detect your payment. Please do not hesitate to contact accounting@openproject.com if you have any further questions.
+In case you use the bank transfer payment method please indicate the invoice number. You can find this information in the corresponding invoice (OP…). Otherwise the automatic banking system is not able to detect your payment. Please do not hesitate to contact billing@openproject.com if you have any further questions.
 
 You can find additional questions and answers regarding pricing and booking at the bottom of our [pricing website](https://www.openproject.org/pricing/#faq).
 

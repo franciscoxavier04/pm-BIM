@@ -46,7 +46,7 @@ Alternatively, you can navigate to *Administration -> Subscription* and click th
 
 Here you can choose the new amount of users. Your next payment will be displayed below.
 
-You can **upgrade an existing subscription** at any time. Additional users will be billed on a prorated basis, this means you will only pay for the additional users for the rest of the current subscription period.
+You can **upgrade an existing subscription** in increments of 5 at any time. Additional users will be billed on a prorated basis, this means you will only pay for the additional users for the rest of the current subscription period.
 
 You can **downgrade a subscription** to the end of a current subscription period. This means the downgrade becomes active with the next payment term.
 

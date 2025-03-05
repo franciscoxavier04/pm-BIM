@@ -10,7 +10,7 @@ keywords: trial installation
 
 You can easily set up a **14-day free trial** for the OpenProject Enterprise cloud edition.
 
-Here you can test all OpenProject functionalities thoroughly. After 14 days the trial will expire automatically. No further action is required on your part. This allows you to test OpenProject freely and without any concerns.
+Here you can test all OpenProject functionalities thoroughly. After 14 days the trial will expire automatically and will be deleted after a short period of time. No further action is required on your part. This allows you to test OpenProject freely and without any concerns.
 
 ## Start a new trial installation
 
@@ -58,6 +58,6 @@ Click the **Create account and get started** button.
 
 ![Enterprise cloud edition trial](openproject_enterprise_guide_create_trial_create_account.png)
 
-Your OpenProject instance will be created and you will be directed to your OpenProject installation. Here you can take a three-minute introductory tour to get  familiar with the most important features. 
+Your OpenProject instance will be created and you will be directed to your OpenProject installation. Here you can take a three-minute introductory tour to get familiar with the most important features. 
 
 ![Homepage of the newly created OpenProject Enterprise cloud trial instance](openproject_enterprise_guide_create_trial_instance_created_homepage.png)
