@@ -63,7 +63,7 @@ module WorkPackages
         def comment_header_classes
           [].tap do |classes|
             if journal.restricted?
-              classes << "work-packages-activities-tab-journals-item-component__header--restricted-comment"
+              classes << "work-packages-activities-tab-journals-item-component--header__restricted-comment"
             end
           end
         end
@@ -71,7 +71,7 @@ module WorkPackages
         def comment_body_classes
           ["work-packages-activities-tab-journals-item-component--journal-notes-body"].tap do |classes|
             if journal.restricted?
-              classes << "work-packages-activities-tab-journals-item-component__journal-notes-body--restricted-comment"
+              classes << "work-packages-activities-tab-journals-item-component--journal-notes-body__restricted-comment"
             end
           end
         end
