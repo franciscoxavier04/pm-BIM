@@ -115,7 +115,7 @@ class Query < ApplicationRecord
   end
 
   def validate_columns
-    available_names = displayable_columns.map(&:name).map(&:to_sym)
+    available_names = displayable_columns.map { |c| c.name.to_sym }
 
     (column_names - available_names).each do |name|
       errors.add :column_names,
@@ -135,7 +135,7 @@ class Query < ApplicationRecord
   end
 
   def validate_group_by
-    unless group_by.blank? || groupable_columns.map(&:name).map(&:to_s).include?(group_by.to_s)
+    unless group_by.blank? || groupable_columns.map { |c| c.name.to_s }.include?(group_by.to_s)
       errors.add :group_by, :invalid, value: group_by
     end
   end
