@@ -58,7 +58,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   rescue Prawn::Errors::CannotFit
     with_margin(styles.wp_markdown_label_margins) do
       pdf.formatted_text(
-        [{ text: "[#{I18n.t("export.errors.embedded_table_with_too_many_columns")}]", color: "FF0000", size: 8 }]
+        [{ text: "[#{I18n.t('export.errors.embedded_table_with_too_many_columns')}]", color: "FF0000", size: 8 }]
       )
     end
   end
