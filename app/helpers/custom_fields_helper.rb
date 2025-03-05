@@ -150,8 +150,9 @@ module CustomFieldsHelper
 
     case field_format.try(:edit_as)
     when "date"
-      angular_component_tag "opce-modal-single-date-picker",
+      angular_component_tag "opce-basic-single-date-picker",
                             inputs: {
+                              required: custom_field.required?,
                               id: field_id,
                               name: field_name
                             }

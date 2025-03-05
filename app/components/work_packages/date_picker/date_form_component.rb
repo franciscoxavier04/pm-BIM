@@ -30,24 +30,8 @@
 
 module WorkPackages
   module DatePicker
-    class DateForm < ApplicationForm
-      ##
-      # Primer::Forms::BaseComponent or ApplicationForm will always autofocus the
-      # first input field with an error present on it. Despite this behavior being
-      # a11y-friendly, it breaks the modal's UX when an invalid input field
-      # is rendered.
-      #
-      # The reason for this is since we're implementing a "format on blur", when
-      # we make a request to the server that will set an input field in an invalid
-      # state and it is returned as such, any time we blur this autofocused field,
-      # we'll perform another request that will still have the input in an invalid
-      # state causing it to autofocus again and preventing us from leaving this
-      # "limbo state".
-      ##
-      def before_render
-        # no-op
-      end
-
+    class DateFormComponent < ApplicationComponent
+      include OpPrimer::ComponentHelpers
       attr_reader :work_package
 
       def initialize(work_package:,
@@ -55,56 +39,47 @@ module WorkPackages
                      disabled:,
                      is_milestone:,
                      focused_field: :start_date,
-                     touched_field_map: {})
+                     touched_field_map: nil,
+                     date_mode: nil)
         super()
 
         @work_package = work_package
         @schedule_manually = schedule_manually
         @is_milestone = is_milestone
-        @focused_field = update_focused_field(focused_field)
+        @date_mode = date_mode
         @touched_field_map = touched_field_map
+        @focused_field = update_focused_field(focused_field)
         @disabled = disabled
-      end
-
-      form do |query_form|
-        query_form.group(layout: :horizontal) do |group|
-          group.hidden(name: "schedule_manually", value: @schedule_manually)
-
-          if @is_milestone
-            text_field(group, name: :start_date, label: I18n.t("attributes.date"))
-
-            hidden_touched_field(group, name: :start_date)
-          else
-            text_field(group, name: :start_date, label: I18n.t("attributes.start_date"))
-            text_field(group, name: :due_date, label: I18n.t("attributes.due_date"))
-            text_field(group, name: :duration, label: I18n.t("activerecord.attributes.work_package.duration"))
-
-            hidden_touched_field(group, name: :start_date)
-            hidden_touched_field(group, name: :due_date)
-            hidden_touched_field(group, name: :duration)
-          end
-
-          hidden_touched_field(group, name: :ignore_non_working_days)
-          hidden_touched_field(group, name: :schedule_manually)
-
-          group.fields_for(:initial) do |builder|
-            WorkPackages::DatePicker::InitialValuesForm.new(builder, work_package:, is_milestone: @is_milestone)
-          end
-        end
       end
 
       private
 
-      def text_field(group, name:, label:)
+      def container_classes(name)
+        classes = "wp-datepicker-dialog-date-form--button-container"
+        classes += " wp-datepicker-dialog-date-form--button-container_visible" unless show_text_field?(name)
+
+        classes
+      end
+
+      def show_text_field?(name)
+        return true if @is_milestone || !@schedule_manually
+        return true if range_date_mode?
+
+        show_text_field_in_single_date_mode?(name)
+      end
+
+      def text_field_options(name:, label:)
         text_field_options = default_field_options(name).merge(
-          name:,
+          name: "work_package[#{name}]",
+          id: "work_package_#{name}",
           value: field_value(name),
           disabled: disabled?(name),
           label:,
           caption: caption(name),
-          show_clear_button: name != :duration,
+          show_clear_button: !disabled?(name) && !duration_field?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
-          validation_message: validation_message(name)
+          validation_message: validation_message(name),
+          type: duration_field?(name) ? :number : :text
         )
 
         if duration_field?(name)
@@ -113,7 +88,7 @@ module WorkPackages
           )
         end
 
-        group.text_field(**text_field_options)
+        text_field_options
       end
 
       def caption(name)
@@ -131,38 +106,40 @@ module WorkPackages
                                       })) { text }
       end
 
-      def hidden_touched_field(group, name:)
-        group.hidden(name: :"#{name}_touched",
-                     value: touched(name),
-                     data: { "work-packages--date-picker--preview-target": "touchedFieldInput",
-                             "referrer-field": name })
-      end
-
-      def touched(name)
-        @touched_field_map["#{name}_touched"] || false
-      end
-
       def duration_field?(name)
         name == :duration
       end
 
       def update_focused_field(focused_field)
-        return :start_date if focused_field.nil?
-
-        case focused_field.to_s.underscore
-        when "combined_date"
-          if field_value(:start_date).present? && field_value(:due_date).nil?
-            :due_date
-          else
-            :start_date
-          end
-        when "due_date"
-          :due_date
-        when "duration"
-          :duration
-        else
-          :start_date
+        if @date_mode.nil? || @date_mode != "range"
+          return focused_field_for_single_date_mode(focused_field)
         end
+
+        date_fields = {
+          "due_date" => :due_date,
+          "start_date" => :start_date,
+          "duration" => :duration
+        }
+
+        # Default is :start_date
+        date_fields.fetch(focused_field.to_s.underscore, :start_date)
+      end
+
+      def focused_field_for_single_date_mode(focused_field)
+        return :duration if focused_field.to_s == "duration"
+
+        # When the combined date is triggered, we have to actually check for the values.
+        # This happens only on initialization
+        if focused_field == :combined_date
+          return :due_date if field_value(:start_date).nil?
+          return :start_date if field_value(:due_date).nil?
+        end
+
+        # Focus the field if it is shown..
+        return focused_field if show_text_field?(focused_field)
+
+        # .. if not, focus the other one
+        focused_field == :start_date ? :due_date : :start_date
       end
 
       def disabled?(name)
@@ -195,17 +172,48 @@ module WorkPackages
       def default_field_options(name)
         data = { "work-packages--date-picker--preview-target": "fieldInput",
                  action: "work-packages--date-picker--preview#markFieldAsTouched " \
+                         "work-packages--date-picker--preview#inputChanged " \
                          "focus->work-packages--date-picker--preview#onHighlightField",
                  test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field" }
 
         if @focused_field == name
           data[:qa_highlighted] = "true"
-        end
-
-        if @focused_field == name
           data[:focus] = "true"
         end
+
         { data: }
+      end
+
+      def single_date_field_button_link(focused_field)
+        permitted_params = params.merge(date_mode: "range", focused_field:).permit!
+
+        if params[:action] == "new"
+          new_work_package_datepicker_dialog_content_path(permitted_params)
+        else
+          work_package_datepicker_dialog_content_path(permitted_params)
+        end
+      end
+
+      def range_date_mode?
+        @date_mode.present? && @date_mode == "range"
+      end
+
+      def field_value_present_or_touched?(name)
+        field_value(name).present? || @touched_field_map["#{name}_touched"]
+      end
+
+      def show_text_field_in_single_date_mode?(name)
+        return true if field_value_present_or_touched?(name)
+
+        # Start date is only shown in the assertion above
+        return false if name != :due_date
+
+        # This handles the edge case, that the datepicker starts in single date mode, with the due date being hidden.
+        # Normally, the start date is the hidden one, except if only a start date is set.
+        # In case we delete the start date, we have to ensure that the datepicker does not switch the fields
+        # and suddenly hides the start date. That is why we check for the touched value.
+        true if field_value(:start_date).nil? &&
+          (@touched_field_map["start_date_touched"] == false || @touched_field_map["start_date_touched"].nil?)
       end
     end
   end

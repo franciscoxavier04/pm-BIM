@@ -29,10 +29,6 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
-import {
-  debounce,
-  DebouncedFunc,
-} from 'lodash';
 import Idiomorph from 'idiomorph/dist/idiomorph.cjs';
 
 interface TurboBeforeFrameRenderEventDetail {
@@ -56,11 +52,9 @@ export abstract class DialogPreviewController extends Controller {
   declare readonly initialValueInputTargets:HTMLInputElement[];
   declare readonly touchedFieldInputTargets:HTMLInputElement[];
 
-  private debouncedDelayedPreview:DebouncedFunc<(input:HTMLInputElement) => void>;
-  private debouncedImmediatePreview:DebouncedFunc<(input:HTMLInputElement) => void>;
-  private frameMorphRenderer:(event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => void;
-  private targetFieldName:string;
-  private touchedFields:Set<string>;
+  protected frameMorphRenderer:(event:CustomEvent<TurboBeforeFrameRenderEventDetail>) => void;
+  protected targetFieldName:string;
+  protected touchedFields:Set<string>;
 
   connect() {
     this.touchedFields = new Set();
@@ -70,15 +64,6 @@ export abstract class DialogPreviewController extends Controller {
         this.touchedFields.add(fieldName);
       }
     });
-
-    // if the debounce value is changed, the following test helper must be kept
-    // in sync: `spec/support/edit_fields/progress_edit_field.rb`, method `#wait_for_preview_to_complete`
-    this.debouncedDelayedPreview = debounce((input:HTMLInputElement) => {
-      void this.preview(input);
-    }, 200);
-    this.debouncedImmediatePreview = debounce((input:HTMLInputElement) => {
-      void this.preview(input);
-    }, 0);
 
     // Turbo supports morphing, by adding the <turbo-frame refresh="morph">
     // attribute. However, it does not work that well with primer input: when
@@ -104,9 +89,7 @@ export abstract class DialogPreviewController extends Controller {
     };
 
     this.fieldInputTargets.forEach((target) => {
-      target.addEventListener('input', this.inputChanged.bind(this));
-
-      if (target.dataset.focus === 'true') {
+     if (target.dataset.focus === 'true') {
         this.focusAndSetCursorPositionToEndOfInput(target);
       }
     });
@@ -116,49 +99,10 @@ export abstract class DialogPreviewController extends Controller {
   }
 
   disconnect() {
-    this.debouncedDelayedPreview.cancel();
-    this.debouncedImmediatePreview.cancel();
-    this.fieldInputTargets.forEach((target) => {
-      target.removeEventListener('input', this.inputChanged.bind(this));
-    });
     const turboFrame = this.formTarget.closest('turbo-frame') as HTMLTurboFrameElement;
     if (turboFrame) {
       turboFrame.removeEventListener('turbo:before-frame-render', this.frameMorphRenderer);
     }
-  }
-
-  inputChanged(event:Event) {
-    const field = event.target as HTMLInputElement;
-
-    if (field.name === 'work_package[start_date]') {
-      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
-        const selectedDate = new Date(field.value);
-        this.changeStartDate(selectedDate);
-        this.debouncedDelayedPreview(field);
-      } else if (field.value === '') {
-        this.debouncedDelayedPreview(field);
-      }
-    } else if (field.name === 'work_package[due_date]') {
-      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
-        const selectedDate = new Date(field.value);
-        this.changeDueDate(selectedDate);
-        this.debouncedDelayedPreview(field);
-      } else if (field.value === '') {
-        this.debouncedDelayedPreview(field);
-      }
-    } else {
-      this.debouncedDelayedPreview(field);
-    }
-  }
-
-  changeStartDate(_selectedDate:Date) {
-  }
-
-  changeDueDate(_selectedDate:Date) {
-  }
-
-  protected triggerImmediatePreview(input:HTMLInputElement) {
-    this.debouncedImmediatePreview(input);
   }
 
   protected cancel():void {
@@ -175,7 +119,7 @@ export abstract class DialogPreviewController extends Controller {
     this.markTouched(this.targetFieldName);
   }
 
-  async preview(field:HTMLInputElement|null) {
+  async preview(field:HTMLInputElement|null, additionalData?:{ key:string, val:string }[]) {
     const form = this.formTarget;
     const formData = new FormData(form) as unknown as undefined;
     const formParams = new URLSearchParams(formData);
@@ -183,6 +127,12 @@ export abstract class DialogPreviewController extends Controller {
     const wpParams = Array.from(formParams.entries())
       .filter(([key, _]) => key.startsWith('work_package'));
     wpParams.push(['field', field?.name ?? '']);
+
+    if (additionalData) {
+      additionalData.forEach((data) => {
+        wpParams.push([data.key, data.val]);
+      });
+    }
 
     const wpPath = this.ensureValidPathname(form.action);
     const wpAction = this.ensureValidWpAction(wpPath);
@@ -195,12 +145,14 @@ export abstract class DialogPreviewController extends Controller {
     }
   }
 
-  private focusAndSetCursorPositionToEndOfInput(field:HTMLInputElement) {
+  protected focusAndSetCursorPositionToEndOfInput(field:HTMLInputElement) {
     field.focus();
-    field.setSelectionRange(
-      field.value.length,
-      field.value.length,
-    );
+    if (field.type === 'text') {
+      field.setSelectionRange(
+        field.value.length,
+        field.value.length,
+      );
+    }
   }
 
   abstract ensureValidPathname(formAction:string):string;
@@ -274,57 +226,5 @@ export abstract class DialogPreviewController extends Controller {
         input.value = this.isTouched(fieldName) ? 'true' : 'false';
       }
     });
-  }
-
-  protected keepFieldValueWithPriority(priority1:string, priority2:string, priority3:string) {
-    if (this.isInitialValueEmpty(priority1) && !this.isTouched(priority1)) {
-      // let priority field be derived
-      return;
-    }
-
-    if (this.isBeingEdited(priority1)) {
-      this.untouchFieldsWhenPriority1IsEdited(priority2, priority3);
-    } else if (this.isBeingEdited(priority2)) {
-      this.untouchFieldsWhenPriority2IsEdited(priority1, priority3);
-    } else if (this.isBeingEdited(priority3)) {
-      this.untouchFieldsWhenPriority3IsEdited(priority1, priority2);
-    }
-  }
-
-  private untouchFieldsWhenPriority1IsEdited(priority2:string, priority3:string) {
-    if (this.areBothTouched(priority2, priority3)) {
-      if (this.isValueEmpty(priority3) && this.isValueEmpty(priority2)) {
-        return;
-      }
-      if (this.isValueEmpty(priority3)) {
-        this.markUntouched(priority3);
-      } else {
-        this.markUntouched(priority2);
-      }
-    } else if (this.isTouchedAndEmpty(priority2) && this.isValueSet(priority3)) {
-      // force priority 2 derivation
-      this.markUntouched(priority2);
-      this.markTouched(priority3);
-    } else if (this.isTouchedAndEmpty(priority3) && this.isValueSet(priority2)) {
-      // force priority 3 derivation
-      this.markUntouched(priority3);
-      this.markTouched(priority2);
-    }
-  }
-
-  private untouchFieldsWhenPriority2IsEdited(priority1:string, priority3:string):void {
-    if (this.isTouchedAndEmpty(priority1) && this.isValueSet(priority3)) {
-      // force priority 1 derivation
-      this.markUntouched(priority1);
-      this.markTouched(priority3);
-    } else if (this.isValueSet(priority1)) {
-      this.markUntouched(priority3);
-    }
-  }
-
-  private untouchFieldsWhenPriority3IsEdited(priority1:string, priority2:string):void {
-    if (this.isValueSet(priority1)) {
-      this.markUntouched(priority2);
-    }
   }
 }
