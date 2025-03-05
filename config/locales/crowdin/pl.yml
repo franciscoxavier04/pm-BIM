@@ -1049,7 +1049,6 @@ pl:
       user_preference:
         comments_sorting: "Wyświetlanie komentarzy"
         impaired: "Ułatwienia dostępu"
-        time_zone: "Strefa czasowa"
         auto_hide_popups: "Automatyczne ukrycie powiadomień o sukcesie"
         warn_on_leaving_unsaved: "Ostrzegaj mnie, gdy opuszczam zadanie z niezapisanymi zmianami"
         theme: "Tryb"
@@ -1455,6 +1454,8 @@ pl:
               duplicate_group: "Nazwy grupy %{group} użyto więcej niż raz. Nazwy grup muszą być niepowtarzalne."
               query_invalid: "Osadzona kwerenda %{group} jest nieprawidłowowa: %{details}"
               group_without_name: "Grupy nienazwane nie są dozwolone."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1687,6 +1688,7 @@ pl:
     subject: "Temat"
     slug: "Slug"
     summary: "Podsumowanie"
+    time_zone: "Time zone"
     text: "Text"
     title: "Tytuł"
     type: "Typ"
@@ -4399,6 +4401,7 @@ pl:
       connected: "Połączono"
       error: "Błąd"
       failed_authorization: "Autoryzacja nie powiodła się"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Integracja OAuth2"
       label_redirect_uri: "Przekieruj URI"

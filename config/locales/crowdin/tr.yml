@@ -1033,7 +1033,6 @@ tr:
       user_preference:
         comments_sorting: "Yorumları görüntüle"
         impaired: "Erişilebilirlik modu"
-        time_zone: "Zaman dilimi"
         auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Mod"
@@ -1439,6 +1438,8 @@ tr:
               duplicate_group: "'%{group}' grup adı, birden fazla kez kullanıldı. Grup isimleri benzersiz olmalıdır."
               query_invalid: "Gömülü sorgu '%{group}' geçersiz: %{details}"
               group_without_name: "Adsız gruplara izin verilmez."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1649,6 +1650,7 @@ tr:
     subject: "Konu"
     slug: "Rumuz"
     summary: "Özet"
+    time_zone: "Time zone"
     text: "Metin"
     title: "Başlık"
     type: "Tür"
@@ -4315,6 +4317,7 @@ tr:
       connected: "Bağlandı"
       error: "Hata"
       failed_authorization: "Yetkilendirme başarısız oldu"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 entegrasyonu"
       label_redirect_uri: "Yönlendirme URL'si"

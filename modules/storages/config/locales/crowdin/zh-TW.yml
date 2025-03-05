@@ -242,7 +242,9 @@ zh-TW:
         host_not_found: 在設定的主機網址未找到 Nextcloud 伺服器。請檢查設定。
         missing_dependencies: '檔案儲存中缺少所需的相依性。請新增下列相依性： %{dependency}。'
         not_configured: 連線無法驗證。請先完成設定。
-        oidc_no_token_with_required_audience: 沒有 OpenID Connect 令牌(token)與所需的 %{audience} 受眾。
+        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
+        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: 目前使用者雖然已配置，但不是由 OpenID Connect (OIDC) 身分提供者配置的。請使用 OIDC 配置的使用者重新執行檢查。
         oidc_non_provisioned_user: 當前用戶不是由 OpenID Connect Identity Provider 提供。請使用提供的使用者重新執行檢查。
         placeholder: 根據伺服器檢查您的連線。
@@ -348,6 +350,7 @@ zh-TW:
       connected: 已連線
       connected_no_permissions: 使用者角色沒有儲存權限
       not_connected: 未連線。使用者應透過下列方式登入儲存設備 %{link}。
+      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: 沒有可顯示的成員
     no_results: 尚未設定檔案儲存區
     oauth_access_granted_modal:

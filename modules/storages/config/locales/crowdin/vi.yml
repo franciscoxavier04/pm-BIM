@@ -242,7 +242,9 @@ vi:
         host_not_found: Không tìm thấy máy chủ Nextcloud tại url máy chủ được cấu hình. Vui lòng kiểm tra cấu hình.
         missing_dependencies: 'Thiếu sự phụ thuộc bắt buộc vào bộ lưu trữ tệp. Vui lòng thêm sự phụ thuộc sau: %{dependency}.'
         not_configured: Kết nối không thể được xác thực. Vui lòng hoàn tất cấu hình trước.
-        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
+        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
+        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Kiểm tra kết nối của bạn với máy chủ.
@@ -348,6 +350,7 @@ vi:
       connected: Đã kết nối
       connected_no_permissions: Vai trò người dùng không có quyền lưu trữ
       not_connected: Chưa kết nối. Người dùng nên đăng nhập vào lưu trữ qua %{link}.
+      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Không có thành viên nào để hiển thị.
     no_results: Chưa có lưu trữ nào được thiết lập.
     oauth_access_granted_modal:

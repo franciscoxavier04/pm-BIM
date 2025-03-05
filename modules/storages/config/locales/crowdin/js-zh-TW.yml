@@ -2,6 +2,7 @@
 zh-TW:
   js:
     storages:
+      authentication_error: "Authentication with %{storageType} failed"
       link_files_in_storage: "以 %{storageType} 連結檔案"
       link_existing_files: "連結到已在雲端檔案系統之檔案"
       upload_files: "上傳檔案"
@@ -19,6 +20,7 @@ zh-TW:
         one_drive: "OneDrive/SharePoint"
         default: "儲存空間"
       information:
+        authentication_error: "The request to %{storageType} could not be authenticated, that's an error."
         connection_error: >
           某些 %{storageType} 設定沒有作用。 請聯絡您的 %{storageType} 管理員。
         live_data_error: "取得文件詳細資訊時出錯"
@@ -27,6 +29,8 @@ zh-TW:
         no_file_links: "為了將文件連結到此工作項目，請透過 %{storageType} 進行。"
         not_logged_in: >
           若要新增連結、檢視或上傳與此工作項目相關的文件，請登入 %{storageType}。
+        suggest_logout: You can try whether logging out and back in fixes this problem.
+        suggest_relink: You can try whether re-linking your account via the login button below fixes this problem.
       files:
         already_existing_header: "此檔案已存在"
         already_existing_body: >

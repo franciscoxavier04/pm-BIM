@@ -1050,7 +1050,6 @@ ru:
       user_preference:
         comments_sorting: "Показывать комментарии"
         impaired: "Режим отображения для людей с ограниченными возможностями"
-        time_zone: "Часовой пояс"
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
@@ -1456,6 +1455,8 @@ ru:
               duplicate_group: "Имя группы '%{group}' используется более одного раза. Имена групп должны быть уникальными."
               query_invalid: "Встроенный запрос '%{group}' является недопустимым: %{details}"
               group_without_name: "Не именованные группы не допускаются."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1688,6 +1689,7 @@ ru:
     subject: "Тема"
     slug: "Slug"
     summary: "Сводка"
+    time_zone: "Time zone"
     text: "Text"
     title: "Заголовок"
     type: "Тип"
@@ -4399,6 +4401,7 @@ ru:
       connected: "Подключён"
       error: "Ошибка"
       failed_authorization: "Ошибка авторизации"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Интеграция с OAuth2"
       label_redirect_uri: "URI переадресации"

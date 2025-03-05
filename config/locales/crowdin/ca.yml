@@ -1031,7 +1031,6 @@ ca:
       user_preference:
         comments_sorting: "Mostra els comentaris"
         impaired: "Mode d'accessibilitat"
-        time_zone: "Zona horària"
         auto_hide_popups: "Oculta automàticament les notificacions de succés"
         warn_on_leaving_unsaved: "Avisa quan es deixi un paquet de treball amb canvis no desats"
         theme: "Mode"
@@ -1437,6 +1436,8 @@ ca:
               duplicate_group: "El nom del grup \"%{group}\" ja està utilitzat. El nom del grup ha de ser únic."
               query_invalid: "La consulta incrustrada \"%{group}\" és invàlida: %{details}"
               group_without_name: "No estan permesos els grups sense nom."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1647,6 +1648,7 @@ ca:
     subject: "Assumpte"
     slug: "Slug"
     summary: "Resum"
+    time_zone: "Time zone"
     text: "Text"
     title: "Títol"
     type: "Classe"
@@ -4310,6 +4312,7 @@ ca:
       connected: "Connectat"
       error: "Error"
       failed_authorization: "Autorització fallida"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Integració d'OAuth2"
       label_redirect_uri: "Redirigeix URI"

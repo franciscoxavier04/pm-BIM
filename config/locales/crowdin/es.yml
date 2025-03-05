@@ -1032,7 +1032,6 @@ es:
       user_preference:
         comments_sorting: "Mostrar comentarios"
         impaired: "Modo de accesibilidad"
-        time_zone: "Zona horaria"
         auto_hide_popups: "Auto-ocultar notificaciones satisfactorias"
         warn_on_leaving_unsaved: "Avisarme cuando salga de un paquete de trabajo con cambios sin guardar"
         theme: "Modo"
@@ -1438,6 +1437,8 @@ es:
               duplicate_group: "El nombre de grupo “%{group}” se usó más de una vez. Los nombres de grupo tienen que ser únicos."
               query_invalid: "La consulta insertada “%{group}” no es válida: %{details}"
               group_without_name: "No se permiten grupos sin nombre."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1648,6 +1649,7 @@ es:
     subject: "Asunto"
     slug: "Slug"
     summary: "Resumen"
+    time_zone: "Time zone"
     text: "Text"
     title: "Título"
     type: "Tipo"
@@ -4315,6 +4317,7 @@ es:
       connected: "Conectado"
       error: "Error"
       failed_authorization: "Error en la autorización"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Integración de OAuth2"
       label_redirect_uri: "Redirigir URI"

@@ -1047,7 +1047,6 @@ uk:
       user_preference:
         comments_sorting: "Відображення коментарів"
         impaired: "Режим спеціальних можливостей"
-        time_zone: "Часовий пояс"
         auto_hide_popups: "Автоматичне приховування сповіщень про успіх"
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
         theme: "Режим"
@@ -1453,6 +1452,8 @@ uk:
               duplicate_group: "Назва групи %{group} використовується більше одного разу. Назви груп повинні бути унікальними."
               query_invalid: "Вбудований запит %{group} недійсний: %{details}"
               group_without_name: "Неназвані групи не дозволені."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1685,6 +1686,7 @@ uk:
     subject: "Тема"
     slug: "Slug"
     summary: "Резюме"
+    time_zone: "Time zone"
     text: "Text"
     title: "Назва"
     type: "Тип"
@@ -4397,6 +4399,7 @@ uk:
       connected: "Підключено"
       error: "Помилка"
       failed_authorization: "Помилка авторизації"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Інтеграція OAuth2"
       label_redirect_uri: "URI переспрямування"

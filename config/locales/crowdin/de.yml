@@ -1027,7 +1027,6 @@ de:
       user_preference:
         comments_sorting: "Kommentare anzeigen"
         impaired: "Für die barrierefreie Nutzung optimierte Oberfläche"
-        time_zone: "Zeitzone"
         auto_hide_popups: "Benachrichtigungen erfolgreicher Aktionen automatisch ausblenden"
         warn_on_leaving_unsaved: "Beim Verlassen einer Arbeitspaket-Seite mit ungespeichertem Text warnen"
         theme: "Modus"
@@ -1433,6 +1432,8 @@ de:
               duplicate_group: "Der Gruppen-Name %{group} wird mehr als einmal verwendet. Gruppen-Namen müssen eindeutig sein."
               query_invalid: "Die eingebettete Ansicht '%{group}' ist ungültig: %{details}"
               group_without_name: "Unbenannte Gruppen sind nicht erlaubt."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1643,6 +1644,7 @@ de:
     subject: "Thema"
     slug: "Slug"
     summary: "Zusammenfassung"
+    time_zone: "Time zone"
     text: "Text"
     title: "Titel"
     type: "Typ"
@@ -4311,6 +4313,7 @@ de:
       connected: "Verbindung hergestellt"
       error: "Fehler"
       failed_authorization: "Autorisierung fehlgeschlagen"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 Integration"
       label_redirect_uri: "URI umleiten"
