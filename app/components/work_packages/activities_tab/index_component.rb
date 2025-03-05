@@ -50,29 +50,32 @@ module WorkPackages
       attr_reader :work_package, :filter, :last_server_timestamp, :deferred
 
       def wrapper_data_attributes
-        index_stimulus_controller = "work-packages--activities-tab--index"
-        restricted_comments_stimulus_controller = "work-packages--activities-tab--restricted-comment"
+        stimulus_controller = "work-packages--activities-tab--index"
 
         {
           test_selector: "op-wp-activity-tab",
-          controller: [index_stimulus_controller, restricted_comments_stimulus_controller].join(" "),
+          controller: stimulus_controller,
           "application-target": "dynamic",
-          "#{index_stimulus_controller}-update-streams-path-value": update_streams_work_package_activities_path(work_package),
-          "#{index_stimulus_controller}-sorting-value": journal_sorting,
-          "#{index_stimulus_controller}-filter-value": filter,
-          "#{index_stimulus_controller}-user-id-value": User.current.id,
-          "#{index_stimulus_controller}-work-package-id-value": work_package.id,
-          "#{index_stimulus_controller}-polling-interval-in-ms-value": polling_interval,
-          "#{index_stimulus_controller}-notification-center-path-name-value": notifications_path,
-          "#{index_stimulus_controller}-show-conflict-flash-message-url-value": show_conflict_flash_message_work_packages_path,
-          "#{index_stimulus_controller}-last-server-timestamp-value": last_server_timestamp
+          "#{stimulus_controller}-update-streams-path-value": update_streams_work_package_activities_path(work_package),
+          "#{stimulus_controller}-sorting-value": journal_sorting,
+          "#{stimulus_controller}-filter-value": filter,
+          "#{stimulus_controller}-user-id-value": User.current.id,
+          "#{stimulus_controller}-work-package-id-value": work_package.id,
+          "#{stimulus_controller}-polling-interval-in-ms-value": polling_interval,
+          "#{stimulus_controller}-notification-center-path-name-value": notifications_path,
+          "#{stimulus_controller}-show-conflict-flash-message-url-value": show_conflict_flash_message_work_packages_path,
+          "#{stimulus_controller}-last-server-timestamp-value": last_server_timestamp
         }
       end
 
-      def new_comment_wrapper_data_attributes
+      def add_comment_wrapper_data_attributes
+        stimulus_controller = "work-packages--activities-tab--restricted-comment"
+
         {
           test_selector: "op-work-package-journal--new-comment-component",
-          "work-packages--activities-tab--restricted-comment-target": "formContainer"
+          controller: stimulus_controller,
+          "application-target": "dynamic",
+          "#{stimulus_controller}-target": "formContainer"
         }
       end
 
