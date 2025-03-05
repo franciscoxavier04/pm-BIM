@@ -75,7 +75,6 @@ module WorkPackages
           value: field_value(name),
           disabled: disabled?(name),
           label:,
-          caption: caption(name),
           show_clear_button: !disabled?(name) && !duration_field?(name),
           classes: "op-datepicker-modal--date-field #{'op-datepicker-modal--date-field_current' if @focused_field == name}",
           validation_message: validation_message(name),
@@ -91,19 +90,24 @@ module WorkPackages
         text_field_options
       end
 
-      def caption(name)
+      def render_today_link(name:)
         return if duration_field?(name)
 
         text = I18n.t(:label_today).capitalize
 
         return text if @disabled
 
-        render(Primer::Beta::Link.new(href: "",
-                                      data: {
-                                        action: "work-packages--date-picker--preview#setTodayForField",
-                                        "work-packages--date-picker--preview-field-reference-param": "work_package_#{name}",
-                                        test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field--today"
-                                      })) { text }
+        render(
+          Primer::Beta::Link.new(
+            href: "",
+            "aria-label": I18n.t("label_today_as_#{name}"),
+            data: {
+              action: "work-packages--date-picker--preview#setTodayForField",
+              "work-packages--date-picker--preview-field-reference-param": "work_package_#{name}",
+              test_selector: "op-datepicker-modal--#{name.to_s.dasherize}-field--today"
+            }
+          )
+        ) { text }
       end
 
       def duration_field?(name)

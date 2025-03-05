@@ -20,6 +20,9 @@
         start_date.with_row(classes: "wp-datepicker-dialog-date-form--text-field-container") do
           render(Primer::Alpha::TextField.new(**text_field_options(name: :start_date, label: I18n.t("attributes.start_date"))))
         end
+        start_date.with_row(classes: "wp-datepicker-dialog-set-today-link") do
+          render_today_link(name: :start_date)
+        end
       end
     end
 
@@ -43,6 +46,9 @@
 
           due_date.with_row(classes: "wp-datepicker-dialog-date-form--text-field-container") do
             render(Primer::Alpha::TextField.new(**text_field_options(name: :due_date, label: I18n.t("attributes.due_date"))))
+          end
+          due_date.with_row(classes: "wp-datepicker-dialog-set-today-link") do
+            render_today_link(name: :due_date)
           end
         end
       end
