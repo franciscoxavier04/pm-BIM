@@ -31,18 +31,18 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class RestrictedCommentController extends Controller {
-  static targets = ['checkbox', 'formContainer'];
+  static targets = ['visibilityCheckbox', 'formContainer'];
 
-  declare readonly checkboxTarget:HTMLInputElement;
+  declare readonly visibilityCheckboxTarget:HTMLInputElement;
   declare readonly formContainerTarget:HTMLElement;
 
-  onCheckboxChange():void {
+  toggleVisibility():void {
     const restrictedCommentBgColorClass = 'work-packages-activities-tab-journals-new-component__journal-notes-body--restricted-comment';
     // FIXME: This is not ideal as primer can change class names. Awaiting redesign of the form...
     // This should NOT make it to production.
     const primerBgColorClass = 'color-bg-subtle';
 
-    if (this.checkboxTarget.checked) {
+    if (this.visibilityCheckboxTarget.checked) {
       this.formContainerTarget.classList.remove(primerBgColorClass);
       this.formContainerTarget.classList.add(restrictedCommentBgColorClass);
     } else {
