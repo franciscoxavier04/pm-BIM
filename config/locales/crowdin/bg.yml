@@ -939,7 +939,6 @@ bg:
       user_preference:
         comments_sorting: "Покажи коментарите"
         impaired: "Достъпен режим"
-        time_zone: "Часова зона"
         auto_hide_popups: "Автоматично скриване на успешните известия"
         warn_on_leaving_unsaved: "Предупреждавайте ме при напускане на работен пакет с незаписани промени"
         theme: "Режим"
@@ -1523,6 +1522,7 @@ bg:
     status: "Състояние"
     subject: "Заглавие"
     summary: "Обобщение"
+    time_zone: "Time zone"
     title: "Заглавие"
     type: "Тип"
     updated_at: "Актуализиран на"

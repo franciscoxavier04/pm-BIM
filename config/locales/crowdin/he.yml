@@ -957,7 +957,6 @@ he:
       user_preference:
         comments_sorting: "הצג הערות"
         impaired: "מצב נגישות"
-        time_zone: "איזור זמן"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1561,6 +1560,7 @@ he:
     status: "מצב"
     subject: "נושא"
     summary: "פירוט"
+    time_zone: "Time zone"
     title: "כותרת"
     type: "סוג"
     updated_at: "עודכן בתאריך"

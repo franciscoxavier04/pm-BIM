@@ -939,7 +939,6 @@ ka:
       user_preference:
         comments_sorting: "Display comments"
         impaired: "Accessibility mode"
-        time_zone: "დროის სარტყელი"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "რეჟიმი"
@@ -1523,6 +1522,7 @@ ka:
     status: "სტატუსი"
     subject: "საგანი"
     summary: "შეჯამება"
+    time_zone: "Time zone"
     title: "სათაური"
     type: "ტიპი"
     updated_at: "განახლების თარიღი"

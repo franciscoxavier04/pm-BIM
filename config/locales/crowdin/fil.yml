@@ -939,7 +939,6 @@ fil:
       user_preference:
         comments_sorting: "Ipakita ang mga komento"
         impaired: "Aksezibilidad mode"
-        time_zone: "Time zone"
         auto_hide_popups: "Auto-hide success ang mga abiso"
         warn_on_leaving_unsaved: "Balaan mo ako kung aalais ng worj package na walang pag-save ng pagbabago"
         theme: "Mode"
@@ -1523,6 +1522,7 @@ fil:
     status: "Estado"
     subject: "Paksa"
     summary: "Buod"
+    time_zone: "Time zone"
     title: "Pamagat"
     type: "Uri"
     updated_at: "Naka-update sa"

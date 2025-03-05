@@ -932,7 +932,6 @@ vi:
       user_preference:
         comments_sorting: "Hiện bình luận"
         impaired: "Viet nam"
-        time_zone: "Múi giờ"
         auto_hide_popups: "Tự động ẩn thông báo thành công"
         warn_on_leaving_unsaved: "Cảnh báo tôi khi rời khỏi gói công việc với thay đổi chưa lưu"
         theme: "Chế độ"
@@ -1506,6 +1505,7 @@ vi:
     status: "Trạng thái"
     subject: "Chủ đề"
     summary: "Tóm tắt"
+    time_zone: "Time zone"
     title: "Tiêu đề"
     type: "Loại"
     updated_at: "Được cập nhật vào lúc"

@@ -939,7 +939,6 @@ eo:
       user_preference:
         comments_sorting: "Vidigi komentojn"
         impaired: "Faciliga reĝimo"
-        time_zone: "Horzono"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1523,6 +1522,7 @@ eo:
     status: "Stato"
     subject: "Temo"
     summary: "Resumo"
+    time_zone: "Time zone"
     title: "Titolo"
     type: "Tipo"
     updated_at: "Ĝisdatigita la"

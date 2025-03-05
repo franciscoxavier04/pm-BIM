@@ -939,7 +939,6 @@ fi:
       user_preference:
         comments_sorting: "Näytä kommentit"
         impaired: "Helppokäyttötoimintojen tila"
-        time_zone: "Aikavyöhyke"
         auto_hide_popups: "Piilota ilmoitukset onnistuneista toiminnoista"
         warn_on_leaving_unsaved: "Varoita tallentamattomista muutoksista"
         theme: "Mode"
@@ -1523,6 +1522,7 @@ fi:
     status: "Tila"
     subject: "Aihe"
     summary: "Yhteenveto"
+    time_zone: "Time zone"
     title: "Otsikko"
     type: "Tyyppi"
     updated_at: "Päivitetty"

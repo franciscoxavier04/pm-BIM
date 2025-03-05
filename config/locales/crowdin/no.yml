@@ -938,7 +938,6 @@
       user_preference:
         comments_sorting: "Vis kommentarer"
         impaired: "Tilgjengelighetsmodus"
-        time_zone: "Tidssone"
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
         theme: "Modus"
@@ -1522,6 +1521,7 @@
     status: "Status"
     subject: "Emne"
     summary: "Sammendrag"
+    time_zone: "Time zone"
     title: "Tittel"
     type: "Type"
     updated_at: "Oppdatert"

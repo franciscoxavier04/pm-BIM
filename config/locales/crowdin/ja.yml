@@ -926,7 +926,6 @@ ja:
       user_preference:
         comments_sorting: "コメントの表示"
         impaired: "アクセシビリティモード"
-        time_zone: "タイムゾーン"
         auto_hide_popups: "成功通知を自動的に隠す"
         warn_on_leaving_unsaved: "変更を保存せずにワークパッケージから移動するときに警告"
         theme: "Mode"
@@ -1500,6 +1499,7 @@ ja:
     status: "ステータス"
     subject: "タイトル"
     summary: "サマリ"
+    time_zone: "Time zone"
     title: "タイトル"
     type: "タイプ"
     updated_at: "更新日時"

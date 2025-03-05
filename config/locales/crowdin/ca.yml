@@ -936,7 +936,6 @@ ca:
       user_preference:
         comments_sorting: "Mostra els comentaris"
         impaired: "Mode d'accessibilitat"
-        time_zone: "Zona horària"
         auto_hide_popups: "Oculta automàticament les notificacions de succés"
         warn_on_leaving_unsaved: "Avisa quan es deixi un paquet de treball amb canvis no desats"
         theme: "Mode"
@@ -1520,6 +1519,7 @@ ca:
     status: "Estat"
     subject: "Assumpte"
     summary: "Resum"
+    time_zone: "Time zone"
     title: "Títol"
     type: "Classe"
     updated_at: "Actualitzat el"

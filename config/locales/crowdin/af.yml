@@ -939,7 +939,6 @@ af:
       user_preference:
         comments_sorting: "Vertoon kommentaar"
         impaired: "Toeganklikheid modus"
-        time_zone: "Tydsone"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1523,6 +1522,7 @@ af:
     status: "Status"
     subject: "Onderwerp"
     summary: "Opsomming"
+    time_zone: "Time zone"
     title: "Titel"
     type: "Soort"
     updated_at: "Opgedateer op"

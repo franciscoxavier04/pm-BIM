@@ -928,7 +928,6 @@ zh-TW:
       user_preference:
         comments_sorting: "顯示留言"
         impaired: "協助工具模式"
-        time_zone: "時區"
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作項目時提示我"
         theme: "模式 "
@@ -1502,6 +1501,7 @@ zh-TW:
     status: "狀態"
     subject: "名稱"
     summary: "總覽"
+    time_zone: "Time zone"
     title: "標題"
     type: "類型"
     updated_at: "更新於"

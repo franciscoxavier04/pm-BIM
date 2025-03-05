@@ -975,7 +975,6 @@ ar:
       user_preference:
         comments_sorting: "عرض التعليقات"
         impaired: "نمط إمكانية الدخول"
-        time_zone: "المنطقة الزمنية"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1599,6 +1598,7 @@ ar:
     status: "الحالة"
     subject: "الموضوع"
     summary: "مُلخّص"
+    time_zone: "Time zone"
     title: "العنوان"
     type: "النّوع"
     updated_at: "تم التحديث بتاريخ"

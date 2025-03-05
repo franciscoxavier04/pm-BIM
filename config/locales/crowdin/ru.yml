@@ -955,7 +955,6 @@ ru:
       user_preference:
         comments_sorting: "Показывать комментарии"
         impaired: "Режим отображения для людей с ограниченными возможностями"
-        time_zone: "Часовой пояс"
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
@@ -1559,6 +1558,7 @@ ru:
     status: "Статус"
     subject: "Тема"
     summary: "Сводка"
+    time_zone: "Time zone"
     title: "Заголовок"
     type: "Тип"
     updated_at: "Обновлено"

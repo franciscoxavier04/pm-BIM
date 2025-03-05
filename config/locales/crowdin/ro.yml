@@ -948,7 +948,6 @@ ro:
       user_preference:
         comments_sorting: "Afişare Comentarii"
         impaired: "Mod accesibilitate"
-        time_zone: "Fus orar"
         auto_hide_popups: "Ascunde automat notificările de succes"
         warn_on_leaving_unsaved: "Avertizează când părăsesc un pachet de lucru cu modificări nesalvate"
         theme: "Mod"
@@ -1542,6 +1541,7 @@ ro:
     status: "Stare"
     subject: "Subiect"
     summary: "Rezumat"
+    time_zone: "Time zone"
     title: "Titlu"
     type: "Tip"
     updated_at: "Actualizat pe"

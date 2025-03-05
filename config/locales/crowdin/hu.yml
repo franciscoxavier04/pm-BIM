@@ -937,7 +937,6 @@ hu:
       user_preference:
         comments_sorting: "Hozzászólások megjelenítése"
         impaired: "Kisegítő mód"
-        time_zone: "Idő zóna"
         auto_hide_popups: "Siker értesítések automatikus elrejtése"
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Mód"
@@ -1521,6 +1520,7 @@ hu:
     status: "Állapot"
     subject: "Tárgy"
     summary: "Összegzés"
+    time_zone: "Time zone"
     title: "Cím"
     type: "Típus"
     updated_at: "Frissítve"

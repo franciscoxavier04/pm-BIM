@@ -938,7 +938,6 @@ sv:
       user_preference:
         comments_sorting: "Visa kommentarer"
         impaired: "Tillgänglighetsläge"
-        time_zone: "Tidszon"
         auto_hide_popups: "Dölj automatiskt meddelanden om åtgärder som lyckats"
         warn_on_leaving_unsaved: "Varna mig när jag lämnar ett arbetspaket med osparade ändringar"
         theme: "Mode"
@@ -1522,6 +1521,7 @@ sv:
     status: "Status"
     subject: "Ämne"
     summary: "Sammanfattning"
+    time_zone: "Time zone"
     title: "Titel"
     type: "Typ"
     updated_at: "Uppdaterat den"

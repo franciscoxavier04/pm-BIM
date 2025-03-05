@@ -938,7 +938,6 @@ tr:
       user_preference:
         comments_sorting: "Yorumları görüntüle"
         impaired: "Erişilebilirlik modu"
-        time_zone: "Zaman dilimi"
         auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Mod"
@@ -1522,6 +1521,7 @@ tr:
     status: "Durum"
     subject: "Konu"
     summary: "Özet"
+    time_zone: "Time zone"
     title: "Başlık"
     type: "Tür"
     updated_at: "Güncelleme tarihi"

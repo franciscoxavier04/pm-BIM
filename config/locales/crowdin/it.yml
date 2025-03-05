@@ -935,7 +935,6 @@ it:
       user_preference:
         comments_sorting: "Mostra commenti"
         impaired: "Modalità di accesso facilitato"
-        time_zone: "Fuso orario"
         auto_hide_popups: "Nascondi automaticamente le notifiche di successo"
         warn_on_leaving_unsaved: "Avvisami quando sto lasciando una macro-attività non salvata"
         theme: "Modalità"
@@ -1519,6 +1518,7 @@ it:
     status: "Stato"
     subject: "Soggetto"
     summary: "Sommario"
+    time_zone: "Time zone"
     title: "Titolo"
     type: "Tipo"
     updated_at: "Aggiornato il"

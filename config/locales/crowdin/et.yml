@@ -939,7 +939,6 @@ et:
       user_preference:
         comments_sorting: "Kuva kommentaare"
         impaired: "Hõlbustusfunktsioonidega režiim"
-        time_zone: "Ajavöönd"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1523,6 +1522,7 @@ et:
     status: "Olek"
     subject: "Teema"
     summary: "Kokkuvõte"
+    time_zone: "Time zone"
     title: "Pealkiri"
     type: "Tüüp"
     updated_at: "Uuendatud"

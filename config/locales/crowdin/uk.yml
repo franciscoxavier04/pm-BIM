@@ -950,7 +950,6 @@ uk:
       user_preference:
         comments_sorting: "Відображення коментарів"
         impaired: "Режим спеціальних можливостей"
-        time_zone: "Часовий пояс"
         auto_hide_popups: "Автоматичне приховування сповіщень про успіх"
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
         theme: "Режим"
@@ -1554,6 +1553,7 @@ uk:
     status: "Статус"
     subject: "Тема"
     summary: "Резюме"
+    time_zone: "Time zone"
     title: "Назва"
     type: "Тип"
     updated_at: "Оновлене"
