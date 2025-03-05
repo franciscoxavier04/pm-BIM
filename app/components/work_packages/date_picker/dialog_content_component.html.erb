@@ -22,9 +22,9 @@
           ) do |component|
             component.with_tab(selected: true, id: "wp-datepicker-dialog--content-tab--dates") do |tab|
               tab.with_text { I18n.t("work_packages.datepicker_modal.tabs.dates") }
-              tab.with_panel(m: 3)  do
+              tab.with_panel(m: 3) do
                 render(
-                  WorkPackages::DatePicker::FormContentComponent.new(
+                  WorkPackages::DatePicker::FormComponent.new(
                     form_id: DIALOG_FORM_ID,
                     show_date_form: can_set_dates?,
                     work_package:,

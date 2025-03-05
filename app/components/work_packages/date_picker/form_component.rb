@@ -30,7 +30,7 @@
 
 module WorkPackages
   module DatePicker
-    class FormContentComponent < ApplicationComponent
+    class FormComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 
