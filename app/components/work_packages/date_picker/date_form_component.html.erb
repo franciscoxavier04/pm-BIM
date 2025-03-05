@@ -48,7 +48,7 @@
             render(Primer::Alpha::TextField.new(**text_field_options(name: :due_date, label: I18n.t("attributes.due_date"))))
           end
           due_date.with_row(classes: "wp-datepicker-dialog-set-today-link") do
-            today(name: :due_date,)
+            today(name: :due_date)
           end
         end
       end
