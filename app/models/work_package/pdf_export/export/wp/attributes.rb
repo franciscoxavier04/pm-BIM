@@ -55,6 +55,12 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     write_group_title(group)
     related_work_packages = group.query.results.work_packages
     write_work_packages_table!(related_work_packages, group.query)
+  rescue Prawn::Errors::CannotFit
+    with_margin(styles.wp_markdown_label_margins) do
+      pdf.formatted_text(
+        [{ text: "[#{I18n.t("export.errors.embedded_table_with_too_many_columns")}]", color: "FF0000", size: 8 }]
+      )
+    end
   end
 
   def write_attributes_group(group, work_package)
