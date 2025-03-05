@@ -76,6 +76,10 @@ module WorkPackages
           end
         end
 
+        def container_border_color
+          journal.restricted? ? :attention_emphasis : :default
+        end
+
         def show_comment_container?
           (journal.notes.present? || noop?) && filter != :only_changes
         end

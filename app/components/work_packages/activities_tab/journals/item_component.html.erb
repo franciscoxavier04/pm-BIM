@@ -14,13 +14,15 @@
               data: {
                 "anchor-activity-id": journal.sequence_version,
                 "anchor-comment-id": journal.id
-              }
+              },
+              border_color: container_border_color
             )
           ) do |border_box_component|
             border_box_component.with_header(
               px: 2, py: 1,
               data: { test_selector: "op-journal-notes-header" },
-              classes: comment_header_classes
+              classes: comment_header_classes,
+              border_color: container_border_color
             ) do
               flex_layout(align_items: :center, justify_content: :space_between) do |header_container|
                 header_container.with_column(
@@ -87,7 +89,8 @@
                           classes: "work-packages-activities-tab-journals-item-component--restricted-icon",
                           size: :small,
                           aria: { label: I18n.t("activities.work_packages.activity_tab.restricted_journal") },
-                          data: { test_selector: "op-journal-restricted-icon" }
+                          data: { test_selector: "op-journal-restricted-icon" },
+                          color: (journal.restricted? ? :attention : :default)
                         )
                       )
                     end
@@ -119,7 +122,8 @@
             end
             border_box_component.with_body(
               classes: comment_body_classes,
-              data: { test_selector: "op-journal-notes-body" }
+              data: { test_selector: "op-journal-notes-body" },
+              border_color: container_border_color
             ) do
               if noop?
                 render(Primer::Beta::Text.new(font_style: :italic, color: :subtle, mt: 1)) do
