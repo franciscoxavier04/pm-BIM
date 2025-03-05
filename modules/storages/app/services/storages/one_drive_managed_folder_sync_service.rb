@@ -227,7 +227,7 @@ module Storages
     end
 
     def admin_remote_identities_scope
-      RemoteIdentity.includes(:user).where(integration: @storage, user: User.admin.active)
+      client_remote_identities_scope.where(user: User.admin.active)
     end
 
     def root_folder = Peripherals::ParentFolder.new("/")
