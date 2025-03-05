@@ -39,10 +39,10 @@ module Redmine
 
     def self.all_languages
       @@all_languages ||= Rails.root.glob("config/locales/**/*.yml")
-          .map { |f| f.basename.to_s.split(".").first }
-          .reject! { |l| l.start_with?("js-") }
-          .uniq
-          .sort
+                               .map { |f| f.basename.to_s.split(".").first }
+                               .reject! { |l| l.start_with?("js-") }
+                               .uniq
+                               .sort
     end
 
     def self.start_of_week
@@ -153,17 +153,32 @@ module Redmine
     # @param time [Time] The time to format.
     # @param include_date [Boolean] Whether to include the date in the formatted
     #   output. Defaults to true.
+    # @param time_zone [ActiveSupport::TimeZone] Use a different time zone than the current users's.
+    #   If provided, will output the time zone identifier
     # @param format [String] The strftime format to use for the time. Defaults
     #   to the format in `Setting.time_format`.
     # @return [String, nil] The formatted time string, or nil if the time is not
     #   provided.
-    def format_time(time, include_date: true, format: Setting.time_format)
+    def format_time(time, include_date: true, time_zone: nil, format: Setting.time_format)
       return nil unless time
 
-      local = in_user_zone(time)
+      local =
+        if time_zone
+          time.in_time_zone(time_zone)
+        else
+          in_user_zone(time)
+        end
 
-      (include_date ? "#{format_date(local)} " : "") +
-        (format.blank? ? ::I18n.l(local, format: :time) : local.strftime(format))
+      parts = []
+      parts << format_date(local) if include_date
+      parts <<
+        if format.blank?
+          ::I18n.l(local, format: :time)
+        else
+          local.strftime(format)
+        end
+
+      parts.join(" ")
     end
 
     ##
@@ -188,16 +203,15 @@ module Redmine
     ##
     # Formats an ActiveSupport::TimeZone object into a user-friendly string.
     # @param time_zone [ActiveSupport::TimeZone] The time zone to format.
+    # @param period [Timel] The time in which to represent the zone name.
+    # Relevant for DST considerations, e.g. "CET" vs. "CEST".
     # @return [String] The formatted time zone string.
-    def friendly_timezone_name(time_zone)
-      tz_info = time_zone.tzinfo
-
-      if tz_info.canonical_zone.name == "Etc/UTC"
-        "UTC"
-      else
-        friendly_names = ActiveSupport::TimeZone::MAPPING.select { |_, v| v == tz_info.canonical_zone.name }.keys.sort
-        "(UTC#{ActiveSupport::TimeZone.seconds_to_utc_offset(tz_info.base_utc_offset)}) #{friendly_names.join(', ')}"
-      end
+    def friendly_timezone_name(time_zone, period: Time.current)
+      time_zone
+        .tzinfo
+        .period_for_utc(period.utc)
+        .abbreviation
+        .to_s
     end
 
     def day_name(day)
