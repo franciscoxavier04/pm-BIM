@@ -1043,7 +1043,6 @@ ro:
       user_preference:
         comments_sorting: "Afişare Comentarii"
         impaired: "Mod accesibilitate"
-        time_zone: "Fus orar"
         auto_hide_popups: "Ascunde automat notificările de succes"
         warn_on_leaving_unsaved: "Avertizează când părăsesc un pachet de lucru cu modificări nesalvate"
         theme: "Mod"
@@ -1449,6 +1448,8 @@ ro:
               duplicate_group: "Numele grupului \"%{group}\" este utilizat de mai multe ori. Numele grupurilor trebuie să fie unice."
               query_invalid: "Interogarea încorporată \"%{group}\" nu este valabilă: %{details}"
               group_without_name: "Grupurile fără nume nu sunt permise."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1670,6 +1671,7 @@ ro:
     subject: "Subiect"
     slug: "Slug"
     summary: "Rezumat"
+    time_zone: "Time zone"
     text: "Text"
     title: "Titlu"
     type: "Tip"
@@ -4361,6 +4363,7 @@ ro:
       connected: "Conectat"
       error: "Eroare"
       failed_authorization: "Autorizare nereușită"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Integrare OAuth2"
       label_redirect_uri: "URI redirecționare"

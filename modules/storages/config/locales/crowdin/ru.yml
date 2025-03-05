@@ -242,7 +242,9 @@ ru:
         host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
         missing_dependencies: 'Для файлового хранилища отсутствует необходимая зависимость. Пожалуйста, добавьте следующую зависимость: %{dependency}.'
         not_configured: Соединение не удалось подтвердить. Пожалуйста, сначала завершите настройку.
-        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
+        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
+        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect. Пожалуйста, повторите проверку пользователя.
         placeholder: Проверьте подключение к серверу.
@@ -348,6 +350,7 @@ ru:
       connected: Подключено
       connected_no_permissions: Роль пользователя не имеет разрешения на хранение
       not_connected: Не подключено. Пользователь должен войти в хранилище с помощью следующего %{link}.
+      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Нет участников для отображения.
     no_results: Хранилища еще не настроены.
     oauth_access_granted_modal:

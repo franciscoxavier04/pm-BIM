@@ -1034,7 +1034,6 @@ sv:
       user_preference:
         comments_sorting: "Visa kommentarer"
         impaired: "Tillgänglighetsläge"
-        time_zone: "Tidszon"
         auto_hide_popups: "Dölj automatiskt meddelanden om åtgärder som lyckats"
         warn_on_leaving_unsaved: "Varna mig när jag lämnar ett arbetspaket med osparade ändringar"
         theme: "Mode"
@@ -1440,6 +1439,8 @@ sv:
               duplicate_group: "Namnet %{group} används redan. Gruppnamn måste vara unika."
               query_invalid: "Den inbäddade frågan '%{group}' är ogiltigt: %{details}"
               group_without_name: "Namnlösa grupper tillåts inte."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1650,6 +1651,7 @@ sv:
     subject: "Ämne"
     slug: "Slug"
     summary: "Sammanfattning"
+    time_zone: "Time zone"
     text: "Text"
     title: "Titel"
     type: "Typ"
@@ -4316,6 +4318,7 @@ sv:
       connected: "Connected"
       error: "Fel"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Omdirigerings-URI"

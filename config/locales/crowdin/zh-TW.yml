@@ -1001,9 +1001,9 @@ zh-TW:
         color: "顏色"
         patterns: "樣板"
       remote_identity:
-        auth_source: "Auth Source"
-        integration: "Integration"
-        user: "User"
+        auth_source: "驗證來源"
+        integration: "整合"
+        user: "用戶"
       user:
         admin: "管理員"
         auth_source: "驗證方式"
@@ -1023,7 +1023,6 @@ zh-TW:
       user_preference:
         comments_sorting: "顯示留言"
         impaired: "協助工具模式"
-        time_zone: "時區"
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作項目時提示我"
         theme: "模式 "
@@ -1429,6 +1428,8 @@ zh-TW:
               duplicate_group: "群組名稱 %{group} 已被使用，群組名稱不可重複。"
               query_invalid: "這個遷入的查詢 '%{group}' 是無效的: %{details}"
               group_without_name: "不允許未命名的群組。"
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1628,6 +1629,7 @@ zh-TW:
     subject: "名稱"
     slug: "網址後綴"
     summary: "總覽"
+    time_zone: "Time zone"
     text: "文字"
     title: "標題"
     type: "類型"
@@ -4272,6 +4274,7 @@ zh-TW:
       connected: "已連線"
       error: "錯誤"
       failed_authorization: "授權失敗"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "整合OAuth2 "
       label_redirect_uri: "轉址 uri"

@@ -1023,7 +1023,6 @@ ms:
       user_preference:
         comments_sorting: "Paparkan komen"
         impaired: "Mod ketercapaian"
-        time_zone: "Zon waktu"
         auto_hide_popups: "Pemberitahuan kejayaan auto-sembunyi"
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
@@ -1429,6 +1428,8 @@ ms:
               duplicate_group: "Nama kumpulan '%{group}' digunakan lebih dari sekali. Nama kumpulan mestilah unik."
               query_invalid: "Pencarian yang ditetapkan '%{group}' tidak sah: %{details}"
               group_without_name: "Kumpulan tanpa nama tidak dibenarkan."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1628,6 +1629,7 @@ ms:
     subject: "Subjek"
     slug: "Slug"
     summary: "Ringkasan"
+    time_zone: "Time zone"
     text: "Text"
     title: "Tajuk"
     type: "Jenis"
@@ -4273,6 +4275,7 @@ ms:
       connected: "Disambungkan"
       error: "Ralat"
       failed_authorization: "Pengesahan gagal"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Integrasi OAuth2"
       label_redirect_uri: "Ubah hala URI"

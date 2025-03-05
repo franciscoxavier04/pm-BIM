@@ -1034,7 +1034,6 @@ uz:
       user_preference:
         comments_sorting: "Display comments"
         impaired: "Accessibility mode"
-        time_zone: "Time zone"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1440,6 +1439,8 @@ uz:
               duplicate_group: "The group name '%{group}' is used more than once. Group names must be unique."
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Unnamed groups are not allowed."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1650,6 +1651,7 @@ uz:
     subject: "Subject"
     slug: "Slug"
     summary: "Summary"
+    time_zone: "Time zone"
     text: "Text"
     title: "Title"
     type: "Type"
@@ -4319,6 +4321,7 @@ uz:
       connected: "Connected"
       error: "Error"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"

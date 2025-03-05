@@ -1033,7 +1033,6 @@
       user_preference:
         comments_sorting: "Vis kommentarer"
         impaired: "Tilgjengelighetsmodus"
-        time_zone: "Tidssone"
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
         theme: "Modus"
@@ -1439,6 +1438,8 @@
               duplicate_group: "Gruppenavn '%{group}' brukes mer enn én gang. Gruppenavn må være unike."
               query_invalid: "Den innebygde spørringen '%{group}' er ugyldig: %{details}"
               group_without_name: "Navnløs gruppe er ikke tillatt."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1649,6 +1650,7 @@
     subject: "Emne"
     slug: "Slug"
     summary: "Sammendrag"
+    time_zone: "Time zone"
     text: "Text"
     title: "Tittel"
     type: "Type"
@@ -4318,6 +4320,7 @@
       connected: "Tilkoblet"
       error: "Feil"
       failed_authorization: "Autorisasjonen mislyktes"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integrasjon"
       label_redirect_uri: "Omdiriger URI"

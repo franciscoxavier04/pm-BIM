@@ -242,7 +242,9 @@ pt-BR:
         host_not_found: Nenhum servidor Nextcloud encontrado na URL de host configurada. Verifique a configuração.
         missing_dependencies: 'Uma dependência necessária está faltando no armazenamento de arquivos. Adicione a seguinte dependência: %{dependency}.'
         not_configured: A conexão não pôde ser validada. Conclua a configuração primeiro.
-        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
+        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
+        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: O usuário atual não foi fornecido por um Provedor de Identidade OpenID Connect. Execute a verificação novamente com um usuário fornecido.
         placeholder: Verifique sua conexão com o servidor.
@@ -348,6 +350,7 @@ pt-BR:
       connected: Conectado
       connected_no_permissions: A função de usuário não tem permissões de armazenamento
       not_connected: Não conectado. O usuário deve iniciar sessão no armazenamento por meio do seguinte %{link}.
+      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Nenhum membro para exibir.
     no_results: Ainda não há armazenamento configurado.
     oauth_access_granted_modal:

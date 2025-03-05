@@ -1052,7 +1052,6 @@ sk:
       user_preference:
         comments_sorting: "Zobraziť komentáre"
         impaired: "Režim zjednodušeného ovládania"
-        time_zone: "Časové pásmo"
         auto_hide_popups: "Automaticky skryť upozornenia o úspešných akciách"
         warn_on_leaving_unsaved: "Upozorbiť ma, pri opustení pracovného balíčka s neuloženými zmenami"
         theme: "Mode"
@@ -1458,6 +1457,8 @@ sk:
               duplicate_group: "Názov skupiny '%{group}' sa používa viackrát. Názvy skupín musia byť jedinečné."
               query_invalid: "Vložený dopyt '%{group}' je neplatný: %{details}"
               group_without_name: "Nepomenované skupiny nie sú povolené."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1690,6 +1691,7 @@ sk:
     subject: "Predmet"
     slug: "Slug"
     summary: "Zhrnutie"
+    time_zone: "Time zone"
     text: "Text"
     title: "Nadpis"
     type: "Typ"
@@ -4404,6 +4406,7 @@ sk:
       connected: "Connected"
       error: "Chyba"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Presmerovať URI"

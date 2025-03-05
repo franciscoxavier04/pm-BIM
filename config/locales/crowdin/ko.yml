@@ -1025,7 +1025,6 @@ ko:
       user_preference:
         comments_sorting: "코멘트 표시"
         impaired: "액세스 모드"
-        time_zone: "표준 시간대"
         auto_hide_popups: "자동 숨김 성공 알림"
         warn_on_leaving_unsaved: "저장하지 않고 작업 패키지를 벗어날 때 알려주세요."
         theme: "모드"
@@ -1431,6 +1430,8 @@ ko:
               duplicate_group: "'%{group}'(이)라는 그룹 이름이 두 번 이상 사용되었습니다. 그룹 이름은 중복될 수 없습니다."
               query_invalid: "포함된 쿼리 '%{group}'이(가) 잘못되었습니다. %{details}"
               group_without_name: "명명되지 않은 그룹은 허용되지 않습니다."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1630,6 +1631,7 @@ ko:
     subject: "제목"
     slug: "Slug"
     summary: "요약"
+    time_zone: "Time zone"
     text: "Text"
     title: "제목"
     type: "타입"
@@ -4273,6 +4275,7 @@ ko:
       connected: "연결됨"
       error: "오류"
       failed_authorization: "인증 실패"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 통합"
       label_redirect_uri: "리디렉션 URI"
