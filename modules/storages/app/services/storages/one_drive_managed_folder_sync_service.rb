@@ -53,7 +53,7 @@ module Storages
       with_tagged_logger([self.class.name, "storage-#{@storage.id}"]) do
         return unless @storage.automatic_management_enabled?
 
-        info "Starting AMPF Sync for Nextcloud Storage #{@storage.id}"
+        info "Starting AMPF Sync for OneDrive Storage #{@storage.id}"
         existing_remote_folders = remote_folders_map(@storage.drive_id).on_failure { return @result }.result
 
         ensure_folders_exist(existing_remote_folders).on_success { hide_inactive_folders(existing_remote_folders) }

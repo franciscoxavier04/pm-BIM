@@ -48,8 +48,31 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
            origin_user_id: "33db2c84-275d-46af-afb0-c26eb786b194")
     s
   end
+  shared_let(:oidc_provider) { create(:oidc_provider) }
 
   # USER FACTORIES
+  shared_let(:oidc_user) do
+    identity_url = "#{oidc_provider.slug}:qweqweqweqwe"
+    create(:user, identity_url:)
+  end
+  shared_let(:oidc_admin) do
+    identity_url = "#{oidc_provider.slug}:zxczxczxczxc"
+    create(:admin, identity_url:)
+  end
+  shared_let(:oidc_user_token) do
+    create(:remote_identity,
+           user: oidc_user,
+           auth_source: oidc_provider,
+           integration: storage,
+           origin_user_id: "oidc_user")
+  end
+  shared_let(:oidc_admin_token) do
+    create(:remote_identity,
+           user: oidc_admin,
+           auth_source: oidc_provider,
+           integration: storage,
+           origin_user_id: "oidc_admin")
+  end
   shared_let(:single_project_user) { create(:user) }
   shared_let(:single_project_user_token) do
     create(:remote_identity,
@@ -77,7 +100,9 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
   shared_let(:project) do
     create(:project,
            name: "[Sample] Project Name / Ehuu",
-           members: { multiple_projects_user => ordinary_role, single_project_user => ordinary_role })
+           members: { multiple_projects_user => ordinary_role,
+                      oidc_user => ordinary_role,
+                      single_project_user => ordinary_role })
   end
   shared_let(:project_storage) do
     create(:project_storage, :with_historical_data, project_folder_mode: "automatic", storage:, project:)
@@ -193,6 +218,7 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
       expect(result.name).to match(/_=o=_ _ _Jedi_ Project Folder ___ \(\d+\)/)
     end
 
+    # rubocop:disable RSpec/ExampleLength
     it "hides (removes all permissions) from inactive project folders", vcr: "one_drive/sync_service_hide_inactive" do
       original_folder = create_folder_for(inactive_project_storage)
       inactive_project_storage.update(project_folder_id: original_folder.result.id)
@@ -206,12 +232,64 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
         .to eq({ read: ["2ff33b8f-2843-40c1-9a17-d786bca17fba"],
                  write: %w[248aeb72-b231-4e71-a466-67fa7df2a285 33db2c84-275d-46af-afb0-c26eb786b194] })
 
+      clazz = Storages::Peripherals::StorageInteraction::OneDrive::SetPermissionsCommand
+      allow(clazz).to receive(:call).and_call_original
+
       result = service.call
 
+      expect(clazz).to have_received(:call).exactly(4).times
+      expect(clazz).to have_received(:call).with(
+        auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+        input_data: an_instance_of(Storages::Peripherals::StorageInteraction::Inputs::SetPermissions),
+        storage: an_instance_of(Storages::OneDriveStorage)
+      ).exactly(4).times
+      expect(clazz).to have_received(:call).with(
+        auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+        input_data: having_attributes(file_id: "01AZJL5PJLD5PWZJXL2ZHZQ6PSPSGVRV7U", user_permissions: []),
+        storage: an_instance_of(Storages::OneDriveStorage)
+      ).once
+      expect(clazz).to have_received(:call).with(
+        auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+        input_data: having_attributes(
+          file_id: "01AZJL5PPGH34OKD6VVRGKX47XXIIB2DB2",
+          user_permissions:
+            [{ user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] },
+             { user_id: "oidc_admin", permissions: [:write_files] },
+             { user_id: "oidc_user", permissions: [:write_files] },
+             { user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba", permissions: [:write_files] },
+             { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:write_files] }]
+        ),
+        storage: an_instance_of(Storages::OneDriveStorage)
+      ).once
+      expect(clazz).to have_received(:call).with(
+        auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+        input_data: having_attributes(
+          file_id: "01AZJL5PJRS7SCGVJBDBCLOBROO4QLP234",
+          user_permissions:
+            [{ user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] },
+             { user_id: "oidc_admin", permissions: [:write_files] },
+             { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:write_files] }]
+        ),
+        storage: an_instance_of(Storages::OneDriveStorage)
+      ).once
+      expect(clazz).to have_received(:call).with(
+        auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+        input_data: having_attributes(
+          file_id: "01AZJL5PJHXHJ3RLHNSNBZSOBWFV3P2OYV",
+          user_permissions:
+            [{ user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] },
+             { user_id: "oidc_admin", permissions: [:write_files] },
+             { user_id: "oidc_user", permissions: [:read_files] },
+             { user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba", permissions: [:read_files] },
+             { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:read_files] }]
+        ),
+        storage: an_instance_of(Storages::OneDriveStorage)
+      ).once
       expect(result).to be_success
       expect(result.errors).to be_empty
       expect(permissions_for(inactive_project_storage)).to be_empty
     end
+    # rubocop:enable RSpec/ExampleLength
 
     it "adds already logged in users to the project folder", vcr: "one_drive/sync_service_set_permissions" do
       original_folder = create_folder_for(inactive_project_storage)
