@@ -1034,7 +1034,6 @@ bg:
       user_preference:
         comments_sorting: "Покажи коментарите"
         impaired: "Достъпен режим"
-        time_zone: "Часова зона"
         auto_hide_popups: "Автоматично скриване на успешните известия"
         warn_on_leaving_unsaved: "Предупреждавайте ме при напускане на работен пакет с незаписани промени"
         theme: "Режим"
@@ -1440,6 +1439,8 @@ bg:
               duplicate_group: "Името на групата '%{group}' се използва повече от веднъж. Имената на групите трябва да са уникални."
               query_invalid: "Вградената заявка '%{group}' е невалидна: %{details}"
               group_without_name: "Не са разрешени неименовани групи."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1650,6 +1651,7 @@ bg:
     subject: "Заглавие"
     slug: "Slug"
     summary: "Обобщение"
+    time_zone: "Time zone"
     text: "Text"
     title: "Заглавие"
     type: "Тип"
@@ -4319,6 +4321,7 @@ bg:
       connected: "Connected"
       error: "Грешка"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Пренасочване на URI"

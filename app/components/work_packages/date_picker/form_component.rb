@@ -30,18 +30,19 @@
 
 module WorkPackages
   module DatePicker
-    class FormContentComponent < ApplicationComponent
+    class FormComponent < ApplicationComponent
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 
-      attr_accessor :form_id, :show_date_form, :work_package, :schedule_manually, :focused_field, :touched_field_map
+      attr_accessor :form_id, :show_date_form, :work_package, :schedule_manually, :focused_field, :touched_field_map, :date_mode
 
       def initialize(form_id:,
                      show_date_form:,
                      work_package:,
                      schedule_manually: true,
                      focused_field: :start_date,
-                     touched_field_map: {})
+                     touched_field_map: {},
+                     date_mode: nil)
         super
 
         @form_id = form_id
@@ -50,6 +51,7 @@ module WorkPackages
         @schedule_manually = ActiveModel::Type::Boolean.new.cast(schedule_manually)
         @focused_field = focused_field
         @touched_field_map = touched_field_map
+        @date_mode = date_mode
       end
 
       private

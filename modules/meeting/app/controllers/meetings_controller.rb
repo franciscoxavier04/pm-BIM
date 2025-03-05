@@ -292,6 +292,8 @@ class MeetingsController < ApplicationController
       @meeting.open!
     when "closed"
       @meeting.closed!
+    when "in_progress"
+      @meeting.in_progress!
     end
 
     if @meeting.errors.any?

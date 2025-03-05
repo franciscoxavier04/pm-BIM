@@ -212,6 +212,8 @@ class RecurringMeeting < ApplicationRecord
     schedule.previous_occurrence(from_time)&.to_time
   end
 
+  delegate :occurs_at?, to: :schedule
+
   def remaining_occurrences
     case end_after
     when "specific_date"

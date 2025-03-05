@@ -1034,7 +1034,6 @@ et:
       user_preference:
         comments_sorting: "Kuva kommentaare"
         impaired: "Hõlbustusfunktsioonidega režiim"
-        time_zone: "Ajavöönd"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1440,6 +1439,8 @@ et:
               duplicate_group: "The group name '%{group}' is used more than once. Group names must be unique."
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Unnamed groups are not allowed."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1650,6 +1651,7 @@ et:
     subject: "Teema"
     slug: "Slug"
     summary: "Kokkuvõte"
+    time_zone: "Time zone"
     text: "Text"
     title: "Pealkiri"
     type: "Tüüp"
@@ -4319,6 +4321,7 @@ et:
       connected: "Connected"
       error: "Tõrge"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"

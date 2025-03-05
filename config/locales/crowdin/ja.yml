@@ -1023,7 +1023,6 @@ ja:
       user_preference:
         comments_sorting: "コメントの表示"
         impaired: "アクセシビリティモード"
-        time_zone: "タイムゾーン"
         auto_hide_popups: "成功通知を自動的に隠す"
         warn_on_leaving_unsaved: "変更を保存せずにワークパッケージから移動するときに警告"
         theme: "Mode"
@@ -1429,6 +1428,8 @@ ja:
               duplicate_group: "グループ名 '%{group}' は複数回使用されています。グループ名は一意でなければなりません。"
               query_invalid: "埋め込みクエリ '%{group}' は無効です： %{details}"
               group_without_name: "名前のないグループは指定できません。"
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1628,6 +1629,7 @@ ja:
     subject: "タイトル"
     slug: "Slug"
     summary: "サマリ"
+    time_zone: "Time zone"
     text: "Text"
     title: "タイトル"
     type: "タイプ"
@@ -4273,6 +4275,7 @@ ja:
       connected: "Connected"
       error: "エラー！"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "リダイレクトURI"

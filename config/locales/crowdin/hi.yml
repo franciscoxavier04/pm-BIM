@@ -1032,7 +1032,6 @@ hi:
       user_preference:
         comments_sorting: "टिप्पणियां प्रदर्शित करें"
         impaired: "पहुँच क्षमता"
-        time_zone: "समय क्षेत्र"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1438,6 +1437,8 @@ hi:
               duplicate_group: "समूह का नाम ' %{group} ' एक से अधिक बार प्रयोग किया जाता है । समूह नाम अनंय होना आवश्यक है ।"
               query_invalid: "एंबेडेड क्वेरी '%{group} ' अमान्य है: %{details}"
               group_without_name: "Unnamed groups are not allowed."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1648,6 +1649,7 @@ hi:
     subject: "विषय"
     slug: "Slug"
     summary: "सारांश"
+    time_zone: "Time zone"
     text: "Text"
     title: "शीर्षक"
     type: "प्रकार"
@@ -4317,6 +4319,7 @@ hi:
       connected: "Connected"
       error: "त्रुटि"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"

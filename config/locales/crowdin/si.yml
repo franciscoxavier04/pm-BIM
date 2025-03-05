@@ -1034,7 +1034,6 @@ si:
       user_preference:
         comments_sorting: "අදහස් පෙන්වන්න"
         impaired: "ප්රවේශ්යතා ප්රකාරය"
-        time_zone: "වේලා කලාපය"
         auto_hide_popups: "ස්වයං සඟවන්න සාර්ථකත්වය දැනුම්දීම්"
         warn_on_leaving_unsaved: "නොගැලවූ වෙනස්කම් සහිත වැඩ පැකේජයකින් පිටවන විට මට අනතුරු අඟවන්න"
         theme: "Mode"
@@ -1440,6 +1439,8 @@ si:
               duplicate_group: "කණ්ඩායම් නාමය '%{group}' එක් වරකට වඩා භාවිතා වේ. කණ්ඩායම් නම් අද්විතීය විය යුතුය."
               query_invalid: "කාවැද්දූ විමසුම '%{group}' අවලංගුයි: %{details}"
               group_without_name: "නම් නොකළ කණ්ඩායම් වලට අවසර නැත."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1650,6 +1651,7 @@ si:
     subject: "විෂය"
     slug: "Slug"
     summary: "සාරාංශය"
+    time_zone: "Time zone"
     text: "Text"
     title: "මාතෘකාව"
     type: "වර්ගය"
@@ -4319,6 +4321,7 @@ si:
       connected: "Connected"
       error: "දෝෂය"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "නැවත හරවා යැවීමේ URI"

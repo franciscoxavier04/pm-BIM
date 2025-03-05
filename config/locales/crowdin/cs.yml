@@ -1052,7 +1052,6 @@ cs:
       user_preference:
         comments_sorting: "Zobrazit komentáře"
         impaired: "Režim usnadnění"
-        time_zone: "Časové pásmo"
         auto_hide_popups: "Automaticky skrýt oznámení o úspěchu"
         warn_on_leaving_unsaved: "Upozornit mě při opuštění pracovního balíčku s neuloženými změnami"
         theme: "Režim"
@@ -1458,6 +1457,8 @@ cs:
               duplicate_group: "Název skupiny '%{group}' je použit více než jednou. Názvy skupin musí být jedinečné."
               query_invalid: "Vložený dotaz '%{group}' je neplatný: %{details}"
               group_without_name: "Nepojmenované skupiny nejsou povoleny."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1690,6 +1691,7 @@ cs:
     subject: "Předmět"
     slug: "Slug"
     summary: "Souhrn"
+    time_zone: "Time zone"
     text: "Text"
     title: "Název"
     type: "Typ"
@@ -4403,6 +4405,7 @@ cs:
       connected: "Připojeno"
       error: "Chyba"
       failed_authorization: "Autorizace se nezdařila"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Integrace OAuth2"
       label_redirect_uri: "Přesměrovat URI"

@@ -1051,7 +1051,6 @@ sl:
       user_preference:
         comments_sorting: "Prikaži komentarje"
         impaired: "Dostopnost"
-        time_zone: "Časovni pas"
         auto_hide_popups: "Samodejno skrij obvestila o uspehu"
         warn_on_leaving_unsaved: "Opozori me, kadar zapuščam stran z neshranjenim besedilom"
         theme: "Mode"
@@ -1457,6 +1456,8 @@ sl:
               duplicate_group: "Ime skupine '%{group}' je uporabljeno več kot enkrat. Ime skupine mora biti unikatno."
               query_invalid: "Poizvedba '%{group}' je neveljavna: %{details}"
               group_without_name: "Ne poimenovane skupine niso dovoljene."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1689,6 +1690,7 @@ sl:
     subject: "Zadeva"
     slug: "Slug"
     summary: "Povzetek"
+    time_zone: "Time zone"
     text: "Text"
     title: "Naslov"
     type: "Vrsta"
@@ -4404,6 +4406,7 @@ sl:
       connected: "Connected"
       error: "Napaka"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Preusmeritev URI"

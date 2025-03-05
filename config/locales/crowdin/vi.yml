@@ -1025,7 +1025,6 @@ vi:
       user_preference:
         comments_sorting: "Hiện bình luận"
         impaired: "Viet nam"
-        time_zone: "Múi giờ"
         auto_hide_popups: "Tự động ẩn thông báo thành công"
         warn_on_leaving_unsaved: "Cảnh báo tôi khi rời khỏi gói công việc với thay đổi chưa lưu"
         theme: "Chế độ"
@@ -1431,6 +1430,8 @@ vi:
               duplicate_group: "Nhóm tên '%{group}' được sử dụng nhiều hơn một lần. Tên nhóm phải là duy nhất."
               query_invalid: "Truy vấn nhúng '%{group}' là không hợp lệ: %{details}"
               group_without_name: "Các nhóm không tên không được phép."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1630,6 +1631,7 @@ vi:
     subject: "Chủ đề"
     slug: "Slug"
     summary: "Tóm tắt"
+    time_zone: "Time zone"
     text: "Text"
     title: "Tiêu đề"
     type: "Loại"
@@ -4275,6 +4277,7 @@ vi:
       connected: "Đã kết nối"
       error: "Lỗi"
       failed_authorization: "Xác thực không thành công"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Tích hợp OAuth2"
       label_redirect_uri: "URI chuyển hướng"

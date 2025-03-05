@@ -196,7 +196,7 @@ class Storages::Admin::StoragesController < ApplicationController
   end
 
   def replace_oauth_application
-    @storage.oauth_application.destroy
+    @storage.oauth_application&.destroy
     service_result = ::Storages::OAuthApplications::CreateService.new(storage: @storage, user: current_user).call
 
     if service_result.success?

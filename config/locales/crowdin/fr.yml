@@ -1032,7 +1032,6 @@ fr:
       user_preference:
         comments_sorting: "Afficher les commentaires"
         impaired: "Mode d'accessibilité"
-        time_zone: "Fuseau horaire"
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Mode"
@@ -1438,6 +1437,8 @@ fr:
               duplicate_group: "Le nom de groupe \"%{group}\" est utilisé plus d’une fois. Les noms de groupe doivent être uniques."
               query_invalid: "La requête intégrée \"%{group}\" est invalide : %{details}"
               group_without_name: "Les groupes sans nom ne sont pas autorisés."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1648,6 +1649,7 @@ fr:
     subject: "Sujet"
     slug: "Slug"
     summary: "Résumé"
+    time_zone: "Time zone"
     text: "Text"
     title: "Titre"
     type: "Type"
@@ -4316,6 +4318,7 @@ fr:
       connected: "Connecté"
       error: "Erreur"
       failed_authorization: "Échec de l'autorisation"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Intégration OAuth2"
       label_redirect_uri: "URI de redirection"

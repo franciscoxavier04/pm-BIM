@@ -38,7 +38,7 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
   shared_let(:series, refind: true) do
     create(:recurring_meeting,
            project:,
-           start_time: Time.zone.today + 10.hours,
+           start_time: Time.zone.tomorrow + 10.hours,
            frequency: "daily",
            interval: 1,
            end_after: "specific_date",
@@ -56,17 +56,17 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
       create(:scheduled_meeting,
              :cancelled,
              recurring_meeting: series,
-             start_time: Time.zone.today + 1.day + 10.hours)
+             start_time: Time.zone.tomorrow + 1.day + 10.hours)
     end
 
     context "when updating the start_date to the time of the first cancellation" do
       let(:params) do
-        { start_date: Time.zone.today + 1.day }
+        { start_date: Time.zone.tomorrow + 1.day }
       end
 
       it "removes the cancelled occurrence" do
         expect(service_result).to be_success
-        expect(updated_meeting.start_time).to eq(Time.zone.today + 1.day + 10.hours)
+        expect(updated_meeting.start_time).to eq(Time.zone.tomorrow + 1.day + 10.hours)
 
         expect { scheduled_meeting.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
@@ -81,7 +81,7 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
         expect(service_result).to be_success
 
         scheduled_meeting.reload
-        expect(scheduled_meeting.start_time).to eq(Time.zone.today + 1.day + 9.hours)
+        expect(scheduled_meeting.start_time).to eq(Time.zone.tomorrow + 1.day + 9.hours)
       end
     end
 
@@ -211,7 +211,7 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
         # Verify each scheduled meeting is moved to weekly intervals
         scheduled_meetings.each_with_index do |meeting, index|
           meeting.reload
-          expect(meeting.start_time).to eq(Time.zone.today + ((index + 1) * 7).days + 10.hours)
+          expect(meeting.start_time).to eq(Time.zone.tomorrow + (index * 7).days + 10.hours)
         end
       end
 
@@ -237,7 +237,7 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
         create(:scheduled_meeting,
                :persisted,
                recurring_meeting: series,
-               start_time: Time.zone.today + (i + 1).days + 10.hours)
+               start_time: Time.zone.tomorrow + i.days + 10.hours)
       end
     end
 
@@ -245,7 +245,7 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
       let(:params) do
         {
           end_after: "iterations",
-          iterations: 2
+          iterations: 1
         }
       end
 
@@ -270,7 +270,7 @@ RSpec.describe RecurringMeetings::UpdateService, "integration", type: :model do
         # Verify each scheduled meeting is moved to weekly intervals
         scheduled_meetings.each_with_index do |meeting, index|
           meeting.reload
-          expect(meeting.start_time).to eq(Time.zone.today + ((index + 1) * 2).days + 10.hours)
+          expect(meeting.start_time).to eq(Time.zone.tomorrow + (index * 2).days + 10.hours)
         end
       end
     end

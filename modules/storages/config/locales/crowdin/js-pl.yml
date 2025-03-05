@@ -2,6 +2,7 @@
 pl:
   js:
     storages:
+      authentication_error: "Authentication with %{storageType} failed"
       link_files_in_storage: "Połącz pliki w %{storageType}"
       link_existing_files: "Połącz istniejące pliki"
       upload_files: "Wczytaj plik"
@@ -19,6 +20,7 @@ pl:
         one_drive: "OneDrive/SharePoint"
         default: "Magazyn"
       information:
+        authentication_error: "The request to %{storageType} could not be authenticated, that's an error."
         connection_error: >
           Niektóre ustawienia %{storageType} nie działają. Skontaktuj się z administratorem %{storageType}.
         live_data_error: "Błąd podczas pobierania szczegółów pliku"
@@ -27,6 +29,8 @@ pl:
         no_file_links: "Aby połączyć pliki z tym pakietem roboczym, zrób to za pośrednictwem %{storageType}."
         not_logged_in: >
           Aby dodać link, zobacz lub wgraj pliki związane z tym pakietem roboczym, zaloguj się do %{storageType}.
+        suggest_logout: You can try whether logging out and back in fixes this problem.
+        suggest_relink: You can try whether re-linking your account via the login button below fixes this problem.
       files:
         already_existing_header: "Ten plik już istnieje"
         already_existing_body: >

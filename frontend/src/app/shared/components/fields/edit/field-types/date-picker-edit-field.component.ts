@@ -139,7 +139,7 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument
     url.searchParams.set('work_package[ignore_non_working_days]', this.nullAsEmptyStringFormatter(this.resource.includeNonWorkingDays));
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    if (this.resource?.id === 'new') {
+    if (this.resource?.id === 'new' && this.resource.startDate) {
       url.searchParams.set('work_package[start_date_touched]', 'true');
     }
 

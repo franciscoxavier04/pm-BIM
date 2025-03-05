@@ -1033,7 +1033,6 @@ hu:
       user_preference:
         comments_sorting: "Hozzászólások megjelenítése"
         impaired: "Kisegítő mód"
-        time_zone: "Idő zóna"
         auto_hide_popups: "Siker értesítések automatikus elrejtése"
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Mód"
@@ -1439,6 +1438,8 @@ hu:
               duplicate_group: "A %{group} név már használatban van. A csoport névnek egyedinek kell lennie."
               query_invalid: "A beágyazott lekérdezés '%{group}' érvénytelen: %{details}"
               group_without_name: "Névtelen csoport nem engedélyezett."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1649,6 +1650,7 @@ hu:
     subject: "Tárgy"
     slug: "Slug"
     summary: "Összegzés"
+    time_zone: "Time zone"
     text: "Text"
     title: "Cím"
     type: "Típus"
@@ -4317,6 +4319,7 @@ hu:
       connected: "Csatlakozva"
       error: "Hiba"
       failed_authorization: "Hitelesítés sikertelen"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integráció"
       label_redirect_uri: "Átirányítás URI"
