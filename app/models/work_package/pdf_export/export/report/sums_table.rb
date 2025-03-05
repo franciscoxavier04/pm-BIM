@@ -34,7 +34,7 @@ module WorkPackage::PDFExport::Export::Report::SumsTable
 
     write_optional_page_break
     write_sums_title
-    with_margin(styles.overview_table_margins) do
+    with_margin(styles.wp_table_margins) do
       write_sums_table
     end
   end
@@ -76,11 +76,11 @@ module WorkPackage::PDFExport::Export::Report::SumsTable
   end
 
   def sums_table_options
-    { header: true, cell_style: styles.overview_table_cell.merge({ inline_format: true }) }
+    { header: true, cell_style: styles.wp_table_cell.merge({ inline_format: true }) }
   end
 
   def build_sums_header_row
-    header_style = styles.overview_table_header_cell
+    header_style = styles.wp_table_header_cell
     row = sums_columns_objects.map do |col|
       pdf.make_cell(sums_column_name(col), header_style)
     end
@@ -94,7 +94,7 @@ module WorkPackage::PDFExport::Export::Report::SumsTable
   end
 
   def build_sums_group_row(group)
-    build_sums_row(get_group_sums(group), make_group_label(group), styles.overview_table_cell)
+    build_sums_row(get_group_sums(group), make_group_label(group), styles.wp_table_cell)
   end
 
   def get_group_sums(group)
@@ -109,7 +109,7 @@ module WorkPackage::PDFExport::Export::Report::SumsTable
   end
 
   def build_sums_total_row
-    build_sums_row(get_total_sums || {}, I18n.t("js.label_sum"), styles.overview_table_sums_cell)
+    build_sums_row(get_total_sums || {}, I18n.t("js.label_sum"), styles.wp_table_sums_cell)
   end
 
   def build_sums_row(sums, label, sums_style)

@@ -13,7 +13,7 @@ This document describes the style settings format for the [PDF Export styling fi
 | `work_package` | **Work package**<br/>Styling for the Work package section<br/>See [Work package](#work-package) | object |
 | `toc` | **Table of content**<br/>Styling for the table of content of the PDF report export<br/>See [Table of content](#table-of-content) | object |
 | `cover` | **Cover page**<br/>Styling for the cover page of the PDF report export<br/>See [Cover page](#cover-page) | object |
-| `overview` | **Overview**<br/>Styling for the PDF table export<br/>See [Overview](#overview) | object |
+| `wp_table` | **Overview**<br/>Styling for the PDF table export<br/>See [Overview](#overview) | object |
 
 ## Alert
 
@@ -643,7 +643,7 @@ unordered_list_point:
 
 Styling for the PDF table export
 
-Key: `overview`
+Key: `wp_table`
 
 Example:
 ```yml

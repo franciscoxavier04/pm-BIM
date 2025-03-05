@@ -28,22 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::Timesheet::Styles
-  class PDFStyles
-    include MarkdownToPDF::Common
-    include MarkdownToPDF::StyleHelper
-    include WorkPackage::PDFExport::Common::Styles
-    include WorkPackage::PDFExport::Common::StylesPage
-    include WorkPackage::PDFExport::Common::StylesCover
+module WorkPackage::PDFExport::Common::StylesWpTable
+  def wp_table_group_header
+    resolve_font(@styles.dig(:wp_table, :group_heading))
   end
 
-  def styles
-    @styles ||= PDFStyles.new(styles_asset_path)
+  def wp_table_group_header_margins
+    resolve_margin(@styles.dig(:wp_table, :group_heading))
   end
 
-  private
+  def wp_table_margins
+    resolve_margin(@styles.dig(:wp_table, :table))
+  end
 
-  def styles_asset_path
-    File.dirname(File.expand_path(__FILE__))
+  def wp_table_cell
+    resolve_table_cell(@styles.dig(:wp_table, :table, :cell))
+  end
+
+  def wp_table_header_cell
+    wp_table_cell.merge(
+      resolve_table_cell(@styles.dig(:wp_table, :table, :cell_header))
+    )
+  end
+
+  def wp_table_sums_cell
+    wp_table_cell.merge(
+      resolve_table_cell(@styles.dig(:wp_table, :table, :cell_sums))
+    )
+  end
+
+  def wp_table_subject_indent
+    resolve_pt(@styles.dig(:wp_table, :table, :subject_indent), 0)
   end
 end

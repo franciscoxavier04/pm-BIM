@@ -27,8 +27,8 @@
     "cover" : {
       "$ref" : "#/$defs/cover"
     },
-    "overview" : {
-      "$ref" : "#/$defs/overview"
+    "wp_table" : {
+      "$ref" : "#/$defs/wp_table"
     }
   },
   "required" : [],
@@ -414,7 +414,7 @@
         }
       ]
     },
-    "overview" : {
+    "wp_table" : {
       "title" : "Overview",
       "description" : "Styling for the PDF table export",
       "x-example" : {

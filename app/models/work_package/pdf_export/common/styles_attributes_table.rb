@@ -28,22 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::Timesheet::Styles
-  class PDFStyles
-    include MarkdownToPDF::Common
-    include MarkdownToPDF::StyleHelper
-    include WorkPackage::PDFExport::Common::Styles
-    include WorkPackage::PDFExport::Common::StylesPage
-    include WorkPackage::PDFExport::Common::StylesCover
+module WorkPackage::PDFExport::Common::StylesAttributesTable
+  def wp_attributes_table_margins
+    resolve_margin(@styles.dig(:work_package, :attributes_table))
   end
 
-  def styles
-    @styles ||= PDFStyles.new(styles_asset_path)
+  def wp_attributes_table_cell
+    resolve_table_cell(@styles.dig(:work_package, :attributes_table, :cell))
   end
 
-  private
-
-  def styles_asset_path
-    File.dirname(File.expand_path(__FILE__))
+  def wp_attributes_table_label_cell
+    wp_attributes_table_cell.merge(
+      resolve_table_cell(@styles.dig(:work_package, :attributes_table, :cell_label))
+    )
   end
 end

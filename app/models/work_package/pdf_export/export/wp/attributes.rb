@@ -32,9 +32,12 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   def write_attributes_tables!(work_package)
     work_package
       .type.attribute_groups
-      .filter { |group| group.is_a?(Type::AttributeGroup) }
-      .map do |group|
-      write_attributes_group(group, work_package)
+      .each do |group|
+      if group.is_a?(Type::AttributeGroup)
+        write_attributes_group(group, work_package)
+      elsif group.is_a?(Type::QueryGroup)
+        write_query_group(group)
+      end
     end
   end
 
@@ -48,12 +51,18 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     escape_tags(value)
   end
 
+  def write_query_group(group)
+    write_group_title(group)
+    related_work_packages = group.query.results.work_packages
+    write_work_packages_table!(related_work_packages, group.query)
+  end
+
   def write_attributes_group(group, work_package)
-    write_attributes_group_table_title(group)
+    write_group_title(group)
     write_attributes_group_table(group, work_package)
   end
 
-  def write_attributes_group_table_title(group)
+  def write_group_title(group)
     with_margin(styles.wp_markdown_label_margins) do
       pdf.formatted_text([styles.wp_markdown_label
                                 .merge({ text: group.translated_key })])

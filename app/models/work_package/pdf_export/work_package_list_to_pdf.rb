@@ -49,10 +49,10 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
   include WorkPackage::PDFExport::Export::MarkdownField
   include WorkPackage::PDFExport::Export::WorkPackageDetail
   include WorkPackage::PDFExport::Export::Report::Styles
-  include WorkPackage::PDFExport::Export::Report::OverviewTable
   include WorkPackage::PDFExport::Export::Report::SumsTable
   include WorkPackage::PDFExport::Export::Report::TableOfContents
   include WorkPackage::PDFExport::Export::Report::Attributes
+  include WorkPackage::PDFExport::Export::WpTable
   include WorkPackage::PDFExport::Export::Cover
   include WorkPackage::PDFExport::Export::Gantt
 
@@ -151,7 +151,7 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
     else
       write_title!
       write_work_packages_toc! work_packages, @id_wp_meta_map if wants_report?
-      write_work_packages_overview! work_packages unless wants_report?
+      write_work_packages_table!(work_packages, query) unless wants_report?
       write_work_packages_sums! work_packages if with_sums_table? && wants_report?
     end
     if should_be_batched?(work_packages)

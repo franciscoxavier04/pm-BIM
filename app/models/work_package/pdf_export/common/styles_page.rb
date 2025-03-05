@@ -28,48 +28,68 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Common::Styles
-  include MarkdownToPDF::StyleValidation
-
-  def initialize(styles_asset_path, style_yml_file = "standard.yml", schema_json_file = "schema.json")
-    yml = YAML::load_file(File.join(styles_asset_path, style_yml_file))
-    schema = JSON::load_file(File.join(styles_asset_path, schema_json_file))
-    validate_schema!(yml, schema)
-    @styles = yml.deep_symbolize_keys
+module WorkPackage::PDFExport::Common::StylesPage
+  def page_size
+    @styles[:page_size] || "A4"
   end
 
-  protected
-
-  def resolve_pt(value, default)
-    parse_pt(value) || default
+  def page_header_offset
+    resolve_pt(@styles.dig(:page_header, :offset), 20)
   end
 
-  def resolve_table_cell(style)
-    # prawn.table.make_cell does use differently named options
-    # so to have them specified consistently, we map here
-    opts = opts_table_cell(style || {})
-    font_styles = opts.delete(:styles) || []
-    opts[:font_style] = font_styles[0] unless font_styles.empty?
-    color = opts.delete(:color)
-    opts[:text_color] = color unless color.nil?
-    opts
+  def page_footer_offset
+    resolve_pt(@styles.dig(:page_footer, :offset), -30)
   end
 
-  def resolve_markdown_styling(style)
-    page = style.delete(:font)
-    style[:page] = page unless page.nil?
-    style
+  def page_footer_horizontal_spacing
+    resolve_pt(@styles.dig(:page_footer, :spacing), 6)
   end
 
-  def resolve_font(style)
-    opts_font(style || {})
+  def page_logo_height
+    resolve_pt(@styles.dig(:page_logo, :height), 20)
   end
 
-  def resolve_margin(style)
-    opts_margin(style || {})
+  def page_logo_align
+    @styles.dig(:page_logo, :align) || :right
   end
 
-  def resolve_padding(style)
-    opts_padding(style || {})
+  def page_margin_top
+    resolve_pt(@styles.dig(:page, :margin_top), 60)
+  end
+
+  def page_margin_left
+    resolve_pt(@styles.dig(:page, :margin_left), 50)
+  end
+
+  def page_margin_right
+    resolve_pt(@styles.dig(:page, :margin_right), 50)
+  end
+
+  def page_margin_bottom
+    resolve_pt(@styles.dig(:page, :margin_bottom), 60)
+  end
+
+  def page_heading
+    resolve_font(@styles[:page_heading])
+  end
+
+  def page_heading_margins
+    resolve_margin(@styles[:page_heading])
+  end
+
+  def page_header
+    resolve_font(@styles[:page_header])
+  end
+
+  def page_footer
+    resolve_font(@styles[:page_footer])
+  end
+
+  def page_break_threshold
+    resolve_pt(@styles.dig(:page, :page_break_threshold), 200)
+  end
+
+  def link_color
+    @styles.dig(:page, :link_color) || "000000"
   end
 end

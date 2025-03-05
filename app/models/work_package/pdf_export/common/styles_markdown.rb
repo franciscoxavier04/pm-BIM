@@ -28,22 +28,20 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::Timesheet::Styles
-  class PDFStyles
-    include MarkdownToPDF::Common
-    include MarkdownToPDF::StyleHelper
-    include WorkPackage::PDFExport::Common::Styles
-    include WorkPackage::PDFExport::Common::StylesPage
-    include WorkPackage::PDFExport::Common::StylesCover
+module WorkPackage::PDFExport::Common::StylesMarkdown
+  def wp_markdown_label
+    resolve_font(@styles.dig(:work_package, :markdown_label))
   end
 
-  def styles
-    @styles ||= PDFStyles.new(styles_asset_path)
+  def wp_markdown_label_margins
+    resolve_margin(@styles.dig(:work_package, :markdown_label))
   end
 
-  private
+  def wp_markdown_margins
+    resolve_margin(@styles.dig(:work_package, :markdown_margin))
+  end
 
-  def styles_asset_path
-    File.dirname(File.expand_path(__FILE__))
+  def wp_markdown_styling_yml
+    resolve_markdown_styling(@styles.dig(:work_package, :markdown) || {})
   end
 end

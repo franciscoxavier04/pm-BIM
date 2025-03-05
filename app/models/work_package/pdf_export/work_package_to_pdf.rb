@@ -37,6 +37,7 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   include WorkPackage::PDFExport::Export::Page
   include WorkPackage::PDFExport::Export::Wp::Styles
   include WorkPackage::PDFExport::Export::Wp::Attributes
+  include WorkPackage::PDFExport::Export::WpTable
 
   attr_accessor :pdf, :columns
 

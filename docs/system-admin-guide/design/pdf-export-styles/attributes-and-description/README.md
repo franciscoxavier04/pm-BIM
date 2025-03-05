@@ -11,6 +11,7 @@ This document describes the style settings format for the [PDF Export styling fi
 | `page_footer` | **Page footers**<br/>See [Page footers](#page-footers) | object |
 | `page_heading` | **Page heading**<br/>The main page title heading<br/>See [Page heading](#page-heading) | object |
 | `work_package` | **Work package**<br/>Styling for the Work package section<br/>See [Work package](#work-package) | object |
+| `wp_table` | **Work package table**<br/>Styling for the related tables (Form configuration)<br/>See [Work package table](#work-package-table) | object |
 
 ## Alert
 
@@ -529,6 +530,57 @@ unordered_list_point:
 | `spacing` | **Spacing**<br/>Space between point and list item content<br/>Examples: `10mm`, `10` | number or string<br/>See [Units](#units) |
 | … | See [Font properties](#font-properties) |  |
 
+## Overview group heading
+
+Styling for the group label if grouping is activated
+
+Key: `group_heading`
+
+Example:
+```yml
+group_heading:
+  size: 11
+  styles:
+    - bold
+  margin_bottom: 10
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| … | See [Font properties](#font-properties) |  |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Overview table
+
+Key: `table`
+
+Example:
+```yml
+table:
+  subject_indent: 0
+  margin_bottom: 20
+  cell:
+    size: 9
+    color: '000000'
+    padding: 5
+  cell_header:
+    size: 9
+    styles:
+    - bold
+  cell_sums:
+    size: 8
+    styles:
+    - bold
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `subject_indent` | **Indent subject**<br/>Indent by work package level in the subject cell<br/>Examples: `10mm`, `10` | number or string<br/>See [Units](#units) |
+| `cell` | **Table cell**<br/>Styling for a table value cell<br/>See [Table cell](#table-cell) | object |
+| `cell_header` | **Table header cell**<br/>Styling for a table header cell<br/>See [Table cell](#table-cell) | object |
+| `cell_sums` | **Table sum cell**<br/>Styling for a table sum cell<br/>See [Table cell](#table-cell) | object |
+| … | See [Margin properties](#margin-properties) |  |
+
 ## Padding Properties
 
 Properties to set paddings
@@ -834,6 +886,24 @@ subject_level_3:
 | - | - | - |
 | … | See [Font properties](#font-properties) |  |
 | … | See [Margin properties](#margin-properties) |  |
+
+## Work package table
+
+Styling for the related tables (Form configuration)
+
+Key: `wp_table`
+
+Example:
+```yml
+overview:
+  group_heading: {}
+  table: {}
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `group_heading` | **Overview group heading**<br/>Styling for the group label if grouping is activated<br/>See [Overview group heading](#overview-group-heading) | object |
+| `table` | **Overview table**<br/>See [Overview table](#overview-table) | object |
 
 ## alert boxes (styled blockquotes)
 
