@@ -24,22 +24,19 @@
                   item.with_leading_visual_icon(icon: :pencil)
                 end
               end
-
-              if should_render_delete_option?
-                menu.with_item(label: I18n.t(:label_relation_delete),
-                               scheme: :danger,
-                               href: destroy_path,
-                               form_arguments: {
-                                 method: :delete,
-                                 data: {
-                                   confirm: t("text_are_you_sure"),
-                                   turbo_stream: true,
-                                   update_work_package: true
-                                 }
-                               },
-                               test_selector: delete_button_test_selector) do |item|
-                  item.with_leading_visual_icon(icon: :trash)
-                end
+              menu.with_item(label: I18n.t(:label_relation_delete),
+                             scheme: :danger,
+                             href: destroy_path,
+                             form_arguments: {
+                               method: :delete,
+                               data: {
+                                 confirm: t("text_are_you_sure"),
+                                 turbo_stream: true,
+                                 update_work_package: true
+                               }
+                             },
+                             test_selector: delete_button_test_selector) do |item|
+                item.with_leading_visual_icon(icon: :trash)
               end
             end
           end
