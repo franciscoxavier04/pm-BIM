@@ -40,7 +40,7 @@ class Queries::Meetings::Filters::AttendedUserFilter < Queries::Meetings::Filter
     @type_strategy ||= ::Queries::Filters::Strategies::IntegerListOptional.new(self)
   end
 
-  def where
+  def where # rubocop:disable Metrics/AbcSize
     condition = "#{MeetingParticipant.table_name}.attended"
 
     case operator

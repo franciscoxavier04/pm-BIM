@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,7 +27,6 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-
 require "spec_helper"
 
 RSpec.describe Queries::Meetings::Filters::InvitedUserFilter do
