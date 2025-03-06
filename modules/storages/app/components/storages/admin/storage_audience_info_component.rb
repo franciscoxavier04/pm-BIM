@@ -30,12 +30,12 @@
 
 module Storages
   module Admin
-    class NextcloudAudienceInfoComponent < StorageInfoComponent
+    class StorageAudienceInfoComponent < StorageInfoComponent
       def self.wrapper_key = :storage_audience_section
 
       def audience_summary
         case storage.storage_audience
-        when ""
+        when "", nil
           I18n.t("storages.file_storage_view.storage_audience_blank")
         when OpenIDConnect::UserToken::IDP_AUDIENCE
           I18n.t("storages.file_storage_view.storage_audience_idp")
