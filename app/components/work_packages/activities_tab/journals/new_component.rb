@@ -62,6 +62,14 @@ module WorkPackages
           # TODO: change to use permissions
           true
         end
+
+        def restricted_visibility_explainer
+          href = ::OpenProject::Static::Links.url_for(:user_guides_work_package_activity)
+          I18n.t("activities.work_packages.activity_tab.restricted_visibility_explainer",
+                 who_link_text: render(Primer::Beta::Link.new(href:, target: "_blank")) do
+                   I18n.t("activities.work_packages.activity_tab.label_who")
+                 end).html_safe
+        end
       end
     end
   end
