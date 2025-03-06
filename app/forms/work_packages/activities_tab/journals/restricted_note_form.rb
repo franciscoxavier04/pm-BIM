@@ -38,19 +38,8 @@ module WorkPackages::ActivitiesTab::Journals
         data: {
           "work-packages--activities-tab--restricted-comment-target": "visibilityCheckbox",
           action: "input->work-packages--activities-tab--restricted-comment#toggleVisibility"
-        },
-        caption:
+        }
       )
-    end
-
-    private
-
-    def caption
-      href = ::OpenProject::Static::Links.url_for(:user_guides_work_package_activity)
-      I18n.t("activities.work_packages.activity_tab.restricted_visibility_explainer",
-             who_link_text: render(Primer::Beta::Link.new(href:, target: "_blank")) do
-               I18n.t("activities.work_packages.activity_tab.label_who")
-             end).html_safe
     end
   end
 end
