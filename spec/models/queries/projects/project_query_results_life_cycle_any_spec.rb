@@ -288,7 +288,9 @@ RSpec.describe ProjectQuery, "results of 'Any stage or gate' filter" do
       remove_stage_dates
 
       it "returns no project" do
-        expect(instance.results).to be_empty
+        Timecop.travel(stage_end_date.noon) do
+          expect(instance.results).to be_empty
+        end
       end
     end
 
