@@ -28,12 +28,14 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::WorkPackageDetail
+module WorkPackage::PDFExport::Export::Report::Detail
   def write_work_packages_details!(work_packages, id_wp_meta_map)
     work_packages.each do |work_package|
       write_work_package_detail!(work_package, id_wp_meta_map[work_package.id])
     end
   end
+
+  private
 
   def write_work_package_detail!(work_package, id_wp_meta_map_entry)
     write_optional_page_break
@@ -53,8 +55,6 @@ module WorkPackage::PDFExport::Export::WorkPackageDetail
       write_long_text_fields! work_package
     end
   end
-
-  private
 
   def write_work_package_subject!(work_package, level_path)
     text_style = styles.wp_subject(level_path.length)

@@ -32,10 +32,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   include Redmine::I18n
   include PDFExportSpecUtils
   let(:type) do
-    create(:type_bug, custom_fields: [cf_long_text, cf_disabled_in_project, cf_global_bool]).tap do |t|
-      t.attribute_groups = t.default_attribute_groups +
-        [["Custom Attributes Group", [cf_disabled_in_project.attribute_name, cf_long_text.attribute_name]]]
-    end
+    create(:type_bug, custom_fields: [cf_long_text, cf_disabled_in_project, cf_global_bool])
   end
   let(:parent_project) do
     create(:project, name: "Parent project")
@@ -97,7 +94,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   let(:priority) { create(:priority_normal) }
   let(:image_attachment) { Attachment.new author: user, file: File.open(image_path) }
   let(:attachments) { [image_attachment] }
-  let(:cf_long_text_description) { "" }
+  let(:cf_long_text_description) { "**foo** *faa*" }
   let(:cf_long_text) do
     create(:issue_custom_field, :text,
            name: "Work Package Custom Field Long Text")
@@ -213,6 +210,9 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           result.push value if value.present?
         end
       end
+      if group.key == :other
+        result += [cf_long_text.name, "foo   faa"]
+      end
     end
     result
   end
@@ -226,6 +226,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
     content = export_pdf.content
     # If you want to actually see the PDF for debugging, uncomment the following line
     # File.binwrite("WorkPackageToPdf-test-preview.pdf", content)
+    # `open WorkPackageToPdf-test-preview.pdf`
     page_xobjects = PDF::Inspector::XObject.analyze(content).page_xobjects
     images = page_xobjects.flat_map { |o| o.values.select { |v| v.hash[:Subtype] == :Image } }
     logos = page_xobjects.flat_map do |o|
@@ -241,8 +242,6 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
 
   describe "with a request for a PDF" do
     describe "with rich text and images" do
-      let(:cf_long_text_description) { "foo" }
-
       it "contains correct data" do
         # Joining with space for comparison since word wrapping leads to a different array for the same content
         result = pdf[:strings].join(" ")
@@ -254,8 +253,6 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Image Caption",
           "Foo",
           "1", export_time_formatted, project.name,
-          cf_long_text.name, "foo",
-          "2", export_time_formatted, project.name
         ].flatten.join(" ")
         expect(result).to eq(expected_result)
         expect(result).not_to include("DisabledCustomField")
@@ -434,10 +431,11 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Custom field boolean", I18n.t(:general_text_Yes),
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
-          "No replacement of:", "projectValue:1:status",
+          "No replacement of:",
 
           "1", export_time_formatted, project.name,
 
+          "projectValue:1:status",
           "projectLabel:status",
           "projectValue:2:status projectLabel:status",
           "projectValue:3:status", "projectLabel:status",

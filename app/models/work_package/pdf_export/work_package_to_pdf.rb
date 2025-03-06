@@ -33,7 +33,6 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   include WorkPackage::PDFExport::Common::Logo
   include WorkPackage::PDFExport::Common::Attachments
   include WorkPackage::PDFExport::Export::MarkdownField
-  include WorkPackage::PDFExport::Export::WorkPackageDetail
   include WorkPackage::PDFExport::Export::Page
   include WorkPackage::PDFExport::Export::Wp::Styles
   include WorkPackage::PDFExport::Export::Wp::Attributes
@@ -72,7 +71,8 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
 
   def render_work_package
     write_title!
-    write_work_package_detail_content!(work_package)
+    write_attributes! work_package
+    write_description! work_package
     write_headers!
     write_footers!
   end
@@ -89,6 +89,10 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
     # <project>_<type>_<ID>_<subject><YYYY-MM-DD>_<HH-MM>.pdf
     build_pdf_filename([work_package.project, work_package.type,
                         "##{work_package.id}", work_package.subject].join("_"))
+  end
+
+  def write_description!(work_package)
+    write_markdown_field!(work_package, work_package.description, WorkPackage.human_attribute_name(:description))
   end
 
   def with_images?

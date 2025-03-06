@@ -47,7 +47,7 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
   include WorkPackage::PDFExport::Common::Attachments
   include WorkPackage::PDFExport::Export::Page
   include WorkPackage::PDFExport::Export::MarkdownField
-  include WorkPackage::PDFExport::Export::WorkPackageDetail
+  include WorkPackage::PDFExport::Export::Report::Detail
   include WorkPackage::PDFExport::Export::Report::Styles
   include WorkPackage::PDFExport::Export::Report::SumsTable
   include WorkPackage::PDFExport::Export::Report::TableOfContents

@@ -29,30 +29,31 @@
 #++
 
 module WorkPackage::PDFExport::Export::Wp::Attributes
-  def write_attributes_tables!(work_package)
+  def write_attributes!(work_package)
     work_package
       .type.attribute_groups
       .each do |group|
       if group.is_a?(Type::AttributeGroup)
         write_attributes_group(group, work_package)
       elsif group.is_a?(Type::QueryGroup)
-        write_query_group(group)
+        write_query_group(group, work_package)
       end
     end
   end
 
   private
 
-  def get_column_value_cell(work_package, column_name)
-    value = get_column_value(work_package, column_name)
-    return get_id_column_cell(work_package, value) if column_name == :id
-    return get_subject_column_cell(work_package, value) if column_name == :subject
-
-    escape_tags(value)
+  def write_long_text_field!(work_package, field_id)
+    custom_value = work_package.custom_field_values
+                               .find { |cv| cv.custom_field.id == field_id && cv.custom_field.formattable? }
+    if custom_value&.value
+      write_markdown_field!(work_package, custom_value.value, custom_value.custom_field.name)
+    end
   end
 
-  def write_query_group(group)
+  def write_query_group(group, work_package)
     write_group_title(group)
+    prepare_query_group(group, work_package)
     related_work_packages = group.query.results.work_packages
     write_work_packages_table!(related_work_packages, group.query)
   rescue Prawn::Errors::CannotFit
@@ -63,9 +64,30 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     end
   end
 
+  def prepare_query_group(group, work_package)
+    # QueryGroup are relative to our work package, so we need to adjust the filter
+    group.query.filters.each do |filter|
+      if filter.respond_to?(:has_templated_value?) && filter.has_templated_value?
+        group.query.filters[0].values = [work_package.id]
+      end
+    end
+  end
+
   def write_attributes_group(group, work_package)
     write_group_title(group)
     write_attributes_group_table(group, work_package)
+    write_attributes_group_long_text_custom_fields(group, work_package)
+  end
+
+  def write_attributes_group_long_text_custom_fields(group, work_package)
+    group.attributes.map do |form_key|
+      next unless CustomField.custom_field_attribute? form_key
+
+      cf = form_key_to_custom_field(form_key)
+      next if cf.nil? || !cf.formattable? || !custom_field_allowed(cf, work_package)
+
+      write_long_text_field!(work_package, cf.id)
+    end
   end
 
   def write_group_title(group)
@@ -110,12 +132,18 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     widths.map { |w| w * ratio }
   end
 
-  def form_key_custom_field_to_column_entries(form_key, work_package)
+  def form_key_to_custom_field(form_key)
     id = form_key.to_s.sub("custom_field_", "").to_i
-    cf = CustomField.find_by(id:)
-    return [] if cf.nil? || cf.formattable?
+    CustomField.find_by(id:)
+  end
 
-    return [] unless cf.is_for_all? || work_package.project.work_package_custom_field_ids.include?(cf.id)
+  def custom_field_allowed(custom_field, work_package)
+    custom_field.is_for_all? || work_package.project.work_package_custom_field_ids.include?(custom_field.id)
+  end
+
+  def form_key_custom_field_to_column_entries(form_key, work_package)
+    cf = form_key_to_custom_field(form_key)
+    return [] if cf.nil? || cf.formattable? || !custom_field_allowed(cf, work_package)
 
     [{ label: cf.name || form_key, name: form_key.to_s.sub("custom_field_", "cf_") }]
   end
@@ -151,5 +179,13 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
       pdf.make_cell(attribute_data[:label].upcase, styles.wp_attributes_table_label_cell),
       attribute_data[:value]
     ]
+  end
+
+  def get_column_value_cell(work_package, column_name)
+    value = get_column_value(work_package, column_name)
+    return get_id_column_cell(work_package, value) if column_name == :id
+    return get_subject_column_cell(work_package, value) if column_name == :subject
+
+    escape_tags(value)
   end
 end
