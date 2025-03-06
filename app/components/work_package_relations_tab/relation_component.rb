@@ -63,6 +63,12 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     helpers.current_user.allowed_in_project?(:manage_work_package_relations, @work_package.project)
   end
 
+  def should_render_delete_option?
+    return true unless parent_child_relationship?
+
+    helpers.current_user.allowed_in_project?(:manage_subtasks, @child.project)
+  end
+
   def visible?
     @visibility == :visible
   end
