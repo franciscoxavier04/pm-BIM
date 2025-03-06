@@ -39,8 +39,8 @@ class Queries::Projects::Filters::LifeCycleGateFilter < Queries::Projects::Filte
 
     private
 
-    def name_for_step(stage)
-      "lcsd_gate_#{stage.id}"
+    def name_for_step(gate)
+      "lcsd_gate_#{gate.id}"
     end
 
     def step_subclass
