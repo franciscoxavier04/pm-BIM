@@ -29,7 +29,7 @@
 #++
 #
 module Storages::Admin::Forms
-  class NextcloudAudienceFormComponent < StorageFormComponent
+  class StorageAudienceFormComponent < StorageFormComponent
     def self.wrapper_key = :storage_audience_section
 
     options submit_button_disabled: false

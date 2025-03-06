@@ -29,7 +29,7 @@
 #++
 
 module Storages::Admin
-  class NextcloudAudienceInputForm < ApplicationForm
+  class StorageAudienceInputForm < ApplicationForm
     form do |storage_form|
       storage_form.radio_button_group(name: :audience_configuration) do |group|
         group.radio_button(

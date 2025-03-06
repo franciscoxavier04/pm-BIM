@@ -42,7 +42,7 @@ See COPYRIGHT and LICENSE files for more details.
       ) do |form|
         flex_layout do |general_info_row|
           general_info_row.with_row(mb: 3) do
-            render(Storages::Admin::NextcloudAudienceInputForm.new(form))
+            render(Storages::Admin::StorageAudienceInputForm.new(form))
           end
 
           general_info_row.with_row do
