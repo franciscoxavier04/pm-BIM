@@ -28,26 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module OpPrimer
-  class StatusButtonOption # rubocop:disable OpenProject/AddPreviewForViewComponent
-    attr_reader :name, :icon, :item_arguments, :description, :color_namespace, :color_ref
+module Meetings
+  module Statuses
+    RECORD = Struct.new(:id, :color, keyword_init: true)
 
-    def initialize(name:, color_ref: nil, color_namespace: nil, icon: nil, description: nil, **item_arguments)
-      @name = name
-      @icon = icon
-      @description = description
-      @item_arguments = item_arguments
+    OPEN = RECORD.new(id: "open", color: Color.new(hexcode: "#1F883D"))
+    IN_PROGRESS = RECORD.new(id: "in_progress", color: Color.new(hexcode: "#9A6700"))
+    CLOSED = RECORD.new(id: "closed", color: Color.new(hexcode: "#565c63"))
 
-      @color_ref = color_ref
-      @color_namespace = color_namespace
-    end
-
-    def colored?
-      !icon && color_ref && color_namespace
-    end
-
-    def to_s
-      name
-    end
+    AVAILABLE = [
+      OPEN,
+      IN_PROGRESS,
+      CLOSED
+    ].freeze
   end
 end
