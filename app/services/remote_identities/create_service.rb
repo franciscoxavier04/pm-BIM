@@ -32,36 +32,45 @@ module RemoteIdentities
   class CreateService
     attr_reader :user, :model
 
-    def self.call(user:, integration:, token:)
-      new(user:, integration:, token:).call
+    def self.call(user:, integration:, token:, force_update: false)
+      new(user:, integration:, token:, force_update:).call
     end
 
-    def initialize(user:, integration:, token:)
+    def initialize(user:, integration:, token:, force_update: false)
       @user = user
       @integration = integration
       @token = token
+      @force_update = force_update
 
       @model = RemoteIdentity.find_or_initialize_by(user:, auth_source: token.auth_source, integration:)
     end
 
     def call
-      if @model.new_record?
+      if @model.new_record? || @force_update
         user_id = @integration.extract_origin_user_id(@token)
         return user_id if user_id.failure?
 
         @model.origin_user_id = user_id.result
-        if @model.save
-          OpenProject::Notifications.send(
-            OpenProject::Events::REMOTE_IDENTITY_CREATED,
-            integration: @integration
-          )
-          ServiceResult.success(result: @model)
-        else
-          ServiceResult.failure(result: @model, errors: @model.errors)
-        end
-      else
-        ServiceResult.success(result: @model)
+        return success unless @model.changed?
+        return failure unless @model.save
+
+        OpenProject::Notifications.send(
+          OpenProject::Events::REMOTE_IDENTITY_CREATED,
+          integration: @integration
+        )
       end
+
+      success
+    end
+
+    private
+
+    def success
+      ServiceResult.success(result: @model)
+    end
+
+    def failure
+      ServiceResult.failure(result: @model, errors: @model.errors)
     end
   end
 end
