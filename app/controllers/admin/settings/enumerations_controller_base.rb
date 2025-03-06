@@ -31,7 +31,6 @@
 module Admin
   module Settings
     class EnumerationsControllerBase < ApplicationController
-      extend ActiveSupport::Concern
       include OpTurbo::ComponentStream
 
       before_action :require_admin
