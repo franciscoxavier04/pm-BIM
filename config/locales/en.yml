@@ -51,7 +51,7 @@ en:
         commented: "commented"
         restricted_visibility: Restricted visibility
         restricted_visibility_explainer: Only visible to a limited group of members. %{who_link_text}
-        restricted_journal: Only visible to a limited group of members.
+        restricted_journal: Restricted comments are visible to a limited group of members.
 
   admin:
     plugins:
