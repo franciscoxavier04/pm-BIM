@@ -2,13 +2,13 @@ require:
   - rubocop-openproject
   - rubocop-rspec_rails
   - rubocop-capybara
-  - rubocop-factory_bot
   - ./config/initializers/inflections.rb
 
 plugins:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
+  - rubocop-factory_bot
 
 # A rubocop-local.yml file can be added to customized the styles
 inherit_from:
