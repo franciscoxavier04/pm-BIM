@@ -47,7 +47,8 @@ module Meetings
                                                  items: [open_status, in_progress_status, closed_status],
                                                  readonly: !edit_enabled?,
                                                  disabled: !edit_enabled?,
-                                                 button_arguments: { title: t("label_meeting_state"), size: @size }))
+                                                 button_arguments: { title: t("label_meeting_state"), size: @size },
+                                                 menu_arguments: { size: :small }))
     end
 
     private
