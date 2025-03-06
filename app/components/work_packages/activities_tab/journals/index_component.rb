@@ -68,12 +68,10 @@ module WorkPackages
         end
 
         def fetch_journals
-          can_see_restricted = User.current.allowed_in_work_package?(:view_comments_with_restricted_visibility, work_package)
-
           API::V3::Activities::ActivityEagerLoadingWrapper.wrap(
             work_package
               .journals
-              .where(can_see_restricted ? nil : { restricted: false })
+              .restricted_visible(work_package)
               .includes(:user, :customizable_journals, :attachable_journals, :storable_journals, :notifications)
               .reorder(version: journal_sorting)
               .with_sequence_version

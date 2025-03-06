@@ -36,10 +36,9 @@ module API
           get do
             self_link = api_v3_paths.work_package_activities @work_package.id
 
-            can_see_restricted = current_user.allowed_in_work_package?(:view_comments_with_restricted_visibility, @work_package)
             journals = @work_package
               .journals
-              .where(can_see_restricted ? nil : { restricted: false })
+              .restricted_visible(work_package)
               .includes(:data,
                         :customizable_journals,
                         :attachable_journals,
