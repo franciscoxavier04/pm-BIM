@@ -651,7 +651,7 @@ de:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -748,6 +748,7 @@ de:
       new_child_text: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       existing_child: "Vorhandenes Kind"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
+      label_closest: "Closest"
       label_blocks_singular: "Blockiert"
       label_blocks_plural: "Blockiert"
       blocks_description: "Das verknüpfte Arbeitspaket kann erst geschlossen werden, wenn dieses Arbeitspaket geschlossen ist"
@@ -908,6 +909,8 @@ de:
         active_value:
           true: "nicht archiviert"
           false: "archiviert"
+        description: "Beschreibung"
+        enabled_modules: "Enabled modules"
         identifier: "Kennung"
         latest_activity_at: "Letzte Aktivität am"
         parent: "Unterprojekt von"
@@ -916,9 +919,7 @@ de:
           true: "öffentlich"
           false: "privat"
         queries: "Abfragen"
-        enabled_modules: "Enabled modules"
         status_code: "Projektstatus"
-        description: "Beschreibung"
         status_explanation: "Projektstatusbeschreibung"
         status_codes:
           not_started: "Nicht gestartet"
@@ -2875,6 +2876,8 @@ de:
   label_projects_menu: "Projekte"
   label_today: "heute"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Hauptmenü"
   label_topic_plural: "Themen"
   label_total: "Gesamtzahl"
@@ -3362,6 +3365,13 @@ de:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Sind Sie sicher, dass Sie das Projekt '%{name}' archivieren wollen?"
+      archived: "Archiviert"
+    count:
+      zero: "0 Projekte"
+      one: "1 Projekt"
+      other: "%{count} Projekte"
     destroy:
       confirmation: "Wenn Sie fortfahren, wird das Projekt %{identifier} dauerhaft zerstört. Um diese Aktion zu bestätigen, geben Sie bitte den Projektnamen in das untenstehende Feld ein:"
       project_delete_result_1: "Alle zugehörigen Daten löschen."
@@ -3374,19 +3384,13 @@ de:
       warning_one: Projektmitglieder müssen die Projektarchive des Projekts umziehen.
       warning_two: Bestehende Projekt-Links werden nicht mehr funktionieren.
       title: Projektkennung ändern
+    not_available: "Project N/A"
     template:
       copying: >
         Ihr Projekt wird aus der ausgewählten Vorlage erstellt. Sie werden per E-Mail benachrichtigt, sobald das Projekt verfügbar ist.
       use_template: "Projektvorlage verwenden"
       make_template: "Als Vorlage speichern"
       remove_from_templates: "Aus Projektvorlagen entfernen"
-    archive:
-      are_you_sure: "Sind Sie sicher, dass Sie das Projekt '%{name}' archivieren wollen?"
-      archived: "Archiviert"
-    count:
-      zero: "0 Projekte"
-      one: "1 Projekt"
-      other: "%{count} Projekte"
   project_module_activity: "Aktivität"
   project_module_forums: "Foren"
   project_module_work_package_tracking: "Arbeitspakete"

@@ -666,7 +666,7 @@ lv:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -764,6 +764,7 @@ lv:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -924,6 +925,8 @@ lv:
         active_value:
           true: "unarchived"
           false: "arhivēts"
+        description: "Apraksts"
+        enabled_modules: "Enabled modules"
         identifier: "Identifikators"
         latest_activity_at: "Latest activity at"
         parent: "Apakšprojekts"
@@ -932,9 +935,7 @@ lv:
           true: "public"
           false: "private"
         queries: "Vaicājumi"
-        enabled_modules: "Enabled modules"
         status_code: "Projekta statuss"
-        description: "Apraksts"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -2921,6 +2922,8 @@ lv:
   label_projects_menu: "Projekti"
   label_today: "šodien"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Augšējā izvēlne"
   label_topic_plural: "Tēmas"
   label_total: "Kopā"
@@ -3410,6 +3413,13 @@ lv:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3422,19 +3432,13 @@ lv:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
       title: Mainīt projekta identifikatoru
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project. You will be notified by mail as soon as the project is available.
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Aktivitāte"
   project_module_forums: "Forums"
   project_module_work_package_tracking: "Pieteikumi"

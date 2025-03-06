@@ -719,17 +719,18 @@ si:
       description: "Description: Click to edit..."
       relation_description: "මෙම සම්බන්ධයෙන් විස්තර එකතු කිරීමට ක්ලික් කරන්න"
     project:
-      required_outside_context: >
-        කරුණාකර සියලු ගුණාංග බැලීමට වැඩ පැකේජය නිර්මාණය කිරීම සඳහා ව්යාපෘතියක් තෝරන්න. ඔබට තෝරා ගත හැක්කේ ඉහත ආකාරයේ සක්රිය කර ඇති ව්යාපෘති පමණි.
-      context: "ව්යාපෘති සන්දර්භය"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
-      use_template: "Use template"
-      no_template_selected: "(None)"
-      copy:
-        copy_options: "Copy options"
       autocompleter:
         label: "ව්යාපෘති ස්වයංක්රීයව නිම කිරීම"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
+      context: "ව්යාපෘති සන්දර්භය"
+      copy:
+        copy_options: "Copy options"
+      not_available: "Project N/A"
+      no_template_selected: "(None)"
+      required_outside_context: >
+        කරුණාකර සියලු ගුණාංග බැලීමට වැඩ පැකේජය නිර්මාණය කිරීම සඳහා ව්යාපෘතියක් තෝරන්න. ඔබට තෝරා ගත හැක්කේ ඉහත ආකාරයේ සක්රිය කර ඇති ව්යාපෘති පමණි.
+      use_template: "Use template"
     reminders:
       settings:
         daily:

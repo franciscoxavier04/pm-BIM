@@ -656,7 +656,7 @@ fr:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -753,6 +753,7 @@ fr:
       new_child_text: "Crée un lot de travaux lié en tant que sous-élément du lot de travaux actuel (parent)"
       existing_child: "Enfant existant"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
+      label_closest: "Closest"
       label_blocks_singular: "blocs"
       label_blocks_plural: "blocs"
       blocks_description: "Le lot de travaux associé ne peut pas être fermé avant que celui-ci soit fermé en premier"
@@ -913,6 +914,8 @@ fr:
         active_value:
           true: "désarchivé"
           false: "archivé"
+        description: "Description"
+        enabled_modules: "Enabled modules"
         identifier: "Identifiant"
         latest_activity_at: "Dernière activité à"
         parent: "Sous-projet de"
@@ -921,9 +924,7 @@ fr:
           true: "public"
           false: "privé"
         queries: "Requêtes"
-        enabled_modules: "Enabled modules"
         status_code: "Statut du projet"
-        description: "Description"
         status_explanation: "Description du statut du projet"
         status_codes:
           not_started: "Non démarré"
@@ -2880,6 +2881,8 @@ fr:
   label_projects_menu: "Projets"
   label_today: "aujourd'hui"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Menu du haut"
   label_topic_plural: "Sujets"
   label_total: "Total"
@@ -3367,6 +3370,13 @@ fr:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Êtes-vous sûr de vouloir archiver le projet '%{name}%' ?"
+      archived: "Archivé"
+    count:
+      zero: "0 projet"
+      one: "1 projet"
+      other: "%{count} projets"
     destroy:
       confirmation: "Si vous continuez, le projet %{identifier} sera définitivement supprimé. Pour confirmer cette action, veuillez saisir le nom du projet dans le champ ci-dessous. Cela va :"
       project_delete_result_1: "Supprimer toutes les données associées."
@@ -3379,19 +3389,13 @@ fr:
       warning_one: Les membres du projet devront déplacer les répertoires du projet.
       warning_two: Les liens existants vers le projet ne fonctionneront plus.
       title: Modifier l'identifiant du projet
+    not_available: "Project N/A"
     template:
       copying: >
         Votre projet est en cours de création à partir du modèle de projet sélectionné. Vous serez averti par e-mail dès que le projet sera disponible.
       use_template: "Utiliser le modèle"
       make_template: "Définir comme modèle"
       remove_from_templates: "Supprimer des modèles"
-    archive:
-      are_you_sure: "Êtes-vous sûr de vouloir archiver le projet '%{name}%' ?"
-      archived: "Archivé"
-    count:
-      zero: "0 projet"
-      one: "1 projet"
-      other: "%{count} projets"
   project_module_activity: "Activité"
   project_module_forums: "Forums"
   project_module_work_package_tracking: "Lots de travaux"

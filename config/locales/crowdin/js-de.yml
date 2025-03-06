@@ -718,17 +718,18 @@ de:
       description: "Beschreibung: Zum Bearbeiten klicken..."
       relation_description: "Klicken, um eine Beschreibung für diese Beziehung anzulegen"
     project:
-      required_outside_context: >
-        Bitte wählen Sie ein Projekt für das Arbeitspaket, um alle Attribute anzuzeigen. Sie können nur Projekte auswählen, für die der ausgewählte Typ oben aktiviert ist.
-      context: "Projektkontext"
-      click_to_switch_to_project: "Projekt: %{projectname}"
-      confirm_template_load: "Das Ändern der Vorlage wird die Seite neu laden und Sie verlieren alle Eingaben zu diesem Formular. Fortfahren?"
-      use_template: "Vorlage verwenden"
-      no_template_selected: "(Keine)"
-      copy:
-        copy_options: "Kopieroptionen"
       autocompleter:
         label: "Projekt Auto-Vervollständigung"
+      click_to_switch_to_project: "Projekt: %{projectname}"
+      confirm_template_load: "Das Ändern der Vorlage wird die Seite neu laden und Sie verlieren alle Eingaben zu diesem Formular. Fortfahren?"
+      context: "Projektkontext"
+      copy:
+        copy_options: "Kopieroptionen"
+      not_available: "Project N/A"
+      no_template_selected: "(Keine)"
+      required_outside_context: >
+        Bitte wählen Sie ein Projekt für das Arbeitspaket, um alle Attribute anzuzeigen. Sie können nur Projekte auswählen, für die der ausgewählte Typ oben aktiviert ist.
+      use_template: "Vorlage verwenden"
     reminders:
       settings:
         daily:

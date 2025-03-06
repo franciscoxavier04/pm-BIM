@@ -654,7 +654,7 @@ nl:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -751,6 +751,7 @@ nl:
       new_child_text: "Creëert een gerelateerd werkpakket als subitem van het huidige (bovenliggende) werkpakket"
       existing_child: "Bestaand kind"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blokkeert"
       label_blocks_plural: "blokkeren"
       blocks_description: "Het gerelateerde werkpakket kan pas worden afgesloten als eerst dit werkpakket eerst is afgesloten"
@@ -911,6 +912,8 @@ nl:
         active_value:
           true: "Niet gearchiveerd"
           false: "gearchiveerd"
+        description: "Omschrijving"
+        enabled_modules: "Enabled modules"
         identifier: "Identifier"
         latest_activity_at: "Laatste activiteit om"
         parent: "Subproject van"
@@ -919,9 +922,7 @@ nl:
           true: "Openbaar"
           false: "Privé"
         queries: "Query 's"
-        enabled_modules: "Enabled modules"
         status_code: "Projectstatus"
-        description: "Omschrijving"
         status_explanation: "Beschrijving van projectstatus"
         status_codes:
           not_started: "Nog niet gestart"
@@ -2878,6 +2879,8 @@ nl:
   label_projects_menu: "Projecten"
   label_today: "vandaag"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Hoofdmenu"
   label_topic_plural: "Onderwerpen"
   label_total: "Totaal"
@@ -3364,6 +3367,13 @@ nl:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Weet u zeker dat u dit project '%{name}' wilt archiveren?"
+      archived: "Gearchiveerd"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Verwijder alle gerelateerde gegevens."
@@ -3376,19 +3386,13 @@ nl:
       warning_one: Leden van het project zullen de opslagplaatsen van het project moeten verplaatsen.
       warning_two: Bestaande koppelingen naar het project zullen niet langer werken.
       title: Wijzig het identificatienummer van het project
+    not_available: "Project N/A"
     template:
       copying: >
         Uw project wordt aangemaakt uit het geselecteerde sjabloonproject. U wordt per e-mail op de hoogte gebracht zodra het project beschikbaar is.
       use_template: "Sjabloon gebruiken"
       make_template: "Opslaan als sjabloon"
       remove_from_templates: "Sjabloon verwijderen"
-    archive:
-      are_you_sure: "Weet u zeker dat u dit project '%{name}' wilt archiveren?"
-      archived: "Gearchiveerd"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Activiteit"
   project_module_forums: "Fora"
   project_module_work_package_tracking: "Werkpakketten"

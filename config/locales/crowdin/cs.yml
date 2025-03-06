@@ -674,7 +674,7 @@ cs:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -773,6 +773,7 @@ cs:
       new_child_text: "Vytvoří související pracovní balíček jako podpoložku aktuálního (nadřazeného) pracovního balíčku"
       existing_child: "Existujici potomek"
       child_description: "Udělá související pracovní balíček podpoložkou aktuálního (nadřazeného) pracovního balíčku"
+      label_closest: "Closest"
       label_blocks_singular: "bloky"
       label_blocks_plural: "bloky"
       blocks_description: "Tento pracovní balíček nelze uzavřít, dokud není nejprve uzavřen související balíček"
@@ -933,6 +934,8 @@ cs:
         active_value:
           true: "odarchivováno"
           false: "archivováno"
+        description: "Popis"
+        enabled_modules: "Enabled modules"
         identifier: "Identifikátor"
         latest_activity_at: "Poslední aktivita"
         parent: "Podprojekt"
@@ -941,9 +944,7 @@ cs:
           true: "veřejný"
           false: "soukromý"
         queries: "Dotazy"
-        enabled_modules: "Enabled modules"
         status_code: "Stav projektu"
-        description: "Popis"
         status_explanation: "Popis stavu projektu"
         status_codes:
           not_started: "Nezahájeno"
@@ -2960,6 +2961,8 @@ cs:
   label_projects_menu: "Projekty"
   label_today: "dnes"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Horní menu"
   label_topic_plural: "Témata"
   label_total: "Celkem"
@@ -3450,6 +3453,13 @@ cs:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Opravdu chcete archivovat projekt '%{name}'?"
+      archived: "Archivováno"
+    count:
+      zero: "0 projektů"
+      one: "1 projekt"
+      other: "%{count} projektů"
     destroy:
       confirmation: "Pokud budete pokračovat, projekt %{identifier} bude natrvalo zničen. Pro potvrzení této akce prosím vložte název projektu do níže uvedeného pole, toto bude:"
       project_delete_result_1: "Odstranit všechna související data."
@@ -3462,19 +3472,13 @@ cs:
       warning_one: Členové projektu budou muset přemístit úložiště projektu.
       warning_two: Existující odkazy na projekt nebudou nadále fungovat.
       title: Změnit identifikátor projektu
+    not_available: "Project N/A"
     template:
       copying: >
         Váš projekt se vytváří z vybranéhé šablony. Budete upozorněni e-mailem, jakmile bude projekt k dispozici.
       use_template: "Použít šablonu"
       make_template: "Nastavit jako šablonu"
       remove_from_templates: "Odstranit ze šablon"
-    archive:
-      are_you_sure: "Opravdu chcete archivovat projekt '%{name}'?"
-      archived: "Archivováno"
-    count:
-      zero: "0 projektů"
-      one: "1 projekt"
-      other: "%{count} projektů"
   project_module_activity: "Aktivita"
   project_module_forums: "Fóra"
   project_module_work_package_tracking: "Pracovní balíčky"

@@ -655,7 +655,7 @@ pt-PT:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -752,6 +752,7 @@ pt-PT:
       new_child_text: "Cria um pacote de trabalho relacionado como um subitem do pacote de trabalho atual (principal)"
       existing_child: "Elemento secundário existente"
       child_description: "Torna o pacote de trabalho relacionado num subitem do pacote de trabalho atual (principal)"
+      label_closest: "Closest"
       label_blocks_singular: "bloqueia"
       label_blocks_plural: "bloqueia"
       blocks_description: "O pacote de trabalho relacionado não pode ser encerrado até que este seja encerrado primeiro"
@@ -912,6 +913,8 @@ pt-PT:
         active_value:
           true: "desarquivado"
           false: "arquivado"
+        description: "Descrição"
+        enabled_modules: "Enabled modules"
         identifier: "Identificador"
         latest_activity_at: "Última atividade em"
         parent: "Subprojeto de"
@@ -920,9 +923,7 @@ pt-PT:
           true: "público"
           false: "privado"
         queries: "Consultas"
-        enabled_modules: "Enabled modules"
         status_code: "Estado do Projeto"
-        description: "Descrição"
         status_explanation: "Descrição do estado do projeto"
         status_codes:
           not_started: "Não iniciado"
@@ -2879,6 +2880,8 @@ pt-PT:
   label_projects_menu: "Projetos"
   label_today: "hoje"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Menu superior"
   label_topic_plural: "Tópicos"
   label_total: "Total"
@@ -3365,6 +3368,13 @@ pt-PT:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Tem a certeza de que deseja arquivar o projeto '%{name}'?"
+      archived: "Arquivado"
+    count:
+      zero: "0 projetos"
+      one: "1 projeto"
+      other: "%{count} projetos"
     destroy:
       confirmation: "Se continuar, o projeto %{identifier} será permanentemente destruído. Para confirmar esta ação, introduza o nome do projeto no campo abaixo:"
       project_delete_result_1: "Apagar todos os dados relacionados."
@@ -3377,19 +3387,13 @@ pt-PT:
       warning_one: Os membros do projeto terão de realocar os repositórios do projeto.
       warning_two: Os links existentes para o projeto já não funcionarão.
       title: Alterar o identificador do projeto
+    not_available: "Project N/A"
     template:
       copying: >
         O seu projeto está a ser criado a partir do projeto de modelo selecionado. Será notificado por e-mail assim que o projeto estiver disponível.
       use_template: "Utilizar modelo"
       make_template: "Definir como modelo"
       remove_from_templates: "Remover dos modelos"
-    archive:
-      are_you_sure: "Tem a certeza de que deseja arquivar o projeto '%{name}'?"
-      archived: "Arquivado"
-    count:
-      zero: "0 projetos"
-      one: "1 projeto"
-      other: "%{count} projetos"
   project_module_activity: "Atividade"
   project_module_forums: "Fórums"
   project_module_work_package_tracking: "Tarefas"

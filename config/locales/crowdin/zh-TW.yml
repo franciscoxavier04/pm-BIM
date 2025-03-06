@@ -648,7 +648,7 @@ zh-TW:
           manually_scheduled: "手動排程。日期不受關聯任務影響。"
       blankslate:
         title: "沒有前置項目"
-        description: "若要啟用自動排程，此工作項目必須至少有一個前置工作。這樣它就會自動排程在最後一個前置工作之後開始。"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "限工作日"
       mode:
@@ -744,6 +744,7 @@ zh-TW:
       new_child_text: "使相關工作成為目前（上層）工作項目的子項目"
       existing_child: "現有子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
+      label_closest: "Closest"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
       blocks_description: "在本工作項目結束之前，關聯工作無法結束"
@@ -904,6 +905,8 @@ zh-TW:
         active_value:
           true: "解除封存"
           false: "已封存"
+        description: "說明"
+        enabled_modules: "啟用的模組"
         identifier: "識別碼"
         latest_activity_at: "最新活動"
         parent: "上層專案"
@@ -912,9 +915,7 @@ zh-TW:
           true: "公開"
           false: "私人的"
         queries: "查詢"
-        enabled_modules: "啟用的模組"
         status_code: "專案狀態"
-        description: "說明"
         status_explanation: "專案描述"
         status_codes:
           not_started: "未開始"
@@ -2841,6 +2842,8 @@ zh-TW:
   label_projects_menu: "專案"
   label_today: "今天"
   label_token_version: "權杖(token)版本"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "頂層選單"
   label_topic_plural: "主題"
   label_total: "全部"
@@ -3324,6 +3327,13 @@ zh-TW:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "是否確定要封存專案 '%{name}'？"
+      archived: "封存"
+    count:
+      zero: "0 個專案"
+      one: "1 個專案"
+      other: "%{count} 個專案"
     destroy:
       confirmation: "如果繼續操作，項目 %{identifier} 將被永久銷毀。為確認此操作，請在下方的字段中輸入項目名稱，此操作將會："
       project_delete_result_1: "刪除所有相關數據。"
@@ -3336,19 +3346,13 @@ zh-TW:
       warning_one: 這個專案的成員將必須搬移專案的版本庫
       warning_two: 專案現有的連結將不再有效
       title: 修改專案的識別
+    not_available: "Project N/A"
     template:
       copying: >
         依照專案範本創立專案中.完成後會以電郵通知。
       use_template: "使用範本"
       make_template: "設為範本"
       remove_from_templates: "從範本中移除"
-    archive:
-      are_you_sure: "是否確定要封存專案 '%{name}'？"
-      archived: "封存"
-    count:
-      zero: "0 個專案"
-      one: "1 個專案"
-      other: "%{count} 個專案"
   project_module_activity: "活動"
   project_module_forums: "討論區"
   project_module_work_package_tracking: "工作項目"
