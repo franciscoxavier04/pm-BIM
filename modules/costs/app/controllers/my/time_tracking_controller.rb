@@ -51,9 +51,7 @@ module My
     helper_method :current_day, :today?, :this_week?, :this_month?, :time_entries_json
 
     def day
-      @time_entries = TimeEntry
-        .includes(:project, :activity, :work_package)
-        .where(user: User.current, spent_on: current_day)
+      load_time_entries(current_day)
 
       # TODO: At some point the filters will reduce the list, so we need to load them seperately
       @project_filters = @time_entries.map(&:project).uniq
@@ -61,9 +59,7 @@ module My
     end
 
     def week
-      @time_entries = TimeEntry
-        .includes(:project, :activity, :work_package)
-        .where(user: User.current, spent_on: current_day.all_week)
+      load_time_entries(current_day.all_week)
 
       # TODO: At some point the filters will reduce the list, so we need to load them seperately
       @project_filters = @time_entries.map(&:project).uniq
@@ -71,9 +67,7 @@ module My
     end
 
     def month
-      @time_entries = TimeEntry
-        .includes(:project, :activity, :work_package)
-        .where(user: User.current, spent_on: current_day.all_month)
+      load_time_entries(current_day.all_month)
 
       # TODO: At some point the filters will reduce the list, so we need to load them seperately
       @project_filters = @time_entries.map(&:project).uniq
@@ -126,6 +120,12 @@ module My
       when :week then Time.zone.today.beginning_of_week
       when :month then Time.zone.today.beginning_of_month
       end
+    end
+
+    def load_time_entries(time_scope)
+      @time_entries = TimeEntry
+        .includes(:project, :activity, { work_package: :status })
+        .where(user: User.current, spent_on: time_scope)
     end
   end
 end
