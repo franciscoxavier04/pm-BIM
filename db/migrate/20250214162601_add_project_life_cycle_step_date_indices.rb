@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2025 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,19 +26,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module Queries::Operators
-  class ThisWeek < Base
-    label "this_week"
-    set_symbol "w"
-    require_value false
-
-    def self.sql_for_field(_values, db_table, db_field)
-      from = OpenProject::Internationalization::Date.time_at_beginning_of_week
-      "#{db_table}.#{db_field} BETWEEN '%s' AND '%s'" % [
-        connection.quoted_date(from), connection.quoted_date(from + 7.days)
-      ]
-    end
+class AddProjectLifeCycleStepDateIndices < ActiveRecord::Migration[7.1]
+  def change
+    add_index :project_life_cycle_steps, :start_date
+    add_index :project_life_cycle_steps, :end_date
   end
 end

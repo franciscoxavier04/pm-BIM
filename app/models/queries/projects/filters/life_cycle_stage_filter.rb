@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,19 +26,56 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module Queries::Operators
-  class ThisWeek < Base
-    label "this_week"
-    set_symbol "w"
-    require_value false
+class Queries::Projects::Filters::LifeCycleStageFilter < Queries::Projects::Filters::Base
+  include Queries::Projects::Filters::DynamicallyFromLifeCycle
+  include Queries::Projects::Filters::FilterOnLifeCycle
 
-    def self.sql_for_field(_values, db_table, db_field)
-      from = OpenProject::Internationalization::Date.time_at_beginning_of_week
-      "#{db_table}.#{db_field} BETWEEN '%s' AND '%s'" % [
-        connection.quoted_date(from), connection.quoted_date(from + 7.days)
-      ]
+  class << self
+    def key
+      /\Alcsd_stage_(\d+)\z/
     end
+
+    private
+
+    def name_for_step(stage)
+      "lcsd_stage_#{stage.id}"
+    end
+
+    def step_subclass
+      Project::StageDefinition
+    end
+  end
+
+  def human_name
+    I18n.t("project.filters.life_cycle_stage", stage: life_cycle_step_definition.name)
+  end
+
+  private
+
+  def on_date
+    stage_where_on(parsed_start)
+  end
+
+  def on_today
+    stage_where_on(today)
+  end
+
+  def between_date
+    stage_where_between(parsed_start, parsed_end)
+  end
+
+  def this_week
+    stage_overlaps_this_week
+  end
+
+  def none
+    stage_none
+  end
+
+  def life_cycle_scope_limit(scope)
+    super
+      .where(definition_id: life_cycle_step_definition.id)
   end
 end

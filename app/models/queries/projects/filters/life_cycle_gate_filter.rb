@@ -1,4 +1,6 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -24,19 +26,56 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module Queries::Operators
-  class ThisWeek < Base
-    label "this_week"
-    set_symbol "w"
-    require_value false
+class Queries::Projects::Filters::LifeCycleGateFilter < Queries::Projects::Filters::Base
+  include Queries::Projects::Filters::DynamicallyFromLifeCycle
+  include Queries::Projects::Filters::FilterOnLifeCycle
 
-    def self.sql_for_field(_values, db_table, db_field)
-      from = OpenProject::Internationalization::Date.time_at_beginning_of_week
-      "#{db_table}.#{db_field} BETWEEN '%s' AND '%s'" % [
-        connection.quoted_date(from), connection.quoted_date(from + 7.days)
-      ]
+  class << self
+    def key
+      /\Alcsd_gate_(\d+)\z/
     end
+
+    private
+
+    def name_for_step(gate)
+      "lcsd_gate_#{gate.id}"
+    end
+
+    def step_subclass
+      Project::GateDefinition
+    end
+  end
+
+  def human_name
+    I18n.t("project.filters.life_cycle_gate", gate: life_cycle_step_definition.name)
+  end
+
+  private
+
+  def on_date
+    gate_where(parsed_end)
+  end
+
+  def on_today
+    gate_where(today, today)
+  end
+
+  def between_date
+    gate_where(parsed_start, parsed_end)
+  end
+
+  def this_week
+    gate_where(beginning_of_week.to_date, end_of_week.to_date)
+  end
+
+  def none
+    gate_none
+  end
+
+  def life_cycle_scope_limit(scope)
+    super
+      .where(definition_id: life_cycle_step_definition.id)
   end
 end
