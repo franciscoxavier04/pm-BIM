@@ -128,7 +128,7 @@ module Storages
       when :sso
         true
       when :storage_oauth
-        OAuthClientToken.exists?(user:, oauth_client: oauth_client)
+        OAuthClientToken.exists?(user:, oauth_client:)
       end
     end
 
