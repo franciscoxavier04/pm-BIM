@@ -14,12 +14,16 @@ We released OpenProject [OpenProject 15.4.0](https://community.openproject.org/v
 
 ## Important feature changes
 
+Take a look at the release video showing most important features introduced in 15.4.0:
+
+VIDEO
+
 ### Enable automatic scheduling mode - to start as soon as possible
 
 Starting with OpenProject 15.4, users will be able to choose wheather they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor/successor relations, will make managing complex project setups much easier.
 
 > [!NOTE]
-> The new feature will not overwrite existing dates for any existing work packages. However, it can change the scheduling mode. By default, manual scheduling is enabled.
+> The new feature will not overwrite existing dates for any existing work packages. However, it can change the scheduling mode. By default, manual scheduling is enabled. Existing work packages with children will be in automatic mode – with dates derived from their children.
 
 ![New scheduling modes: Automatic and Manual](manualAutomatic_schedulingModes.png)
 
@@ -30,6 +34,11 @@ In the **new automatic mode**, manually setting a start date is not possible. In
 To learn more about why we needed this change and how it might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/blog/new-automatic-scheduling-mode/) that we published some weeks ago. See our documentation to get detailed information about how to use the automatic schedlung mode.
 
 ### Set agenda item outcomes for meetings
+
+In February 2025, we already published a milestone for our Meetings module: [Recurring meetings](../../release-notes/15-3-0/#schedule-recurring-meetings-to-streamline-your-weekly-biweekly-or-custom-appointments). With OpenProject 15.4, we released another great new feature that will help users better manage their meeting outcomes. They can now note relevant decisions, questions and follow-up actions for each agenda item. This way, all participants as well as users that could not attend the meeting will have a documentation of the relevant meeting outcome(s).
+
+> [!NOTE]
+> In our classic meetings module, users could write "minutes", which are notes taken during the meeting. Users can still edit the agenda item description to do so, but now they can also use the outcome feature to make it more clear.
 
 Text (important: goal is to let meeting participants note relevant decisions, questions and follow-up actions during a meeting. Also: More features to follow, workflow for minutes and participants on closing the meeting (#61911) and Meeting agenda items backlog for recurring meetings (#54751).)
 
