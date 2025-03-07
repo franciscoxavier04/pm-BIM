@@ -745,6 +745,7 @@ export default class IndexController extends Controller {
     void this.submitForm(formData)
       .then(({ html, headers }) => {
         this.handleSuccessfulSubmission(html, headers);
+        this.formTarget.reset();
       })
       .catch((error) => {
         console.error('Error saving activity:', error);
