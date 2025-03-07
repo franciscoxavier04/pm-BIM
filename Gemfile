@@ -39,7 +39,7 @@ gem "activemodel-serializers-xml", "~> 1.0.1"
 gem "activerecord-import", "~> 2.1.0"
 gem "activerecord-session_store", "~> 2.1.0"
 gem "ox"
-gem "rails", "~> 7.1.3"
+gem "rails", "~> 7.2.2"
 gem "responders", "~> 3.0"
 
 gem "ffi", "~> 1.15"
@@ -49,7 +49,7 @@ gem "rdoc", ">= 2.4.2"
 gem "doorkeeper", "~> 5.8.0"
 # Maintain our own omniauth due to relative URL root issues
 # see upstream PR: https://github.com/omniauth/omniauth/pull/903
-gem "omniauth", git: "https://github.com/opf/omniauth", ref: "fe862f986b2e846e291784d2caa3d90a658c67f0"
+gem "omniauth", git: "https://github.com/opf/omniauth", ref: "7eb21563ba047ef86d71f099975587b5ec88f9c9"
 gem "request_store", "~> 1.7.0"
 
 gem "warden", "~> 1.2"
@@ -83,7 +83,7 @@ gem "htmldiff"
 gem "stringex", "~> 2.8.5"
 
 # CommonMark markdown parser with GFM extension
-gem "commonmarker", "~> 2.0.2"
+gem "commonmarker", "~> 2.1.0"
 
 # HTML pipeline for transformations on text formatter output
 # such as sanitization or additional features
@@ -143,7 +143,7 @@ gem "secure_headers", "~> 7.1.0"
 gem "browser", "~> 6.2.0"
 
 # Providing health checks
-gem "okcomputer", "~> 1.18.1"
+gem "okcomputer", "~> 1.19.0"
 
 gem "gon", "~> 6.4.0"
 
@@ -178,7 +178,7 @@ group :production do
   # we use dalli as standard memcache client
   # requires memcached 1.4+
   gem "dalli", "~> 3.2.0"
-  gem "redis", "~> 5.3.0"
+  gem "redis", "~> 5.4.0"
 end
 
 gem "i18n-js", "~> 4.2.3"
@@ -201,13 +201,13 @@ gem "aws-sdk-core", "~> 3.107"
 # File upload via fog + screenshots on travis
 gem "aws-sdk-s3", "~> 1.91"
 
-gem "openproject-token", "~> 4.0"
+gem "openproject-token", "~> 5.0"
 
 gem "plaintext", "~> 0.3.2"
 
 gem "ruby-progressbar", "~> 1.13.0", require: false
 
-gem "mini_magick", "~> 5.1.2", require: false
+gem "mini_magick", "~> 5.2.0", require: false
 
 gem "validate_url"
 
@@ -280,7 +280,7 @@ group :test do
   gem "capybara_accessible_selectors", git: "https://github.com/citizensadvice/capybara_accessible_selectors", tag: "v0.12.0"
   gem "capybara-screenshot", "~> 1.0.17"
   gem "cuprite", "~> 0.15.0"
-  gem "ferrum", github: "toy/ferrum", ref: "mouse-events-buttons-property-0.15"
+  gem "ferrum", github: "opf/ferrum", ref: "mouse-events-buttons-property-0.15"
   gem "rspec-wait"
   gem "selenium-devtools"
   gem "selenium-webdriver", "~> 4.20"
@@ -363,12 +363,15 @@ group :development, :test do
 
   # i18n-tasks helps find and manage missing and unused translations.
   gem "i18n-tasks", "~> 1.0.13", require: false
+
+  # Active Record Doctor helps to keep the database in good shape.
+  gem "active_record_doctor", "~> 1.15.0"
 end
 
 gem "bootsnap", "~> 1.18.0", require: false
 
 # API gems
-gem "grape", "~> 2.2.0"
+gem "grape", "~> 2.3.0"
 gem "grape_logging", "~> 1.8.4"
 gem "roar", "~> 1.2.0"
 
@@ -388,7 +391,7 @@ platforms :mri, :mingw, :x64_mingw do
   end
 
   # Support application loading when no database exists yet.
-  gem "activerecord-nulldb-adapter", "~> 1.1.0"
+  gem "activerecord-nulldb-adapter", "~> 1.1.1"
 
   # Have application level locks on the database to have a mutex shared between workers/hosts.
   # We e.g. employ this to safeguard the creation of journals.
@@ -409,4 +412,4 @@ end
 
 gem "openproject-octicons", "~>19.20.0 "
 gem "openproject-octicons_helper", "~>19.20.0 "
-gem "openproject-primer_view_components", "~>0.55.0"
+gem "openproject-primer_view_components", "~>0.56.0"

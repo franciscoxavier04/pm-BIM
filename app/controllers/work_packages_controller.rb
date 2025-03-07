@@ -183,7 +183,7 @@ class WorkPackagesController < ApplicationController
   end
 
   def project
-    @project ||= work_package ? work_package.project : nil
+    @project ||= work_package&.project
   end
 
   def work_package

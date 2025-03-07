@@ -102,7 +102,7 @@ ro:
     button_save: "Salvează"
     button_settings: "Setări"
     button_uncheck_all: "Deselectează tot"
-    button_update: "Actualizare"
+    button_update: "Actualizează"
     button_export-atom: "Descarcă Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Creează"
@@ -220,6 +220,8 @@ ro:
             label_maximum_users: "Număr maxim de utilizatori activi"
             label_starts_at: "Începe în"
             label_expires_at: "Expiră în"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: Doresc să primesc <a target="_blank" href="%{link}">buletinul informativ</a> OpenProject.
             taken_domain: Nu poate exista decât un singur proces activ pe domeniu.
             domain_mismatch: Numele de gazdă al solicitării curente nu se potrivește cu numele de gazdă configurat. Vă rugăm să verificați de două ori setările sistemului.
@@ -717,17 +719,18 @@ ro:
       description: "Descriere: Clic pentru editare ..."
       relation_description: "Clic pentru a adăuga o descriere pentru această relație"
     project:
-      required_outside_context: >
-        Vă rugăm să alegeți un proiect în care să creați pachetul de lucru pentru a vedea toate atributele. Puteți selecta numai proiectele care au tipul de mai sus activat.
-      context: "Contextul proiectului"
-      click_to_switch_to_project: "Proiect: %{projectname}"
-      confirm_template_load: "Schimbarea șablonului va reîncărca pagina și veți pierde toate datele introduse în acest formular. Continuați?"
-      use_template: "Utilizează șablon"
-      no_template_selected: "(Nimic)"
-      copy:
-        copy_options: "Opțiuni de copiere"
       autocompleter:
         label: "Completarea automată a proiectului"
+      click_to_switch_to_project: "Proiect: %{projectname}"
+      confirm_template_load: "Schimbarea șablonului va reîncărca pagina și veți pierde toate datele introduse în acest formular. Continuați?"
+      context: "Contextul proiectului"
+      copy:
+        copy_options: "Opțiuni de copiere"
+      not_available: "Project N/A"
+      no_template_selected: "(Nimic)"
+      required_outside_context: >
+        Vă rugăm să alegeți un proiect în care să creați pachetul de lucru pentru a vedea toate atributele. Puteți selecta numai proiectele care au tipul de mai sus activat.
+      use_template: "Utilizează șablon"
     reminders:
       settings:
         daily:
@@ -760,7 +763,7 @@ ro:
           label: "Întrerupeți temporar memento-urile zilnice prin e-mail"
           first_day: "Prima zi"
           last_day: "Ultima zi"
-    text_are_you_sure: "Sunteți sigur?"
+    text_are_you_sure: "Ești sigur?"
     text_data_lost: "Toate datele introduse vor fi pierdute."
     text_user_wrote: "%{value} a scris:"
     types:
@@ -851,8 +854,6 @@ ro:
       select_branch: "Selectare ramură"
     field_value_enter_prompt: "Introduceţi o valoare pentru '%{field}'"
     project_menu_details: "Detalii"
-    scheduling:
-      manual: "Programarea manuală"
     sort:
       sorted_asc: "Ordonare ascendentă aplicată, "
       sorted_dsc: "Ordonare descendentă aplicată, "
@@ -900,15 +901,6 @@ ro:
       comment_send_failed: "A apărut o eroare. Comentariul nu a putut fi salvat."
       comment_updated: "Comentariul a fost actualizat cu succes."
       confirm_edit_cancel: "Sunteți sigur că doriți să renunțați la editarea pachetului de lucru?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Programat automat. Datele sunt derivate din relații."
-        manually_scheduled: "Programare manuală activată, toate relațiile ignorate."
-        start_date_limited_by_relations: "Datele de început disponibile și de încheiere sunt limitate de relații."
-        changing_dates_affects_follow_relations: "Modificarea acestor dăți va afecta dățile pachetelor de lucru aferente."
-        click_on_show_relations_to_open_gantt: 'Faceți clic pe "%{button_name}" pentru o prezentare generală a GANTT.'
-        show_relations: "Arată relațiile"
-        ignore_non_working_days:
-          title: "Numai în zilele lucrătoare"
       description_filter: "Filtrează"
       description_enter_text: "Introduceţi textul"
       description_options_hide: "Ascundere opțiuni"

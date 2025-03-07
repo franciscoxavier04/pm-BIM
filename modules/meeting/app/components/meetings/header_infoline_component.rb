@@ -29,6 +29,8 @@
 
 module Meetings
   class HeaderInfolineComponent < ApplicationComponent
+    include OpPrimer::ComponentHelpers
+
     def initialize(meeting)
       super
       @meeting = meeting

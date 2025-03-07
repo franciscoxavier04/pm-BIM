@@ -638,6 +638,47 @@ pt-BR:
     index:
       no_results_title_text: Atualmente, não há fluxos de trabalho.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Um pacote de trabalho descendente"
       other: "%{count} pacotes de trabalho descendentes"
@@ -711,6 +752,7 @@ pt-BR:
       new_child_text: "Cria um pacote de trabalho relacionado como um subpacote do pacote de trabalho atual (pai)"
       existing_child: "Filho existente"
       child_description: "Torna o pacote de trabalho relacionado uma subtarefa do pacote de trabalho atual (pai)"
+      label_closest: "Closest"
       label_blocks_singular: "blocos"
       label_blocks_plural: "blocos"
       blocks_description: "O pacote de trabalho relacionado não pode ser concluído até que este seja concluído primeiro"
@@ -867,12 +909,12 @@ pt-BR:
         resource: "Resource"
       oauth_client:
         client: "ID do cliente"
-      planning_element_type_color:
-        hexcode: Código hexadecimal
       project:
         active_value:
           true: "Desarquivada"
           false: "arquivado"
+        description: "Descrição"
+        enabled_modules: "Enabled modules"
         identifier: "Identificador"
         latest_activity_at: "Últimas atividades em"
         parent: "Subprojeto de"
@@ -881,9 +923,7 @@ pt-BR:
           true: "público"
           false: "privado"
         queries: "Consultas"
-        enabled_modules: "Enabled modules"
         status_code: "Status do projeto"
-        description: "Descrição"
         status_explanation: "Descrição do status do projeto"
         status_codes:
           not_started: "Não iniciado"
@@ -969,6 +1009,10 @@ pt-BR:
         is_milestone: "É marco"
         color: "Cor"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrador"
         auth_source: "Fonte de autenticação"
@@ -988,7 +1032,6 @@ pt-BR:
       user_preference:
         comments_sorting: "Exibir comentários"
         impaired: "Modo de acessibilidade"
-        time_zone: "Fuso horário"
         auto_hide_popups: "Auto-ocultar notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
         theme: "Modo"
@@ -1353,6 +1396,7 @@ pt-BR:
               smaller_than_dates: "é menor que o intervalo entre a data de início e de conclusão."
               not_available_for_milestones: "não está disponível para pacotes de trabalho do tipo marco"
               cannot_be_null: "não pode ser definida como nulo já que a data de início e conclusão são conhecidas."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "não pode ser um marco."
               cannot_be_self_assigned: "não pode ser atribuído a ele mesmo."
@@ -1393,6 +1437,8 @@ pt-BR:
               duplicate_group: "O nome de grupo %{group} foi usado mais de uma vez. Nomes de grupos devem ser únicos."
               query_invalid: "A consulta incorporada '%{group}' é inválida: %{details}"
               group_without_name: "Grupos sem nome não são permitidos."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1603,6 +1649,7 @@ pt-BR:
     subject: "Assunto"
     slug: "Slug"
     summary: "Sumário"
+    time_zone: "Time zone"
     text: "Text"
     title: "Título"
     type: "Tipo"
@@ -2195,6 +2242,8 @@ pt-BR:
           Cálculo de progresso automaticamente <a href="%{href}" target="_blank">definido para o modo com base em trabalho e ajustado com a atualização de versão</a>.
         progress_calculation_adjusted: >-
           Cálculo de progresso automaticamente <a href="%{href}" target="_blank"> ajustado com a atualização de versão</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Os totais de trabalho e progresso foram removidos automaticamente para pacotes de trabalho que não são principais com a <a href="%{href}" target="_blank">atualização de versão</a>. Esta é uma tarefa de manutenção e pode ser ignorada com segurança.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2830,6 +2879,9 @@ pt-BR:
   label_title: "Título"
   label_projects_menu: "Projetos"
   label_today: "hoje"
+  label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Menu superior"
   label_topic_plural: "Tópicos"
   label_total: "Total"
@@ -3316,6 +3368,13 @@ pt-BR:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Tem certeza de que deseja arquivar o projeto '%{name}'?"
+      archived: "Arquivado"
+    count:
+      zero: "0 projetos"
+      one: "1 projeto"
+      other: "%{count} projetos"
     destroy:
       confirmation: "Se você continuar, o projeto %{identifier} será destruído de forma permanente. Para confirmar esta ação, insira o nome do projeto no campo abaixo:"
       project_delete_result_1: "Excluir todos os dados relacionados."
@@ -3328,19 +3387,13 @@ pt-BR:
       warning_one: Membros do projeto terão que realocar os repositórios do projeto.
       warning_two: Links existentes para o projeto deixarão de funcionar.
       title: Alterar o identificador do projeto
+    not_available: "Project N/A"
     template:
       copying: >
         Seu projeto está sendo criado a partir do modelo selecionado. Você será notificado por e-mail assim que o projeto estiver disponível.
       use_template: "Usar modelo"
       make_template: "Definir como modelo"
       remove_from_templates: "Remover dos modelos"
-    archive:
-      are_you_sure: "Tem certeza de que deseja arquivar o projeto '%{name}'?"
-      archived: "Arquivado"
-    count:
-      zero: "0 projetos"
-      one: "1 projeto"
-      other: "%{count} projetos"
   project_module_activity: "Atividade"
   project_module_forums: "Fóruns"
   project_module_work_package_tracking: "Pacotes de trabalho"
@@ -3474,6 +3527,12 @@ pt-BR:
     activated: "ativado"
     deactivated: "desativado"
   search_input_placeholder: "Pesquisar..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Compartilhamento de recursos entre origens (CORS)"
   setting_apiv3_cors_enabled: "Habilitar CORS"
   setting_apiv3_cors_origins: "Cross-Origin Resource Sharing (CORS) permitidos pela API V3"
@@ -4261,6 +4320,7 @@ pt-BR:
       connected: "Conectado"
       error: "Erro"
       failed_authorization: "Falha na autorização"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Integração OAuth2"
       label_redirect_uri: "Redirecionar URI"
@@ -4311,3 +4371,29 @@ pt-BR:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML/Início de sessão único"
     description: "Adiciona o fornecedor SAML OmniAuth ao OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

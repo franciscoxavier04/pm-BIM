@@ -60,7 +60,7 @@ de:
         main-menu-bg-hover-background: "Hintergrundfarbe des Hauptmenüs bei Hover"
       custom_colors: "Benutzerdefinierte Farben"
       customize: "Passen Sie Ihre OpenProject Installation mit Ihrem eigenen Logo und eigenen Farben an."
-      enterprise_notice: "Diese kleine Erweiterung steht den Abonnenten der Enterprise edition ganz exklusiv als kleines Dankeschön für deren finanzielle Unterstützung zur Verfügung."
+      enterprise_notice: "Dieses kleine Add-on steht den Abonnenten der Enterprise-Edition ganz exklusiv als kleines Dankeschön für deren finanzielle Unterstützung zur Verfügung."
       enterprise_more_info: "Hinweis: Das verwendete Logo wird öffentlich zugänglich sein."
       manage_colors: "Farbauswahloptionen bearbeiten"
       instructions:
@@ -73,15 +73,15 @@ de:
         main-menu-bg-color: "Hintergrundfarbe des Menüs in der linken Seitenleiste."
       theme_warning: Das Ändern des Themes wird Ihr benutzerdefiniertes Design überschreiben. Alle Änderungen werden dann verloren gehen. Sind Sie sicher, dass Sie fortfahren möchten?
     enterprise:
-      upgrade_to_ee: "Auf Enterprise edition upgraden"
-      add_token: "Enterprise edition Support Token hochladen"
+      upgrade_to_ee: "Auf Enterprise-Edition upgraden"
+      add_token: "Enterprise-Edition Support Token hochladen"
       delete_token_modal:
-        text: "Sind Sie sicher, dass Sie das aktuelle Enterprise edition token entfernen möchten?"
+        text: "Sind Sie sicher, dass Sie das aktuelle Enterprise Edition-Token entfernen möchten?"
         title: "Token löschen"
       replace_token: "Aktuellen Enterprise edition Support Token ersetzen"
       order: "Enterprise on-premises bestellen"
-      paste: "Enterprise edition Support Token hier einfügen"
-      required_for_feature: "Dieses Add-on ist nur mit einem aktiven Enterprise edition Support-Token verfügbar."
+      paste: "Enterprise-Edition Support Token hier einfügen"
+      required_for_feature: "Dieses Add-on ist nur mit einem aktiven Enterprise-Edition Support-Token verfügbar."
       enterprise_link: "Klicken Sie hier für weitere Informationen."
       start_trial: "Kostenlose Testversion starten"
       book_now: "Jetzt buchen"
@@ -393,7 +393,7 @@ de:
       storage:
         no_results_title_text: Durch dieses Projekt wird kein zusätzlicher erfasster Speicherplatz verbraucht.
       work_package_priorities:
-        new_label: "New priority"
+        new_label: "Neue Priorität"
   project_stage:
     working_days_count:
       one: "Dauer: %{count} Arbeitstag"
@@ -602,15 +602,15 @@ de:
         tab: "Einstellungen"
         type_color_text: "Die ausgewählte Farbe unterscheidet verschiedene Typen\nin Gantt-Diagrammen und Arbeitspakettabellen. Es wird daher empfohlen, gut unterscheidbare Farben zu verwenden."
       subject_configuration:
-        tab: "Subject configuration"
+        tab: "Titel konfigurieren"
         manually_editable_subjects:
-          label: "Manuell bearbeitbare Themen"
-          caption: "Benutzer können die Themen der Arbeitspakete ohne Einschränkungen manuell eingeben und bearbeiten."
+          label: "Manuell bearbeitbare Titel"
+          caption: "Benutzer können die Titel der Arbeitspakete ohne Einschränkungen manuell eingeben und bearbeiten."
         automatically_generated_subjects:
-          label: "Automatisch generierte Themen"
-          caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspaketthemen. Nutzer können diese nicht manuell editieren."
+          label: "Automatisch generierte Titel"
+          caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspakettiteln. Nutzer können diese nicht manuell editieren."
         pattern:
-          label: "Thema-Schema"
+          label: "Titel-Schema"
           caption: "Suchen Sie nach einem Attribut oder fügen Sie Text hinzu. Um ein Leerzeichen zwischen Elementen zu erstellen, fügen Sie es als Text hinzu."
       export_configuration:
         tab: "Generate PDF"
@@ -618,8 +618,8 @@ de:
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "Alles aktivieren"
+            label_disable_all: "Alles deaktivieren"
   versions:
     overview:
       work_packages_in_archived_projects: "Die Version wird mit archivierten Projekten geteilt, die immer noch Arbeitspakete auf diese Version zugewiesen haben. Die Arbeitspakete werden beim Zählen berücksichtigt, erscheinen aber nicht in den verknüpften Ansichten."
@@ -634,6 +634,47 @@ de:
     index:
       no_results_title_text: Derzeit gibt es keine Workflows.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Ein untergeordnetes Arbeitspaket"
       other: "%{count} untergeordnete Arbeitspakete"
@@ -707,6 +748,7 @@ de:
       new_child_text: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       existing_child: "Vorhandenes Kind"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
+      label_closest: "Closest"
       label_blocks_singular: "Blockiert"
       label_blocks_plural: "Blockiert"
       blocks_description: "Das verknüpfte Arbeitspaket kann erst geschlossen werden, wenn dieses Arbeitspaket geschlossen ist"
@@ -863,12 +905,12 @@ de:
         resource: "Resource"
       oauth_client:
         client: "Client-ID"
-      planning_element_type_color:
-        hexcode: Fabcode (Hex)
       project:
         active_value:
           true: "nicht archiviert"
           false: "archiviert"
+        description: "Beschreibung"
+        enabled_modules: "Enabled modules"
         identifier: "Kennung"
         latest_activity_at: "Letzte Aktivität am"
         parent: "Unterprojekt von"
@@ -877,9 +919,7 @@ de:
           true: "öffentlich"
           false: "privat"
         queries: "Abfragen"
-        enabled_modules: "Enabled modules"
         status_code: "Projektstatus"
-        description: "Beschreibung"
         status_explanation: "Projektstatusbeschreibung"
         status_codes:
           not_started: "Nicht gestartet"
@@ -921,7 +961,7 @@ de:
         highlighting_mode: "Highlight mode"
         display_representation: "Display mode"
         show_hierarchies: "Display mode"
-        starred: "Favorite"
+        starred: "Favorit"
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
@@ -949,7 +989,7 @@ de:
         excluded_from_totals: "Von der Berechnung der Gesamtsumme in der Hierarchie ausschließen"
         default_done_ratio: "% abgeschlossen"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivität"
@@ -965,6 +1005,10 @@ de:
         is_milestone: "Ist ein Meilenstein"
         color: "Farbe"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrator"
         auth_source: "Authentifizierungsquelle"
@@ -975,8 +1019,8 @@ de:
         language: "Sprache"
         last_login_on: "Letzte Anmeldung"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Vorname"
+        last_name: "Nachname"
         first_login: "First login"
         new_password: "Neues Kennwort"
         password_confirmation: "Bestätigung"
@@ -984,13 +1028,12 @@ de:
       user_preference:
         comments_sorting: "Kommentare anzeigen"
         impaired: "Für die barrierefreie Nutzung optimierte Oberfläche"
-        time_zone: "Zeitzone"
         auto_hide_popups: "Benachrichtigungen erfolgreicher Aktionen automatisch ausblenden"
         warn_on_leaving_unsaved: "Beim Verlassen einer Arbeitspaket-Seite mit ungespeichertem Text warnen"
         theme: "Modus"
         mode_guideline: "Einige Darstellungsmodi überschreiben die Farben des benutzerdefinierten Designs, um die Barrierefreiheit und Lesbarkeit zu gewährleisten. Für das vollständige benutzerdefinierte Design wählen Sie bitte den hellen Modus."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Arbeitstage"
       version:
         effective_date: "Endtermin"
         sharing: "Gemeinsame Verwendung"
@@ -1349,6 +1392,7 @@ de:
               smaller_than_dates: "ist kleiner als das Intervall zwischen Start und Enddatum."
               not_available_for_milestones: "ist nicht für Meilenstein-typisierte Arbeitspakete verfügbar."
               cannot_be_null: "kann nicht auf Null gesetzt werden, als Start- und Enddatum bekannt sind."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "darf kein Meilenstein sein."
               cannot_be_self_assigned: "kann nicht selbst zugewiesen werden."
@@ -1389,6 +1433,8 @@ de:
               duplicate_group: "Der Gruppen-Name %{group} wird mehr als einmal verwendet. Gruppen-Namen müssen eindeutig sein."
               query_invalid: "Die eingebettete Ansicht '%{group}' ist ungültig: %{details}"
               group_without_name: "Unbenannte Gruppen sind nicht erlaubt."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1448,8 +1494,8 @@ de:
       global_role: "Globale Rolle"
       group: "Gruppe"
       issue_priority:
-        one: "Priority"
-        other: "Priorities"
+        one: "Priorität"
+        other: "Prioritäten"
       member: "Mitglied"
       news: "Neuigkeiten"
       notification:
@@ -1463,7 +1509,7 @@ de:
         one: "Projektlisten"
         other: "Projektlisten"
       query: "Benutzerdefinierte Abfrage"
-      reminder: "Reminder"
+      reminder: "Erinnerung"
       role:
         one: "Rolle"
         other: "Rollen"
@@ -1540,7 +1586,7 @@ de:
     comments: "Kommentar"
     content: "Inhalt"
     color: "Farbe"
-    creator: "Creator"
+    creator: "Ersteller"
     created_at: "Erstellt"
     custom_field: "Custom field"
     custom_options: "Mögliche Werte"
@@ -1556,7 +1602,7 @@ de:
     due_date: "Endtermin"
     estimated_hours: "Aufwand"
     estimated_time: "Aufwand"
-    email: "Email"
+    email: "E-Mail"
     entity_type: "Entity"
     expires_at: "Läuft ab am"
     firstname: "Vorname"
@@ -1572,7 +1618,7 @@ de:
     #kept for backwards compatibility
     issue: "Arbeitspaket"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Kommentar"
     lastname: "Nachname"
     login: "Benutzername"
     mail: "E-Mail"
@@ -1599,6 +1645,7 @@ de:
     subject: "Thema"
     slug: "Slug"
     summary: "Zusammenfassung"
+    time_zone: "Time zone"
     text: "Text"
     title: "Titel"
     type: "Typ"
@@ -1607,7 +1654,7 @@ de:
     updated_on: "Aktualisiert am"
     uploader: "Bereitgestellt von"
     user: "Benutzer"
-    username: "Username"
+    username: "Benutzername"
     unit: "Unit"
     value: "Wert"
     values: "Values"
@@ -1947,7 +1994,7 @@ de:
   error_cookie_missing: "Das OpenProject Cookie fehlt. Bitte stellen Sie sicher, dass Cookies aktiviert sind, da diese Applikation ohne aktivierte Cookies nicht korrekt funktioniert."
   error_custom_option_not_found: "Option ist nicht vorhanden."
   error_enterprise_activation_user_limit: "Ihr Konto konnte nicht aktiviert werden (Nutzerlimit erreicht). Bitte kontaktieren Sie Ihren Administrator um Zugriff zu erhalten."
-  error_enterprise_token_invalid_domain: "Die Enterprise edition ist nicht aktiv. Die aktuelle Domain (%{actual}) entspricht nicht dem erwarteten Hostnamen (%{expected})."
+  error_enterprise_token_invalid_domain: "Die Enterprise-Edition ist nicht aktiv. Die aktuelle Domain (%{actual}) entspricht nicht dem erwarteten Hostnamen (%{expected})."
   error_failed_to_delete_entry: "Fehler beim Löschen dieses Eintrags."
   error_in_dependent: "Fehler beim Versuch, abhängiges Objekt zu ändern: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Fehler beim Versuch, abhängiges Objekt zu erstellen: %{dependent_class} - %{related_subject}: %{error}"
@@ -2091,13 +2138,13 @@ de:
       label: "Attributes and description"
       caption: All the attributes present in the current form configuration using the default template.
     template_contract:
-      label: "Contract"
+      label: "Vertrag"
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: PDF generieren
       submit: Download
       templates:
-        label: "Template"
+        label: "Vorlage"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
@@ -2139,10 +2186,10 @@ de:
     blocks:
       community: "OpenProject Community"
       upsale:
-        title: "Auf Enterprise edition upgraden"
+        title: "Auf Enterprise-Edition upgraden"
         more_info: "Weitere Informationen"
     links:
-      upgrade_enterprise_edition: "Auf Enterprise edition upgraden"
+      upgrade_enterprise_edition: "Auf Enterprise-Edition upgraden"
       postgres_migration: "Migration Ihrer Installation zu PostgreSQL"
       user_guides: "Benutzerhandbuch"
       faq: "Häufig gestellte Fragen"
@@ -2180,7 +2227,7 @@ de:
         dates:
           working: "%{date} ist jetzt ein Arbeitstag"
           non_working: "%{date} ist jetzt ein arbeitsfreier Tag"
-      progress_mode_changed_to_status_based: Fortschrittberechnung wurde auf Status-basiert gesetzt
+      progress_mode_changed_to_status_based: Fortschrittberechnung wurde auf Status-bezogen gesetzt
       status_excluded_from_totals_set_to_false_message: jetzt in den Gesamtwerten der Hierarchie enthalten
       status_excluded_from_totals_set_to_true_message: jetzt von den Hierarchie-Gesamtwerten ausgeschlossen
       status_percent_complete_changed: "% abgeschlossen von %{old_value}% auf %{new_value} % geändert"
@@ -2191,6 +2238,8 @@ de:
           Die Fortschrittsberechnung wurde <a href=" %{href} " target="_blank">automatisch auf den aufwandsbezogenen Modus gesetzt und durch das Systemupdate angepasst</a>.
         progress_calculation_adjusted: >-
           Die Fortschrittsberechnung wurde <a href=" %{href} " target="_blank">automatisch durch das Systemupdate angepasst</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Arbeits- und Fortschrittssummen werden bei der <a href="%{href}" target="_blank">Versionsaktualisierung</a> automatisch für nicht übergeordnete Arbeitspakete entfernt. Diese Änderung entstand durch ein Upgrade und kann ignoriert werden.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2465,7 +2514,7 @@ de:
   label_enumerations: "Aufzählungen"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} gebuchte aktive Nutzer"
-  label_enterprise_edition: "Enterprise edition"
+  label_enterprise_edition: "Enterprise Edition"
   label_enterprise_support: "Enterprise Support"
   label_environment: "Umgebung"
   label_estimates_and_progress: "Schätzungen und Fortschritt"
@@ -2826,6 +2875,9 @@ de:
   label_title: "Titel"
   label_projects_menu: "Projekte"
   label_today: "heute"
+  label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Hauptmenü"
   label_topic_plural: "Themen"
   label_total: "Gesamtzahl"
@@ -3313,6 +3365,13 @@ de:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Sind Sie sicher, dass Sie das Projekt '%{name}' archivieren wollen?"
+      archived: "Archiviert"
+    count:
+      zero: "0 Projekte"
+      one: "1 Projekt"
+      other: "%{count} Projekte"
     destroy:
       confirmation: "Wenn Sie fortfahren, wird das Projekt %{identifier} dauerhaft zerstört. Um diese Aktion zu bestätigen, geben Sie bitte den Projektnamen in das untenstehende Feld ein:"
       project_delete_result_1: "Alle zugehörigen Daten löschen."
@@ -3325,19 +3384,13 @@ de:
       warning_one: Projektmitglieder müssen die Projektarchive des Projekts umziehen.
       warning_two: Bestehende Projekt-Links werden nicht mehr funktionieren.
       title: Projektkennung ändern
+    not_available: "Project N/A"
     template:
       copying: >
         Ihr Projekt wird aus der ausgewählten Vorlage erstellt. Sie werden per E-Mail benachrichtigt, sobald das Projekt verfügbar ist.
       use_template: "Projektvorlage verwenden"
       make_template: "Als Vorlage speichern"
       remove_from_templates: "Aus Projektvorlagen entfernen"
-    archive:
-      are_you_sure: "Sind Sie sicher, dass Sie das Projekt '%{name}' archivieren wollen?"
-      archived: "Archiviert"
-    count:
-      zero: "0 Projekte"
-      one: "1 Projekt"
-      other: "%{count} Projekte"
   project_module_activity: "Aktivität"
   project_module_forums: "Foren"
   project_module_work_package_tracking: "Arbeitspakete"
@@ -3446,8 +3499,8 @@ de:
       update_timeout: "Speichere die Informationen bzgl. des genutzten Festplattenspeichers eines Projektarchivs für N Minuten.\nErhöhen Sie diesen Wert zur Verbesserung der Performance, da die Erfassung des genutzten Festplattenspeichers Ressourcen-intensiv ist."
       oauth_application_details: "Der Client Geheimcode wird nach dem Schließen dieses Fensters nicht mehr zugänglich sein. Bitte kopieren Sie diese Werte in die Nextcloud OpenProject Integrationseinstellungen:"
       oauth_application_details_link_text: "Zu den Einstellungen gehen"
-      setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Datei-Speichers benötigen, konsultieren Sie bitte die Dokumentation: "
-      setup_documentation_details_link_text: "Datei-Speicher einrichten"
+      setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Dateispeichers benötigen, konsultieren Sie bitte die Dokumentation: "
+      setup_documentation_details_link_text: "Dateispeicher einrichten"
       show_warning_details: "Um diesen Dateispeicher nutzen zu können, müssen Sie das Modul und den spezifischen Speicher in den Projekteinstellungen jedes gewünschten Projekts aktivieren."
     subversion:
       existing_title: "Vorhandenes Subversion Projektarchiv"
@@ -3471,6 +3524,12 @@ de:
     activated: "Aktiviert"
     deactivated: "Deaktiviert"
   search_input_placeholder: "Suchen ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORS aktivieren"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) erlaubte Origins"
@@ -3953,7 +4012,7 @@ de:
   warning_user_limit_reached_admin: >
     Das Hinzufügen zusätzlicher Benutzer überschreitet das aktuelle Benutzerlimit. Bitte <a href="%{upgrade_url}">aktualisieren Sie Ihr Abonnement</a> um sicherzustellen, dass externe Benutzer auf diese Instanz zugreifen können.
   warning_user_limit_reached_instructions: >
-    Du hast dein Nutzerlimit erreicht (%{current}/%{max} active users). Bitte kontaktiere sales@openproject.com um deinen Enterprise edition Plan upzugraden und weitere Nutzer hinzuzufügen.
+    Du hast dein Nutzerlimit erreicht (%{current}/%{max} active users). Bitte kontaktiere sales@openproject.com um deinen Enterprise Edition Plan upzugraden und weitere Nutzer hinzuzufügen.
   warning_protocol_mismatch_html: >
 
   warning_bar:
@@ -4258,6 +4317,7 @@ de:
       connected: "Verbindung hergestellt"
       error: "Fehler"
       failed_authorization: "Autorisierung fehlgeschlagen"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 Integration"
       label_redirect_uri: "URI umleiten"
@@ -4308,3 +4368,29 @@ de:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Single-Sign An"
     description: "Fügt den OmniAuth SAML-Anbieter zu OpenProject hinzu"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

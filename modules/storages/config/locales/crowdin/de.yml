@@ -16,7 +16,7 @@ de:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Projektordner
         project_folder_mode: Project folder mode
         storage: Speicherung
         storage_url: Storage URL
@@ -173,7 +173,7 @@ de:
   storages:
     buttons:
       complete_without_setup: Ohne fortfahren
-      done_complete_setup: Fertig, Einrichtung abgeschlossen
+      done_complete_setup: Fertig, Einrichtung abschließen
       done_continue: Fertig, Fortfahren
       open_storage: Dateispeicher öffnen
       replace_oauth_application: OpenProject OAuth ersetzen
@@ -224,7 +224,7 @@ de:
       project_folders: Projektordner
       redirect_uri: Umleitungs-URI
       storage_audience: Storage Audience
-      storage_audience_blank: No audience has been configured
+      storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.
       storage_oauth: Nextcloud OAuth
@@ -242,7 +242,9 @@ de:
         host_not_found: Kein Nextcloud-Server unter der konfigurierten Host-URL gefunden. Bitte überprüfen Sie die Konfiguration.
         missing_dependencies: 'Eine erforderliche Abhängigkeit fehlt auf dem Datei-Speicher. Bitte fügen Sie die folgende Abhängigkeit hinzu: %{dependency}.'
         not_configured: Die Verbindung konnte nicht validiert werden. Bitte schließen Sie zuerst die Konfiguration ab.
-        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
+        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
+        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: Der aktuelle Benutzer wird nicht von einem OpenID Connect Identity Provider bereitgestellt. Bitte führen Sie die Prüfung mit einem bereitgestellten Benutzer erneut durch.
         placeholder: Überprüfen Sie Ihre Verbindung mit dem Server.
@@ -287,7 +289,7 @@ de:
         oauth_configuration: Kopieren Sie diese Werte aus der %{application_link_text}.
         provider_configuration: Bitte stellen Sie sicher, dass Sie Administrationsrechte in Ihrer Nextcloud-Instanz haben und die %{application_link_text} vor dem Setup installiert wurde.
         storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        storage_audience_placeholder: e.g. nextcloud
+        storage_audience_placeholder: z.B. Nextcloud
       no_specific_folder: Standardmäßig startet jeder Benutzer in seinem eigenen Home-Ordner, wenn er eine Datei hochlädt.
       no_storage_set_up: Es sind noch keine Dateispeicher eingerichtet.
       not_logged_into_storage: Bitte melden Sie sich zunächst an, um einen Projektordner auszuwählen
@@ -348,6 +350,7 @@ de:
       connected: Verbunden
       connected_no_permissions: Benutzerrolle hat keine Speicherberechtigungen
       not_connected: Nicht verbunden. Der Benutzer sollte sich über diesen %{link} anmelden.
+      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Keine Mitglieder zum Anzeigen.
     no_results: Noch keine Dateispeicher eingerichtet.
     oauth_access_granted_modal:

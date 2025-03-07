@@ -30,7 +30,7 @@ zh-TW:
         overridden_costs: "覆蓋成本"
         spent: "花費"
         spent_on: "日期"
-        logged_by: "Logged by"
+        logged_by: "記錄者"
       cost_type:
         unit: "單位名稱"
         unit_plural: "單位名稱(複數)"

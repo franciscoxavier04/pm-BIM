@@ -37,5 +37,27 @@ module OpTurbo
         yield(format) if format_block
       end
     end
+
+    def respond_with_flash_error(message:, status: :unprocessable_entity, &format_block)
+      respond_to do |format|
+        format.turbo_stream do
+          render_error_flash_message_via_turbo_stream(message:)
+          respond_with_turbo_streams(status:)
+        end
+
+        yield(format) if format_block
+      end
+    end
+
+    def respond_with_flash_success(message:, status: :ok, &format_block)
+      respond_to do |format|
+        format.turbo_stream do
+          render_success_flash_message_via_turbo_stream(message:)
+          respond_with_turbo_streams(status:)
+        end
+
+        yield(format) if format_block
+      end
+    end
   end
 end

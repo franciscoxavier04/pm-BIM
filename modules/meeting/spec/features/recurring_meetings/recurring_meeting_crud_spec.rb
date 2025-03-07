@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -150,7 +151,7 @@ RSpec.describe "Recurring meetings CRUD",
   it "can edit the details of a recurring meeting" do
     show_page.visit!
 
-    show_page.expect_subtitle text: "Every week on Tuesday at 01:30 PM, ends on 01/14/2025"
+    show_page.expect_subtitle text: "Every week on Tuesday at 01:30 PM (UTC), ends on 01/14/2025"
 
     show_page.edit_meeting_series
     show_page.within_modal "Edit Meeting" do
@@ -163,7 +164,7 @@ RSpec.describe "Recurring meetings CRUD",
       click_link_or_button("Save")
     end
     wait_for_network_idle
-    show_page.expect_subtitle text: "Every day at 11:00 AM, ends on 01/07/2025"
+    show_page.expect_subtitle text: "Every day at 11:00 AM (UTC), ends on 01/07/2025"
   end
 
   it "shows the correct actions based on status" do

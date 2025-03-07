@@ -2,12 +2,12 @@ tr:
   activerecord:
     attributes:
       saml/provider:
-        display_name: Name
+        display_name: İsim
         identifier: Identifier
         secret: Secret
         scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
-        limit_self_registration: Limit self registration
+        limit_self_registration: Kendi kendine kaydı sınırlayın
         sp_entity_id: Service entity ID
         metadata_url: Identity provider metadata URL
         name_identifier_format: Name identifier format
@@ -21,7 +21,7 @@ tr:
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Format"
+        format: "Biçim"
         icon: "Custom icon"
     errors:
       models:
@@ -56,8 +56,8 @@ tr:
       label_mapping: İlişkilendirme
       label_requested_attribute_for: "%{attribute} için nitelik talebi"
       no_results_table: No SAML identity providers have been defined yet.
-      plural: SAML identity providers
-      singular: SAML identity provider
+      plural: SAML kimlik sağlayıcıları
+      singular: SAML kimlik sağlayıcısı
       requested_attributes: Talep edilen nitelikler
       attribute_mapping: Nitelik ilişkilendirme
       attribute_mapping_text: >
@@ -65,7 +65,7 @@ tr:
       metadata:
         dialog: "This is the URL where the OpenProject SAML metadata is available. Optionally use it to configure your identity provider:"
       upsale:
-        description: Connect OpenProject to a SAML identity provider
+        description: OpenProject'i bir SAML kimlik sağlayıcısına bağlama
       request_attributes:
         title: 'Requested attributes'
         legend: >

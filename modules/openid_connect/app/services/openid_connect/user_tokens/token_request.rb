@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -31,7 +31,7 @@
 module OpenIDConnect
   module UserTokens
     class TokenRequest
-      include Dry::Monads[:result]
+      include Dry::Monads::Result(TokenOperationError)
 
       attr_reader :provider
 
@@ -45,7 +45,7 @@ module OpenIDConnect
 
       def exchange(access_token, audience)
         request_token(form: {
-                        grant_type: "urn:ietf:params:oauth:grant-type:token-exchange",
+                        grant_type: OpenIDConnect::Provider::TOKEN_EXCHANGE_GRANT_TYPE,
                         subject_token: access_token,
                         audience:
                       })
@@ -55,11 +55,18 @@ module OpenIDConnect
 
       def request_token(form:)
         response = authenticated_request.post(provider.token_endpoint, form:)
-        response.raise_for_status
+        error = TokenOperationError.new(payload: response, source: self.class)
 
-        Success(response.json)
-      rescue HTTPX::Error => e
-        Failure(e)
+        case response
+        in status: 200
+          Success(response.json)
+        in status: 401
+          Failure(error.with(code: :unauthorized))
+        in status: 403
+          Failure(error.with(code: :forbidden))
+        else
+          Failure(error.with(code: :error))
+        end
       end
 
       def authenticated_request

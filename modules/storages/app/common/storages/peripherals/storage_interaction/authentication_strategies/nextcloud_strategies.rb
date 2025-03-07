@@ -33,6 +33,10 @@ module Storages
     module StorageInteraction
       module AuthenticationStrategies
         module NextcloudStrategies
+          SpecificBearerToken = -> do
+            ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SpecificBearerToken.strategy
+          end
+
           UserLess = -> do
             ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::BasicAuth.strategy
           end
@@ -43,13 +47,14 @@ module Storages
 
               def call(user:, storage:)
                 with_tagged_logger do
-                  sso_preferred = storage.authenticate_via_idp? && oidc_provider_for(user)
+                  selector = AuthenticationMethodSelector.new(user:, storage:)
 
-                  if sso_preferred
+                  case selector.authentication_method
+                  when :sso
                     ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::SsoUserToken
                       .strategy
                       .with_user(user)
-                  elsif storage.authenticate_via_storage?
+                  when :storage_oauth
                     ::Storages::Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
                       .strategy
                       .with_user(user)

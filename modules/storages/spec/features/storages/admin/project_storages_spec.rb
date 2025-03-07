@@ -45,7 +45,7 @@ RSpec.describe "Admin lists project mappings for a storage",
   shared_let(:oauth_client_token) { create(:oauth_client_token, oauth_client: storage.oauth_client, user: admin) }
 
   shared_let(:remote_identity) do
-    create(:remote_identity, oauth_client: storage.oauth_client, user: admin, origin_user_id: "admin")
+    create(:remote_identity, auth_source: storage.oauth_client, integration: storage, user: admin, origin_user_id: "admin")
   end
 
   shared_let(:archived_project_project_storage) do

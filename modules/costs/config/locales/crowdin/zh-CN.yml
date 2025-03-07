@@ -30,7 +30,7 @@ zh-CN:
         overridden_costs: "覆盖的成本"
         spent: "已支出"
         spent_on: "日期"
-        logged_by: "Logged by"
+        logged_by: "记录者为"
       cost_type:
         unit: "单位名称"
         unit_plural: "单位名称（复数）"

@@ -29,7 +29,35 @@
 #++
 
 class WorkPackageRelationsTab::RelationsMediator
-  RelationGroup = Data.define(:type, :visible_relations, :ghost_relations)
+  RelationGroup = Data.define(:type, :visible_relations, :ghost_relations) do
+    def initialize(type:, visible_relations:, ghost_relations:)
+      super(type: ActiveSupport::StringInquirer.new(type), visible_relations:, ghost_relations:)
+    end
+
+    def count
+      visible_relations.count + ghost_relations.count
+    end
+
+    def any?
+      visible_relations.any? || ghost_relations.any?
+    end
+
+    def all_relations
+      visible_relations + ghost_relations
+    end
+
+    def closest_relation?(relation) = closest_relation == relation
+
+    def closest_relation
+      return nil unless type.follows?
+
+      all_relations
+        .map { WorkPackageRelationsTab::ClosestRelation.new(it) }
+        .select(&:soonest_start)
+        .max
+        &.relation
+    end
+  end
 
   attr_reader :work_package
 
@@ -59,8 +87,20 @@ class WorkPackageRelationsTab::RelationsMediator
 
     # Group visible and invisible relations by type
     all_relation_types.map do |type|
+      relation_group(type)
+    end
+  end
+
+  def relation_group(type)
+    if type == "children"
       RelationGroup.new(
-        type: type,
+        type:,
+        visible_relations: visible_children,
+        ghost_relations: ghost_children
+      )
+    else
+      RelationGroup.new(
+        type:,
         visible_relations: filter_relations_by_type(visible_relations, type),
         ghost_relations: filter_relations_by_type(ghost_relations, type)
       )

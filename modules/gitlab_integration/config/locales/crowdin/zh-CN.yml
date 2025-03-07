@@ -22,22 +22,22 @@
 #++
 zh-CN:
   attributes:
-    commit: "Commit"
-    gitlab: "GitLab identifier"
-    gitlab_avatar_url: "Avatar URL"
+    commit: "提交"
+    gitlab: "GitLab 标识符"
+    gitlab_avatar_url: "头像 URL"
     gitlab_email: "GitLab Email"
     gitlab_html_url: "GitLab HTML URL"
-    gitlab_merge_request: "Merge Request"
-    gitlab_name: "GitLab name"
-    gitlab_updated_at: "Updated at"
-    gitlab_user_avatar_url: "GitLab avatar URL"
-    gitlab_username: "GitLab username"
+    gitlab_merge_request: "合并请求"
+    gitlab_name: "GitLab 名称"
+    gitlab_updated_at: "更新于"
+    gitlab_user_avatar_url: "GitLab 头像 URL"
+    gitlab_username: "GitLab 用户名"
   activerecord:
     attributes:
       gitlab_pipeline:
-        ci_details: "CI Details"
+        ci_details: "CI 详情"
       gitlab_merge_request:
-        labels: "Labels"
+        labels: "标签"
     errors:
       models:
         gitlab_issue:
