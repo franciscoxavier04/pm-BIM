@@ -90,11 +90,11 @@ module Storages
 
     scope :with_audience, ->(audience) { where("provider_fields->>'storage_audience' = ?", audience) }
 
-    enum health_status: {
+    enum :health_status, {
       pending: "pending",
       healthy: "healthy",
       unhealthy: "unhealthy"
-    }.freeze, _prefix: :health
+    }, prefix: :health
 
     def self.shorten_provider_type(provider_type)
       short, = PROVIDER_TYPE_SHORT_NAMES.find { |_, long| provider_type == long }
@@ -125,7 +125,7 @@ module Storages
     end
 
     def automatically_managed?
-      ActiveSupport::Deprecation.warn(
+      ActiveSupport::Deprecation.new.warn(
         "`#automatically_managed?` is deprecated. Use `#automatic_management_enabled?` instead. " \
         "NOTE: The new method name better reflects the actual behavior of the storage. " \
         "It's not the storage that is automatically managed, rather the Project (Storage) Folder is. " \
