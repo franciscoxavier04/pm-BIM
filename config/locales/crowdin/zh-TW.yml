@@ -648,7 +648,7 @@ zh-TW:
           manually_scheduled: "手動排程。日期不受關聯任務影響。"
       blankslate:
         title: "沒有前置項目"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+        description: "若要啟用自動排程，此工作項目必須至少有一個前置工作。這樣它就會自動排程在最接近的前置工作之後開始。"
       ignore_non_working_days:
         title: "限工作日"
       mode:
@@ -744,7 +744,7 @@ zh-TW:
       new_child_text: "使相關工作成為目前（上層）工作項目的子項目"
       existing_child: "現有子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
-      label_closest: "Closest"
+      label_closest: "最近的"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
       blocks_description: "在本工作項目結束之前，關聯工作無法結束"
@@ -1430,7 +1430,7 @@ zh-TW:
               query_invalid: "這個遷入的查詢 '%{group}' 是無效的: %{details}"
               group_without_name: "不允許未命名的群組。"
             patterns:
-              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
+              invalid_tokens: "欄位內的一個或多個屬性不正確。請在儲存前修正屬性。"
         user:
           attributes:
             base:
@@ -1630,7 +1630,7 @@ zh-TW:
     subject: "名稱"
     slug: "網址後綴"
     summary: "總覽"
-    time_zone: "Time zone"
+    time_zone: "時區"
     text: "文字"
     title: "標題"
     type: "類型"
@@ -2842,8 +2842,8 @@ zh-TW:
   label_projects_menu: "專案"
   label_today: "今天"
   label_token_version: "權杖(token)版本"
-  label_today_as_start_date: "Select today as start date."
-  label_today_as_due_date: "Select today as finish date."
+  label_today_as_start_date: "選擇今天為開始日期。"
+  label_today_as_due_date: "選擇今天為完成日期。"
   label_top_menu: "頂層選單"
   label_topic_plural: "主題"
   label_total: "全部"
@@ -3346,7 +3346,7 @@ zh-TW:
       warning_one: 這個專案的成員將必須搬移專案的版本庫
       warning_two: 專案現有的連結將不再有效
       title: 修改專案的識別
-    not_available: "Project N/A"
+    not_available: "無專案"
     template:
       copying: >
         依照專案範本創立專案中.完成後會以電郵通知。
@@ -4278,7 +4278,7 @@ zh-TW:
       connected: "已連線"
       error: "錯誤"
       failed_authorization: "授權失敗"
-      not_connected: "Not connected"
+      not_connected: "未連接"
     labels:
       label_oauth_integration: "整合OAuth2 "
       label_redirect_uri: "轉址 uri"
