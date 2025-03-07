@@ -96,14 +96,13 @@ module My
 
     def time_entries_json
       @time_entries.map do |time_entry|
-        {
-          id: time_entry.id.to_s,
+        FullCalendar::Event.new(
+          id: time_entry.id,
           title: "#{time_entry.project.name}: ##{time_entry.work_package.id} #{time_entry.work_package.subject}",
-          start: time_entry.start_timestamp || time_entry.spent_on,
-          end: time_entry.end_timestamp || time_entry.spent_on,
-          allDay: time_entry.start_time.blank?
-
-        }
+          starts_at: time_entry.start_timestamp || time_entry.spent_on,
+          ends_at: time_entry.end_timestamp || time_entry.spent_on,
+          all_day: time_entry.start_time.blank?
+        )
       end.to_json
     end
 
