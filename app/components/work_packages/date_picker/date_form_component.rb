@@ -114,6 +114,14 @@ module WorkPackages
         name == :duration
       end
 
+      def start_date_label
+        if @is_milestone
+          I18n.t("attributes.date")
+        else
+          I18n.t("attributes.start_date")
+        end
+      end
+
       def update_focused_field(focused_field)
         if @date_mode.nil? || @date_mode != "range"
           return focused_field_for_single_date_mode(focused_field)
