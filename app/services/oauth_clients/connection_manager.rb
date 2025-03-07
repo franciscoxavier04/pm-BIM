@@ -93,7 +93,7 @@ module OAuthClients
     def code_to_token(code)
       # Return a Rack::OAuth2::AccessToken::Bearer or an error string
       service_result = request_new_token(authorization_code: code)
-      return service_result unless service_result.success?
+      return service_result if service_result.failure?
 
       # Check for existing OAuthClientToken and update,
       # or create a new one from Rack::OAuth::AccessToken::Bearer
@@ -102,6 +102,7 @@ module OAuthClients
         update_oauth_client_token(oauth_client_token, service_result.result)
       else
         rack_access_token = service_result.result
+        id_create_error = nil
         OAuthClientToken.transaction do
           oauth_client_token = OAuthClientToken.new(
             user: @user,
@@ -115,9 +116,14 @@ module OAuthClients
           oauth_client_token.save!
 
           RemoteIdentities::CreateService
-            .call(user: @user, integration: @oauth_client.integration, token: oauth_client_token)
-            .on_failure { raise ActiveRecord::Rollback }
+            .call(user: @user, integration: @oauth_client.integration, token: oauth_client_token, force_update: true)
+            .on_failure do |e|
+              id_create_error = e
+              raise ActiveRecord::Rollback
+            end
         end
+
+        return id_create_error if id_create_error
 
         ServiceResult.new(success: oauth_client_token.errors.empty?,
                           result: oauth_client_token,

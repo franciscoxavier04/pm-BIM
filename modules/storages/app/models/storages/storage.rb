@@ -233,10 +233,7 @@ module Storages
       ::Storages::Peripherals::Registry
         .resolve("#{self}.queries.user")
         .call(auth_strategy:, storage: self)
-        .match(
-          on_success: ->(user) { user[:id] },
-          on_failure: ->(error) { raise "UserQuery responed with #{error}" }
-        )
+        .map { |user| user[:id] } # rubocop:disable Rails/Pluck
     end
   end
 end

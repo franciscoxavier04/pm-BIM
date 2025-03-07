@@ -145,7 +145,9 @@ module OpenProject::Storages
           if storage
             RemoteIdentities::CreateService
               .call(user: token.user, integration: storage, token:)
-              .on_failure { |failure| raise "RemoteIdentity creation failed: #{failure.message}" }
+              .on_failure do |failure|
+                Rails.logger.error("RemoteIdentity creation for user #{token.user.id} failed: #{failure.message}")
+              end
           end
         end
       end
