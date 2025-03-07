@@ -100,7 +100,7 @@ module WorkPackages
         render(
           Primer::Beta::Link.new(
             href: "",
-            "aria-label": I18n.t("label_today_as_#{name}"),
+            "aria-label": @is_milestone ? I18n.t("label_today_as_date") : I18n.t("label_today_as_#{name}"),
             data: {
               action: "work-packages--date-picker--preview#setTodayForField",
               "work-packages--date-picker--preview-field-reference-param": "work_package_#{name}",
