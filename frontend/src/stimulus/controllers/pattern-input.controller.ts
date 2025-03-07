@@ -46,6 +46,8 @@ export default class PatternInputController extends Controller {
     'suggestionsHeadingTemplate',
     'suggestionsDividerTemplate',
     'suggestionsItemTemplate',
+
+    'insertAsTextTemplate',
   ];
 
   declare readonly tokenTemplateTarget:HTMLTemplateElement;
@@ -57,20 +59,27 @@ export default class PatternInputController extends Controller {
   declare readonly suggestionsDividerTemplateTarget:HTMLTemplateElement;
   declare readonly suggestionsItemTemplateTarget:HTMLTemplateElement;
 
+  declare readonly insertAsTextTemplateTarget:HTMLTemplateElement;
+
   static values = {
     patternInitial: String,
     suggestionsInitial: Object,
+    insertAsTextTemplate: String,
   };
 
-  declare patternInitialValue:string;
-  declare suggestionsInitialValue:Record<string, Record<string, string>>;
+  declare readonly patternInitialValue:string;
+  declare readonly suggestionsInitialValue:Record<string, Record<string, string>>;
+  declare readonly insertAsTextTemplateValue:string;
 
   validTokens:string[];
   currentRange:Range|undefined = undefined;
 
   connect() {
     this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
-    this.extractValidTokens();
+    this.validTokens = Object.values(this.suggestionsInitialValue)
+      .map((group) => (Object.keys(group)))
+      .reduce((acc, val) => acc.concat(val), []);
+
     this.tagInvalidTokens();
     this.clearSuggestionsFilter();
   }
@@ -98,7 +107,7 @@ export default class PatternInputController extends Controller {
     }
 
     // close the suggestions
-    if (event.key === 'Escape' || event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+    if (['Escape', 'ArrowLeft', 'ArrowRight', 'End', 'Home'].includes(event.key)) {
       this.clearSuggestionsFilter();
     }
 
@@ -165,10 +174,8 @@ export default class PatternInputController extends Controller {
     }
   }
 
-  // internal methods
-  extractValidTokens() {
-    const res = Object.values(this.suggestionsInitialValue).map((group) => (Object.keys(group)));
-    this.validTokens = ([] as string[]).concat(...res);
+  close_suggestions() {
+    this.clearSuggestionsFilter();
   }
 
   private updateFormInputValue():void {
@@ -188,7 +195,7 @@ export default class PatternInputController extends Controller {
     }
   }
 
-  insertSpaceIfFirstCharacter() {
+  private insertSpaceIfFirstCharacter() {
     const selection = document.getSelection();
     if (selection && selection.rangeCount) {
       const range = selection.getRangeAt(0);
@@ -211,7 +218,7 @@ export default class PatternInputController extends Controller {
     }
   }
 
-  insertSpaceIfLastCharacter():void {
+  private insertSpaceIfLastCharacter():void {
     const selection = document.getSelection();
     if (selection && selection.rangeCount) {
       const range = selection.getRangeAt(0);
@@ -233,7 +240,7 @@ export default class PatternInputController extends Controller {
     }
   }
 
-  setRealCaretPositionAtNode(target:Node, position:'before'|'after' = 'after'):void {
+  private setRealCaretPositionAtNode(target:Node, position:'before'|'after' = 'after'):void {
     const selection = document.getSelection();
     if (selection === null) { return; }
 
@@ -289,8 +296,7 @@ export default class PatternInputController extends Controller {
     if (selection) {
       return (selection.anchorNode?.textContent?.slice(0, selection.anchorOffset)
         .split(' ')
-        .pop() as string)
-        .toLowerCase();
+        .pop() as string);
     }
 
     return null;
@@ -305,7 +311,9 @@ export default class PatternInputController extends Controller {
     this.clearSuggestionsFilter();
     this.suggestionsTarget.classList.remove('d-none');
 
-    const filtered = this.getFilteredSuggestionsData(word);
+    this.appendInsertAsTextElement(word);
+
+    const filtered = this.getFilteredSuggestionsData(word.toLowerCase());
 
     // insert the HTML
     filtered.forEach((group, idx) => {
@@ -336,7 +344,19 @@ export default class PatternInputController extends Controller {
     });
   }
 
-  setSuggestionText(suggestionItem:HTMLElement, value:string) {
+  private appendInsertAsTextElement(word:string):void {
+    const template = this.insertAsTextTemplateTarget.content.cloneNode(true) as DocumentFragment;
+    const item = template.firstElementChild;
+    if (item === null) { return; }
+
+    const textElement = item.querySelector('span');
+    if (textElement === null) { return; }
+
+    textElement.innerText = this.insertAsTextTemplateValue.replace('%{word}', word);
+    this.suggestionsTarget.appendChild(item);
+  }
+
+  private setSuggestionText(suggestionItem:HTMLElement, value:string) {
     const textContainer = suggestionItem.querySelector('span');
     if (textContainer) {
       textContainer.innerText = value;
