@@ -30,6 +30,8 @@ require "spec_helper"
 
 # This is not strictly version CF specific, but targets regression #53198.
 RSpec.describe "Work package filtering by version custom field", :js do
+  include Components::Autocompleter::NgSelectAutocompleteHelpers
+
   let!(:project) { create(:project) }
   let!(:type) { project.types.first }
   let!(:version_cf1) do
@@ -91,6 +93,27 @@ RSpec.describe "Work package filtering by version custom field", :js do
 
   current_user do
     create(:user, member_with_roles: { project => role })
+  end
+
+  it "displays the available versions grouped by their corresponding project" do
+    wp_table.visit!
+    filters.open
+
+    filters.add_filter(version_cf1.name)
+
+    expect_ng_option(
+      page.find("#values-#{version_cf1.attribute_name(:camel_case)}"),
+      version_1,
+      grouping: project.name,
+      results_selector: "body"
+    )
+
+    expect_ng_option(
+      page.find("#values-#{version_cf1.attribute_name(:camel_case)}"),
+      version_2,
+      grouping: project.name,
+      results_selector: "body"
+    )
   end
 
   it 'shows the work package matching the version CF "is (AND)" filter' do

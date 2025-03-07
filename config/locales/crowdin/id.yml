@@ -646,7 +646,7 @@ id:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -742,6 +742,7 @@ id:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -902,6 +903,8 @@ id:
         active_value:
           true: "tidak diarsipkan"
           false: "diarsipkan"
+        description: "Deskripsi"
+        enabled_modules: "Enabled modules"
         identifier: "Pengenal"
         latest_activity_at: "Latest activity at"
         parent: "Sub-Project dari"
@@ -910,9 +913,7 @@ id:
           true: "publik"
           false: "pribadi"
         queries: "Query"
-        enabled_modules: "Enabled modules"
         status_code: "Project status"
-        description: "Deskripsi"
         status_explanation: "Deskripsi status proyek"
         status_codes:
           not_started: "Belum mulai"
@@ -2505,7 +2506,7 @@ id:
   label_filter_add: "Tambah Filter"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Filter"
+  label_filter_plural: "Penyaring"
   label_filters_toggle: "Tampilkan/Sembunyikan penyaringan"
   label_float: "Float"
   label_folder: "Folder"
@@ -2839,6 +2840,8 @@ id:
   label_projects_menu: "Project"
   label_today: "hari ini"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Top Menu"
   label_topic_plural: "Topik"
   label_total: "Total"
@@ -3323,6 +3326,13 @@ id:
   placeholders:
     default: "Hapus nilai"
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Diarsipkan"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3335,19 +3345,13 @@ id:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
       title: Change the project's identifier
+    not_available: "Project N/A"
     template:
       copying: >
         Proyek Anda sedang dibuat dari proyek template yang dipilih. Anda akan diberi tahu melalui surat segera setelah proyek tersedia.
       use_template: "Gunakan templat"
       make_template: "Tetapkan sebagai templat"
       remove_from_templates: "Hapus dari template"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Diarsipkan"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Activity"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Paket-Penugasan"

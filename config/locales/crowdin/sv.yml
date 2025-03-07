@@ -658,7 +658,7 @@ sv:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -755,6 +755,7 @@ sv:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -915,6 +916,8 @@ sv:
         active_value:
           true: "unarchived"
           false: "arkiverad"
+        description: "Beskrivning"
+        enabled_modules: "Enabled modules"
         identifier: "Identifierare"
         latest_activity_at: "Senaste aktivitet vid"
         parent: "Delprojekt under"
@@ -923,9 +926,7 @@ sv:
           true: "public"
           false: "private"
         queries: "Frågor"
-        enabled_modules: "Enabled modules"
         status_code: "Projektstatus"
-        description: "Beskrivning"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Inte påbörjad"
@@ -2882,6 +2883,8 @@ sv:
   label_projects_menu: "Projekt"
   label_today: "idag"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Huvudmeny"
   label_topic_plural: "Ämnen"
   label_total: "Total"
@@ -3369,6 +3372,13 @@ sv:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Är du säker på att du vill arkivera projektet '%{name}'?"
+      archived: "Arkiverad"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3381,19 +3391,13 @@ sv:
       warning_one: Projektets medlemmar kommer att vara tvungna att flytta projektetdatabaserna.
       warning_two: Befintliga länkar till projektet kommer inte att fungera längre.
       title: Ändra projektets identifierare
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project. You will be notified by mail as soon as the project is available.
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Är du säker på att du vill arkivera projektet '%{name}'?"
-      archived: "Arkiverad"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Aktivitet"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Arbetspaket"

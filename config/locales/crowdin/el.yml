@@ -654,7 +654,7 @@ el:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -751,6 +751,7 @@ el:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -911,6 +912,8 @@ el:
         active_value:
           true: "unarchived"
           false: "αρχειοθετημένο"
+        description: "Περιγραφή"
+        enabled_modules: "Enabled modules"
         identifier: "Αναγνωριστικό"
         latest_activity_at: "Τελευταία δραστηριότητα στις"
         parent: "Υποέργο του"
@@ -919,9 +922,7 @@ el:
           true: "public"
           false: "private"
         queries: "Αναζητήσεις"
-        enabled_modules: "Enabled modules"
         status_code: "Κατάσταση έργου"
-        description: "Περιγραφή"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -2878,6 +2879,8 @@ el:
   label_projects_menu: "Έργα"
   label_today: "σήμερα"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Επάνω μενού"
   label_topic_plural: "Θέματα"
   label_total: "Σύνολο"
@@ -3364,6 +3367,13 @@ el:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Είστε σίγουροι ότι θέλετε να αρχειοθετήσετε το έργο %{name};"
+      archived: "Αρχειοθετημένο"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3376,19 +3386,13 @@ el:
       warning_one: Τα μέλη του έργου θα πρέπει να μεταφέρουν τα αποθετήρια του έργου.
       warning_two: Οι υπάρχοντες σύνδεσμοι για το έργο δεν λειτουργούν πλέον.
       title: Αλλαγή αναγνωριστικού του έργου
+    not_available: "Project N/A"
     template:
       copying: >
         Το έργο σας δημιουργείται από το επιλεγμένο πρότυπο. Θα ειδοποιηθείτε μέσω email μόλις το έργο είναι διαθέσιμο.
       use_template: "Χρήση προτύπου"
       make_template: "Ορισμός ως πρότυπο"
       remove_from_templates: "Αφαίρεση από τα πρότυπα"
-    archive:
-      are_you_sure: "Είστε σίγουροι ότι θέλετε να αρχειοθετήσετε το έργο %{name};"
-      archived: "Αρχειοθετημένο"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Δραστηριότητα"
   project_module_forums: "Φόρουμ"
   project_module_work_package_tracking: "Πακέτα εργασίας"

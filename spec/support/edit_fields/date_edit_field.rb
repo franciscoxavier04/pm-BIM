@@ -36,6 +36,8 @@ class DateEditField < EditField
            :toggle_scheduling_mode,
            :expect_manual_scheduling_mode,
            :expect_automatic_scheduling_mode,
+           :enable_start_date,
+           :enable_due_date,
            to: :datepicker
 
   def modal_selector
@@ -131,7 +133,11 @@ class DateEditField < EditField
 
   def set_value(value)
     if value.is_a?(Array)
+      datepicker.enable_start_date_if_visible
+      datepicker.enable_due_date_if_visible
+
       datepicker.clear!
+
       datepicker.set_start_date value.first
       datepicker.set_due_date value.last
 

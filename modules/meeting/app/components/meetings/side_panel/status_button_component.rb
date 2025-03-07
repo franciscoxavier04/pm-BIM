@@ -72,6 +72,7 @@ module Meetings
                                        color: Color.new(hexcode: "#1F883D"),
                                        icon: :"issue-opened",
                                        tag: :a,
+                                       description: t("text_meeting_open_dropdown_description"),
                                        href: change_state_project_meeting_path(@project, @meeting, state: "open"),
                                        content_arguments: {
                                          data: { "turbo-stream": true, "turbo-method": "put" }
@@ -83,6 +84,7 @@ module Meetings
                                        color: Color.new(hexcode: "#9A6700"),
                                        icon: :play,
                                        tag: :a,
+                                       description: t("text_meeting_in_progress_dropdown_description"),
                                        href: change_state_project_meeting_path(@project, @meeting, state: "in_progress"),
                                        content_arguments: {
                                          data: { "turbo-stream": true, "turbo-method": "put" }
@@ -91,9 +93,10 @@ module Meetings
 
     def closed_status
       OpPrimer::StatusButtonOption.new(name: t("label_meeting_state_closed"),
-                                       color: Color.new(hexcode: "#8250DF"),
-                                       icon: :"codescan-checkmark",
+                                       color: Color.new(hexcode: "#6E7781 "),
+                                       icon: :"issue-closed",
                                        tag: :a,
+                                       description: t("text_meeting_closed_dropdown_description"),
                                        href: change_state_project_meeting_path(@project, @meeting, state: "closed"),
                                        content_arguments: {
                                          data: { "turbo-stream": true, "turbo-method": "put" }

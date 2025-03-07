@@ -719,17 +719,18 @@ ka:
       description: "Description: Click to edit..."
       relation_description: "Click to add description for this relation"
     project:
-      required_outside_context: >
-        Please choose a project to create the work package in to see all attributes. You can only select projects which have the type above activated.
-      context: "Project context"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
-      use_template: "შაბლონის გამოყენება"
-      no_template_selected: "(არც ერთი)"
-      copy:
-        copy_options: "პარამეტრების კოპირება"
       autocompleter:
         label: "Project autocompletion"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
+      context: "Project context"
+      copy:
+        copy_options: "პარამეტრების კოპირება"
+      not_available: "Project N/A"
+      no_template_selected: "(არც ერთი)"
+      required_outside_context: >
+        Please choose a project to create the work package in to see all attributes. You can only select projects which have the type above activated.
+      use_template: "შაბლონის გამოყენება"
     reminders:
       settings:
         daily:

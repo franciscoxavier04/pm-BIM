@@ -77,7 +77,7 @@ The [package-based installation](../installation/packaged) requires one of the f
 
 The [docker-based installation](../installation/docker) requires a system with Docker installed. Please see the [official Docker page](https://docs.docker.com/install/) for the list of supported systems.
 
-**Please note**, that we only provide packages for the __AMD64__ (x86) architecture. We do provide *docker containers* for both __ARM64__ and __PPC64__ on top of __AMD64__.
+**Please note**, that we only provide packages for the __AMD64__ (x86) architecture. We do provide *docker containers* for both __ARM64__ and __AMD64__.
 
 ### Overview of dependencies
 

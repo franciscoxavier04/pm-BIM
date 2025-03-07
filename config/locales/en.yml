@@ -721,7 +721,7 @@ en:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -827,6 +827,7 @@ en:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -995,6 +996,8 @@ en:
         active_value:
           true: "unarchived"
           false: "archived"
+        description: "Description"
+        enabled_modules: "Enabled modules"
         identifier: "Identifier"
         latest_activity_at: "Latest activity at"
         parent: "Subproject of"
@@ -1003,9 +1006,7 @@ en:
           true: "public"
           false: "private"
         queries: "Queries"
-        enabled_modules: "Enabled modules"
         status_code: "Project status"
-        description: "Description"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -2981,6 +2982,8 @@ en:
   label_projects_menu: "Projects"
   label_today: "today"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Top Menu"
   label_topic_plural: "Topics"
   label_total: "Total"
@@ -3482,6 +3485,13 @@ en:
     default: "-"
 
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3490,10 +3500,15 @@ en:
       project_verification: "Enter the project's name %{name} to verify the deletion."
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
       title: Change the project's identifier
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project.
@@ -3501,13 +3516,6 @@ en:
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
 
   project_module_activity: "Activity"
   project_module_forums: "Forums"

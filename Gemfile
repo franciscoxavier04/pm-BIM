@@ -83,7 +83,7 @@ gem "htmldiff"
 gem "stringex", "~> 2.8.5"
 
 # CommonMark markdown parser with GFM extension
-gem "commonmarker", "~> 2.0.2"
+gem "commonmarker", "~> 2.1.0"
 
 # HTML pipeline for transformations on text formatter output
 # such as sanitization or additional features
@@ -143,7 +143,7 @@ gem "secure_headers", "~> 7.1.0"
 gem "browser", "~> 6.2.0"
 
 # Providing health checks
-gem "okcomputer", "~> 1.18.1"
+gem "okcomputer", "~> 1.19.0"
 
 gem "gon", "~> 6.4.0"
 
@@ -178,7 +178,7 @@ group :production do
   # we use dalli as standard memcache client
   # requires memcached 1.4+
   gem "dalli", "~> 3.2.0"
-  gem "redis", "~> 5.3.0"
+  gem "redis", "~> 5.4.0"
 end
 
 gem "i18n-js", "~> 4.2.3"
@@ -207,7 +207,7 @@ gem "plaintext", "~> 0.3.2"
 
 gem "ruby-progressbar", "~> 1.13.0", require: false
 
-gem "mini_magick", "~> 5.1.2", require: false
+gem "mini_magick", "~> 5.2.0", require: false
 
 gem "validate_url"
 
@@ -371,7 +371,7 @@ end
 gem "bootsnap", "~> 1.18.0", require: false
 
 # API gems
-gem "grape", "~> 2.2.0"
+gem "grape", "~> 2.3.0"
 gem "grape_logging", "~> 1.8.4"
 gem "roar", "~> 1.2.0"
 

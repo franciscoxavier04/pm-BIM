@@ -87,12 +87,12 @@ export default class PatternInputController extends Controller {
       event.preventDefault();
     }
     if (event.key === 'ArrowLeft') {
-      if (this.contentTarget.innerHTML.startsWith('<')) {
+      if (this.startsWithToken()) {
         this.insertSpaceIfFirstCharacter();
       }
     }
     if (event.key === 'ArrowRight') {
-      if (this.contentTarget.innerHTML.endsWith('>')) {
+      if (this.endsWithToken()) {
         this.insertSpaceIfLastCharacter();
       }
     }
@@ -135,6 +135,15 @@ export default class PatternInputController extends Controller {
   }
 
   input_mouseup() {
+    const selection = document.getSelection();
+    if (selection?.type === 'Caret' && selection?.anchorOffset === 0 && this.startsWithToken()) {
+      this.insertSpaceIfFirstCharacter();
+    }
+
+    if (selection?.type === 'Caret' && this.endsWithToken()) {
+      this.insertSpaceIfLastCharacter();
+    }
+
     this.setRange();
   }
 
@@ -190,7 +199,7 @@ export default class PatternInputController extends Controller {
       testRange.selectNodeContents(this.contentTarget);
       testRange.setEnd(range.startContainer, range.startOffset);
 
-      // if the resulting range is empty it is at the end of the input
+      // if the resulting range is empty it is at the start of the input
       if (testRange.toString() === '') {
         // add a space
         const beforeToken = document.createTextNode(' ');
@@ -226,16 +235,24 @@ export default class PatternInputController extends Controller {
 
   setRealCaretPositionAtNode(target:Node, position:'before'|'after' = 'after'):void {
     const selection = document.getSelection();
-    if (selection) {
-      const postRange = document.createRange();
-      if (position === 'after') {
-        postRange.setStartAfter(target);
-      } else {
-        postRange.setStartBefore(target);
-      }
-      selection?.removeAllRanges();
-      selection?.addRange(postRange);
+    if (selection === null) { return; }
+
+    const postRange = document.createRange();
+    if (position === 'after') {
+      postRange.setStartAfter(target);
+    } else {
+      postRange.setStartBefore(target);
     }
+    selection.removeAllRanges();
+    selection.addRange(postRange);
+  }
+
+  private endsWithToken():boolean {
+    return this.contentTarget.innerHTML.endsWith('>');
+  }
+
+  private startsWithToken():boolean {
+    return this.contentTarget.innerHTML.startsWith('<');
   }
 
   private insertToken(tokenElement:HTMLElement) {

@@ -655,7 +655,7 @@ ca:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -752,6 +752,7 @@ ca:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -912,6 +913,8 @@ ca:
         active_value:
           true: "desarxivat"
           false: "arxivat"
+        description: "Descripció"
+        enabled_modules: "Enabled modules"
         identifier: "Identificador"
         latest_activity_at: "Última activitat al"
         parent: "Subprojecte de"
@@ -920,9 +923,7 @@ ca:
           true: "públic"
           false: "privat"
         queries: "Consultes"
-        enabled_modules: "Enabled modules"
         status_code: "Estat del projecte"
-        description: "Descripció"
         status_explanation: "Descripció de l'estat del projecte"
         status_codes:
           not_started: "No començat"
@@ -2879,6 +2880,8 @@ ca:
   label_projects_menu: "Projectes"
   label_today: "avui"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Menú superior"
   label_topic_plural: "Temes"
   label_total: "Total"
@@ -3362,6 +3365,13 @@ ca:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Estàs segur que vols arxivar el projecte \"%{name}\"?"
+      archived: "Arxivat"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3374,19 +3384,13 @@ ca:
       warning_one: Els membres del projecte hauran de reubicar els repositoris del projecte.
       warning_two: Els vncles existents al projecte ja no funcionaran.
       title: Canviar l'identificador del projecte
+    not_available: "Project N/A"
     template:
       copying: >
         El teu projecte s'ha creat des de la plantilla de projecte seleccionada. Seràs notificat via correu electrònic quan el projecte estigui disponible.
       use_template: "Usar plantilla"
       make_template: "Estableix com a plantilla"
       remove_from_templates: "Suprimir de les plantilles"
-    archive:
-      are_you_sure: "Estàs segur que vols arxivar el projecte \"%{name}\"?"
-      archived: "Arxivat"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Activitat"
   project_module_forums: "Fòrums"
   project_module_work_package_tracking: "Paquets de treball"

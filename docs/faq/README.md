@@ -268,7 +268,7 @@ To migrate from Bitnami **to Enterprise cloud** please provide these:
 
 You can use the first two steps of [this instruction](../installation-and-operations/installation-faq/#how-can-i-migrate-from-bitnami-to-the-official-openproject-installation-packages). Please contact us to discuss your migration.
 
-To migrate from Bitnami **to Enterprise on premises** please use [this instruction](../installation-and-operations/installation-faq/#how-can-i-migrate-from-bitnami-to-the-official-openproject-installation-packages). We offer (paid) installation support to help you migrate to OpenProject (for the Enterprise on-premises edition). Please contact us to request it.
+To migrate from Bitnami **to Enterprise on-premises** please use [this instruction](../installation-and-operations/installation-faq/#how-can-i-migrate-from-bitnami-to-the-official-openproject-installation-packages). We offer (paid) installation support to help you migrate to OpenProject (for the Enterprise on-premises edition). Please contact us to request it.
 
 ### How can I migrate from Jira/Confluence to OpenProject?
 

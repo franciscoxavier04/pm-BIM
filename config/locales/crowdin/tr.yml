@@ -657,7 +657,7 @@ tr:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -754,6 +754,7 @@ tr:
       new_child_text: "Geçerli (ana) iş paketinin bir alt öğesi olarak ilgili bir iş paketi oluşturur"
       existing_child: "Mevcut alt"
       child_description: "İlgili iş paketini geçerli (ana) iş paketinin bir alt öğesi yapar"
+      label_closest: "Closest"
       label_blocks_singular: "engelleyen"
       label_blocks_plural: "engelleyen"
       blocks_description: "Bu iş paketi kapatılmadan ilgili iş paketi kapatılamaz"
@@ -914,6 +915,8 @@ tr:
         active_value:
           true: "arşivden çıkartıldı"
           false: "arşivlendi"
+        description: "Açıklama"
+        enabled_modules: "Etkin modüller"
         identifier: "Tanımlayıcı"
         latest_activity_at: "Son etkinlik zamanı"
         parent: "Alt Proje"
@@ -922,9 +925,7 @@ tr:
           true: "genel"
           false: "özel"
         queries: "Sorgular"
-        enabled_modules: "Etkin modüller"
         status_code: "Proje Durumu"
-        description: "Açıklama"
         status_explanation: "Proje durumunun tanımı"
         status_codes:
           not_started: "Başlatılmadı"
@@ -2881,6 +2882,8 @@ tr:
   label_projects_menu: "Projeler"
   label_today: "bugün"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Üst Menü"
   label_topic_plural: "Konular"
   label_total: "Toplam"
@@ -3366,6 +3369,13 @@ tr:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "'%{name}' projesini arşivlemek istediğinize emin misiniz?"
+      archived: "Arşivlenen"
+    count:
+      zero: "Proje yok"
+      one: "1 proje"
+      other: "%{count} proje"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "İlgili tüm verileri silin."
@@ -3378,19 +3388,13 @@ tr:
       warning_one: Projenin üyeleri, projenin depoları yeniden yerleştirmek zorunda kalacaklardır.
       warning_two: Projeye mevcut bağlantılar artık çalışmayacaktır.
       title: Projenin tanımlayıcısını değiştirme
+    not_available: "Project N/A"
     template:
       copying: >
         Projeniz seçilen şablon projesinden oluşturuluyor. Proje hazır olur olmaz posta ile bilgilendirileceksiniz.
       use_template: "Şablon kullan"
       make_template: "Şablon olarak ayarla"
       remove_from_templates: "Şablonlardan kaldır"
-    archive:
-      are_you_sure: "'%{name}' projesini arşivlemek istediğinize emin misiniz?"
-      archived: "Arşivlenen"
-    count:
-      zero: "Proje yok"
-      one: "1 proje"
-      other: "%{count} proje"
   project_module_activity: "Etkinlik"
   project_module_forums: "Forumlar"
   project_module_work_package_tracking: "İş paketleri"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -156,7 +158,7 @@ RSpec.describe CustomField do
 
       it "is not valid" do
         expect(field)
-          .to be_invalid
+          .not_to be_valid
       end
     end
 
@@ -289,20 +291,25 @@ RSpec.describe CustomField do
     end
 
     context "for a version custom field" do
-      let(:versions) { [build_stubbed(:version), build_stubbed(:version)] }
+      let(:versions) { [build_stubbed(:version, project:), build_stubbed(:version, project:)] }
+      let(:shared_versions_scope) { instance_double(ActiveRecord::Relation) }
 
       before do
         field.field_format = "version"
+        allow(shared_versions_scope)
+          .to receive(:references)
+          .with(:project)
+          .and_return(versions)
       end
 
       context "with a project provided" do
         it "returns the project's shared_versions" do
           allow(project)
             .to receive(:shared_versions)
-            .and_return(versions)
+            .and_return(shared_versions_scope)
 
           expect(field.possible_values_options(project))
-            .to eql(versions.sort.map { |u| [u.name, u.id.to_s] })
+            .to eql(versions.sort.map { |u| [u.name, u.id.to_s, project.name] })
         end
       end
 
@@ -312,10 +319,10 @@ RSpec.describe CustomField do
         it "returns the project's shared_versions" do
           allow(project)
             .to receive(:shared_versions)
-            .and_return(versions)
+            .and_return(shared_versions_scope)
 
           expect(field.possible_values_options(project))
-            .to eql(versions.sort.map { |u| [u.name, u.id.to_s] })
+            .to eql(versions.sort.map { |u| [u.name, u.id.to_s, project.name] })
         end
       end
 
@@ -323,10 +330,10 @@ RSpec.describe CustomField do
         it "returns the systemwide versions" do
           allow(Version)
             .to receive(:systemwide)
-            .and_return(versions)
+            .and_return(shared_versions_scope)
 
           expect(field.possible_values_options)
-            .to eql(versions.sort.map { |u| [u.name, u.id.to_s] })
+            .to eql(versions.sort.map { |u| [u.name, u.id.to_s, project.name] })
         end
       end
     end

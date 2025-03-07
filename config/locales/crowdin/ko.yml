@@ -650,7 +650,7 @@ ko:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -746,6 +746,7 @@ ko:
       new_child_text: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
       existing_child: "기존 자식"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
+      label_closest: "Closest"
       label_blocks_singular: "블록"
       label_blocks_plural: "블록"
       blocks_description: "이 패키지가 먼저 종료될 때까지 관련 작업 패키지를 종료할 수 없습니다"
@@ -906,6 +907,8 @@ ko:
         active_value:
           true: "보관 취소됨"
           false: "보관됨"
+        description: "설명"
+        enabled_modules: "Enabled modules"
         identifier: "식별자"
         latest_activity_at: "다음의 최근 활동"
         parent: "하위 프로젝트"
@@ -914,9 +917,7 @@ ko:
           true: "공개"
           false: "비공개"
         queries: "쿼리"
-        enabled_modules: "Enabled modules"
         status_code: "프로젝트 상태"
-        description: "설명"
         status_explanation: "프로젝트 상태 설명"
         status_codes:
           not_started: "시작되지 않음"
@@ -2843,6 +2844,8 @@ ko:
   label_projects_menu: "프로젝트"
   label_today: "오늘"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "상단 메뉴"
   label_topic_plural: "항목"
   label_total: "합계"
@@ -3327,6 +3330,13 @@ ko:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "프로젝트 '%{name}'을(를) 보관하시겠습니까?"
+      archived: "보관됨"
+    count:
+      zero: "0개 프로젝트"
+      one: "1개 프로젝트"
+      other: "%{count}개 프로젝트"
     destroy:
       confirmation: "계속하면 %{identifier} 프로젝트가 영구적으로 제거됩니다. 이 작업을 확인하려면 아래 필드에 프로젝트 이름을 입력하세요. 이렇게 하면 다음이 허용됩니다."
       project_delete_result_1: "모든 관련 데이터를 삭제합니다."
@@ -3339,19 +3349,13 @@ ko:
       warning_one: 프로젝트 멤버는 프로젝트의 리포지토리를 재배치해야 합니다.
       warning_two: 프로젝트의 기존 링크는 더 이상 작동하지 않습니다.
       title: 프로젝트의 식별자 변경
+    not_available: "Project N/A"
     template:
       copying: >
         선택한 템플릿 프로젝트에서 프로젝트를 만들고 있습니다. 프로젝트가 사용 가능하게 되면 즉시 메일로 알려드립니다.
       use_template: "템플릿 사용"
       make_template: "템플릿으로 설정"
       remove_from_templates: "템플릿에서 제거"
-    archive:
-      are_you_sure: "프로젝트 '%{name}'을(를) 보관하시겠습니까?"
-      archived: "보관됨"
-    count:
-      zero: "0개 프로젝트"
-      one: "1개 프로젝트"
-      other: "%{count}개 프로젝트"
   project_module_activity: "활동"
   project_module_forums: "포럼"
   project_module_work_package_tracking: "작업 패키지"

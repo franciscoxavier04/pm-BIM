@@ -79,7 +79,7 @@ zh-CN:
         text: "您确定要删除当前使用的企业版令牌吗？"
         title: "删除令牌"
       replace_token: "替换您当前的支持令牌"
-      order: "订购本地部署的 Enterprise edition"
+      order: "订购本地部署版的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
       required_for_feature: "此功能仅限具激活的企业版支持令牌的订阅者使用。"
       enterprise_link: "如需了解详细信息，请单击此处。"
@@ -646,7 +646,7 @@ zh-CN:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -742,6 +742,7 @@ zh-CN:
       new_child_text: "创建工作包，作为当前(父)工作包的子项"
       existing_child: "添加现有子项"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
+      label_closest: "Closest"
       label_blocks_singular: "阻止"
       label_blocks_plural: "阻止"
       blocks_description: "在本工作包结束之前，相关工作包不能关闭"
@@ -902,6 +903,8 @@ zh-CN:
         active_value:
           true: "未归档"
           false: "已归档"
+        description: "描述"
+        enabled_modules: "启用的模块"
         identifier: "标识符"
         latest_activity_at: "最近一次活动"
         parent: "父项目"
@@ -910,9 +913,7 @@ zh-CN:
           true: "公开"
           false: "私有"
         queries: "查询"
-        enabled_modules: "启用的模块"
         status_code: "项目状态"
-        description: "描述"
         status_explanation: "项目状态描述"
         status_codes:
           not_started: "未开始"
@@ -2778,7 +2779,7 @@ zh-CN:
   label_revision_id: "修订版本 %{value}"
   label_revision_plural: "修订"
   label_roadmap: "路线图"
-  label_roadmap_edit: "编辑路线图 %{name}"
+  label_roadmap_edit: "编辑路线图%{name}"
   label_roadmap_due_in: "%{value} 到期"
   label_roadmap_no_work_packages: "该版本没有工作包。"
   label_roadmap_overdue: "%{value} 超时"
@@ -2839,6 +2840,8 @@ zh-CN:
   label_projects_menu: "项目"
   label_today: "今天"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "顶部的菜单"
   label_topic_plural: "主题"
   label_total: "共"
@@ -3321,6 +3324,13 @@ zh-CN:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "是否确定想要归档项目 '%{name}'？"
+      archived: "已存档"
+    count:
+      zero: "0 个项目"
+      one: "1个项目"
+      other: "%{count} 个项目"
     destroy:
       confirmation: "如果继续操作，项目 %{identifier} 将被永久销毁。为确认此操作，请在下方的字段中输入项目名称，此操作将会："
       project_delete_result_1: "删除所有相关数据。"
@@ -3333,19 +3343,13 @@ zh-CN:
       warning_one: 项目的成员将重新迁移至项目的存储库。
       warning_two: 该项目的现有链接将不再有效。
       title: 更改项目的标识符
+    not_available: "Project N/A"
     template:
       copying: >
         您的项目正在从选定的模板项目进行创建。一旦项目可用，您将会收到邮件通知。
       use_template: "使用模板"
       make_template: "设置为模板"
       remove_from_templates: "从模板中移除"
-    archive:
-      are_you_sure: "是否确定想要归档项目 '%{name}'？"
-      archived: "已存档"
-    count:
-      zero: "0 个项目"
-      one: "1个项目"
-      other: "%{count} 个项目"
   project_module_activity: "活动"
   project_module_forums: "论坛"
   project_module_work_package_tracking: "工作包"
@@ -3449,7 +3453,7 @@ zh-CN:
       managed: "在 OpenProject 中创建新的存储库"
     storage:
       not_available: "磁盘存储开销不可用于此存储库。"
-      update_timeout: "在 N 分钟内保留存储库最后所需磁盘空间的信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
+      update_timeout: "在 N 分钟内保留存储库最后所需的磁盘空间信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
@@ -3617,7 +3621,7 @@ zh-CN:
   setting_session_ttl_hint: "当设置的值低于5时，其作用类似于禁用。"
   setting_session_ttl_enabled: "会话过期"
   setting_start_of_week: "一周起始日"
-  setting_sys_api_enabled: "启用版本库管理 web 服务"
+  setting_sys_api_enabled: "启用存储库管理网页服务"
   setting_sys_api_description: "存储库管理网页服务提供了集成的，用户授权的存储库访问。"
   setting_time_format: "时间"
   setting_total_percent_complete_mode: "计算 完成% 层次结构总数"
@@ -3964,7 +3968,7 @@ zh-CN:
   warning_user_limit_reached_admin: >
     添加额外的用户将超出当前限制。请<a href="%{upgrade_url}">升级您的计划</a>，以确保外部用户能够访问此实例。
   warning_user_limit_reached_instructions: >
-    您达到了用户限制（%{current}/%{max}活跃用户）。 请联系sales@openproject.com以升级您的Enterprise edition计划并添加其他用户。
+    您已达到用户限制（%{current}/%{max} 活跃用户）。请联系 sales@openproject.com 升级您的企业版计划以添加额外用户。
   warning_protocol_mismatch_html: >
 
   warning_bar:

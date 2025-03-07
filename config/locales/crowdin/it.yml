@@ -76,11 +76,11 @@ it:
       upgrade_to_ee: "Aggiorna a Enterprise edition"
       add_token: "Carica un token di assistenza per Enterprise edition"
       delete_token_modal:
-        text: "Vuoi davvero rimuovere il token Enterprise edition attualmente utilizzato?"
+        text: "Vuoi davvero rimuovere il token Enterprise Edition attualmente utilizzato?"
         title: "Elimina token"
       replace_token: "Sostituisci il token di assistenza attuale"
       order: "Ordina l'edizione Enterprise on-premises"
-      paste: "Incolla il tuo token di assistenza per Enterprise edition"
+      paste: "Incolla il tuo token di assistenza per Enterprise Edition"
       required_for_feature: "Questa aggiunta è disponibile solo con un token di assistenza Enterprise Edition attivo."
       enterprise_link: "Per ulteriori informazioni, clicca qui."
       start_trial: "Inizia la prova gratuita"
@@ -655,7 +655,7 @@ it:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -752,6 +752,7 @@ it:
       new_child_text: "Crea una macro-attività correlata come sottovoce della macro-attività attuale (genitore)"
       existing_child: "Figlio esistente"
       child_description: "Rende la macro-attività correlata un sottoelemento della macro-attività corrente (genitore)"
+      label_closest: "Closest"
       label_blocks_singular: "blocca"
       label_blocks_plural: "blocca"
       blocks_description: "La relativa macro-attività non può essere chiusa fino a quando questa non sarà chiusa prima"
@@ -912,6 +913,8 @@ it:
         active_value:
           true: "Rimosso dall'archivio"
           false: "archiviato"
+        description: "Descrizione"
+        enabled_modules: "Enabled modules"
         identifier: "Identificatore"
         latest_activity_at: "Ultima attività alle"
         parent: "Sotto-progetto di"
@@ -920,9 +923,7 @@ it:
           true: "pubblico"
           false: "privato"
         queries: "Interrogazioni"
-        enabled_modules: "Enabled modules"
         status_code: "Stato del progetto"
-        description: "Descrizione"
         status_explanation: "Descrizione dello stato del progetto"
         status_codes:
           not_started: "Non iniziato"
@@ -1096,7 +1097,7 @@ it:
         confirmation: "non coincide con %{attribute}."
         could_not_be_copied: "%{dependency} non può essere (completamente) copiato."
         does_not_exist: "non esiste."
-        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise edition"
+        error_enterprise_only: "%{action} è disponibile solo in OpenProject Enterprise Edition"
         error_unauthorized: "potrebbe non essere accessibile."
         error_readonly: "è in sola lettura, pertanto non è stato possibile modificarlo."
         error_conflict: "L'informazione è stata aggiornata da almeno un altro utente nel frattempo."
@@ -1997,7 +1998,7 @@ it:
   error_cookie_missing: "Il cookie di OpenProject è mancante. Prego, verifica che i cookie siano attivati, questa applicazione non funziona correttamente senza."
   error_custom_option_not_found: "L'opzione non esiste."
   error_enterprise_activation_user_limit: "Il tuo account potrebbe non essere attivo (raggiunto il limite utente). Si prega di contattare l'amministratore per ottenere l'accesso."
-  error_enterprise_token_invalid_domain: "L'Enterprise edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
+  error_enterprise_token_invalid_domain: "L'Enterprise Edition non è attiva. Il dominio del token Enterprise (%{actual}) non corrisponde al nome host del sistema (%{expected})."
   error_failed_to_delete_entry: "Cancellazione voce non riuscita."
   error_in_dependent: "Errore nel tentativo di modificare l'oggetto dipendente: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Errore nel tentativo di creare un oggetto dipendente: %{dependent_class} - %{related_subject}: %{error}"
@@ -2189,10 +2190,10 @@ it:
     blocks:
       community: "Comunità di OpenProject"
       upsale:
-        title: "Aggiorna ad Enterprise edition"
+        title: "Aggiorna ad Enterprise Edition"
         more_info: "Altre informazioni"
     links:
-      upgrade_enterprise_edition: "Aggiorna ad Enterprise edition"
+      upgrade_enterprise_edition: "Aggiorna ad Enterprise Edition"
       postgres_migration: "Migrazione dell'installazione su PostgreSQL"
       user_guides: "Guide utente"
       faq: "FAQ"
@@ -2517,7 +2518,7 @@ it:
   label_enumerations: "Enumerazioni"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} utenti attivi riservati"
-  label_enterprise_edition: "Enterprise edition"
+  label_enterprise_edition: "Enterprise Edition"
   label_enterprise_support: "Supporto per Imprese"
   label_environment: "Ambiente"
   label_estimates_and_progress: "Stime e progressi"
@@ -2879,6 +2880,8 @@ it:
   label_projects_menu: "Progetti"
   label_today: "oggi"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Top Menu"
   label_topic_plural: "Argomenti"
   label_total: "Totale"
@@ -3366,6 +3369,13 @@ it:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Sicuro di voler archiviare il progetto '%{name}'?"
+      archived: "Archiviato"
+    count:
+      zero: "0 progetti"
+      one: "1 progetto"
+      other: "%{count} progetti"
     destroy:
       confirmation: "Se continui, il progetto %{identifier} verrà distrutto definitivamente. Per confermare questa azione, inserisci il nome del progetto nel campo sottostante, questa operazione:"
       project_delete_result_1: "Eliminerà tutti i salvataggi remoti"
@@ -3378,19 +3388,13 @@ it:
       warning_one: I membri del progetto dovranno trasferire gli archivi del progetto.
       warning_two: I collegamenti esistenti al progetto non funzioneranno più.
       title: Modifica l'identificatore del progetto
+    not_available: "Project N/A"
     template:
       copying: >
         Il tuo progetto è in fase di creazione dal progetto modello selezionato. Sarai avvisato via mail non appena il progetto sarà disponibile.
       use_template: "Utilizza modello"
       make_template: "Imposta come modello"
       remove_from_templates: "Rimuovi dai modelli"
-    archive:
-      are_you_sure: "Sicuro di voler archiviare il progetto '%{name}'?"
-      archived: "Archiviato"
-    count:
-      zero: "0 progetti"
-      one: "1 progetto"
-      other: "%{count} progetti"
   project_module_activity: "Attività"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Macro-attività"

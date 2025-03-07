@@ -666,7 +666,7 @@ ro:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -764,6 +764,7 @@ ro:
       new_child_text: "Creează un pachet de lucru asociat ca sub-element al pachetului de lucru curent (părinte)"
       existing_child: "Copil existent"
       child_description: "Face din pachetul de lucru asociat un sub-element al pachetului de lucru actual (părinte)"
+      label_closest: "Closest"
       label_blocks_singular: "blochează"
       label_blocks_plural: "blochează"
       blocks_description: "Pachetul de lucru asociat nu poate fi închis până când acesta nu este închis mai întâi"
@@ -924,6 +925,8 @@ ro:
         active_value:
           true: "dezarhivat"
           false: "arhivat"
+        description: "Descriere"
+        enabled_modules: "Enabled modules"
         identifier: "Identificator"
         latest_activity_at: "Ultima activitate la"
         parent: "Subproiect în"
@@ -932,9 +935,7 @@ ro:
           true: "public"
           false: "privat"
         queries: "Interogări"
-        enabled_modules: "Enabled modules"
         status_code: "Stare proiect"
-        description: "Descriere"
         status_explanation: "Descriere stadiu proiect"
         status_codes:
           not_started: "Neînceput"
@@ -2546,7 +2547,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editare"
+  label_edit: "Editează"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2600,7 +2601,7 @@ ro:
   label_generate_key: "Generare cheie"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupare după"
+  label_group_by: "Grupează după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"
@@ -2921,6 +2922,8 @@ ro:
   label_projects_menu: "Proiecte"
   label_today: "astăzi"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Meniul de sus"
   label_topic_plural: "Subiecte"
   label_total: "Total"
@@ -3409,6 +3412,13 @@ ro:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Sunteţi sigur că doriţi să arhivaţi proiectul '%{name}'?"
+      archived: "Arhivat"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3421,19 +3431,13 @@ ro:
       warning_one: Participanții la proiect vor trebui să mute arhivele proiectului.
       warning_two: Legăturile existente la acest proiect nu vor mai funcționa.
       title: Modificare identificator proiect
+    not_available: "Project N/A"
     template:
       copying: >
         Proiectul dumneavoastră este creat din proiectul șablon selectat. Veți fi notificat prin e-mail imediat ce proiectul va fi disponibil.
       use_template: "Utilizează șablon"
       make_template: "Setează ca șablon"
       remove_from_templates: "Eliminați din șabloane"
-    archive:
-      are_you_sure: "Sunteţi sigur că doriţi să arhivaţi proiectul '%{name}'?"
-      archived: "Arhivat"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Activitate"
   project_module_forums: "Forumuri"
   project_module_work_package_tracking: "Pachete de lucru"
