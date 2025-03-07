@@ -10,14 +10,66 @@ release_date: 2025-03-06
 
 Release date: 2025-03-06
 
-We released OpenProject [OpenProject 15.4.0](https://community.openproject.org/versions/2165).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released OpenProject [OpenProject 15.4.0](https://community.openproject.org/versions/2165). The release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+### Enable automatic scheduling mode - to start as soon as possible
+
+Starting with OpenProject 15.4, users will be able to choose wheather they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor/successor relations, will make managing complex project setups much easier.
+
+> [!NOTE]
+> The new feature will not overwrite existing dates for any existing work packages. However, it can change the scheduling mode. By default, manual scheduling is enabled.
+
+![New scheduling modes: Automatic and Manual](manualAutomatic_schedulingModes.png)
+
+In **manual mode**, users can freely select dates and can set timelines based on specific needs, deadlines or external factors. Manually scheduled work packages behave as they did before 15.4.
+
+In the **new automatic mode**, manually setting a start date is not possible. Instead, when a task is scheduled, the date picker automatically determines the start date based on the nearest predecessor. However, you can still define a duration, which adjusts the finish date accordingly. This ensures a reliable sequence of automatically scheduled work packages that adapt dynamically to planning changes.
+
+To learn more about why we needed this change and how it might help you manage your projects, please read [this blog article on the new automatic scheduling mode](../../../blog/new-automatic-scheduling-mode/) that we published some weeks ago. See our documentation to get detailed information about how to use the automatic schedlung mode.
+
+### Set agenda item outcomes for meetings
+
+Text (important: goal is to let meeting participants note relevant decisions, questions and follow-up actions during a meeting. Also: More features to follow, workflow for minutes and participants on closing the meeting (#61911) and Meeting agenda items backlog for recurring meetings (#54751).)
+
+https://community.openproject.org/wp/57799
+
+Screenshot
+
+### Generate PDF documents from a work package description
+
+Text (important: article here https://www.openproject.org/blog/beyond-documents-generate-pdf-files/)
+
+https://community.openproject.org/wp/45896
+
+Screenshot
+
+### Better manage a large number of projects with an enhanced project lists view
+
+Text (More autocompleters for filtering project lists and version autocompleter for filter falues on the project list)
+
+https://community.openproject.org/wp/59169
+
+Screenshot
+
+### Use @-mention of user when quote replying to a comment
+
+Text
+
+https://community.openproject.org/wp/37093
+
+Screenshot
+
+### Restructured administration and enumerations page removed
+
+Text
+
+https://community.openproject.org/wp/61733
+
+Link to the new 3 parts in the docs which were before enumerations page
+
+Screenshot
 
 ## Important updates and breaking changes
 
@@ -116,12 +168,11 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to René Schodder, Abhiyan Paudyal, Gunter Ohrner, Markus K..
+A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to René Schodder, Abhiyan Paudyal, Gunter Ohrner and Markus K..
 
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
+- 
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
