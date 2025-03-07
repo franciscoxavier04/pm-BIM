@@ -50,7 +50,7 @@ module WorkPackages
       attr_reader :work_package, :filter, :last_server_timestamp, :deferred
 
       def wrapper_data_attributes
-        stimulus_controller = "work-packages--activities-tab--index"
+        stimulus_controller = activities_tab_index_stimulus_controller
 
         {
           test_selector: "op-wp-activity-tab",
@@ -75,7 +75,8 @@ module WorkPackages
           test_selector: "op-work-package-journal--new-comment-component",
           controller: stimulus_controller,
           "application-target": "dynamic",
-          "#{stimulus_controller}-target": "formContainer"
+          "#{stimulus_controller}-target": "formContainer",
+          action: "#{activities_tab_index_stimulus_controller}:onSubmit-end@window->#{stimulus_controller}#onSubmitEnd"
         }
       end
 
@@ -91,6 +92,8 @@ module WorkPackages
       def adding_comment_allowed?
         User.current.allowed_in_work_package?(:add_work_package_notes, @work_package)
       end
+
+      def activities_tab_index_stimulus_controller = "work-packages--activities-tab--index"
     end
   end
 end
