@@ -8,6 +8,10 @@ get_architecture() {
 				echo "arm64"
 				return 0
 				;;
+			ppc64le)
+				echo "ppc64le"
+				return 0
+				;;
 		esac
 	fi
 

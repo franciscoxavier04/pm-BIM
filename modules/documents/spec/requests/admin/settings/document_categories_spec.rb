@@ -88,4 +88,13 @@ RSpec.describe "Document categories",
       end
     end
   end
+
+  describe "PUT /admin/settings/document_categories/:id/move" do
+    it "moves the category to the bottom" do
+      put move_admin_settings_document_category_path(category), params: { move_to: "lowest" }, as: :turbo_stream
+
+      expect(response).to have_http_status(:ok)
+      expect(category.reload.position).to be > other_category.reload.position
+    end
+  end
 end
