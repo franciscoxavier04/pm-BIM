@@ -44,7 +44,9 @@ Text (important: goal is to let meeting participants note relevant decisions, qu
 
 https://community.openproject.org/wp/57799
 
-Screenshot
+![alt text](openproject-15-4-meeting-status.png) 
+
+![alt text](openproject-15-4-meetings-outcome-highlighted.png)
 
 ### Generate PDF documents from a work package description
 
