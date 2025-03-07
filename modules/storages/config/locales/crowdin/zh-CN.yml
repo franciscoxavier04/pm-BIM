@@ -224,7 +224,7 @@ zh-CN:
       project_folders: 项目文件夹
       redirect_uri: 重定向 URI
       storage_audience: 存储受众
-      storage_audience_blank: 未配置观众
+      storage_audience_blank: No audience has been configured.
       storage_audience_description: 为受众 “%{audience}” 获取令牌。
       storage_audience_idp: 使用身份提供者收到的第一个访问令牌，不管受众如何。
       storage_oauth: Nextcloud OAuth
