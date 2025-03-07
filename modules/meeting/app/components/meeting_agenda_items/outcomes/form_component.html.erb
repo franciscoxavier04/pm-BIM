@@ -1,5 +1,5 @@
 <%=
-  component_wrapper(data: wrapper_data_attributes) do
+  component_wrapper do
     primer_form_with(
       model: @meeting_outcome,
       method: @method,
@@ -8,10 +8,7 @@
       grid_layout("op-meeting-outcome-form", tag: :div) do |grid|
         grid.with_area(
           :notes,
-          data: {
-            "test-selector": "meeting-outcome-input",
-            "meeting-outcome-form-target": "notesInput"
-          }
+          data: wrapper_data_attributes
         ) do
           render(MeetingAgendaItem::Outcome::Notes.new(f))
         end
