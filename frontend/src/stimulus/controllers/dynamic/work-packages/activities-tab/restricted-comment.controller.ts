@@ -31,18 +31,22 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class RestrictedCommentController extends Controller {
-  static targets = ['visibilityCheckbox', 'formContainer'];
+  static targets = ['restrictedCheckbox', 'formContainer'];
 
-  declare readonly visibilityCheckboxTarget:HTMLInputElement;
+  declare readonly restrictedCheckboxTarget:HTMLInputElement;
   declare readonly formContainerTarget:HTMLElement;
 
-  toggleVisibility():void {
-    const restrictedCommentBgColorClass = 'work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment';
+  private restrictedCommentBgColorClass:string = 'work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment';
 
-    if (this.visibilityCheckboxTarget.checked) {
-      this.formContainerTarget.classList.add(restrictedCommentBgColorClass);
+  onSubmitEnd(_event:CustomEvent):void {
+    this.toggleBackgroundColor();
+  }
+
+  toggleBackgroundColor():void {
+    if (this.restrictedCheckboxTarget.checked) {
+      this.formContainerTarget.classList.add(this.restrictedCommentBgColorClass);
     } else {
-      this.formContainerTarget.classList.remove(restrictedCommentBgColorClass);
+      this.formContainerTarget.classList.remove(this.restrictedCommentBgColorClass);
     }
   }
 }

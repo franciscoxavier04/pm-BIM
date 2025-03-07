@@ -752,6 +752,7 @@ export default class IndexController extends Controller {
       })
       .finally(() => {
         this.setFormSubmitInProgress(false);
+        this.dispatch('onSubmit-end');
       });
   }
 
