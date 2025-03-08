@@ -609,6 +609,7 @@ zh-TW:
         pattern:
           label: "主題模板"
           caption: "搜尋屬性或新增文字。若要在元素之間建立空格，請將其建立為文字。"
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"

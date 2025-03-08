@@ -633,6 +633,7 @@ ru:
         pattern:
           label: "Шаблон темы"
           caption: "Поиск атрибута или добавление текста. Чтобы создать пробел между элементами, добавьте его в виде текста."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."

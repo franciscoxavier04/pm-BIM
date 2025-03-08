@@ -607,6 +607,7 @@ zh-CN:
         pattern:
           label: "主题模式"
           caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"

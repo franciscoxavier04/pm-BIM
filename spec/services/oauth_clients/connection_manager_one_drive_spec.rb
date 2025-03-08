@@ -74,8 +74,14 @@ RSpec.describe OAuthClients::ConnectionManager, :oauth_connection_helpers, :webm
           .to_return(status: 404)
       end
 
-      it "raises an error" do
-        expect { subject.code_to_token(code) }.to raise_error(RuntimeError, /Storages::StorageErrorData.*@status=404/)
+      it "returns a failure", :aggregate_failures do
+        result = subject.code_to_token(code)
+        expect(result).to be_failure
+        expect(result.errors).to be_a(Storages::StorageError)
+      end
+
+      it "does not create a token" do
+        expect { subject.code_to_token(code) }.not_to change(OAuthClientToken, :count)
       end
     end
   end

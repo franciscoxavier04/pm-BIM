@@ -611,6 +611,7 @@ ko:
         pattern:
           label: "제목 패턴"
           caption: "특성을 검색하거나 텍스트를 추가하세요. 요소 사이에 공백을 넣으려면 텍스트로 추가하세요."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
