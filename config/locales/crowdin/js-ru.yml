@@ -312,7 +312,7 @@ ru:
           two: "Второй критерий сортировки"
           three: "Третий критерий сортировки"
     gantt_chart:
-      label: "Диаграмма Ганта"
+      label: "График Гантта"
       quarter_label: "Q%{quarter_number}"
       labels:
         title: "Конфигурация метки"
