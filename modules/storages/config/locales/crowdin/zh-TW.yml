@@ -224,7 +224,7 @@ zh-TW:
       project_folders: 專案資料夾
       redirect_uri: 重新導向 URI
       storage_audience: 儲存受眾
-      storage_audience_blank: No audience has been configured.
+      storage_audience_blank: 尚未設定受眾。
       storage_audience_description: 取得受眾 "%{audience}" 的權杖(tokens)。
       storage_audience_idp: 使用身分提供者收到的第一個存取標記，不論受眾為何。
       storage_oauth: NextCloud 授權 (OAuth)

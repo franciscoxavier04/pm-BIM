@@ -3382,6 +3382,10 @@ el:
       project_verification: "Εισάγετε το όνομα του έργου %{name} για να επιβεβαιώσετε τη διαγραφή."
       subprojects_confirmation: "Το(-α) υποέργο(-α) του: %{value} θα διαγραφεί(-ουν)."
       title: "Διαγραφή του έργου %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Τα μέλη του έργου θα πρέπει να μεταφέρουν τα αποθετήρια του έργου.
       warning_two: Οι υπάρχοντες σύνδεσμοι για το έργο δεν λειτουργούν πλέον.

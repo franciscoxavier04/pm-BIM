@@ -3384,6 +3384,10 @@ es:
       project_verification: "Introduzca el nombre del proyecto %{name} para confirmar la eliminación."
       subprojects_confirmation: "Los sub-proyecto(s): %{value} también serán eliminado."
       title: "Borrar el proyecto %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Los miembros del proyecto deberán migrar los repositorios del proyecto.
       warning_two: Los links al proyeto existentes dejarán de funcionar.

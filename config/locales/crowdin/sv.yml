@@ -3387,6 +3387,10 @@ sv:
       project_verification: "Ange projektnamn %{name} för att verifiera raderingen."
       subprojects_confirmation: "Följande delprojekt kommer också raderas: %{value}."
       title: "Radera projektet %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Projektets medlemmar kommer att vara tvungna att flytta projektetdatabaserna.
       warning_two: Befintliga länkar till projektet kommer inte att fungera längre.

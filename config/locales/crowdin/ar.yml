@@ -3551,6 +3551,10 @@ ar:
       project_verification: "أدخل اسم المشروع %{name} للتحقق من الحذف."
       subprojects_confirmation: "مشاريعها الفرعية:%{value} سيتم حذفها أيضا."
       title: "حذف %{name} المشروع"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: وسيكون أعضاء المشروع إلى نقل مستودعات للمشروع.
       warning_two: لن تعد تعمل الارتباطات الموجودة في المشروع.

@@ -3380,6 +3380,10 @@ ca:
       project_verification: "Introdueixi el nom del projecte %{name} per verificar la supressió."
       subprojects_confirmation: "Els subproject(s): %{value} també es suprimiran."
       title: "Suprimir el projecte %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Els membres del projecte hauran de reubicar els repositoris del projecte.
       warning_two: Els vncles existents al projecte ja no funcionaran.

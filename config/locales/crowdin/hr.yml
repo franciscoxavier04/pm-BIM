@@ -3428,6 +3428,10 @@ hr:
       project_verification: "Unesite naziv projekta %{name} za potvrdu brisanja."
       subprojects_confirmation: "Pripadajući podprojekt(i): %{value} će također biti izbrisani."
       title: "Izbriši projekt %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Članovi projekta morati će relocirati repozitorije projketa.
       warning_two: Postojeće poveznice na projektu neće više funkcionirati.

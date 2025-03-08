@@ -3344,6 +3344,10 @@ ja:
       project_verification: "削除を確認するため、プロジェクト名 %{name} を入力してください。"
       subprojects_confirmation: "子プロジェクト: %{value} も削除されます。"
       title: "プロジェクト %{name} を削除"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: プロジェクトのメンバーは、プロジェクトのリポジトリを再配置する必要があります。
       warning_two: プロジェクトへの既存のリンクは機能しなくなります。

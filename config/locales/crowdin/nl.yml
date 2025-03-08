@@ -3382,6 +3382,10 @@ nl:
       project_verification: "Voer de projectnaam %{name} in om de verwijdering te verifiëren."
       subprojects_confirmation: "De subproject(en): %{value} worden ook verwijderd."
       title: "Verwijder het project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Leden van het project zullen de opslagplaatsen van het project moeten verplaatsen.
       warning_two: Bestaande koppelingen naar het project zullen niet langer werken.

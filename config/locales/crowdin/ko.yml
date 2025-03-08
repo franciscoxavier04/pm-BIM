@@ -3345,6 +3345,10 @@ ko:
       project_verification: "삭제를 확인하려면 프로젝트 이름 %{name}(을)를 입력하세요."
       subprojects_confirmation: "하위 프로젝트 %{value}도 삭제됩니다."
       title: "프로젝트 %{name} 삭제"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: 프로젝트 멤버는 프로젝트의 리포지토리를 재배치해야 합니다.
       warning_two: 프로젝트의 기존 링크는 더 이상 작동하지 않습니다.

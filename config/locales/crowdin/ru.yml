@@ -3466,6 +3466,10 @@ ru:
       project_verification: "Введите название проекта %{name} для проверки удаления."
       subprojects_confirmation: "Его подпроекты: %{value} также будут удалены."
       title: "Удаление проекта %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Участникам проекта нужно будет переместить репозитории проекта.
       warning_two: Существующие ссылки на проект больше работать не будут.

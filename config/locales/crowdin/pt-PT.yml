@@ -3383,6 +3383,10 @@ pt-PT:
       project_verification: "Insira o nome do projeto %{name} para verificar a eliminação."
       subprojects_confirmation: "O(s) seu(s) sub-projeto(s): %{value} também será/serão apagado(s)."
       title: "Apagar o projeto %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Os membros do projeto terão de realocar os repositórios do projeto.
       warning_two: Os links existentes para o projeto já não funcionarão.

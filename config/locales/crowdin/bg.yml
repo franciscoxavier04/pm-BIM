@@ -3387,6 +3387,10 @@ bg:
       project_verification: "Въведете името на проекта %{name} , за да потвърдите изтриването."
       subprojects_confirmation: "Неговият(те) подпроект(и): %{value} също ще бъде изтрит(и)."
       title: "Изтриване на проекта %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Членовете на проекта ще трябва да преместят хранилищата на проекта.
       warning_two: Съществуващите връзки към проекта вече няма да работят.

@@ -3468,6 +3468,10 @@ sk:
       project_verification: "Zadajte názov projektu %{name} pre potvrdenie odstránenia."
       subprojects_confirmation: "Podprojekt (podprojekty): %{value} budú taktiež odstránené."
       title: "Odstrániť projekt %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Členovia projektu musia presunúť projektové archívy projektu.
       warning_two: Existujúce prepojenia na projekt už nebudú fungovať.
