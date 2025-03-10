@@ -40,7 +40,7 @@ In February 2025, we already published a milestone for our Meetings module: [Rec
 > [!NOTE]
 > In our classic meetings module, users could write "minutes", which are notes taken during the meeting. Users can still edit the agenda item description to do so, but now they can also use the outcome feature to make it more clear.
 
-The updated Meetings module now allows you to set a Meeting status: 
+The updated Meetings module now allows you to set a meeting status: 
 
 ![Screenshot: OpenProject's Meetings module, setting a meeting status](openproject-15-4-meeting-status.png)
 
@@ -53,11 +53,19 @@ Once the status is "in progress", you can add outcomes to every agenda item. If 
 
 ### Generate PDF documents from a work package description
 
-Text (important: article here https://www.openproject.org/blog/beyond-documents-generate-pdf-files/)
+With OpenProject 15.4, you can now generate nicely styled PDF files from a work package description. This is particularly helpful if you want to create contracts or other formal documents.
+
+If you click the "More" menu in a work package, you previsously had the "Download PDF" option which created a document that included all important work package information, including attributes like assignee and the work package description. Now, this option is renamed to **Generate PDF** and includes many more possibilities. Clicking "Generate PDF" opens an interface where you can customize your PDF, e.g. by choosing of you want hyphenation and by entering a footer text. 
+
+Most important, you can now choose between two templates: One is **attributes and description**, which creates a document like you were used to before 15.4. The other is **contract**, which generates a PDF in a style of a German contract and including only the work package description:
+
+![Screenshot: OpenProject work package, the option to Generate PDF with "Contract" selected as template](openproject-15-4-generate-pdf-template.png)
+
+Read this blog article to learn more about how this feature for automatically creating PDFs from the work package description can be a great help for organizations: [Beyond MS Word: Automatically generate beautifully styled pdf files for contracts, approval notices and project orders](https://www.openproject.org/blog/beyond-documents-generate-pdf-files/).
 
 https://community.openproject.org/wp/45896
 
-Screenshot
+
 
 ### Better manage a large number of projects with an enhanced project lists view
 
