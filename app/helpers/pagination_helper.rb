@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -73,7 +75,7 @@ module PaginationHelper
       content = will_paginate(paginator, options) || ""
 
       range = "(#{page_first} - #{page_last}/#{total})"
-      content << content_tag(:li, range, class: "op-pagination--range", title: range)
+      content += content_tag(:li, range, class: "op-pagination--range", title: range)
 
       content.html_safe
     end

@@ -221,6 +221,8 @@ fil:
             label_maximum_users: "Maximum active users"
             label_starts_at: "Starts at"
             label_expires_at: "Matapos sa"
+            label_plan: "Plan"
+            label_additional_features: "Additional features"
             receive_newsletter: I want to receive the OpenProject <a target="_blank" href="%{link}">newsletter</a>.
             taken_domain: There can only be one active trial per domain.
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -717,17 +719,18 @@ fil:
       description: "Description: Click to edit..."
       relation_description: "Pindutin upang magdagdag ng deskripsyon sa kaugnay na ito"
     project:
-      required_outside_context: >
-        Please choose a project to create the work package in to see all attributes. You can only select projects which have the type above activated.
-      context: "Kontekstong proyekto"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
-      use_template: "Use template"
-      no_template_selected: "(None)"
-      copy:
-        copy_options: "Copy options"
       autocompleter:
         label: "Proyektong autocompletion"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
+      context: "Kontekstong proyekto"
+      copy:
+        copy_options: "Copy options"
+      not_available: "Project N/A"
+      no_template_selected: "(None)"
+      required_outside_context: >
+        Please choose a project to create the work package in to see all attributes. You can only select projects which have the type above activated.
+      use_template: "Use template"
     reminders:
       settings:
         daily:
@@ -851,8 +854,6 @@ fil:
       select_branch: "Pumili ng sangay"
     field_value_enter_prompt: "Ipasok ang halaga para sa %{field}"
     project_menu_details: "Mga detalye"
-    scheduling:
-      manual: "Manual scheduling"
     sort:
       sorted_asc: "Pataas na paayos ang inilapat "
       sorted_dsc: "Pababa na paayosi ang inilapat "
@@ -900,15 +901,6 @@ fil:
       comment_send_failed: "Isang mali ang naganal. Hindi maaring magpasa ng komento."
       comment_updated: "Ang komento ay matagumpay na i-update."
       confirm_edit_cancel: "Sigurado ka ba na gusto mong kanselahin ang pag-edit ng work package?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Automatically scheduled. Dates are derived from relations."
-        manually_scheduled: "Manual scheduling enabled, all relations ignored."
-        start_date_limited_by_relations: "Available start and finish dates are limited by relations."
-        changing_dates_affects_follow_relations: "Changing these dates will affect dates of related work packages."
-        click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for GANTT overview.'
-        show_relations: "Show relations"
-        ignore_non_working_days:
-          title: "Working days only"
       description_filter: "Salain"
       description_enter_text: "Ipasok ang teksto"
       description_options_hide: "Itago ang mga opsyon"

@@ -21,19 +21,19 @@
 #++
 zh-CN:
   attributes:
-    additions_count: "Number of additions"
-    deletions_count: "Number of deletions"
-    comments_count: "Comments count"
-    github_html_url: "Pull Request URL"
-    github_app_owner_avatar_url: "Owner avatar URL"
-    review_comments_count: "Review comments count"
-    github: "GitHub identifer"
-    github_avatar_url: "Avatar URL"
-    github_updated_at: "Updated at"
-    github_login: "GitHub login"
-    labels: "Labels"
-    repository: "Repository"
-    changed_files_count: "Changed files"
+    additions_count: "新增的数量"
+    deletions_count: "删除的数量"
+    comments_count: "评论数"
+    github_html_url: "拉取请求 URL"
+    github_app_owner_avatar_url: "所有者头像 URL"
+    review_comments_count: "评审意见计数"
+    github: "GitHub 标识"
+    github_avatar_url: "头像 URL"
+    github_updated_at: "更新于"
+    github_login: "登录 GitHub"
+    labels: "标签"
+    repository: "存储库"
+    changed_files_count: "已更改的文件"
   button_add_deploy_target: 添加部署目标
   label_deploy_target: 部署目标
   label_deploy_target_new: 新的部署目标

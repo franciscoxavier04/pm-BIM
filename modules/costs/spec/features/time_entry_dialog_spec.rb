@@ -220,8 +220,11 @@ RSpec.describe "time entry dialog", :js, with_flag: :track_start_and_end_times_f
       visit cost_reports_path(work_package_a.project_id,
                               { fields: ["WorkPackageId"],
                                 operators: { WorkPackageId: "=" },
-                                values: { WorkPackageId: work_package_a.id },
+                                values: { WorkPackageId: [work_package_a.id, work_package_b.id] },
                                 set_filter: 1 })
+
+      # make sure that the work package is shown in the table
+      expect(page).to have_css("#result-table td[raw-data='#{work_package_a.id}']", text: work_package_a.subject)
 
       find("opce-time-entry-trigger-actions .icon-edit").click
 
@@ -230,12 +233,14 @@ RSpec.describe "time entry dialog", :js, with_flag: :track_start_and_end_times_f
         time_logging_modal.update_field("work_package_id", work_package_b.id)
         wait_for_network_idle # form refresh is happening here
         time_logging_modal.submit
+        wait_for_network_idle
       end.not_to change(TimeEntry, :count)
 
-      retry_block do
-        time_entry.reload
-        expect(time_entry.work_package).to eq(work_package_b)
-      end
+      expect(page).to have_css("#result-table td[raw-data='#{work_package_b.id}']", text: work_package_b.subject)
+
+      # also check that everything is updated in the database
+      time_entry.reload
+      expect(time_entry.work_package).to eq(work_package_b)
     end
   end
 end

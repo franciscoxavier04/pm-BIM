@@ -59,6 +59,12 @@ ms:
         end_date: "End date"
         iterations: "Kejadian"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "bukan masa yang sah. Format yang diperlukan: JJ:MM"
     models:
@@ -359,12 +365,19 @@ ms:
   label_agenda_item_undisclosed_wp: "Pakej kerja #%{id} tidak kelihatan"
   label_agenda_item_deleted_wp: " Rujukan pakej kerja yang dipadam"
   label_agenda_item_actions: "Tindakan item agenda"
+  label_agenda_item_move_to_next: "Move to next meeting"
   label_agenda_item_move_to_top: "Alih ke paling atas"
   label_agenda_item_move_to_bottom: "Alih ke paling bawah"
   label_agenda_item_move_up: "Alihkan ke atas"
   label_agenda_item_move_down: "Alihkan ke bawah"
   label_agenda_item_add_notes: "Tambah nota"
+  label_agenda_item_add_outcome: "Add outcome"
   label_agenda_item_work_package: "Pakej kerja item agenda"
+  label_agenda_outcome: "Outcome"
+  label_agenda_outcome_actions: "Agenda outcome actions"
+  label_agenda_outcome_edit: "Edit outcome"
+  label_agenda_outcome_delete: "Remove outcome"
+  text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: 'Item agenda "%{title}"'
   text_agenda_work_package_deleted: 'Item agenda untuk pakej kerja yang telah dipadam'
   text_deleted_agenda_item: 'Item agenda yang telah dipadam'
@@ -381,10 +394,16 @@ ms:
   label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Dibatalkan"
   label_meeting_state_skipped: "Dilangkau"
+  label_meeting_state_in_progress: "In progress"
   label_meeting_reopen_action: "Buka semula mesyuarat"
   label_meeting_close_action: "Tutup mesyuarat"
-  text_meeting_open_description: "Mesyuarat ini dibuka. Anda boleh tambah/keluarkan item agenda dan mengeditnya mengikut kesukaan anda. Setelah mesyuarat berakhir, tutup untuk menguncinya."
+  label_meeting_in_progress_action: "Mark as in progress"
+  text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
   text_meeting_closed_description: "Mesyuarat ini ditutup. Anda tidak boleh tambah/keluarkan item agenda lagi."
+  text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
+  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
+  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
   label_meeting_manage_participants: "Urus peserta"
   label_meeting_no_participants: "Tiada peserta"
   label_meeting_show_hide_participants: "Paparkan/sembunyikan %{count} lagi"
@@ -398,6 +417,9 @@ ms:
   text_add_work_package_to_meeting_description: "Pakej kerja boleh ditambah ke satu atau beberapa mesyuarat untuk perbincangan. Sebarang nota berkaitan juga boleh dilihat di sini."
   text_agenda_item_no_notes: "Tiada nota disediakan"
   text_agenda_item_not_editable_anymore: "Item agenda tidak boleh diedit lagi."
+  text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
+  text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Pakej kerja ini belum lagi dijadualkan dalam agenda mesyuarat akan datang."
+  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
   text_work_package_add_to_meeting_hint: 'Guna butang "Tambah ke mesyuarat" untuk tambah pakej kerja ini ke mesyuarat akan datang.'
   text_work_package_has_no_past_meeting_agenda_items: "Pakej kerja ini tidak diutarakan dalam mesyuarat yang lalu."

@@ -619,6 +619,7 @@ fil:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -641,6 +642,47 @@ fil:
     index:
       no_results_title_text: Sa kasalukuyan ay walang mga workflows.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "One descendant work package"
       other: "%{count} work package descendants"
@@ -714,6 +756,7 @@ fil:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -870,12 +913,12 @@ fil:
         resource: "Resource"
       oauth_client:
         client: "Client ID"
-      planning_element_type_color:
-        hexcode: Hex code
       project:
         active_value:
           true: "unarchived"
           false: "naka-archive"
+        description: "Deskripsyon"
+        enabled_modules: "Enabled modules"
         identifier: "Ang pagkakakilanlan"
         latest_activity_at: "Pinakamabagong aktibidad sa"
         parent: "Ang kahaliling proyekto ng"
@@ -884,9 +927,7 @@ fil:
           true: "public"
           false: "private"
         queries: "Mga query"
-        enabled_modules: "Enabled modules"
         status_code: "Estado ng proyekto"
-        description: "Deskripsyon"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -972,6 +1013,10 @@ fil:
         is_milestone: "Ay milestone"
         color: "Kulay"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Tagapangasiwa"
         auth_source: "Authentication source"
@@ -991,7 +1036,6 @@ fil:
       user_preference:
         comments_sorting: "Ipakita ang mga komento"
         impaired: "Aksezibilidad mode"
-        time_zone: "Time zone"
         auto_hide_popups: "Auto-hide success ang mga abiso"
         warn_on_leaving_unsaved: "Balaan mo ako kung aalais ng worj package na walang pag-save ng pagbabago"
         theme: "Mode"
@@ -1356,6 +1400,7 @@ fil:
               smaller_than_dates: "is smaller than the interval between the start and the finish date."
               not_available_for_milestones: "is not available for milestone typed work packages."
               cannot_be_null: "can not be set to null as start date and finish date are known."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "hindi maaring maging isang milestone."
               cannot_be_self_assigned: "cannot be assigned to itself."
@@ -1396,6 +1441,8 @@ fil:
               duplicate_group: "The group name '%{group}' is used more than once. Group names must be unique."
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Wala pangalan ng grupo ay hindi pinapayagan."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1606,6 +1653,7 @@ fil:
     subject: "Paksa"
     slug: "Slug"
     summary: "Buod"
+    time_zone: "Time zone"
     text: "Text"
     title: "Pamagat"
     type: "Uri"
@@ -2198,6 +2246,8 @@ fil:
           Progress calculation automatically <a href="%{href}" target="_blank">set to work-based mode and adjusted with version update</a>.
         progress_calculation_adjusted: >-
           Progress calculation automatically <a href="%{href}" target="_blank">adjusted with version update</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Work and progress totals automatically removed for non-parent work packages with <a href="%{href}" target="_blank">version update</a>. This is a maintenance task and can be safely ignored.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2833,6 +2883,9 @@ fil:
   label_title: "Pamagat"
   label_projects_menu: "Mga proyekto"
   label_today: "ngayon"
+  label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Itaas na pagpipilian"
   label_topic_plural: "Mga paksa"
   label_total: "Kabuuan"
@@ -3320,6 +3373,13 @@ fil:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Sigurado ka bang na gusto mong i-archive ang proyekto'%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3328,23 +3388,21 @@ fil:
       project_verification: "Isulat ang pangalan ng proyekto %{name} para ma-verify and pagtanggal."
       subprojects_confirmation: "Ito ay ang subproject(mga): %{value} ay maaring matanggal."
       title: "Tanggalin ang proyektong %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Ang mga miyembro ng proyekto ay kinakailangang ilipat ang mga repository ng proyekto.
       warning_two: Ang mga umiiral na mga link sa proyekto ay hindi na maaring magamit.
       title: Baguhin ang mga pagkakilanlan ng proyekto
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project. You will be notified by mail as soon as the project is available.
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Sigurado ka bang na gusto mong i-archive ang proyekto'%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Aktibidad"
   project_module_forums: "Mga forum"
   project_module_work_package_tracking: "Ang mga work package"
@@ -3476,6 +3534,12 @@ fil:
     activated: "activated"
     deactivated: "deactivated"
   search_input_placeholder: "Hanapin ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
@@ -4264,6 +4328,7 @@ fil:
       connected: "Connected"
       error: "Mali"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"
@@ -4314,3 +4379,29 @@ fil:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Single-Sign On"
     description: "Adds the OmniAuth SAML provider to OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

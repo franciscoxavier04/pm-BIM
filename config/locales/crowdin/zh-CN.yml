@@ -343,7 +343,7 @@ zh-CN:
         placeholder: "新项目列表"
       delete_modal:
         title: "删除项目列表"
-        heading: "Delete this project list?"
+        heading: "删除此项目列表？"
         text: "此操作不会删除列表中包含的任何项目。确定要删除此项目列表吗？"
     settings:
       change_identifier: 更改标识符
@@ -393,7 +393,7 @@ zh-CN:
       storage:
         no_results_title_text: 此项目没有已记录的额外磁盘空间消耗。
       work_package_priorities:
-        new_label: "New priority"
+        new_label: "新优先级"
   project_stage:
     working_days_count:
       other: "时长： %{count} 个工作日"
@@ -607,6 +607,7 @@ zh-CN:
         pattern:
           label: "主题模式"
           caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -629,6 +630,47 @@ zh-CN:
     index:
       no_results_title_text: 目前没有工作流。
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       other: "%{count} 个子工作包"
     bulk:
@@ -701,6 +743,7 @@ zh-CN:
       new_child_text: "创建工作包，作为当前(父)工作包的子项"
       existing_child: "添加现有子项"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
+      label_closest: "Closest"
       label_blocks_singular: "阻止"
       label_blocks_plural: "阻止"
       blocks_description: "在本工作包结束之前，相关工作包不能关闭"
@@ -777,7 +820,7 @@ zh-CN:
       attachment:
         attachment_content: "附件内容"
         attachment_file_name: "附件文件名"
-        content_type: "Content-type"
+        content_type: "内容类型"
         downloads: "下载"
         file: "文件"
         filename: "文件"
@@ -786,7 +829,7 @@ zh-CN:
         attribute_name: "属性"
         help_text: "帮助文本"
       capability:
-        context: "Context"
+        context: "背景"
       changeset:
         repository: "存储库"
       comment:
@@ -822,9 +865,9 @@ zh-CN:
         scopes: "范围"
         confidential: "保密"
       emoji_reaction:
-        reactable: "Reacted on"
+        reactable: "作用于"
       enterprise_token:
-        domain: "Domain"
+        domain: "域"
         starts_at: "生效时间"
         subscriber: "订阅者"
         encoded_token: "企业版支持令牌"
@@ -836,7 +879,7 @@ zh-CN:
         widgets: "小部件"
       journal:
         notes: "备注"
-        cause_type: "Cause type"
+        cause_type: "Cause 类型"
       ldap_auth_source:
         account: "帐户"
         attr_firstname: "名字属性"
@@ -853,16 +896,16 @@ zh-CN:
       member:
         roles: "角色"
       notification:
-        read_ian: "Read in-app"
-        resource: "Resource"
+        read_ian: "在app中读取"
+        resource: "资源"
       oauth_client:
         client: "客户端 ID"
-      planning_element_type_color:
-        hexcode: 十六进制代码
       project:
         active_value:
           true: "未归档"
           false: "已归档"
+        description: "描述"
+        enabled_modules: "启用的模块"
         identifier: "标识符"
         latest_activity_at: "最近一次活动"
         parent: "父项目"
@@ -871,9 +914,7 @@ zh-CN:
           true: "公开"
           false: "私有"
         queries: "查询"
-        enabled_modules: "Enabled modules"
         status_code: "项目状态"
-        description: "描述"
         status_explanation: "项目状态描述"
         status_codes:
           not_started: "未开始"
@@ -893,46 +934,46 @@ zh-CN:
         is_required: "在所有项目中应用"
         custom_field_section: 单元
       project/life_cycle_step:
-        definition: "Definition"
+        definition: "定义"
       project/life_cycle_step_definition:
         name: "名称"
         color: "颜色"
       query:
-        sums: "Sums"
-        columns: "Columns"
+        sums: "总和"
+        columns: "列"
         column_names: "列"
         relations_to_type_column: "与%{type} 的关系"
         relations_of_type_column: "%{type} 关系"
         group_by: "汇总结果根据"
-        sort_by: "Sort results by"
+        sort_by: "结果排序方式"
         filters: "筛选器"
         timeline_labels: "时间线标签"
-        timeline_visible: "Show Gantt chart"
-        timeline_zoom_level: "Gantt chart zoom level"
-        timestamps: "Baseline timestamps"
-        sort_criteria: "Sort criteria"
-        highlighted_attributes: "Highlighted attributes"
-        highlighting_mode: "Highlight mode"
-        display_representation: "Display mode"
-        show_hierarchies: "Display mode"
-        starred: "Favorite"
-        hidden: "Hidden"
-        manual_sorting: "Manual sort order"
-        ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        timeline_visible: "显示甘特图"
+        timeline_zoom_level: "甘特图缩放级别"
+        timestamps: "基准时间戳"
+        sort_criteria: "排序条件"
+        highlighted_attributes: "高亮属性"
+        highlighting_mode: "高亮模式"
+        display_representation: "显示模式"
+        show_hierarchies: "显示模式"
+        starred: "收藏"
+        hidden: "隐藏"
+        manual_sorting: "手动排序顺序"
+        ordered_work_packages: "工作包顺序"
+        include_subprojects: "包含子项目"
+        results: "结果"
       relation:
         lag: "延迟"
         from: "相关工作包"
         to: "相关的工作包"
-        relation_type: "Relation type"
+        relation_type: "关系类型"
       reminder:
-        remindable: "Reminded object"
-        remind_at: "Remind at"
+        remindable: "提醒对象"
+        remind_at: "提醒于"
         remind_at_date: "日期"
         remind_at_time: "时间"
       reminder_notification:
-        notification: "Notification"
+        notification: "通知"
       repository:
         url: "URL"
       role:
@@ -943,8 +984,8 @@ zh-CN:
         excluded_from_totals: "从层次结构的总计中排除"
         default_done_ratio: "% 完成"
       token/ical:
-        calendar: "Calendar"
-        ical_token_query_assignment: "Query assignment"
+        calendar: "日历"
+        ical_token_query_assignment: "查询任务"
       time_entry:
         activity: "活动"
         hours: "小时"
@@ -958,7 +999,11 @@ zh-CN:
         is_default: "默认激活新项目"
         is_milestone: "里程碑"
         color: "颜色"
-        patterns: "Patterns"
+        patterns: "模式"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "用户"
       user:
         admin: "管理员"
         auth_source: "身份验证源"
@@ -968,23 +1013,22 @@ zh-CN:
         force_password_change: "下次登录时强制更改密码"
         language: "语言"
         last_login_on: "上次登录"
-        failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
-        first_login: "First login"
+        failed_login_count: "尝试登录失败"
+        first_name: "名字"
+        last_name: "姓氏"
+        first_login: "首次登录"
         new_password: "新密码"
         password_confirmation: "确认"
         consented_at: "同意在"
       user_preference:
         comments_sorting: "显示评论"
         impaired: "辅助功能模式"
-        time_zone: "时区"
         auto_hide_popups: "自动隐藏成功通知"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
         theme: "模式"
         mode_guideline: "某些模式会覆盖自定义主题的颜色，以便于访问和阅读。如需完整的自定义主题，请选择 \"浅色 \"模式。"
-        daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        daily_reminders: "每日提醒"
+        workdays: "工作日"
       version:
         effective_date: "完成日期"
         sharing: "共享"
@@ -1343,6 +1387,7 @@ zh-CN:
               smaller_than_dates: "小于开始日期和结束日期之间的间隔。"
               not_available_for_milestones: "不适用于里程碑类型的工作包。"
               cannot_be_null: "无法设置为 null，因为开始日期和结束日期已知。"
+              not_an_integer: "不是有效的持续时间。"
             parent:
               cannot_be_milestone: "不能是一个里程碑。"
               cannot_be_self_assigned: "不能分配给自己。"
@@ -1383,6 +1428,8 @@ zh-CN:
               duplicate_group: "组名 %{group} 已多次使用。组名不能重复。"
               query_invalid: "嵌入式查询 \"%{group}\" 无效: %{details}"
               group_without_name: "不允许未命名的组。"
+            patterns:
+              invalid_tokens: "字段内的一个或多个属性无效。请在保存前修正。"
         user:
           attributes:
             base:
@@ -1440,7 +1487,7 @@ zh-CN:
       global_role: "全局角色"
       group: "组"
       issue_priority:
-        other: "Priorities"
+        other: "优先事项"
       member: "成员"
       news: "新闻"
       notification:
@@ -1452,7 +1499,7 @@ zh-CN:
       project_query:
         other: "项目列表"
       query: "自定义查询"
-      reminder: "Reminder"
+      reminder: "提醒"
       role:
         other: "角色"
       status: "工作包状态"
@@ -1511,25 +1558,25 @@ zh-CN:
     assigned_to: "受理人"
     assignee: "受理人"
     attachments: "附件"
-    actor: "Actor"
-    action: "Action"
+    actor: "执行者"
+    action: "操作"
     author: "作者"
-    avatar: "Avatar"
+    avatar: "头像"
     base: "一般错误："
-    body: "Body"
+    body: "正文"
     blocks_ids: "被工作包阻止的IDs"
     category: "类别"
     comment: "注释"
     comments: "评论"
     content: "内容"
     color: "颜色"
-    creator: "Creator"
+    creator: "创建者"
     created_at: "创建于"
-    custom_field: "Custom field"
+    custom_field: "自定义字段"
     custom_options: "可能的值"
     custom_values: "自定义字段"
     date: "日期"
-    dates_interval: "Date range"
+    dates_interval: "日期范围"
     default_columns: "默认的列"
     description: "描述"
     derived_due_date: "派生的完成日期"
@@ -1540,62 +1587,63 @@ zh-CN:
     estimated_hours: "工作"
     estimated_time: "工作"
     email: "Email"
-    entity_type: "Entity"
+    entity_type: "实体"
     expires_at: "过期于"
     firstname: "名字"
-    filter: "Filter"
+    filter: "筛选器"
     group: "组"
     groups: "组"
-    hexcode: "Hex code"
+    hexcode: "十六进制代码"
     id: "ID"
     is_default: "默认值"
     is_for_all: "应用到所有项目"
     public: "公开"
-    principal: "User or group"
+    principal: "用户或用户组"
     #kept for backwards compatibility
     issue: "工作包"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "日志"
+    journal_notes: "评论"
     lastname: "姓氏"
     login: "用户名"
     mail: "电子邮件"
     name: "名称"
     note: "备注"
-    notes: "Notes"
-    number: "Number"
-    options: "Options"
-    operator: "Operator"
+    notes: "备注"
+    number: "编号"
+    options: "选项"
+    operator: "运营商"
     password: "密码"
     priority: "优先级"
     project: "项目"
-    project_ids: "Project IDs"
-    reason: "Reason"
+    project_ids: "项目 ID"
+    reason: "原因"
     responsible: "负责人"
-    required: "Required"
-    recipient: "Recipient"
+    required: "必填"
+    recipient: "收件人"
     role: "角色"
     roles: "角色"
-    search: "Search"
+    search: "搜索"
     start_date: "开始日期"
     status: "状态"
-    state: "State"
+    state: "地区"
     subject: "主题"
-    slug: "Slug"
+    slug: "缩写"
     summary: "摘要"
-    text: "Text"
+    time_zone: "时区"
+    text: "文本"
     title: "标题"
     type: "类型"
-    typeahead: "Autocomplete"
+    typeahead: "自动补全"
     updated_at: "更新于"
     updated_on: "更新于"
     uploader: "上载程序"
     user: "用户"
-    username: "Username"
-    unit: "Unit"
+    username: "用户名"
+    unit: "单位"
     value: "值"
-    values: "Values"
+    values: "值"
     version: "版本"
-    visible: "Visible"
+    visible: "可见"
     work_package: "工作包"
   backup:
     failed: "备份失败"
@@ -1889,8 +1937,8 @@ zh-CN:
   enumeration_activities: "时间跟踪活动"
   enumeration_work_package_priorities: "工作包优先级"
   enumeration_reported_project_statuses: "报告的项目状态"
-  enumeration_caption_order_changed: "Order successfully changed."
-  enumeration_could_not_be_moved: "Enumeration could not be moved."
+  enumeration_caption_order_changed: "顺序修改成功。"
+  enumeration_could_not_be_moved: "无法移动枚举。"
   error_auth_source_sso_failed: "用户 \"%{value}\" 的单次登录 (SSO) 失败"
   error_can_not_archive_project: "此项目无法存档：%{errors}"
   error_can_not_delete_entry: "无法删除条目"
@@ -1980,7 +2028,7 @@ zh-CN:
         input_label_report: "添加列到属性表"
         input_caption_report: "默认情况下，所有添加到当前工作包列表中的列都会被选中。长文本字段在属性表中不可用，但可以显示在其下方。"
         input_caption_table: "默认情况下，所有添加到当前工作包列表中的列都会被选中。长文本字段在基于表格的导出中不可用。"
-        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
+        input_caption_required: "无法导出不带任何列的视图。请至少添加一列。"
       pdf:
         export_type:
           label: "PDF 导出类型"
@@ -2155,6 +2203,8 @@ zh-CN:
           进度计算自动<a href="%{href}" target="_blank">设置为基于工时的模式，并随版本更新而调整</a>。
         progress_calculation_adjusted: >-
           进度计算自动<a href="%{href}" target="_blank">设置为基于工时的模式，并随版本更新而调整</a>。
+        scheduling_mode_adjusted: >-
+          随版本更新自动适配调度模式。
         totals_removed_from_childless_work_packages: >-
           使用 <a href="%{href}" target="_blank">版本更新</a>的非父工作包的工作和进度总计自动移除。 这是一个维护任务，可以安全地被忽略。
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2456,7 +2506,7 @@ zh-CN:
   label_filter: "筛选器"
   label_filter_add: "添加筛选器"
   label_filter_by: "筛选条件："
-  label_filter_any_name_attribute: "Name attributes"
+  label_filter_any_name_attribute: "名称属性"
   label_filter_plural: "筛选器"
   label_filters_toggle: "显示/隐藏筛选器"
   label_float: "浮点数"
@@ -2736,7 +2786,7 @@ zh-CN:
   label_roadmap_overdue: "%{value} 超时"
   label_role_and_permissions: "角色和权限"
   label_role_new: "新的角色"
-  label_role_grantable: "Grantable role"
+  label_role_grantable: "可授予的角色"
   label_role_plural: "角色"
   label_role_search: "将角色分配给新成员"
   label_scm: "SCM"
@@ -2790,6 +2840,9 @@ zh-CN:
   label_title: "标题"
   label_projects_menu: "项目"
   label_today: "今天"
+  label_token_version: "令牌版本"
+  label_today_as_start_date: "选择今天为开始日期。"
+  label_today_as_due_date: "选择今天为结束日期。"
   label_top_menu: "顶部的菜单"
   label_topic_plural: "主题"
   label_total: "共"
@@ -3272,6 +3325,13 @@ zh-CN:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "是否确定想要归档项目 '%{name}'？"
+      archived: "已存档"
+    count:
+      zero: "0 个项目"
+      one: "1个项目"
+      other: "%{count} 个项目"
     destroy:
       confirmation: "如果继续操作，项目 %{identifier} 将被永久销毁。为确认此操作，请在下方的字段中输入项目名称，此操作将会："
       project_delete_result_1: "删除所有相关数据。"
@@ -3280,23 +3340,21 @@ zh-CN:
       project_verification: "输入项目的名称 %{name}，以确认删除。"
       subprojects_confirmation: "其 子项目(s): %{value} 也将被删除。"
       title: "删除项目 %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: 项目的成员将重新迁移至项目的存储库。
       warning_two: 该项目的现有链接将不再有效。
       title: 更改项目的标识符
+    not_available: "Project N/A"
     template:
       copying: >
         您的项目正在从选定的模板项目进行创建。一旦项目可用，您将会收到邮件通知。
       use_template: "使用模板"
       make_template: "设置为模板"
       remove_from_templates: "从模板中移除"
-    archive:
-      are_you_sure: "是否确定想要归档项目 '%{name}'？"
-      archived: "已存档"
-    count:
-      zero: "0 个项目"
-      one: "1个项目"
-      other: "%{count} 个项目"
   project_module_activity: "活动"
   project_module_forums: "论坛"
   project_module_work_package_tracking: "工作包"
@@ -3428,6 +3486,12 @@ zh-CN:
     activated: "已激活"
     deactivated: "已取消激活"
   search_input_placeholder: "搜索"
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "跨源资源共享 (CORS)"
   setting_apiv3_cors_enabled: "启用 CORS"
   setting_apiv3_cors_origins: "API v3 跨域资源共享 (CORS) 允许的域"
@@ -4213,6 +4277,7 @@ zh-CN:
       connected: "已连接"
       error: "错误"
       failed_authorization: "授权失败"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 集成"
       label_redirect_uri: "重定向 URI"
@@ -4263,3 +4328,29 @@ zh-CN:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / SSO单点登录"
     description: "将 OmniAuth SAML 身份提供程序添加到 OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

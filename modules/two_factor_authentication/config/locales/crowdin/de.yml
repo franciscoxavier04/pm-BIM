@@ -9,7 +9,7 @@ de:
       two_factor_authentication/device:
         identifier: "Kennung"
         default: "Als Standard festlegen"
-        channel: "Channel"
+        channel: "Kanal"
       two_factor_authentication/device/sms:
         phone_number: "Telefonnummer"
       two_factor_authentication/device/webauthn:

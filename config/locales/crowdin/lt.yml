@@ -632,6 +632,7 @@ lt:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -654,6 +655,47 @@ lt:
     index:
       no_results_title_text: Šiuo metu darbo sekų.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Vienas pasekėjas darbo paketas"
       few: "%{count} pasekėjų darbo paketų"
@@ -729,6 +771,7 @@ lt:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -885,12 +928,12 @@ lt:
         resource: "Resource"
       oauth_client:
         client: "Kliento ID"
-      planning_element_type_color:
-        hexcode: Šešioliktainis kodas
       project:
         active_value:
           true: "išarchyvuota"
           false: "suarchyvuotas"
+        description: "Aprašymas"
+        enabled_modules: "Enabled modules"
         identifier: "Identifikatorius"
         latest_activity_at: "Naujausia veikla"
         parent: "Priklauso projektui"
@@ -899,9 +942,7 @@ lt:
           true: "vieša"
           false: "privatus"
         queries: "Užklausos"
-        enabled_modules: "Enabled modules"
         status_code: "Projekto būsena"
-        description: "Aprašymas"
         status_explanation: "Projekto būsenos aprašymas"
         status_codes:
           not_started: "Nepradėta"
@@ -987,6 +1028,10 @@ lt:
         is_milestone: "Yra svarbus etapas"
         color: "Spalva"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administratorius"
         auth_source: "Autentifikacijos šaltinis"
@@ -1006,7 +1051,6 @@ lt:
       user_preference:
         comments_sorting: "Rodyti komentarus"
         impaired: "Pritaikymas neįgaliesiems"
-        time_zone: "Laiko juosta"
         auto_hide_popups: "Automatiškai slėpti sėkmės pranešimus"
         warn_on_leaving_unsaved: "Įspėti mane, kai palieku darbų paketą su neišsaugotais pakeitimais"
         theme: "Režimas"
@@ -1371,6 +1415,7 @@ lt:
               smaller_than_dates: "yra mažesnis už intervalą tarp pradžios ir pabaigos datų."
               not_available_for_milestones: "negalimas gairių tipo darbo paketams."
               cannot_be_null: "negalima nustatyti null, nes nežinoma nei pradžios, nei pabaigos data."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "negali būti svarbus etapas."
               cannot_be_self_assigned: "negalima priskirti sau pačiam"
@@ -1411,6 +1456,8 @@ lt:
               duplicate_group: "Grupės pavadinimas „%{group}“ panaudotas daugiau nei kartą. Grupių pavadinimai turi būti unikalūs."
               query_invalid: "Įsiūta užklausa „%{group}“ yra netinkama: %{details}"
               group_without_name: "Bevardės grupės nėra leidžiamos."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1643,6 +1690,7 @@ lt:
     subject: "Tema"
     slug: "Slug"
     summary: "Santrauka"
+    time_zone: "Time zone"
     text: "Text"
     title: "Pavadinimas"
     type: "Tipas"
@@ -2273,6 +2321,8 @@ lt:
           Eigos skaičiavimas automatiškai <a href="%{href}" target="_blank">nustatytas į paremtą darbu ir pakeistas su versijos atnaujinimu</a>.
         progress_calculation_adjusted: >-
           Eigos skaičiavimas automatiškai <a href="%{href}" target="_blank">pakeistas su versijos atnaujinimu</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Darbo ir eigos sumos automatiškai išimtos ne tėviniams darbų paketams <a href="%{href}" target="_blank">atnaujinant versiją</a>. Tai palaikymo užduotis ir ją galima saugiai ignoruoti.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2908,6 +2958,9 @@ lt:
   label_title: "Pavadinimas"
   label_projects_menu: "Projektai"
   label_today: "šiandien"
+  label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Viršutinis meniu"
   label_topic_plural: "Temos"
   label_total: "Iš viso"
@@ -3398,6 +3451,13 @@ lt:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Ar Jūs tikrai norite suarchyvuoti projektą '%{name}'?"
+      archived: "Suarchyvuotas"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "Jei tęsite, projektas %{identifier} bus galutinai sunaikintas. Šio veiksmo patvirtinimui prašome įvesti projekto pavadinimą į žemiau pateiktą lauką. Tai padarys:"
       project_delete_result_1: "Ištrins visus susijusius duomenis."
@@ -3406,23 +3466,21 @@ lt:
       project_verification: "Įveskite projekto pavadinimą %{name}, kad patvirtintumėte ištrynimą."
       subprojects_confirmation: "Jo sub-projektas(-ai): %{value} taip pat bus ištrintas(-i)."
       title: "Ištrinti projektą %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Projekto nariai turės perkelti projekto saugyklas.
       warning_two: Esamos nuorodos į projektą nebeveiks.
       title: Pakeisti projekto identifikatorių
+    not_available: "Project N/A"
     template:
       copying: >
         Jūsų projektas šiuo metu yra kuriamas pagal šabloninį projektą. Kai tik naujasis projektas bus pasiekiamas, jums pranešime el. pašto žinute.
       use_template: "Naudoti šabloną"
       make_template: "Nustatyti šablonu"
       remove_from_templates: "Pašalinti iš šablonų"
-    archive:
-      are_you_sure: "Ar Jūs tikrai norite suarchyvuoti projektą '%{name}'?"
-      archived: "Suarchyvuotas"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Veikla"
   project_module_forums: "Forumai"
   project_module_work_package_tracking: "Darbų paketai"
@@ -3554,6 +3612,12 @@ lt:
     activated: "aktyvus"
     deactivated: "neaktyvus"
   search_input_placeholder: "Paieška..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Įgalinti CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) leidžiami kilmės domenai"
@@ -4345,6 +4409,7 @@ lt:
       connected: "Prisijungta"
       error: "Klaida"
       failed_authorization: "Autorizavimas nepavyko"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integracija"
       label_redirect_uri: "Peradresavimo URI"
@@ -4395,3 +4460,29 @@ lt:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Vienas prisijungimas"
     description: "Prideda OmniAuth SAML tiekėja į OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

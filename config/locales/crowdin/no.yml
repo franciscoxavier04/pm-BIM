@@ -618,6 +618,7 @@
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -640,6 +641,47 @@
     index:
       no_results_title_text: Det er ingen arbeidsflyt for øyeblikket.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Én underordnet arbeidspakke"
       other: "%{count} underordnede arbeidspakker"
@@ -713,6 +755,7 @@
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -869,12 +912,12 @@
         resource: "Resource"
       oauth_client:
         client: "Klient ID"
-      planning_element_type_color:
-        hexcode: Hexadesimalkode
       project:
         active_value:
           true: "Ikke arkivert"
           false: "arkivert"
+        description: "Beskrivelse"
+        enabled_modules: "Enabled modules"
         identifier: "Identifikator"
         latest_activity_at: "Siste aktivitet på"
         parent: "Underprosjekt av"
@@ -883,9 +926,7 @@
           true: "offentlig"
           false: "privat"
         queries: "Spørringer"
-        enabled_modules: "Enabled modules"
         status_code: "Prosjektstatus"
-        description: "Beskrivelse"
         status_explanation: "Prosjekt statusbeskrivelse"
         status_codes:
           not_started: "Ikke påbegynt"
@@ -971,6 +1012,10 @@
         is_milestone: "Er milepæl"
         color: "Farge"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrator"
         auth_source: "Autentiserings kilde"
@@ -990,7 +1035,6 @@
       user_preference:
         comments_sorting: "Vis kommentarer"
         impaired: "Tilgjengelighetsmodus"
-        time_zone: "Tidssone"
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
         theme: "Modus"
@@ -1355,6 +1399,7 @@
               smaller_than_dates: "er mindre enn intervallet mellom start og sluttdato."
               not_available_for_milestones: "er ikke tilgjengelig for arbeidspakker med milepæl."
               cannot_be_null: "kan ikke settes til null da startdato og sluttdato er kjent."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "kan ikke være en milepæl."
               cannot_be_self_assigned: "kan ikke tilordnes seg selv."
@@ -1395,6 +1440,8 @@
               duplicate_group: "Gruppenavn '%{group}' brukes mer enn én gang. Gruppenavn må være unike."
               query_invalid: "Den innebygde spørringen '%{group}' er ugyldig: %{details}"
               group_without_name: "Navnløs gruppe er ikke tillatt."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1605,6 +1652,7 @@
     subject: "Emne"
     slug: "Slug"
     summary: "Sammendrag"
+    time_zone: "Time zone"
     text: "Text"
     title: "Tittel"
     type: "Type"
@@ -2197,6 +2245,8 @@
           Fremdriftsberegning automatisk <a href="%{href}" target="_blank">satt til arbeidsbasert modus og justert med versjon</a>.
         progress_calculation_adjusted: >-
           Fremdriftsberegning automatisk <a href="%{href}" target="_blank">justert med versjon</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Arbeids- og fremdriftssummer fjernet automatisk for ikke-overordnede arbeidspakker med <a href="%{href}" target="_blank">-versjon</a>. Dette er en vedlikeholdsoppgave og kan trygt ignoreres.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2832,6 +2882,9 @@
   label_title: "Tittel"
   label_projects_menu: "Prosjekter"
   label_today: "i dag"
+  label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Toppmeny"
   label_topic_plural: "Emner"
   label_total: "Total"
@@ -3319,6 +3372,13 @@
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Er du sikker på at du vil arkivere prosjektet%{name}'?"
+      archived: "Arkivert"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "Hvis du fortsetter, vil %{identifier} bli ødelagt permanent. For å bekrefte denne handlingen, vennligst skriv prosjektnavnet i feltet nedenfor, dette vil:"
       project_delete_result_1: "Slett alle relaterte data."
@@ -3327,23 +3387,21 @@
       project_verification: "Skriv inn prosjektets navn %{name} for å bekrefte slettingen."
       subprojects_confirmation: "Underprosjekt(ene): %{value} vil også bli slettet."
       title: "Slett prosjektet %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Medlemmer av prosjektet må relokalisere prosjektets arkiv.
       warning_two: Eksisterende koblinger til prosjektet vil ikke lenger fungere.
       title: Endre prosjektets identifikator
+    not_available: "Project N/A"
     template:
       copying: >
         Ditt prosjekt blir opprettet fra den valgte prosjektmalen, og du vil få beskjed på e-post så snart prosjektet er tilgjengelig.
       use_template: "Bruk mal"
       make_template: "Sett som mal"
       remove_from_templates: "Fjern fra maler"
-    archive:
-      are_you_sure: "Er du sikker på at du vil arkivere prosjektet%{name}'?"
-      archived: "Arkivert"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Aktivitet"
   project_module_forums: "Forum"
   project_module_work_package_tracking: "Arbeidspakker"
@@ -3477,6 +3535,12 @@
     activated: "aktivert"
     deactivated: "deaktivert"
   search_input_placeholder: "Søk..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Aktiver CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) tillatte opprinnelser"
@@ -4265,6 +4329,7 @@
       connected: "Tilkoblet"
       error: "Feil"
       failed_authorization: "Autorisasjonen mislyktes"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integrasjon"
       label_redirect_uri: "Omdiriger URI"
@@ -4315,3 +4380,29 @@
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Enkeltpålogging på"
     description: "Legger til OmniAuth SAML leverandør til OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

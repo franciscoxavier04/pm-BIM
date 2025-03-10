@@ -1,0 +1,14 @@
+@import 'helpers'
+
+.op-meeting-outcome-form
+  display: grid
+  grid-template-columns: auto
+  grid-template-areas: "notes" "actions"
+  grid-gap: 8px
+
+  &--actions
+    justify-self: end
+
+  @media screen and (max-width: $breakpoint-md)
+    grid-template-columns: 100px minmax(0, 100%)
+    grid-template-areas: "notes notes" ". actions"

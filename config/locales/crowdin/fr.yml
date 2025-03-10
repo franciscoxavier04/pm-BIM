@@ -617,6 +617,7 @@ fr:
         pattern:
           label: "Modèle de sujet"
           caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -639,6 +640,47 @@ fr:
     index:
       no_results_title_text: Il n'y a actuellement aucun flux de travaux.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Children"
+        dates: "Dates"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "Un lot de travaux descendant"
       other: "%{count} lots de travaux descendants"
@@ -712,6 +754,7 @@ fr:
       new_child_text: "Crée un lot de travaux lié en tant que sous-élément du lot de travaux actuel (parent)"
       existing_child: "Enfant existant"
       child_description: "Fait du lot de travaux lié un sous-élément du lot de travaux actuel (parent)"
+      label_closest: "Closest"
       label_blocks_singular: "blocs"
       label_blocks_plural: "blocs"
       blocks_description: "Le lot de travaux associé ne peut pas être fermé avant que celui-ci soit fermé en premier"
@@ -868,12 +911,12 @@ fr:
         resource: "Resource"
       oauth_client:
         client: "ID client"
-      planning_element_type_color:
-        hexcode: Code hexadécimal
       project:
         active_value:
           true: "désarchivé"
           false: "archivé"
+        description: "Description"
+        enabled_modules: "Enabled modules"
         identifier: "Identifiant"
         latest_activity_at: "Dernière activité à"
         parent: "Sous-projet de"
@@ -882,9 +925,7 @@ fr:
           true: "public"
           false: "privé"
         queries: "Requêtes"
-        enabled_modules: "Enabled modules"
         status_code: "Statut du projet"
-        description: "Description"
         status_explanation: "Description du statut du projet"
         status_codes:
           not_started: "Non démarré"
@@ -970,6 +1011,10 @@ fr:
         is_milestone: "Est un jalon"
         color: "Couleur"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrateur"
         auth_source: "Sources d'authentification"
@@ -989,7 +1034,6 @@ fr:
       user_preference:
         comments_sorting: "Afficher les commentaires"
         impaired: "Mode d'accessibilité"
-        time_zone: "Fuseau horaire"
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Mode"
@@ -1354,6 +1398,7 @@ fr:
               smaller_than_dates: "est plus petit que l'intervalle entre la date de début et la date de fin."
               not_available_for_milestones: "n'est pas disponible pour les lots de travaux de type jalon."
               cannot_be_null: "ne peut pas être définie à NULL car la date de début et la date de fin sont connues."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "ne peut pas être un jalon."
               cannot_be_self_assigned: "ne peut pas être assigné à lui-même."
@@ -1394,6 +1439,8 @@ fr:
               duplicate_group: "Le nom de groupe \"%{group}\" est utilisé plus d’une fois. Les noms de groupe doivent être uniques."
               query_invalid: "La requête intégrée \"%{group}\" est invalide : %{details}"
               group_without_name: "Les groupes sans nom ne sont pas autorisés."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1604,6 +1651,7 @@ fr:
     subject: "Sujet"
     slug: "Slug"
     summary: "Résumé"
+    time_zone: "Time zone"
     text: "Text"
     title: "Titre"
     type: "Type"
@@ -2196,6 +2244,8 @@ fr:
           Le calcul de la progression est automatiquement <a href="%{href}" target="_blank">défini en mode travail et ajusté avec la mise à jour de la version</a>.
         progress_calculation_adjusted: >-
           Le calcul de la progression est automatiquement <a href="%{href}" target="_blank">ajusté avec la mise à jour de la version</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Les totaux de travail et de progression sont automatiquement supprimés pour les lots de travaux non parents avec <a href="%{href}" target="_blank">la mise à jour de la version</a>. Il s'agit d'une tâche de maintenance qui peut être ignorée.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2831,6 +2881,9 @@ fr:
   label_title: "Titre"
   label_projects_menu: "Projets"
   label_today: "aujourd'hui"
+  label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Menu du haut"
   label_topic_plural: "Sujets"
   label_total: "Total"
@@ -3318,6 +3371,13 @@ fr:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Êtes-vous sûr de vouloir archiver le projet '%{name}%' ?"
+      archived: "Archivé"
+    count:
+      zero: "0 projet"
+      one: "1 projet"
+      other: "%{count} projets"
     destroy:
       confirmation: "Si vous continuez, le projet %{identifier} sera définitivement supprimé. Pour confirmer cette action, veuillez saisir le nom du projet dans le champ ci-dessous. Cela va :"
       project_delete_result_1: "Supprimer toutes les données associées."
@@ -3326,23 +3386,21 @@ fr:
       project_verification: "Saisissez le nom du projet %{name} pour valider la suppression."
       subprojects_confirmation: "Son(ses) sous-projet(s): %{value} sera(seront) également supprimé(s)."
       title: "Supprimer le projet %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Les membres du projet devront déplacer les répertoires du projet.
       warning_two: Les liens existants vers le projet ne fonctionneront plus.
       title: Modifier l'identifiant du projet
+    not_available: "Project N/A"
     template:
       copying: >
         Votre projet est en cours de création à partir du modèle de projet sélectionné. Vous serez averti par e-mail dès que le projet sera disponible.
       use_template: "Utiliser le modèle"
       make_template: "Définir comme modèle"
       remove_from_templates: "Supprimer des modèles"
-    archive:
-      are_you_sure: "Êtes-vous sûr de vouloir archiver le projet '%{name}%' ?"
-      archived: "Archivé"
-    count:
-      zero: "0 projet"
-      one: "1 projet"
-      other: "%{count} projets"
   project_module_activity: "Activité"
   project_module_forums: "Forums"
   project_module_work_package_tracking: "Lots de travaux"
@@ -3476,6 +3534,12 @@ fr:
     activated: "activé"
     deactivated: "désactivé"
   search_input_placeholder: "Rechercher…"
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Partage croisé des ressources (CORS)"
   setting_apiv3_cors_enabled: "Activer CORS"
   setting_apiv3_cors_origins: "Origines autorisées de l'API V3 Cross-Origin Resource Sharing (CORS)"
@@ -4263,6 +4327,7 @@ fr:
       connected: "Connecté"
       error: "Erreur"
       failed_authorization: "Échec de l'autorisation"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "Intégration OAuth2"
       label_redirect_uri: "URI de redirection"
@@ -4313,3 +4378,29 @@ fr:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / authentification unique"
     description: "Ajoute le fournisseur SAML OmniAuth à OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

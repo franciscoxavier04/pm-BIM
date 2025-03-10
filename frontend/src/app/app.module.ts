@@ -172,9 +172,6 @@ import { TimerAccountMenuComponent } from 'core-app/shared/components/time_entri
 import {
   RemoteFieldUpdaterComponent,
 } from 'core-app/shared/components/remote-field-updater/remote-field-updater.component';
-import {
-  OpModalSingleDatePickerComponent,
-} from 'core-app/shared/components/datepicker/modal-single-date-picker/modal-single-date-picker.component';
 import { SpotDropModalPortalComponent } from 'core-app/spot/components/drop-modal/drop-modal-portal.component';
 import { OpModalOverlayComponent } from 'core-app/shared/components/modal/modal-overlay.component';
 import {
@@ -235,6 +232,7 @@ import { CurrentProjectService } from 'core-app/core/current-project/current-pro
 import {
   TimeEntriesWorkPackageAutocompleterComponent,
 } from 'core-app/shared/components/autocompleter/time-entries-work-package-autocompleter/time-entries-work-package-autocompleter.component';
+import { OpWpModalDatePickerComponent } from 'core-app/shared/components/datepicker/wp-modal-date-picker/wp-modal-date-picker.component';
 
 export function initializeServices(injector:Injector) {
   return () => {
@@ -415,7 +413,7 @@ export class OpenProjectModule implements DoBootstrap {
   private registerCustomElements(injector:Injector) {
     registerCustomElement('opce-macro-embedded-table', EmbeddedTablesMacroComponent, { injector });
     registerCustomElement('opce-principal', OpPrincipalComponent, { injector });
-    registerCustomElement('opce-single-date-picker', OpBasicSingleDatePickerComponent, { injector });
+    registerCustomElement('opce-basic-single-date-picker', OpBasicSingleDatePickerComponent, { injector });
     registerCustomElement('opce-range-date-picker', OpBasicRangeDatePickerComponent, { injector });
     registerCustomElement('opce-global-search', GlobalSearchInputComponent, { injector });
     registerCustomElement('opce-autocompleter', OpAutocompleterComponent, { injector });
@@ -447,8 +445,7 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-wp-split-view', WorkPackageSplitViewEntryComponent, { injector });
     registerCustomElement('opce-timer-account-menu', TimerAccountMenuComponent, { injector });
     registerCustomElement('opce-remote-field-updater', RemoteFieldUpdaterComponent, { injector });
-    registerCustomElement('opce-modal-single-date-picker', OpModalSingleDatePickerComponent, { injector });
-    registerCustomElement('opce-basic-single-date-picker', OpBasicSingleDatePickerComponent, { injector });
+    registerCustomElement('opce-wp-modal-date-picker', OpWpModalDatePickerComponent, { injector });
     registerCustomElement('opce-spot-drop-modal-portal', SpotDropModalPortalComponent, { injector });
     registerCustomElement('opce-spot-switch', SpotSwitchComponent, { injector });
     registerCustomElement('opce-modal-overlay', OpModalOverlayComponent, { injector });

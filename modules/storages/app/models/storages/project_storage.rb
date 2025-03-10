@@ -43,11 +43,11 @@ module Storages
     # There should be only one ProjectStorage per project and storage.
     validates :project, uniqueness: { scope: :storage }
 
-    enum project_folder_mode: {
+    enum :project_folder_mode, {
       inactive: "inactive",
       manual: "manual",
       automatic: "automatic"
-    }.freeze, _prefix: "project_folder"
+    }, prefix: "project_folder"
 
     scope :automatic, -> { where(project_folder_mode: "automatic") }
     scope :active, -> { joins(:project).where(project: { active: true }) }
@@ -82,9 +82,7 @@ module Storages
     end
 
     def open(user)
-      auth_strategy = Peripherals::StorageInteraction::AuthenticationStrategies::OAuthUserToken
-                        .strategy
-                        .with_user(user)
+      auth_strategy = Peripherals::Registry.resolve("#{storage}.authentication.user_bound").call(user:, storage:)
 
       if project_folder_not_accessible?(user)
         Peripherals::Registry

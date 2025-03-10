@@ -224,7 +224,7 @@ it:
       project_folders: Cartelle del progetto
       redirect_uri: URI di reindirizzamento
       storage_audience: Storage Audience
-      storage_audience_blank: No audience has been configured
+      storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.
       storage_oauth: Nextcloud OAuth
@@ -242,7 +242,9 @@ it:
         host_not_found: Non è stato trovato alcun server Nextcloud all'indirizzo host configurato. Controlla la configurazione.
         missing_dependencies: 'Manca una dipendenza necessaria per l''archiviazione dei file. Aggiungi la seguente dipendenza: %{dependency}.'
         not_configured: Non è stato possibile verificare la connessione. Prima è necessario completare la configurazione.
-        oidc_no_token_with_required_audience: There's no OpenID Connect token with the required %{audience} audience.
+        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
+        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: L'utente attuale non è fornito da un provider di identità OpenID Connect. Esegui nuovamente il controllo con un utente fornito.
         placeholder: Verifica la tua connessione con il server.
@@ -348,6 +350,7 @@ it:
       connected: Connesso
       connected_no_permissions: Il ruolo utente non ha permessi di archiviazione
       not_connected: Non connesso. L'utente dovrebbe accedere all'archivio tramite il seguente %{link}.
+      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
     members_no_results: Nessun membro da visualizzare.
     no_results: Ancora nessun'archiviazione configurata.
     oauth_access_granted_modal:

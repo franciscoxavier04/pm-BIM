@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -41,18 +43,14 @@ RSpec.describe "Projects", "work package type mgmt", :js do
     click_on "Project settings"
     click_on "Work package types"
 
-    expect(find_field("Phase", visible: false)["checked"])
-      .to be_truthy
-
-    expect(find_field("Milestone", visible: false)["checked"])
-      .to be_truthy
+    expect(page).to have_checked_field("Phase", visible: :all)
+    expect(page).to have_checked_field("Milestone", visible: :all)
 
     # Disable a type
     find_field("Milestone", visible: false).click
 
     click_button "Save"
 
-    expect(find_field("Milestone", visible: false)["checked"])
-      .to be_falsey
+    expect(page).to have_unchecked_field("Milestone", visible: :all)
   end
 end

@@ -2,6 +2,7 @@
 tr:
   js:
     storages:
+      authentication_error: "Authentication with %{storageType} failed"
       link_files_in_storage: "%{storageType} içindeki dosyaları bağla"
       link_existing_files: "Mevcut dosyaları bağla"
       upload_files: "Dosyaları yükle"
@@ -19,6 +20,7 @@ tr:
         one_drive: "OneDrive/SharePoint"
         default: "Depolama"
       information:
+        authentication_error: "The request to %{storageType} could not be authenticated, that's an error."
         connection_error: >
           Bazı %{storageType} ayarları çalışmıyor. Lütfen %{storageType} yöneticinizle iletişime geçin.
         live_data_error: "Dosya ayrıntıları getirilirken hata oluştu"
@@ -27,6 +29,8 @@ tr:
         no_file_links: "Dosyaları bu iş paketine bağlamak için lütfen bunu %{storageType} aracılığıyla yapın."
         not_logged_in: >
           Bu iş paketiyle ilgili bir bağlantı eklemek, dosyaları görmek veya yüklemek için lütfen %{storageType} adresine giriş yapın.
+        suggest_logout: You can try whether logging out and back in fixes this problem.
+        suggest_relink: You can try whether re-linking your account via the login button below fixes this problem.
       files:
         already_existing_header: "Bu dosya zaten mevcut"
         already_existing_body: >
@@ -76,12 +80,12 @@ tr:
             Your file (%{fileName}) is bigger than the storage quota allows. Contact your administrator to modify this quota.
           detail:
             nextcloud: >
-              Please check that the latest version of the Nextcloud App "OpenProject Integration" is installed and contact your administrator for more information.
+              Lütfen Nextcloud Uygulaması "OpenProject Integration"ın en son sürümünün yüklü olduğunu kontrol edin ve daha fazla bilgi için yöneticinizle iletişime geçin.
         link_uploaded_file_error: >
           Yakın zamanda yüklenen '%{fileName}' dosyasını %{workPackageId} iş paketine bağlarken bir hata oluştu.
         tooltip:
-          not_logged_in: "Please log in to the storage to access this file."
+          not_logged_in: "Bu dosyaya erişmek için lütfen depoda oturum açın."
           view_not_allowed: "Bu dosyayı görme izniniz yok."
-          not_found: "This file cannot be found."
+          not_found: "Bu dosya bulunamadı."
         already_linked_file: "Bu dosya zaten bu iş paketine bağlı."
         already_linked_directory: "Bu dizin zaten bu çalışma paketine bağlı."

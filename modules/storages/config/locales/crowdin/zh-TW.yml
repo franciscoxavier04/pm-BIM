@@ -2,24 +2,24 @@ zh-TW:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: 客戶端 ID
+        client_secret: 客戶端金鑰
       project:
-        project_folder_type: Project folder type
+        project_folder_type: 專案資料夾類型
       storages/file_link:
-        origin: Origin
-        storage: Storage
+        origin: 来源
+        storage: 儲存空間
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: 透過 OpenID Connect 身份提供者單一登入
           oauth2_sso_with_two_way_oauth2_fallback: 使用雙向 OAuth 2.0 作為備用的單一登入功能
           two_way_oauth2: 雙向 OAuth 2.0 授權程式碼流程
-        storage_audience: Storage Audience
+        storage_audience: 儲存受眾
       storages/project_storage:
-        project_folder: Project folder
-        project_folder_mode: Project folder mode
+        project_folder: 專案資料夾
+        project_folder_mode: 專案資料夾模式
         storage: 儲存空間
-        storage_url: Storage URL
+        storage_url: 儲存 URL
       storages/storage:
         authentication_method: 驗證方式
         creator: 建立者
@@ -223,11 +223,11 @@ zh-TW:
       openproject_oauth: OpenProject 開放授權 (OAuth)
       project_folders: 專案資料夾
       redirect_uri: 重新導向 URI
-      storage_audience: Storage Audience
-      storage_audience_blank: No audience has been configured
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
-      storage_oauth: Nextcloud OAuth
+      storage_audience: 儲存受眾
+      storage_audience_blank: 尚未設定受眾。
+      storage_audience_description: 取得受眾 "%{audience}" 的權杖(tokens)。
+      storage_audience_idp: 使用身分提供者收到的第一個存取標記，不論受眾為何。
+      storage_oauth: NextCloud 授權 (OAuth)
       storage_provider: 儲存空間提供商
     health:
       checked: 上次檢查時間：%{datetime}
@@ -242,7 +242,9 @@ zh-TW:
         host_not_found: 在設定的主機網址未找到 Nextcloud 伺服器。請檢查設定。
         missing_dependencies: '檔案儲存中缺少所需的相依性。請新增下列相依性： %{dependency}。'
         not_configured: 連線無法驗證。請先完成設定。
-        oidc_no_token_with_required_audience: 沒有 OpenID Connect 令牌(token)與所需的 %{audience} 受眾。
+        oidc_cant_acquire_token: 您的 OpenID Connect 設定未提供必要的受眾，也未提供權杖(token)交換功能。請查看我們的說明文件以瞭解更多資訊。
+        oidc_cant_exchange_token: 您的 OpenID Connect 提供者的 Token Exchange 設定似乎有問題。請檢查其設定並再次嘗試。
+        oidc_cant_refresh_token: 在嘗試檢查您存取儲存空間時發生錯誤。請檢查伺服器日誌以取得進一步資訊。
         oidc_non_oidc_user: 目前使用者雖然已配置，但不是由 OpenID Connect (OIDC) 身分提供者配置的。請使用 OIDC 配置的使用者重新執行檢查。
         oidc_non_provisioned_user: 當前用戶不是由 OpenID Connect Identity Provider 提供。請使用提供的使用者重新執行檢查。
         placeholder: 根據伺服器檢查您的連線。
@@ -286,8 +288,8 @@ zh-TW:
         integration: Nextcloud 管理 / OpenProject
         oauth_configuration: 從 %{application_link_text} 複製這些值。
         provider_configuration: 在進行設定之前，請確保您在 Nextcloud 實例中擁有管理權限並且已安裝 %{application_link_text}。
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        storage_audience_placeholder: e.g. nextcloud
+        storage_audience: 請輸入 Nextcloud 實例用來與身分提供者通訊的用戶端 ID。
+        storage_audience_placeholder: 例如 nextcloud
       no_specific_folder: 預設情況下，每個使用者上傳檔案時都會從自己的主資料夾開始。
       no_storage_set_up: 尚未設定檔案儲存區
       not_logged_into_storage: 若要選擇項目資料夾，請先登入
@@ -319,7 +321,7 @@ zh-TW:
     label_creator: 建立者
     label_delete_storage: 刪除儲存區
     label_edit_storage_access_management: 編輯儲存存取管理
-    label_edit_storage_audience: Edit Storage Audience
+    label_edit_storage_audience: 編輯儲存受眾
     label_edit_storage_automatically_managed_folders: 編輯自動管理的儲存資料夾
     label_edit_storage_host: 編輯儲存主機
     label_existing_manual_folder: 具有手動管理權限的現有資料夾
@@ -348,6 +350,7 @@ zh-TW:
       connected: 已連線
       connected_no_permissions: 使用者角色沒有儲存權限
       not_connected: 未連線。使用者應透過下列方式登入儲存設備 %{link}。
+      not_connected_sso: 尚未連線，SSO 一旦查看檔案應該會自動連線，。
     members_no_results: 沒有可顯示的成員
     no_results: 尚未設定檔案儲存區
     oauth_access_granted_modal:
@@ -410,15 +413,15 @@ zh-TW:
         name: OneDrive/SharePoint
         name_placeholder: 例如 OneDrive
     show_attachments_toggle:
-      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
+      description: 停用此選項將隱藏工作項目檔案索引標籤上的附件清單。工作項目說明中附加的檔案仍會上傳至內部附件儲存區。
       label: 顯示與工作項目相關之附件
     storage_audience:
       idp:
-        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use first access token obtained by identity provider
+        helptext: OpenProject 將使用身份提供者收到的第一個存取權杖(token)來認證對儲存的請求。它不會嘗試取得另一個權杖(token)。
+        label: 使用身分提供者取得的第一個存取權杖(token)
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: 允許您設定儲存的受眾。OpenProject 會嘗試從身分提供者取得給定受眾的權杖(token)。
+        label: 手動定義儲存受眾
     storage_list_blank_slate:
       description: 新增的儲存空間將在此顯示
       heading: 目前沒有任何儲存空間

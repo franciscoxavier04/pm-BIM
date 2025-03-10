@@ -50,11 +50,14 @@ RSpec.describe "New work package datepicker",
 
   it "can open and select the datepicker" do
     date_field.input_element.click
-    date_field.toggle_ignore_non_working_days
+    date_field.toggle_working_days_only
 
     start = (Time.zone.today - 1.day).iso8601
-    date_field.focus_start_date
+    wait_for_network_idle
+    date_field.enable_start_date
     date_field.set_active_date start
+
+    wait_for_network_idle
 
     due = (Time.zone.today + 1.day).iso8601
     date_field.focus_due_date

@@ -7,7 +7,7 @@
             Primer::Beta::Text.new(font_weight: :bold, mr: 1, test_selector: 'storage-redirect-uri-label')
           ) { I18n.t('storages.file_storage_view.redirect_uri') }
         )
-        concat(configuration_check_label_for(:storage_oauth_client_configured))
+        concat(configuration_check_label_for(:storage_redirect_uri_configured))
       end
 
       grid.with_area(:description, tag: :div, color: :subtle, test_selector: 'storage-redirect-uri-description') do

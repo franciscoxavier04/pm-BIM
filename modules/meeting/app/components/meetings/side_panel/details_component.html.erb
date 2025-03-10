@@ -61,13 +61,24 @@
             flex_layout(align_items: :center) do |time|
               time.with_column do
                 render(Primer::Beta::Text.new) do
-                  "#{format_time(@meeting.start_time, include_date: false)} - #{format_time(@meeting.end_time, include_date: false)}"
+                  if @meeting.template?
+                    time_zone = @series.time_zone
+                    start_time = format_time(@meeting.start_time, time_zone:, include_date: false)
+                    end_time = format_time(@meeting.end_time, time_zone:, include_date: false)
+                    "#{start_time} - #{end_time}"
+                  else
+                    "#{format_time(@meeting.start_time, include_date: false)} - #{format_time(@meeting.end_time, include_date: false)}"
+                  end
                 end
               end
 
               time.with_column(ml: 2) do
                 render(Primer::Beta::Text.new(color: :subtle, font_size: :small)) do
-                  formatted_time_zone_offset
+                  if @meeting.template?
+                    friendly_timezone_name(@series.time_zone, period: @meeting.start_time)
+                  else
+                    friendly_timezone_name(User.current.time_zone, period: @meeting.start_time)
+                  end
                 end
               end
             end

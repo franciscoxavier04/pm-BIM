@@ -34,6 +34,7 @@
 # Reference: Roar-Rails integration: https://github.com/apotonick/roar-rails
 module API::V3::Storages
   URN_CONNECTION_CONNECTED = "#{::API::V3::URN_PREFIX}storages:authorization:Connected".freeze
+  URN_CONNECTION_NOT_CONNECTED = "#{::API::V3::URN_PREFIX}storages:authorization:NotConnected".freeze
   URN_CONNECTION_AUTH_FAILED = "#{::API::V3::URN_PREFIX}storages:authorization:FailedAuthorization".freeze
   URN_CONNECTION_ERROR = "#{::API::V3::URN_PREFIX}storages:authorization:Error".freeze
 
@@ -166,6 +167,8 @@ module API::V3::Storages
       urn = case auth_state
             when :connected
               URN_CONNECTION_CONNECTED
+            when :not_connected
+              URN_CONNECTION_NOT_CONNECTED
             when :failed_authorization
               URN_CONNECTION_AUTH_FAILED
             else
@@ -177,7 +180,7 @@ module API::V3::Storages
     end
 
     link :authorize do
-      next if hide_authorize_link?
+      next unless show_authorize_link?
 
       { href: represented.oauth_configuration.authorization_uri, title: "Authorize" }
     end
@@ -227,8 +230,14 @@ module API::V3::Storages
       current_user.admin? && represented.provider_type_nextcloud?
     end
 
-    def hide_authorize_link?
-      represented.oauth_client.blank? || authorization_state != :failed_authorization
+    def show_authorize_link?
+      selector = Storages::Peripherals::StorageInteraction::AuthenticationMethodSelector.new(
+        user: current_user, storage: represented
+      )
+
+      selector.storage_oauth? &&
+        represented.oauth_client.present? &&
+        authorization_state.in?(%i[not_connected failed_authorization])
     end
 
     def storage_projects(storage)
