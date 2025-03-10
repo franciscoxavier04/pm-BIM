@@ -70,7 +70,7 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   end
 
   def render_work_package
-    write_title!
+    write_title!(link: url_helpers.work_package_url(work_package))
     write_attributes! work_package
     write_description! work_package
     write_headers!

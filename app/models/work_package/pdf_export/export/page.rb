@@ -70,10 +70,10 @@ module WorkPackage::PDFExport::Export::Page
     [image_obj, image_info, scale]
   end
 
-  def write_title!
+  def write_title!(link: nil)
     pdf.title = heading
     with_margin(styles.page_heading_margins) do
-      pdf.formatted_text([styles.page_heading.merge({ text: heading })])
+      pdf.formatted_text([styles.page_heading.merge({ text: heading, link: }.compact)])
     end
   end
 
