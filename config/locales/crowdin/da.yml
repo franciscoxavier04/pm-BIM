@@ -617,6 +617,7 @@ da:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -656,7 +657,7 @@ da:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -753,6 +754,7 @@ da:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -913,6 +915,8 @@ da:
         active_value:
           true: "unarchived"
           false: "archived"
+        description: "Beskrivelse"
+        enabled_modules: "Enabled modules"
         identifier: "ID"
         latest_activity_at: "Latest activity at"
         parent: "Delprojekt af"
@@ -921,9 +925,7 @@ da:
           true: "public"
           false: "private"
         queries: "Forespørgsler"
-        enabled_modules: "Enabled modules"
         status_code: "Projektstatus"
-        description: "Beskrivelse"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -1009,6 +1011,10 @@ da:
         is_milestone: "Is milestone"
         color: "Farve"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"
@@ -1028,7 +1034,6 @@ da:
       user_preference:
         comments_sorting: "Vis kommentarer"
         impaired: "Tilgængelighedstilstand"
-        time_zone: "Tidszone"
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
@@ -1434,6 +1439,8 @@ da:
               duplicate_group: "The group name '%{group}' is used more than once. Group names must be unique."
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Unnamed groups are not allowed."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1644,6 +1651,7 @@ da:
     subject: "Emne"
     slug: "Slug"
     summary: "Opsummering"
+    time_zone: "Time zone"
     text: "Text"
     title: "Titel"
     type: "Type"
@@ -2874,6 +2882,8 @@ da:
   label_projects_menu: "Projekter"
   label_today: "i dag"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Topmenu"
   label_topic_plural: "Emner"
   label_total: "Total "
@@ -3361,6 +3371,13 @@ da:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3369,23 +3386,21 @@ da:
       project_verification: "Angiv projektnavnet %{name}, for at bekræfte sletningen."
       subprojects_confirmation: "Dets underprojekt(-er): %{value} vil ligeledes blive slettet."
       title: "Slet projektet %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
       title: Change the project's identifier
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project. You will be notified by mail as soon as the project is available.
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Aktivivtet"
   project_module_forums: "Fora"
   project_module_work_package_tracking: "Arbejdspakker"
@@ -4311,6 +4326,7 @@ da:
       connected: "Connected"
       error: "Fejl"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"

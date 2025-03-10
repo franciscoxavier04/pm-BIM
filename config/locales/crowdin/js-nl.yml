@@ -719,17 +719,18 @@ nl:
       description: "Beschrijving: Klik om te bewerken..."
       relation_description: "Klik om een beschrijving voor deze relatie toe te voegen"
     project:
-      required_outside_context: >
-        Kies een project om het werkpakket in te creëren om alle attributen te zien. U kunt alleen projecten selecteren waarvan het type hierboven is geactiveerd.
-      context: "Context van het project"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
-      use_template: "Sjabloon gebruiken"
-      no_template_selected: "(Geen)"
-      copy:
-        copy_options: "Opties kopiëren"
       autocompleter:
         label: "Project auto aanvullen"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "Switching the template will reload the page and you will lose all input to this form. Continue?"
+      context: "Context van het project"
+      copy:
+        copy_options: "Opties kopiëren"
+      not_available: "Project N/A"
+      no_template_selected: "(Geen)"
+      required_outside_context: >
+        Kies een project om het werkpakket in te creëren om alle attributen te zien. U kunt alleen projecten selecteren waarvan het type hierboven is geactiveerd.
+      use_template: "Sjabloon gebruiken"
     reminders:
       settings:
         daily:

@@ -38,7 +38,6 @@ RSpec.describe "Duration field in the work package table", :js do
     wait_for_network_idle
 
     date_field.expect_duration_highlighted
-    expect(page).to have_focus_on(test_selector("op-datepicker-modal--duration-field").to_s)
     expect(page).to have_field("work_package[duration]", with: "4", wait: 10)
   end
 end

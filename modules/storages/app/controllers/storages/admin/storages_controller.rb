@@ -124,7 +124,7 @@ class Storages::Admin::StoragesController < ApplicationController
   end
 
   def edit_storage_audience
-    update_via_turbo_stream(component: Storages::Admin::Forms::NextcloudAudienceFormComponent.new(@storage))
+    update_via_turbo_stream(component: Storages::Admin::Forms::StorageAudienceFormComponent.new(@storage))
     respond_with_turbo_streams
   end
 
@@ -196,7 +196,7 @@ class Storages::Admin::StoragesController < ApplicationController
   end
 
   def replace_oauth_application
-    @storage.oauth_application.destroy
+    @storage.oauth_application&.destroy
     service_result = ::Storages::OAuthApplications::CreateService.new(storage: @storage, user: current_user).call
 
     if service_result.success?

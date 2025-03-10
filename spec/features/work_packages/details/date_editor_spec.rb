@@ -67,9 +67,11 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     wait_for_network_idle
   end
 
-  it "can directly set the due date when only a start date is set" do
+  it "can directly set the due date when activating it" do
     start_date.activate!
     start_date.expect_active!
+
+    start_date.enable_due_date
 
     start_date.datepicker.expect_year "2016"
     start_date.datepicker.expect_month "January"
@@ -194,6 +196,9 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
 
       # Wait for the datepicker to be loaded
       sleep 1
+
+      start_date.enable_start_date
+
       start_date.datepicker.set_today :start
       start_date.datepicker.expect_start_date Time.zone.today.iso8601
 
@@ -215,8 +220,8 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     sleep 2
     start_date.datepicker.expect_visible
 
-    # Expect due date to be focused as it is empty
-    start_date.expect_due_highlighted
+    # Due date is hidden behind a button as it is empty
+    start_date.enable_due_date
     start_date.set_due_date Time.zone.today
 
     # Wait for duration to be derived
@@ -237,13 +242,15 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     start_date.activate!
     start_date.expect_active!
 
+    start_date.datepicker.enable_due_date
+
     start_date.datepicker.expect_visible
     start_date.datepicker.set_duration -128
     start_date.datepicker.expect_duration_error "Must be greater than 0."
     start_date.datepicker.expect_start_date_error nil
     start_date.datepicker.expect_due_date_error nil
 
-    start_date.datepicker.set_duration "invalid"
+    start_date.datepicker.set_duration "1.4"
     start_date.datepicker.expect_duration_error "Is not a valid duration."
     start_date.datepicker.expect_start_date_error nil
     start_date.datepicker.expect_due_date_error nil

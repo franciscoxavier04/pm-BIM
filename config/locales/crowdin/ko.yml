@@ -611,6 +611,7 @@ ko:
         pattern:
           label: "제목 패턴"
           caption: "특성을 검색하거나 텍스트를 추가하세요. 요소 사이에 공백을 넣으려면 텍스트로 추가하세요."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -650,7 +651,7 @@ ko:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -746,6 +747,7 @@ ko:
       new_child_text: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
       existing_child: "기존 자식"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
+      label_closest: "Closest"
       label_blocks_singular: "블록"
       label_blocks_plural: "블록"
       blocks_description: "이 패키지가 먼저 종료될 때까지 관련 작업 패키지를 종료할 수 없습니다"
@@ -906,6 +908,8 @@ ko:
         active_value:
           true: "보관 취소됨"
           false: "보관됨"
+        description: "설명"
+        enabled_modules: "Enabled modules"
         identifier: "식별자"
         latest_activity_at: "다음의 최근 활동"
         parent: "하위 프로젝트"
@@ -914,9 +918,7 @@ ko:
           true: "공개"
           false: "비공개"
         queries: "쿼리"
-        enabled_modules: "Enabled modules"
         status_code: "프로젝트 상태"
-        description: "설명"
         status_explanation: "프로젝트 상태 설명"
         status_codes:
           not_started: "시작되지 않음"
@@ -1002,6 +1004,10 @@ ko:
         is_milestone: "마일스톤"
         color: "색상"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "관리자"
         auth_source: "인증 소스"
@@ -1021,7 +1027,6 @@ ko:
       user_preference:
         comments_sorting: "코멘트 표시"
         impaired: "액세스 모드"
-        time_zone: "표준 시간대"
         auto_hide_popups: "자동 숨김 성공 알림"
         warn_on_leaving_unsaved: "저장하지 않고 작업 패키지를 벗어날 때 알려주세요."
         theme: "모드"
@@ -1427,6 +1432,8 @@ ko:
               duplicate_group: "'%{group}'(이)라는 그룹 이름이 두 번 이상 사용되었습니다. 그룹 이름은 중복될 수 없습니다."
               query_invalid: "포함된 쿼리 '%{group}'이(가) 잘못되었습니다. %{details}"
               group_without_name: "명명되지 않은 그룹은 허용되지 않습니다."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1626,6 +1633,7 @@ ko:
     subject: "제목"
     slug: "Slug"
     summary: "요약"
+    time_zone: "Time zone"
     text: "Text"
     title: "제목"
     type: "타입"
@@ -2837,6 +2845,8 @@ ko:
   label_projects_menu: "프로젝트"
   label_today: "오늘"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "상단 메뉴"
   label_topic_plural: "항목"
   label_total: "합계"
@@ -3321,6 +3331,13 @@ ko:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "프로젝트 '%{name}'을(를) 보관하시겠습니까?"
+      archived: "보관됨"
+    count:
+      zero: "0개 프로젝트"
+      one: "1개 프로젝트"
+      other: "%{count}개 프로젝트"
     destroy:
       confirmation: "계속하면 %{identifier} 프로젝트가 영구적으로 제거됩니다. 이 작업을 확인하려면 아래 필드에 프로젝트 이름을 입력하세요. 이렇게 하면 다음이 허용됩니다."
       project_delete_result_1: "모든 관련 데이터를 삭제합니다."
@@ -3329,23 +3346,21 @@ ko:
       project_verification: "삭제를 확인하려면 프로젝트 이름 %{name}(을)를 입력하세요."
       subprojects_confirmation: "하위 프로젝트 %{value}도 삭제됩니다."
       title: "프로젝트 %{name} 삭제"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: 프로젝트 멤버는 프로젝트의 리포지토리를 재배치해야 합니다.
       warning_two: 프로젝트의 기존 링크는 더 이상 작동하지 않습니다.
       title: 프로젝트의 식별자 변경
+    not_available: "Project N/A"
     template:
       copying: >
         선택한 템플릿 프로젝트에서 프로젝트를 만들고 있습니다. 프로젝트가 사용 가능하게 되면 즉시 메일로 알려드립니다.
       use_template: "템플릿 사용"
       make_template: "템플릿으로 설정"
       remove_from_templates: "템플릿에서 제거"
-    archive:
-      are_you_sure: "프로젝트 '%{name}'을(를) 보관하시겠습니까?"
-      archived: "보관됨"
-    count:
-      zero: "0개 프로젝트"
-      one: "1개 프로젝트"
-      other: "%{count}개 프로젝트"
   project_module_activity: "활동"
   project_module_forums: "포럼"
   project_module_work_package_tracking: "작업 패키지"
@@ -4269,6 +4284,7 @@ ko:
       connected: "연결됨"
       error: "오류"
       failed_authorization: "인증 실패"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 통합"
       label_redirect_uri: "리디렉션 URI"

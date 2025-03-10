@@ -51,6 +51,8 @@ import { fromEvent } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import * as _ from 'lodash';
 
+export type DateMode = 'single'|'range';
+
 @Component({
   selector: 'op-wp-modal-date-picker',
   template: `
@@ -70,6 +72,7 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
 
   @Input() public isSchedulable:boolean = true;
   @Input() public minimalSchedulingDate:Date|null;
+  @Input() public dateMode:DateMode;
 
   @Input() startDateFieldId:string;
   @Input() dueDateFieldId:string;
@@ -78,8 +81,6 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
   @Input() isMilestone:boolean = false;
 
   @ViewChild('flatpickrTarget') flatpickrTarget:ElementRef;
-
-  fieldName:'start_date'|'due_date'|'duration' = 'start_date';
 
   private datePickerInstance:DatePicker;
   private startDateValue:Date|null;
@@ -119,7 +120,7 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
     event:CustomEvent<{
       dates:Date[];
       ignoreNonWorkingDays:boolean;
-      mode:'single'|'range';
+      mode:DateMode;
     }>,
   ) {
     const details = event.detail;
@@ -138,19 +139,15 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
     }
   }
 
-  private isDifferentDates(dates:Date[], mode:'single'|'range'):boolean {
-    if (mode === 'single') {
-      return dates[0].getTime() !== this.startDateValue?.getTime();
-    }
-    return dates[0].getTime() !== this.startDateValue?.getTime()
-        || dates[1].getTime() !== this.dueDateValue?.getTime();
+  private isDifferentDates(dates:Date[], mode:DateMode):boolean {
+    const [start, end] = dates;
+    return mode === 'single'
+      ? start?.getTime() !== this.startDateValue?.getTime()
+      : start?.getTime() !== this.startDateValue?.getTime() || end?.getTime() !== this.dueDateValue?.getTime();
   }
 
   private toDate(date:string|null):Date|null {
-    if (date) {
-      return new Date(date);
-    }
-    return null;
+    return date ? new Date(date) : null;
   }
 
   private currentDates():Date[] {
@@ -159,14 +156,13 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
 
   private initializeDatepicker() {
     this.datePickerInstance?.destroy();
-    this.fieldName = this.getActiveField();
 
     this.datePickerInstance = new DatePicker(
       this.injector,
       '#flatpickr-input',
       this.currentDates(),
       {
-        mode: this.mode,
+        mode: this.dateMode,
         showMonths: this.deviceService.isMobile ? 1 : 2,
         inline: true,
         onReady: (_date, _datestr, instance) => {
@@ -188,22 +184,6 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       this.flatpickrTarget.nativeElement,
     );
-  }
-
-  private get mode():'single'|'range' {
-    if (this.isMilestone) {
-      return 'single';
-    }
-
-    // This is a very special case in which only one date is set, and we want to modify exactly that date again.
-    // Then it does not make sense to display a range as we are only changing one date
-    if (this.currentDates().length === 1) {
-      if ((this.startDateValue !== null && this.fieldName === 'start_date') || (this.dueDateValue !== null && this.fieldName === 'due_date')) {
-        return 'single';
-      }
-    }
-
-    return 'range';
   }
 
   private onFlatpickrChange(dates:Date[], _datestr:string, _instance:flatpickr.Instance) {
@@ -240,22 +220,5 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
         filter(() => !(!!this.startDateValue && !!this.dueDateValue)),
       )
       .subscribe(() => calendarContainer.classList.add('flatpickr-container-suppress-hover'));
-  }
-
-  private getActiveField():'start_date'|'due_date'|'duration' {
-    const activeField = document.getElementsByClassName('op-datepicker-modal--date-field_current')[0];
-
-    if (!activeField) {
-      return this.fieldName;
-    }
-
-    switch (activeField.id) {
-      case this.dueDateFieldId:
-        return 'due_date';
-      case this.durationFieldId:
-        return 'duration';
-      default:
-        return 'start_date';
-    }
   }
 }

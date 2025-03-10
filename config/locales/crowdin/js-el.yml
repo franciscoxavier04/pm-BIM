@@ -718,17 +718,18 @@ el:
       description: "Description: Click to edit..."
       relation_description: "Κάντε κλικ για να προσθέσετε περιγραφή για αυτή την σχέση"
     project:
-      required_outside_context: >
-        Παρακαλούμε επιλέξτε ένα έργο μέσα στο οποίο θα δημιουργήσετε το πακέτο εργασίας για να δείτε όλα τα χαρακτηριστικά. Μπορείτε να επιλέξετε μόνο έργα που έχουν τον παραπάνω τύπο ενεργό.
-      context: "Πλαίσιο έργου"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "Η αλλαγή του προτύπου θα επαναφορτώσει τη σελίδα και θα χάσετε όλα τα στοιχεία εισόδου σε αυτή τη φόρμα. Συνέχεια?"
-      use_template: "Χρήση προτύπου"
-      no_template_selected: "(Κανένα)"
-      copy:
-        copy_options: "Επιλογές αντιγραφής"
       autocompleter:
         label: "Αυτόματη συμπλήρωση έργου"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "Η αλλαγή του προτύπου θα επαναφορτώσει τη σελίδα και θα χάσετε όλα τα στοιχεία εισόδου σε αυτή τη φόρμα. Συνέχεια?"
+      context: "Πλαίσιο έργου"
+      copy:
+        copy_options: "Επιλογές αντιγραφής"
+      not_available: "Project N/A"
+      no_template_selected: "(Κανένα)"
+      required_outside_context: >
+        Παρακαλούμε επιλέξτε ένα έργο μέσα στο οποίο θα δημιουργήσετε το πακέτο εργασίας για να δείτε όλα τα χαρακτηριστικά. Μπορείτε να επιλέξετε μόνο έργα που έχουν τον παραπάνω τύπο ενεργό.
+      use_template: "Χρήση προτύπου"
     reminders:
       settings:
         daily:

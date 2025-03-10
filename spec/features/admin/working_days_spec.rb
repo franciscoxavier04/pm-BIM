@@ -163,9 +163,9 @@ RSpec.describe "Working Days", :js do
       TABLE
     end
 
-    it "shows an error when a previous change to the working days configuration isn't processed yet" do
+    it "shows an error when a previous change to the working days configuration isn't processed yet",
+       with_good_job_batches: [WorkPackages::ApplyWorkingDaysChangeJob] do
       # Have a job already scheduled
-      ActiveJob::Base.disable_test_adapter
       WorkPackages::ApplyWorkingDaysChangeJob.perform_later(user_id: 5)
 
       uncheck "Tuesday"

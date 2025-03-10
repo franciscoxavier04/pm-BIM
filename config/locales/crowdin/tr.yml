@@ -618,6 +618,7 @@ tr:
         pattern:
           label: "Konu deseni"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF oluştur"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -657,7 +658,7 @@ tr:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -754,6 +755,7 @@ tr:
       new_child_text: "Geçerli (ana) iş paketinin bir alt öğesi olarak ilgili bir iş paketi oluşturur"
       existing_child: "Mevcut alt"
       child_description: "İlgili iş paketini geçerli (ana) iş paketinin bir alt öğesi yapar"
+      label_closest: "Closest"
       label_blocks_singular: "engelleyen"
       label_blocks_plural: "engelleyen"
       blocks_description: "Bu iş paketi kapatılmadan ilgili iş paketi kapatılamaz"
@@ -914,6 +916,8 @@ tr:
         active_value:
           true: "arşivden çıkartıldı"
           false: "arşivlendi"
+        description: "Açıklama"
+        enabled_modules: "Etkin modüller"
         identifier: "Tanımlayıcı"
         latest_activity_at: "Son etkinlik zamanı"
         parent: "Alt Proje"
@@ -922,9 +926,7 @@ tr:
           true: "genel"
           false: "özel"
         queries: "Sorgular"
-        enabled_modules: "Etkin modüller"
         status_code: "Proje Durumu"
-        description: "Açıklama"
         status_explanation: "Proje durumunun tanımı"
         status_codes:
           not_started: "Başlatılmadı"
@@ -1010,6 +1012,10 @@ tr:
         is_milestone: "Kilometre taşı"
         color: "Renk"
         patterns: "Desenler"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Yönetici"
         auth_source: "Kimlik doğrulama kaynağı"
@@ -1029,7 +1035,6 @@ tr:
       user_preference:
         comments_sorting: "Yorumları görüntüle"
         impaired: "Erişilebilirlik modu"
-        time_zone: "Zaman dilimi"
         auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Mod"
@@ -1435,6 +1440,8 @@ tr:
               duplicate_group: "'%{group}' grup adı, birden fazla kez kullanıldı. Grup isimleri benzersiz olmalıdır."
               query_invalid: "Gömülü sorgu '%{group}' geçersiz: %{details}"
               group_without_name: "Adsız gruplara izin verilmez."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1645,6 +1652,7 @@ tr:
     subject: "Konu"
     slug: "Rumuz"
     summary: "Özet"
+    time_zone: "Time zone"
     text: "Metin"
     title: "Başlık"
     type: "Tür"
@@ -2875,6 +2883,8 @@ tr:
   label_projects_menu: "Projeler"
   label_today: "bugün"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Üst Menü"
   label_topic_plural: "Konular"
   label_total: "Toplam"
@@ -3360,6 +3370,13 @@ tr:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "'%{name}' projesini arşivlemek istediğinize emin misiniz?"
+      archived: "Arşivlenen"
+    count:
+      zero: "Proje yok"
+      one: "1 proje"
+      other: "%{count} proje"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "İlgili tüm verileri silin."
@@ -3368,23 +3385,21 @@ tr:
       project_verification: "Silme işlemini doğrulamak için projenin adını% {name} girin. %{name}"
       subprojects_confirmation: "Alt projeleri:% {value} de silinecek. %{value}"
       title: "% {Name} adlı projeyi sil %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Projenin üyeleri, projenin depoları yeniden yerleştirmek zorunda kalacaklardır.
       warning_two: Projeye mevcut bağlantılar artık çalışmayacaktır.
       title: Projenin tanımlayıcısını değiştirme
+    not_available: "Project N/A"
     template:
       copying: >
         Projeniz seçilen şablon projesinden oluşturuluyor. Proje hazır olur olmaz posta ile bilgilendirileceksiniz.
       use_template: "Şablon kullan"
       make_template: "Şablon olarak ayarla"
       remove_from_templates: "Şablonlardan kaldır"
-    archive:
-      are_you_sure: "'%{name}' projesini arşivlemek istediğinize emin misiniz?"
-      archived: "Arşivlenen"
-    count:
-      zero: "Proje yok"
-      one: "1 proje"
-      other: "%{count} proje"
   project_module_activity: "Etkinlik"
   project_module_forums: "Forumlar"
   project_module_work_package_tracking: "İş paketleri"
@@ -4311,6 +4326,7 @@ tr:
       connected: "Bağlandı"
       error: "Hata"
       failed_authorization: "Yetkilendirme başarısız oldu"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 entegrasyonu"
       label_redirect_uri: "Yönlendirme URL'si"

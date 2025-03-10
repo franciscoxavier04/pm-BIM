@@ -50,10 +50,6 @@ module Storages
       redirect_to(storage.oauth_configuration.authorization_uri(state: nonce), allow_other_host: true)
     end
 
-    def storage_oauth_access_granted?(storage:)
-      OAuthClientToken.exists?(user: User.current, oauth_client: storage.oauth_client)
-    end
-
     def project_storage_oauth_access_grant_nudge_modal(project_storage:)
       {
         component: ::Storages::ProjectStorages::OAuthAccessGrantNudgeModalComponent,

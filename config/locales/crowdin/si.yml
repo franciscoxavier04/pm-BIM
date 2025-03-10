@@ -619,6 +619,7 @@ si:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -658,7 +659,7 @@ si:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -755,6 +756,7 @@ si:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -915,6 +917,8 @@ si:
         active_value:
           true: "unarchived"
           false: "සංරක්ෂිත"
+        description: "විස්තරය"
+        enabled_modules: "Enabled modules"
         identifier: "හඳුනාගැනීමේ"
         latest_activity_at: "නවතම ක්රියාකාරකම්"
         parent: "උප ව්යාපෘතිය"
@@ -923,9 +927,7 @@ si:
           true: "public"
           false: "private"
         queries: "විමසුම්"
-        enabled_modules: "Enabled modules"
         status_code: "ව්යාපෘති තත්ත්වය"
-        description: "විස්තරය"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -1011,6 +1013,10 @@ si:
         is_milestone: "සන්ධිස්ථානයක්"
         color: "වර්ණ"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "පරිපාලක"
         auth_source: "Authentication source"
@@ -1030,7 +1036,6 @@ si:
       user_preference:
         comments_sorting: "අදහස් පෙන්වන්න"
         impaired: "ප්රවේශ්යතා ප්රකාරය"
-        time_zone: "වේලා කලාපය"
         auto_hide_popups: "ස්වයං සඟවන්න සාර්ථකත්වය දැනුම්දීම්"
         warn_on_leaving_unsaved: "නොගැලවූ වෙනස්කම් සහිත වැඩ පැකේජයකින් පිටවන විට මට අනතුරු අඟවන්න"
         theme: "Mode"
@@ -1436,6 +1441,8 @@ si:
               duplicate_group: "කණ්ඩායම් නාමය '%{group}' එක් වරකට වඩා භාවිතා වේ. කණ්ඩායම් නම් අද්විතීය විය යුතුය."
               query_invalid: "කාවැද්දූ විමසුම '%{group}' අවලංගුයි: %{details}"
               group_without_name: "නම් නොකළ කණ්ඩායම් වලට අවසර නැත."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1646,6 +1653,7 @@ si:
     subject: "විෂය"
     slug: "Slug"
     summary: "සාරාංශය"
+    time_zone: "Time zone"
     text: "Text"
     title: "මාතෘකාව"
     type: "වර්ගය"
@@ -2876,6 +2884,8 @@ si:
   label_projects_menu: "ව්‍යාපෘති"
   label_today: "අද"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "ඉහළ මෙනුව"
   label_topic_plural: "මාතෘකා"
   label_total: "මුළු"
@@ -3363,6 +3373,13 @@ si:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "ඔබට '%{name}' ව්යාපෘතිය සංරක්ෂණය කිරීමට අවශ්ය බව ඔබට විශ්වාසද?"
+      archived: "සංරක්ෂිත"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3371,23 +3388,21 @@ si:
       project_verification: "මකාදැමීම සත්යාපනය කිරීම සඳහා ව්යාපෘතියේ නම %{name} ඇතුළත් කරන්න."
       subprojects_confirmation: "එහි උප ව්යාපෘතිය (ය): %{value} ද මකා දැමෙනු ඇත."
       title: "ව්යාපෘතිය මකන්න %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: ව්යාපෘතියේ සාමාජිකයින්ට ව්යාපෘතියේ ගබඩාව නැවත ස්ථානගත කිරීමට සිදුවනු ඇත.
       warning_two: ව්යාපෘතියට පවත්නා සබැඳි තවදුරටත් ක්රියා නොකරනු ඇත.
       title: ව්යාපෘතියේ හඳුනා ගැනීම වෙනස් කරන්න
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project. You will be notified by mail as soon as the project is available.
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "ඔබට '%{name}' ව්යාපෘතිය සංරක්ෂණය කිරීමට අවශ්ය බව ඔබට විශ්වාසද?"
-      archived: "සංරක්ෂිත"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "ක්‍රියාකාරකම"
   project_module_forums: "සංසද"
   project_module_work_package_tracking: "වැඩ පැකේජ"
@@ -4315,6 +4330,7 @@ si:
       connected: "Connected"
       error: "දෝෂය"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "නැවත හරවා යැවීමේ URI"

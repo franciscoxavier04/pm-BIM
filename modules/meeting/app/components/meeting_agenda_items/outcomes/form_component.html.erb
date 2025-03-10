@@ -1,0 +1,38 @@
+<%=
+  component_wrapper do
+    primer_form_with(
+      model: @meeting_outcome,
+      method: @method,
+      url: @submit_path
+    ) do |f|
+      grid_layout("op-meeting-outcome-form", tag: :div) do |grid|
+        grid.with_area(
+          :notes,
+          data: wrapper_data_attributes
+        ) do
+          render(MeetingAgendaItem::Outcome::Notes.new(f))
+        end
+
+        grid.with_area(:actions) do
+          flex_layout do |flex|
+            flex.with_column(mr: 2) do
+              render(
+                Primer::Beta::Button.new(
+                  scheme: :secondary,
+                  tag: :a,
+                  href: @cancel_path,
+                  data: { "turbo-stream": true }
+                )
+              ) do |_c|
+                t("button_cancel")
+              end
+            end
+            flex.with_column do
+              render(MeetingAgendaItem::Outcome::Submit.new(f))
+            end
+          end
+        end
+      end
+    end
+  end
+%>

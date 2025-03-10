@@ -524,18 +524,18 @@ zh-TW:
     text: "文字"
   placeholder_users:
     right_to_manage_members_missing: >
-      你不被允許刪除「虛擬群組」(placeholder user)。您無權管理虛擬群組所屬的專案成員。
-    delete_tooltip: "刪除「虛擬群組」"
+      您無權刪除佔位使用者。您無權管理佔位使用者為成員的所有專案的成員。
+    delete_tooltip: "刪除佔位使用者"
     deletion_info:
-      heading: "刪除虛擬群組：%{name}"
+      heading: "刪除佔位使用者 %{name}"
       data_consequences: >
         出現的所有佔位符用戶(例如，作為受理人、負責人或其他用戶值) 將被重新分配給一個名為“已刪除用戶”的帳戶。 由於每個已刪除帳戶的數據都會被重新分配給此帳戶，因此無法將用戶創建的數據與另一個已刪除帳戶的數據區分。
       irreversible: "這一行動是不可還原的"
-      confirmation: "輸入「虛擬群組」名稱： %{name} 來確認刪除"
+      confirmation: "輸入占位使用者名稱 %{name} 確認刪除。"
     upsale:
-      title: 虛擬群組
+      title: 占位使用者
       description: >
-        「虛擬群組」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
+        「佔位使用者」是一種將工作項目分配給不屬於您專案成員的方法。它們在一系列場景中十分有用；例如，如果您需要追蹤尚未命名或可用的資源的任務，或者如果您不想讓該人員存取專案，但仍希望追蹤分配給他們的任務。
   prioritiies:
     edit:
       priority_color_text: |
@@ -609,6 +609,7 @@ zh-TW:
         pattern:
           label: "主題模板"
           caption: "搜尋屬性或新增文字。若要在元素之間建立空格，請將其建立為文字。"
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
@@ -634,44 +635,44 @@ zh-TW:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Start date derived."
-          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
-          manual_mobile: "Ignoring relations."
-          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
-          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
-          manual_with_children: "This has child work packages but their start dates are ignored."
+          automatic_mobile: "得出開始日期。"
+          click_on_show_relations_to_open_gantt: '點選「%{button_name}」查看甘特圖概覽。'
+          manual_mobile: "忽略關係。"
+          manual_gap_between_predecessors: "這款產品與所有前代產品之間存在差距。"
+          manual_overlap_with_predecessors: "與至少一個前置工作任務重疊。"
+          manual_with_children: "這有子工作項目，但它們的開始日期會被忽略。"
         title:
-          automatic_mobile: "Automatically scheduled."
-          automatic_with_children: "The dates are determined by child work packages."
-          automatic_with_predecessor: "The start date is set by a predecessor."
-          manual_mobile: "Manually scheduled."
-          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+          automatic_mobile: "自動排程。"
+          automatic_with_children: "日期由子工作項目決定。"
+          automatic_with_predecessor: "開始日期由前工作項目設定。"
+          manual_mobile: "手動排程。"
+          manually_scheduled: "手動排程。日期不受關聯任務影響。"
       blankslate:
-        title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        title: "沒有前置項目"
+        description: "若要啟用自動排程，此工作項目必須至少有一個前置工作。這樣它就會自動排程在最接近的前置工作之後開始。"
       ignore_non_working_days:
-        title: "Working days only"
+        title: "限工作日"
       mode:
-        title: "Scheduling mode"
-        automatic: "Automatic"
-        manual: "Manual"
-      show_relations: "Show relations"
+        title: "排程模式"
+        automatic: "自動"
+        manual: "手動"
+      show_relations: "顯示關聯"
       tabs:
-        aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        aria_label: "日期選擇器標籤"
+        children: "子項目"
+        dates: "日期"
+        predecessors: "前工作項目"
+        successors: "繼承者"
         blankslate:
           predecessors:
-            title: "No predecessors"
-            description: "This work package does not have any predecessors."
+            title: "沒有前置項目"
+            description: "本工作項目沒有任何前工作項目。"
           successors:
-            title: "No successors"
-            description: "This work package does not have any successors."
+            title: "沒有繼任工作"
+            description: "本工作包沒有任何繼任工作。"
           children:
-            title: "No children"
-            description: "This work package does not have any children."
+            title: "沒有子項"
+            description: "此工作項目沒有任何子項。"
     x_descendants:
       other: "%{count} 個子工作項目"
     bulk:
@@ -744,6 +745,7 @@ zh-TW:
       new_child_text: "使相關工作成為目前（上層）工作項目的子項目"
       existing_child: "現有子項目"
       child_description: "使相關工作成為目前（父）工作項目的子項目"
+      label_closest: "最近的"
       label_blocks_singular: "區塊"
       label_blocks_plural: "區塊"
       blocks_description: "在本工作項目結束之前，關聯工作無法結束"
@@ -904,6 +906,8 @@ zh-TW:
         active_value:
           true: "解除封存"
           false: "已封存"
+        description: "說明"
+        enabled_modules: "啟用的模組"
         identifier: "識別碼"
         latest_activity_at: "最新活動"
         parent: "上層專案"
@@ -912,9 +916,7 @@ zh-TW:
           true: "公開"
           false: "私人的"
         queries: "查詢"
-        enabled_modules: "啟用的模組"
         status_code: "專案狀態"
-        description: "說明"
         status_explanation: "專案描述"
         status_codes:
           not_started: "未開始"
@@ -1000,6 +1002,10 @@ zh-TW:
         is_milestone: "里程碑"
         color: "顏色"
         patterns: "樣板"
+      remote_identity:
+        auth_source: "驗證來源"
+        integration: "整合"
+        user: "用戶"
       user:
         admin: "管理員"
         auth_source: "驗證方式"
@@ -1019,7 +1025,6 @@ zh-TW:
       user_preference:
         comments_sorting: "顯示留言"
         impaired: "協助工具模式"
-        time_zone: "時區"
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作項目時提示我"
         theme: "模式 "
@@ -1384,7 +1389,7 @@ zh-TW:
               smaller_than_dates: "小於開始日期和結束日期之間的間隔。"
               not_available_for_milestones: "不適用於里程碑類型的工作項目。"
               cannot_be_null: "無法設置為 null，因為開始日期和結束日期已知。"
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "不是有效的持續時間。"
             parent:
               cannot_be_milestone: "不能是里程碑"
               cannot_be_self_assigned: "不能指派給自己"
@@ -1425,6 +1430,8 @@ zh-TW:
               duplicate_group: "群組名稱 %{group} 已被使用，群組名稱不可重複。"
               query_invalid: "這個遷入的查詢 '%{group}' 是無效的: %{details}"
               group_without_name: "不允許未命名的群組。"
+            patterns:
+              invalid_tokens: "欄位內的一個或多個屬性不正確。請在儲存前修正屬性。"
         user:
           attributes:
             base:
@@ -1487,7 +1494,7 @@ zh-TW:
       news: "最新消息"
       notification:
         other: "通知"
-      placeholder_user: "虛擬群組"
+      placeholder_user: "占位使用者"
       project: "專案"
       project/gate_definition: "關卡"
       project/stage_definition: "階段"
@@ -1624,6 +1631,7 @@ zh-TW:
     subject: "名稱"
     slug: "網址後綴"
     summary: "總覽"
+    time_zone: "時區"
     text: "文字"
     title: "標題"
     type: "類型"
@@ -2198,7 +2206,7 @@ zh-TW:
         progress_calculation_adjusted: >-
           自動計算進度<a href="%{href}" target="_blank">隨版本更新調整</a>。
         scheduling_mode_adjusted: >-
-          Scheduling mode automatically adjusted with version update.
+          隨版本更新自動調整排程模式。
         totals_removed_from_childless_work_packages: >-
           使用 <a href="%{href}" target="_blank">版本更新</a>的非父工作包的工作和進度總計自動移除。 這是一個維護任務，可以安全地被忽略。
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2689,9 +2697,9 @@ zh-TW:
   label_permissions: "權限"
   label_permissions_report: "權限列表"
   label_personalize_page: "個人化本頁"
-  label_placeholder_user: "虛擬群組"
-  label_placeholder_user_new: "新增虛擬群組"
-  label_placeholder_user_plural: "虛擬群組"
+  label_placeholder_user: "占位使用者"
+  label_placeholder_user_new: "新的佔位使用者"
+  label_placeholder_user_plural: "占位使用者"
   label_planning: "計劃中"
   label_please_login: "請登入"
   label_plugins: "擴充套件"
@@ -2823,7 +2831,7 @@ zh-TW:
   label_system_storage: "儲存空間資訊"
   label_table_of_contents: "目錄"
   label_tag: "標記"
-  label_team_planner: "小組工作企劃"
+  label_team_planner: "團隊規劃"
   label_text: "長文字"
   label_this_month: "本月"
   label_this_week: "本週"
@@ -2834,7 +2842,9 @@ zh-TW:
   label_title: "標題"
   label_projects_menu: "專案"
   label_today: "今天"
-  label_token_version: "Token Version"
+  label_token_version: "權杖(token)版本"
+  label_today_as_start_date: "選擇今天為開始日期。"
+  label_today_as_due_date: "選擇今天為完成日期。"
   label_top_menu: "頂層選單"
   label_topic_plural: "主題"
   label_total: "全部"
@@ -3222,7 +3232,7 @@ zh-TW:
   permission_archive_project: "封存專案"
   permission_create_user: "新增使用者"
   permission_manage_user: "編輯使用者"
-  permission_manage_placeholder_user: "新增、修改、刪除「虛擬群組」(placeholder users)"
+  permission_manage_placeholder_user: "建立、編輯及刪除占位使用者"
   permission_add_subprojects: "建立子專案"
   permission_add_work_package_watchers: "新增監看者"
   permission_assign_versions: "指派版本"
@@ -3318,6 +3328,13 @@ zh-TW:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "是否確定要封存專案 '%{name}'？"
+      archived: "封存"
+    count:
+      zero: "0 個專案"
+      one: "1 個專案"
+      other: "%{count} 個專案"
     destroy:
       confirmation: "如果繼續操作，項目 %{identifier} 將被永久銷毀。為確認此操作，請在下方的字段中輸入項目名稱，此操作將會："
       project_delete_result_1: "刪除所有相關數據。"
@@ -3326,23 +3343,21 @@ zh-TW:
       project_verification: "輸入專案的名稱 %{name} 來確認刪除"
       subprojects_confirmation: "它的子專案: %{value} 將會一併刪除"
       title: "刪除專案 %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: 這個專案的成員將必須搬移專案的版本庫
       warning_two: 專案現有的連結將不再有效
       title: 修改專案的識別
+    not_available: "無專案"
     template:
       copying: >
         依照專案範本創立專案中.完成後會以電郵通知。
       use_template: "使用範本"
       make_template: "設為範本"
       remove_from_templates: "從範本中移除"
-    archive:
-      are_you_sure: "是否確定要封存專案 '%{name}'？"
-      archived: "封存"
-    count:
-      zero: "0 個專案"
-      one: "1 個專案"
-      other: "%{count} 個專案"
   project_module_activity: "活動"
   project_module_forums: "討論區"
   project_module_work_package_tracking: "工作項目"
@@ -3476,12 +3491,12 @@ zh-TW:
     activated: "已啟用"
     deactivated: "已停用"
   search_input_placeholder: "搜尋 ..."
-  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url: "首次登入重新導向"
   setting_after_first_login_redirect_url_text_html: >
-    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
-  setting_after_login_default_redirect_url: "After login redirect"
+    設定使用者首次登入後的重新導向路徑。如果為空，則會重定向到上線導覽的首頁。 <br/> 範例：<code>/my/page</code>
+  setting_after_login_default_redirect_url: "登入重新導向"
   setting_after_login_default_redirect_url_text_html: >
-    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
+    如果沒有提供後向連結，設定使用者登入後重新導向的預設路徑。如果未設定，則會重導向到首頁。 <br/> 範例：<code>/my/page</code>
   setting_apiv3_cors_title: "跨原始來源資源共用 (CORS, Cross-Origin Resource Sharing)"
   setting_apiv3_cors_enabled: "啟用 CORS"
   setting_apiv3_cors_origins: "CROSS-ORIGIN RESOURCE SHARING (CORS)"
@@ -4268,6 +4283,7 @@ zh-TW:
       connected: "已連線"
       error: "錯誤"
       failed_authorization: "授權失敗"
+      not_connected: "未連接"
     labels:
       label_oauth_integration: "整合OAuth2 "
       label_redirect_uri: "轉址 uri"
@@ -4319,28 +4335,28 @@ zh-TW:
     name: "OmniAuth SAML / SSO單點登錄"
     description: "將 OmniAuth SAML 提供商增加到 OpenProject"
   enterprise_plans:
-    legacy_enterprise: "Enterprise Plan"
+    legacy_enterprise: "企業方案"
   enterprise_features:
-    baseline_comparison: Baseline Comparison
-    board_view: Board View
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation
+    baseline_comparison: 差異線比較
+    board_view: 板面檢視
+    conditional_highlighting: 條件強調
+    custom_actions: 自訂動作
+    custom_field_hierarchies: 自訂欄位層級
+    customize_life_cycle: 自訂生命週期
+    date_alerts: 日期提醒
+    define_custom_style: 定義自訂樣式
+    edit_attribute_groups: 編輯屬性群組
+    gantt_pdf_export: 甘特圖以PDF匯出
+    grid_widget_wp_graph: 網格小工具工作項目圖形
+    ldap_groups: LDAP群組
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint 檔案儲存
+    placeholder_users: 占位使用者
+    project_list_sharing: 專案清單分享
+    readonly_work_packages: 唯讀工作項目
+    sso_auth_providers: SSO 驗證提供者
+    team_planner_view: 團隊規劃檢視
+    two_factor_authentication: 雙重身分驗證
+    virus_scanning: 附件病毒掃描
+    work_package_query_relation_columns: 工作項目查詢關聯列
+    work_package_sharing: 工作項目分享
+    work_package_subject_generation: 工作項目標題產生

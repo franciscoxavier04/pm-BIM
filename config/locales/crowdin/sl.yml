@@ -634,6 +634,7 @@ sl:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -673,7 +674,7 @@ sl:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -772,6 +773,7 @@ sl:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -932,6 +934,8 @@ sl:
         active_value:
           true: "unarchived"
           false: "Arhiviran"
+        description: "Opis"
+        enabled_modules: "Enabled modules"
         identifier: "Identifikator "
         latest_activity_at: "Zadnja aktivnost ob"
         parent: "Podprojekt od"
@@ -940,9 +944,7 @@ sl:
           true: "public"
           false: "private"
         queries: "Poizvedbe"
-        enabled_modules: "Enabled modules"
         status_code: "Status projekta"
-        description: "Opis"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Ni začeto"
@@ -1028,6 +1030,10 @@ sl:
         is_milestone: "Mejnik"
         color: "Barva"
         patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "User"
       user:
         admin: "Aministrator"
         auth_source: "Authentication source"
@@ -1047,7 +1053,6 @@ sl:
       user_preference:
         comments_sorting: "Prikaži komentarje"
         impaired: "Dostopnost"
-        time_zone: "Časovni pas"
         auto_hide_popups: "Samodejno skrij obvestila o uspehu"
         warn_on_leaving_unsaved: "Opozori me, kadar zapuščam stran z neshranjenim besedilom"
         theme: "Mode"
@@ -1453,6 +1458,8 @@ sl:
               duplicate_group: "Ime skupine '%{group}' je uporabljeno več kot enkrat. Ime skupine mora biti unikatno."
               query_invalid: "Poizvedba '%{group}' je neveljavna: %{details}"
               group_without_name: "Ne poimenovane skupine niso dovoljene."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1685,6 +1692,7 @@ sl:
     subject: "Zadeva"
     slug: "Slug"
     summary: "Povzetek"
+    time_zone: "Time zone"
     text: "Text"
     title: "Naslov"
     type: "Vrsta"
@@ -2953,6 +2961,8 @@ sl:
   label_projects_menu: "Projekti"
   label_today: "Danes"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Zgornji meni"
   label_topic_plural: "Teme"
   label_total: "Skupno"
@@ -3444,6 +3454,13 @@ sl:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Arhiviran"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3452,23 +3469,21 @@ sl:
       project_verification: "Vnesite ime projekta %{name}, da preverite izbris."
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Člani projekta bodo morali preseliti shrambo projekta.
       warning_two: Obstoječe povezave do projekta ne bodo več delovale.
       title: Spremenite identifikator projekta
+    not_available: "Project N/A"
     template:
       copying: >
         Vaš projekt se ustvarja iz izbrane projektne predloge. Preko e-pošte boste obveščeni, ko bo projekt na voljo.
       use_template: "Uporabi predlogo"
       make_template: "Nastavi za predlogo"
       remove_from_templates: "Odstrani iz predlog"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Arhiviran"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Aktivnost"
   project_module_forums: "Forumi"
   project_module_work_package_tracking: "Delovni paketi"
@@ -4400,6 +4415,7 @@ sl:
       connected: "Connected"
       error: "Napaka"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Preusmeritev URI"

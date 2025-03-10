@@ -607,6 +607,7 @@ zh-CN:
         pattern:
           label: "主题模式"
           caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -646,7 +647,7 @@ zh-CN:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -742,6 +743,7 @@ zh-CN:
       new_child_text: "创建工作包，作为当前(父)工作包的子项"
       existing_child: "添加现有子项"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
+      label_closest: "Closest"
       label_blocks_singular: "阻止"
       label_blocks_plural: "阻止"
       blocks_description: "在本工作包结束之前，相关工作包不能关闭"
@@ -902,6 +904,8 @@ zh-CN:
         active_value:
           true: "未归档"
           false: "已归档"
+        description: "描述"
+        enabled_modules: "启用的模块"
         identifier: "标识符"
         latest_activity_at: "最近一次活动"
         parent: "父项目"
@@ -910,9 +914,7 @@ zh-CN:
           true: "公开"
           false: "私有"
         queries: "查询"
-        enabled_modules: "启用的模块"
         status_code: "项目状态"
-        description: "描述"
         status_explanation: "项目状态描述"
         status_codes:
           not_started: "未开始"
@@ -998,6 +1000,10 @@ zh-CN:
         is_milestone: "里程碑"
         color: "颜色"
         patterns: "模式"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "用户"
       user:
         admin: "管理员"
         auth_source: "身份验证源"
@@ -1017,7 +1023,6 @@ zh-CN:
       user_preference:
         comments_sorting: "显示评论"
         impaired: "辅助功能模式"
-        time_zone: "时区"
         auto_hide_popups: "自动隐藏成功通知"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
         theme: "模式"
@@ -1382,7 +1387,7 @@ zh-CN:
               smaller_than_dates: "小于开始日期和结束日期之间的间隔。"
               not_available_for_milestones: "不适用于里程碑类型的工作包。"
               cannot_be_null: "无法设置为 null，因为开始日期和结束日期已知。"
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "不是有效的持续时间。"
             parent:
               cannot_be_milestone: "不能是一个里程碑。"
               cannot_be_self_assigned: "不能分配给自己。"
@@ -1423,6 +1428,8 @@ zh-CN:
               duplicate_group: "组名 %{group} 已多次使用。组名不能重复。"
               query_invalid: "嵌入式查询 \"%{group}\" 无效: %{details}"
               group_without_name: "不允许未命名的组。"
+            patterns:
+              invalid_tokens: "字段内的一个或多个属性无效。请在保存前修正。"
         user:
           attributes:
             base:
@@ -1622,6 +1629,7 @@ zh-CN:
     subject: "主题"
     slug: "缩写"
     summary: "摘要"
+    time_zone: "时区"
     text: "文本"
     title: "标题"
     type: "类型"
@@ -2196,7 +2204,7 @@ zh-CN:
         progress_calculation_adjusted: >-
           进度计算自动<a href="%{href}" target="_blank">设置为基于工时的模式，并随版本更新而调整</a>。
         scheduling_mode_adjusted: >-
-          Scheduling mode automatically adjusted with version update.
+          随版本更新自动适配调度模式。
         totals_removed_from_childless_work_packages: >-
           使用 <a href="%{href}" target="_blank">版本更新</a>的非父工作包的工作和进度总计自动移除。 这是一个维护任务，可以安全地被忽略。
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2832,7 +2840,9 @@ zh-CN:
   label_title: "标题"
   label_projects_menu: "项目"
   label_today: "今天"
-  label_token_version: "Token Version"
+  label_token_version: "令牌版本"
+  label_today_as_start_date: "选择今天为开始日期。"
+  label_today_as_due_date: "选择今天为结束日期。"
   label_top_menu: "顶部的菜单"
   label_topic_plural: "主题"
   label_total: "共"
@@ -3315,6 +3325,13 @@ zh-CN:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "是否确定想要归档项目 '%{name}'？"
+      archived: "已存档"
+    count:
+      zero: "0 个项目"
+      one: "1个项目"
+      other: "%{count} 个项目"
     destroy:
       confirmation: "如果继续操作，项目 %{identifier} 将被永久销毁。为确认此操作，请在下方的字段中输入项目名称，此操作将会："
       project_delete_result_1: "删除所有相关数据。"
@@ -3323,23 +3340,21 @@ zh-CN:
       project_verification: "输入项目的名称 %{name}，以确认删除。"
       subprojects_confirmation: "其 子项目(s): %{value} 也将被删除。"
       title: "删除项目 %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: 项目的成员将重新迁移至项目的存储库。
       warning_two: 该项目的现有链接将不再有效。
       title: 更改项目的标识符
+    not_available: "Project N/A"
     template:
       copying: >
         您的项目正在从选定的模板项目进行创建。一旦项目可用，您将会收到邮件通知。
       use_template: "使用模板"
       make_template: "设置为模板"
       remove_from_templates: "从模板中移除"
-    archive:
-      are_you_sure: "是否确定想要归档项目 '%{name}'？"
-      archived: "已存档"
-    count:
-      zero: "0 个项目"
-      one: "1个项目"
-      other: "%{count} 个项目"
   project_module_activity: "活动"
   project_module_forums: "论坛"
   project_module_work_package_tracking: "工作包"
@@ -4262,6 +4277,7 @@ zh-CN:
       connected: "已连接"
       error: "错误"
       failed_authorization: "授权失败"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 集成"
       label_redirect_uri: "重定向 URI"

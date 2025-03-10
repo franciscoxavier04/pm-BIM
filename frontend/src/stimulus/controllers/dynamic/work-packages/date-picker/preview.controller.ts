@@ -30,8 +30,18 @@
 
 import { DialogPreviewController } from '../dialog/preview.controller';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
+import {
+  debounce,
+  DebouncedFunc,
+} from 'lodash';
 
 export default class PreviewController extends DialogPreviewController {
+  static values = {
+    dateMode: String,
+  };
+
+  declare dateModeValue:string;
+
   private timezoneService:TimezoneService;
   private highlightedField:HTMLInputElement|null = null;
 
@@ -45,19 +55,64 @@ export default class PreviewController extends DialogPreviewController {
 
   private handleFlatpickrDatesChangedBound = this.handleFlatpickrDatesChanged.bind(this);
 
+  private debouncedDelayedPreview:DebouncedFunc<(input:HTMLInputElement) => void>;
+  private debouncedImmediatePreview:DebouncedFunc<(input:HTMLInputElement) => void>;
+
   async connect() {
-    this.readCurrentValues();
+    // if the debounce value is changed, the following test helper must be kept
+    // in sync: `spec/support/edit_fields/progress_edit_field.rb`, method `#wait_for_preview_to_complete`
+    this.debouncedDelayedPreview = debounce((input:HTMLInputElement) => {
+      void this.preview(input);
+    }, 200);
+    this.debouncedImmediatePreview = debounce((input:HTMLInputElement) => {
+      void this.preview(input);
+    }, 0);
+
+    this.readInitialValues();
     super.connect();
 
     const context = await window.OpenProject.getPluginContext();
     this.timezoneService = context.services.timezone;
 
     document.addEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+    this.focusOnOpen();
   }
 
   disconnect() {
     document.removeEventListener('date-picker:flatpickr-dates-changed', this.handleFlatpickrDatesChangedBound);
+
+    this.debouncedDelayedPreview.cancel();
+    this.debouncedImmediatePreview.cancel();
+
     super.disconnect();
+  }
+
+  async preview(field:HTMLInputElement|null) {
+    await super.preview(field, [{ key: 'date_mode', val: this.dateModeValue }]);
+  }
+
+  inputChanged(event:Event) {
+    const field = event.target as HTMLInputElement;
+
+    if (field.name === 'work_package[start_date]') {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
+        const selectedDate = new Date(field.value);
+        this.changeStartDate(selectedDate);
+        this.debouncedDelayedPreview(field);
+      } else if (field.value === '') {
+        this.debouncedDelayedPreview(field);
+      }
+    } else if (field.name === 'work_package[due_date]') {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(field.value)) {
+        const selectedDate = new Date(field.value);
+        this.changeDueDate(selectedDate);
+        this.debouncedDelayedPreview(field);
+      } else if (field.value === '') {
+        this.debouncedDelayedPreview(field);
+      }
+    } else {
+      this.debouncedDelayedPreview(field);
+    }
   }
 
   private get dueDateField():HTMLInputElement {
@@ -79,6 +134,7 @@ export default class PreviewController extends DialogPreviewController {
     if (this.isMilestone) {
       this.currentStartDate = dates[0];
       this.setStartDateFieldValue(dates[0]);
+      this.doMarkFieldAsTouched('start_date');
     } else {
       const selectedDate:Date = this.lastClickedDate(dates) || dates[0];
       let dateFieldToChange = this.dateFieldToChange();
@@ -93,7 +149,7 @@ export default class PreviewController extends DialogPreviewController {
     }
     this.updateFlatpickrCalendar();
     if (fieldUpdatedWithUserValue) {
-      this.triggerImmediatePreview(fieldUpdatedWithUserValue);
+      this.debouncedImmediatePreview(fieldUpdatedWithUserValue);
     }
   }
 
@@ -102,11 +158,16 @@ export default class PreviewController extends DialogPreviewController {
       return this.startDateField;
     }
 
+    const currentlyHighledField = document.getElementsByClassName('op-datepicker-modal--date-field_current')[0];
+    if (currentlyHighledField) {
+      this.highlightedField = currentlyHighledField as HTMLInputElement;
+    }
+
     let dateFieldToChange:HTMLInputElement;
     if (this.highlightedField === this.dueDateField
         || (this.highlightedField === this.durationField
-            && this.currentStartDate !== null
-            && this.currentDueDate === null)) {
+        && (this.currentStartDate !== null || !this.isTouched('start_date'))
+        && this.currentDueDate === null)) {
       dateFieldToChange = this.dueDateField;
     } else {
       dateFieldToChange = this.startDateField;
@@ -154,8 +215,10 @@ export default class PreviewController extends DialogPreviewController {
     this.currentStartDate = selectedDate;
     this.setStartDateFieldValue(this.currentStartDate);
     this.doMarkFieldAsTouched('start_date');
-    this.highlightField(this.dueDateField);
-    this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
+    if (this.currentDueDate) {
+      this.highlightField(this.dueDateField);
+    }
+    this.keepFieldValue();
   }
 
   changeDueDate(selectedDate:Date) {
@@ -170,8 +233,10 @@ export default class PreviewController extends DialogPreviewController {
     this.currentDueDate = selectedDate;
     this.setDueDateFieldValue(this.currentDueDate);
     this.doMarkFieldAsTouched('due_date');
-    this.highlightField(this.startDateField);
-    this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
+    if (this.currentStartDate) {
+      this.highlightField(this.startDateField);
+    }
+    this.keepFieldValue();
   }
 
   private updateFlatpickrCalendar() {
@@ -226,7 +291,7 @@ export default class PreviewController extends DialogPreviewController {
   doMarkFieldAsTouched(fieldName:string) {
     super.doMarkFieldAsTouched(fieldName);
 
-    this.keepFieldValueWithPriority('start_date', 'due_date', 'duration');
+    this.keepFieldValue();
   }
 
   setIgnoreNonWorkingDays(event:{ target:HTMLInputElement }) {
@@ -256,25 +321,39 @@ export default class PreviewController extends DialogPreviewController {
     this.updateFlatpickrCalendar();
   }
 
-  readCurrentValues() {
+  readInitialValues() {
     this.fieldInputTargets.forEach((inputField) => {
-      if (inputField.name === 'work_package[ignore_non_working_days]') {
-        // field is "Working days only",  but has the name "work_package[ignore_non_working_days]" for form submission.
-        // Submits "0" if checked, and "1" if not checked thanks to a hidden field with same name.
-        this.currentIgnoreNonWorkingDays = !inputField.checked;
-      } else if (inputField.name === 'work_package[start_date]') {
-        this.currentStartDate = this.toDate(inputField.value);
-      } else if (inputField.name === 'work_package[due_date]') {
-        this.currentDueDate = this.toDate(inputField.value);
-        this.isMilestone = false;
-      } else if (inputField.name === 'work_package[duration]') {
-        this.currentDuration = this.toDuration(inputField.value);
-      }
+      this.assignReadValues(inputField);
+    });
+  }
 
-      if (inputField.classList.contains('op-datepicker-modal--date-field_current')) {
-        this.highlightedField = inputField;
+  readCurrentValues() {
+    const fieldNames = ['ignore_non_working_days', 'start_date', 'due_date', 'duration'];
+    fieldNames.forEach((name:string) => {
+      const field = document.getElementById(`work_package_${name}`);
+      if (field) {
+        this.assignReadValues(field as HTMLInputElement);
       }
     });
+  }
+
+  private assignReadValues(inputField:HTMLInputElement) {
+    if (inputField.name === 'work_package[ignore_non_working_days]') {
+      // field is "Working days only",  but has the name "work_package[ignore_non_working_days]" for form submission.
+      // Submits "0" if checked, and "1" if not checked thanks to a hidden field with same name.
+      this.currentIgnoreNonWorkingDays = !inputField.checked;
+    } else if (inputField.name === 'work_package[start_date]') {
+      this.currentStartDate = this.toDate(inputField.value);
+    } else if (inputField.name === 'work_package[due_date]') {
+      this.currentDueDate = this.toDate(inputField.value);
+      this.isMilestone = false;
+    } else if (inputField.name === 'work_package[duration]') {
+      this.currentDuration = this.toDuration(inputField.value);
+    }
+
+    if (inputField.classList.contains('op-datepicker-modal--date-field_current')) {
+      this.highlightedField = inputField;
+    }
   }
 
   // called from inputs defined in the date_picker/date_form.rb
@@ -284,6 +363,7 @@ export default class PreviewController extends DialogPreviewController {
       this.highlightField(fieldToHighlight);
       // Datepicker can need an update when the focused field changes. This
       // allows to switch between single and range mode in certain edge cases.
+      this.readCurrentValues();
       this.updateFlatpickrCalendar();
     }
   }
@@ -309,8 +389,8 @@ export default class PreviewController extends DialogPreviewController {
     // This is a very special case in which only one date is set, and we want to
     // modify exactly that date again because it is highlighted. Then it does
     // not make sense to display a range as we are only changing one date.
-    if ((this.highlightedField?.name === 'work_package[start_date]' && this.currentStartDate && !this.currentDueDate)
-      || (this.highlightedField?.name === 'work_package[due_date]' && !this.currentStartDate && this.currentDueDate)) {
+    if ((this.highlightedField?.name === 'work_package[start_date]' && !this.currentDueDate)
+      || (this.highlightedField?.name === 'work_package[due_date]' && !this.currentStartDate)) {
       return 'single';
     }
 
@@ -349,5 +429,87 @@ export default class PreviewController extends DialogPreviewController {
       return parseInt(duration, 10);
     }
     return null;
+  }
+
+  /*
+  * I am aware, that the following methods look pretty similar to the logic on the progress/preview controller.
+  * There are however slight differences. That could still be abstracted into the shared parent controller.
+  * However, this comes at the cost of heavily reduced readability which is why it was agreed to keep it duplicated like this.
+  * Further, in the future, is is likely that the datepicker and the progress will further diverge in their behavior.
+  */
+  private keepFieldValue() {
+    if (this.isInitialValueEmpty('start_date') && !this.isTouched('start_date')) {
+      // let start date be derived
+      return;
+    }
+
+    if (this.isBeingEdited('start_date')) {
+      this.untouchFieldsWhenStartDateIsEdited();
+    } else if (this.isBeingEdited('due_date')) {
+      this.untouchFieldsWhenDueDateIsEdited();
+    } else if (this.isBeingEdited('duration')) {
+      this.untouchFieldsWhenDurationIsEdited();
+    }
+  }
+
+  private untouchFieldsWhenStartDateIsEdited() {
+    if (this.areBothTouched('due_date', 'duration')) {
+      if (this.isValueEmpty('duration') && this.isValueEmpty('due_date')) {
+        return;
+      }
+      if (this.isValueEmpty('duration')) {
+        this.markUntouched('duration');
+      } else {
+        this.markUntouched('due_date');
+      }
+    } else if (this.isTouchedAndEmpty('due_date') && this.isValueSet('duration')) {
+      // force due date derivation
+      this.markUntouched('due_date');
+      this.markTouched('duration');
+    } else if (this.isTouchedAndEmpty('duration') && this.isValueSet('due_date')) {
+      // force duration derivation
+      this.markUntouched('duration');
+      this.markTouched('due_date');
+    }
+  }
+
+  private untouchFieldsWhenDueDateIsEdited():void {
+    if (this.isTouchedAndEmpty('start_date') && this.isValueSet('duration')) {
+      // force start date derivation
+      this.markUntouched('start_date');
+      this.markTouched('duration');
+    } else if (this.isValueSet('start_date')) {
+      this.markUntouched('duration');
+    }
+  }
+
+  private untouchFieldsWhenDurationIsEdited():void {
+    if (this.isTouched('start_date')) {
+      if (this.isValueSet('start_date')) {
+        this.markUntouched('due_date');
+      } else if (this.isValueSet('due_date')) {
+        this.markUntouched('start_date');
+        this.markTouched('due_date');
+      }
+    } else if (this.isTouched('due_date')) {
+      if (this.isValueSet('due_date')) {
+        this.markUntouched('start_date');
+      } else if (this.isValueSet('start_date')) {
+        this.markUntouched('due_date');
+        this.markTouched('start_date');
+      }
+    }
+  }
+
+  private focusOnOpen() {
+    const banner = document.querySelector('.wp-datepicker--banner') as HTMLElement;
+    if (banner) {
+      banner.setAttribute('tabindex', '-1');
+      banner.focus();
+    } else {
+      const tabs = document.querySelector('.wp-datepicker-dialog--UnderlineNav') as HTMLElement;
+      tabs.setAttribute('tabindex', '-1');
+      tabs.focus();
+    }
   }
 }

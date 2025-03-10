@@ -60,6 +60,12 @@
         end_date: "End date"
         iterations: "Occurrences"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            format: "%{message}"
       messages:
         invalid_time_format: "er ikke et gyldig tidpunkt. Formatet må være HH:MM"
     models:
@@ -363,12 +369,19 @@
   label_agenda_item_undisclosed_wp: "Arbeidspakke #%{id} er ikke synlig"
   label_agenda_item_deleted_wp: "Slettet arbeidspakkereferanse"
   label_agenda_item_actions: "Tiltak på punkter i dagsorden"
+  label_agenda_item_move_to_next: "Move to next meeting"
   label_agenda_item_move_to_top: "Flytt til toppen"
   label_agenda_item_move_to_bottom: "Flytt til bunnen"
   label_agenda_item_move_up: "Flytt opp"
   label_agenda_item_move_down: "Flytt ned"
   label_agenda_item_add_notes: "Legg til notater"
+  label_agenda_item_add_outcome: "Add outcome"
   label_agenda_item_work_package: "Arbeidspakke for dagsordenen"
+  label_agenda_outcome: "Outcome"
+  label_agenda_outcome_actions: "Agenda outcome actions"
+  label_agenda_outcome_edit: "Edit outcome"
+  label_agenda_outcome_delete: "Remove outcome"
+  text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: 'Dagsordenpost "%{title}"'
   text_agenda_work_package_deleted: 'Dagsordenpost for slettet arbeidspakke'
   text_deleted_agenda_item: 'Slettet dagsordenpost'
@@ -385,10 +398,16 @@
   label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
+  label_meeting_state_in_progress: "In progress"
   label_meeting_reopen_action: "Gjenåpne møte"
   label_meeting_close_action: "Lukk møtet"
-  text_meeting_open_description: "Dette møtet er åpen. Du kan legge til/fjerne punkter på dagsorden og redigere dem etter hvert som du ønsker. Etter at møtet er over, lukk det for å låse det."
+  label_meeting_in_progress_action: "Mark as in progress"
+  text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
   text_meeting_closed_description: "Dette møtet er lukket. Du kan ikke lenger legge til eller fjerne punkter på dagsorden."
+  text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
+  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
+  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
   label_meeting_manage_participants: "Administrer deltagere"
   label_meeting_no_participants: "Ingen deltakere"
   label_meeting_show_hide_participants: "Vis/Skjul %{count} mer"
@@ -402,6 +421,9 @@
   text_add_work_package_to_meeting_description: "En arbeidspakke kan legges til ett eller flere møter for diskusjon. Eventuelle notater som vedrører den er også synlig her."
   text_agenda_item_no_notes: "Ingen merknader finnes"
   text_agenda_item_not_editable_anymore: "Denne dagsorden er ikke redigerbar lenger."
+  text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
+  text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Denne arbeidspakken er ikke planlagt i en kommende møteagenda ennå."
+  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
   text_work_package_add_to_meeting_hint: 'Bruk knappen "Legg til i møte" for å legge til denne arbeidspakken til et kommende møte.'
   text_work_package_has_no_past_meeting_agenda_items: "Denne arbeidspakken ble ikke nevnt i et tidligere møte."

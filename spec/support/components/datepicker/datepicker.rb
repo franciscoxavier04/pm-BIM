@@ -119,6 +119,10 @@ module Components
       container.click_button save_button_label
     end
 
+    def cancel!
+      container.click_button cancel_button_label
+    end
+
     def expect_save_button_disabled
       expect(container).to have_button(save_button_label, disabled: true)
     end
@@ -196,6 +200,10 @@ module Components
 
     def save_button_label
       I18n.t(:button_apply)
+    end
+
+    def cancel_button_label
+      I18n.t(:button_cancel)
     end
 
     def focus_field(field)

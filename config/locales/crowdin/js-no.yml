@@ -719,17 +719,18 @@
       description: "Beskrivelse: Klikk for å redigere..."
       relation_description: "Klikk for å legge til beskrivelse for denne relasjonen"
     project:
-      required_outside_context: >
-        Velg et prosjekt for å opprette arbeidspakken og se alle egenskaper. Du kan bare velge prosjekter som har typen ovenfor aktivert.
-      context: "Prosjekt kontekst"
-      click_to_switch_to_project: "Prosjekt: %{projectname}"
-      confirm_template_load: "Bytte av mal vil laste siden på nytt, og du vil miste alle data på dette skjemaet. Vil du fortsette?"
-      use_template: "Bruk mal"
-      no_template_selected: "(Ingen)"
-      copy:
-        copy_options: "Kopier alternativer"
       autocompleter:
         label: "Prosjektet autofullføring"
+      click_to_switch_to_project: "Prosjekt: %{projectname}"
+      confirm_template_load: "Bytte av mal vil laste siden på nytt, og du vil miste alle data på dette skjemaet. Vil du fortsette?"
+      context: "Prosjekt kontekst"
+      copy:
+        copy_options: "Kopier alternativer"
+      not_available: "Project N/A"
+      no_template_selected: "(Ingen)"
+      required_outside_context: >
+        Velg et prosjekt for å opprette arbeidspakken og se alle egenskaper. Du kan bare velge prosjekter som har typen ovenfor aktivert.
+      use_template: "Bruk mal"
     reminders:
       settings:
         daily:

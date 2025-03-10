@@ -719,17 +719,18 @@ ro:
       description: "Descriere: Clic pentru editare ..."
       relation_description: "Clic pentru a adăuga o descriere pentru această relație"
     project:
-      required_outside_context: >
-        Vă rugăm să alegeți un proiect în care să creați pachetul de lucru pentru a vedea toate atributele. Puteți selecta numai proiectele care au tipul de mai sus activat.
-      context: "Contextul proiectului"
-      click_to_switch_to_project: "Proiect: %{projectname}"
-      confirm_template_load: "Schimbarea șablonului va reîncărca pagina și veți pierde toate datele introduse în acest formular. Continuați?"
-      use_template: "Utilizează șablon"
-      no_template_selected: "(Nimic)"
-      copy:
-        copy_options: "Opțiuni de copiere"
       autocompleter:
         label: "Completarea automată a proiectului"
+      click_to_switch_to_project: "Proiect: %{projectname}"
+      confirm_template_load: "Schimbarea șablonului va reîncărca pagina și veți pierde toate datele introduse în acest formular. Continuați?"
+      context: "Contextul proiectului"
+      copy:
+        copy_options: "Opțiuni de copiere"
+      not_available: "Project N/A"
+      no_template_selected: "(Nimic)"
+      required_outside_context: >
+        Vă rugăm să alegeți un proiect în care să creați pachetul de lucru pentru a vedea toate atributele. Puteți selecta numai proiectele care au tipul de mai sus activat.
+      use_template: "Utilizează șablon"
     reminders:
       settings:
         daily:

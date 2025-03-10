@@ -220,8 +220,8 @@ zh-TW:
             label_maximum_users: "使用者帳號上限"
             label_starts_at: "開始於"
             label_expires_at: "過期於"
-            label_plan: "Plan"
-            label_additional_features: "Additional features"
+            label_plan: "計畫"
+            label_additional_features: "附加功能"
             receive_newsletter: 我想要接收 OpenProject <a target="_blank" href="%{link}">簡報</a>。
             taken_domain: 每個域名只能有一個活動的試用。
             domain_mismatch: 當前請求的主機名與配置的主機名不匹配。請仔細檢查您的系統設置。
@@ -600,8 +600,8 @@ zh-TW:
         team_planner:
           overview: "小組工作企劃使您可以直觀地為小組成員分配任務，並全面瞭解哪些成員正在處理哪些工作。"
           calendar: "單周或雙周規劃面版，可以顯示分配給您的小組成員的所有工作項目。"
-          add_assignee: "首先，請將執行者新增到小組工作企劃。"
-          add_existing: "搜索現有工作項目並將其拖動到小組工作企劃中，立即將其分配給小組成員並規定開始日期和結束日期。"
+          add_assignee: "首先，請將執行者新增到團隊規劃。"
+          add_existing: "搜索現有工作項目並將其拖動到團隊規劃中，立即將其分配給小組成員並規定開始日期和結束日期。"
           card: "水平拖動工作項目前後移其時間，拖曳可更改開始日期和結束日期，甚至可以將其垂直拖動到不同的行以分配給其他成員。"
     notifications:
       title: "通知"
@@ -716,17 +716,18 @@ zh-TW:
       description: "描述：點選可編輯"
       relation_description: "按一下以便為此關係添加描述"
     project:
-      required_outside_context: >
-        請選擇專案以便新增工作項目以及檢視屬性。您只能選擇啟用中的專案。
-      context: "專案內容"
-      click_to_switch_to_project: "專案: %{projectname}"
-      confirm_template_load: "切換模板將重新加載頁面，您將丟失此表單上的所有輸入。是否繼續？"
-      use_template: "使用範本"
-      no_template_selected: "(無)"
-      copy:
-        copy_options: "複製選項"
       autocompleter:
         label: "專案自動完成"
+      click_to_switch_to_project: "專案: %{projectname}"
+      confirm_template_load: "切換模板將重新加載頁面，您將丟失此表單上的所有輸入。是否繼續？"
+      context: "專案內容"
+      copy:
+        copy_options: "複製選項"
+      not_available: "無專案"
+      no_template_selected: "(無)"
+      required_outside_context: >
+        請選擇專案以便新增工作項目以及檢視屬性。您只能選擇啟用中的專案。
+      use_template: "使用範本"
     reminders:
       settings:
         daily:
@@ -1206,7 +1207,7 @@ zh-TW:
         invite_to_project: "邀請%{type} 加入 %{project}"
         User: "使用者"
         Group: "群組"
-        PlaceholderUser: "虛擬群組"
+        PlaceholderUser: "占位使用者"
         invite_principal_to_project: "邀請 %{principal} 加入 %{project}"
       project:
         label: "專案"
@@ -1225,8 +1226,8 @@ zh-TW:
           title: "群組"
           description: "基於所選專案中所分配角色的權限"
         placeholder:
-          title: "虛擬群組"
-          title_no_ee: "虛擬暫用群組（Enterprise edition 附加功能）"
+          title: "占位使用者"
+          title_no_ee: "佔位使用者（僅限企業版附加元件）"
           description: "無法訪問該專案並且未發送電子郵件。"
           description_no_ee: '由於沒有存取專案權限，所以不會發送電子郵件。<br>請查看<a href="%{eeHref}" target="_blank">企業版</a>。'
       principal:
@@ -1242,7 +1243,7 @@ zh-TW:
         next_button: "下一個"
         required:
           user: "請選擇一個使用者"
-          placeholder: "請選擇一個「虛擬群組」"
+          placeholder: "請選擇占位使用者"
           group: "請選擇一個群組"
       role:
         label: "%{project} 中的角色"
