@@ -56,15 +56,11 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
     identity_url = "#{oidc_provider.slug}:qweqweqweqwe"
     create(:user, identity_url:)
   end
-  shared_let(:oidc_admin) do
-    identity_url = "#{oidc_provider.slug}:zxczxczxczxc"
-    create(:admin, identity_url:)
-  end
   shared_let(:single_project_user) { oidc_user }
   shared_let(:single_project_user_remote_identity) do
     create(:remote_identity,
            user: single_project_user,
-           auth_source: oidc_admin.authentication_provider,
+           auth_source: oidc_user.authentication_provider,
            integration: storage,
            origin_user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba")
   end
@@ -272,28 +268,24 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
       expect(result.name).to match(/_=o=_ _ _Jedi_ Project Folder ___ \(\d+\)/)
     end
 
-    context "with inactive project folder", vcr: "one_drive/sync_service_hide_inactive" do
-      before do
-        original_folder = create_folder_for(inactive_project_storage)
-        inactive_project_storage.update(project_folder_id: original_folder.result.id)
+    it "hides (removes all permissions) from inactive project folders", vcr: "one_drive/sync_service_hide_inactive" do
+      original_folder = create_folder_for(inactive_project_storage)
+      inactive_project_storage.update(project_folder_id: original_folder.result.id)
 
-        set_permissions_on(original_folder.result.id,
-                           [{ user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba", permissions: [:read_files] },
-                            { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:write_files] },
-                            { user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] }])
-      end
+      set_permissions_on(original_folder.result.id,
+                         [{ user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba", permissions: [:read_files] },
+                          { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:write_files] },
+                          { user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] }])
 
-      it "hides (removes all permissions) from inactive project folders" do
-        expect(permissions_for(inactive_project_storage))
-          .to eq({ read: ["2ff33b8f-2843-40c1-9a17-d786bca17fba"],
-                   write: %w[248aeb72-b231-4e71-a466-67fa7df2a285 33db2c84-275d-46af-afb0-c26eb786b194] })
+      expect(permissions_for(inactive_project_storage))
+        .to eq({ read: ["2ff33b8f-2843-40c1-9a17-d786bca17fba"],
+                 write: %w[248aeb72-b231-4e71-a466-67fa7df2a285 33db2c84-275d-46af-afb0-c26eb786b194] })
 
-        result = service.call
+      result = service.call
 
-        expect(result).to be_success
-        expect(result.errors).to be_empty
-        expect(permissions_for(inactive_project_storage)).to be_empty
-      end
+      expect(result).to be_success
+      expect(result.errors).to be_empty
+      expect(permissions_for(inactive_project_storage)).to be_empty
     end
 
     it "adds already logged in users to the project folder", vcr: "one_drive/sync_service_set_permissions" do
