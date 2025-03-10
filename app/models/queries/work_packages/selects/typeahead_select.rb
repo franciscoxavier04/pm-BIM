@@ -27,7 +27,7 @@
 #++
 
 class Queries::WorkPackages::Selects::TypeaheadSelect < Queries::WorkPackages::Selects::WorkPackageSelect
-  def self.instances(_context = nil)
+  def self.instances(_context = nil, _user = nil)
     new :typeahead,
         displayable: false,
         # This is an ugly hack. When using the typeahead order, the work packages should always be ordered

@@ -39,7 +39,7 @@ class Queries::WorkPackages::Selects::WorkPackageSelect
               :summable_select,
               :summable_work_packages_select
 
-  def self.instances(_context = nil)
+  def self.instances(_context = nil, _user = nil)
     new
   end
 

@@ -216,13 +216,13 @@ class Query < ApplicationRecord
     end
 
     @available_columns_project = project&.cache_key || 0
-    @available_columns = ::Query.available_columns(project)
+    @available_columns = ::Query.available_columns(project, user)
   end
 
-  def self.available_columns(project = nil)
+  def self.available_columns(project = nil, current_user = nil)
     Queries::Register
       .selects[self]
-      .map { |col| col.instances(project) }
+      .map { |col| col.instances(project, current_user) }
       .flatten
   end
 

@@ -82,7 +82,7 @@ module Costs
       }
     }
 
-    def self.instances(context = nil)
+    def self.instances(context = nil, _user = nil)
       return [] if context && !context.costs_enabled?
 
       currenty_selects.map do |name, options|

@@ -36,7 +36,8 @@ module API
           helpers ::API::V3::Queries::QueryHelper
 
           post do
-            create_or_update_query_form Query.new_default, ::Queries::CreateContract, CreateFormRepresenter
+            # TODO: is it wrong to pass the user here? A query belongs to a user, but that is the user that created the query?
+            create_or_update_query_form Query.new_default(user: current_user), ::Queries::CreateContract, CreateFormRepresenter
           end
         end
       end

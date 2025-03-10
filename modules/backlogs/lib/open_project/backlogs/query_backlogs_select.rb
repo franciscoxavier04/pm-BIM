@@ -42,7 +42,7 @@ module OpenProject::Backlogs
       }
     }
 
-    def self.instances(context = nil)
+    def self.instances(context = nil, _user = nil)
       return [] if context && !context.backlogs_enabled?
 
       backlogs_selects.map do |name, options|

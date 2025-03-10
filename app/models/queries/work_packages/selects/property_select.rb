@@ -133,7 +133,7 @@ class Queries::WorkPackages::Selects::PropertySelect < Queries::WorkPackages::Se
     }
   }
 
-  def self.instances(_context = nil)
+  def self.instances(_context = nil, _user = nil)
     property_selects.map do |name, options|
       new(name, options)
     end

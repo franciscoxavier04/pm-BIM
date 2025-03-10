@@ -32,7 +32,7 @@ module ::Bim::Queries::WorkPackages::Selects
       I18n.t("attributes.bcf_thumbnail")
     end
 
-    def self.instances(_context = nil)
+    def self.instances(_context = nil, _user = nil)
       return [] unless OpenProject::Configuration.bim?
 
       [new(:bcf_thumbnail, { summable: false, groupable: false, sortable: false })]

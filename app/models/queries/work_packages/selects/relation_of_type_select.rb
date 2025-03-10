@@ -43,7 +43,7 @@ class Queries::WorkPackages::Selects::RelationOfTypeSelect < Queries::WorkPackag
            type: I18n.t(type[:sym_name]).capitalize)
   end
 
-  def self.instances(_context = nil)
+  def self.instances(_context = nil, _user = nil)
     return [] unless granted_by_enterprise_token
 
     Relation::TYPES.map { |_key, type| new(type) }

@@ -38,7 +38,7 @@ class Queries::WorkPackages::Selects::RelationToTypeSelect < Queries::WorkPackag
            type: type.name)
   end
 
-  def self.instances(context = nil)
+  def self.instances(context = nil, _user = nil)
     if !granted_by_enterprise_token
       []
     elsif context
