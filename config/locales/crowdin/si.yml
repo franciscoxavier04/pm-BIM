@@ -619,6 +619,7 @@ si:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -3387,6 +3388,10 @@ si:
       project_verification: "මකාදැමීම සත්යාපනය කිරීම සඳහා ව්යාපෘතියේ නම %{name} ඇතුළත් කරන්න."
       subprojects_confirmation: "එහි උප ව්යාපෘතිය (ය): %{value} ද මකා දැමෙනු ඇත."
       title: "ව්යාපෘතිය මකන්න %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: ව්යාපෘතියේ සාමාජිකයින්ට ව්යාපෘතියේ ගබඩාව නැවත ස්ථානගත කිරීමට සිදුවනු ඇත.
       warning_two: ව්යාපෘතියට පවත්නා සබැඳි තවදුරටත් ක්රියා නොකරනු ඇත.

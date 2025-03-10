@@ -889,7 +889,7 @@ module Journals
         same_user?(predecessor) &&
         same_cause?(predecessor, cause) &&
         only_one_note(predecessor, notes) &&
-        unrestricted_journal?(restricted)
+        same_restriction(predecessor, restricted)
     end
 
     def aggregation_active?
@@ -904,8 +904,8 @@ module Journals
       predecessor.notes.empty? || notes.empty?
     end
 
-    def unrestricted_journal?(restricted)
-      !restricted
+    def same_restriction(predecessor, restricted)
+      predecessor.restricted == restricted
     end
 
     def same_user?(predecessor)
