@@ -718,17 +718,18 @@ ms:
       description: "Deskripsi: Klik untuk edit..."
       relation_description: "Klik untuk tambah deskripsi untuk hubungan ini"
     project:
-      required_outside_context: >
-        Sila pilih projek untuk mencipta pakej kerja untuk melihat semua atribut. Anda hanya boleh memilih projek yang mempunyai jenis di atas yang telah diaktifkan.
-      context: "Konteks projek"
-      click_to_switch_to_project: "Projek: %{projectname}"
-      confirm_template_load: "Menukar templat akan memuat semula laman dan anda akan kehilangan semua input untuk borang ini. Teruskan?"
-      use_template: "Guna templat"
-      no_template_selected: "(Tiada)"
-      copy:
-        copy_options: "Salin pilihan"
       autocompleter:
         label: "Autopelengkapan projek"
+      click_to_switch_to_project: "Projek: %{projectname}"
+      confirm_template_load: "Menukar templat akan memuat semula laman dan anda akan kehilangan semua input untuk borang ini. Teruskan?"
+      context: "Konteks projek"
+      copy:
+        copy_options: "Salin pilihan"
+      not_available: "Project N/A"
+      no_template_selected: "(Tiada)"
+      required_outside_context: >
+        Sila pilih projek untuk mencipta pakej kerja untuk melihat semua atribut. Anda hanya boleh memilih projek yang mempunyai jenis di atas yang telah diaktifkan.
+      use_template: "Guna templat"
     reminders:
       settings:
         daily:

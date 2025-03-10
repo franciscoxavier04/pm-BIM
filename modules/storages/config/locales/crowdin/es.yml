@@ -224,7 +224,7 @@ es:
       project_folders: Carpeta del proyecto
       redirect_uri: Redirigir URI
       storage_audience: Storage Audience
-      storage_audience_blank: No audience has been configured
+      storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.
       storage_oauth: Nextcloud OAuth

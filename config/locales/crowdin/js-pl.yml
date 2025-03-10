@@ -721,17 +721,18 @@ pl:
       description: "Opis: Kliknij, aby edytować..."
       relation_description: "Kliknij, aby dodać opis do tej relacji"
     project:
-      required_outside_context: >
-        Wybierz projekt, w którym chcesz utworzyć pakiet roboczy, aby zobaczyć wszystkie atrybuty. Możesz wybrać tylko projekty, które mają aktywowany powyższy typ.
-      context: "Kontekst projektu"
-      click_to_switch_to_project: "Projekt: %{projectname}"
-      confirm_template_load: "Przełączenie szablonu spowoduje ponowne załadowanie strony i utracisz wszystkie dane wprowadzone do tego formularza. Kontynuować?"
-      use_template: "Użyj szablonu"
-      no_template_selected: "(Brak)"
-      copy:
-        copy_options: "Opcje kopiowania"
       autocompleter:
         label: "Autouzupełnianie projektu"
+      click_to_switch_to_project: "Projekt: %{projectname}"
+      confirm_template_load: "Przełączenie szablonu spowoduje ponowne załadowanie strony i utracisz wszystkie dane wprowadzone do tego formularza. Kontynuować?"
+      context: "Kontekst projektu"
+      copy:
+        copy_options: "Opcje kopiowania"
+      not_available: "Project N/A"
+      no_template_selected: "(Brak)"
+      required_outside_context: >
+        Wybierz projekt, w którym chcesz utworzyć pakiet roboczy, aby zobaczyć wszystkie atrybuty. Możesz wybrać tylko projekty, które mają aktywowany powyższy typ.
+      use_template: "Użyj szablonu"
     reminders:
       settings:
         daily:

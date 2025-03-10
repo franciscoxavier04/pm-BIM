@@ -716,17 +716,18 @@ zh-TW:
       description: "描述：點選可編輯"
       relation_description: "按一下以便為此關係添加描述"
     project:
-      required_outside_context: >
-        請選擇專案以便新增工作項目以及檢視屬性。您只能選擇啟用中的專案。
-      context: "專案內容"
-      click_to_switch_to_project: "專案: %{projectname}"
-      confirm_template_load: "切換模板將重新加載頁面，您將丟失此表單上的所有輸入。是否繼續？"
-      use_template: "使用範本"
-      no_template_selected: "(無)"
-      copy:
-        copy_options: "複製選項"
       autocompleter:
         label: "專案自動完成"
+      click_to_switch_to_project: "專案: %{projectname}"
+      confirm_template_load: "切換模板將重新加載頁面，您將丟失此表單上的所有輸入。是否繼續？"
+      context: "專案內容"
+      copy:
+        copy_options: "複製選項"
+      not_available: "無專案"
+      no_template_selected: "(無)"
+      required_outside_context: >
+        請選擇專案以便新增工作項目以及檢視屬性。您只能選擇啟用中的專案。
+      use_template: "使用範本"
     reminders:
       settings:
         daily:

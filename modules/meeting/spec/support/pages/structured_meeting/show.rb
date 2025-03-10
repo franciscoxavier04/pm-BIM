@@ -319,10 +319,8 @@ module Pages::StructuredMeeting
 
     def close_meeting
       retry_block do
-        page.within(".PageHeader-description") do
-          click_on("Open")
-          page.find(".Overlay")
-        end
+        click_on("Open")
+        page.find(".Overlay")
       end
 
       page.within(".Overlay") do

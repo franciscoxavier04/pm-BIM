@@ -687,6 +687,12 @@ OPENPROJECT_SECURITY__BADGE__DISPLAYED="false"
 
 ### Cache configuration options
 
+
+> [!NOTE]
+> If you are using Redis as cache, you need to set the policy to one of the variants of allkeys.
+> If you don't do this, the cached data doesn't expire, and you will run out of memory.
+> You can get more information on how to set the Redis policy in the Rails [documentation](https://guides.rubyonrails.org/caching_with_rails.html#activesupport-cache-rediscachestore).
+
 * `rails_cache_store`: `memcache` for [memcached](https://www.memcached.org/), `redis` for [Redis cache](https://redis.io/), or `memory_store` (default: `file_store`)
 * When using `memcached`, the following configuration option is relevant:
   * `cache_memcache_server`: The memcache server host and IP (default: `nil`)

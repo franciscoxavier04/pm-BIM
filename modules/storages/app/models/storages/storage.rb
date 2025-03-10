@@ -119,6 +119,19 @@ module Storages
       end
     end
 
+    def oauth_access_granted?(user)
+      selector = Peripherals::StorageInteraction::AuthenticationMethodSelector.new(
+        storage: self,
+        user:
+      )
+      case selector.authentication_method
+      when :sso
+        true
+      when :storage_oauth
+        OAuthClientToken.exists?(user:, oauth_client:)
+      end
+    end
+
     def health_notifications_should_be_sent?
       # it is a fallback for already created storages without health_notifications_enabled configured.
       (health_notifications_enabled.nil? && automatic_management_enabled?) || health_notifications_enabled?
@@ -233,10 +246,7 @@ module Storages
       ::Storages::Peripherals::Registry
         .resolve("#{self}.queries.user")
         .call(auth_strategy:, storage: self)
-        .match(
-          on_success: ->(user) { user[:id] },
-          on_failure: ->(error) { raise "UserQuery responed with #{error}" }
-        )
+        .map { |user| user[:id] } # rubocop:disable Rails/Pluck
     end
   end
 end

@@ -611,6 +611,7 @@ vi:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -650,7 +651,7 @@ vi:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -746,6 +747,7 @@ vi:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -906,6 +908,8 @@ vi:
         active_value:
           true: "chưa lưu trữ"
           false: "đã lưu trữ"
+        description: "Mô tả"
+        enabled_modules: "Enabled modules"
         identifier: "Định danh"
         latest_activity_at: "Các hoạt động mới nhất tại"
         parent: "Dự án con của"
@@ -914,9 +918,7 @@ vi:
           true: "công khai"
           false: "riêng tư"
         queries: "Truy vấn"
-        enabled_modules: "Enabled modules"
         status_code: "Trạng thái dự án"
-        description: "Mô tả"
         status_explanation: "Mô tả trạng thái dự án"
         status_codes:
           not_started: "Chưa bắt đầu"
@@ -2509,7 +2511,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Bộ lọc"
+  label_filter_plural: "Các bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"
@@ -2843,6 +2845,8 @@ vi:
   label_projects_menu: "Dự án"
   label_today: "hôm nay"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Trình đơn trên cùng"
   label_topic_plural: "Các chủ đề"
   label_total: "Tổng cộng"
@@ -3328,6 +3332,13 @@ vi:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Bạn có chắc bạn muốn lưu trữ các dự án '%{name}'?"
+      archived: "Đã lưu"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "Nếu bạn tiếp tục, dự án %{identifier} sẽ bị xóa vĩnh viễn. Để xác nhận hành động này, hãy nhập tên dự án vào trường bên dưới, điều này sẽ:"
       project_delete_result_1: "Xóa tất cả dữ liệu liên quan."
@@ -3340,19 +3351,13 @@ vi:
       warning_one: Các thành viên của dự án sẽ phải di chuyển các kho của dự án.
       warning_two: Các liên kết hiện có tới dự án sẽ không còn hoạt động.
       title: Thay đổi mã định danh của dự án
+    not_available: "Project N/A"
     template:
       copying: >
         Dự án của bạn đang được tạo từ dự án mẫu đã chọn. Bạn sẽ nhận được thông báo qua email ngay khi dự án có sẵn.
       use_template: "Sử dụng mẫu"
       make_template: "Đặt thành mẫu"
       remove_from_templates: "Xóa khỏi mẫu"
-    archive:
-      are_you_sure: "Bạn có chắc bạn muốn lưu trữ các dự án '%{name}'?"
-      archived: "Đã lưu"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Hoạt động"
   project_module_forums: "Diễn đàn"
   project_module_work_package_tracking: "Gói công việc"

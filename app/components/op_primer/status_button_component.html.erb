@@ -12,6 +12,7 @@
       @items.each do |option|
         menu.with_item(**option.item_arguments) do |item|
           item.with_leading_visual_icon(icon: option.icon) if option.icon
+          item.with_description.with_content(option.description) if option.description
 
           flex_layout(align_items: :center) do |flex|
             if option.icon.nil? && option.color

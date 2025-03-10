@@ -3,6 +3,7 @@
     component_wrapper(
       data: { "application-target": "dynamic",
               controller: "work-packages--date-picker--preview",
+              "work-packages--date-picker--preview-date-mode-value": date_mode,
               test_selector: "op-datepicker-modal" },
       class: "wp-datepicker-dialog--content"
     ) do
@@ -11,24 +12,27 @@
           collection.with_component(WorkPackages::DatePicker::BannerComponent.new(work_package:, manually_scheduled: schedule_manually))
         end
 
-        collection.with_component(Primer::Alpha::Dialog::Body.new(classes: "wp-datepicker-dialog--body")) do
+        collection.with_component(Primer::Alpha::Dialog::Body.new(classes: "wp-datepicker-dialog--body", p: 0)) do
           render(
             Primer::Alpha::UnderlinePanels.new(
+              'aria-label': I18n.t("work_packages.datepicker_modal.tabs.aria_label"),
               label: I18n.t("work_packages.datepicker_modal.tabs.aria_label"),
-              classes: "wp-datepicker-dialog--UnderlineNav"
+              classes: "wp-datepicker-dialog--UnderlineNav",
+              px: 3
             )
           ) do |component|
             component.with_tab(selected: true, id: "wp-datepicker-dialog--content-tab--dates") do |tab|
               tab.with_text { I18n.t("work_packages.datepicker_modal.tabs.dates") }
-              tab.with_panel  do
+              tab.with_panel(m: 3) do
                 render(
-                  WorkPackages::DatePicker::FormContentComponent.new(
+                  WorkPackages::DatePicker::FormComponent.new(
                     form_id: DIALOG_FORM_ID,
                     show_date_form: can_set_dates?,
                     work_package:,
                     schedule_manually:,
                     focused_field:,
-                    touched_field_map:
+                    touched_field_map:,
+                    date_mode:
                   )
                 )
               end
@@ -39,7 +43,7 @@
                 relation_group = tab.relation_group
                 tab_content.with_text { I18n.t("work_packages.datepicker_modal.tabs.#{tab.key}") }
                 tab_content.with_counter(count: relation_group.count)
-                tab_content.with_panel do
+                tab_content.with_panel(m: 3) do
                   if relation_group.any?
                     render(border_box_container(padding: :condensed)) do |box|
                       relation_group.visible_relations.each do |relation|
@@ -47,10 +51,11 @@
                           render(
                             WorkPackageRelationsTab::RelationComponent.new(
                               work_package:,
-                              relation: (relation unless relation_group.children_type?),
+                              relation: (relation unless relation_group.type.children?),
                               visibility: :visible,
-                              child: (relation if relation_group.children_type?),
-                              editable: false
+                              child: (relation if relation_group.type.children?),
+                              editable: false,
+                              closest: relation_group.closest_relation?(relation)
                             )
                           )
                         end
@@ -60,10 +65,11 @@
                           render(
                             WorkPackageRelationsTab::RelationComponent.new(
                               work_package:,
-                              relation: (relation unless relation_group.children_type?),
+                              relation: (relation unless relation_group.type.children?),
                               visibility: :ghost,
-                              child: (relation if relation_group.children_type?),
-                              editable: false
+                              child: (relation if relation_group.type.children?),
+                              editable: false,
+                              closest: relation_group.closest_relation?(relation)
                             )
                           )
                         end

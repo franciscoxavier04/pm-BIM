@@ -405,6 +405,9 @@ es:
   text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
   text_meeting_closed_description: "Esta reunión está cerrada. Ya no puede añadir/eliminar elementos de la agenda."
   text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
+  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
+  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
   label_meeting_manage_participants: "Gestionar participantes"
   label_meeting_no_participants: "Sin participantes"
   label_meeting_show_hide_participants: "Mostrar/ocultar %{count} más"
@@ -419,6 +422,7 @@ es:
   text_agenda_item_no_notes: "No se han proporcionado notas"
   text_agenda_item_not_editable_anymore: "Este punto de la agenda ya no es editable."
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
+  text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Este paquete de trabajo no está todavía programado en ninguna agenda de próximas reuniones."
   text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
   text_work_package_add_to_meeting_hint: 'Utilice el botón "Añadir a la reunión" para añadir este paquete de trabajo a una próxima reunión.'

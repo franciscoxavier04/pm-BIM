@@ -633,6 +633,7 @@ ru:
         pattern:
           label: "Шаблон темы"
           caption: "Поиск атрибута или добавление текста. Чтобы создать пробел между элементами, добавьте его в виде текста."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -672,7 +673,7 @@ ru:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -771,6 +772,7 @@ ru:
       new_child_text: "Создает связанный пакет работ в качестве подпункта текущего (родительского) пакета работ"
       existing_child: "Существующий дочерний пакет работ"
       child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
+      label_closest: "Closest"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
       blocks_description: "Связанный пакет работ не может быть закрыт до тех пор, пока не будет закрыт этот пакет"
@@ -931,6 +933,8 @@ ru:
         active_value:
           true: "Разархивирован"
           false: "Архивирован"
+        description: "Описание"
+        enabled_modules: "Включенные модули"
         identifier: "Идентификатор"
         latest_activity_at: "Последние действия"
         parent: "Подпроект"
@@ -939,9 +943,7 @@ ru:
           true: "публичный"
           false: "приватный"
         queries: "Запросы"
-        enabled_modules: "Включенные модули"
         status_code: "Статус проекта"
-        description: "Описание"
         status_explanation: "Описание статуса проекта"
         status_codes:
           not_started: "Не начат"
@@ -2958,6 +2960,8 @@ ru:
   label_projects_menu: "Проекты"
   label_today: "Сегодня"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Верхнее меню"
   label_topic_plural: "Темы"
   label_total: "Всего"
@@ -3448,6 +3452,13 @@ ru:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Уверены, что хотите архивизировать проект %{name}%?"
+      archived: "Архивирован"
+    count:
+      zero: "0 проектов"
+      one: "1 проект"
+      other: "%{count} проект(ов/а)"
     destroy:
       confirmation: "Если вы продолжите, проект %{identifier} будет уничтожен навсегда. Чтобы подтвердить это действие, пожалуйста, введите название проекта в поле ниже:"
       project_delete_result_1: "Удалить все связанные данные."
@@ -3460,19 +3471,13 @@ ru:
       warning_one: Участникам проекта нужно будет переместить репозитории проекта.
       warning_two: Существующие ссылки на проект больше работать не будут.
       title: Измените идентификатор проекта
+    not_available: "Project N/A"
     template:
       copying: >
         Ваш проект создается из проекта выбранного шаблона. Вы будете уведомлены по почте, как только проект будет доступен.
       use_template: "Применить шаблон"
       make_template: "Установить как шаблон"
       remove_from_templates: "Удалить из шаблонов"
-    archive:
-      are_you_sure: "Уверены, что хотите архивизировать проект %{name}%?"
-      archived: "Архивирован"
-    count:
-      zero: "0 проектов"
-      one: "1 проект"
-      other: "%{count} проект(ов/а)"
   project_module_activity: "Деятельность"
   project_module_forums: "Форумы"
   project_module_work_package_tracking: "Комплекс работ"

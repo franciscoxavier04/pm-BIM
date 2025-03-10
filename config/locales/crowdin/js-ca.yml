@@ -102,7 +102,7 @@ ca:
     button_save: "Desa"
     button_settings: "Configuració"
     button_uncheck_all: "Desmarca-ho tot"
-    button_update: "Actualitza"
+    button_update: "Actualitzar"
     button_export-atom: "Descarregar Atom"
     button_generate_pdf: "Generate PDF"
     button_create: "Crear"
@@ -719,17 +719,18 @@ ca:
       description: "Descripció: Fes clic per editar..."
       relation_description: "Fes clic per afegir una descripció per aquesta relació"
     project:
-      required_outside_context: >
-        Si us plau, selecciona un projecte on crear el paquet de treball per a veure tots els atributs. Només pots seleccionar projectes que tinguin activat la classe indicada anteriorment.
-      context: "Context del projecte"
-      click_to_switch_to_project: "Projecte: %{projectname}"
-      confirm_template_load: "Canviar la plantilla tornarà a carregar la pàgina i perdràs totes les dades del formulari. Continuar?"
-      use_template: "Utilitzar plantilla"
-      no_template_selected: "(Cap)"
-      copy:
-        copy_options: "Opcions de còpia"
       autocompleter:
         label: "Autoemplenament del projecte"
+      click_to_switch_to_project: "Projecte: %{projectname}"
+      confirm_template_load: "Canviar la plantilla tornarà a carregar la pàgina i perdràs totes les dades del formulari. Continuar?"
+      context: "Context del projecte"
+      copy:
+        copy_options: "Opcions de còpia"
+      not_available: "Project N/A"
+      no_template_selected: "(Cap)"
+      required_outside_context: >
+        Si us plau, selecciona un projecte on crear el paquet de treball per a veure tots els atributs. Només pots seleccionar projectes que tinguin activat la classe indicada anteriorment.
+      use_template: "Utilitzar plantilla"
     reminders:
       settings:
         daily:
@@ -762,7 +763,7 @@ ca:
           label: "Pausa els correu electrònic recordatori temporalment"
           first_day: "Primer dia"
           last_day: "Últim dia"
-    text_are_you_sure: "N'esteu segur?"
+    text_are_you_sure: "N'estas segur?"
     text_data_lost: "Totes les dades entrades es perdran."
     text_user_wrote: "%{value} va escriure:"
     types:

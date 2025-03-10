@@ -26,15 +26,16 @@
 // See COPYRIGHT and LICENSE files for more details.
 //++
 
-import {
-  Highlighting,
-} from 'core-app/features/work-packages/components/wp-fast-table/builders/highlighting/highlighting.functions';
-import {
-  HighlightableDisplayField,
-} from 'core-app/shared/components/fields/display/field-types/highlightable-display-field.module';
+import { Highlighting } from 'core-app/features/work-packages/components/wp-fast-table/builders/highlighting/highlighting.functions';
+import { HighlightableDisplayField } from 'core-app/shared/components/fields/display/field-types/highlightable-display-field.module';
 import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decorator';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
+import {
+  pinIconData,
+  toDOMString,
+  opAutoDateIconData,
+} from '@openproject/octicons-angular';
 
 export class DateDisplayField extends HighlightableDisplayField {
   @InjectField() timezoneService:TimezoneService;
@@ -46,14 +47,7 @@ export class DateDisplayField extends HighlightableDisplayField {
 
     // Show scheduling mode in front of the start date field
     if (this.showSchedulingMode()) {
-      const schedulingIcon = document.createElement('span');
-      schedulingIcon.classList.add('icon-context');
-
-      if (this.resource.scheduleManually) {
-        schedulingIcon.classList.add('icon-pin');
-      }
-
-      element.prepend(schedulingIcon);
+      element.prepend(this.schedulingIcon());
     }
 
     // Highlight overdue tasks
@@ -83,6 +77,24 @@ export class DateDisplayField extends HighlightableDisplayField {
       return this.timezoneService.formattedDate(this.value, this.context.options.dateFormat);
     }
     return '';
+  }
+
+  protected schedulingIcon():HTMLElement {
+    const schedulingIcon = document.createElement('span');
+
+    const pinIconString:string = toDOMString(
+      pinIconData,
+      'small',
+      { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
+    );
+    const autoDateIconString:string = toDOMString(
+      opAutoDateIconData,
+      'small',
+      { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
+    );
+
+    schedulingIcon.innerHTML = this.resource.scheduleManually ? pinIconString : autoDateIconString;
+    return schedulingIcon;
   }
 
   private showSchedulingMode():boolean {

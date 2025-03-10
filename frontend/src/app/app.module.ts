@@ -172,9 +172,6 @@ import { TimerAccountMenuComponent } from 'core-app/shared/components/time_entri
 import {
   RemoteFieldUpdaterComponent,
 } from 'core-app/shared/components/remote-field-updater/remote-field-updater.component';
-import {
-  OpModalSingleDatePickerComponent,
-} from 'core-app/shared/components/datepicker/modal-single-date-picker/modal-single-date-picker.component';
 import { SpotDropModalPortalComponent } from 'core-app/spot/components/drop-modal/drop-modal-portal.component';
 import { OpModalOverlayComponent } from 'core-app/shared/components/modal/modal-overlay.component';
 import {
@@ -448,7 +445,6 @@ export class OpenProjectModule implements DoBootstrap {
     registerCustomElement('opce-wp-split-view', WorkPackageSplitViewEntryComponent, { injector });
     registerCustomElement('opce-timer-account-menu', TimerAccountMenuComponent, { injector });
     registerCustomElement('opce-remote-field-updater', RemoteFieldUpdaterComponent, { injector });
-    registerCustomElement('opce-modal-single-date-picker', OpModalSingleDatePickerComponent, { injector });
     registerCustomElement('opce-wp-modal-date-picker', OpWpModalDatePickerComponent, { injector });
     registerCustomElement('opce-spot-drop-modal-portal', SpotDropModalPortalComponent, { injector });
     registerCustomElement('opce-spot-switch', SpotSwitchComponent, { injector });

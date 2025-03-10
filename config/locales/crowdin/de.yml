@@ -60,7 +60,7 @@ de:
         main-menu-bg-hover-background: "Hintergrundfarbe des Hauptmenüs bei Hover"
       custom_colors: "Benutzerdefinierte Farben"
       customize: "Passen Sie Ihre OpenProject Installation mit Ihrem eigenen Logo und eigenen Farben an."
-      enterprise_notice: "Diese kleine Erweiterung steht den Abonnenten der Enterprise edition ganz exklusiv als kleines Dankeschön für deren finanzielle Unterstützung zur Verfügung."
+      enterprise_notice: "Dieses kleine Add-on steht den Abonnenten der Enterprise-Edition ganz exklusiv als kleines Dankeschön für deren finanzielle Unterstützung zur Verfügung."
       enterprise_more_info: "Hinweis: Das verwendete Logo wird öffentlich zugänglich sein."
       manage_colors: "Farbauswahloptionen bearbeiten"
       instructions:
@@ -73,15 +73,15 @@ de:
         main-menu-bg-color: "Hintergrundfarbe des Menüs in der linken Seitenleiste."
       theme_warning: Das Ändern des Themes wird Ihr benutzerdefiniertes Design überschreiben. Alle Änderungen werden dann verloren gehen. Sind Sie sicher, dass Sie fortfahren möchten?
     enterprise:
-      upgrade_to_ee: "Auf Enterprise edition upgraden"
-      add_token: "Enterprise edition Support Token hochladen"
+      upgrade_to_ee: "Auf Enterprise-Edition upgraden"
+      add_token: "Enterprise-Edition Support Token hochladen"
       delete_token_modal:
-        text: "Sind Sie sicher, dass Sie das aktuelle Enterprise edition token entfernen möchten?"
+        text: "Sind Sie sicher, dass Sie das aktuelle Enterprise Edition-Token entfernen möchten?"
         title: "Token löschen"
       replace_token: "Aktuellen Enterprise edition Support Token ersetzen"
       order: "Enterprise on-premises bestellen"
-      paste: "Enterprise edition Support Token hier einfügen"
-      required_for_feature: "Dieses Add-on ist nur mit einem aktiven Enterprise edition Support-Token verfügbar."
+      paste: "Enterprise-Edition Support Token hier einfügen"
+      required_for_feature: "Dieses Add-on ist nur mit einem aktiven Enterprise-Edition Support-Token verfügbar."
       enterprise_link: "Klicken Sie hier für weitere Informationen."
       start_trial: "Kostenlose Testversion starten"
       book_now: "Jetzt buchen"
@@ -602,16 +602,17 @@ de:
         tab: "Einstellungen"
         type_color_text: "Die ausgewählte Farbe unterscheidet verschiedene Typen\nin Gantt-Diagrammen und Arbeitspakettabellen. Es wird daher empfohlen, gut unterscheidbare Farben zu verwenden."
       subject_configuration:
-        tab: "Subject configuration"
+        tab: "Titel konfigurieren"
         manually_editable_subjects:
-          label: "Manuell bearbeitbare Themen"
-          caption: "Benutzer können die Themen der Arbeitspakete ohne Einschränkungen manuell eingeben und bearbeiten."
+          label: "Manuell bearbeitbare Titel"
+          caption: "Benutzer können die Titel der Arbeitspakete ohne Einschränkungen manuell eingeben und bearbeiten."
         automatically_generated_subjects:
-          label: "Automatisch generierte Themen"
-          caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspaketthemen. Nutzer können diese nicht manuell editieren."
+          label: "Automatisch generierte Titel"
+          caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspakettiteln. Nutzer können diese nicht manuell editieren."
         pattern:
-          label: "Thema-Schema"
+          label: "Titel-Schema"
           caption: "Suchen Sie nach einem Attribut oder fügen Sie Text hinzu. Um ein Leerzeichen zwischen Elementen zu erstellen, fügen Sie es als Text hinzu."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -651,7 +652,7 @@ de:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -748,6 +749,7 @@ de:
       new_child_text: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       existing_child: "Vorhandenes Kind"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
+      label_closest: "Closest"
       label_blocks_singular: "Blockiert"
       label_blocks_plural: "Blockiert"
       blocks_description: "Das verknüpfte Arbeitspaket kann erst geschlossen werden, wenn dieses Arbeitspaket geschlossen ist"
@@ -908,6 +910,8 @@ de:
         active_value:
           true: "nicht archiviert"
           false: "archiviert"
+        description: "Beschreibung"
+        enabled_modules: "Enabled modules"
         identifier: "Kennung"
         latest_activity_at: "Letzte Aktivität am"
         parent: "Unterprojekt von"
@@ -916,9 +920,7 @@ de:
           true: "öffentlich"
           false: "privat"
         queries: "Abfragen"
-        enabled_modules: "Enabled modules"
         status_code: "Projektstatus"
-        description: "Beschreibung"
         status_explanation: "Projektstatusbeschreibung"
         status_codes:
           not_started: "Nicht gestartet"
@@ -1993,7 +1995,7 @@ de:
   error_cookie_missing: "Das OpenProject Cookie fehlt. Bitte stellen Sie sicher, dass Cookies aktiviert sind, da diese Applikation ohne aktivierte Cookies nicht korrekt funktioniert."
   error_custom_option_not_found: "Option ist nicht vorhanden."
   error_enterprise_activation_user_limit: "Ihr Konto konnte nicht aktiviert werden (Nutzerlimit erreicht). Bitte kontaktieren Sie Ihren Administrator um Zugriff zu erhalten."
-  error_enterprise_token_invalid_domain: "Die Enterprise edition ist nicht aktiv. Die aktuelle Domain (%{actual}) entspricht nicht dem erwarteten Hostnamen (%{expected})."
+  error_enterprise_token_invalid_domain: "Die Enterprise-Edition ist nicht aktiv. Die aktuelle Domain (%{actual}) entspricht nicht dem erwarteten Hostnamen (%{expected})."
   error_failed_to_delete_entry: "Fehler beim Löschen dieses Eintrags."
   error_in_dependent: "Fehler beim Versuch, abhängiges Objekt zu ändern: %{dependent_class} #%{related_id} - %{related_subject}: %{error}"
   error_in_new_dependent: "Fehler beim Versuch, abhängiges Objekt zu erstellen: %{dependent_class} - %{related_subject}: %{error}"
@@ -2185,10 +2187,10 @@ de:
     blocks:
       community: "OpenProject Community"
       upsale:
-        title: "Auf Enterprise edition upgraden"
+        title: "Auf Enterprise-Edition upgraden"
         more_info: "Weitere Informationen"
     links:
-      upgrade_enterprise_edition: "Auf Enterprise edition upgraden"
+      upgrade_enterprise_edition: "Auf Enterprise-Edition upgraden"
       postgres_migration: "Migration Ihrer Installation zu PostgreSQL"
       user_guides: "Benutzerhandbuch"
       faq: "Häufig gestellte Fragen"
@@ -2226,7 +2228,7 @@ de:
         dates:
           working: "%{date} ist jetzt ein Arbeitstag"
           non_working: "%{date} ist jetzt ein arbeitsfreier Tag"
-      progress_mode_changed_to_status_based: Fortschrittberechnung wurde auf Status-basiert gesetzt
+      progress_mode_changed_to_status_based: Fortschrittberechnung wurde auf Status-bezogen gesetzt
       status_excluded_from_totals_set_to_false_message: jetzt in den Gesamtwerten der Hierarchie enthalten
       status_excluded_from_totals_set_to_true_message: jetzt von den Hierarchie-Gesamtwerten ausgeschlossen
       status_percent_complete_changed: "% abgeschlossen von %{old_value}% auf %{new_value} % geändert"
@@ -2513,7 +2515,7 @@ de:
   label_enumerations: "Aufzählungen"
   label_enterprise: "Enterprise"
   label_enterprise_active_users: "%{current}/%{limit} gebuchte aktive Nutzer"
-  label_enterprise_edition: "Enterprise edition"
+  label_enterprise_edition: "Enterprise Edition"
   label_enterprise_support: "Enterprise Support"
   label_environment: "Umgebung"
   label_estimates_and_progress: "Schätzungen und Fortschritt"
@@ -2875,6 +2877,8 @@ de:
   label_projects_menu: "Projekte"
   label_today: "heute"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
   label_top_menu: "Hauptmenü"
   label_topic_plural: "Themen"
   label_total: "Gesamtzahl"
@@ -3362,6 +3366,13 @@ de:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Sind Sie sicher, dass Sie das Projekt '%{name}' archivieren wollen?"
+      archived: "Archiviert"
+    count:
+      zero: "0 Projekte"
+      one: "1 Projekt"
+      other: "%{count} Projekte"
     destroy:
       confirmation: "Wenn Sie fortfahren, wird das Projekt %{identifier} dauerhaft zerstört. Um diese Aktion zu bestätigen, geben Sie bitte den Projektnamen in das untenstehende Feld ein:"
       project_delete_result_1: "Alle zugehörigen Daten löschen."
@@ -3374,19 +3385,13 @@ de:
       warning_one: Projektmitglieder müssen die Projektarchive des Projekts umziehen.
       warning_two: Bestehende Projekt-Links werden nicht mehr funktionieren.
       title: Projektkennung ändern
+    not_available: "Project N/A"
     template:
       copying: >
         Ihr Projekt wird aus der ausgewählten Vorlage erstellt. Sie werden per E-Mail benachrichtigt, sobald das Projekt verfügbar ist.
       use_template: "Projektvorlage verwenden"
       make_template: "Als Vorlage speichern"
       remove_from_templates: "Aus Projektvorlagen entfernen"
-    archive:
-      are_you_sure: "Sind Sie sicher, dass Sie das Projekt '%{name}' archivieren wollen?"
-      archived: "Archiviert"
-    count:
-      zero: "0 Projekte"
-      one: "1 Projekt"
-      other: "%{count} Projekte"
   project_module_activity: "Aktivität"
   project_module_forums: "Foren"
   project_module_work_package_tracking: "Arbeitspakete"
@@ -3495,8 +3500,8 @@ de:
       update_timeout: "Speichere die Informationen bzgl. des genutzten Festplattenspeichers eines Projektarchivs für N Minuten.\nErhöhen Sie diesen Wert zur Verbesserung der Performance, da die Erfassung des genutzten Festplattenspeichers Ressourcen-intensiv ist."
       oauth_application_details: "Der Client Geheimcode wird nach dem Schließen dieses Fensters nicht mehr zugänglich sein. Bitte kopieren Sie diese Werte in die Nextcloud OpenProject Integrationseinstellungen:"
       oauth_application_details_link_text: "Zu den Einstellungen gehen"
-      setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Datei-Speichers benötigen, konsultieren Sie bitte die Dokumentation: "
-      setup_documentation_details_link_text: "Datei-Speicher einrichten"
+      setup_documentation_details: "Wenn Sie Hilfe bei der Konfiguration eines neuen Dateispeichers benötigen, konsultieren Sie bitte die Dokumentation: "
+      setup_documentation_details_link_text: "Dateispeicher einrichten"
       show_warning_details: "Um diesen Dateispeicher nutzen zu können, müssen Sie das Modul und den spezifischen Speicher in den Projekteinstellungen jedes gewünschten Projekts aktivieren."
     subversion:
       existing_title: "Vorhandenes Subversion Projektarchiv"
@@ -4008,7 +4013,7 @@ de:
   warning_user_limit_reached_admin: >
     Das Hinzufügen zusätzlicher Benutzer überschreitet das aktuelle Benutzerlimit. Bitte <a href="%{upgrade_url}">aktualisieren Sie Ihr Abonnement</a> um sicherzustellen, dass externe Benutzer auf diese Instanz zugreifen können.
   warning_user_limit_reached_instructions: >
-    Du hast dein Nutzerlimit erreicht (%{current}/%{max} active users). Bitte kontaktiere sales@openproject.com um deinen Enterprise edition Plan upzugraden und weitere Nutzer hinzuzufügen.
+    Du hast dein Nutzerlimit erreicht (%{current}/%{max} active users). Bitte kontaktiere sales@openproject.com um deinen Enterprise Edition Plan upzugraden und weitere Nutzer hinzuzufügen.
   warning_protocol_mismatch_html: >
 
   warning_bar:

@@ -719,17 +719,18 @@ it:
       description: "Descrizione: Clicca per modificare..."
       relation_description: "Clicca per aggiungere una descrizione per la relazione"
     project:
-      required_outside_context: >
-        Scegli un progetto per creare una macro-attività e vederne tutti gli attributi. Puoi selezionare solo progetti che hanno il tipo sopra indicato attivato.
-      context: "Contesto del progetto"
-      click_to_switch_to_project: "Progetto: %{projectname}"
-      confirm_template_load: "Cambiare il modello ricaricherà la pagina e perderai tutti gli input in questo modulo. Continuare?"
-      use_template: "Utilizza modello"
-      no_template_selected: "(Nessuno)"
-      copy:
-        copy_options: "Opzioni di copia"
       autocompleter:
         label: "Autocompletamento del progetto"
+      click_to_switch_to_project: "Progetto: %{projectname}"
+      confirm_template_load: "Cambiare il modello ricaricherà la pagina e perderai tutti gli input in questo modulo. Continuare?"
+      context: "Contesto del progetto"
+      copy:
+        copy_options: "Opzioni di copia"
+      not_available: "Project N/A"
+      no_template_selected: "(Nessuno)"
+      required_outside_context: >
+        Scegli un progetto per creare una macro-attività e vederne tutti gli attributi. Puoi selezionare solo progetti che hanno il tipo sopra indicato attivato.
+      use_template: "Utilizza modello"
     reminders:
       settings:
         daily:

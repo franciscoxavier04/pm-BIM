@@ -47,6 +47,7 @@ class TimeEntriesController < ApplicationController
   def dialog
     @show_work_package = params[:work_package_id].blank?
     @show_user = show_user_input_in_dialog
+    @limit_to_project_id = @project&.id
 
     @time_entry.spent_on ||= params[:date].presence || Time.zone.today
   end
@@ -141,7 +142,8 @@ class TimeEntriesController < ApplicationController
   def form_config_options
     {
       show_user: params[:time_entry][:show_user] == "true",
-      show_work_package: params[:time_entry][:show_work_package] == "true"
+      show_work_package: params[:time_entry][:show_work_package] == "true",
+      limit_to_project_id: params[:time_entry][:limit_to_project_id].presence
     }
   end
 

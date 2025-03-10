@@ -224,7 +224,7 @@ zh-TW:
       project_folders: 專案資料夾
       redirect_uri: 重新導向 URI
       storage_audience: 儲存受眾
-      storage_audience_blank: 尚未設定受眾
+      storage_audience_blank: 尚未設定受眾。
       storage_audience_description: 取得受眾 "%{audience}" 的權杖(tokens)。
       storage_audience_idp: 使用身分提供者收到的第一個存取標記，不論受眾為何。
       storage_oauth: NextCloud 授權 (OAuth)
@@ -242,9 +242,9 @@ zh-TW:
         host_not_found: 在設定的主機網址未找到 Nextcloud 伺服器。請檢查設定。
         missing_dependencies: '檔案儲存中缺少所需的相依性。請新增下列相依性： %{dependency}。'
         not_configured: 連線無法驗證。請先完成設定。
-        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
-        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
-        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        oidc_cant_acquire_token: 您的 OpenID Connect 設定未提供必要的受眾，也未提供權杖(token)交換功能。請查看我們的說明文件以瞭解更多資訊。
+        oidc_cant_exchange_token: 您的 OpenID Connect 提供者的 Token Exchange 設定似乎有問題。請檢查其設定並再次嘗試。
+        oidc_cant_refresh_token: 在嘗試檢查您存取儲存空間時發生錯誤。請檢查伺服器日誌以取得進一步資訊。
         oidc_non_oidc_user: 目前使用者雖然已配置，但不是由 OpenID Connect (OIDC) 身分提供者配置的。請使用 OIDC 配置的使用者重新執行檢查。
         oidc_non_provisioned_user: 當前用戶不是由 OpenID Connect Identity Provider 提供。請使用提供的使用者重新執行檢查。
         placeholder: 根據伺服器檢查您的連線。
@@ -350,7 +350,7 @@ zh-TW:
       connected: 已連線
       connected_no_permissions: 使用者角色沒有儲存權限
       not_connected: 未連線。使用者應透過下列方式登入儲存設備 %{link}。
-      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
+      not_connected_sso: 尚未連線，SSO 一旦查看檔案應該會自動連線，。
     members_no_results: 沒有可顯示的成員
     no_results: 尚未設定檔案儲存區
     oauth_access_granted_modal:
