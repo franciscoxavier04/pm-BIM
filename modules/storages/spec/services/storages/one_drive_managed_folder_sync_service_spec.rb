@@ -35,19 +35,20 @@ RSpec::Matchers.define_negated_matcher :not_change, :change
 
 RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
   shared_let(:admin) { create(:admin) }
-
   shared_let(:storage) do
     # Automatically Managed Project Folder Drive
-    s = create(:sharepoint_dev_drive_storage,
-               drive_id: "b!dmVLG22QlE2PSW0AqVB7UOhZ8n7tjkVGkgqLNnuw2ODRDvn3haLiQIhB5UYNdqMy",
-               oauth_client_token_user: admin)
-    create(:remote_identity,
-           auth_source: s.oauth_client,
-           user: admin,
-           integration: s,
-           origin_user_id: "33db2c84-275d-46af-afb0-c26eb786b194")
-    s
+    create(:sharepoint_dev_drive_storage,
+           drive_id: "b!dmVLG22QlE2PSW0AqVB7UOhZ8n7tjkVGkgqLNnuw2ODRDvn3haLiQIhB5UYNdqMy",
+           oauth_client_token_user: admin)
   end
+  shared_let(:admin_remote_identity) do
+    create(:remote_identity,
+           auth_source: storage.oauth_client,
+           user: admin,
+           integration: storage,
+           origin_user_id: "33db2c84-275d-46af-afb0-c26eb786b194")
+  end
+
   shared_let(:oidc_provider) { create(:oidc_provider) }
 
   # USER FACTORIES
@@ -145,9 +146,15 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
     before { storage.update(automatically_managed: true) }
     after { delete_created_folders }
 
-    describe "Remote Folder Creation" do
-      it "updates the project folder id for all active automatically managed projects",
-         vcr: "one_drive/sync_service_create_folder" do
+    describe "Remote Folder Creation", vcr: "one_drive/sync_service_create_folder" do
+      let(:clazz) { Storages::Peripherals::StorageInteraction::OneDrive::SetPermissionsCommand }
+      let(:single_project_user_origin_user_id) { single_project_user_remote_identity.origin_user_id }
+      let(:multiple_project_user_origin_user_id) { multiple_project_user_remote_identity.origin_user_id }
+      let(:admin_origin_user_id) { admin_remote_identity.origin_user_id }
+
+      before { allow(clazz).to receive(:call).and_call_original }
+
+      it "updates the project folder id for all active automatically managed projects" do
         expect { service.call }.to change { disallowed_chars_project_storage.reload.project_folder_id }
                                      .from(nil).to(String)
                                      .and(change { project_storage.reload.project_folder_id }.from(nil).to(String))
@@ -156,8 +163,71 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
                                      .and(not_change { unmanaged_project_storage.reload.project_folder_id })
       end
 
-      it "adds a record to the LastProjectFolder for each new folder",
-         vcr: "one_drive/sync_service_create_folder" do
+      it "sets persmissions for folders exactly 3 times" do
+        service.call
+
+        expect(clazz).to have_received(:call).with(
+          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+          input_data: an_instance_of(Storages::Peripherals::StorageInteraction::Inputs::SetPermissions),
+          storage: an_instance_of(Storages::OneDriveStorage)
+        ).exactly(3).times
+      end
+
+      it "sets permissions for project's (private with 3 members) folder according to member's roles" do
+        service.call
+
+        expect(clazz).to have_received(:call).with(
+          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+          input_data: having_attributes(
+            file_id: project_storage.project_folder_id,
+            user_permissions:
+              [{ user_id: admin_origin_user_id, permissions: [:write_files] },
+               { user_id: single_project_user_origin_user_id, permissions: [:write_files] },
+               { user_id: multiple_project_user_origin_user_id, permissions: [:write_files] }]
+          ),
+          storage: an_instance_of(Storages::OneDriveStorage)
+        ).once
+      end
+
+      it "sets permissions for project's (private with 1 members) folder according to member's roles" do
+        service.call
+
+        expect(clazz).to have_received(:call).with(
+          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+          input_data: having_attributes(
+            file_id: disallowed_chars_project_storage.project_folder_id,
+            user_permissions:
+              [
+                # admin(not a member of the project) receives write access as expected
+                { user_id: admin_origin_user_id, permissions: [:write_files] },
+                { user_id: multiple_project_user_origin_user_id, permissions: [:write_files] }
+              ]
+          ),
+          storage: an_instance_of(Storages::OneDriveStorage)
+        ).once
+      end
+
+      it "sets permissions for project's (public with 0 members) folder appropriately" do
+        service.call
+
+        expect(clazz).to have_received(:call).with(
+          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
+          input_data: having_attributes(
+            file_id: public_project_storage.project_folder_id,
+            user_permissions:
+              [
+                # admin gets write access
+                { user_id: admin_origin_user_id, permissions: [:write_files] },
+                # other non members get read access
+                { user_id: single_project_user_origin_user_id, permissions: [:read_files] },
+                { user_id: multiple_project_user_origin_user_id, permissions: [:read_files] }
+              ]
+          ),
+          storage: an_instance_of(Storages::OneDriveStorage)
+        ).once
+      end
+
+      it "adds a record to the LastProjectFolder for each new folder" do
         scope = ->(project_storage) { Storages::LastProjectFolder.where(project_storage:).last }
 
         expect { service.call }.to not_change { scope[unmanaged_project_storage].reload.origin_folder_id }
@@ -169,8 +239,7 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
           .to eq(disallowed_chars_project_storage.reload.project_folder_id)
       end
 
-      it "creates the remote folders for all projects with automatically managed folders enabled",
-         vcr: "one_drive/sync_service_create_folder" do
+      it "creates the remote folders for all projects with automatically managed folders enabled" do
         service.call
 
         [project_storage, disallowed_chars_project_storage, public_project_storage].each do |proj_storage|
@@ -178,8 +247,7 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
         end
       end
 
-      it "makes sure that the last_project_folder.origin_folder_id match the current project_folder_id",
-         vcr: "one_drive/sync_service_create_folder" do
+      it "makes sure that the last_project_folder.origin_folder_id match the current project_folder_id" do
         service.call
 
         [project_storage, disallowed_chars_project_storage, public_project_storage].each do |proj_storage|
@@ -205,7 +273,7 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
     end
 
     context "with inactive project folder", vcr: "one_drive/sync_service_hide_inactive" do
-      it "hides (removes all permissions) from inactive project folders" do
+      before do
         original_folder = create_folder_for(inactive_project_storage)
         inactive_project_storage.update(project_folder_id: original_folder.result.id)
 
@@ -213,7 +281,9 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
                            [{ user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba", permissions: [:read_files] },
                             { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:write_files] },
                             { user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] }])
+      end
 
+      it "hides (removes all permissions) from inactive project folders" do
         expect(permissions_for(inactive_project_storage))
           .to eq({ read: ["2ff33b8f-2843-40c1-9a17-d786bca17fba"],
                    write: %w[248aeb72-b231-4e71-a466-67fa7df2a285 33db2c84-275d-46af-afb0-c26eb786b194] })
@@ -224,67 +294,6 @@ RSpec.describe Storages::OneDriveManagedFolderSyncService, :webmock do
         expect(result.errors).to be_empty
         expect(permissions_for(inactive_project_storage)).to be_empty
       end
-
-      # rubocop:disable RSpec/ExampleLength
-      it "sets permissions for appropriate remote identities with both OAuthClient and OpenID::Provider auth_sources" do
-        original_folder = create_folder_for(inactive_project_storage)
-        inactive_project_storage.update(project_folder_id: original_folder.result.id)
-
-        set_permissions_on(original_folder.result.id,
-                           [{ user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba", permissions: [:read_files] },
-                            { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:write_files] },
-                            { user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] }])
-
-        clazz = Storages::Peripherals::StorageInteraction::OneDrive::SetPermissionsCommand
-        allow(clazz).to receive(:call).and_call_original
-
-        service.call
-
-        expect(clazz).to have_received(:call).exactly(4).times
-        expect(clazz).to have_received(:call).with(
-          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
-          input_data: an_instance_of(Storages::Peripherals::StorageInteraction::Inputs::SetPermissions),
-          storage: an_instance_of(Storages::OneDriveStorage)
-        ).exactly(4).times
-        expect(clazz).to have_received(:call).with(
-          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
-          input_data: having_attributes(file_id: "01AZJL5PJLD5PWZJXL2ZHZQ6PSPSGVRV7U", user_permissions: []),
-          storage: an_instance_of(Storages::OneDriveStorage)
-        ).once
-        expect(clazz).to have_received(:call).with(
-          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
-          input_data: having_attributes(
-            file_id: "01AZJL5PPGH34OKD6VVRGKX47XXIIB2DB2",
-            user_permissions:
-              [{ user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] },
-               { user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba", permissions: [:write_files] },
-               { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:write_files] }]
-          ),
-          storage: an_instance_of(Storages::OneDriveStorage)
-        ).once
-        expect(clazz).to have_received(:call).with(
-          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
-          input_data: having_attributes(
-            file_id: "01AZJL5PJRS7SCGVJBDBCLOBROO4QLP234",
-            user_permissions:
-              [{ user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] },
-               { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:write_files] }]
-          ),
-          storage: an_instance_of(Storages::OneDriveStorage)
-        ).once
-        expect(clazz).to have_received(:call).with(
-          auth_strategy: an_instance_of(Storages::Peripherals::StorageInteraction::AuthenticationStrategies::Strategy),
-          input_data: having_attributes(
-            file_id: "01AZJL5PJHXHJ3RLHNSNBZSOBWFV3P2OYV",
-            user_permissions:
-              [{ user_id: "33db2c84-275d-46af-afb0-c26eb786b194", permissions: [:write_files] },
-               { user_id: "2ff33b8f-2843-40c1-9a17-d786bca17fba", permissions: [:read_files] },
-               { user_id: "248aeb72-b231-4e71-a466-67fa7df2a285", permissions: [:read_files] }]
-          ),
-          storage: an_instance_of(Storages::OneDriveStorage)
-        ).once
-      end
-      # rubocop:enable RSpec/ExampleLength
     end
 
     it "adds already logged in users to the project folder", vcr: "one_drive/sync_service_set_permissions" do
