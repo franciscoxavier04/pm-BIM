@@ -2251,7 +2251,12 @@ en:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
-
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext available (optional)"

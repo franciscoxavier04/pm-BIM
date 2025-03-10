@@ -66,7 +66,11 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   def setup_page!
     self.pdf = get_pdf
     @page_count = 0
-    configure_page_size!(:portrait)
+    configure_page_size!(page_orientation_layout)
+  end
+
+  def page_orientation_layout
+    options[:page_orientation] == "landscape" ? :landscape : :portrait
   end
 
   def render_work_package

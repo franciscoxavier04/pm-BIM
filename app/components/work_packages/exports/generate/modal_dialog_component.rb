@@ -66,6 +66,17 @@ module WorkPackages
           hyphenation_language_by_locale || hyphenation_options[0]
         end
 
+        def page_orientation_default
+          page_orientation_options[0]
+        end
+
+        def page_orientation_options
+          [
+            { label: "Portrait", value: "portrait" },
+            { label: "Landscape", value: "landscape" }
+          ]
+        end
+
         def hyphenation_language_by_locale
           search_locale = I18n.locale.to_s
           hyphenation_options.find { |lang| lang[:value] == search_locale }
