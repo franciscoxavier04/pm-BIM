@@ -120,10 +120,11 @@ display-field
       & > span:last-child
         margin-right: 0
 
-  &.combinedDate
+  &.combinedDate, &.date
     .display-field--scheduling-icon
-      vertical-align: text-top
       margin-right: 0.25rem
+      transform: scale(0.875)
+      vertical-align: middle
 
 .wp-table--cell-container
   .inline-edit--display-field.-placeholder,
@@ -137,6 +138,12 @@ display-field
 .wp-table--cell-container .dueDate .display-field--scheduling-icon
   display: none
 
+.op-wp-single-card--content-dates
+  .display-field--scheduling-icon
+    transform: scale(0.75)
+    fill: var(--fgColor-muted)
+    vertical-align: middle
+
 .wp-table--cell-container
   &.duration,
   &.startDate,
@@ -148,6 +155,8 @@ display-field
   position: relative
 
   .display-field--scheduling-icon
+    transform: scale(0.875)
+    vertical-align: middle
     position: absolute
     left: 4px
     top: 4px
@@ -155,6 +164,8 @@ display-field
   .-placeholder
     // The special alignment of placeholders requires a special alignment of the icon
     .display-field--scheduling-icon
+      transform: scale(0.875)
+      vertical-align: middle
       top: 6px
 
 // Sums in wp table
