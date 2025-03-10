@@ -1146,6 +1146,7 @@ en:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
+        lock_version: Lock version
         notify: "Notify" # used in custom actions
         parent: "Parent"
         parent_issue: "Parent"
