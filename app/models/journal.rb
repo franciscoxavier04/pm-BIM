@@ -113,6 +113,13 @@ class Journal < ApplicationRecord
   scope :for_wiki_page, -> { where(journable_type: "WikiPage") }
   scope :for_work_package, -> { where(journable_type: "WorkPackage") }
   scope :for_meeting, -> { where(journable_type: "Meeting") }
+  scope :restricted_visible, ->(work_package) {
+    if User.current.allowed_in_work_package?(:view_comments_with_restricted_visibility, work_package)
+      all
+    else
+      where(restricted: false)
+    end
+  }
 
   # In conjunction with the included Comparable module, allows comparison of journal records
   # based on their corresponding version numbers, creation timestamps and IDs.

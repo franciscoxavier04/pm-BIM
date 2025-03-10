@@ -30,7 +30,7 @@ require "spec_helper"
 RSpec.describe Journal do
   describe "#journable" do
     it "raises no error on a new journal without a journable" do
-      expect(Journal.new.journable)
+      expect(described_class.new.journable)
         .to be_nil
     end
   end
@@ -65,6 +65,50 @@ RSpec.describe Journal do
 
         expect(described_class.count)
           .to eq 0
+      end
+    end
+  end
+
+  describe ".restricted_visible scope" do
+    let(:work_package) { create(:work_package) }
+    let(:admin) { create(:admin) }
+    let(:user) { create(:user) }
+    let!(:restricted_note) do
+      create(:work_package_journal,
+             user: admin,
+             notes: "First comment by admin",
+             journable: work_package,
+             restricted: true,
+             version: 2)
+    end
+
+    subject { described_class.restricted_visible(work_package) }
+
+    before do
+      login_as user
+    end
+
+    context "when the user cannot see restricted" do
+      before do
+        mock_permissions_for(user) do |mock|
+          mock.allow_in_work_package :view_work_packages, work_package:
+        end
+      end
+
+      it "does not return the restricted journal" do
+        expect(subject.map(&:id)).not_to include(restricted_note.id)
+      end
+    end
+
+    context "when the user can see restricted" do
+      before do
+        mock_permissions_for(user) do |mock|
+          mock.allow_in_work_package :view_comments_with_restricted_visibility, work_package:
+        end
+      end
+
+      it "returns the restricted journal" do
+        expect(subject.map(&:id)).to include(restricted_note.id)
       end
     end
   end

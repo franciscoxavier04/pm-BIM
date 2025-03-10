@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,11 +32,15 @@ require "spec_helper"
 
 RSpec.describe Activities::Fetcher, "integration" do
   shared_let(:user) { create(:user) }
-  shared_let(:permissions) { %i[view_work_packages view_time_entries view_changesets view_wiki_edits] }
+  shared_let(:permissions) do
+    %i[view_work_packages view_time_entries view_changesets view_wiki_edits view_comments_with_restricted_visibility]
+  end
   shared_let(:role) { create(:project_role, permissions:) }
   # execute as user so that the user is the author of the project, and the
   # project create event will be displayed in user activities
   shared_let(:project) { User.execute_as(user) { create(:project, members: { user => role }) } }
+
+  let(:admin) { create(:admin) }
 
   let(:instance) { described_class.new(user, options) }
   let(:options) { {} }
@@ -54,14 +60,25 @@ RSpec.describe Activities::Fetcher, "integration" do
     let(:repository) { create(:repository_subversion, project:) }
     let(:changeset) { create(:changeset, committer: event_user.login, repository:) }
     let(:wiki) { create(:wiki, project:) }
-    let(:wiki_page) do
-      create(:wiki_page, wiki:, author: event_user, text: "some text")
+    let(:wiki_page) { create(:wiki_page, wiki:, author: event_user, text: "some text") }
+    let(:restricted_note) do
+      create(:work_package_journal,
+             journable: work_package,
+             user: admin,
+             notes: "Restricted comment",
+             restricted: true,
+             version: 2,
+             data: build(:journal_work_package_journal,
+                         subject: work_package.subject,
+                         status_id: work_package.status_id,
+                         type_id: work_package.type_id,
+                         project_id: work_package.project_id))
     end
 
     subject { instance.events(from: 30.days.ago, to: 1.day.from_now) }
 
     context "for global activities" do
-      let!(:activities) { [project, work_package, message, news, time_entry, changeset, wiki_page] }
+      let!(:activities) { [project, work_package, message, news, time_entry, changeset, wiki_page, restricted_note.journable] }
 
       it "finds events of all types" do
         expect(subject.map(&:journable_id))
@@ -101,11 +118,32 @@ RSpec.describe Activities::Fetcher, "integration" do
             .to contain_exactly(message.id, time_entry.id)
         end
       end
+
+      context "if user cannot see restricted journals" do
+        before do
+          role.role_permissions
+            .find_by(permission: "view_comments_with_restricted_visibility")
+            .destroy
+
+          # reload otherwise permissions don't update
+          event_user.reload
+        end
+
+        it "does not find events with restricted journals" do
+          expect(subject.map(&:journal).select(&:restricted)).to be_empty
+        end
+      end
+
+      context "if user can see restricted journals" do
+        it "finds events with restricted journals" do
+          expect(subject.map(&:journal).select(&:restricted).map(&:journable_id)).to include(restricted_note.journable_id)
+        end
+      end
     end
 
     context "for activities in a project" do
       let(:options) { { project: } }
-      let!(:activities) { [project, work_package, message, news, time_entry, changeset, wiki_page] }
+      let!(:activities) { [project, work_package, message, news, time_entry, changeset, wiki_page, restricted_note.journable] }
 
       it "finds events of all types" do
         expect(subject.map(&:journable_id))
@@ -148,6 +186,27 @@ RSpec.describe Activities::Fetcher, "integration" do
         it "finds only events matching the scope" do
           expect(subject.map(&:journable_id))
             .to contain_exactly(message.id, time_entry.id)
+        end
+      end
+
+      context "if user cannot see restricted journals" do
+        before do
+          role.role_permissions
+            .find_by(permission: "view_comments_with_restricted_visibility")
+            .destroy
+
+          # reload otherwise permissions don't update
+          event_user.reload
+        end
+
+        it "does not find events with restricted journals" do
+          expect(subject.map(&:journal).select(&:restricted)).to be_empty
+        end
+      end
+
+      context "if user can see restricted journals" do
+        it "finds events with restricted journals" do
+          expect(subject.map(&:journal).select(&:restricted).map(&:journable_id)).to include(restricted_note.journable_id)
         end
       end
     end
