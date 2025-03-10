@@ -80,17 +80,33 @@ This feature is small, but has a big impact: When a user quotes another user in 
 
 ### Restructured administration and enumerations page removed
 
-Text
+With OpenProject 15.4, we restructured some parts in the administration, so that admins can find the settings for work package priorities and document categories in the existing settings for the modules – all in one place. Therefore, the enumerations page in the administration has been removed. Instead, you can now find...
 
-https://community.openproject.org/wp/61733
+- document categories under *Administration → Files → Categories*. [Read more in our system admin guide](../../system-admin-guide/files/categories/).
 
-Link to the new 3 parts in the docs which were before enumerations page: https://github.com/opf/openproject/pull/18197/files
+![Screenshot: The OpenProject administration of document categories](openproject_system_guide_files_categories_overview.png)
 
-Screenshot
+- work package priorities under *Administration → Work packages → Priorities*. [Read more in our system admin guide](../../system-admin-guide/manage-work-packages/work-package-priorities/).
+
+![Screenshot: The OpenProject administration of work package priorities](openproject_system_guide_work_package_priorities_overview.png)
+
+- time tracking activities under *Administration* -> *Time and costs*. [Read more in our user guide](../../user-guide/projects/project-settings/activities-time-tracking/).
+
+![Screenshot: The OpenProject administration of time tracking activities](openproject_system_guide_time_costs_time_tracking_activities_overview.png)
 
 ## Important updates and breaking changes
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+### Docker: Removed support for ppc64le
+
+We have been offering docker builds for the following architectures:
+
+- amd64
+- arm64
+- ppc64le
+
+We have put in considerable effort trying to keep ppc64le running, but it keeps causing disproportionate maintenance effort. So without a native runner, it is unfortunately not practical to keep supporting this. Please reach out to us if you'd like to provide support to maintain a ppc64 architecture.
+
+For more information, see [this code maintenance work package on our Community instance](https://community.openproject.org/wp/61975).
 
 <!--more-->
 
