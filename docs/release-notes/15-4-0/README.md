@@ -49,7 +49,7 @@ Once the status is "in progress", you can add outcomes to every agenda item. If 
 ![Screenshot: OpenProject's Meetings module, options for an agenda item if the meeting status is 'in progress'](openproject-15-4-meetings-outcome-highlighted.png)
 
 > [!NOTE]
-> In the following months, we will continue working on the Meetings module. For example, when a recurring meeting is closed, it should be possible to move all agenda items without outcomes to the next meeting ([see this feature](https://community.openproject.org/wp/61911)). Also, a meeting agenda items backlog for recurring meetings is planned ([see this feature](https://community.openproject.org/wp/54751)).
+> In the following months, we will continue working on the Meetings module. For example, when a recurring meeting is closed, it shall be possible to move all agenda items without outcomes to the next meeting ([see this feature](https://community.openproject.org/wp/61911)). Also, a meeting agenda items backlog for recurring meetings is planned ([see this feature](https://community.openproject.org/wp/54751)).
 
 ### Generate PDF documents from a work package description
 
@@ -73,11 +73,10 @@ Improving project portfolio management is one of our focus goals for 2025. With 
 
 ### Use @-mention of user when quote replying to a comment
 
-Text
+This feature is small, but has a big impact: When a user quotes another user in the work package activity tab, the quoted user now automatically gets @-mentioned and therefore notified. This way, users won't miss information again that is clearly relevant for them.
 
-https://community.openproject.org/wp/37093
 
-Screenshot
+![Screenshot: A quoted message in the Activity tab of a work package.](openproject-15-4-mention.png)
 
 ### Restructured administration and enumerations page removed
 
