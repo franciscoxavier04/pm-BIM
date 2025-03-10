@@ -200,7 +200,9 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   end
   let(:expected_details) do
     result = [
-      "#{type.name} ##{work_package.id} - #{work_package.subject}",
+      "##{work_package.id} #{work_package.subject}",
+      "STATUS", work_package.status.name,
+      "TYPE", type.name,
       "People",
       "ASSIGNEE", user.name,
       "ACCOUNTABLE", user.name,
@@ -440,10 +442,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Custom field hidden",
           "No replacement of:",
           "projectValue:1:status",
-          "projectLabel:status",
 
           "1", export_time_formatted, project.name,
 
+          "projectLabel:status",
           "projectValue:2:status projectLabel:status",
           "projectValue:3:status", "projectLabel:status",
           "Project by identifier:", " ", I18n.t(:general_text_Yes),
@@ -462,6 +464,8 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       it "contains resolved attributes and labels" do
         # Joining with space for comparison since word wrapping leads to a different array for the same content
         result = pdf[:strings].join(" ")
+        puts result
+        puts expected_result
         expect(result).to eq(expected_result)
       end
     end

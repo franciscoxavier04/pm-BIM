@@ -38,7 +38,7 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   include WorkPackage::PDFExport::Export::Wp::Attributes
   include WorkPackage::PDFExport::Export::WpTable
 
-  attr_accessor :pdf, :columns
+  attr_accessor :pdf
 
   self.model = WorkPackage
 
@@ -51,7 +51,6 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   def initialize(work_package, _options = {})
     super
 
-    self.columns = ::Query.available_columns(work_package.project)
     setup_page!
   end
 
@@ -82,7 +81,7 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
   end
 
   def heading
-    "#{work_package.type} ##{work_package.id} - #{work_package.subject}"
+    "##{work_package.id} #{work_package.subject}"
   end
 
   def footer_title
