@@ -69,7 +69,7 @@ RSpec.describe Journal do
     end
   end
 
-  describe "#restricted_visible scope" do
+  describe ".restricted_visible scope" do
     let(:work_package) { create(:work_package) }
     let(:admin) { create(:admin) }
     let(:user) { create(:user) }
