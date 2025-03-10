@@ -164,7 +164,6 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
                            checked,
                            text = field.to_s + "_#{checked_value}",
                            options = {})
-
     label_for = :"#{sanitized_object_name}_#{field}_#{checked_value}"
     unchecked_value = options.delete(:unchecked_value) { "" }
 
@@ -337,7 +336,9 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def field_has_errors?(field)
-    @object&.errors&.include?(field)
+    return false if @object == false || @object.nil?
+
+    @object.errors&.include?(field)
   end
 
   def extract_from(options)

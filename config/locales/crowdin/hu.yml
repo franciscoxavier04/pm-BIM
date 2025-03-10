@@ -3386,6 +3386,10 @@ hu:
       project_verification: "Adja meg a projekt nevét %{name} a törlés megerősítéséhez."
       subprojects_confirmation: "Az alprojekt(ek): %{value} is törlődni fog."
       title: "A projekt %{name} törlése"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: A projekt tagjai áthelyezik a projekt tárolóit.
       warning_two: A projekthez tartozó hivatkozások már nem működnek.

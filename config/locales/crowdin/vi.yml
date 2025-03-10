@@ -2511,7 +2511,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"
@@ -3347,6 +3347,10 @@ vi:
       project_verification: "Nhập tên dự án %{name} để xác minh việc xóa."
       subprojects_confirmation: "Các dự án con(s) của nó: %{value} cũng sẽ bị xóa."
       title: "Xóa dự án %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Các thành viên của dự án sẽ phải di chuyển các kho của dự án.
       warning_two: Các liên kết hiện có tới dự án sẽ không còn hoạt động.

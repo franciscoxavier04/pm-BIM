@@ -1906,8 +1906,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec
@@ -3469,6 +3469,10 @@ sl:
       project_verification: "Vnesite ime projekta %{name}, da preverite izbris."
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Člani projekta bodo morali preseliti shrambo projekta.
       warning_two: Obstoječe povezave do projekta ne bodo več delovale.
