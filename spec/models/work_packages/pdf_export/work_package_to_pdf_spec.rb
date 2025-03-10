@@ -199,21 +199,28 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
     end
   end
   let(:expected_details) do
-    result = ["#{type.name} ##{work_package.id} - #{work_package.subject}"]
-    type.attribute_groups.each do |group|
-      result.push group.translated_key
-      group.attributes.each do |attribute|
-        columns = exporter.send(:form_key_to_column_entries, attribute.to_sym, work_package)
-        columns.each do |column|
-          result.push column[:label].upcase
-          value = get_column_value(column[:name])
-          result.push value if value.present?
-        end
-      end
-      if group.key == :other
-        result += [cf_long_text.name, "foo   faa"]
-      end
-    end
+    result = [
+      "#{type.name} ##{work_package.id} - #{work_package.subject}",
+      "People",
+      "ASSIGNEE", user.name,
+      "ACCOUNTABLE", user.name,
+      "Estimates and progress",
+      "WORK", "10h",
+      "REMAINING WORK", "9h",
+      "% COMPLETE", "25%",
+      "SPENT TIME", "0h",
+      "Details",
+      "PRIORITY", "Normal",
+      "VERSION", work_package.version,
+      "CATEGORY", work_package.category,
+      "START DATE", "05/30/2024",
+      "FINISH DATE", "05/30/2024",
+      "DURATION", "1 d",
+      "Other",
+      "WORK PACKAGE CUSTOM FIELD BOOLEAN", "Yes",
+      "Costs",
+      "SPENT", "UNITS", "LABOR", "COSTS UNIT", "COSTS OVERALL", "COSTS BUDGET"
+    ]
     result
   end
 
@@ -432,11 +439,11 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
           "No replacement of:",
+          "projectValue:1:status",
+          "projectLabel:status",
 
           "1", export_time_formatted, project.name,
 
-          "projectValue:1:status",
-          "projectLabel:status",
           "projectValue:2:status projectLabel:status",
           "projectValue:3:status", "projectLabel:status",
           "Project by identifier:", " ", I18n.t(:general_text_Yes),

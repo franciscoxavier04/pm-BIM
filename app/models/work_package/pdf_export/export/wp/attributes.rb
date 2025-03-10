@@ -75,19 +75,71 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
 
   def write_attributes_group(group, work_package)
     write_group_title(group)
-    write_attributes_group_table(group, work_package)
-    write_attributes_group_long_text_custom_fields(group, work_package)
+    group_parts = group_attributes_group_parts(group, work_package)
+    group_parts.each do |part|
+      if part[:type] == :attribute
+        write_attributes_group_table(part[:list], work_package)
+      else
+        part[:list].each do |cf|
+          write_long_text_field!(work_package, cf.id)
+        end
+      end
+    end
   end
 
-  def write_attributes_group_long_text_custom_fields(group, work_package)
-    group.attributes.map do |form_key|
-      next unless CustomField.custom_field_attribute? form_key
+  def write_attributes_group_table(list, work_package)
+    rows = attributes_to_rows(list, work_package)
+    return if rows.empty?
 
-      cf = form_key_to_custom_field(form_key)
-      next if cf.nil? || !cf.formattable? || !custom_field_allowed(cf, work_package)
-
-      write_long_text_field!(work_package, cf.id)
+    with_margin(styles.wp_attributes_table_margins) do
+      pdf.table(
+        rows,
+        column_widths: attributes_table_column_widths,
+        cell_style: styles.wp_attributes_table_cell.merge({ inline_format: true })
+      )
     end
+  end
+
+  def attributes_to_rows(list, work_package)
+    list = attributes_to_column_entries(list, work_package)
+             .map { |entry| entry.merge({ value: get_column_value_cell(work_package, entry[:name]) }) }
+    form_config_group_to_column_entries_rows(list)
+  end
+
+  def attributes_to_column_entries(list, work_package)
+    list.map do |form_key|
+      form_key_to_column_entries(form_key.to_sym, work_package)
+    end.flatten
+  end
+
+  def group_attributes_group_parts(group, work_package)
+    current_part = { type: :attribute, list: [] }
+    parts = [current_part]
+    group.attributes.each do |form_key|
+      if allowed_long_text_custom_field?(form_key, work_package)
+        if current_part[:type] == :long_text
+          current_part[:list] << cf
+        else
+          current_part = { type: :long_text, list: [cf] }
+          parts << current_part
+        end
+      elsif current_part[:type] != :attribute
+        current_part = { type: :attribute, list: [form_key] }
+        parts << current_part
+      else
+        current_part[:list] << form_key
+      end
+    end
+    parts
+  end
+
+  def allowed_long_text_custom_field?(form_key, work_package)
+    return false if CustomField.custom_field_attribute? form_key
+
+    cf = form_key_to_custom_field(form_key)
+    return false if cf.nil?
+
+    cf.formattable? && custom_field_allowed(cf, work_package)
   end
 
   def write_group_title(group)
@@ -97,31 +149,10 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     end
   end
 
-  def form_config_group_to_column_entries(group, work_package)
-    group.attributes.map do |form_key|
-      form_key_to_column_entries(form_key.to_sym, work_package)
-    end.flatten
-  end
-
   def form_config_group_to_column_entries_rows(list)
     0.step(list.length - 1, 2).map do |i|
       build_columns_table_cells(list[i]) +
         build_columns_table_cells(list[i + 1])
-    end
-  end
-
-  def write_attributes_group_table(group, work_package)
-    list = form_config_group_to_column_entries(group, work_package)
-             .map { |entry| entry.merge({ value: get_column_value_cell(work_package, entry[:name]) }) }
-    rows = form_config_group_to_column_entries_rows(list)
-    return if rows.empty?
-
-    with_margin(styles.wp_attributes_table_margins) do
-      pdf.table(
-        rows,
-        column_widths: attributes_table_column_widths,
-        cell_style: styles.wp_attributes_table_cell.merge({ inline_format: true })
-      )
     end
   end
 
