@@ -80,7 +80,7 @@ To **edit** an existing configuration either click on the name of the activity d
 ![Edit a time tracking activity in OpenProject administration](openproject_system_admin_guide_time_costs_time_tracking_activities_edit_icon.png)
 
 
-To remove an enumeration, open the **More (three dots)** menu on the right end of the row and click on the **delete icon**.
+To remove a time tracking activity, open the **More (three dots)** menu on the right end of the row and click on the **delete icon**.
 
 > [!NOTE]
 > To activate the [Activities for time tracking](../../user-guide/projects/project-settings/activities-time-tracking) in a certain project, navigate to *Project settings -> Time tracking activities*.
