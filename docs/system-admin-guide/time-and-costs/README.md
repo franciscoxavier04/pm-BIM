@@ -56,7 +56,7 @@ In the overview list of all cost types you can define the following.
 > [!NOTE]
 > With cost types you can also book any kind of units to work packages, e.g. vacation days, leaves, travel days, etc.. Just choose 1 as a unit. This way, you could e.g. track vacation days against a vacation budget and evaluate the days in the [cost reporting](../../user-guide/time-and-costs/reporting/).
 
-## Create and manage time tracking actvities
+## Create and manage time tracking activities
 
 To get an overview of existing values for time tracking activities, navigate to *Administration -> Time and Costs -> Time tracking activities*. You can adjust the items within the list by using the options behind the **More (three dots)** menu on the right side. You can also re-arrange the order by using the drag-and-drop handle on the left. 
 
@@ -67,7 +67,7 @@ To get an overview of existing values for time tracking activities, navigate to 
 
 ### Create new time tracking activity
 
-To create a new enumeration value, select the **+ Add** button in the top right corner.
+To create a new value, select the **+ Add** button in the top right corner.
 
 You will then be able to name the value and activate it. Press the **Save** button to save your changes.
 
@@ -77,13 +77,10 @@ You will then be able to name the value and activate it. Press the **Save** butt
 
 To **edit** an existing configuration either click on the name of the activity directly or select the **Edit** option from the **More (three dots)** menu on the right end of the row.
 
-![Edit a time tracking activity in OpenProject adminstration](openproject_system_admin_guide_time_costs_time_tracking_activities_edit_icon.png)
+![Edit a time tracking activity in OpenProject administration](openproject_system_admin_guide_time_costs_time_tracking_activities_edit_icon.png)
 
 
-
-
-
-To remove an enumeration open the **More (three dots)** menu on the right end of the row and click on the **delete icon**.
+To remove an enumeration, open the **More (three dots)** menu on the right end of the row and click on the **delete icon**.
 
 > [!NOTE]
 > To activate the [Activities for time tracking](../../user-guide/projects/project-settings/activities-time-tracking) in a certain project, navigate to *Project settings -> Time tracking activities*.
