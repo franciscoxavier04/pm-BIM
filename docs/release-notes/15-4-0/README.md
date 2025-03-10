@@ -40,13 +40,16 @@ In February 2025, we already published a milestone for our Meetings module: [Rec
 > [!NOTE]
 > In our classic meetings module, users could write "minutes", which are notes taken during the meeting. Users can still edit the agenda item description to do so, but now they can also use the outcome feature to make it more clear.
 
-Text (important: goal is to let meeting participants note relevant decisions, questions and follow-up actions during a meeting. Also: More features to follow, workflow for minutes and participants on closing the meeting (#61911) and Meeting agenda items backlog for recurring meetings (#54751).)
+The updated Meetings module now allows you to set a Meeting status: 
 
-https://community.openproject.org/wp/57799
+![Screenshot: OpenProject's Meetings module, setting a meeting status](openproject-15-4-meeting-status.png)
 
-![alt text](openproject-15-4-meeting-status.png) 
+Once the status is "in progress", you can add outcomes to every agenda item. If it is a recurring meeting, can also move the agenda item to the next meeting:
 
-![alt text](openproject-15-4-meetings-outcome-highlighted.png)
+![Screenshot: OpenProject's Meetings module, options for an agenda item if the meeting status is 'in progress'](openproject-15-4-meetings-outcome-highlighted.png)
+
+> [!NOTE]
+> In the following months, we will continue working on the Meetings module. For example, when a recurring meeting is closed, it should be possible to move all agenda items without outcomes to the next meeting ([see this feature](https://community.openproject.org/wp/61911)). Also, a meeting agenda items backlog for recurring meetings is planned ([see this feature](https://community.openproject.org/wp/54751)).
 
 ### Generate PDF documents from a work package description
 
@@ -78,7 +81,7 @@ Text
 
 https://community.openproject.org/wp/61733
 
-Link to the new 3 parts in the docs which were before enumerations page
+Link to the new 3 parts in the docs which were before enumerations page: https://github.com/opf/openproject/pull/18197/files
 
 Screenshot
 
