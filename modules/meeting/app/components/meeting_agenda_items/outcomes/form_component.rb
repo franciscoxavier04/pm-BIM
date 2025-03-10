@@ -50,10 +50,10 @@ module MeetingAgendaItems::Outcomes
     private
 
     def wrapper_data_attributes
-      # {
-      #   controller: "meeting-outcome-form",
-      #   "application-target": "dynamic"
-      # }
+      {
+        "test-selector": "meeting-outcome-input",
+        controller: "scroll-into-view"
+      }
     end
   end
 end

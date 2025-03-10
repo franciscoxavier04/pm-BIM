@@ -59,7 +59,7 @@ module MeetingAgendaItems
 
     def wrapper_data_attributes
       {
-        controller: "meeting-agenda-item-form",
+        controller: "meeting-agenda-item-form scroll-into-view",
         "application-target": "dynamic",
         "meeting-agenda-item-form-cancel-url-value": @cancel_path
       }

@@ -28,14 +28,14 @@
  * ++
  */
 
-import { Controller } from '@hotwired/stimulus';
+import { ApplicationController } from 'stimulus-use';
 
-export default class extends Controller {
-  connect():void {
-    this.focusInput();
-  }
+export default class ScrollIntoViewController extends ApplicationController {
+  connect() {
+    super.connect();
 
-  focusInput():void {
-    this.element.scrollIntoView({ block: 'center' });
+    setTimeout(() => {
+      this.element.scrollIntoView({ block: 'center' });
+    }, 0); // Needed because the elements added out of the current view aren't scrolled to otherwise
   }
 }
