@@ -2663,7 +2663,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
@@ -3463,6 +3463,10 @@ uk:
       project_verification: "Введіть ім'я проекту %{name}, щоб верифікувати видалення."
       subprojects_confirmation: "Підпроекти: %{value} також будуть видалені."
       title: "Видалити проект %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Членам проекту доведеться перенести репозиторії проекту.
       warning_two: Існуючі посилання на проект більше не працюватимуть.

@@ -3387,6 +3387,10 @@
       project_verification: "Skriv inn prosjektets navn %{name} for å bekrefte slettingen."
       subprojects_confirmation: "Underprosjekt(ene): %{value} vil også bli slettet."
       title: "Slett prosjektet %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Medlemmer av prosjektet må relokalisere prosjektets arkiv.
       warning_two: Eksisterende koblinger til prosjektet vil ikke lenger fungere.
