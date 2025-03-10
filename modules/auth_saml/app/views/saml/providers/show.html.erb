@@ -33,7 +33,7 @@
       render Saml::Providers::ViewComponent.new(@provider, view_mode: :show)
     end
 
-    content.with_sidebar(row_placement: :start, col_placement: :end) do
+    content.with_sidebar(row_placement: :end, col_placement: :end) do
       render Saml::Providers::SidePanelComponent.new(@provider)
     end
   end
