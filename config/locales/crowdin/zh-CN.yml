@@ -1003,7 +1003,7 @@ zh-CN:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "用户"
       user:
         admin: "管理员"
         auth_source: "身份验证源"
@@ -1387,7 +1387,7 @@ zh-CN:
               smaller_than_dates: "小于开始日期和结束日期之间的间隔。"
               not_available_for_milestones: "不适用于里程碑类型的工作包。"
               cannot_be_null: "无法设置为 null，因为开始日期和结束日期已知。"
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "不是有效的持续时间。"
             parent:
               cannot_be_milestone: "不能是一个里程碑。"
               cannot_be_self_assigned: "不能分配给自己。"
@@ -1429,7 +1429,7 @@ zh-CN:
               query_invalid: "嵌入式查询 \"%{group}\" 无效: %{details}"
               group_without_name: "不允许未命名的组。"
             patterns:
-              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
+              invalid_tokens: "字段内的一个或多个属性无效。请在保存前修正。"
         user:
           attributes:
             base:
@@ -1629,7 +1629,7 @@ zh-CN:
     subject: "主题"
     slug: "缩写"
     summary: "摘要"
-    time_zone: "Time zone"
+    time_zone: "时区"
     text: "文本"
     title: "标题"
     type: "类型"
@@ -2204,7 +2204,7 @@ zh-CN:
         progress_calculation_adjusted: >-
           进度计算自动<a href="%{href}" target="_blank">设置为基于工时的模式，并随版本更新而调整</a>。
         scheduling_mode_adjusted: >-
-          Scheduling mode automatically adjusted with version update.
+          随版本更新自动适配调度模式。
         totals_removed_from_childless_work_packages: >-
           使用 <a href="%{href}" target="_blank">版本更新</a>的非父工作包的工作和进度总计自动移除。 这是一个维护任务，可以安全地被忽略。
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2840,7 +2840,7 @@ zh-CN:
   label_title: "标题"
   label_projects_menu: "项目"
   label_today: "今天"
-  label_token_version: "Token Version"
+  label_token_version: "令牌版本"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
   label_top_menu: "顶部的菜单"
