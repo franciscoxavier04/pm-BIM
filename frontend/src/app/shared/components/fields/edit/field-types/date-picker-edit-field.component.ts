@@ -84,15 +84,6 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
     super.ngOnInit();
     this.turboFrameSrc = `${this.pathHelper.workPackageDatepickerDialogContentPath(this.change.id)}?field=${this.name}`;
 
-    this.handler
-      .$onUserActivate
-      .pipe(
-        this.untilDestroyed(),
-      )
-      .subscribe(() => {
-        this.showDatePickerModal();
-      });
-
     document.addEventListener('date-picker-modal:create', this.createHandler);
     document.addEventListener('date-picker-modal:update', this.updateHandler);
     document.addEventListener('date-picker-modal:cancel', this.cancelHandler);
@@ -107,12 +98,23 @@ export abstract class DatePickerEditFieldComponent extends EditFieldComponent im
   }
 
   public showDatePickerModal():void {
-    this.opModalService.show(
-      OpWpDatePickerModalComponent,
-      this.injector,
-      { resource: this.resource, name: this.name },
-    );
-    this.opened = true;
+    this.opModalService
+      .show(
+        OpWpDatePickerModalComponent,
+        this.injector,
+        { resource: this.resource, name: this.name, change: this.change },
+      )
+      .subscribe((modal) => {
+        modal
+          .closingEvent
+          .subscribe(() => {
+            if (this.opened) {
+              this.onModalClosed();
+            }
+        });
+
+       this.opened = true;
+      });
   }
 
   public handleSuccessfulCreate(event:CustomEvent):void {
