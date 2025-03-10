@@ -682,7 +682,7 @@ GEM
     i18n-js (4.2.3)
       glob (>= 0.4.0)
       i18n
-    i18n-tasks (1.0.14)
+    i18n-tasks (1.0.15)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
       erubi
@@ -691,6 +691,7 @@ GEM
       parser (>= 3.2.2.1)
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.8, >= 1.8.1)
       terminal-table (>= 1.5.1)
     icalendar (2.10.3)
       ice_cube (~> 0.16)
@@ -1661,7 +1662,7 @@ CHECKSUMS
   httpx (1.3.4) sha256=d90bac25b909184479af1bd95e66b0a336a11d76076342caae5809ffd7d63799
   i18n (1.14.7) sha256=ceba573f8138ff2c0915427f1fc5bdf4aa3ab8ae88c8ce255eb3ecf0a11a5d0f
   i18n-js (4.2.3) sha256=ffb1a6d34afebd9ab2aff9bd86e8f2873191cbe8b9ac5c2c8efe4dfa1107ca3b
-  i18n-tasks (1.0.14) sha256=3ad8daef2a3268d6dc2232aad2b12941b353d884cd30fd3b418a73e7001a03ec
+  i18n-tasks (1.0.15) sha256=74f3e9e0e2db5d757c58e659f4269ee698c7a7532ed29066a2aaffc9efbdfb56
   icalendar (2.10.3) sha256=0ebfc2672f9fa77b86b4d8c0e25e9b2319aad45a33319fed06d0be8ddd0cd485
   ice_cube (0.17.0) sha256=32deb45dda4b4acc53505c2f581f6d32b5afc04d29b9004769944a0df5a5fcbe
   ice_nine (0.11.2) sha256=5d506a7d2723d5592dc121b9928e4931742730131f22a1a37649df1c1e2e63db
