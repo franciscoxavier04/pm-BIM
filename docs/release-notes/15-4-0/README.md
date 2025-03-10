@@ -63,17 +63,13 @@ Most important, you can now choose between two templates: One is **attributes an
 
 Read this blog article to learn more about how this feature for automatically creating PDFs from the work package description can be a great help for organizations: [Beyond MS Word: Automatically generate beautifully styled pdf files for contracts, approval notices and project orders](https://www.openproject.org/blog/beyond-documents-generate-pdf-files/).
 
-https://community.openproject.org/wp/45896
-
-
-
 ### Better manage a large number of projects with an enhanced project lists view
 
-Text (More autocompleters for filtering project lists and version autocompleter for filter falues on the project list)
+Improving project portfolio management is one of our focus goals for 2025. With OpenProject 15.4, users who manage a large number of projects and project attributes will benefit from feature updates regarding autocompleters in project lists:
 
-https://community.openproject.org/wp/59169
-
-Screenshot
+- [Autocompleters for user custom field filter values on the project list](https://community.openproject.org/wp/60972)
+- [Autocompleters for filter values on the project list](https://community.openproject.org/wp/60521)
+- [Version autocompleter for filter values on the project list](https://community.openproject.org/wp/61398)
 
 ### Use @-mention of user when quote replying to a comment
 
