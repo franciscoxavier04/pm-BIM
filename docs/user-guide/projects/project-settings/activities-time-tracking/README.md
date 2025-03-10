@@ -7,7 +7,7 @@ keywords: activities for time tracking, log time settings
 ---
 # Manage activities for time tracking
 
-You can [configure available activities](../../../../system-admin-guide/time-and-costs/#create-and-manage-time-tracking-activities/) for time tracking in *Administration -> Time and costs -> Time tracking activities*. You can activate or deactivate time tracking activities per project.
+You can [configure available activities](../../../../system-admin-guide/time-and-costs/#create-and-manage-time-tracking-activities) for time tracking in *Administration -> Time and costs -> Time tracking activities*. You can activate or deactivate time tracking activities per project.
 
 <div class="glossary">
 **Time tracking** is defined as a module which allows users to log time on work packages. Once the time tracking module is activated, time can be logged via the action menu of a work package.
