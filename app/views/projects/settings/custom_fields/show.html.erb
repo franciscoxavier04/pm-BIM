@@ -27,16 +27,7 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
-<%=
-  render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title { I18n.t(:label_custom_field_plural) }
-    header.with_breadcrumbs(
-      [{ href: project_overview_path(@project.id), text: @project.name },
-       { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
-       I18n.t(:label_custom_field_plural)]
-    )
-  end
-%>
+<%= render(Settings::ProjectWorkPackages::HeaderComponent.new(@project, selected: :custom_fields)) %>
 
 <%=
   if current_user.admin?

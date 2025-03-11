@@ -27,7 +27,7 @@
 #++
 
 class Projects::Settings::TypesController < Projects::SettingsController
-  menu_item :settings_types
+  menu_item :settings_work_packages
 
   def show
     @types = ::Type.all

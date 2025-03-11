@@ -278,6 +278,7 @@ Rails.application.routes.draw do
         resource :versions, only: %i[show]
         resource :categories, only: %i[show update]
         resource :storage, only: %i[show], controller: "storage"
+        resource :work_packages, only: %i[show]
       end
 
       resource :templated, only: %i[create destroy], controller: "templated"

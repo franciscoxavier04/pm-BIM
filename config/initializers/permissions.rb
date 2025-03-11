@@ -100,6 +100,7 @@ Rails.application.reloader.to_prepare do
                      {
                        "projects/settings/general": %i[show],
                        "projects/settings/storage": %i[show],
+                       "projects/settings/work_packages": %i[show],
                        "projects/templated": %i[create destroy],
                        "projects/identifier": %i[show update]
                      },

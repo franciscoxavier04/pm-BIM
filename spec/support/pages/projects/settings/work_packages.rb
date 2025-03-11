@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,31 +26,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-require "spec_helper"
+require "support/pages/page"
 
-RSpec.describe "Projects", "work package type mgmt", :js do
-  current_user { create(:user, member_with_permissions: { project => %i[edit_project manage_types] }) }
+module Pages
+  module Projects
+    module Settings
+      class WorkPackages < Pages::Page
+        attr_accessor :project
 
-  let(:phase_type)     { create(:type, name: "Phase", is_default: true) }
-  let(:milestone_type) { create(:type, name: "Milestone", is_default: false) }
-  let!(:project) { create(:project, name: "Foo project", types: [phase_type, milestone_type]) }
+        def initialize(project)
+          super()
 
-  it "have the correct types checked for the project's types" do
-    visit projects_path
-    click_on "Foo project"
-    click_on "Project settings"
-    click_on "Work packages"
+          @project = project
+        end
 
-    expect(page).to have_checked_field("Phase", visible: :all)
-    expect(page).to have_checked_field("Milestone", visible: :all)
-
-    # Disable a type
-    find_field("Milestone", visible: false).click
-
-    click_button "Save"
-
-    expect(page).to have_unchecked_field("Milestone", visible: :all)
+        def path
+          "/projects/#{project.identifier}/settings/work_packages"
+        end
+      end
+    end
   end
 end

@@ -27,5 +27,5 @@
 #++
 
 class Projects::Settings::CategoriesController < Projects::SettingsController
-  menu_item :settings_categories
+  menu_item :settings_work_packages
 end

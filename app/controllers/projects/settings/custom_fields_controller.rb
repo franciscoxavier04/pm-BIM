@@ -27,7 +27,7 @@
 #++
 
 class Projects::Settings::CustomFieldsController < Projects::SettingsController
-  menu_item :settings_custom_fields
+  menu_item :settings_work_packages
 
   def show
     @wp_custom_fields = WorkPackageCustomField.order("lower(name)")

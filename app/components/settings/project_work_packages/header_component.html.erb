@@ -26,20 +26,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
-
-<%= render(Settings::ProjectWorkPackages::HeaderComponent.new(@project, selected: :types)) %>
-
-<% if Type.any? %>
-  <%= form_for @project,
-               url: project_settings_types_path(@project),
-               method: :patch,
-               html: { id: "types-form" } do |f| %>
-    <%= render partial: "form",
-               locals: { f: f, project: @project } %>
-
-  <% end %>
-
-  <br>
-<% else %>
-  <%= no_results_box custom_title: t("projects.settings.types.no_results_title_text") %>
-<% end %>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_work_package_plural) }
+    header.with_breadcrumbs(breadcrumbs_items)
+    header.with_tab_nav(label: nil) do |tab_nav|
+      if show_types?
+        tab_nav.with_tab(selected: selected?(:types), href: project_settings_types_path) do |tab|
+          tab.with_text { "Types" }
+        end
+      end
+      if show_categories?
+        tab_nav.with_tab(selected: selected?(:categories), href: project_settings_categories_path) do |tab|
+          tab.with_text { "Categories" }
+        end
+      end
+      if show_custom_fields?
+        tab_nav.with_tab(selected: selected?(:custom_fields), href: project_settings_custom_fields_path) do |tab|
+          tab.with_text { "Custom Fields" }
+        end
+      end
+    end
+  end
+%>

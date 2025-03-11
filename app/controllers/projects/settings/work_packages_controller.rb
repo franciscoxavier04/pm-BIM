@@ -28,29 +28,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+class Projects::Settings::WorkPackagesController < Projects::SettingsController
+  menu_item :settings_work_packages
 
-RSpec.describe "Projects", "work package type mgmt", :js do
-  current_user { create(:user, member_with_permissions: { project => %i[edit_project manage_types] }) }
-
-  let(:phase_type)     { create(:type, name: "Phase", is_default: true) }
-  let(:milestone_type) { create(:type, name: "Milestone", is_default: false) }
-  let!(:project) { create(:project, name: "Foo project", types: [phase_type, milestone_type]) }
-
-  it "have the correct types checked for the project's types" do
-    visit projects_path
-    click_on "Foo project"
-    click_on "Project settings"
-    click_on "Work packages"
-
-    expect(page).to have_checked_field("Phase", visible: :all)
-    expect(page).to have_checked_field("Milestone", visible: :all)
-
-    # Disable a type
-    find_field("Milestone", visible: false).click
-
-    click_button "Save"
-
-    expect(page).to have_unchecked_field("Milestone", visible: :all)
+  def show
+    if User.current.allowed_in_project?(:manage_types, @project)
+      redirect_to project_settings_types_path
+    elsif User.current.allowed_in_project?(:manage_categories, @project)
+      redirect_to project_settings_categories_path
+    elsif User.current.allowed_in_project?(:select_custom_fields, @project)
+      redirect_to project_settings_custom_fields_path
+    end
   end
 end

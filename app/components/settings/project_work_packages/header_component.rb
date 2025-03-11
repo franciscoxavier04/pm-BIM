@@ -28,29 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+module Settings
+  module ProjectWorkPackages
+    class HeaderComponent < ApplicationComponent
+      def initialize(project, selected:)
+        super
+        @project = project
+        @selected = selected
+      end
 
-RSpec.describe "Projects", "work package type mgmt", :js do
-  current_user { create(:user, member_with_permissions: { project => %i[edit_project manage_types] }) }
+      def breadcrumbs_items
+        [{ href: project_overview_path(@project.id), text: @project.name },
+         { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+         t(:label_work_package_plural)]
+      end
 
-  let(:phase_type)     { create(:type, name: "Phase", is_default: true) }
-  let(:milestone_type) { create(:type, name: "Milestone", is_default: false) }
-  let!(:project) { create(:project, name: "Foo project", types: [phase_type, milestone_type]) }
+      def selected?(key)
+        @selected == key
+      end
 
-  it "have the correct types checked for the project's types" do
-    visit projects_path
-    click_on "Foo project"
-    click_on "Project settings"
-    click_on "Work packages"
+      def show_types?
+        User.current.allowed_in_project?(:manage_types, @project)
+      end
 
-    expect(page).to have_checked_field("Phase", visible: :all)
-    expect(page).to have_checked_field("Milestone", visible: :all)
+      def show_categories?
+        User.current.allowed_in_project?(:manage_categories, @project)
+      end
 
-    # Disable a type
-    find_field("Milestone", visible: false).click
-
-    click_button "Save"
-
-    expect(page).to have_unchecked_field("Milestone", visible: :all)
+      def show_custom_fields?
+        User.current.allowed_in_project?(:select_custom_fields, @project)
+      end
+    end
   end
 end

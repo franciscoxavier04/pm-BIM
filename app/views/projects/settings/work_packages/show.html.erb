@@ -26,20 +26,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
+<%=
+  render Primer::OpenProject::PageHeader.new do |header|
+    header.with_title { t(:label_work_package_plural) }
+    header.with_breadcrumbs(
+      [{ href: project_overview_path(@project.id), text: @project.name },
+       { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+       t(:label_work_package_plural)]
+    )
+  end
+%>
 
-<%= render(Settings::ProjectWorkPackages::HeaderComponent.new(@project, selected: :types)) %>
-
-<% if Type.any? %>
-  <%= form_for @project,
-               url: project_settings_types_path(@project),
-               method: :patch,
-               html: { id: "types-form" } do |f| %>
-    <%= render partial: "form",
-               locals: { f: f, project: @project } %>
-
-  <% end %>
-
-  <br>
-<% else %>
-  <%= no_results_box custom_title: t("projects.settings.types.no_results_title_text") %>
-<% end %>
+<%= t("settings.work_packages.not_allowed_text") %>
