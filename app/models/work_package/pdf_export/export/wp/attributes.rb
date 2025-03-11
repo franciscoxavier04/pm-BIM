@@ -61,11 +61,11 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def write_query_group(group, work_package)
+    prepare_query_group(group, work_package)
     related_work_packages = group.query.results.work_packages
     return if related_work_packages.empty?
 
     write_group_title(group)
-    prepare_query_group(group, work_package)
     write_work_packages_table!(related_work_packages, group.query)
   rescue Prawn::Errors::CannotFit
     with_margin(styles.wp_markdown_label_margins) do
