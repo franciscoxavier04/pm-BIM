@@ -30,7 +30,10 @@
 
 require "spec_helper"
 
-RSpec.describe "Work package comments with restricted visibility", :js, :with_cuprite do
+RSpec.describe "Work package comments with restricted visibility",
+               :js,
+               :with_cuprite,
+               with_flag: { comments_with_restricted_visibility: true } do
   let(:project) { create(:project) }
   let(:admin) { create(:admin) }
   let(:viewer) { create_user_with_restricted_comments_view_permissions }

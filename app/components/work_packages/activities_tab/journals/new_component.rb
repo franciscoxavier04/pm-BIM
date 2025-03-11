@@ -59,7 +59,8 @@ module WorkPackages
         end
 
         def adding_restricted_comment_allowed?
-          User.current.allowed_in_work_package?(:write_comments_with_restricted_visibility, work_package)
+          OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? &&
+            User.current.allowed_in_work_package?(:write_comments_with_restricted_visibility, work_package)
         end
       end
     end
