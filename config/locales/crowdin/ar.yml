@@ -1709,6 +1709,7 @@ ar:
     journal_notes: "Comment"
     lastname: "الاسم الأخير"
     login: "Username"
+    lock_version: "Lock version"
     mail: "البريد الإكتروني"
     name: "الاسم"
     note: "Note"
@@ -4339,7 +4340,6 @@ ar:
   nothing_to_preview: "لا شيء للمعاينة"
   api_v3:
     attributes:
-      lock_version: "قفل الإصدار"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

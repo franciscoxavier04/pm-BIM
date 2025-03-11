@@ -1629,6 +1629,7 @@ fa:
     journal_notes: "Comment"
     lastname: "نام خانوادگی"
     login: "نام كاربري"
+    lock_version: "Lock version"
     mail: "Email"
     name: "نام"
     note: "Note"
@@ -4173,7 +4174,6 @@ fa:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "قفل نگارش"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

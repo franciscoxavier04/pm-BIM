@@ -1626,6 +1626,7 @@ pt-BR:
     journal_notes: "Comment"
     lastname: "Sobrenome"
     login: "Nome de usuário"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Nome"
     note: "Nota"
@@ -4168,7 +4169,6 @@ pt-BR:
   nothing_to_preview: "Nada para visualizar"
   api_v3:
     attributes:
-      lock_version: "Bloquear versão"
       property: "Propriedade"
     errors:
       code_400: "Requisição inválida: %{message}"

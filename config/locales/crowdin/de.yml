@@ -1622,6 +1622,7 @@ de:
     journal_notes: "Kommentar"
     lastname: "Nachname"
     login: "Benutzername"
+    lock_version: "Lock version"
     mail: "E-Mail"
     name: "Name"
     note: "Anmerkung"
@@ -4165,7 +4166,6 @@ de:
   nothing_to_preview: "Keine Vorschau verfügbar"
   api_v3:
     attributes:
-      lock_version: "Version sperren"
       property: "Eigenschaft"
     errors:
       code_400: "Ungültige Anfrage: %{message}"

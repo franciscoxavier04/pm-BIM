@@ -1605,6 +1605,7 @@ zh-CN:
     journal_notes: "评论"
     lastname: "姓氏"
     login: "用户名"
+    lock_version: "Lock version"
     mail: "电子邮件"
     name: "名称"
     note: "备注"
@@ -4121,7 +4122,6 @@ zh-CN:
   nothing_to_preview: "没有什么要预览"
   api_v3:
     attributes:
-      lock_version: "锁版"
       property: "属性"
     errors:
       code_400: "错误的请求：%{message}"

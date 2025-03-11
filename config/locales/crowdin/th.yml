@@ -1609,6 +1609,7 @@ th:
     journal_notes: "Comment"
     lastname: "นามสกุล"
     login: "Username"
+    lock_version: "Lock version"
     mail: "อีเมล"
     name: "ชื่อ"
     note: "Note"
@@ -4131,7 +4132,6 @@ th:
   nothing_to_preview: "ไม่มีอะไรให้แสดงเป็นตัวอย่าง"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

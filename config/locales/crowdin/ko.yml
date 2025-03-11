@@ -1609,6 +1609,7 @@ ko:
     journal_notes: "Comment"
     lastname: "성"
     login: "사용자 이름"
+    lock_version: "Lock version"
     mail: "이메일"
     name: "이름"
     note: "메모"
@@ -4128,7 +4129,6 @@ ko:
   nothing_to_preview: "미리 볼 내용 없음"
   api_v3:
     attributes:
-      lock_version: "잠금 버전"
       property: "속성"
     errors:
       code_400: "잘못된 요청: %{message}"

@@ -94,6 +94,10 @@ RSpec.describe "Work package calendars", :js do
     expect(page)
       .to have_no_css ".fc-event-title", text: another_future_work_package.subject
 
+    # The columns are set correctly according to month view.
+    expect(page).to have_css ".fc-day-mon .fc-col-header-cell-cushion", text: "Mon"
+    expect(page).to have_css ".fc-day-tue .fc-col-header-cell-cushion", text: "Tue"
+
     filters.expect_filter_count 1
 
     filters.open

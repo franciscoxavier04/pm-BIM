@@ -1627,6 +1627,7 @@ es:
     journal_notes: "Comment"
     lastname: "Apellido"
     login: "Nombre usuario"
+    lock_version: "Lock version"
     mail: "Correo electrónico"
     name: "Nombre"
     note: "Nota"
@@ -4169,7 +4170,6 @@ es:
   nothing_to_preview: "Nada para previsualizar"
   api_v3:
     attributes:
-      lock_version: "Versión Bloqueada"
       property: "Propiedad"
     errors:
       code_400: "Solicitud errónea: %{message}"

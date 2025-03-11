@@ -1649,6 +1649,7 @@ sr:
     journal_notes: "Comment"
     lastname: "Last name"
     login: "Username"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Name"
     note: "Note"
@@ -4215,7 +4216,6 @@ sr:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

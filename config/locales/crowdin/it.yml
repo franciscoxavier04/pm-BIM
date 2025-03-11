@@ -1626,6 +1626,7 @@ it:
     journal_notes: "Comment"
     lastname: "Cognome"
     login: "Nome utente"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Nome"
     note: "Nota"
@@ -4170,7 +4171,6 @@ it:
   nothing_to_preview: "Niente in anteprima"
   api_v3:
     attributes:
-      lock_version: "Blocca Versione"
       property: "Proprietà"
     errors:
       code_400: "Richiesta non valida: %{message}"

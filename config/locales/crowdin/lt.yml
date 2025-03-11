@@ -1666,6 +1666,7 @@ lt:
     journal_notes: "Comment"
     lastname: "Pavardė"
     login: "Naudotojas"
+    lock_version: "Lock version"
     mail: "El. paštas"
     name: "Vardas"
     note: "Note"
@@ -4250,7 +4251,6 @@ lt:
   nothing_to_preview: "Nėra ką rodyti"
   api_v3:
     attributes:
-      lock_version: "Užrakto versija"
       property: "Savybė"
     errors:
       code_400: "Bloga užklausa: %{message}"

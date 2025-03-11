@@ -1667,6 +1667,7 @@ ru:
     journal_notes: "Комментарий"
     lastname: "Фамилия"
     login: "Имя пользователя"
+    lock_version: "Lock version"
     mail: "Электронная почта"
     name: "Имя"
     note: "Заметка"
@@ -4251,7 +4252,6 @@ ru:
   nothing_to_preview: "Нет ничего для предосмотра"
   api_v3:
     attributes:
-      lock_version: "Блокировать этап"
       property: "Свойство"
     errors:
       code_400: "Неверный запрос: %{message}"

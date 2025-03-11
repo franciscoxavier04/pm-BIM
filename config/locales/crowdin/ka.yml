@@ -1629,6 +1629,7 @@ ka:
     journal_notes: "Comment"
     lastname: "გვარი"
     login: "მომხმარებლის სახელი"
+    lock_version: "Lock version"
     mail: "ელფოსტა"
     name: "სახელი"
     note: "Note"
@@ -4173,7 +4174,6 @@ ka:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "ვერსიის ჩაკეტვა"
       property: "თვისება"
     errors:
       code_400: "Bad request: %{message}"

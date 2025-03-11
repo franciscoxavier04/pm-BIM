@@ -1669,6 +1669,7 @@ sk:
     journal_notes: "Comment"
     lastname: "Priezvisko"
     login: "Používateľské meno"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Názov"
     note: "Note"
@@ -4256,7 +4257,6 @@ sk:
   nothing_to_preview: "Nič na zobrazenie náhľadu"
   api_v3:
     attributes:
-      lock_version: "Uzamknúť verziu"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

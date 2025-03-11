@@ -1626,6 +1626,7 @@ ca:
     journal_notes: "Comment"
     lastname: "Cognom"
     login: "Nom d'usuari"
+    lock_version: "Lock version"
     mail: "Correu electrònic"
     name: "Nom"
     note: "Note"
@@ -4164,7 +4165,6 @@ ca:
   nothing_to_preview: "Res per previsualitzar"
   api_v3:
     attributes:
-      lock_version: "Bloquejar versió"
       property: "Propietat"
     errors:
       code_400: "Sol·licitud incorrecta: %{message}"

@@ -1664,6 +1664,7 @@ uk:
     journal_notes: "Comment"
     lastname: "Прізвище"
     login: "Ім'я користувача"
+    lock_version: "Lock version"
     mail: "Електронна пошта"
     name: "Ім’я"
     note: "Примітка"
@@ -4249,7 +4250,6 @@ uk:
   nothing_to_preview: "Нічого для перегляду"
   api_v3:
     attributes:
-      lock_version: "Версія замку"
       property: "Властивість"
     errors:
       code_400: "Поганий запит: %{message}"

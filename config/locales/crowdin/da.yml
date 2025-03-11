@@ -1627,6 +1627,7 @@ da:
     journal_notes: "Comment"
     lastname: "Efternavn"
     login: "Username"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Navn"
     note: "Note"
@@ -4169,7 +4170,6 @@ da:
   nothing_to_preview: "Intet at forhåndsvise"
   api_v3:
     attributes:
-      lock_version: "Lås version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

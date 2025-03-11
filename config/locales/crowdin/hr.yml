@@ -1649,6 +1649,7 @@ hr:
     journal_notes: "Comment"
     lastname: "Prezime"
     login: "Korisničko ime"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Naziv"
     note: "Note"
@@ -4215,7 +4216,6 @@ hr:
   nothing_to_preview: "Ne postoji zapis za pregled"
   api_v3:
     attributes:
-      lock_version: "Zaključavanje verzije"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

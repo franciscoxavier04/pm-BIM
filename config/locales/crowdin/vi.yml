@@ -1609,6 +1609,7 @@ vi:
     journal_notes: "Comment"
     lastname: "Họ"
     login: "Tên người dùng"
+    lock_version: "Lock version"
     mail: "Thư điện tử"
     name: "Tên"
     note: "Note"
@@ -4130,7 +4131,6 @@ vi:
   nothing_to_preview: "Không có gì để xem trước"
   api_v3:
     attributes:
-      lock_version: "Phiên bản khóa"
       property: "Thuộc tính"
     errors:
       code_400: "Yêu cầu không hợp lệ: %{message}"

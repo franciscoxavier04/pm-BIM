@@ -1628,6 +1628,7 @@
     journal_notes: "Comment"
     lastname: "Etternavn"
     login: "Brukernavn"
+    lock_version: "Lock version"
     mail: "E-post"
     name: "Navn"
     note: "Note"
@@ -4172,7 +4173,6 @@
   nothing_to_preview: "Ingenting å forhåndsvise"
   api_v3:
     attributes:
-      lock_version: "Låst versjon"
       property: "Egenskap"
     errors:
       code_400: "Feil forespørsel: %{message}"

@@ -1629,6 +1629,7 @@ af:
     journal_notes: "Comment"
     lastname: "Van"
     login: "Username"
+    lock_version: "Lock version"
     mail: "E-pos"
     name: "Naam"
     note: "Note"
@@ -4173,7 +4174,6 @@ af:
   nothing_to_preview: "Niks om te voorskou"
   api_v3:
     attributes:
-      lock_version: "Slot Weergawe"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

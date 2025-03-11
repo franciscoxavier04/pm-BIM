@@ -1628,6 +1628,7 @@ tr:
     journal_notes: "Yorum"
     lastname: "Soyisim"
     login: "Kullanıcı adı"
+    lock_version: "Lock version"
     mail: "Eposta"
     name: "İsim"
     note: "Not"
@@ -4169,7 +4170,6 @@ tr:
   nothing_to_preview: "Önizlenecek bir şey yok"
   api_v3:
     attributes:
-      lock_version: "Sürümü Kilitle"
       property: "Özellik"
     errors:
       code_400: "Geçersiz istek: %{message}"

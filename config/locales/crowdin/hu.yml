@@ -1628,6 +1628,7 @@ hu:
     journal_notes: "Comment"
     lastname: "Vezetéknév"
     login: "Felhasználónév"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Név"
     note: "Note"
@@ -4171,7 +4172,6 @@ hu:
   nothing_to_preview: "Nincs előnézet"
   api_v3:
     attributes:
-      lock_version: "Lezárt változat"
       property: "Property"
     errors:
       code_400: "Hibás hívás %{message}"

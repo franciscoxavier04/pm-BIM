@@ -1625,6 +1625,7 @@ nl:
     journal_notes: "Comment"
     lastname: "Achternaam"
     login: "Gebruikersnaam"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Naam"
     note: "Opmerking"
@@ -4167,7 +4168,6 @@ nl:
   nothing_to_preview: "Niets om te bekijken"
   api_v3:
     attributes:
-      lock_version: "Vergrendel versie"
       property: "Eigendom"
     errors:
       code_400: "Verkeerd verzoek: %{message}"

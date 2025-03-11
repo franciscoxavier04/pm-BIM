@@ -1629,6 +1629,7 @@ fil:
     journal_notes: "Comment"
     lastname: "Huling pangalan"
     login: "Username"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Pangalan"
     note: "Note"
@@ -4171,7 +4172,6 @@ fil:
   nothing_to_preview: "Walang mai-preview"
   api_v3:
     attributes:
-      lock_version: "Nakakandadong bersyon"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

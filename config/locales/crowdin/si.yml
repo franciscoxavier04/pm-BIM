@@ -1629,6 +1629,7 @@ si:
     journal_notes: "Comment"
     lastname: "අවසාන නම"
     login: "පරිශීලක නාමය"
+    lock_version: "Lock version"
     mail: "ඊ-තැපැල්"
     name: "නම"
     note: "Note"
@@ -4173,7 +4174,6 @@ si:
   nothing_to_preview: "පෙරදසුන් කිරීමට කිසිවක් නැත"
   api_v3:
     attributes:
-      lock_version: "අගුලු අනුවාදය"
       property: "Property"
     errors:
       code_400: "නරක ඉල්ලීම: %{message}"

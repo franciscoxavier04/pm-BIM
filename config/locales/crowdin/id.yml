@@ -1605,6 +1605,7 @@ id:
     journal_notes: "Comment"
     lastname: "Nama belakang"
     login: "Nama pengguna"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Nama"
     note: "Note"
@@ -4124,7 +4125,6 @@ id:
   nothing_to_preview: "Tidak ada pre-view"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Properti"
     errors:
       code_400: "Permintaan buruk: %{message}"

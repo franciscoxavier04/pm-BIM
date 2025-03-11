@@ -1627,6 +1627,7 @@ fr:
     journal_notes: "Comment"
     lastname: "Nom de famille"
     login: "Nom d'utilisateur"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Nom"
     note: "Note"
@@ -4170,7 +4171,6 @@ fr:
   nothing_to_preview: "Rien à afficher en apperçu"
   api_v3:
     attributes:
-      lock_version: "Version Lock"
       property: "Propriété"
     errors:
       code_400: "Mauvaise requête : %{message}"

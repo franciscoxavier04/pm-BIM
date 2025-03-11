@@ -1629,6 +1629,7 @@ eo:
     journal_notes: "Comment"
     lastname: "Familinomo"
     login: "Uzantnomo"
+    lock_version: "Lock version"
     mail: "Retpoŝto"
     name: "Nomo"
     note: "Note"
@@ -4173,7 +4174,6 @@ eo:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

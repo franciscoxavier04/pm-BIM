@@ -1607,6 +1607,7 @@ ms:
     journal_notes: "Comment"
     lastname: "Nama akhir"
     login: "Nama pengguna"
+    lock_version: "Lock version"
     mail: "E-mel"
     name: "Nama"
     note: "Nota"
@@ -4128,7 +4129,6 @@ ms:
   nothing_to_preview: "Tiada kandungan untuk dipreviu"
   api_v3:
     attributes:
-      lock_version: "Versi Terkunci "
       property: "Ciri-ciri"
     errors:
       code_400: "Ralat Permintaan: %{message}"

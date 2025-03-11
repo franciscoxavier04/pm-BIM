@@ -1625,6 +1625,7 @@ el:
     journal_notes: "Comment"
     lastname: "Επώνυμο"
     login: "Όνομα χρήστη"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Όνομα"
     note: "Note"
@@ -4167,7 +4168,6 @@ el:
   nothing_to_preview: "Δεν υπάρχει κάτι για προεπισκόπηση"
   api_v3:
     attributes:
-      lock_version: "Κλείδωμα Έκδοσης"
       property: "Property"
     errors:
       code_400: "Λάθος αίτημα: %{message}"

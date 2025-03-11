@@ -1607,6 +1607,7 @@ zh-TW:
     journal_notes: "留言"
     lastname: "姓："
     login: "使用者帳號"
+    lock_version: "Lock version"
     mail: "電子郵件"
     name: "名稱"
     note: "備註"
@@ -4127,7 +4128,6 @@ zh-TW:
   nothing_to_preview: "沒有內容可預覽"
   api_v3:
     attributes:
-      lock_version: "鎖定版本"
       property: "屬性"
     errors:
       code_400: "錯誤請求：%{message}"

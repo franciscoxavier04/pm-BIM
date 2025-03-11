@@ -1669,6 +1669,7 @@ he:
     journal_notes: "Comment"
     lastname: "שם משפחה"
     login: "Username"
+    lock_version: "Lock version"
     mail: "אימייל"
     name: "שם"
     note: "Note"
@@ -4257,7 +4258,6 @@ he:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "גרסת מנעול"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

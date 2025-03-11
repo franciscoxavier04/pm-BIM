@@ -1627,6 +1627,7 @@ hi:
     journal_notes: "Comment"
     lastname: "अंतिम नाम"
     login: "Username"
+    lock_version: "Lock version"
     mail: "ईमेल"
     name: "नाम"
     note: "Note"
@@ -4171,7 +4172,6 @@ hi:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

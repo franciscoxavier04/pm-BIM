@@ -1629,6 +1629,7 @@ fi:
     journal_notes: "Comment"
     lastname: "Sukunimi"
     login: "Käyttäjätunnus"
+    lock_version: "Lock version"
     mail: "Sähköposti"
     name: "Nimi"
     note: "Note"
@@ -4173,7 +4174,6 @@ fi:
   nothing_to_preview: "Ei esikatseltavaa"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

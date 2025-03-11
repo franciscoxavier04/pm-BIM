@@ -1668,6 +1668,7 @@ sl:
     journal_notes: "Comment"
     lastname: "Priimek"
     login: "Uporabniško ime"
+    lock_version: "Lock version"
     mail: "E-pošta"
     name: "Ime"
     note: "Note"
@@ -4255,7 +4256,6 @@ sl:
   nothing_to_preview: "Ničesar za predogled"
   api_v3:
     attributes:
-      lock_version: "Zakleni verzijo"
       property: "Property"
     errors:
       code_400: "Slaba zahteva: %{message}"

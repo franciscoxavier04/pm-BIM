@@ -1649,6 +1649,7 @@ lv:
     journal_notes: "Comment"
     lastname: "Uzvārds"
     login: "Username"
+    lock_version: "Lock version"
     mail: "E-Pasts"
     name: "Nosaukums"
     note: "Note"
@@ -4215,7 +4216,6 @@ lv:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

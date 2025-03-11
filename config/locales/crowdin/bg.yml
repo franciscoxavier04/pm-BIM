@@ -1629,6 +1629,7 @@ bg:
     journal_notes: "Comment"
     lastname: "Фамилно име"
     login: "Username"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Име"
     note: "Note"
@@ -4173,7 +4174,6 @@ bg:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

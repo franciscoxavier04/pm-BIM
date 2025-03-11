@@ -1626,6 +1626,7 @@ pt-PT:
     journal_notes: "Comment"
     lastname: "Último nome"
     login: "Nome do Utilizador"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Nome"
     note: "Nota"
@@ -4167,7 +4168,6 @@ pt-PT:
   nothing_to_preview: "Nada para Visualizar"
   api_v3:
     attributes:
-      lock_version: "Versão de bloqueio"
       property: "Propriedade"
     errors:
       code_400: "Pedido incorreto: %{message}"
