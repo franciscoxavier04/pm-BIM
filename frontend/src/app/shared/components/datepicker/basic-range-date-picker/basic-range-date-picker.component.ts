@@ -102,7 +102,22 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
     return this._value;
   }
 
-  @Input() id = `flatpickr-input-${+(new Date())}`;
+  // Having an @Input property on the id will break the turbo morphing with idiomorph.
+  // The reason is, when the component does not have an id html attribute set the
+  // call element.id will still be answered by angular.
+  // This is problematic, because the new element coming from the response template
+  // does not have angular initialized on it yet, meaning it will respond with the html
+  // id attribute or an empty string.
+  // This also means that when idiomorph compares the new elements with the old ones,
+  // the same element will have a different id set and it will not be matched. The old element
+  // will have this angular @Input id property, the new one will have the html id attribute.
+  //
+  // The solution is to not have the id as an input property, this way the angular id won't
+  // interfere when calling the html id attribute of the component. The component would still
+  // get an id attribute assigned if provided when declaring the component, but it will not
+  // programatically overwrite the id accessor from angular.
+
+  id = `flatpickr-input-${+(new Date())}`;
 
   @Input() name = '';
 
