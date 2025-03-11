@@ -69,7 +69,7 @@ With OpenProject 15.4, you can now generate nicely styled PDF files from a work 
 
 If you click the "More" menu in a work package, you previously had the "Download PDF" option which created a document that shows all important work package information, including attributes like assignee and the work package description. Now, this option is renamed to **Generate PDF** and includes many more possibilities. Clicking "Generate PDF" opens an interface where you can customize your PDF, e.g. by choosing if you want hyphenation and by entering a footer text. 
 
-Most important, you can now choose between two templates: One is **Attributes and description**, which creates a document like you were used to before 15.4. The other is **Contract**, which generates a PDF in a style of a German contract and including only the work package description:
+Most important, you can now choose between two templates: One is **Attributes and description**, which creates a document like you were used to before 15.4. The other is **Contract**, which generates a PDF in a style of a German contract and includes only the work package description:
 
 ![Screenshot: OpenProject work package, the option to Generate PDF with "Contract" selected as template](openproject-15-4-generate-pdf-template.png)
 
