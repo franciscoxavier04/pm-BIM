@@ -106,8 +106,15 @@ RSpec.describe "Work package comments with restricted visibility", :js, :with_cu
 
       activity_tab.within_journal_entry(created_comment) do
         page.find_test_selector("op-wp-journal-#{created_comment.id}-action-menu").click
+        page.find_test_selector("op-wp-journal-#{created_comment.id}-edit").click
 
-        expect(page).to have_test_selector("op-wp-journal-#{created_comment.id}-edit")
+        page.within_test_selector("op-work-package-journal-form-element") do
+          expect(page).not_to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
+          activity_tab.get_editor_form_field_element.set_value("Edited comment by member")
+          page.find_test_selector("op-submit-work-package-journal-form").click
+        end
+
+        wait_for { page }.to have_test_selector("op-journal-notes-body", text: "Edited comment by member")
       end
     end
 

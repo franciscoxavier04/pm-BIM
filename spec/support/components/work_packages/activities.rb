@@ -241,7 +241,12 @@ module Components
 
         page.within_test_selector("op-work-package-journal-form-element") do
           get_editor_form_field_element.set_value(text)
-          page.check("Restricted visibility") if restricted
+
+          if restricted
+            expect(page).to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
+            page.check("Restricted visibility")
+          end
+
           page.find_test_selector("op-submit-work-package-journal-form").click if save
         end
 

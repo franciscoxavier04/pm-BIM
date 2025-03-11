@@ -56,7 +56,7 @@
           if adding_restricted_comment_allowed?
             concat(
               flex_layout do |flex|
-                flex.with_row(mb: 3) do
+                flex.with_row(mb: 3, test_selector: "op-work-package-journal-restricted-comment-checkbox") do
                   render(WorkPackages::ActivitiesTab::Journals::RestrictedNoteForm.new(f))
                 end
               end
