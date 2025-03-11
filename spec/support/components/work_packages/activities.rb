@@ -232,7 +232,7 @@ module Components
         page.find_test_selector("op-submit-work-package-journal-form").click
       end
 
-      def add_comment(text: nil, save: true)
+      def add_comment(text: nil, save: true, restricted: false)
         if page.find_test_selector("op-open-work-package-journal-form-trigger")
           open_new_comment_editor
         else
@@ -241,6 +241,7 @@ module Components
 
         page.within_test_selector("op-work-package-journal-form-element") do
           get_editor_form_field_element.set_value(text)
+          page.check("Restricted visibility") if restricted
           page.find_test_selector("op-submit-work-package-journal-form").click if save
         end
 
