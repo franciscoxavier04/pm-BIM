@@ -69,9 +69,9 @@ class Query < ApplicationRecord
 
   scope(:global, -> { where(project_id: nil) })
 
-  def self.new_default(attributes = nil, current_user = nil)
+  def self.new_default(attributes = nil)
     new(attributes).tap do |query|
-      query.current_user = current_user
+      query.current_user = User.current
       query.add_default_filter
       query.set_default_sort
       query.show_hierarchies = true
