@@ -3,14 +3,14 @@ title: OpenProject 15.4.0
 sidebar_navigation:
     title: 15.4.0
 release_version: 15.4.0
-release_date: 2025-03-06
+release_date: 2025-03-19
 ---
 
 # OpenProject 15.4.0
 
-Release date: 2025-03-06
+Release date: 2025-03-19
 
-We released OpenProject [OpenProject 15.4.0](https://community.openproject.org/versions/2165). The release contains several bug fixes, and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.4.0](https://community.openproject.org/versions/2165). The release contains several bug fixes, and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
@@ -40,6 +40,8 @@ To learn more about how this change might help you manage your projects, please 
 #### Single date mode
 
 The date picker now supports single date mode, making it easier to set deadlines without needing a start date. Previously, all work packages (except milestones) had both a start and finish date field, even when only one was needed. Now, by default, new work packages have only a finish date, simplifying workflows for teams that don't need a date range.
+
+![Screenshot of OpenProject's single date mode on a date picker](singleDateMode_finishDateOnly.png)
 
 If you need both dates, simply click **+ Start date** or set a duration to switch back to range mode. Of course, if you want single date mode with just a Start date instead of a Finish date, this is possible too.
 
@@ -216,7 +218,6 @@ A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for s
 
 Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to René Schodder, Abhiyan Paudyal, Gunter Ohrner and Markus K..
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to highlight
-- 
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank user [greench](https://crowdin.com/profile/greench), for an outstanding number of translations into Turkish.
 
 Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!
