@@ -61,9 +61,11 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def write_query_group(group, work_package)
+    related_work_packages = group.query.results.work_packages
+    return if related_work_packages.empty?
+
     write_group_title(group)
     prepare_query_group(group, work_package)
-    related_work_packages = group.query.results.work_packages
     write_work_packages_table!(related_work_packages, group.query)
   rescue Prawn::Errors::CannotFit
     with_margin(styles.wp_markdown_label_margins) do
@@ -159,15 +161,18 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def form_config_group_to_column_entries_rows(list)
-    0.step(list.length - 1, 2).map do |i|
-      build_columns_table_cells(list[i]) +
-        build_columns_table_cells(list[i + 1])
+    nr = page_orientation_landscape? ? 4 : 2
+    0.step(list.length - 1, nr).map do |i|
+      nr.times.map do |j|
+        build_columns_table_cells(list[i + j])
+      end.flatten
     end
   end
 
   def attributes_table_column_widths
     # calculate fixed work package attribute table columns width
-    widths = [1.5, 2.0, 1.5, 2.0] # label | value | label | value
+    widths = [1.5, 2.0] # label | value
+    widths = widths * (page_orientation_landscape? ? 4 : 2)
     ratio = pdf.bounds.width / widths.sum
     widths.map { |w| w * ratio }
   end

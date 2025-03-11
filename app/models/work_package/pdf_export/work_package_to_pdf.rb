@@ -72,6 +72,10 @@ class WorkPackage::PDFExport::WorkPackageToPdf < Exports::Exporter
     options[:page_orientation] == "landscape" ? :landscape : :portrait
   end
 
+  def page_orientation_landscape?
+    @page_orientation_landscape ||= page_orientation_layout == :landscape
+  end
+
   def render_work_package
     write_title!(link: url_helpers.work_package_url(work_package))
     write_attributes! work_package

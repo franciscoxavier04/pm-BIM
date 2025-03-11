@@ -464,8 +464,6 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
       it "contains resolved attributes and labels" do
         # Joining with space for comparison since word wrapping leads to a different array for the same content
         result = pdf[:strings].join(" ")
-        puts result
-        puts expected_result
         expect(result).to eq(expected_result)
       end
     end
