@@ -1,9 +1,21 @@
+$body-height: 490px
+
 @media screen and (min-width: $breakpoint-sm)
   .wp-datepicker-dialog
+    &--content
+      max-height: calc(var(--app-height) - 2rem)
+      overflow: auto
+
     &--body
       // We set a fixed height for this dialog zo avoid that it jumps around when the tabs are switched or errors shown
-      min-height: 490px
+      min-height: $body-height
       width: 600px
+
+    &--content-tab
+      &--relation-tab
+        // Height of the body - (navBarHeight + Margins)
+        height: calc($body-height - 80px)
+        overflow: auto
 
 @media screen and (max-width: $breakpoint-sm)
   .wp-datepicker-dialog
