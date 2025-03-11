@@ -36,6 +36,8 @@ module API
           helpers ::API::V3::Queries::QueryHelper
 
           post do
+            @query.current_user = current_user
+
             # We try to ignore invalid aspects of the query as the user
             # might not even be able to fix them (public  query)
             # and because they might only be invalid in his context

@@ -51,6 +51,8 @@ class Query < ApplicationRecord
   serialize :column_names, type: Array
   serialize :sort_criteria, type: Array
 
+  attr_accessor :current_user
+
   validates :include_subprojects,
             inclusion: [true, false]
 
@@ -67,8 +69,9 @@ class Query < ApplicationRecord
 
   scope(:global, -> { where(project_id: nil) })
 
-  def self.new_default(attributes = nil)
+  def self.new_default(attributes = nil, current_user = nil)
     new(attributes).tap do |query|
+      query.current_user = current_user
       query.add_default_filter
       query.set_default_sort
       query.show_hierarchies = true
@@ -218,7 +221,7 @@ class Query < ApplicationRecord
     end
 
     @available_columns_project = project&.cache_key || 0
-    @available_columns = ::Query.available_columns(project, user)
+    @available_columns = ::Query.available_columns(project, current_user)
   end
 
   def self.available_columns(project = nil, current_user = nil)
@@ -331,10 +334,11 @@ class Query < ApplicationRecord
 
   def sort_criteria_columns
     sort_criteria
-      .map do |attribute, direction|
+      .filter_map do |attribute, direction|
         attribute = attribute.to_sym
+        col = sort_criteria_column(attribute)
 
-        [sort_criteria_column(attribute), direction]
+        [col, direction] if col
       end
   end
 
