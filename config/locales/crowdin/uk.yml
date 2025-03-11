@@ -1664,6 +1664,7 @@ uk:
     journal_notes: "Comment"
     lastname: "Прізвище"
     login: "Ім'я користувача"
+    lock_version: "Lock version"
     mail: "Електронна пошта"
     name: "Ім’я"
     note: "Примітка"
@@ -2959,6 +2960,7 @@ uk:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Верхнє меню"
   label_topic_plural: "Теми"
   label_total: "Усього"
@@ -4244,7 +4246,6 @@ uk:
   nothing_to_preview: "Нічого для перегляду"
   api_v3:
     attributes:
-      lock_version: "Версія замку"
       property: "Властивість"
     errors:
       code_400: "Поганий запит: %{message}"

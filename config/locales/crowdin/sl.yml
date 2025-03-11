@@ -1668,6 +1668,7 @@ sl:
     journal_notes: "Comment"
     lastname: "Priimek"
     login: "Uporabniško ime"
+    lock_version: "Lock version"
     mail: "E-pošta"
     name: "Ime"
     note: "Note"
@@ -2963,6 +2964,7 @@ sl:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Zgornji meni"
   label_topic_plural: "Teme"
   label_total: "Skupno"
@@ -4250,7 +4252,6 @@ sl:
   nothing_to_preview: "Ničesar za predogled"
   api_v3:
     attributes:
-      lock_version: "Zakleni verzijo"
       property: "Property"
     errors:
       code_400: "Slaba zahteva: %{message}"

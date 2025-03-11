@@ -1607,6 +1607,7 @@ ja:
     journal_notes: "Comment"
     lastname: "苗字"
     login: "ユーザー名"
+    lock_version: "Lock version"
     mail: "電子メールアドレス"
     name: "名称"
     note: "Note"
@@ -2845,6 +2846,7 @@ ja:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "トップメニュー"
   label_topic_plural: "トピック"
   label_total: "合計"
@@ -4123,7 +4125,6 @@ ja:
   nothing_to_preview: "プレビューできるものは何もありません。"
   api_v3:
     attributes:
-      lock_version: "ロックバージョン"
       property: "Property"
     errors:
       code_400: "不正なリクエスト: %{message}"

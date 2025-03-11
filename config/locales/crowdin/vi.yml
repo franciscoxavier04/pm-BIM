@@ -1609,6 +1609,7 @@ vi:
     journal_notes: "Comment"
     lastname: "Họ"
     login: "Tên người dùng"
+    lock_version: "Lock version"
     mail: "Thư điện tử"
     name: "Tên"
     note: "Note"
@@ -2847,6 +2848,7 @@ vi:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Trình đơn trên cùng"
   label_topic_plural: "Các chủ đề"
   label_total: "Tổng cộng"
@@ -4125,7 +4127,6 @@ vi:
   nothing_to_preview: "Không có gì để xem trước"
   api_v3:
     attributes:
-      lock_version: "Phiên bản khóa"
       property: "Thuộc tính"
     errors:
       code_400: "Yêu cầu không hợp lệ: %{message}"

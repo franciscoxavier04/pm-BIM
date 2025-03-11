@@ -1626,6 +1626,7 @@ ca:
     journal_notes: "Comment"
     lastname: "Cognom"
     login: "Nom d'usuari"
+    lock_version: "Lock version"
     mail: "Correu electrònic"
     name: "Nom"
     note: "Note"
@@ -2883,6 +2884,7 @@ ca:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Menú superior"
   label_topic_plural: "Temes"
   label_total: "Total"
@@ -4159,7 +4161,6 @@ ca:
   nothing_to_preview: "Res per previsualitzar"
   api_v3:
     attributes:
-      lock_version: "Bloquejar versió"
       property: "Propietat"
     errors:
       code_400: "Sol·licitud incorrecta: %{message}"

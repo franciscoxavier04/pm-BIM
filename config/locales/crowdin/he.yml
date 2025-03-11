@@ -1669,6 +1669,7 @@ he:
     journal_notes: "Comment"
     lastname: "שם משפחה"
     login: "Username"
+    lock_version: "Lock version"
     mail: "אימייל"
     name: "שם"
     note: "Note"
@@ -2964,6 +2965,7 @@ he:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Top Menu"
   label_topic_plural: "Topics"
   label_total: "סה\"כ"
@@ -4252,7 +4254,6 @@ he:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "גרסת מנעול"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

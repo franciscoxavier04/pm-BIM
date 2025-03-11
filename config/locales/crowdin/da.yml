@@ -1627,6 +1627,7 @@ da:
     journal_notes: "Comment"
     lastname: "Efternavn"
     login: "Username"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Navn"
     note: "Note"
@@ -2884,6 +2885,7 @@ da:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Topmenu"
   label_topic_plural: "Emner"
   label_total: "Total "
@@ -4164,7 +4166,6 @@ da:
   nothing_to_preview: "Intet at forhåndsvise"
   api_v3:
     attributes:
-      lock_version: "Lås version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

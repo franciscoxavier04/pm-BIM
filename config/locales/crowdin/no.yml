@@ -1628,6 +1628,7 @@
     journal_notes: "Comment"
     lastname: "Etternavn"
     login: "Brukernavn"
+    lock_version: "Lock version"
     mail: "E-post"
     name: "Navn"
     note: "Note"
@@ -2885,6 +2886,7 @@
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Toppmeny"
   label_topic_plural: "Emner"
   label_total: "Total"
@@ -4167,7 +4169,6 @@
   nothing_to_preview: "Ingenting å forhåndsvise"
   api_v3:
     attributes:
-      lock_version: "Låst versjon"
       property: "Egenskap"
     errors:
       code_400: "Feil forespørsel: %{message}"

@@ -1625,6 +1625,7 @@ nl:
     journal_notes: "Comment"
     lastname: "Achternaam"
     login: "Gebruikersnaam"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Naam"
     note: "Opmerking"
@@ -2882,6 +2883,7 @@ nl:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Hoofdmenu"
   label_topic_plural: "Onderwerpen"
   label_total: "Totaal"
@@ -4162,7 +4164,6 @@ nl:
   nothing_to_preview: "Niets om te bekijken"
   api_v3:
     attributes:
-      lock_version: "Vergrendel versie"
       property: "Eigendom"
     errors:
       code_400: "Verkeerd verzoek: %{message}"

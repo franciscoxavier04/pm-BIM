@@ -1649,6 +1649,7 @@ ro:
     journal_notes: "Comment"
     lastname: "Nume"
     login: "Utilizator"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Nume"
     note: "Note"
@@ -2925,6 +2926,7 @@ ro:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Meniul de sus"
   label_topic_plural: "Subiecte"
   label_total: "Total"
@@ -4209,7 +4211,6 @@ ro:
   nothing_to_preview: "Nimic de previzualizat"
   api_v3:
     attributes:
-      lock_version: "Blocare versiune"
       property: "Proprietate"
     errors:
       code_400: "Cerere greșită: %{message}"

@@ -1609,6 +1609,7 @@ ko:
     journal_notes: "Comment"
     lastname: "성"
     login: "사용자 이름"
+    lock_version: "Lock version"
     mail: "이메일"
     name: "이름"
     note: "메모"
@@ -2847,6 +2848,7 @@ ko:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "상단 메뉴"
   label_topic_plural: "항목"
   label_total: "합계"
@@ -4123,7 +4125,6 @@ ko:
   nothing_to_preview: "미리 볼 내용 없음"
   api_v3:
     attributes:
-      lock_version: "잠금 버전"
       property: "속성"
     errors:
       code_400: "잘못된 요청: %{message}"

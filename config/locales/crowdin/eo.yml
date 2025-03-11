@@ -1629,6 +1629,7 @@ eo:
     journal_notes: "Comment"
     lastname: "Familinomo"
     login: "Uzantnomo"
+    lock_version: "Lock version"
     mail: "Retpoŝto"
     name: "Nomo"
     note: "Note"
@@ -2886,6 +2887,7 @@ eo:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Supra menuo"
   label_topic_plural: "Temoj"
   label_total: "Totalo"
@@ -4168,7 +4170,6 @@ eo:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

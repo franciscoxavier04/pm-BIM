@@ -1666,6 +1666,7 @@ lt:
     journal_notes: "Comment"
     lastname: "Pavardė"
     login: "Naudotojas"
+    lock_version: "Lock version"
     mail: "El. paštas"
     name: "Vardas"
     note: "Note"
@@ -2961,6 +2962,7 @@ lt:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Viršutinis meniu"
   label_topic_plural: "Temos"
   label_total: "Iš viso"
@@ -4245,7 +4247,6 @@ lt:
   nothing_to_preview: "Nėra ką rodyti"
   api_v3:
     attributes:
-      lock_version: "Užrakto versija"
       property: "Savybė"
     errors:
       code_400: "Bloga užklausa: %{message}"

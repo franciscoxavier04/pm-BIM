@@ -1669,6 +1669,7 @@ sk:
     journal_notes: "Comment"
     lastname: "Priezvisko"
     login: "Používateľské meno"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Názov"
     note: "Note"
@@ -2964,6 +2965,7 @@ sk:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Horné menu"
   label_topic_plural: "Témy"
   label_total: "Dohromady"
@@ -4251,7 +4253,6 @@ sk:
   nothing_to_preview: "Nič na zobrazenie náhľadu"
   api_v3:
     attributes:
-      lock_version: "Uzamknúť verziu"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

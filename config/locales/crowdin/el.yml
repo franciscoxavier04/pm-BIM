@@ -1625,6 +1625,7 @@ el:
     journal_notes: "Comment"
     lastname: "Επώνυμο"
     login: "Όνομα χρήστη"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Όνομα"
     note: "Note"
@@ -2882,6 +2883,7 @@ el:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Επάνω μενού"
   label_topic_plural: "Θέματα"
   label_total: "Σύνολο"
@@ -4162,7 +4164,6 @@ el:
   nothing_to_preview: "Δεν υπάρχει κάτι για προεπισκόπηση"
   api_v3:
     attributes:
-      lock_version: "Κλείδωμα Έκδοσης"
       property: "Property"
     errors:
       code_400: "Λάθος αίτημα: %{message}"

@@ -321,7 +321,7 @@ tr:
         Any meeting information not in the template will be lost. Do you want to continue?
       confirm_button: "Bu toplantıyı iptal et"
     end_series_dialog:
-      title: "End meeting series"
+      title: "Toplantı serisinin sonu"
   notice_successful_notification: "Bildirim başarıyla gönderildi"
   notice_timezone_missing: Saat dilimi ayarlanmadı ve %{zone} kabul edildi. Saat dilimini seçmek için lütfen buraya tıklayın.
   notice_meeting_updated: "Bu sayfa başka biri tarafından güncellendi. Değişiklikleri görmek için yeniden yükleyin."
@@ -369,13 +369,13 @@ tr:
   label_agenda_item_undisclosed_wp: "#%{id} numaralı iş parçası görünmez"
   label_agenda_item_deleted_wp: "Silinmiş iş parçsına referans"
   label_agenda_item_actions: "Gündem maddeleri için eylemler"
-  label_agenda_item_move_to_next: "Move to next meeting"
+  label_agenda_item_move_to_next: "Sonraki toplantıya taşı"
   label_agenda_item_move_to_top: "En üste taşı"
   label_agenda_item_move_to_bottom: "En aşağı taşı"
   label_agenda_item_move_up: "Yukarı taşı"
   label_agenda_item_move_down: "Aşağı taşı"
   label_agenda_item_add_notes: "Not ekle"
-  label_agenda_item_add_outcome: "Add outcome"
+  label_agenda_item_add_outcome: "Sonuç ekle"
   label_agenda_item_work_package: "Gündem maddesinin iş parçası"
   label_agenda_outcome: "Outcome"
   label_agenda_outcome_actions: "Agenda outcome actions"

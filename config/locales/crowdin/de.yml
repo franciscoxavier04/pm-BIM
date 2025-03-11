@@ -1622,6 +1622,7 @@ de:
     journal_notes: "Kommentar"
     lastname: "Nachname"
     login: "Benutzername"
+    lock_version: "Lock version"
     mail: "E-Mail"
     name: "Name"
     note: "Anmerkung"
@@ -2879,6 +2880,7 @@ de:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Hauptmenü"
   label_topic_plural: "Themen"
   label_total: "Gesamtzahl"
@@ -4160,7 +4162,6 @@ de:
   nothing_to_preview: "Keine Vorschau verfügbar"
   api_v3:
     attributes:
-      lock_version: "Version sperren"
       property: "Eigenschaft"
     errors:
       code_400: "Ungültige Anfrage: %{message}"

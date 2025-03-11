@@ -1627,6 +1627,7 @@ es:
     journal_notes: "Comment"
     lastname: "Apellido"
     login: "Nombre usuario"
+    lock_version: "Lock version"
     mail: "Correo electrónico"
     name: "Nombre"
     note: "Nota"
@@ -2884,6 +2885,7 @@ es:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Menú superior"
   label_topic_plural: "Temas"
   label_total: "Total"
@@ -4164,7 +4166,6 @@ es:
   nothing_to_preview: "Nada para previsualizar"
   api_v3:
     attributes:
-      lock_version: "Versión Bloqueada"
       property: "Propiedad"
     errors:
       code_400: "Solicitud errónea: %{message}"

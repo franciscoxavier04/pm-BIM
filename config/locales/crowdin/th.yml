@@ -1609,6 +1609,7 @@ th:
     journal_notes: "Comment"
     lastname: "นามสกุล"
     login: "Username"
+    lock_version: "Lock version"
     mail: "อีเมล"
     name: "ชื่อ"
     note: "Note"
@@ -2847,6 +2848,7 @@ th:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "เมนูด้านบน"
   label_topic_plural: "หัวข้อ"
   label_total: "ผลรวม"
@@ -4126,7 +4128,6 @@ th:
   nothing_to_preview: "ไม่มีอะไรให้แสดงเป็นตัวอย่าง"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

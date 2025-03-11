@@ -1627,6 +1627,7 @@ hi:
     journal_notes: "Comment"
     lastname: "अंतिम नाम"
     login: "Username"
+    lock_version: "Lock version"
     mail: "ईमेल"
     name: "नाम"
     note: "Note"
@@ -2884,6 +2885,7 @@ hi:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "शीर्ष मेनू"
   label_topic_plural: "विषय"
   label_total: "कुल"
@@ -4166,7 +4168,6 @@ hi:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

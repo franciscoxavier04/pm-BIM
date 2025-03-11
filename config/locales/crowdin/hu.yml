@@ -1628,6 +1628,7 @@ hu:
     journal_notes: "Comment"
     lastname: "Vezetéknév"
     login: "Felhasználónév"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Név"
     note: "Note"
@@ -2885,6 +2886,7 @@ hu:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Felső menü"
   label_topic_plural: "Témakörök"
   label_total: "Össszesen"
@@ -4166,7 +4168,6 @@ hu:
   nothing_to_preview: "Nincs előnézet"
   api_v3:
     attributes:
-      lock_version: "Lezárt változat"
       property: "Property"
     errors:
       code_400: "Hibás hívás %{message}"

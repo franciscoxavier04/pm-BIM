@@ -633,7 +633,7 @@ ru:
         pattern:
           label: "Шаблон темы"
           caption: "Поиск атрибута или добавление текста. Чтобы создать пробел между элементами, добавьте его в виде текста."
-          insert_as_text: "Add as text: \"%{word}\""
+          insert_as_text: "Добавить как текст: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -659,33 +659,33 @@ ru:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Start date derived."
+          automatic_mobile: "Дата начала получена."
           click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
-          manual_mobile: "Ignoring relations."
+          manual_mobile: "Игнорирование отношений."
           manual_gap_between_predecessors: "There is a gap between this and all predecessors."
           manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
           manual_with_children: "This has child work packages but their start dates are ignored."
         title:
-          automatic_mobile: "Automatically scheduled."
+          automatic_mobile: "Запланировано автоматически."
           automatic_with_children: "The dates are determined by child work packages."
           automatic_with_predecessor: "The start date is set by a predecessor."
-          manual_mobile: "Manually scheduled."
+          manual_mobile: "Запланировано вручную."
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
-        title: "No predecessors"
+        title: "Нет пакетов предшественников"
         description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "Только рабочие дни"
       mode:
-        title: "Scheduling mode"
-        automatic: "Automatic"
-        manual: "Manual"
-      show_relations: "Show relations"
+        title: "Режим планирования"
+        automatic: "Автоматически"
+        manual: "Вручную"
+      show_relations: "Показать отношения"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
-        predecessors: "Predecessors"
+        children: "Дочерние пакеты работ"
+        dates: "Даты"
+        predecessors: "Предшественники"
         successors: "Successors"
         blankslate:
           predecessors:
@@ -772,7 +772,7 @@ ru:
       new_child_text: "Создает связанный пакет работ в качестве подпункта текущего (родительского) пакета работ"
       existing_child: "Существующий дочерний пакет работ"
       child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
-      label_closest: "Closest"
+      label_closest: "Ближайший"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
       blocks_description: "Связанный пакет работ не может быть закрыт до тех пор, пока не будет закрыт этот пакет"
@@ -963,46 +963,46 @@ ru:
         is_required: "Требуется для всех проектов"
         custom_field_section: Раздел
       project/life_cycle_step:
-        definition: "Definition"
+        definition: "Описание"
       project/life_cycle_step_definition:
         name: "Имя"
         color: "Цвет"
       query:
-        sums: "Sums"
-        columns: "Columns"
+        sums: "Сумма"
+        columns: "Столбцы"
         column_names: "Столбцы"
         relations_to_type_column: "Отношения к %{type}"
         relations_of_type_column: "%{type} отношения"
         group_by: "Результаты группы по"
-        sort_by: "Sort results by"
+        sort_by: "Сортировать по"
         filters: "Фильтры"
         timeline_labels: "Временные метки"
-        timeline_visible: "Show Gantt chart"
-        timeline_zoom_level: "Gantt chart zoom level"
+        timeline_visible: "Показать диаграмму Ганта"
+        timeline_zoom_level: "Масштаб диаграммы Гантта"
         timestamps: "Baseline timestamps"
-        sort_criteria: "Sort criteria"
-        highlighted_attributes: "Highlighted attributes"
-        highlighting_mode: "Highlight mode"
-        display_representation: "Display mode"
-        show_hierarchies: "Display mode"
-        starred: "Favorite"
-        hidden: "Hidden"
-        manual_sorting: "Manual sort order"
-        ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        sort_criteria: "Критерии сортировки"
+        highlighted_attributes: "Выделенные атрибуты"
+        highlighting_mode: "Режим подсветки"
+        display_representation: "Режим отображения"
+        show_hierarchies: "Режим отображения"
+        starred: "Избранное"
+        hidden: "Скрытое"
+        manual_sorting: "Ручной порядок сортировки"
+        ordered_work_packages: "Порядок пакетов работ"
+        include_subprojects: "Включить подпроекты"
+        results: "Результаты"
       relation:
         lag: "Задержка"
         from: "Связанный пакет работ"
         to: "Похожий пакет работ"
-        relation_type: "Relation type"
+        relation_type: "Тип отношения"
       reminder:
         remindable: "Reminded object"
-        remind_at: "Remind at"
+        remind_at: "Напомнить в"
         remind_at_date: "Дата"
         remind_at_time: "Время"
       reminder_notification:
-        notification: "Notification"
+        notification: "Уведомление"
       repository:
         url: "URL"
       role:
@@ -1013,7 +1013,7 @@ ru:
         excluded_from_totals: "Исключить из расчета итогов в иерархии"
         default_done_ratio: "% завершения"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Календарь"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Деятельность"
@@ -1028,11 +1028,11 @@ ru:
         is_default: "В новых проектах активируется по умолчанию"
         is_milestone: "Это веха"
         color: "Цвет"
-        patterns: "Patterns"
+        patterns: "Шаблоны"
       remote_identity:
-        auth_source: "Auth Source"
-        integration: "Integration"
-        user: "User"
+        auth_source: "Источник аутентификации"
+        integration: "Интеграция"
+        user: "Пользователь"
       user:
         admin: "Администратор"
         auth_source: "Источник аутентификации"
@@ -1042,10 +1042,10 @@ ru:
         force_password_change: "Принудительное изменение пароля при следующем входе"
         language: "Язык"
         last_login_on: "Последний вход в систему"
-        failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
-        first_login: "First login"
+        failed_login_count: "Неудачные попытки входа"
+        first_name: "Имя"
+        last_name: "Фамилия"
+        first_login: "Первый вход в систему"
         new_password: "Новый пароль"
         password_confirmation: "Подтверждение"
         consented_at: "Согласен с"
@@ -1056,8 +1056,8 @@ ru:
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
         mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
-        daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        daily_reminders: "Ежедневные напоминания"
+        workdays: "Рабочие дни"
       version:
         effective_date: "Дата окончания"
         sharing: "Совместное использование"
@@ -1416,7 +1416,7 @@ ru:
               smaller_than_dates: "меньше интервала между датой начала и датой окончания."
               not_available_for_milestones: "не доступен для пакетов работ с типом Веха."
               cannot_be_null: "не может быть нулевым, поскольку известны дата начала и дата окончания."
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "не является допустимой продолжительностью."
             parent:
               cannot_be_milestone: "не может быть вехой"
               cannot_be_self_assigned: "не может быть присвоено самому себе."
@@ -1667,32 +1667,33 @@ ru:
     journal_notes: "Комментарий"
     lastname: "Фамилия"
     login: "Имя пользователя"
+    lock_version: "Lock version"
     mail: "Электронная почта"
     name: "Имя"
     note: "Заметка"
     notes: "Примечания"
-    number: "Number"
+    number: "Номер"
     options: "Параметры"
     operator: "Оператор"
     password: "Пароль"
     priority: "Приоритет"
     project: "Проект"
     project_ids: "ID проектов"
-    reason: "Reason"
+    reason: "Причина"
     responsible: "Ответственный"
-    required: "Required"
-    recipient: "Recipient"
+    required: "Обязательно"
+    recipient: "Получатель"
     role: "Роль"
     roles: "Роли"
-    search: "Search"
+    search: "Поиск"
     start_date: "Дата начала"
     status: "Статус"
-    state: "State"
+    state: "Область"
     subject: "Тема"
     slug: "Slug"
     summary: "Сводка"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Часовой пояс"
+    text: "Текст"
     title: "Заголовок"
     type: "Тип"
     typeahead: "Autocomplete"
@@ -2962,6 +2963,7 @@ ru:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Верхнее меню"
   label_topic_plural: "Темы"
   label_total: "Всего"
@@ -4246,7 +4248,6 @@ ru:
   nothing_to_preview: "Нет ничего для предосмотра"
   api_v3:
     attributes:
-      lock_version: "Блокировать этап"
       property: "Свойство"
     errors:
       code_400: "Неверный запрос: %{message}"
@@ -4473,13 +4474,13 @@ ru:
     grid_widget_wp_graph: Grid Widget Work Package Graph
     ldap_groups: LDAP Groups
     one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
+    placeholder_users: Пользователи-заполнители
+    project_list_sharing: Совместное использование списка проектов
+    readonly_work_packages: Пакеты работ только для чтения
+    sso_auth_providers: Поставщики аутентификации SSO
+    team_planner_view: Просмотр командных планировщиков
+    two_factor_authentication: Двухфакторная аутентификация
+    virus_scanning: Сканирование вложений на вирусы
     work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation
+    work_package_sharing: Совместное использование пакета работ
+    work_package_subject_generation: Создание темы пакета работ

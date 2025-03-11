@@ -1629,6 +1629,7 @@ sv:
     journal_notes: "Comment"
     lastname: "Efternamn"
     login: "Användarnamn"
+    lock_version: "Lock version"
     mail: "E-post"
     name: "Namn"
     note: "Note"
@@ -2886,6 +2887,7 @@ sv:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Huvudmeny"
   label_topic_plural: "Ämnen"
   label_total: "Total"
@@ -4165,7 +4167,6 @@ sv:
   nothing_to_preview: "Ingenting att förhandsgranska"
   api_v3:
     attributes:
-      lock_version: "Lås version"
       property: "Property"
     errors:
       code_400: "Felaktig begäran: %{message}"

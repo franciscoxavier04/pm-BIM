@@ -1649,6 +1649,7 @@ hr:
     journal_notes: "Comment"
     lastname: "Prezime"
     login: "Korisničko ime"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Naziv"
     note: "Note"
@@ -2925,6 +2926,7 @@ hr:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Gornji izbornik"
   label_topic_plural: "Teme"
   label_total: "Ukupno"
@@ -4210,7 +4212,6 @@ hr:
   nothing_to_preview: "Ne postoji zapis za pregled"
   api_v3:
     attributes:
-      lock_version: "Zaključavanje verzije"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

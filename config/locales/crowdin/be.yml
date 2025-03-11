@@ -1669,6 +1669,7 @@ be:
     journal_notes: "Comment"
     lastname: "Прозвішча"
     login: "Username"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Імя"
     note: "Note"
@@ -2964,6 +2965,7 @@ be:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Top Menu"
   label_topic_plural: "Topics"
   label_total: "Total"
@@ -4252,7 +4254,6 @@ be:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"
