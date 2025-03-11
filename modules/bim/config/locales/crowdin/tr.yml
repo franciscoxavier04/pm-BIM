@@ -9,7 +9,7 @@ tr:
     label_bcf: 'BCF'
     label_imported_failed: 'BCF konularının başarısız ithalatı'
     label_imported_successfully: 'BCF konuları başarıyla içe aktarıldı'
-    label_bcf_issue_associated: "BCF issue associated"
+    label_bcf_issue_associated: "İlişkili BCF sorunu"
     issues: "Sorunlar"
     recommended: 'Tavsiye edilen'
     not_recommended: 'tavsiye edilmez'
@@ -23,7 +23,7 @@ tr:
       other: '%{count} BCF sorunu'
     bcf_xml:
       xml_file: 'BCF XML Dosyası'
-      import_title: 'İçeri Aktar'
+      import_title: 'İçeri aktar'
       export: 'ihracat'
       import_update_comment: '(BCF ithalatında güncellendi)'
       import_failed: 'BCF dosyası alınamıyor: %{error}'

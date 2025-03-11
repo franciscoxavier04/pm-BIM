@@ -2882,6 +2882,7 @@ nl:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Hoofdmenu"
   label_topic_plural: "Onderwerpen"
   label_total: "Totaal"

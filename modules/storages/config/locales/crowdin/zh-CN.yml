@@ -224,7 +224,7 @@ zh-CN:
       project_folders: 项目文件夹
       redirect_uri: 重定向 URI
       storage_audience: 存储受众
-      storage_audience_blank: No audience has been configured.
+      storage_audience_blank: 没有配置观众。
       storage_audience_description: 为受众 “%{audience}” 获取令牌。
       storage_audience_idp: 使用身份提供者收到的第一个访问令牌，不管受众如何。
       storage_oauth: Nextcloud OAuth
@@ -244,7 +244,7 @@ zh-CN:
         not_configured: 无法验证连接。请先完成配置。
         oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
         oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
-        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        oidc_cant_refresh_token: 尝试检查您对存储的访问时出错。请检查服务器日志以获取更多信息。
         oidc_non_oidc_user: 当前用户在预配的情况下，没有被 OpenID Connect (OIDC) 身份提供商预置。请重新运行与OIDC 预置用户的检查。
         oidc_non_provisioned_user: 当前用户并非由 OpenID Connect 身份提供商提供。请针对提供的用户重新运行检查。
         placeholder: 检查您与服务器的连接。
@@ -350,7 +350,7 @@ zh-CN:
       connected: 已连接
       connected_no_permissions: 用户角色没有存储区权限
       not_connected: 未连接。用户应通过以下 %{link} 登录到存储。
-      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
+      not_connected_sso: 尚未连接，在查看文件后SSO应自动连接。
     members_no_results: 没有要显示的成员。
     no_results: 尚未设置存储设备。
     oauth_access_granted_modal:
