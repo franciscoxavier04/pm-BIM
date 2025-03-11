@@ -131,6 +131,8 @@ module Meetings
       end
 
       def update_new_button_via_turbo_stream(disabled: false, meeting: @meeting, meeting_section: nil)
+        return unless User.current.allowed_in_project?(:manage_agendas, @meeting.project)
+
         update_via_turbo_stream(
           component: MeetingAgendaItems::NewButtonComponent.new(
             disabled:,

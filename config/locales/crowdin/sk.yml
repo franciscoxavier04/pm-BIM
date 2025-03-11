@@ -635,6 +635,7 @@ sk:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1668,6 +1669,7 @@ sk:
     journal_notes: "Comment"
     lastname: "Priezvisko"
     login: "Používateľské meno"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Názov"
     note: "Note"
@@ -2963,6 +2965,7 @@ sk:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Horné menu"
   label_topic_plural: "Témy"
   label_total: "Dohromady"
@@ -3468,6 +3471,10 @@ sk:
       project_verification: "Zadajte názov projektu %{name} pre potvrdenie odstránenia."
       subprojects_confirmation: "Podprojekt (podprojekty): %{value} budú taktiež odstránené."
       title: "Odstrániť projekt %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Členovia projektu musia presunúť projektové archívy projektu.
       warning_two: Existujúce prepojenia na projekt už nebudú fungovať.
@@ -4250,7 +4257,6 @@ sk:
   nothing_to_preview: "Nič na zobrazenie náhľadu"
   api_v3:
     attributes:
-      lock_version: "Uzamknúť verziu"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

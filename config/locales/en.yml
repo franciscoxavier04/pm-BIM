@@ -677,6 +677,7 @@ en:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1713,6 +1714,7 @@ en:
     journal_notes: "Comment"
     lastname: "Last name"
     login: "Username"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Name"
     note: "Note"
@@ -2984,6 +2986,7 @@ en:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Top Menu"
   label_topic_plural: "Topics"
   label_total: "Total"
@@ -4411,7 +4414,6 @@ en:
 
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

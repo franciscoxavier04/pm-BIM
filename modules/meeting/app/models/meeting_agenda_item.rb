@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,7 +35,7 @@ class MeetingAgendaItem < ApplicationRecord
     work_package: 1
   }.freeze
 
-  enum item_type: ITEM_TYPES
+  enum :item_type, ITEM_TYPES
 
   belongs_to :meeting, class_name: "StructuredMeeting"
   belongs_to :meeting_section, optional: false

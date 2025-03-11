@@ -607,6 +607,7 @@ id:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1604,6 +1605,7 @@ id:
     journal_notes: "Comment"
     lastname: "Nama belakang"
     login: "Nama pengguna"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Nama"
     note: "Note"
@@ -2506,7 +2508,7 @@ id:
   label_filter_add: "Tambah Filter"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Penyaring"
+  label_filter_plural: "Filter"
   label_filters_toggle: "Tampilkan/Sembunyikan penyaringan"
   label_float: "Float"
   label_folder: "Folder"
@@ -2842,6 +2844,7 @@ id:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Top Menu"
   label_topic_plural: "Topik"
   label_total: "Total"
@@ -3341,6 +3344,10 @@ id:
       project_verification: "Enter the project's name %{name} to verify the deletion."
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
@@ -4118,7 +4125,6 @@ id:
   nothing_to_preview: "Tidak ada pre-view"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Properti"
     errors:
       code_400: "Permintaan buruk: %{message}"

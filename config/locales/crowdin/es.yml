@@ -617,6 +617,7 @@ es:
         pattern:
           label: "Patrón del asunto"
           caption: "Busque un atributo o añada un texto. Para crear un espacio entre elementos, añádalo como texto."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1626,6 +1627,7 @@ es:
     journal_notes: "Comment"
     lastname: "Apellido"
     login: "Nombre usuario"
+    lock_version: "Lock version"
     mail: "Correo electrónico"
     name: "Nombre"
     note: "Nota"
@@ -2883,6 +2885,7 @@ es:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Menú superior"
   label_topic_plural: "Temas"
   label_total: "Total"
@@ -3384,6 +3387,10 @@ es:
       project_verification: "Introduzca el nombre del proyecto %{name} para confirmar la eliminación."
       subprojects_confirmation: "Los sub-proyecto(s): %{value} también serán eliminado."
       title: "Borrar el proyecto %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Los miembros del proyecto deberán migrar los repositorios del proyecto.
       warning_two: Los links al proyeto existentes dejarán de funcionar.
@@ -4163,7 +4170,6 @@ es:
   nothing_to_preview: "Nada para previsualizar"
   api_v3:
     attributes:
-      lock_version: "Versión Bloqueada"
       property: "Propiedad"
     errors:
       code_400: "Solicitud errónea: %{message}"

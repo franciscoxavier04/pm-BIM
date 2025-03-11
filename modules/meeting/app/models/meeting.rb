@@ -111,7 +111,7 @@ class Meeting < ApplicationRecord
 
   after_update :send_rescheduling_mail, if: -> { saved_change_to_start_time? || saved_change_to_duration? }
 
-  enum state: {
+  enum :state, {
     open: 0, # 0 -> default, leave values for future states between open and closed
     planned: 1,
     in_progress: 3,

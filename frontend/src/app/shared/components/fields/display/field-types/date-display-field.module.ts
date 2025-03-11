@@ -34,7 +34,7 @@ import { TimezoneService } from 'core-app/core/datetime/timezone.service';
 import {
   pinIconData,
   toDOMString,
-  zapIconData,
+  opAutoDateIconData,
 } from '@openproject/octicons-angular';
 
 export class DateDisplayField extends HighlightableDisplayField {
@@ -87,13 +87,13 @@ export class DateDisplayField extends HighlightableDisplayField {
       'small',
       { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
     );
-    const zapIconString:string = toDOMString(
-      zapIconData,
+    const autoDateIconString:string = toDOMString(
+      opAutoDateIconData,
       'small',
       { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
     );
 
-    schedulingIcon.innerHTML = this.resource.scheduleManually ? pinIconString : zapIconString;
+    schedulingIcon.innerHTML = this.resource.scheduleManually ? pinIconString : autoDateIconString;
     return schedulingIcon;
   }
 

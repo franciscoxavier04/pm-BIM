@@ -619,6 +619,7 @@ sv:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1628,6 +1629,7 @@ sv:
     journal_notes: "Comment"
     lastname: "Efternamn"
     login: "Användarnamn"
+    lock_version: "Lock version"
     mail: "E-post"
     name: "Namn"
     note: "Note"
@@ -2885,6 +2887,7 @@ sv:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Huvudmeny"
   label_topic_plural: "Ämnen"
   label_total: "Total"
@@ -3387,6 +3390,10 @@ sv:
       project_verification: "Ange projektnamn %{name} för att verifiera raderingen."
       subprojects_confirmation: "Följande delprojekt kommer också raderas: %{value}."
       title: "Radera projektet %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Projektets medlemmar kommer att vara tvungna att flytta projektetdatabaserna.
       warning_two: Befintliga länkar till projektet kommer inte att fungera längre.
@@ -4164,7 +4171,6 @@ sv:
   nothing_to_preview: "Ingenting att förhandsgranska"
   api_v3:
     attributes:
-      lock_version: "Lås version"
       property: "Property"
     errors:
       code_400: "Felaktig begäran: %{message}"

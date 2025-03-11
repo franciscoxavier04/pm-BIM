@@ -91,10 +91,18 @@ RSpec.describe RootSeeder,
 
     it "creates a weekly recurring meeting with one instance" do
       expect(RecurringMeeting.count).to eq 1
-      expect(StructuredMeeting.count).to eq 2
-      expect(StructuredMeeting.last.duration).to eq 1.0
-      expect(MeetingAgendaItem.count).to eq 9
-      expect(MeetingAgendaItem.sum(:duration_in_minutes)).to eq 60
+
+      # The template is created.
+      expect(StructuredMeeting.where(template: true).count).to eq 1
+      expect(StructuredMeeting.where(template: true).first.duration).to eq 1.0
+      expect(StructuredMeeting.where(template: true).first.agenda_items.count).to eq 9
+      expect(StructuredMeeting.where(template: true).first.agenda_items.sum(:duration_in_minutes)).to eq 60
+
+      # The first instance from that template is also created with the same data.
+      expect(StructuredMeeting.where(template: false).count).to eq 1
+      expect(StructuredMeeting.where(template: false).first.duration).to eq 1.0
+      expect(StructuredMeeting.where(template: false).first.agenda_items.count).to eq 9
+      expect(StructuredMeeting.where(template: false).first.agenda_items.sum(:duration_in_minutes)).to eq 60
     end
 
     it "creates different types of queries" do
@@ -151,6 +159,10 @@ RSpec.describe RootSeeder,
     before_all do
       with_edition("standard") do
         root_seeder.seed_data!
+
+        # Run background jobs as those are also triggered by seeding.
+        # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
+        perform_enqueued_jobs
       end
     end
 
@@ -197,6 +209,10 @@ RSpec.describe RootSeeder,
 
       with_edition("standard") do
         root_seeder.seed_data!
+
+        # Run background jobs as those are also triggered by seeding.
+        # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
+        perform_enqueued_jobs
       end
     end
 
@@ -214,6 +230,10 @@ RSpec.describe RootSeeder,
           "tr: #{original_translation}"
         end
         root_seeder.seed_data!
+
+        # Run background jobs as those are also triggered by seeding.
+        # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
+        perform_enqueued_jobs
       end
     end
 
@@ -237,6 +257,10 @@ RSpec.describe RootSeeder,
           with_edition("standard") do
             reset(:default_language) # Settings are a pain to reset
             root_seeder.seed_data!
+
+            # Run background jobs as those are also triggered by seeding.
+            # But since those background jobs retrigger themselves, don't wrap the seeding inside a block.
+            perform_enqueued_jobs
           ensure
             reset(:default_language)
           end

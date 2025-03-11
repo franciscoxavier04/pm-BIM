@@ -611,6 +611,7 @@ ko:
         pattern:
           label: "제목 패턴"
           caption: "특성을 검색하거나 텍스트를 추가하세요. 요소 사이에 공백을 넣으려면 텍스트로 추가하세요."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1608,6 +1609,7 @@ ko:
     journal_notes: "Comment"
     lastname: "성"
     login: "사용자 이름"
+    lock_version: "Lock version"
     mail: "이메일"
     name: "이름"
     note: "메모"
@@ -2846,6 +2848,7 @@ ko:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "상단 메뉴"
   label_topic_plural: "항목"
   label_total: "합계"
@@ -3345,6 +3348,10 @@ ko:
       project_verification: "삭제를 확인하려면 프로젝트 이름 %{name}(을)를 입력하세요."
       subprojects_confirmation: "하위 프로젝트 %{value}도 삭제됩니다."
       title: "프로젝트 %{name} 삭제"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: 프로젝트 멤버는 프로젝트의 리포지토리를 재배치해야 합니다.
       warning_two: 프로젝트의 기존 링크는 더 이상 작동하지 않습니다.
@@ -4122,7 +4129,6 @@ ko:
   nothing_to_preview: "미리 볼 내용 없음"
   api_v3:
     attributes:
-      lock_version: "잠금 버전"
       property: "속성"
     errors:
       code_400: "잘못된 요청: %{message}"

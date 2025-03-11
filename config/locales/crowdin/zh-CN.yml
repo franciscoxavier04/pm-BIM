@@ -79,7 +79,7 @@ zh-CN:
         text: "您确定要删除当前使用的企业版令牌吗？"
         title: "删除令牌"
       replace_token: "替换您当前的支持令牌"
-      order: "订购本地部署版的 Enterprise edition"
+      order: "订购本地部署的 Enterprise edition"
       paste: "粘贴您企业版的支持令牌"
       required_for_feature: "此功能仅限具激活的企业版支持令牌的订阅者使用。"
       enterprise_link: "如需了解详细信息，请单击此处。"
@@ -607,6 +607,7 @@ zh-CN:
         pattern:
           label: "主题模式"
           caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
+          insert_as_text: "添加文本：%{word}"
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -632,44 +633,44 @@ zh-CN:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Start date derived."
-          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
-          manual_mobile: "Ignoring relations."
-          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
-          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
-          manual_with_children: "This has child work packages but their start dates are ignored."
+          automatic_mobile: "开始日期已确定。"
+          click_on_show_relations_to_open_gantt: '点击 "%{button_name}" 查看甘特图概览。'
+          manual_mobile: "忽略关系。"
+          manual_gap_between_predecessors: "与所有前置项存在时间差。"
+          manual_overlap_with_predecessors: "与至少一个前置项重叠。"
+          manual_with_children: "有子工作包，但其开始日期被忽略。"
         title:
-          automatic_mobile: "Automatically scheduled."
-          automatic_with_children: "The dates are determined by child work packages."
-          automatic_with_predecessor: "The start date is set by a predecessor."
-          manual_mobile: "Manually scheduled."
-          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+          automatic_mobile: "自动计划。"
+          automatic_with_children: "日期由子工作包决定。"
+          automatic_with_predecessor: "起始日期由前置项设定。"
+          manual_mobile: "手动计划。"
+          manually_scheduled: "手动排定日期。不受关系影响。"
       blankslate:
-        title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+        title: "没有前置项"
+        description: "要启用自动排程，此工作包需要至少有一个前置项。 然后将自动排定在最近的前置项之后开始。"
       ignore_non_working_days:
-        title: "Working days only"
+        title: "仅工作日"
       mode:
-        title: "Scheduling mode"
-        automatic: "Automatic"
-        manual: "Manual"
-      show_relations: "Show relations"
+        title: "调度模式"
+        automatic: "自动"
+        manual: "手动"
+      show_relations: "显示关系"
       tabs:
-        aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        aria_label: "日期选择器标签"
+        children: "子项"
+        dates: "日期"
+        predecessors: "前置项"
+        successors: "后置项"
         blankslate:
           predecessors:
-            title: "No predecessors"
-            description: "This work package does not have any predecessors."
+            title: "没有前置项"
+            description: "这个工作包没有任何前置项。"
           successors:
-            title: "No successors"
-            description: "This work package does not have any successors."
+            title: "没有后置项"
+            description: "此工作包没有任何后置项。"
           children:
-            title: "No children"
-            description: "This work package does not have any children."
+            title: "没有子项"
+            description: "此工作包没有任何子项。"
     x_descendants:
       other: "%{count} 个子工作包"
     bulk:
@@ -742,7 +743,7 @@ zh-CN:
       new_child_text: "创建工作包，作为当前(父)工作包的子项"
       existing_child: "添加现有子项"
       child_description: "使相关工作包成为当前(父) 工作包的子项目"
-      label_closest: "Closest"
+      label_closest: "最近的"
       label_blocks_singular: "阻止"
       label_blocks_plural: "阻止"
       blocks_description: "在本工作包结束之前，相关工作包不能关闭"
@@ -1000,9 +1001,9 @@ zh-CN:
         color: "颜色"
         patterns: "模式"
       remote_identity:
-        auth_source: "Auth Source"
-        integration: "Integration"
-        user: "User"
+        auth_source: "认证源"
+        integration: "集成"
+        user: "用户"
       user:
         admin: "管理员"
         auth_source: "身份验证源"
@@ -1386,7 +1387,7 @@ zh-CN:
               smaller_than_dates: "小于开始日期和结束日期之间的间隔。"
               not_available_for_milestones: "不适用于里程碑类型的工作包。"
               cannot_be_null: "无法设置为 null，因为开始日期和结束日期已知。"
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "不是有效的持续时间。"
             parent:
               cannot_be_milestone: "不能是一个里程碑。"
               cannot_be_self_assigned: "不能分配给自己。"
@@ -1428,7 +1429,7 @@ zh-CN:
               query_invalid: "嵌入式查询 \"%{group}\" 无效: %{details}"
               group_without_name: "不允许未命名的组。"
             patterns:
-              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
+              invalid_tokens: "字段内的一个或多个属性无效。请在保存前修正。"
         user:
           attributes:
             base:
@@ -1604,6 +1605,7 @@ zh-CN:
     journal_notes: "评论"
     lastname: "姓氏"
     login: "用户名"
+    lock_version: "Lock version"
     mail: "电子邮件"
     name: "名称"
     note: "备注"
@@ -1628,7 +1630,7 @@ zh-CN:
     subject: "主题"
     slug: "缩写"
     summary: "摘要"
-    time_zone: "Time zone"
+    time_zone: "时区"
     text: "文本"
     title: "标题"
     type: "类型"
@@ -2203,7 +2205,7 @@ zh-CN:
         progress_calculation_adjusted: >-
           进度计算自动<a href="%{href}" target="_blank">设置为基于工时的模式，并随版本更新而调整</a>。
         scheduling_mode_adjusted: >-
-          Scheduling mode automatically adjusted with version update.
+          随版本更新自动适配调度模式。
         totals_removed_from_childless_work_packages: >-
           使用 <a href="%{href}" target="_blank">版本更新</a>的非父工作包的工作和进度总计自动移除。 这是一个维护任务，可以安全地被忽略。
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2779,7 +2781,7 @@ zh-CN:
   label_revision_id: "修订版本 %{value}"
   label_revision_plural: "修订"
   label_roadmap: "路线图"
-  label_roadmap_edit: "编辑路线图%{name}"
+  label_roadmap_edit: "编辑路线图 %{name}"
   label_roadmap_due_in: "%{value} 到期"
   label_roadmap_no_work_packages: "该版本没有工作包。"
   label_roadmap_overdue: "%{value} 超时"
@@ -2839,9 +2841,10 @@ zh-CN:
   label_title: "标题"
   label_projects_menu: "项目"
   label_today: "今天"
-  label_token_version: "Token Version"
-  label_today_as_start_date: "Select today as start date."
-  label_today_as_due_date: "Select today as finish date."
+  label_token_version: "令牌版本"
+  label_today_as_start_date: "选择今天为开始日期。"
+  label_today_as_due_date: "选择今天为结束日期。"
+  label_today_as_date: "Select today as date."
   label_top_menu: "顶部的菜单"
   label_topic_plural: "主题"
   label_total: "共"
@@ -3339,11 +3342,15 @@ zh-CN:
       project_verification: "输入项目的名称 %{name}，以确认删除。"
       subprojects_confirmation: "其 子项目(s): %{value} 也将被删除。"
       title: "删除项目 %{name}"
+    filters:
+      life_cycle_any: "生命周期：任何阶段或门"
+      life_cycle_stage: "生命周期阶段：%{stage}"
+      life_cycle_gate: "生命周期门：%{gate}"
     identifier:
       warning_one: 项目的成员将重新迁移至项目的存储库。
       warning_two: 该项目的现有链接将不再有效。
       title: 更改项目的标识符
-    not_available: "Project N/A"
+    not_available: "项目N/A"
     template:
       copying: >
         您的项目正在从选定的模板项目进行创建。一旦项目可用，您将会收到邮件通知。
@@ -3453,7 +3460,7 @@ zh-CN:
       managed: "在 OpenProject 中创建新的存储库"
     storage:
       not_available: "磁盘存储开销不可用于此存储库。"
-      update_timeout: "在 N 分钟内保留存储库最后所需的磁盘空间信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
+      update_timeout: "在 N 分钟内保留存储库最后所需磁盘空间的信息。由于计算存储库所需的磁盘空间可能增加系统开销，增加该值可以减少性能影响。"
       oauth_application_details: "关闭此窗口后，将无法再次访问客户端密钥值。请将这些值复制到 Nextcloud OpenProject 集成设置中："
       oauth_application_details_link_text: "转到设置页面"
       setup_documentation_details: "如果您在配置新文件存储方面需要帮助，请查看文档："
@@ -3481,10 +3488,10 @@ zh-CN:
     activated: "已激活"
     deactivated: "已取消激活"
   search_input_placeholder: "搜索"
-  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url: "首次登录重定向"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
-  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url: "登录后重定向"
   setting_after_login_default_redirect_url_text_html: >
     Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "跨源资源共享 (CORS)"
@@ -3621,7 +3628,7 @@ zh-CN:
   setting_session_ttl_hint: "当设置的值低于5时，其作用类似于禁用。"
   setting_session_ttl_enabled: "会话过期"
   setting_start_of_week: "一周起始日"
-  setting_sys_api_enabled: "启用存储库管理网页服务"
+  setting_sys_api_enabled: "启用版本库管理 web 服务"
   setting_sys_api_description: "存储库管理网页服务提供了集成的，用户授权的存储库访问。"
   setting_time_format: "时间"
   setting_total_percent_complete_mode: "计算 完成% 层次结构总数"
@@ -3968,7 +3975,7 @@ zh-CN:
   warning_user_limit_reached_admin: >
     添加额外的用户将超出当前限制。请<a href="%{upgrade_url}">升级您的计划</a>，以确保外部用户能够访问此实例。
   warning_user_limit_reached_instructions: >
-    您已达到用户限制（%{current}/%{max} 活跃用户）。请联系 sales@openproject.com 升级您的企业版计划以添加额外用户。
+    您达到了用户限制（%{current}/%{max}活跃用户）。 请联系sales@openproject.com以升级您的Enterprise edition计划并添加其他用户。
   warning_protocol_mismatch_html: >
 
   warning_bar:
@@ -4115,7 +4122,6 @@ zh-CN:
   nothing_to_preview: "没有什么要预览"
   api_v3:
     attributes:
-      lock_version: "锁版"
       property: "属性"
     errors:
       code_400: "错误的请求：%{message}"
@@ -4272,7 +4278,7 @@ zh-CN:
       connected: "已连接"
       error: "错误"
       failed_authorization: "授权失败"
-      not_connected: "Not connected"
+      not_connected: "未连接"
     labels:
       label_oauth_integration: "OAuth2 集成"
       label_redirect_uri: "重定向 URI"
@@ -4324,28 +4330,28 @@ zh-CN:
     name: "OmniAuth SAML / SSO单点登录"
     description: "将 OmniAuth SAML 身份提供程序添加到 OpenProject"
   enterprise_plans:
-    legacy_enterprise: "Enterprise Plan"
+    legacy_enterprise: "企业计划"
   enterprise_features:
-    baseline_comparison: Baseline Comparison
-    board_view: Board View
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
+    baseline_comparison: 基线比较
+    board_view: 看板视图
+    conditional_highlighting: 条件高亮显示
+    custom_actions: 自定义操作
+    custom_field_hierarchies: 自定义字段层次结构
+    customize_life_cycle: 自定义生命周期
+    date_alerts: 日期提醒
+    define_custom_style: 创建自定义样式
+    edit_attribute_groups: 编辑属性组
+    gantt_pdf_export: 甘特图 PDF 导出
+    grid_widget_wp_graph: 网格小组件工作包图
     ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint 文件存储
+    placeholder_users: 占位符用户
+    project_list_sharing: 项目列表共享
+    readonly_work_packages: 只读工作包
+    sso_auth_providers: SSO 认证提供商
+    team_planner_view: 团队规划视图
+    two_factor_authentication: 双重身份验证
+    virus_scanning: 附件病毒扫描
+    work_package_query_relation_columns: 工作包查询关系列
+    work_package_sharing: 工作包分享
+    work_package_subject_generation: 工作包主题生成

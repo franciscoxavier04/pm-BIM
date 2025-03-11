@@ -617,6 +617,7 @@ fr:
         pattern:
           label: "Modèle de sujet"
           caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1626,6 +1627,7 @@ fr:
     journal_notes: "Comment"
     lastname: "Nom de famille"
     login: "Nom d'utilisateur"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Nom"
     note: "Note"
@@ -2883,6 +2885,7 @@ fr:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Menu du haut"
   label_topic_plural: "Sujets"
   label_total: "Total"
@@ -3385,6 +3388,10 @@ fr:
       project_verification: "Saisissez le nom du projet %{name} pour valider la suppression."
       subprojects_confirmation: "Son(ses) sous-projet(s): %{value} sera(seront) également supprimé(s)."
       title: "Supprimer le projet %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Les membres du projet devront déplacer les répertoires du projet.
       warning_two: Les liens existants vers le projet ne fonctionneront plus.
@@ -4164,7 +4171,6 @@ fr:
   nothing_to_preview: "Rien à afficher en apperçu"
   api_v3:
     attributes:
-      lock_version: "Version Lock"
       property: "Propriété"
     errors:
       code_400: "Mauvaise requête : %{message}"

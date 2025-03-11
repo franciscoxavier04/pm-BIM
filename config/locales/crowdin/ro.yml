@@ -627,6 +627,7 @@ ro:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1648,6 +1649,7 @@ ro:
     journal_notes: "Comment"
     lastname: "Nume"
     login: "Utilizator"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Nume"
     note: "Note"
@@ -2547,7 +2549,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2601,7 +2603,7 @@ ro:
   label_generate_key: "Generare cheie"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"
@@ -2924,6 +2926,7 @@ ro:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Meniul de sus"
   label_topic_plural: "Subiecte"
   label_total: "Total"
@@ -3427,6 +3430,10 @@ ro:
       project_verification: "Completează numele proiectului %{name} spre a confirma ștergerea."
       subprojects_confirmation: "Se vor șterge și sub-proiectul/sub-proiectele: %{value}."
       title: "Ștergere proiect %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Participanții la proiect vor trebui să mute arhivele proiectului.
       warning_two: Legăturile existente la acest proiect nu vor mai funcționa.
@@ -4208,7 +4215,6 @@ ro:
   nothing_to_preview: "Nimic de previzualizat"
   api_v3:
     attributes:
-      lock_version: "Blocare versiune"
       property: "Proprietate"
     errors:
       code_400: "Cerere greșită: %{message}"

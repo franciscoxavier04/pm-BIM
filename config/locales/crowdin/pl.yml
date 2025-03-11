@@ -632,6 +632,7 @@ pl:
         pattern:
           label: "Wzorzec tematu"
           caption: "Wyszukaj atrybut lub dodaj tekst. Aby utworzyć odstęp między elementami, dodaj go jako tekst."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1115,7 +1116,7 @@ pl:
         confirmation: "nie pasuje do %{attribute}."
         could_not_be_copied: "Nie można było (w pełni) skopiować %{dependency}."
         does_not_exist: "nie istnieje."
-        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise Edition"
+        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise edition"
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
@@ -1665,6 +1666,7 @@ pl:
     journal_notes: "Comment"
     lastname: "Nazwisko"
     login: "Nazwa użytkownika"
+    lock_version: "Lock version"
     mail: "Adres e-mail"
     name: "Nazwa"
     note: "Uwaga"
@@ -2960,6 +2962,7 @@ pl:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Głowne Menu"
   label_topic_plural: "Tematy"
   label_total: "Ogółem"
@@ -3465,6 +3468,10 @@ pl:
       project_verification: "Wpisz nazwę projektu %{name} aby potwierdzić usunięcie."
       subprojects_confirmation: "Podprojekt(y): %{value} zostaną także usunięte."
       title: "Usuń projekt %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Członkowie projektu będą musieli przenieść repozytoria projektu.
       warning_two: Istniejące linki do projektu nie będą dłużej działać.
@@ -4245,7 +4252,6 @@ pl:
   nothing_to_preview: "Nie ma nic do podglądu"
   api_v3:
     attributes:
-      lock_version: "Wersja zablokowana"
       property: "Własność"
     errors:
       code_400: "Nieprawidłowe żądanie: %{message}"

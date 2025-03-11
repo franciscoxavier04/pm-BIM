@@ -189,6 +189,25 @@ RSpec.describe "Recurring meetings CRUD",
     show_page.expect_cancelled_actions date: "12/31/2024 01:30 PM"
   end
 
+  it "can edit the meeting series interval when created with working days (Regression #62089)" do
+    meeting.update!(frequency: "working_days")
+
+    show_page.visit!
+
+    show_page.edit_meeting_series
+    show_page.within_modal "Edit Meeting" do
+      page.select("Every day", from: "Frequency")
+      page.fill_in("Interval", with: "2")
+
+      sleep 0.5
+      click_link_or_button("Save")
+    end
+
+    wait_for_network_idle
+    wait_for { meeting.reload.frequency }.to eq "daily"
+    wait_for { meeting.interval }.to eq 2
+  end
+
   context "with view permissions only" do
     let(:current_user) { other_user }
 

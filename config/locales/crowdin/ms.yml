@@ -609,6 +609,7 @@ ms:
         pattern:
           label: "Corak subjek"
           caption: "Cari atribut atau tambah teks. Untuk mencipta ruang antara elemen, tambahkannya sebagai teks."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1606,6 +1607,7 @@ ms:
     journal_notes: "Comment"
     lastname: "Nama akhir"
     login: "Nama pengguna"
+    lock_version: "Lock version"
     mail: "E-mel"
     name: "Nama"
     note: "Nota"
@@ -2844,6 +2846,7 @@ ms:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Menu Teratas"
   label_topic_plural: "Topik"
   label_total: "Jumlah"
@@ -3343,6 +3346,10 @@ ms:
       project_verification: "Masukkan nama projek %{name} untuk mengesahkan pemadaman."
       subprojects_confirmation: "Subprojeknya: %{value} juga akan dipadamkan."
       title: "Padamkan projek %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Ahli projek akan perlu memindahkan semula repositori projek.
       warning_two: Pautan sedia ada pada projek tidak akan berfungsi lagi.
@@ -4122,7 +4129,6 @@ ms:
   nothing_to_preview: "Tiada kandungan untuk dipreviu"
   api_v3:
     attributes:
-      lock_version: "Versi Terkunci "
       property: "Ciri-ciri"
     errors:
       code_400: "Ralat Permintaan: %{message}"
