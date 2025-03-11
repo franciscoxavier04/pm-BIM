@@ -10,7 +10,7 @@ release_date: 2025-03-06
 
 Release date: 2025-03-06
 
-We released OpenProject [OpenProject 15.4.0](https://community.openproject.org/versions/2165). The release contains several bug fixes and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
+We released OpenProject [OpenProject 15.4.0](https://community.openproject.org/versions/2165). The release contains several bug fixes, and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
@@ -20,7 +20,7 @@ VIDEO
 
 ### Enable automatic scheduling mode - to start as soon as possible
 
-Starting with OpenProject 15.4, users will be able to choose wheather they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor/successor relations, will make managing complex project setups much easier.
+Starting with OpenProject 15.4, users will be able to choose whether they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor/successor relations, will make managing complex project setups much easier.
 
 > [!NOTE]
 > The new feature will not overwrite existing dates for any existing work packages. However, it can change the scheduling mode. By default, manual scheduling is enabled. Existing work packages with children will be in automatic mode – with dates derived from their children.
@@ -31,14 +31,14 @@ In **manual mode**, users can freely select dates and can set timelines based on
 
 In the **new automatic mode**, manually setting a start date is not possible. Instead, when a task is scheduled, the date picker automatically determines the start date based on the nearest predecessor. However, you can still define a duration, which adjusts the finish date accordingly. This ensures a reliable sequence of automatically scheduled work packages that adapt dynamically to planning changes.
 
-To learn more about why we needed this change and how it might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/blog/new-automatic-scheduling-mode/) that we published some weeks ago. See our documentation to get detailed information about how to use the automatic schedlung mode.
+To learn more about why we needed this change and how it might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/blog/new-automatic-scheduling-mode/) that we published some weeks ago. See our documentation to get detailed information about how to use the automatic scheduling mode.
 
 ### Set agenda item outcomes for meetings
 
 In February 2025, we already published a milestone for our Meetings module: [Recurring meetings](../../release-notes/15-3-0/#schedule-recurring-meetings-to-streamline-your-weekly-biweekly-or-custom-appointments). With OpenProject 15.4, we released another great new feature that will help users better manage their meeting outcomes. They can now note relevant decisions, questions and follow-up actions for each agenda item. This way, all participants as well as users that could not attend the meeting will have a documentation of the relevant meeting outcome(s).
 
 > [!NOTE]
-> In our classic meetings module, users could write "minutes", which are notes taken during the meeting. Users can still edit the agenda item description to do so, but now they can also use the outcome feature to make it more clear.
+> In our classic Meetings module, users could write "minutes", which are notes taken during the meeting. Users can still edit the agenda item description to do so, but now they can also use the outcome feature to make it more clear.
 
 The updated Meetings module now allows you to set a meeting status: 
 
@@ -55,9 +55,9 @@ Once the status is "in progress", you can add outcomes to every agenda item. If 
 
 With OpenProject 15.4, you can now generate nicely styled PDF files from a work package description. This is particularly helpful if you want to create contracts or other formal documents.
 
-If you click the "More" menu in a work package, you previsously had the "Download PDF" option which created a document that included all important work package information, including attributes like assignee and the work package description. Now, this option is renamed to **Generate PDF** and includes many more possibilities. Clicking "Generate PDF" opens an interface where you can customize your PDF, e.g. by choosing of you want hyphenation and by entering a footer text. 
+If you click the "More" menu in a work package, you previously had the "Download PDF" option which created a document that shows all important work package information, including attributes like assignee and the work package description. Now, this option is renamed to **Generate PDF** and includes many more possibilities. Clicking "Generate PDF" opens an interface where you can customize your PDF, e.g. by choosing of you want hyphenation and by entering a footer text. 
 
-Most important, you can now choose between two templates: One is **attributes and description**, which creates a document like you were used to before 15.4. The other is **contract**, which generates a PDF in a style of a German contract and including only the work package description:
+Most important, you can now choose between two templates: One is **Attributes and description**, which creates a document like you were used to before 15.4. The other is **Contract**, which generates a PDF in a style of a German contract and including only the work package description:
 
 ![Screenshot: OpenProject work package, the option to Generate PDF with "Contract" selected as template](openproject-15-4-generate-pdf-template.png)
 
@@ -65,7 +65,7 @@ Read this blog article to learn more about how this feature for automatically cr
 
 ### Better manage a large number of projects with an enhanced project lists view
 
-Improving project portfolio management is one of our focus goals for 2025. With OpenProject 15.4, users who manage a large number of projects and project attributes will benefit from feature updates regarding autocompleters in project lists:
+Improving project portfolio management is one of our focus goals for 2025. With OpenProject 15.4, users who manage many projects and project attributes will benefit from feature updates regarding autocompleters in project lists:
 
 - [Autocompleters for user custom field filter values on the project list](https://community.openproject.org/wp/60972)
 - [Autocompleters for filter values on the project list](https://community.openproject.org/wp/60521)
@@ -73,8 +73,7 @@ Improving project portfolio management is one of our focus goals for 2025. With 
 
 ### Use @-mention of user when quote replying to a comment
 
-This feature is small, but has a big impact: When a user quotes another user in the work package activity tab, the quoted user now automatically gets @-mentioned and therefore notified. This way, users won't miss information again that is clearly relevant for them.
-
+This feature seems small, but can have a big impact: When a user quotes another user in the work package activity tab, the quoted user now automatically gets @-mentioned and therefore notified. This way, users won't miss information again that is clearly relevant for them.
 
 ![Screenshot: A quoted message in the Activity tab of a work package.](openproject-15-4-mention.png)
 
