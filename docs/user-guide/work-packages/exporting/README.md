@@ -174,7 +174,7 @@ If you select **Generate PDF**, a modal will open, where you can adjust the foll
 
 - **Hyphenation** - if selected, a break line will be included into the export between word for improved layout.
 
-- **Language and hyphenation** - a dropdown menu showing languages, available for activation in OpenProject. Selected language serves as a base for hyphenation. It does not change the language used in the PDF export.
+- **Language and hyphenation** - a dropdown menu showing languages to be used for hyphenation. The selection does not change the language used in the PDF export.
 
 - **Footer text**, which is displayed in the PDF export. Footer position depends on the template. You can adjust the suggested footer text.
 
