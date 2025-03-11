@@ -71,15 +71,14 @@ export default class PatternInputController extends Controller {
   declare readonly suggestionsInitialValue:Record<string, Record<string, string>>;
   declare readonly insertAsTextTemplateValue:string;
 
-  validTokens:string[];
+  validTokenMap:Record<string, string> = {};
   currentRange:Range|undefined = undefined;
 
   connect() {
-    this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
-    this.validTokens = Object.values(this.suggestionsInitialValue)
-      .map((group) => (Object.keys(group)))
-      .reduce((acc, val) => acc.concat(val), []);
+    this.validTokenMap = Object.values(this.suggestionsInitialValue)
+      .reduce((acc, val) => ({ ...acc, ...val }), {});
 
+    this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
     this.tagInvalidTokens();
     this.clearSuggestionsFilter();
   }
@@ -255,11 +254,12 @@ export default class PatternInputController extends Controller {
   }
 
   private endsWithToken():boolean {
-    return this.contentTarget.innerHTML.endsWith('>');
+    const nodes = this.contentTarget.childNodes;
+    return this.isToken(nodes[nodes.length - 1]);
   }
 
   private startsWithToken():boolean {
-    return this.contentTarget.innerHTML.startsWith('<');
+    return this.isToken((this.contentTarget.childNodes)[0]);
   }
 
   private insertToken(tokenElement:HTMLElement) {
@@ -378,11 +378,11 @@ export default class PatternInputController extends Controller {
   }
 
   private tagInvalidTokens():void {
-    this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element) => {
-      const token = element.textContent?.trim();
-
+    this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element:HTMLElement) => {
       let exists = false;
-      this.validTokens.forEach((prop) => { if (prop === token) { exists = true; } });
+      Object.keys(this.validTokenMap).forEach((prop) => {
+        if (prop === element.dataset.prop) { exists = true; }
+      });
 
       if (exists) {
         element.classList.remove('Label--danger');
@@ -395,26 +395,34 @@ export default class PatternInputController extends Controller {
   private createToken(value:string):HTMLElement {
     const templateTarget = this.tokenTemplateTarget.content?.cloneNode(true) as HTMLElement;
     const contentElement = templateTarget.firstElementChild as HTMLElement;
-    contentElement.innerText = value;
+    contentElement.dataset.prop = value;
+    contentElement.innerText = this.validTokenMap[value];
     return contentElement;
   }
 
   private toHtml(blueprint:string):string {
-    return blueprint.replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
+    return blueprint
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
   }
 
   private toBlueprint():string {
     let result = '';
-    this.contentTarget.childNodes.forEach((node:Element) => {
+    this.contentTarget.childNodes.forEach((node:ChildNode) => {
       if (node.nodeType === Node.TEXT_NODE) {
         // Plain text node
         result += node.textContent;
-      } else if (node.nodeType === Node.ELEMENT_NODE && (node as HTMLElement).dataset.role === 'token') {
+      } else if (this.isToken(node)) {
         // Token element
-        result += `{{${node.textContent?.trim()}}}`;
+        result += `{{${(node as HTMLElement).dataset.prop}}}`;
       }
     });
     return result.trim();
+  }
+
+  private isToken(node:ChildNode):boolean {
+    return node.nodeType === Node.ELEMENT_NODE && (node as HTMLElement).dataset.role === 'token';
   }
 
   private isWhitespace(value:string):boolean {
