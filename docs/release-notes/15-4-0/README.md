@@ -20,31 +20,43 @@ VIDEO
 
 ### Enable automatic scheduling mode - to start as soon as possible
 
-Starting with OpenProject 15.4, users will be able to choose whether they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor/successor relations, will make managing complex project setups much easier.
+Starting with OpenProject 15.4, users will be able to choose whether they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor/successor relations, simplifies managing complex project setups.
 
 > [!NOTE]
 > The new feature will not overwrite existing dates for any existing work packages. However, it can change the scheduling mode. By default, manual scheduling is enabled. Existing work packages with children will be in automatic mode – with dates derived from their children.
 
 ![New scheduling modes: Automatic and Manual](manualAutomatic_schedulingModes.png)
 
-In **manual mode**, users can freely select dates and can set timelines based on specific needs, deadlines or external factors. Manually scheduled work packages behave as they did before 15.4.
+**Manual mode** is the default scheduling mode for new work packages. Users can freely select dates and can set timelines based on specific needs, deadlines or external factors. Manually scheduled work packages behave as they did before 15.4.
 
-In the **new automatic mode**, manually setting a start date is not possible. Instead, when a task is scheduled, the date picker automatically determines the start date based on the nearest predecessor. In other words: The work package starts as soon as possible, considering related work packages. However, you can still define a duration, which adjusts the finish date accordingly. This ensures a reliable sequence of automatically scheduled work packages that adapt dynamically to planning changes.
+In the **new automatic mode**, manually setting a start date is not possible. Instead, when a task is scheduled, the date picker automatically determines the start date based on the closest predecessor and optionally the specified lag to determine the miniumum number of days between two work packages. Please also note that administrators can specify which days are considered working days, and only these are taken into account when scheduling based on a lag.
 
-To learn more about why we needed this change and how it might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/blog/new-automatic-scheduling-mode/) that we published some weeks ago. See our documentation to get detailed information about how to use the automatic scheduling mode.
+In other words: In automatic mode, **the work package starts as soon as possible**, considering related work packages.
+
+However, you can still define a duration, which adjusts the finish date accordingly. This ensures a reliable sequence of automatically scheduled work packages that adapt dynamically to planning changes.
+
+To learn more about how this change might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/) that we published some weeks ago. See our documentation to get detailed information about how to use the automatic scheduling mode.
+
+#### Single date mode
+
+The date picker now supports single date mode, making it easier to set deadlines without needing a start date. Previously, all work packages (except milestones) had both a start and finish date field, even when only one was needed. Now, by default, new work packages have only a finish date, simplifying workflows for teams that don't need a date range.
+
+If you need both dates, simply click **+ Start date** or set a duration to switch back to range mode. Of course, if you want single date mode with just a Start date instead of a Finish date, this is possible too.
 
 ### Set agenda item outcomes for meetings
 
-In February 2025, we already published a milestone for our Meetings module: [Recurring meetings](../../release-notes/15-3-0/#schedule-recurring-meetings-to-streamline-your-weekly-biweekly-or-custom-appointments). With OpenProject 15.4, we released another great new feature that will help users better manage their meeting outcomes. They can now note relevant decisions, questions and follow-up actions for each agenda item. This way, all participants as well as users that could not attend the meeting will have a documentation of the relevant meeting outcome(s).
+In February 2025, we already published a milestone for our Meetings module: [Recurring meetings](../../release-notes/15-3-0/#schedule-recurring-meetings-to-streamline-your-weekly-biweekly-or-custom-appointments). With OpenProject 15.4, we released another great new feature that will help users better manage their meeting outcomes. They can now note relevant decisions, questions and follow-up actions for each agenda item. This way, all participants as well as users that could not attend the meeting will have a documentation of the relevant meeting outcome(s), displayed on each agenda item. 
+
+If you add an outcome to a work package in a meeting, this will also be displayed on the work package, if you navigate to the Meetings tab.
 
 > [!NOTE]
-> In our classic Meetings module, users could write "minutes", which are notes taken during the meeting. Users can still edit the agenda item description to do so, but now they can also use the outcome feature to make it more clear.
+> In our classic Meetings module (which we plan to remove with OpenProject 16.0), users can write "minutes", which are notes taken during the meeting. This was a feature much requested also for our recurring and one-time meetings. Now, in recurring or one-time meetings, users can still add notes to an agenda item and edit them during the meeting, but now they can also use the outcome feature to make it more clear.
 
 The updated Meetings module now allows you to set a meeting status: 
 
 ![Screenshot: OpenProject's Meetings module, setting a meeting status](openproject-15-4-meeting-status.png)
 
-Once the status is "in progress", you can add outcomes to every agenda item. If it is a recurring meeting, can also move the agenda item to the next meeting:
+Once the status is "in progress", you can add outcomes to every agenda item. If it is a recurring meeting, you can also move the agenda item to the next meeting:
 
 ![Screenshot: OpenProject's Meetings module, options for an agenda item if the meeting status is 'in progress'](openproject-15-4-meetings-outcome-highlighted.png)
 
@@ -55,7 +67,7 @@ Once the status is "in progress", you can add outcomes to every agenda item. If 
 
 With OpenProject 15.4, you can now generate nicely styled PDF files from a work package description. This is particularly helpful if you want to create contracts or other formal documents.
 
-If you click the "More" menu in a work package, you previously had the "Download PDF" option which created a document that shows all important work package information, including attributes like assignee and the work package description. Now, this option is renamed to **Generate PDF** and includes many more possibilities. Clicking "Generate PDF" opens an interface where you can customize your PDF, e.g. by choosing of you want hyphenation and by entering a footer text. 
+If you click the "More" menu in a work package, you previously had the "Download PDF" option which created a document that shows all important work package information, including attributes like assignee and the work package description. Now, this option is renamed to **Generate PDF** and includes many more possibilities. Clicking "Generate PDF" opens an interface where you can customize your PDF, e.g. by choosing if you want hyphenation and by entering a footer text. 
 
 Most important, you can now choose between two templates: One is **Attributes and description**, which creates a document like you were used to before 15.4. The other is **Contract**, which generates a PDF in a style of a German contract and including only the work package description:
 
