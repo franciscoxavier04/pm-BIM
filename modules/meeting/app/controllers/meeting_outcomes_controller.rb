@@ -70,11 +70,11 @@ class MeetingOutcomesController < ApplicationController
     if call.success?
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: @meeting_outcome, edit: false)
-      update_header_component_via_turbo_stream
     else
       render_base_error_in_flash_message_via_turbo_stream(call.errors)
-      update_all_via_turbo_stream
     end
+
+    update_all_via_turbo_stream
 
     respond_with_turbo_streams
   end
@@ -112,7 +112,6 @@ class MeetingOutcomesController < ApplicationController
     if call.success?
       render_base_outcome_component_via_turbo_stream(meeting: @meeting, meeting_agenda_item: @meeting_agenda_item,
                                                      meeting_outcome: call.result, edit: false)
-      update_header_component_via_turbo_stream
     else
       render_base_error_in_flash_message_via_turbo_stream(call.errors)
     end

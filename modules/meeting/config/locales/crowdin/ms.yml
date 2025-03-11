@@ -401,6 +401,9 @@ ms:
   text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
   text_meeting_closed_description: "Mesyuarat ini ditutup. Anda tidak boleh tambah/keluarkan item agenda lagi."
   text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
+  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
+  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
   label_meeting_manage_participants: "Urus peserta"
   label_meeting_no_participants: "Tiada peserta"
   label_meeting_show_hide_participants: "Paparkan/sembunyikan %{count} lagi"
@@ -415,6 +418,7 @@ ms:
   text_agenda_item_no_notes: "Tiada nota disediakan"
   text_agenda_item_not_editable_anymore: "Item agenda tidak boleh diedit lagi."
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
+  text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Pakej kerja ini belum lagi dijadualkan dalam agenda mesyuarat akan datang."
   text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
   text_work_package_add_to_meeting_hint: 'Guna butang "Tambah ke mesyuarat" untuk tambah pakej kerja ini ke mesyuarat akan datang.'

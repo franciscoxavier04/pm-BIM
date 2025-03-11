@@ -632,6 +632,7 @@ pl:
         pattern:
           label: "Wzorzec tematu"
           caption: "Wyszukaj atrybut lub dodaj tekst. Aby utworzyć odstęp między elementami, dodaj go jako tekst."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -671,7 +672,7 @@ pl:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -770,6 +771,7 @@ pl:
       new_child_text: "Tworzy powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
       existing_child: "Istniejący element podrzędny"
       child_description: "Ustawia powiązany pakiet roboczy jako element podrzędny bieżącego (nadrzędnego) pakietu roboczego"
+      label_closest: "Closest"
       label_blocks_singular: "blok"
       label_blocks_plural: "bloki"
       blocks_description: "Powiązany pakiet roboczy nie może zostać zamknięty, dopóki najpierw nie zostanie zamknięty ten pakiet roboczy"
@@ -930,6 +932,8 @@ pl:
         active_value:
           true: "niezarchiwizowane"
           false: "zarchiwizowane"
+        description: "Opis"
+        enabled_modules: "Enabled modules"
         identifier: "Identyfikator"
         latest_activity_at: "Ostatnia aktywność o"
         parent: "Projekt nadrzędny"
@@ -938,9 +942,7 @@ pl:
           true: "publiczne"
           false: "prywatne"
         queries: "Kwerendy"
-        enabled_modules: "Enabled modules"
         status_code: "Stan projektu"
-        description: "Opis"
         status_explanation: "Opis statusu projektu"
         status_codes:
           not_started: "Nierozpoczęte"
@@ -1664,6 +1666,7 @@ pl:
     journal_notes: "Comment"
     lastname: "Nazwisko"
     login: "Nazwa użytkownika"
+    lock_version: "Lock version"
     mail: "Adres e-mail"
     name: "Nazwa"
     note: "Uwaga"
@@ -2957,6 +2960,9 @@ pl:
   label_projects_menu: "Projekty"
   label_today: "dzisiaj"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Głowne Menu"
   label_topic_plural: "Tematy"
   label_total: "Ogółem"
@@ -3447,6 +3453,13 @@ pl:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Jesteś pewien, że chcesz zarchiwizować projekt '%{name}'?"
+      archived: "Zarchiwizowano"
+    count:
+      zero: "0 projektów"
+      one: "1 projekt"
+      other: "Liczba projektów: %{count}"
     destroy:
       confirmation: "Jeśli będziesz kontynuować, projekt %{identifier} zostanie bezpowrotnie zniszczony. Aby potwierdzić to działanie, wprowadź nazwę projektu w poniższym polu:"
       project_delete_result_1: "Usuń wszystkie powiązane dane."
@@ -3455,23 +3468,21 @@ pl:
       project_verification: "Wpisz nazwę projektu %{name} aby potwierdzić usunięcie."
       subprojects_confirmation: "Podprojekt(y): %{value} zostaną także usunięte."
       title: "Usuń projekt %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Członkowie projektu będą musieli przenieść repozytoria projektu.
       warning_two: Istniejące linki do projektu nie będą dłużej działać.
       title: Zmień identyfikator projektu
+    not_available: "Project N/A"
     template:
       copying: >
         Twój projekt jest tworzony z wybranego projektu wzorcowego. Gdy tylko projekt będzie dostępny, otrzymasz powiadomienie pocztą.
       use_template: "Użyj szablonu"
       make_template: "Ustaw jako szablon"
       remove_from_templates: "Usuń z szablonów"
-    archive:
-      are_you_sure: "Jesteś pewien, że chcesz zarchiwizować projekt '%{name}'?"
-      archived: "Zarchiwizowano"
-    count:
-      zero: "0 projektów"
-      one: "1 projekt"
-      other: "Liczba projektów: %{count}"
   project_module_activity: "Działanie"
   project_module_forums: "Fora"
   project_module_work_package_tracking: "Pakiety robocze"
@@ -4241,7 +4252,6 @@ pl:
   nothing_to_preview: "Nie ma nic do podglądu"
   api_v3:
     attributes:
-      lock_version: "Wersja zablokowana"
       property: "Własność"
     errors:
       code_400: "Nieprawidłowe żądanie: %{message}"

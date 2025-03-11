@@ -63,17 +63,23 @@ class RecurringMeeting < ApplicationRecord
   after_save :unset_schedule
   before_destroy :remove_jobs
 
-  enum frequency: {
-    daily: 0,
-    working_days: 1,
-    weekly: 2
-  }.freeze, _prefix: true, _default: "weekly"
+  enum :frequency,
+       {
+         daily: 0,
+         working_days: 1,
+         weekly: 2
+       },
+       prefix: true,
+       default: "weekly"
 
-  enum end_after: {
-    specific_date: 0,
-    iterations: 1,
-    never: 3
-  }.freeze, _prefix: true, _default: "never"
+  enum :end_after,
+       {
+         specific_date: 0,
+         iterations: 1,
+         never: 3
+       },
+       prefix: true,
+       default: "never"
 
   has_many :meetings,
            inverse_of: :recurring_meeting,
@@ -134,6 +140,11 @@ class RecurringMeeting < ApplicationRecord
     super&.in_time_zone(time_zone)
   end
 
+  def time_zone
+    time_zone_string = super || Setting.user_default_timezone.presence || "Etc/UTC"
+    ActiveSupport::TimeZone[time_zone_string]
+  end
+
   def schedule
     @schedule ||= IceCube::Schedule.new(start_time, duration: template&.duration).tap do |s|
       s.add_recurrence_rule count_rule(frequency_rule)
@@ -161,20 +172,21 @@ class RecurringMeeting < ApplicationRecord
   end
 
   def full_schedule_in_words # rubocop:disable Metrics/AbcSize
+    time = "#{format_time(start_time, time_zone:, include_date: false)} (#{friendly_timezone_name(time_zone)})"
     if has_ended?
       I18n.t("recurring_meeting.in_words.full_past",
              base: base_schedule,
-             time: format_time(start_time, include_date: false),
+             time:,
              end_date: format_date(last_occurrence))
     elsif will_end?
       I18n.t("recurring_meeting.in_words.full",
              base: base_schedule,
-             time: format_time(start_time, include_date: false),
+             time:,
              end_date: format_date(last_occurrence))
     else
       I18n.t("recurring_meeting.in_words.never_ending",
              base: base_schedule,
-             time: format_time(start_time, include_date: false))
+             time:)
     end
   end
 

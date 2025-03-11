@@ -61,7 +61,7 @@ module Storages
         namespace("forms") do
           register(:automatically_managed_folders, ::Storages::Admin::Forms::AutomaticallyManagedProjectFoldersFormComponent)
           register(:general_information, ::Storages::Admin::Forms::GeneralInfoFormComponent)
-          register(:storage_audience, ::Storages::Admin::Forms::NextcloudAudienceFormComponent)
+          register(:storage_audience, ::Storages::Admin::Forms::StorageAudienceFormComponent)
           register(:oauth_application, ::Storages::Admin::OAuthApplicationInfoCopyComponent)
           register(:oauth_client, ::Storages::Admin::Forms::OAuthClientFormComponent)
         end
@@ -70,7 +70,7 @@ module Storages
 
         register(:automatically_managed_folders, ::Storages::Admin::AutomaticallyManagedProjectFoldersInfoComponent)
         register(:general_information, ::Storages::Admin::GeneralInfoComponent)
-        register(:storage_audience, ::Storages::Admin::NextcloudAudienceInfoComponent)
+        register(:storage_audience, ::Storages::Admin::StorageAudienceInfoComponent)
         register(:oauth_application, ::Storages::Admin::OAuthApplicationInfoComponent)
         register(:oauth_client, ::Storages::Admin::OAuthClientInfoComponent)
       end

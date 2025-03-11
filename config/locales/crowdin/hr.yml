@@ -627,6 +627,7 @@ hr:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -666,7 +667,7 @@ hr:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -764,6 +765,7 @@ hr:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
+      label_closest: "Closest"
       label_blocks_singular: "blocks"
       label_blocks_plural: "blocks"
       blocks_description: "The related work package cannot be closed until this one is closed first"
@@ -924,6 +926,8 @@ hr:
         active_value:
           true: "unarchived"
           false: "arhivirano"
+        description: "Opis"
+        enabled_modules: "Enabled modules"
         identifier: "Identifikator"
         latest_activity_at: "Latest activity at"
         parent: "Potprojekt od"
@@ -932,9 +936,7 @@ hr:
           true: "public"
           false: "private"
         queries: "Upiti"
-        enabled_modules: "Enabled modules"
         status_code: "Status projekta"
-        description: "Opis"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -1647,6 +1649,7 @@ hr:
     journal_notes: "Comment"
     lastname: "Prezime"
     login: "Korisničko ime"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Naziv"
     note: "Note"
@@ -2921,6 +2924,9 @@ hr:
   label_projects_menu: "Projekti"
   label_today: "danas"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Gornji izbornik"
   label_topic_plural: "Teme"
   label_total: "Ukupno"
@@ -3410,6 +3416,13 @@ hr:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3418,23 +3431,21 @@ hr:
       project_verification: "Unesite naziv projekta %{name} za potvrdu brisanja."
       subprojects_confirmation: "Pripadajući podprojekt(i): %{value} će također biti izbrisani."
       title: "Izbriši projekt %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Članovi projekta morati će relocirati repozitorije projketa.
       warning_two: Postojeće poveznice na projektu neće više funkcionirati.
       title: Promjeni identifikator projekta
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project. You will be notified by mail as soon as the project is available.
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Aktivnost"
   project_module_forums: "Forumi"
   project_module_work_package_tracking: "Radni paketi"
@@ -4205,7 +4216,6 @@ hr:
   nothing_to_preview: "Ne postoji zapis za pregled"
   api_v3:
     attributes:
-      lock_version: "Zaključavanje verzije"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

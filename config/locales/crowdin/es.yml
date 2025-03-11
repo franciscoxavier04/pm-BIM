@@ -617,6 +617,7 @@ es:
         pattern:
           label: "Patrón del asunto"
           caption: "Busque un atributo o añada un texto. Para crear un espacio entre elementos, añádalo como texto."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -656,7 +657,7 @@ es:
           manually_scheduled: "Manually scheduled. Dates not affected by relations."
       blankslate:
         title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the last predecessor."
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
         title: "Working days only"
       mode:
@@ -753,6 +754,7 @@ es:
       new_child_text: "Crea un paquete de trabajo relacionado como un subelemento del paquete de trabajo actual (principal)"
       existing_child: "Niño existente"
       child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
+      label_closest: "Closest"
       label_blocks_singular: "bloquea"
       label_blocks_plural: "bloques"
       blocks_description: "El paquete de trabajo relacionado no puede cerrarse hasta que este se cierre primero"
@@ -913,6 +915,8 @@ es:
         active_value:
           true: "desarchivado"
           false: "archivado"
+        description: "Descripción"
+        enabled_modules: "Enabled modules"
         identifier: "Identificador"
         latest_activity_at: "Última actividad en"
         parent: "Subproyecto de"
@@ -921,9 +925,7 @@ es:
           true: "público"
           false: "privado"
         queries: "Consultas"
-        enabled_modules: "Enabled modules"
         status_code: "Estado del proyecto"
-        description: "Descripción"
         status_explanation: "Descripción del estado del proyecto"
         status_codes:
           not_started: "No iniciado"
@@ -1625,6 +1627,7 @@ es:
     journal_notes: "Comment"
     lastname: "Apellido"
     login: "Nombre usuario"
+    lock_version: "Lock version"
     mail: "Correo electrónico"
     name: "Nombre"
     note: "Nota"
@@ -2880,6 +2883,9 @@ es:
   label_projects_menu: "Proyectos"
   label_today: "hoy"
   label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Menú superior"
   label_topic_plural: "Temas"
   label_total: "Total"
@@ -3366,6 +3372,13 @@ es:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "¿Está seguro que desea archivar el proyecto '%{name}'?"
+      archived: "Archivado"
+    count:
+      zero: "0 proyectos"
+      one: "1 proyecto"
+      other: "%{count} projectos"
     destroy:
       confirmation: "Si continúas, el proyecto %{identifier} será eliminado permanentemente. Para confirmar esta acción, por favor introduce el nombre del proyecto en el campo de abajo, este será:"
       project_delete_result_1: "Eliminar todos los datos relacionados."
@@ -3374,23 +3387,21 @@ es:
       project_verification: "Introduzca el nombre del proyecto %{name} para confirmar la eliminación."
       subprojects_confirmation: "Los sub-proyecto(s): %{value} también serán eliminado."
       title: "Borrar el proyecto %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Los miembros del proyecto deberán migrar los repositorios del proyecto.
       warning_two: Los links al proyeto existentes dejarán de funcionar.
       title: Cambiar el identificador de proyecto
+    not_available: "Project N/A"
     template:
       copying: >
         Tu proyecto está siendo creado a partir de la plantilla seleccionada. Serás notificado por correo electrónico tan pronto como el proyecto esté disponible.
       use_template: "Usar plantilla"
       make_template: "Establecer como plantilla"
       remove_from_templates: "Eliminar de plantillas"
-    archive:
-      are_you_sure: "¿Está seguro que desea archivar el proyecto '%{name}'?"
-      archived: "Archivado"
-    count:
-      zero: "0 proyectos"
-      one: "1 proyecto"
-      other: "%{count} projectos"
   project_module_activity: "Actividad"
   project_module_forums: "Foros"
   project_module_work_package_tracking: "Paquetes de trabajo"
@@ -4159,7 +4170,6 @@ es:
   nothing_to_preview: "Nada para previsualizar"
   api_v3:
     attributes:
-      lock_version: "Versión Bloqueada"
       property: "Propiedad"
     errors:
       code_400: "Solicitud errónea: %{message}"

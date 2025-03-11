@@ -90,11 +90,11 @@ module Storages
 
     scope :with_audience, ->(audience) { where("provider_fields->>'storage_audience' = ?", audience) }
 
-    enum health_status: {
+    enum :health_status, {
       pending: "pending",
       healthy: "healthy",
       unhealthy: "unhealthy"
-    }.freeze, _prefix: :health
+    }, prefix: :health
 
     def self.shorten_provider_type(provider_type)
       short, = PROVIDER_TYPE_SHORT_NAMES.find { |_, long| provider_type == long }
@@ -119,13 +119,26 @@ module Storages
       end
     end
 
+    def oauth_access_granted?(user)
+      selector = Peripherals::StorageInteraction::AuthenticationMethodSelector.new(
+        storage: self,
+        user:
+      )
+      case selector.authentication_method
+      when :sso
+        true
+      when :storage_oauth
+        OAuthClientToken.exists?(user:, oauth_client:)
+      end
+    end
+
     def health_notifications_should_be_sent?
       # it is a fallback for already created storages without health_notifications_enabled configured.
       (health_notifications_enabled.nil? && automatic_management_enabled?) || health_notifications_enabled?
     end
 
     def automatically_managed?
-      ActiveSupport::Deprecation.warn(
+      ActiveSupport::Deprecation.new.warn(
         "`#automatically_managed?` is deprecated. Use `#automatic_management_enabled?` instead. " \
         "NOTE: The new method name better reflects the actual behavior of the storage. " \
         "It's not the storage that is automatically managed, rather the Project (Storage) Folder is. " \
@@ -233,10 +246,7 @@ module Storages
       ::Storages::Peripherals::Registry
         .resolve("#{self}.queries.user")
         .call(auth_strategy:, storage: self)
-        .match(
-          on_success: ->(user) { user[:id] },
-          on_failure: ->(error) { raise "UserQuery responed with #{error}" }
-        )
+        .map { |user| user[:id] } # rubocop:disable Rails/Pluck
     end
   end
 end

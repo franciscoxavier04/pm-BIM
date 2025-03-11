@@ -30,12 +30,13 @@
 
 module OpPrimer
   class StatusButtonOption # rubocop:disable OpenProject/AddPreviewForViewComponent
-    attr_reader :name, :color, :icon, :item_arguments
+    attr_reader :name, :color, :icon, :item_arguments, :description
 
-    def initialize(name:, color: nil, icon: nil, **item_arguments)
+    def initialize(name:, color: nil, icon: nil, description: nil, **item_arguments)
       @name = name
       @color = color
       @icon = icon
+      @description = description
       @item_arguments = item_arguments
     end
 

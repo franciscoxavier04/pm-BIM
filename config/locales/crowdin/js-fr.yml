@@ -719,17 +719,18 @@ fr:
       description: "Description: Cliquez pour modifier..."
       relation_description: "Cliquez pour ajouter la description pour cette relation"
     project:
-      required_outside_context: >
-        Veuillez choisir un projet pour créer le lot de travaux et voir tous les attributs. Vous pouvez seulement sélectionner des projets ayant le type ci-dessus activé.
-      context: "Contexte du projet"
-      click_to_switch_to_project: "Projet : %{projectname}"
-      confirm_template_load: "Changer de modèle rechargera la page et vous perdrez toutes les entrées de ce formulaire. Continuer ?"
-      use_template: "Utiliser le modèle"
-      no_template_selected: "(aucun)"
-      copy:
-        copy_options: "Options de copie"
       autocompleter:
         label: "Remplissage automatique du projet"
+      click_to_switch_to_project: "Projet : %{projectname}"
+      confirm_template_load: "Changer de modèle rechargera la page et vous perdrez toutes les entrées de ce formulaire. Continuer ?"
+      context: "Contexte du projet"
+      copy:
+        copy_options: "Options de copie"
+      not_available: "Project N/A"
+      no_template_selected: "(aucun)"
+      required_outside_context: >
+        Veuillez choisir un projet pour créer le lot de travaux et voir tous les attributs. Vous pouvez seulement sélectionner des projets ayant le type ci-dessus activé.
+      use_template: "Utiliser le modèle"
     reminders:
       settings:
         daily:

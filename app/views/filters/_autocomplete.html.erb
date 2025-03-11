@@ -1,4 +1,10 @@
-<div class="advanced-filters--filter-value <%= value_visibility %>">
+<%= content_tag :div,
+                class: "advanced-filters--filter-value #{value_visibility}",
+                data: {
+                  filter_autocomplete: true,
+                  filter__filters_form_target: "filterValueContainer",
+                  filter_name: filter.name
+                } do %>
   <%= angular_component_tag autocomplete_options[:component],
                             inputs: {
                               inputName: "value",
@@ -13,11 +19,6 @@
                               # the action can't be registered on the input field at the time
                               # of the #connect lifecycle hook of the filter--filters-form
                               # Stimulus controller.
-                            }.merge(autocomplete_options.except(:component)),
-                            data: {
-                              "filter-autocomplete": true,
-                              "filter--filters-form-target": "filterValueContainer",
-                              "filter-name": filter.name
-                            }
+                            }.merge(autocomplete_options.except(:component))
   %>
-</div>
+<% end %>

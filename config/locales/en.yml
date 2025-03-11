@@ -677,6 +677,7 @@ en:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -996,6 +997,8 @@ en:
         active_value:
           true: "unarchived"
           false: "archived"
+        description: "Description"
+        enabled_modules: "Enabled modules"
         identifier: "Identifier"
         latest_activity_at: "Latest activity at"
         parent: "Subproject of"
@@ -1004,9 +1007,7 @@ en:
           true: "public"
           false: "private"
         queries: "Queries"
-        enabled_modules: "Enabled modules"
         status_code: "Project status"
-        description: "Description"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -1713,6 +1714,7 @@ en:
     journal_notes: "Comment"
     lastname: "Last name"
     login: "Username"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Name"
     note: "Note"
@@ -2991,6 +2993,7 @@ en:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Top Menu"
   label_topic_plural: "Topics"
   label_total: "Total"
@@ -3492,6 +3495,13 @@ en:
     default: "-"
 
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 project"
+      other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3500,10 +3510,15 @@ en:
       project_verification: "Enter the project's name %{name} to verify the deletion."
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
       title: Change the project's identifier
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project.
@@ -3511,13 +3526,6 @@ en:
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
 
   project_module_activity: "Activity"
   project_module_forums: "Forums"
@@ -4413,7 +4421,6 @@ en:
 
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

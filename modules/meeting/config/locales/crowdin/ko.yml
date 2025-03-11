@@ -401,6 +401,9 @@ ko:
   text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
   text_meeting_closed_description: "이 미팅은 종료되었습니다. 더 이상 의제 항목을 추가/제거할 수 없습니다."
   text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
+  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
+  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
   label_meeting_manage_participants: "참가자 관리"
   label_meeting_no_participants: "참가자 없음"
   label_meeting_show_hide_participants: "%{count}개 더 표시/숨기기"
@@ -415,6 +418,7 @@ ko:
   text_agenda_item_no_notes: "제공된 메모 없음"
   text_agenda_item_not_editable_anymore: "이 의제 항목은 더 이상 편집할 수 없습니다."
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
+  text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "이 작업 패키지는 향후 미팅 의제에서 아직 예약되지 않았습니다."
   text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
   text_work_package_add_to_meeting_hint: '이 작업 패키지를 향후 미팅에 추가하려면 "미팅에 추가" 버튼을 사용하세요.'

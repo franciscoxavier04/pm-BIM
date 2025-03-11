@@ -18,6 +18,7 @@ import PreviewController from './controllers/dynamic/work-packages/date-picker/p
 import KeepScrollPositionController from './controllers/keep-scroll-position.controller';
 import PatternInputController from './controllers/pattern-input.controller';
 import HoverCardTriggerController from './controllers/hover-card-trigger.controller';
+import CkeditorFocusController from './controllers/ckeditor-focus.controller';
 
 declare global {
   interface Window {
@@ -51,3 +52,4 @@ instance.register('projects-zen-mode', OpProjectsZenModeController);
 instance.register('work-packages--date-picker--preview', PreviewController);
 instance.register('keep-scroll-position', KeepScrollPositionController);
 instance.register('pattern-input', PatternInputController);
+instance.register('ckeditor-focus', CkeditorFocusController);

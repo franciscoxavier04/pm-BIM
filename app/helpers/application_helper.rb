@@ -283,7 +283,7 @@ module ApplicationHelper
   end
 
   def theme_options_for_select
-    options = [
+    [
       [t("themes.light"), "light"],
       [t("themes.light_high_contrast"), "light_high_contrast"],
       [t("themes.dark"), "dark"]
@@ -323,6 +323,12 @@ module ApplicationHelper
     options.reverse_merge!(builder: TabularFormBuilder, html: {})
     options[:html][:class] = "form" unless options[:html].has_key?(:class)
     form_for(record, options, &)
+  end
+
+  def labelled_tabular_form_with(model: false, scope: nil, url: nil, format: nil, **options, &)
+    options.reverse_merge!(builder: TabularFormBuilder, html: {})
+    options[:html][:class] = "form" unless options[:html].has_key?(:class)
+    form_with(model:, scope:, url:, format:, **options, &)
   end
 
   def back_url_hidden_field_tag(use_referer: true)
@@ -388,7 +394,7 @@ module ApplicationHelper
   end
 
   def calendar_for(*_args)
-    ActiveSupport::Deprecation.warn(
+    ActiveSupport::Deprecation.new.warn(
       "calendar_for has been removed. Please use the opce-basic-single-date-picker angular component instead",
       caller
     )
@@ -469,8 +475,6 @@ module ApplicationHelper
 
   def password_complexity_requirements
     rules = OpenProject::Passwords::Evaluator.rules_description
-    # use 0..0, so this doesn't fail if rules is an empty string
-    rules[0] = rules[0..0].upcase
 
     s = raw "<em>" + OpenProject::Passwords::Evaluator.min_length_description + "</em>"
     s += raw "<br /><em>" + rules + "</em>" unless rules.empty?

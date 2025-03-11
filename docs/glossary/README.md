@@ -159,10 +159,6 @@ Date alerts in OpenProject are an [Enterprise add-on](#enterprise-add-on) and de
 
 In OpenProject, some features are defined as an Enterprise add-on. This means, they are not part of the [Community edition](#community-edition) and therefore not free of charge. Enterprise add-ons are available as [cloud](#cloud) or [on-premises](#on-premises) versions. You can choose from the following plans to get access to all Enterprise add-ons: Basic, Professional, Premium and Corporate. [Read more about OpenProject plans and pricing](https://www.openproject.org/pricing/).
 
-### Enumerations
-
-Enumerations in OpenProject is defined as a menu item in the admin settings that allows the configuration of Activities (for [time tracking](#time-and-costs)), [project status](#project-status) and work package priorities. [Read more about enumerations in OpenProject](../system-admin-guide/enumerations/).
-
 ### Excel synchronization
 
 Excel synchronization is an integration in OpenProject which allows you to easily import your issues from Excel to OpenProject or upload your work packages into an Excel spreadsheet. [See our video tutorials on how to work with the Excel synchronization integration](../system-admin-guide/integrations/excel-synchronization/).

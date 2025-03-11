@@ -719,17 +719,18 @@ ja:
       description: "Description: Click to edit..."
       relation_description: "クリックしてこの関係に説明を追加"
     project:
-      required_outside_context: >
-        作業パッケージを作成するプロジェクトを選択して、すべての属性を確認してください。 上記で有効になっているタイプのプロジェクトのみ選択できます。
-      context: "プロジェクトのコンテキスト"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "テンプレートを切り替えるとページが再読み込みされ、すべての入力が失われます。続行しますか？"
-      use_template: "テンプレートを使用"
-      no_template_selected: "(なし)"
-      copy:
-        copy_options: "コピーオプション"
       autocompleter:
         label: "プロジェクト名の入力補完"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "テンプレートを切り替えるとページが再読み込みされ、すべての入力が失われます。続行しますか？"
+      context: "プロジェクトのコンテキスト"
+      copy:
+        copy_options: "コピーオプション"
+      not_available: "Project N/A"
+      no_template_selected: "(なし)"
+      required_outside_context: >
+        作業パッケージを作成するプロジェクトを選択して、すべての属性を確認してください。 上記で有効になっているタイプのプロジェクトのみ選択できます。
+      use_template: "テンプレートを使用"
     reminders:
       settings:
         daily:

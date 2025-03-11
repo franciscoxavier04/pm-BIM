@@ -88,4 +88,13 @@ RSpec.describe "Work package priorities",
       end
     end
   end
+
+  describe "PUT /admin/settings/work_package_priorities/:id/move" do
+    it "moves the category to the bottom" do
+      put move_admin_settings_work_package_priority_path(priority), params: { move_to: "lowest" }, as: :turbo_stream
+
+      expect(response).to have_http_status(:ok)
+      expect(priority.reload.position).to be > other_priority.reload.position
+    end
+  end
 end

@@ -39,11 +39,6 @@ module Pages
         "/projects"
       end
 
-      def expect_listed(*users)
-        rows = page.all "td.username"
-        expect(rows.map(&:text)).to eq(users.map(&:login))
-      end
-
       def expect_projects_listed(*projects, archived: false)
         within_table do
           projects.each do |project|
@@ -182,6 +177,14 @@ module Pages
         expect(page).to have_css('[data-test-selector="filters-button-counter"]', text: count)
       end
 
+      def expect_filter_available(filter_name)
+        expect(page).to have_select("add_filter_select", with_options: [filter_name])
+      end
+
+      def expect_filter_not_available(filter_name)
+        expect(page).to have_no_select("add_filter_select", with_options: [filter_name])
+      end
+
       def expect_no_project_create_button
         expect(page).to have_no_css('[data-test-selector="project-new-button"]')
       end
@@ -278,22 +281,35 @@ module Pages
           elsif autocomplete_filter?(selected_filter)
             select(human_operator, from: "operator")
             set_autocomplete_filter(values)
-          elsif name == "created_at"
+          elsif date_filter?(selected_filter) || date_time_filter?(selected_filter)
             select(human_operator, from: "operator")
-            set_created_at_filter(human_operator, values, send_keys:)
-          elsif date_filter?(selected_filter) && human_operator == "on"
-            set_date_filter(values, send_keys)
+            wait_for_network_idle
+            set_date_filter(human_operator, values, send_keys:)
           end
         end
       end
 
-      def autocomplete_options_for(custom_field)
+      def expect_autocomplete_options_for(custom_field, options, grouping: nil, results_selector: "body")
         selected_filter = select_filter(custom_field.column_name, custom_field.name)
 
         within(selected_filter) do
           find('[data-filter-autocomplete="true"]').click
         end
-        visible_user_auto_completer_options
+
+        Array(options).each do |option|
+          expect_ng_option(selected_filter, option, grouping:, results_selector:)
+        end
+      end
+
+      def expect_user_autocomplete_options_for(custom_field, expected_options)
+        selected_filter = select_filter(custom_field.column_name, custom_field.name)
+
+        within(selected_filter) do
+          find('[data-filter-autocomplete="true"]').click
+        end
+        options = visible_user_auto_completer_options
+
+        expect(options).to eq(expected_options)
       end
 
       def apply_operator(name, human_operator)
@@ -336,7 +352,7 @@ module Pages
         end
       end
 
-      def set_created_at_filter(human_operator, values, send_keys: false)
+      def set_date_filter(human_operator, values, send_keys: false)
         case human_operator
         when "on", "less than days ago", "more than days ago", "days ago"
           if send_keys
@@ -346,7 +362,7 @@ module Pages
           end
         when "between"
           if send_keys
-            find_field("from_value").send_keysvalues.first
+            find_field("from_value").send_keys values.first
             find_field("to_value").send_keys values.second
           else
             fill_in "from_value", with: values.first
@@ -370,14 +386,6 @@ module Pages
       def set_list_filter(values)
         value_select = find('.single-select select[name="value"]')
         value_select.select values.first
-      end
-
-      def set_date_filter(values, send_keys)
-        if send_keys
-          find_field("value").send_keys values.first
-        else
-          fill_in "value", with: values.first
-        end
       end
 
       def open_filters
@@ -668,6 +676,10 @@ module Pages
 
       def date_filter?(filter)
         filter[:"data-filter-type"] == "date"
+      end
+
+      def date_time_filter?(filter)
+        filter[:"data-filter-type"] == "datetime_past"
       end
 
       def submenu

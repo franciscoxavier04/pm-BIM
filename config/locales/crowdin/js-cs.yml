@@ -720,17 +720,18 @@ cs:
       description: "Popis: Klikněte pro úpravu..."
       relation_description: "Kliknutím přidáte popis pro tento vztah"
     project:
-      required_outside_context: >
-        Vyberte projekt pro vytvoření pracovního balíčku, abyste viděli všechny atributy. Můžete vybrat pouze projekty, které mají výše uvedený typ aktivován.
-      context: "Kontext projektu"
-      click_to_switch_to_project: "Projekt: %{projectname}"
-      confirm_template_load: "Přepnutí šablony znovu načte stránku a ztratíte všechny vstupy do tohoto formuláře. Pokračovat?"
-      use_template: "Použít šablonu"
-      no_template_selected: "(Žádné)"
-      copy:
-        copy_options: "Možností kopírování"
       autocompleter:
         label: "Automatické doplňování projektu"
+      click_to_switch_to_project: "Projekt: %{projectname}"
+      confirm_template_load: "Přepnutí šablony znovu načte stránku a ztratíte všechny vstupy do tohoto formuláře. Pokračovat?"
+      context: "Kontext projektu"
+      copy:
+        copy_options: "Možností kopírování"
+      not_available: "Project N/A"
+      no_template_selected: "(Žádné)"
+      required_outside_context: >
+        Vyberte projekt pro vytvoření pracovního balíčku, abyste viděli všechny atributy. Můžete vybrat pouze projekty, které mají výše uvedený typ aktivován.
+      use_template: "Použít šablonu"
     reminders:
       settings:
         daily:

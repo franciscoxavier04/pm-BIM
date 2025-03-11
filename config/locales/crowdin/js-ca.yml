@@ -719,17 +719,18 @@ ca:
       description: "Descripció: Fes clic per editar..."
       relation_description: "Fes clic per afegir una descripció per aquesta relació"
     project:
-      required_outside_context: >
-        Si us plau, selecciona un projecte on crear el paquet de treball per a veure tots els atributs. Només pots seleccionar projectes que tinguin activat la classe indicada anteriorment.
-      context: "Context del projecte"
-      click_to_switch_to_project: "Projecte: %{projectname}"
-      confirm_template_load: "Canviar la plantilla tornarà a carregar la pàgina i perdràs totes les dades del formulari. Continuar?"
-      use_template: "Utilitzar plantilla"
-      no_template_selected: "(Cap)"
-      copy:
-        copy_options: "Opcions de còpia"
       autocompleter:
         label: "Autoemplenament del projecte"
+      click_to_switch_to_project: "Projecte: %{projectname}"
+      confirm_template_load: "Canviar la plantilla tornarà a carregar la pàgina i perdràs totes les dades del formulari. Continuar?"
+      context: "Context del projecte"
+      copy:
+        copy_options: "Opcions de còpia"
+      not_available: "Project N/A"
+      no_template_selected: "(Cap)"
+      required_outside_context: >
+        Si us plau, selecciona un projecte on crear el paquet de treball per a veure tots els atributs. Només pots seleccionar projectes que tinguin activat la classe indicada anteriorment.
+      use_template: "Utilitzar plantilla"
     reminders:
       settings:
         daily:

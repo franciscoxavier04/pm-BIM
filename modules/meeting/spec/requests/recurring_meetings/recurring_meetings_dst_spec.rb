@@ -74,7 +74,8 @@ RSpec.describe "Recurring meetings show DST",
     it "shows a stable 10AM schedule time" do
       request
 
-      expect(page).to have_text "Every week on Wednesday at 10:00 AM, ends on 05/07/2025"
+      timezone = friendly_timezone_name(berlin_user.time_zone)
+      expect(page).to have_text "Every week on Wednesday at 10:00 AM (#{timezone}), ends on 05/07/2025"
       expect(page).to have_text "March 5, 2025 10:00"
       expect(page).to have_text "March 12, 2025 10:00"
       expect(page).to have_text "March 19, 2025 10:00"
@@ -86,10 +87,11 @@ RSpec.describe "Recurring meetings show DST",
   context "with tokyo user that doesn't have DST" do
     let(:current_user) { tokyo_user }
 
-    it "changes times according to the CET DST" do
+    it "changes times according to the CET DST, but keeps the heading" do
       request
 
-      expect(page).to have_text "Every week on Wednesday at 06:00 PM, ends on 05/07/2025"
+      timezone = friendly_timezone_name(berlin_user.time_zone)
+      expect(page).to have_text "Every week on Wednesday at 10:00 AM (#{timezone}), ends on 05/07/2025"
       expect(page).to have_text "March 5, 2025 18:00"
       expect(page).to have_text "March 12, 2025 18:00"
       expect(page).to have_text "March 19, 2025 18:00"
