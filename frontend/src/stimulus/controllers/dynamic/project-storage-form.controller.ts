@@ -47,6 +47,7 @@ import { OpenProjectPluginContext } from 'core-app/features/plugins/plugin-conte
 import {
   LocationPickerModalComponent,
 } from 'core-app/shared/components/storages/location-picker-modal/location-picker-modal.component';
+import { PortalOutletTarget } from 'core-app/shared/components/modal/portal-outlet-target.enum';
 import { storageConnected } from 'core-app/shared/components/storages/storages-constants.const';
 
 export default class ProjectStorageFormController extends Controller {
@@ -102,7 +103,8 @@ export default class ProjectStorageFormController extends Controller {
 
     this.pluginContext.subscribe((context) => {
       context.runInZone(() => {
-        context.services.opModalService.show(LocationPickerModalComponent, 'global', locals)
+        context.services.opModalService
+          .show(LocationPickerModalComponent, 'global', locals, false, false, this.OutletTarget)
           .pipe(
             switchMap((modal) => modal.closingEvent),
             filter((modal) => modal.submitted),
@@ -147,6 +149,10 @@ export default class ProjectStorageFormController extends Controller {
 
   protected get pluginContext():Observable<OpenProjectPluginContext> {
     return from(window.OpenProject.getPluginContext());
+  }
+
+  protected get OutletTarget():PortalOutletTarget {
+    return PortalOutletTarget.Default;
   }
 
   protected get storage():IStorage {
