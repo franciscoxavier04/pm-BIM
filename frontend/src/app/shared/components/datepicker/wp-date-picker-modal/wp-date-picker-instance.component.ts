@@ -134,11 +134,17 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
       this.datePickerInstance.setDates(details.dates);
       this.datePickerInstance.datepickerInstance.changeMonth(currentMonth, false);
     }
+
     this.datePickerInstance.setOption('mode', details.mode);
 
     if (this.ignoreNonWorkingDays !== details.ignoreNonWorkingDays) {
       this.ignoreNonWorkingDays = details.ignoreNonWorkingDays;
       this.datePickerInstance.datepickerInstance.redraw();
+    }
+
+    // If both dates are set, we want to see the selection state
+    if (details.dates.length === 2) {
+      this.allowHoverFor(this.datePickerInstance.datepickerInstance.calendarContainer);
     }
   }
 
@@ -215,13 +221,21 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
       .pipe(
         this.untilDestroyed(),
       )
-      .subscribe(() => calendarContainer.classList.remove('flatpickr-container-suppress-hover'));
+      .subscribe(() => this.allowHoverFor(calendarContainer));
 
     fromEvent(calendarContainer, 'mouseleave')
       .pipe(
         this.untilDestroyed(),
         filter(() => !(!!this.startDateValue && !!this.dueDateValue)),
       )
-      .subscribe(() => calendarContainer.classList.add('flatpickr-container-suppress-hover'));
+      .subscribe(() => this.suppressHoverFor(calendarContainer));
+  }
+
+  private suppressHoverFor(el:HTMLElement) {
+    el.classList.add('flatpickr-container-suppress-hover');
+  }
+
+  private allowHoverFor(el:HTMLElement) {
+    el.classList.remove('flatpickr-container-suppress-hover');
   }
 }
