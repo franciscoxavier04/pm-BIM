@@ -163,7 +163,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   def form_config_group_to_column_entries_rows(list)
     nr = page_orientation_landscape? ? 4 : 2
     0.step(list.length - 1, nr).map do |i|
-      nr.times.map do |j|
+      Array.new(nr).each_with_index.map do |_, j|
         build_columns_table_cells(list[i + j])
       end.flatten
     end
