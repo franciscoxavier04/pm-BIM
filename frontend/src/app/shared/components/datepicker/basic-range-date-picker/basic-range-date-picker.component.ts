@@ -137,13 +137,11 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
     readonly cdRef:ChangeDetectorRef,
     readonly elementRef:ElementRef,
     readonly deviceService:DeviceService,
-  ) {}
+  ) {
+    populateInputsFromDataset(this);
+  }
 
   ngOnInit() {
-    // The populateInputsFromDataset function is called here and not in the constructor as this way,
-    // the inputs are filled in the last possible moment. This prevents the id attribute on the angular element from being
-    // used as the input instead of what is set in the dataset.
-    populateInputsFromDataset(this);
     this.mobile = this.deviceService.isMobile;
   }
 

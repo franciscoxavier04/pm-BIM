@@ -44,7 +44,7 @@ module Projects::LifeCycles
       end
     end
 
-    def field_id
+    def qa_field_name
       "life-cycle-step-#{model.id}"
     end
 
@@ -54,14 +54,10 @@ module Projects::LifeCycles
         leading_visual: { icon: :calendar },
         datepicker_options: {
           inDialog: ProjectLifeCycles::Sections::EditDialogComponent::DIALOG_ID,
-          data: { action: "change->overview--project-life-cycles-form#previewForm" },
-          # An id is required on the angular dom element to have the turbo morphing identify
-          # the custom dom uniquely when updating the form. Otherwise, there will be two fields
-          # after the first update.
-          component_id: field_id
+          data: { action: "change->overview--project-life-cycles-form#previewForm" }
         },
         wrapper_data_attributes: {
-          "qa-field-name": field_id
+          "qa-field-name": qa_field_name
         }
       }
     end
