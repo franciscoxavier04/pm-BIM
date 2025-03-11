@@ -160,7 +160,7 @@ module OpenProject
 
     def self.mysql?(_arg = nil)
       message = ".mysql? is no longer supported and will always return false. Remove the call."
-      ActiveSupport::Deprecation.new.warn message, caller
+      ActiveSupport::Deprecation.new.warn message, caller_locations
       false
     end
 
