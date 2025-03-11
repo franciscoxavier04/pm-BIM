@@ -313,25 +313,29 @@ Rails.application.reloader.to_prepare do
                      {},
                      permissible_on: %i[work_package project],
                      require: :loggedin,
-                     dependencies: :view_work_packages
+                     dependencies: :view_work_packages,
+                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
       wpt.permission :write_comments_with_restricted_visibility,
                      {},
                      permissible_on: %i[work_package project],
                      require: :loggedin,
-                     dependencies: :view_work_packages
+                     dependencies: :view_work_packages,
+                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
       wpt.permission :edit_own_comments_with_restricted_visibility,
                      {},
                      permissible_on: %i[work_package project],
                      require: :loggedin,
-                     dependencies: :view_work_packages
+                     dependencies: :view_work_packages,
+                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
       wpt.permission :edit_others_comments_with_restricted_visibility,
                      {},
                      permissible_on: %i[work_package project],
                      require: :loggedin,
-                     dependencies: :view_work_packages
+                     dependencies: :view_work_packages,
+                     visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
       # WP attachments can be added with :edit_work_packages, this permission allows it without Edit WP as well.
       wpt.permission :add_work_package_attachments,
