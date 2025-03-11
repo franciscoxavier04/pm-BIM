@@ -43,10 +43,6 @@ export default class RestrictedCommentController extends Controller {
   }
 
   toggleBackgroundColor():void {
-    if (this.restrictedCheckboxTarget.checked) {
-      this.formContainerTarget.classList.add(this.highlightClass);
-    } else {
-      this.formContainerTarget.classList.remove(this.highlightClass);
-    }
+    this.formContainerTarget.classList.toggle(this.highlightClass);
   }
 }
