@@ -343,9 +343,6 @@ RSpec.describe Query,
       end
 
       it "does call the db if the project changes" do
-        relation_stub = double
-        allow(relation_stub).to receive(:visible_by_user).and_return([])
-
         query.project = project
 
         query.displayable_columns
@@ -354,7 +351,7 @@ RSpec.describe Query,
 
         expect(project2)
           .to receive(:all_work_package_custom_fields)
-          .and_return relation_stub
+          .and_return []
 
         expect(project2)
           .to receive(:types)
@@ -364,9 +361,6 @@ RSpec.describe Query,
       end
 
       it "does call the db if the project changes to nil" do
-        relation_stub = double
-        allow(relation_stub).to receive(:visible_by_user).and_return([])
-
         query.project = project
 
         query.displayable_columns
@@ -375,7 +369,7 @@ RSpec.describe Query,
 
         expect(WorkPackageCustomField)
           .to receive(:all)
-          .and_return relation_stub
+          .and_return []
 
         expect(Type)
           .to receive(:all)
