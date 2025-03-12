@@ -170,7 +170,7 @@ RSpec.describe "Emoji reactions on work package activity", :js, :with_cuprite do
       ENV.delete("WORK_PACKAGES_ACTIVITIES_TAB_POLLING_INTERVAL_IN_MS")
     end
 
-    it "shows the updated reactions without reload", :aggregate_failures do
+    it "shows the updated reactions without reload" do
       activity_tab.expect_journal_notes(text: first_comment_by_member.notes)
 
       # Simulate another user adding a reaction
