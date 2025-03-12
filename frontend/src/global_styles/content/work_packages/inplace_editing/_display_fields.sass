@@ -51,6 +51,9 @@ display-field
       padding-right: 0.25rem
       text-align: center
 
+.display-field--scheduling-icon
+  fill: var(--body-font-color)
+
 // READ value of edit fields
 .inline-edit--display-field
   display: inline-block
@@ -123,9 +126,6 @@ display-field
   &.combinedDate, &.date
     .display-field--scheduling-icon
       margin-right: 0.25rem
-      transform: scale(0.875)
-      vertical-align: middle
-      fill: var(--body-font-color)
 
 .wp-table--cell-container
   .inline-edit--display-field.-placeholder,
@@ -141,9 +141,8 @@ display-field
 
 .op-wp-single-card--content-dates
   .display-field--scheduling-icon
-    transform: scale(0.75)
     fill: var(--fgColor-muted)
-    vertical-align: middle
+    vertical-align: text-top
 
 .wp-table--cell-container
   &.duration,
@@ -156,18 +155,14 @@ display-field
   position: relative
 
   .display-field--scheduling-icon
-    transform: scale(0.875)
-    vertical-align: middle
     position: absolute
     fill: var(--body-font-color)
     left: 4px
-    top: 4px
+    top: 6px
 
   .-placeholder
     // The special alignment of placeholders requires a special alignment of the icon
     .display-field--scheduling-icon
-      transform: scale(0.875)
-      vertical-align: middle
       top: 6px
 
 // Sums in wp table
