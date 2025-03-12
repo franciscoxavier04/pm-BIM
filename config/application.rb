@@ -215,9 +215,6 @@ module OpenProject
     # It's best enabled when your entire app is migrated and stable on 6.0.
     Rails.application.config.action_dispatch.use_cookies_with_metadata = true
 
-    # Make `form_with` generate id attributes for any generated HTML tags.
-    # Rails.application.config.action_view.form_with_generates_ids = true
-
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types

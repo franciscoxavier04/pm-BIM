@@ -10,7 +10,7 @@
 # Make Active Record use stable #cache_key alongside new #cache_version method.
 # This is needed for recyclable cache keys. Previous versions had false.
 # Rails 5.2+ default is true.
-# Rails.application.config.active_record.cache_versioning = true
+Rails.application.config.active_record.cache_versioning = true
 
 # https://guides.rubyonrails.org/configuring.html#config-action-dispatch-use-authenticated-cookie-encryption
 # Use AES-256-GCM authenticated encryption for encrypted cookies.
@@ -21,29 +21,22 @@
 #
 # Existing cookies will be converted on read then written with the new scheme.
 # Previous versions had false. Rails 5.2+ default is true.
-# Rails.application.config.action_dispatch.use_authenticated_cookie_encryption = true
+Rails.application.config.action_dispatch.use_authenticated_cookie_encryption = true
 
 # https://guides.rubyonrails.org/configuring.html#config-active-support-use-authenticated-message-encryption
 # Use AES-256-GCM authenticated encryption as default cipher for encrypting messages
 # instead of AES-256-CBC, when use_authenticated_message_encryption is set to true.
 # Previous versions had false. Rails 5.2+ default is true.
-# Rails.application.config.active_support.use_authenticated_message_encryption = true
+# ActiveSupport::MessageEncryptor is not used by us so no worries about backwards compatibility.
+Rails.application.config.active_support.use_authenticated_message_encryption = true
 
 # https://guides.rubyonrails.org/configuring.html#config-action-controller-default-protect-from-forgery
 # Add default protection from forgery to ActionController::Base instead of in
 # ApplicationController.
 # Previous versions had false. Rails 5.2+ default is true.
-# Rails.application.config.action_controller.default_protect_from_forgery = true
-
-# https://guides.rubyonrails.org/configuring.html#config-active-support-hash-digest-class
-# Use SHA-1 instead of MD5 to generate non-sensitive digests, such as the ETag header.
-# Previous versions had false (OpenSSL::Digest::MD5).
-# Rails 5.2 to 6.1 default is true (OpenSSL::Digest::SHA1).
-# Rails 7.0 started using `config.active_support.hash_digest_class = OpenSSL::Digest::SHA256` instead
-# and removed `Rails.application.config.active_support.use_sha1_digests` setting
-# Rails.application.config.active_support.use_sha1_digests = true
+Rails.application.config.action_controller.default_protect_from_forgery = true
 
 # https://guides.rubyonrails.org/configuring.html#config-action-view-form-with-generates-ids
 # Make `form_with` generate id attributes for any generated HTML tags.
 # Previous versions had false. Rails 5.2+ default is true.
-# Rails.application.config.action_view.form_with_generates_ids = true
+Rails.application.config.action_view.form_with_generates_ids = true
