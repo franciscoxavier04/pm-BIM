@@ -58,6 +58,7 @@ export default class IndexController extends Controller {
     notificationCenterPathName: String,
     lastServerTimestamp: String,
     showConflictFlashMessageUrl: String,
+    unsavedChangesConfirmationMessage: String,
   };
 
   static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
@@ -83,6 +84,8 @@ export default class IndexController extends Controller {
   declare rescuedEditorDataKey:string;
   declare latestKnownChangesetUpdatedAtKey:string;
   declare showConflictFlashMessageUrlValue:string;
+  declare unsavedChangesConfirmationMessageValue:string;
+
   private handleWorkPackageUpdateBound:EventListener;
   private handleVisibilityChangeBound:EventListener;
   private rescueEditorContentBound:EventListener;
@@ -719,7 +722,11 @@ export default class IndexController extends Controller {
     if (this.isEditorEmpty()) {
       this.hideEditor();
     } else {
-      this.adjustJournalContainerMargin();
+      const shouldClose = window.confirm(this.unsavedChangesConfirmationMessageValue);
+
+      if (shouldClose) {
+        this.hideEditor();
+      }
     }
   }
 

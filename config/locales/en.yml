@@ -52,6 +52,7 @@ en:
         restricted_visibility: Restricted visibility
         restricted_visibility_explainer: Only visible to a limited group of members. %{who_link_text}
         restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
 
   admin:
     plugins:
@@ -3674,7 +3675,7 @@ en:
     <br/>
     Example: <code>/my/page</code>
   setting_after_login_default_redirect_url: "After login redirect"
-  setting_after_login_default_redirect_url_text_html: > 
+  setting_after_login_default_redirect_url_text_html: >
     Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set.
     <br/>
     Example: <code>/my/page</code>
