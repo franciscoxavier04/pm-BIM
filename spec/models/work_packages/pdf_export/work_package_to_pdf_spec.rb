@@ -201,28 +201,28 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   let(:expected_details) do
     result = [
       "##{work_package.id} #{work_package.subject}",
-      "STATUS", work_package.status.name,
-      "TYPE", type.name,
+      "Status", work_package.status.name,
+      "Type", type.name,
       "People",
-      "ASSIGNEE", user.name,
-      "ACCOUNTABLE", user.name,
+      "Assignee", user.name,
+      "Accountable", user.name,
       "Estimates and progress",
-      "WORK", "10h",
-      "REMAINING WORK", "9h",
-      "% COMPLETE", "25%",
-      "SPENT TIME", "0h",
+      "Work", "10h",
+      "Remaining work", "9h",
+      "% Complete", "25%",
+      "Spent time", "0h",
       "Details",
-      "PRIORITY", "Normal",
-      "VERSION", work_package.version,
-      "CATEGORY", work_package.category,
-      "START DATE", "05/30/2024",
-      "FINISH DATE", "05/30/2024",
-      "DURATION", "1 d",
+      "Priority", "Normal",
+      "Version", work_package.version,
+      "Category", work_package.category,
+      "Start date", "05/30/2024",
+      "Finish date", "05/30/2024",
+      "Duration", "1 d",
       "Other",
-      "WORK PACKAGE CUSTOM FIELD BOOLEAN", "Yes",
+      "Work Package Custom Field Boolean", "Yes",
       "Work Package Custom Field Long Text", "foo   faa",
       "Costs",
-      "SPENT", "UNITS", "LABOR", "COSTS UNIT", "COSTS OVERALL", "COSTS BUDGET"
+      "Spent units", "Labor costs", "Unit costs", "Overall costs", "Budget"
     ]
     result
   end
@@ -441,10 +441,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Custom field boolean", I18n.t(:general_text_Yes),
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
+          "No replacement of:",
 
           "1", export_time_formatted, project.name,
 
-          "No replacement of:",
           "projectValue:1:status",
           "projectLabel:status",
           "projectValue:2:status projectLabel:status",

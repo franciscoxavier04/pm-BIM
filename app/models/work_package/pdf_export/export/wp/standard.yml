@@ -77,6 +77,14 @@ work_package:
     styles: [ "bold" ]
   subject_level_10:
     styles: [ "bold" ]
+  attributes_group:
+    size: 11
+    styles: [ "bold" ]
+    margin_top: 0
+    margin_bottom: 4
+    hr:
+      color: "1F2328"
+      height: 0.25
   attributes_table:
     margin_bottom: 16
     cell:
@@ -88,6 +96,8 @@ work_package:
       padding_bottom: 5
       no_border: true
     cell_label:
+      size: 9
+      color: "000000"
       styles: [ "bold" ]
   markdown_label:
     size: 12

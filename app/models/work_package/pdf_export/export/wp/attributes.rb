@@ -56,9 +56,24 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     custom_value = work_package.custom_field_values
                                .find { |cv| cv.custom_field.id == field_id && cv.custom_field.formattable? }
     if custom_value&.value
-      write_markdown_field!(work_package, custom_value.value, custom_value.custom_field.name)
+      write_long_text_custom_field!(work_package, custom_value.value, custom_value.custom_field.name)
     end
   end
+
+  def write_long_text_custom_field!(work_package, markdown, label)
+    return if markdown.blank?
+
+    write_optional_page_break
+    write_long_text_custom_field_label(label)
+    write_markdown_field_value(work_package, markdown)
+  end
+
+  def write_long_text_custom_field_label(label)
+    with_margin(styles.wp_markdown_label_margins) do
+      pdf.formatted_text([styles.wp_attributes_table_label.merge({ text: label })])
+    end
+  end
+
 
   def write_query_group(group, work_package)
     prepare_query_group(group, work_package)
@@ -155,9 +170,12 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def write_group_title(group)
-    with_margin(styles.wp_markdown_label_margins) do
-      pdf.formatted_text([styles.wp_markdown_label
+    write_optional_page_break
+    with_margin(styles.wp_attributes_group_label_margins) do
+      pdf.formatted_text([styles.wp_attributes_group_label
                                 .merge({ text: group.translated_key })])
+      hr_style = styles.wp_attributes_group_label_hr
+      write_horizontal_line(pdf.cursor, hr_style[:height], hr_style[:color])
     end
   end
 
@@ -222,7 +240,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
 
     # get work package attribute table cell data: [label, value]
     [
-      pdf.make_cell(attribute_data[:label].upcase, styles.wp_attributes_table_label_cell),
+      pdf.make_cell(attribute_data[:label], styles.wp_attributes_table_label_cell),
       attribute_data[:value]
     ]
   end

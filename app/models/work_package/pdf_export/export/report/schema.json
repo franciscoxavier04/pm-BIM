@@ -547,6 +547,54 @@
             }
           ]
         },
+        "attributes_group": {
+          "type": "object",
+          "title": "Work package attributes group label",
+          "description": "Label headline for a work package attributes group",
+          "x-example": {
+            "attributes_group": {
+              "size": 12,
+              "styles": [
+                "bold"
+              ],
+              "margin_top": 2,
+              "margin_bottom": 4
+            }
+          },
+          "properties": {
+            "hr": {
+              "type": "object",
+              "title": "Horizontal rule for attributes group rule",
+              "x-example": {
+                "border": {
+                  "color": "d3dee3",
+                  "height": 1
+                }
+              },
+              "properties": {
+                "height": {
+                  "title": "Line height of the horizontal rule",
+                  "examples": [
+                    1
+                  ],
+                  "$ref": "#/$defs/measurement"
+                },
+                "color": {
+                  "title": "Line color of the horizontal rule",
+                  "$ref": "#/$defs/color"
+                }
+              }
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/$defs/font"
+            },
+            {
+              "$ref": "#/$defs/margin"
+            }
+          ]
+        },
         "attributes_table" : {
           "type" : "object",
           "title" : "Work package attributes",

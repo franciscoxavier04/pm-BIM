@@ -29,12 +29,35 @@
 #++
 
 module WorkPackage::PDFExport::Common::StylesAttributesTable
+  def wp_attributes_group_label_margins
+    resolve_margin(@styles.dig(:work_package, :attributes_group))
+  end
+
+  def wp_attributes_group_label
+    resolve_font(@styles.dig(:work_package, :attributes_group))
+  end
+
+  def wp_attributes_group_label_hr
+    {
+      color: @styles.dig(:work_package, :attributes_group, :hr, :color),
+      height: resolve_pt(@styles.dig(:work_package, :attributes_group, :hr, :height), 1)
+    }
+  end
+
+  def wp_markdown_label_margins
+    resolve_margin(@styles.dig(:work_package, :attributes_group))
+  end
+
   def wp_attributes_table_margins
     resolve_margin(@styles.dig(:work_package, :attributes_table))
   end
 
   def wp_attributes_table_cell
     resolve_table_cell(@styles.dig(:work_package, :attributes_table, :cell))
+  end
+
+  def wp_attributes_table_label
+    resolve_font(@styles.dig(:work_package, :attributes_table, :cell_label))
   end
 
   def wp_attributes_table_label_cell
