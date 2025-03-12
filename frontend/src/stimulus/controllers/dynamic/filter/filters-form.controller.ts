@@ -319,13 +319,14 @@ export default class FiltersFormController extends Controller {
     const params = new URLSearchParams(window.location.search);
     const newFilters = this.buildFiltersParam(this.parseFilters());
 
-
     if (newFilters === params.get('filters')) {
       // Some fields may be triggered via the input event and the change event too.
       // This early return will prevent firing request when the filter params are not changed.
       return;
     }
 
+    // Remove the page parameter when changing filters, so that pagination resets
+    params.delete('page');
     params.set('filters', newFilters);
     const ajaxIndicator = document.querySelector('#ajax-indicator') as HTMLElement;
     ajaxIndicator.style.display = '';
