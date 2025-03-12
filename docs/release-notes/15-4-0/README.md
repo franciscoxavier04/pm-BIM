@@ -3,25 +3,123 @@ title: OpenProject 15.4.0
 sidebar_navigation:
     title: 15.4.0
 release_version: 15.4.0
-release_date: 2025-03-06
+release_date: 2025-03-19
 ---
 
 # OpenProject 15.4.0
 
-Release date: 2025-03-06
+Release date: 2025-03-19
 
-We released OpenProject [OpenProject 15.4.0](https://community.openproject.org/versions/2165).
-The release contains several bug fixes and we recommend updating to the newest version.
-In these Release Notes, we will give an overview of important feature changes.
-At the end, you will find a complete list of all changes and bug fixes.
+We released [OpenProject 15.4.0](https://community.openproject.org/versions/2165). The release contains several bug fixes, and we recommend updating to the newest version. In these Release Notes, we will give an overview of important feature changes. At the end, you will find a complete list of all changes and bug fixes.
 
 ## Important feature changes
 
-<!-- Inform about the major features in this section -->
+Take a look at the release video showing most important features introduced in 15.4.0:
+
+VIDEO
+
+### Enable automatic scheduling mode - to start as soon as possible
+
+Starting with OpenProject 15.4, users will be able to choose whether they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor/successor relations, simplifies managing complex project setups.
+
+> [!NOTE]
+> The new feature will not overwrite existing dates for any existing work packages. However, it can change the scheduling mode. By default, manual scheduling is enabled. Existing work packages with children will be in automatic mode – with dates derived from their children.
+
+![New scheduling modes: Automatic and Manual](manualAutomatic_schedulingModes.png)
+
+**Manual mode** is the default scheduling mode for new work packages. Users can freely select dates and can set timelines based on specific needs, deadlines or external factors. Manually scheduled work packages behave as they did before 15.4.
+
+In the **new automatic mode**, manually setting a start date is not possible. Instead, when a task is scheduled, the date picker automatically determines the start date based on the closest predecessor and optionally the specified lag to determine the miniumum number of days between two work packages. Please also note that administrators can specify which days are considered working days, and only these are taken into account when scheduling based on a lag.
+
+In other words: In automatic mode, **the work package starts as soon as possible**, considering related work packages.
+
+However, you can still define a duration, which adjusts the finish date accordingly. This ensures a reliable sequence of automatically scheduled work packages that adapt dynamically to planning changes.
+
+To learn more about how this change might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/) that we published some weeks ago. See our documentation to get detailed information about how to use the automatic scheduling mode.
+
+#### Single date mode
+
+The date picker now supports single date mode, making it easier to set deadlines without needing a start date. Previously, all work packages (except milestones) had both a start and finish date field, even when only one was needed. Now, by default, new work packages have only a finish date, simplifying workflows for teams that don't need a date range.
+
+![Screenshot of OpenProject's single date mode on a date picker](singleDateMode_finishDateOnly.png)
+
+If you need both dates, simply click **+ Start date** or set a duration to switch back to range mode. Of course, if you want single date mode with just a Start date instead of a Finish date, this is possible too.
+
+### Set agenda item outcomes for meetings
+
+In February 2025, we already published a milestone for our Meetings module: [Recurring meetings](../../release-notes/15-3-0/#schedule-recurring-meetings-to-streamline-your-weekly-biweekly-or-custom-appointments). With OpenProject 15.4, we released another great new feature that will help users better manage their meeting outcomes. They can now note relevant decisions, questions and follow-up actions for each agenda item. This way, all participants as well as users that could not attend the meeting will have a documentation of the relevant meeting outcome(s), displayed on each agenda item. 
+
+If you add an outcome to a work package in a meeting, this will also be displayed on the work package, if you navigate to the Meetings tab.
+
+> [!NOTE]
+> In our classic Meetings module (which we plan to remove with OpenProject 16.0), users can write "minutes", which are notes taken during the meeting. This was a feature much requested also for our recurring and one-time meetings. Now, in recurring or one-time meetings, users can still add notes to an agenda item and edit them during the meeting, but now they can also use the outcome feature to make it more clear.
+
+The updated Meetings module now allows you to set a meeting status: 
+
+![Screenshot: OpenProject's Meetings module, setting a meeting status](openproject-15-4-meeting-status.png)
+
+Once the status is "in progress", you can add outcomes to every agenda item. If it is a recurring meeting, you can also move the agenda item to the next meeting:
+
+![Screenshot: OpenProject's Meetings module, options for an agenda item if the meeting status is 'in progress'](openproject-15-4-meetings-outcome-highlighted.png)
+
+> [!NOTE]
+> In the following months, we will continue working on the Meetings module. For example, when a recurring meeting is closed, it shall be possible to move all agenda items without outcomes to the next meeting ([see this feature](https://community.openproject.org/wp/61911)). Also, a meeting agenda items backlog for recurring meetings is planned ([see this feature](https://community.openproject.org/wp/54751)).
+
+### Generate PDF documents from a work package description
+
+With OpenProject 15.4, you can now generate nicely styled PDF files from a work package description. This is particularly helpful if you want to create contracts or other formal documents.
+
+If you click the "More" menu in a work package, you previously had the "Download PDF" option which created a document that shows all important work package information, including attributes like assignee and the work package description. Now, this option is renamed to **Generate PDF** and includes many more possibilities. Clicking "Generate PDF" opens an interface where you can customize your PDF, e.g. by choosing if you want hyphenation and by entering a footer text. 
+
+Most important, you can now choose between two templates: One is **Attributes and description**, which creates a document like you were used to before 15.4. The other is **Contract**, which generates a PDF in a style of a German contract and includes only the work package description:
+
+![Screenshot: OpenProject work package, the option to Generate PDF with "Contract" selected as template](openproject-15-4-generate-pdf-template.png)
+
+Read this blog article to learn more about how this feature for automatically creating PDFs from the work package description can be a great help for organizations: [Beyond MS Word: Automatically generate beautifully styled pdf files for contracts, approval notices and project orders](https://www.openproject.org/blog/beyond-documents-generate-pdf-files/).
+
+### Better manage a large number of projects with an enhanced project lists view
+
+Improving project portfolio management is one of our focus goals for 2025. With OpenProject 15.4, users who manage many projects and project attributes will benefit from feature updates regarding autocompleters in project lists:
+
+- [Autocompleters for user custom field filter values on the project list](https://community.openproject.org/wp/60972)
+- [Autocompleters for filter values on the project list](https://community.openproject.org/wp/60521)
+- [Version autocompleter for filter values on the project list](https://community.openproject.org/wp/61398)
+
+### Use @-mention of user when quote replying to a comment
+
+This feature seems small, but can have a big impact: When a user quotes another user in the work package activity tab, the quoted user now automatically gets @-mentioned and therefore notified. This way, users won't miss information again that is clearly relevant for them.
+
+![Screenshot: A quoted message in the Activity tab of a work package.](openproject-15-4-mention.png)
+
+### Restructured administration and enumerations page removed
+
+With OpenProject 15.4, we restructured some parts in the administration, so that admins can find the settings for work package priorities and document categories in the existing settings for the modules – all in one place. Therefore, the enumerations page in the administration has been removed. Instead, you can now find...
+
+- document categories under *Administration → Files → Categories*. [Read more in our system admin guide](../../system-admin-guide/files/categories/).
+
+![Screenshot: The OpenProject administration of document categories](openproject_system_guide_files_categories_overview.png)
+
+- work package priorities under *Administration → Work packages → Priorities*. [Read more in our system admin guide](../../system-admin-guide/manage-work-packages/work-package-priorities/).
+
+![Screenshot: The OpenProject administration of work package priorities](openproject_system_guide_work_package_priorities_overview.png)
+
+- time tracking activities under *Administration* -> *Time and costs*. [Read more in our user guide](../../user-guide/projects/project-settings/activities-time-tracking/).
+
+![Screenshot: The OpenProject administration of time tracking activities](openproject_system_guide_time_costs_time_tracking_activities_overview.png)
 
 ## Important updates and breaking changes
 
-<!-- Remove this section if empty, add to it in pull requests linking to tickets and provide information -->
+### Docker: Removed support for ppc64le
+
+We have been offering docker builds for the following architectures:
+
+- amd64
+- arm64
+- ppc64le
+
+We have put in considerable effort trying to keep ppc64le running, but it keeps causing disproportionate maintenance effort. So without a native runner, it is unfortunately not practical to keep supporting this. Please reach out to us if you'd like to provide support to maintain a ppc64 architecture.
+
+For more information, see [this code maintenance work package on our Community instance](https://community.openproject.org/wp/61975).
 
 <!--more-->
 
@@ -116,12 +214,10 @@ At the end, you will find a complete list of all changes and bug fixes.
 <!-- Warning: Anything above this line will be automatically removed by the release script -->
 
 ## Contributions
-A very special thank you goes to our sponsors for this release.
-Also a big thanks to our Community members for reporting bugs and helping us identify and provide fixes.
-Special thanks for reporting and finding bugs go to René Schodder, Abhiyan Paudyal, Gunter Ohrner, Markus K..
+A very special thank you goes to City of Cologne, Deutsche Bahn and ZenDiS for sponsoring released or upcoming features. Your support, alongside the efforts of our amazing Community, helps drive these innovations.
 
-Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings!
-Would you like to help out with translations yourself?
-Then take a look at our translation guide and find out exactly how you can contribute.
-It is very much appreciated!
+Also, a big thanks to our Community members for reporting bugs and helping us identify and provide fixes. Special thanks for reporting and finding bugs go to René Schodder, Abhiyan Paudyal, Gunter Ohrner and Markus K..
 
+Last but not least, we are very grateful for our very engaged translation contributors on Crowdin, who translated quite a few OpenProject strings! This release we would like to particularly thank user [greench](https://crowdin.com/profile/greench), for an outstanding number of translations into Turkish.
+
+Would you like to help out with translations yourself? Then take a look at our [translation guide](../../contributions-guide/translate-openproject/) and find out exactly how you can contribute. It is very much appreciated!

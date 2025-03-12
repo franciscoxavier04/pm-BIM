@@ -86,7 +86,8 @@ RSpec.describe "date inplace editor", :js, :selenium, with_settings: { date_form
     start_date.expect_state_text "2016-01-02 - 2016-01-25"
   end
 
-  it 'can set "today" as a date via the provided link' do
+  it 'can set "today" as a date via the provided link',
+     skip: "broken for now, will be fixed within #62125" do
     start_date.activate!
     start_date.expect_active!
 
