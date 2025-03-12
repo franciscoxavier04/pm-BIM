@@ -566,7 +566,7 @@ class Formatter
       warn <<~INSTRUCTIONS.white.dark
         GitHub Action run merged #{report.merge_branch_sha} into #{report.head_sha} before running.
         To be with the exact same source files as CI, use these commands (warning: stash your modifications first):
-          git checkout --force -b repro_ci_failures #{report.head_sha}
+          git checkout -B repro_ci_failures #{report.head_sha}
           git merge --no-edit --no-verify #{report.merge_branch_sha}
       INSTRUCTIONS
     else
