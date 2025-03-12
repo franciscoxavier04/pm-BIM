@@ -130,7 +130,7 @@ RSpec.describe "Projects", "editing settings", :js do
     end
   end
 
-  context "with a multi-select custom field" do
+  context "with a multi-select list custom field" do
     include_context "ng-select-autocomplete helpers"
 
     let!(:list_custom_field) { create(:list_project_custom_field, name: "List CF", multi_value: true, projects: [project]) }
@@ -150,6 +150,37 @@ RSpec.describe "Projects", "editing settings", :js do
       cvs = project.reload.custom_value_for(list_custom_field)
       expect(cvs.count).to eq 2
       expect(cvs.map(&:typed_value)).to contain_exactly "A", "B"
+    end
+  end
+
+  context "with a multi-select user custom field" do
+    include_context "ng-select-autocomplete helpers"
+
+    let!(:list_custom_field) { create(:user_project_custom_field, name: "List CF", multi_value: true, projects: [project]) }
+    let(:dummy_role) { create(:project_role) }
+    let!(:users) do
+      [
+        create(:user, firstname: "First", lastname: "User", member_with_roles: { project => [dummy_role] }),
+        create(:user, firstname: "Second", lastname: "User", member_with_roles: { project => [dummy_role] }),
+        create(:user, firstname: "Third", lastname: "User", member_with_roles: { project => [dummy_role] })
+      ]
+    end
+    let(:form_field) { FormFields::SelectFormField.new list_custom_field }
+
+    it "can select multiple values" do
+      visit project_settings_general_path(project.id)
+
+      form_field.select_option users.first.name, users.last.name
+
+      click_on "Save"
+
+      expect(page).to have_content "Successful update."
+
+      refresh
+
+      expect(page).to have_no_content "Successful update."
+
+      form_field.expect_selected users.first.name, users.last.name
     end
   end
 
