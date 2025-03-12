@@ -157,9 +157,7 @@ module SortHelper
       @criteria.first && @criteria.first.last
     end
 
-    def empty?
-      @criteria.empty?
-    end
+    delegate :empty?, to: :@criteria
 
     private
 
@@ -167,7 +165,7 @@ module SortHelper
       @criteria ||= []
       @criteria = @criteria.map do |s|
         s = s.to_a
-        [s.first, !(s.last == false || s.last == "desc")]
+        [s.first, [false, "desc"].exclude?(s.last)]
       end
 
       if @available_criteria
