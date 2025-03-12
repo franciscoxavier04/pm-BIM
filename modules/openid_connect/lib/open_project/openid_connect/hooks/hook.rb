@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is a project management system.
 # Copyright (C) the OpenProject GmbH
@@ -56,9 +58,11 @@ module OpenProject::OpenIDConnect
         controller = context.fetch(:controller)
         session = controller.session
 
-        session["omniauth.oidc_access_token"] = context.dig(:auth_hash, :credentials, :token)
-        session["omniauth.oidc_refresh_token"] = context.dig(:auth_hash, :credentials, :refresh_token)
-        session["omniauth.oidc_expires_in"] = context.dig(:auth_hash, :credentials, :expires_in)
+        if OpenIDConnect::Provider.exists?(slug: context.dig(:auth_hash, :provider))
+          session["omniauth.oidc_access_token"] = context.dig(:auth_hash, :credentials, :token)
+          session["omniauth.oidc_refresh_token"] = context.dig(:auth_hash, :credentials, :refresh_token)
+          session["omniauth.oidc_expires_in"] = context.dig(:auth_hash, :credentials, :expires_in)
+        end
 
         nil
       end
