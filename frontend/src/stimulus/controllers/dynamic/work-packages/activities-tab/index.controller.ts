@@ -696,14 +696,6 @@ export default class IndexController extends Controller {
     this.getCkEditorInstance()?.setData('');
   }
 
-  hideEditorIfEmpty() {
-    const ckEditorInstance = this.getCkEditorInstance();
-
-    if (ckEditorInstance && ckEditorInstance.getData({ trim: false }).length === 0) {
-      this.hideEditor();
-    }
-  }
-
   hideEditor() {
     this.clearEditor(); // remove potentially empty lines
     this.removeEventListenersFromCkEditorInstance();
