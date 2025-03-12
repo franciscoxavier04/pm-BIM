@@ -51,8 +51,6 @@ class Query < ApplicationRecord
   serialize :column_names, type: Array
   serialize :sort_criteria, type: Array
 
-  attr_accessor :current_user
-
   validates :include_subprojects,
             inclusion: [true, false]
 
@@ -71,7 +69,6 @@ class Query < ApplicationRecord
 
   def self.new_default(attributes = nil)
     new(attributes).tap do |query|
-      query.current_user = User.current
       query.add_default_filter
       query.set_default_sort
       query.show_hierarchies = true
@@ -221,13 +218,13 @@ class Query < ApplicationRecord
     end
 
     @available_columns_project = project&.cache_key || 0
-    @available_columns = ::Query.available_columns(project, current_user)
+    @available_columns = ::Query.available_columns(project)
   end
 
-  def self.available_columns(project = nil, current_user = nil)
+  def self.available_columns(project = nil)
     Queries::Register
       .selects[self]
-      .map { |col| col.instances(project, current_user) }
+      .map { |col| col.instances(project) }
       .flatten
   end
 

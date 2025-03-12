@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -40,7 +38,7 @@ class Queries::WorkPackages::Selects::RelationToTypeSelect < Queries::WorkPackag
            type: type.name)
   end
 
-  def self.instances(context = nil, _user = nil)
+  def self.instances(context = nil)
     if !granted_by_enterprise_token
       []
     elsif context

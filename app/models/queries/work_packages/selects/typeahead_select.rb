@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -29,7 +27,7 @@
 #++
 
 class Queries::WorkPackages::Selects::TypeaheadSelect < Queries::WorkPackages::Selects::WorkPackageSelect
-  def self.instances(_context = nil, _user = nil)
+  def self.instances(_context = nil)
     new :typeahead,
         displayable: false,
         # This is an ugly hack. When using the typeahead order, the work packages should always be ordered

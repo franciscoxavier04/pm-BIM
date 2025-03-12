@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -135,7 +133,7 @@ class Queries::WorkPackages::Selects::PropertySelect < Queries::WorkPackages::Se
     }
   }
 
-  def self.instances(_context = nil, _user = nil)
+  def self.instances(_context = nil)
     property_selects.map do |name, options|
       new(name, options)
     end

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -44,7 +42,7 @@ module OpenProject::Backlogs
       }
     }
 
-    def self.instances(context = nil, _user = nil)
+    def self.instances(context = nil)
       return [] if context && !context.backlogs_enabled?
 
       backlogs_selects.map do |name, options|

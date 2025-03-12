@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -34,7 +32,7 @@ module ::Bim::Queries::WorkPackages::Selects
       I18n.t("attributes.bcf_thumbnail")
     end
 
-    def self.instances(_context = nil, _user = nil)
+    def self.instances(_context = nil)
       return [] unless OpenProject::Configuration.bim?
 
       [new(:bcf_thumbnail, { summable: false, groupable: false, sortable: false })]

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -84,7 +82,7 @@ module Costs
       }
     }
 
-    def self.instances(context = nil, _user = nil)
+    def self.instances(context = nil)
       return [] if context && !context.costs_enabled?
 
       currenty_selects.map do |name, options|

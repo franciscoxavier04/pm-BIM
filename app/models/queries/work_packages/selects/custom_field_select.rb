@@ -57,16 +57,13 @@ class Queries::WorkPackages::Selects::CustomFieldSelect < Queries::WorkPackages:
     work_package.formatted_custom_value_for(@cf.id)
   end
 
-  def self.instances(context = nil, user = nil)
-    custom_fields = if context
-                      context.all_work_package_custom_fields
-                    else
-                      WorkPackageCustomField.all
-                    end
-
-    custom_fields = custom_fields.visible_by_user(user) if user
-
-    custom_fields
+  def self.instances(context = nil)
+    if context
+      context.all_work_package_custom_fields
+    else
+      WorkPackageCustomField.all
+    end
+      .visible_by_user(User.current)
       .reject { |cf| cf.field_format == "text" }
       .map { |cf| new(cf) }
   end

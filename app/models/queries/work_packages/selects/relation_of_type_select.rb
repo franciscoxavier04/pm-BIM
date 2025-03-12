@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -45,7 +43,7 @@ class Queries::WorkPackages::Selects::RelationOfTypeSelect < Queries::WorkPackag
            type: I18n.t(type[:sym_name]).capitalize)
   end
 
-  def self.instances(_context = nil, _user = nil)
+  def self.instances(_context = nil)
     return [] unless granted_by_enterprise_token
 
     Relation::TYPES.map { |_key, type| new(type) }

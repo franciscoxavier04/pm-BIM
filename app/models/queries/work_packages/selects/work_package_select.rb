@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -41,7 +39,7 @@ class Queries::WorkPackages::Selects::WorkPackageSelect
               :summable_select,
               :summable_work_packages_select
 
-  def self.instances(_context = nil, _user = nil)
+  def self.instances(_context = nil)
     new
   end
 
