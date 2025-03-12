@@ -1078,9 +1078,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         # the scroll position is at around 700, some other part of the frontend code seems to trigger a scroll
         # happens for the files tab as well for example
         #
-        it "does not scroll to the bottom when the newest journal entry is on the bottom" do
-          pending "bug/59916-on-narrow-screens-(including-mobile)-the-view-always-scrolls-to-the-activity"
-
+        it "does not scroll to the bottom when the newest journal entry is on the bottom",
+           skip: "bug/59916-on-narrow-screens-(including-mobile)-the-view-always-scrolls-to-the-activity" do
           sleep 1 # wait for a potential auto scrolling to finish
           # expect activity tab not to be visibe, as the page is not scrolled to the bottom
           scroll_position = page.evaluate_script("document.querySelector(\"#content-body\").scrollTop")
