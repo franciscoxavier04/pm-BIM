@@ -35,23 +35,19 @@ If there are more users you will need more web workers and eventually also more 
 The database will need resources as well, and this, too, will increase with the number of users.
 There may come a point where you will have to make configuration changes to the database and/or use an external database, but for most cases the default database setup should be enough. You will ideally want to have the database on a performant storage such as SSDs. [There are also other excellent resources](https://wiki.postgresql.org/wiki/Performance_Optimization) for tuning PostgreSQL database performance.
 
-Using a rough estimate we can give the following recommendations based on the number of total users.
+Using a rough estimate we can give the following recommendations based on the number of total active users.
 
 | Total active users | CPU cores | RAM in GB | web workers | background workers | disk space in GB |
 | ------------------ | --------- | --------- | ----------- | ------------------ | ---------------- |
-| <=200              | 4         | 4         | 4           | 1                  | 20               |
-| 500                | 8         | 8         | 8           | 2                  | 40               |
-| 1500               | 16        | 16        | 16          | 4                  | 80               |
+| <=200              | 4         | 4         | 2           | 1                  | 20               |
+| 500                | 8         | 8         | 4           | 2                  | 40               |
+| 1500               | 16        | 16        | 8          | 4                  | 80               |
 
-Mind, even just for 5 users we do recommend the default 4 workers as each page may require
-multiple requests to be made simultaneously. Having less workers will work, but pages may take longer to finish loading.
+Mind, even just for 5 users we do recommend 2 web workers as each page may require
+multiple requests to be made simultaneously. Having just one will work, but pages may take longer to finish loading.
 
-These numbers are a guideline only and your mileage may vary.<sup>1</sup>
+These numbers are a guideline only and your mileage may vary.
 It's best to monitor your server and its resource usage. You can always allocate more resources if needed.
-
-See [here](../operation/control/#scaling-the-number-of-web-workers) how to scale those up in a packaged installation. If you are using docker-compose you can [scale](https://docs.docker.com/compose/reference/scale/) the web and worker services too.
-
-> <sup>1</sup> When using [docker-compose](https://github.com/opf/openproject-deploy/tree/stable/15/compose) (with `USE_PUMA=true`) you can use fewer web workers which may use a bit more RAM, however. For instance for 200 users a single web worker would be enough.
 
 ### **Scaling horizontally**
 
@@ -68,6 +64,9 @@ In the _packaged installation_ you can have multiple servers running OpenProject
 > [!NOTE]
 >
 > We recommend to run OpenProject in a [Kubernetes deployment using our Helm charts](../installation/helm-chart), or in smaller environments, [docker compose](../installation/docker-compose) or [docker Swarm](../installation/docker/#docker-swarm). Kubernetes and Docker swarm are fully horizontally scalable
+ 
+[For more information on applying scaling options depending on your installation method, please see this document](../operation/scaling/).
+
 
 ### Scaling parameters
 
@@ -81,8 +80,6 @@ Extrapolating the general system requirements for different sets of users, you w
 - **Disk Space**: +20-50 GiB per ~500 users, depending on workload and attachment storage
 
 These values are **guidelines** and should be adjusted based on actual monitoring of resource usage. Scaling should prioritize **CPU and RAM, prioritize scaling Web Workers** first, followed by **Background Workers and Disk Space** as needed.
-
- [For more information on applying scaling options depending on your installation method, please see this document](../installation/operation/scaling/).
 
 ## Example Configurations
 
@@ -134,9 +131,23 @@ These values are **guidelines** and should be adjusted based on actual monitorin
 
 ### Additional Scaling Recommendations
 
-- **Monitor Resource Usage**: [Use our health checks to monitor for resource allocation and queueing information](../operation/monitoring/#health-checks). Adjust CPU, RAM, and disk space as needed.
-- **Database Scaling**: Consider external PostgreSQL with performance tuning.
-- **Load Balancing**: For high-availability setups, distribute traffic across multiple servers and availability regions.
+**Monitor Resource Usage**
+
+You can [use our health checks to monitor the background job queue](../operation/monitoring/#health-checks). If the `worker_backed_up` check fails you may want to scale up the number of background workers.
+
+For everything else a general monitoring solution for your servers is recommended.
+Be it cloud-platform solutions like CloudWatch (AWS), or your own setup using open-source tools
+such as Prometheus and Grafana.
+
+Adjust CPU, RAM, and disk space as needed.
+
+**Database Scaling**
+
+Consider external PostgreSQL with performance tuning.
+
+**Load Balancing**
+
+For high-availability setups, distribute traffic across multiple servers and availability regions.
 
 
 
