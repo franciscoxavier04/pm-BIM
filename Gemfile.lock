@@ -1106,7 +1106,7 @@ GEM
     ruby-prof (1.7.1)
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
-    ruby-saml (1.17.0)
+    ruby-saml (1.18.0)
       nokogiri (>= 1.13.10)
       rexml
     ruby2_keywords (0.0.5)
@@ -1855,7 +1855,7 @@ CHECKSUMS
   ruby-prof (1.7.1) sha256=026393448cf92fd24a91739bf71ccd2bfe88fe8a1401ee8afc4948a16d62ea24
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   ruby-rc4 (0.1.5) sha256=00cc40a39d20b53f5459e7ea006a92cf584e9bc275e2a6f7aa1515510e896c03
-  ruby-saml (1.17.0) sha256=0419839ba3312d255e35fe3cc7ae155e4a241fd468796caebcf61164aa01b8a9
+  ruby-saml (1.18.0) sha256=de342a55925fd5ce6114d0802651c324428c0fec26e7fe52bf3a7cfa54dbfa6d
   ruby2_keywords (0.0.5) sha256=ffd13740c573b7301cf7a2e61fc857b2a8e3d3aff32545d6f8300d8bae10e3ef
   rubytree (2.1.1) sha256=4925016356a81730e982f1f8c3b5f8da461f18906c77d238bad4c4ba896abd41
   rubyzip (2.3.2) sha256=3f57e3935dc2255c414484fbf8d673b4909d8a6a57007ed754dde39342d2373f
