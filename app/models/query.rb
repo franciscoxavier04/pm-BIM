@@ -211,11 +211,11 @@ class Query < ApplicationRecord
 
   def available_columns
     if @available_columns &&
-       (@available_columns_project == (project&.cache_key || 0))
+       (@available_columns_project == (project&.cache_key_with_version || 0))
       return @available_columns
     end
 
-    @available_columns_project = project&.cache_key || 0
+    @available_columns_project = project&.cache_key_with_version || 0
     @available_columns = ::Query.available_columns(project)
   end
 
