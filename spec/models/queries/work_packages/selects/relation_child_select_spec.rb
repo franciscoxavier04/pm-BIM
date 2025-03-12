@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,29 +28,18 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module API
-  module V3
-    module Queries
-      module Columns
-        module QueryColumnsFactory
-          def self.representer(column)
-            case column
-            when ::Queries::WorkPackages::Selects::RelationToTypeSelect
-              ::API::V3::Queries::Columns::QueryRelationToTypeColumnRepresenter
-            when ::Queries::WorkPackages::Selects::RelationOfTypeSelect
-              ::API::V3::Queries::Columns::QueryRelationOfTypeColumnRepresenter
-            when ::Queries::WorkPackages::Selects::RelationChildSelect
-              ::API::V3::Queries::Columns::QueryRelationChildColumnRepresenter
-            else
-              ::API::V3::Queries::Columns::QueryPropertyColumnRepresenter
-            end
-          end
+require "spec_helper"
+require_relative "shared_query_select_specs"
 
-          def self.create(column)
-            representer(column).new(column)
-          end
-        end
-      end
+RSpec.describe Queries::WorkPackages::Selects::RelationChildSelect do
+  let(:project) { build_stubbed(:project) }
+  let(:instance) { described_class.new }
+
+  it_behaves_like "query column"
+
+  describe "#caption" do
+    it "returns the translated label for children" do
+      expect(instance.caption).to eq("Children")
     end
   end
 end

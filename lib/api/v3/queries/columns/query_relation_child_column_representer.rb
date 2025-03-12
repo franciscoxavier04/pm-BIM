@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -30,23 +32,14 @@ module API
   module V3
     module Queries
       module Columns
-        module QueryColumnsFactory
-          def self.representer(column)
-            case column
-            when ::Queries::WorkPackages::Selects::RelationToTypeSelect
-              ::API::V3::Queries::Columns::QueryRelationToTypeColumnRepresenter
-            when ::Queries::WorkPackages::Selects::RelationOfTypeSelect
-              ::API::V3::Queries::Columns::QueryRelationOfTypeColumnRepresenter
-            when ::Queries::WorkPackages::Selects::RelationChildSelect
-              ::API::V3::Queries::Columns::QueryRelationChildColumnRepresenter
-            else
-              ::API::V3::Queries::Columns::QueryPropertyColumnRepresenter
-            end
+        class QueryRelationChildColumnRepresenter < QueryColumnRepresenter
+          def _type
+            "QueryColumn::RelationChild"
           end
+        end
 
-          def self.create(column)
-            representer(column).new(column)
-          end
+        def json_cache_key
+          [represented.name]
         end
       end
     end
