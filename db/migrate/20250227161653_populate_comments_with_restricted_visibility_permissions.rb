@@ -35,7 +35,7 @@ class PopulateCommentsWithRestrictedVisibilityPermissions < ActiveRecord::Migrat
     # grant the permission to view/write/edit comments with restricted visibility
     # to users that can manage project members
     ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :view_comments_with_restricted_visibility)
-    ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :write_comments_with_restricted_visibility)
+    ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :add_comments_with_restricted_visibility)
     ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :edit_own_comments_with_restricted_visibility)
   end
 

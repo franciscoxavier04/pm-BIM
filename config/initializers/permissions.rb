@@ -316,7 +316,7 @@ Rails.application.reloader.to_prepare do
                      dependencies: :view_work_packages,
                      visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
-      wpt.permission :write_comments_with_restricted_visibility,
+      wpt.permission :add_comments_with_restricted_visibility,
                      {},
                      permissible_on: %i[work_package project],
                      require: :loggedin,

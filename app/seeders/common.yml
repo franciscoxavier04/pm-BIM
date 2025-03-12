@@ -379,7 +379,7 @@ project_roles:
       - :add_work_package_attachments
       - :view_project_attributes
       - :view_comments_with_restricted_visibility
-      - :write_comments_with_restricted_visibility
+      - :add_comments_with_restricted_visibility
       - :edit_own_comments_with_restricted_visibility
   - reference: :default_role_reader
     t_name: Reader
