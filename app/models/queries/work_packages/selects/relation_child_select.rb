@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,29 +28,12 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module API
-  module V3
-    module Queries
-      module Columns
-        module QueryColumnsFactory
-          def self.representer(column)
-            case column
-            when ::Queries::WorkPackages::Selects::RelationToTypeSelect
-              ::API::V3::Queries::Columns::QueryRelationToTypeColumnRepresenter
-            when ::Queries::WorkPackages::Selects::RelationOfTypeSelect
-              ::API::V3::Queries::Columns::QueryRelationOfTypeColumnRepresenter
-            when ::Queries::WorkPackages::Selects::RelationChildSelect
-              ::API::V3::Queries::Columns::QueryRelationChildColumnRepresenter
-            else
-              ::API::V3::Queries::Columns::QueryPropertyColumnRepresenter
-            end
-          end
+class Queries::WorkPackages::Selects::RelationChildSelect < Queries::WorkPackages::Selects::RelationSelect
+  def initialize
+    super(:relation_child)
+  end
 
-          def self.create(column)
-            representer(column).new(column)
-          end
-        end
-      end
-    end
+  def caption
+    I18n.t(:"js.relation_labels.children")
   end
 end
