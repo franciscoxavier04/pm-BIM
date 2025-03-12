@@ -3528,8 +3528,8 @@ it:
     warnings:
       cannot_annotate: "Questo file non può essere annotato."
   scheduling:
-    activated: "attivato"
-    deactivated: "disattivato"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Ricerca..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

@@ -3481,8 +3481,8 @@ zh-CN:
     warnings:
       cannot_annotate: "此文件不能进行注释。"
   scheduling:
-    activated: "已激活"
-    deactivated: "已取消激活"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "搜索"
   setting_after_first_login_redirect_url: "首次登录重定向"
   setting_after_first_login_redirect_url_text_html: >

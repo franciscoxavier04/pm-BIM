@@ -358,10 +358,10 @@ uk:
           learn_about: "Дізнатися більше про нові функції"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                Цей випуск включає багато нових функцій і покращень. <br> <ul class="%{list_styling_class}"> <li>Плануйте повторювані наради, щоб оптимізувати зустрічі, що повторюються щотижня, раз на два тижні або з власним інтервалом.</li> <li>Створюйте дочірні пакети робіт безпосередньо на вкладці «Зв’язки».</li> <li>Включайте підсумки в експортовані PDF-файли табелів робочого часу, щоб отримувати корисніші дані.</li> <li>Включайте дочірні пакети робіт у звіти про витрати для точнішого відстеження руху коштів.</li> <li>Переглядайте дати раніше прихованих зв’язків або тих, доступ до яких обмежено дозволами, щоб ухвалювати зваженіші рішення щодо планування.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
     ical_sharing_modal:
       title: "Підписатися на календар"
       inital_setup_error_message: "Під час отримання даних сталася помилка."

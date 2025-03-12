@@ -356,10 +356,10 @@ zh-TW:
           learn_about: "瞭解更多新功能的資訊"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                該版本為您帶來了各種功能和改進，例如<br> <ul class="%{list_styling_class}"> <li>排定定期會議，簡化您每週、每兩週或自訂的會議。</li> <li>直接從「關係」標籤建立子工作項目。</li> <li>在時間表 PDF 匯出中包含總和，以獲得更好的洞察力。</li> <li>在成本報告中包含子工作項目，以進行更精確的追蹤。</li> <li>查看先前隱藏的、受權限的關係的日期，以做出明智的排程決策。</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"

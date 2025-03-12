@@ -3527,8 +3527,8 @@ pt-BR:
     warnings:
       cannot_annotate: "Este arquivo não pode ser anotado."
   scheduling:
-    activated: "ativado"
-    deactivated: "desativado"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Pesquisar..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

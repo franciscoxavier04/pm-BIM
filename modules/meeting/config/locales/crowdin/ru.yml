@@ -65,8 +65,8 @@ ru:
       models:
         recurring_meeting:
           must_cover_existing_meetings:
-            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
-            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            one: "В серии есть одно открытое совещание, которое не включено в новый график. Измените график, чтобы включить все существующие совещания."
+            other: "В серии есть %{count} открытых совещаний, которые не включены в новый график. Измените график, чтобы включить все существующие совещания."
             format: "%{message}"
       messages:
         invalid_time_format: "недопустимое время. Требуемый формат: ЧЧ:ММ"

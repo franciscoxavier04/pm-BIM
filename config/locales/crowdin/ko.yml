@@ -3487,8 +3487,8 @@ ko:
     warnings:
       cannot_annotate: "이 파일에는 주석을 지정할 수 없습니다."
   scheduling:
-    activated: "활성화됨"
-    deactivated: "비활성화됨"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "검색..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

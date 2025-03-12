@@ -3486,8 +3486,8 @@ zh-TW:
     warnings:
       cannot_annotate: "這個檔案無法註釋"
   scheduling:
-    activated: "已啟用"
-    deactivated: "已停用"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "搜尋 ..."
   setting_after_first_login_redirect_url: "首次登入重新導向"
   setting_after_first_login_redirect_url_text_html: >
