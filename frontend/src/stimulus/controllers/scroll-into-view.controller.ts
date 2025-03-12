@@ -28,46 +28,14 @@
  * ++
  */
 
-import * as Turbo from '@hotwired/turbo';
-import { Controller } from '@hotwired/stimulus';
+import { ApplicationController } from 'stimulus-use';
 
-export default class extends Controller {
-  static values = {
-    cancelUrl: String,
-  };
+export default class ScrollIntoViewController extends ApplicationController {
+  connect() {
+    super.connect();
 
-  declare cancelUrlValue:string;
-
-  connect():void {
-    this.focusInput();
-  }
-
-  focusInput():void {
-    const titleInput = this.element.querySelector('input[name="meeting_section[title]"]');
-
-    (titleInput as HTMLInputElement).focus();
-    this.setCursorAtEnd(titleInput as HTMLInputElement);
-  }
-
-  async cancel() {
-    const response = await fetch(this.cancelUrlValue, {
-      method: 'GET',
-      headers: {
-        'X-CSRF-Token': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement).content,
-        Accept: 'text/vnd.turbo-stream.html',
-      },
-    });
-
-    if (response.ok) {
-      const text = await response.text();
-      Turbo.renderStreamMessage(text);
-    }
-  }
-
-  setCursorAtEnd(inputElement:HTMLInputElement):void {
-    if (document.activeElement === inputElement) {
-      const valueLength = inputElement.value.length;
-      inputElement.setSelectionRange(valueLength, valueLength);
-    }
+    setTimeout(() => {
+      this.element.scrollIntoView({ block: 'center' });
+    }, 0); // Needed because the elements added out of the current view aren't scrolled to otherwise
   }
 }

@@ -59,7 +59,7 @@ module MeetingAgendaItems
 
     def wrapper_data_attributes
       {
-        controller: "meeting-agenda-item-form ckeditor-focus",
+        controller: "meeting-agenda-item-form ckeditor-focus scroll-into-view",
         "application-target": "dynamic",
         "meeting-agenda-item-form-cancel-url-value": @cancel_path,
         "meeting-agenda-item-form-autofocus-value": @autofocus,
