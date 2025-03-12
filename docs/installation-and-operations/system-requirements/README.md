@@ -22,7 +22,7 @@ The server hardware requirements should be roughly the same for both the package
 
 This is for a single server running OpenProject for up to 200 total users. Depending on your number of concurrent users,  these requirements might vary drastically.
 
-### General Requirements
+## Scaling Requirements
 
 Generally speaking you will need more CPUs (the faster the better) and more RAM with an increasing number of users.
 Technically this only really depends on the number of concurrent users. No matter if you have 1000 or only 100 total users, if there only ever 20 users working at the same time, the CPU & RAM required will be the same.
@@ -37,11 +37,11 @@ There may come a point where you will have to make configuration changes to the 
 
 Using a rough estimate we can give the following recommendations based on the number of total users.
 
-| Users | CPU cores | RAM in GB  | web workers | background workers | disk space in GB |
-|-------|-----------|------------|-------------|--------------------|------------------|
-| <=200 | 4         | 4          | 4           | 1                  | 20               |
-| 500   | 8         | 8          | 8           | 2                  | 40               |
-| 1500  | 16        | 16         | 16          | 4                  | 80               |
+| Total active users | CPU cores | RAM in GB | web workers | background workers | disk space in GB |
+| ------------------ | --------- | --------- | ----------- | ------------------ | ---------------- |
+| <=200              | 4         | 4         | 4           | 1                  | 20               |
+| 500                | 8         | 8         | 8           | 2                  | 40               |
+| 1500               | 16        | 16        | 16          | 4                  | 80               |
 
 Mind, even just for 5 users we do recommend the default 4 workers as each page may require
 multiple requests to be made simultaneously. Having less workers will work, but pages may take longer to finish loading.
@@ -53,15 +53,103 @@ See [here](../operation/control/#scaling-the-number-of-web-workers) how to scale
 
 > <sup>1</sup> When using [docker-compose](https://github.com/opf/openproject-deploy/tree/stable/15/compose) (with `USE_PUMA=true`) you can use fewer web workers which may use a bit more RAM, however. For instance for 200 users a single web worker would be enough.
 
-**Scaling horizontally**
+### **Scaling horizontally**
 
 At some point simply increasing the resources of one single server may not be enough anymore.
 
+OpenProject needs to scale in three different dimensions:
+
+- Sizing of CPU & RAM, Storage, and Availability (e.g., available number of connections) in the PostgreSQL database
+- Number of web application workers and their multithreading parameters for request queues and parallel request execution
+- Number of background workers and their multithreading parameters for sending out emails, creating exports, or performing bulk operations (copying work packages, projects, etc.)
+
 In the _packaged installation_ you can have multiple servers running OpenProject. They will need to share an external database, memcached and file storage (e.g. via NFS), however.
 
-One way to scale the _docker_ installation is to use [docker Swarm](../installation/docker/#docker-swarm).
+> [!NOTE]
+>
+> We recommend to run OpenProject in a [Kubernetes deployment using our Helm charts](../installation/helm-chart), or in smaller environments, [docker compose](../installation/docker-compose) or [docker Swarm](../installation/docker/#docker-swarm). All these deployment options are fully horizontally scalable
 
-### Operating system
+### Scaling parameters
+
+Extrapolating the general system requirements for different sets of users, you will roughly need these scaling parameters. These information correlate with our SaaS infrastructure, so we assume current or last-generation CPUs and architecture. Assume higher values accordingly for older generations.
+
+- **Database**: 2 CPU / 8 GiB RAM per ~500 Users
+- **CPU**: 4-6 CPU per ~500 users
+- **RAM**: 6-8 GiB per ~500 users
+- **Web Workers**: +4 per ~500 users
+- **Background Workers**: +1-2 multithreaded workers per ~500 users, depending on workload
+- **Disk Space**: +20-50 GiB per ~500 users, depending on workload and attachment storage
+
+These values are **guidelines** and should be adjusted based on actual monitoring of resource usage. Scaling should prioritize **CPU and RAM, prioritize scaling Web Workers** first, followed by **Background Workers and Disk Space** as needed.
+
+The following environment variables are relevant for performance.. [For more information on applying scaling options, please see this document](../installation/operation/scaling/).
+
+- `OPENPROJECT_WEB_WORKERS`: Number of web workers handling HTTP requests. Note that in Kubernetes deployments, this value is applied using replicas of the services.
+- `OPENPROJECT_WEB_TIMEOUT`: Maximum request processing time in seconds.
+- `OPENPROJECT_WEB_WAIT__TIMEOUT`: Timeout for waiting requests in seconds.
+- `OPENPROJECT_WEB_MIN__THREADS`: Minimum number of threads per web worker.
+- `OPENPROJECT_WEB_MAX__THREADS`: Maximum number of threads per web worker.
+- `OPENPROJECT_GOOD__JOB__MAX_THREADS`: Maximum number of threads for background workers.
+
+
+
+## Example Configurations
+
+### **Small Instance (≤ 200 users, low concurrent activity)**
+
+- **Database**: 2 CPU / 4 GiB RAM
+
+- **CPU**: 2 CPU
+
+- **RAM**: 4 GB
+
+- **Web Workers**:  2 Workers, each with 4 threads
+
+- **Background Workers**: 1 multithreaded worker with 4GiB RAM (more RAM possibly required for larger exports)
+
+- **Disk Space**: 20 GB + additional disk space in case of internal attachment storage
+
+### **Medium Instance (~500 users, moderate concurrent activity)**
+
+- **Database**: 2-4 CPU / 8 GiB RAM
+- **CPU**: 4 CPU
+- **RAM**: 8 GB
+-  **Web Workers**: 4 Workers, each with 4-8 threads
+  •
+- **Background Workers**: 2 multithreaded workers with 4-6 GiB RAM
+- **Disk Space**: 50 GB + additional disk space in case of internal attachment storage
+
+### **Large Instance (~1500 users, medium to high concurrent activity)**
+
+- **Database**: 4-8 CPU / 16 GiB RAM
+- **CPU**: 8 CPU
+- **RAM**: 16-24 GB
+- **Web Workers**: 6-8 Workers, each with 8-32 threads
+- **Background Workers**: 4-8 multithreaded workers with 4-6GiB RAM, depending on workload
+- **Disk Space**: 100 GB + additional disk space in case of internal attachment storage
+
+### **Enterprise-scale multitenancy instance (~80K - 100K users, high concurrent activity)**
+
+- **Database**: Cluster of two 8 vCPU / 32 GiB RAM (e.g., AWS db.m7g.xlarge, Gravitron 3)
+- **Worker instances**: 2-4 instances of the following
+  - **CPU**: 8 CPU (e.g., AWS r7a.xlarge instances)
+  - **RAM**: 32GB
+
+- **Web Workers**: 8 - 12 Workers, each with 8-32 threads and 6GiB available RAM
+- **Background Workers**: 8 multithreaded workers with 4-6GiB RAM, depending on workload
+- **Disk Space**: 250 GB + additional disk space in case of internal attachment storage
+
+
+
+### Additional Scaling Recommendations
+
+- **Monitor Resource Usage**: [Use our health checks to monitor for resource allocation and queueing information](../operation/monitoring/#health-checks). Adjust CPU, RAM, and disk space as needed.
+- **Database Scaling**: Consider external PostgreSQL with performance tuning.
+- **Load Balancing**: For high-availability setups, distribute traffic across multiple servers and availability regions.
+
+
+
+## Host Operating system
 
 The [package-based installation](../installation/packaged) requires one of the following Linux distributions:
 
