@@ -94,7 +94,7 @@ export class OpBasicSingleDatePickerComponent implements ControlValueAccessor, O
   // interfere when calling the html id attribute of the component. The component would still
   // get an id attribute assigned if provided when declaring the component, but it will not
   // programatically overwrite the id accessor from angular.
-  id = `flatpickr-input-${+(new Date())}`;
+  @Input() inputId = `flatpickr-input-${+(new Date())}`;
 
   @Input() name = '';
 
@@ -168,7 +168,7 @@ export class OpBasicSingleDatePickerComponent implements ControlValueAccessor, O
   private initializeDatePicker() {
     this.datePickerInstance = new DatePicker(
       this.injector,
-      this.id,
+      this.inputId,
       this.value || '',
       {
         allowInput: true,

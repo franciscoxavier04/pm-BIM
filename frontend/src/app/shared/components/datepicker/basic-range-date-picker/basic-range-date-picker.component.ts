@@ -117,7 +117,7 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
   // get an id attribute assigned if provided when declaring the component, but it will not
   // programatically overwrite the id accessor from angular.
 
-  id = `flatpickr-input-${+(new Date())}`;
+  @Input() inputId = `flatpickr-input-${+(new Date())}`;
 
   @Input() name = '';
 
@@ -193,7 +193,7 @@ export class OpBasicRangeDatePickerComponent implements OnInit, ControlValueAcce
   private initializeDatePicker() {
     this.datePickerInstance = new DatePicker(
       this.injector,
-      this.id,
+      this.inputId,
       this.value || '',
       {
         allowInput: true,

@@ -44,7 +44,7 @@ class Widget::Filters::Date < Widget::Filters::Base
         text1 = angular_component_tag "opce-basic-single-date-picker",
                                       inputs: {
                                         value: filter.values.first.to_s,
-                                        id: "#{id_prefix}arg_1_val",
+                                        inputId: "#{id_prefix}arg_1_val",
                                         name:
                                       }
         label1 + text1
@@ -58,7 +58,7 @@ class Widget::Filters::Date < Widget::Filters::Base
         text2 = angular_component_tag "opce-basic-single-date-picker",
                                       inputs: {
                                         value: filter.values.second.to_s,
-                                        id: "#{id_prefix}arg_2_val",
+                                        inputId: "#{id_prefix}arg_2_val",
                                         name: name.to_s
                                       }
         label2 + text2
