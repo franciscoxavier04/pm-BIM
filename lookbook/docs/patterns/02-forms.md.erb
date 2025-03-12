@@ -31,9 +31,8 @@ If a form does not use Subhead sections, then there should be a single 'Save' (u
 ## Form width
 
 In Primer, form elements automatically take the width of the container. In certain cases (especially Settings pages),
-full-width input fields will look strange. For those wide settings pages, the component rendering the form in its
-template should inherit from the base component `AdminSettingsFormComponent`. This component ensures a wrapping
-container, limiting the max-width of the form to `480px`.
+full-width input fields will look strange. For those wide settings pages, we introduced [a pattern](./settings_pages)
+that wraps the form into a container with limited width.
 
 In any container though the form elements can still limit its own width. A good rule of thumb is to fit the size of the
 fields to the expected length of the user input. Date fields can for example be rather small, as they are limited in
