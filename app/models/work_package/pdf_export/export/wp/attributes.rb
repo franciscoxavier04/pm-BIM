@@ -128,6 +128,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     parts = [current_part]
     group.attributes.each do |form_key|
       if allowed_long_text_custom_field?(form_key, work_package)
+        cf = form_key_to_custom_field(form_key)
         if current_part[:type] == :long_text
           current_part[:list] << cf
         else
@@ -145,7 +146,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def allowed_long_text_custom_field?(form_key, work_package)
-    return false if CustomField.custom_field_attribute? form_key
+    return false unless CustomField.custom_field_attribute? form_key
 
     cf = form_key_to_custom_field(form_key)
     return false if cf.nil?
