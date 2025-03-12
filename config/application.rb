@@ -181,6 +181,8 @@ module OpenProject
     # Enable cascade key lookup for i18n
     I18n.backend.class.send(:include, I18n::Backend::Cascade)
 
+    ActiveModel::Translation.raise_on_missing_translations = Rails.env.local?
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
