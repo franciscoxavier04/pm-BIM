@@ -43,11 +43,15 @@ en:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        restricted_visibility: Restricted visibility
+        restricted_visibility_explainer: Only visible to a limited group of members. %{who_link_text}
+        restricted_journal: Restricted comments are visible to a limited group of members.
 
   admin:
     plugins:

@@ -50,7 +50,7 @@ module WorkPackages
       attr_reader :work_package, :filter, :last_server_timestamp, :deferred
 
       def wrapper_data_attributes
-        stimulus_controller = "work-packages--activities-tab--index"
+        stimulus_controller = activities_tab_index_stimulus_controller
 
         {
           test_selector: "op-wp-activity-tab",
@@ -68,6 +68,19 @@ module WorkPackages
         }
       end
 
+      def add_comment_wrapper_data_attributes
+        stimulus_controller = "work-packages--activities-tab--restricted-comment"
+
+        {
+          test_selector: "op-work-package-journal--new-comment-component",
+          controller: stimulus_controller,
+          "application-target": "dynamic",
+          "#{stimulus_controller}-target": "formContainer",
+          action: "#{activities_tab_index_stimulus_controller}:onSubmit-end@window->#{stimulus_controller}#onSubmitEnd",
+          "#{stimulus_controller}-highlight-class": "work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment" # rubocop:disable Layout/LineLength
+        }
+      end
+
       def polling_interval
         # Polling interval should only be adjustable in test environment
         if Rails.env.test?
@@ -80,6 +93,8 @@ module WorkPackages
       def adding_comment_allowed?
         User.current.allowed_in_work_package?(:add_work_package_notes, @work_package)
       end
+
+      def activities_tab_index_stimulus_controller = "work-packages--activities-tab--index"
     end
   end
 end

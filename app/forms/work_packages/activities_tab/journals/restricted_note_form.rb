@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2023 the OpenProject GmbH
+# Copyright (C) 2012-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -25,44 +27,30 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module WorkPackages::ActivitiesTab::Journals
+  class RestrictedNoteForm < ApplicationForm
+    form do |notes_form|
+      notes_form.check_box(
+        name: :restricted,
+        label: I18n.t("activities.work_packages.activity_tab.restricted_visibility"),
+        checked: false,
+        label_arguments: { class: "no-wrap" },
+        data: {
+          "work-packages--activities-tab--restricted-comment-target": "restrictedCheckbox",
+          action: "input->work-packages--activities-tab--restricted-comment#toggleBackgroundColor"
+        },
+        caption:
+      )
+    end
 
-module WorkPackages
-  module ActivitiesTab
-    module Journals
-      class NewComponent < ApplicationComponent
-        include ApplicationHelper
-        include OpPrimer::ComponentHelpers
-        include OpTurbo::Streamable
+    private
 
-        def initialize(work_package:, journal: nil, form_hidden_initially: true)
-          super
-
-          @work_package = work_package
-          @journal = journal
-          @form_hidden_initially = form_hidden_initially
-        end
-
-        private
-
-        attr_reader :work_package, :form_hidden_initially
-
-        def journal
-          @journal || Journal.new(journable: work_package)
-        end
-
-        def button_row_display_value
-          form_hidden_initially ? :block : :none
-        end
-
-        def form_row_display_value
-          form_hidden_initially ? :none : :block
-        end
-
-        def adding_restricted_comment_allowed?
-          OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? &&
-            User.current.allowed_in_work_package?(:add_comments_with_restricted_visibility, work_package)
-        end
-      end
+    def caption
+      href = ::OpenProject::Static::Links.url_for(:user_guides_work_package_activity)
+      I18n.t("activities.work_packages.activity_tab.restricted_visibility_explainer",
+             who_link_text: render(Primer::Beta::Link.new(href:, target: "_blank")) do
+               I18n.t("activities.work_packages.activity_tab.label_who")
+             end).html_safe
     end
   end
 end
