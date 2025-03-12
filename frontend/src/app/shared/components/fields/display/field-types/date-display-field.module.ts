@@ -32,7 +32,6 @@ import { InjectField } from 'core-app/shared/helpers/angular/inject-field.decora
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { TimezoneService } from 'core-app/core/datetime/timezone.service';
 import {
-  pinIconData,
   toDOMString,
   opAutoDateIconData,
 } from '@openproject/octicons-angular';
@@ -82,22 +81,17 @@ export class DateDisplayField extends HighlightableDisplayField {
   protected schedulingIcon():HTMLElement {
     const schedulingIcon = document.createElement('span');
 
-    const pinIconString:string = toDOMString(
-      pinIconData,
-      'small',
-      { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
-    );
     const autoDateIconString:string = toDOMString(
       opAutoDateIconData,
       'small',
       { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
     );
 
-    schedulingIcon.innerHTML = this.resource.scheduleManually ? pinIconString : autoDateIconString;
+    schedulingIcon.innerHTML = autoDateIconString;
     return schedulingIcon;
   }
 
   private showSchedulingMode():boolean {
-    return this.name === 'startDate' || this.name === 'date';
+    return !this.resource.scheduleManually && (this.name === 'startDate' || this.name === 'date');
   }
 }
