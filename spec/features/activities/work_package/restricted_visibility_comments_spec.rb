@@ -162,7 +162,7 @@ RSpec.describe "Work package comments with restricted visibility",
                          permissions: %i[view_work_packages add_work_package_notes
                                          edit_own_work_package_notes
                                          view_comments_with_restricted_visibility
-                                         write_comments_with_restricted_visibility
+                                         add_comments_with_restricted_visibility
                                          edit_own_comments_with_restricted_visibility
                                          edit_others_comments_with_restricted_visibility])
     create(:user, firstname: "Project", lastname: "Admin",
@@ -182,7 +182,7 @@ RSpec.describe "Work package comments with restricted visibility",
                                                     permissions: %i[view_work_packages add_work_package_notes
                                                                     edit_own_work_package_notes
                                                                     view_comments_with_restricted_visibility
-                                                                    write_comments_with_restricted_visibility
+                                                                    add_comments_with_restricted_visibility
                                                                     edit_own_comments_with_restricted_visibility])
     create(:user,
            firstname: "A",
