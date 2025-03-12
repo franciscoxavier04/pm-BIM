@@ -300,6 +300,10 @@ module Components
         expect(page).to have_test_selector("op-work-package-journal-form-element")
       end
 
+      def dismiss_comment_editor_with_esc
+        page.find_test_selector("op-work-package-journal-form-element").send_keys(:escape)
+      end
+
       def get_all_comments_as_array
         page.all(".work-packages-activities-tab-journals-item-component--journal-notes-body").map(&:text)
       end
