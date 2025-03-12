@@ -117,7 +117,11 @@ module Activities
 
     def filter_by_visibility(events)
       events.reject! do |event|
-        event.journal.restricted? && !@user.allowed_in_project?(:view_comments_with_restricted_visibility, event.project)
+        if OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
+          event.journal.restricted? && !@user.allowed_in_project?(:view_comments_with_restricted_visibility, event.project)
+        else
+          event.journal.restricted?
+        end
       end
     end
 

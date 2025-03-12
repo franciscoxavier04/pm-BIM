@@ -51,7 +51,7 @@ RSpec.describe API::V3::Activities::ActivitiesByWorkPackageAPI do # rubocop:disa
       allow(User).to receive(:current).and_return(current_user)
     end
 
-    describe "GET /api/v3/work_packages/:id/activities" do
+    describe "GET /api/v3/work_packages/:id/activities", with_flag: { comments_with_restricted_visibility: true } do
       context "when activities do not include restricted journals" do
         before do
           get api_v3_paths.work_package_activities work_package.id

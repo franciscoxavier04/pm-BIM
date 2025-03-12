@@ -235,7 +235,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when a user cannot see comments with restricted visibility" do
+    context "when a user cannot see comments with restricted visibility",
+            with_flag: { comments_with_restricted_visibility: true } do
       current_user { member }
 
       before do
@@ -255,7 +256,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    context "when a user can see comments with restricted visibility" do
+    context "when a user can see comments with restricted visibility",
+            with_flag: { comments_with_restricted_visibility: true } do
       current_user { admin }
 
       before do
