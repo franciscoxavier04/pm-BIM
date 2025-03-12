@@ -48,44 +48,14 @@
       grid-area: subject
       @include text-shortener(false)
 
-    &-assignee
-      margin-right: auto
-      grid-area: avatar
-      max-width: 140px
-      color: var(--fgColor-muted)
-      font-size: 12px
-
-    &-id
-      grid-area: id
-      color: var(--fgColor-muted)
-      font-size: 12px
-    &-status-baseline
-      grid-area: status
-      margin-right: 5px
-      max-width: 6.5rem
-      display: flex
-
-    &-status
-      overflow: hidden
-
-    &-baseline
-      margin-left: $spot-spacing-0_5
-
-      &-tooltip
-        width: 6.5rem
-
     &-dates
       grid-area: dates
       place-self: center end
       white-space: nowrap
       color: var(--fgColor-muted)
       font-size: 12px
-
-    &-inline-date
-      font-size: 12px
       color: var(--fgColor-muted)
       margin: 0 8px
-      white-space: nowrap
 
   &--highlighting
     width: 100%
