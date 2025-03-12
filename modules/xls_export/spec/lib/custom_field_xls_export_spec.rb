@@ -66,10 +66,10 @@ RSpec.describe "WorkPackageXlsExport Custom Fields" do
 
   let(:work_package3) { create(:work_package, project:, type:) }
   let(:work_packages) { [work_package1, work_package2, work_package3] }
-  let(:current_user) { create(:admin) }
+  let(:admin) { create(:admin) }
 
-  let!(:query) do
-    query              = build(:query, user: current_user, project:)
+  let(:query) do
+    query = build(:query, user: current_user, project:)
     query.column_names = ["subject", custom_field.column_name]
     query.sort_criteria = [%w[id asc]]
 
@@ -89,6 +89,8 @@ RSpec.describe "WorkPackageXlsExport Custom Fields" do
     io = StringIO.new(export.export!.content)
     Spreadsheet.open(io).worksheets.first
   end
+
+  current_user { admin }
 
   def custom_values_for(*values)
     values.map do |str|
