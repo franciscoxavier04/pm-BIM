@@ -74,7 +74,6 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     end
   end
 
-
   def write_query_group(group, work_package)
     prepare_query_group(group, work_package)
     related_work_packages = group.query.results.work_packages
@@ -174,9 +173,13 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     with_margin(styles.wp_attributes_group_label_margins) do
       pdf.formatted_text([styles.wp_attributes_group_label
                                 .merge({ text: group.translated_key })])
-      hr_style = styles.wp_attributes_group_label_hr
-      write_horizontal_line(pdf.cursor, hr_style[:height], hr_style[:color])
+      write_group_title_hr
     end
+  end
+
+  def write_group_title_hr
+    hr_style = styles.wp_attributes_group_label_hr
+    write_horizontal_line(pdf.cursor, hr_style[:height], hr_style[:color])
   end
 
   def form_config_group_to_column_entries_rows(list)
