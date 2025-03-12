@@ -30,6 +30,13 @@ export default class MyTimeTrackingController extends Controller {
       events: this.timeEntriesValue,
       headerToolbar: false,
       initialDate: this.initialDateValue,
+      eventClassNames: ['calendar-time-entry-event'],
+      eventContent: (arg) => {
+        if (arg.event.extendedProps.hasOwnProperty('customEventView')) {
+          return { html: arg.event.extendedProps.customEventView };
+        }
+        return null;
+      },
     });
 
     this.calendar.render();

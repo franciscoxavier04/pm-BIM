@@ -29,50 +29,26 @@
 #++
 
 module FullCalendar
-  class Event
-    include ActiveModel::Model
-    include ActiveModel::Attributes
+  class TimeEntryEvent < Event
+    attr_accessor :time_entry
 
-    attribute :id, :string
-    attribute :group_id, :string
-    attribute :all_day, :boolean, default: false
-    attribute :starts_at, :datetime
-    attribute :ends_at, :datetime
-    attribute :title, :string
-    attribute :url, :string
-    attribute :class_names, array: true, default: []
-    attribute :editable, :boolean, default: false
+    class << self
+      def from_time_entry(time_entry)
+        event = new(
+          id: time_entry.id,
+          starts_at: time_entry.start_timestamp || time_entry.spent_on,
+          ends_at: time_entry.end_timestamp || time_entry.spent_on,
+          all_day: time_entry.start_time.blank?,
+          title: "#{time_entry.project.name}: ##{time_entry.work_package.id} #{time_entry.work_package.subject}"
+        )
+        event.time_entry = time_entry
 
-    def as_json
-      {
-        "id" => id,
-        "groupId" => group_id,
-        "allDay" => all_day,
-        "start" => starts_at,
-        "end" => ends_at,
-        "title" => title,
-        "url" => url,
-        "classNames" => class_names,
-        "editable" => editable,
-        "customEventView" => rendered_event_content
-      }.compact_blank.as_json
-    end
-
-    def to_json(*)
-      as_json.to_json(*)
+        event
+      end
     end
 
     def event_content_view_component
-      # override in subclasses
-      nil
-    end
-
-    private
-
-    def rendered_event_content
-      if event_content_view_component
-        ApplicationController.render(event_content_view_component, layout: false)
-      end
+      TimeTracking::TimeEntryEventComponent.new(time_entry: time_entry)
     end
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
 #
@@ -26,53 +26,10 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-module FullCalendar
-  class Event
-    include ActiveModel::Model
-    include ActiveModel::Attributes
-
-    attribute :id, :string
-    attribute :group_id, :string
-    attribute :all_day, :boolean, default: false
-    attribute :starts_at, :datetime
-    attribute :ends_at, :datetime
-    attribute :title, :string
-    attribute :url, :string
-    attribute :class_names, array: true, default: []
-    attribute :editable, :boolean, default: false
-
-    def as_json
-      {
-        "id" => id,
-        "groupId" => group_id,
-        "allDay" => all_day,
-        "start" => starts_at,
-        "end" => ends_at,
-        "title" => title,
-        "url" => url,
-        "classNames" => class_names,
-        "editable" => editable,
-        "customEventView" => rendered_event_content
-      }.compact_blank.as_json
-    end
-
-    def to_json(*)
-      as_json.to_json(*)
-    end
-
-    def event_content_view_component
-      # override in subclasses
-      nil
-    end
-
-    private
-
-    def rendered_event_content
-      if event_content_view_component
-        ApplicationController.render(event_content_view_component, layout: false)
-      end
-    end
+module TimeTracking
+  class TimeEntryEventComponent < ApplicationComponent
+    options :time_entry
   end
 end
