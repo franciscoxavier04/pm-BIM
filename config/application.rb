@@ -54,10 +54,10 @@ module OpenProject
     # https://guides.rubyonrails.org/configuring.html#versioned-default-values
     # for the default values associated with a particular version.
     #
-    # Goal is to reach 7.0 defaults. Overridden defaults should be stored in
+    # Goal is to reach 8.0 defaults. Overridden defaults should be stored in
     # specific initializers files. See
     # https://community.openproject.org/wp/45463 for details.
-    config.load_defaults 5.0
+    config.load_defaults 5.1
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
