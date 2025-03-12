@@ -317,8 +317,8 @@ module SortHelper
   #       </div>
   #     </th>
   #
-  def sort_header_tag(column, allowed_params: nil, **options)
-    with_sort_header_options(column, allowed_params:, **options) do |col, cap, default_order, **opts|
+  def sort_header_tag(column, allowed_params: nil, **)
+    with_sort_header_options(column, with_title: true, allowed_params:, **) do |col, cap, default_order, **opts|
       sort_link(col, cap, default_order, **opts)
     end
   end
@@ -328,15 +328,15 @@ module SortHelper
   #
   # This is a more specific version of #sort_header_tag.
   # For "filter by" to work properly, you must pass a Hash for `filter_column_mapping`.
-  def sort_header_with_action_menu(column, all_columns, filter_column_mapping = {}, allowed_params: nil, **options)
-    with_sort_header_options(column.attribute, allowed_params:, **options) do |_col, cap, default_order, **opts|
-      action_menu(column, all_columns, cap, default_order, filter_column_mapping, **opts)
+  def sort_header_with_action_menu(column, all_columns, filter_column_mapping = {}, allowed_params: nil, **)
+    with_sort_header_options(column.attribute, with_title: false, allowed_params:, **) do |_col, cap, default_order, **opts|
+      action_menu(column, all_columns, cap, default_order, filter_column_mapping, **opts.except(:title))
     end
   end
 
   # Extracts the given `options` and provides them to a block.
   # See #sort_header_tag and #sort_header_with_action_menu for usage examples.
-  def with_sort_header_options(column, allowed_params: nil, **options)
+  def with_sort_header_options(column, allowed_params: nil, with_title: false, **options)
     caption = get_caption(column, options)
 
     default_order = options.delete(:default_order) || "asc"
@@ -344,7 +344,7 @@ module SortHelper
     param = options.delete(:param) || :sort
     data = options.delete(:data) || {}
 
-    options[:title] = sort_header_title(column, caption, options)
+    options[:title] = sort_header_title(column, caption, options) if with_title
     options[:icon_only_header] = column == :favored
 
     within_sort_header_tag_hierarchy(options, sort_class(column)) do
