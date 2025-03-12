@@ -125,15 +125,12 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
   ) {
     const details = event.detail;
 
-    // try to set dates only if needed because if we set flatpickr dates,
-    // flatpickr jumps the calendar date to the due date, which is annoying.
-    if (this.isDifferentDates(details.dates, details.mode)) {
-      [this.startDateValue, this.dueDateValue] = details.dates;
-      const currentMonth = this.datePickerInstance.datepickerInstance.currentMonth;
-
-      this.datePickerInstance.setDates(details.dates);
-      this.datePickerInstance.datepickerInstance.changeMonth(currentMonth, false);
-    }
+    // flatpickr jumps the calendar date to the last date, which is annoying
+    // when the start date is changed. Find which date has changed and jump to
+    // that date if it's not visible.
+    const dateToJumpTo = this.findDateToJumpTo(details.dates);
+    [this.startDateValue, this.dueDateValue] = details.dates;
+    this.setDatePickerDates(details.dates, dateToJumpTo);
 
     this.datePickerInstance.setOption('mode', details.mode);
 
@@ -145,6 +142,52 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
     // If both dates are set, we want to see the selection state
     if (details.dates.length === 2) {
       this.allowHoverFor(this.datePickerInstance.datepickerInstance.calendarContainer);
+    }
+  }
+
+  private findDateToJumpTo(dates:Date[]):Date|null {
+    const [start, end] = dates;
+    if (start && start?.getTime() !== this.startDateValue?.getTime()) {
+      return start;
+    }
+    if (end?.getTime() !== this.dueDateValue?.getTime()) {
+      // if end date changed to null, we jump to the start date, even if it did not change
+      return end || start || null;
+    }
+    return null;
+  }
+
+  // set dates on flatpickr, trying to avoid jumping to a different month when possible
+  private setDatePickerDates(dates:Date[], jumpToDate:Date|null) {
+    const monthBefore = this.datePickerInstance.datepickerInstance.currentMonth;
+    const yearBefore = this.datePickerInstance.datepickerInstance.currentYear;
+
+    // only set dates if they changed to avoid jumping
+    if (!_.isEqual(dates, this.datePickerInstance.datepickerInstance.selectedDates)) {
+      this.datePickerInstance.setDates(dates);
+    }
+
+    // jump to the date that has been changed if there is one
+    if (jumpToDate) {
+      this.datePickerInstance.datepickerInstance.jumpToDate(jumpToDate, false);
+    }
+
+    // if we only show one month, we don't need to jump to a different month
+    if (this.datePickerInstance.datepickerInstance.config.showMonths === 1) {
+      return;
+    }
+
+    const monthNow = this.datePickerInstance.datepickerInstance.currentMonth;
+    const yearNow = this.datePickerInstance.datepickerInstance.currentYear;
+
+    if (dates.length === 0 || jumpToDate === null) {
+      // if no dates are selected, jump to the month and year previously displayed
+      const dateBefore = new Date(Date.UTC(yearBefore, monthBefore, 2));
+      this.datePickerInstance.datepickerInstance.jumpToDate(dateBefore, false);
+    } else if ((monthNow === monthBefore + 1 && yearNow === yearBefore)
+              || (monthNow === 0 && monthBefore === 11 && yearNow === yearBefore + 1)) {
+      // if the month on the left now is the one that was on the right before, jump one month back
+      this.datePickerInstance.datepickerInstance.changeMonth(-1);
     }
   }
 
@@ -196,9 +239,11 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
   }
 
   private onFlatpickrChange(dates:Date[], _datestr:string, _instance:flatpickr.Instance) {
+    // convert dates to UTC to be able to compare them correctly
+    const utcDates = dates.map((date) => new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())));
     document.dispatchEvent(
       new CustomEvent('date-picker:flatpickr-dates-changed', {
-        detail: { dates },
+        detail: { dates: utcDates },
       }),
     );
   }
