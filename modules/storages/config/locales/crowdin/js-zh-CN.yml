@@ -2,7 +2,7 @@
 zh-CN:
   js:
     storages:
-      authentication_error: "%{storageType}认证失败"
+      authentication_error: "%{storageType} 认证失败"
       link_files_in_storage: "链接 %{storageType} 中的文件"
       link_existing_files: "链接已有文件"
       upload_files: "上传文件"
