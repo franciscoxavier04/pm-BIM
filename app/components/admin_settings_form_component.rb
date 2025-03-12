@@ -28,36 +28,10 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackages
-  module Types
-    class SettingsComponent < AdminSettingsFormComponent
-      include OpPrimer::ComponentHelpers
-      include OpTurbo::Streamable
-
-      def initialize(model, copy_workflow_from: nil, **)
-        @copy_workflow_from = copy_workflow_from
-        super(model, **)
-      end
-
-      def form_options
-        if model.new_record?
-          create_form_options
-        else
-          update_form_options
-        end
-      end
-
-      private
-
-      attr_reader :copy_workflow_from
-
-      def create_form_options
-        { url: types_path, method: :post, model:, copy_workflow_from: }
-      end
-
-      def update_form_options
-        { url: update_tab_type_path(id: model.id, tab: :settings), method: :patch, model: }
-      end
+class AdminSettingsFormComponent < ApplicationComponent
+  def render_in(view_context, &)
+    tag.div(class: "op-admin-settings-form-wrapper") do
+      super
     end
   end
 end
