@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -37,20 +39,24 @@ RSpec.describe Queries::WorkPackages::Selects::CustomFieldSelect do
   it_behaves_like "query column", sortable_by_default: true
 
   describe "instances" do
-    let(:text_custom_field) do
-      create(:text_wp_custom_field)
-    end
+    let(:user) { create(:user) }
+    let(:text_custom_field) { create(:text_wp_custom_field) }
+    let(:list_custom_field) { create(:list_wp_custom_field) }
+    let(:wp_relation) { double }
 
-    let(:list_custom_field) do
-      create(:list_wp_custom_field)
+    current_user { user }
+
+    before do
+      allow(wp_relation).to receive(:visible_by_user)
+                              .with(user)
+                              .and_return([text_custom_field, list_custom_field])
     end
 
     context "within project" do
       before do
         allow(project)
           .to receive(:all_work_package_custom_fields)
-          .and_return([text_custom_field,
-                       list_custom_field])
+          .and_return(wp_relation)
       end
 
       it "contains only non text cf columns" do
@@ -62,12 +68,11 @@ RSpec.describe Queries::WorkPackages::Selects::CustomFieldSelect do
       end
     end
 
-    context "global" do
+    context "when global" do
       before do
         allow(WorkPackageCustomField)
           .to receive(:all)
-          .and_return([text_custom_field,
-                       list_custom_field])
+          .and_return(wp_relation)
       end
 
       it "contains only non text cf columns" do
