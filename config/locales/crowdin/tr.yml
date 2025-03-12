@@ -230,7 +230,7 @@ tr:
             title: Bu öğenin altında herhangi bir hiyerarşi düzeyi yoktur
             description: Başka bir listenin içinde alt öğeler oluşturmak için bu listeye öğeler ekleyin
         delete_dialog:
-          title: "Delete custom field item"
+          title: "Özel alan öğesini sil"
           heading: "Özel alan öğesi silinsin mi?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
@@ -274,7 +274,7 @@ tr:
     errors:
       int?: "bir tamsayı olmalıdır."
       filled?: "doldurulmalı."
-      greater_or_equal_zero: "must be greater or equal to 0."
+      greater_or_equal_zero: "sıfıra eşit ya da büyük olmalı."
       not_found: "bulunamadı."
       rules:
         item:
@@ -613,7 +613,7 @@ tr:
           label: "Elle düzenlenebilir konular"
           caption: "Kullanıcılar iş paketi konularını kısıtlama olmaksızın elle girebilir ve düzenleyebilir."
         automatically_generated_subjects:
-          label: "Automatically generated subjects"
+          label: "Otomatik oluşturulan konular"
           caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
         pattern:
           label: "Konu deseni"
@@ -1567,11 +1567,11 @@ tr:
         updated: "%{old_value} değeri %{value} olarak değişti"
         logged_for: "Logged for"
     filter:
-      changeset: "Değişiklik Listeleri"
+      changeset: "Değişiklik listeleri"
       message: "Forumlar"
       news: "Haberler"
       project_attribute: "Proje öznitelikleri"
-      subproject: "Alt proje dahil"
+      subproject: "Alt projeleri dahil et"
       time_entry: "Harcanan zaman"
       wiki_edit: "Rehber"
       work_package: "İş paketleri"
@@ -1628,7 +1628,7 @@ tr:
     journal_notes: "Yorum"
     lastname: "Soyisim"
     login: "Kullanıcı adı"
-    lock_version: "Lock version"
+    lock_version: "Sürümü kilitle"
     mail: "Eposta"
     name: "İsim"
     note: "Not"
@@ -3532,7 +3532,7 @@ tr:
     warnings:
       cannot_annotate: "Bu dosyaya açıklama yapılamaz."
   scheduling:
-    activated: "etkinleştirmek"
+    activated: "etkinleştirildi"
     deactivated: "devre dışı bırakmak"
   search_input_placeholder: "Ara ..."
   setting_after_first_login_redirect_url: "İlk giriş yönlendirmesi"

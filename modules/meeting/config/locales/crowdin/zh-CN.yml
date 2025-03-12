@@ -63,7 +63,7 @@ zh-CN:
         recurring_meeting:
           must_cover_existing_meetings:
             one: "该系列会议中有一次公开会议未列入新时间表。请调整时间表，将会议包含在内。"
-            other: "%{count} 公开会议未列入新时间表。请调整时间表，将会议包含在内。"
+            other: "%{count} 个公开会议未列入新时间表。请调整时间表，将会议包含在内。"
             format: "%{message}"
       messages:
         invalid_time_format: "不是有效时间。所需格式：HH:MM"
@@ -417,8 +417,8 @@ zh-CN:
   text_add_work_package_to_meeting_description: "一个工作包可以添加到一个或多个会议供讨论。与此相关的任何说明也可在这里看到。"
   text_agenda_item_no_notes: "未提供备注"
   text_agenda_item_not_editable_anymore: "此议程项目已不可编辑。"
-  text_agenda_item_move_next_meeting: "您确定要将此移至%{date}%{time}的下一次会议吗？"
-  text_agenda_item_moved_to_next_meeting: "议程项目移至下次会议，日期%{date}"
+  text_agenda_item_move_next_meeting: "您确定要将此移至 %{date} %{time} 的下一次会议吗？"
+  text_agenda_item_moved_to_next_meeting: "议程项目移至下次会议，日期 %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "该工作包尚未被安排到即将举行的会议议程中。"
   text_agenda_item_move_next_meeting_cancelled: "这一系列中的下一次会议已被取消。"
   text_work_package_add_to_meeting_hint: '使用"添加到会议"按钮将此工作包添加到即将举行的会议。'

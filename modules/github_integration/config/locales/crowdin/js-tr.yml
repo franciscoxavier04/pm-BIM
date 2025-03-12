@@ -27,8 +27,8 @@ tr:
       tab_header:
         title: "Çekme istekleri"
         copy_menu:
-          label: Git snippetları
-          description: Git snippet'lerini panoya kopyala
+          label: Git kod parçaları
+          description: Git kod parçalarını panoya kopyala
         git_actions:
           branch_name: Dal adı
           commit_message: İşlem mesajı
