@@ -43,6 +43,8 @@ class WorkPackages::DatePickerController < ApplicationController
   attr_accessor :work_package
 
   def show
+    set_date_attributes_to_work_package
+
     respond_to do |format|
       format.html do
         render :show,
@@ -51,8 +53,6 @@ class WorkPackages::DatePickerController < ApplicationController
       end
 
       format.turbo_stream do
-        set_date_attributes_to_work_package
-
         replace_via_turbo_stream(
           component: datepicker_modal_component
         )
