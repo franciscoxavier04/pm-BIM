@@ -67,7 +67,7 @@ In the _packaged installation_ you can have multiple servers running OpenProject
 
 > [!NOTE]
 >
-> We recommend to run OpenProject in a [Kubernetes deployment using our Helm charts](../installation/helm-chart), or in smaller environments, [docker compose](../installation/docker-compose) or [docker Swarm](../installation/docker/#docker-swarm). All these deployment options are fully horizontally scalable
+> We recommend to run OpenProject in a [Kubernetes deployment using our Helm charts](../installation/helm-chart), or in smaller environments, [docker compose](../installation/docker-compose) or [docker Swarm](../installation/docker/#docker-swarm). Kubernetes and Docker swarm are fully horizontally scalable
 
 ### Scaling parameters
 
@@ -82,16 +82,7 @@ Extrapolating the general system requirements for different sets of users, you w
 
 These values are **guidelines** and should be adjusted based on actual monitoring of resource usage. Scaling should prioritize **CPU and RAM, prioritize scaling Web Workers** first, followed by **Background Workers and Disk Space** as needed.
 
-The following environment variables are relevant for performance.. [For more information on applying scaling options, please see this document](../installation/operation/scaling/).
-
-- `OPENPROJECT_WEB_WORKERS`: Number of web workers handling HTTP requests. Note that in Kubernetes deployments, this value is applied using replicas of the services.
-- `OPENPROJECT_WEB_TIMEOUT`: Maximum request processing time in seconds.
-- `OPENPROJECT_WEB_WAIT__TIMEOUT`: Timeout for waiting requests in seconds.
-- `OPENPROJECT_WEB_MIN__THREADS`: Minimum number of threads per web worker.
-- `OPENPROJECT_WEB_MAX__THREADS`: Maximum number of threads per web worker.
-- `OPENPROJECT_GOOD__JOB__MAX_THREADS`: Maximum number of threads for background workers.
-
-
+ [For more information on applying scaling options depending on your installation method, please see this document](../installation/operation/scaling/).
 
 ## Example Configurations
 
