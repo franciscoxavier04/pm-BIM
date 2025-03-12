@@ -1037,6 +1037,7 @@ fr:
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Certains modes écraseront les couleurs personnalisées du thème pour l'accessibilité et la lisibilité. Pour le thème personnalisé complet, veuillez sélectionner le mode Clair."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

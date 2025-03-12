@@ -1028,6 +1028,7 @@ zh-TW:
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作項目時提示我"
         theme: "模式 "
+        time_zone: "Time zone"
         mode_guideline: "為了親和性以及方便閱讀性，某些模式將覆蓋自訂主題顏色。對於完整的自訂主題，請選擇白色模式。"
         daily_reminders: "每日提醒"
         workdays: "工作日"

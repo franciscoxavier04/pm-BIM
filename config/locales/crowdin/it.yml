@@ -1036,6 +1036,7 @@ it:
         auto_hide_popups: "Nascondi automaticamente le notifiche di successo"
         warn_on_leaving_unsaved: "Avvisami quando sto lasciando una macro-attività non salvata"
         theme: "Modalità"
+        time_zone: "Time zone"
         mode_guideline: "Alcune modalità sovrascrivono i colori del tema personalizzato per ragioni di accessibilità e leggibilità. Per usare il tema personalizzato completo, seleziona la modalità Chiaro."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

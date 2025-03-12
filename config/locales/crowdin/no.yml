@@ -1038,6 +1038,7 @@
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
         theme: "Modus"
+        time_zone: "Time zone"
         mode_guideline: "Noen moduser vil overskrive tilpassede temafarger for tilgjengelighet og leselighet. For å få fullstendig tilpasset tema, velg lys modus."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

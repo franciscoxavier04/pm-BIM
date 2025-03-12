@@ -1039,6 +1039,7 @@ bg:
         auto_hide_popups: "Автоматично скриване на успешните известия"
         warn_on_leaving_unsaved: "Предупреждавайте ме при напускане на работен пакет с незаписани промени"
         theme: "Режим"
+        time_zone: "Time zone"
         mode_guideline: "Някои режими ще пренапишат цветовете на персонализираната тема за достъпност и четливост. За пълна персонализирана тема изберете режим Light."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

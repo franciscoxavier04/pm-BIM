@@ -1035,6 +1035,7 @@ nl:
         auto_hide_popups: "Automatisch verbergen geslaagd-meldingen"
         warn_on_leaving_unsaved: "Mij waarschuwen bij het verlaten van een werkpakket met niet-opgeslagen wijzigingen"
         theme: "Modus"
+        time_zone: "Time zone"
         mode_guideline: "Sommige modi overschrijven aangepaste themakleuren voor toegankelijkheid en leesbaarheid. Voor het volledige aangepaste thema selecteert u de Light-modus."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

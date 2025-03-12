@@ -1028,6 +1028,7 @@ ja:
         auto_hide_popups: "成功通知を自動的に隠す"
         warn_on_leaving_unsaved: "変更を保存せずにワークパッケージから移動するときに警告"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

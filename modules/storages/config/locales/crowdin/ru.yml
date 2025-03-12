@@ -289,7 +289,7 @@ ru:
         oauth_configuration: Скопируйте эти значения из %{application_link_text}.
         provider_configuration: Пожалуйста, убедитесь, что у вас есть права администрирования в копии Nextcloud, и перед установкой настроен %{application_link_text}.
         storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        storage_audience_placeholder: e.g. nextcloud
+        storage_audience_placeholder: например, nextcloud
       no_specific_folder: По умолчанию каждый пользователь при загрузке файла начинает работу со своей собственной домашней папки.
       no_storage_set_up: Нет настроенных хранилищ файлов.
       not_logged_into_storage: Чтобы выбрать папку проекта, сначала войдите

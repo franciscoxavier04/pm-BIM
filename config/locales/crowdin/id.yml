@@ -1026,6 +1026,7 @@ id:
         auto_hide_popups: "Pemberitahuan Auto-hide sukses"
         warn_on_leaving_unsaved: "Ingatkan saya ketika meninggalkan sebuah paket kerja dengan perubahan yang belum disimpan"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

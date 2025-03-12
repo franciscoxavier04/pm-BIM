@@ -1030,6 +1030,7 @@ ko:
         auto_hide_popups: "자동 숨김 성공 알림"
         warn_on_leaving_unsaved: "저장하지 않고 작업 패키지를 벗어날 때 알려주세요."
         theme: "모드"
+        time_zone: "Time zone"
         mode_guideline: "일부 모드는 접근성과 가독성을 위해 사용자 지정 테마 색상을 덮어씁니다. 전체 사용자 지정 테마의 경우 라이트 모드를 선택하세요."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

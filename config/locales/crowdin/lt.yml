@@ -1054,6 +1054,7 @@ lt:
         auto_hide_popups: "Automatiškai slėpti sėkmės pranešimus"
         warn_on_leaving_unsaved: "Įspėti mane, kai palieku darbų paketą su neišsaugotais pakeitimais"
         theme: "Režimas"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

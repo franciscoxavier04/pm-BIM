@@ -1036,6 +1036,7 @@ pt-BR:
         auto_hide_popups: "Auto-ocultar notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
         theme: "Modo"
+        time_zone: "Time zone"
         mode_guideline: "Alguns modos substituirão as cores personalizadas do tema para melhorar a acessibilidade e a legibilidade. Para usar o tema totalmente personalizado, selecione o modo Claro."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

@@ -1037,6 +1037,7 @@ da:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"

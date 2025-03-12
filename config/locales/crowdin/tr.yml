@@ -1038,6 +1038,7 @@ tr:
         auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Mod"
+        time_zone: "Time zone"
         mode_guideline: "Bazı modlar, erişilebilirlik ve okunabilirlik için özel tema renklerini değiştirecektir. Özel temada tüm özellikleri kullanmak için lütfen Açık modu seçin."
         daily_reminders: "Günlük hatırlatmalar"
         workdays: "İş günleri"

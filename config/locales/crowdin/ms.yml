@@ -1028,6 +1028,7 @@ ms:
         auto_hide_popups: "Pemberitahuan kejayaan auto-sembunyi"
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
+        time_zone: "Time zone"
         mode_guideline: "Sesetengah mod akan menulis ganti warna tema tersuai untuk kebolehaksesan dan kebolehbacaan. Untuk tema tersuai penuh, sila pilih mod Cahaya."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
