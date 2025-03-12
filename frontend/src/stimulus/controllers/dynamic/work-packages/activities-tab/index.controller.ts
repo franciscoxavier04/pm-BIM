@@ -736,7 +736,7 @@ export default class IndexController extends Controller {
   private isEditorEmpty():boolean {
     const ckEditorInstance = this.getCkEditorInstance();
 
-    return !!(ckEditorInstance && ckEditorInstance.getData({ trim: false }).length === 0);
+    return !!(ckEditorInstance?.getData({ trim: false }).length === 0);
   }
 
   async onSubmit(event:Event | null = null) {
