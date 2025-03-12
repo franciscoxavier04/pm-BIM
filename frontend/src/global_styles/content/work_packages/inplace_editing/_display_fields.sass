@@ -140,9 +140,11 @@ display-field
   display: none
 
 .op-wp-single-card--content-dates
+  span
+    vertical-align: middle
   .display-field--scheduling-icon
     fill: var(--fgColor-muted)
-    vertical-align: text-top
+    margin-right: 0.25rem
 
 .wp-table--cell-container
   &.duration,
@@ -162,7 +164,7 @@ display-field
   .-placeholder
     // The special alignment of placeholders requires a special alignment of the icon
     .display-field--scheduling-icon
-      top: 6px
+      top: 8px
 
 // Sums in wp table
 .wp-table--sum-container.split-time-field
