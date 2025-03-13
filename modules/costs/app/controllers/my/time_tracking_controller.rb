@@ -51,8 +51,11 @@ module My
     helper_method :current_day, :today?, :this_week?, :this_month?, :time_entries_json
 
     def calendar
-      # TODO: on mobile, we should show the day view
-      redirect_to action: :week
+      if browser.device.mobile?
+        redirect_to action: :day
+      else
+        redirect_to action: :week
+      end
     end
 
     def day
