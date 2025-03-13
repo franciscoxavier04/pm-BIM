@@ -216,18 +216,14 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   end
 
   def form_key_to_column_entries(form_key, work_package)
+    return [] if form_key == :bcf_thumbnail
+
     if CustomField.custom_field_attribute? form_key
       return form_key_custom_field_to_column_entries(form_key, work_package)
     end
 
-    if form_key == :date
-      column_entries(%i[start_date due_date duration])
-    elsif form_key == :bcf_thumbnail
-      []
-    else
-      column_name = ::API::Utilities::PropertyNameConverter.to_ar_name(form_key, context: work_package)
-      [column_entry(column_name)]
-    end
+    column_name = ::API::Utilities::PropertyNameConverter.to_ar_name(form_key, context: work_package)
+    [column_entry(column_name)]
   end
 
   def column_entries(column_names)
