@@ -135,7 +135,7 @@ The durations of each agenda item are automatically summed up. If that sum excee
 ![Meeting agenda items duration sum is greater than the meeting duration set in OpenProject](openproject_userguide_meetings_agenda_too_long.png)
 
 #### Add agenda item outcomes
-When a meeting status is [marked as in progress](#mark-meeting-in-progress), you can add outcomes to agenda items to keep important decisions documented. To do that click the **+ Outcome** button below an agenda item.
+During a meeting, stakeholders will often take certain decisions, add useful information or note down follow-up points. In OpenProject, these can be added as outcomes to each agenda item. To note outcomes, the meeting status has to first be set to [in progress](#mark-meeting-in-progress). Once in progress, there will be a **+ Outcome** button at the end of each agenda item. To add an outcome, simply click this button.
 
 ![Button to add an agenda outcome in OpenProject meetings](openproject_userguide_meetings_agenda_outcome_button.png)
 
