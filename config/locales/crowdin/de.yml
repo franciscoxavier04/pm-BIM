@@ -1032,6 +1032,7 @@ de:
         auto_hide_popups: "Benachrichtigungen erfolgreicher Aktionen automatisch ausblenden"
         warn_on_leaving_unsaved: "Beim Verlassen einer Arbeitspaket-Seite mit ungespeichertem Text warnen"
         theme: "Modus"
+        time_zone: "Time zone"
         mode_guideline: "Einige Darstellungsmodi überschreiben die Farben des benutzerdefinierten Designs, um die Barrierefreiheit und Lesbarkeit zu gewährleisten. Für das vollständige benutzerdefinierte Design wählen Sie bitte den hellen Modus."
         daily_reminders: "Daily reminders"
         workdays: "Arbeitstage"
@@ -1599,6 +1600,7 @@ de:
     derived_due_date: "Aggregierter Endtermin"
     derived_estimated_hours: "Arbeit insgesamt"
     derived_start_date: "Aggregierter Starttermin"
+    direction: "Direction"
     display_sums: "Summen anzeigen"
     due_date: "Endtermin"
     estimated_hours: "Aufwand"
@@ -1663,6 +1665,7 @@ de:
     version: "Version"
     visible: "Visible"
     work_package: "Arbeitspaket"
+    work_package_id: "Work package"
   backup:
     failed: "Backup fehlgeschlagen"
     label_backup_token: "Backup-Token"

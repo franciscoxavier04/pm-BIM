@@ -66,13 +66,13 @@ tr:
     note_mr_commented_comment: >
       **Commented in MR:** [%{gitlab_user}](%{gitlab_user_url}) commented this WP in Merge Request %{mr_number} [%{mr_title}](%{mr_url}) on [%{repository}](%{repository_url}): %{mr_note}
     note_issue_referenced_comment: >
-      **Referenced in Issue:** [%{gitlab_user}](%{gitlab_user_url}) referenced this WP in Issue %{issue_number} [%{issue_title}](%{issue_url}) on [%{repository}](%{repository_url}): %{issue_note}
+      **Sorunda Referans Verildi:** [%{gitlab_user}](%{gitlab_user_url}) bu iş paketini %{issue_number} numaralı [%{issue_title}](%{issue_url}) sorununda [%{repository}](%{repository_url}) üzerinde referans verdi: %{issue_note}
     note_issue_commented_comment: >
-      **Commented in Issue:** [%{gitlab_user}](%{gitlab_user_url}) commented this WP in Issue %{issue_number} [%{issue_title}](%{issue_url}) on [%{repository}](%{repository_url}): %{issue_note}
+      **Sorunla Yorumlandı:** [%{gitlab_user}](%{gitlab_user_url}) bu iş paketini %{issue_number} numaralı [%{issue_title}](%{issue_url}) sorununda [%{repository}](%{repository_url}) üzerinde yorumladı: %{issue_note}
     note_snippet_referenced_comment: >
-      **Referenced in Snippet:** [%{gitlab_user}](%{gitlab_user_url}) referenced this WP in Snippet %{snippet_number} [%{snippet_title}](%{snippet_url}) on [%{repository}](%{repository_url}): %{snippet_note}
+      **Kod Parçasında Referans Verildi:** [%{gitlab_user}](%{gitlab_user_url}) bu iş paketini %{snippet_number} [%{snippet_title}](%{snippet_url}) kod parçası ile [%{repository}](%{repository_url}) üzerinde referans verdi: %{snippet_note}
     issue_opened_referenced_comment: >
-      **Issue Opened:** Issue %{issue_number} [%{issue_title}](%{issue_url}) for [%{repository}](%{repository_url}) has been opened by [%{gitlab_user}](%{gitlab_user_url}).
+      **Sorun Açıldı:** %{issue_number} numaralı [%{issue_title}](%{issue_url}) sorunu [%{repository}](%{repository_url}) için [%{gitlab_user}](%{gitlab_user_url}) tarafından açıldı.
     issue_closed_referenced_comment: >
       **Sorun Kapatıldı:** [%{repository}](%{repository_url}) için %{issue_number} [%{issue_title}](%{issue_url}) sorunu [%{gitlab_user}](%{gitlab_user_url}) tarafından kapatılmıştır.
     issue_reopened_referenced_comment: >

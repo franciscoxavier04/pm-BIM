@@ -272,33 +272,35 @@ zh-CN:
                 item_0:
                   subject: 编写第一份草稿
                   description: |-
-                    ## Goal
+                    ## 目标
 
-                    *   Create a useful overview of the results
-                    *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
-                    *   Identify the fundamental boundary conditions of the project
+                    *   创建一个结果的有用概览
+                    *   检查已完成内容并总结结果
+                    *   与客户沟通所有相关结果
+                    *   确定项目的基本边界条件
 
-                    ## Description
+                    ## 描述
 
-                    *   Each topic gets its own overview which will be used as a catalogue of results
-                    *   This overview informs all participants about the decisions made
+                    *   每个主题都有自己的概览，将被用作结果目录
+                    *   此概览向所有参与者通报所做出的决定
                     *   ...
                 item_1:
                   subject: 总结结果
                   description: |-
-                    ## Goal
+                    ## 目标
 
-                    *   Create a useful overview of the results
-                    *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
-                    *   Identify the fundamental boundary conditions of the project
+                    *   创建结果的有用概览
+                    *   检查已完成的工作并总结结果
+                    *   与客户沟通所有相关的结果
+                    *   确定项目的基本边界条件
 
-                    ## Description
+                    ## 描述
 
-                    *   Each topic gets its own overview which will be used as a catalogue of results
-                    *   This overview informs all participants about the decisions made
+                    *   每个主题都有其自己的概览，将被用作结果目录
+                    *   此概览向所有参与者通报所做出的决定
                     *   ...
+
+                    注意：由于您的文本似乎没有完整描述，我提供了一个基于已有内容的翻译。如果需要更详细的翻译或有其他具体内容要添加，请告知。
             item_3:
               subject: 通过初步规划
               description: 此类型在层次结构上是“冲突”和“请求”类型的父项，因此表示一般注释。

@@ -724,7 +724,7 @@ zh-CN:
       context: "项目上下文"
       copy:
         copy_options: "复制选项"
-      not_available: "项目N/A"
+      not_available: "项目 N/A"
       no_template_selected: "（无）"
       required_outside_context: >
         请选择要创建工作包的项目以查看所有属性。 您只能选择已激活上述类型的项目。

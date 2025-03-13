@@ -1036,6 +1036,7 @@ it:
         auto_hide_popups: "Nascondi automaticamente le notifiche di successo"
         warn_on_leaving_unsaved: "Avvisami quando sto lasciando una macro-attività non salvata"
         theme: "Modalità"
+        time_zone: "Time zone"
         mode_guideline: "Alcune modalità sovrascrivono i colori del tema personalizzato per ragioni di accessibilità e leggibilità. Per usare il tema personalizzato completo, seleziona la modalità Chiaro."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1603,6 +1604,7 @@ it:
     derived_due_date: "Data di fine derivata"
     derived_estimated_hours: "Lavoro totale"
     derived_start_date: "Data di inizio derivata"
+    direction: "Direction"
     display_sums: "Visualizza somme"
     due_date: "Data di fine"
     estimated_hours: "Lavoro"
@@ -1667,6 +1669,7 @@ it:
     version: "Versione"
     visible: "Visible"
     work_package: "Macro-attività"
+    work_package_id: "Work package"
   backup:
     failed: "Backup fallito"
     label_backup_token: "Token di backup"

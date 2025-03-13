@@ -134,7 +134,7 @@ module OpenProject
         define_singleton_method :"#{definition.name}?" do
           if definition.format != :boolean
             ActiveSupport::Deprecation.new.warn "Calling #{self}.#{definition.name}? is deprecated since it is not a boolean",
-                                                caller
+                                                caller_locations
           end
           TRUE_VALUES.include? self[definition.name]
         end

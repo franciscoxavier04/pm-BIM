@@ -396,7 +396,7 @@ module ApplicationHelper
   def calendar_for(*_args)
     ActiveSupport::Deprecation.new.warn(
       "calendar_for has been removed. Please use the opce-basic-single-date-picker angular component instead",
-      caller
+      caller_locations
     )
   end
 

@@ -110,7 +110,7 @@ module OpenProject
         ActiveSupport::Deprecation.new.warn(
           "after_login does not return the actually logged in user and has been deprecated. " \
           "Please use OpenProject::Hook omniauth_user_authorized or user_logged_in hooks instead",
-          caller
+          caller_locations
         )
         add_after_login_callback AfterLoginBlockCallback.new(&)
       end

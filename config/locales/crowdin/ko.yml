@@ -1030,6 +1030,7 @@ ko:
         auto_hide_popups: "자동 숨김 성공 알림"
         warn_on_leaving_unsaved: "저장하지 않고 작업 패키지를 벗어날 때 알려주세요."
         theme: "모드"
+        time_zone: "Time zone"
         mode_guideline: "일부 모드는 접근성과 가독성을 위해 사용자 지정 테마 색상을 덮어씁니다. 전체 사용자 지정 테마의 경우 라이트 모드를 선택하세요."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1586,6 +1587,7 @@ ko:
     derived_due_date: "파생된 완료 날짜"
     derived_estimated_hours: "총 작업"
     derived_start_date: "파생된 시작 날짜"
+    direction: "Direction"
     display_sums: "합계 표시"
     due_date: "완료 날짜"
     estimated_hours: "작업"
@@ -1650,6 +1652,7 @@ ko:
     version: "버전"
     visible: "Visible"
     work_package: "작업 패키지"
+    work_package_id: "Work package"
   backup:
     failed: "백업 실패"
     label_backup_token: "백업 토큰"

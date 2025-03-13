@@ -1048,6 +1048,7 @@ hr:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1626,6 +1627,7 @@ hr:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Prikaži iznose"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1690,6 +1692,7 @@ hr:
     version: "Verzija"
     visible: "Visible"
     work_package: "Radni paket"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"

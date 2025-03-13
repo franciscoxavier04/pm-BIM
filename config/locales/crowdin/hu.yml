@@ -1038,6 +1038,7 @@ hu:
         auto_hide_popups: "Siker értesítések automatikus elrejtése"
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Mód"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1605,6 +1606,7 @@ hu:
     derived_due_date: "Származtatott befejezési időpont"
     derived_estimated_hours: "Teljes munka"
     derived_start_date: "Származtatott kezdési időpont\n"
+    direction: "Direction"
     display_sums: "Megjelenitendő összegek"
     due_date: "Befejezési dátum"
     estimated_hours: "Munka"
@@ -1669,6 +1671,7 @@ hu:
     version: "Verzió"
     visible: "Visible"
     work_package: "Feladatcsoport"
+    work_package_id: "Work package"
   backup:
     failed: "A biztonsági mentés sikertelen"
     label_backup_token: "Visszaállítási kulcs"

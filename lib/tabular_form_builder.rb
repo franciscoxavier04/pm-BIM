@@ -73,7 +73,7 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
   end
   private_class_method :with_text_formatting
 
-  (field_helpers - %i(radio_button hidden_field fields_for label text_area) + %i(date_select)).each do |selector|
+  (field_helpers - %i(radio_button hidden_field fields_for label text_area) + %i(date_select check_box)).each do |selector|
     define_method selector, &tag_with_label_method(selector)
   end
 
@@ -101,7 +101,7 @@ class TabularFormBuilder < ActionView::Helpers::FormBuilder
 
     inputs = {
       value: @object.public_send(field),
-      id: field_id(field, index: options[:index]),
+      inputId: field_id(field, index: options[:index]),
       name: options[:name] || field_name(field, index: options[:index])
     }
 

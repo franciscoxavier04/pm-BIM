@@ -230,7 +230,7 @@ tr:
             title: Bu öğenin altında herhangi bir hiyerarşi düzeyi yoktur
             description: Başka bir listenin içinde alt öğeler oluşturmak için bu listeye öğeler ekleyin
         delete_dialog:
-          title: "Delete custom field item"
+          title: "Özel alan öğesini sil"
           heading: "Özel alan öğesi silinsin mi?"
           description: "This action will irreversibly remove the item and all its sub-items. Any assigned values will be permanently deleted. If this field is required, removing items may cause existing work packages to become invalid."
         placeholder:
@@ -274,7 +274,7 @@ tr:
     errors:
       int?: "bir tamsayı olmalıdır."
       filled?: "doldurulmalı."
-      greater_or_equal_zero: "must be greater or equal to 0."
+      greater_or_equal_zero: "sıfıra eşit ya da büyük olmalı."
       not_found: "bulunamadı."
       rules:
         item:
@@ -468,7 +468,7 @@ tr:
         one: "Yalnızca %{shared_work_packages_link} adresi %{shared_role_name} izinleriyle paylaşılmıştır."
         other: "Yalnızca %{shared_work_packages_link} adresi %{shared_role_name} izinleriyle paylaşılmıştır."
       revoke_all_or_with_role: "Tüm paylaşılan iş paketlerine mi yoksa yalnızca %{shared_role_name} izinlerine sahip olanlara mı erişimi iptal etmek istiyorsunuz?"
-      will_not_affect_inherited_shares: "(This will not affect work packages shared with their group)."
+      will_not_affect_inherited_shares: "(Bu, kendi gruplarıyla paylaşılan iş paketlerini etkilemeyecektir)."
       cannot_remove_inherited: "The work packages shares shared via groups cannot be removed."
       cannot_remove_inherited_with_role: "The work packages shares with role %{shared_role_name} are shared via groups and cannot be removed."
       cannot_remove_inherited_note_admin_html: "Paylaşımı gruptan iptal edebilir ya da bu belirli üyeyi %{administration_settings_link} adresinden gruptan kaldırabilirsiniz."
@@ -613,7 +613,7 @@ tr:
           label: "Elle düzenlenebilir konular"
           caption: "Kullanıcılar iş paketi konularını kısıtlama olmaksızın elle girebilir ve düzenleyebilir."
         automatically_generated_subjects:
-          label: "Automatically generated subjects"
+          label: "Otomatik oluşturulan konular"
           caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
         pattern:
           label: "Konu deseni"
@@ -644,7 +644,7 @@ tr:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Start date derived."
+          automatic_mobile: "Başlangıç tarihi türetildi."
           click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
           manual_mobile: "Ignoring relations."
           manual_gap_between_predecessors: "There is a gap between this and all predecessors."
@@ -660,7 +660,7 @@ tr:
         title: "No predecessors"
         description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "Sadece iş günleri"
       mode:
         title: "Programlama modu"
         automatic: "Otomatik"
@@ -755,7 +755,7 @@ tr:
       new_child_text: "Geçerli (ana) iş paketinin bir alt öğesi olarak ilgili bir iş paketi oluşturur"
       existing_child: "Mevcut alt"
       child_description: "İlgili iş paketini geçerli (ana) iş paketinin bir alt öğesi yapar"
-      label_closest: "Closest"
+      label_closest: "En yakın"
       label_blocks_singular: "engelleyen"
       label_blocks_plural: "engelleyen"
       blocks_description: "Bu iş paketi kapatılmadan ilgili iş paketi kapatılamaz"
@@ -1038,6 +1038,7 @@ tr:
         auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Mod"
+        time_zone: "Zaman dilimi"
         mode_guideline: "Bazı modlar, erişilebilirlik ve okunabilirlik için özel tema renklerini değiştirecektir. Özel temada tüm özellikleri kullanmak için lütfen Açık modu seçin."
         daily_reminders: "Günlük hatırlatmalar"
         workdays: "İş günleri"
@@ -1567,11 +1568,11 @@ tr:
         updated: "%{old_value} değeri %{value} olarak değişti"
         logged_for: "Logged for"
     filter:
-      changeset: "Değişiklik Listeleri"
+      changeset: "Değişiklik listeleri"
       message: "Forumlar"
       news: "Haberler"
       project_attribute: "Proje öznitelikleri"
-      subproject: "Alt proje dahil"
+      subproject: "Alt projeleri dahil et"
       time_entry: "Harcanan zaman"
       wiki_edit: "Rehber"
       work_package: "İş paketleri"
@@ -1605,6 +1606,7 @@ tr:
     derived_due_date: "Türetilmiş bitiş tarihi"
     derived_estimated_hours: "Toplam İş"
     derived_start_date: "Türetilmiş başlangıç tarihi"
+    direction: "Direction"
     display_sums: "Toplamları görüntüle"
     due_date: "Bitiş tarihi"
     estimated_hours: "Çalışma"
@@ -1628,7 +1630,7 @@ tr:
     journal_notes: "Yorum"
     lastname: "Soyisim"
     login: "Kullanıcı adı"
-    lock_version: "Lock version"
+    lock_version: "Sürümü kilitle"
     mail: "Eposta"
     name: "İsim"
     note: "Not"
@@ -1669,6 +1671,7 @@ tr:
     version: "Sürüm"
     visible: "Görünür"
     work_package: "İş paketi"
+    work_package_id: "Work package"
   backup:
     failed: "Yedekleme başarısız oldu"
     label_backup_token: "Yedek jeton"
@@ -2164,7 +2167,7 @@ tr:
         label: Heceleme
         caption: Daha iyi düzen ve hizalama için kelimeleri böl.
       hyphenation_language:
-        label: Language and hyphenation
+        label: Dil ve heceleme
   extraction:
     available:
       pdftotext: "Pdftotext kullanılabilir (isteğe bağlı)"
@@ -2213,11 +2216,11 @@ tr:
     changes_retracted: "Değişiklikler geri alındı."
     caused_changes:
       dates_changed: "Tarihler değişti"
-      default_attribute_written: "Read-only attributes written"
-      progress_mode_changed_to_status_based: "Progress calculation updated"
-      status_changed: "Status '%{status_name}'"
+      default_attribute_written: "Salt okunur öznitelikler yazıldı"
+      progress_mode_changed_to_status_based: "İlerleme hesaplaması güncellendi"
+      status_changed: "Durum '%{status_name}'"
       system_update: "OpenProject sistem güncellemesi:"
-      work_package_duplicate_closed: "Duplicate work package updated:"
+      work_package_duplicate_closed: "Mükerrer iş paketi güncellendi:"
       total_percent_complete_mode_changed_to_work_weighted_average: "Tamamlanan % toplamlarının hesaplanması artık İşe göre ağırlıklandırılıyor."
       total_percent_complete_mode_changed_to_simple_average: "Calculation of % Complete totals now based on a simple average of only % Complete values."
     cause_descriptions:
@@ -2499,7 +2502,7 @@ tr:
   label_diff_side_by_side: "yan yana"
   label_digital_accessibility: "Dijital erişilebilirlik (DE)"
   label_disabled: "devre dışı"
-  label_disabled_uppercase: "Disabled"
+  label_disabled_uppercase: "Kapalı"
   label_display: "Göster"
   label_display_per_page: "Sayfa başına: %{value}"
   label_display_used_statuses_only: "Yalnızca bu tür tarafından kullanılan durumları görüntüle"
@@ -2527,7 +2530,7 @@ tr:
   label_environment: "Ortam"
   label_estimates_and_progress: "Tahminler ve ilerleme"
   label_equals: "şuysa"
-  label_equals_with_descendants: "is any with descendants"
+  label_equals_with_descendants: "herhangi altı ile"
   label_everywhere: "heryer"
   label_example: "Örnek"
   label_experimental: "Deneysel"
@@ -2548,8 +2551,8 @@ tr:
   label_file_plural: "Dosyalar"
   label_filter: "Filtreler"
   label_filter_add: "Filtre ekle"
-  label_filter_by: "Filter by"
-  label_filter_any_name_attribute: "Name attributes"
+  label_filter_by: "Şuna göre filtrele"
+  label_filter_any_name_attribute: "Ad özniteliği"
   label_filter_plural: "Filtreler"
   label_filters_toggle: "Filtreleri göster / gizle"
   label_float: "Ondalık"
@@ -2585,7 +2588,7 @@ tr:
   label_incoming_emails: "Gelen e-postalar"
   label_includes: "içerir"
   label_incomplete: Tamamlanmadı
-  label_include_sub_projects: Include sub-projects
+  label_include_sub_projects: Alt projeleri dahil et
   label_index_by_date: "Tarihe göre diz"
   label_index_by_title: "Başlığa göre dizin"
   label_information: "Bilgi"
@@ -2595,10 +2598,10 @@ tr:
   label_internal: "Dahili"
   label_introduction_video: "Tanıtım videosu"
   label_invite_user: "Kullanıcı davet et"
-  label_item: "Item"
-  label_item_plural: "Items"
+  label_item: "Öğe"
+  label_item_plural: "Öğe"
   label_share: "Paylaş"
-  label_share_project_list: "Share project list"
+  label_share_project_list: "Proje listesini paylaş"
   label_share_work_package: "İş paketini paylaş"
   label_show_all_registered_users: "Tüm kayıtlı kullanıcıları göster"
   label_show_less: "Daha az göster"
@@ -2623,7 +2626,7 @@ tr:
   label_learn_more: "Daha fazla bilgi edin"
   label_less_or_equal: "<="
   label_less_than_ago: "bir haftadan kısa bir süre önce"
-  label_link_url: "Link (URL)"
+  label_link_url: "Bağlantı"
   label_list: "Liste"
   label_loading: "Yükleniyor..."
   label_lock_user: "Kullanıcıyı kilitle"
@@ -2638,7 +2641,7 @@ tr:
   label_custom_favicon: "Özel favicon"
   label_custom_touch_icon: "Özel dokunma simgesi"
   label_logout: "Oturumu kapat"
-  label_mapping_for: "Mapping for: %{attribute}"
+  label_mapping_for: "%{attribute} için eşleme"
   label_main_menu: "Yan menü"
   label_manage: "Yönet"
   label_manage_groups: "Grupları yönet"
@@ -2761,7 +2764,7 @@ tr:
   label_project: "Proje"
   label_project_activity: "Proje etkinlikleri"
   label_project_attribute_plural: "Proje öznitelikleri"
-  label_project_attribute_manage_link: "Manage project attributes"
+  label_project_attribute_manage_link: "Proje özniteliklerini yönetin"
   label_project_count: "Toplam proje sayısı"
   label_project_copy_notifications: "Proje kopyalaması esnasında bilgilendirme e-postaları gönder"
   label_project_latest: "Son projeler"
@@ -3532,7 +3535,7 @@ tr:
     warnings:
       cannot_annotate: "Bu dosyaya açıklama yapılamaz."
   scheduling:
-    activated: "etkinleştirmek"
+    activated: "etkinleştirildi"
     deactivated: "devre dışı bırakmak"
   search_input_placeholder: "Ara ..."
   setting_after_first_login_redirect_url: "İlk giriş yönlendirmesi"
@@ -4021,7 +4024,7 @@ tr:
   warning_user_limit_reached: >
     Adding additional users will exceed the current limit. Please contact an administrator to increase the user limit to ensure external users are able to access this instance.
   warning_user_limit_reached_admin: >
-    Adding additional users will exceed the current limit. Please <a href="%{upgrade_url}">upgrade your plan</a> to be able to ensure external users are able to access this instance.
+    Ek kullanıcı eklenmesi mevcut sınırı aşacaktır. Harici kullanıcıların bu kuruluma erişebilmesinden emin olmak için <a href="%{upgrade_url}">planınızı yükseltin</a>.
   warning_user_limit_reached_instructions: >
     Kullanıcı sınırınıza ulaştınız (%{current}/%{max} aktif kullanıcılar). Enterprise sürüm planınızı yükseltmek ve ek kullanıcılar eklemek için lütfen sales@openproject.com adresine başvurun.
   warning_protocol_mismatch_html: >
@@ -4098,15 +4101,15 @@ tr:
       group: "Grup"
       role: "Rol"
       type: "Tür"
-    denied: "You don't have permissions to share %{entities}."
+    denied: "%{entities} paylaşımı için yetkiniz bulunmuyor."
     label_search: "Davet etmek için kullanıcı ara"
-    label_search_placeholder: "Search by user or email address"
-    label_toggle_all: "Toggle all shares"
+    label_search_placeholder: "Kullanıcı veya e-posta adresine göre ara"
+    label_toggle_all: "Tüm paylaşımları değiştir"
     remove: "Kaldır"
     share: "Paylaş"
     text_empty_search_description: "Geçerli filtre kriterlerine sahip kullanıcı yok."
     text_empty_search_header: "Herhangi bir eşleşme bulunamadı."
-    text_empty_state_description: "The %{entity} has not been shared with anyone yet."
+    text_empty_state_description: "%{entity} henüz kimseyle paylaşılmamıştır."
     text_empty_state_header: "Paylaşılmamış"
     text_user_limit_reached: "Adding additional users will exceed the current limit. Please contact an administrator to increase the user limit to ensure external users are able to access this %{entity}."
     text_user_limit_reached_admins: 'Ek kullanıcı eklemek mevcut sınırı aşacaktır. Daha fazla kullanıcı ekleyebilmek için lütfen <a href="%{upgrade_url}">planınızı yükseltin</a>.'
@@ -4123,7 +4126,7 @@ tr:
       invite_resent: "Davet yeniden gönderildi"
       not_project_member: "Proje üyesi değil"
       project_group: "Group members might have additional privileges (as project members)"
-      not_project_group: "Group (shared with all members)"
+      not_project_group: "Grup (tüm üyeleri ile paylaşıldı)"
       additional_privileges_project: "Might have additional privileges (as project member)"
       additional_privileges_group: "Might have additional privileges (as group member)"
       additional_privileges_project_or_group: "Might have additional privileges (as project or group member)"
@@ -4327,7 +4330,7 @@ tr:
       connected: "Bağlandı"
       error: "Hata"
       failed_authorization: "Yetkilendirme başarısız oldu"
-      not_connected: "Not connected"
+      not_connected: "Bağlı değil"
     labels:
       label_oauth_integration: "OAuth2 entegrasyonu"
       label_redirect_uri: "Yönlendirme URL'si"
@@ -4381,19 +4384,19 @@ tr:
   enterprise_plans:
     legacy_enterprise: "Kurumsal Plan"
   enterprise_features:
-    baseline_comparison: Baseline Comparison
+    baseline_comparison: Temel Karşılaştırma
     board_view: Pano Görünümü
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
+    conditional_highlighting: Koşullu Vurgulama
+    custom_actions: Özel Eylemler
+    custom_field_hierarchies: Özel Alan Hiyerarşisi
+    customize_life_cycle: Yaşam Döngüsünü Özelleştir
     date_alerts: Tarih Uyarıları
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
+    define_custom_style: Özel Biçim Tanımla
+    edit_attribute_groups: Özellik Grubunu Düzenleme
     gantt_pdf_export: Gantt PDF Dışa Aktarma
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    grid_widget_wp_graph: İş Paketi Grafiği Bileşenleri
+    ldap_groups: LDAP Grupları
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint Dosya Depolama
     placeholder_users: Yer Tutucu Kullanıcılar
     project_list_sharing: Proje Listesi Paylaşımı
     readonly_work_packages: Salt Okunur İş Paketleri
@@ -4401,6 +4404,6 @@ tr:
     team_planner_view: Takım Planlayıcı Görünümü
     two_factor_authentication: İki Adımlı Kimlik Doğrulama
     virus_scanning: Ek Virüs Taraması
-    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_query_relation_columns: İş Paketi Sorgu İlişkisi Sütunları
     work_package_sharing: İş Paketi Paylaşımı
     work_package_subject_generation: İş Paketi Konu Üretimi

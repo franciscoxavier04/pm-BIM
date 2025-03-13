@@ -129,7 +129,10 @@ export class OpWpModalDatePickerComponent extends UntilDestroyedMixin implements
     // flatpickr jumps the calendar date to the due date, which is annoying.
     if (this.isDifferentDates(details.dates, details.mode)) {
       [this.startDateValue, this.dueDateValue] = details.dates;
+      const currentMonth = this.datePickerInstance.datepickerInstance.currentMonth;
+
       this.datePickerInstance.setDates(details.dates);
+      this.datePickerInstance.datepickerInstance.changeMonth(currentMonth, false);
     }
     this.datePickerInstance.setOption('mode', details.mode);
 

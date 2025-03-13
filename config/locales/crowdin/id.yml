@@ -1026,6 +1026,7 @@ id:
         auto_hide_popups: "Pemberitahuan Auto-hide sukses"
         warn_on_leaving_unsaved: "Ingatkan saya ketika meninggalkan sebuah paket kerja dengan perubahan yang belum disimpan"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1582,6 +1583,7 @@ id:
     derived_due_date: "Tanggal selesai turunan"
     derived_estimated_hours: "Total work"
     derived_start_date: "Tanggal mulai turunan"
+    direction: "Direction"
     display_sums: "Tampilkan jumlah"
     due_date: "Tanggal selesai"
     estimated_hours: "Work"
@@ -1646,6 +1648,7 @@ id:
     version: "Versi"
     visible: "Visible"
     work_package: "Paket-Penugasan"
+    work_package_id: "Work package"
   backup:
     failed: "Pencadangan gagal"
     label_backup_token: "Token cadangan"

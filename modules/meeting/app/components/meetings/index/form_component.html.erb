@@ -55,7 +55,7 @@
 
               frequency_row.with_column(
                 flex: 1,
-                hidden: @meeting.frequency_working_days?,
+                style: "visibility: #{@meeting.frequency_working_days? ? "hidden" : "visible"}",
                 data: {
                   target_name: "frequency",
                   not_value: "working_days",
