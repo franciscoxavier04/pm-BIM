@@ -144,7 +144,7 @@ module Costs
 
       menu :global_menu,
            :my_time_tracking,
-           { controller: "/my/time_tracking", action: "week" },
+           { controller: "/my/time_tracking", action: "calendar" },
            after: :my_page,
            caption: :label_my_time_tracking,
            icon: :stopwatch

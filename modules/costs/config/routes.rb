@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   namespace "my" do
     get "/timer" => "timer#show", as: "timers"
 
+    get "/time-tracking" => "time_tracking#calendar"
     get "/time-tracking/day" => "time_tracking#day"
     get "/time-tracking/week" => "time_tracking#week"
     get "/time-tracking/month" => "time_tracking#month"

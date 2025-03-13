@@ -32,7 +32,7 @@ module My
   class TimeTrackingController < ApplicationController
     before_action :require_login
 
-    no_authorization_required!(:day, :week, :month)
+    no_authorization_required!(:calendar, :day, :week, :month)
 
     current_menu_item do |ctrl|
       if ctrl.params[:action] == "day" && ctrl.today?
@@ -49,6 +49,11 @@ module My
     layout "global"
 
     helper_method :current_day, :today?, :this_week?, :this_month?, :time_entries_json
+
+    def calendar
+      # TODO: on mobile, we should show the day view
+      redirect_to action: :week
+    end
 
     def day
       load_time_entries(current_day)
