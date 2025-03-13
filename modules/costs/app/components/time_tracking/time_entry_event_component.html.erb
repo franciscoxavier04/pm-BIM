@@ -2,8 +2,13 @@
 
 <div class="calendar-time-entry-event--content">
   <div class="calendar-time-entry-event-content-dates">
-    <%= time_entry.start_timestamp.strftime("%H:%M") %>-<%= time_entry.end_timestamp.strftime("%H:%M") %>
-    (<%= time_entry.hours %>)
+    <%= l(time_entry.spent_on) %>
+    <%- if time_entry.has_start_and_end_time? %>
+      <%= time_entry.start_timestamp.strftime("%H:%M") %>-<%= time_entry.end_timestamp.strftime("%H:%M") %>
+      (<%= time_entry.hours %>)
+    <%- else %>
+      <%= time_entry.hours %>)
+    <%- end %>
   </div>
   <div class="calendar-time-entry-event--content-subject-line"><%= time_entry.work_package.subject %></div>
   <div class="calendar-time-entry-event--content-project-name"><%= time_entry.project.name %></div>
