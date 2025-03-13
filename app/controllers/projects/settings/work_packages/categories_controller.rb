@@ -26,29 +26,6 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Projects::Settings::TypesController < Projects::SettingsController
+class Projects::Settings::WorkPackages::CategoriesController < Projects::SettingsController
   menu_item :settings_work_packages
-
-  def show
-    @types = ::Type.all
-  end
-
-  def update
-    if UpdateProjectsTypesService.new(@project).call(permitted_params.projects_type_ids)
-      flash[:notice] = success_message
-    else
-      flash[:error] = @project.errors.full_messages
-    end
-
-    redirect_to project_settings_types_path(@project.identifier)
-  end
-
-  private
-
-  def success_message
-    ApplicationController.helpers.sanitize(
-      t(:notice_successful_update_custom_fields_added_to_project, url: project_settings_custom_fields_path(@project)),
-      attributes: %w(href target)
-    )
-  end
 end

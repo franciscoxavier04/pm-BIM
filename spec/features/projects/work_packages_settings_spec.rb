@@ -33,6 +33,7 @@ require "spec_helper"
 RSpec.describe "Projects", "work packages settings menu", :js do
   let!(:project) { create(:project) }
   let(:work_packages_settings_page) { Pages::Projects::Settings::WorkPackages.new(project) }
+  let(:general_settings_page) { Pages::Projects::Settings::General.new(project) }
 
   describe "view settings page" do
     context "when the user has access to types tab" do
@@ -42,7 +43,7 @@ RSpec.describe "Projects", "work packages settings menu", :js do
 
       it "displays the types tab" do
         work_packages_settings_page.visit!
-        expect(page).to have_css(".tabnav-tab", text: I18n.t("settings.work_packages.types_tab"))
+        expect(page).to have_css(".tabnav-tab", text: "Types")
         expect(page).to have_css("#types-form")
       end
     end
@@ -54,8 +55,8 @@ RSpec.describe "Projects", "work packages settings menu", :js do
 
       it "displays the categories tab" do
         work_packages_settings_page.visit!
-        expect(page).to have_css(".tabnav-tab", text: I18n.t("settings.work_packages.categories_tab"))
-        expect(page).to have_css("span", text: I18n.t("projects.settings.categories.no_results_title_text"))
+        expect(page).to have_css(".tabnav-tab", text: "Categories")
+        expect(page).to have_css("span", text: "There are currently no work package categories.")
       end
     end
 
@@ -66,8 +67,8 @@ RSpec.describe "Projects", "work packages settings menu", :js do
 
       it "displays the custom fields tab" do
         work_packages_settings_page.visit!
-        expect(page).to have_css(".tabnav-tab", text: I18n.t("settings.work_packages.custom_fields_tab"))
-        expect(page).to have_css("span", text: I18n.t("projects.settings.custom_fields.no_results_title_text"))
+        expect(page).to have_css(".tabnav-tab", text: "Custom Fields")
+        expect(page).to have_css("span", text: "There are currently no custom fields available.")
       end
     end
 
@@ -76,10 +77,9 @@ RSpec.describe "Projects", "work packages settings menu", :js do
 
       current_user { create(:user, member_with_permissions: { project => permissions }) }
 
-      it "does not display any tabs" do
-        work_packages_settings_page.visit!
-        expect(page).to have_no_css(".tabnav-tab")
-        expect(page).to have_css("span", text: I18n.t("settings.work_packages.not_allowed_text"))
+      it "does not display the menu entry" do
+        general_settings_page.visit!
+        expect(page).to have_no_css(".op-menu--item-title", text: "Work packages")
       end
     end
   end

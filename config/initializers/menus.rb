@@ -650,7 +650,14 @@ Redmine::MenuManager.map :project_menu do |menu|
     },
     project_custom_fields: { caption: :label_project_attributes_plural },
     modules: { caption: :label_module_plural },
-    work_packages: { caption: :label_work_package_plural },
+    work_packages: {
+      caption: :label_work_package_plural,
+      if: ->(project) {
+        User.current.allowed_in_project?(:manage_types, project) ||
+          User.current.allowed_in_project?(:manage_categories, project) ||
+          User.current.allowed_in_project?(:select_custom_fields, project)
+      }
+    },
     versions: { caption: :label_version_plural },
     repository: { caption: :label_repository },
     time_entry_activities: { caption: :enumeration_activities },

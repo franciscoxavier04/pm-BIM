@@ -254,7 +254,6 @@ Rails.application.routes.draw do
       namespace "settings" do
         resource :general, only: %i[show], controller: "general"
         resource :modules, only: %i[show update]
-        resource :types, only: %i[show update]
         resource :project_custom_fields, only: %i[show] do
           member do
             post :toggle
@@ -273,12 +272,18 @@ Rails.application.routes.draw do
             post :disable_all
           end
         end
-        resource :custom_fields, only: %i[show update]
         resource :repository, only: %i[show], controller: "repository"
         resource :versions, only: %i[show]
-        resource :categories, only: %i[show update]
         resource :storage, only: %i[show], controller: "storage"
+        get :types, to: redirect("projects/%{project_id}/settings/work_packages/types")
+        get :custom_fields, to: redirect("projects/%{project_id}/settings/work_packages/custom_fields")
+        get :categories, to: redirect("projects/%{project_id}/settings/work_packages/categories")
         resource :work_packages, only: %i[show]
+        namespace :work_packages do
+          resource :types, only: %i[show update]
+          resource :custom_fields, only: %i[show update]
+          resource :categories, only: %i[show update]
+        end
       end
 
       resource :templated, only: %i[create destroy], controller: "templated"

@@ -26,31 +26,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Projects::Settings::CustomFieldsController < Projects::SettingsController
+class Projects::Settings::WorkPackages::TypesController < Projects::SettingsController
   menu_item :settings_work_packages
 
   def show
-    @wp_custom_fields = WorkPackageCustomField.order("lower(name)")
+    @types = ::Type.all
   end
 
   def update
-    Project.transaction do
-      if update_custom_fields
-        flash[:notice] = t(:notice_successful_update)
-      else
-        flash[:error] = t(:notice_project_cannot_update_custom_fields,
-                          errors: @project.errors.full_messages.join(", "))
-        raise ActiveRecord::Rollback
-      end
+    if UpdateProjectsTypesService.new(@project).call(permitted_params.projects_type_ids)
+      flash[:notice] = success_message
+    else
+      flash[:error] = @project.errors.full_messages
     end
 
-    redirect_to project_settings_custom_fields_path(@project)
+    redirect_to project_settings_types_path(@project.identifier)
   end
 
   private
 
-  def update_custom_fields
-    @project.work_package_custom_field_ids = permitted_params.project[:work_package_custom_field_ids]
-    @project.save
+  def success_message
+    ApplicationController.helpers.sanitize(
+      t(:notice_successful_update_custom_fields_added_to_project, url: project_settings_custom_fields_path(@project)),
+      attributes: %w(href target)
+    )
   end
 end
