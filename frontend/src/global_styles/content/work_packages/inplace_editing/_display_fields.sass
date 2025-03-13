@@ -126,6 +126,8 @@ display-field
   &.combinedDate, &.date
     span
       vertical-align: middle
+      @supports (-moz-appearance: none)
+        vertical-align: unset
     .display-field--scheduling-icon
       margin-right: 0.25rem
 
