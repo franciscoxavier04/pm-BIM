@@ -124,19 +124,23 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
       datepicker.expect_duration ""
 
       datepicker.focus_duration
-      datepicker.set_duration "3"
+      datepicker.set_duration "30"
 
       datepicker.expect_start_date "", visible: false
       datepicker.expect_due_date ""
-      datepicker.expect_duration "3"
+      datepicker.expect_duration "30"
+      # calendar is showing the current month
+      datepicker.expect_month Date.current.strftime("%B")
 
       datepicker.expect_duration_highlighted
 
       datepicker.set_date "2025-02-14"
 
-      datepicker.expect_start_date "2025-02-12"
+      datepicker.expect_start_date "2025-01-06"
       datepicker.expect_due_date "2025-02-14"
-      datepicker.expect_duration "3"
+      datepicker.expect_duration "30"
+      # calendar is showing the month of the start date
+      datepicker.expect_month "January"
 
       datepicker.expect_start_highlighted
     end
@@ -166,6 +170,20 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
       datepicker.expect_duration ""
 
       datepicker.expect_due_highlighted
+    end
+
+    it "keeps the calendar at its position (Bug #62012)" do
+      # calendar is showing the current month
+      datepicker.expect_month Date.current.strftime("%B")
+
+      in_6_months = Date.current.advance(months: 6)
+      datepicker.select_month in_6_months.strftime("%B")
+      datepicker.expect_month in_6_months.strftime("%B")
+
+      # After enabling the start date, the month shown by the calendar should not have changed
+      datepicker.enable_start_date
+      datepicker.expect_start_date ""
+      datepicker.expect_month in_6_months.strftime("%B")
     end
   end
 
@@ -455,6 +473,24 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
       datepicker.expect_duration "3"
 
       datepicker.expect_start_highlighted
+    end
+
+    it "keeps the calendar at its position when the finish date is enabled (Bug #62012)" do
+      # calendar is showing the month of the start date
+      datepicker.expect_month "February"
+
+      datepicker.select_month "May"
+      datepicker.expect_month "May"
+
+      datepicker.enable_due_date
+      datepicker.expect_due_highlighted
+      # After enabling the due date, the month shown by the calendar should not have changed
+      datepicker.expect_month "May"
+
+      datepicker.set_due_date "2025-02-14"
+      datepicker.expect_due_date "2025-02-14"
+      # After setting the due date, the calendar is showing the month of the due date
+      datepicker.expect_month "February"
     end
   end
 
