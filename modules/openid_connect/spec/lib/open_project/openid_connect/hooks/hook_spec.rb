@@ -67,4 +67,93 @@ RSpec.describe OpenProject::OpenIDConnect::Hooks::Hook do
       end
     end
   end
+
+  describe "#user_logged_in" do
+    subject(:call_hook) { described_class.instance.user_logged_in(context) }
+
+    let(:context) { { session:, user: } }
+    let(:session) do
+      {
+        "omniauth.oidc_access_token" => access_token,
+        "omniauth.oidc_refresh_token" => refresh_token,
+        "omniauth.oidc_expires_in" => expires_in
+      }
+    end
+    let(:user) { build_stubbed(:user) }
+
+    let(:access_token) { "an-access-token" }
+    let(:refresh_token) { "a-refresh-token" }
+    let(:expires_in) { 3600 }
+
+    let(:create_service) { instance_double(OpenIDConnect::UserTokens::CreateService, call: nil) }
+    let(:session_mapper) { class_double(OpenProject::OpenIDConnect::SessionMapper, handle_login: nil) }
+
+    before do
+      allow(OpenIDConnect::UserTokens::CreateService).to receive(:new).and_return(create_service)
+      session_mapper.as_stubbed_const
+    end
+
+    it "calls UserTokens::CreateService", :aggregate_failures do
+      call_hook
+
+      expect(OpenIDConnect::UserTokens::CreateService).to have_received(:new).with(user)
+      expect(create_service).to have_received(:call).with(
+        access_token:,
+        refresh_token:,
+        expires_in:,
+        known_audiences: [OpenIDConnect::UserToken::IDP_AUDIENCE],
+        clear_previous: true
+      )
+    end
+
+    it "calls SessionMapper" do
+      call_hook
+
+      expect(session_mapper).to have_received(:handle_login).with(session)
+    end
+
+    context "when there is no token data" do
+      let(:session) { {} }
+
+      it "does not call UserTokens::CreateService", :aggregate_failures do
+        call_hook
+
+        expect(OpenIDConnect::UserTokens::CreateService).not_to have_received(:new)
+        expect(create_service).not_to have_received(:call)
+      end
+
+      it "calls SessionMapper anyways" do
+        call_hook
+
+        expect(session_mapper).to have_received(:handle_login).with(session)
+      end
+    end
+
+    context "when there is no refresh token or expires_in" do
+      let(:session) do
+        {
+          "omniauth.oidc_access_token" => access_token
+        }
+      end
+
+      it "calls UserTokens::CreateService", :aggregate_failures do
+        call_hook
+
+        expect(OpenIDConnect::UserTokens::CreateService).to have_received(:new).with(user)
+        expect(create_service).to have_received(:call).with(
+          access_token:,
+          refresh_token: nil,
+          expires_in: nil,
+          known_audiences: [OpenIDConnect::UserToken::IDP_AUDIENCE],
+          clear_previous: true
+        )
+      end
+
+      it "calls SessionMapper" do
+        call_hook
+
+        expect(session_mapper).to have_received(:handle_login).with(session)
+      end
+    end
+  end
 end
