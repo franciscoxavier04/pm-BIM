@@ -267,7 +267,7 @@ When a meeting is *Open*, you can prepare the agenda by adding or removing agend
 
 Once the agenda is ready, the meeting can be marked as *In progress*. To mark a meeting in progress you can use the dropdown status menu on the right side or under the meeting name. 
 
-Setting a meeting *In progress* allows adding [**Agenda item outcomes**](/add-agenda-item-outcomes) by using the **+ Outcome** buttons.
+Setting a meeting *In progress* allows adding [**Agenda item outcomes**](#add-agenda-item-outcomes) by using the **+ Outcome** buttons.
 
 Once all outcomes are documented, you can close the meeting. To do that use the dropdown status menu on the right side or under the meeting name. 
 
