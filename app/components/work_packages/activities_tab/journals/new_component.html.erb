@@ -82,7 +82,7 @@
 
               form_container_row.with_column(flex_layout: true, align_items: :center) do |submit_container|
                 submit_container.with_column(mr: 2) do
-                  render(Primer::Beta::Button.new(scheme: :secondary, size: :medium)) do
+                  render(Primer::Beta::Button.new(scheme: :secondary, size: :medium, data: { action: "click->work-packages--activities-tab--index#closeEditor" })) do
                     t("button_cancel")
                   end
                 end

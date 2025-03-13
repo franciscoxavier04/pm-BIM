@@ -548,7 +548,7 @@ export default class IndexController extends Controller {
 
   private addEventListenersToCkEditorInstance() {
     this.onSubmitBound = () => { void this.onSubmit(); };
-    this.onEscapeEditorBound = () => { void this.onEscapeEditor(); };
+    this.onEscapeEditorBound = () => { void this.closeEditor(); };
     this.adjustMarginBound = () => { void this.adjustJournalContainerMargin(); };
     this.onBlurEditorBound = () => { void this.onBlurEditor(); };
     this.onFocusEditorBound = () => {
@@ -718,7 +718,7 @@ export default class IndexController extends Controller {
     }
   }
 
-  onEscapeEditor() {
+  closeEditor() {
     if (this.isEditorEmpty()) {
       this.hideEditor();
     } else {
