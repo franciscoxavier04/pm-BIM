@@ -152,6 +152,7 @@ class WorkPackages::DatePickerController < ApplicationController
     WorkPackages::DatePicker::DialogContentComponent.new(work_package: @work_package,
                                                          schedule_manually:,
                                                          focused_field:,
+                                                         triggering_field: params[:field],
                                                          touched_field_map:,
                                                          date_mode:)
   end
