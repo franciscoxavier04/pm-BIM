@@ -62,6 +62,10 @@ module WorkPackages
           OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? &&
             User.current.allowed_in_work_package?(:add_comments_with_restricted_visibility, work_package)
         end
+
+        def learn_more_static_link_url
+          ::OpenProject::Static::Links.url_for(:user_guides_work_package_activity)
+        end
       end
     end
   end

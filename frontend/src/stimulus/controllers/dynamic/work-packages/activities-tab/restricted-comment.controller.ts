@@ -31,12 +31,15 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class RestrictedCommentController extends Controller {
-  static targets = ['restrictedCheckbox', 'formContainer'];
-  static classes = ['highlight'];
+  static targets = ['restrictedCheckbox', 'formContainer', 'learnMoreLink'];
+  static classes = ['highlight', 'hidden'];
 
   declare readonly restrictedCheckboxTarget:HTMLInputElement;
   declare readonly formContainerTarget:HTMLElement;
+  declare readonly learnMoreLinkTarget:HTMLAnchorElement;
+
   declare readonly highlightClass:string;
+  declare readonly hiddenClass:string;
 
   onSubmitEnd(_event:CustomEvent):void {
     this.toggleBackgroundColor();
@@ -45,8 +48,10 @@ export default class RestrictedCommentController extends Controller {
   toggleBackgroundColor():void {
     if (this.restrictedCheckboxTarget.checked) {
       this.formContainerTarget.classList.add(this.highlightClass);
+      this.learnMoreLinkTarget.classList.remove(this.hiddenClass);
     } else {
       this.formContainerTarget.classList.remove(this.highlightClass);
+      this.learnMoreLinkTarget.classList.add(this.hiddenClass);
     }
   }
 }

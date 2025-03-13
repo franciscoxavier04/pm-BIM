@@ -78,7 +78,8 @@ module WorkPackages
           "application-target": "dynamic",
           "#{stimulus_controller}-target": "formContainer",
           action: "#{activities_tab_index_stimulus_controller}:onSubmit-end@window->#{stimulus_controller}#onSubmitEnd",
-          "#{stimulus_controller}-highlight-class": "work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment" # rubocop:disable Layout/LineLength
+          "#{stimulus_controller}-highlight-class": "work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment", # rubocop:disable Layout/LineLength
+          "#{stimulus_controller}-hidden-class": "d-none"
         }
       end
 
