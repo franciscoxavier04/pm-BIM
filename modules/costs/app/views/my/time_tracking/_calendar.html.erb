@@ -5,26 +5,6 @@
   data-my--time-tracking-time-entries-value="<%= time_entries_json %>"
   data-my--time-tracking-initial-date-value="<%= current_day %>">
 <%= render(Primer::OpenProject::SubHeader.new) do |component|
-      component.with_filter_component do
-        concat(render(Primer::Beta::IconButton.new(icon: "search", aria: { label: "Search" })))
-
-        concat(
-          render(Primer::Beta::Button.new) do |button|
-            button.with_leading_visual_icon(icon: :project)
-            button.with_trailing_action_icon(icon: :"triangle-down")
-            "Project"
-          end
-        )
-
-        concat(
-          render(Primer::Beta::Button.new) do |button|
-            button.with_leading_visual_icon(icon: :log)
-            button.with_trailing_action_icon(icon: :"triangle-down")
-            "Activity"
-          end
-        )
-      end
-
       component.with_text do
         "#{current_day.beginning_of_week.day}-#{current_day.end_of_week.day}. #{current_day.strftime('%B %Y')}"
       end
