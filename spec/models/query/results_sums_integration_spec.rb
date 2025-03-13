@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -136,7 +138,7 @@ RSpec.describe Query::Results, "sums" do
     create(:user, member_with_permissions: { project => permissions })
   end
   let(:permissions) do
-    %i[view_work_packages view_cost_entries view_time_entries view_cost_rates view_hourly_rates]
+    %i[view_work_packages view_cost_entries view_time_entries view_cost_rates view_hourly_rates select_custom_fields]
   end
   let(:group_by) { nil }
   let(:query) do
