@@ -1577,6 +1577,7 @@ en:
       attachment: "File"
       attribute_help_text: "Attribute help text"
       category: "Category"
+      color: "Color"
       comment: "Comment"
       custom_action: "Custom action"
       custom_field: "Custom field"
