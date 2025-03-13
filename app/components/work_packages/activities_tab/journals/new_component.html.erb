@@ -89,7 +89,7 @@
                 end
 
                 submit_container.with_column do
-                  render(WorkPackages::ActivitiesTab::Journals::Submit.new(f))
+                  render(WorkPackages::ActivitiesTab::Journals::Submit.new(f, label: I18n.t("button_submit")))
                 end
               end
             end

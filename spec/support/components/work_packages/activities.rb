@@ -244,7 +244,7 @@ module Components
 
           if restricted
             expect(page).to have_test_selector("op-work-package-journal-restricted-comment-checkbox")
-            page.check("Restricted visibility")
+            page.check("Restrict visibility")
           end
 
           page.find_test_selector("op-submit-work-package-journal-form").click if save
@@ -302,6 +302,12 @@ module Components
 
       def dismiss_comment_editor_with_esc
         page.find_test_selector("op-work-package-journal-form-element").send_keys(:escape)
+      end
+
+      def dismiss_comment_editor_with_cancel_button
+        page.within_test_selector("op-work-package-journal-form") do
+          click_on "Cancel"
+        end
       end
 
       def get_all_comments_as_array

@@ -50,6 +50,7 @@ en:
         created: "created"
         commented: "commented"
         restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
         unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
 
   admin:
