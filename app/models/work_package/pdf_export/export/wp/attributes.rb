@@ -30,13 +30,6 @@
 
 module WorkPackage::PDFExport::Export::Wp::Attributes
   def write_attributes!(work_package)
-    write_forced_attributes!(work_package)
-    write_form_config_attributes!(work_package)
-  end
-
-  private
-
-  def write_form_config_attributes!(work_package)
     work_package
       .type.attribute_groups
       .each do |group|
@@ -48,9 +41,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     end
   end
 
-  def write_forced_attributes!(work_package)
-    write_attributes_group_table(%i[status type], work_package)
-  end
+  private
 
   def write_long_text_field!(work_package, field_id)
     custom_value = work_package.custom_field_values

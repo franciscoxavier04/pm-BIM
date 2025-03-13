@@ -200,9 +200,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   end
   let(:expected_details) do
     result = [
-      "##{work_package.id} #{work_package.subject}",
-      "Status", work_package.status.name,
-      "Type", type.name,
+      "#{type.name} ##{work_package.id} - #{work_package.subject}",
       "People",
       "Assignee", user.name,
       "Accountable", user.name,
@@ -440,10 +438,10 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
           "Custom field rich text", "[#{I18n.t('export.macro.rich_text_unsupported')}]",
           "Custom field hidden",
           "No replacement of:",
+          "projectValue:1:status",
 
           "1", export_time_formatted, project.name,
 
-          "projectValue:1:status",
           "projectLabel:status",
           "projectValue:2:status projectLabel:status",
           "projectValue:3:status", "projectLabel:status",
