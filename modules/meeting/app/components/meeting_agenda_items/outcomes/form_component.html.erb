@@ -1,5 +1,5 @@
 <%=
-  component_wrapper(data: wrapper_data_attributes) do
+  component_wrapper do
     primer_form_with(
       model: @meeting_outcome,
       method: @method,
@@ -8,10 +8,7 @@
       flex_layout(tag: :div) do |flex|
         flex.with_row(
           mb: 2,
-          data: {
-            "test-selector": "meeting-outcome-input",
-            "meeting-outcome-form-target": "notesInput"
-          }
+          data: wrapper_data_attributes
         ) do
           render(MeetingAgendaItem::Outcome::Notes.new(f))
         end

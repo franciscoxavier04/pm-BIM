@@ -53,7 +53,7 @@ module Storages
       with_tagged_logger([self.class.name, "storage-#{@storage.id}"]) do
         return unless @storage.automatic_management_enabled?
 
-        info "Starting AMPF Sync for Nextcloud Storage #{@storage.id}"
+        info "Starting AMPF Sync for OneDrive Storage #{@storage.id}"
         existing_remote_folders = remote_folders_map(@storage.drive_id).on_failure { return @result }.result
 
         ensure_folders_exist(existing_remote_folders).on_success { hide_inactive_folders(existing_remote_folders) }
@@ -227,7 +227,7 @@ module Storages
     end
 
     def admin_remote_identities_scope
-      RemoteIdentity.includes(:user).where(integration: @storage, user: User.admin.active)
+      client_remote_identities_scope.where(user: User.admin.active)
     end
 
     def root_folder = Peripherals::ParentFolder.new("/")

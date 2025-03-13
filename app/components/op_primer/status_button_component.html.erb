@@ -14,17 +14,8 @@
           item.with_leading_visual_icon(icon: option.icon) if option.icon
           item.with_description.with_content(option.description) if option.description
 
-          flex_layout(align_items: :center) do |flex|
-            if option.icon.nil? && option.color
-              flex.with_column(mr: 1) do
-                helpers.icon_for_color(option.color, style: "display: block")
-              end
-            end
-
-            flex.with_column do
-              render(Primer::Beta::Text.new) { option.name }
-            end
-          end
+          classes = option.colored? ? highlight_class_name(option, :inline) : ""
+          render(Primer::Beta::Text.new(classes:)) { option.name }
         end
       end
     end

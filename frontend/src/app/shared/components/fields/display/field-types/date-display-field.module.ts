@@ -83,7 +83,7 @@ export class DateDisplayField extends HighlightableDisplayField {
 
     const autoDateIconString:string = toDOMString(
       opAutoDateIconData,
-      'small',
+      'xsmall',
       { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
     );
 

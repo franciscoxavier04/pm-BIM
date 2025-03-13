@@ -358,10 +358,10 @@ ko:
           learn_about: "새로운 기능에 대해 자세히 알아보기"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                이 릴리스에는 다음과 같이 다양한 기능과 개선 사항이 포함되어 있습니다. <br> <ul class="%{list_styling_class}"> <li>반복 미팅을 스케줄링하여 주간, 격주 또는 사용자 지정 약속을 효율화합니다.</li> <li>관계 탭에서 바로 자식 작업 패키지를 만듭니다.</li> <li>보다 우수한 인사이트를 위해 타임시트 PDF 내보내기에 총계를 포함합니다.</li> <li>보다 정확한 추적을 위해 비용 보고서에 자식 작업 패키지를 포함합니다.</li> <li>이전에 숨겨지거나, 권한이 제한된 관계의 날짜를 확인하여 정보에 입각한 스케줄린 결정을 내립니다.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."

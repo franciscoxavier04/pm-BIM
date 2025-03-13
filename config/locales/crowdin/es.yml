@@ -3528,8 +3528,8 @@ es:
     warnings:
       cannot_annotate: "No se pueden realizar notas sobre este fichero."
   scheduling:
-    activated: "Habilitado"
-    deactivated: "deshabilitado"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Buscar..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

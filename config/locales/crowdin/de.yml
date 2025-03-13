@@ -3524,8 +3524,8 @@ de:
     warnings:
       cannot_annotate: "Diese Datei kann nicht kommentiert werden."
   scheduling:
-    activated: "Aktiviert"
-    deactivated: "Deaktiviert"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Suchen ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

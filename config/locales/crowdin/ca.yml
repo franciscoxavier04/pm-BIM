@@ -3522,8 +3522,8 @@ ca:
     warnings:
       cannot_annotate: "No es poden fer notes d'aquest fitxer."
   scheduling:
-    activated: "activat"
-    deactivated: "desactivat"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Cerca..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

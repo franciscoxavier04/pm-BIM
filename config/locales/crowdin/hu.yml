@@ -3529,8 +3529,8 @@ hu:
     warnings:
       cannot_annotate: "Ez a fájl nem annotálható."
   scheduling:
-    activated: "aktiválva"
-    deactivated: "deaktiválva"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Keresés ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

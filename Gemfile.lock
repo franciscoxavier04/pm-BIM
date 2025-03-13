@@ -857,10 +857,10 @@ GEM
       validate_email
       validate_url
       webfinger (~> 2.0)
-    openproject-octicons (19.21.0)
-    openproject-octicons_helper (19.21.0)
+    openproject-octicons (19.22.3)
+    openproject-octicons_helper (19.22.3)
       actionview
-      openproject-octicons (= 19.21.0)
+      openproject-octicons (= 19.22.3)
       railties
     openproject-primer_view_components (0.56.0)
       actionview (>= 5.0.0)
@@ -1386,8 +1386,8 @@ DEPENDENCIES
   openproject-job_status!
   openproject-ldap_groups!
   openproject-meeting!
-  openproject-octicons (~> 19.21.0)
-  openproject-octicons_helper (~> 19.21.0)
+  openproject-octicons (~> 19.22.3)
+  openproject-octicons_helper (~> 19.22.3)
   openproject-openid_connect!
   openproject-primer_view_components (~> 0.56.0)
   openproject-recaptcha!
@@ -1752,8 +1752,8 @@ CHECKSUMS
   openproject-job_status (1.0.0)
   openproject-ldap_groups (1.0.0)
   openproject-meeting (1.0.0)
-  openproject-octicons (19.21.0) sha256=8eccc93943f37589ebdb531e1b9ad9cfd344e84c102bd3d422b45ab5c390e2ae
-  openproject-octicons_helper (19.21.0) sha256=7dea0e4a3fb45f71f087e2dab518aa2f9914fcde193baf7ab200450b14bdb474
+  openproject-octicons (19.22.3) sha256=f7f83b00b9fa31cdaeadf89fa602add8d5db902b1db03c15bbeb400ed5bb938b
+  openproject-octicons_helper (19.22.3) sha256=6c1eef13f28816b127d88df99ae950d36ae56261fc7c5b2d0810a60d060c21c4
   openproject-openid_connect (1.0.0)
   openproject-primer_view_components (0.56.0) sha256=a54603c33cb154bdbe6f24e8cbad9ce99a4f12be6f5526196bb5df73bb68eb1e
   openproject-recaptcha (1.0.0)

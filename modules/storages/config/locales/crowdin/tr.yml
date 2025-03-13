@@ -5,9 +5,9 @@ tr:
         client_id: Client ID
         client_secret: Client secret
       project:
-        project_folder_type: Project folder type
+        project_folder_type: Proje klasör tipi
       storages/file_link:
-        origin: Origin
+        origin: Kaynak
         storage: Depolama
       storages/nextcloud_storage:
         authentication_methods:
@@ -16,14 +16,14 @@ tr:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
-        project_folder_mode: Project folder mode
+        project_folder: Proje klasörü
+        project_folder_mode: Proje klasör modu
         storage: Depolama
-        storage_url: Storage URL
+        storage_url: Depolama adresi
       storages/storage:
-        authentication_method: Authentication Method
+        authentication_method: Kimlik Doğrulama Metodu
         creator: Oluşturan
-        drive: Drive ID
+        drive: Sürücü Kimliği
         host: Sunucu
         name: İsim
         provider_type: Sağlayıcı türü
@@ -42,7 +42,7 @@ tr:
             project_folder_id:
               blank: Lütfen bir klasör seçin.
             project_folder_mode:
-              mode_unavailable: is not available for this storage.
+              mode_unavailable: bu depolama alanı için mevcut değildir.
             project_ids:
               blank: Lütfen bir proje seçin.
         storages/storage:
@@ -104,10 +104,10 @@ tr:
         rename_project_folder: 'Rename managed project Folder:'
       one_drive_sync_service:
         create_folder: 'Managed Project Folder Creation:'
-        ensure_root_folder_permissions: 'Set Base Folder Permissions:'
+        ensure_root_folder_permissions: 'Temel Klasör İzinlerini Ayarlayın:'
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
-        rename_project_folder: 'Rename managed project Folder:'
+        rename_project_folder: 'Yönetilen proje klasörü isimlendirmesi:'
     errors:
       messages:
         error: An unexpected error occurred. Please check OpenProject logs for more information or contact an administrator
@@ -172,7 +172,7 @@ tr:
           not_found: The destination folder %{folder} could not be found on %{storage_name}.
   storages:
     buttons:
-      complete_without_setup: Complete without it
+      complete_without_setup: Bunsuz tamamla
       done_complete_setup: Bitti, kurulumu tamamlayın
       done_continue: Bitti, devam et
       open_storage: Dosya depolamayı aç
@@ -248,7 +248,7 @@ tr:
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: The current user isn't provided by an OpenID Connect Identity Provider. Please re-run the check with a provided user.
         placeholder: Sunucuyla olan bağlantıyı kontrol edin.
-        subtitle: Connection validation
+        subtitle: Bağlantı doğrulaması
         tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         unexpected_content:
           nextcloud: Unexpected content found in the managed group folder.
@@ -307,7 +307,7 @@ tr:
         oauth_configuration: Bu değerleri %{application_link_text} adresindeki istenen uygulamadan kopyalayın.
         provider_configuration: Lütfen kurulumu yapmadan önce %{application_link_text} adresinde yönetim ayrıcalıklarına sahip olduğunuzdan emin olun veya Microsoft yöneticinize başvurun. Portalda ayrıca bir Azure uygulaması kaydetmeniz veya kimlik doğrulaması için mevcut bir uygulamayı kullanmanız gerekir.
         tenant_id: Lütfen %{application_link_text} adresindeki istenen uygulama ve Uygulama kayıtlarından Dizin (kiracı) Kimliğini kopyalayın.
-        tenant_id_placeholder: Name or UUID
+        tenant_id_placeholder: Ad veya UUID
       setting_up_additional_storages: Ek dosya depoları ayarlamak için lütfen adresi ziyaret edin.
       setting_up_additional_storages_non_admin: Yöneticiler, Yönetim'de ek dosya depoları kurabilir
       setting_up_storages: Dosya depolarını ayarlamak için lütfen adresi ziyaret edin.
@@ -321,7 +321,7 @@ tr:
     label_creator: Oluşturan
     label_delete_storage: Depolamayı sil
     label_edit_storage_access_management: Depolama erişim yönetimini düzenleme
-    label_edit_storage_audience: Edit Storage Audience
+    label_edit_storage_audience: Depolama Kitlesini Düzenle
     label_edit_storage_automatically_managed_folders: Edit storage automatically managed folders
     label_edit_storage_host: Edit storage host
     label_existing_manual_folder: Elle yönetilen izinlere sahip mevcut klasör
@@ -428,6 +428,5 @@ tr:
     successful_storage_connection: Depolama başarıyla bağlandı! Kullanmak istediğiniz her proje için Projeler sekmesinde depolamayı etkinleştirmeyi unutmayın.
     upsale:
       description: |-
-        Integrate your OneDrive/SharePoint as a file storage with OpenProject. Upload files and link them directly to
-        work packages in a project.
+        OneDrive/SharePoint'inizi OpenProject ile bir dosya depolama alanı olarak entegre edin. Dosyaları yükleyin ve bunları doğrudan bir projedeki iş paketlerine bağlayın.
       title: OneDrive/SharePoint entegrasyonu

@@ -3612,8 +3612,8 @@ cs:
     warnings:
       cannot_annotate: "Tento soubor nelze přiřadit poznámce."
   scheduling:
-    activated: "Aktivováno "
-    deactivated: "Deaktivováno"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Hledat ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

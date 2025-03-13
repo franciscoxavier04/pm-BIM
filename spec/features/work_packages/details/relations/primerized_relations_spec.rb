@@ -487,6 +487,38 @@ RSpec.describe "Primerized work package relations tab",
       end
     end
 
+    context "when the user does not have manage_subtasks in child's project" do
+      let(:child_wp_project) { create(:project) }
+      let!(:child_wp) do
+        create(:work_package,
+               subject: "child_wp",
+               parent: work_package,
+               type: type1,
+               project: child_wp_project)
+      end
+
+      let(:restricted_role) { create(:project_role, permissions: %i[view_work_packages]) }
+
+      let(:user_without_manage_subtasks) do
+        create(:user,
+               member_with_roles: {
+                 project => create(:project_role, permissions: %i[view_work_packages manage_subtasks]),
+                 child_wp_project => restricted_role
+               })
+      end
+
+      let(:current_user) { user_without_manage_subtasks }
+
+      it "does not show the option to delete the child relation" do
+        scroll_to_element relations_panel
+
+        wait_for_network_idle
+
+        # The menu should NOT be available for child_wp since user lacks manage_subtasks permission
+        relations_tab.expect_no_relatable_action_menu(child_wp)
+      end
+    end
+
     context "with manage_subtasks permissions" do
       let(:no_permissions_role) { create(:project_role, permissions: %i(view_work_packages edit_work_packages manage_subtasks)) }
 

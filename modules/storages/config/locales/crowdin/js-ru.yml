@@ -2,7 +2,7 @@
 ru:
   js:
     storages:
-      authentication_error: "Authentication with %{storageType} failed"
+      authentication_error: "Ошибка аутентификации с %{storageType}"
       link_files_in_storage: "Файлы ссылок в %{storageType}"
       link_existing_files: "Связать существующие файлы"
       upload_files: "Загрузить файлы"
@@ -20,7 +20,7 @@ ru:
         one_drive: "OneDrive/SharePoint"
         default: "Хранилище"
       information:
-        authentication_error: "The request to %{storageType} could not be authenticated, that's an error."
+        authentication_error: "Запрос %{storageType} не может быть аутентифицирован, это ошибка."
         connection_error: >
           Некоторые настройки %{storageType} не работают. Обратитесь к администратору %{storageType}.
         live_data_error: "Ошибка при получении сведений о файле"

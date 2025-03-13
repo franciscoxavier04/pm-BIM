@@ -128,7 +128,6 @@ If you activate the **Include relations** option, additional columns to list eac
 
 The OpenProject XLS export currently does not respect all options in the work package view being exported from:
 
-- The order of work packages in a manually sorted query is not respected. This is a known limitation ([Ticket](https://community.openproject.org/projects/openproject/work_packages/34971/activity)).
 - The hierarchy of work packages as displayed in the work package view. The exported XLS is always in "flat" mode.
 - The description is exported in 'raw' format, so it may contain HTML tags.
 
@@ -151,7 +150,6 @@ If you select the **Include descriptions** option, the work package description 
 
 The OpenProject CSV export currently does not respect all options in the work package view being exported from:
 
-- The order of work packages in a manually sorted query is not respected. This is a known limitation ([Ticket](https://community.openproject.org/projects/openproject/work_packages/34971/activity)).
 - The hierarchy of work packages as displayed in the work package view. The exported CSV is always in "flat" mode.
 - The description is exported in 'raw' format, so it may contain HTML tags.
 
