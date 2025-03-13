@@ -117,11 +117,11 @@ class Project < ApplicationRecord
   # This problem does not affect the contextless callbacks, they are always executed.
 
   def validation_context
-    case Array(@validation_context)
+    case Array(super)
     in [*, :saving_custom_fields, *] => context
       context << default_validation_context
     else
-      @validation_context
+      super
     end
   end
 

@@ -1057,6 +1057,7 @@ sk:
         auto_hide_popups: "Automaticky skryť upozornenia o úspešných akciách"
         warn_on_leaving_unsaved: "Upozorbiť ma, pri opustení pracovného balíčka s neuloženými zmenami"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1646,6 +1647,7 @@ sk:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Zobraziť súčty"
     due_date: "Dátum dokončenia"
     estimated_hours: "Work"
@@ -1710,6 +1712,7 @@ sk:
     version: "Verzia"
     visible: "Visible"
     work_package: "Pracovný balíček"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -3471,6 +3474,10 @@ sk:
       project_verification: "Zadajte názov projektu %{name} pre potvrdenie odstránenia."
       subprojects_confirmation: "Podprojekt (podprojekty): %{value} budú taktiež odstránené."
       title: "Odstrániť projekt %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Členovia projektu musia presunúť projektové archívy projektu.
       warning_two: Existujúce prepojenia na projekt už nebudú fungovať.

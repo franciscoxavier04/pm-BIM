@@ -1036,6 +1036,7 @@ pt-BR:
         auto_hide_popups: "Auto-ocultar notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
         theme: "Modo"
+        time_zone: "Fuso horário"
         mode_guideline: "Alguns modos substituirão as cores personalizadas do tema para melhorar a acessibilidade e a legibilidade. Para usar o tema totalmente personalizado, selecione o modo Claro."
         daily_reminders: "Lembretes diários"
         workdays: "Dias úteis"
@@ -1603,6 +1604,7 @@ pt-BR:
     derived_due_date: "Data de término derivada"
     derived_estimated_hours: "Total trabalho"
     derived_start_date: "Data inicial derivada"
+    direction: "Direction"
     display_sums: "Mostrar somas"
     due_date: "Data de conclusão"
     estimated_hours: "Trabalho"
@@ -1667,6 +1669,7 @@ pt-BR:
     version: "Versão"
     visible: "Visível"
     work_package: "Pacote de trabalho"
+    work_package_id: "Work package"
   backup:
     failed: "Cópia de segurança falhou"
     label_backup_token: "Token de backup"
@@ -3386,6 +3389,10 @@ pt-BR:
       project_verification: "Digite o nome do projeto %{name} para verificar a exclusão."
       subprojects_confirmation: "Seu(s) subprojeto(s): %{value} também será(ão) excluído(s)."
       title: "Excluir o projeto %{name}"
+    filters:
+      life_cycle_any: "Ciclo de Vida: Qualquer fase ou marco"
+      life_cycle_stage: "Fase do Ciclo de Vida: %{stage}"
+      life_cycle_gate: "Marco de Ciclo de Vida: %{gate}"
     identifier:
       warning_one: Membros do projeto terão que realocar os repositórios do projeto.
       warning_two: Links existentes para o projeto deixarão de funcionar.

@@ -1039,6 +1039,7 @@ bg:
         auto_hide_popups: "Автоматично скриване на успешните известия"
         warn_on_leaving_unsaved: "Предупреждавайте ме при напускане на работен пакет с незаписани промени"
         theme: "Режим"
+        time_zone: "Time zone"
         mode_guideline: "Някои режими ще пренапишат цветовете на персонализираната тема за достъпност и четливост. За пълна персонализирана тема изберете режим Light."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1606,6 +1607,7 @@ bg:
     derived_due_date: "Изведена крайна дата"
     derived_estimated_hours: "Total work"
     derived_start_date: "Изведена начална дата"
+    direction: "Direction"
     display_sums: "Показване на суми"
     due_date: "Крайна дата"
     estimated_hours: "Работа"
@@ -1670,6 +1672,7 @@ bg:
     version: "Версия"
     visible: "Visible"
     work_package: "Работен пакет"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -3390,6 +3393,10 @@ bg:
       project_verification: "Въведете името на проекта %{name} , за да потвърдите изтриването."
       subprojects_confirmation: "Неговият(те) подпроект(и): %{value} също ще бъде изтрит(и)."
       title: "Изтриване на проекта %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Членовете на проекта ще трябва да преместят хранилищата на проекта.
       warning_two: Съществуващите връзки към проекта вече няма да работят.

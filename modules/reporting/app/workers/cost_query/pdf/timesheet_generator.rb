@@ -41,7 +41,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def cover_page_title
-    "OpenProject"
+    @cover_page_title ||= Setting.app_title
   end
 
   def cover_page_heading

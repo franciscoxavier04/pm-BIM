@@ -1038,6 +1038,7 @@
         auto_hide_popups: "Auto-skjul suksessvarsler"
         warn_on_leaving_unsaved: "Varsle meg når jeg forlater en arbeidspakke med ulagrede endringer"
         theme: "Modus"
+        time_zone: "Time zone"
         mode_guideline: "Noen moduser vil overskrive tilpassede temafarger for tilgjengelighet og leselighet. For å få fullstendig tilpasset tema, velg lys modus."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1605,6 +1606,7 @@
     derived_due_date: "Utledet Sluttdato"
     derived_estimated_hours: "Totalt arbeid"
     derived_start_date: "Utledet startdato"
+    direction: "Direction"
     display_sums: "Vis summer"
     due_date: "Sluttdato"
     estimated_hours: "Arbeid"
@@ -1669,6 +1671,7 @@
     version: "Versjon"
     visible: "Visible"
     work_package: "Arbeidspakke"
+    work_package_id: "Work package"
   backup:
     failed: "Sikkerhetskopiering mislyktes"
     label_backup_token: "Sikkerhetskopieringsnøkkel"
@@ -3389,6 +3392,10 @@
       project_verification: "Skriv inn prosjektets navn %{name} for å bekrefte slettingen."
       subprojects_confirmation: "Underprosjekt(ene): %{value} vil også bli slettet."
       title: "Slett prosjektet %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Medlemmer av prosjektet må relokalisere prosjektets arkiv.
       warning_two: Eksisterende koblinger til prosjektet vil ikke lenger fungere.

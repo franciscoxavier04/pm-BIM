@@ -39,7 +39,7 @@ gem "activemodel-serializers-xml", "~> 1.0.1"
 gem "activerecord-import", "~> 2.1.0"
 gem "activerecord-session_store", "~> 2.1.0"
 gem "ox"
-gem "rails", "~> 7.1.3"
+gem "rails", "~> 8.0.1"
 gem "responders", "~> 3.0"
 
 gem "ffi", "~> 1.15"
@@ -182,7 +182,7 @@ group :production do
 end
 
 gem "i18n-js", "~> 4.2.3"
-gem "rails-i18n", "~> 7.0.0"
+gem "rails-i18n", "~> 8.0.0"
 
 gem "sprockets", "~> 3.7.2" # lock sprockets below 4.0
 gem "sprockets-rails", "~> 3.5.1"
@@ -391,7 +391,7 @@ platforms :mri, :mingw, :x64_mingw do
   end
 
   # Support application loading when no database exists yet.
-  gem "activerecord-nulldb-adapter", "~> 1.1.0"
+  gem "activerecord-nulldb-adapter", "~> 1.1.1"
 
   # Have application level locks on the database to have a mutex shared between workers/hosts.
   # We e.g. employ this to safeguard the creation of journals.

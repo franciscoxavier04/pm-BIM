@@ -1038,6 +1038,7 @@ tr:
         auto_hide_popups: "Başarılı bildirimleri otomatik olarak gizle"
         warn_on_leaving_unsaved: "İş paketlerinden ayrılırken kaydedilmemiş değişiklik olduğunda beni uyar"
         theme: "Mod"
+        time_zone: "Zaman dilimi"
         mode_guideline: "Bazı modlar, erişilebilirlik ve okunabilirlik için özel tema renklerini değiştirecektir. Özel temada tüm özellikleri kullanmak için lütfen Açık modu seçin."
         daily_reminders: "Günlük hatırlatmalar"
         workdays: "İş günleri"
@@ -1605,6 +1606,7 @@ tr:
     derived_due_date: "Türetilmiş bitiş tarihi"
     derived_estimated_hours: "Toplam İş"
     derived_start_date: "Türetilmiş başlangıç tarihi"
+    direction: "Direction"
     display_sums: "Toplamları görüntüle"
     due_date: "Bitiş tarihi"
     estimated_hours: "Çalışma"
@@ -1669,6 +1671,7 @@ tr:
     version: "Sürüm"
     visible: "Görünür"
     work_package: "İş paketi"
+    work_package_id: "Work package"
   backup:
     failed: "Yedekleme başarısız oldu"
     label_backup_token: "Yedek jeton"
@@ -3387,6 +3390,10 @@ tr:
       project_verification: "Silme işlemini doğrulamak için projenin adını% {name} girin. %{name}"
       subprojects_confirmation: "Alt projeleri:% {value} de silinecek. %{value}"
       title: "% {Name} adlı projeyi sil %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Projenin üyeleri, projenin depoları yeniden yerleştirmek zorunda kalacaklardır.
       warning_two: Projeye mevcut bağlantılar artık çalışmayacaktır.
