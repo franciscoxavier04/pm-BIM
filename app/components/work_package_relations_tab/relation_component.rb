@@ -56,7 +56,8 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def allowed_to_manage_subtasks?
-    helpers.current_user.allowed_in_project?(:manage_subtasks, @work_package.project)
+    helpers.current_user.allowed_in_project?(:manage_subtasks, @work_package.project) &&
+      helpers.current_user.allowed_in_project?(:manage_subtasks, @child.project)
   end
 
   def allowed_to_manage_relations?

@@ -358,10 +358,10 @@ pl:
           learn_about: "Dowiedz się więcej o nowych funkcjach"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                W tej wersji wprowadzono różne funkcje i ulepszenia, np. <br> <ul class="%{list_styling_class}"> <li>Planowanie spotkań cyklicznych w celu usprawnienia cotygodniowych, codwutygodniowych lub niestandardowych spotkań.</li> <li>Tworzenie podrzędnych pakietów roboczych bezpośrednio z karty Relacje.</li> <li>Uwzględnianie sum w eksportach PDF arkuszy czasu pracy w celu uzyskania lepszych danych analitycznych.</li> <li>Uwzględnianie podrzędnych pakietów roboczych w raportach dotyczących kosztów w celu zwiększenia dokładności śledzenia.</li> <li>Wyświetlanie dat wcześniej ukrytych relacji z ograniczonymi uprawnieniami w celu podejmowania świadomych decyzji dotyczących planowania.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
     ical_sharing_modal:
       title: "Subskrybuj kalendarz"
       inital_setup_error_message: "Podczas pobierania danych wystąpił błąd."

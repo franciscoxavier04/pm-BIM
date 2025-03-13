@@ -3618,8 +3618,8 @@ sl:
     warnings:
       cannot_annotate: "Te datoteke ni mogoče opomniti."
   scheduling:
-    activated: "aktivirano"
-    deactivated: "deaktivirano"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Iskanje..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
