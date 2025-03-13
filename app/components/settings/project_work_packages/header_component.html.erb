@@ -33,17 +33,17 @@ See COPYRIGHT and LICENSE files for more details.
     header.with_tab_nav(label: nil) do |tab_nav|
       if show_types?
         tab_nav.with_tab(selected: selected?(:types), href: project_settings_types_path) do |tab|
-          tab.with_text { "Types" }
+          tab.with_text { t("settings.work_packages.types_tab") }
         end
       end
       if show_categories?
         tab_nav.with_tab(selected: selected?(:categories), href: project_settings_categories_path) do |tab|
-          tab.with_text { "Categories" }
+          tab.with_text { t("settings.work_packages.categories_tab") }
         end
       end
       if show_custom_fields?
         tab_nav.with_tab(selected: selected?(:custom_fields), href: project_settings_custom_fields_path) do |tab|
-          tab.with_text { "Custom Fields" }
+          tab.with_text { t("settings.work_packages.custom_fields_tab") }
         end
       end
     end
