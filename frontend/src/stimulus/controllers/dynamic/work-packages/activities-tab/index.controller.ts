@@ -720,12 +720,12 @@ export default class IndexController extends Controller {
 
   closeEditor() {
     if (this.isEditorEmpty()) {
-      this.hideEditor();
+      this.closeForm();
     } else {
       const shouldClose = window.confirm(this.unsavedChangesConfirmationMessageValue);
 
       if (shouldClose) {
-        this.hideEditor();
+        this.closeForm();
       }
     }
   }
@@ -738,6 +738,12 @@ export default class IndexController extends Controller {
 
   onFocusEditor() {
     this.adjustJournalContainerMargin();
+  }
+
+  private closeForm() {
+    this.hideEditor();
+    this.formTarget.reset();
+    this.notifyFormClose();
   }
 
   private isEditorEmpty():boolean {
@@ -764,8 +770,12 @@ export default class IndexController extends Controller {
       })
       .finally(() => {
         this.setFormSubmitInProgress(false);
-        this.dispatch('onSubmit-end');
+        this.notifyFormClose();
       });
+  }
+
+  private notifyFormClose() {
+    this.dispatch('onSubmit-end');
   }
 
   private setFormSubmitInProgress(inProgress:boolean) {
