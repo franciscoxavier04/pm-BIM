@@ -42,6 +42,10 @@ module Queries::Filters::Shared
         end
       end
 
+      def allowed_values
+        custom_field.possible_values_options(project, { scope: :visible })
+      end
+
       def ar_object_filter?
         true
       end
