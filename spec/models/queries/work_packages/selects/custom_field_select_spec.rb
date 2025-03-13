@@ -46,12 +46,6 @@ RSpec.describe Queries::WorkPackages::Selects::CustomFieldSelect do
 
     current_user { user }
 
-    before do
-      allow(wp_relation).to receive(:visible_by_user)
-                              .with(user)
-                              .and_return([text_custom_field, list_custom_field])
-    end
-
     context "within project" do
       before do
         allow(project)
@@ -59,12 +53,32 @@ RSpec.describe Queries::WorkPackages::Selects::CustomFieldSelect do
           .and_return(wp_relation)
       end
 
-      it "contains only non text cf columns" do
-        expect(described_class.instances(project).length)
-          .to eq 1
+      context "with a user that can see the custom field" do
+        before do
+          allow(wp_relation).to receive(:visible_by_user)
+                                  .with(user)
+                                  .and_return([text_custom_field, list_custom_field])
+        end
 
-        expect(described_class.instances(project)[0].custom_field)
-          .to eq list_custom_field
+        it "contains only non text cf columns" do
+          expect(described_class.instances(project).length)
+            .to eq 1
+
+          expect(described_class.instances(project)[0].custom_field)
+            .to eq list_custom_field
+        end
+      end
+
+      context "with a user that cannot see custom fields" do
+        before do
+          allow(wp_relation).to receive(:visible_by_user)
+                                  .with(user)
+                                  .and_return([])
+        end
+
+        it "is empty" do
+          expect(described_class.instances).to be_empty
+        end
       end
     end
 
@@ -75,12 +89,32 @@ RSpec.describe Queries::WorkPackages::Selects::CustomFieldSelect do
           .and_return(wp_relation)
       end
 
-      it "contains only non text cf columns" do
-        expect(described_class.instances.length)
-          .to eq 1
+      context "with a user that can see the custom field" do
+        before do
+          allow(wp_relation).to receive(:visible_by_user)
+                                  .with(user)
+                                  .and_return([text_custom_field, list_custom_field])
+        end
 
-        expect(described_class.instances[0].custom_field)
-          .to eq list_custom_field
+        it "contains only non text cf columns" do
+          expect(described_class.instances.length)
+            .to eq 1
+
+          expect(described_class.instances[0].custom_field)
+            .to eq list_custom_field
+        end
+      end
+
+      context "with a user that cannot see custom fields" do
+        before do
+          allow(wp_relation).to receive(:visible_by_user)
+                                  .with(user)
+                                  .and_return([])
+        end
+
+        it "is empty" do
+          expect(described_class.instances).to be_empty
+        end
       end
     end
   end
