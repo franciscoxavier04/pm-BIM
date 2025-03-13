@@ -87,14 +87,12 @@ RSpec.describe "Work package activity tab comment editor",
           end
         end
 
-        def expect_editor_to_be_dismissed_with_confirmation
+        def expect_editor_to_be_dismissed_with_confirmation(&)
           activity_tab.add_comment(text: "Sample text", save: false)
 
           activity_tab.expect_focus_on_editor
 
-          accept_alert do
-            yield
-          end
+          accept_alert(&)
 
           expect(page).not_to have_test_selector("op-work-package-journal-form-element")
         end
