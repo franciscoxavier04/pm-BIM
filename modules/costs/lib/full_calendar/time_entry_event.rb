@@ -47,6 +47,12 @@ module FullCalendar
       end
     end
 
+    def as_json(*)
+      super.merge(
+        statusId: time_entry.work_package.status_id
+      )
+    end
+
     def event_content_view_component
       TimeTracking::TimeEntryEventComponent.new(time_entry: time_entry)
     end

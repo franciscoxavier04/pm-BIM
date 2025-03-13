@@ -33,10 +33,13 @@ export default class MyTimeTrackingController extends Controller {
       height: 800,
       contentHeight: 780,
       aspectRatio: 3,
-      eventClassNames: [
-        'calendar-time-entry-event',
-        'calendar-time-entry-event_inline ',
-      ],
+      eventClassNames(arg) {
+        return [
+          'calendar-time-entry-event',
+          `__hl_status_${arg.event.extendedProps.statusId}`,
+          '__hl_border_top',
+        ];
+      },
       eventDidMount(info) {
         //eslint-disable-next-line
         info.el.innerHTML = info.event.extendedProps.customEventView;
