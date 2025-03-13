@@ -84,12 +84,12 @@ export class DateDisplayField extends HighlightableDisplayField {
 
     const pinIconString:string = toDOMString(
       pinIconData,
-      'small',
+      'xsmall',
       { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
     );
     const autoDateIconString:string = toDOMString(
       opAutoDateIconData,
-      'small',
+      'xsmall',
       { 'aria-hidden': 'true', class: 'display-field--scheduling-icon' },
     );
 
