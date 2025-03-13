@@ -7,7 +7,7 @@ class WorkPackages::HighlightedTypeComponent < ApplicationComponent
     super
 
     @type = work_package.type
-    @system_arguments = system_arguments.merge({ classes: "__hl_inline_type_#{@type.id}" })
+    @system_arguments = system_arguments.merge({ classes: "__hl_background __hl_type_#{@type.id}" })
   end
 
   def call

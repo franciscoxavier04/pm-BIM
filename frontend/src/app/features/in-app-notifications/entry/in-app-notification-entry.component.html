@@ -1,14 +1,15 @@
-<div
-  class="op-ian-item--row"
-  (click)="onClick()"
-  (dblclick)="onDoubleClick()"
->
-  <ng-container *ngIf="workPackage$ && (workPackage$ | async) as workPackage; else workPackageLoading">
-    <div
-      class="op-ian-item--top-line"
-    >
+<div class="op-ian-item--row" (click)="onClick()" (dblclick)="onDoubleClick()">
+  <ng-container
+    *ngIf="
+      workPackage$ && (workPackage$ | async) as workPackage;
+      else workPackageLoading
+    "
+  >
+    <div class="op-ian-item--top-line">
       <div class="op-ian-item--status">
-        <op-in-app-notification-status [status]="workPackage.status"></op-in-app-notification-status>
+        <op-in-app-notification-status
+          [status]="workPackage.status"
+        ></op-in-app-notification-status>
       </div>
 
       <a
@@ -16,33 +17,34 @@
         [class.spot-link_inactive]="isMobile()"
         [attr.title]="workPackage.subject"
         uiSref="work-packages.show"
-        [uiParams]="{workPackageId: workPackage.id}"
+        [uiParams]="{ workPackageId: workPackage.id }"
         [textContent]="'#' + workPackage.id"
       >
       </a>
-      <div
-        *ngIf="project"
-        class="op-ian-item--project"
-      >
-        - <a
-        class="op-ian-item--project-link"
-        [class.spot-link_inactive]="isMobile()"
-        [href]="project.showUrl"
-        [textContent]="project.title"
-        (click)="projectClicked($event)"
-        target="_blank"
-      ></a> -
+      <div *ngIf="project" class="op-ian-item--project">
+        -
+        <a
+          class="op-ian-item--project-link"
+          [class.spot-link_inactive]="isMobile()"
+          [href]="project.showUrl"
+          [textContent]="project.title"
+          (click)="projectClicked($event)"
+          target="_blank"
+        ></a>
+        -
       </div>
 
-      <div
-        class="op-ian-item--reason-wrapper"
-      >
-      <span
-        class="op-ian-item--reason"
-        *ngFor="let item of translatedReasons | keyvalue; let first = first; let last = last"
-      >
-        {{ item.key }}<ng-container *ngIf="!last">, </ng-container>
-      </span>
+      <div class="op-ian-item--reason-wrapper">
+        <span
+          class="op-ian-item--reason"
+          *ngFor="
+            let item of translatedReasons | keyvalue;
+            let first = first;
+            let last = last
+          "
+        >
+          {{ item.key }}<ng-container *ngIf="!last">, </ng-container>
+        </span>
       </div>
 
       <span
@@ -70,12 +72,14 @@
       </div>
     </div>
 
-    <div
-      class="op-ian-item--middle-line"
-    >
+    <div class="op-ian-item--middle-line">
       <span
-        [ngClass]="'op-ian-item--work-package-type __hl_inline_type_' + workPackage.type.id"
-        [textContent]="workPackage.type.name">
+        [ngClass]="
+          'op-ian-item--work-package-type __hl_background __hl_type_' +
+          workPackage.type.id
+        "
+        [textContent]="workPackage.type.name"
+      >
       </span>
       <span
         [textContent]="workPackage.subject"
@@ -85,9 +89,7 @@
       </span>
     </div>
 
-    <div
-      class="op-ian-item--bottom-line"
-    >
+    <div class="op-ian-item--bottom-line">
       <op-in-app-notification-reminder-alert
         *ngIf="hasReminderAlert"
         [aggregatedNotifications]="aggregatedNotifications"
@@ -119,8 +121,7 @@
 
       <span class="op-ian-item--reason-count"></span>
       <div class="op-ian-item--buttons">
-        <i class="op-ian-item--button icon-mark-read">
-        </i>
+        <i class="op-ian-item--button icon-mark-read"> </i>
       </div>
     </div>
   </ng-template>
