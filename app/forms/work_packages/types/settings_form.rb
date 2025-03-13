@@ -43,12 +43,14 @@ module WorkPackages
         settings_form.color_select_list(
           name: :color_id,
           label: Color.model_name.human,
+          input_width: :medium,
           caption: I18n.t("types.edit.settings.type_color_text")
         )
 
         if show_work_flow_copy?
           settings_form.select_list(
             name: :copy_workflow_from,
+            input_width: :medium,
             label: I18n.t(:label_copy_workflow_from),
             include_blank: true
           ) do |other_types|
