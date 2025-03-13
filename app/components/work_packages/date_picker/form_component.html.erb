@@ -20,7 +20,7 @@
                 ) do |control|
                   control.with_item(
                     tag: :a,
-                    icon: :calendar,
+                    icon: :pin,
                     href: work_package_datepicker_dialog_content_path(params.merge(schedule_manually: true).permit!),
                     data: {
                       turbo_stream: true,
