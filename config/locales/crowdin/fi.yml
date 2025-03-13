@@ -3538,8 +3538,8 @@ fi:
     warnings:
       cannot_annotate: "Tätä tiedostoa ei voi selityksineen."
   scheduling:
-    activated: "aktivoitu"
-    deactivated: "deaktivoitu"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Etsi..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

@@ -3613,8 +3613,8 @@ uk:
     warnings:
       cannot_annotate: "Цей файл не може бути анотований."
   scheduling:
-    activated: "активовано"
-    deactivated: "деактивовано"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Пошук ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

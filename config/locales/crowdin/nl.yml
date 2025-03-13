@@ -3533,8 +3533,8 @@ nl:
     warnings:
       cannot_annotate: "Dit bestand kan niet geannoteerd worden."
   scheduling:
-    activated: "geactiveerd"
-    deactivated: "gedeactiveerd"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Zoeken ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

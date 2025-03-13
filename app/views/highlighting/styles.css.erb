@@ -4,6 +4,7 @@
 <%= resource_color_css("type", ::Type) %>
 <%= resource_color_css("color", ::Color) %>
 <%= resource_color_css("life_cycle_step_definition", Project::LifeCycleStepDefinition) %>
+<%= resource_color_css("meeting_status", Meetings::Statuses::AVAILABLE) %>
 
 <%# usage classes %>
 .__hl_border_top { border-top: 4px solid hsl(var(--color-h), calc(var(--color-s) * 1%), calc((var(--color-l) - 15) * 1%)) !important; } }

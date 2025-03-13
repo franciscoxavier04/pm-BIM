@@ -3494,8 +3494,8 @@ ms:
     warnings:
       cannot_annotate: "Fail ini tidak boleh dianotasikan."
   scheduling:
-    activated: "diaktifkan"
-    deactivated: "dinyahaktifkan"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Cari ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

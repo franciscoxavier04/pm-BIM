@@ -181,7 +181,8 @@ module WorkPackages
           scheme:,
           full: true,
           icon: :info,
-          test_selector:
+          test_selector:,
+          pr: 3
         }
       end
     end

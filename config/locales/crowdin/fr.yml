@@ -3536,8 +3536,8 @@ fr:
     warnings:
       cannot_annotate: "Ce fichier ne peut pas être annoté."
   scheduling:
-    activated: "activé"
-    deactivated: "désactivé"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Rechercher…"
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

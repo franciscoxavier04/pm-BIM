@@ -3614,8 +3614,8 @@ lt:
     warnings:
       cannot_annotate: "Šis failas negali turėti pastabų."
   scheduling:
-    activated: "aktyvus"
-    deactivated: "neaktyvus"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Paieška..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

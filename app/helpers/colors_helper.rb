@@ -85,6 +85,8 @@ module ColorsHelper
     else
       ".__hl_background { #{highlighted_background_light} }"
     end
+
+    set_background_colors_for(class_name: ".#{hl_background_class(name, entry)}", color:)
   end
 
   def foreground_color_css

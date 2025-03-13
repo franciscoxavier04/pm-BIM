@@ -3615,8 +3615,8 @@ ru:
     warnings:
       cannot_annotate: "Этот файл не может быть прокомментирован."
   scheduling:
-    activated: "активирован"
-    deactivated: "деактивирован"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Поиск ..."
   setting_after_first_login_redirect_url: "Перенаправление первого входа"
   setting_after_first_login_redirect_url_text_html: >

@@ -358,10 +358,10 @@ es:
           learn_about: "Más información sobre las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                La versión incluye varias funciones y mejoras para usted, por ejemplo: <br> <ul class="%{list_styling_class}"> <li>Programe reuniones periódicas para optimizar sus citas semanales, quincenales o personalizadas. </li> <li>Cree paquetes de trabajo secundarios directamente desde la pestaña Relaciones.</li> <li>Incluya las sumas totales en las exportaciones en PDF de las hojas de horas para obtener una mejor información.</li> <li>Incluya paquetes de trabajo secundarios en los informes de costes para un seguimiento más preciso.</li> <li>Vea las fechas de relaciones previamente ocultas y restringidas por permisos para tomar decisiones informadas sobre la programación.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."

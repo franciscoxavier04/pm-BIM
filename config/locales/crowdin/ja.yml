@@ -3495,8 +3495,8 @@ ja:
     warnings:
       cannot_annotate: "このファイルに注釈を付けることはできません。"
   scheduling:
-    activated: "有効化"
-    deactivated: "無効化"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "検索…"
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

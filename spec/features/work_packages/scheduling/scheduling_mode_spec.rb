@@ -156,7 +156,7 @@ RSpec.describe "scheduling mode", :js do
     work_packages_page.wait_for_activity_tab
 
     # Changing the scheduling mode is journalized
-    activity_tab.expect_journal_changed_attribute(text: "Manual scheduling activated")
+    activity_tab.expect_journal_changed_attribute(text: "Scheduling mode set to Manual")
     work_packages_page.switch_to_tab(tab: :overview)
 
     expect_dates(wp, "2016-01-05", "2016-01-10")

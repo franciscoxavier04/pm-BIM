@@ -3535,8 +3535,8 @@ tr:
     warnings:
       cannot_annotate: "Bu dosyaya açıklama yapılamaz."
   scheduling:
-    activated: "etkinleştirildi"
-    deactivated: "devre dışı bırakmak"
+    manual: "Elle ayarla"
+    automatic: "Otomatik ayarla"
   search_input_placeholder: "Ara ..."
   setting_after_first_login_redirect_url: "İlk giriş yönlendirmesi"
   setting_after_first_login_redirect_url_text_html: >

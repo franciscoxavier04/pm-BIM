@@ -3537,8 +3537,8 @@
     warnings:
       cannot_annotate: "Denne filen kan ikke kommenteres."
   scheduling:
-    activated: "aktivert"
-    deactivated: "deaktivert"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Søk..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
