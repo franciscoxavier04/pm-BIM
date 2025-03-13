@@ -50,7 +50,7 @@ RSpec.describe "I18n human_attribute_name", type: :helper do
 
   it "raises an error if the translation is missing" do
     expect { test_model.human_attribute_name("weird_attribute_that_does_not_exist") }
-      .to raise_error(/I18n translation missing for attribute weird/)
+      .to raise_error(I18n::MissingTranslationData)
   end
 
   it "returns a valid translation for a model name if corresponding i18n key activerecord.models.<attribute> exists" do

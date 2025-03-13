@@ -1,24 +1,22 @@
 <%=
-  component_wrapper(data: wrapper_data_attributes) do
+  component_wrapper do
     primer_form_with(
       model: @meeting_outcome,
       method: @method,
       url: @submit_path
     ) do |f|
-      grid_layout("op-meeting-outcome-form", tag: :div) do |grid|
-        grid.with_area(
-          :notes,
-          data: {
-            "test-selector": "meeting-outcome-input",
-            "meeting-outcome-form-target": "notesInput"
-          }
+
+      flex_layout(tag: :div) do |flex|
+        flex.with_row(
+          mb: 2,
+          data: wrapper_data_attributes
         ) do
           render(MeetingAgendaItem::Outcome::Notes.new(f))
         end
 
-        grid.with_area(:actions) do
-          flex_layout do |flex|
-            flex.with_column(mr: 2) do
+        flex.with_row do
+          flex_layout(justify_content: :flex_end) do |row|
+            row.with_column(mr: 2) do
               render(
                 Primer::Beta::Button.new(
                   scheme: :secondary,
@@ -30,7 +28,7 @@
                 t("button_cancel")
               end
             end
-            flex.with_column do
+            row.with_column do
               render(MeetingAgendaItem::Outcome::Submit.new(f))
             end
           end

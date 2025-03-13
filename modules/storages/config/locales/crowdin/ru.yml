@@ -2,13 +2,13 @@ ru:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: Идентификатор клиента
+        client_secret: Закрытый ключ клиента
       project:
-        project_folder_type: Project folder type
+        project_folder_type: Тип папки проекта
       storages/file_link:
-        origin: Origin
-        storage: Storage
+        origin: Источник
+        storage: Хранилище
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,10 +16,10 @@ ru:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
-        project_folder_mode: Project folder mode
+        project_folder: Папка проекта
+        project_folder_mode: Режим папки проекта
         storage: Хранилище
-        storage_url: Storage URL
+        storage_url: URL хранилища
       storages/storage:
         authentication_method: Метод аутентификации
         creator: Создатель
@@ -289,7 +289,7 @@ ru:
         oauth_configuration: Скопируйте эти значения из %{application_link_text}.
         provider_configuration: Пожалуйста, убедитесь, что у вас есть права администрирования в копии Nextcloud, и перед установкой настроен %{application_link_text}.
         storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        storage_audience_placeholder: e.g. nextcloud
+        storage_audience_placeholder: например, nextcloud
       no_specific_folder: По умолчанию каждый пользователь при загрузке файла начинает работу со своей собственной домашней папки.
       no_storage_set_up: Нет настроенных хранилищ файлов.
       not_logged_into_storage: Чтобы выбрать папку проекта, сначала войдите

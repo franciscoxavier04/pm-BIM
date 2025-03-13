@@ -62,9 +62,14 @@ module Journals
 
     private
 
-    # If the journalizing happens within the configured aggregation time, is carried out by the same user, has an
-    # identical cause, only the predecessor or the journal to be created has notes, and the journal is not restricted;
-    # the changes are aggregated.
+    # Aggregatable journals must meet the following criteria:
+    #
+    # * The journalizing happens within the configured aggregation time
+    # * The journalizing is carried out by the same user
+    # * The cause is identical
+    # * ONLY the predecessor or the journal to be created has notes
+    # * The predecessor and the journal to be created have the restriction
+    #
     # Instead of removing the predecessor, return it here so that it can be stripped in the journal creating
     # SQL to than be refilled. That way, references to the journal, including ones users have, are kept intact.
     def aggregatable_predecessor(notes, restricted, cause)

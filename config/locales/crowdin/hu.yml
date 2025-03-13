@@ -1038,6 +1038,7 @@ hu:
         auto_hide_popups: "Siker értesítések automatikus elrejtése"
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Mód"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1605,6 +1606,7 @@ hu:
     derived_due_date: "Származtatott befejezési időpont"
     derived_estimated_hours: "Teljes munka"
     derived_start_date: "Származtatott kezdési időpont\n"
+    direction: "Direction"
     display_sums: "Megjelenitendő összegek"
     due_date: "Befejezési dátum"
     estimated_hours: "Munka"
@@ -1628,6 +1630,7 @@ hu:
     journal_notes: "Comment"
     lastname: "Vezetéknév"
     login: "Felhasználónév"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Név"
     note: "Note"
@@ -1668,6 +1671,7 @@ hu:
     version: "Verzió"
     visible: "Visible"
     work_package: "Feladatcsoport"
+    work_package_id: "Work package"
   backup:
     failed: "A biztonsági mentés sikertelen"
     label_backup_token: "Visszaállítási kulcs"
@@ -2885,6 +2889,7 @@ hu:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Felső menü"
   label_topic_plural: "Témakörök"
   label_total: "Össszesen"
@@ -4170,7 +4175,6 @@ hu:
   nothing_to_preview: "Nincs előnézet"
   api_v3:
     attributes:
-      lock_version: "Lezárt változat"
       property: "Property"
     errors:
       code_400: "Hibás hívás %{message}"

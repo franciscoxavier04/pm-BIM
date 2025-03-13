@@ -1035,6 +1035,7 @@ nl:
         auto_hide_popups: "Automatisch verbergen geslaagd-meldingen"
         warn_on_leaving_unsaved: "Mij waarschuwen bij het verlaten van een werkpakket met niet-opgeslagen wijzigingen"
         theme: "Modus"
+        time_zone: "Time zone"
         mode_guideline: "Sommige modi overschrijven aangepaste themakleuren voor toegankelijkheid en leesbaarheid. Voor het volledige aangepaste thema selecteert u de Light-modus."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1602,6 +1603,7 @@ nl:
     derived_due_date: "Afgeleide einddatum"
     derived_estimated_hours: "Totaal werk"
     derived_start_date: "Afgeleide startdatum"
+    direction: "Direction"
     display_sums: "Bedragen weergeven"
     due_date: "Einddatum"
     estimated_hours: "Werk"
@@ -1625,6 +1627,7 @@ nl:
     journal_notes: "Comment"
     lastname: "Achternaam"
     login: "Gebruikersnaam"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Naam"
     note: "Opmerking"
@@ -1665,6 +1668,7 @@ nl:
     version: "Versie"
     visible: "Visible"
     work_package: "Werkpakket"
+    work_package_id: "Work package"
   backup:
     failed: "Back-up mislukt"
     label_backup_token: "Back-up token"
@@ -2882,6 +2886,7 @@ nl:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Hoofdmenu"
   label_topic_plural: "Onderwerpen"
   label_total: "Totaal"
@@ -4166,7 +4171,6 @@ nl:
   nothing_to_preview: "Niets om te bekijken"
   api_v3:
     attributes:
-      lock_version: "Vergrendel versie"
       property: "Eigendom"
     errors:
       code_400: "Verkeerd verzoek: %{message}"

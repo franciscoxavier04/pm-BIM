@@ -591,10 +591,10 @@ ru:
         В <a href="%{href}">режиме расчета прогресса на основе статуса</a> % завершения пакета работ автоматически устанавливается на это значение, когда выбран этот статус.
         Игнорируется в режиме, основанном на работе.
       status_readonly_html: |
-        Check this option to mark work packages with this status as read-only.
-        No attributes can be changed with the exception of the status.
+        Установите этот флажок, чтобы пометить пакеты работ как доступные только для чтения.
+        Никакие атрибуты не могут быть изменены за исключением статуса.
         <br>
-        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
+        <strong>Примечание</strong>: Будут применены унаследованные значения (например, от дочерних или родительских пакетов работ).
     index:
       no_results_title_text: В данный момент статусы пакетов работ отсутствуют.
       no_results_content_text: Добавить новый статус
@@ -633,7 +633,7 @@ ru:
         pattern:
           label: "Шаблон темы"
           caption: "Поиск атрибута или добавление текста. Чтобы создать пробел между элементами, добавьте его в виде текста."
-          insert_as_text: "Add as text: \"%{word}\""
+          insert_as_text: "Добавить как текст: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -659,44 +659,44 @@ ru:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Start date derived."
-          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
-          manual_mobile: "Ignoring relations."
+          automatic_mobile: "Дата начала получена."
+          click_on_show_relations_to_open_gantt: 'Нажмите на "%{button_name}" для просмотра в виде диаграммы Ганта.'
+          manual_mobile: "Игнорирование отношений."
           manual_gap_between_predecessors: "There is a gap between this and all predecessors."
           manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
-          manual_with_children: "This has child work packages but their start dates are ignored."
+          manual_with_children: "Имеются дочерние пакеты работ, но их даты начала игнорируются."
         title:
-          automatic_mobile: "Automatically scheduled."
-          automatic_with_children: "The dates are determined by child work packages."
-          automatic_with_predecessor: "The start date is set by a predecessor."
-          manual_mobile: "Manually scheduled."
-          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+          automatic_mobile: "Запланировано автоматически."
+          automatic_with_children: "Сроки определяются дочерними пакетами работ."
+          automatic_with_predecessor: "Дата начала задается предшествующей задачей."
+          manual_mobile: "Запланировано вручную."
+          manually_scheduled: "Ручное планирование. Сроки не зависят от отношений пакетов работ."
       blankslate:
-        title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+        title: "Нет пакетов предшественников"
+        description: "Чтобы включить автоматическое планирование, этот пакет работ должен иметь хотя бы одного предшественника. Затем он автоматически начнется после ближайшего предшественника."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "Только рабочие дни"
       mode:
-        title: "Scheduling mode"
-        automatic: "Automatic"
-        manual: "Manual"
-      show_relations: "Show relations"
+        title: "Режим планирования"
+        automatic: "Автоматически"
+        manual: "Вручную"
+      show_relations: "Показать отношения"
       tabs:
-        aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        aria_label: "Выбор даты"
+        children: "Дочерние пакеты работ"
+        dates: "Даты"
+        predecessors: "Предшественники"
+        successors: "Последующие задачи"
         blankslate:
           predecessors:
-            title: "No predecessors"
-            description: "This work package does not have any predecessors."
+            title: "Нет предшествующих задач"
+            description: "Этот пакет работ не имеет никаких предшественников."
           successors:
-            title: "No successors"
-            description: "This work package does not have any successors."
+            title: "Нет последующих задач"
+            description: "Этот пакет работ не имеет никаких преемников."
           children:
-            title: "No children"
-            description: "This work package does not have any children."
+            title: "Нет дочерних задач"
+            description: "Этот пакет работ не имеет никаких дочерних элементов."
     x_descendants:
       one: "Один пакет работ, являющийся потомком"
       few: "Пакетов работ, являющихся потомками: %{count}"
@@ -772,7 +772,7 @@ ru:
       new_child_text: "Создает связанный пакет работ в качестве подпункта текущего (родительского) пакета работ"
       existing_child: "Существующий дочерний пакет работ"
       child_description: "Делает связанный пакет работ дочерним текущему (родительскому) пакету работ"
-      label_closest: "Closest"
+      label_closest: "Ближайший"
       label_blocks_singular: "блоки"
       label_blocks_plural: "блоки"
       blocks_description: "Связанный пакет работ не может быть закрыт до тех пор, пока не будет закрыт этот пакет"
@@ -963,46 +963,46 @@ ru:
         is_required: "Требуется для всех проектов"
         custom_field_section: Раздел
       project/life_cycle_step:
-        definition: "Definition"
+        definition: "Описание"
       project/life_cycle_step_definition:
         name: "Имя"
         color: "Цвет"
       query:
-        sums: "Sums"
-        columns: "Columns"
+        sums: "Сумма"
+        columns: "Столбцы"
         column_names: "Столбцы"
         relations_to_type_column: "Отношения к %{type}"
         relations_of_type_column: "%{type} отношения"
         group_by: "Результаты группы по"
-        sort_by: "Sort results by"
+        sort_by: "Сортировать по"
         filters: "Фильтры"
         timeline_labels: "Временные метки"
-        timeline_visible: "Show Gantt chart"
-        timeline_zoom_level: "Gantt chart zoom level"
+        timeline_visible: "Показать диаграмму Ганта"
+        timeline_zoom_level: "Масштаб диаграммы Гантта"
         timestamps: "Baseline timestamps"
-        sort_criteria: "Sort criteria"
-        highlighted_attributes: "Highlighted attributes"
-        highlighting_mode: "Highlight mode"
-        display_representation: "Display mode"
-        show_hierarchies: "Display mode"
-        starred: "Favorite"
-        hidden: "Hidden"
-        manual_sorting: "Manual sort order"
-        ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        sort_criteria: "Критерии сортировки"
+        highlighted_attributes: "Выделенные атрибуты"
+        highlighting_mode: "Режим подсветки"
+        display_representation: "Режим отображения"
+        show_hierarchies: "Режим отображения"
+        starred: "Избранное"
+        hidden: "Скрытое"
+        manual_sorting: "Ручной порядок сортировки"
+        ordered_work_packages: "Порядок пакетов работ"
+        include_subprojects: "Включить подпроекты"
+        results: "Результаты"
       relation:
         lag: "Задержка"
         from: "Связанный пакет работ"
         to: "Похожий пакет работ"
-        relation_type: "Relation type"
+        relation_type: "Тип отношения"
       reminder:
-        remindable: "Reminded object"
-        remind_at: "Remind at"
+        remindable: "Напоминаемый объект"
+        remind_at: "Напомнить в"
         remind_at_date: "Дата"
         remind_at_time: "Время"
       reminder_notification:
-        notification: "Notification"
+        notification: "Уведомление"
       repository:
         url: "URL"
       role:
@@ -1013,7 +1013,7 @@ ru:
         excluded_from_totals: "Исключить из расчета итогов в иерархии"
         default_done_ratio: "% завершения"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Календарь"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Деятельность"
@@ -1028,11 +1028,11 @@ ru:
         is_default: "В новых проектах активируется по умолчанию"
         is_milestone: "Это веха"
         color: "Цвет"
-        patterns: "Patterns"
+        patterns: "Шаблоны"
       remote_identity:
-        auth_source: "Auth Source"
-        integration: "Integration"
-        user: "User"
+        auth_source: "Источник аутентификации"
+        integration: "Интеграция"
+        user: "Пользователь"
       user:
         admin: "Администратор"
         auth_source: "Источник аутентификации"
@@ -1042,10 +1042,10 @@ ru:
         force_password_change: "Принудительное изменение пароля при следующем входе"
         language: "Язык"
         last_login_on: "Последний вход в систему"
-        failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
-        first_login: "First login"
+        failed_login_count: "Неудачные попытки входа"
+        first_name: "Имя"
+        last_name: "Фамилия"
+        first_login: "Первый вход в систему"
         new_password: "Новый пароль"
         password_confirmation: "Подтверждение"
         consented_at: "Согласен с"
@@ -1055,9 +1055,10 @@ ru:
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
+        time_zone: "Time zone"
         mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
-        daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        daily_reminders: "Ежедневные напоминания"
+        workdays: "Рабочие дни"
       version:
         effective_date: "Дата окончания"
         sharing: "Совместное использование"
@@ -1398,7 +1399,7 @@ ru:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              cannot_add_child_because_of_lack_of_permission: "Не удается добавить дочерний пакет, потому что вы не имеете разрешения на редактирование выбранного пакета работ."
               blank: "ID не может быть пустым."
             assigned_to:
               format: "%{message}"
@@ -1416,7 +1417,7 @@ ru:
               smaller_than_dates: "меньше интервала между датой начала и датой окончания."
               not_available_for_milestones: "не доступен для пакетов работ с типом Веха."
               cannot_be_null: "не может быть нулевым, поскольку известны дата начала и дата окончания."
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "не является допустимой продолжительностью."
             parent:
               cannot_be_milestone: "не может быть вехой"
               cannot_be_self_assigned: "не может быть присвоено самому себе."
@@ -1458,7 +1459,7 @@ ru:
               query_invalid: "Встроенный запрос '%{group}' является недопустимым: %{details}"
               group_without_name: "Не именованные группы не допускаются."
             patterns:
-              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
+              invalid_tokens: "Один или несколько атрибутов внутри поля недействительны. Пожалуйста, исправьте атрибуты перед сохранением."
         user:
           attributes:
             base:
@@ -1644,6 +1645,7 @@ ru:
     derived_due_date: "Дата окончания производства"
     derived_estimated_hours: "Общее Предполагаемое время"
     derived_start_date: "Дата начала производства"
+    direction: "Direction"
     display_sums: "Отображение суммы"
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
@@ -1667,46 +1669,48 @@ ru:
     journal_notes: "Комментарий"
     lastname: "Фамилия"
     login: "Имя пользователя"
+    lock_version: "Lock version"
     mail: "Электронная почта"
     name: "Имя"
     note: "Заметка"
     notes: "Примечания"
-    number: "Number"
+    number: "Номер"
     options: "Параметры"
     operator: "Оператор"
     password: "Пароль"
     priority: "Приоритет"
     project: "Проект"
     project_ids: "ID проектов"
-    reason: "Reason"
+    reason: "Причина"
     responsible: "Ответственный"
-    required: "Required"
-    recipient: "Recipient"
+    required: "Обязательно"
+    recipient: "Получатель"
     role: "Роль"
     roles: "Роли"
-    search: "Search"
+    search: "Поиск"
     start_date: "Дата начала"
     status: "Статус"
-    state: "State"
+    state: "Область"
     subject: "Тема"
     slug: "Slug"
     summary: "Сводка"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Часовой пояс"
+    text: "Текст"
     title: "Заголовок"
     type: "Тип"
-    typeahead: "Autocomplete"
+    typeahead: "Автозаполнение"
     updated_at: "Обновлено"
     updated_on: "Обновлено"
     uploader: "Кто загрузил"
     user: "Пользователь"
-    username: "Username"
-    unit: "Unit"
+    username: "Имя пользователя"
+    unit: "Модуль"
     value: "Значение"
-    values: "Values"
+    values: "Значения"
     version: "Этапы"
-    visible: "Visible"
+    visible: "Видимый"
     work_package: "Пакет работ"
+    work_package_id: "Work package"
   backup:
     failed: "Сбой резервного копирования"
     label_backup_token: "Маркер резервного копирования"
@@ -2056,7 +2060,7 @@ ru:
   enumeration_activities: "Отслеживание времени"
   enumeration_work_package_priorities: "Приоритеты пакета работ"
   enumeration_reported_project_statuses: "Перечень отчетов о статусах проекта"
-  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_caption_order_changed: "Порядок успешно изменен."
   enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Сбой единого входа (SSO) для пользователя «%{value}»"
   error_can_not_archive_project: "Этот проект невозможно заархивировать: %{errors}"
@@ -2147,7 +2151,7 @@ ru:
         input_label_report: "Добавить столбцы в таблицу атрибутов"
         input_caption_report: "По умолчанию выбраны все атрибуты, добавленные в качестве колонок в список пакетов работ. Длинные текстовые поля недоступны в таблице атрибутов, но могут быть отображены под ней."
         input_caption_table: "По умолчанию выбраны все атрибуты, добавленные в список пакетов работ. Длинные текстовые поля не доступны в экспорте на основе таблиц."
-        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
+        input_caption_required: "Невозможно экспортировать без столбца. Пожалуйста, добавьте по крайней мере один столбец."
       pdf:
         export_type:
           label: "Тип экспорта PDF"
@@ -2238,7 +2242,7 @@ ru:
         caption: Этот текст появится на каждой странице с правой стороны нижнего колонтитула.
       hyphenation:
         label: Расстановка переносов
-        caption: Break line between words for better layout and justification.
+        caption: Линия разрыва между словами для лучшего расположения и выравнивания.
       hyphenation_language:
         label: Language and hyphenation
   extraction:
@@ -2323,7 +2327,7 @@ ru:
         progress_calculation_adjusted: >-
           Расчет прогресса автоматически <a href="%{href}" target="_blank">корректируется при обновлении версии</a>.
         scheduling_mode_adjusted: >-
-          Scheduling mode automatically adjusted with version update.
+          Режим планирования автоматически настраивается с обновлением версии.
         totals_removed_from_childless_work_packages: >-
           При <a href="%{href}" target="_blank">обновлении версии</a> автоматически удаляются итоги работы и прогресса для неродительских пакетов работ. Это задача по обслуживанию, и её можно смело игнорировать.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2625,7 +2629,7 @@ ru:
   label_filter: "Фильтры"
   label_filter_add: "Добавить фильтр"
   label_filter_by: "Фильтровать по"
-  label_filter_any_name_attribute: "Name attributes"
+  label_filter_any_name_attribute: "Атрибуты имени"
   label_filter_plural: "Фильтры"
   label_filters_toggle: "Показать/скрыть фильтры"
   label_float: "Плавающий"
@@ -2959,9 +2963,10 @@ ru:
   label_title: "Заголовок"
   label_projects_menu: "Проекты"
   label_today: "Сегодня"
-  label_token_version: "Token Version"
-  label_today_as_start_date: "Select today as start date."
-  label_today_as_due_date: "Select today as finish date."
+  label_token_version: "Версия токена"
+  label_today_as_start_date: "Выберите сегодня в качестве даты начала."
+  label_today_as_due_date: "Выберите сегодня в качестве даты окончания."
+  label_today_as_date: "Выберите сегодня в качестве даты."
   label_top_menu: "Верхнее меню"
   label_topic_plural: "Темы"
   label_total: "Всего"
@@ -3468,14 +3473,14 @@ ru:
       subprojects_confirmation: "Его подпроекты: %{value} также будут удалены."
       title: "Удаление проекта %{name}"
     filters:
-      life_cycle_any: "Lifecycle: Any stage or gate"
-      life_cycle_stage: "Lifecycle stage: %{stage}"
-      life_cycle_gate: "Lifecycle gate: %{gate}"
+      life_cycle_any: "Жизненный цикл: любой этап или стадия"
+      life_cycle_stage: "Этап жизненного цикла: %{stage}"
+      life_cycle_gate: "Стадия жизненного цикла: %{gate}"
     identifier:
       warning_one: Участникам проекта нужно будет переместить репозитории проекта.
       warning_two: Существующие ссылки на проект больше работать не будут.
       title: Измените идентификатор проекта
-    not_available: "Project N/A"
+    not_available: "Проект не существует"
     template:
       copying: >
         Ваш проект создается из проекта выбранного шаблона. Вы будете уведомлены по почте, как только проект будет доступен.
@@ -3613,10 +3618,10 @@ ru:
     activated: "активирован"
     deactivated: "деактивирован"
   search_input_placeholder: "Поиск ..."
-  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url: "Перенаправление первого входа"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
-  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url: "Перенаправление после входа"
   setting_after_login_default_redirect_url_text_html: >
     Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Совместное использование ресурсов между источниками (Cross-Origin Resource Sharing, CORS)"
@@ -4250,7 +4255,6 @@ ru:
   nothing_to_preview: "Нет ничего для предосмотра"
   api_v3:
     attributes:
-      lock_version: "Блокировать этап"
       property: "Свойство"
     errors:
       code_400: "Неверный запрос: %{message}"
@@ -4410,7 +4414,7 @@ ru:
       connected: "Подключён"
       error: "Ошибка"
       failed_authorization: "Ошибка авторизации"
-      not_connected: "Not connected"
+      not_connected: "Не подключен"
     labels:
       label_oauth_integration: "Интеграция с OAuth2"
       label_redirect_uri: "URI переадресации"
@@ -4465,25 +4469,25 @@ ru:
     legacy_enterprise: "Enterprise Plan"
   enterprise_features:
     baseline_comparison: Baseline Comparison
-    board_view: Board View
+    board_view: Просмотр доски
     conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
+    custom_actions: Пользовательские действия
+    custom_field_hierarchies: Иерархии пользовательских полей
+    customize_life_cycle: Настройка жизненного цикла
+    date_alerts: Дата оповещения
+    define_custom_style: Определить пользовательский стиль
     edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
+    gantt_pdf_export: Экспорт диаграммы Ганта в PDF
     grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
+    ldap_groups: Группы LDAP
+    one_drive_sharepoint_file_storage: Файловое хранилище OneDrive/SharePoint
+    placeholder_users: Пользователи-заполнители
+    project_list_sharing: Совместное использование списка проектов
+    readonly_work_packages: Пакеты работ только для чтения
+    sso_auth_providers: Поставщики аутентификации SSO
+    team_planner_view: Просмотр командных планировщиков
+    two_factor_authentication: Двухфакторная аутентификация
+    virus_scanning: Сканирование вложений на вирусы
     work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation
+    work_package_sharing: Совместное использование пакета работ
+    work_package_subject_generation: Создание темы пакета работ

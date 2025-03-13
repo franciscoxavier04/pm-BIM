@@ -218,7 +218,7 @@ Furthermore, you can highlight the entire row by an attribute. The following att
 
 ![highlight-priority](1566399038768.png)
 
-You can configure the colors for attribute highlighting in the system administration. Find out how to set it for the color of the priority [here](../../../system-admin-guide/enumerations/#edit-or-remove-enumeration-value) and for the color of the status [here](../../../system-admin-guide/manage-work-packages/work-package-status/#edit-re-order-or-remove-a-work-package-status).
+You can configure the colors for attribute highlighting in the system administration. Find out how to set it for the color of the priority [here](../../../system-admin-guide/manage-work-packages/work-package-priorities/#edit-or-remove-work-package-priority) and for the color of the status [here](../../../system-admin-guide/manage-work-packages/work-package-status/#edit-re-order-or-remove-a-work-package-status).
 
 ## Save work package views
 

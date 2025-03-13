@@ -1036,6 +1036,7 @@ ca:
         auto_hide_popups: "Oculta automàticament les notificacions de succés"
         warn_on_leaving_unsaved: "Avisa quan es deixi un paquet de treball amb canvis no desats"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1603,6 +1604,7 @@ ca:
     derived_due_date: "Data final derivada"
     derived_estimated_hours: "Total work"
     derived_start_date: "Data d'inici derivada"
+    direction: "Direction"
     display_sums: "Mostra les sumes"
     due_date: "Data final"
     estimated_hours: "Treball"
@@ -1626,6 +1628,7 @@ ca:
     journal_notes: "Comment"
     lastname: "Cognom"
     login: "Nom d'usuari"
+    lock_version: "Lock version"
     mail: "Correu electrònic"
     name: "Nom"
     note: "Note"
@@ -1666,6 +1669,7 @@ ca:
     version: "Versió"
     visible: "Visible"
     work_package: "Paquet de treball"
+    work_package_id: "Work package"
   backup:
     failed: "Còpia de seguretat fallida"
     label_backup_token: "Token de còpia de seguretat"
@@ -2883,6 +2887,7 @@ ca:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Menú superior"
   label_topic_plural: "Temes"
   label_total: "Total"
@@ -4163,7 +4168,6 @@ ca:
   nothing_to_preview: "Res per previsualitzar"
   api_v3:
     attributes:
-      lock_version: "Bloquejar versió"
       property: "Propietat"
     errors:
       code_400: "Sol·licitud incorrecta: %{message}"
