@@ -1052,6 +1052,7 @@ uk:
         auto_hide_popups: "Автоматичне приховування сповіщень про успіх"
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
         theme: "Режим"
+        time_zone: "Time zone"
         mode_guideline: "У деяких режимах кольори користувацької теми замінюються, щоб полегшити взаємодію з користувачем і зробити її зручнішою. Якщо потрібна повністю користувацька тема, виберіть світлий режим."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1641,6 +1642,7 @@ uk:
     derived_due_date: "Отримана дата завершення"
     derived_estimated_hours: "Загальний обсяг робіт"
     derived_start_date: "Отримана дата початку"
+    direction: "Direction"
     display_sums: "Відображати суми"
     due_date: "Дата закінчення"
     estimated_hours: "Робота"
@@ -1664,6 +1666,7 @@ uk:
     journal_notes: "Comment"
     lastname: "Прізвище"
     login: "Ім'я користувача"
+    lock_version: "Lock version"
     mail: "Електронна пошта"
     name: "Ім’я"
     note: "Примітка"
@@ -1704,6 +1707,7 @@ uk:
     version: "Версія"
     visible: "Visible"
     work_package: "Пакет робіт"
+    work_package_id: "Work package"
   backup:
     failed: "Помилка резервної копії"
     label_backup_token: "Маркер резервного копіювання"
@@ -2959,6 +2963,7 @@ uk:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Верхнє меню"
   label_topic_plural: "Теми"
   label_total: "Усього"
@@ -4248,7 +4253,6 @@ uk:
   nothing_to_preview: "Нічого для перегляду"
   api_v3:
     attributes:
-      lock_version: "Версія замку"
       property: "Властивість"
     errors:
       code_400: "Поганий запит: %{message}"

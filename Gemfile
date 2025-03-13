@@ -39,7 +39,7 @@ gem "activemodel-serializers-xml", "~> 1.0.1"
 gem "activerecord-import", "~> 2.1.0"
 gem "activerecord-session_store", "~> 2.1.0"
 gem "ox"
-gem "rails", "~> 7.2.2"
+gem "rails", "~> 8.0.1"
 gem "responders", "~> 3.0"
 
 gem "ffi", "~> 1.15"
@@ -182,7 +182,7 @@ group :production do
 end
 
 gem "i18n-js", "~> 4.2.3"
-gem "rails-i18n", "~> 7.0.0"
+gem "rails-i18n", "~> 8.0.0"
 
 gem "sprockets", "~> 3.7.2" # lock sprockets below 4.0
 gem "sprockets-rails", "~> 3.5.1"
@@ -410,6 +410,6 @@ gemfiles.each do |file|
   send(:eval_gemfile, file) if File.readable?(file)
 end
 
-gem "openproject-octicons", "~>19.20.0 "
-gem "openproject-octicons_helper", "~>19.20.0 "
+gem "openproject-octicons", "~>19.21.0 "
+gem "openproject-octicons_helper", "~>19.21.0 "
 gem "openproject-primer_view_components", "~>0.56.0"

@@ -1037,6 +1037,7 @@ da:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1604,6 +1605,7 @@ da:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Vis totaler"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1627,6 +1629,7 @@ da:
     journal_notes: "Comment"
     lastname: "Efternavn"
     login: "Username"
+    lock_version: "Lock version"
     mail: "E-mail"
     name: "Navn"
     note: "Note"
@@ -1667,6 +1670,7 @@ da:
     version: "Version"
     visible: "Visible"
     work_package: "Arbejdspakke"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Sikkerhedskopiér token"
@@ -2884,6 +2888,7 @@ da:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Topmenu"
   label_topic_plural: "Emner"
   label_total: "Total "
@@ -4168,7 +4173,6 @@ da:
   nothing_to_preview: "Intet at forhåndsvise"
   api_v3:
     attributes:
-      lock_version: "Lås version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

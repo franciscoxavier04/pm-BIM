@@ -9,7 +9,7 @@ pt-BR:
       two_factor_authentication/device:
         identifier: "Identificador"
         default: "Usar como padrão"
-        channel: "Channel"
+        channel: "Canal"
       two_factor_authentication/device/sms:
         phone_number: "Número de telefone"
       two_factor_authentication/device/webauthn:

@@ -3,25 +3,25 @@ pt-BR:
     attributes:
       oauth_client:
         client_id: Client ID
-        client_secret: Client secret
+        client_secret: Client Secret
       project:
-        project_folder_type: Project folder type
+        project_folder_type: Tipo de pasta do projeto
       storages/file_link:
-        origin: Origin
-        storage: Storage
+        origin: Origem
+        storage: Armazenamento
       storages/nextcloud_storage:
         authentication_methods:
-          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
+          oauth2_sso: Single-Sign-On através do provedor de identidade OpenID Connect
           oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        storage_audience: Storage Audience
+        storage_audience: Audiência de Armazenamento
       storages/project_storage:
-        project_folder: Project folder
-        project_folder_mode: Project folder mode
+        project_folder: Pasta de projeto
+        project_folder_mode: Modo de pasta de projeto
         storage: Armazenamento
         storage_url: Storage URL
       storages/storage:
-        authentication_method: Authentication Method
+        authentication_method: Método de Autenticação
         creator: Criador
         drive: Drive ID
         host: Servidor
@@ -223,11 +223,11 @@ pt-BR:
       openproject_oauth: OAuth OpenProject
       project_folders: Pastas do projeto
       redirect_uri: Redirecionar URI
-      storage_audience: Storage Audience
-      storage_audience_blank: No audience has been configured.
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
-      storage_oauth: Nextcloud OAuth
+      storage_audience: Audiência de Armazenamento
+      storage_audience_blank: Nenhuma audiência foi configurada.
+      storage_audience_description: Obtendo tokens para a audiência "%{audience}".
+      storage_audience_idp: Usando o primeiro token de acesso recebido pelo provedor de identidade, independentemente da audiência.
+      storage_oauth: OAuth Nextcloud
       storage_provider: Provedor de armazenamento
     health:
       checked: Última verificação em %{datetime}
@@ -242,9 +242,9 @@ pt-BR:
         host_not_found: Nenhum servidor Nextcloud encontrado na URL de host configurada. Verifique a configuração.
         missing_dependencies: 'Uma dependência necessária está faltando no armazenamento de arquivos. Adicione a seguinte dependência: %{dependency}.'
         not_configured: A conexão não pôde ser validada. Conclua a configuração primeiro.
-        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
-        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
-        oidc_cant_refresh_token: There was an error while trying to check your access to the storage. Please check the server logs for further information.
+        oidc_cant_acquire_token: Sua configuração do OpenID Connect não fornece a audiência necessária, nem oferece capacidades de troca de tokens. Consulte nossa documentação para mais informações.
+        oidc_cant_exchange_token: Parece haver um problema com a configuração do Token Exchange no seu provedor OpenID Connect. Por favor, verifique sua configuração e tente novamente.
+        oidc_cant_refresh_token: Houve um erro ao tentar verificar seu acesso ao armazenamento. Por favor, verifique os logs do servidor para mais informações.
         oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
         oidc_non_provisioned_user: O usuário atual não foi fornecido por um Provedor de Identidade OpenID Connect. Execute a verificação novamente com um usuário fornecido.
         placeholder: Verifique sua conexão com o servidor.
@@ -289,7 +289,7 @@ pt-BR:
         oauth_configuration: Copie estes valores de %{application_link_text}.
         provider_configuration: 'Certifique-se de ter os privilégios de administração em sua instância de Nextcloud e de que o %{application_link_text} está instalado antes de realizar a configuração:'
         storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
-        storage_audience_placeholder: e.g. nextcloud
+        storage_audience_placeholder: 'ex.: Nextcloud'
       no_specific_folder: Por padrão, cada usuário começará na sua própria pasta inicial ao carregar arquivos.
       no_storage_set_up: Ainda não há armazenamento de arquivos configurado.
       not_logged_into_storage: Para selecionar uma pasta de projeto, primeiro faça login
@@ -412,7 +412,7 @@ pt-BR:
         name: OneDrive/SharePoint
         name_placeholder: 'por ex.: OneDrive'
     show_attachments_toggle:
-      description: Deactivating this option will hide the attachments list on the work packages files tab. The files attached in the description of a work package will still be uploaded in the internal attachments storage.
+      description: "Desativar esta opção ocultará a lista de anexos na aba Arquivos dos pacotes de trabalho. Os arquivos anexados na descrição de um pacote de trabalho ainda serão enviados para o \n armazenamento interno."
       label: Exibir anexos na aba arquivos de pacotes de trabalho
     storage_audience:
       idp:

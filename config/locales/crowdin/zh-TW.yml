@@ -609,7 +609,7 @@ zh-TW:
         pattern:
           label: "主題模板"
           caption: "搜尋屬性或新增文字。若要在元素之間建立空格，請將其建立為文字。"
-          insert_as_text: "Add as text: \"%{word}\""
+          insert_as_text: "新增為文字：%{word}"
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
@@ -1028,6 +1028,7 @@ zh-TW:
         auto_hide_popups: "提醒後自動隱藏"
         warn_on_leaving_unsaved: "離開尚未儲存的工作項目時提示我"
         theme: "模式 "
+        time_zone: "時區"
         mode_guideline: "為了親和性以及方便閱讀性，某些模式將覆蓋自訂主題顏色。對於完整的自訂主題，請選擇白色模式。"
         daily_reminders: "每日提醒"
         workdays: "工作日"
@@ -1584,6 +1585,7 @@ zh-TW:
     derived_due_date: "派生的完成日期"
     derived_estimated_hours: "總工時"
     derived_start_date: "派生的開始日期"
+    direction: "Direction"
     display_sums: "顯示加總"
     due_date: "完成日期"
     estimated_hours: "工時"
@@ -1607,6 +1609,7 @@ zh-TW:
     journal_notes: "留言"
     lastname: "姓："
     login: "使用者帳號"
+    lock_version: "鎖定版本"
     mail: "電子郵件"
     name: "名稱"
     note: "備註"
@@ -1647,6 +1650,7 @@ zh-TW:
     version: "版本"
     visible: "可見"
     work_package: "工作項目"
+    work_package_id: "Work package"
   backup:
     failed: "備份失敗"
     label_backup_token: "備份權杖(Token)"
@@ -2845,6 +2849,7 @@ zh-TW:
   label_token_version: "權杖(token)版本"
   label_today_as_start_date: "選擇今天為開始日期。"
   label_today_as_due_date: "選擇今天為完成日期。"
+  label_today_as_date: "選擇今天為開始日期。"
   label_top_menu: "頂層選單"
   label_topic_plural: "主題"
   label_total: "全部"
@@ -3344,9 +3349,9 @@ zh-TW:
       subprojects_confirmation: "它的子專案: %{value} 將會一併刪除"
       title: "刪除專案 %{name}"
     filters:
-      life_cycle_any: "Lifecycle: Any stage or gate"
-      life_cycle_stage: "Lifecycle stage: %{stage}"
-      life_cycle_gate: "Lifecycle gate: %{gate}"
+      life_cycle_any: "生命週期：任何階段或關卡"
+      life_cycle_stage: "生命週期階段：%{stage}"
+      life_cycle_gate: "生命週期關卡：%{gate}"
     identifier:
       warning_one: 這個專案的成員將必須搬移專案的版本庫
       warning_two: 專案現有的連結將不再有效
@@ -4126,7 +4131,6 @@ zh-TW:
   nothing_to_preview: "沒有內容可預覽"
   api_v3:
     attributes:
-      lock_version: "鎖定版本"
       property: "屬性"
     errors:
       code_400: "錯誤請求：%{message}"

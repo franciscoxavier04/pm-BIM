@@ -1039,6 +1039,7 @@ fi:
         auto_hide_popups: "Piilota ilmoitukset onnistuneista toiminnoista"
         warn_on_leaving_unsaved: "Varoita tallentamattomista muutoksista"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1606,6 +1607,7 @@ fi:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Näytä summat"
     due_date: "Päättymispäivä"
     estimated_hours: "Work"
@@ -1629,6 +1631,7 @@ fi:
     journal_notes: "Comment"
     lastname: "Sukunimi"
     login: "Käyttäjätunnus"
+    lock_version: "Lock version"
     mail: "Sähköposti"
     name: "Nimi"
     note: "Note"
@@ -1669,6 +1672,7 @@ fi:
     version: "Versio"
     visible: "Visible"
     work_package: "Työpaketti"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -2886,6 +2890,7 @@ fi:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Päävalikko"
   label_topic_plural: "Aiheet"
   label_total: "Yhteensä"
@@ -4172,7 +4177,6 @@ fi:
   nothing_to_preview: "Ei esikatseltavaa"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

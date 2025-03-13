@@ -84,6 +84,12 @@ es:
         ifc_attachment: "Archivo IFC"
         is_default: "Modelo por defecto"
         attachments: "Archivo IFC"
+      bim/bcf/issue:
+        bcf_comment: "BCF comment"
+        bim_snippet: "BIM snippet"
+        reference_links: "Reference links"
+        stage: "Stage"
+        viewpoint: "Viewpoint"
     errors:
       models:
         bim/ifc_models/ifc_model:

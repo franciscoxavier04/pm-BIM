@@ -1037,6 +1037,7 @@ es:
         auto_hide_popups: "Auto-ocultar notificaciones satisfactorias"
         warn_on_leaving_unsaved: "Avisarme cuando salga de un paquete de trabajo con cambios sin guardar"
         theme: "Modo"
+        time_zone: "Time zone"
         mode_guideline: "Algunos modos sobrescribirán los colores del tema personalizado por motivos de accesibilidad y legibilidad. Para obtener el tema personalizado completo, seleccione el modo Claro."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1604,6 +1605,7 @@ es:
     derived_due_date: "Fecha final derivada"
     derived_estimated_hours: "Trabajo total"
     derived_start_date: "Fecha de comienzo deseada"
+    direction: "Direction"
     display_sums: "Mostrar sumas"
     due_date: "Fecha de finalización"
     estimated_hours: "Trabajo"
@@ -1627,6 +1629,7 @@ es:
     journal_notes: "Comment"
     lastname: "Apellido"
     login: "Nombre usuario"
+    lock_version: "Lock version"
     mail: "Correo electrónico"
     name: "Nombre"
     note: "Nota"
@@ -1667,6 +1670,7 @@ es:
     version: "Versión"
     visible: "Visible"
     work_package: "Paquete de trabajo"
+    work_package_id: "Work package"
   backup:
     failed: "La copia de seguridad ha fallado"
     label_backup_token: "Token de copias de seguridad"
@@ -2884,6 +2888,7 @@ es:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Menú superior"
   label_topic_plural: "Temas"
   label_total: "Total"
@@ -4168,7 +4173,6 @@ es:
   nothing_to_preview: "Nada para previsualizar"
   api_v3:
     attributes:
-      lock_version: "Versión Bloqueada"
       property: "Propiedad"
     errors:
       code_400: "Solicitud errónea: %{message}"

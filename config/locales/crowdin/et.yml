@@ -1039,6 +1039,7 @@ et:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1529,7 +1530,7 @@ et:
       user: "Kasutaja"
       version: "Versioon"
       workflow: "Töövoog"
-      work_package: "Teema"
+      work_package: "Tööpakett"
       wiki: "Viki"
       wiki_page: "Viki leht"
   errors:
@@ -1575,7 +1576,7 @@ et:
       subproject: "Include subprojects"
       time_entry: "Kulutatud aeg"
       wiki_edit: "Viki"
-      work_package: "Teemad"
+      work_package: "Tööpaketid"
   #common attributes of all models
   attributes:
     active: "Aktiivne"
@@ -1606,6 +1607,7 @@ et:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Kuva summasid"
     due_date: "Lõpetamise kuupäev"
     estimated_hours: "Work"
@@ -1624,11 +1626,12 @@ et:
     public: "Avalik"
     principal: "User or group"
     #kept for backwards compatibility
-    issue: "Teema"
+    issue: "Tööpakett"
     journal: "Journal"
     journal_notes: "Comment"
     lastname: "Perekonnanimi"
     login: "Kasutajanimi"
+    lock_version: "Lock version"
     mail: "E-posti aadress"
     name: "Nimi"
     note: "Note"
@@ -1669,6 +1672,7 @@ et:
     version: "Versioon"
     visible: "Visible"
     work_package: "Teema"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -2886,6 +2890,7 @@ et:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Ülemine menüü"
   label_topic_plural: "Teemad"
   label_total: "Kokku"
@@ -2948,7 +2953,7 @@ et:
   label_wiki_show_submenu_item: "Näita kui alammenüüd (<--) "
   label_wiki_start: "Esileht"
   label_work: "Work"
-  label_work_package: "Teema"
+  label_work_package: "Tööpakett"
   label_work_package_attachments: "Work package attachments"
   label_work_package_category_new: "Uus kategooria"
   label_work_package_category_plural: "Teema kategooriad"
@@ -2956,7 +2961,7 @@ et:
   label_work_package_new: "Uus teema"
   label_work_package_edit: "Muuda teemat %{name}"
   label_work_package_plural: "Teemad"
-  label_work_package_status: "Teema olek"
+  label_work_package_status: "Tööpaketi olek"
   label_work_package_status_new: "Uus olek"
   label_work_package_status_plural: "Teemade olekud"
   label_work_package_types: "Work package types"
@@ -3016,7 +3021,7 @@ et:
       errors:
         no_project_context: "Calling create_work_package_link macro from outside project context."
         invalid_type: "No type found with name '%{type}' in project '%{project}'."
-      link_name: "Uus teema"
+      link_name: "Uus tööpakett"
       link_name_type: "New %{type_name}"
   mail:
     actions: "Actions"
@@ -3405,7 +3410,7 @@ et:
       remove_from_templates: "Remove from templates"
   project_module_activity: "Tegevus"
   project_module_forums: "Foorumid"
-  project_module_work_package_tracking: "Teemad"
+  project_module_work_package_tracking: "Tööpaketid"
   project_module_news: "Uudised"
   project_module_repository: "Hoidla"
   project_module_wiki: "Viki"
@@ -4172,7 +4177,6 @@ et:
   nothing_to_preview: "Eelvaateks pole midagi näidata"
   api_v3:
     attributes:
-      lock_version: "Lock Version"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"

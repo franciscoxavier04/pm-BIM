@@ -1039,6 +1039,7 @@ ka:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "რეჟიმი"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1606,6 +1607,7 @@ ka:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "ჯამების ჩვენება"
     due_date: "დასრულების თარიღი"
     estimated_hours: "სამუშაო"
@@ -1629,6 +1631,7 @@ ka:
     journal_notes: "Comment"
     lastname: "გვარი"
     login: "მომხმარებლის სახელი"
+    lock_version: "Lock version"
     mail: "ელფოსტა"
     name: "სახელი"
     note: "Note"
@@ -1669,6 +1672,7 @@ ka:
     version: "ვერსია"
     visible: "Visible"
     work_package: "სამუშაო პაკეტი"
+    work_package_id: "Work package"
   backup:
     failed: "მარქაფი ჩავარდა"
     label_backup_token: "მარქაფის კოდი"
@@ -2886,6 +2890,7 @@ ka:
   label_token_version: "Token Version"
   label_today_as_start_date: "Select today as start date."
   label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "ზედა მენიუ"
   label_topic_plural: "თემები"
   label_total: "ჯამი"
@@ -4172,7 +4177,6 @@ ka:
   nothing_to_preview: "Nothing to preview"
   api_v3:
     attributes:
-      lock_version: "ვერსიის ჩაკეტვა"
       property: "თვისება"
     errors:
       code_400: "Bad request: %{message}"
