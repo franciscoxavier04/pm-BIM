@@ -1587,6 +1587,7 @@ vi:
     derived_due_date: "Ngày kết thúc suy ra"
     derived_estimated_hours: "Tổng thời gian làm việc"
     derived_start_date: "Ngày bắt đầu suy ra"
+    direction: "Direction"
     display_sums: "Hiển thị tổng"
     due_date: "Ngày kết thúc"
     estimated_hours: "Thời gian ước tính"
@@ -1651,6 +1652,7 @@ vi:
     version: "Phiên bản"
     visible: "Visible"
     work_package: "Work Package"
+    work_package_id: "Work package"
   backup:
     failed: "Sao lưu thất bại"
     label_backup_token: "Sao lưu token"

@@ -1607,6 +1607,7 @@ fi:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Näytä summat"
     due_date: "Päättymispäivä"
     estimated_hours: "Work"
@@ -1671,6 +1672,7 @@ fi:
     version: "Versio"
     visible: "Visible"
     work_package: "Työpaketti"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"

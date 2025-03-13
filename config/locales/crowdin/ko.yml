@@ -1587,6 +1587,7 @@ ko:
     derived_due_date: "파생된 완료 날짜"
     derived_estimated_hours: "총 작업"
     derived_start_date: "파생된 시작 날짜"
+    direction: "Direction"
     display_sums: "합계 표시"
     due_date: "완료 날짜"
     estimated_hours: "작업"
@@ -1651,6 +1652,7 @@ ko:
     version: "버전"
     visible: "Visible"
     work_package: "작업 패키지"
+    work_package_id: "Work package"
   backup:
     failed: "백업 실패"
     label_backup_token: "백업 토큰"

@@ -1605,6 +1605,7 @@ hi:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Display Sums"
     due_date: "समाप्ति दिनांक"
     estimated_hours: "Work"
@@ -1669,6 +1670,7 @@ hi:
     version: "संस्करण"
     visible: "Visible"
     work_package: "कार्य पैकेज"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"

@@ -1600,6 +1600,7 @@ de:
     derived_due_date: "Aggregierter Endtermin"
     derived_estimated_hours: "Arbeit insgesamt"
     derived_start_date: "Aggregierter Starttermin"
+    direction: "Direction"
     display_sums: "Summen anzeigen"
     due_date: "Endtermin"
     estimated_hours: "Aufwand"
@@ -1664,6 +1665,7 @@ de:
     version: "Version"
     visible: "Visible"
     work_package: "Arbeitspaket"
+    work_package_id: "Work package"
   backup:
     failed: "Backup fehlgeschlagen"
     label_backup_token: "Backup-Token"

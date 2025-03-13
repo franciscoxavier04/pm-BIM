@@ -1645,6 +1645,7 @@ ru:
     derived_due_date: "Дата окончания производства"
     derived_estimated_hours: "Общее Предполагаемое время"
     derived_start_date: "Дата начала производства"
+    direction: "Direction"
     display_sums: "Отображение суммы"
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
@@ -1709,6 +1710,7 @@ ru:
     version: "Этапы"
     visible: "Видимый"
     work_package: "Пакет работ"
+    work_package_id: "Work package"
   backup:
     failed: "Сбой резервного копирования"
     label_backup_token: "Маркер резервного копирования"

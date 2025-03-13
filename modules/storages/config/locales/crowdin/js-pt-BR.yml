@@ -29,8 +29,8 @@ pt-BR:
         no_file_links: "Para vincular arquivos a este pacote de trabalho, faça isso através de %{storageType}."
         not_logged_in: >
           Para adicionar um link, visualizar ou enviar arquivos relacionados a este pacote de trabalho, inicie sessão em %{storageType}
-        suggest_logout: You can try whether logging out and back in fixes this problem.
-        suggest_relink: You can try whether re-linking your account via the login button below fixes this problem.
+        suggest_logout: Você pode tentar realizar o login novamente para corrigir este problema.
+        suggest_relink: Você pode tentar se revincular sua conta através do botão de login abaixo para corrigir este problema.
       files:
         already_existing_header: "Este arquivo já existe"
         already_existing_body: >

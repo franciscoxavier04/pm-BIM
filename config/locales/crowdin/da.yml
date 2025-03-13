@@ -1605,6 +1605,7 @@ da:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Vis totaler"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1669,6 +1670,7 @@ da:
     version: "Version"
     visible: "Visible"
     work_package: "Arbejdspakke"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Sikkerhedskopiér token"

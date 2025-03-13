@@ -1603,6 +1603,7 @@ el:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Εμφάνιση Αθροισμάτων"
     due_date: "Ημερομηνία λήξης"
     estimated_hours: "Work"
@@ -1667,6 +1668,7 @@ el:
     version: "Έκδοση"
     visible: "Visible"
     work_package: "Εργασία"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Token αντιγράφου ασφαλείας"

@@ -1606,6 +1606,7 @@ hu:
     derived_due_date: "Származtatott befejezési időpont"
     derived_estimated_hours: "Teljes munka"
     derived_start_date: "Származtatott kezdési időpont\n"
+    direction: "Direction"
     display_sums: "Megjelenitendő összegek"
     due_date: "Befejezési dátum"
     estimated_hours: "Munka"
@@ -1670,6 +1671,7 @@ hu:
     version: "Verzió"
     visible: "Visible"
     work_package: "Feladatcsoport"
+    work_package_id: "Work package"
   backup:
     failed: "A biztonsági mentés sikertelen"
     label_backup_token: "Visszaállítási kulcs"

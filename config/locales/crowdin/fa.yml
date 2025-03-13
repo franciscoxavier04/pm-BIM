@@ -1607,6 +1607,7 @@ fa:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Display Sums"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1671,6 +1672,7 @@ fa:
     version: "نسخه"
     visible: "Visible"
     work_package: "بسته کاری"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "پشتیبان گیری توکن"

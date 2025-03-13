@@ -1603,6 +1603,7 @@ nl:
     derived_due_date: "Afgeleide einddatum"
     derived_estimated_hours: "Totaal werk"
     derived_start_date: "Afgeleide startdatum"
+    direction: "Direction"
     display_sums: "Bedragen weergeven"
     due_date: "Einddatum"
     estimated_hours: "Werk"
@@ -1667,6 +1668,7 @@ nl:
     version: "Versie"
     visible: "Visible"
     work_package: "Werkpakket"
+    work_package_id: "Work package"
   backup:
     failed: "Back-up mislukt"
     label_backup_token: "Back-up token"

@@ -1607,6 +1607,7 @@ et:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Kuva summasid"
     due_date: "Lõpetamise kuupäev"
     estimated_hours: "Work"
@@ -1671,6 +1672,7 @@ et:
     version: "Versioon"
     visible: "Visible"
     work_package: "Teema"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"

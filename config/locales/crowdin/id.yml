@@ -1583,6 +1583,7 @@ id:
     derived_due_date: "Tanggal selesai turunan"
     derived_estimated_hours: "Total work"
     derived_start_date: "Tanggal mulai turunan"
+    direction: "Direction"
     display_sums: "Tampilkan jumlah"
     due_date: "Tanggal selesai"
     estimated_hours: "Work"
@@ -1647,6 +1648,7 @@ id:
     version: "Versi"
     visible: "Visible"
     work_package: "Paket-Penugasan"
+    work_package_id: "Work package"
   backup:
     failed: "Pencadangan gagal"
     label_backup_token: "Token cadangan"

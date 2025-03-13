@@ -1587,6 +1587,7 @@ th:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "แสดงยอดรวม"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1651,6 +1652,7 @@ th:
     version: "เวอร์ชัน"
     visible: "Visible"
     work_package: "ชุดภารกิจ"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "โทเค็น (token) สำรอง"

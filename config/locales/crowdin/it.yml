@@ -1604,6 +1604,7 @@ it:
     derived_due_date: "Data di fine derivata"
     derived_estimated_hours: "Lavoro totale"
     derived_start_date: "Data di inizio derivata"
+    direction: "Direction"
     display_sums: "Visualizza somme"
     due_date: "Data di fine"
     estimated_hours: "Lavoro"
@@ -1668,6 +1669,7 @@ it:
     version: "Versione"
     visible: "Visible"
     work_package: "Macro-attività"
+    work_package_id: "Work package"
   backup:
     failed: "Backup fallito"
     label_backup_token: "Token di backup"

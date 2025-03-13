@@ -1607,6 +1607,7 @@ ka:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "ჯამების ჩვენება"
     due_date: "დასრულების თარიღი"
     estimated_hours: "სამუშაო"
@@ -1671,6 +1672,7 @@ ka:
     version: "ვერსია"
     visible: "Visible"
     work_package: "სამუშაო პაკეტი"
+    work_package_id: "Work package"
   backup:
     failed: "მარქაფი ჩავარდა"
     label_backup_token: "მარქაფის კოდი"

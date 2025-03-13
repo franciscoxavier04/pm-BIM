@@ -1605,6 +1605,7 @@ es:
     derived_due_date: "Fecha final derivada"
     derived_estimated_hours: "Trabajo total"
     derived_start_date: "Fecha de comienzo deseada"
+    direction: "Direction"
     display_sums: "Mostrar sumas"
     due_date: "Fecha de finalización"
     estimated_hours: "Trabajo"
@@ -1669,6 +1670,7 @@ es:
     version: "Versión"
     visible: "Visible"
     work_package: "Paquete de trabajo"
+    work_package_id: "Work package"
   backup:
     failed: "La copia de seguridad ha fallado"
     label_backup_token: "Token de copias de seguridad"

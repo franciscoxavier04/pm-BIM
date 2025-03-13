@@ -1647,6 +1647,7 @@ sk:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Zobraziť súčty"
     due_date: "Dátum dokončenia"
     estimated_hours: "Work"
@@ -1711,6 +1712,7 @@ sk:
     version: "Verzia"
     visible: "Visible"
     work_package: "Pracovný balíček"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"

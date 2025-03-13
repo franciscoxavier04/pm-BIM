@@ -1606,6 +1606,7 @@
     derived_due_date: "Utledet Sluttdato"
     derived_estimated_hours: "Totalt arbeid"
     derived_start_date: "Utledet startdato"
+    direction: "Direction"
     display_sums: "Vis summer"
     due_date: "Sluttdato"
     estimated_hours: "Arbeid"
@@ -1670,6 +1671,7 @@
     version: "Versjon"
     visible: "Visible"
     work_package: "Arbeidspakke"
+    work_package_id: "Work package"
   backup:
     failed: "Sikkerhetskopiering mislyktes"
     label_backup_token: "Sikkerhetskopieringsnøkkel"

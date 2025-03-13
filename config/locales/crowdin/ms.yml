@@ -1585,6 +1585,7 @@ ms:
     derived_due_date: "Tarikh tamat yang diperolehi"
     derived_estimated_hours: "Jumlah kerja"
     derived_start_date: "Tarikh mula yang diperolehi"
+    direction: "Direction"
     display_sums: "Paparkan Jumlah"
     due_date: "Tarikh tamat"
     estimated_hours: "Kerja"
@@ -1649,6 +1650,7 @@ ms:
     version: "Versi"
     visible: "Visible"
     work_package: "Pakej kerja"
+    work_package_id: "Work package"
   backup:
     failed: "Sandaran gagal"
     label_backup_token: "Token sandaran"

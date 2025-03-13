@@ -1607,6 +1607,7 @@ si:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "සංදර්ශකය"
     due_date: "අවසන් දිනය"
     estimated_hours: "Work"
@@ -1671,6 +1672,7 @@ si:
     version: "අනුවාදය"
     visible: "Visible"
     work_package: "වැඩ පැකේජය"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"

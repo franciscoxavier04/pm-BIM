@@ -1604,6 +1604,7 @@ pt-PT:
     derived_due_date: "Data de término derivada"
     derived_estimated_hours: "Trabalho total"
     derived_start_date: "Data inicial derivada"
+    direction: "Direction"
     display_sums: "Exibir somas"
     due_date: "Data de término"
     estimated_hours: "Trabalho"
@@ -1668,6 +1669,7 @@ pt-PT:
     version: "Versão"
     visible: "Visible"
     work_package: "Pacote de trabalho"
+    work_package_id: "Work package"
   backup:
     failed: "A cópia de segurança falhou"
     label_backup_token: "Token de cópia de segurança "

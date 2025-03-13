@@ -1647,6 +1647,7 @@ cs:
     derived_due_date: "Derivované Datum ukončení "
     derived_estimated_hours: "Celková práce"
     derived_start_date: "Derivované Datum zahájení "
+    direction: "Direction"
     display_sums: "Zobrazit součty"
     due_date: "Datum dokončení"
     estimated_hours: "Práce"
@@ -1711,6 +1712,7 @@ cs:
     version: "Verze"
     visible: "Visible"
     work_package: "Pracovní balíček"
+    work_package_id: "Work package"
   backup:
     failed: "Záloha se nezdařila"
     label_backup_token: "Záložní token"

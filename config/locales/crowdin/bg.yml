@@ -1607,6 +1607,7 @@ bg:
     derived_due_date: "Изведена крайна дата"
     derived_estimated_hours: "Total work"
     derived_start_date: "Изведена начална дата"
+    direction: "Direction"
     display_sums: "Показване на суми"
     due_date: "Крайна дата"
     estimated_hours: "Работа"
@@ -1671,6 +1672,7 @@ bg:
     version: "Версия"
     visible: "Visible"
     work_package: "Работен пакет"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"

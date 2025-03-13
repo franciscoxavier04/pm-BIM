@@ -1585,6 +1585,7 @@ ja:
     derived_due_date: "派生終了日"
     derived_estimated_hours: "合計作業数"
     derived_start_date: "派生開始日"
+    direction: "Direction"
     display_sums: "合計を表示"
     due_date: "終了日"
     estimated_hours: "Work"
@@ -1649,6 +1650,7 @@ ja:
     version: "バージョン"
     visible: "Visible"
     work_package: "ワーク パッケージ"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "バックアップトークン"

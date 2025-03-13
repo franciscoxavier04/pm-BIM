@@ -1644,6 +1644,7 @@ pl:
     derived_due_date: "Wyprowadzona data zakończenia"
     derived_estimated_hours: "Całkowita praca"
     derived_start_date: "Wyprowadzona data rozpoczęcia"
+    direction: "Direction"
     display_sums: "Wyświetl sumy"
     due_date: "Data zakończenia"
     estimated_hours: "Praca"
@@ -1708,6 +1709,7 @@ pl:
     version: "Wersja"
     visible: "Visible"
     work_package: "Zadanie"
+    work_package_id: "Work package"
   backup:
     failed: "Tworzenie kopii zapasowej nie powiodło się"
     label_backup_token: "Token kopii zapasowej"

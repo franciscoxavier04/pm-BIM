@@ -1687,6 +1687,7 @@ ar:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "عرض المبالغ"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1751,6 +1752,7 @@ ar:
     version: "الإصدار"
     visible: "Visible"
     work_package: "مجموعة العمل"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"

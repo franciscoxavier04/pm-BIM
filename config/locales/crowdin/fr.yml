@@ -1605,6 +1605,7 @@ fr:
     derived_due_date: "Date de fin dérivée"
     derived_estimated_hours: "Travail total"
     derived_start_date: "Date de début dérivée"
+    direction: "Direction"
     display_sums: "Afficher les sommes"
     due_date: "Date de fin"
     estimated_hours: "Travail"
@@ -1669,6 +1670,7 @@ fr:
     version: "Version"
     visible: "Visible"
     work_package: "Lot de travaux"
+    work_package_id: "Work package"
   backup:
     failed: "Échec de la sauvegarde"
     label_backup_token: "Jeton de sauvegarde"

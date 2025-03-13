@@ -1642,6 +1642,7 @@ uk:
     derived_due_date: "Отримана дата завершення"
     derived_estimated_hours: "Загальний обсяг робіт"
     derived_start_date: "Отримана дата початку"
+    direction: "Direction"
     display_sums: "Відображати суми"
     due_date: "Дата закінчення"
     estimated_hours: "Робота"
@@ -1706,6 +1707,7 @@ uk:
     version: "Версія"
     visible: "Visible"
     work_package: "Пакет робіт"
+    work_package_id: "Work package"
   backup:
     failed: "Помилка резервної копії"
     label_backup_token: "Маркер резервного копіювання"
