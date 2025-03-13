@@ -40,11 +40,9 @@ export class GitActionsService {
     // This sanitization tries to be harsher than those rules
     return str
       .replace(/&/g, "and ") // & becomes and
-      .replace(/ +/g, "-") // Spaces become dashes
-	  .replace(/[^\w\-]+/g, "") // Remove any non ascii characters as they might make trouble in some tools
-      .replace(/^[-]+/g, "") // Dashes at the start are removed
-      .replace(/[-]+$/g, "") // Dashes at the end are removed
-      .replace(/-+/g, "-") // Multiple dashes in a row are deduped
+      .replace(/\W+/g, "-") // Replace any consecutive non ascii characters by a single dash as they might make trouble in some tools.
+      .replace(/^-/g, "") // Dash at the start is removed
+      .replace(/-$/g, "") // Dash at the end is removed
       .trim();
   }
 
