@@ -220,8 +220,8 @@ pt-BR:
             label_maximum_users: "Máximo de usuários ativos"
             label_starts_at: "Começa em"
             label_expires_at: "Expira em"
-            label_plan: "Plan"
-            label_additional_features: "Additional features"
+            label_plan: "Plano"
+            label_additional_features: "Funcionalidades adicionais"
             receive_newsletter: Quero receber o <a target="_blank" href="%{link}">boletim informativo</a> do OpenProject.
             taken_domain: Pode haver somente uma avaliação ativa por domínio.
             domain_mismatch: O nome do host da solicitação atual não corresponde ao nome do host configurado. Verifique novamente as configurações de seu sistema.
@@ -360,7 +360,7 @@ pt-BR:
           "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                A versão traz vários recursos e melhorias para você, por exemplo, <br> <ul class="%{list_styling_class}"> <li>Permite o modo de agendamento automático.</li> <li>Define resultados de iten da agenda para as reuniões.</li> <li>Gerar documentos em PDF a partir de uma descrição do pacote de trabalho.</li> <li>Permite um melhor gerenciamento de um grande número de projetos com a visão de listas de projetos aprimoradas.</li> <li>Use @-mention de usuário quando a citação responder a um comentário.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."

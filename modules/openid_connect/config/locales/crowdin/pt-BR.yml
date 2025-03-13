@@ -7,28 +7,28 @@ pt-BR:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
-        slug: Unique identifier
-        display_name: Display name
+        name: Nome
+        slug: Identificador único
+        display_name: Nome de exibição
         client_id: Client ID
-        client_secret: Client secret
+        client_secret: Client Secret
         secret: Secret
-        scope: Scope
-        grant_types_supported: Supported grant types
-        limit_self_registration: Limit self registration
-        authorization_endpoint: Authorization endpoint
-        userinfo_endpoint: User information endpoint
-        token_endpoint: Token endpoint
-        end_session_endpoint: End session endpoint
-        post_logout_redirect_uri: Post logout redirect URI
-        jwks_uri: JWKS URI
-        issuer: Issuer
-        tenant: Tenant
-        metadata_url: Metadata URL
-        icon: Custom icon
-        claims: Claims
-        acr_values: ACR values
-        redirect_url: Redirect URL
+        scope: Escopo
+        grant_types_supported: Tipos de concessão suportados
+        limit_self_registration: Restringir auto-registro
+        authorization_endpoint: Endpoint de autorização
+        userinfo_endpoint: Endpoint de informações do usuários
+        token_endpoint: Endpoint do Token
+        end_session_endpoint: Endpoint de término de sessão
+        post_logout_redirect_uri: URI de redirecionamento após logout
+        jwks_uri: URI de JWKS
+        issuer: Emissor (Issuer)
+        tenant: Locatário (Tenant)
+        metadata_url: URL de metadados
+        icon: Ícone personalizado
+        claims: Declarações
+        acr_values: Valores ACR (Authentication Context Class Reference)
+        redirect_url: URL de redirecionamento
     errors:
       models:
         openid_connect/provider:

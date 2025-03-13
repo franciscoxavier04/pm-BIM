@@ -360,17 +360,17 @@ tr:
           "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                Bu sürüm size çeşitli özellikler ve iyileştirmeler getiriyor, örneğin: <br> <ul class="%{list_styling_class}"> <li>Otomatik planlama modunu etkinleştirme.</li> <li>Toplantılar için gündem maddesi sonuçları belirleme.</li> <li>Bir iş paketi açıklamasından PDF belgeleri oluşturma.</li> <li>Geliştirilmiş proje listeleri görünümü ile çok sayıda projeyi daha iyi yönetme.</li> <li>Bir yoruma alıntı yaparken kullanıcıyı @ etiketi ile anma.</li> </ul>
     ical_sharing_modal:
       title: "Takvime abone ol"
       inital_setup_error_message: "Veri alınırken bir hata oluştu."
       description: "You can use the URL (iCalendar) to subscribe to this calendar in an external client and view up-to-date work package information from there."
-      warning: "Please don't share this URL with other users. Anyone with this link will be able to view work package details without an account or password."
+      warning: "Bu adresi başkalarıyla paylaşmayın. Bu adrese sahip olan birisi iş paketini hesabı ya da parolası olmaksızın görüntüleyebilecektir."
       token_name_label: "Bunu nerede kullanacaksınız?"
       token_name_placeholder: 'Bir ad yazın, örneğin "Telefon"'
       token_name_description_text: 'If you subscribe to this calendar from multiple devices, this name will help you distinguish between them in your <a href="my/access_token", target="_blank">access tokens</a> list.'
       copy_url_label: "Adresi kopyala"
-      ical_generation_error_text: "An error occured while generating the calendar URL."
+      ical_generation_error_text: "Takvim adresi üretilirken bir hata oldu."
       success_message: 'The URL "%{name}" was successfully copied to your clipboard. Paste it in your calendar client to complete the subscription.'
     label_activate: "Etkinleştir"
     label_assignee: "Atanan"
@@ -533,7 +533,7 @@ tr:
     label_watch_work_package: "İş paketini takip et"
     label_watcher_added_successfully: "Takip eden başarıyla eklendi!"
     label_watcher_deleted_successfully: "Takip eden başarıyla silindi!"
-    label_work_package_details_you_are_here: "You are on the %{tab} tab for %{type} %{subject}."
+    label_work_package_details_you_are_here: "%{type} %{subject} için %{tab} sekmesindesiniz."
     label_work_package_context_menu: "İş paketi bağlam menüsü"
     label_unwatch: "Takip etme"
     label_unwatch_work_package: "İş paketini takip etmeyi bırak"
@@ -576,7 +576,7 @@ tr:
         members: "Projenize katılmak için yeni <b>üyeler</b> davet edin."
         quick_add_button: "<b>Yeni bir proje oluşturmak</b> veya <b>iş arkadaşlarınızı davet etmek</b> için başlık bölümündeki artı (+) simgesini tıklayın."
         sidebar_arrow: "Projenin <b>ana menüsüne</b> dönmek için sol üst köşedeki dönüş okunu kullanın."
-        welcome: "Take a three-minute introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
+        welcome: "En <b>önemli özellikleri</b> öğrenmek için üç dakikalık bir tanıtım gezintisine çıkın. <br> Tüm adımları tamamlamanızı öneririz. Turu istediğiniz zaman yeniden başlatabilirsiniz."
         wiki: "<b>wiki</b> içinde belgeleyebilir ve ekibinizle birlikte bilgi paylaşabilirsiniz."
         backlogs:
           overview: "İşinizi <b>birikimler</b> görünümünde yönetin."
@@ -596,7 +596,7 @@ tr:
           full_view: "<b>İş paketi ayrıntıları</b> görünümü, tanımı, durumu, önceliği, etkinlikleri, bağımlılıkları ve yorumları gibi belirli bir iş paketiyle ilgili tüm ilgili bilgileri sağlar."
           back_button: "Çıkmak ve iş paketi listesine geri dönmek için sol üst köşedeki dönüş okunu kullanın."
           create_button: "<b>+ Oluştur</b> düğmesi, projenize yeni bir çalışma paketi ekleyecektir."
-          gantt_menu: "Create project schedules and timelines effortlessly using the Gantt chart module."
+          gantt_menu: "Gantt şeması modülünü kullanarak zahmetsizce proje programları ve zaman çizelgeleri oluşturun."
           timeline: "Burada <b>proje planınızı düzenleyebilir</b>, görevler, kilometre taşları, aşamalar ve daha fazlası gibi yeni iş paketleri oluşturabilir ve <b>bağımlılıklar ekleyebilirsiniz</b>. Tüm ekip üyeleri istedikleri zaman en son planı görebilir ve güncelleyebilir."
         team_planner:
           overview: "Takım planlayıcı, takım üyelerine görsel olarak görevler atamanıza ve kimin ne üzerinde çalıştığına dair bir genel bakış elde etmenize olanak tanır."
@@ -725,7 +725,7 @@ tr:
       context: "Proje içeriği"
       copy:
         copy_options: "Ayarları kopyala"
-      not_available: "Project N/A"
+      not_available: "Proje mevcut değil"
       no_template_selected: "(Yok)"
       required_outside_context: >
         Lütfen tüm özellikleri görmek için çalışma paketini oluşturacak bir proje seçin. Yalnızca yukarıdaki türden etkin olan projeleri seçebilirsiniz.
@@ -785,7 +785,7 @@ tr:
       start_new_timer: "Yeni zamanlayıcı başlat"
       timer_already_running: "Yeni bir zamanlayıcı başlatmak için önce mevcut zamanlayıcıyı durdurmanız gerekir:"
       timer_already_stopped: "Bu iş paketi için aktif zamanlayıcı yok, başka bir pencerede durdurdunuz mu?"
-      tracking_time: "Tracking time"
+      tracking_time: "Takip süresi"
       button_stop: "Geçerli zamanlayıcıyı durdur"
     two_factor_authentication:
       label_two_factor_authentication: "İki faktörlü kimlik doğrulama"
@@ -886,7 +886,7 @@ tr:
       image: "Görsel"
     sharing:
       share: "Paylaş"
-      selected_count: "%{count} selected"
+      selected_count: "%{count} seçildi"
       selection:
         mixed: "Karışık"
     work_packages:
@@ -1300,8 +1300,8 @@ tr:
       header_description: "Geçmişte herhangi bir noktadan bu yana bu listede yapılan değişiklikleri vurgulayın."
       enterprise_header_description: "Enterprise sürümü ile geçmişte herhangi bir zamandan bu yana bu listede yapılan değişiklikleri vurgulayın."
       show_changes_since: "Şu zamandan sonraki değişiklikleri göster"
-      baseline_comparison: "Baseline comparison"
-      help_description: "Reference time zone for the baseline."
+      baseline_comparison: "Temel Karşılaştırma"
+      help_description: "Karşılaştırma için referans zaman dilimi."
       time_description: "Yerel saatinizle: %{datetime}"
       time: "Saat"
       from: "Başlangıç"

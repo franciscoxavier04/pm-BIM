@@ -359,7 +359,7 @@ zh-TW:
           "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                本次版本更新帶來多項新功能與改進，例如：<br> <ul class="%{list_styling_class}"> <li>啟用自動排程模式。</li> <li>為會議議程項目設定結果。</li> <li>從工作項目描述中生成 PDF 文件。</li> <li>透過強化的專案清單視圖，更有效管理大量專案。</li> <li>在引用回覆留言時，可使用 @ 提及用戶。</li> </ul>
     ical_sharing_modal:
       title: "訂閱日曆"
       inital_setup_error_message: "更新資料時發生錯誤"
