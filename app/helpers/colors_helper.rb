@@ -52,11 +52,7 @@ module ColorsHelper
   # Styles to display the color of attributes (type, status etc.) for example in the WP view
   ##
   def resource_color_css(name, scope)
-    if scope != Color
-      scope = scope.includes(:color)
-    end
-
-    scope.all.map do |entry|
+    scope.map do |entry|
       color = entry.is_a?(::Color) ? entry : entry.color
 
       if color.nil?
@@ -85,8 +81,6 @@ module ColorsHelper
     else
       ".__hl_background { #{highlighted_background_light} }"
     end
-
-    set_background_colors_for(class_name: ".#{hl_background_class(name, entry)}", color:)
   end
 
   def foreground_color_css
