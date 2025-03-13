@@ -306,4 +306,8 @@ module WorkPackage::PDFExport::Common::Common
   def get_subject_column_cell(work_package, value)
     make_link_anchor(work_package.id, escape_tags(value))
   end
+
+  def wp_status_prawn_color(work_package)
+    work_package.status.color&.hexcode&.sub("#", "") || "F0F0F0"
+  end
 end

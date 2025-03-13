@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -201,6 +203,7 @@ RSpec.describe WorkPackage::PDFExport::WorkPackageToPdf do
   let(:expected_details) do
     result = [
       "#{type.name} ##{work_package.id} - #{work_package.subject}",
+      " ", (Prawn::Text::NBSP * 3) + work_package.status.name.downcase + (Prawn::Text::NBSP * 3), # badge & padding
       "People",
       "Assignee", user.name,
       "Accountable", user.name,
