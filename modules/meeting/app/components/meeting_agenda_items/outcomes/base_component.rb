@@ -53,5 +53,13 @@ module MeetingAgendaItems
         @meeting_outcome = @meeting_agenda_item.outcomes.information_kind.last
       end
     end
+
+    def conditional_margin_top
+      if @meeting.in_progress? || @meeting_outcome.present?
+        2
+      else
+        0
+      end
+    end
   end
 end
