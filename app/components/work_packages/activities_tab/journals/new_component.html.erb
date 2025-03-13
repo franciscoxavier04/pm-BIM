@@ -70,7 +70,8 @@
 
                   restricted_comment_container.with_column(
                     display: :none,
-                    data: { "work-packages--activities-tab--restricted-comment-target": "learnMoreLink" }
+                    data: { "work-packages--activities-tab--restricted-comment-target": "learnMoreLink" },
+                    pb: 1
                   ) do
                     render(Primer::Beta::Link.new(href: learn_more_static_link_url, target: "_blank")) do |link|
                       link.with_trailing_visual_icon(icon: "link-external", size: :small)

@@ -34,7 +34,6 @@ module WorkPackages::ActivitiesTab::Journals
         name: :restricted,
         label: I18n.t("activities.work_packages.activity_tab.restrict_visibility"),
         checked: false,
-        label_arguments: { class: "no-wrap" },
         data: {
           "work-packages--activities-tab--restricted-comment-target": "restrictedCheckbox",
           action: "input->work-packages--activities-tab--restricted-comment#toggleBackgroundColor"
