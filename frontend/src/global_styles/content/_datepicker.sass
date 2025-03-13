@@ -29,7 +29,7 @@
 $datepicker--selected-border-radius: 5px
 
 @mixin disabled-day
-  background: var(--overlay-bgColor)
+  background: var(--body-background)
   color: var(--fgColor-muted)
   pointer-events: none
   cursor: not-allowed
@@ -73,7 +73,7 @@ $datepicker--selected-border-radius: 5px
   top: unset !important
 
 .flatpickr-calendar
-  background: var(--overlay-bgColor) !important
+  background: var(--body-background) !important
   box-shadow: none !important
   @include spot-caption
 
@@ -81,7 +81,7 @@ $datepicker--selected-border-radius: 5px
     &:before
       border-bottom-color: var(--borderColor-default)
     &:after
-      border-bottom-color: var(--overlay-bgColor)
+      border-bottom-color: var(--body-background)
 
   .flatpickr-months
     min-height: 45px
@@ -139,7 +139,7 @@ $datepicker--selected-border-radius: 5px
 
       .flatpickr-day
         color: var(--body-font-color)
-        background: var(--overlay-bgColor)
+        background: var(--body-background)
         width: 100%
         max-width: unset
         height: 30px
