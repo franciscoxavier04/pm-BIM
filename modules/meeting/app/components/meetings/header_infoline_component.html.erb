@@ -9,7 +9,7 @@
       end
     %>
   <% elsif !@meeting.template? %>
-    <%= render(Primer::BaseComponent.new(tag: :span, classes: "hidden-for-mobile", mr: 1)) do %>
+    <%= render(Primer::BaseComponent.new(tag: :span, classes: "hidden-for-mobile", mr: 2)) do %>
       <%= render(Meetings::SidePanel::StatusButtonComponent.new(meeting: @meeting, size: :small)) %>
     <% end %>
     <%=
