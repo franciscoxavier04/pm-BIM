@@ -13,7 +13,7 @@
   </div>
 
   <!-- copied css classes from primer to have a UX behaviour consistent with other pages having a sidebar -->
-  <div class="Layout Layout--flowRow-until-md Layout--sidebarPosition-end Layout--sidebarPosition-flowRow-start" *ngIf="isTurboFrameSidebarEnabled()">
+  <div class="Layout Layout--flowRow-until-md Layout--sidebarPosition-end Layout--sidebarPosition-flowRow-start Layout--sidebar-narrow" *ngIf="isTurboFrameSidebarEnabled()">
     <div class="Layout-main">
       <grid *ngIf="grid" [grid]="grid"></grid>
     </div>
