@@ -133,9 +133,9 @@ export default class PatternInputController extends Controller {
 
     this.tagInvalidTokens();
 
-    // this resets the cursor position without changing it
-    // it is necessary because chromium based browsers try to
-    // retain styling and adds a unwanted <font> tag,
+    // This resets the cursor position without changing it.
+    // It is necessary because chromium based browsers try to
+    // retain styling and adds an unwanted <font> tag,
     // breaking the behaviour of this component
     const selection = document.getSelection();
     if (selection && selection.rangeCount) {
@@ -338,8 +338,6 @@ export default class PatternInputController extends Controller {
     this.clearSuggestionsFilter();
     this.suggestionsTarget.classList.remove('d-none');
 
-    this.appendInsertAsTextElement(word);
-
     const filtered = this.getFilteredSuggestionsData(word.toLowerCase());
 
     // insert the HTML
@@ -369,6 +367,10 @@ export default class PatternInputController extends Controller {
         this.suggestionsTarget.appendChild(groupDivider);
       }
     });
+
+    if (this.suggestionsTarget.childNodes.length === 0) {
+      this.appendInsertAsTextElement(word);
+    }
   }
 
   private appendInsertAsTextElement(word:string):void {
