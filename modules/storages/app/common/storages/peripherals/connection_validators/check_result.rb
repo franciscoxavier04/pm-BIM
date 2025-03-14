@@ -31,25 +31,22 @@
 module Storages
   module Peripherals
     module ConnectionValidators
-      CheckResult = Struct.new("CheckResult", :key, :state, :message, :timestamp) do
-        def self.init_for(key)
+      CheckResult = Data.define(:key, :state, :message, :timestamp) do
+        private_class_method :new
+        def self.skipped(key)
           new(key:, state: :skipped, message: nil, timestamp: nil)
         end
 
-        def successful? = state == :success
+        def self.failure(key, message)
+          new(key:, state: :failure, message: message, timestamp: Time.zone.now)
+        end
+
+        def self.success(key)
+          new(key:, state: :success, message: nil, timestamp: Time.zone.now)
+        end
+
+        def success? = state == :success
         def failure? = state == :failure
-        def warning? = state == :warning
-
-        def succeed!
-          self[:state] = :success
-          self[:timestamp] = Time.zone.now
-        end
-
-        def fail!(message)
-          self[:state] = :failure
-          self[:message] = message
-          self[:timestamp] = Time.zone.now
-        end
       end
     end
   end

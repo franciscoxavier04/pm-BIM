@@ -53,17 +53,10 @@ module Storages
 
           def capabilities_request_failed
             if capabilities.failure? && capabilities.result != :not_found
-              @results[:capabilities_request_failed].fail!(:error)
-              throw :interrupted
+              fail_check(__method__, message(:error))
             else
-              @results[:capabilities_request_failed].succeed!
+              pass_check(__method__)
             end
-
-            # Rails.logger.error "Connection validation failed with unknown error:\n\t" \
-            #                    "storage: ##{@storage.id} #{@storage.name}\n\t" \
-            #                    "request: Nextcloud capabilities\n\t" \
-            #                    "status: #{capabilities.result}\n\t" \
-            #                    "response: #{capabilities.error_payload}"
           end
 
           def version_mismatch
@@ -71,9 +64,9 @@ module Storages
             capabilities_result = capabilities.result
 
             if capabilities_result.app_version < min_app_version
-              @results[:version_mismatch].fail!(message(:app_version_mismatch))
+              fail_check(__method__, message(:app_version_mismatch))
             else
-              @results[:version_mismatch].succeed!
+              pass_check(__method__)
             end
           end
 
@@ -82,20 +75,17 @@ module Storages
             app_name = I18n.t("storages.dependencies.nextcloud.integration_app")
 
             if capabilities_result.app_disabled?
-
-              @results[:missing_dependencies].fail!(message(:missing_dependencies, dependency: app_name))
-              throw(:interrupted)
+              fail_check(__method__, message(:missing_dependencies, dependency: app_name))
             else
-              @results[:missing_dependencies].succeed!
+              pass_check(__method__)
             end
           end
 
           def host_url_not_found
             if capabilities.result == :not_found
-              @results[:host_url_not_found].fail!(message(:host_not_found))
-              throw :interrupted
+              fail_check(__method__, message(:host_not_found))
             else
-              @results[:host_url_not_found].succeed!
+              pass_check(__method__)
             end
           end
 
@@ -116,12 +106,25 @@ module Storages
 
           def path_to_config = Rails.root.join("modules/storages/config/nextcloud_dependencies.yml")
 
+          def fail_check(key, message)
+            update_result(key, CheckResult.failure(key, message))
+            throw :interrupted
+          end
+
+          def pass_check(key)
+            update_result(key, CheckResult.success(key))
+          end
+
+          def update_result(method, value)
+            @results[method.to_sym] = value
+          end
+
           def build_result_list
             {
-              capabilities_request_failed: CheckResult.init_for(:capabilities_request_failed),
-              host_url_not_found: CheckResult.init_for(:host_url_not_found),
-              missing_dependencies: CheckResult.init_for(:missing_dependencies),
-              version_mismatch: CheckResult.init_for(:version_mismatch)
+              capabilities_request_failed: CheckResult.skipped(:capabilities_request_failed),
+              host_url_not_found: CheckResult.skipped(:host_url_not_found),
+              missing_dependencies: CheckResult.skipped(:missing_dependencies),
+              version_mismatch: CheckResult.skipped(:version_mismatch)
             }
           end
         end

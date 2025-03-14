@@ -44,7 +44,7 @@ module Storages
             results = validator.call
 
             expect(results).to be_a(Hash)
-            expect(results.values).to all(be_successful)
+            expect(results.values).to all(be_success)
           end
 
           describe "when errors occurs" do
