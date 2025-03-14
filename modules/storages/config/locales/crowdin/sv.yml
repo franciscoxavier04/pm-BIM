@@ -2,7 +2,7 @@ sv:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
+        client_id: Klient-ID
         client_secret: Client secret
       project:
         project_folder_type: Project folder type
@@ -16,7 +16,7 @@ sv:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Projektmapp
         project_folder_mode: Project folder mode
         storage: Storage
         storage_url: Storage URL

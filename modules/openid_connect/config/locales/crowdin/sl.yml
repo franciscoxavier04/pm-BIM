@@ -7,15 +7,15 @@ sl:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Ime
         slug: Unique identifier
-        display_name: Display name
-        client_id: Client ID
-        client_secret: Client secret
-        secret: Secret
-        scope: Scope
+        display_name: Prikazno ime
+        client_id: ID odjemalca
+        client_secret: Skrivnost odjemalca
+        secret: Skrivnost
+        scope: Področje
         grant_types_supported: Supported grant types
-        limit_self_registration: Limit self registration
+        limit_self_registration: Omeji samoregistracijo
         authorization_endpoint: Authorization endpoint
         userinfo_endpoint: User information endpoint
         token_endpoint: Token endpoint
@@ -103,7 +103,7 @@ sl:
       label_advanced_configuration: Advanced configuration
       label_configuration_details: Metadata
       label_client_details: Client details
-      label_attribute_mapping: Attribute mapping
+      label_attribute_mapping: Povezovanje lastnosti
       client_details_description: Configuration details of OpenProject as an OIDC client
       no_results_table: Zaenkrat še ni opredeljenih ponudnikov.
       plural: OpenID ponudniki

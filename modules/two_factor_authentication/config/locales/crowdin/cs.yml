@@ -9,7 +9,7 @@ cs:
       two_factor_authentication/device:
         identifier: "Identifikátor"
         default: "Použít jako výchozí"
-        channel: "Channel"
+        channel: "Kanál"
       two_factor_authentication/device/sms:
         phone_number: "Telefonní číslo"
       two_factor_authentication/device/webauthn:

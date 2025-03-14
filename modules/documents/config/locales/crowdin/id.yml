@@ -35,7 +35,7 @@ id:
   documents:
     label_attachment_author: "Lampiran penulis"
     label_categories: "Categories"
-    new_category: "New category"
+    new_category: "Kategori Baru"
   label_document_added: "Dokumen ditambahkan"
   label_document_new: "Dokumen baru"
   label_document_plural: "Dokumen"

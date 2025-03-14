@@ -13,7 +13,7 @@ ru:
         client_id: ID клиента
         client_secret: Закрытый ключ клиента
         secret: Закрытый ключ
-        scope: Scope
+        scope: Масштаб
         grant_types_supported: Поддерживаемые типы разрешений
         limit_self_registration: Ограничение самостоятельной регистрации
         authorization_endpoint: Конечная точка авторизации
@@ -22,11 +22,11 @@ ru:
         end_session_endpoint: Конечная точка завершения сеанса
         post_logout_redirect_uri: URI перенаправления после выхода из системы
         jwks_uri: JWKS URI
-        issuer: Issuer
-        tenant: Tenant
+        issuer: Издатель
+        tenant: Владелец
         metadata_url: URL метаданных
         icon: Пользовательская иконка
-        claims: Claims
+        claims: Претензии
         acr_values: Значения ACR
         redirect_url: URL перенаправления
     errors:

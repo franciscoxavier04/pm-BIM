@@ -360,7 +360,7 @@ pt-BR:
           "15_4":
             standard:
               new_features_html: >
-                A versão traz vários recursos e melhorias para você, por exemplo, <br> <ul class="%{list_styling_class}"> <li>Permite o modo de agendamento automático.</li> <li>Define resultados de iten da agenda para as reuniões.</li> <li>Gerar documentos em PDF a partir de uma descrição do pacote de trabalho.</li> <li>Permite um melhor gerenciamento de um grande número de projetos com a visão de listas de projetos aprimoradas.</li> <li>Use @-mention de usuário quando a citação responder a um comentário.</li> </ul>
+                A versão traz diversos recursos e melhorias para você, por exemplo: <br> <ul class="%{list_styling_class}"> <li>Ativar o modo de agendamento automático.</li> <li>Definir os resultados dos itens da pauta para reuniões.</li> <li>Gerar documentos em PDF a partir da descrição de um pacote de trabalho.</li> <li>Gerenciar melhor um grande número de projetos com uma visualização aprimorada da lista de projetos.</li> <li>Usar @menção de usuário ao responder com citação a um comentário.</li> </ul>
     ical_sharing_modal:
       title: "Assinar calendário"
       inital_setup_error_message: "Ocorreu um erro ao buscar dados."
@@ -725,7 +725,7 @@ pt-BR:
       context: "Contexto do projeto"
       copy:
         copy_options: "Opções de cópia"
-      not_available: "Project N/A"
+      not_available: "Projeto N/A"
       no_template_selected: "(Nenhum)"
       required_outside_context: >
         Por favor, escolha o projeto onde vai criar o pacote de trabalho para visualizar todos os atributos. Você pode selecionar somente projetos que possuam o tipo acima ativado.

@@ -7,7 +7,7 @@ lv:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Nosaukums
         slug: Unique identifier
         display_name: Display name
         client_id: Client ID

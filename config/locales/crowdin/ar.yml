@@ -218,7 +218,7 @@ ar:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: لكافة المشاريع
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ ar:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "الجذر"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -631,14 +631,14 @@ ar:
       no_results_content_text: إنشاء نوع جديد
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "تشكيل النموذج"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "المشاريع"
+        enabled_projects: "المشاريع الممكنة"
       settings:
-        tab: "Settings"
+        tab: "إعدادات"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -701,8 +701,8 @@ ar:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "الأطفال"
+        dates: "التواريخ"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -774,10 +774,10 @@ ar:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "المتعلقة ب"
+      label_relates_plural: "المتعلقة ب"
+      label_relates_to_singular: "المتعلقة ب"
+      label_relates_to_plural: "المتعلقة ب"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -793,42 +793,42 @@ ar:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "حجوبات"
+      label_blocks_plural: "حجوبات"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "محجوب من قبل"
+      label_blocked_plural: "محجوب من قبل"
+      label_blocked_by_singular: "محجوب من قبل"
+      label_blocked__by_plural: "محجوب من قبل"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "التكرارات"
+      label_duplicates_plural: "التكرارات"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "مكرر بواسطة"
+      label_duplicated_plural: "مكرر بواسطة"
+      label_duplicated_by_singular: "مكرر بواسطة"
+      label_duplicated_by_plural: "مكرر بواسطة"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "مشمولة"
+      label_includes_plural: "مشمولة"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "جزء من"
+      label_partof_plural: "جزء من"
+      label_part_of_singular: "جزء من"
+      label_part_of_plural: "جزء من"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "متطلبات"
+      label_requires_plural: "متطلبات"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "مجموعة عمل ذات صلة"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: دعوة
   account:
@@ -891,7 +891,7 @@ ar:
         editable: "قابل للتعديل"
         field_format: "تنسيق"
         is_filter: "يستخدم كعامل تصفية"
-        is_for_all: "For all projects"
+        is_for_all: "لكافة المشاريع"
         is_required: "مطلوب"
         max_length: "الطول الأقصى"
         min_length: "الطول الأدنى"
@@ -908,7 +908,7 @@ ar:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "مفعّل"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -936,7 +936,7 @@ ar:
         attr_login: "Username attribute"
         attr_mail: "سمة البريد الإلكتروني"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "مدير النظام"
         base_dn: "قاعدة DN"
         host: "المضيف"
         onthefly: "Automatic user creation"
@@ -954,7 +954,7 @@ ar:
           true: "unarchived"
           false: "archived"
         description: "الوصف"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "تمكين الأنماط"
         identifier: "المعرّف"
         latest_activity_at: "آخر نشاط في"
         parent: "المشروع الفرعي من"
@@ -985,11 +985,11 @@ ar:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "الاسم"
+        color: "اللون"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "الأعمدة"
         column_names: "الأعمدة"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -1010,17 +1010,17 @@ ar:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "نتائج"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "مجموعة عمل ذات صلة"
         to: "مجموعة عمل ذات صلة"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "التاريخ"
+        remind_at_time: "الوقت"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -1033,7 +1033,7 @@ ar:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "التقويم"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "النشاط"
@@ -1052,7 +1052,7 @@ ar:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "المستخدم"
       user:
         admin: "مدير النظام"
         auth_source: "Authentication source"
@@ -1063,8 +1063,8 @@ ar:
         language: "اللغة"
         last_login_on: "آخر تسجيل دخول"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "الاسم الأول"
+        last_name: "الاسم الأخير"
         first_login: "First login"
         new_password: "كلمة مرور جديدة"
         password_confirmation: "تأكيد"
@@ -1488,7 +1488,7 @@ ar:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "يجب أن تحتوي على أحرف الفئات التالية (على الأقل %{min_count} من %{all_count}): %{rules}"
               lowercase: "أحرف صغيرة (مثل 'a')"
               uppercase: "أحرف كبيرة (على سبيل المثال، 'A')"
               numeric: "رقمية (على سبيل المثال، '1')"
@@ -1547,7 +1547,7 @@ ar:
       group: "مجموعة"
       issue_priority:
         zero: "Priorities"
-        one: "Priority"
+        one: "الأولوية"
         two: "Priorities"
         few: "Priorities"
         many: "Priorities"
@@ -1584,7 +1584,7 @@ ar:
       status: "حالة مجموعة العمل"
       token/api:
         zero: Access tokens
-        one: Access token
+        one: رمزالوصول المميز
         two: Access tokens
         few: Access tokens
         many: Access tokens
@@ -1663,9 +1663,9 @@ ar:
     assignee: "المُسند إليه"
     attachments: "المرفقات"
     actor: "Actor"
-    action: "Action"
+    action: "الإجراء"
     author: "المؤلف"
-    avatar: "Avatar"
+    avatar: "الصورة الرمزية"
     base: "خطأ عام:"
     body: "Body"
     blocks_ids: "مُعرِّفات مجموعات العمل المحظورة"
@@ -1676,11 +1676,11 @@ ar:
     color: "اللون"
     creator: "Creator"
     created_at: "تم الإنشاء في"
-    custom_field: "Custom field"
+    custom_field: "حقل مخصص"
     custom_options: "القيم المحتملة"
     custom_values: "الحقول المخصصة"
     date: "التاريخ"
-    dates_interval: "Date range"
+    dates_interval: "النطاق الزمني"
     default_columns: "الأعمدة الافتراضية"
     description: "الوصف"
     derived_due_date: "Derived finish date"
@@ -1690,14 +1690,14 @@ ar:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "البريد الإكتروني"
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "الاسم الأول"
-    filter: "Filter"
+    filter: "فلترة"
     group: "مجموعة"
     groups: "المجموعات"
-    hexcode: "Hex code"
+    hexcode: "رمز Hex"
     id: "الهوية المُعَرِّفة"
     is_default: "القيمة الافتراضية"
     is_for_all: "لكافة المشاريع"
@@ -1705,37 +1705,37 @@ ar:
     principal: "User or group"
     #kept for backwards compatibility
     issue: "مجموعة العمل"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "يوميات"
+    journal_notes: "تعليق"
     lastname: "الاسم الأخير"
     login: "Username"
     lock_version: "Lock version"
     mail: "البريد الإكتروني"
     name: "الاسم"
-    note: "Note"
-    notes: "Notes"
+    note: "ملاحظة"
+    notes: "ملاحظات"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "خيارات"
+    operator: "العامل"
     password: "كلمة المرور"
     priority: "الأولوية"
     project: "مشروع"
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "مطلوب"
     recipient: "Recipient"
     role: "الدور"
     roles: "دور"
-    search: "Search"
+    search: "البحث"
     start_date: "تاريخ البدء"
     status: "الحالة"
     state: "State"
     subject: "الموضوع"
     slug: "Slug"
     summary: "مُلخّص"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "المنطقة الزمنية"
+    text: "النص"
     title: "العنوان"
     type: "النّوع"
     typeahead: "Autocomplete"
@@ -1744,11 +1744,11 @@ ar:
     uploader: "Uploader"
     user: "المستخدم"
     username: "Username"
-    unit: "Unit"
+    unit: "الوحدة"
     value: "القيمة"
     values: "Values"
     version: "الإصدار"
-    visible: "Visible"
+    visible: "مرئي"
     work_package: "مجموعة العمل"
   backup:
     failed: "Backup failed"
@@ -2085,12 +2085,12 @@ ar:
         many: "ساعه"
         other: "ساعه"
       day:
-        zero: "days"
+        zero: "أيام"
         one: "day"
-        two: "days"
-        few: "days"
-        many: "days"
-        other: "days"
+        two: "أيام"
+        few: "أيام"
+        many: "أيام"
+        other: "أيام"
   description_active: "نشط؟"
   description_attachment_toggle: "إظهار/إخفاء المرفقات"
   description_autocomplete: >
@@ -2213,8 +2213,8 @@ ar:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "تصدير"
+      submit: "تصدير"
       format:
         label: "File format"
         options:
@@ -2237,7 +2237,7 @@ ar:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "تقرير"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
               label: "Gantt chart"
@@ -2249,10 +2249,10 @@ ar:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "أيام"
+            weeks: "أسابيع"
+            months: "أشهر"
+            quarters: "أرباع"
         column_width:
           label: "Table column width"
           options:
@@ -2307,7 +2307,7 @@ ar:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: تحميل
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2576,7 +2576,7 @@ ar:
   label_calendars_and_dates: "Calendars and dates"
   label_calendar_show: "إظهار التقويم"
   label_category: "الفئة"
-  label_completed: Completed
+  label_completed: اكتمل
   label_consent_settings: "User Consent"
   label_wiki_menu_item: عنصر القائمة wiki
   label_select_main_menu_item: حدد عنصر القائمة الرئيسية الجديد
@@ -2640,7 +2640,7 @@ ar:
   label_default: "الافتراضي"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "احذف"
   label_deleted: "محذوف"
   label_deleted_custom_field: "(حذف حقل مخصص)"
   label_deleted_custom_item: "(deleted item)"
@@ -2691,7 +2691,7 @@ ar:
   label_i_am_member: "I am member"
   label_ifc_viewer: "Ifc Viewer"
   label_ifc_model_plural: "Ifc Models"
-  label_import: "Import"
+  label_import: "استيراد"
   label_export_to: "متاح أيضاً في:"
   label_expand: "وسّع"
   label_expanded_click_to_collapse: "Expanded. Click to collapse"
@@ -2758,7 +2758,7 @@ ar:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Show all registered users"
-  label_show_less: "Show less"
+  label_show_less: "أظهِر أقل"
   label_show_more: "Show more"
   label_journal: "يوميات"
   label_journal_diff: "مقارنة التوصيف"
@@ -2830,8 +2830,8 @@ ar:
   label_months_from: "أشهر من"
   label_more: "المزيد"
   label_more_than_ago: "منذ أكثر من أيام"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "انقل العمود لليسار"
+  label_move_column_right: "انقل العمود لليمين"
   label_move_work_package: "نقل مجموعة العمل"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2856,7 +2856,7 @@ ar:
   label_no_change_option: "(بدون تغيير)"
   label_no_data: "لا يوجد بيانات لعرضها"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "لا يوجد تاريخ بدء"
   label_no_parent_page: "No parent page"
   label_nothing_display: "لا يوجد شيء لعرضه"
   label_nobody: "لا أحد"
@@ -2924,7 +2924,7 @@ ar:
   label_project_latest: "أحدث المشاريع"
   label_project_default_type: "السماح بالنوع فارغ"
   label_project_hierarchy: "التسلسل الهرمي للمشروع"
-  label_project_mappings: "Projects"
+  label_project_mappings: "المشاريع"
   label_project_new: "مشروع جديد"
   label_project_plural: "المشاريع"
   label_project_list_plural: "Project lists"
@@ -3002,10 +3002,10 @@ ar:
   label_show_completed_versions: "عرض الإصدارات المنجزة"
   label_columns: "الأعمدة"
   label_sort: "فرز"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "ترتيب تصاعدي"
   label_sort_by: "ترتيب حسب %{value}"
   label_sorted_by: "مرتبة حسب %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "ترتيب تنازلي"
   label_sort_higher: "تحريك للأعلى"
   label_sort_highest: "الانتقال لأعلى الصفحة"
   label_sort_lower: "تحريك للأسفل"
@@ -3034,7 +3034,7 @@ ar:
   label_this_month: "هذا الشهر"
   label_this_week: "هذا الأسبوع"
   label_this_year: "هذه السنة"
-  label_time: "Time"
+  label_time: "الوقت"
   label_time_entry_plural: "الوقت المستهلك"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "العنوان"
@@ -3545,7 +3545,7 @@ ar:
     count:
       zero: "0 projects"
       one: "1 project"
-      other: "%{count} projects"
+      other: "%{count} مشاريع"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3931,7 +3931,7 @@ ar:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "أَضِفْ"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4245,7 +4245,7 @@ ar:
       view: "عرض"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "التاريخ"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

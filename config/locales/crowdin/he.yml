@@ -218,7 +218,7 @@ he:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: עבור כל הפרוייקטים
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ he:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "אב"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -619,10 +619,10 @@ he:
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
+        tab: "פרויקטים"
         enabled_projects: "Enabled projects"
       settings:
-        tab: "Settings"
+        tab: "הגדרות"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -685,8 +685,8 @@ he:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "ילדים"
+        dates: "תאריכים"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -775,22 +775,22 @@ he:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "בלוקים"
+      label_blocks_plural: "בלוקים"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "חסום על ידי"
+      label_blocked_plural: "חסום על ידי"
+      label_blocked_by_singular: "חסום על ידי"
+      label_blocked__by_plural: "חסום על ידי"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "פריטים כפולים"
+      label_duplicates_plural: "פריטים כפולים"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "משוכפל על-ידי"
+      label_duplicated_plural: "משוכפל על-ידי"
+      label_duplicated_by_singular: "משוכפל על-ידי"
+      label_duplicated_by_plural: "משוכפל על-ידי"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
       label_includes_singular: "includes"
@@ -810,7 +810,7 @@ he:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "חבילת עבודה קשורה"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitation
   account:
@@ -873,7 +873,7 @@ he:
         editable: "ניתן לעריכה"
         field_format: "תצורה"
         is_filter: "משמש כמסנן"
-        is_for_all: "For all projects"
+        is_for_all: "עבור כל הפרוייקטים"
         is_required: "נדרש"
         max_length: "אורך מירבי"
         min_length: "אורך מינימלי"
@@ -890,7 +890,7 @@ he:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "פעיל"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -918,7 +918,7 @@ he:
         attr_login: "Username attribute"
         attr_mail: "תכונת דואר אלקטרוני"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "מנהל מערכת"
         base_dn: "תכנון אלמנט"
         host: "שרת"
         onthefly: "Automatic user creation"
@@ -967,11 +967,11 @@ he:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "שם"
+        color: "צבע"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "עמודות"
         column_names: "עמודות"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -992,17 +992,17 @@ he:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "תוצאות"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "חבילת עבודה קשורה"
         to: "חבילת עבודה קשורה"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "תאריך"
+        remind_at_time: "זמן"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -1015,7 +1015,7 @@ he:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "לוח שנה"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "פעילות"
@@ -1034,7 +1034,7 @@ he:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "משתמש"
       user:
         admin: "מנהל מערכת"
         auth_source: "Authentication source"
@@ -1045,8 +1045,8 @@ he:
         language: "שפה"
         last_login_on: "כניסה אחרונה"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "שם פרטי"
+        last_name: "שם משפחה"
         first_login: "First login"
         new_password: "סיסמה חדשה"
         password_confirmation: "אימות"
@@ -1470,7 +1470,7 @@ he:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "חייב להכיל תווים של המחלקות הבאות (לפחות %{min_count} מתוך %{all_count}): %{rules}"
               lowercase: "אותיות קטנות (למשל 'a')"
               uppercase: "אותיות רישיות (למשל ' A')"
               numeric: "מספריים (למשל ' 1')"
@@ -1524,7 +1524,7 @@ he:
       global_role: "Global role"
       group: "קבוצה"
       issue_priority:
-        one: "Priority"
+        one: "עדיפות"
         two: "Priorities"
         many: "Priorities"
         other: "Priorities"
@@ -1636,11 +1636,11 @@ he:
     color: "צבע"
     creator: "Creator"
     created_at: "נוצר ב-"
-    custom_field: "Custom field"
+    custom_field: "שדה מותאם אישית"
     custom_options: "הערכים האפשריים"
     custom_values: "שדות מותאמים אישית"
     date: "תאריך"
-    dates_interval: "Date range"
+    dates_interval: "טווח תאריכים"
     default_columns: "עמודות ברירת המחדל"
     description: "תיאור"
     derived_due_date: "Derived finish date"
@@ -1650,14 +1650,14 @@ he:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "אימייל"
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "שם פרטי"
-    filter: "Filter"
+    filter: "סינון"
     group: "קבוצה"
     groups: "קבוצות"
-    hexcode: "Hex code"
+    hexcode: "קוד hex"
     id: "מזהה"
     is_default: "ערך ברירת המחדל"
     is_for_all: "עבור כל הפרוייקטים"
@@ -1666,36 +1666,36 @@ he:
     #kept for backwards compatibility
     issue: "חבילת עבודה"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "תגובה"
     lastname: "שם משפחה"
     login: "Username"
-    lock_version: "Lock version"
+    lock_version: "נעילת גרסה"
     mail: "אימייל"
     name: "שם"
     note: "Note"
-    notes: "Notes"
+    notes: "הערות"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "אפשריות"
+    operator: "מפעיל"
     password: "סיסמה"
     priority: "עדיפות"
     project: "פרוייקט"
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "נדרש"
     recipient: "Recipient"
     role: "תפקיד"
     roles: "תפקידים"
-    search: "Search"
+    search: "חיפוש"
     start_date: "תאריך התחלה"
     status: "מצב"
     state: "State"
     subject: "נושא"
     slug: "Slug"
     summary: "פירוט"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "איזור זמן"
+    text: "טקסט"
     title: "כותרת"
     type: "סוג"
     typeahead: "Autocomplete"
@@ -1704,11 +1704,11 @@ he:
     uploader: "Uploader"
     user: "משתמש"
     username: "Username"
-    unit: "Unit"
+    unit: "יחידות"
     value: "ערך"
     values: "Values"
     version: "גירסה"
-    visible: "Visible"
+    visible: "נראה"
     work_package: "חבילת עבודה"
   backup:
     failed: "Backup failed"
@@ -2010,9 +2010,9 @@ he:
         other: "שעות"
       day:
         one: "day"
-        two: "days"
-        many: "days"
-        other: "days"
+        two: "ימים"
+        many: "ימים"
+        other: "ימים"
   description_active: "פעיל?"
   description_attachment_toggle: "הצג/הסתר קבצים מצורפים"
   description_autocomplete: >
@@ -2135,8 +2135,8 @@ he:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "ייצוא"
+      submit: "ייצוא"
       format:
         label: "File format"
         options:
@@ -2159,7 +2159,7 @@ he:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "דו״ח"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
               label: "Gantt chart"
@@ -2171,8 +2171,8 @@ he:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
+            days: "ימים"
+            weeks: "שבועות"
             months: "Months"
             quarters: "Quarters"
         column_width:
@@ -2229,7 +2229,7 @@ he:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: הורד
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2562,7 +2562,7 @@ he:
   label_default: "ברירת מחדל"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "מחק"
   label_deleted: "נמחק"
   label_deleted_custom_field: "(למחוק שדה מותאם אישית)"
   label_deleted_custom_item: "(deleted item)"
@@ -2752,8 +2752,8 @@ he:
   label_months_from: "months from"
   label_more: "עוד"
   label_more_than_ago: "more than days ago"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "להעביר את העמודה שמאלה"
+  label_move_column_right: "הזזת עמודה ימינה"
   label_move_work_package: "Move work package"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2778,7 +2778,7 @@ he:
   label_no_change_option: "(ללא שינוי)"
   label_no_data: "אין נתונים להצגה"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "אין תאריך התחלה"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Nothing to display"
   label_nobody: "nobody"
@@ -2846,7 +2846,7 @@ he:
   label_project_latest: "Latest projects"
   label_project_default_type: "Allow empty type"
   label_project_hierarchy: "Project hierarchy"
-  label_project_mappings: "Projects"
+  label_project_mappings: "פרויקטים"
   label_project_new: "פרוייקט חדש"
   label_project_plural: "פרויקטים"
   label_project_list_plural: "Project lists"
@@ -2924,10 +2924,10 @@ he:
   label_show_completed_versions: "Show completed versions"
   label_columns: "עמודות"
   label_sort: "מיין"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "מיין בסדר עולה"
   label_sort_by: "Sort by %{value}"
   label_sorted_by: "sorted by %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "מיין בסדר יורד"
   label_sort_higher: "Move up"
   label_sort_highest: "Move to top"
   label_sort_lower: "Move down"
@@ -2956,7 +2956,7 @@ he:
   label_this_month: "החודש"
   label_this_week: "השבוע"
   label_this_year: "this year"
-  label_time: "Time"
+  label_time: "זמן"
   label_time_entry_plural: "זמן שבוזבז"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "כותרת"
@@ -2996,7 +2996,7 @@ he:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "גרסה חדשה"
-  label_version_edit: "Edit version"
+  label_version_edit: "ערוך גרסה"
   label_version_plural: "גירסאות"
   label_version_sharing_descendants: "With subprojects"
   label_version_sharing_hierarchy: "With project hierarchy"
@@ -3462,8 +3462,8 @@ he:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "פרוייקט אחד"
+      other: "%{count} פרויקטים"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3851,7 +3851,7 @@ he:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "הוספה"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4163,7 +4163,7 @@ he:
       view: "תצוגה"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "תאריך"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

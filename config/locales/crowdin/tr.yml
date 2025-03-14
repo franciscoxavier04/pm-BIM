@@ -367,12 +367,12 @@ tr:
         header:
           title: "Proje yaşam döngüsü"
           description_html: 'Proje yaşam döngüsündeki bu proje aşamaları ve kapıları <a href=%{overview_url} target="_blank">projeye genel bakış sayfası</a>nda görüntülenir ve kurulumun yöneticisi tarafından <a href=%{admin_settings_url} target="_blank">yönetim ayarları</a> içinde tanımlanır. Öznitelikleri tek tek etkinleştirebilir veya devre dışı bırakabilirsiniz.'
-        non_defined: "Neither stages nor gates are currently defined."
-        section_header: "Stages and gates"
+        non_defined: "Şu anda ne aşamalar ne de kapılar tanımlanmıştır."
+        section_header: "Aşamalar ve kapılar"
         step:
           use_in_project: "Use %{step} in this project"
         filter:
-          label: "Search project stage or gate"
+          label: "Proje aşaması veya kapısı ara"
       project_custom_fields:
         header:
           title: "Proje öznitelikleri"
@@ -445,7 +445,7 @@ tr:
         other: "However, %{shared_work_packages_link} have also been shared with this group."
       remove_work_packages_shared_with_user_too: "Üyelikten kaldırılan bir kullanıcı paylaşılan iş paketlerine erişmeye devam edebilir. Paylaşımları da kaldırmak ister misiniz?"
       remove_work_packages_shared_with_group_too: "Üyelikten kaldırılan bir grup paylaşılan iş paketlerine erişmeye devam edebilir. Paylaşımları da kaldırmak ister misiniz?"
-      will_not_affect_inherited_shares: "(This will not affect work packages shared with their group)."
+      will_not_affect_inherited_shares: "(Bu, kendi gruplarıyla paylaşılan iş paketlerini etkilemeyecektir)."
       can_remove_direct_but_not_shared_roles: "You can remove this user as a direct project member but a group they are in is also a member of this project, so they will continue being a member via the group."
       also_work_packages_shared_with_user_html:
         one: "Also, %{shared_work_packages_link} has been shared with this user."
@@ -786,8 +786,8 @@ tr:
       label_requires_singular: "gerektiren"
       label_requires_plural: "gerektiren"
       requires_description: "Marks the related work package as a requirement to this one"
-      label_required_singular: "required by"
-      label_required_plural: "required by"
+      label_required_singular: "tarafından gerekli"
+      label_required_plural: "tarafından gerekli"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
@@ -1015,7 +1015,7 @@ tr:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Kullanıcı"
       user:
         admin: "Yönetici"
         auth_source: "Kimlik doğrulama kaynağı"
@@ -1262,8 +1262,8 @@ tr:
             type:
               must_be_a_stage_or_gate: "Project::Stage veya Project::Gate olmalıdır"
               must_be_a_stage: "bir Project::Stage olmalıdır"
-              must_be_a_gate: "must be a Project::Gate"
-              type_and_class_name_mismatch: "must match the instantiated class name"
+              must_be_a_gate: "bir Project::Gate olmalıdır"
+              type_and_class_name_mismatch: "örneklenen sınıf adıyla eşleşmelidir"
         project/gate:
           attributes:
             base:
@@ -1510,8 +1510,8 @@ tr:
         other: "Bildirimler"
       placeholder_user: "Yer tutucu kullanıcı"
       project: "Proje"
-      project/gate_definition: "Gate"
-      project/stage_definition: "Stage"
+      project/gate_definition: "Kapı"
+      project/stage_definition: "Aşama"
       project_query:
         one: "Proje listesi"
         other: "Proje listesi"
@@ -1653,7 +1653,7 @@ tr:
     subject: "Konu"
     slug: "Rumuz"
     summary: "Özet"
-    time_zone: "Time zone"
+    time_zone: "Zaman dilimi"
     text: "Metin"
     title: "Başlık"
     type: "Tür"
@@ -3068,7 +3068,7 @@ tr:
         create_account: "To access this work package, you will need to create and activate an account on %{instance}."
         open_work_package: "Open work package"
         subject: "İş paketi #%{id} sizinle paylaşıldı"
-        enterprise_text: "Share work packages with users who are not members of the project."
+        enterprise_text: "İş paketlerini proje üyesi olmayan kullanıcılarla paylaşın."
         summary:
           user: "%{user} shared a work package with you with %{role_rights} rights"
           group: "%{user} shared a work package with the group %{group} you are a member of"
@@ -3391,7 +3391,7 @@ tr:
       warning_one: Projenin üyeleri, projenin depoları yeniden yerleştirmek zorunda kalacaklardır.
       warning_two: Projeye mevcut bağlantılar artık çalışmayacaktır.
       title: Projenin tanımlayıcısını değiştirme
-    not_available: "Project N/A"
+    not_available: "Proje mevcut değil"
     template:
       copying: >
         Projeniz seçilen şablon projesinden oluşturuluyor. Proje hazır olur olmaz posta ile bilgilendirileceksiniz.
@@ -4057,7 +4057,7 @@ tr:
           cleared_because_work_is_0h: "İş süresiz olduğu için temizlendi."
           derived: "İş ve Kalan iş'ten türetilmiştir."
         estimated_hours:
-          cleared_because_remaining_work_is_empty: "Cleared because Remaining work is empty."
+          cleared_because_remaining_work_is_empty: "Kalan İş boş olduğu için temizlendi."
           derived: "Derived from Remaining work and % Complete."
           same_as_remaining_work: "Set to same value as Remaining work."
         remaining_hours:
@@ -4104,7 +4104,7 @@ tr:
     text_empty_search_header: "Herhangi bir eşleşme bulunamadı."
     text_empty_state_description: "%{entity} henüz kimseyle paylaşılmamıştır."
     text_empty_state_header: "Paylaşılmamış"
-    text_user_limit_reached: "Adding additional users will exceed the current limit. Please contact an administrator to increase the user limit to ensure external users are able to access this %{entity}."
+    text_user_limit_reached: "Ek kullanıcı eklenmesi mevcut sınırı aşacaktır. Harici kullanıcıların %{entity} adresine erişebilmesini sağlamak amacıyla kullanıcı limitini artırmak için lütfen bir yöneticiyle iletişime geçin."
     text_user_limit_reached_admins: 'Ek kullanıcı eklemek mevcut sınırı aşacaktır. Daha fazla kullanıcı ekleyebilmek için lütfen <a href="%{upgrade_url}">planınızı yükseltin</a>.'
     warning_user_limit_reached: >
       Ek kullanıcı eklenmesi mevcut sınırı aşacaktır. Harici kullanıcıların %{entity} adresine erişebilmesini sağlamak amacıyla kullanıcı limitini artırmak için lütfen bir yöneticiyle iletişime geçin.
@@ -4265,7 +4265,7 @@ tr:
       builtin: Built-in instance application
       confidential: Gizli
       singular: "OAuth uygulaması"
-      scopes: "Scopes"
+      scopes: "Kapsamlar"
       client_credentials: "Müşteri kimlik bilgileri"
       plural: "OAuth uygulamaları"
       named: "Oauth uygulaması %{name}"

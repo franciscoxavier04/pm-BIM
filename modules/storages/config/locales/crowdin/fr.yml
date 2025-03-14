@@ -2,13 +2,13 @@ fr:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID du client
+        client_secret: Clé secrète du client
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Espace de stockage
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,7 +16,7 @@ fr:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Dossier du projet
         project_folder_mode: Project folder mode
         storage: Stockage
         storage_url: Storage URL
@@ -227,7 +227,7 @@ fr:
       storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.
-      storage_oauth: Nextcloud OAuth
+      storage_oauth: OAuth Nextcloud
       storage_provider: Fournisseur de stockage
     health:
       checked: Dernière vérification %{datetime}

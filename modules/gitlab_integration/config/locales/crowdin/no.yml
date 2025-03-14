@@ -22,7 +22,7 @@
 #++
 "no":
   attributes:
-    commit: "Commit"
+    commit: "Utfør"
     gitlab: "GitLab identifier"
     gitlab_avatar_url: "Avatar URL"
     gitlab_email: "GitLab Email"

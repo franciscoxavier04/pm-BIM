@@ -8,7 +8,7 @@ be:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Сховішча
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -18,7 +18,7 @@ be:
       storages/project_storage:
         project_folder: Project folder
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: Сховішча
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method

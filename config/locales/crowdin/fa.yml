@@ -38,8 +38,8 @@ fa:
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
-        created: "created"
-        commented: "commented"
+        created: "ایجاد شده"
+        commented: "نظر داده شده"
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -163,7 +163,7 @@ fa:
       OpenProject requires read-only access through a system account to lookup users and groups in your LDAP tree.
       Please specify the bind credentials for that system user in the following section.
     ldap_details: "LDAP details"
-    user_settings: "Attribute mapping"
+    user_settings: "نگاشت ویژگی ها"
     user_settings_legend: |
       The following fields are related to how users are created in OpenProject from LDAP entries and
       what LDAP attributes are used to define the attributes of an OpenProject user (attribute mapping).
@@ -218,7 +218,7 @@ fa:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: نمایش تمام پروژه‌ها
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -269,7 +269,7 @@ fa:
       no_results_title_text: There are currently no custom fields.
       no_results_content_text: Create a new custom field
   concatenation:
-    single: "or"
+    single: "یا"
   dry_validation:
     errors:
       int?: "must be an integer."
@@ -291,7 +291,7 @@ fa:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "بالادستی"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -351,7 +351,7 @@ fa:
     settings:
       change_identifier: تغییر شناسه
       actions:
-        label_enable_all: "Enable all"
+        label_enable_all: "فعال کردن همه"
         label_disable_all: "Disable all"
       activities:
         no_results_title_text: There are currently no activities available.
@@ -603,10 +603,10 @@ fa:
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
+        tab: "پروژه‌ها"
         enabled_projects: "Enabled projects"
       settings:
-        tab: "Settings"
+        tab: "تنظیمات"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -626,7 +626,7 @@ fa:
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
+            label_enable_all: "فعال کردن همه"
             label_disable_all: "Disable all"
   versions:
     overview:
@@ -669,7 +669,7 @@ fa:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
+        children: "بچه ها"
         dates: "Dates"
         predecessors: "Predecessors"
         successors: "Successors"
@@ -792,7 +792,7 @@ fa:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "بسته کاری وابسته"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: دعوت نامه
   account:
@@ -855,7 +855,7 @@ fa:
         editable: "قابل ویرایش"
         field_format: "قالب‎بندی"
         is_filter: "به عنوان یک فیلتر استفاده شده"
-        is_for_all: "For all projects"
+        is_for_all: "نمایش تمام پروژه‌ها"
         is_required: "الزامی"
         max_length: "حداکثر طول"
         min_length: "حداقل طول"
@@ -900,7 +900,7 @@ fa:
         attr_login: "Username attribute"
         attr_mail: "ویژگی ایمیل"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "مدیر"
         base_dn: "پایه DN"
         host: "میزبان"
         onthefly: "Automatic user creation"
@@ -949,11 +949,11 @@ fa:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "نام"
+        color: "رنگ"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "ستون‌ها"
         column_names: "ستون‌ها"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -961,7 +961,7 @@ fa:
         sort_by: "Sort results by"
         filters: "فیلترها"
         timeline_labels: "برچسب های خط زمان"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "نمایش Gant chart"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -977,16 +977,16 @@ fa:
         results: "Results"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "بسته کاری وابسته"
         to: "بسته کاری وابسته"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "تاریخ"
+        remind_at_time: "زمان"
       reminder_notification:
-        notification: "Notification"
+        notification: "اعلان‌"
       repository:
         url: "نشانی اینترنت"
       role:
@@ -997,7 +997,7 @@ fa:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "تقویم‌ها"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "فعالیت"
@@ -1016,7 +1016,7 @@ fa:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "کاربر"
       user:
         admin: "مدیر"
         auth_source: "Authentication source"
@@ -1027,8 +1027,8 @@ fa:
         language: "زبان"
         last_login_on: "آخرین ورود"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "نام"
+        last_name: "نام خانوادگی"
         first_login: "First login"
         new_password: "رمز عبور جديد"
         password_confirmation: "تاییدیه"
@@ -1502,7 +1502,7 @@ fa:
       global_role: "Global role"
       group: "گروه"
       issue_priority:
-        one: "Priority"
+        one: "اولويت"
         other: "Priorities"
       member: "عضو"
       news: "News"
@@ -1585,7 +1585,7 @@ fa:
     actor: "Actor"
     action: "Action"
     author: "نویسنده"
-    avatar: "Avatar"
+    avatar: "چهرک"
     base: "General Error:"
     body: "Body"
     blocks_ids: "شناسه‌های مسدود کاربسته‌ها"
@@ -1596,7 +1596,7 @@ fa:
     color: "رنگ"
     creator: "Creator"
     created_at: "Created on"
-    custom_field: "Custom field"
+    custom_field: "فیلدهای سفارشی"
     custom_options: "مقادیر ممکن"
     custom_values: "Custom fields"
     date: "تاریخ"
@@ -1614,10 +1614,10 @@ fa:
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "نام"
-    filter: "Filter"
+    filter: "فیلتر"
     group: "گروه"
     groups: "Groups"
-    hexcode: "Hex code"
+    hexcode: "کد هگزا"
     id: "شناسه"
     is_default: "مقدار پیش فرض"
     is_for_all: "نمایش تمام پروژه‌ها"
@@ -1626,24 +1626,24 @@ fa:
     #kept for backwards compatibility
     issue: "بسته کاری"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "نظر"
     lastname: "نام خانوادگی"
     login: "نام كاربري"
-    lock_version: "Lock version"
+    lock_version: "قفل نگارش"
     mail: "Email"
     name: "نام"
     note: "Note"
-    notes: "Notes"
+    notes: "یادداشت ها"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "گزینه‌ها"
+    operator: "اپراتور"
     password: "کلمه عبور"
     priority: "اولويت"
     project: "پروژه"
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "الزامی"
     recipient: "Recipient"
     role: "Role"
     roles: "نقش‌ها"
@@ -1654,8 +1654,8 @@ fa:
     subject: "موضوع"
     slug: "Slug"
     summary: "Summary"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "منطقه زمانی"
+    text: "متن"
     title: "عنوان"
     type: "نوع"
     typeahead: "Autocomplete"
@@ -1663,12 +1663,12 @@ fa:
     updated_on: "به روز شده"
     uploader: "Uploader"
     user: "کاربر"
-    username: "Username"
-    unit: "Unit"
+    username: "نام كاربري"
+    unit: "واحد"
     value: "مقدار"
     values: "Values"
     version: "نسخه"
-    visible: "Visible"
+    visible: "قابل مشاهده"
     work_package: "بسته کاری"
   backup:
     failed: "Backup failed"
@@ -1969,7 +1969,7 @@ fa:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "اطلاعات بیشتر"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2057,15 +2057,15 @@ fa:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "خروجی"
+      submit: "خروجی"
       format:
         label: "File format"
         options:
           csv:
             label: "CSV"
           pdf:
-            label: "PDF"
+            label: "پی دی اف"
           xls:
             label: "XLS"
       columns:
@@ -2081,10 +2081,10 @@ fa:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "گزارش"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "نمودار گانت"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2382,7 +2382,7 @@ fa:
   label_associated_revisions: "Associated revisions"
   label_attachment_plural: "Attachments"
   label_attribute: "Attribute"
-  label_attribute_plural: "Attributes"
+  label_attribute_plural: "ویژگی ها"
   label_ldap_auth_source_new: "New LDAP connection"
   label_ldap_auth_source: "LDAP connection"
   label_ldap_auth_source_plural: "LDAP connections"
@@ -2484,7 +2484,7 @@ fa:
   label_default: "پیش‌فرض"
   label_delete_user: "حذف کاربر"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "حذف"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
   label_deleted_custom_item: "(deleted item)"
@@ -2573,7 +2573,7 @@ fa:
   label_here: here
   label_hide: "Hide"
   label_history: "History"
-  label_hierarchy: "Hierarchy"
+  label_hierarchy: "سلسه مراتب"
   label_hierarchy_leaf: "Hierarchy leaf"
   label_home: "Home"
   label_subject_or_id: "Subject or ID"
@@ -2602,7 +2602,7 @@ fa:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "نمایش تمام کاربران ثبت نام شده"
-  label_show_less: "Show less"
+  label_show_less: "نمایش کمتر"
   label_show_more: "Show more"
   label_journal: "Journal"
   label_journal_diff: "Description Comparison"
@@ -2639,7 +2639,7 @@ fa:
   label_custom_favicon: "Custom favicon"
   label_custom_touch_icon: "Custom touch icon"
   label_logout: "Sign out"
-  label_mapping_for: "Mapping for: %{attribute}"
+  label_mapping_for: "نگاشت مرتبط با: %{attribute}"
   label_main_menu: "Side Menu"
   label_manage: "Manage"
   label_manage_groups: "Manage groups"
@@ -2700,7 +2700,7 @@ fa:
   label_no_change_option: "(No change)"
   label_no_data: "No data to display"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "بدون تاریخ شروع"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Nothing to display"
   label_nobody: "هیچ‌کس"
@@ -2768,7 +2768,7 @@ fa:
   label_project_latest: "Latest projects"
   label_project_default_type: "Allow empty type"
   label_project_hierarchy: "Project hierarchy"
-  label_project_mappings: "Projects"
+  label_project_mappings: "پروژه‌ها"
   label_project_new: "New project"
   label_project_plural: "پروژه‌ها"
   label_project_list_plural: "Project lists"
@@ -2803,7 +2803,7 @@ fa:
   label_relation_new: "New relation"
   label_release_notes: "Release notes"
   label_remaining_work: "کار باقی‌مانده"
-  label_remove_column: "Remove column"
+  label_remove_column: "حذف ستون"
   label_remove_columns: "Remove selected columns"
   label_renamed: "renamed"
   label_reply_plural: "Replies"
@@ -2878,7 +2878,7 @@ fa:
   label_this_month: "this month"
   label_this_week: "this week"
   label_this_year: "this year"
-  label_time: "Time"
+  label_time: "زمان"
   label_time_entry_plural: "زمان صرف شده"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "عنوان"
@@ -2918,7 +2918,7 @@ fa:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "New version"
-  label_version_edit: "Edit version"
+  label_version_edit: "ویرایش نسخه"
   label_version_plural: "نسخه ها"
   label_version_sharing_descendants: "With subprojects"
   label_version_sharing_hierarchy: "With project hierarchy"
@@ -3380,8 +3380,8 @@ fa:
       archived: "بایگانی"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "1 پروژه"
+      other: "%{count} پروژه"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3769,7 +3769,7 @@ fa:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "ﺍﻓﺰﻭﺩﻥ"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4079,7 +4079,7 @@ fa:
       view: "مشاهده"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "تاریخ"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

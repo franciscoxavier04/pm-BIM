@@ -35,7 +35,7 @@ ro:
   documents:
     label_attachment_author: "Autorul anexei"
     label_categories: "Categories"
-    new_category: "New category"
+    new_category: "Categorie nouă"
   label_document_added: "Document adăugat"
   label_document_new: "Document nou"
   label_document_plural: "Documente"

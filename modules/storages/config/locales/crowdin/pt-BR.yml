@@ -12,14 +12,14 @@ pt-BR:
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On através do provedor de identidade OpenID Connect
-          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
-          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+          oauth2_sso_with_two_way_oauth2_fallback: Login único com OAuth 2.0 bidirecional como alternativa
+          two_way_oauth2: Fluxo de código de autorização OAuth 2.0 bidirecional
         storage_audience: Audiência de Armazenamento
       storages/project_storage:
         project_folder: Pasta de projeto
         project_folder_mode: Modo de pasta de projeto
         storage: Armazenamento
-        storage_url: Storage URL
+        storage_url: URL de armazenamento
       storages/storage:
         authentication_method: Método de Autenticação
         creator: Criador
@@ -226,7 +226,7 @@ pt-BR:
       storage_audience: Audiência de Armazenamento
       storage_audience_blank: Nenhuma audiência foi configurada.
       storage_audience_description: Obtendo tokens para a audiência "%{audience}".
-      storage_audience_idp: Usando o primeiro token de acesso recebido pelo provedor de identidade, independentemente da audiência.
+      storage_audience_idp: Usando o primeiro token de acesso recebido pelo provedor de identidade, independentemente do público.
       storage_oauth: OAuth Nextcloud
       storage_provider: Provedor de armazenamento
     health:
@@ -242,10 +242,10 @@ pt-BR:
         host_not_found: Nenhum servidor Nextcloud encontrado na URL de host configurada. Verifique a configuração.
         missing_dependencies: 'Uma dependência necessária está faltando no armazenamento de arquivos. Adicione a seguinte dependência: %{dependency}.'
         not_configured: A conexão não pôde ser validada. Conclua a configuração primeiro.
-        oidc_cant_acquire_token: Sua configuração do OpenID Connect não fornece a audiência necessária, nem oferece capacidades de troca de tokens. Consulte nossa documentação para mais informações.
-        oidc_cant_exchange_token: Parece haver um problema com a configuração do Token Exchange no seu provedor OpenID Connect. Por favor, verifique sua configuração e tente novamente.
-        oidc_cant_refresh_token: Houve um erro ao tentar verificar seu acesso ao armazenamento. Por favor, verifique os logs do servidor para mais informações.
-        oidc_non_oidc_user: The current user, while provisioned, wasn't provisioned by an OpenID Connect (OIDC) Identity Provider. Please re-run the check with an OIDC provisioned user.
+        oidc_cant_acquire_token: A configuração do seu OpenID Connect não fornece o público necessário nem oferece recursos de troca de tokens. Consulte nossa documentação para mais informações.
+        oidc_cant_exchange_token: Parece haver um problema na configuração da troca de tokens no seu provedor OpenID Connect. Verifique as configurações e tente novamente.
+        oidc_cant_refresh_token: Ocorreu um erro ao tentar verificar seu acesso ao armazenamento. Verifique os logs do servidor para mais informações.
+        oidc_non_oidc_user: O usuário atual, embora provisionado, não foi provisionado por um Provedor de Identidade OpenID Connect (OIDC). Execute a verificação novamente com um usuário provisionado pelo OIDC.
         oidc_non_provisioned_user: O usuário atual não foi fornecido por um Provedor de Identidade OpenID Connect. Execute a verificação novamente com um usuário fornecido.
         placeholder: Verifique sua conexão com o servidor.
         subtitle: Validação de conexão
@@ -275,7 +275,7 @@ pt-BR:
       project_folder_bulk: A pasta do projeto é o local padrão para o envio de arquivos em todos os projetos selecionados. Você pode alterar essa configuração individualmente em cada projeto. No entanto, os usuários ainda poderão enviar arquivos para outros locais.
     instructions:
       all_available_storages_already_added: Todos os armazenamentos disponíveis já foram adicionados ao projeto.
-      authentication_method: The way that requests between OpenProject and the Storage are authenticated.
+      authentication_method: A forma como as solicitações entre o OpenProject e o armazenamento são autenticadas.
       automatic_folder: Isto irá criar automaticamente uma pasta raiz para este projeto e gerenciará as permissões de acesso para cada membro do projeto.
       empty_project_folder_validation: Selecionar uma pasta é obrigatório para continuar.
       existing_manual_folder: Você pode definir uma pasta existente como a pasta raiz deste projeto. No entanto, as permissões não são gerenciadas automaticamente; o administrador deve garantir manualmente que os usuários necessários tenham acesso. A pasta selecionada pode ser usada por vários projetos.
@@ -288,7 +288,7 @@ pt-BR:
         integration: Administração de Nextcloud / OpenProject
         oauth_configuration: Copie estes valores de %{application_link_text}.
         provider_configuration: 'Certifique-se de ter os privilégios de administração em sua instância de Nextcloud e de que o %{application_link_text} está instalado antes de realizar a configuração:'
-        storage_audience: Please enter the Client ID that the Nextcloud instance uses to communicate with the identity provider.
+        storage_audience: Insira o ID do Cliente que a instância do Nextcloud usa para se comunicar com o provedor de identidade.
         storage_audience_placeholder: 'ex.: Nextcloud'
       no_specific_folder: Por padrão, cada usuário começará na sua própria pasta inicial ao carregar arquivos.
       no_storage_set_up: Ainda não há armazenamento de arquivos configurado.
@@ -321,7 +321,7 @@ pt-BR:
     label_creator: Criador
     label_delete_storage: Excluir armazenamento
     label_edit_storage_access_management: Editar gerenciamento de acesso ao armazenamento
-    label_edit_storage_audience: Edit Storage Audience
+    label_edit_storage_audience: Editar Público de Armazenamento
     label_edit_storage_automatically_managed_folders: Editar pastas gerencias automaticamente de armazenamento
     label_edit_storage_host: Editar host de armazenamento
     label_existing_manual_folder: Pasta existente com permissões gerenciadas manualmente
@@ -350,7 +350,7 @@ pt-BR:
       connected: Conectado
       connected_no_permissions: A função de usuário não tem permissões de armazenamento
       not_connected: Não conectado. O usuário deve iniciar sessão no armazenamento por meio do seguinte %{link}.
-      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
+      not_connected_sso: Ainda não conectado. O SSO deve conectá-los automaticamente ao visualizar os arquivos.
     members_no_results: Nenhum membro para exibir.
     no_results: Ainda não há armazenamento configurado.
     oauth_access_granted_modal:
@@ -412,15 +412,15 @@ pt-BR:
         name: OneDrive/SharePoint
         name_placeholder: 'por ex.: OneDrive'
     show_attachments_toggle:
-      description: "Desativar esta opção ocultará a lista de anexos na aba Arquivos dos pacotes de trabalho. Os arquivos anexados na descrição de um pacote de trabalho ainda serão enviados para o \n armazenamento interno."
+      description: Desativar esta opção ocultará a lista de anexos na guia de arquivos dos pacotes de trabalho. Os arquivos anexados na descrição de um pacote de trabalho ainda serão enviados para o armazenamento interno de anexos.
       label: Exibir anexos na aba arquivos de pacotes de trabalho
     storage_audience:
       idp:
-        helptext: OpenProject will use the first access token received by the identity provider to authenticate requests to the storage. It will not try to obtain another token.
-        label: Use first access token obtained by identity provider
+        helptext: O OpenProject usará o primeiro token de acesso recebido do provedor de identidade para autenticar as solicitações ao armazenamento. Ele não tentará obter outro token.
+        label: Usar o primeiro token de acesso obtido do provedor de identidade
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: Permite que você defina o público do armazenamento. O OpenProject tentará obter um token para o público dado pelo provedor de identidade.
+        label: Definir o público de armazenamento manualmente
     storage_list_blank_slate:
       description: Adicione um armazenamento para vê-lo aqui.
       heading: Ainda não tem nenhum armazenamento.

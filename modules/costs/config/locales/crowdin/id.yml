@@ -30,7 +30,7 @@ id:
         overridden_costs: "Overridden costs"
         spent: "Dihabiskan"
         spent_on: "Tanggal"
-        logged_by: "Logged by"
+        logged_by: "Dicatat oleh"
       cost_type:
         unit: "Nama unit"
         unit_plural: "Nama plural unit"
@@ -49,18 +49,18 @@ id:
       time_entry:
         project: Project
         user: User
-        work_package: Work package
+        work_package: Paket-Penugasan
         hours: Jam
-        comments: Comment
+        comments: Komentar
         activity: Activity
         spent_on: Tanggal
-        start_time: Start time
+        start_time: Waktu mulai
         end_time: Finish time
     models:
       cost_type:
         other: "Jenis biaya"
       time_entry_activity:
-        other: "Time tracking activities"
+        other: "Kegiatan pelacakan waktu"
       rate: "Rate"
     errors:
       models:
@@ -94,7 +94,7 @@ id:
   caption_save_rate: "Simpan rate"
   caption_set_rate: "Set rate saat ini"
   caption_show_locked: "Tampilkan tipe yang terkunci"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "Catatan waktu"
   description_date_for_new_rate: "Tanggal berlaku rate"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -138,9 +138,9 @@ id:
   label_until: "hingga"
   label_valid_from: "Berlaku dari"
   label_yes: "Yes"
-  label_time: "Time"
+  label_time: "Waktu"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Biaya"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Terjadi suatu kesalahan. Silahkan coba lagi."

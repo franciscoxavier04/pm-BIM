@@ -360,7 +360,7 @@ zh-CN:
           "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                此次发布为您带来了各种功能和改进，例如：<br> <ul class="%{list_styling_class}"> <li>启用自动调度模式。</li> <li>为会议设置议程条目结果。</li> <li>从工作包描述生成 PDF 文档。</li> <li>借助增强的项目列表视图更好地管理大量项目。</li> <li>引用回复评论时使用 @ 提及用户。</li></ul>
     ical_sharing_modal:
       title: "订阅日历"
       inital_setup_error_message: "获取数据时发生错误。"

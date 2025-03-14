@@ -47,11 +47,11 @@ he:
       user:
         default_rates: "Default rates"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: פרוייקט
+        user: משתמש
+        work_package: חבילת עבודה
         hours: שעות
-        comments: Comment
+        comments: תגובה
         activity: פעילות
         spent_on: תאריך
         start_time: Start time
@@ -88,7 +88,7 @@ he:
   button_add_rate: "Add rate"
   button_log_costs: "Log unit costs"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "פעילות"
   caption_booked_on_project: "Booked on project"
   caption_default: "ברירת מחדל"
   caption_default_rate_history_for: "Default rate history for %{user}"
@@ -100,7 +100,7 @@ he:
   caption_save_rate: "Save rate"
   caption_set_rate: "Set current rate"
   caption_show_locked: "Show locked types"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "נרשם ביומן"
   description_date_for_new_rate: "Date for new rate"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -138,13 +138,13 @@ he:
   label_rate: "Rate"
   label_rate_plural: "Rates"
   label_status_finished: "הסתיים"
-  label_show: "Show"
+  label_show: "הצג"
   label_units: "Cost units"
   label_user: "משתמש"
   label_until: "until"
   label_valid_from: "Valid from"
   label_yes: "כן"
-  label_time: "Time"
+  label_time: "זמן"
   label_cost: "Cost"
   label_costs: "Costs"
   label_mandatory_fields: "Mandatory fields"

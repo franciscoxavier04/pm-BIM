@@ -222,7 +222,7 @@ ja:
             label_maximum_users: "アクティブなユーザーの最大数"
             label_starts_at: "開始"
             label_expires_at: "有効期限"
-            label_plan: "Plan"
+            label_plan: "プラン"
             label_additional_features: "Additional features"
             receive_newsletter: OpenProject <a target="_blank" href="%{link}">ニュースレター</a> を受け取りたい。
             taken_domain: 有効なトライアルはドメインごとに1つしかありません。
@@ -483,7 +483,7 @@ ja:
     label_per_page: "1 ページあたり"
     label_please_wait: "しばらくお待ちください"
     label_project: "プロジェクト"
-    label_project_list: "Project lists"
+    label_project_list: "プロジェクト一覧"
     label_project_plural: "プロジェクト"
     label_visibility_settings: "表示の設定"
     label_quote_comment: "このコメントを引用"
@@ -615,7 +615,7 @@ ja:
         assigned: "担当者"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "責任者"
         created: "作成日時"
         scheduled: "スケジュール済"
         commented: "コメントしました。"
@@ -836,7 +836,7 @@ ja:
       toggle_description: "関係の説明を切り替え"
       update_relation: "クリックして関係のタイプを変更"
       add_follower: "後続を追加"
-      show_relations: "Show relations"
+      show_relations: "関連するタスクを表示"
       add_predecessor: "先行を追加"
       remove: "関係を削除"
       save: "関係を保存"
@@ -999,7 +999,7 @@ ja:
         all_open: "未完了"
         overdue: "Overdue"
         summary: "サマリ"
-        shared_with_users: "Shared with users"
+        shared_with_users: "ユーザーと共有"
         shared_with_me: "Shared with me"
       jump_marks:
         pagination: "表のページ設定に移動する"
@@ -1310,7 +1310,7 @@ ja:
         last_working_day: "last working day"
         last_week: "先週"
         last_month: "先月"
-        a_specific_date: "a specific date"
+        a_specific_date: "特定の日付"
         between_two_specific_dates: "between two specific dates"
       legends:
         changes_since: "Changes since"

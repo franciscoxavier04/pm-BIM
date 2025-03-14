@@ -8,7 +8,7 @@ fa:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: ذخیره‌سازی
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -18,7 +18,7 @@ fa:
       storages/project_storage:
         project_folder: Project folder
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: ذخیره‌سازی
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
@@ -227,7 +227,7 @@ fa:
       storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.
-      storage_oauth: Nextcloud OAuth
+      storage_oauth: احراز هویت (OAuth) Nextcloud
       storage_provider: Storage provider
     health:
       checked: Last checked %{datetime}

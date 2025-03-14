@@ -2,13 +2,13 @@ cs:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID klienta
+        client_secret: Tajný klíč klienta
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Úložiště
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,7 +16,7 @@ cs:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Složka projektu
         project_folder_mode: Project folder mode
         storage: Úložiště
         storage_url: Storage URL
@@ -101,10 +101,10 @@ cs:
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
         remove_user_from_group: 'Odebrat uživatele ze skupiny:'
-        rename_project_folder: 'Rename managed project Folder:'
+        rename_project_folder: 'Přejmenovat spravovanou složku projektu:'
       one_drive_sync_service:
         create_folder: 'Managed Project Folder Creation:'
-        ensure_root_folder_permissions: 'Set Base Folder Permissions:'
+        ensure_root_folder_permissions: 'Nastavit základní oprávnění složky:'
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
         rename_project_folder: 'Přejmenovat spravovanou složku projektu:'
@@ -115,7 +115,7 @@ cs:
       models:
         copy_project_folders_service:
           conflict: The folder %{destination_path} already exists. Interrupting process to avoid overwrites.
-          error: An unexpected error occurred. Please check OpenProject logs for more information or contact an administrator
+          error: Došlo k neočekávané chybě. Zkontrolujte prosím OpenProject logy pro více informací nebo kontaktujte správce
           forbidden: OpenProject could not access the source folder. Please check your permissions configuration on the Storage Provider
           not_found: The source template location %{source_path} wasn't found.
           unauthorized: OpenProject se nemohl ověřit u zprostředkovatele úložiště. Zkontrolujte prosím konfiguraci úložiště
@@ -131,7 +131,7 @@ cs:
               not_found: "%{group_folder} wasn't found. Please check your Nextcloud Group Folder setup."
               permission_not_set: could not set permissions on %{group_folder}.
             hide_inactive_folders:
-              permission_not_set: could not set permissions on %{path}.
+              permission_not_set: nelze nastavit oprávnění na %{path}.
             remote_folders:
               not_allowed: The %{username} doesn't have access to the %{group_folder} folder. Please check the folder permissions on Nextcloud.
               not_found: "%{group_folder} folder wasn't found. Please check your Nextcloud setup."
@@ -215,7 +215,7 @@ cs:
         manual_management_description: Create and manage folders per project manually on your own. You will need to manually ensure relevant users have access.
         setup_incomplete: Select the type of management of user access and folder creation.
         subtitle: Access Management
-      access_management_section: Access and project folders
+      access_management_section: Přístup ke složkám a projektům
       automatically_managed_folders: Automaticky spravované složky
       general_information: Všeobecné informace
       oauth_configuration: OAuth configuration
@@ -367,7 +367,7 @@ cs:
       login_button_aria_label: Přihlásit se do %{storage}
       login_button_label: "Přihlášení %{provider_type}"
       project_settings:
-        description: To get access to the project folder you need to login to %{storage}.
+        description: Chcete-li získat přístup ke složce projektu, musíte se přihlásit do %{storage}.
       requesting_access_to: Žádost o přístup na %{storage}
       storage_admin:
         description: In order to add projects to this storage you need to be logged into %{provider_type}. Please, log in and try again.

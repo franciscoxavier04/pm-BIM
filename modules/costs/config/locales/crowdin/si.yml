@@ -47,11 +47,11 @@ si:
       user:
         default_rates: "Default rates"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: ව්යාපෘති
+        user: පරිශීලක
+        work_package: වැඩ පැකේජය
         hours: පැය
-        comments: Comment
+        comments: අදහස් දක්වන්න
         activity: ක්‍රියාකාරකම
         spent_on: දිනය
         start_time: Start time
@@ -62,7 +62,7 @@ si:
         other: "Cost types"
       time_entry_activity:
         one: "Time tracking activity"
-        other: "Time tracking activities"
+        other: "කාලය සොයා ගැනීමේ ක්රියාකාරකම්"
       rate: "Rate"
     errors:
       models:
@@ -84,7 +84,7 @@ si:
   button_add_rate: "Add rate"
   button_log_costs: "Log unit costs"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "ක්‍රියාකාරකම"
   caption_booked_on_project: "Booked on project"
   caption_default: "පෙරනිමි"
   caption_default_rate_history_for: "Default rate history for %{user}"
@@ -96,7 +96,7 @@ si:
   caption_save_rate: "Save rate"
   caption_set_rate: "Set current rate"
   caption_show_locked: "Show locked types"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "ලොග් වේලාව"
   description_date_for_new_rate: "Date for new rate"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -134,7 +134,7 @@ si:
   label_rate: "Rate"
   label_rate_plural: "Rates"
   label_status_finished: "Finished"
-  label_show: "Show"
+  label_show: "පෙන්වන්න"
   label_units: "Cost units"
   label_user: "පරිශීලක"
   label_until: "until"

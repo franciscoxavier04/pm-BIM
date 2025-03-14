@@ -47,11 +47,11 @@ ar:
       user:
         default_rates: "المعدلات المفترضة"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: مشروع
+        user: المستخدم
+        work_package: مجموعة العمل
         hours: الساعات
-        comments: Comment
+        comments: تعليق
         activity: النشاط
         spent_on: التاريخ
         start_time: Start time
@@ -92,7 +92,7 @@ ar:
   button_add_rate: "أضِف المعدل"
   button_log_costs: "سجل تكاليف الوحدة"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "النشاط"
   caption_booked_on_project: "حُجِِز على المشروع"
   caption_default: "الافتراضي"
   caption_default_rate_history_for: "تاريخ المعدل الافتراضي ل %{user}"
@@ -104,7 +104,7 @@ ar:
   caption_save_rate: "معدل التوفير"
   caption_set_rate: "ضبط المعدل الحالي"
   caption_show_locked: "إظهار الأنواع المغلقة"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "وقت السجل"
   description_date_for_new_rate: "تاريخ المعدل الجديد"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -142,15 +142,15 @@ ar:
   label_rate: "المعدل"
   label_rate_plural: "الأسعار"
   label_status_finished: "مكتمل"
-  label_show: "Show"
+  label_show: "إظهار"
   label_units: "وحدات التكلفة"
   label_user: "المستخدم"
   label_until: "حتى"
   label_valid_from: "صالح من"
   label_yes: "نعم"
-  label_time: "Time"
+  label_time: "الوقت"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "التكاليف"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "حصل خطأ ما. من فضلك حاول مرة أخرى."
@@ -173,8 +173,8 @@ ar:
   permission_view_own_time_entries: "عرض الوقت الخاص الذي تم قضاؤه"
   project_module_costs: "الوقت والتكاليف"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
+  setting_costs_currency: "العملة"
+  setting_costs_currency_format: "شكل العملة"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "تعيين الساعات والتكاليف التي تمّ الإبلاغ عنها للمشروع"
   text_destroy_cost_entries_question: "%{cost_entries} تم الإبلاغ عنها في مجموعات العمل التي توشك أن تلغيها. ماذا تريد أن تفعل؟"

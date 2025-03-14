@@ -37,7 +37,7 @@ cs:
       gitlab_pipeline:
         ci_details: "CI Details"
       gitlab_merge_request:
-        labels: "Labels"
+        labels: "Štítky"
     errors:
       models:
         gitlab_issue:

@@ -47,11 +47,11 @@ sk:
       user:
         default_rates: "Základné sadzby"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: Projekt
+        user: Užívateľ(ka)
+        work_package: Pracovný balíček
         hours: Hodín
-        comments: Comment
+        comments: Komentár
         activity: Činnosť
         spent_on: Dátum
         start_time: Start time
@@ -88,7 +88,7 @@ sk:
   button_add_rate: "Pridať sadzbu"
   button_log_costs: "Zaúčtovať jednotkové náklady"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "Činnosť"
   caption_booked_on_project: "Rezervované na projekte"
   caption_default: "Predvolené"
   caption_default_rate_history_for: "História predvolenej sadzby pre %{user}"
@@ -100,7 +100,7 @@ sk:
   caption_save_rate: "Uložiť sadzbu"
   caption_set_rate: "Nastaviť aktuálnu sadzbu"
   caption_show_locked: "Zobraziť zablokované typy"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "Zaprotokoluj čas"
   description_date_for_new_rate: "Dátum novej sadzby"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -138,15 +138,15 @@ sk:
   label_rate: "Sadzba"
   label_rate_plural: "Sadzby"
   label_status_finished: "Dokončené"
-  label_show: "Show"
+  label_show: "Ukázať"
   label_units: "Nákladové jednotky"
   label_user: "Užívateľ"
   label_until: "do"
   label_valid_from: "Platný od"
   label_yes: "Áno"
-  label_time: "Time"
+  label_time: "Čas"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Náklady"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Niečo sa pokazilo. Prosím skúste to znova."
@@ -169,8 +169,8 @@ sk:
   permission_view_own_time_entries: "Zobraziť vlastný strávený čas"
   project_module_costs: "Čas a náklady"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
+  setting_costs_currency: "Mena"
+  setting_costs_currency_format: "Formát meny"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "Priradiť výkaz hodín a náklady k projektu"
   text_destroy_cost_entries_question: "%{cost_entries} boli hlásené na pracovných balíčkoch, ktoré chcete vymazať. Čo chcete robiť?"

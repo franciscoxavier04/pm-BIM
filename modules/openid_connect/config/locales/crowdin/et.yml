@@ -7,11 +7,11 @@ et:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Nimi
         slug: Unique identifier
         display_name: Display name
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: Kliendi ID
+        client_secret: Kliendi salasõna
         secret: Secret
         scope: Scope
         grant_types_supported: Supported grant types

@@ -30,7 +30,7 @@ lt:
         overridden_costs: "Perrašytos išlaidos"
         spent: "Praleista"
         spent_on: "Data"
-        logged_by: "Logged by"
+        logged_by: "Registravo"
       cost_type:
         unit: "Vieneto pavadinimas"
         unit_plural: "Daugiaskaitinis vienetų pavadinimas"
@@ -47,14 +47,14 @@ lt:
       user:
         default_rates: "Numatytasis koeficientas"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: Projektas
+        user: Naudotojas
+        work_package: Darbų paketas
         hours: Valandų
-        comments: Comment
+        comments: Komentaras
         activity: Veikla
         spent_on: Data
-        start_time: Start time
+        start_time: Pradžios laikas
         end_time: Finish time
     models:
       cost_type:
@@ -64,9 +64,9 @@ lt:
         other: "Kaštų tipai"
       time_entry_activity:
         one: "Time tracking activity"
-        few: "Time tracking activities"
-        many: "Time tracking activities"
-        other: "Time tracking activities"
+        few: "Laiko sekimo veiklos"
+        many: "Laiko sekimo veiklos"
+        other: "Laiko sekimo veiklos"
       rate: "Koeficientas"
     errors:
       models:
@@ -88,7 +88,7 @@ lt:
   button_add_rate: "Pridėti koeficientą"
   button_log_costs: "Vesti į žurnalą vieneto kaštus"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "Veikla"
   caption_booked_on_project: "Įrašytas projektui"
   caption_default: "Numatytasis"
   caption_default_rate_history_for: "%{user} numatytojo koeficiento istorija"
@@ -100,7 +100,7 @@ lt:
   caption_save_rate: "Išsaugoti koeficientą"
   caption_set_rate: "Nustatyti esamą koeficientą"
   caption_show_locked: "Rodyti užrakintus tipus"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "Registruoti laiką"
   description_date_for_new_rate: "Naujo koeficiento data"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -138,15 +138,15 @@ lt:
   label_rate: "Koeficientas"
   label_rate_plural: "Koeficientai"
   label_status_finished: "Baigta"
-  label_show: "Show"
+  label_show: "Rodyti"
   label_units: "Kaštų vienetai"
   label_user: "Vartotojas"
   label_until: "iki"
   label_valid_from: "Galioja nuo"
   label_yes: "Taip"
-  label_time: "Time"
+  label_time: "Laikas"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Kaštai"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Įvyko klaida. Bandykite dar kartą."
@@ -169,8 +169,8 @@ lt:
   permission_view_own_time_entries: "Peržiūrėti savo sugaištą laiką"
   project_module_costs: "Laikas ir išlaidos"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
+  setting_costs_currency: "Valiuta"
+  setting_costs_currency_format: "Valiutos formatas"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "Priskirti praleistas valandas ir kaštus projektui"
   text_destroy_cost_entries_question: "%{cost_entries} buvo pranešta Jūsų ketinamiems ištrinti darbų paketams. Ką Jūs norite daryti?"

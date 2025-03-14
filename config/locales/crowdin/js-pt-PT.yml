@@ -221,8 +221,8 @@ pt-PT:
             label_maximum_users: "Máximo de utilizadores ativos"
             label_starts_at: "Começa em"
             label_expires_at: "Expira a"
-            label_plan: "Plan"
-            label_additional_features: "Additional features"
+            label_plan: "Plano"
+            label_additional_features: "Funcionalidades adicionais"
             receive_newsletter: Quero receber a <a target="_blank" href="%{link}">newsletter</a> do OpenProject.
             taken_domain: Só pode haver um teste ativo por domínio.
             domain_mismatch: O nome de host da requisição atual não corresponde ao nome de host configurado. Verifique novamente as configurações do seu sistema.
@@ -361,7 +361,7 @@ pt-PT:
           "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                A versão traz várias funcionalidades e melhorias para si, por exemplo <br> <ul class="%{list_styling_class}"> <li>Ativar o modo de programação automática.</li> <li>Definir os resultados dos pontos da ordem de trabalhos das reuniões.</li> <li>Gerar documentos PDF a partir da descrição de um pacote de trabalho.</li> <li>Gerir melhor um grande número de projetos com uma vista de listas de projetos melhorada.</li> <li>Utilizar a função de @-menção do utilizador quando responder a um comentário.</li> </ul>
     ical_sharing_modal:
       title: "Subscrever o calendário"
       inital_setup_error_message: "Ocorreu um erro ao recuperar os dados."
@@ -726,7 +726,7 @@ pt-PT:
       context: "Contexto do projeto"
       copy:
         copy_options: "Opções de cópia"
-      not_available: "Project N/A"
+      not_available: "Projeto N/A"
       no_template_selected: "(Nenhum)"
       required_outside_context: >
         Por favor escolha um projeto onde criar o pacote de trabalho de forma a ver todos os atributos. Só pode selecionar projetos com o tipo acima ativado.

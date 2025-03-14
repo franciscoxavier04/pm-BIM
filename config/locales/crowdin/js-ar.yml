@@ -448,7 +448,7 @@ ar:
     label_incoming_emails: "رسائل البريد الالكتروني الواردة"
     label_information_plural: "معلومات"
     label_invalid: "Invalid"
-    label_import: "Import"
+    label_import: "استيراد"
     label_latest_activity: "Latest activity"
     label_last_updated_on: "تاريخ آخر تحديث"
     label_learn_more_link: "التعرف على المزيد"
