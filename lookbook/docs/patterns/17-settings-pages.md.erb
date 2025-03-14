@@ -1,14 +1,12 @@
-Settings pages usually have content space that stretches to the full width of the viewport, as there is no other element
-horizontally positioned, except the left side menu.
+Settings pages usually stretch to the full width of the viewport as they tend not to have addition horizontally-positioned elements.
 
 ## Settings page base component
 
-According to the [form width specification](./forms), we avoid forms to stretch without limit. Because of the default
-behaviour of form elements to use the full width of the container, we use a base component that embeds the form inside
-such a wrapping container.
+As specified in the documentation for [forms](./forms), we prefer limiting the width of a form for legibility. Because the default
+behaviour of form elements to fill the full width of the container, we wrap forms in a container that limits its available width.
 
 Any view component rendering a form should inherit from `AdminSettingsFormComponent`. The template stays unchanged. This
-way, the rendered form is wrapped into a container with `480px` max-width.
+way, the rendered form is wrapped into a container with `680px` max-width.
 
 ```ruby
 module WorkPackages
