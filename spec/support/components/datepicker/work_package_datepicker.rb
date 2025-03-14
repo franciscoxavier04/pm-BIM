@@ -12,6 +12,10 @@ module Components
       set_field(duration_field, "", wait_for_changes_to_be_applied: false)
     end
 
+    def expect_banner_text(text, **)
+      expect(container).to have_css(".wp-datepicker--banner", text:, **)
+    end
+
     ##
     # Expect the selected month
     def expect_month(month)
@@ -21,12 +25,12 @@ module Components
 
     ##
     # Expect duration
-    def expect_duration(value)
+    def expect_duration(value, **)
       if value.blank?
         value = ""
       end
 
-      expect(container).to have_field("work_package[duration]", with: value, wait: 10)
+      expect(container).to have_field("work_package[duration]", with: value, **)
     end
 
     def milestone_date_field

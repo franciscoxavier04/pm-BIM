@@ -1047,6 +1047,127 @@ RSpec.describe WorkPackages::UpdateAncestorsService,
     end
   end
 
+  describe "automatic scheduling mode switching" do
+    subject(:call_result) do
+      described_class.new(user:, work_package: initiator_work_package)
+                      .call(%i(parent))
+    end
+
+    context "when a manually scheduled work package becomes parent for the first time" do
+      let_work_packages(<<~TABLE)
+        subject       | scheduling mode
+        future parent | manual
+        future child  | manual
+      TABLE
+      let(:initiator_work_package) { future_child }
+
+      before do
+        future_child.update!(parent: future_parent)
+      end
+
+      it "switches the new parent to automatic scheduling mode" do
+        expect(call_result).to be_success
+        expect(future_parent.reload.schedule_manually).to be(false)
+
+        # The child is still manually scheduled
+        expect(future_child.reload.schedule_manually).to be(true)
+      end
+    end
+
+    context "when a manually scheduled work package becomes parent for the second time" do
+      let_work_packages(<<~TABLE)
+        hierarchy        | scheduling mode
+        parent           | manual
+          existing child | manual
+        future child     | manual
+      TABLE
+      let(:initiator_work_package) { future_child }
+
+      before do
+        future_child.update!(parent:)
+      end
+
+      it "keeps the parent in manual scheduling mode" do
+        expect(call_result).to be_success
+        expect(parent.reload.schedule_manually).to be(true)
+
+        # The child is still manually scheduled
+        expect(future_child.reload.schedule_manually).to be(true)
+      end
+    end
+
+    context "when a manually scheduled work package with a direct predecessor " \
+            "becomes parent for the first time" do
+      let_work_packages(<<~TABLE)
+        subject       | scheduling mode | predecessors
+        predecessor   | manual          |
+        future parent | manual          | predecessor
+        future child  | manual          |
+      TABLE
+      let(:initiator_work_package) { future_child }
+
+      before do
+        future_child.update!(parent: future_parent)
+      end
+
+      it "keeps the parent in manual scheduling mode" do
+        expect(call_result).to be_success
+        expect(future_parent.reload.schedule_manually).to be(true)
+
+        # The child is still manually scheduled
+        expect(future_child.reload.schedule_manually).to be(true)
+      end
+    end
+
+    context "when a manually scheduled work package with an indirect predecessor " \
+            "becomes parent for the first time" do
+      let_work_packages(<<~TABLE)
+        hierarchy               | scheduling mode | predecessors
+        grandparent predecessor | manual          |
+        grandparent             | automatic       | grandparent predecessor
+          future parent         | manual          |
+        future child            | manual          |
+      TABLE
+      let(:initiator_work_package) { future_child }
+
+      before do
+        future_child.update!(parent: future_parent)
+      end
+
+      it "keeps the parent in manual scheduling mode" do
+        expect(call_result).to be_success
+        expect(future_parent.reload.schedule_manually).to be(true)
+
+        # The child is still manually scheduled
+        expect(future_child.reload.schedule_manually).to be(true)
+      end
+    end
+
+    context "when a manually scheduled work package with a manually scheduled parent with a predecessor " \
+            "becomes parent for the first time" do
+      let_work_packages(<<~TABLE)
+        hierarchy               | scheduling mode | predecessors
+        grandparent predecessor | manual          |
+        grandparent             | manual          | grandparent predecessor
+          future parent         | manual          |
+        future child            | manual          |
+      TABLE
+      let(:initiator_work_package) { future_child }
+
+      before do
+        future_child.update!(parent: future_parent)
+      end
+
+      it "switches the new parent to automatic scheduling mode (because no predecessors)" do
+        expect(call_result).to be_success
+        expect(future_parent.reload.schedule_manually).to be(false)
+
+        # The child is still manually scheduled
+        expect(future_child.reload.schedule_manually).to be(true)
+      end
+    end
+  end
+
   describe "ignore_non_working_days propagation" do
     shared_let(:grandgrandparent) do
       create(:work_package,
