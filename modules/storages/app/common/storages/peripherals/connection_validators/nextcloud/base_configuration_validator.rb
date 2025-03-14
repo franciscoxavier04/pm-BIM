@@ -1,0 +1,131 @@
+# frozen_string_literal: true
+
+#-- copyright
+# OpenProject is an open source project management software.
+# Copyright (C) the OpenProject GmbH
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License version 3.
+#
+# OpenProject is a fork of ChiliProject, which is a fork of Redmine. The copyright follows:
+# Copyright (C) 2006-2013 Jean-Philippe Lang
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See COPYRIGHT and LICENSE files for more details.
+#++
+
+module Storages
+  module Peripherals
+    module ConnectionValidators
+      module Nextcloud
+        class BaseConfigurationValidator
+          def initialize(storage)
+            @storage = storage
+            @results = build_result_list
+          end
+
+          def call
+            catch :interrupted do
+              capabilities_request_failed
+              host_url_not_found
+              missing_dependencies
+              version_mismatch
+            end
+
+            @results
+          end
+
+          private
+
+          def capabilities_request_failed
+            if capabilities.failure? && capabilities.result != :not_found
+              @results[:capabilities_request_failed].fail!(:error)
+              throw :interrupted
+            else
+              @results[:capabilities_request_failed].succeed!
+            end
+
+            # Rails.logger.error "Connection validation failed with unknown error:\n\t" \
+            #                    "storage: ##{@storage.id} #{@storage.name}\n\t" \
+            #                    "request: Nextcloud capabilities\n\t" \
+            #                    "status: #{capabilities.result}\n\t" \
+            #                    "response: #{capabilities.error_payload}"
+          end
+
+          def version_mismatch
+            min_app_version = SemanticVersion.parse(nextcloud_dependencies.dig("dependencies", "integration_app", "min_version"))
+            capabilities_result = capabilities.result
+
+            if capabilities_result.app_version < min_app_version
+              @results[:version_mismatch].fail!(message(:app_version_mismatch))
+            else
+              @results[:version_mismatch].succeed!
+            end
+          end
+
+          def missing_dependencies
+            capabilities_result = capabilities.result
+            app_name = I18n.t("storages.dependencies.nextcloud.integration_app")
+
+            if capabilities_result.app_disabled?
+
+              @results[:missing_dependencies].fail!(message(:missing_dependencies, dependency: app_name))
+              throw(:interrupted)
+            else
+              @results[:missing_dependencies].succeed!
+            end
+          end
+
+          def host_url_not_found
+            if capabilities.result == :not_found
+              @results[:host_url_not_found].fail!(message(:host_not_found))
+              throw :interrupted
+            else
+              @results[:host_url_not_found].succeed!
+            end
+          end
+
+          def message(key, context = {})
+            I18n.t("storages.health.connection_validation.#{key}", **context)
+          end
+
+          def noop = StorageInteraction::AuthenticationStrategies::Noop.strategy
+
+          def capabilities
+            @capabilities ||= Peripherals::Registry.resolve("#{@storage}.queries.capabilities")
+                                                   .call(storage: @storage, auth_strategy: noop)
+          end
+
+          def nextcloud_dependencies
+            @nextcloud_dependencies ||= YAML.load_file(path_to_config).deep_stringify_keys!
+          end
+
+          def path_to_config = Rails.root.join("modules/storages/config/nextcloud_dependencies.yml")
+
+          def build_result_list
+            {
+              capabilities_request_failed: CheckResult.init_for(:capabilities_request_failed),
+              host_url_not_found: CheckResult.init_for(:host_url_not_found),
+              missing_dependencies: CheckResult.init_for(:missing_dependencies),
+              version_mismatch: CheckResult.init_for(:version_mismatch)
+            }
+          end
+        end
+      end
+    end
+  end
+end
