@@ -76,7 +76,7 @@ To add a comment to a work package, open the [details view](../../work-packages/
 
 You can also reply to a specific comment and quote it in your reply text. To do that click the **More (three dots)** icon at the right side of the comment and select **Quote this comment**.
 
-![](openproject_user_guide_wp_edit_comment.png)
+![Edit a work package comment in OpenProject](openproject_user_guide_wp_edit_comment.png)
 
 Author of the quoted comment will automatically be tagged via [@mention](#-notification-mention) and they will be notified of the reply to their comment.
 
