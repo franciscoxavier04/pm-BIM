@@ -3424,7 +3424,7 @@ lv:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "%{count} projekts"
+      one: "1 projekts"
       other: "%{count} projekti"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
