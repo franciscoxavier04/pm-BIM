@@ -48,18 +48,20 @@ interface CustomEventWithIdParam extends Event {
 }
 
 export default class IndexController extends BaseController {
-  static values = {
-    updateStreamsPath: String,
-    sorting: String,
-    pollingIntervalInMs: Number,
-    filter: String,
-    userId: Number,
-    workPackageId: Number,
-    notificationCenterPathName: { type: String, default: '/notifications' },
-    lastServerTimestamp: String,
-    showConflictFlashMessageUrl: String,
-    unsavedChangesConfirmationMessage: String,
-  };
+  static get values() {
+    return {
+      ...super.values,
+      updateStreamsPath: String,
+      sorting: String,
+      pollingIntervalInMs: Number,
+      filter: String,
+      userId: Number,
+      workPackageId: Number,
+      lastServerTimestamp: String,
+      showConflictFlashMessageUrl: String,
+      unsavedChangesConfirmationMessage: String,
+    };
+  }
 
   static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
 
