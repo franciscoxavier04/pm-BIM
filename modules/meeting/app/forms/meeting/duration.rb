@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,35 +28,39 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::DetailsFormComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+class Meeting::Duration < ApplicationForm
+  form do |meeting_form|
+    meeting_form.text_field(
+      name: :duration,
+      type: :text,
+      value: @duration,
+      placeholder: Meeting.human_attribute_name(:duration),
+      label: Meeting.human_attribute_name(:duration),
+      visually_hide_label: false,
+      required: true,
+      caption: I18n.t("text_in_hours"),
+      data: {
+        controller: "chronic-duration",
+        application_target: "dynamic"
+      }
+    )
+  end
 
-    def initialize(meeting:)
-      super
+  def initialize(meeting:)
+    super()
 
-      @meeting = meeting
-      @project = meeting.project
-    end
+    @meeting = meeting
+    duration = duration_value(meeting)
+    @duration = duration.nil? ? "" : ChronicDuration.output(duration * 3600, format: :hours_only)
+  end
 
-    def render?
-      User.current.allowed_in_project?(:edit_meetings, @project)
-    end
+  private
 
-    private
-
-    def start_date_initial_value
-      format_time_as_date(@meeting.start_time, format: "%Y-%m-%d")
-    end
-
-    def start_time_initial_value
-      format_time(@meeting.start_time, include_date: false, format: "%H:%M")
-    end
-
-    def timezone_caption
-      friendly_timezone_name(User.current.time_zone, period: @meeting.start_time)
+  def duration_value(meeting)
+    if meeting.is_a?(RecurringMeeting) && meeting.template
+      meeting.template.duration
+    else
+      meeting.duration
     end
   end
 end

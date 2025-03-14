@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,35 +28,27 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module Meetings
-  class SidePanel::DetailsFormComponent < ApplicationComponent
-    include ApplicationHelper
-    include OpTurbo::Streamable
-    include OpPrimer::ComponentHelpers
+class Meeting::StartTime < ApplicationForm
+  include Redmine::I18n
 
-    def initialize(meeting:)
-      super
+  form do |meeting_form|
+    meeting_form.text_field(
+      name: :start_time_hour,
+      type: "time",
+      value: @initial_time,
+      placeholder: Meeting.human_attribute_name(:start_time),
+      label: Meeting.human_attribute_name(:start_time),
+      required: true,
+      data: {
+        action: "input->recurring-meetings--form#updateFrequencyText input->meetings--form#updateTimezoneText"
+      }
+    )
+  end
 
-      @meeting = meeting
-      @project = meeting.project
-    end
+  def initialize(meeting:)
+    super()
 
-    def render?
-      User.current.allowed_in_project?(:edit_meetings, @project)
-    end
-
-    private
-
-    def start_date_initial_value
-      format_time_as_date(@meeting.start_time, format: "%Y-%m-%d")
-    end
-
-    def start_time_initial_value
-      format_time(@meeting.start_time, include_date: false, format: "%H:%M")
-    end
-
-    def timezone_caption
-      friendly_timezone_name(User.current.time_zone, period: @meeting.start_time)
-    end
+    @meeting = meeting
+    @initial_time = meeting.start_time_hour.presence || format_time(meeting.start_time, include_date: false, format: "%H:%M")
   end
 end
