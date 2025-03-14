@@ -32,8 +32,8 @@ class MeetingsController < ApplicationController
 
   before_action :determine_date_range, only: %i[history]
   before_action :determine_author, only: %i[history]
-  before_action :build_meeting, only: %i[new new_dialog]
-  before_action :find_meeting, except: %i[index new create new_dialog]
+  before_action :build_meeting, only: %i[new new_dialog fetch_timezone]
+  before_action :find_meeting, except: %i[index new create new_dialog fetch_timezone]
   before_action :redirect_to_project, only: %i[show]
   before_action :set_activity, only: %i[history]
   before_action :find_copy_from_meeting, only: %i[create]
@@ -329,6 +329,21 @@ class MeetingsController < ApplicationController
     redirect_to action: :show, id: @meeting
   end
 
+  def fetch_timezone
+    User.execute_as(User.current) do
+      meeting = Meeting.new(timezone_params)
+      text = friendly_timezone_name(User.current.time_zone, period: meeting.start_time)
+
+      respond_to do |format|
+        format.html { render plain: text }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update("meeting-timezone",
+                                                   plain: text)
+        end
+      end
+    end
+  end
+
   private
 
   def load_query
@@ -539,5 +554,15 @@ class MeetingsController < ApplicationController
     return if @project
 
     redirect_to project_meeting_path(@meeting.project, @meeting, tab: params[:tab]), status: :see_other
+  end
+
+  def timezone_params
+    meeting_params = if params[:meeting]
+                       params.require(:meeting)
+                     else
+                       params.require(:structured_meeting)
+                     end
+
+    meeting_params.permit(:start_date, :start_time_hour).compact_blank
   end
 end

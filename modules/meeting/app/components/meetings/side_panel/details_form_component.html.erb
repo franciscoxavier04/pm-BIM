@@ -3,7 +3,11 @@
     primer_form_with(
       model: @meeting,
       method: :put,
-      data: { turbo: true, turbo_stream: true },
+      data: { turbo: true,
+              turbo_stream: true,
+              controller: "meetings--form",
+              "application-target": "dynamic",
+              "meetings--form-structured-value": true },
       url: update_details_project_meeting_path(@project, @meeting)
     ) do |f|
       component_collection do |collection|
@@ -13,8 +17,32 @@
               render(BaseErrorsComponent.new(@meeting, mb: 3))
             end
 
-            modal_body.with_row(mb: 3) do
-              render(Meeting::TimeGroup.new(f, meeting: @meeting))
+            modal_body.with_row(mt: 3) do
+              flex_layout(classes: "FormControl-horizontalGroup") do |time_row|
+                time_row.with_column(flex: 1) do
+                  render(Meeting::StartDate.new(f, meeting: @meeting))
+                end
+
+                time_row.with_column(flex_layout: true, flex: 1) do |time_field|
+                  time_field.with_row do
+                    render(Meeting::StartTime.new(f, meeting: @meeting))
+                  end
+
+                  time_field.with_row(mt: 1) do
+                    render(
+                      Primer::Beta::Text.new(
+                        id: "meeting-timezone",
+                        font_size: :small,
+                        color: :subtle
+                      )
+                    ) { timezone_caption }
+                  end
+                end
+
+                time_row.with_column(flex: 1) do
+                  render(Meeting::Duration.new(f, meeting: @meeting))
+                end
+              end
             end
 
             modal_body.with_row do
