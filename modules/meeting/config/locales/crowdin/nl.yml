@@ -290,7 +290,7 @@ nl:
       full_past: "%{base} op %{time}, geëindigd op %{end_date}"
       never_ending: "%{base} op %{time}"
     open:
-      title: "Open"
+      title: "Agenda opened"
       subtitle: >
         Open vergaderingen hebben agenda's die bewerkt kunnen worden en verschijnen in het gedeelte "Mijn vergaderingen" van individuele gebruikers. Wijzigingen aan het sjabloon voor reeksen vergaderingen hebben geen invloed op al geopende vergaderingen.
       blankslate:

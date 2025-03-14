@@ -290,7 +290,7 @@ pt-BR:
       full_past: "%{base} em %{time}, terminou em %{end_date}"
       never_ending: "%{base} em %{time}"
     open:
-      title: "Abrir"
+      title: "Agenda opened"
       subtitle: >
         Reuniões abertas possuem pautas editáveis e aparecem na seção “Minhas reuniões” de cada usuário. Alterações no modelo da série não afetam reuniões já abertas.
       blankslate:

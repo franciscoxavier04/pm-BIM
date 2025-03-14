@@ -12,8 +12,8 @@ uk:
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Єдиний вхід через постачальника ідентифікаційних даних OpenID Connect
-          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
-          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
+          oauth2_sso_with_two_way_oauth2_fallback: Єдиний вхід через двосторонню авторизацію OAuth 2.0 як запасний варіант
+          two_way_oauth2: Потік коду двосторонньої авторизації OAuth 2.0
         storage_audience: Аудиторія сховища
       storages/project_storage:
         project_folder: Папка проєкту
@@ -245,7 +245,7 @@ uk:
         oidc_cant_acquire_token: Ваша конфігурація OpenID Connect не передбачає наявності необхідної аудиторії і можливостей обміну маркерами. Щоб дізнатися більше, ознайомтеся з нашою документацією.
         oidc_cant_exchange_token: Здається, виникла проблема з конфігурацією Token Exchange у вашого постачальника OpenID Connect. Перевірте конфігурацію і повторіть спробу.
         oidc_cant_refresh_token: Під час перевірки доступу до сховища сталася помилка. Щоб отримати додаткову інформацію, перевірте журнали сервера.
-        oidc_non_oidc_user: Поточний користувач має доступ, але не був наданий постачальником ідентифікаційних даних OpenID Connect. Повторіть перевірку з користувачем, створеним через OIDC.
+        oidc_non_oidc_user: Поточний користувач має доступ, але його надав не постачальник ідентифікаційних даних OpenID Connect (OIDC). Повторіть перевірку з користувачем, створеним через OIDC.
         oidc_non_provisioned_user: Поточного користувача не надано постачальником ідентифікаційних даних OpenID Connect. Повторіть перевірку з наданим користувачем.
         placeholder: Перевірте підключення до сервера.
         subtitle: Перевірка підключення
@@ -350,7 +350,7 @@ uk:
       connected: Підключено
       connected_no_permissions: Ролі користувача не надано дозволи на доступ до сховища
       not_connected: 'Не підключено. Користувач має ввійти в сховище за цим посиланням: %{link}.'
-      not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
+      not_connected_sso: Не підключено. SSO має виконувати підключення автоматично під час отримання доступу до файлів.
     members_no_results: Немає учасників.
     no_results: Сховища поки не створено.
     oauth_access_granted_modal:

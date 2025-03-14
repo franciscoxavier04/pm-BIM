@@ -290,7 +290,7 @@ pt-PT:
       full_past: "%{base} às %{time}, terminou a %{end_date}"
       never_ending: "%{base} às %{time}"
     open:
-      title: "Abrir"
+      title: "Agenda opened"
       subtitle: >
         As reuniões abertas têm agendas que podem ser editadas e aparecem na secção "As minhas reuniões" dos utilizadores individuais. As alterações ao modelo da série de reuniões não afetam as ocorrências de reuniões já abertas.
       blankslate:

@@ -290,7 +290,7 @@ de:
       full_past: "%{base} um %{time}, endet am %{end_date}"
       never_ending: "%{base} um %{time}"
     open:
-      title: "Öffnen"
+      title: "Agenda opened"
       subtitle: >
         Offene Besprechungen haben Tagesordnungen, die bearbeitet werden können und im Bereich "Meine Meetings" der Teilnehmer angezeigt werden. Änderungen an der Vorlage für Besprechungsserien wirken sich nicht mehr auf diese bereits geöffneten Besprechungen aus.
       blankslate:

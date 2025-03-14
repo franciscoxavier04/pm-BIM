@@ -587,10 +587,10 @@ uk:
         У <a href="%{href}">режимі обчислення прогресу на основі статусу</a> для атрибута «% завершення» пакета робіт автоматично встановлюється це значення, коли вибрано цей статус.
         Ігнорується в режимі на основі роботи.
       status_readonly_html: |
-        Check this option to mark work packages with this status as read-only.
-        No attributes can be changed with the exception of the status.
+        Установіть цей прапорець, щоб позначити пакети робіт із цим статусом як доступні лише для читання.
+        Крім статусу, ви не зможете змінювати жодні атрибути.
         <br>
-        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
+        <strong>Примітка</strong>: успадковані значення (напр., значення дочірніх елементів або зв’язки) не зміняться.
     index:
       no_results_title_text: Наразі немає статусів робочих пакетів.
       no_results_content_text: Додати новий статус
@@ -656,11 +656,11 @@ uk:
       banner:
         description:
           automatic_mobile: "Дату початку отримано."
-          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          click_on_show_relations_to_open_gantt: 'Натисніть кнопку «%{button_name}», щоб переглянути діаграму Ґантта.'
           manual_mobile: "Зв’язки ігноруються."
-          manual_gap_between_predecessors: "Між цим пакетом робіт і всіма його попередниками існує проміжок."
+          manual_gap_between_predecessors: "Між цим пакетом робіт і всіма його попередниками існує проміжок часу."
           manual_overlap_with_predecessors: "Перекривається принаймні одним попередником."
-          manual_with_children: "This has child work packages but their start dates are ignored."
+          manual_with_children: "Є дочірні пакети робіт, але їх дати початку ігноруються."
         title:
           automatic_mobile: "Автоматично заплановано."
           automatic_with_children: "Дати визначено дочірніми пакетами робіт."
@@ -678,7 +678,7 @@ uk:
         manual: "Вручну"
       show_relations: "Показати зв’язки"
       tabs:
-        aria_label: "Datepicker tabs"
+        aria_label: "Вкладки вибору даних"
         children: "Дочірні елементи"
         dates: "Дати"
         predecessors: "Попередники"
@@ -890,7 +890,7 @@ uk:
         scopes: "Область дії"
         confidential: "Конфіденційний"
       emoji_reaction:
-        reactable: "Reacted on"
+        reactable: "Реакція на"
       enterprise_token:
         domain: "Домен"
         starts_at: "Дійсний з"
@@ -921,7 +921,7 @@ uk:
       member:
         roles: "Роль"
       notification:
-        read_ian: "Read in-app"
+        read_ian: "Читайте в додатку"
         resource: "Ресурс"
       oauth_client:
         client: "ID клієнта"
@@ -964,7 +964,7 @@ uk:
         name: "Ім’я"
         color: "Колір"
       query:
-        sums: "Sums"
+        sums: "Суми"
         columns: "Стовпці"
         column_names: "Стовпці"
         relations_to_type_column: "Відносини з %{type}"
@@ -975,7 +975,7 @@ uk:
         timeline_labels: "Мітки часової шкали"
         timeline_visible: "Показати діаграму Ганта"
         timeline_zoom_level: "Рівень масштабу діаграми Ґантта"
-        timestamps: "Baseline timestamps"
+        timestamps: "Вихідні значення міток часу"
         sort_criteria: "Критерії сортування"
         highlighted_attributes: "Виділені атрибути"
         highlighting_mode: "Режим виділення"
@@ -1688,7 +1688,7 @@ uk:
     status: "Статус"
     state: "Стан"
     subject: "Тема"
-    slug: "Slug"
+    slug: "Слаг"
     summary: "Резюме"
     time_zone: "Часовий пояс"
     text: "Текст"
@@ -2057,7 +2057,7 @@ uk:
   enumeration_work_package_priorities: "Пріоритети робочого пакету"
   enumeration_reported_project_statuses: "Повідомлення про статус проекту"
   enumeration_caption_order_changed: "Порядок змінено."
-  enumeration_could_not_be_moved: "Enumeration could not be moved."
+  enumeration_could_not_be_moved: "Неможливо перенести перелічення."
   error_auth_source_sso_failed: "Єдиний вхід (SSO) для користувача %{value} не вдалося "
   error_can_not_archive_project: "Цей проєкт не можна архівувати: %{errors}"
   error_can_not_delete_entry: "Неможливо видалити запис"
@@ -2220,10 +2220,10 @@ uk:
     page_nr_footer: "Сторінка %{page} з %{total}"
     template_attributes:
       label: "Атрибути й опис"
-      caption: All the attributes present in the current form configuration using the default template.
+      caption: Усі атрибути, наявні в поточній конфігурації форми, що використовують шаблон за замовчуванням.
     template_contract:
-      label: "Contract"
-      caption: Work package details formatted to the standard German contract form.
+      label: "Договір"
+      caption: Деталі пакета робіт відформатовано в типовій для Німеччини формі договору.
     dialog:
       title: Згенерувати PDF
       submit: Завантажити
@@ -2905,7 +2905,7 @@ uk:
   label_roadmap_overdue: "%{value} запізнення"
   label_role_and_permissions: "Ролі і права доступу"
   label_role_new: "Нова роль"
-  label_role_grantable: "Grantable role"
+  label_role_grantable: "Роль, що надається"
   label_role_plural: "Роль"
   label_role_search: "Призначити роль для нових членів"
   label_scm: "Тип сховища"
@@ -3475,7 +3475,7 @@ uk:
       warning_one: Членам проекту доведеться перенести репозиторії проекту.
       warning_two: Існуючі посилання на проект більше не працюватимуть.
       title: Змініть ідентифікатор проекту
-    not_available: "Project N/A"
+    not_available: "Проєкт Н/Д"
     template:
       copying: >
         Ваш проєкт створюється на основі вибраного шаблону проєкту. Ми повідомимо Вас електронною поштою, щойно проєкт стане доступним.
@@ -3612,15 +3612,15 @@ uk:
     warnings:
       cannot_annotate: "Цей файл не може бути анотований."
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "ручне"
+    automatic: "автоматичне"
   search_input_placeholder: "Пошук ..."
-  setting_after_first_login_redirect_url: "Переспрямування першого входу"
+  setting_after_first_login_redirect_url: "Переспрямування після першого входу"
   setting_after_first_login_redirect_url_text_html: >
-    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+    Задайте шлях для переспрямування користувачів після першого входу. Якщо не задано, користувачі переспрямовуються на головну сторінку з ознайомленням. <br/>Наприклад: <code>/my/page</code>
   setting_after_login_default_redirect_url: "Переспрямування після входу"
   setting_after_login_default_redirect_url_text_html: >
-    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
+    Задайте шлях за замовчуванням для переспрямування користувачів після входу, якщо зворотне посилання не надано. Якщо не задано, користувачі переспрямовуються на головну сторінку. <br/>Приклад: <code>/my/page</code>
   setting_apiv3_cors_title: "Спільне використання ресурсів із різних джерел (CORS)"
   setting_apiv3_cors_enabled: "Увімкнути CORS"
   setting_apiv3_cors_origins: "Дозволені джерела CORS (Cross-Origin Resource Sharing) в API версії 3"
@@ -4466,7 +4466,7 @@ uk:
     legacy_enterprise: "План Enterprise"
   enterprise_features:
     baseline_comparison: Порівняння з вихідним рівнем
-    board_view: Перегляд дошки
+    board_view: Подання дошки
     conditional_highlighting: Умовне виділення
     custom_actions: Користувацькі дії
     custom_field_hierarchies: Ієрархії користувацьких полів
@@ -4475,16 +4475,16 @@ uk:
     define_custom_style: Визначення користувацького стилю
     edit_attribute_groups: Редагування груп атрибутів
     gantt_pdf_export: Експорт діаграми Ґантта в PDF
-    grid_widget_wp_graph: Grid Widget Work Package Graph
+    grid_widget_wp_graph: Графік пакета робіт у вигляді сітки
     ldap_groups: Групи LDAP
     one_drive_sharepoint_file_storage: Сховище файлів OneDrive / SharePoint
     placeholder_users: Прототипи користувачів
     project_list_sharing: Спільне використання списку проєктів
     readonly_work_packages: Пакети робіт лише для читання
     sso_auth_providers: Постачальники автентифікації SSO
-    team_planner_view: Team Planner View
-    two_factor_authentication: Двофакторна аутентифікація
+    team_planner_view: Подання командного планувальника
+    two_factor_authentication: Двофакторна автентифікація
     virus_scanning: Пошук вірусів у вкладеннях
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Спільне використаня пакета робіт
+    work_package_query_relation_columns: Стовпці зв’язків запиту пакета робіт
+    work_package_sharing: Спільне використання пакета робіт
     work_package_subject_generation: Створення теми пакета робіт

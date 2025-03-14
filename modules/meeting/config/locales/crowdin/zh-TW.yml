@@ -286,7 +286,7 @@ zh-TW:
       full_past: "%{base} 於 %{time}, 結束於 %{end_date}"
       never_ending: "%{base} 在 %{time}"
     open:
-      title: "開始"
+      title: "Agenda opened"
       subtitle: >
         公開會議的議程可以編輯，並顯示在個別使用者的「我的會議」區段中。變更會議系列範本不會影響已開放的會議。
       blankslate:

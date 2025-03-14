@@ -85,9 +85,9 @@ ko:
         is_default: "기본 모델"
         attachments: "IFC 파일"
       bim/bcf/issue:
-        bcf_comment: "BCF comment"
-        bim_snippet: "BIM snippet"
-        reference_links: "Reference links"
+        bcf_comment: "BCF 코멘트"
+        bim_snippet: "BIM 코드 조각"
+        reference_links: "참조 링크"
         stage: "단계"
         viewpoint: "뷰포인트"
     errors:

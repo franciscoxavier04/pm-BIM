@@ -62,8 +62,8 @@ ko:
       models:
         recurring_meeting:
           must_cover_existing_meetings:
-            one: "There is one open meeting in the series that is not covered by the new schedule. Adjust the schedule to include all existing meetings."
-            other: "There are %{count} open meetings in the series that are not covered by the new schedule. Adjust the schedule to include all existing meetings."
+            one: "이 시리즈에는 새로운 스케줄에 포함되지 않은 오픈 미팅이 하나 있습니다. 모든 기존 미팅을 포함하도록 스케줄을 조정하세요."
+            other: "이 시리즈에는 새로운 스케줄에 포함되지 않은 오픈 미팅이 %{count}개 있습니다. 모든 기존 미팅을 포함하도록 스케줄을 조정하세요."
             format: "%{message}"
       messages:
         invalid_time_format: "은(는) 유효한 시간이 아닙니다. 필요한 형식: HH:MM"
@@ -266,9 +266,9 @@ ko:
         미팅 시리즈의 템플릿을 현재 편집하는 중입니다: %{link}. 시리즈에서 미팅의 모든 새로운 항목이 이 템플릿을 사용하게 됩니다. 변경 사항은 과거 또는 이미 생성된 미팅에 영향을 미치지 않습니다.
     frequency:
       x_daily:
-        other: "Every %{count} days"
+        other: "%{count}일마다"
       x_weekly:
-        other: "Every %{count} weeks"
+        other: "%{count}주마다"
       every_weekday: "%{day_of_the_week}마다"
       working_days: "근무일마다"
     end_after:
@@ -286,7 +286,7 @@ ko:
       full_past: "%{base}, %{time}, %{end_date}에 종료"
       never_ending: "%{base}, %{time}"
     open:
-      title: "열기"
+      title: "Agenda opened"
       subtitle: >
         오픈 미팅에는 편집할 수 있는 의제가 있으며 개별 사용자의 '내 미팅' 섹션에 표시됩니다. 미팅 시리즈 템플릿의 변경 사항은 이미 오픈된 미팅 항목에 영향을 미치지 않습니다.
       blankslate:
@@ -365,19 +365,19 @@ ko:
   label_agenda_item_undisclosed_wp: "작업 패키지 #%{id}이(가) 표시되지 않습니다"
   label_agenda_item_deleted_wp: "삭제된 작업 패키지 참조"
   label_agenda_item_actions: "의제 항목 작업"
-  label_agenda_item_move_to_next: "Move to next meeting"
+  label_agenda_item_move_to_next: "다음 미팅으로 이동"
   label_agenda_item_move_to_top: "맨 위로 이동"
   label_agenda_item_move_to_bottom: "맨 아래로 이동"
   label_agenda_item_move_up: "위로 이동"
   label_agenda_item_move_down: "아래로 이동"
   label_agenda_item_add_notes: "메모 추가"
-  label_agenda_item_add_outcome: "Add outcome"
+  label_agenda_item_add_outcome: "결과 추가"
   label_agenda_item_work_package: "의제 항목 작업 패키지"
-  label_agenda_outcome: "Outcome"
-  label_agenda_outcome_actions: "Agenda outcome actions"
-  label_agenda_outcome_edit: "Edit outcome"
-  label_agenda_outcome_delete: "Remove outcome"
-  text_outcome_not_editable_anymore: "This outcome is not editable anymore."
+  label_agenda_outcome: "결과"
+  label_agenda_outcome_actions: "의제 결과 작업"
+  label_agenda_outcome_edit: "결과 편집"
+  label_agenda_outcome_delete: "결과 제거"
+  text_outcome_not_editable_anymore: "이 결과는 더 이상 편집할 수 없습니다."
   text_agenda_item_title: '의제 항목 "%{title}"'
   text_agenda_work_package_deleted: '삭제된 작업 패키지에 대한 의제 항목'
   text_deleted_agenda_item: '삭제된 의제 항목'
@@ -397,11 +397,11 @@ ko:
   label_meeting_state_in_progress: "진행 중"
   label_meeting_reopen_action: "미팅 다시 열기"
   label_meeting_close_action: "미팅 닫기"
-  label_meeting_in_progress_action: "Mark as in progress"
-  text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
+  label_meeting_in_progress_action: "진행 중으로 표시"
+  text_meeting_open_description: "이 미팅은 오픈 상태입니다. 의제 항목을 추가/제거하고 원하는 대로 편집할 수 있습니다. 의제가 준비되면 진행 중으로 표시하여 결과를 문서화하세요."
   text_meeting_closed_description: "이 미팅은 종료되었습니다. 더 이상 의제 항목을 추가/제거할 수 없습니다."
-  text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
-  text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
+  text_meeting_in_progress_description: "이 미팅은 진행 중입니다. 각 의제 항목에 대한 결과를 문서화하고, 재정렬하고, 새로운 항목을 추가할 수도 있습니다. 미팅이 완료되면 닫힘으로 표시하여 잠글 수 있습니다."
+  text_meeting_open_dropdown_description: "기존 결과는 그대로 유지되지만 사용자가 새로운 결과를 추가할 수 없게 됩니다."
   text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
   text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
   label_meeting_manage_participants: "참가자 관리"
@@ -417,9 +417,9 @@ ko:
   text_add_work_package_to_meeting_description: "논의를 위해 하나 이상의 미팅에 작업 패키지를 추가할 수 있습니다. 이와 관련된 메모도 여기에 표시됩니다."
   text_agenda_item_no_notes: "제공된 메모 없음"
   text_agenda_item_not_editable_anymore: "이 의제 항목은 더 이상 편집할 수 없습니다."
-  text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
-  text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
+  text_agenda_item_move_next_meeting: "이 미팅을 %{date} %{time}의 다음 미팅으로 이동하시겠습니까?"
+  text_agenda_item_moved_to_next_meeting: "의제 항목이 %{date}의 다음 미팅으로 이동되었습니다."
   text_work_package_has_no_upcoming_meeting_agenda_items: "이 작업 패키지는 향후 미팅 의제에서 아직 예약되지 않았습니다."
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "이 시리즈의 다음 미팅이 취소되었습니다."
   text_work_package_add_to_meeting_hint: '이 작업 패키지를 향후 미팅에 추가하려면 "미팅에 추가" 버튼을 사용하세요.'
   text_work_package_has_no_past_meeting_agenda_items: "이 작업 패키지는 과거 미팅에서 멘션되지 않았습니다."

@@ -141,7 +141,7 @@ ko:
   label_time: "시간"
   label_cost: "비용"
   label_costs: "비용"
-  label_mandatory_fields: "Mandatory fields"
+  label_mandatory_fields: "필수 필드"
   placeholder_activity_select_work_package_first: 먼저 작업 패키지 선택이 필요합니다
   notice_something_wrong: "문제가 발생했습니다. 다시 시도해 주세요."
   notice_successful_restore: "성공적으로 복원되었습니다."

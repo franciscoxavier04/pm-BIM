@@ -35,7 +35,7 @@ uk:
   activerecord:
     attributes:
       gitlab_pipeline:
-        ci_details: "CI Details"
+        ci_details: "Деталі CI"
       gitlab_merge_request:
         labels: "Мітки"
     errors:

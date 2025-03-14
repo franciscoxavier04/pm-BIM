@@ -87,7 +87,7 @@ uk:
       bim/bcf/issue:
         bcf_comment: "Коментар BCF"
         bim_snippet: "Фрагмент BIM"
-        reference_links: "Reference links"
+        reference_links: "Посилання на джерела"
         stage: "Етап"
         viewpoint: "Точка огляду"
     errors:

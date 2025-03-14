@@ -290,7 +290,7 @@ tr:
       full_past: "%{base} %{time} saatinde, %{end_date} tarihinde sona erer"
       never_ending: "%{base} ve %{time}"
     open:
-      title: "Açık"
+      title: "Agenda opened"
       subtitle: >
         Açık toplantıların düzenlenebilen gündemleri vardır ve bireysel kullanıcıların 'Toplantılarım' bölümünde gösterilir. Toplantı serisi şablonunda yapılan değişiklikler halihazırda açık olan toplantıları etkilemez.
       blankslate:

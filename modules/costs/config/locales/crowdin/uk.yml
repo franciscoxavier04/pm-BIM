@@ -30,7 +30,7 @@ uk:
         overridden_costs: "Перевищення витрат"
         spent: "Витрачений"
         spent_on: "Дата"
-        logged_by: "Ви ввійшли як"
+        logged_by: "Зареєстровано"
       cost_type:
         unit: "Назва одиниці"
         unit_plural: "Назва плуралізованої одиниці"
@@ -63,10 +63,10 @@ uk:
         many: "Види витрат"
         other: "Види витрат"
       time_entry_activity:
-        one: "Дія з відстеження часу"
-        few: "Дії з відстеження часу"
-        many: "Дії з відстеження часу"
-        other: "Дії з відстеження часу"
+        one: "Дія з обліку часу"
+        few: "Дії з обліку часу"
+        many: "Дії з обліку часу"
+        other: "Дії з обліку часу"
       rate: "Оцінити"
     errors:
       models:
@@ -145,7 +145,7 @@ uk:
   label_valid_from: "Діє з"
   label_yes: "Так"
   label_time: "Час"
-  label_cost: "Витрати"
+  label_cost: "Витрата"
   label_costs: "Витрати"
   label_mandatory_fields: "Обов’язкові поля"
   placeholder_activity_select_work_package_first: Спочатку потрібно вибрати пакет робіт

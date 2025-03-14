@@ -290,7 +290,7 @@ fr:
       full_past: "%{base} à %{time}, terminée le %{end_date}"
       never_ending: "%{base} à %{time}"
     open:
-      title: "Ouvrir"
+      title: "Agenda opened"
       subtitle: >
         Les réunions ouvertes ont un ordre du jour qui peut être modifié et qui apparaît dans la section « Mes réunions » de chaque utilisateur. Les modifications apportées au modèle de série de réunions n'affectent pas les réunions déjà ouvertes.
       blankslate:
