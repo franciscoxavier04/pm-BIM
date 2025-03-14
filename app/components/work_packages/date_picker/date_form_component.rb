@@ -221,7 +221,7 @@ module WorkPackages
 
         # Special case, if the use explicitly clicks on start date, we want to show that field
         if table_triggered_date_field?
-          return name == @triggering_field
+          return normalized_underscore_name(name) == normalized_underscore_name(@triggering_field)
         end
 
         # Start date is only shown in the assertion above
@@ -236,7 +236,11 @@ module WorkPackages
       end
 
       def table_triggered_date_field?
-        @triggering_field == :start_date || @triggering_field == :due_date
+        ["start_date", "due_date"].include?(normalized_underscore_name(@triggering_field))
+      end
+
+      def normalized_underscore_name(name)
+        name.to_s.underscore
       end
     end
   end

@@ -152,7 +152,7 @@ class WorkPackages::DatePickerController < ApplicationController
     WorkPackages::DatePicker::DialogContentComponent.new(work_package: @work_package,
                                                          schedule_manually:,
                                                          focused_field:,
-                                                         triggering_field: params[:field],
+                                                         triggering_field: params[:triggering_field],
                                                          touched_field_map:,
                                                          date_mode:)
   end
@@ -222,7 +222,7 @@ class WorkPackages::DatePickerController < ApplicationController
 
       params.require(:work_package)
             .slice(*allowed_touched_params)
-            .merge(schedule_manually:, date_mode:)
+            .merge(schedule_manually:, date_mode:, triggering_field: params[:triggering_field])
             .permit!
     end
   end
