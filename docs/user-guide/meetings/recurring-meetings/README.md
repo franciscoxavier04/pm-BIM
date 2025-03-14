@@ -105,7 +105,7 @@ To edit a single meeting within recurring meeting series you have to open it fir
 
 ![Select a meeting occurrence on a recurring meetings series index page](openproject_userguide_meetings_edit_meeting_occurence_link.png)
 
-This will open the specific meeting page. You can then edit the meeting by using same functions as for [editing one-time meetings](../one-time-meetings), including adding sections and agenda points, inviting participants, and adding attachments. 
+This will open the specific meeting page. You can then edit the meeting by using same functions as for [editing one-time meetings](../one-time-meetings), including adding sections and agenda points, documenting agenda item outcomes, inviting participants and adding attachments.
 
 Additionally you can copy a specific meeting series occurrence as a one-time meeting. To do that click the **More** (three dots) icon and select **Copy as one-time meeting**.
 
@@ -117,3 +117,11 @@ Within the same menu you also have the following options:
 - Send email to all participants
 - View history
 - Cancel this occurrence
+
+### Move an agenda item to next meeting
+
+In addition to all the options available for [editing one-time meetings](../one-time-meetings), within a single meeting of a recurring meeting series you can move an agenda item to next meeting. 
+
+To do that click the **More** (three dots) icon next to an agenda item and select **Move to next meeting**.
+
+![Move an agenda item to next meeting in OpenProject recurring meetings](openproject_userguide_meetings_recurring_meeting_move_agenda_item_to_next_meeting.png)
