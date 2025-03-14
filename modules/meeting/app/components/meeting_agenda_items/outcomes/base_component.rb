@@ -54,12 +54,8 @@ module MeetingAgendaItems
       end
     end
 
-    def conditional_margin_top
-      if @meeting.in_progress? || @meeting_outcome.present?
-        2
-      else
-        0
-      end
+    def show_outcome?
+      @meeting.in_progress? || @meeting_outcome.present?
     end
   end
 end
