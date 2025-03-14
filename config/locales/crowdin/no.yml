@@ -3379,7 +3379,7 @@
       archived: "Arkivert"
     count:
       zero: "0 projects"
-      one: "%{count} prosjekt"
+      one: "1 prosjekt"
       other: "%{count} prosjekter"
     destroy:
       confirmation: "Hvis du fortsetter, vil %{identifier} bli ødelagt permanent. For å bekrefte denne handlingen, vennligst skriv prosjektnavnet i feltet nedenfor, dette vil:"
