@@ -1,13 +1,19 @@
 @mixin timeline-label
   display: flex
   align-items: center
-  height: 16px
   min-width: 20px
   width: max-content
   font-size: 14px
   white-space: nowrap
   vertical-align: middle
   pointer-events: none
+
+@mixin scheduling-icon
+  span
+    display: flex
+    align-items: center
+    .display-field--scheduling-icon
+      margin-right: 0.25rem
 
 .timeline-element
   // Label style
@@ -37,6 +43,7 @@
     transform: translateX(calc(-100% - 15px))
     // Ensure line-height is normal
     line-height: 1
+    @include scheduling-icon
 
   .containerRight
     @include timeline-label
@@ -49,6 +56,7 @@
   .labelRight.not-empty
     @include timeline-label
     margin-left: 20px
+    @include scheduling-icon
 
   .labelFarRight
     @include timeline-label
@@ -68,6 +76,7 @@
     // Then translate by its own width + some margin
     transform: translateX(calc(100% + 10px))
     font-size: 12px
+    @include scheduling-icon
 
   &.-editable
     cursor: ew-resize
