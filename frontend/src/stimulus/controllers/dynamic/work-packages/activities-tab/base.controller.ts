@@ -28,33 +28,30 @@
  * ++
  */
 
-import { BaseController } from './base.controller';
+import { Controller } from '@hotwired/stimulus';
 
-export default class RestrictedCommentController extends BaseController {
-  static targets = ['restrictedCheckbox', 'formContainer', 'learnMoreLink'];
-  static classes = ['highlight', 'hidden'];
+export class BaseController extends Controller {
+  static values = {
+    notificationCenterPathName: { type: String, default: '/notifications' },
+  };
 
-  declare readonly restrictedCheckboxTarget:HTMLInputElement;
-  declare readonly formContainerTarget:HTMLElement;
-  declare readonly learnMoreLinkTarget:HTMLAnchorElement;
+  declare readonly notificationCenterPathNameValue:string;
 
-  declare readonly highlightClass:string;
-  declare readonly hiddenClass:string;
+  private readonly MOBILE_BREAKPOINT = 1279;
+  private readonly MOBILE_BREAKPOINT_WITHIN_SPLIT_SCREENS = 1013;
 
-  onSubmitEnd(_event:CustomEvent):void {
-    this.toggleBackgroundColor();
+  public isMobile():boolean {
+    if (this.isWithinNotificationCenter() || this.isWithinSplitScreen()) {
+      return window.innerWidth < this.MOBILE_BREAKPOINT_WITHIN_SPLIT_SCREENS;
+    }
+    return window.innerWidth < this.MOBILE_BREAKPOINT;
   }
 
-  toggleBackgroundColor():void {
-    const isChecked = this.restrictedCheckboxTarget.checked;
-
-    this.formContainerTarget.classList.toggle(this.highlightClass, isChecked);
-    this.toggleLearnMoreLink(isChecked);
+  public isWithinNotificationCenter():boolean {
+    return window.location.pathname.includes(this.notificationCenterPathNameValue);
   }
 
-  private toggleLearnMoreLink(isChecked:boolean):void {
-    if (this.isMobile()) return; // hidden on mobile
-
-    this.learnMoreLinkTarget.classList.toggle(this.hiddenClass, !isChecked);
+  public isWithinSplitScreen():boolean {
+    return window.location.pathname.includes('work_packages/details');
   }
 }
