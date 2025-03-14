@@ -208,7 +208,9 @@ module OpenProject
     # instead of AES-256-CBC, when use_authenticated_message_encryption is set to true.
     Rails.application.config.active_support.use_authenticated_message_encryption = true
 
-    # Use SHA-1 instead of MD5 to generate non-sensitive digests, such as the ETag header.
+    # Use SHA-256 instead of MD5 to generate non-sensitive digests, such as the ETag header.
+    # This will be the default with Rails 7.1. So when config.load_configs is set to 7.1 or above,
+    # this configuration can be removed.
     Rails.application.config.active_support.hash_digest_class = OpenSSL::Digest::SHA256
 
     # This option is not backwards compatible with earlier Rails versions.
