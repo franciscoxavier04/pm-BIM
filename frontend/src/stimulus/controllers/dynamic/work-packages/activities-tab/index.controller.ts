@@ -28,7 +28,7 @@
  * ++
  */
 
-import { BaseController } from './base.controller';
+import { Controller } from '@hotwired/stimulus';
 import {
   ICKEditorInstance,
 } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
@@ -47,21 +47,19 @@ interface CustomEventWithIdParam extends Event {
   };
 }
 
-export default class IndexController extends BaseController {
-  static get values() {
-    return {
-      ...super.values,
-      updateStreamsPath: String,
-      sorting: String,
-      pollingIntervalInMs: Number,
-      filter: String,
-      userId: Number,
-      workPackageId: Number,
-      lastServerTimestamp: String,
-      showConflictFlashMessageUrl: String,
-      unsavedChangesConfirmationMessage: String,
-    };
-  }
+export default class IndexController extends Controller {
+  static values = {
+    updateStreamsPath: String,
+    sorting: String,
+    pollingIntervalInMs: Number,
+    filter: String,
+    userId: Number,
+    workPackageId: Number,
+    notificationCenterPathName: String,
+    lastServerTimestamp: String,
+    showConflictFlashMessageUrl: String,
+    unsavedChangesConfirmationMessage: String,
+  };
 
   static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
 
@@ -79,6 +77,7 @@ export default class IndexController extends BaseController {
   declare lastServerTimestampValue:string;
   declare intervallId:number;
   declare pollingIntervalInMsValue:number;
+  declare notificationCenterPathNameValue:string;
   declare filterValue:string;
   declare userIdValue:number;
   declare workPackageIdValue:number;
@@ -520,6 +519,22 @@ export default class IndexController extends BaseController {
 
   private getActivityAnchorElement(activityAnchorName:AnchorType, activityId:string):HTMLElement | null {
     return document.querySelector(`[data-anchor-${activityAnchorName}-id="${activityId}"]`);
+  }
+
+  // Code Maintenance: Get rid of this JS based view port checks when activities are rendered in fully primierized activity tab in all contexts
+  isMobile():boolean {
+    if (this.isWithinNotificationCenter() || this.isWithinSplitScreen()) {
+      return window.innerWidth < 1013;
+    }
+    return window.innerWidth < 1279;
+  }
+
+  private isWithinNotificationCenter():boolean {
+    return window.location.pathname.includes(this.notificationCenterPathNameValue);
+  }
+
+  private isWithinSplitScreen():boolean {
+    return window.location.pathname.includes('work_packages/details');
   }
 
   private setCssClasses() {

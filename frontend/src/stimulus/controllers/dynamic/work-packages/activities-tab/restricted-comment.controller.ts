@@ -28,15 +28,18 @@
  * ++
  */
 
-import { BaseController } from './base.controller';
+import { Controller } from '@hotwired/stimulus';
+import type IndexController from './index.controller';
 
-export default class RestrictedCommentController extends BaseController {
+export default class RestrictedCommentController extends Controller {
   static targets = ['restrictedCheckbox', 'formContainer', 'learnMoreLink'];
+  static outlets = ['work-packages--activities-tab--index'];
   static classes = ['highlight', 'hidden'];
 
   declare readonly restrictedCheckboxTarget:HTMLInputElement;
   declare readonly formContainerTarget:HTMLElement;
   declare readonly learnMoreLinkTarget:HTMLAnchorElement;
+  declare readonly workPackagesActivitiesTabIndexOutlet:IndexController;
 
   declare readonly highlightClass:string;
   declare readonly hiddenClass:string;
@@ -53,7 +56,7 @@ export default class RestrictedCommentController extends BaseController {
   }
 
   private toggleLearnMoreLink(isChecked:boolean):void {
-    if (this.isMobile()) return; // hidden on mobile
+    if (this.workPackagesActivitiesTabIndexOutlet.isMobile()) return; // hidden on mobile
 
     this.learnMoreLinkTarget.classList.toggle(this.hiddenClass, !isChecked);
   }

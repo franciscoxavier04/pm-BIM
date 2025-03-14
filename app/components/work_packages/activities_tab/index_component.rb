@@ -52,9 +52,9 @@ module WorkPackages
       def wrapper_data_attributes
         {
           test_selector: "op-wp-activity-tab",
-          controller: [base_controller, index_stimulus_controller].join(" "),
+          controller: index_stimulus_controller,
           "application-target": "dynamic",
-          "#{base_controller}-notification-center-path-name-value": notifications_path,
+          "#{index_stimulus_controller}-notification-center-path-name-value": notifications_path,
           "#{index_stimulus_controller}-update-streams-path-value": update_streams_work_package_activities_path(work_package),
           "#{index_stimulus_controller}-sorting-value": journal_sorting,
           "#{index_stimulus_controller}-filter-value": filter,
@@ -68,16 +68,15 @@ module WorkPackages
       end
 
       def add_comment_wrapper_data_attributes
-        stimulus_controller = "work-packages--activities-tab--restricted-comment"
-
         {
           test_selector: "op-work-package-journal--new-comment-component",
-          controller: stimulus_controller,
+          controller: restricted_comment_stimulus_controller,
           "application-target": "dynamic",
-          "#{stimulus_controller}-target": "formContainer",
-          action: "#{index_stimulus_controller}:onSubmit-end@window->#{stimulus_controller}#onSubmitEnd",
-          "#{stimulus_controller}-highlight-class": "work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment", # rubocop:disable Layout/LineLength
-          "#{stimulus_controller}-hidden-class": "d-none"
+          "#{restricted_comment_stimulus_controller}-target": "formContainer",
+          action: "#{index_stimulus_controller}:onSubmit-end@window->#{restricted_comment_stimulus_controller}#onSubmitEnd",
+          "#{restricted_comment_stimulus_controller}-highlight-class": "work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment", # rubocop:disable Layout/LineLength
+          "#{restricted_comment_stimulus_controller}-hidden-class": "d-none",
+          "#{restricted_comment_stimulus_controller}-#{index_stimulus_controller}-outlet": "##{wrapper_key}"
         }
       end
 
@@ -94,8 +93,8 @@ module WorkPackages
         User.current.allowed_in_work_package?(:add_work_package_notes, @work_package)
       end
 
-      def base_controller = "work-packages--activities-tab--base"
       def index_stimulus_controller = "work-packages--activities-tab--index"
+      def restricted_comment_stimulus_controller = "work-packages--activities-tab--restricted-comment"
 
       def unsaved_changes_confirmation_message
         I18n.t("activities.work_packages.activity_tab.unsaved_changes_confirmation_message")
