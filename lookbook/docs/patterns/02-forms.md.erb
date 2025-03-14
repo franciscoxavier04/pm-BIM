@@ -31,16 +31,14 @@ If a form does not use Subhead sections, then there should be a single 'Save' (u
 ## Form width
 
 In Primer, form elements automatically take the width of the container. In certain cases (especially Settings pages),
-full-width input fields will look strange. For those wide settings pages, we introduced [a pattern](./settings_pages)
-that wraps the form into a container with limited width.
+full-width input fields will look strange. For these wide settings pages, we introduced [a pattern](./settings_pages)
+that wraps the form inside container that limits the width of the form.
 
-In any container though the form elements can still limit its own width. A good rule of thumb is to fit the size of the
-fields to the expected length of the user input. Date fields can for example be rather small, as they are limited in
-length. The name of an object on the other hand can be quite long, so the field is expected to be larger. While the
-input field can be limited in width, the caption and validation messages will always extend to the full width of the
-form.
+Individual form elements can however be sized to be smaller than the width the container. A good rule of thumb is to choose a width for a
+field based on the expected length of the user input: date fields can for example be rather short but a name field has the potential to be quite long. While the
+input field can be limited in width, the caption and validation messages will always extend to the full width of the form (or the container, if one is used).
 
-In OpenProject, each form element has its own container. It is thus possible to define the container width for each
+In OpenProject, each form element also has its own container. It is thus possible to define the container width for each
 input with the `:input_width` parameter.
 
 The options are:
