@@ -40,16 +40,20 @@ module OpenProject::OpenIDConnect
 
         user = context.fetch(:user)
 
-        # We clear previous tokens while adding this one to avoid keeping
-        # stale tokens around (and to avoid piling up duplicate IDP tokens)
-        # -> Fresh login causes fresh set of tokens
-        OpenIDConnect::UserTokens::CreateService.new(user).call(
-          access_token: session["omniauth.oidc_access_token"],
-          refresh_token: session["omniauth.oidc_refresh_token"],
-          expires_in: session["omniauth.oidc_expires_in"],
-          known_audiences: [OpenIDConnect::UserToken::IDP_AUDIENCE],
-          clear_previous: true
-        )
+        access_token = session["omniauth.oidc_access_token"]
+
+        if access_token
+          OpenIDConnect::UserTokens::CreateService.new(user).call(
+            access_token:,
+            refresh_token: session["omniauth.oidc_refresh_token"],
+            expires_in: session["omniauth.oidc_expires_in"],
+            known_audiences: [OpenIDConnect::UserToken::IDP_AUDIENCE],
+            # We clear previous tokens while adding this one to avoid keeping
+            # stale tokens around (and to avoid piling up duplicate IDP tokens)
+            # -> Fresh login causes fresh set of tokens
+            clear_previous: true
+          )
+        end
       end
 
       ##
