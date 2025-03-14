@@ -38,6 +38,8 @@ type FilteredSuggestions = Array<{
 
 type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
 
+const COMPLETION_CHARACTER = '/';
+
 export default class PatternInputController extends Controller {
   static targets = [
     'tokenTemplate',
@@ -116,17 +118,17 @@ export default class PatternInputController extends Controller {
     this.setRange();
   }
 
-  input_change() {
+  input_change():void {
     // clean up empty tags from the input
     this.contentTarget.querySelectorAll('span').forEach((element) => element.textContent?.trim() === '' && element.remove());
     this.contentTarget.querySelectorAll('br').forEach((element) => element.remove());
 
     // show suggestions for the current word
     const word = this.currentWord();
-    if (word && word.length > 0) {
-      this.filterSuggestions(word);
-    } else {
+    if (word === null) {
       this.clearSuggestionsFilter();
+    } else {
+      this.filterSuggestions(word);
     }
 
     this.tagInvalidTokens();
@@ -166,13 +168,24 @@ export default class PatternInputController extends Controller {
   }
 
   // Autocomplete events
-  suggestions_select(event:PointerEvent) {
+  suggestions_select(event:PointerEvent):void {
     const target = event.currentTarget as HTMLElement;
+    const token = this.createToken(target.dataset.prop!);
 
-    if (target) {
-      this.insertToken(this.createToken(target.dataset.prop!));
+    if (!this.currentRange) {
+      this.contentTarget.appendChild(token);
       this.clearSuggestionsFilter();
+      return;
     }
+
+    const parentNode = this.currentRange.startContainer.parentNode;
+    if (parentNode !== null && this.isToken(parentNode)) {
+      this.replaceToken(token, parentNode);
+    } else {
+      this.insertToken(token);
+    }
+
+    this.clearSuggestionsFilter();
   }
 
   close_suggestions() {
@@ -189,10 +202,7 @@ export default class PatternInputController extends Controller {
   private setRange():void {
     const selection = document.getSelection();
     if (selection?.rangeCount) {
-      const range = selection.getRangeAt(0);
-      if (range.startContainer.parentNode === this.contentTarget) {
-        this.currentRange = range;
-      }
+      this.currentRange = selection.getRangeAt(0);
     }
   }
 
@@ -263,44 +273,60 @@ export default class PatternInputController extends Controller {
     return this.contentTarget.innerHTML.startsWith('<');
   }
 
+  private replaceToken(newToken:TokenElement, oldToken:TokenElement):void {
+    oldToken.replaceWith(newToken);
+    this.setRealCaretPositionAtNode(newToken);
+    this.updateFormInputValue();
+    this.setRange();
+  }
+
   private insertToken(token:TokenElement) {
-    if (this.currentRange) {
-      const targetNode = this.currentRange.startContainer;
-      const targetOffset = this.currentRange.startOffset;
+    if (!this.currentRange) { return; }
 
-      if (!targetNode.textContent) { return; }
+    const targetNode = this.currentRange.startContainer;
+    const targetOffset = this.currentRange.startOffset;
+    const textContent = targetNode.textContent;
 
-      let pos = targetOffset - 1;
-      while (pos > -1 && !this.isWhitespace(targetNode.textContent.charAt(pos))) { pos -= 1; }
+    if (textContent === null) { return; }
 
-      const wordRange = document.createRange();
-      wordRange.setStart(targetNode, pos + 1);
-      wordRange.setEnd(targetNode, targetOffset);
+    let pos = targetOffset - 1;
+    while (pos > -1 && textContent.charAt(pos) !== COMPLETION_CHARACTER) { pos -= 1; }
 
-      wordRange.deleteContents();
-      wordRange.insertNode(token);
+    const wordRange = document.createRange();
+    wordRange.setStart(targetNode, pos);
+    wordRange.setEnd(targetNode, targetOffset);
 
-      this.setRealCaretPositionAtNode(token);
+    wordRange.deleteContents();
+    wordRange.insertNode(token);
 
-      this.updateFormInputValue();
-      this.setRange();
-
-      // clear suggestions
-      this.clearSuggestionsFilter();
-    } else {
-      this.contentTarget.appendChild(token);
-    }
+    this.setRealCaretPositionAtNode(token);
+    this.updateFormInputValue();
+    this.setRange();
   }
 
   private currentWord():string|null {
     const selection = document.getSelection();
-    if (selection) {
-      return (selection.anchorNode?.textContent?.slice(0, selection.anchorOffset)
-        .split(' ')
-        .pop() as string);
+    if (selection === null) { return null; }
+
+    const anchor = selection.anchorNode;
+    if (anchor === null) { return null; }
+
+    const parent = anchor.parentNode;
+    if (parent === null) { return null; }
+
+    const textContent = anchor.textContent;
+    if (textContent === null) { return null; }
+
+    if (this.isToken(parent)) {
+      return textContent.slice(0, selection.anchorOffset);
     }
 
-    return null;
+    const posKey = textContent.lastIndexOf(COMPLETION_CHARACTER);
+    if (posKey === -1) { return null; }
+
+    // key character is only considered valid, if directly followed by a non-whitespace character
+    const textAfterKey = textContent.slice(posKey + 1, selection.anchorOffset);
+    return textAfterKey.startsWith(' ') ? null : textAfterKey;
   }
 
   private clearSuggestionsFilter():void {
@@ -417,15 +443,15 @@ export default class PatternInputController extends Controller {
     return result.trim();
   }
 
-  private isToken(node:ChildNode):node is TokenElement {
+  private isToken(node:Node):node is TokenElement {
     return this.isElement(node) && node.dataset.role === 'token';
   }
 
-  private isText(node:ChildNode):node is Text {
+  private isText(node:Node):node is Text {
     return node.nodeType === Node.TEXT_NODE;
   }
 
-  private isElement(node:ChildNode):node is HTMLElement {
+  private isElement(node:Node):node is HTMLElement {
     return node.nodeType === Node.ELEMENT_NODE;
   }
 
