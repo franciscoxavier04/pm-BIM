@@ -559,7 +559,9 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     let!(:versions) do
       [
         create(:version, project:, name: "Ringbo 1.0", sharing: "system"),
-        create(:version, project: public_project, name: "Ringbo 2.0", sharing: "system")
+        create(:version, project:, name: "Project 1 only Version"),
+        create(:version, project: public_project, name: "Ringbo 2.0", sharing: "system"),
+        create(:version, project: public_project, name: "Project 2 only Version")
       ]
     end
 
@@ -573,18 +575,14 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     it "filters for the project with the value" do
       load_and_open_filters admin
 
-      # Both versions are available to select, but under a different project
-      projects_page.expect_autocomplete_options_for(
-        version_custom_field,
-        versions.first,
-        grouping: project.name
-      )
-
-      projects_page.expect_autocomplete_options_for(
-        version_custom_field,
-        versions.second,
-        grouping: public_project.name
-      )
+      # Versions are grouped under their respective project
+      versions.group_by { |v| v.project.name }.each do |project_name, versions|
+        projects_page.expect_autocomplete_options_for(
+          version_custom_field,
+          versions.pluck(:name),
+          grouping: project_name
+        )
+      end
 
       projects_page.set_filter(version_custom_field.column_name,
                                version_custom_field.name,
@@ -594,9 +592,9 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
       projects_page.expect_projects_not_listed(development_project)
       projects_page.expect_projects_listed(project)
 
-      # Only the second version is available to select,
-      # because the first one is already selected.
-      projects_page.expect_autocomplete_options_for(version_custom_field, versions[1].name)
+      # The first version is not available to select,
+      # because is already selected.
+      projects_page.expect_autocomplete_options_for(version_custom_field, versions[1..])
     end
   end
 
