@@ -94,7 +94,7 @@ You can copy a direct link to a specific work package comment in OpenProject. To
 
 ![Copy a link to a work package comment in OpenProject](openproject_user_guide_wp_edit_comment_copy_link.png)
 
-### @notification (@mention)
+### @ notification (mention)
 
 You can mention and notify team members via [@notification](../../notifications/). They will receive a notification in OpenProject about the updates (according to their [notification settings](../../../user-guide/notifications/) in the **Account settings**).
 
