@@ -30,7 +30,7 @@ cs:
         overridden_costs: "Přepsané náklady"
         spent: "Strávený čas"
         spent_on: "Datum"
-        logged_by: "Logged by"
+        logged_by: "Zadáno"
       cost_type:
         unit: "Název jednotky"
         unit_plural: "Název Pluralizované jednotky"
@@ -64,9 +64,9 @@ cs:
         other: "Typy nákladů"
       time_entry_activity:
         one: "Time tracking activity"
-        few: "Time tracking activities"
-        many: "Time tracking activities"
-        other: "Time tracking activities"
+        few: "Sledování času"
+        many: "Sledování času"
+        other: "Sledování času"
       rate: "Sazba"
     errors:
       models:
@@ -88,7 +88,7 @@ cs:
   button_add_rate: "Přidat kurz"
   button_log_costs: "Logovat jednotkové náklady"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "Aktivita"
   caption_booked_on_project: "Rezervováno v projektu"
   caption_default: "Výchozí"
   caption_default_rate_history_for: "Výchozí historie sazeb  pro %{user}"
@@ -145,9 +145,9 @@ cs:
   label_valid_from: "Platné od"
   label_yes: "Ano"
   label_time: "Čas"
-  label_cost: "Cost"
-  label_costs: "Costs"
-  label_mandatory_fields: "Mandatory fields"
+  label_cost: "Náklady"
+  label_costs: "Náklady"
+  label_mandatory_fields: "Povinné pole"
   placeholder_activity_select_work_package_first: Nejprve je nutné vybrat pracovní balíček
   notice_something_wrong: "Něco se pokazilo. Zkuste to prosím znovu."
   notice_successful_restore: "Úspěšně obnoveno."

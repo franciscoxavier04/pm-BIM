@@ -7,9 +7,9 @@ he:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: שם
         slug: Unique identifier
-        display_name: Display name
+        display_name: שם תצוגה
         client_id: Client ID
         client_secret: Client secret
         secret: Secret

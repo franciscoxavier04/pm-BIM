@@ -140,7 +140,7 @@ eu:
   label_until: "until"
   label_valid_from: "Valid from"
   label_yes: "Yes"
-  label_time: "Time"
+  label_time: "Ordua"
   label_cost: "Cost"
   label_costs: "Costs"
   label_mandatory_fields: "Mandatory fields"

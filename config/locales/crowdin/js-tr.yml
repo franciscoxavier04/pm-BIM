@@ -360,7 +360,7 @@ tr:
           "15_4":
             standard:
               new_features_html: >
-                Sürüm sizin için çeşitli özellikler ve iyileştirmeler getiriyor, örneğin <br> <ul class="%{list_styling_class}"> <li>Haftalık, iki haftada bir veya özel toplantılarınızı kolaylaştırmak için yinelenen toplantılar planlayın.</li> <li>İlişkiler sekmesinden doğrudan alt iş paketleri oluşturun.</li> <li>Daha iyi ön görüler için zaman çizelgesini PDF dışa aktarımlarına toplamları dahil edin.</li> <li>Daha doğru izleme için alt iş paketlerini maliyet raporlarına dahil edin.</li> <li>Bilinçli zamanlama kararları vermek için önceden gizlenmiş, izin kısıtlamalı ilişkilerin tarihlerini görün.</li> </ul>
+                Bu sürüm size çeşitli özellikler ve iyileştirmeler getiriyor, örneğin: <br> <ul class="%{list_styling_class}"> <li>Otomatik planlama modunu etkinleştirme.</li> <li>Toplantılar için gündem maddesi sonuçları belirleme.</li> <li>Bir iş paketi açıklamasından PDF belgeleri oluşturma.</li> <li>Geliştirilmiş proje listeleri görünümü ile çok sayıda projeyi daha iyi yönetme.</li> <li>Bir yoruma alıntı yaparken kullanıcıyı @ etiketi ile anma.</li> </ul>
     ical_sharing_modal:
       title: "Takvime abone ol"
       inital_setup_error_message: "Veri alınırken bir hata oluştu."

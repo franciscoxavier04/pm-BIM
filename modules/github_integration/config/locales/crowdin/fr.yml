@@ -32,7 +32,7 @@ fr:
     github_updated_at: "Updated at"
     github_login: "GitHub login"
     labels: "Labels"
-    repository: "Repository"
+    repository: "Référentiel"
     changed_files_count: "Changed files"
   button_add_deploy_target: Ajouter un objectif de déploiement
   label_deploy_target: Objectif de déploiement

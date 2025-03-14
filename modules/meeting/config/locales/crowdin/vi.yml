@@ -53,8 +53,8 @@ vi:
         frequency: "Tần suất"
         interval: "Khoảng thời gian"
         start_date: "Bắt đầu vào"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Thời gian bắt đầu"
+        start_time_hour: "Thời gian bắt đầu"
         end_after: "Kết thúc chuỗi họp"
         end_date: "End date"
         iterations: "Số lần xuất hiện"
@@ -70,7 +70,7 @@ vi:
     models:
       recurring_meeting: "Họp định kỳ"
       structured_meeting: "Họp đột xuất"
-      meeting: "Meeting"
+      meeting: "Cuộc họp"
       meeting_agenda_item: "Mục chương trình nghị sự"
       meeting_agenda: "Các ý chính"
       meeting_minutes: "Phút"
@@ -125,7 +125,7 @@ vi:
   label_recurring_meeting_plural: "Họp định kỳ"
   label_template: "Mẫu"
   label_recurring_meeting_view: "Xem chuỗi các cuộc họp"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Mở"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Hủy lần này"
   label_recurring_meeting_delete: "Xóa lần họp"
@@ -224,7 +224,7 @@ vi:
     copied: "Sao chép từ Cuộc họp #%{id}"
     delete_dialog:
       one_time:
-        title: "Delete meeting"
+        title: "Xóa cuộc họp"
         heading: "Delete this meeting?"
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
@@ -286,14 +286,14 @@ vi:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} vào %{time}"
     open:
-      title: "Open"
+      title: "Mở"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Dự kiến"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -301,7 +301,7 @@ vi:
         desc: >
           There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
     delete_dialog:
-      title: "Delete meeting series"
+      title: "Xóa chuỗi các cuộc họp"
       heading: "Permanently delete this meeting series?"
       confirmation_message_html:
         zero: >
@@ -355,7 +355,7 @@ vi:
   label_meeting_created_by: "Được tạo bởi"
   label_meeting_last_updated: "Cập nhật lần cuối"
   label_meeting_reload: "Tải lại"
-  label_meeting_index_today: "Today"
+  label_meeting_index_today: "Hôm nay"
   label_meeting_index_tomorrow: "Tomorrow"
   label_meeting_index_this_week: "Later this week"
   label_meeting_index_later: "Next week and later"
@@ -391,10 +391,10 @@ vi:
   label_meeting_state_closed: "Đã đóng"
   label_meeting_state_closed_html: "<i>Đã đóng</i>"
   label_meeting_state_agenda_created: "Agenda đã tạo"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Dự kiến"
   label_meeting_state_cancelled: "Đã hủy"
   label_meeting_state_skipped: "Đã bỏ qua"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "Đang xử lý"
   label_meeting_reopen_action: "Mở lại cuộc họp"
   label_meeting_close_action: "Đóng cuộc họp"
   label_meeting_in_progress_action: "Mark as in progress"

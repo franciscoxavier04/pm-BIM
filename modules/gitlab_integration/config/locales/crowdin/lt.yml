@@ -22,7 +22,7 @@
 #++
 lt:
   attributes:
-    commit: "Commit"
+    commit: "Patvirtinti"
     gitlab: "GitLab identifier"
     gitlab_avatar_url: "Avatar URL"
     gitlab_email: "GitLab Email"

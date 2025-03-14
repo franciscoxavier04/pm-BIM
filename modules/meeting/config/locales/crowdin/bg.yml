@@ -54,10 +54,10 @@ bg:
         frequency: "Frequency"
         interval: "Interval"
         start_date: "Starts on"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Начален час"
+        start_time_hour: "Начален час"
         end_after: "Meeting series ends"
-        end_date: "End date"
+        end_date: "Крайна дата"
         iterations: "Occurrences"
     errors:
       models:
@@ -71,7 +71,7 @@ bg:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "среща"
       meeting_agenda_item: "Точка от дневния ред"
       meeting_agenda: "Дневен ред"
       meeting_minutes: "Минути"
@@ -114,11 +114,11 @@ bg:
   label_meeting_minutes: "Минути"
   label_meeting_close: "Close"
   label_meeting_open: "Open"
-  label_meeting_index_delete: "Delete"
+  label_meeting_index_delete: "Изтрий"
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Закриване на дневния ред за започване на протокола"
   label_meeting_date_time: "Дата/час"
-  label_meeting_date_and_time: "Date and time"
+  label_meeting_date_and_time: "Дата и час"
   label_meeting_diff: "Разлика"
   label_recurring_meeting: "Recurring meeting"
   label_recurring_meeting_part_of: "Part of a meeting series"
@@ -297,7 +297,7 @@ bg:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Планирано"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -359,7 +359,7 @@ bg:
   label_meeting_created_by: "Created by"
   label_meeting_last_updated: "Last updated"
   label_meeting_reload: "Reload"
-  label_meeting_index_today: "Today"
+  label_meeting_index_today: "Днес"
   label_meeting_index_tomorrow: "Tomorrow"
   label_meeting_index_this_week: "Later this week"
   label_meeting_index_later: "Next week and later"
@@ -395,10 +395,10 @@ bg:
   label_meeting_state_closed: "Затворен"
   label_meeting_state_closed_html: "<i>Closed</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Планирано"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "В изпълнение"
   label_meeting_reopen_action: "Reopen meeting"
   label_meeting_close_action: "Затваряне на срещата"
   label_meeting_in_progress_action: "Mark as in progress"

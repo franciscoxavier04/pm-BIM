@@ -56,7 +56,7 @@ ko:
         start_time: "시작 시간"
         start_time_hour: "시작 시간"
         end_after: "미팅 시리즈 종료"
-        end_date: "End date"
+        end_date: "종료 날짜"
         iterations: "항목"
     errors:
       models:
@@ -70,7 +70,7 @@ ko:
     models:
       recurring_meeting: "반복 미팅"
       structured_meeting: "일회성 미팅"
-      meeting: "Meeting"
+      meeting: "미팅"
       meeting_agenda_item: "의제 항목"
       meeting_agenda: "의제"
       meeting_minutes: "의사록"
@@ -394,7 +394,7 @@ ko:
   label_meeting_state_planned: "계획됨"
   label_meeting_state_cancelled: "취소됨"
   label_meeting_state_skipped: "건너뜀"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "진행 중"
   label_meeting_reopen_action: "미팅 다시 열기"
   label_meeting_close_action: "미팅 닫기"
   label_meeting_in_progress_action: "Mark as in progress"

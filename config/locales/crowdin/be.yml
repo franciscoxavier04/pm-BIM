@@ -38,8 +38,8 @@ be:
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
-        created: "created"
-        commented: "commented"
+        created: "створана"
+        commented: "пракаментавана"
   admin:
     plugins:
       no_results_title_text: Зараз ніякіх плагінаў не ўстаноўлена.
@@ -967,7 +967,7 @@ be:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
+        name: "Імя"
         color: "Color"
       query:
         sums: "Sums"
@@ -1001,7 +1001,7 @@ be:
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
+        remind_at_date: "Дата"
         remind_at_time: "Time"
       reminder_notification:
         notification: "Notification"
@@ -1045,8 +1045,8 @@ be:
         language: "Language"
         last_login_on: "Last login"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Імя"
+        last_name: "Прозвішча"
         first_login: "First login"
         new_password: "New password"
         password_confirmation: "Confirmation"
@@ -1626,7 +1626,7 @@ be:
     actor: "Actor"
     action: "Action"
     author: "Author"
-    avatar: "Avatar"
+    avatar: "Аватар"
     base: "General Error:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"
@@ -1635,9 +1635,9 @@ be:
     comments: "Comment"
     content: "Content"
     color: "Color"
-    creator: "Creator"
+    creator: "Стваральнік"
     created_at: "Created on"
-    custom_field: "Custom field"
+    custom_field: "Карыстальніцкае поле"
     custom_options: "Possible values"
     custom_values: "Карыстальніцкія палі"
     date: "Дата"
@@ -1656,7 +1656,7 @@ be:
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "Імя"
-    filter: "Filter"
+    filter: "Фільтр"
     group: "Group"
     groups: "Groups"
     hexcode: "Hex code"
@@ -2050,7 +2050,7 @@ be:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Дадатковыя звесткі"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2565,7 +2565,7 @@ be:
   label_default: "Default"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "Выдаліць"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
   label_deleted_custom_item: "(deleted item)"
@@ -3858,7 +3858,7 @@ be:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Дадаць"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4170,7 +4170,7 @@ be:
       view: "View"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Дата"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

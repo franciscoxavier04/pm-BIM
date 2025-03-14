@@ -30,7 +30,7 @@ fr:
         overridden_costs: "Coûts outrepassés"
         spent: "Consommé"
         spent_on: "Date"
-        logged_by: "Logged by"
+        logged_by: "Saisi par"
       cost_type:
         unit: "Nom de l'unité"
         unit_plural: "Nom pluriel de l'unité"

@@ -218,7 +218,7 @@ hr:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Za sve projekte
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ hr:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Matični"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -611,10 +611,10 @@ hr:
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projekti"
+        enabled_projects: "Omogućeni projekti"
       settings:
-        tab: "Settings"
+        tab: "Postavke"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -677,8 +677,8 @@ hr:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Podređeni"
+        dates: "Datumi"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -747,10 +747,10 @@ hr:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "se odnose na"
+      label_relates_plural: "se odnose na"
+      label_relates_to_singular: "se odnose na"
+      label_relates_to_plural: "se odnose na"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -766,42 +766,42 @@ hr:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "zabrane pristupa"
+      label_blocks_plural: "zabrane pristupa"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "blokirano od"
+      label_blocked_plural: "blokirano od"
+      label_blocked_by_singular: "blokirano od"
+      label_blocked__by_plural: "blokirano od"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "duplikati"
+      label_duplicates_plural: "duplikati"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "duplicirano od"
+      label_duplicated_plural: "duplicirano od"
+      label_duplicated_by_singular: "duplicirano od"
+      label_duplicated_by_plural: "duplicirano od"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "uključuje"
+      label_includes_plural: "uključuje"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "dio"
+      label_partof_plural: "dio"
+      label_part_of_singular: "dio"
+      label_part_of_plural: "dio"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "zahtijeva"
+      label_requires_plural: "zahtijeva"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Pripadajući radni paket"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Pozivnica
   account:
@@ -864,7 +864,7 @@ hr:
         editable: "Može se uređivati"
         field_format: "Format"
         is_filter: "Koristi se kao filtar"
-        is_for_all: "For all projects"
+        is_for_all: "Za sve projekte"
         is_required: "Obavezno"
         max_length: "Maksimalna duljina"
         min_length: "Minimalna duljina"
@@ -881,7 +881,7 @@ hr:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktivno"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -927,7 +927,7 @@ hr:
           true: "unarchived"
           false: "arhivirano"
         description: "Opis"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Omogućeni moduli"
         identifier: "Identifikator"
         latest_activity_at: "Latest activity at"
         parent: "Potprojekt od"
@@ -958,11 +958,11 @@ hr:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naziv"
+        color: "Boja"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Stupci"
         column_names: "Stupci"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -983,17 +983,17 @@ hr:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "Rezultati"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Pripadajući radni paket"
         to: "Pripadajući radni paket"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Datum"
+        remind_at_time: "Vrijeme"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -1006,7 +1006,7 @@ hr:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalendar"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivnost"
@@ -1025,7 +1025,7 @@ hr:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Korisnik"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"
@@ -1036,8 +1036,8 @@ hr:
         language: "Jezik"
         last_login_on: "Zadnja prijava"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Ime"
+        last_name: "Prezime"
         first_login: "First login"
         new_password: "Nova lozinka"
         password_confirmation: "Potvrda"
@@ -1048,7 +1048,7 @@ hr:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Vremenska zona"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1462,7 +1462,7 @@ hr:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Mora sadržavati znakove sljedećih klasa (najamanje %{min_count} od %{all_count}: %{rules})"
               lowercase: "mala slova (npr. 'a')"
               uppercase: "velika slova (npr. ' A')"
               numeric: "numerički (npr. ' 1')"
@@ -1514,7 +1514,7 @@ hr:
       global_role: "Global role"
       group: "Grupa"
       issue_priority:
-        one: "Priority"
+        one: "Prioritet"
         few: "Priorities"
         other: "Priorities"
       member: "Član"
@@ -1539,7 +1539,7 @@ hr:
         other: "Role"
       status: "Status Radnog paketa"
       token/api:
-        one: Access token
+        one: Pristupni token
         few: Access tokens
         other: Access tokens
       type: "Tip"
@@ -1604,7 +1604,7 @@ hr:
     assignee: "Opunomoćeno"
     attachments: "Prilozi"
     actor: "Actor"
-    action: "Action"
+    action: "Radnja"
     author: "Autor"
     avatar: "Avatar"
     base: "Opća greška:"
@@ -1617,11 +1617,11 @@ hr:
     color: "Boja"
     creator: "Creator"
     created_at: "Izrađeno"
-    custom_field: "Custom field"
+    custom_field: "Prilagođeno polje"
     custom_options: "Moguće vrijednosti"
     custom_values: "Prilagođena polja"
     date: "Datum"
-    dates_interval: "Date range"
+    dates_interval: "Raspon datuma"
     default_columns: "Zadani stupci"
     description: "Opis"
     derived_due_date: "Derived finish date"
@@ -1639,7 +1639,7 @@ hr:
     filter: "Filter"
     group: "Grupa"
     groups: "Grupe"
-    hexcode: "Hex code"
+    hexcode: "Heksadecimalni kod"
     id: "ID"
     is_default: "Zadane vrijednost"
     is_for_all: "Za sve projekte"
@@ -1648,16 +1648,16 @@ hr:
     #kept for backwards compatibility
     issue: "Radni paket"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Komentar"
     lastname: "Prezime"
     login: "Korisničko ime"
     lock_version: "Lock version"
     mail: "Email"
     name: "Naziv"
-    note: "Note"
-    notes: "Notes"
+    note: "Bilješka"
+    notes: "Bilješke"
     number: "Number"
-    options: "Options"
+    options: "Mogućnosti"
     operator: "Operator"
     password: "Lozinka"
     priority: "Prioritet"
@@ -1665,19 +1665,19 @@ hr:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "Obavezno"
     recipient: "Recipient"
     role: "Role"
     roles: "Role"
-    search: "Search"
+    search: "Pretraživanje"
     start_date: "Datum Početka"
     status: "Status"
     state: "State"
     subject: "Predmet"
     slug: "Slug"
     summary: "Sažetak"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Vremenska zona"
+    text: "Tekst"
     title: "Naziv"
     type: "Tip"
     typeahead: "Autocomplete"
@@ -1685,14 +1685,14 @@ hr:
     updated_on: "Ažurirano"
     uploader: "Uploader"
     user: "Korisnik"
-    username: "Username"
-    unit: "Unit"
+    username: "Korisničko ime"
+    unit: "Jedinica"
     value: "Vrijednost"
     values: "Values"
     version: "Verzija"
-    visible: "Visible"
+    visible: "Vidljiv"
     work_package: "Radni paket"
-    work_package_id: "Work package"
+    work_package_id: "Radni paket"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1975,8 +1975,8 @@ hr:
         other: "sata"
       day:
         one: "day"
-        few: "days"
-        other: "days"
+        few: "dani"
+        other: "dani"
   description_active: "Aktivno?"
   description_attachment_toggle: "Prikaži/Sakrij priloge"
   description_autocomplete: >
@@ -2011,7 +2011,7 @@ hr:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Više informacija"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2099,8 +2099,8 @@ hr:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Izvezi"
+      submit: "Izvezi"
       format:
         label: "File format"
         options:
@@ -2123,7 +2123,7 @@ hr:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Izvješće"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
               label: "Gantt chart"
@@ -2135,10 +2135,10 @@ hr:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Dane"
+            weeks: "Tjedne"
+            months: "Mjeseci"
+            quarters: "Kvartali"
         column_width:
           label: "Table column width"
           options:
@@ -2193,7 +2193,7 @@ hr:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Preuzmi
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2526,7 +2526,7 @@ hr:
   label_default: "Zadana vrijednost"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "Obriši"
   label_deleted: "izbrisano"
   label_deleted_custom_field: "(izbrisano prilagođeno polje)"
   label_deleted_custom_item: "(deleted item)"
@@ -2644,7 +2644,7 @@ hr:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Show all registered users"
-  label_show_less: "Show less"
+  label_show_less: "Prikaži manje"
   label_show_more: "Show more"
   label_journal: "Journal"
   label_journal_diff: "Opis uspoređivanja"
@@ -2716,8 +2716,8 @@ hr:
   label_months_from: "mjeseci od"
   label_more: "Više"
   label_more_than_ago: "prije nekoliko dana"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Premjesti stupac lijevo"
+  label_move_column_right: "Premjesti stupac desno"
   label_move_work_package: "Premjesti radni paket"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2742,7 +2742,7 @@ hr:
   label_no_change_option: "(Nema promjene)"
   label_no_data: "Nema podataka za prikaz"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "nema datuma početka"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Ništa za prikazati"
   label_nobody: "nitko"
@@ -2810,7 +2810,7 @@ hr:
   label_project_latest: "Najnoviji projekti"
   label_project_default_type: "Dopusti prazan tip"
   label_project_hierarchy: "Hijerarhija projekta"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projekti"
   label_project_new: "Novi projekt"
   label_project_plural: "Projekti"
   label_project_list_plural: "Project lists"
@@ -2888,10 +2888,10 @@ hr:
   label_show_completed_versions: "Prikažite završene verzije"
   label_columns: "Stupci"
   label_sort: "Sortiraj"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Sortiraj uzlazno"
   label_sort_by: "Sortiraj po %{value}"
   label_sorted_by: "sortirano po %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Sortiraj silazno"
   label_sort_higher: "Pomakni gore"
   label_sort_highest: "Pomakni na vrh"
   label_sort_lower: "Pomakni dolje"
@@ -2920,7 +2920,7 @@ hr:
   label_this_month: "ovaj mjesec"
   label_this_week: "ovog tjedna"
   label_this_year: "ove godine"
-  label_time: "Time"
+  label_time: "Vrijeme"
   label_time_entry_plural: "Utrošeno vrijeme"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Naziv"
@@ -3424,8 +3424,8 @@ hr:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "1 projekt"
+      other: "%{count} projekta"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3817,7 +3817,7 @@ hr:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Dodaj"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4128,7 +4128,7 @@ hr:
       view: "Pregled"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Datum"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

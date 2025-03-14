@@ -57,7 +57,7 @@ da:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Meeting series ends"
-        end_date: "End date"
+        end_date: "Slutdato"
         iterations: "Occurrences"
     errors:
       models:
@@ -71,7 +71,7 @@ da:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "Møde"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Dagsorden"
       meeting_minutes: "Referat"
@@ -114,7 +114,7 @@ da:
   label_meeting_minutes: "Referat"
   label_meeting_close: "Luk"
   label_meeting_open: "Åbn"
-  label_meeting_index_delete: "Delete"
+  label_meeting_index_delete: "Slet"
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Afslut dagsorden og påbegynd referat"
   label_meeting_date_time: "Dato/tidspunkt"
@@ -126,7 +126,7 @@ da:
   label_recurring_meeting_plural: "Recurring meetings"
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Åbn"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
@@ -290,14 +290,14 @@ da:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Open"
+      title: "Åbn"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Planlagte"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -395,10 +395,10 @@ da:
   label_meeting_state_closed: "Lukket"
   label_meeting_state_closed_html: "<i>Closed</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Planlagte"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "Igangværende"
   label_meeting_reopen_action: "Reopen meeting"
   label_meeting_close_action: "Close meeting"
   label_meeting_in_progress_action: "Mark as in progress"

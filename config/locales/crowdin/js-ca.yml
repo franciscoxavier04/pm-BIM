@@ -221,7 +221,7 @@ ca:
             label_maximum_users: "Nombre màxim d'usuaris actius"
             label_starts_at: "Comença el"
             label_expires_at: "Caduca el"
-            label_plan: "Plan"
+            label_plan: "Pla"
             label_additional_features: "Additional features"
             receive_newsletter: Vull rebre el <a target="_blank" href="%{link}">butlletí de notícies</a> d'OpenProject.
             taken_domain: Només hi pot haver una prova gratuïta activa per domini.
@@ -614,7 +614,7 @@ ca:
         assigned: "Assignat a"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Responsable"
         created: "Creat"
         scheduled: "Programat"
         commented: "Comentat"
@@ -644,7 +644,7 @@ ca:
           with_current_filter: "En aquest moment no hi han notificacions en aquesta vista"
         mark_all_read: "Marca tot com a llegit"
         mark_as_read: "Marca com a llegit"
-        text_update_date_by: "%{date} by"
+        text_update_date_by: "%{date} per"
         total_count_warning: "Mostrant el %{newest_count} de notificacions recents. %{more_count} no s'estan mostrant."
         empty_state:
           no_notification: "Sembla que ja estàs al dia."

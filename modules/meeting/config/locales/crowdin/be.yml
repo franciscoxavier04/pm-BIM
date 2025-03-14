@@ -116,7 +116,7 @@ be:
   label_meeting_minutes: "Minutes"
   label_meeting_close: "Зачыніць"
   label_meeting_open: "Open"
-  label_meeting_index_delete: "Delete"
+  label_meeting_index_delete: "Выдаліць"
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Close the agenda to begin the Minutes"
   label_meeting_date_time: "Date/Time"

@@ -57,7 +57,7 @@ sv:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Meeting series ends"
-        end_date: "End date"
+        end_date: "Slutdatum"
         iterations: "Occurrences"
     errors:
       models:
@@ -71,7 +71,7 @@ sv:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "Möte"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Agenda"
       meeting_minutes: "Protokoll"
@@ -126,7 +126,7 @@ sv:
   label_recurring_meeting_plural: "Recurring meetings"
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Öppna"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
@@ -138,7 +138,7 @@ sv:
   label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
   label_recurring_meeting_more_past: "There are %{count} more past meetings."
   label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
-  label_recurring_meeting_show_more: "Show more"
+  label_recurring_meeting_show_more: "Visa mer"
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
@@ -159,7 +159,7 @@ sv:
   label_past_invitations: "Tidigare inbjudningar"
   label_attended: "Attended"
   label_attended_user: "Attended user"
-  label_created_by_me: "Created by me"
+  label_created_by_me: "Skapad av mig"
   label_notify: "Skicka för granskning"
   label_icalendar: "Skicka iCalendar"
   label_icalendar_download: "Download iCalendar event"
@@ -290,14 +290,14 @@ sv:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Open"
+      title: "Öppna"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Planerade"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -395,10 +395,10 @@ sv:
   label_meeting_state_closed: "Stängt"
   label_meeting_state_closed_html: "<i>Closed</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Planerade"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "Pågående"
   label_meeting_reopen_action: "Reopen meeting"
   label_meeting_close_action: "Close meeting"
   label_meeting_in_progress_action: "Mark as in progress"

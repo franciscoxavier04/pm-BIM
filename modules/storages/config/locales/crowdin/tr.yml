@@ -2,8 +2,8 @@ tr:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: İstemci ID
+        client_secret: İstemci gizliliği
       project:
         project_folder_type: Proje klasör tipi
       storages/file_link:
@@ -97,11 +97,11 @@ tr:
       nextcloud_sync_service:
         add_user_to_group: 'Add User to Group:'
         create_folder: 'Managed Project Folder Creation:'
-        ensure_root_folder_permissions: 'Set Base Folder Permissions:'
+        ensure_root_folder_permissions: 'Temel Klasör İzinlerini Ayarlayın:'
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
         remove_user_from_group: 'Remove User from Group:'
-        rename_project_folder: 'Rename managed project Folder:'
+        rename_project_folder: 'Yönetilen proje klasörü isimlendirmesi:'
       one_drive_sync_service:
         create_folder: 'Managed Project Folder Creation:'
         ensure_root_folder_permissions: 'Temel Klasör İzinlerini Ayarlayın:'
@@ -153,7 +153,7 @@ tr:
           attributes:
             create_folder:
               conflict: The %{folder_name} already exists on %{parent_location}.
-              not_found: "%{parent_location} wasn't found."
+              not_found: "%{parent_location} bulunamadı."
             hide_inactive_folders:
               permission_not_set: could not set permissions on %{path}.
             remote_folders:
@@ -383,7 +383,7 @@ tr:
         title: We are setting up your permissions on the project folder.
     page_titles:
       file_storages:
-        delete: Delete file storage
+        delete: Dosya depolama alanını sil
         subtitle: İş paketlerindeki dosyaları yüklemek, bağlamak ve yönetmek için harici bir dosya depolama alanı ekleyin.
       managed_project_folders:
         subtitle: |-

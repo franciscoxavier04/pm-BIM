@@ -54,10 +54,10 @@
         frequency: "Frequency"
         interval: "Interval"
         start_date: "Starts on"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Starttid"
+        start_time_hour: "Starttid"
         end_after: "Meeting series ends"
-        end_date: "End date"
+        end_date: "Sluttdato"
         iterations: "Occurrences"
     errors:
       models:
@@ -71,7 +71,7 @@
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "Møte"
       meeting_agenda_item: "Dagsorden element"
       meeting_agenda: "Saksliste"
       meeting_minutes: "Referat"
@@ -114,11 +114,11 @@
   label_meeting_minutes: "Referat"
   label_meeting_close: "Afslutt"
   label_meeting_open: "Åpne"
-  label_meeting_index_delete: "Delete"
+  label_meeting_index_delete: "Slett"
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Lukk sakslisten for å begynne referatet"
   label_meeting_date_time: "Dato/klokkeslett"
-  label_meeting_date_and_time: "Date and time"
+  label_meeting_date_and_time: "Dato og tid"
   label_meeting_diff: "Forskjell"
   label_recurring_meeting: "Recurring meeting"
   label_recurring_meeting_part_of: "Part of a meeting series"
@@ -126,7 +126,7 @@
   label_recurring_meeting_plural: "Recurring meetings"
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Åpen"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
@@ -138,7 +138,7 @@
   label_recurring_meeting_more_singular: "There is %{count} more scheduled meeting (%{schedule})."
   label_recurring_meeting_more_past: "There are %{count} more past meetings."
   label_recurring_meeting_more_past_singular: "There is %{count} more past meeting."
-  label_recurring_meeting_show_more: "Show more"
+  label_recurring_meeting_show_more: "Vis fler"
   label_recurring_meeting_series_create: "Create meeting series"
   label_recurring_meeting_series_edit: "Edit meeting series"
   label_recurring_meeting_series_delete: "Delete meeting series"
@@ -159,7 +159,7 @@
   label_past_invitations: "Tidligere invitasjoner"
   label_attended: "Attended"
   label_attended_user: "Attended user"
-  label_created_by_me: "Created by me"
+  label_created_by_me: "Opprettet av meg"
   label_notify: "Send till gjennomgang"
   label_icalendar: "Send til iCalendar"
   label_icalendar_download: "Last ned iCalendar-hendelse"
@@ -226,7 +226,7 @@
     copied: "Kopiert fra møte #%{id}"
     delete_dialog:
       one_time:
-        title: "Delete meeting"
+        title: "Slett møte"
         heading: "Delete this meeting?"
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
@@ -290,14 +290,14 @@
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Open"
+      title: "Åpen"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Planlagt"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -359,7 +359,7 @@
   label_meeting_created_by: "Opprettet av"
   label_meeting_last_updated: "Sist oppdatert"
   label_meeting_reload: "Last på nytt"
-  label_meeting_index_today: "Today"
+  label_meeting_index_today: "I dag"
   label_meeting_index_tomorrow: "Tomorrow"
   label_meeting_index_this_week: "Later this week"
   label_meeting_index_later: "Next week and later"
@@ -395,10 +395,10 @@
   label_meeting_state_closed: "Stengt"
   label_meeting_state_closed_html: "<i>Stengt</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Planlagt"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "Under arbeid"
   label_meeting_reopen_action: "Gjenåpne møte"
   label_meeting_close_action: "Lukk møtet"
   label_meeting_in_progress_action: "Mark as in progress"

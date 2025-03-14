@@ -218,7 +218,7 @@ lv:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Visiem projektiem
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -594,7 +594,7 @@ lv:
       no_results_content_text: Pievienot jaunu statusu
       headers:
         is_default: "Default"
-        is_closed: "Closed"
+        is_closed: "Aizvērts"
         is_readonly: "Tikai lasīšana"
         excluded_from_totals: "Excluded from totals"
   themes:
@@ -611,10 +611,10 @@ lv:
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
+        tab: "Projekti"
         enabled_projects: "Enabled projects"
       settings:
-        tab: "Settings"
+        tab: "Iestatījumi"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -677,7 +677,7 @@ lv:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
+        children: "Bērni"
         dates: "Dates"
         predecessors: "Predecessors"
         successors: "Successors"
@@ -801,7 +801,7 @@ lv:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Saistītie pieteikuma tipi"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Ielūgums
   account:
@@ -864,7 +864,7 @@ lv:
         editable: "Rediģējams"
         field_format: "Formāts"
         is_filter: "Izmantot kā filtru"
-        is_for_all: "For all projects"
+        is_for_all: "Visiem projektiem"
         is_required: "Obligāts"
         max_length: "Maksimālais garums"
         min_length: "Minimālais garums"
@@ -881,7 +881,7 @@ lv:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktīvs"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -909,7 +909,7 @@ lv:
         attr_login: "Username attribute"
         attr_mail: "E-pasta atribūts"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Administrators"
         base_dn: "Pamata DN"
         host: "Serveris"
         onthefly: "Automatic user creation"
@@ -927,7 +927,7 @@ lv:
           true: "unarchived"
           false: "arhivēts"
         description: "Apraksts"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Iespējotie moduļi"
         identifier: "Identifikators"
         latest_activity_at: "Latest activity at"
         parent: "Apakšprojekts"
@@ -958,11 +958,11 @@ lv:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nosaukums"
+        color: "Krāsa"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Kolonnas"
         column_names: "Kolonnas"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -986,14 +986,14 @@ lv:
         results: "Results"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Saistītie pieteikuma tipi"
         to: "Saistītie pieteikuma tipi"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Datums"
+        remind_at_time: "Laiks"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -1006,7 +1006,7 @@ lv:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalendārs"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivitāte"
@@ -1025,7 +1025,7 @@ lv:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Lietotāji"
       user:
         admin: "Administrators"
         auth_source: "Authentication source"
@@ -1036,8 +1036,8 @@ lv:
         language: "Valoda"
         last_login_on: "Pēdējā pieslēgšanās"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Vārds"
+        last_name: "Uzvārds"
         first_login: "First login"
         new_password: "Jaunā parole"
         password_confirmation: "Jaunā parole atkārtoti"
@@ -1048,7 +1048,7 @@ lv:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Laika josla"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1462,7 +1462,7 @@ lv:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Jāatbilst šādiem nosacījumiem (vismaz %{min_count} no %{all_count}): %{rules}"
               lowercase: "mazaie burti (piemēram 'a')"
               uppercase: "lielaie burti (piemēram, ' A')"
               numeric: "cipari (piemēram, \"1\")"
@@ -1515,7 +1515,7 @@ lv:
       group: "Group"
       issue_priority:
         zero: "Priorities"
-        one: "Priority"
+        one: "Prioritāte"
         other: "Priorities"
       member: "Member"
       news: "Jaunumi"
@@ -1540,7 +1540,7 @@ lv:
       status: "Work package status"
       token/api:
         zero: Access tokens
-        one: Access token
+        one: Piekļuves pilnvara
         other: Access tokens
       type: "Veids"
       user: "Lietotāji"
@@ -1604,9 +1604,9 @@ lv:
     assignee: "Pašreizējais atbildīgais"
     attachments: "Attachments"
     actor: "Actor"
-    action: "Action"
+    action: "Darbība"
     author: "Autors"
-    avatar: "Avatar"
+    avatar: "Avatārs"
     base: "General Error:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"
@@ -1615,7 +1615,7 @@ lv:
     comments: "Komentârs"
     content: "Content"
     color: "Krāsa"
-    creator: "Creator"
+    creator: "Izveidotājs"
     created_at: "Izveidots"
     custom_field: "Custom field"
     custom_options: "Iespējamās vērtības"
@@ -1632,11 +1632,11 @@ lv:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "E-Pasts"
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "Vārds"
-    filter: "Filter"
+    filter: "Filtrēt"
     group: "Group"
     groups: "Groups"
     hexcode: "Hex code"
@@ -1648,36 +1648,36 @@ lv:
     #kept for backwards compatibility
     issue: "Darba pieteikums"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Komentârs"
     lastname: "Uzvārds"
     login: "Username"
     lock_version: "Lock version"
     mail: "E-Pasts"
     name: "Nosaukums"
     note: "Note"
-    notes: "Notes"
+    notes: "Piezīmes"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "Opcijas"
+    operator: "Operatori"
     password: "Parole"
     priority: "Prioritāte"
     project: "Projekts"
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "Obligāts"
     recipient: "Recipient"
     role: "Loma"
     roles: "Lomas"
-    search: "Search"
+    search: "Meklēšana"
     start_date: "Sākuma datums"
     status: "Statuss"
     state: "State"
     subject: "Nosaukums"
     slug: "Slug"
     summary: "Kopsavilkums"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Laika josla"
+    text: "Teksts"
     title: "Virsraksts"
     type: "Veids"
     typeahead: "Autocomplete"
@@ -1686,13 +1686,13 @@ lv:
     uploader: "Uploader"
     user: "Lietotāji"
     username: "Username"
-    unit: "Unit"
+    unit: "Vienība"
     value: "Vērtība"
     values: "Values"
     version: "Versija"
-    visible: "Visible"
+    visible: "Redzams"
     work_package: "Darba pieteikums"
-    work_package_id: "Work package"
+    work_package_id: "Darba pieteikums"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1974,9 +1974,9 @@ lv:
         one: "stunda"
         other: "stundas"
       day:
-        zero: "days"
+        zero: "dienas"
         one: "day"
-        other: "days"
+        other: "dienas"
   description_active: "Active?"
   description_attachment_toggle: "Show/Hide attachments"
   description_autocomplete: >
@@ -2099,8 +2099,8 @@ lv:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Eksportēt"
+      submit: "Eksportēt"
       format:
         label: "File format"
         options:
@@ -2135,10 +2135,10 @@ lv:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Diena"
+            weeks: "Nedēļa"
+            months: "Mēnesis"
+            quarters: "Ceturksnis"
         column_width:
           label: "Table column width"
           options:
@@ -2517,7 +2517,7 @@ lv:
   label_dashboard: "Informācijas panelis"
   label_database_version: "PostgreSQL version"
   label_date: "Datums"
-  label_date_and_time: "Date and time"
+  label_date_and_time: "Datums un laiks"
   label_date_format: "Date format"
   label_date_from: "From"
   label_date_from_to: "No %{start} līdz %{end}"
@@ -2526,7 +2526,7 @@ lv:
   label_default: "Default"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "Dzēst"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
   label_deleted_custom_item: "(deleted item)"
@@ -2644,7 +2644,7 @@ lv:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Show all registered users"
-  label_show_less: "Show less"
+  label_show_less: "Rādīt mazāk"
   label_show_more: "Show more"
   label_journal: "Journal"
   label_journal_diff: "Description Comparison"
@@ -2716,8 +2716,8 @@ lv:
   label_months_from: "months from"
   label_more: "More"
   label_more_than_ago: "more than days ago"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Pārvietot kolonnu pa kreisi"
+  label_move_column_right: "Pārvietot kolonnu pa labi"
   label_move_work_package: "Move work package"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2726,7 +2726,7 @@ lv:
   label_my_queries: "My custom queries"
   label_name: "Nosaukums"
   label_never: "Nekad"
-  label_new: "New"
+  label_new: "Jauns"
   label_new_features: "New features"
   label_new_statuses_allowed: "New statuses allowed"
   label_news_singular: "Jaunumi"
@@ -2742,7 +2742,7 @@ lv:
   label_no_change_option: "(No change)"
   label_no_data: "Nav dati"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "bez sākuma datuma"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Nav nekas ko parādīt"
   label_nobody: "nobody"
@@ -2765,7 +2765,7 @@ lv:
   label_openproject_website: "OpenProject website"
   label_optional_description: "Apraksts"
   label_options: "Opcijas"
-  label_other: "Other"
+  label_other: "Cits"
   label_overall_activity: "Kopējās darbības"
   label_overview: "Pārskats"
   label_page_title: "Page title"
@@ -2810,7 +2810,7 @@ lv:
   label_project_latest: "Jaunākie projekti"
   label_project_default_type: "Allow empty type"
   label_project_hierarchy: "Projektu hierarhija"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projekti"
   label_project_new: "Jauns projekts"
   label_project_plural: "Projekti"
   label_project_list_plural: "Project lists"
@@ -2888,10 +2888,10 @@ lv:
   label_show_completed_versions: "Rādīt pabeigtas versijas"
   label_columns: "Kolonnas"
   label_sort: "Sort"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Kārtot augošā secībā"
   label_sort_by: "Sort by %{value}"
   label_sorted_by: "sorted by %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Kārtot dilstošā secībā"
   label_sort_higher: "Move up"
   label_sort_highest: "Move to top"
   label_sort_lower: "Move down"
@@ -2920,7 +2920,7 @@ lv:
   label_this_month: "this month"
   label_this_week: "this week"
   label_this_year: "this year"
-  label_time: "Time"
+  label_time: "Laiks"
   label_time_entry_plural: "Pavadīts laiks"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Virsraksts"
@@ -3424,8 +3424,8 @@ lv:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "%{count} projekts"
+      other: "%{count} projekti"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3798,7 +3798,7 @@ lv:
     notifications:
       events_explanation: "Governs for which event an email is sent out. Work packages are excluded from this list as the notifications for them can be configured specifically for every user."
       delay_minutes_explanation: "Email sending can be delayed to allow users with configured in app notification to confirm the notification within the application before a mail is sent out. Users who read a notification within the application will not receive an email for the already read notification."
-    other: "Other"
+    other: "Cits"
     passwords: "Passwords"
     project_attributes:
       heading: "Project attributes"
@@ -3817,7 +3817,7 @@ lv:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Pievienot"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4019,7 +4019,7 @@ lv:
           description: "Order the %{plural} by one or more sorting criteria. You will lose the previous sorting."
   top_menu:
     additional_resources: "Additional resources"
-    getting_started: "Getting started"
+    getting_started: "Uzsākot darbu"
     help_and_support: "Help and support"
   total_progress: "Kopējais progress"
   user:
@@ -4128,7 +4128,7 @@ lv:
       view: "View"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Datums"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

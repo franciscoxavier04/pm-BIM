@@ -89,7 +89,7 @@ ka:
         bim_snippet: "BIM snippet"
         reference_links: "Reference links"
         stage: "Stage"
-        viewpoint: "Viewpoint"
+        viewpoint: "ხედის წერტილი"
     errors:
       models:
         bim/ifc_models/ifc_model:

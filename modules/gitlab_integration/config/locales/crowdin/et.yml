@@ -22,7 +22,7 @@
 #++
 et:
   attributes:
-    commit: "Commit"
+    commit: "Sissekanne"
     gitlab: "GitLab identifier"
     gitlab_avatar_url: "Avatar URL"
     gitlab_email: "GitLab Email"

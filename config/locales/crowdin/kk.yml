@@ -1586,7 +1586,7 @@ kk:
     actor: "Actor"
     action: "Action"
     author: "Author"
-    avatar: "Avatar"
+    avatar: "Аватар"
     base: "General Error:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"

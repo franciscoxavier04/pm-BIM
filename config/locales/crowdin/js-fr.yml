@@ -221,7 +221,7 @@ fr:
             label_maximum_users: "Nombre maximal d’utilisateurs actif"
             label_starts_at: "Commence à"
             label_expires_at: "Expire le"
-            label_plan: "Plan"
+            label_plan: "Abonnement"
             label_additional_features: "Additional features"
             receive_newsletter: Je veux recevoir la <a target="_blank" href="%{link}">newsletter OpenProject</a>.
             taken_domain: Il ne peut y avoir qu'un seul essai actif par domaine.

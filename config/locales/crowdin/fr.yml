@@ -619,13 +619,13 @@ fr:
           caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
           insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
-        tab: "Generate PDF"
+        tab: "Générer un fichier PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "Activer tout"
+            label_disable_all: "Désactiver tout"
   versions:
     overview:
       work_packages_in_archived_projects: "La version est partagée avec les projets archivés qui ont encore des lots de travaux assignés à cette version. Ils sont comptés, mais n'apparaîtront pas dans les vues liées."
@@ -659,15 +659,15 @@ fr:
         title: "No predecessors"
         description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "Jours ouvrés seulement"
       mode:
-        title: "Scheduling mode"
-        automatic: "Automatic"
-        manual: "Manual"
-      show_relations: "Show relations"
+        title: "Mode de planification"
+        automatic: "Automatique"
+        manual: "Manuel"
+      show_relations: "Afficher les relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
+        children: "Enfants"
         dates: "Dates"
         predecessors: "Predecessors"
         successors: "Successors"
@@ -878,7 +878,7 @@ fr:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domain"
+        domain: "Domaine"
         starts_at: "Valable depuis"
         subscriber: "Abonné"
         encoded_token: "Licence Entreprise"
@@ -916,7 +916,7 @@ fr:
           true: "désarchivé"
           false: "archivé"
         description: "Description"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Modules activés"
         identifier: "Identifiant"
         latest_activity_at: "Dernière activité à"
         parent: "Sous-projet de"
@@ -951,7 +951,7 @@ fr:
         color: "Couleur"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Colonnes"
         column_names: "Colonnes"
         relations_to_type_column: "Relations avec %{type}"
         relations_of_type_column: "relations de %{type}"
@@ -959,7 +959,7 @@ fr:
         sort_by: "Sort results by"
         filters: "Filtres"
         timeline_labels: "Étiquettes de chronologie"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "Afficher le diagramme de Gantt"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -967,12 +967,12 @@ fr:
         highlighting_mode: "Highlight mode"
         display_representation: "Display mode"
         show_hierarchies: "Display mode"
-        starred: "Favorite"
+        starred: "Favori"
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        include_subprojects: "Inclure les sous-projets"
+        results: "Résultats"
       relation:
         lag: "Délai"
         from: "Lot de travaux associé"
@@ -995,7 +995,7 @@ fr:
         excluded_from_totals: "Exclure du calcul des totaux dans la hiérarchie"
         default_done_ratio: "% Réalisé"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Calendrier"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Activité"
@@ -1013,8 +1013,8 @@ fr:
         patterns: "Patterns"
       remote_identity:
         auth_source: "Auth Source"
-        integration: "Integration"
-        user: "User"
+        integration: "Intégration"
+        user: "Utilisateur"
       user:
         admin: "Administrateur"
         auth_source: "Sources d'authentification"
@@ -1025,8 +1025,8 @@ fr:
         language: "Langue"
         last_login_on: "Dernière connexion"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Prénom"
+        last_name: "Nom de famille"
         first_login: "First login"
         new_password: "Nouveau mot de passe"
         password_confirmation: "Confirmation"
@@ -1037,10 +1037,10 @@ fr:
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Fuseau horaire"
         mode_guideline: "Certains modes écraseront les couleurs personnalisées du thème pour l'accessibilité et la lisibilité. Pour le thème personnalisé complet, veuillez sélectionner le mode Clair."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Jours ouvrés"
       version:
         effective_date: "Date de fin"
         sharing: "Partage"
@@ -1382,7 +1382,7 @@ fr:
             id:
               format: "%{message}"
               cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              blank: "L'ID ne peut pas être vide."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -1399,7 +1399,7 @@ fr:
               smaller_than_dates: "est plus petit que l'intervalle entre la date de début et la date de fin."
               not_available_for_milestones: "n'est pas disponible pour les lots de travaux de type jalon."
               cannot_be_null: "ne peut pas être définie à NULL car la date de début et la date de fin sont connues."
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "n'est pas une durée valide."
             parent:
               cannot_be_milestone: "ne peut pas être un jalon."
               cannot_be_self_assigned: "ne peut pas être assigné à lui-même."
@@ -1501,7 +1501,7 @@ fr:
       global_role: "Rôle global"
       group: "Groupe"
       issue_priority:
-        one: "Priority"
+        one: "Priorité"
         other: "Priorities"
       member: "Membre"
       news: "Actualités"
@@ -1516,7 +1516,7 @@ fr:
         one: "Liste de projets"
         other: "Listes de projets"
       query: "Requête personnalisée"
-      reminder: "Reminder"
+      reminder: "Rappel"
       role:
         one: "Rôle"
         other: "Rôles"
@@ -1593,13 +1593,13 @@ fr:
     comments: "Commentaire"
     content: "Contenu"
     color: "Couleur"
-    creator: "Creator"
+    creator: "Créateur"
     created_at: "Créé le"
-    custom_field: "Custom field"
+    custom_field: "Champ personnalisé"
     custom_options: "Valeurs possibles"
     custom_values: "Champs personnalisés"
     date: "Date"
-    dates_interval: "Date range"
+    dates_interval: "Plage de dates"
     default_columns: "Colonnes par défaut"
     description: "Description"
     derived_due_date: "Date de fin dérivée"
@@ -1610,14 +1610,14 @@ fr:
     due_date: "Date de fin"
     estimated_hours: "Travail"
     estimated_time: "Travail"
-    email: "Email"
+    email: "E-mail"
     entity_type: "Entity"
     expires_at: "Expire le"
     firstname: "Prénom"
-    filter: "Filter"
+    filter: "Filtrer"
     group: "Groupe"
     groups: "Groupes"
-    hexcode: "Hex code"
+    hexcode: "Code hexadécimal"
     id: "ID"
     is_default: "Valeur par défaut"
     is_for_all: "Pour tous les projets"
@@ -1626,36 +1626,36 @@ fr:
     #kept for backwards compatibility
     issue: "Lot de travaux"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Commentaire"
     lastname: "Nom de famille"
     login: "Nom d'utilisateur"
-    lock_version: "Lock version"
+    lock_version: "Verrouiller la version"
     mail: "E-mail"
     name: "Nom"
     note: "Note"
     notes: "Notes"
     number: "Number"
     options: "Options"
-    operator: "Operator"
+    operator: "Opérateur"
     password: "Mot de passe"
     priority: "Priorité"
     project: "Projet"
     project_ids: "Project IDs"
-    reason: "Reason"
+    reason: "Raison"
     responsible: "Responsable"
-    required: "Required"
+    required: "Obligatoire"
     recipient: "Recipient"
     role: "Rôle"
     roles: "Rôles"
-    search: "Search"
+    search: "Recherche"
     start_date: "Date de début"
     status: "Statut"
     state: "State"
     subject: "Sujet"
     slug: "Slug"
     summary: "Résumé"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Fuseau horaire"
+    text: "Texte"
     title: "Titre"
     type: "Type"
     typeahead: "Autocomplete"
@@ -1663,14 +1663,14 @@ fr:
     updated_on: "Mis à jour le"
     uploader: "Téléversé par"
     user: "Utilisateur"
-    username: "Username"
-    unit: "Unit"
+    username: "Nom d'utilisateur"
+    unit: "Unité"
     value: "Valeur"
     values: "Values"
     version: "Version"
     visible: "Visible"
     work_package: "Lot de travaux"
-    work_package_id: "Work package"
+    work_package_id: "Lot de travaux"
   backup:
     failed: "Échec de la sauvegarde"
     label_backup_token: "Jeton de sauvegarde"
@@ -1982,7 +1982,7 @@ fr:
   enumeration_activities: "Activités de suivi du temps"
   enumeration_work_package_priorities: "Priorités du Lot de Travaux"
   enumeration_reported_project_statuses: "Statuts de projet signalés"
-  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_caption_order_changed: "La commande a été modifiée avec succès."
   enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) pour l’utilisateur '%{value}' a échoué"
   error_can_not_archive_project: "Ce projet ne peut être archivé : %{errors}"
@@ -2152,9 +2152,9 @@ fr:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Générer un fichier PDF
-      submit: Download
+      submit: Télécharger
       templates:
-        label: "Template"
+        label: "Modèle"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
@@ -4331,7 +4331,7 @@ fr:
       connected: "Connecté"
       error: "Erreur"
       failed_authorization: "Échec de l'autorisation"
-      not_connected: "Not connected"
+      not_connected: "Non connecté"
     labels:
       label_oauth_integration: "Intégration OAuth2"
       label_redirect_uri: "URI de redirection"
@@ -4385,7 +4385,7 @@ fr:
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
   enterprise_features:
-    baseline_comparison: Baseline Comparison
+    baseline_comparison: Comparaison de référence
     board_view: Board View
     conditional_highlighting: Conditional Highlighting
     custom_actions: Custom Actions

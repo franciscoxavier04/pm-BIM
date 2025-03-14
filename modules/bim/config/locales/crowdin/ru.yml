@@ -88,8 +88,8 @@ ru:
         bcf_comment: "BCF comment"
         bim_snippet: "BIM snippet"
         reference_links: "Reference links"
-        stage: "Stage"
-        viewpoint: "Viewpoint"
+        stage: "Этап"
+        viewpoint: "Точка просмотра"
     errors:
       models:
         bim/ifc_models/ifc_model:

@@ -216,7 +216,7 @@ da:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: For alle projekter
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -289,7 +289,7 @@ da:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Overordnet"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -601,10 +601,10 @@ da:
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
+        tab: "Projekter"
         enabled_projects: "Enabled projects"
       settings:
-        tab: "Settings"
+        tab: "Indstillinger"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -667,8 +667,8 @@ da:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Underordnede"
+        dates: "Datoer"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -736,10 +736,10 @@ da:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "Forbundet til"
+      label_relates_plural: "Forbundet til"
+      label_relates_to_singular: "Forbundet til"
+      label_relates_to_plural: "Forbundet til"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -755,31 +755,31 @@ da:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "spærringer"
+      label_blocks_plural: "spærringer"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "spærret af"
+      label_blocked_plural: "spærret af"
+      label_blocked_by_singular: "spærret af"
+      label_blocked__by_plural: "spærret af"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "dubletter"
+      label_duplicates_plural: "dubletter"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "duplikeret gennem"
+      label_duplicated_plural: "duplikeret gennem"
+      label_duplicated_by_singular: "duplikeret gennem"
+      label_duplicated_by_plural: "duplikeret gennem"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "inkluderer"
+      label_includes_plural: "inkluderer"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "del af"
+      label_partof_plural: "del af"
+      label_part_of_singular: "del af"
+      label_part_of_plural: "del af"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
       label_requires_singular: "requires"
@@ -790,7 +790,7 @@ da:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Sammenhørende arbejdspakker"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitation
   account:
@@ -853,7 +853,7 @@ da:
         editable: "Redigerbar"
         field_format: "Format"
         is_filter: "Bruges som filter"
-        is_for_all: "For all projects"
+        is_for_all: "For alle projekter"
         is_required: "Påkrævet"
         max_length: "Største længde"
         min_length: "Mindste længde"
@@ -870,7 +870,7 @@ da:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktiv"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -878,7 +878,7 @@ da:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domain"
+        domain: "Domæne"
         starts_at: "Valid since"
         subscriber: "Subscriber"
         encoded_token: "Enterprise support token"
@@ -916,7 +916,7 @@ da:
           true: "unarchived"
           false: "archived"
         description: "Beskrivelse"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Aktiverede moduler"
         identifier: "ID"
         latest_activity_at: "Latest activity at"
         parent: "Delprojekt af"
@@ -947,11 +947,11 @@ da:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Navn"
+        color: "Farve"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Kolonner"
         column_names: "Kolonner"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -972,17 +972,17 @@ da:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "Resultater"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Sammenhørende arbejdspakker"
         to: "Sammenhørende arbejdspakker"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Dato"
+        remind_at_time: "Tidspunkt"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -995,7 +995,7 @@ da:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivivtet"
@@ -1014,7 +1014,7 @@ da:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Bruger"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"
@@ -1025,8 +1025,8 @@ da:
         language: "Sprog"
         last_login_on: "Seneste login"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Fornavn"
+        last_name: "Efternavn"
         first_login: "First login"
         new_password: "Ny adgangskode"
         password_confirmation: "Bekræftelse"
@@ -1037,7 +1037,7 @@ da:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Tidszone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1451,7 +1451,7 @@ da:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Skal indeholde tegn fra følgende klasser (minimum %{min_count} af %{all_count}): %{rules}"
               lowercase: "små bogstaver (f.eks. \"a\")"
               uppercase: "store bogstaver (f.eks. \"A\")"
               numeric: "tal (fx \"1\")"
@@ -1501,7 +1501,7 @@ da:
       global_role: "Global role"
       group: "Gruppe"
       issue_priority:
-        one: "Priority"
+        one: "Prioritet"
         other: "Priorities"
       member: "Medlem"
       news: "Nyheder"
@@ -1522,7 +1522,7 @@ da:
         other: "Rollee"
       status: "Status for arbejdspakke"
       token/api:
-        one: Access token
+        one: Adgangstegn
         other: Access tokens
       type: "Type"
       user: "Bruger"
@@ -1582,7 +1582,7 @@ da:
     assignee: "Tildelt"
     attachments: "Vedhæftninger"
     actor: "Actor"
-    action: "Action"
+    action: "Handling"
     author: "Forfatter"
     avatar: "Avatar"
     base: "Generel fejl:"
@@ -1595,11 +1595,11 @@ da:
     color: "Farve"
     creator: "Creator"
     created_at: "Oprettet den"
-    custom_field: "Custom field"
+    custom_field: "Selvvalgt felt"
     custom_options: "Mulige værdier"
     custom_values: "Selvvalgte felter"
     date: "Dato"
-    dates_interval: "Date range"
+    dates_interval: "Datointerval"
     default_columns: "Forudvalgte kolonner"
     description: "Beskrivelse"
     derived_due_date: "Derived finish date"
@@ -1610,14 +1610,14 @@ da:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "E-mail"
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "Fornavn"
     filter: "Filter"
     group: "Gruppe"
     groups: "Grupper"
-    hexcode: "Hex code"
+    hexcode: "Hex kode"
     id: "Id"
     is_default: "Forhåndsvalgt værdi"
     is_for_all: "For alle projekter"
@@ -1626,16 +1626,16 @@ da:
     #kept for backwards compatibility
     issue: "Arbejdspakke"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Kommentér"
     lastname: "Efternavn"
     login: "Username"
     lock_version: "Lock version"
     mail: "E-mail"
     name: "Navn"
     note: "Note"
-    notes: "Notes"
+    notes: "Kommentarer"
     number: "Number"
-    options: "Options"
+    options: "Muligheder"
     operator: "Operator"
     password: "Adgangskode"
     priority: "Prioritet"
@@ -1643,19 +1643,19 @@ da:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "Påkrævet"
     recipient: "Recipient"
     role: "Rolle"
     roles: "Rollee"
-    search: "Search"
+    search: "Søg"
     start_date: "Start dato"
     status: "Status"
     state: "State"
     subject: "Emne"
     slug: "Slug"
     summary: "Opsummering"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Tidszone"
+    text: "Tekst"
     title: "Titel"
     type: "Type"
     typeahead: "Autocomplete"
@@ -1664,13 +1664,13 @@ da:
     uploader: "Uploader"
     user: "Bruger"
     username: "Username"
-    unit: "Unit"
+    unit: "Enhed"
     value: "Værdi"
     values: "Values"
     version: "Version"
-    visible: "Visible"
+    visible: "Synlig"
     work_package: "Arbejdspakke"
-    work_package_id: "Work package"
+    work_package_id: "Arbejdspakke"
   backup:
     failed: "Backup failed"
     label_backup_token: "Sikkerhedskopiér token"
@@ -1935,7 +1935,7 @@ da:
         other: "timer"
       day:
         one: "day"
-        other: "days"
+        other: "dage"
   description_active: "Aktiv?"
   description_attachment_toggle: "Vis/Skjul vedhæftede"
   description_autocomplete: >
@@ -2058,8 +2058,8 @@ da:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Eksportér"
+      submit: "Eksportér"
       format:
         label: "File format"
         options:
@@ -2082,7 +2082,7 @@ da:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Rapport"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
               label: "Gantt chart"
@@ -2094,10 +2094,10 @@ da:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Dage"
+            weeks: "Uger"
+            months: "Måneder"
+            quarters: "Kvartaler"
         column_width:
           label: "Table column width"
           options:
@@ -2152,7 +2152,7 @@ da:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Hent
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2485,7 +2485,7 @@ da:
   label_default: "Forhåndsvalgt"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "Slet"
   label_deleted: "slettet"
   label_deleted_custom_field: "(slettet selvvalgt felt)"
   label_deleted_custom_item: "(deleted item)"
@@ -2603,7 +2603,7 @@ da:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Show all registered users"
-  label_show_less: "Show less"
+  label_show_less: "Vis mindre"
   label_show_more: "Show more"
   label_journal: "Journal"
   label_journal_diff: "Sammenligning af beskrivelser"
@@ -2675,8 +2675,8 @@ da:
   label_months_from: "måneder fra"
   label_more: "mere"
   label_more_than_ago: "mere end dage siden"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Flyt kolonne til venstre"
+  label_move_column_right: "Flyt kolonne til højre"
   label_move_work_package: "Flyt arbejdspakke"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2700,8 +2700,8 @@ da:
   label_next_week: "Næste uge"
   label_no_change_option: "(Ingen ændringer)"
   label_no_data: "Ingen data at vise"
-  label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_due_date: "ingen slutdato"
+  label_no_start_date: "ingen startdato"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Intet at vise"
   label_nobody: "ingen"
@@ -2769,7 +2769,7 @@ da:
   label_project_latest: "Seneste projekter"
   label_project_default_type: "Tillad tom typebetegnelse"
   label_project_hierarchy: "Projekthierarki"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projekter"
   label_project_new: "Nyt projekt"
   label_project_plural: "Projekter"
   label_project_list_plural: "Project lists"
@@ -2847,10 +2847,10 @@ da:
   label_show_completed_versions: "Vis færdige versioner"
   label_columns: "Kolonner"
   label_sort: "Sorter"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Sorter stigende"
   label_sort_by: "Sorter efter %{value}"
   label_sorted_by: "er sorteret efter %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Sorter faldende"
   label_sort_higher: "Flyt op"
   label_sort_highest: "Flyt til toppen"
   label_sort_lower: "Flyt ned"
@@ -2879,7 +2879,7 @@ da:
   label_this_month: "denne måned"
   label_this_week: "denne uge"
   label_this_year: "dette år"
-  label_time: "Time"
+  label_time: "Tidspunkt"
   label_time_entry_plural: "Anvendt tid"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Titel"
@@ -3381,8 +3381,8 @@ da:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "%{count} projekter"
+      other: "%{count} projekter"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3772,7 +3772,7 @@ da:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Tilføj"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4082,7 +4082,7 @@ da:
       view: "Se"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Dato"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

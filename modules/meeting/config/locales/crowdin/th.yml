@@ -56,7 +56,7 @@ th:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Meeting series ends"
-        end_date: "End date"
+        end_date: "วันสิ้นสุด"
         iterations: "Occurrences"
     errors:
       models:
@@ -70,7 +70,7 @@ th:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "ประชุม"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minutes"
@@ -113,7 +113,7 @@ th:
   label_meeting_minutes: "Minutes"
   label_meeting_close: "ปิด"
   label_meeting_open: "Open"
-  label_meeting_index_delete: "Delete"
+  label_meeting_index_delete: "ลบ"
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Close the agenda to begin the Minutes"
   label_meeting_date_time: "Date/Time"
@@ -394,7 +394,7 @@ th:
   label_meeting_state_planned: "Planned"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "อยู่ระหว่างดำเนินการ"
   label_meeting_reopen_action: "Reopen meeting"
   label_meeting_close_action: "Close meeting"
   label_meeting_in_progress_action: "Mark as in progress"

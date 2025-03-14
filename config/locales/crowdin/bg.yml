@@ -163,7 +163,7 @@ bg:
       OpenProject requires read-only access through a system account to lookup users and groups in your LDAP tree.
       Please specify the bind credentials for that system user in the following section.
     ldap_details: "LDAP details"
-    user_settings: "Attribute mapping"
+    user_settings: "Създаване на карта на атрибути"
     user_settings_legend: |
       The following fields are related to how users are created in OpenProject from LDAP entries and
       what LDAP attributes are used to define the attributes of an OpenProject user (attribute mapping).
@@ -218,7 +218,7 @@ bg:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: За всички проекти
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ bg:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Горна категория"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Търсене в %{app_title}"
@@ -351,7 +351,7 @@ bg:
     settings:
       change_identifier: Промяна на идентификатора
       actions:
-        label_enable_all: "Enable all"
+        label_enable_all: "Разрешете всички"
         label_disable_all: "Disable all"
       activities:
         no_results_title_text: В момента има няма дейности на разположение.
@@ -376,7 +376,7 @@ bg:
       project_custom_fields:
         header:
           title: "Атрибути на проекта"
-          description_html: 'These project attributes will be displayed in your <a href=%{overview_url} target="_blank">project overview page</a> under their respective sections. You can enable or disable individual attributes. Project attributes and sections are defined in the <a href=%{admin_settings_url} target="_blank">administration settings</a> by the administrator of the instance. '
+          description_html: 'Тези атрибути на проекта ще бъдат показани във вашата <a href=%{overview_url} target="_blank">страница за преглед на проекта</a> в съответните им раздели. Можете да активирате или деактивирате отделните атрибути. Атрибутите и разделите на проекта се определят в <a href=%{admin_settings_url} target="_blank">настройките за администриране</a> от администратора на инстанцията. '
         filter:
           label: "Намерете атрибут на проекта"
         actions:
@@ -599,14 +599,14 @@ bg:
       no_results_content_text: Създаване на нов тип
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Конфигурация на формата"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Проекти"
+        enabled_projects: "Активирани проекти"
       settings:
-        tab: "Settings"
+        tab: "Настройки"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -626,7 +626,7 @@ bg:
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
+            label_enable_all: "Разрешете всички"
             label_disable_all: "Disable all"
   versions:
     overview:
@@ -664,13 +664,13 @@ bg:
         title: "Working days only"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Автоматично"
         manual: "Manual"
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Деца"
+        dates: "Дати"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -738,10 +738,10 @@ bg:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "свързани с"
+      label_relates_plural: "свързани с"
+      label_relates_to_singular: "свързани с"
+      label_relates_to_plural: "свързани с"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -757,26 +757,26 @@ bg:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "блокировки"
+      label_blocks_plural: "блокировки"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "блокирано от"
+      label_blocked_plural: "блокирано от"
+      label_blocked_by_singular: "блокирано от"
+      label_blocked__by_plural: "блокирано от"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "дублирания"
+      label_duplicates_plural: "дублирания"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "дублирано от"
+      label_duplicated_plural: "дублирано от"
+      label_duplicated_by_singular: "дублирано от"
+      label_duplicated_by_plural: "дублирано от"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "включва"
+      label_includes_plural: "включва"
       includes_description: "Marks the related work package as including this one with no additional effect"
       label_partof_singular: "part of"
       label_partof_plural: "part of"
@@ -792,7 +792,7 @@ bg:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Свързани работени пакети"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Покана
   account:
@@ -855,7 +855,7 @@ bg:
         editable: "Редактируемо"
         field_format: "Формат"
         is_filter: "Се използва като филтър"
-        is_for_all: "For all projects"
+        is_for_all: "За всички проекти"
         is_required: "Задължително"
         max_length: "Максимална дължина"
         min_length: "Минимална дължина"
@@ -872,7 +872,7 @@ bg:
         secret: "Тайна на клиента"
         owner: "Собственик"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Активен"
         redirect_uri: "Пренасочване на URI"
         client_credentials_user_id: "Клиентски идентификационни данни Потребителски ИД"
         scopes: "Обхвати"
@@ -900,7 +900,7 @@ bg:
         attr_login: "Username attribute"
         attr_mail: "Имейл атрибут"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Администратор"
         base_dn: "Базов DN"
         host: "Хост"
         onthefly: "Automatic user creation"
@@ -918,7 +918,7 @@ bg:
           true: "unarchived"
           false: "archived"
         description: "Описание"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Разрешени модули"
         identifier: "Идентификатор"
         latest_activity_at: "Последна активност на"
         parent: "Подпроект на"
@@ -949,11 +949,11 @@ bg:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Име"
+        color: "Цвят"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Колони"
         column_names: "Колони"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -969,22 +969,22 @@ bg:
         highlighting_mode: "Highlight mode"
         display_representation: "Display mode"
         show_hierarchies: "Display mode"
-        starred: "Favorite"
+        starred: "Любим"
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "Резултати"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Свързани работени пакети"
         to: "Свързани работени пакети"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Дата"
+        remind_at_time: "Час"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -997,7 +997,7 @@ bg:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Календар"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Активност"
@@ -1016,7 +1016,7 @@ bg:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Потребител"
       user:
         admin: "Администратор"
         auth_source: "Authentication source"
@@ -1027,8 +1027,8 @@ bg:
         language: "Език"
         last_login_on: "Последно влизане"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Собствено име"
+        last_name: "Фамилно име"
         first_login: "First login"
         new_password: "Нова парола"
         password_confirmation: "Потвърждение"
@@ -1039,10 +1039,10 @@ bg:
         auto_hide_popups: "Автоматично скриване на успешните известия"
         warn_on_leaving_unsaved: "Предупреждавайте ме при напускане на работен пакет с незаписани промени"
         theme: "Режим"
-        time_zone: "Time zone"
+        time_zone: "Часова зона"
         mode_guideline: "Някои режими ще пренапишат цветовете на персонализираната тема за достъпност и четливост. За пълна персонализирана тема изберете режим Light."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Работни дни"
       version:
         effective_date: "Крайна дата"
         sharing: "Споделяне"
@@ -1453,7 +1453,7 @@ bg:
               confirmation: "Потвърждението на паролата не съвпада с паролата."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Трябва да съдържа знаци от следните класове (най-малко %{min_count} на %{all_count}): %{rules}"
               lowercase: "малки букви (например \"а\")"
               uppercase: "главни (например \"А\")"
               numeric: "цифрова (например ' 1')"
@@ -1503,7 +1503,7 @@ bg:
       global_role: "Global role"
       group: "Група"
       issue_priority:
-        one: "Priority"
+        one: "Приоритет"
         other: "Priorities"
       member: "Член"
       news: "Новини"
@@ -1524,8 +1524,8 @@ bg:
         other: "Роли"
       status: "Статус на работен пакет"
       token/api:
-        one: Access token
-        other: Access tokens
+        one: Маркер за достъп
+        other: Токени за достъп
       type: "Тип"
       user: "Потребител"
       version: "Версия"
@@ -1584,9 +1584,9 @@ bg:
     assignee: "Изпълнител"
     attachments: "Прикачени файлове"
     actor: "Actor"
-    action: "Action"
+    action: "Действие"
     author: "Автор"
-    avatar: "Avatar"
+    avatar: "Аватар"
     base: "Обща грешка:"
     body: "Body"
     blocks_ids: "ИД на блокираните работни пакети"
@@ -1595,13 +1595,13 @@ bg:
     comments: "Коментар"
     content: "Съдържание"
     color: "Цвят"
-    creator: "Creator"
+    creator: "Създател"
     created_at: "Създаден на"
-    custom_field: "Custom field"
+    custom_field: "Потребителски полета"
     custom_options: "Възможните стойности"
     custom_values: "допълнителни полета"
     date: "Дата"
-    dates_interval: "Date range"
+    dates_interval: "Период"
     default_columns: "Колони по подразбиране"
     description: "Описание"
     derived_due_date: "Изведена крайна дата"
@@ -1612,14 +1612,14 @@ bg:
     due_date: "Крайна дата"
     estimated_hours: "Работа"
     estimated_time: "Работа"
-    email: "Email"
+    email: "E-mail"
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "Собствено име"
-    filter: "Filter"
+    filter: "Филтър"
     group: "Група"
     groups: "Групи"
-    hexcode: "Hex code"
+    hexcode: "Шестнадесетичен код"
     id: "ID"
     is_default: "Стойност по подразбиране"
     is_for_all: "За всички проекти"
@@ -1627,37 +1627,37 @@ bg:
     principal: "User or group"
     #kept for backwards compatibility
     issue: "Работен пакет"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "Дневник"
+    journal_notes: "Коментар"
     lastname: "Фамилно име"
     login: "Username"
     lock_version: "Lock version"
     mail: "E-mail"
     name: "Име"
     note: "Note"
-    notes: "Notes"
+    notes: "Бележки"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "Опции"
+    operator: "Оператор"
     password: "Парола"
     priority: "Приоритет"
     project: "Проект"
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "Задължително"
     recipient: "Recipient"
     role: "Роля"
     roles: "Роли"
-    search: "Search"
+    search: "Търсене"
     start_date: "Начална дата"
     status: "Състояние"
     state: "State"
     subject: "Заглавие"
     slug: "Slug"
     summary: "Обобщение"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Часова зона"
+    text: "Текст"
     title: "Заглавие"
     type: "Тип"
     typeahead: "Autocomplete"
@@ -1666,13 +1666,13 @@ bg:
     uploader: "Uploader"
     user: "Потребител"
     username: "Username"
-    unit: "Unit"
+    unit: "Мерна единица"
     value: "Стойност"
     values: "Values"
     version: "Версия"
-    visible: "Visible"
+    visible: "Видимо"
     work_package: "Работен пакет"
-    work_package_id: "Work package"
+    work_package_id: "Работен пакет"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1937,7 +1937,7 @@ bg:
         other: "Часове"
       day:
         one: "day"
-        other: "days"
+        other: "дни"
   description_active: "Активен?"
   description_attachment_toggle: "Показване/скриване на прикачени файлове"
   description_autocomplete: >
@@ -1971,8 +1971,8 @@ bg:
   direction: отляво надясно
   ee:
     upsale:
-      title: "Enterprise add-on"
-      link_title: "More information"
+      title: "Добавка за големи предприятия"
+      link_title: "Повече информация"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2060,8 +2060,8 @@ bg:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Експортиране"
+      submit: "Експортиране"
       format:
         label: "File format"
         options:
@@ -2081,13 +2081,13 @@ bg:
           label: "PDF export type"
           options:
             table:
-              label: "Table"
+              label: "Таблица"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Отчет"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Диаграма на Гант"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2096,10 +2096,10 @@ bg:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Дни"
+            weeks: "Седмици"
+            months: "Месеци"
+            quarters: "Tримесечие"
         column_width:
           label: "Table column width"
           options:
@@ -2154,7 +2154,7 @@ bg:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Изтегли
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2487,7 +2487,7 @@ bg:
   label_default: "По подразбиране"
   label_delete_user: "Изтриване на потребител"
   label_delete_project: "Изтриване на проект"
-  label_delete: "Delete"
+  label_delete: "Изтрий"
   label_deleted: "изтрит"
   label_deleted_custom_field: "(изтрито потребителско поле)"
   label_deleted_custom_item: "(deleted item)"
@@ -2605,7 +2605,7 @@ bg:
   label_share_project_list: "Споделяне на списък с проекти"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Показване на всички регистрирани потребители"
-  label_show_less: "Show less"
+  label_show_less: "Скрии детайли"
   label_show_more: "Show more"
   label_journal: "Дневник"
   label_journal_diff: "Сравнение на описание"
@@ -2642,7 +2642,7 @@ bg:
   label_custom_favicon: "Персонализиран favicon"
   label_custom_touch_icon: "Потребителска икона за докосване"
   label_logout: "Изход"
-  label_mapping_for: "Mapping for: %{attribute}"
+  label_mapping_for: "Картографиране за: %{attribute}"
   label_main_menu: "Главното меню"
   label_manage: "Управление"
   label_manage_groups: "Управление на групи"
@@ -2677,8 +2677,8 @@ bg:
   label_months_from: "месеца от"
   label_more: "Повече"
   label_more_than_ago: "повече от преди дни"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Преместване на колона наляво"
+  label_move_column_right: "Преместете колона надясно"
   label_move_work_package: "Премести работен пакет"
   label_my_account: "Account settings"
   label_my_activity: "Моята дейност"
@@ -2702,8 +2702,8 @@ bg:
   label_next_week: "Следващата седмица"
   label_no_change_option: "(Без промяна)"
   label_no_data: "Няма данни за показване"
-  label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_due_date: "без крайна дата"
+  label_no_start_date: "няма начална дата"
   label_no_parent_page: "Няма родителска страница"
   label_nothing_display: "Нищо за показване"
   label_nobody: "nobody"
@@ -2771,7 +2771,7 @@ bg:
   label_project_latest: "Последни проекти"
   label_project_default_type: "Разреши празни типове"
   label_project_hierarchy: "Йерархия на проекта"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Проекти"
   label_project_new: "Нов проект"
   label_project_plural: "Проекти"
   label_project_list_plural: "Project lists"
@@ -2849,10 +2849,10 @@ bg:
   label_show_completed_versions: "Покажи завършени версии"
   label_columns: "Колони"
   label_sort: "Сортиране"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Cортирай възходящо"
   label_sort_by: "Sort by %{value}"
   label_sorted_by: "сортирани по %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Сортирай низходящо"
   label_sort_higher: "Премести нагоре"
   label_sort_highest: "Премести най-горе"
   label_sort_lower: "Премести надолу"
@@ -2881,7 +2881,7 @@ bg:
   label_this_month: "този месец"
   label_this_week: "тази седмица"
   label_this_year: "тази година"
-  label_time: "Time"
+  label_time: "Час"
   label_time_entry_plural: "Отработено време"
   label_time_entry_activity_plural: "Прекарано време"
   label_title: "Заглавие"
@@ -3383,8 +3383,8 @@ bg:
       archived: "Архивирано"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "1 проект"
+      other: "%{count} проекти"
     destroy:
       confirmation: "Ако продължите, проектът %{identifier} ще бъде окончателно унищожен. За да потвърдите това действие, моля въведете името на проекта в полето по-долу, това ще:"
       project_delete_result_1: "Изтрийте всички свързани данни."
@@ -3776,7 +3776,7 @@ bg:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Добави"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4086,7 +4086,7 @@ bg:
       view: "Изглед"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Дата"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4274,9 +4274,9 @@ bg:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Поверително
       singular: "OAuth application"
-      scopes: "Scopes"
+      scopes: "Обхвати"
       client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"

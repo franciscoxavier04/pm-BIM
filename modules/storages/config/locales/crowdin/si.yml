@@ -2,8 +2,8 @@ si:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: සේවාලාභියා හැඳුනුම්පත
+        client_secret: සේවාලාභියා රහස්
       project:
         project_folder_type: Project folder type
       storages/file_link:

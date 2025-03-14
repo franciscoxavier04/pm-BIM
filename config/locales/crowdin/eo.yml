@@ -218,7 +218,7 @@ eo:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Por ĉiuj projektoj
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ eo:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Patro"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -599,14 +599,14 @@ eo:
       no_results_content_text: Krei novan tipon
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Formulara agordo"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projektoj"
+        enabled_projects: "Ŝaltitaj projektoj"
       settings:
-        tab: "Settings"
+        tab: "Agordoj"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -664,12 +664,12 @@ eo:
         title: "Working days only"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Atomate"
         manual: "Manual"
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
+        children: "Filo"
         dates: "Dates"
         predecessors: "Predecessors"
         successors: "Successors"
@@ -757,31 +757,31 @@ eo:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "blokoj"
+      label_blocks_plural: "blokoj"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "barita de"
+      label_blocked_plural: "barita de"
+      label_blocked_by_singular: "barita de"
+      label_blocked__by_plural: "barita de"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "duobligoj"
+      label_duplicates_plural: "duobligoj"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "Duobligita de"
+      label_duplicated_plural: "Duobligita de"
+      label_duplicated_by_singular: "Duobligita de"
+      label_duplicated_by_plural: "Duobligita de"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "inkludas"
+      label_includes_plural: "inkludas"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "patro de"
+      label_partof_plural: "patro de"
+      label_part_of_singular: "patro de"
+      label_part_of_plural: "patro de"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
       label_requires_singular: "requires"
@@ -790,9 +790,9 @@ eo:
       label_required_singular: "required by"
       label_required_plural: "required by"
       required_description: "Marks this work package as being a requirement to the related one"
-      label_parent_singular: "parent"
-      label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      label_parent_singular: "patra"
+      label_parent_plural: "patra"
+      ghost_relation_title: "Rilata laborpakaĵo"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invito
   account:
@@ -855,7 +855,7 @@ eo:
         editable: "Redaktebla"
         field_format: "Dosierformo"
         is_filter: "Uzita kiel filtrilo"
-        is_for_all: "For all projects"
+        is_for_all: "Por ĉiuj projektoj"
         is_required: "Deviga"
         max_length: "Maksimuma longeco"
         min_length: "Minimuma longeco"
@@ -872,7 +872,7 @@ eo:
         secret: "Sekreto de la kliento"
         owner: "Posedanto"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktiva"
         redirect_uri: "Alidirekti URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -900,7 +900,7 @@ eo:
         attr_login: "Atribuo uzantnomo"
         attr_mail: "Atribuo retpoŝto"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Administranto"
         base_dn: "Bazo DN"
         host: "Gastiganto"
         onthefly: "Automatic user creation"
@@ -918,7 +918,7 @@ eo:
           true: "unarchived"
           false: "archived"
         description: "Priskribo"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Ŝalti modulojn"
         identifier: "Identigilo"
         latest_activity_at: "Lasta aktiveco en"
         parent: "Subprojekto de"
@@ -949,11 +949,11 @@ eo:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nomo"
+        color: "Koloro"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Kolumnoj"
         column_names: "Kolumnoj"
         relations_to_type_column: "Rilatoj kun %{type}"
         relations_of_type_column: "%{type} rilatoj"
@@ -977,13 +977,13 @@ eo:
         results: "Results"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Rilata laborpakaĵo"
         to: "Rilata laborpakaĵo"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
+        remind_at_date: "Dato"
         remind_at_time: "Time"
       reminder_notification:
         notification: "Notification"
@@ -997,7 +997,7 @@ eo:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalendaro"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktiveco"
@@ -1016,7 +1016,7 @@ eo:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Uzanto"
       user:
         admin: "Administranto"
         auth_source: "Authentication source"
@@ -1027,8 +1027,8 @@ eo:
         language: "Lingvo"
         last_login_on: "Lasta ensaluto"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Nomo"
+        last_name: "Familinomo"
         first_login: "First login"
         new_password: "Nova pasvorto"
         password_confirmation: "Konfirmo"
@@ -1039,7 +1039,7 @@ eo:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Horzono"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1503,7 +1503,7 @@ eo:
       global_role: "Global role"
       group: "Grupo"
       issue_priority:
-        one: "Priority"
+        one: "Prioritato"
         other: "Priorities"
       member: "Membro"
       news: "Novaĵoj"
@@ -1524,7 +1524,7 @@ eo:
         other: "Roloj"
       status: "Stato de la Laborpakaĵo"
       token/api:
-        one: Access token
+        one: Atingoĵetono
         other: Access tokens
       type: "Tipo"
       user: "Uzanto"
@@ -1584,7 +1584,7 @@ eo:
     assignee: "Asignita al"
     attachments: "Aldonaĵoj"
     actor: "Actor"
-    action: "Action"
+    action: "Ago"
     author: "Aŭtoro"
     avatar: "Avatar"
     base: "General Error:"
@@ -1597,11 +1597,11 @@ eo:
     color: "Koloro"
     creator: "Creator"
     created_at: "Kreita la"
-    custom_field: "Custom field"
+    custom_field: "Propra kampo"
     custom_options: "Eblaj valoroj"
     custom_values: "Propraj kampoj"
     date: "Dato"
-    dates_interval: "Date range"
+    dates_interval: "Data intervalo"
     default_columns: "Defaŭltaj kolumnoj"
     description: "Priskribo"
     derived_due_date: "Derived finish date"
@@ -1612,14 +1612,14 @@ eo:
     due_date: "Findato"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "Retpoŝto"
     entity_type: "Entity"
     expires_at: "Senvalidiĝas la"
     firstname: "Nomo"
-    filter: "Filter"
+    filter: "Filtrilo"
     group: "Grupo"
     groups: "Grupoj"
-    hexcode: "Hex code"
+    hexcode: "Deksesuma kodo"
     id: "ID"
     is_default: "Defaŭlta valoro"
     is_for_all: "Por ĉiuj projektoj"
@@ -1627,17 +1627,17 @@ eo:
     principal: "User or group"
     #kept for backwards compatibility
     issue: "Laborpakaĵo"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "Protokolo"
+    journal_notes: "Komento"
     lastname: "Familinomo"
     login: "Uzantnomo"
-    lock_version: "Lock version"
+    lock_version: "Ŝlosi version"
     mail: "Retpoŝto"
     name: "Nomo"
     note: "Note"
-    notes: "Notes"
+    notes: "Notoj"
     number: "Number"
-    options: "Options"
+    options: "Opcioj"
     operator: "Operator"
     password: "Pasvorto"
     priority: "Prioritato"
@@ -1645,7 +1645,7 @@ eo:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Respondeculo"
-    required: "Required"
+    required: "Deviga"
     recipient: "Recipient"
     role: "Rolo"
     roles: "Roloj"
@@ -1656,8 +1656,8 @@ eo:
     subject: "Temo"
     slug: "Slug"
     summary: "Resumo"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Horzono"
+    text: "Teksto"
     title: "Titolo"
     type: "Tipo"
     typeahead: "Autocomplete"
@@ -1665,14 +1665,14 @@ eo:
     updated_on: "Ĝisdatigita la"
     uploader: "Alŝutilo"
     user: "Uzanto"
-    username: "Username"
+    username: "Uzantnomo"
     unit: "Unit"
     value: "Valoro"
     values: "Values"
     version: "Versio"
-    visible: "Visible"
+    visible: "Videbla"
     work_package: "Laborpakaĵo"
-    work_package_id: "Work package"
+    work_package_id: "Laborpakaĵo"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1937,7 +1937,7 @@ eo:
         other: "horoj"
       day:
         one: "day"
-        other: "days"
+        other: "tagoj"
   description_active: "Aktiva?"
   description_attachment_toggle: "Vidigi/Kaŝi aldonaĵojn"
   description_autocomplete: >
@@ -1972,7 +1972,7 @@ eo:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Pliaj informoj"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2060,8 +2060,8 @@ eo:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Eksporti"
+      submit: "Eksporti"
       format:
         label: "File format"
         options:
@@ -2081,7 +2081,7 @@ eo:
           label: "PDF export type"
           options:
             table:
-              label: "Table"
+              label: "Tabelo"
               caption: "Export the work packages list in a table with the desired columns."
             report:
               label: "Report"
@@ -2154,7 +2154,7 @@ eo:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Elŝuti
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2487,7 +2487,7 @@ eo:
   label_default: "Defaŭlte"
   label_delete_user: "Forigi uzanton"
   label_delete_project: "Forigi projekton"
-  label_delete: "Delete"
+  label_delete: "Forigi"
   label_deleted: "forigita"
   label_deleted_custom_field: "(propra kampo forigita)"
   label_deleted_custom_item: "(deleted item)"
@@ -2576,7 +2576,7 @@ eo:
   label_here: ĉi tie
   label_hide: "Kaŝi"
   label_history: "Historio"
-  label_hierarchy: "Hierarchy"
+  label_hierarchy: "Hierarkio"
   label_hierarchy_leaf: "Hierarkia folio"
   label_home: "Ĉefpaĝo"
   label_subject_or_id: "Temo aŭ ID"
@@ -2605,7 +2605,7 @@ eo:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Vidigi ĉiujn registritajn uzantojn"
-  label_show_less: "Show less"
+  label_show_less: "Montri malpli"
   label_show_more: "Show more"
   label_journal: "Protokolo"
   label_journal_diff: "Komparo de la priskribo"
@@ -2677,8 +2677,8 @@ eo:
   label_months_from: "monatoj ekde"
   label_more: "Pli"
   label_more_than_ago: "pli da tagoj malantaŭe"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Movi kolumnon maldektren"
+  label_move_column_right: "Movi kolumnon dektren"
   label_move_work_package: "Movi la laborpakaĵon"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2771,7 +2771,7 @@ eo:
   label_project_latest: "Lastaj projektoj"
   label_project_default_type: "Permesi malplenajn tipojn"
   label_project_hierarchy: "Projekta hierarkio"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projektoj"
   label_project_new: "Nova projekto"
   label_project_plural: "Projektoj"
   label_project_list_plural: "Project lists"
@@ -2921,7 +2921,7 @@ eo:
   label_user_settings: "Agordoj de uzanto"
   label_users_settings: "Users settings"
   label_version_new: "New version"
-  label_version_edit: "Edit version"
+  label_version_edit: "Redakti version"
   label_version_plural: "Versioj"
   label_version_sharing_descendants: "With subprojects"
   label_version_sharing_hierarchy: "With project hierarchy"
@@ -3383,8 +3383,8 @@ eo:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "1 projekto"
+      other: "%{count} projektoj"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3776,7 +3776,7 @@ eo:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Aldoni"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4086,7 +4086,7 @@ eo:
       view: "Montri"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Dato"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4274,7 +4274,7 @@ eo:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Konfidenca
       singular: "OAuth aplikaĵo"
       scopes: "Scopes"
       client_credentials: "Client credentials"

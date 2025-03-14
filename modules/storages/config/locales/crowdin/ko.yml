@@ -2,13 +2,13 @@ ko:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: 클라이언트 ID
+        client_secret: 클라이언트 비밀번호
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: 저장소
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,7 +16,7 @@ ko:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: 프로젝트 폴더
         project_folder_mode: Project folder mode
         storage: 저장소
         storage_url: Storage URL

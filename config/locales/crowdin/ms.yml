@@ -611,13 +611,13 @@ ms:
           caption: "Cari atribut atau tambah teks. Untuk mencipta ruang antara elemen, tambahkannya sebagai teks."
           insert_as_text: "Add as text: \"%{word}\""
       export_configuration:
-        tab: "Generate PDF"
+        tab: "Hasilkan PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "Dayakan semua"
+            label_disable_all: "Lumpuhkan semua"
   versions:
     overview:
       work_packages_in_archived_projects: "Versi ini dikongsi dengan projek yang diarkibkan yang masih mempunyai pakej kerja ditugaskan ke versi ini. Ini dikira, tetapi tidak akan muncul dalam paparan yang dipautkan."
@@ -651,15 +651,15 @@ ms:
         title: "No predecessors"
         description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "Hari bekerja sahaja"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Automatik"
         manual: "Manual"
-      show_relations: "Show relations"
+      show_relations: "Paparkan hubungan"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
+        children: "Anak-anak"
         dates: "Dates"
         predecessors: "Predecessors"
         successors: "Successors"
@@ -781,7 +781,7 @@ ms:
       required_description: "Tandakan pakej kerja ini sebagai keperluan kepada yang berkaitan"
       label_parent_singular: "ibu bapa"
       label_parent_plural: "ibu bapa"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Pakej kerja yang berkaitan"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Jemputan
   account:
@@ -907,7 +907,7 @@ ms:
           true: "tidak diarkibkan"
           false: "diarkibkan"
         description: "Deskripsi"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Modul yang diaktifkan"
         identifier: "Pengenal"
         latest_activity_at: "Aktiviti terakhir di"
         parent: "Subprojek kepada"
@@ -938,11 +938,11 @@ ms:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nama"
+        color: "Warna"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Kolum"
         column_names: "Kolum"
         relations_to_type_column: "Berhubung dengan %{type}"
         relations_of_type_column: "%{type} hubungan"
@@ -950,7 +950,7 @@ ms:
         sort_by: "Sort results by"
         filters: "Penyaring"
         timeline_labels: "Label garis masa"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "Paparkan carta Gantt"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -958,15 +958,15 @@ ms:
         highlighting_mode: "Highlight mode"
         display_representation: "Display mode"
         show_hierarchies: "Display mode"
-        starred: "Favorite"
+        starred: "Kegemaran"
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        include_subprojects: "Termasuk subprojek"
+        results: "Keputusan"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Pakej kerja yang berkaitan"
         to: "Pakej kerja yang berkaitan"
         relation_type: "Relation type"
       reminder:
@@ -986,7 +986,7 @@ ms:
         excluded_from_totals: "Dikecualikan daripada pengiraan jumlah dalam hierarki"
         default_done_ratio: "% Lengkap"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalendar"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktiviti"
@@ -1005,7 +1005,7 @@ ms:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Pengguna"
       user:
         admin: "Pentadbir"
         auth_source: "Sumber pengesahan"
@@ -1016,8 +1016,8 @@ ms:
         language: "Bahasa"
         last_login_on: "Log masuk kali terakhir"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Nama pertama"
+        last_name: "Nama akhir"
         first_login: "First login"
         new_password: "Kata laluan baharu"
         password_confirmation: "Pengesahan"
@@ -1028,10 +1028,10 @@ ms:
         auto_hide_popups: "Pemberitahuan kejayaan auto-sembunyi"
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
-        time_zone: "Time zone"
+        time_zone: "Zon waktu"
         mode_guideline: "Sesetengah mod akan menulis ganti warna tema tersuai untuk kebolehaksesan dan kebolehbacaan. Untuk tema tersuai penuh, sila pilih mod Cahaya."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Hari bekerja"
       version:
         effective_date: "Tarikh selesai"
         sharing: "Perkongsian"
@@ -1390,7 +1390,7 @@ ms:
               smaller_than_dates: "adalah lebih kecil daripada selang waktu antara tarikh mula dan akhir."
               not_available_for_milestones: "adalah tidak tersedia untuk pakej kerja jenis pencapaian."
               cannot_be_null: "tidak boleh ditetapkan kepada kosong kerana tarikh mula dan tarikh tamat telah diketahui."
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "bukan jangka masa yang sah."
             parent:
               cannot_be_milestone: "tidak boleh menjadi pencapaian."
               cannot_be_self_assigned: "tidak boleh ditugaskan pada dirinya."
@@ -1502,7 +1502,7 @@ ms:
       project_query:
         other: "Senarai projek"
       query: "Pertanyaan tersuai"
-      reminder: "Reminder"
+      reminder: "Peringatan"
       role:
         other: "Peranan\n"
       status: "Status pakej kerja"
@@ -1562,7 +1562,7 @@ ms:
     assignee: "Penerima tugasan"
     attachments: "Lampiran"
     actor: "Actor"
-    action: "Action"
+    action: "Tindakan"
     author: "Pengarang"
     avatar: "Avatar"
     base: "Ralat Umum:"
@@ -1573,9 +1573,9 @@ ms:
     comments: "Komen"
     content: "Kandungan"
     color: "Warna"
-    creator: "Creator"
+    creator: "Pencipta"
     created_at: "Dicipta pada"
-    custom_field: "Custom field"
+    custom_field: "Ruang tersuai"
     custom_options: "Nilai yang mungkin"
     custom_values: "Ruangan tersuai"
     date: "Tarikh"
@@ -1590,14 +1590,14 @@ ms:
     due_date: "Tarikh tamat"
     estimated_hours: "Kerja"
     estimated_time: "Kerja"
-    email: "Email"
+    email: "E-mel"
     entity_type: "Entity"
     expires_at: "Tamat tempoh pada"
     firstname: "Nama pertama"
-    filter: "Filter"
+    filter: "Penyaring"
     group: "Kumpulan"
     groups: "Kumpulan"
-    hexcode: "Hex code"
+    hexcode: "Kod Hex"
     id: "ID"
     is_default: "Nilai default"
     is_for_all: "Untuk semua projek"
@@ -1605,37 +1605,37 @@ ms:
     principal: "User or group"
     #kept for backwards compatibility
     issue: "Pakej kerja"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "Jurnal"
+    journal_notes: "Komen"
     lastname: "Nama akhir"
     login: "Nama pengguna"
-    lock_version: "Lock version"
+    lock_version: "Versi terkunci"
     mail: "E-mel"
     name: "Nama"
     note: "Nota"
-    notes: "Notes"
+    notes: "Nota-nota"
     number: "Number"
-    options: "Options"
+    options: "Pilihan"
     operator: "Operator"
     password: "Kata Laluan"
     priority: "Keutamaan"
     project: "Projek"
     project_ids: "Project IDs"
-    reason: "Reason"
+    reason: "Sebab"
     responsible: "Bertanggungjawab"
-    required: "Required"
+    required: "Diperlukan"
     recipient: "Recipient"
     role: "Peranan"
     roles: "Peranan\n"
-    search: "Search"
+    search: "Cari"
     start_date: "Tarikh mula"
     status: "Status"
     state: "State"
     subject: "Subjek"
     slug: "Slug"
     summary: "Ringkasan"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Zon waktu"
+    text: "Teks"
     title: "Tajuk"
     type: "Jenis"
     typeahead: "Autocomplete"
@@ -1643,14 +1643,14 @@ ms:
     updated_on: "Dikemas kini pada"
     uploader: "Pemuat naik\n"
     user: "Pengguna"
-    username: "Username"
+    username: "Nama pengguna"
     unit: "Unit"
     value: "Nilai"
     values: "Values"
     version: "Versi"
-    visible: "Visible"
+    visible: "Terlihat"
     work_package: "Pakej kerja"
-    work_package_id: "Work package"
+    work_package_id: "Pakej kerja"
   backup:
     failed: "Sandaran gagal"
     label_backup_token: "Token sandaran"
@@ -1896,7 +1896,7 @@ ms:
       hour:
         other: "jam"
       day:
-        other: "days"
+        other: "hari-hari"
   description_active: "Aktif?"
   description_attachment_toggle: "Paparkan/Sembunyikan lampiran"
   description_autocomplete: >
@@ -2113,9 +2113,9 @@ ms:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Hasilkan PDF
-      submit: Download
+      submit: Muat turun
       templates:
-        label: "Template"
+        label: "templat"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
@@ -2734,7 +2734,7 @@ ms:
   label_project_new: "Projek baharu"
   label_project_plural: "Projek"
   label_project_list_plural: "Senarai projek"
-  label_project_lifecycle: "Project lifecycle"
+  label_project_lifecycle: "Kitaran hayat projek"
   label_project_attributes_plural: "Atribut projek"
   label_project_custom_field_plural: "Atribut projek"
   label_project_settings: "Tetapan projek"
@@ -3339,8 +3339,8 @@ ms:
       archived: "Telah diarkibkan"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "1 projek"
+      other: "%{count} projek"
     destroy:
       confirmation: "Jika anda teruskan, projek %{identifier} tersebut akan dimusnahkan selama-lamanya. Untuk mengesahkan tindakan ini sila perkenalkan nama projek dalam ruang dibawah, ini akan:"
       project_delete_result_1: "Padam semua data berkaitan"
@@ -3730,16 +3730,16 @@ ms:
         heading: "Atribut baharu"
         description: "Perubahan pada atribut projek ini akan dipantulkan ke dalam semua projek di mana ia telah diaktifkan. Atribut yang diperlukan tidak boleh dinyahdayakan berdasarkan setiap projek."
     project_life_cycle_step_definitions:
-      heading: "Project lifecycle"
+      heading: "Kitaran hayat projek"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Tambah"
       label_add_description: "Add lifecycle definition"
-      label_add_stage: "Stage"
-      label_add_gate: "Gate"
+      label_add_stage: "Peringkat"
+      label_add_gate: "Gerbang"
       filter:
-        label: "Search project stage or gate"
-      section_header: "Stages and gates"
-      non_defined: "Neither stages nor gates are currently defined."
+        label: "Cari peringkat projek atau pintu pagar"
+      section_header: "Peringkat dan pintu gerbang"
+      non_defined: "Peringkat mahupun gerbang tidak ditakrifkan pada masa ini."
       new:
         description: "Changes to this project step will be reflected in all projects where it is enabled."
       new_stage:

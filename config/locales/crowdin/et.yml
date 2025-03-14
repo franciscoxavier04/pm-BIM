@@ -218,7 +218,7 @@ et:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Kõikide projektide jaoks
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ et:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Pärineb teemast"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -599,14 +599,14 @@ et:
       no_results_content_text: Create a new type
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Vormi seadistamine"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projektid"
+        enabled_projects: "Lubatud projektid"
       settings:
-        tab: "Settings"
+        tab: "Seaded"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -669,8 +669,8 @@ et:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Lapsed"
+        dates: "Kuupäevad"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -738,10 +738,10 @@ et:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "seotud"
+      label_relates_plural: "seotud"
+      label_relates_to_singular: "seotud"
+      label_relates_to_plural: "seotud"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -757,22 +757,22 @@ et:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "blokeerib"
+      label_blocks_plural: "blokeerib"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "blokeeritud"
+      label_blocked_plural: "blokeeritud"
+      label_blocked_by_singular: "blokeeritud"
+      label_blocked__by_plural: "blokeeritud"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "duplikaadid"
+      label_duplicates_plural: "duplikaadid"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "dubleeris"
+      label_duplicated_plural: "dubleeris"
+      label_duplicated_by_singular: "dubleeris"
+      label_duplicated_by_plural: "dubleeris"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
       label_includes_singular: "includes"
@@ -792,7 +792,7 @@ et:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Seotud teema"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Kutse
   account:
@@ -855,7 +855,7 @@ et:
         editable: "Muudetav"
         field_format: "Formaat"
         is_filter: "Kasutatakse filtrina"
-        is_for_all: "For all projects"
+        is_for_all: "Kõikide projektide jaoks"
         is_required: "Nõutav"
         max_length: "Maksimaalne pikkus"
         min_length: "Lühima lubatud parooli pikkus"
@@ -872,7 +872,7 @@ et:
         secret: "Kliendi salasõna"
         owner: "Omanik"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktiivne"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -900,7 +900,7 @@ et:
         attr_login: "Username attribute"
         attr_mail: "E-posti aadress"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Administraator"
         base_dn: "Põhiline domeeninimi"
         host: "Host"
         onthefly: "Automatic user creation"
@@ -949,11 +949,11 @@ et:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nimi"
+        color: "Värv"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Väljad"
         column_names: "Väljad"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -974,17 +974,17 @@ et:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "Tulemused"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Seotud teema"
         to: "Seotud teema"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Kuupäev"
+        remind_at_time: "Aeg"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -997,7 +997,7 @@ et:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Tegevus"
@@ -1016,7 +1016,7 @@ et:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Kasutaja"
       user:
         admin: "Administraator"
         auth_source: "Authentication source"
@@ -1027,8 +1027,8 @@ et:
         language: "Keel"
         last_login_on: "Viimane sisselogimine"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Eesnimi"
+        last_name: "Perekonnanimi"
         first_login: "First login"
         new_password: "Uus parool"
         password_confirmation: "Kinnitus"
@@ -1039,7 +1039,7 @@ et:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Ajavöönd"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1503,7 +1503,7 @@ et:
       global_role: "Global role"
       group: "Grupp"
       issue_priority:
-        one: "Priority"
+        one: "Prioriteet"
         other: "Priorities"
       member: "Liige"
       news: "Uudised"
@@ -1584,9 +1584,9 @@ et:
     assignee: "Määratud tegija"
     attachments: "Manused"
     actor: "Actor"
-    action: "Action"
+    action: "Tegevus"
     author: "Autor"
-    avatar: "Avatar"
+    avatar: "Profiilipilt"
     base: "Üldine tõrge:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"
@@ -1597,11 +1597,11 @@ et:
     color: "Värv"
     creator: "Creator"
     created_at: "Loodud"
-    custom_field: "Custom field"
+    custom_field: "Lisaväli"
     custom_options: "Võimalikud väärtused"
     custom_values: "Lisaväljad"
     date: "Kuupäev"
-    dates_interval: "Date range"
+    dates_interval: "Kuupäevavahemik"
     default_columns: "Vaikimisi veerud"
     description: "Teave"
     derived_due_date: "Derived finish date"
@@ -1612,14 +1612,14 @@ et:
     due_date: "Lõpetamise kuupäev"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "E-posti aadress"
     entity_type: "Entity"
     expires_at: "Aegub"
     firstname: "Eesnimi"
     filter: "Filter"
     group: "Grupp"
     groups: "Rühmad"
-    hexcode: "Hex code"
+    hexcode: "Hex kood"
     id: "ID"
     is_default: "Vaikeväärtus"
     is_for_all: "Kõikide projektide jaoks"
@@ -1628,36 +1628,36 @@ et:
     #kept for backwards compatibility
     issue: "Tööpakett"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Kommentaar"
     lastname: "Perekonnanimi"
     login: "Kasutajanimi"
     lock_version: "Lock version"
     mail: "E-posti aadress"
     name: "Nimi"
     note: "Note"
-    notes: "Notes"
+    notes: "Märkmed"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "Valikud"
+    operator: "Operaator"
     password: "Parool"
     priority: "Prioriteet"
     project: "Projekt"
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "Nõutav"
     recipient: "Recipient"
     role: "Roll"
     roles: "Rollid"
-    search: "Search"
+    search: "Otsi"
     start_date: "Alguskuupäev"
     status: "Olek"
     state: "State"
     subject: "Teema"
     slug: "Slug"
     summary: "Kokkuvõte"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Ajavöönd"
+    text: "Tekst"
     title: "Pealkiri"
     type: "Tüüp"
     typeahead: "Autocomplete"
@@ -1665,14 +1665,14 @@ et:
     updated_on: "Uuendatud"
     uploader: "Uploader"
     user: "Kasutaja"
-    username: "Username"
-    unit: "Unit"
+    username: "Kasutajanimi"
+    unit: "Ühik"
     value: "Väärtus"
     values: "Values"
     version: "Versioon"
-    visible: "Visible"
+    visible: "Nähtav"
     work_package: "Teema"
-    work_package_id: "Work package"
+    work_package_id: "Teema"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1937,7 +1937,7 @@ et:
         other: "tundi"
       day:
         one: "day"
-        other: "days"
+        other: "päeva"
   description_active: "Aktiivne?"
   description_attachment_toggle: "Kuva/peida manused"
   description_autocomplete: >
@@ -1972,7 +1972,7 @@ et:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Lisainfo"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2060,8 +2060,8 @@ et:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Ekspordi"
+      submit: "Ekspordi"
       format:
         label: "File format"
         options:
@@ -2084,10 +2084,10 @@ et:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Aruanne"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Gantt diagrammi"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2096,10 +2096,10 @@ et:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Päevad"
+            weeks: "Nädalad"
+            months: "Kuud"
+            quarters: "Kvartalid"
         column_width:
           label: "Table column width"
           options:
@@ -2154,7 +2154,7 @@ et:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Laadi alla
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2487,7 +2487,7 @@ et:
   label_default: "Vaikimisi"
   label_delete_user: "Kustuta kasutaja"
   label_delete_project: "Kustuta projekt"
-  label_delete: "Delete"
+  label_delete: "Kustuta"
   label_deleted: "kustutatud"
   label_deleted_custom_field: "(kustutatud lisaväli)"
   label_deleted_custom_item: "(deleted item)"
@@ -2677,8 +2677,8 @@ et:
   label_months_from: "kuu kaugusel"
   label_more: "Rohkem"
   label_more_than_ago: "vanem kui"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Liiguta veerg vasakule"
+  label_move_column_right: "Liiguta veerg paremale"
   label_move_work_package: "Tõsta teema ümber"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2703,7 +2703,7 @@ et:
   label_no_change_option: "(Ei muutu)"
   label_no_data: "Pole"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "alguse kuupäeva pole"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Pole midagi näidata"
   label_nobody: "eikeegi"
@@ -2771,7 +2771,7 @@ et:
   label_project_latest: "Viimased projektid"
   label_project_default_type: "Luba määramata tüüp"
   label_project_hierarchy: "Projekti hierarhia"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projektid"
   label_project_new: "Uus projekt"
   label_project_plural: "Projektid"
   label_project_list_plural: "Project lists"
@@ -2849,10 +2849,10 @@ et:
   label_show_completed_versions: "Näita lõpetatud versioone"
   label_columns: "Veerud"
   label_sort: "Sorteeri"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Sorteeri kasvavalt"
   label_sort_by: "Sorteeri %{value} järgi"
   label_sorted_by: "Sorteeritud %{value} järgi"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Sorteeri kahanevalt"
   label_sort_higher: "Nihuta üles"
   label_sort_highest: "Nihuta esimeseks"
   label_sort_lower: "Nihuta alla"
@@ -2881,7 +2881,7 @@ et:
   label_this_month: "sel kuul"
   label_this_week: "sel nädalal"
   label_this_year: "sel aastal"
-  label_time: "Time"
+  label_time: "Aeg"
   label_time_entry_plural: "Kulutatud aeg"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Pealkiri"
@@ -3383,8 +3383,8 @@ et:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "1 projekt"
+      other: "%{count} projekti"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3776,7 +3776,7 @@ et:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Lisamine"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4086,7 +4086,7 @@ et:
       view: "Kuva"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Kuupäev"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4274,7 +4274,7 @@ et:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Konfidentsiaalne
       singular: "OAuth application"
       scopes: "Scopes"
       client_credentials: "Client credentials"

@@ -30,7 +30,7 @@ ro:
         overridden_costs: "Costuri anulate"
         spent: "Cheltuit"
         spent_on: "Dată"
-        logged_by: "Logged by"
+        logged_by: "Logat ca"
       cost_type:
         unit: "Denumirea unității"
         unit_plural: "Numele unității pluralizate"
@@ -63,8 +63,8 @@ ro:
         other: "Tipuri de costuri"
       time_entry_activity:
         one: "Time tracking activity"
-        few: "Time tracking activities"
-        other: "Time tracking activities"
+        few: "Activități de urmărire timp activate"
+        other: "Activități de urmărire timp activate"
       rate: "Evaluează"
     errors:
       models:
@@ -98,7 +98,7 @@ ro:
   caption_save_rate: "Salvează tarif"
   caption_set_rate: "Setează tarif curent"
   caption_show_locked: "Afișați tipurile blocate"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "Consum timp"
   description_date_for_new_rate: "Dată pentru noul tarif"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -142,9 +142,9 @@ ro:
   label_until: "până la"
   label_valid_from: "Valabil de la"
   label_yes: "Da"
-  label_time: "Time"
+  label_time: "Timp"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Costuri"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ceva n-a mers bine. Vă rugăm să încercați din nou."

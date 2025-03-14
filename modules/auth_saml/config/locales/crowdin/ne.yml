@@ -3,7 +3,7 @@ ne:
     attributes:
       saml/provider:
         display_name: Name
-        identifier: Identifier
+        identifier: परिचायक
         secret: Secret
         scope: Scope
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
@@ -21,7 +21,7 @@ ne:
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Format"
+        format: "ढाँचा"
         icon: "Custom icon"
     errors:
       models:

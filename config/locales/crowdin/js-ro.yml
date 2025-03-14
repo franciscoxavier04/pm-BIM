@@ -613,7 +613,7 @@ ro:
         assigned: "Executant"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Responsabil"
         created: "Creat pe"
         scheduled: "Planificat"
         commented: "Cu comentarii"
@@ -975,7 +975,7 @@ ro:
         percentageDone: "Procent realizat"
         priority: "Prioritate"
         projectName: "Proiect"
-        remainingWork: "Remaining work"
+        remainingWork: "Muncă rămasă"
         remainingWorkAlternative: "Ore"
         responsible: "Responsabil"
         startDate: "Dată început"
@@ -987,9 +987,9 @@ ro:
         updatedAt: "Actualizat pe"
         versionName: "Versiune"
         version: "Versiune"
-        work: "Work"
+        work: "Muncă"
         workAlternative: "Durata estimată"
-        remainingTime: "Remaining work"
+        remainingTime: "Muncă rămasă"
       default_queries:
         manually_sorted: "Interogare nouă sortată manual"
         latest_activity: "Activitate recentă"

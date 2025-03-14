@@ -128,9 +128,9 @@ ru:
     sync_failed: "Не удалось синхронизировать с LDAP: %{message}."
     back_to_index: "Нажмите здесь, чтобы вернуться к списку подключений."
     technical_warning_html: |
-      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      Эта форма LDAP требует технических знаний о Вашей настройке LDAP / Active Directory.
       <br>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Пожалуйста, посетите документацию для получения подробных инструкций</a>.
     attribute_texts:
       name: Произвольное имя подключения LDAP
       host: Имя хоста или IP-адрес LDAP
@@ -138,9 +138,9 @@ ru:
       generic_map: Ключ атрибута в LDAP, сопоставленный с атрибутом OpenProject `%{attribute}`
       admin_map_html: "Необязательно: Ключ атрибута в LDAP, который <strong>при представлении</strong> помечает пользователя администратором. Оставьте пустым, если сомневаетесь."
       system_user_dn_html: |
-        Enter the DN of the system user used for read-only access.
+        Введите DN пользователя системы, используемого для доступа только для чтения.
         <br>
-        Example: uid=openproject,ou=system,dc=example,dc=com
+        Пример: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Введите привязочный пароль системного пользователя
       base_dn: |
         Введите базовый DN поддерева в LDAP, в котором бы OpenProject искал пользователей и групп.
@@ -178,7 +178,7 @@ ru:
     tls_options:
       verify_peer: "Проверка SSL сертификата"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Включает строгую проверку SSL цепочки доверенных сертификатов. <br> <strong>Предупреждение:</strong> Отключение этой опции отключает проверку SSL сертификата сервера LDAP. Это делает ваше соединение уязвимым к атакам "человек посередине".
       tls_certificate_description: "Если сертификат сервера LDAP отсутствует в источниках доверия этой системы, вы можете добавить его вручную. Введите строку сертификации PEM X509."
   forums:
     show:
@@ -1055,7 +1055,7 @@ ru:
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
-        time_zone: "Time zone"
+        time_zone: "Часовой пояс"
         mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
         daily_reminders: "Ежедневные напоминания"
         workdays: "Рабочие дни"
@@ -1669,7 +1669,7 @@ ru:
     journal_notes: "Комментарий"
     lastname: "Фамилия"
     login: "Имя пользователя"
-    lock_version: "Lock version"
+    lock_version: "Блокировать спринт"
     mail: "Электронная почта"
     name: "Имя"
     note: "Заметка"
@@ -1710,7 +1710,7 @@ ru:
     version: "Этапы"
     visible: "Видимый"
     work_package: "Пакет работ"
-    work_package_id: "Work package"
+    work_package_id: "Пакет работ"
   backup:
     failed: "Сбой резервного копирования"
     label_backup_token: "Маркер резервного копирования"

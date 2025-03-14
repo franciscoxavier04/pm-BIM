@@ -7,13 +7,13 @@ ka:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: სახელი
         slug: Unique identifier
-        display_name: Display name
-        client_id: Client ID
-        client_secret: Client secret
-        secret: Secret
-        scope: Scope
+        display_name: საჩვენებელი სახელი
+        client_id: კლიენტის ID
+        client_secret: კლიენტის კოდი
+        secret: საიდუმლო
+        scope: ფარგლები
         grant_types_supported: Supported grant types
         limit_self_registration: Limit self registration
         authorization_endpoint: Authorization endpoint

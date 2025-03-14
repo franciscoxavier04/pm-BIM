@@ -30,7 +30,7 @@ ka:
         overridden_costs: "გადაფარული ფასები"
         spent: "დახარჯული"
         spent_on: "თარიღი"
-        logged_by: "Logged by"
+        logged_by: "ჩანაწერის ავტორი"
       cost_type:
         unit: "ერთეულის სახელი"
         unit_plural: "ერთეულის სახელი მრავლობითში"
@@ -47,11 +47,11 @@ ka:
       user:
         default_rates: "ნაგულისხმევი სიხშირეები"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: პროექტი
+        user: მომხმარებელი
+        work_package: სამუშაო პაკეტი
         hours: საათი
-        comments: Comment
+        comments: კომენტარი
         activity: აქტივობა
         spent_on: თარიღი
         start_time: Start time
@@ -84,7 +84,7 @@ ka:
   button_add_rate: "სიხშირის დამატება"
   button_log_costs: "ერთეულის ფასის ჟურნალი"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "აქტივობა"
   caption_booked_on_project: "Booked on project"
   caption_default: "ნაგულისხმევი"
   caption_default_rate_history_for: "Default rate history for %{user}"
@@ -96,7 +96,7 @@ ka:
   caption_save_rate: "ტარიფის შენახვა"
   caption_set_rate: "Set current rate"
   caption_show_locked: "Show locked types"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "ჟურნალში დროის ჩაწერა"
   description_date_for_new_rate: "Date for new rate"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -134,15 +134,15 @@ ka:
   label_rate: "სიხშირე"
   label_rate_plural: "ტარიფები"
   label_status_finished: "დასრულებულია"
-  label_show: "Show"
+  label_show: "ჩვენება"
   label_units: "ერთეულის ფასი"
   label_user: "მომხმარებელი"
   label_until: "დასასრულის დრო"
   label_valid_from: "Ძალაშია"
   label_yes: "დიახ"
-  label_time: "Time"
+  label_time: "დრო"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "ხარჯები"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "მოხდა შეცდომა. სცადეთ თავიდან."
@@ -165,7 +165,7 @@ ka:
   permission_view_own_time_entries: "View own spent time"
   project_module_costs: "დრო და ღირებულებები"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
+  setting_costs_currency: "ფული"
   setting_costs_currency_format: "Format of currency"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "Assign reported hours and costs to the project"

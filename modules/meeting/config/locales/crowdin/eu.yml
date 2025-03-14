@@ -71,7 +71,7 @@ eu:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "Hitzordua"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Agenda"
       meeting_minutes: "Aktak"
@@ -126,7 +126,7 @@ eu:
   label_recurring_meeting_plural: "Recurring meetings"
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Ireki"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
@@ -290,7 +290,7 @@ eu:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Open"
+      title: "Ireki"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:

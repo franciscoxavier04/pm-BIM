@@ -85,11 +85,11 @@ uk:
         is_default: "Модель за замовчуванням"
         attachments: "Файл IFC"
       bim/bcf/issue:
-        bcf_comment: "BCF comment"
-        bim_snippet: "BIM snippet"
+        bcf_comment: "Коментар BCF"
+        bim_snippet: "Фрагмент BIM"
         reference_links: "Reference links"
-        stage: "Stage"
-        viewpoint: "Viewpoint"
+        stage: "Етап"
+        viewpoint: "Точка огляду"
     errors:
       models:
         bim/ifc_models/ifc_model:

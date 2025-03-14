@@ -9,7 +9,7 @@ lt:
       two_factor_authentication/device:
         identifier: "Identifikatorius"
         default: "Naudoti kaip numatytąjį"
-        channel: "Channel"
+        channel: "Kanalas"
       two_factor_authentication/device/sms:
         phone_number: "Telefono numeris"
       two_factor_authentication/device/webauthn:

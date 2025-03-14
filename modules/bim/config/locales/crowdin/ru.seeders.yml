@@ -252,33 +252,33 @@ ru:
                 item_0:
                   subject: Разработка первого черновика
                   description: |-
-                    ## Goal
+                    ## Цель
 
-                    *   Create a useful overview of the results
-                    *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
-                    *   Identify the fundamental boundary conditions of the project
+                    * Создать полезный обзор результатов
+                    * Проверить, что было сделано, и обобщить результаты
+                    * Сообщить все соответствующие результаты заказчику
+                    * Определить основные граничные условия проекта
 
-                    ## Description
+                    ## Описание
 
-                    *   Each topic gets its own overview which will be used as a catalogue of results
-                    *   This overview informs all participants about the decisions made
-                    *   ...
+                    * Каждая тема получает свой собственный обзор, который будет использоваться в качестве каталога результатов
+                    * Этот обзор информирует всех участников о принятых решениях
+                    * ...
                 item_1:
                   subject: Суммировать результаты
                   description: |-
-                    ## Goal
+                    ## Цель
 
-                    *   Create a useful overview of the results
-                    *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
-                    *   Identify the fundamental boundary conditions of the project
+                    * Создать полезный обзор результатов
+                    * Проверить, что было сделано, и обобщить результаты
+                    * Сообщить все соответствующие результаты заказчику
+                    * Определить основные граничные условия проекта
 
-                    ## Description
+                    ## Описание
 
-                    *   Each topic gets its own overview which will be used as a catalogue of results
-                    *   This overview informs all participants about the decisions made
-                    *   ...
+                    * Каждая тема получает свой собственный обзор, который будет использоваться в качестве каталога результатов
+                    * Этот обзор информирует всех участников о принятых решениях
+                    * ...
             item_3:
               subject: Прохождение предварительного планирования
               description: Этот тип иерархически является родителем типов &quot;Clash&quot; и &quot;Request&quot;, таким образом представляет общую заметку.

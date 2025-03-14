@@ -85,11 +85,11 @@ pt-BR:
         is_default: "Modelo padrão"
         attachments: "Arquivo IFC"
       bim/bcf/issue:
-        bcf_comment: "BCF comment"
-        bim_snippet: "BIM snippet"
-        reference_links: "Reference links"
-        stage: "Stage"
-        viewpoint: "Viewpoint"
+        bcf_comment: "Comentário BCF"
+        bim_snippet: "Snippet do BIM"
+        reference_links: "Link de referência"
+        stage: "Fase"
+        viewpoint: "Ponto de vista"
     errors:
       models:
         bim/ifc_models/ifc_model:

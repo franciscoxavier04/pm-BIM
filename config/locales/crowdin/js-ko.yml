@@ -221,7 +221,7 @@ ko:
             label_maximum_users: "최대 활성 사용자"
             label_starts_at: "시작:"
             label_expires_at: "에서 만료됨"
-            label_plan: "Plan"
+            label_plan: "플랜"
             label_additional_features: "Additional features"
             receive_newsletter: OpenProject <a target="_blank" href="%{link}">뉴스레터</a>를 받아 보겠습니다.
             taken_domain: 도메인당 하나의 활성 평가판만 있어야 합니다.

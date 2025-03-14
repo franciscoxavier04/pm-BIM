@@ -2,13 +2,13 @@ id:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID Pelanggan
+        client_secret: Rahasia klien
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Penyimpanan
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -18,7 +18,7 @@ id:
       storages/project_storage:
         project_folder: Project folder
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: Penyimpanan
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method

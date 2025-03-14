@@ -221,7 +221,7 @@ nl:
             label_maximum_users: "Maximum aantal actieve gebruikers"
             label_starts_at: "Start op"
             label_expires_at: "Verloopt op"
-            label_plan: "Plan"
+            label_plan: "Pakket"
             label_additional_features: "Additional features"
             receive_newsletter: Ik wil de OpenProject <a target="_blank" href="%{link}">nieuwsbrief</a> ontvangen.
             taken_domain: Er kan slechts één actieve proefperiode per domein zijn.
@@ -614,7 +614,7 @@ nl:
         assigned: "Toegewezene"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Verantwoording afleggen"
         created: "Gemaakt"
         scheduled: "Gepland"
         commented: "Becommentarieerd"
@@ -644,7 +644,7 @@ nl:
           with_current_filter: "Er zijn geen meldingen in deze weergave op dit moment"
         mark_all_read: "Alles als gelezen markeren"
         mark_as_read: "Als gelezen markeren"
-        text_update_date_by: "%{date} by"
+        text_update_date_by: "%{date} door"
         total_count_warning: "De %{newest_count} meest recente meldingen weergeven. %{more_count} meer worden niet weergegeven."
         empty_state:
           no_notification: "Het lijkt erop dat u helemaal bij bent."

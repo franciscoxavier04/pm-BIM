@@ -85,11 +85,11 @@ it:
         is_default: "Modello predefinito"
         attachments: "File IFC"
       bim/bcf/issue:
-        bcf_comment: "BCF comment"
-        bim_snippet: "BIM snippet"
-        reference_links: "Reference links"
-        stage: "Stage"
-        viewpoint: "Viewpoint"
+        bcf_comment: "Commento BCF"
+        bim_snippet: "Snippet BIM"
+        reference_links: "Link di riferimento"
+        stage: "Fase"
+        viewpoint: "Punto di vista"
     errors:
       models:
         bim/ifc_models/ifc_model:
