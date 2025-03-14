@@ -1048,8 +1048,11 @@ RSpec.describe WorkPackages::UpdateAncestorsService,
   end
 
   describe "automatic scheduling mode switching" do
+    let(:state) { {} }
+
     subject(:call_result) do
       described_class.new(user:, work_package: initiator_work_package)
+                      .with_state(state)
                       .call(%i(parent))
     end
 
@@ -1164,6 +1167,26 @@ RSpec.describe WorkPackages::UpdateAncestorsService,
 
         # The child is still manually scheduled
         expect(future_child.reload.schedule_manually).to be(true)
+      end
+    end
+
+    context "when a manually scheduled work package becomes parent for the first time, " \
+            "but it's part of a bulk copy in progress" do
+      let_work_packages(<<~TABLE)
+        subject       | scheduling mode
+        future parent | manual
+        future child  | manual
+      TABLE
+      let(:initiator_work_package) { future_child }
+      let(:state) { { bulk_copy_in_progress: true } }
+
+      before do
+        future_child.update!(parent: future_parent)
+      end
+
+      it "keeps the scheduling mode (or it would not be an exact copy anymore)" do
+        expect(call_result).to be_success
+        expect(future_parent.reload.schedule_manually).to be(true)
       end
     end
   end

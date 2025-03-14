@@ -26,16 +26,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class WorkPackages::UpdateAncestorsService
+class WorkPackages::UpdateAncestorsService < BaseServices::BaseCallable
   attr_accessor :user,
                 :initiator_work_package
 
   def initialize(user:, work_package:)
+    super()
     self.user = user
     self.initiator_work_package = work_package
   end
 
-  def call(attributes)
+  def perform(attributes)
     updated_work_packages = update_current_and_former_ancestors(attributes)
 
     set_journal_note(ancestors(updated_work_packages))
@@ -170,6 +171,9 @@ class WorkPackages::UpdateAncestorsService
     # it only applies to the initiator's direct parent
     return if initiator_work_package.parent_id.nil?
     return if initiator_work_package.parent_id != work_package.id
+
+    # it only applies if there is no bulk copy in progress: if it's a copy, the copy must stay exact
+    return if state.bulk_copy_in_progress
 
     # it only applies if the parent is manually scheduled
     return if work_package.schedule_automatically?
