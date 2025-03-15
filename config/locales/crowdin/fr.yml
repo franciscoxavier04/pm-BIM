@@ -617,7 +617,7 @@ fr:
         pattern:
           label: "Modèle de sujet"
           caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
-          insert_as_text: "Add as text: \"%{word}\""
+          insert_as_text: "Ajouter en tant que texte : « %{word} »"
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."
@@ -1381,7 +1381,7 @@ fr:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
+              cannot_add_child_because_of_lack_of_permission: "Impossible d'ajouter un enfant, car vous n'avez pas les permissions pour modifier le lot de travaux sélectionné."
               blank: "L'ID ne peut pas être vide."
             assigned_to:
               format: "%{message}"
@@ -3536,15 +3536,15 @@ fr:
     warnings:
       cannot_annotate: "Ce fichier ne peut pas être annoté."
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "régler sur le mode manuel"
+    automatic: "régler sur le mode automatique"
   search_input_placeholder: "Rechercher…"
-  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url: "Redirection de première connexion"
   setting_after_first_login_redirect_url_text_html: >
-    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
-  setting_after_login_default_redirect_url: "After login redirect"
+    Définissez un chemin pour rediriger les utilisateurs après leur première connexion. S’il est vide, les utilisateurs seront redirigés vers la page d'accueil de la visite d'intégration. <br/> Exemple : <code>/my/page</code>
+  setting_after_login_default_redirect_url: "Après la redirection de connexion"
   setting_after_login_default_redirect_url_text_html: >
-    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
+    Définissez un chemin par défaut pour rediriger les utilisateurs après leur connexion, si aucun lien de retour n'est fourni. Les utilisateurs sont redirigés vers la page d'accueil si ce champ n'est pas défini. <br/> Exemple : <code>/my/page</code>
   setting_apiv3_cors_title: "Partage croisé des ressources (CORS)"
   setting_apiv3_cors_enabled: "Activer CORS"
   setting_apiv3_cors_origins: "Origines autorisées de l'API V3 Cross-Origin Resource Sharing (CORS)"
@@ -4383,28 +4383,28 @@ fr:
     name: "OmniAuth SAML / authentification unique"
     description: "Ajoute le fournisseur SAML OmniAuth à OpenProject"
   enterprise_plans:
-    legacy_enterprise: "Enterprise Plan"
+    legacy_enterprise: "Abonnement Enterprise"
   enterprise_features:
     baseline_comparison: Comparaison de référence
-    board_view: Board View
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation
+    board_view: Vue en tableau
+    conditional_highlighting: Mise en surbrillance conditionnelle
+    custom_actions: Actions personnalisées
+    custom_field_hierarchies: Hiérarchies de champs personnalisés
+    customize_life_cycle: Personnaliser le cycle de vie
+    date_alerts: Alertes de date
+    define_custom_style: Définir un style personnalisé
+    edit_attribute_groups: Modifier les groupes d'attributs
+    gantt_pdf_export: Exportation PDF de diagramme de Gantt
+    grid_widget_wp_graph: Graphique du widget de grille de lot de travaux
+    ldap_groups: Groupes LDAP
+    one_drive_sharepoint_file_storage: Stockage de fichiers OneDrive/SharePoint
+    placeholder_users: Utilisateurs de remplacement
+    project_list_sharing: Partage de liste de projets
+    readonly_work_packages: Lots de travaux en lecture seule
+    sso_auth_providers: Fournisseurs d'authentification SSO
+    team_planner_view: Vue du planificateur d'équipe
+    two_factor_authentication: Authentification à deux facteurs
+    virus_scanning: Analyse des virus des pièces jointes
+    work_package_query_relation_columns: Colonnes de relation de requête de lot de travaux
+    work_package_sharing: Partage de lots de travaux
+    work_package_subject_generation: Génération du sujet du lot de travaux

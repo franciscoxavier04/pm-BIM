@@ -21,19 +21,19 @@
 #++
 fr:
   attributes:
-    additions_count: "Number of additions"
-    deletions_count: "Number of deletions"
-    comments_count: "Comments count"
-    github_html_url: "Pull Request URL"
-    github_app_owner_avatar_url: "Owner avatar URL"
-    review_comments_count: "Review comments count"
-    github: "GitHub identifer"
-    github_avatar_url: "Avatar URL"
-    github_updated_at: "Updated at"
-    github_login: "GitHub login"
-    labels: "Labels"
+    additions_count: "Nombre d'ajouts"
+    deletions_count: "Nombre de suppressions"
+    comments_count: "Nombre de commentaires"
+    github_html_url: "URL de requête pull"
+    github_app_owner_avatar_url: "URL de l'avatar du propriétaire"
+    review_comments_count: "Nombre de commentaires de révision"
+    github: "Identifiant GitHub"
+    github_avatar_url: "URL de l'avatar"
+    github_updated_at: "Mise à jour à"
+    github_login: "Connexion GitHub"
+    labels: "Étiquettes"
     repository: "Référentiel"
-    changed_files_count: "Changed files"
+    changed_files_count: "Fichiers modifiés"
   button_add_deploy_target: Ajouter un objectif de déploiement
   label_deploy_target: Objectif de déploiement
   label_deploy_target_new: Nouvel objectif de déploiement

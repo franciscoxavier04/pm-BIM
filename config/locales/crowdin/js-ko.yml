@@ -361,7 +361,7 @@ ko:
           "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                이 릴리스는 다음과 같은 다양한 기능과 개선 사항을 제공합니다. <br> <ul class="%{list_styling_class}"> <li>자동 스케줄링 모드를 활성화합니다.</li> <li>미팅에 대한 의제 항목 결과를 설정합니다.</li> <li>작업 패키지 설명에서 PDF 문서를 생성합니다.</li> <li>향상된 프로젝트 목록 보기로 다수의 프로젝트 관리를 개선합니다.</li> <li>코멘트에 대한 답변을 인용할 때 @를 사용하여 사용자를 멘션합니다.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."
