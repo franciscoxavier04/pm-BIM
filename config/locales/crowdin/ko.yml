@@ -3487,8 +3487,8 @@ ko:
     warnings:
       cannot_annotate: "이 파일에는 주석을 지정할 수 없습니다."
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "수동으로 설정"
+    automatic: "자동으로 설정"
   search_input_placeholder: "검색..."
   setting_after_first_login_redirect_url: "첫 번째 로그인 리디렉션"
   setting_after_first_login_redirect_url_text_html: >
@@ -4340,7 +4340,7 @@ ko:
     conditional_highlighting: 조건부 강조 표시
     custom_actions: 사용자 지정 작업
     custom_field_hierarchies: 사용자 지정 필드 계층
-    customize_life_cycle: Customize Life Cycle
+    customize_life_cycle: 수명 주기 사용자 지정
     date_alerts: 날짜 알림
     define_custom_style: 사용자 지정 스타일 정의
     edit_attribute_groups: 특성 그룹 편집
@@ -4356,5 +4356,5 @@ ko:
     two_factor_authentication: 2단계 인증
     virus_scanning: 첨부 파일 바이러스 검사
     work_package_query_relation_columns: 작업 패키지 쿼리 관계 열
-    work_package_sharing: Work Package Sharing
+    work_package_sharing: 작업 패키지 공유
     work_package_subject_generation: 작업 패키지 제목 생성

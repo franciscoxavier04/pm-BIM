@@ -735,17 +735,17 @@ ro:
       settings:
         daily:
           add_time: "Adaugă timp"
-          enable: "Activează memento-urile zilnice prin e-mail"
-          explanation: "Veţi primi aceste memento-uri numai pentru notificările necitite şi numai la câteva ore specificate. %{no_time_zone}"
+          enable: "Activează reamintirile zilnice prin e-mail"
+          explanation: "Vei primi aceste reamintiri numai pentru notificările necitite și numai la câteva ore specificate. %{no_time_zone}"
           no_time_zone: "Până când configurezi un fus orar pentru contul tău, orele vor fi interpretate ca fiind în UTC."
           time_label: "Timp %{counter}:"
-          title: "Trimite-mi memento-uri zilnice prin e-mail pentru notificări necitite"
+          title: "Trimite-mi reamintiri zilnice prin e-mail pentru notificările necitite"
         workdays:
-          title: "Primiți memento-uri prin e-mail în aceste zile"
+          title: "Primește reamintiri prin e-mail în aceste zile"
         immediate:
           title: "Trimiteți-mi un e-mail de reamintire"
           mentioned: "Imediat când cineva mă @menționează"
-          personal_reminder: "Immediately when I receive a personal reminder"
+          personal_reminder: "Imediat când primesc reamintiri personale"
         alerts:
           title: "Alerte prin e-mail pentru alte elemente (care nu sunt pachete de lucru)"
           explanation: >
@@ -758,9 +758,9 @@ ro:
           wiki_page_updated: "Pagină wiki actualizată"
           membership_added: "Adaugă membri"
           membership_updated: "Membrii actualizați"
-        title: "E-mail memento-uri"
+        title: "Reamintiri e-mail"
         pause:
-          label: "Întrerupeți temporar memento-urile zilnice prin e-mail"
+          label: "Întrerupe temporar reamintirile zilnice prin e-mail"
           first_day: "Prima zi"
           last_day: "Ultima zi"
     text_are_you_sure: "Ești sigur?"
