@@ -667,7 +667,7 @@ es:
       show_relations: "Mostrar relaciones"
       tabs:
         aria_label: "Pestañas del selector de fechas"
-        children: "Sub-elementos"
+        children: "Elementos secundarios"
         dates: "Fechas"
         predecessors: "Predecesores"
         successors: "Sucesores"
@@ -916,7 +916,7 @@ es:
           true: "desarchivado"
           false: "archivado"
         description: "Descripción"
-        enabled_modules: "Habilitar módulos"
+        enabled_modules: "Módulos activados"
         identifier: "Identificador"
         latest_activity_at: "Última actividad en"
         parent: "Subproyecto de"
@@ -1026,7 +1026,7 @@ es:
         last_login_on: "Ultimó acceso"
         failed_login_count: "Intentos de inicio de sesión fallidos"
         first_name: "Nombre"
-        last_name: "Apellido"
+        last_name: "Apellidos"
         first_login: "Primer inicio de sesión"
         new_password: "Nueva contraseña"
         password_confirmation: "Confirmación"
@@ -1592,7 +1592,7 @@ es:
     comments: "Comentario"
     content: "Contenido"
     color: "Color"
-    creator: "Autor"
+    creator: "Creador"
     created_at: "Creado en"
     custom_field: "Campo personalizado"
     custom_options: "Valores posibles"
@@ -1623,7 +1623,7 @@ es:
     principal: "Usuario o grupo"
     #kept for backwards compatibility
     issue: "Paquete de trabajo"
-    journal: "Diario"
+    journal: "Registro"
     journal_notes: "Comentario"
     lastname: "Apellido"
     login: "Nombre usuario"
@@ -4377,7 +4377,7 @@ es:
   enterprise_plans:
     legacy_enterprise: "Plan Enterprise"
   enterprise_features:
-    baseline_comparison: Comparación de referencia
+    baseline_comparison: Comparación de base de referencia
     board_view: Vista de tablero
     conditional_highlighting: Resaltado condicional
     custom_actions: Acciones personalizadas
