@@ -78,7 +78,7 @@ You can also reply to a specific comment and quote it in your reply text. To do 
 
 ![Edit a work package comment in OpenProject](openproject_user_guide_wp_edit_comment.png)
 
-The author of the quoted comment will automatically [@mentioned](#notification-mention) and notified of the reply to their comment.
+The author of the quoted comment will automatically [@mentioned](#-notification-mention) and notified of the reply to their comment.
 
 ![Quote reply to a comment in an OpenProject work package](openproject_user_guide_wp_quote_comment_mentioned.png)
 
