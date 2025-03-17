@@ -46,7 +46,7 @@ RSpec.describe "Admin Edit File storage",
     page.find_test_selector("storage-delete-button").click
 
     expect(page).to have_text("DELETE FILE STORAGE")
-    expect(page).to have_current_path("#{confirm_destroy_admin_settings_storage_path(storage)}?utf8=%E2%9C%93")
+    expect(page).to have_current_path(confirm_destroy_admin_settings_storage_path(storage))
     storage_delete_button = page.find_button("Delete", disabled: true)
 
     fill_in("delete_confirmation", with: "Foo Nextcloud")
