@@ -88,9 +88,11 @@ module Components
     end
 
     def enable_start_date
-      page.find_test_selector("wp-datepicker--show-start-date").click
-      wait_for_network_idle
-      expect_start_highlighted
+      retry_block do
+        page.find_test_selector("wp-datepicker--show-start-date").click
+        wait_for_network_idle
+        expect_start_highlighted
+      end
     end
 
     def enable_start_date_if_visible
@@ -100,9 +102,11 @@ module Components
     end
 
     def enable_due_date
-      page.find_test_selector("wp-datepicker--show-due-date").click
-      wait_for_network_idle
-      expect_due_highlighted
+      retry_block do
+        page.find_test_selector("wp-datepicker--show-due-date").click
+        wait_for_network_idle
+        expect_due_highlighted
+      end
     end
 
     def enable_due_date_if_visible
