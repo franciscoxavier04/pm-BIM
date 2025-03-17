@@ -646,7 +646,7 @@ de:
           manual_with_children: "Hat untergeordnete Arbeitspakete aber ihre Startdaten werden ignoriert."
         title:
           automatic_mobile: "Automatisch geplant."
-          automatic_with_children: "Die Termine werden durch untergeordnete Arbeitspakete bestimmt."
+          automatic_with_children: "Die Termine sind durch untergeordnete Arbeitspakete bestimmt."
           automatic_with_predecessor: "Der Anfangstermin wird von einem Vorgänger festgelegt."
           manual_mobile: "Manuell geplant."
           manually_scheduled: "Manuell geplant. Daten nicht von Beziehungen beeinflusst."
@@ -669,13 +669,13 @@ de:
         blankslate:
           predecessors:
             title: "Keine Vorgänger"
-            description: "This work package does not have any predecessors."
+            description: "Dieses Arbeitspaket hat noch keine Vorgänger."
           successors:
             title: "Keine Nachfolger"
-            description: "This work package does not have any successors."
+            description: "Dieses Arbeitspaket hat noch keine Nachfolger."
           children:
             title: "Keine Kinder"
-            description: "This work package does not have any children."
+            description: "Dieses Arbeitspaket hat noch keine untergeordnete Arbeitspakete."
     x_descendants:
       one: "Ein untergeordnetes Arbeitspaket"
       other: "%{count} untergeordnete Arbeitspakete"
@@ -826,7 +826,7 @@ de:
       attachment:
         attachment_content: "Inhalt des Anhangs"
         attachment_file_name: "Dateiname des Anhangs"
-        content_type: "Content-type"
+        content_type: "Medien-Typ"
         downloads: "Downloads"
         file: "Datei"
         filename: "Datei"
@@ -1637,13 +1637,13 @@ de:
     reason: "Grund"
     responsible: "Verantwortlich"
     required: "Erforderlich"
-    recipient: "Recipient"
+    recipient: "Empfänger"
     role: "Rollen"
     roles: "Rollen"
     search: "Suche"
     start_date: "Anfangstermin"
     status: "Status"
-    state: "State"
+    state: "Status"
     subject: "Thema"
     slug: "Slug"
     summary: "Zusammenfassung"
@@ -2138,10 +2138,10 @@ de:
     page_nr_footer: "Seite %{page} von %{total}"
     template_attributes:
       label: "Attributes and description"
-      caption: All the attributes present in the current form configuration using the default template.
+      caption: Alle Attribute, die in der aktuellen Formularkonfiguration mit der Standardvorlage vorhanden sind.
     template_contract:
       label: "Vertrag"
-      caption: Work package details formatted to the standard German contract form.
+      caption: Details des Arbeitspakets im Format des deutschen Standardvertragsformulars.
     dialog:
       title: PDF generieren
       submit: Download
@@ -2156,7 +2156,7 @@ de:
         caption: Dieser Text wird auf jeder Seite in der rechten Ecke der Fußzeile angezeigt.
       hyphenation:
         label: Silbentrennung
-        caption: Break line between words for better layout and justification.
+        caption: Silbentrennung zwischen Wörtern zur besseren Anordnung und Ausrichtung.
       hyphenation_language:
         label: Sprache und Silbentrennung
   extraction:

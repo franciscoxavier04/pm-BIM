@@ -3608,8 +3608,8 @@ ru:
     warnings:
       cannot_annotate: "Этот файл не может быть прокомментирован."
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "установить на Ручной"
+    automatic: "установить на Автоматический"
   search_input_placeholder: "Поиск ..."
   setting_after_first_login_redirect_url: "Перенаправление первого входа"
   setting_after_first_login_redirect_url_text_html: >
