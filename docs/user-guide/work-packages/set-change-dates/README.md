@@ -99,7 +99,7 @@ Enabling **Manual Scheduling** activates [manual scheduling mode](../../gantt-ch
 ![A switch on the date picker allows you to enable manual scheduling mode in OpenProject](openproject_user_guide_date_picker_manual_mode_switch.png)
 
 > [!TIP]
-> With the introduction of the new automatic mode in OpenProject 15.4, **manual scheduling** mode is the default scheduling mode for newly created work packages. [Read more about it in our blog](/blog/new-automatic-scheduling-mode/).
+> With the introduction of the new automatic mode in OpenProject 15.4, **manual scheduling** mode is the default scheduling mode for newly created work packages. [Read more about it in our blog](https://www.openproject.org/blog/new-automatic-scheduling-mode/).
 
 In manual mode, parent and child work packages are no longer linked for scheduling purposes. Parent dates do not adjust based on child dates, and children can be scheduled outside the parent’s range. These relationships remain visible in the **Gantt view** but do not affect scheduling unless you disable manual mode.
 
