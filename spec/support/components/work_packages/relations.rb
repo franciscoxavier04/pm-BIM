@@ -168,6 +168,10 @@ module Components
         expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}-delete-button")
       end
 
+      def add_predecessor(work_package)
+        add_relation(type: :follows, relatable: work_package)
+      end
+
       def add_relation(type:, relatable:, description: nil)
         i18n_namespace = "#{WorkPackageRelationsTab::IndexComponent::I18N_NAMESPACE}.relations"
         # Open create form
