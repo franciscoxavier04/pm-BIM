@@ -3800,6 +3800,11 @@ pt-PT:
     working_days:
       section_work_week: "Semana de trabalho"
       section_holidays_and_closures: "Feriados e encerramentos"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texto Simples"

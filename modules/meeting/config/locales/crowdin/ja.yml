@@ -286,7 +286,7 @@ ja:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "開く"
+      title: "Agenda opened"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
@@ -347,7 +347,7 @@ ja:
   text_notificiation_invited: "このメールには以下のミーティングのicsエントリーが含まれています:"
   text_meeting_empty_heading: "あなたの会議は空です。"
   text_meeting_empty_description_1: "まず、以下に議題項目を追加してください。各項目はタイトルだけの簡単なものでも構いませんが、所要時間やメモなどの詳細を追加することもできます。"
-  text_meeting_empty_description_2: "既存のワークパッケージへの参照を追加することもできます。これを行うと、関連するメモがその作業パッケージの「会議」タブに自動的に表示されます。"
+  text_meeting_empty_description_2: '既存のワークパッケージへの参照を追加することもできます。これを行うと、関連するメモがその作業パッケージの「会議」タブに自動的に表示されます。'
   label_meeting_empty_action: "議題項目を追加"
   label_meeting_actions: "会議の対応事項"
   label_meeting_edit_title: "会議タイトルを編集"
@@ -379,8 +379,8 @@ ja:
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: '議題項目 "%{title}"'
-  text_agenda_work_package_deleted: "削除されたワークパッケージの議題項目"
-  text_deleted_agenda_item: "削除された議題項目"
+  text_agenda_work_package_deleted: '削除されたワークパッケージの議題項目'
+  text_deleted_agenda_item: '削除された議題項目'
   label_initial_meeting_details: "会議"
   label_meeting_details: "会議詳細"
   label_meeting_series_details: "Meeting series details"
@@ -421,5 +421,5 @@ ja:
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "このワークパッケージは、まだ今後の会議の議題に予定されていません。"
   text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
-  text_work_package_add_to_meeting_hint: "「会議に追加」ボタンを使用して、このワークパッケージを今後の会議に追加してください。"
+  text_work_package_add_to_meeting_hint: '「会議に追加」ボタンを使用して、このワークパッケージを今後の会議に追加してください。'
   text_work_package_has_no_past_meeting_agenda_items: "このワークパッケージは過去の会議で言及されていませんでした。"

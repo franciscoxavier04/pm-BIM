@@ -3615,8 +3615,8 @@ ru:
     warnings:
       cannot_annotate: "Этот файл не может быть прокомментирован."
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "установить на Ручной"
+    automatic: "установить на Автоматический"
   search_input_placeholder: "Поиск ..."
   setting_after_first_login_redirect_url: "Перенаправление первого входа"
   setting_after_first_login_redirect_url_text_html: >
@@ -3883,6 +3883,11 @@ ru:
     working_days:
       section_work_week: "Рабочая неделя"
       section_holidays_and_closures: "Праздничные и нерабочие дни"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Обычный текст"

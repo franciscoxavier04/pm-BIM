@@ -290,11 +290,12 @@ de:
       full_past: "%{base} um %{time}, endet am %{end_date}"
       never_ending: "%{base} um %{time}"
     open:
+      title: "Tagesordnung geöffnet"
       subtitle: >
         Offene Besprechungen haben Tagesordnungen, die bearbeitet werden können und im Bereich "Meine Meetings" der Teilnehmer angezeigt werden. Änderungen an der Vorlage für Besprechungsserien wirken sich nicht mehr auf diese bereits geöffneten Besprechungen aus.
       blankslate:
         title: "Zurzeit keine offenen Besprechungen"
-        desc: 'Sie können eine geplante Besprechung manuell öffnen, indem Sie unten auf die Schaltfläche "Öffnen" klicken'
+        desc: "Sie können eine geplante Besprechung manuell öffnen, indem Sie unten auf die Schaltfläche \"Öffnen\" klicken"
     planned:
       title: "Geplant"
       subtitle: >
@@ -381,9 +382,9 @@ de:
   label_agenda_outcome_edit: "Ergebnis bearbeiten"
   label_agenda_outcome_delete: "Ergebnis entfernen"
   text_outcome_not_editable_anymore: "Dieses Ergebnis ist nicht mehr bearbeitbar."
-  text_agenda_item_title: "Tagesordnungspunkt „%{title}“"
-  text_agenda_work_package_deleted: "Tagesordnungspunkt für gelöschtes Arbeitspaket"
-  text_deleted_agenda_item: "Gelöschter Tagesordnungspunkt"
+  text_agenda_item_title: 'Tagesordnungspunkt „%{title}“'
+  text_agenda_work_package_deleted: 'Tagesordnungspunkt für gelöschtes Arbeitspaket'
+  text_deleted_agenda_item: 'Gelöschter Tagesordnungspunkt'
   label_initial_meeting_details: "Besprechung"
   label_meeting_details: "Besprechungsdetails"
   label_meeting_series_details: "Details der Terminserie"
@@ -423,6 +424,6 @@ de:
   text_agenda_item_move_next_meeting: "Sind Sie sicher, dass sie diesen Agendapunkt zur nächsten Besprechung am %{date} um %{time} durchführen wollen?"
   text_agenda_item_moved_to_next_meeting: "Tagesordnungspunkt zur nächsten Besprechung am %{date} verschoben"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Dieses Arbeitspaket ist bisher in keiner anstehenden Besprechung enthalten."
-  text_agenda_item_move_next_meeting_cancelled: "Die nächste Besprechung in diesem Serientermin wurde abgesagt."
+  text_agenda_item_move_next_meeting_cancelled: "Der Tagesordnungspunkt konnte nicht in die nächste Besprechung verschoben werden da diese abgesagt wurde."
   text_work_package_add_to_meeting_hint: 'Über den Button "Zur Besprechung hinzufügen" können Sie dieses Arbeitspaket zu einer zukünftigen Besprechung hinzuzufügen.'
   text_work_package_has_no_past_meeting_agenda_items: "Dieses Arbeitspaket wurde in keinen früheren Besprechungen erwähnt."

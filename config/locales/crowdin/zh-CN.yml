@@ -3756,6 +3756,11 @@ zh-CN:
     working_days:
       section_work_week: "工作周"
       section_holidays_and_closures: "节假日与停业"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"

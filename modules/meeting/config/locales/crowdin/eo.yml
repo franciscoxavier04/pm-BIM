@@ -290,7 +290,7 @@ eo:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Malfermi"
+      title: "Agenda opened"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
@@ -383,8 +383,8 @@ eo:
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: 'Agenda item "%{title}"'
-  text_agenda_work_package_deleted: "Agenda item for deleted work package"
-  text_deleted_agenda_item: "Deleted agenda item"
+  text_agenda_work_package_deleted: 'Agenda item for deleted work package'
+  text_deleted_agenda_item: 'Deleted agenda item'
   label_initial_meeting_details: "Meeting"
   label_meeting_details: "Meeting details"
   label_meeting_series_details: "Meeting series details"

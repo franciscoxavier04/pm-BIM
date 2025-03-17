@@ -290,7 +290,7 @@ ca:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Oberta"
+      title: "Agenda opened"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
@@ -383,8 +383,8 @@ ca:
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: 'Punt de l''ordre del dia "%{title}"'
-  text_agenda_work_package_deleted: "Punt de l'ordre del dia per al paquet de treball suprimit"
-  text_deleted_agenda_item: "Punt de l'ordre del dia eliminat"
+  text_agenda_work_package_deleted: 'Punt de l''ordre del dia per al paquet de treball suprimit'
+  text_deleted_agenda_item: 'Punt de l''ordre del dia eliminat'
   label_initial_meeting_details: "Reunió"
   label_meeting_details: "Detalls de la reunió"
   label_meeting_series_details: "Meeting series details"

@@ -286,7 +286,7 @@ ms:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} pada %{time}"
     open:
-      title: "Buka"
+      title: "Agenda opened"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
@@ -379,8 +379,8 @@ ms:
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: 'Item agenda "%{title}"'
-  text_agenda_work_package_deleted: "Item agenda untuk pakej kerja yang telah dipadam"
-  text_deleted_agenda_item: "Item agenda yang telah dipadam"
+  text_agenda_work_package_deleted: 'Item agenda untuk pakej kerja yang telah dipadam'
+  text_deleted_agenda_item: 'Item agenda yang telah dipadam'
   label_initial_meeting_details: "Mesyuarat"
   label_meeting_details: "Butiran mesyuarat"
   label_meeting_series_details: "Butiran siri mesyuarat"

@@ -331,7 +331,7 @@ pl:
     end_series_dialog:
       title: "Zakończ serię spotkań"
   notice_successful_notification: "Powiadomienia wysłane pomyślnie"
-  notice_timezone_missing: "Została ustawiona domyślna strefa czasowa: %{zone}. Aby zmienić strefę czasową, kliknij tutaj."
+  notice_timezone_missing: 'Została ustawiona domyślna strefa czasowa: %{zone}. Aby zmienić strefę czasową, kliknij tutaj.'
   notice_meeting_updated: "Ta strona została zaktualizowana przez kogoś innego. Załaduj ją ponownie, aby wyświetlić zmiany."
   permission_create_meetings: "Utwórz spotkanie"
   permission_edit_meetings: "Modyfikuj spotkania"
@@ -359,7 +359,7 @@ pl:
   text_notificiation_invited: "Ten mail zawiera element ics dla poniższego spotkania:"
   text_meeting_empty_heading: "Spotkanie jest puste"
   text_meeting_empty_description_1: "Zacznij od dodania pozycji planu spotkania poniżej. Każdy element może mieć prosty tytuł, ale możesz także dodać dodatkowe szczegóły, takie jak czas trwania i notatki."
-  text_meeting_empty_description_2: "Możesz również dodawać odwołania do istniejących pakietów roboczych. Jeśli to zrobisz, powiązane notatki będą automatycznie widoczne na karcie „Spotkania” pakietu roboczego."
+  text_meeting_empty_description_2: 'Możesz również dodawać odwołania do istniejących pakietów roboczych. Jeśli to zrobisz, powiązane notatki będą automatycznie widoczne na karcie „Spotkania” pakietu roboczego.'
   label_meeting_empty_action: "Dodaj punkt planu spotkania"
   label_meeting_actions: "Działania spotkania"
   label_meeting_edit_title: "Edytuj tytuł spotkania"
@@ -390,9 +390,9 @@ pl:
   label_agenda_outcome_edit: "Edytuj wynik"
   label_agenda_outcome_delete: "Usuń wynik"
   text_outcome_not_editable_anymore: "Tego wyniku nie można już edytować."
-  text_agenda_item_title: "Punkt planu spotkania „%{title}”"
-  text_agenda_work_package_deleted: "Punkt planu spotkania dotyczący usuniętego pakietu roboczego"
-  text_deleted_agenda_item: "Usunięty punkt planu spotkania"
+  text_agenda_item_title: 'Punkt planu spotkania „%{title}”'
+  text_agenda_work_package_deleted: 'Punkt planu spotkania dotyczący usuniętego pakietu roboczego'
+  text_deleted_agenda_item: 'Usunięty punkt planu spotkania'
   label_initial_meeting_details: "Spotkanie"
   label_meeting_details: "Szczegóły spotkania"
   label_meeting_series_details: "Szczegóły serii spotkań"
@@ -432,6 +432,6 @@ pl:
   text_agenda_item_move_next_meeting: "Czy na pewno chcesz przenieść to na następne spotkanie %{date} o %{time}?"
   text_agenda_item_moved_to_next_meeting: "Punkt planu spotkania przeniesiono na następne spotkanie w dniu %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Ten pakiet roboczy nie został jeszcze zaplanowany w planie nadchodzącego spotkania."
-  text_agenda_item_move_next_meeting_cancelled: "Następne spotkanie w tej serii zostało anulowane."
-  text_work_package_add_to_meeting_hint: "Użyj przycisku „Dodaj do spotkania”, aby dodać ten pakiet roboczy do nadchodzącego spotkania."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_work_package_add_to_meeting_hint: 'Użyj przycisku „Dodaj do spotkania”, aby dodać ten pakiet roboczy do nadchodzącego spotkania.'
   text_work_package_has_no_past_meeting_agenda_items: "Ten pakiet roboczy nie został wspomniany na poprzednim spotkaniu."
