@@ -33,14 +33,14 @@ Here is an example of the date picker in OpenProject. This is what you will see:
 
 ![The standard OpenProject date picker with different elements highlighted](openproject_user_guide_date_picker.png)
 
-1. **Information banner** on top of date picker will state what scheduling mode is selected and if there are possible date constraints due to existing work package relations. The message will vary depending on the scheduling mode selected and the existing work package relations.  
-2. **Show relations** button on the right end of the information banner. Clicking the button will open a Gantt chart view of the work package in question and display all related work packages.
-3. **Tab selector**, that includes related work packages, split into *Predecessors*, *Successors* and *Children*. 
-4. **Scheduling mode switch**, that allows selecting [manual](#manual-scheduling) or [automatic](#automatic-scheduling) mode.
-5. **Working days only** switch.
-6. Start date, finish date and duration input fields.
-7. Mini calendars for date range preview.
-8. Save and cancel buttons.
+1. The **information banner** on top of date picker will state what scheduling mode is selected and if there are possible date constraints due to existing work package relations. The message will vary depending on the scheduling mode selected and the existing work package relations. This banner is only shown for work packages that have relations
+2. The **show relations** button on the banner will open a Gantt chart view showing an overview of all directly-related work packages
+3. The **Relation tabs** let you see a list of relevant relations for the current work pacakges: *predecessors*, *successors* or *children*
+4. The **scheduling mode toggle** allows you to switch between [manual](#manual-scheduling) and [automatic](#automatic-scheduling) modes
+5. The **Working days only** switch lets you switch between counting only working days or all days to the total duration
+6. **Start date**, **finish date** and **duration** input fields
+7. **Mini calendars** for date range preview
+8. **Save** and **cancel** buttons.
 
 ## Information and warning banners
 
@@ -50,9 +50,9 @@ Information banners have a blue or yellow background and display information tha
 
 The information in the banners provides scheduling details, such as:
 
-- The related work package that determines the start date in automatic mode (predecessor or child).
-- Significant gaps between a predecessor and successor when the successor is in manual mode.
-- Overlapping dates between a predecessor and successor in manual mode.
+- When a related work package (predecessor or child) is setting the dates for the current work package in automatic scheduling mode
+- If there is a gap between predecessors and the current work package in manual mode
+- If there are overlapping dates between predecessors and the current work package in manual mode
 
 ![Examples of four possible date picker information banners in OpenProject](openproject_user_guide_date_picker_banner_examples.png)
 
@@ -88,7 +88,9 @@ Apart from the default *Dates* tab, date picker also includes the following rela
 
 ## Scheduling mode
 
-OpenProject offers two scheduling modes: **Manual** and **Automatic**. In **Manual scheduling mode**, you can freely set start and finish dates without considering work package relations. **Automatic scheduling mode** sets the start date based on existing predecessors and/or children, but allows defining the duration. 
+OpenProject offers two scheduling modes: **Manual** and **Automatic**. 
+
+In **Manual scheduling mode**, you can freely set start and finish dates independent of any work package relations. In **automatic scheduling mode**, the dates are automatically derived from predecessors or children.
 
 ### Manual scheduling
 
@@ -101,7 +103,7 @@ Enabling **Manual Scheduling** activates [manual scheduling mode](../../gantt-ch
 > [!TIP]
 > With the introduction of the new automatic mode in OpenProject 15.4, **manual scheduling** mode is the default scheduling mode for newly created work packages. [Read more about it in our blog](https://www.openproject.org/blog/new-automatic-scheduling-mode/).
 
-In manual mode, parent and child work packages are no longer linked for scheduling purposes. Parent dates do not adjust based on child dates, and children can be scheduled outside the parent’s range. These relationships remain visible in the **Gantt view** but do not affect scheduling unless you disable manual mode.
+In manual mode, parent and child work packages are no longer linked for scheduling purposes. Parent dates do not adjust based on child dates and children can be scheduled outside the parent’s range. These relationships remain visible in the **Gantt view** but do not affect scheduling unless you switch back to automatic mode.
 
 When switching from automatic to manual scheduling, a warning banner notifies you that **follows/precedes** and **parent/child** relations are now ignored. This allows unrestricted date selection and prevents the work package from affecting others, despite existing relationships.
 
@@ -111,7 +113,9 @@ When switching from automatic to manual scheduling, a warning banner notifies yo
 
 Automatic scheduling is useful for automatically scheduling work packages with existing dependencies.
 
-Enabling the **Automatic Scheduling** activates [automatic scheduling mode](../../gantt-chart/scheduling/#automatic-scheduling-mode) for the work package. This mode derives the start and finish dates based on the earliest and latest start dates of predecessor or child work packages. To enable the automatic scheduling mode, click the **Automatic** button in the **Scheduling mode** switch of the date picker. 
+A work package can only be in automatic mode if it has predecessors or children.
+
+An automatically-scheduled work package with predecessors will automatically start one working day after the finish date of the nearest predecessor. You can still enter a duration (and effectively change the finish date). This temporal relationship is maintained even if you the dates of the predecessor are changed; for example, if the predecessor is moved forwards or backwards in time (either because the finish date or duration changed), the automatically-scheduled work package will also change its start date so it starts the day after the new date. This makes it possible to create a dependable chain of automatically scheduled work packages that automatically adjust to planning changes. 
 
 ![A switch on the date picker allows you to enable automatic scheduling mode in OpenProject](openproject_user_guide_date_picker_banner_automatic_mode.png)
 
@@ -125,9 +129,9 @@ With the introduction of the new automatic mode in OpenProject 15.4, there are t
 
 #### Single-date mode
 
-**Single-date mode** allows setting only a finish date or a start date for a work package. 
+By default, new work packages start in single-date mode, with only the **Finish date** field active. This makes it easy to quickly set a deadline for a task.
 
-When a work package is newly created, by default the manual scheduling mode is activated and only *Finish date* is available. You can still add the starting date by clicking the **+ Start date** button. 
+If you would also like to add a start date, you can do so by clicking on the **+ Start date** button and choosing a start date. The work package will go into _range mode__ with both Start and Finish dates. You can also remove the Finish date and save the date picker to back to single-date mode but this time with only the Start date as the sole date.
 
 ![A date picker modal for a newly created work package in OpenProject, showing only finish date and a button to add a start date](openproject_user_guide_date_picker_new_wp_single_date_mode.png)
 
@@ -143,7 +147,7 @@ Work packages with *only* a start date or only a finish date are automatically c
 
 #### Range mode
 
-**Range mode** is the scheduling mode in which a work package has both start and finish dates, and a duration.
+**Range mode** is the scheduling mode in which a work package has both start and finish dates, and therefore also a duration.
 
 #### Using the date picker
 
@@ -162,7 +166,7 @@ Click **Save** to confirm your selection. A green confirmation message will appe
 
 ![A green toast indicating successful date picker update in OpenProject](openproject_user_guide_date_picker_update_success_message.png)
 
-To clear a date field, simply click on the **clear icon** ("×") icon when the field is in focus.
+To clear a date field, simply click on the **clear icon** ("×") icon in the relevant field.
 
 ![A focused date field has an X to clear it](openproject_user_guide_date_picker_clear_date_field.png)
 
@@ -174,7 +178,7 @@ Date changes are documented in the work package [Activity](../../activity/).
 
 - For a work package that already has a start and finish date, it is possible to adjust just the finish date: click on the finish date field and then click on a new date. As long as this date is after the start date, the finish date updates accordingly. If the date you pick is earlier than the start date, the original start date will then be cleared and a click on a second date will define the other end of the new range.
 
-- It is possible to set only one of the two dates. To do this, click on the field you would like to set (start date is selected by default, but you can change this manually to finish date) and click on a date. Then save without selecting a second date. Alternatively, if a a range is already selected, simply remove one of the dates and save.
+- It is possible to set only one of the two dates. In range mode, simply clear the _other_ date and save the date picker. It will now go into single-date mode.
 
 > [!NOTE]
 > The precedes-follows relation can constrain or affect the dates of work packages. For more information, see [Moving related work packages](../work-package-relations-hierarchies/#moving-related-work-packages).
@@ -183,7 +187,7 @@ Date changes are documented in the work package [Activity](../../activity/).
 
 ![The Show Relations button in an information or warning banner](banner-show-relations-button.png)
 
-The information and warning banners also feature a **Show Relations** button. Clicking on this will open a new tab that displays work packages with direct relations to the current work package in [Gantt view](../../gantt-chart), in hierarchy mode.
+The information and warning banners also feature a **Show Relations** button. Clicking on this will open a new tab that displays all direct relations to the current work package in [Gantt view](../../gantt-chart), in hierarchy mode.
 
 > [!NOTE]
 > This preview is intended to give a quick overview of only _direct_ relations that might affect scheduling options for the current work package. It does not show second-level relations (and above). To get a full overview, please use the project work package [table view](../work-package-views/#table-view) or [Gantt view](../../gantt-chart) with your desired [filter/view configuration](../work-package-table-configuration/).
@@ -224,9 +228,9 @@ Changing the duration when both start and finish dates are already set will then
 
 #### Duration when only one date exists
 
-A work package cannot have only one date *and* a duration; the other date is automatically derived. This derived date can either be the start date or the finish date.
+A work package cannot have only one date *and* a duration; in range mode, the other date is automatically derived and in single-date mode, the duration field is not available. 
 
-For example, if you set the start date to *Wednesday, 12 October* and enter a duration of 3 days, a finish date of Friday, 14 October is automatically derived. Conversely, if you set the finish date *Friday, 14 October* and then set the duration to 3 days, the date picker will count backwards and derive a start date of *Wednesday, 12 October.*
+For example, in range mode, if you set the start date to *Wednesday, 12 October* and enter a duration of 3 days, a finish date of Friday, 14 October is automatically derived. Conversely, if you set the finish date *Friday, 14 October* and then set the duration to 3 days, the date picker will count backwards and derive a start date of *Wednesday, 12 October.*
 
 #### Duration without start and finish dates
 
