@@ -87,6 +87,14 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       end
     end
 
+    describe "type" do
+      it_behaves_like "has a titled link" do
+        let(:link) { "type" }
+        let(:href) { "urn:openproject-org:api:v3:storages:#{storage.provider_type_nextcloud? ? 'Nextcloud' : 'OneDrive'}" }
+        let(:title) { storage.provider_type_nextcloud? ? "Nextcloud" : "OneDrive" }
+      end
+    end
+
     describe "authorizationState" do
       it_behaves_like "has a titled link" do
         let(:link) { "authorizationState" }

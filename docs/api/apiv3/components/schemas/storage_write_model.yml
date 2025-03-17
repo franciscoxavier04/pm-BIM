@@ -31,9 +31,10 @@ properties:
         allOf:
           - $ref: './link.yml'
           - description: |-
-              The urn of the storage type. Currently only nextcloud storages are supported.
+              The urn of the storage type. Currently Nextcloud and OneDrive storages are supported.
 
               - urn:openproject-org:api:v3:storages:Nextcloud
+              - urn:openproject-org:api:v3:storages:OneDrive
 
               **Resource**: N/A
 

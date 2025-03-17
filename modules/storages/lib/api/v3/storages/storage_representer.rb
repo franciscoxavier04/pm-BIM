@@ -125,7 +125,7 @@ module API::V3::Storages
                           getter: ->(*) {
                             type = STORAGE_TYPE_URN_MAP[represented.provider_type] || represented.provider_type
 
-                            { href: type, title: "Nextcloud" }
+                            { href: type, title: type.split(":").last }
                           },
                           setter: ->(fragment:, **) {
                             href = fragment["href"]
