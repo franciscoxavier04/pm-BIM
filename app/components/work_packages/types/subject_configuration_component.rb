@@ -30,7 +30,7 @@
 
 module WorkPackages
   module Types
-    class SubjectConfigurationComponent < ApplicationComponent
+    class SubjectConfigurationComponent < AdminSettingsFormComponent
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 
