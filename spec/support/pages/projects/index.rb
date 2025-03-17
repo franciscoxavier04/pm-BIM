@@ -33,6 +33,7 @@ require "support/pages/page"
 module Pages
   module Projects
     class Index < ::Pages::Page
+      include ::Components::Common::Filters
       include ::Components::Autocompleter::NgSelectAutocompleteHelpers
 
       def path(*)

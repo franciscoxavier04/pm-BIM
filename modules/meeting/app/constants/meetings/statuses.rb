@@ -32,9 +32,9 @@ module Meetings
   module Statuses
     RECORD = Struct.new(:id, :color, keyword_init: true)
 
-    OPEN = RECORD.new(id: "open", color: Color.new(hexcode: "#1F883D"))
-    IN_PROGRESS = RECORD.new(id: "in_progress", color: Color.new(hexcode: "#9A6700"))
-    CLOSED = RECORD.new(id: "closed", color: Color.new(hexcode: "#565c63"))
+    OPEN = RECORD.new(id: "open", color: Color.new(hexcode: "#006edb"))
+    IN_PROGRESS = RECORD.new(id: "in_progress", color: Color.new(hexcode: "#894ceb"))
+    CLOSED = RECORD.new(id: "closed", color: Color.new(hexcode: "#6e7781"))
 
     AVAILABLE = [
       OPEN,

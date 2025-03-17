@@ -916,51 +916,236 @@ RSpec.describe "Datepicker: Single-date mode logic test cases (WP #61146)", :js,
   end
 
   context "when being on the WP table" do
-    let(:current_attributes) do
-      {
-        start_date: nil,
-        due_date: nil,
-        duration: nil
-      }
-    end
+    let(:start_field) { wp_table.edit_field(work_package, :startDate) }
+    let(:due_field) { wp_table.edit_field(work_package, :dueDate) }
+    let(:duration) { wp_table.edit_field(work_package, :duration) }
 
     before do
       wp_table.visit_query query
     end
 
-    it "can open the datepicker" do
-      start_field = wp_table.edit_field(work_package, :startDate)
-      start_field.activate!
-      start_field.expect_active!
+    context "with empty values" do
+      let(:current_attributes) do
+        {
+          start_date: nil,
+          due_date: nil,
+          duration: nil
+        }
+      end
 
-      datepicker.expect_visible
-      datepicker.expect_start_date "", visible: false
-      datepicker.expect_due_date ""
-      datepicker.expect_duration ""
-      datepicker.expect_due_highlighted
-      datepicker.cancel!
+      it "can open the datepicker" do
+        start_field.activate!
+        start_field.expect_active!
 
-      due_field = wp_table.edit_field(work_package, :dueDate)
-      due_field.activate!
-      due_field.expect_active!
+        datepicker.expect_visible
+        datepicker.expect_start_date ""
+        datepicker.expect_due_date "", visible: false
+        datepicker.expect_duration ""
+        datepicker.expect_start_highlighted
+        datepicker.cancel!
 
-      datepicker.expect_visible
-      datepicker.expect_start_date "", visible: false
-      datepicker.expect_due_date ""
-      datepicker.expect_duration ""
-      datepicker.expect_due_highlighted
-      datepicker.cancel!
+        due_field.activate!
+        due_field.expect_active!
 
-      duration = wp_table.edit_field(work_package, :duration)
-      duration.activate!
-      duration.expect_active!
+        datepicker.expect_visible
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date ""
+        datepicker.expect_duration ""
+        datepicker.expect_due_highlighted
+        datepicker.cancel!
 
-      datepicker.expect_visible
-      datepicker.expect_start_date "", visible: false
-      datepicker.expect_due_date ""
-      datepicker.expect_duration ""
-      datepicker.expect_duration_highlighted
-      datepicker.cancel!
+        duration.activate!
+        duration.expect_active!
+
+        datepicker.expect_visible
+        datepicker.expect_start_date "", visible: false
+        datepicker.expect_due_date ""
+        datepicker.expect_duration ""
+        datepicker.expect_duration_highlighted
+        datepicker.cancel!
+      end
+    end
+
+    context "when clicking in a specific date field (regression #62058)" do
+      context "when no dates are set" do
+        let(:current_attributes) do
+          {
+            start_date: nil,
+            due_date: nil,
+            duration: nil
+          }
+        end
+
+        it "opens the clicked date in single-date mode" do
+          start_field.activate!
+          start_field.expect_active!
+
+          # Start date is clicked and expected to be active in single-date mode with the due date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date ""
+          datepicker.expect_due_date "", visible: false
+          datepicker.expect_duration ""
+          datepicker.expect_start_highlighted
+          datepicker.cancel!
+
+          due_field.activate!
+          due_field.expect_active!
+
+          # Due date is clicked and expected to be active in single-date mode with the start date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date "", visible: false
+          datepicker.expect_due_date ""
+          datepicker.expect_duration ""
+          datepicker.expect_due_highlighted
+          datepicker.cancel!
+
+          duration.activate!
+          duration.expect_active!
+
+          # Duration is clicked and expected to be active in single-date mode with the start date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date "", visible: false
+          datepicker.expect_due_date ""
+          datepicker.expect_duration ""
+          datepicker.expect_duration_highlighted
+          datepicker.cancel!
+        end
+      end
+
+      context "when only start date is set" do
+        let(:current_attributes) do
+          {
+            start_date: "2025-02-12",
+            due_date: nil,
+            duration: nil
+          }
+        end
+
+        it "opens the clicked date and goes to range mode if necessary" do
+          start_field.activate!
+          start_field.expect_active!
+
+          # Start date is clicked and expected to be active in single-date mode with the due date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date "2025-02-12"
+          datepicker.expect_due_date "", visible: false
+          datepicker.expect_duration ""
+          datepicker.expect_start_highlighted
+          datepicker.cancel!
+
+          due_field.activate!
+          due_field.expect_active!
+
+          # Due date is clicked and expected to be active in range mode
+          datepicker.expect_visible
+          datepicker.expect_start_date "2025-02-12"
+          datepicker.expect_due_date ""
+          datepicker.expect_duration ""
+          datepicker.expect_due_highlighted
+          datepicker.cancel!
+
+          duration.activate!
+          duration.expect_active!
+
+          # Duration is clicked and expected to be active in single-date mode with the due date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date "2025-02-12"
+          datepicker.expect_due_date "", visible: false
+          datepicker.expect_duration ""
+          datepicker.expect_duration_highlighted
+          datepicker.cancel!
+        end
+      end
+
+      context "when only finish date is set" do
+        let(:current_attributes) do
+          {
+            start_date: nil,
+            due_date: "2025-02-14",
+            duration: nil
+          }
+        end
+
+        it "opens the clicked date and goes to range mode if necessary" do
+          start_field.activate!
+          start_field.expect_active!
+
+          # Start date is clicked and expected to be active in range mode
+          datepicker.expect_visible
+          datepicker.expect_start_date ""
+          datepicker.expect_due_date "2025-02-14"
+          datepicker.expect_duration ""
+          datepicker.expect_start_highlighted
+          datepicker.cancel!
+
+          due_field.activate!
+          due_field.expect_active!
+
+          # Due date is clicked and expected to be active in single-date mode with the start date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date "", visible: false
+          datepicker.expect_due_date "2025-02-14"
+          datepicker.expect_duration ""
+          datepicker.expect_due_highlighted
+          datepicker.cancel!
+
+          duration.activate!
+          duration.expect_active!
+
+          # Duration is clicked and expected to be active in single-date mode with the start date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date "", visible: false
+          datepicker.expect_due_date "2025-02-14"
+          datepicker.expect_duration ""
+          datepicker.expect_duration_highlighted
+          datepicker.cancel!
+        end
+      end
+
+      context "when both dates are set" do
+        let(:current_attributes) do
+          {
+            start_date: "2025-02-12",
+            due_date: "2025-02-14",
+            duration: 3
+          }
+        end
+
+        it "opens the clicked date and stays in range mode" do
+          start_field.activate!
+          start_field.expect_active!
+
+          # Start date is clicked and expected to be active in range mode
+          datepicker.expect_visible
+          datepicker.expect_start_date "2025-02-12"
+          datepicker.expect_due_date "2025-02-14"
+          datepicker.expect_duration "3"
+          datepicker.expect_start_highlighted
+          datepicker.cancel!
+
+          due_field.activate!
+          due_field.expect_active!
+
+          # Due date is clicked and expected to be active in single-date mode with the start date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date "2025-02-12"
+          datepicker.expect_due_date "2025-02-14"
+          datepicker.expect_duration "3"
+          datepicker.expect_due_highlighted
+          datepicker.cancel!
+
+          duration.activate!
+          duration.expect_active!
+
+          # Duration is clicked and expected to be active in single-date mode with the start date being hidden
+          datepicker.expect_visible
+          datepicker.expect_start_date "2025-02-12"
+          datepicker.expect_due_date "2025-02-14"
+          datepicker.expect_duration "3"
+          datepicker.expect_duration_highlighted
+          datepicker.cancel!
+        end
+      end
     end
   end
 end

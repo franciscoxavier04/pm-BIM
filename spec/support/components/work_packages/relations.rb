@@ -27,12 +27,14 @@
 #++
 
 require "support/components/autocompleter/ng_select_autocomplete_helpers"
+require "support/flash/expectations"
 
 module Components
   module WorkPackages
     class Relations
       include Capybara::DSL
       include Capybara::RSpecMatchers
+      include Flash::Expectations
       include RSpec::Matchers
       include RSpec::Wait
       include ::Components::Autocompleter::NgSelectAutocompleteHelpers
@@ -337,6 +339,7 @@ module Components
 
           click_link_or_button "Save"
         end
+        expect_and_dismiss_flash(message: "Successful update.")
       end
 
       def relations_group
