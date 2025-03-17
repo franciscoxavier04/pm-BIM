@@ -143,11 +143,12 @@ display-field
   display: none
 
 .op-wp-single-card--content-dates
-  span
-    vertical-align: middle
+  span:first-of-type
+    display: inline-flex
+    align-items: center
+    gap: 0.25rem
   .display-field--scheduling-icon
     fill: var(--fgColor-muted)
-    margin-right: 0.25rem
 
 .wp-table--cell-container
   &.duration,
