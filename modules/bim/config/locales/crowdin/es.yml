@@ -89,7 +89,7 @@ es:
         bim_snippet: "Fragmento de código de BIM"
         reference_links: "Enlaces de referencia"
         stage: "Etapa"
-        viewpoint: "Punto de vista"
+        viewpoint: "Área de visualización"
     errors:
       models:
         bim/ifc_models/ifc_model:

@@ -22,9 +22,9 @@
 #++
 ko:
   attributes:
-    commit: "Commit"
-    gitlab: "GitLab identifier"
-    gitlab_avatar_url: "Avatar URL"
+    commit: "커밋"
+    gitlab: "GitLab 식별자"
+    gitlab_avatar_url: "아바타 URL"
     gitlab_email: "GitLab 이메일"
     gitlab_html_url: "GitLab HTML URL"
     gitlab_merge_request: "병합 요청"

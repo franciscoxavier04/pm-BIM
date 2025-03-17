@@ -286,7 +286,7 @@ zh-CN:
       full_past: "%{base} 在 %{time}，于 %{end_date}结束"
       never_ending: "%{base} 在 %{time}"
     open:
-      title: "Agenda opened"
+      title: "议程已打开"
       subtitle: >
         公开会议的议程可以编辑，并显示在个人用户的 "我的会议 "部分。更改会议系列模板不会影响已经发生的会议事件。
       blankslate:
