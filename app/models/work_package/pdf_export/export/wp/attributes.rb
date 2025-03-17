@@ -70,7 +70,7 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     related_work_packages = group.query.results.work_packages
     return if related_work_packages.empty?
 
-    write_group_title(group)
+    write_group_title(group, with_hr: false)
     write_work_packages_table!(related_work_packages, group.query)
   rescue Prawn::Errors::CannotFit
     with_margin(styles.wp_markdown_label_margins) do
@@ -159,12 +159,12 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
     cf.formattable? && custom_field_allowed(cf, work_package)
   end
 
-  def write_group_title(group)
+  def write_group_title(group, with_hr: true)
     write_optional_page_break
     with_margin(styles.wp_attributes_group_label_margins) do
       pdf.formatted_text([styles.wp_attributes_group_label
                                 .merge({ text: group.translated_key })])
-      write_group_title_hr
+      write_group_title_hr if with_hr
     end
   end
 
