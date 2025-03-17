@@ -39,9 +39,28 @@ class Queries::WorkPackages::Filter::AncestorFilter <
     Relation::TYPE_PARENT
   end
 
+  def apply_to(_query_scope)
+    cte = <<~SQL.squish
+      WITH RECURSIVE descendants AS (
+        SELECT id
+        FROM work_packages
+        WHERE id IN (:ids)
+        UNION ALL
+        SELECT wp.id
+        FROM work_packages wp
+        INNER JOIN descendants d ON wp.parent_id = d.id
+      )
+      SELECT * FROM descendants;
+    SQL
+
+    sql = ActiveRecord::Base.sanitize_sql([cte, { ids: no_templated_values }])
+
+    descendants = super.find_by_sql(sql)
+
+    WorkPackage.where(id: descendants.pluck(:id))
+  end
+
   def where
-    # The filter had been called parent before and it is stored in the database like that.
-    # The other association filters all have _id in their self.key.
-    operator_strategy.sql_for_field(no_templated_values, self.class.model.table_name, :parent_id)
+    "1 = 1"
   end
 end
