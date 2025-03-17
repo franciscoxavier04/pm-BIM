@@ -1539,13 +1539,13 @@ RSpec.describe WorkPackages::UpdateService, "integration", type: :model do
     end
 
     it "removes the parent successfully and reschedules the parent" do
-      expect(parent.valid?).to be(false)
+      expect(parent).not_to be_valid(:saving_custom_fields)
       expect(subject).to be_success
 
       expect(work_package.reload.parent).to be_nil
 
       parent.reload
-      expect(parent.valid?).to be(false)
+      expect(parent).not_to be_valid(:saving_custom_fields)
       expect(parent.start_date)
         .to eql(sibling.start_date)
       expect(parent.due_date)
