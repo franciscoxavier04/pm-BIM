@@ -82,7 +82,7 @@ RSpec.describe Journal do
              version: 2)
     end
 
-    subject { described_class.restricted_visible(work_package) }
+    subject { described_class.restricted_visible(work_package.project) }
 
     before do
       login_as user
@@ -103,7 +103,7 @@ RSpec.describe Journal do
     context "when the user can see restricted" do
       before do
         mock_permissions_for(user) do |mock|
-          mock.allow_in_work_package :view_comments_with_restricted_visibility, work_package:
+          mock.allow_in_project(:view_comments_with_restricted_visibility, project: work_package.project)
         end
       end
 
