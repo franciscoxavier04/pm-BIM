@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -28,29 +26,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require "spec_helper"
+class Projects::Settings::WorkPackages::TypesController < Projects::SettingsController
+  menu_item :settings_work_packages
 
-RSpec.describe "Projects", "work package type mgmt", :js do
-  current_user { create(:user, member_with_permissions: { project => %i[edit_project manage_types] }) }
+  def show
+    @types = ::Type.all
+  end
 
-  let(:phase_type)     { create(:type, name: "Phase", is_default: true) }
-  let(:milestone_type) { create(:type, name: "Milestone", is_default: false) }
-  let!(:project) { create(:project, name: "Foo project", types: [phase_type, milestone_type]) }
+  def update
+    if UpdateProjectsTypesService.new(@project).call(permitted_params.projects_type_ids)
+      flash[:notice] = success_message
+    else
+      flash[:error] = @project.errors.full_messages
+    end
 
-  it "have the correct types checked for the project's types" do
-    visit projects_path
-    click_on "Foo project"
-    click_on "Project settings"
-    click_on "Work packages"
+    redirect_to project_settings_types_path(@project.identifier)
+  end
 
-    expect(page).to have_checked_field("Phase", visible: :all)
-    expect(page).to have_checked_field("Milestone", visible: :all)
+  private
 
-    # Disable a type
-    find_field("Milestone", visible: false).click
-
-    click_button "Save"
-
-    expect(page).to have_unchecked_field("Milestone", visible: :all)
+  def success_message
+    ApplicationController.helpers.sanitize(
+      t(:notice_successful_update_custom_fields_added_to_project, url: project_settings_custom_fields_path(@project)),
+      attributes: %w(href target)
+    )
   end
 end
