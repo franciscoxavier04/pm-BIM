@@ -350,16 +350,16 @@ uk:
   project_module_meetings: "Зустрічі"
   text_duration_in_hours: "Тривалість у годинах"
   text_in_hours: "у годинах"
-  text_meeting_agenda_for_meeting: 'порядку денного засідання %{meeting}'
+  text_meeting_agenda_for_meeting: "порядку денного засідання %{meeting}"
   text_meeting_series_end_early_heading: "Видалити майбутні наради серії?"
   text_meeting_series_end_early: "Завершення серії призведе до видалення всіх наступних відкритих або запланованих нарад"
   text_meeting_closing_are_you_sure: "Справді закрити порядок денний заходу?"
   text_meeting_agenda_open_are_you_sure: "Це вмить призведе до виправлення усіх змін! Бажаєте продовжити?"
-  text_meeting_minutes_for_meeting: 'протокол засідання %{meeting}'
+  text_meeting_minutes_for_meeting: "протокол засідання %{meeting}"
   text_notificiation_invited: "У цьому листі міститься запис ics для зустрічі нижче:"
   text_meeting_empty_heading: "Ваша нарада пуста"
   text_meeting_empty_description_1: "Почніть із додавання пунктів розкладу нижче. Кожен елемент може бути таким простим, як назва, але ви також можете додати додаткові деталі, як-от тривалість і примітки."
-  text_meeting_empty_description_2: 'Ви також можете додати посилання на наявні пакети робіт. У такому разі пов’язані примітки автоматично з’являться на вкладці «Наради» пакета робіт.'
+  text_meeting_empty_description_2: "Ви також можете додати посилання на наявні пакети робіт. У такому разі пов’язані примітки автоматично з’являться на вкладці «Наради» пакета робіт."
   label_meeting_empty_action: "Додати пункт порядку денного"
   label_meeting_actions: "Дії з нарадою"
   label_meeting_edit_title: "Редагувати назву зустрічі"
@@ -390,9 +390,9 @@ uk:
   label_agenda_outcome_edit: "Редагувати результат"
   label_agenda_outcome_delete: "Вилучити результат"
   text_outcome_not_editable_anymore: "Цей результат більше не можна редагувати."
-  text_agenda_item_title: 'Пункт порядку денного «%{title}»'
-  text_agenda_work_package_deleted: 'Пункт порядку денного для видаленого пакета робіт'
-  text_deleted_agenda_item: 'Видалений пункт порядку денного'
+  text_agenda_item_title: "Пункт порядку денного «%{title}»"
+  text_agenda_work_package_deleted: "Пункт порядку денного для видаленого пакета робіт"
+  text_deleted_agenda_item: "Видалений пункт порядку денного"
   label_initial_meeting_details: "Нарада"
   label_meeting_details: "Інформація про зустріч"
   label_meeting_series_details: "Деталі серії нарад"
@@ -433,5 +433,5 @@ uk:
   text_agenda_item_moved_to_next_meeting: "Пункт порядку денного переміщено в нову нараду, що відбудеться %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Цей пакет робіт ще не заплановано в порядку денному майбутньої наради."
   text_agenda_item_move_next_meeting_cancelled: "Наступну нараду цієї серії скасовано."
-  text_work_package_add_to_meeting_hint: 'Натисніть кнопку «Додати до наради», щоб додати цей пакет робіт до майбутньої наради.'
+  text_work_package_add_to_meeting_hint: "Натисніть кнопку «Додати до наради», щоб додати цей пакет робіт до майбутньої наради."
   text_work_package_has_no_past_meeting_agenda_items: "Цей пакет робіт не згадано в минулій нараді."

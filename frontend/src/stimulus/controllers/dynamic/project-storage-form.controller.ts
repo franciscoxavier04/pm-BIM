@@ -98,6 +98,7 @@ export default class ProjectStorageFormController extends Controller {
   selectProjectFolder(_evt:Event):void {
     const locals = {
       projectFolderHref: this.projectFolderHref,
+      createFolderHref: `${this.storage._links.self.href}/folders`,
       storage: this.storage,
     };
 

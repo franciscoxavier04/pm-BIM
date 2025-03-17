@@ -53,5 +53,9 @@ module MeetingAgendaItems
         @meeting_outcome = @meeting_agenda_item.outcomes.information_kind.last
       end
     end
+
+    def show_outcome?
+      @meeting.in_progress? || @meeting_outcome.present?
+    end
   end
 end

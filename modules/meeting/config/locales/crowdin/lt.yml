@@ -298,7 +298,7 @@ lt:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Agenda opened"
+      title: "Atidarytas"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
@@ -350,16 +350,16 @@ lt:
   project_module_meetings: "Pasitarimai"
   text_duration_in_hours: "Trukmė valandomis"
   text_in_hours: " valandos(-ų) "
-  text_meeting_agenda_for_meeting: 'pasitarimo „%{meeting}“ darbotvarkę'
+  text_meeting_agenda_for_meeting: "pasitarimo „%{meeting}“ darbotvarkę"
   text_meeting_series_end_early_heading: "Delete future occurrences?"
   text_meeting_series_end_early: "Ending the series will delete any future open or scheduled meeting occurrences"
   text_meeting_closing_are_you_sure: "Ar tikrai norite uždaryti susitikimo planą?"
   text_meeting_agenda_open_are_you_sure: "Tai perrašys visus pakeitimus minutėse! Ar norite tęsti?"
-  text_meeting_minutes_for_meeting: 'pasitarimo „%{meeting}“ minutės'
+  text_meeting_minutes_for_meeting: "pasitarimo „%{meeting}“ minutės"
   text_notificiation_invited: "Šis laiškas turi ics įrašą žemiau nurodytam susitikimui:"
   text_meeting_empty_heading: "Jūsų susitikimas yra tuščias"
   text_meeting_empty_description_1: "Pradėkite pridėdami darbotvarkės elementus žemiau. Kiekvienas elementas gali būti paprasčiausiai antraštė, bet jūs galite pridėti papildomas detales, tokias kaip trukmę ir pastabas."
-  text_meeting_empty_description_2: 'Jūs taipogi galite pridėti nuorodas į esamus darbo paketus. Kai tai padarysite, susijusios pastabos bus automatiškai matomos darbo paketo kortelėje „Susitikimai“.'
+  text_meeting_empty_description_2: "Jūs taipogi galite pridėti nuorodas į esamus darbo paketus. Kai tai padarysite, susijusios pastabos bus automatiškai matomos darbo paketo kortelėje „Susitikimai“."
   label_meeting_empty_action: "Pridėti darbotvarkės klausimą"
   label_meeting_actions: "Susitikimo veiksmai"
   label_meeting_edit_title: "Keisti susitikimo pavadinimą"
@@ -390,9 +390,9 @@ lt:
   label_agenda_outcome_edit: "Edit outcome"
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
-  text_agenda_item_title: 'Darbotvarkės punktas „%{title}“'
-  text_agenda_work_package_deleted: 'Ištrinto darbo paketo darbotvarkės punktas'
-  text_deleted_agenda_item: 'Ištrintas darbotvarkės punktas'
+  text_agenda_item_title: "Darbotvarkės punktas „%{title}“"
+  text_agenda_work_package_deleted: "Ištrinto darbo paketo darbotvarkės punktas"
+  text_deleted_agenda_item: "Ištrintas darbotvarkės punktas"
   label_initial_meeting_details: "Susitikimas"
   label_meeting_details: "Susitikimo detalės"
   label_meeting_series_details: "Meeting series details"
@@ -432,6 +432,6 @@ lt:
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Šis darbo paketas dar nesuplanuotas artėjančio susitikimo plane."
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
-  text_work_package_add_to_meeting_hint: 'Naudokite mygtuką „Pridėti į susitikimą“, kad pridėtumėte šį darbo paketą į ateinantį susitikimą.'
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_work_package_add_to_meeting_hint: "Naudokite mygtuką „Pridėti į susitikimą“, kad pridėtumėte šį darbo paketą į ateinantį susitikimą."
   text_work_package_has_no_past_meeting_agenda_items: "Šis darbo paketas nebuvo paminėtas ankstesniame susitikime."

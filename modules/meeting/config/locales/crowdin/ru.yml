@@ -350,16 +350,16 @@ ru:
   project_module_meetings: "Совещания"
   text_duration_in_hours: "Длительность в часах"
   text_in_hours: "в часах"
-  text_meeting_agenda_for_meeting: 'Повестка дня встречи «%{meeting}»'
+  text_meeting_agenda_for_meeting: "Повестка дня встречи «%{meeting}»"
   text_meeting_series_end_early_heading: "Удалить будущие события?"
   text_meeting_series_end_early: "Завершение серии удалит любые будущие открытые или запланированные события совещания"
   text_meeting_closing_are_you_sure: "Вы уверены, что хотите закрыть повестку дня собрания?"
   text_meeting_agenda_open_are_you_sure: "Все изменения в протоколах будут перезаписаны! Продолжить?"
-  text_meeting_minutes_for_meeting: 'Протокол совещания «%{meeting}»'
+  text_meeting_minutes_for_meeting: "Протокол совещания «%{meeting}»"
   text_notificiation_invited: "Это сообщение содержит запись ics для совещания ниже:"
   text_meeting_empty_heading: "Совещание пусто"
   text_meeting_empty_description_1: "Начните с добавления пунктов повестки ниже. Каждый пункт может быть простым, как заголовок, но вы также можете добавить дополнительные сведения, такие как продолжительность и примечания."
-  text_meeting_empty_description_2: 'Вы также можете добавить ссылки на существующие пакеты работ. Когда вы это сделаете, соответствующие заметки будут автоматически отображаться на вкладке «Совещания» пакета работ.'
+  text_meeting_empty_description_2: "Вы также можете добавить ссылки на существующие пакеты работ. Когда вы это сделаете, соответствующие заметки будут автоматически отображаться на вкладке «Совещания» пакета работ."
   label_meeting_empty_action: "Добавить пункт повестки"
   label_meeting_actions: "Действия совещания"
   label_meeting_edit_title: "Изменить название совещания"
@@ -391,8 +391,8 @@ ru:
   label_agenda_outcome_delete: "Удалить результат"
   text_outcome_not_editable_anymore: "Этот результат больше не редактируется."
   text_agenda_item_title: 'Пункт повестки "%{title}"'
-  text_agenda_work_package_deleted: 'Пункт повестки для удаленного пакета работ'
-  text_deleted_agenda_item: 'Удаленный пункт повестки'
+  text_agenda_work_package_deleted: "Пункт повестки для удаленного пакета работ"
+  text_deleted_agenda_item: "Удаленный пункт повестки"
   label_initial_meeting_details: "Встреча"
   label_meeting_details: "Детали совещания"
   label_meeting_series_details: "Подробности серии совещаний"
@@ -410,7 +410,7 @@ ru:
   label_meeting_reopen_action: "Открыть совещание заново"
   label_meeting_close_action: "Закрыть совещание"
   label_meeting_in_progress_action: "Отметить как в процессе"
-  text_meeting_open_description: "Совещание открыто. Вы можете добавлять/удалять пункты повестки дня и редактировать их так, как захотите. Как только повестка дня будет готова, отметьте ее как \"в процессе\" для документирования результатов."
+  text_meeting_open_description: 'Совещание открыто. Вы можете добавлять/удалять пункты повестки дня и редактировать их так, как захотите. Как только повестка дня будет готова, отметьте ее как "в процессе" для документирования результатов.'
   text_meeting_closed_description: "Это совещание является закрытым. Вы не можете добавлять/удалять пункты повестки."
   text_meeting_in_progress_description: "Совещание в процессе. Вы можете документировать результаты для каждого пункта повестки дня, переупорядочить их и даже добавить новые. После завершения совещания вы можете пометить его как закрытое для блокировки."
   text_meeting_open_dropdown_description: "Любые существующие результаты останутся, но пользователи не смогут добавлять новые результаты."

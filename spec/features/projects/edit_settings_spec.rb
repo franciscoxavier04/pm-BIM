@@ -184,6 +184,50 @@ RSpec.describe "Projects", "editing settings", :js do
     end
   end
 
+  context "with a version custom field" do
+    include_context "ng-select-autocomplete helpers"
+
+    shared_let(:public_project) do
+      create(:project, name: "Public Pr", identifier: "public-pr", public: true)
+    end
+
+    let!(:versions) do
+      [
+        create(:version, project:, name: "Ringbo 1.0", sharing: "system"),
+        create(:version, project: public_project, name: "Ringbo 2.0", sharing: "system")
+      ]
+    end
+
+    let!(:version_custom_field) do
+      create(:version_project_custom_field,
+             name: "List CF",
+             multi_value: true,
+             projects: [project])
+    end
+
+    let(:form_field) { FormFields::SelectFormField.new version_custom_field }
+
+    it "can select multiple values" do
+      visit project_settings_general_path(project.id)
+
+      # expect the versions are grouped by the project name
+      form_field.expect_option(versions.first.name, grouping: project.name)
+      form_field.expect_option(versions.last.name, grouping: public_project.name)
+
+      form_field.select_option(versions.first.name, versions.last.name)
+
+      click_on "Save"
+
+      expect(page).to have_content "Successful update."
+
+      refresh
+
+      expect(page).to have_no_content "Successful update."
+
+      form_field.expect_selected versions.first.name, versions.last.name
+    end
+  end
+
   context "with a date custom field" do
     let!(:date_custom_field) { create(:date_project_custom_field, name: "Date", projects: [project]) }
     let(:form_field) { FormFields::InputFormField.new date_custom_field }

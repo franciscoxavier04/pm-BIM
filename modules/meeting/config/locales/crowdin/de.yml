@@ -290,12 +290,11 @@ de:
       full_past: "%{base} um %{time}, endet am %{end_date}"
       never_ending: "%{base} um %{time}"
     open:
-      title: "Agenda opened"
       subtitle: >
         Offene Besprechungen haben Tagesordnungen, die bearbeitet werden können und im Bereich "Meine Meetings" der Teilnehmer angezeigt werden. Änderungen an der Vorlage für Besprechungsserien wirken sich nicht mehr auf diese bereits geöffneten Besprechungen aus.
       blankslate:
         title: "Zurzeit keine offenen Besprechungen"
-        desc: "Sie können eine geplante Besprechung manuell öffnen, indem Sie unten auf die Schaltfläche \"Öffnen\" klicken"
+        desc: 'Sie können eine geplante Besprechung manuell öffnen, indem Sie unten auf die Schaltfläche "Öffnen" klicken'
     planned:
       title: "Geplant"
       subtitle: >
@@ -382,9 +381,9 @@ de:
   label_agenda_outcome_edit: "Ergebnis bearbeiten"
   label_agenda_outcome_delete: "Ergebnis entfernen"
   text_outcome_not_editable_anymore: "Dieses Ergebnis ist nicht mehr bearbeitbar."
-  text_agenda_item_title: 'Tagesordnungspunkt „%{title}“'
-  text_agenda_work_package_deleted: 'Tagesordnungspunkt für gelöschtes Arbeitspaket'
-  text_deleted_agenda_item: 'Gelöschter Tagesordnungspunkt'
+  text_agenda_item_title: "Tagesordnungspunkt „%{title}“"
+  text_agenda_work_package_deleted: "Tagesordnungspunkt für gelöschtes Arbeitspaket"
+  text_deleted_agenda_item: "Gelöschter Tagesordnungspunkt"
   label_initial_meeting_details: "Besprechung"
   label_meeting_details: "Besprechungsdetails"
   label_meeting_series_details: "Details der Terminserie"

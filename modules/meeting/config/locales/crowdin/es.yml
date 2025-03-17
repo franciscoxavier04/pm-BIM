@@ -382,9 +382,9 @@ es:
   label_agenda_outcome_edit: "Editar resultado"
   label_agenda_outcome_delete: "Eliminar resultado"
   text_outcome_not_editable_anymore: "Este resultado ya no se puede editar."
-  text_agenda_item_title: 'Punto del orden del día «%{title}»'
-  text_agenda_work_package_deleted: 'Punto del orden del día relativo al paquete de trabajo eliminado'
-  text_deleted_agenda_item: 'Punto del orden del día eliminado'
+  text_agenda_item_title: "Punto del orden del día «%{title}»"
+  text_agenda_work_package_deleted: "Punto del orden del día relativo al paquete de trabajo eliminado"
+  text_deleted_agenda_item: "Punto del orden del día eliminado"
   label_initial_meeting_details: "Reunión"
   label_meeting_details: "Detalles de la reunión"
   label_meeting_series_details: "Detalles de la serie de reuniones"

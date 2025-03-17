@@ -424,6 +424,6 @@ tr:
   text_agenda_item_move_next_meeting: "Bunu %{date} tarihli ve %{time} saatinde yapılacak sonraki toplantıya taşımak istediğinize emin misiniz?"
   text_agenda_item_moved_to_next_meeting: "Gündem maddesi %{date} tarihli sonraki toplantıya taşındı"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Bu iş paketi henüz yaklaşan bir toplantı gündemine alınmamıştır."
-  text_agenda_item_move_next_meeting_cancelled: "Toplantı serisindeki sıradaki toplantı iptal edildi."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Bu iş paketini yaklaşan bir toplantıya eklemek için "Toplantıya ekle" düğmesini kullanın.'
   text_work_package_has_no_past_meeting_agenda_items: "Bu iş paketinden daha önceki bir toplantıda bahsedilmemişti."

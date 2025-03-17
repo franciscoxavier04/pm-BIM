@@ -342,7 +342,7 @@ fr:
   project_module_meetings: "Réunions"
   text_duration_in_hours: "Durée en heures"
   text_in_hours: "en heures"
-  text_meeting_agenda_for_meeting: 'ordre du jour de la réunion «%{meeting} »'
+  text_meeting_agenda_for_meeting: "ordre du jour de la réunion «%{meeting} »"
   text_meeting_series_end_early_heading: "Supprimer les futures occurrences ?"
   text_meeting_series_end_early: "La fin de la série supprimera les futures occurrences de réunions ouvertes ou planifiées"
   text_meeting_closing_are_you_sure: "Voulez-vous vraiment clôturer l'ordre du jour de la réunion ?"
@@ -382,9 +382,9 @@ fr:
   label_agenda_outcome_edit: "Modifier le résultat"
   label_agenda_outcome_delete: "Supprimer le résultat"
   text_outcome_not_editable_anymore: "Ce résultat n'est plus modifiable."
-  text_agenda_item_title: 'Point de l''ordre du jour « %{title} »'
-  text_agenda_work_package_deleted: 'Point de l''ordre du jour du lot de travaux supprimé'
-  text_deleted_agenda_item: 'Point de l''ordre du jour supprimé'
+  text_agenda_item_title: "Point de l'ordre du jour « %{title} »"
+  text_agenda_work_package_deleted: "Point de l'ordre du jour du lot de travaux supprimé"
+  text_deleted_agenda_item: "Point de l'ordre du jour supprimé"
   label_initial_meeting_details: "Réunion"
   label_meeting_details: "Détails de la réunion"
   label_meeting_series_details: "Détails de la série de réunions"
@@ -424,6 +424,6 @@ fr:
   text_agenda_item_move_next_meeting: "Voulez-vous vraiment déplacer cet élément vers la prochaine réunion le %{date} à %{time} ?"
   text_agenda_item_moved_to_next_meeting: "L'ordre du jour a été déplacé vers la prochaine réunion, le %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Ce lot de travaux n'est pas encore inclus dans l'ordre du jour d'une prochaine réunion."
-  text_agenda_item_move_next_meeting_cancelled: "La prochaine réunion de cette série a été annulée."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Utilisez le bouton "Ajouter à la réunion" pour ajouter ce lot de travaux à une réunion à venir.'
   text_work_package_has_no_past_meeting_agenda_items: "Ce lot de travaux n'a pas été mentionné lors d'une réunion précédente."
