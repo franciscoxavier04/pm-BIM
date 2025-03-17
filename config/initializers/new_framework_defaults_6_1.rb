@@ -62,13 +62,13 @@
 # Set the default queue name for the analysis job to the queue adapter default.
 # Rails 6.0 used :active_storage_analysis.
 # Rails 6.1+ default is nil (when nil, default Active Job queue is used).
-# Rails.application.config.active_storage.queues.analysis = nil
+Rails.application.config.active_storage.queues.analysis = nil
 
 # https://guides.rubyonrails.org/configuring.html#config-active-storage-queues-purge
 # Set the default queue name for the purge job to the queue adapter default.
 # Rails 6.0 used :active_storage_purge.
 # Rails 6.1+ default is nil (when nil, default Active Job queue is used).
-# Rails.application.config.active_storage.queues.purge = nil
+Rails.application.config.active_storage.queues.purge = nil
 
 # https://guides.rubyonrails.org/configuring.html#config-action-mailbox-queues-incineration
 # Set the default queue name for the incineration job to the queue adapter default.
