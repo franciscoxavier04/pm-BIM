@@ -31,6 +31,7 @@ require_relative "new"
 
 module Pages::Meetings
   class Index < Pages::Page
+    include Components::Common::Filters
     include Components::Autocompleter::NgSelectAutocompleteHelpers
 
     attr_accessor :project
