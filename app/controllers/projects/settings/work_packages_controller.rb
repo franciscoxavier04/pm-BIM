@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,22 +28,16 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module API
-  module V3
-    module Queries
-      module Schemas
-        module CustomFieldJsonCacheKeyMixin
-          def self.extended(base)
-            base.instance_eval do
-              alias :orig_json_cache_key :json_cache_key
+class Projects::Settings::WorkPackagesController < Projects::SettingsController
+  menu_item :settings_work_packages
 
-              def json_cache_key
-                orig_json_cache_key + [filter.custom_field.cache_key_with_version]
-              end
-            end
-          end
-        end
-      end
+  def show
+    if User.current.allowed_in_project?(:manage_types, @project)
+      redirect_to project_settings_work_packages_types_path
+    elsif User.current.allowed_in_project?(:manage_categories, @project)
+      redirect_to project_settings_work_packages_categories_path
+    elsif User.current.allowed_in_project?(:select_custom_fields, @project)
+      redirect_to project_settings_work_packages_custom_fields_path
     end
   end
 end

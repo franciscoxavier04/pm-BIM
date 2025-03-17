@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,33 +26,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class Projects::Settings::CustomFieldsController < Projects::SettingsController
-  menu_item :settings_custom_fields
+require "support/pages/page"
 
-  def show
-    @wp_custom_fields = WorkPackageCustomField.order("lower(name)")
-  end
+module Pages
+  module Projects
+    module Settings
+      class WorkPackages < Pages::Page
+        attr_accessor :project
 
-  def update
-    Project.transaction do
-      if update_custom_fields
-        flash[:notice] = t(:notice_successful_update)
-      else
-        flash[:error] = t(:notice_project_cannot_update_custom_fields,
-                          errors: @project.errors.full_messages.join(", "))
-        raise ActiveRecord::Rollback
+        def initialize(project)
+          super()
+
+          @project = project
+        end
+
+        def path
+          "/projects/#{project.identifier}/settings/work_packages"
+        end
       end
     end
-
-    redirect_to project_settings_custom_fields_path(@project)
-  end
-
-  private
-
-  def update_custom_fields
-    @project.work_package_custom_field_ids = permitted_params.project[:work_package_custom_field_ids]
-    @project.save
   end
 end
