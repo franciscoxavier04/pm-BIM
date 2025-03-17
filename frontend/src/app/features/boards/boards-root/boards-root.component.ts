@@ -10,6 +10,9 @@ import { BoardSubtasksActionService } from 'core-app/features/boards/board/board
 import {
   WorkPackageIsolatedQuerySpaceDirective,
 } from 'core-app/features/work-packages/directives/query-space/wp-isolated-query-space.directive';
+import {
+  BoardPriorityActionService
+} from 'core-app/features/boards/board/board-actions/priority/priority-action.service';
 
 @Component({
   selector: 'boards-entry',
@@ -22,6 +25,7 @@ import {
     BoardAssigneeActionService,
     BoardSubprojectActionService,
     BoardSubtasksActionService,
+    BoardPriorityActionService,
     QueryUpdatedService,
   ],
 })
@@ -35,5 +39,6 @@ export class BoardsRootComponent {
     registry.add('version', injector.get(BoardVersionActionService));
     registry.add('subproject', injector.get(BoardSubprojectActionService));
     registry.add('subtasks', injector.get(BoardSubtasksActionService));
+    registry.add('priority', injector.get(BoardPriorityActionService));
   }
 }

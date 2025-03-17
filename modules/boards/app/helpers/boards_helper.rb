@@ -14,7 +14,8 @@ module BoardsHelper
       build_board_type_attributes("assignee", "assignees"),
       build_board_type_attributes("version", "version"),
       build_board_type_attributes("subproject", "subproject"),
-      build_board_type_attributes("subtasks", "parent-child")
+      build_board_type_attributes("subtasks", "parent-child"),
+      build_board_type_attributes("priority", "priority")
     ]
   end
 

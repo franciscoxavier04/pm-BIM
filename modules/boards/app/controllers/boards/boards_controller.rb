@@ -116,7 +116,8 @@ module ::Boards
         "assignee" => Boards::AssigneeBoardCreateService,
         "version" => Boards::VersionBoardCreateService,
         "subproject" => Boards::SubprojectBoardCreateService,
-        "subtasks" => Boards::SubtasksBoardCreateService
+        "subtasks" => Boards::SubtasksBoardCreateService,
+        "priority" => Boards::PriorityBoardCreateService
       }.fetch(board_grid_params[:attribute])
     end
 
