@@ -97,6 +97,7 @@ RSpec.describe WorkPackages::CreateNoteContract do
         it "is invalid" do
           expect(contract.errors.symbols_for(:journal_restricted))
             .to contain_exactly(:invalid)
+          expect(contract.errors.full_messages).to include("Restricted Journal is invalid.")
         end
       end
     end
