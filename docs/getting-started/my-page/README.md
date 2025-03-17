@@ -20,13 +20,13 @@ The My Page is your **personal dashboard** with important overarching project in
 
 My Page is your personal dashboard where you can display important information of your projects. This personal dashboard contains information from all your projects. **My page** can be configured according to your preferences. You can include project information, for example the latest news, work packages assigned to you or reported work packages.
 
-You can open your **My page** by clicking on your user avatar in the upper right corner and then selecting **My page** from the dropdown menu.
+You can open your **My page** by clicking on your user avatar in the upper right corner and then selecting **My page** from the dropdown menu. Alternatively, you can select *My Page* by clicking the respective option in the menu on the left. 
 
-![navigate to my page](navigate-to-my-page.png)
+![Navigate to My page in OpenProject](openproject_getting_started_my_page_navigate.png)
 
 As a default, you will see two lists of all **work packages assigned to you** and **work packages created by you** from all your projects.
 
-![Default view of My Page in OpenProject](My-page-default-view.png)
+![Default view of My Page in OpenProject](openproject_getting_started_my_page_default_view.png)
 
 ## Configure the My Page
 
@@ -36,7 +36,7 @@ As a default, you will see two lists of all **work packages assigned to you** an
 
 In order to **add a widget to My Page**, decide where you want to place the widget (above, below or between the existing widgets) hover to the respective location around the existing widgets. The **+** icon will appear automatically.
 
-![my page add widget](my-page-add-widget.png)
+![Plus icon to add a new widget to My page in OpenProject](openproject_getting_started_my_page_add_widget_icon.png)
 
 Press the plus icon and choose from a number of different widgets that can be included on your dashboard.
 
