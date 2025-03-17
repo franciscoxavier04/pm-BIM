@@ -2,13 +2,13 @@ ka:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: კლიენტის ID
+        client_secret: კლიენტის კოდი
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: საცავი
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -18,7 +18,7 @@ ka:
       storages/project_storage:
         project_folder: Project folder
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: საცავი
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method

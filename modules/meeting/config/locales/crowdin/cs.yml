@@ -56,10 +56,10 @@ cs:
         frequency: "Frekvence"
         interval: "Interval"
         start_date: "Začíná v"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Čas zahájení"
+        start_time_hour: "Čas zahájení"
         end_after: "Řada schůzek končí"
-        end_date: "End date"
+        end_date: "Datum ukončení"
         iterations: "Výskyty"
     errors:
       models:
@@ -73,7 +73,7 @@ cs:
     models:
       recurring_meeting: "Opakovaná schůzka"
       structured_meeting: "Jednorázová schůzka"
-      meeting: "Meeting"
+      meeting: "Schůzka"
       meeting_agenda_item: "Pořad jednání"
       meeting_agenda: "Agenda"
       meeting_minutes: "Zápis"
@@ -235,13 +235,13 @@ cs:
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "Zrušit výskyt schůzky"
+        heading: "Zrušit výskyt schůzky"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          Veškeré informace o schůzce, které nejsou v šabloně, budou ztraceny. Chcete pokračovat?
+        confirm_button: "Zrušit výskyt"
     blankslate:
-      title: "No meetings to display"
+      title: "Nic k zobrazení"
       desc: "There are no meetings that meet the active filter criteria."
   meeting_section:
     untitled_title: "Sekce bez názvu"
@@ -250,7 +250,7 @@ cs:
     empty_text: "Přetáhněte položky sem nebo vytvořte nové"
   recurring_meeting:
     ended_blankslate:
-      title: "Meeting series ended"
+      title: "Řada schůzek skončila"
       message: "This meeting series has come to an end. There are no upcoming meetings. "
       action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
@@ -272,12 +272,12 @@ cs:
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
       x_daily:
-        one: "Every day"
+        one: "Každý den"
         few: "Every %{count} days"
         many: "Every %{count} days"
         other: "Every %{count} days"
       x_weekly:
-        one: "Every week"
+        one: "Každý týden"
         few: "Every %{count} weeks"
         many: "Every %{count} weeks"
         other: "Every %{count} weeks"
@@ -406,7 +406,7 @@ cs:
   label_meeting_state_planned: "Plánováno"
   label_meeting_state_cancelled: "Zrušeno"
   label_meeting_state_skipped: "Přeskočeno"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "Probíhá"
   label_meeting_reopen_action: "Znovu otevřít schůzku"
   label_meeting_close_action: "Ukončit schůzku"
   label_meeting_in_progress_action: "Mark as in progress"
@@ -432,6 +432,6 @@ cs:
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Tento pracovní balíček ještě není naplánován na nadcházející program schůzky."
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Použijte tlačítko "Přidat do schůzky" pro přidání tohoto pracovního balíčku na nadcházející schůzku.'
   text_work_package_has_no_past_meeting_agenda_items: "Tento pracovní balíček nebyl na minulé schůzce zmíněn."

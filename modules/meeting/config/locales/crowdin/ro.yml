@@ -72,7 +72,7 @@ ro:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "ID întâlnire"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Agendă"
       meeting_minutes: "Minute"
@@ -119,7 +119,7 @@ ro:
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Închideți ordinea de zi pentru a începe procesul-verbal"
   label_meeting_date_time: "Dată/Timp"
-  label_meeting_date_and_time: "Date and time"
+  label_meeting_date_and_time: "Data"
   label_meeting_diff: "Dif"
   label_recurring_meeting: "Recurring meeting"
   label_recurring_meeting_part_of: "Part of a meeting series"
@@ -127,7 +127,7 @@ ro:
   label_recurring_meeting_plural: "Recurring meetings"
   label_template: "Șablon"
   label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Deschisă"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
@@ -161,7 +161,7 @@ ro:
   label_past_invitations: "Past invitations"
   label_attended: "Attended"
   label_attended_user: "Attended user"
-  label_created_by_me: "Created by me"
+  label_created_by_me: "Creat de mine"
   label_notify: "Trimiteți pentru revizuire"
   label_icalendar: "Trimiteți iCalendar"
   label_icalendar_download: "Download iCalendar event"
@@ -294,14 +294,14 @@ ro:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Open"
+      title: "Deschisă"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Planificat"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -363,7 +363,7 @@ ro:
   label_meeting_created_by: "Creat de"
   label_meeting_last_updated: "Last updated"
   label_meeting_reload: "Reload"
-  label_meeting_index_today: "Today"
+  label_meeting_index_today: "Azi"
   label_meeting_index_tomorrow: "Tomorrow"
   label_meeting_index_this_week: "Later this week"
   label_meeting_index_later: "Next week and later"
@@ -399,10 +399,10 @@ ro:
   label_meeting_state_closed: "Închisă"
   label_meeting_state_closed_html: "<i>Closed</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Planificat"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "În lucru"
   label_meeting_reopen_action: "Reopen meeting"
   label_meeting_close_action: "Close meeting"
   label_meeting_in_progress_action: "Mark as in progress"
@@ -428,6 +428,6 @@ ro:
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "This work package is not scheduled in an upcoming meeting agenda yet."
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Use the "Add to meeting" button to add this work package to an upcoming meeting.'
   text_work_package_has_no_past_meeting_agenda_items: "This work package was not mentioned in a past meeting."

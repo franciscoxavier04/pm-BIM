@@ -402,8 +402,8 @@ zh-TW:
   text_meeting_closed_description: "此會議已關閉。您不能再新增/移除議程項目。"
   text_meeting_in_progress_description: "此會議正在進行中。您可以記錄每個議程項目的結果、重新排列它們，甚至新增新的項目。會議完成後，您可以將其標示為已結束，以鎖定它。"
   text_meeting_open_dropdown_description: "任何現有的結果都會保留，但使用者將無法新增新的結果。"
-  text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
-  text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
+  text_meeting_in_progress_dropdown_description: "記錄會議期間的結果，例如資訊需求或所做的決策。"
+  text_meeting_closed_dropdown_description: "此會議已結束，您無法再修改議程項目或結果。"
   label_meeting_manage_participants: "管理參與者"
   label_meeting_no_participants: "沒有參與者"
   label_meeting_show_hide_participants: "顯示/隱藏 %{count} 更多"
@@ -420,6 +420,6 @@ zh-TW:
   text_agenda_item_move_next_meeting: "您確定要移至 %{date} %{time}的下次會議嗎？"
   text_agenda_item_moved_to_next_meeting: "議程項目移至下次會議討論： %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "該工作項目尚未被安排到即將舉行的會議議程中。"
-  text_agenda_item_move_next_meeting_cancelled: "本系列的下次會議已取消。"
+  text_agenda_item_move_next_meeting_cancelled: "由於下次會議已被取消，因此無法轉到下次會議。"
   text_work_package_add_to_meeting_hint: '使用"增加到會議"按鈕將此工作項目新增到即將舉行的會議。'
   text_work_package_has_no_past_meeting_agenda_items: "在過往會議中沒有提及本工作項目。"

@@ -57,7 +57,7 @@ el:
         start_time: "Start time"
         start_time_hour: "Start time"
         end_after: "Meeting series ends"
-        end_date: "End date"
+        end_date: "Ημερομηνία λήξης"
         iterations: "Occurrences"
     errors:
       models:
@@ -71,7 +71,7 @@ el:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "Συνάντηση"
       meeting_agenda_item: "Agenda item"
       meeting_agenda: "Ατζέντα"
       meeting_minutes: "Πρακτικά"
@@ -114,11 +114,11 @@ el:
   label_meeting_minutes: "Πρακτικά"
   label_meeting_close: "Κλείσιμο"
   label_meeting_open: "Ανοιχτό"
-  label_meeting_index_delete: "Delete"
+  label_meeting_index_delete: "Διαγραφή"
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Κλείστε την ατζέντα για να ξεκινήσετε τα Πρακτικά"
   label_meeting_date_time: "Ημερομηνία/Ώρα"
-  label_meeting_date_and_time: "Date and time"
+  label_meeting_date_and_time: "Ημερομηνία και ώρα"
   label_meeting_diff: "Διαφορά"
   label_recurring_meeting: "Recurring meeting"
   label_recurring_meeting_part_of: "Part of a meeting series"
@@ -126,7 +126,7 @@ el:
   label_recurring_meeting_plural: "Recurring meetings"
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Ανοιχτό"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
@@ -159,7 +159,7 @@ el:
   label_past_invitations: "Past invitations"
   label_attended: "Attended"
   label_attended_user: "Attended user"
-  label_created_by_me: "Created by me"
+  label_created_by_me: "Δημιουργήθηκε από εμένα"
   label_notify: "Αποστολή για αναθεώρηση"
   label_icalendar: "Αποστολή στο iCalendar"
   label_icalendar_download: "Download iCalendar event"
@@ -290,14 +290,14 @@ el:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Open"
+      title: "Ανοιχτό"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Προγραμματισμένο"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -359,7 +359,7 @@ el:
   label_meeting_created_by: "Δημιουργήθηκε από"
   label_meeting_last_updated: "Last updated"
   label_meeting_reload: "Reload"
-  label_meeting_index_today: "Today"
+  label_meeting_index_today: "Σήμερα "
   label_meeting_index_tomorrow: "Tomorrow"
   label_meeting_index_this_week: "Later this week"
   label_meeting_index_later: "Next week and later"
@@ -395,10 +395,10 @@ el:
   label_meeting_state_closed: "Κλειστό"
   label_meeting_state_closed_html: "<i>Closed</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Προγραμματισμένο"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "Σε εξέλιξη"
   label_meeting_reopen_action: "Reopen meeting"
   label_meeting_close_action: "Close meeting"
   label_meeting_in_progress_action: "Mark as in progress"
@@ -424,6 +424,6 @@ el:
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "This work package is not scheduled in an upcoming meeting agenda yet."
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Use the "Add to meeting" button to add this work package to an upcoming meeting.'
   text_work_package_has_no_past_meeting_agenda_items: "This work package was not mentioned in a past meeting."

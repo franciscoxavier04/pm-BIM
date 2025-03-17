@@ -614,7 +614,7 @@ si:
         assigned: "අස්ගිනී"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "වගවීම"
         created: "Created"
         scheduled: "නියමිත"
         commented: "අදහස් දැක්වීය"

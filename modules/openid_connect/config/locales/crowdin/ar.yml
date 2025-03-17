@@ -7,13 +7,13 @@ ar:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: الاسم
         slug: Unique identifier
-        display_name: Display name
+        display_name: اسم العرض
         client_id: Client ID
         client_secret: Client secret
-        secret: Secret
-        scope: Scope
+        secret: السر
+        scope: النطاق
         grant_types_supported: Supported grant types
         limit_self_registration: Limit self registration
         authorization_endpoint: Authorization endpoint
@@ -98,7 +98,7 @@ ar:
       label_empty_title: No OpenID providers configured yet.
       label_empty_description: Add a provider to see them here.
       label_metadata: OpenID Connect Discovery Endpoint
-      label_automatic_configuration: Automatic configuration
+      label_automatic_configuration: التكوين التلقائي
       label_optional_configuration: Optional configuration
       label_advanced_configuration: Advanced configuration
       label_configuration_details: Metadata

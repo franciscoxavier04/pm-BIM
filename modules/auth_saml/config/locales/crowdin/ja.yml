@@ -2,16 +2,16 @@ ja:
   activerecord:
     attributes:
       saml/provider:
-        display_name: Name
-        identifier: Identifier
-        secret: Secret
-        scope: Scope
-        assertion_consumer_service_url: ACS (Assertion consumer service) URL
-        limit_self_registration: Limit self registration
-        sp_entity_id: Service entity ID
-        metadata_url: Identity provider metadata URL
-        name_identifier_format: Name identifier format
-        idp_sso_service_url: Identity provider login endpoint
+        display_name: 名称
+        identifier: 識別子
+        secret: シークレット
+        scope: スコープ
+        assertion_consumer_service_url: ACS(アサーション・コンシューマ・サービス)URL
+        limit_self_registration: 自己登録を制限
+        sp_entity_id: サービス・エンティティID
+        metadata_url: ID プロバイダのメタデータ URL
+        name_identifier_format: 名前識別子の形式
+        idp_sso_service_url: アイデンティティ・プロバイダのログイン・エンドポイント
         idp_slo_service_url: Identity provider logout endpoint
         idp_cert: Public certificate of identity provider
         authn_requests_signed: Sign SAML AuthnRequests
@@ -21,7 +21,7 @@ ja:
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Format"
+        format: "書式"
         icon: "カスタムアイコン"
     errors:
       models:
@@ -59,7 +59,7 @@ ja:
       plural: SAML identity providers
       singular: SAML identity provider
       requested_attributes: Requested attributes
-      attribute_mapping: Attribute mapping
+      attribute_mapping: 属性のマッピング
       attribute_mapping_text: >
         The following fields control which attributes provided by the SAML identity provider are used to provide user attributes in OpenProject
       metadata:
@@ -74,7 +74,7 @@ ja:
         format: 'Attribute format'
       section_headers:
         configuration: "Primary configuration"
-        attributes: "Attributes"
+        attributes: "属性"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"
@@ -89,13 +89,13 @@ ja:
       seeded_from_env: "This provider was seeded from the environment configuration. It cannot be edited."
     settings:
       metadata_none: "I don't have metadata"
-      metadata_url: "Metadata URL"
+      metadata_url: "メタデータURL"
       metadata_xml: "Metadata XML"
     instructions:
       documentation_link: >
         Please refer to our [documentation on configuring SAML providers](docs_url) for more information on these configuration options.
       display_name: >
-        The name of the provider. This will be displayed as the login button and in the list of providers.
+        プロバイダーの名前。これはログインボタンとプロバイダーリストに表示されます。
       metadata_none: >
         Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
       metadata_url: >
@@ -103,7 +103,7 @@ ja:
       metadata_xml: >
         Your identity provider provides a metadata XML download.
       limit_self_registration: >
-        If enabled users can only register using this provider if the self registration setting allows for it.
+        有効にした場合、ユーザーは自己登録設定が許可されている場合にのみ、このプロバイダを使用して登録することができます。
       sp_entity_id: >
         The entity ID of the service provider (SP). Sometimes also referred to as Audience. This is the unique client identifier of the OpenProject instance.
       idp_sso_service_url: >

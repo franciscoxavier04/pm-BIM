@@ -22,22 +22,22 @@
 #++
 uk:
   attributes:
-    commit: "Commit"
-    gitlab: "GitLab identifier"
-    gitlab_avatar_url: "Avatar URL"
-    gitlab_email: "GitLab Email"
-    gitlab_html_url: "GitLab HTML URL"
-    gitlab_merge_request: "Merge Request"
-    gitlab_name: "GitLab name"
-    gitlab_updated_at: "Updated at"
-    gitlab_user_avatar_url: "GitLab avatar URL"
-    gitlab_username: "GitLab username"
+    commit: "Коміт"
+    gitlab: "Ідентифікатор GitLab"
+    gitlab_avatar_url: "URL-адреса аватара"
+    gitlab_email: "Електронна адреса GitLab"
+    gitlab_html_url: "URL-адреса HTML GitLab"
+    gitlab_merge_request: "Запит на злиття"
+    gitlab_name: "Назва GitLab"
+    gitlab_updated_at: "Оновлено о"
+    gitlab_user_avatar_url: "URL-адреса аватара GitLab"
+    gitlab_username: "Ім’я користувача GitLab"
   activerecord:
     attributes:
       gitlab_pipeline:
-        ci_details: "CI Details"
+        ci_details: "Деталі CI"
       gitlab_merge_request:
-        labels: "Labels"
+        labels: "Мітки"
     errors:
       models:
         gitlab_issue:

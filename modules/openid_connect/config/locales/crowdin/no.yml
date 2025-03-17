@@ -7,15 +7,15 @@
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Navn
         slug: Unique identifier
-        display_name: Display name
-        client_id: Client ID
-        client_secret: Client secret
-        secret: Secret
-        scope: Scope
+        display_name: Visningsnavn
+        client_id: Klient ID
+        client_secret: Klient hemmlighet
+        secret: Hemmelig nøkkel
+        scope: Omfang
         grant_types_supported: Supported grant types
-        limit_self_registration: Limit self registration
+        limit_self_registration: Begrens egenregistrering
         authorization_endpoint: Authorization endpoint
         userinfo_endpoint: User information endpoint
         token_endpoint: Token endpoint
@@ -103,7 +103,7 @@
       label_advanced_configuration: Advanced configuration
       label_configuration_details: Metadata
       label_client_details: Client details
-      label_attribute_mapping: Attribute mapping
+      label_attribute_mapping: Tilordning av egenskap
       client_details_description: Configuration details of OpenProject as an OIDC client
       no_results_table: Ingen leverandører har blitt definert ennå.
       plural: OpenID-leverandører

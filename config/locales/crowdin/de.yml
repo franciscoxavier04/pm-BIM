@@ -128,9 +128,9 @@ de:
     sync_failed: "Fehler beim Synchronisieren von LDAP: %{message}."
     back_to_index: "Klicken Sie hier, um zur Liste der Verbindungen zurückzukehren."
     technical_warning_html: |
-      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      Dieses LDAP-Formular erfordert technische Kenntnisse über Ihre LDAP/Active Directory-Einrichtung.
       <br>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Bitte besuchen Sie unsere Dokumentation für detaillierte Anweisungen</a>.
     attribute_texts:
       name: Beliebiger Name der LDAP-Verbindung
       host: LDAP-Hostname oder IP-Adresse
@@ -138,9 +138,9 @@ de:
       generic_map: Der Attributschlüssel in LDAP, der dem OpenProject `%{attribute}` Attribut zugeordnet ist
       admin_map_html: "Optional: Der Attributschlüssel in LDAP der, <strong>falls vorhanden</strong>, den OpenProject-Nutzer als einen Administrator markiert. \nIm Zweifel leer lassen."
       system_user_dn_html: |
-        Enter the DN of the system user used for read-only access.
+        Geben Sie den DN des Systembenutzers ein, der für schreibgeschützten Zugriff verwendet wird.
         <br>
-        Example: uid=openproject,ou=system,dc=example,dc=com
+        Beispiel: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Geben Sie das Bind-Passwort des Systembenutzers ein
       base_dn: |
         Geben Sie den Basis-DN des Unterbaums in LDAP ein, in dem OpenProject nach Benutzern und Gruppen suchen soll.
@@ -176,7 +176,7 @@ de:
     tls_options:
       verify_peer: "SSL-Zertifikat überprüfen"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Aktiviert die strikte SSL-Überprüfung der vertrauenswürdigen Zertifikatskette. <br> <strong>Warnung:</strong> Ausstellen dieser Option deaktiviert die SSL-Überprüfung des LDAP-Serverzertifikats. Ihre Verbindung wird anfällig für Man-In-The-Middle (MITM) Angriffe.
       tls_certificate_description: "Wenn sich das LDAP-Server-Zertifikat nicht in den vertrauenswürdigen Quellen dieses Systems befindet, können Sie es hier manuell hinzufügen. Fügen Sie an dieser Stelle ein oder mehrere PEM X509 Zertifkate ein."
   forums:
     show:
@@ -343,7 +343,7 @@ de:
         placeholder: "Neue Projektliste"
       delete_modal:
         title: "Projektliste löschen"
-        heading: "Delete this project list?"
+        heading: "Diese Projektliste löschen?"
         text: "Diese Aktion löscht keine Projekte, die in der Liste enthalten sind. Sind Sie sicher, dass Sie diese Projektliste löschen möchten?"
     settings:
       change_identifier: Kennung ändern
@@ -570,10 +570,10 @@ de:
         Im <a href="%{href}">statusbasierten Fortschrittsberechnungsmodus</a> wird der % abgeschlossen Wert eines Arbeitspakets automatisch auf diesen Wert gesetzt, wenn dieser Status ausgewählt wird.
         Im aufwandsbezogenem Modus hat dieser Wert keine Relevanz.
       status_readonly_html: |
-        Check this option to mark work packages with this status as read-only.
-        No attributes can be changed with the exception of the status.
+        Wählen Sie diese Option um Bearbeitung von Arbeitspaketen in diesem Status zu sperren.
+        Außer dem Status selbst können dann keine Attribute verändert werden.
         <br>
-        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
+        <strong>Hinweis</strong>: Vererbte Attribute (z.B. von Kinderelementen oder Relationen) werden auch auf Arbeitspakete in diesen Status angewandt.
     index:
       no_results_title_text: Derzeit gibt es keine Arbeitspaket-Status.
       no_results_content_text: Neuen Status hinzufügen
@@ -612,12 +612,12 @@ de:
         pattern:
           label: "Titel-Schema"
           caption: "Suchen Sie nach einem Attribut oder fügen Sie Text hinzu. Um ein Leerzeichen zwischen Elementen zu erstellen, fügen Sie es als Text hinzu."
-          insert_as_text: "Add as text: \"%{word}\""
+          insert_as_text: "Als Text hinzufügen: \"%{word}\""
       export_configuration:
-        tab: "Generate PDF"
-        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        tab: "PDF generieren"
+        intro: "Wählen Sie aus den verfügbaren Vorlagen diejenige aus, die Sie für diesen Typ aktivieren möchten. Die Vorlage bestimmt das Design und die Attribute, die in der exportierten PDF-Datei eines Arbeitspakets mit diesem Typ sichtbar sind. Die erste Vorlage in der Liste ist standardmäßig ausgewählt."
         pdf_export_templates:
-          label: "PDF Export templates"
+          label: "PDF-Exportvorlagen"
           actions:
             label_enable_all: "Alles aktivieren"
             label_disable_all: "Alles deaktivieren"
@@ -638,43 +638,43 @@ de:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Start date derived."
-          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
-          manual_mobile: "Ignoring relations."
+          automatic_mobile: "Anfangstermin abgeleitet."
+          click_on_show_relations_to_open_gantt: 'Klicken Sie auf "%{button_name}" für eine Gantt-Übersicht.'
+          manual_mobile: "Beziehungen werden ignoriert."
           manual_gap_between_predecessors: "There is a gap between this and all predecessors."
           manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
-          manual_with_children: "This has child work packages but their start dates are ignored."
+          manual_with_children: "Hat untergeordnete Arbeitspakete aber ihre Startdaten werden ignoriert."
         title:
-          automatic_mobile: "Automatically scheduled."
-          automatic_with_children: "The dates are determined by child work packages."
-          automatic_with_predecessor: "The start date is set by a predecessor."
-          manual_mobile: "Manually scheduled."
-          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+          automatic_mobile: "Automatisch geplant."
+          automatic_with_children: "Die Termine werden durch untergeordnete Arbeitspakete bestimmt."
+          automatic_with_predecessor: "Der Anfangstermin wird von einem Vorgänger festgelegt."
+          manual_mobile: "Manuell geplant."
+          manually_scheduled: "Manuell geplant. Daten nicht von Beziehungen beeinflusst."
       blankslate:
-        title: "No predecessors"
+        title: "Keine Vorgänger"
         description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "Nur Werktage"
       mode:
-        title: "Scheduling mode"
-        automatic: "Automatic"
+        title: "Planungsmodus"
+        automatic: "Automatisch"
         manual: "Manual"
-      show_relations: "Show relations"
+      show_relations: "Beziehungen anzeigen"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        children: "Untergeordnete Arbeitspakete"
+        dates: "Daten"
+        predecessors: "Vorgänger"
+        successors: "Nachfolger"
         blankslate:
           predecessors:
-            title: "No predecessors"
+            title: "Keine Vorgänger"
             description: "This work package does not have any predecessors."
           successors:
-            title: "No successors"
+            title: "Keine Nachfolger"
             description: "This work package does not have any successors."
           children:
-            title: "No children"
+            title: "Keine Kinder"
             description: "This work package does not have any children."
     x_descendants:
       one: "Ein untergeordnetes Arbeitspaket"
@@ -903,7 +903,7 @@ de:
         roles: "Rollen"
       notification:
         read_ian: "Read in-app"
-        resource: "Resource"
+        resource: "Ressource"
       oauth_client:
         client: "Client-ID"
       project:
@@ -911,7 +911,7 @@ de:
           true: "nicht archiviert"
           false: "archiviert"
         description: "Beschreibung"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Aktivierte Module"
         identifier: "Kennung"
         latest_activity_at: "Letzte Aktivität am"
         parent: "Unterprojekt von"
@@ -945,41 +945,41 @@ de:
         name: "Name"
         color: "Farbe"
       query:
-        sums: "Sums"
-        columns: "Columns"
+        sums: "Summen"
+        columns: "Spalten"
         column_names: "Spalten"
         relations_to_type_column: "Beziehungen zu %{type}"
         relations_of_type_column: "Beziehungen der Art: %{type}"
         group_by: "Gruppiere Ergebnisse nach"
-        sort_by: "Sort results by"
+        sort_by: "Ergebnisse sortieren nach"
         filters: "Filter"
         timeline_labels: "Timeline-Beschriftungen"
-        timeline_visible: "Show Gantt chart"
-        timeline_zoom_level: "Gantt chart zoom level"
-        timestamps: "Baseline timestamps"
-        sort_criteria: "Sort criteria"
-        highlighted_attributes: "Highlighted attributes"
-        highlighting_mode: "Highlight mode"
-        display_representation: "Display mode"
-        show_hierarchies: "Display mode"
+        timeline_visible: "Gantt-Diagramm zeigen"
+        timeline_zoom_level: "Gantt Diagramm Zoomstufe"
+        timestamps: "Baseline Zeitstempel"
+        sort_criteria: "Sortierkriterien"
+        highlighted_attributes: "Hervorgehobene Attribute"
+        highlighting_mode: "Hervorhebung"
+        display_representation: "Anzeigemodus"
+        show_hierarchies: "Anzeigemodus"
         starred: "Favorit"
-        hidden: "Hidden"
-        manual_sorting: "Manual sort order"
-        ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        hidden: "Ausgeblendet"
+        manual_sorting: "Manuelle Sortierung"
+        ordered_work_packages: "Reihenfolge der Arbeitspakete"
+        include_subprojects: "Unterprojekte einbeziehen"
+        results: "Ergebnisse"
       relation:
         lag: "Verzögerung"
         from: "Verknüpftes Arbeitspaket"
         to: "Zugehöriges Arbeitspaket"
-        relation_type: "Relation type"
+        relation_type: "Relationstyp"
       reminder:
-        remindable: "Reminded object"
-        remind_at: "Remind at"
+        remindable: "Objekt der Erinnerung"
+        remind_at: "Erinnerung am"
         remind_at_date: "Datum"
         remind_at_time: "Zeit"
       reminder_notification:
-        notification: "Notification"
+        notification: "Benachrichtigung"
       repository:
         url: "URL"
       role:
@@ -991,7 +991,7 @@ de:
         default_done_ratio: "% abgeschlossen"
       token/ical:
         calendar: "Kalender"
-        ical_token_query_assignment: "Query assignment"
+        ical_token_query_assignment: "Zuordnung der Abfrage"
       time_entry:
         activity: "Aktivität"
         hours: "Stunden"
@@ -1005,11 +1005,11 @@ de:
         is_default: "Typ für neue Projekte standardmäßig aktiviert"
         is_milestone: "Ist ein Meilenstein"
         color: "Farbe"
-        patterns: "Patterns"
+        patterns: "Muster"
       remote_identity:
-        auth_source: "Auth Source"
+        auth_source: "Authentizifierungsquelle"
         integration: "Integration"
-        user: "User"
+        user: "Benutzer"
       user:
         admin: "Administrator"
         auth_source: "Authentifizierungsquelle"
@@ -1019,10 +1019,10 @@ de:
         force_password_change: "Erzwinge Passwortwechsel beim nächsten Login"
         language: "Sprache"
         last_login_on: "Letzte Anmeldung"
-        failed_login_count: "Failed login attempts"
+        failed_login_count: "Fehlgeschlagene Anmeldeversuche"
         first_name: "Vorname"
         last_name: "Nachname"
-        first_login: "First login"
+        first_login: "Erste Anmeldung"
         new_password: "Neues Kennwort"
         password_confirmation: "Bestätigung"
         consented_at: "Eingewilligt am"
@@ -1033,7 +1033,7 @@ de:
         warn_on_leaving_unsaved: "Beim Verlassen einer Arbeitspaket-Seite mit ungespeichertem Text warnen"
         theme: "Modus"
         mode_guideline: "Einige Darstellungsmodi überschreiben die Farben des benutzerdefinierten Designs, um die Barrierefreiheit und Lesbarkeit zu gewährleisten. Für das vollständige benutzerdefinierte Design wählen Sie bitte den hellen Modus."
-        daily_reminders: "Daily reminders"
+        daily_reminders: "Tägliche Erinnerungen"
         workdays: "Arbeitstage"
       version:
         effective_date: "Endtermin"
@@ -1393,7 +1393,7 @@ de:
               smaller_than_dates: "ist kleiner als das Intervall zwischen Start und Enddatum."
               not_available_for_milestones: "ist nicht für Meilenstein-typisierte Arbeitspakete verfügbar."
               cannot_be_null: "kann nicht auf Null gesetzt werden, als Start- und Enddatum bekannt sind."
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "ist keine gültige Dauer."
             parent:
               cannot_be_milestone: "darf kein Meilenstein sein."
               cannot_be_self_assigned: "kann nicht selbst zugewiesen werden."
@@ -1435,7 +1435,7 @@ de:
               query_invalid: "Die eingebettete Ansicht '%{group}' ist ungültig: %{details}"
               group_without_name: "Unbenannte Gruppen sind nicht erlaubt."
             patterns:
-              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
+              invalid_tokens: "Ein oder mehrere Attribute des Feldes sind ungültig. Bitte korrigieren Sie die Attribute vor dem Speichern."
         user:
           attributes:
             base:
@@ -1575,10 +1575,10 @@ de:
     assigned_to: "Zugewiesen an"
     assignee: "Zugewiesen an"
     attachments: "Anhänge"
-    actor: "Actor"
-    action: "Action"
+    actor: "Ausführender Benutzer"
+    action: "Aktion"
     author: "Autor"
-    avatar: "Avatar"
+    avatar: "Profilfoto"
     base: "Allgemeiner Fehler:"
     body: "Body"
     blocks_ids: "IDs der blockierten Arbeitspakete"
@@ -1589,11 +1589,11 @@ de:
     color: "Farbe"
     creator: "Ersteller"
     created_at: "Erstellt"
-    custom_field: "Custom field"
+    custom_field: "Benutzerdefiniertes Feld"
     custom_options: "Mögliche Werte"
     custom_values: "Benutzerdefinierte Felder"
     date: "Datum"
-    dates_interval: "Date range"
+    dates_interval: "Datumsbereich"
     default_columns: "Standard-Spalten"
     description: "Beschreibung"
     derived_due_date: "Aggregierter Endtermin"
@@ -1604,50 +1604,50 @@ de:
     estimated_hours: "Aufwand"
     estimated_time: "Aufwand"
     email: "E-Mail"
-    entity_type: "Entity"
+    entity_type: "Entität"
     expires_at: "Läuft ab am"
     firstname: "Vorname"
     filter: "Filter"
     group: "Gruppe"
     groups: "Gruppen"
-    hexcode: "Hex code"
+    hexcode: "Fabcode (Hex)"
     id: "ID"
     is_default: "Standardwert"
     is_for_all: "Für alle Projekte"
     public: "Öffentlich"
-    principal: "User or group"
+    principal: "Benutzer oder Gruppe"
     #kept for backwards compatibility
     issue: "Arbeitspaket"
-    journal: "Journal"
+    journal: "Änderung"
     journal_notes: "Kommentar"
     lastname: "Nachname"
     login: "Benutzername"
-    lock_version: "Lock version"
+    lock_version: "Objektversion"
     mail: "E-Mail"
     name: "Name"
     note: "Anmerkung"
-    notes: "Notes"
-    number: "Number"
-    options: "Options"
+    notes: "Notizen"
+    number: "Nummer"
+    options: "Optionen"
     operator: "Operator"
     password: "Kennwort"
     priority: "Priorität"
     project: "Projekt"
-    project_ids: "Project IDs"
-    reason: "Reason"
+    project_ids: "Projekt IDs"
+    reason: "Grund"
     responsible: "Verantwortlich"
-    required: "Required"
+    required: "Erforderlich"
     recipient: "Recipient"
     role: "Rollen"
     roles: "Rollen"
-    search: "Search"
+    search: "Suche"
     start_date: "Anfangstermin"
     status: "Status"
     state: "State"
     subject: "Thema"
     slug: "Slug"
     summary: "Zusammenfassung"
-    time_zone: "Time zone"
+    time_zone: "Zeitzone"
     text: "Text"
     title: "Titel"
     type: "Typ"
@@ -1657,11 +1657,11 @@ de:
     uploader: "Bereitgestellt von"
     user: "Benutzer"
     username: "Benutzername"
-    unit: "Unit"
+    unit: "Stück"
     value: "Wert"
     values: "Values"
     version: "Version"
-    visible: "Visible"
+    visible: "Sichtbar"
     work_package: "Arbeitspaket"
   backup:
     failed: "Backup fehlgeschlagen"
@@ -2149,16 +2149,16 @@ de:
         label: "Vorlage"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Footer text
-        caption: This text will appear on every page at the center of the footer.
+        label: Text in der Fußzeile
+        caption: Dieser Text wird auf jeder Seite in der Mitte der Fußzeile angezeigt.
       footer_right:
-        label: Footer text
-        caption: This text will appear on every page at the right of the footer.
+        label: Text in der Fußzeile
+        caption: Dieser Text wird auf jeder Seite in der rechten Ecke der Fußzeile angezeigt.
       hyphenation:
         label: Silbentrennung
         caption: Break line between words for better layout and justification.
       hyphenation_language:
-        label: Language and hyphenation
+        label: Sprache und Silbentrennung
   extraction:
     available:
       pdftotext: "Pdftotext verfügbar (optional)"
@@ -2878,9 +2878,9 @@ de:
   label_projects_menu: "Projekte"
   label_today: "heute"
   label_token_version: "Token Version"
-  label_today_as_start_date: "Select today as start date."
-  label_today_as_due_date: "Select today as finish date."
-  label_today_as_date: "Select today as date."
+  label_today_as_start_date: "Heute als Startdatum wählen."
+  label_today_as_due_date: "Heute als Enddatum wählen."
+  label_today_as_date: "Heute als Datum wählen."
   label_top_menu: "Hauptmenü"
   label_topic_plural: "Themen"
   label_total: "Gesamtzahl"
@@ -3387,7 +3387,7 @@ de:
       warning_one: Projektmitglieder müssen die Projektarchive des Projekts umziehen.
       warning_two: Bestehende Projekt-Links werden nicht mehr funktionieren.
       title: Projektkennung ändern
-    not_available: "Project N/A"
+    not_available: "Projekt N/A"
     template:
       copying: >
         Ihr Projekt wird aus der ausgewählten Vorlage erstellt. Sie werden per E-Mail benachrichtigt, sobald das Projekt verfügbar ist.
@@ -3524,8 +3524,8 @@ de:
     warnings:
       cannot_annotate: "Diese Datei kann nicht kommentiert werden."
   scheduling:
-    manual: "set to Manual"
-    automatic: "set to Automatic"
+    manual: "auf Manuell setzen"
+    automatic: "auf Automatisch setzen"
   search_input_placeholder: "Suchen ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -4373,26 +4373,26 @@ de:
   enterprise_plans:
     legacy_enterprise: "Enterprise Plan"
   enterprise_features:
-    baseline_comparison: Baseline Comparison
+    baseline_comparison: Grundlinie (Planungsvergleich)
     board_view: Board View
     conditional_highlighting: Conditional Highlighting
     custom_actions: Custom Actions
     custom_field_hierarchies: Custom Field Hierarchies
     customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
+    date_alerts: Datums-Erinnerungen
+    define_custom_style: Eigenen Stil definieren
+    edit_attribute_groups: Attributgruppen bearbeiten
     gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
+    grid_widget_wp_graph: Arbeitspakete-Graphen Widget
+    ldap_groups: LDAP-Gruppen
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint-Datei-Speicher
+    placeholder_users: Platzhalter-Benutzer
+    project_list_sharing: Projektlistenfreigabe
+    readonly_work_packages: Schreibgeschützte Arbeitspakete
+    sso_auth_providers: SSO Authentifizierungs-Anbieter
+    team_planner_view: Teamplaner
+    two_factor_authentication: 2-Faktor-Authentifizierung
+    virus_scanning: Virus-Scan von Anhängen
+    work_package_query_relation_columns: Arbeitspaket-Relationsspalten
+    work_package_sharing: Teilen von Arbeitspaketen
     work_package_subject_generation: Work Package Subject Generation

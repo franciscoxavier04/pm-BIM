@@ -214,7 +214,7 @@ id:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Untuk semua Project
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -287,7 +287,7 @@ id:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Induk"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -591,10 +591,10 @@ id:
       more_info_text_html: >
         Edisi Enterprise memungkinkan Anda untuk menyesuaikan konfigurasi formulir dengan pengaya tambahan ini: <br> <ul class="%{list_styling_class}"> <li><b>Menambahkan grup atribut baru</b></li> <li><b>Mengganti nama grup atribut</b></li> <li><b>Menambahkan tabel paket kerja terkait</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Project"
+        enabled_projects: "Proyek-proyek yang diaktifkan"
       settings:
-        tab: "Settings"
+        tab: "Pengaturan"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -657,8 +657,8 @@ id:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Sub"
+        dates: "Tanggal"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -725,10 +725,10 @@ id:
       caption: "Jumlah hari kerja minimum yang harus dijaga di antara dua paket pekerjaan."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "terkait dengan"
+      label_relates_plural: "terkait dengan"
+      label_relates_to_singular: "terkait dengan"
+      label_relates_to_plural: "terkait dengan"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -744,42 +744,42 @@ id:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "blok"
+      label_blocks_plural: "blok"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "diblokir oleh"
+      label_blocked_plural: "diblokir oleh"
+      label_blocked_by_singular: "diblokir oleh"
+      label_blocked__by_plural: "diblokir oleh"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "duplikat"
+      label_duplicates_plural: "duplikat"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "disalin oleh"
+      label_duplicated_plural: "disalin oleh"
+      label_duplicated_by_singular: "disalin oleh"
+      label_duplicated_by_plural: "disalin oleh"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "termasuk"
+      label_includes_plural: "termasuk"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "bagian dari"
+      label_partof_plural: "bagian dari"
+      label_part_of_singular: "bagian dari"
+      label_part_of_plural: "bagian dari"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "dibutuhkan"
+      label_requires_plural: "dibutuhkan"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Work package terkait"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Undangan
   account:
@@ -842,7 +842,7 @@ id:
         editable: "Dapat diedit"
         field_format: "Format"
         is_filter: "Filter"
-        is_for_all: "For all projects"
+        is_for_all: "Untuk semua Project"
         is_required: "Harus diisi"
         max_length: "Panjang maksimum"
         min_length: "Panjang minimum"
@@ -859,7 +859,7 @@ id:
         secret: "Rahasia klien"
         owner: "Pemilik"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktif"
         redirect_uri: "Alihkan URI"
         client_credentials_user_id: "ID Pengguna Kredensial Klien"
         scopes: "Cakupan"
@@ -936,11 +936,11 @@ id:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nama"
+        color: "Warna"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Kolom"
         column_names: "Kolom"
         relations_to_type_column: "Relasi untuk %{type}"
         relations_of_type_column: "Relasi %{type}"
@@ -960,18 +960,18 @@ id:
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        include_subprojects: "Sertakan subproyek"
+        results: "Hasil"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Work package terkait"
         to: "Work package terkait"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Tanggal"
+        remind_at_time: "Waktu"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -984,7 +984,7 @@ id:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Activity"
@@ -1014,8 +1014,8 @@ id:
         language: "Bahasa"
         last_login_on: "Login terakhir"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Nama depan"
+        last_name: "Nama belakang"
         first_login: "First login"
         new_password: "Password baru"
         password_confirmation: "Konfirmasi"
@@ -1028,7 +1028,7 @@ id:
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Hari kerja"
       version:
         effective_date: "Tanggal selesai"
         sharing: "Sharing"
@@ -1439,7 +1439,7 @@ id:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Harus mengandung karakter berikut (setidaknya %{min_count} %{all_count}): %{rules}"
               lowercase: "huruf kecil (spt. 'a')"
               uppercase: "huruf besar (spt. 'A')"
               numeric: "numerik (spt. ' 1')"
@@ -1504,7 +1504,7 @@ id:
         other: "Roles"
       status: "Status Work Package"
       token/api:
-        other: Access tokens
+        other: Token akses
       type: "Tipe"
       user: "User"
       version: "Versi"
@@ -1570,13 +1570,13 @@ id:
     comments: "Komentar"
     content: "Konten"
     color: "Warna"
-    creator: "Creator"
+    creator: "Pembuat"
     created_at: "Dibuat"
-    custom_field: "Custom field"
+    custom_field: "Isian kustom"
     custom_options: "Nilai yang mungkin"
     custom_values: "Isian kustom"
     date: "Tanggal"
-    dates_interval: "Date range"
+    dates_interval: "Kisaran tanggal"
     default_columns: "Kolom default"
     description: "Deskripsi"
     derived_due_date: "Tanggal selesai turunan"
@@ -1593,7 +1593,7 @@ id:
     filter: "Filter"
     group: "Grup"
     groups: "Grup"
-    hexcode: "Hex code"
+    hexcode: "Kode Hexa"
     id: "ID"
     is_default: "Nilai default"
     is_for_all: "Untuk semua Project"
@@ -1602,16 +1602,16 @@ id:
     #kept for backwards compatibility
     issue: "Paket-Penugasan"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Komentar"
     lastname: "Nama belakang"
     login: "Nama pengguna"
-    lock_version: "Lock version"
+    lock_version: "Kunci Versi"
     mail: "Email"
     name: "Nama"
-    note: "Note"
-    notes: "Notes"
+    note: "Catatan"
+    notes: "Note"
     number: "Number"
-    options: "Options"
+    options: "Opsi"
     operator: "Operator"
     password: "Password"
     priority: "Prioritas"
@@ -1619,19 +1619,19 @@ id:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Akuntabel"
-    required: "Required"
+    required: "Harus diisi"
     recipient: "Recipient"
     role: "Role"
     roles: "Roles"
-    search: "Search"
+    search: "Cari"
     start_date: "Tanggal start"
     status: "Status"
     state: "State"
     subject: "Perihal"
     slug: "Slug"
     summary: "Ringkasan"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Time Zone"
+    text: "Teks"
     title: "Judul"
     type: "Tipe"
     typeahead: "Autocomplete"
@@ -1639,7 +1639,7 @@ id:
     updated_on: "Diperbarui"
     uploader: "Pengunggah"
     user: "User"
-    username: "Username"
+    username: "Nama pengguna"
     unit: "Unit"
     value: "Nilai"
     values: "Values"
@@ -1891,7 +1891,7 @@ id:
       hour:
         other: "jam"
       day:
-        other: "days"
+        other: "hari"
   description_active: "Aktif?"
   description_attachment_toggle: "Tampil/sembunyikan lampiran"
   description_autocomplete: >
@@ -1926,7 +1926,7 @@ id:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Informasi lebih lanjut"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2014,8 +2014,8 @@ id:
       subproject: "Subproyek: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Ekspor"
+      submit: "Ekspor"
       format:
         label: "File format"
         options:
@@ -2038,10 +2038,10 @@ id:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Laporan"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Bagan Gantt"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2050,10 +2050,10 @@ id:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Hari"
+            weeks: "Minggu"
+            months: "Bulan"
+            quarters: "Kuartal"
         column_width:
           label: "Table column width"
           options:
@@ -2110,7 +2110,7 @@ id:
       title: Generate PDF
       submit: Download
       templates:
-        label: "Template"
+        label: "Templat"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
@@ -2377,7 +2377,7 @@ id:
   label_calendars_and_dates: "Kalender dan tanggal"
   label_calendar_show: "Tampilkan kalender"
   label_category: "Kategori"
-  label_completed: Completed
+  label_completed: Selesai
   label_consent_settings: "Persetujuan Pengguna"
   label_wiki_menu_item: Wiki menu item
   label_select_main_menu_item: Pilih item main menu baru
@@ -2441,7 +2441,7 @@ id:
   label_default: "Default"
   label_delete_user: "Menghapus pengguna"
   label_delete_project: "Hapus proyek"
-  label_delete: "Delete"
+  label_delete: "Hapus"
   label_deleted: "dihapus"
   label_deleted_custom_field: "(isian kustom dihapus)"
   label_deleted_custom_item: "(deleted item)"
@@ -2560,7 +2560,7 @@ id:
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Menampilkan semua pengguna teregistrasi"
   label_show_less: "Show less"
-  label_show_more: "Show more"
+  label_show_more: "Tampilkan lebih"
   label_journal: "Journal"
   label_journal_diff: "Deskripsi perbandingan"
   label_language: "Bahasa"
@@ -2631,8 +2631,8 @@ id:
   label_months_from: "dari bulan"
   label_more: "Lanjut"
   label_more_than_ago: "lusa yang lalu"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Pindahkan kolom ke kiri"
+  label_move_column_right: "Pindahkan kolom ke kanan"
   label_move_work_package: "Pindahkan Paket-Penugasan"
   label_my_account: "Account settings"
   label_my_activity: "Aktivitas saya"
@@ -2657,7 +2657,7 @@ id:
   label_no_change_option: "(tdk berubah)"
   label_no_data: "Tidak ada data untuk ditampilkan"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "tidak ada tanggal mulai"
   label_no_parent_page: "Tidak ada halaman induk"
   label_nothing_display: "Tidak ada yang ditampilkan"
   label_nobody: "tidak ada"
@@ -2725,7 +2725,7 @@ id:
   label_project_latest: "Project terbaru"
   label_project_default_type: "Biarkan kosong pada Tipe"
   label_project_hierarchy: "Hirarki proyek"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Project"
   label_project_new: "Project baru"
   label_project_plural: "Project"
   label_project_list_plural: "Project lists"
@@ -2803,10 +2803,10 @@ id:
   label_show_completed_versions: "Tampilkan versi lengkap"
   label_columns: "Kolom"
   label_sort: "Urutkan"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Urutkan askending"
   label_sort_by: "Urutkan %{value}"
   label_sorted_by: "diurutkan berdasarkan %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Urutkan deskending"
   label_sort_higher: "Naikkan"
   label_sort_highest: "Pindah paling atas"
   label_sort_lower: "Pindahkan ke bawah"
@@ -2835,7 +2835,7 @@ id:
   label_this_month: "bulan ini"
   label_this_week: "minggu ini"
   label_this_year: "tahun ini"
-  label_time: "Time"
+  label_time: "Waktu"
   label_time_entry_plural: "Durasi"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Judul"
@@ -2875,7 +2875,7 @@ id:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "Versi baru"
-  label_version_edit: "Edit version"
+  label_version_edit: "Ubah versi"
   label_version_plural: "Versi"
   label_version_sharing_descendants: "Dengan Sub-Project"
   label_version_sharing_hierarchy: "Dengan hirarki Project"
@@ -3335,7 +3335,7 @@ id:
     count:
       zero: "0 projects"
       one: "1 project"
-      other: "%{count} projects"
+      other: "%{count} proyek"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3721,7 +3721,7 @@ id:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Tambah"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4030,7 +4030,7 @@ id:
       view: "Lihat"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Tanggal"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4218,9 +4218,9 @@ id:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Rahasia
       singular: "aplikasi OAuth"
-      scopes: "Scopes"
+      scopes: "Cakupan"
       client_credentials: "Client credentials"
       plural: "OAuth applications"
       named: "OAuth application '%{name}'"

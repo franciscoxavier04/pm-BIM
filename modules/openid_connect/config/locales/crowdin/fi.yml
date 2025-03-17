@@ -7,7 +7,7 @@ fi:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Nimi
         slug: Unique identifier
         display_name: Display name
         client_id: Client ID

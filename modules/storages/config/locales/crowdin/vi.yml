@@ -2,13 +2,13 @@ vi:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID người dùng
+        client_secret: Khóa bí mật người dùng
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Lưu trữ
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,9 +16,9 @@ vi:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Thư mục dự án
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: Lưu trữ
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
@@ -110,7 +110,7 @@ vi:
         rename_project_folder: 'Đổi tên thư mục dự án được quản lý:'
     errors:
       messages:
-        error: An unexpected error occurred. Please check OpenProject logs for more information or contact an administrator
+        error: Đã xảy ra lỗi không mong muốn. Vui lòng kiểm tra nhật ký OpenProject để biết thêm thông tin hoặc liên hệ với quản trị viên
         unauthorized: OpenProject could not authenticate with the Storage Provider. Please ensure that you have access to it.
       models:
         copy_project_folders_service:
@@ -215,7 +215,7 @@ vi:
         manual_management_description: Tạo và quản lý thư mục cho từng dự án thủ công. Bạn sẽ cần phải đảm bảo rằng các người dùng liên quan có quyền truy cập.
         setup_incomplete: Chọn loại quản lý quyền truy cập và tạo thư mục.
         subtitle: Quản lý quyền truy cập
-      access_management_section: Access and project folders
+      access_management_section: Quyền truy cập và thư mục dự án
       automatically_managed_folders: Thư mục được quản lý tự động
       general_information: Thông tin chung
       oauth_configuration: OAuth configuration
@@ -252,7 +252,7 @@ vi:
         tenant_id_wrong: ID thư mục (người thuê) cấu hình không hợp lệ. Vui lòng kiểm tra cấu hình.
         unexpected_content:
           nextcloud: Unexpected content found in the managed group folder.
-          one_drive: Unexpected content found in the drive.
+          one_drive: Nội dung không mong đợi được tìm thấy trong ổ đĩa.
         unknown_error: Kết nối không thể được xác thực. Đã xảy ra lỗi không xác định. Vui lòng kiểm tra nhật ký máy chủ để biết thêm thông tin.
         userless_access_denied: The configured app password is invalid.
       label_error: Lỗi

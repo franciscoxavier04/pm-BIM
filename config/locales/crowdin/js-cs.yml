@@ -221,7 +221,7 @@ cs:
             label_maximum_users: "Maximální počet aktivních uživatelů"
             label_starts_at: "Začíná v"
             label_expires_at: "Vyprší v"
-            label_plan: "Plan"
+            label_plan: "Tarif"
             label_additional_features: "Additional features"
             receive_newsletter: Chci dostávat<a target="_blank" href="%{link}">newsletter OpenProject</a>.
             taken_domain: V každé doméně může být pouze jedna aktivní zkušební verze.

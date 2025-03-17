@@ -7,7 +7,7 @@ hr:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Naziv
         slug: Unique identifier
         display_name: Display name
         client_id: Client ID

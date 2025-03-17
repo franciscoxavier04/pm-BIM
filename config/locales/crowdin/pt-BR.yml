@@ -178,7 +178,7 @@ pt-BR:
     tls_options:
       verify_peer: "Verificar certificado SSL"
       verify_peer_description_html: >
-        Permite uma verificação SSL estrita da cadeia de confiança do certificado. <br> <strong>Aviso:</strong> Desmarcar esta opção desativa a verificação SSL do certificado do servidor LDAP, o que expõe a sua conexão a ataques man-in-the-middle (MITM).
+        Ativa a verificação rigorosa da cadeia de confiança do certificado SSL. <br> <strong>Aviso:</strong> Desmarcar esta opção desativa a verificação SSL do certificado do servidor LDAP, expondo sua conexão a ataques do tipo Man-in-the-Middle.
       tls_certificate_description: "Se o certificado do servidor LDAP não estiver nas fontes de confiança deste sistema, você poderá adicioná-lo manualmente. Digite uma cadeia de caracteres de certificado PEM X509."
   forums:
     show:
@@ -574,10 +574,10 @@ pt-BR:
         No <a href="%{href}">modo de cálculo de progresso com base no status</a>, o % de conclusão de um pacote de trabalho é automaticamente ajustado para este valor quando o status é selecionado.
         Ignorado no modo baseado em trabalho.
       status_readonly_html: |
-        Marque esta opção para selecionar pacotes de trabalho com situação como "somente leitura".
-        Nenhum atributo pode ser alterado com exceção da situação.
+        Marque esta opção para definir pacotes de trabalho com este status como somente leitura.
+        Nenhum atributo poderá ser alterado, exceto o status.
         <br>
-        <strong>Nota</strong>: valores herdados (por exemplo, de filhos ou relações) ainda serão aplicados.
+        <strong>Nota</strong>: Valores herdados (por exemplo, de itens filhos ou relações) ainda serão aplicados.
     index:
       no_results_title_text: Atualmente, não há nenhuma situação de pacote de trabalho.
       no_results_content_text: Adicionar uma nova situação
@@ -619,7 +619,7 @@ pt-BR:
           insert_as_text: "Adicionar como texto: \"%{word}\""
       export_configuration:
         tab: "Gerar PDF"
-        intro: "Selecione quais modelos dos que estão disponíveis você gostaria de habilitar para este tipo. O modelo determina o design e os atributos visíveis no PDF exportado de um pacote de trabalho deste tipo. O primeiro modelo da lista é selecionado por padrão."
+        intro: "Selecione quais modelos disponíveis você deseja ativar para este tipo. O modelo define o design e os atributos visíveis no PDF exportado de um pacote de trabalho desse tipo. O primeiro modelo da lista é selecionado por padrão."
         pdf_export_templates:
           label: "Modelos de Exportação PDF"
           actions:
@@ -656,7 +656,7 @@ pt-BR:
           manually_scheduled: "Agendado manualmente. Datas não afetadas pelas relações."
       blankslate:
         title: "Nenhum antecessor"
-        description: "Para permitir o agendamento automático, este pacote de trabalho precisa ter pelo menos um antecessor. Será então programado automaticamente para começar depois do antecessor mais próximo."
+        description: "Para ativar o agendamento automático, este pacote de trabalho precisa ter pelo menos um predecessor. Ele será então agendado automaticamente para começar após o predecessor mais próximo."
       ignore_non_working_days:
         title: "Apenas dias úteis"
       mode:
@@ -960,7 +960,7 @@ pt-BR:
         timeline_labels: "Rótulos de linha do tempo"
         timeline_visible: "Exibir diagrama de Gantt"
         timeline_zoom_level: "Nível de zoom do diagrama de Gantt"
-        timestamps: "Baseline timestamps"
+        timestamps: "Carimbo de data/hora base da linha de base"
         sort_criteria: "Critérios de ordenação"
         highlighted_attributes: "Atributos destacados"
         highlighting_mode: "Modo de destaque"
@@ -995,7 +995,7 @@ pt-BR:
         default_done_ratio: "% de conclusão"
       token/ical:
         calendar: "Calendário"
-        ical_token_query_assignment: "Query assignment"
+        ical_token_query_assignment: "Atribuição da consulta"
       time_entry:
         activity: "Atividade"
         hours: "horas"
@@ -1439,7 +1439,7 @@ pt-BR:
               query_invalid: "A consulta incorporada '%{group}' é inválida: %{details}"
               group_without_name: "Grupos sem nome não são permitidos."
             patterns:
-              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
+              invalid_tokens: "Um ou mais atributos dentro do campo não são válidos. Corrija os atributos antes de salvar."
         user:
           attributes:
             base:
@@ -1579,7 +1579,7 @@ pt-BR:
     assigned_to: "Atribuição"
     assignee: "Atribuído para"
     attachments: "Anexos"
-    actor: "Actor"
+    actor: "Ator"
     action: "Ação"
     author: "Autor"
     avatar: "Imagem do perfil"
@@ -1626,7 +1626,7 @@ pt-BR:
     journal_notes: "Comentário"
     lastname: "Sobrenome"
     login: "Nome de usuário"
-    lock_version: "Lock version"
+    lock_version: "Bloquear versão"
     mail: "E-mail"
     name: "Nome"
     note: "Nota"
@@ -2069,7 +2069,7 @@ pt-BR:
         input_label_report: "Adicionar colunas à tabela de atributos"
         input_caption_report: "Por padrão, todos os atributos adicionados como colunas na lista de pacotes de trabalho são selecionados. Embora os campos de texto longo não estejam disponíveis na tabela de atributos, eles podem ser visualizados logo abaixo."
         input_caption_table: "Por padrão, todos os atributos adicionados como colunas na lista de pacotes de trabalho são selecionados. Os campos de texto longo não estão disponíveis nas exportações em formato de tabela."
-        input_caption_required: "Não é possível exportar a seleção sem qualquer coluna. Por favor, adicione pelo menos uma coluna."
+        input_caption_required: "Não é possível exportar a visualização sem nenhuma coluna. Adicione pelo menos uma coluna."
       pdf:
         export_type:
           label: "Tipo de exportação para PDF"
@@ -2142,10 +2142,10 @@ pt-BR:
     page_nr_footer: "Página %{page} de %{total}"
     template_attributes:
       label: "Atributos e descrição"
-      caption: Todos os atributos presentes na configuração atual do formulário usando o modelo padrão.
+      caption: Todos os atributos da configuração atual do formulário com o modelo padrão.
     template_contract:
       label: "Contrato"
-      caption: Dados de pacotes de trabalho formatados no modelo padrão de contratos Alemão.
+      caption: Detalhes do pacote de trabalho formatados conforme o padrão do contrato alemão.
     dialog:
       title: Gerar PDF
       submit: Baixar
@@ -3532,10 +3532,10 @@ pt-BR:
   search_input_placeholder: "Pesquisar..."
   setting_after_first_login_redirect_url: "Redirecionamento de primeiro login"
   setting_after_first_login_redirect_url_text_html: >
-    Defina um caminho para redirecionar os usuários após o primeiro login. Se vazio, redireciona para a página inicial do tour de integração. <br/> Exemplo: <code>/my/page</code>
+    Defina um caminho para redirecionar os usuários após o primeiro login. Se deixado em branco, eles serão redirecionados para a página inicial do tour de introdução. <br/> Exemplo: <code>/my/page</code>
   setting_after_login_default_redirect_url: "Após redirecionamento de login"
   setting_after_login_default_redirect_url_text_html: >
-    Define um caminho padrão para redirecionar os usuários após o login, caso nenhum link de retorno tenha sido fornecido. Redireciona para a página inicial se não for configurado. <br/> Exemplo: <code>/my/page</code>
+    Defina um caminho padrão para redirecionar os usuários após o login, caso nenhum link de retorno tenha sido fornecido. Se não for definido, o redirecionamento será para a página inicial. <br/> Exemplo: <code>/my/page</code>
   setting_apiv3_cors_title: "Compartilhamento de recursos entre origens (CORS)"
   setting_apiv3_cors_enabled: "Habilitar CORS"
   setting_apiv3_cors_origins: "Cross-Origin Resource Sharing (CORS) permitidos pela API V3"
@@ -4396,6 +4396,6 @@ pt-BR:
     team_planner_view: Planejador de Equipes
     two_factor_authentication: Autenticação de dois fatores
     virus_scanning: Verificação de Vírus em arquivos enviados
-    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_query_relation_columns: Colunas de relação de consulta do pacote de trabalho
     work_package_sharing: Compartilhamento de Pacotes de Trabalho
     work_package_subject_generation: Geração de assunto do pacote de trabalho

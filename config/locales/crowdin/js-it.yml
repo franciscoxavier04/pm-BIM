@@ -221,8 +221,8 @@ it:
             label_maximum_users: "Numero massimo di utenti attivi"
             label_starts_at: "Comincia alle"
             label_expires_at: "Scade il"
-            label_plan: "Plan"
-            label_additional_features: "Additional features"
+            label_plan: "Piano"
+            label_additional_features: "Funzionalità aggiuntive"
             receive_newsletter: Voglio ricevere la <a target="_blank" href="%{link}">newsletter</a> di OpenProject.
             taken_domain: Puoi avere solo una prova attiva per ogni dominio.
             domain_mismatch: Il nome host della richiesta attuale non corrisponde al nome host configurato. Controlla le impostazioni di sistema.
@@ -361,7 +361,7 @@ it:
           "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                Questa versione offre diverse funzionalità e miglioramenti, ad esempio <br> <ul class="%{list_styling_class}"> <li>Abilita la modalità di pianificazione automatica.</li> <li>Imposta i risultati dei punti all'ordine del giorno per le riunioni.</li> <li>Genera documenti PDF da una descrizione di macro-attività.</li> <li>Gestisci meglio un gran numero di progetti con una visualizzazione migliorata degli elenchi di progetti.</li> <li>Utilizza la menzione di un'utente con la chiocciola @ per citarlo nella risposta a un commento.</li> </ul>
     ical_sharing_modal:
       title: "Iscriviti al calendario"
       inital_setup_error_message: "Si è verificato un errore recuperando i dati."
@@ -726,7 +726,7 @@ it:
       context: "Contesto del progetto"
       copy:
         copy_options: "Opzioni di copia"
-      not_available: "Project N/A"
+      not_available: "Progetto N/A"
       no_template_selected: "(Nessuno)"
       required_outside_context: >
         Scegli un progetto per creare una macro-attività e vederne tutti gli attributi. Puoi selezionare solo progetti che hanno il tipo sopra indicato attivato.

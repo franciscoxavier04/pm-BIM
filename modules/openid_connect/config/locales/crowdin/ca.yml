@@ -7,15 +7,15 @@ ca:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Nom
         slug: Unique identifier
-        display_name: Display name
-        client_id: Client ID
-        client_secret: Client secret
+        display_name: Nom mostrat
+        client_id: ID de client
+        client_secret: Clau secreta del Client
         secret: Secret
-        scope: Scope
+        scope: Abast
         grant_types_supported: Supported grant types
-        limit_self_registration: Limit self registration
+        limit_self_registration: Limitar el registre per part dels propis usuaris
         authorization_endpoint: Authorization endpoint
         userinfo_endpoint: User information endpoint
         token_endpoint: Token endpoint
@@ -103,7 +103,7 @@ ca:
       label_advanced_configuration: Advanced configuration
       label_configuration_details: Metadata
       label_client_details: Client details
-      label_attribute_mapping: Attribute mapping
+      label_attribute_mapping: Associació d'atributs
       client_details_description: Configuration details of OpenProject as an OIDC client
       no_results_table: Encara no s'han definit cap proveïdor.
       plural: Proveïdors d’OpenID

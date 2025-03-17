@@ -2,8 +2,8 @@ bg:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: '№ на клиент'
+        client_secret: Тайна на клиента
       project:
         project_folder_type: Project folder type
       storages/file_link:

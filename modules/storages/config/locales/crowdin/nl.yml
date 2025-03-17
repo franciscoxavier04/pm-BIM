@@ -8,7 +8,7 @@ nl:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Opslag
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,9 +16,9 @@ nl:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Projectmap
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: Opslag
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
@@ -357,17 +357,17 @@ nl:
       access_granted: Access granted
       project_settings:
         access_granted_screen_reader: Access granted. You are now ready to use %{storage}
-        storage_ready: You are now ready to use %{storage}
+        storage_ready: U bent nu klaar om %{storage}te gebruiken.
       storage_admin:
         access_granted_screen_reader: Access granted. You are now ready to add projects to %{storage}
         storage_ready: You are now ready to add projects to %{storage}
     oauth_grant_nudge_modal:
       cancel_button_label: Ik doe het later
       heading: Login to %{provider_type} required
-      login_button_aria_label: Login to %{storage}
+      login_button_aria_label: Aanmelden bij %{storage}
       login_button_label: "%{provider_type} log in"
       project_settings:
-        description: To get access to the project folder you need to login to %{storage}.
+        description: Om toegang te krijgen tot de projectmap moet u inloggen op %{storage}.
       requesting_access_to: Toegang aanvragen tot %{storage}
       storage_admin:
         description: In order to add projects to this storage you need to be logged into %{provider_type}. Please, log in and try again.

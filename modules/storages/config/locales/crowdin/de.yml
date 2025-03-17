@@ -2,13 +2,13 @@ de:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: Client-ID
+        client_secret: Client-Secret
       project:
-        project_folder_type: Project folder type
+        project_folder_type: Projektordner-Typ
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Speicherung
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider

@@ -47,11 +47,11 @@ sv:
       user:
         default_rates: "Standardtimpris"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: Projekt
+        user: Användare
+        work_package: Arbetspaket
         hours: Timmar
-        comments: Comment
+        comments: Kommentar
         activity: Aktivitet
         spent_on: Datum
         start_time: Start time
@@ -84,7 +84,7 @@ sv:
   button_add_rate: "Lägg till timpris"
   button_log_costs: "Logga enhetskostnader"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "Aktivitet"
   caption_booked_on_project: "Bokade på projekt"
   caption_default: "Standard"
   caption_default_rate_history_for: "Historiskt standardtimpris för %{user}"
@@ -96,7 +96,7 @@ sv:
   caption_save_rate: "Spara timpris"
   caption_set_rate: "Ange aktuellt timpris"
   caption_show_locked: "Visa låst typer"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "Logga tid"
   description_date_for_new_rate: "Datum för nytt timpris"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -140,9 +140,9 @@ sv:
   label_until: "fram till"
   label_valid_from: "Gäller från"
   label_yes: "Ja"
-  label_time: "Time"
+  label_time: "Tid"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Kostnader"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Ett fel inträffade. Försök igen."
@@ -165,8 +165,8 @@ sv:
   permission_view_own_time_entries: "Visa egen spenderad tid"
   project_module_costs: "Tid och kostnader"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
+  setting_costs_currency: "Valuta"
+  setting_costs_currency_format: "Formatet för valuta"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "Tilldela rapporterade timmar och kostnader till projektet"
   text_destroy_cost_entries_question: "%{cost_entries} rapporterades på de arbetspaket som du håller på och tar bort. Vad vill du göra?"

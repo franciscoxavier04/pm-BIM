@@ -30,7 +30,7 @@ vi:
         overridden_costs: "Chi phí ghi đè"
         spent: "Đã chi"
         spent_on: "Ngày"
-        logged_by: "Logged by"
+        logged_by: "Đã ghi bởi"
       cost_type:
         unit: "Tên đơn vị"
         unit_plural: "Tên đơn vị đa năng"
@@ -60,7 +60,7 @@ vi:
       cost_type:
         other: "Loại chi phí"
       time_entry_activity:
-        other: "Time tracking activities"
+        other: "Theo dõi hoạt động"
       rate: "Tỉ giá"
     errors:
       models:
@@ -82,7 +82,7 @@ vi:
   button_add_rate: "Thêm tỷ lệ"
   button_log_costs: "Ghi lại chi phí đơn vị"
   button_log_time: "Nhật ký"
-  button_add_activity: "Activity"
+  button_add_activity: "Hoạt động"
   caption_booked_on_project: "Đã ghi trên dự án"
   caption_default: "Mặc định"
   caption_default_rate_history_for: "Lịch sử tỷ lệ mặc định cho %{user}"
@@ -138,9 +138,9 @@ vi:
   label_until: "đến"
   label_valid_from: "Có hiệu lực từ"
   label_yes: "Có"
-  label_time: "Time"
+  label_time: "Thời gian"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Chi phí"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Phải chọn gói công việc trước đã
   notice_something_wrong: "Đã xảy ra lỗi. Vui lòng thử lại."

@@ -121,7 +121,7 @@ RSpec.describe "Recurring meetings move to next meeting", :js do
           meeting_page.select_action(series_agenda_item, "Move to next meeting")
         end
 
-        expect(page).to have_text "The next meeting in this series has been cancelled."
+        expect(page).to have_text "Unable to move to the next meeting since it has been cancelled."
         meeting_page.expect_agenda_item(title: "Test notes")
       end
     end

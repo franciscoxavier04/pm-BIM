@@ -218,7 +218,7 @@ fi:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Kaikille projekteille
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ fi:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Ylätaso"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -599,14 +599,14 @@ fi:
       no_results_content_text: Lisää uusi tyyppi
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Lomakkeen muokkaus"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
+        tab: "Projektit"
         enabled_projects: "Enabled projects"
       settings:
-        tab: "Settings"
+        tab: "Asetukset"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -664,13 +664,13 @@ fi:
         title: "Working days only"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Automaattinen"
         manual: "Manual"
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Alitehtävä"
+        dates: "Päivämäärät"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -738,10 +738,10 @@ fi:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "liittyy"
+      label_relates_plural: "liittyy"
+      label_relates_to_singular: "liittyy"
+      label_relates_to_plural: "liittyy"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -757,42 +757,42 @@ fi:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "estää"
+      label_blocks_plural: "estää"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "estänyt"
+      label_blocked_plural: "estänyt"
+      label_blocked_by_singular: "estänyt"
+      label_blocked__by_plural: "estänyt"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "kaksoiskappaleet"
+      label_duplicates_plural: "kaksoiskappaleet"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "kaksoiskappale"
+      label_duplicated_plural: "kaksoiskappale"
+      label_duplicated_by_singular: "kaksoiskappale"
+      label_duplicated_by_plural: "kaksoiskappale"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "sisältää"
+      label_includes_plural: "sisältää"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "osana"
+      label_partof_plural: "osana"
+      label_part_of_singular: "osana"
+      label_part_of_plural: "osana"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "edellyttää"
+      label_requires_plural: "edellyttää"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Liittyy tehtävään"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Kutsu
   account:
@@ -855,7 +855,7 @@ fi:
         editable: "Muokattava"
         field_format: "Kentän tyyppi"
         is_filter: "Käytetään suodattimena"
-        is_for_all: "For all projects"
+        is_for_all: "Kaikille projekteille"
         is_required: "Pakollinen tieto"
         max_length: "Enimmäispituus"
         min_length: "Vähimmäispituus"
@@ -872,7 +872,7 @@ fi:
         secret: "Client secret"
         owner: "Omistaja"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktiivinen"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -900,7 +900,7 @@ fi:
         attr_login: "Username attribute"
         attr_mail: "Sähköposti-tietue"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Järjestelmänvalvoja"
         base_dn: "Base DN"
         host: "Isäntä"
         onthefly: "Automatic user creation"
@@ -918,7 +918,7 @@ fi:
           true: "unarchived"
           false: "archived"
         description: "Kuvaus"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Käytössä olevat moduulit"
         identifier: "Tunniste"
         latest_activity_at: "Viimeisin tapahtuma"
         parent: "Aliprojekti"
@@ -949,11 +949,11 @@ fi:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nimi"
+        color: "Väri"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Sarakkeet"
         column_names: "Sarakkeet"
         relations_to_type_column: "Riippuvuus %{type}"
         relations_of_type_column: "%{type} -riippuvuus"
@@ -961,7 +961,7 @@ fi:
         sort_by: "Sort results by"
         filters: "Suodattimet"
         timeline_labels: "Timeline labels"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "Näytä gantt kaavio"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -974,17 +974,17 @@ fi:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "Tulokset"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Liittyy tehtävään"
         to: "Liittyy tehtävään"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Päivämäärä"
+        remind_at_time: "Aika"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -997,7 +997,7 @@ fi:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalenteri"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Tapahtumat"
@@ -1016,7 +1016,7 @@ fi:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Käyttäjä"
       user:
         admin: "Järjestelmänvalvoja"
         auth_source: "Authentication source"
@@ -1027,8 +1027,8 @@ fi:
         language: "Kieli"
         last_login_on: "Edellinen kirjautuminen"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Etunimi"
+        last_name: "Sukunimi"
         first_login: "First login"
         new_password: "Uusi salasana"
         password_confirmation: "Vahvistus"
@@ -1452,7 +1452,7 @@ fi:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "On sisällettävä merkkejä seuraavista luokista (ainakin %{min_count} %{all_count}): %{rules}"
               lowercase: "pieniä kirjaimia (esim. \"a\")"
               uppercase: "isoja kirjaimia (esim. A)"
               numeric: "numeerinen (esim. 1)"
@@ -1502,7 +1502,7 @@ fi:
       global_role: "Global role"
       group: "Ryhmä"
       issue_priority:
-        one: "Priority"
+        one: "Prioriteetti"
         other: "Priorities"
       member: "Jäsen"
       news: "Uutiset"
@@ -1523,7 +1523,7 @@ fi:
         other: "Roolit"
       status: "Tehtävän tila"
       token/api:
-        one: Access token
+        one: API-salasana
         other: Access tokens
       type: "Tyyppi"
       user: "Käyttäjä"
@@ -1583,7 +1583,7 @@ fi:
     assignee: "Työn suorittaja"
     attachments: "Liitteet"
     actor: "Actor"
-    action: "Action"
+    action: "Toiminto"
     author: "Tekijä"
     avatar: "Avatar"
     base: "Yleinen virhe:"
@@ -1596,11 +1596,11 @@ fi:
     color: "Väri"
     creator: "Creator"
     created_at: "Luotu"
-    custom_field: "Custom field"
+    custom_field: "Mukautettu kenttä"
     custom_options: "Mahdolliset arvot"
     custom_values: "Mukautetut kentät"
     date: "Päivämäärä"
-    dates_interval: "Date range"
+    dates_interval: "Aikaväli"
     default_columns: "Oletussarakkeet"
     description: "Kuvaus"
     derived_due_date: "Derived finish date"
@@ -1610,14 +1610,14 @@ fi:
     due_date: "Päättymispäivä"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "Sähköposti"
     entity_type: "Entity"
     expires_at: "Vanhentuu"
     firstname: "Etunimi"
-    filter: "Filter"
+    filter: "Suodata"
     group: "Ryhmä"
     groups: "Ryhmät"
-    hexcode: "Hex code"
+    hexcode: "Hex koodi"
     id: "ID"
     is_default: "Oletusarvo"
     is_for_all: "Kaikille projekteille"
@@ -1626,36 +1626,36 @@ fi:
     #kept for backwards compatibility
     issue: "Työpaketti"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Kommentti"
     lastname: "Sukunimi"
     login: "Käyttäjätunnus"
-    lock_version: "Lock version"
+    lock_version: "Lukitse versio"
     mail: "Sähköposti"
     name: "Nimi"
-    note: "Note"
-    notes: "Notes"
+    note: "Huomautus"
+    notes: "Kommentit"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "Valinnat"
+    operator: "Operaattori"
     password: "Salasana"
     priority: "Prioriteetti"
     project: "Projekti"
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Vastuuhenkilö"
-    required: "Required"
+    required: "Pakollinen tieto"
     recipient: "Recipient"
     role: "Rooli"
     roles: "Roolit"
-    search: "Search"
+    search: "Haku"
     start_date: "Aloituspäivä"
     status: "Tila"
     state: "State"
     subject: "Aihe"
     slug: "Slug"
     summary: "Yhteenveto"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Aikavyöhyke"
+    text: "Teksti"
     title: "Otsikko"
     type: "Tyyppi"
     typeahead: "Autocomplete"
@@ -1663,12 +1663,12 @@ fi:
     updated_on: "Päivitetty"
     uploader: "Uploader"
     user: "Käyttäjä"
-    username: "Username"
-    unit: "Unit"
+    username: "Käyttäjätunnus"
+    unit: "Yksikkö"
     value: "Arvo"
     values: "Values"
     version: "Versio"
-    visible: "Visible"
+    visible: "Näkyvissä"
     work_package: "Työpaketti"
   backup:
     failed: "Backup failed"
@@ -1934,7 +1934,7 @@ fi:
         other: "tuntia"
       day:
         one: "day"
-        other: "days"
+        other: "päivää"
   description_active: "Aktiivinen?"
   description_attachment_toggle: "Näytä tai Piilota liitteet"
   description_autocomplete: >
@@ -1969,7 +1969,7 @@ fi:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Lisätietoja"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2057,8 +2057,8 @@ fi:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Vie"
+      submit: "Vie"
       format:
         label: "File format"
         options:
@@ -2078,13 +2078,13 @@ fi:
           label: "PDF export type"
           options:
             table:
-              label: "Table"
+              label: "Taulukko"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Raportti"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Gantt-kaavio"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2093,9 +2093,9 @@ fi:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
+            days: "Päivää"
+            weeks: "Viikkoa"
+            months: "Kuukautta"
             quarters: "Quarters"
         column_width:
           label: "Table column width"
@@ -2151,7 +2151,7 @@ fi:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Lataa
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2484,7 +2484,7 @@ fi:
   label_default: "Oletus"
   label_delete_user: "Poista käyttäjä"
   label_delete_project: "Poista projekti"
-  label_delete: "Delete"
+  label_delete: "Poista"
   label_deleted: "poistettu"
   label_deleted_custom_field: "(poistettu mukautettu kenttä)"
   label_deleted_custom_item: "(deleted item)"
@@ -2573,7 +2573,7 @@ fi:
   label_here: tässä
   label_hide: "Piilota"
   label_history: "Historia"
-  label_hierarchy: "Hierarchy"
+  label_hierarchy: "Hierarkia"
   label_hierarchy_leaf: "Hierarchy leaf"
   label_home: "Koti"
   label_subject_or_id: "Aihe tai ID"
@@ -2602,7 +2602,7 @@ fi:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Show all registered users"
-  label_show_less: "Show less"
+  label_show_less: "Näytä vähemmän"
   label_show_more: "Show more"
   label_journal: "Journal"
   label_journal_diff: "Kuvauksen vertailu"
@@ -2674,8 +2674,8 @@ fi:
   label_months_from: "kuukauden päässä"
   label_more: "Lisää"
   label_more_than_ago: "enemän kuin päivää sitten"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Siirrä saraketta vasemmalle"
+  label_move_column_right: "Siirrä saraketta oikealle"
   label_move_work_package: "Siirrä tehtävä"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2700,7 +2700,7 @@ fi:
   label_no_change_option: "(Ei muutosta)"
   label_no_data: "Ei tietoja"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "ei aloituspäivää"
   label_no_parent_page: "Ei yläsivua"
   label_nothing_display: "Ei näytettävää"
   label_nobody: "ei kukaan"
@@ -2768,7 +2768,7 @@ fi:
   label_project_latest: "Uusimmat projektit"
   label_project_default_type: "Salli tyhjä tyyppi"
   label_project_hierarchy: "Project hierarchy"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projektit"
   label_project_new: "Uusi projekti"
   label_project_plural: "Projektit"
   label_project_list_plural: "Project lists"
@@ -2803,7 +2803,7 @@ fi:
   label_relation_new: "Uusi riippuvuus"
   label_release_notes: "Julkaisutiedot"
   label_remaining_work: "Remaining work"
-  label_remove_column: "Remove column"
+  label_remove_column: "Poista sarake"
   label_remove_columns: "Poista valitut sarakkeet"
   label_renamed: "uudelleennimetty"
   label_reply_plural: "Vastaukset"
@@ -2846,10 +2846,10 @@ fi:
   label_show_completed_versions: "Näytä valmiit versiot"
   label_columns: "Sarakkeet"
   label_sort: "Järjestä"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Lajittele nousevasti"
   label_sort_by: "Lajittele %{value}"
   label_sorted_by: "lajitteluperuste %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Lajittele laskevasti"
   label_sort_higher: "Siirrä ylös"
   label_sort_highest: "Siirrä ylimmäiseksi"
   label_sort_lower: "Siirrä alas"
@@ -2878,7 +2878,7 @@ fi:
   label_this_month: "tässä kuussa"
   label_this_week: "tällä viikolla"
   label_this_year: "tänä vuonna"
-  label_time: "Time"
+  label_time: "Aika"
   label_time_entry_plural: "Käytetty aika"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Otsikko"
@@ -2918,7 +2918,7 @@ fi:
   label_user_settings: "Käyttäjäasetukset"
   label_users_settings: "Users settings"
   label_version_new: "Uusi versio"
-  label_version_edit: "Edit version"
+  label_version_edit: "Muokkaa versiota"
   label_version_plural: "Versiot"
   label_version_sharing_descendants: "Aliprojektien kanssa"
   label_version_sharing_hierarchy: "Projektihierarkian kanssa"
@@ -3380,7 +3380,7 @@ fi:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "1 project"
+      one: "1 projekti"
       other: "%{count} projects"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
@@ -3769,7 +3769,7 @@ fi:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Lisää"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4079,7 +4079,7 @@ fi:
       view: "Näytä"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Päivämäärä"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

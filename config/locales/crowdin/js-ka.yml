@@ -221,7 +221,7 @@ ka:
             label_maximum_users: "Maximum active users"
             label_starts_at: "იწყება"
             label_expires_at: "ვადა"
-            label_plan: "Plan"
+            label_plan: "გეგმა"
             label_additional_features: "Additional features"
             receive_newsletter: I want to receive the OpenProject <a target="_blank" href="%{link}">newsletter</a>.
             taken_domain: There can only be one active trial per domain.
@@ -614,7 +614,7 @@ ka:
         assigned: "დამსაქმებელი"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "ანგარიშვალდებული"
         created: "შეიქმნა"
         scheduled: "დაგეგმილია"
         commented: "კომენტარით"
@@ -644,7 +644,7 @@ ka:
           with_current_filter: "There are no notifications in this view at the moment"
         mark_all_read: "Mark all as read"
         mark_as_read: "წაკითხულად მონიშვნა"
-        text_update_date_by: "%{date} by"
+        text_update_date_by: "%{date} ავტორი"
         total_count_warning: "Showing the %{newest_count} most recent notifications. %{more_count} more are not displayed."
         empty_state:
           no_notification: "Looks like you are all caught up."

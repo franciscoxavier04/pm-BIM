@@ -613,7 +613,7 @@ sv:
         assigned: "Tilldelad till"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Huvudansvarig"
         created: "Skapad"
         scheduled: "Schemalagt"
         commented: "Kommenterade"
@@ -636,8 +636,8 @@ sv:
       center:
         label_actor_and: "och"
         and_more_users:
-          one: "and 1 other"
-          other: "and %{count} others"
+          one: "och 1 annan"
+          other: "och %{count} andra"
         no_results:
           at_all: "New notifications will appear here when there is activity that concerns you."
           with_current_filter: "There are no notifications in this view at the moment"

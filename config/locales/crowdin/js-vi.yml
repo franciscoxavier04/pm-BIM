@@ -221,7 +221,7 @@ vi:
             label_maximum_users: "Số người dùng hoạt động tối đa"
             label_starts_at: "Bắt đầu từ"
             label_expires_at: "Hết hạn vào"
-            label_plan: "Plan"
+            label_plan: "Gói dịch vụ"
             label_additional_features: "Additional features"
             receive_newsletter: Tôi muốn nhận <a target="_blank" href="%{link}">bản tin</a> của OpenProject.
             taken_domain: Chỉ có thể có một bản dùng thử hoạt động cho mỗi miền.
@@ -614,7 +614,7 @@ vi:
         assigned: "người được giao"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Trách nhiệm"
         created: "được tạo"
         scheduled: "được lên lịch"
         commented: "bình luận"

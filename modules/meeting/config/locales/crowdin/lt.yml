@@ -56,10 +56,10 @@ lt:
         frequency: "Frequency"
         interval: "Interval"
         start_date: "Starts on"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Pradžios laikas"
+        start_time_hour: "Pradžios laikas"
         end_after: "Meeting series ends"
-        end_date: "End date"
+        end_date: "Pabaigos data"
         iterations: "Occurrences"
     errors:
       models:
@@ -73,7 +73,7 @@ lt:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "Susitikimas"
       meeting_agenda_item: "Darbotvarkės punktas"
       meeting_agenda: "Dienotvarkė"
       meeting_minutes: "Minutės"
@@ -116,11 +116,11 @@ lt:
   label_meeting_minutes: "Minutės"
   label_meeting_close: "Uždaryti"
   label_meeting_open: "Atidaryti"
-  label_meeting_index_delete: "Delete"
+  label_meeting_index_delete: "Ištrinti"
   label_meeting_open_this_meeting: "Open this meeting"
   label_meeting_agenda_close: "Uždaryti darbotvarkę, kad būtų pradėtos minutės"
   label_meeting_date_time: "Data/Laikas"
-  label_meeting_date_and_time: "Date and time"
+  label_meeting_date_and_time: "Data ir laikas"
   label_meeting_diff: "skirt."
   label_recurring_meeting: "Recurring meeting"
   label_recurring_meeting_part_of: "Part of a meeting series"
@@ -128,7 +128,7 @@ lt:
   label_recurring_meeting_plural: "Recurring meetings"
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "Atidarytas"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
@@ -163,7 +163,7 @@ lt:
   label_past_invitations: "Ankstesni pakvietimai"
   label_attended: "Attended"
   label_attended_user: "Attended user"
-  label_created_by_me: "Created by me"
+  label_created_by_me: "Sukūriau pats"
   label_notify: "Siųsti peržiūrai"
   label_icalendar: "Siųsti iCalendar formatu"
   label_icalendar_download: "Atsisiųsti iCalendar įvykį"
@@ -230,7 +230,7 @@ lt:
     copied: "Nukopijuota iš susitikimo #%{id}"
     delete_dialog:
       one_time:
-        title: "Delete meeting"
+        title: "Trinti susitikimą"
         heading: "Delete this meeting?"
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
@@ -298,14 +298,14 @@ lt:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Open"
+      title: "Atidarytas"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "Suplanuotas"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -367,7 +367,7 @@ lt:
   label_meeting_created_by: "Sukūrė"
   label_meeting_last_updated: "Atnaujinta"
   label_meeting_reload: "Reload"
-  label_meeting_index_today: "Today"
+  label_meeting_index_today: "Šiandien"
   label_meeting_index_tomorrow: "Tomorrow"
   label_meeting_index_this_week: "Later this week"
   label_meeting_index_later: "Next week and later"
@@ -403,10 +403,10 @@ lt:
   label_meeting_state_closed: "Uždarytas"
   label_meeting_state_closed_html: "<i>Uždarytas</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Suplanuotas"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "Vykdoma"
   label_meeting_reopen_action: "Iš naujo atidaryti susitikimą"
   label_meeting_close_action: "Uždaryti susitikimą"
   label_meeting_in_progress_action: "Mark as in progress"
@@ -432,6 +432,6 @@ lt:
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Šis darbo paketas dar nesuplanuotas artėjančio susitikimo plane."
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Naudokite mygtuką „Pridėti į susitikimą“, kad pridėtumėte šį darbo paketą į ateinantį susitikimą.'
   text_work_package_has_no_past_meeting_agenda_items: "Šis darbo paketas nebuvo paminėtas ankstesniame susitikime."

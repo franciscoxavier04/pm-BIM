@@ -63,8 +63,8 @@ pt-BR:
       models:
         recurring_meeting:
           must_cover_existing_meetings:
-            one: "Há uma reunião em aberto na série que não compreende o novo horário. Ajuste o horário para atualizar todas as reuniões existentes."
-            other: "Há um total de %{count} reuniões abertas na série que não compreendem o novo horário. Ajuste o horário para atualizar todas as reuniões existentes."
+            one: "Há uma reunião aberta na série que não está contemplada na nova programação. Ajuste a programação para incluir todas as reuniões existentes."
+            other: "Há %{count} reuniões abertas na série que não estão contempladas na nova programação. Ajuste a programação para incluir todas as reuniões existentes."
             format: "%{message}"
       messages:
         invalid_time_format: "não é um horário válido. Formato exigido: HH:MM"
@@ -402,12 +402,12 @@ pt-BR:
   label_meeting_reopen_action: "Reabrir reunião"
   label_meeting_close_action: "Fechar reunião"
   label_meeting_in_progress_action: "Marcar como \"Em andamento\""
-  text_meeting_open_description: "Esta reunião está aberta. Você pode adicionar/remover itens da agenda e editá-los como quiser. Assim que a pauta estiver pronta, marque-a como \"Em andamento\" para registrar os resultados."
+  text_meeting_open_description: "Esta reunião está aberta. Você pode adicionar, remover e editar itens da agenda como quiser. Assim que a agenda estiver pronta, marque-a como \"Em andamento\" para registrar os resultados."
   text_meeting_closed_description: "Esta reunião está fechada. Você não pode mais adicionar/remover itens da agenda."
-  text_meeting_in_progress_description: "Esta reunião está em andamento. Você pode registrar resultados para cada item da agenda, reorganizá-los e até mesmo adicionar novos. Uma vez que a reunião estiver concluída, você pode marcá-la como \"Finalizada\" para fechá-la."
-  text_meeting_open_dropdown_description: "Quaisquer resultados existentes permanecerão, mas os usuários não serão capazes de adicionar novos resultados."
-  text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
-  text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
+  text_meeting_in_progress_description: "A reunião está em andamento. Você pode registrar os resultados de cada item da agenda, reorganizá-los e adicionar novos. Quando a reunião for concluída, marque-a como encerrada para bloqueá-la."
+  text_meeting_open_dropdown_description: "Os resultados existentes permanecerão, mas os usuários não poderão adicionar novos."
+  text_meeting_in_progress_dropdown_description: "Registre os resultados como solicitações de informação ou decisões tomadas durante a reunião."
+  text_meeting_closed_dropdown_description: "Esta reunião está encerrada. Já não é possível modificar os pontos da ordem de trabalhos ou os resultados."
   label_meeting_manage_participants: "Gerenciar participantes"
   label_meeting_no_participants: "Sem participantes"
   label_meeting_show_hide_participants: "Exibir/ocultar %{count} a mais"
@@ -421,9 +421,9 @@ pt-BR:
   text_add_work_package_to_meeting_description: "Um pacote de trabalho pode ser adicionado a uma ou várias reuniões para discussão. Quaisquer anotações sobre ele também ficarão visíveis aqui."
   text_agenda_item_no_notes: "Nenhum comentário foi feito"
   text_agenda_item_not_editable_anymore: "Este item da agenda não pode mais ser editado."
-  text_agenda_item_move_next_meeting: "Você tem certeza que quer mover isto para a próxima reunião em %{date}, às %{time}?"
-  text_agenda_item_moved_to_next_meeting: "Item da agenda movido para a próxima reunião, que ocorrerá em %{date}"
+  text_agenda_item_move_next_meeting: "Tem certeza de que deseja mover isso para a próxima reunião em %{date} às %{time}?"
+  text_agenda_item_moved_to_next_meeting: "Item da agenda movido para a próxima reunião em %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Este pacote de trabalho ainda não está programado na agenda de uma reunião futura."
-  text_agenda_item_move_next_meeting_cancelled: "A próxima reunião nesta série foi cancelada."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Use o botão "Adicionar à reunião" para adicionar este pacote de trabalho a uma próxima reunião.'
   text_work_package_has_no_past_meeting_agenda_items: "Este pacote de trabalho não foi mencionado em uma reunião anterior."

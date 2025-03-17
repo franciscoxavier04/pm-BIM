@@ -123,7 +123,7 @@ fa:
             item_0:
               name: 'برنامه پروژه:'
             item_1:
-              name: Milestones
+              name: نقاط عطف
             item_2:
               name: Tasks
             item_3:
@@ -173,7 +173,7 @@ fa:
                   name: بسته های کاری
               item_6:
                 options:
-                  name: Milestones
+                  name: نقاط عطف
           work_packages:
             item_0:
               subject: Start of project

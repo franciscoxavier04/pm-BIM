@@ -62,7 +62,7 @@ ne:
         other: "Cost types"
       time_entry_activity:
         one: "Time tracking activity"
-        other: "Time tracking activities"
+        other: "समय ट्र्याकिंग गतिविधिहरू"
       rate: "Rate"
     errors:
       models:

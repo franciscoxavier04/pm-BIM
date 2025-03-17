@@ -220,7 +220,7 @@ el:
             label_maximum_users: "Μέγιστοι ενεργοί χρήστες"
             label_starts_at: "Αρχίζει στις"
             label_expires_at: "Λήγει στις"
-            label_plan: "Plan"
+            label_plan: "Πλάνο"
             label_additional_features: "Additional features"
             receive_newsletter: Θέλω να λαμβάνω το <a target="_blank" href="%{link}">ενημερωτικό δελτίο</a> του OpenProject.
             taken_domain: Μπορεί να υπάρχει μόνο μια ενεργή δοκιμαστική συνδρομή ανά τομέα.
@@ -613,7 +613,7 @@ el:
         assigned: "Ανάθεση σε"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Υπόλογος"
         created: "Δημιουργήθηκε"
         scheduled: "Προγραμματισμένο"
         commented: "Σχολιασμένο"
