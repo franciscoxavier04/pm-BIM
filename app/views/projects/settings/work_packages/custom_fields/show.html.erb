@@ -27,28 +27,41 @@ See COPYRIGHT and LICENSE files for more details.
 
 ++#%>
 
+<%= render(Settings::ProjectWorkPackages::HeaderComponent.new(@project, selected: :custom_fields)) %>
+
 <%=
-  render Primer::OpenProject::PageHeader.new do |header|
-    header.with_title { I18n.t(:label_work_package_types) }
-    header.with_breadcrumbs(
-      [{ href: project_overview_path(@project.id), text: @project.name },
-       { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
-       I18n.t(:label_work_package_types)]
-    )
+  if current_user.admin?
+    render(Primer::OpenProject::SubHeader.new) do |subheader|
+      subheader.with_action_button(
+        scheme: :primary,
+        aria: { label: t(:label_custom_field_new) },
+        title: I18n.t(:label_custom_field_new),
+        tag: :a,
+        href: new_custom_field_path(type: "WorkPackageCustomField")
+      ) do |button|
+        button.with_leading_visual_icon(icon: :plus)
+        CustomField.model_name.human
+      end
+    end
   end
 %>
 
-<% if Type.any? %>
-  <%= form_for @project,
-               url: project_settings_types_path(@project),
-               method: :patch,
-               html: { id: "types-form" } do |f| %>
+<% if @wp_custom_fields.any? %>
+  <%= labelled_tabular_form_for @project,
+                                url: project_settings_work_packages_custom_fields_path(@project),
+                                html: { id: "modules-form" } do |form| %>
+
     <%= render partial: "form",
-               locals: { f: f, project: @project } %>
+               locals: {
+                 project: @project,
+                 form: form,
+                 work_package_custom_fields: @wp_custom_fields
+               } %>
 
+    <div class="generic-table--action-buttons">
+      <%= form.button t(:button_save), class: "button -primary -with-icon icon-checkmark" %>
+    </div>
   <% end %>
-
-  <br>
 <% else %>
-  <%= no_results_box custom_title: t("projects.settings.types.no_results_title_text") %>
+  <%= no_results_box custom_title: t("projects.settings.custom_fields.no_results_title_text") %>
 <% end %>

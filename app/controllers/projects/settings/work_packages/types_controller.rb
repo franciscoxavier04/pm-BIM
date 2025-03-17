@@ -26,22 +26,29 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module API
-  module V3
-    module Queries
-      module Schemas
-        module CustomFieldJsonCacheKeyMixin
-          def self.extended(base)
-            base.instance_eval do
-              alias :orig_json_cache_key :json_cache_key
+class Projects::Settings::WorkPackages::TypesController < Projects::SettingsController
+  menu_item :settings_work_packages
 
-              def json_cache_key
-                orig_json_cache_key + [filter.custom_field.cache_key_with_version]
-              end
-            end
-          end
-        end
-      end
+  def show
+    @types = ::Type.all
+  end
+
+  def update
+    if UpdateProjectsTypesService.new(@project).call(permitted_params.projects_type_ids)
+      flash[:notice] = success_message
+    else
+      flash[:error] = @project.errors.full_messages
     end
+
+    redirect_to project_settings_types_path(@project.identifier)
+  end
+
+  private
+
+  def success_message
+    ApplicationController.helpers.sanitize(
+      t(:notice_successful_update_custom_fields_added_to_project, url: project_settings_custom_fields_path(@project)),
+      attributes: %w(href target)
+    )
   end
 end

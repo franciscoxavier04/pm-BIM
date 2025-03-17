@@ -57,7 +57,7 @@ module OpenProject
     # Goal is to reach 8.0 defaults. Overridden defaults should be stored in
     # specific initializers files. See
     # https://community.openproject.org/wp/45463 for details.
-    config.load_defaults 5.1
+    config.load_defaults 5.2
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -208,15 +208,14 @@ module OpenProject
     # instead of AES-256-CBC, when use_authenticated_message_encryption is set to true.
     Rails.application.config.active_support.use_authenticated_message_encryption = true
 
-    # Use SHA-1 instead of MD5 to generate non-sensitive digests, such as the ETag header.
-    Rails.application.config.active_support.hash_digest_class = ::Digest::SHA1
+    # Use SHA-256 instead of MD5 to generate non-sensitive digests, such as the ETag header.
+    # This will be the default with Rails 7.1. So when config.load_configs is set to 7.1 or above,
+    # this configuration can be removed.
+    Rails.application.config.active_support.hash_digest_class = OpenSSL::Digest::SHA256
 
     # This option is not backwards compatible with earlier Rails versions.
     # It's best enabled when your entire app is migrated and stable on 6.0.
     Rails.application.config.action_dispatch.use_cookies_with_metadata = true
-
-    # Make `form_with` generate id attributes for any generated HTML tags.
-    # Rails.application.config.action_view.form_with_generates_ids = true
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
