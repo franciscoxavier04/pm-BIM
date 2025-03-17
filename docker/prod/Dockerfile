@@ -75,6 +75,15 @@ RUN cp Gemfile.lock.bak Gemfile.lock && rm Gemfile.lock.bak && \
 # -------------------------------------
 FROM base AS slim
 
+# install sudo so we can run the following single command as root on start-up
+# (see entrypoint-slim.sh)
+RUN apt-get update -qq && \
+    apt-get install -yq --no-install-recommends sudo && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    truncate -s 0 /var/log/*log
+RUN echo "$APP_USER ALL=(ALL) NOPASSWD:$APP_PATH/docker/prod/fix-tmp-permissions" > /etc/sudoers
+
 USER $APP_USER
 EXPOSE 8080
 CMD ["./docker/prod/web"]
