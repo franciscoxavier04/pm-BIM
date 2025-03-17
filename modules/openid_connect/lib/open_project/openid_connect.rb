@@ -7,7 +7,7 @@ module OpenProject
     def self.configuration
       providers = ::OpenIDConnect::Provider.where(available: true)
 
-      OpenProject::Cache.fetch(providers.cache_key) do
+      OpenProject::Cache.fetch(providers.cache_key_with_version) do
         providers.each_with_object({}) do |provider, hash|
           hash[provider.slug.to_sym] = provider.to_h
         end
