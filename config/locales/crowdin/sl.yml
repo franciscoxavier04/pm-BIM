@@ -1056,6 +1056,7 @@ sl:
         auto_hide_popups: "Samodejno skrij obvestila o uspehu"
         warn_on_leaving_unsaved: "Opozori me, kadar zapuščam stran z neshranjenim besedilom"
         theme: "Mode"
+        time_zone: "Časovni pas"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1645,6 +1646,7 @@ sl:
     derived_due_date: "Končni datum"
     derived_estimated_hours: "Total work"
     derived_start_date: "Izpeljan začetni datum"
+    direction: "Direction"
     display_sums: "Prikaži vsote"
     due_date: "Končni datum"
     estimated_hours: "Work"
@@ -1709,6 +1711,7 @@ sl:
     version: "Različica"
     visible: "Vidno"
     work_package: "Zahtevek"
+    work_package_id: "Delovni paket"
   backup:
     failed: "Backup failed"
     label_backup_token: "Žeton za varnostno kopiranje"
@@ -1907,8 +1910,8 @@ sl:
       - "avgust"
       - "september"
       - "oktober"
-      - "november"
-      - "december"
+      - "November"
+      - "December"
     order:
       - :leto
       - :mesec
@@ -3471,6 +3474,10 @@ sl:
       project_verification: "Vnesite ime projekta %{name}, da preverite izbris."
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Člani projekta bodo morali preseliti shrambo projekta.
       warning_two: Obstoječe povezave do projekta ne bodo več delovale.

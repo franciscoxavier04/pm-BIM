@@ -1028,6 +1028,7 @@ ja:
         auto_hide_popups: "成功通知を自動的に隠す"
         warn_on_leaving_unsaved: "変更を保存せずにワークパッケージから移動するときに警告"
         theme: "Mode"
+        time_zone: "タイムゾーン"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1584,6 +1585,7 @@ ja:
     derived_due_date: "派生終了日"
     derived_estimated_hours: "合計作業数"
     derived_start_date: "派生開始日"
+    direction: "Direction"
     display_sums: "合計を表示"
     due_date: "終了日"
     estimated_hours: "Work"
@@ -1648,6 +1650,7 @@ ja:
     version: "バージョン"
     visible: "表示"
     work_package: "ワーク パッケージ"
+    work_package_id: "ワーク パッケージ"
   backup:
     failed: "Backup failed"
     label_backup_token: "バックアップトークン"
@@ -3347,6 +3350,10 @@ ja:
       project_verification: "削除を確認するため、プロジェクト名 %{name} を入力してください。"
       subprojects_confirmation: "子プロジェクト: %{value} も削除されます。"
       title: "プロジェクト %{name} を削除"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: プロジェクトのメンバーは、プロジェクトのリポジトリを再配置する必要があります。
       warning_two: プロジェクトへの既存のリンクは機能しなくなります。

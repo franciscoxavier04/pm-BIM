@@ -383,8 +383,8 @@ sv:
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: 'Agenda item "%{title}"'
-  text_agenda_work_package_deleted: 'Agenda item for deleted work package'
-  text_deleted_agenda_item: 'Deleted agenda item'
+  text_agenda_work_package_deleted: "Agenda item for deleted work package"
+  text_deleted_agenda_item: "Deleted agenda item"
   label_initial_meeting_details: "Möte"
   label_meeting_details: "Meeting details"
   label_meeting_series_details: "Meeting series details"

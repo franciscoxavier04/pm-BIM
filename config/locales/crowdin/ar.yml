@@ -1075,6 +1075,7 @@ ar:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
+        time_zone: "المنطقة الزمنية"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1686,6 +1687,7 @@ ar:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "عرض المبالغ"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1750,6 +1752,7 @@ ar:
     version: "الإصدار"
     visible: "مرئي"
     work_package: "مجموعة العمل"
+    work_package_id: "مجموعة العمل"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -3554,6 +3557,10 @@ ar:
       project_verification: "أدخل اسم المشروع %{name} للتحقق من الحذف."
       subprojects_confirmation: "مشاريعها الفرعية:%{value} سيتم حذفها أيضا."
       title: "حذف %{name} المشروع"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: وسيكون أعضاء المشروع إلى نقل مستودعات للمشروع.
       warning_two: لن تعد تعمل الارتباطات الموجودة في المشروع.

@@ -190,27 +190,27 @@ it:
       open_meeting_link: "Apri riunione"
       open_my_meetings_link: "Vai alle mie riunioni"
       series:
-        title: "[%{project_name}] Serie di riunioni \"%{title}\""
-        summary: "%{actor} ha organizzato una nuova serie di riunioni \"%{title}\""
+        title: '[%{project_name}] Serie di riunioni "%{title}"'
+        summary: '%{actor} ha organizzato una nuova serie di riunioni "%{title}"'
       series_rescheduled:
-        title: "[%{project_name}] Serie di riunioni \"%{title}\" riprogrammati"
-        summary: "%{actor} ha modificato l'ordine del giorno della serie di riunioni \"%{title}\""
+        title: '[%{project_name}] Serie di riunioni "%{title}" riprogrammati'
+        summary: '%{actor} ha modificato l''ordine del giorno della serie di riunioni "%{title}"'
         old_schedule: "Ordine del giorno precedente"
         new_schedule: "Ordine del giorno nuovo"
       invited:
-        summary: "%{actor} ti ha inviato un invito per la riunione \"%{title}\""
+        summary: '%{actor} ti ha inviato un invito per la riunione "%{title}"'
       cancelled:
-        header: "Cancellata: riunione \"%{title}\""
-        header_occurrence: "Cancellata: occorrenza della riunione \"%{title}\""
-        header_series: "Cancellata: serie di riunioni \"%{title}\""
-        summary_occurrence: "Un'occorrenza di \"%{title}\" è stata cancellata da %{actor}."
-        summary_series: "La serie di riunioni \"%{title}\" è stata cancellata da %{actor}."
-        summary: "\"%{title}\" è stata cancellata da %{actor}."
+        header: 'Cancellata: riunione "%{title}"'
+        header_occurrence: 'Cancellata: occorrenza della riunione "%{title}"'
+        header_series: 'Cancellata: serie di riunioni "%{title}"'
+        summary_occurrence: 'Un''occorrenza di "%{title}" è stata cancellata da %{actor}.'
+        summary_series: 'La serie di riunioni "%{title}" è stata cancellata da %{actor}.'
+        summary: '"%{title}" è stata cancellata da %{actor}.'
         date_time: "Data/ora programmata"
       rescheduled:
-        header: "La riunione \"%{title}\" è stata riprogrammata"
-        summary: "La riunione \"%{title}\" è stata riprogrammata da %{actor}"
-        body: "La riunione \"%{title}\" è stata riprogrammata da %{actor}."
+        header: 'La riunione "%{title}" è stata riprogrammata'
+        summary: 'La riunione "%{title}" è stata riprogrammata da %{actor}'
+        body: 'La riunione "%{title}" è stata riprogrammata da %{actor}.'
         old_date_time: "Data/ora precedente"
         new_date_time: "Nuova data/ora"
     label_mail_all_participants: "Invia e-mail a tutti i partecipanti"
@@ -290,12 +290,12 @@ it:
       full_past: "%{base} alle ore %{time}, finita alle ore %{end_date}"
       never_ending: "%{base} alle ore %{time}"
     open:
-      title: "Aperte"
+      title: "Agenda opened"
       subtitle: >
         Le riunioni aperte hanno ordini del giorno che possono essere modificati e vengono visualizzate nella sezione "Le mie riunioni" dei singoli utenti. Le modifiche al modello della serie di riunioni non influiscono sulle occorrenze delle riunioni già aperte.
       blankslate:
         title: "Non ci sono riunioni aperte al momento"
-        desc: "Può aprire manualmente una riunione pianificata cliccando sul pulsante \"Apri\" qui di seguito"
+        desc: 'Può aprire manualmente una riunione pianificata cliccando sul pulsante "Apri" qui di seguito'
     planned:
       title: "Pianificate"
       subtitle: >
@@ -383,8 +383,8 @@ it:
   label_agenda_outcome_delete: "Rimuovi risultato"
   text_outcome_not_editable_anymore: "Questo risultato non è più modificabile."
   text_agenda_item_title: 'Punto all''ordine del giorno "%{title}"'
-  text_agenda_work_package_deleted: 'Punto all''ordine del giorno per la macro-attività cancellata'
-  text_deleted_agenda_item: 'Punto all''ordine del giorno cancellato'
+  text_agenda_work_package_deleted: "Punto all'ordine del giorno per la macro-attività cancellata"
+  text_deleted_agenda_item: "Punto all'ordine del giorno cancellato"
   label_initial_meeting_details: "Riunione"
   label_meeting_details: "Dettagli della riunione"
   label_meeting_series_details: "Dettagli della serie di riunioni"
@@ -424,6 +424,6 @@ it:
   text_agenda_item_move_next_meeting: "Vuoi davvero spostarlo alla prossima riunione il giorno %{date} alle ore %{time}?"
   text_agenda_item_moved_to_next_meeting: "Punto all'ordine del giorno spostato alla prossima riunione, il giorno %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Questa macro-attività non è ancora programmata in un prossimo ordine del giorno di riunione."
-  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "La prossima riunione di questa serie è stata annullata."
   text_work_package_add_to_meeting_hint: 'Utilizzare il pulsante "Aggiungi alla riunione" per aggiungere questa macro-attività a una riunione imminente.'
   text_work_package_has_no_past_meeting_agenda_items: "Questa macro-attività non è stato menzionata in una riunione precedente."
