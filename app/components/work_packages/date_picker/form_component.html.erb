@@ -23,7 +23,8 @@
                     icon: :pin,
                     href: work_package_datepicker_dialog_content_path(params.merge(schedule_manually: true).permit!),
                     data: {
-                      turbo_stream: true,
+                      turbo_frame: "wp-datepicker-dialog--content",
+                      morph: true,
                       qa_selected: schedule_manually
                     },
                     test_selector: "op-datepicker-modal--scheduling_manual",
@@ -35,7 +36,8 @@
                     icon: "op-auto-date",
                     href: work_package_datepicker_dialog_content_path(params.merge(schedule_manually: false).permit!),
                     data: {
-                      turbo_stream: true,
+                      turbo_frame: "wp-datepicker-dialog--content",
+                      morph: true,
                       qa_selected: !schedule_manually
                     },
                     test_selector: "op-datepicker-modal--scheduling_automatic",
