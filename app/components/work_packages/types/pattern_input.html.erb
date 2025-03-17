@@ -43,7 +43,7 @@ See COPYRIGHT and LICENSE files for more details.
     <%= @input.builder.hidden_field(name, value: @value, data: { "pattern-input-target": "formInput" }) %>
 
     <template data-pattern-input-target="tokenTemplate">
-      <%= render(Primer::Beta::Label.new(tag: :span, scheme: :accent, "data-role": :token)) %>
+      <%= render(Primer::Beta::Label.new(tag: :span, scheme: :accent, data: { role: :token, prop: "__placeholder" })) %>
     </template>
 
     <template data-pattern-input-target="suggestionsHeadingTemplate">

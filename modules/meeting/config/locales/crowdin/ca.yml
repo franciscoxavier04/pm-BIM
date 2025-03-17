@@ -383,8 +383,8 @@ ca:
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: 'Punt de l''ordre del dia "%{title}"'
-  text_agenda_work_package_deleted: 'Punt de l''ordre del dia per al paquet de treball suprimit'
-  text_deleted_agenda_item: 'Punt de l''ordre del dia eliminat'
+  text_agenda_work_package_deleted: "Punt de l'ordre del dia per al paquet de treball suprimit"
+  text_deleted_agenda_item: "Punt de l'ordre del dia eliminat"
   label_initial_meeting_details: "Reunió"
   label_meeting_details: "Detalls de la reunió"
   label_meeting_series_details: "Meeting series details"

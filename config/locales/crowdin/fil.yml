@@ -1039,6 +1039,7 @@ fil:
         auto_hide_popups: "Auto-hide success ang mga abiso"
         warn_on_leaving_unsaved: "Balaan mo ako kung aalais ng worj package na walang pag-save ng pagbabago"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1606,6 +1607,7 @@ fil:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Ipakita ang mga sum"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1670,6 +1672,7 @@ fil:
     version: "Bersyon"
     visible: "Nakikita"
     work_package: "Work package"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -3390,6 +3393,10 @@ fil:
       project_verification: "Isulat ang pangalan ng proyekto %{name} para ma-verify and pagtanggal."
       subprojects_confirmation: "Ito ay ang subproject(mga): %{value} ay maaring matanggal."
       title: "Tanggalin ang proyektong %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Ang mga miyembro ng proyekto ay kinakailangang ilipat ang mga repository ng proyekto.
       warning_two: Ang mga umiiral na mga link sa proyekto ay hindi na maaring magamit.

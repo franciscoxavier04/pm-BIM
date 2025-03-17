@@ -1054,6 +1054,7 @@ pl:
         auto_hide_popups: "Automatyczne ukrycie powiadomień o sukcesie"
         warn_on_leaving_unsaved: "Ostrzegaj mnie, gdy opuszczam zadanie z niezapisanymi zmianami"
         theme: "Tryb"
+        time_zone: "Strefa czasowa"
         mode_guideline: "Niektóre tryby zastąpią niestandardowe kolory motywu w celu zapewnienia dostępności i czytelności. Aby stosować pełny motyw niestandardowy, wybierz tryb Jasny."
         daily_reminders: "Codzienne przypomnienia"
         workdays: "Dni robocze"
@@ -1116,7 +1117,7 @@ pl:
         confirmation: "nie pasuje do %{attribute}."
         could_not_be_copied: "Nie można było (w pełni) skopiować %{dependency}."
         does_not_exist: "nie istnieje."
-        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise Edition"
+        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise edition"
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
@@ -1643,6 +1644,7 @@ pl:
     derived_due_date: "Wyprowadzona data zakończenia"
     derived_estimated_hours: "Całkowita praca"
     derived_start_date: "Wyprowadzona data rozpoczęcia"
+    direction: "Kierunek"
     display_sums: "Wyświetl sumy"
     due_date: "Data zakończenia"
     estimated_hours: "Praca"
@@ -1707,6 +1709,7 @@ pl:
     version: "Wersja"
     visible: "Widoczne"
     work_package: "Zadanie"
+    work_package_id: "Pakiet roboczy"
   backup:
     failed: "Tworzenie kopii zapasowej nie powiodło się"
     label_backup_token: "Token kopii zapasowej"
@@ -3468,6 +3471,10 @@ pl:
       project_verification: "Wpisz nazwę projektu %{name} aby potwierdzić usunięcie."
       subprojects_confirmation: "Podprojekt(y): %{value} zostaną także usunięte."
       title: "Usuń projekt %{name}"
+    filters:
+      life_cycle_any: "Cykl życia: dowolny etap lub bramka"
+      life_cycle_stage: "Etap cyklu życia: %{stage}"
+      life_cycle_gate: "Bramka cyklu życia: %{gate}"
     identifier:
       warning_one: Członkowie projektu będą musieli przenieść repozytoria projektu.
       warning_two: Istniejące linki do projektu nie będą dłużej działać.

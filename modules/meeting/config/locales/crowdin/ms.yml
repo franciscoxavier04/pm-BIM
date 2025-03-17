@@ -379,8 +379,8 @@ ms:
   label_agenda_outcome_delete: "Remove outcome"
   text_outcome_not_editable_anymore: "This outcome is not editable anymore."
   text_agenda_item_title: 'Item agenda "%{title}"'
-  text_agenda_work_package_deleted: 'Item agenda untuk pakej kerja yang telah dipadam'
-  text_deleted_agenda_item: 'Item agenda yang telah dipadam'
+  text_agenda_work_package_deleted: "Item agenda untuk pakej kerja yang telah dipadam"
+  text_deleted_agenda_item: "Item agenda yang telah dipadam"
   label_initial_meeting_details: "Mesyuarat"
   label_meeting_details: "Butiran mesyuarat"
   label_meeting_series_details: "Butiran siri mesyuarat"

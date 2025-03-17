@@ -286,7 +286,7 @@ ko:
       full_past: "%{base}, %{time}, %{end_date}에 종료"
       never_ending: "%{base}, %{time}"
     open:
-      title: "열기"
+      title: "의제 열림"
       subtitle: >
         오픈 미팅에는 편집할 수 있는 의제가 있으며 개별 사용자의 '내 미팅' 섹션에 표시됩니다. 미팅 시리즈 템플릿의 변경 사항은 이미 오픈된 미팅 항목에 영향을 미치지 않습니다.
       blankslate:
@@ -379,8 +379,8 @@ ko:
   label_agenda_outcome_delete: "결과 제거"
   text_outcome_not_editable_anymore: "이 결과는 더 이상 편집할 수 없습니다."
   text_agenda_item_title: '의제 항목 "%{title}"'
-  text_agenda_work_package_deleted: '삭제된 작업 패키지에 대한 의제 항목'
-  text_deleted_agenda_item: '삭제된 의제 항목'
+  text_agenda_work_package_deleted: "삭제된 작업 패키지에 대한 의제 항목"
+  text_deleted_agenda_item: "삭제된 의제 항목"
   label_initial_meeting_details: "미팅"
   label_meeting_details: "미팅 세부 정보"
   label_meeting_series_details: "미팅 시리즈 세부 정보"
@@ -420,6 +420,6 @@ ko:
   text_agenda_item_move_next_meeting: "이 미팅을 %{date} %{time}의 다음 미팅으로 이동하시겠습니까?"
   text_agenda_item_moved_to_next_meeting: "의제 항목이 %{date}의 다음 미팅으로 이동되었습니다."
   text_work_package_has_no_upcoming_meeting_agenda_items: "이 작업 패키지는 향후 미팅 의제에서 아직 예약되지 않았습니다."
-  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "이 시리즈의 다음 미팅이 취소되었습니다."
   text_work_package_add_to_meeting_hint: '이 작업 패키지를 향후 미팅에 추가하려면 "미팅에 추가" 버튼을 사용하세요.'
   text_work_package_has_no_past_meeting_agenda_items: "이 작업 패키지는 과거 미팅에서 멘션되지 않았습니다."

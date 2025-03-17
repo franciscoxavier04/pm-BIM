@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,29 +28,36 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-class Projects::Settings::TypesController < Projects::SettingsController
-  menu_item :settings_types
+module Settings
+  module ProjectWorkPackages
+    class HeaderComponent < ApplicationComponent
+      def initialize(project, selected:)
+        super
+        @project = project
+        @selected = selected
+      end
 
-  def show
-    @types = ::Type.all
-  end
+      def breadcrumbs_items
+        [{ href: project_overview_path(@project.id), text: @project.name },
+         { href: project_settings_general_path(@project.id), text: I18n.t("label_project_settings") },
+         t(:label_work_package_plural)]
+      end
 
-  def update
-    if UpdateProjectsTypesService.new(@project).call(permitted_params.projects_type_ids)
-      flash[:notice] = success_message
-    else
-      flash[:error] = @project.errors.full_messages
+      def selected?(key)
+        @selected == key
+      end
+
+      def show_types?
+        User.current.allowed_in_project?(:manage_types, @project)
+      end
+
+      def show_categories?
+        User.current.allowed_in_project?(:manage_categories, @project)
+      end
+
+      def show_custom_fields?
+        User.current.allowed_in_project?(:select_custom_fields, @project)
+      end
     end
-
-    redirect_to project_settings_types_path(@project.identifier)
-  end
-
-  private
-
-  def success_message
-    ApplicationController.helpers.sanitize(
-      t(:notice_successful_update_custom_fields_added_to_project, url: project_settings_custom_fields_path(@project)),
-      attributes: %w(href target)
-    )
   end
 end
