@@ -96,7 +96,7 @@ az:
   caption_save_rate: "Save rate"
   caption_set_rate: "Set current rate"
   caption_show_locked: "Show locked types"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "Jurnal vaxtı"
   description_date_for_new_rate: "Date for new rate"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."

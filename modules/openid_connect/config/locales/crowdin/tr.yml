@@ -8,26 +8,26 @@ tr:
     attributes:
       openid_connect/provider:
         name: İsim
-        slug: Unique identifier
+        slug: Benzersiz tanımlayıcı
         display_name: Görünen isim
-        client_id: Client ID
-        client_secret: Client secret
-        secret: Secret
-        scope: Scope
+        client_id: İstemci ID
+        client_secret: İstemci gizliliği
+        secret: Gizli Anahtar
+        scope: Kapsam
         grant_types_supported: Supported grant types
-        limit_self_registration: Limit self registration
+        limit_self_registration: Kendi kendine kaydı sınırlayın
         authorization_endpoint: Yetkilendirme uç noktası
         userinfo_endpoint: Kullanıcı bilgisi uç noktası
-        token_endpoint: Token endpoint
-        end_session_endpoint: End session endpoint
-        post_logout_redirect_uri: Post logout redirect URI
+        token_endpoint: Gösterge bitiş noktası
+        end_session_endpoint: Oturum bitiş noktasını sonlandır
+        post_logout_redirect_uri: Oturum kapatma sonrası yönlendirme URI'si
         jwks_uri: JWKS URI
-        issuer: Issuer
-        tenant: Tenant
-        metadata_url: Metadata URL
+        issuer: Sağlayıcı
+        tenant: Müşteri
+        metadata_url: Metaveri URL'si
         icon: Özel simge
-        claims: Claims
-        acr_values: ACR values
+        claims: Bilgiler
+        acr_values: ACR değerleri
         redirect_url: Yönlendirme bağlantısı
     errors:
       models:
@@ -80,7 +80,7 @@ tr:
         Provide a custom mapping in the userinfo response to be used for the admin status. It expects a boolean attribute to be returned.
     settings:
       metadata_none: Bu bilgiye sahip değilim
-      metadata_url: I have a discovery endpoint URL
+      metadata_url: Bir keşif uç noktası URL'im var
       endpoint_url: Uç nokta adresi
     providers:
       label_providers: "Sağlayıcılar"
@@ -103,7 +103,7 @@ tr:
       label_advanced_configuration: Gelişmiş yapılandırma
       label_configuration_details: Metaveri
       label_client_details: Client details
-      label_attribute_mapping: Attribute mapping
+      label_attribute_mapping: Nitelik ilişkilendirme
       client_details_description: Configuration details of OpenProject as an OIDC client
       no_results_table: Henüz bir sağlayıcı tanımlanmadı.
       plural: OpenID sağlayıcıları

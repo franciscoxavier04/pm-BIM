@@ -89,7 +89,7 @@ sl:
         bim_snippet: "BIM snippet"
         reference_links: "Reference links"
         stage: "Stage"
-        viewpoint: "Viewpoint"
+        viewpoint: "Pogled/vidik"
     errors:
       models:
         bim/ifc_models/ifc_model:

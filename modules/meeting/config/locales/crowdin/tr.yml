@@ -290,7 +290,7 @@ tr:
       full_past: "%{base} %{time} saatinde, %{end_date} tarihinde sona erer"
       never_ending: "%{base} ve %{time}"
     open:
-      title: "Açık"
+      title: "Agenda opened"
       subtitle: >
         Açık toplantıların düzenlenebilen gündemleri vardır ve bireysel kullanıcıların 'Toplantılarım' bölümünde gösterilir. Toplantı serisi şablonunda yapılan değişiklikler halihazırda açık olan toplantıları etkilemez.
       blankslate:
@@ -406,8 +406,8 @@ tr:
   text_meeting_closed_description: "Toplantı kapatılmış. Artık gündem maddesi ekleyip çıkartamazsınız."
   text_meeting_in_progress_description: "Bu toplantı devam etmekte. Her bir gündem maddesi için sonuçları belgeleyebilir, yerlerini düzenleyebilir ve hatta yenilerini ekleyebilirsiniz. Toplantı tamamlandığında bunları sabitlemek için kapalı olarak işaretleyin."
   text_meeting_open_dropdown_description: "Mevcut sonuçlar kalacak ama kullanıcılar yeni sonuçlar ekleyemeyecekler."
-  text_meeting_in_progress_dropdown_description: "Gündem hazır olduğunda sonuçları belgelemek için devam etmekte olarak işaretleyin."
-  text_meeting_closed_dropdown_description: "Toplantı tamamlandığında, kilitlemek için kapatıldı olarak işaretleyebilirsiniz."
+  text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
+  text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
   label_meeting_manage_participants: "Katılımcıları yönet"
   label_meeting_no_participants: "Katılımcı yok"
   label_meeting_show_hide_participants: "%{count} kişi daha göster/sakla"

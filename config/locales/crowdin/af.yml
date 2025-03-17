@@ -218,7 +218,7 @@ af:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Vir alle projekte
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ af:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Ouer"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -599,14 +599,14 @@ af:
       no_results_content_text: Create a new type
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Vorm konfigurasie"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
+        tab: "Projekte"
         enabled_projects: "Enabled projects"
       settings:
-        tab: "Settings"
+        tab: "Instellings"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -669,7 +669,7 @@ af:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
+        children: "Kinders"
         dates: "Dates"
         predecessors: "Predecessors"
         successors: "Successors"
@@ -757,22 +757,22 @@ af:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "blokke"
+      label_blocks_plural: "blokke"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "geblokkeer deur"
+      label_blocked_plural: "geblokkeer deur"
+      label_blocked_by_singular: "geblokkeer deur"
+      label_blocked__by_plural: "geblokkeer deur"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "duplikate"
+      label_duplicates_plural: "duplikate"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "gedupliseer deur"
+      label_duplicated_plural: "gedupliseer deur"
+      label_duplicated_by_singular: "gedupliseer deur"
+      label_duplicated_by_plural: "gedupliseer deur"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
       label_includes_singular: "includes"
@@ -792,7 +792,7 @@ af:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Verwante werk pakket"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitation
   account:
@@ -855,7 +855,7 @@ af:
         editable: "Redigeerbaar"
         field_format: "Formaat"
         is_filter: "Gebruik as 'n filter"
-        is_for_all: "For all projects"
+        is_for_all: "Vir alle projekte"
         is_required: "Verpligtend"
         max_length: "Maksimum lengte"
         min_length: "Minimum lengte"
@@ -872,7 +872,7 @@ af:
         secret: "Client secret"
         owner: "Eienaar"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktiewe"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -900,7 +900,7 @@ af:
         attr_login: "Username attribute"
         attr_mail: "Epos kenmerk"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Administreerder"
         base_dn: "Basis (Onderskeidende Naam) ON"
         host: "Gasheer"
         onthefly: "Automatic user creation"
@@ -949,11 +949,11 @@ af:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naam"
+        color: "Kleur"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Kolomme"
         column_names: "Kolomme"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -977,13 +977,13 @@ af:
         results: "Results"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Verwante werk pakket"
         to: "Verwante werk pakket"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
+        remind_at_date: "Datum"
         remind_at_time: "Time"
       reminder_notification:
         notification: "Notification"
@@ -997,7 +997,7 @@ af:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktiwiteit"
@@ -1016,7 +1016,7 @@ af:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Gebruiker"
       user:
         admin: "Administreerder"
         auth_source: "Authentication source"
@@ -1027,8 +1027,8 @@ af:
         language: "Taal"
         last_login_on: "Laaste inteken"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Voornaam"
+        last_name: "Van"
         first_login: "First login"
         new_password: "Nuwe wagwoord"
         password_confirmation: "Bevestig"
@@ -1039,7 +1039,7 @@ af:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Tydsone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1453,7 +1453,7 @@ af:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Moet karakters van die volgende klasse bevat (ten minste %{min_count} van %{all_count}): %{rules}"
               lowercase: "kleinletter (bv. 'a')"
               uppercase: "grootletter (bv. 'A')"
               numeric: "numeries (bv. ' 1')"
@@ -1503,7 +1503,7 @@ af:
       global_role: "Global role"
       group: "Groep"
       issue_priority:
-        one: "Priority"
+        one: "Prioriteit"
         other: "Priorities"
       member: "Lid"
       news: "Nuus"
@@ -1597,11 +1597,11 @@ af:
     color: "Kleur"
     creator: "Creator"
     created_at: "Geskep op"
-    custom_field: "Custom field"
+    custom_field: "Pasgemaakte veld"
     custom_options: "Moontlike waardes"
     custom_values: "Pasgemaakte velde"
     date: "Datum"
-    dates_interval: "Date range"
+    dates_interval: "Datum reeks"
     default_columns: "Verstekkolomme"
     description: "Beskrywing"
     derived_due_date: "Derived finish date"
@@ -1612,14 +1612,14 @@ af:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "E-pos"
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "Voornaam"
-    filter: "Filter"
+    filter: "Filtreer"
     group: "Groep"
     groups: "Groepe"
-    hexcode: "Hex code"
+    hexcode: "Hex kode"
     id: "ID"
     is_default: "Standaardwaarde"
     is_for_all: "Vir alle projekte"
@@ -1628,16 +1628,16 @@ af:
     #kept for backwards compatibility
     issue: "Werkspakket"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Opmerking"
     lastname: "Van"
     login: "Username"
     lock_version: "Lock version"
     mail: "E-pos"
     name: "Naam"
     note: "Note"
-    notes: "Notes"
+    notes: "Notas"
     number: "Number"
-    options: "Options"
+    options: "Opsies"
     operator: "Operator"
     password: "Wagwoord"
     priority: "Prioriteit"
@@ -1645,7 +1645,7 @@ af:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "Verpligtend"
     recipient: "Recipient"
     role: "Rol"
     roles: "Rolle"
@@ -1656,8 +1656,8 @@ af:
     subject: "Onderwerp"
     slug: "Slug"
     summary: "Opsomming"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Tydsone"
+    text: "Teks"
     title: "Titel"
     type: "Soort"
     typeahead: "Autocomplete"
@@ -1670,9 +1670,9 @@ af:
     value: "Waarde"
     values: "Values"
     version: "Weergawe"
-    visible: "Visible"
+    visible: "Sigbaar"
     work_package: "Werkspakket"
-    work_package_id: "Work package"
+    work_package_id: "Werkspakket"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1937,7 +1937,7 @@ af:
         other: "ure"
       day:
         one: "day"
-        other: "days"
+        other: "dae"
   description_active: "Aktief?"
   description_attachment_toggle: "Wys/Versteek aanhegsels"
   description_autocomplete: >
@@ -2060,8 +2060,8 @@ af:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Uitvoer"
+      submit: "Uitvoer"
       format:
         label: "File format"
         options:
@@ -2154,7 +2154,7 @@ af:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Laai af
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2487,7 +2487,7 @@ af:
   label_default: "Verstek"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "Skrap"
   label_deleted: "geskrap"
   label_deleted_custom_field: "(pasgemaakte veld geskrap)"
   label_deleted_custom_item: "(deleted item)"
@@ -2605,7 +2605,7 @@ af:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Show all registered users"
-  label_show_less: "Show less"
+  label_show_less: "Wys minder"
   label_show_more: "Show more"
   label_journal: "Journal"
   label_journal_diff: "Beskrywing Vergelyking"
@@ -2771,7 +2771,7 @@ af:
   label_project_latest: "Nuutste projekte"
   label_project_default_type: "Laat leë tipe toe"
   label_project_hierarchy: "Project hierarchy"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projekte"
   label_project_new: "Nuwe projek"
   label_project_plural: "Projekte"
   label_project_list_plural: "Project lists"
@@ -3384,7 +3384,7 @@ af:
     count:
       zero: "0 projects"
       one: "1 project"
-      other: "%{count} projects"
+      other: "%{count} projekte"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3538,8 +3538,8 @@ af:
     warnings:
       cannot_annotate: "This file cannot be annotated."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3776,7 +3776,7 @@ af:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Voeg by"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4086,7 +4086,7 @@ af:
       view: "Bekyk"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Datum"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

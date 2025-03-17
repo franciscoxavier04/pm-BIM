@@ -85,10 +85,10 @@ de:
         is_default: "Standardmodell"
         attachments: "IFC-Datei"
       bim/bcf/issue:
-        bcf_comment: "BCF comment"
-        bim_snippet: "BIM snippet"
-        reference_links: "Reference links"
-        stage: "Stage"
+        bcf_comment: "BCF-Kommentar"
+        bim_snippet: "BIM Snippet"
+        reference_links: "Referenzlink"
+        stage: "Stufe"
         viewpoint: "Viewpoint"
     errors:
       models:

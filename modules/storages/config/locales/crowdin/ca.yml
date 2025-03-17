@@ -2,13 +2,13 @@ ca:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID de client
+        client_secret: Clau secreta del Client
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Emmagatzematge
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,9 +16,9 @@ ca:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Carpeta del projecte
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: Emmagatzematge
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method

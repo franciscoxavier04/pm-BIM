@@ -298,7 +298,7 @@ ru:
       full_past: "%{base} в %{time}, закончился %{end_date}"
       never_ending: "%{base} в %{time}"
     open:
-      title: "Открыть"
+      title: "Agenda opened"
       subtitle: >
         Открытые совещания имеют повестки дня, которые могут быть отредактированы и показаны в разделе «Мои совещания». Изменения в шаблоне серии совещаний не влияют на уже открытые совещания.
       blankslate:
@@ -410,12 +410,12 @@ ru:
   label_meeting_reopen_action: "Открыть совещание заново"
   label_meeting_close_action: "Закрыть совещание"
   label_meeting_in_progress_action: "Отметить как в процессе"
-  text_meeting_open_description: "This meeting is open. You can add/remove agenda items and edit them as you please. Once the agenda is ready, mark it as in progress to document outcomes."
+  text_meeting_open_description: "Совещание открыто. Вы можете добавлять/удалять пункты повестки дня и редактировать их так, как захотите. Как только повестка дня будет готова, отметьте ее как \"в процессе\" для документирования результатов."
   text_meeting_closed_description: "Это совещание является закрытым. Вы не можете добавлять/удалять пункты повестки."
-  text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
-  text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
-  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
-  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_in_progress_description: "Совещание в процессе. Вы можете документировать результаты для каждого пункта повестки дня, переупорядочить их и даже добавить новые. После завершения совещания вы можете пометить его как закрытое для блокировки."
+  text_meeting_open_dropdown_description: "Любые существующие результаты останутся, но пользователи не смогут добавлять новые результаты."
+  text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
+  text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
   label_meeting_manage_participants: "Управление участниками"
   label_meeting_no_participants: "Нет участников"
   label_meeting_show_hide_participants: "Показать/скрыть %{count} больше"
@@ -429,9 +429,9 @@ ru:
   text_add_work_package_to_meeting_description: "Пакет работ может быть добавлен к одному или нескольким совещаниям для обсуждения. Любые заметки об этом также видны здесь."
   text_agenda_item_no_notes: "Примечания отсутствуют"
   text_agenda_item_not_editable_anymore: "Этот пункт повестки больше не редактируется."
-  text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
-  text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
+  text_agenda_item_move_next_meeting: "Вы уверены, что хотите перенести это на следующее совещание на %{date} в %{time}?"
+  text_agenda_item_moved_to_next_meeting: "Пункт повестки дня перенесен на следующее совещание на %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Этот пакет работ пока не включен в повестку предстоящего совещания."
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Следующее совещание в этой серии было отменено."
   text_work_package_add_to_meeting_hint: 'Используйте кнопку "Добавить к совещанию", чтобы добавить этот пакет работ к предстоящему совещанию.'
   text_work_package_has_no_past_meeting_agenda_items: "Этот пакет работ не упоминался на прошлом совещании."

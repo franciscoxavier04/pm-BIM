@@ -7,13 +7,13 @@ hu:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Név
         slug: Unique identifier
-        display_name: Display name
-        client_id: Client ID
-        client_secret: Client secret
-        secret: Secret
-        scope: Scope
+        display_name: Megjelenített név
+        client_id: Ügyfél azonosító
+        client_secret: Kliens titok
+        secret: Titkos
+        scope: Terjedelem
         grant_types_supported: Supported grant types
         limit_self_registration: Limit self registration
         authorization_endpoint: Authorization endpoint
@@ -103,7 +103,7 @@ hu:
       label_advanced_configuration: Advanced configuration
       label_configuration_details: Metadata
       label_client_details: Client details
-      label_attribute_mapping: Attribute mapping
+      label_attribute_mapping: Attribútum-leképezés
       client_details_description: Configuration details of OpenProject as an OIDC client
       no_results_table: Nincs szolgáltató definiálva
       plural: OpenID szolgáltatók

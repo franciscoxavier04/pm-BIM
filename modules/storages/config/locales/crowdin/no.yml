@@ -2,13 +2,13 @@
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: Klient ID
+        client_secret: Klient hemmlighet
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Lagringssted
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,9 +16,9 @@
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Prosjektmappe
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: Lagringssted
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
@@ -215,7 +215,7 @@
         manual_management_description: Opprett og behandle mapper manuelt per prosjekt på egenhånd. Du må manuelt sikre at relevante brukere har tilgang.
         setup_incomplete: Velg type behandling av brukertilgang og opprettelse av mappe.
         subtitle: Tilgangsstyring
-      access_management_section: Access and project folders
+      access_management_section: Tilgang og prosjektmapper
       automatically_managed_folders: Automatisk administrerte mapper
       general_information: Generell informasjon
       oauth_configuration: OAuth configuration
@@ -354,20 +354,20 @@
     members_no_results: Ingen medlemmer å vise.
     no_results: Ingen lagring satt opp ennå.
     oauth_access_granted_modal:
-      access_granted: Access granted
+      access_granted: Tilgang gitt
       project_settings:
         access_granted_screen_reader: Access granted. You are now ready to use %{storage}
-        storage_ready: You are now ready to use %{storage}
+        storage_ready: Du er nå klar til å bruke %{storage}
       storage_admin:
         access_granted_screen_reader: Access granted. You are now ready to add projects to %{storage}
         storage_ready: You are now ready to add projects to %{storage}
     oauth_grant_nudge_modal:
       cancel_button_label: Jeg gjør det senere
       heading: Login to %{provider_type} required
-      login_button_aria_label: Login to %{storage}
+      login_button_aria_label: Logg på  %{storage}
       login_button_label: "%{provider_type} log in"
       project_settings:
-        description: To get access to the project folder you need to login to %{storage}.
+        description: For å få tilgang til prosjektmappen må du logge inn til %{storage}.
       requesting_access_to: Ber om tilgang til %{storage}
       storage_admin:
         description: In order to add projects to this storage you need to be logged into %{provider_type}. Please, log in and try again.

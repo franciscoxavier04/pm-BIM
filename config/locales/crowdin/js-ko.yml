@@ -221,8 +221,8 @@ ko:
             label_maximum_users: "최대 활성 사용자"
             label_starts_at: "시작:"
             label_expires_at: "에서 만료됨"
-            label_plan: "Plan"
-            label_additional_features: "Additional features"
+            label_plan: "플랜"
+            label_additional_features: "추가 기능"
             receive_newsletter: OpenProject <a target="_blank" href="%{link}">뉴스레터</a>를 받아 보겠습니다.
             taken_domain: 도메인당 하나의 활성 평가판만 있어야 합니다.
             domain_mismatch: 현재 요청 호스트 이름이 구성된 호스트 이름과 일치하지 않습니다. 시스템 설정을 다시 확인하세요.
@@ -358,10 +358,10 @@ ko:
           learn_about: "새로운 기능에 대해 자세히 알아보기"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                이 릴리스에는 다음과 같이 다양한 기능과 개선 사항이 포함되어 있습니다. <br> <ul class="%{list_styling_class}"> <li>반복 미팅을 스케줄링하여 주간, 격주 또는 사용자 지정 약속을 효율화합니다.</li> <li>관계 탭에서 바로 자식 작업 패키지를 만듭니다.</li> <li>보다 우수한 인사이트를 위해 타임시트 PDF 내보내기에 총계를 포함합니다.</li> <li>보다 정확한 추적을 위해 비용 보고서에 자식 작업 패키지를 포함합니다.</li> <li>이전에 숨겨지거나, 권한이 제한된 관계의 날짜를 확인하여 정보에 입각한 스케줄린 결정을 내립니다.</li> </ul>
+                이 릴리스는 다음과 같은 다양한 기능과 개선 사항을 제공합니다. <br> <ul class="%{list_styling_class}"> <li>자동 스케줄링 모드를 활성화합니다.</li> <li>미팅에 대한 의제 항목 결과를 설정합니다.</li> <li>작업 패키지 설명에서 PDF 문서를 생성합니다.</li> <li>향상된 프로젝트 목록 보기로 다수의 프로젝트 관리를 개선합니다.</li> <li>코멘트에 대한 답변을 인용할 때 @를 사용하여 사용자를 멘션합니다.</li> </ul>
     ical_sharing_modal:
       title: "캘린더 구독"
       inital_setup_error_message: "데이터를 가져오는 중에 오류가 발생했습니다."
@@ -725,7 +725,7 @@ ko:
       context: "프로젝트 컨텍스트"
       copy:
         copy_options: "복사 설정"
-      not_available: "Project N/A"
+      not_available: "프로젝트 N/A"
       no_template_selected: "(없음)"
       required_outside_context: >
         모든 특성을 보려면 작업 패키지를 만들 프로젝트를 선택하십시오. 위 유형이 활성화된 프로젝트만 선택할 수 있습니다.

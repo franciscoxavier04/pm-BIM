@@ -984,7 +984,7 @@ eu:
         remindable: "Reminded object"
         remind_at: "Remind at"
         remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_time: "Ordua"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -997,7 +997,7 @@ eu:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Egutegia"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Activity"
@@ -1039,7 +1039,7 @@ eu:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Ordu-eremua"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1586,7 +1586,7 @@ eu:
     actor: "Actor"
     action: "Action"
     author: "Author"
-    avatar: "Avatar"
+    avatar: "Abatarra"
     base: "General Error:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"
@@ -1656,7 +1656,7 @@ eu:
     subject: "Subject"
     slug: "Slug"
     summary: "Summary"
-    time_zone: "Time zone"
+    time_zone: "Ordu-eremua"
     text: "Text"
     title: "Title"
     type: "Type"
@@ -2881,7 +2881,7 @@ eu:
   label_this_month: "this month"
   label_this_week: "this week"
   label_this_year: "this year"
-  label_time: "Time"
+  label_time: "Ordua"
   label_time_entry_plural: "Spent time"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Title"
@@ -3538,8 +3538,8 @@ eu:
     warnings:
       cannot_annotate: "This file cannot be annotated."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >

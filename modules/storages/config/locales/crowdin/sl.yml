@@ -2,8 +2,8 @@ sl:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID odjemalca
+        client_secret: Skrivnost odjemalca
       project:
         project_folder_type: Project folder type
       storages/file_link:

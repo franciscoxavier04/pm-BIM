@@ -38,8 +38,8 @@ ca:
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
-        created: "created"
-        commented: "commented"
+        created: "creat"
+        commented: "comentat"
   admin:
     plugins:
       no_results_title_text: Actualment no hi ha connectors disponibles.
@@ -215,7 +215,7 @@ ca:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Per tots els projectes
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -288,7 +288,7 @@ ca:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Pare"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Cerca a %{app_title}"
@@ -552,8 +552,8 @@ ca:
     react_with: "React with %{reaction}"
     and_user: "and %{user}"
     and_others:
-      one: and 1 other
-      other: and %{count} others
+      one: ' i 1 altre'
+      other: ' i %{count} altres'
     reaction_by: "%{reaction} by"
   reportings:
     index:
@@ -596,14 +596,14 @@ ca:
       no_results_content_text: Crear un nou tipus
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Configuració del formulari"
       more_info_text_html: >
         L'edició Enterprise et permet personalitzar la configuració de formularis amb aquests add-ons extra: <br> <ul class="%{list_styling_class}"><ul class="%{list_styling_class}"> <li><b>Afegeix nous grups d'atributs</b></li> <li><b>Canvia el nom dels grups d'atributs</b></li> <li><b>Afegeix una taula de paquets de treball relacionats</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projectes"
+        enabled_projects: "Projectes habilitats"
       settings:
-        tab: "Settings"
+        tab: "Configuració"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -658,15 +658,15 @@ ca:
         title: "No predecessors"
         description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "Només dies laborables"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Automàtic"
         manual: "Manual"
-      show_relations: "Show relations"
+      show_relations: "Mostra les relacions"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
+        children: "Fills"
         dates: "Dates"
         predecessors: "Predecessors"
         successors: "Successors"
@@ -731,14 +731,14 @@ ca:
     label_edit_x: "Edit %{x}"
     label_add_description: "Add description"
     lag:
-      subject: "Lag"
+      subject: "Retard"
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "relacionat amb"
+      label_relates_plural: "relacionat amb"
+      label_relates_to_singular: "relacionat amb"
+      label_relates_to_plural: "relacionat amb"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -754,42 +754,42 @@ ca:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "blocs"
+      label_blocks_plural: "blocs"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "bloquejats per"
+      label_blocked_plural: "bloquejats per"
+      label_blocked_by_singular: "bloquejats per"
+      label_blocked__by_plural: "bloquejats per"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "duplicats"
+      label_duplicates_plural: "duplicats"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "duplicat per"
+      label_duplicated_plural: "duplicat per"
+      label_duplicated_by_singular: "duplicat per"
+      label_duplicated_by_plural: "duplicat per"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "inclou"
+      label_includes_plural: "inclou"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "part de"
+      label_partof_plural: "part de"
+      label_part_of_singular: "part de"
+      label_part_of_plural: "part de"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "requereix"
+      label_requires_plural: "requereix"
       requires_description: "Marks the related work package as a requirement to this one"
-      label_required_singular: "required by"
-      label_required_plural: "required by"
+      label_required_singular: "requerit per"
+      label_required_plural: "requerit per"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Paquet de treball relacionat"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitació
   account:
@@ -852,7 +852,7 @@ ca:
         editable: "Editable"
         field_format: "Format"
         is_filter: "Utilitzat com a filtre"
-        is_for_all: "For all projects"
+        is_for_all: "Per tots els projectes"
         is_required: "Obligatori"
         max_length: "Longitud màxima"
         min_length: "Longitud mínima"
@@ -869,7 +869,7 @@ ca:
         secret: "Clau secreta del Client"
         owner: "Propietari"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Actiu"
         redirect_uri: "URI de redirecció"
         client_credentials_user_id: "ID d'Usuari Credencials de Client"
         scopes: "Àmbits"
@@ -877,7 +877,7 @@ ca:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domain"
+        domain: "Domini"
         starts_at: "Vàlid des de"
         subscriber: "Subscriptor"
         encoded_token: "Token de suport Enterprise"
@@ -897,7 +897,7 @@ ca:
         attr_login: "Atribut Nom d'usuari"
         attr_mail: "Atribut de Correu electrònic"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Administrador"
         base_dn: "Base DN"
         host: "Servidor"
         onthefly: "Creació d'usuari automàtica"
@@ -915,7 +915,7 @@ ca:
           true: "desarxivat"
           false: "arxivat"
         description: "Descripció"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Mòduls habilitats"
         identifier: "Identificador"
         latest_activity_at: "Última activitat al"
         parent: "Subprojecte de"
@@ -946,11 +946,11 @@ ca:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
+        name: "Nom"
         color: "Color"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Columnes"
         column_names: "Columnes"
         relations_to_type_column: "Relacions a %{type}"
         relations_of_type_column: "relacions %{type}"
@@ -958,7 +958,7 @@ ca:
         sort_by: "Sort results by"
         filters: "Filtres"
         timeline_labels: "Etiquetes de cronologia"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "Mostra el diagrama de Gantt"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -966,24 +966,24 @@ ca:
         highlighting_mode: "Highlight mode"
         display_representation: "Display mode"
         show_hierarchies: "Display mode"
-        starred: "Favorite"
+        starred: "Preferit"
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        include_subprojects: "Inclou subprojectes"
+        results: "Resultats"
       relation:
         lag: "Retard"
-        from: "Related work package"
+        from: "Paquet de treball relacionat"
         to: "Paquet de treball relacionat"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Data"
+        remind_at_time: "Hora"
       reminder_notification:
-        notification: "Notification"
+        notification: "Notificació"
       repository:
         url: "URL"
       role:
@@ -994,7 +994,7 @@ ca:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Calendari"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Activitat"
@@ -1013,7 +1013,7 @@ ca:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Usuari"
       user:
         admin: "Administrador"
         auth_source: "Authentication source"
@@ -1024,8 +1024,8 @@ ca:
         language: "Idioma"
         last_login_on: "Darrer inici de sessió"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Nom"
+        last_name: "Cognom"
         first_login: "First login"
         new_password: "Nova contrasenya"
         password_confirmation: "Confirmació"
@@ -1036,10 +1036,10 @@ ca:
         auto_hide_popups: "Oculta automàticament les notificacions de succés"
         warn_on_leaving_unsaved: "Avisa quan es deixi un paquet de treball amb canvis no desats"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Zona horària"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Dies laborals"
       version:
         effective_date: "Data de finalització"
         sharing: "Compartint"
@@ -1450,7 +1450,7 @@ ca:
               confirmation: "La confirmació de la contrasenya no coincideix."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Ha de contenir caràcters de les següents classes (com a mínim %{min_count} de %{all_count}): %{rules}"
               lowercase: "minúscules (ex. \"a\")"
               uppercase: "majúscules (p. ex. ' A')"
               numeric: "numèric (p. ex. \"1\")"
@@ -1500,7 +1500,7 @@ ca:
       global_role: "Global role"
       group: "Grup"
       issue_priority:
-        one: "Priority"
+        one: "Prioritat"
         other: "Priorities"
       member: "Membre"
       news: "Notícies"
@@ -1521,8 +1521,8 @@ ca:
         other: "Rols"
       status: "Estat del paquet de treball"
       token/api:
-        one: Access token
-        other: Access tokens
+        one: Token d'accés
+        other: Token d'accés
       type: "Classe"
       user: "Usuari"
       version: "Versió"
@@ -1581,7 +1581,7 @@ ca:
     assignee: "Assignat a"
     attachments: "Fitxers adjunts"
     actor: "Actor"
-    action: "Action"
+    action: "Acció"
     author: "Autor/a"
     avatar: "Avatar"
     base: "Error General:"
@@ -1592,13 +1592,13 @@ ca:
     comments: "Comentari"
     content: "Contingut"
     color: "Color"
-    creator: "Creator"
+    creator: "Creador"
     created_at: "Creat el"
-    custom_field: "Custom field"
+    custom_field: "Camp personalitzat"
     custom_options: "Valors possibles"
     custom_values: "Camps personalitzats"
     date: "Data"
-    dates_interval: "Date range"
+    dates_interval: "Interval de dates"
     default_columns: "Columnes predeterminades"
     description: "Descripció"
     derived_due_date: "Data final derivada"
@@ -1609,14 +1609,14 @@ ca:
     due_date: "Data final"
     estimated_hours: "Treball"
     estimated_time: "Treball"
-    email: "Email"
+    email: "Correu electrònic"
     entity_type: "Entity"
     expires_at: "Caduca el"
     firstname: "Nom"
-    filter: "Filter"
+    filter: "Filtre"
     group: "Grup"
     groups: "Grups"
-    hexcode: "Hex code"
+    hexcode: "Codi hexadecimal"
     id: "Id"
     is_default: "Valor per defecte"
     is_for_all: "Per tots els projectes"
@@ -1624,36 +1624,36 @@ ca:
     principal: "User or group"
     #kept for backwards compatibility
     issue: "Paquet de treball"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "Diari"
+    journal_notes: "Comentari"
     lastname: "Cognom"
     login: "Nom d'usuari"
-    lock_version: "Lock version"
+    lock_version: "Bloca la versió"
     mail: "Correu electrònic"
     name: "Nom"
-    note: "Note"
+    note: "Nota"
     notes: "Notes"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "Opcions"
+    operator: "Operador"
     password: "Contrasenya"
     priority: "Prioritat"
     project: "Projecte"
     project_ids: "Project IDs"
-    reason: "Reason"
+    reason: "Motiu"
     responsible: "Responsable"
-    required: "Required"
+    required: "Obligatori"
     recipient: "Recipient"
     role: "Rol"
     roles: "Rols"
-    search: "Search"
+    search: "Cercar"
     start_date: "Data d'inici"
     status: "Estat"
     state: "State"
     subject: "Assumpte"
     slug: "Slug"
     summary: "Resum"
-    time_zone: "Time zone"
+    time_zone: "Zona horària"
     text: "Text"
     title: "Títol"
     type: "Classe"
@@ -1662,14 +1662,14 @@ ca:
     updated_on: "Actualitzat el"
     uploader: "Eina de càrrega"
     user: "Usuari"
-    username: "Username"
-    unit: "Unit"
+    username: "Nom d'usuari"
+    unit: "Unitat"
     value: "Valor"
     values: "Values"
     version: "Versió"
     visible: "Visible"
     work_package: "Paquet de treball"
-    work_package_id: "Work package"
+    work_package_id: "Paquet de treball"
   backup:
     failed: "Còpia de seguretat fallida"
     label_backup_token: "Token de còpia de seguretat"
@@ -1934,7 +1934,7 @@ ca:
         other: "hores"
       day:
         one: "day"
-        other: "days"
+        other: "dies"
   description_active: "Actiu?"
   description_attachment_toggle: "Mostra o amaga els fitxers adjunts"
   description_autocomplete: >
@@ -1969,7 +1969,7 @@ ca:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Més informació"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2057,8 +2057,8 @@ ca:
       subproject: "Subprojecte: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Exportar"
+      submit: "Exportar"
       format:
         label: "File format"
         options:
@@ -2078,13 +2078,13 @@ ca:
           label: "PDF export type"
           options:
             table:
-              label: "Table"
+              label: "Taula"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Informe"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Diagrama de Gantt"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2093,10 +2093,10 @@ ca:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Dies"
+            weeks: "Setmanes"
+            months: "Mesos"
+            quarters: "Quatrimestres"
         column_width:
           label: "Table column width"
           options:
@@ -2151,7 +2151,7 @@ ca:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Descàrrega
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2420,7 +2420,7 @@ ca:
   label_calendars_and_dates: "Calendaris i dates"
   label_calendar_show: "Mostreu el calendari"
   label_category: "Categoria"
-  label_completed: Completed
+  label_completed: Completat
   label_consent_settings: "Consentiment d'usuari"
   label_wiki_menu_item: Element de menú Wiki
   label_select_main_menu_item: Seleccioneu nou element de menú principal
@@ -2484,7 +2484,7 @@ ca:
   label_default: "Per defecte"
   label_delete_user: "Eliminar usuari"
   label_delete_project: "Eliminar projecte"
-  label_delete: "Delete"
+  label_delete: "Esborrar"
   label_deleted: "suprimit"
   label_deleted_custom_field: "(camp personalitzat suprimit)"
   label_deleted_custom_item: "(deleted item)"
@@ -2573,7 +2573,7 @@ ca:
   label_here: aquí
   label_hide: "Amagar"
   label_history: "Història"
-  label_hierarchy: "Hierarchy"
+  label_hierarchy: "Jerarquia"
   label_hierarchy_leaf: "Branca de jerarquia"
   label_home: "Inici"
   label_subject_or_id: "Subjecte o ID"
@@ -2602,7 +2602,7 @@ ca:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Mostra tots els usuaris registrats"
-  label_show_less: "Show less"
+  label_show_less: "Mostra menys"
   label_show_more: "Show more"
   label_journal: "Diari"
   label_journal_diff: "Descripció de comparació"
@@ -2674,8 +2674,8 @@ ca:
   label_months_from: "mesos des de"
   label_more: "Més"
   label_more_than_ago: "fa més dies"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Moure la columna a l'esquerra"
+  label_move_column_right: "Moure la columna a la dreta"
   label_move_work_package: "Moure el paquet de treball"
   label_my_account: "Account settings"
   label_my_activity: "La meva activitat"
@@ -2699,8 +2699,8 @@ ca:
   label_next_week: "Setmana següent"
   label_no_change_option: "(sense canvis)"
   label_no_data: "No hi ha dades per mostrar"
-  label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_due_date: "sense data de final"
+  label_no_start_date: "no hi ha data d'inici"
   label_no_parent_page: "Sense pàgina pare"
   label_nothing_display: "Res a mostrar"
   label_nobody: "ningú"
@@ -2768,7 +2768,7 @@ ca:
   label_project_latest: "Últims projectes"
   label_project_default_type: "Permetre tipus buit"
   label_project_hierarchy: "Jerarquia de projectes"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projectes"
   label_project_new: "Nou projecte"
   label_project_plural: "Projectes"
   label_project_list_plural: "Llistes de projectes"
@@ -2803,7 +2803,7 @@ ca:
   label_relation_new: "Nova Relació"
   label_release_notes: "Notes de llançament"
   label_remaining_work: "Treball restant"
-  label_remove_column: "Remove column"
+  label_remove_column: "Eliminar columna"
   label_remove_columns: "Treure les columnes seleccionades"
   label_renamed: "reanomenat"
   label_reply_plural: "Respostes"
@@ -2846,10 +2846,10 @@ ca:
   label_show_completed_versions: "Mostra les versions acabades"
   label_columns: "Columnes"
   label_sort: "Ordena"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Ordenació ascendent"
   label_sort_by: "Ordenar per %{value}"
   label_sorted_by: "ordenats per %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Ordenació descendent"
   label_sort_higher: "Mou amunt"
   label_sort_highest: "Moure al principi"
   label_sort_lower: "Mou cap avall"
@@ -2878,7 +2878,7 @@ ca:
   label_this_month: "aquest més"
   label_this_week: "aquesta setmana"
   label_this_year: "aquest any"
-  label_time: "Time"
+  label_time: "Hora"
   label_time_entry_plural: "Temps utilitzat"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Títol"
@@ -2918,7 +2918,7 @@ ca:
   label_user_settings: "Configuració de l'usuari"
   label_users_settings: "Configuració d'usuaris"
   label_version_new: "Nova versió"
-  label_version_edit: "Edit version"
+  label_version_edit: "Edita la versió"
   label_version_plural: "Versions"
   label_version_sharing_descendants: "Amb subprojectes"
   label_version_sharing_hierarchy: "Amb la jerarquia de projecte"
@@ -3376,8 +3376,8 @@ ca:
       archived: "Arxivat"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "1 projecte"
+      other: "%{count} projectes"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3529,8 +3529,8 @@ ca:
     warnings:
       cannot_annotate: "No es poden fer notes d'aquest fitxer."
   scheduling:
-    activated: "activat"
-    deactivated: "desactivat"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Cerca..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3767,7 +3767,7 @@ ca:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Afegir"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4077,7 +4077,7 @@ ca:
       view: "Mostra"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Data"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4265,9 +4265,9 @@ ca:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Confidencial
       singular: "Aplicació OAuth"
-      scopes: "Scopes"
+      scopes: "Àmbits"
       client_credentials: "Client credentials"
       plural: "Aplicacions OAuth"
       named: "Aplicació OAuth \"%{name}\"."

@@ -222,7 +222,7 @@ es:
             label_starts_at: "Empieza el"
             label_expires_at: "Expira el"
             label_plan: "Plan"
-            label_additional_features: "Additional features"
+            label_additional_features: "Funciones adicionales"
             receive_newsletter: Quiero recibir el <a target="_blank" href="%{link}">boletín</a> de OpenProject.
             taken_domain: Solo puede existir una prueba activa por dominio.
             domain_mismatch: El nombre actual de host no coincide con el nombre de host configurado. Por favor, comprueba la configuración del sistema.
@@ -358,10 +358,10 @@ es:
           learn_about: "Más información sobre las nuevas funciones"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                La versión incluye varias funciones y mejoras para usted, por ejemplo: <br> <ul class="%{list_styling_class}"> <li>Programe reuniones periódicas para optimizar sus citas semanales, quincenales o personalizadas. </li> <li>Cree paquetes de trabajo secundarios directamente desde la pestaña Relaciones.</li> <li>Incluya las sumas totales en las exportaciones en PDF de las hojas de horas para obtener una mejor información.</li> <li>Incluya paquetes de trabajo secundarios en los informes de costes para un seguimiento más preciso.</li> <li>Vea las fechas de relaciones previamente ocultas y restringidas por permisos para tomar decisiones informadas sobre la programación.</li> </ul>
+                La versión trae varias funciones y mejoras para usted, por ejemplo <br> <ul class="%{list_styling_class}"> <li>Habilitar el modo de programación automática.</li> <li>Establecer los resultados de los puntos del orden del día para las reuniones. </li> <li>Generar documentos PDF a partir de la descripción de un paquete de trabajo.</li> <li>Mejorar la gestión de un gran número de proyectos con una vista mejorada de las listas de proyectos.</li> <li>Utilizar la @-mención del usuario al citar respondiendo a un comentario.</li> </ul>
     ical_sharing_modal:
       title: "Suscribirse al calendario"
       inital_setup_error_message: "Se ha producido un error al obtener los datos."
@@ -726,7 +726,7 @@ es:
       context: "Contexto del proyecto"
       copy:
         copy_options: "Opciones de copia"
-      not_available: "Project N/A"
+      not_available: "Proyecto N/D"
       no_template_selected: "(Ninguna)"
       required_outside_context: >
         Seleccione el proyecto donde quiere crear el paquete de trabajo para ver todos los atributos. Solo puede seleccionar proyectos que tengan activado el tipo de paquete utilizado.

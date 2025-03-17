@@ -3,9 +3,9 @@ tr:
     attributes:
       saml/provider:
         display_name: İsim
-        identifier: Identifier
-        secret: Secret
-        scope: Scope
+        identifier: Tanımlayıcı
+        secret: Gizli Anahtar
+        scope: Kapsam
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
         limit_self_registration: Kendi kendine kaydı sınırlayın
         sp_entity_id: Service entity ID
@@ -19,10 +19,10 @@ tr:
         want_assertions_encrypted: Require encrypted responses
         certificate: Certificate used by OpenProject for SAML requests
         private_key: Corresponding private key for OpenProject SAML requests
-        signature_method: Signature algorithm
-        digest_method: Digest algorithm
+        signature_method: İmza Algoritması
+        digest_method: Özet algoritması
         format: "Biçim"
-        icon: "Custom icon"
+        icon: "Özel simge"
     errors:
       models:
         saml/provider:
@@ -67,7 +67,7 @@ tr:
       upsale:
         description: OpenProject'i bir SAML kimlik sağlayıcısına bağlama
       request_attributes:
-        title: 'Requested attributes'
+        title: 'Talep edilen nitelikler'
         legend: >
           These attributes are added to the SAML XML metadata to signify to the identify provider which attributes OpenProject requires. You may still need to explicitly configure your identity provider to send these attributes. Please refer to your IdP's documentation.
         name: 'Requested attribute key'
@@ -89,13 +89,13 @@ tr:
       seeded_from_env: "This provider was seeded from the environment configuration. It cannot be edited."
     settings:
       metadata_none: "I don't have metadata"
-      metadata_url: "Metadata URL"
+      metadata_url: "Metaveri URL'si"
       metadata_xml: "Metadata XML"
     instructions:
       documentation_link: >
         Please refer to our [documentation on configuring SAML providers](docs_url) for more information on these configuration options.
       display_name: >
-        The name of the provider. This will be displayed as the login button and in the list of providers.
+        Sağlayıcının adı. Bu, oturum açma düğmesi olarak ve sağlayıcılar listesinde görüntülenecektir.
       metadata_none: >
         Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
       metadata_url: >

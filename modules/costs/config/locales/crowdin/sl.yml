@@ -47,11 +47,11 @@ sl:
       user:
         default_rates: "Privzeti tečaj"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: Projekt
+        user: Uporabnik
+        work_package: Delovni paket
         hours: Ure
-        comments: Comment
+        comments: Komentar
         activity: Aktivnost
         spent_on: Datum
         start_time: Start time
@@ -64,9 +64,9 @@ sl:
         other: "Vrsta stroška"
       time_entry_activity:
         one: "Time tracking activity"
-        two: "Time tracking activities"
-        few: "Time tracking activities"
-        other: "Time tracking activities"
+        two: "Dejavnosti spremljanja časa"
+        few: "Dejavnosti spremljanja časa"
+        other: "Dejavnosti spremljanja časa"
       rate: "Stopnja"
     errors:
       models:
@@ -88,7 +88,7 @@ sl:
   button_add_rate: "Vnesi tečaj"
   button_log_costs: "Stroški enote dnevnika"
   button_log_time: "Log"
-  button_add_activity: "Activity"
+  button_add_activity: "Aktivnost"
   caption_booked_on_project: "Rezervirano na projektu"
   caption_default: "Privzeto"
   caption_default_rate_history_for: "Zgodovina privzetih tečajev za %{user}"
@@ -100,7 +100,7 @@ sl:
   caption_save_rate: "Shrani tečaj"
   caption_set_rate: "Nastavite trenutni tečaj"
   caption_show_locked: "Pokaži zaklenjene enote"
-  caption_log_time_dialog: "Log time"
+  caption_log_time_dialog: "Beleži čas"
   description_date_for_new_rate: "Datum novega tečaja"
   description_costs_settings: "Define the desired format for the costs in all projects."
   description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
@@ -138,15 +138,15 @@ sl:
   label_rate: "Stopnja"
   label_rate_plural: "Cene"
   label_status_finished: "Končano"
-  label_show: "Show"
+  label_show: "Pokaži"
   label_units: "Stroškovne enote"
   label_user: "Uporabnik"
   label_until: "do"
   label_valid_from: "Veljavno od"
   label_yes: "Da"
-  label_time: "Time"
+  label_time: "Čas"
   label_cost: "Cost"
-  label_costs: "Costs"
+  label_costs: "Stroški"
   label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "nekaj je šlo narobe. Prosim poskusite ponovno."
@@ -169,8 +169,8 @@ sl:
   permission_view_own_time_entries: "Oglejte si svoj porabljen čas"
   project_module_costs: "Čas in stroški"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
-  setting_costs_currency: "Currency"
-  setting_costs_currency_format: "Format of currency"
+  setting_costs_currency: "Valuta"
+  setting_costs_currency_format: "Oblika valute"
   setting_enforce_tracking_start_and_end_times: "Force users to set start and end time on time records"
   text_assign_time_and_cost_entries_to_project: "Projektu dodelite prijavljene ure in stroške"
   text_destroy_cost_entries_question: "%{cost_entries} so bili prijavljeni v delovnih paketih, ki jih boste izbrisali. Kaj želiš narediti ?"

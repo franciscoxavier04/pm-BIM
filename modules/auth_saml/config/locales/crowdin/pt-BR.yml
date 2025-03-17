@@ -14,13 +14,13 @@ pt-BR:
         idp_sso_service_url: Endpoint de login do provedor de identidade
         idp_slo_service_url: Endpoint de logout do provedor de identidade
         idp_cert: Certificado público de provedor de identidade
-        authn_requests_signed: Sign SAML AuthnRequests
+        authn_requests_signed: Assinar solicitações de autenticação SAML
         want_assertions_signed: Exigir respostas assinadas
         want_assertions_encrypted: Exigir respostas criptografadas
         certificate: Certificado usado pelo OpenProject para solicitações SAML
         private_key: Chave privada correspondente para solicitações SAML do OpenProject
-        signature_method: Signature algorithm
-        digest_method: Digest algorithm
+        signature_method: Algoritmo de assinatura
+        digest_method: Algoritmo de resumo
         format: "Formato"
         icon: "Ícone personalizado"
     errors:

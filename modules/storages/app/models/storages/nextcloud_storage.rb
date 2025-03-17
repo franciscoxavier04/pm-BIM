@@ -35,7 +35,9 @@ module Storages
       username: "OpenProject"
     }.freeze
 
-    AUTHENTICATION_METHODS = %w[two_way_oauth2 oauth2_sso oauth2_sso_with_two_way_oauth2_fallback].freeze
+    # oauth2_sso_with_two_way_oauth2_fallback has been temporarily removed because the openproject_integration
+    # on the nextcloud side does not support this yet (we can't configure audience AND oauth_client at the same time)
+    AUTHENTICATION_METHODS = %w[two_way_oauth2 oauth2_sso].freeze
 
     store_attribute :provider_fields, :automatically_managed, :boolean
     store_attribute :provider_fields, :username, :string

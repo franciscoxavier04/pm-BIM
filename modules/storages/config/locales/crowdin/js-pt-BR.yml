@@ -2,7 +2,7 @@
 pt-BR:
   js:
     storages:
-      authentication_error: "Authentication with %{storageType} failed"
+      authentication_error: "Falha na autenticação com %{storageType}"
       link_files_in_storage: "Vincular arquivos em %{storageType}"
       link_existing_files: "Vincular arquivos existentes"
       upload_files: "Anexar arquivos"
@@ -20,7 +20,7 @@ pt-BR:
         one_drive: "OneDrive/SharePoint"
         default: "Armazenamento"
       information:
-        authentication_error: "The request to %{storageType} could not be authenticated, that's an error."
+        authentication_error: "A solicitação para %{storageType} não pôde ser autenticada. Ocorreu um erro."
         connection_error: >
           Algumas configurações de %{storageType} não estão funcionando. Entre em contato com seu administrador de %{storageType}.
         live_data_error: "Erro ao obter dados do arquivo"

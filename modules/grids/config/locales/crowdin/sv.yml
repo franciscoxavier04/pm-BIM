@@ -8,7 +8,7 @@ sv:
         row_count: "Antal rader"
         column_count: "Antal kolumner"
         widgets: "Widgets"
-        scope: "Scope"
+        scope: "Omfattning"
     errors:
       models:
         grids/grid:

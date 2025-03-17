@@ -64,8 +64,8 @@ ru:
         other: "Типы затрат"
       time_entry_activity:
         one: "Отслеживание времени"
-        few: "Time tracking activities"
-        many: "Time tracking activities"
+        few: "Отслеживания времени"
+        many: "Отслеживания времени"
         other: "Отслеживание времени"
       rate: "Ставка"
     errors:

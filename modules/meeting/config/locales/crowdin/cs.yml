@@ -56,10 +56,10 @@ cs:
         frequency: "Frekvence"
         interval: "Interval"
         start_date: "Začíná v"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Čas zahájení"
+        start_time_hour: "Čas zahájení"
         end_after: "Řada schůzek končí"
-        end_date: "End date"
+        end_date: "Datum ukončení"
         iterations: "Výskyty"
     errors:
       models:
@@ -73,7 +73,7 @@ cs:
     models:
       recurring_meeting: "Opakovaná schůzka"
       structured_meeting: "Jednorázová schůzka"
-      meeting: "Meeting"
+      meeting: "Schůzka"
       meeting_agenda_item: "Pořad jednání"
       meeting_agenda: "Agenda"
       meeting_minutes: "Zápis"
@@ -235,13 +235,13 @@ cs:
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
       occurrence:
-        title: "Cancel meeting occurrence"
-        heading: "Cancel this meeting occurrence?"
+        title: "Zrušit výskyt schůzky"
+        heading: "Zrušit výskyt schůzky"
         confirmation_message_html: >
-          Any meeting information not in the template will be lost. Do you want to continue?
-        confirm_button: "Cancel occurrence"
+          Veškeré informace o schůzce, které nejsou v šabloně, budou ztraceny. Chcete pokračovat?
+        confirm_button: "Zrušit výskyt"
     blankslate:
-      title: "No meetings to display"
+      title: "Nic k zobrazení"
       desc: "There are no meetings that meet the active filter criteria."
   meeting_section:
     untitled_title: "Sekce bez názvu"
@@ -250,7 +250,7 @@ cs:
     empty_text: "Přetáhněte položky sem nebo vytvořte nové"
   recurring_meeting:
     ended_blankslate:
-      title: "Meeting series ended"
+      title: "Řada schůzek skončila"
       message: "This meeting series has come to an end. There are no upcoming meetings. "
       action: "You can still view past occurrences or edit the meeting series to extend it."
     occurrence:
@@ -272,12 +272,12 @@ cs:
         You are currently editing a template of a meeting series: %{link}. Every new occurrence of a meeting in the series will use this template. Changes will not affect past or already created meetings.
     frequency:
       x_daily:
-        one: "Every day"
+        one: "Každý den"
         few: "Every %{count} days"
         many: "Every %{count} days"
         other: "Every %{count} days"
       x_weekly:
-        one: "Every week"
+        one: "Každý týden"
         few: "Every %{count} weeks"
         many: "Every %{count} weeks"
         other: "Every %{count} weeks"
@@ -298,7 +298,7 @@ cs:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} v %{time}"
     open:
-      title: "Otevřít"
+      title: "Agenda opened"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
@@ -406,7 +406,7 @@ cs:
   label_meeting_state_planned: "Plánováno"
   label_meeting_state_cancelled: "Zrušeno"
   label_meeting_state_skipped: "Přeskočeno"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "Probíhá"
   label_meeting_reopen_action: "Znovu otevřít schůzku"
   label_meeting_close_action: "Ukončit schůzku"
   label_meeting_in_progress_action: "Mark as in progress"
@@ -414,8 +414,8 @@ cs:
   text_meeting_closed_description: "Tato schůzka je ukončena. Položky agendy již nelze přidávat/odstranit."
   text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
   text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
-  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
-  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
+  text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
   label_meeting_manage_participants: "Spravovat účastníky"
   label_meeting_no_participants: "Nikdo tu není"
   label_meeting_show_hide_participants: "Zobrazit/skrýt %{count} dalších"

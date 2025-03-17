@@ -2,8 +2,8 @@ ja:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: クライアントID
+        client_secret: クライアントシークレット
       project:
         project_folder_type: Project folder type
       storages/file_link:
@@ -22,7 +22,7 @@ ja:
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
-        creator: Creator
+        creator: 作成者
         drive: Drive ID
         host: ホスト
         name: 名称
@@ -318,7 +318,7 @@ ja:
     label_add_new_storage: Add new storage
     label_automatic_folder: New folder with automatically managed permissions
     label_creation_time: Creation time
-    label_creator: Creator
+    label_creator: 作成者
     label_delete_storage: Delete storage
     label_edit_storage_access_management: Edit storage access management
     label_edit_storage_audience: Edit Storage Audience

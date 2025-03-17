@@ -38,8 +38,8 @@ ro:
         changed_on: "changed on"
         created_on: "a creat-o pe"
         changed: "changed"
-        created: "created"
-        commented: "commented"
+        created: "creat"
+        commented: "comentat"
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -291,7 +291,7 @@ ro:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Părinte"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Caută în %{app_title}"
@@ -351,8 +351,8 @@ ro:
     settings:
       change_identifier: Schimbă identificatorul
       actions:
-        label_enable_all: "Enable all"
-        label_disable_all: "Disable all"
+        label_enable_all: "Activează tot"
+        label_disable_all: "Dezactivează tot"
       activities:
         no_results_title_text: În acest moment nu există activități disponibile.
       forums:
@@ -435,7 +435,7 @@ ro:
       wp_shares: "Partajări pachete de lucru"
       groups: "Grupuri"
     delete_member_dialog:
-      title: "Remove member"
+      title: "Elimină membru"
       will_remove_the_users_role: "This will remove the user’s role from this project."
       will_remove_the_groups_role: "This will remove the group role from this project."
       however_work_packages_shared_with_user_html:
@@ -562,9 +562,9 @@ ro:
     react_with: "React with %{reaction}"
     and_user: "and %{user}"
     and_others:
-      one: and 1 other
-      few: and %{count} others
-      other: and %{count} others
+      one: și încă unul
+      few: și %{count} alții
+      other: și %{count} alții
     reaction_by: "%{reaction} by"
   reportings:
     index:
@@ -607,14 +607,14 @@ ro:
       no_results_content_text: Creează tip nou
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Configurare formular"
       more_info_text_html: >
         Ediția Enterprise îți permite să personalizezi configurația formularului cu aceste suplimente: <br> <ul class="%{list_styling_class}"> <li><b>Adăugarea de noi grupuri de atribute</b></li> <li><b>Redenumirea grupurilor de atribute</b></li> <li><b>Adaugă un tabel cu pachetele de lucru aferente</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Proiecte"
+        enabled_projects: "Proiecte activate"
       settings:
-        tab: "Settings"
+        tab: "Setări"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -634,8 +634,8 @@ ro:
         pdf_export_templates:
           label: "PDF Export templates"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "Activează tot"
+            label_disable_all: "Dezactivează tot"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -669,16 +669,16 @@ ro:
         title: "No predecessors"
         description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "Numai în zilele lucrătoare"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Automat"
         manual: "Manual"
-      show_relations: "Show relations"
+      show_relations: "Arată relațiile"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Copii"
+        dates: "Date"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -801,7 +801,7 @@ ro:
       required_description: "Marchează acest pachet de lucru ca fiind o cerință pentru cel asociat"
       label_parent_singular: "părinte"
       label_parent_plural: "părinte"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Pachet de lucru asociat"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitație
   account:
@@ -881,7 +881,7 @@ ro:
         secret: "Client Secret"
         owner: "Proprietar"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Activ"
         redirect_uri: "Redirecționați URI"
         client_credentials_user_id: "Credențiale client ID utilizator"
         scopes: "Scopuri"
@@ -889,7 +889,7 @@ ro:
       emoji_reaction:
         reactable: "Reacted on"
       enterprise_token:
-        domain: "Domain"
+        domain: "Domeniu"
         starts_at: "Valabil din"
         subscriber: "Abonat"
         encoded_token: "Token de sprijin pentru întreprinderi"
@@ -927,7 +927,7 @@ ro:
           true: "dezarhivat"
           false: "arhivat"
         description: "Descriere"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Module activate"
         identifier: "Identificator"
         latest_activity_at: "Ultima activitate la"
         parent: "Subproiect în"
@@ -958,11 +958,11 @@ ro:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Nume"
+        color: "Culoare"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Coloane"
         column_names: "Coloane"
         relations_to_type_column: "Relații cu %{type}"
         relations_of_type_column: "%{type} relații"
@@ -970,7 +970,7 @@ ro:
         sort_by: "Sort results by"
         filters: "Filtre"
         timeline_labels: "Etichete de cronologie"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "Grafic Gantt"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -978,24 +978,24 @@ ro:
         highlighting_mode: "Highlight mode"
         display_representation: "Display mode"
         show_hierarchies: "Display mode"
-        starred: "Favorite"
+        starred: "Favorit"
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        include_subprojects: "Include subproiecte"
+        results: "Rezultate"
       relation:
         lag: "Întârziere"
-        from: "Related work package"
+        from: "Pachet de lucru asociat"
         to: "Pachet de lucru asociat"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Dată"
+        remind_at_time: "Timp"
       reminder_notification:
-        notification: "Notification"
+        notification: "Notificari"
       repository:
         url: "URL"
       role:
@@ -1025,7 +1025,7 @@ ro:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Utilizator"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"
@@ -1036,8 +1036,8 @@ ro:
         language: "Limbă"
         last_login_on: "Ultima autentificare"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Prenume"
+        last_name: "Nume"
         first_login: "First login"
         new_password: "Parolă nouă"
         password_confirmation: "Confirmare"
@@ -1048,10 +1048,10 @@ ro:
         auto_hide_popups: "Ascunde automat notificările de succes"
         warn_on_leaving_unsaved: "Avertizează când părăsesc un pachet de lucru cu modificări nesalvate"
         theme: "Mod"
-        time_zone: "Time zone"
+        time_zone: "Fus orar"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Zile lucrătoare"
       version:
         effective_date: "Dată finalizare"
         sharing: "Distribuire"
@@ -1185,7 +1185,7 @@ ro:
         custom_fields_project:
           attributes:
             project_ids:
-              blank: "Please select a project."
+              blank: "Te rog selectează un proiect."
         custom_actions:
           only_one_allowed: "(%{name}) este permisă doar o singură valoare."
           empty: "(%{name}) valoarea nu poate fi goală."
@@ -1401,7 +1401,7 @@ ro:
               cannot_be_set_when_work_is_zero: "cannot be set when Work is 0h"
               must_be_set_when_remaining_work_is_set: "required when Remaining work is set."
               must_be_set_when_work_and_remaining_work_are_set: "required when Work and Remaining work are set."
-              inclusion: "must be between 0 and 100."
+              inclusion: "trebuie să fie între 0 și 100."
             due_date:
               not_start_date: "nu este în data de început, deși acest lucru este necesar pentru etape."
               cannot_be_null: "nu poate fi setat la null, deoarece data de începere și durata sunt cunoscute."
@@ -1462,7 +1462,7 @@ ro:
               confirmation: "Confirmarea parolei nu se potrivește cu parola."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Trebuie să conţină caractere din următoarele clase (cel puţin %{min_count} din %{all_count}): %{rules}"
               lowercase: "litere mici (ex. 'a')"
               uppercase: "litere mari (ex. 'A')"
               numeric: "cifre (ex. ' 1')"
@@ -1514,7 +1514,7 @@ ro:
       global_role: "Global role"
       group: "Grup"
       issue_priority:
-        one: "Priority"
+        one: "Prioritate"
         few: "Priorities"
         other: "Priorities"
       member: "Membru"
@@ -1529,8 +1529,8 @@ ro:
       project/stage_definition: "Stage"
       project_query:
         one: "Project list"
-        few: "Project lists"
-        other: "Project lists"
+        few: "Listă proiecte"
+        other: "Listă proiecte"
       query: "Interogare personalizată"
       reminder: "Reminder"
       role:
@@ -1539,9 +1539,9 @@ ro:
         other: "Roluri"
       status: "Stare pachet de lucru"
       token/api:
-        one: Access token
-        few: Access tokens
-        other: Access tokens
+        one: Tichet de acces
+        few: Token-uri de acces
+        other: Token-uri de acces
       type: "Tip"
       user: "Utilizator"
       version: "Versiune"
@@ -1604,7 +1604,7 @@ ro:
     assignee: "Executant"
     attachments: "Atașamente"
     actor: "Actor"
-    action: "Action"
+    action: "Acțiune"
     author: "Autor"
     avatar: "Avatar"
     base: "Eroare generală:"
@@ -1617,11 +1617,11 @@ ro:
     color: "Culoare"
     creator: "Creator"
     created_at: "Creat pe"
-    custom_field: "Custom field"
+    custom_field: "Câmp personalizat"
     custom_options: "Valori posibile"
     custom_values: "Câmpuri personalizate"
     date: "Data"
-    dates_interval: "Date range"
+    dates_interval: "Interval calendaristic"
     default_columns: "Coloane implicite"
     description: "Descriere"
     derived_due_date: "Dată finală derivată"
@@ -1630,16 +1630,16 @@ ro:
     direction: "Direction"
     display_sums: "Afişare totaluri"
     due_date: "Dată finalizare"
-    estimated_hours: "Work"
-    estimated_time: "Work"
-    email: "Email"
+    estimated_hours: "Muncă"
+    estimated_time: "Muncă"
+    email: "E-mail"
     entity_type: "Entity"
     expires_at: "Expiră la"
     firstname: "Prenume"
-    filter: "Filter"
+    filter: "Filtrează"
     group: "Grup"
     groups: "Grupuri"
-    hexcode: "Hex code"
+    hexcode: "Cod hexa"
     id: "ID"
     is_default: "Valoare implicită"
     is_for_all: "Pentru toate proiectele"
@@ -1647,36 +1647,36 @@ ro:
     principal: "User or group"
     #kept for backwards compatibility
     issue: "Pachet de lucru"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "Jurnal"
+    journal_notes: "Comentariu"
     lastname: "Nume"
     login: "Utilizator"
-    lock_version: "Lock version"
+    lock_version: "Blocare versiune"
     mail: "E-mail"
     name: "Nume"
-    note: "Note"
-    notes: "Notes"
+    note: "Notă"
+    notes: "Mențiuni"
     number: "Number"
-    options: "Options"
+    options: "Opțiuni"
     operator: "Operator"
     password: "Parolă"
     priority: "Prioritate"
     project: "Proiect"
     project_ids: "Project IDs"
-    reason: "Reason"
+    reason: "Motiv"
     responsible: "Responsabil"
-    required: "Required"
+    required: "Obligatoriu"
     recipient: "Recipient"
     role: "Rol"
     roles: "Roluri"
-    search: "Search"
+    search: "Căutare"
     start_date: "Dată început"
     status: "Stare"
     state: "State"
     subject: "Subiect"
     slug: "Slug"
     summary: "Rezumat"
-    time_zone: "Time zone"
+    time_zone: "Fus orar"
     text: "Text"
     title: "Titlu"
     type: "Tip"
@@ -1685,14 +1685,14 @@ ro:
     updated_on: "Actualizat în"
     uploader: "Autor"
     user: "Utilizator"
-    username: "Username"
-    unit: "Unit"
+    username: "Utilizator"
+    unit: "Unitate"
     value: "Valoare"
     values: "Values"
     version: "Versiune"
-    visible: "Visible"
+    visible: "Vizibil"
     work_package: "Pachet de lucru"
-    work_package_id: "Work package"
+    work_package_id: "Pachet de lucru"
   backup:
     failed: "Copia de rezervă a eșuat"
     label_backup_token: "Token copie de rezervă"
@@ -1746,7 +1746,7 @@ ro:
   button_continue: "Continuă"
   button_copy: "Copiază"
   button_copy_to_clipboard: "Copiază în clipboard"
-  button_copy_link_to_clipboard: "Copy link to clipboard"
+  button_copy_link_to_clipboard: "Copiază link-ul în clipboard"
   button_copy_and_follow: "Copiază și continuă"
   button_create: "Creează"
   button_create_and_continue: "Creează și continuă"
@@ -1975,8 +1975,8 @@ ro:
         other: "ore"
       day:
         one: "day"
-        few: "days"
-        other: "days"
+        few: "zile"
+        other: "zile"
   description_active: "Activ?"
   description_attachment_toggle: "Afișare/Ascundere atașamente"
   description_autocomplete: >
@@ -2011,7 +2011,7 @@ ro:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Mai multe informatii"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2099,8 +2099,8 @@ ro:
       subproject: "Subproiect: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Exportă"
+      submit: "Exportă"
       format:
         label: "File format"
         options:
@@ -2120,13 +2120,13 @@ ro:
           label: "PDF export type"
           options:
             table:
-              label: "Table"
+              label: "Tabel"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Raportare"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Grafic Gantt"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2135,10 +2135,10 @@ ro:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Zile"
+            weeks: "Săptămâni"
+            months: "Luni"
+            quarters: "Trimestre"
         column_width:
           label: "Table column width"
           options:
@@ -2193,9 +2193,9 @@ ro:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Descărcare
       templates:
-        label: "Template"
+        label: "Șablon"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
@@ -2526,7 +2526,7 @@ ro:
   label_default: "Implicit"
   label_delete_user: "Șterge utilizator"
   label_delete_project: "Ștergeți proiectul"
-  label_delete: "Delete"
+  label_delete: "Șterge"
   label_deleted: "șters"
   label_deleted_custom_field: "(câmp personalizat șters)"
   label_deleted_custom_item: "(deleted item)"
@@ -2615,7 +2615,7 @@ ro:
   label_here: aici
   label_hide: "Ascunde"
   label_history: "Istoric"
-  label_hierarchy: "Hierarchy"
+  label_hierarchy: "Ierarhie"
   label_hierarchy_leaf: "Frunză de ierarhie"
   label_home: "Pagina de start"
   label_subject_or_id: "Subiect sau ID"
@@ -2644,7 +2644,7 @@ ro:
   label_share_project_list: "Distribuie lista de proiecte"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Afișați toți utilizatorii înregistrați"
-  label_show_less: "Show less"
+  label_show_less: "Arată mai puţin"
   label_show_more: "Show more"
   label_journal: "Jurnal"
   label_journal_diff: "Comparare descriere"
@@ -2920,7 +2920,7 @@ ro:
   label_this_month: "luna curentă"
   label_this_week: "săptămâna curentă"
   label_this_year: "anul curent"
-  label_time: "Time"
+  label_time: "Timp"
   label_time_entry_plural: "Timp consumat"
   label_time_entry_activity_plural: "Activități timp consumat"
   label_title: "Titlu"
@@ -2960,7 +2960,7 @@ ro:
   label_user_settings: "Setări utilizator"
   label_users_settings: "Users settings"
   label_version_new: "Versiune nouă"
-  label_version_edit: "Edit version"
+  label_version_edit: "Editați versiunea"
   label_version_plural: "Versiuni"
   label_version_sharing_descendants: "Cu subproiecte"
   label_version_sharing_hierarchy: "Cu ierarhia de proiect"
@@ -3423,8 +3423,8 @@ ro:
       archived: "Arhivat"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "un proiect"
+      other: "%{count} proiecte"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3578,8 +3578,8 @@ ro:
     warnings:
       cannot_annotate: "Acest fișier nu poate fi adnotat."
   scheduling:
-    activated: "Activat"
-    deactivated: "Dezactivat"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Caută ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3816,7 +3816,7 @@ ro:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Adaugă"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -4127,7 +4127,7 @@ ro:
       view: "Vizualizează"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Dată"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4315,9 +4315,9 @@ ro:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Confidenţial
       singular: "Aplicație OAuth"
-      scopes: "Scopes"
+      scopes: "Scopuri"
       client_credentials: "Client credentials"
       plural: "Aplicație OAuth"
       named: "OAuth aplicație '%{name}'"
