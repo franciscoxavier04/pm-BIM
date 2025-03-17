@@ -37,6 +37,7 @@ type FilteredSuggestions = Array<{
 }>;
 
 type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
+type ListElement = HTMLElement&{ dataset:{ role:'list_item', prop:string } };
 
 const COMPLETION_CHARACTER = '/';
 
@@ -169,8 +170,8 @@ export default class PatternInputController extends Controller {
 
   // Autocomplete events
   suggestions_select(event:PointerEvent):void {
-    const target = event.currentTarget as HTMLElement;
-    const token = this.createToken(target.dataset.prop!);
+    const target = event.currentTarget as ListElement;
+    const token = this.createToken(target.dataset.prop);
 
     if (!this.currentRange) {
       this.contentTarget.appendChild(token);
@@ -182,13 +183,24 @@ export default class PatternInputController extends Controller {
     if (parentNode !== null && this.isToken(parentNode)) {
       this.replaceToken(token, parentNode);
     } else {
-      this.insertToken(token);
+      this.insertNodeAtCurrentRange(token);
     }
 
     this.clearSuggestionsFilter();
   }
 
-  close_suggestions() {
+  insert_as_text(event:PointerEvent) {
+    if (!this.currentRange) { return; }
+
+    const target = event.currentTarget as ListElement;
+    const parentNode = this.currentRange.startContainer.parentNode;
+    const text = document.createTextNode(target.dataset.prop);
+    if (parentNode !== null && this.isToken(parentNode)) {
+      this.replaceToken(text, parentNode);
+    } else {
+      this.insertNodeAtCurrentRange(text);
+    }
+
     this.clearSuggestionsFilter();
   }
 
@@ -273,14 +285,14 @@ export default class PatternInputController extends Controller {
     return this.contentTarget.innerHTML.startsWith('<');
   }
 
-  private replaceToken(newToken:TokenElement, oldToken:TokenElement):void {
-    oldToken.replaceWith(newToken);
-    this.setRealCaretPositionAtNode(newToken);
+  private replaceToken(node:Node, token:TokenElement):void {
+    token.replaceWith(node);
+    this.setRealCaretPositionAtNode(node);
     this.updateFormInputValue();
     this.setRange();
   }
 
-  private insertToken(token:TokenElement) {
+  private insertNodeAtCurrentRange(node:Node) {
     if (!this.currentRange) { return; }
 
     const targetNode = this.currentRange.startContainer;
@@ -297,9 +309,9 @@ export default class PatternInputController extends Controller {
     wordRange.setEnd(targetNode, targetOffset);
 
     wordRange.deleteContents();
-    wordRange.insertNode(token);
+    wordRange.insertNode(node);
 
-    this.setRealCaretPositionAtNode(token);
+    this.setRealCaretPositionAtNode(node);
     this.updateFormInputValue();
     this.setRange();
   }
@@ -376,11 +388,12 @@ export default class PatternInputController extends Controller {
   private appendInsertAsTextElement(word:string):void {
     const template = this.insertAsTextTemplateTarget.content.cloneNode(true) as DocumentFragment;
     const item = template.firstElementChild;
-    if (item === null) { return; }
+    if (item === null || !this.isListItem(item)) { return; }
 
     const textElement = item.querySelector('span');
     if (textElement === null) { return; }
 
+    item.dataset.prop = word;
     textElement.innerText = this.insertAsTextTemplateValue.replace('%{word}', word);
     this.suggestionsTarget.appendChild(item);
   }
@@ -447,6 +460,10 @@ export default class PatternInputController extends Controller {
 
   private isToken(node:Node):node is TokenElement {
     return this.isElement(node) && node.dataset.role === 'token';
+  }
+
+  private isListItem(node:Node):node is ListElement {
+    return this.isElement(node) && node.dataset.role === 'list_item';
   }
 
   private isText(node:Node):node is Text {
