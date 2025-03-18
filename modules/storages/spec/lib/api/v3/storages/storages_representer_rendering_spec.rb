@@ -87,6 +87,14 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
       end
     end
 
+    describe "type" do
+      it_behaves_like "has a titled link" do
+        let(:link) { "type" }
+        let(:href) { "urn:openproject-org:api:v3:storages:#{storage.provider_type_nextcloud? ? 'Nextcloud' : 'OneDrive'}" }
+        let(:title) { storage.provider_type_nextcloud? ? "Nextcloud" : "OneDrive" }
+      end
+    end
+
     describe "authorizationState" do
       it_behaves_like "has a titled link" do
         let(:link) { "authorizationState" }
@@ -258,6 +266,18 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
           end
         end
       end
+
+      describe "storageAudience" do
+        it_behaves_like "no property", :storageAudience
+
+        context "when the storage is configured for SSO authentication" do
+          let(:storage) { create(:nextcloud_storage, :oidc_sso_enabled) }
+
+          it_behaves_like "property", :storageAudience do
+            let(:value) { "nextcloud" }
+          end
+        end
+      end
     end
 
     it_behaves_like "common file storage links"
@@ -267,6 +287,22 @@ RSpec.describe API::V3::Storages::StorageRepresenter, "rendering" do
         it_behaves_like "has an untitled link" do
           let(:link) { "origin" }
           let(:href) { storage.host }
+        end
+      end
+
+      describe "authenticationMethod" do
+        it_behaves_like "has an untitled link" do
+          let(:link) { "authenticationMethod" }
+          let(:href) { "urn:openproject-org:api:v3:storages:authenticationMethod:TwoWayOAuth2" }
+        end
+
+        context "when storage authenticates through SSO" do
+          let(:storage) { create(:nextcloud_storage, :oidc_sso_enabled) }
+
+          it_behaves_like "has an untitled link" do
+            let(:link) { "authenticationMethod" }
+            let(:href) { "urn:openproject-org:api:v3:storages:authenticationMethod:OAuth2SSO" }
+          end
         end
       end
 
