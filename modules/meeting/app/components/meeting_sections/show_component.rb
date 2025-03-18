@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -48,6 +49,7 @@ module MeetingSections
       @insert_target_modified = insert_target_modified
       @force_wrapper = force_wrapper
       @state = state
+      @backlog = meeting_section.backlog?
     end
 
     private
@@ -66,6 +68,11 @@ module MeetingSections
 
     def editable?
       @meeting_section.editable? && User.current.allowed_in_project?(:manage_agendas, @meeting_section.project)
+    end
+
+    def render?
+      # !@backlog
+      true
     end
 
     def render_section_wrapper?

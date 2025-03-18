@@ -43,7 +43,21 @@ module Meetings
         end
       end
 
+      call.merge! create_backlog(call.result) if call.success?
+
       call
+    end
+
+    def create_backlog(meeting)
+      MeetingSections::CreateService
+        .new(user: user)
+        .call(
+          {
+            meeting_id: meeting.id,
+            backlog: true,
+            title: "Agenda backlog"
+          }
+        )
     end
   end
 end

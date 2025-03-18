@@ -54,6 +54,7 @@ class Meeting < ApplicationRecord
 
   has_many :agenda_items, dependent: :destroy, class_name: "MeetingAgendaItem", inverse_of: :meeting
   has_many :sections, dependent: :delete_all, class_name: "MeetingSection"
+  has_one :backlog, -> { where(backlog: true) }, class_name: "MeetingSection"
 
   accepts_nested_attributes_for :agenda_items
 
