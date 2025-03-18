@@ -30,8 +30,6 @@
 
 class Journals::CreateService
   class Association
-    include Helpers
-
     ASSOCIATION_NAMES = %i[
       AgendaItemable
       Attachable
@@ -40,16 +38,26 @@ class Journals::CreateService
       Storable
     ].freeze
 
-    def self.for(journable)
+    def self.for(service)
       ASSOCIATION_NAMES
-        .map { "Journals::CreateService::#{_1}".constantize.new(journable) }
+        .map { "Journals::CreateService::#{_1}".constantize.new(service) }
         .select(&:associated?)
     end
 
-    attr_reader :journable
+    attr_reader :service
 
-    def initialize(journable)
-      @journable = journable
+    delegate :cleanup_predecessor_for,
+             :id_from_inserted_journal_sql,
+             :journable,
+             :journable_class_name,
+             :journable_id,
+             :normalize_newlines_sql,
+             :only_if_created_sql,
+             :sanitize,
+             to: :service
+
+    def initialize(service)
+      @service = service
     end
 
     def name = self.class.name.demodulize.underscore

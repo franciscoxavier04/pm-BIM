@@ -41,14 +41,12 @@
 # rubocop:disable Rails/SquishedSQLHeredocs
 module Journals
   class CreateService
-    include Helpers
-
     attr_reader :journable, :user, :associations
 
     def initialize(journable, user)
       @user = user
       @journable = journable
-      @associations = Association.for(journable)
+      @associations = Association.for(self)
     end
 
     def call(notes: "", cause: CauseOfChange::NoCause.new)
@@ -64,6 +62,8 @@ module Journals
     end
 
     private
+
+    def journable_id = journable.id
 
     # If the journalizing happens within the configured aggregation time, is carried out by the same user, has an
     # identical cause and only the predecessor or the journal to be created has notes, the changes are aggregated.
@@ -248,6 +248,18 @@ module Journals
                               :data_id)
     end
 
+    def cleanup_predecessor_for(predecessor, table_name, column, referenced_id)
+      return "SELECT 1" unless predecessor
+
+      sanitize(<<~SQL.squish, column => predecessor.send(referenced_id))
+        DELETE
+        FROM
+         #{table_name}
+        WHERE
+         #{column} = :#{column}
+      SQL
+    end
+
     def update_or_insert_journal_sql(predecessor, notes, cause)
       if predecessor
         update_journal_sql(predecessor, notes, cause)
@@ -340,6 +352,10 @@ module Journals
           #{only_on_changed_or_forced_condition_sql(predecessor, notes, cause)}
         RETURNING *
       SQL
+    end
+
+    def journable_class_name
+      journable.class.base_class.name
     end
 
     # Updates the updated_at timestamp of the journable.
@@ -485,6 +501,14 @@ module Journals
       end
     end
 
+    def only_if_created_sql
+      "EXISTS (SELECT * from inserted_journal)"
+    end
+
+    def id_from_inserted_journal_sql
+      "(SELECT id FROM inserted_journal)"
+    end
+
     def data_changes_condition_sql
       data_table = data_table_name
       journable_table = journable_table_name
@@ -553,6 +577,10 @@ module Journals
       journable.class.journal_class.table_name
     end
 
+    def normalize_newlines_sql(column)
+      "REGEXP_REPLACE(COALESCE(#{column},''), '\\r\\n', '\n', 'g')"
+    end
+
     def cause_sql(cause)
       # Using the same encoder mechanism that ActiveRecord uses for json/jsonb columns
       ActiveSupport::JSON.encode(cause || {})
@@ -601,6 +629,9 @@ module Journals
         Rails.logger.debug { "Inserting new journal for #{journable_type} ##{journable.id}" }
       end
     end
+
+    delegate :sanitize,
+             to: ::OpenProject::SqlSanitization
   end
 end
 # rubocop:enable Rails/SquishedSQLHeredocs
