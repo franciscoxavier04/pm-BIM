@@ -37,6 +37,9 @@ type FilteredSuggestions = Array<{
 }>;
 
 type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
+type ListElement = HTMLElement&{ dataset:{ role:'list_item', prop:string } };
+
+const COMPLETION_CHARACTER = '/';
 
 export default class PatternInputController extends Controller {
   static targets = [
@@ -116,24 +119,24 @@ export default class PatternInputController extends Controller {
     this.setRange();
   }
 
-  input_change() {
+  input_change():void {
     // clean up empty tags from the input
     this.contentTarget.querySelectorAll('span').forEach((element) => element.textContent?.trim() === '' && element.remove());
     this.contentTarget.querySelectorAll('br').forEach((element) => element.remove());
 
     // show suggestions for the current word
     const word = this.currentWord();
-    if (word && word.length > 0) {
-      this.filterSuggestions(word);
-    } else {
+    if (word === null) {
       this.clearSuggestionsFilter();
+    } else {
+      this.filterSuggestions(word);
     }
 
     this.tagInvalidTokens();
 
-    // this resets the cursor position without changing it
-    // it is necessary because chromium based browsers try to
-    // retain styling and adds a unwanted <font> tag,
+    // This resets the cursor position without changing it.
+    // It is necessary because chromium based browsers try to
+    // retain styling and adds an unwanted <font> tag,
     // breaking the behaviour of this component
     const selection = document.getSelection();
     if (selection && selection.rangeCount) {
@@ -166,16 +169,38 @@ export default class PatternInputController extends Controller {
   }
 
   // Autocomplete events
-  suggestions_select(event:PointerEvent) {
-    const target = event.currentTarget as HTMLElement;
+  suggestions_select(event:PointerEvent):void {
+    const target = event.currentTarget as ListElement;
+    const token = this.createToken(target.dataset.prop);
 
-    if (target) {
-      this.insertToken(this.createToken(target.dataset.prop!));
+    if (!this.currentRange) {
+      this.contentTarget.appendChild(token);
       this.clearSuggestionsFilter();
+      return;
     }
+
+    const parentNode = this.currentRange.startContainer.parentNode;
+    if (parentNode !== null && this.isToken(parentNode)) {
+      this.replaceToken(token, parentNode);
+    } else {
+      this.insertNodeAtCurrentRange(token);
+    }
+
+    this.clearSuggestionsFilter();
   }
 
-  close_suggestions() {
+  insert_as_text(event:PointerEvent) {
+    if (!this.currentRange) { return; }
+
+    const target = event.currentTarget as ListElement;
+    const parentNode = this.currentRange.startContainer.parentNode;
+    const text = document.createTextNode(target.dataset.prop);
+    if (parentNode !== null && this.isToken(parentNode)) {
+      this.replaceToken(text, parentNode);
+    } else {
+      this.insertNodeAtCurrentRange(text);
+    }
+
     this.clearSuggestionsFilter();
   }
 
@@ -189,10 +214,7 @@ export default class PatternInputController extends Controller {
   private setRange():void {
     const selection = document.getSelection();
     if (selection?.rangeCount) {
-      const range = selection.getRangeAt(0);
-      if (range.startContainer.parentNode === this.contentTarget) {
-        this.currentRange = range;
-      }
+      this.currentRange = selection.getRangeAt(0);
     }
   }
 
@@ -263,44 +285,60 @@ export default class PatternInputController extends Controller {
     return this.contentTarget.innerHTML.startsWith('<');
   }
 
-  private insertToken(token:TokenElement) {
-    if (this.currentRange) {
-      const targetNode = this.currentRange.startContainer;
-      const targetOffset = this.currentRange.startOffset;
+  private replaceToken(node:Node, token:TokenElement):void {
+    token.replaceWith(node);
+    this.setRealCaretPositionAtNode(node);
+    this.updateFormInputValue();
+    this.setRange();
+  }
 
-      if (!targetNode.textContent) { return; }
+  private insertNodeAtCurrentRange(node:Node) {
+    if (!this.currentRange) { return; }
 
-      let pos = targetOffset - 1;
-      while (pos > -1 && !this.isWhitespace(targetNode.textContent.charAt(pos))) { pos -= 1; }
+    const targetNode = this.currentRange.startContainer;
+    const targetOffset = this.currentRange.startOffset;
+    const textContent = targetNode.textContent;
 
-      const wordRange = document.createRange();
-      wordRange.setStart(targetNode, pos + 1);
-      wordRange.setEnd(targetNode, targetOffset);
+    if (textContent === null) { return; }
 
-      wordRange.deleteContents();
-      wordRange.insertNode(token);
+    let pos = targetOffset - 1;
+    while (pos > -1 && textContent.charAt(pos) !== COMPLETION_CHARACTER) { pos -= 1; }
 
-      this.setRealCaretPositionAtNode(token);
+    const wordRange = document.createRange();
+    wordRange.setStart(targetNode, pos);
+    wordRange.setEnd(targetNode, targetOffset);
 
-      this.updateFormInputValue();
-      this.setRange();
+    wordRange.deleteContents();
+    wordRange.insertNode(node);
 
-      // clear suggestions
-      this.clearSuggestionsFilter();
-    } else {
-      this.contentTarget.appendChild(token);
-    }
+    this.setRealCaretPositionAtNode(node);
+    this.updateFormInputValue();
+    this.setRange();
   }
 
   private currentWord():string|null {
     const selection = document.getSelection();
-    if (selection) {
-      return (selection.anchorNode?.textContent?.slice(0, selection.anchorOffset)
-        .split(' ')
-        .pop() as string);
+    if (selection === null) { return null; }
+
+    const anchor = selection.anchorNode;
+    if (anchor === null) { return null; }
+
+    const parent = anchor.parentNode;
+    if (parent === null) { return null; }
+
+    const textContent = anchor.textContent;
+    if (textContent === null) { return null; }
+
+    if (this.isToken(parent)) {
+      return textContent.slice(0, selection.anchorOffset);
     }
 
-    return null;
+    const posKey = textContent.lastIndexOf(COMPLETION_CHARACTER);
+    if (posKey === -1) { return null; }
+
+    // key character is only considered valid, if directly followed by a non-whitespace character
+    const textAfterKey = textContent.slice(posKey + 1, selection.anchorOffset);
+    return textAfterKey.startsWith(' ') ? null : textAfterKey;
   }
 
   private clearSuggestionsFilter():void {
@@ -311,8 +349,6 @@ export default class PatternInputController extends Controller {
   private filterSuggestions(word:string):void {
     this.clearSuggestionsFilter();
     this.suggestionsTarget.classList.remove('d-none');
-
-    this.appendInsertAsTextElement(word);
 
     const filtered = this.getFilteredSuggestionsData(word.toLowerCase());
 
@@ -343,16 +379,21 @@ export default class PatternInputController extends Controller {
         this.suggestionsTarget.appendChild(groupDivider);
       }
     });
+
+    if (this.suggestionsTarget.childNodes.length === 0) {
+      this.appendInsertAsTextElement(word);
+    }
   }
 
   private appendInsertAsTextElement(word:string):void {
     const template = this.insertAsTextTemplateTarget.content.cloneNode(true) as DocumentFragment;
     const item = template.firstElementChild;
-    if (item === null) { return; }
+    if (item === null || !this.isListItem(item)) { return; }
 
     const textElement = item.querySelector('span');
     if (textElement === null) { return; }
 
+    item.dataset.prop = word;
     textElement.innerText = this.insertAsTextTemplateValue.replace('%{word}', word);
     this.suggestionsTarget.appendChild(item);
   }
@@ -417,15 +458,19 @@ export default class PatternInputController extends Controller {
     return result.trim();
   }
 
-  private isToken(node:ChildNode):node is TokenElement {
+  private isToken(node:Node):node is TokenElement {
     return this.isElement(node) && node.dataset.role === 'token';
   }
 
-  private isText(node:ChildNode):node is Text {
+  private isListItem(node:Node):node is ListElement {
+    return this.isElement(node) && node.dataset.role === 'list_item';
+  }
+
+  private isText(node:Node):node is Text {
     return node.nodeType === Node.TEXT_NODE;
   }
 
-  private isElement(node:ChildNode):node is HTMLElement {
+  private isElement(node:Node):node is HTMLElement {
     return node.nodeType === Node.ELEMENT_NODE;
   }
 
