@@ -48,14 +48,6 @@ module ColorsHelper
     colored_thing.color_id
   end
 
-  def concat(line)
-    if Rails.env.development?
-      super("#{line}\n")
-    else
-      super
-    end
-  end
-
   #
   # Styles to display colors itself (e.g. for the colors autocompleter)
   ##
