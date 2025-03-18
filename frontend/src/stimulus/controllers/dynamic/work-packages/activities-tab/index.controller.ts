@@ -723,6 +723,7 @@ export default class IndexController extends Controller {
     if (this.isEditorEmpty()) {
       this.closeForm();
     } else {
+      // eslint-disable-next-line no-alert
       const shouldClose = window.confirm(this.unsavedChangesConfirmationMessageValue);
 
       if (shouldClose) {
