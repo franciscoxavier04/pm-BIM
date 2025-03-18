@@ -572,6 +572,7 @@ export default class IndexController extends Controller {
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
       editorElement.removeEventListener('saveRequested', this.onSubmitBound);
+      editorElement.removeEventListener('editorEscape', this.onEscapeEditorBound);
       editorElement.removeEventListener('editorKeyup', this.adjustMarginBound);
       editorElement.removeEventListener('editorBlur', this.onBlurEditorBound);
       editorElement.removeEventListener('editorFocus', this.onFocusEditorBound);
