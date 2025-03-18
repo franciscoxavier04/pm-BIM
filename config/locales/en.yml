@@ -1593,7 +1593,11 @@ en:
         one: "Notification"
         other: "Notifications"
       placeholder_user: "Placeholder user"
-      project: "Project"
+      project:
+        few: "Projects"
+        many: "Projects"
+        one: "Project"
+        other: "Projects"
       project/gate_definition: "Gate"
       project/stage_definition: "Stage"
       project_query:
