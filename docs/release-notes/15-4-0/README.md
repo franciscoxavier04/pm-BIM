@@ -33,7 +33,7 @@ However, you can still define a duration, which adjusts the finish date accordin
 
 See the difference between manual scheduling and automatic scheduling in Gantt view:
 
-![OpenProject Gantt charts - automatic scheduling](openproject_automatic_scheduling.gif)
+![New scheduling modes with OpenProject 15.4: Automatic and Manual - in Gantt view](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_automatic_scheduling.mp4)
 
 To learn more about how this change might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/) that we published some weeks ago. [See our documentation](../../user-guide/work-packages/set-change-dates/) to get detailed information about how to use the automatic scheduling mode.
 
