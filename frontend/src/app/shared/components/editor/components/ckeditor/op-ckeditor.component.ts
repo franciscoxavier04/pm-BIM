@@ -279,6 +279,7 @@ export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, 
 
         if (data.keyCode === KeyCodes.ESCAPE) {
           this.editorEscape.emit();
+          evt.stop();
         }
       },
       { priority: 'highest' },
