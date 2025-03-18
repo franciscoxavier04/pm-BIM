@@ -47,7 +47,7 @@ module WorkPackages
       end
 
       def heading_locales
-        @suggestions.keys.reduce({}) do |key, acc|
+        @suggestions.keys.reduce({}) do |acc, key|
           acc[key] = I18n.t("types.edit.subject_configuration.pattern.headings.#{key}")
           acc
         end.to_json
