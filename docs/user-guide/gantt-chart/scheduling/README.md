@@ -26,17 +26,17 @@ Since the scheduling mode only affects individual work packages, you can combine
 
 ## Manual scheduling
 
-My default, all work packages in OpenProject are manually scheduled. 
+By default, all work packages in OpenProject are manually scheduled. 
 
-In this mode, users have the freedom to select dates at their discretion. This flexibility allows project managers to set timelines based on specific needs, deadlines, or external factors that may influence project delivery. Manually-scheduled work packages can still have predecessor, successor, parent or child relations but these relations will not affect the manually input dates.
+In this mode you can select dates at your discretion. Project managers can set timelines based on specific needs, deadlines, or external factors. Manually-scheduled work packages can still have predecessor, successor, parent or child relations, but these relations will not affect the manually input dates.
 
-Manual scheduling is useful because no _other_ work package can affect the dates that are set. For example, a manual scheduled work package can have a predecessor, but if even the predecessor moves forwards in time, the manually scheduled work package will remain put.
+Manual scheduling is useful because no *other* work package can affect the dates that are set. For example, a manually scheduled work package can have a predecessor, but even if the predecessor moves forwards in time, the manually scheduled work package will remain unchanged.
 
 The **manual scheduling mode** can makes sense if:
 
 - you want to plan your project top-down without knowing all tasks yet, or
-- you want to set a parent work package’s date independently from and without being affected by the dates of its children, or
-- you don't want the start date of a successor be automatically updated when you change the predecessor's finish date
+- you want to set a parent work package’s date independently from the dates of its children, or
+- you don't want the start date of a successor be automatically updated when you change the predecessor's finish date.
 
 Moving a child work package in the manual scheduling mode will not move the dates of the parent work package. The scheduling differences will be indicated by a black or red bracket underneath (e.g. when a child is shorter or longer than the parent phase). See [this explanation](../#understanding-the-colors-and-lines-in-the-gantt-chart) to find out more about the lines and colors in the Gantt chart.
 
@@ -45,22 +45,23 @@ Moving a child work package in the manual scheduling mode will not move the date
 
 ## Automatic scheduling
 
-In [automatic scheduling mode](../../work-packages/set-change-dates/#automatic-scheduling, it is not possible to manually enter a start date. This means that when a task is scheduled, the date picker will automatically calculate the appropriate dates.
+In [automatic scheduling mode](../../work-packages/set-change-dates/#automatic-scheduling), it is not possible to manually enter a start date. This means that when a task is scheduled, the date picker will automatically calculate the appropriate dates.
 
-A work package can only be in automatic mode if it has predecessors or children.
+> [!TIP]
+> A work package can only be in automatic mode if it has predecessors or children.
 
-An automatically-scheduled work package with predecessors will automatically start one working day after the finish date of the nearest predecessor. You can still enter a duration (and effectively change the finish date). This temporal relationship is maintained even if you the dates of the predecessor are changed; for example, if the predecessor is moved forwards or backwards in time (either because the finish date or duration changed), the automatically-scheduled work package will also change its start date so it starts the day after the new date. This makes it possible to create a dependable chain of automatically scheduled work packages that automatically adjust to planning changes. 
+An automatically-scheduled work package with predecessors will automatically start one working day after the finish date of the nearest predecessor. You can still enter a duration (and effectively change the finish date). This temporal relationship is maintained even if you the dates of the predecessor are changed. For example, if the predecessor is moved forwards or backwards in time (either because the finish date or duration changed), the automatically-scheduled work package will also change its start date so it starts the day after the new date. This makes it possible to create a dependable chain of automatically scheduled work packages that adjust to planning changes. 
 
-> **Note:** If you would like to change the lag (or the gap) between when the predecessor ends and the successor starts, you can do so by editing lag in the Relations tab of a work package.
+> [!NOTE]
+> If you would like to change the lag (or the gap) between when the predecessor ends and the successor starts, you can do so by editing lag in the Relations tab of a work package.
 
-For automatically-scheduled work package with children, the start and finish dates are determined by the earliest-starting and latest-ending children respectively.
-
+For automatically-scheduled work packages with children, the start and finish dates are determined by the earliest-starting and latest-ending children respectively.
 
 ## Changing mode
 
 You can **activate manual or automatic scheduling mode** by clicking on the date of a work package and selecting the respective option in the *Scheduling mode* toggle in the date picker. This will activate the chosen scheduling mode only for the respective work package. 
 
-Whilst switching to manual mode is always possible, a work package can only be set to automatic mode if it has predecessors or children.
+While switching to manual mode is always possible, a work package can only be set to automatic mode if it has predecessors or children.
 
 ![The scheduling mode switch in the OpenProject date picker with the choice of manual and automatic scheduling](openproject_user_guide_gantt_chart_scheduling_mode_switch.png)
 
@@ -68,4 +69,5 @@ The auto-date symbol next to the date indicates that a work package is in automa
 
 ![Auto-date icon next to the start date indicating that a work package is in automatic scheduling mode](openproject_user_guide_gantt_chart_scheduling_auto_icon.png)
 
-**> Note:** Switching from manual scheduling to automatic scheduling might cause dates to change. When they do, a helpful banner will explain where the derived dates are coming from. Clicking on the "Show relations" button will show all directly-related work packages.**
+> [!NOTE]
+> Switching from manual scheduling to automatic scheduling might cause dates to change. When they do, a helpful banner will explain where the derived dates are coming from. Clicking on the "Show relations" button will show all directly-related work packages. 

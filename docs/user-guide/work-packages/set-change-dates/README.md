@@ -10,8 +10,7 @@ keywords: date picker start finish dates duration change modify update relations
 
 OpenProject offers two scheduling modes for work packages: **Manual** and **Automatic**. These modes provide flexibility in project planning while ensuring logical dependencies between tasks. 
 
-> [!Note]
->
+> [!NOTE]
 > OpenProject 15.4 introduced new automatic scheduling mode alongside the manual scheduling. By default, all new work packages will be set to **manual scheduling**.
 
 | Feature                                                   | Documentation for                                            |
@@ -37,7 +36,7 @@ Here is an example of the date picker in OpenProject. This is what you will see:
 2. The **show relations** button on the banner will open a Gantt chart view showing an overview of all directly-related work packages
 3. The **Relation tabs** let you see a list of relevant relations for the current work pacakges: *predecessors*, *successors* or *children*
 4. The **scheduling mode toggle** allows you to switch between [manual](#manual-scheduling) and [automatic](#automatic-scheduling) modes
-5. The **Working days only** switch lets you switch between counting only working days or all days to the total duration
+5. The **Working days only** switch, that lets you switch between counting only working days or all days to the total duration
 6. **Start date**, **finish date** and **duration** input fields
 7. **Mini calendars** for date range preview
 8. **Save** and **cancel** buttons.
@@ -96,7 +95,7 @@ In **Manual scheduling mode**, you can freely set start and finish dates indepen
 
 Manual scheduling is useful when you need fixed dates, such as when dependencies are uncertain or not yet defined.
 
-Enabling **Manual Scheduling** activates [manual scheduling mode](../../gantt-chart/scheduling/#manual-scheduling-mode) for the work package. This mode allows you to set any start and end dates, ignoring dependencies such as **follows/proceeds**  or **children** relationships. To enable the manual scheduling mode, click the **Manual** button in the **Scheduling mode** switch of the date picker. 
+Enabling **Manual Scheduling** activates [manual scheduling mode](../../gantt-chart/scheduling/#manual-scheduling) for the work package. This mode allows you to set any start and end dates, ignoring dependencies such as **follows/proceeds**  or **children** relationships. To enable the manual scheduling mode, click the **Manual** button in the **Scheduling mode** switch of the date picker. 
 
 ![A switch on the date picker allows you to enable manual scheduling mode in OpenProject](openproject_user_guide_date_picker_manual_mode_switch.png)
 
@@ -113,7 +112,7 @@ When switching from automatic to manual scheduling, a warning banner notifies yo
 
 Automatic scheduling is useful for automatically scheduling work packages with existing dependencies.
 
-A work package can only be in automatic mode if it has predecessors or children.
+A work package can only be in automatic scheduling mode if it has predecessors or children.
 
 An automatically-scheduled work package with predecessors will automatically start one working day after the finish date of the nearest predecessor. You can still enter a duration (and effectively change the finish date). This temporal relationship is maintained even if you the dates of the predecessor are changed; for example, if the predecessor is moved forwards or backwards in time (either because the finish date or duration changed), the automatically-scheduled work package will also change its start date so it starts the day after the new date. This makes it possible to create a dependable chain of automatically scheduled work packages that automatically adjust to planning changes. 
 
@@ -131,7 +130,7 @@ With the introduction of the new automatic mode in OpenProject 15.4, there are t
 
 By default, new work packages start in single-date mode, with only the **Finish date** field active. This makes it easy to quickly set a deadline for a task.
 
-If you would also like to add a start date, you can do so by clicking on the **+ Start date** button and choosing a start date. The work package will go into _range mode__ with both Start and Finish dates. You can also remove the Finish date and save the date picker to back to single-date mode but this time with only the Start date as the sole date.
+If you would also like to add a start date, you can do so by clicking on the **+ Start date** button and choosing a start date. The work package will go into *range mode*  with both Start and Finish dates. You can also remove the Finish date and get the date picker to go back to single-date mode but this time with only the Start date as the sole date.
 
 ![A date picker modal for a newly created work package in OpenProject, showing only finish date and a button to add a start date](openproject_user_guide_date_picker_new_wp_single_date_mode.png)
 
@@ -178,7 +177,7 @@ Date changes are documented in the work package [Activity](../../activity/).
 
 - For a work package that already has a start and finish date, it is possible to adjust just the finish date: click on the finish date field and then click on a new date. As long as this date is after the start date, the finish date updates accordingly. If the date you pick is earlier than the start date, the original start date will then be cleared and a click on a second date will define the other end of the new range.
 
-- It is possible to set only one of the two dates. In range mode, simply clear the _other_ date and save the date picker. It will now go into single-date mode.
+- It is possible to set only one of the two dates. In range mode, simply clear the *other* date and save the date picker. It will now go into single-date mode.
 
 > [!NOTE]
 > The precedes-follows relation can constrain or affect the dates of work packages. For more information, see [Moving related work packages](../work-package-relations-hierarchies/#moving-related-work-packages).
