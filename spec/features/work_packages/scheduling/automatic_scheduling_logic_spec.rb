@@ -134,7 +134,24 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
 
   describe "Scenario 26: Add a predecessor" do
     context "when adding a predecessor to a work package" do
-      it "changes the work package dates to start right after its predecessor", skip: "to be implemented later"
+      let_work_packages(<<~TABLE)
+        hierarchy          | start date | due date   | scheduling mode
+        future predecessor |            | 2025-01-02 | manual
+        work package       | 2025-01-08 | 2025-01-10 | manual
+      TABLE
+
+      it "changes the work package dates to start right after its predecessor" do
+        # add predecessor
+        work_packages_page.visit_tab!("relations")
+        work_packages_page.relations_tab.add_predecessor(future_predecessor)
+
+        # expect automatic with dates updated
+        open_date_picker
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_start_date "2025-01-03", disabled: true
+        datepicker.expect_due_date "2025-01-07", disabled: true
+        datepicker.expect_duration "3"
+      end
     end
   end
 
