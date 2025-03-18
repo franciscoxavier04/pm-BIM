@@ -124,10 +124,9 @@ display-field
         margin-right: 0
 
   &.combinedDate, &.date
-    span:first-of-type
-      display: inline-flex
-      align-items: center
     .display-field--scheduling-icon
+      position: relative
+      top: 1px
       margin-right: 0.25rem
 
 .wp-table--cell-container
@@ -143,12 +142,11 @@ display-field
   display: none
 
 .op-wp-single-card--content-dates
-  span:first-of-type
-    display: inline-flex
-    align-items: center
-    gap: 0.25rem
   .display-field--scheduling-icon
     fill: var(--fgColor-muted)
+    position: relative
+    top: 1px
+    margin-right: 0.25rem
 
 .wp-table--cell-container
   &.duration,
