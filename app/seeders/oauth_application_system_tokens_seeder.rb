@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -25,16 +27,40 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+class OAuthApplicationSystemTokensSeeder < Seeder
+  def seed_data!
+    call = create_app
+    unless call.success?
+      print_error "Seeding system tokens application failed:"
+      call.errors.full_messages.each do |msg|
+        print_error "  #{msg}"
+      end
+    end
+  end
 
-# This patch adds an optional polymorphic relation to OAuth applications.
+  def applicable?
+    !Doorkeeper::Application.exists?(uid:)
+  end
 
-Doorkeeper::Application.class_eval do
-  belongs_to :integration, polymorphic: true
-  scope :without_integration, -> { where(integration_type: nil, integration_id: nil) }
+  def not_applicable_message
+    "No need to seed system tokens oauth app, as it's already present."
+  end
 
-  def self.system_tokens_instance
-    find_by(uid: Doorkeeper::Application::SYSTEM_TOKENS_UID)
+  def create_app
+    OAuth::Applications::CreateService
+      .new(user: User.system)
+      .call(
+        enabled: true,
+        name: "System API Keys",
+        redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
+        builtin: true,
+        confidential: true,
+        uid:,
+        client_credentials_user_id: User.system.id
+      )
+  end
+
+  def uid
+    Doorkeeper::Application::SYSTEM_TOKENS_UID
   end
 end
-
-Doorkeeper::Application::SYSTEM_TOKENS_UID = "jRLN4gMuQ1ZUNeVXqVKAXwTUlomYZ47CoCR34eqNlgU"
