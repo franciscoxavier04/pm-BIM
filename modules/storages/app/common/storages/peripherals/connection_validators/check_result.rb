@@ -29,13 +29,25 @@
 #++
 
 module Storages
-  NextcloudCapabilities = Data.define(:app_enabled?, :app_version, :group_folder_enabled?, :group_folder_version) do
-    def self.empty
-      new(app_enabled?: false, group_folder_enabled?: false, app_version: nil, group_folder_version: nil)
+  module Peripherals
+    module ConnectionValidators
+      CheckResult = Data.define(:key, :state, :message, :timestamp) do
+        private_class_method :new
+        def self.skipped(key)
+          new(key:, state: :skipped, message: nil, timestamp: nil)
+        end
+
+        def self.failure(key, message)
+          new(key:, state: :failure, message: message, timestamp: Time.zone.now)
+        end
+
+        def self.success(key)
+          new(key:, state: :success, message: nil, timestamp: Time.zone.now)
+        end
+
+        def success? = state == :success
+        def failure? = state == :failure
+      end
     end
-
-    def group_folder_disabled? = !group_folder_enabled?
-
-    def app_disabled? = !app_enabled?
   end
 end
