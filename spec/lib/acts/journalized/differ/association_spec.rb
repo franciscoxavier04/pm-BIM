@@ -186,6 +186,27 @@ RSpec.describe Acts::Journalized::Differ::Association do
       end
     end
 
+    # this case should not be needed, added for coverting all cases
+    describe "requesting all values changes as array" do
+      let(:multiple_values) { true }
+
+      it "returns the changes" do
+        expect(result)
+          .to eq(
+            "project_life_cycle_steps_1_active" => [[false], [true]],
+
+            "project_life_cycle_steps_2_active" => [nil, [true]],
+
+            "project_life_cycle_steps_3_active" => [[true], [false]],
+            "project_life_cycle_steps_3_start_date" => [nil, [Date.new(2024, 1, 17)]],
+            "project_life_cycle_steps_3_end_date" => [nil, [Date.new(2024, 1, 18)]],
+
+            "project_life_cycle_steps_4_start_date" => [[Date.new(2024, 1, 16)], [Date.new(2024, 1, 17)]],
+            "project_life_cycle_steps_4_end_date" => [[Date.new(2024, 1, 17)], [Date.new(2024, 1, 18)]]
+          )
+      end
+    end
+
     describe "requesting single value change" do
       let(:multiple_values) { false }
 
