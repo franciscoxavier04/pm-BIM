@@ -58,6 +58,7 @@ export default class IndexController extends Controller {
     notificationCenterPathName: String,
     lastServerTimestamp: String,
     showConflictFlashMessageUrl: String,
+    unsavedChangesConfirmationMessage: String,
   };
 
   static targets = ['journalsContainer', 'buttonRow', 'formRow', 'form', 'formSubmitButton', 'reactionButton'];
@@ -83,11 +84,14 @@ export default class IndexController extends Controller {
   declare rescuedEditorDataKey:string;
   declare latestKnownChangesetUpdatedAtKey:string;
   declare showConflictFlashMessageUrlValue:string;
+  declare unsavedChangesConfirmationMessageValue:string;
+
   private handleWorkPackageUpdateBound:EventListener;
   private handleVisibilityChangeBound:EventListener;
   private rescueEditorContentBound:EventListener;
 
   private onSubmitBound:EventListener;
+  private onEscapeEditorBound:EventListener;
   private adjustMarginBound:EventListener;
   private onBlurEditorBound:EventListener;
   private onFocusEditorBound:EventListener;
@@ -544,6 +548,7 @@ export default class IndexController extends Controller {
 
   private addEventListenersToCkEditorInstance() {
     this.onSubmitBound = () => { void this.onSubmit(); };
+    this.onEscapeEditorBound = () => { void this.onEscapeEditor(); };
     this.adjustMarginBound = () => { void this.adjustJournalContainerMargin(); };
     this.onBlurEditorBound = () => { void this.onBlurEditor(); };
     this.onFocusEditorBound = () => {
@@ -556,6 +561,7 @@ export default class IndexController extends Controller {
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
       editorElement.addEventListener('saveRequested', this.onSubmitBound);
+      editorElement.addEventListener('editorEscape', this.onEscapeEditorBound);
       editorElement.addEventListener('editorKeyup', this.adjustMarginBound);
       editorElement.addEventListener('editorBlur', this.onBlurEditorBound);
       editorElement.addEventListener('editorFocus', this.onFocusEditorBound);
@@ -566,6 +572,7 @@ export default class IndexController extends Controller {
     const editorElement = this.getCkEditorElement();
     if (editorElement) {
       editorElement.removeEventListener('saveRequested', this.onSubmitBound);
+      editorElement.removeEventListener('editorEscape', this.onEscapeEditorBound);
       editorElement.removeEventListener('editorKeyup', this.adjustMarginBound);
       editorElement.removeEventListener('editorBlur', this.onBlurEditorBound);
       editorElement.removeEventListener('editorFocus', this.onFocusEditorBound);
@@ -693,14 +700,6 @@ export default class IndexController extends Controller {
     this.getCkEditorInstance()?.setData('');
   }
 
-  hideEditorIfEmpty() {
-    const ckEditorInstance = this.getCkEditorInstance();
-
-    if (ckEditorInstance && ckEditorInstance.getData({ trim: false }).length === 0) {
-      this.hideEditor();
-    }
-  }
-
   hideEditor() {
     this.clearEditor(); // remove potentially empty lines
     this.removeEventListenersFromCkEditorInstance();
@@ -720,18 +719,32 @@ export default class IndexController extends Controller {
     }
   }
 
-  onBlurEditor() {
-    const ckEditorInstance = this.getCkEditorInstance();
-
-    if (ckEditorInstance && ckEditorInstance.getData({ trim: false }).length === 0) {
+  onEscapeEditor() {
+    if (this.isEditorEmpty()) {
       this.hideEditor();
     } else {
+      const shouldClose = window.confirm(this.unsavedChangesConfirmationMessageValue);
+
+      if (shouldClose) {
+        this.hideEditor();
+      }
+    }
+  }
+
+  onBlurEditor() {
+    if (!this.isEditorEmpty()) {
       this.adjustJournalContainerMargin();
     }
   }
 
   onFocusEditor() {
     this.adjustJournalContainerMargin();
+  }
+
+  private isEditorEmpty():boolean {
+    const ckEditorInstance = this.getCkEditorInstance();
+
+    return !!(ckEditorInstance?.getData({ trim: false }).length === 0);
   }
 
   async onSubmit(event:Event | null = null) {

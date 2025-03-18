@@ -71,6 +71,8 @@ export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, 
   // Output save requests (ctrl+enter and cmd+enter)
   @Output() saveRequested = new EventEmitter<string>();
 
+  @Output() editorEscape = new EventEmitter<string>();
+
   // Output key up events
   @Output() editorKeyup = new EventEmitter<string>();
 
@@ -273,6 +275,10 @@ export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, 
           debugLog('Sending save request from CKEditor.');
           this.saveRequested.emit();
           evt.stop();
+        }
+
+        if (data.keyCode === KeyCodes.ESCAPE) {
+          this.editorEscape.emit();
         }
       },
       { priority: 'highest' },

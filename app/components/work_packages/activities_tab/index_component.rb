@@ -64,7 +64,8 @@ module WorkPackages
           "#{stimulus_controller}-polling-interval-in-ms-value": polling_interval,
           "#{stimulus_controller}-notification-center-path-name-value": notifications_path,
           "#{stimulus_controller}-show-conflict-flash-message-url-value": show_conflict_flash_message_work_packages_path,
-          "#{stimulus_controller}-last-server-timestamp-value": last_server_timestamp
+          "#{stimulus_controller}-last-server-timestamp-value": last_server_timestamp,
+          "#{stimulus_controller}-unsaved-changes-confirmation-message-value": unsaved_changes_confirmation_message
         }
       end
 
@@ -95,6 +96,10 @@ module WorkPackages
       end
 
       def activities_tab_index_stimulus_controller = "work-packages--activities-tab--index"
+
+      def unsaved_changes_confirmation_message
+        I18n.t("activities.work_packages.activity_tab.unsaved_changes_confirmation_message")
+      end
     end
   end
 end
