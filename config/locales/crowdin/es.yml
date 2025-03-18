@@ -644,17 +644,17 @@ es:
       banner:
         description:
           automatic_mobile: "Fecha de inicio derivada."
-          click_on_show_relations_to_open_gantt: 'Haga clic en «%{button_name}» para obtener una vista general de Gantt.'
+          click_on_show_relations_to_open_gantt: 'Haga clic en «%{button_name}» para una vista de Gantt.'
           manual_mobile: "Ignorar las relaciones."
           manual_gap_between_predecessors: "Existe una brecha entre este y todos los predecesores."
           manual_overlap_with_predecessors: "Se solapa con al menos un predecesor."
           manual_with_children: "Tiene paquetes de trabajo secundarios, pero se ignoran sus fechas de inicio."
         title:
           automatic_mobile: "Programado automáticamente."
-          automatic_with_children: "Las fechas vienen determinadas por los paquetes de trabajo secundarios."
+          automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. Fechas no afectadas por las relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -727,7 +727,7 @@ es:
       no_results_title_text: No hay relaciones disponibles por el momento.
       blankslate_heading: "Sin relaciones"
       blankslate_description: "Este paquete de trabajo aún no tiene relaciones."
-    label_add_child_button: "Niño"
+    label_add_child_button: "Secundario"
     label_add_x: "Añadir %{x}"
     label_edit_x: "Editar %{x}"
     label_add_description: "Añadir descripción"
@@ -735,7 +735,7 @@ es:
       subject: "Retraso"
       caption: "El número mínimo de días laborables que debe haber entre los dos paquetes de trabajo."
     relations:
-      label_new_child_created: "Nuevo paquete de trabajo creado y añadido como elemento secundario"
+      label_new_child_created: "Nuevo paquete de trabajo creado y añadido como secundario"
       label_relates_singular: "relacionado con"
       label_relates_plural: "relacionado con"
       label_relates_to_singular: "relacionado con"
@@ -750,9 +750,9 @@ es:
       follows_description: "El paquete de trabajo relacionado tiene que terminar necesariamente antes de que este pueda empezar"
       label_child_singular: "secundario"
       label_child_plural: "secundarios"
-      new_child: "Niño nuevo"
+      new_child: "Añadir elemento secundario"
       new_child_text: "Crea un paquete de trabajo relacionado como un subelemento del paquete de trabajo actual (principal)"
-      existing_child: "Niño existente"
+      existing_child: "Elemento secundario existente"
       child_description: "Hace que el paquete de trabajo relacionado sea un subelemento del paquete de trabajo actual (principal)"
       label_closest: "Más cercano"
       label_blocks_singular: "bloquea"

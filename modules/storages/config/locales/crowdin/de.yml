@@ -7,12 +7,12 @@ de:
       project:
         project_folder_type: Projektordner-Typ
       storages/file_link:
-        origin: Origin
+        origin: Ursprung
         storage: Speicherung
       storages/nextcloud_storage:
         authentication_methods:
-          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
-          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
+          oauth2_sso: Single-Sign-On über OpenID Connect Identity Provider
+          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On mit Two-Way OAuth 2.0 als Fallback
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:

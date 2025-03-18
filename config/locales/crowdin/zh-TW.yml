@@ -3762,10 +3762,10 @@ zh-TW:
       section_work_week: "工作週"
       section_holidays_and_closures: "假日和休息日"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
-      not_allowed_text: "You do not have the necessary permissions to view this page."
+      categories_tab: "類別"
+      custom_fields_tab: "自訂欄位"
+      types_tab: "類型"
+      not_allowed_text: "您沒有查看此頁面的必要權限。"
   text_formatting:
     markdown: "Markdown"
     plain: "純文字"
