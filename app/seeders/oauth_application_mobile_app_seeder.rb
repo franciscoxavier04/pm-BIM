@@ -27,7 +27,7 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-class OAuthApplicationsSeeder < Seeder
+class OAuthApplicationMobileAppSeeder < Seeder
   OPENPROJECT_MOBILE_APP_UID = "DgJZ7Rat23xHZbcq_nxPg5RUuxljonLCN7V7N7GoBAA"
 
   def seed_data!
@@ -41,11 +41,11 @@ class OAuthApplicationsSeeder < Seeder
   end
 
   def applicable?
-    Doorkeeper::Application.find_by(id: OPENPROJECT_MOBILE_APP_UID).nil?
+    Doorkeeper::Application.find_by(uid: OPENPROJECT_MOBILE_APP_UID).nil?
   end
 
   def not_applicable_message
-    "No need to seed oauth applications as they are already present."
+    "No need to seed mobile oauth app, as it's already present."
   end
 
   def create_app

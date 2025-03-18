@@ -140,7 +140,7 @@ class RootSeeder < Seeder
 
   def seed_oauth_data
     print_status "*** Seeding OAuth applications"
-    OAuthApplicationsSeeder.new(seed_data).seed!
+    OAuthApplicationMobileAppSeeder.new(seed_data).seed!
   end
 
   def seed_demo_data
