@@ -32,7 +32,6 @@ class Queries::WorkPackages::Filter::AncestorFilter <
   Queries::WorkPackages::Filter::WorkPackageFilter
   include ::Queries::WorkPackages::Filter::FilterForWpMixin
 
-  # TODO all of the below is just copied. Change!
   def relation_type
     # While this is not a relation (in the sense of it being stored in a different database table) we still
     # want it to be used same as every other relation filter.
@@ -40,11 +39,19 @@ class Queries::WorkPackages::Filter::AncestorFilter <
   end
 
   def apply_to(_query_scope)
+    operator = operator_strategy.symbol
+
+    condition = if operator == "="
+                  "WHERE id IN (:ids)"
+                else
+                  "WHERE id NOT IN (:ids)"
+                end
+
     cte = <<~SQL.squish
       WITH RECURSIVE descendants AS (
         SELECT id
         FROM work_packages
-        WHERE id IN (:ids)
+        #{condition}
         UNION ALL
         SELECT wp.id
         FROM work_packages wp
@@ -61,6 +68,6 @@ class Queries::WorkPackages::Filter::AncestorFilter <
   end
 
   def where
-    "1 = 1"
+    "1=1"
   end
 end
