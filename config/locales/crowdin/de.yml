@@ -639,17 +639,17 @@ de:
       banner:
         description:
           automatic_mobile: "Anfangstermin abgeleitet."
-          click_on_show_relations_to_open_gantt: 'Klicken Sie auf "%{button_name}" für eine Gantt-Übersicht.'
+          click_on_show_relations_to_open_gantt: 'Klicken Sie auf "%{button_name}" für Gantt-Ansicht.'
           manual_mobile: "Beziehungen werden ignoriert."
-          manual_gap_between_predecessors: "Es besteht Verzögerung mit allen Vorgängern."
+          manual_gap_between_predecessors: "Es gibt eine Verzögerung zu allen Vorgängern."
           manual_overlap_with_predecessors: "Überlappt mit mindestens einem Vorgänger."
           manual_with_children: "Hat untergeordnete Arbeitspakete aber ihre Startdaten werden ignoriert."
         title:
           automatic_mobile: "Automatisch geplant."
-          automatic_with_children: "Die Termine sind durch untergeordnete Arbeitspakete bestimmt."
+          automatic_with_children: "Untergeordenete Arbeitspakete bestimmen Termine."
           automatic_with_predecessor: "Der Anfangstermin wird von einem Vorgänger festgelegt."
           manual_mobile: "Manuell geplant."
-          manually_scheduled: "Manuell geplant. Daten nicht von Beziehungen beeinflusst."
+          manually_scheduled: "Manuell geplant – Daten unabhängig von Beziehungen."
       blankslate:
         title: "Keine Vorgänger"
         description: "Um die automatische Planung zu aktivieren, muss dieses Arbeitspaket mindestens einen Vorgänger haben. Es wird dann automatisch so eingeplant, dass es nach dem nächstgelegenen Vorgänger beginnt."
