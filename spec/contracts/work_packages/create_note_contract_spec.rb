@@ -86,23 +86,30 @@ RSpec.describe WorkPackages::CreateNoteContract do
     end
 
     context "with a blank note" do
-      context "and journal_restricted is true" do
-        before do
-          work_package.journal_notes = ""
-          work_package.journal_restricted = true
+      before do
+        work_package.journal_notes = ""
+        work_package.journal_restricted = true
 
-          contract.validate
-        end
+        contract.validate
+      end
 
+      context "and journal_restricted is true, and comments_with_restricted_visibility_active? is disabled",
+              with_flag: { comments_with_restricted_visibility_active: false } do
         it "is invalid" do
-          expect(contract.errors.symbols_for(:journal_restricted))
-            .to contain_exactly(:invalid)
+          expect(contract.errors.full_messages).to eq(["Comment can't be blank.", "Restricted Journal is not available."])
+        end
+      end
+
+      context "and journal_restricted is true, and comments_with_restricted_visibility_active? is enabled",
+              with_flag: { comments_with_restricted_visibility_active: true } do
+        it "is invalid" do
+          expect(contract.errors.full_messages).to eq(["Comment can't be blank."])
         end
       end
     end
 
     context "with a note" do
-      context "and journal_restricted is true" do
+      context "and journal_restricted is true", with_flag: { comments_with_restricted_visibility_active: true } do
         before do
           work_package.journal_notes = "blubs"
           work_package.journal_restricted = true

@@ -51,11 +51,23 @@ RSpec.describe "Work package activity tab comment editor",
 
     context "when editor content is empty" do
       it "is dismissable via keyboard Esc" do
+        expect_editor_to_be_dismissed do
+          activity_tab.dismiss_comment_editor_with_esc
+        end
+      end
+
+      it "is dismissable via Cancel button" do
+        expect_editor_to_be_dismissed do
+          activity_tab.dismiss_comment_editor_with_cancel_button
+        end
+      end
+
+      def expect_editor_to_be_dismissed
         activity_tab.add_comment(text: "Sample text", save: false)
         activity_tab.clear_comment
 
         activity_tab.expect_focus_on_editor
-        activity_tab.dismiss_comment_editor_with_esc
+        yield
 
         expect(page).not_to have_test_selector("op-work-package-journal-form-element")
       end
@@ -64,13 +76,23 @@ RSpec.describe "Work package activity tab comment editor",
     context "when editor has content" do
       context "and the user confirms the dismissal" do
         it "requires confirmation to dismiss via keyboard Esc" do
+          expect_editor_to_be_dismissed_with_confirmation do
+            activity_tab.dismiss_comment_editor_with_esc
+          end
+        end
+
+        it "requires confirmation to dismiss via Cancel button" do
+          expect_editor_to_be_dismissed_with_confirmation do
+            activity_tab.dismiss_comment_editor_with_cancel_button
+          end
+        end
+
+        def expect_editor_to_be_dismissed_with_confirmation(&)
           activity_tab.add_comment(text: "Sample text", save: false)
 
           activity_tab.expect_focus_on_editor
 
-          accept_alert do
-            activity_tab.dismiss_comment_editor_with_esc
-          end
+          accept_alert(&)
 
           expect(page).not_to have_test_selector("op-work-package-journal-form-element")
         end

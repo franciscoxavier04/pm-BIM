@@ -522,7 +522,7 @@ export default class IndexController extends Controller {
   }
 
   // Code Maintenance: Get rid of this JS based view port checks when activities are rendered in fully primierized activity tab in all contexts
-  private isMobile():boolean {
+  isMobile():boolean {
     if (this.isWithinNotificationCenter() || this.isWithinSplitScreen()) {
       return window.innerWidth < 1013;
     }
@@ -548,7 +548,7 @@ export default class IndexController extends Controller {
 
   private addEventListenersToCkEditorInstance() {
     this.onSubmitBound = () => { void this.onSubmit(); };
-    this.onEscapeEditorBound = () => { void this.onEscapeEditor(); };
+    this.onEscapeEditorBound = () => { void this.closeEditor(); };
     this.adjustMarginBound = () => { void this.adjustJournalContainerMargin(); };
     this.onBlurEditorBound = () => { void this.onBlurEditor(); };
     this.onFocusEditorBound = () => {
@@ -719,14 +719,14 @@ export default class IndexController extends Controller {
     }
   }
 
-  onEscapeEditor() {
+  closeEditor() {
     if (this.isEditorEmpty()) {
-      this.hideEditor();
+      this.closeForm();
     } else {
       const shouldClose = window.confirm(this.unsavedChangesConfirmationMessageValue);
 
       if (shouldClose) {
-        this.hideEditor();
+        this.closeForm();
       }
     }
   }
@@ -739,6 +739,12 @@ export default class IndexController extends Controller {
 
   onFocusEditor() {
     this.adjustJournalContainerMargin();
+  }
+
+  private closeForm() {
+    this.hideEditor();
+    this.formTarget.reset();
+    this.notifyFormClose();
   }
 
   private isEditorEmpty():boolean {
@@ -765,8 +771,12 @@ export default class IndexController extends Controller {
       })
       .finally(() => {
         this.setFormSubmitInProgress(false);
-        this.dispatch('onSubmit-end');
+        this.notifyFormClose();
       });
+  }
+
+  private notifyFormClose() {
+    this.dispatch('onSubmit-end');
   }
 
   private setFormSubmitInProgress(inProgress:boolean) {

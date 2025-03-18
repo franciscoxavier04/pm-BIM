@@ -29,24 +29,35 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
+import type IndexController from './index.controller';
 
 export default class RestrictedCommentController extends Controller {
-  static targets = ['restrictedCheckbox', 'formContainer'];
-  static classes = ['highlight'];
+  static targets = ['restrictedCheckbox', 'formContainer', 'learnMoreLink'];
+  static outlets = ['work-packages--activities-tab--index'];
+  static classes = ['highlight', 'hidden'];
 
   declare readonly restrictedCheckboxTarget:HTMLInputElement;
   declare readonly formContainerTarget:HTMLElement;
+  declare readonly learnMoreLinkTarget:HTMLAnchorElement;
+  declare readonly workPackagesActivitiesTabIndexOutlet:IndexController;
+
   declare readonly highlightClass:string;
+  declare readonly hiddenClass:string;
 
   onSubmitEnd(_event:CustomEvent):void {
     this.toggleBackgroundColor();
   }
 
   toggleBackgroundColor():void {
-    if (this.restrictedCheckboxTarget.checked) {
-      this.formContainerTarget.classList.add(this.highlightClass);
-    } else {
-      this.formContainerTarget.classList.remove(this.highlightClass);
-    }
+    const isChecked = this.restrictedCheckboxTarget.checked;
+
+    this.formContainerTarget.classList.toggle(this.highlightClass, isChecked);
+    this.toggleLearnMoreLink(isChecked);
+  }
+
+  private toggleLearnMoreLink(isChecked:boolean):void {
+    if (this.workPackagesActivitiesTabIndexOutlet.isMobile()) return; // hidden on mobile
+
+    this.learnMoreLinkTarget.classList.toggle(this.hiddenClass, !isChecked);
   }
 }

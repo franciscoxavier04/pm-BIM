@@ -34,10 +34,13 @@ module WorkPackages
 
     attribute :journal_notes do
       errors.add(:journal_notes, :error_unauthorized) unless can?(:comment)
+      errors.add(:journal_notes, :blank) if model.journal_notes.blank?
     end
 
     attribute :journal_restricted do
-      errors.add(:journal_restricted, :invalid) if model.journal_notes.blank? && model.journal_restricted
+      if model.journal_restricted && !OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
+        errors.add(:journal_restricted, :feature_disabled)
+      end
     end
 
     private

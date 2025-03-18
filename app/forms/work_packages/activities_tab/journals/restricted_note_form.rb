@@ -32,25 +32,13 @@ module WorkPackages::ActivitiesTab::Journals
     form do |notes_form|
       notes_form.check_box(
         name: :restricted,
-        label: I18n.t("activities.work_packages.activity_tab.restricted_visibility"),
+        label: I18n.t("activities.work_packages.activity_tab.restrict_visibility"),
         checked: false,
-        label_arguments: { class: "no-wrap" },
         data: {
           "work-packages--activities-tab--restricted-comment-target": "restrictedCheckbox",
           action: "input->work-packages--activities-tab--restricted-comment#toggleBackgroundColor"
-        },
-        caption:
+        }
       )
-    end
-
-    private
-
-    def caption
-      href = ::OpenProject::Static::Links.url_for(:user_guides_work_package_activity)
-      I18n.t("activities.work_packages.activity_tab.restricted_visibility_explainer",
-             who_link_text: render(Primer::Beta::Link.new(href:, target: "_blank")) do
-               I18n.t("activities.work_packages.activity_tab.label_who")
-             end).html_safe
     end
   end
 end
