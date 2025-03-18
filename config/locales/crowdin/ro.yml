@@ -1048,6 +1048,7 @@ ro:
         auto_hide_popups: "Ascunde automat notificările de succes"
         warn_on_leaving_unsaved: "Avertizează când părăsesc un pachet de lucru cu modificări nesalvate"
         theme: "Mod"
+        time_zone: "Fus orar"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Zile lucrătoare"
@@ -1626,6 +1627,7 @@ ro:
     derived_due_date: "Dată finală derivată"
     derived_estimated_hours: "Total work"
     derived_start_date: "Dată început derivată"
+    direction: "Direction"
     display_sums: "Afişare totaluri"
     due_date: "Dată finalizare"
     estimated_hours: "Muncă"
@@ -1690,6 +1692,7 @@ ro:
     version: "Versiune"
     visible: "Vizibil"
     work_package: "Pachet de lucru"
+    work_package_id: "Pachet de lucru"
   backup:
     failed: "Copia de rezervă a eșuat"
     label_backup_token: "Token copie de rezervă"
@@ -2549,7 +2552,7 @@ ro:
   label_duplicated_by: "dublat de"
   label_duplicate: "duplicat"
   label_duplicates: "dublează"
-  label_edit: "Editează"
+  label_edit: "Editare"
   label_edit_x: "Editare: %{x}"
   label_enable_multi_select: "Comutare selecție multiplă"
   label_enabled_project_custom_fields: "Câmpuri personalizate activate"
@@ -2603,7 +2606,7 @@ ro:
   label_generate_key: "Generare cheie"
   label_git_path: "Calea catre directorul .git"
   label_greater_or_equal: ">="
-  label_group_by: "Grupează după"
+  label_group_by: "Grupare după"
   label_group_new: "Grupare nouă"
   label_group: "Grup"
   label_group_named: "Grup %{name}"
@@ -3430,6 +3433,10 @@ ro:
       project_verification: "Completează numele proiectului %{name} spre a confirma ștergerea."
       subprojects_confirmation: "Se vor șterge și sub-proiectul/sub-proiectele: %{value}."
       title: "Ștergere proiect %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Participanții la proiect vor trebui să mute arhivele proiectului.
       warning_two: Legăturile existente la acest proiect nu vor mai funcționa.
@@ -3839,6 +3846,11 @@ ro:
     working_days:
       section_work_week: "Săptămână de lucru"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Text simplu"

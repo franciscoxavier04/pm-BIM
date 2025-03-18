@@ -1054,6 +1054,7 @@ lt:
         auto_hide_popups: "Automatiškai slėpti sėkmės pranešimus"
         warn_on_leaving_unsaved: "Įspėti mane, kai palieku darbų paketą su neišsaugotais pakeitimais"
         theme: "Režimas"
+        time_zone: "Laiko juosta"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Darbo dienos"
@@ -1643,6 +1644,7 @@ lt:
     derived_due_date: "Išvestinė pabaigos data"
     derived_estimated_hours: "Iš viso darbo"
     derived_start_date: "Išvestinė pradžios data"
+    direction: "Direction"
     display_sums: "Rodyti suvestines"
     due_date: "Pabaigos data"
     estimated_hours: "Darbas"
@@ -1707,6 +1709,7 @@ lt:
     version: "Versija"
     visible: "Matomas"
     work_package: "Darbų paketas"
+    work_package_id: "Darbų paketas"
   backup:
     failed: "Nepavyko sukurti atsarginės kopijos"
     label_backup_token: "Atsarginės kopijos žetonas"
@@ -3468,6 +3471,10 @@ lt:
       project_verification: "Įveskite projekto pavadinimą %{name}, kad patvirtintumėte ištrynimą."
       subprojects_confirmation: "Jo sub-projektas(-ai): %{value} taip pat bus ištrintas(-i)."
       title: "Ištrinti projektą %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Projekto nariai turės perkelti projekto saugyklas.
       warning_two: Esamos nuorodos į projektą nebeveiks.
@@ -3875,6 +3882,11 @@ lt:
     working_days:
       section_work_week: "Darbo savaitė"
       section_holidays_and_closures: "Nedarbo dienos"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Paprastas tekstas"

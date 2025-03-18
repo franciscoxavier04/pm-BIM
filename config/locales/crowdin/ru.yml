@@ -1055,6 +1055,7 @@ ru:
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
+        time_zone: "Часовой пояс"
         mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
         daily_reminders: "Ежедневные напоминания"
         workdays: "Рабочие дни"
@@ -1644,6 +1645,7 @@ ru:
     derived_due_date: "Дата окончания производства"
     derived_estimated_hours: "Общее Предполагаемое время"
     derived_start_date: "Дата начала производства"
+    direction: "Направление"
     display_sums: "Отображение суммы"
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
@@ -1708,6 +1710,7 @@ ru:
     version: "Этапы"
     visible: "Видимый"
     work_package: "Пакет работ"
+    work_package_id: "Пакет работ"
   backup:
     failed: "Сбой резервного копирования"
     label_backup_token: "Маркер резервного копирования"
@@ -3469,6 +3472,10 @@ ru:
       project_verification: "Введите название проекта %{name} для проверки удаления."
       subprojects_confirmation: "Его подпроекты: %{value} также будут удалены."
       title: "Удаление проекта %{name}"
+    filters:
+      life_cycle_any: "Жизненный цикл: любой этап или стадия"
+      life_cycle_stage: "Этап жизненного цикла: %{stage}"
+      life_cycle_gate: "Стадия жизненного цикла: %{gate}"
     identifier:
       warning_one: Участникам проекта нужно будет переместить репозитории проекта.
       warning_two: Существующие ссылки на проект больше работать не будут.
@@ -3876,6 +3883,11 @@ ru:
     working_days:
       section_work_week: "Рабочая неделя"
       section_holidays_and_closures: "Праздничные и нерабочие дни"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Обычный текст"

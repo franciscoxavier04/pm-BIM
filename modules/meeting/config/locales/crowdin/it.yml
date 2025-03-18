@@ -290,7 +290,7 @@ it:
       full_past: "%{base} alle ore %{time}, finita alle ore %{end_date}"
       never_ending: "%{base} alle ore %{time}"
     open:
-      title: "Aperte"
+      title: "Agenda opened"
       subtitle: >
         Le riunioni aperte hanno ordini del giorno che possono essere modificati e vengono visualizzate nella sezione "Le mie riunioni" dei singoli utenti. Le modifiche al modello della serie di riunioni non influiscono sulle occorrenze delle riunioni già aperte.
       blankslate:

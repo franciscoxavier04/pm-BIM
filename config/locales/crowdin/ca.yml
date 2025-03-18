@@ -1036,6 +1036,7 @@ ca:
         auto_hide_popups: "Oculta automàticament les notificacions de succés"
         warn_on_leaving_unsaved: "Avisa quan es deixi un paquet de treball amb canvis no desats"
         theme: "Mode"
+        time_zone: "Zona horària"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Dies laborals"
@@ -1603,6 +1604,7 @@ ca:
     derived_due_date: "Data final derivada"
     derived_estimated_hours: "Total work"
     derived_start_date: "Data d'inici derivada"
+    direction: "Direction"
     display_sums: "Mostra les sumes"
     due_date: "Data final"
     estimated_hours: "Treball"
@@ -1667,6 +1669,7 @@ ca:
     version: "Versió"
     visible: "Visible"
     work_package: "Paquet de treball"
+    work_package_id: "Paquet de treball"
   backup:
     failed: "Còpia de seguretat fallida"
     label_backup_token: "Token de còpia de seguretat"
@@ -3383,6 +3386,10 @@ ca:
       project_verification: "Introdueixi el nom del projecte %{name} per verificar la supressió."
       subprojects_confirmation: "Els subproject(s): %{value} també es suprimiran."
       title: "Suprimir el projecte %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Els membres del projecte hauran de reubicar els repositoris del projecte.
       warning_two: Els vncles existents al projecte ja no funcionaran.
@@ -3790,6 +3797,11 @@ ca:
     working_days:
       section_work_week: "Setmana laboral"
       section_holidays_and_closures: "Vacances i tancaments"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Text sense format"

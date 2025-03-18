@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,33 +26,43 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-class Projects::Settings::CustomFieldsController < Projects::SettingsController
-  menu_item :settings_custom_fields
+class Queries::Projects::Filters::LifeCycleAnyFilter < Queries::Projects::Filters::Base
+  include Queries::Projects::Filters::FilterOnLifeCycle
+  include Queries::Operators::DateRangeClauses
 
-  def show
-    @wp_custom_fields = WorkPackageCustomField.order("lower(name)")
+  # Similar to other lifecycle steps
+  def self.key
+    :lcsd_any
   end
 
-  def update
-    Project.transaction do
-      if update_custom_fields
-        flash[:notice] = t(:notice_successful_update)
-      else
-        flash[:error] = t(:notice_project_cannot_update_custom_fields,
-                          errors: @project.errors.full_messages.join(", "))
-        raise ActiveRecord::Rollback
-      end
-    end
-
-    redirect_to project_settings_custom_fields_path(@project)
+  def human_name
+    I18n.t("project.filters.life_cycle_any")
   end
 
-  private
+  def on_date
+    stage_where_on(parsed_start)
+      .or(gate_where(parsed_end))
+  end
 
-  def update_custom_fields
-    @project.work_package_custom_field_ids = permitted_params.project[:work_package_custom_field_ids]
-    @project.save
+  def on_today
+    stage_where_on(today)
+      .or(gate_where(today, today))
+  end
+
+  def between_date
+    stage_where_between(parsed_start, parsed_end)
+      .or(gate_where(parsed_start, parsed_end))
+  end
+
+  def this_week
+    stage_overlaps_this_week
+      .or(gate_where(beginning_of_week.to_date, end_of_week.to_date))
+  end
+
+  def none
+    stage_none
+      .or(gate_none)
   end
 end

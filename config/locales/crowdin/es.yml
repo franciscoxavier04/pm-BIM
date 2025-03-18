@@ -654,7 +654,7 @@ es:
           automatic_with_children: "Fechas determinadas por paquetes de trabajo secundarios."
           automatic_with_predecessor: "La fecha de inicio la fija un predecesor."
           manual_mobile: "Programado manualmente."
-          manually_scheduled: "Programado manualmente. No afectadas por relaciones."
+          manually_scheduled: "Programado manualmente. Fechas no afectadas por relaciones."
       blankslate:
         title: "Sin predecesores"
         description: "Para activar la programación automática, este paquete de trabajo debe tener al menos un predecesor. Entonces se programará automáticamente para que comience después del predecesor más cercano."
@@ -1037,6 +1037,7 @@ es:
         auto_hide_popups: "Auto-ocultar notificaciones satisfactorias"
         warn_on_leaving_unsaved: "Avisarme cuando salga de un paquete de trabajo con cambios sin guardar"
         theme: "Modo"
+        time_zone: "Zona horaria"
         mode_guideline: "Algunos modos sobrescribirán los colores del tema personalizado por motivos de accesibilidad y legibilidad. Para obtener el tema personalizado completo, seleccione el modo Claro."
         daily_reminders: "Recordatorios diarios"
         workdays: "Días laborables"
@@ -1604,6 +1605,7 @@ es:
     derived_due_date: "Fecha final derivada"
     derived_estimated_hours: "Trabajo total"
     derived_start_date: "Fecha de comienzo deseada"
+    direction: "Dirección"
     display_sums: "Mostrar sumas"
     due_date: "Fecha de finalización"
     estimated_hours: "Trabajo"
@@ -1668,6 +1670,7 @@ es:
     version: "Versión"
     visible: "Visible"
     work_package: "Paquete de trabajo"
+    work_package_id: "Paquete de trabajo"
   backup:
     failed: "La copia de seguridad ha fallado"
     label_backup_token: "Token de copias de seguridad"
@@ -3387,6 +3390,10 @@ es:
       project_verification: "Introduzca el nombre del proyecto %{name} para confirmar la eliminación."
       subprojects_confirmation: "Los sub-proyecto(s): %{value} también serán eliminado."
       title: "Borrar el proyecto %{name}"
+    filters:
+      life_cycle_any: "Ciclo de vida: cualquier etapa o puerta"
+      life_cycle_stage: "Etapa del ciclo de vida: %{stage}"
+      life_cycle_gate: "Puerta del ciclo de vida: %{gate}"
     identifier:
       warning_one: Los miembros del proyecto deberán migrar los repositorios del proyecto.
       warning_two: Los links al proyeto existentes dejarán de funcionar.
@@ -3796,6 +3803,11 @@ es:
     working_days:
       section_work_week: "Semana de trabajo"
       section_holidays_and_closures: "Vacaciones y cierres"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texto sin formato"

@@ -31,11 +31,11 @@ class MeetingOutcome < ApplicationRecord
   belongs_to :meeting_agenda_item
   belongs_to :work_package
 
-  enum kind: {
+  enum :kind, {
     information: 0,
     decision: 1,
     work_package: 2
-  }.freeze, _suffix: true, _default: "information"
+  }.freeze, suffix: true, default: "information"
 
   validates_presence_of :meeting_agenda_item
   validates_presence_of :notes, if: -> { information_kind? }

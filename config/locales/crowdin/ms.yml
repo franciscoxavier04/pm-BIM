@@ -1028,6 +1028,7 @@ ms:
         auto_hide_popups: "Pemberitahuan kejayaan auto-sembunyi"
         warn_on_leaving_unsaved: "Beri amaran kepada saya apabila meninggalkan pakej kerja dengan perubahan yang belum disimpan."
         theme: "Mod"
+        time_zone: "Zon waktu"
         mode_guideline: "Sesetengah mod akan menulis ganti warna tema tersuai untuk kebolehaksesan dan kebolehbacaan. Untuk tema tersuai penuh, sila pilih mod Cahaya."
         daily_reminders: "Daily reminders"
         workdays: "Hari bekerja"
@@ -1584,6 +1585,7 @@ ms:
     derived_due_date: "Tarikh tamat yang diperolehi"
     derived_estimated_hours: "Jumlah kerja"
     derived_start_date: "Tarikh mula yang diperolehi"
+    direction: "Direction"
     display_sums: "Paparkan Jumlah"
     due_date: "Tarikh tamat"
     estimated_hours: "Kerja"
@@ -1648,6 +1650,7 @@ ms:
     version: "Versi"
     visible: "Terlihat"
     work_package: "Pakej kerja"
+    work_package_id: "Pakej kerja"
   backup:
     failed: "Sandaran gagal"
     label_backup_token: "Token sandaran"
@@ -3346,6 +3349,10 @@ ms:
       project_verification: "Masukkan nama projek %{name} untuk mengesahkan pemadaman."
       subprojects_confirmation: "Subprojeknya: %{value} juga akan dipadamkan."
       title: "Padamkan projek %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Ahli projek akan perlu memindahkan semula repositori projek.
       warning_two: Pautan sedia ada pada projek tidak akan berfungsi lagi.
@@ -3755,6 +3762,11 @@ ms:
     working_days:
       section_work_week: "Minggu bekerja"
       section_holidays_and_closures: "Hari perayaan dan penutupan"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Teks biasa"

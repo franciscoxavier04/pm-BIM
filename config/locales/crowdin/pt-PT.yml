@@ -1036,6 +1036,7 @@ pt-PT:
         auto_hide_popups: "Ocultar automaticamente notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me quando sair de um pacote de trabalho sem guardar as alterações"
         theme: "Modo"
+        time_zone: "Fuso horário"
         mode_guideline: "Alguns modos substituem as cores personalizadas do tema por motivos de acessibilidade e legibilidade. Para obter o tema personalizado completo, selecione o modo Claro."
         daily_reminders: "Lembretes diários"
         workdays: "Dias úteis"
@@ -1603,6 +1604,7 @@ pt-PT:
     derived_due_date: "Data de término derivada"
     derived_estimated_hours: "Trabalho total"
     derived_start_date: "Data inicial derivada"
+    direction: "Direção"
     display_sums: "Exibir somas"
     due_date: "Data de término"
     estimated_hours: "Trabalho"
@@ -1667,6 +1669,7 @@ pt-PT:
     version: "Versão"
     visible: "Visível"
     work_package: "Pacote de trabalho"
+    work_package_id: "Pacote de trabalho"
   backup:
     failed: "A cópia de segurança falhou"
     label_backup_token: "Token de cópia de segurança "
@@ -3386,6 +3389,10 @@ pt-PT:
       project_verification: "Insira o nome do projeto %{name} para verificar a eliminação."
       subprojects_confirmation: "O(s) seu(s) sub-projeto(s): %{value} também será/serão apagado(s)."
       title: "Apagar o projeto %{name}"
+    filters:
+      life_cycle_any: "Ciclo de vida: Qualquer fase ou porta"
+      life_cycle_stage: "Fase do ciclo de vida: %{stage}"
+      life_cycle_gate: "Porta do ciclo de vida: %{gate}"
     identifier:
       warning_one: Os membros do projeto terão de realocar os repositórios do projeto.
       warning_two: Os links existentes para o projeto já não funcionarão.
@@ -3793,6 +3800,11 @@ pt-PT:
     working_days:
       section_work_week: "Semana de trabalho"
       section_holidays_and_closures: "Feriados e encerramentos"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texto Simples"

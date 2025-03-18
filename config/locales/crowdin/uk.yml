@@ -1051,6 +1051,7 @@ uk:
         auto_hide_popups: "Автоматичне приховування сповіщень про успіх"
         warn_on_leaving_unsaved: "Попереджати мене, коли залишив робочий пакет із незбереженими змінами"
         theme: "Режим"
+        time_zone: "Часовий пояс"
         mode_guideline: "У деяких режимах кольори користувацької теми замінюються, щоб полегшити взаємодію з користувачем і зробити її зручнішою. Якщо потрібна повністю користувацька тема, виберіть світлий режим."
         daily_reminders: "Щоденні нагадування"
         workdays: "Робочі дні"
@@ -1640,6 +1641,7 @@ uk:
     derived_due_date: "Отримана дата завершення"
     derived_estimated_hours: "Загальний обсяг робіт"
     derived_start_date: "Отримана дата початку"
+    direction: "Напрямок"
     display_sums: "Відображати суми"
     due_date: "Дата закінчення"
     estimated_hours: "Робота"
@@ -1704,6 +1706,7 @@ uk:
     version: "Версія"
     visible: "Видиме"
     work_package: "Пакет робіт"
+    work_package_id: "Робочий пакет"
   backup:
     failed: "Помилка резервної копії"
     label_backup_token: "Маркер резервного копіювання"
@@ -2663,7 +2666,7 @@ uk:
   label_index_by_title: "Індекс за назвою"
   label_information: "Інформація"
   label_information_plural: "Інформація"
-  label_installation_guides: "Інструкції із встановлення"
+  label_installation_guides: "Інструкції зі встановлення"
   label_integer: "Ціле число"
   label_internal: "Власне"
   label_introduction_video: "Введення відео"
@@ -3464,6 +3467,10 @@ uk:
       project_verification: "Введіть ім'я проекту %{name}, щоб верифікувати видалення."
       subprojects_confirmation: "Підпроекти: %{value} також будуть видалені."
       title: "Видалити проект %{name}"
+    filters:
+      life_cycle_any: "Життєвий цикл: будь-який етап або контрольна точка"
+      life_cycle_stage: "Етап життєвого циклу: %{stage}"
+      life_cycle_gate: "Контрольна точка життєвого циклу: %{gate}"
     identifier:
       warning_one: Членам проекту доведеться перенести репозиторії проекту.
       warning_two: Існуючі посилання на проект більше не працюватимуть.
@@ -3873,6 +3880,11 @@ uk:
     working_days:
       section_work_week: "Робочий тиждень"
       section_holidays_and_closures: "Свята й вихідні"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Простий текст"

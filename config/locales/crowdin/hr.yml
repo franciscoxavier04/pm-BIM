@@ -1048,6 +1048,7 @@ hr:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
+        time_zone: "Vremenska zona"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1626,6 +1627,7 @@ hr:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Prikaži iznose"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1690,6 +1692,7 @@ hr:
     version: "Verzija"
     visible: "Vidljiv"
     work_package: "Radni paket"
+    work_package_id: "Radni paket"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -3431,6 +3434,10 @@ hr:
       project_verification: "Unesite naziv projekta %{name} za potvrdu brisanja."
       subprojects_confirmation: "Pripadajući podprojekt(i): %{value} će također biti izbrisani."
       title: "Izbriši projekt %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Članovi projekta morati će relocirati repozitorije projketa.
       warning_two: Postojeće poveznice na projektu neće više funkcionirati.
@@ -3840,6 +3847,11 @@ hr:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
