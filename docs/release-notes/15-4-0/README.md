@@ -14,10 +14,6 @@ We released [OpenProject 15.4.0](https://community.openproject.org/versions/2165
 
 ## Important feature changes
 
-Take a look at the release video showing the most important features introduced in 15.4.0:
-
-VIDEO
-
 ### Enable automatic scheduling mode - to start as soon as possible
 
 Starting with OpenProject 15.4, users will be able to choose whether they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor and child relations, simplifies managing complex project setups.
@@ -62,7 +58,7 @@ The updated Meetings module now allows you to set a meeting status:
 
 Once the status is "in progress", you can add outcomes to every agenda item. If it is a recurring meeting, you can also move the agenda item to the next meeting:
 
-![Screenshot: OpenProject's Meetings module, options for an agenda item if the meeting status is 'in progress'](openproject-15-4-meetings-outcome-highlighted.png)
+![Screenshot: OpenProject's Meetings module, options for an agenda item if the meeting status is 'in progress'](openproject-15-4-meetings-outcome-highlighted-new.png)
 
 > [!NOTE]
 > In the following months, we will continue working on the Meetings module. For example, when a recurring meeting is closed, it shall be possible to move all agenda items without outcomes to the next meeting ([see this feature](https://community.openproject.org/wp/61911)). Also, a meeting agenda items backlog for recurring meetings is planned ([see this feature](https://community.openproject.org/wp/54751)).
