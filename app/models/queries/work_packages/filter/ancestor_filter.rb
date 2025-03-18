@@ -32,39 +32,38 @@ class Queries::WorkPackages::Filter::AncestorFilter <
   Queries::WorkPackages::Filter::WorkPackageFilter
   include ::Queries::WorkPackages::Filter::FilterForWpMixin
 
-  def relation_type
-    # While this is not a relation (in the sense of it being stored in a different database table) we still
-    # want it to be used same as every other relation filter.
-    Relation::TYPE_PARENT
-  end
-
   def apply_to(_query_scope)
-    operator = operator_strategy.symbol
-
-    condition = if operator == "="
-                  "WHERE id IN (:ids)"
-                else
-                  "WHERE id NOT IN (:ids)"
-                end
-
+    # We are searching for all work packages that are descendants of a list of given ancestors. To do so, we use
+    # a recursive CTE.
     cte = <<~SQL.squish
       WITH RECURSIVE descendants AS (
         SELECT id
         FROM work_packages
-        #{condition}
+        WHERE id IN (:ids)
         UNION ALL
         SELECT wp.id
         FROM work_packages wp
         INNER JOIN descendants d ON wp.parent_id = d.id
       )
-      SELECT * FROM descendants;
     SQL
 
-    sql = ActiveRecord::Base.sanitize_sql([cte, { ids: no_templated_values }])
+    # We have our descendants, now we need to select them based on the chosen operator:
+    select = if operator_strategy.symbol == "="
+               # IS (OR)
+               # Select all descendants, including the ancestors themselves.
+               # Strictly speaking the ancestors should be excluded from the result, but users can easily exclude
+               # them by an additional filter if desired. It is more difficult the other way around.
+               "SELECT id FROM descendants;"
+             else
+               # IS NOT
+               # Exclude all descendants from the result, including the ancestors themselves.
+               "SELECT id FROM work_packages WHERE id NOT IN (SELECT id from descendants);"
+             end
 
-    descendants = super.find_by_sql(sql)
+    sql = ActiveRecord::Base.sanitize_sql([cte + select, { ids: no_templated_values }])
 
-    WorkPackage.where(id: descendants.pluck(:id))
+    descendants = super.find_by_sql(sql).pluck(:id)
+    WorkPackage.where(id: descendants)
   end
 
   def where
