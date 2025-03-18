@@ -53,13 +53,13 @@ tr:
     menu_title: OpenID sağlayıcıları
     delete_title: "OpenID Connect sağlayıcısını sil"
     instructions:
-      redirect_url: This is the redirect URL that the OpenID Connect provider should use to redirect back to OpenProject after a successful login.
+      redirect_url: Bu, OpenID Connect sağlayıcısının başarılı bir oturum açma işleminden sonra OpenProject'e geri yönlendirmek için kullanması gereken yönlendirme adresidir.
       endpoint_url: OpenID Connect sağlayıcısı tarafından size verilen uç nokta URL'si
       metadata_none: Bu bilgiye sahip değilim
       metadata_url: Bir keşif uç noktası URL'im var
       client_id: OpenID Connect sağlayıcısı tarafından size verilen istemci URL'si
       client_secret: OpenID Connect sağlayıcısı tarafından size verilen gizlilik URL'si
-      limit_self_registration: If enabled, users can only register using this provider if configuration on the provider's end allows it.
+      limit_self_registration: Etkinleştirilirse, kullanıcılar yalnızca sağlayıcı tarafındaki yapılandırma izin veriyorsa bu sağlayıcıyı kullanarak kaydolabilir.
       display_name: Sağlayıcının adı. Bu, oturum açma düğmesi olarak ve sağlayıcılar listesinde görüntülenecektir.
       tenant: 'Lütfen öntanımlı müşteriyi kendinizinkiyle değiştirin, mümkünse. Bu <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri"> belgeye bakın</a>.'
       scope: Özel kapsamlar talep etmek istiyorsanız, buraya boşluklarla ayrılmış bir veya birden fazla kapsam değeri ekleyebilirsiniz. Daha fazla bilgi için [OpenID Connect belgelerine](docs_url) bakın.
@@ -120,4 +120,4 @@ tr:
         claims: Request additional claims for the ID token or userinfo response.
     setting_instructions:
       limit_self_registration: >
-        If enabled users can only register using this provider if the self registration setting allows for it.
+        Etkinleştirilirse, kullanıcılar bu sağlayıcıyı kullanarak yalnızca kendi kendine kayıt ayarı buna izin veriyorsa kaydolabilir.

@@ -31,8 +31,8 @@ tr:
         label_activity_show_all: "Her şeyi göster"
         label_activity_show_only_comments: "Sadece yorumları göster"
         label_activity_show_only_changes: "Yalnızca değişiklikleri göster"
-        label_sort_asc: "En alttaki en yeni"
-        label_sort_desc: "En üstte en yeniler"
+        label_sort_asc: "En altta en yeni"
+        label_sort_desc: "En üstte en yeni"
         label_type_to_comment: "Bir yorum ekleyin. Kişilere bildirmek için @ yazın."
         label_submit_comment: "Yorum gönder"
         changed_on: "üzerinde değişti"
@@ -179,7 +179,7 @@ tr:
     tls_options:
       verify_peer: "SSL sertifikasını doğrula"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Sertifika güvenilir zincirinin katı SSL doğrulamasını etkinleştirir. <br> <strong>Uyarı:</strong> Bu seçeneğin işaretini kaldırmak, LDAP sunucu sertifikasının SSL doğrulamasını devre dışı bırakır. Bu, Man in the Middle saldırılarıyla bağlantınızı ortaya çıkarır.
       tls_certificate_description: "LDAP sunucusu sertifikası bu sistemin güvenilir kaynaklarında yoksa buradan manuel olarak ekleyebilirsiniz. Bir PEM X509 sertifika dizisi girin."
   forums:
     show:
@@ -421,7 +421,7 @@ tr:
       no_results_title_text: Bu projenini parçası olan mevcut bir üye bulunmamakta.
       no_results_content_text: Projeye üye ekle
     invite_by_mail: "Davet gönder %{mail}"
-    send_invite_to: "Send invite to"
+    send_invite_to: "Davet gönder"
     columns:
       shared: "Paylaşılan"
     filters:
@@ -651,7 +651,7 @@ tr:
           manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
           manual_with_children: "This has child work packages but their start dates are ignored."
         title:
-          automatic_mobile: "Automatically scheduled."
+          automatic_mobile: "Otomatik planlandı."
           automatic_with_children: "The dates are determined by child work packages."
           automatic_with_predecessor: "The start date is set by a predecessor."
           manual_mobile: "Elle planlanmış."
@@ -1027,7 +1027,7 @@ tr:
         last_login_on: "Son giriş"
         failed_login_count: "Başarısız oturum açma denemeleri"
         first_name: "İsim"
-        last_name: "Soyisim"
+        last_name: "Soy isim"
         first_login: "İlk giriş"
         new_password: "Yeni parola"
         password_confirmation: "Onay"
@@ -1609,9 +1609,9 @@ tr:
     due_date: "Bitiş tarihi"
     estimated_hours: "Çalışma"
     estimated_time: "Çalışma"
-    email: "Eposta"
+    email: "E-posta"
     entity_type: "Varlık"
-    expires_at: "Süre sonu: "
+    expires_at: "Bitiş zamanı"
     firstname: "İsim"
     filter: "Filtre"
     group: "Grup"
@@ -1626,10 +1626,10 @@ tr:
     issue: "İş paketi"
     journal: "Günlük"
     journal_notes: "Yorum"
-    lastname: "Soyisim"
+    lastname: "Soy isim"
     login: "Kullanıcı adı"
     lock_version: "Sürümü kilitle"
-    mail: "Eposta"
+    mail: "E-posta"
     name: "İsim"
     note: "Not"
     notes: "Notlar"
