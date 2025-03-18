@@ -148,8 +148,8 @@ ru:
   label_recurring_meeting_series_end_now: "Завершите серию сейчас"
   label_meeting_more:
     one: "Есть еще одно совещание."
-    few: "There are %{count} more meetings."
-    many: "There are %{count} more meetings."
+    few: "Есть еще %{count} совещания."
+    many: "Есть еще %{count} совещаний."
     other: "Есть еще %{count} совещаний."
   label_my_meetings: "Мои совещания"
   label_all_meetings: "Все совещания"
