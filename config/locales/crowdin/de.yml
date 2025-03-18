@@ -611,8 +611,8 @@ de:
           caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspaketthemen. Nutzer können diese nicht manuell editieren."
         pattern:
           label: "Thema-Schema"
-          caption: "Suchen Sie nach einem Attribut oder fügen Sie Text hinzu. Um ein Leerzeichen zwischen Elementen zu erstellen, fügen Sie es als Text hinzu."
-          insert_as_text: "Als Text hinzufügen: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF generieren"
         intro: "Wählen Sie aus den verfügbaren Vorlagen diejenige aus, die Sie für diesen Typ aktivieren möchten. Die Vorlage bestimmt das Design und die Attribute, die in der exportierten PDF-Datei eines Arbeitspakets mit diesem Typ sichtbar sind. Die erste Vorlage in der Liste ist standardmäßig ausgewählt."
@@ -641,7 +641,7 @@ de:
           automatic_mobile: "Anfangstermin abgeleitet."
           click_on_show_relations_to_open_gantt: 'Klicken Sie auf "%{button_name}" für eine Gantt-Übersicht.'
           manual_mobile: "Beziehungen werden ignoriert."
-          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_gap_between_predecessors: "Es besteht Verzögerung mit allen Vorgängern."
           manual_overlap_with_predecessors: "Überlappt mit mindestens einem Vorgänger."
           manual_with_children: "Hat untergeordnete Arbeitspakete aber ihre Startdaten werden ignoriert."
         title:
@@ -652,7 +652,7 @@ de:
           manually_scheduled: "Manuell geplant. Daten nicht von Beziehungen beeinflusst."
       blankslate:
         title: "Keine Vorgänger"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+        description: "Um die automatische Planung zu aktivieren, muss dieses Arbeitspaket mindestens einen Vorgänger haben. Es wird dann automatisch so eingeplant, dass es nach dem nächstgelegenen Vorgänger beginnt."
       ignore_non_working_days:
         title: "Nur Werktage"
       mode:
@@ -661,7 +661,7 @@ de:
         manual: "Manuell"
       show_relations: "Beziehungen anzeigen"
       tabs:
-        aria_label: "Datepicker tabs"
+        aria_label: "Datumsauswahl Reiter"
         children: "Untergeordnete Arbeitspakete"
         dates: "Daten"
         predecessors: "Vorgänger"
@@ -749,7 +749,7 @@ de:
       new_child_text: "Erstellt ein zugehöriges Arbeitspaket als Unterelement des aktuellen (übergeordneten) Arbeitspakets"
       existing_child: "Vorhandenes Kind"
       child_description: "Macht das zugehörige Arbeitspaket zu einem Unterelement des aktuellen (übergeordneten) Arbeitspakets"
-      label_closest: "Closest"
+      label_closest: "Am nächsten"
       label_blocks_singular: "Blockiert"
       label_blocks_plural: "Blockiert"
       blocks_description: "Das verknüpfte Arbeitspaket kann erst geschlossen werden, wenn dieses Arbeitspaket geschlossen ist"
@@ -835,7 +835,7 @@ de:
         attribute_name: "Attribut"
         help_text: "Hilfe-Text"
       capability:
-        context: "Context"
+        context: "Kontext"
       changeset:
         repository: "Projektarchiv"
       comment:
@@ -871,7 +871,7 @@ de:
         scopes: "Geltungsbereiche"
         confidential: "Vertraulich"
       emoji_reaction:
-        reactable: "Reacted on"
+        reactable: "Reagiert am"
       enterprise_token:
         domain: "Domain"
         starts_at: "Aktiv seit"
@@ -885,7 +885,7 @@ de:
         widgets: "Widgets"
       journal:
         notes: "Kommentare"
-        cause_type: "Cause type"
+        cause_type: "Ursachen-Typ"
       ldap_auth_source:
         account: "Konto"
         attr_firstname: "Attribut für Vorname"
@@ -902,7 +902,7 @@ de:
       member:
         roles: "Rollen"
       notification:
-        read_ian: "Read in-app"
+        read_ian: "In-App lesen"
         resource: "Ressource"
       oauth_client:
         client: "Client-ID"
@@ -2244,7 +2244,7 @@ de:
         progress_calculation_adjusted: >-
           Die Fortschrittsberechnung wurde <a href=" %{href} " target="_blank">automatisch durch das Systemupdate angepasst</a>.
         scheduling_mode_adjusted: >-
-          Scheduling mode automatically adjusted with version update.
+          Planungsmodus wird beim Versionsupdate automatisch angepasst.
         totals_removed_from_childless_work_packages: >-
           Arbeits- und Fortschrittssummen werden bei der <a href="%{href}" target="_blank">Versionsaktualisierung</a> automatisch für nicht übergeordnete Arbeitspakete entfernt. Diese Änderung entstand durch ein Upgrade und kann ignoriert werden.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2880,7 +2880,7 @@ de:
   label_title: "Titel"
   label_projects_menu: "Projekte"
   label_today: "heute"
-  label_token_version: "Token Version"
+  label_token_version: "Token-Version"
   label_today_as_start_date: "Heute als Startdatum wählen."
   label_today_as_due_date: "Heute als Enddatum wählen."
   label_today_as_date: "Heute als Datum wählen."
@@ -2996,7 +2996,7 @@ de:
   label_global_role: "Globale Rolle"
   label_not_changeable: "(nicht veränderbar)"
   label_global: "Global"
-  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: Dieser Datensatz wurde durch eine Umgebungsvariable Konfiguration erstellt. Er kann nicht über die Benutzeroberfläche bearbeitet werden.
   macro_execution_error: "Fehler beim Ausführen des Makros %{macro_name}"
   macro_unavailable: "Das Makro %{macro_name} kann nicht angezeigt werden."
   macros:
@@ -3536,7 +3536,7 @@ de:
   search_input_placeholder: "Suchen ..."
   setting_after_first_login_redirect_url: "Weiterleitung nach erster Anmeldung"
   setting_after_first_login_redirect_url_text_html: >
-    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+    Legen Sie einen Pfad fest, an den Nutzer:innen nach der ersten Anmeldung weitergeleitet werden. Wenn leer, führt er auf die Startseite des Onboarding-Tours. <br/> Beispiel: <code>/meine/seite</code>
   setting_after_login_default_redirect_url: "Weiterleitung nach Anmeldung"
   setting_after_login_default_redirect_url_text_html: >
     Legen Sie einen Standardpfad für die Weiterleitung von Benutzern nach der Anmeldung fest, wenn kein Back-Link angegeben wurde. Falls nicht gesetzt, wird der Nutzer auf die Startseite geleitet. <br/> Beispiel: <code>/my/page</code>
@@ -3801,9 +3801,9 @@ de:
       section_holidays_and_closures: "Feiertage und Schließungen"
     work_packages:
       categories_tab: "Kategorien"
-      custom_fields_tab: "Custom Fields"
+      custom_fields_tab: "Benutzerdefinierte Felder"
       types_tab: "Typen"
-      not_allowed_text: "You do not have the necessary permissions to view this page."
+      not_allowed_text: "Sie haben nicht die notwendigen Rechte, um diese Seite zu sehen."
   text_formatting:
     markdown: "Markdown"
     plain: "Reiner Text"
@@ -4386,10 +4386,10 @@ de:
     legacy_enterprise: "Enterprise Plan"
   enterprise_features:
     baseline_comparison: Grundlinie (Planungsvergleich)
-    board_view: Board View
+    board_view: Board Ansicht
     conditional_highlighting: Conditional Highlighting
     custom_actions: Benutzerdefinierte Aktionen
-    custom_field_hierarchies: Custom Field Hierarchies
+    custom_field_hierarchies: Selbstdefinierte Felder vom Typ Hierarchie
     customize_life_cycle: Projektlebenszyklus anpassen
     date_alerts: Datums-Erinnerungen
     define_custom_style: Eigenen Stil definieren
