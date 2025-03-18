@@ -389,4 +389,34 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
       end
     end
   end
+
+  describe "Bug #62261: Invalid error displayed when switching parent to automatic" do
+    context "when changing dates to the ones that would be computed by automatic mode and then switching to automatic" do
+      let_work_packages(<<~TABLE)
+        hierarchy    | start date | due date   | scheduling mode
+        work package | 2025-01-27 | 2025-02-06 | manual
+          child      |            |            | manual
+      TABLE
+
+      it "does not display a 'read-only' error" do
+        open_date_picker
+        datepicker.set_start_date("")
+        datepicker.set_due_date("")
+
+        datepicker.toggle_scheduling_mode
+
+        datepicker.expect_start_date "", disabled: true
+        datepicker.expect_due_date "", disabled: true
+        read_only_error = I18n.t("activerecord.errors.messages.error_readonly")
+        expect(datepicker.container).to have_no_text(/#{Regexp.escape(read_only_error)}/i)
+
+        apply_and_expect_saved(
+          start_date: nil,
+          due_date: nil,
+          duration: nil,
+          schedule_manually: false
+        )
+      end
+    end
+  end
 end

@@ -83,12 +83,19 @@ module OpenProject
     # by the mass assignment the change in value will give that away.
     def change_by_system
       prior_changes = non_no_op_changes
+      prior_attributes_from_user = attributes_from_user(prior_changes.keys)
 
       ret = yield
 
-      changed_by_system(changes_compared_to(prior_changes))
+      changed_by_system(changes_compared_to(prior_attributes_from_user))
 
       ret
+    end
+
+    def attributes_from_user(user_changed_attributes)
+      user_changed_attributes.index_with do |user_changed_attribute|
+        @attributes[user_changed_attribute]
+      end
     end
 
     # Similar to #changed from ActiveRecord this returns all attributes that are
@@ -104,8 +111,12 @@ module OpenProject
       model_changes.reject { |_, (old, new)| old == 0 && new.nil? }
     end
 
-    def changes_compared_to(prior_changes)
-      model_changes.select { |c| !prior_changes[c] || prior_changes[c].last != model_changes[c].last }
+    def changes_compared_to(prior_attributes_from_user)
+      # Reject all changes for which the attribute reference did not change
+      # during the `change_by_system` block call.
+      model_changes.reject do |c|
+        prior_attributes_from_user[c].equal?(@attributes[c])
+      end
     end
 
     # Construct the custom model changes method, which is based on the `ActiveRecord::Base#changes`.

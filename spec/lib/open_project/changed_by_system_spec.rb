@@ -90,6 +90,64 @@ RSpec.describe OpenProject::ChangedBySystem do
       end
     end
 
+    context "when an attribute is changed by the user first and then by the system to a different value" do
+      before do
+        model.title = "abc"
+
+        model.change_by_system do
+          model.title = "xyz"
+        end
+      end
+
+      it "returns no attribute" do
+        expect(model.changed_by_user)
+          .to be_empty
+      end
+    end
+
+    context "when an attribute is changed by the user first and then by the system to the same value" do
+      before do
+        model.title = "abc"
+
+        model.change_by_system do
+          model.title = "abc"
+        end
+      end
+
+      it "returns no attribute" do
+        expect(model.changed_by_user)
+          .to be_empty
+      end
+    end
+
+    context "when an attribute is changed by the user and the system modifies another attribute" do
+      before do
+        model.title = "abc"
+
+        model.change_by_system do
+          model.description = "desc"
+        end
+      end
+
+      it "returns the attribute modified by the user" do
+        expect(model.changed_by_user)
+          .to contain_exactly("title")
+      end
+    end
+
+    context "when an attribute is changed by the system only" do
+      before do
+        model.change_by_system do
+          model.title = "abc"
+        end
+      end
+
+      it "returns no attribute" do
+        expect(model.changed_by_user)
+          .to be_empty
+      end
+    end
+
     context "when the model has the acts_as_customizable plugin included" do
       subject(:model) do
         create(:work_package, project:).tap do |wp|
