@@ -31,6 +31,10 @@ In other words: In automatic mode, **the work package starts as soon as possible
 
 However, you can still define a duration, which adjusts the finish date accordingly. This ensures a reliable sequence of automatically scheduled work packages that adapt dynamically to planning changes.
 
+See the difference between manual scheduling and automatic scheduling in Gantt view:
+
+![OpenProject Gantt charts - automatic scheduling](openproject_automatic_scheduling.gif)
+
 To learn more about how this change might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/) that we published some weeks ago. [See our documentation](../../user-guide/work-packages/set-change-dates/) to get detailed information about how to use the automatic scheduling mode.
 
 #### Single date mode
