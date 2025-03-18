@@ -271,13 +271,13 @@ export class OpCkeditorComponent extends UntilDestroyedMixin implements OnInit, 
       editor.editing.view.document,
       'keydown',
       (evt, data) => {
-        if ((data.ctrlKey || data.metaKey) && data.keyCode === KeyCodes.ENTER) {
+        if ((data.ctrlKey || data.metaKey) && data.keyCode === Number(KeyCodes.ENTER)) {
           debugLog('Sending save request from CKEditor.');
           this.saveRequested.emit();
           evt.stop();
         }
 
-        if (data.keyCode === KeyCodes.ESCAPE) {
+        if (data.keyCode === Number(KeyCodes.ESCAPE)) {
           this.editorEscape.emit();
           evt.stop();
         }
