@@ -642,7 +642,7 @@ de:
           click_on_show_relations_to_open_gantt: 'Klicken Sie auf "%{button_name}" für eine Gantt-Übersicht.'
           manual_mobile: "Beziehungen werden ignoriert."
           manual_gap_between_predecessors: "There is a gap between this and all predecessors."
-          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_overlap_with_predecessors: "Überlappt mit mindestens einem Vorgänger."
           manual_with_children: "Hat untergeordnete Arbeitspakete aber ihre Startdaten werden ignoriert."
         title:
           automatic_mobile: "Automatisch geplant."
@@ -658,7 +658,7 @@ de:
       mode:
         title: "Planungsmodus"
         automatic: "Automatisch"
-        manual: "Manual"
+        manual: "Manuell"
       show_relations: "Beziehungen anzeigen"
       tabs:
         aria_label: "Datepicker tabs"
@@ -1653,7 +1653,7 @@ de:
     text: "Text"
     title: "Titel"
     type: "Typ"
-    typeahead: "Autocomplete"
+    typeahead: "Autovervollständigung"
     updated_at: "Aktualisiert am"
     updated_on: "Aktualisiert am"
     uploader: "Bereitgestellt von"
@@ -1661,7 +1661,7 @@ de:
     username: "Benutzername"
     unit: "Stück"
     value: "Wert"
-    values: "Values"
+    values: "Werte"
     version: "Version"
     visible: "Sichtbar"
     work_package: "Arbeitspaket"
@@ -1977,8 +1977,8 @@ de:
   enumeration_activities: "Aktivitäten für Zeiterfassung"
   enumeration_work_package_priorities: "Arbeitspaket-Prioritäten"
   enumeration_reported_project_statuses: "Gemeldeter Projekt-Status"
-  enumeration_caption_order_changed: "Order successfully changed."
-  enumeration_could_not_be_moved: "Enumeration could not be moved."
+  enumeration_caption_order_changed: "Reihenfolge erfolgreich geändert."
+  enumeration_could_not_be_moved: "Aufzählung konnte nicht verschoben werden."
   error_auth_source_sso_failed: "Single Sign-On (SSO) für Nutzer '%{value}' fehlgeschlagen"
   error_can_not_archive_project: "Dieses Projekt kann nicht archiviert werden: %{errors}"
   error_can_not_delete_entry: "Eintrag kann nicht gelöscht werden"
@@ -2068,7 +2068,7 @@ de:
         input_label_report: "Spalten zur Attributtabelle hinzufügen"
         input_caption_report: "Standardmäßig sind alle Attribute, die als Spalten in der Arbeitspaketliste hinzugefügt wurden, ausgewählt. Langtextfelder sind in der Attributtabelle nicht verfügbar, können aber unterhalb der Tabelle angezeigt werden."
         input_caption_table: "Standardmäßig sind alle Attribute, die als Spalten in der Arbeitspaketliste hinzugefügt wurden, ausgewählt. Textfelder sind in tabellenbasierten Exporten nicht verfügbar."
-        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
+        input_caption_required: "Es ist nicht möglich, die Ansicht ohne jede Spalte zu exportieren. Bitte fügen Sie mindestens eine Spalte hinzu."
       pdf:
         export_type:
           label: "PDF-Exporttyp"
@@ -2140,7 +2140,7 @@ de:
   pdf_generator:
     page_nr_footer: "Seite %{page} von %{total}"
     template_attributes:
-      label: "Attributes and description"
+      label: "Attribute und Beschreibung"
       caption: Alle Attribute, die in der aktuellen Formularkonfiguration mit der Standardvorlage vorhanden sind.
     template_contract:
       label: "Vertrag"
@@ -2150,7 +2150,7 @@ de:
       submit: Download
       templates:
         label: "Vorlage"
-        none_enabled: "No template has been enabled for this work package type"
+        none_enabled: "Für diesen Arbeitspakettyp ist keine Vorlage aktiv"
       footer_center:
         label: Text in der Fußzeile
         caption: Dieser Text wird auf jeder Seite in der Mitte der Fußzeile angezeigt.
@@ -2489,7 +2489,7 @@ de:
   label_missing_or_hidden_custom_option: "(Fehlender Wert oder fehlende Zugriffsberechtigungen)"
   label_descending: "Absteigend"
   label_details: "Details"
-  label_defaults: "Defaults"
+  label_defaults: "Standardwerte"
   label_development_roadmap: "Entwicklungs-Roadmap"
   label_diff: "diff"
   label_diff_inline: "einspaltig"
@@ -2546,7 +2546,7 @@ de:
   label_filter: "Filter"
   label_filter_add: "Filter hinzufügen"
   label_filter_by: "Filtern nach"
-  label_filter_any_name_attribute: "Name attributes"
+  label_filter_any_name_attribute: "Namensattribute"
   label_filter_plural: "Filter"
   label_filters_toggle: "Filter ein-/ausblenden"
   label_float: "Gleitkommazahl"
@@ -2826,7 +2826,7 @@ de:
   label_roadmap_overdue: "%{value} verspätet"
   label_role_and_permissions: "Rollen und Rechte"
   label_role_new: "Neue Rolle"
-  label_role_grantable: "Grantable role"
+  label_role_grantable: "Zuweisbare Rolle"
   label_role_plural: "Rollen"
   label_role_search: "Rolle für neue Mitglieder zuweisen"
   label_scm: "Versionskontrollsystem"
@@ -3534,12 +3534,12 @@ de:
     manual: "auf Manuell setzen"
     automatic: "auf Automatisch setzen"
   search_input_placeholder: "Suchen ..."
-  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url: "Weiterleitung nach erster Anmeldung"
   setting_after_first_login_redirect_url_text_html: >
     Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
-  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url: "Weiterleitung nach Anmeldung"
   setting_after_login_default_redirect_url_text_html: >
-    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
+    Legen Sie einen Standardpfad für die Weiterleitung von Benutzern nach der Anmeldung fest, wenn kein Back-Link angegeben wurde. Falls nicht gesetzt, wird der Nutzer auf die Startseite geleitet. <br/> Beispiel: <code>/my/page</code>
   setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "CORS aktivieren"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) erlaubte Origins"
@@ -3800,9 +3800,9 @@ de:
       section_work_week: "Arbeitswoche"
       section_holidays_and_closures: "Feiertage und Schließungen"
     work_packages:
-      categories_tab: "Categories"
+      categories_tab: "Kategorien"
       custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
+      types_tab: "Typen"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
@@ -4331,7 +4331,7 @@ de:
       connected: "Verbindung hergestellt"
       error: "Fehler"
       failed_authorization: "Autorisierung fehlgeschlagen"
-      not_connected: "Not connected"
+      not_connected: "Nicht verbunden"
     labels:
       label_oauth_integration: "OAuth2 Integration"
       label_redirect_uri: "URI umleiten"
@@ -4388,9 +4388,9 @@ de:
     baseline_comparison: Grundlinie (Planungsvergleich)
     board_view: Board View
     conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
+    custom_actions: Benutzerdefinierte Aktionen
     custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
+    customize_life_cycle: Projektlebenszyklus anpassen
     date_alerts: Datums-Erinnerungen
     define_custom_style: Eigenen Stil definieren
     edit_attribute_groups: Attributgruppen bearbeiten

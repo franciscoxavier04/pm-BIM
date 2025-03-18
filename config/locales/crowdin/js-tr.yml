@@ -702,7 +702,7 @@ tr:
           description: "Bu projeye özgü ayarlar, yukarıdaki varsayılan ayarları geçersiz kılar."
           add: "Proje için ayar ekle"
           already_selected: "Bu proje zaten seçildi"
-          remove: "Proje ayarlarını sil"
+          remove: "Proje ayarlarını kaldır"
     password_confirmation:
       field_description: "Bu değişikliği onaylamak için hesap parolanızı girmeniz gerekir."
       title: "Devam etmek için parolanızı doğrulayın"

@@ -67,7 +67,7 @@ tr:
   permission_create_files_explanation: Bu izin yalnızca Nextcloud depoları için kullanılabilir
   permission_delete_files: 'Otomatik yönetilen proje klasörleri: Dosya silme'
   permission_delete_files_explanation: Bu izin yalnızca Nextcloud depoları için kullanılabilir
-  permission_header_for_project_module_storages: Automatically managed project folders
+  permission_header_for_project_module_storages: Otomatik olarak yönetilen proje klasörleri
   permission_manage_file_links: Dosya bağlantılarını yönet
   permission_manage_files_in_project: Projedeki dosyaları yönetme
   permission_read_files: 'Otomatik yönetilen proje klasörleri: Dosya okuma'
@@ -80,7 +80,7 @@ tr:
     edit_project_folder:
       label: Proje türünü düzenle
     project_folder_mode:
-      automatic: Automatically managed
+      automatic: Otomatik olarak yönetilir
       inactive: Belirli bir klasör yok
       manual: Mevcut klasör elle yönetilir
     remove_project:
@@ -88,15 +88,15 @@ tr:
       dialog:
         automatically_managed_appendix: Also, in this case this storage has an automatically managed project folder, this and its files will be deleted forever.
         confirmation_text: Please, confirm you understand and want to remove this file storage from this project
-        heading_text: Remove project from %{storage}
+        heading_text: Projeyi %{storage} deposundan kaldır
         text: This action is irreversible and will remove all links from work packages of this project to files and folders of that storage.
-        title: Remove project from storage
-      label: Projeyi sil
+        title: Projeyi depodan kaldırın
+      label: Projeyi kaldır
   services:
     attributes:
       nextcloud_sync_service:
-        add_user_to_group: 'Add User to Group:'
-        create_folder: 'Managed Project Folder Creation:'
+        add_user_to_group: 'Gruba Kullanıcı Ekle:'
+        create_folder: 'Yönetilen Proje Klasörü Oluşturma:'
         ensure_root_folder_permissions: 'Temel Klasör İzinlerini Ayarlayın:'
         hide_inactive_folders: 'Hide Inactive Folders Step:'
         remote_folders: 'Read contents of the group folder:'
@@ -129,9 +129,9 @@ tr:
               not_found: "%{parent_location} bulunamadı."
             ensure_root_folder_permissions:
               not_found: "%{group_folder} bulunamadı. Lütfen Nextcloud Grup Klasörü kurulumunuzu kontrol edin."
-              permission_not_set: could not set permissions on %{group_folder}.
+              permission_not_set: '%{group_folder} üzerinde izinler ayarlanamadı.'
             hide_inactive_folders:
-              permission_not_set: could not set permissions on %{path}.
+              permission_not_set: '%{path} üzerinde izinler ayarlanamadı.'
             remote_folders:
               not_allowed: The %{username} doesn't have access to the %{group_folder} folder. Please check the folder permissions on Nextcloud.
               not_found: "%{group_folder} klasörü bulunamadı. Lütfen Nextcloud kurulumunuzu kontrol edin."
@@ -201,10 +201,10 @@ tr:
     dependencies:
       nextcloud:
         group_folders_app: Grup klasörleri
-        integration_app: Integration OpenProject
+        integration_app: OpenProject Bütünleşmesi
     enabled_in_projects:
       setup_incomplete_description: This storage has an incomplete setup. Please, complete the setup before enabling it in multiple projects.
-      setup_incomplete_header: Storage setup incomplete
+      setup_incomplete_header: Depolama kurulumu tamamlanmadı
     error_invalid_provider_type: Lütfen geçerli bir depolama sağlayıcısı seçin.
     file_storage_view:
       access_management:
@@ -223,8 +223,8 @@ tr:
       openproject_oauth: OpenProject OAuth
       project_folders: Proje klasörleri
       redirect_uri: Yönlendirme URL'si
-      storage_audience: Storage Audience
-      storage_audience_blank: No audience has been configured.
+      storage_audience: Depolama Kitlesi
+      storage_audience_blank: Kitle yapılandırılmadı.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.
       storage_oauth: Nextcloud OAuth
@@ -252,7 +252,7 @@ tr:
         tenant_id_wrong: The configured directory (tenant) id is invalid. Please check the configuration.
         unexpected_content:
           nextcloud: Unexpected content found in the managed group folder.
-          one_drive: Unexpected content found in the drive.
+          one_drive: Sürücüde beklenmeyen içerik bulundu.
         unknown_error: The connection could not be validated. An unknown error occurred. Please check the server logs for further information.
         userless_access_denied: The configured app password is invalid.
       label_error: Hata
@@ -260,7 +260,7 @@ tr:
       label_pending: Bekliyor
       label_warning: Uyarı
       project_folders:
-        subtitle: Automatically managed project folders
+        subtitle: Otomatik olarak yönetilen proje klasörleri
       since: '%{datetime} tarihinden beri'
       title: Sağlık durumu
     health_email_notifications:
@@ -342,16 +342,16 @@ tr:
     label_project_folder: Proje klasörü
     label_provider: Sağlayıcı
     label_redirect_uri: Yönlendirme URL'si
-    label_show_storage_redirect_uri: Show redirect URI
+    label_show_storage_redirect_uri: Yönlendirme adresini göster
     label_status: Durum
     label_storage: Depolama
-    label_uri: URI
+    label_uri: Adres
     member_connection_status:
       connected: Bağlandı
-      connected_no_permissions: User role has no storages permissions
-      not_connected: Not connected. The user should login to the storage via the following %{link}.
+      connected_no_permissions: Kullanıcı rolü depolama yetkisine sahip değil
+      not_connected: Bağlanmadı. Kullanıcı depolamaya %{link} adresini takip ederek bağlanmalı.
       not_connected_sso: Not yet connected, SSO should automatically connect them, once looking at files.
-    members_no_results: No members to display.
+    members_no_results: Gösterilecek üye yok.
     no_results: Henüz ayarlanmış depolama alanı yok.
     oauth_access_granted_modal:
       access_granted: Erişim izni verildi
@@ -394,11 +394,11 @@ tr:
       project_settings:
         delete: Dosya depolama alanını sil
         edit: Edit the file storage to this project
-        members_connection_status: Members connection status
+        members_connection_status: Üyü bağlantı durumu
         new: Bu projeye bir dosya deposu ekle
       project_storage_members:
         subtitle: Check the connection status for the storage %{storage_name_link} of all project members.
-        title: Members connection status
+        title: Üye bağlantı durumu
     permission_header_explanation: 'Harici depolardaki dosya izinleri yalnızca otomatik olarak yönetilen proje klasörlerindeki klasörlere ve dosyalara uygulanır. Tüm dosya izinlerinin tüm depolama sağlayıcıları tarafından desteklenmediğini unutmayın. Daha fazla bilgi için lütfen <a target=''_blank'' href=''https://www.openproject.org/docs/system-admin-guide/users-permissions/roles-permissions/#file-storages-permissions''>dosya depolama izinleriyle</a> ilgili belgeleri kontrol edin.'
     provider_types:
       label: Sağlayıcı türü
