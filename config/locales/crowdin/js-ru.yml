@@ -145,7 +145,7 @@ ru:
       error_saving_failed: "Не удалось сохранить документ по следующей причине: %{error}"
       ckeditor_error: "Произошла ошибка в CKEditor"
       mode:
-        manual: "Перейти к источнику уценок"
+        manual: "Перейти на Markdown"
         wysiwyg: "Перейти к WYSIWYG-редактору"
       macro:
         error: "Невозможно развернуть макрос: %{message}"
