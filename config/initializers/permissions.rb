@@ -312,30 +312,30 @@ Rails.application.reloader.to_prepare do
 
       wpt.permission :view_comments_with_restricted_visibility,
                      {},
-                     permissible_on: %i[work_package project],
+                     permissible_on: %i[project],
                      require: :loggedin,
                      dependencies: :view_work_packages,
                      visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
       wpt.permission :add_comments_with_restricted_visibility,
                      {},
-                     permissible_on: %i[work_package project],
+                     permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_work_packages view_comments_with_restricted_visibility],
+                     dependencies: %i[view_project view_comments_with_restricted_visibility],
                      visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
       wpt.permission :edit_own_comments_with_restricted_visibility,
                      {},
-                     permissible_on: %i[work_package project],
+                     permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_work_packages view_comments_with_restricted_visibility],
+                     dependencies: %i[view_project view_comments_with_restricted_visibility],
                      visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
       wpt.permission :edit_others_comments_with_restricted_visibility,
                      {},
-                     permissible_on: %i[work_package project],
+                     permissible_on: %i[project],
                      require: :loggedin,
-                     dependencies: %i[view_work_packages view_comments_with_restricted_visibility],
+                     dependencies: %i[view_project view_comments_with_restricted_visibility],
                      visible: -> { OpenProject::FeatureDecisions.comments_with_restricted_visibility_active? }
 
       # WP attachments can be added with :edit_work_packages, this permission allows it without Edit WP as well.
