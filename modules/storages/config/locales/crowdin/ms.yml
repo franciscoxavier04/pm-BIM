@@ -2,13 +2,13 @@ ms:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID pelanggan
+        client_secret: Rahsia pelanggan
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Penyimpanan
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,7 +16,7 @@ ms:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Folder projek
         project_folder_mode: Project folder mode
         storage: Penyimpanan
         storage_url: Storage URL
@@ -215,7 +215,7 @@ ms:
         manual_management_description: Ciptakan dan uruskan folder mengikut projek sendiri secara manual. Anda perlu memastikan pengguna-pengguna berkaitan mempunyai akses secara manual.
         setup_incomplete: Pilih jenis pengurusan akses pengguna dan penciptaan folder.
         subtitle: Pengurusan akses
-      access_management_section: Access and project folders
+      access_management_section: Akses dan folder projek
       automatically_managed_folders: Folder yang dikendalikan secara automatik
       general_information: Maklumat umum
       oauth_configuration: OAuth configuration

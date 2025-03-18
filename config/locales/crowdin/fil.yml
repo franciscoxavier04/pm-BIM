@@ -218,7 +218,7 @@ fil:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Para sa lahat ng mga proyekto
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ fil:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Magulang"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -599,14 +599,14 @@ fil:
       no_results_content_text: Gumawa ng bagong uri
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Form kompigurasyon"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Mga proyekto"
+        enabled_projects: "Paganahin ang mga proyekto"
       settings:
-        tab: "Settings"
+        tab: "Mga setting"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -669,8 +669,8 @@ fil:
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Ang mga bata"
+        dates: "Mga petsa"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -738,10 +738,10 @@ fil:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "nauugnay sa"
+      label_relates_plural: "nauugnay sa"
+      label_relates_to_singular: "nauugnay sa"
+      label_relates_to_plural: "nauugnay sa"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -757,42 +757,42 @@ fil:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "mga hinarang"
+      label_blocks_plural: "mga hinarang"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "hinarangan ni"
+      label_blocked_plural: "hinarangan ni"
+      label_blocked_by_singular: "hinarangan ni"
+      label_blocked__by_plural: "hinarangan ni"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "mga ginaya"
+      label_duplicates_plural: "mga ginaya"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "ginaya sa pamamagitan ng"
+      label_duplicated_plural: "ginaya sa pamamagitan ng"
+      label_duplicated_by_singular: "ginaya sa pamamagitan ng"
+      label_duplicated_by_plural: "ginaya sa pamamagitan ng"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "kasama ang mga"
+      label_includes_plural: "kasama ang mga"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "bahagi ng"
+      label_partof_plural: "bahagi ng"
+      label_part_of_singular: "bahagi ng"
+      label_part_of_plural: "bahagi ng"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "kinakailangan"
+      label_requires_plural: "kinakailangan"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Ang kaugnayan sa pakete na ginagawa"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Imbitasyon
   account:
@@ -855,7 +855,7 @@ fil:
         editable: "Pwedeng mabago"
         field_format: "Format"
         is_filter: "Gamitin bilang tagasala"
-        is_for_all: "For all projects"
+        is_for_all: "Para sa lahat ng mga proyekto"
         is_required: "Kinakailangan"
         max_length: "Ang pinaka mahaba"
         min_length: "Ang pinaka mababang sukat ng haba"
@@ -872,7 +872,7 @@ fil:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktibo"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -900,7 +900,7 @@ fil:
         attr_login: "Username attribute"
         attr_mail: "Ang katangian ng Email"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Tagapangasiwa"
         base_dn: "Ang Base DN"
         host: "Host"
         onthefly: "Automatic user creation"
@@ -918,7 +918,7 @@ fil:
           true: "unarchived"
           false: "naka-archive"
         description: "Deskripsyon"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Pinagana ang mga modyul"
         identifier: "Ang pagkakakilanlan"
         latest_activity_at: "Pinakamabagong aktibidad sa"
         parent: "Ang kahaliling proyekto ng"
@@ -949,11 +949,11 @@ fil:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Pangalan"
+        color: "Kulay"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Mga hanay"
         column_names: "Mga hanay"
         relations_to_type_column: "Mga relasyon sa %{type}"
         relations_of_type_column: "%{type} na mga relasyon"
@@ -974,17 +974,17 @@ fil:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "Mga resulta"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Ang kaugnayan sa pakete na ginagawa"
         to: "Ang kaugnayan sa pakete na ginagawa"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Petsa"
+        remind_at_time: "Oras"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -997,7 +997,7 @@ fil:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalendaryo"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktibidad"
@@ -1016,7 +1016,7 @@ fil:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Gumagamit"
       user:
         admin: "Tagapangasiwa"
         auth_source: "Authentication source"
@@ -1027,8 +1027,8 @@ fil:
         language: "Linggwahe"
         last_login_on: "Huling nag login"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Unang pangalan"
+        last_name: "Huling pangalan"
         first_login: "First login"
         new_password: "Bagong password"
         password_confirmation: "Kompirmasyon"
@@ -1453,7 +1453,7 @@ fil:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Dapat naglalaman ng mga karakter ng sumusunod na klase ( kahit na %{min_count} ng %{all_count}):%{rules}"
               lowercase: "lowercase (e.g. 'a')"
               uppercase: "uppercase (e.g 'A')"
               numeric: "numeric (e.g.'1')"
@@ -1503,7 +1503,7 @@ fil:
       global_role: "Global role"
       group: "Grupo"
       issue_priority:
-        one: "Priority"
+        one: "Ang prayoridad"
         other: "Priorities"
       member: "Miyembro"
       news: "Mga balita"
@@ -1524,7 +1524,7 @@ fil:
         other: "Mga tungkulin"
       status: "Estado ng pakete ng gumagawa"
       token/api:
-        one: Access token
+        one: I-access ang token
         other: Access tokens
       type: "Uri"
       user: "Gumagamit"
@@ -1584,7 +1584,7 @@ fil:
     assignee: "Naitalaga"
     attachments: "Mga kalakip"
     actor: "Actor"
-    action: "Action"
+    action: "Aksyon"
     author: "May-akda"
     avatar: "Avatar"
     base: "Pangkalahatang Mali:"
@@ -1597,11 +1597,11 @@ fil:
     color: "Kulay"
     creator: "Creator"
     created_at: "Nilikha sa"
-    custom_field: "Custom field"
+    custom_field: "Pasadyang patlang"
     custom_options: "Ang mga posibleng halaga"
     custom_values: "Mga pasadyang patlang"
     date: "Petsa"
-    dates_interval: "Date range"
+    dates_interval: "Haba ng petsa"
     default_columns: "I-default ang mga hanay"
     description: "Deskripsyon"
     derived_due_date: "Derived finish date"
@@ -1616,7 +1616,7 @@ fil:
     entity_type: "Entity"
     expires_at: "Matapos sa"
     firstname: "Unang pangalan"
-    filter: "Filter"
+    filter: "Salain"
     group: "Grupo"
     groups: "Mga grupo"
     hexcode: "Hex code"
@@ -1627,17 +1627,17 @@ fil:
     principal: "User or group"
     #kept for backwards compatibility
     issue: "Work package"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "Talaarawan"
+    journal_notes: "Komento"
     lastname: "Huling pangalan"
     login: "Username"
     lock_version: "Lock version"
     mail: "Email"
     name: "Pangalan"
-    note: "Note"
-    notes: "Notes"
+    note: "Talaan"
+    notes: "Ang mga tala"
     number: "Number"
-    options: "Options"
+    options: "Mga opsyon"
     operator: "Operator"
     password: "Password"
     priority: "Ang prayoridad"
@@ -1645,11 +1645,11 @@ fil:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "Kinakailangan"
     recipient: "Recipient"
     role: "Tungkulin"
     roles: "Ang mga tungkulin"
-    search: "Search"
+    search: "Hanapin"
     start_date: "Petsa ng pagsimula"
     status: "Estado"
     state: "State"
@@ -1657,7 +1657,7 @@ fil:
     slug: "Slug"
     summary: "Buod"
     time_zone: "Time zone"
-    text: "Text"
+    text: "Teksto"
     title: "Pamagat"
     type: "Uri"
     typeahead: "Autocomplete"
@@ -1670,7 +1670,7 @@ fil:
     value: "Halaga"
     values: "Values"
     version: "Bersyon"
-    visible: "Visible"
+    visible: "Nakikita"
     work_package: "Work package"
     work_package_id: "Work package"
   backup:
@@ -1937,7 +1937,7 @@ fil:
         other: "mga oras"
       day:
         one: "day"
-        other: "days"
+        other: "mga araw"
   description_active: "Aktibo?"
   description_attachment_toggle: "Ipakita/Itagi ang mga paglalakip"
   description_autocomplete: >
@@ -1972,7 +1972,7 @@ fil:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Karagdagang impornasyon"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2060,8 +2060,8 @@ fil:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "I-export"
+      submit: "I-export"
       format:
         label: "File format"
         options:
@@ -2084,10 +2084,10 @@ fil:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Ulat"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Gantt tsart"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2096,10 +2096,10 @@ fil:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Mga araw"
+            weeks: "Mga linggo"
+            months: "Mga buwan"
+            quarters: "Mga quarter"
         column_width:
           label: "Table column width"
           options:
@@ -2154,7 +2154,7 @@ fil:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: I-download
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2487,7 +2487,7 @@ fil:
   label_default: "Default"
   label_delete_user: "Burahin ang gumagamit"
   label_delete_project: "Burahin ang proyekto"
-  label_delete: "Delete"
+  label_delete: "Burahin"
   label_deleted: "binura"
   label_deleted_custom_field: "(binurang custom field)"
   label_deleted_custom_item: "(deleted item)"
@@ -2605,7 +2605,7 @@ fil:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Ipakita lahay ang mga nakarehistrong gumagamit"
-  label_show_less: "Show less"
+  label_show_less: "Magpakita ng mas kaunti"
   label_show_more: "Show more"
   label_journal: "Talaarawan"
   label_journal_diff: "Paglalarawan ng paghahambing"
@@ -2677,8 +2677,8 @@ fil:
   label_months_from: "mga buwan mula sa"
   label_more: "Iba pa"
   label_more_than_ago: "mahigit sa araw nakalipas"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Ilipat ang hanay sa kaliwa"
+  label_move_column_right: "Ilipat ang hanay sa kanan"
   label_move_work_package: "Ilipat ang work package"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2703,7 +2703,7 @@ fil:
   label_no_change_option: "( Walang pagbago)"
   label_no_data: "Walang data upang ipakita"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "walang simulang petsa"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Walang maipakita"
   label_nobody: "walang sinuman"
@@ -2771,7 +2771,7 @@ fil:
   label_project_latest: "Pinakamabagong proyekto"
   label_project_default_type: "Payagan ang walang laman uri"
   label_project_hierarchy: "Proyektong hierarchy"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Mga proyekto"
   label_project_new: "Bagong proyekto"
   label_project_plural: "Mga proyekto"
   label_project_list_plural: "Project lists"
@@ -2849,10 +2849,10 @@ fil:
   label_show_completed_versions: "Ipakita ang mga kompletong bersyon"
   label_columns: "Mga hanay"
   label_sort: "Ayusin"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Ayusin pataas"
   label_sort_by: "Ayusin sa %{value}"
   label_sorted_by: "inayos sa %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Ayusin pababa"
   label_sort_higher: "Lumipat pataas"
   label_sort_highest: "Ilipat sa ibabaw"
   label_sort_lower: "Ilipat sa ibaba"
@@ -2881,7 +2881,7 @@ fil:
   label_this_month: "ngayong buwan"
   label_this_week: "ngayong semana"
   label_this_year: "ngayong taon"
-  label_time: "Time"
+  label_time: "Oras"
   label_time_entry_plural: "Nauubos na oras"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Pamagat"
@@ -3383,8 +3383,8 @@ fil:
       archived: "Archived"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "Isang proyekto"
+      other: "%{count} mga proyekto"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3536,8 +3536,8 @@ fil:
     warnings:
       cannot_annotate: "Ang file na ito ay hindi naka-annotate."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Hanapin ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3774,7 +3774,7 @@ fil:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Magdagdag"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -3804,6 +3804,11 @@ fil:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
@@ -4084,7 +4089,7 @@ fil:
       view: "Tingnan"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Petsa"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

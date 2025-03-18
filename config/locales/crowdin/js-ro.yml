@@ -357,10 +357,10 @@ ro:
           learn_about: "Aflați mai multe despre noile caracteristici"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                Versiunea aduce diverse caracteristici și îmbunătățiri pentru dvs., de exemplu: <br> <ul class="%{list_styling_class}"> <li>Programați ședințe recurente pentru a vă eficientiza programările săptămânale, bisăptămânale sau personalizate.</li> <li>Creați pachete de lucru pentru copii direct din fila Relații.</li> <li>Include sumele totale în dosare PDF pentru informații mai bune.</li> <li>Include pachetele de lucru pentru copii în rapoartele de costuri pentru o urmărire mai precisă.</li> <li>Vezi datele unor relaţii anterior ascunse, restricţionate permisiunile pentru a lua decizii de planificare în cunoştinţă de cauză.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -613,7 +613,7 @@ ro:
         assigned: "Executant"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "Responsabil"
         created: "Creat pe"
         scheduled: "Planificat"
         commented: "Cu comentarii"
@@ -735,17 +735,17 @@ ro:
       settings:
         daily:
           add_time: "Adaugă timp"
-          enable: "Activează memento-urile zilnice prin e-mail"
-          explanation: "Veţi primi aceste memento-uri numai pentru notificările necitite şi numai la câteva ore specificate. %{no_time_zone}"
+          enable: "Activează reamintirile zilnice prin e-mail"
+          explanation: "Vei primi aceste reamintiri numai pentru notificările necitite și numai la câteva ore specificate. %{no_time_zone}"
           no_time_zone: "Până când configurezi un fus orar pentru contul tău, orele vor fi interpretate ca fiind în UTC."
           time_label: "Timp %{counter}:"
-          title: "Trimite-mi memento-uri zilnice prin e-mail pentru notificări necitite"
+          title: "Trimite-mi reamintiri zilnice prin e-mail pentru notificările necitite"
         workdays:
-          title: "Primiți memento-uri prin e-mail în aceste zile"
+          title: "Primește reamintiri prin e-mail în aceste zile"
         immediate:
           title: "Trimiteți-mi un e-mail de reamintire"
           mentioned: "Imediat când cineva mă @menționează"
-          personal_reminder: "Immediately when I receive a personal reminder"
+          personal_reminder: "Imediat când primesc reamintiri personale"
         alerts:
           title: "Alerte prin e-mail pentru alte elemente (care nu sunt pachete de lucru)"
           explanation: >
@@ -758,9 +758,9 @@ ro:
           wiki_page_updated: "Pagină wiki actualizată"
           membership_added: "Adaugă membri"
           membership_updated: "Membrii actualizați"
-        title: "E-mail memento-uri"
+        title: "Reamintiri e-mail"
         pause:
-          label: "Întrerupeți temporar memento-urile zilnice prin e-mail"
+          label: "Întrerupe temporar reamintirile zilnice prin e-mail"
           first_day: "Prima zi"
           last_day: "Ultima zi"
     text_are_you_sure: "Sunteți sigur?"
@@ -975,7 +975,7 @@ ro:
         percentageDone: "Procent realizat"
         priority: "Prioritate"
         projectName: "Proiect"
-        remainingWork: "Remaining work"
+        remainingWork: "Muncă rămasă"
         remainingWorkAlternative: "Ore"
         responsible: "Responsabil"
         startDate: "Dată început"
@@ -987,9 +987,9 @@ ro:
         updatedAt: "Actualizat pe"
         versionName: "Versiune"
         version: "Versiune"
-        work: "Work"
+        work: "Muncă"
         workAlternative: "Durata estimată"
-        remainingTime: "Remaining work"
+        remainingTime: "Muncă rămasă"
       default_queries:
         manually_sorted: "Interogare nouă sortată manual"
         latest_activity: "Activitate recentă"

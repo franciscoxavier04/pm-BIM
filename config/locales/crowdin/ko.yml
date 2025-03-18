@@ -128,9 +128,9 @@ ko:
     sync_failed: "LDAP에서 동기화하지 못했습니다: %{message}."
     back_to_index: "연결 목록으로 돌아가려면 여기를 클릭하세요."
     technical_warning_html: |
-      This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
+      이 LDAP 양식에는 LDAP/Active Directory 설정에 대한 기술적 지식이 필요합니다.
       <br>
-      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
+      <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">자세한 지침은 설명서를 참조하세요</a>.
     attribute_texts:
       name: LDAP 연결의 임의 이름
       host: LDAP 호스트 이름 또는 IP 주소
@@ -138,9 +138,9 @@ ko:
       generic_map: OpenProject `%{attribute}` 특성에 매핑되는 LDAP의 특성 키
       admin_map_html: "선택 사항: <strong>있는 경우</strong> LDAP의 속성 키는 OpenProject 사용자를 관리자로 표시합니다. 확실하지 않은 경우 비워 두세요."
       system_user_dn_html: |
-        Enter the DN of the system user used for read-only access.
+        읽기 전용 액세스에 사용되는 시스템 사용자의 DN을 입력하세요.
         <br>
-        Example: uid=openproject,ou=system,dc=example,dc=com
+        예: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: 시스템 사용자의 바인딩 암호 입력
       base_dn: |
         OpenProject가 사용자 및 그룹을 검색할 LDAP 하위 트리의 기본 DN을 입력하세요.
@@ -179,7 +179,7 @@ ko:
     tls_options:
       verify_peer: "SSL 인증서 확인"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        인증서 신뢰 체인의 엄격한 SSL 인증을 활성화합니다. <br> <strong>경고:</strong> 이 옵션을 선택 취소하면 LDAP 서버 인증서의 SSL 인증이 비활성화됩니다. 이렇게 하면 사용자의 연결이 중간자 공격에 노출됩니다.
       tls_certificate_description: "LDAP 서버 인증서가 이 시스템의 신뢰 소스에 없으면 여기에서 수동으로 추가할 수 있습니다. PEM X509 인증서 문자열을 입력하세요."
   forums:
     show:
@@ -346,7 +346,7 @@ ko:
         placeholder: "새 프로젝트 목록"
       delete_modal:
         title: "프로젝트 목록 삭제"
-        heading: "Delete this project list?"
+        heading: "이 프로젝트 목록을 삭제하시겠습니까?"
         text: "이 작업을 수행해도 목록에 포함된 프로젝트는 삭제되지 않습니다. 이 프로젝트 목록을 삭제하시겠습니까?"
     settings:
       change_identifier: 식별자 변경
@@ -396,7 +396,7 @@ ko:
       storage:
         no_results_title_text: 이 프로젝트에서 사용하는 추가 기록 디스크 공간이 없습니다.
       work_package_priorities:
-        new_label: "New priority"
+        new_label: "새로운 우선 순위"
   project_stage:
     working_days_count:
       other: "기간: 근무일 %{count}일"
@@ -569,10 +569,10 @@ ko:
         패키지의 완료 %가 자동으로 이 값으로 설정됩니다.
         작업 기반 모드에서는 무시됩니다.
       status_readonly_html: |
-        Check this option to mark work packages with this status as read-only.
-        No attributes can be changed with the exception of the status.
+        이 상태를 읽기 전용으로 작업 패키지에 표시하려면 이 옵션을 선택합니다.
+        상태를 제외하고 특성은 변경할 수 없습니다.
         <br>
-        <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
+        <strong>참고</strong>: 상속된 값(예: 자식 또는 관계의 값)은 계속 적용됩니다.
     index:
       no_results_title_text: 작업 패키지 상태가 없습니다.
       no_results_content_text: 새 상태 추가
@@ -611,15 +611,15 @@ ko:
         pattern:
           label: "제목 패턴"
           caption: "특성을 검색하거나 텍스트를 추가하세요. 요소 사이에 공백을 넣으려면 텍스트로 추가하세요."
-          insert_as_text: "Add as text: \"%{word}\""
+          insert_as_text: "텍스트로 추가: \"%{word}\""
       export_configuration:
-        tab: "Generate PDF"
-        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        tab: "PDF 생성"
+        intro: "사용 가능한 템플릿 중에서 이 유형에 대해 활성화하려는 템플릿을 선택하세요. 템플릿은 이 유형을 사용하여 작업 패키지의 내보낸 PDF에서 표시되는 디자인과 특성을 결정합니다. 목록의 첫 번째 템플릿이 기본적으로 선택됩니다."
         pdf_export_templates:
-          label: "PDF Export templates"
+          label: "PDF 내보내기 템플릿"
           actions:
-            label_enable_all: "Enable all"
-            label_disable_all: "Disable all"
+            label_enable_all: "모두 활성화"
+            label_disable_all: "모두 비활성화"
   versions:
     overview:
       work_packages_in_archived_projects: "해당 버전은 이 버전에 할당된 작업 패키지가 아직 있는 보관된 프로젝트와 공유됩니다. 이러한 버전은 카운트되지만, 링크된 보기에 나타나지는 않습니다."
@@ -637,44 +637,44 @@ ko:
     datepicker_modal:
       banner:
         description:
-          automatic_mobile: "Start date derived."
-          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
-          manual_mobile: "Ignoring relations."
-          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
-          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
-          manual_with_children: "This has child work packages but their start dates are ignored."
+          automatic_mobile: "시작 날짜가 파생되었습니다."
+          click_on_show_relations_to_open_gantt: 'Gantt 개요를 보려면 "%{button_name}" 클릭을 하세요.'
+          manual_mobile: "관계를 무시합니다."
+          manual_gap_between_predecessors: "이것과 모든 선행 단계 사이에 간격이 있습니다."
+          manual_overlap_with_predecessors: "하나 이상의 선행 단계와 중복됩니다."
+          manual_with_children: "자식 작업 패키지가 있지만 시작 날짜는 무시됩니다."
         title:
-          automatic_mobile: "Automatically scheduled."
-          automatic_with_children: "The dates are determined by child work packages."
-          automatic_with_predecessor: "The start date is set by a predecessor."
-          manual_mobile: "Manually scheduled."
-          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+          automatic_mobile: "자동으로 스케줄링됩니다."
+          automatic_with_children: "날짜는 자식 작업 패키지에 의해 결정됩니다."
+          automatic_with_predecessor: "시작 날짜는 선행 단계에 의해 설정됩니다."
+          manual_mobile: "수동으로 스케줄링됩니다."
+          manually_scheduled: "수동으로 스케줄링됩니다. 날짜는 관계에 의해 영향을 받지 않습니다."
       blankslate:
-        title: "No predecessors"
-        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+        title: "선행 단계 없음"
+        description: "자동 스케줄링을 활성화하려면 이 작업 패키지에 하나 이상의 선행 단계가 있어야 합니다. 그러면 가장 가까운 선행 단계 후에 시작되도록 자동으로 스케줄링됩니다."
       ignore_non_working_days:
-        title: "Working days only"
+        title: "근무일만"
       mode:
-        title: "Scheduling mode"
-        automatic: "Automatic"
-        manual: "Manual"
-      show_relations: "Show relations"
+        title: "스케줄링 모드"
+        automatic: "자동"
+        manual: "수동"
+      show_relations: "관계 표시"
       tabs:
-        aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
-        predecessors: "Predecessors"
-        successors: "Successors"
+        aria_label: "날짜 선택기 탭"
+        children: "하위"
+        dates: "날짜"
+        predecessors: "선행 단계"
+        successors: "후속 단계"
         blankslate:
           predecessors:
-            title: "No predecessors"
-            description: "This work package does not have any predecessors."
+            title: "선행 단계 없음"
+            description: "이 작업 패키지에는 선행 단계가 없습니다."
           successors:
-            title: "No successors"
-            description: "This work package does not have any successors."
+            title: "후속 단계 없음"
+            description: "이 작업 패키지에는 후속 단계가 없습니다."
           children:
-            title: "No children"
-            description: "This work package does not have any children."
+            title: "자식 없음"
+            description: "이 작업 패키지에는 자식이 없습니다."
     x_descendants:
       other: "%{count}개 작업 패키지 하위 항목"
     bulk:
@@ -738,8 +738,8 @@ ko:
       label_precedes_singular: "후임자(이후)"
       label_precedes_plural: "후임자(이후)"
       precedes_description: "관련 작업 패키지는 반드시 이 패키지가 완료된 후에 시작되어야 합니다"
-      label_follows_singular: "전임자(이전)"
-      label_follows_plural: "전임자(이전)"
+      label_follows_singular: "선행 단계(이전)"
+      label_follows_plural: "선행 단계(이전)"
       follows_description: "이 패키지를 시작하려면 관련 작업 패키지가 반드시 먼저 완료되어야 합니다"
       label_child_singular: "자식"
       label_child_plural: "자식"
@@ -747,7 +747,7 @@ ko:
       new_child_text: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
       existing_child: "기존 자식"
       child_description: "관련 작업 패키지를 현재(부모) 작업 패키지의 하위 항목으로 만듭니다"
-      label_closest: "Closest"
+      label_closest: "가장 가까운 대상"
       label_blocks_singular: "블록"
       label_blocks_plural: "블록"
       blocks_description: "이 패키지가 먼저 종료될 때까지 관련 작업 패키지를 종료할 수 없습니다"
@@ -824,7 +824,7 @@ ko:
       attachment:
         attachment_content: "첨부 파일 콘텐츠"
         attachment_file_name: "첨부 파일 이름"
-        content_type: "Content-type"
+        content_type: "콘텐츠 유형"
         downloads: "다운로드"
         file: "파일"
         filename: "파일"
@@ -833,7 +833,7 @@ ko:
         attribute_name: "특성"
         help_text: "도움말 텍스트"
       capability:
-        context: "Context"
+        context: "컨텍스트"
       changeset:
         repository: "리포지토리"
       comment:
@@ -869,9 +869,9 @@ ko:
         scopes: "범위"
         confidential: "기밀"
       emoji_reaction:
-        reactable: "Reacted on"
+        reactable: "반응"
       enterprise_token:
-        domain: "Domain"
+        domain: "도메인"
         starts_at: "이후로 유효함"
         subscriber: "구독자"
         encoded_token: "엔터프라이즈 지원 토큰"
@@ -883,7 +883,7 @@ ko:
         widgets: "위젯"
       journal:
         notes: "노트"
-        cause_type: "Cause type"
+        cause_type: "원인 유형"
       ldap_auth_source:
         account: "계정"
         attr_firstname: "이름 특성"
@@ -900,8 +900,8 @@ ko:
       member:
         roles: "역할"
       notification:
-        read_ian: "Read in-app"
-        resource: "Resource"
+        read_ian: "인앱 읽기"
+        resource: "리소스"
       oauth_client:
         client: "클라이언트 ID"
       project:
@@ -909,7 +909,7 @@ ko:
           true: "보관 취소됨"
           false: "보관됨"
         description: "설명"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "사용 가능한 모듈"
         identifier: "식별자"
         latest_activity_at: "다음의 최근 활동"
         parent: "하위 프로젝트"
@@ -938,46 +938,46 @@ ko:
         is_required: "모든 프로젝트에 필수"
         custom_field_section: 섹션
       project/life_cycle_step:
-        definition: "Definition"
+        definition: "정의"
       project/life_cycle_step_definition:
         name: "이름"
         color: "색상"
       query:
-        sums: "Sums"
-        columns: "Columns"
+        sums: "합계"
+        columns: "컬럼"
         column_names: "컬럼"
         relations_to_type_column: "%{type}에 대한 관계"
         relations_of_type_column: "%{type} 관계"
         group_by: "그룹 결과"
-        sort_by: "Sort results by"
+        sort_by: "결과 정렬 기준"
         filters: "필터"
         timeline_labels: "타임라인 레이블"
-        timeline_visible: "Show Gantt chart"
-        timeline_zoom_level: "Gantt chart zoom level"
-        timestamps: "Baseline timestamps"
-        sort_criteria: "Sort criteria"
-        highlighted_attributes: "Highlighted attributes"
-        highlighting_mode: "Highlight mode"
-        display_representation: "Display mode"
-        show_hierarchies: "Display mode"
-        starred: "Favorite"
-        hidden: "Hidden"
-        manual_sorting: "Manual sort order"
-        ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        timeline_visible: "Gantt 차트 표시"
+        timeline_zoom_level: "Gantt 차트 확대/축소 수준"
+        timestamps: "기준선 타임스탬프"
+        sort_criteria: "정렬 기준"
+        highlighted_attributes: "강조 표시된 특성"
+        highlighting_mode: "강조 표시 모드"
+        display_representation: "표시 모드"
+        show_hierarchies: "표시 모드"
+        starred: "즐겨찾기"
+        hidden: "숨김"
+        manual_sorting: "수동 정렬 순서"
+        ordered_work_packages: "작업 패키지 순서"
+        include_subprojects: "하위 프로젝트 포함"
+        results: "결과"
       relation:
         lag: "지연"
         from: "관련 작업 패키지"
         to: "관련 패키지"
-        relation_type: "Relation type"
+        relation_type: "관계 유형"
       reminder:
-        remindable: "Reminded object"
-        remind_at: "Remind at"
+        remindable: "미리 알림 개체"
+        remind_at: "미리 알림:"
         remind_at_date: "날짜"
         remind_at_time: "시간"
       reminder_notification:
-        notification: "Notification"
+        notification: "알림"
       repository:
         url: "주소"
       role:
@@ -988,8 +988,8 @@ ko:
         excluded_from_totals: "계층의 합계 계산에서 제외"
         default_done_ratio: "완료 %"
       token/ical:
-        calendar: "Calendar"
-        ical_token_query_assignment: "Query assignment"
+        calendar: "달력"
+        ical_token_query_assignment: "쿼리 할당"
       time_entry:
         activity: "활동"
         hours: "시간"
@@ -1003,11 +1003,11 @@ ko:
         is_default: "새 프로젝트에 대해 기본적으로 활성화됨"
         is_milestone: "마일스톤"
         color: "색상"
-        patterns: "Patterns"
+        patterns: "패턴"
       remote_identity:
-        auth_source: "Auth Source"
-        integration: "Integration"
-        user: "User"
+        auth_source: "인증 소스"
+        integration: "통합"
+        user: "사용자"
       user:
         admin: "관리자"
         auth_source: "인증 소스"
@@ -1017,10 +1017,10 @@ ko:
         force_password_change: "다음 로그인 암호 변경 적용"
         language: "언어"
         last_login_on: "최종 로그인"
-        failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
-        first_login: "First login"
+        failed_login_count: "로그인 시도 실패"
+        first_name: "이름"
+        last_name: "성"
+        first_login: "첫 로그인"
         new_password: "새로운 비밀번호"
         password_confirmation: "확인"
         consented_at: "동의함:"
@@ -1030,10 +1030,10 @@ ko:
         auto_hide_popups: "자동 숨김 성공 알림"
         warn_on_leaving_unsaved: "저장하지 않고 작업 패키지를 벗어날 때 알려주세요."
         theme: "모드"
-        time_zone: "Time zone"
+        time_zone: "표준 시간대"
         mode_guideline: "일부 모드는 접근성과 가독성을 위해 사용자 지정 테마 색상을 덮어씁니다. 전체 사용자 지정 테마의 경우 라이트 모드를 선택하세요."
-        daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        daily_reminders: "일일 미리 알림"
+        workdays: "근무일"
       version:
         effective_date: "완료 날짜"
         sharing: "공유"
@@ -1374,8 +1374,8 @@ ko:
           attributes:
             id:
               format: "%{message}"
-              cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
-              blank: "ID can't be blank."
+              cannot_add_child_because_of_lack_of_permission: "선택한 작업 패키지를 편집할 권한이 없으므로 자식을 추가할 수 없습니다."
+              blank: "ID는 비워둘 수 없습니다."
             assigned_to:
               format: "%{message}"
             done_ratio:
@@ -1392,7 +1392,7 @@ ko:
               smaller_than_dates: "시작 날짜와 완료 날짜 사이의 간격보다 작습니다."
               not_available_for_milestones: "마일스톤 유형 작업 패키지에 사용할 수 없습니다."
               cannot_be_null: "시작 날짜와 완료 날짜를 알고 있으므로 null로 설정할 수 없습니다."
-              not_an_integer: "is not a valid duration."
+              not_an_integer: "- 유효한 기간이 아닙니다."
             parent:
               cannot_be_milestone: "마일스톤에 포함될 수 없음"
               cannot_be_self_assigned: "- 자신에게 할당할 수 없습니다."
@@ -1434,7 +1434,7 @@ ko:
               query_invalid: "포함된 쿼리 '%{group}'이(가) 잘못되었습니다. %{details}"
               group_without_name: "명명되지 않은 그룹은 허용되지 않습니다."
             patterns:
-              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
+              invalid_tokens: "필드 내의 특성이 하나 이상의 유효하지 않습니다. 특성을 수정한 후에 저장하세요."
         user:
           attributes:
             base:
@@ -1492,7 +1492,7 @@ ko:
       global_role: "글로벌 역할"
       group: "그룹"
       issue_priority:
-        other: "Priorities"
+        other: "우선 순위"
       member: "멤버"
       news: "뉴스"
       notification:
@@ -1504,7 +1504,7 @@ ko:
       project_query:
         other: "프로젝트 목록"
       query: "사용자 지정 쿼리"
-      reminder: "Reminder"
+      reminder: "미리 알림"
       role:
         other: "역할"
       status: "작업 패키지 상태"
@@ -1563,96 +1563,96 @@ ko:
     assigned_to: "담당자"
     assignee: "담당자"
     attachments: "첨부 파일"
-    actor: "Actor"
-    action: "Action"
+    actor: "수행자"
+    action: "액션"
     author: "작성자"
-    avatar: "Avatar"
+    avatar: "아바타"
     base: "일반 오류:"
-    body: "Body"
+    body: "본문"
     blocks_ids: "차단 된 작업 패키지의 ID"
     category: "카테고리"
     comment: "코멘트"
     comments: "코멘트"
     content: "내용"
     color: "색상"
-    creator: "Creator"
+    creator: "만든이"
     created_at: "작성일"
-    custom_field: "Custom field"
+    custom_field: "사용자 정의 필드"
     custom_options: "가능한 값"
     custom_values: "사용자 정의 필드"
     date: "날짜"
-    dates_interval: "Date range"
+    dates_interval: "날짜 범위"
     default_columns: "기본 칼럼"
     description: "설명"
     derived_due_date: "파생된 완료 날짜"
     derived_estimated_hours: "총 작업"
     derived_start_date: "파생된 시작 날짜"
-    direction: "Direction"
+    direction: "방향"
     display_sums: "합계 표시"
     due_date: "완료 날짜"
     estimated_hours: "작업"
     estimated_time: "작업"
-    email: "Email"
-    entity_type: "Entity"
+    email: "이메일"
+    entity_type: "엔티티"
     expires_at: "에서 만료됨"
     firstname: "이름"
-    filter: "Filter"
+    filter: "필터"
     group: "그룹"
     groups: "그룹"
-    hexcode: "Hex code"
+    hexcode: "16진수 코드"
     id: "ID"
     is_default: "기본값"
     is_for_all: "모든 프로젝트용"
     public: "공용"
-    principal: "User or group"
+    principal: "사용자 또는 그룹"
     #kept for backwards compatibility
     issue: "작업 패키지"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "기록일지"
+    journal_notes: "코멘트"
     lastname: "성"
     login: "사용자 이름"
-    lock_version: "Lock version"
+    lock_version: "버전 잠금"
     mail: "이메일"
     name: "이름"
     note: "메모"
-    notes: "Notes"
-    number: "Number"
-    options: "Options"
-    operator: "Operator"
+    notes: "노트"
+    number: "숫자"
+    options: "옵션"
+    operator: "연산자"
     password: "암호"
     priority: "우선 순위"
     project: "프로젝트"
-    project_ids: "Project IDs"
-    reason: "Reason"
+    project_ids: "프로젝트 ID"
+    reason: "이유"
     responsible: "담당"
-    required: "Required"
-    recipient: "Recipient"
+    required: "필수"
+    recipient: "수신자"
     role: "역할"
     roles: "역할"
-    search: "Search"
+    search: "검색"
     start_date: "시작 날짜"
     status: "상태"
-    state: "State"
+    state: "상태"
     subject: "제목"
-    slug: "Slug"
+    slug: "슬러그"
     summary: "요약"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "표준 시간대"
+    text: "텍스트"
     title: "제목"
     type: "타입"
-    typeahead: "Autocomplete"
+    typeahead: "자동 완성"
     updated_at: "업데이트 날짜"
     updated_on: "업데이트 날짜"
     uploader: "업로더"
     user: "사용자"
-    username: "Username"
-    unit: "Unit"
+    username: "사용자 이름"
+    unit: "단위"
     value: "값"
-    values: "Values"
+    values: "값"
     version: "버전"
-    visible: "Visible"
+    visible: "표시"
     work_package: "작업 패키지"
-    work_package_id: "Work package"
+    work_package_id: "작업 패키지"
   backup:
     failed: "백업 실패"
     label_backup_token: "백업 토큰"
@@ -1945,8 +1945,8 @@ ko:
   enumeration_activities: "시간 추적 활동"
   enumeration_work_package_priorities: "작업 패키지 우선 순위"
   enumeration_reported_project_statuses: "보고된 프로젝트 상태"
-  enumeration_caption_order_changed: "Order successfully changed."
-  enumeration_could_not_be_moved: "Enumeration could not be moved."
+  enumeration_caption_order_changed: "주문이 변경되었습니다."
+  enumeration_could_not_be_moved: "열거형은 이동할 수 없습니다."
   error_auth_source_sso_failed: "사용자 '%{value}'에 대한 Single Sign-On(SSO) 실패"
   error_can_not_archive_project: "이 프로젝트는 보관할 수 없습니다: %{errors}"
   error_can_not_delete_entry: "항목을 삭제할 수 없습니다."
@@ -2036,7 +2036,7 @@ ko:
         input_label_report: "특성 테이블에 열 추가"
         input_caption_report: "기본적으로 작업 패키지 목록에 열로 추가된 모든 특성이 선택되어 있습니다. 긴 텍스트 필드는 특성 테이블에서 사용할 수 없지만 그 아래에 표시될 수 있습니다."
         input_caption_table: "기본적으로 작업 패키지 목록에 열로 추가된 모든 특성이 선택되어 있습니다. 긴 텍스트 필드는 테이블 기반 내보내기에서 사용할 수 없습니다."
-        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
+        input_caption_required: "열이 포함되지 않은 보기는 내보낼 수 없습니다. 하나 이상의 열을 추가하세요."
       pdf:
         export_type:
           label: "PDF 내보내기 유형"
@@ -2108,28 +2108,28 @@ ko:
   pdf_generator:
     page_nr_footer: "%{page}/%{total}페이지"
     template_attributes:
-      label: "Attributes and description"
-      caption: All the attributes present in the current form configuration using the default template.
+      label: "특성 및 설명"
+      caption: 기본 템플릿을 사용하는 현재 양식 구성에 있는 모든 특성입니다.
     template_contract:
-      label: "Contract"
-      caption: Work package details formatted to the standard German contract form.
+      label: "계약"
+      caption: 표준 독일 계약 양식에 맞춰 작성된 작업 패키지 세부 정보입니다.
     dialog:
       title: PDF 생성
-      submit: Download
+      submit: 다운로드
       templates:
-        label: "Template"
-        none_enabled: "No template has been enabled for this work package type"
+        label: "템플릿"
+        none_enabled: "이 작업 패키지 유형에 대해 활성화된 템플릿이 없습니다"
       footer_center:
-        label: Footer text
-        caption: This text will appear on every page at the center of the footer.
+        label: 바닥글 텍스트
+        caption: 이 텍스트는 모든 페이지의 바닥글 가운데에 나타납니다.
       footer_right:
-        label: Footer text
-        caption: This text will appear on every page at the right of the footer.
+        label: 바닥글 텍스트
+        caption: 이 텍스트는 모든 페이지의 바닥글 오른쪽에 나타납니다.
       hyphenation:
         label: 하이픈 넣기
-        caption: Break line between words for better layout and justification.
+        caption: 개선된 레이아웃과 양쪽 맞춤을 위한 단어 사이 줄 바꿈입니다.
       hyphenation_language:
-        label: Language and hyphenation
+        label: 언어 및 하이픈 넣기
   extraction:
     available:
       pdftotext: "Pdftotext 사용 가능(선택적)"
@@ -2186,7 +2186,7 @@ ko:
       total_percent_complete_mode_changed_to_work_weighted_average: "이제 완료 % 합계 계산에는 작업별로 가중치가 적용됩니다."
       total_percent_complete_mode_changed_to_simple_average: "이제 완료 % 합계 계산은 완료 % 값의 단순 평균만을 기반으로 합니다."
     cause_descriptions:
-      work_package_predecessor_changed_times: 이전 %{link}에 대한 변경 사항 기준
+      work_package_predecessor_changed_times: 선행 단계 %{link}에 대한 변경 사항 기준
       work_package_parent_changed_times: 부모 %{link}에 대한 변경 사항 기준
       work_package_children_changed_times: 자식 %{link}에 대한 변경 사항 기준
       work_package_related_changed_times: 관련 %{link}에 대한 변경 사항 기준
@@ -2212,7 +2212,7 @@ ko:
         progress_calculation_adjusted: >-
           진행률 계산은 자동으로 <a href="%{href}" target="_blank">버전 업데이트에 따라 조정됩니다</a>.
         scheduling_mode_adjusted: >-
-          Scheduling mode automatically adjusted with version update.
+          버전 업데이트에 따라 자동으로 조정되는 스케줄링 모드입니다.
         totals_removed_from_childless_work_packages: >-
           <a href="%{href}" target="_blank">버전 업데이트</a>를 통해 부모가 아닌 작업 패키지의 작업 및 진행률 합계가 자동으로 제거됩니다. 유지 관리 작업이므로 무시해도 됩니다.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2457,7 +2457,7 @@ ko:
   label_missing_or_hidden_custom_option: "(값이 없거나 액세스 권한이 없음)"
   label_descending: "내림차순"
   label_details: "세부 정보"
-  label_defaults: "Defaults"
+  label_defaults: "기본값"
   label_development_roadmap: "개발 로드맵"
   label_diff: "차이"
   label_diff_inline: "인라인"
@@ -2514,7 +2514,7 @@ ko:
   label_filter: "필터"
   label_filter_add: "필터 추가"
   label_filter_by: "필터링 기준"
-  label_filter_any_name_attribute: "Name attributes"
+  label_filter_any_name_attribute: "이름 특성"
   label_filter_plural: "필터"
   label_filters_toggle: "필터 표시/숨기기"
   label_float: "부동"
@@ -2794,7 +2794,7 @@ ko:
   label_roadmap_overdue: "%{value} 지연"
   label_role_and_permissions: "역할 및 권한"
   label_role_new: "새 역할"
-  label_role_grantable: "Grantable role"
+  label_role_grantable: "부여 가능한 역할"
   label_role_plural: "역할"
   label_role_search: "새 멤버에게 역할 할당"
   label_scm: "SCM"
@@ -2848,10 +2848,10 @@ ko:
   label_title: "제목"
   label_projects_menu: "프로젝트"
   label_today: "오늘"
-  label_token_version: "Token Version"
-  label_today_as_start_date: "Select today as start date."
-  label_today_as_due_date: "Select today as finish date."
-  label_today_as_date: "Select today as date."
+  label_token_version: "토큰 버전"
+  label_today_as_start_date: "오늘을 시작 날짜로 선택하세요."
+  label_today_as_due_date: "오늘을 완료 날짜로 선택하세요."
+  label_today_as_date: "오늘을 날짜로 선택하세요."
   label_top_menu: "상단 메뉴"
   label_topic_plural: "항목"
   label_total: "합계"
@@ -2964,7 +2964,7 @@ ko:
   label_global_role: "글로벌 역할"
   label_not_changeable: "(변경할 수 없음)"
   label_global: "글로벌"
-  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: 이 레코드는 설정 환경 변수를 통해 생성되었습니다. UI에서 편집할 수 없습니다.
   macro_execution_error: "매크로 %{macro_name} 실행 중에 오류 발생"
   macro_unavailable: "매크로 %{macro_name}은(는) 표시할 수 없습니다."
   macros:
@@ -3352,14 +3352,14 @@ ko:
       subprojects_confirmation: "하위 프로젝트 %{value}도 삭제됩니다."
       title: "프로젝트 %{name} 삭제"
     filters:
-      life_cycle_any: "Lifecycle: Any stage or gate"
-      life_cycle_stage: "Lifecycle stage: %{stage}"
-      life_cycle_gate: "Lifecycle gate: %{gate}"
+      life_cycle_any: "수명 주기: 단계 또는 게이트"
+      life_cycle_stage: "수명 주기 단계: %{stage}"
+      life_cycle_gate: "수명 주기 게이트: %{gate}"
     identifier:
       warning_one: 프로젝트 멤버는 프로젝트의 리포지토리를 재배치해야 합니다.
       warning_two: 프로젝트의 기존 링크는 더 이상 작동하지 않습니다.
       title: 프로젝트의 식별자 변경
-    not_available: "Project N/A"
+    not_available: "프로젝트 N/A"
     template:
       copying: >
         선택한 템플릿 프로젝트에서 프로젝트를 만들고 있습니다. 프로젝트가 사용 가능하게 되면 즉시 메일로 알려드립니다.
@@ -3494,15 +3494,15 @@ ko:
     warnings:
       cannot_annotate: "이 파일에는 주석을 지정할 수 없습니다."
   scheduling:
-    activated: "활성화됨"
-    deactivated: "비활성화됨"
+    manual: "수동으로 설정"
+    automatic: "자동으로 설정"
   search_input_placeholder: "검색..."
-  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url: "첫 번째 로그인 리디렉션"
   setting_after_first_login_redirect_url_text_html: >
-    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
-  setting_after_login_default_redirect_url: "After login redirect"
+    첫 로그인 후 사용자를 리디렉션할 경로를 설정하세요. 비어 있으면 온보딩 투어의 홈페이지로 리디렉션됩니다. <br/> 예: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "로그인 리디렉션 후"
   setting_after_login_default_redirect_url_text_html: >
-    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
+    백 링크가 제공되지 않은 경우 로그인 후 사용자를 리디렉션할 기본 경로를 설정하세요. 설정하지 않으면 홈페이지로 리디렉션됩니다. <br/> 예: <code>/my/page</code>
   setting_apiv3_cors_title: "CORS(크로스 원본 리소스 공유)"
   setting_apiv3_cors_enabled: "CORS 사용"
   setting_apiv3_cors_origins: "API V3 CORS(크로스-원본 리소스 공유) 허용 원본"
@@ -3762,6 +3762,11 @@ ko:
     working_days:
       section_work_week: "근무 주"
       section_holidays_and_closures: "공휴일 및 휴업일"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "일반 텍스트"
@@ -4288,7 +4293,7 @@ ko:
       connected: "연결됨"
       error: "오류"
       failed_authorization: "인증 실패"
-      not_connected: "Not connected"
+      not_connected: "연결되지 않음"
     labels:
       label_oauth_integration: "OAuth2 통합"
       label_redirect_uri: "리디렉션 URI"
@@ -4340,28 +4345,28 @@ ko:
     name: "OmniAuth SAML/Single-Sign On"
     description: "OpenProject에 OmniAuth SAML 공급자를 추가합니다"
   enterprise_plans:
-    legacy_enterprise: "Enterprise Plan"
+    legacy_enterprise: "Enterprise 플랜"
   enterprise_features:
-    baseline_comparison: Baseline Comparison
-    board_view: Board View
-    conditional_highlighting: Conditional Highlighting
-    custom_actions: Custom Actions
-    custom_field_hierarchies: Custom Field Hierarchies
-    customize_life_cycle: Customize Life Cycle
-    date_alerts: Date Alerts
-    define_custom_style: Define Custom Style
-    edit_attribute_groups: Edit Attribute Groups
-    gantt_pdf_export: Gantt PDF Export
-    grid_widget_wp_graph: Grid Widget Work Package Graph
-    ldap_groups: LDAP Groups
-    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
-    placeholder_users: Placeholder Users
-    project_list_sharing: Project List Sharing
-    readonly_work_packages: Readonly Work Packages
-    sso_auth_providers: SSO Auth Providers
-    team_planner_view: Team Planner View
-    two_factor_authentication: Two-Factor Authentication
-    virus_scanning: Attachment Virus Scanning
-    work_package_query_relation_columns: Work Package Query Relation Columns
-    work_package_sharing: Work Package Sharing
-    work_package_subject_generation: Work Package Subject Generation
+    baseline_comparison: 기준선 비교
+    board_view: 보드 보기
+    conditional_highlighting: 조건부 강조 표시
+    custom_actions: 사용자 지정 작업
+    custom_field_hierarchies: 사용자 지정 필드 계층
+    customize_life_cycle: 수명 주기 사용자 지정
+    date_alerts: 날짜 알림
+    define_custom_style: 사용자 지정 스타일 정의
+    edit_attribute_groups: 특성 그룹 편집
+    gantt_pdf_export: Gantt PDF 내보내기
+    grid_widget_wp_graph: 그리드 위젯 작업 패키지 그래프
+    ldap_groups: LDAP 그룹
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint 파일 저장소
+    placeholder_users: 플레이스홀더 사용자
+    project_list_sharing: 프로젝트 목록 공유
+    readonly_work_packages: 읽기 전용 작업 패키지
+    sso_auth_providers: SSO 인증 제공자
+    team_planner_view: 팀 플래너 보기
+    two_factor_authentication: 2단계 인증
+    virus_scanning: 첨부 파일 바이러스 검사
+    work_package_query_relation_columns: 작업 패키지 쿼리 관계 열
+    work_package_sharing: 작업 패키지 공유
+    work_package_subject_generation: 작업 패키지 제목 생성

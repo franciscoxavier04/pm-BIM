@@ -257,7 +257,7 @@ ar:
         userless_access_denied: The configured app password is invalid.
       label_error: خطأ
       label_healthy: Healthy
-      label_pending: Pending
+      label_pending: قيد الانتظار
       label_warning: تحذير
       project_folders:
         subtitle: Automatically managed project folders

@@ -30,7 +30,7 @@
 
 module WorkPackages
   module Types
-    class SettingsComponent < ApplicationComponent
+    class SettingsComponent < AdminSettingsFormComponent
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
 

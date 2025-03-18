@@ -50,7 +50,7 @@ mn:
         project: Project
         user: User
         work_package: Work package
-        hours: Hours
+        hours: Цаг
         comments: Comment
         activity: Activity
         spent_on: Date
@@ -77,7 +77,7 @@ mn:
     cost_type: "Cost type"
     costs: "Costs"
     current_rate: "Current rate"
-    hours: "Hours"
+    hours: "Цаг"
     units: "Units"
     valid_from: "Valid from"
     fixed_date: "Fixed date"
@@ -163,7 +163,7 @@ mn:
   permission_view_own_cost_entries: "View own booked costs"
   permission_view_own_hourly_rate: "View own hourly rate"
   permission_view_own_time_entries: "View own spent time"
-  project_module_costs: "Time and costs"
+  project_module_costs: "Цаг хугацаа ба зардал"
   setting_allow_tracking_start_and_end_times: "Allow users to track start and end time on time records"
   setting_costs_currency: "Currency"
   setting_costs_currency_format: "Format of currency"

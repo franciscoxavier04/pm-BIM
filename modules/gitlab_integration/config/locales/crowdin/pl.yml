@@ -22,22 +22,22 @@
 #++
 pl:
   attributes:
-    commit: "Commit"
-    gitlab: "GitLab identifier"
-    gitlab_avatar_url: "Avatar URL"
-    gitlab_email: "GitLab Email"
-    gitlab_html_url: "GitLab HTML URL"
-    gitlab_merge_request: "Merge Request"
-    gitlab_name: "GitLab name"
-    gitlab_updated_at: "Updated at"
-    gitlab_user_avatar_url: "GitLab avatar URL"
-    gitlab_username: "GitLab username"
+    commit: "Zatwierdź"
+    gitlab: "Identyfikator GitLab"
+    gitlab_avatar_url: "Adres URL awatara"
+    gitlab_email: "Adres e-mail GitLab"
+    gitlab_html_url: "Adres URL kodu HTML GitLab"
+    gitlab_merge_request: "Żądanie scalenia"
+    gitlab_name: "Nazwa GitLab"
+    gitlab_updated_at: "Zaktualizowano o"
+    gitlab_user_avatar_url: "Adres URL awatara GitLab"
+    gitlab_username: "Nazwa użytkownika GitLab"
   activerecord:
     attributes:
       gitlab_pipeline:
-        ci_details: "CI Details"
+        ci_details: "Szczegóły CI"
       gitlab_merge_request:
-        labels: "Labels"
+        labels: "Etykiety"
     errors:
       models:
         gitlab_issue:

@@ -36,6 +36,8 @@ type FilteredSuggestions = Array<{
   values:Array<{ prop:string; value:string; }>;
 }>;
 
+type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
+
 export default class PatternInputController extends Controller {
   static targets = [
     'tokenTemplate',
@@ -71,15 +73,14 @@ export default class PatternInputController extends Controller {
   declare readonly suggestionsInitialValue:Record<string, Record<string, string>>;
   declare readonly insertAsTextTemplateValue:string;
 
-  validTokens:string[];
+  validTokenMap:Record<string, string> = {};
   currentRange:Range|undefined = undefined;
 
   connect() {
-    this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
-    this.validTokens = Object.values(this.suggestionsInitialValue)
-      .map((group) => (Object.keys(group)))
-      .reduce((acc, val) => acc.concat(val), []);
+    this.validTokenMap = Object.values(this.suggestionsInitialValue)
+      .reduce((acc, val) => ({ ...acc, ...val }), {});
 
+    this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
     this.tagInvalidTokens();
     this.clearSuggestionsFilter();
   }
@@ -262,7 +263,7 @@ export default class PatternInputController extends Controller {
     return this.contentTarget.innerHTML.startsWith('<');
   }
 
-  private insertToken(tokenElement:HTMLElement) {
+  private insertToken(token:TokenElement) {
     if (this.currentRange) {
       const targetNode = this.currentRange.startContainer;
       const targetOffset = this.currentRange.startOffset;
@@ -277,9 +278,9 @@ export default class PatternInputController extends Controller {
       wordRange.setEnd(targetNode, targetOffset);
 
       wordRange.deleteContents();
-      wordRange.insertNode(tokenElement);
+      wordRange.insertNode(token);
 
-      this.setRealCaretPositionAtNode(tokenElement);
+      this.setRealCaretPositionAtNode(token);
 
       this.updateFormInputValue();
       this.setRange();
@@ -287,7 +288,7 @@ export default class PatternInputController extends Controller {
       // clear suggestions
       this.clearSuggestionsFilter();
     } else {
-      this.contentTarget.appendChild(tokenElement);
+      this.contentTarget.appendChild(token);
     }
   }
 
@@ -378,11 +379,8 @@ export default class PatternInputController extends Controller {
   }
 
   private tagInvalidTokens():void {
-    this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element) => {
-      const token = element.textContent?.trim();
-
-      let exists = false;
-      this.validTokens.forEach((prop) => { if (prop === token) { exists = true; } });
+    this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element:HTMLElement) => {
+      const exists = Object.keys(this.validTokenMap).some((key) => key === element.dataset.prop);
 
       if (exists) {
         element.classList.remove('Label--danger');
@@ -392,29 +390,43 @@ export default class PatternInputController extends Controller {
     });
   }
 
-  private createToken(value:string):HTMLElement {
-    const templateTarget = this.tokenTemplateTarget.content?.cloneNode(true) as HTMLElement;
-    const contentElement = templateTarget.firstElementChild as HTMLElement;
-    contentElement.innerText = value;
+  private createToken(value:string):TokenElement {
+    const templateTarget = this.tokenTemplateTarget.content?.cloneNode(true) as DocumentFragment;
+    const contentElement = templateTarget.firstElementChild as TokenElement;
+    contentElement.dataset.prop = value;
+    contentElement.innerText = this.validTokenMap[value] || value;
     return contentElement;
   }
 
   private toHtml(blueprint:string):string {
-    return blueprint.replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
+    return blueprint
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
   }
 
   private toBlueprint():string {
     let result = '';
-    this.contentTarget.childNodes.forEach((node:Element) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        // Plain text node
+    this.contentTarget.childNodes.forEach((node:ChildNode) => {
+      if (this.isText(node)) {
         result += node.textContent;
-      } else if (node.nodeType === Node.ELEMENT_NODE && (node as HTMLElement).dataset.role === 'token') {
-        // Token element
-        result += `{{${node.textContent?.trim()}}}`;
+      } else if (this.isToken(node)) {
+        result += `{{${node.dataset.prop}}}`;
       }
     });
     return result.trim();
+  }
+
+  private isToken(node:ChildNode):node is TokenElement {
+    return this.isElement(node) && node.dataset.role === 'token';
+  }
+
+  private isText(node:ChildNode):node is Text {
+    return node.nodeType === Node.TEXT_NODE;
+  }
+
+  private isElement(node:ChildNode):node is HTMLElement {
+    return node.nodeType === Node.ELEMENT_NODE;
   }
 
   private isWhitespace(value:string):boolean {

@@ -8,26 +8,26 @@ tr:
     attributes:
       openid_connect/provider:
         name: İsim
-        slug: Unique identifier
+        slug: Benzersiz tanımlayıcı
         display_name: Görünen isim
-        client_id: Client ID
-        client_secret: Client secret
-        secret: Secret
-        scope: Scope
+        client_id: İstemci ID
+        client_secret: İstemci gizliliği
+        secret: Gizli Anahtar
+        scope: Kapsam
         grant_types_supported: Supported grant types
-        limit_self_registration: Limit self registration
+        limit_self_registration: Kendi kendine kaydı sınırlayın
         authorization_endpoint: Yetkilendirme uç noktası
         userinfo_endpoint: Kullanıcı bilgisi uç noktası
-        token_endpoint: Token endpoint
-        end_session_endpoint: End session endpoint
-        post_logout_redirect_uri: Post logout redirect URI
+        token_endpoint: Gösterge bitiş noktası
+        end_session_endpoint: Oturum bitiş noktasını sonlandır
+        post_logout_redirect_uri: Oturum kapatma sonrası yönlendirme URI'si
         jwks_uri: JWKS URI
-        issuer: Issuer
-        tenant: Tenant
-        metadata_url: Metadata URL
+        issuer: Sağlayıcı
+        tenant: Müşteri
+        metadata_url: Metaveri URL'si
         icon: Özel simge
-        claims: Claims
-        acr_values: ACR values
+        claims: Bilgiler
+        acr_values: ACR değerleri
         redirect_url: Yönlendirme bağlantısı
     errors:
       models:
@@ -53,13 +53,13 @@ tr:
     menu_title: OpenID sağlayıcıları
     delete_title: "OpenID Connect sağlayıcısını sil"
     instructions:
-      redirect_url: This is the redirect URL that the OpenID Connect provider should use to redirect back to OpenProject after a successful login.
+      redirect_url: Bu, OpenID Connect sağlayıcısının başarılı bir oturum açma işleminden sonra OpenProject'e geri yönlendirmek için kullanması gereken yönlendirme adresidir.
       endpoint_url: OpenID Connect sağlayıcısı tarafından size verilen uç nokta URL'si
       metadata_none: Bu bilgiye sahip değilim
       metadata_url: Bir keşif uç noktası URL'im var
       client_id: OpenID Connect sağlayıcısı tarafından size verilen istemci URL'si
       client_secret: OpenID Connect sağlayıcısı tarafından size verilen gizlilik URL'si
-      limit_self_registration: If enabled, users can only register using this provider if configuration on the provider's end allows it.
+      limit_self_registration: Etkinleştirilirse, kullanıcılar yalnızca sağlayıcı tarafındaki yapılandırma izin veriyorsa bu sağlayıcıyı kullanarak kaydolabilir.
       display_name: Sağlayıcının adı. Bu, oturum açma düğmesi olarak ve sağlayıcılar listesinde görüntülenecektir.
       tenant: 'Lütfen öntanımlı müşteriyi kendinizinkiyle değiştirin, mümkünse. Bu <a href=" https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri"> belgeye bakın</a>.'
       scope: Özel kapsamlar talep etmek istiyorsanız, buraya boşluklarla ayrılmış bir veya birden fazla kapsam değeri ekleyebilirsiniz. Daha fazla bilgi için [OpenID Connect belgelerine](docs_url) bakın.
@@ -80,7 +80,7 @@ tr:
         Provide a custom mapping in the userinfo response to be used for the admin status. It expects a boolean attribute to be returned.
     settings:
       metadata_none: Bu bilgiye sahip değilim
-      metadata_url: I have a discovery endpoint URL
+      metadata_url: Bir keşif uç noktası URL'im var
       endpoint_url: Uç nokta adresi
     providers:
       label_providers: "Sağlayıcılar"
@@ -103,7 +103,7 @@ tr:
       label_advanced_configuration: Gelişmiş yapılandırma
       label_configuration_details: Metaveri
       label_client_details: Client details
-      label_attribute_mapping: Attribute mapping
+      label_attribute_mapping: Nitelik ilişkilendirme
       client_details_description: Configuration details of OpenProject as an OIDC client
       no_results_table: Henüz bir sağlayıcı tanımlanmadı.
       plural: OpenID sağlayıcıları
@@ -120,4 +120,4 @@ tr:
         claims: Request additional claims for the ID token or userinfo response.
     setting_instructions:
       limit_self_registration: >
-        If enabled users can only register using this provider if the self registration setting allows for it.
+        Etkinleştirilirse, kullanıcılar bu sağlayıcıyı kullanarak yalnızca kendi kendine kayıt ayarı buna izin veriyorsa kaydolabilir.

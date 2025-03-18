@@ -35,7 +35,7 @@ sl:
   documents:
     label_attachment_author: "Avtor priloge"
     label_categories: "Categories"
-    new_category: "New category"
+    new_category: "Nova kategorija"
   label_document_added: "Dokument dodan"
   label_document_new: "Nov dokument"
   label_document_plural: "Dokumenti"

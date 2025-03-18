@@ -217,7 +217,7 @@ hu:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Minden projekthez
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -290,7 +290,7 @@ hu:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Szülő"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Keresés:  %{app_title} oldalon"
@@ -337,7 +337,7 @@ hu:
     lists:
       active: "Aktív projektek"
       my: "Saját projekjeim"
-      favored: "Favorite projects"
+      favored: "Kedvenc projektek"
       archived: "Archivált projektek"
       shared: "Shared project lists"
       my_lists: "My project lists"
@@ -554,8 +554,8 @@ hu:
     react_with: "React with %{reaction}"
     and_user: "and %{user}"
     and_others:
-      one: and 1 other
-      other: and %{count} others
+      one: "és 1 másik\n"
+      other: és %{count} egyéb
     reaction_by: "%{reaction} by"
   reportings:
     index:
@@ -598,14 +598,14 @@ hu:
       no_results_content_text: Új típus létrehozása
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Űrlap konfiguráció"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projektek"
+        enabled_projects: "Engedélyezett projektek"
       settings:
-        tab: "Settings"
+        tab: "Beállítások"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -663,13 +663,13 @@ hu:
         title: "Working days only"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Automatikus"
         manual: "Manual"
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Gyermekek"
+        dates: "Dátumok"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -737,10 +737,10 @@ hu:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "Kapcsolódó"
+      label_relates_plural: "Kapcsolódó"
+      label_relates_to_singular: "Kapcsolódó"
+      label_relates_to_plural: "Kapcsolódó"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -756,42 +756,42 @@ hu:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "blokkolja"
+      label_blocks_plural: "blokkolja"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "Blokkolta"
+      label_blocked_plural: "Blokkolta"
+      label_blocked_by_singular: "Blokkolta"
+      label_blocked__by_plural: "Blokkolta"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "Ismétlődések"
+      label_duplicates_plural: "Ismétlődések"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "Ismétlődések szerint"
+      label_duplicated_plural: "Ismétlődések szerint"
+      label_duplicated_by_singular: "Ismétlődések szerint"
+      label_duplicated_by_plural: "Ismétlődések szerint"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "tartalmazza"
+      label_includes_plural: "tartalmazza"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "része"
+      label_partof_plural: "része"
+      label_part_of_singular: "része"
+      label_part_of_plural: "része"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "igényel"
+      label_requires_plural: "igényel"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Kapcsolódó feladatcsoport"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Meghívó
   account:
@@ -854,7 +854,7 @@ hu:
         editable: "Szerkeszthető"
         field_format: "Formátum"
         is_filter: "Szűrőként használható"
-        is_for_all: "For all projects"
+        is_for_all: "Minden projekthez"
         is_required: "Kötelező"
         max_length: "Maximum hosszúság"
         min_length: "Minimum hosszúság"
@@ -871,7 +871,7 @@ hu:
         secret: "Kliens titok"
         owner: "Tulajdonos"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "aktív"
         redirect_uri: "Átirányítás URI"
         client_credentials_user_id: "Ügyféladatok Felhasználói azonosító\n"
         scopes: "Hatáskörök"
@@ -899,7 +899,7 @@ hu:
         attr_login: "Felhasználónév attribútum"
         attr_mail: "Email attribútum"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Adminisztrátor"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Automatikus felhasználó készítés"
@@ -917,7 +917,7 @@ hu:
           true: "unarchived"
           false: "archivált"
         description: "Leírás"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Engedélyezett modulok"
         identifier: "Azonosító"
         latest_activity_at: "Legújabb tevékenység ekkor"
         parent: "Alprojekt"
@@ -948,11 +948,11 @@ hu:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Név"
+        color: "Szín"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Oszlopok"
         column_names: "Oszlopok"
         relations_to_type_column: "Kapcsolatok %{type}-hoz"
         relations_of_type_column: "%{type} kapcsolatok"
@@ -960,7 +960,7 @@ hu:
         sort_by: "Sort results by"
         filters: "Szürő"
         timeline_labels: "Idővonal címkék"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "Gannt diagramm megtekintése"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -972,20 +972,20 @@ hu:
         hidden: "Hidden"
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
-        include_subprojects: "Include subprojects"
-        results: "Results"
+        include_subprojects: "Alprojektek bevonása"
+        results: "Eredmények"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Kapcsolódó feladatcsoport"
         to: "Kapcsolódó feladatcsoport"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "dátum"
+        remind_at_time: "Idő"
       reminder_notification:
-        notification: "Notification"
+        notification: "Értesítés"
       repository:
         url: "URL"
       role:
@@ -996,7 +996,7 @@ hu:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Naptár"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Tevékenység"
@@ -1015,7 +1015,7 @@ hu:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Felhasználó"
       user:
         admin: "Adminisztrátor"
         auth_source: "Hitelesítési forrás"
@@ -1026,8 +1026,8 @@ hu:
         language: "Nyelv"
         last_login_on: "Utolsó bejelentkezés"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Keresztnév"
+        last_name: "Vezetéknév"
         first_login: "First login"
         new_password: "Új jelszó"
         password_confirmation: "Új jelszó újra"
@@ -1038,10 +1038,10 @@ hu:
         auto_hide_popups: "Siker értesítések automatikus elrejtése"
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Mód"
-        time_zone: "Time zone"
+        time_zone: "Idő zóna"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
-        workdays: "Working days"
+        workdays: "Munkanapok"
       version:
         effective_date: "Befejezési dátum"
         sharing: "Megosztás"
@@ -1381,7 +1381,7 @@ hu:
           is_not_a_valid_target_for_time_entries: "A  #%{id} feladatcsoport nem érvényes cél az idő bejegyzések ismételt hozzárendeléséhez."
           attributes:
             id:
-              format: "%{message}"
+              format: "%{message}\n"
               cannot_add_child_because_of_lack_of_permission: "Cannot add child because you don't have permissions to edit the selected work package."
               blank: "ID can't be blank."
             assigned_to:
@@ -1452,7 +1452,7 @@ hu:
               confirmation: "A két jelszó nem egyezik!"
               format: "%{message}\n"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Az alábbi karakter típusokból tartalmaznia kell karaktert (legalább %{min_count} a %{all_count} típusból): %{rules}"
               lowercase: "Kisbetű (pl. 'a')"
               uppercase: "Nagybetű (pl. 'A')"
               numeric: "Szám (pl. '1')"
@@ -1502,7 +1502,7 @@ hu:
       global_role: "Globális szerepkör"
       group: "Csoport"
       issue_priority:
-        one: "Priority"
+        one: "Fontosság"
         other: "Priorities"
       member: "Tag"
       news: "Hírek"
@@ -1523,8 +1523,8 @@ hu:
         other: "Szerepkörök"
       status: "Feladatcsoport állapot"
       token/api:
-        one: Access token
-        other: Access tokens
+        one: Hozzáférési token
+        other: Hozzáférési token
       type: "Típus"
       user: "Felhasználó"
       version: "Verzió"
@@ -1583,9 +1583,9 @@ hu:
     assignee: "Megbízott"
     attachments: "Csatolmány"
     actor: "Actor"
-    action: "Action"
+    action: "Művelet"
     author: "Szerző"
-    avatar: "Avatar"
+    avatar: "Profilkép"
     base: "Általános hiba:"
     body: "Body"
     blocks_ids: "Lezárt munkacsomagok azonosítója"
@@ -1594,13 +1594,13 @@ hu:
     comments: "Vélemény"
     content: "Tartalom"
     color: "Szín"
-    creator: "Creator"
+    creator: "Készítő"
     created_at: "Létrehozva"
-    custom_field: "Custom field"
+    custom_field: "Választható mező"
     custom_options: "Lehetséges értékek"
     custom_values: "Választható mezők"
     date: "dátum"
-    dates_interval: "Date range"
+    dates_interval: "Dátum intervallum"
     default_columns: "Alapértelmezett oszlopok"
     description: "Leírás"
     derived_due_date: "Származtatott befejezési időpont"
@@ -1615,10 +1615,10 @@ hu:
     entity_type: "Entity"
     expires_at: "Lejárat ekkor"
     firstname: "Keresztnév"
-    filter: "Filter"
+    filter: "Szűrő"
     group: "Csoport"
     groups: "Csoportok"
-    hexcode: "Hex code"
+    hexcode: "Hexa kód"
     id: "ID"
     is_default: "Alap érték"
     is_for_all: "Minden projekthez"
@@ -1626,37 +1626,37 @@ hu:
     principal: "User or group"
     #kept for backwards compatibility
     issue: "Feladatcsoport"
-    journal: "Journal"
-    journal_notes: "Comment"
+    journal: "Hírközlés"
+    journal_notes: "Vélemény"
     lastname: "Vezetéknév"
     login: "Felhasználónév"
-    lock_version: "Lock version"
+    lock_version: "Lezárt verzió"
     mail: "Email"
     name: "Név"
-    note: "Note"
-    notes: "Notes"
+    note: "Szöveg"
+    notes: "Jegyzet"
     number: "Number"
-    options: "Options"
-    operator: "Operator"
+    options: "Beállítások"
+    operator: "Operátor"
     password: "Jelszó"
     priority: "Fontosság"
     project: "Projekt"
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Felelős"
-    required: "Required"
+    required: "Kötelező"
     recipient: "Recipient"
     role: "Szerepkör"
     roles: "Szerepkörök"
-    search: "Search"
+    search: "Keresés"
     start_date: "Indulási dátum"
     status: "Állapot"
     state: "State"
     subject: "Tárgy"
     slug: "Slug"
     summary: "Összegzés"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "Idő zóna"
+    text: "Szöveg"
     title: "Cím"
     type: "Típus"
     typeahead: "Autocomplete"
@@ -1664,14 +1664,14 @@ hu:
     updated_on: "Frissítve"
     uploader: "Feltöltő"
     user: "Felhasználó"
-    username: "Username"
-    unit: "Unit"
+    username: "Felhasználónév"
+    unit: "Egység"
     value: "Érték"
     values: "Values"
     version: "Verzió"
-    visible: "Visible"
+    visible: "Látható"
     work_package: "Feladatcsoport"
-    work_package_id: "Work package"
+    work_package_id: "Feladatcsoport"
   backup:
     failed: "A biztonsági mentés sikertelen"
     label_backup_token: "Visszaállítási kulcs"
@@ -1936,7 +1936,7 @@ hu:
         other: "óra"
       day:
         one: "day"
-        other: "days"
+        other: "nap"
   description_active: "Aktív?"
   description_attachment_toggle: "Csatolmányt mutat/elrejt"
   description_autocomplete: >
@@ -1971,7 +1971,7 @@ hu:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "További információ"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2059,8 +2059,8 @@ hu:
       subproject: "Alprojekt: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Exportálás"
+      submit: "Exportálás"
       format:
         label: "File format"
         options:
@@ -2080,13 +2080,13 @@ hu:
           label: "PDF export type"
           options:
             table:
-              label: "Table"
+              label: "Tábla"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Jelentés"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Gantt-diagram"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2095,10 +2095,10 @@ hu:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Nap"
+            weeks: "Hetek"
+            months: "Hónap"
+            quarters: "Negyedek"
         column_width:
           label: "Table column width"
           options:
@@ -2153,9 +2153,9 @@ hu:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Letöltés
       templates:
-        label: "Template"
+        label: "Sablon"
         none_enabled: "No template has been enabled for this work package type"
       footer_center:
         label: Footer text
@@ -2422,7 +2422,7 @@ hu:
   label_calendars_and_dates: "Calendars and dates"
   label_calendar_show: "Kalendárium mutatása"
   label_category: "Kategória"
-  label_completed: Completed
+  label_completed: Befejeződött
   label_consent_settings: "Felhasználói jóváhagyás"
   label_wiki_menu_item: Wiki menüpont
   label_select_main_menu_item: Válasszon ki új fő menüpontot
@@ -2486,7 +2486,7 @@ hu:
   label_default: "alapértelmezett"
   label_delete_user: "Felhasználó törlése"
   label_delete_project: "Projekt törlése"
-  label_delete: "Delete"
+  label_delete: "Törlés"
   label_deleted: "Törölve"
   label_deleted_custom_field: "(egyéni mező törölve)"
   label_deleted_custom_item: "(deleted item)"
@@ -2575,7 +2575,7 @@ hu:
   label_here: itt
   label_hide: "Elrejt"
   label_history: "Előzmény"
-  label_hierarchy: "Hierarchy"
+  label_hierarchy: "Hierarchia"
   label_hierarchy_leaf: "Hierarchia szint"
   label_home: "Home"
   label_subject_or_id: "Tárgy, vagy azonosító"
@@ -2604,7 +2604,7 @@ hu:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Minden regisztrált felhasználó megjelenítése"
-  label_show_less: "Show less"
+  label_show_less: "Kevesebb mutatása"
   label_show_more: "Show more"
   label_journal: "Hírközlés"
   label_journal_diff: "Leírás összehasonlítás"
@@ -2676,8 +2676,8 @@ hu:
   label_months_from: "hónaptól"
   label_more: "További"
   label_more_than_ago: "több, nappal ezelőtt"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Oszlop mozgatása balra"
+  label_move_column_right: "Oszlop mozgatása jobbra"
   label_move_work_package: "A munkacsomag mozgatása"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2701,8 +2701,8 @@ hu:
   label_next_week: "A jövő héten"
   label_no_change_option: "(Nincs változás)"
   label_no_data: "Nincs megjelenítendő adat"
-  label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_due_date: "nincs befejezési dátum"
+  label_no_start_date: "nincs kezdő dátuma"
   label_no_parent_page: "Nincs szülő oldal"
   label_nothing_display: "Nincs megjeleníthető"
   label_nobody: "senki sem"
@@ -2770,7 +2770,7 @@ hu:
   label_project_latest: "Legújabb projektek"
   label_project_default_type: "Engedélyezi az üres típust"
   label_project_hierarchy: "Projekt-hierarchia"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projektek"
   label_project_new: "Új projekt"
   label_project_plural: "Projektek"
   label_project_list_plural: "Project lists"
@@ -2805,7 +2805,7 @@ hu:
   label_relation_new: "Új kapcsolat"
   label_release_notes: "Kiadási megjegyzések"
   label_remaining_work: "Fennmaradó órák"
-  label_remove_column: "Remove column"
+  label_remove_column: "Oszlop eltávolítása"
   label_remove_columns: "Eltávolítja a kijelölt oszlopokat"
   label_renamed: "átnevez"
   label_reply_plural: "Válaszok"
@@ -2848,10 +2848,10 @@ hu:
   label_show_completed_versions: "Befejezett verziók megjelenítése"
   label_columns: "Oszlopok"
   label_sort: "Rendez"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Növekvő sorrend"
   label_sort_by: "Rendezés %{value} szerint"
   label_sorted_by: "rendezve %{value} szerint"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Csökkenő sorrend"
   label_sort_higher: "Mozgatás felfelé"
   label_sort_highest: "Mozgatás felfelé"
   label_sort_lower: "Mozgás lefelé"
@@ -2880,7 +2880,7 @@ hu:
   label_this_month: "Ebben a hónapban"
   label_this_week: "ezen a héten"
   label_this_year: "Ebben az évben"
-  label_time: "Time"
+  label_time: "Idő"
   label_time_entry_plural: "Eltöltött idő"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Cím"
@@ -2920,7 +2920,7 @@ hu:
   label_user_settings: "Felhasználói beállítások"
   label_users_settings: "Users settings"
   label_version_new: "Új verzió"
-  label_version_edit: "Edit version"
+  label_version_edit: "Módosított verzió"
   label_version_plural: "Verzió"
   label_version_sharing_descendants: "Az alprojektekkel rendelkező"
   label_version_sharing_hierarchy: "A projekt hierarchiában"
@@ -3381,8 +3381,8 @@ hu:
       archived: "Archiválva"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "1 projekt"
+      other: "%{count} projekt"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3536,8 +3536,8 @@ hu:
     warnings:
       cannot_annotate: "Ez a fájl nem annotálható."
   scheduling:
-    activated: "aktiválva"
-    deactivated: "deaktiválva"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Keresés ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3774,7 +3774,7 @@ hu:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Hozzáadás"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -3802,8 +3802,13 @@ hu:
       display_format: "Display format"
       deletion: "Törlés"
     working_days:
-      section_work_week: "Work week"
+      section_work_week: "Munkahét"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Egyszerű szöveg"
@@ -4084,7 +4089,7 @@ hu:
       view: "Nézet"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "dátum"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4272,9 +4277,9 @@ hu:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Bizalmas
       singular: "OAuth alkalmazás"
-      scopes: "Scopes"
+      scopes: "Hatáskörök"
       client_credentials: "Client credentials"
       plural: "OAuth alkalmazások"
       named: "OAuth-alkalmazás neve %{name}"

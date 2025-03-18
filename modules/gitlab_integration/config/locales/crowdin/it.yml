@@ -22,22 +22,22 @@
 #++
 it:
   attributes:
-    commit: "Commit"
-    gitlab: "GitLab identifier"
-    gitlab_avatar_url: "Avatar URL"
-    gitlab_email: "GitLab Email"
-    gitlab_html_url: "GitLab HTML URL"
-    gitlab_merge_request: "Merge Request"
-    gitlab_name: "GitLab name"
-    gitlab_updated_at: "Updated at"
-    gitlab_user_avatar_url: "GitLab avatar URL"
-    gitlab_username: "GitLab username"
+    commit: "Applica"
+    gitlab: "Identificatore di GitLab"
+    gitlab_avatar_url: "URL dell'avatar"
+    gitlab_email: "E-mail di GitLab"
+    gitlab_html_url: "URL HTML di GitLab"
+    gitlab_merge_request: "Richiesta di merge"
+    gitlab_name: "Nome di GitLab"
+    gitlab_updated_at: "Aggiornato il"
+    gitlab_user_avatar_url: "URL dell'avatar di GitLab"
+    gitlab_username: "Nome utente di GitLab"
   activerecord:
     attributes:
       gitlab_pipeline:
-        ci_details: "CI Details"
+        ci_details: "Dettagli CI"
       gitlab_merge_request:
-        labels: "Labels"
+        labels: "Etichette"
     errors:
       models:
         gitlab_issue:

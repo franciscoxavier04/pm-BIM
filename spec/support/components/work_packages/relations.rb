@@ -27,12 +27,14 @@
 #++
 
 require "support/components/autocompleter/ng_select_autocomplete_helpers"
+require "support/flash/expectations"
 
 module Components
   module WorkPackages
     class Relations
       include Capybara::DSL
       include Capybara::RSpecMatchers
+      include Flash::Expectations
       include RSpec::Matchers
       include RSpec::Wait
       include ::Components::Autocompleter::NgSelectAutocompleteHelpers
@@ -164,6 +166,10 @@ module Components
       def expect_no_relatable_delete_button(relatable)
         actual_relatable = find_relatable(relatable)
         expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}-delete-button")
+      end
+
+      def add_predecessor(work_package)
+        add_relation(type: :follows, relatable: work_package)
       end
 
       def add_relation(type:, relatable:, description: nil)
@@ -337,6 +343,7 @@ module Components
 
           click_link_or_button "Save"
         end
+        expect_and_dismiss_flash(message: "Successful update.")
       end
 
       def relations_group

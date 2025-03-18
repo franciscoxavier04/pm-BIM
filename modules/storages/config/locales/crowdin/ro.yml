@@ -2,13 +2,13 @@ ro:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID Client
+        client_secret: Client Secret
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Depozitare
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -18,7 +18,7 @@ ro:
       storages/project_storage:
         project_folder: Project folder
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: Depozitare
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
@@ -44,7 +44,7 @@ ro:
             project_folder_mode:
               mode_unavailable: is not available for this storage.
             project_ids:
-              blank: Please select a project.
+              blank: Te rog selectează un proiect.
         storages/storage:
           attributes:
             host:
@@ -227,7 +227,7 @@ ro:
       storage_audience_blank: No audience has been configured.
       storage_audience_description: Obtaining tokens for audience "%{audience}".
       storage_audience_idp: Using first access token received by identity provider, regardless of audience.
-      storage_oauth: Nextcloud OAuth
+      storage_oauth: Ecran Nextcloud
       storage_provider: Storage provider
     health:
       checked: Last checked %{datetime}

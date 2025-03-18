@@ -87,7 +87,7 @@ mn:
       book_now: "Book now"
       get_quote: "Get a quote"
       buttons:
-        upgrade: "Upgrade now"
+        upgrade: "Одоо шинэчлэх"
         contact: "Contact us for a demo"
       enterprise_info_html: "is an Enterprise <span class='spot-icon spot-icon_inline spot-icon_enterprise-addons'></span> add-on."
       upgrade_info: "Please upgrade to a paid plan to activate and start using it in your team."
@@ -269,7 +269,7 @@ mn:
       no_results_title_text: There are currently no custom fields.
       no_results_content_text: Create a new custom field
   concatenation:
-    single: "or"
+    single: "эсвэл"
   dry_validation:
     errors:
       int?: "must be an integer."
@@ -429,7 +429,7 @@ mn:
     menu:
       all: "All"
       invited: "Invited"
-      locked: "Locked"
+      locked: "Цоожлогдсон"
       project_roles: "Project roles"
       wp_shares: "Work package shares"
       groups: "Groups"
@@ -586,7 +586,7 @@ mn:
       no_results_content_text: Add a new status
       headers:
         is_default: "Default"
-        is_closed: "Closed"
+        is_closed: "Хаагдсан"
         is_readonly: "Read-only"
         excluded_from_totals: "Excluded from totals"
   themes:
@@ -997,11 +997,11 @@ mn:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Хуанли"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Activity"
-        hours: "Hours"
+        hours: "Цаг"
         spent_on: "Date"
         type: "Type"
         ongoing: "Ongoing"
@@ -1080,10 +1080,10 @@ mn:
         schedule_manually: "Manual scheduling"
         spent_hours: "Spent time"
         spent_time: "Spent time"
-        subproject: "Subproject"
+        subproject: "Дэд төсөл"
         time_entries: "Log time"
         type: "Type"
-        version: "Version"
+        version: "Хувилбар"
         watcher: "Watcher"
     errors:
       messages:
@@ -1528,7 +1528,7 @@ mn:
         other: Access tokens
       type: "Type"
       user: "User"
-      version: "Version"
+      version: "Хувилбар"
       workflow: "Workflow"
       work_package: "Work package"
       wiki: "Wiki"
@@ -1557,7 +1557,7 @@ mn:
       added_by_on: "added by %{user} on %{datetime}"
       removed_on: "removed on %{datetime}"
       removed_by_on: "removed by %{user} on %{datetime}"
-      parent_without_of: "Subproject"
+      parent_without_of: "Дэд төсөл"
       parent_no_longer: "No longer subproject of"
       time_entry:
         hour:
@@ -1580,13 +1580,13 @@ mn:
   #common attributes of all models
   attributes:
     active: "Active"
-    assigned_to: "Assignee"
-    assignee: "Assignee"
+    assigned_to: "Даалгагч"
+    assignee: "Даалгагч"
     attachments: "Attachments"
     actor: "Actor"
     action: "Action"
     author: "Author"
-    avatar: "Avatar"
+    avatar: "Аватар"
     base: "General Error:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"
@@ -1631,7 +1631,7 @@ mn:
     journal_notes: "Comment"
     lastname: "Last name"
     login: "Username"
-    lock_version: "Lock version"
+    lock_version: "Хувилбар цоожлох"
     mail: "Email"
     name: "Name"
     note: "Note"
@@ -1651,7 +1651,7 @@ mn:
     roles: "Roles"
     search: "Search"
     start_date: "Start date"
-    status: "Status"
+    status: "Төлөв"
     state: "State"
     subject: "Subject"
     slug: "Slug"
@@ -1669,7 +1669,7 @@ mn:
     unit: "Unit"
     value: "Value"
     values: "Values"
-    version: "Version"
+    version: "Хувилбар"
     visible: "Visible"
     work_package: "Work package"
     work_package_id: "Work package"
@@ -1720,7 +1720,7 @@ mn:
   button_check_all: "Check all"
   button_clear: "Clear"
   button_click_to_reveal: "Click to reveal"
-  button_close: "Close"
+  button_close: "Хаах"
   button_collapse_all: "Collapse all"
   button_configure: "Configure"
   button_continue: "Continue"
@@ -1772,7 +1772,7 @@ mn:
   button_unlock: "Unlock"
   button_unfavorite: "Remove from favorites"
   button_unwatch: "Unwatch"
-  button_update: "Update"
+  button_update: "Шинэчлэх"
   button_upgrade: "Upgrade"
   button_upload: "Upload"
   button_view: "View"
@@ -2312,7 +2312,7 @@ mn:
         unknown_storage: "Unknown storage"
   notifications:
     reasons:
-      assigned: "Assignee"
+      assigned: "Даалгагч"
       dateAlert: "Date alert"
       mentioned: "Mentioned"
       responsible: "Accountable"
@@ -2409,17 +2409,17 @@ mn:
   label_blocked_by: "blocked by"
   label_blocks: "blocks"
   label_blog: "Blog"
-  label_forums_locked: "Locked"
+  label_forums_locked: "Цоожлогдсон"
   label_forum_new: "New forum"
   label_forum_plural: "Forums"
   label_forum_sticky: "Sticky"
   label_boolean: "Boolean"
-  label_board_plural: "Boards"
+  label_board_plural: "Самбарууд"
   label_branch: "Branch"
   label_browse: "Browse"
   label_bulk_edit_selected_work_packages: "Bulk edit selected work packages"
   label_bundled: "(Bundled)"
-  label_calendar: "Calendar"
+  label_calendar: "Хуанли"
   label_calendars_and_dates: "Calendars and dates"
   label_calendar_show: "Show Calendar"
   label_category: "Category"
@@ -2562,7 +2562,7 @@ mn:
   label_force_user_language_to_default: "Set language of users having a non allowed language to default"
   label_form_configuration: "Form configuration"
   label_gantt_chart: "Gantt chart"
-  label_gantt_chart_plural: "Gantt charts"
+  label_gantt_chart_plural: "Гант диаграм"
   label_general: "General"
   label_generate_key: "Generate a key"
   label_git_path: "Path to .git directory"
@@ -2719,7 +2719,7 @@ mn:
   label_operator_none: "is empty"
   label_operator_equals_or: "is (OR)"
   label_operator_equals_all: "is (AND)"
-  label_operator_shared_with_user_any: "any"
+  label_operator_shared_with_user_any: "ямар ч"
   label_open_menu: "Open menu"
   label_open_work_packages: "open"
   label_open_work_packages_plural: "open"
@@ -2751,7 +2751,7 @@ mn:
   label_modules_and_plugins: "Modules and Plugins"
   label_precedes: "precedes"
   label_preferences: "Preferences"
-  label_preview: "Preview"
+  label_preview: "Урьдчилан харах"
   label_preview_not_available: "Preview not available"
   label_previous: "Previous"
   label_previous_week: "Previous week"
@@ -2774,7 +2774,7 @@ mn:
   label_project_mappings: "Projects"
   label_project_new: "New project"
   label_project_plural: "Projects"
-  label_project_list_plural: "Project lists"
+  label_project_list_plural: "Төслийн жагсаалтууд"
   label_project_lifecycle: "Project lifecycle"
   label_project_attributes_plural: "Project attributes"
   label_project_custom_field_plural: "Project attributes"
@@ -2861,13 +2861,13 @@ mn:
   label_start_to_end: "start to end"
   label_start_to_start: "start to start"
   label_statistics: "Statistics"
-  label_status: "Status"
+  label_status: "Төлөв"
   label_storage_free_space: "Remaining disk space"
   label_storage_used_space: "Used disk space"
   label_storage_group: "Storage filesystem %{identifier}"
   label_storage_for: "Encompasses storage for"
   label_string: "Text"
-  label_subproject: "Subproject"
+  label_subproject: "Дэд төсөл"
   label_subproject_new: "New subproject"
   label_subproject_plural: "Subprojects"
   label_subtask_plural: "Subtasks"
@@ -2921,7 +2921,7 @@ mn:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "New version"
-  label_version_edit: "Edit version"
+  label_version_edit: "Хувилбар засах"
   label_version_plural: "Versions"
   label_version_sharing_descendants: "With subprojects"
   label_version_sharing_hierarchy: "With project hierarchy"
@@ -3000,7 +3000,7 @@ mn:
   label_zen_mode: "Zen mode"
   label_role_type: "Type"
   label_member_role: "Project role"
-  label_global_role: "Global role"
+  label_global_role: "Глобал үүрэг"
   label_not_changeable: "(not changeable)"
   label_global: "Global"
   label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
@@ -3538,8 +3538,8 @@ mn:
     warnings:
       cannot_annotate: "This file cannot be annotated."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3804,12 +3804,17 @@ mn:
       display_format: "Display format"
       deletion: "Deletion"
     working_days:
-      section_work_week: "Work week"
+      section_work_week: "Ажлын долоо хоног"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
-  status_active: "active"
+  status_active: "идэвхтэй"
   status_archived: "archived"
   status_blocked: "blocked"
   status_invited: invited
@@ -3983,7 +3988,7 @@ mn:
   total_progress: "Total progress"
   user:
     all: "all"
-    active: "active"
+    active: "идэвхтэй"
     activate: "Activate"
     activate_and_reset_failed_logins: "Activate and reset failed logins"
     authentication_provider: "Authentication Provider"

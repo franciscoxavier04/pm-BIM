@@ -9,7 +9,7 @@ hu:
       two_factor_authentication/device:
         identifier: "Azonosító"
         default: "Beállítás alapértelmezettként"
-        channel: "Channel"
+        channel: "Csatorna"
       two_factor_authentication/device/sms:
         phone_number: "Telefonszám"
       two_factor_authentication/device/webauthn:

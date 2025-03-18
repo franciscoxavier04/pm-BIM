@@ -85,11 +85,11 @@ pl:
         is_default: "Model domyślny"
         attachments: "Plik IFC"
       bim/bcf/issue:
-        bcf_comment: "BCF comment"
-        bim_snippet: "BIM snippet"
-        reference_links: "Reference links"
-        stage: "Stage"
-        viewpoint: "Viewpoint"
+        bcf_comment: "Komentarz BCF"
+        bim_snippet: "Fragment kodu BIM"
+        reference_links: "Linki referencyjne"
+        stage: "Etap"
+        viewpoint: "Punkt widzenia"
     errors:
       models:
         bim/ifc_models/ifc_model:

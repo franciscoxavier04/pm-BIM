@@ -123,11 +123,11 @@ mn:
             item_0:
               name: Project plan
             item_1:
-              name: Milestones
+              name: Чухал үеүүд
             item_2:
               name: Tasks
             item_3:
-              name: Team planner
+              name: Багийн төлөвлөгч
           boards:
             kanban:
               name: Kanban board
@@ -173,7 +173,7 @@ mn:
                   name: Work packages
               item_6:
                 options:
-                  name: Milestones
+                  name: Чухал үеүүд
           work_packages:
             item_0:
               subject: Start of project
@@ -466,7 +466,7 @@ mn:
         item_10:
           name: Test failed
         item_11:
-          name: Closed
+          name: Хаагдсан
         item_12:
           name: On hold
         item_13:
@@ -486,7 +486,7 @@ mn:
           name: Other
       types:
         item_0:
-          name: Task
+          name: Даалгавар
         item_1:
           name: Milestone
         item_2:

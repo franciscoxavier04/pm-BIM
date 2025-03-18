@@ -56,7 +56,7 @@ ja:
         start_time: "開始時刻"
         start_time_hour: "開始時刻"
         end_after: "Meeting series ends"
-        end_date: "End date"
+        end_date: "完了日"
         iterations: "Occurrences"
     errors:
       models:
@@ -70,7 +70,7 @@ ja:
     models:
       recurring_meeting: "Recurring meeting"
       structured_meeting: "One-time meeting"
-      meeting: "Meeting"
+      meeting: "会議"
       meeting_agenda_item: "議題項目"
       meeting_agenda: "アジェンダ"
       meeting_minutes: "議事録"
@@ -125,7 +125,7 @@ ja:
   label_recurring_meeting_plural: "Recurring meetings"
   label_template: "Template"
   label_recurring_meeting_view: "View meeting series"
-  label_recurring_meeting_create: "Open"
+  label_recurring_meeting_create: "開く"
   label_recurring_meeting_copy: "Copy as one-time"
   label_recurring_meeting_cancel: "Cancel this occurrence"
   label_recurring_meeting_delete: "Delete occurrence"
@@ -157,7 +157,7 @@ ja:
   label_past_invitations: "過去の招待状"
   label_attended: "Attended"
   label_attended_user: "Attended user"
-  label_created_by_me: "Created by me"
+  label_created_by_me: "私が作成した"
   label_notify: "レビュー用に送信"
   label_icalendar: "iCalendar を送信"
   label_icalendar_download: "iCalendarイベントをダウンロード"
@@ -224,7 +224,7 @@ ja:
     copied: "ミーティング#%{id} からコピーしました"
     delete_dialog:
       one_time:
-        title: "Delete meeting"
+        title: "会議を削除"
         heading: "Delete this meeting?"
         confirmation_message_html: >
           This action is not reversible. Please proceed with caution.
@@ -286,14 +286,14 @@ ja:
       full_past: "%{base} at %{time}, ended on %{end_date}"
       never_ending: "%{base} at %{time}"
     open:
-      title: "Open"
+      title: "Agenda opened"
       subtitle: >
         Open meetings have agendas that can be edited and show up in individual users’ ‘My meetings’ section. Changes to the meeting series template do not affect already-open meeting occurrences.
       blankslate:
         title: "No open meetings at the moment"
         desc: "You can manually open a planned meeting by clicking on the 'Open' button below"
     planned:
-      title: "Planned"
+      title: "計画"
       subtitle: >
         The following meetings are planned in the recurring meeting schedule but are not open yet. Every time a planned meeting starts, the next one will automatically be opened for you. You can also open planned meetings manually to import the template and start editing the agenda.
       blankslate:
@@ -311,8 +311,8 @@ ja:
         other: >
           Deleting <strong>%{title}</strong> will delete all %{count} occurrences in this series. This action is not reversible. Please proceed with caution.
     scheduled_delete_dialog:
-      title: "Cancel meeting occurrence"
-      heading: "Cancel this meeting occurrence?"
+      title: "ミーティングのキャンセル"
+      heading: "このミーティングをキャンセルしますか？"
       confirmation_message_html: >
         Any meeting information not in the template will be lost. Do you want to continue?
       confirm_button: "Cancel occurrence"
@@ -355,7 +355,7 @@ ja:
   label_meeting_created_by: "作成者："
   label_meeting_last_updated: "最終更新日"
   label_meeting_reload: "再読み込み"
-  label_meeting_index_today: "Today"
+  label_meeting_index_today: "今日"
   label_meeting_index_tomorrow: "Tomorrow"
   label_meeting_index_this_week: "Later this week"
   label_meeting_index_later: "Next week and later"
@@ -391,10 +391,10 @@ ja:
   label_meeting_state_closed: "終了"
   label_meeting_state_closed_html: "<i>終了</i>"
   label_meeting_state_agenda_created: "Agenda created"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "計画"
   label_meeting_state_cancelled: "Cancelled"
   label_meeting_state_skipped: "Skipped"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "進行中"
   label_meeting_reopen_action: "会議を再開する"
   label_meeting_close_action: "会議を終了する"
   label_meeting_in_progress_action: "Mark as in progress"
@@ -402,8 +402,8 @@ ja:
   text_meeting_closed_description: "この会議は終了しています。これ以上、議題項目の追加/削除はできません。"
   text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
   text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
-  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
-  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
+  text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
   label_meeting_manage_participants: "参加者を管理"
   label_meeting_no_participants: "参加者いません"
   label_meeting_show_hide_participants: "%{count} 件を表示/非表示"
@@ -420,6 +420,6 @@ ja:
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "このワークパッケージは、まだ今後の会議の議題に予定されていません。"
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: '「会議に追加」ボタンを使用して、このワークパッケージを今後の会議に追加してください。'
   text_work_package_has_no_past_meeting_agenda_items: "このワークパッケージは過去の会議で言及されていませんでした。"

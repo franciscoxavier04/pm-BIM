@@ -2,15 +2,15 @@ hu:
   activerecord:
     attributes:
       saml/provider:
-        display_name: Name
-        identifier: Identifier
-        secret: Secret
-        scope: Scope
+        display_name: Név
+        identifier: Azonosító
+        secret: Titkos
+        scope: Terjedelem
         assertion_consumer_service_url: ACS (Assertion consumer service) URL
         limit_self_registration: Limit self registration
         sp_entity_id: Service entity ID
         metadata_url: Identity provider metadata URL
-        name_identifier_format: Name identifier format
+        name_identifier_format: Névazonosító formátum
         idp_sso_service_url: Identity provider login endpoint
         idp_slo_service_url: Identity provider logout endpoint
         idp_cert: Public certificate of identity provider
@@ -21,7 +21,7 @@ hu:
         private_key: Corresponding private key for OpenProject SAML requests
         signature_method: Signature algorithm
         digest_method: Digest algorithm
-        format: "Format"
+        format: "Formátum"
         icon: "Custom icon"
     errors:
       models:
@@ -59,7 +59,7 @@ hu:
       plural: SAML identity providers
       singular: SAML identity provider
       requested_attributes: Requested attributes
-      attribute_mapping: Attribute mapping
+      attribute_mapping: Attribútum-leképezés
       attribute_mapping_text: >
         The following fields control which attributes provided by the SAML identity provider are used to provide user attributes in OpenProject
       metadata:
@@ -74,7 +74,7 @@ hu:
         format: 'Attribute format'
       section_headers:
         configuration: "Primary configuration"
-        attributes: "Attributes"
+        attributes: "Attribútumok"
       section_texts:
         display_name: "Configure the display name of the SAML provider."
         metadata: "Pre-fill configuration using a metadata URL or by pasting metadata XML"

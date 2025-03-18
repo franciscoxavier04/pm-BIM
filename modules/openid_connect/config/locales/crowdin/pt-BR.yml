@@ -10,11 +10,11 @@ pt-BR:
         name: Nome
         slug: Identificador único
         display_name: Nome de exibição
-        client_id: Client ID
-        client_secret: Client Secret
-        secret: Secret
+        client_id: ID do cliente
+        client_secret: Segredo do cliente
+        secret: Segredo
         scope: Escopo
-        grant_types_supported: Tipos de concessão suportados
+        grant_types_supported: Tipos de concessão compatíveis
         limit_self_registration: Restringir auto-registro
         authorization_endpoint: Endpoint de autorização
         userinfo_endpoint: Endpoint de informações do usuários
@@ -27,7 +27,7 @@ pt-BR:
         metadata_url: URL de metadados
         icon: Ícone personalizado
         claims: Declarações
-        acr_values: Valores ACR (Authentication Context Class Reference)
+        acr_values: Valores ACR
         redirect_url: URL de redirecionamento
     errors:
       models:

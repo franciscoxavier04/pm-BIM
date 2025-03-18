@@ -35,7 +35,7 @@ nl:
   documents:
     label_attachment_author: "Auteur bijlage"
     label_categories: "Categories"
-    new_category: "New category"
+    new_category: "Nieuwe categorie"
   label_document_added: "Document toegevoegd"
   label_document_new: "Nieuw document"
   label_document_plural: "Documenten"

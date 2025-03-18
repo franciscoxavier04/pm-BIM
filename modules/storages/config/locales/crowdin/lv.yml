@@ -22,7 +22,7 @@ lv:
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
-        creator: Creator
+        creator: Izveidotājs
         drive: Drive ID
         host: Serveris
         name: Nosaukums
@@ -318,7 +318,7 @@ lv:
     label_add_new_storage: Add new storage
     label_automatic_folder: New folder with automatically managed permissions
     label_creation_time: Creation time
-    label_creator: Creator
+    label_creator: Izveidotājs
     label_delete_storage: Delete storage
     label_edit_storage_access_management: Edit storage access management
     label_edit_storage_audience: Edit Storage Audience

@@ -343,7 +343,7 @@ mn:
     label_provider: Provider
     label_redirect_uri: Redirect URI
     label_show_storage_redirect_uri: Show redirect URI
-    label_status: Status
+    label_status: Төлөв
     label_storage: Storage
     label_uri: URI
     member_connection_status:

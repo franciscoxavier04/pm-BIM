@@ -44,6 +44,11 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
   # assume sat+sun are non working days
   shared_let(:week_days) { week_with_saturday_and_sunday_as_weekend }
 
+  before_all do
+    set_factory_default(:project_with_types, project)
+    set_factory_default(:user, user)
+  end
+
   let(:work_packages_page) { Pages::FullWorkPackage.new(work_package, project) }
   let(:wp_table) { Pages::WorkPackagesTable.new(project) }
 
@@ -54,6 +59,8 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
   let(:current_user) { user }
   let(:work_package) { bug_wp }
 
+  let(:current_attributes) { {} }
+
   def apply_and_expect_saved(attributes)
     date_field.save!
 
@@ -62,14 +69,15 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
     work_package.reload
 
     attributes.each do |attr, value|
-      expect(work_package.send(attr)).to eq value
+      expect(work_package.send(attr))
+        .to eq(value), "After saving, expected #{attr} to be #{value.inspect} but got #{work_package.send(attr).inspect}"
     end
   end
 
   before do
     Setting.available_languages << current_user.language
     I18n.locale = current_user.language
-    work_package.update_columns(current_attributes)
+    work_package.update_columns(current_attributes) if current_attributes.any?
     login_as(current_user)
 
     work_packages_page.visit!
@@ -126,58 +134,259 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
 
   describe "Scenario 26: Add a predecessor" do
     context "when adding a predecessor to a work package" do
-      it "changes the work package dates to start right after its predecessor", skip: "to be implemented later"
+      let_work_packages(<<~TABLE)
+        hierarchy          | start date | due date   | scheduling mode
+        future predecessor |            | 2025-01-02 | manual
+        work package       | 2025-01-08 | 2025-01-10 | manual
+      TABLE
+
+      it "changes the work package dates to start right after its predecessor" do
+        # add predecessor
+        work_packages_page.visit_tab!("relations")
+        work_packages_page.relations_tab.add_predecessor(future_predecessor)
+
+        # expect automatic with dates updated
+        open_date_picker
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_start_date "2025-01-03", disabled: true
+        datepicker.expect_due_date "2025-01-07", disabled: true
+        datepicker.expect_duration "3"
+      end
     end
   end
 
   describe "Scenario 27a: Manual to automatic with multiple predecessors (no lag)" do
     context "when switching a work package with predecessors to automatic scheduling mode" do
-      it "changes the work package dates to start right after its closest predecessor", skip: "to be implemented later"
+      let_work_packages(<<~TABLE)
+        hierarchy         | start date | due date   | scheduling mode | predecessors
+        predecessor A     |            | 2024-12-30 | manual          |
+        predecessor B     |            | 2025-01-02 | manual          |
+        work package      | 2025-01-08 | 2025-01-10 | manual          | predecessor A, predecessor B
+      TABLE
+
+      it "changes the work package dates to start right after its closest predecessor" do
+        open_date_picker
+        datepicker.expect_manual_scheduling_mode
+
+        datepicker.toggle_scheduling_mode
+        datepicker.expect_automatic_scheduling_mode
+
+        datepicker.expect_start_date "2025-01-03", disabled: true
+        datepicker.expect_due_date "2025-01-07", disabled: true
+        datepicker.expect_duration "3", disabled: false
+
+        apply_and_expect_saved(
+          start_date: Date.parse("2025-01-03"),
+          due_date: Date.parse("2025-01-07"),
+          duration: 3,
+          schedule_manually: false
+        )
+      end
     end
   end
 
   describe "Scenario 27b: Manual to automatic with multiple predecessors (with lag)" do
     context "when switching a work package with predecessors with lag to automatic scheduling mode" do
-      it "changes the work package dates to start right after its closest predecessor", skip: "to be implemented later"
+      let_work_packages(<<~TABLE)
+        hierarchy         | start date | due date   | scheduling mode | predecessors
+        predecessor A     |            | 2024-12-30 | manual          |
+        predecessor B     |            | 2025-01-02 | manual          |
+        work package      | 2025-01-08 | 2025-01-10 | manual          | predecessor A with lag 14, predecessor B
+      TABLE
+
+      it "changes the work package dates to start right after its closest predecessor" do
+        open_date_picker
+        datepicker.expect_manual_scheduling_mode
+
+        datepicker.toggle_scheduling_mode
+        datepicker.expect_automatic_scheduling_mode
+
+        datepicker.expect_start_date "2025-01-20", disabled: true
+        datepicker.expect_due_date "2025-01-22", disabled: true
+        datepicker.expect_duration "3", disabled: false
+
+        apply_and_expect_saved(
+          start_date: Date.parse("2025-01-20"),
+          due_date: Date.parse("2025-01-22"),
+          duration: 3,
+          schedule_manually: false
+        )
+      end
     end
   end
 
   describe "Scenario 28: Add children (parent in manual originally; children all manual, all in working days only)" do
     context "when adding first children to a work package" do
-      it "switches its scheduling mode to automatic", skip: "to be implemented later"
+      let_work_packages(<<~TABLE)
+        subject      | start date | due date   | scheduling mode | days counting
+        work package | 2025-01-08 | 2025-01-10 | manual          | working days only
+        child 1      | 2025-01-16 | 2025-01-20 | manual          | working days only
+        child 2      | 2025-01-21 | 2025-01-24 | manual          | working days only
+      TABLE
+
+      it "switches its scheduling mode to automatic" do
+        # add children
+        work_packages_page.visit_tab!("relations")
+        work_packages_page.relations_tab.add_existing_child(child1)
+        work_packages_page.relations_tab.add_existing_child(child2)
+
+        # expect automatic with dates from children and working days only checked
+        open_date_picker
+
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_start_date "2025-01-16", disabled: true
+        datepicker.expect_due_date "2025-01-24", disabled: true
+        datepicker.expect_duration "7", disabled: true
+        datepicker.expect_working_days_only_disabled
+        datepicker.expect_working_days_only true
+        datepicker.expect_banner_text I18n.t("work_packages.datepicker_modal.banner.title.automatic_with_children")
+      end
     end
   end
 
   describe "Scenario 29: Add children (parent in manual originally; children all manual, mixed working days)" do
     context "when adding first children to a work package, one having working days only unchecked" do
-      it "switches its scheduling mode to automatic with working days only unchecked", skip: "to be implemented later"
+      let_work_packages(<<~TABLE)
+        subject      | start date | due date   | scheduling mode | days counting
+        work package | 2025-01-15 | 2025-01-17 | manual          | working days only
+        child 1      | 2025-01-16 | 2025-01-20 | manual          | working days only
+        child 2      | 2025-01-21 | 2025-01-26 | manual          | all days
+      TABLE
+
+      it "switches its scheduling mode to automatic with working days only unchecked" do
+        # add children
+        work_packages_page.visit_tab!("relations")
+        work_packages_page.relations_tab.add_existing_child(child1)
+        work_packages_page.relations_tab.add_existing_child(child2)
+
+        # expect automatic with dates from children and working days only unchecked
+        open_date_picker
+
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_start_date "2025-01-16", disabled: true
+        datepicker.expect_due_date "2025-01-26", disabled: true
+        datepicker.expect_duration "11", disabled: true
+        datepicker.expect_working_days_only_disabled
+        datepicker.expect_working_days_only false
+        datepicker.expect_banner_text I18n.t("work_packages.datepicker_modal.banner.title.automatic_with_children")
+      end
     end
   end
 
   describe "Scenario 30: Add children to a successor (start date derived children instead of predecessor)" do
     context "when adding manually scheduled children to an automatically scheduled work package being a successor" do
-      it "updates its duration and dates based on the children dates, not based on its predecessors dates",
-         skip: "to be implemented later"
+      let_work_packages(<<~TABLE)
+        subject      | start date | due date   | scheduling mode | days counting     | predecessors
+        predecessor  | 2025-01-10 | 2025-01-14 | manual          | working days only |
+        work package | 2025-01-15 | 2025-01-17 | automatic       | working days only | predecessor
+        child 1      | 2025-01-16 | 2025-01-20 | manual          | working days only |
+        child 2      | 2025-01-21 | 2025-01-26 | manual          | all days          |
+      TABLE
+
+      it "updates its duration and dates based on the children dates, not based on its predecessors dates" do
+        # add children
+        work_packages_page.visit_tab!("relations")
+        work_packages_page.relations_tab.add_existing_child(child1)
+        work_packages_page.relations_tab.add_existing_child(child2)
+
+        # expect automatic with dates from children and working days only checked
+        open_date_picker
+
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_start_date "2025-01-16", disabled: true
+        datepicker.expect_due_date "2025-01-26", disabled: true
+        datepicker.expect_duration "11", disabled: true
+        datepicker.expect_working_days_only_disabled
+        datepicker.expect_working_days_only false
+        datepicker.expect_banner_text I18n.t("work_packages.datepicker_modal.banner.title.automatic_with_children")
+      end
     end
   end
 
-  describe "Scenario 30a: Automatically-scheduled successor with children loses all its children (Child 1 removed first)" do
-    context "when removing all children from an automatically scheduled work package being a successor" do
-      it "ends up with duration and 'working days only' attributes based on last removed child (child 1) " \
-         "and start date based on the predecessor", skip: "to be implemented later"
-    end
-  end
+  describe "Scenario 30a/30b: Automatically-scheduled successor with children loses all its children" do
+    shared_let_work_packages(<<~TABLE)
+      hierarchy    | start date | due date   | scheduling mode | days counting     | predecessors
+      predecessor  | 2025-01-10 | 2025-01-14 | manual          | working days only |
+      work package | 2025-01-16 | 2025-01-28 | automatic       | all days          | predecessor
+        child 1    | 2025-01-16 | 2025-01-20 | manual          | all days          |
+        child 2    | 2025-01-21 | 2025-01-28 | manual          | working days only |
+    TABLE
 
-  describe "Scenario 30b: Automatically-scheduled successor with children loses all its children (Child 2 removed first)" do
-    context "when removing all children from an automatically scheduled work package being a successor" do
-      it "ends up with duration 'working days only' attributes based on last removed child (child 2) " \
-         "and start date based on the predecessor", skip: "to be implemented later"
+    context "when removing all children (child 1 then child 2) from an automatically scheduled work package being a successor" do
+      it "ends up with duration and 'working days only' attributes based on last removed child (child 2) " \
+         "and start date based on the predecessor" do
+        work_packages_page.visit_tab!("relations")
+        # remove child 1, and then child 2
+        work_packages_page.relations_tab.remove_child(child1)
+        work_packages_page.relations_tab.remove_child(child2)
+
+        open_date_picker
+
+        # parent gets properties from last removed child: child 2
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_start_date "2025-01-15", disabled: true
+        datepicker.expect_due_date "2025-01-22", disabled: true
+        datepicker.expect_duration "6"
+        datepicker.expect_working_days_only_enabled
+        datepicker.expect_working_days_only true
+        datepicker.expect_banner_text I18n.t("work_packages.datepicker_modal.banner.title.automatic_with_predecessor")
+      end
+    end
+
+    context "when removing all children (child 2 then child 1) from an automatically scheduled work package being a successor" do
+      it "ends up with duration 'working days only' attributes based on last removed child (child 1) " \
+         "and start date based on the predecessor" do
+        work_packages_page.visit_tab!("relations")
+        # remove child 2, and then child 1
+        work_packages_page.relations_tab.remove_child(child2)
+        work_packages_page.relations_tab.remove_child(child1)
+
+        open_date_picker
+
+        # parent gets properties from last removed child: child 1
+        datepicker.expect_automatic_scheduling_mode
+        datepicker.expect_start_date "2025-01-15", disabled: true
+        datepicker.expect_due_date "2025-01-19", disabled: true
+        datepicker.expect_duration "5"
+        datepicker.expect_working_days_only_enabled
+        datepicker.expect_working_days_only false
+        datepicker.expect_banner_text I18n.t("work_packages.datepicker_modal.banner.title.automatic_with_predecessor")
+      end
     end
   end
 
   describe "Scenario 32: Switch parent with predecessor and children to manual" do
     context "when switching a work package with predecessors and children to manual scheduling mode" do
-      it "keeps its dates", skip: "to be implemented later"
+      shared_let_work_packages(<<~TABLE)
+        hierarchy    | start date | due date   | scheduling mode | days counting     | predecessors
+        predecessor  | 2025-01-24 | 2025-01-26 | manual          | working days only |
+        work package | 2025-01-27 | 2025-02-06 | automatic       | all days          | predecessor
+          child 1    | 2025-01-27 | 2025-01-29 | automatic       | all days          |
+          child 2    | 2025-01-30 | 2025-02-06 | automatic       | working days only | child 1
+      TABLE
+
+      it "keeps its dates and properties, and also switches the first child to manual scheduling mode" do
+        open_date_picker
+        datepicker.expect_automatic_scheduling_mode
+
+        datepicker.toggle_scheduling_mode
+        datepicker.expect_manual_scheduling_mode
+
+        datepicker.expect_start_date "2025-01-27"
+        datepicker.expect_due_date "2025-02-06"
+        datepicker.expect_duration "11"
+        datepicker.expect_working_days_only_enabled
+        datepicker.expect_working_days_only false
+
+        apply_and_expect_saved(
+          start_date: Date.parse("2025-01-27"),
+          due_date: Date.parse("2025-02-06"),
+          duration: 11,
+          schedule_manually: true
+        )
+        expect(child1.reload.schedule_manually).to be(true)
+        expect(child2.reload.schedule_manually).to be(false)
+      end
     end
   end
 end

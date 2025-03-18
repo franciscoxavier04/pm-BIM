@@ -23,21 +23,21 @@
 de:
   attributes:
     commit: "Commit"
-    gitlab: "GitLab identifier"
-    gitlab_avatar_url: "Avatar URL"
-    gitlab_email: "GitLab Email"
+    gitlab: "GitLab Kennung"
+    gitlab_avatar_url: "Avatar-URL"
+    gitlab_email: "GitLab E-Mail"
     gitlab_html_url: "GitLab HTML URL"
     gitlab_merge_request: "Merge Request"
-    gitlab_name: "GitLab name"
-    gitlab_updated_at: "Updated at"
-    gitlab_user_avatar_url: "GitLab avatar URL"
-    gitlab_username: "GitLab username"
+    gitlab_name: "GitLab Name"
+    gitlab_updated_at: "Aktualisiert am"
+    gitlab_user_avatar_url: "GitLab Avatar URL"
+    gitlab_username: "GitLab Benutzername"
   activerecord:
     attributes:
       gitlab_pipeline:
         ci_details: "CI Details"
       gitlab_merge_request:
-        labels: "Labels"
+        labels: "Bezeichnung"
     errors:
       models:
         gitlab_issue:

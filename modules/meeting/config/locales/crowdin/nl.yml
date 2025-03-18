@@ -54,10 +54,10 @@ nl:
         frequency: "Frequentie"
         interval: "Interval"
         start_date: "Begint op"
-        start_time: "Start time"
-        start_time_hour: "Start time"
+        start_time: "Starttijd"
+        start_time_hour: "Starttijd"
         end_after: "Vergaderreeks eindigt"
-        end_date: "End date"
+        end_date: "Einddatum"
         iterations: "Gebeurtenissen"
     errors:
       models:
@@ -71,7 +71,7 @@ nl:
     models:
       recurring_meeting: "Terugkerende vergadering"
       structured_meeting: "Eenmalige vergadering"
-      meeting: "Meeting"
+      meeting: "Vergadering"
       meeting_agenda_item: "Agendapunt"
       meeting_agenda: "Agenda"
       meeting_minutes: "Minuten"
@@ -290,7 +290,7 @@ nl:
       full_past: "%{base} op %{time}, geëindigd op %{end_date}"
       never_ending: "%{base} op %{time}"
     open:
-      title: "Open"
+      title: "Agenda opened"
       subtitle: >
         Open vergaderingen hebben agenda's die bewerkt kunnen worden en verschijnen in het gedeelte "Mijn vergaderingen" van individuele gebruikers. Wijzigingen aan het sjabloon voor reeksen vergaderingen hebben geen invloed op al geopende vergaderingen.
       blankslate:
@@ -305,7 +305,7 @@ nl:
         desc: >
           There are no additional meetings planned in this series. To schedule additional meetings or extend the series, go to the template and edit meeting details to change the end date, frequency or interval.
     delete_dialog:
-      title: "Delete meeting series"
+      title: "Verwijder serie van vergaderingen"
       heading: "Permanently delete this meeting series?"
       confirmation_message_html:
         zero: >
@@ -321,7 +321,7 @@ nl:
         Any meeting information not in the template will be lost. Do you want to continue?
       confirm_button: "Cancel occurrence"
     end_series_dialog:
-      title: "End meeting series"
+      title: "Vergaderreeks beëindigen"
   notice_successful_notification: "Notificatie succesvol verzonden"
   notice_timezone_missing: Geen tijdzone is ingesteld en %{zone} is aangenomen. Om uw tijdzone te kiezen, klik dan hier.
   notice_meeting_updated: "Deze pagina is door iemand anders bijgewerkt. Herlaad om wijzigingen te bekijken."
@@ -359,7 +359,7 @@ nl:
   label_meeting_created_by: "Gemaakt door"
   label_meeting_last_updated: "Laatst bijgewerkt"
   label_meeting_reload: "Herladen"
-  label_meeting_index_today: "Today"
+  label_meeting_index_today: "Vandaag"
   label_meeting_index_tomorrow: "Tomorrow"
   label_meeting_index_this_week: "Later this week"
   label_meeting_index_later: "Next week and later"
@@ -395,10 +395,10 @@ nl:
   label_meeting_state_closed: "Gesloten"
   label_meeting_state_closed_html: "<i>Gesloten</i>"
   label_meeting_state_agenda_created: "Agenda aangemaakt"
-  label_meeting_state_planned: "Planned"
+  label_meeting_state_planned: "Gepland"
   label_meeting_state_cancelled: "Geannuleerd"
   label_meeting_state_skipped: "Overgeslagen"
-  label_meeting_state_in_progress: "In progress"
+  label_meeting_state_in_progress: "In behandeling"
   label_meeting_reopen_action: "Heropen vergadering"
   label_meeting_close_action: "Vergadering sluiten"
   label_meeting_in_progress_action: "Mark as in progress"
@@ -406,8 +406,8 @@ nl:
   text_meeting_closed_description: "Deze vergadering is gesloten. U kunt geen agendapunten meer toevoegen/verwijderen."
   text_meeting_in_progress_description: "This meeting is in progress. You can document outcomes for each agenda item, re-arrange them, and even add new ones. Once the meeting is complete, you can mark it as closed to lock it."
   text_meeting_open_dropdown_description: "Any existing outcomes will remain but users will not be able to add new outcomes."
-  text_meeting_in_progress_dropdown_description: "Once the agenda is ready, mark it as in progress to document outcomes."
-  text_meeting_closed_dropdown_description: "Once the meeting is complete, you can mark it as closed to lock it."
+  text_meeting_in_progress_dropdown_description: "Document outcomes like information needs or decisions taken during the meeting."
+  text_meeting_closed_dropdown_description: "This meeting is closed. You cannot modify agenda items or outcomes anymore."
   label_meeting_manage_participants: "Deelnemers beheren"
   label_meeting_no_participants: "Geen deelnemers"
   label_meeting_show_hide_participants: "Toon/verberg %{count} meer"
@@ -424,6 +424,6 @@ nl:
   text_agenda_item_move_next_meeting: "Are you sure you want to move this to the next meeting on %{date} at %{time}?"
   text_agenda_item_moved_to_next_meeting: "Agenda item moved to the next meeting, on %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Dit werkpakket staat nog niet op de agenda van een komende vergadering."
-  text_agenda_item_move_next_meeting_cancelled: "The next meeting in this series has been cancelled."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Gebruik de knop "Aan vergadering toevoegen" om dit werkpakket aan een komende vergadering toe te voegen.'
   text_work_package_has_no_past_meeting_agenda_items: "Dit werkpakket werd tijdens een vorige vergadering niet genoemd."

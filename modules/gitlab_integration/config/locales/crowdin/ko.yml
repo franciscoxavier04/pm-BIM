@@ -22,22 +22,22 @@
 #++
 ko:
   attributes:
-    commit: "Commit"
-    gitlab: "GitLab identifier"
-    gitlab_avatar_url: "Avatar URL"
-    gitlab_email: "GitLab Email"
+    commit: "커밋"
+    gitlab: "GitLab 식별자"
+    gitlab_avatar_url: "아바타 URL"
+    gitlab_email: "GitLab 이메일"
     gitlab_html_url: "GitLab HTML URL"
-    gitlab_merge_request: "Merge Request"
-    gitlab_name: "GitLab name"
-    gitlab_updated_at: "Updated at"
-    gitlab_user_avatar_url: "GitLab avatar URL"
-    gitlab_username: "GitLab username"
+    gitlab_merge_request: "병합 요청"
+    gitlab_name: "GitLab 이름"
+    gitlab_updated_at: "업데이트:"
+    gitlab_user_avatar_url: "GitLab 아바타 URL"
+    gitlab_username: "GitLab 사용자 이름"
   activerecord:
     attributes:
       gitlab_pipeline:
-        ci_details: "CI Details"
+        ci_details: "CI 세부 정보"
       gitlab_merge_request:
-        labels: "Labels"
+        labels: "레이블"
     errors:
       models:
         gitlab_issue:

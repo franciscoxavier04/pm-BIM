@@ -1026,7 +1026,7 @@ zh-CN:
         auto_hide_popups: "自动隐藏成功通知"
         warn_on_leaving_unsaved: "离开未保存更改的工作包时提示我"
         theme: "模式"
-        time_zone: "Time zone"
+        time_zone: "时区"
         mode_guideline: "某些模式会覆盖自定义主题的颜色，以便于访问和阅读。如需完整的自定义主题，请选择 \"浅色 \"模式。"
         daily_reminders: "每日提醒"
         workdays: "工作日"
@@ -1583,7 +1583,7 @@ zh-CN:
     derived_due_date: "派生的完成日期"
     derived_estimated_hours: "总工作量"
     derived_start_date: "派生的开始日期"
-    direction: "Direction"
+    direction: "方向"
     display_sums: "显示汇总"
     due_date: "完成日期"
     estimated_hours: "工作"
@@ -1648,7 +1648,7 @@ zh-CN:
     version: "版本"
     visible: "可见"
     work_package: "工作包"
-    work_package_id: "Work package"
+    work_package_id: "工作包"
   backup:
     failed: "备份失败"
     label_backup_token: "备份令牌"
@@ -3488,8 +3488,8 @@ zh-CN:
     warnings:
       cannot_annotate: "此文件不能进行注释。"
   scheduling:
-    activated: "已激活"
-    deactivated: "已取消激活"
+    manual: "设为手动"
+    automatic: "设为自动"
   search_input_placeholder: "搜索"
   setting_after_first_login_redirect_url: "首次登录重定向"
   setting_after_first_login_redirect_url_text_html: >
@@ -3756,6 +3756,11 @@ zh-CN:
     working_days:
       section_work_week: "工作周"
       section_holidays_and_closures: "节假日与停业"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"

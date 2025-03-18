@@ -7,11 +7,11 @@ eo:
   activerecord:
     attributes:
       openid_connect/provider:
-        name: Name
+        name: Nomo
         slug: Unique identifier
         display_name: Display name
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: ID de la kliento
+        client_secret: Sekreto de la kliento
         secret: Secret
         scope: Scope
         grant_types_supported: Supported grant types

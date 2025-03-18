@@ -218,7 +218,7 @@ sv:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: För alla projekt
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -288,10 +288,10 @@ sv:
           not_descendant: "must be a descendant of the hierarchy root."
     rules:
       depth: "Depth"
-      item: "Item"
+      item: "Objekt"
       label: "Etikett"
       short: "Short name"
-      parent: "Parent"
+      parent: "Överordnad"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -599,14 +599,14 @@ sv:
       no_results_content_text: Skapa ny typ
     edit:
       form_configuration:
-        tab: "Form configuration"
+        tab: "Ställ in formulär"
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projekt"
+        enabled_projects: "Aktiverade projekt"
       settings:
-        tab: "Settings"
+        tab: "Inställningar"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -664,13 +664,13 @@ sv:
         title: "Working days only"
       mode:
         title: "Scheduling mode"
-        automatic: "Automatic"
+        automatic: "Automatisk"
         manual: "Manual"
       show_relations: "Show relations"
       tabs:
         aria_label: "Datepicker tabs"
-        children: "Children"
-        dates: "Dates"
+        children: "Barn"
+        dates: "Datum"
         predecessors: "Predecessors"
         successors: "Successors"
         blankslate:
@@ -738,10 +738,10 @@ sv:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "Relaterad till"
+      label_relates_plural: "Relaterad till"
+      label_relates_to_singular: "Relaterad till"
+      label_relates_to_plural: "Relaterad till"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -757,42 +757,42 @@ sv:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "blockerar"
+      label_blocks_plural: "blockerar"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "blockeras av"
+      label_blocked_plural: "blockeras av"
+      label_blocked_by_singular: "blockeras av"
+      label_blocked__by_plural: "blockeras av"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "dubblett av"
+      label_duplicates_plural: "dubblett av"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "duplicerad genom"
+      label_duplicated_plural: "duplicerad genom"
+      label_duplicated_by_singular: "duplicerad genom"
+      label_duplicated_by_plural: "duplicerad genom"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "inkluderar"
+      label_includes_plural: "inkluderar"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "del av"
+      label_partof_plural: "del av"
+      label_part_of_singular: "del av"
+      label_part_of_plural: "del av"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "kräver"
+      label_requires_plural: "kräver"
       requires_description: "Marks the related work package as a requirement to this one"
-      label_required_singular: "required by"
-      label_required_plural: "required by"
+      label_required_singular: "krävs av"
+      label_required_plural: "krävs av"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Relaterat arbetspaketet"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Inbjudan
   account:
@@ -855,7 +855,7 @@ sv:
         editable: "Redigerbar"
         field_format: "Format"
         is_filter: "Används som ett filter"
-        is_for_all: "For all projects"
+        is_for_all: "För alla projekt"
         is_required: "Krävs"
         max_length: "Maximal längd"
         min_length: "Minsta längd"
@@ -872,7 +872,7 @@ sv:
         secret: "Client secret"
         owner: "Ägare"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktiv"
         redirect_uri: "Omdirigerings-URI"
         client_credentials_user_id: "Användar-ID klientreferenser"
         scopes: "Omfattning"
@@ -900,7 +900,7 @@ sv:
         attr_login: "Attribut för användarnamn"
         attr_mail: "E-postattribut"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "Administratör"
         base_dn: "Base DN"
         host: "Host"
         onthefly: "Automatic user creation"
@@ -918,7 +918,7 @@ sv:
           true: "unarchived"
           false: "arkiverad"
         description: "Beskrivning"
-        enabled_modules: "Enabled modules"
+        enabled_modules: "Aktiverad Moduler"
         identifier: "Identifierare"
         latest_activity_at: "Senaste aktivitet vid"
         parent: "Delprojekt under"
@@ -949,11 +949,11 @@ sv:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Namn"
+        color: "Färg"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "Kolumner"
         column_names: "Kolumner"
         relations_to_type_column: "Relationer till %{type}"
         relations_of_type_column: "relationer av typ %{type}"
@@ -961,7 +961,7 @@ sv:
         sort_by: "Sort results by"
         filters: "Filter"
         timeline_labels: "Etiketter för tidslinje"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "Visa Gantt-schema"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -974,17 +974,17 @@ sv:
         manual_sorting: "Manual sort order"
         ordered_work_packages: "Work packages order"
         include_subprojects: "Include subprojects"
-        results: "Results"
+        results: "Resultat"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Relaterat arbetspaketet"
         to: "Relaterat arbetspaketet"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remind_at_date: "Datum"
+        remind_at_time: "Tid"
       reminder_notification:
         notification: "Notification"
       repository:
@@ -997,7 +997,7 @@ sv:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "Kalender"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivitet"
@@ -1016,7 +1016,7 @@ sv:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "Användare"
       user:
         admin: "Administratör"
         auth_source: "Authentication source"
@@ -1027,8 +1027,8 @@ sv:
         language: "Språk"
         last_login_on: "Senaste inloggning"
         failed_login_count: "Failed login attempts"
-        first_name: "First name"
-        last_name: "Last name"
+        first_name: "Förnamn"
+        last_name: "Efternamn"
         first_login: "First login"
         new_password: "Nytt lösenord"
         password_confirmation: "Bekräftelse"
@@ -1039,7 +1039,7 @@ sv:
         auto_hide_popups: "Dölj automatiskt meddelanden om åtgärder som lyckats"
         warn_on_leaving_unsaved: "Varna mig när jag lämnar ett arbetspaket med osparade ändringar"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "Tidszon"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1453,7 +1453,7 @@ sv:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Måste innehålla följande teckentyper (minst %{min_count} av %{all_count}): %{rules}"
               lowercase: "gemener (t.ex. \"a\")"
               uppercase: "versal (t.ex. \"A\")"
               numeric: "numeriska (t.ex. ' 1')"
@@ -1503,7 +1503,7 @@ sv:
       global_role: "Global role"
       group: "Grupp"
       issue_priority:
-        one: "Priority"
+        one: "Prioritet"
         other: "Priorities"
       member: "Medlem"
       news: "Nyheter"
@@ -1524,7 +1524,7 @@ sv:
         other: "Roller"
       status: "Arbetspaketstatus"
       token/api:
-        one: Access token
+        one: Åtkomstnyckel
         other: Access tokens
       type: "Typ"
       user: "Användare"
@@ -1584,7 +1584,7 @@ sv:
     assignee: "Tilldelad till"
     attachments: "Bilagor"
     actor: "Actor"
-    action: "Action"
+    action: "Åtgärd"
     author: "Upphovsman"
     avatar: "Avatar"
     base: "Allmänt fel:"
@@ -1597,11 +1597,11 @@ sv:
     color: "Färg"
     creator: "Creator"
     created_at: "Skapat den"
-    custom_field: "Custom field"
+    custom_field: "Anpassat fält"
     custom_options: "Möjliga värden"
     custom_values: "Anpassade fält"
     date: "Datum"
-    dates_interval: "Date range"
+    dates_interval: "Datumintervall"
     default_columns: "Standardkolumnerna"
     description: "Beskrivning"
     derived_due_date: "Derived finish date"
@@ -1612,14 +1612,14 @@ sv:
     due_date: "Slutdatum"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "E-post"
     entity_type: "Entity"
     expires_at: "Förfaller den"
     firstname: "Förnamn"
     filter: "Filter"
     group: "Grupp"
     groups: "Grupper"
-    hexcode: "Hex code"
+    hexcode: "Hex-kod"
     id: "ID"
     is_default: "Standardvärde"
     is_for_all: "För alla projekt"
@@ -1628,16 +1628,16 @@ sv:
     #kept for backwards compatibility
     issue: "Arbetspaket"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "Kommentar"
     lastname: "Efternamn"
     login: "Användarnamn"
-    lock_version: "Lock version"
+    lock_version: "Lås version"
     mail: "E-post"
     name: "Namn"
-    note: "Note"
-    notes: "Notes"
+    note: "Observera"
+    notes: "Anteckningar"
     number: "Number"
-    options: "Options"
+    options: "Alternativ"
     operator: "Operator"
     password: "Lösenord"
     priority: "Prioritet"
@@ -1645,18 +1645,18 @@ sv:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Huvudansvarig"
-    required: "Required"
+    required: "Krävs"
     recipient: "Recipient"
     role: "Roll"
     roles: "Roll"
-    search: "Search"
+    search: "Sök"
     start_date: "Startdatum"
     status: "Status"
     state: "State"
     subject: "Ämne"
     slug: "Slug"
     summary: "Sammanfattning"
-    time_zone: "Time zone"
+    time_zone: "Tidszon"
     text: "Text"
     title: "Titel"
     type: "Typ"
@@ -1665,14 +1665,14 @@ sv:
     updated_on: "Uppdaterat den"
     uploader: "Uploader"
     user: "Användare"
-    username: "Username"
-    unit: "Unit"
+    username: "Användarnamn"
+    unit: "Enhet"
     value: "Värde"
     values: "Values"
     version: "Version"
-    visible: "Visible"
+    visible: "Synlig"
     work_package: "Arbetspaket"
-    work_package_id: "Work package"
+    work_package_id: "Arbetspaket"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -1937,7 +1937,7 @@ sv:
         other: "timmar"
       day:
         one: "day"
-        other: "days"
+        other: "dagar"
   description_active: "Aktiv?"
   description_attachment_toggle: "Visa/Dölj bilagor"
   description_autocomplete: >
@@ -1972,7 +1972,7 @@ sv:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Mer information"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -2060,8 +2060,8 @@ sv:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Exportera"
+      submit: "Exportera"
       format:
         label: "Filformat"
         options:
@@ -2081,13 +2081,13 @@ sv:
           label: "PDF export type"
           options:
             table:
-              label: "Table"
+              label: "Tabell"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Rapport"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "Gantt-schema"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2154,7 +2154,7 @@ sv:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: Ladda ner
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2487,7 +2487,7 @@ sv:
   label_default: "Standard"
   label_delete_user: "Radera användare"
   label_delete_project: "Ta bort projekt"
-  label_delete: "Delete"
+  label_delete: "Ta bort"
   label_deleted: "raderad"
   label_deleted_custom_field: "(raderat anpassat fält)"
   label_deleted_custom_item: "(deleted item)"
@@ -2677,8 +2677,8 @@ sv:
   label_months_from: "månader från"
   label_more: "Mer"
   label_more_than_ago: "mer än dagar sedan"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Flytta kolumnen till vänster"
+  label_move_column_right: "Flytta kolumnen till höger"
   label_move_work_package: "Flytta arbetspaket"
   label_my_account: "Kontoinställningar"
   label_my_activity: "Min aktivitet"
@@ -2703,7 +2703,7 @@ sv:
   label_no_change_option: "(Ingen ändring)"
   label_no_data: "Ingen data att visa"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "inget startdatum"
   label_no_parent_page: "Ingen överordnad sida"
   label_nothing_display: "Inget att visa"
   label_nobody: "ingen"
@@ -2806,7 +2806,7 @@ sv:
   label_relation_new: "Ny relation"
   label_release_notes: "Versionsnoteringar"
   label_remaining_work: "Remaining work"
-  label_remove_column: "Remove column"
+  label_remove_column: "Ta bort kolumn"
   label_remove_columns: "Ta bort markerade kolumner"
   label_renamed: "ändrat namn"
   label_reply_plural: "Svar"
@@ -2849,10 +2849,10 @@ sv:
   label_show_completed_versions: "Visa slutförda versioner"
   label_columns: "Kolumner"
   label_sort: "Sortera"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Sortera stigande"
   label_sort_by: "Sortera efter %{value}"
   label_sorted_by: "sorterade efter %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Sortera fallande"
   label_sort_higher: "Flytta upp"
   label_sort_highest: "Flytta till toppen"
   label_sort_lower: "Flytta ned"
@@ -2881,7 +2881,7 @@ sv:
   label_this_month: "denna månad"
   label_this_week: "denna vecka"
   label_this_year: "i år"
-  label_time: "Time"
+  label_time: "Tid"
   label_time_entry_plural: "Förbrukad tid"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Titel"
@@ -2921,7 +2921,7 @@ sv:
   label_user_settings: "Användarinställningar"
   label_users_settings: "Användarinställningar"
   label_version_new: "Ny version"
-  label_version_edit: "Edit version"
+  label_version_edit: "Redigera version"
   label_version_plural: "Versioner"
   label_version_sharing_descendants: "Med delprojekt"
   label_version_sharing_hierarchy: "Med projekthierarkin"
@@ -3383,8 +3383,8 @@ sv:
       archived: "Arkiverad"
     count:
       zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
+      one: "Ett projekt"
+      other: "%{count} projekt"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3536,8 +3536,8 @@ sv:
     warnings:
       cannot_annotate: "Den här filen kan inte kommenteras."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Sök ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3774,7 +3774,7 @@ sv:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Lägg till"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -3804,6 +3804,11 @@ sv:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Oformaterad text"
@@ -4083,7 +4088,7 @@ sv:
       view: "Vy"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Datum"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4271,9 +4276,9 @@ sv:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: Konfidentiellt
       singular: "OAuth-autentisering"
-      scopes: "Scopes"
+      scopes: "Omfattning"
       client_credentials: "Client credentials"
       plural: "OAuth applikationer"
       named: "OAuth applikationen '%{name}'"

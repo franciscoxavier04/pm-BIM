@@ -1651,7 +1651,7 @@ sr:
     journal_notes: "Comment"
     lastname: "Last name"
     login: "Username"
-    lock_version: "Lock version"
+    lock_version: "Zaključaj verziju"
     mail: "Email"
     name: "Name"
     note: "Note"
@@ -2960,7 +2960,7 @@ sr:
   label_user_settings: "User settings"
   label_users_settings: "Users settings"
   label_version_new: "New version"
-  label_version_edit: "Edit version"
+  label_version_edit: "Uredi verziju"
   label_version_plural: "Versions"
   label_version_sharing_descendants: "With subprojects"
   label_version_sharing_hierarchy: "With project hierarchy"
@@ -3579,8 +3579,8 @@ sr:
     warnings:
       cannot_annotate: "This file cannot be annotated."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3847,6 +3847,11 @@ sr:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"

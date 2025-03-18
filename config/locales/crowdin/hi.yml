@@ -218,7 +218,7 @@ hi:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: सभी परियोजनाओं के लिए
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ hi:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "जनक"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -755,13 +755,13 @@ hi:
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
       label_closest: "Closest"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_blocks_singular: "ब्लॉक"
+      label_blocks_plural: "ब्लॉक"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "द्वारा अवरुद्ध"
+      label_blocked_plural: "द्वारा अवरुद्ध"
+      label_blocked_by_singular: "द्वारा अवरुद्ध"
+      label_blocked__by_plural: "द्वारा अवरुद्ध"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
       label_duplicates_singular: "duplicates"
@@ -790,7 +790,7 @@ hi:
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "संबंधित कार्य पैकेज"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Invitation
   account:
@@ -853,7 +853,7 @@ hi:
         editable: "संपादनीय"
         field_format: "Format"
         is_filter: "फिल्टर रूप में इस्तेमाल"
-        is_for_all: "For all projects"
+        is_for_all: "सभी परियोजनाओं के लिए"
         is_required: "अनिवार्य"
         max_length: "अधिकतम लंबाई"
         min_length: "न्यूनतम लम्बाई"
@@ -870,7 +870,7 @@ hi:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "सक्रिय"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
@@ -898,7 +898,7 @@ hi:
         attr_login: "Username attribute"
         attr_mail: "Email attribute"
         filter_string: "Filter string"
-        admin: "Administrator"
+        admin: "व्यवस्थापक"
         base_dn: "बेस डी.एन."
         host: "होस्ट"
         onthefly: "Automatic user creation"
@@ -947,11 +947,11 @@ hi:
       project/life_cycle_step:
         definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "नाम"
+        color: "रंग"
       query:
         sums: "Sums"
-        columns: "Columns"
+        columns: "स्तंभ"
         column_names: "स्तंभ"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
@@ -959,7 +959,7 @@ hi:
         sort_by: "Sort results by"
         filters: "फ़िल्टर"
         timeline_labels: "Timeline labels"
-        timeline_visible: "Show Gantt chart"
+        timeline_visible: "गैन्ट चार्ट दिखाएं"
         timeline_zoom_level: "Gantt chart zoom level"
         timestamps: "Baseline timestamps"
         sort_criteria: "Sort criteria"
@@ -975,13 +975,13 @@ hi:
         results: "Results"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "संबंधित कार्य पैकेज"
         to: "संबंधित कार्य पैकेज"
         relation_type: "Relation type"
       reminder:
         remindable: "Reminded object"
         remind_at: "Remind at"
-        remind_at_date: "Date"
+        remind_at_date: "तिथि"
         remind_at_time: "Time"
       reminder_notification:
         notification: "Notification"
@@ -995,7 +995,7 @@ hi:
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
       token/ical:
-        calendar: "Calendar"
+        calendar: "कैलेंडर"
         ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "गतिविधी"
@@ -1014,7 +1014,7 @@ hi:
       remote_identity:
         auth_source: "Auth Source"
         integration: "Integration"
-        user: "User"
+        user: "उपयोगकर्ता"
       user:
         admin: "व्यवस्थापक"
         auth_source: "Authentication source"
@@ -1026,7 +1026,7 @@ hi:
         last_login_on: "पिछला लॉगिन"
         failed_login_count: "Failed login attempts"
         first_name: "First name"
-        last_name: "Last name"
+        last_name: "अंतिम नाम"
         first_login: "First login"
         new_password: "नया पासवर्ड"
         password_confirmation: "पुष्टिकरण"
@@ -1037,7 +1037,7 @@ hi:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
-        time_zone: "Time zone"
+        time_zone: "समय क्षेत्र"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1501,7 +1501,7 @@ hi:
       global_role: "Global role"
       group: "समूह"
       issue_priority:
-        one: "Priority"
+        one: "वरीयता"
         other: "Priorities"
       member: "सदस्य"
       news: "नया"
@@ -1584,7 +1584,7 @@ hi:
     actor: "Actor"
     action: "Action"
     author: "Author"
-    avatar: "Avatar"
+    avatar: "अवतार"
     base: "General Error:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"
@@ -1595,7 +1595,7 @@ hi:
     color: "रंग"
     creator: "Creator"
     created_at: "Created on"
-    custom_field: "Custom field"
+    custom_field: "रुचि के अनुसार फिल्ड"
     custom_options: "संभावित मिलान"
     custom_values: "Custom fields"
     date: "तिथि"
@@ -1610,14 +1610,14 @@ hi:
     due_date: "समाप्ति दिनांक"
     estimated_hours: "Work"
     estimated_time: "Work"
-    email: "Email"
+    email: "ईमेल"
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "First name"
     filter: "Filter"
     group: "समूह"
     groups: "समूह"
-    hexcode: "Hex code"
+    hexcode: "हेक्स कोड"
     id: "आईडी"
     is_default: "डिफ़ॉल्ट मान"
     is_for_all: "सभी परियोजनाओं के लिए"
@@ -1626,16 +1626,16 @@ hi:
     #kept for backwards compatibility
     issue: "कार्य पैकेज"
     journal: "Journal"
-    journal_notes: "Comment"
+    journal_notes: "टिप्पणी"
     lastname: "अंतिम नाम"
     login: "Username"
     lock_version: "Lock version"
     mail: "ईमेल"
     name: "नाम"
     note: "Note"
-    notes: "Notes"
+    notes: "टिप्पणियाँ"
     number: "Number"
-    options: "Options"
+    options: "विकल्प"
     operator: "Operator"
     password: "पासवर्ड"
     priority: "वरीयता"
@@ -1643,7 +1643,7 @@ hi:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "जवाबदेह"
-    required: "Required"
+    required: "अनिवार्य"
     recipient: "Recipient"
     role: "भूमिका"
     roles: "भूमिकाएं"
@@ -1654,8 +1654,8 @@ hi:
     subject: "विषय"
     slug: "Slug"
     summary: "सारांश"
-    time_zone: "Time zone"
-    text: "Text"
+    time_zone: "समय क्षेत्र"
+    text: "टेक्स्ट"
     title: "शीर्षक"
     type: "प्रकार"
     typeahead: "Autocomplete"
@@ -1668,9 +1668,9 @@ hi:
     value: "मान"
     values: "Values"
     version: "संस्करण"
-    visible: "Visible"
+    visible: "दृश्यमान"
     work_package: "कार्य पैकेज"
-    work_package_id: "Work package"
+    work_package_id: "कार्य पैकेज"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -2058,15 +2058,15 @@ hi:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "निर्यात"
+      submit: "निर्यात"
       format:
         label: "File format"
         options:
           csv:
             label: "CSV"
           pdf:
-            label: "PDF"
+            label: "पीडीएफ"
           xls:
             label: "XLS"
       columns:
@@ -2085,7 +2085,7 @@ hi:
               label: "Report"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
-              label: "Gantt chart"
+              label: "गैंट चार्ट"
               caption: "Export the work packages list in a Gantt diagram view."
         include_images:
           label: "Include images"
@@ -2152,7 +2152,7 @@ hi:
       caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Download
+      submit: डाउनलोड
       templates:
         label: "Template"
         none_enabled: "No template has been enabled for this work package type"
@@ -2485,7 +2485,7 @@ hi:
   label_default: "Default"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "मिटाएँ"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
   label_deleted_custom_item: "(deleted item)"
@@ -2574,7 +2574,7 @@ hi:
   label_here: यहाँ
   label_hide: "छुपाएँ"
   label_history: "इतिहास"
-  label_hierarchy: "Hierarchy"
+  label_hierarchy: "पदानुक्रम"
   label_hierarchy_leaf: "पदानुक्रम पत्ती"
   label_home: "मुखपृष्ठ"
   label_subject_or_id: "Subject or ID"
@@ -2701,7 +2701,7 @@ hi:
   label_no_change_option: "(कोई परिवर्तन नहीं)"
   label_no_data: "प्रदर्शित करने के लिए कोई डेटा नहीं"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "कोई प्रारंभ दिनांक नहीं"
   label_no_parent_page: "कोई पैरेंट पृष्ठ नहीं"
   label_nothing_display: "Nothing to display"
   label_nobody: "कोई नहीं"
@@ -3536,8 +3536,8 @@ hi:
     warnings:
       cannot_annotate: "This file cannot be annotated."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3774,7 +3774,7 @@ hi:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "जोड़ें"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -3804,6 +3804,11 @@ hi:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "सादा पाठ"
@@ -4084,7 +4089,7 @@ hi:
       view: "दृश्य"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "तिथि"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."

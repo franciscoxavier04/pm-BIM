@@ -2,13 +2,13 @@ lt:
   activerecord:
     attributes:
       oauth_client:
-        client_id: Client ID
-        client_secret: Client secret
+        client_id: Kliento ID
+        client_secret: Kliento paslaptis
       project:
         project_folder_type: Project folder type
       storages/file_link:
         origin: Origin
-        storage: Storage
+        storage: Saugykla
       storages/nextcloud_storage:
         authentication_methods:
           oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
@@ -16,9 +16,9 @@ lt:
           two_way_oauth2: Two-way OAuth 2.0 authorization code flow
         storage_audience: Storage Audience
       storages/project_storage:
-        project_folder: Project folder
+        project_folder: Projekto aplankas
         project_folder_mode: Project folder mode
-        storage: Storage
+        storage: Saugykla
         storage_url: Storage URL
       storages/storage:
         authentication_method: Authentication Method
@@ -215,7 +215,7 @@ lt:
         manual_management_description: Kurkite ir valdykite projektų aplankus patys rankiniu būdu. Jums reikės rankiniu būdu užtikrinti, kad reikiami naudotojai turi prieigą.
         setup_incomplete: Parinkite naudotojų prieigos ir aplankų kūrimo valdymo tipą.
         subtitle: Prieigos valdymas
-      access_management_section: Access and project folders
+      access_management_section: Prieiga ir projekto aplankai
       automatically_managed_folders: Automatiškai valdomi aplankai
       general_information: Bendra informacija
       oauth_configuration: OAuth configuration
@@ -354,20 +354,20 @@ lt:
     members_no_results: Nėra narių rodymui.
     no_results: Dar nenustatyta jokia saugykla.
     oauth_access_granted_modal:
-      access_granted: Access granted
+      access_granted: Prieiga suteikta
       project_settings:
         access_granted_screen_reader: Access granted. You are now ready to use %{storage}
-        storage_ready: You are now ready to use %{storage}
+        storage_ready: Jūs dabar pasiruošę naudoti %{storage}
       storage_admin:
         access_granted_screen_reader: Access granted. You are now ready to add projects to %{storage}
         storage_ready: You are now ready to add projects to %{storage}
     oauth_grant_nudge_modal:
       cancel_button_label: Aš tai padarysiu vėliau
       heading: Login to %{provider_type} required
-      login_button_aria_label: Login to %{storage}
+      login_button_aria_label: Prisijungti prie %{storage}
       login_button_label: "%{provider_type} log in"
       project_settings:
-        description: To get access to the project folder you need to login to %{storage}.
+        description: Kad gautumėte prieigą prie projekto aplanko, jums reikia prisijungti prie %{storage}.
       requesting_access_to: Prašoma prieigos prie %{storage}
       storage_admin:
         description: In order to add projects to this storage you need to be logged into %{provider_type}. Please, log in and try again.

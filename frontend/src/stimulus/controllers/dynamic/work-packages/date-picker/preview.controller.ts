@@ -38,9 +38,11 @@ import {
 export default class PreviewController extends DialogPreviewController {
   static values = {
     dateMode: String,
+    triggeringField: String,
   };
 
   declare dateModeValue:string;
+  declare triggeringFieldValue:string;
 
   private timezoneService:TimezoneService;
   private highlightedField:HTMLInputElement|null = null;
@@ -88,7 +90,10 @@ export default class PreviewController extends DialogPreviewController {
   }
 
   async preview(field:HTMLInputElement|null) {
-    await super.preview(field, [{ key: 'date_mode', val: this.dateModeValue }]);
+    await super.preview(field, [
+      { key: 'date_mode', val: this.dateModeValue },
+      { key: 'triggering_field', val: this.triggeringFieldValue },
+    ]);
   }
 
   inputChanged(event:Event) {

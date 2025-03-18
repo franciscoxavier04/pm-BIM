@@ -1616,7 +1616,7 @@ az:
     entity_type: "Entity"
     expires_at: "Expires at"
     firstname: "First name"
-    filter: "Filter"
+    filter: "Filtr"
     group: "Group"
     groups: "Groups"
     hexcode: "Hex code"
@@ -1637,7 +1637,7 @@ az:
     note: "Note"
     notes: "Notes"
     number: "Number"
-    options: "Options"
+    options: "Seçimlər"
     operator: "Operator"
     password: "Password"
     priority: "Priority"
@@ -2060,8 +2060,8 @@ az:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "İxrac et"
+      submit: "İxrac et"
       format:
         label: "File format"
         options:
@@ -2487,7 +2487,7 @@ az:
   label_default: "Default"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "Sil"
   label_deleted: "deleted"
   label_deleted_custom_field: "(deleted custom field)"
   label_deleted_custom_item: "(deleted item)"
@@ -2703,7 +2703,7 @@ az:
   label_no_change_option: "(No change)"
   label_no_data: "No data to display"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "başlama tarixi yoxdur"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Nothing to display"
   label_nobody: "nobody"
@@ -3538,8 +3538,8 @@ az:
     warnings:
       cannot_annotate: "This file cannot be annotated."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3776,7 +3776,7 @@ az:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Əlavə et"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -3806,6 +3806,11 @@ az:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"

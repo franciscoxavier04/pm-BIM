@@ -1586,7 +1586,7 @@ ne:
     actor: "Actor"
     action: "Action"
     author: "Author"
-    avatar: "Avatar"
+    avatar: "अवतार "
     base: "General Error:"
     body: "Body"
     blocks_ids: "IDs of blocked work packages"
@@ -1635,7 +1635,7 @@ ne:
     mail: "Email"
     name: "Name"
     note: "Note"
-    notes: "Notes"
+    notes: "द्रष्टव्यहरु"
     number: "Number"
     options: "Options"
     operator: "Operator"
@@ -1645,7 +1645,7 @@ ne:
     project_ids: "Project IDs"
     reason: "Reason"
     responsible: "Accountable"
-    required: "Required"
+    required: "आवश्यक"
     recipient: "Recipient"
     role: "Role"
     roles: "भूमिकाहरु"
@@ -2423,7 +2423,7 @@ ne:
   label_calendars_and_dates: "Calendars and dates"
   label_calendar_show: "Show Calendar"
   label_category: "Category"
-  label_completed: Completed
+  label_completed: पूरा भयो
   label_consent_settings: "User Consent"
   label_wiki_menu_item: Wiki menu item
   label_select_main_menu_item: Select new main menu item
@@ -3538,8 +3538,8 @@ ne:
     warnings:
       cannot_annotate: "This file cannot be annotated."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Search ..."
   setting_after_first_login_redirect_url: "First login redirect"
   setting_after_first_login_redirect_url_text_html: >
@@ -3806,6 +3806,11 @@ ne:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"
@@ -4274,7 +4279,7 @@ ne:
   oauth:
     application:
       builtin: Built-in instance application
-      confidential: Confidential
+      confidential: गोप्य
       singular: "OAuth application"
       scopes: "Scopes"
       client_credentials: "Client credentials"

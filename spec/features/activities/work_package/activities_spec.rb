@@ -292,7 +292,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       wp_page.wait_for_activity_tab
     end
 
-    it "shows and merges activities and comments correctly", :aggregate_failures do
+    it "shows and merges activities and comments correctly" do
       first_journal = work_package.journals.first
 
       # initial journal entry is shown without changeset or comment
@@ -372,7 +372,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       wp_page.wait_for_activity_tab
     end
 
-    it "shows and merges activities and comments correctly", :aggregate_failures do
+    it "shows and merges activities and comments correctly" do
       first_journal = work_package.journals.first
 
       # initial journal entry is shown without changeset or comment
@@ -440,7 +440,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       ENV.delete("WORK_PACKAGES_ACTIVITIES_TAB_POLLING_INTERVAL_IN_MS")
     end
 
-    it "shows the comment of another user without browser reload", :aggregate_failures do
+    it "shows the comment of another user without browser reload" do
       # simulate member creating a comment
       first_journal = create(:work_package_journal,
                              user: member,
@@ -536,7 +536,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         wp_page.wait_for_activity_tab
       end
 
-      it "filters the activities based on type", :aggregate_failures do
+      it "filters the activities based on type" do
         # add a non-comment journal entry by changing the work package attributes
         wp_page.update_attributes(subject: "A new subject") # rubocop:disable Rails/ActiveRecordAliases
         wp_page.expect_and_dismiss_toaster(message: "Successful update.")
@@ -602,7 +602,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         end
       end
 
-      it "resets an only_changes filter if a comment is added by the user", :aggregate_failures do
+      it "resets an only_changes filter if a comment is added by the user" do
         activity_tab.filter_journals(:only_changes)
 
         # expect only the changes
@@ -627,7 +627,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       wp_page.wait_for_activity_tab
     end
 
-    it "focuses the editor", :aggregate_failures do
+    it "focuses the editor" do
       activity_tab.set_journal_sorting(:desc)
 
       activity_tab.open_new_comment_editor
@@ -659,7 +659,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       wp_page.wait_for_activity_tab
     end
 
-    it "sorts the activities based on the sorting preference", :aggregate_failures do
+    it "sorts the activities based on the sorting preference" do
       # expect the default sorting to be asc
       activity_tab.expect_comments_order(
         [
@@ -737,13 +737,13 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         wp_page.wait_for_activity_tab
       end
 
-      it "shows the notification bubble", :aggregate_failures do
+      it "shows the notification bubble" do
         activity_tab.within_journal_entry(journal_mentioning_admin) do
           activity_tab.expect_notification_bubble
         end
       end
 
-      it "removes the notification bubble after the comment is read", :aggregate_failures do
+      it "removes the notification bubble after the comment is read" do
         notificaton_for_admin.update!(read_ian: true)
 
         wp_page.visit!
@@ -763,7 +763,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         wp_page.wait_for_activity_tab
       end
 
-      it "does not show the notification bubble", :aggregate_failures do
+      it "does not show the notification bubble" do
         activity_tab.within_journal_entry(journal_mentioning_admin) do
           activity_tab.expect_no_notification_bubble
         end
@@ -788,7 +788,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         wp_page.wait_for_activity_tab
       end
 
-      it "can edit own comments", :aggregate_failures do
+      it "can edit own comments" do
         # edit own comment
         activity_tab.edit_comment(first_comment_by_admin, text: "First comment by admin edited")
 
@@ -824,7 +824,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         wp_page.wait_for_activity_tab
       end
 
-      it "can quote other user's comments", :aggregate_failures do
+      it "can quote other user's comments" do
         # quote other user's comment
         activity_tab.quote_comment(first_comment_by_member)
 
@@ -841,7 +841,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         wp_page.wait_for_activity_tab
       end
 
-      it "can quote other user's comments", :aggregate_failures do
+      it "can quote other user's comments" do
         # open the editor and type something
         activity_tab.type_comment("Partial message:")
 
@@ -865,7 +865,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       wp_page.wait_for_activity_tab
     end
 
-    it "rescues the editor content when navigating to another workpackage tab", :aggregate_failures do
+    it "rescues the editor content when navigating to another workpackage tab" do
       # add a comment, but do not save it
       activity_tab.add_comment(text: "First comment by admin", save: false)
 
@@ -885,7 +885,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       activity_tab.expect_journal_notes(text: "First comment by admin")
     end
 
-    it "scopes the rescued content to the work package", :aggregate_failures do
+    it "scopes the rescued content to the work package" do
       # add a comment to the first work package, but do not save it
       activity_tab.add_comment(text: "First comment by admin", save: false)
 
@@ -907,7 +907,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    it "scopes the rescued content to the user", :aggregate_failures do
+    it "scopes the rescued content to the user" do
       # add a comment to the first work package, but do not save it
       activity_tab.add_comment(text: "First comment by admin", save: false)
 
@@ -967,7 +967,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
             wp_page.wait_for_activity_tab
           end
 
-          it "scrolls to the comment specified in the URL", :aggregate_failures do
+          it "scrolls to the comment specified in the URL" do
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
 
@@ -981,7 +981,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
             wp_page.wait_for_activity_tab
           end
 
-          it "scrolls to the comment specified in the URL", :aggregate_failures do
+          it "scrolls to the comment specified in the URL" do
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
 
@@ -1001,7 +1001,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
             wp_page.wait_for_activity_tab
           end
 
-          it "scrolls to the comment specified in the URL", :aggregate_failures do
+          it "scrolls to the comment specified in the URL" do
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_position(50) # would be at the bottom if no anchor would be provided
 
@@ -1023,7 +1023,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
             wp_page.wait_for_activity_tab
           end
 
-          it "scrolls to the comment specified in the URL", :aggregate_failures do
+          it "scrolls to the comment specified in the URL" do
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_bottom # would be at the top if no anchor would be provided
 
@@ -1037,7 +1037,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
             wp_page.wait_for_activity_tab
           end
 
-          it "scrolls to the comment specified in the URL", :aggregate_failures do
+          it "scrolls to the comment specified in the URL" do
             wait_for_auto_scrolling_to_finish
             activity_tab.expect_journal_container_at_bottom # would be at the top if no anchor would be provided
 
@@ -1062,7 +1062,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
 
       context "when on desktop" do
-        it "scrolls to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
+        it "scrolls to the bottom when the newest journal entry is on the bottom" do
           sleep 1 # wait for auto scrolling to finish
           activity_tab.expect_journal_container_at_bottom
 
@@ -1097,7 +1097,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
           wp_page.wait_for_activity_tab
         end
 
-        it "does not scroll to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
+        it "does not scroll to the bottom when the newest journal entry is on the bottom" do
           sleep 1 # wait for a potential auto scrolling to finish
           # expect activity tab not to be visibe, as the page is not scrolled to the bottom
           scroll_position = page.evaluate_script("document.querySelector(\"#content-body\").scrollTop")
@@ -1120,9 +1120,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         # the scroll position is at around 700, some other part of the frontend code seems to trigger a scroll
         # happens for the files tab as well for example
         #
-        it "does not scroll to the bottom when the newest journal entry is on the bottom", :aggregate_failures do
-          pending "bug/59916-on-narrow-screens-(including-mobile)-the-view-always-scrolls-to-the-activity"
-
+        it "does not scroll to the bottom when the newest journal entry is on the bottom",
+           skip: "bug/59916-on-narrow-screens-(including-mobile)-the-view-always-scrolls-to-the-activity" do
           sleep 1 # wait for a potential auto scrolling to finish
           # expect activity tab not to be visibe, as the page is not scrolled to the bottom
           scroll_position = page.evaluate_script("document.querySelector(\"#content-body\").scrollTop")
@@ -1139,7 +1138,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         wp_page.wait_for_activity_tab
       end
 
-      it "does not scroll to the bottom as the newest journal entry is on the top", :aggregate_failures do
+      it "does not scroll to the bottom as the newest journal entry is on the top" do
         sleep 1 # wait for auto scrolling to finish
         activity_tab.expect_journal_container_at_top
       end
@@ -1155,7 +1154,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
     let(:editor) { Components::WysiwygEditor.new }
 
     context "if work package attachments are deactivated in project" do
-      it "shows the inline image and have it uploaded to the work package", :aggregate_failures do
+      it "shows the inline image and have it uploaded to the work package" do
         login_as admin
 
         wp_page.visit!
@@ -1191,7 +1190,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       wp_page.wait_for_activity_tab
     end
 
-    it "shows rectracted journal entries", :aggregate_failures do
+    it "shows rectracted journal entries" do
       activity_tab.within_journal_entry(second_comment_by_admin) do
         expect(page).to have_text(I18n.t(:"journals.changes_retracted"))
       end
@@ -1218,7 +1217,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       ENV.delete("WORK_PACKAGES_ACTIVITIES_TAB_POLLING_INTERVAL_IN_MS")
     end
 
-    it "shows the updated work package attribute without reload", :aggregate_failures do
+    it "shows the updated work package attribute without reload" do
       using_session(:admin) do
         login_as(admin)
 
@@ -1245,7 +1244,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       end
     end
 
-    it "shows the updated work package attribute without reload after switching back to the activity tab", :aggregate_failures do
+    it "shows the updated work package attribute without reload after switching back to the activity tab" do
       using_session(:admin) do
         login_as(admin)
 
@@ -1306,8 +1305,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
       ENV.delete("WORK_PACKAGES_ACTIVITIES_TAB_POLLING_INTERVAL_IN_MS")
     end
 
-    it "raises a conflict warning when the work package is updated by another user while the current user is editing",
-       :aggregate_failures do
+    it "raises a conflict warning when the work package is updated by another user while the current user is editing" do
       using_session(:admin) do
         login_as(admin)
 
@@ -1346,8 +1344,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
     end
 
     it "does NOT raise a conflict warning when the work package has been only commented by another user while the current
-        user is editing",
-       :aggregate_failures do
+        user is editing" do
       using_session(:admin) do
         login_as(admin)
 
@@ -1380,8 +1377,7 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
     end
 
     context "when the current user does not have the activity tab open the whole time" do
-      it "raises a conflict warning when the work package is updated by another user while the current user is editing",
-         :aggregate_failures do
+      it "raises a conflict warning when the work package is updated by another user while the current user is editing" do
         using_session(:admin) do
           login_as(admin)
 
@@ -1431,8 +1427,8 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         end
       end
 
-      it "does NOT raise a conflict warning when the work package is updated by the same user while the current user is editing",
-         :aggregate_failures do
+      it "does NOT raise a conflict warning when the work package is updated by the same user
+          while the current user is editing" do
         using_session(:admin) do
           login_as(admin)
 
