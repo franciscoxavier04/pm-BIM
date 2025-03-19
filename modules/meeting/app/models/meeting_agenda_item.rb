@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -41,6 +42,8 @@ class MeetingAgendaItem < ApplicationRecord
   has_one :project, through: :meeting
   belongs_to :author, class_name: "User", optional: false
   belongs_to :presenter, class_name: "User", optional: true
+
+  has_many :outcomes, class_name: "MeetingOutcome", dependent: :destroy
 
   acts_as_list scope: :meeting_section
   default_scope { order(:position) }

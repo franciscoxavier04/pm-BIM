@@ -57,13 +57,21 @@ fr:
         start_time: "Heure de début"
         start_time_hour: "Heure de début"
         end_after: "La série de réunions se termine"
+        end_date: "Échéance"
         iterations: "Occurrences"
     errors:
+      models:
+        recurring_meeting:
+          must_cover_existing_meetings:
+            one: "Il y a une réunion ouverte dans la série qui n'est pas couverte par le nouvel horaire. Modifiez l'horaire pour inclure toutes les réunions existantes."
+            other: "Il y a %{count} réunions ouvertes dans la série qui ne sont pas couvertes par le nouvel horaire. Modifiez l'horaire pour inclure toutes les réunions existantes."
+            format: "%{message}"
       messages:
         invalid_time_format: "n’est pas une heure valide. Format requis : HH:MM"
     models:
       recurring_meeting: "Réunion récurrente"
       structured_meeting: "Réunion ponctuelle"
+      meeting: "Réunion"
       meeting_agenda_item: ""
       meeting_agenda: "Ordre du jour"
       meeting_minutes: "Compte-rendu"
@@ -259,10 +267,14 @@ fr:
       banner_html: >
         Vous êtes en train d'éditer le modèle d'une série de réunions : %{link}. Chaque nouvelle occurrence d'une réunion dans la série utilisera ce modèle. Les modifications n'affecteront pas les réunions passées ou déjà créées.
     frequency:
+      x_daily:
+        one: "Tous les jours"
+        other: "Tous les %{count} jours"
+      x_weekly:
+        one: "Toutes les semaines"
+        other: "Toutes les %{count} semaines"
       every_weekday: "Chaque %{day_of_the_week}"
-      daily: "Quotidienne"
       working_days: "Chaque jour ouvrable"
-      weekly: "Hebdomadaire"
     end_after:
       never: "jamais"
       specific_date: "après une date précise"
@@ -357,12 +369,19 @@ fr:
   label_agenda_item_undisclosed_wp: "Paquet de travail #%{id} non visible"
   label_agenda_item_deleted_wp: "Référence de lot de travaux supprimée"
   label_agenda_item_actions: "Actions des points de l'ordre du jour"
+  label_agenda_item_move_to_next: "Passer à la prochaine réunion"
   label_agenda_item_move_to_top: "Déplacer vers le haut"
   label_agenda_item_move_to_bottom: "Déplacer vers le bas"
   label_agenda_item_move_up: "Monter"
   label_agenda_item_move_down: "Descendre"
   label_agenda_item_add_notes: "Ajouter des notes"
+  label_agenda_item_add_outcome: "Ajouter un résultat"
   label_agenda_item_work_package: "Lot de travaux du point de l'ordre du jour"
+  label_agenda_outcome: "Résultat"
+  label_agenda_outcome_actions: "Actions de résultat de l'agenda"
+  label_agenda_outcome_edit: "Modifier le résultat"
+  label_agenda_outcome_delete: "Supprimer le résultat"
+  text_outcome_not_editable_anymore: "Ce résultat n'est plus modifiable."
   text_agenda_item_title: 'Point de l''ordre du jour « %{title} »'
   text_agenda_work_package_deleted: 'Point de l''ordre du jour du lot de travaux supprimé'
   text_deleted_agenda_item: 'Point de l''ordre du jour supprimé'
@@ -379,10 +398,16 @@ fr:
   label_meeting_state_planned: "Planifiée"
   label_meeting_state_cancelled: "Annulée"
   label_meeting_state_skipped: "Ignorée"
+  label_meeting_state_in_progress: "En cours"
   label_meeting_reopen_action: "Réouvrir la réunion"
-  label_meeting_close_action: "Fermer la réunion"
-  text_meeting_open_description: "Cette réunion est ouverte. Vous pouvez ajouter/supprimer des points de l'ordre du jour et les modifier comme vous le souhaitez. Une fois la réunion terminée, clôturez-la pour la verrouiller."
+  label_meeting_close_action: "Clôturer la réunion"
+  label_meeting_in_progress_action: "Marquer comme étant en cours"
+  text_meeting_open_description: "Cette réunion est ouverte. Vous pouvez ajouter/supprimer des éléments de l'ordre du jour et les modifier comme vous le souhaitez. Une fois l'ordre du jour prêt, marquez-le comme étant en cours pour documenter les résultats."
   text_meeting_closed_description: "Cette réunion est clôturée. Vous ne pouvez plus ajouter/supprimer des points de l'ordre du jour."
+  text_meeting_in_progress_description: "Cette réunion est en cours. Vous pouvez documenter les résultats pour chaque élément de l'ordre du jour, les réorganiser et même en ajouter de nouveaux. Une fois la réunion terminée, vous pouvez la marquer comme fermée pour la verrouiller."
+  text_meeting_open_dropdown_description: "Tous les résultats existants resteront, mais les utilisateurs ne pourront pas ajouter de nouveaux résultats."
+  text_meeting_in_progress_dropdown_description: "Documentez les résultats tels que les besoins d'information ou les décisions prises pendant la réunion."
+  text_meeting_closed_dropdown_description: "Cette réunion est terminée. Vous ne pouvez plus modifier les éléments de l'ordre du jour ou les résultats."
   label_meeting_manage_participants: "Gérer les participants"
   label_meeting_no_participants: "Aucun participant"
   label_meeting_show_hide_participants: "Afficher/masquer %{count} autre(s)"
@@ -396,6 +421,9 @@ fr:
   text_add_work_package_to_meeting_description: "Un lot de travaux peut être ajouté à une ou plusieurs réunions pour y être discuté. Les éventuelles notes le concernant sont également visibles ici."
   text_agenda_item_no_notes: "Aucune note fournie"
   text_agenda_item_not_editable_anymore: "Ce point d'ordre du jour n'est plus modifiable."
+  text_agenda_item_move_next_meeting: "Voulez-vous vraiment déplacer cet élément vers la prochaine réunion le %{date} à %{time} ?"
+  text_agenda_item_moved_to_next_meeting: "L'ordre du jour a été déplacé vers la prochaine réunion, le %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Ce lot de travaux n'est pas encore inclus dans l'ordre du jour d'une prochaine réunion."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Utilisez le bouton "Ajouter à la réunion" pour ajouter ce lot de travaux à une réunion à venir.'
   text_work_package_has_no_past_meeting_agenda_items: "Ce lot de travaux n'a pas été mentionné lors d'une réunion précédente."

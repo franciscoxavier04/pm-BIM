@@ -104,7 +104,6 @@ ja:
     button_settings: "設定"
     button_uncheck_all: "全てを選択解除"
     button_update: "更新"
-    button_export-pdf: "PDFファイルをダウンロード"
     button_export-atom: "Atomをダウンロード"
     button_generate_pdf: "Generate PDF"
     button_create: "作成"
@@ -223,6 +222,8 @@ ja:
             label_maximum_users: "アクティブなユーザーの最大数"
             label_starts_at: "開始"
             label_expires_at: "有効期限"
+            label_plan: "プラン"
+            label_additional_features: "Additional features"
             receive_newsletter: OpenProject <a target="_blank" href="%{link}">ニュースレター</a> を受け取りたい。
             taken_domain: 有効なトライアルはドメインごとに1つしかありません。
             domain_mismatch: The current request host name does not match the configured host name. Please double check your system settings.
@@ -358,10 +359,10 @@ ja:
           learn_about: "新機能の詳細はこちら"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
+                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
     ical_sharing_modal:
       title: "Subscribe to calendar"
       inital_setup_error_message: "An error occured while fetching data."
@@ -482,7 +483,7 @@ ja:
     label_per_page: "1 ページあたり"
     label_please_wait: "しばらくお待ちください"
     label_project: "プロジェクト"
-    label_project_list: "Project lists"
+    label_project_list: "プロジェクト一覧"
     label_project_plural: "プロジェクト"
     label_visibility_settings: "表示の設定"
     label_quote_comment: "このコメントを引用"
@@ -614,7 +615,7 @@ ja:
         assigned: "担当者"
         #The enum value is named 'responsible' in the database and that is what is transported through the API
         #up to the frontend.
-        responsible: "Accountable"
+        responsible: "責任者"
         created: "作成日時"
         scheduled: "スケジュール済"
         commented: "コメントしました。"
@@ -718,17 +719,18 @@ ja:
       description: "Description: Click to edit..."
       relation_description: "クリックしてこの関係に説明を追加"
     project:
-      required_outside_context: >
-        作業パッケージを作成するプロジェクトを選択して、すべての属性を確認してください。 上記で有効になっているタイプのプロジェクトのみ選択できます。
-      context: "プロジェクトのコンテキスト"
-      click_to_switch_to_project: "Project: %{projectname}"
-      confirm_template_load: "テンプレートを切り替えるとページが再読み込みされ、すべての入力が失われます。続行しますか？"
-      use_template: "テンプレートを使用"
-      no_template_selected: "(なし)"
-      copy:
-        copy_options: "コピーオプション"
       autocompleter:
         label: "プロジェクト名の入力補完"
+      click_to_switch_to_project: "Project: %{projectname}"
+      confirm_template_load: "テンプレートを切り替えるとページが再読み込みされ、すべての入力が失われます。続行しますか？"
+      context: "プロジェクトのコンテキスト"
+      copy:
+        copy_options: "コピーオプション"
+      not_available: "Project N/A"
+      no_template_selected: "(なし)"
+      required_outside_context: >
+        作業パッケージを作成するプロジェクトを選択して、すべての属性を確認してください。 上記で有効になっているタイプのプロジェクトのみ選択できます。
+      use_template: "テンプレートを使用"
     reminders:
       settings:
         daily:
@@ -834,7 +836,7 @@ ja:
       toggle_description: "関係の説明を切り替え"
       update_relation: "クリックして関係のタイプを変更"
       add_follower: "後続を追加"
-      show_relations: "Show relations"
+      show_relations: "関連するタスクを表示"
       add_predecessor: "先行を追加"
       remove: "関係を削除"
       save: "関係を保存"
@@ -852,8 +854,6 @@ ja:
       select_branch: "分岐を選択する"
     field_value_enter_prompt: "'%{field}'の値を入力"
     project_menu_details: "詳細"
-    scheduling:
-      manual: "手動スケジュール"
     sort:
       sorted_asc: "昇順の並べ替えを適用しました。 "
       sorted_dsc: "降順の並べ替えを適用しました。 "
@@ -901,15 +901,6 @@ ja:
       comment_send_failed: "エラーが発生しました。コメントを投稿できませんでした。"
       comment_updated: "正常にコメントを更新しました。"
       confirm_edit_cancel: "作業項目の編集をキャンセルしてもよろしいですか？"
-      datepicker_modal:
-        automatically_scheduled_parent: "自動的にスケジュールされました。日付は関連するタスクから計算されます。"
-        manually_scheduled: "手動スケジュールが有効のため、関連するタスクの日付は無視されます。"
-        start_date_limited_by_relations: "開始日と終了日は、関連するタスクによって制限されます。"
-        changing_dates_affects_follow_relations: "これらの日付を変更すると、関連するワークパッケージの日付に影響します。"
-        click_on_show_relations_to_open_gantt: 'ガントチャートの概要は %{button_name} をクリックします。'
-        show_relations: "関連するタスクを表示"
-        ignore_non_working_days:
-          title: "営業日のみ"
       description_filter: "フィルタ"
       description_enter_text: "テキスト"
       description_options_hide: "オプションを非表示"
@@ -1008,7 +999,7 @@ ja:
         all_open: "未完了"
         overdue: "Overdue"
         summary: "サマリ"
-        shared_with_users: "Shared with users"
+        shared_with_users: "ユーザーと共有"
         shared_with_me: "Shared with me"
       jump_marks:
         pagination: "表のページ設定に移動する"
@@ -1319,7 +1310,7 @@ ja:
         last_working_day: "last working day"
         last_week: "先週"
         last_month: "先月"
-        a_specific_date: "a specific date"
+        a_specific_date: "特定の日付"
         between_two_specific_dates: "between two specific dates"
       legends:
         changes_since: "Changes since"

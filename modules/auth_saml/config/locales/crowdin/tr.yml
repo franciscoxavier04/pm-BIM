@@ -1,5 +1,5 @@
 tr:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: İsim
@@ -23,7 +23,6 @@ tr:
         digest_method: Özet algoritması
         format: "Biçim"
         icon: "Özel simge"
-  activerecord:
     errors:
       models:
         saml/provider:
@@ -68,7 +67,7 @@ tr:
       upsale:
         description: OpenProject'i bir SAML kimlik sağlayıcısına bağlama
       request_attributes:
-        title: 'Requested attributes'
+        title: 'Talep edilen nitelikler'
         legend: >
           These attributes are added to the SAML XML metadata to signify to the identify provider which attributes OpenProject requires. You may still need to explicitly configure your identity provider to send these attributes. Please refer to your IdP's documentation.
         name: 'Requested attribute key'
@@ -90,13 +89,13 @@ tr:
       seeded_from_env: "This provider was seeded from the environment configuration. It cannot be edited."
     settings:
       metadata_none: "I don't have metadata"
-      metadata_url: "Metadata URL"
+      metadata_url: "Metaveri URL'si"
       metadata_xml: "Metadata XML"
     instructions:
       documentation_link: >
         Please refer to our [documentation on configuring SAML providers](docs_url) for more information on these configuration options.
       display_name: >
-        The name of the provider. This will be displayed as the login button and in the list of providers.
+        Sağlayıcının adı. Bu, oturum açma düğmesi olarak ve sağlayıcılar listesinde görüntülenecektir.
       metadata_none: >
         Your identity provider does not have a metadata endpoint or XML download option. You can configure it manually.
       metadata_url: >
@@ -138,7 +137,7 @@ tr:
       authn_requests_signed: >
         If checked, OpenProject will sign the SAML AuthnRequest. You will have to provide a signing certificate and private key using the fields below.
       want_assertions_signed: >
-        İşaretlenirse, OpenProject kimlik sağlayıcıdan kendi sertifika anahtar çiftini kullanarak imzalı yanıtlar isteyecektir. OpenProject imzayı temel yapılandırma bölümündeki sertifikaya göre doğrulayacaktır.
+        If checked, OpenProject will required signed responses from the identity provider using its own certificate keypair. OpenProject will verify the signature against the certificate from the basic configuration section.
       want_assertions_encrypted: >
         If enabled, require the identity provider to encrypt the assertion response using the certificate pair that you provide.
       certificate: >

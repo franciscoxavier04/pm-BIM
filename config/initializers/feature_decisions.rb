@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # --copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -41,10 +43,6 @@ require_relative "../../lib_static/open_project/feature_decisions"
 
 OpenProject::FeatureDecisions.add :built_in_oauth_applications,
                                   description: "Allows the display and use of built-in OAuth applications."
-
-OpenProject::FeatureDecisions.add :generate_pdf_from_work_package,
-                                  description: "Allows to generate a PDF document from a work package description. " \
-                                               "See #45896 for details."
 
 OpenProject::FeatureDecisions.add :generate_work_package_subjects,
                                   description: "Allows the configuration for work package types to have " \

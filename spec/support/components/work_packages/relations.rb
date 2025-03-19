@@ -27,12 +27,14 @@
 #++
 
 require "support/components/autocompleter/ng_select_autocomplete_helpers"
+require "support/flash/expectations"
 
 module Components
   module WorkPackages
     class Relations
       include Capybara::DSL
       include Capybara::RSpecMatchers
+      include Flash::Expectations
       include RSpec::Matchers
       include RSpec::Wait
       include ::Components::Autocompleter::NgSelectAutocompleteHelpers
@@ -166,6 +168,10 @@ module Components
         expect(page).not_to have_test_selector("op-relation-row-#{actual_relatable.id}-delete-button")
       end
 
+      def add_predecessor(work_package)
+        add_relation(type: :follows, relatable: work_package)
+      end
+
       def add_relation(type:, relatable:, description: nil)
         i18n_namespace = "#{WorkPackageRelationsTab::IndexComponent::I18N_NAMESPACE}.relations"
         # Open create form
@@ -256,6 +262,14 @@ module Components
         find_row(relatable)
       end
 
+      def expect_closest_relation(relatable)
+        expect(find_row(relatable)).to have_primer_label("Closest", scheme: :primary)
+      end
+
+      def expect_not_closest_relation(relatable)
+        expect(find_row(relatable)).to have_no_primer_label("Closest", scheme: :primary)
+      end
+
       def expect_ghost_relation(relatable)
         find_ghost_row(relatable)
       end
@@ -329,6 +343,7 @@ module Components
 
           click_link_or_button "Save"
         end
+        expect_and_dismiss_flash(message: "Successful update.")
       end
 
       def relations_group

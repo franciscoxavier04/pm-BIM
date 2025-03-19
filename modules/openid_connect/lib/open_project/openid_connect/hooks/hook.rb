@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is a project management system.
 # Copyright (C) the OpenProject GmbH
@@ -38,16 +40,20 @@ module OpenProject::OpenIDConnect
 
         user = context.fetch(:user)
 
-        # We clear previous tokens while adding this one to avoid keeping
-        # stale tokens around (and to avoid piling up duplicate IDP tokens)
-        # -> Fresh login causes fresh set of tokens
-        OpenIDConnect::UserTokens::CreateService.new(user).call(
-          access_token: session["omniauth.oidc_access_token"],
-          refresh_token: session["omniauth.oidc_refresh_token"],
-          known_audiences: [OpenIDConnect::UserToken::IDP_AUDIENCE],
-          clear_previous: true
-        )
+        access_token = session["omniauth.oidc_access_token"]
 
+        if access_token
+          OpenIDConnect::UserTokens::CreateService.new(user).call(
+            access_token:,
+            refresh_token: session["omniauth.oidc_refresh_token"],
+            expires_in: session["omniauth.oidc_expires_in"],
+            known_audiences: [OpenIDConnect::UserToken::IDP_AUDIENCE],
+            # We clear previous tokens while adding this one to avoid keeping
+            # stale tokens around (and to avoid piling up duplicate IDP tokens)
+            # -> Fresh login causes fresh set of tokens
+            clear_previous: true
+          )
+        end
       end
 
       ##
@@ -56,10 +62,22 @@ module OpenProject::OpenIDConnect
         controller = context.fetch(:controller)
         session = controller.session
 
-        session["omniauth.oidc_access_token"] = context.dig(:auth_hash, :credentials, :token)
-        session["omniauth.oidc_refresh_token"] = context.dig(:auth_hash, :credentials, :refresh_token)
+        if OpenIDConnect::Provider.exists?(slug: context.dig(:auth_hash, :provider))
+          session["omniauth.oidc_access_token"] = context.dig(:auth_hash, :credentials, :token)
+          session["omniauth.oidc_refresh_token"] = context.dig(:auth_hash, :credentials, :refresh_token)
+          session["omniauth.oidc_expires_in"] = parse_expires_in(context.dig(:auth_hash, :credentials, :expires_in))
+        end
 
         nil
+      end
+
+      private
+
+      def parse_expires_in(expires_in)
+        expires_in = expires_in.to_i
+        return nil if expires_in.zero?
+
+        expires_in
       end
     end
   end

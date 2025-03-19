@@ -27,7 +27,7 @@ hr:
     work_packages:
       activity_tab:
         no_results_title_text: No activity to display
-        no_results_description_text: "Choose \"Show everything\" to show all activity and comments"
+        no_results_description_text: 'Choose "Show everything" to show all activity and comments'
         label_activity_show_all: "Show everything"
         label_activity_show_only_comments: "Show comments only"
         label_activity_show_only_changes: "Show changes only"
@@ -129,7 +129,7 @@ hr:
     back_to_index: "Click here to go back to the list of connection."
     technical_warning_html: |
       This LDAP form requires technical knowledge of your LDAP / Active Directory setup.
-      <br/>
+      <br>
       <a href="https://www.openproject.org/help/administration/manage-ldap-authentication/">Please visit our documentation for detailed instructions</a>.
     attribute_texts:
       name: Arbitrary name of the LDAP connection
@@ -139,7 +139,7 @@ hr:
       admin_map_html: "Optional: The attribute key in LDAP that <strong>if present</strong> marks the OpenProject user an admin. Leave empty when in doubt."
       system_user_dn_html: |
         Enter the DN of the system user used for read-only access.
-        <br/>
+        <br>
         Example: uid=openproject,ou=system,dc=example,dc=com
       system_user_password: Enter the bind password of the system user
       base_dn: |
@@ -179,7 +179,7 @@ hr:
     tls_options:
       verify_peer: "Verify SSL certificate"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br/> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
       tls_certificate_description: "If the LDAP server certificate is not in the trust sources of this system, you can add it manually here. Enter a PEM X509 certifiate string."
   forums:
     show:
@@ -218,7 +218,7 @@ hr:
     admin:
       custom_field_projects:
         is_for_all_blank_slate:
-          heading: For all projects
+          heading: Za sve projekte
           description: This custom field is enabled in all projects since the "For all projects" option is checked. It cannot be deactivated for individual projects.
       items:
         actions: "Item actions"
@@ -291,7 +291,7 @@ hr:
       item: "Item"
       label: "Label"
       short: "Short name"
-      parent: "Parent"
+      parent: "Matični"
       blueprint: "Pattern blueprint"
   global_search:
     placeholder: "Search in %{app_title}"
@@ -346,6 +346,7 @@ hr:
         placeholder: "New project list"
       delete_modal:
         title: "Delete project list"
+        heading: "Delete this project list?"
         text: "This action will not delete any project the list contains. Are you sure you want to delete this project list?"
     settings:
       change_identifier: Change identifier
@@ -394,6 +395,8 @@ hr:
         no_results_content_text: Dodaj novu verziju projekta
       storage:
         no_results_title_text: There is no additional recorded disk space consumed by this project.
+      work_package_priorities:
+        new_label: "New priority"
   project_stage:
     working_days_count:
       one: "Duration: %{count} working day"
@@ -584,7 +587,7 @@ hr:
       status_readonly_html: |
         Check this option to mark work packages with this status as read-only.
         No attributes can be changed with the exception of the status.
-        <br/>
+        <br>
         <strong>Note</strong>: Inherited values (e.g., from children or relations) will still apply.
     index:
       no_results_title_text: Trenutačno ne postoje izvješća o statusu radnih paketa.
@@ -608,10 +611,10 @@ hr:
       more_info_text_html: >
         Enterprise edition allows you to customize form configuration with these additional add-ons: <br> <ul class="%{list_styling_class}"> <li><b>Add new attribute groups</b></li> <li><b>Rename attribute groups</b></li> <li><b>Add a table of related work packages</b></li> </ul>
       projects:
-        tab: "Projects"
-        enabled_projects: "Enabled projects"
+        tab: "Projekti"
+        enabled_projects: "Omogućeni projekti"
       settings:
-        tab: "Settings"
+        tab: "Postavke"
         type_color_text: The selected color distinguishes different types in Gantt charts or work packages tables. It is therefore recommended to use a strong color.
       subject_configuration:
         tab: "Subject configuration"
@@ -624,6 +627,15 @@ hr:
         pattern:
           label: "Subject pattern"
           caption: "Search for an attribute or add text. To create a space between elements add it as a text."
+          insert_as_text: "Add as text: \"%{word}\""
+      export_configuration:
+        tab: "Generate PDF"
+        intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
+        pdf_export_templates:
+          label: "PDF Export templates"
+          actions:
+            label_enable_all: "Enable all"
+            label_disable_all: "Disable all"
   versions:
     overview:
       work_packages_in_archived_projects: "The version is shared with archived projects which still have work packages assigned to this version. These are counted, but will not appear in the linked views."
@@ -638,6 +650,47 @@ hr:
     index:
       no_results_title_text: Trenutno ne postoji niti jedan workflow.
   work_packages:
+    datepicker_modal:
+      banner:
+        description:
+          automatic_mobile: "Start date derived."
+          click_on_show_relations_to_open_gantt: 'Click on "%{button_name}" for Gantt overview.'
+          manual_mobile: "Ignoring relations."
+          manual_gap_between_predecessors: "There is a gap between this and all predecessors."
+          manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
+          manual_with_children: "This has child work packages but their start dates are ignored."
+        title:
+          automatic_mobile: "Automatically scheduled."
+          automatic_with_children: "The dates are determined by child work packages."
+          automatic_with_predecessor: "The start date is set by a predecessor."
+          manual_mobile: "Manually scheduled."
+          manually_scheduled: "Manually scheduled. Dates not affected by relations."
+      blankslate:
+        title: "No predecessors"
+        description: "To enable automatic scheduling, this work package needs to have at least one predecessor. It will then automatically be scheduled to start after the closest predecessor."
+      ignore_non_working_days:
+        title: "Working days only"
+      mode:
+        title: "Scheduling mode"
+        automatic: "Automatic"
+        manual: "Manual"
+      show_relations: "Show relations"
+      tabs:
+        aria_label: "Datepicker tabs"
+        children: "Podređeni"
+        dates: "Datumi"
+        predecessors: "Predecessors"
+        successors: "Successors"
+        blankslate:
+          predecessors:
+            title: "No predecessors"
+            description: "This work package does not have any predecessors."
+          successors:
+            title: "No successors"
+            description: "This work package does not have any successors."
+          children:
+            title: "No children"
+            description: "This work package does not have any children."
     x_descendants:
       one: "One descendant work package"
       few: "%{count} work package descendants"
@@ -694,10 +747,10 @@ hr:
       caption: "The minimum number of working days to keep in between the two work packages."
     relations:
       label_new_child_created: "New work package created and added as a child"
-      label_relates_singular: "related to"
-      label_relates_plural: "related to"
-      label_relates_to_singular: "related to"
-      label_relates_to_plural: "related to"
+      label_relates_singular: "se odnose na"
+      label_relates_plural: "se odnose na"
+      label_relates_to_singular: "se odnose na"
+      label_relates_to_plural: "se odnose na"
       relates_description: "Creates a visible link between the two work packages with no additional effect"
       relates_to_description: "Creates a visible link between the two work packages with no additional effect"
       label_precedes_singular: "successor (after)"
@@ -712,42 +765,43 @@ hr:
       new_child_text: "Creates a related work package as a sub-item of the current (parent) work package"
       existing_child: "Existing child"
       child_description: "Makes the related work package a sub-item of the current (parent) work package"
-      label_blocks_singular: "blocks"
-      label_blocks_plural: "blocks"
+      label_closest: "Closest"
+      label_blocks_singular: "zabrane pristupa"
+      label_blocks_plural: "zabrane pristupa"
       blocks_description: "The related work package cannot be closed until this one is closed first"
-      label_blocked_singular: "blocked by"
-      label_blocked_plural: "blocked by"
-      label_blocked_by_singular: "blocked by"
-      label_blocked__by_plural: "blocked by"
+      label_blocked_singular: "blokirano od"
+      label_blocked_plural: "blokirano od"
+      label_blocked_by_singular: "blokirano od"
+      label_blocked__by_plural: "blokirano od"
       blocked_description: "This work package cannot be closed until the related one is closed first"
       blocked_by_description: "This work package cannot be closed until the related one is closed first"
-      label_duplicates_singular: "duplicates"
-      label_duplicates_plural: "duplicates"
+      label_duplicates_singular: "duplikati"
+      label_duplicates_plural: "duplikati"
       duplicates_description: "This is a copy of the related work package"
-      label_duplicated_singular: "duplicated by"
-      label_duplicated_plural: "duplicated by"
-      label_duplicated_by_singular: "duplicated by"
-      label_duplicated_by_plural: "duplicated by"
+      label_duplicated_singular: "duplicirano od"
+      label_duplicated_plural: "duplicirano od"
+      label_duplicated_by_singular: "duplicirano od"
+      label_duplicated_by_plural: "duplicirano od"
       duplicated_by_description: "The related work package is a copy of this"
       duplicated_description: "The related work package is a copy of this"
-      label_includes_singular: "includes"
-      label_includes_plural: "includes"
+      label_includes_singular: "uključuje"
+      label_includes_plural: "uključuje"
       includes_description: "Marks the related work package as including this one with no additional effect"
-      label_partof_singular: "part of"
-      label_partof_plural: "part of"
-      label_part_of_singular: "part of"
-      label_part_of_plural: "part of"
+      label_partof_singular: "dio"
+      label_partof_plural: "dio"
+      label_part_of_singular: "dio"
+      label_part_of_plural: "dio"
       partof_description: "Marks the related work package as being part of this one with no additional effect"
       part_of_description: "Marks the related work package as being part of this one with no additional effect"
-      label_requires_singular: "requires"
-      label_requires_plural: "requires"
+      label_requires_singular: "zahtijeva"
+      label_requires_plural: "zahtijeva"
       requires_description: "Marks the related work package as a requirement to this one"
       label_required_singular: "required by"
       label_required_plural: "required by"
       required_description: "Marks this work package as being a requirement to the related one"
       label_parent_singular: "parent"
       label_parent_plural: "parent"
-      ghost_relation_title: "Related work package"
+      ghost_relation_title: "Pripadajući radni paket"
       ghost_relation_description: "This is not visible to you due to permissions."
   label_invitation: Pozivnica
   account:
@@ -788,6 +842,7 @@ hr:
       attachment:
         attachment_content: "Attachment content"
         attachment_file_name: "Attachment file name"
+        content_type: "Content-type"
         downloads: "Preuzimanja"
         file: "Datoteka"
         filename: "Datoteka"
@@ -795,10 +850,10 @@ hr:
       attribute_help_text:
         attribute_name: "Atribut"
         help_text: "Help text"
+      capability:
+        context: "Context"
       changeset:
         repository: "Repozitorij"
-      color:
-        hexcode: "Heksadecimalni kod"
       comment:
         commented: "Komentirano" #an object that this comment belongs to
       custom_action:
@@ -809,7 +864,7 @@ hr:
         editable: "Može se uređivati"
         field_format: "Format"
         is_filter: "Koristi se kao filtar"
-        is_for_all: "For all projects"
+        is_for_all: "Za sve projekte"
         is_required: "Obavezno"
         max_length: "Maksimalna duljina"
         min_length: "Minimalna duljina"
@@ -826,12 +881,15 @@ hr:
         secret: "Client secret"
         owner: "Owner"
         builtin: "Builtin"
-        enabled: "Active"
+        enabled: "Aktivno"
         redirect_uri: "Redirect URI"
         client_credentials_user_id: "Client Credentials User ID"
         scopes: "Scopes"
         confidential: "Confidential"
+      emoji_reaction:
+        reactable: "Reacted on"
       enterprise_token:
+        domain: "Domain"
         starts_at: "Valid since"
         subscriber: "Pretplatnik"
         encoded_token: "Enterprise support token"
@@ -843,6 +901,7 @@ hr:
         widgets: "Widgets"
       journal:
         notes: "Bilješke"
+        cause_type: "Cause type"
       ldap_auth_source:
         account: "Korisnički račun"
         attr_firstname: "Atribut Ime"
@@ -858,14 +917,17 @@ hr:
         tls_certificate_string: "LDAP server SSL certificate"
       member:
         roles: "Role"
+      notification:
+        read_ian: "Read in-app"
+        resource: "Resource"
       oauth_client:
         client: "Client ID"
-      planning_element_type_color:
-        hexcode: Heksadecimalni kod
       project:
         active_value:
           true: "unarchived"
           false: "arhivirano"
+        description: "Opis"
+        enabled_modules: "Omogućeni moduli"
         identifier: "Identifikator"
         latest_activity_at: "Latest activity at"
         parent: "Potprojekt od"
@@ -875,7 +937,6 @@ hr:
           false: "private"
         queries: "Upiti"
         status_code: "Status projekta"
-        description: "Opis"
         status_explanation: "Project status description"
         status_codes:
           not_started: "Not started"
@@ -894,23 +955,47 @@ hr:
       project_custom_field:
         is_required: "Required for all projects"
         custom_field_section: Section
+      project/life_cycle_step:
+        definition: "Definition"
       project/life_cycle_step_definition:
-        name: "Name"
-        color: "Color"
+        name: "Naziv"
+        color: "Boja"
       query:
+        sums: "Sums"
+        columns: "Stupci"
         column_names: "Stupci"
         relations_to_type_column: "Relations to %{type}"
         relations_of_type_column: "%{type} relations"
         group_by: "Grupiraj rezultate po"
+        sort_by: "Sort results by"
         filters: "Filteri"
         timeline_labels: "Timeline labels"
+        timeline_visible: "Show Gantt chart"
+        timeline_zoom_level: "Gantt chart zoom level"
+        timestamps: "Baseline timestamps"
+        sort_criteria: "Sort criteria"
+        highlighted_attributes: "Highlighted attributes"
+        highlighting_mode: "Highlight mode"
+        display_representation: "Display mode"
+        show_hierarchies: "Display mode"
+        starred: "Favorite"
+        hidden: "Hidden"
+        manual_sorting: "Manual sort order"
+        ordered_work_packages: "Work packages order"
+        include_subprojects: "Include subprojects"
+        results: "Rezultati"
       relation:
         lag: "Lag"
-        from: "Related work package"
+        from: "Pripadajući radni paket"
         to: "Pripadajući radni paket"
+        relation_type: "Relation type"
       reminder:
-        remind_at_date: "Date"
-        remind_at_time: "Time"
+        remindable: "Reminded object"
+        remind_at: "Remind at"
+        remind_at_date: "Datum"
+        remind_at_time: "Vrijeme"
+      reminder_notification:
+        notification: "Notification"
       repository:
         url: "URL"
       role:
@@ -920,6 +1005,9 @@ hr:
         is_readonly: "Work package read-only"
         excluded_from_totals: "Exclude from calculation of totals in hierarchy"
         default_done_ratio: "% Complete"
+      token/ical:
+        calendar: "Kalendar"
+        ical_token_query_assignment: "Query assignment"
       time_entry:
         activity: "Aktivnost"
         hours: "Sati"
@@ -933,6 +1021,11 @@ hr:
         is_default: "Activated for new projects by default"
         is_milestone: "Je ključna točka"
         color: "Boja"
+        patterns: "Patterns"
+      remote_identity:
+        auth_source: "Auth Source"
+        integration: "Integration"
+        user: "Korisnik"
       user:
         admin: "Administrator"
         auth_source: "Authentication source"
@@ -942,6 +1035,10 @@ hr:
         force_password_change: "Promjena lozinke pri sljedećoj prijavi na sustav"
         language: "Jezik"
         last_login_on: "Zadnja prijava"
+        failed_login_count: "Failed login attempts"
+        first_name: "Ime"
+        last_name: "Prezime"
+        first_login: "First login"
         new_password: "Nova lozinka"
         password_confirmation: "Potvrda"
         consented_at: "Pristanak na"
@@ -952,6 +1049,8 @@ hr:
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
+        daily_reminders: "Daily reminders"
+        workdays: "Working days"
       version:
         effective_date: "Finish date"
         sharing: "Dijeljenje"
@@ -1310,6 +1409,7 @@ hr:
               smaller_than_dates: "is smaller than the interval between the start and the finish date."
               not_available_for_milestones: "is not available for milestone typed work packages."
               cannot_be_null: "can not be set to null as start date and finish date are known."
+              not_an_integer: "is not a valid duration."
             parent:
               cannot_be_milestone: "ne može biti ključna točka."
               cannot_be_self_assigned: "cannot be assigned to itself."
@@ -1350,6 +1450,8 @@ hr:
               duplicate_group: "The group name '%{group}' is used more than once. Group names must be unique."
               query_invalid: "The embedded query '%{group}' is invalid: %{details}"
               group_without_name: "Unnamed groups are not allowed."
+            patterns:
+              invalid_tokens: "One or more attributes inside the field are not valid. Please, fix the attributes before saving."
         user:
           attributes:
             base:
@@ -1359,7 +1461,7 @@ hr:
               confirmation: "Password confirmation does not match password."
               format: "%{message}"
             password:
-              weak: "Must contain characters of the following classes (at least %{min_count} of %{all_count}): %{rules}"
+              weak: "Mora sadržavati znakove sljedećih klasa (najamanje %{min_count} od %{all_count}: %{rules})"
               lowercase: "mala slova (npr. 'a')"
               uppercase: "velika slova (npr. ' A')"
               numeric: "numerički (npr. ' 1')"
@@ -1410,6 +1512,10 @@ hr:
       forum: "Forum"
       global_role: "Global role"
       group: "Grupa"
+      issue_priority:
+        one: "Prioritet"
+        few: "Priorities"
+        other: "Priorities"
       member: "Član"
       news: "Vijesti"
       notification:
@@ -1425,13 +1531,14 @@ hr:
         few: "Project lists"
         other: "Project lists"
       query: "Prilagođeni upit"
+      reminder: "Reminder"
       role:
         one: "Role"
         few: "Role"
         other: "Role"
       status: "Status Radnog paketa"
       token/api:
-        one: Access token
+        one: Pristupni token
         few: Access tokens
         other: Access tokens
       type: "Tip"
@@ -1495,18 +1602,25 @@ hr:
     assigned_to: "Opunomoćeno"
     assignee: "Opunomoćeno"
     attachments: "Prilozi"
+    actor: "Actor"
+    action: "Radnja"
     author: "Autor"
+    avatar: "Avatar"
     base: "Opća greška:"
+    body: "Body"
     blocks_ids: "ID-ovi onemogućenih radnih paketa"
     category: "Kategorija"
     comment: "Komentar"
     comments: "Komentar"
     content: "Sadržaj"
     color: "Boja"
+    creator: "Creator"
     created_at: "Izrađeno"
+    custom_field: "Prilagođeno polje"
     custom_options: "Moguće vrijednosti"
     custom_values: "Prilagođena polja"
     date: "Datum"
+    dates_interval: "Raspon datuma"
     default_columns: "Zadani stupci"
     description: "Opis"
     derived_due_date: "Derived finish date"
@@ -1516,40 +1630,65 @@ hr:
     due_date: "Finish date"
     estimated_hours: "Work"
     estimated_time: "Work"
+    email: "Email"
+    entity_type: "Entity"
     expires_at: "Ističe u"
     firstname: "Ime"
+    filter: "Filter"
     group: "Grupa"
     groups: "Grupe"
+    hexcode: "Heksadecimalni kod"
     id: "ID"
     is_default: "Zadane vrijednost"
     is_for_all: "Za sve projekte"
     public: "Javno"
+    principal: "User or group"
     #kept for backwards compatibility
     issue: "Radni paket"
+    journal: "Journal"
+    journal_notes: "Komentar"
     lastname: "Prezime"
     login: "Korisničko ime"
+    lock_version: "Lock version"
     mail: "Email"
     name: "Naziv"
-    note: "Note"
+    note: "Bilješka"
+    notes: "Bilješke"
+    number: "Number"
+    options: "Mogućnosti"
+    operator: "Operator"
     password: "Lozinka"
     priority: "Prioritet"
     project: "Projekt"
+    project_ids: "Project IDs"
+    reason: "Reason"
     responsible: "Accountable"
+    required: "Obavezno"
+    recipient: "Recipient"
     role: "Role"
     roles: "Role"
+    search: "Pretraživanje"
     start_date: "Datum Početka"
     status: "Status"
+    state: "State"
     subject: "Predmet"
+    slug: "Slug"
     summary: "Sažetak"
-    time_zone: "Time zone"
+    time_zone: "Vremenska zona"
+    text: "Tekst"
     title: "Naziv"
     type: "Tip"
+    typeahead: "Autocomplete"
     updated_at: "Ažurirano"
     updated_on: "Ažurirano"
     uploader: "Uploader"
     user: "Korisnik"
+    username: "Korisničko ime"
+    unit: "Jedinica"
     value: "Vrijednost"
+    values: "Values"
     version: "Verzija"
+    visible: "Vidljiv"
     work_package: "Radni paket"
   backup:
     failed: "Backup failed"
@@ -1833,8 +1972,8 @@ hr:
         other: "sata"
       day:
         one: "day"
-        few: "days"
-        other: "days"
+        few: "dani"
+        other: "dani"
   description_active: "Aktivno?"
   description_attachment_toggle: "Prikaži/Sakrij priloge"
   description_autocomplete: >
@@ -1869,7 +2008,7 @@ hr:
   ee:
     upsale:
       title: "Enterprise add-on"
-      link_title: "More information"
+      link_title: "Više informacija"
       automatic_subject_generation:
         description: "Create automatically generated subjects using referenced attributes and text."
       customize_life_cycle:
@@ -1881,6 +2020,8 @@ hr:
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Prioriteti radnog paketa"
   enumeration_reported_project_statuses: "Priopćeni statusi projekta"
+  enumeration_caption_order_changed: "Order successfully changed."
+  enumeration_could_not_be_moved: "Enumeration could not be moved."
   error_auth_source_sso_failed: "Single Sign-On (SSO) for user '%{value}' failed"
   error_can_not_archive_project: "This project cannot be archived: %{errors}"
   error_can_not_delete_entry: "Unable to delete entry"
@@ -1955,8 +2096,8 @@ hr:
       subproject: "Subproject: %{name}"
   export:
     dialog:
-      title: "Export"
-      submit: "Export"
+      title: "Izvezi"
+      submit: "Izvezi"
       format:
         label: "File format"
         options:
@@ -1970,6 +2111,7 @@ hr:
         input_label_report: "Add columns to attribute table"
         input_caption_report: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in the attribute table, but can be displayed below it."
         input_caption_table: "By default all attributes added as columns in the work package list are selected. Long text fields are not available in table based exports."
+        input_caption_required: "It is not possible to export the view without any column. Please add at least one column."
       pdf:
         export_type:
           label: "PDF export type"
@@ -1978,7 +2120,7 @@ hr:
               label: "Table"
               caption: "Export the work packages list in a table with the desired columns."
             report:
-              label: "Report"
+              label: "Izvješće"
               caption: "Export the work package on a detailed report of all work packages in the list."
             gantt:
               label: "Gantt chart"
@@ -1990,10 +2132,10 @@ hr:
           label: "Zoom levels"
           caption: "Select what is the zoom level for dates displayed in the chart."
           options:
-            days: "Days"
-            weeks: "Weeks"
-            months: "Months"
-            quarters: "Quarters"
+            days: "Dane"
+            weeks: "Tjedne"
+            months: "Mjeseci"
+            quarters: "Kvartali"
         column_width:
           label: "Table column width"
           options:
@@ -2040,21 +2182,29 @@ hr:
       days: d
   pdf_generator:
     page_nr_footer: "Page %{page} of %{total}"
+    template_attributes:
+      label: "Attributes and description"
+      caption: All the attributes present in the current form configuration using the default template.
+    template_contract:
+      label: "Contract"
+      caption: Work package details formatted to the standard German contract form.
     dialog:
       title: Generate PDF
-      submit: Generate
-      header_right:
-        label: Header right
-        caption: Text to be displayed in the right of the header
+      submit: Preuzmi
+      templates:
+        label: "Template"
+        none_enabled: "No template has been enabled for this work package type"
       footer_center:
-        label: Footer center
-        caption: Text to be displayed in the center of the footer
+        label: Footer text
+        caption: This text will appear on every page at the center of the footer.
+      footer_right:
+        label: Footer text
+        caption: This text will appear on every page at the right of the footer.
       hyphenation:
         label: Hyphenation
-        caption: Break words between lines to improve text justification and readability.
-      paper_size:
-        label: Paper size
-        caption: The size of the paper to use for the PDF.
+        caption: Break line between words for better layout and justification.
+      hyphenation_language:
+        label: Language and hyphenation
   extraction:
     available:
       pdftotext: "Pdftotext available (optional)"
@@ -2136,6 +2286,8 @@ hr:
           Progress calculation automatically <a href="%{href}" target="_blank">set to work-based mode and adjusted with version update</a>.
         progress_calculation_adjusted: >-
           Progress calculation automatically <a href="%{href}" target="_blank">adjusted with version update</a>.
+        scheduling_mode_adjusted: >-
+          Scheduling mode automatically adjusted with version update.
         totals_removed_from_childless_work_packages: >-
           Work and progress totals automatically removed for non-parent work packages with <a href="%{href}" target="_blank">version update</a>. This is a maintenance task and can be safely ignored.
       total_percent_complete_mode_changed_to_work_weighted_average: >-
@@ -2371,7 +2523,7 @@ hr:
   label_default: "Zadana vrijednost"
   label_delete_user: "Delete user"
   label_delete_project: "Delete project"
-  label_delete: "Delete"
+  label_delete: "Obriši"
   label_deleted: "izbrisano"
   label_deleted_custom_field: "(izbrisano prilagođeno polje)"
   label_deleted_custom_item: "(deleted item)"
@@ -2380,6 +2532,7 @@ hr:
   label_missing_or_hidden_custom_option: "(missing value or lacking permissions to access)"
   label_descending: "Silazno"
   label_details: "Pojedinosti"
+  label_defaults: "Defaults"
   label_development_roadmap: "Razvojni plan"
   label_diff: "diff"
   label_diff_inline: "u liniji"
@@ -2436,6 +2589,7 @@ hr:
   label_filter: "Filteri"
   label_filter_add: "Dodaj filter"
   label_filter_by: "Filter by"
+  label_filter_any_name_attribute: "Name attributes"
   label_filter_plural: "Filteri"
   label_filters_toggle: "Pokaži/Sakrij filtere"
   label_float: "Plutajući"
@@ -2487,7 +2641,7 @@ hr:
   label_share_project_list: "Share project list"
   label_share_work_package: "Share work package"
   label_show_all_registered_users: "Show all registered users"
-  label_show_less: "Show less"
+  label_show_less: "Prikaži manje"
   label_show_more: "Show more"
   label_journal: "Journal"
   label_journal_diff: "Opis uspoređivanja"
@@ -2559,8 +2713,8 @@ hr:
   label_months_from: "mjeseci od"
   label_more: "Više"
   label_more_than_ago: "prije nekoliko dana"
-  label_move_column_left: "Move column left"
-  label_move_column_right: "Move column right"
+  label_move_column_left: "Premjesti stupac lijevo"
+  label_move_column_right: "Premjesti stupac desno"
   label_move_work_package: "Premjesti radni paket"
   label_my_account: "Account settings"
   label_my_activity: "My activity"
@@ -2585,7 +2739,7 @@ hr:
   label_no_change_option: "(Nema promjene)"
   label_no_data: "Nema podataka za prikaz"
   label_no_due_date: "no finish date"
-  label_no_start_date: "no start date"
+  label_no_start_date: "nema datuma početka"
   label_no_parent_page: "No parent page"
   label_nothing_display: "Ništa za prikazati"
   label_nobody: "nitko"
@@ -2653,7 +2807,7 @@ hr:
   label_project_latest: "Najnoviji projekti"
   label_project_default_type: "Dopusti prazan tip"
   label_project_hierarchy: "Hijerarhija projekta"
-  label_project_mappings: "Projects"
+  label_project_mappings: "Projekti"
   label_project_new: "Novi projekt"
   label_project_plural: "Projekti"
   label_project_list_plural: "Project lists"
@@ -2715,6 +2869,7 @@ hr:
   label_roadmap_overdue: "%{value} zakašnjeo"
   label_role_and_permissions: "Role i dozvole"
   label_role_new: "Nova rola"
+  label_role_grantable: "Grantable role"
   label_role_plural: "Role"
   label_role_search: "Dodijeli uloge novim korisnicima"
   label_scm: "SCM"
@@ -2730,10 +2885,10 @@ hr:
   label_show_completed_versions: "Prikažite završene verzije"
   label_columns: "Stupci"
   label_sort: "Sortiraj"
-  label_sort_ascending: "Sort ascending"
+  label_sort_ascending: "Sortiraj uzlazno"
   label_sort_by: "Sortiraj po %{value}"
   label_sorted_by: "sortirano po %{value}"
-  label_sort_descending: "Sort descending"
+  label_sort_descending: "Sortiraj silazno"
   label_sort_higher: "Pomakni gore"
   label_sort_highest: "Pomakni na vrh"
   label_sort_lower: "Pomakni dolje"
@@ -2762,12 +2917,16 @@ hr:
   label_this_month: "ovaj mjesec"
   label_this_week: "ovog tjedna"
   label_this_year: "ove godine"
-  label_time: "Time"
+  label_time: "Vrijeme"
   label_time_entry_plural: "Utrošeno vrijeme"
   label_time_entry_activity_plural: "Spent time activities"
   label_title: "Naziv"
   label_projects_menu: "Projekti"
   label_today: "danas"
+  label_token_version: "Token Version"
+  label_today_as_start_date: "Select today as start date."
+  label_today_as_due_date: "Select today as finish date."
+  label_today_as_date: "Select today as date."
   label_top_menu: "Gornji izbornik"
   label_topic_plural: "Teme"
   label_total: "Ukupno"
@@ -2880,7 +3039,7 @@ hr:
   label_global_role: "Global role"
   label_not_changeable: "(ne promijenjiv)"
   label_global: "Globalne"
-  label_seeded_from_env_warning: This record has been created through a setting / environment variable. It is not editable through UI.
+  label_seeded_from_env_warning: This record has been created through a setting environment variable. It is not editable through UI.
   macro_execution_error: "Došlo je do pogreške tijekom izvođenja makroa %{macro_name}"
   macro_unavailable: "Makro %{macro_name} ne možete biti prikazan."
   macros:
@@ -3257,6 +3416,13 @@ hr:
   placeholders:
     default: "-"
   project:
+    archive:
+      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
+      archived: "Archived"
+    count:
+      zero: "0 projects"
+      one: "1 projekt"
+      other: "%{count} projekta"
     destroy:
       confirmation: "If you continue, the project %{identifier} will be permanently destroyed. To confirm this action please introduce the project name in the field below, this will:"
       project_delete_result_1: "Delete all related data."
@@ -3269,19 +3435,13 @@ hr:
       warning_one: Članovi projekta morati će relocirati repozitorije projketa.
       warning_two: Postojeće poveznice na projektu neće više funkcionirati.
       title: Promjeni identifikator projekta
+    not_available: "Project N/A"
     template:
       copying: >
         Your project is being created from the selected template project. You will be notified by mail as soon as the project is available.
       use_template: "Use template"
       make_template: "Set as template"
       remove_from_templates: "Remove from templates"
-    archive:
-      are_you_sure: "Are you sure you want to archive the project '%{name}'?"
-      archived: "Archived"
-    count:
-      zero: "0 projects"
-      one: "1 project"
-      other: "%{count} projects"
   project_module_activity: "Aktivnost"
   project_module_forums: "Forumi"
   project_module_work_package_tracking: "Radni paketi"
@@ -3412,9 +3572,15 @@ hr:
     warnings:
       cannot_annotate: "Ovu datoteka ne može biti zabilježena."
   scheduling:
-    activated: "activated"
-    deactivated: "deactivated"
+    manual: "set to Manual"
+    automatic: "set to Automatic"
   search_input_placeholder: "Traži ..."
+  setting_after_first_login_redirect_url: "First login redirect"
+  setting_after_first_login_redirect_url_text_html: >
+    Set a path to redirect users after their first login. If empty, redirects to the home page for the onboarding tour. <br/> Example: <code>/my/page</code>
+  setting_after_login_default_redirect_url: "After login redirect"
+  setting_after_login_default_redirect_url_text_html: >
+    Set a default path to redirect users after login, if no back link was provided. Redirects to home page if not set. <br/> Example: <code>/my/page</code>
   setting_apiv3_cors_title: "Cross-Origin Resource Sharing (CORS)"
   setting_apiv3_cors_enabled: "Enable CORS"
   setting_apiv3_cors_origins: "API V3 Cross-Origin Resource Sharing (CORS) allowed origins"
@@ -3644,7 +3810,7 @@ hr:
     project_life_cycle_step_definitions:
       heading: "Project lifecycle"
       heading_description: "The project lifecycle consists of stages and gates that structure your projects. They will appear in the overview page of a project and be available in the projects list. Individual stages and gates can be selected to customize a project but reordering is not possible on a project level."
-      label_add: "Add"
+      label_add: "Dodaj"
       label_add_description: "Add lifecycle definition"
       label_add_stage: "Stage"
       label_add_gate: "Gate"
@@ -3793,6 +3959,7 @@ hr:
   text_unallowed_characters: "Nedozvoljeni znakovi"
   text_user_invited: Korisniku je poslana pozivnica i očekuje se registracija.
   text_user_wrote: "%{value} je napisao:"
+  text_wrote: "wrote"
   text_warn_on_leaving_unsaved: "The work package contains unsaved text that will be lost if you leave this page."
   text_what_did_you_change_click_to_add_comment: "What did you change? Click to add comment"
   text_wiki_destroy_confirmation: "Are you sure you want to delete this wiki and all its content?"
@@ -3954,7 +4121,7 @@ hr:
       view: "Pregled"
       view_description: "Can view this work package."
     reminders:
-      label_remind_at: "Date"
+      label_remind_at: "Datum"
       note_placeholder: "Why are you setting this reminder?"
       success_creation_message: "Reminder set successfully. You will receive a notification for this work package at the chosen time."
       success_update_message: "Reminder updated successfully."
@@ -4045,7 +4212,6 @@ hr:
   nothing_to_preview: "Ne postoji zapis za pregled"
   api_v3:
     attributes:
-      lock_version: "Zaključavanje verzije"
       property: "Property"
     errors:
       code_400: "Bad request: %{message}"
@@ -4204,6 +4370,7 @@ hr:
       connected: "Connected"
       error: "Greška"
       failed_authorization: "Authorization failed"
+      not_connected: "Not connected"
     labels:
       label_oauth_integration: "OAuth2 integration"
       label_redirect_uri: "Redirect URI"
@@ -4254,3 +4421,29 @@ hr:
   plugin_openproject_auth_saml:
     name: "OmniAuth SAML / Single-Sign On"
     description: "Adds the OmniAuth SAML provider to OpenProject"
+  enterprise_plans:
+    legacy_enterprise: "Enterprise Plan"
+  enterprise_features:
+    baseline_comparison: Baseline Comparison
+    board_view: Board View
+    conditional_highlighting: Conditional Highlighting
+    custom_actions: Custom Actions
+    custom_field_hierarchies: Custom Field Hierarchies
+    customize_life_cycle: Customize Life Cycle
+    date_alerts: Date Alerts
+    define_custom_style: Define Custom Style
+    edit_attribute_groups: Edit Attribute Groups
+    gantt_pdf_export: Gantt PDF Export
+    grid_widget_wp_graph: Grid Widget Work Package Graph
+    ldap_groups: LDAP Groups
+    one_drive_sharepoint_file_storage: OneDrive/SharePoint File Storage
+    placeholder_users: Placeholder Users
+    project_list_sharing: Project List Sharing
+    readonly_work_packages: Readonly Work Packages
+    sso_auth_providers: SSO Auth Providers
+    team_planner_view: Team Planner View
+    two_factor_authentication: Two-Factor Authentication
+    virus_scanning: Attachment Virus Scanning
+    work_package_query_relation_columns: Work Package Query Relation Columns
+    work_package_sharing: Work Package Sharing
+    work_package_subject_generation: Work Package Subject Generation

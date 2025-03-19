@@ -33,14 +33,14 @@ tr:
         Editör alanında, satır içi görüntüye veya referans ekine sürükleyin. Sürüklemeye devam ederken kapalı editör alanları açılacaktır.
       quarantined_hint: "Dosya, bir virüs bulunduğu için karantinaya alındı. İndirmek için kullanılamaz."
     autocomplete_ng_select:
-      add_tag: "Öge ekle"
+      add_tag: "Öğe ekle"
       clear_all: "Tümünü temizle"
       loading: "Yükleniyor..."
       not_found: "Hiçbir öğe bulunamadı"
       type_to_search: "Aramak için yazın"
     autocomplete_select:
       placeholder:
-        multi: '"%{name}" ekleyin'
+        multi: '"%{name}" ekle'
         single: '"%{name}" seçeneğini seçin'
       remove: "%{name} öğesini kaldır"
       active: "Aktif %{label} %{name}"
@@ -101,9 +101,8 @@ tr:
     button_quote: "Alıntı"
     button_save: "Kaydet"
     button_settings: "Ayarlar"
-    button_uncheck_all: "Tümünü işaretleme"
+    button_uncheck_all: "Tüm işaretleri kaldır"
     button_update: "Güncelleştirme"
-    button_export-pdf: "PDF indir"
     button_export-atom: "Atom indir"
     button_generate_pdf: "PDF oluştur"
     button_create: "Oluştur"
@@ -216,12 +215,14 @@ tr:
             invalid_email: "Geçersiz e-posta adresi"
             label_company: "Şirket"
             label_first_name: "İsim"
-            label_last_name: "Soyisim"
+            label_last_name: "Soy isim"
             label_domain: "Alan adı"
             label_subscriber: "Abone"
             label_maximum_users: "En çok aktif kullanıcı"
             label_starts_at: "Başlangıç tarihi:"
             label_expires_at: "Bitiş tarihi"
+            label_plan: "Plan"
+            label_additional_features: "Ek özellikler"
             receive_newsletter: OpenProject <a target="_blank" href="%{link}">haber bültenini</a> almak istiyorum.
             taken_domain: Alan adı başına yalnızca bir etkin deneme olabilir.
             domain_mismatch: Geçerli istek ana bilgisayar adı, yapılandırılan ana bilgisayar adıyla eşleşmiyor. Lütfen sistem ayarlarınızı tekrar kontrol edin.
@@ -356,21 +357,21 @@ tr:
           learn_about: "Yeni özellikler hakkında daha fazla bilgi edinin"
           #Include the version to invalidate outdated translations in other locales.
           #Otherwise, e.g. chinese might still have the translations for 10.0 in the 12.0 release.
-          "15_3":
+          "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Schedule recurring meetings to streamline your weekly, biweekly, or custom appointments.</li> <li>Create child work packages directly from the Relations tab.</li> <li>Include total sums in timesheet PDF exports for better insights.</li> <li>Include child work packages in cost reports for more accurate tracking.</li> <li>See dates of previously hidden, permission-restricted relations to make informed scheduling decisions.</li> </ul>
+                Bu sürüm size çeşitli özellikler ve iyileştirmeler getiriyor, örneğin: <br> <ul class="%{list_styling_class}"> <li>Otomatik planlama modunu etkinleştirme.</li> <li>Toplantılar için gündem maddesi sonuçları belirleme.</li> <li>Bir iş paketi açıklamasından PDF belgeleri oluşturma.</li> <li>Geliştirilmiş proje listeleri görünümü ile çok sayıda projeyi daha iyi yönetme.</li> <li>Bir yoruma alıntı yaparken kullanıcıyı @ etiketi ile anma.</li> </ul>
     ical_sharing_modal:
       title: "Takvime abone ol"
       inital_setup_error_message: "Veri alınırken bir hata oluştu."
       description: "You can use the URL (iCalendar) to subscribe to this calendar in an external client and view up-to-date work package information from there."
-      warning: "Please don't share this URL with other users. Anyone with this link will be able to view work package details without an account or password."
+      warning: "Bu adresi başkalarıyla paylaşmayın. Bu adrese sahip olan birisi iş paketini hesabı ya da parolası olmaksızın görüntüleyebilecektir."
       token_name_label: "Bunu nerede kullanacaksınız?"
       token_name_placeholder: 'Bir ad yazın, örneğin "Telefon"'
       token_name_description_text: 'If you subscribe to this calendar from multiple devices, this name will help you distinguish between them in your <a href="my/access_token", target="_blank">access tokens</a> list.'
       copy_url_label: "Adresi kopyala"
-      ical_generation_error_text: "An error occured while generating the calendar URL."
-      success_message: 'The URL "%{name}" was successfully copied to your clipboard. Paste it in your calendar client to complete the subscription.'
+      ical_generation_error_text: "Takvim adresi üretilirken bir hata oldu."
+      success_message: '"%{name}" adresi başarıyla panonuza koplandı. Aboneliği tamamlamak için takvim istemcinize yapıştırın.'
     label_activate: "Etkinleştir"
     label_assignee: "Atanan"
     label_add_column_after: "Sonrasına sütun ekle"
@@ -420,7 +421,7 @@ tr:
     label_created_on: "oluşturma tarihi"
     label_edit_comment: "Bu yorumu düzenle"
     label_edit_status: "İş paketi durumunu düzenle"
-    label_email: "Eposta"
+    label_email: "E-posta"
     label_equals: "şuysa"
     label_expand: "Genişlet"
     label_expanded: "genişletilmiş"
@@ -532,7 +533,7 @@ tr:
     label_watch_work_package: "İş paketini takip et"
     label_watcher_added_successfully: "Takip eden başarıyla eklendi!"
     label_watcher_deleted_successfully: "Takip eden başarıyla silindi!"
-    label_work_package_details_you_are_here: "You are on the %{tab} tab for %{type} %{subject}."
+    label_work_package_details_you_are_here: "%{type} %{subject} için %{tab} sekmesindesiniz."
     label_work_package_context_menu: "İş paketi bağlam menüsü"
     label_unwatch: "Takip etme"
     label_unwatch_work_package: "İş paketini takip etmeyi bırak"
@@ -575,7 +576,7 @@ tr:
         members: "Projenize katılmak için yeni <b>üyeler</b> davet edin."
         quick_add_button: "<b>Yeni bir proje oluşturmak</b> veya <b>iş arkadaşlarınızı davet etmek</b> için başlık bölümündeki artı (+) simgesini tıklayın."
         sidebar_arrow: "Projenin <b>ana menüsüne</b> dönmek için sol üst köşedeki dönüş okunu kullanın."
-        welcome: "Take a three-minute introduction tour to learn the most <b>important features</b>. <br> We recommend completing the steps until the end. You can restart the tour any time."
+        welcome: "En <b>önemli özellikleri</b> öğrenmek için üç dakikalık bir tanıtım gezintisine çıkın. <br> Tüm adımları tamamlamanızı öneririz. Turu istediğiniz zaman yeniden başlatabilirsiniz."
         wiki: "<b>wiki</b> içinde belgeleyebilir ve ekibinizle birlikte bilgi paylaşabilirsiniz."
         backlogs:
           overview: "İşinizi <b>birikimler</b> görünümünde yönetin."
@@ -595,7 +596,7 @@ tr:
           full_view: "<b>İş paketi ayrıntıları</b> görünümü, tanımı, durumu, önceliği, etkinlikleri, bağımlılıkları ve yorumları gibi belirli bir iş paketiyle ilgili tüm ilgili bilgileri sağlar."
           back_button: "Çıkmak ve iş paketi listesine geri dönmek için sol üst köşedeki dönüş okunu kullanın."
           create_button: "<b>+ Oluştur</b> düğmesi, projenize yeni bir çalışma paketi ekleyecektir."
-          gantt_menu: "Create project schedules and timelines effortlessly using the Gantt chart module."
+          gantt_menu: "Gantt şeması modülünü kullanarak zahmetsizce proje programları ve zaman çizelgeleri oluşturun."
           timeline: "Burada <b>proje planınızı düzenleyebilir</b>, görevler, kilometre taşları, aşamalar ve daha fazlası gibi yeni iş paketleri oluşturabilir ve <b>bağımlılıklar ekleyebilirsiniz</b>. Tüm ekip üyeleri istedikleri zaman en son planı görebilir ve güncelleyebilir."
         team_planner:
           overview: "Takım planlayıcı, takım üyelerine görsel olarak görevler atamanıza ve kimin ne üzerinde çalıştığına dair bir genel bakış elde etmenize olanak tanır."
@@ -701,7 +702,7 @@ tr:
           description: "Bu projeye özgü ayarlar, yukarıdaki varsayılan ayarları geçersiz kılar."
           add: "Proje için ayar ekle"
           already_selected: "Bu proje zaten seçildi"
-          remove: "Proje ayarlarını sil"
+          remove: "Proje ayarlarını kaldır"
     password_confirmation:
       field_description: "Bu değişikliği onaylamak için hesap parolanızı girmeniz gerekir."
       title: "Devam etmek için parolanızı doğrulayın"
@@ -717,17 +718,18 @@ tr:
       description: "Açıklama: Düzenlemek için tıklayın..."
       relation_description: "Bu ilişkiye açıklama eklemek için tıklayın"
     project:
-      required_outside_context: >
-        Lütfen tüm özellikleri görmek için çalışma paketini oluşturacak bir proje seçin. Yalnızca yukarıdaki türden etkin olan projeleri seçebilirsiniz.
-      context: "Proje içeriği"
-      click_to_switch_to_project: "Proje: %{projectname}"
-      confirm_template_load: "Şablonu değiştirmek sayfayı yeniden yükleyecek ve bu forma yaptığınız tüm girişleri kaybedeceksiniz. Devam et?"
-      use_template: "Şablon kullan"
-      no_template_selected: "(Yok)"
-      copy:
-        copy_options: "Ayarları kopyala"
       autocompleter:
         label: "Proje otomatik tamamlama"
+      click_to_switch_to_project: "Proje: %{projectname}"
+      confirm_template_load: "Şablonu değiştirmek sayfayı yeniden yükleyecek ve bu forma yaptığınız tüm girişleri kaybedeceksiniz. Devam et?"
+      context: "Proje içeriği"
+      copy:
+        copy_options: "Ayarları kopyala"
+      not_available: "Proje mevcut değil"
+      no_template_selected: "(Yok)"
+      required_outside_context: >
+        Lütfen tüm özellikleri görmek için çalışma paketini oluşturacak bir proje seçin. Yalnızca yukarıdaki türden etkin olan projeleri seçebilirsiniz.
+      use_template: "Şablon kullan"
     reminders:
       settings:
         daily:
@@ -747,10 +749,10 @@ tr:
           title: "Diğer öğeler için e-posta uyarıları (iş paketleri olmayanlar)"
           explanation: >
             Bildirimler bugün iş paketleri ile sınırlıdır. Bildirimlere eklenene kadar bu etkinlikler için e-posta uyarıları almaya devam etmeyi seçebilirsiniz:
-          news_added: "Haberler eklendi"
-          news_commented: "Bir habere yorum yapın"
-          document_added: "Belgeler eklendi"
-          forum_messages: "Yeni forum mesajları"
+          news_added: "Haber eklendiğinde"
+          news_commented: "Bir habere yorum yapıldığında"
+          document_added: "Belge eklendiğinde"
+          forum_messages: "Yeni forum iletileri yazıldığında"
           wiki_page_added: "Viki sayfası eklendi"
           wiki_page_updated: "Viki sayfası güncellendi"
           membership_added: "Üyelik eklendi"
@@ -783,7 +785,7 @@ tr:
       start_new_timer: "Yeni zamanlayıcı başlat"
       timer_already_running: "Yeni bir zamanlayıcı başlatmak için önce mevcut zamanlayıcıyı durdurmanız gerekir:"
       timer_already_stopped: "Bu iş paketi için aktif zamanlayıcı yok, başka bir pencerede durdurdunuz mu?"
-      tracking_time: "Tracking time"
+      tracking_time: "Takip süresi"
       button_stop: "Geçerli zamanlayıcıyı durdur"
     two_factor_authentication:
       label_two_factor_authentication: "İki faktörlü kimlik doğrulama"
@@ -851,8 +853,6 @@ tr:
       select_branch: "Branş seç"
     field_value_enter_prompt: "'%{field}' için bir değer girin"
     project_menu_details: "Detaylar"
-    scheduling:
-      manual: "Manuel zamanlamayı etkinleştir"
     sort:
       sorted_asc: "Artan sıralama, uygulandı, "
       sorted_dsc: "Azalan sırılama uygulandı, "
@@ -886,7 +886,7 @@ tr:
       image: "Görsel"
     sharing:
       share: "Paylaş"
-      selected_count: "%{count} selected"
+      selected_count: "%{count} seçildi"
       selection:
         mixed: "Karışık"
     work_packages:
@@ -900,15 +900,6 @@ tr:
       comment_send_failed: "Bir hata oluştu. Yorum gönderilemedi."
       comment_updated: "Yorum başarıyla güncelleştirildi."
       confirm_edit_cancel: "İş paketini düzenlemeyi iptal etmek istediğinizden emin misiniz?"
-      datepicker_modal:
-        automatically_scheduled_parent: "Otomatik olarak planlandı. Tarihler ilişkilerden türetilir."
-        manually_scheduled: "Manuel planlama etkinleştirildi, tüm ilişkiler göz ardı edildi."
-        start_date_limited_by_relations: "Kullanılabilir başlangıç ve bitiş tarihleri ilişkilerle sınırlıdır."
-        changing_dates_affects_follow_relations: "Bu tarihlerin değiştirilmesi, ilgili iş paketlerinin tarihlerini etkileyecektir."
-        click_on_show_relations_to_open_gantt: 'GANTT''ye genel bakış için "%{button_name}" üzerine tıklayın.'
-        show_relations: "İlişkileri göster"
-        ignore_non_working_days:
-          title: "Sadece iş günleri"
       description_filter: "Filtre"
       description_enter_text: "Metin girin"
       description_options_hide: "Seçenekleri gizle"
@@ -1309,8 +1300,8 @@ tr:
       header_description: "Geçmişte herhangi bir noktadan bu yana bu listede yapılan değişiklikleri vurgulayın."
       enterprise_header_description: "Enterprise sürümü ile geçmişte herhangi bir zamandan bu yana bu listede yapılan değişiklikleri vurgulayın."
       show_changes_since: "Şu zamandan sonraki değişiklikleri göster"
-      baseline_comparison: "Baseline comparison"
-      help_description: "Reference time zone for the baseline."
+      baseline_comparison: "Temel Karşılaştırma"
+      help_description: "Karşılaştırma için referans zaman dilimi."
       time_description: "Yerel saatinizle: %{datetime}"
       time: "Saat"
       from: "Başlangıç"

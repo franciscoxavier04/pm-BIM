@@ -21,7 +21,23 @@
 #See docs/COPYRIGHT.rdoc for more details.
 #++
 pl:
+  attributes:
+    commit: "Zatwierdź"
+    gitlab: "Identyfikator GitLab"
+    gitlab_avatar_url: "Adres URL awatara"
+    gitlab_email: "Adres e-mail GitLab"
+    gitlab_html_url: "Adres URL kodu HTML GitLab"
+    gitlab_merge_request: "Żądanie scalenia"
+    gitlab_name: "Nazwa GitLab"
+    gitlab_updated_at: "Zaktualizowano o"
+    gitlab_user_avatar_url: "Adres URL awatara GitLab"
+    gitlab_username: "Nazwa użytkownika GitLab"
   activerecord:
+    attributes:
+      gitlab_pipeline:
+        ci_details: "Szczegóły CI"
+      gitlab_merge_request:
+        labels: "Etykiety"
     errors:
       models:
         gitlab_issue:

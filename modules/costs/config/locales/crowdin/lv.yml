@@ -30,6 +30,7 @@ lv:
         overridden_costs: "Pārsniegtās izmaksas"
         spent: "Pavadīts"
         spent_on: "Datums"
+        logged_by: "Ielogoja"
       cost_type:
         unit: "Vienības nosaukums"
         unit_plural: "Pluralized unit name"
@@ -46,11 +47,11 @@ lv:
       user:
         default_rates: "Default rates"
       time_entry:
-        project: Project
-        user: User
-        work_package: Work package
+        project: Projekts
+        user: Lietotāji
+        work_package: Darba pieteikums
         hours: Stundas
-        comments: Comment
+        comments: Komentârs
         activity: Aktivitāte
         spent_on: Datums
         start_time: Start time
@@ -60,6 +61,10 @@ lv:
         zero: "Izmaksu veids"
         one: "Cost type"
         other: "Cost types"
+      time_entry_activity:
+        zero: "Time tracking activities"
+        one: "Time tracking activity"
+        other: "Time tracking activities"
       rate: "Likme"
     errors:
       models:
@@ -81,6 +86,7 @@ lv:
   button_add_rate: "Add rate"
   button_log_costs: "Uzskaitīt vienības izmaksas"
   button_log_time: "Log"
+  button_add_activity: "Aktivitāte"
   caption_booked_on_project: "Booked on project"
   caption_default: "Default"
   caption_default_rate_history_for: "Default rate history for %{user}"
@@ -94,11 +100,13 @@ lv:
   caption_show_locked: "Show locked types"
   caption_log_time_dialog: "Log time"
   description_date_for_new_rate: "Date for new rate"
+  description_costs_settings: "Define the desired format for the costs in all projects."
+  description_time_settings: "Define which fields are mandatory to fill when logging time in all projects."
   group_by_others: "not in any group"
   label_between: "between"
   label_cost_filter_add: "Add cost entry filter"
   label_costlog: "Logged unit costs"
-  label_cost_plural: "Costs"
+  label_cost_plural: "Izmaksas"
   label_cost_type_plural: "Izmaksu veids"
   label_cost_type_specific: "Cost type #%{id}: %{name}"
   label_costs_per_page: "Costs per page"
@@ -120,6 +128,8 @@ lv:
   label_kind: "Veids"
   label_less_or_equal: "mazāks vai vienāds"
   label_log_costs: "Uzskaitīt vienības izmaksas"
+  label_new_time_entry_activity: "New time entry activity"
+  label_time_entry_activity_form_description: "Changes to this time entry activity will be reflected in all projects where it is enabled."
   label_no: "Nē"
   label_option_plural: "Opcijas"
   label_overall_costs: "Kopējās izmaksas"
@@ -132,6 +142,10 @@ lv:
   label_until: "līdz"
   label_valid_from: "Derīgs no"
   label_yes: "Jā"
+  label_time: "Laiks"
+  label_cost: "Cost"
+  label_costs: "Izmaksas"
+  label_mandatory_fields: "Mandatory fields"
   placeholder_activity_select_work_package_first: Work package selection is required first
   notice_something_wrong: "Kļūda. Mēģiniet vēlreiz."
   notice_successful_restore: "Veiksmīga atjaunošana."

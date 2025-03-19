@@ -1,5 +1,5 @@
 pt-PT:
-  activemodel:
+  activerecord:
     attributes:
       saml/provider:
         display_name: Nome
@@ -23,7 +23,6 @@ pt-PT:
         digest_method: Algoritmo de resumo
         format: "Formato"
         icon: "Ícone personalizado"
-  activerecord:
     errors:
       models:
         saml/provider:

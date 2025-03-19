@@ -31,7 +31,11 @@
 module Types
   module Patterns
     class TokenPropertyMapper
-      DEFAULT_FUNCTION = ->(key, context) { context.public_send(key.to_sym) }.curry
+      DEFAULT_FUNCTION = ->(key, context) do
+        return nil if context.nil?
+
+        context.public_send(key.to_sym)
+      end.curry
 
       TOKEN_PROPERTY_MAP = IceNine.deep_freeze(
         {
@@ -103,7 +107,7 @@ module Types
       end
 
       def work_package_cfs_for(type)
-        all_work_package_cfs.where(type: type)
+        all_work_package_cfs.merge(type.custom_fields)
       end
 
       def all_work_package_cfs

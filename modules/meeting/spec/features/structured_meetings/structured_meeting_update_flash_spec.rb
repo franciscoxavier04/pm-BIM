@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) 2012-2024 the OpenProject GmbH
@@ -152,6 +153,8 @@ RSpec.describe "Structured meetings CRUD",
         page.within(flash_component) { click_on "Reload" }
 
         ## Close meeting
+        find_test_selector("close-meeting-button").click
+        expect(page).to have_text "This meeting is in progress."
         find_test_selector("close-meeting-button").click
         expect(page).to have_text "This meeting is closed."
 

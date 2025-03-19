@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -291,6 +292,8 @@ class MeetingsController < ApplicationController
       @meeting.open!
     when "closed"
       @meeting.closed!
+    when "in_progress"
+      @meeting.in_progress!
     end
 
     if @meeting.errors.any?

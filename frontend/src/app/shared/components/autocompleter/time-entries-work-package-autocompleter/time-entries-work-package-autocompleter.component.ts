@@ -141,6 +141,7 @@ export class TimeEntriesWorkPackageAutocompleterComponent extends OpAutocomplete
         this.resource,
         this.modeSpecificFilters,
         this.searchKey,
+        (this.mode === 'recent'), // allow empty typeahead for recent page, as this will list most recent WPs
       )
       .pipe(map((workPackages) => this.sortValues(workPackages)));
   }

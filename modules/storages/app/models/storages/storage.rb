@@ -40,6 +40,8 @@
 # db/migrate/20220113144323_create_storage.rb "migration".
 module Storages
   class Storage < ApplicationRecord
+    using Peripherals::ServiceResultRefinements
+
     PROVIDER_TYPES = [
       PROVIDER_TYPE_NEXTCLOUD = "Storages::NextcloudStorage",
       PROVIDER_TYPE_ONE_DRIVE = "Storages::OneDriveStorage"
@@ -61,6 +63,7 @@ module Storages
     has_many :projects, through: :project_storages
     has_one :oauth_client, as: :integration, dependent: :destroy
     has_one :oauth_application, class_name: "::Doorkeeper::Application", as: :integration, dependent: :destroy
+    has_many :remote_identities, as: :integration, dependent: :destroy
 
     validates_uniqueness_of :host, allow_nil: true
     validates_uniqueness_of :name
@@ -84,6 +87,8 @@ module Storages
     scope :automatic_management_enabled, -> { where("provider_fields->>'automatically_managed' = 'true'") }
 
     scope :in_project, ->(project_id) { joins(project_storages: :project).where(project_storages: { project_id: }) }
+
+    scope :with_audience, ->(audience) { where("provider_fields->>'storage_audience' = ?", audience) }
 
     enum health_status: {
       pending: "pending",
@@ -111,6 +116,19 @@ module Storages
       split_reason = text.split(/[|:]/)
       if split_reason.length > index
         split_reason[index].strip
+      end
+    end
+
+    def oauth_access_granted?(user)
+      selector = Peripherals::StorageInteraction::AuthenticationMethodSelector.new(
+        storage: self,
+        user:
+      )
+      case selector.authentication_method
+      when :sso
+        true
+      when :storage_oauth
+        OAuthClientToken.exists?(user:, oauth_client:)
       end
     end
 
@@ -144,6 +162,21 @@ module Storages
     alias automatic_management_enabled automatically_managed
 
     def available_project_folder_modes
+      raise Errors::SubclassResponsibility
+    end
+
+    # Returns a value of an audience, if configured for this storage.
+    # The presence of an audience signals that this storage prioritizes
+    # remote authentication via Single-Sign-On if possible.
+    def audience
+      raise Errors::SubclassResponsibility
+    end
+
+    def authenticate_via_idp?
+      raise Errors::SubclassResponsibility
+    end
+
+    def authenticate_via_storage?
       raise Errors::SubclassResponsibility
     end
 
@@ -204,6 +237,16 @@ module Storages
 
     def health_reason_description
       @health_reason_description ||= self.class.extract_part_from_piped_string(health_reason, 1)
+    end
+
+    def extract_origin_user_id(token)
+      auth_strategy = ::Storages::Peripherals::Registry
+                        .resolve("#{self}.authentication.specific_bearer_token")
+                        .with_token(token.access_token)
+      ::Storages::Peripherals::Registry
+        .resolve("#{self}.queries.user")
+        .call(auth_strategy:, storage: self)
+        .map { |user| user[:id] } # rubocop:disable Rails/Pluck
     end
   end
 end

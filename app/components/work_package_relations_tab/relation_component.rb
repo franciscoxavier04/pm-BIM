@@ -2,18 +2,30 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   include ApplicationHelper
   include OpPrimer::ComponentHelpers
 
-  attr_reader :work_package, :relation, :child, :visibility
+  attr_reader :work_package, :relation, :visibility, :child, :editable
 
+  # Checks if the relation or child work package is visible to the current user
+  #
+  # @param work_package [WorkPackage] The work package whose relations are being displayed
+  # @param relation [Relation, nil] The relation between work packages, if any
+  # @param visibility [Symbol] The visibility status of the relation (:visible or :ghost)
+  # @param child [WorkPackage, nil] The child work package, if this is a parent-child relationship
+  # @param editable [Boolean] Whether the relation can be edited
+  # @param closest [Boolean] Whether the follows relation is the closest
   def initialize(work_package:,
                  relation:,
                  visibility:,
-                 child: nil)
+                 child: nil,
+                 editable: true,
+                 closest: false)
     super()
 
     @work_package = work_package
     @relation = relation
     @visibility = visibility
     @child = child
+    @editable = editable
+    @closest = closest
   end
 
   def related_work_package
@@ -34,6 +46,8 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def should_render_action_menu?
+    return false unless editable
+
     if parent_child_relationship?
       allowed_to_manage_subtasks?
     else
@@ -42,7 +56,8 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
   end
 
   def allowed_to_manage_subtasks?
-    helpers.current_user.allowed_in_project?(:manage_subtasks, @work_package.project)
+    helpers.current_user.allowed_in_project?(:manage_subtasks, @work_package.project) &&
+      helpers.current_user.allowed_in_project?(:manage_subtasks, @child.project)
   end
 
   def allowed_to_manage_relations?
@@ -85,6 +100,10 @@ class WorkPackageRelationsTab::RelationComponent < ApplicationComponent
     return false if parent_child_relationship?
 
     relation.relation_type_for(work_package) == Relation::TYPE_PRECEDES
+  end
+
+  def closest?
+    @closest
   end
 
   def edit_path

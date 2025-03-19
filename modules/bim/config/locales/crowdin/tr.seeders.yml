@@ -92,13 +92,13 @@ tr:
           description: Bu, bu demo inşaat projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
-              title: Welcome to your demo project
+              title: Demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
-              description: The actual news
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
+              description: Gerçek haberler
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
@@ -154,13 +154,13 @@ tr:
           description: Bu, bu demo planlama ve inşa projesinin hedeflerinin kısa bir özetidir.
           news:
             item_0:
-              title: Welcome to your demo project
+              title: Demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
-              description: The actual news
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
+              description: Gerçek haberler
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
@@ -256,7 +256,7 @@ tr:
 
                     *   Create a useful overview of the results
                     *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
+                    *   Communicate all the relevant results with the customer
                     *   Identify the fundamental boundary conditions of the project
 
                     ## Description
@@ -271,7 +271,7 @@ tr:
 
                     *   Create a useful overview of the results
                     *   Check what has been done and summarize the results
-                    *   Communicate all the relevant results with the customer
+                    *   Communicate all the relevant results with the customer
                     *   Identify the fundamental boundary conditions of the project
 
                     ## Description
@@ -410,11 +410,11 @@ tr:
             item_0:
               title: Demo projenize hoş geldiniz
               summary: |
-                We are glad you joined.
-                In this module you can communicate project news to your team members.
-              description: The actual news
+                Katıldığınız için mutluyuz.
+                Bu modülde proje haberlerini ekip üyelerinize iletebilirsiniz.
+              description: Gerçek haberler
           categories:
-            item_0: Category 1 (to be changed in Project settings)
+            item_0: Kategori 1 (Proje ayarlarında değiştirilecektir)
           queries:
             item_0:
               name: Proje planı
