@@ -12,6 +12,8 @@ This document describes the style settings format for the [PDF Export styling fi
 | `page_heading` | **Page heading**<br/>The main page title heading<br/>See [Page heading](#page-heading) | object |
 | `work_package` | **Work package**<br/>Styling for the Work package section<br/>See [Work package](#work-package) | object |
 | `wp_table` | **Work package table**<br/>Styling for the related tables (Form configuration)<br/>See [Work package table](#work-package-table) | object |
+| `inline_error` | **Font properties**<br/>Styling for inline error messages<br/>See [Font properties](#font-properties) | object |
+| `inline_hint` | **Font properties**<br/>Styling for inline hint messages<br/>See [Font properties](#font-properties) | object |
 
 ## Alert
 
@@ -90,9 +92,9 @@ border_width_right: 0.5mm
 
 ## Font properties
 
-Properties to set the font style
+Styling for inline error messages
 
-Key: `font`
+Key: `inline_error`
 
 Example:
 ```yml

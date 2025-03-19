@@ -51,6 +51,14 @@ module WorkPackage::PDFExport::Export::Wp::Styles
     def wp_detail_subject_margins
       resolve_margin(@styles.dig(:work_package, :subject))
     end
+
+    def inline_error
+      resolve_font(@styles.dig(:inline_error))
+    end
+
+    def inline_hint
+      resolve_font(@styles.dig(:inline_hint))
+    end
   end
 
   def styles

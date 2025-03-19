@@ -77,7 +77,7 @@ module WorkPackage::PDFExport::Export::Report::Attributes
 
     # get work package attribute table cell data: [label, value]
     [
-      pdf.make_cell(attribute_data[:label].upcase, styles.wp_attributes_table_label_cell),
+      pdf.make_cell(attribute_data[:label], styles.wp_attributes_table_label_cell),
       attribute_data[:value]
     ]
   end

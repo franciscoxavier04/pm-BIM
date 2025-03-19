@@ -192,7 +192,7 @@ module WorkPackage::PDFExport::Export::WpTable
   def build_header_row(columns)
     header_style = styles.wp_table_header_cell
     columns.map do |col|
-      content = (col.caption || "").upcase
+      content = col.caption || ""
       pdf.make_cell(content, header_style)
     end
   end

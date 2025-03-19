@@ -68,15 +68,25 @@ module WorkPackage::PDFExport::Export::Wp::Attributes
   def write_query_group(group, work_package)
     prepare_query_group(group, work_package)
     related_work_packages = group.query.results.work_packages
-    return if related_work_packages.empty?
-
-    write_group_title(group, with_hr: false)
-    write_work_packages_table!(related_work_packages, group.query)
+    write_group_title(group)
+    if related_work_packages.empty?
+      write_inline_hint("[No work packages]")
+    else
+      write_work_packages_table!(related_work_packages, group.query)
+    end
   rescue Prawn::Errors::CannotFit
+    write_inline_error("[#{I18n.t('export.errors.embedded_table_with_too_many_columns')}]")
+  end
+
+  def write_inline_hint(text)
+    with_margin(styles.wp_table_margins) do
+      pdf.formatted_text([styles.inline_hint.merge({ text: })])
+    end
+  end
+
+  def write_inline_error(text)
     with_margin(styles.wp_markdown_label_margins) do
-      pdf.formatted_text(
-        [{ text: "[#{I18n.t('export.errors.embedded_table_with_too_many_columns')}]", color: "FF0000", size: 8 }]
-      )
+      pdf.formatted_text([styles.inline_error.merge({ text: })])
     end
   end
 

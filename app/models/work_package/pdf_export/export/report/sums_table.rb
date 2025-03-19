@@ -90,7 +90,7 @@ module WorkPackage::PDFExport::Export::Report::SumsTable
   end
 
   def sums_column_name(col)
-    (col.caption || "").upcase
+    col.caption || ""
   end
 
   def build_sums_group_row(group)

@@ -23,6 +23,14 @@
     },
     "wp_table": {
       "$ref": "#/$defs/wp_table"
+    },
+    "inline_error": {
+      "description": "Styling for inline error messages",
+      "$ref": "#/$defs/font"
+    },
+    "inline_hint": {
+      "description": "Styling for inline hint messages",
+      "$ref": "#/$defs/font"
     }
   },
   "required": [],

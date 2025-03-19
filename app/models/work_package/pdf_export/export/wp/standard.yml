@@ -31,16 +31,17 @@ wp_table:
     styles: [ "bold" ]
     margin_bottom: 10
   table:
-    subject_indent: 8
+    subject_indent: 0
     margin_bottom: 20
     cell:
       size: 9
       color: "000000"
-      padding_left: 5
+      padding_left: 0
       padding_right: 5
       padding_top: 0
       padding_bottom: 5
       border_width: 0.25
+      no_border: true
     cell_header:
       size: 9
       styles: [ "bold" ]
@@ -264,3 +265,13 @@ work_package:
         no_border_left: false
         no_border_bottom: true
         no_border_top: true
+
+inline_error:
+  size: 8
+  color: "FF0000"
+  styles: [ ]
+
+inline_hint:
+  size: 8
+  color: "4F4F4F"
+  styles: [ ]
