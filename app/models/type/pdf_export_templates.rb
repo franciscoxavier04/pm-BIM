@@ -84,10 +84,4 @@ class Type::PdfExportTemplates
     ordered_template_ids.insert(position, template_id)
     @type.export_templates_order = ordered_template_ids
   end
-
-  private
-
-  def built_in_templates
-    ::WorkPackage::PDFExport::Templates::TEMPLATES
-  end
 end
