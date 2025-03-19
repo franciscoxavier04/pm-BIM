@@ -29,6 +29,8 @@
 #++
 
 class Type::PdfExportTemplates
+  include WorkPackage::PDFExport::Templates
+
   Template = Data.define(:id, :label, :caption, :enabled)
 
   def initialize(type)
