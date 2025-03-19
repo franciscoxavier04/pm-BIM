@@ -1136,7 +1136,7 @@ en:
         parent_title: "Parent page"
         redirect_existing_links: "Redirect existing links"
       work_package:
-        ancestor: "Ancestor"
+        ancestor: "Descendants of" # used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Begin of the insertion"
         begin_deletion: "Begin of the deletion"
         children: "Subelements"
