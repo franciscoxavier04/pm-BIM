@@ -66,6 +66,26 @@ RSpec.describe OpenProject::OpenIDConnect::Hooks::Hook do
         expect(session).to be_empty
       end
     end
+
+    context "when expires_in is missing" do
+      let(:expires_in) { nil }
+
+      it "does not store an expires_in" do
+        call_hook
+
+        expect(session["omniauth.oidc_expires_in"]).to be_nil
+      end
+    end
+
+    context "when expires_in is passed as a string" do
+      let(:expires_in) { "7200" }
+
+      it "stores expires_in as integer" do
+        call_hook
+
+        expect(session["omniauth.oidc_expires_in"]).to eq(7200)
+      end
+    end
   end
 
   describe "#user_logged_in" do
