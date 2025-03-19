@@ -65,10 +65,19 @@ module OpenProject::OpenIDConnect
         if OpenIDConnect::Provider.exists?(slug: context.dig(:auth_hash, :provider))
           session["omniauth.oidc_access_token"] = context.dig(:auth_hash, :credentials, :token)
           session["omniauth.oidc_refresh_token"] = context.dig(:auth_hash, :credentials, :refresh_token)
-          session["omniauth.oidc_expires_in"] = context.dig(:auth_hash, :credentials, :expires_in)
+          session["omniauth.oidc_expires_in"] = parse_expires_in(context.dig(:auth_hash, :credentials, :expires_in))
         end
 
         nil
+      end
+
+      private
+
+      def parse_expires_in(expires_in)
+        expires_in = expires_in.to_i
+        return nil if expires_in.zero?
+
+        expires_in
       end
     end
   end
