@@ -268,7 +268,8 @@ RSpec.describe Queries::WorkPackages::Filter::AncestorFilter do
     end
 
     describe "#where and #includes" do
-      let(:parent) { create(:work_package) }
+      let(:grandparent) { create(:work_package) }
+      let(:parent) { create(:work_package, parent: grandparent) }
       let(:child) { create(:work_package, parent:) }
       let(:grandchild) { create(:work_package, parent: child) }
       let(:another_wp) { create(:work_package) }
@@ -304,7 +305,7 @@ RSpec.describe Queries::WorkPackages::Filter::AncestorFilter do
                     .includes(instance.includes)
                     .where(instance.where)
 
-          expect(scope).to contain_exactly(another_wp)
+          expect(scope).to contain_exactly(another_wp, grandparent)
         end
       end
     end
