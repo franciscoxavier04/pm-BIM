@@ -61,9 +61,9 @@
               render(WorkPackages::ActivitiesTab::Journals::NotesForm.new(f))
             end
 
-            form_container.with_row(flex_layout: true, justify_content: :space_between) do |form_container_row|
-              form_container_row.with_column(flex_layout: true, align_items: :center) do |restricted_comment_container|
-                if adding_restricted_comment_allowed?
+            form_container.with_row(flex_layout: true, justify_content: adding_restricted_comment_allowed? ? :space_between : :flex_end) do |form_container_row|
+              if adding_restricted_comment_allowed?
+                form_container_row.with_column(flex_layout: true, align_items: :center) do |restricted_comment_container|
                   restricted_comment_container.with_column(mr: 2, test_selector: "op-work-package-journal-restricted-comment-checkbox") do
                     render(WorkPackages::ActivitiesTab::Journals::RestrictedNoteForm.new(f))
                   end
