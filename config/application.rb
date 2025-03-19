@@ -154,10 +154,6 @@ module OpenProject
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
-
     # Add locales from crowdin translations to i18n
     config.i18n.load_path += Dir[Rails.root.join("config/locales/crowdin/*.{rb,yml}").to_s]
     config.i18n.default_locale = :en
@@ -183,39 +179,10 @@ module OpenProject
 
     ActiveModel::Translation.raise_on_missing_translations = Rails.env.local?
 
-    # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
-
-    # Enable escaping HTML in JSON.
-    config.active_support.escape_html_entities_in_json = true
-
-    # Make Active Record use stable #cache_key alongside new #cache_version method.
-    # This is needed for recyclable cache keys.
-    # We will want check https://blog.heroku.com/cache-invalidation-rails-5-2-dalli-store
-    # and test if we can enable this in the long run
-    # Rails.application.config.active_record.cache_versioning = true
-
-    # Use AES-256-GCM authenticated encryption for encrypted cookies.
-    # Also, embed cookie expiry in signed or encrypted cookies for increased security.
-    #
-    # This option is not backwards compatible with earlier Rails versions.
-    # It's best enabled when your entire app is migrated and stable on 5.2.
-    #
-    # Existing cookies will be converted on read then written with the new scheme.
-    Rails.application.config.action_dispatch.use_authenticated_cookie_encryption = true
-
-    # Use AES-256-GCM authenticated encryption as default cipher for encrypting messages
-    # instead of AES-256-CBC, when use_authenticated_message_encryption is set to true.
-    Rails.application.config.active_support.use_authenticated_message_encryption = true
-
     # Use SHA-256 instead of MD5 to generate non-sensitive digests, such as the ETag header.
     # This will be the default with Rails 7.1. So when config.load_configs is set to 7.1 or above,
     # this configuration can be removed.
     Rails.application.config.active_support.hash_digest_class = OpenSSL::Digest::SHA256
-
-    # This option is not backwards compatible with earlier Rails versions.
-    # It's best enabled when your entire app is migrated and stable on 6.0.
-    Rails.application.config.action_dispatch.use_cookies_with_metadata = true
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
