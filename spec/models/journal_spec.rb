@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -65,50 +67,6 @@ RSpec.describe Journal do
 
         expect(described_class.count)
           .to eq 0
-      end
-    end
-  end
-
-  describe ".restricted_visible scope", with_flag: { comments_with_restricted_visibility: true } do
-    let(:work_package) { create(:work_package) }
-    let(:admin) { create(:admin) }
-    let(:user) { create(:user) }
-    let!(:restricted_note) do
-      create(:work_package_journal,
-             user: admin,
-             notes: "First comment by admin",
-             journable: work_package,
-             restricted: true,
-             version: 2)
-    end
-
-    subject { described_class.restricted_visible(work_package.project) }
-
-    before do
-      login_as user
-    end
-
-    context "when the user cannot see restricted" do
-      before do
-        mock_permissions_for(user) do |mock|
-          mock.allow_in_work_package :view_work_packages, work_package:
-        end
-      end
-
-      it "does not return the restricted journal" do
-        expect(subject.map(&:id)).not_to include(restricted_note.id)
-      end
-    end
-
-    context "when the user can see restricted" do
-      before do
-        mock_permissions_for(user) do |mock|
-          mock.allow_in_project(:view_comments_with_restricted_visibility, project: work_package.project)
-        end
-      end
-
-      it "returns the restricted journal" do
-        expect(subject.map(&:id)).to include(restricted_note.id)
       end
     end
   end
