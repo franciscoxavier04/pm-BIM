@@ -33,8 +33,7 @@ class Queries::WorkPackages::Filter::AncestorFilter <
   include ::Queries::WorkPackages::Filter::FilterForWpMixin
 
   def where
-    descendant_ids = WorkPackage.where(id: no_templated_values).flat_map(&:descendants).pluck(:id)
-    descendant_ids.concat(no_templated_values)
+    descendant_ids = WorkPackageHierarchy.where(ancestor_id: no_templated_values).pluck(:descendant_id)
 
     operator_strategy.sql_for_field(descendant_ids, self.class.model.table_name, :id)
   end
