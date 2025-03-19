@@ -252,9 +252,7 @@ export default class PatternInputController extends Controller {
 
       // if the resulting range is empty it is at the start of the input
       if (testRange.toString() === '') {
-        // add a space
-        // const beforeToken = document.createTextNode(' ');
-        const beforeToken = new Text(CONTROL_SPACE);
+        const beforeToken = document.createTextNode(CONTROL_SPACE);
         const firstContent = this.contentTarget.firstChild as HTMLElement;
         this.contentTarget.insertBefore(beforeToken, firstContent);
 
@@ -276,9 +274,7 @@ export default class PatternInputController extends Controller {
 
       // if the resulting range is empty it is at the end of the input
       if (testRange.toString() === '') {
-        // add a space
-        // const afterToken = document.createTextNode(' ');
-        const afterToken = new Text(CONTROL_SPACE);
+        const afterToken = document.createTextNode(CONTROL_SPACE);
         this.contentTarget.appendChild(afterToken);
 
         this.setRealCaretPositionAtNode(afterToken);
@@ -472,14 +468,14 @@ export default class PatternInputController extends Controller {
 
         const follower = node.nextSibling;
         if (follower === null) {
-          node.after(new Text(CONTROL_SPACE));
+          node.after(document.createTextNode(CONTROL_SPACE));
         } else {
           if (this.isToken(follower)) {
-            node.after(new Text(CONTROL_SPACE));
+            node.after(document.createTextNode(CONTROL_SPACE));
           }
 
           if (this.isText(follower) && !this.isWhitespaceOrControlSpace(follower.wholeText[0])) {
-            node.after(new Text(CONTROL_SPACE));
+            node.after(document.createTextNode(CONTROL_SPACE));
           }
         }
       }
