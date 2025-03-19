@@ -72,8 +72,8 @@ module WorkPackages
 
         def page_orientation_options
           [
-            { label: "Portrait", value: "portrait" },
-            { label: "Landscape", value: "landscape" }
+            { label: I18n.t("pdf_generator.dialog.page_orientation.options.portrait"), value: "portrait" },
+            { label: I18n.t("pdf_generator.dialog.page_orientation.options.landscape"), value: "landscape" }
           ]
         end
 
