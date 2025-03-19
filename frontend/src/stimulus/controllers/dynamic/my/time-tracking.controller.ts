@@ -20,6 +20,14 @@ export default class MyTimeTrackingController extends Controller {
   private calendar:Calendar;
 
   connect() {
+    // handle dialog close event
+    document.addEventListener('dialog:close', (event:CustomEvent) => {
+      const { detail: { dialog, submitted } } = event as { detail:{ dialog:HTMLDialogElement; submitted:boolean }; };
+      if (dialog.id === 'time-entry-dialog' && submitted) {
+        window.location.reload();
+      }
+    });
+
     // styling for the calendar entries can be stolen from the team planner
 
     this.calendar = new Calendar(this.calendarTarget, {
