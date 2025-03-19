@@ -32,9 +32,9 @@ module Storages
   module Peripherals
     module ConnectionValidators
       module Nextcloud
-        class BaseConfigurationValidator
+        class BaseConfigurationValidator < BaseValidator
           def initialize(storage)
-            @storage = storage
+            super
             @results = build_result_list
           end
 
@@ -89,10 +89,6 @@ module Storages
             end
           end
 
-          def message(key, context = {})
-            I18n.t("storages.health.connection_validation.#{key}", **context)
-          end
-
           def noop = StorageInteraction::AuthenticationStrategies::Noop.strategy
 
           def capabilities
@@ -105,19 +101,6 @@ module Storages
           end
 
           def path_to_config = Rails.root.join("modules/storages/config/nextcloud_dependencies.yml")
-
-          def fail_check(key, message)
-            update_result(key, CheckResult.failure(key, message))
-            throw :interrupted
-          end
-
-          def pass_check(key)
-            update_result(key, CheckResult.success(key))
-          end
-
-          def update_result(method, value)
-            @results[method.to_sym] = value
-          end
 
           def build_result_list
             {
