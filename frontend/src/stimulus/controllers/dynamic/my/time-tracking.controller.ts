@@ -41,6 +41,7 @@ export default class MyTimeTrackingController extends Controller {
       height: 800,
       contentHeight: 780,
       aspectRatio: 3,
+      allDayContent: I18n.t('js.myTimeTracking.noSpecificTime'),
       eventClassNames(arg) {
         return [
           'calendar-time-entry-event',
