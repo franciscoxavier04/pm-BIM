@@ -54,6 +54,8 @@ export default class MyTimeTrackingController extends Controller {
       contentHeight: 780,
       aspectRatio: 3,
       selectable: this.canCreateValue,
+      editable: this.canEditValue,
+      eventResizableFromStart: true,
       allDayContent: I18n.t('js.myTimeTracking.noSpecificTime'),
       eventClassNames(arg) {
         return [
@@ -63,8 +65,9 @@ export default class MyTimeTrackingController extends Controller {
         ];
       },
       eventDidMount(info) {
+        console.log(info.event);
         //eslint-disable-next-line
-        info.el.innerHTML = info.event.extendedProps.customEventView;
+        // info.el.innerHTML = info.event.extendedProps.customEventView;
       },
       select: (info) => {
         let dialogParams = 'onlyMe=true';
@@ -79,6 +82,38 @@ export default class MyTimeTrackingController extends Controller {
           `${this.pathHelper.timeEntryDialog()}?${dialogParams}`,
           { method: 'GET' },
         );
+      },
+      eventResize: (info) => {
+        let dialogParams = 'onlyMe=true';
+
+        if (info.event.allDay) {
+          dialogParams = `${dialogParams}&date=${info.event.startStr}&removeTime=true`;
+        } else {
+          dialogParams = `${dialogParams}&startTime=${info.event.start?.toISOString()}&endTime=${info.event.end?.toISOString()}`;
+        }
+
+        void this.turboRequests.request(
+          `${this.pathHelper.timeEntryEditDialog(info.event.id)}?${dialogParams}`,
+          { method: 'GET' },
+        );
+
+        info.revert(); // revert back to old position, when modal succeeds, we reload anyways
+      },
+      eventDrop: (info) => {
+        let dialogParams = 'onlyMe=true';
+
+        if (info.event.allDay) {
+          dialogParams = `${dialogParams}&date=${info.event.startStr}&removeTime=true`;
+        } else {
+          dialogParams = `${dialogParams}&startTime=${info.event.start?.toISOString()}&endTime=${info.event.end?.toISOString()}`;
+        }
+
+        void this.turboRequests.request(
+          `${this.pathHelper.timeEntryEditDialog(info.event.id)}?${dialogParams}`,
+          { method: 'GET' },
+        );
+
+        info.revert(); // revert back to old position, when modal succeeds, we reload anyways
       },
     });
 

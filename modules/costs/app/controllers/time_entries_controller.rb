@@ -49,7 +49,31 @@ class TimeEntriesController < ApplicationController
     @show_user = show_user_input_in_dialog
     @limit_to_project_id = @project&.id
 
-    @time_entry.spent_on ||= params[:date].presence || Time.zone.today
+    @time_entry.time_zone = User.current.time_zone.name
+
+    # TODO: Move this into a service
+
+    if params[:date].present?
+      @time_entry.spent_on = params[:date]
+    elsif params[:startTime].present? && params[:endTime].present?
+      parsed_start_time = DateTime.parse(params[:startTime]).in_time_zone(User.current.time_zone)
+      parsed_end_time = DateTime.parse(params[:endTime]).in_time_zone(User.current.time_zone)
+
+      @time_entry.spent_on = parsed_start_time.to_date
+
+      # full day events have the same start and end time
+      puts "****", parsed_start_time, parsed_end_time, (parsed_start_time != parsed_end_time), "****"
+      if parsed_start_time != parsed_end_time
+        @time_entry.start_time = (parsed_start_time.hour * 60) + parsed_start_time.min
+        @time_entry.hours = ((parsed_end_time - parsed_start_time) / 1.hour).round(2)
+      end
+    else
+      @time_entry.spent_on ||= Time.zone.today
+    end
+
+    if params[:removeTime] == "true"
+      @time_entry.start_time = nil
+    end
   end
 
   def user_tz_caption

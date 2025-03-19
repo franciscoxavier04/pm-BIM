@@ -41,7 +41,6 @@ module FullCalendar
     attribute :title, :string
     attribute :url, :string
     attribute :class_names, array: true, default: []
-    attribute :editable, :boolean, default: false
 
     def as_json
       {
@@ -53,7 +52,6 @@ module FullCalendar
         "title" => title,
         "url" => url,
         "classNames" => class_names,
-        "editable" => editable,
         "customEventView" => rendered_event_content
       }.compact_blank.as_json
     end
