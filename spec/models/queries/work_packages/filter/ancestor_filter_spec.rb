@@ -287,8 +287,8 @@ RSpec.describe Queries::WorkPackages::Filter::AncestorFilter do
                 .includes(instance.includes)
                 .where(instance.where)
 
-        # The ancestor filter will include all descendants of the parent work package, as well as the parent itself.
-        expect(scope).to contain_exactly(parent, child, grandchild)
+        # The ancestor filter will include all descendants of the parent work package, but not the parent itself.
+        expect(scope).to contain_exactly(child, grandchild)
       end
 
       context "with the `!` operator" do
@@ -299,13 +299,13 @@ RSpec.describe Queries::WorkPackages::Filter::AncestorFilter do
           instance.operator = "!"
         end
 
-        it "excludes the parent and its descendants" do
+        it "excludes the parents descendants, but not the parent itself" do
           scope = WorkPackage
                     .references(instance.includes)
                     .includes(instance.includes)
                     .where(instance.where)
 
-          expect(scope).to contain_exactly(another_wp, grandparent)
+          expect(scope).to contain_exactly(another_wp, grandparent, parent)
         end
       end
     end
