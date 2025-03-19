@@ -32,6 +32,8 @@ RSpec.describe Query,
                with_ee: %i[baseline_comparison conditional_highlighting work_package_query_relation_columns] do
   let(:query) { build(:query) }
   let(:project) { create(:project) }
+  let(:project_member) { create(:user, member_with_permissions: { project => [:view_project] }) }
+  let(:user_restricted) { create(:user) }
 
   describe ".new_default" do
     it "set the default sortation" do
@@ -472,16 +474,21 @@ RSpec.describe Query,
   end
 
   describe ".available_columns" do
-    let(:custom_field) { create(:list_wp_custom_field) }
     let(:type) { create(:type) }
+    let(:custom_field) { create(:list_wp_custom_field, types: [type], projects: [project]) }
 
     before do
+      custom_field
+      project.types << type
+
       stub_const("Relation::TYPES",
                  relation1: { name: :label_relates_to, sym_name: :label_relates_to, order: 1, sym: :relation1 },
                  relation2: { name: :label_duplicates, sym_name: :label_duplicated_by, order: 2, sym: :relation2 })
     end
 
     context "with the enterprise token allowing relation columns" do
+      current_user { project_member }
+
       it "has all static columns, cf columns and relation columns" do
         expected_columns = %i(id project assigned_to author
                               category created_at due_date estimated_hours
@@ -496,7 +503,23 @@ RSpec.describe Query,
       end
     end
 
+    context "when the user cannot see the project" do
+      current_user { user_restricted }
+
+      it "does not list custom field columns" do
+        columns = described_class.available_columns.map(&:name)
+
+        # We do not really care about column details here, but let's see if we have some amount of them:
+        expect(columns.count).to be > 5
+
+        # This is the important assertion:
+        expect(columns).not_to include custom_field.column_name.to_sym
+      end
+    end
+
     context "with the enterprise token disallowing relation columns", with_ee: false do
+      current_user { project_member }
+
       it "has all static columns, cf columns but no relation columns" do
         expected_columns = %i(id project assigned_to author
                               category created_at due_date estimated_hours

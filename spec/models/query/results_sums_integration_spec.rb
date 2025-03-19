@@ -130,6 +130,7 @@ RSpec.describe Query::Results, "sums" do
     create(:type) do |t|
       t.custom_fields << int_cf
       t.custom_fields << float_cf
+      project.types << t
     end
   end
   let(:current_user) do
