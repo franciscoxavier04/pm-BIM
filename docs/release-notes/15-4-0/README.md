@@ -14,6 +14,9 @@ We released [OpenProject 15.4.0](https://community.openproject.org/versions/2165
 
 ## Important feature changes
 
+Take a look at our release video showing the most important features introduced in OpenProject 15.4.0:  
+![Release video of OpenProject 15.4](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_15_4_release.mp4)
+
 ### Enable automatic scheduling mode - to start as soon as possible
 
 Starting with OpenProject 15.4, users will be able to choose whether they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor and child relations, simplifies managing complex project setups.
