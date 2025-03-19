@@ -137,6 +137,7 @@ RSpec.describe "Wysiwyg work package mentions",
 
     # clear input
     activity_tab.clear_comment(blur: true)
+    activity_tab.dismiss_comment_editor_with_cancel_button
 
     # Mentioning a group works
     activity_tab.type_comment("@Foo")
