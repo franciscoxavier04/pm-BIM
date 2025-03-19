@@ -40,6 +40,11 @@ type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
 type ListElement = HTMLElement&{ dataset:{ role:'list_item', prop:string } };
 
 const COMPLETION_CHARACTER = '/';
+const TOKEN_REGEX = /{{([0-9A-Za-z_]+)}}/g;
+
+// A zero-width space character, which is used
+// to have a caret position after tokens
+const CONTROL_SPACE = '\u200B';
 
 export default class PatternInputController extends Controller {
   static targets = [
@@ -113,6 +118,7 @@ export default class PatternInputController extends Controller {
     // close the suggestions
     if (['Escape', 'ArrowLeft', 'ArrowRight', 'End', 'Home'].includes(event.key)) {
       this.clearSuggestionsFilter();
+      this.sanitizeContent();
     }
 
     // update cursor
@@ -157,7 +163,9 @@ export default class PatternInputController extends Controller {
       this.insertSpaceIfLastCharacter();
     }
 
+    this.clearSuggestionsFilter();
     this.setRange();
+    this.sanitizeContent();
   }
 
   input_focus() {
@@ -245,7 +253,8 @@ export default class PatternInputController extends Controller {
       // if the resulting range is empty it is at the start of the input
       if (testRange.toString() === '') {
         // add a space
-        const beforeToken = document.createTextNode(' ');
+        // const beforeToken = document.createTextNode(' ');
+        const beforeToken = new Text(CONTROL_SPACE);
         const firstContent = this.contentTarget.firstChild as HTMLElement;
         this.contentTarget.insertBefore(beforeToken, firstContent);
 
@@ -268,7 +277,8 @@ export default class PatternInputController extends Controller {
       // if the resulting range is empty it is at the end of the input
       if (testRange.toString() === '') {
         // add a space
-        const afterToken = document.createTextNode(' ');
+        // const afterToken = document.createTextNode(' ');
+        const afterToken = new Text(CONTROL_SPACE);
         this.contentTarget.appendChild(afterToken);
 
         this.setRealCaretPositionAtNode(afterToken);
@@ -452,11 +462,56 @@ export default class PatternInputController extends Controller {
     return contentElement;
   }
 
+  private sanitizeContent():void {
+    this.contentTarget.childNodes.forEach((node) => {
+      if (this.isToken(node)) {
+        const key = node.dataset.prop;
+        if (!this.containsCursor(node) && node.innerText !== this.validTokenMap[key]) {
+          node.innerText = this.validTokenMap[key] || key;
+        }
+
+        const follower = node.nextSibling;
+        if (follower === null) {
+          node.after(new Text(CONTROL_SPACE));
+        } else {
+          if (this.isToken(follower)) {
+            node.after(new Text(CONTROL_SPACE));
+          }
+
+          if (this.isText(follower) && !this.isWhitespaceOrControlSpace(follower.wholeText[0])) {
+            node.after(new Text(CONTROL_SPACE));
+          }
+        }
+      }
+    });
+  }
+
   private toHtml(blueprint:string):string {
-    return blueprint
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
+    let html = blueprint.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    html = this.insertControlSpaces(html);
+    return html.replace(TOKEN_REGEX, (_, token:string) => this.createToken(token).outerHTML);
+  }
+
+  private insertControlSpaces(blueprint:string):string {
+    const regex = TOKEN_REGEX;
+    let match = regex.exec(blueprint);
+    const controlSpacesIndices = [];
+
+    while (match !== null) {
+      const endOfMatch = match.index + match[0].length;
+      if (endOfMatch < match.input.length && !this.isWhitespaceOrControlSpace(match.input[endOfMatch])) {
+        // add a control space when the token is not followed by a whitespace
+        controlSpacesIndices.push(endOfMatch);
+      }
+
+      match = regex.exec(blueprint);
+    }
+
+    return controlSpacesIndices
+      .reverse()
+      .reduce((acc, index) => {
+        return `${acc.slice(0, index)}${CONTROL_SPACE}${acc.slice(index)}`;
+      }, blueprint);
   }
 
   private toBlueprint():string {
@@ -468,7 +523,16 @@ export default class PatternInputController extends Controller {
         result += `{{${node.dataset.prop}}}`;
       }
     });
-    return result.trim();
+
+    // remove any padding whitespaces and control spaces,
+    // which were used for usability
+    return result.trim().replace(new RegExp(CONTROL_SPACE, 'g'), '');
+  }
+
+  private containsCursor(node:Node):boolean {
+    if (!this.currentRange) { return false; }
+
+    return node === this.currentRange.startContainer.parentNode;
   }
 
   private isToken(node:Node):node is TokenElement {
@@ -487,7 +551,9 @@ export default class PatternInputController extends Controller {
     return node.nodeType === Node.ELEMENT_NODE;
   }
 
-  private isWhitespace(value:string):boolean {
-    return /\s/.test(value);
+  private isWhitespaceOrControlSpace(value:string):boolean {
+    if (value.length !== 1) { return false; }
+
+    return new RegExp(`[${CONTROL_SPACE}\\s]`).test(value);
   }
 }
