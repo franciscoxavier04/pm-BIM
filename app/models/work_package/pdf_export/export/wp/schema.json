@@ -1543,7 +1543,7 @@
     },
     "alerts": {
       "type": "object",
-      "title": "alert boxes (styled blockquotes)",
+      "title": "Alert boxes (styled blockquotes)",
       "properties": {
         "NOTE": {
           "$ref": "#/$defs/alert"

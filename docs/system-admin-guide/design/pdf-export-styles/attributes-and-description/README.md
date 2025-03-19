@@ -40,6 +40,18 @@ ALERT:
 | … | See [Padding Properties](#padding-properties) |  |
 | … | See [Margin properties](#margin-properties) |  |
 
+## Alert boxes (styled blockquotes)
+
+Key: `alerts`
+
+| Key | Description | Data type |
+| - | - | - |
+| `NOTE` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
+| `TIP` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
+| `WARNING` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
+| `IMPORTANT` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
+| `CAUTION` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
+
 ## Border Properties
 
 Properties to set borders
@@ -125,6 +137,22 @@ table:
 | `cell` | **Table cell**<br/>Styling for a table cell<br/>See [Table cell](#table-cell) | object |
 | … | See [Margin properties](#margin-properties) |  |
 | … | See [Border Properties](#border-properties) |  |
+
+## Horizontal rule for attributes group rule
+
+Key: `hr`
+
+Example:
+```yml
+border:
+  color: d3dee3
+  height: 1
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `height` | **Line height of the horizontal rule**<br/>A number >= 0 and an optional unit<br/>Example: `1` | number or string<br/>See [Units](#units) |
+| `color` | **Line color of the horizontal rule**<br/>A color in RRGGBB format<br/>Example: `F0F0F0` | string |
 
 ## Image caption
 
@@ -222,7 +250,7 @@ markdown:
 | `unordered_list_point` | **Markdown unordered list point**<br/>Default styling for unordered list points on all levels.<br/>use unordered_list_point_`x` as key for unordered list points level `x`.<br/>See [Markdown unordered list point](#markdown-unordered-list-point) | object |
 | `task_list` | **Markdown task list**<br/>See [Markdown unordered list](#markdown-unordered-list) | object |
 | `task_list_point` | **Markdown task list point**<br/>See [Markdown task list point](#markdown-task-list-point) | object |
-| `alerts` | **alert boxes (styled blockquotes)**<br/>See [alert boxes (styled blockquotes)](#alert-boxes-styled-blockquotes) | object |
+| `alerts` | **Alert boxes (styled blockquotes)**<br/>See [Alert boxes (styled blockquotes)](#alert-boxes-styled-blockquotes) | object |
 | `ordered_list_point_1`<br/>`ordered_list_point_2`<br/>`ordered_list_point_x` | Markdown ordered list point level<br/>See [Markdown ordered list point](#markdown-ordered-list-point) | object |
 | `ordered_list_1`<br/>`ordered_list_2`<br/>`ordered_list_x` | Markdown ordered list level<br/>See [Markdown ordered list](#markdown-ordered-list) | object |
 | `unordered_list_point_1`<br/>`unordered_list_point_2`<br/>`unordered_list_point_x` | Markdown unordered list point level<br/>See [Markdown unordered list point](#markdown-unordered-list-point) | object |
@@ -769,6 +797,7 @@ work_package:
 | - | - | - |
 | `subject` | **Work package subject**<br/>Styling for the Work package subject headline<br/>See [Work package subject](#work-package-subject) | object |
 | `attributes_table` | **Work package attributes**<br/>Styling for the Work package attributes table<br/>See [Work package attributes](#work-package-attributes) | object |
+| `attributes_group` | **Work package attributes group label**<br/>Label headline for a work package attributes group<br/>See [Work package attributes group label](#work-package-attributes-group-label) | object |
 | `markdown_label` | **Work package markdown label**<br/>Label headline for work package description and long text custom fields<br/>See [Work package markdown label](#work-package-markdown-label) | object |
 | `markdown_margin` | **Work package markdown margins**<br/>Margins for work package description and long text custom fields<br/>See [Work package markdown margins](#work-package-markdown-margins) | object |
 | `markdown` | **Markdown Styling**<br/>Styling for content of work package description and long text custom fields<br/>See [Markdown Styling](#markdown-styling) | object |
@@ -803,6 +832,28 @@ attributes_table:
 | - | - | - |
 | `cell` | **Attribute value table cell**<br/>Styling for a table cell with attribute value<br/>See [Table cell](#table-cell) | object |
 | `cell_label` | **Attribute label table cell**<br/>Styling for a table cell with attribute label<br/>See [Table cell](#table-cell) | object |
+| … | See [Margin properties](#margin-properties) |  |
+
+## Work package attributes group label
+
+Label headline for a work package attributes group
+
+Key: `attributes_group`
+
+Example:
+```yml
+attributes_group:
+  size: 12
+  styles:
+    - bold
+  margin_top: 2
+  margin_bottom: 4
+```
+
+| Key | Description | Data type |
+| - | - | - |
+| `hr` | **Horizontal rule for attributes group rule**<br/>See [Horizontal rule for attributes group rule](#horizontal-rule-for-attributes-group-rule) | object |
+| … | See [Font properties](#font-properties) |  |
 | … | See [Margin properties](#margin-properties) |  |
 
 ## Work package markdown label
@@ -904,18 +955,6 @@ overview:
 | - | - | - |
 | `group_heading` | **Overview group heading**<br/>Styling for the group label if grouping is activated<br/>See [Overview group heading](#overview-group-heading) | object |
 | `table` | **Overview table**<br/>See [Overview table](#overview-table) | object |
-
-## alert boxes (styled blockquotes)
-
-Key: `alerts`
-
-| Key | Description | Data type |
-| - | - | - |
-| `NOTE` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
-| `TIP` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
-| `WARNING` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
-| `IMPORTANT` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
-| `CAUTION` | **Alert**<br/>Styling to denote a quote as alert box<br/>See [Alert](#alert) | object |
 
 ## Units
 
