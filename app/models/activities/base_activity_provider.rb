@@ -141,6 +141,7 @@ class Activities::BaseActivityProvider
   def event_selection_query(user, from, to, options)
     query = journals_with_data_query
     query = extend_event_query(query)
+    query = filter_for_visibility(query, user)
     query = filter_for_event_datetime(query, from, to)
     query = restrict_user(query, options)
     restrict_projects(query, user, options)
@@ -159,6 +160,16 @@ class Activities::BaseActivityProvider
     else
       query
     end
+  end
+
+  def filter_for_visibility(query, user)
+    unless OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
+      return query.where(journals_table[:restricted].eq(false))
+    end
+
+    permission = :view_comments_with_restricted_visibility
+    allowed_project_ids = Project.allowed_to(user, permission).pluck(:id)
+    query.where(projects_table[:id].in(allowed_project_ids).or(journals_table[:restricted].eq(false)))
   end
 
   def filter_for_event_datetime(query, from, to)

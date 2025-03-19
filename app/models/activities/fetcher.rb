@@ -64,10 +64,7 @@ module Activities
     # sorted in reverse chronological order
     def events(from: nil, to: nil, limit: nil)
       events = events_from_providers(from, to, limit)
-
       eager_load_associations(events)
-      filter_by_visibility(events)
-
       sort_by_most_recent_first(events)
     end
 
@@ -112,16 +109,6 @@ module Activities
         e.event_author = users[e.author_id]
         e.project = projects[e.project_id]
         e.journal = journals[e.event_id]
-      end
-    end
-
-    def filter_by_visibility(events)
-      events.reject! do |event|
-        if OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
-          event.journal.restricted? && !@user.allowed_in_project?(:view_comments_with_restricted_visibility, event.project)
-        else
-          event.journal.restricted?
-        end
       end
     end
 
