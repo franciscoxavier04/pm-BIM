@@ -68,21 +68,21 @@ export default class PatternInputController extends Controller {
 
   static values = {
     patternInitial: String,
+    headingLocales: Object,
     suggestionsInitial: Object,
     insertAsTextTemplate: String,
   };
 
   declare readonly patternInitialValue:string;
   declare readonly suggestionsInitialValue:Record<string, Record<string, string>>;
+  declare readonly headingLocalesValue:Record<string, string>;
   declare readonly insertAsTextTemplateValue:string;
 
   validTokenMap:Record<string, string> = {};
   currentRange:Range|undefined = undefined;
 
   connect() {
-    this.validTokenMap = Object.values(this.suggestionsInitialValue)
-      .reduce((acc, val) => ({ ...acc, ...val }), {});
-
+    this.validTokenMap = this.flatLocalizedTokenMap();
     this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
     this.tagInvalidTokens();
     this.clearSuggestionsFilter();
@@ -202,6 +202,19 @@ export default class PatternInputController extends Controller {
     }
 
     this.clearSuggestionsFilter();
+  }
+
+  private flatLocalizedTokenMap():Record<string, string> {
+    return Object.entries(this.suggestionsInitialValue)
+      .reduce((acc, [groupKey, attributes]) => {
+        if (groupKey !== 'work_package') {
+          Object.entries(attributes).forEach(([key, value]) => {
+            attributes[key] = `${this.headingLocalesValue[groupKey]}: ${value}`;
+          });
+        }
+
+        return { ...acc, ...attributes };
+      }, {});
   }
 
   private updateFormInputValue():void {
@@ -358,7 +371,7 @@ export default class PatternInputController extends Controller {
       if (groupHeader) {
         const headerElement = groupHeader.querySelector('h2');
         if (headerElement) {
-          headerElement.innerText = group.key;
+          headerElement.innerText = this.headingLocalesValue[group.key];
         }
 
         this.suggestionsTarget.appendChild(groupHeader);
