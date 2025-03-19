@@ -53,11 +53,11 @@ module WorkPackage::PDFExport::Export::Wp::Styles
     end
 
     def inline_error
-      resolve_font(@styles.dig(:inline_error))
+      resolve_font(@styles[:inline_error])
     end
 
     def inline_hint
-      resolve_font(@styles.dig(:inline_hint))
+      resolve_font(@styles[:inline_hint])
     end
   end
 
