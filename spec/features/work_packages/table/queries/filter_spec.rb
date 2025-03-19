@@ -71,6 +71,10 @@ RSpec.describe "filter work packages", :js do
   end
 
   context "by version in project" do
+    shared_let(:other_project) { create(:project) }
+    shared_let(:inaccessible_version) { create(:version, project: other_project) }
+    shared_let(:shared_version) { create(:version, project: other_project, sharing: "system") }
+
     let(:version) { create(:version, project:) }
     let(:work_package_with_version) do
       create(:work_package, project:, subject: "With version", version:)
@@ -94,6 +98,19 @@ RSpec.describe "filter work packages", :js do
         page.find_by_id("values-version"),
         version,
         grouping: project.name,
+        results_selector: "body"
+      )
+
+      expect_ng_option(
+        page.find_by_id("values-version"),
+        shared_version,
+        grouping: other_project.name,
+        results_selector: "body"
+      )
+
+      expect_no_ng_option(
+        page.find_by_id("values-version"),
+        inaccessible_version,
         results_selector: "body"
       )
 
