@@ -157,14 +157,21 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
     return null;
   }
 
+  private isDifferentFromDatePickerSelectedDates(isoDates:string[]):boolean {
+    const datePickerSelectedDates = this.datePickerInstance.datepickerInstance.selectedDates;
+    const isoDatePickerSelectedDates = datePickerSelectedDates.map((date) => this.timezoneService.formattedISODate(date));
+    return !_.isEqual(isoDates, isoDatePickerSelectedDates);
+  }
+
   // set dates on flatpickr, trying to avoid jumping to a different month when possible
   private setDatePickerDates(dates:Date[], jumpToDate:Date|null) {
     const monthBefore = this.datePickerInstance.datepickerInstance.currentMonth;
     const yearBefore = this.datePickerInstance.datepickerInstance.currentYear;
 
     // only set dates if they changed to avoid jumping
-    if (!_.isEqual(dates, this.datePickerInstance.datepickerInstance.selectedDates)) {
-      this.datePickerInstance.setDates(dates);
+    const isoDates = this.timezoneService.utcDatesToISODateStrings(dates);
+    if (this.isDifferentFromDatePickerSelectedDates(isoDates)) {
+      this.datePickerInstance.setDates(isoDates);
     }
 
     // jump to the date that has been changed if there is one
@@ -202,8 +209,9 @@ export class OpWpDatePickerInstanceComponent extends UntilDestroyedMixin impleme
     return date ? new Date(date) : null;
   }
 
-  private currentDates():Date[] {
-    return _.compact([this.startDateValue, this.dueDateValue]);
+  private currentDates():string[] {
+    const compactedDates = _.compact([this.startDateValue, this.dueDateValue]);
+    return this.timezoneService.utcDatesToISODateStrings(compactedDates);
   }
 
   private initializeDatepicker() {
