@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,6 +28,15 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :journal_attachable_journal, class: "Journal::AttachableJournal"
+class CreateProjectLifeCycleStepJournals < ActiveRecord::Migration[7.1]
+  def change
+    create_table :project_life_cycle_step_journals do |t| # rubocop:disable Rails/CreateTableWithTimestamps
+      t.belongs_to :journal, null: false, foreign_key: true
+      t.belongs_to :life_cycle_step, null: false
+
+      t.date :start_date
+      t.date :end_date
+      t.boolean :active, default: false, null: false
+    end
+  end
 end

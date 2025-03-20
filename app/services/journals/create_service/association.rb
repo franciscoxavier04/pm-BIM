@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,6 +28,38 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :journal_attachable_journal, class: "Journal::AttachableJournal"
+class Journals::CreateService
+  class Association
+    ASSOCIATION_NAMES = %i[
+      AgendaItemable
+      Attachable
+      Customizable
+      ProjectLifeCycleStep
+      Storable
+    ].freeze
+
+    def self.for(service)
+      ASSOCIATION_NAMES
+        .map { "Journals::CreateService::#{_1}".constantize.new(service) }
+        .select(&:associated?)
+    end
+
+    attr_reader :service
+
+    delegate :cleanup_predecessor_for,
+             :id_from_inserted_journal_sql,
+             :journable,
+             :journable_class_name,
+             :journable_id,
+             :normalize_newlines_sql,
+             :only_if_created_sql,
+             :sanitize,
+             to: :service
+
+    def initialize(service)
+      @service = service
+    end
+
+    def name = self.class.name.demodulize.underscore
+  end
 end

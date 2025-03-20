@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -27,5 +29,5 @@
 #++
 
 FactoryBot.define do
-  factory :journal_attachable_journal, class: "Journal::AttachableJournal"
+  factory :project_life_cycle_step_journal, class: "Journal::ProjectLifeCycleStepJournal"
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-- copyright
 # OpenProject is an open source project management software.
 # Copyright (C) the OpenProject GmbH
@@ -26,6 +28,25 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-FactoryBot.define do
-  factory :journal_attachable_journal, class: "Journal::AttachableJournal"
+class OpenProject::JournalFormatter::ProjectLifeCycleStepActive < JournalFormatter::Base
+  def render(key, values, options = { html: true })
+    return if !values[0] == !values[1]
+
+    step = Project::LifeCycleStep.find(key[/\d+/])
+
+    name = step.definition.name
+    label = options[:html] ? content_tag(:strong, name) : name
+
+    "#{label} #{activation_message(values:)}"
+  end
+
+  private
+
+  def activation_message(values:)
+    if values[1]
+      I18n.t("activity.project_life_cycle_step.activated")
+    elsif values[0]
+      I18n.t("activity.project_life_cycle_step.deactivated")
+    end
+  end
 end

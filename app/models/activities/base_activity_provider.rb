@@ -185,8 +185,6 @@ class Activities::BaseActivityProvider
     end
 
     params
-  rescue StandardError => e
-    Rails.logger.error "Failed to deduce event params for #{event_data.inspect}: #{e}"
   end
 
   def event_projection

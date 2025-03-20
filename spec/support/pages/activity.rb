@@ -1,6 +1,8 @@
-#-- copyright
+# frozen_string_literal: true
+
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2010-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -24,8 +26,38 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
+# ++
 
-FactoryBot.define do
-  factory :journal_attachable_journal, class: "Journal::AttachableJournal"
+require "support/pages/page"
+
+module Pages
+  class Activity < Pages::Page
+    def path
+      activity_index_path
+    end
+
+    def show_details
+      within "#activity_menu" do
+        check "Project details"
+
+        click_on "Apply"
+      end
+    end
+
+    def within_journal(number:, &)
+      within("li.op-activity-list--item:nth-child(#{number})", &)
+    end
+
+    def expect_link_to_project(project)
+      expect(page).to have_link("Project: #{project.name}", href: project_path(project))
+    end
+
+    def expect_activity(text)
+      expect(page).to have_css("li", text:)
+    end
+
+    def expect_no_activity(text)
+      expect(page).to have_no_css("li", text:)
+    end
+  end
 end

@@ -73,6 +73,11 @@ module Acts::Journalized
       end
     end
 
+    def touch_and_save_journals
+      update_column(:updated_at, Time.current)
+      save_journals
+    end
+
     def add_journal(user: User.current, notes: "", cause: CauseOfChange::NoCause.new)
       self.journal_user ||= user
       self.journal_notes ||= notes

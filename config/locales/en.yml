@@ -1662,11 +1662,17 @@ en:
       changeset: "Changesets"
       message: "Forums"
       news: "News"
-      project_attribute: "Project attributes"
+      project_details: "Project details"
       subproject: "Include subprojects"
       time_entry: "Spent time"
       wiki_edit: "Wiki"
       work_package: "Work packages"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
 
   # common attributes of all models
   attributes:
@@ -2136,7 +2142,7 @@ en:
     changeset: "Changeset edited"
     message: Message edited
     news: News
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "Project edited"
     projects: "Project edited"
     reply: Replied
