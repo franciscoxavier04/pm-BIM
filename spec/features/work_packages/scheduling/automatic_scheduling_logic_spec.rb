@@ -105,10 +105,12 @@ RSpec.describe "Automatic scheduling logic test cases (WP #61054)", :js, with_se
       it "cannot change scheduling mode to automatic" do
         open_date_picker
         datepicker.expect_manual_scheduling_mode
+        datepicker.expect_working_days_only_checkbox_visible
 
         datepicker.toggle_scheduling_mode
         datepicker.expect_automatic_scheduling_mode
 
+        datepicker.expect_no_working_days_only_checkbox_visible
         datepicker.expect_save_button_disabled
       end
     end
