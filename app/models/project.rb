@@ -146,6 +146,8 @@ class Project < ApplicationRecord
   register_journal_formatted_fields "public", formatter_key: :visibility
   register_journal_formatted_fields "parent_id", formatter_key: :subproject_named_association
   register_journal_formatted_fields /custom_fields_\d+/, formatter_key: :custom_field
+  register_journal_formatted_fields /^project_life_cycle_step_\d+_active$/, formatter_key: :project_life_cycle_step_active
+  register_journal_formatted_fields /^project_life_cycle_step_\d+_date_range$/, formatter_key: :project_life_cycle_step_dates
 
   has_paper_trail
 

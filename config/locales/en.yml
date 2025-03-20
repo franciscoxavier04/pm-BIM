@@ -680,8 +680,12 @@ en:
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
         pattern:
           label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1135,7 +1139,9 @@ en:
       wiki_page:
         parent_title: "Parent page"
         redirect_existing_links: "Redirect existing links"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" # used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Begin of the insertion"
         begin_deletion: "Begin of the deletion"
         children: "Subelements"
@@ -1662,11 +1668,17 @@ en:
       changeset: "Changesets"
       message: "Forums"
       news: "News"
-      project_attribute: "Project attributes"
+      project_details: "Project details"
       subproject: "Include subprojects"
       time_entry: "Spent time"
       wiki_edit: "Wiki"
       work_package: "Work packages"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
 
   # common attributes of all models
   attributes:
@@ -2136,7 +2148,7 @@ en:
     changeset: "Changeset edited"
     message: Message edited
     news: News
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "Project edited"
     projects: "Project edited"
     reply: Replied
@@ -2216,6 +2228,8 @@ en:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2260,7 +2274,12 @@ en:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
-
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext available (optional)"
@@ -3995,9 +4014,6 @@ en:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
 
   text_formatting:

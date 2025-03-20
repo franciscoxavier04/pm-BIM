@@ -382,7 +382,7 @@ tr:
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
-          remove_from_project: "Projeden çıkar"
+          remove_from_project: "Projeden kaldır"
         is_required_blank_slate:
           heading: Tüm projelerde zorunludur
           description: '"Tüm projelerde zorunlu" seçeneği işaretli olduğu için bu proje niteliği tüm projelerde etkindir. Projeler için bağımsız olarak devre dışı bırakılamaz.'
@@ -435,8 +435,8 @@ tr:
       groups: "Gruplar"
     delete_member_dialog:
       title: "Üyeyi çıkart"
-      will_remove_the_users_role: "This will remove the user’s role from this project."
-      will_remove_the_groups_role: "This will remove the group role from this project."
+      will_remove_the_users_role: "Bu, kullanıcı rolünü bu projeden kaldıracaktır."
+      will_remove_the_groups_role: "Bu, grup rolünü bu projeden kaldıracaktır."
       however_work_packages_shared_with_user_html:
         one: "However, %{shared_work_packages_link} has also been shared with this user."
         other: "However, %{shared_work_packages_link} have also been shared with this user."
@@ -617,8 +617,8 @@ tr:
           caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
         pattern:
           label: "Konu deseni"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "\"%{word}\" metni olarak ekle"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF oluştur"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."

@@ -616,8 +616,8 @@ es:
           caption: "Defina un patrón utilizando atributos referenciados y texto para generar automáticamente asuntos de paquetes de trabajo. Los usuarios no podrán editar manualmente los asuntos."
         pattern:
           label: "Patrón del asunto"
-          caption: "Busque un atributo o añada un texto. Para crear un espacio entre elementos, añádalo como texto."
-          insert_as_text: "Añadir como texto: «%{word}»"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generar PDF"
         intro: "Seleccione qué plantillas de las disponibles desea habilitar para este tipo. La plantilla determina el diseño y los atributos visibles en el PDF exportado de un paquete de trabajo que utilice este tipo. La primera plantilla de la lista se selecciona por defecto."

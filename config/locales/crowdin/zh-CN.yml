@@ -606,8 +606,8 @@ zh-CN:
           caption: "使用引用属性和文本定义模式，自动生成工作包主题。用户将无法手动编辑主题。"
         pattern:
           label: "主题模式"
-          caption: "搜索属性或添加文本。要在元素之间创建空格，请将其添加为文本。"
-          insert_as_text: "添加文本：%{word}"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -3757,10 +3757,10 @@ zh-CN:
       section_work_week: "工作周"
       section_holidays_and_closures: "节假日与停业"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
-      not_allowed_text: "You do not have the necessary permissions to view this page."
+      categories_tab: "类别"
+      custom_fields_tab: "自定义字段"
+      types_tab: "类型"
+      not_allowed_text: "您没有查看此页面的权限。"
   text_formatting:
     markdown: "Markdown"
     plain: "纯文本"

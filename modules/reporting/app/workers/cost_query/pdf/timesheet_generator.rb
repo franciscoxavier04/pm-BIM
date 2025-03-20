@@ -4,7 +4,7 @@ class CostQuery::PDF::TimesheetGenerator
   include WorkPackage::PDFExport::Common::Logo
   include WorkPackage::PDFExport::Export::Cover
   include WorkPackage::PDFExport::Export::Page
-  include WorkPackage::PDFExport::Export::Style
+  include WorkPackage::PDFExport::Export::Timesheet::Styles
   include ReportingHelper
 
   H1_FONT_SIZE = 26
@@ -16,6 +16,7 @@ class CostQuery::PDF::TimesheetGenerator
   COMMENT_FONT_COLOR = "636C76".freeze
   H2_FONT_SIZE = 20
   H2_MARGIN_BOTTOM = 10
+
   COLUMN_DATE_WIDTH = 66
   COLUMN_ACTIVITY_WIDTH = 100
   COLUMN_HOURS_WIDTH = 60
@@ -151,7 +152,7 @@ class CostQuery::PDF::TimesheetGenerator
       { content: format_date(spent_on), rowspan: entry.comments.present? ? 2 : 1 },
       entry.work_package&.subject || "",
       with_times_column? ? format_spent_on_time(entry) : nil,
-      format_hours(entry.hours),
+      format_hours(entry.hours || 0),
       entry.activity&.name || ""
     ].compact
   end
@@ -428,7 +429,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def format_hours(hours)
-    return "" if hours < 0
+    return "" if hours.nil? || hours < 0
 
     DurationConverter.output(hours)
   end
