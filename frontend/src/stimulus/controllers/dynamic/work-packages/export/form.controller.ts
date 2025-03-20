@@ -115,7 +115,6 @@ export default class FormController extends Controller<HTMLFormElement> {
         query.append(key, value);
       }
     });
-    console.log(query.toString());
     return query.toString();
   }
 }
