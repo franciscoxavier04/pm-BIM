@@ -249,6 +249,9 @@ class WorkPackages::DatePickerController < ApplicationController
 
   def set_date_attributes_to_work_package
     wp_params = work_package_datepicker_params
+    if wp_params["schedule_manually"] == "false"
+      wp_params = wp_params.without("start_date", "due_date")
+    end
 
     if wp_params.present?
       WorkPackages::SetAttributesService
