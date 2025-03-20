@@ -74,9 +74,13 @@ class WorkPackage::PDFExport::WorkPackageListToPdf < WorkPackage::Exports::Query
   end
 
   def get_columns
-    return [] if query.column_names.empty? && wants_report?
+    return [] if wants_report? && without_columns?
 
     super
+  end
+
+  def without_columns?
+    ActiveModel::Type::Boolean.new.cast(options[:no_columns])
   end
 
   def export!

@@ -104,8 +104,10 @@ export default class FormController extends Controller<HTMLFormElement> {
         columns.forEach((v) => {
           query.append('columns[]', v);
         });
-        if (columns.length === 0) {
-          query.append('columns[]', ''); // add empty entry to indicate no columns
+        if (columns.length === 0 || value === '') {
+          // add special parameter to indicate no columns
+          // for an empty columns array the default columns would be used
+          query.append('no_columns', '1');
         }
         // Skip hidden fields (looped through query options or rails form fields)
       } else if (!['query', 'utf8', 'authenticity_token', 'format'].includes(key)) {
@@ -113,6 +115,7 @@ export default class FormController extends Controller<HTMLFormElement> {
         query.append(key, value);
       }
     });
+    console.log(query.toString());
     return query.toString();
   }
 }
