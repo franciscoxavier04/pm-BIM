@@ -25,7 +25,7 @@ page_heading:
   styles: [ "bold" ]
   margin_bottom: 10
 
-overview:
+wp_table:
   group_heading:
     size: 11
     styles: [ "bold" ]
@@ -94,6 +94,14 @@ work_package:
     styles: [ "bold" ]
   subject_level_10:
     styles: [ "bold" ]
+  attributes_group:
+    size: 11
+    styles: [ "bold" ]
+    margin_top: 0
+    margin_bottom: 4
+    hr:
+      color: "1F2328"
+      height: 0.25
   attributes_table:
     margin_bottom: 16
     cell:
@@ -212,7 +220,10 @@ work_package:
       cell:
         size: 8
         border_width: 0.25
-        padding: 5
+        padding_right: 5
+        padding_top: 0
+        padding_left: 0
+        padding_bottom: 5
     alerts:
       NOTE:
         border_color: '0969da'

@@ -28,26 +28,31 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackage::PDFExport::Export::OverviewTable
-  def write_work_packages_overview!(work_packages)
+module WorkPackage::PDFExport::Export::WpTable
+  def write_work_packages_table!(work_packages, query)
+    columns = limit_table_columns_objects(query)
     if query.grouped?
-      write_grouped!(work_packages)
+      write_grouped!(work_packages, query, columns)
     else
-      with_margin(styles.overview_table_margins) do
-        write_table!(work_packages, get_total_sums)
+      with_margin(styles.wp_table_margins) do
+        write_table!(work_packages, query, columns, get_sums(query))
       end
     end
   end
 
   private
 
-  def write_grouped!(work_packages)
+  def get_sums(query)
+    query.display_sums? ? (query.results.all_total_sums || {}) : {}
+  end
+
+  def write_grouped!(work_packages, query, columns)
     groups_with_work_packages = work_packages.group_by do |work_package|
       query.group_by_column.value(work_package)
     end
-    sums = transformed_sum_group
+    sums = transformed_sum_group(query)
     groups_with_work_packages.each do |group, grouped_work_packages|
-      write_group!(group, grouped_work_packages, sums[group] || {})
+      write_group!(group, grouped_work_packages, query, columns, sums[group] || {})
     end
   end
 
@@ -77,16 +82,16 @@ module WorkPackage::PDFExport::Export::OverviewTable
   #
   #  we therefor transform the keys of sums from b) to a)
 
-  def transformed_sum_group
+  def transformed_sum_group(query)
     sums = query.results.all_group_sums
     if query.group_by_column.is_a?(Queries::WorkPackages::Selects::CustomFieldSelect)
-      transform_custom_field_keys(sums)
+      transform_custom_field_keys(sums, query)
     else
       sums
     end
   end
 
-  def transform_custom_field_keys(groups)
+  def transform_custom_field_keys(groups, query)
     custom_field = query.group_by_column.custom_field
     if custom_field.list?
       transform_list_custom_field_keys(custom_field, groups)
@@ -122,56 +127,53 @@ module WorkPackage::PDFExport::Export::OverviewTable
 
   # -- end workaround
 
-  def overview_columns_objects
-    @overview_columns_objects ||= limit_table_columns_objects
-  end
-
-  def limit_table_columns_objects
-    list = column_objects
+  def limit_table_columns_objects(query)
+    list = query
+             .columns
+             .reject { |c| c.is_a?(Queries::WorkPackages::Selects::RelationSelect) }
     list = list.reject { |c| c == query.group_by_column } if query.grouped?
     list
   end
 
-  def table_column_widths
-    widths = overview_columns_objects.map do |col|
+  def table_column_widths(columns)
+    widths = columns.map do |col|
       col.name == :subject || text_column?(col) ? 4.0 : 1.0
     end
     ratio = pdf.bounds.width / widths.sum
     widths.map { |w| w * ratio }
   end
 
-  def write_group!(group, work_packages, sums)
+  def write_group!(group, work_packages, query, columns, sums)
     write_optional_page_break
-    with_margin(styles.overview_table_margins) do
-      label = make_group_label(group)
-      with_margin(styles.overview_group_header_margins) do
-        pdf.formatted_text([styles.overview_group_header.merge({ text: label })])
+    with_margin(styles.wp_table_margins) do
+      with_margin(styles.wp_table_group_header_margins) do
+        pdf.formatted_text([styles.wp_table_group_header.merge({ text: make_group_label(group) })])
       end
-      write_table!(work_packages, sums)
+      write_table!(work_packages, query, columns, sums)
     end
   end
 
-  def write_table!(work_packages, sums)
-    rows = build_table_rows(work_packages, sums)
-    pdf_table_auto_widths(rows, table_column_widths, overview_table_options)
+  def write_table!(work_packages, query, columns, sums)
+    rows = build_table_rows(work_packages, query, columns, sums)
+    pdf_table_auto_widths(rows, table_column_widths(columns), wp_table_options)
   end
 
-  def overview_table_options
-    { header: true, cell_style: styles.overview_table_cell.merge({ inline_format: true }) }
+  def wp_table_options
+    { header: true, cell_style: styles.wp_table_cell.merge({ inline_format: true }) }
   end
 
-  def build_table_rows(work_packages, sums)
+  def build_table_rows(work_packages, query, columns, sums)
     rows = work_packages.map do |work_package|
-      build_table_row(work_package)
+      build_table_row(work_package, columns)
     end
-    rows.unshift build_header_row
-    rows.push build_overview_sum_row(sums) if query.display_sums?
+    rows.unshift build_header_row(columns)
+    rows.push build_sum_row(columns, sums) if query.display_sums?
     rows
   end
 
-  def build_table_row(work_package)
-    cell_style = styles.overview_table_cell
-    overview_columns_objects.map do |col|
+  def build_table_row(work_package, columns)
+    cell_style = styles.wp_table_cell
+    columns.map do |col|
       content = get_column_value_cell work_package, col.name
       if col.name == :subject
         build_subject_cell(content)
@@ -182,22 +184,22 @@ module WorkPackage::PDFExport::Export::OverviewTable
   end
 
   def build_subject_cell(content)
-    cell_style = styles.overview_table_cell
+    cell_style = styles.wp_table_cell
     padding_left = cell_style.fetch(:padding_left, 0)
     pdf.make_cell(content, cell_style.merge({ padding_left: }))
   end
 
-  def build_header_row
-    header_style = styles.overview_table_header_cell
-    overview_columns_objects.map do |col|
-      content = (col.caption || "").upcase
+  def build_header_row(columns)
+    header_style = styles.wp_table_header_cell
+    columns.map do |col|
+      content = col.caption || ""
       pdf.make_cell(content, header_style)
     end
   end
 
-  def build_overview_sum_row(sums)
-    sums_style = styles.overview_table_sums_cell
-    sum_row = overview_columns_objects.map do |col|
+  def build_sum_row(columns, sums)
+    sums_style = styles.wp_table_sums_cell
+    sum_row = columns.map do |col|
       content = get_formatted_value(sums[col], col.name)
       pdf.make_cell(content, sums_style)
     end
