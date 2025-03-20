@@ -1,5 +1,5 @@
 
-# Attributes and description
+# Attributes and description PDF
 
 This document describes the style settings format for the [PDF Export styling file](https://github.com/opf/openproject/blob/dev/app/models/work_package/pdf_export/wp/standard.yml)
 
