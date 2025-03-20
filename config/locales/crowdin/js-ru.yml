@@ -145,7 +145,7 @@ ru:
       error_saving_failed: "Не удалось сохранить документ по следующей причине: %{error}"
       ckeditor_error: "Произошла ошибка в CKEditor"
       mode:
-        manual: "Перейти к источнику уценок"
+        manual: "Перейти на Markdown"
         wysiwyg: "Перейти к WYSIWYG-редактору"
       macro:
         error: "Невозможно развернуть макрос: %{message}"
@@ -193,7 +193,7 @@ ru:
           text: "[Placeholder] Встроенный календарь"
     admin:
       type_form:
-        custom_field: "Настраиваемое поле"
+        custom_field: "Пользовательское поле"
         inactive: "Неактивен"
         drag_to_activate: "Чтобы включить поля, перетащите их отсюда"
         add_group: "Добавить группу атрибутов"
@@ -360,7 +360,7 @@ ru:
           "15_4":
             standard:
               new_features_html: >
-                The release brings various features and improvements for you, e.g. <br> <ul class="%{list_styling_class}"> <li>Enable automatic scheduling mode.</li> <li>Set agenda item outcomes for meetings.</li> <li>Generate PDF documents from a work package description.</li> <li>Better manage a large number of projects with an enhanced project lists view.</li> <li>Use @-mention of user when quote replying to a comment.</li> </ul>
+                Этот выпуск содержит различные возможности и улучшения, например <br> <ul class="%{list_styling_class}"> <li>Автоматический режим планирования.</li> <li>Установка результатов повестки дня для совещаний.</li> <li>Создание документов PDF из описаний пакетов работ.</li> <li>Лучшее управление большим количеством проектов с расширенным представлением списка проектов.</li> <li>Использование упоминания @пользователь отвечая цитатой на комментарий.</li> </ul>
     ical_sharing_modal:
       title: "Подписаться на календарь"
       inital_setup_error_message: "Произошла ошибка при получении данных."
@@ -773,7 +773,7 @@ ru:
         error_no_table_configured: "Пожалуйста, настройте таблицу для %{group}."
         reset_title: "Сбросить настройки формы"
         confirm_reset: >
-          Предупреждение: хотите сбросить форму? Это сбросит атрибуты к первоначальным значениям группы и запретит правку настраиваемых полей.
+          Предупреждение: хотите сбросить форму? Это сбросит атрибуты к первоначальным значениям группы и запретит правку пользовательских полей.
         upgrade_to_ee: "Обновление до корпоративной версии"
         upgrade_to_ee_text: "Уууууууууу! Если вам нужен этот дополнение, то вы бы хотели поддержать нас разработчиков OpenSource, став клиентом корпоративной версии?"
         more_information: "Больше информации"
@@ -836,7 +836,7 @@ ru:
       update_description: "Установить или обновить описание этого отношения"
       toggle_description: "Переключить описание отношения"
       update_relation: "Нажмите, чтобы изменить тип отношения"
-      add_follower: "Добавить подписчика"
+      add_follower: "Добавить последователя"
       show_relations: "Показать взаимосвязи"
       add_predecessor: "Добавить предшественника"
       remove: "Удалить связь"

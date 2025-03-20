@@ -67,7 +67,7 @@ RSpec.describe "Projects", "work packages settings menu", :js do
 
       it "displays the custom fields tab" do
         work_packages_settings_page.visit!
-        expect(page).to have_css(".tabnav-tab", text: "Custom Fields")
+        expect(page).to have_css(".tabnav-tab", text: "Custom fields")
         expect(page).to have_css("span", text: "There are currently no custom fields available.")
       end
     end

@@ -424,6 +424,6 @@ it:
   text_agenda_item_move_next_meeting: "Vuoi davvero spostarlo alla prossima riunione il giorno %{date} alle ore %{time}?"
   text_agenda_item_moved_to_next_meeting: "Punto all'ordine del giorno spostato alla prossima riunione, il giorno %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Questa macro-attività non è ancora programmata in un prossimo ordine del giorno di riunione."
-  text_agenda_item_move_next_meeting_cancelled: "La prossima riunione di questa serie è stata annullata."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Utilizzare il pulsante "Aggiungi alla riunione" per aggiungere questa macro-attività a una riunione imminente.'
   text_work_package_has_no_past_meeting_agenda_items: "Questa macro-attività non è stato menzionata in una riunione precedente."

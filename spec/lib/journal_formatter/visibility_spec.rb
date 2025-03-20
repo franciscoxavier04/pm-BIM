@@ -26,7 +26,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-require File.expand_path("#{File.dirname(__FILE__)}/../../spec_helper.rb")
+require "spec_helper"
 
 RSpec.describe OpenProject::JournalFormatter::Visibility do
   let(:instance) { described_class.new(build(:project_journal)) }

@@ -628,8 +628,8 @@ uk:
           caption: "Визначте шаблон, використовуючи атрибути й текст, щоб теми пакетів робіт створювались автоматично. Користувачі не зможуть редагувати теми."
         pattern:
           label: "Шаблон теми"
-          caption: "Знайдіть атрибут або додайте текст. Проміжок між елементами потрібно додавати як текст."
-          insert_as_text: "Додати як текст: «%{word}»"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Згенерувати PDF"
         intro: "Виберіть, які шаблони з доступних вам ви хочете ввімкнути для цього типу. Шаблон визначає дизайн і атрибути, що відображаються в експортованому PDF-файлі пакета робіт за допомогою цього типу. Перший шаблон у списку вибирається за замовчуванням."
@@ -3880,6 +3880,11 @@ uk:
     working_days:
       section_work_week: "Робочий тиждень"
       section_holidays_and_closures: "Свята й вихідні"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Простий текст"

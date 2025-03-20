@@ -93,6 +93,33 @@ RSpec.describe "Scheduling mode switching", # rubocop:disable RSpec/DescribeClas
       end
     end
 
+    context "with 2 manually scheduled work packages already having the correct dates" do
+      let_work_packages(<<~TABLE)
+        | subject       | MTWTFSS | scheduling mode |
+        | pred          | XX      | manual          |
+        | succ          |   XX    | manual          |
+      TABLE
+
+      before do
+        attributes = {
+          "relation_type" => "follows",
+          "from_id" => succ.id,
+          "to_id" => pred.id
+        }
+        Relations::CreateService.new(user:).call(attributes)
+      end
+
+      it "switches successor scheduling mode to automatic without rescheduling it" do
+        expect_work_packages_after_reload([pred, succ], <<~TABLE)
+          | subject       | MTWTFSS | scheduling mode |
+          | pred          | XX      | manual          |
+          | succ          |   XX    | automatic       |
+        TABLE
+        expect(pred.journals.count).to eq(1)
+        expect(succ.journals.count).to eq(2)
+      end
+    end
+
     context "with a precedes relation with 2 manually scheduled work packages" do
       let_work_packages(<<~TABLE)
         | subject       | MTWTFSS | scheduling mode |

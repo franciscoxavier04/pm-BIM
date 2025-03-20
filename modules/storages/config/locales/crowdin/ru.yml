@@ -11,10 +11,10 @@ ru:
         storage: Хранилище
       storages/nextcloud_storage:
         authentication_methods:
-          oauth2_sso: Single-Sign-On through OpenID Connect Identity Provider
-          oauth2_sso_with_two_way_oauth2_fallback: Single-Sign-On with Two-Way OAuth 2.0 as fallback
-          two_way_oauth2: Two-way OAuth 2.0 authorization code flow
-        storage_audience: Storage Audience
+          oauth2_sso: Аутентификация Single-Sign-On посредством поставщика OpenID Connect
+          oauth2_sso_with_two_way_oauth2_fallback: Аутентификация Single-Sign-On с двухсторонней OAuth 2.0 как резервная
+          two_way_oauth2: Двусторонняя аутентификация OAuth 2.0
+        storage_audience: Аудитория хранилища
       storages/project_storage:
         project_folder: Папка проекта
         project_folder_mode: Режим папки проекта
@@ -223,10 +223,10 @@ ru:
       openproject_oauth: OpenProject OAuth
       project_folders: Папки проекта
       redirect_uri: URI перенаправления
-      storage_audience: Storage Audience
-      storage_audience_blank: No audience has been configured.
-      storage_audience_description: Obtaining tokens for audience "%{audience}".
-      storage_audience_idp: Using first access token received by identity provider, regardless of audience.
+      storage_audience: Аудитория хранилища
+      storage_audience_blank: Аудитория не была настроена.
+      storage_audience_description: Получение токенов для аудитории "%{audience}".
+      storage_audience_idp: Использование ключа первого доступа, полученного от провайдера аутентификации независимо от аудитории.
       storage_oauth: Nextcloud OAuth
       storage_provider: Поставщик хранилища
     health:
@@ -242,8 +242,8 @@ ru:
         host_not_found: По настроенному адресу хоста сервер Nextcloud не найден. Пожалуйста, проверьте конфигурацию.
         missing_dependencies: 'Для файлового хранилища отсутствует необходимая зависимость. Пожалуйста, добавьте следующую зависимость: %{dependency}.'
         not_configured: Соединение не удалось подтвердить. Пожалуйста, сначала завершите настройку.
-        oidc_cant_acquire_token: Your OpenID Connect setup doesn't provide the necessary audience, nor provides token exchange capabilities. Please check out our documentation for more information.
-        oidc_cant_exchange_token: There seems to be a problem with the Token Exchange setup on your OpenID Connect Provider. Please check its configuration and try again.
+        oidc_cant_acquire_token: Ваша настройка OpenID Connect не предоставляет необходимой аудитории и не предоставляет возможности обмена токенами. Пожалуйста, ознакомьтесь с нашей документацией для получения дополнительной информации.
+        oidc_cant_exchange_token: Похоже, возникла проблема с настройкой Exchange Token вашего провайдера OpenID Connect. Пожалуйста, проверьте его конфигурацию и повторите попытку.
         oidc_cant_refresh_token: Произошла ошибка во время проверки Вашего доступа к хранилищу. Пожалуйста, проверьте журналы сервера для получения дополнительной информации.
         oidc_non_oidc_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect(OIDC). Пожалуйста, повторите проверку пользователя, идентифицированного через OIDC.
         oidc_non_provisioned_user: Текущий пользователь не представлен провайдером идентификации OpenID Connect. Пожалуйста, повторите проверку пользователя.
@@ -321,7 +321,7 @@ ru:
     label_creator: Создатель
     label_delete_storage: Удалить хранилище
     label_edit_storage_access_management: Редактировать управление доступом к хранилищу
-    label_edit_storage_audience: Edit Storage Audience
+    label_edit_storage_audience: Изменить аудиторию хранилища
     label_edit_storage_automatically_managed_folders: Редактирование хранилища автоматически управляемых папок
     label_edit_storage_host: Изменить узел хранения
     label_existing_manual_folder: Существующая папка с разрешениями, управляемыми вручную
@@ -419,8 +419,8 @@ ru:
         helptext: OpenProject будет использовать первый токен доступа, полученный провайдером идентификации для аутентификации запросов на хранилище. Он не будет пытаться получить другой токен.
         label: Использовать первый токен доступа, полученный идентификатором провайдера
       manual:
-        helptext: Allows you to set the audience of the storage. OpenProject will try to obtain a token for the given audience from the identity provider.
-        label: Define storage audience manually
+        helptext: Позволяет задать аудиторию хранилища. OpenProject попытается получить токен для данной аудитории у поставщика аутентификации.
+        label: Определить аудиторию хранилища вручную
     storage_list_blank_slate:
       description: Добавьте хранилище, чтобы увидеть его здесь.
       heading: У вас пока нет хранилищ.

@@ -394,6 +394,14 @@ export class OpenProjectModule implements DoBootstrap {
 
     // Connect ui router to turbo drive
     document.addEventListener('turbo:load', () => {
+      // Remove all previous references to components
+      // This is mainly the bsae component
+      appRef.components.slice().forEach((component) => {
+        appRef.detachView(component.hostView);
+        component.destroy();
+      });
+
+      // Run bootstrap again to initialize the new application
       this.runBootstrap(appRef);
     });
 

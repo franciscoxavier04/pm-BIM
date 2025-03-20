@@ -424,6 +424,6 @@ fr:
   text_agenda_item_move_next_meeting: "Voulez-vous vraiment déplacer cet élément vers la prochaine réunion le %{date} à %{time} ?"
   text_agenda_item_moved_to_next_meeting: "L'ordre du jour a été déplacé vers la prochaine réunion, le %{date}"
   text_work_package_has_no_upcoming_meeting_agenda_items: "Ce lot de travaux n'est pas encore inclus dans l'ordre du jour d'une prochaine réunion."
-  text_agenda_item_move_next_meeting_cancelled: "La prochaine réunion de cette série a été annulée."
+  text_agenda_item_move_next_meeting_cancelled: "Unable to move to the next meeting since it has been cancelled."
   text_work_package_add_to_meeting_hint: 'Utilisez le bouton "Ajouter à la réunion" pour ajouter ce lot de travaux à une réunion à venir.'
   text_work_package_has_no_past_meeting_agenda_items: "Ce lot de travaux n'a pas été mentionné lors d'une réunion précédente."

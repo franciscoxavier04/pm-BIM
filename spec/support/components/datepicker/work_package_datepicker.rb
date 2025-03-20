@@ -12,6 +12,10 @@ module Components
       set_field(duration_field, "", wait_for_changes_to_be_applied: false)
     end
 
+    def expect_banner_text(text, **)
+      expect(container).to have_css(".wp-datepicker--banner", text:, **)
+    end
+
     ##
     # Expect the selected month
     def expect_month(month)
@@ -21,12 +25,12 @@ module Components
 
     ##
     # Expect duration
-    def expect_duration(value)
+    def expect_duration(value, **)
       if value.blank?
         value = ""
       end
 
-      expect(container).to have_field("work_package[duration]", with: value, wait: 10)
+      expect(container).to have_field("work_package[duration]", with: value, **)
     end
 
     def milestone_date_field
@@ -84,9 +88,11 @@ module Components
     end
 
     def enable_start_date
-      page.find_test_selector("wp-datepicker--show-start-date").click
-      wait_for_network_idle
-      expect_start_highlighted
+      retry_block do
+        page.find_test_selector("wp-datepicker--show-start-date").click
+        wait_for_network_idle
+        expect_start_highlighted
+      end
     end
 
     def enable_start_date_if_visible
@@ -96,9 +102,11 @@ module Components
     end
 
     def enable_due_date
-      page.find_test_selector("wp-datepicker--show-due-date").click
-      wait_for_network_idle
-      expect_due_highlighted
+      retry_block do
+        page.find_test_selector("wp-datepicker--show-due-date").click
+        wait_for_network_idle
+        expect_due_highlighted
+      end
     end
 
     def enable_due_date_if_visible

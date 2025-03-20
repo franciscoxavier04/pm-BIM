@@ -26,7 +26,7 @@ es:
     comments_count: "Número de comentarios"
     github_html_url: "URL de solicitud de incorporación de cambios"
     github_app_owner_avatar_url: "URL del avatar del propietario"
-    review_comments_count: "Review comments count"
+    review_comments_count: "Número de comentarios de revisión"
     github: "Identificador de GitHub"
     github_avatar_url: "URL del avatar"
     github_updated_at: "Actualizado a las"

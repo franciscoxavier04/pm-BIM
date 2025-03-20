@@ -608,8 +608,8 @@ zh-TW:
           caption: "使用參考屬性和文字定義模式，以自動產生工作項目主題。使用者將無法手動編輯主題。"
         pattern:
           label: "主題模板"
-          caption: "搜尋屬性或新增文字。若要在元素之間建立空格，請將其建立為文字。"
-          insert_as_text: "新增為文字：%{word}"
+          caption: "新增文字或輸入 / 來搜尋屬性。您可以使用空格來分隔它們。"
+          insert_as_text: "未找到屬性。以文字新增：\"%{word}"
       export_configuration:
         tab: "產生PDF檔案"
         intro: "從可用的範本中選擇您想要為此類型啟用的範本。範本決定了使用此類工作項目匯出的 PDF 中顯示的設計和屬性。預設為選定清單中的第一個模板。"
@@ -3761,6 +3761,11 @@ zh-TW:
     working_days:
       section_work_week: "工作週"
       section_holidays_and_closures: "假日和休息日"
+    work_packages:
+      categories_tab: "類別"
+      custom_fields_tab: "自訂欄位"
+      types_tab: "類型"
+      not_allowed_text: "您沒有查看此頁面的必要權限。"
   text_formatting:
     markdown: "Markdown"
     plain: "純文字"

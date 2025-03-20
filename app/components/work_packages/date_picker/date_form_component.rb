@@ -39,6 +39,7 @@ module WorkPackages
                      disabled:,
                      is_milestone:,
                      focused_field: :start_date,
+                     triggering_field: nil,
                      touched_field_map: nil,
                      date_mode: nil)
         super()
@@ -48,6 +49,7 @@ module WorkPackages
         @is_milestone = is_milestone
         @date_mode = date_mode
         @touched_field_map = touched_field_map
+        @triggering_field = triggering_field
         @focused_field = update_focused_field(focused_field)
         @disabled = disabled
       end
@@ -217,6 +219,11 @@ module WorkPackages
       def show_text_field_in_single_date_mode?(name)
         return true if field_value_present_or_touched?(name)
 
+        # Special case, if the use explicitly clicks on start date, we want to show that field
+        if table_triggered_date_field?
+          return normalized_underscore_name(name) == normalized_underscore_name(@triggering_field)
+        end
+
         # Start date is only shown in the assertion above
         return false if name != :due_date
 
@@ -226,6 +233,14 @@ module WorkPackages
         # and suddenly hides the start date. That is why we check for the touched value.
         true if field_value(:start_date).nil? &&
           (@touched_field_map["start_date_touched"] == false || @touched_field_map["start_date_touched"].nil?)
+      end
+
+      def table_triggered_date_field?
+        ["start_date", "due_date"].include?(normalized_underscore_name(@triggering_field))
+      end
+
+      def normalized_underscore_name(name)
+        name.to_s.underscore
       end
     end
   end

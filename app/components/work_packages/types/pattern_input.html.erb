@@ -34,6 +34,7 @@ See COPYRIGHT and LICENSE files for more details.
       classes: "pattern-input",
       "data-controller": "pattern-input",
       "data-pattern-input-pattern-initial-value": @value,
+      "data-pattern-input-heading-locales-value": heading_locales,
       "data-pattern-input-insert-as-text-template-value": I18n.t("types.edit.subject_configuration.pattern.insert_as_text"),
       "data-pattern-input-suggestions-initial-value": suggestions_for_stimulus
     )
@@ -62,6 +63,7 @@ See COPYRIGHT and LICENSE files for more details.
             label: "__placeholder__",
             role: "menuitem",
             data: {
+              role: :list_item,
               prop: "__placeholder__",
               action: "click->pattern-input#suggestions_select"
             }
@@ -79,7 +81,9 @@ See COPYRIGHT and LICENSE files for more details.
             role: "menuitem",
             label_classes: "fgColor-muted text-italic",
             data: {
-              action: "click->pattern-input#close_suggestions"
+              role: :list_item,
+              prop: "__placeholder__",
+              action: "click->pattern-input#insert_as_text"
             }
           )
         )

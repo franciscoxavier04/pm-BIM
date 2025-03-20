@@ -31,8 +31,8 @@ tr:
         label_activity_show_all: "Her şeyi göster"
         label_activity_show_only_comments: "Sadece yorumları göster"
         label_activity_show_only_changes: "Yalnızca değişiklikleri göster"
-        label_sort_asc: "En alttaki en yeni"
-        label_sort_desc: "En üstte en yeniler"
+        label_sort_asc: "En altta en yeni"
+        label_sort_desc: "En üstte en yeni"
         label_type_to_comment: "Bir yorum ekleyin. Kişilere bildirmek için @ yazın."
         label_submit_comment: "Yorum gönder"
         changed_on: "üzerinde değişti"
@@ -179,7 +179,7 @@ tr:
     tls_options:
       verify_peer: "SSL sertifikasını doğrula"
       verify_peer_description_html: >
-        Enables strict SSL verification of the certificate trusted chain. <br> <strong>Warning:</strong> Unchecking this option disables SSL verification of the LDAP server certificate. This exposes your connection to Man in the Middle attacks.
+        Sertifika güvenilir zincirinin katı SSL doğrulamasını etkinleştirir. <br> <strong>Uyarı:</strong> Bu seçeneğin işaretini kaldırmak, LDAP sunucu sertifikasının SSL doğrulamasını devre dışı bırakır. Bu, Man in the Middle saldırılarıyla bağlantınızı ortaya çıkarır.
       tls_certificate_description: "LDAP sunucusu sertifikası bu sistemin güvenilir kaynaklarında yoksa buradan manuel olarak ekleyebilirsiniz. Bir PEM X509 sertifika dizisi girin."
   forums:
     show:
@@ -382,7 +382,7 @@ tr:
         actions:
           label_enable_single: "Active in this project, click to disable"
           label_disable_single: "Inactive in this project, click to enable"
-          remove_from_project: "Projeden çıkar"
+          remove_from_project: "Projeden kaldır"
         is_required_blank_slate:
           heading: Tüm projelerde zorunludur
           description: '"Tüm projelerde zorunlu" seçeneği işaretli olduğu için bu proje niteliği tüm projelerde etkindir. Projeler için bağımsız olarak devre dışı bırakılamaz.'
@@ -421,7 +421,7 @@ tr:
       no_results_title_text: Bu projenini parçası olan mevcut bir üye bulunmamakta.
       no_results_content_text: Projeye üye ekle
     invite_by_mail: "Davet gönder %{mail}"
-    send_invite_to: "Send invite to"
+    send_invite_to: "Davet gönder"
     columns:
       shared: "Paylaşılan"
     filters:
@@ -435,8 +435,8 @@ tr:
       groups: "Gruplar"
     delete_member_dialog:
       title: "Üyeyi çıkart"
-      will_remove_the_users_role: "This will remove the user’s role from this project."
-      will_remove_the_groups_role: "This will remove the group role from this project."
+      will_remove_the_users_role: "Bu, kullanıcı rolünü bu projeden kaldıracaktır."
+      will_remove_the_groups_role: "Bu, grup rolünü bu projeden kaldıracaktır."
       however_work_packages_shared_with_user_html:
         one: "However, %{shared_work_packages_link} has also been shared with this user."
         other: "However, %{shared_work_packages_link} have also been shared with this user."
@@ -617,8 +617,8 @@ tr:
           caption: "İş paketi konularını otomatik olarak oluşturmak için başvurulan öznitelikleri ve metni kullanarak bir kalıp tanımlayın. Kullanıcılar konuları elle düzenleyemeyecektir."
         pattern:
           label: "Konu deseni"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "\"%{word}\" metni olarak ekle"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF oluştur"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -651,7 +651,7 @@ tr:
           manual_overlap_with_predecessors: "Overlaps with at least one predecessor."
           manual_with_children: "This has child work packages but their start dates are ignored."
         title:
-          automatic_mobile: "Automatically scheduled."
+          automatic_mobile: "Otomatik planlandı."
           automatic_with_children: "The dates are determined by child work packages."
           automatic_with_predecessor: "The start date is set by a predecessor."
           manual_mobile: "Elle planlanmış."
@@ -1027,7 +1027,7 @@ tr:
         last_login_on: "Son giriş"
         failed_login_count: "Başarısız oturum açma denemeleri"
         first_name: "İsim"
-        last_name: "Soyisim"
+        last_name: "Soy isim"
         first_login: "İlk giriş"
         new_password: "Yeni parola"
         password_confirmation: "Onay"
@@ -1611,9 +1611,9 @@ tr:
     due_date: "Bitiş tarihi"
     estimated_hours: "Çalışma"
     estimated_time: "Çalışma"
-    email: "Eposta"
+    email: "E-posta"
     entity_type: "Varlık"
-    expires_at: "Süre sonu: "
+    expires_at: "Bitiş zamanı"
     firstname: "İsim"
     filter: "Filtre"
     group: "Grup"
@@ -1628,10 +1628,10 @@ tr:
     issue: "İş paketi"
     journal: "Günlük"
     journal_notes: "Yorum"
-    lastname: "Soyisim"
+    lastname: "Soy isim"
     login: "Kullanıcı adı"
     lock_version: "Sürümü kilitle"
-    mail: "Eposta"
+    mail: "E-posta"
     name: "İsim"
     note: "Not"
     notes: "Notlar"
@@ -3803,6 +3803,11 @@ tr:
     working_days:
       section_work_week: "Çalışma Haftası"
       section_holidays_and_closures: "Tatiller ve kapanışlar"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Düz yazı"

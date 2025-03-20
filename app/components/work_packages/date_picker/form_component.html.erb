@@ -32,7 +32,7 @@
                   )
                   control.with_item(
                     tag: :a,
-                    icon: 'op-auto-date',
+                    icon: "op-auto-date",
                     href: work_package_datepicker_dialog_content_path(params.merge(schedule_manually: false).permit!),
                     data: {
                       turbo_stream: true,
@@ -77,6 +77,7 @@
               schedule_manually:,
               is_milestone: milestone?,
               focused_field:,
+              triggering_field:,
               touched_field_map:,
               date_mode:,
               disabled: disabled?

@@ -616,8 +616,8 @@ fr:
           caption: "Définissez un modèle utilisant des attributs et du texte référencés pour générer automatiquement des sujets de lots de travaux. Les utilisateurs ne pourront pas modifier manuellement les sujets."
         pattern:
           label: "Modèle de sujet"
-          caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
-          insert_as_text: "Ajouter en tant que texte : « %{word} »"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."
@@ -644,17 +644,17 @@ fr:
       banner:
         description:
           automatic_mobile: "Date de début dérivée."
-          click_on_show_relations_to_open_gantt: 'Cliquez sur « %{button_name} » pour obtenir une vue d''ensemble de Gantt.'
-          manual_mobile: "En ignorant les relations."
-          manual_gap_between_predecessors: "Il y a un écart entre cet élément et tous les prédécesseurs."
+          click_on_show_relations_to_open_gantt: 'Cliquez sur « %{button_name} » pour une vue de Gantt.'
+          manual_mobile: "Les relations sont ignorées."
+          manual_gap_between_predecessors: "Il y a un écart entre cet élément les prédécesseurs."
           manual_overlap_with_predecessors: "Chevauchement avec au moins un prédécesseur."
-          manual_with_children: "Cet élément comprend des lots de travaux enfants, mais leurs dates de début sont ignorées."
+          manual_with_children: "Cet élément comprend des enfants, mais leurs dates sont ignorées."
         title:
           automatic_mobile: "Planifié automatiquement."
-          automatic_with_children: "Les dates sont déterminées par les lots de travaux enfants."
+          automatic_with_children: "Les dates sont déterminées par les enfants."
           automatic_with_predecessor: "La date de début est fixée par un prédécesseur."
           manual_mobile: "Planifié manuellement."
-          manually_scheduled: "Planifié manuellement. Dates non affectées par les relations."
+          manually_scheduled: "Planifié manuellement. Non affecté par les relations."
       blankslate:
         title: "Aucun prédécesseur"
         description: "Pour activer la planification automatique, ce lot de travaux doit avoir au moins un prédécesseur. Il sera alors automatiquement programmé pour démarrer après le prédécesseur le plus proche."
@@ -3804,6 +3804,11 @@ fr:
     working_days:
       section_work_week: "Semaine de travail"
       section_holidays_and_closures: "Vacances et fermetures"
+    work_packages:
+      categories_tab: "Categories"
+      custom_fields_tab: "Custom Fields"
+      types_tab: "Types"
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texte brut"
