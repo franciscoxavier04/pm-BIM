@@ -171,6 +171,14 @@ module Components
       end
     end
 
+    def click_manual_scheduling_mode
+      container.click_link I18n.t("work_packages.datepicker_modal.mode.manual")
+    end
+
+    def click_automatic_scheduling_mode
+      container.click_link I18n.t("work_packages.datepicker_modal.mode.automatic")
+    end
+
     def expect_working_days_only_disabled
       expect(container)
         .to have_field("work_package[ignore_non_working_days]", disabled: true)

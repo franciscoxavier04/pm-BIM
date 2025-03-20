@@ -67,6 +67,17 @@ module WorkPackages
         end
       end
 
+      def dialog_content_with(schedule_manually:)
+        dialog_params = params.without(:on, :controller, :action)
+                              .merge(schedule_manually:)
+                              .permit!
+        if work_package.new_record?
+          new_work_package_datepicker_dialog_content_path("new", dialog_params)
+        else
+          work_package_datepicker_dialog_content_path(work_package, dialog_params)
+        end
+      end
+
       def disabled?
         !schedule_manually
       end
