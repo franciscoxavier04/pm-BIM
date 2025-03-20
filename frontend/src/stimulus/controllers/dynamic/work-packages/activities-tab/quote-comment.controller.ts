@@ -29,21 +29,25 @@
  */
 
 import { Controller } from '@hotwired/stimulus';
+
 import type IndexController from './index.controller';
+import type RestrictedCommentController from './restricted-comment.controller';
 
 type QuoteParams = {
   userId:string;
   userName:string;
   textWrote:string;
   content:string;
+  isRestricted:boolean;
 };
 
 export default class QuoteCommentController extends Controller {
-  static outlets = ['work-packages--activities-tab--index'];
+  static outlets = ['work-packages--activities-tab--index', 'work-packages--activities-tab--restricted-comment'];
 
   declare readonly workPackagesActivitiesTabIndexOutlet:IndexController;
+  declare readonly workPackagesActivitiesTabRestrictedCommentOutlet:RestrictedCommentController;
 
-  quote({ params: { userId, userName, textWrote, content } }:{ params:QuoteParams }) {
+  quote({ params: { userId, userName, textWrote, content, isRestricted } }:{ params:QuoteParams }) {
     const quotedText = this.quotedText(content, userId, userName, textWrote);
 
     if (this.isFormVisible) {
@@ -51,6 +55,8 @@ export default class QuoteCommentController extends Controller {
     } else {
       this.openEditorWithInitialData(quotedText);
     }
+
+    this.setCommentRestriction(isRestricted);
   }
 
   private quotedText(rawComment:string, userId:string, userName:string, textWrote:string) {
@@ -71,6 +77,13 @@ export default class QuoteCommentController extends Controller {
       } else {
         this.ckEditorInstance.setData(`${editorData}\n\n${quotedText}`);
       }
+    }
+  }
+
+  private setCommentRestriction(isRestricted:boolean) {
+    if (isRestricted && !this.workPackagesActivitiesTabRestrictedCommentOutlet.restrictedCheckboxTarget.checked) {
+      this.workPackagesActivitiesTabRestrictedCommentOutlet.restrictedCheckboxTarget.checked = isRestricted;
+      this.workPackagesActivitiesTabRestrictedCommentOutlet.toggleBackgroundColor();
     }
   }
 

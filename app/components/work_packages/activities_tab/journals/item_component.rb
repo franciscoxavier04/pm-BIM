@@ -150,15 +150,23 @@ module WorkPackages
             quote_comments_stimulus_controller("-content-param") => journal.notes,
             quote_comments_stimulus_controller("-user-id-param") => journal.user_id,
             quote_comments_stimulus_controller("-user-name-param") => journal.user.name,
+            quote_comments_stimulus_controller("-is-restricted-param") => journal.restricted?,
             quote_comments_stimulus_controller("-text-wrote-param") => I18n.t(:text_wrote),
-            quote_comments_stimulus_controller("-#{index_stimulus_controller}-outlet") => "##{index_stimulus_controller_wrapper_key}", # rubocop:disable Layout/LineLength
+            quote_comments_stimulus_controller("-#{index_stimulus_controller}-outlet") => items_index_selector,
+            quote_comments_stimulus_controller("-#{restricted_comment_stimulus_controller}-outlet") => add_comment_selector,
             test_selector: "op-wp-journal-#{journal.id}-quote"
           }
         end
 
         def quote_comments_stimulus_controller(suffix = nil) = "work-packages--activities-tab--quote-comment#{suffix}"
         def index_stimulus_controller(suffix = nil) = "work-packages--activities-tab--index#{suffix}"
-        def index_stimulus_controller_wrapper_key = WorkPackages::ActivitiesTab::IndexComponent.wrapper_key
+        def restricted_comment_stimulus_controller(suffix = nil) = "work-packages--activities-tab--restricted-comment#{suffix}"
+
+        def items_index_selector = "##{WorkPackages::ActivitiesTab::IndexComponent.wrapper_key}"
+
+        def add_comment_selector
+          "##{WorkPackages::ActivitiesTab::IndexComponent.add_comment_wrapper_key}"
+        end
       end
     end
   end

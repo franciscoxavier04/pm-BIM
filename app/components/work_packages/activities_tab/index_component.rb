@@ -45,6 +45,9 @@ module WorkPackages
         @deferred = deferred
       end
 
+      def self.add_comment_wrapper_key = "work-packages-activities-tab-add-comment-component"
+      delegate :add_comment_wrapper_key, to: :class
+
       private
 
       attr_reader :work_package, :filter, :last_server_timestamp, :deferred
