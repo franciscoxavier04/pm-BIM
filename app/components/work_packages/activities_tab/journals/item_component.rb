@@ -136,18 +136,29 @@ module WorkPackages
           menu.with_item(label: t("js.label_quote_comment"),
                          tag: :button,
                          content_arguments: {
-                           data: {
-                             action: "click->work-packages--activities-tab--index#quote",
-                             "content-param": journal.notes,
-                             "user-id-param": journal.user_id,
-                             "user-name-param": journal.user.name,
-                             "text-wrote-param": t(:text_wrote),
-                             test_selector: "op-wp-journal-#{journal.id}-quote"
-                           }
+                           data: quote_action_data_attributes
                          }) do |item|
             item.with_leading_visual_icon(icon: :quote)
           end
         end
+
+        def quote_action_data_attributes # rubocop:disable Metrics/AbcSize
+          {
+            controller: quote_comments_stimulus_controller,
+            "application-target": "dynamic",
+            action: "click->#{quote_comments_stimulus_controller}#quote:prevent",
+            quote_comments_stimulus_controller("-content-param") => journal.notes,
+            quote_comments_stimulus_controller("-user-id-param") => journal.user_id,
+            quote_comments_stimulus_controller("-user-name-param") => journal.user.name,
+            quote_comments_stimulus_controller("-text-wrote-param") => I18n.t(:text_wrote),
+            quote_comments_stimulus_controller("-#{index_stimulus_controller}-outlet") => "##{index_stimulus_controller_wrapper_key}", # rubocop:disable Layout/LineLength
+            test_selector: "op-wp-journal-#{journal.id}-quote"
+          }
+        end
+
+        def quote_comments_stimulus_controller(suffix = nil) = "work-packages--activities-tab--quote-comment#{suffix}"
+        def index_stimulus_controller(suffix = nil) = "work-packages--activities-tab--index#{suffix}"
+        def index_stimulus_controller_wrapper_key = WorkPackages::ActivitiesTab::IndexComponent.wrapper_key
       end
     end
   end
