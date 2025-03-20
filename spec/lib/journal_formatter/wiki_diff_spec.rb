@@ -53,6 +53,7 @@ RSpec.describe OpenProject::JournalFormatter::WikiDiff do
   end
   let(:wiki_instance) { klass.new(wiki_journal) }
   let(:wiki_key) { "text" }
+  let(:wiki_attribute_name) { WikiPage.human_attribute_name(wiki_key) }
   let(:path) do # path
     url_helper.wiki_diff_compare_project_wiki_path(id: wiki_page.slug,
                                                    project_id: project.identifier,
@@ -74,7 +75,7 @@ RSpec.describe OpenProject::JournalFormatter::WikiDiff do
     describe "a wiki diff for a wiki journal correctly" do
       let(:expected) do
         I18n.t(:text_journal_changed_with_diff,
-               label: "<strong>#{wiki_key.camelize}</strong>",
+               label: "<strong>#{wiki_attribute_name}</strong>",
                link:)
       end
 
