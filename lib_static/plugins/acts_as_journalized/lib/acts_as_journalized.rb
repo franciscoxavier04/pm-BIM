@@ -67,16 +67,18 @@ module Acts
       end
 
       # This call will start journaling the model.
-      def acts_as_journalized(options = {}, &)
+      def acts_as_journalized(options = {})
         return if journaled?
 
         include_aaj_modules
+
+        journals_association_extension = options.delete(:journals_association_extension) || proc {}
 
         prepare_journaled_options(options)
 
         has_many(:journals, -> {
           order("#{Journal.table_name}.version ASC")
-        }, **has_many_journals_options, &)
+        }, **has_many_journals_options, &journals_association_extension)
       end
 
       private
