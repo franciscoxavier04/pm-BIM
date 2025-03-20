@@ -179,6 +179,16 @@ module Components
       container.click_link I18n.t("work_packages.datepicker_modal.mode.automatic")
     end
 
+    def expect_working_days_only_checkbox_visible
+      expect(container)
+        .to have_field(I18n.t("work_packages.datepicker_modal.ignore_non_working_days.title"), disabled: :all)
+    end
+
+    def expect_no_working_days_only_checkbox_visible
+      expect(container)
+        .to have_no_field(I18n.t("work_packages.datepicker_modal.ignore_non_working_days.title"))
+    end
+
     def expect_working_days_only_disabled
       expect(container)
         .to have_field("work_package[ignore_non_working_days]", disabled: true)
