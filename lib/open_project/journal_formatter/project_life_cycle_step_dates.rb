@@ -30,7 +30,8 @@
 
 class OpenProject::JournalFormatter::ProjectLifeCycleStepDates < JournalFormatter::Base
   def render(key, values, options = { html: true })
-    step = Project::LifeCycleStep.find(key[/\d+/])
+    step = Project::LifeCycleStep.find_by(id: key[/\d+/])
+    return unless step
 
     name = step.definition.name
     label = options[:html] ? content_tag(:strong, name) : name

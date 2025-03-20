@@ -32,7 +32,8 @@ class OpenProject::JournalFormatter::ProjectLifeCycleStepActive < JournalFormatt
   def render(key, values, options = { html: true })
     return if !values[0] == !values[1]
 
-    step = Project::LifeCycleStep.find(key[/\d+/])
+    step = Project::LifeCycleStep.find_by(id: key[/\d+/])
+    return unless step
 
     name = step.definition.name
     label = options[:html] ? content_tag(:strong, name) : name

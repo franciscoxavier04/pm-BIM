@@ -32,12 +32,13 @@ require "spec_helper"
 
 RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepActive do
   describe "#render" do
-    let(:key) { "project_life_cycle_step_#{step.id}_active" }
+    let(:key) { "project_life_cycle_step_#{id}_active" }
+    let(:id) { step.id.to_s }
 
     subject(:result) { described_class.new(nil).render(key, values, html:) }
 
     before do
-      allow(Project::LifeCycleStep).to receive(:find).with(step.id.to_s).and_return(step)
+      allow(Project::LifeCycleStep).to receive(:find_by).with(id:).and_return(step)
     end
 
     def date(day) = Date.new(2025, 1, day)
@@ -91,6 +92,16 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepActive do
 
         include_examples "test result"
       end
+
+      context "when gate was deleted" do
+        let(:step) { nil }
+        let(:id) { "42" }
+        let(:values) { [true, false] }
+        let(:plain_result) { nil }
+        let(:html_result) { nil }
+
+        include_examples "test result"
+      end
     end
 
     describe "for stage changes" do
@@ -123,6 +134,16 @@ RSpec.describe OpenProject::JournalFormatter::ProjectLifeCycleStepActive do
 
       context "when no change between falsey values" do
         let(:values) { [nil, false] }
+        let(:plain_result) { nil }
+        let(:html_result) { nil }
+
+        include_examples "test result"
+      end
+
+      context "when stage was deleted" do
+        let(:step) { nil }
+        let(:id) { "42" }
+        let(:values) { [true, false] }
         let(:plain_result) { nil }
         let(:html_result) { nil }
 
