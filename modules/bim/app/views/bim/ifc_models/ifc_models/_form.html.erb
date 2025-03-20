@@ -114,19 +114,21 @@ See COPYRIGHT and LICENSE files for more details.
       setDirectUploadFileName();
 
       <%# rebuild form to post to S3 directly %>
-      jQuery("input[name=authenticity_token]").remove();
-      jQuery("input[name=_method]").remove();
+      if (jQuery("input[name=authenticity_token]").length === 1) {
+        jQuery("input[name=authenticity_token]").remove();
+        jQuery("input[name=_method]").remove();
 
-      var url = jQuery("input[name=uri]").val();
+        var url = jQuery("input[name=uri]").val();
 
-      jQuery("form").attr("action", url);
-      jQuery("form").attr("enctype", "multipart/form-data");
+        jQuery("form").attr("action", url);
+        jQuery("form").attr("enctype", "multipart/form-data");
 
-      jQuery("input[name=uri]").remove();
+        jQuery("input[name=uri]").remove();
 
-      jQuery("form").submit(function() {
-        jQuery("#bim_ifc_models_ifc_model_title").prop("disabled", "disabled");
-      });
+        jQuery("form").submit(function() {
+          jQuery("#bim_ifc_models_ifc_model_title").prop("disabled", "disabled");
+        });
+      }
     });
     <% unless @ifc_model.new_record? %>
       <%# The titleField might have changed AFTER selecting a file. Therefore,
