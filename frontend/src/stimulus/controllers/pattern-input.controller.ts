@@ -121,7 +121,6 @@ export default class PatternInputController extends Controller {
       this.sanitizeContent();
     }
 
-    // update cursor
     this.setRange();
   }
 
@@ -139,6 +138,7 @@ export default class PatternInputController extends Controller {
     }
 
     this.tagInvalidTokens();
+    this.sanitizeContent();
 
     // This resets the cursor position without changing it.
     // It is necessary because chromium based browsers try to
@@ -439,15 +439,34 @@ export default class PatternInputController extends Controller {
   }
 
   private tagInvalidTokens():void {
-    this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element:HTMLElement) => {
+    this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element:TokenElement) => {
       const exists = Object.keys(this.validTokenMap).some((key) => key === element.dataset.prop);
 
       if (exists) {
-        element.classList.remove('Label--danger');
+        this.setStyle(element, 'accent');
       } else {
-        element.classList.add('Label--danger');
+        this.setStyle(element, 'danger');
       }
     });
+  }
+
+  private setStyle(token:TokenElement, style:'accent'|'danger'|'secondary'):void {
+    switch (style) {
+      case 'accent':
+        token.classList.remove('Label--danger', 'Label--secondary');
+        token.classList.add('Label--accent');
+        break;
+      case 'danger':
+        token.classList.remove('Label--accent', 'Label--secondary');
+        token.classList.add('Label--danger');
+        break;
+      case 'secondary':
+        token.classList.remove('Label--accent', 'Label--danger');
+        token.classList.add('Label--secondary');
+        break;
+      default:
+        throw new Error('Invalid label style');
+    }
   }
 
   private createToken(value:string):TokenElement {
@@ -461,9 +480,15 @@ export default class PatternInputController extends Controller {
   private sanitizeContent():void {
     this.contentTarget.childNodes.forEach((node) => {
       if (this.isToken(node)) {
+        this.setStyle(node, 'accent');
+
         const key = node.dataset.prop;
-        if (!this.containsCursor(node) && node.innerText !== this.validTokenMap[key]) {
-          node.innerText = this.validTokenMap[key] || key;
+        if (node.textContent !== this.validTokenMap[key]) {
+          if (this.containsCursor(node)) {
+            this.setStyle(node, 'secondary');
+          } else {
+            node.innerText = this.validTokenMap[key] || key;
+          }
         }
 
         const follower = node.nextSibling;
