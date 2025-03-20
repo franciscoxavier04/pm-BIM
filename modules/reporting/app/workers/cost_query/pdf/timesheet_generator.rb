@@ -151,7 +151,7 @@ class CostQuery::PDF::TimesheetGenerator
       { content: format_date(spent_on), rowspan: entry.comments.present? ? 2 : 1 },
       entry.work_package&.subject || "",
       with_times_column? ? format_spent_on_time(entry) : nil,
-      format_hours(entry.hours),
+      format_hours(entry.hours || 0),
       entry.activity&.name || ""
     ].compact
   end
@@ -428,7 +428,7 @@ class CostQuery::PDF::TimesheetGenerator
   end
 
   def format_hours(hours)
-    return "" if hours < 0
+    return "" if hours.nil? || hours < 0
 
     DurationConverter.output(hours)
   end
