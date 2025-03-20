@@ -14,6 +14,9 @@ We released [OpenProject 15.4.0](https://community.openproject.org/versions/2165
 
 ## Important feature changes
 
+Take a look at our release video showing the most important features introduced in OpenProject 15.4.0:  
+![Release video of OpenProject 15.4](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_15_4_release.mp4)
+
 ### Enable automatic scheduling mode - to start as soon as possible
 
 Starting with OpenProject 15.4, users will be able to choose whether they want to manually schedule their work packages or enable automatic scheduling. This highly requested feature of automatic scheduling, based on predecessor and child relations, simplifies managing complex project setups.
@@ -34,6 +37,9 @@ However, you can still define a duration, which adjusts the finish date accordin
 See the difference between manual scheduling and automatic scheduling in Gantt view:
 
 ![New scheduling modes with OpenProject 15.4: Automatic and Manual - in Gantt view](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_automatic_scheduling.mp4)
+
+> [!NOTE]
+> With the updates of the scheduling mode in this release, an automatic entry will be added to the **Activity** of the work package: "*Scheduling mode set to: [..]*". If you are using the *updated at* information of work packages, for example, by including this information in work package lists, be aware that the most recent activity in the work packages will be updated accordingly.
 
 To learn more about how this change might help you manage your projects, please read [this blog article on the new automatic scheduling mode](https://www.openproject.org/blog/new-automatic-scheduling-mode/) that we published some weeks ago. [See our documentation](../../user-guide/work-packages/set-change-dates/) to get detailed information about how to use the automatic scheduling mode.
 

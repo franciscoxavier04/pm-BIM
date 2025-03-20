@@ -132,6 +132,14 @@ export class TimezoneService {
     return moment.duration(input, unit).toISOString();
   }
 
+  public utcDateToISODateString(date:Date):string {
+    return moment.utc(date).format('YYYY-MM-DD');
+  }
+
+  public utcDatesToISODateStrings(dates:Date[]):string[] {
+    return dates.map((date) => this.utcDateToISODateString(date));
+  }
+
   public formattedDuration(durationString:string, unit:'hour'|'days' = 'hour'):string {
     switch (unit) {
       case 'hour':
