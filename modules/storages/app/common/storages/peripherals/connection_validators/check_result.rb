@@ -52,6 +52,7 @@ module Storages
         def success? = state == :success
         def failure? = state == :failure
         def warning? = state == :warning
+        def skipped? = state == :skipped
       end
     end
   end

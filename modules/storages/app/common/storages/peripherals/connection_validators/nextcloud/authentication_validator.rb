@@ -48,6 +48,36 @@ module Storages
 
           private
 
+          def validate_oauth
+            @results = {
+              existing_token: CheckResult.skipped(:existing_token),
+              user_bound_request: CheckResult.skipped(:user_bound_request)
+            }
+
+            oauth_token
+            user_bound_request
+          end
+
+          def oauth_token
+            if OAuthClientToken.where(user: @user, oauth_client: @storage.oauth_client).any?
+              pass_check(:existing_token)
+            else
+              warn_check(:existing_token, message(:oauth_token_missing))
+              throw :interrupted
+            end
+          end
+
+          def user_bound_request
+            Registry["nextcloud.queries.files"]
+              .call(storage: @storage, auth_strategy:, folder: ParentFolder.new("/")).on_failure do
+              fail_check(__method__, message("oauth_request_#{it.result}"))
+            end
+
+            pass_check(__method__)
+          end
+
+          def auth_strategy = Registry["nextcloud.authentication.user_bound"].call(storage: @storage, user: @user)
+
           def validate_sso
             @results = {
               non_provisioned_user: CheckResult.skipped(:non_provisioned_user),
@@ -98,8 +128,6 @@ module Storages
             fail_check(__method__, message(error_code))
             throw :interrupted
           end
-
-          def validate_oauth = fail
         end
       end
     end

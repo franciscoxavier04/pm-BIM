@@ -36,11 +36,41 @@ module Storages
     module ConnectionValidators
       module Nextcloud
         RSpec.describe AuthenticationValidator, :webmock do
-          let(:storage) { create(:nextcloud_storage_with_local_connection, :as_not_automatically_managed) }
-
           subject(:validator) { described_class.new(storage) }
 
-          context "when using OAuth2"
+          context "when using OAuth2" do
+            let(:user) { create(:user) }
+            let(:storage) do
+              create(:nextcloud_storage_with_local_connection, :as_not_automatically_managed,
+                     oauth_client_token_user: user, origin_user_id: "m.jade@death.star")
+            end
+
+            before { User.current = user }
+
+            it "passes when the user has a token and the request works", vcr: "nextcloud/files_query_root" do
+              result = validator.call
+
+              expect(result.values).to all(be_success)
+            end
+
+            it "returns a warning when there's no token for the current user" do
+              User.current = create(:user)
+              result = validator.call
+
+              expect(result[:existing_token]).to be_a_warning
+              expect(result[:existing_token].message).to eq(I18n.t(i18n_key(:oauth_token_missing)))
+              expect(result[:user_bound_request]).to be_skipped
+            end
+
+            it "returns a failure if the remote call failed" do
+              Registry.stub("nextcloud.queries.files", ->(_) { ServiceResult.failure(result: :unauthorized) })
+
+              result = validator.call
+              expect(result[:user_bound_request]).to be_a_failure
+              expect(result[:user_bound_request].message).to eq(I18n.t(i18n_key(:oauth_request_unauthorized)))
+            end
+          end
+
           context "when using OpenID Connect" do
             let(:storage) { create(:nextcloud_storage_configured, :oidc_sso_enabled) }
 
@@ -63,7 +93,7 @@ module Storages
             end
 
             describe "error and warning handling" do
-              it "returns a validation warning if the current user isn't provisioned" do
+              it "returns a warning if the current user isn't provisioned" do
                 user.update!(identity_url: nil)
                 result = validator.call
 
