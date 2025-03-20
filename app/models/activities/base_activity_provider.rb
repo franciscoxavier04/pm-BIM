@@ -167,9 +167,11 @@ class Activities::BaseActivityProvider
       return query.where(journals_table[:restricted].eq(false))
     end
 
-    permission = :view_comments_with_restricted_visibility
-    allowed_project_ids = Project.allowed_to(user, permission).pluck(:id)
-    query.where(projects_table[:id].in(allowed_project_ids).or(journals_table[:restricted].eq(false)))
+    query.where(
+      projects_table[:id]
+        .in(Project.allowed_to(user, :view_comments_with_restricted_visibility).select(:id).arel)
+        .or(journals_table[:restricted].eq(false))
+    )
   end
 
   def filter_for_event_datetime(query, from, to)
