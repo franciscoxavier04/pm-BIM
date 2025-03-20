@@ -71,7 +71,7 @@ module WorkPackages
           API::V3::Activities::ActivityEagerLoadingWrapper.wrap(
             work_package
               .journals
-              .restricted_visible(@work_package.project)
+              .restricted_visible
               .includes(:user, :customizable_journals, :attachable_journals, :storable_journals, :notifications)
               .reorder(version: journal_sorting)
               .with_sequence_version

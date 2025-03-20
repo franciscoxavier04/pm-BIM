@@ -38,7 +38,7 @@ module API
 
             journals = @work_package
               .journals
-              .restricted_visible(@work_package.project)
+              .restricted_visible
               .includes(:data,
                         :customizable_journals,
                         :attachable_journals,
