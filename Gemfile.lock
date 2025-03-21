@@ -81,7 +81,7 @@ PATH
   remote: modules/auth_saml
   specs:
     openproject-auth_saml (1.0.0)
-      omniauth-saml (~> 1.10.5)
+      omniauth-saml (~> 1.10.6)
 
 PATH
   remote: modules/avatars
@@ -1369,7 +1369,6 @@ DEPENDENCIES
   omniauth!
   omniauth-openid-connect!
   omniauth-openid_connect-providers!
-  omniauth-saml (~> 1.10.1)
   op-clamav-client (~> 3.4)
   openproject-auth_plugins!
   openproject-auth_saml!

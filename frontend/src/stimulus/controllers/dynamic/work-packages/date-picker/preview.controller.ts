@@ -261,13 +261,13 @@ export default class PreviewController extends DialogPreviewController {
   }
 
   private lastClickedDate(changedDates:Date[]):Date|null {
-    const flatPickrDates = changedDates.map((date) => this.timezoneService.formattedISODate(date));
+    const flatPickrDates = this.timezoneService.utcDatesToISODateStrings(changedDates);
     if (flatPickrDates.length === 1) {
       return this.toDate(flatPickrDates[0]);
     }
 
     const fieldDates = _.compact([this.currentStartDate, this.currentDueDate])
-                        .map((date) => this.timezoneService.formattedISODate(date));
+                        .map((date) => this.timezoneService.utcDateToISODateString(date));
     const diff = _.difference(flatPickrDates, fieldDates);
     return this.toDate(diff[0]);
   }
@@ -409,7 +409,7 @@ export default class PreviewController extends DialogPreviewController {
     if (targetFieldID) {
       const inputField = document.getElementById(targetFieldID);
       if (inputField) {
-        (inputField as HTMLInputElement).value = this.timezoneService.formattedISODate(Date.now());
+        (inputField as HTMLInputElement).value = this.timezoneService.utcDateToISODateString(new Date(Date.now()));
         inputField.dispatchEvent(new Event('input'));
       }
     }
@@ -417,7 +417,7 @@ export default class PreviewController extends DialogPreviewController {
 
   private datetoIso(date:Date|null):string {
     if (date) {
-      return this.timezoneService.formattedISODate(date);
+      return this.timezoneService.utcDateToISODateString(date);
     }
     return '';
   }

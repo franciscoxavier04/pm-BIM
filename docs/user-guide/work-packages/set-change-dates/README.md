@@ -66,15 +66,13 @@ Apart from the default *Dates* tab, date picker also includes the following rela
   - *Predecessors* are tasks that must be completed before the current one can begin.
   - In automatic mode, the closest predecessor from which the current work package derives its dates is marked with a **“closest”** label.
 
--  **Successors** – Displays all successor work packages. 
+- **Successors** – Displays all successor work packages. 
   - *Successors* are tasks that will commence after the current one is finished.
   - In automatic mode, the start dates of successors are affected by the current work package’s finish date.
 
 - **Children** – Displays all child work packages. 
   - *Children* are sub-tasks that fall under the current work package.
-  
   - If a work package has children, it will **default to automatic scheduling mode**.
-  
   - The start and finish dates of the parent work package will cover the dates of all its child work packages.
   
 
@@ -90,6 +88,8 @@ Apart from the default *Dates* tab, date picker also includes the following rela
 OpenProject offers two scheduling modes: **Manual** and **Automatic**. 
 
 In **Manual scheduling mode**, you can freely set start and finish dates independent of any work package relations. In **automatic scheduling mode**, the dates are automatically derived from predecessors or children.
+
+![Video](https://openproject-docs.s3.eu-central-1.amazonaws.com/videos/OpenProject_automatic_scheduling.mp4)
 
 ### Manual scheduling
 
