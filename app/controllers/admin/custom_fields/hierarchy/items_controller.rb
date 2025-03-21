@@ -103,7 +103,7 @@ module Admin
           item_service
             .delete_branch(item: @active_item)
             .either(
-              ->(_) { update_via_turbo_stream(component: ItemsComponent.new(item: @active_item.parent)) },
+              ->(_) { update_via_turbo_stream(component: ItemsComponent.new(item: @active_item.parent.reload)) },
               ->(errors) { render_error_flash_message_via_turbo_stream(message: errors.full_messages) }
             )
 
