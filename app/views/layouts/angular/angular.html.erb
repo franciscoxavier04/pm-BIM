@@ -31,6 +31,9 @@ See COPYRIGHT and LICENSE files for more details.
   <% html_title(*local_assigns[:page_title]) if local_assigns[:page_title].present? %>
   <!-- plug-in specific tags -->
   <%= call_hook :view_work_package_overview_attributes %>
+
+  <!-- Disable turbo morphing on angular pages. The tag is now there twice. It is a hack. -->
+  <meta name="turbo-refresh-method" content="replace">
 <% end -%>
 
 <%= content_for :content_body do %>
