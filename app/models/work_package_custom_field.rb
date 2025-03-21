@@ -38,15 +38,19 @@ class WorkPackageCustomField < CustomField
            source: :customized,
            source_type: "WorkPackage"
 
-  scope :visible_by_user, ->(user) {
+  scope :manageable_by_user, ->(user) {
     if user.allowed_in_any_project?(:select_custom_fields)
       all
     else
-      where(projects: { id: Project.visible(user) })
-        .where(types: { id: Type.enabled_in(Project.visible(user)) })
-        .or(where(is_for_all: true).references(:projects, :types))
-        .includes(:projects, :types)
+      visible_by_user(user)
     end
+  }
+
+  scope :visible_by_user, ->(user) {
+    where(projects: { id: Project.visible(user) })
+      .where(types: { id: Type.enabled_in(Project.visible(user)) })
+      .or(where(is_for_all: true).references(:projects, :types))
+      .includes(:projects, :types)
   }
 
   scope :usable_as_custom_action, -> {

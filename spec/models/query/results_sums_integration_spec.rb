@@ -132,13 +132,14 @@ RSpec.describe Query::Results, "sums" do
     create(:type) do |t|
       t.custom_fields << int_cf
       t.custom_fields << float_cf
+      project.types << t
     end
   end
   let(:current_user) do
     create(:user, member_with_permissions: { project => permissions })
   end
   let(:permissions) do
-    %i[view_work_packages view_cost_entries view_time_entries view_cost_rates view_hourly_rates select_custom_fields]
+    %i[view_work_packages view_cost_entries view_time_entries view_cost_rates view_hourly_rates]
   end
   let(:group_by) { nil }
   let(:query) do
