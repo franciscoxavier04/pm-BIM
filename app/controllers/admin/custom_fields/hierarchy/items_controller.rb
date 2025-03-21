@@ -56,7 +56,7 @@ module Admin
         end
 
         def new
-          @new_item = ::CustomField::Hierarchy::Item.new(parent: @active_item, sort_order: params[:position])
+          @new_item = @active_item.children.build(sort_order: params[:position])
         end
 
         def edit; end
