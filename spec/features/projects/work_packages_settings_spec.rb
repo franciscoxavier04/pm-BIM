@@ -72,8 +72,20 @@ RSpec.describe "Projects", "work packages settings menu", :js do
       end
     end
 
-    context "when the user does not have access to any tabs" do
+    context "when the user has access to the activities tab" do
       let(:permissions) { %i(edit_project view_work_packages) }
+
+      current_user { create(:user, member_with_permissions: { project => permissions }) }
+
+      it "displays the custom fields tab" do
+        work_packages_settings_page.visit!
+        expect(page).to have_css(".tabnav-tab", text: "Activity")
+        expect(page).to have_css("span", text: "Form goes here")
+      end
+    end
+
+    context "when the user does not have access to any tabs" do
+      let(:permissions) { %i(view_work_packages) }
 
       current_user { create(:user, member_with_permissions: { project => permissions }) }
 

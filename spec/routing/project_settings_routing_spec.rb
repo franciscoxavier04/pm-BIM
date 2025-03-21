@@ -106,5 +106,19 @@ RSpec.describe Projects::SettingsController do
           controller: "projects/settings/work_packages/types", action: "update", project_id: "123"
         )
     end
+
+    it do
+      expect(get("/projects/123/settings/work_packages/activities"))
+        .to route_to(
+          controller: "projects/settings/work_packages/activities", action: "show", project_id: "123"
+        )
+    end
+
+    it do
+      expect(patch("/projects/123/settings/work_packages/activities"))
+        .to route_to(
+          controller: "projects/settings/work_packages/activities", action: "update", project_id: "123"
+        )
+    end
   end
 end
