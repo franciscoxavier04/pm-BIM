@@ -60,6 +60,14 @@ module WorkPackages
           }
         end
 
+        def container_classes
+          [].tap do |classes|
+            if journal.restricted?
+              classes << "work-packages-activities-tab-journals-item-component--container__restricted-comment"
+            end
+          end
+        end
+
         def comment_header_classes
           [].tap do |classes|
             if journal.restricted?
@@ -74,10 +82,6 @@ module WorkPackages
               classes << "work-packages-activities-tab-journals-item-component--journal-notes-body__restricted-comment"
             end
           end
-        end
-
-        def container_border_color
-          journal.restricted? ? :attention_emphasis : :default
         end
 
         def show_comment_container?
