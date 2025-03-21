@@ -495,7 +495,7 @@ export default class IndexController extends Controller {
     return this.element.querySelector('opce-ckeditor-augmented-textarea');
   }
 
-  private getCkEditorInstance():ICKEditorInstance | null {
+  getCkEditorInstance():ICKEditorInstance | null {
     const AngularCkEditorElement = this.getCkEditorElement();
     return AngularCkEditorElement ? jQuery(AngularCkEditorElement).data('editor') as ICKEditorInstance : null;
   }
@@ -647,44 +647,6 @@ export default class IndexController extends Controller {
     const ckEditorInstance = this.getCkEditorInstance();
     if (ckEditorInstance) {
       setTimeout(() => ckEditorInstance.editing.view.focus(), timeout);
-    }
-  }
-
-  quote(event:Event) {
-    event.preventDefault();
-    const target = event.currentTarget as HTMLElement;
-    const userId = target.dataset.userIdParam as string;
-    const userName = target.dataset.userNameParam as string;
-    const textWrote = target.dataset.textWroteParam as string;
-    const content = target.dataset.contentParam as string;
-
-    const quotedText = this.quotedText(content, userId, userName, textWrote);
-    const formVisible = !this.formRowTarget.classList.contains('d-none');
-    if (formVisible) {
-      this.insertQuoteOnExistingEditor(quotedText);
-    } else {
-      this.openEditorWithInitialData(quotedText);
-    }
-  }
-
-  private quotedText(rawComment:string, userId:string, userName:string, textWrote:string) {
-    const quoted = rawComment.split('\n')
-      .map((line:string) => `\n> ${line}`)
-      .join('');
-
-    // if we ever change CKEditor or how @mentions work this will break
-    return `<mention class="mention" data-id="${userId}" data-type="user" data-text="@${userName}">@${userName}</mention> ${textWrote}:\n\n${quoted}`;
-  }
-
-  insertQuoteOnExistingEditor(quotedText:string) {
-    const ckEditorInstance = this.getCkEditorInstance();
-    if (ckEditorInstance) {
-      const editorData = ckEditorInstance.getData({ trim: false });
-      if (editorData.endsWith('<br>') || editorData.endsWith('\n')) {
-        ckEditorInstance.setData(`${editorData}${quotedText}`);
-      } else {
-        ckEditorInstance.setData(`${editorData}\n\n${quotedText}`);
-      }
     }
   }
 

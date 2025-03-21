@@ -138,8 +138,15 @@ RSpec.describe "Work package comments with restricted visibility",
   context "with a user that is allowed to view, create and edit all comments" do
     current_user { project_admin }
 
+    let(:unrestricted_comment) do
+      create(:work_package_journal,
+             user: project_admin, notes: "An unrestricted comment by member",
+             journable: work_package, version: (work_package.journals.reload.last.version + 1), restricted: false)
+    end
+
     before do
       first_comment
+      unrestricted_comment
 
       wp_page.visit!
       wp_page.wait_for_activity_tab
@@ -148,11 +155,20 @@ RSpec.describe "Work package comments with restricted visibility",
     it "allows editing and quoting restricted comments" do
       activity_tab.expect_journal_notes(text: "A (restricted) comment by admin")
 
-      activity_tab.within_journal_entry(first_comment) do
-        page.find_test_selector("op-wp-journal-#{first_comment.id}-action-menu").click
+      activity_tab.edit_comment(first_comment, text: "A (restricted) comment by admin - EDITED")
 
-        expect(page).to have_test_selector("op-wp-journal-#{first_comment.id}-edit")
-        expect(page).to have_test_selector("op-wp-journal-#{first_comment.id}-quote")
+      activity_tab.within_journal_entry(first_comment) do
+        activity_tab.expect_journal_notes(text: "A (restricted) comment by admin - EDITED")
+      end
+
+      activity_tab.quote_comment(first_comment)
+      page.within_test_selector("op-work-package-journal-form-element") do
+        expect(page).to have_checked_field("Restrict visibility")
+      end
+
+      activity_tab.quote_comment(unrestricted_comment)
+      page.within_test_selector("op-work-package-journal-form-element") do
+        expect(page).to have_checked_field("Restrict visibility")
       end
     end
   end

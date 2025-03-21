@@ -31,9 +31,10 @@ module WorkPackages
     module Journals
       class ItemComponent < ApplicationComponent
         include ApplicationHelper
-        include WorkPackages::ActivitiesTab::SharedHelpers
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
+        include WorkPackages::ActivitiesTab::SharedHelpers
+        include WorkPackages::ActivitiesTab::StimulusControllers
 
         def initialize(journal:, filter:, grouped_emoji_reactions:, state: :show)
           super
@@ -140,17 +141,26 @@ module WorkPackages
           menu.with_item(label: t("js.label_quote_comment"),
                          tag: :button,
                          content_arguments: {
-                           data: {
-                             action: "click->work-packages--activities-tab--index#quote",
-                             "content-param": journal.notes,
-                             "user-id-param": journal.user_id,
-                             "user-name-param": journal.user.name,
-                             "text-wrote-param": t(:text_wrote),
-                             test_selector: "op-wp-journal-#{journal.id}-quote"
-                           }
+                           data: quote_action_data_attributes
                          }) do |item|
             item.with_leading_visual_icon(icon: :quote)
           end
+        end
+
+        def quote_action_data_attributes # rubocop:disable Metrics/AbcSize
+          {
+            controller: quote_comments_stimulus_controller,
+            "application-target": "dynamic",
+            action: "click->#{quote_comments_stimulus_controller}#quote:prevent",
+            quote_comments_stimulus_controller("-content-param") => journal.notes,
+            quote_comments_stimulus_controller("-user-id-param") => journal.user_id,
+            quote_comments_stimulus_controller("-user-name-param") => journal.user.name,
+            quote_comments_stimulus_controller("-is-restricted-param") => journal.restricted?,
+            quote_comments_stimulus_controller("-text-wrote-param") => I18n.t(:text_wrote),
+            quote_comments_stimulus_controller("-#{index_stimulus_controller}-outlet") => items_index_selector,
+            quote_comments_stimulus_controller("-#{restricted_comment_stimulus_controller}-outlet") => add_comment_selector,
+            test_selector: "op-wp-journal-#{journal.id}-quote"
+          }
         end
       end
     end
