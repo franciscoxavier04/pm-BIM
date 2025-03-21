@@ -35,6 +35,7 @@ module WorkPackages
       include OpPrimer::ComponentHelpers
       include OpTurbo::Streamable
       include WorkPackages::ActivitiesTab::SharedHelpers
+      include WorkPackages::ActivitiesTab::StimulusControllers
 
       def initialize(work_package:, last_server_timestamp:, filter: :all, deferred: false)
         super
@@ -95,9 +96,6 @@ module WorkPackages
       def adding_comment_allowed?
         User.current.allowed_in_work_package?(:add_work_package_notes, @work_package)
       end
-
-      def index_stimulus_controller(suffix = nil) = "work-packages--activities-tab--index#{suffix}"
-      def restricted_comment_stimulus_controller(suffix = nil) = "work-packages--activities-tab--restricted-comment#{suffix}"
 
       def unsaved_changes_confirmation_message
         I18n.t("activities.work_packages.activity_tab.unsaved_changes_confirmation_message")

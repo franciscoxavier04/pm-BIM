@@ -31,9 +31,10 @@ module WorkPackages
     module Journals
       class ItemComponent < ApplicationComponent
         include ApplicationHelper
-        include WorkPackages::ActivitiesTab::SharedHelpers
         include OpPrimer::ComponentHelpers
         include OpTurbo::Streamable
+        include WorkPackages::ActivitiesTab::SharedHelpers
+        include WorkPackages::ActivitiesTab::StimulusControllers
 
         def initialize(journal:, filter:, grouped_emoji_reactions:, state: :show)
           super
@@ -156,16 +157,6 @@ module WorkPackages
             quote_comments_stimulus_controller("-#{restricted_comment_stimulus_controller}-outlet") => add_comment_selector,
             test_selector: "op-wp-journal-#{journal.id}-quote"
           }
-        end
-
-        def quote_comments_stimulus_controller(suffix = nil) = "work-packages--activities-tab--quote-comment#{suffix}"
-        def index_stimulus_controller(suffix = nil) = "work-packages--activities-tab--index#{suffix}"
-        def restricted_comment_stimulus_controller(suffix = nil) = "work-packages--activities-tab--restricted-comment#{suffix}"
-
-        def items_index_selector = "##{WorkPackages::ActivitiesTab::IndexComponent.wrapper_key}"
-
-        def add_comment_selector
-          "##{WorkPackages::ActivitiesTab::IndexComponent.add_comment_wrapper_key}"
         end
       end
     end
