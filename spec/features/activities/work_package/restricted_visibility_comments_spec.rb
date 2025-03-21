@@ -138,8 +138,15 @@ RSpec.describe "Work package comments with restricted visibility",
   context "with a user that is allowed to view, create and edit all comments" do
     current_user { project_admin }
 
+    let(:unrestricted_comment) do
+      create(:work_package_journal,
+             user: project_admin, notes: "An unrestricted comment by member",
+             journable: work_package, version: (work_package.journals.reload.last.version + 1), restricted: false)
+    end
+
     before do
       first_comment
+      unrestricted_comment
 
       wp_page.visit!
       wp_page.wait_for_activity_tab
@@ -155,6 +162,11 @@ RSpec.describe "Work package comments with restricted visibility",
       end
 
       activity_tab.quote_comment(first_comment)
+      page.within_test_selector("op-work-package-journal-form-element") do
+        expect(page).to have_checked_field("Restrict visibility")
+      end
+
+      activity_tab.quote_comment(unrestricted_comment)
       page.within_test_selector("op-work-package-journal-form-element") do
         expect(page).to have_checked_field("Restrict visibility")
       end
