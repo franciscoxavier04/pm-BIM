@@ -29,29 +29,38 @@
 #++
 
 class Journals::CreateService
-  class Association
-    include Helpers
+  module Helpers
+    private
 
-    ASSOCIATION_NAMES = %i[
-      AgendaItemable
-      Attachable
-      Customizable
-      ProjectLifeCycleStep
-      Storable
-    ].freeze
+    delegate :sanitize,
+             to: ::OpenProject::SqlSanitization
 
-    def self.for(journable)
-      ASSOCIATION_NAMES
-        .map { "Journals::CreateService::#{_1}".constantize.new(journable) }
-        .select(&:associated?)
+    def journable_id = journable.id
+
+    def journable_class_name = journable.class.base_class.name
+
+    def cleanup_predecessor_for(predecessor, table_name, column, referenced_id)
+      return "SELECT 1" unless predecessor
+
+      sanitize(<<~SQL.squish, column => predecessor.send(referenced_id))
+        DELETE
+        FROM
+         #{table_name}
+        WHERE
+         #{column} = :#{column}
+      SQL
     end
 
-    attr_reader :journable
-
-    def initialize(journable)
-      @journable = journable
+    def normalize_newlines_sql(column)
+      "REGEXP_REPLACE(COALESCE(#{column},''), '\\r\\n', '\n', 'g')"
     end
 
-    def name = self.class.name.demodulize.underscore
+    def only_if_created_sql
+      "EXISTS (SELECT * from inserted_journal)"
+    end
+
+    def id_from_inserted_journal_sql
+      "(SELECT id FROM inserted_journal)"
+    end
   end
 end
