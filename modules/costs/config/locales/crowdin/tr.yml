@@ -57,6 +57,9 @@ tr:
         start_time: Başlama tarihi
         end_time: Bitiş zamanı
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Maliyet türü"
         other: "Maliyet türü"
@@ -175,8 +178,6 @@ tr:
   text_reassign_time_and_cost_entries: "Raporlanan saatleri ve maliyetleri bu iş paketine yeniden atayın:"
   text_warning_hidden_elements: "Bazı girdiler toplama işleminden dışlanmış olabilir."
   week: "hafta"
-  js:
-    text_are_you_sure: "Emin misiniz?"
   api_v3:
     errors:
       validation:

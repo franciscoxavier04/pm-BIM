@@ -611,6 +611,10 @@ ko:
         pattern:
           label: "제목 패턴"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF 생성"
@@ -1042,7 +1046,9 @@ ko:
       wiki_page:
         parent_title: "부모 페이지"
         redirect_existing_links: "기존 링크 리디렉션"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "삽입 시작"
         begin_deletion: "삭제 시작"
         children: "하위 요소"
@@ -1552,11 +1558,17 @@ ko:
       changeset: "변경 집합"
       message: "포럼"
       news: "뉴스"
-      project_attribute: "프로젝트 특성"
+      project_details: "Project details"
       subproject: "하위 프로젝트 포함"
       time_entry: "소요 시간"
       wiki_edit: "위키"
       work_package: "작업 패키지"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "활성"
@@ -2007,7 +2019,7 @@ ko:
     changeset: "변경 집합 편집됨"
     message: 메시지 편집됨
     news: 뉴스
-    project_attributes: "프로젝트 특성 편집됨"
+    project_details: "Project details edited"
     project: "프로젝트 편집됨"
     projects: "프로젝트 편집됨"
     reply: 회신함
@@ -2086,6 +2098,8 @@ ko:
     your_work_packages_export: "작업 패키지를 내보내는 중입니다."
     succeeded: "내보내기 완료"
     failed: "작업 패키지를 내보내려는 중에 오류가 발생했습니다: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2130,6 +2144,12 @@ ko:
         caption: 개선된 레이아웃과 양쪽 맞춤을 위한 단어 사이 줄 바꿈입니다.
       hyphenation_language:
         label: 언어 및 하이픈 넣기
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext 사용 가능(선택적)"
@@ -3763,9 +3783,6 @@ ko:
       section_work_week: "근무 주"
       section_holidays_and_closures: "공휴일 및 휴업일"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"

@@ -57,6 +57,9 @@ pt-PT:
         start_time: Hora de início
         end_time: Hora de fim
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Tipo de custo"
         other: "Tipos de custos"
@@ -175,8 +178,6 @@ pt-PT:
   text_reassign_time_and_cost_entries: "Reatribuir horas e custos reportados para este pacote de trabalho:"
   text_warning_hidden_elements: "Algumas entradas podem ter sido excluídas da agregação."
   week: "semana"
-  js:
-    text_are_you_sure: "Tem a certeza?"
   api_v3:
     errors:
       validation:

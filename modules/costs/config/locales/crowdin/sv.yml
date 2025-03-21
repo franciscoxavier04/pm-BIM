@@ -57,6 +57,9 @@ sv:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Kostnadstyp"
         other: "Kostnadstyper"
@@ -175,8 +178,6 @@ sv:
   text_reassign_time_and_cost_entries: "Tilldela rapporterade timmar och kostnader på detta arbetspaket:"
   text_warning_hidden_elements: "Vissa poster kan ha undantagits från summeringen."
   week: "vecka"
-  js:
-    text_are_you_sure: "Är du säker?"
   api_v3:
     errors:
       validation:

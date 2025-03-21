@@ -21,6 +21,7 @@
 #++
 lv:
   js:
+    text_are_you_sure: "Vai esat pārliecināts?"
     work_packages:
       property_groups:
         costs: "Izmaksas"

@@ -57,6 +57,11 @@ pl:
         start_time: Czas rozpoczęcia
         end_time: Czas zakończenia
     models:
+      time_entry:
+        one: "Time entry"
+        few: "Time entries"
+        many: "Time entries"
+        other: "Time entries"
       cost_type:
         one: "Jednostki"
         few: "Rodzaje kosztów"
@@ -179,8 +184,6 @@ pl:
   text_reassign_time_and_cost_entries: "Ponownie przypisz zgłoszone godziny i koszty do tego Zestawu zadań:"
   text_warning_hidden_elements: "Niektóre wpisy mogą zostać wyłączone ze zbioru."
   week: "tydzień"
-  js:
-    text_are_you_sure: "Jesteś pewny?"
   api_v3:
     errors:
       validation:

@@ -609,6 +609,10 @@ zh-TW:
         pattern:
           label: "主題模板"
           caption: "新增文字或輸入 / 來搜尋屬性。您可以使用空格來分隔它們。"
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "未找到屬性。以文字新增：\"%{word}"
       export_configuration:
         tab: "產生PDF檔案"
@@ -1040,7 +1044,9 @@ zh-TW:
       wiki_page:
         parent_title: "上層頁面"
         redirect_existing_links: "將現有的連結重定向"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "開始插入"
         begin_deletion: "開始刪除"
         children: "子項"
@@ -1550,11 +1556,17 @@ zh-TW:
       changeset: "變更集"
       message: "討論區"
       news: "最新消息"
-      project_attribute: "專案屬性"
+      project_details: "Project details"
       subproject: "包含子專案"
       time_entry: "耗時"
       wiki_edit: "維基"
       work_package: "工作項目"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "啟用"
@@ -2005,7 +2017,7 @@ zh-TW:
     changeset: "已編輯變更"
     message: 訊息已編輯
     news: 最新消息
-    project_attributes: "專案屬性已修改"
+    project_details: "Project details edited"
     project: "專案已編輯"
     projects: "專案已編輯"
     reply: 已回覆
@@ -2084,6 +2096,8 @@ zh-TW:
     your_work_packages_export: "工作項目已匯出"
     succeeded: "匯出完成"
     failed: "嘗試匯出工作項目時發生錯誤： %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2128,6 +2142,12 @@ zh-TW:
         caption: 在單字之間換行，以便更好地佈局和對齊。
       hyphenation_language:
         label: '「語言」連字符號'
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (非必要)"
@@ -3762,9 +3782,6 @@ zh-TW:
       section_work_week: "工作週"
       section_holidays_and_closures: "假日和休息日"
     work_packages:
-      categories_tab: "類別"
-      custom_fields_tab: "自訂欄位"
-      types_tab: "類型"
       not_allowed_text: "您沒有查看此頁面的必要權限。"
   text_formatting:
     markdown: "Markdown"

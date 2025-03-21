@@ -57,6 +57,9 @@ ca:
         start_time: Hora d'inici
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Estil de cost"
         other: "Estils de cost"
@@ -175,8 +178,6 @@ ca:
   text_reassign_time_and_cost_entries: "Reassignar les hores i costs reportats a aquest paquet de treball:"
   text_warning_hidden_elements: "Algunes entrades poden ser excloses de l'agregació"
   week: "setmana"
-  js:
-    text_are_you_sure: "N'estas segur?"
   api_v3:
     errors:
       validation:

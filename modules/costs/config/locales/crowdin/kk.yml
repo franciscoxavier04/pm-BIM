@@ -57,6 +57,9 @@ kk:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Cost type"
         other: "Cost types"
@@ -175,8 +178,6 @@ kk:
   text_reassign_time_and_cost_entries: "Reassign reported hours and costs to this work package:"
   text_warning_hidden_elements: "Some entries may have been excluded from the aggregation."
   week: "week"
-  js:
-    text_are_you_sure: "Are you sure?"
   api_v3:
     errors:
       validation:

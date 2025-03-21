@@ -619,6 +619,10 @@ fil:
         pattern:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -1051,7 +1055,9 @@ fil:
       wiki_page:
         parent_title: "Pahina ng magulang"
         redirect_existing_links: "Pag-redirect sa umiiral ng mga link"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Nagsimula na ang pagpasok"
         begin_deletion: "Nagsimula na ang pagbubura"
         children: "Subelements"
@@ -1572,11 +1578,17 @@ fil:
       changeset: "Changesets"
       message: "Mga forum"
       news: "Mga balita"
-      project_attribute: "Project attributes"
+      project_details: "Project details"
       subproject: "Include subprojects"
       time_entry: "Nauubos na oras"
       wiki_edit: "Wiki"
       work_package: "Ang mga work package"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktibo"
@@ -2046,7 +2058,7 @@ fil:
     changeset: "Naka-edit ang changeset"
     message: Naka-edit ang mensahe
     news: Mga balita
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "Naka-edit ang proyekto"
     projects: "Naka-edit ang proyekto"
     reply: Sumagot
@@ -2125,6 +2137,8 @@ fil:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2169,6 +2183,12 @@ fil:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext ay magagamit (opsyonal)"
@@ -3805,9 +3825,6 @@ fil:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"

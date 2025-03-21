@@ -57,6 +57,9 @@ fi:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Kustannustyyppi"
         other: "Kustannusten tyypit"
@@ -175,8 +178,6 @@ fi:
   text_reassign_time_and_cost_entries: "Raportoitujen tunti- ja kustannuskirjausten siirto tehtävälle:"
   text_warning_hidden_elements: "Joitain merkintöjä on voitu jättää yhdistämisen ulkopuolelle."
   week: "viikko"
-  js:
-    text_are_you_sure: "Oletko varma?"
   api_v3:
     errors:
       validation:

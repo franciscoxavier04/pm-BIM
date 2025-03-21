@@ -21,6 +21,7 @@
 #++
 ro:
   js:
+    text_are_you_sure: "Ești sigur?"
     work_packages:
       property_groups:
         costs: "Costuri"

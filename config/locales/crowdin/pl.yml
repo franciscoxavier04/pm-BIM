@@ -632,6 +632,10 @@ pl:
         pattern:
           label: "Wzorzec tematu"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Wygeneruj PDF"
@@ -1066,7 +1070,9 @@ pl:
       wiki_page:
         parent_title: "Strona nadrzędna"
         redirect_existing_links: "Przekieruj istniejące powiązania"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Początek wstawiania"
         begin_deletion: "Początek usuwania"
         children: "Elementy składowe"
@@ -1609,11 +1615,17 @@ pl:
       changeset: "Zestawy zmian"
       message: "Fora"
       news: "Wiadomości"
-      project_attribute: "Atrybuty projektu"
+      project_details: "Project details"
       subproject: "Zawiera podprojekty"
       time_entry: "Poświęcony czas"
       wiki_edit: "Wiki"
       work_package: "Pakiety robocze"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktywne"
@@ -2121,7 +2133,7 @@ pl:
     changeset: "Komentarze edytowane"
     message: Wiadomość edytowana
     news: Aktualności
-    project_attributes: "Edytowane atrybuty projektu"
+    project_details: "Project details edited"
     project: "Edytowano projekt"
     projects: "Edytowano projekt"
     reply: Odpowiedział
@@ -2200,6 +2212,8 @@ pl:
     your_work_packages_export: "Pakiety robocze są eksportowane"
     succeeded: "Eksport ukończony"
     failed: "Podczas próby wyeksportowania pakietów roboczych wystąpił błąd: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2244,6 +2258,12 @@ pl:
         caption: Linia podziału między słowami, aby uzyskać lepszy układ i justowanie.
       hyphenation_language:
         label: Język i dzielenie wyrazów
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Dostępny konwerter Pdftotext (opcjonalny)"
@@ -3883,9 +3903,6 @@ pl:
       section_work_week: "Tydzień roboczy"
       section_holidays_and_closures: "Dni wolne i zamknięcia"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"

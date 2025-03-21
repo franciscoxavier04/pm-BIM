@@ -57,6 +57,9 @@ el:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Τύπος κόστους"
         other: "Τύποι κόστους"
@@ -175,8 +178,6 @@ el:
   text_reassign_time_and_cost_entries: "Επανάθεση αναφερόμενων ωρών και κόστους σε αυτό το πακέτο εργασίας:"
   text_warning_hidden_elements: "Μερικές καταχωρήσεις μπορεί να έχουν εξαιρεθεί από την συνάθροιση."
   week: "εβδομάδα"
-  js:
-    text_are_you_sure: "Είστε σίγουρος/η;"
   api_v3:
     errors:
       validation:

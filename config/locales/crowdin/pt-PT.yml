@@ -616,6 +616,10 @@ pt-PT:
         pattern:
           label: "Padrão do tema"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Gerar PDF"
@@ -1048,7 +1052,9 @@ pt-PT:
       wiki_page:
         parent_title: "Página pai"
         redirect_existing_links: "Redirecionar links existentes"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Início da inserção"
         begin_deletion: "Início da exclusão"
         children: "Subelementos"
@@ -1569,11 +1575,17 @@ pt-PT:
       changeset: "Conjunto de alterações"
       message: "Fóruns"
       news: "Notícias"
-      project_attribute: "Atributos do projeto"
+      project_details: "Project details"
       subproject: "Incluir subprojetos"
       time_entry: "Tempo gasto"
       wiki_edit: "Wiki"
       work_package: "Pacotes de trabalho"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Ativo"
@@ -2043,7 +2055,7 @@ pt-PT:
     changeset: "Changeset editado"
     message: Mensagem editada
     news: Noticias
-    project_attributes: "Atributos do projeto editados"
+    project_details: "Project details edited"
     project: "Projeto editado"
     projects: "Projeto editado"
     reply: Respondeu
@@ -2122,6 +2134,8 @@ pt-PT:
     your_work_packages_export: "Os pacotes de trabalho estão a ser exportados"
     succeeded: "Exportação concluída"
     failed: "Ocorreu um erro ao tentar exportar os pacotes de trabalho: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2166,6 +2180,12 @@ pt-PT:
         caption: Insira uma quebra de linha entre as palavras para uma melhor apresentação e justificação.
       hyphenation_language:
         label: Idioma e hifenização
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext disponível (opcional)"
@@ -3801,9 +3821,6 @@ pt-PT:
       section_work_week: "Semana de trabalho"
       section_holidays_and_closures: "Feriados e encerramentos"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"

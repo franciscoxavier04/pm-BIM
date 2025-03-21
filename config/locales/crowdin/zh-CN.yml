@@ -606,8 +606,12 @@ zh-CN:
           caption: "使用引用属性和文本定义模式，自动生成工作包主题。用户将无法手动编辑主题。"
         pattern:
           label: "主题模式"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          caption: "添加文本或输入斜杠“/”以搜索属性。你可以使用空格来分隔它们。"
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
       export_configuration:
         tab: "生成 PDF"
         intro: "为此类型选择模板。模板决定此类型工作包导出的PDF的设计和可见属性。默认选择列表上的第一个模板。"
@@ -1038,7 +1042,9 @@ zh-CN:
       wiki_page:
         parent_title: "父级页面"
         redirect_existing_links: "将现有的链接重定向"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "开始插入"
         begin_deletion: "开始删除"
         children: "子元素"
@@ -1548,11 +1554,17 @@ zh-CN:
       changeset: "更改集"
       message: "论坛"
       news: "新闻"
-      project_attribute: "项目属性"
+      project_details: "Project details"
       subproject: "包括子项目"
       time_entry: "用时"
       wiki_edit: "维基"
       work_package: "工作包"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "激活"
@@ -2003,7 +2015,7 @@ zh-CN:
     changeset: "编辑更改集"
     message: 编辑消息
     news: 新闻
-    project_attributes: "项目属性已编辑"
+    project_details: "Project details edited"
     project: "项目已编辑"
     projects: "项目已编辑"
     reply: 答复
@@ -2082,6 +2094,8 @@ zh-CN:
     your_work_packages_export: "正在导出工作包"
     succeeded: "导出完成"
     failed: "在尝试导出工作包时发生错误： %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2126,6 +2140,12 @@ zh-CN:
         caption: 为了更好的布局和说明，在单词之间换行。
       hyphenation_language:
         label: 语言和连惯性
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (可选)"
@@ -3757,9 +3777,6 @@ zh-CN:
       section_work_week: "工作周"
       section_holidays_and_closures: "节假日与停业"
     work_packages:
-      categories_tab: "类别"
-      custom_fields_tab: "自定义字段"
-      types_tab: "类型"
       not_allowed_text: "您没有查看此页面的权限。"
   text_formatting:
     markdown: "Markdown"

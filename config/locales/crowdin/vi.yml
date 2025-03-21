@@ -611,6 +611,10 @@ vi:
         pattern:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -1042,7 +1046,9 @@ vi:
       wiki_page:
         parent_title: "Trang mẹ"
         redirect_existing_links: "Chuyển hướng các liên kết hiện có"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Bắt đầu chèn"
         begin_deletion: "Bắt đầu xóa"
         children: "Subelements"
@@ -1552,11 +1558,17 @@ vi:
       changeset: "Thay đổi"
       message: "Diễn đàn"
       news: "Tin tức"
-      project_attribute: "Thuộc tính dự án"
+      project_details: "Project details"
       subproject: "Bao gồm dự án con"
       time_entry: "Thời gian đã sử dụng"
       wiki_edit: "Wiki"
       work_package: "Gói công việc"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Đang hoạt động"
@@ -2007,7 +2019,7 @@ vi:
     changeset: "Đã chỉnh sửa Changeset (bộ thay đổi)"
     message: Đã chỉnh sửa tin nhắn
     news: Tin tức
-    project_attributes: "Thuộc tính dự án đã được chỉnh sửa"
+    project_details: "Project details edited"
     project: "Dự án đã được chỉnh sửa"
     projects: "Dự án đã được chỉnh sửa"
     reply: Đã phản hồi
@@ -2086,6 +2098,8 @@ vi:
     your_work_packages_export: "Các gói công việc đang được xuất khẩu"
     succeeded: "Xuất hoàn tất"
     failed: "Đã xảy ra lỗi khi cố gắng xuất các gói công việc: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2130,6 +2144,12 @@ vi:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext có sẵn (không bắt buộc)"
@@ -3766,9 +3786,6 @@ vi:
       section_work_week: "Tuần làm việc"
       section_holidays_and_closures: "Ngày nghỉ và đóng cửa"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Gạch dưới"

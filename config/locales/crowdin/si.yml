@@ -619,6 +619,10 @@ si:
         pattern:
           label: "Subject pattern"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
@@ -1051,7 +1055,9 @@ si:
       wiki_page:
         parent_title: "මව් පිටුව"
         redirect_existing_links: "පවතින සබැඳි නැවත හරවා යැවීම"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "ඇතුළත් කිරීම ආරම්භ කරන්න"
         begin_deletion: "මකාදැමීම ආරම්භ කරන්න"
         children: "උප මූලිකාංග"
@@ -1572,11 +1578,17 @@ si:
       changeset: "වෙනස්කම්"
       message: "සංසද"
       news: "පුවත්"
-      project_attribute: "Project attributes"
+      project_details: "Project details"
       subproject: "Include subprojects"
       time_entry: "වැය කළ කාලය"
       wiki_edit: "විකි"
       work_package: "වැඩ පැකේජ"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "ක්රියාකාරී"
@@ -2046,7 +2058,7 @@ si:
     changeset: "සංස්කරණය කරන ලද වෙනස්"
     message: සංස්කරණය කරන ලද පණිවිඩය
     news: පුවත්
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "සංස්කරණය කරන ලද ව්යාපෘතිය"
     projects: "සංස්කරණය කරන ලද ව්යාපෘතිය"
     reply: පිළිතුරු
@@ -2125,6 +2137,8 @@ si:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "පරමාණුව"
       csv: "සීඑස්වී"
@@ -2169,6 +2183,12 @@ si:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "ලබා ගත හැකි PDftotext (විකල්ප)"
@@ -3807,9 +3827,6 @@ si:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "මාර්ක්ඩවුන්"

@@ -633,6 +633,10 @@ ru:
         pattern:
           label: "Шаблон темы"
           caption: "Добавьте текст или введите / для поиска атрибута. Вы можете добавить пробелы, чтобы разделить их."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
@@ -1067,7 +1071,9 @@ ru:
       wiki_page:
         parent_title: "Родительская страница"
         redirect_existing_links: "Перенаправление существующих ссылок"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Начало вставки"
         begin_deletion: "Начало удаления"
         children: "Вложенные элементы"
@@ -1610,11 +1616,17 @@ ru:
       changeset: "Наборы изменений"
       message: "Форумы"
       news: "Новости"
-      project_attribute: "Атрибуты проекта"
+      project_details: "Project details"
       subproject: "Включить подпроекты"
       time_entry: "Затраченное время"
       wiki_edit: "Wiki"
       work_package: "Пакеты работ"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Активно"
@@ -2122,7 +2134,7 @@ ru:
     changeset: "Набор изменений отредактирован"
     message: Сообщение отредактировано
     news: Новости
-    project_attributes: "Атрибуты проекта изменены"
+    project_details: "Project details edited"
     project: "Проект отредактирован"
     projects: "Проект отредактирован"
     reply: Отвечено
@@ -2201,6 +2213,8 @@ ru:
     your_work_packages_export: "Пакеты работ экспортируются"
     succeeded: "Экспорт завершен"
     failed: "Произошла ошибка при попытке экспортировать пакеты работ: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2245,6 +2259,12 @@ ru:
         caption: Линия разрыва между словами для лучшего расположения и выравнивания.
       hyphenation_language:
         label: Язык и переносы
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext доступно (опционально)"
@@ -3884,9 +3904,6 @@ ru:
       section_work_week: "Рабочая неделя"
       section_holidays_and_closures: "Праздничные и нерабочие дни"
     work_packages:
-      categories_tab: "Категории"
-      custom_fields_tab: "Пользовательские поля"
-      types_tab: "Типы"
       not_allowed_text: "У вас нет необходимых прав для просмотра этой страницы."
   text_formatting:
     markdown: "Markdown"

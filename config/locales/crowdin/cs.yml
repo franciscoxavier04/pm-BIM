@@ -346,7 +346,7 @@ cs:
         placeholder: "Nový seznam projektů"
       delete_modal:
         title: "Odstranit seznam projektů"
-        heading: "Delete this project list?"
+        heading: "Smazat tento seznam projektů?"
         text: "Tato akce neodstraní žádný projekt, který seznam obsahuje. Opravdu chcete tento seznam projektů smazat?"
     settings:
       change_identifier: Změnit identifikátor
@@ -492,7 +492,7 @@ cs:
   my:
     access_token:
       create_dialog:
-        title: Token generated
+        title: Token vygenerován
         header: '%{type} token byl vygenerován'
         warning: Note that this is the only time you will see this token, make sure to copy it now.
       errors:
@@ -635,6 +635,10 @@ cs:
         pattern:
           label: "Vzor předmětu"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Vytvořit PDF"
@@ -1069,7 +1073,9 @@ cs:
       wiki_page:
         parent_title: "Nadřazená stránka"
         redirect_existing_links: "Přesměrovat existující odkazy"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Začátek vložení"
         begin_deletion: "Začátek odstranění"
         children: "Dílčí prvky"
@@ -1612,11 +1618,17 @@ cs:
       changeset: "Změny"
       message: "Fóra"
       news: "Novinky"
-      project_attribute: "Atributy projektu"
+      project_details: "Project details"
       subproject: "Zahrnout podprojekty"
       time_entry: "Strávený čas"
       wiki_edit: "Wiki"
       work_package: "Pracovní balíčky"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktivní"
@@ -2124,7 +2136,7 @@ cs:
     changeset: "Sada změn upravena"
     message: Zpráva upravena
     news: Novinky
-    project_attributes: "Atributy projektu upraveny"
+    project_details: "Project details edited"
     project: "Projekt upraven"
     projects: "Projekt upraven"
     reply: Zodpovězeno
@@ -2203,6 +2215,8 @@ cs:
     your_work_packages_export: "Pracovní balíčky jsou exportovány"
     succeeded: "Export dokončen"
     failed: "Při pokusu o export pracovních balíčků došlo k chybě: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2247,6 +2261,12 @@ cs:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext k dispozici (volitelné)"
@@ -3888,9 +3908,6 @@ cs:
       section_work_week: "Pracovní týden"
       section_holidays_and_closures: "Dovolená a uzávěrky"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Zmenšení"

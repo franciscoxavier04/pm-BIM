@@ -611,8 +611,12 @@ de:
           caption: "Definieren Sie ein Schema aus referenzierten Attributen und Freitext für die automatische Generierung von Arbeitspaketthemen. Nutzer können diese nicht manuell editieren."
         pattern:
           label: "Thema-Schema"
-          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
-          insert_as_text: "No attributes found. Add as text: \"%{word}\""
+          caption: "Fügen Sie Text oder Typ / um nach einem Attribut zu suchen. Sie können Leerzeichen hinzufügen, um sie zu trennen."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "Keine Attribute gefunden. Als Text hinzufügen: \"%{word}\""
       export_configuration:
         tab: "PDF generieren"
         intro: "Wählen Sie aus den verfügbaren Vorlagen diejenige aus, die Sie für diesen Typ aktivieren möchten. Die Vorlage bestimmt das Design und die Attribute, die in der exportierten PDF-Datei eines Arbeitspakets mit diesem Typ sichtbar sind. Die erste Vorlage in der Liste ist standardmäßig ausgewählt."
@@ -1044,7 +1048,9 @@ de:
       wiki_page:
         parent_title: "Übergeordnete Seite"
         redirect_existing_links: "Existierende Links umleiten"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Beginn der Einfügung"
         begin_deletion: "Beginn des Löschvorgangs"
         children: "Kindelemente"
@@ -1565,11 +1571,17 @@ de:
       changeset: "Änderungssätze"
       message: "Foren"
       news: "Neuigkeiten"
-      project_attribute: "Projekt-Attribute"
+      project_details: "Project details"
       subproject: "Unterprojekte einbeziehen"
       time_entry: "Aufgewendete Zeit"
       wiki_edit: "Wiki"
       work_package: "Arbeitspakete"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktiv"
@@ -2039,7 +2051,7 @@ de:
     changeset: "Projektarchiv-Änderung bearbeitet"
     message: Nachricht bearbeitet
     news: Neuigkeiten
-    project_attributes: "Projekt-Attribute bearbeitet"
+    project_details: "Project details edited"
     project: "Projekt bearbeitet"
     projects: "Projekt bearbeitet"
     reply: Antwort erstellt
@@ -2118,6 +2130,8 @@ de:
     your_work_packages_export: "Arbeitspakete werden exportiert"
     succeeded: "Export abgeschlossen"
     failed: "Beim Versuch, die Arbeitspakete zu exportieren, ist ein Fehler aufgetreten: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2162,6 +2176,12 @@ de:
         caption: Silbentrennung zwischen Wörtern zur besseren Anordnung und Ausrichtung.
       hyphenation_language:
         label: Sprache und Silbentrennung
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext verfügbar (optional)"
@@ -3800,9 +3820,6 @@ de:
       section_work_week: "Arbeitswoche"
       section_holidays_and_closures: "Feiertage und Schließungen"
     work_packages:
-      categories_tab: "Kategorien"
-      custom_fields_tab: "Benutzerdefinierte Felder"
-      types_tab: "Typen"
       not_allowed_text: "Sie haben nicht die notwendigen Rechte, um diese Seite zu sehen."
   text_formatting:
     markdown: "Markdown"
@@ -4387,7 +4404,7 @@ de:
   enterprise_features:
     baseline_comparison: Grundlinie (Planungsvergleich)
     board_view: Board Ansicht
-    conditional_highlighting: Conditional Highlighting
+    conditional_highlighting: Bedingte Hervorhebung
     custom_actions: Benutzerdefinierte Aktionen
     custom_field_hierarchies: Selbstdefinierte Felder vom Typ Hierarchie
     customize_life_cycle: Projektlebenszyklus anpassen
@@ -4407,4 +4424,4 @@ de:
     virus_scanning: Virus-Scan von Anhängen
     work_package_query_relation_columns: Arbeitspaket-Relationsspalten
     work_package_sharing: Teilen von Arbeitspaketen
-    work_package_subject_generation: Work Package Subject Generation
+    work_package_subject_generation: Arbeitspaket-Betreff Generierung

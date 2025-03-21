@@ -618,6 +618,10 @@ tr:
         pattern:
           label: "Konu deseni"
           caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
           insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF oluştur"
@@ -1050,7 +1054,9 @@ tr:
       wiki_page:
         parent_title: "Üst sayfa"
         redirect_existing_links: "Varolan bağlantıları yönlendirme"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Eklemeye başlama"
         begin_deletion: "Silme işleminin başlangıcı"
         children: "Alt öğeler"
@@ -1571,11 +1577,17 @@ tr:
       changeset: "Değişiklik listeleri"
       message: "Forumlar"
       news: "Haberler"
-      project_attribute: "Proje öznitelikleri"
+      project_details: "Project details"
       subproject: "Alt projeleri dahil et"
       time_entry: "Harcanan zaman"
       wiki_edit: "Rehber"
       work_package: "İş paketleri"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktif"
@@ -2045,7 +2057,7 @@ tr:
     changeset: "Değişiklikler düzenlendi"
     message: Mesaj düzenlendi
     news: Haberler
-    project_attributes: "Proje öznitelikleri düzenlendi"
+    project_details: "Project details edited"
     project: "Proje düzenlendi"
     projects: "Proje düzenlendi"
     reply: Yanıtlandı
@@ -2124,6 +2136,8 @@ tr:
     your_work_packages_export: "İş paketleri dışa aktarılıyor"
     succeeded: "Dışa aktarma tamamlandı"
     failed: "İş paketlerini dışa aktarmaya çalışırken bir hata oluştu: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2168,6 +2182,12 @@ tr:
         caption: Daha iyi düzen ve hizalama için kelimeleri böl.
       hyphenation_language:
         label: Dil ve heceleme
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext kullanılabilir (isteğe bağlı)"
@@ -3804,9 +3824,6 @@ tr:
       section_work_week: "Çalışma Haftası"
       section_holidays_and_closures: "Tatiller ve kapanışlar"
     work_packages:
-      categories_tab: "Categories"
-      custom_fields_tab: "Custom Fields"
-      types_tab: "Types"
       not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
