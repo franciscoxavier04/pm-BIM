@@ -36,6 +36,11 @@ type FilteredSuggestions = Array<{
   values:Array<{ prop:string; value:string; }>;
 }>;
 
+type TokenElement = HTMLElement&{ dataset:{ role:'token', prop:string } };
+type ListElement = HTMLElement&{ dataset:{ role:'list_item', prop:string } };
+
+const COMPLETION_CHARACTER = '/';
+
 export default class PatternInputController extends Controller {
   static targets = [
     'tokenTemplate',
@@ -63,23 +68,22 @@ export default class PatternInputController extends Controller {
 
   static values = {
     patternInitial: String,
+    headingLocales: Object,
     suggestionsInitial: Object,
     insertAsTextTemplate: String,
   };
 
   declare readonly patternInitialValue:string;
   declare readonly suggestionsInitialValue:Record<string, Record<string, string>>;
+  declare readonly headingLocalesValue:Record<string, string>;
   declare readonly insertAsTextTemplateValue:string;
 
-  validTokens:string[];
+  validTokenMap:Record<string, string> = {};
   currentRange:Range|undefined = undefined;
 
   connect() {
+    this.validTokenMap = this.flatLocalizedTokenMap();
     this.contentTarget.innerHTML = this.toHtml(this.patternInitialValue) || ' ';
-    this.validTokens = Object.values(this.suggestionsInitialValue)
-      .map((group) => (Object.keys(group)))
-      .reduce((acc, val) => acc.concat(val), []);
-
     this.tagInvalidTokens();
     this.clearSuggestionsFilter();
   }
@@ -115,24 +119,24 @@ export default class PatternInputController extends Controller {
     this.setRange();
   }
 
-  input_change() {
+  input_change():void {
     // clean up empty tags from the input
     this.contentTarget.querySelectorAll('span').forEach((element) => element.textContent?.trim() === '' && element.remove());
     this.contentTarget.querySelectorAll('br').forEach((element) => element.remove());
 
     // show suggestions for the current word
     const word = this.currentWord();
-    if (word && word.length > 0) {
-      this.filterSuggestions(word);
-    } else {
+    if (word === null) {
       this.clearSuggestionsFilter();
+    } else {
+      this.filterSuggestions(word);
     }
 
     this.tagInvalidTokens();
 
-    // this resets the cursor position without changing it
-    // it is necessary because chromium based browsers try to
-    // retain styling and adds a unwanted <font> tag,
+    // This resets the cursor position without changing it.
+    // It is necessary because chromium based browsers try to
+    // retain styling and adds an unwanted <font> tag,
     // breaking the behaviour of this component
     const selection = document.getSelection();
     if (selection && selection.rangeCount) {
@@ -165,17 +169,52 @@ export default class PatternInputController extends Controller {
   }
 
   // Autocomplete events
-  suggestions_select(event:PointerEvent) {
-    const target = event.currentTarget as HTMLElement;
+  suggestions_select(event:PointerEvent):void {
+    const target = event.currentTarget as ListElement;
+    const token = this.createToken(target.dataset.prop);
 
-    if (target) {
-      this.insertToken(this.createToken(target.dataset.prop!));
+    if (!this.currentRange) {
+      this.contentTarget.appendChild(token);
       this.clearSuggestionsFilter();
+      return;
     }
+
+    const parentNode = this.currentRange.startContainer.parentNode;
+    if (parentNode !== null && this.isToken(parentNode)) {
+      this.replaceToken(token, parentNode);
+    } else {
+      this.insertNodeAtCurrentRange(token);
+    }
+
+    this.clearSuggestionsFilter();
   }
 
-  close_suggestions() {
+  insert_as_text(event:PointerEvent) {
+    if (!this.currentRange) { return; }
+
+    const target = event.currentTarget as ListElement;
+    const parentNode = this.currentRange.startContainer.parentNode;
+    const text = document.createTextNode(target.dataset.prop);
+    if (parentNode !== null && this.isToken(parentNode)) {
+      this.replaceToken(text, parentNode);
+    } else {
+      this.insertNodeAtCurrentRange(text);
+    }
+
     this.clearSuggestionsFilter();
+  }
+
+  private flatLocalizedTokenMap():Record<string, string> {
+    return Object.entries(this.suggestionsInitialValue)
+      .reduce((acc, [groupKey, attributes]) => {
+        if (groupKey !== 'work_package') {
+          Object.entries(attributes).forEach(([key, value]) => {
+            attributes[key] = `${this.headingLocalesValue[groupKey]}: ${value}`;
+          });
+        }
+
+        return { ...acc, ...attributes };
+      }, {});
   }
 
   private updateFormInputValue():void {
@@ -188,10 +227,7 @@ export default class PatternInputController extends Controller {
   private setRange():void {
     const selection = document.getSelection();
     if (selection?.rangeCount) {
-      const range = selection.getRangeAt(0);
-      if (range.startContainer.parentNode === this.contentTarget) {
-        this.currentRange = range;
-      }
+      this.currentRange = selection.getRangeAt(0);
     }
   }
 
@@ -262,44 +298,60 @@ export default class PatternInputController extends Controller {
     return this.contentTarget.innerHTML.startsWith('<');
   }
 
-  private insertToken(tokenElement:HTMLElement) {
-    if (this.currentRange) {
-      const targetNode = this.currentRange.startContainer;
-      const targetOffset = this.currentRange.startOffset;
+  private replaceToken(node:Node, token:TokenElement):void {
+    token.replaceWith(node);
+    this.setRealCaretPositionAtNode(node);
+    this.updateFormInputValue();
+    this.setRange();
+  }
 
-      if (!targetNode.textContent) { return; }
+  private insertNodeAtCurrentRange(node:Node) {
+    if (!this.currentRange) { return; }
 
-      let pos = targetOffset - 1;
-      while (pos > -1 && !this.isWhitespace(targetNode.textContent.charAt(pos))) { pos -= 1; }
+    const targetNode = this.currentRange.startContainer;
+    const targetOffset = this.currentRange.startOffset;
+    const textContent = targetNode.textContent;
 
-      const wordRange = document.createRange();
-      wordRange.setStart(targetNode, pos + 1);
-      wordRange.setEnd(targetNode, targetOffset);
+    if (textContent === null) { return; }
 
-      wordRange.deleteContents();
-      wordRange.insertNode(tokenElement);
+    let pos = targetOffset - 1;
+    while (pos > -1 && textContent.charAt(pos) !== COMPLETION_CHARACTER) { pos -= 1; }
 
-      this.setRealCaretPositionAtNode(tokenElement);
+    const wordRange = document.createRange();
+    wordRange.setStart(targetNode, pos);
+    wordRange.setEnd(targetNode, targetOffset);
 
-      this.updateFormInputValue();
-      this.setRange();
+    wordRange.deleteContents();
+    wordRange.insertNode(node);
 
-      // clear suggestions
-      this.clearSuggestionsFilter();
-    } else {
-      this.contentTarget.appendChild(tokenElement);
-    }
+    this.setRealCaretPositionAtNode(node);
+    this.updateFormInputValue();
+    this.setRange();
   }
 
   private currentWord():string|null {
     const selection = document.getSelection();
-    if (selection) {
-      return (selection.anchorNode?.textContent?.slice(0, selection.anchorOffset)
-        .split(' ')
-        .pop() as string);
+    if (selection === null) { return null; }
+
+    const anchor = selection.anchorNode;
+    if (anchor === null) { return null; }
+
+    const parent = anchor.parentNode;
+    if (parent === null) { return null; }
+
+    const textContent = anchor.textContent;
+    if (textContent === null) { return null; }
+
+    if (this.isToken(parent)) {
+      return textContent.slice(0, selection.anchorOffset);
     }
 
-    return null;
+    const posKey = textContent.lastIndexOf(COMPLETION_CHARACTER);
+    if (posKey === -1) { return null; }
+
+    // key character is only considered valid, if directly followed by a non-whitespace character
+    const textAfterKey = textContent.slice(posKey + 1, selection.anchorOffset);
+    return textAfterKey.startsWith(' ') ? null : textAfterKey;
   }
 
   private clearSuggestionsFilter():void {
@@ -311,8 +363,6 @@ export default class PatternInputController extends Controller {
     this.clearSuggestionsFilter();
     this.suggestionsTarget.classList.remove('d-none');
 
-    this.appendInsertAsTextElement(word);
-
     const filtered = this.getFilteredSuggestionsData(word.toLowerCase());
 
     // insert the HTML
@@ -321,7 +371,7 @@ export default class PatternInputController extends Controller {
       if (groupHeader) {
         const headerElement = groupHeader.querySelector('h2');
         if (headerElement) {
-          headerElement.innerText = group.key;
+          headerElement.innerText = this.headingLocalesValue[group.key];
         }
 
         this.suggestionsTarget.appendChild(groupHeader);
@@ -342,16 +392,21 @@ export default class PatternInputController extends Controller {
         this.suggestionsTarget.appendChild(groupDivider);
       }
     });
+
+    if (this.suggestionsTarget.childNodes.length === 0) {
+      this.appendInsertAsTextElement(word);
+    }
   }
 
   private appendInsertAsTextElement(word:string):void {
     const template = this.insertAsTextTemplateTarget.content.cloneNode(true) as DocumentFragment;
     const item = template.firstElementChild;
-    if (item === null) { return; }
+    if (item === null || !this.isListItem(item)) { return; }
 
     const textElement = item.querySelector('span');
     if (textElement === null) { return; }
 
+    item.dataset.prop = word;
     textElement.innerText = this.insertAsTextTemplateValue.replace('%{word}', word);
     this.suggestionsTarget.appendChild(item);
   }
@@ -378,11 +433,8 @@ export default class PatternInputController extends Controller {
   }
 
   private tagInvalidTokens():void {
-    this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element) => {
-      const token = element.textContent?.trim();
-
-      let exists = false;
-      this.validTokens.forEach((prop) => { if (prop === token) { exists = true; } });
+    this.contentTarget.querySelectorAll('[data-role="token"]').forEach((element:HTMLElement) => {
+      const exists = Object.keys(this.validTokenMap).some((key) => key === element.dataset.prop);
 
       if (exists) {
         element.classList.remove('Label--danger');
@@ -392,29 +444,47 @@ export default class PatternInputController extends Controller {
     });
   }
 
-  private createToken(value:string):HTMLElement {
-    const templateTarget = this.tokenTemplateTarget.content?.cloneNode(true) as HTMLElement;
-    const contentElement = templateTarget.firstElementChild as HTMLElement;
-    contentElement.innerText = value;
+  private createToken(value:string):TokenElement {
+    const templateTarget = this.tokenTemplateTarget.content?.cloneNode(true) as DocumentFragment;
+    const contentElement = templateTarget.firstElementChild as TokenElement;
+    contentElement.dataset.prop = value;
+    contentElement.innerText = this.validTokenMap[value] || value;
     return contentElement;
   }
 
   private toHtml(blueprint:string):string {
-    return blueprint.replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
+    return blueprint
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/{{([0-9A-Za-z_]+)}}/g, (_, token:string) => this.createToken(token).outerHTML);
   }
 
   private toBlueprint():string {
     let result = '';
-    this.contentTarget.childNodes.forEach((node:Element) => {
-      if (node.nodeType === Node.TEXT_NODE) {
-        // Plain text node
+    this.contentTarget.childNodes.forEach((node:ChildNode) => {
+      if (this.isText(node)) {
         result += node.textContent;
-      } else if (node.nodeType === Node.ELEMENT_NODE && (node as HTMLElement).dataset.role === 'token') {
-        // Token element
-        result += `{{${node.textContent?.trim()}}}`;
+      } else if (this.isToken(node)) {
+        result += `{{${node.dataset.prop}}}`;
       }
     });
     return result.trim();
+  }
+
+  private isToken(node:Node):node is TokenElement {
+    return this.isElement(node) && node.dataset.role === 'token';
+  }
+
+  private isListItem(node:Node):node is ListElement {
+    return this.isElement(node) && node.dataset.role === 'list_item';
+  }
+
+  private isText(node:Node):node is Text {
+    return node.nodeType === Node.TEXT_NODE;
+  }
+
+  private isElement(node:Node):node is HTMLElement {
+    return node.nodeType === Node.ELEMENT_NODE;
   }
 
   private isWhitespace(value:string):boolean {

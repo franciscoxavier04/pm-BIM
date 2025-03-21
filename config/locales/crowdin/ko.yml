@@ -610,8 +610,12 @@ ko:
           caption: "참조된 특성과 텍스트를 사용하여 패턴을 정의하고 작업 패키지 제목을 자동으로 생성하세요. 사용자는 제목을 수동으로 편집할 수 없습니다."
         pattern:
           label: "제목 패턴"
-          caption: "특성을 검색하거나 텍스트를 추가하세요. 요소 사이에 공백을 넣으려면 텍스트로 추가하세요."
-          insert_as_text: "텍스트로 추가: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "PDF 생성"
         intro: "사용 가능한 템플릿 중에서 이 유형에 대해 활성화하려는 템플릿을 선택하세요. 템플릿은 이 유형을 사용하여 작업 패키지의 내보낸 PDF에서 표시되는 디자인과 특성을 결정합니다. 목록의 첫 번째 템플릿이 기본적으로 선택됩니다."
@@ -1030,6 +1034,7 @@ ko:
         auto_hide_popups: "자동 숨김 성공 알림"
         warn_on_leaving_unsaved: "저장하지 않고 작업 패키지를 벗어날 때 알려주세요."
         theme: "모드"
+        time_zone: "표준 시간대"
         mode_guideline: "일부 모드는 접근성과 가독성을 위해 사용자 지정 테마 색상을 덮어씁니다. 전체 사용자 지정 테마의 경우 라이트 모드를 선택하세요."
         daily_reminders: "일일 미리 알림"
         workdays: "근무일"
@@ -1041,7 +1046,9 @@ ko:
       wiki_page:
         parent_title: "부모 페이지"
         redirect_existing_links: "기존 링크 리디렉션"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "삽입 시작"
         begin_deletion: "삭제 시작"
         children: "하위 요소"
@@ -1551,11 +1558,17 @@ ko:
       changeset: "변경 집합"
       message: "포럼"
       news: "뉴스"
-      project_attribute: "프로젝트 특성"
+      project_details: "Project details"
       subproject: "하위 프로젝트 포함"
       time_entry: "소요 시간"
       wiki_edit: "위키"
       work_package: "작업 패키지"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "활성"
@@ -1586,6 +1599,7 @@ ko:
     derived_due_date: "파생된 완료 날짜"
     derived_estimated_hours: "총 작업"
     derived_start_date: "파생된 시작 날짜"
+    direction: "방향"
     display_sums: "합계 표시"
     due_date: "완료 날짜"
     estimated_hours: "작업"
@@ -1650,6 +1664,7 @@ ko:
     version: "버전"
     visible: "표시"
     work_package: "작업 패키지"
+    work_package_id: "작업 패키지"
   backup:
     failed: "백업 실패"
     label_backup_token: "백업 토큰"
@@ -2004,7 +2019,7 @@ ko:
     changeset: "변경 집합 편집됨"
     message: 메시지 편집됨
     news: 뉴스
-    project_attributes: "프로젝트 특성 편집됨"
+    project_details: "Project details edited"
     project: "프로젝트 편집됨"
     projects: "프로젝트 편집됨"
     reply: 회신함
@@ -2083,6 +2098,8 @@ ko:
     your_work_packages_export: "작업 패키지를 내보내는 중입니다."
     succeeded: "내보내기 완료"
     failed: "작업 패키지를 내보내려는 중에 오류가 발생했습니다: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2127,6 +2144,12 @@ ko:
         caption: 개선된 레이아웃과 양쪽 맞춤을 위한 단어 사이 줄 바꿈입니다.
       hyphenation_language:
         label: 언어 및 하이픈 넣기
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext 사용 가능(선택적)"
@@ -3348,6 +3371,10 @@ ko:
       project_verification: "삭제를 확인하려면 프로젝트 이름 %{name}(을)를 입력하세요."
       subprojects_confirmation: "하위 프로젝트 %{value}도 삭제됩니다."
       title: "프로젝트 %{name} 삭제"
+    filters:
+      life_cycle_any: "수명 주기: 단계 또는 게이트"
+      life_cycle_stage: "수명 주기 단계: %{stage}"
+      life_cycle_gate: "수명 주기 게이트: %{gate}"
     identifier:
       warning_one: 프로젝트 멤버는 프로젝트의 리포지토리를 재배치해야 합니다.
       warning_two: 프로젝트의 기존 링크는 더 이상 작동하지 않습니다.
@@ -3755,6 +3782,8 @@ ko:
     working_days:
       section_work_week: "근무 주"
       section_holidays_and_closures: "공휴일 및 휴업일"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "일반 텍스트"

@@ -615,8 +615,12 @@ pt-BR:
           caption: "Defina um padrão usando atributos referenciados e texto para gerar automaticamente os tópicos dos pacotes de trabalho. Os usuários não poderão editar os tópicos manualmente."
         pattern:
           label: "Padrão de assunto"
-          caption: "Pesquise um atributo ou adicione texto. Para inserir um espaço entre os elementos, adicione-o como texto."
-          insert_as_text: "Adicionar como texto: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Gerar PDF"
         intro: "Selecione quais modelos disponíveis você deseja ativar para este tipo. O modelo define o design e os atributos visíveis no PDF exportado de um pacote de trabalho desse tipo. O primeiro modelo da lista é selecionado por padrão."
@@ -1036,6 +1040,7 @@ pt-BR:
         auto_hide_popups: "Auto-ocultar notificações de sucesso"
         warn_on_leaving_unsaved: "Alertar-me ao sair de um pacote de trabalho sem salvar as alterações"
         theme: "Modo"
+        time_zone: "Fuso horário"
         mode_guideline: "Alguns modos substituirão as cores personalizadas do tema para melhorar a acessibilidade e a legibilidade. Para usar o tema totalmente personalizado, selecione o modo Claro."
         daily_reminders: "Lembretes diários"
         workdays: "Dias úteis"
@@ -1047,7 +1052,9 @@ pt-BR:
       wiki_page:
         parent_title: "Página pai"
         redirect_existing_links: "Redireciona links existentes"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Início da inserção"
         begin_deletion: "Início da exclusão"
         children: "Subelementos"
@@ -1568,11 +1575,17 @@ pt-BR:
       changeset: "Cj de alterações"
       message: "Fóruns"
       news: "Notícias"
-      project_attribute: "Atributos do projeto"
+      project_details: "Project details"
       subproject: "Incluir subprojetos"
       time_entry: "Tempo gasto"
       wiki_edit: "Wiki"
       work_package: "Pacotes de trabalho"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Ativo"
@@ -1603,6 +1616,7 @@ pt-BR:
     derived_due_date: "Data de término derivada"
     derived_estimated_hours: "Total trabalho"
     derived_start_date: "Data inicial derivada"
+    direction: "Direção"
     display_sums: "Mostrar somas"
     due_date: "Data de conclusão"
     estimated_hours: "Trabalho"
@@ -1667,6 +1681,7 @@ pt-BR:
     version: "Versão"
     visible: "Visível"
     work_package: "Pacote de trabalho"
+    work_package_id: "Pacote de trabalho"
   backup:
     failed: "Cópia de segurança falhou"
     label_backup_token: "Token de backup"
@@ -2040,7 +2055,7 @@ pt-BR:
     changeset: "Conjunto de alterações editadas"
     message: Mensagem editada
     news: Notícias
-    project_attributes: "Atributos do projeto editado"
+    project_details: "Project details edited"
     project: "Projeto editado"
     projects: "Projeto editado"
     reply: Respondida
@@ -2119,6 +2134,8 @@ pt-BR:
     your_work_packages_export: "Os pacotes de trabalho estão sendo exportados"
     succeeded: "Exportação concluída"
     failed: "Ocorreu um erro ao tentar exportar os pacotes de trabalho: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2163,6 +2180,12 @@ pt-BR:
         caption: Quebra a linha entre as palavras para melhor exibição e justificação.
       hyphenation_language:
         label: Idioma e hifenização
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext disponível (opcional)"
@@ -3386,6 +3409,10 @@ pt-BR:
       project_verification: "Digite o nome do projeto %{name} para verificar a exclusão."
       subprojects_confirmation: "Seu(s) subprojeto(s): %{value} também será(ão) excluído(s)."
       title: "Excluir o projeto %{name}"
+    filters:
+      life_cycle_any: "Ciclo de Vida: Qualquer fase ou marco"
+      life_cycle_stage: "Fase do Ciclo de Vida: %{stage}"
+      life_cycle_gate: "Marco de Ciclo de Vida: %{gate}"
     identifier:
       warning_one: Membros do projeto terão que realocar os repositórios do projeto.
       warning_two: Links existentes para o projeto deixarão de funcionar.
@@ -3795,6 +3822,8 @@ pt-BR:
     working_days:
       section_work_week: "Semana de trabalho"
       section_holidays_and_closures: "Feriados e fechamentos"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texto simples"

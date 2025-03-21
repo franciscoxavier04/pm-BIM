@@ -113,4 +113,10 @@ RSpec.shared_context "with seeded projects and stages and gates" do
       life_cycle_closing
     ]
   end
+
+  before do
+    project.add_journal(user: SystemUser.first)
+
+    project.save_journals
+  end
 end

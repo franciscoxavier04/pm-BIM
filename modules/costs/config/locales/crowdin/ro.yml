@@ -57,6 +57,10 @@ ro:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        few: "Time entries"
+        other: "Time entries"
       cost_type:
         one: "Tipul de cost"
         few: "Tipuri de costuri"
@@ -177,8 +181,6 @@ ro:
   text_reassign_time_and_cost_entries: "Reatribuiți orele și costurile raportate la acest pachet de lucru:"
   text_warning_hidden_elements: "Este posibil ca unele intrări să fi fost excluse din agregare."
   week: "săptămână"
-  js:
-    text_are_you_sure: "Ești sigur?"
   api_v3:
     errors:
       validation:

@@ -57,6 +57,9 @@ fa:
         start_time: زمان شروع
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "نوع هزینه"
         other: "انواع هزینه"
@@ -175,8 +178,6 @@ fa:
   text_reassign_time_and_cost_entries: "تخصیص ساعت‌ها و هزینه‌های گزارش شده به پروژه"
   text_warning_hidden_elements: "Some entries may have been excluded from the aggregation."
   week: "هفته"
-  js:
-    text_are_you_sure: "آیا مطمئن هستید؟"
   api_v3:
     errors:
       validation:

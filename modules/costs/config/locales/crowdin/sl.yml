@@ -57,6 +57,11 @@ sl:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        two: "Time entries"
+        few: "Time entries"
+        other: "Time entries"
       cost_type:
         one: "Vrsta stroška"
         two: "Vrsta stroška"
@@ -179,8 +184,6 @@ sl:
   text_reassign_time_and_cost_entries: "Ponovno dodelite tem delovnemu paketu prijavljene ure in stroške:"
   text_warning_hidden_elements: "Nekateri vnosi so bili morda izključeni iz združevanja."
   week: "teden"
-  js:
-    text_are_you_sure: "Ste prepričani?"
   api_v3:
     errors:
       validation:

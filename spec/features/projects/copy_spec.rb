@@ -635,7 +635,6 @@ RSpec.describe "Projects copy", :js,
       expect(page).to have_text "The job has been queued and will be processed shortly."
 
       GoodJob.perform_inline
-      perform_enqueued_jobs
 
       expect(copied_project)
         .to be_present
@@ -651,7 +650,5 @@ RSpec.describe "Projects copy", :js,
 
     # ensure all jobs are run especially emails which might be sent later on
     GoodJob.perform_inline
-    while perform_enqueued_jobs > 0
-    end
   end
 end

@@ -618,8 +618,12 @@ kk:
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
         pattern:
           label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1039,6 +1043,7 @@ kk:
         auto_hide_popups: "Auto-hide success notifications"
         warn_on_leaving_unsaved: "Warn me when leaving a work package with unsaved changes"
         theme: "Mode"
+        time_zone: "Time zone"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Working days"
@@ -1050,7 +1055,9 @@ kk:
       wiki_page:
         parent_title: "Parent page"
         redirect_existing_links: "Redirect existing links"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Begin of the insertion"
         begin_deletion: "Begin of the deletion"
         children: "Subelements"
@@ -1571,11 +1578,17 @@ kk:
       changeset: "Changesets"
       message: "Forums"
       news: "News"
-      project_attribute: "Project attributes"
+      project_details: "Project details"
       subproject: "Include subprojects"
       time_entry: "Spent time"
       wiki_edit: "Wiki"
       work_package: "Work packages"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Active"
@@ -1606,6 +1619,7 @@ kk:
     derived_due_date: "Derived finish date"
     derived_estimated_hours: "Total work"
     derived_start_date: "Derived start date"
+    direction: "Direction"
     display_sums: "Display Sums"
     due_date: "Finish date"
     estimated_hours: "Work"
@@ -1670,6 +1684,7 @@ kk:
     version: "Version"
     visible: "Visible"
     work_package: "Work package"
+    work_package_id: "Work package"
   backup:
     failed: "Backup failed"
     label_backup_token: "Backup token"
@@ -2043,7 +2058,7 @@ kk:
     changeset: "Changeset edited"
     message: Message edited
     news: News
-    project_attributes: "Project attributes edited"
+    project_details: "Project details edited"
     project: "Project edited"
     projects: "Project edited"
     reply: Replied
@@ -2122,6 +2137,8 @@ kk:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2166,6 +2183,12 @@ kk:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext available (optional)"
@@ -3390,6 +3413,10 @@ kk:
       project_verification: "Enter the project's name %{name} to verify the deletion."
       subprojects_confirmation: "Its subproject(s): %{value} will also be deleted."
       title: "Delete the project %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Members of the project will have to relocate the project's repositories.
       warning_two: Existing links to the project will no longer work.
@@ -3799,6 +3826,8 @@ kk:
     working_days:
       section_work_week: "Work week"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Plain text"

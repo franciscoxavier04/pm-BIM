@@ -610,8 +610,12 @@ vi:
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
         pattern:
           label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1030,6 +1034,7 @@ vi:
         auto_hide_popups: "Tự động ẩn thông báo thành công"
         warn_on_leaving_unsaved: "Cảnh báo tôi khi rời khỏi gói công việc với thay đổi chưa lưu"
         theme: "Chế độ"
+        time_zone: "Múi giờ"
         mode_guideline: "Một số chế độ sẽ ghi đè màu chủ đề tùy chỉnh để đảm bảo khả năng truy cập và dễ đọc. Để có chủ đề tùy chỉnh đầy đủ, vui lòng chọn chế độ Sáng."
         daily_reminders: "Daily reminders"
         workdays: "Ngày làm việc"
@@ -1041,7 +1046,9 @@ vi:
       wiki_page:
         parent_title: "Trang mẹ"
         redirect_existing_links: "Chuyển hướng các liên kết hiện có"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Bắt đầu chèn"
         begin_deletion: "Bắt đầu xóa"
         children: "Subelements"
@@ -1551,11 +1558,17 @@ vi:
       changeset: "Thay đổi"
       message: "Diễn đàn"
       news: "Tin tức"
-      project_attribute: "Thuộc tính dự án"
+      project_details: "Project details"
       subproject: "Bao gồm dự án con"
       time_entry: "Thời gian đã sử dụng"
       wiki_edit: "Wiki"
       work_package: "Gói công việc"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Đang hoạt động"
@@ -1586,6 +1599,7 @@ vi:
     derived_due_date: "Ngày kết thúc suy ra"
     derived_estimated_hours: "Tổng thời gian làm việc"
     derived_start_date: "Ngày bắt đầu suy ra"
+    direction: "Direction"
     display_sums: "Hiển thị tổng"
     due_date: "Ngày kết thúc"
     estimated_hours: "Thời gian ước tính"
@@ -1650,6 +1664,7 @@ vi:
     version: "Phiên bản"
     visible: "Hiển thị"
     work_package: "Work Package"
+    work_package_id: "Work Package"
   backup:
     failed: "Sao lưu thất bại"
     label_backup_token: "Sao lưu token"
@@ -2004,7 +2019,7 @@ vi:
     changeset: "Đã chỉnh sửa Changeset (bộ thay đổi)"
     message: Đã chỉnh sửa tin nhắn
     news: Tin tức
-    project_attributes: "Thuộc tính dự án đã được chỉnh sửa"
+    project_details: "Project details edited"
     project: "Dự án đã được chỉnh sửa"
     projects: "Dự án đã được chỉnh sửa"
     reply: Đã phản hồi
@@ -2083,6 +2098,8 @@ vi:
     your_work_packages_export: "Các gói công việc đang được xuất khẩu"
     succeeded: "Xuất hoàn tất"
     failed: "Đã xảy ra lỗi khi cố gắng xuất các gói công việc: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2127,6 +2144,12 @@ vi:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext có sẵn (không bắt buộc)"
@@ -2512,7 +2535,7 @@ vi:
   label_filter_add: "Thêm bộ lọc"
   label_filter_by: "Filter by"
   label_filter_any_name_attribute: "Name attributes"
-  label_filter_plural: "Các bộ lọc"
+  label_filter_plural: "Bộ lọc"
   label_filters_toggle: "Hiển thị/ẩn bộ lọc"
   label_float: "Số thực"
   label_folder: "Thư mục"
@@ -3349,6 +3372,10 @@ vi:
       project_verification: "Nhập tên dự án %{name} để xác minh việc xóa."
       subprojects_confirmation: "Các dự án con(s) của nó: %{value} cũng sẽ bị xóa."
       title: "Xóa dự án %{name}"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: Các thành viên của dự án sẽ phải di chuyển các kho của dự án.
       warning_two: Các liên kết hiện có tới dự án sẽ không còn hoạt động.
@@ -3758,6 +3785,8 @@ vi:
     working_days:
       section_work_week: "Tuần làm việc"
       section_holidays_and_closures: "Ngày nghỉ và đóng cửa"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Gạch dưới"
     plain: "Văn bản thuần"

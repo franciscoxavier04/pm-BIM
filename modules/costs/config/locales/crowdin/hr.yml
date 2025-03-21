@@ -57,6 +57,10 @@ hr:
         start_time: Start time
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        few: "Time entries"
+        other: "Time entries"
       cost_type:
         one: "Vrsta troška"
         few: "Vrsta troška"
@@ -177,8 +181,6 @@ hr:
   text_reassign_time_and_cost_entries: "Dodijeli prijavljene sate i troškove ovom radnom paketu:"
   text_warning_hidden_elements: "Pojedine stavke su izuzete iz agregacije."
   week: "tjedan"
-  js:
-    text_are_you_sure: "Da li ste sigurni?"
   api_v3:
     errors:
       validation:

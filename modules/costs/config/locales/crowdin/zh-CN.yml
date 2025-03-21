@@ -57,6 +57,8 @@ zh-CN:
         start_time: 开始时间
         end_time: 结束时间
     models:
+      time_entry:
+        other: "Time entries"
       cost_type:
         other: "成本类型"
       time_entry_activity:
@@ -173,8 +175,6 @@ zh-CN:
   text_reassign_time_and_cost_entries: "将已上报的工时和成本重新提交到工作包中："
   text_warning_hidden_elements: "某些条目可能已被排除在聚合之外。"
   week: "周"
-  js:
-    text_are_you_sure: "是否确定？"
   api_v3:
     errors:
       validation:

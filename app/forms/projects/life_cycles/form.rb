@@ -50,7 +50,7 @@ module Projects::LifeCycles
 
     def base_input_attributes
       {
-        label: "#{icon} #{text}".html_safe, # rubocop:disable Rails/OutputSafety
+        label:,
         leading_visual: { icon: :calendar },
         datepicker_options: {
           inDialog: ProjectLifeCycles::Sections::EditDialogComponent::DIALOG_ID,
@@ -80,8 +80,8 @@ module Projects::LifeCycles
       form.range_date_picker **base_input_attributes, **input_attributes
     end
 
-    def text
-      model.name
+    def label
+      helpers.safe_join([icon, " ", model.name])
     end
 
     def icon

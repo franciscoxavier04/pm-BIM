@@ -616,8 +616,12 @@ fr:
           caption: "Définissez un modèle utilisant des attributs et du texte référencés pour générer automatiquement des sujets de lots de travaux. Les utilisateurs ne pourront pas modifier manuellement les sujets."
         pattern:
           label: "Modèle de sujet"
-          caption: "Recherchez un attribut ou ajoutez du texte. Pour créer un espace entre les éléments, ajoutez-le en tant que texte."
-          insert_as_text: "Ajouter en tant que texte : « %{word} »"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Générer un fichier PDF"
         intro: "Sélectionnez les modèles disponibles que vous souhaitez activer pour ce type. Le modèle détermine la conception et les attributs visibles dans le fichier PDF exporté d'un lot de travaux utilisant ce type. Le premier modèle de la liste est sélectionné par défaut."
@@ -1037,6 +1041,7 @@ fr:
         auto_hide_popups: "Masquer automatiquement les notifications de succès"
         warn_on_leaving_unsaved: "M'avertir lorsque je quitte un lot de travaux contenant des modifications non enregistrées"
         theme: "Mode"
+        time_zone: "Fuseau horaire"
         mode_guideline: "Certains modes écraseront les couleurs personnalisées du thème pour l'accessibilité et la lisibilité. Pour le thème personnalisé complet, veuillez sélectionner le mode Clair."
         daily_reminders: "Rappels quotidiens"
         workdays: "Jours ouvrés"
@@ -1048,7 +1053,9 @@ fr:
       wiki_page:
         parent_title: "Page parente"
         redirect_existing_links: "Rediriger les liens existants"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Début de l’insertion"
         begin_deletion: "Début de la suppression"
         children: "Sous-éléments"
@@ -1569,11 +1576,17 @@ fr:
       changeset: "Révisions"
       message: "Forums"
       news: "Actualités"
-      project_attribute: "Attributs du projet"
+      project_details: "Project details"
       subproject: "Inclure les sous-projets"
       time_entry: "Temps passé"
       wiki_edit: "Wiki"
       work_package: "Lots de travaux"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Actif"
@@ -1604,6 +1617,7 @@ fr:
     derived_due_date: "Date de fin dérivée"
     derived_estimated_hours: "Travail total"
     derived_start_date: "Date de début dérivée"
+    direction: "Direction"
     display_sums: "Afficher les sommes"
     due_date: "Date de fin"
     estimated_hours: "Travail"
@@ -1668,6 +1682,7 @@ fr:
     version: "Version"
     visible: "Visible"
     work_package: "Lot de travaux"
+    work_package_id: "Lot de travaux"
   backup:
     failed: "Échec de la sauvegarde"
     label_backup_token: "Jeton de sauvegarde"
@@ -2041,7 +2056,7 @@ fr:
     changeset: "Lot de modification édité"
     message: Message édité
     news: Actualités
-    project_attributes: "Attributs du projet modifiés"
+    project_details: "Project details edited"
     project: "Projet édité"
     projects: "Projet édité"
     reply: Y a-t-il eu une réponse
@@ -2120,6 +2135,8 @@ fr:
     your_work_packages_export: "Les lots de travaux sont exportés"
     succeeded: "Exportation terminée"
     failed: "Une erreur s'est produite lors de l'exportation des lots de travaux : %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2164,6 +2181,12 @@ fr:
         caption: Séparez la ligne entre les mots pour assurer une meilleure mise en page et une meilleure justification.
       hyphenation_language:
         label: Langue et césure
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext disponible (optionnel)"
@@ -3388,6 +3411,10 @@ fr:
       project_verification: "Saisissez le nom du projet %{name} pour valider la suppression."
       subprojects_confirmation: "Son(ses) sous-projet(s): %{value} sera(seront) également supprimé(s)."
       title: "Supprimer le projet %{name}"
+    filters:
+      life_cycle_any: "Cycle de vie : n'importe quelle étape ou porte"
+      life_cycle_stage: "Étape du cycle de vie : %{stage}"
+      life_cycle_gate: "Porte du cycle de vie : %{gate}"
     identifier:
       warning_one: Les membres du projet devront déplacer les répertoires du projet.
       warning_two: Les liens existants vers le projet ne fonctionneront plus.
@@ -3797,6 +3824,8 @@ fr:
     working_days:
       section_work_week: "Semaine de travail"
       section_holidays_and_closures: "Vacances et fermetures"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Texte brut"

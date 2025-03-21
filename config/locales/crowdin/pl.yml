@@ -631,8 +631,12 @@ pl:
           caption: "Zdefiniuj wzorzec za pomocą wywoływanych atrybutów i tekstu, aby automatycznie generować tematy pakietów roboczych. Użytkownicy nie będą mogli ręcznie edytować tematów."
         pattern:
           label: "Wzorzec tematu"
-          caption: "Wyszukaj atrybut lub dodaj tekst. Aby utworzyć odstęp między elementami, dodaj go jako tekst."
-          insert_as_text: "Dodaj jako tekst: „%{word}”"
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Wygeneruj PDF"
         intro: "Wybierz spośród dostępnych szablony, które chcesz włączyć dla tego typu. Szablon określa wygląd i atrybuty widoczne w wyeksportowanym pliku PDF pakietu roboczego używającego tego typu. Domyślnie wybrany jest pierwszy szablon z listy."
@@ -1054,6 +1058,7 @@ pl:
         auto_hide_popups: "Automatyczne ukrycie powiadomień o sukcesie"
         warn_on_leaving_unsaved: "Ostrzegaj mnie, gdy opuszczam zadanie z niezapisanymi zmianami"
         theme: "Tryb"
+        time_zone: "Strefa czasowa"
         mode_guideline: "Niektóre tryby zastąpią niestandardowe kolory motywu w celu zapewnienia dostępności i czytelności. Aby stosować pełny motyw niestandardowy, wybierz tryb Jasny."
         daily_reminders: "Codzienne przypomnienia"
         workdays: "Dni robocze"
@@ -1065,7 +1070,9 @@ pl:
       wiki_page:
         parent_title: "Strona nadrzędna"
         redirect_existing_links: "Przekieruj istniejące powiązania"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Początek wstawiania"
         begin_deletion: "Początek usuwania"
         children: "Elementy składowe"
@@ -1116,7 +1123,7 @@ pl:
         confirmation: "nie pasuje do %{attribute}."
         could_not_be_copied: "Nie można było (w pełni) skopiować %{dependency}."
         does_not_exist: "nie istnieje."
-        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise Edition"
+        error_enterprise_only: "%{action} jest dostępna tylko w OpenProject Enterprise edition"
         error_unauthorized: "— nie można uzyskac dostępu."
         error_readonly: "— podjęto próbę zapisu, ale nie jest zapisywalny."
         error_conflict: "Information has been updated by at least one other user in the meantime."
@@ -1608,11 +1615,17 @@ pl:
       changeset: "Zestawy zmian"
       message: "Fora"
       news: "Wiadomości"
-      project_attribute: "Atrybuty projektu"
+      project_details: "Project details"
       subproject: "Zawiera podprojekty"
       time_entry: "Poświęcony czas"
       wiki_edit: "Wiki"
       work_package: "Pakiety robocze"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Aktywne"
@@ -1643,6 +1656,7 @@ pl:
     derived_due_date: "Wyprowadzona data zakończenia"
     derived_estimated_hours: "Całkowita praca"
     derived_start_date: "Wyprowadzona data rozpoczęcia"
+    direction: "Kierunek"
     display_sums: "Wyświetl sumy"
     due_date: "Data zakończenia"
     estimated_hours: "Praca"
@@ -1707,6 +1721,7 @@ pl:
     version: "Wersja"
     visible: "Widoczne"
     work_package: "Zadanie"
+    work_package_id: "Pakiet roboczy"
   backup:
     failed: "Tworzenie kopii zapasowej nie powiodło się"
     label_backup_token: "Token kopii zapasowej"
@@ -2118,7 +2133,7 @@ pl:
     changeset: "Komentarze edytowane"
     message: Wiadomość edytowana
     news: Aktualności
-    project_attributes: "Edytowane atrybuty projektu"
+    project_details: "Project details edited"
     project: "Edytowano projekt"
     projects: "Edytowano projekt"
     reply: Odpowiedział
@@ -2197,6 +2212,8 @@ pl:
     your_work_packages_export: "Pakiety robocze są eksportowane"
     succeeded: "Eksport ukończony"
     failed: "Podczas próby wyeksportowania pakietów roboczych wystąpił błąd: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2241,6 +2258,12 @@ pl:
         caption: Linia podziału między słowami, aby uzyskać lepszy układ i justowanie.
       hyphenation_language:
         label: Język i dzielenie wyrazów
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Dostępny konwerter Pdftotext (opcjonalny)"
@@ -3468,6 +3491,10 @@ pl:
       project_verification: "Wpisz nazwę projektu %{name} aby potwierdzić usunięcie."
       subprojects_confirmation: "Podprojekt(y): %{value} zostaną także usunięte."
       title: "Usuń projekt %{name}"
+    filters:
+      life_cycle_any: "Cykl życia: dowolny etap lub bramka"
+      life_cycle_stage: "Etap cyklu życia: %{stage}"
+      life_cycle_gate: "Bramka cyklu życia: %{gate}"
     identifier:
       warning_one: Członkowie projektu będą musieli przenieść repozytoria projektu.
       warning_two: Istniejące linki do projektu nie będą dłużej działać.
@@ -3875,6 +3902,8 @@ pl:
     working_days:
       section_work_week: "Tydzień roboczy"
       section_holidays_and_closures: "Dni wolne i zamknięcia"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Zwykły tekst"

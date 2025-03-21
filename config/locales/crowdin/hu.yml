@@ -617,8 +617,12 @@ hu:
           caption: "Define a pattern using referenced attributes and text to automatically generate work package subjects. Users will not be able to manually edit subjects."
         pattern:
           label: "Subject pattern"
-          caption: "Search for an attribute or add text. To create a space between elements add it as a text."
-          insert_as_text: "Add as text: \"%{word}\""
+          caption: "Add text or type / to search for an attribute. You can add spaces to separate them."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "No attributes found. Add as text: \"%{word}\""
       export_configuration:
         tab: "Generate PDF"
         intro: "Select which templates from those that are available you would like to enable for this type. The template determines the design and attributes visible in the exported PDF of a work package using this type. The first template on the list is selected by default."
@@ -1038,6 +1042,7 @@ hu:
         auto_hide_popups: "Siker értesítések automatikus elrejtése"
         warn_on_leaving_unsaved: "Figyelmeztess, ha úgy hagyom el a munkacsomagot, hogy nem mentett változások vannak rajta"
         theme: "Mód"
+        time_zone: "Idő zóna"
         mode_guideline: "Some modes will overwrite custom theme colours for accessibility and legibility. For the full custom theme, please select Light mode."
         daily_reminders: "Daily reminders"
         workdays: "Munkanapok"
@@ -1049,7 +1054,9 @@ hu:
       wiki_page:
         parent_title: "Szülő oldal"
         redirect_existing_links: "A létező link átirányítása"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Beillesztés kezdete"
         begin_deletion: "Törlés kezdete"
         children: "Alelemek"
@@ -1570,11 +1577,17 @@ hu:
       changeset: "Commit-ok"
       message: "Fórumok"
       news: "Hírek"
-      project_attribute: "Projekt attribútumok"
+      project_details: "Project details"
       subproject: "Alprojektek bevonása"
       time_entry: "Eltöltött idő"
       wiki_edit: "Wiki"
       work_package: "Munkacsomagok"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "aktív"
@@ -1605,6 +1618,7 @@ hu:
     derived_due_date: "Származtatott befejezési időpont"
     derived_estimated_hours: "Teljes munka"
     derived_start_date: "Származtatott kezdési időpont\n"
+    direction: "Direction"
     display_sums: "Megjelenitendő összegek"
     due_date: "Befejezési dátum"
     estimated_hours: "Munka"
@@ -1669,6 +1683,7 @@ hu:
     version: "Verzió"
     visible: "Látható"
     work_package: "Feladatcsoport"
+    work_package_id: "Feladatcsoport"
   backup:
     failed: "A biztonsági mentés sikertelen"
     label_backup_token: "Visszaállítási kulcs"
@@ -2042,7 +2057,7 @@ hu:
     changeset: "Commit szerkesztve"
     message: Üzenet szerkesztve
     news: Hírek
-    project_attributes: "Projekt attribútumai szerkesztve"
+    project_details: "Project details edited"
     project: "Projekt szerkesztve"
     projects: "Projekt szerkesztve"
     reply: Válaszolt
@@ -2121,6 +2136,8 @@ hu:
     your_work_packages_export: "Work packages are being exported"
     succeeded: "Export completed"
     failed: "An error has occurred while trying to export the work packages: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2165,6 +2182,12 @@ hu:
         caption: Break line between words for better layout and justification.
       hyphenation_language:
         label: Language and hyphenation
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext elérhető (opcionális)"
@@ -3388,6 +3411,10 @@ hu:
       project_verification: "Adja meg a projekt nevét %{name} a törlés megerősítéséhez."
       subprojects_confirmation: "Az alprojekt(ek): %{value} is törlődni fog."
       title: "A projekt %{name} törlése"
+    filters:
+      life_cycle_any: "Lifecycle: Any stage or gate"
+      life_cycle_stage: "Lifecycle stage: %{stage}"
+      life_cycle_gate: "Lifecycle gate: %{gate}"
     identifier:
       warning_one: A projekt tagjai áthelyezik a projekt tárolóit.
       warning_two: A projekthez tartozó hivatkozások már nem működnek.
@@ -3797,6 +3824,8 @@ hu:
     working_days:
       section_work_week: "Munkahét"
       section_holidays_and_closures: "Holidays and closures"
+    work_packages:
+      not_allowed_text: "You do not have the necessary permissions to view this page."
   text_formatting:
     markdown: "Markdown"
     plain: "Egyszerű szöveg"

@@ -632,8 +632,12 @@ ru:
           caption: "Определите шаблон, используя атрибуты ссылок и текст, чтобы автоматически генерировать темы пакетов работ. Пользователи не смогут вручную редактировать темы."
         pattern:
           label: "Шаблон темы"
-          caption: "Поиск атрибута или добавление текста. Чтобы создать пробел между элементами, добавьте его в виде текста."
-          insert_as_text: "Добавить как текст: \"%{word}\""
+          caption: "Добавьте текст или введите / для поиска атрибута. Вы можете добавить пробелы, чтобы разделить их."
+          headings:
+            work_package: "Work package"
+            parent: "Parent"
+            project: "Project"
+          insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
         intro: "Выберите, какие шаблоны из имеющихся Вы хотите активировать для этого типа. Шаблон задаёт дизайн и атрибуты в экспортированном PDF-файле пакета работ этого типа. Первый шаблон из списка выбирается по умолчанию."
@@ -1055,6 +1059,7 @@ ru:
         auto_hide_popups: "Автоматически скрывать уведомления об успешных действиях"
         warn_on_leaving_unsaved: "При покидании рабочего пакета предупреждать о не сохраненных изменениях"
         theme: "Режим"
+        time_zone: "Часовой пояс"
         mode_guideline: "Некоторые режимы перезаписывают пользовательские цвета темы для удобства и удобочитаемости. Для полной пользовательской темы выберите светлый режим."
         daily_reminders: "Ежедневные напоминания"
         workdays: "Рабочие дни"
@@ -1066,7 +1071,9 @@ ru:
       wiki_page:
         parent_title: "Родительская страница"
         redirect_existing_links: "Перенаправление существующих ссылок"
+        text: "Page content"
       work_package:
+        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Начало вставки"
         begin_deletion: "Начало удаления"
         children: "Вложенные элементы"
@@ -1609,11 +1616,17 @@ ru:
       changeset: "Наборы изменений"
       message: "Форумы"
       news: "Новости"
-      project_attribute: "Атрибуты проекта"
+      project_details: "Project details"
       subproject: "Включить подпроекты"
       time_entry: "Затраченное время"
       wiki_edit: "Wiki"
       work_package: "Пакеты работ"
+    project_life_cycle_step:
+      activated: "activated"
+      deactivated: "deactivated"
+      added_date: "set to %{date}"
+      changed_date: "changed from %{from} to %{to}"
+      removed_date: "date deleted %{date}"
   #common attributes of all models
   attributes:
     active: "Активно"
@@ -1644,6 +1657,7 @@ ru:
     derived_due_date: "Дата окончания производства"
     derived_estimated_hours: "Общее Предполагаемое время"
     derived_start_date: "Дата начала производства"
+    direction: "Направление"
     display_sums: "Отображение суммы"
     due_date: "Дата окончания"
     estimated_hours: "Предполагаемое время"
@@ -1708,6 +1722,7 @@ ru:
     version: "Этапы"
     visible: "Видимый"
     work_package: "Пакет работ"
+    work_package_id: "Пакет работ"
   backup:
     failed: "Сбой резервного копирования"
     label_backup_token: "Маркер резервного копирования"
@@ -2119,7 +2134,7 @@ ru:
     changeset: "Набор изменений отредактирован"
     message: Сообщение отредактировано
     news: Новости
-    project_attributes: "Атрибуты проекта изменены"
+    project_details: "Project details edited"
     project: "Проект отредактирован"
     projects: "Проект отредактирован"
     reply: Отвечено
@@ -2198,6 +2213,8 @@ ru:
     your_work_packages_export: "Пакеты работ экспортируются"
     succeeded: "Экспорт завершен"
     failed: "Произошла ошибка при попытке экспортировать пакеты работ: %{message}"
+    errors:
+      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2242,6 +2259,12 @@ ru:
         caption: Линия разрыва между словами для лучшего расположения и выравнивания.
       hyphenation_language:
         label: Язык и переносы
+      page_orientation:
+        label: Page orientation
+        caption: Select the orientation of the pages in the PDF document.
+        options:
+          portrait: Portrait
+          landscape: Landscape
   extraction:
     available:
       pdftotext: "Pdftotext доступно (опционально)"
@@ -3469,6 +3492,10 @@ ru:
       project_verification: "Введите название проекта %{name} для проверки удаления."
       subprojects_confirmation: "Его подпроекты: %{value} также будут удалены."
       title: "Удаление проекта %{name}"
+    filters:
+      life_cycle_any: "Жизненный цикл: любой этап или стадия"
+      life_cycle_stage: "Этап жизненного цикла: %{stage}"
+      life_cycle_gate: "Стадия жизненного цикла: %{gate}"
     identifier:
       warning_one: Участникам проекта нужно будет переместить репозитории проекта.
       warning_two: Существующие ссылки на проект больше работать не будут.
@@ -3876,6 +3903,8 @@ ru:
     working_days:
       section_work_week: "Рабочая неделя"
       section_holidays_and_closures: "Праздничные и нерабочие дни"
+    work_packages:
+      not_allowed_text: "У вас нет необходимых прав для просмотра этой страницы."
   text_formatting:
     markdown: "Markdown"
     plain: "Обычный текст"

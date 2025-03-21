@@ -77,5 +77,7 @@ class Projects::Settings::LifeCycleStepsController < Projects::SettingsControlle
       end,
       unique_by: %i[project_id definition_id]
     )
+
+    @project.touch_and_save_journals
   end
 end

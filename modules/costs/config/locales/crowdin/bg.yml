@@ -57,6 +57,9 @@ bg:
         start_time: Начален час
         end_time: Finish time
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Тип разход"
         other: "Видове разходи"
@@ -175,8 +178,6 @@ bg:
   text_reassign_time_and_cost_entries: "Преназначете отчетените часове и разходи към този работен пакет:"
   text_warning_hidden_elements: "Някои записи могат да бъдат изключени от обобщаването."
   week: "седмица"
-  js:
-    text_are_you_sure: "Сигурни ли сте?"
   api_v3:
     errors:
       validation:

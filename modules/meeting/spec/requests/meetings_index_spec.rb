@@ -261,7 +261,7 @@ RSpec.describe "Meeting index",
     end
   end
 
-  describe "paginating options" do
+  describe "paginating options", with_settings: { start_of_week: 1 } do
     context "when requesting the first page with limit=1" do
       let(:request) { get "/projects/#{project.id}/meetings?limit=1" }
 

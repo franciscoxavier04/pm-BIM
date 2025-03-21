@@ -100,6 +100,7 @@ Rails.application.reloader.to_prepare do
                      {
                        "projects/settings/general": %i[show],
                        "projects/settings/storage": %i[show],
+                       "projects/settings/work_packages": %i[show],
                        "projects/templated": %i[create destroy],
                        "projects/identifier": %i[show update]
                      },
@@ -183,14 +184,14 @@ Rails.application.reloader.to_prepare do
 
       map.permission :manage_types,
                      {
-                       "projects/settings/types": %i[show update]
+                       "projects/settings/work_packages/types": %i[show update]
                      },
                      permissible_on: :project,
                      require: :member
 
       map.permission :select_custom_fields,
                      {
-                       "projects/settings/custom_fields": %i[show update]
+                       "projects/settings/work_packages/custom_fields": %i[show update]
                      },
                      permissible_on: :project,
                      require: :member
@@ -318,7 +319,7 @@ Rails.application.reloader.to_prepare do
       # WorkPackage categories
       wpt.permission :manage_categories,
                      {
-                       "projects/settings/categories": [:show],
+                       "projects/settings/work_packages/categories": [:show],
                        categories: %i[new create edit update destroy]
                      },
                      permissible_on: :project,

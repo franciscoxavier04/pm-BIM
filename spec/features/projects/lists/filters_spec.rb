@@ -53,6 +53,10 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
              development_project => project_role
            })
   end
+  shared_let(:stage) do
+    create(:project_stage, project:, start_date: Time.zone.today - 5.days, end_date: Time.zone.today + 10.days)
+  end
+  shared_let(:gate) { create(:project_gate, project: public_project, date: Time.zone.today) }
 
   let(:news) { create(:news, project:) }
   let(:projects_page) { Pages::Projects::Index.new }
@@ -555,7 +559,9 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     let!(:versions) do
       [
         create(:version, project:, name: "Ringbo 1.0", sharing: "system"),
-        create(:version, project: public_project, name: "Ringbo 2.0", sharing: "system")
+        create(:version, project:, name: "Project 1 only Version"),
+        create(:version, project: public_project, name: "Ringbo 2.0", sharing: "system"),
+        create(:version, project: public_project, name: "Project 2 only Version")
       ]
     end
 
@@ -569,18 +575,14 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
     it "filters for the project with the value" do
       load_and_open_filters admin
 
-      # Both versions are available to select, but under a different project
-      projects_page.expect_autocomplete_options_for(
-        version_custom_field,
-        versions.first,
-        grouping: project.name
-      )
-
-      projects_page.expect_autocomplete_options_for(
-        version_custom_field,
-        versions.second,
-        grouping: public_project.name
-      )
+      # Versions are grouped under their respective project
+      versions.group_by { |v| v.project.name }.each do |project_name, versions|
+        projects_page.expect_autocomplete_options_for(
+          version_custom_field,
+          versions.pluck(:name),
+          grouping: project_name
+        )
+      end
 
       projects_page.set_filter(version_custom_field.column_name,
                                version_custom_field.name,
@@ -590,9 +592,9 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
       projects_page.expect_projects_not_listed(development_project)
       projects_page.expect_projects_listed(project)
 
-      # Only the second version is available to select,
-      # because the first one is already selected.
-      projects_page.expect_autocomplete_options_for(version_custom_field, versions[1].name)
+      # The first version is not available to select,
+      # because is already selected.
+      projects_page.expect_autocomplete_options_for(version_custom_field, versions[1..])
     end
   end
 
@@ -661,6 +663,254 @@ RSpec.describe "Projects list filters", :js, with_settings: { login_required?: f
 
       # Columns are taken from the default set as defined by the setting
       projects_page.expect_columns("Name", "Created on", "Status")
+    end
+  end
+
+  describe "filtering for any lifecycle step" do
+    context "with the feature flag disabled", with_flag: { stages_and_gates: false } do
+      it "does not have the lifecycle step (any) filter" do
+        load_and_open_filters manager
+
+        projects_page.expect_filter_not_available("Lifecycle: Any stage or gate")
+      end
+    end
+
+    context "with the feature flag enabled", with_flag: { stages_and_gates: true } do
+      context "with the necessary permissions" do
+        before do
+          project_role.add_permission!(:view_project_stages_and_gates)
+        end
+
+        it "allows filtering the projects by life cycle elements" do
+          load_and_open_filters manager
+
+          projects_page.expect_filter_available("Lifecycle: Any stage or gate")
+
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
+                                   "on",
+                                   [Time.zone.today])
+
+          projects_page.expect_projects_not_listed(development_project)
+          projects_page.expect_projects_in_order(project, public_project)
+
+          projects_page.remove_filter("lcsd_any")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
+                                   "today")
+
+          projects_page.expect_projects_not_listed(development_project)
+          projects_page.expect_projects_in_order(project, public_project)
+
+          projects_page.remove_filter("lcsd_any")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
+                                   "between",
+                                   [Time.zone.today - 5.days, Time.zone.today + 10.days])
+
+          projects_page.expect_projects_not_listed(development_project)
+          projects_page.expect_projects_in_order(project, public_project)
+
+          projects_page.remove_filter("lcsd_any")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
+                                   "this week")
+
+          projects_page.expect_projects_not_listed(development_project)
+          projects_page.expect_projects_in_order(project, public_project)
+
+          projects_page.remove_filter("lcsd_any")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_any",
+                                   "Lifecycle: Any stage or gate",
+                                   "is empty")
+
+          projects_page.expect_projects_not_listed(public_project, development_project, project)
+        end
+      end
+
+      context "without the necessary permissions" do
+        it "does not have the lifecycle step (any) filter" do
+          load_and_open_filters manager
+
+          projects_page.expect_filter_not_available("Lifecycle: Any stage or gate")
+        end
+      end
+    end
+  end
+
+  describe "filtering for a specific lifecycle stage" do
+    context "with the feature flag disabled", with_flag: { stages_and_gates: false } do
+      it "does not have the lifecycle (specific stage) filter" do
+        load_and_open_filters manager
+
+        projects_page.expect_filter_not_available("Lifecycle stage: #{stage.name}")
+      end
+    end
+
+    context "with the feature flag enabled", with_flag: { stages_and_gates: true } do
+      context "with the necessary permissions" do
+        before do
+          project_role.add_permission!(:view_project_stages_and_gates)
+        end
+
+        it "allows filtering the projects by the life cycle stage" do
+          load_and_open_filters manager
+
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
+                                   "Lifecycle stage: #{stage.name}",
+                                   "on",
+                                   [Time.zone.today + 5.days])
+
+          projects_page.expect_projects_not_listed(development_project, public_project)
+          projects_page.expect_projects_in_order(project)
+
+          projects_page.remove_filter("lcsd_stage_#{stage.definition_id}")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
+                                   "Lifecycle stage: #{stage.name}",
+                                   "today")
+
+          projects_page.expect_projects_not_listed(development_project, public_project)
+          projects_page.expect_projects_in_order(project)
+
+          projects_page.remove_filter("lcsd_stage_#{stage.definition_id}")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
+                                   "Lifecycle stage: #{stage.name}",
+                                   "between",
+                                   [Time.zone.today - 5.days, Time.zone.today + 10.days])
+
+          projects_page.expect_projects_not_listed(development_project, public_project)
+          projects_page.expect_projects_in_order(project)
+
+          projects_page.remove_filter("lcsd_stage_#{stage.definition_id}")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
+                                   "Lifecycle stage: #{stage.name}",
+                                   "this week")
+
+          projects_page.expect_projects_not_listed(development_project, public_project)
+          projects_page.expect_projects_in_order(project)
+
+          projects_page.remove_filter("lcsd_stage_#{stage.definition_id}")
+
+          projects_page.expect_projects_in_order(development_project, project, public_project)
+
+          projects_page.set_filter("lcsd_stage_#{stage.definition_id}",
+                                   "Lifecycle stage: #{stage.name}",
+                                   "is empty")
+
+          projects_page.expect_projects_not_listed(public_project, development_project, project)
+        end
+      end
+
+      context "without the necessary permissions" do
+        it "does not have the lifecycle (specific stage) filter" do
+          load_and_open_filters manager
+
+          projects_page.expect_filter_not_available("Lifecycle stage: #{stage.name}")
+        end
+      end
+    end
+
+    describe "filtering for a specific lifecycle gate" do
+      context "with the feature flag disabled", with_flag: { stages_and_gates: false } do
+        it "does not have the lifecycle (specific gate) filter" do
+          load_and_open_filters manager
+
+          projects_page.expect_filter_not_available("Lifecycle gate: #{gate.name}")
+        end
+      end
+
+      context "with the feature flag enabled", with_flag: { stages_and_gates: true } do
+        context "with the necessary permissions" do
+          before do
+            project_role.add_permission!(:view_project_stages_and_gates)
+          end
+
+          it "allows filtering the projects by the life cycle gate" do
+            load_and_open_filters manager
+
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
+                                     "Lifecycle gate: #{gate.name}",
+                                     "on",
+                                     [Time.zone.today])
+
+            projects_page.expect_projects_not_listed(development_project, project)
+            projects_page.expect_projects_in_order(public_project)
+
+            projects_page.remove_filter("lcsd_gate_#{gate.definition_id}")
+
+            projects_page.expect_projects_in_order(development_project, project, public_project)
+
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
+                                     "Lifecycle gate: #{gate.name}",
+                                     "today")
+
+            projects_page.expect_projects_not_listed(development_project, project)
+            projects_page.expect_projects_in_order(public_project)
+
+            projects_page.remove_filter("lcsd_gate_#{gate.definition_id}")
+
+            projects_page.expect_projects_in_order(development_project, project, public_project)
+
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
+                                     "Lifecycle gate: #{gate.name}",
+                                     "between",
+                                     [Time.zone.today - 5.days, Time.zone.today + 10.days])
+
+            projects_page.expect_projects_not_listed(development_project, project)
+            projects_page.expect_projects_in_order(public_project)
+
+            projects_page.remove_filter("lcsd_gate_#{gate.definition_id}")
+
+            projects_page.expect_projects_in_order(development_project, project, public_project)
+
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
+                                     "Lifecycle gate: #{gate.name}",
+                                     "this week")
+
+            projects_page.expect_projects_not_listed(development_project, project)
+            projects_page.expect_projects_in_order(public_project)
+
+            projects_page.remove_filter("lcsd_gate_#{gate.definition_id}")
+
+            projects_page.expect_projects_in_order(development_project, project, public_project)
+
+            projects_page.set_filter("lcsd_gate_#{gate.definition_id}",
+                                     "Lifecycle gate: #{gate.name}",
+                                     "is empty")
+
+            projects_page.expect_projects_not_listed(public_project, development_project, project)
+          end
+        end
+
+        context "without the necessary permissions" do
+          it "does not have the lifecycle (specific gate) filter" do
+            load_and_open_filters manager
+
+            projects_page.expect_filter_not_available("Lifecycle gate: #{gate.name}")
+          end
+        end
+      end
     end
   end
 end

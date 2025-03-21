@@ -57,6 +57,11 @@ uk:
         start_time: Час початку
         end_time: Час закінчення
     models:
+      time_entry:
+        one: "Time entry"
+        few: "Time entries"
+        many: "Time entries"
+        other: "Time entries"
       cost_type:
         one: "Тип вартості"
         few: "Види витрат"
@@ -179,8 +184,6 @@ uk:
   text_reassign_time_and_cost_entries: "Перепризначення повідомлених годин і витрат до цього робочого пакету :"
   text_warning_hidden_elements: "Деякі записи можуть бути виключені з агрегації."
   week: "тиждень"
-  js:
-    text_are_you_sure: "Ви впевненені?"
   api_v3:
     errors:
       validation:

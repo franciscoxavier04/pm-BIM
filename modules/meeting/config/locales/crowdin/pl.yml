@@ -298,7 +298,7 @@ pl:
       full_past: "%{base} o %{time}, zakończone %{end_date}"
       never_ending: "%{base} o %{time}"
     open:
-      title: "Otwórz"
+      title: "Agenda opened"
       subtitle: >
         Spotkania otwarte mają porządek obrad, który można edytować i prezentować w sekcji „Moje spotkania”. Zmiany w szablonie serii spotkań nie mają wpływu na już otwarte wystąpienia spotkania.
       blankslate:

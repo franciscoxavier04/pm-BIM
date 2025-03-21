@@ -57,6 +57,9 @@ fr:
         start_time: Heure de début
         end_time: Heure de fin
     models:
+      time_entry:
+        one: "Time entry"
+        other: "Time entries"
       cost_type:
         one: "Types de coût"
         other: "Types de coûts"
@@ -175,8 +178,6 @@ fr:
   text_reassign_time_and_cost_entries: "Réassigner les heures et coûts consignés à ce lot de travaux :"
   text_warning_hidden_elements: "Certaines entrées peuvent avoir été exclues de l'agrégation."
   week: "semaine"
-  js:
-    text_are_you_sure: "Êtes-vous sûr ?"
   api_v3:
     errors:
       validation:
