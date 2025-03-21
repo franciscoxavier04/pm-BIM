@@ -99,6 +99,7 @@ class Project < ApplicationRecord
   validates_associated :available_life_cycle_steps, on: :saving_life_cycle_steps
 
   store_attribute :settings, :deactivate_work_package_attachments, :boolean
+  store_attribute :settings, :enabled_comments_with_restricted_visibility, :boolean
 
   acts_as_favorable
 

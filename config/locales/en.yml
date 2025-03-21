@@ -3367,6 +3367,7 @@ en:
   notice_successful_delete: "Successful deletion."
   notice_successful_cancel: "Successful cancellation."
   notice_successful_update: "Successful update."
+  notice_unsuccessful_update: "Update failed."
   notice_successful_update_custom_fields_added_to_project: |
     Successful update. The custom fields of the activated types are automatically activated
     on the work package form. <a href="%{url}" target="_blank">See more</a>.

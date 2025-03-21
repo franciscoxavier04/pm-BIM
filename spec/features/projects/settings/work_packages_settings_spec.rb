@@ -80,7 +80,7 @@ RSpec.describe "Projects", "work packages settings menu", :js do
       it "displays the custom fields tab" do
         work_packages_settings_page.visit!
         expect(page).to have_css(".tabnav-tab", text: "Activity")
-        expect(page).to have_css("span", text: "Form goes here")
+        expect(page).to have_css("#activities-form")
       end
     end
 

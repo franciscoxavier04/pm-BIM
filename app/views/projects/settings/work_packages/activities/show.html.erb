@@ -29,4 +29,15 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= render(Settings::ProjectWorkPackages::HeaderComponent.new(@project, selected: :activities)) %>
 
-<span>Form goes here</span>
+<%=
+  # this could be exctracted into a Form component
+  form_for @project,
+           url: project_settings_work_packages_activities_path(@project),
+           method: :patch,
+           html: { id: "activities-form" } do |f|
+%>
+  <%= f.check_box :enabled_comments_with_restricted_visibility %>
+  <%= f.label :enabled_comments_with_restricted_visibility, "Enable comments with restricted visibility" %>
+  <p>Helper text here</p>
+  <%= f.submit "Save" %>
+<% end %>
