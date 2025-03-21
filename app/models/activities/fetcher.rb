@@ -64,9 +64,7 @@ module Activities
     # sorted in reverse chronological order
     def events(from: nil, to: nil, limit: nil)
       events = events_from_providers(from, to, limit)
-
       eager_load_associations(events)
-
       sort_by_most_recent_first(events)
     end
 

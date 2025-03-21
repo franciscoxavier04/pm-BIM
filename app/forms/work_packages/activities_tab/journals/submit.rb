@@ -28,8 +28,22 @@
 module WorkPackages::ActivitiesTab::Journals
   class Submit < ApplicationForm
     form do |notes_form|
-      notes_form.submit(name: :submit, label: I18n.t("button_save"), scheme: :primary,
-                        data: { test_selector: "op-submit-work-package-journal-form" })
+      notes_form.submit(
+        name: :submit,
+        label: @label,
+        scheme: :primary,
+        "aria-label": I18n.t("activities.work_packages.activity_tab.label_submit_comment"),
+        data: {
+          test_selector: "op-submit-work-package-journal-form",
+          "work-packages--activities-tab--index-target": "formSubmitButton"
+        }
+      )
+    end
+
+    def initialize(label: I18n.t("button_save"))
+      super()
+
+      @label = label
     end
   end
 end

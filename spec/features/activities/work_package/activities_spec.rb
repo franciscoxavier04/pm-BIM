@@ -234,6 +234,48 @@ RSpec.describe "Work package activity", :js, :with_cuprite do
         activity_tab.expect_journal_notes(text: "First comment by user with commenting permission via a work package share")
       end
     end
+
+    context "when a user cannot see comments with restricted visibility",
+            with_flag: { comments_with_restricted_visibility: true } do
+      current_user { member }
+
+      before do
+        create(:work_package_journal,
+               user: admin,
+               notes: "First comment by admin",
+               journable: work_package,
+               restricted: true,
+               version: 2)
+      end
+
+      it "does not show the comment" do
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+
+        activity_tab.expect_no_journal_notes(text: "First comment by admin")
+      end
+    end
+
+    context "when a user can see comments with restricted visibility",
+            with_flag: { comments_with_restricted_visibility: true } do
+      current_user { admin }
+
+      before do
+        create(:work_package_journal,
+               user: admin,
+               notes: "First comment by admin",
+               journable: work_package,
+               restricted: true,
+               version: 2)
+      end
+
+      it "shows the comment" do
+        wp_page.visit!
+        wp_page.wait_for_activity_tab
+
+        activity_tab.expect_journal_notes(text: "First comment by admin")
+      end
+    end
   end
 
   context "when a workpackage is created and visited by the same user" do

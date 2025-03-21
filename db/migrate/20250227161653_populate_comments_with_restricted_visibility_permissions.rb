@@ -28,31 +28,17 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackages
-  class CreateNoteContract < ::ModelContract
-    def self.model = WorkPackage
+require Rails.root.join("db/migrate/migration_utils/permission_adder")
 
-    attribute :journal_notes do
-      errors.add(:journal_notes, :error_unauthorized) unless can?(:comment)
-      errors.add(:journal_notes, :blank) if model.journal_notes.blank?
-    end
-
-    attribute :journal_restricted do
-      if model.journal_restricted && !OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
-        errors.add(:journal_restricted, :feature_disabled)
-      end
-    end
-
-    private
-
-    def can?(permission)
-      policy.allowed?(model, permission)
-    end
-
-    attr_writer :policy
-
-    def policy
-      @policy ||= WorkPackagePolicy.new(user)
-    end
+class PopulateCommentsWithRestrictedVisibilityPermissions < ActiveRecord::Migration[7.1]
+  def up
+    # grant the permission to view/write/edit comments with restricted visibility
+    # to users that can manage project members
+    ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :view_comments_with_restricted_visibility)
+    ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :add_comments_with_restricted_visibility)
+    ::Migration::MigrationUtils::PermissionAdder.add(:manage_members, :edit_own_comments_with_restricted_visibility)
   end
+
+  # noop
+  def down; end
 end

@@ -28,31 +28,8 @@
 # See COPYRIGHT and LICENSE files for more details.
 #++
 
-module WorkPackages
-  class CreateNoteContract < ::ModelContract
-    def self.model = WorkPackage
-
-    attribute :journal_notes do
-      errors.add(:journal_notes, :error_unauthorized) unless can?(:comment)
-      errors.add(:journal_notes, :blank) if model.journal_notes.blank?
-    end
-
-    attribute :journal_restricted do
-      if model.journal_restricted && !OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
-        errors.add(:journal_restricted, :feature_disabled)
-      end
-    end
-
-    private
-
-    def can?(permission)
-      policy.allowed?(model, permission)
-    end
-
-    attr_writer :policy
-
-    def policy
-      @policy ||= WorkPackagePolicy.new(user)
-    end
+class AddRestrictedToJournals < ActiveRecord::Migration[7.1]
+  def change
+    add_column :journals, :restricted, :boolean, default: false, null: false
   end
 end

@@ -2,7 +2,7 @@
 
 #-- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) the OpenProject GmbH
+# Copyright (C) 2012-2024 the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -27,32 +27,18 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
-
-module WorkPackages
-  class CreateNoteContract < ::ModelContract
-    def self.model = WorkPackage
-
-    attribute :journal_notes do
-      errors.add(:journal_notes, :error_unauthorized) unless can?(:comment)
-      errors.add(:journal_notes, :blank) if model.journal_notes.blank?
-    end
-
-    attribute :journal_restricted do
-      if model.journal_restricted && !OpenProject::FeatureDecisions.comments_with_restricted_visibility_active?
-        errors.add(:journal_restricted, :feature_disabled)
-      end
-    end
-
-    private
-
-    def can?(permission)
-      policy.allowed?(model, permission)
-    end
-
-    attr_writer :policy
-
-    def policy
-      @policy ||= WorkPackagePolicy.new(user)
+module WorkPackages::ActivitiesTab::Journals
+  class RestrictedNoteForm < ApplicationForm
+    form do |notes_form|
+      notes_form.check_box(
+        name: :restricted,
+        label: I18n.t("activities.work_packages.activity_tab.restrict_visibility"),
+        checked: false,
+        data: {
+          "work-packages--activities-tab--restricted-comment-target": "restrictedCheckbox",
+          action: "input->work-packages--activities-tab--restricted-comment#toggleBackgroundColor"
+        }
+      )
     end
   end
 end

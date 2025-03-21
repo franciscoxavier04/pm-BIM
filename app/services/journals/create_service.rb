@@ -49,9 +49,9 @@ module Journals
       @associations = Association.for(self)
     end
 
-    def call(notes: "", cause: CauseOfChange::NoCause.new)
+    def call(notes: "", restricted: false, cause: CauseOfChange::NoCause.new)
       Journal.transaction do
-        journal = create_journal(notes, cause)
+        journal = create_journal(notes, restricted, cause)
 
         if journal
           reload_journals
@@ -65,24 +65,28 @@ module Journals
 
     def journable_id = journable.id
 
-    # If the journalizing happens within the configured aggregation time, is carried out by the same user, has an
-    # identical cause and only the predecessor or the journal to be created has notes, the changes are aggregated.
+    # Aggregatable journals must meet the following criteria:
+    #
+    # * The journalizing happens within the configured aggregation time
+    # * The journalizing is carried out by the same user
+    # * The cause is identical
+    # * ONLY one note exists between the predecessor and the journal to be created
+    # * The predecessor and the journal to be created have the same restriction
+    #
     # Instead of removing the predecessor, return it here so that it can be stripped in the journal creating
     # SQL to than be refilled. That way, references to the journal, including ones users have, are kept intact.
-    def aggregatable_predecessor(notes, cause)
+    def aggregatable_predecessor(notes, restricted, cause)
       predecessor = journable.last_journal
 
-      if aggregatable?(predecessor, notes, cause)
-        predecessor
-      end
+      predecessor if aggregatable?(predecessor, notes, restricted, cause)
     end
 
-    def create_journal(notes, cause)
-      predecessor = aggregatable_predecessor(notes, cause)
+    def create_journal(notes, restricted, cause)
+      predecessor = aggregatable_predecessor(notes, restricted, cause)
 
       log_journal_creation(predecessor)
 
-      create_sql = create_journal_sql(predecessor, notes, cause)
+      create_sql = create_journal_sql(predecessor, notes, restricted, cause)
 
       # We need to ensure that the result is genuine. Otherwise,
       # calling the service repeatedly for the same journable
@@ -190,8 +194,8 @@ module Journals
     # (`insert_attachable`, `insert_customizable` and `insert_storable`) should actually insert data. It is additionally
     # used as the values returned by the overall SQL statement so that an AR instance can be instantiated with it.
     #
-    def create_journal_sql(predecessor, notes, cause)
-      journal_modifications = journal_modification_sql(predecessor, notes, cause)
+    def create_journal_sql(predecessor, notes, restricted, cause)
+      journal_modifications = journal_modification_sql(predecessor, notes, restricted, cause)
       relation_modifications = relation_modifications_sql(predecessor)
 
       journal_cte_clauses = [journal_modifications]
@@ -203,7 +207,7 @@ module Journals
       SQL
     end
 
-    def journal_modification_sql(predecessor, notes, cause)
+    def journal_modification_sql(predecessor, notes, restricted, cause)
       <<~SQL
         cleanup_predecessor_data AS (
           #{cleanup_predecessor_data(predecessor)}
@@ -220,7 +224,7 @@ module Journals
         ), update_predecessor AS (
           #{update_predecessor_sql(predecessor, notes, cause)}
         ), inserted_journal AS (
-          #{update_or_insert_journal_sql(predecessor, notes, cause)}
+          #{update_or_insert_journal_sql(predecessor, notes, restricted, cause)}
         )
       SQL
     end
@@ -260,11 +264,11 @@ module Journals
       SQL
     end
 
-    def update_or_insert_journal_sql(predecessor, notes, cause)
+    def update_or_insert_journal_sql(predecessor, notes, restricted, cause)
       if predecessor
         update_journal_sql(predecessor, notes, cause)
       else
-        insert_journal_sql(notes, cause)
+        insert_journal_sql(notes, restricted, cause)
       end
     end
 
@@ -296,7 +300,7 @@ module Journals
                cause: cause_sql(cause))
     end
 
-    def insert_journal_sql(notes, cause)
+    def insert_journal_sql(notes, restricted, cause)
       sql = <<~SQL
         INSERT INTO
           journals (
@@ -305,6 +309,7 @@ module Journals
             version,
             user_id,
             notes,
+            restricted,
             created_at,
             updated_at,
             data_id,
@@ -318,6 +323,7 @@ module Journals
           COALESCE(max_journals.version, 0) + 1,
           :user_id,
           :notes,
+          :restricted,
           (SELECT updated_at FROM fetch_time),
           (SELECT updated_at FROM fetch_time),
           insert_data.id,
@@ -330,6 +336,7 @@ module Journals
 
       sanitize(sql,
                notes:,
+               restricted:,
                cause: cause_sql(cause),
                journable_id:,
                journable_type:,
@@ -593,13 +600,14 @@ module Journals
       journable.journals.reload if journable.journals.loaded?
     end
 
-    def aggregatable?(predecessor, notes, cause)
+    def aggregatable?(predecessor, notes, restricted, cause)
       predecessor.present? &&
         aggregation_active? &&
         within_aggregation_time?(predecessor) &&
         same_user?(predecessor) &&
         same_cause?(predecessor, cause) &&
-        only_one_note(predecessor, notes)
+        only_one_note(predecessor, notes) &&
+        same_restriction(predecessor, restricted)
     end
 
     def aggregation_active?
@@ -614,6 +622,10 @@ module Journals
       predecessor.notes.empty? || notes.empty?
     end
 
+    def same_restriction(predecessor, restricted)
+      predecessor.restricted == restricted
+    end
+
     def same_user?(predecessor)
       predecessor.user_id == user.id
     end
@@ -624,9 +636,9 @@ module Journals
 
     def log_journal_creation(predecessor)
       if predecessor
-        Rails.logger.debug { "Aggregating journal #{predecessor.id} for #{journable_type} ##{journable.id}" }
+        Rails.logger.debug { "[#{self.class.name}] Aggregating journal #{predecessor.id} for #{journable_type} ##{journable.id}" }
       else
-        Rails.logger.debug { "Inserting new journal for #{journable_type} ##{journable.id}" }
+        Rails.logger.debug { "[#{self.class.name}] Inserting new journal for #{journable_type} ##{journable.id}" }
       end
     end
 
