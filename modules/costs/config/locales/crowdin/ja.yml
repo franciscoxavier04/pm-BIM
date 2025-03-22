@@ -59,6 +59,8 @@ ja:
     models:
       time_entry:
         other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "コスト種類"
       time_entry_activity:

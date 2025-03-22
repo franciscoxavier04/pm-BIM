@@ -59,6 +59,8 @@ vi:
     models:
       time_entry:
         other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Loại chi phí"
       time_entry_activity:

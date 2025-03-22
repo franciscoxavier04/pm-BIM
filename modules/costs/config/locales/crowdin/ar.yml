@@ -64,6 +64,13 @@ ar:
         few: "Time entries"
         many: "Time entries"
         other: "Time entries"
+      cost_entry:
+        zero: "Cost entries"
+        one: "Cost entry"
+        two: "Cost entries"
+        few: "Cost entries"
+        many: "Cost entries"
+        other: "Cost entries"
       cost_type:
         zero: "أنواع التكلفة"
         one: "أنواع التكلفة"

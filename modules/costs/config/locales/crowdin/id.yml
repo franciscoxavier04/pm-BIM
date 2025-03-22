@@ -59,6 +59,8 @@ id:
     models:
       time_entry:
         other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Jenis biaya"
       time_entry_activity:

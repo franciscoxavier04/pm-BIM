@@ -35,11 +35,15 @@ bg:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: В момента няма инсталирани приставки.
@@ -1073,6 +1077,7 @@ bg:
           title: "Работни дни"
           false: "само в работни дни"
           true: "включват неработни дни"
+        journal_restricted: Restricted Journal
         notify: "Уведомяване" #used in custom actions
         parent: "Горна категория"
         parent_issue: "Горна категория"
@@ -1116,6 +1121,7 @@ bg:
         empty: "не може да бъде празно."
         even: "трябва да бъде четно число."
         exclusion: "е запазено."
+        feature_disabled: is not available.
         file_too_large: "е твърде голям (максимален размер %{count} байта)."
         filter_does_not_exist: "филтърът не съществува."
         format: "не съответства на очаквания формат '%{expected}'."
@@ -3299,6 +3305,7 @@ bg:
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "Add attachments"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Archive project"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3327,9 +3334,12 @@ bg:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit work packages"
   permission_edit_messages: "Редактиране на съобщенията"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Edit own messages"
   permission_edit_own_time_entries: "Edit own time logs"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Edit project"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
@@ -3370,6 +3380,7 @@ bg:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "Преглед на проекти"
   permission_view_changesets: "Преглед на ревизиите на хранилището в OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Преглед статистиката за авторите на ангажименти"
   permission_view_dashboards: "Преглед на табла за управление"
   permission_view_work_package_watchers: "Преглед на списъка с наблюдатели"

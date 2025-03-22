@@ -61,6 +61,10 @@ ro:
         one: "Time entry"
         few: "Time entries"
         other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        few: "Cost entries"
+        other: "Cost entries"
       cost_type:
         one: "Tipul de cost"
         few: "Tipuri de costuri"

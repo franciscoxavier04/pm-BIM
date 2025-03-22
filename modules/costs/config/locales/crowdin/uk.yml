@@ -62,6 +62,11 @@ uk:
         few: "Time entries"
         many: "Time entries"
         other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        few: "Cost entries"
+        many: "Cost entries"
+        other: "Cost entries"
       cost_type:
         one: "Тип вартості"
         few: "Види витрат"

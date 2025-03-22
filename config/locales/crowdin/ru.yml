@@ -35,11 +35,15 @@ ru:
         label_sort_desc: "Новые вверху"
         label_type_to_comment: "Добавить комментарий. Введите @ для уведомления пользователей."
         label_submit_comment: "Отправить комментарий"
+        label_who: Who?
         changed_on: "изменено"
         created_on: "создано в"
         changed: "изменено"
         created: "создано"
         commented: "прокомментировано"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: В настоящее время плагины не установлены.
@@ -634,9 +638,9 @@ ru:
           label: "Шаблон темы"
           caption: "Добавьте текст или введите / для поиска атрибута. Вы можете добавить пробелы, чтобы разделить их."
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "Пакет работ"
+            parent: "Верхний уровень"
+            project: "Проект"
           insert_as_text: "Атрибуты не найдены. Добавить как текст: \"%{word}\""
       export_configuration:
         tab: "Создать PDF"
@@ -912,7 +916,7 @@ ru:
         widgets: "Виджеты"
       journal:
         notes: "Примечания"
-        cause_type: "Cause type"
+        cause_type: "Причина"
       ldap_auth_source:
         account: "Аккаунт"
         attr_firstname: "Атрибут имени"
@@ -1071,9 +1075,9 @@ ru:
       wiki_page:
         parent_title: "Родительская страница"
         redirect_existing_links: "Перенаправление существующих ссылок"
-        text: "Page content"
+        text: "Содержимое страницы"
       work_package:
-        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
+        ancestor: "Потомки" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "Начало вставки"
         begin_deletion: "Начало удаления"
         children: "Вложенные элементы"
@@ -1089,6 +1093,7 @@ ru:
           title: "Рабочие дни"
           false: "только рабочие дни"
           true: "включить нерабочие дни"
+        journal_restricted: Restricted Journal
         notify: "Уведомлять" #used in custom actions
         parent: "Родитель"
         parent_issue: "Родитель"
@@ -1132,6 +1137,7 @@ ru:
         empty: "не может быть пустым."
         even: "должно быть чётным."
         exclusion: "зарезервировано."
+        feature_disabled: is not available.
         file_too_large: "слишком большой (максимальный размер составляет %{count} байт)."
         filter_does_not_exist: "фильтр не существует."
         format: "не соответствует ожидаемому формату '%{expected}'."
@@ -1616,17 +1622,17 @@ ru:
       changeset: "Наборы изменений"
       message: "Форумы"
       news: "Новости"
-      project_details: "Project details"
+      project_details: "Детали проекта"
       subproject: "Включить подпроекты"
       time_entry: "Затраченное время"
       wiki_edit: "Wiki"
       work_package: "Пакеты работ"
     project_life_cycle_step:
-      activated: "activated"
-      deactivated: "deactivated"
-      added_date: "set to %{date}"
-      changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
+      activated: "активирован"
+      deactivated: "деактивирован"
+      added_date: "установлено на %{date}"
+      changed_date: "изменено с %{from} to %{to}"
+      removed_date: "дата удаления %{date}"
   #common attributes of all models
   attributes:
     active: "Активно"
@@ -2134,7 +2140,7 @@ ru:
     changeset: "Набор изменений отредактирован"
     message: Сообщение отредактировано
     news: Новости
-    project_details: "Project details edited"
+    project_details: "Детали проекта изменены"
     project: "Проект отредактирован"
     projects: "Проект отредактирован"
     reply: Отвечено
@@ -2214,7 +2220,7 @@ ru:
     succeeded: "Экспорт завершен"
     failed: "Произошла ошибка при попытке экспортировать пакеты работ: %{message}"
     errors:
-      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
+      embedded_table_with_too_many_columns: "Эта встроенная таблица пакета работ не помещается на странице, пожалуйста, сократите количество столбцов таблицы."
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2260,11 +2266,11 @@ ru:
       hyphenation_language:
         label: Язык и переносы
       page_orientation:
-        label: Page orientation
-        caption: Select the orientation of the pages in the PDF document.
+        label: Ориентация страницы
+        caption: Выберите ориентацию страниц в PDF-документе.
         options:
-          portrait: Portrait
-          landscape: Landscape
+          portrait: Портретная
+          landscape: Альбомная
   extraction:
     available:
       pdftotext: "Pdftotext доступно (опционально)"
@@ -2477,7 +2483,7 @@ ru:
   label_applied_status: "Прикладной статус"
   label_archive_project: "Архивировать проект"
   label_ascending: "По возрастанию"
-  label_assigned_to_me_work_packages: "Переданные мне пакеты работ"
+  label_assigned_to_me_work_packages: "Пакеты работ, назначенные мне"
   label_associated_revisions: "Связанные изменения"
   label_attachment_plural: "Вложения"
   label_attribute: "Атрибут"
@@ -3378,6 +3384,7 @@ ru:
   permission_add_project: "Создание проектов"
   permission_add_work_package_attachments: "Добавить вложения"
   permission_add_work_package_attachments_explanation: "Позволяет добавлять вложения без права редактирования пакетов работ"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Архивировать проект"
   permission_create_user: "Создать пользователей"
   permission_manage_user: "Изменить пользователей"
@@ -3406,9 +3413,12 @@ ru:
   permission_edit_work_package_notes_explanation: "Внимание: Пользователи с таким правом могут редактировать любые комментарии."
   permission_edit_work_packages: "Редактировать пакеты работ"
   permission_edit_messages: "Редактировать сообщения"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Редактировать свои комментарии"
   permission_edit_own_messages: "Редактировать свои сообщения"
   permission_edit_own_time_entries: "Редактировать собственные учетные записи о времени"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Редактировать проект"
   permission_edit_project_attributes: "Редактирование атрибутов проекта"
   permission_edit_project_stages_and_gates: "Редактировать этапы и стадии проекта"
@@ -3449,6 +3459,7 @@ ru:
   permission_manage_own_reminders: "Создать собственные напоминания"
   permission_view_project: "Просмотр проектов"
   permission_view_changesets: "Просмотр изменений репозитория в OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Посмотреть статистику автора, внесшего свою часть работы"
   permission_view_dashboards: "Просмотр панелей инструментов"
   permission_view_work_package_watchers: "Посмотреть список наблюдателей"

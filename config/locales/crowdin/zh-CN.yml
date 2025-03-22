@@ -35,11 +35,15 @@ zh-CN:
         label_sort_desc: "时间降序"
         label_type_to_comment: "添加评论。输入 @ 以通知他人。"
         label_submit_comment: "提交评论"
+        label_who: Who?
         changed_on: "更改于"
         created_on: "创建于"
         changed: "已更改"
         created: "已创建"
         commented: "已评论"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: 目前没有安装插件。
@@ -608,9 +612,9 @@ zh-CN:
           label: "主题模式"
           caption: "添加文本或输入斜杠“/”以搜索属性。你可以使用空格来分隔它们。"
           headings:
-            work_package: "Work package"
-            parent: "Parent"
-            project: "Project"
+            work_package: "工作包"
+            parent: "父级"
+            project: "项目"
           insert_as_text: "未找到属性。以文本形式添加：“%{word}”"
       export_configuration:
         tab: "生成 PDF"
@@ -1042,9 +1046,9 @@ zh-CN:
       wiki_page:
         parent_title: "父级页面"
         redirect_existing_links: "将现有的链接重定向"
-        text: "Page content"
+        text: "页面内容"
       work_package:
-        ancestor: "Descendants of" #used for filtering of work packages that are descendants of a given work package
+        ancestor: "子级" #used for filtering of work packages that are descendants of a given work package
         begin_insertion: "开始插入"
         begin_deletion: "开始删除"
         children: "子元素"
@@ -1060,6 +1064,7 @@ zh-CN:
           title: "工作日"
           false: "仅工作日"
           true: "包括非工作日"
+        journal_restricted: Restricted Journal
         notify: "通知" #used in custom actions
         parent: "父级"
         parent_issue: "父级"
@@ -1103,6 +1108,7 @@ zh-CN:
         empty: "不能为空。"
         even: "必须是偶数。"
         exclusion: "是保留关键字。"
+        feature_disabled: is not available.
         file_too_large: "太大 (最大大小为 %{count} 字节)。"
         filter_does_not_exist: "筛选器不存在。"
         format: "与预期的格式“%{expected}”不匹配。"
@@ -1554,17 +1560,17 @@ zh-CN:
       changeset: "更改集"
       message: "论坛"
       news: "新闻"
-      project_details: "Project details"
+      project_details: "项目详细信息"
       subproject: "包括子项目"
       time_entry: "用时"
       wiki_edit: "维基"
       work_package: "工作包"
     project_life_cycle_step:
-      activated: "activated"
-      deactivated: "deactivated"
-      added_date: "set to %{date}"
-      changed_date: "changed from %{from} to %{to}"
-      removed_date: "date deleted %{date}"
+      activated: "已激活"
+      deactivated: "已停用"
+      added_date: "设为 %{date}"
+      changed_date: "由%{from}变更为%{to}"
+      removed_date: "删除日期%{date}"
   #common attributes of all models
   attributes:
     active: "激活"
@@ -2015,7 +2021,7 @@ zh-CN:
     changeset: "编辑更改集"
     message: 编辑消息
     news: 新闻
-    project_details: "Project details edited"
+    project_details: "项目详情已编辑"
     project: "项目已编辑"
     projects: "项目已编辑"
     reply: 答复
@@ -2095,7 +2101,7 @@ zh-CN:
     succeeded: "导出完成"
     failed: "在尝试导出工作包时发生错误： %{message}"
     errors:
-      embedded_table_with_too_many_columns: "This embedded work package table could not fit on the page, please reduce the number of columns."
+      embedded_table_with_too_many_columns: "此嵌入式工作包表无法放在此页面上，请减少列数。"
     format:
       atom: "Atom"
       csv: "CSV"
@@ -2141,11 +2147,11 @@ zh-CN:
       hyphenation_language:
         label: 语言和连惯性
       page_orientation:
-        label: Page orientation
-        caption: Select the orientation of the pages in the PDF document.
+        label: 页面方向
+        caption: 选择 PDF 文档中页面的方向。
         options:
-          portrait: Portrait
-          landscape: Landscape
+          portrait: 纵向
+          landscape: 横向
   extraction:
     available:
       pdftotext: "Pdftotext 可用 (可选)"
@@ -3251,6 +3257,7 @@ zh-CN:
   permission_add_project: "创建项目"
   permission_add_work_package_attachments: "添加附件"
   permission_add_work_package_attachments_explanation: "允许在没有编辑工作包权限的情况下添加附件"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "归档项目"
   permission_create_user: "创建用户"
   permission_manage_user: "编辑用户"
@@ -3279,9 +3286,12 @@ zh-CN:
   permission_edit_work_package_notes_explanation: "注意：拥有此权限的用户可以编辑任何人的评论。"
   permission_edit_work_packages: "编辑工作包"
   permission_edit_messages: "编辑消息"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "编辑自己的评论"
   permission_edit_own_messages: "编辑自己的消息"
   permission_edit_own_time_entries: "编辑自己的时间记录"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "编辑项目"
   permission_edit_project_attributes: "编辑项目属性"
   permission_edit_project_stages_and_gates: "编辑项目阶段和关口"
@@ -3322,6 +3332,7 @@ zh-CN:
   permission_manage_own_reminders: "创建个人提醒事项"
   permission_view_project: "查看项目"
   permission_view_changesets: "查看 OpenProject 存储库修订"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "查看提交作者统计信息"
   permission_view_dashboards: "查看仪表板"
   permission_view_work_package_watchers: "查看关注者列表"

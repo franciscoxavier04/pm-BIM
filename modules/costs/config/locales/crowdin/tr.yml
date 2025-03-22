@@ -60,6 +60,9 @@ tr:
       time_entry:
         one: "Time entry"
         other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        other: "Cost entries"
       cost_type:
         one: "Maliyet türü"
         other: "Maliyet türü"

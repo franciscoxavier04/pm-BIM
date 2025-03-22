@@ -35,11 +35,15 @@ ko:
         label_sort_desc: "최신 순"
         label_type_to_comment: "코멘트를 추가하세요. 사람들에게 알려주려면 @을 입력하세요."
         label_submit_comment: "코멘트 제출"
+        label_who: Who?
         changed_on: "- 변경함:"
         created_on: "- 이 패키지를 생성함:"
         changed: "- 변경함"
         created: "- 생성함"
         commented: "- 코멘트 작성함"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: 현재 설치된 플러그인이 없습니다.
@@ -1064,6 +1068,7 @@ ko:
           title: "근무일"
           false: "근무일만"
           true: "휴무일 포함"
+        journal_restricted: Restricted Journal
         notify: "알림" #used in custom actions
         parent: "부모"
         parent_issue: "부모"
@@ -1107,6 +1112,7 @@ ko:
         empty: "비워둘 수 없습니다."
         even: "에 짝수를 입력해 주세요"
         exclusion: "예약됨"
+        feature_disabled: is not available.
         file_too_large: "은(는) 너무 큽니다. (최대 %{count} 바이트)"
         filter_does_not_exist: "필터가 존재하지 않습니다."
         format: "- 필요한 형식 '%{expected}'과(와) 일치하지 않습니다."
@@ -3257,6 +3263,7 @@ ko:
   permission_add_project: "프로젝트 만들기"
   permission_add_work_package_attachments: "첨부 파일 추가"
   permission_add_work_package_attachments_explanation: "작업 패키지 편집 권한 없이 첨부 파일 추가를 허용합니다."
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "프로젝트 보관"
   permission_create_user: "사용자 만들기"
   permission_manage_user: "사용자 편집"
@@ -3285,9 +3292,12 @@ ko:
   permission_edit_work_package_notes_explanation: "주의: 이 권한이 있는 사용자는 다른 사용자의 코멘트를 편집할 수 있습니다."
   permission_edit_work_packages: "작업 패키지 편집"
   permission_edit_messages: "메시지 편집"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "내 코멘트 편집"
   permission_edit_own_messages: "내 메시지 편집"
   permission_edit_own_time_entries: "내 시간 로그 편집"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "프로젝트 편집"
   permission_edit_project_attributes: "프로젝트 특성 편집"
   permission_edit_project_stages_and_gates: "프로젝트 단계 및 게이트 편집"
@@ -3328,6 +3338,7 @@ ko:
   permission_manage_own_reminders: "고유한 미리 알림 만들기"
   permission_view_project: "프로젝트 보기"
   permission_view_changesets: "OpenProject에서 리포지토리 수정 사항 보기"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "커밋 작성자 통계 보기"
   permission_view_dashboards: "대시보드 보기"
   permission_view_work_package_watchers: "주시자 목록 보기"

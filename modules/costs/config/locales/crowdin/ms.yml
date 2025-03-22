@@ -59,6 +59,8 @@ ms:
     models:
       time_entry:
         other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Jenis kos"
       time_entry_activity:

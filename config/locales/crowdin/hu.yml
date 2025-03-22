@@ -35,11 +35,15 @@ hu:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -1072,6 +1076,7 @@ hu:
           title: "Munkanapok"
           false: "Csak munkanapok"
           true: "Munkaszüneti napok beleszámítva"
+        journal_restricted: Restricted Journal
         notify: "Értesítés" #used in custom actions
         parent: "Szülő"
         parent_issue: "Szülő"
@@ -1115,6 +1120,7 @@ hu:
         empty: "nem lehet üres."
         even: "kell még."
         exclusion: "foglalt."
+        feature_disabled: is not available.
         file_too_large: "túl nagy fájlméret (maximális méret %{count} Byte)."
         filter_does_not_exist: "szűrő nem létezik."
         format: "nem felel meg az elvárt '%{expected}' formátumnak."
@@ -3297,6 +3303,7 @@ hu:
   permission_add_project: "Projekt létrehozása"
   permission_add_work_package_attachments: "Melléklet hozzáadása"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Projekt archiválása"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3325,9 +3332,12 @@ hu:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "feladatcsoportok szerkesztése"
   permission_edit_messages: "Üzenetek szerkesztése"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Saját üzenetek szerkesztése"
   permission_edit_own_time_entries: "Rögzített eltöltött időim szerkesztése"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Projekt szerkesztése"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
@@ -3368,6 +3378,7 @@ hu:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "Tároló verziók megtekintése az OpenProject-ben"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Szerző,statisztika megtekintése"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "A megfigyelők listájának megtekintése"

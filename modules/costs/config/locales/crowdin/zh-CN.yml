@@ -58,7 +58,9 @@ zh-CN:
         end_time: 结束时间
     models:
       time_entry:
-        other: "Time entries"
+        other: "时间记录"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "成本类型"
       time_entry_activity:

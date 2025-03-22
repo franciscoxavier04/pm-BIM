@@ -62,6 +62,11 @@ sl:
         two: "Time entries"
         few: "Time entries"
         other: "Time entries"
+      cost_entry:
+        one: "Cost entry"
+        two: "Cost entries"
+        few: "Cost entries"
+        other: "Cost entries"
       cost_type:
         one: "Vrsta stroška"
         two: "Vrsta stroška"

@@ -35,11 +35,15 @@ fi:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -1073,6 +1077,7 @@ fi:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
+        journal_restricted: Restricted Journal
         notify: "Notify" #used in custom actions
         parent: "Ylätaso"
         parent_issue: "Ylätaso"
@@ -1116,6 +1121,7 @@ fi:
         empty: "ei voi olla tyhjä."
         even: "täytyy olla parillinen."
         exclusion: "on jo varattu."
+        feature_disabled: is not available.
         file_too_large: "on liian suuri (suurin sallittu koko on %{count} tavua)."
         filter_does_not_exist: "filter does not exist."
         format: "does not match the expected format '%{expected}'."
@@ -3299,6 +3305,7 @@ fi:
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "Lisää liitteitä"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Arkisto projekti"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3327,9 +3334,12 @@ fi:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Muokkaa tehtäviä"
   permission_edit_messages: "Muokkaa viestejä"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Muokkaa omia viestejä"
   permission_edit_own_time_entries: "Muokka omia aikamerkintöjä"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Muokkaa projektia"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
@@ -3370,6 +3380,7 @@ fi:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "Näytä muutosryhmät"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Tarkastele tilastoja tekijöistä"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "Tarkastele seuraajien luetteloa"

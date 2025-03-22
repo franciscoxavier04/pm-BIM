@@ -35,11 +35,15 @@ id:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Menambahkan komentar. Ketik @ untuk memberi tahu orang lain."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -1060,6 +1064,7 @@ id:
           title: "Hari kerja"
           false: "hari kerja saja"
           true: "termasuk hari tidak bekerja"
+        journal_restricted: Restricted Journal
         notify: "Notify" #used in custom actions
         parent: "Induk"
         parent_issue: "Induk"
@@ -1103,6 +1108,7 @@ id:
         empty: "harus di isi."
         even: "harus imbang."
         exclusion: "telah dipesan."
+        feature_disabled: is not available.
         file_too_large: "ukuran maksimum yang diperbolehkan %{count} Bytes."
         filter_does_not_exist: "filter tidak ada."
         format: "tidak cocok dengan format yang diharapkan '%{expected}'."
@@ -3253,6 +3259,7 @@ id:
   permission_add_project: "Create projects"
   permission_add_work_package_attachments: "Tambahkan lampiran"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Proyek arsip"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3281,9 +3288,12 @@ id:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "Edit Paket-Penugasan"
   permission_edit_messages: "Edit pesan"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "Edit pesan"
   permission_edit_own_time_entries: "Edit Time log"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "Edit Project"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
@@ -3324,6 +3334,7 @@ id:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "View repository revisions in OpenProject"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "Lihat commit statistik penulis"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "Lihat daftar pemantau"

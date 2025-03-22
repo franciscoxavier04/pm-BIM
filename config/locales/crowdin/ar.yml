@@ -35,11 +35,15 @@ ar:
         label_sort_desc: "Newest on top"
         label_type_to_comment: "Add a comment. Type @ to notify people."
         label_submit_comment: "Submit comment"
+        label_who: Who?
         changed_on: "changed on"
         created_on: "created this on"
         changed: "changed"
         created: "created"
         commented: "commented"
+        restrict_visibility: Restrict visibility
+        restricted_journal: Restricted comments are visible to a limited group of members.
+        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
   admin:
     plugins:
       no_results_title_text: There are currently no plugins installed.
@@ -1109,6 +1113,7 @@ ar:
           title: "Working days"
           false: "working days only"
           true: "include non-working days"
+        journal_restricted: Restricted Journal
         notify: "Notify" #used in custom actions
         parent: "الجذر"
         parent_issue: "الجذر"
@@ -1152,6 +1157,7 @@ ar:
         empty: "لا يمكن أن تكون فارغة."
         even: "يجب أن يكون زوجي."
         exclusion: "محجوز."
+        feature_disabled: is not available.
         file_too_large: "إنه كبير جدا(الحجم الأكبر هو%{count} بايت)."
         filter_does_not_exist: "filter does not exist."
         format: "does not match the expected format '%{expected}'."
@@ -3463,6 +3469,7 @@ ar:
   permission_add_project: "أنشئ مشروعات"
   permission_add_work_package_attachments: "إضافة مرفقات"
   permission_add_work_package_attachments_explanation: "Allows adding attachments without Edit work packages permission"
+  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
   permission_archive_project: "Archive project"
   permission_create_user: "Create users"
   permission_manage_user: "Edit users"
@@ -3491,9 +3498,12 @@ ar:
   permission_edit_work_package_notes_explanation: "Caution: Users with this permission are able to edit anyone's comment."
   permission_edit_work_packages: "تحرير مجموعات العمل"
   permission_edit_messages: "تحرير الرسائل"
+  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
   permission_edit_own_work_package_notes: "Edit own comments"
   permission_edit_own_messages: "تحرير الرسائل الخاصة"
   permission_edit_own_time_entries: "تحرير سجلات الوقت الخاصة"
+  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
   permission_edit_project: "تحرير المشروع"
   permission_edit_project_attributes: "Edit project attributes"
   permission_edit_project_stages_and_gates: "Edit project stages and gates"
@@ -3534,6 +3544,7 @@ ar:
   permission_manage_own_reminders: "Create own reminders"
   permission_view_project: "View projects"
   permission_view_changesets: "عرض مستودع التنقيحات في أوبينبروجيكت"
+  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
   permission_view_commit_author_statistics: "عرض إحصائيات المؤلِّف المنفّذة"
   permission_view_dashboards: "View dashboards"
   permission_view_work_package_watchers: "عرض قائمة المراقبين"

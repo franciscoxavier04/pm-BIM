@@ -59,6 +59,8 @@ ko:
     models:
       time_entry:
         other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "비용 유형"
       time_entry_activity:

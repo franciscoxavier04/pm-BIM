@@ -59,6 +59,8 @@ th:
     models:
       time_entry:
         other: "Time entries"
+      cost_entry:
+        other: "Cost entries"
       cost_type:
         other: "Cost types"
       time_entry_activity:
