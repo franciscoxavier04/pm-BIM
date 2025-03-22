@@ -80,7 +80,8 @@ module WorkPackages
           action: index_stimulus_controller(":onSubmit-end@window->#{restricted_comment_stimulus_controller}#onSubmitEnd"),
           restricted_comment_stimulus_controller("-highlight-class") => "work-packages-activities-tab-journals-new-component--journal-notes-body__restricted-comment", # rubocop:disable Layout/LineLength
           restricted_comment_stimulus_controller("-hidden-class") => "d-none",
-          restricted_comment_stimulus_controller("-#{index_stimulus_controller}-outlet") => "##{wrapper_key}"
+          restricted_comment_stimulus_controller("-#{index_stimulus_controller}-outlet") => "##{wrapper_key}",
+          restricted_comment_stimulus_controller("-is-restricted-value") => false # Initial value
         }
       end
 

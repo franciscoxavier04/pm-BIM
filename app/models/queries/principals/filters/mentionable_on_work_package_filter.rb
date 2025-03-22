@@ -28,8 +28,7 @@
 # See COPYRIGHT and LICENSE files for more details.
 # ++
 
-class Queries::Principals::Filters::MentionableOnWorkPackageFilter <
-  Queries::Principals::Filters::PrincipalFilter
+class Queries::Principals::Filters::MentionableOnWorkPackageFilter < Queries::Principals::Filters::PrincipalFilter
   def allowed_values
     raise NotImplementedError, "There would be too many candidates"
   end
@@ -47,7 +46,7 @@ class Queries::Principals::Filters::MentionableOnWorkPackageFilter <
   end
 
   def human_name
-    "mentionable" # intenral use
+    "mentionable" # Internal use
   end
 
   def apply_to(query_scope)

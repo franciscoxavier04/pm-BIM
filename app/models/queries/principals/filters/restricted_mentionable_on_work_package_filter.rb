@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-#-- copyright
+# -- copyright
 # OpenProject is an open source project management software.
-# Copyright (C) 2012-2024 the OpenProject GmbH
+# Copyright (C) the OpenProject GmbH
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License version 3.
@@ -26,19 +26,15 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 # See COPYRIGHT and LICENSE files for more details.
-#++
-module WorkPackages::ActivitiesTab::Journals
-  class RestrictedNoteForm < ApplicationForm
-    form do |notes_form|
-      notes_form.check_box(
-        name: :restricted,
-        label: I18n.t("activities.work_packages.activity_tab.restrict_visibility"),
-        checked: false,
-        data: {
-          "work-packages--activities-tab--restricted-comment-target": "restrictedCheckbox",
-          action: "input->work-packages--activities-tab--restricted-comment#toggleRestriction"
-        }
-      )
-    end
+# ++
+
+class Queries::Principals::Filters::RestrictedMentionableOnWorkPackageFilter <
+    Queries::Principals::Filters::MentionableOnWorkPackageFilter
+  def key
+    :restricted_mentionable_on_work_package
+  end
+
+  def human_name
+    "restricted mentionable" # Internal use
   end
 end

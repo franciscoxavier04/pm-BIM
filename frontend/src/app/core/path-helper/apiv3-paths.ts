@@ -46,8 +46,15 @@ export class ApiV3Paths {
       // that are members of that project:
       filters.add('member', '=', [(workPackage.project as HalResource).id as string]);
     } else {
+      const addCommentElement = document.getElementById('work-packages-activities-tab-add-comment-component');
+      const isRestricted = addCommentElement?.getAttribute('data-work-packages--activities-tab--restricted-comment-is-restricted-value') === 'true';
+
       // that are mentionable on the work package
-      filters.add('mentionable_on_work_package', '=', [workPackage.id.toString()]);
+      if (addCommentElement && isRestricted) {
+        filters.add('restricted_mentionable_on_work_package', '=', [workPackage.id.toString()]);
+      } else {
+        filters.add('mentionable_on_work_package', '=', [workPackage.id.toString()]);
+      }
     }
     // That are users:
     filters.add('type', '=', ['User', 'Group']);
@@ -57,8 +64,6 @@ export class ApiV3Paths {
       filters.add('name', '~', [term]);
     }
 
-    return `${this.apiV3Base
-    }/principals?${
-      filters.toParams({ sortBy: '[["name","asc"]]', offset: '1', pageSize: '10' })}`;
+    return `${this.apiV3Base}/principals?${filters.toParams({ sortBy: '[["name","asc"]]', offset: '1', pageSize: '10' })}`;
   }
 }

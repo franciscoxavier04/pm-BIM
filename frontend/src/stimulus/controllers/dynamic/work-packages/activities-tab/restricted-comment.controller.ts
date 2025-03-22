@@ -36,23 +36,30 @@ export default class RestrictedCommentController extends Controller {
   static outlets = ['work-packages--activities-tab--index'];
   static classes = ['highlight', 'hidden'];
 
+  static values = {
+    isRestricted: { type: Boolean, default: false },
+  };
+
   declare readonly restrictedCheckboxTarget:HTMLInputElement;
   declare readonly formContainerTarget:HTMLElement;
   declare readonly learnMoreLinkTarget:HTMLAnchorElement;
   declare readonly workPackagesActivitiesTabIndexOutlet:IndexController;
-
   declare readonly highlightClass:string;
   declare readonly hiddenClass:string;
 
+  declare isRestrictedValue:boolean;
+
   onSubmitEnd(_event:CustomEvent):void {
-    this.toggleBackgroundColor();
+    this.toggleRestriction();
   }
 
-  toggleBackgroundColor():void {
+  toggleRestriction():void {
     const isChecked = this.restrictedCheckboxTarget.checked;
 
     this.formContainerTarget.classList.toggle(this.highlightClass, isChecked);
     this.toggleLearnMoreLink(isChecked);
+
+    this.isRestrictedValue = isChecked;
   }
 
   private toggleLearnMoreLink(isChecked:boolean):void {
