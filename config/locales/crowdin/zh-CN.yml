@@ -35,15 +35,15 @@ zh-CN:
         label_sort_desc: "时间降序"
         label_type_to_comment: "添加评论。输入 @ 以通知他人。"
         label_submit_comment: "提交评论"
-        label_who: Who?
+        label_who: 谁？
         changed_on: "更改于"
         created_on: "创建于"
         changed: "已更改"
         created: "已创建"
         commented: "已评论"
-        restrict_visibility: Restrict visibility
-        restricted_journal: Restricted comments are visible to a limited group of members.
-        unsaved_changes_confirmation_message: You have unsaved changes. Are you sure you want to close the editor?
+        restrict_visibility: 限制可见性
+        restricted_journal: 受限制的评论对一组成员可见。
+        unsaved_changes_confirmation_message: 您有未保存的更改。您确定要关闭编辑器吗？
   admin:
     plugins:
       no_results_title_text: 目前没有安装插件。
@@ -1064,7 +1064,7 @@ zh-CN:
           title: "工作日"
           false: "仅工作日"
           true: "包括非工作日"
-        journal_restricted: Restricted Journal
+        journal_restricted: 受限制的日记
         notify: "通知" #used in custom actions
         parent: "父级"
         parent_issue: "父级"
@@ -1108,7 +1108,7 @@ zh-CN:
         empty: "不能为空。"
         even: "必须是偶数。"
         exclusion: "是保留关键字。"
-        feature_disabled: is not available.
+        feature_disabled: 不可用。
         file_too_large: "太大 (最大大小为 %{count} 字节)。"
         filter_does_not_exist: "筛选器不存在。"
         format: "与预期的格式“%{expected}”不匹配。"
@@ -1569,7 +1569,7 @@ zh-CN:
       activated: "已激活"
       deactivated: "已停用"
       added_date: "设为 %{date}"
-      changed_date: "由%{from}变更为%{to}"
+      changed_date: "由 %{from} 变更为 %{to}"
       removed_date: "删除日期%{date}"
   #common attributes of all models
   attributes:
@@ -3257,7 +3257,7 @@ zh-CN:
   permission_add_project: "创建项目"
   permission_add_work_package_attachments: "添加附件"
   permission_add_work_package_attachments_explanation: "允许在没有编辑工作包权限的情况下添加附件"
-  permission_add_comments_with_restricted_visibility: "Write comments with restricted visibility"
+  permission_add_comments_with_restricted_visibility: "编写可见性受限的评论"
   permission_archive_project: "归档项目"
   permission_create_user: "创建用户"
   permission_manage_user: "编辑用户"
@@ -3286,12 +3286,12 @@ zh-CN:
   permission_edit_work_package_notes_explanation: "注意：拥有此权限的用户可以编辑任何人的评论。"
   permission_edit_work_packages: "编辑工作包"
   permission_edit_messages: "编辑消息"
-  permission_edit_own_comments_with_restricted_visibility: "Edit own comments with restricted visibility"
+  permission_edit_own_comments_with_restricted_visibility: "编辑自己的可见性受限的评论"
   permission_edit_own_work_package_notes: "编辑自己的评论"
   permission_edit_own_messages: "编辑自己的消息"
   permission_edit_own_time_entries: "编辑自己的时间记录"
-  permission_edit_others_comments_with_restricted_visibility: "Moderate comments with restricted visibility"
-  permission_edit_others_comments_with_restricted_visibility_explanation: "Caution: Users with this permission are able to edit other users' comments with restricted visibility."
+  permission_edit_others_comments_with_restricted_visibility: "编辑自己的可见性受限的评论"
+  permission_edit_others_comments_with_restricted_visibility_explanation: "注意：具有此权限的用户能够编辑其他用户的可见性受限的评论。"
   permission_edit_project: "编辑项目"
   permission_edit_project_attributes: "编辑项目属性"
   permission_edit_project_stages_and_gates: "编辑项目阶段和关口"
@@ -3332,7 +3332,7 @@ zh-CN:
   permission_manage_own_reminders: "创建个人提醒事项"
   permission_view_project: "查看项目"
   permission_view_changesets: "查看 OpenProject 存储库修订"
-  permission_view_comments_with_restricted_visibility: "View comments with restricted visibility"
+  permission_view_comments_with_restricted_visibility: "查看可见性受限的评论"
   permission_view_commit_author_statistics: "查看提交作者统计信息"
   permission_view_dashboards: "查看仪表板"
   permission_view_work_package_watchers: "查看关注者列表"
