@@ -369,4 +369,8 @@ export class PathHelperService {
   public timeEntryProjectDialog(projectId:string) {
     return `${this.projectPath(projectId)}/time_entries/dialog`;
   }
+
+  public timeEntryUpdate(timeEntryId:string) {
+    return `${this.staticBase}/time_entries/${timeEntryId}`;
+  }
 }

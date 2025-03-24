@@ -5,6 +5,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { TurboRequestsService } from 'core-app/core/turbo/turbo-requests.service';
 import { PathHelperService } from 'core-app/core/path-helper/path-helper.service';
+import moment from 'moment';
+import { renderStreamMessage } from '@hotwired/turbo';
 
 export default class MyTimeTrackingController extends Controller {
   private turboRequests:TurboRequestsService;
@@ -64,8 +66,8 @@ export default class MyTimeTrackingController extends Controller {
           '__hl_border_top',
         ];
       },
-      eventDidMount(info) {
-        console.log(info.event);
+      eventDidMount(_info) {
+        // console.log(info.event);
         //eslint-disable-next-line
         // info.el.innerHTML = info.event.extendedProps.customEventView;
       },
@@ -84,40 +86,64 @@ export default class MyTimeTrackingController extends Controller {
         );
       },
       eventResize: (info) => {
-        let dialogParams = 'onlyMe=true';
+        const startMoment = moment(info.event.startStr);
+        const endMoment = moment(info.event.endStr);
 
-        if (info.event.allDay) {
-          dialogParams = `${dialogParams}&date=${info.event.startStr}&removeTime=true`;
-        } else {
-          dialogParams = `${dialogParams}&startTime=${info.event.start?.toISOString()}&endTime=${info.event.end?.toISOString()}`;
-        }
-
-        void this.turboRequests.request(
-          `${this.pathHelper.timeEntryEditDialog(info.event.id)}?${dialogParams}`,
-          { method: 'GET' },
+        this.updateTimeEntry(
+          info.event.id,
+          startMoment.format('YYYY-MM-DD'),
+          info.event.allDay ? null : startMoment.format('HH:mm'),
+          info.event.allDay ? info.event.extendedProps.hours as number : moment.duration(endMoment.diff(startMoment)).asHours(),
+          info.revert,
         );
-
-        info.revert(); // revert back to old position, when modal succeeds, we reload anyways
       },
+
+      // TODO: When dragging from all day to the calendar, we need to set the hours
+
       eventDrop: (info) => {
-        let dialogParams = 'onlyMe=true';
+        const startMoment = moment(info.event.startStr);
+        const endMoment = moment(info.event.endStr);
 
-        if (info.event.allDay) {
-          dialogParams = `${dialogParams}&date=${info.event.startStr}&removeTime=true`;
-        } else {
-          dialogParams = `${dialogParams}&startTime=${info.event.start?.toISOString()}&endTime=${info.event.end?.toISOString()}`;
-        }
-
-        void this.turboRequests.request(
-          `${this.pathHelper.timeEntryEditDialog(info.event.id)}?${dialogParams}`,
-          { method: 'GET' },
+        this.updateTimeEntry(
+          info.event.id,
+          startMoment.format('YYYY-MM-DD'),
+          info.event.allDay ? null : startMoment.format('HH:mm'),
+          info.event.allDay ? info.event.extendedProps.hours as number : moment.duration(endMoment.diff(startMoment)).asHours(),
+          info.revert,
         );
-
-        info.revert(); // revert back to old position, when modal succeeds, we reload anyways
       },
     });
 
     this.calendar.render();
+  }
+
+  updateTimeEntry(timeEntryId:string, spentOn:string, startTime:string | null, hours:number, revertFunction:() => void) {
+    const csrfToken = document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content || '';
+    fetch(
+      this.pathHelper.timeEntryUpdate(timeEntryId),
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken,
+        },
+        body: JSON.stringify({
+          time_entry: {
+            spent_on: spentOn,
+            start_time: startTime,
+            hours,
+          },
+        }),
+      },
+    ).then((response) => {
+      if (response.ok) {
+        void response.text().then((html) => {
+          renderStreamMessage(html);
+        });
+      } else if (!response.ok && revertFunction) { revertFunction(); }
+    }).catch(() => {
+      if (revertFunction) { revertFunction(); }
+    });
   }
 
   calendarView():string {
