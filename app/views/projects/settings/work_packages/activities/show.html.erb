@@ -29,15 +29,24 @@ See COPYRIGHT and LICENSE files for more details.
 
 <%= render(Settings::ProjectWorkPackages::HeaderComponent.new(@project, selected: :activities)) %>
 
-<%=
-  # this could be exctracted into a Form component
-  form_for @project,
-           url: project_settings_work_packages_activities_path(@project),
-           method: :patch,
-           html: { id: "activities-form" } do |f|
-%>
-  <%= f.check_box :enabled_comments_with_restricted_visibility %>
-  <%= f.label :enabled_comments_with_restricted_visibility, "Enable comments with restricted visibility" %>
-  <p>Helper text here</p>
-  <%= f.submit "Save" %>
+<% if EnterpriseToken.allows_to?(:comments_with_restricted_visibility) %>
+  <%=
+    primer_form_with(
+      model: @project,
+      url: project_settings_work_packages_activities_path(@project),
+      id: "activities-form"
+    ) do |f|
+  %>
+    <%= render(Projects::Settings::WorkPackages::Activities::Form.new(f)) %>
+  <% end %>
+<% else %>
+  <%=
+    render(
+      EnterpriseEdition::BannerComponent.new(
+        :comments_with_restricted_visibility,
+        href: OpenProject::Static::Links.url_for(:user_guides_work_package_activity),
+        mb: 3
+      )
+    )
+  %>
 <% end %>

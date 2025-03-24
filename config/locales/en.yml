@@ -2078,6 +2078,8 @@ en:
         description: "Customize the form configuration with these additional add-ons:"
         add_groups: "Add new attribute groups"
         rename_groups: "Rename attributes groups"
+      comments_with_restricted_visibility:
+        description: "To be defined"
 
   enumeration_activities: "Time tracking activities"
   enumeration_work_package_priorities: "Work package priorities"
@@ -4016,6 +4018,9 @@ en:
       section_holidays_and_closures: "Holidays and closures"
     work_packages:
       not_allowed_text: "You do not have the necessary permissions to view this page."
+      activities:
+        enable_comments_with_restricted_visibility: "Enable restricted visibility comments"
+        helper_text: "Restricted comments allow an internal team to communicate amongst themselves privately. These are only visible to select roles that have the necessary permissions and will not be visible publicly."
 
   text_formatting:
     markdown: "Markdown"

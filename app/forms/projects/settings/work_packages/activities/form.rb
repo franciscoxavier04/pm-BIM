@@ -27,31 +27,25 @@
 #
 # See COPYRIGHT and LICENSE files for more details.
 #++
+module Projects::Settings::WorkPackages::Activities
+  class Form < ApplicationForm
+    form do |f|
+      f.check_box(
+        name: :enabled_comments_with_restricted_visibility,
+        label: I18n.t("settings.work_packages.activities.enable_comments_with_restricted_visibility"),
+        caption: I18n.t("settings.work_packages.activities.helper_text"),
+        checked: model.project.enabled_comments_with_restricted_visibility
+      )
 
-require "spec_helper"
+      f.submit(
+        name: :submit,
+        label: I18n.t(:button_save),
+        scheme: :primary
+      )
+    end
 
-RSpec.describe "WorkPackages-Settings-Activities", :js do
-  let!(:project) { create(:project) }
-  let(:activities_settings_page) { Pages::Projects::Settings::Activities.new(project) }
-
-  current_user { create(:admin) }
-
-  it "enables and disables the settings for the project" do
-    activities_settings_page.visit!
-    expect(page).to have_css("#activities-form")
-
-    expect(page).to have_field(:project_enabled_comments_with_restricted_visibility, checked: false)
-
-    check("Enable restricted visibility comments")
-    click_link_or_button "Save"
-
-    expect_and_dismiss_flash(message: "Successful update.")
-    expect(page).to have_field(:project_enabled_comments_with_restricted_visibility, checked: true)
-
-    uncheck("Enable restricted visibility comments")
-    click_link_or_button "Save"
-
-    expect_and_dismiss_flash(message: "Successful update.")
-    expect(page).to have_field(:project_enabled_comments_with_restricted_visibility, checked: false)
+    def initialize(**_options)
+      super()
+    end
   end
 end
